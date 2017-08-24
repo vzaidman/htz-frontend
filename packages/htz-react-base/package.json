@@ -1,0 +1,30 @@
+{
+  "name": "htz-react-base",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "htz-scripts": "./bin/htz-scripts.js"
+  },
+  "scripts": {
+    "format": "./bin/htz-scripts.js format",
+    "test": "./bin/htz-scripts.js test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "cross-spawn": "^5.1.0",
+    "jest": "^20.0.4",
+    "prettier": "^1.5.3"
+  },
+  "devDependencies": {
+    "babel-jest": "^20.0.3",
+    "globby": "^6.1.0"
+  }
+}
