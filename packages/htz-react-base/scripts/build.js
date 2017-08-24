@@ -5,7 +5,6 @@
 
 if (!process.argv.length < 3) {
   // If no args are provided, use these defaults.
-  // TODO: Update with Haaretz team's preferences.
   process.argv.push(
     'src', // Folder to transpile.
     '--out-dir=lib', // Output directory.

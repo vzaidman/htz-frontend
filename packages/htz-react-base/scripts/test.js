@@ -9,7 +9,10 @@ argv.push(
     transform: {
       '^.+\\.(js|jsx)$': require.resolve('babel-jest')
     },
-    transformIgnorePatterns: ['[/\\]node_modules[/\\].+.(js|jsx)$']
+    transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
+    // Jest's default test matcher thinks this is a test file because of the
+    // name and throws an error, so ignore it.
+    testPathIgnorePatterns: ['/node_modules/', '/scripts/test.js']
   })
 )
 

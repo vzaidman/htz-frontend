@@ -25,7 +25,7 @@ $ yarn
 Now use Lerna to set up the managed packages:
 
 ```shell
-$ lerna bootstrap
+$ yarn run bootstrap
 ```
 
 Interdependent projects managed in the same monorepo will be symlinked.
