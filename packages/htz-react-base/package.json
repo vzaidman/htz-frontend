@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
   "main": "index.js",
   "bin": {
     "htz-scripts": "./bin/htz-scripts.js"
@@ -11,20 +14,21 @@
     "format": "./bin/htz-scripts.js format",
     "test": "./bin/htz-scripts.js test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "UNLICENSED",
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "cross-spawn": "^5.1.0",
+    "globby": "^6.1.0",
     "jest": "^20.0.4",
-    "prettier": "^1.5.3"
-  },
-  "devDependencies": {
-    "babel-jest": "^20.0.3",
-    "globby": "^6.1.0"
+    "prettier": "^1.5.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-styleguidist": "^6.0.20",
+    "resolve-from": "^3.0.0",
+    "webpack": "^3.5.5"
   }
 }

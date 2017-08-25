@@ -2,13 +2,18 @@
   "name": "htz-components",
   "version": "0.0.0",
   "private": true,
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "main": "lib/index.js",
   "scripts": {
     "build": "htz-scripts build",
     "format": "htz-scripts format",
     "prepare": "npm run build",
     "test": "htz-scripts test",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide": "htz-scripts styleguide",
+    "styleguide:build": "htz-scripts styleguide:build"
   },
   "peerDependencies": {
     "fela": "^5.1.1",
@@ -22,14 +27,11 @@
     "prop-types": "^15.5.10"
   },
   "devDependencies": {
-    "babel-loader": "^7.1.2",
     "fela": "^5.1.1",
     "htz-react-base": "^0.0.0",
     "next": "^3.0.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-fela": "^5.2.1",
-    "react-styleguidist": "^6.0.20",
-    "webpack": "^3.5.5"
+    "react-fela": "^5.2.1"
   }
 }
