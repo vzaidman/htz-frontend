@@ -58,4 +58,7 @@ typings/
 .env
 
 # Next.js builds
-.next
+.next/
+
+# webpack and Babel builds
+dist/

@@ -4,8 +4,12 @@ export default ({ title, author }) => {
   return (
     <main>
       <article>
-        <h1>{title}</h1>
-        <p>{author}</p>
+        <h1>
+          {title}
+        </h1>
+        <p>
+          {author}
+        </p>
       </article>
     </main>
   )
