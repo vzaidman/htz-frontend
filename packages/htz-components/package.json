@@ -6,7 +6,7 @@
   "keywords": [],
   "author": "",
   "license": "UNLICENSED",
-  "main": "lib/index.js",
+  "main": "dist/lib/index.js",
   "scripts": {
     "build": "htz-scripts build",
     "format": "htz-scripts format",

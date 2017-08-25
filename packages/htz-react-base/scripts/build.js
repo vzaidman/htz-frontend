@@ -7,7 +7,7 @@ if (!process.argv.length < 3) {
   // If no args are provided, use these defaults.
   process.argv.push(
     'src', // Folder to transpile.
-    '--out-dir=lib', // Output directory.
+    '--out-dir=dist/lib', // Output directory.
     '--presets',
     require.resolve('../babel')
   )
