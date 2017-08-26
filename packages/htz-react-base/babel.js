@@ -10,5 +10,6 @@ module.exports = {
     ],
     'react'
   ],
-  plugins: ['transform-object-rest-spread']
+  plugins: ['transform-object-rest-spread'],
+  ignore: ['**/*.{spec,test}.{js,jsx}']
 }
