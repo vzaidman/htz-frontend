@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({ title, author }) => {
+export default function Article({ title, author }) {
   return (
     <main>
       <article>

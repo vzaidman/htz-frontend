@@ -1,4 +1,7 @@
-export * from './components'
-export { default as styleRenderer } from './style/renderer'
-export { default as StyleProvider } from './style/StyleProvider'
-export { default as HaaretzDocument } from './document'
+import Article from './components/Article/Article'
+import Button from './components/Button/Button'
+import StyleProvider from './components/StyleProvider/StyleProvider'
+import styleRenderer from './components/StyleProvider/renderer'
+import HaaretzDocument from './document'
+
+export { Article, Button, StyleProvider, styleRenderer, HaaretzDocument }
