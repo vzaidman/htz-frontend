@@ -1,7 +1,7 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { renderToSheetList } from 'fela-dom'
-import styleRenderer from './style/renderer'
+import styleRenderer from './components/StyleProvider/renderer'
 
 /**
  * This Document subclass should be re-exported as the default export in the
