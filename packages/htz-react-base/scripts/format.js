@@ -8,9 +8,9 @@ const globby = require('globby')
 function getFileList() {
   return globby.sync(
     [
-      '**/*.js{,x}',
-      '!**/{.next,node_modules}/**',
-      '!./{.next,node_modules}/**'
+      '**/*.{js,jsx}',
+      '!**/{.next,dist,node_modules}/**',
+      '!./{.next,dist,node_modules}/**'
     ],
     { dot: true }
   )
