@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Encapsulated development scripts and dependencies for building React apps and components.",
   "repository": "Haaretz/htz-frontend",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "bin": {
     "htz-scripts": "./bin/htz-scripts.js"
