@@ -8,7 +8,7 @@ components.
 This module should be installed in `devDependencies`:
 
 ```console
-$ yarn add -D htz-react-base
+$ yarn add -D @haaretz/htz-react-base
 ```
 
 ## Usage
