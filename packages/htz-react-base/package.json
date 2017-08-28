@@ -1,8 +1,8 @@
 {
   "name": "@haaretz/htz-react-base",
   "version": "0.0.0",
-  "private": true,
-  "description": "",
+  "description": "Encapsulated development scripts and dependencies for building React apps and components.",
+  "repository": "Haaretz/htz-frontend",
   "main": "index.js",
   "bin": {
     "htz-scripts": "./bin/htz-scripts.js"
