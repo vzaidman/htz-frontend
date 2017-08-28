@@ -39,13 +39,29 @@ module.exports = {
   getComponentPathLine(componentPath) {
     // Styleguidist will show a `componentPath` relative to the config file,
     // which is not what we want when using the default config.
-    // TODO: For components coming from node_modules, like `htz-components`,
-    // show how to import it rather than the path.
     if (componentPath.indexOf('..') === 0) {
       componentPath =
         resolveFrom.silent(__dirname, componentPath) || componentPath
     }
-    return path.relative(process.cwd(), componentPath)
+    componentPath = path.relative(process.cwd(), componentPath)
+    const pathSegments = componentPath.split(path.sep)
+    // If the component is coming from another module, render an `import`
+    // statement rather than the file path. This makes a big assumption, which
+    // is that any component can be imported from that module's `main` entry
+    // point as a named export matching the name of the file.
+    if (pathSegments[0] === 'node_modules') {
+      const isScoped = pathSegments[1].startsWith('@')
+      const packagePath = path.join(
+        process.cwd(),
+        ...pathSegments.slice(0, isScoped ? 3 : 2),
+        'package.json'
+      )
+      const packageName = require(packagePath).name
+      const extension = path.extname(componentPath)
+      const componentName = pathSegments[pathSegments.length - 1].slice(0, -extension.length)
+      return `import { ${componentName} } from '${packageName}';`
+    }
+    return componentPath
   },
   // By default, Styleguidist will watch the common parent directory of all
   // the component files discovered to know when to recompile. In cases where
