@@ -10,7 +10,7 @@ module.exports = {
     ],
     'react'
   ],
-  plugins: ['transform-object-rest-spread'],
+  plugins: ['transform-object-rest-spread', 'transform-class-properties'],
   // Here's why the following `BABEL_ENV` check exists.
   // (1) We don't want test files copied into `/dist` during `build`, but we do
   // want Jest to transpile tests as needed.
