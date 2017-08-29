@@ -15,9 +15,9 @@
     "format": "htz-scripts format",
     "lint": "htz-scripts lint",
     "prepare": "npm run build",
-    "test": "htz-scripts test",
     "styleguide": "htz-scripts styleguide",
-    "styleguide:build": "htz-scripts styleguide:build"
+    "styleguide:build": "htz-scripts styleguide:build",
+    "test": "htz-scripts test"
   },
   "peerDependencies": {
     "fela": "^5.1.1",
