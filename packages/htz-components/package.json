@@ -1,15 +1,19 @@
 {
-  "name": "htz-components",
+  "name": "@haaretz/htz-components",
   "version": "0.0.0",
-  "private": true,
-  "description": "",
+  "description": "Shared components and helpers for Haaretz React apps.",
   "keywords": [],
   "author": "",
   "license": "UNLICENSED",
+  "repository": "Haaretz/htz-frontend",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/lib/index.js",
   "scripts": {
     "build": "htz-scripts build",
     "format": "htz-scripts format",
+    "lint": "htz-scripts lint",
     "prepare": "npm run build",
     "test": "htz-scripts test",
     "styleguide": "htz-scripts styleguide",
@@ -27,8 +31,8 @@
     "prop-types": "^15.5.10"
   },
   "devDependencies": {
+    "@haaretz/htz-react-base": "^0.1.0",
     "fela": "^5.1.1",
-    "htz-react-base": "^0.0.0",
     "next": "^3.0.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

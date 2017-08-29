@@ -17,11 +17,11 @@ const Wrapper =
   // prioritizes the version under `src` for that reason.
   resolveFrom.silent(
     process.cwd(),
-    'htz-components/src/components/StyleProvider/StyleProvider'
+    '@haaretz/htz-components/src/components/StyleProvider/StyleProvider'
   ) ||
   resolveFrom.silent(
     process.cwd(),
-    'htz-components/dist/lib/components/StyleProvider/StyleProvider'
+    '@haaretz/htz-components/dist/lib/components/StyleProvider/StyleProvider'
   )
 
 module.exports = {
@@ -58,7 +58,10 @@ module.exports = {
       )
       const packageName = require(packagePath).name
       const extension = path.extname(componentPath)
-      const componentName = pathSegments[pathSegments.length - 1].slice(0, -extension.length)
+      const componentName = path.basename(
+        pathSegments[pathSegments.length - 1],
+        extension
+      )
       return `import { ${componentName} } from '${packageName}';`
     }
     return componentPath
@@ -72,7 +75,13 @@ module.exports = {
   contextDependencies: [
     path.join(process.cwd(), 'components'),
     path.join(process.cwd(), 'src', 'components'),
-    path.join(process.cwd(), 'node_modules', 'htz-components', 'src')
+    path.join(
+      process.cwd(),
+      'node_modules',
+      '@haaretz',
+      'htz-components',
+      'src'
+    )
   ],
   styleguideDir: path.join(process.cwd(), 'dist', 'styleguide'),
   // Ideally, we'd be able to use Next's webpack config, so everything works
