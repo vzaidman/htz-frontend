@@ -17,6 +17,9 @@ const packageInfo = require(packagePath)
 // If --no-overwrite is specified, skip updating any scripts that already exist
 // with the same name.
 const noOverwrite = process.argv.indexOf('--no-overwrite') >= 2
+// If --no-sort is specified, the scripts won't be sorted by name before writing
+// them back to `package.json`.
+const noSort = process.argv.indexOf('--no-sort') >= 2
 const added = []
 const updated = []
 const skipped = []
@@ -54,6 +57,15 @@ Object.keys(SCRIPTS).forEach(name => {
     added.push(name)
   }
 })
+
+if (!noSort) {
+  packageInfo.scripts = Object.keys(packageInfo.scripts)
+    .sort()
+    .reduce((sortedScripts, name) => {
+      sortedScripts[name] = packageInfo.scripts[name]
+      return sortedScripts
+    }, {})
+}
 
 const packageString = JSON.stringify(packageInfo, null, 2) + '\n'
 fs.writeFileSync(packagePath, packageString)
