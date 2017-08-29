@@ -1,0 +1,43 @@
+{
+  "name": "@haaretz/htz-components",
+  "version": "0.0.0",
+  "description": "Shared components and helpers for Haaretz React apps.",
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "repository": "Haaretz/htz-frontend",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/lib/index.js",
+  "scripts": {
+    "build": "htz-scripts build",
+    "format": "htz-scripts format",
+    "lint": "htz-scripts lint",
+    "prepare": "npm run build",
+    "test": "htz-scripts test",
+    "styleguide": "htz-scripts styleguide",
+    "styleguide:build": "htz-scripts styleguide:build"
+  },
+  "peerDependencies": {
+    "fela": "^5.1.1",
+    "next": "^3.0.6",
+    "react": "^15.6.1 || ^16.0.0-0",
+    "react-fela": "^5.2.1"
+  },
+  "dependencies": {
+    "fela-dom": "^5.0.7",
+    "fela-plugin-validator": "^5.0.6",
+    "fela-preset-web": "^5.0.7",
+    "prop-types": "^15.5.10"
+  },
+  "devDependencies": {
+    "@haaretz/htz-react-base": "^0.1.0",
+    "fela": "^5.1.1",
+    "next": "^3.0.6",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-fela": "^5.2.1",
+    "react-test-renderer": "^15.6.1"
+  }
+}

@@ -9,7 +9,9 @@
 const spawn = require('cross-spawn')
 const argv = process.argv.slice(2)
 
-const script = argv[0]
+// Script names with namespaces/subtasks by convention are separated by ':', but
+// we'd prefer to avoid them in filenames. Map namespaces to directories.
+const script = (argv[0] || '').replace(/:/g, '/')
 const args = argv.slice(1)
 
 if (script) {

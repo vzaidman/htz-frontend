@@ -2,6 +2,9 @@
   "name": "@haaretz/htz-react-base",
   "version": "0.1.0",
   "description": "Encapsulated development scripts and dependencies for building React apps and components.",
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
   "repository": "Haaretz/htz-frontend",
   "publishConfig": {
     "access": "public"
@@ -15,12 +18,10 @@
     "lint": "./bin/htz-scripts.js lint",
     "test": "./bin/htz-scripts.js test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "UNLICENSED",
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-jest": "^20.0.3",
+    "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
@@ -32,6 +33,11 @@
     "eslint-plugin-react": "^7.1.0",
     "globby": "^6.1.0",
     "jest": "^20.0.4",
-    "prettier": "^1.5.3"
+    "prettier": "^1.5.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-styleguidist": "^6.0.20",
+    "resolve-from": "^3.0.0",
+    "webpack": "^3.5.5"
   }
 }

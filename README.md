@@ -5,6 +5,7 @@
 These packages are managed with [Lerna](https://lernajs.io/).
 
 * [htz-react-base](packages/htz-react-base) – Development helpers.
+* [htz-components](packages/htz-components) – Components and other shared parts.
 
 ## Getting Started
 
@@ -32,6 +33,6 @@ Interdependent projects managed in the same monorepo will be symlinked.
 Then work on whichever package(s) you like:
 
 ```shell
-$ cd packages/htz-react-base
-$ yarn run format
+$ cd packages/htz-components
+$ yarn run styleguide
 ```
