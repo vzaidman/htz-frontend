@@ -4,6 +4,17 @@ module.exports = {
   /* Extend airbnb's style-guide enforcement */
   extends: "airbnb",
 
+  overrides: {
+    files: [ "*.test.js" ],
+    plugins: [
+      "jest"
+    ],
+    env: {
+      jest: true
+    }
+  },
+
+
   rules: {
     "brace-style": [ 2, "stroustrup", { allowSingleLine: true } ],
     /* Warn about long line */
