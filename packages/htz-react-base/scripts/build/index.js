@@ -1,3 +1,5 @@
+/* eslint-disable global-require, no-console */
+
 /**
  * For building both Next.js apps and consumable libraries like `htz-components`.
  */
@@ -20,10 +22,10 @@ function buildLibrary() {
   const envScripts = {
     commonjs: require.resolve('./lib'),
     esm: require.resolve('./esm'),
-    esnext: require.resolve('./esnext')
+    esnext: require.resolve('./esnext'),
   };
 
-  const { BABEL_ENV } = process.env;
+  const { BABEL_ENV, } = process.env;
   const args = process.argv.slice(2);
 
   if (BABEL_ENV && !envScripts[BABEL_ENV]) {
@@ -42,7 +44,8 @@ function buildLibrary() {
       // result in the Babel CLI module only being run once (unless we do
       // something dirty like delete the cache entry). Easier to just spawn
       // Node multiple times intead.
-      result = spawn.sync('node', [script].concat(args), { stdio: 'inherit' });
+      /* eslint-disable no-undef */
+      result = spawn.sync('node', [ script, ].concat(args), { stdio: 'inherit', });
       if (result.signal) {
         console.error(result.signal);
         process.exit(1);
@@ -50,6 +53,7 @@ function buildLibrary() {
       if (result.status) {
         process.exit(result.status);
       }
+      /* eslint-enable no-undef */
       console.log(); // Blank line between different builds.
     }
   });
@@ -64,12 +68,15 @@ checkDir('pages').then(isDir => {
   if (isDir) {
     console.log('Next.js app package detected.');
     buildApp();
-  } else {
+  }
+  else {
+    // eslint-disable-next-line no-shadow
     checkDir('src').then(isDir => {
       if (isDir) {
         console.log('Library package detected.');
         buildLibrary();
-      } else {
+      }
+      else {
         console.error('Could not determine how to build the current package.');
         console.error('* To build a Next.js app, add a `pages` directory.');
         console.error(

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-dynamic-require, no-console */
 const fs = require('fs');
 const resolveFrom = require('resolve-from');
 
@@ -8,7 +9,7 @@ const SCRIPTS = {
   prepare: 'npm run build',
   test: 'htz-scripts test',
   styleguide: 'htz-scripts styleguide',
-  'styleguide:build': 'htz-scripts styleguide:build'
+  'styleguide:build': 'htz-scripts styleguide:build',
 };
 
 const packagePath = resolveFrom(process.cwd(), './package.json');
@@ -32,7 +33,8 @@ Object.keys(SCRIPTS).forEach(name => {
     const existingCommand = packageInfo.scripts[name];
     if (existingCommand === command) {
       skipped.push(name);
-    } else if (noOverwrite) {
+    }
+    else if (noOverwrite) {
       console.warn(
         `\nThe existing "${name}" script was skipped, use --overwrite to update. It is currently:`
       );
@@ -42,7 +44,8 @@ Object.keys(SCRIPTS).forEach(name => {
       console.warn('Overwriting will update it to:');
       console.warn(`  ${JSON.stringify(name)}: ${JSON.stringify(command)}`);
       skipped.push(name);
-    } else {
+    }
+    else {
       console.warn(
         `\nThe existing "${name}" script was overwritten. It was previously:`
       );
@@ -52,7 +55,8 @@ Object.keys(SCRIPTS).forEach(name => {
       packageInfo.scripts[name] = command;
       updated.push(name);
     }
-  } else {
+  }
+  else {
     packageInfo.scripts[name] = command;
     added.push(name);
   }
@@ -62,6 +66,7 @@ if (!noSort) {
   packageInfo.scripts = Object.keys(packageInfo.scripts)
     .sort()
     .reduce((sortedScripts, name) => {
+      // eslint-disable-next-line no-param-reassign
       sortedScripts[name] = packageInfo.scripts[name];
       return sortedScripts;
     }, {});

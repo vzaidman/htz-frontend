@@ -1,3 +1,4 @@
+/* eslint-disable global-require, import/no-dynamic-require */
 const resolveFrom = require('resolve-from');
 
 function configure(config) {
@@ -22,7 +23,8 @@ function findConfig() {
       if (config && Object.keys(config).length) {
         return configFile;
       }
-    } catch (err) {
+    }
+    catch (err) {
       // If there's an error, we'd prefer letting Styleguidist report it rather
       // than doing it ourselves, so attempt to load it anyway.
       return configFile;
@@ -34,5 +36,5 @@ function findConfig() {
 
 module.exports = {
   configure,
-  findConfig
+  findConfig,
 };

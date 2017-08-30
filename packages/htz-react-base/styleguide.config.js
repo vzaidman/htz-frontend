@@ -1,3 +1,5 @@
+/* eslint-disable global-require, import/no-dynamic-require */
+
 const path = require('path');
 const resolveFrom = require('resolve-from');
 
@@ -30,19 +32,21 @@ module.exports = {
   showUsage: true,
   components: path.join(process.cwd(), '{,src/}components/**/*.{js,jsx}'),
   theme: {
-    sidebarWidth: 260
+    sidebarWidth: 260,
   },
   // Styleguidist sends webpack this option in such a way that it errors out
   // if one of the values is null or undefined, so we can't just use the raw
   // value of `Wrapper`. Instead, exclude `Wrapper` altogether if it's null.
-  styleguideComponents: Wrapper ? { Wrapper } : {},
+  styleguideComponents: Wrapper ? { Wrapper, } : {},
   getComponentPathLine(componentPath) {
     // Styleguidist will show a `componentPath` relative to the config file,
     // which is not what we want when using the default config.
     if (componentPath.indexOf('..') === 0) {
+      // eslint-disable-next-line no-param-reassign
       componentPath =
         resolveFrom.silent(__dirname, componentPath) || componentPath;
     }
+    // eslint-disable-next-line no-param-reassign
     componentPath = path.relative(process.cwd(), componentPath);
     const pathSegments = componentPath.split(path.sep);
     // If the component is coming from another module, render an `import`
@@ -81,7 +85,7 @@ module.exports = {
       '@haaretz',
       'htz-components',
       'src'
-    )
+    ),
   ],
   styleguideDir: path.join(process.cwd(), 'dist', 'styleguide'),
   // Ideally, we'd be able to use Next's webpack config, so everything works
@@ -93,9 +97,9 @@ module.exports = {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
-          options: require('./babel')
-        }
-      ]
-    }
-  }
+          options: require('./babel'),
+        },
+      ],
+    },
+  },
 };

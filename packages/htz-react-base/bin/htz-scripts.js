@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint-disable no-console */
+
 /**
  * Script launcher for React development helpers.
  * Inspired by Next.js and `react-scripts` from `create-react-app`.
@@ -17,8 +19,8 @@ const args = argv.slice(1);
 
 if (script) {
   const scriptPath = require.resolve(`../scripts/${script}`);
-  const result = spawn.sync('node', [scriptPath].concat(args), {
-    stdio: 'inherit'
+  const result = spawn.sync('node', [ scriptPath, ].concat(args), {
+    stdio: 'inherit',
   });
   if (result.signal) {
     console.error(result.signal);

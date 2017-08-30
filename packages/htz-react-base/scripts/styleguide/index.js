@@ -1,4 +1,4 @@
-const { findConfig } = require('../../styleguide');
+const { findConfig, } = require('../../styleguide');
 
 process.argv.splice(2, 0, 'server');
 
