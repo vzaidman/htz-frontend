@@ -4,6 +4,8 @@ module.exports = {
   /* Extend airbnb's style-guide enforcement */
   extends: "airbnb",
 
+  parser: "babel-eslint",
+
   overrides: {
     files: [ "*.test.js" ],
     plugins: [
