@@ -10,11 +10,11 @@ const Wrapper =
     process.cwd(),
     './src/components/StyleProvider/StyleProvider'
   ) ||
-  // This is tricky: really, we should assume `htz-components` is a  normally
+  // This is tricky: really, we should assume `htz-components` is a normally
   // installed module and not a symlink, and thus get `StyleProvider` from
-  // `htz-components/dist/lib`. But if it is symlinked, we want to detect
-  // changes to it without needing to rebuild `htz-components`. This currently
-  // prioritizes the version under `src` for that reason.
+  // `@haaretz/htz-components/dist/lib`. But if it is symlinked, we want to
+  // detect changes to it without needing to rebuild `htz-components`. This
+  // currently prioritizes the version under `src` for that reason.
   resolveFrom.silent(
     process.cwd(),
     '@haaretz/htz-components/src/components/StyleProvider/StyleProvider'

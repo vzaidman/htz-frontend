@@ -1,0 +1,33 @@
+{
+  "name": "@haaretz/haaretz.co.il",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "main": "server.js",
+  "scripts": {
+    "build": "htz-scripts build",
+    "dev": "node server.js",
+    "format": "htz-scripts format",
+    "lint": "htz-scripts lint",
+    "prepare": "npm run build",
+    "styleguide": "htz-scripts styleguide",
+    "styleguide:build": "htz-scripts styleguide:build",
+    "test": "htz-scripts test"
+  },
+  "dependencies": {
+    "@haaretz/htz-components": "^0.0.0",
+    "express": "^4.15.4",
+    "fela": "^5.1.1",
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^3.0.6",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-fela": "^5.2.1"
+  },
+  "devDependencies": {
+    "@haaretz/htz-react-base": "^0.1.0"
+  }
+}

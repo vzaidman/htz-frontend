@@ -6,6 +6,7 @@ These packages are managed with [Lerna](https://lernajs.io/).
 
 * [htz-react-base](packages/htz-react-base) – Development helpers.
 * [htz-components](packages/htz-components) – Components and other shared parts.
+* [haaretz.co.il](packages/haaretz.co.il) – Site app for the Hebrew edition of Haaretz.
 
 ## Getting Started
 
