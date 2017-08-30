@@ -3,20 +3,20 @@ const next = require('next');
 
 const DEV = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 3000;
-const app = next({ dev: DEV });
+const app = next({ dev: DEV, });
 const handle = app.getRequestHandler();
 
 const MOCK_ARTICLES = {
   1.808116: {
     section: 'archaeology',
     title: 'How Ancient Babylonians Could Have Predicted the 2017 Eclipse',
-    author: 'Ruth Schuster'
+    author: 'Ruth Schuster',
   },
   1.807195: {
     section: 'archaeology',
     title: "Tombs Found in Egypt's Nile Valley Date Back More Than 2,000 Years",
-    author: 'The Associated Press and Ruth Schuster'
-  }
+    author: 'The Associated Press and Ruth Schuster',
+  },
 };
 
 app
@@ -28,8 +28,8 @@ app
     server.get('/mock-api/stories.json', (req, res) => {
       res.json({
         stories: Object.keys(MOCK_ARTICLES).map(id =>
-          Object.assign({ id }, MOCK_ARTICLES[id])
-        )
+          Object.assign({ id, }, MOCK_ARTICLES[id])
+        ),
       });
     });
 
@@ -38,7 +38,8 @@ app
 
       if (article) {
         res.json(article);
-      } else {
+      }
+      else {
         res.status(404).json({});
       }
     });
@@ -46,7 +47,7 @@ app
     server.get('/:section/:id(\\d[.]\\d+)', (req, res) => {
       const query = {
         section: req.params.section,
-        id: req.params.id
+        id: req.params.id,
       };
       app.render(req, res, '/article', query);
     });
@@ -55,10 +56,12 @@ app
 
     server.listen(PORT, err => {
       if (err) throw err;
+      // eslint-disable-next-line no-console
       console.log(`> Ready on http://localhost:${PORT}`);
     });
   })
   .catch(err => {
+    // eslint-disable-next-line no-console
     console.error(err.stack);
     process.exit(1);
   });

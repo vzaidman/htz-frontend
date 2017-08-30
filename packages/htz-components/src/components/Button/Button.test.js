@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from './Button';
 import renderer from 'react-test-renderer';
+import Button from './Button';
 
 it('renders correctly', () => {
   const tree = renderer.create(<Button>Click here</Button>).toJSON();

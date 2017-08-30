@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "format": "lerna exec --no-bail -- yarn run format",
+    "format": "lerna exec --no-bail -- node ../htz-react-base/bin/htz-scripts.js format && lerna exec --no-bail -- node ../htz-react-base/bin/htz-scripts.js lint --fix",
     "lint": "lerna exec --no-bail -- yarn run lint"
   },
   "repository": {

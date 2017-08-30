@@ -1,4 +1,4 @@
-const { configure } = require('@haaretz/htz-react-base/styleguide');
+const { configure, } = require('@haaretz/htz-react-base/styleguide');
 
 // When passed an object, `configure` will do a (shallow) extend of the default
 // config. If you need to extend a particular value (e.g. `styleguideComponents`),
@@ -11,12 +11,12 @@ module.exports = configure({
   sections: [
     {
       name: 'Site Components',
-      components: 'components/**/*.{js,jsx}'
+      components: 'components/**/*.{js,jsx}',
     },
     {
       name: 'Shared Components',
       components:
-        'node_modules/@haaretz/htz-components/src/components/**/*.{js,jsx}'
-    }
-  ]
+        'node_modules/@haaretz/htz-components/src/components/**/*.{js,jsx}',
+    },
+  ],
 });

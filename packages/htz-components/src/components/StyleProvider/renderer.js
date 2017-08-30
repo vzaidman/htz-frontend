@@ -1,13 +1,14 @@
-import { createRenderer } from 'fela';
+import { createRenderer, } from 'fela';
 import webPreset from 'fela-preset-web';
+import validator from 'fela-plugin-validator';
 
-const plugins = [...webPreset];
+const plugins = [ ...webPreset, ];
 
 if (process.env.NODE_ENV !== 'production') {
-  plugins.push(require('fela-plugin-validator').default());
+  plugins.push(validator());
 }
 
 /**
  * The Fela renderer used to create styles.
  */
-export default createRenderer({ plugins });
+export default createRenderer({ plugins, });

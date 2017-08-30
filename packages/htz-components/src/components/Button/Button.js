@@ -1,4 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  children: PropTypes.node,
+};
+const defaultProps = {
+  children: null,
+};
 
 export default function Button({ children, ...props }) {
   return (
@@ -7,3 +15,6 @@ export default function Button({ children, ...props }) {
     </button>
   );
 }
+
+Button.propTypes = propTypes;
+Button.defaultProps = defaultProps;
