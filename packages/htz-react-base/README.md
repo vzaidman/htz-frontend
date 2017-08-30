@@ -47,8 +47,8 @@ $ yarn run test -- --verbose
 ### build
 
 Build production distributable files. For apps, this will involve running the
-[Next.js](https://github.com/zeit/next.js) build process. For modules, this will
-usually involve running Babel and/or webpack.
+[Next.js](https://github.com/zeit/next.js) build process. For libraries, this
+will usually involve running Babel and/or webpack.
 
 ### format
 
