@@ -23,6 +23,5 @@ if (!args.some(arg => arg.match(/^--ignore-pattern(=|$)/))) {
   process.argv.push('--ignore-pattern', 'dist/*');
   process.argv.push('--ignore-pattern', 'node_modules/*');
 }
-process.argv.push('./**/*.js');
 
 require('eslint/bin/eslint');

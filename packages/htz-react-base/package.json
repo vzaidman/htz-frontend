@@ -14,7 +14,7 @@
     "htz-scripts": "./bin/htz-scripts.js"
   },
   "scripts": {
-    "format": "./bin/htz-scripts.js format && ./bin/htz-scripts.js lint --fix",
+    "format": "./bin/htz-scripts.js format",
     "lint": "./bin/htz-scripts.js lint",
     "test": "./bin/htz-scripts.js test"
   },
