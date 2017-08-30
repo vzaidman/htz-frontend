@@ -1,4 +1,4 @@
-const globby = require('globby')
+const globby = require('globby');
 
 /**
  * Until the next version of Prettier is released with better ignore pattern
@@ -13,7 +13,7 @@ function getFileList() {
       '!./{.next,dist,node_modules}/**'
     ],
     { dot: true }
-  )
+  );
 }
 
 if (!process.argv.length < 3) {
@@ -21,10 +21,9 @@ if (!process.argv.length < 3) {
   // TODO: Update with Haaretz team's preferences.
   process.argv.push(
     '--write', // Overwrite files.
-    '--no-semi', // Omit semicolons.
     '--single-quote' // Prefer single-quoted strings.
-  )
-  process.argv.push.apply(process.argv, getFileList())
+  );
+  process.argv.push.apply(process.argv, getFileList());
 }
 
-require('prettier/bin/prettier')
+require('prettier/bin/prettier');

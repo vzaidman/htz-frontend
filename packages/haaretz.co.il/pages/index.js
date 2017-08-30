@@ -1,11 +1,11 @@
-import Link from 'next/link'
-import MainLayout from '../layouts/MainLayout'
-import { fetchTopStories } from '../api/articles'
-import Logo from '../components/Logo/Logo'
+import Link from 'next/link';
+import MainLayout from '../layouts/MainLayout';
+import { fetchTopStories } from '../api/articles';
+import Logo from '../components/Logo/Logo';
 
 export default class HomePage extends React.Component {
   static async getInitialProps({ query }) {
-    return await fetchTopStories()
+    return await fetchTopStories();
   }
 
   render() {
@@ -28,6 +28,6 @@ export default class HomePage extends React.Component {
           )}
         </ul>
       </MainLayout>
-    )
+    );
   }
 }

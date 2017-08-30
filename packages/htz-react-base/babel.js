@@ -11,9 +11,9 @@
 
 // These are always applied, because they are outside the scope of
 // `babel-preset-env` until such transforms are official.
-const presets = ['react']
-const plugins = ['transform-object-rest-spread', 'transform-class-properties']
-const ignore = []
+const presets = ['react'];
+const plugins = ['transform-object-rest-spread', 'transform-class-properties'];
+const ignore = [];
 
 switch (process.env.BABEL_ENV) {
   // The `commonjs` environment is used to generate `/dist/lib` and will be
@@ -27,8 +27,8 @@ switch (process.env.BABEL_ENV) {
           node: '8'
         }
       }
-    ])
-    break
+    ]);
+    break;
   // The `esm` environment is used to generate `/dist/esm` and will be used
   // by bundlers like webpack 2+ with no extra configuration necessary.
   case 'esm':
@@ -50,8 +50,8 @@ switch (process.env.BABEL_ENV) {
         },
         modules: false
       }
-    ])
-    break
+    ]);
+    break;
   // The `esnext` environment is used to generate `/dist/esnext` and will be
   // used by advanced webpack setups that are specifically configured to
   // handle syntax with as few transforms pre-applied as possible. Additional
@@ -59,18 +59,18 @@ switch (process.env.BABEL_ENV) {
   // can decide what to do for themselves.
   case 'esnext':
   default:
-    break
+    break;
 }
 
 switch (process.env.NODE_ENV) {
   case 'test':
-    break
+    break;
   default:
-    ignore.push('**/*.{spec,test}.{js,jsx}')
+    ignore.push('**/*.{spec,test}.{js,jsx}');
 }
 
 module.exports = {
   presets,
   plugins,
   ignore
-}
+};

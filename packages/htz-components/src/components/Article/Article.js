@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function Article({ title, author }) {
   return (
@@ -12,5 +12,5 @@ export default function Article({ title, author }) {
         </p>
       </article>
     </main>
-  )
+  );
 }

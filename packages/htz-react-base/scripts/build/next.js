@@ -1,4 +1,4 @@
-const resolveFrom = require('resolve-from')
+const resolveFrom = require('resolve-from');
 
-process.argv.push('build')
-require(resolveFrom(process.cwd(), 'next/dist/bin/next'))
+process.argv.push('build');
+require(resolveFrom(process.cwd(), 'next/dist/bin/next'));

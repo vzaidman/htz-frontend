@@ -1,8 +1,8 @@
-import { StyleProvider } from '@haaretz/htz-components'
+import { StyleProvider } from '@haaretz/htz-components';
 
 export default ({ children }) =>
   <StyleProvider>
     <div>
       {children}
     </div>
-  </StyleProvider>
+  </StyleProvider>;

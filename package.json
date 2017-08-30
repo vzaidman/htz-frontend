@@ -5,6 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "format": "lerna exec --no-bail -- yarn run format",
+    "lint": "lerna exec --no-bail -- yarn run lint",
     "bootstrap": "lerna bootstrap"
   },
   "repository": {

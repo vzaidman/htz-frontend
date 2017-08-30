@@ -1,5 +1,5 @@
-const path = require('path')
-const resolveFrom = require('resolve-from')
+const path = require('path');
+const resolveFrom = require('resolve-from');
 
 const Wrapper =
   resolveFrom.silent(
@@ -22,7 +22,7 @@ const Wrapper =
   resolveFrom.silent(
     process.cwd(),
     '@haaretz/htz-components/dist/lib/components/StyleProvider/StyleProvider'
-  )
+  );
 
 module.exports = {
   title: 'Haaretz Components',
@@ -41,30 +41,30 @@ module.exports = {
     // which is not what we want when using the default config.
     if (componentPath.indexOf('..') === 0) {
       componentPath =
-        resolveFrom.silent(__dirname, componentPath) || componentPath
+        resolveFrom.silent(__dirname, componentPath) || componentPath;
     }
-    componentPath = path.relative(process.cwd(), componentPath)
-    const pathSegments = componentPath.split(path.sep)
+    componentPath = path.relative(process.cwd(), componentPath);
+    const pathSegments = componentPath.split(path.sep);
     // If the component is coming from another module, render an `import`
     // statement rather than the file path. This makes a big assumption, which
     // is that any component can be imported from that module's `main` entry
     // point as a named export matching the name of the file.
     if (pathSegments[0] === 'node_modules') {
-      const isScoped = pathSegments[1].startsWith('@')
+      const isScoped = pathSegments[1].startsWith('@');
       const packagePath = path.join(
         process.cwd(),
         ...pathSegments.slice(0, isScoped ? 3 : 2),
         'package.json'
-      )
-      const packageName = require(packagePath).name
-      const extension = path.extname(componentPath)
+      );
+      const packageName = require(packagePath).name;
+      const extension = path.extname(componentPath);
       const componentName = path.basename(
         pathSegments[pathSegments.length - 1],
         extension
-      )
-      return `import { ${componentName} } from '${packageName}';`
+      );
+      return `import { ${componentName} } from '${packageName}';`;
     }
-    return componentPath
+    return componentPath;
   },
   // By default, Styleguidist will watch the common parent directory of all
   // the component files discovered to know when to recompile. In cases where
@@ -98,4 +98,4 @@ module.exports = {
       ]
     }
   }
-}
+};

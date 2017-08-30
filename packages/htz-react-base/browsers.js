@@ -8,4 +8,4 @@ module.exports = [
   'last 1 Samsung version',
   'Android >= 4',
   'IE >= 11'
-]
+];
