@@ -9,7 +9,7 @@ module.exports = {
     /* Warn about long line */
     'max-len': [ 1, 100, 2, ],
     /* Warn about use of console */
-    'no-console': [ 1, ],
+    'no-console': [ 'off', ],
     /* Warn about use of debugger */
     'no-debugger': [ 1, ],
     /* Allow nested ternaries */
