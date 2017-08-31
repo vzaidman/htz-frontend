@@ -116,5 +116,12 @@ module.exports = {
         ],
       },
     },
+    {
+      files: [ '**/*.js', ],
+      rules: {
+        'global-require': 'off',
+        'import/no-dynamic-require': 'off',
+      },
+    },
   ],
 };

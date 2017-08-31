@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint-disable no-console */
-
 /**
  * Script launcher for React development helpers.
  * Inspired by Next.js and `react-scripts` from `create-react-app`.

@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 /**
  * Default Babel config for Haaretz component modules, which should have a
  * `.babelrc` file at their root like:

@@ -1,4 +1,3 @@
-/* eslint-disable global-require, import/no-dynamic-require */
 const resolveFrom = require('resolve-from');
 
 function configure(config) {

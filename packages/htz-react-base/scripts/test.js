@@ -1,4 +1,3 @@
-/* eslint-disable import/no-dynamic-require */
 // This is inspired by the way `react-scripts` runs Jest.
 const path = require('path');
 const jest = require('jest');

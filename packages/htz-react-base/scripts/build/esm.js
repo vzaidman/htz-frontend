@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 process.env.BABEL_ENV = process.env.BABEL_ENV || 'esm';
 
 console.log('Building dist/esm...');

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-dynamic-require, no-console */
 const fs = require('fs');
 const resolveFrom = require('resolve-from');
 
