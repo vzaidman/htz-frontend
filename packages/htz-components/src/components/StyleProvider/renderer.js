@@ -1,11 +1,11 @@
 import { createRenderer, } from 'fela';
 import webPreset from 'fela-preset-web';
-import validator from 'fela-plugin-validator';
 
 const plugins = [ ...webPreset, ];
 
 if (process.env.NODE_ENV !== 'production') {
-  plugins.push(validator());
+  // eslint-disable-next-line global-require
+  plugins.push(require('fela-plugin-validator').default());
 }
 
 /**
