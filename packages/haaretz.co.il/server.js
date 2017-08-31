@@ -1,5 +1,6 @@
 const express = require('express');
 const next = require('next');
+require('isomorphic-fetch');
 
 const DEV = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 3000;
