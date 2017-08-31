@@ -1,6 +1,15 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Article({ title, author }) {
+const propTypes = {
+  title: PropTypes.node,
+  author: PropTypes.node,
+};
+const defaultProps = {
+  title: null,
+  author: null,
+};
+export default function Article({ title, author, }) {
   return (
     <main>
       <article>
@@ -12,5 +21,7 @@ export default function Article({ title, author }) {
         </p>
       </article>
     </main>
-  )
+  );
 }
+Article.propTypes = propTypes;
+Article.defaultProps = defaultProps;

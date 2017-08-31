@@ -23,6 +23,7 @@
     "fela": "^5.1.1",
     "isomorphic-fetch": "^2.2.1",
     "next": "^3.0.6",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-fela": "^5.2.1"

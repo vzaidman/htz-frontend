@@ -7,5 +7,5 @@ module.exports = [
   'last 2 Safari versions',
   'last 1 Samsung version',
   'Android >= 4',
-  'IE >= 11'
-]
+  'IE >= 11',
+];
