@@ -34,7 +34,7 @@ const createDocument = styleRenderer =>
 
     render() {
       return (
-        <html lang={this.props.lang} direction={this.props.isRtl ? 'rtl' : 'ltr'}>
+        <html lang={this.props.lang} dir={this.props.isRtl ? 'rtl' : 'ltr'}>
           <Head>
             <meta charSet="utf-8" />
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
