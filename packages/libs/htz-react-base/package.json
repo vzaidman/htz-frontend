@@ -37,10 +37,15 @@
     "globby": "^6.1.0",
     "jest": "^20.0.4",
     "prettier": "^1.5.3",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
     "react-styleguidist": "^6.0.20",
     "resolve-from": "^3.0.0",
     "webpack": "^3.5.5"
+  },
+  "devDependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "peerDependencies": {
+    "react": "^15.6.1 || ^16.0.0-0"
   }
 }
