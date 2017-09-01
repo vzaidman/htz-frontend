@@ -60,3 +60,17 @@ Run the [lint](packages/libs/htz-react-base#lint) script in every package.
 ### sync
 
 Set the dependency versions for each matching package based on the `syncDependencies` field of [package.json](package.json), in order to make across-the-board upgrades.
+
+## Developer Tools
+
+### [React Developer Tools](https://github.com/facebook/react-devtools)
+
+Environments: [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi), [Firefox](https://addons.mozilla.org/firefox/addon/react-devtools/)
+
+A panel for inspecting the React component tree.
+
+### [Apollo Client Developer Tools](https://github.com/apollographql/apollo-client-devtools)
+
+Environments: [Chrome](https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm)
+
+A panel for inspecting GraphQL queries and the store.
