@@ -59,4 +59,4 @@ Run the [lint](packages/libs/htz-react-base#lint) script in every package.
 
 ### sync
 
-Set the dependency versions for each matching package based on the `syncDependencies` field of [package.json](package.json), to make across-the-board upgrades.
+Set the dependency versions for each matching package based on the `syncDependencies` field of [package.json](package.json), in order to make across-the-board upgrades.
