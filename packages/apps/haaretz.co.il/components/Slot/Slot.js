@@ -1,0 +1,92 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql, gql, } from 'react-apollo';
+
+const propTypes = {
+  /**
+   * The name of the slot to retrieve, e.g. `header`, `footer`, `main`.
+   */
+  name: PropTypes.string.isRequired,
+  /**
+   * An array of content element data that should be rendered in the slot.
+   */
+  content: PropTypes.arrayOf(
+    PropTypes.shape({
+      contentId: PropTypes.string.isRequired,
+      contentName: PropTypes.string,
+      inputTemplate: PropTypes.string,
+      properties: PropTypes.object.isRequired,
+    })
+  ).isRequired,
+};
+
+const defaultProps = {
+  content: [],
+};
+
+const SlotContent = gql`
+  query SlotContent($name: String!) {
+    page {
+      contentId
+      slotContent(slot: $name) {
+        contentId
+        contentName
+        inputTemplate
+        properties
+      }
+    }
+  }
+`;
+
+export function Slot(props) {
+  const { name, content, } = props;
+  // Placeholder output, useful for debugging.
+  return (
+    <div style={{ border: '1px solid #bbb', margin: 2, padding: 2, }}>
+      <h2>
+        Slot: {name}
+      </h2>
+      {content.map((element, i) =>
+        (<div
+          // There can indeed be duplicate content elements in the returned
+          // list, so we have no choice but to add an extra key identifier like
+          // the index.
+          // eslint-disable-next-line react/no-array-index-key
+          key={`${element.contentId}:${i}`}
+          style={{ border: '1px solid #ddd', margin: 2, padding: 2, }}
+        >
+          <dl>
+            <dt>contentId</dt>
+            <dd>
+              {element.contentId}
+            </dd>
+            <dt>contentName</dt>
+            <dd>
+              {element.contentName}
+            </dd>
+            <dt>inputTemplate</dt>
+            <dd>
+              {element.inputTemplate}
+            </dd>
+            <dt>properties</dt>
+            {Object.keys(element.properties).sort().map(key =>
+              (<dd key={key}>
+                {key}
+              </dd>)
+            )}
+          </dl>
+        </div>)
+      )}
+    </div>
+  );
+}
+
+Slot.propTypes = propTypes;
+Slot.defaultProps = defaultProps;
+
+export default graphql(SlotContent, {
+  // Map the resulting `data.page.content` property to the `content` prop.
+  props: ({ data, }) => ({
+    content: (data.page && data.page.slotContent) || [],
+  }),
+})(Slot);

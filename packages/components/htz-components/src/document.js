@@ -29,10 +29,10 @@ export default class HaaretzDocument extends Document {
   }
 
   render() {
+    // NOTE: Next already includes `<meta charSet="utf-8" />` for us.
     return (
       <html lang={this.props.lang}>
         <Head>
-          <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           {this.renderStyles()}
         </Head>

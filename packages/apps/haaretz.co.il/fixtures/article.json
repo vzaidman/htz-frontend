@@ -1,0 +1,262 @@
+{
+  "pageType": "article",
+  "lineage": [
+    {
+      "name": "האו\"ם אישר סנקציות כלכליות חסרות תקדים על צפון קוריאה",
+      "url": "/news/world/asia/.premium-1.5527",
+      "pathSegment": ".premium",
+      "contentId": "1.5527"
+    },
+    {
+      "name": "אסיה ואוקיאניה",
+      "url": "/news/world/asia/2.1513",
+      "pathSegment": "asia",
+      "contentId": "2.1513"
+    },
+    {
+      "name": "בעולם",
+      "url": "/news/world/2.277",
+      "pathSegment": "world",
+      "contentId": "2.277"
+    },
+    {
+      "name": "חדשות",
+      "url": "/news/2.351",
+      "pathSegment": "news",
+      "contentId": "2.351"
+    },
+    {
+      "name": "הארץ",
+      "url": "/2.285",
+      "pathSegment": "haaretz",
+      "contentId": "2.285"
+    }
+  ],
+  "seoData": {
+    "metaTitle": "האו\"ם אישר סנקציות כלכליות חסרות תקדים על צפון קוריאה - אסיה ואוקיאניה",
+    "metaDescription": "מועצת הביטחון אישרה הטלת חבילת עיצומים חריפה במטרה ללחוץ על הצפון לעצור את תוכניותיה הצבאיות. משמעות הצעד היא קיצוץ של שליש בייצוא הכולל השנתי של המדינה",
+    "metaKeywords": ["תאונות בנייה"],
+    "canonicalLink": "http://elia.haaretz.co.il/news/world/asia/.premium-1.5527",
+    "ogImages": []
+  },
+  "slots": {
+    "header": [
+      {
+        "code": "\t\t\t\u003cdiv class\u003d\"l-fluid--b  promo-wrapper h-hidden\" id\u003d\"top-prom-ban\"\u003e\r\n\t\t\t  \u003cdiv class\u003d\"l-wrapper--c\"\u003e\r\n\t\t\t    \u003cdiv class\u003d\"promo  island--flush\"\u003e\r\n\t\t\t      \u003cp class\u003d\"promo__text\"\u003e\r\n\t\t\t        \u003ca href\u003d\"/promotions-page\"\u003eהמהדורה הדיגיטלית של הארץ\u0026nbsp;\u003cspan class\u003d\"h-hidden--s-and-m\"\u003e- באתר בסמרטפון ובאייפד\u0026nbsp;\u003c/span\u003e- חודש ראשון ב-4.90₪ בלבד\u0026nbsp;\u003cbutton class\u003d\"btn btn--tight btn--a\"\u003eנסו עכשיו\u003c/button\u003e\r\n\t\t\t        \u003c/a\u003e\r\n\t\t\t      \u003c/p\u003e\r\n\t\t\t    \u003c/div\u003e\r\n\t\t\t  \u003c/div\u003e\r\n\t\t\t\u003c/div\u003e\r\n\t\t\t\u003cscript\u003e\r\n\t\t\t\tif (CookieUtil.getCookie(\u0027HtzPusr\u0027)) {\r\n\t\t\t\t\t$(\u0027#top-prom-ban\u0027).addClass(\u0027h-hidden\u0027);\r\n\t\t\t\t}\r\n\t\t\t\telse {\r\n  \t\t\t\t\t$(\u0027#top-prom-ban\u0027).removeClass(\u0027h-hidden\u0027);\r\n\t\t\t\t}\r\n\t\t\t\u003c/script\u003e",
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.HtmlElement",
+        "contentId": "7.1687",
+        "contentName": "promotion banner"
+      },
+      {
+        "links": [
+          {
+            "subtitle": "אם אין בו פרחים",
+            "teaserDateSource": "article",
+            "teaserDate": "Sep 4, 2014 11:53:40 AM",
+            "inputTemplate": "com.tm.TeaserElement",
+            "contentId": "7.1730",
+            "contentName": "אז מה שווה כל סיפור האהבה הזה"
+          },
+          {
+            "teaserDateSource": "article",
+            "teaserDate": "Jun 15, 2014 5:13:24 PM",
+            "inputTemplate": "com.tm.TeaserElement",
+            "contentId": "7.1665",
+            "contentName": "יאיר לפיד יודע הכי טוב!"
+          },
+          {
+            "articleType": "regularArticle",
+            "articleTypeFromModel": "regularArticle",
+            "inputTemplate": "com.htz.StandardArticle",
+            "contentId": "1.1259",
+            "contentName": "מתחת לקליפת הפלדה של מתן חודורוב"
+          },
+          {
+            "articleType": "regularArticle",
+            "articleTypeFromModel": "regularArticle",
+            "inputTemplate": "com.htz.StandardArticle",
+            "contentId": "1.1205",
+            "contentName": "אוקראינה: מדינה קרועה עם קופה מרוקנת"
+          },
+          {
+            "teaserDate": "Sep 10, 2014 11:36:01 AM",
+            "inputTemplate": "com.tm.TeaserElement",
+            "contentId": "7.1760",
+            "contentName": "סטאלון מפסיד, אודיה רש עולה"
+          }
+        ],
+        "inputTemplate": "com.htz.NavigationElementResp",
+        "contentId": "7.1597",
+        "contentName": "Responsive navigation"
+      }
+    ],
+    "topwidesecondary": [
+      {
+        "articleType": "regularArticle",
+        "mobileTitle": "האו\"ם אישר סנקציות כלכליות חסרות תקדים על צפון קוריאה",
+        "title": "האו\"ם אישר סנקציות כלכליות חסרות תקדים על צפון קוריאה",
+        "subtitle": "מועצת הביטחון אישרה הטלת חבילת עיצומים חריפה במטרה ללחוץ על הצפון לעצור את תוכניותיה הצבאיות. משמעות הצעד היא קיצוץ של שליש בייצוא הכולל השנתי של המדינה",
+        "credit": "אי-פי",
+        "pubDate": "Aug 6, 2017 11:33:39 AM",
+        "modDate": "Aug 6, 2017 11:38:52 AM",
+        "body": [
+          {
+            "alt": "שליט צפון קוריאה, קים ג\u0027ונג און, צופה בניסוי שיגור הטיל, ביולי השנה\r\n\r\n",
+            "caption": "שליט צפון קוריאה, קים ג\u0027ונג און, צופה בניסוי שיגור הטיל, ביולי השנה",
+            "credit": "KCNA/רויטרס",
+            "image": "image/2737274333.jpg",
+            "title": "שליט צפון קוריאה, קים ג\u0027ונג און, צופה בניסוי שיגור הטיל, ביולי השנה",
+            "inputTemplate": "com.tm.Image",
+            "contentId": "1.5528",
+            "contentName": "שליט צפון קוריאה, קים ג\u0027ונג און, צופה בניסוי שיגור הטיל, ביולי השנה"
+          },
+          "\u003cp\u003eמועצת הביטחון של האו\u0026quot;ם אישרה הלילה (שבת) הצעת החלטה הכוללת שורת סנקציות כלכליות על צפון קוריאה. חבילת הסנקציות, שנועדה ללחוץ על המדינה המבודדת לנטוש את תוכניות הטילים והגרעין שלה, אוסרת ייצוא פחם, ברזל, עופרת ודגה בשווי כולל של כמיליארד דולר מצפון קוריאה. לדברי נציגה של אחת החברות במועצה, משמעות הצעד היא קיצוץ של שליש בייצוא הכולל השנתי של המדינה.\u003c/p\u003e",
+          "\u003cp\u003eההחלטה כוללת עיצומים נוספים, ובהם איסור על מדינות לנפק אשרות חדשות לעובדים מצפון קוריאה לעבוד בשטחן - מקור הכנסה נוסף למשטרו של קים ג\u0026#39;ונג און. כמו כן, היא תאסור על הקמת מיזמים עסקיים חדשים עם חברות מהצפון ועל השקעות חדשות במיזמים קיימים.\u003c/p\u003e",
+          "\u003cp\u003eחבילת העיצומים מוסיפה תשעה אזרחים צפון קוריאנים, רובם נציגים של חברות או בנקים מקומיים, ל\u0026quot;רשימה השחורה\u0026quot; של האו\u0026quot;ם. המצוינים ברשימה מנועים מלטוס ברחבי העולם ונכסיהם הוקפאו. בנוסף, הוקפאו נכסים של שני בנקים ושתי חברות.\u003c/p\u003e",
+          "\u003cp\u003eהצעת ההחלטה מגיעה בעקבות\u0026nbsp;\u003ca href\u003d\"https://www.haaretz.co.il/news/world/asia/.premium-1.4224129\"\u003eהשיגור המוצלח הראשון שביצעה המדינה בטיל בליסטי בין-יבשתי\u003c/a\u003e\u0026nbsp;בחודש שעבר,\u0026nbsp;\u003ca href\u003d\"https://www.haaretz.co.il/news/world/asia/1.4301021\"\u003eשמסוגל ככל הנראה להגיע לשטח ארה\u0026quot;ב\u003c/a\u003e. מועצת הביטחון אישרה עד כה שש\u0026nbsp;\u003ca href\u003d\"https://www.haaretz.co.il/news/world/asia/.premium-1.2870612\"\u003eחבילות סנקציות נגד המדינה\u003c/a\u003e, אך הן לא הוכחו כיעילות בעצירת כוונת הצפון לשדרג את מערך הטילים והיכולות הגרעיניות שלו.\u003c/p\u003e",
+          {
+            "alt": "מטוסים אמריקאיים בתרגול משותף עם הדרום, השבוע\r\n\r\n",
+            "caption": "מטוסים אמריקאיים בתרגול משותף עם הדרום, השבוע",
+            "credit": "KAMAILE CASILLAS/אי־אף־פ",
+            "image": "image/3834054413.jpg",
+            "title": "מטוסים אמריקאיים בתרגול משותף עם הדרום, השבוע",
+            "inputTemplate": "com.tm.Image",
+            "contentId": "1.5529",
+            "contentName": "מטוסים אמריקאיים בתרגול משותף עם הדרום, השבוע"
+          },
+          "\u003cp\u003eהצעת ההחלטה קוראת לצפון קוריאה להפסיק את כל שיגורי הטילים ולנטוש לחלוטין את תוכנית הגרעין שלה. בעקבות השיגור הראשון ב-3 ביולי, עמלה ארה\u0026quot;ב במשך כמה שבועות עד הגעה לנוסח מוסכם על כל המדינות החברות במועצת הביטחון. הדיפלומט שצוטט כינה את ההחלטה החדשה \u0026quot;חבילת הסנקציות המקיפה ורבת ההשפעה ביותר עד כה\u0026quot; ואמר שהיא צפויה להיות מאושרת פה אחד.\u003c/p\u003e",
+          "\u003cp\u003eהשגרירה היילי בירכה על הסנקציות שהתקבלו. היא אמרה בדיון באו\u0026quot;ם אמש כי \u0026quot;ארה\u0026quot;ב תמשיך להתגונן ולהגן על בעלות בריתנו מפני האיום שמציבה צפון קוריאה\u0026quot;. מול נציגי המדינות החברות במועצת הביטחון, הזהירה היילי כי \u0026quot;האיום מצפון קוריאה גדל במהירות והופך להיות יותר מסוכן\u0026quot;, והוסיפה: \u0026quot;פעולות נוספות בנושא זה \u0026mdash; הכרחיות\u0026quot;.\u003c/p\u003e",
+          {
+            "alt": "ניסוי הטילים השני של צפון קוריאה, לפני כשבוע\r\n\r\n",
+            "caption": "ניסוי הטילים השני של צפון קוריאה, לפני כשבוע",
+            "credit": "/אי־פי",
+            "image": "image/3655806653.jpg",
+            "title": "ניסוי הטילים השני של צפון קוריאה, לפני כשבוע",
+            "inputTemplate": "com.tm.Image",
+            "contentId": "1.5530",
+            "contentName": "ניסוי הטילים השני של צפון קוריאה, לפני כשבוע"
+          },
+          "\u003cp\u003eעוד אמרה היילי כי \u0026quot;המחיר שמנהיגות צפון קוריאה תשלם על המשך תוכניותיה הצבאיות יהיה הפסד של שליש מהייצוא הכולל שלה, ואזרחי צפון קוריאה ירגישו על בשרם את מחיר הסנקציות שהגיעו בעקבות החלטות השלטון במדינה\u0026quot;. \u0026nbsp;\u003cbr /\u003e\r\nמנגד, ביקש שגריר סין מארצות הברית להסיר את מערכת ההגנה האווירית שהציבה ארצות הברית בדרום קוריאה, אך דרש גם מצפון קוריאה \u0026quot;להפסיק את כל הפעולות שעשויות להגביר את המתח באזור\u0026quot;, כדבריו.\u003c/p\u003e",
+          "\u003cp\u003eביום רביעי הדגיש שר החוץ של ארה\u0026quot;ב\u0026nbsp;\u003ca href\u003d\"https://www.haaretz.co.il/news/world/america/.premium-1.4320246\"\u003eרקס טילרסון שוושינגטון איננה מעוניינת להחליף את המשטר בפיונגיאנג\u003c/a\u003e\u0026nbsp;או לקדם את איחוד חצי האי הקוריאני \u0026ndash; אמירות שעליהן בירך שר החוץ של סין. טילרסון הוסיף כי ארה\u0026quot;ב מעוניינת בדיאלוג עם צפון קוריאה, אך איננה סבורה כי הוא יהיה יעיל נוכח התקדמות תוכניות הנשק שלה.\u003c/p\u003e",
+          "\u003cp\u003eהסנקציות המוצעות כוללות גם בקשה לאסור על צפון קוריאה לייבא מוצרים אזרחים בעלי \u0026quot;שימוש כפול\u0026quot; (dual-use), שעלולים לשמש את תעשיית הנשק שלה, וכן לאפשר סימון כלי שיט של המדינה כדי שכניסתם תיאסר בנמלים ברחבי העולם.\u003c/p\u003e",
+          "\u003cp\u003eאף שהסנקציות הן נרחבות, לא כל הדרישות של ארה\u0026quot;ב התקבלו. בתחילת יולי הצהירה שגרירת ארה\u0026quot;ב לאו\u0026quot;ם ניקי היילי כי הקהילה הבינלאומית יכולה לחתוך את הגישה של צפון קוריאה לכסף, להגביל את אספקת הנפט לתוכנית הטילים שלה ולצבאה, להגביר את ההגבלות האוויריות והימיות ולהטיל עיצומים פרטניים על בכירי ממשל. עם זאת, בהחלטה שהובאה להצבעה לא הוזכר עניין הנפט או המגבלות האוויריות.\u003c/p\u003e"
+        ],
+        "inputTemplate": "com.htz.StandardArticle",
+        "contentId": "1.5527",
+        "contentName": "האו\"ם אישר סנקציות כלכליות חסרות תקדים על צפון קוריאה"
+      },
+      {
+        "inputTemplate": "com.tm.ArticleCommentsElement",
+        "contentId": "7.440",
+        "contentName": "Comments List"
+      }
+    ],
+    "aside": [
+      {
+        "contentLists": [
+          {
+            "inputTemplate": "com.tm.ArticleTagsElement",
+            "contentId": "7.1936",
+            "contentName": "אלמנט תגיות"
+          }
+        ],
+        "viewMode": "general",
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ElementGroup",
+        "contentId": "7.2881",
+        "contentName": "Tags"
+      },
+      {
+        "title": "הונג קונג",
+        "view": "HongKong",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1676",
+        "contentName": "הונג קונג"
+      },
+      {
+        "inputTemplate": "com.tm.TabViewElement",
+        "contentId": "7.1671",
+        "contentName": "הפופולריות ממש"
+      },
+      {
+        "title": "בנגקוק",
+        "view": "Bangkok",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1582",
+        "contentName": "בנגקוק"
+      },
+      {
+        "view": "Tokyo",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1580",
+        "contentName": "טוקיו א"
+      }
+    ],
+    "main": [
+      {
+        "inputTemplate": "com.tm.PageTitle",
+        "contentId": "7.2048",
+        "contentName": "Bread crumbs"
+      },
+      {
+        "inputTemplate": "com.htz.ArticleHeaderElement",
+        "contentId": "7.1587",
+        "contentName": "Article Header"
+      }
+    ],
+    "bottom": [
+      {
+        "title": "כתבות שאולי פספסת",
+        "view": "Zagreb",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1879",
+        "contentName": "כתבות שאולי פספסת"
+      }
+    ],
+    "footer": [
+      {
+        "headList": [
+          {
+            "inputTemplate": "com.polobase.Pair",
+            "contentId": "1.463",
+            "contentName": "דרושים"
+          },
+          {
+            "inputTemplate": "com.polobase.Pair",
+            "contentId": "1.464",
+            "contentName": "הנהלה"
+          }
+        ],
+        "creditList": [
+          {
+            "inputTemplate": "com.polobase.Pair",
+            "contentId": "1.465",
+            "contentName": "UI by Netcraft"
+          },
+          {
+            "inputTemplate": "com.polobase.Pair",
+            "contentId": "1.466",
+            "contentName": "Design by Design Factory"
+          }
+        ],
+        "inputTemplate": "com.tm.FooterElement",
+        "contentId": "7.292",
+        "contentName": "Footer"
+      },
+      {
+        "inputTemplate": "com.tm.DisclaimerElement",
+        "contentId": "7.347",
+        "contentName": "Disclaimer"
+      }
+    ]
+  }
+}
