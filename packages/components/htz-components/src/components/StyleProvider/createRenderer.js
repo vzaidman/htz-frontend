@@ -54,10 +54,10 @@ export default function createRenderer(
     // Treat number primitives as a specific css unit
     unit('rem', {
       border: 'px',
-      'border-bottom': 'px',
-      'border-left': 'px',
-      'border-right': 'px',
-      'border-top': 'px',
+      borderBottom: 'px',
+      borderLeft: 'px',
+      borderRight: 'px',
+      borderTop: 'px',
     }),
     // Allows extending instead of overwriting style objects
     extend(),
