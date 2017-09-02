@@ -9,6 +9,13 @@ import lvha from 'fela-plugin-lvha';
 import prefixer from 'fela-plugin-prefixer';
 import placeholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import unit from 'fela-plugin-unit';
+import removeUndefined from 'fela-plugin-remove-undefined'; // Only used in prod
+import validator from 'fela-plugin-validator'; // Only used in dev
+
+// Fela enhancers (only used in dev)
+import beautifier from 'fela-beautifier';
+import perf from 'fela-perf';
+import statistics from 'fela-statistics';
 
 /**
  * A function to create a custom Fela renderer,
@@ -67,19 +74,13 @@ export default function createRenderer(
   ];
   const enhancers = [];
 
-  /* eslint-disable global-require */
   if (isDev) {
-    plugins.push(require('fela-plugin-validator').default());
-    enhancers.push(
-      require('fela-beautifier').default({ autosemicolon: true, }),
-      require('fela-perf').default(),
-      require('fela-statistics').default()
-    );
+    plugins.push(validator());
+    enhancers.push(beautifier({ autosemicolon: true, }), perf(), statistics());
   }
   else {
-    plugins.push(require('fela-plugin-remove-undefined').default());
+    plugins.push(removeUndefined());
   }
-  /* eslint-enable global-require */
 
   return createFelaRenderer({
     plugins,
