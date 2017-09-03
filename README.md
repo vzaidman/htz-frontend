@@ -13,6 +13,13 @@ These packages are managed with [Lerna](https://lernajs.io/) and organized like 
 
 ## Getting Started
 
+### Requirements
+
+* [Node.js](https://nodejs.org/) 8.0.0 or higher.
+* [Yarn](https://yarnpkg.com/en/docs/install) 0.27.0 or higher.
+
+### Setup
+
 Clone this repo:
 
 ```console
@@ -32,7 +39,7 @@ Now use Lerna to set up the managed packages:
 $ yarn run bootstrap
 ```
 
-Interdependent projects managed in the same monorepo will be symlinked.
+Interdependent packages managed in the same monorepo will be symlinked.
 
 Then work on whichever package(s) you like:
 
@@ -43,11 +50,18 @@ $ yarn run styleguide
 
 ## Scripts
 
-These are found in [package.json](package.json) and may be run with `yarn run <script>` or `npm run run <script>`.
+These are found in [package.json](package.json) and may be run with `yarn run <script>`
+or `npm run <script>`.
 
 ### bootstrap
 
-Install the dependencies for each package, and symlink any package found in the `packages` directory if the dependency version matches.
+Run `clean`, then install the dependencies for each package, and symlink any
+package found in the `packages` directory if the dependency version matches.
+
+### clean
+
+Remove the `node_modules` directory, built distribution files, and Jest cache
+directory for each package.
 
 ### format
 
@@ -59,7 +73,12 @@ Run the [lint](packages/libs/htz-react-base#lint) script in every package.
 
 ### sync
 
-Set the dependency versions for each matching package based on the `syncDependencies` field of [package.json](package.json), in order to make across-the-board upgrades.
+Set the dependency versions for each matching package based on the `syncDependencies`
+field of [package.json](package.json), in order to make across-the-board upgrades.
+
+### update
+
+Like `bootstrap`, but doesn’t `clean` first.
 
 ## Developer Tools
 

@@ -50,6 +50,10 @@ Build production distributable files. For apps, this will involve running the
 [Next.js](https://github.com/zeit/next.js) build process. For libraries, this
 will usually involve running Babel and/or webpack.
 
+### clean
+
+Remove built distribution files and the Jest cache directory.
+
 ### format
 
 Format code in the current directory with [Prettier](https://prettier.io/).
