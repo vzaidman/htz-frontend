@@ -88,8 +88,14 @@ const resolvers = {
       else if (pathname === '/') {
         return context.pageLoader.load('home');
       }
+      if (process.browser) {
+        // Give the user a server error page with real HTTP 404.
+        window.location.reload();
+      }
       // Don't know if this error is actually accessible to components.
-      return Promise.reject({ statusCode: 404, });
+      const err = new Error('Not Found');
+      err.statusCode = 404;
+      return Promise.reject(err);
     },
   },
   Mutation: {

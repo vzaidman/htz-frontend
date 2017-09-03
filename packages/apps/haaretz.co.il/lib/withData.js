@@ -183,6 +183,13 @@ export default Component => {
       }
     }
 
+    componentWillReceiveProps(nextProps) {
+      // Might need to do a deep check on this.
+      if (nextProps.url !== this.props.url) {
+        this.invalidatePage();
+      }
+    }
+
     /**
      * Send a mutation query that will force a refetch of any changed page data.
      */
@@ -194,6 +201,9 @@ export default Component => {
           pathname: this.props.url.pathname,
         },
         refetchQueries: pageRefetchQueries,
+      }).catch(err => {
+        console.error('invalidatePage() error!')
+        console.error(err);
       });
     }
 
