@@ -39,7 +39,7 @@ Now use Lerna to set up the managed packages:
 $ yarn run bootstrap
 ```
 
-Interdependent projects managed in the same monorepo will be symlinked.
+Interdependent packages managed in the same monorepo will be symlinked.
 
 Then work on whichever package(s) you like:
 
@@ -51,7 +51,7 @@ $ yarn run styleguide
 ## Scripts
 
 These are found in [package.json](package.json) and may be run with `yarn run <script>`
-or `npm run run <script>`.
+or `npm run <script>`.
 
 ### bootstrap
 
