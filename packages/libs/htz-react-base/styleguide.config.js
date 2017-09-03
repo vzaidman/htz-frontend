@@ -10,19 +10,12 @@ const Wrapper =
   );
 
 module.exports = {
+  components: path.join(process.cwd(), '{,src/}components/**/[A-Z]*.{js,jsx}'),
+
   title: 'Haaretz Components',
+  theme: {
   showCode: true,
   showUsage: true,
-  ignore: [
-    '**/__tests__/**',
-    '**/*.test.js',
-    '**/*.test.jsx',
-    '**/*.spec.js', '**/*.spec.jsx',
-    '**/createRenderer.js',
-    '**/styleRenderer.js',
-  ],
-  components: path.join(process.cwd(), '{,src/}components/**/*.{js,jsx}'),
-  theme: {
     sidebarWidth: 260,
   },
   // Styleguidist sends webpack this option in such a way that it errors out
