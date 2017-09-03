@@ -34,7 +34,7 @@ if (process.argv.length < 3) {
   process.argv.push('.next', 'dist');
 }
 
-process.argv.slice(2).forEach(path => {
-  console.log(`- ${path}`);
+process.argv.slice(2).forEach(pathOrGlob => {
+  console.log(`- ${pathOrGlob}`);
 });
 require('rimraf/bin');
