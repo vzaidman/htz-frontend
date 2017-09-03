@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import dynamic from 'next/dynamic';
 import { graphql, gql, } from 'react-apollo';
+
+const StandardArticle = dynamic(import('../StandardArticle/StandardArticle'));
 
 const propTypes = {
   /**
@@ -55,26 +58,28 @@ export function Slot(props) {
           key={`${element.contentId}:${i}`}
           style={{ border: '1px solid #ddd', margin: 2, padding: 2, }}
         >
-          <dl>
-            <dt>contentId</dt>
-            <dd>
-              {element.contentId}
-            </dd>
-            <dt>contentName</dt>
-            <dd>
-              {element.contentName}
-            </dd>
-            <dt>inputTemplate</dt>
-            <dd>
-              {element.inputTemplate}
-            </dd>
-            <dt>properties</dt>
-            {Object.keys(element.properties).sort().map(key =>
-              (<dd key={key}>
-                {key}
-              </dd>)
-            )}
-          </dl>
+          {element.inputTemplate === 'com.htz.StandardArticle'
+            ? <StandardArticle {...element} {...element.properties} />
+            : <dl>
+              <dt>contentId</dt>
+              <dd>
+                {element.contentId}
+              </dd>
+              <dt>contentName</dt>
+              <dd>
+                {element.contentName}
+              </dd>
+              <dt>inputTemplate</dt>
+              <dd>
+                {element.inputTemplate}
+              </dd>
+              <dt>properties</dt>
+              {Object.keys(element.properties).sort().map(key =>
+                (<dd key={key}>
+                  {key}
+                </dd>)
+              )}
+            </dl>}
         </div>)
       )}
     </div>
