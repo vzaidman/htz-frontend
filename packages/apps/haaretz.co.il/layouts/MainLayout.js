@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleProvider, } from '@haaretz/htz-components';
-import StyleRenderer from '../components/styleRenderer/styleRenderer';
+import styleRenderer from '../components/styleRenderer/styleRenderer';
 
 const propTypes = {
   children: PropTypes.node,
@@ -12,7 +12,7 @@ const defaultProps = {
 
 export default function MainLayout({ children, }) {
   return (
-    <StyleProvider renderer={StyleRenderer}>
+    <StyleProvider renderer={styleRenderer}>
       <div>
         {children}
       </div>
