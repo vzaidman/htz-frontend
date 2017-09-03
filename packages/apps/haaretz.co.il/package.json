@@ -9,6 +9,7 @@
   "main": "server.js",
   "scripts": {
     "build": "htz-scripts build",
+    "clean": "htz-scripts clean",
     "dev": "node server.js",
     "format": "htz-scripts format",
     "lint": "htz-scripts lint",
@@ -19,8 +20,11 @@
   },
   "dependencies": {
     "@haaretz/htz-components": "^0.1.0",
+    "compression": "^1.7.0",
     "express": "^4.15.4",
     "fela": "^5.1.1",
+    "dotenv": "^4.0.0",
+    "helmet": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
     "next": "^3.0.6",
     "prop-types": "^15.5.10",

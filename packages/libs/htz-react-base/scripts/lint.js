@@ -19,6 +19,7 @@ if (!args.some(arg => arg.match(/^-(c|-config)(=|$)/))) {
 // The typical `eslintignore` files and locations will be considered in addition
 // to this parameter.
 if (!args.some(arg => arg.match(/^--ignore-pattern(=|$)/))) {
+  process.argv.push('--ignore-pattern', '.jest/*');
   process.argv.push('--ignore-pattern', '.next/*');
   process.argv.push('--ignore-pattern', 'dist/*');
   process.argv.push('--ignore-pattern', 'node_modules/*');

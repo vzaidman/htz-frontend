@@ -3,6 +3,7 @@ const resolveFrom = require('resolve-from');
 
 const SCRIPTS = {
   build: 'htz-scripts build',
+  clean: 'htz-scripts clean',
   format: 'htz-scripts format',
   lint: 'htz-scripts lint',
   prepare: 'npm run build',
