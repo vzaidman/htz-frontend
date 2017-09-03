@@ -84,7 +84,7 @@ export default Component => {
       /* eslint-disable react/forbid-prop-types */
       serverState: PropTypes.object.isRequired,
       serverError: PropTypes.shape({
-        statusCode: PropTypes.number
+        statusCode: PropTypes.number,
       }),
       url: PropTypes.shape({
         pathname: PropTypes.string.isRequired,
@@ -150,7 +150,7 @@ export default Component => {
         catch (err) {
           console.error('getDataFromTree() failed!');
           console.error(err);
-          serverError = { statusCode: err && err.statusCode || 500 };
+          serverError = { statusCode: (err && err.statusCode) || 500, };
           // Prevent Apollo Client GraphQL errors from crashing SSR.
           // Handle them in components via the `data.error` prop:
           // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
@@ -194,21 +194,23 @@ export default Component => {
      * Send a mutation query that will force a refetch of any changed page data.
      */
     invalidatePage() {
-      this.apolloClient.mutate({
-        mutation: ChangePage,
-        variables: {
-          ...this.props.url.query,
-          pathname: this.props.url.pathname,
-        },
-        refetchQueries: pageRefetchQueries,
-      }).catch(err => {
-        console.error('invalidatePage() error!')
-        console.error(err);
-      });
+      this.apolloClient
+        .mutate({
+          mutation: ChangePage,
+          variables: {
+            ...this.props.url.query,
+            pathname: this.props.url.pathname,
+          },
+          refetchQueries: pageRefetchQueries,
+        })
+        .catch(err => {
+          console.error('invalidatePage() error!');
+          console.error(err);
+        });
     }
 
     render() {
-      const { serverError } = this.props;
+      const { serverError, } = this.props;
       if (serverError) {
         return <Error statusCode={serverError.statusCode} />;
       }

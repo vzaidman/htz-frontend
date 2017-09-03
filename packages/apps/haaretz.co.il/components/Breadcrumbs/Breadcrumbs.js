@@ -34,7 +34,10 @@ export function Breadcrumbs({ data, }) {
       {data.page.lineage.slice(1).map((taxonomyItem, i) => [
         i ? <span style={{ marginLeft: 10, marginRight: 10, }}>•</span> : null,
         <Link
-          href="/article"
+          href={{
+            pathname: '/article',
+            query: { contentId: taxonomyItem.contentId, },
+          }}
           as={taxonomyItem.url}
           key={taxonomyItem.contentId}
         >

@@ -10,18 +10,20 @@ let apolloClient;
 // By default, `DataLoader` just caches the results forever, but we should
 // eventually expunge them from the cache.
 const pageLoader = new DataLoader(keys =>
-  Promise.all(keys.map(key => {
-    // Until we switch to `fetch()` here, use `import()` on the local fixture.
-    // These `import()` calls need to be static paths or Next will blow up.
-    switch (key) {
-      case 'home':
-        return import('../fixtures/home.json');
-      case 'article':
-        return import('../fixtures/article.json');
-      default:
-        return Promise.reject({ statusCode: 404, });
-    }
-  }))
+  Promise.all(
+    keys.map(key => {
+      // Until we switch to `fetch()` here, use `import()` on the local fixture.
+      // These `import()` calls need to be static paths or Next will blow up.
+      switch (key) {
+        case 'home':
+          return import('../fixtures/home.json');
+        case 'article':
+          return import('../fixtures/article.json');
+        default:
+          return Promise.reject({ statusCode: 404, });
+      }
+    })
+  )
 );
 
 export function createLocalInterface(schema, rootValue, context) {
