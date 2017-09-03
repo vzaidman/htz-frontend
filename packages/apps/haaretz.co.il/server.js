@@ -1,4 +1,7 @@
+require('dotenv').config();
 const express = require('express');
+const compression = require('compression');
+const helmet = require('helmet');
 const next = require('next');
 require('isomorphic-fetch');
 
@@ -11,6 +14,8 @@ app
   .prepare()
   .then(() => {
     const server = express();
+    server.use(compression()); // Compress responses.
+    server.use(helmet()); // Various security-minded settings.
 
     // The optional `.premium-` part was throwing `path-to-regexp` for a loop,
     // so we have a handwritten regex here.

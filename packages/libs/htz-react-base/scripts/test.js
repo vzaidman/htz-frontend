@@ -2,6 +2,9 @@
 const path = require('path');
 const jest = require('jest');
 
+process.env.NODE_ENV = 'test';
+process.env.BABEL_ENV = 'commonjs';
+
 const packageInfo = require(path.join(process.cwd(), 'package.json'));
 
 const argv = process.argv.slice(2);
