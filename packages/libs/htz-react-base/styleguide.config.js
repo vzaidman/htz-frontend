@@ -13,6 +13,14 @@ module.exports = {
   title: 'Haaretz Components',
   showCode: true,
   showUsage: true,
+  ignore: [
+    '**/__tests__/**',
+    '**/*.test.js',
+    '**/*.test.jsx',
+    '**/*.spec.js', '**/*.spec.jsx',
+    '**/createRenderer.js',
+    '**/styleRenderer.js',
+  ],
   components: path.join(process.cwd(), '{,src/}components/**/*.{js,jsx}'),
   theme: {
     sidebarWidth: 260,
