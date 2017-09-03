@@ -9,6 +9,7 @@
   "main": "server.js",
   "scripts": {
     "build": "htz-scripts build",
+    "clean": "htz-scripts clean",
     "dev": "node server.js",
     "format": "htz-scripts format",
     "lint": "htz-scripts lint",

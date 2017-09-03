@@ -9,6 +9,7 @@ const packageInfo = require(path.join(process.cwd(), 'package.json'));
 
 const argv = process.argv.slice(2);
 const defaultConfig = {
+  cacheDirectory: '.jest',
   transform: {
     '^.+\\.jsx?$': require.resolve('babel-jest'),
   },
