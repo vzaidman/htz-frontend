@@ -10,7 +10,7 @@ const defaultProps = {
   children: null,
 };
 
-export default function MainLayout({ children, }) {
+export default function StyleGuideProvider({ children, }) {
   return (
     <StyleProvider renderer={styleRenderer}>
       <div>
@@ -20,5 +20,5 @@ export default function MainLayout({ children, }) {
   );
 }
 
-MainLayout.propTypes = propTypes;
-MainLayout.defaultProps = defaultProps;
+StyleGuideProvider.propTypes = propTypes;
+StyleGuideProvider.defaultProps = defaultProps;
