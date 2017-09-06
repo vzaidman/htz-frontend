@@ -13,9 +13,7 @@ const defaultProps = {
 export default function MainLayout({ children, }) {
   return (
     <StyleProvider renderer={styleRenderer}>
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </StyleProvider>
   );
 }

@@ -21,15 +21,15 @@ const createDocument = styleRenderer =>
     }
 
     renderStyles() {
-      return this.props.sheetList.map(({ type, media, css, }) =>
-        (<style
+      return this.props.sheetList.map(({ type, media, css, }) => (
+        <style
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: css, }}
           data-fela-type={type}
           key={`${type}-${media}`}
           media={media}
-        />)
-      );
+        />
+      ));
     }
 
     render() {

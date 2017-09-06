@@ -13,9 +13,7 @@ const defaultProps = {
 export default function StyleGuideProvider({ children, }) {
   return (
     <StyleProvider renderer={styleRenderer}>
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </StyleProvider>
   );
 }

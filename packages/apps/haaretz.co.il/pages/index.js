@@ -30,18 +30,16 @@ export default class HomePage extends React.Component {
         <Logo duotone />
         <h1>Top Stories</h1>
         <ul>
-          {this.props.stories.map(story =>
-            (<li key={story.id}>
+          {this.props.stories.map(story => (
+            <li key={story.id}>
               <Link
                 as={`/${story.section}/${story.id}`}
                 href={`/article?section=${story.section}&id=${story.id}`}
               >
-                <a>
-                  {story.title}
-                </a>
+                <a>{story.title}</a>
               </Link>
-            </li>)
-          )}
+            </li>
+          ))}
         </ul>
       </MainLayout>
     );
