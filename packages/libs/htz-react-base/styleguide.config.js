@@ -6,32 +6,16 @@ const resolveFrom = require('resolve-from');
 const Wrapper =
   resolveFrom.silent(
     process.cwd(),
-    './components/StyleProvider/StyleProvider'
-  ) ||
-  resolveFrom.silent(
-    process.cwd(),
-    './src/components/StyleProvider/StyleProvider'
-  ) ||
-  // This is tricky: really, we should assume `htz-components` is a normally
-  // installed module and not a symlink, and thus get `StyleProvider` from
-  // `@haaretz/htz-components/dist/lib`. But if it is symlinked, we want to
-  // detect changes to it without needing to rebuild `htz-components`. This
-  // currently prioritizes the version under `src` for that reason.
-  resolveFrom.silent(
-    process.cwd(),
-    '@haaretz/htz-components/src/components/StyleProvider/StyleProvider'
-  ) ||
-  resolveFrom.silent(
-    process.cwd(),
-    '@haaretz/htz-components/dist/lib/components/StyleProvider/StyleProvider'
+    './styleguide/StyleGuideProvider.js'
   );
 
 module.exports = {
+  components: path.join(process.cwd(), '{,src/}components/**/[A-Z]*.{js,jsx}'),
+
   title: 'Haaretz Components',
+  theme: {
   showCode: true,
   showUsage: true,
-  components: path.join(process.cwd(), '{,src/}components/**/*.{js,jsx}'),
-  theme: {
     sidebarWidth: 260,
   },
   // Styleguidist sends webpack this option in such a way that it errors out

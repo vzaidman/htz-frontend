@@ -11,12 +11,12 @@ module.exports = configure({
   sections: [
     {
       name: 'Site Components',
-      components: 'components/**/*.{js,jsx}',
+      components: 'components/**/[A-Z]*.{js,jsx}',
     },
     {
       name: 'Shared Components',
       components:
-        'node_modules/@haaretz/htz-components/src/components/**/*.{js,jsx}',
+        'node_modules/@haaretz/htz-components/src/components/{,src}/**/[A-Z]*.{js,jsx}',
     },
   ],
 });

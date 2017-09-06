@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { graphql, gql, } from 'react-apollo';
 import { StyleProvider, } from '@haaretz/htz-components';
+import styleRenderer from '../components/styleRenderer/styleRenderer';
 import TopNav from '../components/TopNav/TopNav';
 
 const propTypes = {
@@ -46,7 +47,7 @@ export function MainLayout({ data, children, }) {
   }
   const { contentName, seoData, } = data.page;
   return (
-    <StyleProvider>
+    <StyleProvider renderer={styleRenderer}>
       <div>
         <Head>
           <title>
