@@ -41,9 +41,7 @@ export function Breadcrumbs({ data, }) {
           as={taxonomyItem.url}
           key={taxonomyItem.contentId}
         >
-          <a>
-            {taxonomyItem.name}
-          </a>
+          <a>{taxonomyItem.name}</a>
         </Link>,
       ])}
     </div>

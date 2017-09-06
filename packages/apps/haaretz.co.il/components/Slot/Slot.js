@@ -46,11 +46,9 @@ export function Slot(props) {
   // Placeholder output, useful for debugging.
   return (
     <div style={{ border: '1px solid #bbb', margin: 2, padding: 2, }}>
-      <h2>
-        Slot: {name}
-      </h2>
-      {content.map((element, i) =>
-        (<div
+      <h2>Slot: {name}</h2>
+      {content.map((element, i) => (
+        <div
           // There can indeed be duplicate content elements in the returned
           // list, so we have no choice but to add an extra key identifier like
           // the index.
@@ -58,30 +56,24 @@ export function Slot(props) {
           key={`${element.contentId}:${i}`}
           style={{ border: '1px solid #ddd', margin: 2, padding: 2, }}
         >
-          {element.inputTemplate === 'com.htz.StandardArticle'
-            ? <StandardArticle {...element} {...element.properties} />
-            : <dl>
+          {element.inputTemplate === 'com.htz.StandardArticle' ? (
+            <StandardArticle {...element} {...element.properties} />
+          ) : (
+            <dl>
               <dt>contentId</dt>
-              <dd>
-                {element.contentId}
-              </dd>
+              <dd>{element.contentId}</dd>
               <dt>contentName</dt>
-              <dd>
-                {element.contentName}
-              </dd>
+              <dd>{element.contentName}</dd>
               <dt>inputTemplate</dt>
-              <dd>
-                {element.inputTemplate}
-              </dd>
+              <dd>{element.inputTemplate}</dd>
               <dt>properties</dt>
-              {Object.keys(element.properties).sort().map(key =>
-                (<dd key={key}>
-                  {key}
-                </dd>)
-              )}
-            </dl>}
-        </div>)
-      )}
+              {Object.keys(element.properties)
+                .sort()
+                .map(key => <dd key={key}>{key}</dd>)}
+            </dl>
+          )}
+        </div>
+      ))}
     </div>
   );
 }

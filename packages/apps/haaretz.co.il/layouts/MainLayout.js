@@ -50,24 +50,20 @@ export function MainLayout({ data, children, }) {
     <StyleProvider renderer={styleRenderer}>
       <div>
         <Head>
-          <title>
-            {seoData.metaTitle}
-          </title>
+          <title>{seoData.metaTitle}</title>
           <meta name="description" content={seoData.metaDescription} />
           <meta name="keywords" content={seoData.metaKeywords.join(', ')} />
           <meta
             name="news_keywords"
             content={seoData.metaKeywords.join(', ')}
           />
-          {seoData.ogImages.map(image =>
+          {seoData.ogImages.map(image => (
             <meta property="og:image" content={image} />
-          )}
+          ))}
           <link rel="canonical" href={seoData.canonicalLink} />
         </Head>
         <TopNav />
-        <h1>
-          {contentName}
-        </h1>
+        <h1>{contentName}</h1>
         {children}
       </div>
     </StyleProvider>

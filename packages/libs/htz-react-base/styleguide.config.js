@@ -3,19 +3,18 @@
 const path = require('path');
 const resolveFrom = require('resolve-from');
 
-const Wrapper =
-  resolveFrom.silent(
-    process.cwd(),
-    './styleguide/StyleGuideProvider.js'
-  );
+const Wrapper = resolveFrom.silent(
+  process.cwd(),
+  './styleguide/StyleGuideProvider.js'
+);
 
 module.exports = {
   components: path.join(process.cwd(), '{,src/}components/**/[A-Z]*.{js,jsx}'),
 
   title: 'Haaretz Components',
   theme: {
-  showCode: true,
-  showUsage: true,
+    showCode: true,
+    showUsage: true,
     sidebarWidth: 260,
   },
   // Styleguidist sends webpack this option in such a way that it errors out

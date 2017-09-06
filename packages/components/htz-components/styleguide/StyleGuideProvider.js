@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createRenderer, StyleProvider } from '../src';
+import { createRenderer, StyleProvider, } from '../src';
 
 const styleRenderer = createRenderer({ isRtl: true, });
 
@@ -14,9 +14,7 @@ const defaultProps = {
 export default function StyleGuideProvider({ children, }) {
   return (
     <StyleProvider renderer={styleRenderer}>
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </StyleProvider>
   );
 }
