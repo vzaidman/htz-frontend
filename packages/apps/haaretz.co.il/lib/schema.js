@@ -10,11 +10,7 @@ import GraphQLJSON from 'graphql-type-json';
 
 const typeDefs = `
   type Query {
-    page: Page
-  }
-
-  type Mutation {
-    changePage(pathname: String!, section: String, contentId: ID): Boolean
+    page(pathname: String!, contentId: ID): Page
   }
 
   interface ContentInterface {
@@ -45,12 +41,11 @@ const typeDefs = `
     lineage: [TaxonomyItem]!
     pageType: String!
     seoData: SeoData!
-    # This is just one approach to slots in the schema. Another might involve
-    # having a \`Slots\` type with a field for every known slot. But that seems
-    # redundant, since there is nothing unique schema-wise about each slot
-    # besides the name. A single query can still retrieve multiple slots using
-    # aliases.
-    slotContent(slot: String!): [Content]
+    # This is just one approach to slots in the schema. See above about objects
+    # with arbitrary fields in GraphQL. Another approach might be to have a
+    # \`Slots\` type with a field for every known slot. This approach has some
+    # nice properties, like all the requested slots being one input argument.
+    slots(names: [String]!): [Slot]!
   }
 
   type SeoData {
@@ -63,6 +58,11 @@ const typeDefs = `
     ogImages: [String]
     socialDescription: String
     socialTitle: String
+  }
+
+  type Slot {
+    name: String!
+    content: [Content]!
   }
 
   type TaxonomyItem {
@@ -78,40 +78,40 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    page: (source, args, context) => {
-      const { pathname, query, } = context.url;
-      if (pathname === '/article') {
-        if (query.contentId === '.premium-1.5527') {
-          return context.pageLoader.load('article');
-        }
-      }
-      else if (pathname === '/') {
-        return context.pageLoader.load('home');
-      }
-      if (process.browser) {
-        // Give the user a server error page with real HTTP 404.
-        window.location.reload();
-      }
-      // Don't know if this error is actually accessible to components.
-      const err = new Error('Not Found');
-      err.statusCode = 404;
-      return Promise.reject(err);
+    page: (root, args, context) => {
+      const { pathname, contentId, } = args;
+      return context.pageLoader
+        .load({
+          pathname,
+          contentId,
+        })
+        .catch(err => {
+          if (process.browser) {
+            // If an error occurs, it probably means the page doesn't exist.
+            // Reload the page so the browser gets a real 404 from the server.
+            // This isn't necessary, just more semantically correct.
+            window.location.reload();
+          }
+          else {
+            throw err;
+          }
+        });
     },
   },
-  Mutation: {
-    // We don't actually do anything with the input args.
-    changePage: (source, args, context) => true,
-  },
   Content: {
-    properties: source => {
-      const { contentId, contentName, inputTemplate, ...properties } = source;
+    properties: (content, args, context) => {
+      const { contentId, contentName, inputTemplate, ...properties } = content;
       return properties;
     },
   },
   Page: {
-    contentId: source => source.lineage[0].contentId,
-    contentName: source => source.lineage[0].name,
-    slotContent: (source, args) => source.slots[args.slot],
+    contentId: (page, args, context) => page.lineage[0].contentId,
+    contentName: (page, args, context) => page.lineage[0].name,
+    slots: (page, args, context) =>
+      args.names.map(name => ({
+        name,
+        content: page.slots[name] || [],
+      })),
   },
   Properties: GraphQLJSON,
 };

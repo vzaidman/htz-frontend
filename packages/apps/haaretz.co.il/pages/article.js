@@ -1,21 +1,23 @@
 import React from 'react';
-import withData from '../lib/withData';
+import withData, { pagePropTypes, } from '../lib/withData';
 import MainLayout from '../layouts/MainLayout';
-import Slot from '../components/Slot/Slot';
-import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 
-export function ArticlePage(props) {
+export function ArticlePage({ url, }) {
   return (
-    <MainLayout>
-      <Breadcrumbs />
-      <Slot name="header" />
-      <Slot name="topwidesecondary" />
-      <Slot name="aside" />
-      <Slot name="main" />
-      <Slot name="bottom" />
-      <Slot name="footer" />
-    </MainLayout>
+    <MainLayout
+      url={url}
+      slots={[
+        'header',
+        'topwidesecondary',
+        'aside',
+        'main',
+        'bottom',
+        'footer',
+      ]}
+    />
   );
 }
+
+ArticlePage.propTypes = pagePropTypes;
 
 export default withData(ArticlePage);

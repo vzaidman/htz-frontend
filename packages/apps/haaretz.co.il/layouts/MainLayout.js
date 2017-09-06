@@ -5,23 +5,34 @@ import { graphql, gql, } from 'react-apollo';
 import { StyleProvider, } from '@haaretz/htz-components';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import TopNav from '../components/TopNav/TopNav';
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
+import Slot from '../components/Slot/Slot';
 
 const propTypes = {
   /**
-   * Data from the GraphQL query, provided by Apollo.
+   * Information about the GraphQL query from Apollo.
    */
-  /* eslint-disable react/forbid-prop-types */
   data: PropTypes.object.isRequired,
-  children: PropTypes.node,
-  /* eslint-enable react/forbid-prop-types */
+  /**
+   * The names of the slots that should be rendered on the page.
+   */
+  slots: PropTypes.arrayOf(PropTypes.string).isRequired,
+  /**
+   * An object containing route information from Next, such as the `pathname`
+   * and `query` object.
+   */
+  url: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    query: PropTypes.shape({
+      contentId: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
 };
-const defaultProps = {
-  children: null,
-};
+const defaultProps = {};
 
-const MainSeoData = gql`
-  query MainSeoData {
-    page {
+const PageData = gql`
+  query PageData($pathname: String!, $contentId: ID, $slots: [String]!) {
+    page(pathname: $pathname, contentId: $contentId) {
       contentId
       contentName
       seoData {
@@ -32,45 +43,73 @@ const MainSeoData = gql`
         ogImages
         obTitle
       }
+      ...BreadcrumbsPage
+      slots(names: $slots) {
+        ...SlotContent
+      }
     }
   }
+  ${Breadcrumbs.fragments.page}
+  ${Slot.fragments.content}
 `;
 
-export function MainLayout({ data, children, }) {
-  if (data.loading) {
-    return <div>Loading…</div>;
+export class MainLayout extends React.Component {
+  renderHead() {
+    const { data, } = this.props;
+    if (!data.page) {
+      return null;
+    }
+    const { seoData, } = data.page;
+    return (
+      <Head>
+        <title>{seoData.metaTitle}</title>
+        <meta name="description" content={seoData.metaDescription} />
+        <meta name="keywords" content={seoData.metaKeywords.join(', ')} />
+        <meta name="news_keywords" content={seoData.metaKeywords.join(', ')} />
+        {seoData.ogImages.map(image => (
+          <meta property="og:image" content={image} />
+        ))}
+        <link rel="canonical" href={seoData.canonicalLink} />
+      </Head>
+    );
   }
-  if (!data.page) {
-    // This seems to happen even when `loading` is false while Apollo is
-    // invalidating the cache or something...
-    return <div>No page loaded.</div>;
+
+  renderSlots() {
+    const { slots, data, } = this.props;
+    if (!data.page) {
+      // Return empty slots.
+      return slots.map(name => <Slot name={name} content={[]} key={name} />);
+    }
+    return data.page.slots.map(slot => <Slot {...slot} key={slot.name} />);
   }
-  const { contentName, seoData, } = data.page;
-  return (
-    <StyleProvider renderer={styleRenderer}>
-      <div>
-        <Head>
-          <title>{seoData.metaTitle}</title>
-          <meta name="description" content={seoData.metaDescription} />
-          <meta name="keywords" content={seoData.metaKeywords.join(', ')} />
-          <meta
-            name="news_keywords"
-            content={seoData.metaKeywords.join(', ')}
-          />
-          {seoData.ogImages.map(image => (
-            <meta property="og:image" content={image} />
-          ))}
-          <link rel="canonical" href={seoData.canonicalLink} />
-        </Head>
-        <TopNav />
-        <h1>{contentName}</h1>
-        {children}
-      </div>
-    </StyleProvider>
-  );
+
+  render() {
+    const { data, } = this.props;
+    return (
+      <StyleProvider renderer={styleRenderer}>
+        <div>
+          {this.renderHead()}
+          <TopNav />
+          <h1>
+            {data.loading ? 'Loading…' : data.page ? data.page.contentName : ''}
+          </h1>
+          {data.page ? <Breadcrumbs page={data.page} /> : null}
+          {this.renderSlots()}
+        </div>
+      </StyleProvider>
+    );
+  }
 }
 
 MainLayout.propTypes = propTypes;
 MainLayout.defaultProps = defaultProps;
 
-export default graphql(MainSeoData)(MainLayout);
+export default graphql(PageData, {
+  options: props => ({
+    variables: {
+      pathname: props.url.pathname,
+      contentId: props.url.query.contentId,
+      slots: props.slots,
+    },
+  }),
+})(MainLayout);

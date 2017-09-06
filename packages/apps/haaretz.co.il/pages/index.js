@@ -1,20 +1,24 @@
 import React from 'react';
-import withData from '../lib/withData';
+import withData, { pagePropTypes, } from '../lib/withData';
 import MainLayout from '../layouts/MainLayout';
-import Slot from '../components/Slot/Slot';
 
-export function HomePage(props) {
+export function HomePage({ url, }) {
   return (
-    <MainLayout>
-      <Slot name="header" />
-      <Slot name="topwide" />
-      <Slot name="topwidesecondary" />
-      <Slot name="aside" />
-      <Slot name="main" />
-      <Slot name="bottom" />
-      <Slot name="footer" />
-    </MainLayout>
+    <MainLayout
+      url={url}
+      slots={[
+        'header',
+        'topwide',
+        'topwidesecondary',
+        'aside',
+        'main',
+        'bottom',
+        'footer',
+      ]}
+    />
   );
 }
+
+HomePage.propTypes = pagePropTypes;
 
 export default withData(HomePage);

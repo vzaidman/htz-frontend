@@ -1,96 +1,32 @@
 import React from 'react';
 import Error from 'next/error';
 import PropTypes from 'prop-types';
-import { ApolloProvider, getDataFromTree, gql, } from 'react-apollo';
+import { ApolloProvider, getDataFromTree, } from 'react-apollo';
 import Head from 'next/head';
 import Cookies from 'universal-cookie';
-import createClient from './createClient';
+import createClient, { createContext, } from './createClient';
 
-// This set of queries represents what to refetch when the page changes. If
-// some data can be reused, then exclude it here.
-// TODO: There are two issues here:
-// - It is very verbose and repetitive.
-// - How do we know that the new page will require all of these fields?
-//   Does Apollo fetch all of this even even it is not being observed by any
-//   active queries? Find out.
-const refetchSlots = [
-  'header',
-  'topwide',
-  'topwidesecondary',
-  'aside',
-  'main',
-  'bottom',
-];
-const ChangedPageData = gql`
-  query ChangedPageData {
-    page {
-      contentId
-      contentName
-      inputTemplate
-      lineage {
-        contentId
-        name
-        pathSegment
-        url
-      }
-      pageType
-      seoData {
-        canonicalLink
-        metaDescription
-        metaImage
-        metaKeywords
-        metaTitle
-        obTitle
-        ogImages
-        socialDescription
-        socialTitle
-      }
-    }
-  }
-`;
-const ChangedSlotContent = gql`
-  query ChangedSlotContent($name: String!) {
-    page {
-      contentId
-      slotContent(slot: $name) {
-        contentId
-        contentName
-        inputTemplate
-        properties
-      }
-    }
-  }
-`;
-const ChangePage = gql`
-  mutation ChangePage($pathname: String!, $section: String, $contentId: ID) {
-    changePage(pathname: $pathname, section: $section, contentId: $contentId)
-  }
-`;
-
-const pageRefetchQueries = [ { query: ChangedPageData, }, ].concat(
-  refetchSlots.map(name => ({
-    query: ChangedSlotContent,
-    variables: { name, },
-  }))
-);
+export const pagePropTypes = {
+  /* eslint-disable react/forbid-prop-types */
+  serverState: PropTypes.object.isRequired,
+  serverError: PropTypes.shape({
+    statusCode: PropTypes.number,
+  }),
+  url: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    query: PropTypes.object.isRequired,
+  }).isRequired,
+  /* eslint-enable react/forbid-prop-types */
+};
 
 export default Component => {
   const componentName = Component.displayName || Component.name || 'Unknown';
 
   return class WithData extends React.Component {
     static displayName = `WithData(${componentName})`;
-
-    static propTypes = {
-      /* eslint-disable react/forbid-prop-types */
-      serverState: PropTypes.object.isRequired,
-      serverError: PropTypes.shape({
-        statusCode: PropTypes.number,
-      }),
-      url: PropTypes.shape({
-        pathname: PropTypes.string.isRequired,
-        query: PropTypes.object.isRequired,
-      }).isRequired,
-      /* eslint-enable react/forbid-prop-types */
+    static propTypes = pagePropTypes;
+    static defaultProps = {
+      serverError: null,
     };
 
     /**
@@ -117,7 +53,6 @@ export default Component => {
       const url = {
         query: context.query,
         pathname: context.pathname,
-        asPath: context.asPath,
       };
 
       // Evaluate the composed component's `getInitialProps()`.
@@ -135,10 +70,7 @@ export default Component => {
       if (!process.browser) {
         const cookies = new Cookies(context.req.headers.cookie || '');
         const apolloClient = createClient({
-          context: {
-            url,
-            cookies,
-          },
+          context: createContext({ url, cookies, }),
         });
         try {
           await getDataFromTree(
@@ -148,9 +80,21 @@ export default Component => {
           );
         }
         catch (err) {
+          // TODO: There must be a better way to do this.
+          // `err` is a wrapper Error created by Apollo that groups all errors
+          // thrown while attempting to render. Even the `graphQLErrors` property
+          // on this object have been rethrown at various layers of the stack, so
+          // if we attached something like a `statusCode` property to an error,
+          // it's gone now. For now, just throw a 404 if any error message is
+          // 'Not Found', and a 500 otherwise.
           console.error('getDataFromTree() failed!');
           console.error(err);
-          serverError = { statusCode: (err && err.statusCode) || 500, };
+          const isNotFound = err.graphQLErrors.some(
+            ({ message, }) => message === 'Not Found'
+          );
+          serverError = {
+            statusCode: isNotFound ? 404 : 500,
+          };
           // Prevent Apollo Client GraphQL errors from crashing SSR.
           // Handle them in components via the `data.error` prop:
           // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
@@ -174,39 +118,9 @@ export default Component => {
     constructor(props) {
       super(props);
       const { serverState, } = this.props;
+      // Don't pass `context`, because on the client we want it to be created
+      // for each query so that properties like `url` and `cookies` are up-to-date.
       this.apolloClient = createClient({ initialState: serverState, });
-      // If this component is being constructed, it means that a route change is
-      // in progress - unless this is just the initial bootup after being rendered
-      // on the server.
-      if (!serverState.apollo) {
-        this.invalidatePage();
-      }
-    }
-
-    componentWillReceiveProps(nextProps) {
-      // Might need to do a deep check on this.
-      if (nextProps.url !== this.props.url) {
-        this.invalidatePage();
-      }
-    }
-
-    /**
-     * Send a mutation query that will force a refetch of any changed page data.
-     */
-    invalidatePage() {
-      this.apolloClient
-        .mutate({
-          mutation: ChangePage,
-          variables: {
-            ...this.props.url.query,
-            pathname: this.props.url.pathname,
-          },
-          refetchQueries: pageRefetchQueries,
-        })
-        .catch(err => {
-          console.error('invalidatePage() error!');
-          console.error(err);
-        });
     }
 
     render() {

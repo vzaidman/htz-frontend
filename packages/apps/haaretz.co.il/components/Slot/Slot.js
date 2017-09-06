@@ -7,7 +7,7 @@ const StandardArticle = dynamic(import('../StandardArticle/StandardArticle'));
 
 const propTypes = {
   /**
-   * The name of the slot to retrieve, e.g. `header`, `footer`, `main`.
+   * The name of the slot, e.g. `header`, `footer`, `main`.
    */
   name: PropTypes.string.isRequired,
   /**
@@ -23,25 +23,21 @@ const propTypes = {
   ).isRequired,
 };
 
-const defaultProps = {
-  content: [],
-};
-
-const SlotContent = gql`
-  query SlotContent($name: String!) {
-    page {
-      contentId
-      slotContent(slot: $name) {
+const fragments = {
+  content: gql`
+    fragment SlotContent on Slot {
+      name
+      content {
         contentId
         contentName
         inputTemplate
         properties
       }
     }
-  }
-`;
+  `,
+};
 
-export function Slot(props) {
+function Slot(props) {
   const { name, content, } = props;
   // Placeholder output, useful for debugging.
   return (
@@ -78,12 +74,7 @@ export function Slot(props) {
   );
 }
 
+Slot.fragments = fragments;
 Slot.propTypes = propTypes;
-Slot.defaultProps = defaultProps;
 
-export default graphql(SlotContent, {
-  // Map the resulting `data.page.content` property to the `content` prop.
-  props: ({ data, }) => ({
-    content: (data.page && data.page.slotContent) || [],
-  }),
-})(Slot);
+export default Slot;
