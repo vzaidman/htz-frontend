@@ -80,22 +80,10 @@ const resolvers = {
   Query: {
     page: (root, args, context) => {
       const { pathname, contentId, } = args;
-      return context.pageLoader
-        .load({
-          pathname,
-          contentId,
-        })
-        .catch(err => {
-          if (process.browser) {
-            // If an error occurs, it probably means the page doesn't exist.
-            // Reload the page so the browser gets a real 404 from the server.
-            // This isn't necessary, just more semantically correct.
-            window.location.reload();
-          }
-          else {
-            throw err;
-          }
-        });
+      return context.pageLoader.load({
+        pathname,
+        contentId,
+      });
     },
   },
   Content: {

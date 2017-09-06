@@ -80,7 +80,7 @@ export default Component => {
           );
         }
         catch (err) {
-          // TODO: There must be a better way to do this.
+          // FIXME: There must be a better way to do this.
           // `err` is a wrapper Error created by Apollo that groups all errors
           // thrown while attempting to render. Even the `graphQLErrors` property
           // on this object have been rethrown at various layers of the stack, so

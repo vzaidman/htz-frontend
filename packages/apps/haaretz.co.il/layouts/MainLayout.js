@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import Error from 'next/error';
 import { graphql, gql, } from 'react-apollo';
 import { StyleProvider, } from '@haaretz/htz-components';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -85,6 +86,14 @@ export class MainLayout extends React.Component {
 
   render() {
     const { data, } = this.props;
+    if (data.error) {
+      // FIXME: This is essentially duplicated in `withData`. Figure out a
+      // more reasonable error handling strategy.
+      const isNotFound = data.error.graphQLErrors.some(
+        ({ message, }) => message === 'Not Found'
+      );
+      return <Error statusCode={isNotFound ? 404 : 500} />;
+    }
     return (
       <StyleProvider renderer={styleRenderer}>
         <div>
