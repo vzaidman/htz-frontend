@@ -10,10 +10,11 @@ export default function TopNav() {
       <Link
         as="/news/world/asia/.premium-1.5527"
         href={{
-          pathname: '/article',
+          pathname: '/',
           query: {
             section: 'news/world/asia',
-            contentId: '.premium-1.5527',
+            contentId: '1.5527',
+            tier: 'premium',
           },
         }}
       >

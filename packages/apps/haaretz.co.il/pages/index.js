@@ -2,23 +2,10 @@ import React from 'react';
 import withData, { pagePropTypes, } from '../lib/withData';
 import MainLayout from '../layouts/MainLayout';
 
-export function HomePage({ url, }) {
-  return (
-    <MainLayout
-      url={url}
-      slots={[
-        'header',
-        'topwide',
-        'topwidesecondary',
-        'aside',
-        'main',
-        'bottom',
-        'footer',
-      ]}
-    />
-  );
+export function Page({ url, }) {
+  return <MainLayout url={url} />;
 }
 
-HomePage.propTypes = pagePropTypes;
+Page.propTypes = pagePropTypes;
 
-export default withData(HomePage);
+export default withData(Page);

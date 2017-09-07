@@ -3,7 +3,7 @@ import { ApolloClient, } from 'react-apollo';
 import Router from 'next/router';
 import Cookies from 'universal-cookie';
 import DataLoader from 'dataloader';
-import schema from './schema';
+import appSchema from './schema';
 
 // The client instance and loader instances are client-side globals, but created
 // fresh for each request on the server.
@@ -21,13 +21,15 @@ export function createLoaders() {
           // These `import()` calls need to be static paths or Next will blow up.
           switch (pathname) {
             case '/': {
-              return import('../fixtures/home.json');
-            }
-            case '/article': {
-              if (contentId === '.premium-1.5527') {
+              if (!contentId) {
+                return import('../fixtures/home.json');
+              }
+              if (contentId === '1.5527') {
                 return import('../fixtures/article.json');
               }
             }
+            // Intentionally fall through to default case.
+            // eslint-disable-next-line no-fallthrough
             default: {
               return Promise.reject(new Error('Not Found'));
             }
@@ -100,7 +102,7 @@ export default function createClient({ initialState, context, } = {}) {
       ssrMode: !process.browser,
       dataIdFromObject: ({ __typename, contentId, }) =>
         (contentId ? `${__typename}:${contentId}` : null),
-      networkInterface: createLocalInterface(schema, null, context),
+      networkInterface: createLocalInterface(appSchema, null, context),
       queryDeduplication: true,
     });
 

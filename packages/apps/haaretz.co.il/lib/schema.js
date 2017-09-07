@@ -45,7 +45,7 @@ const typeDefs = `
     # with arbitrary fields in GraphQL. Another approach might be to have a
     # \`Slots\` type with a field for every known slot. This approach has some
     # nice properties, like all the requested slots being one input argument.
-    slots(names: [String]!): [Slot]!
+    slots: [Slot]!
   }
 
   type SeoData {
@@ -88,6 +88,9 @@ const resolvers = {
   },
   Content: {
     properties: (content, args, context) => {
+      // Object Rest Spread syntax is used to pull out the remaining
+      // `properties` from `content`, so `contentId` etc. are unused.
+      // eslint-disable-next-line no-unused-vars
       const { contentId, contentName, inputTemplate, ...properties } = content;
       return properties;
     },
@@ -96,7 +99,7 @@ const resolvers = {
     contentId: (page, args, context) => page.lineage[0].contentId,
     contentName: (page, args, context) => page.lineage[0].name,
     slots: (page, args, context) =>
-      args.names.map(name => ({
+      Object.keys(page.slots).map(name => ({
         name,
         content: page.slots[name] || [],
       })),

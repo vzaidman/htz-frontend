@@ -59,7 +59,7 @@ const rules = {
   }),
 };
 
-function Slot({ name, content, styles, }) {
+export function Slot({ name, content, styles, }) {
   // Placeholder output, useful for debugging.
   return (
     <div className={styles.container}>

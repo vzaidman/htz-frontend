@@ -3,37 +3,17 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Error from 'next/error';
 import { graphql, gql, } from 'react-apollo';
+import { propType, } from 'graphql-anywhere';
 import { StyleProvider, } from '@haaretz/htz-components';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import TopNav from '../components/TopNav/TopNav';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import Slot from '../components/Slot/Slot';
 
-const propTypes = {
-  /**
-   * Information about the GraphQL query from Apollo.
-   */
-  data: PropTypes.object.isRequired,
-  /**
-   * The names of the slots that should be rendered on the page.
-   */
-  slots: PropTypes.arrayOf(PropTypes.string).isRequired,
-  /**
-   * An object containing route information from Next, such as the `pathname`
-   * and `query` object.
-   */
-  url: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    query: PropTypes.shape({
-      contentId: PropTypes.string,
-    }).isRequired,
-  }).isRequired,
-};
-const defaultProps = {};
-
 const PageData = gql`
-  query PageData($pathname: String!, $contentId: ID, $slots: [String]!) {
+  query PageData($pathname: String!, $contentId: ID) {
     page(pathname: $pathname, contentId: $contentId) {
+      pageType
       contentId
       contentName
       seoData {
@@ -45,7 +25,7 @@ const PageData = gql`
         obTitle
       }
       ...BreadcrumbsPage
-      slots(names: $slots) {
+      slots {
         ...SlotContent
       }
     }
@@ -53,6 +33,26 @@ const PageData = gql`
   ${Breadcrumbs.fragments.page}
   ${Slot.fragments.content}
 `;
+
+const propTypes = {
+  /**
+   * Information about the GraphQL query from Apollo.
+   */
+  data: propType(PageData).isRequired,
+  /**
+   * An object containing route information from Next, such as the `pathname`
+   * and `query` object.
+   */
+  url: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    query: PropTypes.shape({
+      section: PropTypes.string,
+      contentId: PropTypes.string,
+      tier: PropTypes.oneOf([ 'free', 'premium', ]),
+    }).isRequired,
+  }).isRequired,
+};
+const defaultProps = {};
 
 export class MainLayout extends React.Component {
   renderHead() {
@@ -76,12 +76,10 @@ export class MainLayout extends React.Component {
   }
 
   renderSlots() {
-    const { slots, data, } = this.props;
-    if (!data.page) {
-      // Return empty slots.
-      return slots.map(name => <Slot name={name} content={[]} key={name} />);
-    }
-    return data.page.slots.map(slot => <Slot {...slot} key={slot.name} />);
+    const { data, } = this.props;
+    return data.page
+      ? data.page.slots.map(slot => <Slot {...slot} key={slot.name} />)
+      : [];
   }
 
   render() {
@@ -118,7 +116,6 @@ export default graphql(PageData, {
     variables: {
       pathname: props.url.pathname,
       contentId: props.url.query.contentId,
-      slots: props.slots,
     },
   }),
 })(MainLayout);

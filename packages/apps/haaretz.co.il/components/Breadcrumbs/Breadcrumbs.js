@@ -57,7 +57,7 @@ const rules = {
   link: props => ({}),
 };
 
-function Breadcrumbs({ page, styles, }) {
+export function Breadcrumbs({ page, styles, }) {
   const items = page.lineage.slice(1); // Remove the page itself from `lineage`.
   if (items.length) {
     return (
