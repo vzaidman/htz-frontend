@@ -18,6 +18,10 @@ const propTypes = {
   ).isRequired,
 };
 
+const defaultProps = {
+  subtitle: null,
+};
+
 export function StandardArticle(props) {
   return (
     <article>
@@ -26,8 +30,10 @@ export function StandardArticle(props) {
       {props.body.map(
         (graf, i) =>
           (typeof graf === 'string' ? (
+            // eslint-disable-next-line react/no-danger, react/no-array-index-key
             <div dangerouslySetInnerHTML={{ __html: graf, }} key={i} />
           ) : (
+            // eslint-disable-next-line react/no-array-index-key
             <div key={i}>(image)</div>
           ))
       )}
@@ -36,5 +42,6 @@ export function StandardArticle(props) {
 }
 
 StandardArticle.propTypes = propTypes;
+StandardArticle.defaultProps = defaultProps;
 
 export default StandardArticle;
