@@ -57,6 +57,9 @@ const rules = {
   link: props => ({}),
 };
 
+/**
+ * Renders breadcrumb links for a page using a `lineage` array.
+ */
 export function Breadcrumbs({ page, styles, }) {
   const items = page.lineage.slice(1); // Remove the page itself from `lineage`.
   if (items.length) {
@@ -66,7 +69,7 @@ export function Breadcrumbs({ page, styles, }) {
           i ? <span className={styles.separator}>•</span> : null,
           <Link
             href={{
-              pathname: '/article',
+              pathname: '/',
               query: { contentId: taxonomyItem.contentId, },
             }}
             as={taxonomyItem.url}

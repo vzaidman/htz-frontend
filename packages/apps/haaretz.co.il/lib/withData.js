@@ -38,12 +38,12 @@ export default Component => {
      * @param {Object} context - Information about the request.
      * @param {string} context.pathname - Path section of URL.
      * @param {Object} context.query - Query string section of URL parsed as an object.
-     * @param {string} asPath - String of the actual path (including the query)
-     *                          shown in the browser.
-     * @param {Object} req - HTTP request object (server only).
-     * @param {Object} res - HTTP response object (server only).
-     * @param {Object} jsonPageRes - Fetch Response object (client only).
-     * @param {Object} err - Error object if any error is encountered during the rendering.
+     * @param {string} context.asPath - String of the actual path (including the query)
+     *                                  shown in the browser.
+     * @param {Object} context.req - HTTP request object (server only).
+     * @param {Object} context.res - HTTP response object (server only).
+     * @param {Object} context.jsonPageRes - Fetch Response object (client only).
+     * @param {Object} context.err - Error object if any error is encountered during the rendering.
      * @returns {Promise} Promise resolving to an object containing the initial props.
      */
     static async getInitialProps(context) {
