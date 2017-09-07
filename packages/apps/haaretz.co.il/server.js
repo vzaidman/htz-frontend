@@ -8,66 +8,53 @@ require('isomorphic-fetch');
 const DEV = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 3000;
 const app = next({ dev: DEV, });
-const handle = app.getRequestHandler();
+const handler = app.getRequestHandler();
 
-const MOCK_ARTICLES = {
-  1.808116: {
-    section: 'archaeology',
-    title: 'How Ancient Babylonians Could Have Predicted the 2017 Eclipse',
-    author: 'Ruth Schuster',
-  },
-  1.807195: {
-    section: 'archaeology',
-    title: "Tombs Found in Egypt's Nile Valley Date Back More Than 2,000 Years",
-    author: 'The Associated Press and Ruth Schuster',
-  },
-};
+const routePattern = /^\/(?:((?:[^/]+\/)*(?:[^/]+))\/)?(\.premium-)?(\d+\.\d+)?$/;
 
-app
-  .prepare()
-  .then(() => {
-    const server = express();
-    server.use(compression()); // Compress responses.
-    server.use(helmet()); // Various security-minded settings.
+// Allow this module to be imported without starting the server.
+if (require.main === module) {
+  app
+    .prepare()
+    .then(() => {
+      const server = express();
+      server.use(compression()); // Compress responses.
+      server.use(helmet()); // Various security-minded settings.
 
-    // Mock API endpoints, so we can try fetching data.
-    server.get('/mock-api/stories.json', (req, res) => {
-      res.json({
-        stories: Object.keys(MOCK_ARTICLES).map(id =>
-          Object.assign({ id, }, MOCK_ARTICLES[id])
-        ),
+      // The optional `.premium-` part was throwing `path-to-regexp` for a loop,
+      // so we have a handwritten regex here.
+      server.get(routePattern, (req, res) => {
+        const query = {
+          section: req.params[0],
+          // This is a URL query parameter, so while we could attempt to make
+          // it an `isPremium` flag, it will inevitably be converted into
+          // a string by various URL functions, and our code would be dealing
+          // with the string values 'true' and 'false', which invites developers
+          // to introduce bugs by accidentally treating it as a Boolean.
+          // Instead, we make it very clearly a string. These constants would
+          // ideally be defined in a central place.
+          tier: req.params[1] ? 'premium' : 'free',
+          contentId: req.params[2],
+        };
+        return app.render(req, res, '/', query);
       });
-    });
 
-    server.get('/mock-api/article/:id.json', (req, res) => {
-      const article = MOCK_ARTICLES[req.params.id];
+      server.get('*', handler);
 
-      if (article) {
-        res.json(article);
-      }
-      else {
-        res.status(404).json({});
-      }
-    });
-
-    server.get('/:section/:id(\\d[.]\\d+)', (req, res) => {
-      const query = {
-        section: req.params.section,
-        id: req.params.id,
-      };
-      app.render(req, res, '/article', query);
-    });
-
-    server.get('*', (req, res) => handle(req, res));
-
-    server.listen(PORT, err => {
-      if (err) throw err;
+      server.listen(PORT, err => {
+        if (err) throw err;
+        // eslint-disable-next-line no-console
+        console.log(`> Ready on http://localhost:${PORT}`);
+      });
+    })
+    .catch(err => {
       // eslint-disable-next-line no-console
-      console.log(`> Ready on http://localhost:${PORT}`);
+      console.error(err.stack);
+      process.exit(1);
     });
-  })
-  .catch(err => {
-    // eslint-disable-next-line no-console
-    console.error(err.stack);
-    process.exit(1);
-  });
+}
+
+module.exports = {
+  app,
+  routePattern,
+};

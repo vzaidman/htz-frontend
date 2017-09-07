@@ -1,0 +1,666 @@
+{
+  "pageType": "homepage",
+  "lineage": [
+    {
+      "name": "הארץ",
+      "url": "/2.285",
+      "pathSegment": "haaretz",
+      "contentId": "2.285"
+    }
+  ],
+  "seoData": {
+    "metaTitle": "חדשות, ידיעות מהארץ והעולם",
+    "metaDescription": "כל חדשות היום - הידיעות והחדשות בעיתון הארץ . סקופים, מאמרים, פרשנויות ותחקירי עומק בעיתון האיכותי בישראלים",
+    "metaKeywords": [
+      "הארץ",
+      "חדשות הארץ",
+      "עיתון הארץ",
+      "עיתון הארץ דרושים",
+      "עיתון הארץ ארכיון",
+      "haaretz",
+      "הארץ חדשות",
+      "הארץ מנויים",
+      "עיתון הארץ גלריה",
+      "עיתון הארץ מנויים",
+      "עיתון הארץ חדשות",
+      "עיתון הארץ באנגלית."
+    ],
+    "canonicalLink": "חדשות, ידיעות מהארץ והעולם",
+    "ogImages": [],
+    "obTitle": "חדשות, ידיעות מהארץ והעולם"
+  },
+  "slots": {
+    "header": [
+      {
+        "code": "\t\t\t\u003cdiv class\u003d\"l-fluid--b  promo-wrapper h-hidden\" id\u003d\"top-prom-ban\"\u003e\r\n\t\t\t  \u003cdiv class\u003d\"\"\u003e\r\n\t\t\t    \u003cdiv class\u003d\"promo  island--flush\"\u003e\r\n\t\t\t      \u003cp class\u003d\"l-wrapper promo__text\"\u003e\r\n\t\t\t        \u003ca href\u003d\"/promotions-page\"\u003eהמהדורה הדיגיטלית של הארץ\u0026nbsp;\u003cspan class\u003d\"h-hidden--s-and-m\"\u003e- באתר בסמרטפון ובאייפד\u0026nbsp;\u003c/span\u003e- חודש ראשון ב-4.90₪ בלבד\u0026nbsp;\u003cspan class\u003d\"btn btn--tight btn--a\"\u003eנסו עכשיו\u003c/span\u003e\u003c/a\u003e\r\n\t\t\t      \u003c/p\u003e\r\n\t\t\t    \u003c/div\u003e\r\n\t\t\t  \u003c/div\u003e\r\n\t\t\t\u003c/div\u003e\r\n\t\t\t\u003cscript\u003e\r\n\t\t\t\tif (CookieUtil.getCookie(\u0027HtzPusr\u0027)) {\r\n\t\t\t\t\t$(\u0027#top-prom-ban\u0027).addClass(\u0027h-hidden\u0027);\r\n\t\t\t\t}\r\n\t\t\t\telse {\r\n  \t\t\t\t\t$(\u0027#top-prom-ban\u0027).removeClass(\u0027h-hidden\u0027);\r\n\t\t\t\t}\r\n\t\t\t\u003c/script\u003e\r\n\t\t\r\n\t\t",
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.HtmlElement",
+        "contentId": "7.1583",
+        "contentName": "top promotion banner\t\t"
+      },
+      {
+        "links": [
+          {
+            "subtitle": "אם אין בו פרחים",
+            "teaserDateSource": "article",
+            "teaserDate": "Sep 4, 2014 11:53:40 AM",
+            "inputTemplate": "com.tm.TeaserElement",
+            "contentId": "7.1730",
+            "contentName": "אז מה שווה כל סיפור האהבה הזה"
+          },
+          {
+            "teaserDateSource": "article",
+            "teaserDate": "Jun 15, 2014 5:13:24 PM",
+            "inputTemplate": "com.tm.TeaserElement",
+            "contentId": "7.1665",
+            "contentName": "יאיר לפיד יודע הכי טוב!"
+          },
+          {
+            "articleType": "regularArticle",
+            "articleTypeFromModel": "regularArticle",
+            "inputTemplate": "com.htz.StandardArticle",
+            "contentId": "1.1259",
+            "contentName": "מתחת לקליפת הפלדה של מתן חודורוב"
+          },
+          {
+            "articleType": "regularArticle",
+            "articleTypeFromModel": "regularArticle",
+            "inputTemplate": "com.htz.StandardArticle",
+            "contentId": "1.1205",
+            "contentName": "אוקראינה: מדינה קרועה עם קופה מרוקנת"
+          },
+          {
+            "teaserDate": "Sep 10, 2014 11:36:01 AM",
+            "inputTemplate": "com.tm.TeaserElement",
+            "contentId": "7.1760",
+            "contentName": "סטאלון מפסיד, אודיה רש עולה"
+          }
+        ],
+        "inputTemplate": "com.htz.NavigationElementResp",
+        "contentId": "7.1597",
+        "contentName": "Responsive navigation"
+      },
+      {
+        "afterElementsIncludeHTML": "\n\t\t\t\t\u003c/div\u003e\n\t\t\t\u003c/div\u003e\n\t\t\n\t\t",
+        "beforeElementsIncludeHTML": "\n\t\t\t\u003cdiv class\u003d\"nav nav--separated masthead\"\u003e\n\t\t\t\t\u003cdiv class\u003d\"h-hidden--s-and-m mh__navbar--b mh__nav--separated\"\u003e\n\t\t\t\t\u003cspan\u003eבראש החדשות:\u003c/span\u003e\n\t\t\t",
+        "contentLists": [
+          {
+            "href": "http://elia.themarker.com:8080/misc/writers",
+            "inputTemplate": "com.tm.Link",
+            "contentId": "7.2158",
+            "contentName": "כתבים"
+          },
+          {
+            "href": "http://elia.haaretz.co.il:8080/.premium-1.2088",
+            "inputTemplate": "com.tm.Link",
+            "contentId": "7.2156",
+            "contentName": "הוויטמינים עולים על העצבים"
+          },
+          {
+            "href": "http://elia.haaretz.co.il:8080/news/world/.premium-1.1254",
+            "inputTemplate": "com.tm.Link",
+            "contentId": "1.2070",
+            "contentName": "שבדיה"
+          }
+        ],
+        "viewMode": "general",
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ElementGroup",
+        "contentId": "7.1853",
+        "contentName": "בראש החדשות"
+      }
+    ],
+    "topwide": [
+      {
+        "afterElementsIncludeHTML": "\u003cdiv class\u003d\"cb h-cb\"\u003e\u003c/div\u003e \u003c/div\u003e \u003c/div\u003e \u003cscript\u003e showLBCTAfterPlazma(); \u003c/script\u003e",
+        "beforeElementsIncludeHTML": "\u003cdiv class\u003d\"topSectionBanners\"\u003e \u003cdiv name\u003d\"dcPlazma\" id\u003d\"dcPlazma\"\u003e\u003c/div\u003e \u003cdiv id\u003d\"top_banners\" align\u003d\"center\" class\u003d\"ad ad--b\"\u003e",
+        "contentLists": [
+          {
+            "id": "Haaretz.co.il.Web.Plazma",
+            "className": "h-dib js-dfp-resp-refresh",
+            "audianceTarget": "all",
+            "hideOnSite": false,
+            "inputTemplate": "com.polobase.DfpBannerElement",
+            "contentId": "7.1744",
+            "contentName": "Haaretz.co.il.Web.Plazma"
+          }
+        ],
+        "viewMode": "general",
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ElementGroup",
+        "contentId": "7.1743",
+        "contentName": "DFP plazma wrapper"
+      },
+      {
+        "inputTemplate": "com.tm.BreakingNewsBox",
+        "contentId": "7.720",
+        "contentName": "Breaking News Box HP"
+      }
+    ],
+    "topwidesecondary": [
+      {
+        "inputTemplate": "com.htz.PageMainBlockElement",
+        "contentId": "7.1846",
+        "contentName": "ראשית + באנר + משניות"
+      },
+      {
+        "title": "Dublin",
+        "view": "Dublin",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1876",
+        "contentName": "Dublin"
+      },
+      {
+        "title": "ג\u0027נבה",
+        "view": "Geneva",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1684",
+        "contentName": "ג\u0027נבה"
+      },
+      {
+        "inputTemplate": "com.tm.GridElementGroup",
+        "contentId": "7.1720",
+        "contentName": "בארץ בעולם"
+      },
+      {
+        "inputTemplate": "com.tm.GridElementGroup",
+        "contentId": "7.1775",
+        "contentName": "רביעיית CT שנתי"
+      },
+      {
+        "title": "ברייס יורסלף. ווינטר איז קאמינג",
+        "view": "Winterfell",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1792",
+        "contentName": "Winterfell weekend"
+      },
+      {
+        "inputTemplate": "com.tm.SpecialTeaserElement",
+        "contentId": "7.1696",
+        "contentName": "גדול, בהיר וקרוב יותר: \"סופר ירח\""
+      },
+      {
+        "title": "מאמרים ודיעות",
+        "view": "Milan",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1697",
+        "contentName": "מאמרים ודיעות"
+      }
+    ],
+    "aside": [
+      {
+        "inputTemplate": "com.tm.TabViewElement",
+        "contentId": "7.1695",
+        "contentName": "הפופולריות"
+      },
+      {
+        "title": "היום",
+        "view": "Zurich",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1826",
+        "contentName": "הנצפות"
+      },
+      {
+        "id": "Haaretz.co.il.Web.Box.1",
+        "className": "ad h-hidden",
+        "audianceTarget": "all",
+        "hideOnSite": false,
+        "inputTemplate": "com.polobase.DfpBannerElement",
+        "contentId": "7.1764",
+        "contentName": "Haaretz.co.il.Web.Box.1"
+      },
+      {
+        "title": "עוד בכותרות",
+        "view": "Bangkok",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1740",
+        "contentName": "עוד בכותרות"
+      },
+      {
+        "id": "Haaretz.co.il.Web.HalfPage.1",
+        "style": "test",
+        "className": "ad h-hidden",
+        "audianceTarget": "all",
+        "hideOnSite": false,
+        "inputTemplate": "com.polobase.DfpBannerElement",
+        "contentId": "7.1741",
+        "contentName": "Haaretz.co.il.Web.HalfPage.1"
+      },
+      {
+        "title": "מגזין",
+        "view": "Bangkok",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1699",
+        "contentName": "מגזין"
+      },
+      {
+        "title": "הונג קונג",
+        "view": "HongKong",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1768",
+        "contentName": "דוגמה של הונג קונג"
+      },
+      {
+        "id": "Haaretz.co.il.Web.Box.1",
+        "className": "ad h-hidden",
+        "audianceTarget": "all",
+        "hideOnSite": false,
+        "inputTemplate": "com.polobase.DfpBannerElement",
+        "contentId": "7.1764",
+        "contentName": "Haaretz.co.il.Web.Box.1"
+      },
+      {
+        "afterElementsIncludeHTML": "\u003c/section\u003e",
+        "beforeElementsIncludeHTML": "\u003ch2 class\u003d\"t-sec-head-ad ad ad--g\"\u003eפרוייקטים מיוחדים\u003c/h2\u003e\r\n\u003csection class\u003d\"list--ui list--ui--tight h-mb\"\u003e",
+        "contentLists": [
+          {
+            "id": "Haaretz.co.il.Web.marketing.promotional_rectangle.1",
+            "className": "h-mb h-hidden--s-and-m",
+            "audianceTarget": "all",
+            "hideOnSite": false,
+            "inputTemplate": "com.polobase.DfpBannerElement",
+            "contentId": "7.1746",
+            "contentName": "Haaretz.co.il.Web.marketing.promotional_rectangle.1"
+          },
+          {
+            "id": "Haaretz.co.il.Web.marketing.promotional_rectangle.2",
+            "className": "h-mb h-hidden--s-and-m",
+            "audianceTarget": "all",
+            "hideOnSite": false,
+            "inputTemplate": "com.polobase.DfpBannerElement",
+            "contentId": "7.1747",
+            "contentName": "Haaretz.co.il.Web.marketing.promotional_rectangle.2"
+          },
+          {
+            "id": "Haaretz.co.il.Web.marketing.promotional_rectangle.3",
+            "className": "h-hidden--s-and-m",
+            "audianceTarget": "all",
+            "hideOnSite": false,
+            "inputTemplate": "com.polobase.DfpBannerElement",
+            "contentId": "7.1748",
+            "contentName": "Haaretz.co.il.Web.marketing.promotional_rectangle.3"
+          }
+        ],
+        "viewMode": "general",
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ElementGroup",
+        "contentId": "7.1745",
+        "contentName": "פרוייקטים מיוחדים"
+      },
+      {
+        "id": "Haaretz.co.il.Web.Box.2",
+        "className": "ad h-hidden",
+        "audianceTarget": "all",
+        "hideOnSite": false,
+        "inputTemplate": "com.polobase.DfpBannerElement",
+        "contentId": "7.1765",
+        "contentName": "Haaretz.co.il.Web.Box.2"
+      },
+      {
+        "inputTemplate": "com.tm.ExternalRssElement",
+        "contentId": "7.1771",
+        "contentName": "Onlife RSS2"
+      }
+    ],
+    "main": [
+      {
+        "inputTemplate": "com.tm.FinanceSimpleDataCubeElement",
+        "contentId": "7.366",
+        "contentName": "Finance cube"
+      },
+      {
+        "contentLists": [
+          {
+            "title": "טלוויזיה",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1703",
+            "contentName": "טלוויזיה"
+          },
+          {
+            "title": "אופנה",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1704",
+            "contentName": "אופנה"
+          },
+          {
+            "title": "קול הקמפוס",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1705",
+            "contentName": "קול הקמפוס"
+          }
+        ],
+        "viewMode": "general",
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ElementGroup",
+        "contentId": "7.1702",
+        "contentName": "טלוויזיה , אופנה וקול הקמפוס"
+      },
+      {
+        "title": "תמונת היום",
+        "view": "respHomePageGallery",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.2095",
+        "contentName": "תמונת היום"
+      },
+      {
+        "inputTemplate": "com.tm.GridElementGroup",
+        "contentId": "7.1857",
+        "contentName": "onlife + mouse"
+      },
+      {
+        "id": "Haaretz.co.il.Web.FullBannerLarge.1",
+        "style": "margin-bottom:20px;",
+        "audianceTarget": "all",
+        "hideOnSite": false,
+        "inputTemplate": "com.polobase.DfpBannerElement",
+        "contentId": "7.1829",
+        "contentName": "Haaretz.co.il.Web.FullBannerLarge.1"
+      },
+      {
+        "title": "גלריה",
+        "view": "Warsaw",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1698",
+        "contentName": "גלריה"
+      },
+      {
+        "view": "Krakow",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1700",
+        "contentName": "כותרות נוספות לגלריה"
+      },
+      {
+        "contentLists": [
+          {
+            "title": "טלוויזיה",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1703",
+            "contentName": "טלוויזיה"
+          },
+          {
+            "title": "אופנה",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1704",
+            "contentName": "אופנה"
+          },
+          {
+            "title": "קול הקמפוס",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1705",
+            "contentName": "קול הקמפוס"
+          }
+        ],
+        "viewMode": "general",
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ElementGroup",
+        "contentId": "7.1702",
+        "contentName": "טלוויזיה , אופנה וקול הקמפוס"
+      },
+      {
+        "title": "בלוגים",
+        "view": "Madrid",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1706",
+        "contentName": "בלוגים"
+      },
+      {
+        "contentLists": [
+          {
+            "code": "\u003cdiv style\u003d\"margin-bottom:-40px; z-index:-900;\"\u003e\r\n\u003ciframe allowtransparency\u003d\"true\" marginheight\u003d0 marginwidth\u003d0 frameborder\u003d0 width\u003d648px height\u003d35px scrolling\u003dno src\u003d\"http://www.haaretz.co.il/st/inter/Global/madorim/themarker.htm\"\u003e\u003c/iframe\u003e\r\n\u003c/div\u003e",
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.HtmlElement",
+            "contentId": "7.1833",
+            "contentName": "סרגל"
+          },
+          {
+            "title": "בלוגים",
+            "view": "Madrid",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1706",
+            "contentName": "בלוגים"
+          },
+          {
+            "inputTemplate": "com.tm.FinanceSimpleDataCubeElement",
+            "contentId": "7.366",
+            "contentName": "Finance cube"
+          },
+          {
+            "code": "\u003cdiv\u003e\u003cbr/\u003e\u003c/div\u003e",
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.HtmlElement",
+            "contentId": "7.1832",
+            "contentName": "space"
+          }
+        ],
+        "viewMode": "general",
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ElementGroup",
+        "contentId": "7.1831",
+        "contentName": "Themarker"
+      },
+      {
+        "id": "Haaretz.co.il.Web.PromotionalContentLarge.2",
+        "style": "margin-bottom:20px;",
+        "audianceTarget": "all",
+        "hideOnSite": false,
+        "inputTemplate": "com.polobase.DfpBannerElement",
+        "contentId": "7.1830",
+        "contentName": "Haaretz.co.il.Web.PromotionalContentLarge.2"
+      },
+      {
+        "title": "ספורט",
+        "view": "Madrid",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1824",
+        "contentName": "ספורט"
+      },
+      {
+        "inputTemplate": "com.tm.GridElementGroup",
+        "contentId": "7.1749",
+        "contentName": "TheMarker Cafe Group Element"
+      },
+      {
+        "title": "ספורט",
+        "view": "Madrid",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1824",
+        "contentName": "ספורט"
+      },
+      {
+        "contentLists": [
+          {
+            "title": "טלוויזיה",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1703",
+            "contentName": "טלוויזיה"
+          },
+          {
+            "title": "אופנה",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1704",
+            "contentName": "אופנה"
+          },
+          {
+            "title": "קול הקמפוס",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1705",
+            "contentName": "קול הקמפוס"
+          }
+        ],
+        "viewMode": "general",
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ElementGroup",
+        "contentId": "7.1702",
+        "contentName": "טלוויזיה , אופנה וקול הקמפוס"
+      },
+      {
+        "title": "ספורט",
+        "view": "Madrid",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1824",
+        "contentName": "ספורט"
+      },
+      {
+        "inputTemplate": "com.tm.GridElementGroup",
+        "contentId": "7.1749",
+        "contentName": "TheMarker Cafe Group Element"
+      },
+      {
+        "title": "ספורט",
+        "view": "Madrid",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1824",
+        "contentName": "ספורט"
+      },
+      {
+        "contentLists": [
+          {
+            "title": "טלוויזיה",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1703",
+            "contentName": "טלוויזיה"
+          },
+          {
+            "title": "אופנה",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1704",
+            "contentName": "אופנה"
+          },
+          {
+            "title": "קול הקמפוס",
+            "view": "Bonn",
+            "hasPagination": false,
+            "hideOnSite": false,
+            "inputTemplate": "com.tm.ListElement",
+            "contentId": "7.1705",
+            "contentName": "קול הקמפוס"
+          }
+        ],
+        "viewMode": "general",
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ElementGroup",
+        "contentId": "7.1702",
+        "contentName": "טלוויזיה , אופנה וקול הקמפוס"
+      },
+      {
+        "inputTemplate": "com.tm.GridElementGroup",
+        "contentId": "7.1756",
+        "contentName": "Onlife / Mouse"
+      }
+    ],
+    "bottom": [
+      {
+        "title": "כתבות שאולי פספסתם",
+        "view": "Zagreb",
+        "hasPagination": false,
+        "hideOnSite": false,
+        "inputTemplate": "com.tm.ListElement",
+        "contentId": "7.1707",
+        "contentName": "כתבות שאולי פספסתם"
+      }
+    ],
+    "footer": [
+      {
+        "headList": [
+          {
+            "inputTemplate": "com.polobase.Pair",
+            "contentId": "1.463",
+            "contentName": "דרושים"
+          },
+          {
+            "inputTemplate": "com.polobase.Pair",
+            "contentId": "1.464",
+            "contentName": "הנהלה"
+          }
+        ],
+        "creditList": [
+          {
+            "inputTemplate": "com.polobase.Pair",
+            "contentId": "1.465",
+            "contentName": "UI by Netcraft"
+          },
+          {
+            "inputTemplate": "com.polobase.Pair",
+            "contentId": "1.466",
+            "contentName": "Design by Design Factory"
+          }
+        ],
+        "inputTemplate": "com.tm.FooterElement",
+        "contentId": "7.292",
+        "contentName": "Footer"
+      },
+      {
+        "inputTemplate": "com.tm.DisclaimerElement",
+        "contentId": "7.347",
+        "contentName": "Disclaimer"
+      }
+    ]
+  }
+}
