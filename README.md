@@ -11,6 +11,11 @@ These packages are managed with [Lerna](https://lernajs.io/) and organized like 
 * [Libraries](packages/libs) – Helpers, utilities, and any other shared code.
   * [htz-react-base](packages/libs/htz-react-base) – Development helpers.
 
+## Documentation
+
+* For help with individual packages, use the links to those packages above.
+* For general documentation, see [docs/README.md](docs/README.md).
+
 ## Getting Started
 
 ### Requirements
