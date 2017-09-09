@@ -76,6 +76,17 @@ $ cd packages/components/htz-components
 $ yarn run styleguide
 ```
 
+## Adding and removing npm dependencies inside packages
+Thanks to Yarn Workspaces and Lerna, adding (installing) npm dependencies inside 
+each of our different packages Just Works™, taking care of hoisting and managing 
+common dependencies.
+
+However, there is currently [a bug](https://github.com/yarnpkg/yarn/issues/4334) 
+that occurs when running `yarn remove` inside a workspace directory.
+Until this is resolved, a temporary workaround for uninstalling dependencies
+would be to manually remove the undesired dependency from the workspace's `package.json`
+and run `yarn` from the root directory.
+
 ## Scripts
 
 These are found in [package.json](package.json) and may be run with `yarn run <script>`
