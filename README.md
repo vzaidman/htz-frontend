@@ -44,7 +44,7 @@ These packages are managed with [Lerna](https://lernajs.io/) and organized like 
 ### Requirements
 
 * [Node.js](https://nodejs.org/) 8.0.0 or higher.
-* [Yarn](https://yarnpkg.com/en/docs/install) 0.27.0 or higher.
+* [Yarn](https://yarnpkg.com/en/docs/install) 1.0.0 or higher.
 
 ### Setup
 
@@ -75,6 +75,17 @@ Then work on whichever package(s) you like:
 $ cd packages/components/htz-components
 $ yarn run styleguide
 ```
+
+## Adding and removing npm dependencies inside packages
+Thanks to Yarn Workspaces and Lerna, adding (installing) npm dependencies inside 
+each of our different packages Just Works™, taking care of hoisting and managing 
+common dependencies.
+
+However, there is currently [a bug](https://github.com/yarnpkg/yarn/issues/4334) 
+that occurs when running `yarn remove` inside a workspace directory.
+Until this is resolved, a temporary workaround for uninstalling dependencies
+would be to manually remove the undesired dependency from the workspace's `package.json`
+and run `yarn` from the root directory.
 
 ## Scripts
 
