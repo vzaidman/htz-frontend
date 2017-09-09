@@ -24,6 +24,9 @@
     "url": "https://github.com/Haaretz/htz-frontend/issues"
   },
   "homepage": "https://github.com/Haaretz/htz-frontend#readme",
+  "engines": {
+    "yarn": "^1.0.0"
+  },
   "syncDependencies": {
     "packages/{libs/htz-react-base,components/*}": {
       "devDependencies": {
@@ -49,6 +52,9 @@
       }
     }
   },
+  "workspaces": [
+    "packages/*/*"
+  ],
   "devDependencies": {
     "cross-spawn": "^5.1.0",
     "doctoc": "^1.3.0",
