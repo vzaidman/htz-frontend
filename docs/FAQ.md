@@ -13,13 +13,17 @@
   - [How can I easily run the server on a different port?](#how-can-i-easily-run-the-server-on-a-different-port)
   - [Why isn’t my component appearing in the styleguide?](#why-isnt-my-component-appearing-in-the-styleguide)
   - [Why does my code build correctly, but Jest still encounters a syntax error?](#why-does-my-code-build-correctly-but-jest-still-encounters-a-syntax-error)
+- [React](#react)
   - [How can I inspect the props and state of React components?](#how-can-i-inspect-the-props-and-state-of-react-components)
+  - [Why is the Highlight Updates option highlighting my component?](#why-is-the-highlight-updates-option-highlighting-my-component)
+  - [Is it bad to use stateful components and `setState()`?](#is-it-bad-to-use-stateful-components-and-setstate)
 - [State Management](#state-management)
   - [Why isn’t there a Redux store with actions, reducers, etc.?](#why-isnt-there-a-redux-store-with-actions-reducers-etc)
   - [How can I inspect what Apollo is doing?](#how-can-i-inspect-what-apollo-is-doing)
 - [GraphQL](#graphql)
   - [How does the Page schema change depending on the page type?](#how-does-the-page-schema-change-depending-on-the-page-type)
   - [How can I test out GraphQL queries?](#how-can-i-test-out-graphql-queries)
+  - [How do I represent an object with arbitrary keys and values in the schema?](#how-do-i-represent-an-object-with-arbitrary-keys-and-values-in-the-schema)
 - [Miscellaneous](#miscellaneous)
   - [Why do I get an error when trying to return an object from `getInitialProps`?](#why-do-i-get-an-error-when-trying-to-return-an-object-from-getinitialprops)
 
@@ -107,11 +111,27 @@ You need a `.babelrc` file in your package for Jest to transpile the code correc
 Some commands like `build` can just default to the correct Babel configuration, but
 Jest requires `.babelrc`.
 
+## React
+
 ### How can I inspect the props and state of React components?
 
 Install the [React Developer Tools][React devtools] and find the component in
 the tree. Note that if you are inspecting components in production, the names
 of components will be shortened due to minification.
+
+### Why is the Highlight Updates option highlighting my component?
+
+The [Highlight Updates][] option in the React Developer Tools shows when React
+is *checking* whether a component should update, so your component may be
+highlighted even if its `shouldComponentUpdate` method returns `false`.
+
+### Is it bad to use stateful components and `setState()`?
+
+No, and often it is the only solution that makes sense. If a piece of state is
+primarily related to the user’s interaction with that component’s UI, or the
+component needs to remember something from one render to the next, or it is
+a very localized concern to that part of the component tree, it is probably a
+fine use case for a stateful component.
 
 ## State Management
 
@@ -151,6 +171,25 @@ that a page happens to have.
 Install the [Apollo Client Developer Tools][Apollo devtools] and select the
 GraphiQL tab.
 
+### How do I represent an object with arbitrary keys and values in the schema?
+
+Objects without predefined fields (“Indexable Types” in TypeScript terms) are
+not supported in GraphQL schemas and you will need to find another way to
+represent your type. You can:
+
+* Make the field retrieve one key at a time by accepting a key name as an
+  argument, then using that argument when accessing the source object in the
+  resolver. You’ll still be able to retrieve multiple keys in a single query
+  using [aliases][GraphQL aliases].
+* Make the field type a list of objects, where the object type includes a field
+  for the key name.
+* Make the field a JSON scalar using [graphql-type-json][]. You won’t be able to
+  choose which fields of the JSON object to retrieve (the entire object will
+  always be returned), but sometimes this is not a problem.
+
+The last approach is used by Content type’s `properties` field to collect
+the many possible fields seen on different types of content elements.
+
 ## Miscellaneous
 
 ### Why do I get an error when trying to return an object from `getInitialProps`?
@@ -170,3 +209,6 @@ then recreate whatever class instance you need in the page’s `constructor`.
 [Styleguidist components]: https://react-styleguidist.js.org/docs/components.html
 [React devtools]: https://github.com/facebook/react-devtools
 [Apollo devtools]: https://github.com/apollographql/apollo-client-devtools
+[graphql-type-json]: https://github.com/taion/graphql-type-json
+[GraphQL aliases]: http://graphql.org/learn/queries/#aliases
+[Highlight Updates]: https://github.com/facebook/react-devtools#does-highlight-updates-trace-renders
