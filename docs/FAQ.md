@@ -13,10 +13,13 @@
   - [How can I easily run the server on a different port?](#how-can-i-easily-run-the-server-on-a-different-port)
   - [Why isn’t my component appearing in the styleguide?](#why-isnt-my-component-appearing-in-the-styleguide)
   - [Why does my code build correctly, but Jest still encounters a syntax error?](#why-does-my-code-build-correctly-but-jest-still-encounters-a-syntax-error)
+  - [How can I inspect the props and state of React components?](#how-can-i-inspect-the-props-and-state-of-react-components)
 - [State Management](#state-management)
   - [Why isn’t there a Redux store with actions, reducers, etc.?](#why-isnt-there-a-redux-store-with-actions-reducers-etc)
+  - [How can I inspect what Apollo is doing?](#how-can-i-inspect-what-apollo-is-doing)
 - [GraphQL](#graphql)
   - [How does the Page schema change depending on the page type?](#how-does-the-page-schema-change-depending-on-the-page-type)
+  - [How can I test out GraphQL queries?](#how-can-i-test-out-graphql-queries)
 - [Miscellaneous](#miscellaneous)
   - [Why do I get an error when trying to return an object from `getInitialProps`?](#why-do-i-get-an-error-when-trying-to-return-an-object-from-getinitialprops)
 
@@ -104,6 +107,12 @@ You need a `.babelrc` file in your package for Jest to transpile the code correc
 Some commands like `build` can just default to the correct Babel configuration, but
 Jest requires `.babelrc`.
 
+### How can I inspect the props and state of React components?
+
+Install the [React Developer Tools][React devtools] and find the component in
+the tree. Note that if you are inspecting components in production, the names
+of components will be shortened due to minification.
+
 ## State Management
 
 ### Why isn’t there a Redux store with actions, reducers, etc.?
@@ -119,6 +128,15 @@ adds an extra way of doing things. You might also consider using the [`withState
 and `withReducer()` functions from Recompose][Recompose withState]
 instead of adopting Redux.
 
+### How can I inspect what Apollo is doing?
+
+Install the [Apollo Client Developer Tools][Apollo devtools] and browse through
+the Queries, Mutations, and Store tabs.
+
+If the Apollo panel seems to have trouble connecting or showing the correct
+information, try closing and reopening the browser’s Developer Tools once the
+page has loaded.
+
 ## GraphQL
 
 ### How does the Page schema change depending on the page type?
@@ -127,6 +145,11 @@ It doesn’t. A single GraphQL schema is used that supports every page type, eve
 when different page types have different slots. In the GraphQL schema, a page’s
 slots aren’t predefined – the `slots` field simply returns a list of all the slots
 that a page happens to have.
+
+### How can I test out GraphQL queries?
+
+Install the [Apollo Client Developer Tools][Apollo devtools] and select the
+GraphiQL tab.
 
 ## Miscellaneous
 
@@ -145,3 +168,5 @@ then recreate whatever class instance you need in the page’s `constructor`.
 [dotenv]: https://www.npmjs.com/package/dotenv
 [dotenv sample]: https://github.com/Haaretz/htz-frontend/blob/master/packages/apps/haaretz.co.il/.env.sample
 [Styleguidist components]: https://react-styleguidist.js.org/docs/components.html
+[React devtools]: https://github.com/facebook/react-devtools
+[Apollo devtools]: https://github.com/apollographql/apollo-client-devtools
