@@ -106,7 +106,16 @@ directory for each package.
 
 Add or update the *Table of Contents* section in any Markdown file with section
 headings. For best results, move the primary document heading and description
-to just before the generated table of contents (before `<!-- START doctoc -->`).
+to just before the generated table of contents:
+
+```markdown
+# Document Title
+
+Brief description.
+
+<!-- START doctoc -->
+...
+```
 
 ### format
 
