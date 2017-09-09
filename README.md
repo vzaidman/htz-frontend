@@ -44,7 +44,7 @@ These packages are managed with [Lerna](https://lernajs.io/) and organized like 
 ### Requirements
 
 * [Node.js](https://nodejs.org/) 8.0.0 or higher.
-* [Yarn](https://yarnpkg.com/en/docs/install) 0.27.0 or higher.
+* [Yarn](https://yarnpkg.com/en/docs/install) 1.0.0 or higher.
 
 ### Setup
 
