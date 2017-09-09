@@ -1,5 +1,20 @@
 # System Overview
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Introduction](#introduction)
+  - [Summary](#summary)
+  - [Terms](#terms)
+    - [Application Server](#application-server)
+    - [CDN](#cdn)
+    - [Page API](#page-api)
+    - [Server-Side Rendering (SSR)](#server-side-rendering-ssr)
+- [Request Lifecycle](#request-lifecycle)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Introduction
 
 ### Summary

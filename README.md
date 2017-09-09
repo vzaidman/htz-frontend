@@ -1,6 +1,29 @@
 # htz-frontend
 
-## Haaretz Frontend Modules
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Packages](#packages)
+- [Documentation](#documentation)
+- [Getting Started](#getting-started)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+- [Scripts](#scripts)
+  - [bootstrap](#bootstrap)
+  - [clean](#clean)
+  - [docs](#docs)
+  - [format](#format)
+  - [lint](#lint)
+  - [sync](#sync)
+  - [update](#update)
+- [Developer Tools](#developer-tools)
+  - [React Developer Tools](#react-developer-tools)
+  - [Apollo Client Developer Tools](#apollo-client-developer-tools)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Packages
 
 These packages are managed with [Lerna](https://lernajs.io/) and organized like so:
 
@@ -67,6 +90,12 @@ package found in the `packages` directory if the dependency version matches.
 
 Remove the `node_modules` directory, built distribution files, and Jest cache
 directory for each package.
+
+### docs
+
+Add or update the *Table of Contents* section in any Markdown file with section
+headings. For best results, move the primary document heading and description
+to just before the generated table of contents (before `<!-- START doctoc -->`).
 
 ### format
 

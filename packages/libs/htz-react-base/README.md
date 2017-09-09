@@ -3,6 +3,25 @@
 Encapsulated development scripts and dependencies for building React apps and
 components.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [build](#build)
+  - [clean](#clean)
+  - [format](#format)
+  - [lint](#lint)
+  - [styleguide](#styleguide)
+  - [styleguide:build](#styleguidebuild)
+  - [test](#test)
+  - [update-scripts](#update-scripts)
+- [Development](#development)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Installation
 
 This module should be installed in `devDependencies`:

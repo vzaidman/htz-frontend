@@ -1,5 +1,27 @@
 # FAQ
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Development](#development)
+  - [Why aren’t my changes in one package being picked up in another?](#why-arent-my-changes-in-one-package-being-picked-up-in-another)
+  - [Why is my package running old versions of the `htz-scripts` tasks?](#why-is-my-package-running-old-versions-of-the-htz-scripts-tasks)
+  - [How do I see what code the Application Server is actually running?](#how-do-i-see-what-code-the-application-server-is-actually-running)
+  - [How do I see the Babel, webpack, Jest, ESLint, etc. configuration?](#how-do-i-see-the-babel-webpack-jest-eslint-etc-configuration)
+  - [Why does it take so long to change pages in development?](#why-does-it-take-so-long-to-change-pages-in-development)
+  - [How can I easily run the server on a different port?](#how-can-i-easily-run-the-server-on-a-different-port)
+  - [Why isn’t my component appearing in the styleguide?](#why-isnt-my-component-appearing-in-the-styleguide)
+  - [Why does my code build correctly, but Jest still encounters a syntax error?](#why-does-my-code-build-correctly-but-jest-still-encounters-a-syntax-error)
+- [State Management](#state-management)
+  - [Why isn’t there a Redux store with actions, reducers, etc.?](#why-isnt-there-a-redux-store-with-actions-reducers-etc)
+- [GraphQL](#graphql)
+  - [How does the Page schema change depending on the page type?](#how-does-the-page-schema-change-depending-on-the-page-type)
+- [Miscellaneous](#miscellaneous)
+  - [Why do I get an error when trying to return an object from `getInitialProps`?](#why-do-i-get-an-error-when-trying-to-return-an-object-from-getinitialprops)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Development
 
 ### Why aren’t my changes in one package being picked up in another?
