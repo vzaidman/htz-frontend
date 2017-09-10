@@ -33,9 +33,8 @@
 
 ### Why aren’t my changes in one package being picked up in another?
 
-Even if you have a dependency like `htz-components` symlinked under `node_modules`,
-your code still might not be importing the latest source files in the symlinked
-package.
+Even if you have a dependency like `htz-components` symlinked in `node_modules`,
+you still might not be importing the latest code from the symlinked package.
 
 This is because regardless of symlinks, import resolution follows the `main`,
 `module`, or `esnext` fields in `package.json` in order to find which files to
@@ -49,10 +48,10 @@ There are two possibilities:
 * The version of `@haaretz/htz-react-base` in your package’s `devDependencies`
   does not align with the version under [packages/libs/htz-react-base][htz-react-base],
   so Lerna has not symlinked it, but installed the matching version from the npm
-  registry.
+  registry instead.
 * You’ve run `yarn install` in your package instead of `yarn run bootstrap` from
-  the repository root, and it doesn’t perform any symlinking, but uses the matching
-  version from the npm registry.
+  the repository root, and it doesn’t perform any symlinking, but installs the
+  matching version from the npm registry instead.
 
 ### How do I see what code the Application Server is actually running?
 
@@ -66,19 +65,20 @@ versions of your files from `.next/dist`, or in some cases has performed in-memo
 transpilation.
 
 The same is true for the production `start` command, except you must manually
-run the `build` command beforehand to run the latest version of your code, and
-it is all written to disk. Check the `.next/dist` directory to see what code
-is actually running.
+run the `build` command beforehand, and it is all written to disk. Check the
+`.next/dist` directory to see what code is actually running.
 
 ### How do I see the Babel, webpack, Jest, ESLint, etc. configuration?
 
 If you are developing an app, most of the Babel and webpack configuration is
 handled by Next.js, and you can explore its [`server/build` directory][Next.js
-server/build] to find the appropriate configuration.
+server/build] to find the appropriate file.
 
 In the case of a component library or other module, the configuration files are
-found in the [`htz-react-base`][htz-react-base] package. You can also check what
-configuration path the `htz-scripts` command is passing to underlying program.
+found in the [`htz-react-base`][htz-react-base] package. You can always check
+what configuration path the relevant `htz-scripts` command is passing to
+underlying program by looking at its source in the [scripts directory][htz-react-base
+scripts].
 
 In the case of Jest, a configuration object is [created directly in the `test`
 script][test script].
@@ -87,8 +87,9 @@ script][test script].
 
 In development, the multiple webpack bundles created by Next.js are built
 on-demand, when your browser requests them. If you browse to a page that
-requires a bundle you haven’t downloaded yet, you’ll have to wait for it to be
-built. In production, all the bundles are pre-built, so you won’t see this delay.
+requires a bundle you haven’t downloaded yet, you’ll have to wait for it to
+build while the page loads. In production, all the bundles are pre-built, so
+you won’t see this delay.
 
 ### How can I easily run the server on a different port?
 
@@ -164,7 +165,7 @@ page has loaded.
 It doesn’t. A single GraphQL schema is used that supports every page type, even
 when different page types have different slots. In the GraphQL schema, a page’s
 slots aren’t predefined – the `slots` field simply returns a list of all the slots
-that a page happens to have.
+that a page happens to have (returned by the Page API).
 
 ### How can I test out GraphQL queries?
 
@@ -196,11 +197,12 @@ the many possible fields seen on different types of content elements.
 
 In general, the props returned from `getInitialProps` should be serializable to
 JSON, because they will be sent in the initial HTML and used to recreate the
-component tree on the client. You might instead return a simple JavaScript object,
+component tree on the client. You might instead return a plain JavaScript object,
 then recreate whatever class instance you need in the page’s `constructor`.
 
 
 [htz-react-base]: https://github.com/Haaretz/htz-frontend/tree/master/packages/libs/htz-react-base
+[htz-react-base scripts]: https://github.com/Haaretz/htz-frontend/tree/master/packages/libs/htz-react-base/scripts
 [Recompose withState]: https://github.com/acdlite/recompose#lift-state-into-functional-wrappers
 [test script]: https://github.com/Haaretz/htz-frontend/blob/master/packages/libs/htz-react-base/scripts/test.js
 [Next.js server/build]: https://github.com/zeit/next.js/tree/master/server/build
