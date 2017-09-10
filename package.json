@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bootstrap": "yarn run clean && yarn run update",
+    "bootstrap": "yarn run clean && yarn run update && lerna exec --no-bail -- yarn run build",
     "clean": "lerna clean --yes && rimraf \"packages/*/*/{.jest,.next,dist}\"",
     "docs": "doctoc --title \"**Table of Contents**\" .",
     "format": "lerna exec --no-bail -- yarn run format",
