@@ -9,6 +9,9 @@
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Setup](#setup)
+- [Authoring Packages](#authoring-packages)
+  - [Adding and removing npm dependencies](#adding-and-removing-npm-dependencies)
+  - [Lifecycle scripts](#lifecycle-scripts)
 - [Scripts](#scripts)
   - [bootstrap](#bootstrap)
   - [clean](#clean)
@@ -76,21 +79,44 @@ $ cd packages/components/htz-components
 $ yarn run styleguide
 ```
 
-## Adding and removing npm dependencies inside packages
-Thanks to Yarn Workspaces and Lerna, adding (installing) npm dependencies inside 
-each of our different packages Just Works™, taking care of hoisting and managing 
+
+## Authoring Packages
+
+### Adding and removing npm dependencies
+
+Thanks to Yarn Workspaces and Lerna, adding (installing) npm dependencies inside
+each of our different packages Just Works™, taking care of hoisting and managing
 common dependencies.
 
-However, there is currently [a bug](https://github.com/yarnpkg/yarn/issues/4334) 
+However, there is currently [a bug](https://github.com/yarnpkg/yarn/issues/4334)
 that occurs when running `yarn remove` inside a workspace directory.
 Until this is resolved, a temporary workaround for uninstalling dependencies
-would be to manually remove the undesired dependency from the workspace's `package.json`
+would be to manually remove the undesired dependency from the workspace’s `package.json`
 and run `yarn` from the root directory.
+
+### Lifecycle scripts
+
+If your package is consumed as a dependency, it should include the standard
+lifecycle script `prepare` to perform any necessary build tasks. This will
+often look like (in `package.json`):
+
+```json
+  "scripts": {
+    "prepare": "npm run build"
+  }
+```
+
+* In lifecycle scripts, you should run tasks with `npm`, because anyone might
+  be installing it from the public npm registry, and they don’t necessarily have
+  Yarn installed.
+* Apps usually don’t need to be built in a lifecycle script, because they are not
+  consumed as dependencies. Instead, they should be built upon deployment.
 
 ## Scripts
 
-These are found in [package.json](package.json) and may be run with `yarn run <script>`
-or `npm run <script>`.
+These are found in the root [package.json](package.json) and may be run with
+`yarn run <script>` or `npm run <script>`. If you are looking for the individual
+package scripts provided by `htz-react-base`, [see its README](packages/libs/htz-react-base).
 
 ### bootstrap
 
@@ -119,11 +145,13 @@ Brief description.
 
 ### format
 
-Run the [format](packages/libs/htz-react-base#format) script in every package.
+Format files in the root package, then run the [format](packages/libs/htz-react-base#format)
+script in every package.
 
 ### lint
 
-Run the [lint](packages/libs/htz-react-base#lint) script in every package.
+Lint files in the root package, then run the [lint](packages/libs/htz-react-base#lint)
+script in every package.
 
 ### sync
 
