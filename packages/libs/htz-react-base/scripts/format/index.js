@@ -10,8 +10,8 @@ function getFileList() {
   return globby.sync(
     [
       '**/*.{js,jsx}',
-      '!**/{.jest,.next,dist,node_modules}/**',
-      '!./{.jest,.next,dist,node_modules}/**',
+      '!**/{.jest,.next,dist,node_modules,packages}/**',
+      '!./{.jest,.next,dist,node_modules,packages}/**',
     ],
     { dot: true, }
   );
