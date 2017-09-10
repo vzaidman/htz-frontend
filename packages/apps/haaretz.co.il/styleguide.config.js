@@ -1,5 +1,5 @@
 const { configure, } = require('@haaretz/htz-react-base/styleguide');
-const htzComponentsPath = require('path').dirname(require.resolve('@haaretz/htz-components'));
+const htzComponentsPath = require('path').dirname(require.resolve('@haaretz/htz-components/package.json'));
 
 // When passed an object, `configure` will do a (shallow) extend of the default
 // config. If you need to extend a particular value (e.g. `styleguideComponents`),
@@ -17,7 +17,7 @@ module.exports = configure({
     {
       name: 'Shared Components',
       components:
-        `${htzComponentsPath}/../esnext/{,src}/**/[A-Z]*.{js,jsx}`,
+        `${htzComponentsPath}/src/**/[A-Z]*.{js,jsx}`,
     },
   ],
 });
