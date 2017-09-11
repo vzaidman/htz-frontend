@@ -8,7 +8,7 @@
   - [Why aren’t my changes in one package being picked up in another?](#why-arent-my-changes-in-one-package-being-picked-up-in-another)
   - [Why is my package running old versions of the `htz-scripts` tasks?](#why-is-my-package-running-old-versions-of-the-htz-scripts-tasks)
   - [How do I see what code the Application Server is actually running?](#how-do-i-see-what-code-the-application-server-is-actually-running)
-  - [How do I see the Babel, webpack, Jest, ESLint, etc. configuration?](#how-do-i-see-the-babel-webpack-jest-eslint-etc-configuration)
+  - [How do I see the configuration for Babel, webpack, Jest, ESLint, etc.?](#how-do-i-see-the-configuration-for-babel-webpack-jest-eslint-etc)
   - [Why does it take so long to change pages in development?](#why-does-it-take-so-long-to-change-pages-in-development)
   - [How can I easily run the server on a different port?](#how-can-i-easily-run-the-server-on-a-different-port)
   - [Why isn’t my component appearing in the styleguide?](#why-isnt-my-component-appearing-in-the-styleguide)
@@ -68,7 +68,7 @@ The same is true for the production `start` command, except you must manually
 run the `build` command beforehand, and it is all written to disk. Check the
 `.next/dist` directory to see what code is actually running.
 
-### How do I see the Babel, webpack, Jest, ESLint, etc. configuration?
+### How do I see the configuration for Babel, webpack, Jest, ESLint, etc.?
 
 If you are developing an app, most of the Babel and webpack configuration is
 handled by Next.js, and you can explore its [`server/build` directory][Next.js
@@ -76,7 +76,7 @@ server/build] to find the appropriate file.
 
 In the case of a component library or other module, the configuration files are
 found in the [`htz-react-base`][htz-react-base] package. You can always check
-what configuration path the relevant `htz-scripts` command is passing to
+what configuration path the relevant `htz-scripts` command is passing to the
 underlying program by looking at its source in the [scripts directory][htz-react-base
 scripts].
 
