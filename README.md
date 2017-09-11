@@ -58,7 +58,7 @@ $ git@github.com:Haaretz/htz-frontend.git
 $ cd htz-frontend
 ```
 
-Use [Yarn](https://yarnpkg.com/) to install Lerna:
+Use [Yarn](https://yarnpkg.com/) to install Lerna and other dependencies:
 
 ```console
 $ yarn
