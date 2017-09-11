@@ -54,7 +54,7 @@ These packages are managed with [Lerna](https://lernajs.io/) and organized like 
 Clone this repo:
 
 ```console
-$ git@github.com:Haaretz/htz-frontend.git
+$ git clone git@github.com:Haaretz/htz-frontend.git
 $ cd htz-frontend
 ```
 
