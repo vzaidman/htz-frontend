@@ -9,12 +9,6 @@ if (!args.length) {
   process.argv.push('.');
 }
 
-// If no --config parameter is specified, use the default from this module.
-if (!args.some(arg => arg.match(/^-(c|-config)(=|$)/))) {
-  const config = require.resolve('../eslint');
-  process.argv.push('--config', config);
-}
-
 // If no --ignore-pattern parameter is specified, use this default.
 // The typical `eslintignore` files and locations will be considered in addition
 // to this parameter.

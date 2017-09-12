@@ -9,6 +9,7 @@
   - [Why is my package running old versions of the `htz-scripts` tasks?](#why-is-my-package-running-old-versions-of-the-htz-scripts-tasks)
   - [How do I see what code the Application Server is actually running?](#how-do-i-see-what-code-the-application-server-is-actually-running)
   - [How do I see the configuration for Babel, webpack, Jest, ESLint, etc.?](#how-do-i-see-the-configuration-for-babel-webpack-jest-eslint-etc)
+  - [How can my package extend the configuration for Babel, webpack, Jest, ESLint, etc.?](#how-can-my-package-extend-the-configuration-for-babel-webpack-jest-eslint-etc)
   - [Why does it take so long to change pages in development?](#why-does-it-take-so-long-to-change-pages-in-development)
   - [How can I easily run the server on a different port?](#how-can-i-easily-run-the-server-on-a-different-port)
   - [Why isn’t my component appearing in the styleguide?](#why-isnt-my-component-appearing-in-the-styleguide)
@@ -71,18 +72,96 @@ run the `build` command beforehand, and it is all written to disk. Check the
 
 ### How do I see the configuration for Babel, webpack, Jest, ESLint, etc.?
 
-If you are developing an app, most of the Babel and webpack configuration is
-handled by Next.js, and you can explore its [`server/build` directory][Next.js
-server/build] to find the appropriate file.
+**Babel**
 
-In the case of a component library or other module, the configuration files are
-found in the [`htz-react-base`][htz-react-base] package. You can always check
-what configuration path the relevant `htz-scripts` command is passing to the
-underlying program by looking at its source in the [scripts directory][htz-react-base
-scripts].
+Check the package’s `.babelrc` file or the `babel` field in its `package.json`.
+If there is no such file or field, then apps will use the preset from Next.js
+and libraries will use the preset from [`htz-react-base`][htz-react-base].
 
-In the case of Jest, a configuration object is [created directly in the `test`
-script][test script].
+To see what is included in the `next/babel` preset, you can explore the Next.js
+[`server/build` directory][Next.js server/build].
+
+**webpack**
+
+For apps, check the `webpack` field in the `next.config.js` file, which will
+contain any overrides and extensions. If there is no such file, or you’re looking
+for the base configuration being extended, you can explore the Next.js
+[`server/build` directory][Next.js server/build].
+
+For libraries, check the `webpackConfig` field in the `styleguide.config.js` file,
+which is normally the only place webpack is used in such packages. If there is
+no such file, look for the default in [`htz-react-base`][htz-react-base].
+
+**Jest**
+
+Check the package’s `jest.config.js` file or the `jest` field in its `package.json`,
+which will contain any overrides and extensions. If there is no such file or field,
+or you’re looking for the base configuration being extended, check the [`test`
+script][test script] in [`htz-react-base`][htz-react-base].
+
+Jest can print its entire configuration with `--showConfig`, like so:
+
+```console
+$ yarn run test -- --showConfig
+```
+
+**ESLint**
+
+Check the package for a file starting with `.eslintrc`, or check its `package.json`
+for an `eslintConfig` field. If there is no such file or field, ESLint will
+traverse parent directories until it finds the root package’s configuration,
+which points to the one provided by [`htz-react-base`][htz-react-base].
+
+ESLint can print its entire configuration for a specific file with
+`--print-config`, like so:
+
+```console
+$ yarn run lint -- --print-config ./path/to/file.js
+```
+
+### How can my package extend the configuration for Babel, webpack, Jest, ESLint, etc.?
+
+**Babel**
+
+Include a `.babelrc` file in the root of your package. See the [babelrc][] docs.
+
+* If your package is a reusable library, you probably want to include
+  `@haaretz/htz-react-base/babel.js` in the `presets` field.
+* If your package is an app, you probably want to include `next/babel` in the
+  `presets` field.
+
+**webpack**
+
+* If your package is a reusable library, it usually doesn’t need to concern itself
+  with webpack, but you might want to extend the webpack configuration used by
+  the styleguide. You can use the `webpackConfig` option in `styleguide.config.js`.
+  See the relevant [Styleguidist docs][Styleguidist webpack]. Don’t forget to
+  extend any existing configuration already provided by `htz-react-base`.
+* If your package is an app, you can use the `webpack` option in `next.config.js`.
+  See the relevant [Next.js docs][Next.js webpack].
+
+**Jest**
+
+* Add a `jest.config.js` file to the root of your package (preferred), or a
+  `jest` field to your `package.json`. It will be used to extend the default
+  configuration used by the `test` script. See the relevant [Jest docs][Jest
+  config].
+
+**ESlint**
+
+* Add a `.eslintrc.js` file to the root of your package (preferred), use one of
+  the many other file formats ESLint supports, or add an `eslintConfig` field
+  to your `package.json`. See the relevant [ESLint docs][ESLint config].
+* To extend the default config provided by [`htz-react-base`][htz-react-base],
+  use `extends` like so:
+  ```js
+  module.exports = {
+    extends: require.resolve('@haaretz/htz-react-base/eslint'),
+  };
+  ```
+* If you do **not** want ESLint to find the root package’s ESLint config, tell
+  ESLint that your package is the topmost directory it should check by adding
+  `root: true` to your config.
 
 ### Why does it take so long to change pages in development?
 
@@ -218,13 +297,18 @@ docs for more details.
 [Recompose withState]: https://github.com/acdlite/recompose#lift-state-into-functional-wrappers
 [test script]: https://github.com/Haaretz/htz-frontend/blob/master/packages/libs/htz-react-base/scripts/test.js
 [Next.js server/build]: https://github.com/zeit/next.js/tree/master/server/build
+[Next.js webpack]: https://github.com/zeit/next.js#customizing-webpack-config
 [dotenv]: https://www.npmjs.com/package/dotenv
 [dotenv sample]: https://github.com/Haaretz/htz-frontend/blob/master/packages/apps/haaretz.co.il/.env.sample
 [Styleguidist components]: https://react-styleguidist.js.org/docs/components.html
+[Styleguidist webpack]: https://react-styleguidist.js.org/docs/webpack.html
 [React devtools]: https://github.com/facebook/react-devtools
 [Apollo devtools]: https://github.com/apollographql/apollo-client-devtools
 [graphql-type-json]: https://github.com/taion/graphql-type-json
 [GraphQL aliases]: http://graphql.org/learn/queries/#aliases
 [Highlight Updates]: https://github.com/facebook/react-devtools#does-highlight-updates-trace-renders
+[babelrc]: https://babeljs.io/docs/usage/babelrc/
+[Jest config]: https://facebook.github.io/jest/docs/en/configuration.html
+[ESLint config]: https://eslint.org/docs/user-guide/configuring
 [node-config]: https://github.com/lorenwest/node-config
 [node-config Configuration Files]: https://github.com/lorenwest/node-config/wiki/Configuration-Files
