@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<button>
-  Click here
-</button>
+Object {
+  "component": <button
+    className="htz-a"
+>
+    Click here
+</button>,
+  "styles": ".htz-a {
+  outline: 1px solid #09a5d9;
+}",
+}
 `;

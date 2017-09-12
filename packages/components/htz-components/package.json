@@ -29,6 +29,7 @@
     "react-fela": "^5.2.1"
   },
   "dependencies": {
+    "config": "^1.26.2",
     "fela-beautifier": "^5.0.6",
     "fela-dom": "^5.0.7",
     "fela-perf": "^5.0.2",
@@ -44,7 +45,8 @@
     "fela-plugin-validator": "^5.0.6",
     "fela-preset-web": "^5.0.7",
     "fela-statistics": "^5.0.6",
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "serialize-javascript": "^1.4.0"
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^0.1.0",

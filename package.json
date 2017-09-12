@@ -32,6 +32,14 @@
     "yarn": "^1.0.0"
   },
   "syncDependencies": {
+    "packages/libs/htz-react-base": {
+      "devDependencies": {
+        "react-test-renderer": "^15.6.1"
+      },
+      "peerDependencies": {
+        "react-test-renderer": "^15.6.1 || ^16.0.0-0"
+      }
+    },
     "packages/{libs/htz-react-base,components/*}": {
       "devDependencies": {
         "react": "^15.6.1",
@@ -46,7 +54,8 @@
         "prop-types": "^15.5.10"
       },
       "devDependencies": {
-        "@haaretz/htz-react-base": "^0.1.0"
+        "@haaretz/htz-react-base": "^0.1.0",
+        "react-test-renderer": "^15.6.1"
       }
     },
     "packages/{apps}/*": {

@@ -2,6 +2,9 @@
 
 const path = require('path');
 const resolveFrom = require('resolve-from');
+const config = require('config');
+const webpack = require('webpack');
+const serialize = require('serialize-javascript');
 
 const Wrapper = resolveFrom.silent(
   process.cwd(),
@@ -62,18 +65,16 @@ module.exports = {
   contextDependencies: [
     path.join(process.cwd(), 'components'),
     path.join(process.cwd(), 'src', 'components'),
-    path.join(
-      process.cwd(),
-      'node_modules',
-      '@haaretz',
-      'htz-components',
-      'src'
-    ),
   ],
   styleguideDir: path.join(process.cwd(), 'dist', 'styleguide'),
   // Ideally, we'd be able to use Next's webpack config, so everything works
   // the same when used in a Next app, but they don't expose it.
   webpackConfig: {
+    resolve: {
+      alias: {
+        config$: require.resolve('./webpack/configShim'),
+      },
+    },
     module: {
       rules: [
         {
@@ -84,5 +85,16 @@ module.exports = {
         },
       ],
     },
+    plugins: [
+      new webpack.DefinePlugin({
+        // The only module that should be accessing this directly is
+        // `./webpack/browserConfig` - this provides an easy way to get this
+        // value into the shimmed `config` module.
+        // NOTE: webpack already has support for stringifying an object value
+        // provided here, but we want to make sure it serializes it the exact
+        // same way that a real app will, using `serialize-javascript`.
+        'window.__HTZ_DATA__': serialize({ config, }),
+      }),
+    ],
   },
 };

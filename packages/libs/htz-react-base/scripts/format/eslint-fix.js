@@ -18,7 +18,15 @@ if (result.signal) {
 
 if (result.status) {
   let hasFatalError = false;
-  JSON.parse(result.stdout).forEach(file => {
+  let files;
+  try {
+    files = JSON.parse(result.stdout);
+  }
+  catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
+  files.forEach(file => {
     if (file.errorCount) {
       file.messages.forEach(message => {
         if (message.fatal) {

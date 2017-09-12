@@ -58,6 +58,8 @@ module.exports = {
       'LabeledStatement',
       'WithStatement',
     ],
+    /* Allow __HTZ_DATA__ name */
+    'no-underscore-dangle': [ 'error', { allow: [ '__HTZ_DATA__', ], }, ],
 
     /* eslint/import related rules */
     'import/no-extraneous-dependencies': [

@@ -3,6 +3,7 @@
 ## Table of Contents
 
 * [System Overview](SystemOverview.md)
+* [Configuration](Configuration.md)
 * [FAQ](FAQ.md)
 
 

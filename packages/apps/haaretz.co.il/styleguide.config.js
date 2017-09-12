@@ -1,5 +1,9 @@
+const path = require('path');
 const { configure, } = require('@haaretz/htz-react-base/styleguide');
-const htzComponentsPath = require('path').dirname(require.resolve('@haaretz/htz-components/package.json'));
+
+const htzComponentsPath = path.dirname(
+  require.resolve('@haaretz/htz-components/package.json')
+);
 
 // When passed an object, `configure` will do a (shallow) extend of the default
 // config. If you need to extend a particular value (e.g. `styleguideComponents`),
@@ -7,17 +11,21 @@ const htzComponentsPath = require('path').dirname(require.resolve('@haaretz/htz-
 // object and the value. The first argument will be the default config. Note
 // that Babel syntax like object rest spread can't be used here.
 
-module.exports = configure({
-  title: 'haaretz.co.il Components',
-  sections: [
-    {
-      name: 'Site Components',
-      components: 'components/**/[A-Z]*.{js,jsx}',
-    },
-    {
-      name: 'Shared Components',
-      components:
-        `${htzComponentsPath}/src/**/[A-Z]*.{js,jsx}`,
-    },
-  ],
-});
+module.exports = configure(config =>
+  Object.assign(config, {
+    title: 'haaretz.co.il Components',
+    sections: [
+      {
+        name: 'Site Components',
+        components: 'components/**/[A-Z]*.{js,jsx}',
+      },
+      {
+        name: 'Shared Components',
+        components: `${htzComponentsPath}/src/**/[A-Z]*.{js,jsx}`,
+      },
+    ],
+    contextDependencies: config.contextDependencies.concat([
+      path.join(htzComponentsPath, 'src'),
+    ]),
+  })
+);

@@ -26,6 +26,7 @@
   - [How do I represent an object with arbitrary keys and values in the schema?](#how-do-i-represent-an-object-with-arbitrary-keys-and-values-in-the-schema)
 - [Miscellaneous](#miscellaneous)
   - [Why do I get an error when trying to return an object from `getInitialProps`?](#why-do-i-get-an-error-when-trying-to-return-an-object-from-getinitialprops)
+  - [Why do I get “WARNING: No configurations found in configuration directory”?](#why-do-i-get-warning-no-configurations-found-in-configuration-directory)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -200,6 +201,17 @@ JSON, because they will be sent in the initial HTML and used to recreate the
 component tree on the client. You might instead return a plain JavaScript object,
 then recreate whatever class instance you need in the page’s `constructor`.
 
+### Why do I get “WARNING: No configurations found in configuration directory”?
+
+[node-config][] will print this warning when none of the files in the `config`
+directory match your environment variables (typically, it should find a filename
+matching the current `NODE_ENV` value, or at least a `default.js` file) – but
+also when the matching configuration is just an empty JavaScript object. In both
+circumstances, node-config will export an empty config object. This is not a
+problem unless you were expecting a different, populated config object to be
+loaded. See the node-config [Configuration Files][node-config Configuration Files]
+docs for more details.
+
 
 [htz-react-base]: https://github.com/Haaretz/htz-frontend/tree/master/packages/libs/htz-react-base
 [htz-react-base scripts]: https://github.com/Haaretz/htz-frontend/tree/master/packages/libs/htz-react-base/scripts
@@ -214,3 +226,5 @@ then recreate whatever class instance you need in the page’s `constructor`.
 [graphql-type-json]: https://github.com/taion/graphql-type-json
 [GraphQL aliases]: http://graphql.org/learn/queries/#aliases
 [Highlight Updates]: https://github.com/facebook/react-devtools#does-highlight-updates-trace-renders
+[node-config]: https://github.com/lorenwest/node-config
+[node-config Configuration Files]: https://github.com/lorenwest/node-config/wiki/Configuration-Files

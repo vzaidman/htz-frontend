@@ -16,7 +16,12 @@ const defaultConfig = {
   transformIgnorePatterns: [ '[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$', ],
   // Jest's default test matcher thinks this is a test file because of the
   // name and throws an error, so ignore it.
-  testPathIgnorePatterns: [ '/node_modules/', '/dist/', '/scripts/test.js', ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/dist/',
+    '/scripts/test.js',
+    '/config/test.js',
+  ],
 };
 // Allow overrides from package.json.
 const config = Object.assign({}, defaultConfig, packageInfo.jest);
