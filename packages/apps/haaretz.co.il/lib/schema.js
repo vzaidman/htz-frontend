@@ -10,7 +10,7 @@ import GraphQLJSON from 'graphql-type-json';
 
 const typeDefs = `
   type Query {
-    page(pathname: String!, contentId: ID): Page
+    page(path: String!): Page
   }
 
   interface ContentInterface {
@@ -78,13 +78,7 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    page: (root, args, context) => {
-      const { pathname, contentId, } = args;
-      return context.pageLoader.load({
-        pathname,
-        contentId,
-      });
-    },
+    page: (root, args, context) => context.pageLoader.load(args.path),
   },
   Content: {
     properties: (content, args, context) => {

@@ -70,7 +70,7 @@ export function Breadcrumbs({ page, styles, }) {
           <Link
             href={{
               pathname: '/',
-              query: { contentId: taxonomyItem.contentId, },
+              query: { path: taxonomyItem.url, },
             }}
             as={taxonomyItem.url}
             key={taxonomyItem.contentId}

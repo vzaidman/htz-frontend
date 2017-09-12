@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function TopNav() {
   return (
     <nav>
-      <Link href="/">
+      <Link as="/" href={{ pathname: '/', query: { path: '/', }, }}>
         <a>Home</a>
       </Link>{' '}
       <Link
@@ -12,9 +12,7 @@ export default function TopNav() {
         href={{
           pathname: '/',
           query: {
-            section: 'news/world/asia',
-            contentId: '1.5527',
-            tier: 'premium',
+            path: '/news/world/asia/.premium-1.5527',
           },
         }}
       >

@@ -11,8 +11,8 @@ import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import Slot from '../components/Slot/Slot';
 
 const PageData = gql`
-  query PageData($pathname: String!, $contentId: ID) {
-    page(pathname: $pathname, contentId: $contentId) {
+  query PageData($path: String!) {
+    page(path: $path) {
       pageType
       contentId
       contentName
@@ -46,9 +46,7 @@ const propTypes = {
   url: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
     query: PropTypes.shape({
-      section: PropTypes.string,
-      contentId: PropTypes.string,
-      tier: PropTypes.oneOf([ 'free', 'premium', ]),
+      path: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
@@ -114,8 +112,7 @@ MainLayout.defaultProps = defaultProps;
 export default graphql(PageData, {
   options: props => ({
     variables: {
-      pathname: props.url.pathname,
-      contentId: props.url.query.contentId,
+      path: props.url.query.path,
     },
   }),
 })(MainLayout);

@@ -13,33 +13,26 @@ let contextLoaders;
 export function createLoaders() {
   // By default, `DataLoader` just caches the results forever, but we should
   // eventually expunge them from the cache.
-  const pageLoader = new DataLoader(
-    keys =>
-      Promise.all(
-        keys.map(({ pathname, contentId, }) => {
-          // Until we switch to `fetch()` here, use `import()` on the local fixture.
-          // These `import()` calls need to be static paths or Next will blow up.
-          switch (pathname) {
-            case '/': {
-              if (!contentId) {
-                return import('../fixtures/home.json');
-              }
-              if (contentId === '1.5527') {
-                return import('../fixtures/article.json');
-              }
-            }
-            // Intentionally fall through to default case.
-            // eslint-disable-next-line no-fallthrough
-            default: {
-              return Promise.reject(new Error('Not Found'));
-            }
+  const pageLoader = new DataLoader(keys =>
+    Promise.all(
+      keys.map(path => {
+        // Until we switch to `fetch()` here, use `import()` on the local fixture.
+        // These `import()` calls need to be static paths or Next will blow up.
+        switch (path) {
+          case '/': {
+            return import('../fixtures/home.json');
           }
-        })
-      ),
-    {
-      cacheKeyFn: ({ pathname, contentId, }) =>
-        (contentId ? `${pathname}:${contentId}` : pathname),
-    }
+          case '/news/world/asia/.premium-1.5527': {
+            return import('../fixtures/article.json');
+          }
+          // Intentionally fall through to default case.
+          // eslint-disable-next-line no-fallthrough
+          default: {
+            return Promise.reject(new Error('Not Found'));
+          }
+        }
+      })
+    )
   );
   return { pageLoader, };
 }
