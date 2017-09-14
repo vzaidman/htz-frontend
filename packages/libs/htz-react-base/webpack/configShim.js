@@ -1,3 +1,4 @@
+/* eslint-disable no-var, prefer-template */
 /**
  * This is a browser shim for the `config` module. It reads configuration
  * from `./appData`, which reads it from `window.__HTZ_DATA__`, which can either
@@ -22,12 +23,13 @@ var config = require('./appData').config || {};
 function getSafe(obj, property) {
   var keys = Array.isArray(property) ? property : property.split('.');
   var value = obj;
+  var key;
   while (keys.length) {
     if (value === null || typeof value !== 'object') {
       value = undefined;
       break;
     }
-    var key = keys.shift();
+    key = keys.shift();
     value = value[key];
   }
   return value;

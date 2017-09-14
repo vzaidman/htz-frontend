@@ -4,6 +4,7 @@
 
 * [System Overview](SystemOverview.md)
 * [Configuration](Configuration.md)
+* [Service Workers](ServiceWorkers.md)
 * [FAQ](FAQ.md)
 
 

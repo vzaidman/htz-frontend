@@ -1,4 +1,5 @@
 /* global window */
+/* eslint-disable no-var */
 /**
  * NOTE: Since this file does not currently get transpiled, it must use syntax
  * that UglifyJS supports.
