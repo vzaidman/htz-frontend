@@ -50,7 +50,6 @@ These packages are managed with [Lerna](https://lernajs.io/) and organized like 
   * [htz-react-base](packages/libs/htz-react-base) – Development helpers.
   * [htz-react-server](packages/libs/htz-react-server) – Application server.
 
-
 ## Documentation
 
 * For help with individual packages, use the links to those packages above.
