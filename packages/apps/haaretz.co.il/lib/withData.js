@@ -3,8 +3,7 @@ import Error from 'next/error';
 import PropTypes from 'prop-types';
 import { ApolloProvider, getDataFromTree, } from 'react-apollo';
 import Head from 'next/head';
-import Cookies from 'universal-cookie';
-import createClient, { createContext, } from './createClient';
+import createClient from './createClient';
 
 export const pagePropTypes = {
   /* eslint-disable react/forbid-prop-types */
@@ -68,10 +67,7 @@ export default Component => {
       // Run all GraphQL queries in the component tree, extract the resulting
       // data, and save it as the initial state.
       if (!process.browser) {
-        const cookies = new Cookies(context.req.headers.cookie || '');
-        const apolloClient = createClient({
-          context: createContext({ url, cookies, }),
-        });
+        const apolloClient = createClient();
         try {
           await getDataFromTree(
             <ApolloProvider client={apolloClient}>
@@ -118,8 +114,6 @@ export default Component => {
     constructor(props) {
       super(props);
       const { serverState, } = this.props;
-      // Don't pass `context`, because on the client we want it to be created
-      // for each query so that properties like `url` and `cookies` are up-to-date.
       this.apolloClient = createClient({ initialState: serverState, });
     }
 

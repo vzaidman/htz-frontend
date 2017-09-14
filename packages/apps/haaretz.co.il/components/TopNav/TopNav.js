@@ -8,11 +8,11 @@ export default function TopNav() {
         <a>Home</a>
       </Link>{' '}
       <Link
-        as="/news/world/asia/.premium-1.5527"
+        as="/.premium-1.1204"
         href={{
           pathname: '/',
           query: {
-            path: '/news/world/asia/.premium-1.5527',
+            path: '/.premium-1.1204',
           },
         }}
       >
