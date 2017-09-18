@@ -1,0 +1,35 @@
+{
+  "name": "@haaretz/htz-react-server",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "main": "dist/lib/index.js",
+  "bin": "./bin/htz-react-server.js",
+  "scripts": {
+    "build": "htz-scripts build:lib",
+    "clean": "htz-scripts clean",
+    "format": "htz-scripts format",
+    "lint": "htz-scripts lint",
+    "prepare": "npm run build",
+    "styleguide": "htz-scripts styleguide",
+    "styleguide:build": "htz-scripts styleguide:build",
+    "test": "htz-scripts test"
+  },
+  "peerDependencies": {
+    "next": "^3.2.1"
+  },
+  "dependencies": {
+    "compression": "^1.7.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "helmet": "^3.8.1",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "@haaretz/htz-react-base": "^0.1.0",
+    "next": "^3.2.1"
+  }
+}

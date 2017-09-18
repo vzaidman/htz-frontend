@@ -36,6 +36,7 @@ These packages are managed with [Lerna](https://lernajs.io/) and organized like 
   * [htz-components](packages/components/htz-components) – Components and other shared parts.
 * [Libraries](packages/libs) – Helpers, utilities, and any other shared code.
   * [htz-react-base](packages/libs/htz-react-base) – Development helpers.
+  * [htz-react-server](packages/libs/htz-react-server) – Application server.
 
 ## Documentation
 
