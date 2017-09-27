@@ -11,7 +11,7 @@
 
 // These are always applied, because they are outside the scope of
 // `babel-preset-env` until such transforms are official.
-const presets = [ 'react', ];
+const presets = [ 'react', 'flow', ];
 const plugins = [ 'transform-object-rest-spread', 'transform-class-properties', ];
 const ignore = [];
 
@@ -57,6 +57,7 @@ switch (process.env.BABEL_ENV) {
   // handle syntax with as few transforms pre-applied as possible. Additional
   // transpilation will be necessary (via `babel-loader`), but consuming apps
   // can decide what to do for themselves.
+  // TODO: Consider concatenating to single file using rollup, for better tree shaking by consumers (reexports are't well tree-shaken yet)
   case 'esnext':
   default:
     break;

@@ -5,6 +5,7 @@ const SCRIPTS = {
   build: 'htz-scripts build',
   clean: 'htz-scripts clean',
   format: 'htz-scripts format',
+  flow: 'htz-scrips flow',
   lint: 'htz-scripts lint',
   prepare: 'npm run build',
   test: 'htz-scripts test',
