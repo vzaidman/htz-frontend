@@ -1,13 +1,22 @@
 module.exports = {
   /* Extend airbnb's style-guide enforcement */
   extends: 'airbnb',
-
+  plugins: [ 'jsdoc', ],
   parser: 'babel-eslint',
 
   rules: {
     'brace-style': [ 2, 'stroustrup', { allowSingleLine: true, }, ],
     /* Warn about long line */
-    'max-len': [ 1, 100, 2, ],
+    'max-len': [ 'warn', {
+      code: 100,
+      comments: 110,
+      tabWidth: 2,
+      ignoreComments: false,
+      ignoreUrls: true,
+      ignoreStrings: true,
+      ignoreTemplateLiterals : true,
+      ignoreRegExpLiterals: true,
+    }],
     /* Warn about use of console */
     'no-console': [ 'off', ],
     /* Warn about use of debugger */
@@ -28,14 +37,28 @@ module.exports = {
     /* Warn when declaring a variable without using it */
     'no-unused-vars': [ 1, { vars: 'local', args: 'none', }, ],
     'no-warning-comments': [ 1, { terms: [ 'fixme', 'todo', ], location: 'start', }, ],
-    'valid-jsdoc': [
-      2,
-      {
-        requireReturn: false,
-        requireParamDescription: false,
-        requireReturnDescription: false,
-      },
-    ],
+    /* JSDoc rules */
+    'jsdoc/check-param-names': 1,
+    'jsdoc/check-tag-names': 0,
+    'jsdoc/check-types': 0,
+    'jsdoc/newline-after-description': 0,
+    'jsdoc/require-description-complete-sentence': 0,
+    'jsdoc/require-example': 0,
+    'jsdoc/require-hyphen-before-param-description': 0,
+    'jsdoc/require-param': 1,
+    'jsdoc/require-param-description': 0,
+    'jsdoc/require-param-type': 0,
+    'jsdoc/require-returns-description': 0,
+    'jsdoc/require-returns-type': 0,
+    // 'valid-jsdoc': 0,
+    // 'valid-jsdoc': [
+    //   2,
+    //   {
+    //     requireReturn: false,
+    //     requireParamDescription: false,
+    //     requireReturnDescription: false,
+    //   },
+    // ],
     /* Opinionated comma dangling rules */
     'comma-dangle': [
       'error',
@@ -89,7 +112,7 @@ module.exports = {
 
   overrides: [
     {
-      files: [ '*.test.js', ],
+      files: [ '**/__tests__/*.js', '*.test.js', ],
       plugins: [ 'jest', ],
       env: {
         jest: true,
