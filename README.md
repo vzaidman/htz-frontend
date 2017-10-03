@@ -163,6 +163,11 @@ field of [package.json](package.json), in order to make across-the-board upgrade
 
 Like `bootstrap`, but doesn’t `clean` first.
 
+### update-packages-scripts
+
+Sync the `scripts` property in each package with the latest version of `htz-scripts`
+
+
 ## Developer Tools
 
 ### [React Developer Tools](https://github.com/facebook/react-devtools)

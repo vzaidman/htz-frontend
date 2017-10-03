@@ -16,7 +16,8 @@
     "lint:packages": "lerna exec --no-bail -- yarn run lint",
     "lint:self": "node packages/libs/htz-react-base/bin/htz-scripts.js lint",
     "sync": "node scripts/sync.js",
-    "update": "lerna bootstrap"
+    "update": "lerna bootstrap",
+    "update-packages-scripts": "lerna exec --no-bail --loglevel verbose --ignore @haaretz/htz-react-base -- yarn run update-scripts"
   },
   "repository": {
     "type": "git",
