@@ -80,7 +80,7 @@ checkDir('pages').then(isDir => {
         console.error('Could not determine how to build the current package.');
         console.error('* To build a Next.js app, add a `pages` directory.');
         console.error(
-          '* To build a consumable library, add a `src` directory.'
+          '* To build a consumable library, add an `src` directory.'
         );
         process.exit(1);
       }

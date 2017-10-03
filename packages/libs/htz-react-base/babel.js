@@ -68,6 +68,7 @@ switch (process.env.NODE_ENV) {
     break;
   default:
     ignore.push('**/*.{spec,test}.{js,jsx}');
+    ignore.push('**/{__tests__/,__mocks__/,__snapshots__/}');
 }
 
 module.exports = {
