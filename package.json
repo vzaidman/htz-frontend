@@ -8,6 +8,7 @@
     "bootstrap": "yarn run clean && yarn run update && lerna run prepare",
     "clean": "lerna clean --yes && rimraf \"packages/*/*/{.jest,.next,dist}\"",
     "docs": "doctoc --title \"**Table of Contents**\" .",
+    "flow": "lerna exec --no-bail --ignore @haaretz/htz-react-base -- yarn run flow check",
     "format": "yarn run format:self && yarn run format:packages",
     "format:packages": "lerna exec --no-bail -- yarn run format",
     "format:self": "node packages/libs/htz-react-base/bin/htz-scripts.js format",

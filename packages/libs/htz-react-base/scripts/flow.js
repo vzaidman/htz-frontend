@@ -1,8 +1,9 @@
 const fs = require('fs');
 
+const noRunIndex = process.argv.indexOf('--no-run');
 const flowconfig = './.flowconfig';
 
-if (!fs.existsSync(flowConfig)) {
+if (!fs.existsSync(flowconfig)) {
   console.log('Initializing flow...');
   const flowconfigString = `[ignore]
 
@@ -17,4 +18,7 @@ if (!fs.existsSync(flowConfig)) {
   fs.writeFileSync(flowconfig, flowconfigString);
 }
 
-require('flow-bin/bin/cli');
+// Remove the `--no-run` argument
+if (noRunIndex === -1) {
+  require('flow-bin/cli');
+}

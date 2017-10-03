@@ -5,12 +5,13 @@ const SCRIPTS = {
   build: 'htz-scripts build',
   clean: 'htz-scripts clean',
   format: 'htz-scripts format',
-  flow: 'htz-scrips flow',
+  flow: 'htz-scripts flow',
   lint: 'htz-scripts lint',
   prepare: 'npm run build',
-  test: 'htz-scripts test',
   styleguide: 'htz-scripts styleguide',
   'styleguide:build': 'htz-scripts styleguide:build',
+  test: 'htz-scripts test',
+  'update-scripts': 'htz-scripts update-scripts',
 };
 
 const packagePath = resolveFrom(process.cwd(), './package.json');

@@ -79,6 +79,11 @@ Format code in the current directory with [Prettier](https://prettier.io/).
 You should do this before opening any pull request that contains code, for
 consistency.
 
+### flow
+Run the [Flow](flow.org/) typechecker. Initializes the package to use flow if
+not already initialized. For only initializing the package without running any 
+checks, run with the `--no-run` flag
+
 ### lint
 
 Lint code in the current directory with [ESLint](https://eslint.org/). See

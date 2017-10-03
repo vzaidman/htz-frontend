@@ -11,6 +11,7 @@
     "build": "htz-scripts build",
     "clean": "htz-scripts clean",
     "dev": "htz-react-server",
+    "flow": "htz-scripts flow",
     "format": "htz-scripts format",
     "lint": "htz-scripts lint",
     "start": "NODE_ENV=production htz-react-server",
