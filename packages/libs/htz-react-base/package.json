@@ -55,6 +55,7 @@
   },
   "peerDependencies": {
     "react": "^15.6.1 || ^16.0.0-0",
+    "react-dom": "^15.6.1 || ^16.0.0-0",
     "react-test-renderer": "^15.6.1 || ^16.0.0-0"
   }
 }

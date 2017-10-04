@@ -28,7 +28,9 @@
     "fela": "^5.1.1",
     "next": "^3.2.1",
     "react": "^15.6.1 || ^16.0.0-0",
-    "react-fela": "^5.2.1"
+    "react-dom": "^15.6.1 || ^16.0.0-0",
+    "react-fela": "^5.1.1 | ^6.0.0",
+    "react-test-renderer": "^15.6.1 || ^16.0.0-0"
   },
   "dependencies": {
     "config": "^1.26.2",
@@ -47,7 +49,7 @@
     "fela-plugin-validator": "^5.0.6",
     "fela-preset-web": "^5.0.7",
     "fela-statistics": "^5.0.6",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.6.0",
     "serialize-javascript": "^1.4.0"
   },
   "devDependencies": {
@@ -56,7 +58,7 @@
     "next": "^3.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-fela": "^5.2.1",
+    "react-fela": "^5.1.1",
     "react-test-renderer": "^15.6.1"
   }
 }

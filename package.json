@@ -34,36 +34,51 @@
     "yarn": "^1.0.0"
   },
   "syncDependencies": {
-    "packages/libs/htz-react-base": {
-      "devDependencies": {
-        "react-test-renderer": "^15.6.1"
-      },
-      "peerDependencies": {
-        "react-test-renderer": "^15.6.1 || ^16.0.0-0"
+    "@haaretz/htz-react-base": {
+      "^0.1.0": {
+        "[\"packages/{apps,components,libs}/*\", \"!packages/libs/htz-react-base\"]": [ "devDependencies" ]
       }
     },
-    "packages/{libs/htz-react-base,components/*}": {
-      "devDependencies": {
-        "react": "^15.6.1",
-        "react-dom": "^15.6.1"
+    "fela": { 
+    },
+    "react-fela": { 
+      "^5.1.1": { 
+        "packages/components/*": [ "devDependencies" ],
+        "packages/apps/*": [ "dependencies" ]
       },
-      "peerDependencies": {
-        "react": "^15.6.1 || ^16.0.0-0"
+      "^5.1.1 | ^6.0.0": { 
+        "packages/components/*": [ "peerDependencies" ]
       }
     },
-    "packages/{components,apps}/*": {
-      "dependencies": {
-        "prop-types": "^15.5.10"
-      },
-      "devDependencies": {
-        "@haaretz/htz-react-base": "^0.1.0",
-        "react-test-renderer": "^15.6.1"
+    "prop-types": {
+      "^15.6.0": {
+        "packages/{components,apps}/*": [ "dependencies" ]
       }
     },
-    "packages/{apps}/*": {
-      "dependencies": {
-        "react": "^15.6.1",
-        "react-dom": "^15.6.1"
+    "react": { 
+      "^15.6.1": { 
+        "packages/{libs/htz-react-base,components/*}": [ "devDependencies" ],
+        "packages/apps/*": [ "dependencies" ]
+      },
+      "^15.6.1 || ^16.0.0-0": {
+        "packages/{libs/htz-react-base,components/*}": [ "peerDependencies" ]
+      }
+    },
+    "react-dom": { 
+      "^15.6.1": { 
+        "packages/{libs/htz-react-base,components/*}": [ "devDependencies" ],
+        "packages/apps/*": [ "dependencies" ]
+      },
+      "^15.6.1 || ^16.0.0-0": {
+        "packages/{libs/htz-react-base,components/*}": [ "peerDependencies" ]
+      }
+    },
+    "react-test-renderer": { 
+      "^15.6.1": {
+        "packages/{libs/htz-react-base,components/*,apps/*}": [ "devDependencies" ]
+      },
+      "^15.6.1 || ^16.0.0-0": {
+        "packages/{libs/htz-react-base,components/*,apps/*}": [ "peerDependencies" ]
       }
     }
   },
@@ -72,6 +87,7 @@
   ],
   "devDependencies": {
     "cross-spawn": "^5.1.0",
+    "deepmerge": "^1.5.2",
     "doctoc": "^1.3.0",
     "globby": "^6.1.0",
     "lerna": "^2.1.2",

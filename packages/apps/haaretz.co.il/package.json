@@ -32,15 +32,18 @@
     "graphql-tools": "^1.2.2",
     "graphql-type-json": "^0.1.4",
     "next": "^3.2.1",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.6.0",
     "react": "^15.6.1",
     "react-apollo": "^1.4.15",
     "react-dom": "^15.6.1",
-    "react-fela": "^5.2.1",
+    "react-fela": "^5.1.1",
     "universal-cookie": "^2.0.8"
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^0.1.0",
     "react-test-renderer": "^15.6.1"
+  },
+  "peerDependencies": {
+    "react-test-renderer": "^15.6.1 || ^16.0.0-0"
   }
 }
