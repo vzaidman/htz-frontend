@@ -16,10 +16,12 @@
   - [bootstrap](#bootstrap)
   - [clean](#clean)
   - [docs](#docs)
+  - [flow](#flow)
   - [format](#format)
   - [lint](#lint)
   - [sync](#sync)
   - [update](#update)
+  - [update-packages-scripts](#update-packages-scripts)
 - [Developer Tools](#developer-tools)
   - [React Developer Tools](#react-developer-tools)
   - [Apollo Client Developer Tools](#apollo-client-developer-tools)
@@ -143,6 +145,9 @@ Brief description.
 <!-- START doctoc -->
 ...
 ```
+
+### flow
+Type-check all packages with flow. Initialize uninitialized packages.
 
 ### format
 

@@ -13,6 +13,7 @@ components.
   - [build](#build)
   - [clean](#clean)
   - [format](#format)
+  - [flow](#flow)
   - [lint](#lint)
   - [styleguide](#styleguide)
   - [styleguide:build](#styleguidebuild)
