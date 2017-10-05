@@ -131,6 +131,20 @@ package found in the `packages` directory if the dependency version matches.
 Remove the `node_modules` directory, built distribution files, and Jest cache
 directory for each package.
 
+### create-package
+
+Create an new package and initialize it based on user passable options.
+
+When executed, the script will prompt for options and build the customized package 
+based on aswers provided.
+It takes two optional argument: `package-name` and `package-`description, 
+which will set defaults in the prompt (you will still be able to override them).
+
+**example:**
+```bash
+yarn create-package ['my-new-package' ['A description of what the package does']]
+```
+
 ### docs
 
 Add or update the *Table of Contents* section in any Markdown file with section

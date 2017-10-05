@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^0.1.0",
+    "babel-loader": "^7.1.2",
     "react-test-renderer": "^15.6.1"
   },
   "peerDependencies": {

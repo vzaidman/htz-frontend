@@ -1,0 +1,2 @@
+# Ignore the pkg_templates dir, as it isn't actually valid js
+/pkg_templates/

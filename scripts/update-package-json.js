@@ -38,6 +38,8 @@ function mergeDeep(target, source) {
  * by merging it using `mergeDeep`.
  * @param {string} packagePath - Path to a `package.json` file, or a directory containing one.
  * @param {object} mergeData - The values to add to the package data.
+ * @param {object} [options] - An options object
+ * @param {boolean} [options.quite=false] - Mute all console output
  */
 function updatePackageJson(packagePath, mergeData, { quiet = false, } = {}) {
   let packageFile = path.relative(process.cwd(), packagePath);

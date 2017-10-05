@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /**
- * Sync dependencies as specified in the `syncDependencies` command of the root
+ * Sync dependencies as specified in the `syncDependencies` property of the root
  * `package.json` file.
  */
 const deepMerge = require('deepmerge');
