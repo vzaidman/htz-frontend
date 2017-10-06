@@ -7,16 +7,19 @@ module.exports = {
   rules: {
     'brace-style': [ 2, 'stroustrup', { allowSingleLine: true, }, ],
     /* Warn about long line */
-    'max-len': [ 'warn', {
-      code: 100,
-      comments: 110,
-      tabWidth: 2,
-      ignoreComments: false,
-      ignoreUrls: true,
-      ignoreStrings: true,
-      ignoreTemplateLiterals : true,
-      ignoreRegExpLiterals: true,
-    }],
+    'max-len': [
+      'warn',
+      {
+        code: 100,
+        comments: 110,
+        tabWidth: 2,
+        ignoreComments: false,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
+      },
+    ],
     /* Warn about use of console */
     'no-console': [ 'off', ],
     /* Warn about use of debugger */

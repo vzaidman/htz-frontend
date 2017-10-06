@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 /**
  * This is a browser shim for the `config` module. It reads configuration
  * from `./appData`, which reads it from `window.__HTZ_DATA__`, which can either
@@ -22,12 +23,13 @@ var config = require('./appData').config || {};
 function getSafe(obj, property) {
   var keys = Array.isArray(property) ? property : property.split('.');
   var value = obj;
+  var key;
   while (keys.length) {
     if (value === null || typeof value !== 'object') {
       value = undefined;
       break;
     }
-    var key = keys.shift();
+    key = keys.shift();
     value = value[key];
   }
   return value;
@@ -45,7 +47,7 @@ function get(obj, property) {
   var keyPath = Array.isArray(property) ? property.join('.') : property;
   var value = getSafe(obj, property);
   if (value === undefined) {
-    throw new Error('Configuration property "' + keyPath + '" is not defined');
+    throw new Error(`Configuration property "${keyPath}" is not defined`);
   }
   return value;
 }
