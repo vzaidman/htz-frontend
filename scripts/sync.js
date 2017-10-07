@@ -10,6 +10,8 @@ const spawn = require('cross-spawn');
 const updatePackageJson = require('./update-package-json');
 
 const syncDependencies = rootPackage.syncDependencies || {};
+
+// eslint-disable-next-line no-unused-vars
 const [ executer, command, ...args ] = process.argv;
 
 // Managing cross-dependencies between packages by denoting which
