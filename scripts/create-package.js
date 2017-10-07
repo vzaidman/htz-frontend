@@ -7,7 +7,6 @@ const dir = require('node-dir');
 const fse = require('fs-extra');
 const inquirer = require('inquirer');
 const spawn = require('cross-spawn');
-const { Spinner, } = require('cli-spinner');
 const template = require('lodash.template');
 
 inquirer
@@ -45,163 +44,155 @@ inquirer
         '\n'
       )[0],
     },
+    {
+      type: 'confirm',
+      name: 'allowPublish',
+      message: 'Is this package intended to be published on "npm"?',
+      default: answers => answers.pkgType !== 'apps',
+    },
+    {
+      type: 'confirm',
+      name: 'continue',
+      message: 'Create package?',
+      default: true,
+    },
   ])
-  .then(firstAnswers => {
-    const { name, pkgType, } = firstAnswers;
-    inquirer
-      .prompt([
-        {
-          type: 'confirm',
-          name: 'allowPublish',
-          message: 'Is this package intended to be published on "npm"?',
-          default: pkgType !== 'apps',
+  .then(answers => {
+    if (answers.continue) {
+      const { name, pkgType, } = answers;
+      const safeName = name.replace(' ', '-');
+      const packagePath = path.join(
+        process.cwd(),
+        'packages/',
+        pkgType,
+        safeName
+      );
+
+      console.log(
+        `Creating ${chalk.cyan(name)} package in ${chalk.cyan(packagePath)}...`
+      );
+      console.log('');
+
+      // Create package directory
+      createDirs('/', packagePath);
+
+      const filterOutByType = {
+        libs: {
+          dirs: [ 'components', 'config', 'styleguide', ],
+          files: [ 'next.config.js', 'styleguide.config.js', ],
         },
-        {
-          type: 'confirm',
-          name: 'continue',
-          message: 'Create package?',
-          default: true,
+        components: {
+          dirs: [ 'components', ],
+          files: [ 'next.config.js', ],
         },
-      ])
-      .then(answers => {
-        if (answers.continue) {
-          const safeName = name.replace(' ', '-');
-          const packagePath = path.join(
-            process.cwd(),
-            'packages/',
-            pkgType,
-            safeName
+        apps: {
+          dirs: [],
+          files: [],
+        },
+      };
+
+      const filterOut = filterOutByType[pkgType];
+      const templatesPath = path.join(process.cwd(), 'pkg_templates');
+
+      dir.readFiles(
+        templatesPath,
+        { exclude: filterOut.files, excludeDir: filterOut.dirs, },
+        (error, content, filename, next) => {
+          if (error) {
+            console.error(error);
+          }
+          const compiledTemplate = template(content, {
+            interpolate: /<%=([\s\S]+?)%>/g,
+          });
+          const processedContent = compiledTemplate({ ...answers, safeName, });
+          const outputPath = path.join(
+            packagePath,
+            path.relative(templatesPath, filename)
           );
 
+          if (fse.existsSync(outputPath)) {
+            inquirer
+              .prompt([
+                {
+                  name: 'overwrite',
+                  message: `${chalk.red(
+                    outputPath
+                  )} already exists.\n  ${chalk.yellow(
+                    'Would you like to overwrite it?'
+                  )}`,
+                  type: 'confirm',
+                  default: false,
+                },
+              ])
+              .then(({ overwrite, }) => {
+                if (overwrite) {
+                  writeFile(outputPath, processedContent);
+                  next();
+                }
+                else {
+                  inquirer
+                    .prompt([
+                      {
+                        name: 'abort',
+                        message: `${chalk.red('Do you want to abort?')}`,
+                        type: 'confirm',
+                        default: true,
+                      },
+                    ])
+                    .then(({ abort, }) => {
+                      if (!abort) {
+                        next();
+                      }
+                      else {
+                        console.log('\nAbort! Abort!\n');
+                      }
+                    });
+                }
+              });
+          }
+          else {
+            writeFile(outputPath, processedContent);
+            next();
+          }
+        },
+        (err, files) => {
+          // create empty directories based on package type file structure
+          if (pkgType === 'apps') {
+            createDirs(packagePath, 'layouts', 'lib', 'pages');
+          }
+          if ([ 'components', 'libs', ].includes(pkgType)) {
+            createDirs(packagePath, 'src');
+          }
+
+          // Initialize the new package
+          console.log(`\n${chalk.yellow(`Initializing ${name}`)}`);
+
+          const result = spawn.sync('yarn', [ 'run', 'sync', ], {
+            stdio: 'inherit',
+          });
+
+          if (result.error) {
+            throw result.error;
+          }
+          if (result.signal) {
+            console.error(result.signal);
+            process.exit(1);
+          }
+          if (result.status) {
+            process.exit(result.status);
+          }
+          // Say goodbye
           console.log(
-            `Creating ${chalk.cyan(name)} package in ${chalk.cyan(
-              packagePath
-            )}...`
-          );
-          console.log('');
-
-          // Create package directory
-          createDirs('/', packagePath);
-
-          const filterOutByType = {
-            libs: {
-              dirs: [ 'components', 'config', 'styleguide', ],
-              files: [ 'next.config.js', 'styleguide.config.js', ],
-            },
-            components: {
-              dirs: [ 'components', ],
-              files: [ 'next.config.js', ],
-            },
-            apps: {
-              dirs: [],
-              files: [],
-            },
-          };
-
-          const filterOut = filterOutByType[pkgType];
-          const templatesPath = path.join(process.cwd(), 'pkg_templates');
-
-          dir.readFiles(
-            templatesPath,
-            { exclude: filterOut.files, excludeDir: filterOut.dirs, },
-            (error, content, filename, next) => {
-              if (error) {
-                console.error(error);
-              }
-              const allAnswers = { ...firstAnswers, ...answers, safeName, };
-              const compiledTemplate = template(content, {
-                interpolate: /<%=([\s\S]+?)%>/g,
-              });
-              const processedContent = compiledTemplate(allAnswers);
-              const outputPath = path.join(
-                packagePath,
-                path.relative(templatesPath, filename)
-              );
-
-              if (fse.existsSync(outputPath)) {
-                inquirer
-                  .prompt([
-                    {
-                      name: 'overwrite',
-                      message: `${chalk.red(
-                        outputPath
-                      )} already exists.\n  ${chalk.yellow(
-                        'Would you like to overwrite it?'
-                      )}`,
-                      type: 'confirm',
-                      default: false,
-                    },
-                  ])
-                  .then(({ overwrite, }) => {
-                    if (overwrite) {
-                      writeFile(outputPath, processedContent);
-                      next();
-                    }
-                    else {
-                      inquirer
-                        .prompt([
-                          {
-                            name: 'abort',
-                            message: `${chalk.red('Do you want to abort?')}`,
-                            type: 'confirm',
-                            default: true,
-                          },
-                        ])
-                        .then(({ abort, }) => {
-                          if (!abort) {
-                            next();
-                          }
-                          else {
-                            console.log('\nAbort! Abort!\n');
-                          }
-                        });
-                    }
-                  });
-              }
-              else {
-                writeFile(outputPath, processedContent);
-                next();
-              }
-            },
-            (err, files) => {
-              // create empty directories based on package type file structure
-              if (pkgType === 'apps') {
-                createDirs(packagePath, 'layouts', 'lib', 'pages');
-              }
-              if ([ 'components', 'libs', ].includes(pkgType)) {
-                createDirs(packagePath, 'src');
-              }
-
-              // Initialize the new package
-              console.log(`\n${chalk.yellow(`Initializing ${name}`)}`);
-
-              const result = spawn.sync('yarn', [ 'run', 'sync', ], {
-                stdio: 'inherit',
-              });
-
-              if (result.error) {
-                throw result.error;
-              }
-              if (result.signal) {
-                console.error(result.signal);
-                process.exit(1);
-              }
-              if (result.status) {
-                process.exit(result.status);
-              }
-              // Say goodbye
-              console.log(
-                `\n\n${chalk.magenta(
-                  'Thank you. Come again!'
-                )}\n- Dr. Apu Nahasapeemapetilon\n`
-              );
-            }
+            `\n\n${chalk.magenta(
+              'Thank you. Come again!'
+            )}\n- Dr. Apu Nahasapeemapetilon\n`
           );
         }
-        else {
-          console.log('\nAbort! Abort!\n');
-        }
-      });
+      );
+    }
+    else {
+      console.log('\nAbort! Abort!\n');
+    }
   });
 
 function writeFile(outputPath, content) {
