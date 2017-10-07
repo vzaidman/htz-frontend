@@ -20,6 +20,7 @@
   - [docs](#docs)
   - [flow](#flow)
   - [format](#format)
+  - [lerna](#lerna)
   - [lint](#lint)
   - [sync](#sync)
   - [update](#update)
@@ -169,6 +170,10 @@ Type-check all packages with flow. Initialize uninitialized packages.
 
 Format files in the root package, then run the [format](packages/libs/htz-react-base#format)
 script in every package.
+
+### lerna
+
+Run a helpful wizard for assistance with running `lerna` commands
 
 ### lint
 
