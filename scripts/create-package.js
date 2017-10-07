@@ -167,7 +167,7 @@ inquirer
           // Initialize the new package
           console.log(`\n${chalk.yellow(`Initializing ${name}`)}`);
 
-          const result = spawn.sync('yarn', [ 'run', 'sync', ], {
+          const result = spawn.sync('yarn', [ 'run', 'sync', '--scope', `@haaretz/${safeName}`, ], {
             stdio: 'inherit',
           });
 

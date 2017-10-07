@@ -1,4 +1,5 @@
 # htz-frontend
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -15,6 +16,7 @@
 - [Scripts](#scripts)
   - [bootstrap](#bootstrap)
   - [clean](#clean)
+  - [create-package](#create-package)
   - [docs](#docs)
   - [flow](#flow)
   - [format](#format)
@@ -177,6 +179,9 @@ script in every package.
 
 Set the dependency versions for each matching package based on the `syncDependencies`
 field of [package.json](package.json), in order to make across-the-board upgrades.
+
+Arguments will be passed to `lerna bootstrap`, which allows, e.g., to `--scope` or 
+`--exclude` packages.
 
 ### update
 

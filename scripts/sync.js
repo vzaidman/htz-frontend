@@ -10,6 +10,7 @@ const spawn = require('cross-spawn');
 const updatePackageJson = require('./update-package-json');
 
 const syncDependencies = rootPackage.syncDependencies || {};
+const [ executer, command, ...args ] = process.argv;
 
 // Managing cross-dependencies between packages by denoting which
 // package(s) uses what dependencies and how, is the most efficient way to
@@ -72,7 +73,7 @@ Object.keys(dependencyMap).forEach(glob => {
 });
 
 // Run `lerna bootstrap` at the end so the updates are actually installed.
-const result = spawn.sync('lerna', [ 'bootstrap', ], { stdio: 'inherit', });
+const result = spawn.sync('lerna', [ 'bootstrap', ...args, ], { stdio: 'inherit', });
 if (result.error) {
   throw result.error;
 }

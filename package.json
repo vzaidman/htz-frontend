@@ -7,12 +7,12 @@
   "scripts": {
     "bootstrap": "yarn run clean && yarn run update && lerna run prepare",
     "clean": "lerna clean --yes && rimraf \"packages/*/*/{.jest,.next,dist}\"",
+    "create-package": "node scripts/create-package.js",
     "docs": "doctoc --title \"**Table of Contents**\" .",
     "flow": "lerna exec --no-bail --ignore @haaretz/htz-react-base -- yarn run flow check",
     "format": "yarn run format:self && yarn run format:packages",
     "format:packages": "lerna exec --no-bail -- yarn run format",
     "format:self": "node packages/libs/htz-react-base/bin/htz-scripts.js format",
-    "create-package": "node scripts/create-package.js",
     "lint": "yarn run lint:self && yarn run lint:packages",
     "lint:packages": "lerna exec --no-bail -- yarn run lint",
     "lint:self": "node packages/libs/htz-react-base/bin/htz-scripts.js lint",
