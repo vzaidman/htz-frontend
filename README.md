@@ -1,5 +1,6 @@
 # htz-frontend
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -20,16 +21,19 @@
   - [docs](#docs)
   - [flow](#flow)
   - [format](#format)
+  - [gc (git commit)](#gc-git-commit)
   - [lerna](#lerna)
   - [lint](#lint)
   - [sync](#sync)
   - [update](#update)
   - [update-packages-scripts](#update-packages-scripts)
+- [Git Workflow and Hooks](#git-workflow-and-hooks)
 - [Developer Tools](#developer-tools)
   - [React Developer Tools](#react-developer-tools)
   - [Apollo Client Developer Tools](#apollo-client-developer-tools)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 ## Packages
 
@@ -43,10 +47,12 @@ These packages are managed with [Lerna](https://lernajs.io/) and organized like 
   * [htz-react-base](packages/libs/htz-react-base) – Development helpers.
   * [htz-react-server](packages/libs/htz-react-server) – Application server.
 
+
 ## Documentation
 
 * For help with individual packages, use the links to those packages above.
 * For general documentation, see [docs/README.md](docs/README.md).
+
 
 ## Getting Started
 
@@ -118,6 +124,7 @@ often look like (in `package.json`):
 * Apps usually don’t need to be built in a lifecycle script, because they are not
   consumed as dependencies. Instead, they should be built upon deployment.
 
+
 ## Scripts
 
 These are found in the root [package.json](package.json) and may be run with
@@ -168,8 +175,16 @@ Type-check all packages with flow. Initialize uninitialized packages.
 
 ### format
 
-Format files in the root package, then run the [format](packages/libs/htz-react-base#format)
-script in every package.
+Format files with `prettier` and `eslint --fix` using the [format](packages/libs/htz-react-base#format)
+script from `@haaretz/htz-react-base`.
+
+`yarn run format:self` will only format files in the root directory
+`yarn run format:packages` will run the `format` script in every package.
+`yarn run format` will run both.
+
+### gc (git commit)
+Commit staged files using a Commitizen wizard to ensure compliance with the repository's mandatory
+[git workflow](docs/GitWorkflow.md).
 
 ### lerna
 
@@ -179,6 +194,13 @@ Run a helpful wizard for assistance with running `lerna` commands
 
 Lint files in the root package, then run the [lint](packages/libs/htz-react-base#lint)
 script in every package.
+
+Lint files with `eslint` using the [lint](packages/libs/htz-react-base#format)
+script from `@haaretz/htz-react-base`.
+
+`yarn run lint:self` will only lint files in the root directory
+`yarn run lint:packages` will run the `lint` script in every package.
+`yarn run lint` will run both.
 
 ### sync
 
@@ -195,6 +217,11 @@ Like `bootstrap`, but doesn’t `clean` first.
 ### update-packages-scripts
 
 Sync the `scripts` property in each package with the latest version of `htz-scripts`
+
+
+## Git Workflow and Hooks
+
+See [docs](docs/GitWorkflow.md).
 
 
 ## Developer Tools

@@ -16,11 +16,14 @@ const defaultConfig = {
     '^.+\\.jsx?$': require.resolve('babel-jest'),
   },
   transformIgnorePatterns: [ '[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$', ],
-  // Jest's default test matcher thinks this is a test file because of the
-  // name and throws an error, so ignore it.
   testPathIgnorePatterns: [
     '/node_modules/',
     '/dist/',
+    '__mocks__',
+    '/__tests__/helpers/',
+    '/fixtures/',
+    // Jest's default test matcher thinks this is a test file because of the
+    // name and throws an error, so ignore it.
     '/scripts/test.js',
     '/config/test.js',
   ],
