@@ -39,7 +39,7 @@
   "homepage": "https://github.com/Haaretz/htz-frontend#readme",
   "engines": {
     "node": ">= 8",
-    "yarn": ">= 1"
+    "yarn": ">= 1.2.1"
   },
   "syncDependencies": {
     "@haaretz/htz-components": {
