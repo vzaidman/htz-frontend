@@ -1,0 +1,37 @@
+{
+  "name": "@haaretz/htz-css-tools",
+  "version": "1.0.0",
+  "description": "A toolbelt for writing css-in-js in Haaretz apps",
+  "keywords": [],
+  "author": {
+    "name": "TxHawks",
+    "email": "tofu.hawks@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "Haaretz/htz-frontend",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/lib/index.js",
+  "module": "dist/esm/index.js",
+  "esnext": "dist/esnext/index.js",
+  "scripts": {
+    "build": "htz-scripts build && yarn run build:docs",
+    "build:docs": "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
+    "clean": "htz-scripts clean",
+    "flow": "htz-scripts flow",
+    "format": "htz-scripts format",
+    "lint": "htz-scripts lint",
+    "lint:docs": "documentation lint src",
+    "prepare": "yarn run build",
+    "serve": "yarn documentation serve src --config documentation.yml --watch",
+    "styleguide": "htz-scripts styleguide",
+    "styleguide:build": "htz-scripts styleguide:build",
+    "test": "htz-scripts test",
+    "update-scripts": "htz-scripts update-scripts"
+  },
+  "devDependencies": {
+    "@haaretz/htz-react-base": "^0.1.0",
+    "documentation": "^5.3.3"
+  }
+}

@@ -1,0 +1,97 @@
+access:
+  - undefined
+  - public
+  - private
+github: true
+
+toc:
+  - name: ' '
+    file: README.md
+
+  - name: Color
+  - createColorGetter
+  - ColorGetter
+  - ColorPalette
+
+  - name: Media Queries and Breakpoints
+  - createMqFunc
+  - MqFunc
+  - MqOptions
+  - BpsConfig
+  - MiscBpsConfig
+  - WidthBpsConfig
+  - BpsConfig
+
+  - name: Typography
+  - createTypesetter
+  - TypeConf
+  - TypeScaleOpts
+  - Typesetter
+  - TypesetterOpts
+  - TypographicStyles
+
+  - name: Border Mixins
+    description: Border mixins that will add the right amount of padding to elements so that borders don't break the vertical rhythm
+  - border
+  - borderTop
+  - borderEnd
+  - borderRight
+  - borderBottom
+  - borderStart
+  - borderLeft
+  - borderHorizontal
+  - borderVertical
+  - BorderOptions
+  - BorderProperty
+  - BorderRuleset
+  - BorderSide
+  - BorderStyle
+
+  - name: Misc Mixins
+    description: Common css patterns.
+  - visuallyHidden
+
+  - name: CSS Unit Helpers
+  - stripUnit
+  - getUnit
+  - getLengthProps
+  - pxTo
+  - pxToEm
+  - createRemFunction
+  - RemFunctionType
+
+  - name: Helpers (private)
+    description: These are private utility functions, only meant for internal library use. They are *not* exposed as part of the public API surface, and are only documented here for library development purposes.
+  - getBorderOpts
+  - getBpsInRange
+  - getClosestBp
+  - getFontSize
+  - getLengthString
+  - getLineHeight
+  - getLinesWithPadding
+  - getRhythmBpsData
+  - getTypeProps
+  - isNamedBp
+  - pxToRem
+  - setBorder
+  - styleFormatter
+  - fallbackFormatter
+
+  - name: Constants (private)
+    description: These are only meant for internal library use. They are *not* exposed as part of the public API surface, and are only documented here for library development purpuses.
+  - DEFAULT_BROWSER_FONT_SIZE
+
+  - name: Types
+    description: Type definitions and descriptions. These do not acctually exist in the code, and are displayed solely for documentation purposes.
+  - CSSDecleration
+  - FallbackRule
+  - GetTypePropsOpts
+  - LengthProps
+  - PxToUnitConverter
+  - RhythmBpData
+  - StyleValue
+  - TargetUnit
+  - TypeProps
+
+  - name: Unclassefied
+    description: "TODO: Sort these inside the different sections"
