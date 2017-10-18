@@ -230,7 +230,7 @@
     "linters": {
       "**/*.{js,jsx}": [
         "node packages/libs/htz-react-base/bin/htz-scripts.js lint --fix",
-        "node packages/libs/htz-react-base/bin/htz-scripts.js test --findRelatedTests",
+        "node scripts/runTests.js",
         "node packages/libs/htz-react-base/bin/htz-scripts.js flow focus-check",
         "git add"
       ],
