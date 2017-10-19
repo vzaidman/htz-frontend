@@ -57,7 +57,7 @@
       }
     },
     "@haaretz/htz-react-base": {
-      "^0.1.0": {
+      "^1.0.0": {
         "[\"packages/{apps,components,libs}/*\", \"!packages/libs/htz-react-base\"]": [
           "devDependencies"
         ]
@@ -67,6 +67,16 @@
       "^0.0.0": {
         "packages/apps/*": [
           "dependencies"
+        ]
+      }
+    },
+    "@haaretz/htz-theme": {
+      "^0.1.0": {
+        "packages/apps/haaretz.co.il": [
+          "dependencies"
+        ],
+        "packages/components/htz-components": [
+          "devDependencies"
         ]
       }
     },

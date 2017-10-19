@@ -5,6 +5,7 @@ import Error from 'next/error';
 import { graphql, gql, } from 'react-apollo';
 import { propType, } from 'graphql-anywhere';
 import { StyleProvider, } from '@haaretz/htz-components';
+import htzTheme from '@haaretz/htz-theme';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import TopNav from '../components/TopNav/TopNav';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
@@ -34,25 +35,27 @@ const PageData = gql`
   ${Slot.fragments.content}
 `;
 
-const propTypes = {
-  /**
-   * Information about the GraphQL query from Apollo.
-   */
-  data: propType(PageData).isRequired,
-  /**
-   * An object containing route information from Next, such as the `pathname`
-   * and `query` object.
-   */
-  url: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    query: PropTypes.shape({
-      path: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-};
-const defaultProps = {};
 
 export class MainLayout extends React.Component {
+  static propTypes = {
+    /**
+     * Information about the GraphQL query from Apollo.
+     */
+    data: propType(PageData).isRequired,
+    /**
+     * An object containing route information from Next, such as the `pathname`
+     * and `query` object.
+     */
+    url: PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+      query: PropTypes.shape({
+        path: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  };
+
+  static defaultProps = {};
+
   renderHead() {
     const { data, } = this.props;
     if (!data.page) {
@@ -91,7 +94,7 @@ export class MainLayout extends React.Component {
       return <Error statusCode={isNotFound ? 404 : 500} />;
     }
     return (
-      <StyleProvider renderer={styleRenderer}>
+      <StyleProvider renderer={styleRenderer} theme={htzTheme}>
         <div>
           {this.renderHead()}
           <TopNav />
@@ -105,9 +108,6 @@ export class MainLayout extends React.Component {
     );
   }
 }
-
-MainLayout.propTypes = propTypes;
-MainLayout.defaultProps = defaultProps;
 
 export default graphql(PageData, {
   options: props => ({

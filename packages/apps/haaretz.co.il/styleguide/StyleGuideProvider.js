@@ -1,22 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleProvider, } from '@haaretz/htz-components';
+import htzTheme from '@haaretz/htz-theme';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 
-const propTypes = {
+StyleGuideProvider.propTypes = {
   children: PropTypes.node,
 };
-const defaultProps = {
+StyleGuideProvider.defaultProps = {
   children: null,
 };
 
 export default function StyleGuideProvider({ children, }) {
   return (
-    <StyleProvider renderer={styleRenderer}>
+    <StyleProvider renderer={styleRenderer} theme={htzTheme}>
       <div>{children}</div>
     </StyleProvider>
   );
 }
-
-StyleGuideProvider.propTypes = propTypes;
-StyleGuideProvider.defaultProps = defaultProps;
