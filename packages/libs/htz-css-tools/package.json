@@ -1,6 +1,6 @@
 {
   "name": "@haaretz/htz-css-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A toolbelt for writing css-in-js in Haaretz apps",
   "keywords": [],
   "author": {
@@ -31,7 +31,7 @@
     "update-scripts": "htz-scripts update-scripts"
   },
   "devDependencies": {
-    "@haaretz/htz-react-base": "^0.1.0",
+    "@haaretz/htz-react-base": "^1.0.0",
     "documentation": "^5.3.3"
   }
 }
