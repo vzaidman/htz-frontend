@@ -1,14 +1,8 @@
 import React from 'react';
-import { createSnapshotFn, } from '@haaretz/htz-react-base/test';
-import Button from './Button';
-import createRenderer from '../StyleProvider/createRenderer';
-import StyleProvider from '../StyleProvider/StyleProvider';
-
-const felaSnapshot = createSnapshotFn(
-  <StyleProvider renderer={createRenderer()} />
-);
+import felaSnapshotter from '../../test-helpers/felaSnapshotter';
+import StyledButton from './Button';
 
 it('renders correctly', () => {
-  const tree = felaSnapshot(<Button>Click here</Button>);
+  const tree = felaSnapshotter(<StyledButton>Click here</StyledButton>);
   expect(tree).toMatchSnapshot();
 });

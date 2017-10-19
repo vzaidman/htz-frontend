@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import config from 'config';
-import { createComponentWithProxy, } from 'react-fela';
+import { createComponent, } from 'react-fela';
 
 const propTypes = {
   children: PropTypes.node,
@@ -9,7 +9,7 @@ const propTypes = {
 const defaultProps = {
   children: null,
 };
-const rule = () => ({
+const rule = props => ({
   // This is just a demo usage of `config`.
   outline:
     config.has('debugButtons') && config.get('debugButtons')
@@ -24,6 +24,6 @@ export function Button({ children, ...props }) {
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
-const StyledButton = createComponentWithProxy(rule, Button);
+const StyledButton = createComponent(rule, Button);
 
 export default StyledButton;

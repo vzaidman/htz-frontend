@@ -2,13 +2,13 @@
 
 exports[`renders correctly 1`] = `
 Object {
-  "component": <button
-    className="htz-a"
->
-    Click here
-</button>,
-  "styles": ".htz-a {
-  outline: 1px solid #09a5d9;
-}",
+  "component": <div>
+    <button
+        className="htz-a"
+    >
+        Click here
+    </button>
+</div>,
+  "styles": ".htz-a{outline:1px solid #09a5d9}",
 }
 `;

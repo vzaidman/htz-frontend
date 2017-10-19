@@ -1,7 +1,7 @@
 import { createRenderer as createFelaRenderer, } from 'fela';
 
 // Fela plugins
-import customProperty from 'fela-plugin-custom-property';
+import bidi from 'fela-plugin-bidi';
 import embedded from 'fela-plugin-embedded';
 import extend from 'fela-plugin-extend';
 import fallbackValue from 'fela-plugin-fallback-value';
@@ -38,20 +38,7 @@ export default function createRenderer(
   } = {}
 ) {
   const plugins = [
-    customProperty({
-      // Will be used for RTL<->LTR normalizations.
-      // `flexbox` really did it right when it comes to normalizing
-      // directionality, and I'd like to be able to use properties like
-      // `paddingStart` and `paddingEnd`, and having them automatically
-      // mapped by Fela according to the correct direction contenxt.
-      // Rather than having to handle this in each component, I'd rather
-      // handle it once here in the renderer.
-      // TODO: remove dummy `size` Property.
-      size: size => ({
-        height: size,
-        width: size,
-      }),
-    }),
+    extend(),
     embedded(),
     // Sort pseudo-classes in a predictable order
     lvha(),
@@ -65,12 +52,13 @@ export default function createRenderer(
       borderLeft: 'px',
       borderRight: 'px',
       borderTop: 'px',
+      opacity: '',
     }),
     // Allows extending instead of overwriting style objects
-    extend(),
     // Allows providing fallback values as an array.
     // Must be last to be included
     fallbackValue(),
+    bidi('rtl'),
   ];
   const enhancers = [];
 

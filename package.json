@@ -184,7 +184,7 @@
       }
     },
     "react-fela": {
-      "^5.1.1": {
+      "^5.2.1": {
         "packages/components/*": [
           "devDependencies"
         ],
@@ -192,20 +192,8 @@
           "dependencies"
         ]
       },
-      "^5.1.1 | ^6.0.0": {
+      "^5.2.1 | ^6.0.0": {
         "packages/components/*": [
-          "peerDependencies"
-        ]
-      }
-    },
-    "react-test-renderer": {
-      "^15.6.1": {
-        "packages/{libs/htz-react-base,components/*,apps/*}": [
-          "devDependencies"
-        ]
-      },
-      "^15.6.1 || ^16.0.0-0": {
-        "packages/{libs/htz-react-base,components/*,apps/*}": [
           "peerDependencies"
         ]
       }
