@@ -4,6 +4,7 @@
 
 * [System Overview](SystemOverview.md)
 * [Configuration](Configuration.md)
+* [Testing](Testing.md)
 * [FAQ](FAQ.md)
 
 

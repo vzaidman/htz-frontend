@@ -23,6 +23,7 @@
     "precommit": "node scripts/githooks/precommit",
     "prepush": "node scripts/githooks/prepush",
     "sync": "node scripts/sync.js",
+    "test": "lerna exec --no-bail -- yarn run test",
     "update": "lerna bootstrap",
     "update-packages-scripts": "lerna exec --no-bail --loglevel verbose --ignore @haaretz/htz-react-base -- yarn run update-scripts"
   },

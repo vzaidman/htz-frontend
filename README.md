@@ -25,6 +25,7 @@
   - [lerna](#lerna)
   - [lint](#lint)
   - [sync](#sync)
+  - [test](#test)
   - [update](#update)
   - [update-packages-scripts](#update-packages-scripts)
 - [Git Workflow and Hooks](#git-workflow-and-hooks)
@@ -43,7 +44,9 @@ These packages are managed with [Lerna](https://lernajs.io/) and organized like 
   * [haaretz.co.il](packages/apps/haaretz.co.il) – Site app for the Hebrew edition of Haaretz.
 * [Components](packages/components) – Collections of React components.
   * [htz-components](packages/components/htz-components) – Components and other shared parts.
+  * [htz-theme](packages/components/htz-theme) – A theme for (Hebrew) Haaretz branded apps.
 * [Libraries](packages/libs) – Helpers, utilities, and any other shared code.
+  * [htz-css-tools](packages/libs/htz-css-tools) – A css utility belt for styling Haaretz apps.
   * [htz-react-base](packages/libs/htz-react-base) – Development helpers.
   * [htz-react-server](packages/libs/htz-react-server) – Application server.
 
@@ -203,6 +206,10 @@ field of [package.json](package.json), in order to make across-the-board upgrade
 
 Arguments will be passed to `lerna bootstrap`, which allows, e.g., to `--scope` or 
 `--exclude` packages.
+
+### test
+
+Will run tests in all packages.
 
 ### update
 
