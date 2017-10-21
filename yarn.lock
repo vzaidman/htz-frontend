@@ -36,15 +36,6 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@haaretz/commitlint-config/-/commitlint-config-1.1.0.tgz#b0e0f584978b9d05878ce47f767469dee596b2dc"
 
-"@haaretz/htz-components@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@haaretz/htz-components/-/htz-components-0.1.0.tgz#922f60a84a2073364a76730fc9a7547b54279667"
-  dependencies:
-    fela-dom "^5.0.7"
-    fela-plugin-validator "^5.0.6"
-    fela-preset-web "^5.0.7"
-    prop-types "^15.5.10"
-
 "@marionebl/git-raw-commits@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@marionebl/git-raw-commits/-/git-raw-commits-1.2.0.tgz#7cd8a6dfc09a96df98d8fbe9175c5971cc07c82b"

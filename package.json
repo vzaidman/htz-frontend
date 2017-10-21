@@ -43,14 +43,14 @@
   },
   "syncDependencies": {
     "@haaretz/htz-components": {
-      "^0.1.0": {
+      "^0.2.0": {
         "[\"packages/{apps,components}/*\", \"!packages/components/htz-components\"]": [
           "dependencies"
         ]
       }
     },
     "@haaretz/htz-css-tools": {
-      "^1.0.0": {
+      "^1.0.1": {
         "packages/{apps,components}/*": [
           "dependencies"
         ]

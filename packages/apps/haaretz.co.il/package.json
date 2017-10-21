@@ -22,8 +22,8 @@
     "update-scripts": "htz-scripts update-scripts"
   },
   "dependencies": {
-    "@haaretz/htz-components": "^0.1.0",
-    "@haaretz/htz-css-tools": "^1.0.0",
+    "@haaretz/htz-components": "^0.2.0",
+    "@haaretz/htz-css-tools": "^1.0.1",
     "@haaretz/htz-react-server": "^0.0.0",
     "@haaretz/htz-theme": "^0.1.0",
     "config": "^1.26.2",
