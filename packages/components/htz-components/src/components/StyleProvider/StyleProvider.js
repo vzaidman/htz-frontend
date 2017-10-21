@@ -10,10 +10,11 @@ const propTypes = {
    * environments and needs, e.g., RTL vs LTR, testing, etc.
    */
   renderer: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  theme: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 const defaultProps = {
   children: null,
+  theme: null,
 };
 
 /*
@@ -24,7 +25,7 @@ export default function StyleProvider({ children, renderer, theme, ...props }) {
   const child = Children.only(children);
   return (
     <Provider renderer={renderer}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme || {}}>
         {isValidElement(child) ? cloneElement(child, { ...props, }) : child}
       </ThemeProvider>
     </Provider>
