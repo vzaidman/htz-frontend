@@ -33,14 +33,15 @@
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
     "babel-loader": "^7.1.2",
-    "fela": "^5.1.1",
+    "fela": "^6.0.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-fela": "^5.2.1"
+    "react-fela": "^6.0.2"
   },
   "peerDependencies": {
+    "fela": "^6.0.2",
     "react": "^15.6.1 || ^16.0.0-0",
     "react-dom": "^15.6.1 || ^16.0.0-0",
-    "react-fela": "^5.2.1 | ^6.0.0"
+    "react-fela": "^6.0.2"
   }
 }

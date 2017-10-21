@@ -10,9 +10,12 @@ import prefixer from 'fela-plugin-prefixer';
 import placeholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import unit from 'fela-plugin-unit';
 import removeUndefined from 'fela-plugin-remove-undefined'; // Only used in prod
-import validator from 'fela-plugin-validator'; // Only used in dev
+// Plugins used only during development
+import validator from 'fela-plugin-validator';
 
-// Fela enhancers (only used in dev)
+// Fela enhancers
+import combineArrays from 'fela-combine-arrays';
+// Enhancers used only during development:
 import beautifier from 'fela-beautifier';
 import perf from 'fela-perf';
 import statistics from 'fela-statistics';
@@ -60,7 +63,7 @@ export default function createRenderer(
     fallbackValue(),
     bidi('rtl'),
   ];
-  const enhancers = [];
+  const enhancers = [ combineArrays([ 'extend', ]), ];
 
   if (isDev) {
     plugins.push(validator());
