@@ -1,4 +1,4 @@
-import React, { Component, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import getColor, { colors, } from '../../colors';
 
@@ -39,7 +39,6 @@ ColorSwatch.propTypes = {
 
 function ColorSwatch({ groupName, swatchName, colorName, colorValue, }) {
   const isBase = swatchName === 'base';
-  const isNonBaseVariant = swatchName && !isBase;
   const exampleCode = !groupName ? (
     <code>theme.color(&apos;{colorName}&apos;)</code>
   ) : swatchName === 'base' ? (
@@ -131,7 +130,6 @@ export default function ColorPalette() {
 }
 
 function getSwatch(colorName, variant) {
-  const isString = typeof colors[colorName];
   const color = colors[colorName][variant] || colors[colorName];
   if (typeof color === 'string' || Array.isArray(color)) {
     return (
@@ -146,7 +144,7 @@ function getSwatch(colorName, variant) {
   }
   if (typeof color === 'object') {
     const variants = Object.keys(color);
-    return variants.map(variant => getSwatch(colorName, variant));
+    return variants.map(variantName => getSwatch(colorName, variantName));
   }
 
   return undefined;

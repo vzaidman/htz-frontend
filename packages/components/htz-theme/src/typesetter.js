@@ -18,7 +18,5 @@ export const typeConf = {
   },
 };
 
-console.log(JSON.stringify(typeConf));
-
 const typesetter = createTypesetter(mq, typeConf, bps.widths);
 export default typesetter;
