@@ -2,8 +2,8 @@
 import Article from './components/Article/Article';
 import Button from './components/Button/Button';
 import createDocument from './document';
-import createFelaSnapshotter from './components/createFelaSnapshotter/createFelaSnapshotter';
-import createRenderer from './components/StyleProvider/createRenderer';
+import createFelaSnapshotter from './utils/createFelaSnapshotter';
+import createRenderer from './utils/createRenderer';
 import StyleProvider from './components/StyleProvider/StyleProvider';
 
 export {
