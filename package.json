@@ -15,7 +15,7 @@
     "format:packages": "lerna exec --no-bail -- yarn run format",
     "format:self": "node packages/libs/htz-react-base/bin/htz-scripts.js format",
     "gc": "git cz",
-    "lerna": "lerna-wizard",
+    "lerna-do": "lerna-wizard",
     "lint": "yarn run lint:self && yarn run lint:packages",
     "lint:packages": "lerna exec --no-bail -- yarn run lint",
     "lint:self": "node packages/libs/htz-react-base/bin/htz-scripts.js lint",

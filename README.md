@@ -22,7 +22,7 @@
   - [flow](#flow)
   - [format](#format)
   - [gc (git commit)](#gc-git-commit)
-  - [lerna](#lerna)
+  - [lerna-do](#lerna-do)
   - [lint](#lint)
   - [sync](#sync)
   - [test](#test)
@@ -183,7 +183,7 @@ script from `@haaretz/htz-react-base`.
 Commit staged files using a Commitizen wizard to ensure compliance with the repository's mandatory
 [git workflow](docs/GitWorkflow.md).
 
-### lerna
+### lerna-do
 
 Run a helpful wizard for assistance with running `lerna` commands
 

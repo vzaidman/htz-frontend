@@ -33,7 +33,8 @@ export type ColorPalette = {
  * Get a color from a predefined color palette
  *
  * @param {string} color - A named-color to get the value of from the palette
- * @param {false|string} [variant=false] - A named variant of `color` to get from the palette. When `color` has variants, but variant is `false`, the `base` variant will be used by default.
+ * @param {false|string} [variant=false] - A named variant of `color` to get from the palette.
+ *   When `color` has variants, but variant is `false`, the `base` variant will be used by default.
  * @param {ColorPalette} [altColorPalette] - an alternative palette in place of the default one to
  *   get a color from. Can be Useful when using external elements the should be
  *   styled differently from branded elements.
@@ -50,7 +51,7 @@ export type ColorGetter = (
  * Create a function that returns the value of named-colors based on a
  * preconfigured theme.
  *
- * @param ColorPalette - The preconfigured theme which the returned
+ * @param colorPalette - The preconfigured theme which the returned
  *   function will be resolving color values from.
  *
  * @return - a function that returns the value of named-colors based on a

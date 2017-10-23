@@ -17,7 +17,7 @@
     "prepare": "npm run build",
     "start": "NODE_ENV=production htz-react-server",
     "styleguide": "htz-scripts styleguide",
-    "styleguide:build": "htz-scripts styleguide:build",
+    "styleguide:build": "htz-scripts styleguide:build && cp -r dist/styleguide/* ../../../pkgDocs/haaretz.co.il",
     "test": "htz-scripts test",
     "update-scripts": "htz-scripts update-scripts"
   },

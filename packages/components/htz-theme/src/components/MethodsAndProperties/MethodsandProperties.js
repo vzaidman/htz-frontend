@@ -1,4 +1,5 @@
 import React from 'react';
+import pxToRem from '../../methods/pxToRem';
 
 export default function MethodsAndProperties() {
   return (
@@ -27,7 +28,12 @@ export default function MethodsAndProperties() {
             </li>
           </ul>
         </li>
-        <li>direction ('rtl) - The application's flow direction</li>
+        <li>
+          fontStacks (Object) - An object containing font-family stacks for different use cases
+        </li>
+        <li>
+          direction (&apos;rtl&apos;) - The application&apos;s flow direction
+        </li>
         <li>
           typeConf (Object) - An immutable
           [TypeConf](https://haaretz.github.io/htz-frontend/htz-css-tools#typeconf)

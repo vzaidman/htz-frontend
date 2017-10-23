@@ -4,6 +4,13 @@ import type { BorderStyle, BorderOptions, } from './types';
 /**
  * Utility function to parse the arguments passed to border functions
  *
+ * @param optsOrWidth - The width of a border or a BorderOptions object as
+ *   the single argument to the function
+ * @param [lines] - The number of vertical-rhythm lines the border + padding
+ *   should occupy. Mandatory when not passing an object as the first argument
+ * @param [style] - The border-style
+ * @param [color] - The border-color
+ *
  * @private
  */
 export default function getBorderOpts(

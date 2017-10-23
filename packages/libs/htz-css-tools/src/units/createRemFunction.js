@@ -40,7 +40,7 @@ export type RemFunctionType = (
  *   A typographic scale and vertical rhythm configuration object
  * @param bps
  *   A configuration object holding named width breakpoints
- * @param {true} [defultPxFallback]
+ * @param [defaultPxFallback]
  *   Should the returned function generate pixel fallbacks for `rem` values
  *
  * @return {remFunction}

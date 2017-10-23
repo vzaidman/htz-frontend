@@ -1,7 +1,11 @@
+// consts
 import bps from './consts/bps';
+import fontStacks from './consts/fontStacks';
 import getColor from './methods/getColor';
 import typeConf from './consts/typeConf';
 import typographicBaseline from './consts/typographicBaseline';
+
+// methods
 import typesetter from './methods/typesetter';
 import pxToRem from './methods/pxToRem';
 import mq from './methods/mq';
@@ -18,6 +22,7 @@ import mq from './methods/mq';
  *   [MiscBpsConfig](https://haaretz.github.io/htz-frontend/htz-css-tools#miscbpsconfig) object with
  *   values named miscellaneous media-features media queries
  * @prop {'rtl'} direction - The application's flow direction
+ * @prop {Object} fontStacks - An object containing font-family stacks for different use cases
  * @prop {Object} typeConf - An immutable
  *   [TypeConf](https://haaretz.github.io/htz-frontend/htz-css-tools#typeconf) object per-breakpoint
  *   typographic and vertical-rhythm values
@@ -39,6 +44,7 @@ const htzTheme = Object.freeze({
   // Objects
   bps,
   direrction: 'rtl',
+  fontStacks,
   typeConf,
   typographicBaseline,
 

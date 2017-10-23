@@ -20,6 +20,10 @@ module.exports = configure(config =>
         components: 'src/components/MethodsAndProperties/**/*.js',
       },
       {
+        name: 'Font Stacks',
+        components: 'src/components/FontStacks/**/*.js',
+      },
+      {
         name: 'Typographic Scale',
         components: 'src/components/TypographicScale/**/*.js',
       },
