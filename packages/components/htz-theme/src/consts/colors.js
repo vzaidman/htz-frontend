@@ -1,6 +1,4 @@
-import { createColorGetter, } from '@haaretz/htz-css-tools';
-
-export const colors = {
+const colors = {
   // named colors
   black: '#000',
   white: '#FFF',
@@ -139,6 +137,4 @@ export const colors = {
   whatsapp: '#25D366',
 };
 
-const getColor = createColorGetter(colors);
-
-export default getColor;
+export default colors;

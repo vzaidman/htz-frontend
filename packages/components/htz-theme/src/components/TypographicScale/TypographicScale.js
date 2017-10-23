@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 
-import getColor from '../../colors';
-import typesetter from '../../typesetter';
+import getColor from '../../methods/getColor';
+import typesetter from '../../methods/typesetter';
 
 const pangram = 'איך נטוס? עם גד כץ. הזקן שמחלף בצרפת!';
 

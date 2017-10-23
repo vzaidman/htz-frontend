@@ -16,8 +16,16 @@ module.exports = configure(config =>
     title: 'htz-theme',
     sections: [
       {
-        // name: 'Components',
-        components: 'src/components/**/[A-Z]*.{js,jsx}',
+        name: 'Methods and Properties',
+        components: 'src/components/MethodsAndProperties/**/*.js',
+      },
+      {
+        name: 'Typographic Scale',
+        components: 'src/components/TypographicScale/**/*.js',
+      },
+      {
+        name: 'Color Palette',
+        components: 'src/components/ColorPalette/**/*.js',
       },
       // {
       //   name: 'Haaretz Shared Components',

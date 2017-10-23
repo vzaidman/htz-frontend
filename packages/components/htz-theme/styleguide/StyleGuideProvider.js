@@ -2,41 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createRenderer, StyleProvider, } from '@haaretz/htz-components';
 
-import mq from '../src/mq';
-import typesetter, { typeConf, } from '../src/typesetter.js';
+// import bps from '../src/consts/bps';
+// import typeConf from '../src/consts/typeConf';
+import typographicBaseline from '../src/consts/typographicBaseline';
+// import mq from '../src/methods/mq';
+// import typesetter from '../src/methods/typesetter';
 
 const styleRenderer = createRenderer({ isRtl: true, });
 
-const propTypes = {
-  children: PropTypes.node,
-};
-const defaultProps = {
-  children: null,
-};
-
-// Set baseline
-const htmlRules = [
-  mq(
-    { until: 'xl', },
-    {
-      fontSize: `${typeConf.default.rhythmUnit}px`,
-    }
-  ),
-  mq(
-    { form: 'xl', },
-    {
-      fontSize: `${typeConf.xl.rhythmUnit}px`,
-    }
-  ),
-];
-
-// Set base typography
-const bodyRules = [ typesetter('0'), ];
-
-const no = 'ds';
-
 const globalRules = `
 html { font-family: "Open Sans Hebrew", arial; }
+${typographicBaseline}
 /* Make component views resizeable */
 [class^="rsg--content-"] { max-width: none; }
 [class^="rsg--controls-"] {
@@ -55,7 +31,20 @@ html { font-family: "Open Sans Hebrew", arial; }
   border: none;
   border-bottom: 1px solid #e8e8e8;
   padding: 0;
-}`;
+}
+/* Hide component names */
+h2[id],
+[class*="rsg--isChild"] {
+  display: none;
+}
+`.trim();
+
+const propTypes = {
+  children: PropTypes.node,
+};
+const defaultProps = {
+  children: null,
+};
 
 export default function StyleGuideProvider({ children, }) {
   styleRenderer.renderFont(
@@ -74,13 +63,6 @@ export default function StyleGuideProvider({ children, }) {
     ],
     { fontWeight: 700, }
   );
-
-  htmlRules.forEach(ruleSet => {
-    styleRenderer.renderStatic(ruleSet, 'html');
-  });
-  bodyRules.forEach(ruleSet => {
-    styleRenderer.renderStatic(ruleSet, 'body');
-  });
 
   styleRenderer.renderStatic(globalRules);
 

@@ -1,6 +1,4 @@
-import { createMqFunc, } from '@haaretz/htz-css-tools';
-
-export const bps = Object.freeze({
+const bps = Object.freeze({
   widths: Object.freeze({
     s: 600,
     m: 768,
@@ -14,5 +12,4 @@ export const bps = Object.freeze({
   }),
 });
 
-const mq = createMqFunc(bps);
-export default mq;
+export default bps;

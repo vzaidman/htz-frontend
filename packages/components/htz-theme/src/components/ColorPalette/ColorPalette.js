@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import getColor, { colors, } from '../../colors';
+import getColor from '../../methods/getColor';
+import colors from '../../consts/colors';
 
 ColorGroup.propTypes = {
   groupName: PropTypes.string.isRequired,
