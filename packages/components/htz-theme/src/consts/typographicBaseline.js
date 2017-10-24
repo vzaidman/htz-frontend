@@ -60,7 +60,7 @@ const htmlFontSizes = typeConfBpsOrder.reduce((rules, bp, i) => {
  */
 const htmlFontSizesAsString = Object.keys(htmlFontSizes).reduce(
   (rules, mqName) =>
-    `${rules}${mqName}:{html:{${objToCSSString(htmlFontSizes[mqName])}}}`,
+    `${rules}${mqName}{html{${objToCSSString(htmlFontSizes[mqName])}}}`,
   ''
 );
 
@@ -79,7 +79,7 @@ const bodyTypographyRules = { ...typesetter('0'), };
  */
 const bodyTypographyRulesAsString = Object.keys(bodyTypographyRules).reduce(
   (rules, mqName) =>
-    `${rules}${mqName}:{body:{${objToCSSString(bodyTypographyRules[mqName])}}}`,
+    `${rules}${mqName}{body{${objToCSSString(bodyTypographyRules[mqName])}}}`,
   ''
 );
 
