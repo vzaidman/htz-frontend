@@ -2,16 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createRenderer, StyleProvider, } from '@haaretz/htz-components';
 
-// import bps from '../src/consts/bps';
-// import typeConf from '../src/consts/typeConf';
+import fontStacks from '../src/consts/fontStacks';
 import typographicBaseline from '../src/consts/typographicBaseline';
-// import mq from '../src/methods/mq';
-// import typesetter from '../src/methods/typesetter';
+import getColor from '../src/methods/getColor';
 
 const styleRenderer = createRenderer({ isRtl: true, });
 
 const globalRules = `
-html { font-family: "Open Sans Hebrew", arial; }
+html {color:${getColor('bodyText')};font-family:${fontStacks.default};}
 ${typographicBaseline}
 /* Make component views resizeable */
 [class^="rsg--content-"] { max-width: none; }
@@ -27,10 +25,11 @@ ${typographicBaseline}
   resize: horizontal;
   width: 1000px;
 
-  /* Make styling less obtrusive */
+  /* Make styleguide syles less obtrusive */
   border: none;
   border-bottom: 1px solid #e8e8e8;
   padding: 0;
+  color: ${getColor('bodyText')};
 }
 /* Hide component names */
 h2[id],

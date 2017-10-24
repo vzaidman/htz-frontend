@@ -14,7 +14,7 @@ const rule = props => ({
   outline:
     config.has('debugButtons') && config.get('debugButtons')
       ? '1px solid #09a5d9'
-      : undefined,
+      : '1px solid crimson',
 });
 
 export function Button({ children, ...props }) {
