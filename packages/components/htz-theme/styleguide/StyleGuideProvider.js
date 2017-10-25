@@ -2,19 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createRenderer, StyleProvider, } from '@haaretz/htz-components';
 
-import fontStacks from '../src/consts/fontStacks';
-import typographicBaseline from '../src/consts/typographicBaseline';
+import cssReset from '../src/consts/cssReset';
 import getColor from '../src/methods/getColor';
 
 const styleRenderer = createRenderer({ isRtl: true, });
 
+// html {color:${getColor('bodyText')};font-family:${fontStacks.default};}
+// ${typographicBaseline}
 const globalRules = `
-html {color:${getColor('bodyText')};font-family:${fontStacks.default};}
-${typographicBaseline}
+${cssReset}
 /* Make component views resizeable */
 [class^="rsg--content-"] { max-width: none; }
 [class^="rsg--controls-"] {
-  max-width: 1000px;
   margin: 0 auto;
 }
 [class^="rsg--preview-"] {
@@ -23,7 +22,6 @@ ${typographicBaseline}
   margin: 0 auto;
   overflow: hidden;
   resize: horizontal;
-  width: 1000px;
 
   /* Make styleguide syles less obtrusive */
   border: none;

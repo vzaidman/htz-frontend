@@ -1,12 +1,3 @@
-# [htz-theme](https://haaretz.github.io/htz-frontend/htz-theme)
-
-Style theme for haaretz branded apps
-
-Haaretz applications use [Fela](https://fela.js.org) for styling components, and this package is 
-designed to integrate with that workflow, specifically through a `themeProvider`. While it is 
-possible that `htz-theme` will work out of the box with other CSS-in-JS solutions, please take into 
-account that your millage may vary.
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
@@ -19,6 +10,10 @@ account that your millage may vary.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+Haaretz applications use [Fela](https://fela.js.org) for styling components, and this package is 
+designed to integrate with that workflow, specifically through a `themeProvider`. While it is 
+possible that `htz-theme` will work out of the box with other CSS-in-JS solutions, please take into 
+account that your millage may vary.
 
 ## Installation
 
@@ -81,3 +76,8 @@ the Fela renderer's [`renderStatic()` method](https://github.com/rofrischmann/fe
 
 ```js static
 renderer.renderStatic(cssReset);
+```
+
+```js
+<MethodsAndProperties />
+```

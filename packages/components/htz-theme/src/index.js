@@ -3,12 +3,14 @@ import bps from './consts/bps';
 import fontStacks from './consts/fontStacks';
 import getColor from './methods/getColor';
 import typeConf from './consts/typeConf';
-import typographicBaseline from './consts/typographicBaseline';
+import cssReset from './consts/cssReset';
 
 // methods
 import typesetter from './methods/typesetter';
 import pxToRem from './methods/pxToRem';
 import mq from './methods/mq';
+
+export { cssReset, };
 
 /**
  * Haaretz theme component
@@ -26,8 +28,6 @@ import mq from './methods/mq';
  * @prop {Object} typeConf - An immutable
  *   [TypeConf](https://haaretz.github.io/htz-frontend/htz-css-tools#typeconf) object per-breakpoint
  *   typographic and vertical-rhythm values
- * @prop {string} typographicBaseline - a css-like string for setting the typographic baseline on
- *   the `html` and `body` elements.
  * @prop {function} color - A [colorGetter](https://haaretz.github.io/htz-frontend/htz-css-tools#colorgetter)
  *   function for retrieving color values from the predefined color palette.
  * @prop {function} mq - A [media-query function](https://haaretz.github.io/htz-frontend/htz-css-tools#typeconf),
@@ -46,7 +46,6 @@ const htzTheme = Object.freeze({
   direrction: 'rtl',
   fontStacks,
   typeConf,
-  typographicBaseline,
 
   // Methods
   color: getColor,

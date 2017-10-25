@@ -16,8 +16,8 @@ module.exports = configure(config =>
     title: 'htz-theme',
     sections: [
       {
-        name: 'Methods and Properties',
-        components: 'src/components/MethodsAndProperties/**/*.js',
+        name: 'Intorduction',
+        components: 'src/components/Intro/**/*.js',
       },
       {
         name: 'Font Stacks',

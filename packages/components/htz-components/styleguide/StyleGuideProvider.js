@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import htzTheme from '@haaretz/htz-theme'; // eslint-disable-line import/no-extraneous-dependencies
+// eslint-disable-next-line import/no-extraneous-dependencies
+import htzTheme, { cssReset, } from '@haaretz/htz-theme';
 import { createRenderer, StyleProvider, } from '../src';
 
 const styleRenderer = createRenderer({ isRtl: true, });
@@ -14,13 +15,10 @@ StyleGuideProvider.defaultProps = {
 };
 
 const globalRules = `
-html{color:${htzTheme.color('bodyText')};font-family:${htzTheme.fontStacks
-  .default};}
-${htzTheme.typographicBaseline}
+${cssReset}
 /* Make component views resizeable */
 [class^="rsg--content-"] { max-width: none; }
 [class^="rsg--controls-"] {
-  max-width: 1000px;
   margin: 0 auto;
 }
 [class^="rsg--preview-"] {
@@ -29,7 +27,6 @@ ${htzTheme.typographicBaseline}
   margin: 0 auto;
   overflow: hidden;
   resize: horizontal;
-  width: 1000px;
 
   /* Make styleguide syles less obtrusive */
   border: none;

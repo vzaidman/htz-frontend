@@ -7,7 +7,10 @@ export default function FontStacks() {
   return (
     <div style={{ fontSize: '1.2em', }}>
       {Object.keys(fontStacks).map(name => (
-        <p style={{ fontFamily: fontStacks[name], margin: '0 0 1rem', }}>
+        <p
+          key={name}
+          style={{ fontFamily: fontStacks[name], margin: '0 0 1rem', }}
+        >
           <strong>{name}:</strong> <code>font-familty: {fontStacks[name]}</code>
           <br />
           <strong>Sample:</strong> <bdo dir="rtl">{pangram}</bdo>

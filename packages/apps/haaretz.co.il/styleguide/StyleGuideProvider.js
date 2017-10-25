@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleProvider, } from '@haaretz/htz-components';
-import htzTheme from '@haaretz/htz-theme';
+import htzTheme, { cssReset, } from '@haaretz/htz-theme';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 
 StyleGuideProvider.propTypes = {
@@ -12,22 +12,20 @@ StyleGuideProvider.defaultProps = {
 };
 
 const globalRules = `
-html{color:${htzTheme.color('bodyText')};font-family:${htzTheme.fontStacks
-  .default};}
-${htzTheme.typographicBaseline}
+${cssReset}
 /* Make component views resizeable */
 [class^="rsg--content-"] { max-width: none; }
 [class^="rsg--controls-"] {
-  max-width: 1000px;
   margin: 0 auto;
 }
 [class^="rsg--preview-"] {
+  /* Make component views RTL */
+  direction: rtl;
   /* Make component views resizeable */
   max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
   resize: horizontal;
-  width: 1000px;
 
   /* Make styleguide syles less obtrusive */
   border: none;

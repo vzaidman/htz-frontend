@@ -1,12 +1,6 @@
 import { createDocument, } from '@haaretz/htz-components';
-import htzTheme from '@haaretz/htz-theme';
+import htzTheme, { cssReset, } from '@haaretz/htz-theme';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
-
-const globalStyles = `
-html{color:${htzTheme.color('bodyText')};font-family:${htzTheme.fontStacks
-  .default};}
-${htzTheme.typographicBaseline}
-`.trim();
 
 // TODO: replace this with a more preformant font loading method,
 // probably critical FOFT with DATA URI
@@ -28,7 +22,7 @@ styleRenderer.renderFont(
   { fontWeight: 700, }
 );
 
-styleRenderer.renderStatic(globalStyles);
+styleRenderer.renderStatic(cssReset);
 
 const HaaretzDocument = createDocument(styleRenderer);
 export default HaaretzDocument;
