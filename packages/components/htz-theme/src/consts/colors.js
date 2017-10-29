@@ -126,7 +126,7 @@ const colors = {
 
   // social
   facebook: {
-    base: '#0B7EB5',
+    base: '#3b5998',
     messanger: '#0084FF',
   },
   gplus: '#DB4437',
