@@ -47,7 +47,8 @@ function get(obj, property) {
   var keyPath = Array.isArray(property) ? property.join('.') : property;
   var value = getSafe(obj, property);
   if (value === undefined) {
-    throw new Error(`Configuration property "${keyPath}" is not defined`);
+    // eslint-disable-next-line
+    throw new Error('Configuration property "' + keyPath + '" is not defined');
   }
   return value;
 }
