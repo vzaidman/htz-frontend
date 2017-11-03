@@ -21,6 +21,9 @@ import createRemFunction from './units/createRemFunction';
 import createTypesetter from './typography/createTypesetter';
 import getLengthProps from './units/getLengthProps';
 import getUnit from './units/getUnit';
+import parseComponentProp from './props/parseComponentProp';
+import parseStyleProp from './props/parseStyleProp';
+import parseStyleProps from './props/parseStyleProps';
 import pxTo, { pxToEm, } from './units/pxTo';
 import stripUnit from './units/stripUnit';
 import visuallyHidden from './mixins/visuallyHidden';
@@ -40,6 +43,9 @@ export {
   createTypesetter,
   getLengthProps,
   getUnit,
+  parseComponentProp,
+  parseStyleProp,
+  parseStyleProps,
   pxTo,
   pxToEm,
   stripUnit,

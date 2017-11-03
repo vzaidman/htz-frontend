@@ -22,6 +22,16 @@ toc:
   - WidthBpsConfig
   - BpsConfig
 
+  - name: Component Props Parsers
+  - parseComponentProp
+  - parseStyleProps
+  - parseStyleProp
+  - ComponentPropResponsiveObject
+  - ComponentPropValue
+  - ComponentPropConverterFn
+  - StylePropResponsiveObject
+  - StyleProp
+
   - name: Typography
   - createTypesetter
   - TypeConf
@@ -50,6 +60,7 @@ toc:
   - name: Misc Mixins
     description: Common css patterns.
   - visuallyHidden
+  - autospace
 
   - name: CSS Unit Helpers
   - stripUnit

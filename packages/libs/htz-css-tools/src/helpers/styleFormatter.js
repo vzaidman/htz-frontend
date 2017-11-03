@@ -9,7 +9,7 @@
  * @type {Object}
  */
 // eslint-disable-next-line no-use-before-define
-type CSSDecleration = { [prop: string]: StyleValue };
+export type CSSDecleration = { [prop: string]: StyleValue };
 
 /**
  * A CSS value.
@@ -17,7 +17,7 @@ type CSSDecleration = { [prop: string]: StyleValue };
  * May also contain a [`CSSDecleration`](#cssdecleration) for nesting or
  * an array of style values, for generating fallback arguments.
  */
-type StyleValue = string | number | CSSDecleration | (string | number)[];
+export type StyleValue = string | number | CSSDecleration | (string | number)[];
 
 /**
  * A utility to format css declarations

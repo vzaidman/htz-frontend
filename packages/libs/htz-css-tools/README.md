@@ -25,4 +25,4 @@ $ yarn install --save @haaretz/htz-css-tools
 
 ## Usage
 
-See the [documentation](docs/)
+See the [documentation](https://haaretz.github.io/htz-frontend/htz-css-tools)
