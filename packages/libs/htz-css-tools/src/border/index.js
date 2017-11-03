@@ -59,7 +59,7 @@ import setBorder from './setBorder';
  *   borderInlineStartWidth: '2px',
  *   position: 'relative',
  *
- *   '&:before': {
+ *   ':before': {
  *     backgroundColor: 'red'
  *     content: '',
  *     height: '2px',
@@ -68,7 +68,7 @@ import setBorder from './setBorder';
  *     width: '100%',
  *   }
  *
- *   '&:after': {
+ *   ':after': {
  *     backgroundColor: 'red'
  *     bottom: '0',
  *     content: '',
@@ -79,7 +79,7 @@ import setBorder from './setBorder';
  * }
  */
 export function border(
-  optsOrWidth: BorderOptions | number,
+  optsOrWidth: BorderOptions | number | string,
   lines?: number,
   style?: BorderStyle,
   color?: string
@@ -127,7 +127,7 @@ export function border(
  * {
  *   position: 'relative',
  *
- *   '&:before': {
+ *   ':before': {
  *     backgroundColor: 'red'
  *     content: '',
  *     height: '2px',
@@ -138,7 +138,7 @@ export function border(
  * }
  */
 export function borderTop(
-  optsOrWidth: BorderOptions | number,
+  optsOrWidth: BorderOptions | number | string,
   lines?: number,
   style?: BorderStyle,
   color?: string
@@ -173,7 +173,7 @@ export function borderTop(
  * }
  */
 export function borderEnd(
-  optsOrWidth: BorderOptions | number,
+  optsOrWidth: BorderOptions | number | string,
   style?: BorderStyle,
   color?: string
 ): BorderRuleset {
@@ -207,7 +207,7 @@ export function borderEnd(
  * }
  */
 export function borderRight(
-  optsOrWidth: BorderOptions | number,
+  optsOrWidth: BorderOptions | number | string,
   style?: BorderStyle,
   color?: string
 ): BorderRuleset {
@@ -254,7 +254,7 @@ export function borderRight(
  * {
  *   position: 'relative',
  *
- *   '&:after': {
+ *   ':after': {
  *     backgroundColor: 'red'
  *     bottom: '0',
  *     content: '',
@@ -265,7 +265,7 @@ export function borderRight(
  * }
  */
 export function borderBottom(
-  optsOrWidth: BorderOptions | number,
+  optsOrWidth: BorderOptions | number | string,
   lines?: number,
   style?: BorderStyle,
   color?: string
@@ -300,7 +300,7 @@ export function borderBottom(
  * }
  */
 export function borderStart(
-  optsOrWidth: BorderOptions | number,
+  optsOrWidth: BorderOptions | number | string,
   style?: BorderStyle,
   color?: string
 ): BorderRuleset {
@@ -334,7 +334,7 @@ export function borderStart(
  * }
  */
 export function borderLeft(
-  optsOrWidth: BorderOptions | number,
+  optsOrWidth: BorderOptions | number | string,
   style?: BorderStyle,
   color?: string
 ): BorderRuleset {
@@ -371,7 +371,7 @@ export function borderLeft(
  * }
  */
 export function borderHorizontal(
-  optsOrWidth: BorderOptions | number,
+  optsOrWidth: BorderOptions | number | string,
   style?: BorderStyle,
   color?: string
 ): BorderRuleset {
@@ -422,7 +422,7 @@ export function borderHorizontal(
  * {
  *   position: 'relative',
  *
- *   '&:before': {
+ *   ':before': {
  *     backgroundColor: 'red'
  *     content: '',
  *     height: '2px',
@@ -431,7 +431,7 @@ export function borderHorizontal(
  *     width: '100%',
  *   }
  *
- *   '&:after': {
+ *   ':after': {
  *     backgroundColor: 'red'
  *     bottom: '0',
  *     content: '',
@@ -442,7 +442,7 @@ export function borderHorizontal(
  * }
  */
 export function borderVertical(
-  optsOrWidth: BorderOptions | number,
+  optsOrWidth: BorderOptions | number | string,
   lines?: number,
   style?: BorderStyle,
   color?: string

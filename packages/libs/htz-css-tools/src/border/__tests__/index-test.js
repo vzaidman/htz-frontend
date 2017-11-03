@@ -114,7 +114,7 @@ describe('# border()', () => {
         borderInlineEndWidth: '2px',
         position: 'relative',
 
-        '&:before': {
+        ':before': {
           backgroundColor: 'red',
           content: '',
           height: '2px',
@@ -123,7 +123,7 @@ describe('# border()', () => {
           width: '100%',
         },
 
-        '&:after': {
+        ':after': {
           backgroundColor: 'red',
           bottom: '0',
           content: '',
@@ -149,7 +149,7 @@ describe('# border()', () => {
         borderInlineEndWidth: '2px',
         position: 'relative',
 
-        '&:before': {
+        ':before': {
           content: '',
           height: '2px',
           position: 'absolute',
@@ -157,7 +157,7 @@ describe('# border()', () => {
           width: '100%',
         },
 
-        '&:after': {
+        ':after': {
           bottom: '0',
           content: '',
           height: '2px',
@@ -180,7 +180,7 @@ describe('# border()', () => {
         borderInlineEndWidth: '2px',
         position: 'relative',
 
-        '&:before': {
+        ':before': {
           content: '',
           height: '2px',
           position: 'absolute',
@@ -188,7 +188,7 @@ describe('# border()', () => {
           width: '100%',
         },
 
-        '&:after': {
+        ':after': {
           bottom: '0',
           content: '',
           height: '2px',
@@ -279,7 +279,7 @@ describe('# borderTop()', () => {
       {
         position: 'relative',
 
-        '&:before': {
+        ':before': {
           backgroundColor: 'red',
           content: '',
           height: '2px',
@@ -301,7 +301,7 @@ describe('# borderTop()', () => {
       {
         position: 'relative',
 
-        '&:before': {
+        ':before': {
           content: '',
           height: '2px',
           position: 'absolute',
@@ -322,7 +322,7 @@ describe('# borderTop()', () => {
       {
         position: 'relative',
 
-        '&:before': {
+        ':before': {
           content: '',
           height: '2px',
           position: 'absolute',
@@ -597,7 +597,7 @@ describe('# borderBottom()', () => {
       {
         position: 'relative',
 
-        '&:after': {
+        ':after': {
           backgroundColor: 'red',
           content: '',
           height: '2px',
@@ -619,7 +619,7 @@ describe('# borderBottom()', () => {
       {
         position: 'relative',
 
-        '&:after': {
+        ':after': {
           content: '',
           height: '2px',
           position: 'absolute',
@@ -640,7 +640,7 @@ describe('# borderBottom()', () => {
       {
         position: 'relative',
 
-        '&:after': {
+        ':after': {
           content: '',
           height: '2px',
           position: 'absolute',
@@ -1033,7 +1033,7 @@ describe('# borderVertical()', () => {
       {
         position: 'relative',
 
-        '&:before': {
+        ':before': {
           backgroundColor: 'red',
           content: '',
           height: '2px',
@@ -1042,7 +1042,7 @@ describe('# borderVertical()', () => {
           width: '100%',
         },
 
-        '&:after': {
+        ':after': {
           backgroundColor: 'red',
           content: '',
           height: '2px',
@@ -1064,7 +1064,7 @@ describe('# borderVertical()', () => {
       {
         position: 'relative',
 
-        '&:before': {
+        ':before': {
           content: '',
           height: '2px',
           position: 'absolute',
@@ -1072,7 +1072,7 @@ describe('# borderVertical()', () => {
           width: '100%',
         },
 
-        '&:after': {
+        ':after': {
           content: '',
           height: '2px',
           position: 'absolute',
@@ -1093,7 +1093,7 @@ describe('# borderVertical()', () => {
       {
         position: 'relative',
 
-        '&:before': {
+        ':before': {
           content: '',
           height: '2px',
           position: 'absolute',
@@ -1101,7 +1101,7 @@ describe('# borderVertical()', () => {
           width: '100%',
         },
 
-        '&:after': {
+        ':after': {
           content: '',
           height: '2px',
           position: 'absolute',

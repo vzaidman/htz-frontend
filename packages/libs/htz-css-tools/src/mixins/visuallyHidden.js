@@ -8,6 +8,17 @@
  *   via the keyboard
  */
 export default function visuallyHidden(isFocusable: boolean = false): Object {
+  const focusableStyles = {
+    clip: 'auto',
+    clipPath: 'none',
+    height: 'auto',
+    margin: '0',
+    overflow: 'visible',
+    position: 'static',
+    width: 'auto',
+    whiteSpace: 'inherit',
+  };
+
   return {
     border: '0',
     clip: 'rect(0 0 0 0)',
@@ -21,16 +32,8 @@ export default function visuallyHidden(isFocusable: boolean = false): Object {
     whiteSpace: 'nowrap',
     ...(isFocusable === true
       ? {
-        '&:active, &:focus': {
-          clip: 'auto',
-          clipPath: 'none',
-          height: 'auto',
-          margin: '0',
-          overflow: 'visible',
-          position: 'static',
-          width: 'auto',
-          whiteSpace: 'inherit',
-        },
+        ':focus': focusableStyles,
+        ':active': focusableStyles,
       }
       : undefined),
   };

@@ -54,7 +54,7 @@ import type { BorderSide, BorderStyle, BorderRuleset, } from './types';
  * {
  *   position: 'relative',
  *
- *   '&:before': {
+ *   ':before': {
  *     backgroundColor: 'red'
  *     content: '',
  *     height: '2px',
@@ -95,13 +95,13 @@ export default function setBorder(
     };
 
     if (verticalSides.includes('top')) {
-      ruleSet['&:before'] = {
+      ruleSet[':before'] = {
         ...pseudoElRules,
         top: '0',
       };
     }
     if (verticalSides.includes('bottom')) {
-      ruleSet['&:after'] = {
+      ruleSet[':after'] = {
         ...pseudoElRules,
         bottom: '0',
       };

@@ -77,8 +77,14 @@ export type BorderRuleset = {
   paddingTop?: string,
   position?: "relative",
 
-  "&::after"?: {
+  ":after"?: {
     bottom?: 0,
+    content: "",
+    height: number,
+    position: "absolute",
+    width: "100%"
+  },
+  ":before"?: {
     content: "",
     height: number,
     position: "absolute",

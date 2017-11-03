@@ -29,7 +29,17 @@ describe('visuallyHidden()', () => {
       width: '1px',
       whiteSpace: 'nowrap',
 
-      '&:active, &:focus': {
+      ':focus': {
+        clip: 'auto',
+        clipPath: 'none',
+        height: 'auto',
+        margin: '0',
+        overflow: 'visible',
+        position: 'static',
+        width: 'auto',
+        whiteSpace: 'inherit',
+      },
+      ':active': {
         clip: 'auto',
         clipPath: 'none',
         height: 'auto',
