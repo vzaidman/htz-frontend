@@ -1,5 +1,5 @@
 import { createDocument, } from '@haaretz/htz-components';
-import htzTheme, { cssReset, } from '@haaretz/htz-theme';
+import { cssReset, } from '@haaretz/htz-theme';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 
 // TODO: replace this with a more preformant font loading method,
