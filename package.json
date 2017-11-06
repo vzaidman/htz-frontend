@@ -130,20 +130,6 @@
         ]
       }
     },
-    "graphql-tools": {
-      "^1.2.2": {
-        "packages/apps/*": [
-          "dependencies"
-        ]
-      }
-    },
-    "graphql-type-json": {
-      "^0.1.4": {
-        "packages/apps/*": [
-          "dependencies"
-        ]
-      }
-    },
     "next": {
       "^4.1.4": {
         "packages/apps/*": [
@@ -161,15 +147,11 @@
     "react": {
       "^16.0.0": {
         "packages/{libs/htz-react-base,components/*}": [
-          "devDependencies"
+          "devDependencies",
+          "peerDependencies"
         ],
         "packages/apps/*": [
           "dependencies"
-        ]
-      },
-      "^16.0.0": {
-        "packages/{libs/htz-react-base,components/*}": [
-          "peerDependencies"
         ]
       }
     },
@@ -183,15 +165,11 @@
     "react-dom": {
       "^16.0.0": {
         "packages/{libs/htz-react-base,components/*}": [
-          "devDependencies"
+          "devDependencies",
+          "peerDependencies"
         ],
         "packages/apps/*": [
           "dependencies"
-        ]
-      },
-      "^16.0.0": {
-        "packages/{libs/htz-react-base,components/*}": [
-          "peerDependencies"
         ]
       }
     },

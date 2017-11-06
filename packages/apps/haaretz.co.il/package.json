@@ -17,8 +17,7 @@
     "prepare": "npm run build",
     "start": "NODE_ENV=production htz-react-server",
     "styleguide": "htz-scripts styleguide",
-    "styleguide:build":
-      "htz-scripts styleguide:build && rm -rf ../../../docs/haaretz.co.il/**/* && cp -r dist/styleguide/* ../../../docs/haaretz.co.il",
+    "styleguide:build": "htz-scripts styleguide:build && rm -rf ../../../docs/haaretz.co.il/**/* && cp -r dist/styleguide/* ../../../docs/haaretz.co.il",
     "test": "htz-scripts test",
     "update-scripts": "htz-scripts update-scripts"
   },
@@ -30,23 +29,18 @@
     "config": "^1.26.2",
     "dataloader": "^1.3.0",
     "fela": "^6.0.2",
+    "graphql": "0.10.5",
     "graphql-anywhere": "^3.1.0",
-    "graphql-tools": "^1.2.2",
-    "graphql-type-json": "^0.1.4",
     "next": "^4.1.4",
     "prop-types": "^15.6.0",
-    "react": "^15.6.1",
+    "react": "^16.0.0",
     "react-apollo": "^1.4.15",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.0.0",
     "react-fela": "^6.0.2",
     "universal-cookie": "^2.0.8"
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
-    "babel-loader": "^7.1.2",
-    "body-parser": "^1.18.1",
-    "graphql": "^0.10.5",
-    "graphql-server-express": "^1.1.2",
-    "react-test-renderer": "^15.6.1"
+    "babel-loader": "^7.1.2"
   }
 }
