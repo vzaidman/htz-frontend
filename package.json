@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bootstrap": "yarn run clean && yarn run update && lerna run prepare",
+    "bootstrap": "yarn run clean && yarn run update",
     "clean": "lerna clean --yes && rimraf \"packages/*/*/{.jest,.next,dist}\"",
     "commitmsg": "commitlint -e",
     "create-package": "node scripts/create-package.js",
@@ -24,7 +24,7 @@
     "prepush": "node scripts/githooks/prepush",
     "sync": "node scripts/sync.js",
     "test": "lerna exec --no-bail -- yarn run test",
-    "update": "lerna bootstrap",
+    "update": "yarn && yarn run lerna run --no-bail prepare",
     "update-packages-scripts": "lerna exec --no-bail --loglevel verbose --ignore @haaretz/htz-react-base -- yarn run update-scripts"
   },
   "repository": {
@@ -39,8 +39,8 @@
   },
   "homepage": "https://github.com/Haaretz/htz-frontend#readme",
   "engines": {
-    "node": ">= 8",
-    "yarn": ">= 1.2.1"
+    "node": ">= 8.4.0",
+    "yarn": ">= 1.3.0"
   },
   "syncDependencies": {
     "@haaretz/htz-components": {
