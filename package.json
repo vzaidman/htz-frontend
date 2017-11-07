@@ -134,6 +134,10 @@
       "^4.1.4": {
         "packages/apps/*": [
           "dependencies"
+        ],
+        "packages/{libs/htz-react-server,components/htz-components}": [
+          "devDependencies",
+          "peerDependencies"
         ]
       }
     },
