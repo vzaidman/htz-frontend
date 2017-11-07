@@ -51,6 +51,7 @@
     "fela-statistics": "^5.0.6",
     "fela-tools": "^5.0.11",
     "prop-types": "^15.6.0",
+    "react-test-renderer": "^16.0.0",
     "serialize-javascript": "^1.4.0"
   },
   "devDependencies": {
@@ -62,7 +63,6 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-fela": "^6.0.2",
-    "react-test-renderer": "^15.6.1",
     "rimraf": "2.6.2"
   }
 }
