@@ -99,7 +99,7 @@ export default Component => {
 
         serverState = {
           apollo: {
-            data: apolloClient.getInitialState().data,
+            data: apolloClient.cache.extract(),
           },
         };
       }
@@ -114,7 +114,7 @@ export default Component => {
     constructor(props) {
       super(props);
       const { serverState, } = this.props;
-      this.apolloClient = createClient({ initialState: serverState, });
+      this.apolloClient = createClient(serverState.apollo.data);
     }
 
     render() {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect, } from 'react-fela';
 import dynamic from 'next/dynamic';
-import { gql, } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import CommentsElement from '../Comments/Comments';
 // const CommentsElement = dynamic(import ('../Comments/Comments'));
