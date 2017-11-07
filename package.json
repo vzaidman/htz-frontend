@@ -184,6 +184,13 @@
         ]
       }
     },
+    "rimraf": {
+      "2.6.2": {
+        "packages/*/*": [
+          "devDependencies"
+        ]
+      }
+    },
     "universal-cookie": {
       "^2.0.8": {
         "packages/apps/*": [
@@ -219,7 +226,6 @@
     "@commitlint/cli": "^4.1.0",
     "@haaretz/commitlint-config": "^1.1.0",
     "chalk": "^2.1.0",
-    "cli-spinner": "^0.2.6",
     "commitizen": "^2.9.6",
     "cross-spawn": "^5.1.0",
     "cz-lerna-changelog": "^1.2.1",
@@ -234,7 +240,7 @@
     "lint-staged": "^4.2.3",
     "lodash.template": "^4.4.0",
     "node-dir": "^0.1.17",
-    "rimraf": "^2.6.1",
+    "rimraf": "^2.6.2",
     "write-pkg": "^3.1.0"
   },
   "dependencies": {}
