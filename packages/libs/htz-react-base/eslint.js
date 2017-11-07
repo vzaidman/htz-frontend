@@ -108,6 +108,7 @@ module.exports = {
     // Once github.com/benmosher/eslint-plugin-import/pull/827 is merged, this rule can
     // be re-instated.
     'import/extensions': 'off',
+    'import/prefer-default-export': 0,
 
     /* eslint/react related rules */
     'react/jsx-filename-extension': [ 1, { extensions: [ '.js', '.jsx', ], }, ],
