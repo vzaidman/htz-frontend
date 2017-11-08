@@ -11,14 +11,14 @@ import styleRenderer from '../components/styleRenderer/styleRenderer';
 styleRenderer.renderFont(
   '"Open Sans Hebrew"',
   [
-    '../fonts/OpenSansHebrewRegular.woff',
-    '../fonts/OpenSansHebrewRegular.woff2',
+    './static/fonts/OpenSansHebrewRegular.woff',
+    './static/fonts/OpenSansHebrewRegular.woff2',
   ],
   { fontWeight: 400, }
 );
 styleRenderer.renderFont(
   '"Open Sans Hebrew"',
-  [ '../fonts/OpenSansHebrewBold.woff', '../fonts/OpenSansHebrewBold.woff2', ],
+  [ './static/fonts/OpenSansHebrewBold.woff', './static/fonts/OpenSansHebrewBold.woff2', ],
   { fontWeight: 700, }
 );
 
