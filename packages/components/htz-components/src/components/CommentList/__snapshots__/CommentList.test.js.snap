@@ -918,6 +918,100 @@ Object {
           </div>
         </div>
       </section>
+      <section
+        className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
+      >
+        <div
+          className="htz-l htz-m htz-n htz-o htz-p htz-q"
+        >
+          <span>
+            2
+          </span>
+        </div>
+        <div
+          className="htz-r"
+        >
+          <div>
+            <h4
+              className="htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
+            >
+              השדגעשדגעשר
+            </h4>
+            <span
+              className="htz-m htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+            >
+              08:57
+            </span>
+          </div>
+          <p
+            className="htz-ai htz-u"
+          >
+            ragbrgbarb
+          </p>
+          <div
+            className="htz-d htz-e htz-aj htz-ak"
+          >
+            <div
+              className="htz-al htz-am htz-s htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk"
+            >
+              הגב
+            </div>
+            <div
+              className="htz-d htz-e htz-bl"
+            >
+              <div
+                className="htz-bm"
+              >
+                <div
+                  className="htz-v htz-bn htz-bo"
+                >
+                  <span
+                    className="htz-bp"
+                    onClick={[Function]}
+                  >
+                    <span
+                      aria-label="like Icon"
+                      role="img"
+                    >
+                      ☝
+                    </span>
+                  </span>
+                  <span
+                    className="htz-m htz-bq htz-ah htz-br htz-x htz-bs htz-bt"
+                  >
+                    0
+                  </span>
+                </div>
+                <div
+                  className="htz-v htz-bn htz-bo"
+                >
+                  <span
+                    className="htz-bp"
+                    onClick={[Function]}
+                  >
+                    <span
+                      aria-label="like Icon"
+                      role="img"
+                    >
+                      ☟
+                    </span>
+                  </span>
+                  <span
+                    className="htz-m htz-bq htz-ah htz-br htz-x htz-bs htz-bt"
+                  >
+                    0
+                  </span>
+                </div>
+              </div>
+              <button
+                className="htz-al htz-bu htz-bv htz-bp"
+              >
+                דווח כפוגעני
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>,
   "styles": ".htz-a{background-color:#FFF}.htz-b{padding:10px}.htz-c{margin:5px}.htz-d{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-e{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-f{justify-content:flex-end;-webkit-box-pack:end;-webkit-justify-content:flex-end}.htz-g{direction:rtl}.htz-h{border-bottom-width:1px}.htz-i{border-bottom-style:solid}.htz-j{border-bottom-color:#B4B4B4}.htz-k{padding-bottom:calc(1rem - 1px)}.htz-l{width:10rem}.htz-m{color:#787878}.htz-r{width:100%}.htz-s{color:#0B7EB5}.htz-t{padding:0rem}.htz-u{margin:0rem}.htz-v{display:inline-block}.htz-ag{margin-left:1rem}.htz-ah{margin-right:1rem}.htz-ai{color:#2D2D2D}.htz-aj{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ak{align-content:flex-start;-webkit-align-content:flex-start}.htz-al{background-color:transparent}.htz-am{padding:0 2rem 0 2rem}.htz-an{font-weight:bold}.htz-as{border-left-width:1px}.htz-at{border-left-style:solid}.htz-au{border-left-color:#0B7EB5}.htz-av{border-right-width:1px}.htz-aw{border-right-style:solid}.htz-ax{border-right-color:#0B7EB5}.htz-ay{position:relative}.htz-az:before{background-color:#0B7EB5}.htz-ba:before{content:}.htz-bb:before{height:1px}.htz-bc:before{position:absolute}.htz-bd:before{width:100%}.htz-be:before{top:0rem}.htz-bf:after{background-color:#0B7EB5}.htz-bg:after{content:}.htz-bh:after{height:1px}.htz-bi:after{position:absolute}.htz-bj:after{width:100%}.htz-bk:after{bottom:0rem}.htz-bl{align-items:flex-start;-webkit-box-align:start;-webkit-align-items:flex-start}.htz-bm{margin-left:4rem}.htz-bn{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-bo{margin-right:2rem}.htz-bp{cursor:pointer}.htz-bq{vertical-align:center}.htz-bu{border:none}.htz-bv{color:#AB353B}@media (max-width: 80em){.htz-n{font-size:4rem}.htz-o{line-height:1.25em}.htz-w{font-size:2.6666666666666665rem}.htz-x{line-height:1.5em}.htz-ab{font-size:2.3333333333333335rem}.htz-ac{line-height:1.2857142857142858em}.htz-ao{font-size:1.8333333333333333rem}.htz-ap{line-height:1.6363636363636365em}.htz-br{font-size:2rem}}@media (min-width: 80em){.htz-p{font-size:3.857142857142857rem}.htz-q{line-height:1.2962962962962963em}.htz-y{font-size:2.5714285714285716rem}.htz-z{line-height:1.5555555555555556em}.htz-ae{font-size:2.2857142857142856rem}.htz-af{line-height:1.3125em}.htz-aq{font-size:1.7142857142857142rem}.htz-ar{line-height:1.75em}.htz-bs{font-size:2rem}.htz-bt{line-height:1.5em}}",
