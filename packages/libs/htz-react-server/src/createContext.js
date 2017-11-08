@@ -1,8 +1,9 @@
 import DataLoader from 'dataloader';
 import querystring from 'querystring';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import config from 'config';
 
-const Host = config.get('HostName');
+const Host = (config.has('HostName') && config.get('HostName')) || 'www';
 
 export function createLoaders() {
   // By default, `DataLoader` just caches the results forever, but we should
