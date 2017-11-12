@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { gql, } from 'react-apollo';
+import gql from 'graphql-tag';
 import { connect, } from 'react-fela';
 
 const fragments = {

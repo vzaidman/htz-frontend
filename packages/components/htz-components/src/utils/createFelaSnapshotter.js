@@ -32,6 +32,7 @@ export default function createFelaSnapshotter(
       styles: renderToString(testRenderer),
     };
 
+    testRenderer.clear();
     return testObj;
   };
 }

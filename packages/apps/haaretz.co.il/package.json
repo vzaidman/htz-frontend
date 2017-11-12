@@ -26,23 +26,25 @@
     "@haaretz/htz-css-tools": "^1.0.1",
     "@haaretz/htz-react-server": "^0.0.0",
     "@haaretz/htz-theme": "^0.1.0",
+    "apollo-client-preset": "^1.0.1",
     "config": "^1.26.2",
     "dataloader": "^1.3.0",
     "fela": "^6.0.2",
-    "graphql": "0.10.5",
+    "graphql": "^0.11.7",
     "graphql-anywhere": "^3.1.0",
-    "graphql-tools": "^1.2.2",
-    "graphql-type-json": "^0.1.4",
+    "graphql-tag": "^2.5.0",
+    "isomorphic-unfetch": "^2.0.0",
     "next": "^4.1.4",
     "prop-types": "^15.6.0",
-    "react": "^15.6.1",
-    "react-apollo": "^1.4.15",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0",
+    "react-apollo": "^2.0.0",
+    "react-dom": "^16.0.0",
     "react-fela": "^6.0.2",
     "universal-cookie": "^2.0.8"
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
-    "babel-loader": "^7.1.2"
+    "babel-loader": "^7.1.2",
+    "rimraf": "2.6.2"
   }
 }

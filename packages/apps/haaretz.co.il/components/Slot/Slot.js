@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect, } from 'react-fela';
 import dynamic from 'next/dynamic';
-import { gql, } from 'react-apollo';
+import gql from 'graphql-tag';
 
+import CommentsElement from '../Comments/Comments';
+// const CommentsElement = dynamic(import ('../Comments/Comments'));
 const StandardArticle = dynamic(import('../StandardArticle/StandardArticle'));
 
 const propTypes = {
@@ -47,50 +49,56 @@ const fragments = {
 };
 
 const rules = {
-  container: props => ({
-    border: '1px solid #bbb',
-    margin: 0.25,
-    padding: 0.25,
-  }),
-  content: props => ({
-    border: '1px solid #ddd',
-    margin: 0.25,
-    padding: 0.25,
-  }),
+  container: props => ({ border: '1px solid #bbb', margin: 0.25, padding: 0.25, }),
+  content: props => ({ border: '1px solid #ddd', margin: 0.25, padding: 0.25, }),
 };
 
 export function Slot({ name, content, styles, }) {
+  const mapper = (element, i) => {
+    let jsx;
+    switch (element.inputTemplate) {
+      case 'com.htz.StandardArticle':
+        jsx = <StandardArticle {...element} {...element.properties} />;
+        break;
+      case 'com.tm.CommentsElement':
+        // jsx = <CommentsElement contentId={element.contentId}/>;
+        jsx = <CommentsElement contentId={element.contentId} />;
+        break;
+      default:
+        jsx = (
+          <dl>
+            <dt>contentId</dt>
+            <dd>{element.contentId}</dd>
+            <dt>contentName</dt>
+            <dd>{element.contentName}</dd>
+            <dt>inputTemplate</dt>
+            <dd>{element.inputTemplate}</dd>
+            <dt>properties</dt>
+            {Object.keys(element.properties)
+              .sort()
+              .map(key => <dd key={key}>{key}</dd>)}
+          </dl>
+        );
+    }
+
+    return (
+      <div // There can indeed be duplicate content elements in the returned
+        // list, so we have no choice but to add an extra key identifier like
+        // the index.
+        // eslint-disable-next-line react/no-array-index-key
+        key={`${element.contentId}:${i}`}
+        className={styles.content}
+      >
+        {jsx}
+      </div>
+    );
+  };
+
   // Placeholder output, useful for debugging.
   return (
     <div className={styles.container}>
       <h2>Slot: {name}</h2>
-      {content.map((element, i) => (
-        <div
-          // There can indeed be duplicate content elements in the returned
-          // list, so we have no choice but to add an extra key identifier like
-          // the index.
-          // eslint-disable-next-line react/no-array-index-key
-          key={`${element.contentId}:${i}`}
-          className={styles.content}
-        >
-          {element.inputTemplate === 'com.htz.StandardArticle' ? (
-            <StandardArticle {...element} {...element.properties} />
-          ) : (
-            <dl>
-              <dt>contentId</dt>
-              <dd>{element.contentId}</dd>
-              <dt>contentName</dt>
-              <dd>{element.contentName}</dd>
-              <dt>inputTemplate</dt>
-              <dd>{element.inputTemplate}</dd>
-              <dt>properties</dt>
-              {Object.keys(element.properties)
-                .sort()
-                .map(key => <dd key={key}>{key}</dd>)}
-            </dl>
-          )}
-        </div>
-      ))}
+      {content.map((element, i) => mapper(element, i))}
     </div>
   );
 }

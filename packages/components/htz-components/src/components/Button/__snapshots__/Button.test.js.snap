@@ -4,11 +4,11 @@ exports[`renders correctly 1`] = `
 Object {
   "component": <div>
     <button
-        className="htz-a"
+      className="htz-a"
     >
-        Click here
+      Click here
     </button>
-</div>,
+  </div>,
   "styles": ".htz-a{outline:1px solid #09a5d9}",
 }
 `;

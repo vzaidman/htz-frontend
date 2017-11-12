@@ -74,8 +74,8 @@ Object.keys(dependencyMap).forEach(glob => {
   });
 });
 
-// Run `lerna bootstrap` at the end so the updates are actually installed.
-const result = spawn.sync('lerna', [ 'bootstrap', ...args, ], { stdio: 'inherit', });
+// Run `yarn at the end so the updates are actually installed.
+const result = spawn.sync('yarn', { stdio: 'inherit', });
 if (result.error) {
   throw result.error;
 }

@@ -85,19 +85,19 @@
         "beforeElementsIncludeHTML": "\n\t\t\t\u003cdiv class\u003d\"nav nav--separated masthead\"\u003e\n\t\t\t\t\u003cdiv class\u003d\"h-hidden--s-and-m mh__navbar--b mh__nav--separated\"\u003e\n\t\t\t\t\u003cspan\u003eבראש החדשות:\u003c/span\u003e\n\t\t\t",
         "contentLists": [
           {
-            "href": "http://elia.themarker.com:8080/misc/writers",
+            "href": "http://guyk.themarker.com:8080/misc/writers",
             "inputTemplate": "com.tm.Link",
             "contentId": "7.2158",
             "contentName": "כתבים"
           },
           {
-            "href": "http://elia.haaretz.co.il:8080/.premium-1.2088",
+            "href": "http://guyk.haaretz.co.il:8080/.premium-1.2088",
             "inputTemplate": "com.tm.Link",
             "contentId": "7.2156",
             "contentName": "הוויטמינים עולים על העצבים"
           },
           {
-            "href": "http://elia.haaretz.co.il:8080/news/world/.premium-1.1254",
+            "href": "http://guyk.haaretz.co.il:8080/news/world/.premium-1.1254",
             "inputTemplate": "com.tm.Link",
             "contentId": "1.2070",
             "contentName": "שבדיה"
