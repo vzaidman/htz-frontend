@@ -23,21 +23,6 @@ const fonts = [
     { fontWeight: 700, },
   ],
 ];
-// styleRenderer.renderFont(
-//   '"Open Sans Hebrew"',
-//   [
-//     './static/fonts/OpenSansHebrewRegular.woff',
-//     './static/fonts/OpenSansHebrewRegular.woff2',
-//   ],
-//   { fontWeight: 400, }
-// );
-// styleRenderer.renderFont(
-//   '"Open Sans Hebrew"',
-//   [ './static/fonts/OpenSansHebrewBold.woff', './static/fonts/OpenSansHebrewBold.woff2', ],
-//   { fontWeight: 700, }
-// );
-
-// styleRenderer.renderStatic(cssReset);
 
 const HaaretzDocument = createDocument(styleRenderer, fonts, cssReset);
 export default HaaretzDocument;
