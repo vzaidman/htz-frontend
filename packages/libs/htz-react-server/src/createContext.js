@@ -3,7 +3,7 @@ import querystring from 'querystring';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import config from 'config';
 
-const Host = (config.has('HostName') && config.get('HostName')) || 'www';
+const host = (config.has('hostname') && config.get('hostname')) || 'www';
 
 export function createLoaders() {
   // By default, `DataLoader` just caches the results forever, but we should
@@ -11,7 +11,7 @@ export function createLoaders() {
   const pageLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(path =>
-        fetch(`http://${Host}.haaretz.co.il/papi${path}`).then(response => response.json())
+        fetch(`http://${host}.haaretz.co.il/papi${path}`).then(response => response.json())
       )
     )
   );
@@ -19,7 +19,7 @@ export function createLoaders() {
     Promise.all(
       keys.map(contentId =>
         fetch(
-          `http://${Host}.haaretz.co.il/json/cmlink/${contentId}?composite=true`
+          `http://${host}.haaretz.co.il/json/cmlink/${contentId}?composite=true`
         ).then(response => response.json())
       )
     )
@@ -29,7 +29,7 @@ export function createLoaders() {
 
 export function createPosters(cookies) {
   const cmlinkCommentPoster = newComment => {
-    return fetch(`http://${Host}.haaretz.co.il/cmlink/${newComment.commentElementId}`, {
+    return fetch(`http://${host}.haaretz.co.il/cmlink/${newComment.commentElementId}`, {
       method: 'post',
       credentials: 'include',
       headers: {

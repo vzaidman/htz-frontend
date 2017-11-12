@@ -1,4 +1,4 @@
 module.exports = {
-  HostIP: process.env.SSH_CONNECTION.split(' ', 4)[2],
-  HostName: process.env.HOSTNAME,
+  hostIp: process.env.SSH_CONNECTION.split(' ', 4)[2],
+  hostname: process.env.HOSTNAME,
 };

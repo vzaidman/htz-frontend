@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3000;
 const app = next({ dev: DEV, });
 const handler = app.getRequestHandler();
 
-const HostIP = config.get('HostIP');
+const hostIp = config.get('hostIp');
 app
   .prepare()
   .then(() => {
@@ -55,7 +55,7 @@ app
       if (err) throw err;
 
       // eslint-disable-next-line no-console
-      console.log(`> Ready on http://${HostIP}:${PORT}`);
+      console.log(`> Ready on http://${hostIp}:${PORT}`);
     });
   })
   .catch(err => {

@@ -3,7 +3,7 @@ import { HttpLink, InMemoryCache, } from 'apollo-client-preset';
 import fetch from 'isomorphic-unfetch';
 import config from 'config';
 
-const HostIP = config.get('HostIP');
+const hostIp = config.get('hostIp');
 let apolloClient = null;
 
 // Polyfill fetch() on the server (used by apollo-client)
@@ -13,7 +13,7 @@ if (!process.browser) {
 
 function create(initialState) {
   const link = new HttpLink({
-    uri: `http://${HostIP}:3000/graphql`, // Server URL (must be absolute)
+    uri: `http://${hostIp}:3000/graphql`, // Server URL (must be absolute)
     opts: {
       credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
     },
