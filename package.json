@@ -81,6 +81,13 @@
         ]
       }
     },
+    "apollo-client-preset": {
+      "^1.0.1": {
+        "packages/apps/*": [
+          "dependencies"
+        ]
+      }
+    },
     "babel-loader": {
       "^7.1.2": {
         "packages/{components,apps}/*": [
@@ -101,6 +108,20 @@
     "dataloader": {
       "^1.3.0": {
         "packages/apps/*": [
+          "dependencies"
+        ]
+      }
+    },
+    "enzyme": {
+      "3.2.0": {
+        "packages/{libs/htz-react-base,components/htz-components}": [
+          "dependencies"
+        ]
+      }
+    },
+    "enzyme-to-json": {
+      "3.2.2": {
+        "packages/{libs/htz-react-base,components/htz-components}": [
           "dependencies"
         ]
       }
@@ -136,22 +157,8 @@
           "dependencies"
         ]
       }
-    }, 
-    "apollo-client-preset": {
-      "^1.0.1": {
-        "packages/apps/*": [
-          "dependencies"
-        ]
-      }
-    }, 
+    },
     "isomorphic-unfetch": {
-      "^2.0.0": {
-        "packages/apps/*": [
-          "dependencies"
-        ]
-      }
-    }, 
-    "react-apollo": {
       "^2.0.0": {
         "packages/apps/*": [
           "dependencies"
@@ -177,7 +184,7 @@
       }
     },
     "react": {
-      "^16.0.0": {
+      "^16.1.1": {
         "packages/{libs/htz-react-base,components/*}": [
           "devDependencies",
           "peerDependencies"
@@ -187,8 +194,15 @@
         ]
       }
     },
+    "react-apollo": {
+      "^2.0.0": {
+        "packages/apps/*": [
+          "dependencies"
+        ]
+      }
+    },
     "react-dom": {
-      "^16.0.0": {
+      "^16.1.1": {
         "packages/{libs/htz-react-base,components/*}": [
           "devDependencies",
           "peerDependencies"
@@ -209,10 +223,20 @@
         ]
       }
     },
+    "react-test-renderer": {
+      "^16.1.1": {
+        "packages/{libs/htz-react-base,components/htz-components}": [
+          "dependencies"
+        ]
+      }
+    },
     "rimraf": {
       "2.6.2": {
-        "packages/*/*": [
+        "[\"packages/{apps,components,libs}/*\", \"!packages/libs/htz-react-base\"]": [
           "devDependencies"
+        ],
+        "packages/libs/htz-react-base": [
+          "dependencies"
         ]
       }
     },
