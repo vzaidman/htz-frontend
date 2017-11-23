@@ -9,6 +9,7 @@ as some generic utilities and consumable prop-types.
 **Table of Contents**
 
 - [Development](#development)
+  - [Reusable PropTypes](#reusable-proptypes)
   - [Testing Fela Components](#testing-fela-components)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -27,6 +28,35 @@ containing all components in the current state of development.
 Components source files reside in `./src/components/` and utils are in `./src/utils/`.
 
 ## Development
+
+### Reusable PropTypes
+
+PropTypes that may be reused in different components should be placed in their 
+own file under `src/propTypes` and imported into the different components that 
+use theme. 
+PropTypes that are meant to be used at a base to expand on can be stored in an 
+object, which can then be spread inside the consumer component:
+
+```js
+// src/propTypes/myPropType.js
+export const myPropType = {
+  key1: PropTypes.string,
+  key2: PropTypes.number,
+}
+
+// src/components/MyComponent.js
+import { myPropType, } from '../../propTypes/myPropType';
+
+class MyComponent extends React.Component {
+  static propTypes = {
+    ...myPropType,
+    key2: PropTypes.arrayOf(PropTypes.number), // <- overrides `key2` in `myPropType`
+    key3: PropTypes.bool // <- augments `myPropType`
+  }
+
+  // ...
+}
+```
 
 ### Testing Fela Components
 

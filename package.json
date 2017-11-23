@@ -165,6 +165,13 @@
         ]
       }
     },
+    "lodash-es": {
+      "4.17.4": {
+        "packages/{apps,components}/*": [
+          "dependencies"
+        ]
+      }
+    },
     "next": {
       "^4.1.4": {
         "packages/apps/*": [

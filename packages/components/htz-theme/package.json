@@ -29,6 +29,7 @@
     "@haaretz/htz-components": "^0.2.0",
     "@haaretz/htz-css-tools": "^1.0.1",
     "config": "^1.26.2",
+    "lodash-es": "4.17.4",
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
