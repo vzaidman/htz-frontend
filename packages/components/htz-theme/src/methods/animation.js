@@ -47,6 +47,14 @@ export function getTransition(duration, easing, delay) {
   return getProps('transition', duration, easing, delay);
 }
 
+export function getDuration(type, duration) {
+  return getProps(type, duration, undefined, undefined);
+}
+
+export function getDelay(type, delay) {
+  return getProps(type, undefined, undefined, delay);
+}
+
 /**
  * Set a timing-function for an animation or transition based on preconfigured options
  * @param {'animation', 'transition'} type - The effect to which timing function is applied to.
@@ -78,11 +86,15 @@ function getProps(type, duration, easing, delay) {
     throw new Error(`"${easing}" is not a named timing function`);
   }
   return {
-    ...(duration ? { [`${type}Duration`]: getTime(duration), } : undefined),
+    ...(typeof duration !== 'undefined'
+      ? { [`${type}Duration`]: getTime(duration), }
+      : undefined),
     ...(timingFunction
       ? { [`${type}TimingFunction`]: timingFunction, }
       : undefined),
-    ...(delay ? { [`${type}Delay`]: getTime(delay), } : undefined),
+    ...(typeof delay !== 'undefined'
+      ? { [`${type}Delay`]: getTime(delay), }
+      : undefined),
   };
 }
 

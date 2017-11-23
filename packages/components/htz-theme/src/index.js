@@ -8,7 +8,12 @@ import typeConf from './consts/typeConf';
 import cssReset from './consts/cssReset';
 
 // methods
-import { getTimingFunction, getTransition, } from './methods/animation';
+import {
+  getDelay,
+  getDuration,
+  getTimingFunction,
+  getTransition,
+} from './methods/animation';
 import pxToRem from './methods/pxToRem';
 import typesetter from './methods/typesetter';
 import mq from './methods/mq';
@@ -41,8 +46,15 @@ export { cssReset, };
  *   typographic and vertical-rhythm values
  * @prop {function} color - A [colorGetter](https://haaretz.github.io/htz-frontend/htz-css-tools#colorgetter)
  *   function for retrieving color values from the predefined color palette.
- * @prop {function} getTransition - A function taking a `duration` step (`number`), an `easing` (`string`)
- *   and a `delay` step (`number`) arguments.
+ * @prop {function} getTransition - A function taking `duration` (`number`), `easing` (`string`)
+ *   and `delay` (`number`) arguments. `duration` and `delay` steps start with `0`, which equals to `.25s`,
+ *   continue with `1`, which equals `.3s` and continue upwards, with every step equaling `step * 0.25s`.
+ * @prop {function} getDuration - A function taking `type` and `duration` arguments.
+ *   `type` indicates if the duration is applied to an `animation` or a `transition`.
+ *   `duration` is a duration step where `0` is `.25s`, `1` is `.3s` and every step up is `step * 0.25s`.
+ * @prop {function} getDelay - A function taking `type` and `delay` arguments.
+ *   `type` indicates if the delay is applied to an `animation` or a `transition`.
+ *   `delay` is a delay step where `0` is `.25s`, `1` is `.3s` and every step up is `step * 0.25s`.
  * @prop {function} getTimingFunction - A function taking a `type` argument, indicating the effect
  *   to which the timing function is applied to (`animation`|`transition`) and an `easing` (`string`)
  *   argument, referring to a named timing-function describing how the intermediate values of the CSS
@@ -58,7 +70,7 @@ export { cssReset, };
  *   typographic scale and vertical rhythm
  */
 const htzTheme = Object.freeze({
-  // Objects
+  // Constants
   bps,
   btnStyle,
   direrction: 'rtl',
@@ -68,12 +80,14 @@ const htzTheme = Object.freeze({
 
   // Methods
   color: getColor,
-  getTransition,
+  getDelay,
+  getDuration,
   getTimingFunction,
+  getTransition,
   mq,
   pxToRem,
   type: typesetter,
 });
 
 export default htzTheme;
-export { getColor, getTransition, mq, pxToRem, typesetter, };
+export { bps, getColor, getTransition, mq, pxToRem, typesetter, };
