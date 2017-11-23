@@ -6,6 +6,18 @@ const config = require('config');
 const webpack = require('webpack');
 const serialize = require('serialize-javascript');
 
+const color = {
+  bg: '#EBF2F5',
+  bgDark: '#E6EDF0',
+  border: '#666',
+  danger: '#A8001C',
+  primaryLight: '#289DD3',
+  primary: '#0B7EB5',
+  primaryDark: '#006B96',
+  secondary: '#00537A',
+  secondaryDark: '#003D59',
+};
+
 const Wrapper = resolveFrom.silent(
   process.cwd(),
   './styleguide/StyleGuideProvider.js'
@@ -15,10 +27,282 @@ module.exports = {
   components: path.join(process.cwd(), '{,src/}components/**/[A-Z]*.{js,jsx}'),
 
   title: 'Haaretz Components',
+  showUsage: true,
+  showCode: false,
+  highlightTheme: 'monokai',
+
   theme: {
-    showCode: true,
-    showUsage: true,
+    borderRadius: 0,
+    maxWidth: '100%',
     sidebarWidth: 260,
+    color: {
+      link: color.primary,
+      linkHover: color.secondary,
+      sidebarBackground: color.secondary,
+    },
+    fontFamily: {
+      base: [ '"Open Sans Hebrew"', 'sans-serif', ],
+    },
+  },
+  styles: {
+    StyleGuide: {
+      root: {
+        '& main>section>section': {
+          marginBottom: '12rem',
+        },
+        '& main>section>section>section': {
+          marginBottom: '4rem',
+        },
+      },
+      sidebar: {
+        '&::-webkit-scrollbar': {
+          width: 12,
+        },
+        '&::-webkit-scrollbar-track': {
+          backgroundColor: color.secondary,
+        },
+        '&::-webkit-scrollbar-thumb': {
+          border: `4px solid ${color.secondary}`,
+          borderTopWidth: 0,
+          borderBottomWidth: 0,
+          backgroundColor: color.primaryDark,
+          '&:active': {
+            borderLeftWidth: 2,
+            borderWightWidth: 2,
+          },
+        },
+      },
+      logo: {
+        border: 'none',
+        paddingBottm: 0,
+        backgroundColor: color.secondaryDark,
+      },
+    },
+
+    Logo: {
+      logo: {
+        color: '#fff',
+        fontWeight: 700,
+        fontSize: '18px',
+      },
+    },
+
+    TableOfContents: {
+      input: {
+        backgroundColor: 'transparent',
+        border: '1px solid #fff',
+        color: '#fff',
+        padding: 'calc(.5rem - 1px) 1rem',
+        opacity: 0.4,
+
+        '&::-webkit-input-placeholder': {
+          opacity: 1,
+          color: 'rgba(255, 255, 255, 0.7)',
+        },
+        '&:-moz-placeholder': {
+          opacity: 1,
+          color: 'rgba(255, 255, 255, 0.7)',
+        },
+        '&::-moz-placeholder': {
+          opacity: 1,
+          color: 'rgba(255, 255, 255, 0.7)',
+        },
+        '&:-ms-input-placeholder': {
+          opacity: 1,
+          color: 'rgba(255, 255, 255, 0.7)',
+        },
+
+        '&:hover': {
+          opacity: 0.7,
+        },
+
+        '&:focus': {
+          opacity: 1,
+          border: '1px solid #fff',
+          outline: 'none',
+        },
+      },
+    },
+
+    ComponentsList: {
+      heading: {
+        color: '#fff !important',
+        fontSize: '16px',
+        fontWeight: '700 !important',
+        textTransform: 'uppercase !important',
+      },
+      list: {
+        '& ul ul': {
+          paddingLeft: 0,
+          fontSize: '12px !important',
+        },
+      },
+      item: {
+        color: 'rgba(255, 255, 255, .75) !important',
+        fontSize: '12px',
+        marginBottom: '2rem',
+        textTransform: 'none',
+        margin: 0,
+      },
+
+      isChild: {
+        marginBottom: 0,
+      },
+    },
+
+    Link: {
+      link: {
+        color: 'inherit !important',
+        '&:hover': {
+          color: '#fff !important',
+          textDecoration: 'underline',
+        },
+        '&:focus': {
+          color: '#fff !important',
+          outline: 'none',
+          textDecoration: 'underline',
+        },
+      },
+    },
+
+    SectionHeading: {
+      heading: {
+        fontWeight: '700 !important',
+        '&:hover': {
+          textDecoration: 'none',
+        },
+      },
+      heading1: {
+        fontSize: '5rem',
+        marginBottom: '3rem',
+        textTransform: 'uppercase',
+        '&:hover': {
+          fontSize: '5rem',
+          marginBottom: '3rem',
+          textTransform: 'uppercase',
+        },
+      },
+      heading2: {
+        fontSize: '4rem',
+        marginBottom: 0,
+        paddingBottom: '2rem',
+        position: 'relative',
+        '&:hover': {
+          fontSize: '4rem',
+          marginBottom: '0rem',
+          paddingBottom: '2rem',
+          position: 'relative',
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          bottom: '0',
+          left: '0',
+          height: '1rem',
+          width: '20rem',
+          backgroundColor: color.primary,
+        },
+      },
+      heading3: {
+        fontSize: '3rem',
+        '&:hover': {
+          fontSize: '3rem',
+        },
+      },
+    },
+
+    ReactComponent: {
+      header: {
+        marginBottom: '2rem',
+
+        '& h3': {
+          marginBottom: '0 !important',
+        },
+      },
+
+      docs: {
+        '& p': {
+          marginBottom: '2rem',
+        },
+      },
+      tabButtons: {
+        marginTop: '2rem',
+        marginBottom: '1rem',
+
+        '& button': {
+          borderBottom: `1px solid ${color.primary}`,
+          cursor: 'pointer',
+          paddingRight: '3rem',
+        },
+      },
+    },
+
+    Table: {
+      table: {
+        fontFamily: 'monospace',
+        maxWidth: '1000px',
+        backgroundColor: color.bg,
+      },
+      tableHead: {
+        backgroundColor: color.bgDark,
+      },
+      cellHeading: {
+        border: '1px solid #ddd',
+        padding: '.5rem 2rem !important',
+      },
+      cell: {
+        border: '1px solid #ddd',
+        fontSize: '12px',
+        padding: '.5rem 2rem !important',
+      },
+    },
+
+    Markdown: {
+      h3: {
+        display: 'inline-block',
+        fontSize: '1em',
+        marginTop: '2rem',
+        marginBottom: '1rem',
+        borderBottom: `1px solid ${color.primary}`,
+        paddingRight: '3rem',
+      },
+      code: {
+        fontSize: '14px',
+      },
+      table: {
+        maxWidth: '1000px',
+        backgroundColor: color.bg,
+      },
+      thead: {
+        backgroundColor: color.bgDark,
+      },
+      td: {
+        fontFamily: 'monospace',
+        border: '1px solid #ddd',
+        fontSize: '12px',
+        padding: '.5rem 2rem',
+      },
+      th: {
+        fontFamily: 'monospace',
+        border: '1px solid #ddd',
+        fontSize: '12px',
+        padding: '.5rem 2rem',
+      },
+    },
+
+    Playground: {
+      preview: {
+        /* Make component views resizeable */
+        margin: '0 auto',
+        overflow: 'hidden',
+        resize: 'horizontal',
+
+        /* Make styleguide syles less obtrusive */
+        border: 'none',
+        borderBottom: '1px solid #e8e8e8',
+        padding: '0 0 4rem',
+      },
+    },
   },
   // Styleguidist sends webpack this option in such a way that it errors out
   // if one of the values is null or undefined, so we can't just use the raw
@@ -27,7 +311,7 @@ module.exports = {
   getComponentPathLine(componentPath) {
     // Styleguidist will show a `componentPath` relative to the config file,
     // which is not what we want when using the default config.
-    if (componentPath.indexOf('..') === 0) {
+    if (componentPath.indexOf('..') === 1) {
       // eslint-disable-next-line no-param-reassign
       componentPath =
         resolveFrom.silent(__dirname, componentPath) || componentPath;
@@ -39,17 +323,17 @@ module.exports = {
     // statement rather than the file path. This makes a big assumption, which
     // is that any component can be imported from that module's `main` entry
     // point as a named export matching the name of the file.
-    if (pathSegments[0] === 'node_modules') {
-      const isScoped = pathSegments[1].startsWith('@');
+    if (pathSegments[1] === 'node_modules') {
+      const isScoped = pathSegments[2].startsWith('@');
       const packagePath = path.join(
         process.cwd(),
-        ...pathSegments.slice(0, isScoped ? 3 : 2),
+        ...pathSegments.slice(1, isScoped ? 3 : 2),
         'package.json'
       );
       const packageName = require(packagePath).name;
       const extension = path.extname(componentPath);
       const componentName = path.basename(
-        pathSegments[pathSegments.length - 1],
+        pathSegments[pathSegments.length - 2],
         extension
       );
       return `import { ${componentName} } from '${packageName}';`;

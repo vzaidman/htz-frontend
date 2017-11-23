@@ -14,33 +14,6 @@ StyleGuideProvider.defaultProps = {
   children: null,
 };
 
-const globalRules = `
-${cssReset}
-/* Make component views resizeable */
-[class^="rsg--content-"] { max-width: none; }
-[class^="rsg--controls-"] {
-  margin: 0 auto;
-}
-[class^="rsg--preview-"] {
-  /* Make component views resizeable */
-  max-width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  resize: horizontal;
-
-  /* Make styleguide syles less obtrusive */
-  border: none;
-  border-bottom: 1px solid #e8e8e8;
-  padding: 0;
-  color: ${htzTheme.color('bodyText')};
-}
-/* Hide component names */
-h2[id],
-[class*="rsg--isChild"] {
-  display: none;
-}
-`.trim();
-
 export default function StyleGuideProvider({ children, }) {
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
@@ -59,7 +32,7 @@ export default function StyleGuideProvider({ children, }) {
     { fontWeight: 700, }
   );
 
-  styleRenderer.renderStatic(globalRules);
+  styleRenderer.renderStatic(cssReset);
 
   return (
     <StyleProvider renderer={styleRenderer} theme={htzTheme}>

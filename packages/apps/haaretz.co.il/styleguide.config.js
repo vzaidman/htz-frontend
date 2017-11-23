@@ -13,7 +13,7 @@ const htzComponentsPath = path.dirname(
 
 module.exports = configure(config =>
   Object.assign(config, {
-    title: 'haaretz.co.il Components',
+    title: 'haaretz.co.il Styleguide',
     sections: [
       {
         name: 'Site Components',
