@@ -17,8 +17,8 @@ import validator from 'fela-plugin-validator';
 import combineArrays from 'fela-combine-arrays';
 // Enhancers used only during development:
 import beautifier from 'fela-beautifier';
-import perf from 'fela-perf';
-import statistics from 'fela-statistics';
+// import perf from 'fela-perf';
+// import statistics from 'fela-statistics';
 
 /**
  * A function to create a custom Fela renderer,
@@ -29,7 +29,7 @@ import statistics from 'fela-statistics';
  *   Manually override the node environment settings.
  *   Can be useful, e.g., for testing.
  * @param {boolean} [options.isRtl] Set the renderer to handle RTL layouts
- * @param {boolean} [options.selectorPrefix='htz-'] Set the renderer to handle RTL layouts
+ * @param {boolean} [options.selectorPrefix='htz-'] A string to namespace all class names with
  *
  * @return {function} A fela `createRenderer` function
  */
@@ -67,7 +67,7 @@ export default function createRenderer(
 
   if (isDev) {
     plugins.push(validator());
-    enhancers.push(beautifier({ autosemicolon: true, }), perf(), statistics());
+    enhancers.push(beautifier({ autosemicolon: true, }));
   }
   else {
     plugins.push(removeUndefined());
