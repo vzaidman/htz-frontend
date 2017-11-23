@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 
 import getColor from '../../methods/getColor';
@@ -20,11 +19,7 @@ const style = ({ step, }) => ({
 
 const ScaleItem = createComponent(style, 'p', props => Object.keys(props));
 
-TypographicScale.propTypes = {
-  first: PropTypes.number.isRequired,
-  last: PropTypes.number.isRequired,
-};
-
+// eslint-disable-next-line react/prop-types
 export default function TypographicScale({ first, last, }) {
   const steps = [];
   let index = first;

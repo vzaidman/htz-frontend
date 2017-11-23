@@ -7,7 +7,7 @@ const bps = Object.freeze({
   }),
   misc: Object.freeze({
     landscape: '(orientation: landscape)',
-    partrait: '(orientation: portrait)',
+    portrait: '(orientation: portrait)',
     hidpi: '(min-resolution: 1.5dppx)',
   }),
 });

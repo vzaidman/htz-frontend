@@ -38,7 +38,7 @@ import htzTheme from '@haaretz/htz-theme'
 ### Properties
 * **bps** (`Object`) - An immutable [`MqOptions`](https://haaretz.github.io/htz-frontend/htz-css-tools#mqoptions)
   object with breakpoint definitions
-  * `bps.width` (`Object`) - An immutable [`WidthBpsConfig`](https://haaretz.github.io/htz-frontend/htz-css-tools#widthbpsconfig)
+  * `bps.widths` (`Object`) - An immutable [`WidthBpsConfig`](https://haaretz.github.io/htz-frontend/htz-css-tools#widthbpsconfig)
     object with values of boundary points between named width-breakpoints
   * `bps.misc` (`Object`) - An immutable [`MiscBpsConfig`](https://haaretz.github.io/htz-frontend/htz-css-tools#miscbpsconfig)
     object with values named miscellaneous media-features media queries
@@ -62,25 +62,61 @@ import htzTheme from '@haaretz/htz-theme'
 * **getTransition** - A function that returns an object of transition-related properties generated 
   based on the arguments passed to the function.
 
-   **Arguments** (all optional, as long as at least one is present):  
-  `duration` (`number`) - The transition duration step.  
-  duration steps start at `0`, with `0.25s`, which is generally considered
-  the minimal time a person needs for completing the eye-movement towards the element
-  and preserving the animation itself. The next step up, `1` is a very subtle increment
-  of `50ms` to `0.3s`, for when the user's eye is expected to travel larger distances,
-  when the animation is somewhat more complex. These two steps will usually be the
-  adequate choice for micro-interactions. Each step above is a multiple of `0.25s`,
-  e.g., `0.5s`, `0.75s`, etc. These maybe useful for more complex animations.
- 
-  A `-1` step is available for nearly instantaneous transitions that are 1 frame in
-  a 60fps budget (~`0.166666s`).
+  * _Arguments_ (all optional, as long as at least one is present):  
+    * `duration` (`number`) - The transition duration step.  
+      duration steps start at `0`, with `0.25s`, which is generally considered
+      the minimal time a person needs for completing the eye-movement towards the element
+      and preserving the animation itself. The next step up, `1` is a very subtle increment
+      of `50ms` to `0.3s`, for when the user's eye is expected to travel larger distances,
+      when the animation is somewhat more complex. These two steps will usually be the
+      adequate choice for micro-interactions. Each step above is a multiple of `0.25s`,
+      e.g., `0.5s`, `0.75s`, etc. These maybe useful for more complex animations.  
+      A `-1` step is available for nearly instantaneous transitions that are 1 frame in
+      a 60fps budget (~`0.166666s`).
 
-  `easing` ('linear'|'swiftIn'|'swiftOut'|'easeIn'|'easeOut'|'easeInOut') - A named 
-  timing-function describing how the intermediate values of the CSS properties
-  being affected by a transition effect are calculated.
+    * `easing` ('linear'|'swiftIn'|'swiftOut'|'easeIn'|'easeOut'|'easeInOut') - A named 
+      timing-function describing how the intermediate values of the CSS properties
+      being affected by a transition effect are calculated.
 
-  `delay` (`number`) - The transition delay step. Uses the same steps as `duration` to determine the 
-  amount of delay before a transition is initiated.
+    * `delay` (`number`) - The transition delay step. Uses the same steps as `duration` to determine 
+      the amount of delay before a transition is initiated.
+
+* **getDuration** - A function that returns an object of animation or transition duration-related
+  properties generated based on the arguments passed to the function.
+
+  * _Arguments_:  
+    * `type` (`'animation'|'transition'`) - Indicates if the duration is applied to an `animation` 
+      or a `transition`.
+
+    * `duration` (`number`) - A duration step.  
+      duration steps start at `0`, with `0.25s`, which is generally considered
+      the minimal time a person needs for completing the eye-movement towards the element
+      and preserving the animation itself. The next step up, `1` is a very subtle increment
+      of `50ms` to `0.3s`, for when the user's eye is expected to travel larger distances,
+      when the animation is somewhat more complex. These two steps will usually be the
+      adequate choice for micro-interactions. Each step above is a multiple of `0.25s`,
+      e.g., `0.5s`, `0.75s`, etc. These maybe useful for more complex animations.  
+      A `-1` step is available for nearly instantaneous transitions that are 1 frame in
+      a 60fps budget (~`0.166666s`).
+
+* **getDelay** - A function that returns an object of animation or transition delay-related
+  properties, generated based on the arguments passed to the function.
+
+  * _Arguments_:  
+    * `type` (`'animation'|'transition'`) - Indicates if the duration is applied to an `animation` 
+      or a `transition`.
+
+    * `delay` (`number`) - A delay step.  
+      delay steps start at `0`, with `0.25s`, which is generally considered
+      the minimal time a person needs for completing the eye-movement towards the element
+      and preserving the animation itself. The next step up, `1` is a very subtle increment
+      of `50ms` to `0.3s`, for when the user's eye is expected to travel larger distances,
+      when the animation is somewhat more complex. These two steps will usually be the
+      adequate choice for micro-interactions. Each step above is a multiple of `0.25s`,
+      e.g., `0.5s`, `0.75s`, etc. These maybe useful for more complex animations.  
+      A `-1` step is available for nearly instantaneous transitions that are 1 frame in
+      a 60fps budget (~`0.166666s`).
+
 * **getTimingFunction** - return an object with a precunfigured timing-function for a 
    transition or animation takes a `type` (`'animation'`|`'transition'`) argument and an 
    `easing` argument (`string`) that is a named timing-function.
