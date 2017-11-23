@@ -12,6 +12,11 @@ const configFile = resolveFrom.silent(process.cwd(), './jest.config.js');
 const argv = process.argv.slice(2);
 const defaultConfig = {
   cacheDirectory: '.jest',
+  setupFiles: [
+    `${__dirname}/jestRAFPolyfill.js`,
+    `${__dirname}/enzyme-setup.js`,
+  ],
+  snapshotSerializers: [ 'enzyme-to-json/serializer', ],
   transform: {
     '^.+\\.jsx?$': require.resolve('babel-jest'),
   },

@@ -53,6 +53,7 @@ async function mapPackages() {
         skipped.push(name);
       }
       else {
+        // eslint-disable-next-line no-await-in-loop
         const { overwrite, } = await inquirer.prompt([
           {
             type: 'confirm',
@@ -95,7 +96,8 @@ mapPackages().then(() => {
   fs.writeFileSync(packagePath, packageString);
 
   console.log(
-    `Added ${added.length}, updated ${updated.length}, skipped ${skipped.length} script(s) in\n` +
-      `"${chalk.bold(packagePath)}"\n\n`
+    `Added ${added.length}, updated ${updated.length}, skipped ${
+      skipped.length
+    } script(s) in\n` + `"${chalk.bold(packagePath)}"\n\n`
   );
 });

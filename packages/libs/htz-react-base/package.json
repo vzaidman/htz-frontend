@@ -17,11 +17,12 @@
     "clean": "./bin/htz-scripts.js clean",
     "format": "./bin/htz-scripts.js format",
     "lint": "./bin/htz-scripts.js lint",
-    "test": "./bin/htz-scripts.js test"
+    "test": "./bin/htz-scripts.js test",
+    "gc": "./bin/htz-scripts.js commitizen"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-lerna-changelog"
+      "path": "cz-lerna-changelog"
     }
   },
   "dependencies": {
@@ -39,6 +40,9 @@
     "config": "^1.26.2",
     "cross-spawn": "^5.1.0",
     "cz-lerna-changelog": "^1.2.1",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.2.2",
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
@@ -52,15 +56,15 @@
     "jest": "^21.2.1",
     "prettier": "^1.5.3",
     "react-styleguidist": "^6.0.20",
+    "react-test-renderer": "^16.1.1",
     "resolve-from": "^3.0.0",
-    "rimraf": "^2.6.1",
+    "rimraf": "^2.6.2",
     "serialize-javascript": "^1.4.0",
     "webpack": "^3.5.5"
   },
   "devDependencies": {
     "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "rimraf": "2.6.2"
+    "react-dom": "^16.0.0"
   },
   "peerDependencies": {
     "react": "^16.0.0",
