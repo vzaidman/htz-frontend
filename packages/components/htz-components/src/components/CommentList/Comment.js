@@ -11,7 +11,8 @@ const propTypes = {
   title: PropTypes.string,
   commentText: PropTypes.string,
   publishingDateForDisplay: PropTypes.string.isRequired,
-  commentNumber: PropTypes.oneOfType([ PropTypes.number, PropTypes.string, ]).isRequired,
+  commentNumber: PropTypes.oneOfType([ PropTypes.number, PropTypes.string, ])
+    .isRequired,
   isEditorPick: PropTypes.string,
   subComments: PropTypes.arrayOf(PropTypes.object),
   isSubComment: PropTypes.bool,
@@ -61,7 +62,9 @@ const commentNumberContainerStyle = ({ theme, }) => ({
   ...theme.type(3),
 });
 
-const StyledCommentNumberContainer = createComponent(commentNumberContainerStyle);
+const StyledCommentNumberContainer = createComponent(
+  commentNumberContainerStyle
+);
 
 const commentContainerStyle = () => ({
   width: '100%',
@@ -126,15 +129,17 @@ const commentFooterLikeAndReportStyle = () => ({
   alignItems: 'flex-start',
 });
 
-const StyledCommentFooterLikeAndReport = createComponent(commentFooterLikeAndReportStyle);
+const StyledCommentFooterLikeAndReport = createComponent(
+  commentFooterLikeAndReportStyle
+);
 
 const ReplyButtonStyle = ({ theme, }) => ({
   backgroundColor: 'transparent',
   padding: '0 2rem 0 2rem',
-  color: theme.color('button', 'text'),
+  color: theme.color('button', 'primaryText'),
   fontWeight: 'bold',
   ...theme.type(-3),
-  extend: [ border('1px', 0, 'solid', theme.color('button', 'text')), ],
+  extend: [ border('1px', 0, 'solid', theme.color('button', 'primaryText')), ],
 });
 
 const StyledReplyButton = createComponent(ReplyButtonStyle, 'div');
@@ -157,14 +162,18 @@ function Comment(props) {
     <StyledWrapper isSubComment={props.isSubComment}>
       <StyledCommentNumberContainer>
         <span>
-          {props.isSubComment ? (props.commentNumber === 1 ? '>' : '') : props.commentNumber}
+          {props.isSubComment
+            ? props.commentNumber === 1 ? '>' : ''
+            : props.commentNumber}
         </span>
       </StyledCommentNumberContainer>
       <StyledCommentContainer>
         <div>
           <StyledCommentTitle>{props.title}</StyledCommentTitle>
 
-          <StyledPublishingDate>{props.publishingDateForDisplay}</StyledPublishingDate>
+          <StyledPublishingDate>
+            {props.publishingDateForDisplay}
+          </StyledPublishingDate>
 
           {props.isSubComment ? (
             <StyledSubCommentAuthor>---> {props.author}</StyledSubCommentAuthor>
@@ -184,12 +193,18 @@ function Comment(props) {
             <Likes
               styleObj={likesStyleObj}
               plusRate={
-                Object.prototype.hasOwnProperty.call(props.commentsPlusRate, props.commentId)
+                Object.prototype.hasOwnProperty.call(
+                  props.commentsPlusRate,
+                  props.commentId
+                )
                   ? props.commentsPlusRate[props.commentId]
                   : 0
               }
               minusRate={
-                Object.prototype.hasOwnProperty.call(props.commentsMinusRate, props.commentId)
+                Object.prototype.hasOwnProperty.call(
+                  props.commentsMinusRate,
+                  props.commentId
+                )
                   ? props.commentsMinusRate[props.commentId]
                   : 0
               }
@@ -197,7 +212,9 @@ function Comment(props) {
             <StyledReportButton>דווח כפוגעני</StyledReportButton>
           </StyledCommentFooterLikeAndReport>
         </StyledCommentFooter>
-        {props.subComments ? <CommentList comments={props.subComments} isSubComment /> : null}
+        {props.subComments ? (
+          <CommentList comments={props.subComments} isSubComment />
+        ) : null}
       </StyledCommentContainer>
     </StyledWrapper>
   );
