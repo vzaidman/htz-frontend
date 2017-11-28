@@ -1,6 +1,6 @@
-<!---------------------------------------------------------------
-Stage 1: to be filled in by project manager (and sometimes designer)
----------------------------------------------------------------->
+<!----------------------------------------------------------------------
+* Stage 1: to be filled in by project manager (and sometimes designer) *
+----------------------------------------------------------------------->
 ## Issue Type
 <!-- Pick one -->
 [ ] Bug fix
@@ -17,31 +17,26 @@ Stage 1: to be filled in by project manager (and sometimes designer)
 
 [ Insert description ]
 
-<!---------------------------------------------------------------
-Please remove irrelevant sections
----------------------------------------------------------------->
-### Actions and events
-
-  * [ Insert requirement ]
-
-
+<!-----------------------------------
+* Please remove irrelevant sections *
+------------------------------------>
 ### Configuration options
 
   * [ Insert requirement ]
 
 
-### Toggelability options
+### Toggling options
 
   * [ Insert requirement ]
 
 
-### Mesurability Requirments
+### Measurement Requirements
   <!-- Remove unneeded item -->
   * [ ] ds - [ Insert requirements ]
   * [ ] tag manager - [ Insert requirement ]
   
 
-### SEO Concerns
+### SEO Requirements
 
   * [ Insert requirement ]
 
@@ -70,9 +65,9 @@ Please remove irrelevant sections
   * http:///
 
 
-<!---------------------------------------------------------------
-Stage 2: to be filled in by Dev team
----------------------------------------------------------------->
+<!--------------------------------------
+* Stage 2: to be filled in by Dev team *
+--------------------------------------->
 ## High Level Design
 **Participants:**
   1. [ Insert name ]
@@ -82,11 +77,11 @@ Stage 2: to be filled in by Dev team
   * [ Insert description ]
 
 
-## Testing requirements
+## Testing Requirements
 
   * [ Insert description ]
 
 
-## Worktime estimation
+## Work Time Estimation
 
 [n] hours
