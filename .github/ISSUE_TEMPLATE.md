@@ -8,28 +8,57 @@ Stage 1: to be filled in by project manager (and sometimes designer)
 [ ] Update to existing feature
 [ ] General discussion
 
+## Related Issues
+[#0]
+
 ## Description
 
-**Originial pull-request:** #0 <!-- Only for bug fixes and updates -->
+**Originial pull-request:** [#0] <!-- Only for bug fixes and updates -->
 
-fdlskjsdlkfj
+[ Insert description ]
 
 <!---------------------------------------------------------------
 Please remove irrelevant sections
 ---------------------------------------------------------------->
 ### Actions and events
 
-  * sdlkfjsdlfkjsd
+  * [ Insert requirement ]
+
 
 ### Configuration options
 
-  * sdlkfjsdlfkjsd
+  * [ Insert requirement ]
+
 
 ### Toggelability options
 
-  * sdlkfjsdlfkjsd
+  * [ Insert requirement ]
 
-### Links
+
+### Mesurability Requirments
+  <!-- Remove unneeded item -->
+  * [ ] ds - [ Insert requirements ]
+  * [ ] tag manager - [ Insert requirement ]
+  
+
+### SEO Concerns
+
+  * [ Insert requirement ]
+
+
+### A11Y Concerns
+
+**Focus management:**
+  * [ Insert requirement ]
+
+**Assistive tech (scrren readers):**
+  * [ Insert requirement ]
+
+**Color contrast:**
+  * [ Insert requirement ]
+
+
+## Links
 
 **Wireframes:**
   * http:///
@@ -41,44 +70,23 @@ Please remove irrelevant sections
   * http:///
 
 
-### Mesurability Requirments
-  * sdlkfjsdlfkjsd
-
-
-### SEO Concerns
-
-fdlskjsdlkfj
-
-
-### A11Y Concerns
-
-**Focus management:**
-  * sdlkfjsdlfkjsd
-
-**Assistive tech (scrren readers):**
-  * sdlkfjsdlfkjsd
-
-**Color contrast:**
-  * sdlkfjsdlfkjsd
-
-
 <!---------------------------------------------------------------
 Stage 2: to be filled in by Dev team
 ---------------------------------------------------------------->
 ## High Level Design
 **Participants:**
-  1. sdlkfjsdlfkjsd
+  1. [ Insert name ]
 
 
 **Overview:**
-  * sdlkfjsdlfkjsd
+  * [ Insert description ]
 
 
 ## Testing requirements
 
-  * sdlkfjsdlfkjsd
+  * [ Insert description ]
 
 
 ## Worktime estimation
 
-n hours
+[n] hours

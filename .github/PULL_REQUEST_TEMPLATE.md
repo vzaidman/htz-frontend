@@ -2,17 +2,21 @@
 
 ## Description
 
-fdlskjsdlkfj
+[ Insert description ]
 
-**Notes:** fdlskjsdlkfj
+**Notes:**
+[ Insert notes ]
 
 ## Checklist
 
-* [ ] Approved by designer
-* Usability handshake 
+Design:
+  * [ ] Approved by designer
+
+Usability:
   * [ ] Developer
   * [ ] Project manager
-* Tests
+
+Tests
   <!-- remove irrelvant entries -->
   * [ ] UI snapshot testing 
   * [ ] Unit testing
