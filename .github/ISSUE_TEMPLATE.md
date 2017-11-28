@@ -3,13 +3,15 @@
 ----------------------------------------------------------------------->
 ## Issue Type
 <!-- Pick one -->
-[ ] Bug fix
-[ ] New Feature
-[ ] Update to existing feature
-[ ] General discussion
+* [ ] Bug fix
+* [ ] New Feature
+* [ ] Update to existing feature
+* [ ] General discussion
+
 
 ## Related Issues
 [#0]
+
 
 ## Description
 
@@ -53,6 +55,7 @@
   * [ Insert requirement ]
 
 
+
 ## Links
 
 **Wireframes:**
@@ -63,6 +66,7 @@
 
 **Mockups:**
   * http:///
+
 
 
 <!--------------------------------------
