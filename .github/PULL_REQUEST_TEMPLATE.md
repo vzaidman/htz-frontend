@@ -7,6 +7,7 @@
 **Notes:**
 [ Insert notes ]
 
+
 ## Checklist
 
 Design:
@@ -17,7 +18,7 @@ Usability:
   * [ ] Project manager
 
 Tests
-  <!-- remove irrelvant entries -->
+  <!-- remove irrelevant entries -->
   * [ ] UI snapshot testing 
   * [ ] Unit testing
   * [ ] Integration testing
