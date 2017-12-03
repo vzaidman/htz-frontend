@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IconSearch /> DOM element add "id" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id="hasId"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> DOM element add "id" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconSearch /> DOM element add "onClick" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id={[Function]}
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> DOM element add "onClick" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconSearch /> DOM element pass attributes defined in the "attrs" prop to the DOM element 1`] = `
+<div>
+  <svg
+    aria-hidden={true}
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> DOM element pass attributes defined in the "attrs" prop to the DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconSearch /> DOM element render correctly when no props are passed 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> DOM element render correctly when no props are passed 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconSearch /> styles responsively set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> styles responsively set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{position:relative}}@media (min-width: 80em){.htz-e{position:static}}"`;
+
+exports[`<IconSearch /> styles set icon's color 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> styles set icon's color 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:#0B7EB5}.htz-c{fill:#FFF}"`;
+
+exports[`<IconSearch /> styles set icon's color responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> styles set icon's color responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-d{fill:#FFF}@media (max-width: 80em){.htz-b{color:#0B7EB5}}@media (min-width: 80em){.htz-c{color:#2D2D2D}}"`;
+
+exports[`<IconSearch /> styles set icon's fill 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> styles set icon's fill 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#0B7EB5}"`;
+
+exports[`<IconSearch /> styles set icon's fill responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> styles set icon's fill responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}@media (max-width: 80em){.htz-c{fill:#0B7EB5}}@media (min-width: 80em){.htz-d{fill:#2D2D2D}}"`;
+
+exports[`<IconSearch /> styles set icon's size 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> styles set icon's size 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{font-size:6rem}"`;
+
+exports[`<IconSearch /> styles set icon's size responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> styles set icon's size responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{font-size:6rem}}@media (min-width: 80em){.htz-e{font-size:7rem}}"`;
+
+exports[`<IconSearch /> styles set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconSearch /> styles set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{position:relative}"`;

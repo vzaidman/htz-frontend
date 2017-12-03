@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IconPrint /> DOM element add "id" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id="hasId"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> DOM element add "id" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconPrint /> DOM element add "onClick" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id={[Function]}
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> DOM element add "onClick" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconPrint /> DOM element pass attributes defined in the "attrs" prop to the DOM element 1`] = `
+<div>
+  <svg
+    aria-hidden={true}
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> DOM element pass attributes defined in the "attrs" prop to the DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconPrint /> DOM element render correctly when no props are passed 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> DOM element render correctly when no props are passed 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconPrint /> styles responsively set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> styles responsively set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{position:relative}}@media (min-width: 80em){.htz-e{position:static}}"`;
+
+exports[`<IconPrint /> styles set icon's color 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> styles set icon's color 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:#0B7EB5}.htz-c{fill:#FFF}"`;
+
+exports[`<IconPrint /> styles set icon's color responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> styles set icon's color responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-d{fill:#FFF}@media (max-width: 80em){.htz-b{color:#0B7EB5}}@media (min-width: 80em){.htz-c{color:#2D2D2D}}"`;
+
+exports[`<IconPrint /> styles set icon's fill 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> styles set icon's fill 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#0B7EB5}"`;
+
+exports[`<IconPrint /> styles set icon's fill responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> styles set icon's fill responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}@media (max-width: 80em){.htz-c{fill:#0B7EB5}}@media (min-width: 80em){.htz-d{fill:#2D2D2D}}"`;
+
+exports[`<IconPrint /> styles set icon's size 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> styles set icon's size 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{font-size:6rem}"`;
+
+exports[`<IconPrint /> styles set icon's size responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> styles set icon's size responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{font-size:6rem}}@media (min-width: 80em){.htz-e{font-size:7rem}}"`;
+
+exports[`<IconPrint /> styles set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M236.1 89H215V43.4L179.8 14h-123C47.5 14 40 21.5 40 30.8V89H19.9C13.4 89 8 94.4 8 100.9v92.2c0 6.5 5.4 11.9 11.9 11.9H39v20.6c0 9.1 7.3 16.4 16.4 16.4h144.2c9.1 0 16.4-7.3 16.4-16.4V205h20.1c6.5 0 11.9-5.4 11.9-11.9v-92.2c0-6.5-5.4-11.9-11.9-11.9zM56.9 24h119.2L205 48.1V89H50V30.9c0-3.8 3.1-6.9 6.9-6.9zm142.6 208h-144c-3.6 0-6.5-2.9-6.5-6.5V177h157v48.5c0 3.6-2.9 6.5-6.5 6.5zm9.8-100c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-3.9 8.9-8.9 8.9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconPrint /> styles set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{position:relative}"`;

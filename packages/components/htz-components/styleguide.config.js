@@ -9,7 +9,7 @@ const { configure, } = require('@haaretz/htz-react-base/styleguide');
 // that Babel syntax like object rest spread can't be used here.
 
 const utilsPath = path.join(process.cwd(), 'src/utils');
-const componentSectionsPath = path.join(process.cwd(), 'src/components');
+const componentSectionsPath = path.join(process.cwd(), 'src', 'components');
 const isDir = file =>
   lstatSync(path.join(componentSectionsPath, file)).isDirectory();
 
@@ -28,7 +28,13 @@ module.exports = configure(config =>
         const extension = path.extname(nonExampleComponentPath);
         const componentName = path.basename(nonExampleComponentPath, extension);
 
-        return `import { ${componentName} } from '${packageName}';  (${nonExampleComponentPath})`;
+        if (componentPath.indexOf('Icon') !== -1) {
+          return `import { <IconName>, } from '${packageName}';`;
+        }
+
+        return `import { ${componentName}, } from '${packageName}';  (${
+          nonExampleComponentPath
+        })`;
       }
 
       return componentPath;
@@ -55,10 +61,10 @@ module.exports = configure(config =>
           .filter(file => isDir(file) && file[0] === file[0].toUpperCase())
           .map(file => ({
             name: file,
-            components: `${path.join(
-              componentSectionsPath,
-              file
-            )}**/[A-Z]*.js{,x}`,
+            components:
+              file === 'Icon'
+                ? path.join(componentSectionsPath, file, 'Icon.js')
+                : `${path.join(componentSectionsPath, file)}**/[A-Z]*.js{,x}`,
           })),
       },
     ],

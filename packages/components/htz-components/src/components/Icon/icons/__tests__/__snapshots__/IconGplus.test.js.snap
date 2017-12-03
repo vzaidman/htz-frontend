@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IconGPlus /> DOM element add "id" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id="hasId"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> DOM element add "id" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconGPlus /> DOM element add "onClick" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id={[Function]}
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> DOM element add "onClick" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconGPlus /> DOM element pass attributes defined in the "attrs" prop to the DOM element 1`] = `
+<div>
+  <svg
+    aria-hidden={true}
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> DOM element pass attributes defined in the "attrs" prop to the DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconGPlus /> DOM element render correctly when no props are passed 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> DOM element render correctly when no props are passed 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconGPlus /> styles responsively set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> styles responsively set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{position:relative}}@media (min-width: 80em){.htz-e{position:static}}"`;
+
+exports[`<IconGPlus /> styles set icon's color 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> styles set icon's color 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:#0B7EB5}.htz-c{fill:#FFF}"`;
+
+exports[`<IconGPlus /> styles set icon's color responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> styles set icon's color responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-d{fill:#FFF}@media (max-width: 80em){.htz-b{color:#0B7EB5}}@media (min-width: 80em){.htz-c{color:#2D2D2D}}"`;
+
+exports[`<IconGPlus /> styles set icon's fill 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> styles set icon's fill 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#0B7EB5}"`;
+
+exports[`<IconGPlus /> styles set icon's fill responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> styles set icon's fill responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}@media (max-width: 80em){.htz-c{fill:#0B7EB5}}@media (min-width: 80em){.htz-d{fill:#2D2D2D}}"`;
+
+exports[`<IconGPlus /> styles set icon's size 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> styles set icon's size 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{font-size:6rem}"`;
+
+exports[`<IconGPlus /> styles set icon's size responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> styles set icon's size responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{font-size:6rem}}@media (min-width: 80em){.htz-e{font-size:7rem}}"`;
+
+exports[`<IconGPlus /> styles set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconGPlus /> styles set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{position:relative}"`;

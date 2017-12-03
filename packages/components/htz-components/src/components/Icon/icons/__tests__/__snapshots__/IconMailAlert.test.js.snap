@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IconMailAlert /> DOM element add "id" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id="hasId"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> DOM element add "id" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconMailAlert /> DOM element add "onClick" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id={[Function]}
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> DOM element add "onClick" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconMailAlert /> DOM element pass attributes defined in the "attrs" prop to the DOM element 1`] = `
+<div>
+  <svg
+    aria-hidden={true}
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> DOM element pass attributes defined in the "attrs" prop to the DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconMailAlert /> DOM element render correctly when no props are passed 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> DOM element render correctly when no props are passed 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconMailAlert /> styles responsively set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> styles responsively set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{position:relative}}@media (min-width: 80em){.htz-e{position:static}}"`;
+
+exports[`<IconMailAlert /> styles set icon's color 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> styles set icon's color 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:#0B7EB5}.htz-c{fill:#FFF}"`;
+
+exports[`<IconMailAlert /> styles set icon's color responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> styles set icon's color responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-d{fill:#FFF}@media (max-width: 80em){.htz-b{color:#0B7EB5}}@media (min-width: 80em){.htz-c{color:#2D2D2D}}"`;
+
+exports[`<IconMailAlert /> styles set icon's fill 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> styles set icon's fill 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#0B7EB5}"`;
+
+exports[`<IconMailAlert /> styles set icon's fill responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> styles set icon's fill responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}@media (max-width: 80em){.htz-c{fill:#0B7EB5}}@media (min-width: 80em){.htz-d{fill:#2D2D2D}}"`;
+
+exports[`<IconMailAlert /> styles set icon's size 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> styles set icon's size 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{font-size:6rem}"`;
+
+exports[`<IconMailAlert /> styles set icon's size responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> styles set icon's size responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{font-size:6rem}}@media (min-width: 80em){.htz-e{font-size:7rem}}"`;
+
+exports[`<IconMailAlert /> styles set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMailAlert /> styles set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{position:relative}"`;

@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IconMenu /> DOM element add "id" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id="hasId"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> DOM element add "id" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconMenu /> DOM element add "onClick" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id={[Function]}
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> DOM element add "onClick" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconMenu /> DOM element pass attributes defined in the "attrs" prop to the DOM element 1`] = `
+<div>
+  <svg
+    aria-hidden={true}
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> DOM element pass attributes defined in the "attrs" prop to the DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconMenu /> DOM element render correctly when no props are passed 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> DOM element render correctly when no props are passed 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconMenu /> styles responsively set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> styles responsively set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{position:relative}}@media (min-width: 80em){.htz-e{position:static}}"`;
+
+exports[`<IconMenu /> styles set icon's color 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> styles set icon's color 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:#0B7EB5}.htz-c{fill:#FFF}"`;
+
+exports[`<IconMenu /> styles set icon's color responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> styles set icon's color responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-d{fill:#FFF}@media (max-width: 80em){.htz-b{color:#0B7EB5}}@media (min-width: 80em){.htz-c{color:#2D2D2D}}"`;
+
+exports[`<IconMenu /> styles set icon's fill 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> styles set icon's fill 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#0B7EB5}"`;
+
+exports[`<IconMenu /> styles set icon's fill responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> styles set icon's fill responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}@media (max-width: 80em){.htz-c{fill:#0B7EB5}}@media (min-width: 80em){.htz-d{fill:#2D2D2D}}"`;
+
+exports[`<IconMenu /> styles set icon's size 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> styles set icon's size 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{font-size:6rem}"`;
+
+exports[`<IconMenu /> styles set icon's size responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> styles set icon's size responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{font-size:6rem}}@media (min-width: 80em){.htz-e{font-size:7rem}}"`;
+
+exports[`<IconMenu /> styles set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+      
+    <path
+      d="M249 34v27H9V34h240zM9 142h240v-27H9v27zm0 80h240v-27H9v27z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconMenu /> styles set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{position:relative}"`;

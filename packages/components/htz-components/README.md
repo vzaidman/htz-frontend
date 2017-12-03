@@ -11,6 +11,7 @@ as some generic utilities and consumable prop-types.
 - [Development](#development)
   - [Reusable PropTypes](#reusable-proptypes)
   - [Testing Fela Components](#testing-fela-components)
+  - [Icons](#icons)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -70,3 +71,9 @@ In addition, the `felaEnzymeRenderer` util exports two methods:
 
 See Enzyme's APIs for [fully rendered (mounted) components](http://airbnb.io/enzyme/docs/api/mount.html) 
 and [shallow-rendered components](http://airbnb.io/enzyme/docs/api/shallow.html).
+
+### Icons
+
+Icon components are automatically generated from svg files by a script. See 
+[here](src/components/Icon/Icon.md) for instructions on how to create
+new icons or edit existing ones.
