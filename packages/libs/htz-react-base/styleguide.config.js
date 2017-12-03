@@ -47,6 +47,7 @@ module.exports = {
   styles: {
     StyleGuide: {
       root: {
+        color: 'inherit',
         '& main>section>section': {
           marginBottom: '12rem',
         },
@@ -267,7 +268,19 @@ module.exports = {
         paddingRight: '3rem',
       },
       code: {
+        backgroundColor: color.bg,
+        borderRadius: '4px',
         fontSize: '14px',
+        padding: '.5rem 1rem',
+      },
+      pre: {
+        backgroundColor: color.bg,
+        border: 0,
+        borderRadius: '4px',
+        fontSize: '14px',
+      },
+      para: {
+        maxWidth: '700px',
       },
       table: {
         maxWidth: '1000px',
@@ -281,6 +294,13 @@ module.exports = {
         border: '1px solid #ddd',
         fontSize: '12px',
         padding: '.5rem 2rem',
+
+        '& > code': {
+          fontSize: '12px',
+          backgroundColor: '#dedede',
+          borderRadius: '4px',
+          padding: '0 .5rem',
+        },
       },
       th: {
         fontFamily: 'monospace',
