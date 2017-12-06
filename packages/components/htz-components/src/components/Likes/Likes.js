@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 
-//Todo: work on up and down vote functions
-//Todo: change icons to svgs and redo styling
+// Todo: work on up and down vote functions
+// Todo: change icons to svgs and redo styling
 
 const propTypes = {
   plusRate: PropTypes.number,

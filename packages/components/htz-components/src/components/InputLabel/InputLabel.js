@@ -30,7 +30,10 @@ const StyledLabel = createComponent(labelStyle, 'label', [ 'htmlFor', ]);
 
 function InputLabel(props) {
   return (
-    <StyledLabel {...props.labelFor && { htmlFor: props.labelFor, }} styleObject={props.styleObject}>
+    <StyledLabel
+      {...props.labelFor && { htmlFor: props.labelFor, }}
+      styleObject={props.styleObject}
+    >
       {props.text && <span>{props.text}</span>}
       {props.children}
     </StyledLabel>

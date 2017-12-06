@@ -24,7 +24,11 @@ describe('InputTest', () => {
 });
 it('render the component as a input element with a custom purple border color when isError', () => {
   const snapshot = felaSnapshotter(
-    <TextInput isError inputBorderColor="yellow" inputBorderColorError="purple" />
+    <TextInput
+      isError
+      inputBorderColor="yellow"
+      inputBorderColorError="purple"
+    />
   );
   expect(snapshot).toMatchSnapshot();
 });

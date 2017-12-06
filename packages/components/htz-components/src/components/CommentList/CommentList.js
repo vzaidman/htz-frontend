@@ -26,7 +26,12 @@ const wrapperStyle = ({ theme, }) => ({
 
 const StyledWrapper = createComponent(wrapperStyle);
 
-function CommentList({ comments, isSubComment, commentsPlusRate, commentsMinusRate, }) {
+function CommentList({
+  comments,
+  isSubComment,
+  commentsPlusRate,
+  commentsMinusRate,
+}) {
   return (
     <StyledWrapper>
       {comments.map((comment, idx) => (

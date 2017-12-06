@@ -50,6 +50,7 @@ import createDocument from './document';
 import createFelaEnzymeRenderers from './utils/createFelaEnzymeRenderers';
 import createFelaSnapshotter from './utils/createFelaSnapshotter';
 import createRenderer from './utils/createRenderer';
+import Embed from './components/Embed/Embed';
 import StyleProvider from './components/StyleProvider/StyleProvider';
 
 export {
@@ -95,5 +96,6 @@ export {
   createFelaEnzymeRenderers,
   createFelaSnapshotter,
   createRenderer,
+  Embed,
   StyleProvider,
 };

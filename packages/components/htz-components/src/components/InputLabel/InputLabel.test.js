@@ -7,7 +7,9 @@ it('should correctly render a InputLabel without any props or styles', () => {
   expect(snapshot).toMatchSnapshot();
 });
 it('should correctly render a InputLabel with custom text passed as a prop ', () => {
-  const snapshot = felaSnapshotter(<InputLabel text="this is a test text passed through a prop" />);
+  const snapshot = felaSnapshotter(
+    <InputLabel text="this is a test text passed through a prop" />
+  );
   expect(snapshot).toMatchSnapshot();
 });
 it('should correctly render a InputLabel with custom labelFor passed as a prop ', () => {

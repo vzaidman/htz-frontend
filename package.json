@@ -297,5 +297,7 @@
     "rimraf": "^2.6.2",
     "write-pkg": "^3.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-no-ssr": "^1.1.0"
+  }
 }

@@ -25,7 +25,13 @@ const defaultProps = {
   styleObject: null,
 };
 
-const inputStyle = ({ isError, as, inputBorderColorError, inputBorderColor, styleObject, }) => ({
+const inputStyle = ({
+  isError,
+  as,
+  inputBorderColorError,
+  inputBorderColor,
+  styleObject,
+}) => ({
   borderColor: isError ? inputBorderColorError : inputBorderColor,
   height: as === 'textarea' ? '10rem' : '3rem',
   resize: 'none',
@@ -37,7 +43,12 @@ const StyledTextInput = createComponent(inputStyle, 'input', [ 'defaultValue', ]
 
 function TextInput(props) {
   // in new fela is prop will change to as
-  return <StyledTextInput {...props} as={props.isTextArea ? 'textarea' : undefined} />;
+  return (
+    <StyledTextInput
+      {...props}
+      as={props.isTextArea ? 'textarea' : undefined}
+    />
+  );
 }
 
 TextInput.propTypes = propTypes;
