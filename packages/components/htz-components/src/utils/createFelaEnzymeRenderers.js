@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { shallow, mount, } from 'enzyme';
 import { renderToString, } from 'fela-tools';
-import toJson from 'enzyme-to-json';
+// import toJson from 'enzyme-to-json';
 import { createTheme, } from 'fela-bindings';
 
 /*
@@ -25,7 +25,7 @@ export default function createFelaEnzymeRenderers(renderer, theme) {
       ...options,
     });
 
-    component.snapshot = snapshot(component, renderer);
+    // component.snapshot = snapshot(component, renderer);
     return component;
   }
 
@@ -42,17 +42,17 @@ export default function createFelaEnzymeRenderers(renderer, theme) {
       ...options,
     });
 
-    component.snapshot = snapshot(component, renderer);
+    // component.snapshot = snapshot(component, renderer);
     return component;
   }
 
   return { felaMount, felaShallow, };
 }
 
-function snapshot(component, renderer) {
-  return () => ({
-    component: toJson(component),
-    // you should prettify this string
-    styles: renderToString(renderer),
-  });
-}
+// function snapshot(component, renderer) {
+//   return () => ({
+//     component: toJson(component),
+//     // you should prettify this string
+//     styles: renderToString(renderer),
+//   });
+// }

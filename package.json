@@ -165,7 +165,7 @@
         ]
       }
     },
-    "lodash-es": {
+    "lodash": {
       "4.17.4": {
         "packages/{apps,components}/*": [
           "dependencies"

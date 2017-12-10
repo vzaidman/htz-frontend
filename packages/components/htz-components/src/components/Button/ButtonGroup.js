@@ -1,7 +1,7 @@
 import React, { Component, Children, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
-import debounce from 'lodash-es/debounce';
+import debounce from 'lodash/debounce';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 import hasMatchMedia from '../../utils/hasMatchMedia';
 import mediaMatchesQuery from '../../utils/mediaMatchesQuery';

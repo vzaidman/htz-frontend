@@ -25,6 +25,11 @@ for styled Fela components, and can be configured on a per-use-case basis.
 ### Return
 An object with `felaMount` and `felaShallow` methods for mounting and shallow rendering Fela components with the `renderer` and `theme` in context.
 
+<!--
+SNAPSHOT TESTING OF ENZYME COMPONENTS IS DISABLED UNTIL WE FIGURE OUT HOW 
+NOT TO BREAK THE BUILD WITH "enzyme-to-json", WHICH IS WRITTEN IN ES6 AND DOES NOT GET TRANSPILED
+-->
+<!--
 components returned by each of the methods will be augmented by a `snapshot` static method, which converts them to an object with `component` and `style` keys, useful for snapshot testing.
 
 ### Example
@@ -43,3 +48,4 @@ console.log(felaMount(<Button>hello</Button>).snapshot())
 //   "styles": ".a{width:10px}.b{height:10px}.c{background-color:red}",
 // }
 ```
+-->
