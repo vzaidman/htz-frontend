@@ -5,6 +5,7 @@
  * @license MIT
  */
 
+import autospace from './mixins/autospace';
 import {
   border,
   borderTop,
@@ -29,6 +30,7 @@ import stripUnit from './units/stripUnit';
 import visuallyHidden from './mixins/visuallyHidden';
 
 export {
+  autospace,
   border,
   borderTop,
   borderEnd,
