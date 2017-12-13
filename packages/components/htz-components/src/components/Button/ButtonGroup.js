@@ -1,3 +1,4 @@
+/* globals window */
 import React, { Component, Children, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
@@ -82,6 +83,7 @@ export class ButtonGroup extends Component {
       typeof this.props.isColumn === 'object'
         ? this.props.isColumn.onServerRender
         : this.props.isColumn,
+    isResizeEventAttached: false,
   };
 
   componentWillMount() {
@@ -92,8 +94,13 @@ export class ButtonGroup extends Component {
     if (hasMatchMediaInScope) this.setState({ hasMatchMedia, });
     if (hasMatchMediaInScope && isColumnIsResponsive) {
       this.getUpdatedIsColumn();
-      // eslint-disable-next-line no-undef
-      window.addEventListener('resize', debounce(this.getUpdatedIsColumn, 150));
+      if (!this.state.isResizeEventAttached) {
+        window.addEventListener(
+          'resize',
+          debounce(this.getUpdatedIsColumn, 150)
+        );
+        this.setState({ isResizeEventAttached: true, });
+      }
     }
   }
 
@@ -109,8 +116,14 @@ export class ButtonGroup extends Component {
     const isColumnIsResponsive = typeof isColumn === 'object';
     if (isColumnIsResponsive && this.state.hasMatchMedia) {
       this.getUpdatedIsColumn();
-      // eslint-disable-next-line no-undef
-      window.addEventListener('resize', debounce(this.getUpdatedIsColumn, 150));
+      if (!this.state.isResizeEventAttached) {
+        window.addEventListener(
+          'resize',
+          debounce(this.getUpdatedIsColumn, 150)
+        );
+        // eslint-disable-next-line react/no-did-mount-set-state
+        this.setState({ isResizeEventAttached: true, });
+      }
     }
   }
 
@@ -121,13 +134,14 @@ export class ButtonGroup extends Component {
   }
 
   componentWillUnmount() {
-    if (typeof window !== 'undefined') {
-      // eslint-disable-next-line no-undef
+    if (typeof window !== 'undefined' && this.state.isResizeEventAttached) {
       window.removeEventListener('resize', this.getUpdatedIsColumn);
+      this.setState({ isResizeEventAttached: false, });
     }
   }
 
   getUpdatedIsColumn = () => {
+    const hasMatchMediaInScope = hasMatchMedia();
     const isColumn = this.props.isColumn;
     const isColumnIsResponsive = typeof isColumn === 'object';
     const defaultValue = isColumnIsResponsive
@@ -138,10 +152,10 @@ export class ButtonGroup extends Component {
     if (!isColumnIsResponsive) {
       this.setState({
         isColumn: defaultValue,
-        hasMatchMedia,
+        hasMatchMedia: hasMatchMediaInScope,
       });
     }
-    else if (!hasMatchMedia()) {
+    else if (!hasMatchMediaInScope) {
       // When matchMedia doesn't exist
       this.setState({
         isColumn: defaultValue,
