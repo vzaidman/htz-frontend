@@ -1,13 +1,14 @@
 // consts
 import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
-import inputStyle from './consts/inputStyle';
-import fontStacks from './consts/fontStacks';
-import getColor from './methods/getColor';
-import typeConf from './consts/typeConf';
 import cssReset from './consts/cssReset';
+import fontStacks from './consts/fontStacks';
+import gridStyle from './consts/gridStyle';
+import inputStyle from './consts/inputStyle';
+import typeConf from './consts/typeConf';
 
 // methods
+import getColor from './methods/getColor';
 import {
   getDelay,
   getDuration,
@@ -36,6 +37,12 @@ export { cssReset, };
  * @prop {string} btnStyle.borderStyle  - The `border-style` of a button's outline
  * @prop {number} btnStyle.radius  - A button's `border-radius`, in pixels.
  * @prop {'rtl'} direction - The application's flow direction
+ * @prop {Object} gridStyle - An object containing grid related style definitions.
+ * @prop {number} gridStyle.gutterWidth - The default width of the gutter between grid items.
+ * @prop {number} gridStyle.ruleWidth - The default width of a vertical rule separating
+ *   two grid items.
+ * @prop {string[]} gridStyle.ruleWidth - The default color of a vertical rule separating
+ *   two grid items.
  * @prop {Object} fontStacks - An object containing font-family stacks for different use cases
  * @prop {Object} inputStyle - An immutable Object with input style definitions
  * @prop {number} inputStyle.borderWidth  - The width of an input's outline, in pixels
@@ -74,6 +81,7 @@ const htzTheme = Object.freeze({
   bps,
   btnStyle,
   direrction: 'rtl',
+  gridStyle,
   fontStacks,
   inputStyle,
   typeConf,

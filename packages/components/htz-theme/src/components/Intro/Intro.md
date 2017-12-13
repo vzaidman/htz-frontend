@@ -42,12 +42,16 @@ import htzTheme from '@haaretz/htz-theme'
     object with values of boundary points between named width-breakpoints
   * `bps.misc` (`Object`) - An immutable [`MiscBpsConfig`](https://haaretz.github.io/htz-frontend/htz-css-tools#miscbpsconfig)
     object with values named miscellaneous media-features media queries
-* **btnStyle** (`object`) - An immutable Object with button style definitions
+* **btnStyle** (`object`) - An immutable object with button style definitions
   * `btnStyle.borderWidth` (`number`) - The width of a button's outline, in pixels
   * `btnStyle.borderStyle` (`string`) - The `border-style` of a button's outline
   * `btnStyle.radius` (`number`) - A button's `border-radius`, in pixels.
 * **fontStacks** (`Object`) - An object containing font-family stacks for different use cases
 * **direction** (`rtl`) - The application's flow direction
+* **gridStyle** (`Object`) - An immutable object containing grid related style definitions.
+  * `gridStyle.gutterWidth` (`number`) - The default width of the gutter between grid items
+  * `gridStyle.ruleWidth` (`number`) - The default width of a vertical rule separating two grid items.
+  * `gridStyle.ruleWidth` (`string[]`) - The default color of a vertical rule separating two grid items.
 * **inputStyle** (`object`) - An immutable Object with input style definitions
   * `inputStyle.borderWidth` (`number`) - The width of an input's outline, in pixels
   * `inputStyle.borderStyle` (`string`) - The `border-style` of an input's outline
