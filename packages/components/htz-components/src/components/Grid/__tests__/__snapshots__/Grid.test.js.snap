@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Grid /> pass "id" prop to DOM element attribute 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    id="hasId"
+  />
+</div>
+`;
+
+exports[`<Grid /> passthrough gutter value to children correctly pass gutter value 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    id={null}
+  >
+    <div
+      className="htz-i htz-j htz-k htz-l htz-c htz-m htz-n"
+      id={null}
+    >
+      text
+    </div>
+    <div
+      className="htz-i htz-j htz-k htz-l htz-c htz-m htz-n"
+      id={null}
+    >
+      text
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Grid /> passthrough gutter value to children correctly pass gutter value 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-e{margin-right:-4rem}.htz-f{margin-left:-4rem}.htz-g{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-h{align-items:stretch;-webkit-box-align:stretch;-webkit-align-items:stretch}.htz-i{box-sizing:border-box}.htz-j{flex-basis:auto;-webkit-flex-basis:auto}.htz-k{flex-grow:1;-webkit-flex-grow:1}.htz-l{flex-shrink:1;-webkit-flex-shrink:1}.htz-m{padding-left:4rem}.htz-n{padding-right:4rem}"`;
+
+exports[`<Grid /> render children correctly 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    id={null}
+  >
+    <div
+      className="htz-i htz-j htz-k htz-l htz-c htz-m htz-n"
+      id={null}
+    >
+      text
+    </div>
+    <div
+      className="htz-i htz-j htz-k htz-l htz-c htz-m htz-n"
+      id={null}
+    >
+      text
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Grid /> render children correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-h{align-items:stretch;-webkit-box-align:stretch;-webkit-align-items:stretch}.htz-i{box-sizing:border-box}.htz-j{flex-basis:auto;-webkit-flex-basis:auto}.htz-k{flex-grow:1;-webkit-flex-grow:1}.htz-l{flex-shrink:1;-webkit-flex-shrink:1}.htz-m{padding-left:2rem}.htz-n{padding-right:2rem}"`;
+
+exports[`<Grid /> spread the "attrs" prop on the Dom element 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    id={null}
+    tabIndex="-1"
+  />
+</div>
+`;
+
+exports[`<Grid /> styles create correct default styels 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    id={null}
+  />
+</div>
+`;
+
+exports[`<Grid /> styles create correct default styels 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-h{align-items:stretch;-webkit-box-align:stretch;-webkit-align-items:stretch}"`;
+
+exports[`<Grid /> styles reverse grid 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    id={null}
+  />
+</div>
+`;
+
+exports[`<Grid /> styles reverse grid 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row-reverse;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-webkit-flex-direction:row-reverse}.htz-h{align-items:stretch;-webkit-box-align:stretch;-webkit-align-items:stretch}"`;
+
+exports[`<Grid /> styles set "gutter" correctly 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    id={null}
+  />
+</div>
+`;
+
+exports[`<Grid /> styles set "gutter" correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-e{margin-right:-1rem}.htz-f{margin-left:-1rem}.htz-g{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-h{align-items:stretch;-webkit-box-align:stretch;-webkit-align-items:stretch}"`;
+
+exports[`<Grid /> styles set horizontal alignment of "<GridItem>"s correctly 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    id={null}
+  />
+</div>
+`;
+
+exports[`<Grid /> styles set horizontal alignment of "<GridItem>"s correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-h{align-items:stretch;-webkit-box-align:stretch;-webkit-align-items:stretch}"`;
+
+exports[`<Grid /> styles set misc styles correctly 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
+    id={null}
+  />
+</div>
+`;
+
+exports[`<Grid /> styles set misc styles correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-h{align-items:stretch;-webkit-box-align:stretch;-webkit-align-items:stretch}.htz-i{background-color:red}"`;
+
+exports[`<Grid /> styles set row spacing 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
+    id={null}
+  />
+</div>
+`;
+
+exports[`<Grid /> styles set row spacing 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-h> * + *:nth-child(n+3){margin-top:6rem}.htz-i{align-items:stretch;-webkit-box-align:stretch;-webkit-align-items:stretch}"`;
+
+exports[`<Grid /> styles set vertical alignment correctly 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    id={null}
+  />
+</div>
+`;
+
+exports[`<Grid /> styles set vertical alignment correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-h{align-items:flex-end;-webkit-box-align:end;-webkit-align-items:flex-end}"`;

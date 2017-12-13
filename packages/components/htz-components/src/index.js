@@ -7,6 +7,8 @@ import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import CommentForm from './components/CommentForm/CommentForm';
 import CommentList from './components/CommentList/CommentList';
+import Grid from './components/Grid/Grid';
+import GridItem from './components/Grid/GridItem';
 
 // Icons
 import IconAccessibility from './components/Icon/icons/IconAccessibility';
@@ -56,6 +58,8 @@ export {
   ButtonGroup,
   CommentForm,
   CommentList,
+  Grid,
+  GridItem,
   IconAccessibility,
   IconAlef,
   IconAlefLogo,

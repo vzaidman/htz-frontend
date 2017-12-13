@@ -13,6 +13,17 @@ const componentSectionsPath = path.join(process.cwd(), 'src', 'components');
 const isDir = file =>
   lstatSync(path.join(componentSectionsPath, file)).isDirectory();
 
+const sectionPatterns = {
+  Icon: path.join(componentSectionsPath, 'Icon', 'Icon.js'),
+};
+
+function getSectionPattern(section) {
+  return (
+    sectionPatterns[section] ||
+    `${path.join(componentSectionsPath, section)}**/[A-Z]*.js{,x}`
+  );
+}
+
 module.exports = configure(config =>
   Object.assign(config, {
     getComponentPathLine(componentPath) {
@@ -61,10 +72,7 @@ module.exports = configure(config =>
           .filter(file => isDir(file) && file[0] === file[0].toUpperCase())
           .map(file => ({
             name: file,
-            components:
-              file === 'Icon'
-                ? path.join(componentSectionsPath, file, 'Icon.js')
-                : `${path.join(componentSectionsPath, file)}**/[A-Z]*.js{,x}`,
+            components: getSectionPattern(file),
           })),
       },
     ],
