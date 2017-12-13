@@ -144,14 +144,21 @@ module.exports = {
         marginBottom: '2rem',
         textTransform: 'none',
         margin: 0,
+
+        '& > a': {
+          color: 'inherit !important',
+          '&:hover': {
+            color: '#fff !important',
+            textDecoration: 'underline',
+          },
+          '&:focus': {
+            color: '#fff !important',
+            outline: 'none',
+            textDecoration: 'underline',
+          },
+        },
       },
 
-      isChild: {
-        marginBottom: 0,
-      },
-    },
-
-    Link: {
       link: {
         color: 'inherit !important',
         '&:hover': {
@@ -163,6 +170,10 @@ module.exports = {
           outline: 'none',
           textDecoration: 'underline',
         },
+      },
+
+      isChild: {
+        marginBottom: 0,
       },
     },
 
@@ -307,6 +318,15 @@ module.exports = {
         border: '1px solid #ddd',
         fontSize: '12px',
         padding: '.5rem 2rem',
+      },
+      a: {
+        color: color.primary,
+        '&:hover': {
+          color: `${color.primary} !important`,
+        },
+        '&:focus': {
+          color: color.primary,
+        },
       },
     },
 
