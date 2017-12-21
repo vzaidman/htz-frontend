@@ -19,6 +19,7 @@
     "format": "htz-scripts format",
     "gc": "htz-scripts commitizen",
     "icons": "node scripts/create-icons.js",
+    "embeds": "node scripts/update-embed-files.js",
     "lint": "htz-scripts lint",
     "prepare": "npm run build",
     "styleguide": "htz-scripts styleguide",
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "@haaretz/htz-css-tools": "^1.0.1",
+    "async": "^2.6.0",
     "config": "^1.26.2",
     "enzyme": "3.2.0",
     "enzyme-to-json": "3.2.2",

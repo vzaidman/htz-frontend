@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import NoSSR from 'react-no-ssr';
-import embedTypes from './embedTypes';
+import embedTypes from './utils/embedTypes';
 
 const embedWrapper = ({ theme, }) => ({
   backgroundColor: theme.color('white'),
@@ -27,7 +27,7 @@ Embed.propTypes = {
   caption: PropTypes.string,
   credit: PropTypes.string,
   embedType: PropTypes.string.isRequired,
-  settings: PropTypes.shape,
+  settings: PropTypes.shape({}),
   inputTemplate: PropTypes.string.isRequired,
 };
 

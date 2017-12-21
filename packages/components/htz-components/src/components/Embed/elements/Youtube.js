@@ -1,24 +1,74 @@
+/* *************************************************************** *
+ * This element accepts these inputTemplates:
+[
+com.polobase.YoutubeEmbed,
+]
+ * *************************************************************** */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
-import Caption from '../Caption';
+import Caption from '../../Caption/Caption';
+
+import { VideoWrapper, } from '../sharedStyles/videoWrapper';
+import { VideoElement, } from '../sharedStyles/videoElement';
 
 Youtube.propTypes = {
-  inputTemplate: PropTypes.string.isRequired,
+  /**
+   * The type of this youtube element
+   * ('video' or 'playlist').
+   */
   embedType: PropTypes.string.isRequired,
+  /**
+   * The video's Id
+   * (for example: for video - '3SzXM019pbs').
+   */
   content: PropTypes.string.isRequired,
-  caption: PropTypes.string,
-  credit: PropTypes.string,
   settings: PropTypes.shape({
+    /**
+     * Should it display Youtube's controls ('0' || '1').
+     */
     controls: PropTypes.string.isRequired,
+    /**
+     * Should it display related videos after the playback ('0' || '1').
+     */
     related: PropTypes.string.isRequired,
+    /**
+     * Should it play in continuously loop ('0' || '1').
+     */
     loop: PropTypes.string.isRequired,
-    videoImage: PropTypes.string.isRequired,
+    /**
+     * Should it display Youtube's logo ('0' || '1').
+     */
     logo: PropTypes.string.isRequired,
+    /**
+     * Should it automatically play in mute ('0' || '1').
+     */
     mute: PropTypes.bool.isRequired,
+    /**
+     * Should it play automatically ('0' || '1').
+     */
     autoplay: PropTypes.bool.isRequired,
+    /**
+     * Should it start at a specific time ('0' || '1').
+     */
     startAt: PropTypes.number.isRequired,
+    /**
+     * A link to the video image (for smartphone app).
+     */
+    videoImage: PropTypes.string.isRequired,
   }).isRequired,
+  /**
+   * A function to be called when the video finishes to load.
+   */
+  onLoadCallback: PropTypes.func,
+  /**
+   * Caption for this video (Passes down to the [***Caption***](./#caption) component).
+   */
+  caption: PropTypes.string,
+  /**
+   * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
+   */
+  credit: PropTypes.string,
 };
 
 Youtube.defaultProps = {
@@ -33,38 +83,8 @@ Youtube.defaultProps = {
     autoplay: false,
     startAt: 0,
   },
+  onLoadCallback: null,
 };
-
-const videoWrapper = ({ aspectRatio, }) => {
-  const [ width, height, ] = aspectRatio ? aspectRatio.split('/') : [ 16, 9, ];
-  const aspect = `${(height / width) * 100}%`;
-
-  return {
-    margin: '0',
-    paddingBottom: aspect,
-    height: '0',
-    overflow: 'hidden',
-    position: 'relative',
-  };
-};
-
-const VideoWrapper = createComponent(videoWrapper, 'figure');
-
-const videoElement = () => ({
-  margin: '0',
-  padding: '0',
-  height: '100% !important',
-  width: '100% !important',
-  left: '0',
-  top: '0',
-  position: 'absolute',
-  display: 'block',
-  border: 'none',
-});
-
-const VideoElement = createComponent(videoElement, 'iframe', props =>
-  Object.keys(props)
-);
 
 function Youtube(props) {
   const startAt = props.embedType === 'playlist' ? '&start=' : '?start=';
@@ -84,13 +104,12 @@ function Youtube(props) {
                   &enablejsapi=1`}
           frameBorder="0"
           allowFullScreen=""
+          onLoad={props.onLoadCallback}
         />
       </VideoWrapper>
       <Caption
         caption={props.caption}
         credit={props.credit}
-        inputTemplate={props.inputTemplate}
-        embedType={props.embedType}
       />
     </div>
   );

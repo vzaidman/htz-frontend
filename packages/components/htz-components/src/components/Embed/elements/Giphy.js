@@ -1,23 +1,42 @@
+/* *************************************************************** *
+ * This element accepts these inputTemplates:
+[
+com.polobase.GiphyEmbed,
+]
+ * *************************************************************** */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../Caption';
+import Caption from '../../Caption/Caption';
 
 Giphy.propTypes = {
-  inputTemplate: PropTypes.string.isRequired,
-  embedType: PropTypes.string.isRequired,
-  caption: PropTypes.string,
-  credit: PropTypes.string,
+  /**
+   * These settings are extracted from the Giphy source code.
+   */
   settings: PropTypes.shape({
     src: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
+    width: PropTypes.string.isRequired,
+    height: PropTypes.string.isRequired,
   }).isRequired,
+  /**
+   * A function to be called when the gif finishes to load.
+   */
+  onLoadCallback: PropTypes.func,
+  /**
+   * Caption for this gif (Passes down to the [***Caption***](./#caption) component).
+   */
+  caption: PropTypes.string,
+  /**
+   * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
+   */
+  credit: PropTypes.string,
 };
 
 Giphy.defaultProps = {
   caption: '',
   credit: '',
+  onLoadCallback: null,
 };
 
 const giphyWrapper = () => ({
@@ -35,7 +54,7 @@ function Giphy(props) {
   const height = settings.height;
   const width = settings.width;
 
-  const innerWidth = 700; // TODO: Temporary
+  const innerWidth = 600; // TODO: Temporary
   const newHeight = (innerWidth / width) * height;
 
   return (
@@ -48,12 +67,11 @@ function Giphy(props) {
         frameBorder="0"
         className="giphy-embed"
         allowFullScreen
+        onLoad={props.onLoadCallback}
       />
       <Caption
         caption={props.caption}
         credit={props.credit}
-        inputTemplate={props.inputTemplate}
-        embedType={props.embedType}
       />
     </GiphyWrapper>
   );

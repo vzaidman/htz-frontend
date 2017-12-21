@@ -1,8 +1,16 @@
+/* *************************************************************** *
+ * This element accepts these inputTemplates:
+[
+com.polobase.TlineEmbed,
+]
+ * This element does not emits an onLoad event
+ * *************************************************************** */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../Caption';
-import { appendScript, } from '../lib/scriptTools';
+import Caption from '../../Caption/Caption';
+import { appendScript, } from '../../../utils/scriptTools';
 
 const tlineWrapper = () => ({
   textAlign: 'center',
@@ -15,15 +23,22 @@ const TlineWrapper = createComponent(tlineWrapper, 'figure', props =>
 
 export default class Tline extends React.Component {
   static propTypes = {
-    inputTemplate: PropTypes.string.isRequired,
-    embedType: PropTypes.string.isRequired,
-    caption: PropTypes.string,
-    credit: PropTypes.string,
+    /**
+     * The settings values extracted from the Tline source code.
+     */
     settings: PropTypes.shape({
       src: PropTypes.string.isRequired,
       'data-alias': PropTypes.string.isRequired,
       'data-version': PropTypes.string.isRequired,
     }).isRequired,
+    /**
+     * Caption for this element (Passes down to the [***Caption***](./#caption) component).
+     */
+    caption: PropTypes.string,
+    /**
+     * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
+     */
+    credit: PropTypes.string,
   };
 
   static defaultProps = {
@@ -63,8 +78,6 @@ export default class Tline extends React.Component {
         <Caption
           caption={this.props.caption}
           credit={this.props.credit}
-          inputTemplate={this.props.inputTemplate}
-          embedType={this.props.embedType}
         />
       </TlineWrapper>
     );

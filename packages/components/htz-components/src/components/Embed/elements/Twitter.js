@@ -1,9 +1,16 @@
+/* *************************************************************** *
+ * This element accepts these inputTemplates:
+[
+com.polobase.TwitterEmbed,
+]
+ * *************************************************************** */
+
 /* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../Caption';
-import { appendScript, } from '../lib/scriptTools';
+import Caption from '../../Caption/Caption';
+import { appendScript, } from '../../../utils/scriptTools';
 
 const twitterWrapper = ({ embedType, }) => {
   let maxWidth;
@@ -50,25 +57,55 @@ const TwitterWrapper = createComponent(twitterWrapper, 'figure');
 
 export default class Twitter extends React.Component {
   static propTypes = {
-    inputTemplate: PropTypes.string.isRequired,
+    /**
+     * The type of this twitter element
+     * ('single tweet', 'video', 'search', etc).
+     */
     embedType: PropTypes.string.isRequired,
-    caption: PropTypes.string,
-    credit: PropTypes.string,
+    /**
+     * Twitter's HTML tag (supplied by Twitter).
+     */
     content: PropTypes.string.isRequired,
+    /**
+     * A function to be called when the element finishes to load.
+     */
+    onLoadCallback: PropTypes.func,
+    /**
+     * Caption for this element (Passes down to the [***Caption***](./#caption) component).
+     */
+    caption: PropTypes.string,
+    /**
+     * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
+     */
+    credit: PropTypes.string,
   };
 
   static defaultProps = {
     caption: '',
     credit: '',
+    onLoadCallback: null,
   };
 
   componentDidMount() {
     const src = '//platform.twitter.com/widgets.js';
     const async = true;
     const id = 'twitter-js';
-
-    appendScript(src, id, async);
+    /* istanbul ignore next */
+    appendScript(src, id, async, this.initScript, this.updateScript);
   }
+
+  initScript = () => {
+    twttr.events.bind(
+      'rendered', event => {
+        console.log('twitter embed is loaded');
+        this.props.onLoadCallback ? this.props.onLoadCallback() : '';
+      }
+    );
+  };
+
+  updateScript = () => {
+    twttr.widgets.load();
+  };
 
   render() {
     const { content, } = this.props;
@@ -79,8 +116,6 @@ export default class Twitter extends React.Component {
         <Caption
           caption={this.props.caption}
           credit={this.props.credit}
-          inputTemplate={this.props.inputTemplate}
-          embedType={this.props.embedType}
         />
       </TwitterWrapper>
     );

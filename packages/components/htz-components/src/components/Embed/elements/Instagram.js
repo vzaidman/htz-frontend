@@ -1,12 +1,19 @@
+/* *************************************************************** *
+ * This element accepts these inputTemplates:
+[
+com.polobase.InstagramEmbed,
+]
+ * This element does not emits an onLoad event
+ * *************************************************************** */
+
 /* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../Caption';
-import { appendScript, } from '../lib/scriptTools';
+import Caption from '../../Caption/Caption';
+import { appendScript, } from '../../../utils/scriptTools';
 
 const instagramWrapper = () => ({
-  width: '661px',
   clear: 'both',
   overflow: 'hidden',
   position: 'relative',
@@ -18,13 +25,24 @@ const InstagramWrapper = createComponent(instagramWrapper, 'figure', props =>
   Object.keys(props)
 );
 
+const updateScript = () => {
+  window.instgrm.Embeds.process();
+};
+
 export default class Instagram extends React.Component {
   static propTypes = {
-    inputTemplate: PropTypes.string.isRequired,
-    embedType: PropTypes.string.isRequired,
-    caption: PropTypes.string,
-    credit: PropTypes.string,
+    /**
+     * Instagram's HTML tag (supplied by Instagram `<blockquote>....</blockquote>`).
+     */
     content: PropTypes.string.isRequired,
+    /**
+     * Caption for this element (Passes down to the [***Caption***](./#caption) component).
+     */
+    caption: PropTypes.string,
+    /**
+     * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
+     */
+    credit: PropTypes.string,
   };
 
   static defaultProps = {
@@ -37,7 +55,7 @@ export default class Instagram extends React.Component {
     const async = true;
     const id = 'instagram-js';
 
-    appendScript(src, id, async);
+    appendScript(src, id, async, null, updateScript);
   }
 
   render() {
@@ -47,8 +65,6 @@ export default class Instagram extends React.Component {
         <Caption
           caption={this.props.caption}
           credit={this.props.credit}
-          inputTemplate={this.props.inputTemplate}
-          embedType={this.props.embedType}
         />
       </InstagramWrapper>
     );

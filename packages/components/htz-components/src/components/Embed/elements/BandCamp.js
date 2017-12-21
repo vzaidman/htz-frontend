@@ -1,13 +1,25 @@
+/* *************************************************************** *
+ * This element accepts these inputTemplates:
+[
+com.polobase.BandCampEmbed,
+]
+ * *************************************************************** */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../Caption';
+import Caption from '../../Caption/Caption';
 
 BandCamp.propTypes = {
-  inputTemplate: PropTypes.string.isRequired,
+  /**
+   * The type of this band camp element
+   * ('track' or simply '').
+   */
   embedType: PropTypes.string.isRequired,
-  caption: PropTypes.string,
-  credit: PropTypes.string,
+  /**
+   * These settings are extracted from the Bandcamp source code and calculated with
+   * consideration of the user input in Polopoly.
+   */
   settings: PropTypes.shape({
     album: PropTypes.string.isRequired,
     linkcol: PropTypes.string.isRequired,
@@ -26,11 +38,24 @@ BandCamp.propTypes = {
     theme: PropTypes.string.isRequired,
     height: PropTypes.string.isRequired,
   }).isRequired,
+  /**
+   * A function to be called when the video finishes to load.
+   */
+  onLoadCallback: PropTypes.func,
+  /**
+   * Caption for this video (Passes down to the [***Caption***](./#caption) component).
+   */
+  caption: PropTypes.string,
+  /**
+   * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
+   */
+  credit: PropTypes.string,
 };
 
 BandCamp.defaultProps = {
   caption: '',
   credit: '',
+  onLoadCallback: null,
 };
 
 const bandCampWrapper = () => ({
@@ -94,14 +119,13 @@ function BandCamp(props) {
         src={`https://bandcamp.com/EmbeddedPlayer/transparent=true/album=${album}/size=${size}/bgcol=${settings.theme}/linkcol=${settings.linkcol}${minimal}${trackList}${track}${artwork}`}
         frameBorder="0"
         allowFullScreen=""
+        onLoad={props.onLoadCallback}
       >
         {link}
       </iframe>
       <Caption
         caption={props.caption}
         credit={props.credit}
-        inputTemplate={props.inputTemplate}
-        embedType={props.embedType}
       />
     </BandCampWrapper>
   );

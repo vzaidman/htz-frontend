@@ -1,10 +1,27 @@
+/* *************************************************************** *
+ * This element accepts these inputTemplates:
+[
+com.polobase.fileUpload,
+]
+ * This element does not emits an onLoad event
+ * *************************************************************** */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 
 FileUpload.propTypes = {
+  /**
+   * Contains the file's URL.
+   */
   content: PropTypes.string.isRequired,
+  /**
+   * File's type.
+   */
   embedType: PropTypes.string.isRequired,
+  /**
+   * File's description.
+   */
   contentName: PropTypes.string.isRequired,
 };
 

@@ -1,63 +1,90 @@
+/* *************************************************************** *
+ * This element accepts these inputTemplates:
+[
+com.polobase.GoogleMapEmbed,
+]
+ * *************************************************************** */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../Caption';
+import Caption from '../../Caption/Caption';
+
+import { VideoWrapper as MapWrapper, } from '../sharedStyles/videoWrapper';
+import { VideoElement as MapElement, } from '../sharedStyles/videoElement';
 
 GoogleMap.propTypes = {
-  inputTemplate: PropTypes.string.isRequired,
+  /**
+   * The type of this twitter element
+   * ('static', 'search', 'directions' or 'streetView').
+   */
   embedType: PropTypes.string.isRequired,
+  /**
+   * The address (in static map) or starting address (in direction).
+   */
   content: PropTypes.string.isRequired,
-  caption: PropTypes.string,
-  credit: PropTypes.string,
   settings: PropTypes.shape({
-    heading: PropTypes.string,
-    coordinates: PropTypes.string,
+    /**
+     * The language of display.
+     */
     language: PropTypes.string.isRequired,
-    satellite: PropTypes.bool.isRequired,
-    pitch: PropTypes.number,
-    fov: PropTypes.number,
-    mode: PropTypes.string,
+    /**
+     * Should the map be displayed as satellite map ('false' || 'true').
+     */
+    satellite: PropTypes.string.isRequired,
+    /**
+     * The finish address in Direction Map.
+     */
     destination: PropTypes.string,
-    units: PropTypes.string,
+    /**
+     * Checkpoints to include in the route (separated with '|') in Direction Map
+     * (for example: 'dizengoff center | Tony Vespa').
+     */
     waypoints: PropTypes.string,
+    /**
+     * The method of travel ('driving', 'walking', 'flying', etc) Direction Map.
+     */
+    mode: PropTypes.string,
+    /**
+     * The distance units to display ('metric' || 'imperial') Direction Map.
+     */
+    units: PropTypes.string,
+    /**
+     * The map coordinates in street view.
+     */
+    coordinates: PropTypes.string,
+    /**
+     * Camera's direction in street view.
+     */
+    heading: PropTypes.string,
+    /**
+     * Camera's vertical angle in street view (Between -90 to 90, default 0).
+     */
+    pitch: PropTypes.string,
+    /**
+     * Camera's zoom (field of view) in street view (Between 10 to 100).
+     */
+    fov: PropTypes.string,
   }).isRequired,
+  /**
+   * A function to be called when the map finishes to load.
+   */
+  onLoadCallback: PropTypes.func,
+  /**
+   * Caption for this map (Passes down to the [***Caption***](./#caption) component).
+   */
+  caption: PropTypes.string,
+  /**
+   * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
+   */
+  credit: PropTypes.string,
 };
 
 GoogleMap.defaultProps = {
   caption: '',
   credit: '',
+  onLoadCallback: null,
 };
-
-const mapWrapper = ({ aspectRatio, }) => {
-  const [ width, height, ] = aspectRatio ? aspectRatio.split('/') : [ 16, 9, ];
-  const aspect = `${(height / width) * 100}%`;
-
-  return {
-    margin: '0',
-    paddingBottom: aspect,
-    height: '0',
-    overflow: 'hidden',
-    position: 'relative',
-  };
-};
-
-const MapWrapper = createComponent(mapWrapper, 'figure');
-
-const mapElement = () => ({
-  margin: '0',
-  padding: '0',
-  height: '100% !important',
-  width: '100% !important',
-  left: '0',
-  top: '0',
-  position: 'absolute',
-  display: 'block',
-  border: 'none',
-});
-
-const MapElement = createComponent(mapElement, 'iframe', props =>
-  Object.keys(props)
-);
 
 const mapCover = () => ({
   bottom: '0',
@@ -133,6 +160,7 @@ function GoogleMap(props) {
             ''}${heading || ''}${zoom || ''}${pitch || ''}`}
           frameBorder="0"
           allowFullScreen=""
+          onLoad={props.onLoadCallback}
         />
 
         <MapCover onClick={removeCover} />
@@ -140,8 +168,6 @@ function GoogleMap(props) {
       <Caption
         caption={props.caption}
         credit={props.credit}
-        inputTemplate={props.inputTemplate}
-        embedType={props.embedType}
       />
     </div>
   );

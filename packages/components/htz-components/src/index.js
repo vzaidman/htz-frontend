@@ -7,6 +7,7 @@ import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import CommentForm from './components/CommentForm/CommentForm';
 import CommentList from './components/CommentList/CommentList';
+import Embed from './components/Embed/Embed';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
 
@@ -50,7 +51,6 @@ import createDocument from './document';
 import createFelaEnzymeRenderers from './utils/createFelaEnzymeRenderers';
 import createFelaSnapshotter from './utils/createFelaSnapshotter';
 import createRenderer from './utils/createRenderer';
-import Embed from './components/Embed/Embed';
 import StyleProvider from './components/StyleProvider/StyleProvider';
 
 export {

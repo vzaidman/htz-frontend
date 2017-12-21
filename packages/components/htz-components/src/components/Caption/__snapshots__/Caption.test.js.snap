@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should correctly render a Caption bar with both credit and caption  1`] = `
+Object {
+  "component": <div>
+    <div
+      background={
+        Array [
+          "neutral",
+          "-1",
+        ]
+      }
+      caption="The Caption"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l"
+      color={
+        Array [
+          "neutral",
+          "-10",
+        ]
+      }
+      credit="me"
+      creditprefix="קרדיט"
+      direction="rtl"
+    >
+      The Caption
+      <span
+        className="htz-m htz-n htz-o htz-p htz-q"
+        direction="rtl"
+        prefix="קרדיט"
+      >
+        me
+      </span>
+    </div>
+  </div>,
+  "styles": ".htz-a{padding:0.375rem}.htz-b{font-weight:700}.htz-c{font-size:1.75rem}.htz-d{line-height:1.5em}.htz-e{display:block}.htz-f{width:auto}.htz-g{direction:rtl}.htz-h:after{content:\\"\\"}.htz-i:after{clear:both}.htz-j:after{display:table}.htz-k{background-color:#2D2D2D}.htz-l{color:#FFF}.htz-m{opacity:0.8}.htz-n{float:left}.htz-o{font-weight:400}.htz-p{margin-right:0.375rem}.htz-q:before{content:'קרדיט: '}",
+}
+`;
+
+exports[`should correctly render a Caption bar with only the caption, Left to right, and with dynamic background  1`] = `
+Object {
+  "component": <div>
+    <div
+      background={
+        Array [
+          Object {
+            "until": "xl",
+            "value": Array [
+              "tertiary",
+              "-3",
+            ],
+          },
+          Object {
+            "from": "xl",
+            "value": "primary",
+          },
+        ]
+      }
+      caption="The Caption"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
+      color={
+        Array [
+          "neutral",
+          "-10",
+        ]
+      }
+      credit=""
+      creditprefix="קרדיט"
+      direction="ltr"
+    >
+      The Caption
+      
+    </div>
+  </div>,
+  "styles": ".htz-a{padding:0.375rem}.htz-b{font-weight:700}.htz-c{font-size:1.75rem}.htz-d{line-height:1.5em}.htz-e{display:block}.htz-f{width:auto}.htz-g{direction:ltr}.htz-h:after{content:\\"\\"}.htz-i:after{clear:both}.htz-j:after{display:table}.htz-m{color:#FFF}@media (max-width: 80em){.htz-k{background-color:#FFA6A6}}@media (min-width: 80em){.htz-l{background-color:#0B7EB5}}",
+}
+`;
+
+exports[`should correctly render a Caption bar with only the credit  1`] = `
+Object {
+  "component": <div>
+    <div
+      background={
+        Array [
+          "neutral",
+          "-10",
+        ]
+      }
+      caption=""
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l"
+      color="neutral"
+      credit="me"
+      creditPrefix="Credit"
+      creditprefix="קרדיט"
+      direction="rtl"
+    >
+      
+      <span
+        className="htz-m htz-n htz-o htz-p htz-q"
+        direction="rtl"
+        prefix="קרדיט"
+      >
+        me
+      </span>
+    </div>
+  </div>,
+  "styles": ".htz-a{padding:0.375rem}.htz-b{font-weight:700}.htz-c{font-size:1.75rem}.htz-d{line-height:1.5em}.htz-e{display:block}.htz-f{width:auto}.htz-g{direction:rtl}.htz-h:after{content:\\"\\"}.htz-i:after{clear:both}.htz-j:after{display:table}.htz-k{background-color:#FFF}.htz-l{color:#222}.htz-m{opacity:0.8}.htz-n{float:left}.htz-o{font-weight:400}.htz-p{margin-right:0.375rem}.htz-q:before{content:'קרדיט: '}",
+}
+`;
+
+exports[`should render no Caption bar 1`] = `
+Object {
+  "component": <div />,
+  "styles": "",
+}
+`;

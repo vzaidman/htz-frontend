@@ -13,8 +13,14 @@ const componentSectionsPath = path.join(process.cwd(), 'src', 'components');
 const isDir = file =>
   lstatSync(path.join(componentSectionsPath, file)).isDirectory();
 
+const isSubsection = [ 'Embed', ];
+
 const sectionPatterns = {
   Icon: path.join(componentSectionsPath, 'Icon', 'Icon.js'),
+  Embed: [
+    { name: 'UI Examples', components: path.join(componentSectionsPath, 'Embed', 'Embeds.js'), },
+    { name: 'propTypes', components: path.join(componentSectionsPath, 'Embed', 'elements', '[A-Z]*.js{,x}'), },
+  ],
 };
 
 function getSectionPattern(section) {
@@ -39,8 +45,8 @@ module.exports = configure(config =>
         const extension = path.extname(nonExampleComponentPath);
         const componentName = path.basename(nonExampleComponentPath, extension);
 
-        if (componentPath.indexOf('Icon') !== -1) {
-          return `import { <IconName>, } from '${packageName}';`;
+        if (componentPath.indexOf('Embeds') !== -1) {
+          return `import { Embed, } from '${packageName}';`;
         }
 
         return `import { ${componentName}, } from '${packageName}';  (${
@@ -72,7 +78,8 @@ module.exports = configure(config =>
           .filter(file => isDir(file) && file[0] === file[0].toUpperCase())
           .map(file => ({
             name: file,
-            components: getSectionPattern(file),
+            [isSubsection.includes(file) ? 'sections' : 'components']:
+              getSectionPattern(file),
           })),
       },
     ],

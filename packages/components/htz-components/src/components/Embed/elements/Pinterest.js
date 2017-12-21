@@ -1,13 +1,19 @@
+/* *************************************************************** *
+ * This element accepts these inputTemplates:
+[
+com.polobase.PinterestEmbed,
+]
+ * This element does not emits an onLoad event
+ * *************************************************************** */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../Caption';
-import { appendScript, } from '../lib/scriptTools';
+import Caption from '../../Caption/Caption';
+import { appendScript, } from '../../../utils/scriptTools';
 
 const pinterestWrapper = props => {
   const width = props.embedType === 'pin' ? 'auto' : '100%';
   return {
-    textAlign: 'center',
     margin: '0 0 -3px',
     direction: 'ltr',
     width,
@@ -18,16 +24,36 @@ const PinterestWrapper = createComponent(pinterestWrapper, 'figure', props =>
   Object.keys(props)
 );
 
+const updateScript = () => {
+// eslint-disable-next-line no-undef
+  doBuild();
+};
+
 export default class Pinterest extends React.Component {
   static propTypes = {
-    inputTemplate: PropTypes.string.isRequired,
+    /**
+     * The type of this pinterest element
+     * ('pin', 'board' or 'profile').
+     */
     embedType: PropTypes.string.isRequired,
+    /**
+     * Pinterest item's URL.
+     */
     content: PropTypes.string.isRequired,
-    caption: PropTypes.string,
-    credit: PropTypes.string,
     settings: PropTypes.shape({
-      showCaption: PropTypes.bool,
+      /**
+       * Should it display the item's caption ('false' || 'true').
+       */
+      showCaption: PropTypes.string,
     }).isRequired,
+    /**
+     * Caption for this item (Passes down to the [***Caption***](./#caption) component).
+     */
+    caption: PropTypes.string,
+    /**
+     * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
+     */
+    credit: PropTypes.string,
   };
 
   static defaultProps = {
@@ -40,7 +66,7 @@ export default class Pinterest extends React.Component {
     const async = true;
     const id = 'pinterest-js';
 
-    appendScript(src, id, async);
+    appendScript(src, id, async, null, updateScript, { 'data-pin-build': 'doBuild', });
   }
 
   render() {
@@ -71,8 +97,6 @@ export default class Pinterest extends React.Component {
         <Caption
           caption={this.props.caption}
           credit={this.props.credit}
-          inputTemplate={this.props.inputTemplate}
-          embedType={this.props.embedType}
         />
       </PinterestWrapper>
     );

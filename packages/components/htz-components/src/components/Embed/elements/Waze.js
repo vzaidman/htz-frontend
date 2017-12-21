@@ -1,57 +1,52 @@
+/* *************************************************************** *
+ * This element accepts these inputTemplates:
+[
+com.polobase.WazeEmbed,
+]
+ * *************************************************************** */
+
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
-import Caption from '../Caption';
+import Caption from '../../Caption/Caption';
+
+import { VideoWrapper as MapWrapper, } from '../sharedStyles/videoWrapper';
+import { VideoElement as MapElement, } from '../sharedStyles/videoElement';
 
 Waze.propTypes = {
-  inputTemplate: PropTypes.string.isRequired,
-  embedType: PropTypes.string.isRequired,
-  caption: PropTypes.string,
-  credit: PropTypes.string,
   settings: PropTypes.shape({
-    pin: PropTypes.bool,
-    coordinates: PropTypes.array.isRequired,
+    /**
+     * Should there be a marker pinned to the center of the map (Default: False).
+     */
+    pin: PropTypes.string,
+    /**
+     * The language of display.
+     */
     language: PropTypes.string.isRequired,
+    /**
+     * An Array\[3\] that contains the map's coordinates.
+     * (for example: \['?zoom=15', 'lat=32.06408', 'lon=34.77688'\]).
+     */
+    coordinates: PropTypes.array.isRequired,
   }).isRequired,
+  /**
+   * A function to be called when the map finishes to load.
+   */
+  onLoadCallback: PropTypes.func,
+  /**
+   * Caption for this map (Passes down to the [***Caption***](./#caption) component).
+   */
+  caption: PropTypes.string,
+  /**
+   * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
+   */
+  credit: PropTypes.string,
 };
 
 Waze.defaultProps = {
   caption: '',
   credit: '',
+  onLoadCallback: null,
 };
-
-const mapWrapper = ({ aspectRatio, nyt, }) => {
-  const [ width, height, ] = aspectRatio ? aspectRatio.split('/') : [ 16, 9, ];
-  const aspect = `${(height / width) * 100}%`;
-  const paddingTop = nyt ? '69px' : '';
-
-  return {
-    margin: '0',
-    paddingBottom: aspect,
-    height: '0',
-    overflow: 'hidden',
-    position: 'relative',
-    paddingTop,
-  };
-};
-
-const MapWrapper = createComponent(mapWrapper, 'figure');
-
-const mapElement = () => ({
-  margin: '0',
-  padding: '0',
-  height: '100% !important',
-  width: '100% !important',
-  left: '0',
-  top: '0',
-  position: 'absolute',
-  display: 'block',
-  border: 'none',
-});
-
-const MapElement = createComponent(mapElement, 'iframe', props =>
-  Object.keys(props)
-);
 
 function Waze(props) {
   const settings = props.settings;
@@ -68,13 +63,12 @@ function Waze(props) {
           src={`https://embed.waze.com/${language}/iframe${coordinates[0]}&${coordinates[1]}&${coordinates[2]}&${pin}`}
           frameBorder="0"
           allowFullScreen=""
+          onLoad={props.onLoadCallback}
         />
       </MapWrapper>
       <Caption
         caption={props.caption}
         credit={props.credit}
-        inputTemplate={props.inputTemplate}
-        embedType={props.embedType}
       />
     </div>
   );

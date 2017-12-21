@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Embeds Youtube Video  1`] = `
+Object {
+  "component": <div>
+    <p>
+      fake test
+    </p>
+  </div>,
+  "styles": "",
+}
+`;
