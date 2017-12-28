@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Simple Paragraph  1`] = `
+Object {
+  "component": <div>
+    <span
+      className="htz-a"
+    >
+      <a
+        href="https://www.haaretz.co.il"
+        onClick={[Function]}
+        target="_self"
+      >
+        Haaretz
+      </a>
+    </span>
+  </div>,
+  "styles": ".htz-a a{color:#0B7EB5}",
+}
+`;
+
+exports[`Simple Paragraph  2`] = `
+Object {
+  "component": <div>
+    <span
+      className="htz-a"
+    >
+      <a
+        href="https://themarker.com"
+        onClick={[Function]}
+        target="_blank"
+      >
+        The Marker
+      </a>
+    </span>
+  </div>,
+  "styles": ".htz-a a{color:#0B7EB5}",
+}
+`;
+
+exports[`Simple Paragraph  3`] = `
+Object {
+  "component": <div>
+    <span
+      className="htz-a"
+    >
+      <a
+        href="http://www.iflscience.com/physics/new-type-of-bizarre-quantum-material-discovered/"
+        onClick={[Function]}
+        target="_blank"
+      >
+        <div
+          className=""
+          noMarginTop={false}
+        >
+          <p
+            className=""
+          >
+            New Type Of Bizarre Quantum Material Discovered.
+          </p>
+        </div>
+      </a>
+    </span>
+  </div>,
+  "styles": ".htz-a a{color:#0B7EB5}",
+}
+`;
