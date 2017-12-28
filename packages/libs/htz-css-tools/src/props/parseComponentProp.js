@@ -45,18 +45,70 @@ export type ComponentPropConverterFn = (
 ) => Object;
 
 /**
- * Parse the value of a React component's prop, and convert it to a
- * CSS-in-JS object, responsive or otherwise.
+ * Parse the value of React components' props that can take
+ * [responsive values](#componentpropresponsiveobject), and convert them
+ * to CSS-in-JS objects.
  *
- * @param {string} prop - The name of the React comoponent prop being parsed
+ * Say we have a <MyComp /> component, that takes a `width` prop, which may have
+ * different values in different breakpoints. It may either be a number, or
+ * when the width of the component does not change, or an array of
+ * `ComponentPropResponsiveObject`s:
+ *
+ * ```jsx
+ * <MyComp width={6} />
+ * ```
+ *
+ * or
+ *
+ * ```jsx
+ * <MyComp
+ *   width={[
+ *     { until: 's', value: 6, },
+ *     {from: 's', until: 'l', value: 8, },
+ *     { from: 'l', value: 10, },
+ *   ]}
+ * />
+ * ```
+ *
+ * the `parseComponentProp` function can be used to create a `CSS-in-JS` object containing
+ * a media query for each of the conditions (or none at all, in the first, simple use-case),
+ * and pass the value of the `value` property of each of the objects to a
+ * [converter function](#componentpropconverterfn).
+ *
+ * @param {string} prop - The name of the React component prop being parsed
  * @param {ComponentPropValue} values - The prop's value.
  * @param {MqFunc} mq - A media query function.
  * @param {ComponentPropConverterFn} [converter] - A callback used for converting `values`
- *   (or each item in `values`, when it is an array) to a CSS-in-JS objcet. Passed the
- *   `prop` and `values` as arguments, followd by those defined in `converterArgs`.<br />
+ *   (or the `value` prop in each item in `values`, when it is an array) to a CSS-in-JS object.
+ *   Passed the `prop` and `values` as arguments, followed by those defined in `converterArgs`.<br />
  *   In its absence, the returned object will simply be `{ [prop]: values }`
+ *
+ *   At its simplest, example of a converter function could be:
+ *
+ *   ```js
+ *   function setWidth(prop: string, value: number): Object {
+ *     return { width: `${value * 2}rem`, };
+ *   }
+ *   ```
  * @param {...*} [converterArgs] - Arguments to be passed to the `converter` function
  *   after `prop` and `value`
+ *
+ * @example
+ * parseComponentProp(
+ *    // prop:
+ *   'width',
+ *   // values:
+ *   [
+ *     { until: 's', value: 6, },
+ *     {from: 's', until: 'l', value: 8, },
+ *     { from: 'l', value: 10, },
+ *   ],
+ *   // media query function:
+ *   theme.mq,
+ *   // converter function:
+ *   setWidth
+ *  // adiditional args will be passed to the converter function //
+ * );
  */
 export default function parseComponentProp(
   prop: string,
