@@ -1,42 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import NoSSR from 'react-no-ssr';
 import embedTypes from './utils/embedTypes';
+import LoadingScreen from './utils/LoadingScreen';
 
-const embedWrapper = ({ theme, }) => ({
-  backgroundColor: theme.color('white'),
-  marginBottom: '1.5rem',
+const embedWrapper = ({ setHeight, }) => ({
+  position: 'relative',
+  width: 'inherit',
+  extend: [
+    ...(setHeight ? [ { height: '350px', }, ] : []),
+  ],
 });
 
 const EmbedWrapper = createComponent(embedWrapper);
 
-function Embed(props) {
-  const EmbedType = embedTypes[props.inputTemplate];
-  return (
-    <EmbedWrapper>
-      <NoSSR>
-        <EmbedType {...props} />
-      </NoSSR>
-    </EmbedWrapper>
-  );
+export default class Embed extends React.Component {
+  state = {
+    isLoading: false,
+  };
+
+  componentWillMount() {
+    this.setState({ isLoading: true, });
+  }
+
+  onLoaded = () => {
+    this.setState({ isLoading: false, });
+  };
+
+  render() {
+    const EmbedType = embedTypes[this.props.inputTemplate];
+    return (
+      <EmbedWrapper setHeight={this.state.isLoading}>
+        <LoadingScreen isLoading={this.state.isLoading} />
+        <EmbedType {...this.props} onLoadCallback={this.onLoaded} />
+      </EmbedWrapper>
+    );
+  }
 }
 
 Embed.propTypes = {
   content: PropTypes.string.isRequired,
-  caption: PropTypes.string,
-  credit: PropTypes.string,
   embedType: PropTypes.string.isRequired,
-  settings: PropTypes.shape({}),
+  settings: PropTypes.object,
   inputTemplate: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
-  settings: {},
-  caption: '',
-  credit: '',
+  settings: null,
 };
 
 Embed.defaultProps = defaultProps;
-
-export default Embed;

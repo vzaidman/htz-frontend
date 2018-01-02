@@ -2,6 +2,7 @@
 import articleStyle from './consts/articleStyle';
 import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
+import captionStyles from './consts/captionStyles';
 import cssReset from './consts/cssReset';
 import fontStacks from './consts/fontStacks';
 import gridStyle from './consts/gridStyle';
@@ -82,6 +83,7 @@ const htzTheme = Object.freeze({
   articleStyle,
   bps,
   btnStyle,
+  captionStyles,
   direrction: 'rtl',
   gridStyle,
   fontStacks,

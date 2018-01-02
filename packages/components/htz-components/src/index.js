@@ -5,6 +5,7 @@
 import Article from './components/Article/Article';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
+import Caption from './components/Caption/Caption';
 import CommentForm from './components/CommentForm/CommentForm';
 import CommentList from './components/CommentList/CommentList';
 import Embed from './components/Embed/Embed';
@@ -57,6 +58,7 @@ export {
   Article,
   Button,
   ButtonGroup,
+  Caption,
   CommentForm,
   CommentList,
   Grid,

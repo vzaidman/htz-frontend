@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import getComponent from '../../lib/componentFromTemplate';
 
 const propTypes = {
   /**
@@ -23,19 +24,22 @@ const defaultProps = {
 };
 
 export function StandardArticle(props) {
+
   return (
     <article>
       <h1>{props.title}</h1>
       <h2>{props.subtitle}</h2>
       {props.body.map(
-        (graf, i) =>
-          (typeof graf === 'string' ? (
+        (graf, i) => {
+          const Comp = getComponent(graf.elementType || graf.inputTemplate);
+          return Comp ? <Comp key={i} {...graf}/> : null;
+        }
+          /*(typeof graf === 'string' ? (
             // eslint-disable-next-line react/no-danger, react/no-array-index-key
             <div dangerouslySetInnerHTML={{ __html: graf, }} key={i} />
           ) : (
-            // eslint-disable-next-line react/no-array-index-key
-            <div key={i}>(image)</div>
-          ))
+            getComponent(graf.elementType || graf.inputTemplate)
+          ))*/
       )}
     </article>
   );

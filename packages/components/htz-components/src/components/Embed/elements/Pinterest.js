@@ -1,14 +1,13 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.PinterestEmbed,
-]
+  [
+    com.polobase.PinterestEmbed,
+  ]
  * This element does not emits an onLoad event
  * *************************************************************** */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../../Caption/Caption';
 import { appendScript, } from '../../../utils/scriptTools';
 
 const pinterestWrapper = props => {
@@ -47,26 +46,22 @@ export default class Pinterest extends React.Component {
       showCaption: PropTypes.string,
     }).isRequired,
     /**
-     * Caption for this item (Passes down to the [***Caption***](./#caption) component).
+     * A function to be called when the audio element finishes to load.
      */
-    caption: PropTypes.string,
-    /**
-     * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
-     */
-    credit: PropTypes.string,
+    onLoadCallback: PropTypes.func,
   };
 
   static defaultProps = {
-    caption: '',
-    credit: '',
+    onLoadCallback: null,
   };
+
 
   componentDidMount() {
     const src = '//assets.pinterest.com/js/pinit.js';
     const async = true;
     const id = 'pinterest-js';
 
-    appendScript(src, id, async, null, updateScript, { 'data-pin-build': 'doBuild', });
+    appendScript(src, id, async, this.props.onLoadCallback, updateScript, { 'data-pin-build': 'doBuild', });
   }
 
   render() {
@@ -94,10 +89,6 @@ export default class Pinterest extends React.Component {
     return (
       <PinterestWrapper>
         {tag}
-        <Caption
-          caption={this.props.caption}
-          credit={this.props.credit}
-        />
       </PinterestWrapper>
     );
   }

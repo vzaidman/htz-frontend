@@ -77,22 +77,12 @@ export default class Embed extends React.Component {
      * An object that contains a various settings/option/attributes for the embedded element.
      */
     settings: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-    /**
-     * Caption for this item (Passes down to the [***Caption***](./#caption) component).
-     */
-    caption: PropTypes.string,
-    /**
-     * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
-     */
-    credit: PropTypes.string,
   };
 
   static defaultProps = {
     content: '',
     settings: null,
     embedType: '',
-    caption: '',
-    credit: '',
   };
 
   state = {

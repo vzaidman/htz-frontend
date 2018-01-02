@@ -1,14 +1,13 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.GoogleMapEmbed,
-]
+  [
+    com.polobase.GoogleMapEmbed,
+  ]
  * *************************************************************** */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../../Caption/Caption';
 
 import { VideoWrapper as MapWrapper, } from '../sharedStyles/videoWrapper';
 import { VideoElement as MapElement, } from '../sharedStyles/videoElement';
@@ -70,19 +69,9 @@ GoogleMap.propTypes = {
    * A function to be called when the map finishes to load.
    */
   onLoadCallback: PropTypes.func,
-  /**
-   * Caption for this map (Passes down to the [***Caption***](./#caption) component).
-   */
-  caption: PropTypes.string,
-  /**
-   * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
-   */
-  credit: PropTypes.string,
 };
 
 GoogleMap.defaultProps = {
-  caption: '',
-  credit: '',
   onLoadCallback: null,
 };
 
@@ -150,26 +139,20 @@ function GoogleMap(props) {
   };
 
   return (
-    <div>
-      <MapWrapper>
-        <MapElement
-          width="600"
-          height="450"
-          src={`https://www.google.com/maps/embed/v1/${searchString}&key=${key}&language=${settings.language}${waypoints ||
-            ''}${method || ''}${units || ''}${satellite || ''}${fov ||
-            ''}${heading || ''}${zoom || ''}${pitch || ''}`}
-          frameBorder="0"
-          allowFullScreen=""
-          onLoad={props.onLoadCallback}
-        />
-
-        <MapCover onClick={removeCover} />
-      </MapWrapper>
-      <Caption
-        caption={props.caption}
-        credit={props.credit}
+    <MapWrapper>
+      <MapElement
+        width="600"
+        height="450"
+        src={`https://www.google.com/maps/embed/v1/${searchString}&key=${key}&language=${settings.language}${waypoints ||
+          ''}${method || ''}${units || ''}${satellite || ''}${fov ||
+          ''}${heading || ''}${zoom || ''}${pitch || ''}`}
+        frameBorder="0"
+        allowFullScreen=""
+        onLoad={props.onLoadCallback}
       />
-    </div>
+
+      <MapCover onClick={removeCover} />
+    </MapWrapper>
   );
 }
 

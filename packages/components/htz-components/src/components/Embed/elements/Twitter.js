@@ -1,47 +1,41 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.TwitterEmbed,
-]
+  [
+    com.polobase.TwitterEmbed,
+  ]
  * *************************************************************** */
 
 /* eslint-disable react/no-danger */
+/* globals twttr */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../../Caption/Caption';
+
 import { appendScript, } from '../../../utils/scriptTools';
 
 const twitterWrapper = ({ embedType, }) => {
-  let maxWidth;
   let height;
 
   switch (embedType) {
     case 'collection timeline':
     case 'moment':
-      maxWidth = '100%';
       break;
 
     case 'search timeline':
-      maxWidth = '520px';
       height = 'auto';
       break;
 
     case 'video':
-      maxWidth = 'auto';
       height = 'auto';
       break;
 
     case 'single tweet':
-      maxWidth = '500px';
       height = 'auto';
       break;
 
     default:
-      maxWidth = '550px';
   }
   return {
-    maxWidth,
     overflow: 'auto',
     height: height || '400px',
     maxHeight: '800px',
@@ -70,19 +64,9 @@ export default class Twitter extends React.Component {
      * A function to be called when the element finishes to load.
      */
     onLoadCallback: PropTypes.func,
-    /**
-     * Caption for this element (Passes down to the [***Caption***](./#caption) component).
-     */
-    caption: PropTypes.string,
-    /**
-     * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
-     */
-    credit: PropTypes.string,
   };
 
   static defaultProps = {
-    caption: '',
-    credit: '',
     onLoadCallback: null,
   };
 
@@ -113,10 +97,6 @@ export default class Twitter extends React.Component {
     return (
       <TwitterWrapper embedType={this.props.embedType}>
         <div dangerouslySetInnerHTML={{ __html: content, }} />
-        <Caption
-          caption={this.props.caption}
-          credit={this.props.credit}
-        />
       </TwitterWrapper>
     );
   }

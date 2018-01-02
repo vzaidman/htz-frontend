@@ -1,5 +1,5 @@
 /* globals window document */
-const appendedScripts = [];
+const appendedScripts = {};
 
 /**
  *
@@ -14,8 +14,7 @@ const appendedScripts = [];
  */
 
 export const appendScript = (src, id, isAsync = false, onLoadFunction = null, updateFunction = null, attributes = null) => {
-  if (appendedScripts.indexOf(id) === -1) {
-    appendedScripts.push(id);
+  if (!appendedScripts[id]) {
     const script = document.createElement('script');
 
     script.src = src;
@@ -28,9 +27,27 @@ export const appendScript = (src, id, isAsync = false, onLoadFunction = null, up
 
     document.body.appendChild(script);
 
-    script.addEventListener('load', onLoadFunction);
+    appendedScripts[id] = {
+      tag: script,
+      isLoaded: false,
+      callbacks: [ onLoadFunction, ],
+    };
+
+    script.addEventListener('load', runCallbacks(id));
   }
-  else if (updateFunction) {
-    updateFunction();
+  else {
+    if (appendedScripts[id].isLoaded) {
+      updateFunction && updateFunction();
+    }
+    else {
+      appendedScripts[id].callbacks.push(onLoadFunction);
+    }
   }
 };
+
+function runCallbacks(id) {
+  return () => {
+    appendedScripts[id].isLoaded = true;
+    appendedScripts[id].callbacks.map(callback => callback());
+  };
+}

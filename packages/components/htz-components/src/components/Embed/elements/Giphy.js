@@ -1,14 +1,13 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.GiphyEmbed,
-]
+  [
+    com.polobase.GiphyEmbed,
+  ]
  * *************************************************************** */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../../Caption/Caption';
 
 Giphy.propTypes = {
   /**
@@ -23,19 +22,9 @@ Giphy.propTypes = {
    * A function to be called when the gif finishes to load.
    */
   onLoadCallback: PropTypes.func,
-  /**
-   * Caption for this gif (Passes down to the [***Caption***](./#caption) component).
-   */
-  caption: PropTypes.string,
-  /**
-   * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
-   */
-  credit: PropTypes.string,
 };
 
 Giphy.defaultProps = {
-  caption: '',
-  credit: '',
   onLoadCallback: null,
 };
 
@@ -68,10 +57,6 @@ function Giphy(props) {
         className="giphy-embed"
         allowFullScreen
         onLoad={props.onLoadCallback}
-      />
-      <Caption
-        caption={props.caption}
-        credit={props.credit}
       />
     </GiphyWrapper>
   );

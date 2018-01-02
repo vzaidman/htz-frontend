@@ -1,14 +1,13 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.BandCampEmbed,
-]
+  [
+    com.polobase.BandCampEmbed,
+  ]
  * *************************************************************** */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../../Caption/Caption';
 
 BandCamp.propTypes = {
   /**
@@ -42,19 +41,9 @@ BandCamp.propTypes = {
    * A function to be called when the video finishes to load.
    */
   onLoadCallback: PropTypes.func,
-  /**
-   * Caption for this video (Passes down to the [***Caption***](./#caption) component).
-   */
-  caption: PropTypes.string,
-  /**
-   * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
-   */
-  credit: PropTypes.string,
 };
 
 BandCamp.defaultProps = {
-  caption: '',
-  credit: '',
   onLoadCallback: null,
 };
 
@@ -89,7 +78,7 @@ function BandCamp(props) {
         ? '/artwork=small'
         : '';
 
-  const width = 700;
+  const width = 600;
 
   const height =
     layout === 'slim'
@@ -123,10 +112,6 @@ function BandCamp(props) {
       >
         {link}
       </iframe>
-      <Caption
-        caption={props.caption}
-        credit={props.credit}
-      />
     </BandCampWrapper>
   );
 }

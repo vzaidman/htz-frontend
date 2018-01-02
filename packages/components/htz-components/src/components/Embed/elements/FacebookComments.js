@@ -1,8 +1,8 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.FacebookComments,
-]
+  [
+    com.polobase.FacebookComments,
+  ]
  * *************************************************************** */
 
 /* globals window location FB */
@@ -59,15 +59,13 @@ export default class FacebookComments extends React.Component {
   render() {
     const { content, embedType, } = this.props;
     return (
-      <figure>
-        <div
-          className="fb-comments"
-          data-width="100%"
-          data-href={location.href}
-          data-order-by={embedType}
-          data-numposts={content}
-        />
-      </figure>
+      <div
+        className="fb-comments"
+        data-width="100%"
+        data-href={location.href}
+        data-order-by={embedType}
+        data-numposts={content}
+      />
     );
   }
 }

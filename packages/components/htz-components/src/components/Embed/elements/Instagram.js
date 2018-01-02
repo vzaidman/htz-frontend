@@ -1,8 +1,8 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.InstagramEmbed,
-]
+  [
+    com.polobase.InstagramEmbed,
+  ]
  * This element does not emits an onLoad event
  * *************************************************************** */
 
@@ -10,7 +10,6 @@ com.polobase.InstagramEmbed,
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../../Caption/Caption';
 import { appendScript, } from '../../../utils/scriptTools';
 
 const instagramWrapper = () => ({
@@ -36,18 +35,13 @@ export default class Instagram extends React.Component {
      */
     content: PropTypes.string.isRequired,
     /**
-     * Caption for this element (Passes down to the [***Caption***](./#caption) component).
+     * A function to be called when the audio element finishes to load.
      */
-    caption: PropTypes.string,
-    /**
-     * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
-     */
-    credit: PropTypes.string,
+    onLoadCallback: PropTypes.func,
   };
 
   static defaultProps = {
-    caption: '',
-    credit: '',
+    onLoadCallback: null,
   };
 
   componentDidMount() {
@@ -55,17 +49,13 @@ export default class Instagram extends React.Component {
     const async = true;
     const id = 'instagram-js';
 
-    appendScript(src, id, async, null, updateScript);
+    appendScript(src, id, async, this.props.onLoadCallback, updateScript);
   }
 
   render() {
     return (
       <InstagramWrapper>
         <div dangerouslySetInnerHTML={{ __html: this.props.content, }} />
-        <Caption
-          caption={this.props.caption}
-          credit={this.props.credit}
-        />
       </InstagramWrapper>
     );
   }

@@ -1,15 +1,14 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.FacebookEmbed,
-]
+  [
+    com.polobase.FacebookEmbed,
+  ]
  * *************************************************************** */
 
 /* globals FB */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../../Caption/Caption';
 import { appendScript, } from '../../../utils/scriptTools';
 
 const facebookWrapper = props => {
@@ -57,27 +56,20 @@ export default class Facebook extends React.Component {
      * A function to be called when the element finishes to load.
      */
     onLoadCallback: PropTypes.func,
-    /**
-     * Caption for this element (Passes down to the [***Caption***](./#caption) component).
-     */
-    caption: PropTypes.string,
-    /**
-     * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
-     */
-    credit: PropTypes.string,
   };
 
   static defaultProps = {
-    caption: '',
-    credit: '',
     onLoadCallback: null,
   };
 
   componentDidMount() {
-    const src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.9';
-    const async = true;
-    const id = 'facebook-jssdk';
-    appendScript(src, id, async, this.initScript, this.updateScript);
+
+    appendScript(
+      '//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.9',
+      'facebook-jssdk',
+      true,
+      this.initScript,
+      this.updateScript);
   }
 
   initScript = () => {
@@ -125,10 +117,6 @@ export default class Facebook extends React.Component {
     return (
       <FacebookWrapper type={this.props.embedType}>
         {tag}
-        <Caption
-          caption={this.props.caption}
-          credit={this.props.credit}
-        />
       </FacebookWrapper>
     );
   }

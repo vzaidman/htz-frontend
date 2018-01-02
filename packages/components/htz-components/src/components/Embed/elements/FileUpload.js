@@ -1,8 +1,8 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.fileUpload,
-]
+  [
+    com.polobase.fileUpload,
+  ]
  * This element does not emits an onLoad event
  * *************************************************************** */
 

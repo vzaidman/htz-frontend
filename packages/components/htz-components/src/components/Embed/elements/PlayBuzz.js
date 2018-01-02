@@ -1,14 +1,13 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.PlayBuzzEmbed,
-]
+  [
+    com.polobase.PlayBuzzEmbed,
+  ]
  * *************************************************************** */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../../Caption/Caption';
 import { appendScript, } from '../../../utils/scriptTools';
 
 const playBuzzWrapper = () => ({
@@ -62,19 +61,9 @@ export default class PlayBuzz extends React.Component {
      * A function to be called when this item finishes to load.
      */
     onLoadCallback: PropTypes.func,
-    /**
-     * Caption for this item (Passes down to the [***Caption***](./#caption) component).
-     */
-    caption: PropTypes.string,
-    /**
-     * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
-     */
-    credit: PropTypes.string,
   };
 
   static defaultProps = {
-    caption: '',
-    credit: '',
     onLoadCallback: null,
   };
 
@@ -120,10 +109,6 @@ export default class PlayBuzz extends React.Component {
           data-shares={share}
           data-comments={facebook}
           data-recommend={recommendations}
-        />
-        <Caption
-          caption={this.props.caption}
-          credit={this.props.credit}
         />
       </PlayBuzzWrapper>
     );

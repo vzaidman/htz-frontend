@@ -1,29 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Embed, } from '@haaretz/htz-components';
+import { Embed, Caption, } from '@haaretz/htz-components';
 
 EmbedElement.propTypes = {
+  inputTemplate: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  embedType: PropTypes.string.isRequired,
+  settings: PropTypes.object,
   caption: PropTypes.string,
   credit: PropTypes.string,
-  embedType: PropTypes.string.isRequired,
-  elementType: PropTypes.string.isRequired,
-  settings: PropTypes.shape,
-  inputTemplate: PropTypes.string.isRequired,
-  contentId: PropTypes.string.isRequired,
-  contentName: PropTypes.string.isRequired,
 };
 
 EmbedElement.defaultProps = {
-  caption: '',
-  credit: '',
-  settings: {},
+  caption: null,
+  credit: null,
+  settings: null,
 };
 
 function EmbedElement(props) {
+  const { caption, credit, ...embedProps } = props;
   return (
-    <Embed {...props} />
+    <figure>
+      <Embed {...embedProps} />
+      {(caption || credit) && <Caption {...{ caption, credit, }} />}
+    </figure>
   );
 }
 

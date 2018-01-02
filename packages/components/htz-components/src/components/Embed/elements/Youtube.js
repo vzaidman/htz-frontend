@@ -1,13 +1,12 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.YoutubeEmbed,
-]
+  [
+    com.polobase.YouTubeEmbed,
+  ]
  * *************************************************************** */
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Caption from '../../Caption/Caption';
 
 import { VideoWrapper, } from '../sharedStyles/videoWrapper';
 import { VideoElement, } from '../sharedStyles/videoElement';
@@ -61,19 +60,9 @@ Youtube.propTypes = {
    * A function to be called when the video finishes to load.
    */
   onLoadCallback: PropTypes.func,
-  /**
-   * Caption for this video (Passes down to the [***Caption***](./#caption) component).
-   */
-  caption: PropTypes.string,
-  /**
-   * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
-   */
-  credit: PropTypes.string,
 };
 
 Youtube.defaultProps = {
-  caption: '',
-  credit: '',
   settings: {
     controls: '1',
     related: '1',
@@ -90,28 +79,22 @@ function Youtube(props) {
   const startAt = props.embedType === 'playlist' ? '&start=' : '?start=';
   const { settings, } = props;
   return (
-    <div>
-      <VideoWrapper aspectRatio={'16/9'}>
-        <VideoElement
-          id={`yt_embed_${props.content}`}
-          width="560"
-          height="315"
-          src={`//www.youtube.com/embed/${props.content}${startAt}${settings.startAt}
-                  &controls=${settings.controls}
-                  &loop=${settings.loop}
-                  &modestbranding=${settings.logo}
-                  &rel=${settings.related}
-                  &enablejsapi=1`}
-          frameBorder="0"
-          allowFullScreen=""
-          onLoad={props.onLoadCallback}
-        />
-      </VideoWrapper>
-      <Caption
-        caption={props.caption}
-        credit={props.credit}
+    <VideoWrapper aspectRatio={'16/9'}>
+      <VideoElement
+        id={`yt_embed_${props.content}`}
+        width="560"
+        height="315"
+        src={`//www.youtube.com/embed/${props.content}${startAt}${settings.startAt}
+                &controls=${settings.controls}
+                &loop=${settings.loop}
+                &modestbranding=${settings.logo}
+                &rel=${settings.related}
+                &enablejsapi=1`}
+        frameBorder="0"
+        allowFullScreen=""
+        onLoad={props.onLoadCallback}
       />
-    </div>
+    </VideoWrapper>
   );
 }
 

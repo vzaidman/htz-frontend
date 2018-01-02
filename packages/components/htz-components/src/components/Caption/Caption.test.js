@@ -16,7 +16,8 @@ it('should correctly render a Caption bar with only the caption, Left to right, 
     <Caption
       caption="The Caption"
       direction="ltr"
-      background={[ { until: 'xl', value: [ 'tertiary', '-3', ], }, { from: 'xl', value: 'primary', }, ]}
+      bgc={[ { until: 'xl', value: [ 'tertiary', '-3', ], }, { from: 'xl', value: 'primary', }, ]}
+      color={[ { until: 'xl', value: 'primary', }, { from: 'xl', value: [ 'tertiary', '-3', ], }, ]}
     />
   );
   expect(snapshot).toMatchSnapshot();
@@ -26,8 +27,6 @@ it('should correctly render a Caption bar with only the credit ', () => {
     <Caption
       credit="me"
       creditPrefix="Credit"
-      background={[ 'neutral', '-10', ]}
-      color={'neutral'}
     />
   );
   expect(snapshot).toMatchSnapshot();

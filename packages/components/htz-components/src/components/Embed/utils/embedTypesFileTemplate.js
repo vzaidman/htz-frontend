@@ -8,7 +8,7 @@ module.exports = views => `
 import dynamic from 'next/dynamic';
 
 const views = {
-  ${Object.keys(views).map(view => `'${view}': ${views[view]}`).join(',\n  ')},
+  ${Object.keys(views).map(view => `'${view}': dynamic(import('${views[view]}'), { ssr: false, })`).join(',\n  ')},
 };
 
 export default views;

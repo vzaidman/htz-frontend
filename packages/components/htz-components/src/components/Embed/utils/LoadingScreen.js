@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 
 const loadingStyle = ({ height, opacity, }) => ({
-  width: '50%',
+  width: '100%',
   height,
-  minWidth: '700px',
   left: '50%',
   transform: 'translateX(-50%)',
   backgroundColor: 'rgba(0,0,0,0.5)',

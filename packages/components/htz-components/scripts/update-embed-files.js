@@ -55,7 +55,7 @@ function readFromFiles() {
         }
         inputTemplates = inputTemplates.split(',');
         inputTemplates.forEach(inputTemplate => {
-          views[inputTemplate] = `dynamic(import('${path.relative(utilsPath, elementsPath)}/${fileName}'))`;
+          views[inputTemplate.trim()] = `${path.relative(utilsPath, elementsPath)}/${fileName}`;
         });
       }
 

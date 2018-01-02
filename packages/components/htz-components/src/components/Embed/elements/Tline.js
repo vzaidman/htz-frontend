@@ -1,15 +1,14 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
-[
-com.polobase.TlineEmbed,
-]
+  [
+    com.polobase.TlineEmbed,
+  ]
  * This element does not emits an onLoad event
  * *************************************************************** */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Caption from '../../Caption/Caption';
 import { appendScript, } from '../../../utils/scriptTools';
 
 const tlineWrapper = () => ({
@@ -32,26 +31,22 @@ export default class Tline extends React.Component {
       'data-version': PropTypes.string.isRequired,
     }).isRequired,
     /**
-     * Caption for this element (Passes down to the [***Caption***](./#caption) component).
+     * A function to be called when the audio element finishes to load.
      */
-    caption: PropTypes.string,
-    /**
-     * Credit (Passes, along with the Caption, down to the [***Caption***](./#caption) component).
-     */
-    credit: PropTypes.string,
+    onLoadCallback: PropTypes.func,
   };
 
   static defaultProps = {
-    caption: '',
-    credit: '',
+    onLoadCallback: null,
   };
+
 
   componentDidMount() {
     const src = 'https://tline.io/assets/js/release/loader.js';
     const async = true;
     const id = 'tline-js';
 
-    appendScript(src, id, async);
+    appendScript(src, id, async, this.props.onLoadCallback);
   }
 
   render() {
@@ -74,10 +69,6 @@ export default class Tline extends React.Component {
           width="100%"
           scrolling="yes"
           frameBorder="0"
-        />
-        <Caption
-          caption={this.props.caption}
-          credit={this.props.credit}
         />
       </TlineWrapper>
     );
