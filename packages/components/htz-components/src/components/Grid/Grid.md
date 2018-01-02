@@ -1,3 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Features](#features)
+  - [**Basic use**](#basic-use)
+  - [**DOM Element Attributes**](#dom-element-attributes)
+  - [**Custom Tag**](#custom-tag)
+  - [**Gutter Width**](#gutter-width)
+  - [**Reversed Grid**](#reversed-grid)
+  - [**Row Spacing**](#row-spacing)
+  - [**Horizontal Alignment**](#horizontal-alignment)
+  - [**Vertical Alignment**](#vertical-alignment)
+  - [**Miscellaneous Styles**](#miscellaneous-styles)
+  - [**Nested Grids**](#nested-grids)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 `<Grid>` is a responsive, flexbox-based grid system, intended to be both 
 flexible and easy to use.
 

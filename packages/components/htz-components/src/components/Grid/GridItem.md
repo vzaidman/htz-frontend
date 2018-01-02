@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [**Basic Usage**](#basic-usage)
+- [**Offset**](#offset)
+- [**Rule**](#rule)
+- [**DOM Element Attributes**](#dom-element-attributes)
+- [**Custom Tag**](#custom-tag)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 `<GridItem />`s may only be placed as the direct descendants of a grid container.
 
 Each `<GridItem>` has padding the length of half a single gutter at its left and 

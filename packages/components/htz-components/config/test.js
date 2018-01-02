@@ -1,4 +1,4 @@
 module.exports = {
-  // This is just a demo config property.
-  debugButtons: true,
+  imgBaseUrl: 'https://images.haarets.co.il/image',
+  domain: 'https://www.haaretz.co.il',
 };
