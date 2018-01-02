@@ -45,7 +45,7 @@ module.exports = configure(config =>
 
         return `import { ${componentName}, } from '${packageName}';  (${
           nonExampleComponentPath
-        })`;
+          })`;
       }
 
       return componentPath;
@@ -54,10 +54,10 @@ module.exports = configure(config =>
       {
         name: 'Utils',
         sections: readdirSync(utilsPath)
-          .filter(file => file.match(/jsx?$/))
+          .filter(file => file.match(/\.md$/))
           .map(file => ({
             name: path.parse(file).name,
-            content: `${path.join(utilsPath, path.parse(file).name)}.md`,
+            content: path.join(utilsPath, file),
           })),
       },
       {
