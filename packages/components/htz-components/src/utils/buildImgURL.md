@@ -23,7 +23,7 @@ Generate a string of an image's url .
 | options.height | string | The height of the file returned from the url. (optional) | Automatically determined by the aspect when not passed | 
 | options.quality | string | The image's quality. (optional) | 'auto' |
 | options.aspect | string | The image's aspect ratio. (optional) | 'full' |
-| options.isProgresive | boolean | Generate a progressive jpeg, if true progressive is 'steep', otherwise 'none'. (optional)|  false |
+| options.isProgressive | boolean | Generate a progressive jpeg, if true progressive is 'steep', otherwise 'none'. (optional)|  false |
 | options.transforms | string[] | An array of strings with additional transforms to apply to the image url. (optional)|
 | options.flags | string[] | An array of strings with additional flags to apply to the image. (optional)|
 

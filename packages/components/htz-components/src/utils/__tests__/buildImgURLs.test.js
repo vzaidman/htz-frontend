@@ -47,57 +47,59 @@ const uploadedImageData = data[0];
 const fetchedImageData = data[1];
 
 describe('buildUrl()', () => {
-  it('process "width" correctly', () => {
+
+  it('process all default values correctly', () => {
     const result = buildUrl('1.44444', data[0], {width: '200',});
-    expect(result).toMatch(/image\/upload\/.+w_200/);
+    expect(result)
+      .toMatch(
+        /image\/upload\/w_300,h_300,x_10,y_0,c_crop,g_north_west.q_auto,w_200,c_fill,f_auto.fl_any_format\.preserve_transparency\.progressive:none/
+      );
   });
-  describe('default options, no options from user (however user must always specify width )', () => {
-    it('sets default aspect of "full" and quality to "auto" and progressive to none, when no aspect/quality/progressive specified in options', () => {
-      const expected =
-        'https://images.haarets.co.il/image/upload/w_300,h_300,x_10,y_0,c_crop,g_north_west/q_auto,w_200,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v0001524022/1.44444.sample.jpg';
-      const result = buildUrl('1.44444', data[0], {width: '200',});
-      expect(result).toEqual(expected);
-    });
-  });
+
   describe('user defined options', () => {
+    it('process "width" correctly', () => {
+      const result = buildUrl('1.44444', data[0], {width: '200',});
+      expect(result).toMatch(/image\/upload\/.+w_200/);
+    });
+
     it('process "quality" correctly', () => {
-      const expected =
-        'https://images.haarets.co.il/image/upload/w_300,h_300,x_10,y_0,c_crop,g_north_west/q_auto:best,w_200,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v0001524022/1.44444.sample.jpg';
       const result = buildUrl('1.44444', data[0], {
         width: '200',
-        quality: 'auto:best',
+        quality: '50',
       });
-      expect(result).toEqual(expected);
+      expect(result).toMatch(/image\/upload\/.+q_50/);
     });
 
     it('process "transforms" correctly', () => {
-      const expected =
-        'https://images.haarets.co.il/image/upload/w_300,h_300,x_10,y_0,c_crop,g_north_west/q_auto,w_200,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/c_fit/r_100/v0001524022/1.44444.sample.jpg';
       const result = buildUrl('1.44444', data[0], {
         width: '200',
         transforms: ['c_fit', 'r_100',],
       });
-      expect(result).toEqual(expected);
+      expect(result).toMatch(/image\/upload\/.+c_fit\/r_100/);
     });
 
     it('process "flags" correctly', () => {
-      const expected =
-        'https://images.haarets.co.il/image/upload/w_300,h_300,x_10,y_0,c_crop,g_north_west/q_auto,w_200,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/apng.immutable_cache/v0001524022/1.44444.sample.jpg';
       const result = buildUrl('1.44444', data[0], {
         width: '200',
         flags: ['apng', 'immutable_cache',],
       });
-      expect(result).toEqual(expected);
+      expect(result).toMatch(/image\/upload\/.+apng\.immutable_cache/);
     });
 
-    it('process "isProgresive" boolean correctly', () => {
-      const expected =
-        'https://images.haarets.co.il/image/upload/w_300,h_300,x_10,y_0,c_crop,g_north_west/q_auto,w_200,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:steep/v0001524022/1.44444.sample.jpg';
+    it('process "isProgressive" boolean correctly when true', () => {
       const result = buildUrl('1.44444', data[0], {
         width: '200',
-        isProgresive: true,
+        isProgressive: true,
       });
-      expect(result).toEqual(expected);
+      expect(result).toMatch(/image\/upload\/.+progressive:steep/);
+    });
+
+    it('process "isProgressive" boolean correctly when false', () => {
+      const result = buildUrl('1.44444', data[0], {
+        width: '200',
+        isProgressive: false,
+      });
+      expect(result).toMatch(/image\/upload\/.+progressive:none/);
     });
   });
 
@@ -119,7 +121,7 @@ describe('buildUrl()', () => {
     it('throw an error when "width" is not defined in "options"', () => {
       const optionNoWidth = {
         transforms: ['c_fit',],
-        isProgresive: true,
+        isProgressive: true,
         aspect: 'headline',
         flags: ['apng', 'immutable_cache',],
       };
@@ -137,24 +139,20 @@ describe('buildURLs()', () => {
         width: '200',
         quality: 'auto:best',
         transforms: ['c_fit', 'r_100',],
-        isProgresive: false,
+        isProgressive: false,
         aspect: 'headline',
         flags: ['apng', 'immutable_cache',],
       },
       {
         width: '100',
         transforms: ['c_fit',],
-        isProgresive: true,
+        isProgressive: true,
         aspect: 'landscape',
         flags: ['apng', 'immutable_cache',],
       },
     ];
-    const expected = [
-      'https://images.haarets.co.il/image/upload/w_300,h_150,x_20,y_0,c_crop,g_north_west/q_auto:best,w_200,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/c_fit/r_100/apng.immutable_cache/v0001524022/1.44444.sample.jpg 200w',
-      'https://images.haarets.co.il/image/upload/w_500,h_200,x_20,y_20,c_crop,g_north_west/q_auto,w_100,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:steep/c_fit/apng.immutable_cache/v0001524022/1.44444.sample.jpg 100w',
-    ];
-    const result = buildURLs('1.44444', data[0], multiOptions);
-    expect(result).toEqual(expected);
+    const results = buildURLs('1.44444', data[0], multiOptions);
+    results.forEach(result => expect(result).toMatch(/.+ \d+w$/));
   });
   it('return an array of a single item without width descriptor when excludeWidthDescriptor is true ', () => {
     const oneOption = [
@@ -162,16 +160,13 @@ describe('buildURLs()', () => {
         width: '200',
         quality: 'auto:best',
         transforms: ['c_fit', 'r_100',],
-        isProgresive: false,
+        isProgressive: false,
         aspect: 'headline',
         flags: ['apng', 'immutable_cache',],
       },
     ];
-    const expected =[
-      'https://images.haarets.co.il/image/upload/w_300,h_150,x_20,y_0,c_crop,g_north_west/q_auto:best,w_200,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/c_fit/r_100/apng.immutable_cache/v0001524022/1.44444.sample.jpg'
-    ];
     const result = buildURLs('1.44444', data[0], oneOption, true);
-    expect(result).toEqual(expected);
+    expect(result[0]).not.toMatch(/.+ \d+w$/);
   });
   it('return an array of a single item when there is only one option', () => {
     const oneOption = [
@@ -179,7 +174,7 @@ describe('buildURLs()', () => {
         width: '200',
         quality: 'auto:best',
         transforms: ['c_fit', 'r_100',],
-        isProgresive: false,
+        isProgressive: false,
         aspect: 'headline',
         flags: ['apng', 'immutable_cache',],
       },
@@ -193,14 +188,14 @@ describe('buildURLs()', () => {
         width: '200',
         quality: 'auto:best',
         transforms: ['c_fit', 'r_100',],
-        isProgresive: false,
+        isProgressive: false,
         aspect: 'headline',
         flags: ['apng', 'immutable_cache',],
       },
       {
         width: '100',
         transforms: ['c_fit',],
-        isProgresive: true,
+        isProgressive: true,
         aspect: 'landscape',
         flags: ['apng', 'immutable_cache',],
       },
@@ -214,14 +209,14 @@ describe('buildURLs()', () => {
         width: '200',
         quality: 'auto:best',
         transforms: ['c_fit', 'r_100',],
-        isProgresive: false,
+        isProgressive: false,
         aspect: 'headline',
         flags: ['apng', 'immutable_cache',],
       },
       {
         width: '100',
         transforms: ['c_fit',],
-        isProgresive: true,
+        isProgressive: true,
         aspect: 'landscape',
         flags: ['apng', 'immutable_cache',],
       },
@@ -229,7 +224,7 @@ describe('buildURLs()', () => {
         width: '200',
         quality: 'auto:best',
         transforms: ['c_fit', 'r_100',],
-        isProgresive: false,
+        isProgressive: false,
         aspect: 'headline',
         flags: ['apng', 'immutable_cache',],
       },

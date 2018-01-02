@@ -51,7 +51,7 @@ import config from 'config';
  * @property {'full'|'landscape'|'regular'|'headline'|'square'|'vertical'|'belgrade'} [aspect]
  *   The image's aspect ratio, default 'full'
  * @property {string} quality -  The image quality, default 'auto'
- * @property {boolean} isProgresive - Generate a progressive jpeg, default false
+ * @property {boolean} isProgressive - Generate a progressive jpeg, default false
  * @property {string[]} transforms  - An array of strings with additional transforms to apply to the image url
  * @property {string[]} flags -  An array of additional flags to apply to the image
  */
@@ -170,7 +170,7 @@ export function buildUrl(contentId, data, options = {}) {
 
   const {transforms, flags,} = settings;
   const baseFlags = `/fl_any_format.preserve_transparency.progressive:${
-    settings.isProgresive ? 'steep' : 'none'
+    settings.isProgressive ? 'steep' : 'none'
     }`;
   /*eslint eqeqeq: ["error", "ignore"]*/
   const miscTransforms =
