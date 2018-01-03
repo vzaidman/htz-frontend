@@ -32,7 +32,13 @@ const defaultProps = {
 
 const linkStyle = ({ theme, }) => ({
   '& a': {
-    color: theme.color('link'),
+    color: theme.color('primary'),
+    ':hover': {
+      borderBottom: `1px solid ${theme.color('primary')}`,
+    },
+    ':focus': {
+      borderBottom: `2px solid ${theme.color('primary')}`,
+    },
   },
 });
 
