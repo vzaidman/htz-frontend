@@ -27,7 +27,8 @@ attribute on regular `<a />` DOM elements.
 />
 ```
 
-Usage of Link within [`<Paragraph />`](./#paragraph) recursive component.
+Link can be nested inside, and/or host another component.<br/>
+(here's a Link within [`<Paragraph />`](./#paragraph) recursive component)
 ```jsx
 <Paragraph
   setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)} 
