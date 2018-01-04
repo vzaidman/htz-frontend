@@ -14,6 +14,7 @@ import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
 import Quote from './components/Quote/Quote';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
+import LinksBlock from './components/RelatedArticles/LinksBlock';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 import Tags from './components/Tags/Tags';
@@ -114,8 +115,9 @@ export {
   createRenderer,
   Embed,
   Quote,
+  LinksBlock,
   RelatedArticles,
   SeriesArticles,
   StyleProvider,
-  Tags
+  Tags,
 };

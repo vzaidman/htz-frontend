@@ -3,7 +3,8 @@ const seriesArticle = Object.freeze({
     close: 'טען את כל הכתבות בסדרה',
     open: 'סגירת הרשימה',
     ariaText: (x) => (`נוספו ${x} כתבות`)
-  })
+  }),
+  titlePrefix: 'סדרת כתבות: ',
 });
 
 export default { seriesArticle, };

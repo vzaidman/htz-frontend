@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`series articles  1`] = `
+Object {
+  "component": <div>
+    <ul
+      className=""
+    >
+      <li
+        className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+      >
+        <a
+          className={null}
+          href="http://eran.haaretz.co.il/1.6614"
+          onClick={[Function]}
+          target={null}
+        >
+          <span
+            className="htz-o htz-p htz-q htz-r htz-s htz-b htz-t htz-c htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af"
+          >
+            ukjhkj
+          </span>
+        </a>
+      </li>
+      <li
+        className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+      >
+        <a
+          className={null}
+          href="http://eran.haaretz.co.il/news/world/LIVE-1.2597"
+          onClick={[Function]}
+          target={null}
+        >
+          <span
+            className="htz-o htz-p htz-q htz-r htz-s htz-b htz-t htz-c htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af"
+          >
+            ראש ממשלת צרפת: נרקמות מזימות נוספות לפיגועים במדינה וברחבי אירופה
+          </span>
+        </a>
+      </li>
+      <li
+        className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+      >
+        <a
+          className={null}
+          href="http://eran.haaretz.co.il/news/education/.premium-1.5662"
+          onClick={[Function]}
+          target={null}
+        >
+          <span
+            className="htz-o htz-p htz-q htz-r htz-s htz-b htz-t htz-c htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af"
+          >
+            סופו של מקדש השמחה משנות התשעים - "אלנבי 58"
+          </span>
+        </a>
+      </li>
+      <li
+        className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+      >
+        <a
+          className={null}
+          href="http://eran.themarker.com:8080/1.6636"
+          onClick={[Function]}
+          target={null}
+        >
+          <span
+            className="htz-o htz-p htz-q htz-r htz-s htz-b htz-t htz-c htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af"
+          >
+            aaaa
+          </span>
+        </a>
+      </li>
+      <li
+        className="htz-a htz-b htz-c htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+      >
+        <a
+          className={null}
+          href="http://eran.haaretz.co.il/1.6643"
+          onClick={[Function]}
+          target={null}
+        >
+          <span
+            className="htz-o htz-p htz-q htz-r htz-s htz-b htz-t htz-c htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af"
+          >
+            embeds
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>,
+  "styles": ".htz-a{margin-right:1em}.htz-b{position:relative}.htz-c{color:#006B96}.htz-j:before{content:\\"\\\\25cf\\"}.htz-k:before{position:absolute}.htz-l:before{right:0rem}.htz-m:before{top:0rem}.htz-n:before{transform:translate(150%, 20%);-webkit-transform:translate(150%, 20%)}.htz-s{font-weight:700}.htz-t{z-index:1}.htz-u{transition-property:background-position;-webkit-transition-property:background-position;-moz-transition-property:background-position}.htz-v{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-w{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-x{background-image:-webkit-linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 );background-image:-moz-linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 );background-image:linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )}.htz-y{background-size:100% 200%}.htz-z{background-position:0 0}.htz-ab:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ac:hover{background-position:0 100%}.htz-ae:focus{background:none}.htz-af:focus{background-color:#FFD20C}@media (max-width: 80em){.htz-d{margin-bottom:4rem}.htz-f:before{font-size:2.3333333333333335rem}.htz-g:before{line-height:1.2857142857142858em}.htz-o{font-size:2.3333333333333335rem}.htz-p{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-e{margin-bottom:3rem}.htz-h:before{font-size:2.2857142857142856rem}.htz-i:before{line-height:1.3125em}.htz-q{font-size:2.2857142857142856rem}.htz-r{line-height:1.3125em}}",
+}
+`;

@@ -5,12 +5,19 @@ import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import ArticleLink from './articleLink';
 
 const propTypes = {
+  /**
+   * An array of article objects.
+   */
   articles: PropTypes.arrayOf(
     PropTypes.shape({
+      /**
+       * Article title to display.
+       */
       contentName: PropTypes.string.isRequired,
+      /**
+       * Article's destination.
+       */
       url: PropTypes.string.isRequired,
-      inputTemplate: PropTypes.string,
-      contentId: PropTypes.string,
     })
   ).isRequired,
   /**

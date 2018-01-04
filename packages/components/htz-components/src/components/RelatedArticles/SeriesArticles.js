@@ -7,29 +7,51 @@ import ArticleLink from './articleLink';
 import Button from '../Button/Button';
 
 const propTypes = {
+  /**
+   * The name of the series to display.
+   */
   seriesTitle: PropTypes.string.isRequired,
+  /**
+   * The position of the current article in this series.
+   */
   articlePositionInTheSeries: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
+  /**
+   * Should I use pagination, or just display the whole list ??
+   */
   usePagination: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool,
   ]).isRequired,
+  /**
+   * In case you choose to use pagination, how many article should be displayed ?
+   */
   itemsPerPage: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]),
+  /**
+   * An array of article objects.
+   */
   articles: PropTypes.arrayOf(
     PropTypes.shape({
+      /**
+       * Article title to display.
+       */
       contentName: PropTypes.string.isRequired,
+      /**
+       * Article's destination.
+       */
       url: PropTypes.string.isRequired,
+      /**
+       * Its position in this series.
+       */
       positionInSeries: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
-      inputTemplate: PropTypes.string,
-      contentId: PropTypes.string,
     })
   ).isRequired,
   /**
@@ -61,20 +83,19 @@ const defaultProps = {
   marginBottom: null,
 };
 
-const seriesArticlesWrapperStyle = ({ theme, marginBottom, }) => ({
+const wrapperStyle = ({ theme, marginBottom, }) => ({
   ...(marginBottom || []),
 });
 
-const SeriesArticlesWrapper = createComponent(seriesArticlesWrapperStyle);
+const SeriesArticlesWrapper = createComponent(wrapperStyle);
 
 const seriesTitleStyle = ({ theme, }) => ({
   ...(theme.type(0)),
   color: theme.color('neutral', '-1'),
-  fontWeight: '700',
   marginBottom: '1rem',
 });
 
-const SeriesTitle = createComponent(seriesTitleStyle, 'p');
+const SeriesTitle = createComponent(seriesTitleStyle, 'h4');
 
 const articleListWrapperStyle = ({ theme, }) => ({
   transitionProperty: 'height',
@@ -86,11 +107,13 @@ const articleListWrapperStyle = ({ theme, }) => ({
 
 const ArticleListWrapper = createComponent(articleListWrapperStyle, 'ul', props => Object.keys(props));
 
-const articleWrapperStyle = ({ theme, lastItem, current, }) => ({
+const AriaHidden = createComponent(() => ({ display: 'none', }), 'span');
+
+const articleWrapperStyle = ({ theme, lastItem, }) => ({
   marginInlineStart: '1em',
   position: 'relative',
   color: theme.color('primary', '+1'),
-  ...(!lastItem ?
+  ...(!lastItem &&
     {
       ...parseComponentProp(
         'marginBottom',
@@ -109,9 +132,7 @@ const articleWrapperStyle = ({ theme, lastItem, current, }) => ({
         borderStyle: 'solid',
         borderColor: theme.color('primary', '-1'),
       },
-    }
-    :
-    {}),
+    }),
   ':before': {
     content: '"\\25cf"',
     position: 'absolute',
@@ -122,8 +143,6 @@ const articleWrapperStyle = ({ theme, lastItem, current, }) => ({
   },
 });
 const ArticleWrapper = createComponent(articleWrapperStyle, 'li');
-
-const Undisplayed = createComponent(() => ({ display: 'none', }), 'span');
 
 export default class SeriesArticles extends React.Component {
   componentWillMount() {
@@ -157,23 +176,19 @@ export default class SeriesArticles extends React.Component {
   };
 
   render() {
-    const { loadButton } = internationalization.seriesArticle;
+    const { loadButton, titlePrefix, } = internationalization.seriesArticle;
     return (
       <SeriesArticlesWrapper marginBottom={this.props.marginBottom}>
-        <SeriesTitle>{this.props.seriesTitle}</SeriesTitle>
         <ArticleListWrapper  aria-live='polite'>
+          <SeriesTitle>{titlePrefix + this.props.seriesTitle}</SeriesTitle>
           {this.state.articlesToDisplay.map((article, i) => (
-            <ArticleWrapper
-              key={i}
-              lastItem={i === this.state.articlesToDisplay.length - 1}
-              current={this.state.articlePosition && +this.state.articlePosition === i + 1}
-            >
+            <ArticleWrapper key={i} lastItem={i === this.state.articlesToDisplay.length - 1}>
               {
                 this.state.isOpen &&
                 this.state.itemsPerPage === i &&
-                <Undisplayed>
+                <AriaHidden>
                   {loadButton.ariaText(this.state.remainingArticlesCount)}
-                </Undisplayed>
+                </AriaHidden>
               }
               <ArticleLink
                 article={article}

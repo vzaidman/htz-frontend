@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`series articles  1`] = `
+Object {
+  "component": <div>
+    <div
+      className=""
+    >
+      <ul
+        aria-live="polite"
+        className="htz-a htz-b htz-c htz-d htz-e"
+      >
+        <h4
+          className="htz-f htz-g htz-h htz-i htz-j htz-k"
+        >
+          סדרת כתבות: סדרה
+        </h4>
+        <li
+          className="htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
+        >
+          <a
+            className={null}
+            href="http://eran.haaretz.co.il/1.6614"
+            onClick={[Function]}
+            target={null}
+          >
+            <span
+              className="htz-ah htz-ai htz-aj htz-ak htz-al htz-m htz-am htz-n htz-an htz-c htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av"
+            >
+              ukjhkj
+            </span>
+          </a>
+        </li>
+        <li
+          className="htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
+        >
+          <span
+            className="htz-ah htz-ai htz-aj htz-ak htz-al htz-aw"
+          >
+            ראש ממשלת צרפת: נרקמות מזימות נוספות לפיגועים במדינה וברחבי אירופה
+          </span>
+        </li>
+        <li
+          className="htz-l htz-m htz-n htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
+        >
+          <a
+            className={null}
+            href="http://eran.haaretz.co.il/news/education/.premium-1.5662"
+            onClick={[Function]}
+            target={null}
+          >
+            <span
+              className="htz-ah htz-ai htz-aj htz-ak htz-al htz-m htz-am htz-n htz-an htz-c htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av"
+            >
+              סופו של מקדש השמחה משנות התשעים - "אלנבי 58"
+            </span>
+          </a>
+        </li>
+      </ul>
+      <button
+        className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-ao htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-ah htz-ai htz-aj htz-ak htz-cb htz-cc htz-as htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+        id={null}
+        onClick={[Function]}
+        type="button"
+      >
+        טען את כל הכתבות בסדרה 2
+      </button>
+      <script
+        type="application/ld+json"
+      >
+        {"@context":"http://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"http://eran.haaretz.co.il/1.6614"},{"@type":"ListItem","position":2,"url":"http://eran.haaretz.co.il/news/world/LIVE-1.2597"},{"@type":"ListItem","position":3,"url":"http://eran.haaretz.co.il/news/education/.premium-1.5662"},{"@type":"ListItem","position":4,"url":"http://eran.themarker.com:8080/1.6636"},{"@type":"ListItem","position":5,"url":"http://eran.haaretz.co.il/1.6643"}]}
+      </script>
+    </div>
+  </div>,
+  "styles": ".htz-a{transition-property:height;-webkit-transition-property:height;-moz-transition-property:height}.htz-b{transition-delay:0.16666666666666666s;-webkit-transition-delay:0.16666666666666666s}.htz-c{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-d{transition-timing-function:linear;-webkit-transition-timing-function:linear}.htz-e{margin-bottom:3rem}.htz-j{color:#2D2D2D}.htz-k{margin-bottom:1rem}.htz-l{margin-right:1em}.htz-m{position:relative}.htz-n{color:#006B96}.htz-q:after{content:\\"\\"}.htz-r:after{position:absolute}.htz-s:after{right:0rem}.htz-t:after{top:1.5em}.htz-u:after{height:calc(100%)}.htz-v:after{transform:translate(485%, 0%);-webkit-transform:translate(485%, 0%)}.htz-w:after{border-width:1.2px}.htz-x:after{border-style:solid}.htz-y:after{border-color:#289DD3}.htz-z:before{content:\\"\\\\25cf\\"}.htz-ab:before{position:absolute}.htz-ac:before{right:0rem}.htz-ae:before{top:0rem}.htz-af:before{transform:translate(150%);-webkit-transform:translate(150%)}.htz-ag:before{color:#289DD3}.htz-al{font-weight:700}.htz-am{z-index:1}.htz-an{transition-property:background-position;-webkit-transition-property:background-position;-moz-transition-property:background-position}.htz-ao{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ap{background-image:-webkit-linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 );background-image:-moz-linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 );background-image:linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )}.htz-aq{background-size:100% 200%}.htz-ar{background-position:0 0}.htz-as:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at:hover{background-position:0 100%}.htz-au:focus{background:none}.htz-av:focus{background-color:#FFD20C}.htz-aw{background-color:#FFEC98}.htz-ax{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ay{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-az{cursor:pointer}.htz-ba{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bb{font-size:inherit}.htz-bc{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-bd{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-be{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-bf{text-decoration:none}.htz-bg{pointer-events:auto}.htz-bh{user-select:auto;-webkit-user-select:auto;-moz-user-select:auto;-ms-user-select:auto}.htz-bi{white-space:nowrap}.htz-bj::moz-focus-inner{border:0px}.htz-bk::moz-focus-inner{padding:0rem}.htz-bl{border-bottom-width:1px}.htz-bm{border-bottom-style:solid}.htz-bn{padding-bottom:calc(1rem - 1px)}.htz-bo{border-top-width:1px}.htz-bp{border-top-style:solid}.htz-bq{padding-top:calc(1rem - 1px)}.htz-br{border-right-width:1px}.htz-bs{border-right-style:solid}.htz-bt{padding-right:3rem}.htz-bu{border-left-width:1px}.htz-bv{border-left-style:solid}.htz-bw{padding-left:3rem}.htz-bx{border-radius:0rem}.htz-by{background-color:#FFF}.htz-bz{border-color:#0B7EB5}.htz-ca{color:#0B7EB5}.htz-cb:hover{text-decoration:none}.htz-cc:hover{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-cd:hover{background-color:#EBF2F5}.htz-ce:hover{border-color:#006B96}.htz-cf:hover{color:#006B96}.htz-cg:focus{outline:none}.htz-ch:focus{text-decoration:none}.htz-ci:focus{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-cj:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ck:focus{background-color:#0B7EB5}.htz-cl:focus{border-color:#0B7EB5}.htz-cm:focus{color:#FFF}.htz-cn:active{outline:none}.htz-co:active{text-decoration:none}.htz-cp:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-cq:active{background-color:#fff !important}.htz-cr:active{border-color:#0B7EB5}.htz-cs:active{color:#0B7EB5}@media (max-width: 80em){.htz-f{font-size:2.6666666666666665rem}.htz-g{line-height:1.5em}.htz-o{margin-bottom:4rem}.htz-ah{font-size:2.3333333333333335rem}.htz-ai{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-h{font-size:2.5714285714285716rem}.htz-i{line-height:1.5555555555555556em}.htz-p{margin-bottom:3rem}.htz-aj{font-size:2.2857142857142856rem}.htz-ak{line-height:1.3125em}}",
+}
+`;

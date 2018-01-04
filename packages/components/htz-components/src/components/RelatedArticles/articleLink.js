@@ -2,21 +2,45 @@ import React from 'react';
 import { createComponent, } from 'react-fela';
 import Link from '../Link/Link';
 
-const articleStyle = ({ theme, }) => theme.articleStyle.relatedArticlesLink;
-const Article = createComponent(articleStyle, Link, props => Object.keys(props));
+const articleStyle = ({ theme, isBlock, }) =>
+  isBlock ?
+    theme.articleStyle.linksBlockLink :
+    theme.articleStyle.relatedArticlesLink;
+const Article = createComponent(articleStyle, 'span');
 
-const selectedArticleStyle = ({ theme, }) => theme.articleStyle.activeArticleInSeries;
-const SelectedArticle = createComponent(selectedArticleStyle, 'span');
+const currentArticleStyle = ({ theme, }) => theme.articleStyle.currentArticleInSeries;
+const CurrentArticle = createComponent(currentArticleStyle, 'span');
 
-const ArticleLink = ({ article, currentArticle, focus, }) => (
+const authorStyle = ({ theme, }) => ({
+  fontWeight: '300',
+  marginStart: '0.5rem',
+  color: theme.color('neutral', '-2'),
+});
+const Author = createComponent(authorStyle, 'span');
+
+const ArticleLink = ({ article, currentArticle, focus, isBlock, }) => (
   (currentArticle ?
-    <SelectedArticle>
+    <CurrentArticle>
       {article.contentName}
-    </SelectedArticle>
+      {isBlock && article.authors &&
+      <Author>
+        {article.authors[0].contentName || article.authors[0]}
+      </Author>
+      }
+    </CurrentArticle>
     :
-    <Article
+    <Link
       href={article.url}
-      content={article.contentName}
+      content={
+        <Article isBlock={isBlock}>
+          {article.contentName}
+          {isBlock && article.authors &&
+            <Author>
+              {article.authors[0].contentName || article.authors[0]}
+            </Author>
+          }
+        </Article>
+      }
       focus={focus}
     />
   )

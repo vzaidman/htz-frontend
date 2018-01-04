@@ -2,6 +2,26 @@ import color from '../methods/getColor';
 import type from '../methods/typesetter';
 import { getDelay, getDuration, getTimingFunction, } from '../methods/animation';
 
+const paragraphLink = Object.freeze({
+  color: color('link', 'base'),
+  ':hover': {
+    borderBottomWidth: '1px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: color('link', 'base'),
+  },
+  ':focus': {
+    borderBottomWidth: '2px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: color('link', 'base'),
+  },
+});
+
+const linksBlockLink = Object.freeze({
+  ...(paragraphLink),
+  ...(type(-1)),
+  fontWeight: '700',
+});
+
 const articleStyle = Object.freeze({
   body: Object.freeze({
     marginBottom: [
@@ -17,19 +37,7 @@ const articleStyle = Object.freeze({
   }),
   paragraphStyles: Object.freeze({
   }),
-  paragraphLink: Object.freeze({
-    color: color('link', 'base'),
-    ':hover': {
-      borderBottomWidth: '1px',
-      borderBottomStyle: 'solid',
-      borderBottomColor: color('link', 'base'),
-    },
-    ':focus': {
-      borderBottomWidth: '2px',
-      borderBottomStyle: 'solid',
-      borderBottomColor: color('link', 'base'),
-    },
-  }),
+  paragraphLink,
   relatedArticlesLink: Object.freeze({
     ...(type(-1)),
     fontWeight: '700',
@@ -51,11 +59,12 @@ const articleStyle = Object.freeze({
       backgroundColor: color('quaternary'),
     },
   }),
-  activeArticleInSeries: Object.freeze({
+  currentArticleInSeries: Object.freeze({
     ...(type(-1)),
     fontWeight: '700',
     backgroundColor: color('quaternary', '-2'),
   }),
+  linksBlockLink,
 });
 
 export default articleStyle;
