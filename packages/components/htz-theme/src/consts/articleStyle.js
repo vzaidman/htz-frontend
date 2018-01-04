@@ -3,6 +3,8 @@ import color from '../methods/getColor';
 const articleStyle = Object.freeze({
   body: Object.freeze({
     marginBottom: [
+      { until: 'xl', value: '4rem', },
+      { from: 'xl', value: '3.5rem', },
       { until: 'xl', value: '3.5rem', },
       { from: 'xl', value: '4rem', },
     ],
