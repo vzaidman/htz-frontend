@@ -3,6 +3,7 @@
  *       C  O  M  P  O  N  E  N  T  S       *
  * **************************************** */
 import Article from './components/Article/Article';
+import ArticleBody from './components/ArticleBody/ArticleBody';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import Caption from './components/Caption/Caption';
@@ -56,6 +57,7 @@ import StyleProvider from './components/StyleProvider/StyleProvider';
 
 export {
   Article,
+  ArticleBody,
   Button,
   ButtonGroup,
   Caption,
