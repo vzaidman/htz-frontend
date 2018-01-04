@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`An example for a Question paragraph, and a second one who hosts a Marker decoration.  1`] = `
+Object {
+  "component": <div>
+    <div>
+      <div
+        className=""
+        noMarginTop={false}
+      >
+        <p
+          className=""
+        >
+          
+ 
+          <strong
+            className="htz-a"
+          >
+            
+   איך הגעת לתפקיד הנוכחי? 
+ 
+          </strong>
+        </p>
+      </div>
+      <div
+        className=""
+        noMarginTop={false}
+      >
+        <p
+          className=""
+        >
+          הכל מתחיל בעצם מאיך שהגעתי לישראל מלכתחילה. את בעלי הישראלי פגשתי בצרפת כששנינו למדנו שם, וב-2012 עברתי איתו לארץ בעקבות האהבה. לחברה הגעתי דרך אחד העובדים הוותיקים בחברה שהוא חבר טוב של בעלי (בינתיים ״גנבתי״ אותו והוא חבר טוב גם שלי), והוא הכיר אותי לחברה 
+          <mark
+            className="htz-b"
+            hasClass="bg-brand--d"
+          >
+            לפני קצת יותר משלוש שנים.
+          </mark>
+           אחרי שנתיים בחברה, ממש לפני שילדתי את בתי הבכורה, קודמתי לתפקיד ראש הצוות שלי. אני בתפקיד כבר שנה, ואוטוטו יוצאת לחופשת לידה כדי ללדת את בני השני. 
+        </p>
+      </div>
+    </div>
+  </div>,
+  "styles": ".htz-a{font-weight:700}.htz-b{background-color:#ACD2ED}",
+}
+`;

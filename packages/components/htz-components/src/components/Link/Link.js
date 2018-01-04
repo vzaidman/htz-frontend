@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
 import NextLink from 'next/link';
 
 const propTypes = {
   /**
    * Link's destination.
    * */
-  href: PropTypes.string.isRequired,
+  href: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]).isRequired,
   /**
    * Link's content (simple string or another component/element)
    * */
@@ -16,41 +18,30 @@ const propTypes = {
     PropTypes.string,
   ]).isRequired,
   /**
-   * OnClick behavior.
+   * Basic HTML target (destination window).
    * */
   target: PropTypes.string,
   /**
    * Should prefetch.
    * */
   prefetch: PropTypes.bool,
+  /**
+   * react-fela class names.
+   * */
+  className: PropTypes.string,
 };
 
 const defaultProps = {
-  target: '_self',
-  prefetch: false,
+  target: null,
+  prefetch: null,
+  className: null,
 };
 
-const linkStyle = ({ theme, }) => ({
-  '& a': {
-    color: theme.color('primary'),
-    ':hover': {
-      borderBottom: `1px solid ${theme.color('primary')}`,
-    },
-    ':focus': {
-      borderBottom: `2px solid ${theme.color('primary')}`,
-    },
-  },
-});
-
-const LinkWrapper = createComponent(linkStyle, 'span');
-
-function Link({ href, target, content, prefetch, }) {
+function Link({ href, target, content, prefetch, className, }) {
   return (
-    <LinkWrapper>
-      <NextLink prefetch={prefetch} href={href}>
-        <a target={target}>{content}</a>
-      </NextLink>
-    </LinkWrapper>
+    <NextLink prefetch={prefetch} href={href}>
+      <a target={target} className={className}>{content}</a>
+    </NextLink>
   );
 }
 

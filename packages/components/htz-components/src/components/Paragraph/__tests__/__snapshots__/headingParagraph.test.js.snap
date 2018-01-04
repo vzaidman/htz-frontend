@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render paragraph as heading correctly  1`] = `
+Object {
+  "component": <div>
+    <div
+      className=""
+      noMarginTop={false}
+    >
+      <h4>
+        צבא אסד מעמיק את המתקפה לכיבוש כפרי המורדים סמוך לגבול עם ישראל.
+      </h4>
+    </div>
+  </div>,
+  "styles": "",
+}
+`;

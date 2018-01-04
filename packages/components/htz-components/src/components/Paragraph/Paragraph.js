@@ -10,13 +10,17 @@ const mainWrapperStyle = ({ noMarginTop, }) => ({
 
 const MainWrapper = createComponent(mainWrapperStyle, 'div', props => Object.keys(props));
 
+const inlineLinkStyle = ({ theme, }) => theme.articleStyle.paragraphLink;
+
+const InlineLink = createComponent(inlineLinkStyle, Link, props => Object.keys(props));
+
 const paragraphStyle = ({ theme, }) => {
-  const { type, color, ...paragraphStyles } = theme.paragraphStyles || {};
+  const { type, color, ...paragraphStyles } = theme.articleStyle.paragraphStyles || {};
 
   return {
     extend: [
       ...(
-        theme.paragraphStyles
+        theme.articleStyle.paragraphStyles
           ? [ {
             ...(paragraphStyles || []),
             ...(type ? theme.type(...type) : []),
@@ -68,7 +72,7 @@ const extractAttributes = attrArray => {
 const getTag = tag => {
   const tagsMap = new Map([
     [ 'p', P, ],
-    [ 'a', Link, ],
+    [ 'a', InlineLink, ],
     [ 'strong', Strong, ],
     [ 'question', Strong, ],
     [ 'mark', Mark, ],
@@ -127,17 +131,33 @@ function Content({ content, }) {
 }
 
 function WrapperTag({ tag: tagName, content: tagElements, attributes, }) {
-  if (attributes.hasClass && attributes.hasClass === 'bg-brand--d') { // This is the class the FCKEditor gives to marked content.
+  /**
+   * Check if the Tag has a class names 'bg-brand--d'.
+   * If so, it means that the Tag is actually `<mark />` (That's how the FCKEditor translates it).
+   */
+  if (attributes.hasClass && attributes.hasClass === 'bg-brand--d') {
     tagName = 'mark';
   }
-  else if (attributes.id) { // In case of an anchor inside the paragraph.
+  /**
+   * In case of an anchor inside the paragraph,
+   * we don't need a new component but just a `<span />` with the anchors ID.
+   */
+  else if (attributes.id) {
     tagName = 'span';
   }
   const Tag = getTag(tagName);
   if (tagName === 'a') {
-    attributes.content = genChildren(tagElements); // Sending the recursive function to the Link component.
+    /**
+     * In case that the paragraph tree continues inside the Link component,
+     * we send it this component (the `<Paragraph />`) recursive function as the content,
+     * so the Link component will continue the building of the paragraph.
+     */
+    attributes.content = genChildren(tagElements);
   }
-  else if ([ 'question', 'h4', ].includes(tagName)) { // These type of paragraphs should not have a gap between them and the component after.
+  /**
+   * These type of paragraphs should ignore any MarginBottom received by the parents.
+   */
+  else if ([ 'question', 'h4', ].includes(tagName)) {
     Paragraph.setAsNoMargin(false);
   }
 
@@ -166,18 +186,18 @@ Paragraph.propTypes = {
     /** The paragraphs content.<br/>
      * If the value of content contains children, they must have this exact prop structure
      * {tag, attributes, content}.
-     * */
+     */
     content: PropTypes.array,
   }).isRequired,
   /** This function should come from the body that holds this component.<br/>
    * If the paragraph should **NOT** have a gap between itself and the next component,
    * this function should return 'false'.
-   * */
+   */
   setNextComponentMarginTop: PropTypes.func.isRequired,
   /**
    * This prop determines if this paragraph should override the default 'margin-top'
    * set buy it's parent (set it to '0').
-   * */
+   */
   noMarginTop: PropTypes.bool,
 };
 

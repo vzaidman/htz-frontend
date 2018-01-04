@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A Paragraph with bold and nesting  1`] = `
+Object {
+  "component": <div>
+    <div
+      className=""
+      noMarginTop={false}
+    >
+      <p
+        className=""
+      >
+        על פי הערכות בישראל, 
+        <strong
+          className="htz-a"
+        >
+          צבא אסד מתכנן לנסות לגרש את המורדים הסונים
+        </strong>
+         גם ממרכז ודרום רמת הגולן הסורי בגיבוי חיזבאללה והמיליציות. בשנה האחרונה שררה יציבות יחסית באזור. בחלק הצפוני ביותר של הגבול עם ישראל שלט המשטר, שחזר לאייש עמדות בחרמון הסורי ובעיירה קונייטרה החדשה. סמוך לשטח שבשליטתו היו שתי מובלעות: 
+        <a
+          className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+          href="https://www.google.com"
+          onClick={[Function]}
+          target={null}
+        >
+          הכפר חאדר הדרוזי, 
+          <strong
+            className="htz-a"
+          >
+            שנשלט בידי מיליציה מקומית ששמרה על קשר עם המשטר
+          </strong>
+          , והשנייה סונית, בכפרים הסמוכים לגבול לבנון.
+        </a>
+      </p>
+    </div>
+  </div>,
+  "styles": ".htz-a{font-weight:700}.htz-b{color:#0B7EB5}.htz-c:hover{border-bottom-width:1px}.htz-d:hover{border-bottom-style:solid}.htz-e:hover{border-bottom-color:#0B7EB5}.htz-f:focus{border-bottom-width:2px}.htz-g:focus{border-bottom-style:solid}.htz-h:focus{border-bottom-color:#0B7EB5}",
+}
+`;

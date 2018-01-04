@@ -8,7 +8,8 @@
 
 ### Link examples
 
-A simple link.
+The Link component wraps [Next JS's Link component](https://github.com/zeit/next.js/#with-link), 
+and can be used to transition between an application's routes (pages) in the front-end.
 ```jsx
 <Link
   href='https://www.haaretz.co.il'
@@ -16,7 +17,8 @@ A simple link.
 />
 ```
 
-A simple link which opens in another tab.
+A link's target can be changed using the `target` prop, which act just like the `target` 
+attribute on regular `<a />` DOM elements.
 ```jsx
 <Link
   href='https://themarker.com'
@@ -25,32 +27,65 @@ A simple link which opens in another tab.
 />
 ```
 
-A link contains another component.
+Usage of Link within [`<Paragraph />`](./#paragraph) recursive component.
 ```jsx
-<Link
-  href='http://www.iflscience.com/physics/new-type-of-bizarre-quantum-material-discovered/'
+<Paragraph
+  setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)} 
   content={
-    <Paragraph
-      setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)} 
-      content={
+    {
+      "attributes": [
+        {
+          "key": "href",
+          "value":"http://www.iflscience.com/physics/new-type-of-bizarre-quantum-material-discovered/"
+        },
+        {
+          "key": "target",
+          "value":"_blank"
+        }
+      ],
+      "tag": "a",
+      "content": [
         {
           "attributes": [],
-          "tag": "p",
+          "tag": "span",
           "content": [
             {
               "attributes": [
                 {
                   "key": "text",
-                  "value": "New Type Of Bizarre Quantum Material Discovered."
+                  "value": "New Type Of "
+                }
+              ],
+              "tag": "#text"
+            },
+            {
+              "attributes": [],
+              "tag": "strong",
+              "content": [
+                {
+                  "attributes": [
+                    {
+                      "key": "text",
+                      "value": "Bizarre Quantum Material"
+                    }
+                  ],
+                  "tag": "#text"
+                },
+              ]
+            },
+            {
+              "attributes": [
+                {
+                  "key": "text",
+                  "value": " Discovered."
                 }
               ],
               "tag": "#text"
             }
           ]
         }
-      }
-    />
-  }
-  target='_blank'
+      ]
+    }
+  }    
 />
 ```

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A Paragraph with italic, underline and link  1`] = `
+Object {
+  "component": <div>
+    <div
+      className=""
+      noMarginTop={false}
+    >
+      <p
+        className=""
+      >
+        זהו תפקידו של הזיכרון האולטימטיבי הזה, וזה גם המחולל שלו, ואת העדות לכך מספק קנאוסגורד בהצהרה כי את אמו, שהוא מכנה 
+        <span
+          className="htz-a htz-b"
+        >
+          קרקעית הבאר של הילדות
+        </span>
+        , הנחמה שבביבים של ההשפלה והפחד מהאב, הוא אינו זוכר. היא תמיד היתה שם, הוא מעיד, 
+        <em
+          className="htz-c"
+        >
+          אני פשוט לא מצליח לזכור את זה
+        </em>
+        . כלומר, הזיכרון המושלם שקנאוסגורד מפגין מולנו כבר שלושה כרכים פגום. אבל הוא לא רק פגום, הוא הפגם עצמו. הוא היסוד לכל מה שמושחת, הוא התשוקה לשכוח. המאבק שלי, המאבק של קנאוסגורד, הוא הניסיון לנקז את הנורא מכל שהתגלה במצבור שופע בנפשו במהלך החקירה הזאת. 
+        <a
+          className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+          href="https://www.haaretz.co.il/literature/prose/.premium-REVIEW-1.4740317"
+          onClick={[Function]}
+          target="_blank"
+        >
+          קנאוסגורד פולט את הזיכרונות שלו בכפייה
+        </a>
+         כדי לא להיות היחיד שנושא בעול הזה: להיות הריאקציה למהפכת השוויון, ריאקציה שחותרת למחנה השמדה.
+      </p>
+    </div>
+  </div>,
+  "styles": ".htz-a{text-decoration:underline}.htz-b{text-decoration-skip:ink;-webkit-text-decoration-skip:ink}.htz-c{font-style:italic}.htz-d{color:#0B7EB5}.htz-e:hover{border-bottom-width:1px}.htz-f:hover{border-bottom-style:solid}.htz-g:hover{border-bottom-color:#0B7EB5}.htz-h:focus{border-bottom-width:2px}.htz-i:focus{border-bottom-style:solid}.htz-j:focus{border-bottom-color:#0B7EB5}",
+}
+`;

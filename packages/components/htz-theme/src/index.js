@@ -1,4 +1,5 @@
 // consts
+import articleStyle from './consts/articleStyle';
 import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
 import cssReset from './consts/cssReset';
@@ -78,6 +79,7 @@ export { cssReset, };
  */
 const htzTheme = Object.freeze({
   // Constants
+  articleStyle,
   bps,
   btnStyle,
   direrction: 'rtl',

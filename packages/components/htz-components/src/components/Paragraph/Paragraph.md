@@ -8,32 +8,7 @@
 
 ### Paragraph examples
 
-An example for a Heading paragraph (`<h4 />`).
-```jsx
-<div style={{direction: 'rtl'}}>
-  <Paragraph
-    setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)} 
-    content={
-      {
-        "attributes": [],
-        "tag": "h4",
-        "content": [
-          {
-            "attributes": [
-              {
-                "key": "text",
-                "value": "צבא אסד מעמיק את המתקפה לכיבוש כפרי המורדים סמוך לגבול עם ישראל."
-              }
-            ],
-            "tag": "#text"
-          }
-        ]
-      }
-    }
-  />
-</div>
-```
-An example for a simple paragraph.
+This is a basic paragraph without any nesting.
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
@@ -58,7 +33,33 @@ An example for a simple paragraph.
   />
 </div>
 ```
-An example for **bold** (`<strong />`) decorations. the first is nested inside paragraph (as a direct child), while the second is nested inside a link (`<a />`) nested inside the paragraph.
+A Heading paragraph, receives 'h4' as the value for tag (`props.content.tag  = 'h4'`).
+This component ignores any `margin-bottom` that may be passed down by the parents.
+```jsx
+<div style={{direction: 'rtl'}}>
+  <Paragraph
+    setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)} 
+    content={
+      {
+        "attributes": [],
+        "tag": "h4",
+        "content": [
+          {
+            "attributes": [
+              {
+                "key": "text",
+                "value": "צבא אסד מעמיק את המתקפה לכיבוש כפרי המורדים סמוך לגבול עם ישראל."
+              }
+            ],
+            "tag": "#text"
+          }
+        ]
+      }
+    }
+  />
+</div>
+```
+An example for **bold** (`<strong />`) decorations. the first is nested inside paragraph (as a direct child), while the second is nested inside a [Link](./#link) nested inside the paragraph.
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
@@ -151,7 +152,7 @@ An example for **bold** (`<strong />`) decorations. the first is nested inside p
   />
 </div>
 ```
-An example for <u>underline</u>, *italic(citation)* and [link] decorations nested inside the paragraph.
+An example for <u>underline</u>, *italic(citation)* and [Link](./#link) decorations nested inside the paragraph.
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
@@ -257,7 +258,8 @@ An example for <u>underline</u>, *italic(citation)* and [link] decorations neste
   />
 </div>
 ```
-An example for a Question paragraph (`<strong />`), and the second paragraph hosts a Marker decoration.
+In this is Q&A paragraphs, the first paragraph takes 'strong' as tags value, by that (besides the `<strong />`) this component knows to ignore any `margin-bottom` that may be passed down by the parents.
+ The second paragraph is simply a basic paragraph which hosts a Marker decoration.
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
