@@ -23,7 +23,7 @@ import createTypesetter from './typography/createTypesetter';
 import getLengthProps from './units/getLengthProps';
 import getUnit from './units/getUnit';
 import parseComponentProp from './props/parseComponentProp';
-import parseStyleProp from './props/parseStyleProp';
+// import parseStyleProp from './props/parseStyleProp';
 import parseStyleProps from './props/parseStyleProps';
 import parseTypographyProp from './props/parseTypographyProp';
 import pxTo, { pxToEm, } from './units/pxTo';
@@ -47,7 +47,7 @@ export {
   getLengthProps,
   getUnit,
   parseComponentProp,
-  parseStyleProp,
+  // parseStyleProp,
   parseStyleProps,
   parseTypographyProp,
   pxTo,

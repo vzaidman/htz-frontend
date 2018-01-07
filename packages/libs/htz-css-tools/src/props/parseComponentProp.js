@@ -16,7 +16,7 @@ export type ComponentPropResponsiveObject = {
   until?: string,
   misc?: string,
   type?: string,
-  value: boolean | string | number | (string | number)[]
+  value: boolean | string | number | (string | number)[],
 };
 
 /**
@@ -26,8 +26,7 @@ export type ComponentPropValue =
   | boolean
   | string
   | number
-  | (string | number)[]
-  | ComponentPropResponsiveObject;
+  | (string | number | ComponentPropResponsiveObject)[];
 
 /**
  * A callback that converts values from the prop into a CSS-in-JS object
@@ -147,11 +146,13 @@ export default function parseComponentProp(
     : { [prop]: values, };
 }
 
-/**
+/*
  * Determine if `candidate` is a prop responsive options object.
  *
  * @param {*} candidate - The value to evaluate
  * @return {boolean}
+ *
+ * @private
  */
 function isResponsiveOptions(candidate: any): boolean {
   if (!Array.isArray(candidate)) return false;

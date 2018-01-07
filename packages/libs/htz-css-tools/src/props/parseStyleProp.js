@@ -40,7 +40,7 @@ export type StylePropResponsiveObject = {
 export type StyleProp =
   | string
   | number
-  | ((string | number) | StylePropResponsiveObject)[];
+  | (string | number | StylePropResponsiveObject)[];
 
 /**
  * Parse an object of responsive values into a CSS-in-JS object
@@ -108,7 +108,7 @@ export default function parseStyleProp(
   }
 
   if (valuesIsArray) {
-    // Flow doesn't recognized that we validated `values` to be an `array`
+    // Flow doesn't recognize that we validated `values` to be an `array`
     // $FlowFixMe
     return values.reduce((styles, item) => {
       if (typeof item === 'object') {
@@ -126,7 +126,9 @@ export default function parseStyleProp(
           prop === 'autospace' &&
           (typeof item.value === 'number' ||
             (Array.isArray(item.value) &&
-              item.value.every(item => typeof item === 'number')));
+              item.value.every(
+                austospaceItem => typeof austospaceItem === 'number'
+              )));
 
         return {
           ...styles,
