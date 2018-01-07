@@ -12,7 +12,6 @@ This is a basic paragraph without any nesting.
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
-    setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)} 
     content={
       {
         "attributes": [],
@@ -38,7 +37,6 @@ This component ignores any `margin-bottom` that may be passed down by the parent
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
-    setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)} 
     content={
       {
         "attributes": [],
@@ -63,7 +61,6 @@ An example for **bold** (`<strong />`) decorations. the first is nested inside p
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
-    setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)} 
     content={
       {
         "attributes": [],
@@ -156,7 +153,6 @@ An example for <u>underline</u>, *italic(citation)* and [Link](./#link) decorati
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
-    setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)} 
     content={
       {
         "attributes": [],
@@ -258,12 +254,11 @@ An example for <u>underline</u>, *italic(citation)* and [Link](./#link) decorati
   />
 </div>
 ```
-In this is Q&A paragraphs, the first paragraph takes 'strong' as tags value, by that (besides the `<strong />`) this component knows to ignore any `margin-bottom` that may be passed down by the parents.
+In this Q&A paragraphs, the first paragraph takes 'strong' as tags value, by that (besides the `<strong />`) this component knows to ignore any `margin-bottom` that may be passed down by the parents.
  The second paragraph is simply a basic paragraph which hosts a Marker decoration.
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
-    setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)} 
     content={
       {
         "attributes": [],
@@ -303,7 +298,6 @@ In this is Q&A paragraphs, the first paragraph takes 'strong' as tags value, by 
     }
   />
   <Paragraph
-    setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)} 
     content={
       {
         "attributes": [
