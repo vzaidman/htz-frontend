@@ -25,6 +25,7 @@ import getUnit from './units/getUnit';
 import parseComponentProp from './props/parseComponentProp';
 import parseStyleProp from './props/parseStyleProp';
 import parseStyleProps from './props/parseStyleProps';
+import parseTypographyProp from './props/parseTypographyProp';
 import pxTo, { pxToEm, } from './units/pxTo';
 import stripUnit from './units/stripUnit';
 import visuallyHidden from './mixins/visuallyHidden';
@@ -48,6 +49,7 @@ export {
   parseComponentProp,
   parseStyleProp,
   parseStyleProps,
+  parseTypographyProp,
   pxTo,
   pxToEm,
   stripUnit,

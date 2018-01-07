@@ -25,12 +25,15 @@ toc:
   - name: Component Props Parsers
   - parseComponentProp
   - parseStyleProps
-  - parseStyleProp
+  - parseTypographyProp
   - ComponentPropResponsiveObject
   - ComponentPropValue
   - ComponentPropConverterFn
   - StylePropResponsiveObject
   - StyleProp
+  - TypographyPropType
+  - TypographyPropResponsiveObjectType
+  - TypographyValueType
 
   - name: Typography
   - createTypesetter
@@ -83,6 +86,7 @@ toc:
   - getRhythmBpsData
   - getTypeProps
   - isNamedBp
+  - parseStyleProp
   - pxToRem
   - setBorder
   - styleFormatter
