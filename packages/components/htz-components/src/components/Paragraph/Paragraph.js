@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import Link from '../Link/Link';
 
-/** Components styles */
-const mainWrapperStyle = ({ noMarginTop, }) => ({
-  ...(noMarginTop ? [ { marginTop: '0', }, ] : []),
+/* Components styles */
+const mainWrapperStyle = ({ marginBottom, }) => ({
+  ...(marginBottom || []),
 });
 
-const MainWrapper = createComponent(mainWrapperStyle, 'div', props => Object.keys(props));
+const MainWrapper = createComponent(mainWrapperStyle, 'div');
 
 const inlineLinkStyle = ({ theme, }) => theme.articleStyle.paragraphLink;
 
@@ -52,14 +52,14 @@ const UnderLine = createComponent(underLineStyle, 'span');
 const spanStyle = ({ theme, }) => ({
   backgroundColor: theme.color('primary', '-3'),
 });
-const Mark = createComponent(spanStyle, 'mark', props => Object.keys(props));
+const Mark = createComponent(spanStyle, 'mark');
 
-/** Util functions */
+/* Util functions */
 const extractAttributes = attrArray => {
   const whiteList = [ 'class', 'href', 'target', 'id', 'name', ]; // List of all the acceptable attributes.
   const attributes = {};
   if (attrArray && attrArray.length > 0) {
-    attrArray.map(attribute => {
+    attrArray.map(attribute => { // eslint-disable-line array-callback-return
       if (whiteList.includes(attribute.key)) {
         const key = attribute.key === 'class' ? 'hasClass' : attribute.key; // Switching 'class' to 'className'.
         attributes[key] = attribute.value;
@@ -67,6 +67,25 @@ const extractAttributes = attrArray => {
     });
   }
   return attributes;
+};
+
+/**
+ * These type of paragraphs should ignore any MarginBottom received by the parents.
+ */
+const whoShouldNotMargin = [ 'question', 'h4', ];
+
+const shouldMargin = content => {
+  if (whoShouldNotMargin.includes(content.tag)) {
+    return false;
+  }
+  else if (content.content) {
+    for (const element of content.content) {
+      if (!shouldMargin(element)) {
+        return false;
+      }
+    }
+  }
+  return true;
 };
 
 const getTag = tag => {
@@ -91,29 +110,24 @@ const getTag = tag => {
  * @param {Object} props
  */
 export default class Paragraph extends React.Component {
-  static callToParent = null;
-
-  static setAsNoMargin(willThereBeMargin) {
-    Paragraph.callToParent(willThereBeMargin);
-  }
+  state = { margin: true, };
 
   componentWillMount() {
-    Paragraph.callToParent = this.props.setNextComponentMarginTop;
+    this.setState({ margin: shouldMargin(this.props.content), });
   }
 
   render() {
     return (
-      <MainWrapper noMarginTop={this.props.noMarginTop}>
+      <MainWrapper marginBottom={this.state.margin ? this.props.marginBottom : null}>
         <Content content={this.props.content} />
       </MainWrapper>
     );
   }
 }
 
-/** Recursive functions */
+/* Recursive functions */
 function Content({ content, }) {
   const attributesObject = extractAttributes(content.attributes);
-
   return (
     <WrapperTag
       tag={content.tag}
@@ -122,7 +136,7 @@ function Content({ content, }) {
     >
       {content.content.map((tag, index) => (
         <Content
-          key={index}
+          key={index} // eslint-disable-line react/no-array-index-key
           content={tag}
         />
       ))}
@@ -136,14 +150,14 @@ function WrapperTag({ tag: tagName, content: tagElements, attributes, }) {
    * If so, it means that the Tag is actually `<mark />` (That's how the FCKEditor translates it).
    */
   if (attributes.hasClass && attributes.hasClass === 'bg-brand--d') {
-    tagName = 'mark';
+    tagName = 'mark'; // eslint-disable-line no-param-reassign
   }
   /**
    * In case of an anchor inside the paragraph,
    * we don't need a new component but just a `<span />` with the anchors ID.
    */
   else if (attributes.id) {
-    tagName = 'span';
+    tagName = 'span'; // eslint-disable-line no-param-reassign
   }
   const Tag = getTag(tagName);
   if (tagName === 'a') {
@@ -152,13 +166,7 @@ function WrapperTag({ tag: tagName, content: tagElements, attributes, }) {
      * we send it this component (the `<Paragraph />`) recursive function as the content,
      * so the Link component will continue the building of the paragraph.
      */
-    attributes.content = genChildren(tagElements);
-  }
-  /**
-   * These type of paragraphs should ignore any MarginBottom received by the parents.
-   */
-  else if ([ 'question', 'h4', ].includes(tagName)) {
-    Paragraph.setAsNoMargin(false);
+    attributes.content = genChildren(tagElements); // eslint-disable-line no-param-reassign
   }
 
   return (
@@ -171,7 +179,7 @@ function WrapperTag({ tag: tagName, content: tagElements, attributes, }) {
 function genChildren(tagElements) {
   return tagElements.map((tag, index) => (
     tag.content ?
-      <Content key={index} content={tag} />
+      <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
       : tag.attributes[0].value)
   );
 }
@@ -189,20 +197,33 @@ Paragraph.propTypes = {
      */
     content: PropTypes.array,
   }).isRequired,
-  /** This function should come from the body that holds this component.<br/>
-   * If the paragraph should **NOT** have a gap between itself and the next component,
-   * this function should return 'false'.
-   */
-  setNextComponentMarginTop: PropTypes.func.isRequired,
   /**
-   * This prop determines if this paragraph should override the default 'margin-top'
-   * set buy it's parent (set it to '0').
+   * Should be passed if the paragraph should have a MarginBottom style
+   * (some types of paragraphs would never have a MarginBottom and will override this prop).
    */
-  noMarginTop: PropTypes.bool,
+  marginBottom: PropTypes.oneOfType([
+    /**
+     * simple fela style object.
+     */
+    PropTypes.shape({
+      marginBottom: PropTypes.string,
+    }),
+    /**
+     * multiple objects, each for a different break.
+     */
+    PropTypes.shape({
+      break: PropTypes.shape({
+        marginBottom: PropTypes.string,
+      }),
+      break2: PropTypes.shape({
+        marginBottom: PropTypes.string,
+      }),
+    }),
+  ]),
 };
 
 Paragraph.defaultProps = {
-  noMarginTop: false,
+  marginBottom: null,
 };
 
 Content.propTypes = {
@@ -215,6 +236,6 @@ Content.propTypes = {
 
 WrapperTag.propTypes = {
   tag: PropTypes.string.isRequired,
-  attributes: PropTypes.object.isRequired,
-  content: PropTypes.array.isRequired,
+  attributes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  content: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
 };

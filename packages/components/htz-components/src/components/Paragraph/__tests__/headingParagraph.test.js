@@ -5,7 +5,6 @@ import Paragraph from '../Paragraph';
 it('Render paragraph as heading correctly ', () => {
   const snapshot = felaSnapshotter(
     <Paragraph
-      setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)}
       content={
         {
           attributes: [],

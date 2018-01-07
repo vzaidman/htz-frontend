@@ -5,7 +5,6 @@ import Paragraph from '../Paragraph';
 it('A Paragraph with italic, underline and link ', () => {
   const snapshot = felaSnapshotter(
     <Paragraph
-      setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)}
       content={
         {
           attributes: [],

@@ -21,7 +21,6 @@ Object {
   "component": <div>
     <div
       className=""
-      noMarginTop={false}
     >
       <a
         className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"

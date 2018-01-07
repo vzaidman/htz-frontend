@@ -27,7 +27,6 @@ it('Link with target blank ', () => {
 it('Link within paragraph component ', () => {
   const snapshot = felaSnapshotter(
     <Paragraph
-      setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)}
       content={
         {
           attributes: [

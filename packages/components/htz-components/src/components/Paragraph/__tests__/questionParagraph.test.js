@@ -6,7 +6,6 @@ it('An example for a Question paragraph, and a second one who hosts a Marker dec
   const snapshot = felaSnapshotter(
     <div>
       <Paragraph
-        setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)}
         content={
           {
             attributes: [],
@@ -46,7 +45,6 @@ it('An example for a Question paragraph, and a second one who hosts a Marker dec
         }
       />
       <Paragraph
-        setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)}
         content={
           {
             attributes: [

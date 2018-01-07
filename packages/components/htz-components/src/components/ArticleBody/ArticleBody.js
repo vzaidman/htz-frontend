@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withTheme, createComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
-import Grid from '../Grid/Grid';
 
 const propTypes = {
   /**
@@ -32,7 +31,7 @@ const Figure = createComponent(figureStyle, 'figure');
 
 const wrappedWithFigure = [ 'embedElement', 'com.tm.Image', 'com.tm.Video', ];
 
-const buildComponent = (componentType, index, isLastItem) => {
+const buildComponent = (componentType, index, isLastItem, theme) => {
   const uniqueId = componentType.elementType || componentType.inputTemplate || componentType.tag;
   const Component = getComponent(uniqueId);
   return (
@@ -40,7 +39,21 @@ const buildComponent = (componentType, index, isLastItem) => {
       <Figure key={index} lastItem={isLastItem}>{/*<Component props={componentType} />*/}{Component}</Figure>
       :
       uniqueId ?
-        <p key={index}>{Component}</p>//{/*<Component key={index} props={componentType} />*/}
+        <Component
+          key={index}
+          content={componentType}
+          marginBottom={
+            isLastItem ?
+              null
+              :
+              parseComponentProp(
+                'marginBottom',
+                theme.articleStyle.body.marginBottom,
+                theme.mq,
+                (prop, value) => ({ [prop]: value, })
+              )
+          }
+        />
         :
         <p key={index}>{componentType}</p>
   );
@@ -49,7 +62,9 @@ const buildComponent = (componentType, index, isLastItem) => {
 function ArticleBody(props) {
   return (
     <div>
-      {props.body.map((component, i) => buildComponent(component, i, i === props.body.length - 1))}
+      {props.body.map((component, i) =>
+        buildComponent(component, i, i === props.body.length - 1, props.theme))
+      }
     </div>
     // eslint-disable-next-line react/no-array-index-key
     // return Comp ? <Comp key={i} {...component, props.theme.articleStyle.body} /> : <p>{component}</p>;

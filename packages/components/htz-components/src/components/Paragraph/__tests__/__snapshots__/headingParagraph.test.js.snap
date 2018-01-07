@@ -5,7 +5,6 @@ Object {
   "component": <div>
     <div
       className=""
-      noMarginTop={false}
     >
       <h4>
         צבא אסד מעמיק את המתקפה לכיבוש כפרי המורדים סמוך לגבול עם ישראל.

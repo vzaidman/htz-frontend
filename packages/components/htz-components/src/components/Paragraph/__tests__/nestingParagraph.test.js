@@ -5,7 +5,6 @@ import Paragraph from '../Paragraph';
 it('A Paragraph with bold and nesting ', () => {
   const snapshot = felaSnapshotter(
     <Paragraph
-      setNextComponentMarginTop={shouldMargin => console.log(shouldMargin)}
       content={
         {
           attributes: [],
