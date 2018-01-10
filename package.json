@@ -191,7 +191,7 @@
       }
     },
     "react": {
-      "^16.1.1": {
+      "^16.2.0": {
         "packages/{libs/htz-react-base,components/*}": [
           "devDependencies",
           "peerDependencies"
@@ -209,7 +209,7 @@
       }
     },
     "react-dom": {
-      "^16.1.1": {
+      "^16.2.0": {
         "packages/{libs/htz-react-base,components/*}": [
           "devDependencies",
           "peerDependencies"
@@ -231,7 +231,7 @@
       }
     },
     "react-test-renderer": {
-      "^16.1.1": {
+      "^16.2.0": {
         "packages/{libs/htz-react-base,components/htz-components}": [
           "dependencies"
         ]

@@ -601,7 +601,7 @@ async@^1.4.0, async@^1.5.0, async@^1.5.2, async@~1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
-async@^2.0.1, async@^2.1.2:
+async@^2.0.1, async@^2.1.2, async@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/async/-/async-2.6.0.tgz#61a29abb6fcc026fea77e56d1c6ec53a795951f4"
   dependencies:
@@ -9005,9 +9005,9 @@ react-docgen@^3.0.0-beta8:
     node-dir "^0.1.10"
     recast "^0.12.6"
 
-react-dom@^16.1.1:
-  version "16.1.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.1.1.tgz#b2e331b6d752faf1a2d31399969399a41d8d45f8"
+react-dom@^16.2.0:
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.2.0.tgz#69003178601c0ca19b709b33a83369fe6124c044"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -9119,7 +9119,7 @@ react-styleguidist@^6.0.20:
     webpack-dev-server "^2.8.2"
     webpack-merge "^4.1.0"
 
-react-test-renderer@^16.0.0-0, react-test-renderer@^16.1.1:
+react-test-renderer@^16.0.0-0:
   version "16.1.1"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.1.1.tgz#a05184688d564be799f212449262525d1e350537"
   dependencies:
@@ -9127,9 +9127,17 @@ react-test-renderer@^16.0.0-0, react-test-renderer@^16.1.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react@^16.1.1:
-  version "16.1.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.1.1.tgz#d5c4ef795507e3012282dd51261ff9c0e824fe1f"
+react-test-renderer@^16.2.0:
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.2.0.tgz#bddf259a6b8fcd8555f012afc8eacc238872a211"
+  dependencies:
+    fbjs "^0.8.16"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+
+react@^16.2.0:
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"

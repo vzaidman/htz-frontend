@@ -36,15 +36,15 @@
     "@haaretz/htz-react-base": "^1.0.0",
     "babel-loader": "^7.1.2",
     "fela": "^6.0.2",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-fela": "^6.0.2",
     "rimraf": "2.6.2"
   },
   "peerDependencies": {
     "fela": "^6.0.2",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-fela": "^6.0.2"
   }
 }
