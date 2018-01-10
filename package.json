@@ -271,7 +271,15 @@
         "node packages/libs/htz-react-base/bin/htz-scripts.js flow focus-check",
         "git add"
       ],
-      "**/*.md": [
+      "./*.md": [
+        "yarn run docs",
+        "git add"
+      ],
+      "docs/**/*.md": [
+        "yarn run docs",
+        "git add"
+      ],
+      "packages/*/*/*.md": [
         "yarn run docs",
         "git add"
       ]
