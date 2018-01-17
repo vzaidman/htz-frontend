@@ -99,7 +99,7 @@
       }
     },
     "config": {
-      "^1.29.1": {
+      "^1.26.2": {
         "packages/{apps,components}/*": [
           "dependencies"
         ]
@@ -248,8 +248,8 @@
       }
     },
     "universal-cookie": {
-      "^2.1.2": {
-        "packages/{apps/*,libs/htz-react-server}": [
+      "^2.0.8": {
+        "packages/apps/*": [
           "dependencies"
         ]
       }

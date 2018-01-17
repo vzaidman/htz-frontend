@@ -36,7 +36,7 @@
     "graphql-type-json": "^0.1.4",
     "helmet": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
-    "universal-cookie": "^2.1.2"
+    "universal-cookie": "^2.1.0"
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
