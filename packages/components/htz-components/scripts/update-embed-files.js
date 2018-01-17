@@ -30,7 +30,7 @@ fs.readdir(elementsPath, (err, files) => {
   else {
     files.map(file => {
       if (file.includes('.js')) {
-        elements[file.slice(0, file.indexOf('.'))] = `${elementsPath}/${file}`;
+        elements[file.slice(0, file.indexOf('.'))] = `./elements/${file}`;
       }
     });
   }
@@ -41,13 +41,13 @@ function readFromFiles() {
   const views = {};
   const exceptionalElements = [];
   async.eachSeries(Object.keys(elements), (fileName, callback) => {
-    fs.readFile(elements[fileName], 'utf8', (err, data) => {
+    fs.readFile(`${elementsPath}/${fileName}.js`, 'utf8', (err, data) => {
       if (err) callback(err);
 
       const searchString = 'This element accepts these inputTemplates:';
-      const index = data.indexOf(searchString);
+      const index = data ? data.indexOf(searchString) : null;
 
-      if (index > -1) {
+      if (index && index > -1) {
         let inputTemplates = data.substring(index + searchString.length, data.indexOf(']')).trim();
         inputTemplates = inputTemplates.replace(/\r?\n|\r|\[|]/g, '');
         if (inputTemplates[inputTemplates.length - 1] === ',') {
@@ -59,7 +59,7 @@ function readFromFiles() {
         });
       }
 
-      if (data.indexOf('This element does not emits an onLoad event') >= 0) {
+      if (data && data.indexOf('This element does not emits an onLoad event') >= 0) {
         exceptionalElements.push(fileName);
       }
 
