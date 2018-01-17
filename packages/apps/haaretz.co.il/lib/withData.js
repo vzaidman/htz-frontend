@@ -76,24 +76,28 @@ export default Component => {
           );
         }
         catch (err) {
-          // FIXME: There must be a better way to do this.
-          // `err` is a wrapper Error created by Apollo that groups all errors
-          // thrown while attempting to render. Even the `graphQLErrors` property
-          // on this object have been rethrown at various layers of the stack, so
-          // if we attached something like a `statusCode` property to an error,
-          // it's gone now. For now, just throw a 404 if any error message is
-          // 'Not Found', and a 500 otherwise.
-          console.error('getDataFromTree() failed!');
-          console.error(err);
-          const isNotFound = err.graphQLErrors.some(
-            ({ message, }) => message === 'Not Found'
-          );
-          serverError = {
-            statusCode: isNotFound ? 404 : 500,
-          };
-          // Prevent Apollo Client GraphQL errors from crashing SSR.
-          // Handle them in components via the `data.error` prop:
-          // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
+          // Check if this is indeed a GraphQL error
+          if (err.graphQLErrors) {
+            // FIXME: There must be a better way to do this.
+            // `err` is a wrapper Error created by Apollo that groups all errors
+            // thrown while attempting to render. Even the `graphQLErrors` property
+            // on this object have been rethrown at various layers of the stack, so
+            // if we attached something like a `statusCode` property to an error,
+            // it's gone now. For now, just throw a 404 if any error message is
+            // 'Not Found', and a 500 otherwise.
+            console.error('getDataFromTree() failed!');
+            // console.error(err);
+
+            const isNotFound = err.graphQLErrors.some(
+              ({ message, }) => message === 'Not Found'
+            );
+            serverError = {
+              statusCode: isNotFound ? 404 : 500,
+            };
+            // Prevent Apollo Client GraphQL errors from crashing SSR.
+            // Handle them in components via the `data.error` prop:
+            // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
+          }
         }
         Head.rewind();
 
