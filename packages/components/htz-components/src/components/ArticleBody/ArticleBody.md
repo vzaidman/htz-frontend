@@ -10,7 +10,7 @@
 
 
 ```jsx
-<div style={{ direction: 'rtl' }}>
+<div style={{ direction: 'rtl', marginRight: '34rem' }}>
   <ArticleBody body={[
     {
       "attributes": [],
@@ -27,6 +27,17 @@
         }
       ]
     },
+    {
+      "text": "בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר במשרד הביטחון",
+      "position": "midCenterPosition",
+      "afterParagraph": "1",
+      "imagesList": [
+        
+      ],
+      "inputTemplate": "com.htz.MagazineArticleQuote",
+      "contentId": "1.6664",
+      "contentName": "no credit nor image"
+    }, 
     {
       "attributes": [],
       "tag": "p",
@@ -50,7 +61,18 @@
       "inputTemplate": "com.tm.Image",
       "contentId": "1.5731",
       "contentName": "nnn"
-    },               
+    }, 
+    {
+      "text": "בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר במשרד הביטחון",
+      "credit": "מישהו",
+      "position": "midCenterPosition",
+      "imagesList": [
+        
+      ],
+      "inputTemplate": "com.htz.MagazineArticleQuote",
+      "contentId": "1.6665",
+      "contentName": "with credit and no image"
+    },           
     {
       "attributes": [],
       "tag": "p",
@@ -135,17 +157,12 @@
       ]
     },           
     {
-       content: 'https://www.pinterest.com/pin/372321094177951937/',
-       caption: 'pinterest - pin',
-       credit: 'pinterest - pin',
-       embedType: 'pin',
-       elementType: 'embedElement',
-       settings: {
-         showCaption: 'false',
-       },
-       inputTemplate: 'com.polobase.PinterestEmbed',
-       contentId: '7.4982',
-       contentName: 'Pin'
+       "content": "",
+       "embedType": "excel",
+       "elementType": "embedElement",
+       "inputTemplate": "com.polobase.fileUpload",
+       "contentId": "7.4323",
+       "contentName": "hjg"
     },
      {
        "attributes": [],
@@ -229,51 +246,24 @@
        ]
      },
      {
-       "elementType": "relatedArticles",
-       "articles": [
+       "text": "בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר  הביטחון",
+       "credit": "קרדיט קרדיט",
+       "position": "midCenterPosition",
+       "afterParagraph": "2",
+       "imagesList": [
          {
-           "url": "http://eran.haaretz.co.il/news/world/LIVE-1.2597",
-           "inputTemplate": "com.htz.StandardArticle",
-           "contentId": "1.2597",
-           "contentName": "ראש ממשלת צרפת: נרקמות מזימות נוספות לפיגועים במדינה וברחבי אירופה"
-         },
-         {
-           "url": "http://eran.haaretz.co.il/RECIPE1.5808",
-           "inputTemplate": "com.htz.StandardArticle",
-           "contentId": "1.5808",
-           "contentName": "הלזניה הכי קלה בעולם"
-         },
-         {
-           "url": "http://eran.haaretz.co.il/REVIEW1.5929",
-           "inputTemplate": "com.htz.StandardArticle",
-           "contentId": "1.5929",
-           "contentName": "ביקורת מסעדה"
-         },
-         {
-           "url": "http://eran.haaretz.com:8080/.premium-1.6547",
-           "inputTemplate": "com.hdc.StandardArticle",
-           "contentId": "1.6547",
-           "contentName": "claiming credit for saving Bulgarias Jews from Holocaust"
-         },
-         {
-           "url": "http://eran.haaretz.co.il/1.6643",
-           "inputTemplate": "com.htz.StandardArticle",
-           "contentId": "1.6643",
-           "contentName": "embeds"
-         },
-         {
-           "url": "http://eran.themarker.com:8080/1.6636",
-           "inputTemplate": "com.tm.StandardArticle",
-           "contentId": "1.6636",
-           "contentName": "aaaa"
-         },
-         {
-           "url": "http://eran.haaretz.co.il/news/education/.premium-1.5662",
-           "inputTemplate": "com.htz.StandardArticle",
-           "contentId": "1.5662",
-           "contentName": "סופו של מקדש השמחה משנות התשעים - \"אלנבי 58\""
+           "alt": "Nils02",
+           "caption": "me",
+           "credit": "me",
+           "image": "image/3984584833.jpg",
+           "inputTemplate": "com.tm.Image",
+           "contentId": "1.5580",
+           "contentName": "Nils02"
          }
-       ]
+       ],
+       "inputTemplate": "com.htz.MagazineArticleQuote",
+       "contentId": "1.6662",
+       "contentName": "credit and image"
      },
      {
        "attributes": [],
@@ -289,51 +279,7 @@
            "tag": "#text"
          }
        ]
-     },
-     {
-       "elementType": "relatedArticleSeries",
-      "seriesTitle": "סדרה",
-      "articlePositionInTheSeries": "2",
-      "usePagination": "true",
-      "itemsPerPage": "3",
-       "articles": [
-         {
-            "url": "http://eran.haaretz.co.il/1.6614",
-            "positionInSeries": "1",
-            "inputTemplate": "com.htz.StandardArticle",
-            "contentId": "1.6614",
-            "contentName": "ukjhkj"
-          },
-          {
-            "url": "http://eran.haaretz.co.il/news/world/LIVE-1.2597",
-            "positionInSeries": "2",
-            "inputTemplate": "com.htz.StandardArticle",
-            "contentId": "1.2597",
-            "contentName": "ראש ממשלת צרפת: נרקמות מזימות נוספות לפיגועים במדינה וברחבי אירופה"
-          },
-          {
-            "url": "http://eran.haaretz.co.il/news/education/.premium-1.5662",
-            "positionInSeries": "3",
-            "inputTemplate": "com.htz.StandardArticle",
-            "contentId": "1.5662",
-            "contentName": "סופו של מקדש השמחה משנות התשעים - \"אלנבי 58\""
-          },
-          {
-            "url": "http://eran.themarker.com:8080/1.6636",
-            "positionInSeries": "4",
-            "inputTemplate": "com.tm.StandardArticle",
-            "contentId": "1.6636",
-            "contentName": "aaaa"
-          },
-          {
-            "url": "http://eran.haaretz.co.il/1.6643",
-            "positionInSeries": "5",
-            "inputTemplate": "com.htz.StandardArticle",
-            "contentId": "1.6643",
-            "contentName": "embeds"
-          }
-       ]
-     }
+     }       
   ]} />
 </div>
 ```

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Border Quote  1`] = `
+Object {
+  "component": <div>
+    <blockquote
+      className="htz-a htz-b"
+    >
+      <span
+        className="htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
+      />
+      <p
+        className="htz-j htz-k htz-l htz-m htz-n"
+      >
+        בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר  הביטחון
+      </p>
+    </blockquote>
+  </div>,
+  "styles": ".htz-a{color:#787878}.htz-b{font-weight:700}.htz-c{border-top-width:1rem}.htz-d{border-top-color:#0B7EB5}.htz-e{border-top-style:solid}.htz-f{width:16.5rem}.htz-g{height:1rem}.htz-h{display:inline-block}.htz-i{margin-bottom:1rem}.htz-n:after{content:''}@media (max-width: 80em){.htz-j{font-size:3.5rem}.htz-k{line-height:1.4285714285714286em}}@media (min-width: 80em){.htz-l{font-size:3.4285714285714284rem}.htz-m{line-height:1.1666666666666667em}}",
+}
+`;

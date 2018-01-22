@@ -13,6 +13,8 @@ const propTypes = {
   ).isRequired,
 };
 
+const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
+
 const figureStyle = ({ theme, lastItem, }) => (
   !lastItem ?
     {
@@ -20,7 +22,7 @@ const figureStyle = ({ theme, lastItem, }) => (
         'marginBottom',
         theme.articleStyle.body.marginBottom,
         theme.mq,
-        (prop, value) => ({ [prop]: value, })
+        mediaQueryCallback
       ),
     }
     :
@@ -28,12 +30,21 @@ const figureStyle = ({ theme, lastItem, }) => (
 );
 const Figure = createComponent(figureStyle, 'figure');
 
+const asideStyle = ({ theme, }) => ({
+    ...theme.mq({ from: 'l', }, { width: '26rem', position: 'absolute', textAlign: 'end', start: '6rem', }, ),
+    extend: [
+      ...([parseComponentProp('marginBottom', theme.articleStyle.body.marginBottom, theme.mq, mediaQueryCallback)]),
+    ]
+  }
+);
+const Aside = createComponent(asideStyle, 'aside');
+
 const bodyWrapperStyle = ({ theme, }) => ({
   ...parseComponentProp(
     'width',
     theme.articleStyle.body.width,
     theme.mq,
-    (prop, value) => ({ [prop]: value, })
+    mediaQueryCallback
   ),
 });
 
@@ -49,21 +60,23 @@ const buildComponent = (componentType, index, isLastItem, theme) => {
       <Figure key={index} lastItem={isLastItem}><Component {...componentType} /></Figure>
       :
       uniqueId ?
-        <Component
-          key={index}
-          {...componentType}
-          marginBottom={
-            isLastItem ?
-              null
-              :
-              parseComponentProp(
-                'marginBottom',
-                theme.articleStyle.body.marginBottom,
-                theme.mq,
-                (prop, value) => ({ [prop]: value, })
-              )
-          }
-        />
+        uniqueId === 'com.htz.MagazineArticleQuote' ?
+          <Aside><Component {...componentType} /></Aside> :
+            <Component
+              key={index}
+              content={componentType}
+              marginBottom={
+                isLastItem ?
+                  null
+                  :
+                  parseComponentProp(
+                    'marginBottom',
+                    theme.articleStyle.body.marginBottom,
+                    theme.mq,
+                    mediaQueryCallback
+                  )
+              }
+            />
         :
         <p key={index}>{componentType}</p>
   );
