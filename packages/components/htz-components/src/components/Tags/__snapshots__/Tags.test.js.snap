@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MobileQuickRegistration  1`] = `
+Object {
+  "component": <div>
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e"
+    >
+      <h4
+        className="htz-f htz-g"
+      >
+        תגיות:
+      </h4>
+      <ul>
+        <li
+          className="htz-h htz-g"
+        >
+          <a
+            className={null}
+            href="http://eran.themarker.com:8080/hayehudim-baim-1.2670"
+            onClick={[Function]}
+            target={null}
+          >
+            <span
+              className="htz-i htz-j"
+            >
+              היהודים באים
+            </span>
+          </a>
+        </li>
+        <li
+          className="htz-h htz-g"
+        >
+          <a
+            className={null}
+            href="/food/dairy-1.2429"
+            onClick={[Function]}
+            target={null}
+          >
+            <span
+              className="htz-i htz-j"
+            >
+              חלבי
+            </span>
+          </a>
+        </li>
+        <li
+          className="htz-h"
+        >
+          <a
+            className={null}
+            href="/news/terror-1.2603"
+            onClick={[Function]}
+            target={null}
+          >
+            <span
+              className="htz-i htz-j"
+            >
+              טרור
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>,
+  "styles": ".htz-e{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-f{color:#00537A}.htz-g{margin-left:1rem}.htz-h{display:inline}.htz-i{color:#505050}.htz-j{text-decoration:underline}@media (max-width: 80em){.htz-a{font-size:2.3333333333333335rem}.htz-b{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-c{font-size:2.2857142857142856rem}.htz-d{line-height:1.3125em}}",
+}
+`;

@@ -9,6 +9,7 @@ import gridStyle from './consts/gridStyle';
 import inputStyle from './consts/inputStyle';
 import typeConf from './consts/typeConf';
 import internationalization from './consts/internationalization';
+import i18n from './consts/i18n';
 
 // methods
 import getColor from './methods/getColor';
@@ -103,4 +104,4 @@ const htzTheme = Object.freeze({
 });
 
 export default htzTheme;
-export { bps, getColor, getTransition, mq, pxToRem, typesetter, internationalization};
+export { bps, getColor, getTransition, mq, pxToRem, typesetter, internationalization, i18n, };

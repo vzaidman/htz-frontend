@@ -16,6 +16,7 @@ import Quote from './components/Quote/Quote';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
+import Tags from './components/Tags/Tags';
 
 // Icons
 import IconAccessibility from './components/Icon/icons/IconAccessibility';
@@ -116,4 +117,5 @@ export {
   RelatedArticles,
   SeriesArticles,
   StyleProvider,
+  Tags
 };
