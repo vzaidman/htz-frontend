@@ -13,6 +13,7 @@ import Embed from './components/Embed/Embed';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
 import Quote from './components/Quote/Quote';
+import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 
@@ -105,6 +106,7 @@ export {
   IconZen,
   IconZoomIn,
   IconZoomOut,
+  MobileQuickRegistration,
   createDocument,
   createFelaEnzymeRenderers,
   createFelaSnapshotter,
