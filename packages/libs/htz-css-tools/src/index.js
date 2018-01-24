@@ -22,6 +22,7 @@ import createRemFunction from './units/createRemFunction';
 import createTypesetter from './typography/createTypesetter';
 import getLengthProps from './units/getLengthProps';
 import getMqString from './mq/getMqString';
+import getRemFromPx from './units/getRemFromPx';
 import getUnit from './units/getUnit';
 import parseComponentProp from './props/parseComponentProp';
 // import parseStyleProp from './props/parseStyleProp';
@@ -47,6 +48,7 @@ export {
   createTypesetter,
   getLengthProps,
   getMqString,
+  getRemFromPx,
   getUnit,
   parseComponentProp,
   // parseStyleProp,

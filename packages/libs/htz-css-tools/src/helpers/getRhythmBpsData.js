@@ -15,8 +15,7 @@ export type RhythmBpData = {|
   from?: string | void,
   until?: string | void,
   rhythmBp: string,
-|}
-
+|};
 
 /**
  * Get a list of rhythm breakpoints within a range, and pertinent data
@@ -41,13 +40,16 @@ export type RhythmBpData = {|
  * ]
  */
 export default function getRhythmBpsData(
-  bps: string[], rhythmBps: string[], from?: string, until?: string
+  bps: string[],
+  rhythmBps: string[],
+  from?: string,
+  until?: string
 ): RhythmBpData[] {
   if (bps.length === 0 || rhythmBps.length === 0) {
     throw new Error(
-      bps.length === 0 ?
-        'The "bps" array in "getRhythmBpsData" can not be empty' :
-        'The "rhythmBps" array in "getRhythmBpsData" can not be empty'
+      bps.length === 0
+        ? 'The "bps" array in "getRhythmBpsData" can not be empty'
+        : 'The "rhythmBps" array in "getRhythmBpsData" can not be empty'
     );
   }
 
@@ -55,10 +57,14 @@ export default function getRhythmBpsData(
   const untilIndex = until ? bps.indexOf(until) : -1;
 
   if (from && fromIndex === -1) {
-    throw new Error(`"from" (${from}) must be a breakpoint defined in "bps" (${bps.toString()})`);
+    throw new Error(
+      `"from" (${from}) must be a breakpoint defined in "bps" (${bps.toString()})`
+    );
   }
   if (until && untilIndex === -1) {
-    throw new Error(`"until" (${until}) must be a breakpoint defined in "bps" (${bps.toString()})`);
+    throw new Error(
+      `"until" (${until}) must be a breakpoint defined in "bps" (${bps.toString()})`
+    );
   }
   if (from && until && fromIndex > untilIndex) {
     throw new Error(
@@ -67,16 +73,22 @@ export default function getRhythmBpsData(
   }
 
   const closestToFrom = from ? getClosestBp(from, rhythmBps, bps) : undefined;
-  const closestToUntil = until ? getClosestBp(until, rhythmBps, bps, true) : undefined;
+  const closestToUntil = until
+    ? getClosestBp(until, rhythmBps, bps, true)
+    : undefined;
 
-  return getBpsInRange(rhythmBps, closestToFrom, closestToUntil)
-    .map((rhythmBp, i, allBps): RhythmBpData => {
-      const isLast = i === allBps.length - 1;
+  return getBpsInRange(
+    rhythmBps,
+    closestToFrom,
+    closestToUntil
+  ).map((rhythmBp, i, allBps): RhythmBpData => {
+    const isLast = i === allBps.length - 1;
 
-      return {
-        from: i === 0 && from ? from : rhythmBp === 'default' ? undefined : rhythmBp,
-        until: isLast ? until || undefined : allBps[i + 1],
-        rhythmBp,
-      };
-    });
+    return {
+      from:
+        i === 0 && from ? from : rhythmBp === 'default' ? undefined : rhythmBp,
+      until: isLast ? until || undefined : allBps[i + 1],
+      rhythmBp,
+    };
+  });
 }

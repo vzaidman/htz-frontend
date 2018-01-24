@@ -43,12 +43,12 @@
  * },
  */
 export type TypeScaleOpts = {
-    base: number;
-    steps: number;
-    ratio: number;
-    rhythmUnit: number;
-    minPadding: number;
-}
+  base: number,
+  steps: number,
+  ratio: number,
+  rhythmUnit: number,
+  minPadding: number,
+};
 
 /**
  * **Typographic Scale Configuration**<br />
@@ -82,9 +82,9 @@ export type TypeScaleOpts = {
  * };
  */
 export type TypeConf = {
-    default: TypeScaleOpts;
-    [bpName: string]: TypeScaleOpts;
-}
+  default: TypeScaleOpts,
+  [bpName: string]: TypeScaleOpts,
+};
 
 // function getFZ(step, base = 16, ratio = 2, stepsPerInterval = 5) {
 //   return Math.round(base * Math.pow(ratio, step / stepsPerInterval));

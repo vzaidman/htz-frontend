@@ -34,6 +34,7 @@
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
     "documentation": "^5.3.3",
+    "mq-polyfill": "^1.1.8",
     "rimraf": "2.6.2"
   }
 }

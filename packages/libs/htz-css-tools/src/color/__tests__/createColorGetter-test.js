@@ -151,7 +151,7 @@ describe('createColorGetter()', () => {
       testColorGetter(
         'throw if "variant" is not a named variant of "color"',
         [ 'primary', '+6', ],
-        "\"primary['+6']\" is not a named-color in your color palette",
+        '"primary[\'+6\']" is not a named-color in your color palette',
         { matcher: 'toThrow', }
       );
       testColorGetter(

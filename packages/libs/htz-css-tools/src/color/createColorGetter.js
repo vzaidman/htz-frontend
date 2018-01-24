@@ -26,7 +26,7 @@
  *     </li>
  */
 export type ColorPalette = {
-  [colorName: string]: string | string[] | ColorPalette
+  [colorName: string]: string | string[] | ColorPalette,
 };
 
 /**

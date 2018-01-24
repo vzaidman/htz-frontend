@@ -3,51 +3,51 @@
  * The side(s) of an element a border will be applied to.
  */
 export type BorderProperty =
-  | "borderTopWidth"
-  | "borderRightWidth"
-  | "borderBottomWidth"
-  | "borderLeftWidth"
-  | "borderInlineStartWidth"
-  | "borderInlineEndWidth"
-  | "borderTopStyle"
-  | "borderRightStyle"
-  | "borderBottomStyle"
-  | "borderLeftStyle"
-  | "borderInlineStartStyle"
-  | "borderInlineEndStyle"
-  | "borderTopColor"
-  | "borderRightColor"
-  | "borderBottomColor"
-  | "borderLeftColor"
-  | "borderInlineStartColor"
-  | "borderInlineEndColor";
+  | 'borderTopWidth'
+  | 'borderRightWidth'
+  | 'borderBottomWidth'
+  | 'borderLeftWidth'
+  | 'borderInlineStartWidth'
+  | 'borderInlineEndWidth'
+  | 'borderTopStyle'
+  | 'borderRightStyle'
+  | 'borderBottomStyle'
+  | 'borderLeftStyle'
+  | 'borderInlineStartStyle'
+  | 'borderInlineEndStyle'
+  | 'borderTopColor'
+  | 'borderRightColor'
+  | 'borderBottomColor'
+  | 'borderLeftColor'
+  | 'borderInlineStartColor'
+  | 'borderInlineEndColor';
 
 /** value of `side` argument of `setBorder()` */
 export type BorderSide =
-  | "all"
-  | "top"
-  | "right"
-  | "bottom"
-  | "left"
-  | "inlineStart"
-  | "inlineEnd"
-  | "start"
-  | "end"
-  | "horizontal"
-  | "vertical";
+  | 'all'
+  | 'top'
+  | 'right'
+  | 'bottom'
+  | 'left'
+  | 'inlineStart'
+  | 'inlineEnd'
+  | 'start'
+  | 'end'
+  | 'horizontal'
+  | 'vertical';
 
 /** `border-style` value */
 export type BorderStyle =
-  | "none"
-  | "hidden"
-  | "dotted"
-  | "dashed"
-  | "solid"
-  | "double"
-  | "grove"
-  | "ridge"
-  | "inset"
-  | "outset";
+  | 'none'
+  | 'hidden'
+  | 'dotted'
+  | 'dashed'
+  | 'solid'
+  | 'double'
+  | 'grove'
+  | 'ridge'
+  | 'inset'
+  | 'outset';
 
 /**
  * Configuration object for border functions
@@ -67,7 +67,7 @@ export type BorderOptions = {
   width: number | string,
   lines?: number,
   style?: BorderStyle,
-  color?: string
+  color?: string,
 };
 
 /** A css-in-js object of border-related styles */
@@ -75,11 +75,11 @@ export type BorderRuleset = {
   [borderSideProp: BorderProperty]: string,
   paddingBottom?: string,
   paddingTop?: string,
-  position?: "relative",
+  position?: 'relative',
 
   ":after"?: {
     bottom?: 0,
-    content: "",
+    content: '',
     height: number,
     position: "absolute",
     width: "100%"
@@ -89,6 +89,6 @@ export type BorderRuleset = {
     height: number,
     position: "absolute",
     top?: 0,
-    width: "100%"
-  }
+    width: '100%',
+  },
 };

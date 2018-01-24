@@ -14,16 +14,16 @@ const CONVERTIBLE_UNITS: string[] = [
 
 /** A unit that can be converted to from `px` */
 type TargetUnit =
-  | "in"
-  | "mm"
-  | "cm"
-  | "pt"
-  | "pc"
-  | "px"
-  | "em"
-  | "rem"
-  | "%"
-  | "ex";
+  | 'in'
+  | 'mm'
+  | 'cm'
+  | 'pt'
+  | 'pc'
+  | 'px'
+  | 'em'
+  | 'rem'
+  | '%'
+  | 'ex';
 
 /**
  * A function that converts pixel values to target unit designated by the factory function.

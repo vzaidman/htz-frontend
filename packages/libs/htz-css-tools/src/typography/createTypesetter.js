@@ -23,7 +23,7 @@ import type { RhythmBpData, } from '../helpers/getRhythmBpsData';
  */
 export type TypographicStyles = {|
   fontSize: string | string[],
-  lineHeight: string | string[]
+  lineHeight: string | string[],
 |};
 
 /**
@@ -42,7 +42,7 @@ export type TypesetterOpts = {
   lines?: number,
   fromBp?: string,
   untilBp?: string,
-  pxFallback?: string
+  pxFallback?: string,
 };
 
 /**

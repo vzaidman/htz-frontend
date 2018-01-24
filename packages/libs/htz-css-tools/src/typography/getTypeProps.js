@@ -15,7 +15,7 @@ export type TypeProps = {|
   fontSize: number,
   lineHeight: number,
   relativeLineHeight: number,
-  lines: number
+  lines: number,
 |};
 
 /**
@@ -52,7 +52,7 @@ export type GetTypePropsOpts = {
   rhythmUnit?: number,
   minPadding?: number,
   ratio?: number,
-  stepsPerInterval?: number
+  stepsPerInterval?: number,
 };
 
 /**
