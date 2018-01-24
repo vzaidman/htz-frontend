@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Comment> DOM element renders correctly with required props 1`] = `
+<div>
+  <div
+    className="htz-a"
+  >
+    <section
+      className="htz-b htz-c htz-d htz-e htz-f"
+    >
+      <div
+        className="htz-g htz-h htz-i htz-j htz-k htz-l"
+      >
+        <div
+          className="htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
+        >
+          <span>
+            
+          </span>
+        </div>
+        <div
+          className="htz-u htz-v htz-w htz-x"
+        >
+          <div
+            className="htz-u htz-g htz-h htz-y htz-z htz-ab"
+          >
+            <h4
+              className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap"
+              onClick={[Function]}
+            >
+              אורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלר
+            </h4>
+            <span
+              className="htz-n htz-aq htz-ar htz-as htz-at htz-ah htz-au"
+            >
+              08:57
+            </span>
+            <span
+              className="htz-av htz-ag"
+            >
+              | 
+              בחירת העורכים
+            </span>
+          </div>
+          <div>
+            <div
+              className="htz-aw htz-af"
+            >
+              התמונה בכתבה היא בסבירות גבוהה לא מבאבי יאר
+            </div>
+            <div
+              className="htz-aw htz-af"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "long text sdmgalkgmlaskgmaslkg lsdlk jasldk lsdkj lksajg lskdgjaslkdgjmlaskgjmlasdkgjmslkdgmsldk sdlkmg slakgmsdgasdgb;l,sad;lgb,s;adb,b fl;,b ;dflb,df;lb, dsdfagkjerngkjawn vkrj vkrejv erkjv krejgv krj vkrwej vkrjv kjrv krjv erkj vrej  v",
+                }
+              }
+            />
+          </div>
+          <div
+            className="htz-g htz-h htz-ax htz-z htz-ay"
+          >
+            <button
+              className="htz-z htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-ag htz-bj htz-bk htz-c htz-d htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-ac htz-by htz-al htz-am htz-an htz-ao htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr"
+              id={null}
+              onClick={[Function]}
+              type="button"
+            >
+              הגב
+            </button>
+            <button
+              className="htz-bb htz-z htz-cs htz-ct"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="htz-cu htz-ac htz-cv htz-cw"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                  
+                <path
+                  d="M184 72h48v113h-48V72zM24.7 91.2c3.7 20.4 29.6 76.1 29.6 76.1 4.9 11.1 8 17.8 17.8 17.8h74c11.6 0 21-9.4 21-21V93c0-11.6-9.4-21-21-21-1 0-2-.5-2.6-1.3-20.5-27.4-24.1-41.1-30-56-1.9-4.9-6-13.8-14.8-13.8-10.9.1-24.8 13.1-25.2 28-.4 15.3 1.8 24.4 11.4 42.8 0 .1.1.1.1.2H42.9c-9.9.1-20 9.6-18.2 19.3z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span
+                className="htz-n htz-cx htz-au htz-bc htz-cy htz-am htz-cz htz-da"
+              >
+                0
+              </span>
+            </button>
+            <button
+              className="htz-bb htz-z htz-db htz-dc htz-ct"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="htz-cu htz-ac htz-cv htz-cw"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                  
+                <path
+                  d="M184 72h48v113h-48V72zM42.9 184H85c0 .1-.1.1-.1.2-9.6 18.5-11.7 27.5-11.4 42.8.4 15 14.3 28 25 28 8.8 0 12.9-8.9 14.8-13.8 5.9-14.9 9.5-28.6 30-56 .6-.8 1.6-1.3 2.6-1.3 11.6 0 21-9.4 21-21V92c0-11.6-9.4-21-21-21H72c-9.8 0-12.9 6.6-17.8 17.8 0 0-25.9 55.7-29.6 76.1-1.7 9.6 8.4 19.1 18.3 19.1z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span
+                className="htz-n htz-cx htz-au htz-bc htz-cy htz-am htz-cz htz-da"
+              >
+                0
+              </span>
+            </button>
+            <button
+              className="htz-z htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-ag htz-bj htz-bk htz-c htz-d htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-dd htz-bs htz-bt htz-de htz-bv htz-bw htz-df htz-dg htz-cy htz-am htz-cz htz-da htz-bz htz-ca htz-cb htz-dh htz-di htz-dj htz-cf htz-cg htz-ch htz-ci htz-dk htz-dl htz-dm htz-cm htz-cn htz-co htz-cp htz-dn htz-do"
+              id={null}
+              onClick={[Function]}
+              type="button"
+            >
+              דווח כפוגעני
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+`;
+
+exports[`<Comment> DOM element renders correctly with required props 2`] = `".htz-a{background-color:#FFF}.htz-b{background-color:#EBF2F5}.htz-c{border-bottom-width:1px}.htz-d{border-bottom-style:solid}.htz-e{border-bottom-color:#B4B4B4}.htz-f{padding-bottom:calc(2rem - 1px)}.htz-g{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-h{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-i{justify-content:flex-end;-webkit-box-pack:end;-webkit-justify-content:flex-end}.htz-j{padding-right:1rem}.htz-k{padding-left:1rem}.htz-l{padding-top:2rem}.htz-m{width:8.5rem}.htz-n{color:#787878}.htz-o{flex-shrink:0;-webkit-flex-shrink:0}.htz-p{flex-grow:0;-webkit-flex-grow:0}.htz-u{width:100%}.htz-v{flex-shrink:1;-webkit-flex-shrink:1}.htz-w{flex-grow:1;-webkit-flex-grow:1}.htz-x{min-width:0rem}.htz-y{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-z{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ac{color:#0B7EB5}.htz-ae{padding:0rem}.htz-af{margin:0rem}.htz-ag{white-space:nowrap}.htz-ah{margin-left:1rem}.htz-ai{max-width:50%}.htz-aj{overflow:hidden}.htz-ak{text-overflow:ellipsis}.htz-ap:hover{cursor:pointer}.htz-au{margin-right:1rem}.htz-av{color:#169FD1}.htz-aw{color:#2D2D2D}.htz-ax{align-content:flex-start;-webkit-align-content:flex-start}.htz-ay{margin-top:2rem}.htz-az{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-ba{cursor:pointer}.htz-bb{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bc{font-weight:bold}.htz-bd{font-size:inherit}.htz-be{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-bf{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-bg{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bh{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-bi{text-decoration:none}.htz-bj::moz-focus-inner{border:0px}.htz-bk::moz-focus-inner{padding:0rem}.htz-bl{padding-bottom:calc(0.5rem - 1px)}.htz-bm{border-top-width:1px}.htz-bn{border-top-style:solid}.htz-bo{padding-top:calc(0.5rem - 1px)}.htz-bp{border-right-width:1px}.htz-bq{border-right-style:solid}.htz-br{padding-right:4rem}.htz-bs{border-left-width:1px}.htz-bt{border-left-style:solid}.htz-bu{padding-left:4rem}.htz-bv{border-radius:0rem}.htz-bw{background-color:transparent}.htz-bx{border-color:#0B7EB5}.htz-by{margin-left:2rem}.htz-bz:hover{text-decoration:none}.htz-ca:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cb:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cc:hover{background-color:#EBF2F5}.htz-cd:hover{border-color:#006B96}.htz-ce:hover{color:#006B96}.htz-cf:focus{outline:none}.htz-cg:focus{text-decoration:none}.htz-ch:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-ci:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cj:focus{background-color:#0B7EB5}.htz-ck:focus{border-color:#0B7EB5}.htz-cl:focus{color:#FFF}.htz-cm:active{outline:none}.htz-cn:active{text-decoration:none}.htz-co:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-cp:active{background-color:#fff !important}.htz-cq:active{border-color:#0B7EB5}.htz-cr:active{color:#0B7EB5}.htz-cs{margin-right:auto}.htz-cu{vertical-align:-0.15em}.htz-cv{fill:#FFF}.htz-cw{font-size:4rem}.htz-cx{vertical-align:center}.htz-db{margin-right:2rem}.htz-dc{margin-left:4rem}.htz-dd{padding-right:2rem}.htz-de{padding-left:2rem}.htz-df{border-color:transparent}.htz-dg{color:#A8001C}.htz-dh:hover{background-color:#FEE}.htz-di:hover{border-color:transparent}.htz-dj:hover{color:#8A021B}.htz-dk:focus{background-color:#A8001C}.htz-dl:focus{border-color:transparent}.htz-dm:focus{color:#fff}.htz-dn:active{border-color:transparent}.htz-do:active{color:#A8001C}@media (max-width: 80em){.htz-q{font-size:4rem}.htz-r{line-height:1.25em}.htz-al{font-size:2.6666666666666665rem}.htz-am{line-height:1.5em}.htz-aq{font-size:2.3333333333333335rem}.htz-ar{line-height:1.2857142857142858em}.htz-cy{font-size:2rem}}@media (min-width: 80em){.htz-s{font-size:3.857142857142857rem}.htz-t{line-height:1.2962962962962963em}.htz-an{font-size:2.5714285714285716rem}.htz-ao{line-height:1.5555555555555556em}.htz-as{font-size:2.2857142857142856rem}.htz-at{line-height:1.3125em}.htz-cz{font-size:2rem}.htz-da{line-height:1.5em}}@media (max-width: 37.5em){.htz-ab{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-ct{display:none}}"`;

@@ -1,0 +1,1872 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CommentSent> DOM element Does not Call signUpNotification when an invalid email is entered 1`] = `
+<CommentSent
+  closeDisplayThankYou={[Function]}
+  displayThankYou={false}
+  signUpNotification={[MockFunction]}
+>
+  <contStyle
+    displayThankYou={false}
+  >
+    <contStyle
+      displayThankYou={false}
+      theme={
+        Object {
+          "articleStyle": Object {
+            "body": Object {
+              "marginBottom": Array [
+                Object {
+                  "until": "xl",
+                  "value": "4rem",
+                },
+                Object {
+                  "from": "xl",
+                  "value": "3.5rem",
+                },
+              ],
+            },
+            "paragraphLink": Object {
+              ":focus": Object {
+                "borderBottomColor": "#0B7EB5",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "2px",
+              },
+              ":hover": Object {
+                "borderBottomColor": "#0B7EB5",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "1px",
+              },
+              "color": "#0B7EB5",
+            },
+            "paragraphStyles": Object {},
+          },
+          "bps": Object {
+            "misc": Object {
+              "hidpi": "(min-resolution: 1.5dppx)",
+              "landscape": "(orientation: landscape)",
+              "portrait": "(orientation: portrait)",
+            },
+            "widths": Object {
+              "l": 1024,
+              "m": 768,
+              "s": 600,
+              "xl": 1280,
+            },
+          },
+          "btnStyle": Object {
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderEndStyle": "solid",
+            "borderEndWidth": 1,
+            "borderStartStyle": "solid",
+            "borderStartWidth": 1,
+            "borderTopStyle": "solid",
+            "borderTopWidth": 1,
+            "boxModel": Object {
+              "hp": 4,
+              "vp": 1,
+            },
+            "fontWeight": "bold",
+            "radius": 0,
+          },
+          "captionStyles": Object {
+            "backgroundColor": Array [
+              "neutral",
+              "-10",
+            ],
+            "captionColor": Array [
+              "neutral",
+              "-2",
+            ],
+            "captionTypeSettings": -2,
+            "creditStyles": Object {
+              "fontWeight": "300",
+            },
+            "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+            "fontWeight": "700",
+          },
+          "color": [Function],
+          "direrction": "rtl",
+          "fontStacks": Object {
+            "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+            "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+          },
+          "getDelay": [Function],
+          "getDuration": [Function],
+          "getTimingFunction": [Function],
+          "getTransition": [Function],
+          "gridStyle": Object {
+            "gutterWidth": 4,
+            "ruleColor": Array [
+              "neutral",
+              "-5",
+            ],
+            "ruleWidth": 1,
+          },
+          "inputStyle": Object {
+            "borderStyle": "solid",
+            "borderWidth": 1,
+            "fontWeightLabel": "bold",
+            "height": 6,
+            "lines": 1,
+            "radius": 0,
+            "typeScale": -1,
+          },
+          "mq": [Function],
+          "pxToRem": [Function],
+          "selectStyle": Object {
+            "borderStyle": "solid",
+            "borderWidth": 1,
+            "lines": 0.00001,
+          },
+          "type": [Function],
+          "typeConf": Object {
+            "default": Object {
+              "base": 16,
+              "minPadding": 2,
+              "ratio": 2,
+              "rhythmUnit": 6,
+              "steps": 5,
+            },
+            "xl": Object {
+              "base": 18,
+              "minPadding": 2,
+              "ratio": 2,
+              "rhythmUnit": 7,
+              "steps": 5,
+            },
+          },
+        }
+      }
+    >
+      <div
+        className="htz-a htz-b htz-c htz-bh htz-e htz-f htz-g htz-bi"
+      >
+        <Form
+          attrs={null}
+          disablePreventDefault={false}
+          initialValues={Object {}}
+          isValidateOnBlur={true}
+          isValidateOnChange={true}
+          onSubmit={[Function]}
+          render={[Function]}
+          validate={[Function]}
+        >
+          <form>
+            <div>
+              <p>
+                <boldSpanStyle>
+                  <boldSpanStyle
+                    theme={
+                      Object {
+                        "articleStyle": Object {
+                          "body": Object {
+                            "marginBottom": Array [
+                              Object {
+                                "until": "xl",
+                                "value": "4rem",
+                              },
+                              Object {
+                                "from": "xl",
+                                "value": "3.5rem",
+                              },
+                            ],
+                          },
+                          "paragraphLink": Object {
+                            ":focus": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "2px",
+                            },
+                            ":hover": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "1px",
+                            },
+                            "color": "#0B7EB5",
+                          },
+                          "paragraphStyles": Object {},
+                        },
+                        "bps": Object {
+                          "misc": Object {
+                            "hidpi": "(min-resolution: 1.5dppx)",
+                            "landscape": "(orientation: landscape)",
+                            "portrait": "(orientation: portrait)",
+                          },
+                          "widths": Object {
+                            "l": 1024,
+                            "m": 768,
+                            "s": 600,
+                            "xl": 1280,
+                          },
+                        },
+                        "btnStyle": Object {
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": 1,
+                          "borderEndStyle": "solid",
+                          "borderEndWidth": 1,
+                          "borderStartStyle": "solid",
+                          "borderStartWidth": 1,
+                          "borderTopStyle": "solid",
+                          "borderTopWidth": 1,
+                          "boxModel": Object {
+                            "hp": 4,
+                            "vp": 1,
+                          },
+                          "fontWeight": "bold",
+                          "radius": 0,
+                        },
+                        "captionStyles": Object {
+                          "backgroundColor": Array [
+                            "neutral",
+                            "-10",
+                          ],
+                          "captionColor": Array [
+                            "neutral",
+                            "-2",
+                          ],
+                          "captionTypeSettings": -2,
+                          "creditStyles": Object {
+                            "fontWeight": "300",
+                          },
+                          "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                          "fontWeight": "700",
+                        },
+                        "color": [Function],
+                        "direrction": "rtl",
+                        "fontStacks": Object {
+                          "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                          "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        },
+                        "getDelay": [Function],
+                        "getDuration": [Function],
+                        "getTimingFunction": [Function],
+                        "getTransition": [Function],
+                        "gridStyle": Object {
+                          "gutterWidth": 4,
+                          "ruleColor": Array [
+                            "neutral",
+                            "-5",
+                          ],
+                          "ruleWidth": 1,
+                        },
+                        "inputStyle": Object {
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "fontWeightLabel": "bold",
+                          "height": 6,
+                          "lines": 1,
+                          "radius": 0,
+                          "typeScale": -1,
+                        },
+                        "mq": [Function],
+                        "pxToRem": [Function],
+                        "selectStyle": Object {
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "lines": 0.00001,
+                        },
+                        "type": [Function],
+                        "typeConf": Object {
+                          "default": Object {
+                            "base": 16,
+                            "minPadding": 2,
+                            "ratio": 2,
+                            "rhythmUnit": 6,
+                            "steps": 5,
+                          },
+                          "xl": Object {
+                            "base": 18,
+                            "minPadding": 2,
+                            "ratio": 2,
+                            "rhythmUnit": 7,
+                            "steps": 5,
+                          },
+                        },
+                      }
+                    }
+                  >
+                    <span
+                      className="htz-j"
+                    >
+                      תגובתך נקלטה בהצלחה, 
+                    </span>
+                  </boldSpanStyle>
+                </boldSpanStyle>
+                ותפורסם על פי מדיניות המערכת.
+              </p>
+              <p>
+                באפשרותך לקבל התראה בדוא"ל כאשר תגובתך תאושר ותפורסם
+              </p>
+              <TextInput
+                attrs={null}
+                className={null}
+                defaultValue={null}
+                errorText="נא להזין כתובת דוא\\"ל תקינה"
+                height={null}
+                inputId={null}
+                isContentEditable={false}
+                isDisabled={false}
+                isError={true}
+                isTextArea={false}
+                label="דוא\\"ל"
+                labelHidden={false}
+                labelId={null}
+                maxLength={200}
+                minLength={null}
+                miscStyles={
+                  Object {
+                    "marginTop": "4rem",
+                  }
+                }
+                noteId={null}
+                noteText="הזינו כתובת דוא\\"ל לקבלת התראות"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onContentEditableChange={null}
+                onFocus={null}
+                onInput={null}
+                placeholder={null}
+                refFunc={[Function]}
+                requiredText={null}
+                type="email"
+                value="emailinvalid"
+                variant="primaryInverse"
+              >
+                <div>
+                  <labelStyle
+                    htmlFor="123456789"
+                    isContentEditable={false}
+                    isDisabled={false}
+                    isError={true}
+                    isFocused={false}
+                    isTextArea={false}
+                    miscStyles={
+                      Object {
+                        "marginTop": "4rem",
+                      }
+                    }
+                    variant="primaryInverse"
+                  >
+                    <labelStyle
+                      htmlFor="123456789"
+                      isContentEditable={false}
+                      isDisabled={false}
+                      isError={true}
+                      isFocused={false}
+                      isTextArea={false}
+                      miscStyles={
+                        Object {
+                          "marginTop": "4rem",
+                        }
+                      }
+                      theme={
+                        Object {
+                          "articleStyle": Object {
+                            "body": Object {
+                              "marginBottom": Array [
+                                Object {
+                                  "until": "xl",
+                                  "value": "4rem",
+                                },
+                                Object {
+                                  "from": "xl",
+                                  "value": "3.5rem",
+                                },
+                              ],
+                            },
+                            "paragraphLink": Object {
+                              ":focus": Object {
+                                "borderBottomColor": "#0B7EB5",
+                                "borderBottomStyle": "solid",
+                                "borderBottomWidth": "2px",
+                              },
+                              ":hover": Object {
+                                "borderBottomColor": "#0B7EB5",
+                                "borderBottomStyle": "solid",
+                                "borderBottomWidth": "1px",
+                              },
+                              "color": "#0B7EB5",
+                            },
+                            "paragraphStyles": Object {},
+                          },
+                          "bps": Object {
+                            "misc": Object {
+                              "hidpi": "(min-resolution: 1.5dppx)",
+                              "landscape": "(orientation: landscape)",
+                              "portrait": "(orientation: portrait)",
+                            },
+                            "widths": Object {
+                              "l": 1024,
+                              "m": 768,
+                              "s": 600,
+                              "xl": 1280,
+                            },
+                          },
+                          "btnStyle": Object {
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": 1,
+                            "borderEndStyle": "solid",
+                            "borderEndWidth": 1,
+                            "borderStartStyle": "solid",
+                            "borderStartWidth": 1,
+                            "borderTopStyle": "solid",
+                            "borderTopWidth": 1,
+                            "boxModel": Object {
+                              "hp": 4,
+                              "vp": 1,
+                            },
+                            "fontWeight": "bold",
+                            "radius": 0,
+                          },
+                          "captionStyles": Object {
+                            "backgroundColor": Array [
+                              "neutral",
+                              "-10",
+                            ],
+                            "captionColor": Array [
+                              "neutral",
+                              "-2",
+                            ],
+                            "captionTypeSettings": -2,
+                            "creditStyles": Object {
+                              "fontWeight": "300",
+                            },
+                            "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            "fontWeight": "700",
+                          },
+                          "color": [Function],
+                          "direrction": "rtl",
+                          "fontStacks": Object {
+                            "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                          },
+                          "getDelay": [Function],
+                          "getDuration": [Function],
+                          "getTimingFunction": [Function],
+                          "getTransition": [Function],
+                          "gridStyle": Object {
+                            "gutterWidth": 4,
+                            "ruleColor": Array [
+                              "neutral",
+                              "-5",
+                            ],
+                            "ruleWidth": 1,
+                          },
+                          "inputStyle": Object {
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "fontWeightLabel": "bold",
+                            "height": 6,
+                            "lines": 1,
+                            "radius": 0,
+                            "typeScale": -1,
+                          },
+                          "mq": [Function],
+                          "pxToRem": [Function],
+                          "selectStyle": Object {
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "lines": 0.00001,
+                          },
+                          "type": [Function],
+                          "typeConf": Object {
+                            "default": Object {
+                              "base": 16,
+                              "minPadding": 2,
+                              "ratio": 2,
+                              "rhythmUnit": 6,
+                              "steps": 5,
+                            },
+                            "xl": Object {
+                              "base": 18,
+                              "minPadding": 2,
+                              "ratio": 2,
+                              "rhythmUnit": 7,
+                              "steps": 5,
+                            },
+                          },
+                        }
+                      }
+                      variant="primaryInverse"
+                    >
+                      <label
+                        className="htz-n htz-bj htz-l htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-ah htz-ai htz-bu htz-ae htz-af htz-bv htz-z htz-ab htz-bw htz-ac htz-e htz-f htz-bx htz-y htz-by htz-bz htz-ca"
+                        htmlFor="123456789"
+                      >
+                        <labelAndButtonsWrapperStyle
+                          isContentEditable={false}
+                          isTextArea={false}
+                        >
+                          <labelAndButtonsWrapperStyle
+                            isContentEditable={false}
+                            isTextArea={false}
+                            theme={
+                              Object {
+                                "articleStyle": Object {
+                                  "body": Object {
+                                    "marginBottom": Array [
+                                      Object {
+                                        "until": "xl",
+                                        "value": "4rem",
+                                      },
+                                      Object {
+                                        "from": "xl",
+                                        "value": "3.5rem",
+                                      },
+                                    ],
+                                  },
+                                  "paragraphLink": Object {
+                                    ":focus": Object {
+                                      "borderBottomColor": "#0B7EB5",
+                                      "borderBottomStyle": "solid",
+                                      "borderBottomWidth": "2px",
+                                    },
+                                    ":hover": Object {
+                                      "borderBottomColor": "#0B7EB5",
+                                      "borderBottomStyle": "solid",
+                                      "borderBottomWidth": "1px",
+                                    },
+                                    "color": "#0B7EB5",
+                                  },
+                                  "paragraphStyles": Object {},
+                                },
+                                "bps": Object {
+                                  "misc": Object {
+                                    "hidpi": "(min-resolution: 1.5dppx)",
+                                    "landscape": "(orientation: landscape)",
+                                    "portrait": "(orientation: portrait)",
+                                  },
+                                  "widths": Object {
+                                    "l": 1024,
+                                    "m": 768,
+                                    "s": 600,
+                                    "xl": 1280,
+                                  },
+                                },
+                                "btnStyle": Object {
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": 1,
+                                  "borderEndStyle": "solid",
+                                  "borderEndWidth": 1,
+                                  "borderStartStyle": "solid",
+                                  "borderStartWidth": 1,
+                                  "borderTopStyle": "solid",
+                                  "borderTopWidth": 1,
+                                  "boxModel": Object {
+                                    "hp": 4,
+                                    "vp": 1,
+                                  },
+                                  "fontWeight": "bold",
+                                  "radius": 0,
+                                },
+                                "captionStyles": Object {
+                                  "backgroundColor": Array [
+                                    "neutral",
+                                    "-10",
+                                  ],
+                                  "captionColor": Array [
+                                    "neutral",
+                                    "-2",
+                                  ],
+                                  "captionTypeSettings": -2,
+                                  "creditStyles": Object {
+                                    "fontWeight": "300",
+                                  },
+                                  "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                  "fontWeight": "700",
+                                },
+                                "color": [Function],
+                                "direrction": "rtl",
+                                "fontStacks": Object {
+                                  "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                  "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                },
+                                "getDelay": [Function],
+                                "getDuration": [Function],
+                                "getTimingFunction": [Function],
+                                "getTransition": [Function],
+                                "gridStyle": Object {
+                                  "gutterWidth": 4,
+                                  "ruleColor": Array [
+                                    "neutral",
+                                    "-5",
+                                  ],
+                                  "ruleWidth": 1,
+                                },
+                                "inputStyle": Object {
+                                  "borderStyle": "solid",
+                                  "borderWidth": 1,
+                                  "fontWeightLabel": "bold",
+                                  "height": 6,
+                                  "lines": 1,
+                                  "radius": 0,
+                                  "typeScale": -1,
+                                },
+                                "mq": [Function],
+                                "pxToRem": [Function],
+                                "selectStyle": Object {
+                                  "borderStyle": "solid",
+                                  "borderWidth": 1,
+                                  "lines": 0.00001,
+                                },
+                                "type": [Function],
+                                "typeConf": Object {
+                                  "default": Object {
+                                    "base": 16,
+                                    "minPadding": 2,
+                                    "ratio": 2,
+                                    "rhythmUnit": 6,
+                                    "steps": 5,
+                                  },
+                                  "xl": Object {
+                                    "base": 18,
+                                    "minPadding": 2,
+                                    "ratio": 2,
+                                    "rhythmUnit": 7,
+                                    "steps": 5,
+                                  },
+                                },
+                              }
+                            }
+                          >
+                            <div
+                              className=""
+                            >
+                              <labelTextStyle
+                                isContentEditable={false}
+                                isDisabled={false}
+                                isError={true}
+                                isFocused={false}
+                                isInputEmpty={false}
+                                isTextArea={false}
+                                labelHidden={false}
+                                variant="primaryInverse"
+                              >
+                                <labelTextStyle
+                                  isContentEditable={false}
+                                  isDisabled={false}
+                                  isError={true}
+                                  isFocused={false}
+                                  isInputEmpty={false}
+                                  isTextArea={false}
+                                  labelHidden={false}
+                                  theme={
+                                    Object {
+                                      "articleStyle": Object {
+                                        "body": Object {
+                                          "marginBottom": Array [
+                                            Object {
+                                              "until": "xl",
+                                              "value": "4rem",
+                                            },
+                                            Object {
+                                              "from": "xl",
+                                              "value": "3.5rem",
+                                            },
+                                          ],
+                                        },
+                                        "paragraphLink": Object {
+                                          ":focus": Object {
+                                            "borderBottomColor": "#0B7EB5",
+                                            "borderBottomStyle": "solid",
+                                            "borderBottomWidth": "2px",
+                                          },
+                                          ":hover": Object {
+                                            "borderBottomColor": "#0B7EB5",
+                                            "borderBottomStyle": "solid",
+                                            "borderBottomWidth": "1px",
+                                          },
+                                          "color": "#0B7EB5",
+                                        },
+                                        "paragraphStyles": Object {},
+                                      },
+                                      "bps": Object {
+                                        "misc": Object {
+                                          "hidpi": "(min-resolution: 1.5dppx)",
+                                          "landscape": "(orientation: landscape)",
+                                          "portrait": "(orientation: portrait)",
+                                        },
+                                        "widths": Object {
+                                          "l": 1024,
+                                          "m": 768,
+                                          "s": 600,
+                                          "xl": 1280,
+                                        },
+                                      },
+                                      "btnStyle": Object {
+                                        "borderBottomStyle": "solid",
+                                        "borderBottomWidth": 1,
+                                        "borderEndStyle": "solid",
+                                        "borderEndWidth": 1,
+                                        "borderStartStyle": "solid",
+                                        "borderStartWidth": 1,
+                                        "borderTopStyle": "solid",
+                                        "borderTopWidth": 1,
+                                        "boxModel": Object {
+                                          "hp": 4,
+                                          "vp": 1,
+                                        },
+                                        "fontWeight": "bold",
+                                        "radius": 0,
+                                      },
+                                      "captionStyles": Object {
+                                        "backgroundColor": Array [
+                                          "neutral",
+                                          "-10",
+                                        ],
+                                        "captionColor": Array [
+                                          "neutral",
+                                          "-2",
+                                        ],
+                                        "captionTypeSettings": -2,
+                                        "creditStyles": Object {
+                                          "fontWeight": "300",
+                                        },
+                                        "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                        "fontWeight": "700",
+                                      },
+                                      "color": [Function],
+                                      "direrction": "rtl",
+                                      "fontStacks": Object {
+                                        "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                        "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                      },
+                                      "getDelay": [Function],
+                                      "getDuration": [Function],
+                                      "getTimingFunction": [Function],
+                                      "getTransition": [Function],
+                                      "gridStyle": Object {
+                                        "gutterWidth": 4,
+                                        "ruleColor": Array [
+                                          "neutral",
+                                          "-5",
+                                        ],
+                                        "ruleWidth": 1,
+                                      },
+                                      "inputStyle": Object {
+                                        "borderStyle": "solid",
+                                        "borderWidth": 1,
+                                        "fontWeightLabel": "bold",
+                                        "height": 6,
+                                        "lines": 1,
+                                        "radius": 0,
+                                        "typeScale": -1,
+                                      },
+                                      "mq": [Function],
+                                      "pxToRem": [Function],
+                                      "selectStyle": Object {
+                                        "borderStyle": "solid",
+                                        "borderWidth": 1,
+                                        "lines": 0.00001,
+                                      },
+                                      "type": [Function],
+                                      "typeConf": Object {
+                                        "default": Object {
+                                          "base": 16,
+                                          "minPadding": 2,
+                                          "ratio": 2,
+                                          "rhythmUnit": 6,
+                                          "steps": 5,
+                                        },
+                                        "xl": Object {
+                                          "base": 18,
+                                          "minPadding": 2,
+                                          "ratio": 2,
+                                          "rhythmUnit": 7,
+                                          "steps": 5,
+                                        },
+                                      },
+                                    }
+                                  }
+                                  variant="primaryInverse"
+                                >
+                                  <span
+                                    className="htz-cb htz-cu htz-j htz-cd htz-ce htz-cf htz-bk htz-bl htz-cg htz-bt htz-ct htz-s htz-ch"
+                                  >
+                                    דוא"ל
+                                  </span>
+                                </labelTextStyle>
+                              </labelTextStyle>
+                            </div>
+                          </labelAndButtonsWrapperStyle>
+                        </labelAndButtonsWrapperStyle>
+                        <styles
+                          ariaDescribedBy="123456789"
+                          ariaLabel={null}
+                          attrs={null}
+                          className={null}
+                          defaultValue={null}
+                          height={null}
+                          inputId="123456789"
+                          isContentEditable={false}
+                          isDisabled={false}
+                          isFocused={false}
+                          isTextArea={false}
+                          labelId={null}
+                          maxLength={200}
+                          minLength={null}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onContentEditableChange={null}
+                          onFocus={[Function]}
+                          onInput={null}
+                          placeholder={null}
+                          refFunc={[Function]}
+                          setFormatButtonsState={null}
+                          type="email"
+                          value="emailinvalid"
+                        >
+                          <styles
+                            ariaDescribedBy="123456789"
+                            ariaLabel={null}
+                            attrs={null}
+                            className={null}
+                            defaultValue={null}
+                            height={null}
+                            inputId="123456789"
+                            isContentEditable={false}
+                            isDisabled={false}
+                            isFocused={false}
+                            isTextArea={false}
+                            labelId={null}
+                            maxLength={200}
+                            minLength={null}
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onContentEditableChange={null}
+                            onFocus={[Function]}
+                            onInput={null}
+                            placeholder={null}
+                            refFunc={[Function]}
+                            setFormatButtonsState={null}
+                            theme={
+                              Object {
+                                "articleStyle": Object {
+                                  "body": Object {
+                                    "marginBottom": Array [
+                                      Object {
+                                        "until": "xl",
+                                        "value": "4rem",
+                                      },
+                                      Object {
+                                        "from": "xl",
+                                        "value": "3.5rem",
+                                      },
+                                    ],
+                                  },
+                                  "paragraphLink": Object {
+                                    ":focus": Object {
+                                      "borderBottomColor": "#0B7EB5",
+                                      "borderBottomStyle": "solid",
+                                      "borderBottomWidth": "2px",
+                                    },
+                                    ":hover": Object {
+                                      "borderBottomColor": "#0B7EB5",
+                                      "borderBottomStyle": "solid",
+                                      "borderBottomWidth": "1px",
+                                    },
+                                    "color": "#0B7EB5",
+                                  },
+                                  "paragraphStyles": Object {},
+                                },
+                                "bps": Object {
+                                  "misc": Object {
+                                    "hidpi": "(min-resolution: 1.5dppx)",
+                                    "landscape": "(orientation: landscape)",
+                                    "portrait": "(orientation: portrait)",
+                                  },
+                                  "widths": Object {
+                                    "l": 1024,
+                                    "m": 768,
+                                    "s": 600,
+                                    "xl": 1280,
+                                  },
+                                },
+                                "btnStyle": Object {
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": 1,
+                                  "borderEndStyle": "solid",
+                                  "borderEndWidth": 1,
+                                  "borderStartStyle": "solid",
+                                  "borderStartWidth": 1,
+                                  "borderTopStyle": "solid",
+                                  "borderTopWidth": 1,
+                                  "boxModel": Object {
+                                    "hp": 4,
+                                    "vp": 1,
+                                  },
+                                  "fontWeight": "bold",
+                                  "radius": 0,
+                                },
+                                "captionStyles": Object {
+                                  "backgroundColor": Array [
+                                    "neutral",
+                                    "-10",
+                                  ],
+                                  "captionColor": Array [
+                                    "neutral",
+                                    "-2",
+                                  ],
+                                  "captionTypeSettings": -2,
+                                  "creditStyles": Object {
+                                    "fontWeight": "300",
+                                  },
+                                  "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                  "fontWeight": "700",
+                                },
+                                "color": [Function],
+                                "direrction": "rtl",
+                                "fontStacks": Object {
+                                  "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                  "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                },
+                                "getDelay": [Function],
+                                "getDuration": [Function],
+                                "getTimingFunction": [Function],
+                                "getTransition": [Function],
+                                "gridStyle": Object {
+                                  "gutterWidth": 4,
+                                  "ruleColor": Array [
+                                    "neutral",
+                                    "-5",
+                                  ],
+                                  "ruleWidth": 1,
+                                },
+                                "inputStyle": Object {
+                                  "borderStyle": "solid",
+                                  "borderWidth": 1,
+                                  "fontWeightLabel": "bold",
+                                  "height": 6,
+                                  "lines": 1,
+                                  "radius": 0,
+                                  "typeScale": -1,
+                                },
+                                "mq": [Function],
+                                "pxToRem": [Function],
+                                "selectStyle": Object {
+                                  "borderStyle": "solid",
+                                  "borderWidth": 1,
+                                  "lines": 0.00001,
+                                },
+                                "type": [Function],
+                                "typeConf": Object {
+                                  "default": Object {
+                                    "base": 16,
+                                    "minPadding": 2,
+                                    "ratio": 2,
+                                    "rhythmUnit": 6,
+                                    "steps": 5,
+                                  },
+                                  "xl": Object {
+                                    "base": 18,
+                                    "minPadding": 2,
+                                    "ratio": 2,
+                                    "rhythmUnit": 7,
+                                    "steps": 5,
+                                  },
+                                },
+                              }
+                            }
+                            type="email"
+                            value="emailinvalid"
+                          >
+                            <InputElement
+                              ariaDescribedBy="123456789"
+                              ariaLabel={null}
+                              attrs={null}
+                              className="htz-ci htz-al htz-p htz-bm htz-n htz-au htz-cj"
+                              defaultValue={null}
+                              height={null}
+                              inputId="123456789"
+                              isContentEditable={false}
+                              isDisabled={false}
+                              isFocused={false}
+                              isTextArea={false}
+                              labelId={null}
+                              maxLength={200}
+                              minLength={null}
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onContentEditableChange={null}
+                              onFocus={[Function]}
+                              onInput={null}
+                              placeholder={null}
+                              refFunc={[Function]}
+                              setFormatButtonsState={null}
+                              type="email"
+                              value="emailinvalid"
+                            >
+                              <input
+                                aria-describedby="123456789"
+                                className="htz-ci htz-al htz-p htz-bm htz-n htz-au htz-cj"
+                                id="123456789"
+                                maxLength={200}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="email"
+                                value="emailinvalid"
+                              />
+                            </InputElement>
+                          </styles>
+                        </styles>
+                      </label>
+                    </labelStyle>
+                  </labelStyle>
+                  <styles
+                    className={null}
+                    isError={true}
+                    noteId="123456789"
+                    text="נא להזין כתובת דוא\\"ל תקינה"
+                    variant="primary"
+                  >
+                    <styles
+                      className={null}
+                      isError={true}
+                      noteId="123456789"
+                      text="נא להזין כתובת דוא\\"ל תקינה"
+                      theme={
+                        Object {
+                          "articleStyle": Object {
+                            "body": Object {
+                              "marginBottom": Array [
+                                Object {
+                                  "until": "xl",
+                                  "value": "4rem",
+                                },
+                                Object {
+                                  "from": "xl",
+                                  "value": "3.5rem",
+                                },
+                              ],
+                            },
+                            "paragraphLink": Object {
+                              ":focus": Object {
+                                "borderBottomColor": "#0B7EB5",
+                                "borderBottomStyle": "solid",
+                                "borderBottomWidth": "2px",
+                              },
+                              ":hover": Object {
+                                "borderBottomColor": "#0B7EB5",
+                                "borderBottomStyle": "solid",
+                                "borderBottomWidth": "1px",
+                              },
+                              "color": "#0B7EB5",
+                            },
+                            "paragraphStyles": Object {},
+                          },
+                          "bps": Object {
+                            "misc": Object {
+                              "hidpi": "(min-resolution: 1.5dppx)",
+                              "landscape": "(orientation: landscape)",
+                              "portrait": "(orientation: portrait)",
+                            },
+                            "widths": Object {
+                              "l": 1024,
+                              "m": 768,
+                              "s": 600,
+                              "xl": 1280,
+                            },
+                          },
+                          "btnStyle": Object {
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": 1,
+                            "borderEndStyle": "solid",
+                            "borderEndWidth": 1,
+                            "borderStartStyle": "solid",
+                            "borderStartWidth": 1,
+                            "borderTopStyle": "solid",
+                            "borderTopWidth": 1,
+                            "boxModel": Object {
+                              "hp": 4,
+                              "vp": 1,
+                            },
+                            "fontWeight": "bold",
+                            "radius": 0,
+                          },
+                          "captionStyles": Object {
+                            "backgroundColor": Array [
+                              "neutral",
+                              "-10",
+                            ],
+                            "captionColor": Array [
+                              "neutral",
+                              "-2",
+                            ],
+                            "captionTypeSettings": -2,
+                            "creditStyles": Object {
+                              "fontWeight": "300",
+                            },
+                            "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            "fontWeight": "700",
+                          },
+                          "color": [Function],
+                          "direrction": "rtl",
+                          "fontStacks": Object {
+                            "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                          },
+                          "getDelay": [Function],
+                          "getDuration": [Function],
+                          "getTimingFunction": [Function],
+                          "getTransition": [Function],
+                          "gridStyle": Object {
+                            "gutterWidth": 4,
+                            "ruleColor": Array [
+                              "neutral",
+                              "-5",
+                            ],
+                            "ruleWidth": 1,
+                          },
+                          "inputStyle": Object {
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "fontWeightLabel": "bold",
+                            "height": 6,
+                            "lines": 1,
+                            "radius": 0,
+                            "typeScale": -1,
+                          },
+                          "mq": [Function],
+                          "pxToRem": [Function],
+                          "selectStyle": Object {
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "lines": 0.00001,
+                          },
+                          "type": [Function],
+                          "typeConf": Object {
+                            "default": Object {
+                              "base": 16,
+                              "minPadding": 2,
+                              "ratio": 2,
+                              "rhythmUnit": 6,
+                              "steps": 5,
+                            },
+                            "xl": Object {
+                              "base": 18,
+                              "minPadding": 2,
+                              "ratio": 2,
+                              "rhythmUnit": 7,
+                              "steps": 5,
+                            },
+                          },
+                        }
+                      }
+                      variant="primary"
+                    >
+                      <Note
+                        className="htz-cu htz-cl htz-cm htz-cn htz-co"
+                        isError={false}
+                        noteId="123456789"
+                        text="נא להזין כתובת דוא\\"ל תקינה"
+                        variant="primary"
+                      >
+                        <span
+                          className="htz-cu htz-cl htz-cm htz-cn htz-co"
+                          id="123456789"
+                        >
+                          נא להזין כתובת דוא"ל תקינה
+                        </span>
+                      </Note>
+                    </styles>
+                  </styles>
+                </div>
+              </TextInput>
+              <buttonsWrapperStyle>
+                <buttonsWrapperStyle
+                  theme={
+                    Object {
+                      "articleStyle": Object {
+                        "body": Object {
+                          "marginBottom": Array [
+                            Object {
+                              "until": "xl",
+                              "value": "4rem",
+                            },
+                            Object {
+                              "from": "xl",
+                              "value": "3.5rem",
+                            },
+                          ],
+                        },
+                        "paragraphLink": Object {
+                          ":focus": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "2px",
+                          },
+                          ":hover": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "1px",
+                          },
+                          "color": "#0B7EB5",
+                        },
+                        "paragraphStyles": Object {},
+                      },
+                      "bps": Object {
+                        "misc": Object {
+                          "hidpi": "(min-resolution: 1.5dppx)",
+                          "landscape": "(orientation: landscape)",
+                          "portrait": "(orientation: portrait)",
+                        },
+                        "widths": Object {
+                          "l": 1024,
+                          "m": 768,
+                          "s": 600,
+                          "xl": 1280,
+                        },
+                      },
+                      "btnStyle": Object {
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "borderEndStyle": "solid",
+                        "borderEndWidth": 1,
+                        "borderStartStyle": "solid",
+                        "borderStartWidth": 1,
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": 1,
+                        "boxModel": Object {
+                          "hp": 4,
+                          "vp": 1,
+                        },
+                        "fontWeight": "bold",
+                        "radius": 0,
+                      },
+                      "captionStyles": Object {
+                        "backgroundColor": Array [
+                          "neutral",
+                          "-10",
+                        ],
+                        "captionColor": Array [
+                          "neutral",
+                          "-2",
+                        ],
+                        "captionTypeSettings": -2,
+                        "creditStyles": Object {
+                          "fontWeight": "300",
+                        },
+                        "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "fontWeight": "700",
+                      },
+                      "color": [Function],
+                      "direrction": "rtl",
+                      "fontStacks": Object {
+                        "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      },
+                      "getDelay": [Function],
+                      "getDuration": [Function],
+                      "getTimingFunction": [Function],
+                      "getTransition": [Function],
+                      "gridStyle": Object {
+                        "gutterWidth": 4,
+                        "ruleColor": Array [
+                          "neutral",
+                          "-5",
+                        ],
+                        "ruleWidth": 1,
+                      },
+                      "inputStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "fontWeightLabel": "bold",
+                        "height": 6,
+                        "lines": 1,
+                        "radius": 0,
+                        "typeScale": -1,
+                      },
+                      "mq": [Function],
+                      "pxToRem": [Function],
+                      "selectStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "lines": 0.00001,
+                      },
+                      "type": [Function],
+                      "typeConf": Object {
+                        "default": Object {
+                          "base": 16,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 6,
+                          "steps": 5,
+                        },
+                        "xl": Object {
+                          "base": 18,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 7,
+                          "steps": 5,
+                        },
+                      },
+                    }
+                  }
+                >
+                  <div
+                    className="htz-cp"
+                  >
+                    <styles
+                      attrs={null}
+                      boxModel={
+                        Object {
+                          "hp": 5,
+                          "vp": 1,
+                        }
+                      }
+                      className={null}
+                      href={null}
+                      id={null}
+                      isBusy={false}
+                      isColumn={null}
+                      isDisabled={false}
+                      isFlat={false}
+                      isFull={false}
+                      isHard={false}
+                      isRound={false}
+                      isSubmit={false}
+                      miscStyles={
+                        Object {
+                          "backgroundColor": "transparent",
+                          "fontWeight": "bold",
+                          "marginInlineEnd": "2rem",
+                        }
+                      }
+                      onClick={[Function]}
+                      prefetch={false}
+                      tagName="button"
+                      variant="primary"
+                    >
+                      <styles
+                        attrs={null}
+                        boxModel={
+                          Object {
+                            "hp": 5,
+                            "vp": 1,
+                          }
+                        }
+                        className={null}
+                        href={null}
+                        id={null}
+                        isBusy={false}
+                        isColumn={null}
+                        isDisabled={false}
+                        isFlat={false}
+                        isFull={false}
+                        isHard={false}
+                        isRound={false}
+                        isSubmit={false}
+                        miscStyles={
+                          Object {
+                            "backgroundColor": "transparent",
+                            "fontWeight": "bold",
+                            "marginInlineEnd": "2rem",
+                          }
+                        }
+                        onClick={[Function]}
+                        prefetch={false}
+                        tagName="button"
+                        theme={
+                          Object {
+                            "articleStyle": Object {
+                              "body": Object {
+                                "marginBottom": Array [
+                                  Object {
+                                    "until": "xl",
+                                    "value": "4rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "3.5rem",
+                                  },
+                                ],
+                              },
+                              "paragraphLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "color": "#0B7EB5",
+                              },
+                              "paragraphStyles": Object {},
+                            },
+                            "bps": Object {
+                              "misc": Object {
+                                "hidpi": "(min-resolution: 1.5dppx)",
+                                "landscape": "(orientation: landscape)",
+                                "portrait": "(orientation: portrait)",
+                              },
+                              "widths": Object {
+                                "l": 1024,
+                                "m": 768,
+                                "s": 600,
+                                "xl": 1280,
+                              },
+                            },
+                            "btnStyle": Object {
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": 1,
+                              "borderEndStyle": "solid",
+                              "borderEndWidth": 1,
+                              "borderStartStyle": "solid",
+                              "borderStartWidth": 1,
+                              "borderTopStyle": "solid",
+                              "borderTopWidth": 1,
+                              "boxModel": Object {
+                                "hp": 4,
+                                "vp": 1,
+                              },
+                              "fontWeight": "bold",
+                              "radius": 0,
+                            },
+                            "captionStyles": Object {
+                              "backgroundColor": Array [
+                                "neutral",
+                                "-10",
+                              ],
+                              "captionColor": Array [
+                                "neutral",
+                                "-2",
+                              ],
+                              "captionTypeSettings": -2,
+                              "creditStyles": Object {
+                                "fontWeight": "300",
+                              },
+                              "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "fontWeight": "700",
+                            },
+                            "color": [Function],
+                            "direrction": "rtl",
+                            "fontStacks": Object {
+                              "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            },
+                            "getDelay": [Function],
+                            "getDuration": [Function],
+                            "getTimingFunction": [Function],
+                            "getTransition": [Function],
+                            "gridStyle": Object {
+                              "gutterWidth": 4,
+                              "ruleColor": Array [
+                                "neutral",
+                                "-5",
+                              ],
+                              "ruleWidth": 1,
+                            },
+                            "inputStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "fontWeightLabel": "bold",
+                              "height": 6,
+                              "lines": 1,
+                              "radius": 0,
+                              "typeScale": -1,
+                            },
+                            "mq": [Function],
+                            "pxToRem": [Function],
+                            "selectStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "lines": 0.00001,
+                            },
+                            "type": [Function],
+                            "typeConf": Object {
+                              "default": Object {
+                                "base": 16,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 6,
+                                "steps": 5,
+                              },
+                              "xl": Object {
+                                "base": 18,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 7,
+                                "steps": 5,
+                              },
+                            },
+                          }
+                        }
+                        variant="primary"
+                      >
+                        <Button
+                          attrs={null}
+                          boxModel={null}
+                          className="htz-l htz-m htz-n htz-o htz-j htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-e htz-f htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-cq htz-ah htz-ai htz-cr htz-ak htz-al htz-am htz-an htz-cs htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
+                          href={null}
+                          id={null}
+                          isBusy={false}
+                          isColumn={null}
+                          isDisabled={false}
+                          isFlat={false}
+                          isFull={false}
+                          isHard={false}
+                          isRound={false}
+                          isSubmit={false}
+                          miscStyles={null}
+                          onClick={[Function]}
+                          prefetch={false}
+                          tagName="button"
+                          variant="primary"
+                        >
+                          <button
+                            className="htz-l htz-m htz-n htz-o htz-j htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-e htz-f htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-cq htz-ah htz-ai htz-cr htz-ak htz-al htz-am htz-an htz-cs htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
+                            id={null}
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            עדכנו אותי
+                          </button>
+                        </Button>
+                      </styles>
+                    </styles>
+                    <styles
+                      attrs={null}
+                      boxModel={
+                        Object {
+                          "hp": 4,
+                          "vp": 1,
+                        }
+                      }
+                      className={null}
+                      href={null}
+                      id={null}
+                      isBusy={false}
+                      isColumn={null}
+                      isDisabled={false}
+                      isFlat={false}
+                      isFull={false}
+                      isHard={false}
+                      isRound={false}
+                      isSubmit={false}
+                      miscStyles={
+                        Object {
+                          "backgroundColor": "transparent",
+                          "fontWeight": "bold",
+                        }
+                      }
+                      onClick={[Function]}
+                      prefetch={false}
+                      tagName="button"
+                      variant="primary"
+                    >
+                      <styles
+                        attrs={null}
+                        boxModel={
+                          Object {
+                            "hp": 4,
+                            "vp": 1,
+                          }
+                        }
+                        className={null}
+                        href={null}
+                        id={null}
+                        isBusy={false}
+                        isColumn={null}
+                        isDisabled={false}
+                        isFlat={false}
+                        isFull={false}
+                        isHard={false}
+                        isRound={false}
+                        isSubmit={false}
+                        miscStyles={
+                          Object {
+                            "backgroundColor": "transparent",
+                            "fontWeight": "bold",
+                          }
+                        }
+                        onClick={[Function]}
+                        prefetch={false}
+                        tagName="button"
+                        theme={
+                          Object {
+                            "articleStyle": Object {
+                              "body": Object {
+                                "marginBottom": Array [
+                                  Object {
+                                    "until": "xl",
+                                    "value": "4rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "3.5rem",
+                                  },
+                                ],
+                              },
+                              "paragraphLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "color": "#0B7EB5",
+                              },
+                              "paragraphStyles": Object {},
+                            },
+                            "bps": Object {
+                              "misc": Object {
+                                "hidpi": "(min-resolution: 1.5dppx)",
+                                "landscape": "(orientation: landscape)",
+                                "portrait": "(orientation: portrait)",
+                              },
+                              "widths": Object {
+                                "l": 1024,
+                                "m": 768,
+                                "s": 600,
+                                "xl": 1280,
+                              },
+                            },
+                            "btnStyle": Object {
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": 1,
+                              "borderEndStyle": "solid",
+                              "borderEndWidth": 1,
+                              "borderStartStyle": "solid",
+                              "borderStartWidth": 1,
+                              "borderTopStyle": "solid",
+                              "borderTopWidth": 1,
+                              "boxModel": Object {
+                                "hp": 4,
+                                "vp": 1,
+                              },
+                              "fontWeight": "bold",
+                              "radius": 0,
+                            },
+                            "captionStyles": Object {
+                              "backgroundColor": Array [
+                                "neutral",
+                                "-10",
+                              ],
+                              "captionColor": Array [
+                                "neutral",
+                                "-2",
+                              ],
+                              "captionTypeSettings": -2,
+                              "creditStyles": Object {
+                                "fontWeight": "300",
+                              },
+                              "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "fontWeight": "700",
+                            },
+                            "color": [Function],
+                            "direrction": "rtl",
+                            "fontStacks": Object {
+                              "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            },
+                            "getDelay": [Function],
+                            "getDuration": [Function],
+                            "getTimingFunction": [Function],
+                            "getTransition": [Function],
+                            "gridStyle": Object {
+                              "gutterWidth": 4,
+                              "ruleColor": Array [
+                                "neutral",
+                                "-5",
+                              ],
+                              "ruleWidth": 1,
+                            },
+                            "inputStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "fontWeightLabel": "bold",
+                              "height": 6,
+                              "lines": 1,
+                              "radius": 0,
+                              "typeScale": -1,
+                            },
+                            "mq": [Function],
+                            "pxToRem": [Function],
+                            "selectStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "lines": 0.00001,
+                            },
+                            "type": [Function],
+                            "typeConf": Object {
+                              "default": Object {
+                                "base": 16,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 6,
+                                "steps": 5,
+                              },
+                              "xl": Object {
+                                "base": 18,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 7,
+                                "steps": 5,
+                              },
+                            },
+                          }
+                        }
+                        variant="primary"
+                      >
+                        <Button
+                          attrs={null}
+                          boxModel={null}
+                          className="htz-l htz-m htz-n htz-o htz-j htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-e htz-f htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-b htz-ah htz-ai htz-c htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
+                          href={null}
+                          id={null}
+                          isBusy={false}
+                          isColumn={null}
+                          isDisabled={false}
+                          isFlat={false}
+                          isFull={false}
+                          isHard={false}
+                          isRound={false}
+                          isSubmit={false}
+                          miscStyles={null}
+                          onClick={[Function]}
+                          prefetch={false}
+                          tagName="button"
+                          variant="primary"
+                        >
+                          <button
+                            className="htz-l htz-m htz-n htz-o htz-j htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-e htz-f htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-b htz-ah htz-ai htz-c htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
+                            id={null}
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            לא תודה
+                          </button>
+                        </Button>
+                      </styles>
+                    </styles>
+                  </div>
+                </buttonsWrapperStyle>
+              </buttonsWrapperStyle>
+            </div>
+          </form>
+        </Form>
+      </div>
+    </contStyle>
+  </contStyle>
+</CommentSent>
+`;
+
+exports[`<CommentSent> DOM element renders correctly with minimal required props 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+  >
+    <form>
+      <div>
+        <p>
+          <span
+            className="htz-i"
+          >
+            תגובתך נקלטה בהצלחה, 
+          </span>
+          ותפורסם על פי מדיניות המערכת.
+        </p>
+        <p>
+          באפשרותך לקבל התראה בדוא"ל כאשר תגובתך תאושר ותפורסם
+        </p>
+        <div>
+          <label
+            className="htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-e htz-f htz-ai htz-aj htz-ak htz-al htz-am"
+            htmlFor="123456789"
+          >
+            <div
+              className=""
+            >
+              <span
+                className="htz-an htz-ao htz-i htz-ap htz-aq htz-ar htz-m htz-n htz-as htz-at htz-au"
+              >
+                דוא"ל
+              </span>
+            </div>
+            <input
+              aria-describedby="123456789"
+              className="htz-av htz-aw htz-ax htz-o htz-j htz-ay htz-az"
+              id="123456789"
+              maxLength={200}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              type="email"
+              value=""
+            />
+          </label>
+          <span
+            className="htz-ba htz-bb htz-bc htz-bd htz-be"
+            id="123456789"
+          >
+            הזינו כתובת דוא"ל לקבלת התראות
+          </span>
+        </div>
+        <div
+          className="htz-bf"
+        >
+          <button
+            className="htz-l htz-bg htz-j htz-bh htz-i htz-ax htz-bi htz-bj htz-at htz-bk htz-bl htz-bm htz-bn htz-bo htz-e htz-f htz-aj htz-ae htz-af htz-ah htz-z htz-ab htz-bp htz-w htz-x htz-bq htz-br htz-aw htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-ay htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm"
+            id={null}
+            onClick={[Function]}
+            type="button"
+          >
+            עדכנו אותי
+          </button>
+          <button
+            className="htz-l htz-bg htz-j htz-bh htz-i htz-ax htz-bi htz-bj htz-at htz-bk htz-bl htz-bm htz-bn htz-bo htz-e htz-f htz-aj htz-ae htz-af htz-ah htz-z htz-ab htz-b htz-w htz-x htz-c htz-br htz-aw htz-bs htz-bt htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-ay htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm"
+            id={null}
+            onClick={[Function]}
+            type="button"
+          >
+            לא תודה
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`<CommentSent> DOM element renders correctly with minimal required props 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{padding-right:4rem}.htz-c{padding-left:4rem}.htz-d{padding-top:5.4rem}.htz-e{border-bottom-width:1px}.htz-f{border-bottom-style:solid}.htz-g{border-bottom-color:#006B96}.htz-h{padding-bottom:calc(11rem - 1px)}.htz-i{font-weight:bold}.htz-j{cursor:pointer}.htz-k{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-l{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-m{padding-right:1rem}.htz-n{padding-left:1rem}.htz-o{width:100%}.htz-p{position:relative}.htz-q{margin-top:4rem}.htz-v{background-color:#FFF}.htz-w{border-left-width:1px}.htz-x{border-left-style:solid}.htz-y{border-left-color:#DAE9F2}.htz-z{border-right-width:1px}.htz-ab{border-right-style:solid}.htz-ac{border-right-color:#DAE9F2}.htz-ae{border-top-width:1px}.htz-af{border-top-style:solid}.htz-ag{border-top-color:#DAE9F2}.htz-ah{padding-top:calc(1rem - 1px)}.htz-ai{border-bottom-color:#DAE9F2}.htz-aj{padding-bottom:calc(1rem - 1px)}.htz-ak:hover{background-color:#E6EDF0}.htz-al:hover{border-color:#DAE9F2}.htz-am:hover{color:#2D2D2D}.htz-an{margin-left:1rem}.htz-ao{color:#006B96}.htz-ap{transition-property:-webkit-transform,transform;-webkit-transition-property:-webkit-transform,transform;-moz-transition-property:transform}.htz-aq{position:absolute}.htz-ar{bottom:0.7rem}.htz-as{margin-right:-1rem}.htz-at{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-au{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-av{border:none}.htz-aw{background-color:transparent}.htz-ax{font-size:inherit}.htz-ay:focus{outline:none}.htz-az:focus{cursor:text}.htz-ba{color:#B4B4B4}.htz-bf{margin-top:3rem}.htz-bg{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-bh{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bi{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-bj{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-bk{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-bl{text-decoration:none}.htz-bm{white-space:nowrap}.htz-bn::moz-focus-inner{border:0px}.htz-bo::moz-focus-inner{padding:0rem}.htz-bp{padding-right:5rem}.htz-bq{padding-left:5rem}.htz-br{border-radius:0rem}.htz-bs{border-color:#0B7EB5}.htz-bt{color:#0B7EB5}.htz-bu{margin-left:2rem}.htz-bv:hover{text-decoration:none}.htz-bw:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bx:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-by:hover{background-color:#EBF2F5}.htz-bz:hover{border-color:#006B96}.htz-ca:hover{color:#006B96}.htz-cb:focus{text-decoration:none}.htz-cc:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cd:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ce:focus{background-color:#0B7EB5}.htz-cf:focus{border-color:#0B7EB5}.htz-cg:focus{color:#FFF}.htz-ch:active{outline:none}.htz-ci:active{text-decoration:none}.htz-cj:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-ck:active{background-color:#fff !important}.htz-cl:active{border-color:#0B7EB5}.htz-cm:active{color:#0B7EB5}@media (max-width: 80em){.htz-r{font-size:2.3333333333333335rem}.htz-s{line-height:1.2857142857142858em}.htz-bb{font-size:1.8333333333333333rem}.htz-bc{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-t{font-size:2.2857142857142856rem}.htz-u{line-height:1.3125em}.htz-bd{font-size:1.7142857142857142rem}.htz-be{line-height:1.75em}}"`;
+
+exports[`<CommentSent> DOM element renders correctly with minimal required props, display Thank you true 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
+  >
+    <div>
+      <span
+        className="htz-j"
+      >
+        תודה!
+      </span>
+      <p
+        className="htz-k"
+      >
+        תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת
+      </p>
+      <button
+        className="htz-l htz-m htz-n htz-o htz-j htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-e htz-f htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
+        id={null}
+        onClick={[Function]}
+        type="button"
+      >
+        סגור
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<CommentSent> DOM element renders correctly with minimal required props, display Thank you true 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{padding-right:4rem}.htz-c{padding-left:4rem}.htz-d{padding-top:9.4rem}.htz-e{border-bottom-width:1px}.htz-f{border-bottom-style:solid}.htz-g{border-bottom-color:#006B96}.htz-h{padding-bottom:calc(16rem - 1px)}.htz-i{text-align:center}.htz-j{font-weight:bold}.htz-k{margin-bottom:5rem}.htz-l{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-m{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-n{cursor:pointer}.htz-o{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-p{font-size:inherit}.htz-q{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-r{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-s{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-t{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-u{text-decoration:none}.htz-v{white-space:nowrap}.htz-w::moz-focus-inner{border:0px}.htz-x::moz-focus-inner{padding:0rem}.htz-y{padding-bottom:calc(1rem - 1px)}.htz-z{border-top-width:1px}.htz-ab{border-top-style:solid}.htz-ac{padding-top:calc(1rem - 1px)}.htz-ae{border-right-width:1px}.htz-af{border-right-style:solid}.htz-ag{padding-right:3.5rem}.htz-ah{border-left-width:1px}.htz-ai{border-left-style:solid}.htz-aj{padding-left:3.5rem}.htz-ak{border-radius:0rem}.htz-al{background-color:transparent}.htz-am{border-color:#0B7EB5}.htz-an{color:#0B7EB5}.htz-ao:hover{text-decoration:none}.htz-ap:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-aq:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar:hover{background-color:#EBF2F5}.htz-as:hover{border-color:#006B96}.htz-at:hover{color:#006B96}.htz-au:focus{outline:none}.htz-av:focus{text-decoration:none}.htz-aw:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-ax:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ay:focus{background-color:#0B7EB5}.htz-az:focus{border-color:#0B7EB5}.htz-ba:focus{color:#FFF}.htz-bb:active{outline:none}.htz-bc:active{text-decoration:none}.htz-bd:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-be:active{background-color:#fff !important}.htz-bf:active{border-color:#0B7EB5}.htz-bg:active{color:#0B7EB5}"`;
