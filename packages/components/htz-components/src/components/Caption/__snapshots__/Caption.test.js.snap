@@ -69,7 +69,7 @@ Object {
       floatCredit={false}
     >
       The Caption
-
+      
     </div>
   </div>,
   "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}@media (max-width: 80em){.htz-c{background-color:#FFA6A6}.htz-d{color:#0B7EB5}.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}@media (min-width: 80em){.htz-g{background-color:#0B7EB5}.htz-h{color:#FFA6A6}.htz-i{font-size:2rem}.htz-j{line-height:1.5em}}",
