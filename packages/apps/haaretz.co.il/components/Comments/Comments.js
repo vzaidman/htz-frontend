@@ -1,48 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { CommentList, } from '@haaretz/htz-components';
-import { graphql, } from 'react-apollo';
+import { Comments, } from '@haaretz/htz-components';
+import { graphql, compose, } from 'react-apollo';
 import fetchCommentsQuery from './queries/fetchComments';
+import submitNewComment from './mutations/submitNewComment';
+import submitNewVote from './mutations/submitNewVote';
+import submitNotificationEmail from './mutations/submitNotificationEmail';
+import reportAbuse from './mutations/reportAbuse';
 
-Comments.propTypes = {
-  /**
-   * Passed implicitly by Apollo, not directly as an attribute on the component
-   */
-  data: PropTypes.shape({
-    /** Indicates data loading state */
-    loading: PropTypes.bool,
-    /** Indicates data error state */
-    error: PropTypes.bool,
-    /** Holds the comment element object with all the comment data */
-    commentsElement: PropTypes.shape({
-      comments: PropTypes.arrayOf(PropTypes.object),
-      commentsPlusRate: PropTypes.object,
-      commentsMinusRate: PropTypes.object,
+const CommentsElement = compose(
+  graphql(fetchCommentsQuery, {
+    options: props => ({
+      variables: { path: `${props.contentId}?composite=true&limited=true`, },
     }),
-  }).isRequired,
-};
-
-// Todo: guyk: I couldnt find a use for match, check if match prop is necessary or ever used, and where does it come from
-function Comments({ data: { loading, error, commentsElement, }, match, }) {
-  if (loading) {
-    return <div>loading ...</div>;
-  }
-  if (error) {
-    return <h1>ERROR</h1>;
-  }
-  return (
-    <CommentList
-      comments={commentsElement.comments}
-      commentsPlusRate={commentsElement.commentsPlusRate}
-      commentsMinusRate={commentsElement.commentsMinusRate}
-    />
-  );
-}
-
-const CommentsElement = graphql(fetchCommentsQuery, {
-  options: props => ({
-    variables: { contentId: props.contentId, },
+    props: props => ({
+      data: props.data,
+      loadAllComments: () =>
+        props.data.fetchMore({
+          variables: {
+            path: `${props.ownProps.contentId}?composite=true`,
+          },
+          updateQuery(previousResult, { fetchMoreResult, }) {
+            return fetchMoreResult;
+          },
+        }),
+    }),
   }),
-})(Comments);
+  graphql(submitNewComment, { name: 'SubmitNewComment', }),
+  graphql(submitNewVote, { name: 'SubmitNewVote', }),
+  graphql(submitNotificationEmail, { name: 'SubmitNotificationEmail', }),
+  graphql(reportAbuse, { name: 'ReportAbuse', })
+)(Comments);
 
 export default CommentsElement;

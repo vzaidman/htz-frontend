@@ -2,14 +2,15 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  query CommentListQuery($contentId: ID!) {
-    commentsElement(contentId: $contentId) {
+  query CommentListQuery($path: String!) {
+    commentsElement(path: $path) {
       comments {
         commentId
         author
         title
         commentText
         publishingDateForDisplay
+        publishingDateSortable
         isEditorPick
         subComments {
           commentId
@@ -17,11 +18,14 @@ export default gql`
           title
           commentText
           publishingDateForDisplay
+          publishingDateSortable
           isEditorPick
+
         }
       }
       commentsPlusRate
       commentsMinusRate
+      totalHits
     }
   }
 `;

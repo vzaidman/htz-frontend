@@ -36,7 +36,6 @@ const PageData = gql`
   ${Slot.fragments.content}
 `;
 
-
 export class MainLayout extends React.Component {
   static propTypes = {
     /**
@@ -69,9 +68,7 @@ export class MainLayout extends React.Component {
         <meta name="description" content={seoData.metaDescription} />
         <meta name="keywords" content={seoData.metaKeywords.join(', ')} />
         <meta name="news_keywords" content={seoData.metaKeywords.join(', ')} />
-        {seoData.ogImages.map(image => (
-          <meta property="og:image" content={image} />
-        ))}
+        {seoData.ogImages.map(image => <meta property="og:image" content={image} />)}
         <link rel="canonical" href={seoData.canonicalLink} />
       </Head>
     );
@@ -79,8 +76,9 @@ export class MainLayout extends React.Component {
 
   renderSlots() {
     const { data, } = this.props;
+    const pageContentId = data.page.contentId;
     return data.page
-      ? data.page.slots.map(slot => <Slot {...slot} key={slot.name} />)
+      ? data.page.slots.map(slot => <Slot {...slot} key={slot.name} pageContentId={pageContentId} />)
       : [];
   }
 
@@ -89,9 +87,7 @@ export class MainLayout extends React.Component {
     if (data.error) {
       // FIXME: This is essentially duplicated in `withData`. Figure out a
       // more reasonable error handling strategy.
-      const isNotFound = data.error.graphQLErrors.some(
-        ({ message, }) => message === 'Not Found'
-      );
+      const isNotFound = data.error.graphQLErrors.some(({ message, }) => message === 'Not Found');
       return <Error statusCode={isNotFound ? 404 : 500} />;
     }
     return (
@@ -99,9 +95,7 @@ export class MainLayout extends React.Component {
         <div>
           {this.renderHead()}
           <TopNav />
-          <h1>
-            {data.loading ? 'Loading…' : data.page ? data.page.contentName : ''}
-          </h1>
+          <h1>{data.loading ? 'Loading…' : data.page ? data.page.contentName : ''}</h1>
           {data.page ? <Breadcrumbs page={data.page} /> : null}
           {this.renderSlots()}
         </div>
