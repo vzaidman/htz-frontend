@@ -28,6 +28,7 @@ const btnVariants = PropTypes.oneOf([
   'salesOpaque',
   'whatsapp',
   'whatsappOpaque',
+  'formatOpaque',
 ]);
 
 /**
@@ -110,6 +111,8 @@ const StyledButtonPropTypes = {
    * is should never be set directly by the component itself.
    */
   isColumn: PropTypes.bool,
+  /** Is the button flat (trumps theme border-color to 'transparent') */
+  isFlat: PropTypes.bool,
   /** Does the Button fill the entire width of its container */
   isFull: PropTypes.oneOfType([
     PropTypes.bool,
@@ -157,6 +160,7 @@ const StyledButtonDefaultProps = {
   tagName: 'button',
   boxModel: null,
   isColumn: null,
+  isFlat: false,
   isFull: false,
   isHard: false,
   isRound: false,
@@ -169,6 +173,7 @@ const styles = ({
   isBusy,
   isColumn,
   isDisabled,
+  isFlat,
   isFull,
   isHard,
   isRound,
@@ -182,19 +187,21 @@ const styles = ({
   appearance: 'none',
   cursor: isDisabled || isBusy ? 'not-allowed' : 'pointer',
   display: 'inline-flex',
-  ...(theme.btnStyle.fontWeight
-    ? { fontWeight: theme.btnStyle.fontWeight, }
-    : undefined),
+  ...(theme.btnStyle.fontWeight ? { fontWeight: theme.btnStyle.fontWeight, } : undefined),
   fontSize: 'inherit',
   justifyContent: 'center',
   ...(isDisabled ? { opacity: 0.4, } : undefined),
   transitionProperty: 'all',
-  ...theme.getTransition(0, 'swiftIn'),
+  ...theme.getTransition(-1, 'swiftIn'),
   textDecoration: 'none',
   // `<a>` elements may not have a `disabled` attribute, so we
   // mimic its behavior to the extent possible.
-  pointerEvents: isDisabled || isBusy ? 'none' : 'auto',
-  userSelect: isDisabled ? 'none' : 'auto',
+  ...(isDisabled || isBusy
+    ? {
+      pointerEvents: 'none',
+      userSelect: 'none',
+    }
+    : []),
   whiteSpace: 'nowrap',
 
   '::moz-focus-inner': {
@@ -204,12 +211,12 @@ const styles = ({
 
   ':hover': {
     textDecoration: 'none',
-    ...theme.getTransition(0, 'swiftOut'),
+    ...theme.getTransition(-1, 'swiftOut'),
   },
   ':focus': {
     outline: 'none',
     textDecoration: 'none',
-    ...theme.getTransition(0, 'swiftOut'),
+    ...theme.getTransition(-1, 'swiftOut'),
   },
   ':active': {
     outline: 'none',
@@ -231,30 +238,30 @@ const styles = ({
     ),
     // Set width and display
     parseComponentProp(undefined, isFull, theme.mq, full),
-    parseComponentProp(undefined, variant, theme.mq, setVariant, theme.color),
+    parseComponentProp(undefined, variant, theme.mq, setVariant, theme.color, isFlat),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
 });
 
-function setVariant(prop, variant, getColor) {
+function setVariant(prop, variant, getColor, isFlat) {
   return {
     backgroundColor: getColor('button', `${variant}Bg`),
-    borderColor: getColor('button', `${variant}Border`),
+    borderColor: isFlat ? 'transparent' : getColor('button', `${variant}Border`),
     color: getColor('button', `${variant}Text`),
     ':hover': {
       backgroundColor: getColor('button', `${variant}HoverBg`),
-      borderColor: getColor('button', `${variant}HoverBorder`),
+      borderColor: isFlat ? 'transparent' : getColor('button', `${variant}HoverBorder`),
       color: getColor('button', `${variant}HoverText`),
     },
     ':active': {
       backgroundColor: getColor('button', `${variant}ActiveBg`),
-      borderColor: getColor('button', `${variant}ActiveBorder`),
+      borderColor: isFlat ? 'transparent' : getColor('button', `${variant}ActiveBorder`),
       color: getColor('button', `${variant}ActiveText`),
     },
     ':focus': {
       backgroundColor: getColor('button', `${variant}FocusBg`),
-      borderColor: getColor('button', `${variant}FocusBorder`),
+      borderColor: isFlat ? 'transparent' : getColor('button', `${variant}FocusBorder`),
       color: getColor('button', `${variant}FocusText`),
     },
   };
@@ -271,22 +278,16 @@ function full(prop, isFull) {
 
 function setBoxModel(prop, boxModel, isColumn, isHard, isRound, btnStyle) {
   if (isHard && isRound) {
-    throw new Error(
-      'A "<Button>" cannot be "hard" and "round" at the same time'
-    );
+    throw new Error('A "<Button>" cannot be "hard" and "round" at the same time');
   }
 
   const { groupPlacement, hp, vp, } = boxModel;
-  const horizontalPadding = hp || btnStyle.boxModel.hp;
-  const verticalPadding = vp || btnStyle.boxModel.vp;
+  // eslint-disble-next-line eqeqeq
+  const horizontalPadding = hp != null ? hp : btnStyle.boxModel.hp;
+  // eslint-disble-next-line eqeqeq
+  const verticalPadding = vp != null ? vp : btnStyle.boxModel.vp;
   const ret = {
-    ...setBorder(
-      btnStyle,
-      isColumn,
-      groupPlacement,
-      horizontalPadding,
-      verticalPadding
-    ),
+    ...setBorder(btnStyle, isColumn, groupPlacement, horizontalPadding, verticalPadding),
     ...radiusRules(btnStyle.radius, isColumn, groupPlacement, isHard, isRound),
   };
 
