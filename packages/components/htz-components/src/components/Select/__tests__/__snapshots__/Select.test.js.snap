@@ -1,0 +1,3522 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select> DOM element can select an item with space key 1`] = `
+<Select
+  attrs={null}
+  controlledSelectedItem={null}
+  defaultSelectedItem={null}
+  items={
+    Array [
+      Object {
+        "display": "אחד",
+        "value": 1,
+      },
+      Object {
+        "display": "שתיים",
+        "value": 2,
+      },
+      Object {
+        "display": "שלוש",
+        "value": 3,
+      },
+    ]
+  }
+  miscStyles={null}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "display": "שלוש",
+            "value": 3,
+          },
+        ],
+      ],
+    }
+  }
+  placeholder="בחר אחת מהאפשרויות הבאות"
+  variant="primary"
+>
+  <Downshift
+    breakingChanges={Object {}}
+    defaultHighlightedIndex={2}
+    defaultInputValue=""
+    defaultIsOpen={false}
+    defaultSelectedItem={null}
+    environment={[Window]}
+    getA11yStatusMessage={[Function]}
+    id="downshift-1"
+    itemToString={[Function]}
+    onChange={[Function]}
+    onInputValueChange={[Function]}
+    onOuterClick={[Function]}
+    onSelect={[Function]}
+    onStateChange={[Function]}
+    onUserAction={[Function]}
+    render={[Function]}
+    selectedItem={
+      Object {
+        "display": "שלוש",
+        "value": 3,
+      }
+    }
+    selectedItemChanged={[Function]}
+  >
+    <div
+      onKeyDown={[Function]}
+    >
+      <selectStyle
+        isOpen={true}
+        miscStyles={null}
+        variant="primary"
+      >
+        <selectStyle
+          isOpen={true}
+          miscStyles={null}
+          theme={
+            Object {
+              "articleStyle": Object {
+                "body": Object {
+                  "marginBottom": Array [
+                    Object {
+                      "until": "xl",
+                      "value": "4rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "3.5rem",
+                    },
+                  ],
+                },
+                "paragraphLink": Object {
+                  ":focus": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "2px",
+                  },
+                  ":hover": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                  },
+                  "color": "#0B7EB5",
+                },
+                "paragraphStyles": Object {},
+              },
+              "bps": Object {
+                "misc": Object {
+                  "hidpi": "(min-resolution: 1.5dppx)",
+                  "landscape": "(orientation: landscape)",
+                  "portrait": "(orientation: portrait)",
+                },
+                "widths": Object {
+                  "l": 1024,
+                  "m": 768,
+                  "s": 600,
+                  "xl": 1280,
+                },
+              },
+              "btnStyle": Object {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderEndStyle": "solid",
+                "borderEndWidth": 1,
+                "borderStartStyle": "solid",
+                "borderStartWidth": 1,
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "boxModel": Object {
+                  "hp": 4,
+                  "vp": 1,
+                },
+                "fontWeight": "bold",
+                "radius": 0,
+              },
+              "captionStyles": Object {
+                "backgroundColor": Array [
+                  "neutral",
+                  "-10",
+                ],
+                "captionColor": Array [
+                  "neutral",
+                  "-2",
+                ],
+                "captionTypeSettings": -2,
+                "creditStyles": Object {
+                  "fontWeight": "300",
+                },
+                "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "fontWeight": "700",
+              },
+              "color": [Function],
+              "direrction": "rtl",
+              "fontStacks": Object {
+                "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+              },
+              "getDelay": [Function],
+              "getDuration": [Function],
+              "getTimingFunction": [Function],
+              "getTransition": [Function],
+              "gridStyle": Object {
+                "gutterWidth": 4,
+                "ruleColor": Array [
+                  "neutral",
+                  "-5",
+                ],
+                "ruleWidth": 1,
+              },
+              "inputStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "fontWeightLabel": "bold",
+                "height": 6,
+                "lines": 1,
+                "radius": 0,
+                "typeScale": -1,
+              },
+              "mq": [Function],
+              "pxToRem": [Function],
+              "selectStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "lines": 0.00001,
+              },
+              "type": [Function],
+              "typeConf": Object {
+                "default": Object {
+                  "base": 16,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 6,
+                  "steps": 5,
+                },
+                "xl": Object {
+                  "base": 18,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 7,
+                  "steps": 5,
+                },
+              },
+            }
+          }
+          variant="primary"
+        >
+          <div
+            className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-ap"
+          >
+            <selectedItemStyle
+              aria-expanded={true}
+              aria-haspopup={true}
+              aria-label="close menu"
+              isOpen={true}
+              noHighlitedItems={false}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+              type="button"
+              variant="primary"
+            >
+              <selectedItemStyle
+                aria-expanded={true}
+                aria-haspopup={true}
+                aria-label="close menu"
+                isOpen={true}
+                noHighlitedItems={false}
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                theme={
+                  Object {
+                    "articleStyle": Object {
+                      "body": Object {
+                        "marginBottom": Array [
+                          Object {
+                            "until": "xl",
+                            "value": "4rem",
+                          },
+                          Object {
+                            "from": "xl",
+                            "value": "3.5rem",
+                          },
+                        ],
+                      },
+                      "paragraphLink": Object {
+                        ":focus": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "2px",
+                        },
+                        ":hover": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "1px",
+                        },
+                        "color": "#0B7EB5",
+                      },
+                      "paragraphStyles": Object {},
+                    },
+                    "bps": Object {
+                      "misc": Object {
+                        "hidpi": "(min-resolution: 1.5dppx)",
+                        "landscape": "(orientation: landscape)",
+                        "portrait": "(orientation: portrait)",
+                      },
+                      "widths": Object {
+                        "l": 1024,
+                        "m": 768,
+                        "s": 600,
+                        "xl": 1280,
+                      },
+                    },
+                    "btnStyle": Object {
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
+                      "borderEndStyle": "solid",
+                      "borderEndWidth": 1,
+                      "borderStartStyle": "solid",
+                      "borderStartWidth": 1,
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": 1,
+                      "boxModel": Object {
+                        "hp": 4,
+                        "vp": 1,
+                      },
+                      "fontWeight": "bold",
+                      "radius": 0,
+                    },
+                    "captionStyles": Object {
+                      "backgroundColor": Array [
+                        "neutral",
+                        "-10",
+                      ],
+                      "captionColor": Array [
+                        "neutral",
+                        "-2",
+                      ],
+                      "captionTypeSettings": -2,
+                      "creditStyles": Object {
+                        "fontWeight": "300",
+                      },
+                      "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      "fontWeight": "700",
+                    },
+                    "color": [Function],
+                    "direrction": "rtl",
+                    "fontStacks": Object {
+                      "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                    },
+                    "getDelay": [Function],
+                    "getDuration": [Function],
+                    "getTimingFunction": [Function],
+                    "getTransition": [Function],
+                    "gridStyle": Object {
+                      "gutterWidth": 4,
+                      "ruleColor": Array [
+                        "neutral",
+                        "-5",
+                      ],
+                      "ruleWidth": 1,
+                    },
+                    "inputStyle": Object {
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "fontWeightLabel": "bold",
+                      "height": 6,
+                      "lines": 1,
+                      "radius": 0,
+                      "typeScale": -1,
+                    },
+                    "mq": [Function],
+                    "pxToRem": [Function],
+                    "selectStyle": Object {
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "lines": 0.00001,
+                    },
+                    "type": [Function],
+                    "typeConf": Object {
+                      "default": Object {
+                        "base": 16,
+                        "minPadding": 2,
+                        "ratio": 2,
+                        "rhythmUnit": 6,
+                        "steps": 5,
+                      },
+                      "xl": Object {
+                        "base": 18,
+                        "minPadding": 2,
+                        "ratio": 2,
+                        "rhythmUnit": 7,
+                        "steps": 5,
+                      },
+                    },
+                  }
+                }
+                type="button"
+                variant="primary"
+              >
+                <ItemStyle
+                  _felaRule={[Function]}
+                  aria-expanded={true}
+                  aria-haspopup={true}
+                  aria-label="close menu"
+                  isOpen={true}
+                  noHighlitedItems={false}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  passThrough={
+                    Array [
+                      "role",
+                      "aria-label",
+                      "aria-expanded",
+                      "aria-haspopup",
+                      "onClick",
+                      "onKeyDown",
+                      "type",
+                    ]
+                  }
+                  role="button"
+                  theme={
+                    Object {
+                      "articleStyle": Object {
+                        "body": Object {
+                          "marginBottom": Array [
+                            Object {
+                              "until": "xl",
+                              "value": "4rem",
+                            },
+                            Object {
+                              "from": "xl",
+                              "value": "3.5rem",
+                            },
+                          ],
+                        },
+                        "paragraphLink": Object {
+                          ":focus": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "2px",
+                          },
+                          ":hover": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "1px",
+                          },
+                          "color": "#0B7EB5",
+                        },
+                        "paragraphStyles": Object {},
+                      },
+                      "bps": Object {
+                        "misc": Object {
+                          "hidpi": "(min-resolution: 1.5dppx)",
+                          "landscape": "(orientation: landscape)",
+                          "portrait": "(orientation: portrait)",
+                        },
+                        "widths": Object {
+                          "l": 1024,
+                          "m": 768,
+                          "s": 600,
+                          "xl": 1280,
+                        },
+                      },
+                      "btnStyle": Object {
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "borderEndStyle": "solid",
+                        "borderEndWidth": 1,
+                        "borderStartStyle": "solid",
+                        "borderStartWidth": 1,
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": 1,
+                        "boxModel": Object {
+                          "hp": 4,
+                          "vp": 1,
+                        },
+                        "fontWeight": "bold",
+                        "radius": 0,
+                      },
+                      "captionStyles": Object {
+                        "backgroundColor": Array [
+                          "neutral",
+                          "-10",
+                        ],
+                        "captionColor": Array [
+                          "neutral",
+                          "-2",
+                        ],
+                        "captionTypeSettings": -2,
+                        "creditStyles": Object {
+                          "fontWeight": "300",
+                        },
+                        "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "fontWeight": "700",
+                      },
+                      "color": [Function],
+                      "direrction": "rtl",
+                      "fontStacks": Object {
+                        "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      },
+                      "getDelay": [Function],
+                      "getDuration": [Function],
+                      "getTimingFunction": [Function],
+                      "getTransition": [Function],
+                      "gridStyle": Object {
+                        "gutterWidth": 4,
+                        "ruleColor": Array [
+                          "neutral",
+                          "-5",
+                        ],
+                        "ruleWidth": 1,
+                      },
+                      "inputStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "fontWeightLabel": "bold",
+                        "height": 6,
+                        "lines": 1,
+                        "radius": 0,
+                        "typeScale": -1,
+                      },
+                      "mq": [Function],
+                      "pxToRem": [Function],
+                      "selectStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "lines": 0.00001,
+                      },
+                      "type": [Function],
+                      "typeConf": Object {
+                        "default": Object {
+                          "base": 16,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 6,
+                          "steps": 5,
+                        },
+                        "xl": Object {
+                          "base": 18,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 7,
+                          "steps": 5,
+                        },
+                      },
+                    }
+                  }
+                  type="button"
+                  variant="primary"
+                >
+                  <ItemStyle
+                    _felaRule={[Function]}
+                    aria-expanded={true}
+                    aria-haspopup={true}
+                    aria-label="close menu"
+                    isOpen={true}
+                    noHighlitedItems={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    passThrough={
+                      Array [
+                        "role",
+                        "aria-label",
+                        "aria-expanded",
+                        "aria-haspopup",
+                        "onClick",
+                        "onKeyDown",
+                        "type",
+                      ]
+                    }
+                    role="button"
+                    theme={
+                      Object {
+                        "articleStyle": Object {
+                          "body": Object {
+                            "marginBottom": Array [
+                              Object {
+                                "until": "xl",
+                                "value": "4rem",
+                              },
+                              Object {
+                                "from": "xl",
+                                "value": "3.5rem",
+                              },
+                            ],
+                          },
+                          "paragraphLink": Object {
+                            ":focus": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "2px",
+                            },
+                            ":hover": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "1px",
+                            },
+                            "color": "#0B7EB5",
+                          },
+                          "paragraphStyles": Object {},
+                        },
+                        "bps": Object {
+                          "misc": Object {
+                            "hidpi": "(min-resolution: 1.5dppx)",
+                            "landscape": "(orientation: landscape)",
+                            "portrait": "(orientation: portrait)",
+                          },
+                          "widths": Object {
+                            "l": 1024,
+                            "m": 768,
+                            "s": 600,
+                            "xl": 1280,
+                          },
+                        },
+                        "btnStyle": Object {
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": 1,
+                          "borderEndStyle": "solid",
+                          "borderEndWidth": 1,
+                          "borderStartStyle": "solid",
+                          "borderStartWidth": 1,
+                          "borderTopStyle": "solid",
+                          "borderTopWidth": 1,
+                          "boxModel": Object {
+                            "hp": 4,
+                            "vp": 1,
+                          },
+                          "fontWeight": "bold",
+                          "radius": 0,
+                        },
+                        "captionStyles": Object {
+                          "backgroundColor": Array [
+                            "neutral",
+                            "-10",
+                          ],
+                          "captionColor": Array [
+                            "neutral",
+                            "-2",
+                          ],
+                          "captionTypeSettings": -2,
+                          "creditStyles": Object {
+                            "fontWeight": "300",
+                          },
+                          "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                          "fontWeight": "700",
+                        },
+                        "color": [Function],
+                        "direrction": "rtl",
+                        "fontStacks": Object {
+                          "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                          "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        },
+                        "getDelay": [Function],
+                        "getDuration": [Function],
+                        "getTimingFunction": [Function],
+                        "getTransition": [Function],
+                        "gridStyle": Object {
+                          "gutterWidth": 4,
+                          "ruleColor": Array [
+                            "neutral",
+                            "-5",
+                          ],
+                          "ruleWidth": 1,
+                        },
+                        "inputStyle": Object {
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "fontWeightLabel": "bold",
+                          "height": 6,
+                          "lines": 1,
+                          "radius": 0,
+                          "typeScale": -1,
+                        },
+                        "mq": [Function],
+                        "pxToRem": [Function],
+                        "selectStyle": Object {
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "lines": 0.00001,
+                        },
+                        "type": [Function],
+                        "typeConf": Object {
+                          "default": Object {
+                            "base": 16,
+                            "minPadding": 2,
+                            "ratio": 2,
+                            "rhythmUnit": 6,
+                            "steps": 5,
+                          },
+                          "xl": Object {
+                            "base": 18,
+                            "minPadding": 2,
+                            "ratio": 2,
+                            "rhythmUnit": 7,
+                            "steps": 5,
+                          },
+                        },
+                      }
+                    }
+                    type="button"
+                    variant="primary"
+                  >
+                    <button
+                      aria-expanded={true}
+                      aria-haspopup={true}
+                      aria-label="close menu"
+                      className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aq htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an"
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      role="button"
+                      type="button"
+                      variant="primary"
+                    >
+                      שלוש
+                    </button>
+                  </ItemStyle>
+                </ItemStyle>
+              </selectedItemStyle>
+            </selectedItemStyle>
+            <div
+              style={
+                Object {
+                  "position": "relative",
+                }
+              }
+            >
+              <dropDownMenuStyle
+                data-test="dropdown-menu"
+                variant="primary"
+              >
+                <dropDownMenuStyle
+                  data-test="dropdown-menu"
+                  theme={
+                    Object {
+                      "articleStyle": Object {
+                        "body": Object {
+                          "marginBottom": Array [
+                            Object {
+                              "until": "xl",
+                              "value": "4rem",
+                            },
+                            Object {
+                              "from": "xl",
+                              "value": "3.5rem",
+                            },
+                          ],
+                        },
+                        "paragraphLink": Object {
+                          ":focus": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "2px",
+                          },
+                          ":hover": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "1px",
+                          },
+                          "color": "#0B7EB5",
+                        },
+                        "paragraphStyles": Object {},
+                      },
+                      "bps": Object {
+                        "misc": Object {
+                          "hidpi": "(min-resolution: 1.5dppx)",
+                          "landscape": "(orientation: landscape)",
+                          "portrait": "(orientation: portrait)",
+                        },
+                        "widths": Object {
+                          "l": 1024,
+                          "m": 768,
+                          "s": 600,
+                          "xl": 1280,
+                        },
+                      },
+                      "btnStyle": Object {
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "borderEndStyle": "solid",
+                        "borderEndWidth": 1,
+                        "borderStartStyle": "solid",
+                        "borderStartWidth": 1,
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": 1,
+                        "boxModel": Object {
+                          "hp": 4,
+                          "vp": 1,
+                        },
+                        "fontWeight": "bold",
+                        "radius": 0,
+                      },
+                      "captionStyles": Object {
+                        "backgroundColor": Array [
+                          "neutral",
+                          "-10",
+                        ],
+                        "captionColor": Array [
+                          "neutral",
+                          "-2",
+                        ],
+                        "captionTypeSettings": -2,
+                        "creditStyles": Object {
+                          "fontWeight": "300",
+                        },
+                        "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "fontWeight": "700",
+                      },
+                      "color": [Function],
+                      "direrction": "rtl",
+                      "fontStacks": Object {
+                        "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      },
+                      "getDelay": [Function],
+                      "getDuration": [Function],
+                      "getTimingFunction": [Function],
+                      "getTransition": [Function],
+                      "gridStyle": Object {
+                        "gutterWidth": 4,
+                        "ruleColor": Array [
+                          "neutral",
+                          "-5",
+                        ],
+                        "ruleWidth": 1,
+                      },
+                      "inputStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "fontWeightLabel": "bold",
+                        "height": 6,
+                        "lines": 1,
+                        "radius": 0,
+                        "typeScale": -1,
+                      },
+                      "mq": [Function],
+                      "pxToRem": [Function],
+                      "selectStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "lines": 0.00001,
+                      },
+                      "type": [Function],
+                      "typeConf": Object {
+                        "default": Object {
+                          "base": 16,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 6,
+                          "steps": 5,
+                        },
+                        "xl": Object {
+                          "base": 18,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 7,
+                          "steps": 5,
+                        },
+                      },
+                    }
+                  }
+                  variant="primary"
+                >
+                  <div
+                    className="htz-u htz-ar htz-as htz-at htz-au htz-av htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-am"
+                  >
+                    <ItemStyle
+                      activeItem={false}
+                      id="downshift-1-item-0"
+                      isSelected={false}
+                      key="1"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                    >
+                      <ItemStyle
+                        activeItem={false}
+                        id="downshift-1-item-0"
+                        isSelected={false}
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        theme={
+                          Object {
+                            "articleStyle": Object {
+                              "body": Object {
+                                "marginBottom": Array [
+                                  Object {
+                                    "until": "xl",
+                                    "value": "4rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "3.5rem",
+                                  },
+                                ],
+                              },
+                              "paragraphLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "color": "#0B7EB5",
+                              },
+                              "paragraphStyles": Object {},
+                            },
+                            "bps": Object {
+                              "misc": Object {
+                                "hidpi": "(min-resolution: 1.5dppx)",
+                                "landscape": "(orientation: landscape)",
+                                "portrait": "(orientation: portrait)",
+                              },
+                              "widths": Object {
+                                "l": 1024,
+                                "m": 768,
+                                "s": 600,
+                                "xl": 1280,
+                              },
+                            },
+                            "btnStyle": Object {
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": 1,
+                              "borderEndStyle": "solid",
+                              "borderEndWidth": 1,
+                              "borderStartStyle": "solid",
+                              "borderStartWidth": 1,
+                              "borderTopStyle": "solid",
+                              "borderTopWidth": 1,
+                              "boxModel": Object {
+                                "hp": 4,
+                                "vp": 1,
+                              },
+                              "fontWeight": "bold",
+                              "radius": 0,
+                            },
+                            "captionStyles": Object {
+                              "backgroundColor": Array [
+                                "neutral",
+                                "-10",
+                              ],
+                              "captionColor": Array [
+                                "neutral",
+                                "-2",
+                              ],
+                              "captionTypeSettings": -2,
+                              "creditStyles": Object {
+                                "fontWeight": "300",
+                              },
+                              "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "fontWeight": "700",
+                            },
+                            "color": [Function],
+                            "direrction": "rtl",
+                            "fontStacks": Object {
+                              "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            },
+                            "getDelay": [Function],
+                            "getDuration": [Function],
+                            "getTimingFunction": [Function],
+                            "getTransition": [Function],
+                            "gridStyle": Object {
+                              "gutterWidth": 4,
+                              "ruleColor": Array [
+                                "neutral",
+                                "-5",
+                              ],
+                              "ruleWidth": 1,
+                            },
+                            "inputStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "fontWeightLabel": "bold",
+                              "height": 6,
+                              "lines": 1,
+                              "radius": 0,
+                              "typeScale": -1,
+                            },
+                            "mq": [Function],
+                            "pxToRem": [Function],
+                            "selectStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "lines": 0.00001,
+                            },
+                            "type": [Function],
+                            "typeConf": Object {
+                              "default": Object {
+                                "base": 16,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 6,
+                                "steps": 5,
+                              },
+                              "xl": Object {
+                                "base": 18,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 7,
+                                "steps": 5,
+                              },
+                            },
+                          }
+                        }
+                      >
+                        <button
+                          className="htz-a htz-q htz-r htz-s htz-t htz-i htz-j htz-aj htz-ak htz-al htz-an"
+                          id="downshift-1-item-0"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          role="button"
+                        >
+                          אחד
+                        </button>
+                      </ItemStyle>
+                    </ItemStyle>
+                    <ItemStyle
+                      activeItem={false}
+                      id="downshift-1-item-1"
+                      isSelected={false}
+                      key="2"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                    >
+                      <ItemStyle
+                        activeItem={false}
+                        id="downshift-1-item-1"
+                        isSelected={false}
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        theme={
+                          Object {
+                            "articleStyle": Object {
+                              "body": Object {
+                                "marginBottom": Array [
+                                  Object {
+                                    "until": "xl",
+                                    "value": "4rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "3.5rem",
+                                  },
+                                ],
+                              },
+                              "paragraphLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "color": "#0B7EB5",
+                              },
+                              "paragraphStyles": Object {},
+                            },
+                            "bps": Object {
+                              "misc": Object {
+                                "hidpi": "(min-resolution: 1.5dppx)",
+                                "landscape": "(orientation: landscape)",
+                                "portrait": "(orientation: portrait)",
+                              },
+                              "widths": Object {
+                                "l": 1024,
+                                "m": 768,
+                                "s": 600,
+                                "xl": 1280,
+                              },
+                            },
+                            "btnStyle": Object {
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": 1,
+                              "borderEndStyle": "solid",
+                              "borderEndWidth": 1,
+                              "borderStartStyle": "solid",
+                              "borderStartWidth": 1,
+                              "borderTopStyle": "solid",
+                              "borderTopWidth": 1,
+                              "boxModel": Object {
+                                "hp": 4,
+                                "vp": 1,
+                              },
+                              "fontWeight": "bold",
+                              "radius": 0,
+                            },
+                            "captionStyles": Object {
+                              "backgroundColor": Array [
+                                "neutral",
+                                "-10",
+                              ],
+                              "captionColor": Array [
+                                "neutral",
+                                "-2",
+                              ],
+                              "captionTypeSettings": -2,
+                              "creditStyles": Object {
+                                "fontWeight": "300",
+                              },
+                              "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "fontWeight": "700",
+                            },
+                            "color": [Function],
+                            "direrction": "rtl",
+                            "fontStacks": Object {
+                              "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            },
+                            "getDelay": [Function],
+                            "getDuration": [Function],
+                            "getTimingFunction": [Function],
+                            "getTransition": [Function],
+                            "gridStyle": Object {
+                              "gutterWidth": 4,
+                              "ruleColor": Array [
+                                "neutral",
+                                "-5",
+                              ],
+                              "ruleWidth": 1,
+                            },
+                            "inputStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "fontWeightLabel": "bold",
+                              "height": 6,
+                              "lines": 1,
+                              "radius": 0,
+                              "typeScale": -1,
+                            },
+                            "mq": [Function],
+                            "pxToRem": [Function],
+                            "selectStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "lines": 0.00001,
+                            },
+                            "type": [Function],
+                            "typeConf": Object {
+                              "default": Object {
+                                "base": 16,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 6,
+                                "steps": 5,
+                              },
+                              "xl": Object {
+                                "base": 18,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 7,
+                                "steps": 5,
+                              },
+                            },
+                          }
+                        }
+                      >
+                        <button
+                          className="htz-a htz-q htz-r htz-s htz-t htz-i htz-j htz-aj htz-ak htz-al htz-an"
+                          id="downshift-1-item-1"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          role="button"
+                        >
+                          שתיים
+                        </button>
+                      </ItemStyle>
+                    </ItemStyle>
+                    <ItemStyle
+                      activeItem={true}
+                      id="downshift-1-item-2"
+                      isSelected={true}
+                      key="3"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                    >
+                      <ItemStyle
+                        activeItem={true}
+                        id="downshift-1-item-2"
+                        isSelected={true}
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        theme={
+                          Object {
+                            "articleStyle": Object {
+                              "body": Object {
+                                "marginBottom": Array [
+                                  Object {
+                                    "until": "xl",
+                                    "value": "4rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "3.5rem",
+                                  },
+                                ],
+                              },
+                              "paragraphLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "color": "#0B7EB5",
+                              },
+                              "paragraphStyles": Object {},
+                            },
+                            "bps": Object {
+                              "misc": Object {
+                                "hidpi": "(min-resolution: 1.5dppx)",
+                                "landscape": "(orientation: landscape)",
+                                "portrait": "(orientation: portrait)",
+                              },
+                              "widths": Object {
+                                "l": 1024,
+                                "m": 768,
+                                "s": 600,
+                                "xl": 1280,
+                              },
+                            },
+                            "btnStyle": Object {
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": 1,
+                              "borderEndStyle": "solid",
+                              "borderEndWidth": 1,
+                              "borderStartStyle": "solid",
+                              "borderStartWidth": 1,
+                              "borderTopStyle": "solid",
+                              "borderTopWidth": 1,
+                              "boxModel": Object {
+                                "hp": 4,
+                                "vp": 1,
+                              },
+                              "fontWeight": "bold",
+                              "radius": 0,
+                            },
+                            "captionStyles": Object {
+                              "backgroundColor": Array [
+                                "neutral",
+                                "-10",
+                              ],
+                              "captionColor": Array [
+                                "neutral",
+                                "-2",
+                              ],
+                              "captionTypeSettings": -2,
+                              "creditStyles": Object {
+                                "fontWeight": "300",
+                              },
+                              "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "fontWeight": "700",
+                            },
+                            "color": [Function],
+                            "direrction": "rtl",
+                            "fontStacks": Object {
+                              "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            },
+                            "getDelay": [Function],
+                            "getDuration": [Function],
+                            "getTimingFunction": [Function],
+                            "getTransition": [Function],
+                            "gridStyle": Object {
+                              "gutterWidth": 4,
+                              "ruleColor": Array [
+                                "neutral",
+                                "-5",
+                              ],
+                              "ruleWidth": 1,
+                            },
+                            "inputStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "fontWeightLabel": "bold",
+                              "height": 6,
+                              "lines": 1,
+                              "radius": 0,
+                              "typeScale": -1,
+                            },
+                            "mq": [Function],
+                            "pxToRem": [Function],
+                            "selectStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "lines": 0.00001,
+                            },
+                            "type": [Function],
+                            "typeConf": Object {
+                              "default": Object {
+                                "base": 16,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 6,
+                                "steps": 5,
+                              },
+                              "xl": Object {
+                                "base": 18,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 7,
+                                "steps": 5,
+                              },
+                            },
+                          }
+                        }
+                      >
+                        <button
+                          className="htz-a htz-q htz-r htz-s htz-ax htz-aw htz-i htz-j htz-aj htz-ak htz-al htz-an"
+                          id="downshift-1-item-2"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          role="button"
+                        >
+                          שלוש
+                        </button>
+                      </ItemStyle>
+                    </ItemStyle>
+                  </div>
+                </dropDownMenuStyle>
+              </dropDownMenuStyle>
+            </div>
+          </div>
+        </selectStyle>
+      </selectStyle>
+    </div>
+  </Downshift>
+</Select>
+`;
+
+exports[`<Select> DOM element can select an item without onChange function 1`] = `
+<Select
+  attrs={null}
+  controlledSelectedItem={null}
+  defaultSelectedItem={null}
+  items={
+    Array [
+      Object {
+        "display": "אחד",
+        "value": 1,
+      },
+      Object {
+        "display": "שתיים",
+        "value": 2,
+      },
+      Object {
+        "display": "שלוש",
+        "value": 3,
+      },
+    ]
+  }
+  miscStyles={null}
+  onChange={null}
+  placeholder="בחר אחת מהאפשרויות הבאות"
+  variant="primary"
+>
+  <Downshift
+    breakingChanges={Object {}}
+    defaultHighlightedIndex={1}
+    defaultInputValue=""
+    defaultIsOpen={false}
+    defaultSelectedItem={null}
+    environment={[Window]}
+    getA11yStatusMessage={[Function]}
+    id="downshift-1"
+    itemToString={[Function]}
+    onChange={[Function]}
+    onInputValueChange={[Function]}
+    onOuterClick={[Function]}
+    onSelect={[Function]}
+    onStateChange={[Function]}
+    onUserAction={[Function]}
+    render={[Function]}
+    selectedItem={
+      Object {
+        "display": "שתיים",
+        "value": 2,
+      }
+    }
+    selectedItemChanged={[Function]}
+  >
+    <div
+      onKeyDown={[Function]}
+    >
+      <selectStyle
+        isOpen={false}
+        miscStyles={null}
+        variant="primary"
+      >
+        <selectStyle
+          isOpen={false}
+          miscStyles={null}
+          theme={
+            Object {
+              "articleStyle": Object {
+                "body": Object {
+                  "marginBottom": Array [
+                    Object {
+                      "until": "xl",
+                      "value": "4rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "3.5rem",
+                    },
+                  ],
+                },
+                "paragraphLink": Object {
+                  ":focus": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "2px",
+                  },
+                  ":hover": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                  },
+                  "color": "#0B7EB5",
+                },
+                "paragraphStyles": Object {},
+              },
+              "bps": Object {
+                "misc": Object {
+                  "hidpi": "(min-resolution: 1.5dppx)",
+                  "landscape": "(orientation: landscape)",
+                  "portrait": "(orientation: portrait)",
+                },
+                "widths": Object {
+                  "l": 1024,
+                  "m": 768,
+                  "s": 600,
+                  "xl": 1280,
+                },
+              },
+              "btnStyle": Object {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderEndStyle": "solid",
+                "borderEndWidth": 1,
+                "borderStartStyle": "solid",
+                "borderStartWidth": 1,
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "boxModel": Object {
+                  "hp": 4,
+                  "vp": 1,
+                },
+                "fontWeight": "bold",
+                "radius": 0,
+              },
+              "captionStyles": Object {
+                "backgroundColor": Array [
+                  "neutral",
+                  "-10",
+                ],
+                "captionColor": Array [
+                  "neutral",
+                  "-2",
+                ],
+                "captionTypeSettings": -2,
+                "creditStyles": Object {
+                  "fontWeight": "300",
+                },
+                "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "fontWeight": "700",
+              },
+              "color": [Function],
+              "direrction": "rtl",
+              "fontStacks": Object {
+                "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+              },
+              "getDelay": [Function],
+              "getDuration": [Function],
+              "getTimingFunction": [Function],
+              "getTransition": [Function],
+              "gridStyle": Object {
+                "gutterWidth": 4,
+                "ruleColor": Array [
+                  "neutral",
+                  "-5",
+                ],
+                "ruleWidth": 1,
+              },
+              "inputStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "fontWeightLabel": "bold",
+                "height": 6,
+                "lines": 1,
+                "radius": 0,
+                "typeScale": -1,
+              },
+              "mq": [Function],
+              "pxToRem": [Function],
+              "selectStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "lines": 0.00001,
+              },
+              "type": [Function],
+              "typeConf": Object {
+                "default": Object {
+                  "base": 16,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 6,
+                  "steps": 5,
+                },
+                "xl": Object {
+                  "base": 18,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 7,
+                  "steps": 5,
+                },
+              },
+            }
+          }
+          variant="primary"
+        >
+          <div
+            className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+          >
+            <selectedItemStyle
+              aria-expanded={false}
+              aria-haspopup={true}
+              aria-label="open menu"
+              isOpen={false}
+              noHighlitedItems={false}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+              type="button"
+              variant="primary"
+            >
+              <selectedItemStyle
+                aria-expanded={false}
+                aria-haspopup={true}
+                aria-label="open menu"
+                isOpen={false}
+                noHighlitedItems={false}
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                theme={
+                  Object {
+                    "articleStyle": Object {
+                      "body": Object {
+                        "marginBottom": Array [
+                          Object {
+                            "until": "xl",
+                            "value": "4rem",
+                          },
+                          Object {
+                            "from": "xl",
+                            "value": "3.5rem",
+                          },
+                        ],
+                      },
+                      "paragraphLink": Object {
+                        ":focus": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "2px",
+                        },
+                        ":hover": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "1px",
+                        },
+                        "color": "#0B7EB5",
+                      },
+                      "paragraphStyles": Object {},
+                    },
+                    "bps": Object {
+                      "misc": Object {
+                        "hidpi": "(min-resolution: 1.5dppx)",
+                        "landscape": "(orientation: landscape)",
+                        "portrait": "(orientation: portrait)",
+                      },
+                      "widths": Object {
+                        "l": 1024,
+                        "m": 768,
+                        "s": 600,
+                        "xl": 1280,
+                      },
+                    },
+                    "btnStyle": Object {
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
+                      "borderEndStyle": "solid",
+                      "borderEndWidth": 1,
+                      "borderStartStyle": "solid",
+                      "borderStartWidth": 1,
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": 1,
+                      "boxModel": Object {
+                        "hp": 4,
+                        "vp": 1,
+                      },
+                      "fontWeight": "bold",
+                      "radius": 0,
+                    },
+                    "captionStyles": Object {
+                      "backgroundColor": Array [
+                        "neutral",
+                        "-10",
+                      ],
+                      "captionColor": Array [
+                        "neutral",
+                        "-2",
+                      ],
+                      "captionTypeSettings": -2,
+                      "creditStyles": Object {
+                        "fontWeight": "300",
+                      },
+                      "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      "fontWeight": "700",
+                    },
+                    "color": [Function],
+                    "direrction": "rtl",
+                    "fontStacks": Object {
+                      "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                    },
+                    "getDelay": [Function],
+                    "getDuration": [Function],
+                    "getTimingFunction": [Function],
+                    "getTransition": [Function],
+                    "gridStyle": Object {
+                      "gutterWidth": 4,
+                      "ruleColor": Array [
+                        "neutral",
+                        "-5",
+                      ],
+                      "ruleWidth": 1,
+                    },
+                    "inputStyle": Object {
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "fontWeightLabel": "bold",
+                      "height": 6,
+                      "lines": 1,
+                      "radius": 0,
+                      "typeScale": -1,
+                    },
+                    "mq": [Function],
+                    "pxToRem": [Function],
+                    "selectStyle": Object {
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "lines": 0.00001,
+                    },
+                    "type": [Function],
+                    "typeConf": Object {
+                      "default": Object {
+                        "base": 16,
+                        "minPadding": 2,
+                        "ratio": 2,
+                        "rhythmUnit": 6,
+                        "steps": 5,
+                      },
+                      "xl": Object {
+                        "base": 18,
+                        "minPadding": 2,
+                        "ratio": 2,
+                        "rhythmUnit": 7,
+                        "steps": 5,
+                      },
+                    },
+                  }
+                }
+                type="button"
+                variant="primary"
+              >
+                <ItemStyle
+                  _felaRule={[Function]}
+                  aria-expanded={false}
+                  aria-haspopup={true}
+                  aria-label="open menu"
+                  isOpen={false}
+                  noHighlitedItems={false}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  passThrough={
+                    Array [
+                      "role",
+                      "aria-label",
+                      "aria-expanded",
+                      "aria-haspopup",
+                      "onClick",
+                      "onKeyDown",
+                      "type",
+                    ]
+                  }
+                  role="button"
+                  theme={
+                    Object {
+                      "articleStyle": Object {
+                        "body": Object {
+                          "marginBottom": Array [
+                            Object {
+                              "until": "xl",
+                              "value": "4rem",
+                            },
+                            Object {
+                              "from": "xl",
+                              "value": "3.5rem",
+                            },
+                          ],
+                        },
+                        "paragraphLink": Object {
+                          ":focus": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "2px",
+                          },
+                          ":hover": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "1px",
+                          },
+                          "color": "#0B7EB5",
+                        },
+                        "paragraphStyles": Object {},
+                      },
+                      "bps": Object {
+                        "misc": Object {
+                          "hidpi": "(min-resolution: 1.5dppx)",
+                          "landscape": "(orientation: landscape)",
+                          "portrait": "(orientation: portrait)",
+                        },
+                        "widths": Object {
+                          "l": 1024,
+                          "m": 768,
+                          "s": 600,
+                          "xl": 1280,
+                        },
+                      },
+                      "btnStyle": Object {
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "borderEndStyle": "solid",
+                        "borderEndWidth": 1,
+                        "borderStartStyle": "solid",
+                        "borderStartWidth": 1,
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": 1,
+                        "boxModel": Object {
+                          "hp": 4,
+                          "vp": 1,
+                        },
+                        "fontWeight": "bold",
+                        "radius": 0,
+                      },
+                      "captionStyles": Object {
+                        "backgroundColor": Array [
+                          "neutral",
+                          "-10",
+                        ],
+                        "captionColor": Array [
+                          "neutral",
+                          "-2",
+                        ],
+                        "captionTypeSettings": -2,
+                        "creditStyles": Object {
+                          "fontWeight": "300",
+                        },
+                        "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "fontWeight": "700",
+                      },
+                      "color": [Function],
+                      "direrction": "rtl",
+                      "fontStacks": Object {
+                        "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      },
+                      "getDelay": [Function],
+                      "getDuration": [Function],
+                      "getTimingFunction": [Function],
+                      "getTransition": [Function],
+                      "gridStyle": Object {
+                        "gutterWidth": 4,
+                        "ruleColor": Array [
+                          "neutral",
+                          "-5",
+                        ],
+                        "ruleWidth": 1,
+                      },
+                      "inputStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "fontWeightLabel": "bold",
+                        "height": 6,
+                        "lines": 1,
+                        "radius": 0,
+                        "typeScale": -1,
+                      },
+                      "mq": [Function],
+                      "pxToRem": [Function],
+                      "selectStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "lines": 0.00001,
+                      },
+                      "type": [Function],
+                      "typeConf": Object {
+                        "default": Object {
+                          "base": 16,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 6,
+                          "steps": 5,
+                        },
+                        "xl": Object {
+                          "base": 18,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 7,
+                          "steps": 5,
+                        },
+                      },
+                    }
+                  }
+                  type="button"
+                  variant="primary"
+                >
+                  <ItemStyle
+                    _felaRule={[Function]}
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    aria-label="open menu"
+                    isOpen={false}
+                    noHighlitedItems={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    passThrough={
+                      Array [
+                        "role",
+                        "aria-label",
+                        "aria-expanded",
+                        "aria-haspopup",
+                        "onClick",
+                        "onKeyDown",
+                        "type",
+                      ]
+                    }
+                    role="button"
+                    theme={
+                      Object {
+                        "articleStyle": Object {
+                          "body": Object {
+                            "marginBottom": Array [
+                              Object {
+                                "until": "xl",
+                                "value": "4rem",
+                              },
+                              Object {
+                                "from": "xl",
+                                "value": "3.5rem",
+                              },
+                            ],
+                          },
+                          "paragraphLink": Object {
+                            ":focus": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "2px",
+                            },
+                            ":hover": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "1px",
+                            },
+                            "color": "#0B7EB5",
+                          },
+                          "paragraphStyles": Object {},
+                        },
+                        "bps": Object {
+                          "misc": Object {
+                            "hidpi": "(min-resolution: 1.5dppx)",
+                            "landscape": "(orientation: landscape)",
+                            "portrait": "(orientation: portrait)",
+                          },
+                          "widths": Object {
+                            "l": 1024,
+                            "m": 768,
+                            "s": 600,
+                            "xl": 1280,
+                          },
+                        },
+                        "btnStyle": Object {
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": 1,
+                          "borderEndStyle": "solid",
+                          "borderEndWidth": 1,
+                          "borderStartStyle": "solid",
+                          "borderStartWidth": 1,
+                          "borderTopStyle": "solid",
+                          "borderTopWidth": 1,
+                          "boxModel": Object {
+                            "hp": 4,
+                            "vp": 1,
+                          },
+                          "fontWeight": "bold",
+                          "radius": 0,
+                        },
+                        "captionStyles": Object {
+                          "backgroundColor": Array [
+                            "neutral",
+                            "-10",
+                          ],
+                          "captionColor": Array [
+                            "neutral",
+                            "-2",
+                          ],
+                          "captionTypeSettings": -2,
+                          "creditStyles": Object {
+                            "fontWeight": "300",
+                          },
+                          "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                          "fontWeight": "700",
+                        },
+                        "color": [Function],
+                        "direrction": "rtl",
+                        "fontStacks": Object {
+                          "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                          "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        },
+                        "getDelay": [Function],
+                        "getDuration": [Function],
+                        "getTimingFunction": [Function],
+                        "getTransition": [Function],
+                        "gridStyle": Object {
+                          "gutterWidth": 4,
+                          "ruleColor": Array [
+                            "neutral",
+                            "-5",
+                          ],
+                          "ruleWidth": 1,
+                        },
+                        "inputStyle": Object {
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "fontWeightLabel": "bold",
+                          "height": 6,
+                          "lines": 1,
+                          "radius": 0,
+                          "typeScale": -1,
+                        },
+                        "mq": [Function],
+                        "pxToRem": [Function],
+                        "selectStyle": Object {
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "lines": 0.00001,
+                        },
+                        "type": [Function],
+                        "typeConf": Object {
+                          "default": Object {
+                            "base": 16,
+                            "minPadding": 2,
+                            "ratio": 2,
+                            "rhythmUnit": 6,
+                            "steps": 5,
+                          },
+                          "xl": Object {
+                            "base": 18,
+                            "minPadding": 2,
+                            "ratio": 2,
+                            "rhythmUnit": 7,
+                            "steps": 5,
+                          },
+                        },
+                      }
+                    }
+                    type="button"
+                    variant="primary"
+                  >
+                    <button
+                      aria-expanded={false}
+                      aria-haspopup={true}
+                      aria-label="open menu"
+                      className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      role="button"
+                      type="button"
+                      variant="primary"
+                    >
+                      שתיים
+                    </button>
+                  </ItemStyle>
+                </ItemStyle>
+              </selectedItemStyle>
+            </selectedItemStyle>
+            <div
+              style={
+                Object {
+                  "position": "relative",
+                }
+              }
+            />
+          </div>
+        </selectStyle>
+      </selectStyle>
+    </div>
+  </Downshift>
+</Select>
+`;
+
+exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
+<Select
+  attrs={null}
+  controlledSelectedItem={null}
+  defaultSelectedItem={null}
+  items={
+    Array [
+      Object {
+        "value": 1,
+      },
+      Object {
+        "value": 2,
+      },
+      Object {
+        "display": "שלוש",
+        "value": 3,
+      },
+    ]
+  }
+  miscStyles={null}
+  onChange={null}
+  placeholder="בחר אחת מהאפשרויות הבאות"
+  variant="primary"
+>
+  <Downshift
+    breakingChanges={Object {}}
+    defaultHighlightedIndex={0}
+    defaultInputValue=""
+    defaultIsOpen={false}
+    defaultSelectedItem={null}
+    environment={[Window]}
+    getA11yStatusMessage={[Function]}
+    id="downshift-1"
+    itemToString={[Function]}
+    onChange={[Function]}
+    onInputValueChange={[Function]}
+    onOuterClick={[Function]}
+    onSelect={[Function]}
+    onStateChange={[Function]}
+    onUserAction={[Function]}
+    render={[Function]}
+    selectedItem={null}
+    selectedItemChanged={[Function]}
+  >
+    <div
+      onKeyDown={[Function]}
+    >
+      <selectStyle
+        isOpen={true}
+        miscStyles={null}
+        variant="primary"
+      >
+        <selectStyle
+          isOpen={true}
+          miscStyles={null}
+          theme={
+            Object {
+              "articleStyle": Object {
+                "body": Object {
+                  "marginBottom": Array [
+                    Object {
+                      "until": "xl",
+                      "value": "4rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "3.5rem",
+                    },
+                  ],
+                },
+                "paragraphLink": Object {
+                  ":focus": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "2px",
+                  },
+                  ":hover": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                  },
+                  "color": "#0B7EB5",
+                },
+                "paragraphStyles": Object {},
+              },
+              "bps": Object {
+                "misc": Object {
+                  "hidpi": "(min-resolution: 1.5dppx)",
+                  "landscape": "(orientation: landscape)",
+                  "portrait": "(orientation: portrait)",
+                },
+                "widths": Object {
+                  "l": 1024,
+                  "m": 768,
+                  "s": 600,
+                  "xl": 1280,
+                },
+              },
+              "btnStyle": Object {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderEndStyle": "solid",
+                "borderEndWidth": 1,
+                "borderStartStyle": "solid",
+                "borderStartWidth": 1,
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "boxModel": Object {
+                  "hp": 4,
+                  "vp": 1,
+                },
+                "fontWeight": "bold",
+                "radius": 0,
+              },
+              "captionStyles": Object {
+                "backgroundColor": Array [
+                  "neutral",
+                  "-10",
+                ],
+                "captionColor": Array [
+                  "neutral",
+                  "-2",
+                ],
+                "captionTypeSettings": -2,
+                "creditStyles": Object {
+                  "fontWeight": "300",
+                },
+                "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "fontWeight": "700",
+              },
+              "color": [Function],
+              "direrction": "rtl",
+              "fontStacks": Object {
+                "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+              },
+              "getDelay": [Function],
+              "getDuration": [Function],
+              "getTimingFunction": [Function],
+              "getTransition": [Function],
+              "gridStyle": Object {
+                "gutterWidth": 4,
+                "ruleColor": Array [
+                  "neutral",
+                  "-5",
+                ],
+                "ruleWidth": 1,
+              },
+              "inputStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "fontWeightLabel": "bold",
+                "height": 6,
+                "lines": 1,
+                "radius": 0,
+                "typeScale": -1,
+              },
+              "mq": [Function],
+              "pxToRem": [Function],
+              "selectStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "lines": 0.00001,
+              },
+              "type": [Function],
+              "typeConf": Object {
+                "default": Object {
+                  "base": 16,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 6,
+                  "steps": 5,
+                },
+                "xl": Object {
+                  "base": 18,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 7,
+                  "steps": 5,
+                },
+              },
+            }
+          }
+          variant="primary"
+        >
+          <div
+            className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-ap"
+          >
+            <selectedItemStyle
+              aria-expanded={true}
+              aria-haspopup={true}
+              aria-label="close menu"
+              isOpen={true}
+              noHighlitedItems={false}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+              type="button"
+              variant="primary"
+            >
+              <selectedItemStyle
+                aria-expanded={true}
+                aria-haspopup={true}
+                aria-label="close menu"
+                isOpen={true}
+                noHighlitedItems={false}
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                theme={
+                  Object {
+                    "articleStyle": Object {
+                      "body": Object {
+                        "marginBottom": Array [
+                          Object {
+                            "until": "xl",
+                            "value": "4rem",
+                          },
+                          Object {
+                            "from": "xl",
+                            "value": "3.5rem",
+                          },
+                        ],
+                      },
+                      "paragraphLink": Object {
+                        ":focus": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "2px",
+                        },
+                        ":hover": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "1px",
+                        },
+                        "color": "#0B7EB5",
+                      },
+                      "paragraphStyles": Object {},
+                    },
+                    "bps": Object {
+                      "misc": Object {
+                        "hidpi": "(min-resolution: 1.5dppx)",
+                        "landscape": "(orientation: landscape)",
+                        "portrait": "(orientation: portrait)",
+                      },
+                      "widths": Object {
+                        "l": 1024,
+                        "m": 768,
+                        "s": 600,
+                        "xl": 1280,
+                      },
+                    },
+                    "btnStyle": Object {
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
+                      "borderEndStyle": "solid",
+                      "borderEndWidth": 1,
+                      "borderStartStyle": "solid",
+                      "borderStartWidth": 1,
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": 1,
+                      "boxModel": Object {
+                        "hp": 4,
+                        "vp": 1,
+                      },
+                      "fontWeight": "bold",
+                      "radius": 0,
+                    },
+                    "captionStyles": Object {
+                      "backgroundColor": Array [
+                        "neutral",
+                        "-10",
+                      ],
+                      "captionColor": Array [
+                        "neutral",
+                        "-2",
+                      ],
+                      "captionTypeSettings": -2,
+                      "creditStyles": Object {
+                        "fontWeight": "300",
+                      },
+                      "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      "fontWeight": "700",
+                    },
+                    "color": [Function],
+                    "direrction": "rtl",
+                    "fontStacks": Object {
+                      "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                    },
+                    "getDelay": [Function],
+                    "getDuration": [Function],
+                    "getTimingFunction": [Function],
+                    "getTransition": [Function],
+                    "gridStyle": Object {
+                      "gutterWidth": 4,
+                      "ruleColor": Array [
+                        "neutral",
+                        "-5",
+                      ],
+                      "ruleWidth": 1,
+                    },
+                    "inputStyle": Object {
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "fontWeightLabel": "bold",
+                      "height": 6,
+                      "lines": 1,
+                      "radius": 0,
+                      "typeScale": -1,
+                    },
+                    "mq": [Function],
+                    "pxToRem": [Function],
+                    "selectStyle": Object {
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "lines": 0.00001,
+                    },
+                    "type": [Function],
+                    "typeConf": Object {
+                      "default": Object {
+                        "base": 16,
+                        "minPadding": 2,
+                        "ratio": 2,
+                        "rhythmUnit": 6,
+                        "steps": 5,
+                      },
+                      "xl": Object {
+                        "base": 18,
+                        "minPadding": 2,
+                        "ratio": 2,
+                        "rhythmUnit": 7,
+                        "steps": 5,
+                      },
+                    },
+                  }
+                }
+                type="button"
+                variant="primary"
+              >
+                <ItemStyle
+                  _felaRule={[Function]}
+                  aria-expanded={true}
+                  aria-haspopup={true}
+                  aria-label="close menu"
+                  isOpen={true}
+                  noHighlitedItems={false}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  passThrough={
+                    Array [
+                      "role",
+                      "aria-label",
+                      "aria-expanded",
+                      "aria-haspopup",
+                      "onClick",
+                      "onKeyDown",
+                      "type",
+                    ]
+                  }
+                  role="button"
+                  theme={
+                    Object {
+                      "articleStyle": Object {
+                        "body": Object {
+                          "marginBottom": Array [
+                            Object {
+                              "until": "xl",
+                              "value": "4rem",
+                            },
+                            Object {
+                              "from": "xl",
+                              "value": "3.5rem",
+                            },
+                          ],
+                        },
+                        "paragraphLink": Object {
+                          ":focus": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "2px",
+                          },
+                          ":hover": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "1px",
+                          },
+                          "color": "#0B7EB5",
+                        },
+                        "paragraphStyles": Object {},
+                      },
+                      "bps": Object {
+                        "misc": Object {
+                          "hidpi": "(min-resolution: 1.5dppx)",
+                          "landscape": "(orientation: landscape)",
+                          "portrait": "(orientation: portrait)",
+                        },
+                        "widths": Object {
+                          "l": 1024,
+                          "m": 768,
+                          "s": 600,
+                          "xl": 1280,
+                        },
+                      },
+                      "btnStyle": Object {
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "borderEndStyle": "solid",
+                        "borderEndWidth": 1,
+                        "borderStartStyle": "solid",
+                        "borderStartWidth": 1,
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": 1,
+                        "boxModel": Object {
+                          "hp": 4,
+                          "vp": 1,
+                        },
+                        "fontWeight": "bold",
+                        "radius": 0,
+                      },
+                      "captionStyles": Object {
+                        "backgroundColor": Array [
+                          "neutral",
+                          "-10",
+                        ],
+                        "captionColor": Array [
+                          "neutral",
+                          "-2",
+                        ],
+                        "captionTypeSettings": -2,
+                        "creditStyles": Object {
+                          "fontWeight": "300",
+                        },
+                        "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "fontWeight": "700",
+                      },
+                      "color": [Function],
+                      "direrction": "rtl",
+                      "fontStacks": Object {
+                        "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      },
+                      "getDelay": [Function],
+                      "getDuration": [Function],
+                      "getTimingFunction": [Function],
+                      "getTransition": [Function],
+                      "gridStyle": Object {
+                        "gutterWidth": 4,
+                        "ruleColor": Array [
+                          "neutral",
+                          "-5",
+                        ],
+                        "ruleWidth": 1,
+                      },
+                      "inputStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "fontWeightLabel": "bold",
+                        "height": 6,
+                        "lines": 1,
+                        "radius": 0,
+                        "typeScale": -1,
+                      },
+                      "mq": [Function],
+                      "pxToRem": [Function],
+                      "selectStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "lines": 0.00001,
+                      },
+                      "type": [Function],
+                      "typeConf": Object {
+                        "default": Object {
+                          "base": 16,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 6,
+                          "steps": 5,
+                        },
+                        "xl": Object {
+                          "base": 18,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 7,
+                          "steps": 5,
+                        },
+                      },
+                    }
+                  }
+                  type="button"
+                  variant="primary"
+                >
+                  <ItemStyle
+                    _felaRule={[Function]}
+                    aria-expanded={true}
+                    aria-haspopup={true}
+                    aria-label="close menu"
+                    isOpen={true}
+                    noHighlitedItems={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    passThrough={
+                      Array [
+                        "role",
+                        "aria-label",
+                        "aria-expanded",
+                        "aria-haspopup",
+                        "onClick",
+                        "onKeyDown",
+                        "type",
+                      ]
+                    }
+                    role="button"
+                    theme={
+                      Object {
+                        "articleStyle": Object {
+                          "body": Object {
+                            "marginBottom": Array [
+                              Object {
+                                "until": "xl",
+                                "value": "4rem",
+                              },
+                              Object {
+                                "from": "xl",
+                                "value": "3.5rem",
+                              },
+                            ],
+                          },
+                          "paragraphLink": Object {
+                            ":focus": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "2px",
+                            },
+                            ":hover": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "1px",
+                            },
+                            "color": "#0B7EB5",
+                          },
+                          "paragraphStyles": Object {},
+                        },
+                        "bps": Object {
+                          "misc": Object {
+                            "hidpi": "(min-resolution: 1.5dppx)",
+                            "landscape": "(orientation: landscape)",
+                            "portrait": "(orientation: portrait)",
+                          },
+                          "widths": Object {
+                            "l": 1024,
+                            "m": 768,
+                            "s": 600,
+                            "xl": 1280,
+                          },
+                        },
+                        "btnStyle": Object {
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": 1,
+                          "borderEndStyle": "solid",
+                          "borderEndWidth": 1,
+                          "borderStartStyle": "solid",
+                          "borderStartWidth": 1,
+                          "borderTopStyle": "solid",
+                          "borderTopWidth": 1,
+                          "boxModel": Object {
+                            "hp": 4,
+                            "vp": 1,
+                          },
+                          "fontWeight": "bold",
+                          "radius": 0,
+                        },
+                        "captionStyles": Object {
+                          "backgroundColor": Array [
+                            "neutral",
+                            "-10",
+                          ],
+                          "captionColor": Array [
+                            "neutral",
+                            "-2",
+                          ],
+                          "captionTypeSettings": -2,
+                          "creditStyles": Object {
+                            "fontWeight": "300",
+                          },
+                          "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                          "fontWeight": "700",
+                        },
+                        "color": [Function],
+                        "direrction": "rtl",
+                        "fontStacks": Object {
+                          "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                          "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        },
+                        "getDelay": [Function],
+                        "getDuration": [Function],
+                        "getTimingFunction": [Function],
+                        "getTransition": [Function],
+                        "gridStyle": Object {
+                          "gutterWidth": 4,
+                          "ruleColor": Array [
+                            "neutral",
+                            "-5",
+                          ],
+                          "ruleWidth": 1,
+                        },
+                        "inputStyle": Object {
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "fontWeightLabel": "bold",
+                          "height": 6,
+                          "lines": 1,
+                          "radius": 0,
+                          "typeScale": -1,
+                        },
+                        "mq": [Function],
+                        "pxToRem": [Function],
+                        "selectStyle": Object {
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "lines": 0.00001,
+                        },
+                        "type": [Function],
+                        "typeConf": Object {
+                          "default": Object {
+                            "base": 16,
+                            "minPadding": 2,
+                            "ratio": 2,
+                            "rhythmUnit": 6,
+                            "steps": 5,
+                          },
+                          "xl": Object {
+                            "base": 18,
+                            "minPadding": 2,
+                            "ratio": 2,
+                            "rhythmUnit": 7,
+                            "steps": 5,
+                          },
+                        },
+                      }
+                    }
+                    type="button"
+                    variant="primary"
+                  >
+                    <button
+                      aria-expanded={true}
+                      aria-haspopup={true}
+                      aria-label="close menu"
+                      className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aq htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an"
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      role="button"
+                      type="button"
+                      variant="primary"
+                    >
+                      בחר אחת מהאפשרויות הבאות
+                    </button>
+                  </ItemStyle>
+                </ItemStyle>
+              </selectedItemStyle>
+            </selectedItemStyle>
+            <div
+              style={
+                Object {
+                  "position": "relative",
+                }
+              }
+            >
+              <dropDownMenuStyle
+                data-test="dropdown-menu"
+                variant="primary"
+              >
+                <dropDownMenuStyle
+                  data-test="dropdown-menu"
+                  theme={
+                    Object {
+                      "articleStyle": Object {
+                        "body": Object {
+                          "marginBottom": Array [
+                            Object {
+                              "until": "xl",
+                              "value": "4rem",
+                            },
+                            Object {
+                              "from": "xl",
+                              "value": "3.5rem",
+                            },
+                          ],
+                        },
+                        "paragraphLink": Object {
+                          ":focus": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "2px",
+                          },
+                          ":hover": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "1px",
+                          },
+                          "color": "#0B7EB5",
+                        },
+                        "paragraphStyles": Object {},
+                      },
+                      "bps": Object {
+                        "misc": Object {
+                          "hidpi": "(min-resolution: 1.5dppx)",
+                          "landscape": "(orientation: landscape)",
+                          "portrait": "(orientation: portrait)",
+                        },
+                        "widths": Object {
+                          "l": 1024,
+                          "m": 768,
+                          "s": 600,
+                          "xl": 1280,
+                        },
+                      },
+                      "btnStyle": Object {
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "borderEndStyle": "solid",
+                        "borderEndWidth": 1,
+                        "borderStartStyle": "solid",
+                        "borderStartWidth": 1,
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": 1,
+                        "boxModel": Object {
+                          "hp": 4,
+                          "vp": 1,
+                        },
+                        "fontWeight": "bold",
+                        "radius": 0,
+                      },
+                      "captionStyles": Object {
+                        "backgroundColor": Array [
+                          "neutral",
+                          "-10",
+                        ],
+                        "captionColor": Array [
+                          "neutral",
+                          "-2",
+                        ],
+                        "captionTypeSettings": -2,
+                        "creditStyles": Object {
+                          "fontWeight": "300",
+                        },
+                        "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "fontWeight": "700",
+                      },
+                      "color": [Function],
+                      "direrction": "rtl",
+                      "fontStacks": Object {
+                        "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                        "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                      },
+                      "getDelay": [Function],
+                      "getDuration": [Function],
+                      "getTimingFunction": [Function],
+                      "getTransition": [Function],
+                      "gridStyle": Object {
+                        "gutterWidth": 4,
+                        "ruleColor": Array [
+                          "neutral",
+                          "-5",
+                        ],
+                        "ruleWidth": 1,
+                      },
+                      "inputStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "fontWeightLabel": "bold",
+                        "height": 6,
+                        "lines": 1,
+                        "radius": 0,
+                        "typeScale": -1,
+                      },
+                      "mq": [Function],
+                      "pxToRem": [Function],
+                      "selectStyle": Object {
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "lines": 0.00001,
+                      },
+                      "type": [Function],
+                      "typeConf": Object {
+                        "default": Object {
+                          "base": 16,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 6,
+                          "steps": 5,
+                        },
+                        "xl": Object {
+                          "base": 18,
+                          "minPadding": 2,
+                          "ratio": 2,
+                          "rhythmUnit": 7,
+                          "steps": 5,
+                        },
+                      },
+                    }
+                  }
+                  variant="primary"
+                >
+                  <div
+                    className="htz-u htz-ar htz-as htz-at htz-au htz-av htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-am"
+                  >
+                    <ItemStyle
+                      activeItem={true}
+                      id="downshift-1-item-0"
+                      isSelected={false}
+                      key="1"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                    >
+                      <ItemStyle
+                        activeItem={true}
+                        id="downshift-1-item-0"
+                        isSelected={false}
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        theme={
+                          Object {
+                            "articleStyle": Object {
+                              "body": Object {
+                                "marginBottom": Array [
+                                  Object {
+                                    "until": "xl",
+                                    "value": "4rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "3.5rem",
+                                  },
+                                ],
+                              },
+                              "paragraphLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "color": "#0B7EB5",
+                              },
+                              "paragraphStyles": Object {},
+                            },
+                            "bps": Object {
+                              "misc": Object {
+                                "hidpi": "(min-resolution: 1.5dppx)",
+                                "landscape": "(orientation: landscape)",
+                                "portrait": "(orientation: portrait)",
+                              },
+                              "widths": Object {
+                                "l": 1024,
+                                "m": 768,
+                                "s": 600,
+                                "xl": 1280,
+                              },
+                            },
+                            "btnStyle": Object {
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": 1,
+                              "borderEndStyle": "solid",
+                              "borderEndWidth": 1,
+                              "borderStartStyle": "solid",
+                              "borderStartWidth": 1,
+                              "borderTopStyle": "solid",
+                              "borderTopWidth": 1,
+                              "boxModel": Object {
+                                "hp": 4,
+                                "vp": 1,
+                              },
+                              "fontWeight": "bold",
+                              "radius": 0,
+                            },
+                            "captionStyles": Object {
+                              "backgroundColor": Array [
+                                "neutral",
+                                "-10",
+                              ],
+                              "captionColor": Array [
+                                "neutral",
+                                "-2",
+                              ],
+                              "captionTypeSettings": -2,
+                              "creditStyles": Object {
+                                "fontWeight": "300",
+                              },
+                              "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "fontWeight": "700",
+                            },
+                            "color": [Function],
+                            "direrction": "rtl",
+                            "fontStacks": Object {
+                              "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            },
+                            "getDelay": [Function],
+                            "getDuration": [Function],
+                            "getTimingFunction": [Function],
+                            "getTransition": [Function],
+                            "gridStyle": Object {
+                              "gutterWidth": 4,
+                              "ruleColor": Array [
+                                "neutral",
+                                "-5",
+                              ],
+                              "ruleWidth": 1,
+                            },
+                            "inputStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "fontWeightLabel": "bold",
+                              "height": 6,
+                              "lines": 1,
+                              "radius": 0,
+                              "typeScale": -1,
+                            },
+                            "mq": [Function],
+                            "pxToRem": [Function],
+                            "selectStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "lines": 0.00001,
+                            },
+                            "type": [Function],
+                            "typeConf": Object {
+                              "default": Object {
+                                "base": 16,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 6,
+                                "steps": 5,
+                              },
+                              "xl": Object {
+                                "base": 18,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 7,
+                                "steps": 5,
+                              },
+                            },
+                          }
+                        }
+                      >
+                        <button
+                          className="htz-a htz-q htz-r htz-s htz-aw htz-i htz-j htz-aj htz-ak htz-al htz-an"
+                          id="downshift-1-item-0"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          role="button"
+                        >
+                          1
+                        </button>
+                      </ItemStyle>
+                    </ItemStyle>
+                    <ItemStyle
+                      activeItem={false}
+                      id="downshift-1-item-1"
+                      isSelected={false}
+                      key="2"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                    >
+                      <ItemStyle
+                        activeItem={false}
+                        id="downshift-1-item-1"
+                        isSelected={false}
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        theme={
+                          Object {
+                            "articleStyle": Object {
+                              "body": Object {
+                                "marginBottom": Array [
+                                  Object {
+                                    "until": "xl",
+                                    "value": "4rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "3.5rem",
+                                  },
+                                ],
+                              },
+                              "paragraphLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "color": "#0B7EB5",
+                              },
+                              "paragraphStyles": Object {},
+                            },
+                            "bps": Object {
+                              "misc": Object {
+                                "hidpi": "(min-resolution: 1.5dppx)",
+                                "landscape": "(orientation: landscape)",
+                                "portrait": "(orientation: portrait)",
+                              },
+                              "widths": Object {
+                                "l": 1024,
+                                "m": 768,
+                                "s": 600,
+                                "xl": 1280,
+                              },
+                            },
+                            "btnStyle": Object {
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": 1,
+                              "borderEndStyle": "solid",
+                              "borderEndWidth": 1,
+                              "borderStartStyle": "solid",
+                              "borderStartWidth": 1,
+                              "borderTopStyle": "solid",
+                              "borderTopWidth": 1,
+                              "boxModel": Object {
+                                "hp": 4,
+                                "vp": 1,
+                              },
+                              "fontWeight": "bold",
+                              "radius": 0,
+                            },
+                            "captionStyles": Object {
+                              "backgroundColor": Array [
+                                "neutral",
+                                "-10",
+                              ],
+                              "captionColor": Array [
+                                "neutral",
+                                "-2",
+                              ],
+                              "captionTypeSettings": -2,
+                              "creditStyles": Object {
+                                "fontWeight": "300",
+                              },
+                              "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "fontWeight": "700",
+                            },
+                            "color": [Function],
+                            "direrction": "rtl",
+                            "fontStacks": Object {
+                              "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            },
+                            "getDelay": [Function],
+                            "getDuration": [Function],
+                            "getTimingFunction": [Function],
+                            "getTransition": [Function],
+                            "gridStyle": Object {
+                              "gutterWidth": 4,
+                              "ruleColor": Array [
+                                "neutral",
+                                "-5",
+                              ],
+                              "ruleWidth": 1,
+                            },
+                            "inputStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "fontWeightLabel": "bold",
+                              "height": 6,
+                              "lines": 1,
+                              "radius": 0,
+                              "typeScale": -1,
+                            },
+                            "mq": [Function],
+                            "pxToRem": [Function],
+                            "selectStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "lines": 0.00001,
+                            },
+                            "type": [Function],
+                            "typeConf": Object {
+                              "default": Object {
+                                "base": 16,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 6,
+                                "steps": 5,
+                              },
+                              "xl": Object {
+                                "base": 18,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 7,
+                                "steps": 5,
+                              },
+                            },
+                          }
+                        }
+                      >
+                        <button
+                          className="htz-a htz-q htz-r htz-s htz-t htz-i htz-j htz-aj htz-ak htz-al htz-an"
+                          id="downshift-1-item-1"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          role="button"
+                        >
+                          2
+                        </button>
+                      </ItemStyle>
+                    </ItemStyle>
+                    <ItemStyle
+                      activeItem={false}
+                      id="downshift-1-item-2"
+                      isSelected={false}
+                      key="3"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                    >
+                      <ItemStyle
+                        activeItem={false}
+                        id="downshift-1-item-2"
+                        isSelected={false}
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        theme={
+                          Object {
+                            "articleStyle": Object {
+                              "body": Object {
+                                "marginBottom": Array [
+                                  Object {
+                                    "until": "xl",
+                                    "value": "4rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "3.5rem",
+                                  },
+                                ],
+                              },
+                              "paragraphLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "color": "#0B7EB5",
+                              },
+                              "paragraphStyles": Object {},
+                            },
+                            "bps": Object {
+                              "misc": Object {
+                                "hidpi": "(min-resolution: 1.5dppx)",
+                                "landscape": "(orientation: landscape)",
+                                "portrait": "(orientation: portrait)",
+                              },
+                              "widths": Object {
+                                "l": 1024,
+                                "m": 768,
+                                "s": 600,
+                                "xl": 1280,
+                              },
+                            },
+                            "btnStyle": Object {
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": 1,
+                              "borderEndStyle": "solid",
+                              "borderEndWidth": 1,
+                              "borderStartStyle": "solid",
+                              "borderStartWidth": 1,
+                              "borderTopStyle": "solid",
+                              "borderTopWidth": 1,
+                              "boxModel": Object {
+                                "hp": 4,
+                                "vp": 1,
+                              },
+                              "fontWeight": "bold",
+                              "radius": 0,
+                            },
+                            "captionStyles": Object {
+                              "backgroundColor": Array [
+                                "neutral",
+                                "-10",
+                              ],
+                              "captionColor": Array [
+                                "neutral",
+                                "-2",
+                              ],
+                              "captionTypeSettings": -2,
+                              "creditStyles": Object {
+                                "fontWeight": "300",
+                              },
+                              "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "fontWeight": "700",
+                            },
+                            "color": [Function],
+                            "direrction": "rtl",
+                            "fontStacks": Object {
+                              "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                              "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                            },
+                            "getDelay": [Function],
+                            "getDuration": [Function],
+                            "getTimingFunction": [Function],
+                            "getTransition": [Function],
+                            "gridStyle": Object {
+                              "gutterWidth": 4,
+                              "ruleColor": Array [
+                                "neutral",
+                                "-5",
+                              ],
+                              "ruleWidth": 1,
+                            },
+                            "inputStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "fontWeightLabel": "bold",
+                              "height": 6,
+                              "lines": 1,
+                              "radius": 0,
+                              "typeScale": -1,
+                            },
+                            "mq": [Function],
+                            "pxToRem": [Function],
+                            "selectStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "lines": 0.00001,
+                            },
+                            "type": [Function],
+                            "typeConf": Object {
+                              "default": Object {
+                                "base": 16,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 6,
+                                "steps": 5,
+                              },
+                              "xl": Object {
+                                "base": 18,
+                                "minPadding": 2,
+                                "ratio": 2,
+                                "rhythmUnit": 7,
+                                "steps": 5,
+                              },
+                            },
+                          }
+                        }
+                      >
+                        <button
+                          className="htz-a htz-q htz-r htz-s htz-t htz-i htz-j htz-aj htz-ak htz-al htz-an"
+                          id="downshift-1-item-2"
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          role="button"
+                        >
+                          שלוש
+                        </button>
+                      </ItemStyle>
+                    </ItemStyle>
+                  </div>
+                </dropDownMenuStyle>
+              </dropDownMenuStyle>
+            </div>
+          </div>
+        </selectStyle>
+      </selectStyle>
+    </div>
+  </Downshift>
+</Select>
+`;
+
+exports[`<Select> DOM element renders correctly with a controlled selected item 1`] = `
+<div>
+  <div
+    onKeyDown={[Function]}
+  >
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        aria-label="open menu"
+        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        type="button"
+        variant="primary"
+      >
+        שלוש
+      </button>
+      <div
+        style={
+          Object {
+            "position": "relative",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Select> DOM element renders correctly with a controlled selected item 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+
+exports[`<Select> DOM element renders correctly with a placholder prop 1`] = `
+<div>
+  <div
+    onKeyDown={[Function]}
+  >
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        aria-label="open menu"
+        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        type="button"
+        variant="primary"
+      >
+        custom placholder
+      </button>
+      <div
+        style={
+          Object {
+            "position": "relative",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Select> DOM element renders correctly with a placholder prop 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+
+exports[`<Select> DOM element renders correctly with custom attrs prop 1`] = `
+<div>
+  <div
+    aria-hidden={true}
+    onKeyDown={[Function]}
+  >
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        aria-label="open menu"
+        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        type="button"
+        variant="primary"
+      >
+        בחר אחת מהאפשרויות הבאות
+      </button>
+      <div
+        style={
+          Object {
+            "position": "relative",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Select> DOM element renders correctly with custom attrs prop 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+
+exports[`<Select> DOM element renders correctly with custom miscStyles 1`] = `
+<div>
+  <div
+    onKeyDown={[Function]}
+  >
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        aria-label="open menu"
+        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        type="button"
+        variant="primary"
+      >
+        בחר אחת מהאפשרויות הבאות
+      </button>
+      <div
+        style={
+          Object {
+            "position": "relative",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Select> DOM element renders correctly with custom miscStyles 2`] = `".htz-a{width:100%}.htz-b{color:red}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+
+exports[`<Select> DOM element renders correctly with default selected item 1`] = `
+<div>
+  <div
+    onKeyDown={[Function]}
+  >
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        aria-label="open menu"
+        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        type="button"
+        variant="primary"
+      >
+        בחר אחת מהאפשרויות הבאות
+      </button>
+      <div
+        style={
+          Object {
+            "position": "relative",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Select> DOM element renders correctly with default selected item 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+
+exports[`<Select> DOM element renders correctly with minimal required props 1`] = `
+<div>
+  <div
+    onKeyDown={[Function]}
+  >
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        aria-label="open menu"
+        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        type="button"
+        variant="primary"
+      >
+        בחר אחת מהאפשרויות הבאות
+      </button>
+      <div
+        style={
+          Object {
+            "position": "relative",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Select> DOM element renders correctly with minimal required props 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+
+exports[`<Select> DOM element renders correctly without display key in item 1`] = `
+<div>
+  <div
+    onKeyDown={[Function]}
+  >
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        aria-label="open menu"
+        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        type="button"
+        variant="primary"
+      >
+        3
+      </button>
+      <div
+        style={
+          Object {
+            "position": "relative",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Select> DOM element renders correctly without display key in item 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
