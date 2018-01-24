@@ -4,25 +4,17 @@ exports[`should correctly render a Caption bar with both credit and caption  1`]
 Object {
   "component": <div>
     <div
-      background={null}
-      caption="The Caption"
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
-      color={null}
-      credit="me"
-      creditprefix="קרדיט"
-      floatCredit={false}
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"
     >
       The Caption
       <span
-        className="htz-i htz-j htz-k"
-        floatCredit={false}
-        prefix="קרדיט"
+        className="htz-h htz-i htz-j"
       >
         me
       </span>
     </div>
   </div>,
-  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{background-color:#FFF}.htz-d{color:#505050}.htz-i{font-weight:300}.htz-j:before{content:'קרדיט: '}.htz-k{margin-right:1rem}@media (max-width: 80em){.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}@media (min-width: 80em){.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
+  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{color:#505050}.htz-h{font-weight:300}.htz-i:before{content:'קרדיט: '}.htz-j{margin-right:1rem}@media (max-width: 80em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
 }
 `;
 
@@ -30,49 +22,13 @@ exports[`should correctly render a Caption bar with only the caption, Left to ri
 Object {
   "component": <div>
     <div
-      background={null}
-      bgc={
-        Array [
-          Object {
-            "until": "xl",
-            "value": Array [
-              "tertiary",
-              "-3",
-            ],
-          },
-          Object {
-            "from": "xl",
-            "value": "primary",
-          },
-        ]
-      }
-      caption="The Caption"
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
-      color={
-        Array [
-          Object {
-            "until": "xl",
-            "value": "primary",
-          },
-          Object {
-            "from": "xl",
-            "value": Array [
-              "tertiary",
-              "-3",
-            ],
-          },
-        ]
-      }
-      credit={null}
-      creditprefix="קרדיט"
-      direction="ltr"
-      floatCredit={false}
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
     >
       The Caption
       
     </div>
   </div>,
-  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}@media (max-width: 80em){.htz-c{background-color:#FFA6A6}.htz-d{color:#0B7EB5}.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}@media (min-width: 80em){.htz-g{background-color:#0B7EB5}.htz-h{color:#FFA6A6}.htz-i{font-size:2rem}.htz-j{line-height:1.5em}}",
+  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}@media (max-width: 80em){.htz-c{color:#0B7EB5}.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{color:#FFA6A6}.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
 }
 `;
 
@@ -80,25 +36,16 @@ exports[`should correctly render a Caption bar with only the credit  1`] = `
 Object {
   "component": <div>
     <div
-      background={null}
-      caption={null}
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
-      color={null}
-      credit="me"
-      creditPrefix="Credit"
-      creditprefix="קרדיט"
-      floatCredit={false}
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"
     >
       <span
-        className="htz-i htz-j htz-k"
-        floatCredit={false}
-        prefix="קרדיט"
+        className="htz-h htz-i htz-j"
       >
         me
       </span>
     </div>
   </div>,
-  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{background-color:#FFF}.htz-d{color:#505050}.htz-i{font-weight:300}.htz-j:before{content:'קרדיט: '}.htz-k{margin-right:1rem}@media (max-width: 80em){.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}@media (min-width: 80em){.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
+  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{color:#505050}.htz-h{font-weight:300}.htz-i:before{content:'קרדיט: '}.htz-j{margin-right:1rem}@media (max-width: 80em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
 }
 `;
 

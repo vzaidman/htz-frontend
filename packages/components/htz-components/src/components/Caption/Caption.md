@@ -26,7 +26,7 @@
       credit='Some guy'
       creditprefix='Credit'
       direction='ltr'
-      background={[{until: 'xl', value: ['tertiary', '-3'],}, { from: 'xl', value: 'primary',}, ]}
+      backgroundColor={[{until: 'xl', value: ['tertiary', '-3'],}, { from: 'xl', value: 'primary',}, ]}
     />
   </GridItem>
   
@@ -36,7 +36,7 @@
       caption='סתם תיאור של משהו'
       credit='Some guy'
       creditprefix='Credit'
-      background={['neutral', '-10']}
+      backgroundColor={['neutral', '-10']}
       color={'neutral'}
     />
   </GridItem>

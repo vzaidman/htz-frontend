@@ -13,19 +13,19 @@ const setColor = (prop, value, getColor) => {
 
 const captionWrapper = ({
   theme,
-  bgc,
+  backgroundColor,
   color,
   typeStyles, // Not responsive. can only take "number"
   miscStyles,
 }) => {
   let {
-    backgroundColor,
+    bgc,
     captionColor,
     captionTypeSettings,
     fontFamily,
     fontWeight,
   } = theme.captionStyles || {};
-  backgroundColor = bgc || backgroundColor;
+  backgroundColor = backgroundColor || bgc;
   captionColor = color || captionColor;
   captionTypeSettings = typeStyles || captionTypeSettings;
 
@@ -122,7 +122,7 @@ function isTypographyObject(typeSettings) {
     : false;
 }
 
-const CaptionWrapper = createComponent(captionWrapper, 'div', props => Object.keys(props));
+const CaptionWrapper = createComponent(captionWrapper);
 
 const credit = ({ theme, prefix, floatCredit, }) => {
   const { fontWeight, } = theme.captionStyles.creditStyles || {};
@@ -137,7 +137,7 @@ const credit = ({ theme, prefix, floatCredit, }) => {
   };
 };
 
-const Credit = createComponent(credit, 'span', props => Object.keys(props));
+const Credit = createComponent(credit, 'span');
 
 /**
  * A Caption for Images, Embeds, Videos, etc.
@@ -180,7 +180,7 @@ Caption.propTypes = {
   /**
    * The color of the background.
    */
-  background: PropTypes.oneOfType([
+  backgroundColor: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
     PropTypes.object,
