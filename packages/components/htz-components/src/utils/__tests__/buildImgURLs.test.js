@@ -52,7 +52,7 @@ describe('buildUrl()', () => {
     const result = buildUrl('1.44444', data[0], {width: '200',});
     expect(result)
       .toMatch(
-        /image\/upload\/w_300,h_300,x_10,y_0,c_crop,g_north_west.q_auto,w_200,c_fill,f_auto.fl_any_format\.preserve_transparency\.progressive:none/
+        /image\/upload\/w_300,h_300,x_10,y_0,c_crop,g_north_west.q_auto,h_200,w_200,c_fill,f_auto.fl_any_format\.preserve_transparency\.progressive:none/
       );
   });
 

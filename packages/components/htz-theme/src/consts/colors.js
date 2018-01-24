@@ -279,6 +279,9 @@ const colors = {
     // labelBg: '#xxx',
     // labelText: '#xxx',
   },
+  image: {
+    bgc: [ 'neutral', '-6', ],
+  },
   link: {
     base: [ 'primary', 'base', ],
     a11yOnDark: [ 'primary', '-2', ],

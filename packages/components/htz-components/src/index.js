@@ -21,6 +21,7 @@ import Scroll from './components/Scroll/Scroll';
 import ScrollListener from './components/EventListeners/ScrollListener';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 import Tags from './components/Tags/Tags';
+import Image from './components/Image/Image';
 
 // Icons
 import IconAccessibility from './components/Icon/icons/IconAccessibility';
@@ -126,4 +127,5 @@ export {
   SeriesArticles,
   StyleProvider,
   Tags,
+  Image,
 };
