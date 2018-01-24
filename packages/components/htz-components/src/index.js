@@ -7,8 +7,6 @@ import ArticleBody from './components/ArticleBody/ArticleBody';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import Caption from './components/Caption/Caption';
-import CommentForm from './components/CommentForm/CommentForm';
-import CommentList from './components/CommentList/CommentList';
 import Embed from './components/Embed/Embed';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
@@ -22,6 +20,7 @@ import ScrollListener from './components/EventListeners/ScrollListener';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 import Tags from './components/Tags/Tags';
 import Image from './components/Image/Image';
+import Comments from './components/CommentsSection/CommentsWithApollo';
 
 // Icons
 import IconAccessibility from './components/Icon/icons/IconAccessibility';
@@ -70,10 +69,9 @@ export {
   Button,
   ButtonGroup,
   Caption,
-  CommentForm,
-  CommentList,
   Grid,
   GridItem,
+  Comments,
   IconAccessibility,
   IconAlef,
   IconAlefLogo,
