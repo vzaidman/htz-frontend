@@ -11,6 +11,7 @@ const CommentType = new GraphQLObjectType({
     title: { type: GraphQLString, },
     commentText: { type: GraphQLString, },
     publishingDateForDisplay: { type: GraphQLString, },
+    publishingDateSortable: { type: GraphQLString, },
     reviewState: { type: GraphQLString, },
     isEditorPick: { type: GraphQLString, },
     subComments: {

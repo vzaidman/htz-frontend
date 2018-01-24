@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { GraphQLObjectType, GraphQLID, GraphQLNonNull, GraphQLString, } from 'graphql';
+import { GraphQLObjectType, GraphQLNonNull, GraphQLString, } from 'graphql';
 import CommentsElement from './types/comments_element_type';
 import Page from './types/page_type';
 
@@ -8,9 +8,9 @@ const RootQuery = new GraphQLObjectType({
   fields: () => ({
     commentsElement: {
       type: CommentsElement,
-      args: { contentId: { type: new GraphQLNonNull(GraphQLID), }, },
-      resolve(parentValue, { contentId, }, context) {
-        return context.cmlinkLoader.load(contentId);
+      args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
+      resolve(parentValue, { path, }, context) {
+        return context.cmlinkLoader.load(path);
       },
     },
     page: {

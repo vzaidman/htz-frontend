@@ -17,10 +17,8 @@ export function createLoaders() {
   );
   const cmlinkLoader = new DataLoader(keys =>
     Promise.all(
-      keys.map(contentId =>
-        fetch(
-          `http://${host}.haaretz.co.il/json/cmlink/${contentId}?composite=true`
-        ).then(response => response.json())
+      keys.map(path =>
+        fetch(`http://${host}.haaretz.co.il/json/cmlink/${path}`).then(response => response.json())
       )
     )
   );
@@ -28,8 +26,8 @@ export function createLoaders() {
 }
 
 export function createPosters(cookies) {
-  const cmlinkCommentPoster = newComment => {
-    return fetch(`http://${host}.haaretz.co.il/cmlink/${newComment.commentElementId}`, {
+  const cmlinkCommentPoster = newComment =>
+    fetch(`http://${host}.haaretz.co.il/cmlink/${newComment.commentElementId}`, {
       method: 'post',
       credentials: 'include',
       headers: {
@@ -50,9 +48,70 @@ export function createPosters(cookies) {
     })
       .then(response => response.json())
       .then(data => data);
-  };
 
-  return { cmlinkCommentPoster, };
+  const cmlinkCommentAbuseReport = newAbuseReport =>
+    fetch(`http://${host}.haaretz.co.il/cmlink/${newAbuseReport.commentElementId}`, {
+      method: 'post',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json, text/javascript, */*; q=0.01',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        origin: `http://${host}.haaretz.co.il`,
+      },
+      body: querystring.stringify({
+        commentId: newAbuseReport.commentId,
+        action: 'REPORT_COMMENT_ABUSE',
+        invisible: true,
+        'g-recaptcha-response': newAbuseReport.captchaKey,
+        ajax: true,
+      }),
+    })
+      .then(response => response.status)
+      .then(data => data);
+
+  const loggerVotePoster = newVote =>
+    fetch(
+      // Todo: Change Mador (2.285) from hardcoded to dynamic
+      `http://${host}.haaretz.co.il/logger/p.gif?type=COMMENTS_RATINGS&a=%2F2.285%2F${
+        newVote.articleId
+      }&comment=${newVote.commentId}&group=${newVote.group}&_=${new Date().getTime()}`,
+      {
+        method: 'get',
+        credentials: 'include',
+        headers: {
+          Accept: '*/*',
+        },
+      }
+    )
+      .then(response => response.status)
+      .then(data => data);
+
+  const notificationSignUpPoster = newSignUpData =>
+    fetch(`http://${host}.haaretz.co.il/comments/acceptreject`, {
+      method: 'post',
+      credentials: 'include',
+      headers: {
+        Accept: '*/*',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      },
+      body: querystring.stringify({
+        userEmail: newSignUpData.userEmail,
+        c: newSignUpData.commentId,
+        h: newSignUpData.hash,
+        a: '2',
+        m: '', // todo: cheack what needs to be here allowMarketing true /false ?
+        ut: 'anonymous', // todo: check what needs to be here paying/anonymous check from cookie?
+      }),
+    })
+      .then(response => response.status)
+      .then(data => data);
+
+  return {
+    cmlinkCommentPoster,
+    cmlinkCommentAbuseReport,
+    loggerVotePoster,
+    notificationSignUpPoster,
+  };
 }
 
 export default function createContext(cookies) {

@@ -8,7 +8,6 @@ const CommentInput = new GraphQLInputObjectType({
     commentElementId: { type: GraphQLID, },
     parentCommentId: { type: GraphQLString, },
     commentText: { type: GraphQLString, },
-    commentTitle: { type: GraphQLString, },
     commentAuthor: { type: GraphQLString, },
   }),
 });
