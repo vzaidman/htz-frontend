@@ -1,3 +1,3 @@
-import { bool, number, objectOf, oneOfType, string, } from 'prop-types';
+import { bool, func, number, objectOf, oneOfType, string, } from 'prop-types';
 
-export const attrsPropType = objectOf(oneOfType([ bool, number, string, ]));
+export const attrsPropType = objectOf(oneOfType([ bool, number, string, func, ]));
