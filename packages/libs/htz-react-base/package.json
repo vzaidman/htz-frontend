@@ -1,7 +1,8 @@
 {
   "name": "@haaretz/htz-react-base",
   "version": "1.0.0",
-  "description": "Encapsulated development scripts and dependencies for building React apps and components.",
+  "description":
+    "Encapsulated development scripts and dependencies for building React apps and components.",
   "keywords": [],
   "author": "",
   "license": "UNLICENSED",
@@ -53,7 +54,7 @@
     "flow-bin": "^0.58.0",
     "globby": "^6.1.0",
     "inquirer": "^3.3.0",
-    "jest": "^21.2.1",
+    "jest": "^22.1.1",
     "prettier": "^1.5.3",
     "react-styleguidist": "^6.0.20",
     "react-test-renderer": "^16.2.0",

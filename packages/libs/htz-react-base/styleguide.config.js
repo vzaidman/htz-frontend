@@ -386,6 +386,13 @@ module.exports = {
   // Ideally, we'd be able to use Next's webpack config, so everything works
   // the same when used in a Next app, but they don't expose it.
   webpackConfig: {
+    devServer: {
+      allowedHosts: [
+        '.haaretz.co.il',
+        '.haaretz.com',
+        '.themarker.com',
+      ],
+    },
     resolve: {
       alias: {
         config$: require.resolve('./webpack/configShim'),
