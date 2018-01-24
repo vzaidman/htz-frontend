@@ -12,6 +12,9 @@ const btnStyle = Object.freeze({
   borderTopStyle: 'solid',
   radius: 0,
   boxModel: { hp: 4, vp: 1, },
+
+  // Font Style
+  fontWeight: 'bold',
 });
 
 export default btnStyle;

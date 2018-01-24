@@ -4,20 +4,22 @@ import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
 import captionStyles from './consts/captionStyles';
 import cssReset from './consts/cssReset';
+import selectStyle from './consts/selectStyle';
+import inputStyle from './consts/inputStyle';
 import fontStacks from './consts/fontStacks';
 import gridStyle from './consts/gridStyle';
-import inputStyle from './consts/inputStyle';
 import typeConf from './consts/typeConf';
-import i18n from './consts/i18n';
+import i18n, {
+  tagsElement,
+  commentI18n,
+  commentFormI18n,
+  commentSentI18n,
+  commentsSectionI18n,
+} from './consts/i18n';
 
 // methods
 import getColor from './methods/getColor';
-import {
-  getDelay,
-  getDuration,
-  getTimingFunction,
-  getTransition,
-} from './methods/animation';
+import { getDelay, getDuration, getTimingFunction, getTransition, } from './methods/animation';
 import getMqString from './methods/getMqString';
 import pxToRem from './methods/pxToRem';
 import typesetter from './methods/typesetter';
@@ -47,6 +49,10 @@ export { cssReset, };
  *   two grid items.
  * @prop {string[]} gridStyle.ruleWidth - The default color of a vertical rule separating
  *   two grid items.
+ * @prop {Object} selectStyle - An immutable Object with select input style definitions
+ * @prop {number} selectStyle.borderWidth  - The width of an select input's outline, in pixels
+ * @prop {number} selectStyle.lines  - The nuber of lines to pass through to the border func in htz-css-tools
+ * @prop {string} selectStyle.borderStyle  - The `border-style` of an select input's outline
  * @prop {Object} fontStacks - An object containing font-family stacks for different use cases
  * @prop {Object} inputStyle - An immutable Object with input style definitions
  * @prop {number} inputStyle.borderWidth  - The width of an input's outline, in pixels
@@ -92,6 +98,7 @@ const htzTheme = Object.freeze({
   gridStyle,
   fontStacks,
   inputStyle,
+  selectStyle,
   typeConf,
 
   // Methods
@@ -107,4 +114,17 @@ const htzTheme = Object.freeze({
 });
 
 export default htzTheme;
-export { bps, getColor, getTransition, mq, pxToRem, typesetter, i18n, };
+export {
+  bps,
+  commentI18n,
+  commentFormI18n,
+  commentSentI18n,
+  commentsSectionI18n,
+  getColor,
+  getTransition,
+  i18n,
+  tagsElement,
+  mq,
+  pxToRem,
+  typesetter,
+};

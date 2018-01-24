@@ -1,9 +1,6 @@
 import getColor from '../methods/getColor';
 import fontStacks from './fontStacks';
-import {
-  htmlFontSizesAsString,
-  bodyTypographyRulesAsString,
-} from './typographicBaseline';
+import { htmlFontSizesAsString, bodyTypographyRulesAsString, } from './typographicBaseline';
 
 /**
  * Universal
@@ -54,14 +51,14 @@ const styles =
    */
   `${htmlFontSizesAsString}` +
   /**
-  * body element
-  * Typographic styles for `body` element based on the pre-defined typographic scale.
-  */
+   * body element
+   * Typographic styles for `body` element based on the pre-defined typographic scale.
+   */
   `${bodyTypographyRulesAsString}` +
   /**
-  * Block elements
-  * Set the correct display in Edge, IE, and Firefox.
-  */
+   * Block elements
+   * Set the correct display in Edge, IE, and Firefox.
+   */
   'article,' +
   'aside,' +
   'details,' +
@@ -75,16 +72,16 @@ const styles =
   'section{' +
   'display:block;' +
   '}' +
-  /* ********************************************************* *
- *                                                           *
- * Remove default styling from semantic elements.            *
- * Form should not be an inherited byproduct of semantics.   *
- *                                                           *
- * ********************************************************* */
+  /** ******************************************************** *
+   *                                                           *
+   * Remove default styling from semantic elements.            *
+   * Form should not be an inherited byproduct of semantics.   *
+   *                                                           *
+   * ********************************************************* */
 
   /**
- * Remove default margin and padding set by default user-agent styles.
- */
+   * Remove default margin and padding set by default user-agent styles.
+   */
   'blockquote,' +
   'body,' +
   'button,' +
@@ -118,9 +115,9 @@ const styles =
   'padding:0;' +
   '}' +
   /**
- * Headings
- * Elements are for semantics, and should not set font-size
- */
+   * Headings
+   * Elements are for semantics, and should not set font-size
+   */
   'h1,' +
   'h2,' +
   'h3,' +
@@ -130,38 +127,38 @@ const styles =
   'font-size:1em;' +
   '}' +
   /**
- * ht element
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
+   * ht element
+   * 1. Add the correct box sizing in Firefox.
+   * 2. Show the overflow in Edge and IE.
+   */
   'hr{' +
   'box-sizing:content-box;' + // 1
   'height:0;' + // 1
   'overflow:visible;' + // 2
   '}' +
   /**
- * Lists
- * list-style should be opt-in
- */
+   * Lists
+   * list-style should be opt-in
+   */
   'ol,' +
   'ul{' +
   'list-style:none;' +
   '}' +
   /**
- * pre element
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
+   * pre element
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
   'pre{' +
   'font-family:monospace, monospace;' + // 1
   'font-size:1em;' + // 2
   '}' +
   /**
- * Links
- * 1. Remove the gray background on active links in IE 10.
- * 2. Text-decoration should be opt-in for links.
- * 3. Nicer text-decoration where available
- */
+   * Links
+   * 1. Remove the gray background on active links in IE 10.
+   * 2. Text-decoration should be opt-in for links.
+   * 3. Nicer text-decoration where available
+   */
   'a{' +
   'background-color:transparent;' + // 1
   'text-decoration:none;' + // 2
@@ -169,27 +166,27 @@ const styles =
   'text-decoration-skip:ink;' + // 3
   '}' +
   /**
- * abbr element
- * 1. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
+   * abbr element
+   * 1. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+   */
   'abbr[title]{' +
   'text-decoration:underline;' +
   'text-decoration:underline dotted;' +
   '}' +
   /**
- * strong, b elements
- * Set the `font-weight` of `<b>` and `<strong>` elements to `700`
- * instead of the relative `bolder`.
- */
+   * strong, b elements
+   * Set the `font-weight` of `<b>` and `<strong>` elements to `700`
+   * instead of the relative `bolder`.
+   */
   'b,' +
   'strong{' +
   'font-weight:700;' +
   '}' +
   /**
- * code elements
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
+   * code elements
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
   'code,' +
   'kbd,' +
   'samp{' +
@@ -197,18 +194,18 @@ const styles =
   'font-size:1em;' + // 2
   '}' +
   /**
- * mark elements
- * Set the color of `<mark>` elements in accordance with the brand color palette
- */
+   * mark elements
+   * Set the color of `<mark>` elements in accordance with the brand color palette
+   */
   'mark{' +
   `background-color:${getColor('highlight')};` +
   `color:${getColor('bodyText')};` +
   '}' +
   /**
- * sub and sup elements
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
+   * sub and sup elements
+   * Prevent `sub` and `sup` elements from affecting the line height in
+   * all browsers.
+   */
   'sub,' +
   'sup{' +
   'font-size:75%;' +
@@ -238,10 +235,10 @@ const styles =
   'text-shadow:none;' +
   '}' +
   /**
- * Embedded media elements
- * Make media elements align to the vertical middle instead of the baseline.
- * Fixes annoying whitespace issues beneath these elements.
- */
+   * Embedded media elements
+   * Make media elements align to the vertical middle instead of the baseline.
+   * Fixes annoying whitespace issues beneath these elements.
+   */
   'audio,' +
   'canvas,' +
   'iframe,' +
@@ -251,10 +248,10 @@ const styles =
   'vertical-align:middle;' +
   '}' +
   /**
- * SVG elements
- * 1. Change the fill color to match the text color in all browsers
- * 2. Hide the overflow in IE.
- */
+   * SVG elements
+   * 1. Change the fill color to match the text color in all browsers
+   * 2. Hide the overflow in IE.
+   */
   'svg{' +
   'fill:currentColor;' + // 1
   '}' +
@@ -262,17 +259,17 @@ const styles =
   'overflow:hidden;' + // 2
   '}' +
   /**
- * tables
- * Collapse border spacing
- */
+   * tables
+   * Collapse border spacing
+   */
   'table{' +
   'border-collapse:collapse;' +
   'border-spacing:0;' +
   '}' +
   /**
- * Form elements
- * Indicate clickability
- */
+   * Form elements
+   * Indicate clickability
+   */
   'label,' +
   'input,' +
   'button,' +
@@ -283,8 +280,8 @@ const styles =
   'cursor:pointer;' +
   '}' +
   /**
- * Indicate editability
- */
+   * Indicate editability
+   */
   '[contenteditable]:not([contenteditable="false"]),' +
   'input[type="email"],' +
   'input[type="email"]:active,' +
@@ -304,8 +301,8 @@ const styles =
   'outline:none;' +
   '}' +
   /**
- * Inherit styling from parent
- */
+   * Inherit styling from parent
+   */
   'button,' +
   'input,' +
   'select,' +
@@ -313,24 +310,25 @@ const styles =
   'color:inherit;' +
   'font-size:inherit;' +
   'line-height:inherit;' +
+  `font-family:${fontStacks.default};` +
   '}' +
   /**
- * Show the overflow in IE and Edge
- */
+   * Show the overflow in IE and Edge
+   */
   'button,' +
   'input{' +
   'overflow:visible;' +
   '}' +
   /**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- */
+   * Remove the inheritance of text transform in Edge, Firefox, and IE.
+   */
   'button,' +
   'select{' +
   'text-transform:none;' +
   '}' +
   /**
- * Remove appearance
- */
+   * Remove appearance
+   */
   'input,' +
   'button,' +
   'select,' +
@@ -340,10 +338,10 @@ const styles =
   'appearance:none;' +
   '}' +
   /**
- * Buttons
- * 1. Make do with user-agent spacing
- * 2. Correct the inability to style clickable types in iOS and Safari.
- */
+   * Buttons
+   * 1. Make do with user-agent spacing
+   * 2. Correct the inability to style clickable types in iOS and Safari.
+   */
   'button,' +
   '[type="button"],' +
   '[type="reset"],' +
@@ -354,9 +352,9 @@ const styles =
   'letter-spacing:' +
   '}' +
   /**
- * Focused buttons
- * Remove the inner border and padding in Firefox.
- */
+   * Focused buttons
+   * Remove the inner border and padding in Firefox.
+   */
   'button::-moz-focus-inner,' +
   '[type="button"]::-moz-focus-inner,' +
   '[type="reset"]::-moz-focus-inner,' +
@@ -366,12 +364,12 @@ const styles =
   'outline:none;' +
   '}' +
   /**
- * legend elements
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
- */
+   * legend elements
+   * 1. Correct the text wrapping in Edge and IE.
+   * 2. Correct the color inheritance from `fieldset` elements in IE.
+   * 3. Remove the padding so developers are not caught out when they zero out
+   *    `fieldset` elements in all browsers.
+   */
   'legend{' +
   'box-sizing:border-box;' + // 1
   'color:inherit;' + // 2
@@ -381,61 +379,61 @@ const styles =
   'white-space:normal;' + // 1
   '}' +
   /**
- * progress elements
- * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
+   * progress elements
+   * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+   */
   'progress{' +
   'vertical-align:baseline;' +
   '}' +
   /**
- * 1. Remove the default vertical scrollbar in IE.
- */
+   * 1. Remove the default vertical scrollbar in IE.
+   */
   'textarea{' +
   'overflow:auto;' + // 1
   '}' +
   /**
- * Checkboxes and redio buttons
- * 1. Add the correct box sizing in IE 10-.
- * 2. Remove the padding in IE 10-.
- */
+   * Checkboxes and redio buttons
+   * 1. Add the correct box sizing in IE 10-.
+   * 2. Remove the padding in IE 10-.
+   */
   '[type="checkbox"],' +
   '[type="radio"]{' +
   'box-sizing:border-box;' + // 1
   'padding:0;' + // 2
   '}' +
   /**
- * Number inputs
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
+   * Number inputs
+   * Correct the cursor style of increment and decrement buttons in Chrome.
+   */
   '[type="number"]::-webkit-inner-spin-button,' +
   '[type="number"]::-webkit-outer-spin-button{' +
   'height:auto;' +
   '}' +
   /**
- * Search inputs
- * Correct the outline style in Safari.
- */
+   * Search inputs
+   * Correct the outline style in Safari.
+   */
   '[type="search"]{' +
   'outline-offset:-2px;' +
   '}' +
   /**
- * file upload buttons
- * `inherit` font properties in Safari.
- */
+   * file upload buttons
+   * `inherit` font properties in Safari.
+   */
   '::-webkit-file-upload-button{' +
   'font:inherit;' +
   '}' +
   /**
- * summery element
- * Add the correct display in all browsers.
- */
+   * summery element
+   * Add the correct display in all browsers.
+   */
   'summary{' +
   'display:list-item;' +
   '}' +
   /**
- * template element
- * Add the correct display in IE.
- */
+   * template element
+   * Add the correct display in IE.
+   */
   'template{' +
   'display:none;' +
   '}' +
@@ -455,15 +453,15 @@ const styles =
   'touch-action:manipulation;' +
   '}' +
   /**
- * Hide element with [hidden]
- */
+   * Hide element with [hidden]
+   */
   '[hidden]{' +
   'display:none;' +
   '}' +
   /**
- * aria-busy
- * Change the cursor on busy elements (opinionated).
- */
+   * aria-busy
+   * Change the cursor on busy elements (opinionated).
+   */
   '[aria-busy="true"]{' +
   'cursor:progress;' +
   '}' +

@@ -174,6 +174,21 @@ const colors = {
     facebookOpaqueHoverBorder: 'transparent',
     facebookOpaqueHoverText: 'white',
 
+    // todo: get hover, and focus design
+    // Opaque Format button
+    formatOpaqueBg: [ 'primary', '-6', ],
+    formatOpaqueBorder: 'transparent',
+    formatOpaqueText: [ 'neutral', '-1', ],
+    formatOpaqueActiveBg: [ 'primary', 'base', ],
+    formatOpaqueActiveBorder: 'transparent',
+    formatOpaqueActiveText: 'white',
+    formatOpaqueFocusBg: [ 'primary', 'base', ],
+    formatOpaqueFocusBorder: 'transparent',
+    formatOpaqueFocusText: 'white',
+    formatOpaqueHoverBg: [ 'primary', '-5', ],
+    formatOpaqueHoverBorder: 'transparent',
+    formatOpaqueHoverText: [ 'neutral', '-1', ],
+
     // Twitter
     twitterBg: 'white',
     twitterBorder: [ 'button', 'twitterText', ],
@@ -258,6 +273,20 @@ const colors = {
     salesOpaqueHoverBorder: 'transparent',
     salesOpaqueHoverText: 'white',
   },
+  comments: {
+    authorName: [ 'primary', 'base', ],
+    bg: 'white',
+    border: [ 'neutral', '-4', ],
+    divider: [ 'primary', '+1', ],
+    date: [ 'neutral', '-3', ],
+    highlightedCommentBg: [ 'bg', 'base', ],
+    highlightStatus: [ 'primary', '-2', ],
+    number: [ 'neutral', '-3', ],
+    report: [ 'negative', 'a11yOnDark', ],
+    replyIcon: [ 'neutral', '-4', ],
+    subcommentAuthor: [ 'neutral', '-4', ],
+    subcommentBorder: [ 'primary', '-4', ],
+  },
   highlight: {
     base: [ 'quaternary', 'base', ],
     dimm: [ 'quaternary', '-2', ],
@@ -266,18 +295,77 @@ const colors = {
     base: [ 'primary', 'base', ],
     text: [ 'neutral', '-3', ],
   },
+  select: {
+    // Primary
+    primaryBg: 'white',
+    primaryBorder: [ 'primary', 'base', ],
+    primaryBorderItem: [ 'neutral', '-6', ],
+    primaryArrowColor: [ 'primary', 'base', ],
+    primaryTextColor: [ 'primary', 'base', ],
+
+    // Primary highlighted
+    primaryHighlightedBg: [ 'primary', '-6', ],
+    // Primary hover
+    primaryHoverBg: [ 'primary', '-6', ],
+    // Primary Focus
+    primaryFocusBg: [ 'primary', '-6', ],
+  },
   input: {
-    // base: [ 'primary', '-6', ],
-    bg: [ 'primary', '-6', ],
-    border: [ 'primary', '+1', ],
-    label: [ 'primary', '+1', ],
-    text: 'bodyText',
-    hoverBg: [ 'primary', '-5', ],
-    focusBg: [ 'primary', '-4', ],
-    placeholder: [ 'neutral', '-3', ],
+    // Primary
+    primaryBg: [ 'primary', '-6', ],
+    primaryBgWrapper: 'transparent',
+    primaryBorder: [ 'primary', '-4', ],
+    primaryBorderTextLabel: [ 'primary', '-5', ],
+    primaryPlaceholder: [ 'neutral', '-4', ],
+    primaryText: [ 'bodyText', 'base', ],
+    primaryTextLabel: [ 'primary', '+1', ],
+    primaryTextLabelDisabled: [ 'neutral', '-4', ],
+    primaryTextNote: [ 'neutral', '-4', ],
+    primaryAbbr: [ 'tertiary', 'base', ],
+
+    // Primary Focus
+    primaryFocusBg: 'white',
+    primaryFocusBorder: [ 'primary', 'base', ],
+
+    // Primary Error state
+    primaryErrorBorder: [ 'tertiary', '+1', ],
+    primaryErrorText: [ 'bodyText', 'base', ],
+    primaryErrorTextLabel: [ 'tertiary', 'base', ],
+    primaryErrorTextNote: [ 'tertiary', 'base', ],
+
+    // Primary Hover
+    primaryHoverBg: [ 'primary', '-5', ],
+    primaryHoverBorder: [ 'primary', '-4', ],
+    primaryHoverText: [ 'bodyText', 'base', ],
+
+    // PrimaryInverse
+    primaryInverseBg: 'white',
+    primaryInverseBgWrapper: 'transparent',
+    primaryInverseBorder: [ 'primary', '-4', ],
+    primaryInverseBorderTextLabel: [ 'primary', '-5', ],
+    primaryInversePlaceholder: [ 'neutral', '-4', ],
+    primaryInverseText: [ 'bodyText', 'base', ],
+    primaryInverseTextLabel: [ 'primary', '+1', ],
+    primaryInverseTextLabelDisabled: [ 'neutral', '-4', ],
+    primaryInverseTextNote: 'white',
+    primaryInverseAbbr: [ 'primary', 'base', ],
+
+    // PrimaryInverse Focus
+    primaryInverseFocusBg: 'white',
+    primaryInverseFocusBorder: [ 'primary', 'base', ],
+
+    // PrimaryInverse Error state
+    primaryInverseErrorBorder: [ 'tertiary', '+1', ],
+    primaryInverseErrorText: [ 'bodyText', 'base', ],
+    primaryInverseErrorTextLabel: [ 'tertiary', 'base', ],
+    primaryInverseErrorTextNote: [ 'tertiary', 'base', ],
+
+    // PrimaryInverse Hover
+    primaryInverseHoverBg: [ 'primary', '-5', ],
+    primaryInverseHoverBorder: [ 'primary', '-4', ],
+    primaryInverseHoverText: [ 'bodyText', 'base', ],
+
     // TODO: Fill up
-    // labelBg: '#xxx',
-    // labelText: '#xxx',
   },
   image: {
     bgc: [ 'neutral', '-6', ],

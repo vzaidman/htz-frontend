@@ -68,11 +68,7 @@ export function getTimingFunction(type, easing) {
 }
 
 function getProps(type, duration, easing, delay) {
-  if (
-    typeof duration === 'undefined' &&
-    typeof delay === 'undefined' &&
-    !easing
-  ) {
+  if (typeof duration === 'undefined' && typeof delay === 'undefined' && !easing) {
     throw new Error('You must pass at least one of the arguments');
   }
   const timingFunction = Array.isArray(easing)
@@ -86,15 +82,9 @@ function getProps(type, duration, easing, delay) {
     throw new Error(`"${easing}" is not a named timing function`);
   }
   return {
-    ...(typeof duration !== 'undefined'
-      ? { [`${type}Duration`]: getTime(duration), }
-      : undefined),
-    ...(timingFunction
-      ? { [`${type}TimingFunction`]: timingFunction, }
-      : undefined),
-    ...(typeof delay !== 'undefined'
-      ? { [`${type}Delay`]: getTime(delay), }
-      : undefined),
+    ...(typeof duration !== 'undefined' ? { [`${type}Duration`]: getTime(duration), } : undefined),
+    ...(timingFunction ? { [`${type}TimingFunction`]: timingFunction, } : undefined),
+    ...(typeof delay !== 'undefined' ? { [`${type}Delay`]: getTime(delay), } : undefined),
   };
 }
 
@@ -105,12 +95,10 @@ function getTime(step) {
   }
 
   if (step < -1) {
-    throw new RangeError(
-      `"step" may not be lower than "-1". You passed "${step}"`
-    );
+    throw new RangeError(`"step" may not be lower than "-1". You passed "${step}"`);
   }
 
   return step === -1
     ? `${10 / 60}s` // [1]
-    : step === 0 ? '.25s' : step === 1 ? '.3s' : `${0.25 * step}`;
+    : step === 0 ? '.25s' : step === 1 ? '.3s' : `${0.25 * step}s`;
 }
