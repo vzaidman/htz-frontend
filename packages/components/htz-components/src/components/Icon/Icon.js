@@ -41,6 +41,8 @@ import IconZoomIn from './icons/IconZoomIn';
 import IconAccessibility from './icons/IconAccessibility';
 import IconBold from './icons/IconBold';
 import IconQuote from './icons/IconQuote';
+import IconArrow from './icons/IconArrow';
+import IconReply from './icons/IconReply';
 import IconItalic from './icons/IconItalic';
 
 
@@ -152,6 +154,8 @@ export default class Icons extends React.Component {
           <Cell name="IconAccessibility">{<IconAccessibility size={this.state.size} />}</Cell>
           <Cell name="IconBold">{<IconBold size={this.state.size} />}</Cell>
           <Cell name="IconQuote">{<IconQuote size={this.state.size} />}</Cell>
+          <Cell name="IconArrow">{<IconArrow size={this.state.size} />}</Cell>
+          <Cell name="IconReply">{<IconReply size={this.state.size} />}</Cell>
           <Cell name="IconItalic">{<IconItalic size={this.state.size} />}</Cell>
         </Wrapper>
       </div>

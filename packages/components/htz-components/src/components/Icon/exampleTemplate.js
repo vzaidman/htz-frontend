@@ -100,9 +100,7 @@ export default class Icons extends React.Component {
         </p>
         <Wrapper>${componentNames.reduce(
     (cells, componentName) => `${cells}
-          <Cell name="${componentName}">{<${
-  componentName
-} size={this.state.size} />}</Cell>`,
+          <Cell name="${componentName}">{<${componentName} size={this.state.size} />}</Cell>`,
     ''
   )}
         </Wrapper>
