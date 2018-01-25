@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponent, } from 'react-fela';
+import { createComponent, withTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -32,6 +32,12 @@ const propTypes = {
    * @param {String} - notificationEmail - The email the user entered
    */
   signUpNotification: PropTypes.func.isRequired,
+  /** passed as a a prop by fela's withTheme func before default export */
+  theme: PropTypes.shape({
+    commentsStyle: PropTypes.shape({
+      textInputVariant: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 const defaultProps = {
@@ -129,6 +135,10 @@ class CommentForm extends React.Component {
 
   isReplyForm = this.props.parentCommentId !== '0';
 
+  TextInputVariant = this.isReplyForm
+    ? `${this.props.theme.commentsStyle.textInputVariant}Inverse`
+    : this.props.theme.commentsStyle.textInputVariant;
+
   handleSubmitComment(commentAuthor, commentTextHtml) {
     this.props.initNewComment(commentAuthor, commentTextHtml, this.props.parentCommentId);
     this.setState({ displaySentComp: true, });
@@ -143,6 +153,7 @@ class CommentForm extends React.Component {
       this.setState({ notificationEmail: '', displayThankYou: true, });
     }
   }
+
   render() {
     const { closeReplyForm, } = this.props;
     const {
@@ -197,7 +208,7 @@ class CommentForm extends React.Component {
                     noteText: nameNoteTxt,
                     label: nameLabelTxt,
                     maxLength: 200,
-                    variant: this.isReplyForm ? 'primaryInverse' : 'primary',
+                    variant: this.TextInputVariant,
                   })}
                 />
               </TextInputWrapper>
@@ -217,7 +228,7 @@ class CommentForm extends React.Component {
                 noteText: commentNoteTxt,
                 label: commentLabelTxt,
                 miscStyles: { marginTop: '4.14rem', },
-                variant: this.isReplyForm ? 'primaryInverse' : 'primary',
+                variant: this.TextInputVariant,
               })}
             />
             <StyledAddCommentFooter>
@@ -255,4 +266,4 @@ class CommentForm extends React.Component {
 CommentForm.propTypes = propTypes;
 CommentForm.defaultProps = defaultProps;
 
-export default CommentForm;
+export default withTheme(CommentForm);

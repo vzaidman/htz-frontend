@@ -125,6 +125,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
               "fontWeight": "700",
             },
             "color": [Function],
+            "commentsStyle": Object {
+              "textInputVariant": "primary",
+            },
             "direrction": "rtl",
             "fontStacks": Object {
               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -266,6 +269,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                     "fontWeight": "700",
                   },
                   "color": [Function],
+                  "commentsStyle": Object {
+                    "textInputVariant": "primary",
+                  },
                   "direrction": "rtl",
                   "fontStacks": Object {
                     "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -416,6 +422,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                           "fontWeight": "700",
                         },
                         "color": [Function],
+                        "commentsStyle": Object {
+                          "textInputVariant": "primary",
+                        },
                         "direrction": "rtl",
                         "fontStacks": Object {
                           "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -604,6 +613,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                     "fontWeight": "700",
                   },
                   "color": [Function],
+                  "commentsStyle": Object {
+                    "textInputVariant": "primary",
+                  },
                   "direrction": "rtl",
                   "fontStacks": Object {
                     "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -785,6 +797,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
               "fontWeight": "700",
             },
             "color": [Function],
+            "commentsStyle": Object {
+              "textInputVariant": "primary",
+            },
             "direrction": "rtl",
             "fontStacks": Object {
               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -982,6 +997,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
               "fontWeight": "700",
             },
             "color": [Function],
+            "commentsStyle": Object {
+              "textInputVariant": "primary",
+            },
             "direrction": "rtl",
             "fontStacks": Object {
               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1123,6 +1141,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                     "fontWeight": "700",
                   },
                   "color": [Function],
+                  "commentsStyle": Object {
+                    "textInputVariant": "primary",
+                  },
                   "direrction": "rtl",
                   "fontStacks": Object {
                     "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1273,6 +1294,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                           "fontWeight": "700",
                         },
                         "color": [Function],
+                        "commentsStyle": Object {
+                          "textInputVariant": "primary",
+                        },
                         "direrction": "rtl",
                         "fontStacks": Object {
                           "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1461,6 +1485,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                     "fontWeight": "700",
                   },
                   "color": [Function],
+                  "commentsStyle": Object {
+                    "textInputVariant": "primary",
+                  },
                   "direrction": "rtl",
                   "fontStacks": Object {
                     "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1642,6 +1669,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
               "fontWeight": "700",
             },
             "color": [Function],
+            "commentsStyle": Object {
+              "textInputVariant": "primary",
+            },
             "direrction": "rtl",
             "fontStacks": Object {
               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1841,6 +1871,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
               "fontWeight": "700",
             },
             "color": [Function],
+            "commentsStyle": Object {
+              "textInputVariant": "primary",
+            },
             "direrction": "rtl",
             "fontStacks": Object {
               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1983,6 +2016,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                     "fontWeight": "700",
                   },
                   "color": [Function],
+                  "commentsStyle": Object {
+                    "textInputVariant": "primary",
+                  },
                   "direrction": "rtl",
                   "fontStacks": Object {
                     "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -2135,6 +2171,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                           "fontWeight": "700",
                         },
                         "color": [Function],
+                        "commentsStyle": Object {
+                          "textInputVariant": "primary",
+                        },
                         "direrction": "rtl",
                         "fontStacks": Object {
                           "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -2355,6 +2394,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                             "fontWeight": "700",
                           },
                           "color": [Function],
+                          "commentsStyle": Object {
+                            "textInputVariant": "primary",
+                          },
                           "direrction": "rtl",
                           "fontStacks": Object {
                             "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -2533,6 +2575,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                                     "fontWeight": "700",
                                   },
                                   "color": [Function],
+                                  "commentsStyle": Object {
+                                    "textInputVariant": "primary",
+                                  },
                                   "direrction": "rtl",
                                   "fontStacks": Object {
                                     "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -2763,6 +2808,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                             "fontWeight": "700",
                           },
                           "color": [Function],
+                          "commentsStyle": Object {
+                            "textInputVariant": "primary",
+                          },
                           "direrction": "rtl",
                           "fontStacks": Object {
                             "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -2941,6 +2989,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                                     "fontWeight": "700",
                                   },
                                   "color": [Function],
+                                  "commentsStyle": Object {
+                                    "textInputVariant": "primary",
+                                  },
                                   "direrction": "rtl",
                                   "fontStacks": Object {
                                     "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -3145,6 +3196,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                     "fontWeight": "700",
                   },
                   "color": [Function],
+                  "commentsStyle": Object {
+                    "textInputVariant": "primary",
+                  },
                   "direrction": "rtl",
                   "fontStacks": Object {
                     "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -3334,6 +3388,9 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
               "fontWeight": "700",
             },
             "color": [Function],
+            "commentsStyle": Object {
+              "textInputVariant": "primary",
+            },
             "direrction": "rtl",
             "fontStacks": Object {
               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",

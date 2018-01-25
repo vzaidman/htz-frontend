@@ -149,6 +149,9 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                 "fontWeight": "700",
               },
               "color": [Function],
+              "commentsStyle": Object {
+                "textInputVariant": "primary",
+              },
               "direrction": "rtl",
               "fontStacks": Object {
                 "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -303,6 +306,9 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                       "fontWeight": "700",
                     },
                     "color": [Function],
+                    "commentsStyle": Object {
+                      "textInputVariant": "primary",
+                    },
                     "direrction": "rtl",
                     "fontStacks": Object {
                       "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -455,6 +461,9 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                         "fontWeight": "700",
                       },
                       "color": [Function],
+                      "commentsStyle": Object {
+                        "textInputVariant": "primary",
+                      },
                       "direrction": "rtl",
                       "fontStacks": Object {
                         "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -607,6 +616,9 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                           "fontWeight": "700",
                         },
                         "color": [Function],
+                        "commentsStyle": Object {
+                          "textInputVariant": "primary",
+                        },
                         "direrction": "rtl",
                         "fontStacks": Object {
                           "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -768,6 +780,9 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                         "fontWeight": "700",
                       },
                       "color": [Function],
+                      "commentsStyle": Object {
+                        "textInputVariant": "primary",
+                      },
                       "direrction": "rtl",
                       "fontStacks": Object {
                         "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -917,6 +932,9 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                               "fontWeight": "700",
                             },
                             "color": [Function],
+                            "commentsStyle": Object {
+                              "textInputVariant": "primary",
+                            },
                             "direrction": "rtl",
                             "fontStacks": Object {
                               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1073,6 +1091,9 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                               "fontWeight": "700",
                             },
                             "color": [Function],
+                            "commentsStyle": Object {
+                              "textInputVariant": "primary",
+                            },
                             "direrction": "rtl",
                             "fontStacks": Object {
                               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1229,6 +1250,9 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                               "fontWeight": "700",
                             },
                             "color": [Function],
+                            "commentsStyle": Object {
+                              "textInputVariant": "primary",
+                            },
                             "direrction": "rtl",
                             "fontStacks": Object {
                               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1443,6 +1467,9 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                 "fontWeight": "700",
               },
               "color": [Function],
+              "commentsStyle": Object {
+                "textInputVariant": "primary",
+              },
               "direrction": "rtl",
               "fontStacks": Object {
                 "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1597,6 +1624,9 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                       "fontWeight": "700",
                     },
                     "color": [Function],
+                    "commentsStyle": Object {
+                      "textInputVariant": "primary",
+                    },
                     "direrction": "rtl",
                     "fontStacks": Object {
                       "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1749,6 +1779,9 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                         "fontWeight": "700",
                       },
                       "color": [Function],
+                      "commentsStyle": Object {
+                        "textInputVariant": "primary",
+                      },
                       "direrction": "rtl",
                       "fontStacks": Object {
                         "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -1901,6 +1934,9 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                           "fontWeight": "700",
                         },
                         "color": [Function],
+                        "commentsStyle": Object {
+                          "textInputVariant": "primary",
+                        },
                         "direrction": "rtl",
                         "fontStacks": Object {
                           "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -2119,6 +2155,9 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                 "fontWeight": "700",
               },
               "color": [Function],
+              "commentsStyle": Object {
+                "textInputVariant": "primary",
+              },
               "direrction": "rtl",
               "fontStacks": Object {
                 "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -2273,6 +2312,9 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                       "fontWeight": "700",
                     },
                     "color": [Function],
+                    "commentsStyle": Object {
+                      "textInputVariant": "primary",
+                    },
                     "direrction": "rtl",
                     "fontStacks": Object {
                       "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -2425,6 +2467,9 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                         "fontWeight": "700",
                       },
                       "color": [Function],
+                      "commentsStyle": Object {
+                        "textInputVariant": "primary",
+                      },
                       "direrction": "rtl",
                       "fontStacks": Object {
                         "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -2577,6 +2622,9 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                           "fontWeight": "700",
                         },
                         "color": [Function],
+                        "commentsStyle": Object {
+                          "textInputVariant": "primary",
+                        },
                         "direrction": "rtl",
                         "fontStacks": Object {
                           "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -2738,6 +2786,9 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                         "fontWeight": "700",
                       },
                       "color": [Function],
+                      "commentsStyle": Object {
+                        "textInputVariant": "primary",
+                      },
                       "direrction": "rtl",
                       "fontStacks": Object {
                         "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -2887,6 +2938,9 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                               "fontWeight": "700",
                             },
                             "color": [Function],
+                            "commentsStyle": Object {
+                              "textInputVariant": "primary",
+                            },
                             "direrction": "rtl",
                             "fontStacks": Object {
                               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -3043,6 +3097,9 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                               "fontWeight": "700",
                             },
                             "color": [Function],
+                            "commentsStyle": Object {
+                              "textInputVariant": "primary",
+                            },
                             "direrction": "rtl",
                             "fontStacks": Object {
                               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
@@ -3199,6 +3256,9 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                               "fontWeight": "700",
                             },
                             "color": [Function],
+                            "commentsStyle": Object {
+                              "textInputVariant": "primary",
+                            },
                             "direrction": "rtl",
                             "fontStacks": Object {
                               "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",

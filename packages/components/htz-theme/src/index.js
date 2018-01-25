@@ -4,6 +4,7 @@ import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
 import captionStyles from './consts/captionStyles';
 import cssReset from './consts/cssReset';
+import commentsStyle from './consts/commentsStyle';
 import selectStyle from './consts/selectStyle';
 import inputStyle from './consts/inputStyle';
 import fontStacks from './consts/fontStacks';
@@ -42,6 +43,7 @@ export { cssReset, };
  * @prop {number} btnStyle.borderWidth  - The width of a button's outline, in pixels
  * @prop {string} btnStyle.borderStyle  - The `border-style` of a button's outline
  * @prop {number} btnStyle.radius  - A button's `border-radius`, in pixels.
+ * @prop {Object} commentsStyle - An immutable Object with select comments style definitions
  * @prop {'rtl'} direction - The application's flow direction
  * @prop {Object} gridStyle - An object containing grid related style definitions.
  * @prop {number} gridStyle.gutterWidth - The default width of the gutter between grid items.
@@ -94,6 +96,7 @@ const htzTheme = Object.freeze({
   bps,
   btnStyle,
   captionStyles,
+  commentsStyle,
   direrction: 'rtl',
   gridStyle,
   fontStacks,

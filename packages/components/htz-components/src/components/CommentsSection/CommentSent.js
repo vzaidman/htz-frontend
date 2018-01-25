@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, withTheme, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { commentSentI18n, } from '@haaretz/htz-theme';
@@ -20,6 +20,12 @@ const propTypes = {
    * @param {String} - The email the user entered
    */
   signUpNotification: PropTypes.func.isRequired,
+  /** passed as a a prop by fela's withTheme func before default export */
+  theme: PropTypes.shape({
+    commentsStyle: PropTypes.shape({
+      textInputVariant: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 const defaultProps = {};
@@ -63,7 +69,7 @@ const inputStyle = {
   marginTop: '4rem',
 };
 
-function CommentSent({ closeDisplayThankYou, displayThankYou, signUpNotification, }) {
+function CommentSent({ closeDisplayThankYou, displayThankYou, signUpNotification, theme, }) {
   const {
     buttons: { getNotificationsBtnTxt, dontGetNotificationsBtnTxt, closeBtnText, },
     labels: { emailLabelTxt, },
@@ -121,7 +127,7 @@ function CommentSent({ closeDisplayThankYou, displayThankYou, signUpNotification
                   errorText: emailErrorNoteTxt,
                   label: emailLabelTxt,
                   maxLength: 200,
-                  variant: 'primaryInverse',
+                  variant: `${theme.commentsStyle.textInputVariant}Inverse`,
                   type: 'email',
                   miscStyles: inputStyle,
                 })}
@@ -158,4 +164,4 @@ CommentSent.propTypes = propTypes;
 
 CommentSent.defaultProps = defaultProps;
 
-export default CommentSent;
+export default withTheme(CommentSent);
