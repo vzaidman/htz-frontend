@@ -64,7 +64,7 @@ const buildComponent = (componentType, index, isLastItem, theme) => {
           <Aside><Component {...componentType} /></Aside> :
             <Component
               key={index}
-              content={componentType}
+              {...componentType}
               marginBottom={
                 isLastItem ?
                   null

@@ -156,14 +156,6 @@
         }
       ]
     },           
-    {
-       "content": "",
-       "embedType": "excel",
-       "elementType": "embedElement",
-       "inputTemplate": "com.polobase.fileUpload",
-       "contentId": "7.4323",
-       "contentName": "hjg"
-    },
      {
        "attributes": [],
        "tag": "p",
