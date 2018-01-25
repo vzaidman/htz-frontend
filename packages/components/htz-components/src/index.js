@@ -12,6 +12,8 @@ import CommentList from './components/CommentList/CommentList';
 import Embed from './components/Embed/Embed';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
+import RelatedArticles from './components/RelatedArticles/RelatedArticles';
+import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 
 // Icons
 import IconAccessibility from './components/Icon/icons/IconAccessibility';
@@ -101,5 +103,7 @@ export {
   createFelaSnapshotter,
   createRenderer,
   Embed,
+  RelatedArticles,
+  SeriesArticles,
   StyleProvider,
 };

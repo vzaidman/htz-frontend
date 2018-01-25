@@ -26,22 +26,32 @@ const figureStyle = ({ theme, lastItem, }) => (
     :
     {}
 );
-
 const Figure = createComponent(figureStyle, 'figure');
+
+const bodyWrapperStyle = ({ theme, }) => ({
+  ...parseComponentProp(
+    'width',
+    theme.articleStyle.body.width,
+    theme.mq,
+    (prop, value) => ({ [prop]: value, })
+  ),
+});
+
+const BodyWrapper = createComponent(bodyWrapperStyle);
 
 const wrappedWithFigure = [ 'embedElement', 'com.tm.Image', 'com.tm.Video', ];
 
 const buildComponent = (componentType, index, isLastItem, theme) => {
-  const uniqueId = componentType.elementType || componentType.inputTemplate || componentType.tag;
+  const uniqueId = componentType.elementType || componentType.inputTemplate || componentType.tag || null;
   const Component = getComponent(uniqueId);
   return (
     wrappedWithFigure.includes(uniqueId) ?
-      <Figure key={index} lastItem={isLastItem}>{/*<Component props={componentType} />*/}{Component}</Figure>
+      <Figure key={index} lastItem={isLastItem}><Component {...componentType} /></Figure>
       :
       uniqueId ?
         <Component
           key={index}
-          content={componentType}
+          {...componentType}
           marginBottom={
             isLastItem ?
               null
@@ -61,11 +71,11 @@ const buildComponent = (componentType, index, isLastItem, theme) => {
 
 function ArticleBody(props) {
   return (
-    <div>
+    <BodyWrapper>
       {props.body.map((component, i) =>
         buildComponent(component, i, i === props.body.length - 1, props.theme))
       }
-    </div>
+    </BodyWrapper>
     // eslint-disable-next-line react/no-array-index-key
     // return Comp ? <Comp key={i} {...component, props.theme.articleStyle.body} /> : <p>{component}</p>;
   );

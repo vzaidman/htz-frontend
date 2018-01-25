@@ -113,13 +113,13 @@ export default class Paragraph extends React.Component {
   state = { margin: true, };
 
   componentWillMount() {
-    this.setState({ margin: shouldMargin(this.props.content), });
+    this.setState({ margin: shouldMargin(this.props), });
   }
 
   render() {
     return (
       <MainWrapper marginBottom={this.state.margin ? this.props.marginBottom : null}>
-        <Content content={this.props.content} />
+        <Content content={this.props} />
       </MainWrapper>
     );
   }
@@ -186,17 +186,15 @@ function genChildren(tagElements) {
 
 /** Components props */
 Paragraph.propTypes = {
-  content: PropTypes.shape({
-    /** The HTML tag name */
-    tag: PropTypes.string.isRequired,
-    /** The tag attributes (className, href, etc) */
-    attributes: PropTypes.array.isRequired,
-    /** The paragraphs content.<br/>
-     * If the value of content contains children, they must have this exact prop structure
-     * {tag, attributes, content}.
-     */
-    content: PropTypes.array,
-  }).isRequired,
+  /** The HTML tag name */
+  tag: PropTypes.string.isRequired,
+  /** The tag attributes (className, href, etc) */
+  attributes: PropTypes.array.isRequired,
+  /** The paragraphs content.<br/>
+   * If the value of content contains children, they must have this exact prop structure
+   * {tag, attributes, content}.
+   */
+  content: PropTypes.array.isRequired,
   /**
    * Should be passed if the paragraph should have a MarginBottom style
    * (some types of paragraphs would never have a MarginBottom and will override this prop).

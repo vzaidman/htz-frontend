@@ -37,10 +37,16 @@ const defaultProps = {
   className: null,
 };
 
-function Link({ href, target, content, prefetch, className, }) {
+function Link({ href, target, content, prefetch, className, focus, }) {
   return (
     <NextLink prefetch={prefetch} href={href}>
-      <a target={target} className={className}>{content}</a>
+      <a
+        target={target}
+        className={className}
+        ref={(linkRef) => (focus && linkRef && linkRef.focus())}
+      >
+        {content}
+      </a>
     </NextLink>
   );
 }

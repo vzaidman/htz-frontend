@@ -27,62 +27,60 @@ it('Link with target blank ', () => {
 it('Link within paragraph component ', () => {
   const snapshot = felaSnapshotter(
     <Paragraph
-      content={
-        {
-          attributes: [
-            {
-              key: 'href',
-              value: 'http://www.iflscience.com/physics/new-type-of-bizarre-quantum-material-discovered/',
-            },
-            {
-              key: 'target',
-              value: '_blank',
-            },
-          ],
-          tag: 'a',
-          content: [
-            {
-              attributes: [],
-              tag: 'span',
-              content: [
-                {
-                  attributes: [
-                    {
-                      key: 'text',
-                      value: 'New Type Of ',
-                    },
-                  ],
-                  tag: '#text',
-                },
-                {
-                  attributes: [],
-                  tag: 'strong',
-                  content: [
-                    {
-                      attributes: [
-                        {
-                          key: 'text',
-                          value: 'Bizarre Quantum Material',
-                        },
-                      ],
-                      tag: '#text',
-                    },
-                  ],
-                },
-                {
-                  attributes: [
-                    {
-                      key: 'text',
-                      value: ' Discovered.',
-                    },
-                  ],
-                  tag: '#text',
-                },
-              ],
-            },
-          ],
-        }
-      }
+      {...{
+        attributes: [
+          {
+            key: 'href',
+            value: 'http://www.iflscience.com/physics/new-type-of-bizarre-quantum-material-discovered/',
+          },
+          {
+            key: 'target',
+            value: '_blank',
+          },
+        ],
+        tag: 'a',
+        content: [
+          {
+            attributes: [],
+            tag: 'span',
+            content: [
+              {
+                attributes: [
+                  {
+                    key: 'text',
+                    value: 'New Type Of ',
+                  },
+                ],
+                tag: '#text',
+              },
+              {
+                attributes: [],
+                tag: 'strong',
+                content: [
+                  {
+                    attributes: [
+                      {
+                        key: 'text',
+                        value: 'Bizarre Quantum Material',
+                      },
+                    ],
+                    tag: '#text',
+                  },
+                ],
+              },
+              {
+                attributes: [
+                  {
+                    key: 'text',
+                    value: ' Discovered.',
+                  },
+                ],
+                tag: '#text',
+              },
+            ],
+          },
+        ],
+      }}
     />
   );
   expect(snapshot).toMatchSnapshot();

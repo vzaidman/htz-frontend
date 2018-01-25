@@ -12,7 +12,7 @@ This is a basic paragraph without any nesting.
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
-    content={
+    {...
       {
         "attributes": [],
         "tag": "p",
@@ -37,7 +37,7 @@ This component ignores any `margin-bottom` that may be passed down by the parent
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
-    content={
+    {...
       {
         "attributes": [],
         "tag": "h4",
@@ -61,7 +61,7 @@ An example for **bold** (`<strong />`) decorations. the first is nested inside p
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
-    content={
+    {...
       {
         "attributes": [],
         "tag": "p",
@@ -153,7 +153,7 @@ An example for <u>underline</u>, *italic(citation)* and [Link](./#link) decorati
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
-    content={
+    {...
       {
         "attributes": [],
         "tag": "p",
@@ -259,7 +259,7 @@ In this Q&A paragraphs, the first paragraph takes 'strong' as tags value, by tha
 ```jsx
 <div style={{direction: 'rtl'}}>
   <Paragraph
-    content={
+    {...
       {
         "attributes": [],
         "tag": "p",
@@ -298,7 +298,7 @@ In this Q&A paragraphs, the first paragraph takes 'strong' as tags value, by tha
     }
   />
   <Paragraph
-    content={
+    {...
       {
         "attributes": [
           
