@@ -1,4 +1,4 @@
-import { createRenderer, } from '@haaretz/htz-components';
+import { createRenderer, } from '@haaretz/react-utils';
 
 throw new Error(
   `You are currently using the default styleRenderer.

@@ -26,6 +26,7 @@
     "flow": "htz-scripts flow",
     "format": "htz-scripts format",
     "lint": "htz-scripts lint",
+    "gc": "htz-scripts commitizen",
     "prepare": "npm run build",
   <% if (pkgType !== 'libs') { %>
     "styleguide": "htz-scripts styleguide",

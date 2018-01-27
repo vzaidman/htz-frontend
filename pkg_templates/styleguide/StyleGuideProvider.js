@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 <% if (pkgType === 'apps') { %>
-import { StyleProvider, } from '@haaretz/htz-components';
+import { StyleProvider, } from '@haaretz/react-utils';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 <% } else { %>
-import { createRenderer, StyleProvider, } from '@haaretz/htz-components';
+import { createRenderer, StyleProvider, } from '@haaretz/react-utils';
 
 /* *********************************** *
  *  This is the default styleRenderer. *
