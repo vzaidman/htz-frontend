@@ -6,7 +6,7 @@ import { ApolloClient, HttpLink, InMemoryCache, ApolloLink, } from 'apollo-clien
 import { withClientState, } from 'apollo-link-state';
 import { ApolloProvider, } from 'react-apollo';
 import config from 'config';
-import { createRenderer, StyleProvider, } from '../src';
+import { createRenderer, StyleProvider, } from '@haaretz/fela-utils';
 
 const hostIp = config.get('hostIp');
 
@@ -67,12 +67,18 @@ StyleGuideProvider.defaultProps = {
 export default function StyleGuideProvider({ children, }) {
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
-    [ '../src/fonts/OpenSansHebrewRegular.woff', '../src/fonts/OpenSansHebrewRegular.woff2', ],
+    [
+      '../src/fonts/OpenSansHebrewRegular.woff',
+      '../src/fonts/OpenSansHebrewRegular.woff2',
+    ],
     { fontWeight: 400, }
   );
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
-    [ '../src/fonts/OpenSansHebrewBold.woff', '../src/fonts/OpenSansHebrewBold.woff2', ],
+    [
+      '../src/fonts/OpenSansHebrewBold.woff',
+      '../src/fonts/OpenSansHebrewBold.woff2',
+    ],
     { fontWeight: 700, }
   );
 

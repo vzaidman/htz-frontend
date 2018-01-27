@@ -1,4 +1,4 @@
-import { createRenderer, } from '@haaretz/htz-components';
+import { createRenderer, } from '@haaretz/fela-utils';
 
 const styleRenderer = createRenderer({ isRtl: true, });
 

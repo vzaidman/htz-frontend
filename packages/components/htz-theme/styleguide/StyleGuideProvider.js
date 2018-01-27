@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createRenderer, StyleProvider, } from '@haaretz/htz-components';
+import { createRenderer, StyleProvider, } from '@haaretz/fela-utils';
 
 import cssReset from '../src/consts/cssReset';
 

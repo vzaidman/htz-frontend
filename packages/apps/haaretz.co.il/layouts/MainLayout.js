@@ -5,7 +5,7 @@ import Error from 'next/error';
 import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
 import { propType, } from 'graphql-anywhere';
-import { StyleProvider, } from '@haaretz/htz-components';
+import { StyleProvider, } from '@haaretz/fela-utils';
 import htzTheme from '@haaretz/htz-theme';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import TopNav from '../components/TopNav/TopNav';

@@ -46,19 +46,33 @@
   "syncDependencies": {
     "@haaretz/htz-components": {
       "^0.2.0": {
-        "[\"packages/{apps,components}/*\", \"!packages/components/htz-components\"]": [
+        "packages/apps/*": [
           "dependencies"
+        ]
+      }
+    },
+    "@haaretz/fela-utils": {
+      "^0.1.0": {
+        "packages/{apps/*,components/htz-components}": [
+          "dependencies"
+        ],
+        "packages/components/htz-theme": [
+          "devDependencies"
         ]
       }
     },
     "@haaretz/app-utils": {
       "^0.1.0": {
-        "packages/apps/*": ["dependencies"]
+        "packages/{apps/*,components/htz-components}": [
+          "dependencies"
+        ]
       }
     },
     "@haaretz/htz-css-tools": {
       "^1.0.1": {
-        "packages/{apps,components}/*": ["dependencies"]
+        "packages/{apps,components}/*": [
+          "dependencies"
+        ]
       }
     },
     "@haaretz/htz-react-base": {
@@ -117,12 +131,16 @@
     },
     "enzyme": {
       "3.2.0": {
-        "packages/{libs/htz-react-base,components/htz-components}": ["dependencies"]
+        "packages/libs/app-utils": [
+          "dependencies"
+        ]
       }
     },
     "enzyme-to-json": {
       "3.2.2": {
-        "packages/{libs/htz-react-base,components/htz-components}": ["dependencies"]
+        "packages/libs/app-utils": [
+          "dependencies"
+        ]
       }
     },
     "fela": {
@@ -236,9 +254,14 @@
         "node packages/libs/htz-react-base/bin/htz-scripts.js flow focus-check",
         "git add"
       ],
-      "./*.md": ["yarn run docs", "git add"],
-      "docs/**/*.md": ["yarn run docs", "git add"],
-      "packages/*/*/*.md": ["yarn run docs", "git add"]
+      "./*.md": [
+        "yarn run docs",
+        "git add"
+      ],
+      "docs/**/*.md": [
+        "yarn run docs",
+        "git add"
+      ]
     },
     "verbose": false
   },

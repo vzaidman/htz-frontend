@@ -63,10 +63,6 @@ import IconZoomOut from './components/Icon/icons/IconZoomOut';
  *       U  T  I  L  I  T  I  E  S       *
  * ************************************* */
 import createDocument from './document';
-import createFelaEnzymeRenderers from './utils/createFelaEnzymeRenderers';
-import createFelaSnapshotter from './utils/createFelaSnapshotter';
-import createRenderer from './utils/createRenderer';
-import StyleProvider from './components/StyleProvider/StyleProvider';
 
 export {
   Article,
@@ -114,9 +110,6 @@ export {
   IconZoomOut,
   MobileQuickRegistration,
   createDocument,
-  createFelaEnzymeRenderers,
-  createFelaSnapshotter,
-  createRenderer,
   Embed,
   Quote,
   LinksBlock,
@@ -125,7 +118,6 @@ export {
   Scroll,
   ScrollListener,
   SeriesArticles,
-  StyleProvider,
   Tags,
   Image,
 };

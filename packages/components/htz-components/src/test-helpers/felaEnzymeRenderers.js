@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import htzTheme from '@haaretz/htz-theme';
-import createRenderer from '../utils/createRenderer';
+import { createRenderer, } from '@haaretz/fela-utils';
 import createFelaEnzymeRenderers from '../utils/createFelaEnzymeRenderers';
 
 const testRenderer = createRenderer({ isRtl: true, });

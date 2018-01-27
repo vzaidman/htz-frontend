@@ -13,7 +13,7 @@
   "module": "dist/esm/index.js",
   "esnext": "dist/esnext/index.js",
   "scripts": {
-    "build": "htz-scripts build && yarn run styleguide:build",
+    "build": "htz-scripts build",
     "clean": "htz-scripts clean",
     "flow": "htz-scripts flow",
     "format": "htz-scripts format",
@@ -21,12 +21,11 @@
     "lint": "htz-scripts lint",
     "prepare": "npm run build",
     "styleguide": "htz-scripts styleguide",
-    "styleguide:build": "htz-scripts styleguide:build && rm -rf ../../../docs/htz-theme/**/* && cp -r dist/styleguide/* ../../../docs/htz-theme",
+    "styleguide:build": "htz-scripts styleguide:build",
     "test": "htz-scripts test",
     "update-scripts": "htz-scripts update-scripts"
   },
   "dependencies": {
-    "@haaretz/htz-components": "^0.2.0",
     "@haaretz/htz-css-tools": "^1.0.1",
     "config": "^1.26.2",
     "lodash": "4.17.4",
@@ -34,6 +33,7 @@
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
+    "@haaretz/fela-utils": "^0.1.0",
     "babel-loader": "^7.1.2",
     "fela": "^6.0.2",
     "react": "^16.2.0",
