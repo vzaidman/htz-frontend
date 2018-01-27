@@ -56,7 +56,7 @@ Object.keys(packages).forEach(packageDir =>
 if (changesWereStashed) execSync('git stash pop', { encoding: 'utf8', });
 
 function runTestsLocally(packageDir, files) {
-  const jestResult = spawn.sync('yarn', [ 'run', 'test', '--coverage', ], {
+  const jestResult = spawn.sync('yarn', [ 'run', 'test', '--coverage', '--passWithNoTests', ], {
     cwd: packageDir,
     stdio: 'inherit',
   });
