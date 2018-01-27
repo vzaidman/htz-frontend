@@ -1,0 +1,695 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>@haaretz/fela-utils 0.1.0 | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+  <link href='assets/split.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>@haaretz/fela-utils</h3>
+          <div class='mb1'><code>0.1.0</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#'
+                  class="h5 bold black caps">
+                   
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#testing-utils'
+                  class="h5 bold black caps">
+                  Testing Utils
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#createfelasnapshotter'
+                  class="">
+                  createFelaSnapshotter
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#createfelaenzymerenderers'
+                  class="">
+                  createFelaEnzymeRenderers
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#fela-related'
+                  class="h5 bold black caps">
+                  Fela related
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#createrenderer'
+                  class="">
+                  createRenderer
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#styleprovider'
+                  class="">
+                  StyleProvider
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#styleproviderproptypes'
+                  class="">
+                  StyleProviderPropTypes
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+
+  <h2 id='' class='mt0'>
+     
+  </h2>
+
+  
+    <h1>@haaretz/fela-utils</h1>
+<p>General, non-ui utils for building Fela apps and components in the Haaretz stack</p>
+<h2>Installation</h2>
+<pre class='hljs'>yarn add @haaretz/fela-utils</pre>
+
+  
+</section>
+</div>
+          
+        
+          
+            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+
+  <h2 id='testing-utils' class='mt0'>
+    Testing Utils
+  </h2>
+
+  
+    
+
+  
+</section>
+</div>
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createfelasnapshotter'>
+      createFelaSnapshotter
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/6fca7b00784e7997a6caa9ad84d1d24ed058904a/packages/components/fela-utils/src/createFelaSnapshotter.js#L16-L37'>
+      <span>packages/components/fela-utils/src/createFelaSnapshotter.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>A factory for creating a per-package configured function that snapshots
+styled Fela components.</p>
+
+
+  <div class='pre p1 fill-light mt0'>createFelaSnapshotter(StyleProvider: ReactComponent, testRenderer: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>, theme: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>StyleProvider</span> <code class='quiet'>(ReactComponent)</code>
+	    The Fela 
+<code>StyleProvider</code>
+ used in the target package
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>testRenderer</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    The Fela renderer used in the targes package's tests
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>theme</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?)</code>
+	    The 
+<code>theme</code>
+ object used in the target package
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a></code>:
+        a 
+<code>felaSnapshotter</code>
+ function that creates a snapshot of a
+styled Fela componet html as well as its styles
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createfelaenzymerenderers'>
+      createFelaEnzymeRenderers
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/6fca7b00784e7997a6caa9ad84d1d24ed058904a/packages/components/fela-utils/src/createFelaEnzymeRenderers.js#L16-L48'>
+      <span>packages/components/fela-utils/src/createFelaEnzymeRenderers.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>A factory for creating Enzyme renderers of Fela components
+with package configuration backed in.</p>
+
+
+  <div class='pre p1 fill-light mt0'>createFelaEnzymeRenderers(renderer: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>, theme: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>renderer</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    The Fela renderer used in the targes package's tests
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>theme</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?)</code>
+	    The 
+<code>theme</code>
+ object used in the target package
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        An Object with 
+<code>shallow</code>
+ and 
+<code>mount</code>
+ methods for testing
+Fela components with Enzyme
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+
+  <h2 id='fela-related' class='mt0'>
+    Fela related
+  </h2>
+
+  
+    
+
+  
+</section>
+</div>
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createrenderer'>
+      createRenderer
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/6fca7b00784e7997a6caa9ad84d1d24ed058904a/packages/components/fela-utils/src/createRenderer.js#L36-L79'>
+      <span>packages/components/fela-utils/src/createRenderer.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>A factory for creating a custom Fela renderer,
+tailored to an app's needs</p>
+
+
+  <div class='pre p1 fill-light mt0'>createRenderer(options: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>?): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>?
+            = <code>{}</code>)</code>
+	    an options object.
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.isDev</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>
+  
+    (default <code>process.env.NODE_ENV!</code>)
+  </td>
+  <td class='break-word'><span>Manually override the node environment settings.
+Can be useful, e.g., for testing. Set according to 
+<code>NODE_ENV</code>
+ by default
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.isRtl</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>?</code>
+  </td>
+  <td class='break-word'><span>Set the renderer to handle RTL layouts
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.selectorPrefix</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>
+  
+    (default <code>&#39;htz-&#39;</code>)
+  </td>
+  <td class='break-word'><span>A string to namespace all class names with
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a></code>:
+        A fela 
+<code>createRenderer</code>
+ function
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='styleprovider'>
+      StyleProvider
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/6fca7b00784e7997a6caa9ad84d1d24ed058904a/packages/components/fela-utils/src/StyleProvider.js#L38-L48'>
+      <span>packages/components/fela-utils/src/StyleProvider.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>A Fela <code>Provider</code> component that makes the Fela renderer available via <code>context</code>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>new StyleProvider(The: <a href="#styleproviderproptypes">StyleProviderPropTypes</a>): ReactElement</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>The</span> <code class='quiet'>(<a href="#styleproviderproptypes">StyleProviderPropTypes</a>)</code>
+	    properties passed to the 
+<code>&#x3C;StyleProvider /></code>
+ component
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>The.children</span> <code class='quiet'>any</code>
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>The.renderer</span> <code class='quiet'>any</code>
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>The.theme</span> <code class='quiet'>any</code>
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>The.props</span> <code class='quiet'>...any</code>
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>ReactElement</code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='styleproviderproptypes'>
+      StyleProviderPropTypes
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/6fca7b00784e7997a6caa9ad84d1d24ed058904a/packages/components/fela-utils/src/StyleProvider.js#L20-L24'>
+      <span>packages/components/fela-utils/src/StyleProvider.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>StyleProviderPropTypes</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>renderer</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+          : A 
+<a href="http://fela.js.org//docs/api/fela/Renderer.html">fela renderer</a>
+.
+Allows tailoring of the renderer to different environments and needs,
+e.g., rtl vs. ltr, plugins, enhancers, etc.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>children</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling">node</a>?)</code>
+          : May only contain a single child to which, will be passed down
+any non-standard props passed to 
+<code>&#x3C;StyleProvider /></code>
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>theme</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?)</code>
+          : A theme object tailored for the tested use-case.
+
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>

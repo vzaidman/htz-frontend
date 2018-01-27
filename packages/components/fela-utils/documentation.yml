@@ -1,0 +1,18 @@
+access:
+  - undefined
+  - public
+  - private
+github: true
+
+toc:
+  - name: ' '
+    file: README.md
+
+  - name: Testing Utils
+  - createFelaSnapshotter
+  - createFelaEnzymeRenderers
+
+  - name: Fela related
+  - createRenderer
+  - StyleProvider
+  - StyleProviderPropTypes
