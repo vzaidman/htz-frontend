@@ -17,7 +17,7 @@
   "esnext": "dist/esnext/index.js",
   "scripts": {
     "build": "htz-scripts build && yarn run build:docs",
-    "build:docs": "rimraf docs/**/* && rimraf docs/htz-css-tools/**/* && documentation build src --config documentation.yml -f html -o docs && cp -r ./docs/* ../../../docs/htz-css-tools",
+    "build:docs": "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
     "clean": "htz-scripts clean",
     "flow": "htz-scripts flow",
     "format": "htz-scripts format",

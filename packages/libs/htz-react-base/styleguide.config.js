@@ -382,7 +382,7 @@ module.exports = {
     path.join(process.cwd(), 'components'),
     path.join(process.cwd(), 'src', 'components'),
   ],
-  styleguideDir: path.join(process.cwd(), 'dist', 'styleguide'),
+  styleguideDir: path.join(process.cwd(), 'docs'),
   // Ideally, we'd be able to use Next's webpack config, so everything works
   // the same when used in a Next app, but they don't expose it.
   webpackConfig: {
