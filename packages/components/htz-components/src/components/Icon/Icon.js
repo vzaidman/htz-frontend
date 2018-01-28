@@ -39,6 +39,9 @@ import IconWhatsapp from './icons/IconWhatsapp';
 import IconZoomOut from './icons/IconZoomOut';
 import IconZoomIn from './icons/IconZoomIn';
 import IconAccessibility from './icons/IconAccessibility';
+import IconBold from './icons/IconBold';
+import IconQuote from './icons/IconQuote';
+import IconItalic from './icons/IconItalic';
 
 
 const gutterWidth = '1rem';
@@ -147,6 +150,9 @@ export default class Icons extends React.Component {
           <Cell name="IconZoomOut">{<IconZoomOut size={this.state.size} />}</Cell>
           <Cell name="IconZoomIn">{<IconZoomIn size={this.state.size} />}</Cell>
           <Cell name="IconAccessibility">{<IconAccessibility size={this.state.size} />}</Cell>
+          <Cell name="IconBold">{<IconBold size={this.state.size} />}</Cell>
+          <Cell name="IconQuote">{<IconQuote size={this.state.size} />}</Cell>
+          <Cell name="IconItalic">{<IconItalic size={this.state.size} />}</Cell>
         </Wrapper>
       </div>
     );

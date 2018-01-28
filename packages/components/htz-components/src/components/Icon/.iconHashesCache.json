@@ -29,5 +29,8 @@
   "src/components/Icon/icons/IconWhatsapp.js": "6ed8f287da2fa3a30793c528998f234b",
   "src/components/Icon/icons/IconZoomOut.js": "64005537a0e2970c342e221f52c8775f",
   "src/components/Icon/icons/IconZoomIn.js": "5991ab491e272a7c84f166a0395a07c0",
-  "src/components/Icon/icons/IconAccessibility.js": "10999a82332837e75040e94493ca84a0"
+  "src/components/Icon/icons/IconAccessibility.js": "10999a82332837e75040e94493ca84a0",
+  "src/components/Icon/icons/IconBold.js": "8882fd1cde107c37367b321928f1c784",
+  "src/components/Icon/icons/IconQuote.js": "4b0a2551cb472dd8067861d3e86f410c",
+  "src/components/Icon/icons/IconItalic.js": "353638d7a91d1536ae2c949c183f09d7"
 }

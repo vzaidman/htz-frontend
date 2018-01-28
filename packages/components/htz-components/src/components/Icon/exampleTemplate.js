@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const propTypes = fs
-  .readFileSync(path.join(__dirname, 'IconPropTypes.js'), {
+  .readFileSync(path.join(__dirname, 'iconPropTypes.js'), {
     encoding: 'utf8',
   })
   .replace(/^((export)).+/gm, '')

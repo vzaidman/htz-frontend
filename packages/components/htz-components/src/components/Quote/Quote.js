@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import IconTheMarker from '../Icon/icons/IconTheMarker'
+import IconQuote from '../Icon/icons/IconQuote'
 
 const propTypes = {
   /**
@@ -13,17 +13,6 @@ const propTypes = {
    */
   credit: PropTypes.string,
   /**
-   * Quotes position, **only** in Magazine article (mid-left, mid-right, ect).
-   */
-  position: PropTypes.string,
-  /**
-   * After which paragraph should the Quote be displayed (for Magazine article).
-   */
-  afterParagraph: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-  /**
    * List of images (usually of the quotee).
    */
   imagesList: PropTypes.arrayOf(
@@ -33,8 +22,6 @@ const propTypes = {
 
 const defaultProps = {
   credit: null,
-  position: null,
-  afterParagraph: null,
   imagesList: null,
 };
 
@@ -93,15 +80,8 @@ const getStyleObj = (theme, quoteType) => {
  *  * [Image](#imageQuote) - When `imagesList` contains an image properties, it will be rendered before the quote.
  *  - [Quote](#iconQuote) - When there isn't any valid image, but `credit` contains a string, a quote [`<Icon/>`](#Icon) will be rendered before the quote.
  *  * [Border-Top](#borderQuote) - Default. when both `imagesList` and `credit` are empty or contains invalid content, there will be a simple border on top of the quote.
- * @param text
- * @param credit
- * @param position
- * @param afterParagraph
- * @param imagesList
- * @returns {XML}
- * @constructor
  */
-function Quote({ text, credit, position, afterParagraph, imagesList, }) {
+function Quote({ text, credit, imagesList, }) {
   const quoteType =
     (imagesList && imagesList.length > 0) ?
       'image' :
@@ -114,7 +94,7 @@ function Quote({ text, credit, position, afterParagraph, imagesList, }) {
         quoteType === 'image' ?
           <span>Image Here</span> :
         quoteType === 'quote' ?
-          <IconTheMarker size={6.5} color='primary' miscStyles={{ marginBottom: '2rem', }}/> :
+          <IconQuote size={6.5} color='primary' miscStyles={{ marginBottom: '2rem', }}/> :
           <TopBorder />
       }
       <QuoteElement quoteType={quoteType}>

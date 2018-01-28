@@ -23,6 +23,7 @@ import IconAlefLogo from './components/Icon/icons/IconAlefLogo';
 import IconAlert from './components/Icon/icons/IconAlert';
 import IconAvatar from './components/Icon/icons/IconAvatar';
 import IconBack from './components/Icon/icons/IconBack';
+import IconBold from './components/Icon/icons/IconBold';
 import IconCamera from './components/Icon/icons/IconCamera';
 import IconClose from './components/Icon/icons/IconClose';
 import IconComment from './components/Icon/icons/IconComment';
@@ -31,12 +32,14 @@ import IconFacebook from './components/Icon/icons/IconFacebook';
 import IconFacebookLogo from './components/Icon/icons/IconFacebookLogo';
 import IconGPlus from './components/Icon/icons/IconGPlus';
 import IconHalfStar from './components/Icon/icons/IconHalfStar';
+import IconItalic from './components/Icon/icons/IconItalic';
 import IconLike from './components/Icon/icons/IconLike';
 import IconMail from './components/Icon/icons/IconMail';
 import IconMailAlert from './components/Icon/icons/IconMailAlert';
 import IconMenu from './components/Icon/icons/IconMenu';
 import IconPlus from './components/Icon/icons/IconPlus';
 import IconPrint from './components/Icon/icons/IconPrint';
+import IconQuote from './components/Icon/icons/IconQuote';
 import IconReading from './components/Icon/icons/IconReading';
 import IconRss from './components/Icon/icons/IconRss';
 import IconSearch from './components/Icon/icons/IconSearch';
@@ -74,6 +77,7 @@ export {
   IconAlert,
   IconAvatar,
   IconBack,
+  IconBold,
   IconCamera,
   IconClose,
   IconComment,
@@ -82,12 +86,14 @@ export {
   IconFacebookLogo,
   IconGPlus,
   IconHalfStar,
+  IconItalic,
   IconLike,
   IconMail,
   IconMailAlert,
   IconMenu,
   IconPlus,
   IconPrint,
+  IconQuote,
   IconReading,
   IconRss,
   IconSearch,
