@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
+import { parseComponentProp, parseStyleProps, parseTypographyProp, } from '@haaretz/htz-css-tools';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 
 const setColor = (prop, value, getColor) => {
@@ -32,7 +32,6 @@ const captionWrapper = ({
   return {
     fontFamily,
     fontWeight,
-    // TODO: add clearfix
 
     extend: [
       // Set background color
@@ -40,87 +39,13 @@ const captionWrapper = ({
       // Set color
       ...(captionColor ? [ parseComponentProp('color', captionColor, theme.mq, setColor, theme.color) ] : []),
       // set typographic styles (line height and font-size)
-      ...(captionTypeSettings ? [ setType(captionTypeSettings, theme.type) ] : []),
-
+      ...(captionTypeSettings ? [ parseTypographyProp(captionTypeSettings, theme.type) ] : []),
       // Trump all other styles with those defined in `miscStyles`
       ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
     ]
 
   };
 };
-
-const typographyValueType = PropTypes.oneOfType([
-  PropTypes.number,
-  PropTypes.shape({
-    step: PropTypes.number,
-    lines: PropTypes.number,
-  }),
-]);
-
-const typpographyPropTypes = {
-  typeStyles: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.shape({
-      ...responsivePropBaseType,
-      value: typographyValueType,
-    }),
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        ...responsivePropBaseType,
-        value: typographyValueType,
-      })
-    ),
-  ]),
-};
-
-/**
- * Set typographic settings responsively
- * @param {number|Object|Object[]} sizes
- * @param {function} typesetter
- *
- * @returns {Object} A CSS-in-JS object with typographic definitions
- */
-function setType(sizes, typesetter) {
-  const sizesArray = Array.isArray(sizes) ? sizes : [sizes];
-
-  return sizesArray.reduce(
-    (styles, size) => ({
-      ...styles,
-      ...setTypeStyles(size, typesetter),
-    })
-    ,
-    {}
-  );
-}
-
-function setTypeStyles(size, typesetter) {
-  const sizeIsNumber = Number.isFinite(size);
-  if (!sizeIsNumber && !isTypographyObject(size)) return {};
-
-  const value = sizeIsNumber
-    ? size
-    : size.value.step || sizeValue.value;
-  const lines = (size.value && size.value.lines) ? size.value.lines : undefined;
-  const fromBp = size.from || undefined;
-  const untilBp = size.until || undefined;
-
-  return typesetter(
-    value,
-    {
-      lines,
-      fromBp,
-      untilBp,
-    }
-  );
-}
-
-function isTypographyObject(typeSettings) {
-  const { value, } = (typeSettings || {});
-
-  return value
-    ? typeof typeSettings.value === 'number' || typeof typeSettings.value.step === 'number'
-    : false;
-}
 
 const CaptionWrapper = createComponent(captionWrapper);
 
@@ -193,6 +118,14 @@ Caption.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]),
+  /**
+   * The typography of the text.
+   */
+  typeStyles: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.array,
+    PropTypes.object,
+  ]),
 };
 
 Caption.defaultProps = {
@@ -200,8 +133,9 @@ Caption.defaultProps = {
   credit: null,
   creditprefix: 'קרדיט',
   floatCredit: false,
-  background: null,
+  backgroundColor: null,
   color: null,
+  typeStyles: null,
 };
 
 export default Caption;

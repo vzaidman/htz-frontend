@@ -27,6 +27,7 @@
       creditprefix='Credit'
       direction='ltr'
       backgroundColor={[{until: 'xl', value: ['tertiary', '-3'],}, { from: 'xl', value: 'primary',}, ]}
+      typeStyles={[{until: 'xl', value: -3,}, { from: 'xl', value: 3,}, ]}
     />
   </GridItem>
   
