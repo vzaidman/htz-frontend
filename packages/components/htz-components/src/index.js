@@ -21,6 +21,7 @@ import LayoutContainer from './components/PageLayout/LayoutContainer';
 import LayoutRow from './components/PageLayout/LayoutRow';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
+import Osaka from './components/Osaka/Osaka';
 import Quote from './components/Quote/Quote';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import RadioButton from './components/RadioButton/RadioButton';
@@ -110,6 +111,7 @@ export {
   LayoutRow,
   LinksBlock,
   MobileQuickRegistration,
+  Osaka,
   Quote,
   RadioButton,
   RadioGroup,

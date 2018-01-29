@@ -1,5 +1,6 @@
 import {
   arrayOf,
+  bool,
   number,
   object,
   objectOf,
@@ -11,6 +12,7 @@ import { responsivePropBaseType, } from './responsivePropBaseType';
 
 export const stylesPropType = objectOf(
   oneOfType([
+    bool,
     number,
     string,
     arrayOf(

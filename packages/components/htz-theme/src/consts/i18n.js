@@ -16,6 +16,11 @@ export const tagsElementI18n = Object.freeze({
   prefix: 'תגיות:',
 });
 
+export const osakaI18n = Object.freeze({
+  nextArticle: 'לכתבה הבאה במדור',
+  promotedContent: 'תוכן מקודם',
+});
+
 export const commentI18n = Object.freeze({
   tags: Object.freeze({
     editorsPick: 'בחירת העורכים',
