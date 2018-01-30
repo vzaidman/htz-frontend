@@ -3642,7 +3642,7 @@ exports[`<Comment> DOM element correctly calls handles a click on reply form 1`]
                                       onBlur={[Function]}
                                       onChange={[Function]}
                                       onContentEditableChange={null}
-                                      onFocus={null}
+                                      onFocus={[Function]}
                                       onInput={null}
                                       placeholder={null}
                                       refFunc={[Function]}
@@ -4679,7 +4679,7 @@ exports[`<Comment> DOM element correctly calls handles a click on reply form 1`]
                           onBlur={[Function]}
                           onChange={null}
                           onContentEditableChange={[Function]}
-                          onFocus={null}
+                          onFocus={[Function]}
                           onInput={null}
                           placeholder={null}
                           refFunc={[Function]}

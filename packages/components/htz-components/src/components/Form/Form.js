@@ -114,6 +114,7 @@ export class Form extends Component {
     onBlur,
     onChange,
     onContentEditableChange,
+    onFocus,
     validationOrder,
     ...rest
   }) => {
@@ -127,7 +128,7 @@ export class Form extends Component {
       ...(isContentEditable
         ? {
           onContentEditableChange: callAll(onContentEditableChange, (evt, value) => {
-            const values = Object.assign(this.state.values, { [name]: value, });
+            const values = { ...this.state.values, [name]: value, };
             const errors = this.props.isValidateOnChange
               ? this.handleTouchedValidate(values)
               : null;
@@ -139,7 +140,7 @@ export class Form extends Component {
         }
         : {
           onChange: callAll(onChange, evt => {
-            const values = Object.assign(this.state.values, { [name]: evt.target.value, });
+            const values = { ...this.state.values, [name]: evt.target.value, };
             const errors = this.props.isValidateOnChange
               ? this.handleTouchedValidate(values)
               : null;
@@ -150,14 +151,16 @@ export class Form extends Component {
           }),
         }),
       onBlur: callAll(onBlur, evt => {
-        if (!this.state.touched[name]) {
-          this.setState({
-            touched: Object.assign(this.state.touched, { [name]: true, }),
-          });
-        }
         if (this.props.isValidateOnBlur) {
           const errors = this.handleTouchedValidate(this.state.values);
           this.setState({ errors, });
+        }
+      }),
+      onFocus: callAll(onFocus, evt => {
+        if (!this.state.touched[name]) {
+          this.setState({
+            touched: { ...this.state.touched, [name]: true, },
+          });
         }
       }),
       /** empty string is needed so react wont think it is an uncontrolled input when the value is empty */

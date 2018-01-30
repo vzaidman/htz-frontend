@@ -467,7 +467,7 @@ exports[`<CommentSent> DOM element Does not Call signUpNotification when an inva
                   onBlur={[Function]}
                   onChange={[Function]}
                   onContentEditableChange={null}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onInput={null}
                   placeholder={null}
                   refFunc={[Function]}
