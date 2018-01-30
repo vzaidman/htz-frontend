@@ -235,9 +235,9 @@ const StyledButtonGroup = createComponent(
   [ 'attrs', 'isColumn', ]
 );
 
-ButtonGroup.PropTypes = ButtonGroupPropTypes;
+ButtonGroup.propTypes = ButtonGroupPropTypes;
 ButtonGroup.defaultProps = ButtonGroupDefaultProps;
-StyledButtonGroup.PropTypes = ButtonGroupPropTypes;
+StyledButtonGroup.propTypes = ButtonGroupPropTypes;
 StyledButtonGroup.defaultProps = ButtonGroupDefaultProps;
 
 export default StyledButtonGroup;

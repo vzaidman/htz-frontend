@@ -7,7 +7,7 @@ import {
   autospace,
 } from '@haaretz/htz-css-tools';
 import debounce from 'lodash/debounce';
-import hasMatchMedia from '../../utils/hasMatchMedia';
+import checkMatchMedia from '../../utils/hasMatchMedia';
 import mediaMatchesQuery from '../../utils/mediaMatchesQuery';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
@@ -102,7 +102,7 @@ export const StyledGridPropTypes = {
     ),
   ]),
   // A fela theme. Automatically passed by the createComponent wrapper.
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  // theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   /**
    * A special property holding miscellaneous CSS values that
    * trumps all default values. Processed by
@@ -230,10 +230,11 @@ function setVerticalAlignment(prop, alignment) {
  * @return {Object} - A css-in-js object
  */
 function setMarginByGutter(prop, gutterWidth, defaultGutter) {
-  const gutter =
-    gutterWidth === null || gutterWidth === undefined
-      ? defaultGutter
-      : gutterWidth;
+  // eslint-disable-next-line eqeqeq
+  const gutter = gutterWidth == null
+    ? defaultGutter
+    : gutterWidth;
+
   return {
     marginStart: `-${gutter / 2}rem`,
     marginEnd: `-${gutter / 2}rem`,
@@ -254,9 +255,16 @@ function setDirection(prop, isRev) {
   return { flexDirection: isRev ? 'row-reverse' : 'row', };
 }
 
+let hasMatchMedia = undefined;
+
 export class Grid extends Component {
   static propTypes = StyledGridPropTypes;
   static defaultProps = StyledGridDefaultProps;
+
+  constructor(props) {
+    super(props);
+    this.getUpdatedGutter = debounce(this.getUpdatedGutter.bind(this), 150);
+  }
 
   state = {
     gutter: getInitialGutter(
@@ -266,46 +274,24 @@ export class Grid extends Component {
     isResizeEventAttached: false,
   };
 
-  componentWillMount() {
-    const hasMatchMediaInScope = hasMatchMedia();
-    const gutter = this.props.gutter;
-    const gutterIsResponsive = typeof gutter === 'object';
-
-    if (hasMatchMediaInScope) {
-      this.setState({ hasMatchMedia: hasMatchMediaInScope, });
-    }
-    if (hasMatchMediaInScope && gutterIsResponsive) {
-      this.getUpdatedGutter();
-      if (!this.state.isResizeEventAttached) {
-        // eslint-disable-next-line no-undef
-        window.addEventListener('resize', debounce(this.getUpdatedGutter, 150));
-        this.setState({ isResizeEventAttached: true, });
-      }
-    }
-  }
-
   componentDidMount() {
-    if (typeof this.state.hasMatchMedia === 'undefined') {
-      // As a general rule of thumb, setting state inside `componentDidMount` is a bad idea
-      // since it will cause a visible re-render, however, this is exactly what we aim to do here,
-      // since we cannot relay on window state in the server.
-      // eslint-disable-next-line react/no-did-mount-set-state
-      this.setState({ hasMatchMedia: hasMatchMedia(), });
+    const gutterIsResponsive = typeof this.props.gutter === 'object';
+
+    if (typeof hasMatchMedia === 'undefined') {
+      hasMatchMedia = checkMatchMedia();
     }
-    const gutter = this.props.gutter;
-    const gutterIsResponsive = typeof gutter === 'object';
-    if (gutterIsResponsive && this.state.hasMatchMedia) {
+
+    if (gutterIsResponsive && hasMatchMedia) {
       this.getUpdatedGutter();
-      if (!this.state.isResizeEventAttached) {
+      if (!this.instanceIsMounted) {
         // eslint-disable-next-line no-undef
         window.addEventListener(
           'resize',
-          debounce(this.getUpdatedGutteryy, 150)
+          this.getUpdatedGutter
         );
-        // eslint-disable-next-line react/no-did-mount-set-state
-        this.setState({ isResizeEventAttached: true, });
       }
     }
+    this.instanceIsMounted = true;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -313,15 +299,15 @@ export class Grid extends Component {
   }
 
   componentWillUnmount() {
-    if (typeof window !== 'undefined' && this.state.isResizeEventAttached) {
+    const gutterIsResponsive = typeof this.props.gutter === 'object';
+    if (gutterIsResponsive && hasMatchMedia) {
       // eslint-disable-next-line no-undef
       window.removeEventListener('resize', this.getUpdatedGutter);
-      this.setState({ isResizeEventAttached: false, });
     }
+    this.instanceIsMounted = false;
   }
 
   getUpdatedGutter = () => {
-    const hasMatchMediaInScope = hasMatchMedia();
     const gutter =
       this.props.gutter === null
         ? this.props.theme.gridStyle.gutterWidth
@@ -329,28 +315,28 @@ export class Grid extends Component {
     const gutterIsResponsive = typeof gutter === 'object';
     const defaultValue = gutterIsResponsive ? gutter.onServerRender : gutter;
 
-    // When not responsive
-    if (!gutterIsResponsive) {
-      this.setState({
-        gutter: defaultValue,
-        hasMatchMedia: hasMatchMediaInScope,
-      });
-    }
-    else if (!hasMatchMediaInScope) {
+    if (
+      // When not responsive
+      !gutterIsResponsive ||
       // When matchMedia doesn't exist
-      this.setState({
-        gutter: defaultValue,
-        hasMatchMedia: false,
-      });
+      !hasMatchMedia
+    ) {
+      if (this.state.gutter !== defaultValue) {
+        this.setState({
+          gutter: defaultValue,
+        });
+      }
     }
     else {
       // When responsive and matchMedia exists
       this.setState((prevState, props) => ({
         gutter: mediaMatchesQuery(props.theme.bps, gutter),
-        hasMatchMedia: true,
       }));
+      hasMatchMedia = true;
     }
   };
+
+  instanceIsMounted = false;
 
   render() {
     const {
@@ -369,9 +355,7 @@ export class Grid extends Component {
     const GridElement = tagName;
     return (
       <GridElement {...attrs} {...props}>
-        {/*
-          Pass down `gutter` to children
-        */}
+        {/* Pass down `gutter` to children */}
         {Children.map(
           children,
           (child, index) =>
@@ -398,7 +382,7 @@ const StyledGrid = createComponent(gridStyles, withTheme(Grid), [
   'tagName',
 ]);
 
-StyledGrid.PropTypes = StyledGridPropTypes;
+StyledGrid.propTypes = StyledGridPropTypes;
 StyledGrid.defaultProps = StyledGridDefaultProps;
 
 export default StyledGrid;
