@@ -271,7 +271,6 @@ export class Grid extends Component {
       this.props.gutter,
       this.props.theme.gridStyle.gutterWidth
     ),
-    isResizeEventAttached: false,
   };
 
   componentDidMount() {

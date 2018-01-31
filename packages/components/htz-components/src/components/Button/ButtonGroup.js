@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
 import debounce from 'lodash/debounce';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
-import hasMatchMedia from '../../utils/hasMatchMedia';
+import checkMatchMedia from '../../utils/hasMatchMedia';
 import mediaMatchesQuery from '../../utils/mediaMatchesQuery';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
@@ -74,102 +74,79 @@ const ButtonGroupStyles = ({ isColumn, miscStyles, theme, }) => ({
   ],
 });
 
+let hasMatchMedia = undefined;
+
 export class ButtonGroup extends Component {
   static propTypes = ButtonGroupPropTypes;
   static defaultProps = ButtonGroupDefaultProps;
+
+  constructor(props) {
+    super(props);
+    this.getUpdatedIsColumn = debounce(this.getUpdatedIsColumn.bind(this), 150);
+  }
 
   state = {
     isColumn:
       typeof this.props.isColumn === 'object'
         ? this.props.isColumn.onServerRender
         : this.props.isColumn,
-    isResizeEventAttached: false,
   };
 
-  componentWillMount() {
-    const hasMatchMediaInScope = hasMatchMedia();
-    const isColumn = this.props.isColumn;
-    const isColumnIsResponsive = typeof isColumn === 'object';
-
-    if (hasMatchMediaInScope) this.setState({ hasMatchMedia, });
-    if (hasMatchMediaInScope && isColumnIsResponsive) {
-      this.getUpdatedIsColumn();
-      if (!this.state.isResizeEventAttached) {
-        window.addEventListener(
-          'resize',
-          debounce(this.getUpdatedIsColumn, 150)
-        );
-        this.setState({ isResizeEventAttached: true, });
-      }
-    }
-  }
-
   componentDidMount() {
-    if (typeof this.state.hasMatchMedia === 'undefined') {
-      // As a general rule of thumb, setting state inside `componentDidMount` is a bad idea
-      // since it will cause a visible re-render, however, this is exactly what we aim to do here,
-      // since we cannot relay on window state in the server.
-      // eslint-disable-next-line react/no-did-mount-set-state
-      this.setState({ hasMatchMedia: hasMatchMedia(), });
+    if (typeof hasMatchMedia === 'undefined') {
+      hasMatchMedia = checkMatchMedia();
     }
-    const isColumn = this.props.isColumn;
+    const { isColumn, } = this.props;
     const isColumnIsResponsive = typeof isColumn === 'object';
-    if (isColumnIsResponsive && this.state.hasMatchMedia) {
+    if (isColumnIsResponsive && hasMatchMedia) {
       this.getUpdatedIsColumn();
-      if (!this.state.isResizeEventAttached) {
-        window.addEventListener(
-          'resize',
-          debounce(this.getUpdatedIsColumn, 150)
-        );
-        // eslint-disable-next-line react/no-did-mount-set-state
-        this.setState({ isResizeEventAttached: true, });
+      if (!this.instanceIsMounted) {
+        // eslint-disable-next-line no-undef
+        window.addEventListener('resize', this.getUpdatedIsColumn);
       }
     }
+    this.instanceIsMounted = true;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.state.isColumn !== nextState.isColumn || this.props !== nextProps
-    );
+    return this.state.isColumn !== nextState.isColumn || this.props !== nextProps;
   }
 
   componentWillUnmount() {
-    if (typeof window !== 'undefined' && this.state.isResizeEventAttached) {
+    const isColumnIsResponsive = typeof this.props.isColumn === 'object';
+    if (typeof window !== 'undefined' && isColumnIsResponsive) {
       window.removeEventListener('resize', this.getUpdatedIsColumn);
-      this.setState({ isResizeEventAttached: false, });
     }
+    this.instanceIsMounted = false;
   }
 
   getUpdatedIsColumn = () => {
-    const hasMatchMediaInScope = hasMatchMedia();
-    const isColumn = this.props.isColumn;
+    const { isColumn, } = this.props;
     const isColumnIsResponsive = typeof isColumn === 'object';
-    const defaultValue = isColumnIsResponsive
-      ? isColumn.onServerRender
-      : isColumn;
+    const defaultValue = isColumnIsResponsive ? isColumn.onServerRender : isColumn;
 
-    // When not responsive
-    if (!isColumnIsResponsive) {
-      this.setState({
-        isColumn: defaultValue,
-        hasMatchMedia: hasMatchMediaInScope,
-      });
-    }
-    else if (!hasMatchMediaInScope) {
-      // When matchMedia doesn't exist
-      this.setState({
-        isColumn: defaultValue,
-        hasMatchMedia: false,
-      });
+    if (
+      // When not responsive
+      !isColumnIsResponsive ||
+      // When matchMedia doesn't exist.
+      !hasMatchMedia
+    ) {
+      if (this.state.isColumn !== defaultValue) {
+        this.setState({
+          isColumn: defaultValue,
+        });
+      }
     }
     else {
       // When responsive and matchMedia exists
       this.setState((prevState, props) => ({
         isColumn: mediaMatchesQuery(props.theme.bps, isColumn),
-        hasMatchMedia: true,
       }));
+      hasMatchMedia = true;
     }
   };
+
+  instanceIsMounted = false;
 
   render() {
     const {
@@ -192,11 +169,7 @@ export class ButtonGroup extends Component {
             (React.isValidElement(child)
               ? React.cloneElement(child, {
                 isColumn: this.state.isColumn,
-                boxModel: getGroupPlacement(
-                  child,
-                  index,
-                  Children.count(children)
-                ),
+                boxModel: getGroupPlacement(child, index, Children.count(children)),
               })
               : child)
         )}
@@ -210,8 +183,7 @@ function groupDirection(prop, isColumn) {
 }
 
 function getGroupPlacement(child, index, length) {
-  const groupPlacement =
-    index === 0 ? 'start' : index === length - 1 ? 'end' : 'middle';
+  const groupPlacement = index === 0 ? 'start' : index === length - 1 ? 'end' : 'middle';
   const childBoxModel = child.props.boxModel;
 
   return !childBoxModel
@@ -224,16 +196,13 @@ function getGroupPlacement(child, index, length) {
           ...{ value: { ...item.value, ...{ groupPlacement, }, }, },
         };
       })
-      : childBoxModel.groupPlacement
-        ? childBoxModel
-        : { ...childBoxModel, groupPlacement, };
+      : childBoxModel.groupPlacement ? childBoxModel : { ...childBoxModel, groupPlacement, };
 }
 
-const StyledButtonGroup = createComponent(
-  ButtonGroupStyles,
-  withTheme(ButtonGroup),
-  [ 'attrs', 'isColumn', ]
-);
+const StyledButtonGroup = createComponent(ButtonGroupStyles, withTheme(ButtonGroup), [
+  'attrs',
+  'isColumn',
+]);
 
 ButtonGroup.propTypes = ButtonGroupPropTypes;
 ButtonGroup.defaultProps = ButtonGroupDefaultProps;
