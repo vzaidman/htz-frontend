@@ -28,7 +28,8 @@ app
     const server = express();
     server.use(compression()); // Compress responses.
     server.use(helmet()); // Various security-minded settings.
-    server.use(cors()); // not having cors enabled will cause an access control error
+    // cors allowes querying the server from different ports and aliases.
+    server.use(cors());
     server.use(
       '/graphql',
       bodyParser.json(),
