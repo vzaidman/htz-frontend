@@ -28,7 +28,7 @@ export function StandardArticle(props) {
     <article>
       <h1>{props.title}</h1>
       <h2>{props.subtitle}</h2>
-      <ArticleBody body={props.body} />
+      {/*<ArticleBody body={props.body} />*/}
     </article>
   );
 }
