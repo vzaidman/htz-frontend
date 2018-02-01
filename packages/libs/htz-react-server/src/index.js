@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import compression from 'compression';
 import helmet from 'helmet';
 import next from 'next';
+import cors from 'cors';
 import Cookies from 'universal-cookie';
 import config from 'config';
 // Even though this isn't used directly in this package, this file acts as the
@@ -27,7 +28,7 @@ app
     const server = express();
     server.use(compression()); // Compress responses.
     server.use(helmet()); // Various security-minded settings.
-
+    server.use(cors()); // not having cors enabled will cause an access control error
     server.use(
       '/graphql',
       bodyParser.json(),
