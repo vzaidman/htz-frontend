@@ -10,8 +10,7 @@ const { configure, } = require('@haaretz/htz-react-base/styleguide');
 
 const utilsPath = path.join(process.cwd(), 'src/utils');
 const componentSectionsPath = path.join(process.cwd(), 'src', 'components');
-const isDir = file =>
-  lstatSync(path.join(componentSectionsPath, file)).isDirectory();
+const isDir = file => lstatSync(path.join(componentSectionsPath, file)).isDirectory();
 
 const isSubsection = [ 'Embed', ];
 
@@ -19,15 +18,15 @@ const sectionPatterns = {
   Icon: path.join(componentSectionsPath, 'Icon', 'Icon.js'),
   Embed: [
     { name: 'UI Examples', components: path.join(componentSectionsPath, 'Embed', 'Embeds.js'), },
-    { name: 'propTypes', components: path.join(componentSectionsPath, 'Embed', 'elements', '[A-Z]*.js{,x}'), },
+    {
+      name: 'propTypes',
+      components: path.join(componentSectionsPath, 'Embed', 'elements', '[A-Z]*.js{,x}'),
+    },
   ],
 };
 
 function getSectionPattern(section) {
-  return (
-    sectionPatterns[section] ||
-    `${path.join(componentSectionsPath, section)}**/[A-Z]*.js{,x}`
-  );
+  return sectionPatterns[section] || `${path.join(componentSectionsPath, section)}**/[A-Z]*.js{,x}`;
 }
 
 module.exports = configure(config =>
@@ -49,9 +48,7 @@ module.exports = configure(config =>
           return `import { Embed, } from '${packageName}';`;
         }
 
-        return `import { ${componentName}, } from '${packageName}';  (${
-          nonExampleComponentPath
-          })`;
+        return `import { ${componentName}, } from '${packageName}';  (${nonExampleComponentPath})`;
       }
 
       return componentPath;
@@ -78,8 +75,7 @@ module.exports = configure(config =>
           .filter(file => isDir(file) && file[0] === file[0].toUpperCase())
           .map(file => ({
             name: file,
-            [isSubsection.includes(file) ? 'sections' : 'components']:
-              getSectionPattern(file),
+            [isSubsection.includes(file) ? 'sections' : 'components']: getSectionPattern(file),
           })),
       },
     ],

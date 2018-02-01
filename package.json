@@ -68,6 +68,9 @@
       "^0.0.0": {
         "packages/apps/*": [
           "dependencies"
+        ],
+        "packages/components/htz-components": [
+          "dependencies"
         ]
       }
     },
@@ -82,8 +85,21 @@
       }
     },
     "apollo-client-preset": {
-      "^1.0.1": {
+      "^1.0.6": {
         "packages/apps/*": [
+          "dependencies"
+        ],
+        "packages/components/htz-components": [
+          "dependencies"
+        ]
+      }
+    },
+    "apollo-link-state": {
+      "^0.3.1": {
+        "packages/apps/*": [
+          "dependencies"
+        ],
+        "packages/components/htz-components": [
           "dependencies"
         ]
       }
@@ -101,6 +117,9 @@
     "config": {
       "^1.26.2": {
         "packages/{apps,components}/*": [
+          "dependencies"
+        ],
+        "packages/libs/htz-react-server": [
           "dependencies"
         ]
       }
@@ -155,6 +174,9 @@
       "^2.5.0": {
         "packages/apps/*": [
           "dependencies"
+        ],
+        "packages/components/htz-components": [
+          "dependencies"
         ]
       }
     },
@@ -204,6 +226,9 @@
     "react-apollo": {
       "^2.0.0": {
         "packages/apps/*": [
+          "dependencies"
+        ],
+        "packages/components/htz-components": [
           "dependencies"
         ]
       }

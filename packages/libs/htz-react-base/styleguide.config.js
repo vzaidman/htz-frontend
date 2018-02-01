@@ -18,10 +18,7 @@ const color = {
   secondaryDark: '#003D59',
 };
 
-const Wrapper = resolveFrom.silent(
-  process.cwd(),
-  './styleguide/StyleGuideProvider.js'
-);
+const Wrapper = resolveFrom.silent(process.cwd(), './styleguide/StyleGuideProvider.js');
 
 module.exports = {
   components: path.join(process.cwd(), '{,src/}components/**/[A-Z]*.{js,jsx}'),
@@ -30,6 +27,10 @@ module.exports = {
   showUsage: true,
   showCode: false,
   highlightTheme: 'monokai',
+
+  editorConfig: {
+    theme: 'monokai',
+  },
 
   theme: {
     borderRadius: 0,
@@ -100,15 +101,7 @@ module.exports = {
           opacity: 1,
           color: 'rgba(255, 255, 255, 0.7)',
         },
-        '&:-moz-placeholder': {
-          opacity: 1,
-          color: 'rgba(255, 255, 255, 0.7)',
-        },
-        '&::-moz-placeholder': {
-          opacity: 1,
-          color: 'rgba(255, 255, 255, 0.7)',
-        },
-        '&:-ms-input-placeholder': {
+        '&::placeholder': {
           opacity: 1,
           color: 'rgba(255, 255, 255, 0.7)',
         },
@@ -177,13 +170,15 @@ module.exports = {
       },
     },
 
-    SectionHeading: {
-      heading: {
-        fontWeight: '700 !important',
+    Heading: {
+      fontWeight: '700 !important',
+
+      sectionName: {
         '&:hover': {
-          textDecoration: 'none',
+          textDecoration: 'none !important',
         },
       },
+
       heading1: {
         fontSize: '5rem',
         marginBottom: '3rem',
@@ -216,9 +211,9 @@ module.exports = {
         },
       },
       heading3: {
-        fontSize: '3rem',
+        fontSize: '3rem !important',
         '&:hover': {
-          fontSize: '3rem',
+          fontSize: '3rem !important',
         },
       },
     },
@@ -344,6 +339,7 @@ module.exports = {
       },
     },
   },
+
   // Styleguidist sends webpack this option in such a way that it errors out
   // if one of the values is null or undefined, so we can't just use the raw
   // value of `Wrapper`. Instead, exclude `Wrapper` altogether if it's null.
@@ -353,8 +349,7 @@ module.exports = {
     // which is not what we want when using the default config.
     if (componentPath.indexOf('..') === 1) {
       // eslint-disable-next-line no-param-reassign
-      componentPath =
-        resolveFrom.silent(__dirname, componentPath) || componentPath;
+      componentPath = resolveFrom.silent(__dirname, componentPath) || componentPath;
     }
     // eslint-disable-next-line no-param-reassign
     componentPath = path.relative(process.cwd(), componentPath);
@@ -372,10 +367,7 @@ module.exports = {
       );
       const packageName = require(packagePath).name;
       const extension = path.extname(componentPath);
-      const componentName = path.basename(
-        pathSegments[pathSegments.length - 2],
-        extension
-      );
+      const componentName = path.basename(pathSegments[pathSegments.length - 2], extension);
       return `import { ${componentName} } from '${packageName}';`;
     }
     return componentPath;
