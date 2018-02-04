@@ -1,15 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
-
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Properties](#properties)
-  - [Methods](#methods)
-- [cssReset](#cssreset)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 Haaretz applications use [Fela](https://fela.js.org) for styling components, and this package is 
 designed to integrate with that workflow, specifically through a `themeProvider`. While it is 
 possible that `htz-theme` will work out of the box with other CSS-in-JS solutions, please take into 
@@ -124,9 +112,11 @@ import htzTheme from '@haaretz/htz-theme'
 * **getTimingFunction** - return an object with a precunfigured timing-function for a 
    transition or animation takes a `type` (`'animation'`|`'transition'`) argument and an 
    `easing` argument (`string`) that is a named timing-function.
+* **getMqString** - A function that intelligently returns a media-query string
+  based on breakpoints defined in `theme.bps`
 * **mq** - A [media-query function](https://haaretz.github.io/htz-frontend/htz-css-tools/#mqfunc),
   which intelligently returns a media-query scoped css-in-js object based on breakpoints defined 
-  in [`theme.bps`]()
+  in `theme.bps`
 * **pxToRem** - A function that 
   [converts px values to rem](https://haaretz.github.io/htz-frontend/htz-css-tools#remfunctiontype)
   at given breakpoints while accounting to changes in vertical rhythm

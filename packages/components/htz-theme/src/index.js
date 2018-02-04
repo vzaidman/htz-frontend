@@ -19,6 +19,7 @@ import {
   getTimingFunction,
   getTransition,
 } from './methods/animation';
+import getMqString from './methods/getMqString';
 import pxToRem from './methods/pxToRem';
 import typesetter from './methods/typesetter';
 import mq from './methods/mq';
@@ -70,7 +71,9 @@ export { cssReset, };
  *   to which the timing function is applied to (`animation`|`transition`) and an `easing` (`string`)
  *   argument, referring to a named timing-function describing how the intermediate values of the CSS
  *   properties being affected by an animation or transition effect are calculated.
- * @prop {function} mq - A [media-query function](https://haaretz.github.io/htz-frontend/htz-css-tools#typeconf),
+ * @prop {function} getMqString - A function that intelligently returns a media-query string
+ *   based on breakpoints defined in `theme.bps`
+ * @prop {function} mq - A [media-query function](https://haaretz.github.io/htz-frontend/htz-css-tools#mqfunc),
  *   which intelligently returns a media-query scoped css-in-js object based on breakpoints defined
  *   in `theme.bps`
  * @prop {function} pxToRem - A function that
@@ -98,6 +101,7 @@ const htzTheme = Object.freeze({
   getDuration,
   getTimingFunction,
   getTransition,
+  getMqString,
   mq,
   pxToRem,
   type: typesetter,
