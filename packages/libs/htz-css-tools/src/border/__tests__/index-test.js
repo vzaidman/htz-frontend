@@ -116,7 +116,7 @@ describe('# border()', () => {
 
         ':before': {
           backgroundColor: 'red',
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           top: '0',
@@ -126,7 +126,7 @@ describe('# border()', () => {
         ':after': {
           backgroundColor: 'red',
           bottom: '0',
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           width: '100%',
@@ -150,7 +150,7 @@ describe('# border()', () => {
         position: 'relative',
 
         ':before': {
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           top: '0',
@@ -159,7 +159,7 @@ describe('# border()', () => {
 
         ':after': {
           bottom: '0',
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           width: '100%',
@@ -181,7 +181,7 @@ describe('# border()', () => {
         position: 'relative',
 
         ':before': {
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           top: '0',
@@ -190,7 +190,7 @@ describe('# border()', () => {
 
         ':after': {
           bottom: '0',
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           width: '100%',
@@ -281,7 +281,7 @@ describe('# borderTop()', () => {
 
         ':before': {
           backgroundColor: 'red',
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           top: '0',
@@ -302,7 +302,7 @@ describe('# borderTop()', () => {
         position: 'relative',
 
         ':before': {
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           top: '0',
@@ -323,7 +323,7 @@ describe('# borderTop()', () => {
         position: 'relative',
 
         ':before': {
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           top: '0',
@@ -599,7 +599,7 @@ describe('# borderBottom()', () => {
 
         ':after': {
           backgroundColor: 'red',
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           bottom: '0',
@@ -620,7 +620,7 @@ describe('# borderBottom()', () => {
         position: 'relative',
 
         ':after': {
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           bottom: '0',
@@ -641,7 +641,7 @@ describe('# borderBottom()', () => {
         position: 'relative',
 
         ':after': {
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           bottom: '0',
@@ -1035,7 +1035,7 @@ describe('# borderVertical()', () => {
 
         ':before': {
           backgroundColor: 'red',
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           top: '0',
@@ -1044,7 +1044,7 @@ describe('# borderVertical()', () => {
 
         ':after': {
           backgroundColor: 'red',
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           bottom: '0',
@@ -1065,7 +1065,7 @@ describe('# borderVertical()', () => {
         position: 'relative',
 
         ':before': {
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           top: '0',
@@ -1073,7 +1073,7 @@ describe('# borderVertical()', () => {
         },
 
         ':after': {
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           bottom: '0',
@@ -1094,7 +1094,7 @@ describe('# borderVertical()', () => {
         position: 'relative',
 
         ':before': {
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           top: '0',
@@ -1102,7 +1102,7 @@ describe('# borderVertical()', () => {
         },
 
         ':after': {
-          content: '',
+          content: '""',
           height: '2px',
           position: 'absolute',
           bottom: '0',

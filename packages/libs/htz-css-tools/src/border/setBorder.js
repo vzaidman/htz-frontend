@@ -88,7 +88,7 @@ export default function setBorder(
       ...(typeof color === 'undefined'
         ? undefined
         : { backgroundColor: color, }),
-      content: '',
+      content: '""',
       height: widthValue,
       position: 'absolute',
       width: '100%',
