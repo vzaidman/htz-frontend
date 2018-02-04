@@ -21,6 +21,7 @@ import createMqFunc from './mq/mq';
 import createRemFunction from './units/createRemFunction';
 import createTypesetter from './typography/createTypesetter';
 import getLengthProps from './units/getLengthProps';
+import getMqString from './mq/getMqString';
 import getUnit from './units/getUnit';
 import parseComponentProp from './props/parseComponentProp';
 // import parseStyleProp from './props/parseStyleProp';
@@ -45,6 +46,7 @@ export {
   createRemFunction,
   createTypesetter,
   getLengthProps,
+  getMqString,
   getUnit,
   parseComponentProp,
   // parseStyleProp,

@@ -1,4 +1,5 @@
-import createMqFunc, { getLengthString, } from '../mq';
+import { getLengthString, } from '../getMqString.js';
+import createMqFunc from '../mq';
 
 describe('# Media Queries', () => {
   describe('## getLengthString()', () => {
@@ -20,6 +21,7 @@ describe('# Media Queries', () => {
       expect(() => test('rem20')).toThrow();
     });
   });
+
   describe('## mqFuncFactory()', () => {
     it('Return a function when not passing a configuration oject', () => {
       expect(typeof createMqFunc()).toBe('function');
@@ -44,6 +46,7 @@ describe('# Media Queries', () => {
         'The "default" width breakpoint is reserved for internal use by Panache'
       );
     });
+
     describe('### Returned function', () => {
       const mq = createMqFunc();
 
@@ -67,9 +70,9 @@ describe('# Media Queries', () => {
         });
       });
       it('Return a typed min-width media-query', () => {
-        expect(
-          mq({ from: '320px', type: 'screen', }, { color: 'red', })
-        ).toEqual({ '@media screen and (min-width: 20em)': { color: 'red', }, });
+        expect(mq({ from: '320px', type: 'screen', }, { color: 'red', })).toEqual(
+          { '@media screen and (min-width: 20em)': { color: 'red', }, }
+        );
       });
       it('Return a max-width media-query', () => {
         expect(mq({ until: 's', }, { color: 'red', })).toEqual({

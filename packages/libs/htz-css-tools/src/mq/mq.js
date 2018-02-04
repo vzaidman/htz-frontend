@@ -1,5 +1,6 @@
 /* @flow */
 import getLengthProps from '../units/getLengthProps';
+import getMqString from './getMqString';
 import { DEFAULT_BROWSER_FONT_SIZE, } from '../consts/index';
 
 // //////////////////// //
@@ -159,89 +160,29 @@ const defaultBps: BpsConfig = {
  *   on the `breakpoints` config object.
  */
 export default function createMqFunc(
-  { widths, misc, }: BpsConfig = defaultBps
+  breakpoints: BpsConfig = defaultBps
 ): MqFunc {
-  if (!widths) {
+  if (!breakpoints.widths) {
     throw new Error('The configuration object must contain a `widths` key');
   }
-  if (widths.default !== undefined) {
+  if (breakpoints.widths.default !== undefined) {
     throw new Error(
       'The "default" width breakpoint is reserved for internal use by Panache'
     );
   }
-  if (!misc) {
+  if (!breakpoints.misc) {
     throw new Error('The configuration object must contain a `misc` key');
   }
 
-  const miscBps = misc;
-
   return function mqFunc(
-    // eslint-disable-next-line no-shadow
     { from, until, misc = '', type = '', }: MqOptions = {},
     styles: Object
   ): Object {
     if (!from && !until && !misc && !type) {
       return styles;
     }
-    const typeString = !type || type.toLowerCase() === 'all' ? '' : type;
-    const minString = from
-      ? `${typeString ? ' and ' : ''}(min-width: ${getLengthString(
-        from,
-        widths
-      )})`
-      : '';
-    const maxString = until
-      ? `${typeString || minString ? ' and ' : ''}(max-width: ${getLengthString(
-        until,
-        widths
-      )})`
-      : '';
-    const namedMisc = miscBps[misc];
-    const miscOption = namedMisc || misc;
-    const miscString =
-      (typeString || minString || maxString) && misc
-        ? ` and ${miscOption}`
-        : miscOption;
-    const mqString = `@media ${typeString +
-      minString +
-      maxString +
-      miscString}`;
+
+    const mqString = getMqString(breakpoints, { from, until, misc, type, });
     return { [mqString]: styles, };
   };
-}
-
-// //////////////// //
-//  Util Funcitons  //
-// //////////////// //
-/**
- * Media query length string getter
- *
- * A private function that tries to convert a breakpoint-name, a `number` or a `number-string`
- * from `px` to `em`. Returns the original value if conversion fails.
- *
- * @param {string|number} length - A named breakpoint, a length-string or
- *   a number representing pixel values (will be converted to ems)
- * @param {WidthBpsConfig} breakpoints - A `{ name: number }` object with keys for named length breakpoints
- * and values representing lengths in pixels
- *
- * @return {string} A CSS length-string for a media-query
- * @private
- *
- * @example
- * const bps = { 's': 600, 'l': 1024, };
- * const lengthString = getLengthString('l', bps);
- * console.log(lengthString) // -> logs `"60em"`
- */
-export function getLengthString(
-  length: string | number,
-  breakpoints: WidthBpsConfig
-): string {
-  // if `length` is a number, assume it is in pixels and convert to em
-  if (typeof length === 'number') {
-    return `${length / DEFAULT_BROWSER_FONT_SIZE}em`;
-  }
-  const lengthNumber = breakpoints[length];
-  if (lengthNumber) return getLengthString(lengthNumber, breakpoints);
-  const { unitlessValue, unit, } = getLengthProps(length);
-  return unit === 'px' ? getLengthString(unitlessValue, breakpoints) : length;
 }
