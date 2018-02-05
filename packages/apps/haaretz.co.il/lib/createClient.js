@@ -1,5 +1,6 @@
 import { ApolloClient, } from 'apollo-client';
-import { HttpLink, InMemoryCache, } from 'apollo-client-preset';
+import { HttpLink, InMemoryCache, ApolloLink, } from 'apollo-client-preset';
+import { withClientState, } from 'apollo-link-state';
 import fetch from 'isomorphic-unfetch';
 import config from 'config';
 
@@ -24,10 +25,43 @@ function create(initialState) {
       (contentId ? `${__typename}:${contentId}` : null),
   }).restore(initialState || {});
 
+  const stateLink = withClientState({
+    cache,
+    defaults: {
+      // todo: remove after bug fix, this is a workaround explained here:
+      // https://github.com/apollographql/apollo-link-state/issues/187#issuecomment-361753208
+      'scroll@client': {
+        velocity: null,
+        x: 0,
+        y: 0,
+        __typename: 'Scroll',
+      },
+    },
+    resolvers: {
+      Mutation: {
+        updateScroll: (_, { x, y, velocity, }, { cache, }) => {
+          const data = {
+            // todo: remove after bug fix, this is a workaround explained here:
+            // https://github.com/apollographql/apollo-link-state/issues/187#issuecomment-361753208
+            'scroll@client': {
+              velocity,
+              x,
+              y,
+              __typename: 'Scroll',
+            },
+          };
+          cache.writeData({ data, });
+          // resolver needs to return something / null https://github.com/apollographql/apollo-link-state/issues/160
+          return null;
+        },
+      },
+    },
+  });
+
   return new ApolloClient({
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
-    link,
+    link: ApolloLink.from([ stateLink, link, ]),
     cache,
     queryDeduplication: true,
   });
