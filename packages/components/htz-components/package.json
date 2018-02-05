@@ -22,8 +22,9 @@
     "embeds": "node scripts/update-embed-files.js",
     "lint": "htz-scripts lint",
     "prepare": "npm run build",
-    "styleguide": "concurrently \"htz-scripts styleguide\" \"htz-react-server\"",
-    "styleguide:build": "htz-scripts styleguide:build && rm -rf ../../../docs/htz-components/**/* && cp -r dist/styleguide/* ../../../docs/htz-components",
+    "styleguide": "concurrently \"htz-react-server\" \"htz-scripts styleguide\"",
+    "styleguide:build":
+      "htz-scripts styleguide:build && rm -rf ../../../docs/htz-components/**/* && cp -r dist/styleguide/* ../../../docs/htz-components",
     "test": "htz-scripts test",
     "test:debug": "node --inspect-brk ./node_modules/.bin/htz-scripts test",
     "update-scripts": "htz-scripts update-scripts"

@@ -1,61 +1,35 @@
 /* global window */
-import React, { Component, } from 'react';
+/* eslint-disable import/no-named-as-default */
+import React from 'react';
 import { Scroll, } from 'react-fns';
 import PropTypes from 'prop-types';
-import { graphql, } from 'react-apollo';
-import gql from 'graphql-tag';
-
-const UPDATE_SCROLL = gql`
-  mutation updateScroll($x: Int!, $y: Int!, $direction: String!, $velocity: Int!) {
-    updateScroll(x: $x, y: $y, direction: $direction, velocity: $velocity) @client {
-      scroll {
-        x
-        y
-        velocity
-      }
-    }
-  }
-`;
+import ScrollStoreMutator from './ScrollStoreMutator';
 
 const propTypes = {
+  /**
+   * Throttle enforces a maximum number of times a function can be called over time.
+   *
+   * e.g execute this function at most every 100 milliseconds.
+   *
+   * The Throttle prop controls the throtolling of the scroll event listener.
+   */
   throttle: PropTypes.number,
 };
 const defaultProps = {
-  throttle: null,
+  throttle: 100,
 };
-
-const scrollStoreMutatorPropTypes = {
-  throttle: PropTypes.number.isRequired,
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
-  mutate: PropTypes.func.isRequired,
-};
-
-class ScrollStoreMutator extends Component {
-  componentWillReceiveProps(nextProps) {
-    const { x, y, mutate, throttle, } = this.props;
-    const velocity = (y - nextProps.y) / throttle;
-    if (y !== nextProps.y) mutate({ variables: { x, y, velocity, }, });
-  }
-  render() {
-    return null;
-  }
-}
-
-ScrollStoreMutator.propTypes = scrollStoreMutatorPropTypes;
-
-ScrollListener.propTypes = propTypes;
-ScrollListener.defaultProps = defaultProps;
-
-const WrappedScrollListener = graphql(UPDATE_SCROLL)(ScrollStoreMutator);
 
 function ScrollListener({ throttle, }) {
   return (
+    // This `<Scroll />` is from react-fns package
     <Scroll
-      {...throttle && { throttle, }}
-      render={({ x, y, }) => <WrappedScrollListener x={x} y={y} throttle={throttle || 100} />}
+      throttle={throttle}
+      render={({ x, y, }) => <ScrollStoreMutator x={x} y={y} throttle={throttle} />}
     />
   );
 }
+
+ScrollListener.propTypes = propTypes;
+ScrollListener.defaultProps = defaultProps;
 
 export default ScrollListener;

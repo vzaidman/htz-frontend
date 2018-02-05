@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
 
-const SCROLL_QUERY = gql`
+export const SCROLL_QUERY = gql`
   query {
     scroll @client {
       x
@@ -16,27 +16,30 @@ const SCROLL_QUERY = gql`
 
 const propTypes = {
   /**
+   * Indicates data loading state
    * Passed implicitly by Apollo, not directly as an attribute on the component
    */
-
-  /** Indicates data loading state */
   loading: PropTypes.bool.isRequired,
-  /** Indicates data error state */
+  /**
+   * Indicates data error state
+   * Passed implicitly by Apollo, not directly as an attribute on the component
+   */
   error: PropTypes.bool,
 
-  /** Holds the scroll Object with x and y coords */
-  scroll: PropTypes.shape({ x: PropTypes.number, y: PropTypes.number, }).isRequired,
-
+  /**
+   * Holds the scroll Object with x, y coords and scroll velocity
+   * Passed implicitly by Apollo, not directly as an attribute on the component
+   */
+  scroll: PropTypes.shape({ x: PropTypes.number, y: PropTypes.number, velocity: PropTypes.number, })
+    .isRequired,
   /**
    * The render Props callback
-   * This component was built using the render props pattern together with prop getters pattern
+   * This component was built using the render props pattern
    *
    * Checkout the following link to learn about render props pattern http://bit.ly/2CSxs7g
    *
-   * And the following link to learn about prop getters http://bit.ly/2Fk27bY
-   *
    * The Scroll Component passes an Object to its render function.
-   * @param {Object} - holds the getInputProps, handleSubmit, and clearForm functions
+   * @param {Object} - holds the scroll x coordinates, scroll y coordinates and scroll velocity
    */
   render: PropTypes.func.isRequired,
 };

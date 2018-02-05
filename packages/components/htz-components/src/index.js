@@ -16,6 +16,8 @@ import Quote from './components/Quote/Quote';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
+import Scroll from './components/Scroll/Scroll';
+import ScrollListener from './components/EventListeners/ScrollListener';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 import Tags from './components/Tags/Tags';
 
@@ -117,6 +119,8 @@ export {
   Quote,
   LinksBlock,
   RelatedArticles,
+  Scroll,
+  ScrollListener,
   SeriesArticles,
   StyleProvider,
   Tags,

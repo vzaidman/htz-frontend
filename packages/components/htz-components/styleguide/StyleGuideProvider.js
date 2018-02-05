@@ -19,7 +19,7 @@ const cache = new InMemoryCache();
 const stateLink = withClientState({
   cache,
   defaults: {
-    // todo: remove after bug is fix, this is a workaround explained here:
+    // todo: remove after bug fix, this is a workaround explained here:
     // https://github.com/apollographql/apollo-link-state/issues/187#issuecomment-361753208
     'scroll@client': {
       velocity: null,
@@ -32,7 +32,7 @@ const stateLink = withClientState({
     Mutation: {
       updateScroll: (_, { x, y, direction, velocity, }, { cache, }) => {
         const data = {
-          // todo: remove after bug is fix, this is a workaround explained here:
+          // todo: remove after bug fix, this is a workaround explained here:
           // https://github.com/apollographql/apollo-link-state/issues/187#issuecomment-361753208
           'scroll@client': {
             velocity,
