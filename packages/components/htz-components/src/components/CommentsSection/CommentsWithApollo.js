@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { graphql, compose, } from 'react-apollo';
 import CommentSection from './CommentsSection';
+import fetchCommentsQuery from './queries/fetchComments';
+import submitNewComment from './mutations/submitNewComment';
+import submitNewVote from './mutations/submitNewVote';
+import submitNotificationEmail from './mutations/submitNotificationEmail';
+import reportAbuse from './mutations/reportAbuse';
 
-// todo: After configuring styleguidist to work with apollo,
-// include queries and mutations in this component and the graphql HOC
+
 const propTypes = {
   /**
    * Passed implicitly by Apollo, not directly as an attribute on the component
@@ -163,4 +168,27 @@ class CommentsWithApollo extends React.Component {
 
 CommentsWithApollo.propTypes = propTypes;
 
-export default CommentsWithApollo;
+export default compose(
+  graphql(fetchCommentsQuery, {
+    options: props => ({
+      variables: { path: `${props.contentId}?composite=true&limited=true`, },
+    }),
+    props: props => ({
+      data: props.data,
+      loadAllComments: () =>
+        props.data.fetchMore({
+          variables: {
+            path: `${props.ownProps.contentId}?composite=true`,
+          },
+          updateQuery(previousResult, { fetchMoreResult, }) {
+            return fetchMoreResult;
+          },
+        }),
+    }),
+  }),
+  graphql(submitNewComment, { name: 'SubmitNewComment', }),
+  graphql(submitNewVote, { name: 'SubmitNewVote', }),
+  graphql(submitNotificationEmail, { name: 'SubmitNotificationEmail', }),
+  graphql(reportAbuse, { name: 'ReportAbuse', })
+)(CommentsWithApollo);
+
