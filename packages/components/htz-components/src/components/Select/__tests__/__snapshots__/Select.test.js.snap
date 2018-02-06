@@ -61,6 +61,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
       }
     }
     selectedItemChanged={[Function]}
+    stateReducer={[Function]}
   >
     <div
       onKeyDown={[Function]}
@@ -84,9 +85,63 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                     },
                     Object {
                       "from": "xl",
-                      "value": "3.5rem",
+                      "value": "3rem",
                     },
                   ],
+                  "width": Array [
+                    Object {
+                      "until": "m",
+                      "value": "49.3rem",
+                    },
+                    Object {
+                      "from": "m",
+                      "until": "l",
+                      "value": "80rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "70.5rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "80rem",
+                    },
+                  ],
+                },
+                "currentArticleInSeries": Object {
+                  "@media (max-width: 80em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundColor": "#FFEC98",
+                  "fontWeight": "700",
+                },
+                "linksBlockLink": Object {
+                  ":focus": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "2px",
+                  },
+                  ":hover": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                  },
+                  "@media (max-width: 80em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "color": "#0B7EB5",
+                  "fontWeight": "700",
                 },
                 "paragraphLink": Object {
                   ":focus": Object {
@@ -102,6 +157,34 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                   "color": "#0B7EB5",
                 },
                 "paragraphStyles": Object {},
+                "relatedArticlesLink": Object {
+                  ":focus": Object {
+                    "background": "none",
+                    "backgroundColor": "#FFD20C",
+                  },
+                  ":hover": Object {
+                    "backgroundPosition": "0 100%",
+                    "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                  },
+                  "@media (max-width: 80em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                  "backgroundPosition": "0 0",
+                  "backgroundSize": "100% 200%",
+                  "color": "#006B96",
+                  "fontWeight": "700",
+                  "position": "relative",
+                  "transitionDuration": "0.16666666666666666s",
+                  "transitionProperty": "background-position",
+                  "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                  "zIndex": "1",
+                },
               },
               "bps": Object {
                 "misc": Object {
@@ -159,6 +242,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
               },
               "getDelay": [Function],
               "getDuration": [Function],
+              "getMqString": [Function],
               "getTimingFunction": [Function],
               "getTransition": [Function],
               "gridStyle": Object {
@@ -215,6 +299,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
               aria-label="close menu"
               isOpen={true}
               noHighlitedItems={false}
+              onBlur={[Function]}
               onClick={[Function]}
               onKeyDown={[Function]}
               role="button"
@@ -227,6 +312,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                 aria-label="close menu"
                 isOpen={true}
                 noHighlitedItems={false}
+                onBlur={[Function]}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="button"
@@ -241,9 +327,63 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                           },
                           Object {
                             "from": "xl",
-                            "value": "3.5rem",
+                            "value": "3rem",
                           },
                         ],
+                        "width": Array [
+                          Object {
+                            "until": "m",
+                            "value": "49.3rem",
+                          },
+                          Object {
+                            "from": "m",
+                            "until": "l",
+                            "value": "80rem",
+                          },
+                          Object {
+                            "from": "l",
+                            "until": "xl",
+                            "value": "70.5rem",
+                          },
+                          Object {
+                            "from": "xl",
+                            "value": "80rem",
+                          },
+                        ],
+                      },
+                      "currentArticleInSeries": Object {
+                        "@media (max-width: 80em)": Object {
+                          "fontSize": "2.3333333333333335rem",
+                          "lineHeight": "1.2857142857142858em",
+                        },
+                        "@media (min-width: 80em)": Object {
+                          "fontSize": "2.2857142857142856rem",
+                          "lineHeight": "1.3125em",
+                        },
+                        "backgroundColor": "#FFEC98",
+                        "fontWeight": "700",
+                      },
+                      "linksBlockLink": Object {
+                        ":focus": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "2px",
+                        },
+                        ":hover": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "1px",
+                        },
+                        "@media (max-width: 80em)": Object {
+                          "fontSize": "2.3333333333333335rem",
+                          "lineHeight": "1.2857142857142858em",
+                        },
+                        "@media (min-width: 80em)": Object {
+                          "fontSize": "2.2857142857142856rem",
+                          "lineHeight": "1.3125em",
+                        },
+                        "color": "#0B7EB5",
+                        "fontWeight": "700",
                       },
                       "paragraphLink": Object {
                         ":focus": Object {
@@ -259,6 +399,34 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                         "color": "#0B7EB5",
                       },
                       "paragraphStyles": Object {},
+                      "relatedArticlesLink": Object {
+                        ":focus": Object {
+                          "background": "none",
+                          "backgroundColor": "#FFD20C",
+                        },
+                        ":hover": Object {
+                          "backgroundPosition": "0 100%",
+                          "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                        },
+                        "@media (max-width: 80em)": Object {
+                          "fontSize": "2.3333333333333335rem",
+                          "lineHeight": "1.2857142857142858em",
+                        },
+                        "@media (min-width: 80em)": Object {
+                          "fontSize": "2.2857142857142856rem",
+                          "lineHeight": "1.3125em",
+                        },
+                        "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                        "backgroundPosition": "0 0",
+                        "backgroundSize": "100% 200%",
+                        "color": "#006B96",
+                        "fontWeight": "700",
+                        "position": "relative",
+                        "transitionDuration": "0.16666666666666666s",
+                        "transitionProperty": "background-position",
+                        "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                        "zIndex": "1",
+                      },
                     },
                     "bps": Object {
                       "misc": Object {
@@ -316,6 +484,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                     },
                     "getDelay": [Function],
                     "getDuration": [Function],
+                    "getMqString": [Function],
                     "getTimingFunction": [Function],
                     "getTransition": [Function],
                     "gridStyle": Object {
@@ -371,17 +540,19 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                   aria-label="close menu"
                   isOpen={true}
                   noHighlitedItems={false}
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   passThrough={
                     Array [
+                      "type",
                       "role",
                       "aria-label",
                       "aria-expanded",
                       "aria-haspopup",
                       "onClick",
                       "onKeyDown",
-                      "type",
+                      "onBlur",
                     ]
                   }
                   role="button"
@@ -396,9 +567,63 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                             },
                             Object {
                               "from": "xl",
-                              "value": "3.5rem",
+                              "value": "3rem",
                             },
                           ],
+                          "width": Array [
+                            Object {
+                              "until": "m",
+                              "value": "49.3rem",
+                            },
+                            Object {
+                              "from": "m",
+                              "until": "l",
+                              "value": "80rem",
+                            },
+                            Object {
+                              "from": "l",
+                              "until": "xl",
+                              "value": "70.5rem",
+                            },
+                            Object {
+                              "from": "xl",
+                              "value": "80rem",
+                            },
+                          ],
+                        },
+                        "currentArticleInSeries": Object {
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "backgroundColor": "#FFEC98",
+                          "fontWeight": "700",
+                        },
+                        "linksBlockLink": Object {
+                          ":focus": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "2px",
+                          },
+                          ":hover": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "1px",
+                          },
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "color": "#0B7EB5",
+                          "fontWeight": "700",
                         },
                         "paragraphLink": Object {
                           ":focus": Object {
@@ -414,6 +639,34 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                           "color": "#0B7EB5",
                         },
                         "paragraphStyles": Object {},
+                        "relatedArticlesLink": Object {
+                          ":focus": Object {
+                            "background": "none",
+                            "backgroundColor": "#FFD20C",
+                          },
+                          ":hover": Object {
+                            "backgroundPosition": "0 100%",
+                            "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                          },
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                          "backgroundPosition": "0 0",
+                          "backgroundSize": "100% 200%",
+                          "color": "#006B96",
+                          "fontWeight": "700",
+                          "position": "relative",
+                          "transitionDuration": "0.16666666666666666s",
+                          "transitionProperty": "background-position",
+                          "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                          "zIndex": "1",
+                        },
                       },
                       "bps": Object {
                         "misc": Object {
@@ -471,6 +724,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                       },
                       "getDelay": [Function],
                       "getDuration": [Function],
+                      "getMqString": [Function],
                       "getTimingFunction": [Function],
                       "getTransition": [Function],
                       "gridStyle": Object {
@@ -526,17 +780,19 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                     aria-label="close menu"
                     isOpen={true}
                     noHighlitedItems={false}
+                    onBlur={[Function]}
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     passThrough={
                       Array [
+                        "type",
                         "role",
                         "aria-label",
                         "aria-expanded",
                         "aria-haspopup",
                         "onClick",
                         "onKeyDown",
-                        "type",
+                        "onBlur",
                       ]
                     }
                     role="button"
@@ -551,9 +807,63 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                               },
                               Object {
                                 "from": "xl",
-                                "value": "3.5rem",
+                                "value": "3rem",
                               },
                             ],
+                            "width": Array [
+                              Object {
+                                "until": "m",
+                                "value": "49.3rem",
+                              },
+                              Object {
+                                "from": "m",
+                                "until": "l",
+                                "value": "80rem",
+                              },
+                              Object {
+                                "from": "l",
+                                "until": "xl",
+                                "value": "70.5rem",
+                              },
+                              Object {
+                                "from": "xl",
+                                "value": "80rem",
+                              },
+                            ],
+                          },
+                          "currentArticleInSeries": Object {
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundColor": "#FFEC98",
+                            "fontWeight": "700",
+                          },
+                          "linksBlockLink": Object {
+                            ":focus": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "2px",
+                            },
+                            ":hover": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "1px",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "color": "#0B7EB5",
+                            "fontWeight": "700",
                           },
                           "paragraphLink": Object {
                             ":focus": Object {
@@ -569,6 +879,34 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                             "color": "#0B7EB5",
                           },
                           "paragraphStyles": Object {},
+                          "relatedArticlesLink": Object {
+                            ":focus": Object {
+                              "background": "none",
+                              "backgroundColor": "#FFD20C",
+                            },
+                            ":hover": Object {
+                              "backgroundPosition": "0 100%",
+                              "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                            "backgroundPosition": "0 0",
+                            "backgroundSize": "100% 200%",
+                            "color": "#006B96",
+                            "fontWeight": "700",
+                            "position": "relative",
+                            "transitionDuration": "0.16666666666666666s",
+                            "transitionProperty": "background-position",
+                            "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                            "zIndex": "1",
+                          },
                         },
                         "bps": Object {
                           "misc": Object {
@@ -626,6 +964,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                         },
                         "getDelay": [Function],
                         "getDuration": [Function],
+                        "getMqString": [Function],
                         "getTimingFunction": [Function],
                         "getTransition": [Function],
                         "gridStyle": Object {
@@ -679,6 +1018,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                       aria-haspopup={true}
                       aria-label="close menu"
                       className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aq htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an"
+                      onBlur={[Function]}
                       onClick={[Function]}
                       onKeyDown={[Function]}
                       role="button"
@@ -715,9 +1055,63 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                             },
                             Object {
                               "from": "xl",
-                              "value": "3.5rem",
+                              "value": "3rem",
                             },
                           ],
+                          "width": Array [
+                            Object {
+                              "until": "m",
+                              "value": "49.3rem",
+                            },
+                            Object {
+                              "from": "m",
+                              "until": "l",
+                              "value": "80rem",
+                            },
+                            Object {
+                              "from": "l",
+                              "until": "xl",
+                              "value": "70.5rem",
+                            },
+                            Object {
+                              "from": "xl",
+                              "value": "80rem",
+                            },
+                          ],
+                        },
+                        "currentArticleInSeries": Object {
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "backgroundColor": "#FFEC98",
+                          "fontWeight": "700",
+                        },
+                        "linksBlockLink": Object {
+                          ":focus": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "2px",
+                          },
+                          ":hover": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "1px",
+                          },
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "color": "#0B7EB5",
+                          "fontWeight": "700",
                         },
                         "paragraphLink": Object {
                           ":focus": Object {
@@ -733,6 +1127,34 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                           "color": "#0B7EB5",
                         },
                         "paragraphStyles": Object {},
+                        "relatedArticlesLink": Object {
+                          ":focus": Object {
+                            "background": "none",
+                            "backgroundColor": "#FFD20C",
+                          },
+                          ":hover": Object {
+                            "backgroundPosition": "0 100%",
+                            "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                          },
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                          "backgroundPosition": "0 0",
+                          "backgroundSize": "100% 200%",
+                          "color": "#006B96",
+                          "fontWeight": "700",
+                          "position": "relative",
+                          "transitionDuration": "0.16666666666666666s",
+                          "transitionProperty": "background-position",
+                          "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                          "zIndex": "1",
+                        },
                       },
                       "bps": Object {
                         "misc": Object {
@@ -790,6 +1212,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                       },
                       "getDelay": [Function],
                       "getDuration": [Function],
+                      "getMqString": [Function],
                       "getTimingFunction": [Function],
                       "getTransition": [Function],
                       "gridStyle": Object {
@@ -846,7 +1269,8 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                       isSelected={false}
                       key="1"
                       onClick={[Function]}
-                      onMouseEnter={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseMove={[Function]}
                       role="button"
                     >
                       <ItemStyle
@@ -854,7 +1278,8 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                         id="downshift-1-item-0"
                         isSelected={false}
                         onClick={[Function]}
-                        onMouseEnter={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseMove={[Function]}
                         role="button"
                         theme={
                           Object {
@@ -867,9 +1292,63 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                                   },
                                   Object {
                                     "from": "xl",
-                                    "value": "3.5rem",
+                                    "value": "3rem",
                                   },
                                 ],
+                                "width": Array [
+                                  Object {
+                                    "until": "m",
+                                    "value": "49.3rem",
+                                  },
+                                  Object {
+                                    "from": "m",
+                                    "until": "l",
+                                    "value": "80rem",
+                                  },
+                                  Object {
+                                    "from": "l",
+                                    "until": "xl",
+                                    "value": "70.5rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "80rem",
+                                  },
+                                ],
+                              },
+                              "currentArticleInSeries": Object {
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundColor": "#FFEC98",
+                                "fontWeight": "700",
+                              },
+                              "linksBlockLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "color": "#0B7EB5",
+                                "fontWeight": "700",
                               },
                               "paragraphLink": Object {
                                 ":focus": Object {
@@ -885,6 +1364,34 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                                 "color": "#0B7EB5",
                               },
                               "paragraphStyles": Object {},
+                              "relatedArticlesLink": Object {
+                                ":focus": Object {
+                                  "background": "none",
+                                  "backgroundColor": "#FFD20C",
+                                },
+                                ":hover": Object {
+                                  "backgroundPosition": "0 100%",
+                                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                                "backgroundPosition": "0 0",
+                                "backgroundSize": "100% 200%",
+                                "color": "#006B96",
+                                "fontWeight": "700",
+                                "position": "relative",
+                                "transitionDuration": "0.16666666666666666s",
+                                "transitionProperty": "background-position",
+                                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                                "zIndex": "1",
+                              },
                             },
                             "bps": Object {
                               "misc": Object {
@@ -942,6 +1449,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                             },
                             "getDelay": [Function],
                             "getDuration": [Function],
+                            "getMqString": [Function],
                             "getTimingFunction": [Function],
                             "getTransition": [Function],
                             "gridStyle": Object {
@@ -992,7 +1500,8 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                           className="htz-a htz-q htz-r htz-s htz-t htz-i htz-j htz-aj htz-ak htz-al htz-an"
                           id="downshift-1-item-0"
                           onClick={[Function]}
-                          onMouseEnter={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseMove={[Function]}
                           role="button"
                         >
                           אחד
@@ -1005,7 +1514,8 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                       isSelected={false}
                       key="2"
                       onClick={[Function]}
-                      onMouseEnter={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseMove={[Function]}
                       role="button"
                     >
                       <ItemStyle
@@ -1013,7 +1523,8 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                         id="downshift-1-item-1"
                         isSelected={false}
                         onClick={[Function]}
-                        onMouseEnter={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseMove={[Function]}
                         role="button"
                         theme={
                           Object {
@@ -1026,9 +1537,63 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                                   },
                                   Object {
                                     "from": "xl",
-                                    "value": "3.5rem",
+                                    "value": "3rem",
                                   },
                                 ],
+                                "width": Array [
+                                  Object {
+                                    "until": "m",
+                                    "value": "49.3rem",
+                                  },
+                                  Object {
+                                    "from": "m",
+                                    "until": "l",
+                                    "value": "80rem",
+                                  },
+                                  Object {
+                                    "from": "l",
+                                    "until": "xl",
+                                    "value": "70.5rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "80rem",
+                                  },
+                                ],
+                              },
+                              "currentArticleInSeries": Object {
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundColor": "#FFEC98",
+                                "fontWeight": "700",
+                              },
+                              "linksBlockLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "color": "#0B7EB5",
+                                "fontWeight": "700",
                               },
                               "paragraphLink": Object {
                                 ":focus": Object {
@@ -1044,6 +1609,34 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                                 "color": "#0B7EB5",
                               },
                               "paragraphStyles": Object {},
+                              "relatedArticlesLink": Object {
+                                ":focus": Object {
+                                  "background": "none",
+                                  "backgroundColor": "#FFD20C",
+                                },
+                                ":hover": Object {
+                                  "backgroundPosition": "0 100%",
+                                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                                "backgroundPosition": "0 0",
+                                "backgroundSize": "100% 200%",
+                                "color": "#006B96",
+                                "fontWeight": "700",
+                                "position": "relative",
+                                "transitionDuration": "0.16666666666666666s",
+                                "transitionProperty": "background-position",
+                                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                                "zIndex": "1",
+                              },
                             },
                             "bps": Object {
                               "misc": Object {
@@ -1101,6 +1694,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                             },
                             "getDelay": [Function],
                             "getDuration": [Function],
+                            "getMqString": [Function],
                             "getTimingFunction": [Function],
                             "getTransition": [Function],
                             "gridStyle": Object {
@@ -1151,7 +1745,8 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                           className="htz-a htz-q htz-r htz-s htz-t htz-i htz-j htz-aj htz-ak htz-al htz-an"
                           id="downshift-1-item-1"
                           onClick={[Function]}
-                          onMouseEnter={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseMove={[Function]}
                           role="button"
                         >
                           שתיים
@@ -1164,7 +1759,8 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                       isSelected={true}
                       key="3"
                       onClick={[Function]}
-                      onMouseEnter={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseMove={[Function]}
                       role="button"
                     >
                       <ItemStyle
@@ -1172,7 +1768,8 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                         id="downshift-1-item-2"
                         isSelected={true}
                         onClick={[Function]}
-                        onMouseEnter={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseMove={[Function]}
                         role="button"
                         theme={
                           Object {
@@ -1185,9 +1782,63 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                                   },
                                   Object {
                                     "from": "xl",
-                                    "value": "3.5rem",
+                                    "value": "3rem",
                                   },
                                 ],
+                                "width": Array [
+                                  Object {
+                                    "until": "m",
+                                    "value": "49.3rem",
+                                  },
+                                  Object {
+                                    "from": "m",
+                                    "until": "l",
+                                    "value": "80rem",
+                                  },
+                                  Object {
+                                    "from": "l",
+                                    "until": "xl",
+                                    "value": "70.5rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "80rem",
+                                  },
+                                ],
+                              },
+                              "currentArticleInSeries": Object {
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundColor": "#FFEC98",
+                                "fontWeight": "700",
+                              },
+                              "linksBlockLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "color": "#0B7EB5",
+                                "fontWeight": "700",
                               },
                               "paragraphLink": Object {
                                 ":focus": Object {
@@ -1203,6 +1854,34 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                                 "color": "#0B7EB5",
                               },
                               "paragraphStyles": Object {},
+                              "relatedArticlesLink": Object {
+                                ":focus": Object {
+                                  "background": "none",
+                                  "backgroundColor": "#FFD20C",
+                                },
+                                ":hover": Object {
+                                  "backgroundPosition": "0 100%",
+                                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                                "backgroundPosition": "0 0",
+                                "backgroundSize": "100% 200%",
+                                "color": "#006B96",
+                                "fontWeight": "700",
+                                "position": "relative",
+                                "transitionDuration": "0.16666666666666666s",
+                                "transitionProperty": "background-position",
+                                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                                "zIndex": "1",
+                              },
                             },
                             "bps": Object {
                               "misc": Object {
@@ -1260,6 +1939,7 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                             },
                             "getDelay": [Function],
                             "getDuration": [Function],
+                            "getMqString": [Function],
                             "getTimingFunction": [Function],
                             "getTransition": [Function],
                             "gridStyle": Object {
@@ -1310,7 +1990,8 @@ exports[`<Select> DOM element can select an item with space key 1`] = `
                           className="htz-a htz-q htz-r htz-s htz-ax htz-aw htz-i htz-j htz-aj htz-ak htz-al htz-an"
                           id="downshift-1-item-2"
                           onClick={[Function]}
-                          onMouseEnter={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseMove={[Function]}
                           role="button"
                         >
                           שלוש
@@ -1379,6 +2060,7 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
       }
     }
     selectedItemChanged={[Function]}
+    stateReducer={[Function]}
   >
     <div
       onKeyDown={[Function]}
@@ -1402,9 +2084,63 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                     },
                     Object {
                       "from": "xl",
-                      "value": "3.5rem",
+                      "value": "3rem",
                     },
                   ],
+                  "width": Array [
+                    Object {
+                      "until": "m",
+                      "value": "49.3rem",
+                    },
+                    Object {
+                      "from": "m",
+                      "until": "l",
+                      "value": "80rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "70.5rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "80rem",
+                    },
+                  ],
+                },
+                "currentArticleInSeries": Object {
+                  "@media (max-width: 80em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundColor": "#FFEC98",
+                  "fontWeight": "700",
+                },
+                "linksBlockLink": Object {
+                  ":focus": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "2px",
+                  },
+                  ":hover": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                  },
+                  "@media (max-width: 80em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "color": "#0B7EB5",
+                  "fontWeight": "700",
                 },
                 "paragraphLink": Object {
                   ":focus": Object {
@@ -1420,6 +2156,34 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                   "color": "#0B7EB5",
                 },
                 "paragraphStyles": Object {},
+                "relatedArticlesLink": Object {
+                  ":focus": Object {
+                    "background": "none",
+                    "backgroundColor": "#FFD20C",
+                  },
+                  ":hover": Object {
+                    "backgroundPosition": "0 100%",
+                    "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                  },
+                  "@media (max-width: 80em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                  "backgroundPosition": "0 0",
+                  "backgroundSize": "100% 200%",
+                  "color": "#006B96",
+                  "fontWeight": "700",
+                  "position": "relative",
+                  "transitionDuration": "0.16666666666666666s",
+                  "transitionProperty": "background-position",
+                  "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                  "zIndex": "1",
+                },
               },
               "bps": Object {
                 "misc": Object {
@@ -1477,6 +2241,7 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
               },
               "getDelay": [Function],
               "getDuration": [Function],
+              "getMqString": [Function],
               "getTimingFunction": [Function],
               "getTransition": [Function],
               "gridStyle": Object {
@@ -1533,6 +2298,7 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
               aria-label="open menu"
               isOpen={false}
               noHighlitedItems={false}
+              onBlur={[Function]}
               onClick={[Function]}
               onKeyDown={[Function]}
               role="button"
@@ -1545,6 +2311,7 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                 aria-label="open menu"
                 isOpen={false}
                 noHighlitedItems={false}
+                onBlur={[Function]}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="button"
@@ -1559,9 +2326,63 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                           },
                           Object {
                             "from": "xl",
-                            "value": "3.5rem",
+                            "value": "3rem",
                           },
                         ],
+                        "width": Array [
+                          Object {
+                            "until": "m",
+                            "value": "49.3rem",
+                          },
+                          Object {
+                            "from": "m",
+                            "until": "l",
+                            "value": "80rem",
+                          },
+                          Object {
+                            "from": "l",
+                            "until": "xl",
+                            "value": "70.5rem",
+                          },
+                          Object {
+                            "from": "xl",
+                            "value": "80rem",
+                          },
+                        ],
+                      },
+                      "currentArticleInSeries": Object {
+                        "@media (max-width: 80em)": Object {
+                          "fontSize": "2.3333333333333335rem",
+                          "lineHeight": "1.2857142857142858em",
+                        },
+                        "@media (min-width: 80em)": Object {
+                          "fontSize": "2.2857142857142856rem",
+                          "lineHeight": "1.3125em",
+                        },
+                        "backgroundColor": "#FFEC98",
+                        "fontWeight": "700",
+                      },
+                      "linksBlockLink": Object {
+                        ":focus": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "2px",
+                        },
+                        ":hover": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "1px",
+                        },
+                        "@media (max-width: 80em)": Object {
+                          "fontSize": "2.3333333333333335rem",
+                          "lineHeight": "1.2857142857142858em",
+                        },
+                        "@media (min-width: 80em)": Object {
+                          "fontSize": "2.2857142857142856rem",
+                          "lineHeight": "1.3125em",
+                        },
+                        "color": "#0B7EB5",
+                        "fontWeight": "700",
                       },
                       "paragraphLink": Object {
                         ":focus": Object {
@@ -1577,6 +2398,34 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                         "color": "#0B7EB5",
                       },
                       "paragraphStyles": Object {},
+                      "relatedArticlesLink": Object {
+                        ":focus": Object {
+                          "background": "none",
+                          "backgroundColor": "#FFD20C",
+                        },
+                        ":hover": Object {
+                          "backgroundPosition": "0 100%",
+                          "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                        },
+                        "@media (max-width: 80em)": Object {
+                          "fontSize": "2.3333333333333335rem",
+                          "lineHeight": "1.2857142857142858em",
+                        },
+                        "@media (min-width: 80em)": Object {
+                          "fontSize": "2.2857142857142856rem",
+                          "lineHeight": "1.3125em",
+                        },
+                        "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                        "backgroundPosition": "0 0",
+                        "backgroundSize": "100% 200%",
+                        "color": "#006B96",
+                        "fontWeight": "700",
+                        "position": "relative",
+                        "transitionDuration": "0.16666666666666666s",
+                        "transitionProperty": "background-position",
+                        "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                        "zIndex": "1",
+                      },
                     },
                     "bps": Object {
                       "misc": Object {
@@ -1634,6 +2483,7 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                     },
                     "getDelay": [Function],
                     "getDuration": [Function],
+                    "getMqString": [Function],
                     "getTimingFunction": [Function],
                     "getTransition": [Function],
                     "gridStyle": Object {
@@ -1689,17 +2539,19 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                   aria-label="open menu"
                   isOpen={false}
                   noHighlitedItems={false}
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   passThrough={
                     Array [
+                      "type",
                       "role",
                       "aria-label",
                       "aria-expanded",
                       "aria-haspopup",
                       "onClick",
                       "onKeyDown",
-                      "type",
+                      "onBlur",
                     ]
                   }
                   role="button"
@@ -1714,9 +2566,63 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                             },
                             Object {
                               "from": "xl",
-                              "value": "3.5rem",
+                              "value": "3rem",
                             },
                           ],
+                          "width": Array [
+                            Object {
+                              "until": "m",
+                              "value": "49.3rem",
+                            },
+                            Object {
+                              "from": "m",
+                              "until": "l",
+                              "value": "80rem",
+                            },
+                            Object {
+                              "from": "l",
+                              "until": "xl",
+                              "value": "70.5rem",
+                            },
+                            Object {
+                              "from": "xl",
+                              "value": "80rem",
+                            },
+                          ],
+                        },
+                        "currentArticleInSeries": Object {
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "backgroundColor": "#FFEC98",
+                          "fontWeight": "700",
+                        },
+                        "linksBlockLink": Object {
+                          ":focus": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "2px",
+                          },
+                          ":hover": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "1px",
+                          },
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "color": "#0B7EB5",
+                          "fontWeight": "700",
                         },
                         "paragraphLink": Object {
                           ":focus": Object {
@@ -1732,6 +2638,34 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                           "color": "#0B7EB5",
                         },
                         "paragraphStyles": Object {},
+                        "relatedArticlesLink": Object {
+                          ":focus": Object {
+                            "background": "none",
+                            "backgroundColor": "#FFD20C",
+                          },
+                          ":hover": Object {
+                            "backgroundPosition": "0 100%",
+                            "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                          },
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                          "backgroundPosition": "0 0",
+                          "backgroundSize": "100% 200%",
+                          "color": "#006B96",
+                          "fontWeight": "700",
+                          "position": "relative",
+                          "transitionDuration": "0.16666666666666666s",
+                          "transitionProperty": "background-position",
+                          "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                          "zIndex": "1",
+                        },
                       },
                       "bps": Object {
                         "misc": Object {
@@ -1789,6 +2723,7 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                       },
                       "getDelay": [Function],
                       "getDuration": [Function],
+                      "getMqString": [Function],
                       "getTimingFunction": [Function],
                       "getTransition": [Function],
                       "gridStyle": Object {
@@ -1844,17 +2779,19 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                     aria-label="open menu"
                     isOpen={false}
                     noHighlitedItems={false}
+                    onBlur={[Function]}
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     passThrough={
                       Array [
+                        "type",
                         "role",
                         "aria-label",
                         "aria-expanded",
                         "aria-haspopup",
                         "onClick",
                         "onKeyDown",
-                        "type",
+                        "onBlur",
                       ]
                     }
                     role="button"
@@ -1869,9 +2806,63 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                               },
                               Object {
                                 "from": "xl",
-                                "value": "3.5rem",
+                                "value": "3rem",
                               },
                             ],
+                            "width": Array [
+                              Object {
+                                "until": "m",
+                                "value": "49.3rem",
+                              },
+                              Object {
+                                "from": "m",
+                                "until": "l",
+                                "value": "80rem",
+                              },
+                              Object {
+                                "from": "l",
+                                "until": "xl",
+                                "value": "70.5rem",
+                              },
+                              Object {
+                                "from": "xl",
+                                "value": "80rem",
+                              },
+                            ],
+                          },
+                          "currentArticleInSeries": Object {
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundColor": "#FFEC98",
+                            "fontWeight": "700",
+                          },
+                          "linksBlockLink": Object {
+                            ":focus": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "2px",
+                            },
+                            ":hover": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "1px",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "color": "#0B7EB5",
+                            "fontWeight": "700",
                           },
                           "paragraphLink": Object {
                             ":focus": Object {
@@ -1887,6 +2878,34 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                             "color": "#0B7EB5",
                           },
                           "paragraphStyles": Object {},
+                          "relatedArticlesLink": Object {
+                            ":focus": Object {
+                              "background": "none",
+                              "backgroundColor": "#FFD20C",
+                            },
+                            ":hover": Object {
+                              "backgroundPosition": "0 100%",
+                              "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                            "backgroundPosition": "0 0",
+                            "backgroundSize": "100% 200%",
+                            "color": "#006B96",
+                            "fontWeight": "700",
+                            "position": "relative",
+                            "transitionDuration": "0.16666666666666666s",
+                            "transitionProperty": "background-position",
+                            "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                            "zIndex": "1",
+                          },
                         },
                         "bps": Object {
                           "misc": Object {
@@ -1944,6 +2963,7 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                         },
                         "getDelay": [Function],
                         "getDuration": [Function],
+                        "getMqString": [Function],
                         "getTimingFunction": [Function],
                         "getTransition": [Function],
                         "gridStyle": Object {
@@ -1997,6 +3017,7 @@ exports[`<Select> DOM element can select an item without onChange function 1`] =
                       aria-haspopup={true}
                       aria-label="open menu"
                       className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+                      onBlur={[Function]}
                       onClick={[Function]}
                       onKeyDown={[Function]}
                       role="button"
@@ -2067,6 +3088,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
     render={[Function]}
     selectedItem={null}
     selectedItemChanged={[Function]}
+    stateReducer={[Function]}
   >
     <div
       onKeyDown={[Function]}
@@ -2090,9 +3112,63 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                     },
                     Object {
                       "from": "xl",
-                      "value": "3.5rem",
+                      "value": "3rem",
                     },
                   ],
+                  "width": Array [
+                    Object {
+                      "until": "m",
+                      "value": "49.3rem",
+                    },
+                    Object {
+                      "from": "m",
+                      "until": "l",
+                      "value": "80rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "70.5rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "80rem",
+                    },
+                  ],
+                },
+                "currentArticleInSeries": Object {
+                  "@media (max-width: 80em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundColor": "#FFEC98",
+                  "fontWeight": "700",
+                },
+                "linksBlockLink": Object {
+                  ":focus": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "2px",
+                  },
+                  ":hover": Object {
+                    "borderBottomColor": "#0B7EB5",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                  },
+                  "@media (max-width: 80em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "color": "#0B7EB5",
+                  "fontWeight": "700",
                 },
                 "paragraphLink": Object {
                   ":focus": Object {
@@ -2108,6 +3184,34 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                   "color": "#0B7EB5",
                 },
                 "paragraphStyles": Object {},
+                "relatedArticlesLink": Object {
+                  ":focus": Object {
+                    "background": "none",
+                    "backgroundColor": "#FFD20C",
+                  },
+                  ":hover": Object {
+                    "backgroundPosition": "0 100%",
+                    "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                  },
+                  "@media (max-width: 80em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                  "backgroundPosition": "0 0",
+                  "backgroundSize": "100% 200%",
+                  "color": "#006B96",
+                  "fontWeight": "700",
+                  "position": "relative",
+                  "transitionDuration": "0.16666666666666666s",
+                  "transitionProperty": "background-position",
+                  "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                  "zIndex": "1",
+                },
               },
               "bps": Object {
                 "misc": Object {
@@ -2165,6 +3269,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
               },
               "getDelay": [Function],
               "getDuration": [Function],
+              "getMqString": [Function],
               "getTimingFunction": [Function],
               "getTransition": [Function],
               "gridStyle": Object {
@@ -2221,6 +3326,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
               aria-label="close menu"
               isOpen={true}
               noHighlitedItems={false}
+              onBlur={[Function]}
               onClick={[Function]}
               onKeyDown={[Function]}
               role="button"
@@ -2233,6 +3339,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                 aria-label="close menu"
                 isOpen={true}
                 noHighlitedItems={false}
+                onBlur={[Function]}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="button"
@@ -2247,9 +3354,63 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                           },
                           Object {
                             "from": "xl",
-                            "value": "3.5rem",
+                            "value": "3rem",
                           },
                         ],
+                        "width": Array [
+                          Object {
+                            "until": "m",
+                            "value": "49.3rem",
+                          },
+                          Object {
+                            "from": "m",
+                            "until": "l",
+                            "value": "80rem",
+                          },
+                          Object {
+                            "from": "l",
+                            "until": "xl",
+                            "value": "70.5rem",
+                          },
+                          Object {
+                            "from": "xl",
+                            "value": "80rem",
+                          },
+                        ],
+                      },
+                      "currentArticleInSeries": Object {
+                        "@media (max-width: 80em)": Object {
+                          "fontSize": "2.3333333333333335rem",
+                          "lineHeight": "1.2857142857142858em",
+                        },
+                        "@media (min-width: 80em)": Object {
+                          "fontSize": "2.2857142857142856rem",
+                          "lineHeight": "1.3125em",
+                        },
+                        "backgroundColor": "#FFEC98",
+                        "fontWeight": "700",
+                      },
+                      "linksBlockLink": Object {
+                        ":focus": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "2px",
+                        },
+                        ":hover": Object {
+                          "borderBottomColor": "#0B7EB5",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "1px",
+                        },
+                        "@media (max-width: 80em)": Object {
+                          "fontSize": "2.3333333333333335rem",
+                          "lineHeight": "1.2857142857142858em",
+                        },
+                        "@media (min-width: 80em)": Object {
+                          "fontSize": "2.2857142857142856rem",
+                          "lineHeight": "1.3125em",
+                        },
+                        "color": "#0B7EB5",
+                        "fontWeight": "700",
                       },
                       "paragraphLink": Object {
                         ":focus": Object {
@@ -2265,6 +3426,34 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                         "color": "#0B7EB5",
                       },
                       "paragraphStyles": Object {},
+                      "relatedArticlesLink": Object {
+                        ":focus": Object {
+                          "background": "none",
+                          "backgroundColor": "#FFD20C",
+                        },
+                        ":hover": Object {
+                          "backgroundPosition": "0 100%",
+                          "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                        },
+                        "@media (max-width: 80em)": Object {
+                          "fontSize": "2.3333333333333335rem",
+                          "lineHeight": "1.2857142857142858em",
+                        },
+                        "@media (min-width: 80em)": Object {
+                          "fontSize": "2.2857142857142856rem",
+                          "lineHeight": "1.3125em",
+                        },
+                        "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                        "backgroundPosition": "0 0",
+                        "backgroundSize": "100% 200%",
+                        "color": "#006B96",
+                        "fontWeight": "700",
+                        "position": "relative",
+                        "transitionDuration": "0.16666666666666666s",
+                        "transitionProperty": "background-position",
+                        "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                        "zIndex": "1",
+                      },
                     },
                     "bps": Object {
                       "misc": Object {
@@ -2322,6 +3511,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                     },
                     "getDelay": [Function],
                     "getDuration": [Function],
+                    "getMqString": [Function],
                     "getTimingFunction": [Function],
                     "getTransition": [Function],
                     "gridStyle": Object {
@@ -2377,17 +3567,19 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                   aria-label="close menu"
                   isOpen={true}
                   noHighlitedItems={false}
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   passThrough={
                     Array [
+                      "type",
                       "role",
                       "aria-label",
                       "aria-expanded",
                       "aria-haspopup",
                       "onClick",
                       "onKeyDown",
-                      "type",
+                      "onBlur",
                     ]
                   }
                   role="button"
@@ -2402,9 +3594,63 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                             },
                             Object {
                               "from": "xl",
-                              "value": "3.5rem",
+                              "value": "3rem",
                             },
                           ],
+                          "width": Array [
+                            Object {
+                              "until": "m",
+                              "value": "49.3rem",
+                            },
+                            Object {
+                              "from": "m",
+                              "until": "l",
+                              "value": "80rem",
+                            },
+                            Object {
+                              "from": "l",
+                              "until": "xl",
+                              "value": "70.5rem",
+                            },
+                            Object {
+                              "from": "xl",
+                              "value": "80rem",
+                            },
+                          ],
+                        },
+                        "currentArticleInSeries": Object {
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "backgroundColor": "#FFEC98",
+                          "fontWeight": "700",
+                        },
+                        "linksBlockLink": Object {
+                          ":focus": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "2px",
+                          },
+                          ":hover": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "1px",
+                          },
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "color": "#0B7EB5",
+                          "fontWeight": "700",
                         },
                         "paragraphLink": Object {
                           ":focus": Object {
@@ -2420,6 +3666,34 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                           "color": "#0B7EB5",
                         },
                         "paragraphStyles": Object {},
+                        "relatedArticlesLink": Object {
+                          ":focus": Object {
+                            "background": "none",
+                            "backgroundColor": "#FFD20C",
+                          },
+                          ":hover": Object {
+                            "backgroundPosition": "0 100%",
+                            "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                          },
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                          "backgroundPosition": "0 0",
+                          "backgroundSize": "100% 200%",
+                          "color": "#006B96",
+                          "fontWeight": "700",
+                          "position": "relative",
+                          "transitionDuration": "0.16666666666666666s",
+                          "transitionProperty": "background-position",
+                          "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                          "zIndex": "1",
+                        },
                       },
                       "bps": Object {
                         "misc": Object {
@@ -2477,6 +3751,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                       },
                       "getDelay": [Function],
                       "getDuration": [Function],
+                      "getMqString": [Function],
                       "getTimingFunction": [Function],
                       "getTransition": [Function],
                       "gridStyle": Object {
@@ -2532,17 +3807,19 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                     aria-label="close menu"
                     isOpen={true}
                     noHighlitedItems={false}
+                    onBlur={[Function]}
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     passThrough={
                       Array [
+                        "type",
                         "role",
                         "aria-label",
                         "aria-expanded",
                         "aria-haspopup",
                         "onClick",
                         "onKeyDown",
-                        "type",
+                        "onBlur",
                       ]
                     }
                     role="button"
@@ -2557,9 +3834,63 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                               },
                               Object {
                                 "from": "xl",
-                                "value": "3.5rem",
+                                "value": "3rem",
                               },
                             ],
+                            "width": Array [
+                              Object {
+                                "until": "m",
+                                "value": "49.3rem",
+                              },
+                              Object {
+                                "from": "m",
+                                "until": "l",
+                                "value": "80rem",
+                              },
+                              Object {
+                                "from": "l",
+                                "until": "xl",
+                                "value": "70.5rem",
+                              },
+                              Object {
+                                "from": "xl",
+                                "value": "80rem",
+                              },
+                            ],
+                          },
+                          "currentArticleInSeries": Object {
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundColor": "#FFEC98",
+                            "fontWeight": "700",
+                          },
+                          "linksBlockLink": Object {
+                            ":focus": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "2px",
+                            },
+                            ":hover": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "1px",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "color": "#0B7EB5",
+                            "fontWeight": "700",
                           },
                           "paragraphLink": Object {
                             ":focus": Object {
@@ -2575,6 +3906,34 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                             "color": "#0B7EB5",
                           },
                           "paragraphStyles": Object {},
+                          "relatedArticlesLink": Object {
+                            ":focus": Object {
+                              "background": "none",
+                              "backgroundColor": "#FFD20C",
+                            },
+                            ":hover": Object {
+                              "backgroundPosition": "0 100%",
+                              "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                            "backgroundPosition": "0 0",
+                            "backgroundSize": "100% 200%",
+                            "color": "#006B96",
+                            "fontWeight": "700",
+                            "position": "relative",
+                            "transitionDuration": "0.16666666666666666s",
+                            "transitionProperty": "background-position",
+                            "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                            "zIndex": "1",
+                          },
                         },
                         "bps": Object {
                           "misc": Object {
@@ -2632,6 +3991,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                         },
                         "getDelay": [Function],
                         "getDuration": [Function],
+                        "getMqString": [Function],
                         "getTimingFunction": [Function],
                         "getTransition": [Function],
                         "gridStyle": Object {
@@ -2685,6 +4045,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                       aria-haspopup={true}
                       aria-label="close menu"
                       className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aq htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an"
+                      onBlur={[Function]}
                       onClick={[Function]}
                       onKeyDown={[Function]}
                       role="button"
@@ -2721,9 +4082,63 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                             },
                             Object {
                               "from": "xl",
-                              "value": "3.5rem",
+                              "value": "3rem",
                             },
                           ],
+                          "width": Array [
+                            Object {
+                              "until": "m",
+                              "value": "49.3rem",
+                            },
+                            Object {
+                              "from": "m",
+                              "until": "l",
+                              "value": "80rem",
+                            },
+                            Object {
+                              "from": "l",
+                              "until": "xl",
+                              "value": "70.5rem",
+                            },
+                            Object {
+                              "from": "xl",
+                              "value": "80rem",
+                            },
+                          ],
+                        },
+                        "currentArticleInSeries": Object {
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "backgroundColor": "#FFEC98",
+                          "fontWeight": "700",
+                        },
+                        "linksBlockLink": Object {
+                          ":focus": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "2px",
+                          },
+                          ":hover": Object {
+                            "borderBottomColor": "#0B7EB5",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": "1px",
+                          },
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "color": "#0B7EB5",
+                          "fontWeight": "700",
                         },
                         "paragraphLink": Object {
                           ":focus": Object {
@@ -2739,6 +4154,34 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                           "color": "#0B7EB5",
                         },
                         "paragraphStyles": Object {},
+                        "relatedArticlesLink": Object {
+                          ":focus": Object {
+                            "background": "none",
+                            "backgroundColor": "#FFD20C",
+                          },
+                          ":hover": Object {
+                            "backgroundPosition": "0 100%",
+                            "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                          },
+                          "@media (max-width: 80em)": Object {
+                            "fontSize": "2.3333333333333335rem",
+                            "lineHeight": "1.2857142857142858em",
+                          },
+                          "@media (min-width: 80em)": Object {
+                            "fontSize": "2.2857142857142856rem",
+                            "lineHeight": "1.3125em",
+                          },
+                          "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                          "backgroundPosition": "0 0",
+                          "backgroundSize": "100% 200%",
+                          "color": "#006B96",
+                          "fontWeight": "700",
+                          "position": "relative",
+                          "transitionDuration": "0.16666666666666666s",
+                          "transitionProperty": "background-position",
+                          "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                          "zIndex": "1",
+                        },
                       },
                       "bps": Object {
                         "misc": Object {
@@ -2796,6 +4239,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                       },
                       "getDelay": [Function],
                       "getDuration": [Function],
+                      "getMqString": [Function],
                       "getTimingFunction": [Function],
                       "getTransition": [Function],
                       "gridStyle": Object {
@@ -2852,7 +4296,8 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                       isSelected={false}
                       key="1"
                       onClick={[Function]}
-                      onMouseEnter={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseMove={[Function]}
                       role="button"
                     >
                       <ItemStyle
@@ -2860,7 +4305,8 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                         id="downshift-1-item-0"
                         isSelected={false}
                         onClick={[Function]}
-                        onMouseEnter={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseMove={[Function]}
                         role="button"
                         theme={
                           Object {
@@ -2873,9 +4319,63 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                                   },
                                   Object {
                                     "from": "xl",
-                                    "value": "3.5rem",
+                                    "value": "3rem",
                                   },
                                 ],
+                                "width": Array [
+                                  Object {
+                                    "until": "m",
+                                    "value": "49.3rem",
+                                  },
+                                  Object {
+                                    "from": "m",
+                                    "until": "l",
+                                    "value": "80rem",
+                                  },
+                                  Object {
+                                    "from": "l",
+                                    "until": "xl",
+                                    "value": "70.5rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "80rem",
+                                  },
+                                ],
+                              },
+                              "currentArticleInSeries": Object {
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundColor": "#FFEC98",
+                                "fontWeight": "700",
+                              },
+                              "linksBlockLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "color": "#0B7EB5",
+                                "fontWeight": "700",
                               },
                               "paragraphLink": Object {
                                 ":focus": Object {
@@ -2891,6 +4391,34 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                                 "color": "#0B7EB5",
                               },
                               "paragraphStyles": Object {},
+                              "relatedArticlesLink": Object {
+                                ":focus": Object {
+                                  "background": "none",
+                                  "backgroundColor": "#FFD20C",
+                                },
+                                ":hover": Object {
+                                  "backgroundPosition": "0 100%",
+                                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                                "backgroundPosition": "0 0",
+                                "backgroundSize": "100% 200%",
+                                "color": "#006B96",
+                                "fontWeight": "700",
+                                "position": "relative",
+                                "transitionDuration": "0.16666666666666666s",
+                                "transitionProperty": "background-position",
+                                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                                "zIndex": "1",
+                              },
                             },
                             "bps": Object {
                               "misc": Object {
@@ -2948,6 +4476,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                             },
                             "getDelay": [Function],
                             "getDuration": [Function],
+                            "getMqString": [Function],
                             "getTimingFunction": [Function],
                             "getTransition": [Function],
                             "gridStyle": Object {
@@ -2998,7 +4527,8 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                           className="htz-a htz-q htz-r htz-s htz-aw htz-i htz-j htz-aj htz-ak htz-al htz-an"
                           id="downshift-1-item-0"
                           onClick={[Function]}
-                          onMouseEnter={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseMove={[Function]}
                           role="button"
                         >
                           1
@@ -3011,7 +4541,8 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                       isSelected={false}
                       key="2"
                       onClick={[Function]}
-                      onMouseEnter={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseMove={[Function]}
                       role="button"
                     >
                       <ItemStyle
@@ -3019,7 +4550,8 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                         id="downshift-1-item-1"
                         isSelected={false}
                         onClick={[Function]}
-                        onMouseEnter={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseMove={[Function]}
                         role="button"
                         theme={
                           Object {
@@ -3032,9 +4564,63 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                                   },
                                   Object {
                                     "from": "xl",
-                                    "value": "3.5rem",
+                                    "value": "3rem",
                                   },
                                 ],
+                                "width": Array [
+                                  Object {
+                                    "until": "m",
+                                    "value": "49.3rem",
+                                  },
+                                  Object {
+                                    "from": "m",
+                                    "until": "l",
+                                    "value": "80rem",
+                                  },
+                                  Object {
+                                    "from": "l",
+                                    "until": "xl",
+                                    "value": "70.5rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "80rem",
+                                  },
+                                ],
+                              },
+                              "currentArticleInSeries": Object {
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundColor": "#FFEC98",
+                                "fontWeight": "700",
+                              },
+                              "linksBlockLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "color": "#0B7EB5",
+                                "fontWeight": "700",
                               },
                               "paragraphLink": Object {
                                 ":focus": Object {
@@ -3050,6 +4636,34 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                                 "color": "#0B7EB5",
                               },
                               "paragraphStyles": Object {},
+                              "relatedArticlesLink": Object {
+                                ":focus": Object {
+                                  "background": "none",
+                                  "backgroundColor": "#FFD20C",
+                                },
+                                ":hover": Object {
+                                  "backgroundPosition": "0 100%",
+                                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                                "backgroundPosition": "0 0",
+                                "backgroundSize": "100% 200%",
+                                "color": "#006B96",
+                                "fontWeight": "700",
+                                "position": "relative",
+                                "transitionDuration": "0.16666666666666666s",
+                                "transitionProperty": "background-position",
+                                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                                "zIndex": "1",
+                              },
                             },
                             "bps": Object {
                               "misc": Object {
@@ -3107,6 +4721,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                             },
                             "getDelay": [Function],
                             "getDuration": [Function],
+                            "getMqString": [Function],
                             "getTimingFunction": [Function],
                             "getTransition": [Function],
                             "gridStyle": Object {
@@ -3157,7 +4772,8 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                           className="htz-a htz-q htz-r htz-s htz-t htz-i htz-j htz-aj htz-ak htz-al htz-an"
                           id="downshift-1-item-1"
                           onClick={[Function]}
-                          onMouseEnter={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseMove={[Function]}
                           role="button"
                         >
                           2
@@ -3170,7 +4786,8 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                       isSelected={false}
                       key="3"
                       onClick={[Function]}
-                      onMouseEnter={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseMove={[Function]}
                       role="button"
                     >
                       <ItemStyle
@@ -3178,7 +4795,8 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                         id="downshift-1-item-2"
                         isSelected={false}
                         onClick={[Function]}
-                        onMouseEnter={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseMove={[Function]}
                         role="button"
                         theme={
                           Object {
@@ -3191,9 +4809,63 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                                   },
                                   Object {
                                     "from": "xl",
-                                    "value": "3.5rem",
+                                    "value": "3rem",
                                   },
                                 ],
+                                "width": Array [
+                                  Object {
+                                    "until": "m",
+                                    "value": "49.3rem",
+                                  },
+                                  Object {
+                                    "from": "m",
+                                    "until": "l",
+                                    "value": "80rem",
+                                  },
+                                  Object {
+                                    "from": "l",
+                                    "until": "xl",
+                                    "value": "70.5rem",
+                                  },
+                                  Object {
+                                    "from": "xl",
+                                    "value": "80rem",
+                                  },
+                                ],
+                              },
+                              "currentArticleInSeries": Object {
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundColor": "#FFEC98",
+                                "fontWeight": "700",
+                              },
+                              "linksBlockLink": Object {
+                                ":focus": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "2px",
+                                },
+                                ":hover": Object {
+                                  "borderBottomColor": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "color": "#0B7EB5",
+                                "fontWeight": "700",
                               },
                               "paragraphLink": Object {
                                 ":focus": Object {
@@ -3209,6 +4881,34 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                                 "color": "#0B7EB5",
                               },
                               "paragraphStyles": Object {},
+                              "relatedArticlesLink": Object {
+                                ":focus": Object {
+                                  "background": "none",
+                                  "backgroundColor": "#FFD20C",
+                                },
+                                ":hover": Object {
+                                  "backgroundPosition": "0 100%",
+                                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                                },
+                                "@media (max-width: 80em)": Object {
+                                  "fontSize": "2.3333333333333335rem",
+                                  "lineHeight": "1.2857142857142858em",
+                                },
+                                "@media (min-width: 80em)": Object {
+                                  "fontSize": "2.2857142857142856rem",
+                                  "lineHeight": "1.3125em",
+                                },
+                                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                                "backgroundPosition": "0 0",
+                                "backgroundSize": "100% 200%",
+                                "color": "#006B96",
+                                "fontWeight": "700",
+                                "position": "relative",
+                                "transitionDuration": "0.16666666666666666s",
+                                "transitionProperty": "background-position",
+                                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                                "zIndex": "1",
+                              },
                             },
                             "bps": Object {
                               "misc": Object {
@@ -3266,6 +4966,7 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                             },
                             "getDelay": [Function],
                             "getDuration": [Function],
+                            "getMqString": [Function],
                             "getTimingFunction": [Function],
                             "getTransition": [Function],
                             "gridStyle": Object {
@@ -3316,7 +5017,8 @@ exports[`<Select> DOM element closes menu when pressing tab key 1`] = `
                           className="htz-a htz-q htz-r htz-s htz-t htz-i htz-j htz-aj htz-ak htz-al htz-an"
                           id="downshift-1-item-2"
                           onClick={[Function]}
-                          onMouseEnter={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseMove={[Function]}
                           role="button"
                         >
                           שלוש
@@ -3348,6 +5050,7 @@ exports[`<Select> DOM element renders correctly with a controlled selected item 
         aria-haspopup={true}
         aria-label="open menu"
         className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
@@ -3383,6 +5086,7 @@ exports[`<Select> DOM element renders correctly with a placholder prop 1`] = `
         aria-haspopup={true}
         aria-label="open menu"
         className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
@@ -3419,6 +5123,7 @@ exports[`<Select> DOM element renders correctly with custom attrs prop 1`] = `
         aria-haspopup={true}
         aria-label="open menu"
         className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
@@ -3454,6 +5159,7 @@ exports[`<Select> DOM element renders correctly with custom miscStyles 1`] = `
         aria-haspopup={true}
         aria-label="open menu"
         className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
@@ -3489,6 +5195,7 @@ exports[`<Select> DOM element renders correctly with default selected item 1`] =
         aria-haspopup={true}
         aria-label="open menu"
         className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
@@ -3524,6 +5231,7 @@ exports[`<Select> DOM element renders correctly with minimal required props 1`] 
         aria-haspopup={true}
         aria-label="open menu"
         className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
@@ -3559,6 +5267,7 @@ exports[`<Select> DOM element renders correctly without display key in item 1`] 
         aria-haspopup={true}
         aria-label="open menu"
         className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
