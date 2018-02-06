@@ -171,7 +171,8 @@ export function buildUrl(contentId, data, options = {}) {
 
   const initialTransforms = `${Object.keys(cropData).reduce(
     (allTransforms, propName) => {
-      const transfromString = transformPrefixes[propName] + cropData[propName];
+      const transfromString =
+        transformPrefixes[propName] + cropData[propName].toString();
       return allTransforms + (allTransforms ? ',' : '/') + transfromString;
     },
     ''
@@ -201,7 +202,7 @@ export function buildUrl(contentId, data, options = {}) {
   // Url suffix based on whether this is an uploaded or fetched image
   const urlSuffix = version
     ? `/v${version}/${contentId}.${imgName}`
-    : `/${domain}/polopoly_fs/${contentId}!/image/${contentId}.${imgName}`;
+    : `/${domain}/polopoly_fs/${contentId}!/${imgName}`;
   // construct url string from params
   const url =
     baseUrl +

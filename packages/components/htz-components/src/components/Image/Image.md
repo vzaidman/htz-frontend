@@ -1,7 +1,8 @@
-A component for rendering responsive images with 
+A component for rendering responsive images with
 built-in support for lazy-loading
 
 ### Features
+
 * Img/source tag wrapped with responsive and styled div.
 * Can render any type of image.
 * Gif type will transform to webp type (for performance issues) and will be placed in a source tag.
@@ -102,10 +103,7 @@ built-in support for lazy-loading
   <Image
     data={{
       isAnimatedGif: false,
-      imgArray: [
-        { imgName: "image/918473823.jpg", version: "1516894981" },
-        { imgName: "image/918473823.jpg", version: "1516894981" }
-      ],
+      imgArray: [{ imgName: "image/918473823.jpg", version: "1516894981" }],
       credit: "טראמפ ונתניהו בדאבוס, היום - צילום: CARLOS BARRIA/רויטרס",
       alt: "טראמפ ונתניהו בדאבוס, היום",
       contentId: "1.5766455",
@@ -125,7 +123,7 @@ built-in support for lazy-loading
         {
           width: "1040",
           height: "550",
-          aspect: "regular",
+          aspect: "landscape",
           quality: "auto:best"
         }
       ]

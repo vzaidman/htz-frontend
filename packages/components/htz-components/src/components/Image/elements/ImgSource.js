@@ -21,7 +21,7 @@ const propTypes = {
    */
   className: PropTypes.string,
   /** An array of strings describing a media query */
-  media: PropTypes.arrayOf(PropTypes.string),
+  media: PropTypes.string,
   /**
    * A sting describing the media query (optional) and
    * the rendered width of the image (not the file!).
