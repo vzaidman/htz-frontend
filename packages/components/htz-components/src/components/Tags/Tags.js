@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import { i18n, } from '@haaretz/htz-theme';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { tagsElementI18n, } from '@haaretz/htz-theme';
 import Link from '../Link/Link';
 
 const propTypes = {
@@ -36,12 +37,12 @@ const TagContent = createComponent(contentStyle, 'span');
 
 const tagStyle = ({ theme, isLast, }) => ({
   display: 'inline',
-  ...(!isLast && {marginEnd: '1rem'}),
+  ...(!isLast && { marginEnd: '1rem', }),
 });
 const Tag = createComponent(tagStyle, 'li');
 
 const tagsWrapperStyle = ({ theme, }) => ({
-  ...(theme.type(-1)),
+  ...theme.type(-1),
   display: 'flex',
 });
 const TagsWrapper = createComponent(tagsWrapperStyle);
@@ -50,25 +51,18 @@ const TagsWrapper = createComponent(tagsWrapperStyle);
  * Returns an inline list of the article's related tags.
  */
 function Tags({ tagsList, }) {
-  return(
+  return (
     <TagsWrapper>
-      <TagsTitle>{i18n.tagsElement.prefix}</TagsTitle>
+      <TagsTitle>{tagsElementI18n.prefix}</TagsTitle>
       <ul>
-        {tagsList.map((tag, i) =>
-          <Tag key={tag.contentName} isLast={tagsList.length === i+1}>
-            <Link
-              href={tag.url}
-              content={
-                <TagContent>
-                  {tag.contentName}
-                </TagContent>
-              }
-            />
+        {tagsList.map((tag, i) => (
+          <Tag key={tag.contentName} isLast={tagsList.length === i + 1}>
+            <Link href={tag.url} content={<TagContent>{tag.contentName}</TagContent>} />
           </Tag>
-        )}
+        ))}
       </ul>
     </TagsWrapper>
-  )
+  );
 }
 
 Tags.propTypes = propTypes;

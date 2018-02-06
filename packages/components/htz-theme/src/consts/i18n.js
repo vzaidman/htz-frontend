@@ -9,7 +9,7 @@ const seriesArticle = Object.freeze({
 
 export default { seriesArticle, };
 
-export const tagsElement = Object.freeze({
+export const tagsElementI18n = Object.freeze({
   prefix: 'תגיות:',
 });
 

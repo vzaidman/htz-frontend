@@ -10,12 +10,18 @@ import inputStyle from './consts/inputStyle';
 import fontStacks from './consts/fontStacks';
 import gridStyle from './consts/gridStyle';
 import typeConf from './consts/typeConf';
+<<<<<<< HEAD
 import i18n, {
   tagsElement,
+=======
+import internationalization from './consts/internationalization';
+import {
+>>>>>>> FIX(htz-components/htz-theme) after rebasing rename tagElementI18n, delete commentList snapshot
   commentI18n,
   commentFormI18n,
   commentSentI18n,
   commentsSectionI18n,
+  tagsElementI18n,
 } from './consts/i18n';
 
 // methods
@@ -126,8 +132,8 @@ export {
   getColor,
   getTransition,
   i18n,
-  tagsElement,
   mq,
   pxToRem,
+  tagsElementI18n,
   typesetter,
 };
