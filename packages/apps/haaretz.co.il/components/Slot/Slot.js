@@ -4,7 +4,7 @@ import { connect, } from 'react-fela';
 import dynamic from 'next/dynamic';
 import gql from 'graphql-tag';
 
-import CommentsElement from '../Comments/Comments';
+import Comments from '../Comments/Comments';
 // const CommentsElement = dynamic(import ('../Comments/Comments'));
 const StandardArticle = dynamic(import('../StandardArticle/StandardArticle'));
 
@@ -64,7 +64,7 @@ export function Slot({ name, content, styles, pageContentId, }) {
       case 'com.tm.CommentsElement':
         // jsx = <CommentsElement contentId={element.contentId}/>;
         console.warn(pageContentId);
-        jsx = <CommentsElement contentId={element.contentId} articleId={pageContentId} />;
+        jsx = <Comments contentId={element.contentId} articleId={pageContentId} />;
         break;
       default:
         jsx = (
