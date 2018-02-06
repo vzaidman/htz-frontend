@@ -280,14 +280,16 @@ function setVariant(prop, variant, getColor, isError, isFocused, theme, isDisabl
       theme.inputStyle.borderStyle,
       getColor('input', `${variant}Border`)
     ),
-    ...(isFocused ? focusedStyle : {}),
-    ':hover': {
-      backgroundColor: getColor('input', `${variant}HoverBg`),
-      borderColor: getColor('input', `${variant}HoverBorder`),
-      color: getColor('input', `${variant}HoverText`),
-      ...(isDisabled ? { cursor: 'not-allowed', } : {}),
-      ...(isFocused ? focusedStyle : {}),
-    },
+    ...(isFocused
+      ? focusedStyle
+      : {
+        ':hover': {
+          backgroundColor: getColor('input', `${variant}HoverBg`),
+          borderColor: getColor('input', `${variant}HoverBorder`),
+          color: getColor('input', `${variant}HoverText`),
+          ...(isDisabled ? { cursor: 'not-allowed', } : {}),
+        },
+      }),
   };
 }
 

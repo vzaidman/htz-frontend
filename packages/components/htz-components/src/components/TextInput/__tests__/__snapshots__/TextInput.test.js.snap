@@ -60,9 +60,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   Object {
                     "from": "xl",
-                    "value": "3.5rem",
+                    "value": "3rem",
                   },
                 ],
+                "width": Array [
+                  Object {
+                    "until": "m",
+                    "value": "49.3rem",
+                  },
+                  Object {
+                    "from": "m",
+                    "until": "l",
+                    "value": "80rem",
+                  },
+                  Object {
+                    "from": "l",
+                    "until": "xl",
+                    "value": "70.5rem",
+                  },
+                  Object {
+                    "from": "xl",
+                    "value": "80rem",
+                  },
+                ],
+              },
+              "currentArticleInSeries": Object {
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundColor": "#FFEC98",
+                "fontWeight": "700",
+              },
+              "linksBlockLink": Object {
+                ":focus": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "2px",
+                },
+                ":hover": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "color": "#0B7EB5",
+                "fontWeight": "700",
               },
               "paragraphLink": Object {
                 ":focus": Object {
@@ -78,6 +132,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                 "color": "#0B7EB5",
               },
               "paragraphStyles": Object {},
+              "relatedArticlesLink": Object {
+                ":focus": Object {
+                  "background": "none",
+                  "backgroundColor": "#FFD20C",
+                },
+                ":hover": Object {
+                  "backgroundPosition": "0 100%",
+                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                "backgroundPosition": "0 0",
+                "backgroundSize": "100% 200%",
+                "color": "#006B96",
+                "fontWeight": "700",
+                "position": "relative",
+                "transitionDuration": "0.16666666666666666s",
+                "transitionProperty": "background-position",
+                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                "zIndex": "1",
+              },
             },
             "bps": Object {
               "misc": Object {
@@ -135,6 +217,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
             },
             "getDelay": [Function],
             "getDuration": [Function],
+            "getMqString": [Function],
             "getTimingFunction": [Function],
             "getTransition": [Function],
             "gridStyle": Object {
@@ -183,7 +266,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
         variant="primary"
       >
         <label
-          className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-az htz-n htz-o htz-ba htz-q htz-r htz-bb htz-t htz-u htz-bc htz-w htz-x htz-y htz-bd htz-ab htz-be htz-ae htz-af htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs"
+          className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-az htz-n htz-o htz-ba htz-q htz-r htz-bb htz-t htz-u htz-bc htz-w htz-x htz-y htz-bd htz-ab"
           htmlFor="123456789"
         >
           <labelAndButtonsWrapperStyle
@@ -204,9 +287,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                         },
                         Object {
                           "from": "xl",
-                          "value": "3.5rem",
+                          "value": "3rem",
                         },
                       ],
+                      "width": Array [
+                        Object {
+                          "until": "m",
+                          "value": "49.3rem",
+                        },
+                        Object {
+                          "from": "m",
+                          "until": "l",
+                          "value": "80rem",
+                        },
+                        Object {
+                          "from": "l",
+                          "until": "xl",
+                          "value": "70.5rem",
+                        },
+                        Object {
+                          "from": "xl",
+                          "value": "80rem",
+                        },
+                      ],
+                    },
+                    "currentArticleInSeries": Object {
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundColor": "#FFEC98",
+                      "fontWeight": "700",
+                    },
+                    "linksBlockLink": Object {
+                      ":focus": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "2px",
+                      },
+                      ":hover": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "1px",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "color": "#0B7EB5",
+                      "fontWeight": "700",
                     },
                     "paragraphLink": Object {
                       ":focus": Object {
@@ -222,6 +359,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                       "color": "#0B7EB5",
                     },
                     "paragraphStyles": Object {},
+                    "relatedArticlesLink": Object {
+                      ":focus": Object {
+                        "background": "none",
+                        "backgroundColor": "#FFD20C",
+                      },
+                      ":hover": Object {
+                        "backgroundPosition": "0 100%",
+                        "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                      "backgroundPosition": "0 0",
+                      "backgroundSize": "100% 200%",
+                      "color": "#006B96",
+                      "fontWeight": "700",
+                      "position": "relative",
+                      "transitionDuration": "0.16666666666666666s",
+                      "transitionProperty": "background-position",
+                      "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                      "zIndex": "1",
+                    },
                   },
                   "bps": Object {
                     "misc": Object {
@@ -279,6 +444,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   "getDelay": [Function],
                   "getDuration": [Function],
+                  "getMqString": [Function],
                   "getTimingFunction": [Function],
                   "getTransition": [Function],
                   "gridStyle": Object {
@@ -357,9 +523,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                               },
                               Object {
                                 "from": "xl",
-                                "value": "3.5rem",
+                                "value": "3rem",
                               },
                             ],
+                            "width": Array [
+                              Object {
+                                "until": "m",
+                                "value": "49.3rem",
+                              },
+                              Object {
+                                "from": "m",
+                                "until": "l",
+                                "value": "80rem",
+                              },
+                              Object {
+                                "from": "l",
+                                "until": "xl",
+                                "value": "70.5rem",
+                              },
+                              Object {
+                                "from": "xl",
+                                "value": "80rem",
+                              },
+                            ],
+                          },
+                          "currentArticleInSeries": Object {
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundColor": "#FFEC98",
+                            "fontWeight": "700",
+                          },
+                          "linksBlockLink": Object {
+                            ":focus": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "2px",
+                            },
+                            ":hover": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "1px",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "color": "#0B7EB5",
+                            "fontWeight": "700",
                           },
                           "paragraphLink": Object {
                             ":focus": Object {
@@ -375,6 +595,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                             "color": "#0B7EB5",
                           },
                           "paragraphStyles": Object {},
+                          "relatedArticlesLink": Object {
+                            ":focus": Object {
+                              "background": "none",
+                              "backgroundColor": "#FFD20C",
+                            },
+                            ":hover": Object {
+                              "backgroundPosition": "0 100%",
+                              "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                            "backgroundPosition": "0 0",
+                            "backgroundSize": "100% 200%",
+                            "color": "#006B96",
+                            "fontWeight": "700",
+                            "position": "relative",
+                            "transitionDuration": "0.16666666666666666s",
+                            "transitionProperty": "background-position",
+                            "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                            "zIndex": "1",
+                          },
                         },
                         "bps": Object {
                           "misc": Object {
@@ -432,6 +680,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                         },
                         "getDelay": [Function],
                         "getDuration": [Function],
+                        "getMqString": [Function],
                         "getTimingFunction": [Function],
                         "getTransition": [Function],
                         "gridStyle": Object {
@@ -480,7 +729,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                     variant="primary"
                   >
                     <span
-                      className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-d htz-e htz-am htz-az htz-bt htz-an htz-ao"
+                      className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-d htz-e htz-am htz-az htz-be htz-an htz-ao"
                     >
                       label
                     </span>
@@ -548,9 +797,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                         },
                         Object {
                           "from": "xl",
-                          "value": "3.5rem",
+                          "value": "3rem",
                         },
                       ],
+                      "width": Array [
+                        Object {
+                          "until": "m",
+                          "value": "49.3rem",
+                        },
+                        Object {
+                          "from": "m",
+                          "until": "l",
+                          "value": "80rem",
+                        },
+                        Object {
+                          "from": "l",
+                          "until": "xl",
+                          "value": "70.5rem",
+                        },
+                        Object {
+                          "from": "xl",
+                          "value": "80rem",
+                        },
+                      ],
+                    },
+                    "currentArticleInSeries": Object {
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundColor": "#FFEC98",
+                      "fontWeight": "700",
+                    },
+                    "linksBlockLink": Object {
+                      ":focus": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "2px",
+                      },
+                      ":hover": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "1px",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "color": "#0B7EB5",
+                      "fontWeight": "700",
                     },
                     "paragraphLink": Object {
                       ":focus": Object {
@@ -566,6 +869,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                       "color": "#0B7EB5",
                     },
                     "paragraphStyles": Object {},
+                    "relatedArticlesLink": Object {
+                      ":focus": Object {
+                        "background": "none",
+                        "backgroundColor": "#FFD20C",
+                      },
+                      ":hover": Object {
+                        "backgroundPosition": "0 100%",
+                        "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                      "backgroundPosition": "0 0",
+                      "backgroundSize": "100% 200%",
+                      "color": "#006B96",
+                      "fontWeight": "700",
+                      "position": "relative",
+                      "transitionDuration": "0.16666666666666666s",
+                      "transitionProperty": "background-position",
+                      "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                      "zIndex": "1",
+                    },
                   },
                   "bps": Object {
                     "misc": Object {
@@ -623,6 +954,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   "getDelay": [Function],
                   "getDuration": [Function],
+                  "getMqString": [Function],
                   "getTimingFunction": [Function],
                   "getTransition": [Function],
                   "gridStyle": Object {
@@ -732,9 +1064,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   Object {
                     "from": "xl",
-                    "value": "3.5rem",
+                    "value": "3rem",
                   },
                 ],
+                "width": Array [
+                  Object {
+                    "until": "m",
+                    "value": "49.3rem",
+                  },
+                  Object {
+                    "from": "m",
+                    "until": "l",
+                    "value": "80rem",
+                  },
+                  Object {
+                    "from": "l",
+                    "until": "xl",
+                    "value": "70.5rem",
+                  },
+                  Object {
+                    "from": "xl",
+                    "value": "80rem",
+                  },
+                ],
+              },
+              "currentArticleInSeries": Object {
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundColor": "#FFEC98",
+                "fontWeight": "700",
+              },
+              "linksBlockLink": Object {
+                ":focus": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "2px",
+                },
+                ":hover": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "color": "#0B7EB5",
+                "fontWeight": "700",
               },
               "paragraphLink": Object {
                 ":focus": Object {
@@ -750,6 +1136,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                 "color": "#0B7EB5",
               },
               "paragraphStyles": Object {},
+              "relatedArticlesLink": Object {
+                ":focus": Object {
+                  "background": "none",
+                  "backgroundColor": "#FFD20C",
+                },
+                ":hover": Object {
+                  "backgroundPosition": "0 100%",
+                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                "backgroundPosition": "0 0",
+                "backgroundSize": "100% 200%",
+                "color": "#006B96",
+                "fontWeight": "700",
+                "position": "relative",
+                "transitionDuration": "0.16666666666666666s",
+                "transitionProperty": "background-position",
+                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                "zIndex": "1",
+              },
             },
             "bps": Object {
               "misc": Object {
@@ -807,6 +1221,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
             },
             "getDelay": [Function],
             "getDuration": [Function],
+            "getMqString": [Function],
             "getTimingFunction": [Function],
             "getTransition": [Function],
             "gridStyle": Object {
@@ -932,9 +1347,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   Object {
                     "from": "xl",
-                    "value": "3.5rem",
+                    "value": "3rem",
                   },
                 ],
+                "width": Array [
+                  Object {
+                    "until": "m",
+                    "value": "49.3rem",
+                  },
+                  Object {
+                    "from": "m",
+                    "until": "l",
+                    "value": "80rem",
+                  },
+                  Object {
+                    "from": "l",
+                    "until": "xl",
+                    "value": "70.5rem",
+                  },
+                  Object {
+                    "from": "xl",
+                    "value": "80rem",
+                  },
+                ],
+              },
+              "currentArticleInSeries": Object {
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundColor": "#FFEC98",
+                "fontWeight": "700",
+              },
+              "linksBlockLink": Object {
+                ":focus": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "2px",
+                },
+                ":hover": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "color": "#0B7EB5",
+                "fontWeight": "700",
               },
               "paragraphLink": Object {
                 ":focus": Object {
@@ -950,6 +1419,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                 "color": "#0B7EB5",
               },
               "paragraphStyles": Object {},
+              "relatedArticlesLink": Object {
+                ":focus": Object {
+                  "background": "none",
+                  "backgroundColor": "#FFD20C",
+                },
+                ":hover": Object {
+                  "backgroundPosition": "0 100%",
+                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                "backgroundPosition": "0 0",
+                "backgroundSize": "100% 200%",
+                "color": "#006B96",
+                "fontWeight": "700",
+                "position": "relative",
+                "transitionDuration": "0.16666666666666666s",
+                "transitionProperty": "background-position",
+                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                "zIndex": "1",
+              },
             },
             "bps": Object {
               "misc": Object {
@@ -1007,6 +1504,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
             },
             "getDelay": [Function],
             "getDuration": [Function],
+            "getMqString": [Function],
             "getTimingFunction": [Function],
             "getTransition": [Function],
             "gridStyle": Object {
@@ -1076,9 +1574,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                         },
                         Object {
                           "from": "xl",
-                          "value": "3.5rem",
+                          "value": "3rem",
                         },
                       ],
+                      "width": Array [
+                        Object {
+                          "until": "m",
+                          "value": "49.3rem",
+                        },
+                        Object {
+                          "from": "m",
+                          "until": "l",
+                          "value": "80rem",
+                        },
+                        Object {
+                          "from": "l",
+                          "until": "xl",
+                          "value": "70.5rem",
+                        },
+                        Object {
+                          "from": "xl",
+                          "value": "80rem",
+                        },
+                      ],
+                    },
+                    "currentArticleInSeries": Object {
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundColor": "#FFEC98",
+                      "fontWeight": "700",
+                    },
+                    "linksBlockLink": Object {
+                      ":focus": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "2px",
+                      },
+                      ":hover": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "1px",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "color": "#0B7EB5",
+                      "fontWeight": "700",
                     },
                     "paragraphLink": Object {
                       ":focus": Object {
@@ -1094,6 +1646,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                       "color": "#0B7EB5",
                     },
                     "paragraphStyles": Object {},
+                    "relatedArticlesLink": Object {
+                      ":focus": Object {
+                        "background": "none",
+                        "backgroundColor": "#FFD20C",
+                      },
+                      ":hover": Object {
+                        "backgroundPosition": "0 100%",
+                        "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                      "backgroundPosition": "0 0",
+                      "backgroundSize": "100% 200%",
+                      "color": "#006B96",
+                      "fontWeight": "700",
+                      "position": "relative",
+                      "transitionDuration": "0.16666666666666666s",
+                      "transitionProperty": "background-position",
+                      "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                      "zIndex": "1",
+                    },
                   },
                   "bps": Object {
                     "misc": Object {
@@ -1151,6 +1731,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   "getDelay": [Function],
                   "getDuration": [Function],
+                  "getMqString": [Function],
                   "getTimingFunction": [Function],
                   "getTransition": [Function],
                   "gridStyle": Object {
@@ -1229,9 +1810,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                               },
                               Object {
                                 "from": "xl",
-                                "value": "3.5rem",
+                                "value": "3rem",
                               },
                             ],
+                            "width": Array [
+                              Object {
+                                "until": "m",
+                                "value": "49.3rem",
+                              },
+                              Object {
+                                "from": "m",
+                                "until": "l",
+                                "value": "80rem",
+                              },
+                              Object {
+                                "from": "l",
+                                "until": "xl",
+                                "value": "70.5rem",
+                              },
+                              Object {
+                                "from": "xl",
+                                "value": "80rem",
+                              },
+                            ],
+                          },
+                          "currentArticleInSeries": Object {
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundColor": "#FFEC98",
+                            "fontWeight": "700",
+                          },
+                          "linksBlockLink": Object {
+                            ":focus": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "2px",
+                            },
+                            ":hover": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "1px",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "color": "#0B7EB5",
+                            "fontWeight": "700",
                           },
                           "paragraphLink": Object {
                             ":focus": Object {
@@ -1247,6 +1882,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                             "color": "#0B7EB5",
                           },
                           "paragraphStyles": Object {},
+                          "relatedArticlesLink": Object {
+                            ":focus": Object {
+                              "background": "none",
+                              "backgroundColor": "#FFD20C",
+                            },
+                            ":hover": Object {
+                              "backgroundPosition": "0 100%",
+                              "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                            "backgroundPosition": "0 0",
+                            "backgroundSize": "100% 200%",
+                            "color": "#006B96",
+                            "fontWeight": "700",
+                            "position": "relative",
+                            "transitionDuration": "0.16666666666666666s",
+                            "transitionProperty": "background-position",
+                            "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                            "zIndex": "1",
+                          },
                         },
                         "bps": Object {
                           "misc": Object {
@@ -1304,6 +1967,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                         },
                         "getDelay": [Function],
                         "getDuration": [Function],
+                        "getMqString": [Function],
                         "getTimingFunction": [Function],
                         "getTransition": [Function],
                         "gridStyle": Object {
@@ -1420,9 +2084,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                         },
                         Object {
                           "from": "xl",
-                          "value": "3.5rem",
+                          "value": "3rem",
                         },
                       ],
+                      "width": Array [
+                        Object {
+                          "until": "m",
+                          "value": "49.3rem",
+                        },
+                        Object {
+                          "from": "m",
+                          "until": "l",
+                          "value": "80rem",
+                        },
+                        Object {
+                          "from": "l",
+                          "until": "xl",
+                          "value": "70.5rem",
+                        },
+                        Object {
+                          "from": "xl",
+                          "value": "80rem",
+                        },
+                      ],
+                    },
+                    "currentArticleInSeries": Object {
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundColor": "#FFEC98",
+                      "fontWeight": "700",
+                    },
+                    "linksBlockLink": Object {
+                      ":focus": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "2px",
+                      },
+                      ":hover": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "1px",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "color": "#0B7EB5",
+                      "fontWeight": "700",
                     },
                     "paragraphLink": Object {
                       ":focus": Object {
@@ -1438,6 +2156,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                       "color": "#0B7EB5",
                     },
                     "paragraphStyles": Object {},
+                    "relatedArticlesLink": Object {
+                      ":focus": Object {
+                        "background": "none",
+                        "backgroundColor": "#FFD20C",
+                      },
+                      ":hover": Object {
+                        "backgroundPosition": "0 100%",
+                        "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                      "backgroundPosition": "0 0",
+                      "backgroundSize": "100% 200%",
+                      "color": "#006B96",
+                      "fontWeight": "700",
+                      "position": "relative",
+                      "transitionDuration": "0.16666666666666666s",
+                      "transitionProperty": "background-position",
+                      "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                      "zIndex": "1",
+                    },
                   },
                   "bps": Object {
                     "misc": Object {
@@ -1495,6 +2241,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   "getDelay": [Function],
                   "getDuration": [Function],
+                  "getMqString": [Function],
                   "getTimingFunction": [Function],
                   "getTransition": [Function],
                   "gridStyle": Object {
@@ -1604,9 +2351,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   Object {
                     "from": "xl",
-                    "value": "3.5rem",
+                    "value": "3rem",
                   },
                 ],
+                "width": Array [
+                  Object {
+                    "until": "m",
+                    "value": "49.3rem",
+                  },
+                  Object {
+                    "from": "m",
+                    "until": "l",
+                    "value": "80rem",
+                  },
+                  Object {
+                    "from": "l",
+                    "until": "xl",
+                    "value": "70.5rem",
+                  },
+                  Object {
+                    "from": "xl",
+                    "value": "80rem",
+                  },
+                ],
+              },
+              "currentArticleInSeries": Object {
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundColor": "#FFEC98",
+                "fontWeight": "700",
+              },
+              "linksBlockLink": Object {
+                ":focus": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "2px",
+                },
+                ":hover": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "color": "#0B7EB5",
+                "fontWeight": "700",
               },
               "paragraphLink": Object {
                 ":focus": Object {
@@ -1622,6 +2423,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                 "color": "#0B7EB5",
               },
               "paragraphStyles": Object {},
+              "relatedArticlesLink": Object {
+                ":focus": Object {
+                  "background": "none",
+                  "backgroundColor": "#FFD20C",
+                },
+                ":hover": Object {
+                  "backgroundPosition": "0 100%",
+                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                "backgroundPosition": "0 0",
+                "backgroundSize": "100% 200%",
+                "color": "#006B96",
+                "fontWeight": "700",
+                "position": "relative",
+                "transitionDuration": "0.16666666666666666s",
+                "transitionProperty": "background-position",
+                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                "zIndex": "1",
+              },
             },
             "bps": Object {
               "misc": Object {
@@ -1679,6 +2508,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
             },
             "getDelay": [Function],
             "getDuration": [Function],
+            "getMqString": [Function],
             "getTimingFunction": [Function],
             "getTransition": [Function],
             "gridStyle": Object {
@@ -1806,9 +2636,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   Object {
                     "from": "xl",
-                    "value": "3.5rem",
+                    "value": "3rem",
                   },
                 ],
+                "width": Array [
+                  Object {
+                    "until": "m",
+                    "value": "49.3rem",
+                  },
+                  Object {
+                    "from": "m",
+                    "until": "l",
+                    "value": "80rem",
+                  },
+                  Object {
+                    "from": "l",
+                    "until": "xl",
+                    "value": "70.5rem",
+                  },
+                  Object {
+                    "from": "xl",
+                    "value": "80rem",
+                  },
+                ],
+              },
+              "currentArticleInSeries": Object {
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundColor": "#FFEC98",
+                "fontWeight": "700",
+              },
+              "linksBlockLink": Object {
+                ":focus": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "2px",
+                },
+                ":hover": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "color": "#0B7EB5",
+                "fontWeight": "700",
               },
               "paragraphLink": Object {
                 ":focus": Object {
@@ -1824,6 +2708,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                 "color": "#0B7EB5",
               },
               "paragraphStyles": Object {},
+              "relatedArticlesLink": Object {
+                ":focus": Object {
+                  "background": "none",
+                  "backgroundColor": "#FFD20C",
+                },
+                ":hover": Object {
+                  "backgroundPosition": "0 100%",
+                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                "backgroundPosition": "0 0",
+                "backgroundSize": "100% 200%",
+                "color": "#006B96",
+                "fontWeight": "700",
+                "position": "relative",
+                "transitionDuration": "0.16666666666666666s",
+                "transitionProperty": "background-position",
+                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                "zIndex": "1",
+              },
             },
             "bps": Object {
               "misc": Object {
@@ -1881,6 +2793,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
             },
             "getDelay": [Function],
             "getDuration": [Function],
+            "getMqString": [Function],
             "getTimingFunction": [Function],
             "getTransition": [Function],
             "gridStyle": Object {
@@ -1929,7 +2842,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
         variant="primary"
       >
         <label
-          className="htz-a htz-b htz-bu htz-bv htz-d htz-e htz-f htz-i htz-j htz-k htz-l htz-az htz-n htz-o htz-ba htz-q htz-r htz-bb htz-t htz-u htz-bc htz-w htz-x htz-y htz-bd htz-ab htz-be htz-ae htz-af htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs"
+          className="htz-a htz-b htz-bf htz-bg htz-d htz-e htz-f htz-i htz-j htz-k htz-l htz-az htz-n htz-o htz-ba htz-q htz-r htz-bb htz-t htz-u htz-bc htz-w htz-x htz-y htz-bd htz-ab"
           htmlFor="123456789"
           onClick={[Function]}
         >
@@ -1951,9 +2864,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                         },
                         Object {
                           "from": "xl",
-                          "value": "3.5rem",
+                          "value": "3rem",
                         },
                       ],
+                      "width": Array [
+                        Object {
+                          "until": "m",
+                          "value": "49.3rem",
+                        },
+                        Object {
+                          "from": "m",
+                          "until": "l",
+                          "value": "80rem",
+                        },
+                        Object {
+                          "from": "l",
+                          "until": "xl",
+                          "value": "70.5rem",
+                        },
+                        Object {
+                          "from": "xl",
+                          "value": "80rem",
+                        },
+                      ],
+                    },
+                    "currentArticleInSeries": Object {
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundColor": "#FFEC98",
+                      "fontWeight": "700",
+                    },
+                    "linksBlockLink": Object {
+                      ":focus": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "2px",
+                      },
+                      ":hover": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "1px",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "color": "#0B7EB5",
+                      "fontWeight": "700",
                     },
                     "paragraphLink": Object {
                       ":focus": Object {
@@ -1969,6 +2936,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                       "color": "#0B7EB5",
                     },
                     "paragraphStyles": Object {},
+                    "relatedArticlesLink": Object {
+                      ":focus": Object {
+                        "background": "none",
+                        "backgroundColor": "#FFD20C",
+                      },
+                      ":hover": Object {
+                        "backgroundPosition": "0 100%",
+                        "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                      "backgroundPosition": "0 0",
+                      "backgroundSize": "100% 200%",
+                      "color": "#006B96",
+                      "fontWeight": "700",
+                      "position": "relative",
+                      "transitionDuration": "0.16666666666666666s",
+                      "transitionProperty": "background-position",
+                      "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                      "zIndex": "1",
+                    },
                   },
                   "bps": Object {
                     "misc": Object {
@@ -2026,6 +3021,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   "getDelay": [Function],
                   "getDuration": [Function],
+                  "getMqString": [Function],
                   "getTimingFunction": [Function],
                   "getTransition": [Function],
                   "gridStyle": Object {
@@ -2073,7 +3069,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
               }
             >
               <div
-                className="htz-f htz-b htz-bw"
+                className="htz-f htz-b htz-bh"
               >
                 <labelTextStyle
                   id="123456789"
@@ -2106,9 +3102,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                               },
                               Object {
                                 "from": "xl",
-                                "value": "3.5rem",
+                                "value": "3rem",
                               },
                             ],
+                            "width": Array [
+                              Object {
+                                "until": "m",
+                                "value": "49.3rem",
+                              },
+                              Object {
+                                "from": "m",
+                                "until": "l",
+                                "value": "80rem",
+                              },
+                              Object {
+                                "from": "l",
+                                "until": "xl",
+                                "value": "70.5rem",
+                              },
+                              Object {
+                                "from": "xl",
+                                "value": "80rem",
+                              },
+                            ],
+                          },
+                          "currentArticleInSeries": Object {
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundColor": "#FFEC98",
+                            "fontWeight": "700",
+                          },
+                          "linksBlockLink": Object {
+                            ":focus": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "2px",
+                            },
+                            ":hover": Object {
+                              "borderBottomColor": "#0B7EB5",
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": "1px",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "color": "#0B7EB5",
+                            "fontWeight": "700",
                           },
                           "paragraphLink": Object {
                             ":focus": Object {
@@ -2124,6 +3174,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                             "color": "#0B7EB5",
                           },
                           "paragraphStyles": Object {},
+                          "relatedArticlesLink": Object {
+                            ":focus": Object {
+                              "background": "none",
+                              "backgroundColor": "#FFD20C",
+                            },
+                            ":hover": Object {
+                              "backgroundPosition": "0 100%",
+                              "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                            },
+                            "@media (max-width: 80em)": Object {
+                              "fontSize": "2.3333333333333335rem",
+                              "lineHeight": "1.2857142857142858em",
+                            },
+                            "@media (min-width: 80em)": Object {
+                              "fontSize": "2.2857142857142856rem",
+                              "lineHeight": "1.3125em",
+                            },
+                            "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                            "backgroundPosition": "0 0",
+                            "backgroundSize": "100% 200%",
+                            "color": "#006B96",
+                            "fontWeight": "700",
+                            "position": "relative",
+                            "transitionDuration": "0.16666666666666666s",
+                            "transitionProperty": "background-position",
+                            "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                            "zIndex": "1",
+                          },
                         },
                         "bps": Object {
                           "misc": Object {
@@ -2181,6 +3259,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                         },
                         "getDelay": [Function],
                         "getDuration": [Function],
+                        "getMqString": [Function],
                         "getTimingFunction": [Function],
                         "getTransition": [Function],
                         "gridStyle": Object {
@@ -2229,7 +3308,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                     variant="primary"
                   >
                     <span
-                      className="htz-ag htz-ah htz-ai htz-aj htz-an htz-ao htz-bx htz-by htz-x htz-y htz-dz htz-ab"
+                      className="htz-ag htz-ah htz-ai htz-aj htz-an htz-ao htz-bi htz-bj htz-x htz-y htz-dk htz-ab"
                       id="123456789"
                     >
                       label
@@ -2329,9 +3408,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                                 },
                                 Object {
                                   "from": "xl",
-                                  "value": "3.5rem",
+                                  "value": "3rem",
                                 },
                               ],
+                              "width": Array [
+                                Object {
+                                  "until": "m",
+                                  "value": "49.3rem",
+                                },
+                                Object {
+                                  "from": "m",
+                                  "until": "l",
+                                  "value": "80rem",
+                                },
+                                Object {
+                                  "from": "l",
+                                  "until": "xl",
+                                  "value": "70.5rem",
+                                },
+                                Object {
+                                  "from": "xl",
+                                  "value": "80rem",
+                                },
+                              ],
+                            },
+                            "currentArticleInSeries": Object {
+                              "@media (max-width: 80em)": Object {
+                                "fontSize": "2.3333333333333335rem",
+                                "lineHeight": "1.2857142857142858em",
+                              },
+                              "@media (min-width: 80em)": Object {
+                                "fontSize": "2.2857142857142856rem",
+                                "lineHeight": "1.3125em",
+                              },
+                              "backgroundColor": "#FFEC98",
+                              "fontWeight": "700",
+                            },
+                            "linksBlockLink": Object {
+                              ":focus": Object {
+                                "borderBottomColor": "#0B7EB5",
+                                "borderBottomStyle": "solid",
+                                "borderBottomWidth": "2px",
+                              },
+                              ":hover": Object {
+                                "borderBottomColor": "#0B7EB5",
+                                "borderBottomStyle": "solid",
+                                "borderBottomWidth": "1px",
+                              },
+                              "@media (max-width: 80em)": Object {
+                                "fontSize": "2.3333333333333335rem",
+                                "lineHeight": "1.2857142857142858em",
+                              },
+                              "@media (min-width: 80em)": Object {
+                                "fontSize": "2.2857142857142856rem",
+                                "lineHeight": "1.3125em",
+                              },
+                              "color": "#0B7EB5",
+                              "fontWeight": "700",
                             },
                             "paragraphLink": Object {
                               ":focus": Object {
@@ -2347,6 +3480,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                               "color": "#0B7EB5",
                             },
                             "paragraphStyles": Object {},
+                            "relatedArticlesLink": Object {
+                              ":focus": Object {
+                                "background": "none",
+                                "backgroundColor": "#FFD20C",
+                              },
+                              ":hover": Object {
+                                "backgroundPosition": "0 100%",
+                                "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                              },
+                              "@media (max-width: 80em)": Object {
+                                "fontSize": "2.3333333333333335rem",
+                                "lineHeight": "1.2857142857142858em",
+                              },
+                              "@media (min-width: 80em)": Object {
+                                "fontSize": "2.2857142857142856rem",
+                                "lineHeight": "1.3125em",
+                              },
+                              "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                              "backgroundPosition": "0 0",
+                              "backgroundSize": "100% 200%",
+                              "color": "#006B96",
+                              "fontWeight": "700",
+                              "position": "relative",
+                              "transitionDuration": "0.16666666666666666s",
+                              "transitionProperty": "background-position",
+                              "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                              "zIndex": "1",
+                            },
                           },
                           "bps": Object {
                             "misc": Object {
@@ -2404,6 +3565,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                           },
                           "getDelay": [Function],
                           "getDuration": [Function],
+                          "getMqString": [Function],
                           "getTimingFunction": [Function],
                           "getTransition": [Function],
                           "gridStyle": Object {
@@ -2461,7 +3623,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                           }
                         }
                         boxModel={null}
-                        className="htz-c htz-ca htz-a htz-ea htz-ai htz-ar htz-cc htz-cd htz-an htz-ce htz-cf htz-cg htz-ch htz-ci htz-g htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-q htz-r htz-ct htz-n htz-o htz-cu htz-cv htz-m htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-ac htz-dg htz-af htz-as htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds"
+                        className="htz-c htz-bl htz-a htz-dl htz-ai htz-ar htz-bn htz-bo htz-an htz-bp htz-bq htz-br htz-bs htz-bt htz-g htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-q htz-r htz-ce htz-n htz-o htz-cf htz-cg htz-m htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-ac htz-cr htz-af htz-as htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd"
                         href={null}
                         id={null}
                         isBusy={false}
@@ -2481,7 +3643,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                         <button
                           aria-checked={false}
                           arial-label="italic"
-                          className="htz-c htz-ca htz-a htz-ea htz-ai htz-ar htz-cc htz-cd htz-an htz-ce htz-cf htz-cg htz-ch htz-ci htz-g htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-q htz-r htz-ct htz-n htz-o htz-cu htz-cv htz-m htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-ac htz-dg htz-af htz-as htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds"
+                          className="htz-c htz-bl htz-a htz-dl htz-ai htz-ar htz-bn htz-bo htz-an htz-bp htz-bq htz-br htz-bs htz-bt htz-g htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-q htz-r htz-ce htz-n htz-o htz-cf htz-cg htz-m htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-ac htz-cr htz-af htz-as htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd"
                           id={null}
                           onClick={[Function]}
                           onMouseDown={[Function]}
@@ -2510,9 +3672,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                                         },
                                         Object {
                                           "from": "xl",
-                                          "value": "3.5rem",
+                                          "value": "3rem",
                                         },
                                       ],
+                                      "width": Array [
+                                        Object {
+                                          "until": "m",
+                                          "value": "49.3rem",
+                                        },
+                                        Object {
+                                          "from": "m",
+                                          "until": "l",
+                                          "value": "80rem",
+                                        },
+                                        Object {
+                                          "from": "l",
+                                          "until": "xl",
+                                          "value": "70.5rem",
+                                        },
+                                        Object {
+                                          "from": "xl",
+                                          "value": "80rem",
+                                        },
+                                      ],
+                                    },
+                                    "currentArticleInSeries": Object {
+                                      "@media (max-width: 80em)": Object {
+                                        "fontSize": "2.3333333333333335rem",
+                                        "lineHeight": "1.2857142857142858em",
+                                      },
+                                      "@media (min-width: 80em)": Object {
+                                        "fontSize": "2.2857142857142856rem",
+                                        "lineHeight": "1.3125em",
+                                      },
+                                      "backgroundColor": "#FFEC98",
+                                      "fontWeight": "700",
+                                    },
+                                    "linksBlockLink": Object {
+                                      ":focus": Object {
+                                        "borderBottomColor": "#0B7EB5",
+                                        "borderBottomStyle": "solid",
+                                        "borderBottomWidth": "2px",
+                                      },
+                                      ":hover": Object {
+                                        "borderBottomColor": "#0B7EB5",
+                                        "borderBottomStyle": "solid",
+                                        "borderBottomWidth": "1px",
+                                      },
+                                      "@media (max-width: 80em)": Object {
+                                        "fontSize": "2.3333333333333335rem",
+                                        "lineHeight": "1.2857142857142858em",
+                                      },
+                                      "@media (min-width: 80em)": Object {
+                                        "fontSize": "2.2857142857142856rem",
+                                        "lineHeight": "1.3125em",
+                                      },
+                                      "color": "#0B7EB5",
+                                      "fontWeight": "700",
                                     },
                                     "paragraphLink": Object {
                                       ":focus": Object {
@@ -2528,6 +3744,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                                       "color": "#0B7EB5",
                                     },
                                     "paragraphStyles": Object {},
+                                    "relatedArticlesLink": Object {
+                                      ":focus": Object {
+                                        "background": "none",
+                                        "backgroundColor": "#FFD20C",
+                                      },
+                                      ":hover": Object {
+                                        "backgroundPosition": "0 100%",
+                                        "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                                      },
+                                      "@media (max-width: 80em)": Object {
+                                        "fontSize": "2.3333333333333335rem",
+                                        "lineHeight": "1.2857142857142858em",
+                                      },
+                                      "@media (min-width: 80em)": Object {
+                                        "fontSize": "2.2857142857142856rem",
+                                        "lineHeight": "1.3125em",
+                                      },
+                                      "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                                      "backgroundPosition": "0 0",
+                                      "backgroundSize": "100% 200%",
+                                      "color": "#006B96",
+                                      "fontWeight": "700",
+                                      "position": "relative",
+                                      "transitionDuration": "0.16666666666666666s",
+                                      "transitionProperty": "background-position",
+                                      "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                                      "zIndex": "1",
+                                    },
                                   },
                                   "bps": Object {
                                     "misc": Object {
@@ -2585,6 +3829,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                                   },
                                   "getDelay": [Function],
                                   "getDuration": [Function],
+                                  "getMqString": [Function],
                                   "getTimingFunction": [Function],
                                   "getTransition": [Function],
                                   "gridStyle": Object {
@@ -2633,10 +3878,10 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                             >
                               <UnstyledIconItalic
                                 attrs={null}
-                                className="htz-dt htz-du htz-dv"
+                                className="htz-de htz-df htz-dg"
                               >
                                 <svg
-                                  className="htz-dt htz-du htz-dv"
+                                  className="htz-de htz-df htz-dg"
                                   height="1em"
                                   viewBox="0 0 256 256"
                                   width="1em"
@@ -2743,9 +3988,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                                 },
                                 Object {
                                   "from": "xl",
-                                  "value": "3.5rem",
+                                  "value": "3rem",
                                 },
                               ],
+                              "width": Array [
+                                Object {
+                                  "until": "m",
+                                  "value": "49.3rem",
+                                },
+                                Object {
+                                  "from": "m",
+                                  "until": "l",
+                                  "value": "80rem",
+                                },
+                                Object {
+                                  "from": "l",
+                                  "until": "xl",
+                                  "value": "70.5rem",
+                                },
+                                Object {
+                                  "from": "xl",
+                                  "value": "80rem",
+                                },
+                              ],
+                            },
+                            "currentArticleInSeries": Object {
+                              "@media (max-width: 80em)": Object {
+                                "fontSize": "2.3333333333333335rem",
+                                "lineHeight": "1.2857142857142858em",
+                              },
+                              "@media (min-width: 80em)": Object {
+                                "fontSize": "2.2857142857142856rem",
+                                "lineHeight": "1.3125em",
+                              },
+                              "backgroundColor": "#FFEC98",
+                              "fontWeight": "700",
+                            },
+                            "linksBlockLink": Object {
+                              ":focus": Object {
+                                "borderBottomColor": "#0B7EB5",
+                                "borderBottomStyle": "solid",
+                                "borderBottomWidth": "2px",
+                              },
+                              ":hover": Object {
+                                "borderBottomColor": "#0B7EB5",
+                                "borderBottomStyle": "solid",
+                                "borderBottomWidth": "1px",
+                              },
+                              "@media (max-width: 80em)": Object {
+                                "fontSize": "2.3333333333333335rem",
+                                "lineHeight": "1.2857142857142858em",
+                              },
+                              "@media (min-width: 80em)": Object {
+                                "fontSize": "2.2857142857142856rem",
+                                "lineHeight": "1.3125em",
+                              },
+                              "color": "#0B7EB5",
+                              "fontWeight": "700",
                             },
                             "paragraphLink": Object {
                               ":focus": Object {
@@ -2761,6 +4060,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                               "color": "#0B7EB5",
                             },
                             "paragraphStyles": Object {},
+                            "relatedArticlesLink": Object {
+                              ":focus": Object {
+                                "background": "none",
+                                "backgroundColor": "#FFD20C",
+                              },
+                              ":hover": Object {
+                                "backgroundPosition": "0 100%",
+                                "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                              },
+                              "@media (max-width: 80em)": Object {
+                                "fontSize": "2.3333333333333335rem",
+                                "lineHeight": "1.2857142857142858em",
+                              },
+                              "@media (min-width: 80em)": Object {
+                                "fontSize": "2.2857142857142856rem",
+                                "lineHeight": "1.3125em",
+                              },
+                              "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                              "backgroundPosition": "0 0",
+                              "backgroundSize": "100% 200%",
+                              "color": "#006B96",
+                              "fontWeight": "700",
+                              "position": "relative",
+                              "transitionDuration": "0.16666666666666666s",
+                              "transitionProperty": "background-position",
+                              "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                              "zIndex": "1",
+                            },
                           },
                           "bps": Object {
                             "misc": Object {
@@ -2818,6 +4145,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                           },
                           "getDelay": [Function],
                           "getDuration": [Function],
+                          "getMqString": [Function],
                           "getTimingFunction": [Function],
                           "getTransition": [Function],
                           "gridStyle": Object {
@@ -2875,7 +4203,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                           }
                         }
                         boxModel={null}
-                        className="htz-c htz-ca htz-a htz-ea htz-ai htz-ar htz-cc htz-cd htz-an htz-ce htz-cf htz-cg htz-ch htz-ci htz-g htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-q htz-r htz-ct htz-n htz-o htz-cu htz-cv htz-m htz-cw htz-cx htz-cz htz-dw htz-db htz-dc htz-dd htz-de htz-df htz-ac htz-dg htz-af htz-as htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds"
+                        className="htz-c htz-bl htz-a htz-dl htz-ai htz-ar htz-bn htz-bo htz-an htz-bp htz-bq htz-br htz-bs htz-bt htz-g htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-q htz-r htz-ce htz-n htz-o htz-cf htz-cg htz-m htz-ch htz-ci htz-ck htz-dh htz-cm htz-cn htz-co htz-cp htz-cq htz-ac htz-cr htz-af htz-as htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd"
                         href={null}
                         id={null}
                         isBusy={false}
@@ -2895,7 +4223,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                         <button
                           aria-checked={false}
                           arial-label="bold"
-                          className="htz-c htz-ca htz-a htz-ea htz-ai htz-ar htz-cc htz-cd htz-an htz-ce htz-cf htz-cg htz-ch htz-ci htz-g htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-q htz-r htz-ct htz-n htz-o htz-cu htz-cv htz-m htz-cw htz-cx htz-cz htz-dw htz-db htz-dc htz-dd htz-de htz-df htz-ac htz-dg htz-af htz-as htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds"
+                          className="htz-c htz-bl htz-a htz-dl htz-ai htz-ar htz-bn htz-bo htz-an htz-bp htz-bq htz-br htz-bs htz-bt htz-g htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-q htz-r htz-ce htz-n htz-o htz-cf htz-cg htz-m htz-ch htz-ci htz-ck htz-dh htz-cm htz-cn htz-co htz-cp htz-cq htz-ac htz-cr htz-af htz-as htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd"
                           id={null}
                           onClick={[Function]}
                           onMouseDown={[Function]}
@@ -2924,9 +4252,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                                         },
                                         Object {
                                           "from": "xl",
-                                          "value": "3.5rem",
+                                          "value": "3rem",
                                         },
                                       ],
+                                      "width": Array [
+                                        Object {
+                                          "until": "m",
+                                          "value": "49.3rem",
+                                        },
+                                        Object {
+                                          "from": "m",
+                                          "until": "l",
+                                          "value": "80rem",
+                                        },
+                                        Object {
+                                          "from": "l",
+                                          "until": "xl",
+                                          "value": "70.5rem",
+                                        },
+                                        Object {
+                                          "from": "xl",
+                                          "value": "80rem",
+                                        },
+                                      ],
+                                    },
+                                    "currentArticleInSeries": Object {
+                                      "@media (max-width: 80em)": Object {
+                                        "fontSize": "2.3333333333333335rem",
+                                        "lineHeight": "1.2857142857142858em",
+                                      },
+                                      "@media (min-width: 80em)": Object {
+                                        "fontSize": "2.2857142857142856rem",
+                                        "lineHeight": "1.3125em",
+                                      },
+                                      "backgroundColor": "#FFEC98",
+                                      "fontWeight": "700",
+                                    },
+                                    "linksBlockLink": Object {
+                                      ":focus": Object {
+                                        "borderBottomColor": "#0B7EB5",
+                                        "borderBottomStyle": "solid",
+                                        "borderBottomWidth": "2px",
+                                      },
+                                      ":hover": Object {
+                                        "borderBottomColor": "#0B7EB5",
+                                        "borderBottomStyle": "solid",
+                                        "borderBottomWidth": "1px",
+                                      },
+                                      "@media (max-width: 80em)": Object {
+                                        "fontSize": "2.3333333333333335rem",
+                                        "lineHeight": "1.2857142857142858em",
+                                      },
+                                      "@media (min-width: 80em)": Object {
+                                        "fontSize": "2.2857142857142856rem",
+                                        "lineHeight": "1.3125em",
+                                      },
+                                      "color": "#0B7EB5",
+                                      "fontWeight": "700",
                                     },
                                     "paragraphLink": Object {
                                       ":focus": Object {
@@ -2942,6 +4324,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                                       "color": "#0B7EB5",
                                     },
                                     "paragraphStyles": Object {},
+                                    "relatedArticlesLink": Object {
+                                      ":focus": Object {
+                                        "background": "none",
+                                        "backgroundColor": "#FFD20C",
+                                      },
+                                      ":hover": Object {
+                                        "backgroundPosition": "0 100%",
+                                        "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                                      },
+                                      "@media (max-width: 80em)": Object {
+                                        "fontSize": "2.3333333333333335rem",
+                                        "lineHeight": "1.2857142857142858em",
+                                      },
+                                      "@media (min-width: 80em)": Object {
+                                        "fontSize": "2.2857142857142856rem",
+                                        "lineHeight": "1.3125em",
+                                      },
+                                      "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                                      "backgroundPosition": "0 0",
+                                      "backgroundSize": "100% 200%",
+                                      "color": "#006B96",
+                                      "fontWeight": "700",
+                                      "position": "relative",
+                                      "transitionDuration": "0.16666666666666666s",
+                                      "transitionProperty": "background-position",
+                                      "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                                      "zIndex": "1",
+                                    },
                                   },
                                   "bps": Object {
                                     "misc": Object {
@@ -2999,6 +4409,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                                   },
                                   "getDelay": [Function],
                                   "getDuration": [Function],
+                                  "getMqString": [Function],
                                   "getTimingFunction": [Function],
                                   "getTransition": [Function],
                                   "gridStyle": Object {
@@ -3047,10 +4458,10 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                             >
                               <UnstyledIconBold
                                 attrs={null}
-                                className="htz-dt htz-du htz-dv"
+                                className="htz-de htz-df htz-dg"
                               >
                                 <svg
-                                  className="htz-dt htz-du htz-dv"
+                                  className="htz-de htz-df htz-dg"
                                   height="1em"
                                   viewBox="0 0 256 256"
                                   width="1em"
@@ -3131,9 +4542,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                         },
                         Object {
                           "from": "xl",
-                          "value": "3.5rem",
+                          "value": "3rem",
                         },
                       ],
+                      "width": Array [
+                        Object {
+                          "until": "m",
+                          "value": "49.3rem",
+                        },
+                        Object {
+                          "from": "m",
+                          "until": "l",
+                          "value": "80rem",
+                        },
+                        Object {
+                          "from": "l",
+                          "until": "xl",
+                          "value": "70.5rem",
+                        },
+                        Object {
+                          "from": "xl",
+                          "value": "80rem",
+                        },
+                      ],
+                    },
+                    "currentArticleInSeries": Object {
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundColor": "#FFEC98",
+                      "fontWeight": "700",
+                    },
+                    "linksBlockLink": Object {
+                      ":focus": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "2px",
+                      },
+                      ":hover": Object {
+                        "borderBottomColor": "#0B7EB5",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "1px",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "color": "#0B7EB5",
+                      "fontWeight": "700",
                     },
                     "paragraphLink": Object {
                       ":focus": Object {
@@ -3149,6 +4614,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                       "color": "#0B7EB5",
                     },
                     "paragraphStyles": Object {},
+                    "relatedArticlesLink": Object {
+                      ":focus": Object {
+                        "background": "none",
+                        "backgroundColor": "#FFD20C",
+                      },
+                      ":hover": Object {
+                        "backgroundPosition": "0 100%",
+                        "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                      },
+                      "@media (max-width: 80em)": Object {
+                        "fontSize": "2.3333333333333335rem",
+                        "lineHeight": "1.2857142857142858em",
+                      },
+                      "@media (min-width: 80em)": Object {
+                        "fontSize": "2.2857142857142856rem",
+                        "lineHeight": "1.3125em",
+                      },
+                      "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                      "backgroundPosition": "0 0",
+                      "backgroundSize": "100% 200%",
+                      "color": "#006B96",
+                      "fontWeight": "700",
+                      "position": "relative",
+                      "transitionDuration": "0.16666666666666666s",
+                      "transitionProperty": "background-position",
+                      "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                      "zIndex": "1",
+                    },
                   },
                   "bps": Object {
                     "misc": Object {
@@ -3206,6 +4699,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   "getDelay": [Function],
                   "getDuration": [Function],
+                  "getMqString": [Function],
                   "getTimingFunction": [Function],
                   "getTransition": [Function],
                   "gridStyle": Object {
@@ -3257,7 +4751,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                 ariaDescribedBy={null}
                 ariaLabel={null}
                 attrs={null}
-                className="htz-ap htz-aq htz-dx htz-ar htz-f htz-a htz-dy htz-as htz-at"
+                className="htz-ap htz-aq htz-di htz-ar htz-f htz-a htz-dj htz-as htz-at"
                 defaultValue={null}
                 height={null}
                 inputId="123456789"
@@ -3281,7 +4775,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                 <div
                   aria-labelledby="123456789"
                   aria-multiline={true}
-                  className="htz-ap htz-aq htz-dx htz-ar htz-f htz-a htz-dy htz-as htz-at"
+                  className="htz-ap htz-aq htz-di htz-ar htz-f htz-a htz-dj htz-as htz-at"
                   contentEditable={true}
                   id="123456789"
                   onBlur={[Function]}
@@ -3323,9 +4817,63 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                   },
                   Object {
                     "from": "xl",
-                    "value": "3.5rem",
+                    "value": "3rem",
                   },
                 ],
+                "width": Array [
+                  Object {
+                    "until": "m",
+                    "value": "49.3rem",
+                  },
+                  Object {
+                    "from": "m",
+                    "until": "l",
+                    "value": "80rem",
+                  },
+                  Object {
+                    "from": "l",
+                    "until": "xl",
+                    "value": "70.5rem",
+                  },
+                  Object {
+                    "from": "xl",
+                    "value": "80rem",
+                  },
+                ],
+              },
+              "currentArticleInSeries": Object {
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundColor": "#FFEC98",
+                "fontWeight": "700",
+              },
+              "linksBlockLink": Object {
+                ":focus": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "2px",
+                },
+                ":hover": Object {
+                  "borderBottomColor": "#0B7EB5",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "color": "#0B7EB5",
+                "fontWeight": "700",
               },
               "paragraphLink": Object {
                 ":focus": Object {
@@ -3341,6 +4889,34 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
                 "color": "#0B7EB5",
               },
               "paragraphStyles": Object {},
+              "relatedArticlesLink": Object {
+                ":focus": Object {
+                  "background": "none",
+                  "backgroundColor": "#FFD20C",
+                },
+                ":hover": Object {
+                  "backgroundPosition": "0 100%",
+                  "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                },
+                "@media (max-width: 80em)": Object {
+                  "fontSize": "2.3333333333333335rem",
+                  "lineHeight": "1.2857142857142858em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2.2857142857142856rem",
+                  "lineHeight": "1.3125em",
+                },
+                "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFEC98, #FFEC98 50%, #FFEC98 )",
+                "backgroundPosition": "0 0",
+                "backgroundSize": "100% 200%",
+                "color": "#006B96",
+                "fontWeight": "700",
+                "position": "relative",
+                "transitionDuration": "0.16666666666666666s",
+                "transitionProperty": "background-position",
+                "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                "zIndex": "1",
+              },
             },
             "bps": Object {
               "misc": Object {
@@ -3398,6 +4974,7 @@ exports[`<TextInput> DOM element changes isFocused state correctlly when focusin
             },
             "getDelay": [Function],
             "getDuration": [Function],
+            "getMqString": [Function],
             "getTimingFunction": [Function],
             "getTransition": [Function],
             "gridStyle": Object {
@@ -3553,7 +5130,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a contentEditable div 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start;-webkit-box-align:start;-webkit-align-items:flex-start}.htz-d{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{background-color:#EBF2F5}.htz-m{border-left-width:1px}.htz-n{border-left-style:solid}.htz-o{border-left-color:#DAE9F2}.htz-p{border-right-width:1px}.htz-q{border-right-style:solid}.htz-r{border-right-color:#DAE9F2}.htz-s{border-top-width:1px}.htz-t{border-top-style:solid}.htz-u{border-top-color:#DAE9F2}.htz-v{padding-top:calc(1rem - 1px)}.htz-w{border-bottom-width:1px}.htz-x{border-bottom-style:solid}.htz-y{border-bottom-color:#DAE9F2}.htz-z{padding-bottom:calc(1rem - 1px)}.htz-ab:hover{background-color:#E6EDF0}.htz-ac:hover{border-color:#DAE9F2}.htz-ae:hover{color:#2D2D2D}.htz-af{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ag{margin-left:1rem}.htz-ah{color:#006B96}.htz-ai{font-weight:bold}.htz-aj{transition-property:-webkit-transform,transform;-webkit-transition-property:-webkit-transform,transform;-moz-transition-property:transform}.htz-ak{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-al{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-am{flex-grow:1;-webkit-flex-grow:1}.htz-an{margin-bottom:1rem}.htz-ao{border-bottom-color:transparent}.htz-ap{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-aq{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-ar{display:none}.htz-as{font-size:inherit}.htz-at{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-au{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-av{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aw{text-decoration:none}.htz-ax{white-space:nowrap}.htz-ay::moz-focus-inner{border:0px}.htz-az::moz-focus-inner{padding:0rem}.htz-ba{position:relative}.htz-bb:after{content:}.htz-bc:after{height:1px}.htz-bd:after{position:absolute}.htz-be:after{width:100%}.htz-bf:after{bottom:0rem}.htz-bg:before{content:}.htz-bh:before{height:1px}.htz-bi:before{position:absolute}.htz-bj:before{width:100%}.htz-bk:before{top:0rem}.htz-bl{padding-right:0rem}.htz-bm{padding-left:0rem}.htz-bn{border-radius:0rem}.htz-bo{border-color:transparent}.htz-bp{color:#2D2D2D}.htz-bq{font-style:italic}.htz-br{height:5rem}.htz-bs{margin-left:0.1rem}.htz-bt{margin-top:calc(1px - 1rem)}.htz-bu{width:5rem}.htz-bv:hover{text-decoration:none}.htz-bw:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bx:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-by:hover{border-color:transparent}.htz-bz:focus{outline:none}.htz-ca:focus{text-decoration:none}.htz-cb:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cc:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cd:focus{background-color:#0B7EB5}.htz-ce:focus{border-color:transparent}.htz-cf:focus{color:#FFF}.htz-cg:active{outline:none}.htz-ch:active{text-decoration:none}.htz-ci:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-cj:active{background-color:#0B7EB5}.htz-ck:active{border-color:transparent}.htz-cl:active{color:#FFF}.htz-cm{vertical-align:-0.15em}.htz-cn{color:inherit}.htz-co{fill:#FFF}.htz-cp{margin-left:-1rem}.htz-cq{border:none}.htz-cr{background-color:transparent}.htz-cs{overflow:auto}.htz-ct{height:6rem}.htz-cu:focus{cursor:text}.htz-cv{color:#B4B4B4}@media (max-width: 80em){.htz-h{font-size:2.3333333333333335rem}.htz-i{line-height:1.2857142857142858em}.htz-cw{font-size:1.8333333333333333rem}.htz-cx{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.2857142857142856rem}.htz-k{line-height:1.3125em}.htz-cy{font-size:1.7142857142857142rem}.htz-cz{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a contentEditable div 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start;-webkit-box-align:start;-webkit-align-items:flex-start}.htz-d{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{background-color:#EBF2F5}.htz-m{border-left-width:1px}.htz-n{border-left-style:solid}.htz-o{border-left-color:#DAE9F2}.htz-p{border-right-width:1px}.htz-q{border-right-style:solid}.htz-r{border-right-color:#DAE9F2}.htz-s{border-top-width:1px}.htz-t{border-top-style:solid}.htz-u{border-top-color:#DAE9F2}.htz-v{padding-top:calc(1rem - 1px)}.htz-w{border-bottom-width:1px}.htz-x{border-bottom-style:solid}.htz-y{border-bottom-color:#DAE9F2}.htz-z{padding-bottom:calc(1rem - 1px)}.htz-ab:hover{background-color:#E6EDF0}.htz-ac:hover{border-color:#DAE9F2}.htz-ae:hover{color:#2D2D2D}.htz-af{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ag{margin-left:1rem}.htz-ah{color:#006B96}.htz-ai{font-weight:bold}.htz-aj{transition-property:-webkit-transform,transform;-webkit-transition-property:-webkit-transform,transform;-moz-transition-property:transform}.htz-ak{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-al{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-am{flex-grow:1;-webkit-flex-grow:1}.htz-an{margin-bottom:1rem}.htz-ao{border-bottom-color:transparent}.htz-ap{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-aq{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-ar{display:none}.htz-as{font-size:inherit}.htz-at{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-au{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-av{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aw{text-decoration:none}.htz-ax{white-space:nowrap}.htz-ay::moz-focus-inner{border:0px}.htz-az::moz-focus-inner{padding:0rem}.htz-ba{position:relative}.htz-bb:after{content:\\"\\"}.htz-bc:after{height:1px}.htz-bd:after{position:absolute}.htz-be:after{width:100%}.htz-bf:after{bottom:0rem}.htz-bg:before{content:\\"\\"}.htz-bh:before{height:1px}.htz-bi:before{position:absolute}.htz-bj:before{width:100%}.htz-bk:before{top:0rem}.htz-bl{padding-right:0rem}.htz-bm{padding-left:0rem}.htz-bn{border-radius:0rem}.htz-bo{border-color:transparent}.htz-bp{color:#2D2D2D}.htz-bq{font-style:italic}.htz-br{height:5rem}.htz-bs{margin-left:0.1rem}.htz-bt{margin-top:calc(1px - 1rem)}.htz-bu{width:5rem}.htz-bv:hover{text-decoration:none}.htz-bw:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bx:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-by:hover{border-color:transparent}.htz-bz:focus{outline:none}.htz-ca:focus{text-decoration:none}.htz-cb:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cc:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cd:focus{background-color:#0B7EB5}.htz-ce:focus{border-color:transparent}.htz-cf:focus{color:#FFF}.htz-cg:active{outline:none}.htz-ch:active{text-decoration:none}.htz-ci:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-cj:active{background-color:#0B7EB5}.htz-ck:active{border-color:transparent}.htz-cl:active{color:#FFF}.htz-cm{vertical-align:-0.15em}.htz-cn{color:inherit}.htz-co{fill:#FFF}.htz-cp{margin-left:-1rem}.htz-cq{border:none}.htz-cr{background-color:transparent}.htz-cs{overflow:auto}.htz-ct{height:6rem}.htz-cu:focus{cursor:text}.htz-cv{color:#B4B4B4}@media (max-width: 80em){.htz-h{font-size:2.3333333333333335rem}.htz-i{line-height:1.2857142857142858em}.htz-cw{font-size:1.8333333333333333rem}.htz-cx{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.2857142857142856rem}.htz-k{line-height:1.3125em}.htz-cy{font-size:1.7142857142857142rem}.htz-cz{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a contentEditable div with label 1`] = `
 <div>
@@ -3647,7 +5224,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a contentEditable div with label 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start;-webkit-box-align:start;-webkit-align-items:flex-start}.htz-d{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{background-color:#EBF2F5}.htz-m{border-left-width:1px}.htz-n{border-left-style:solid}.htz-o{border-left-color:#DAE9F2}.htz-p{border-right-width:1px}.htz-q{border-right-style:solid}.htz-r{border-right-color:#DAE9F2}.htz-s{border-top-width:1px}.htz-t{border-top-style:solid}.htz-u{border-top-color:#DAE9F2}.htz-v{padding-top:calc(1rem - 1px)}.htz-w{border-bottom-width:1px}.htz-x{border-bottom-style:solid}.htz-y{border-bottom-color:#DAE9F2}.htz-z{padding-bottom:calc(1rem - 1px)}.htz-ab:hover{background-color:#E6EDF0}.htz-ac:hover{border-color:#DAE9F2}.htz-ae:hover{color:#2D2D2D}.htz-af{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ag{margin-left:1rem}.htz-ah{color:#006B96}.htz-ai{font-weight:bold}.htz-aj{transition-property:-webkit-transform,transform;-webkit-transition-property:-webkit-transform,transform;-moz-transition-property:transform}.htz-ak{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-al{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-am{flex-grow:1;-webkit-flex-grow:1}.htz-an{margin-bottom:1rem}.htz-ao{border-bottom-color:transparent}.htz-ap{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-aq{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-ar{display:none}.htz-as{font-size:inherit}.htz-at{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-au{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-av{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aw{text-decoration:none}.htz-ax{white-space:nowrap}.htz-ay::moz-focus-inner{border:0px}.htz-az::moz-focus-inner{padding:0rem}.htz-ba{position:relative}.htz-bb:after{content:}.htz-bc:after{height:1px}.htz-bd:after{position:absolute}.htz-be:after{width:100%}.htz-bf:after{bottom:0rem}.htz-bg:before{content:}.htz-bh:before{height:1px}.htz-bi:before{position:absolute}.htz-bj:before{width:100%}.htz-bk:before{top:0rem}.htz-bl{padding-right:0rem}.htz-bm{padding-left:0rem}.htz-bn{border-radius:0rem}.htz-bo{border-color:transparent}.htz-bp{color:#2D2D2D}.htz-bq{font-style:italic}.htz-br{height:5rem}.htz-bs{margin-left:0.1rem}.htz-bt{margin-top:calc(1px - 1rem)}.htz-bu{width:5rem}.htz-bv:hover{text-decoration:none}.htz-bw:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bx:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-by:hover{border-color:transparent}.htz-bz:focus{outline:none}.htz-ca:focus{text-decoration:none}.htz-cb:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cc:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cd:focus{background-color:#0B7EB5}.htz-ce:focus{border-color:transparent}.htz-cf:focus{color:#FFF}.htz-cg:active{outline:none}.htz-ch:active{text-decoration:none}.htz-ci:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-cj:active{background-color:#0B7EB5}.htz-ck:active{border-color:transparent}.htz-cl:active{color:#FFF}.htz-cm{vertical-align:-0.15em}.htz-cn{color:inherit}.htz-co{fill:#FFF}.htz-cp{margin-left:-1rem}.htz-cq{border:none}.htz-cr{background-color:transparent}.htz-cs{overflow:auto}.htz-ct{height:6rem}.htz-cu:focus{cursor:text}.htz-cv{color:#B4B4B4}@media (max-width: 80em){.htz-h{font-size:2.3333333333333335rem}.htz-i{line-height:1.2857142857142858em}.htz-cw{font-size:1.8333333333333333rem}.htz-cx{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.2857142857142856rem}.htz-k{line-height:1.3125em}.htz-cy{font-size:1.7142857142857142rem}.htz-cz{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a contentEditable div with label 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start;-webkit-box-align:start;-webkit-align-items:flex-start}.htz-d{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{background-color:#EBF2F5}.htz-m{border-left-width:1px}.htz-n{border-left-style:solid}.htz-o{border-left-color:#DAE9F2}.htz-p{border-right-width:1px}.htz-q{border-right-style:solid}.htz-r{border-right-color:#DAE9F2}.htz-s{border-top-width:1px}.htz-t{border-top-style:solid}.htz-u{border-top-color:#DAE9F2}.htz-v{padding-top:calc(1rem - 1px)}.htz-w{border-bottom-width:1px}.htz-x{border-bottom-style:solid}.htz-y{border-bottom-color:#DAE9F2}.htz-z{padding-bottom:calc(1rem - 1px)}.htz-ab:hover{background-color:#E6EDF0}.htz-ac:hover{border-color:#DAE9F2}.htz-ae:hover{color:#2D2D2D}.htz-af{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ag{margin-left:1rem}.htz-ah{color:#006B96}.htz-ai{font-weight:bold}.htz-aj{transition-property:-webkit-transform,transform;-webkit-transition-property:-webkit-transform,transform;-moz-transition-property:transform}.htz-ak{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-al{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-am{flex-grow:1;-webkit-flex-grow:1}.htz-an{margin-bottom:1rem}.htz-ao{border-bottom-color:transparent}.htz-ap{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-aq{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-ar{display:none}.htz-as{font-size:inherit}.htz-at{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-au{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-av{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aw{text-decoration:none}.htz-ax{white-space:nowrap}.htz-ay::moz-focus-inner{border:0px}.htz-az::moz-focus-inner{padding:0rem}.htz-ba{position:relative}.htz-bb:after{content:\\"\\"}.htz-bc:after{height:1px}.htz-bd:after{position:absolute}.htz-be:after{width:100%}.htz-bf:after{bottom:0rem}.htz-bg:before{content:\\"\\"}.htz-bh:before{height:1px}.htz-bi:before{position:absolute}.htz-bj:before{width:100%}.htz-bk:before{top:0rem}.htz-bl{padding-right:0rem}.htz-bm{padding-left:0rem}.htz-bn{border-radius:0rem}.htz-bo{border-color:transparent}.htz-bp{color:#2D2D2D}.htz-bq{font-style:italic}.htz-br{height:5rem}.htz-bs{margin-left:0.1rem}.htz-bt{margin-top:calc(1px - 1rem)}.htz-bu{width:5rem}.htz-bv:hover{text-decoration:none}.htz-bw:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bx:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-by:hover{border-color:transparent}.htz-bz:focus{outline:none}.htz-ca:focus{text-decoration:none}.htz-cb:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cc:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cd:focus{background-color:#0B7EB5}.htz-ce:focus{border-color:transparent}.htz-cf:focus{color:#FFF}.htz-cg:active{outline:none}.htz-ch:active{text-decoration:none}.htz-ci:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-cj:active{background-color:#0B7EB5}.htz-ck:active{border-color:transparent}.htz-cl:active{color:#FFF}.htz-cm{vertical-align:-0.15em}.htz-cn{color:inherit}.htz-co{fill:#FFF}.htz-cp{margin-left:-1rem}.htz-cq{border:none}.htz-cr{background-color:transparent}.htz-cs{overflow:auto}.htz-ct{height:6rem}.htz-cu:focus{cursor:text}.htz-cv{color:#B4B4B4}@media (max-width: 80em){.htz-h{font-size:2.3333333333333335rem}.htz-i{line-height:1.2857142857142858em}.htz-cw{font-size:1.8333333333333333rem}.htz-cx{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.2857142857142856rem}.htz-k{line-height:1.3125em}.htz-cy{font-size:1.7142857142857142rem}.htz-cz{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a disabled input 1`] = `
 <div>
