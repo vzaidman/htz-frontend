@@ -8,7 +8,6 @@ import fontStacks from './consts/fontStacks';
 import gridStyle from './consts/gridStyle';
 import inputStyle from './consts/inputStyle';
 import typeConf from './consts/typeConf';
-import internationalization from './consts/internationalization';
 import i18n from './consts/i18n';
 
 // methods
@@ -108,4 +107,4 @@ const htzTheme = Object.freeze({
 });
 
 export default htzTheme;
-export { bps, getColor, getTransition, mq, pxToRem, typesetter, internationalization, i18n, };
+export { bps, getColor, getTransition, mq, pxToRem, typesetter, i18n, };

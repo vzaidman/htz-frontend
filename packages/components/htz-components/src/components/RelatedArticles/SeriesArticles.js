@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
-import { internationalization, } from '@haaretz/htz-theme';
+import { i18n, } from '@haaretz/htz-theme';
 import ArticleLink from './articleLink';
 import Button from '../Button/Button';
 
@@ -176,7 +176,7 @@ export default class SeriesArticles extends React.Component {
   };
 
   render() {
-    const { loadButton, titlePrefix, } = internationalization.seriesArticle;
+    const { loadButton, titlePrefix, } = i18n.seriesArticle;
     return (
       <SeriesArticlesWrapper marginBottom={this.props.marginBottom}>
         <ArticleListWrapper  aria-live='polite'>

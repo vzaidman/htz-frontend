@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
-import { internationalization, } from '@haaretz/htz-theme';
+import { i18n, } from '@haaretz/htz-theme';
 import ArticleLink from './articleLink';
 
 const propTypes = {
@@ -109,7 +109,7 @@ const articleWrapperStyle = ({ theme, lastItem, }) => ({
 const ArticleWrapper = createComponent(articleWrapperStyle, 'li');
 
 function LinksBlock({ seriesTitle, articlePositionInTheSeries, articles, marginBottom, }) {
-  const { titlePrefix, } = internationalization.seriesArticle;
+  const { titlePrefix, } = i18n.seriesArticle;
   return (
     <ArticleListWrapper marginBottom={marginBottom}>
       <SeriesTitle>{titlePrefix + seriesTitle}</SeriesTitle>
