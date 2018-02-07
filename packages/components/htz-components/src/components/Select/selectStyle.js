@@ -9,6 +9,13 @@ export default function selectStyle({ theme, miscStyles, variant, isOpen, }) {
       {
         ...(isOpen ? { borderBottom: 'none', } : {}),
       },
+      {
+        ':before': {
+          left: '0',
+          right: '0',
+          zIndex: '1',
+        },
+      },
       ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
     ],
   };

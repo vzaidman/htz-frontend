@@ -6,13 +6,13 @@ exports[`<Select> DOM element renders correctly with a controlled selected item 
     onKeyDown={[Function]}
   >
     <div
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <button
         aria-expanded={false}
         aria-haspopup={true}
         aria-label="open menu"
-        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        className="htz-a htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-t htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-i htz-aq htz-ar htz-l htz-m htz-n htz-o htz-p htz-q htz-as htz-at htz-au htz-av"
         onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -34,7 +34,7 @@ exports[`<Select> DOM element renders correctly with a controlled selected item 
 </div>
 `;
 
-exports[`<Select> DOM element renders correctly with a controlled selected item 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+exports[`<Select> DOM element renders correctly with a controlled selected item 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{position:relative}.htz-j:before{background-color:#0B7EB5}.htz-k:before{content:\\"\\"}.htz-l:before{height:1px}.htz-m:before{position:absolute}.htz-n:before{width:100%}.htz-o:before{top:0rem}.htz-p:before{left:0rem}.htz-q:before{right:0rem}.htz-r:before{z-index:1}.htz-s:after{background-color:#0B7EB5}.htz-t:after{content:\\"\\"}.htz-u:after{height:1px}.htz-v:after{position:absolute}.htz-w:after{width:100%}.htz-x:after{bottom:0rem}.htz-y{text-align:right}.htz-z{padding-right:1rem}.htz-ab{padding-left:1rem}.htz-ac{background-color:#FFF}.htz-ae{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-af{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ag{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ah:after{width:0rem}.htz-ai:after{height:0rem}.htz-aj:after{border-left:0.3em solid transparent}.htz-ak:after{border-right:0.3em solid transparent}.htz-al:after{border-top:0.5em solid #0B7EB5}.htz-am:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-an:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ao:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ap:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aq:before{background-color:#EBEBEB}.htz-ar:before{content:}.htz-as{padding-bottom:1rem}.htz-at{padding-top:1rem}.htz-au:focus{outline:none}.htz-av:focus{background-color:#EBF2F5}"`;
 
 exports[`<Select> DOM element renders correctly with a placholder prop 1`] = `
 <div>
@@ -42,13 +42,13 @@ exports[`<Select> DOM element renders correctly with a placholder prop 1`] = `
     onKeyDown={[Function]}
   >
     <div
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <button
         aria-expanded={false}
         aria-haspopup={true}
         aria-label="open menu"
-        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        className="htz-a htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-t htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-i htz-aq htz-ar htz-l htz-m htz-n htz-o htz-p htz-q htz-as htz-at htz-au htz-av"
         onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -70,7 +70,7 @@ exports[`<Select> DOM element renders correctly with a placholder prop 1`] = `
 </div>
 `;
 
-exports[`<Select> DOM element renders correctly with a placholder prop 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+exports[`<Select> DOM element renders correctly with a placholder prop 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{position:relative}.htz-j:before{background-color:#0B7EB5}.htz-k:before{content:\\"\\"}.htz-l:before{height:1px}.htz-m:before{position:absolute}.htz-n:before{width:100%}.htz-o:before{top:0rem}.htz-p:before{left:0rem}.htz-q:before{right:0rem}.htz-r:before{z-index:1}.htz-s:after{background-color:#0B7EB5}.htz-t:after{content:\\"\\"}.htz-u:after{height:1px}.htz-v:after{position:absolute}.htz-w:after{width:100%}.htz-x:after{bottom:0rem}.htz-y{text-align:right}.htz-z{padding-right:1rem}.htz-ab{padding-left:1rem}.htz-ac{background-color:#FFF}.htz-ae{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-af{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ag{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ah:after{width:0rem}.htz-ai:after{height:0rem}.htz-aj:after{border-left:0.3em solid transparent}.htz-ak:after{border-right:0.3em solid transparent}.htz-al:after{border-top:0.5em solid #0B7EB5}.htz-am:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-an:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ao:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ap:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aq:before{background-color:#EBEBEB}.htz-ar:before{content:}.htz-as{padding-bottom:1rem}.htz-at{padding-top:1rem}.htz-au:focus{outline:none}.htz-av:focus{background-color:#EBF2F5}"`;
 
 exports[`<Select> DOM element renders correctly with custom attrs prop 1`] = `
 <div>
@@ -79,13 +79,13 @@ exports[`<Select> DOM element renders correctly with custom attrs prop 1`] = `
     onKeyDown={[Function]}
   >
     <div
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <button
         aria-expanded={false}
         aria-haspopup={true}
         aria-label="open menu"
-        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        className="htz-a htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-t htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-i htz-aq htz-ar htz-l htz-m htz-n htz-o htz-p htz-q htz-as htz-at htz-au htz-av"
         onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -107,7 +107,7 @@ exports[`<Select> DOM element renders correctly with custom attrs prop 1`] = `
 </div>
 `;
 
-exports[`<Select> DOM element renders correctly with custom attrs prop 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+exports[`<Select> DOM element renders correctly with custom attrs prop 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{position:relative}.htz-j:before{background-color:#0B7EB5}.htz-k:before{content:\\"\\"}.htz-l:before{height:1px}.htz-m:before{position:absolute}.htz-n:before{width:100%}.htz-o:before{top:0rem}.htz-p:before{left:0rem}.htz-q:before{right:0rem}.htz-r:before{z-index:1}.htz-s:after{background-color:#0B7EB5}.htz-t:after{content:\\"\\"}.htz-u:after{height:1px}.htz-v:after{position:absolute}.htz-w:after{width:100%}.htz-x:after{bottom:0rem}.htz-y{text-align:right}.htz-z{padding-right:1rem}.htz-ab{padding-left:1rem}.htz-ac{background-color:#FFF}.htz-ae{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-af{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ag{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ah:after{width:0rem}.htz-ai:after{height:0rem}.htz-aj:after{border-left:0.3em solid transparent}.htz-ak:after{border-right:0.3em solid transparent}.htz-al:after{border-top:0.5em solid #0B7EB5}.htz-am:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-an:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ao:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ap:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aq:before{background-color:#EBEBEB}.htz-ar:before{content:}.htz-as{padding-bottom:1rem}.htz-at{padding-top:1rem}.htz-au:focus{outline:none}.htz-av:focus{background-color:#EBF2F5}"`;
 
 exports[`<Select> DOM element renders correctly with custom miscStyles 1`] = `
 <div>
@@ -115,13 +115,13 @@ exports[`<Select> DOM element renders correctly with custom miscStyles 1`] = `
     onKeyDown={[Function]}
   >
     <div
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <button
         aria-expanded={false}
         aria-haspopup={true}
         aria-label="open menu"
-        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        className="htz-a htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-t htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-i htz-aq htz-ar htz-l htz-m htz-n htz-o htz-p htz-q htz-as htz-at htz-au htz-av"
         onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -143,7 +143,7 @@ exports[`<Select> DOM element renders correctly with custom miscStyles 1`] = `
 </div>
 `;
 
-exports[`<Select> DOM element renders correctly with custom miscStyles 2`] = `".htz-a{width:100%}.htz-b{color:red}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+exports[`<Select> DOM element renders correctly with custom miscStyles 2`] = `".htz-a{width:100%}.htz-b{color:red}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{position:relative}.htz-j:before{background-color:#0B7EB5}.htz-k:before{content:\\"\\"}.htz-l:before{height:1px}.htz-m:before{position:absolute}.htz-n:before{width:100%}.htz-o:before{top:0rem}.htz-p:before{left:0rem}.htz-q:before{right:0rem}.htz-r:before{z-index:1}.htz-s:after{background-color:#0B7EB5}.htz-t:after{content:\\"\\"}.htz-u:after{height:1px}.htz-v:after{position:absolute}.htz-w:after{width:100%}.htz-x:after{bottom:0rem}.htz-y{text-align:right}.htz-z{padding-right:1rem}.htz-ab{padding-left:1rem}.htz-ac{background-color:#FFF}.htz-ae{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-af{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ag{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ah:after{width:0rem}.htz-ai:after{height:0rem}.htz-aj:after{border-left:0.3em solid transparent}.htz-ak:after{border-right:0.3em solid transparent}.htz-al:after{border-top:0.5em solid #0B7EB5}.htz-am:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-an:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ao:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ap:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aq:before{background-color:#EBEBEB}.htz-ar:before{content:}.htz-as{padding-bottom:1rem}.htz-at{padding-top:1rem}.htz-au:focus{outline:none}.htz-av:focus{background-color:#EBF2F5}"`;
 
 exports[`<Select> DOM element renders correctly with default selected item 1`] = `
 <div>
@@ -151,13 +151,13 @@ exports[`<Select> DOM element renders correctly with default selected item 1`] =
     onKeyDown={[Function]}
   >
     <div
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <button
         aria-expanded={false}
         aria-haspopup={true}
         aria-label="open menu"
-        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        className="htz-a htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-t htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-i htz-aq htz-ar htz-l htz-m htz-n htz-o htz-p htz-q htz-as htz-at htz-au htz-av"
         onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -179,7 +179,7 @@ exports[`<Select> DOM element renders correctly with default selected item 1`] =
 </div>
 `;
 
-exports[`<Select> DOM element renders correctly with default selected item 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+exports[`<Select> DOM element renders correctly with default selected item 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{position:relative}.htz-j:before{background-color:#0B7EB5}.htz-k:before{content:\\"\\"}.htz-l:before{height:1px}.htz-m:before{position:absolute}.htz-n:before{width:100%}.htz-o:before{top:0rem}.htz-p:before{left:0rem}.htz-q:before{right:0rem}.htz-r:before{z-index:1}.htz-s:after{background-color:#0B7EB5}.htz-t:after{content:\\"\\"}.htz-u:after{height:1px}.htz-v:after{position:absolute}.htz-w:after{width:100%}.htz-x:after{bottom:0rem}.htz-y{text-align:right}.htz-z{padding-right:1rem}.htz-ab{padding-left:1rem}.htz-ac{background-color:#FFF}.htz-ae{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-af{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ag{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ah:after{width:0rem}.htz-ai:after{height:0rem}.htz-aj:after{border-left:0.3em solid transparent}.htz-ak:after{border-right:0.3em solid transparent}.htz-al:after{border-top:0.5em solid #0B7EB5}.htz-am:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-an:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ao:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ap:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aq:before{background-color:#EBEBEB}.htz-ar:before{content:}.htz-as{padding-bottom:1rem}.htz-at{padding-top:1rem}.htz-au:focus{outline:none}.htz-av:focus{background-color:#EBF2F5}"`;
 
 exports[`<Select> DOM element renders correctly with minimal required props 1`] = `
 <div>
@@ -187,13 +187,13 @@ exports[`<Select> DOM element renders correctly with minimal required props 1`] 
     onKeyDown={[Function]}
   >
     <div
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <button
         aria-expanded={false}
         aria-haspopup={true}
         aria-label="open menu"
-        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        className="htz-a htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-t htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-i htz-aq htz-ar htz-l htz-m htz-n htz-o htz-p htz-q htz-as htz-at htz-au htz-av"
         onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -215,7 +215,7 @@ exports[`<Select> DOM element renders correctly with minimal required props 1`] 
 </div>
 `;
 
-exports[`<Select> DOM element renders correctly with minimal required props 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+exports[`<Select> DOM element renders correctly with minimal required props 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{position:relative}.htz-j:before{background-color:#0B7EB5}.htz-k:before{content:\\"\\"}.htz-l:before{height:1px}.htz-m:before{position:absolute}.htz-n:before{width:100%}.htz-o:before{top:0rem}.htz-p:before{left:0rem}.htz-q:before{right:0rem}.htz-r:before{z-index:1}.htz-s:after{background-color:#0B7EB5}.htz-t:after{content:\\"\\"}.htz-u:after{height:1px}.htz-v:after{position:absolute}.htz-w:after{width:100%}.htz-x:after{bottom:0rem}.htz-y{text-align:right}.htz-z{padding-right:1rem}.htz-ab{padding-left:1rem}.htz-ac{background-color:#FFF}.htz-ae{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-af{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ag{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ah:after{width:0rem}.htz-ai:after{height:0rem}.htz-aj:after{border-left:0.3em solid transparent}.htz-ak:after{border-right:0.3em solid transparent}.htz-al:after{border-top:0.5em solid #0B7EB5}.htz-am:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-an:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ao:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ap:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aq:before{background-color:#EBEBEB}.htz-ar:before{content:}.htz-as{padding-bottom:1rem}.htz-at{padding-top:1rem}.htz-au:focus{outline:none}.htz-av:focus{background-color:#EBF2F5}"`;
 
 exports[`<Select> DOM element renders correctly without display key in item 1`] = `
 <div>
@@ -223,13 +223,13 @@ exports[`<Select> DOM element renders correctly without display key in item 1`] 
     onKeyDown={[Function]}
   >
     <div
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <button
         aria-expanded={false}
         aria-haspopup={true}
         aria-label="open menu"
-        className="htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-i htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        className="htz-a htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-t htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-i htz-aq htz-ar htz-l htz-m htz-n htz-o htz-p htz-q htz-as htz-at htz-au htz-av"
         onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -251,4 +251,4 @@ exports[`<Select> DOM element renders correctly without display key in item 1`] 
 </div>
 `;
 
-exports[`<Select> DOM element renders correctly without display key in item 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{border-top-width:1px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(0.00001rem - 1px)}.htz-m{border-bottom-width:1px}.htz-n{border-bottom-style:solid}.htz-o{border-bottom-color:#0B7EB5}.htz-p{padding-bottom:calc(0.00001rem - 1px)}.htz-q{text-align:right}.htz-r{padding-right:1rem}.htz-s{padding-left:1rem}.htz-t{background-color:#FFF}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-x:after{content:\\"\\"}.htz-y:after{width:0rem}.htz-z:after{height:0rem}.htz-ab:after{border-left:0.3em solid transparent}.htz-ac:after{border-right:0.3em solid transparent}.htz-ae:after{border-top:0.5em solid #0B7EB5}.htz-af:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ag:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ah:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ai:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{border-top-color:#EBEBEB}.htz-ak{padding-top:1rem}.htz-al{padding-bottom:1rem}.htz-am{border-top:none}.htz-an:focus{outline:none}.htz-ao:focus{background-color:#EBF2F5}"`;
+exports[`<Select> DOM element renders correctly without display key in item 2`] = `".htz-a{width:100%}.htz-b{color:#0B7EB5}.htz-c{border-left-width:1px}.htz-d{border-left-style:solid}.htz-e{border-left-color:#0B7EB5}.htz-f{border-right-width:1px}.htz-g{border-right-style:solid}.htz-h{border-right-color:#0B7EB5}.htz-i{position:relative}.htz-j:before{background-color:#0B7EB5}.htz-k:before{content:\\"\\"}.htz-l:before{height:1px}.htz-m:before{position:absolute}.htz-n:before{width:100%}.htz-o:before{top:0rem}.htz-p:before{left:0rem}.htz-q:before{right:0rem}.htz-r:before{z-index:1}.htz-s:after{background-color:#0B7EB5}.htz-t:after{content:\\"\\"}.htz-u:after{height:1px}.htz-v:after{position:absolute}.htz-w:after{width:100%}.htz-x:after{bottom:0rem}.htz-y{text-align:right}.htz-z{padding-right:1rem}.htz-ab{padding-left:1rem}.htz-ac{background-color:#FFF}.htz-ae{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-af{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ag{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ah:after{width:0rem}.htz-ai:after{height:0rem}.htz-aj:after{border-left:0.3em solid transparent}.htz-ak:after{border-right:0.3em solid transparent}.htz-al:after{border-top:0.5em solid #0B7EB5}.htz-am:after{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-an:after{transform-origin:center center;-webkit-transform-origin:center center}.htz-ao:after{transition-duration:.25s;-webkit-transition-duration:.25s}.htz-ap:after{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aq:before{background-color:#EBEBEB}.htz-ar:before{content:}.htz-as{padding-bottom:1rem}.htz-at{padding-top:1rem}.htz-au:focus{outline:none}.htz-av:focus{background-color:#EBF2F5}"`;

@@ -2,7 +2,7 @@ import React, { Component, } from 'react';
 import PropTypes, { oneOf, shape, oneOfType, } from 'prop-types';
 import Downshift from 'downshift';
 import { createComponent, } from 'react-fela';
-import { borderTop, border, } from '@haaretz/htz-css-tools';
+import { borderTop, borderBottom, } from '@haaretz/htz-css-tools';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
@@ -87,19 +87,13 @@ const dropDownMenuStyle = ({ theme, variant, }) => ({
   flexDirection: 'column',
   position: 'absolute',
   top: 0,
-  left: `-${theme.selectStyle.borderWidth}px`,
-  right: `-${theme.selectStyle.borderWidth}px`,
   extend: [
-    border(
+    borderBottom(
       `${theme.selectStyle.borderWidth}px`,
-      // todo: fix border so it works with lines = 0 , curruntly when passing 0 there is no border top and bottom
       theme.selectStyle.lines,
       theme.selectStyle.borderStyle,
       theme.color('select', `${variant}Border`)
     ),
-    {
-      borderTop: 'none',
-    },
   ],
 });
 
@@ -125,6 +119,12 @@ const ItemStyle = ({ theme, variant = 'primary', isSelected, activeItem, }) => (
       theme.selectStyle.borderStyle,
       theme.color('select', `${variant}BorderItem`)
     ),
+    {
+      ':before': {
+        left: '0',
+        right: '0',
+      },
+    },
     {
       paddingBottom: '1rem',
       paddingTop: '1rem',
@@ -164,7 +164,7 @@ const selectedItemStyle = ({ noHighlitedItems, theme, variant, isOpen, }) => ({
   },
   extend: [
     {
-      borderTop: 'none',
+      ':before': { content: '', },
     },
   ],
 });
