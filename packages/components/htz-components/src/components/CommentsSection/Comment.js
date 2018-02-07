@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { borderBottom, getRemFromPx, } from '@haaretz/htz-css-tools';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { commentI18n, } from '@haaretz/htz-theme';
 import { createComponent, withTheme, } from 'react-fela';
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 import CommentList from './CommentList.js'; // eslint-disable-line import/no-named-as-default
@@ -337,12 +335,13 @@ class Comment extends React.Component {
       signUpNotification,
       subComments,
       title,
+      theme,
     } = this.props;
 
     const {
       tags: { editorsPick, usersPick, },
       buttons: { replyBtnTxt, readMoreBtnTxt, reportAbuseBtnTxt, },
-    } = commentI18n;
+    } = theme.commentI18n;
     return (
       <StyledWrapper
         isSubComment={isSubComment}

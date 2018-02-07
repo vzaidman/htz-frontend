@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { commentSentI18n, } from '@haaretz/htz-theme';
 import isEmail from 'validator/lib/isEmail';
 import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
@@ -82,7 +80,7 @@ function CommentSent({ closeDisplayThankYou, displayThankYou, signUpNotification
       commentRecievedBoldTextThankYouPage,
       commentRecievedTextThankYouPage,
     },
-  } = commentSentI18n;
+  } = theme.commentSentI18n;
   return (
     <StyledCont displayThankYou={displayThankYou}>
       {displayThankYou ? (

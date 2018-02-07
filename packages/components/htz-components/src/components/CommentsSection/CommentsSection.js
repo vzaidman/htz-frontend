@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { commentsSectionI18n, } from '@haaretz/htz-theme';
+import { createComponent, withTheme, } from 'react-fela';
 import Recaptcha from 'react-google-invisible-recaptcha';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList'; // eslint-disable-line import/no-named-as-default
@@ -57,6 +55,10 @@ const propTypes = {
    * @param {String} - notificationEmail - The email the user entered
    */
   signUpNotification: PropTypes.func.isRequired,
+  /** passed as a a prop by fela's withTheme func before default export */
+  theme: PropTypes.shape({
+    commentsSectionI18n: PropTypes.object.isRequired,
+  }).isRequired,
   /** used to calculate comment numbers */
   totalHits: PropTypes.number.isRequired,
 };
@@ -93,7 +95,7 @@ const SelectStyle = {
   marginInlineStart: '2.3rem',
 };
 
-class CommentsSection extends React.Component {
+export class CommentsSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -169,6 +171,7 @@ class CommentsSection extends React.Component {
       commentsMinusRate,
       initVote,
       loadAllComments,
+      theme,
       ...props // eslint-disable-line no-unused-vars
     } = this.props;
 
@@ -181,7 +184,7 @@ class CommentsSection extends React.Component {
         commentRatingItemTxt,
         editorsPickItemTxt,
       },
-    } = commentsSectionI18n;
+    } = theme.commentsSectionI18n;
 
     return (
       <StyledSection>
@@ -230,4 +233,4 @@ CommentsSection.propTypes = propTypes;
 
 CommentsSection.defaultProps = defaultProps;
 
-export default CommentsSection;
+export default withTheme(CommentsSection);

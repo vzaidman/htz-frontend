@@ -110,6 +110,13 @@ const htzTheme = Object.freeze({
   selectStyle,
   typeConf,
 
+  // I18n
+  commentI18n,
+  commentFormI18n,
+  commentSentI18n,
+  commentsSectionI18n,
+  tagsElementI18n,
+
   // Methods
   color: getColor,
   getDelay,
@@ -123,17 +130,4 @@ const htzTheme = Object.freeze({
 });
 
 export default htzTheme;
-export {
-  bps,
-  commentI18n,
-  commentFormI18n,
-  commentSentI18n,
-  commentsSectionI18n,
-  getColor,
-  getTransition,
-  i18n,
-  mq,
-  pxToRem,
-  tagsElementI18n,
-  typesetter,
-};
+export { bps, getColor, getTransition, mq, pxToRem, typesetter, };

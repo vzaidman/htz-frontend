@@ -3,25 +3,43 @@ import React from 'react';
 import matchMediaPolyfill from 'mq-polyfill';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
-import CommentsSection from '../CommentsSection';
+import CommentSectionWithTheme, { CommentsSection, } from '../CommentsSection';
 
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail
 Math.random = jest.fn(() => 123456789);
+const requiredFunc = jest.fn();
 
-describe('<Comment>', () => {
+const mockTheme = {
+  commentsSectionI18n: {
+    buttons: Object.freeze({
+      loadAllCommentsBtnText: 'טען את כל התגובות',
+    }),
+    selectItems: Object.freeze({
+      dateDescendingItemTxt: 'מהאחרונה לראשונה',
+      dateAscendingItemTxt: 'מהראשונה לאחרונה',
+      commentRatingItemTxt: 'הצג לפי דירוג',
+      editorsPickItemTxt: 'בחירת העורכים',
+    }),
+    texts: Object.freeze({
+      chooseSortMethodText: 'סדרו את התגובות',
+    }),
+  },
+};
+
+describe('<CommentSection>', () => {
   describe('DOM element', () => {
     matchMediaPolyfill(window);
     window.resizeTo = resizeTo;
     window.resizeTo(1100, 768);
     it('renders correctly with minimum required props', () => {
       const { component, styles, } = felaSnapshotter(
-        <CommentsSection
-          initVote={() => console.log('i should be a callback')}
-          reportAbuse={() => console.log('i should be a callback')}
-          initNewComment={() => console.log('i should be a callback')}
-          signUpNotification={() => console.log('i should be a callback')}
-          loadAllComments={() => console.log('i should be a callback')}
+        <CommentSectionWithTheme
+          initVote={requiredFunc}
+          reportAbuse={requiredFunc}
+          initNewComment={requiredFunc}
+          signUpNotification={requiredFunc}
+          loadAllComments={requiredFunc}
           comments={[
             {
               author:
@@ -53,11 +71,12 @@ describe('<Comment>', () => {
     it('correctly changes sorting order according to dateAscending', () => {
       const output = felaMount(
         <CommentsSection
-          initVote={() => console.log('i should be a callback')}
-          reportAbuse={() => console.log('i should be a callback')}
-          initNewComment={() => console.log('i should be a callback')}
-          signUpNotification={() => console.log('i should be a callback')}
-          loadAllComments={() => console.log('i should be a callback')}
+          theme={mockTheme}
+          initVote={requiredFunc}
+          reportAbuse={requiredFunc}
+          initNewComment={requiredFunc}
+          signUpNotification={requiredFunc}
+          loadAllComments={requiredFunc}
           comments={[
             {
               author: 'first',
@@ -86,14 +105,15 @@ describe('<Comment>', () => {
       output.setState({ sortMethod: { value: 'dateAscending', }, });
       expect(output.find('CommentList').props().comments[0].author).toEqual('first');
     });
-    it('correctly changes sorting order according to dateAscending', () => {
+    it('correctly changes sorting order according to commentRating', () => {
       const output = felaMount(
         <CommentsSection
-          initVote={() => console.log('i should be a callback')}
-          reportAbuse={() => console.log('i should be a callback')}
-          initNewComment={() => console.log('i should be a callback')}
-          signUpNotification={() => console.log('i should be a callback')}
-          loadAllComments={() => console.log('i should be a callback')}
+          theme={mockTheme}
+          initVote={requiredFunc}
+          reportAbuse={requiredFunc}
+          initNewComment={requiredFunc}
+          signUpNotification={requiredFunc}
+          loadAllComments={requiredFunc}
           comments={[
             {
               author: 'first and better rating',
@@ -135,11 +155,12 @@ describe('<Comment>', () => {
     it('correctly changes sorting order according to editorsPick', () => {
       const output = felaMount(
         <CommentsSection
-          initVote={() => console.log('i should be a callback')}
-          reportAbuse={() => console.log('i should be a callback')}
-          initNewComment={() => console.log('i should be a callback')}
-          signUpNotification={() => console.log('i should be a callback')}
-          loadAllComments={() => console.log('i should be a callback')}
+          theme={mockTheme}
+          initVote={requiredFunc}
+          reportAbuse={requiredFunc}
+          initNewComment={requiredFunc}
+          signUpNotification={requiredFunc}
+          loadAllComments={requiredFunc}
           comments={[
             {
               author: 'first and editorsPick',

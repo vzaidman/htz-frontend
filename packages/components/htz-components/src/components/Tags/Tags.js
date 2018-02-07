@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { tagsElementI18n, } from '@haaretz/htz-theme';
+import { createComponent, withTheme, } from 'react-fela';
 import Link from '../Link/Link';
 
 const propTypes = {
@@ -21,6 +19,10 @@ const propTypes = {
       contentName: PropTypes.string.isRequired,
     })
   ).isRequired,
+  /** passed as a a prop by fela's withTheme func before default export */
+  theme: PropTypes.shape({
+    tagsElementI18n: PropTypes.object.isRequired,
+  }).isRequired,
 };
 
 const titleStyle = ({ theme, }) => ({
@@ -50,10 +52,10 @@ const TagsWrapper = createComponent(tagsWrapperStyle);
 /**
  * Returns an inline list of the article's related tags.
  */
-function Tags({ tagsList, }) {
+function Tags({ tagsList, theme, }) {
   return (
     <TagsWrapper>
-      <TagsTitle>{tagsElementI18n.prefix}</TagsTitle>
+      <TagsTitle>{theme.tagsElementI18n.prefix}</TagsTitle>
       <ul>
         {tagsList.map((tag, i) => (
           <Tag key={tag.contentName} isLast={tagsList.length === i + 1}>
@@ -67,4 +69,4 @@ function Tags({ tagsList, }) {
 
 Tags.propTypes = propTypes;
 
-export default Tags;
+export default withTheme(Tags);

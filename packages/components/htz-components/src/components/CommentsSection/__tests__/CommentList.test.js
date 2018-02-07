@@ -2,7 +2,7 @@
 import React from 'react';
 import matchMediaPolyfill from 'mq-polyfill';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
-import CommentList from '../CommentList';
+import CommentList from '../CommentList'; // eslint-disable-line import/no-named-as-default
 
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail

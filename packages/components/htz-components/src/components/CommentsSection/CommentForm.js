@@ -2,8 +2,6 @@ import React from 'react';
 import { createComponent, withTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { borderBottom, } from '@haaretz/htz-css-tools';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { commentFormI18n, } from '@haaretz/htz-theme';
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 import CommentSent from './CommentSent';
 import Form from '../Form/Form'; // eslint-disable-line import/no-named-as-default
@@ -155,13 +153,13 @@ class CommentForm extends React.Component {
   }
 
   render() {
-    const { closeReplyForm, } = this.props;
+    const { closeReplyForm, theme, } = this.props;
     const {
       buttons: { sendBtnTxt, cancelBtnTxt, toggleUserBtnText, },
       labels: { nameLabelTxt, commentLabelTxt, },
       notes: { nameNoteTxt, commentNoteTxt, },
       errorNotes: { nameErrorNoteTxt, commentErrorNoteTxt, },
-    } = commentFormI18n;
+    } = theme.commentFormI18n;
 
     return this.state.displaySentComp ? (
       <div>
