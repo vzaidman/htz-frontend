@@ -28,7 +28,7 @@ const btnVariants = PropTypes.oneOf([
   'salesOpaque',
   'whatsapp',
   'whatsappOpaque',
-  'formatOpaque',
+  'formattingOpaque',
 ]);
 
 /**

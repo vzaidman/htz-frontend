@@ -519,7 +519,7 @@ class TextInput extends Component {
               <div>
                 {' '}
                 <Button
-                  variant={this.state.italicActive ? 'primaryOpaque' : 'formatOpaque'}
+                  variant={this.state.italicActive ? 'primaryOpaque' : 'formattingOpaque'}
                   attrs={{
                     'aria-checked': this.state.italicActive,
                     'arial-label': 'italic',
@@ -540,7 +540,7 @@ class TextInput extends Component {
                   <IconItalic />
                 </Button>
                 <Button
-                  variant={this.state.boldActive ? 'primaryOpaque' : 'formatOpaque'}
+                  variant={this.state.boldActive ? 'primaryOpaque' : 'formattingOpaque'}
                   attrs={{
                     'aria-checked': this.state.boldActive,
                     'arial-label': 'bold',

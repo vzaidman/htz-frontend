@@ -174,20 +174,20 @@ const colors = {
     facebookOpaqueHoverBorder: 'transparent',
     facebookOpaqueHoverText: 'white',
 
-    // todo: get hover, and focus design
-    // Opaque Format button
-    formatOpaqueBg: [ 'primary', '-6', ],
-    formatOpaqueBorder: 'transparent',
-    formatOpaqueText: [ 'neutral', '-1', ],
-    formatOpaqueActiveBg: [ 'primary', 'base', ],
-    formatOpaqueActiveBorder: 'transparent',
-    formatOpaqueActiveText: 'white',
-    formatOpaqueFocusBg: [ 'primary', 'base', ],
-    formatOpaqueFocusBorder: 'transparent',
-    formatOpaqueFocusText: 'white',
-    formatOpaqueHoverBg: [ 'primary', '-5', ],
-    formatOpaqueHoverBorder: 'transparent',
-    formatOpaqueHoverText: [ 'neutral', '-1', ],
+    
+    // Opaque formatting button
+    formattingOpaqueBg: [ 'primary', '-6', ],
+    formattingOpaqueBorder: 'transparent',
+    formattingOpaqueText: [ 'neutral', '-1', ],
+    formattingOpaqueActiveBg: [ 'primary', 'base', ],
+    formattingOpaqueActiveBorder: 'transparent',
+    formattingOpaqueActiveText: 'white',
+    formattingOpaqueFocusBg: [ 'primary', 'base', ],
+    formattingOpaqueFocusBorder: 'transparent',
+    formattingOpaqueFocusText: 'white',
+    formattingOpaqueHoverBg: [ 'primary', '-5', ],
+    formattingOpaqueHoverBorder: 'transparent',
+    formattingOpaqueHoverText: [ 'neutral', '-1', ],
 
     // Twitter
     twitterBg: 'white',
