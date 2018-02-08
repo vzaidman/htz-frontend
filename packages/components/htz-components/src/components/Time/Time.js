@@ -72,12 +72,12 @@ const offsetUnitConverters = {
 /**
  * Gets a time with offset from a given time.
  * @param {Date} time - The time object to refer to.
- * @param {String} offset - offset expression to add/reduce from time.
+ * @param {String} offsetExpr - offset expression to add/reduce from time.
  *
  * @returns {Date} - Date object with offset
  */
-function getTimeOffset(time, offset) {
-  const match = TIME_DIFF_REGEXP.exec(offset);
+function getTimeOffset(time, offsetExpr) {
+  const match = TIME_DIFF_REGEXP.exec(offsetExpr);
   let dateOffset;
   if (match) {
     const [ offset, offsetUnit, ] = [ parseInt(match[1], 10), match[2], ];
