@@ -39,6 +39,7 @@ const kickerPropTypes = {
 };
 const kickerDefaultProps = {
   isBlock: false,
+  miscStyles: null,
 };
 
 const styleKicker = ({ isBlock, fontSize, miscStyles, theme, }) => {
