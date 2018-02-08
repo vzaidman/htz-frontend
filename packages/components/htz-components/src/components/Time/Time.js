@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { format as formatFn, parse, isValid, addMilliseconds, } from 'date-fns';
+import { format as formatFn, parse, isValid, } from 'date-fns';
 import { createComponent, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
