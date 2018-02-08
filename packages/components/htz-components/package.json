@@ -23,7 +23,12 @@
     "lint": "htz-scripts lint",
     "prepare": "npm run build",
     "styleguide": "htz-scripts styleguide",
+<<<<<<< HEAD
     "styleguide:build": "htz-scripts styleguide:build",
+=======
+    "styleguide:build":
+      "htz-scripts styleguide:build && rm -rf ../../../docs/htz-components/**/* && cp -r dist/styleguide/* ../../../docs/htz-components",
+>>>>>>> chore(htz-components) remove unsused concurrent package
     "test": "htz-scripts test",
     "test:debug": "node --inspect-brk ./node_modules/.bin/htz-scripts test",
     "update-scripts": "htz-scripts update-scripts"
@@ -63,7 +68,6 @@
     "apollo-link-state": "^0.4.0",
     "babel-loader": "^7.1.2",
     "chalk": "^2.3.0",
-    "concurrently": "^3.5.1",
     "fela": "^6.0.2",
     "graphql-tag": "^2.5.0",
     "md5": "^2.2.1",
