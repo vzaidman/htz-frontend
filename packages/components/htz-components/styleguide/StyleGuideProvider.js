@@ -2,17 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import htzTheme, { cssReset, } from '@haaretz/htz-theme';
-import { ApolloClient, HttpLink, InMemoryCache, ApolloLink, } from 'apollo-client-preset';
+import { ApolloClient, InMemoryCache, ApolloLink, } from 'apollo-client-preset';
 import { withClientState, } from 'apollo-link-state';
 import { ApolloProvider, } from 'react-apollo';
-import config from 'config';
 import { createRenderer, StyleProvider, } from '@haaretz/fela-utils';
+import { SchemaLink, } from 'apollo-link-schema';
+import { makeExecutableSchema, addMockFunctionsToSchema, } from 'graphql-tools';
+import GraphQLJSON from 'graphql-type-json';
+import typeDefs from './typeDefs';
+import mocks from './mocks';
 
-const hostIp = config.get('hostIp');
+const resolveFunctions = {
+  JSON: GraphQLJSON,
+};
 
-const link = new HttpLink({
-  uri: `http://${hostIp}:3000/graphql`,
+const schema = makeExecutableSchema({ typeDefs, resolvers: resolveFunctions, });
+addMockFunctionsToSchema({
+  schema,
+  mocks,
 });
+
+// const hostIp = config.get('hostIp');
+
+const link = new SchemaLink({ schema, });
 
 const cache = new InMemoryCache();
 
