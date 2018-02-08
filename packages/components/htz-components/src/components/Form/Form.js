@@ -214,7 +214,9 @@ export class Form extends Component {
   clearForm() {
     const values = {};
     const keys = Object.keys(this.state.values);
-    keys.forEach(key => (values[key] = ''));
+    keys.forEach(key => {
+      values[key] = '';
+    });
     this.setState({
       values,
       errors: [],

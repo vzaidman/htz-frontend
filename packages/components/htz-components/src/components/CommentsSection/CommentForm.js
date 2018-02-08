@@ -164,16 +164,17 @@ class CommentForm extends React.Component {
     return this.state.displaySentComp ? (
       <div>
         <CommentSent
-          signUpNotification={(didSignUp, notificationEmail) =>
-            this.handleSignUpNotification(didSignUp, notificationEmail)
-          }
-          displayThankYou={this.state.displayThankYou}
           closeDisplayThankYou={() => {
             this.setState({ displayThankYou: false, displaySentComp: false, });
             if (this.isReplyForm) {
               closeReplyForm();
             }
           }}
+          displayThankYou={this.state.displayThankYou}
+          isReplyForm={this.isReplyForm}
+          signUpNotification={(didSignUp, notificationEmail) =>
+            this.handleSignUpNotification(didSignUp, notificationEmail)
+          }
         />
       </div>
     ) : (

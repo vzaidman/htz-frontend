@@ -13,6 +13,10 @@ const propTypes = {
   /** When true displays ThankYou screen, when false, displays sign up to email notifications screen */
   displayThankYou: PropTypes.bool.isRequired,
   /**
+   * Indicates if This is a reply form (affects style)
+   */
+  isReplyForm: PropTypes.bool.isRequired,
+  /**
    * A callback that gets the called when submitting the Form
    * @param {Boolean} - True if the user clicked the sign up button, false if clicked no thanks button
    * @param {String} - The email the user entered
@@ -28,19 +32,29 @@ const propTypes = {
 
 const defaultProps = {};
 
-const contStyle = ({ theme, displayThankYou, }) => ({
+const contStyle = ({ theme, displayThankYou, isReplyForm, }) => ({
   backgroundColor: theme.color('input', 'primaryBg'),
   paddingInlineStart: '4rem',
   paddingInlineEnd: '4rem',
   paddingTop: '5.4rem',
-  ...borderBottom('1px', 11, 'solid', theme.color('comments', 'divider')),
-  ...(displayThankYou
-    ? {
-      textAlign: 'center',
-      paddingTop: '9.4rem',
-      ...borderBottom('1px', 16, 'solid', theme.color('comments', 'divider')),
-    }
-    : {}),
+  extend: [
+    borderBottom('1px', 11, 'solid', theme.color('comments', 'divider')),
+    {
+      condition: displayThankYou === true,
+      style: {
+        textAlign: 'center',
+        paddingTop: '9.4rem',
+        ...borderBottom('1px', 16, 'solid', theme.color('comments', 'divider')),
+      },
+    },
+    {
+      condition: isReplyForm === true,
+      style: {
+        marginTop: '2rem',
+        marginBottom: 'calc(1px - 2rem)',
+      },
+    },
+  ],
 });
 
 const StyledCont = createComponent(contStyle);
@@ -67,7 +81,13 @@ const inputStyle = {
   marginTop: '4rem',
 };
 
-function CommentSent({ closeDisplayThankYou, displayThankYou, signUpNotification, theme, }) {
+function CommentSent({
+  closeDisplayThankYou,
+  displayThankYou,
+  isReplyForm,
+  signUpNotification,
+  theme,
+}) {
   const {
     buttons: { getNotificationsBtnTxt, dontGetNotificationsBtnTxt, closeBtnText, },
     labels: { emailLabelTxt, },
@@ -82,7 +102,7 @@ function CommentSent({ closeDisplayThankYou, displayThankYou, signUpNotification
     },
   } = theme.commentSentI18n;
   return (
-    <StyledCont displayThankYou={displayThankYou}>
+    <StyledCont displayThankYou={displayThankYou} isReplyForm={isReplyForm}>
       {displayThankYou ? (
         <div>
           <StyledBoldSpan>{commentRecievedBoldTextThankYouPage}</StyledBoldSpan>
