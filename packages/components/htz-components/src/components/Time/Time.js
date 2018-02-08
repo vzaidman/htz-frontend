@@ -132,6 +132,7 @@ function formatReducer(currentFormat, extendedFormatRule) {
 /**
  * Selects the appropriate time-format according to user configuration.
  * @param {string|DateFormatRule[]} format - A string with date-format Or DateFormatRule array that defines different date-formats for different ranges of time.
+ * @param {string|Date} time - Date string or date object for testing against format rules.
  * @returns {string} date-format string
  */
 function getFormatting(time, format) {
