@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, withTheme, } from 'react-fela';
-import { parseStyleProps, parseTypographyProp, borderVertical, autospace, } from '@haaretz/htz-css-tools';
+import { parseStyleProps, parseTypographyProp, borderVertical, } from '@haaretz/htz-css-tools';
 import ArticleCredit from '../Credit/CreditArticle';
 import AlertsDesktopButton from '../AlertsButton/AlertsDesktopButton';
 import Time from '../Time/Time';
