@@ -48,6 +48,7 @@ const colorPropTypes = {
 const colorDefaultProps = {
   bgColor: null,
   tagName: 'span',
+  miscStyles: null,
 };
 
 const styleColor = ({ color, bgColor, miscStyles, theme, }) => {
