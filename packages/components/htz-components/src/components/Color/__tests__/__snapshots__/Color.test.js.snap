@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Color component renders a span tag,with "primary" color pair and "neutral" background-color 1`] = `
+Object {
+  "component": <div>
+    <span
+      className="htz-a htz-b"
+    >
+      Primary +1 color with Neutral BG color text
+    </span>
+  </div>,
+  "styles": ".htz-a{color:#006B96}.htz-b{background-color:#222}",
+}
+`;
+
+exports[`Color component renders a span tag,with 'primary' color pair 1`] = `
+Object {
+  "component": <div>
+    <span
+      className="htz-a"
+    >
+      Primary +1 color text
+    </span>
+  </div>,
+  "styles": ".htz-a{color:#006B96}",
+}
+`;
+
+exports[`Color component renders a span tag,with 'primary' color string 1`] = `
+Object {
+  "component": <div>
+    <span
+      className="htz-a"
+    >
+      Primary color text
+    </span>
+  </div>,
+  "styles": ".htz-a{color:#0B7EB5}",
+}
+`;
+
+exports[`Color component renders a strong tag,with "primary" color 1`] = `
+Object {
+  "component": <div>
+    <strong
+      className="htz-a"
+    >
+      Primary color text in strong
+    </strong>
+  </div>,
+  "styles": ".htz-a{color:#0B7EB5}",
+}
+`;

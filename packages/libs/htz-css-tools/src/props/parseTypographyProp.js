@@ -110,7 +110,8 @@ function createTypeStyles(
   if (!isTypographyObject(typographicValues)) return {};
 
   // Responsive object
-  if (typographicValues.value) {
+  // eslint-disable-next-line eqeqeq
+  if (typographicValues.value != null) {
     const lines = typographicValues.value.lines
       ? typographicValues.value.lines
       : undefined;

@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Title component renders correctly a H1 tag as block element "display: block" 1`] = `
+<div>
+  <h1
+    className="htz-a htz-b htz-c htz-d htz-e"
+  >
+    This is a block H1 title
+  </h1>
+</div>
+`;
+
+exports[`Title component renders correctly a H1 tag as block element "display: block" 2`] = `".htz-a{display:block}@media (max-width: 80em){.htz-b{font-size:2.6666666666666665rem}.htz-c{line-height:1.5em}}@media (min-width: 80em){.htz-d{font-size:2.5714285714285716rem}.htz-e{line-height:1.5555555555555556em}}"`;
+
+exports[`Title component renders correctly a H1 tag with responsive font-size 1`] = `
+<div>
+  <h1
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
+  >
+    This is a block H1 title
+  </h1>
+</div>
+`;
+
+exports[`Title component renders correctly a H1 tag with responsive font-size 2`] = `".htz-a{display:block}@media (max-width: 48em){.htz-b{font-size:4rem}.htz-c{line-height:1.25em}}@media (min-width: 48em) and (max-width: 64em){.htz-d{font-size:4.666666666666667rem}.htz-e{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 80em){.htz-f{font-size:5.333333333333333rem}.htz-g{line-height:1.125em}}@media (min-width: 80em){.htz-h{font-size:5.142857142857143rem}.htz-i{line-height:1.1666666666666667em}}"`;
+
+exports[`Title component renders correctly a H1-> H6 tag, Zero font-size scale, as inline element 1`] = `
+Object {
+  "component": <div>
+    <h1
+      className="htz-a htz-b htz-c htz-d htz-e"
+    >
+      This is a H1 title
+    </h1>
+  </div>,
+  "styles": ".htz-a{display:inline}@media (max-width: 80em){.htz-b{font-size:2.6666666666666665rem}.htz-c{line-height:1.5em}}@media (min-width: 80em){.htz-d{font-size:2.5714285714285716rem}.htz-e{line-height:1.5555555555555556em}}",
+}
+`;
+
+exports[`Title component renders correctly a H1-> H6 tag, Zero font-size scale, as inline element 2`] = `
+Object {
+  "component": <div>
+    <h2
+      className="htz-a htz-b htz-c htz-d htz-e"
+    >
+      This is a H2 title
+    </h2>
+  </div>,
+  "styles": ".htz-a{display:inline}@media (max-width: 80em){.htz-b{font-size:2.6666666666666665rem}.htz-c{line-height:1.5em}}@media (min-width: 80em){.htz-d{font-size:2.5714285714285716rem}.htz-e{line-height:1.5555555555555556em}}",
+}
+`;
+
+exports[`Title component renders correctly a H1-> H6 tag, Zero font-size scale, as inline element 3`] = `
+Object {
+  "component": <div>
+    <h3
+      className="htz-a htz-b htz-c htz-d htz-e"
+    >
+      This is a H3 title
+    </h3>
+  </div>,
+  "styles": ".htz-a{display:inline}@media (max-width: 80em){.htz-b{font-size:2.6666666666666665rem}.htz-c{line-height:1.5em}}@media (min-width: 80em){.htz-d{font-size:2.5714285714285716rem}.htz-e{line-height:1.5555555555555556em}}",
+}
+`;
+
+exports[`Title component renders correctly a H1-> H6 tag, Zero font-size scale, as inline element 4`] = `
+Object {
+  "component": <div>
+    <h4
+      className="htz-a htz-b htz-c htz-d htz-e"
+    >
+      This is a H4 title
+    </h4>
+  </div>,
+  "styles": ".htz-a{display:inline}@media (max-width: 80em){.htz-b{font-size:2.6666666666666665rem}.htz-c{line-height:1.5em}}@media (min-width: 80em){.htz-d{font-size:2.5714285714285716rem}.htz-e{line-height:1.5555555555555556em}}",
+}
+`;
+
+exports[`Title component renders correctly a H1-> H6 tag, Zero font-size scale, as inline element 5`] = `
+Object {
+  "component": <div>
+    <h5
+      className="htz-a htz-b htz-c htz-d htz-e"
+    >
+      This is a H5 title
+    </h5>
+  </div>,
+  "styles": ".htz-a{display:inline}@media (max-width: 80em){.htz-b{font-size:2.6666666666666665rem}.htz-c{line-height:1.5em}}@media (min-width: 80em){.htz-d{font-size:2.5714285714285716rem}.htz-e{line-height:1.5555555555555556em}}",
+}
+`;
+
+exports[`Title component renders correctly a H1-> H6 tag, Zero font-size scale, as inline element 6`] = `
+Object {
+  "component": <div>
+    <h6
+      className="htz-a htz-b htz-c htz-d htz-e"
+    >
+      This is a H6 title
+    </h6>
+  </div>,
+  "styles": ".htz-a{display:inline}@media (max-width: 80em){.htz-b{font-size:2.6666666666666665rem}.htz-c{line-height:1.5em}}@media (min-width: 80em){.htz-d{font-size:2.5714285714285716rem}.htz-e{line-height:1.5555555555555556em}}",
+}
+`;

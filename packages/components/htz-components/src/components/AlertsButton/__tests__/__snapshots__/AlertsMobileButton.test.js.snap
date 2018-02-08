@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlertsMobileButton component renders correctly 1`] = `
+Object {
+  "component": <div>
+    <button
+      aria-describedby="alerts_btn_description"
+      aria-expanded={false}
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+      onClick={[Function]}
+    >
+      <span
+        className="htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+        id="alerts_btn_description"
+      >
+        קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
+        Avi Kaufman
+      </span>
+      <div>
+        <svg
+          className="htz-q htz-r htz-s htz-t"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+        >
+            
+          <path
+            d="M215.1 183.5c-5.1-5.1-8.2-11.9-8.6-19.2l-4.3-77c0-32.2-27.3-58.2-63.2-62.4 0-1.6-.1-3.6-.1-5.6 0-4.6-2.9-8.8-7.3-10-6.6-1.9-12.7 3.1-12.7 9.4 0 2.7.1 4.8.1 6.2C83.1 29.1 55.2 55 55.2 87.2l-4.3 77c-.4 7.2-3.4 14-8.6 19.2L21 204.9v9.1h216v-9l-21.9-21.5zM103.3 225h49c0 13.5-10.7 24-24.2 24s-24.8-10.5-24.8-24z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      עקוב
+    </button>
+  </div>,
+  "styles": ".htz-a{text-align:center}.htz-b{width:5rem}.htz-g{border:0px}.htz-h{clip:rect(0 0 0 0)}.htz-i{clip-path:inset(50%);-webkit-clip-path:inset(50%)}.htz-j{height:1px}.htz-k{margin:-1px}.htz-l{overflow:hidden}.htz-m{padding:0rem}.htz-n{position:absolute}.htz-o{width:1px}.htz-p{white-space:nowrap}.htz-q{vertical-align:-0.15em}.htz-r{color:#006B96}.htz-s{fill:#FFF}.htz-t{font-size:3rem}@media (max-width: 80em){.htz-c{font-size:2rem}.htz-d{line-height:1.5em}}@media (min-width: 80em){.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}",
+}
+`;

@@ -59,7 +59,7 @@ export default function createRenderer({
     // Allows providing fallback values as an array.
     // Must be last to be included
     fallbackValue(),
-    bidi('rtl'),
+    bidi(isRtl ? 'rtl' : 'ltr'),
   ];
   const enhancers = [ combineArrays([ 'extend', ]), ];
 
