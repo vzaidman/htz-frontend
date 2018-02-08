@@ -44,6 +44,7 @@ const titlePropTypes = {
 
 const titleDefaultProps = {
   isBlock: false,
+  miscStyles: null,
 };
 
 /**
