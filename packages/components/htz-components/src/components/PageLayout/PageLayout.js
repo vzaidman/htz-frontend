@@ -1,14 +1,39 @@
 import React, { Fragment } from 'react';
 import { createComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
+import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
-import Slot from './slot';
+
+const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
 const sectionStyle = ({ theme, }) => ({
   backgroundColor: theme.color('primary', '-5'),
   width: '100%',
 });
 const Row = createComponent(sectionStyle, 'section');
+
+const slotStyle = ({ miscStyles, theme, }) => ({
+  backgroundColor: theme.color('primary', '-6'),
+  marginRight: 'auto',
+  marginLeft: 'auto',
+  width: '100%',
+
+  ...parseComponentProp(
+    'maxWidth',
+    [
+      { until: 'm', value: 320/6 },
+      { from: 'm', until: 'l', value: 100 },
+      { from: 'l', until: 'xl', value: 1024/6 },
+      { from: 'xl', value: 1293/7 },
+    ],
+    theme.mq,
+    mediaQueryCallback
+  ),
+
+  ...miscStyles,
+})
+
+const Slot = createComponent(slotStyle);
 
 const rearrangedSlots = oldSlots => (
   {
@@ -32,9 +57,9 @@ function PageLayout({ slots, }) {
         const Element = getComponent(key);
         return (
           <Row key={key}>
-            <Slot
-              content={<Element content={newSlots[key]} />}
-            />
+            <Slot>
+              <Element content={newSlots[key]} />
+            </Slot>
           </Row>
           )
       })}
