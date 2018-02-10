@@ -15,6 +15,7 @@ import GridItem from './components/Grid/GridItem';
 import Quote from './components/Quote/Quote';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
+import PageLayout from './components/PageLayout/PageLayout';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import Scroll from './components/Scroll/Scroll';
 import ScrollListener from './components/EventListeners/ScrollListener';
@@ -118,6 +119,7 @@ export {
   Embed,
   Quote,
   LinksBlock,
+  PageLayout,
   RelatedArticles,
   Scroll,
   ScrollListener,
