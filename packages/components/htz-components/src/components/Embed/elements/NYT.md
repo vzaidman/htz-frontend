@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Code Example](#NYT-component)
+- [NYT component](#nyt-component)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

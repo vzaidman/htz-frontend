@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [MobileQuickRegistration examples](#mobileQuickRegistration-examples)
+- [An example for MobileQuickRegistration](#an-example-for-mobilequickregistration)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

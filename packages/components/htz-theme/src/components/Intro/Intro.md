@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Properties](#properties)
+  - [Methods](#methods)
+- [cssReset](#cssreset)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 Haaretz applications use [Fela](https://fela.js.org) for styling components, and this package is 
 designed to integrate with that workflow, specifically through a `themeProvider`. While it is 
 possible that `htz-theme` will work out of the box with other CSS-in-JS solutions, please take into 

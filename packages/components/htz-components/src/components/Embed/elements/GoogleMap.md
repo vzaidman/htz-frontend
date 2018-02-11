@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Code Example](#GoogleMap-component)
+- [GoogleMap component](#googlemap-component)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
