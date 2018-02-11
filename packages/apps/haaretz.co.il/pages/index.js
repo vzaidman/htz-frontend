@@ -1,5 +1,5 @@
 import React from 'react';
-import withData, { pagePropTypes, } from '../lib/withData';
+import { withData, pagePropTypes, } from '@haaretz/app-utils';
 import MainLayout from '../layouts/MainLayout';
 
 export function Page({ url, }) {

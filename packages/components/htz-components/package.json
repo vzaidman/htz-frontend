@@ -23,8 +23,7 @@
     "lint": "htz-scripts lint",
     "prepare": "npm run build",
     "styleguide": "concurrently \"htz-react-server\" \"htz-scripts styleguide\"",
-    "styleguide:build":
-      "htz-scripts styleguide:build && rm -rf ../../../docs/htz-components/**/* && cp -r dist/styleguide/* ../../../docs/htz-components",
+    "styleguide:build": "htz-scripts styleguide:build && rm -rf ../../../docs/htz-components/**/* && cp -r dist/styleguide/* ../../../docs/htz-components",
     "test": "htz-scripts test",
     "test:debug": "node --inspect-brk ./node_modules/.bin/htz-scripts test",
     "update-scripts": "htz-scripts update-scripts"
@@ -32,7 +31,7 @@
   "peerDependencies": {
     "@haaretz/htz-react-server": "^0.0.0",
     "apollo-client-preset": "^1.0.6",
-    "apollo-link-state": "^0.3.1",
+    "apollo-link-state": "^0.4.0",
     "fela": "^6.0.2",
     "graphql-tag": "^2.5.0",
     "next": "^4.2.1",
@@ -76,7 +75,7 @@
     "@haaretz/htz-react-server": "^0.0.0",
     "@haaretz/htz-theme": "^0.1.0",
     "apollo-client-preset": "^1.0.6",
-    "apollo-link-state": "^0.3.1",
+    "apollo-link-state": "^0.4.0",
     "babel-loader": "^7.1.2",
     "chalk": "^2.3.0",
     "concurrently": "^3.5.1",

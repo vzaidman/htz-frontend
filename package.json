@@ -51,6 +51,11 @@
         ]
       }
     },
+    "@haaretz/app-utils": {
+      "^0.1.0": {
+        "packages/apps/*": ["dependencies"]
+      }
+    },
     "@haaretz/htz-css-tools": {
       "^1.0.1": {
         "packages/{apps,components}/*": ["dependencies"]
@@ -78,13 +83,19 @@
     "apollo-client-preset": {
       "^1.0.6": {
         "packages/apps/*": ["dependencies"],
-        "packages/components/htz-components": ["devDependencies", "peerDependencies"]
+        "packages/{components/htz-components,libs/app-utils}": [
+          "devDependencies",
+          "peerDependencies"
+        ]
       }
     },
     "apollo-link-state": {
-      "^0.3.1": {
+      "^0.4.0": {
         "packages/apps/*": ["dependencies"],
-        "packages/components/htz-components": ["devDependencies", "peerDependencies"]
+        "packages/{components/htz-components,libs/app-utils}": [
+          "devDependencies",
+          "peerDependencies"
+        ]
       }
     },
     "babel-loader": {
@@ -95,7 +106,8 @@
     },
     "config": {
       "^1.26.2": {
-        "packages/{apps/*,components/*,libs/htz-react-server}": ["dependencies"]
+        "packages/{apps/*,components/*,libs/htz-react-server}": ["dependencies"],
+        "packages/libs/app-utils": ["devDependencies", "peerDependencies"]
       }
     },
     "dataloader": {
@@ -137,7 +149,8 @@
     },
     "isomorphic-unfetch": {
       "^2.0.0": {
-        "packages/apps/*": ["dependencies"]
+        "packages/apps/*": ["dependencies"],
+        "packages/libs/app-utils": ["devDependencies", "peerDependencies"]
       }
     },
     "lodash": {
@@ -148,7 +161,7 @@
     "next": {
       "^4.2.1": {
         "packages/apps/*": ["dependencies"],
-        "packages/{libs/htz-react-server,components/htz-components}": [
+        "packages/{libs/htz-react-server,libs/app-utils,components/htz-components}": [
           "devDependencies",
           "peerDependencies"
         ]
@@ -156,19 +169,26 @@
     },
     "prop-types": {
       "^15.6.0": {
-        "packages/{components,apps}/*": ["dependencies"]
+        "packages/{components,apps}/*": ["dependencies"],
+        "packages/libs/app-utils": ["devDependencies", "peerDependencies"]
       }
     },
     "react": {
       "^16.2.0": {
-        "packages/{libs/htz-react-base,components/*}": ["devDependencies", "peerDependencies"],
+        "packages/{libs/htz-react-base,libs/app-utils,components/*}": [
+          "devDependencies",
+          "peerDependencies"
+        ],
         "packages/apps/*": ["dependencies"]
       }
     },
     "react-apollo": {
       "^2.0.0": {
         "packages/apps/*": ["dependencies"],
-        "packages/components/htz-components": ["devDependencies", "peerDependencies"]
+        "packages/{components/htz-components,libs/app-utils}": [
+          "devDependencies",
+          "peerDependencies"
+        ]
       }
     },
     "react-dom": {

@@ -1,0 +1,3 @@
+{
+  "presets": ["@haaretz/htz-react-base/babel.js", "next/babel"]
+}

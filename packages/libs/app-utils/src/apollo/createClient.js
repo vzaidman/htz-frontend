@@ -1,5 +1,4 @@
-import { ApolloClient, } from 'apollo-client';
-import { HttpLink, InMemoryCache, ApolloLink, } from 'apollo-client-preset';
+import { ApolloClient, HttpLink, InMemoryCache, ApolloLink, } from 'apollo-client-preset';
 import { withClientState, } from 'apollo-link-state';
 import fetch from 'isomorphic-unfetch';
 import config from 'config';
