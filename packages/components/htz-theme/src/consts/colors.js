@@ -174,6 +174,21 @@ const colors = {
     positiveOpaqueHoverBorder: 'transparent',
     positiveOpaqueHoverText: [ 'neutral', 'base', ],
 
+    // Secondary
+    secondaryBg: [ 'secondary', 'base', ],
+    secondaryBorder: 'white',
+    secondaryText: 'white',
+    // todo: ask max about these colors
+    secondaryActiveBg: [ 'secondary', '+1', ],
+    secondaryActiveBorder: 'white',
+    secondaryActiveText: 'white',
+    secondaryFocusBg: [ 'secondary', '+2', ],
+    secondaryFocusBorder: 'white',
+    secondaryFocusText: 'white',
+    secondaryHoverBg: [ 'secondary', '+1', ],
+    secondaryHoverBorder: 'white',
+    secondaryHoverText: 'white',
+
     // Facebook
     facebookBg: 'white',
     facebookBorder: [ 'button', 'facebookText', ],
@@ -307,6 +322,12 @@ const colors = {
     borderDisabled: [ 'neutral', '-5', ],
     check: 'white',
     ripple: [ 'primary', 'base', ],
+  },
+
+  footer: {
+    bg: [ 'secondary', 'base', ],
+    border: 'white',
+    text: 'white',
   },
 
   comments: {
