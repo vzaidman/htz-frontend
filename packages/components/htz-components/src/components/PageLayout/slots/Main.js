@@ -29,7 +29,7 @@ const mainWrapper = ({ theme, }) => ({
     mediaQueryCallback
   ),
 
-})
+});
 const Wrapper = createComponent(mainWrapper, 'main');
 
 const asideWrapper = ({ theme, }) => ({
@@ -48,7 +48,7 @@ const asideWrapper = ({ theme, }) => ({
     theme.mq,
     mediaQueryCallback
   ),
-})
+});
 const AsideWrapper = createComponent(asideWrapper, 'aside');
 
 const asideStyle = ({ theme, }) => ({
@@ -56,7 +56,7 @@ const asideStyle = ({ theme, }) => ({
   position: 'sticky',
   width: '100%',
   top: '12px',
-})
+});
 const Aside = createComponent(asideStyle);
 
 const extractContent = content => (
@@ -64,7 +64,7 @@ const extractContent = content => (
     const Element = getComponent(element.inputTemplate);
     return <Element key={element.contentId} {...element}/>;
   })
-)
+);
 
 function Main ({ content, }) {
   const { article, aside, } = content;
