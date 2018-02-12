@@ -249,7 +249,7 @@
   "lint-staged": {
     "linters": {
       "**/*.{js,jsx}": [
-        "node packages/libs/htz-react-base/bin/htz-scripts.js lint --fix",
+        "node packages/libs/htz-react-base/bin/htz-scripts.js lint --ignore-pattern '.jest/*' --ignore-pattern '.next/*' --ignore-pattern 'dist/*' --ignore-pattern 'node_modules/*' --fix",
         "node scripts/runTests.js",
         "node packages/libs/htz-react-base/bin/htz-scripts.js flow focus-check",
         "git add"

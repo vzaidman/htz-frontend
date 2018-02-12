@@ -1,4 +1,4 @@
-import config from "config";
+import config from 'config';
 
 const aspectRatios = {
   regular: 4 / 3,
@@ -6,7 +6,7 @@ const aspectRatios = {
   landscape: 2.31,
   square: 1,
   vertical: 0.85,
-  belgrade: 3.18
+  belgrade: 3.18,
 };
 
 /**
@@ -61,14 +61,17 @@ const aspectRatios = {
  *   The image's aspect ratio
  * @property {string} [quality='auto'] -  The image quality
  * @property {boolean} [isProgressive=false] - Generate a progressive jpeg
- * @property {string[]} [transforms]  - An array of strings with additional transforms to apply to the image url
+ * @property {string[]} [transforms]
+ *   An array of strings with additional transforms to apply to the image url
  * @property {string[]} [flags] - An array of additional flags to apply to the image
  */
 
 /**
  * @typedef {boolean} ExcludeWidthDescriptor -
- *   when excludeWidthDescriptor is true the function will omit width descriptor
- *   and when false or not exist the function automatically adds the width descriptor at the end of the url string
+ *   when excludeWidthDescriptor is true the function
+ *   will omit width descriptor and when false or not exist
+ *   the function automatically adds the width descriptor at
+ *   the end of the url string
  */
 
 /**
@@ -98,7 +101,7 @@ export function buildURLs(contentId, data, options, excludeWidthDescriptor) {
   return options.map(
     imgOption =>
       `${buildUrl(contentId, data, imgOption)}${
-        !excludeWidthDescriptor ? " " + imgOption.width + "w" : ""
+        !excludeWidthDescriptor ? ` ${imgOption.width}w` : ''
       }`
   );
 }
@@ -122,77 +125,78 @@ export function buildURLs(contentId, data, options, excludeWidthDescriptor) {
  */
 
 export function buildUrl(contentId, data, options = {}) {
-  const baseUrl = config.has("imgBaseUrl") && config.get("imgBaseUrl");
-  const domain = config.has("domain") && config.get("domain");
-  const { imgName, version, aspects } = data;
+  const baseUrl = config.has('imgBaseUrl') && config.get('imgBaseUrl');
+  const domain = config.has('domain') && config.get('domain');
+  const { imgName, version, aspects, } = data;
 
   // Fail early when mandatory options aren't present.
   // eslint-disable-next-line eqeqeq
   if (options.width == undefined) {
     throw new Error(
-      "width is a mandatory option property for rendering image urls"
+      'width is a mandatory option property for rendering image urls'
     );
   }
 
   if (!baseUrl) {
     throw new Error(
       'Your app\'s "imgBaseUrl" is not configured.\n' +
-        "See https://github.com/Haaretz/htz-frontend/blob/master/docs/Configuration.md"
+        'See https://github.com/Haaretz/htz-frontend/blob/master/docs/Configuration.md'
     );
   }
 
   if (!version && !domain) {
     throw new Error(
       'Your app\'s "domain" is not configured.\n' +
-        "See https://github.com/Haaretz/htz-frontend/blob/master/docs/Configuration.md"
+        'See https://github.com/Haaretz/htz-frontend/blob/master/docs/Configuration.md'
     );
   }
 
   // Augment defaults with user-defined options
   const settings = {
-    aspect: "full",
+    aspect: 'full',
     isProgressive: false,
-    quality: "auto",
-    height: computeHeight(options.width, options.aspect || "full", aspects),
-    ...options
+    quality: 'auto',
+    height: computeHeight(options.width, options.aspect || 'full', aspects),
+    ...options,
   };
 
   const transformPrefixes = {
-    width: "w_",
-    height: "h_",
-    quality: "q_",
-    x: "x_",
-    y: "y_"
+    width: 'w_',
+    height: 'h_',
+    quality: 'q_',
+    x: 'x_',
+    y: 'y_',
   };
   const cropData = aspects[settings.aspect];
 
   const initialTransforms = `${Object.keys(cropData).reduce(
     (allTransforms, propName) => {
       const transfromString = transformPrefixes[propName] + cropData[propName];
-      return allTransforms + (allTransforms ? "," : "/") + transfromString;
+      return allTransforms + (allTransforms ? ',' : '/') + transfromString;
     },
-    ""
+    ''
   )},c_crop,g_north_west`;
 
   const userTransforms = `${Object.keys(settings).reduce(
     (allTransforms, propName) => {
       const prefix = transformPrefixes[propName];
-      const transfromString = prefix ? prefix + settings[propName] : "";
+      const transfromString = prefix ? prefix + settings[propName] : '';
       return prefix
-        ? allTransforms + (allTransforms ? "," : "/") + transfromString
+        ? allTransforms + (allTransforms ? ',' : '/') + transfromString
         : allTransforms;
     },
-    ""
+    ''
   )},c_fill,f_auto`;
 
-  const { transforms, flags } = settings;
+  const { transforms, flags, } = settings;
   const baseFlags = `/fl_any_format.preserve_transparency.progressive:${
-    settings.isProgressive ? "steep" : "none"
+    settings.isProgressive ? 'steep' : 'none'
   }`;
-  /*eslint eqeqeq: ["error", "ignore"]*/
   const miscTransforms =
-    transforms != undefined ? `/${transforms.join("/")}` : "";
-  const miscFlags = flags != undefined ? `/${flags.join(".")}` : "";
+    // eslint-disable-next-line eqeqeq
+    transforms != undefined ? `/${transforms.join('/')}` : '';
+  // eslint-disable-next-line eqeqeq
+  const miscFlags = flags != undefined ? `/${flags.join('.')}` : '';
 
   // Url suffix based on whether this is an uploaded or fetched image
   const urlSuffix = version
@@ -201,7 +205,7 @@ export function buildUrl(contentId, data, options = {}) {
   // construct url string from params
   const url =
     baseUrl +
-    (version ? "/upload" : "/fetch") +
+    (version ? '/upload' : '/fetch') +
     initialTransforms +
     userTransforms +
     baseFlags +
