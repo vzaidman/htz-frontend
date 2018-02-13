@@ -13,7 +13,8 @@ import {
   borderRight,
   borderBottom,
   borderStart,
-  borderLeftHorizontal,
+  borderLeft,
+  borderHorizontal,
   borderVertical,
 } from './border';
 import createColorGetter from './color/createColorGetter';
@@ -40,7 +41,8 @@ export {
   borderRight,
   borderBottom,
   borderStart,
-  borderLeftHorizontal,
+  borderLeft,
+  borderHorizontal,
   borderVertical,
   createColorGetter,
   createMqFunc,
