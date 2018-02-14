@@ -136,10 +136,10 @@ export default class BeforeAndAfter extends React.Component {
         />
         <After
           draggable={false}
-          style={{ right: `${100 - this.state.lineX}%`, }}
+          style={{ transform: `translateX(-${100 - this.state.lineX}%)`, }}
         >
           <ImageWrapper
-            style={{ left: `${100 - this.state.lineX}%`, }}
+            style={{ transform: `translateX(${100 - this.state.lineX}%)`, }}
             draggable={false}
           >
             <Image
