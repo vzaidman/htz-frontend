@@ -63,7 +63,7 @@ const pointerStyle = ({ theme, }) => ({
 });
 const Pointer = createComponent(pointerStyle, 'div', [ 'draggable', ]);
 
-const afterStyle = ({ theme, width, imgUrl, }) => ({
+const afterStyle = ({ theme, width, }) => ({
   display: 'inline-block',
   position: 'absolute',
   overflow: 'hidden',
@@ -71,12 +71,20 @@ const afterStyle = ({ theme, width, imgUrl, }) => ({
   height: '100%',
   top: '0',
   left: '0',
+  width: '100%',
   boxSizing: 'content-box',
   boxShadow: '3px 0 5px 0 rgba(0,0,0,.75)',
-  backgroundImage: `url('${imgUrl}')`,
-  backgroundSize: 'cover',
 });
 const After = createComponent(afterStyle, 'div', [ 'draggable', ]);
+
+const imageWrapperStyle = ({ theme, width, }) => ({
+  position: 'absolute',
+  overflow: 'hidden',
+  width: '100%',
+  top: '0',
+  left: '0',
+});
+const ImageWrapper = createComponent(imageWrapperStyle, 'div', [ 'draggable', ]);
 
 const imgOptions = {
   transforms: {
@@ -101,13 +109,6 @@ export default class BeforeAndAfter extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     return this.state.lineX !== nextState.lineX;
   }
-
-  afterImg = this.props.elementsList[1];
-
-  afterImgUrl = buildUrl(this.afterImg.contentId, {
-    ...this.afterImg.imgArray[0],
-    aspects: this.afterImg.aspects,
-  }, imgOptions.transforms).replace('.image/', '.'); // The `replace` method is temporary! shall be removed when `buildUrl` function will be fixed.
 
   dragging = e => {
     const pointerRelativeX = (e.clientX - this.state.wrapperX);
@@ -134,10 +135,20 @@ export default class BeforeAndAfter extends React.Component {
           attrs={{ draggable: false, }}
         />
         <After
-          imgUrl={this.afterImgUrl}
           draggable={false}
-          style={{ width: `${this.state.lineX}%`, }}
-        />
+          style={{ right: `${100 - this.state.lineX}%`, }}
+        >
+          <ImageWrapper
+            style={{ left: `${100 - this.state.lineX}%`, }}
+            draggable={false}
+          >
+            <Image
+              data={this.props.elementsList[1]}
+              imgOptions={imgOptions}
+              attrs={{ draggable: false, }}
+            />
+          </ImageWrapper>
+        </After>
       </Wrapper>
     );
   }
