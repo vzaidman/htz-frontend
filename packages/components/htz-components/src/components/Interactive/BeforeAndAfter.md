@@ -69,51 +69,58 @@
           contentName: "הכנרת, באוקטובר 2017"
         },
         {
-          alt: "הדוקר חמזה אזמאערה",
-          title: "הדוקר חמזה אזמאערה",
+          alt: "נתניהו בישיבת הממשלה השבועית, בתחילת השבוע",
+          credit: "אמיל סלמן",
+          title: "נתניהו בישיבת הממשלה השבועית, בתחילת השבוע",
           aspects: {
             regular: {
-              width: 695,
-              height: 521,
-              x: 0,
-              y: 60
+              width: 1942,
+                height: 1456,
+                x: 258,
+                y: 12
             },
             headline: {
-              width: 710,
-              height: 413,
-              x: 0,
-              y: 74
+              width: 2200,
+                height: 1277,
+                x: 0,
+                y: 56
             },
             belgrade: {
-              width: 700,
-              height: 220,
-              x: 0,
-              y: 189
+              width: 2200,
+                height: 690,
+                x: 0,
+                y: 369
             },
             landscape: {
-              width: 718,
-              height: 310,
-              x: 2,
-              y: 107
+              width: 2200,
+                height: 949,
+                x: 0,
+                y: 194
             },
             square: {
-              width: 700,
-              height: 700,
-              x: 8,
-              y: 21
+              width: 1461,
+                height: 1460,
+                x: 592,
+                y: 8
+            },
+            vertical: {
+              width: 1227,
+                height: 1440,
+                x: 731,
+                y: 28
             }
           },
           isAnimated: false,
           imgArray: [
             {
-              imgName: "image/2101282028.jpg",
-              version: "1517986715"
+              imgName: "image/2151933599.jpg",
+              version: "1518556356"
             }
           ],
           imageType: "image",
           inputTemplate: "com.tm.Image",
-          contentId: "1.5797154",
-          contentName: "הדוקר חמזה אזמאערה"
+          contentId: "1.5821197",
+          contentName: "נתניהו בישיבת הממשלה השבועית, בתחילת השבוע"
         }
       ]
     }

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import { border, borderRight, } from '@haaretz/htz-css-tools';
 import Image from '../Image/Image';
-import { buildUrl, } from '../../utils/buildImgURLs';
 
 const wrapperStyle = () => ({
   width: '100%',
@@ -12,7 +11,7 @@ const wrapperStyle = () => ({
 });
 const Wrapper = createComponent(wrapperStyle, 'div', [ 'onDragOver', ]);
 
-const pointerPseudoStyles = {
+const sliderPseudoStyles = {
   content: '""',
   width: '0',
   height: '0',
@@ -23,7 +22,7 @@ const pointerPseudoStyles = {
   border: '10px inset transparent',
 };
 
-const pointerStyle = ({ theme, }) => ({
+const sliderStyle = ({ theme, }) => ({
   userDrag: 'none',
   width: '50px',
   height: '50px',
@@ -42,12 +41,12 @@ const pointerStyle = ({ theme, }) => ({
   ...(theme.getDuration('transition', -1)),
   ...(theme.getTimingFunction('transition', 'swiftIn')),
   ':before': {
-    ...pointerPseudoStyles,
+    ...sliderPseudoStyles,
     left: '-2px',
     borderRight: `10px solid ${theme.color('neutral', '-10')}`,
   },
   ':after': {
-    ...pointerPseudoStyles,
+    ...sliderPseudoStyles,
     right: '-2px',
     borderLeft: `10px solid ${theme.color('neutral', '-10')}`,
   },
@@ -61,7 +60,7 @@ const pointerStyle = ({ theme, }) => ({
     right: '-6px',
   },
 });
-const Pointer = createComponent(pointerStyle, 'div', [ 'draggable', ]);
+const Slider = createComponent(sliderStyle, 'div', [ 'draggable', ]);
 
 const afterStyle = ({ theme, width, }) => ({
   display: 'inline-block',
@@ -94,6 +93,10 @@ const imgOptions = {
   },
 };
 
+/**
+ * This component accepts an array of (at least) 2 images, and renders them on top of each other with a slider
+ * that controls how much to expose from each of them.
+ */
 export default class BeforeAndAfter extends React.Component {
   state = {
     lineX: this.props.linePos.replace('%', ''),
@@ -111,8 +114,9 @@ export default class BeforeAndAfter extends React.Component {
   }
 
   dragging = e => {
-    const pointerRelativeX = (e.clientX - this.state.wrapperX);
-    const newLineX = (pointerRelativeX / this.state.wrapperWidth) * 100;
+    e.preventDefault();
+    const sliderRelativeX = (e.clientX - this.state.wrapperX);
+    const newLineX = (sliderRelativeX / this.state.wrapperWidth) * 100;
     this.setState({
       lineX: newLineX,
     });
@@ -121,11 +125,11 @@ export default class BeforeAndAfter extends React.Component {
   render() {
     return (
       <Wrapper
-        innerRef={wrapper => this.wrapper = wrapper}
+        innerRef={wrapper => this.wrapper = wrapper} // eslint-disable-line no-return-assign
         onDragOver={this.dragging}
       >
-        <Pointer
-          innerRef={pointer => this.pointer = pointer}
+        <Slider
+          innerRef={slider => this.slider = slider} // eslint-disable-line no-return-assign
           style={{ left: `${this.state.lineX}%`, }}
           draggable
         />
@@ -138,6 +142,7 @@ export default class BeforeAndAfter extends React.Component {
           draggable={false}
           style={{ transform: `translateX(-${100 - this.state.lineX}%)`, }}
         >
+          {/* Temporary wrapper, until the image wrapper will be able to get MiscStyles. */}
           <ImageWrapper
             style={{ transform: `translateX(${100 - this.state.lineX}%)`, }}
             draggable={false}
@@ -155,7 +160,14 @@ export default class BeforeAndAfter extends React.Component {
 }
 
 BeforeAndAfter.propTypes = {
+  /**
+   * The initial position of the slider controller.
+   */
   linePos: PropTypes.string,
+  /**
+   * List of images (takes only the first 2), the first one goes to the right,
+   * and the second goes to the left.
+   */
   elementsList: PropTypes.arrayOf(
     PropTypes.object,
   ).isRequired,
