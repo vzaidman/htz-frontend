@@ -13,5 +13,7 @@ Please note that this data is from the local machine, if there are errors, check
 ```
 
 ```jsx
-<CommentsWithApollo contentId="7.1809" articleId="1.2091" />
+<div dir="rtl">
+  <CommentsWithApollo contentId="7.1809" articleId="1.2091" />
+</div>
 ```
