@@ -4,6 +4,7 @@
  * **************************************** */
 import Article from './components/Article/Article';
 import ArticleBody from './components/ArticleBody/ArticleBody';
+import BeforeAndAfter from './components/Interactive/BeforeAndAfter';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import Caption from './components/Caption/Caption';
@@ -12,6 +13,7 @@ import Embed from './components/Embed/Embed';
 import Form from './components/Form/Form';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
+import HtmlElement from './components/Interactive/HtmlElement';
 import Image from './components/Image/Image';
 import LayoutContainer from './components/PageLayout/LayoutContainer';
 import LayoutRow from './components/PageLayout/LayoutRow';
@@ -79,6 +81,7 @@ import createDocument from './document';
 export {
   Article,
   ArticleBody,
+  BeforeAndAfter,
   Button,
   ButtonGroup,
   Caption,
@@ -87,6 +90,7 @@ export {
   Form,
   Grid,
   GridItem,
+  HtmlElement,
   Image,
   LayoutContainer,
   LayoutRow,

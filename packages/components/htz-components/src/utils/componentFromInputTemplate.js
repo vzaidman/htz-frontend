@@ -2,6 +2,8 @@ import React from 'react';
 // eslint-disable-next-line import/no-named-as-default
 import Article from '../components/Article/Article';
 import Embed from '../components/Embed/Embed';
+import HtmlElement from '../components/Interactive/HtmlElement';
+import InteractiveElement from '../components/Interactive/interactiveElement';
 import Image from '../components/Image/Image';
 import Paragraph from '../components/Paragraph/Paragraph';
 import Quote from '../components/Quote/Quote';
@@ -25,6 +27,7 @@ const inputTemplateToComponent = new Map([
 
   /* ArticleBody components */
   [ 'embedElement', Embed, ],
+  [ 'interactiveElement', InteractiveElement, ],
   [ 'p', Paragraph, ],
   [ 'h4', Paragraph, ],
   [ 'a', Paragraph, ],
@@ -34,7 +37,7 @@ const inputTemplateToComponent = new Map([
 
   /* Misc components */
   [ 'com.tm.Image', Image, ],
-  [ 'com.tm.HtmlElement', () => <p>HtmlElement</p>, ],
+  [ 'com.tm.HtmlElement', HtmlElement, ],
   [ 'com.tm.ListElement', () => <p>ListElement</p>, ],
   [ 'com.tm.TabViewElement', () => <p>TabViewElement</p>, ],
   [ 'com.polobase.JSONListsWrapper', () => <p>JSONListsWrapper</p>, ],
