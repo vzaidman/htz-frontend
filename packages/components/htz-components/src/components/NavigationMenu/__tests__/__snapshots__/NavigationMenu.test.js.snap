@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation Menu  1`] = `
+Object {
+  "component": <div>
+    <div
+      className="htz-a"
+    >
+      <button
+        aria-expanded={false}
+        className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
+        onClick={[Function]}
+        role="button"
+      >
+        <span
+          className="htz-j htz-k htz-l"
+        >
+          <i
+            className="htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+          />
+        </span>
+        <span>
+          ניווט
+        </span>
+      </button>
+      <div
+        className="htz-l"
+      />
+    </div>
+  </div>,
+  "styles": ".htz-a{display:inline}.htz-f{color:#787878}.htz-g{border:none}.htz-h{padding:1rem}.htz-i{font-weight:700}.htz-j{margin-right:2rem}.htz-k{margin-left:2rem}.htz-l{position:relative}.htz-m{height:2px}.htz-n{width:2.5rem}.htz-o{position:absolute}.htz-p{background-color:#787878}.htz-q{transition:all .5s;-webkit-transition:all .5s;-moz-transition:all .5s}.htz-r{display:inline-block}.htz-s{left:50%}.htz-t{margin:0 auto}.htz-u{top:50%}.htz-v{transform:translate(-50%, -50%);-webkit-transform:translate(-50%, -50%)}.htz-w{opacity:1}.htz-x:before{height:2px}.htz-y:before{width:2.5rem}.htz-z:before{position:absolute}.htz-ab:before{background-color:#787878}.htz-ac:before{transition:all .5s;-webkit-transition:all .5s;-moz-transition:all .5s}.htz-ae:before{left:0rem}.htz-af:before{top:-0.75rem}.htz-ag:before{content:\\"\\"}.htz-ah:after{height:2px}.htz-ai:after{width:2.5rem}.htz-aj:after{position:absolute}.htz-ak:after{background-color:#787878}.htz-al:after{transition:all .5s;-webkit-transition:all .5s;-moz-transition:all .5s}.htz-am:after{left:0rem}.htz-an:after{top:0.75rem}.htz-ao:after{content:\\"\\"}@media (max-width: 80em){.htz-b{font-size:2rem}.htz-c{line-height:1.5em}}@media (min-width: 80em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}",
+}
+`;

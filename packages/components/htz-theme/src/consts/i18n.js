@@ -16,6 +16,42 @@ export const tagsElementI18n = Object.freeze({
   prefix: 'תגיות:',
 });
 
+export const navigationI18n = Object.freeze({
+  button: 'ניווט',
+  additionalMenuItems: Object.freeze({
+    sections: Object.freeze([
+      Object.freeze({
+        name: 'מהדורה מודפסת',
+        url: 'https://www.haaretz.co.il/st/inter/Global/dailyedition/today/',
+      }),
+      Object.freeze({
+        name: 'הארץ שלי',
+        url: 'https://www.haaretz.co.il/personal-area/haaretz-sheli',
+      }),
+      Object.freeze({
+        name: 'העיתון שלי',
+        url: 'https://www.haaretz.co.il/personal-area/my-account',
+      }),
+    ]),
+    promotions: Object.freeze([
+      Object.freeze({
+        name: 'רכשו מינוי',
+        url: 'https://www.haaretz.co.il/promotions-page',
+      }),
+    ]),
+    sites: Object.freeze([
+      Object.freeze({
+        name: 'haaretz.com',
+        url: 'https://www.haaretz.com',
+      }),
+      Object.freeze({
+        name: 'themarker.com',
+        url: 'https://www.themarker.com',
+      }),
+    ]),
+  }),
+});
+
 export const osakaI18n = Object.freeze({
   nextArticle: 'לכתבה הבאה במדור',
   promotedContent: 'תוכן מקודם',

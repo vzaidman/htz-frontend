@@ -18,6 +18,7 @@ import i18n, {
   commentsSectionI18n,
   footerDesktopI18n,
   footerMobileListsI18n,
+  navigationI18n,
   osakaI18n,
   tagsElementI18n,
   zoominText,
@@ -128,6 +129,7 @@ const htzTheme = Object.freeze({
   commentsSectionI18n,
   footerDesktopI18n,
   footerMobileListsI18n,
+  navigationI18n,
   osakaI18n,
   tagsElementI18n,
   zoominText,
@@ -147,4 +149,17 @@ const htzTheme = Object.freeze({
 });
 
 export default htzTheme;
-export { bps, getColor, getTransition, mq, pxToRem, typesetter, i18n, };
+export {
+  bps,
+  commentI18n,
+  commentFormI18n,
+  commentSentI18n,
+  commentsSectionI18n,
+  getColor,
+  getTransition,
+  i18n,
+  tagsElementI18n,
+  mq,
+  pxToRem,
+  typesetter,
+};

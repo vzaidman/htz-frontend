@@ -24,6 +24,7 @@ import Link from './components/Link/Link';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
 import List from './components/List/List';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
+import NavigationMenu from './components/NavigationMenu/NavigationMenu';
 import Osaka from './components/Osaka/OsakaController';
 import Quote from './components/Quote/Quote';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
@@ -121,6 +122,7 @@ export {
   LinksBlock,
   List,
   MobileQuickRegistration,
+  NavigationMenu,
   Osaka,
   Quote,
   RadioButton,
