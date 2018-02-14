@@ -7,15 +7,16 @@ import CommentSent from '../CommentSent'; // eslint-disable-line import/no-named
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail
 Math.random = jest.fn(() => 123456789);
+const mockFunc = jest.fn();
 
 describe('<CommentSent>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
       const { component, styles, } = felaSnapshotter(
         <CommentSent
-          closeDisplayThankYou={() => console.log('will close display thank you')}
+          closeDisplayThankYou={mockFunc}
           displayThankYou={false}
-          signUpNotification={() => console.log('init sign up func')}
+          signUpNotification={mockFunc}
         />
       );
       expect(component).toMatchSnapshot();
@@ -24,9 +25,9 @@ describe('<CommentSent>', () => {
     it('renders correctly with minimal required props, display Thank you true', () => {
       const { component, styles, } = felaSnapshotter(
         <CommentSent
-          closeDisplayThankYou={() => console.log('will close display thank you')}
+          closeDisplayThankYou={mockFunc}
           displayThankYou
-          signUpNotification={() => console.log('init sign up func')}
+          signUpNotification={mockFunc}
         />
       );
       expect(component).toMatchSnapshot();
@@ -38,7 +39,7 @@ describe('<CommentSent>', () => {
         <CommentSent
           closeDisplayThankYou={mockCallback}
           displayThankYou
-          signUpNotification={() => console.log('init sign up func')}
+          signUpNotification={mockFunc}
         />
       );
       const closeButton = output.find('button');

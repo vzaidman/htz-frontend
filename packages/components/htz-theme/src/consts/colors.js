@@ -174,7 +174,6 @@ const colors = {
     facebookOpaqueHoverBorder: 'transparent',
     facebookOpaqueHoverText: 'white',
 
-    
     // Opaque formatting button
     formattingOpaqueBg: [ 'primary', '-6', ],
     formattingOpaqueBorder: 'transparent',
@@ -286,6 +285,7 @@ const colors = {
     replyIcon: [ 'neutral', '-4', ],
     subcommentAuthor: [ 'neutral', '-4', ],
     subcommentBorder: [ 'primary', '-4', ],
+    text: [ 'bodyText', 'base', ],
   },
   highlight: {
     base: [ 'quaternary', 'base', ],

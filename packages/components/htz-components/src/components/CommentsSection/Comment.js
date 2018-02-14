@@ -9,110 +9,6 @@ import IconArrow from '../Icon/icons/IconArrow';
 import IconReply from '../Icon/icons/IconReply';
 import Like from './Like'; // eslint-disable-line import/no-named-as-default
 
-const propTypes = {
-  /** The Comment author */
-  author: PropTypes.string.isRequired,
-  /** The Comment ID */
-  commentId: PropTypes.string.isRequired,
-  /** The Comment Number */
-  commentNumber: PropTypes.oneOfType([ PropTypes.number, PropTypes.string, ]).isRequired,
-  /**
-   * An Object holding the Minus Rates of all the comments in the `CommentsElement`.
-   * The Object has an id key for each comment that has at least one Minus vote.
-   * The corresponding value is the total number of Minus votes the comment has.
-   * The entire object is passed since the comment might have subComments that
-   * will need to check their own rate.
-   */
-  commentsMinusRate: PropTypes.shape({
-    id: PropTypes.number,
-  }),
-  /**
-   * An Object holding the Plus Rates of all the comments in the `CommentsElement`.
-   * The Object has an id key for each comment that has at least one Plus vote.
-   * The corresponding value is the rate of Plus votes the comment has.
-   * The entire object is passed since the comment might have subComments that
-   * will need to check their own rate.
-   */
-  commentsPlusRate: PropTypes.shape({
-    id: PropTypes.number,
-  }),
-  /** The comment text */
-  commentText: PropTypes.string,
-  /**
-   * A callback passed on to the reply `<CommentForm />`
-   * @param {String} commentAuthor - the new comment author
-   * @param {String} commentTextHtml - the new comment text innerHTML
-   * @param {String} parentCommentId - the parent CommentId - defaults to '0' if there is no `parentCommentId`
-   */
-  initNewComment: PropTypes.func,
-  /**
-   * A callaback that initiates a vote, `<Like />` sends up the commentId and the rate ("plus"/"minus")
-   */
-  initVote: PropTypes.func.isRequired,
-  /**
-   * Is this comment marked as an editors pick?
-   * Notice this is a string that should be "true" or "false"
-   * as a string and not as a boolean (database limitations).
-   */
-  isEditorPick: PropTypes.string,
-  /** passed as true when the SubComment is the first in the `subComments` Array */
-  isFirstSubComment: PropTypes.bool,
-  /** passed as true when the SubComment is the last in the `subComments` Array */
-  isLastSubComment: PropTypes.bool,
-  /** True when the comment is a subComment */
-  isSubComment: PropTypes.bool,
-  /**
-   * A callback that causes the parent `<Comment />` to open its reply `<CommentForm />`
-   * Replying to comments can only go one level deep so when replying to subComments,
-   * we are actually replying to the parent of the subComment
-   */
-  openParentReplyForm: PropTypes.func,
-  /** The author of the parent comment, null if it is not a subComment */
-  parentAuthor: PropTypes.string,
-  /** The publishing date for display as recieved from data base */
-  publishingDateForDisplay: PropTypes.string.isRequired,
-  /**
-   * A CallBack that sends up the the commentId in order to report the Comment as abusive
-   * @param {String} commentId
-   */
-  reportAbuse: PropTypes.func.isRequired,
-  /**
-   * A callback that gets the called when submitting the sign up to notification form in `<CommentSent />`
-   * @param {String} - notificationEmail - The email the user entered
-   */
-  signUpNotification: PropTypes.func,
-  /**
-   * A Array of `<Comment />`'s to be rendered as the subComments to this `<Comment/>`
-   */
-  subComments: PropTypes.arrayOf(PropTypes.object),
-  /**
-   * The `<Comment />` title
-   */
-  title: PropTypes.string,
-  /** passed as a a prop by fela's withTheme func before default export */
-  theme: PropTypes.shape({
-    color: PropTypes.func.isRequired,
-    bps: PropTypes.object.isRequired,
-    typeConf: PropTypes.object.isRequired,
-    mq: PropTypes.func.isRequired,
-  }).isRequired,
-};
-const defaultProps = {
-  commentsMinusRate: {},
-  commentsPlusRate: {},
-  commentText: '',
-  initNewComment: undefined,
-  isEditorPick: 'false',
-  isFirstSubComment: false,
-  isLastSubComment: false,
-  isSubComment: false,
-  openParentReplyForm: undefined,
-  parentAuthor: null,
-  signUpNotification: undefined,
-  subComments: undefined,
-  title: '',
-};
-
 const wrapperStyle = ({ theme, isSubComment, isLastSubComment, bgColor, }) => ({
   backgroundColor: bgColor,
   extend: [
@@ -216,7 +112,7 @@ const editorPickTagStyle = ({ theme, }) => ({
 const StyledEditorPickTag = createComponent(editorPickTagStyle, 'span');
 
 const commentTextStyle = ({ theme, fade, }) => ({
-  color: theme.color('bodyText', 'base'),
+  color: theme.color('comments', 'text'),
   margin: 0,
   ...(fade
     ? {
@@ -267,16 +163,116 @@ const disLikeMiscStyles = {
 };
 
 class Comment extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      displayReplyForm: false,
-      fadeText: false,
-      truncateAuthorName: true,
-    };
+  static propTypes = {
+    /** The Comment author */
+    author: PropTypes.string.isRequired,
+    /** The Comment ID */
+    commentId: PropTypes.string.isRequired,
+    /** The Comment Number */
+    commentNumber: PropTypes.oneOfType([ PropTypes.number, PropTypes.string, ]).isRequired,
+    /**
+     * An Object holding the Minus Rates of all the comments in the `CommentsElement`.
+     * The Object has an id key for each comment that has at least one Minus vote.
+     * The corresponding value is the total number of Minus votes the comment has.
+     * The entire object is passed since the comment might have subComments that
+     * will need to check their own rate.
+     */
+    commentsMinusRate: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+    /**
+     * An Object holding the Plus Rates of all the comments in the `CommentsElement`.
+     * The Object has an id key for each comment that has at least one Plus vote.
+     * The corresponding value is the rate of Plus votes the comment has.
+     * The entire object is passed since the comment might have subComments that
+     * will need to check their own rate.
+     */
+    commentsPlusRate: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+    /** The comment text */
+    commentText: PropTypes.string,
+    /**
+     * A callback passed on to the reply `<CommentForm />`
+     * @param {String} commentAuthor - the new comment author
+     * @param {String} commentTextHtml - the new comment text innerHTML
+     * @param {String} parentCommentId - the parent CommentId - defaults to '0' if there is no `parentCommentId`
+     */
+    initNewComment: PropTypes.func,
+    /**
+     * A callaback that initiates a vote, `<Like />` sends up the commentId and the rate ("plus"/"minus")
+     */
+    initVote: PropTypes.func.isRequired,
+    /**
+     * Is this comment marked as an editors pick?
+     * Notice this is a string that should be "true" or "false"
+     * as a string and not as a boolean (database limitations).
+     */
+    isEditorPick: PropTypes.string,
+    /** passed as true when the SubComment is the first in the `subComments` Array */
+    isFirstSubComment: PropTypes.bool,
+    /** passed as true when the SubComment is the last in the `subComments` Array */
+    isLastSubComment: PropTypes.bool,
+    /** True when the comment is a subComment */
+    isSubComment: PropTypes.bool,
+    /**
+     * A callback that causes the parent `<Comment />` to open its reply `<CommentForm />`
+     * Replying to comments can only go one level deep so when replying to subComments,
+     * we are actually replying to the parent of the subComment
+     */
+    openParentReplyForm: PropTypes.func,
+    /** The author of the parent comment, null if it is not a subComment */
+    parentAuthor: PropTypes.string,
+    /** The publishing date for display as recieved from data base */
+    publishingDateForDisplay: PropTypes.string.isRequired,
+    /**
+     * A CallBack that sends up the the commentId in order to report the Comment as abusive
+     * @param {String} commentId
+     */
+    reportAbuse: PropTypes.func.isRequired,
+    /**
+     * A callback that gets the called when submitting the sign up to notification form in `<CommentSent />`
+     * @param {String} - notificationEmail - The email the user entered
+     */
+    signUpNotification: PropTypes.func,
+    /**
+     * A Array of `<Comment />`'s to be rendered as the subComments to this `<Comment/>`
+     */
+    subComments: PropTypes.arrayOf(PropTypes.object),
+    /**
+     * The `<Comment />` title
+     */
+    title: PropTypes.string,
+    /** passed as a a prop by fela's withTheme func before default export */
+    theme: PropTypes.shape({
+      color: PropTypes.func.isRequired,
+      bps: PropTypes.object.isRequired,
+      typeConf: PropTypes.object.isRequired,
+      mq: PropTypes.func.isRequired,
+    }).isRequired,
+  };
 
-    this.handleReplyClick = this.handleReplyClick.bind(this);
-  }
+  static defaultProps = {
+    commentsMinusRate: {},
+    commentsPlusRate: {},
+    commentText: '',
+    initNewComment: undefined,
+    isEditorPick: 'false',
+    isFirstSubComment: false,
+    isLastSubComment: false,
+    isSubComment: false,
+    openParentReplyForm: undefined,
+    parentAuthor: null,
+    signUpNotification: undefined,
+    subComments: undefined,
+    title: '',
+  };
+
+  state = {
+    displayReplyForm: false,
+    fadeText: false,
+    truncateAuthorName: true,
+  };
 
   componentDidMount() {
     const height = this.commentTextEl.clientHeight;
@@ -304,13 +300,13 @@ class Comment extends React.Component {
   bgColor = this.props.isEditorPick === 'true' || this.isUsersChoice
     ? this.props.theme.color('comments', 'highlightedCommentBg')
     : this.props.theme.color('comments', 'bg');
-  handleReplyClick() {
+  handleReplyClick = () => {
     this.state.displayReplyForm
       ? this.setState({ displayReplyForm: false, })
       : this.props.isSubComment
         ? this.props.openParentReplyForm()
         : this.setState({ displayReplyForm: true, });
-  }
+  };
 
   generateCommentMarkup() {
     return { __html: this.props.commentText, };
@@ -483,10 +479,4 @@ class Comment extends React.Component {
   }
 }
 
-Comment.propTypes = propTypes;
-
-Comment.defaultProps = defaultProps;
-
-const CommentWithTheme = withTheme(Comment);
-
-export default CommentWithTheme;
+export default withTheme(Comment);

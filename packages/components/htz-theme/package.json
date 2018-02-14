@@ -32,8 +32,8 @@
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
-    "@haaretz/htz-react-base": "^1.0.0",
     "@haaretz/fela-utils": "^0.1.0",
+    "@haaretz/htz-react-base": "^1.0.0",
     "babel-loader": "^7.1.2",
     "fela": "^6.0.2",
     "react": "^16.2.0",

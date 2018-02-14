@@ -1,14 +1,17 @@
 /* global window */
 import React from 'react';
 import matchMediaPolyfill from 'mq-polyfill';
-import toJson from 'enzyme-to-json';
+// import toJson from 'enzyme-to-json';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
+// import mockTheme from '../../../test-helpers/commentsMockTheme';
 import Comment from '../Comment'; // eslint-disable-line import/no-named-as-default
 
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail
 Math.random = jest.fn(() => 123456789);
+
+const mockFunc = jest.fn();
 
 describe('<Comment>', () => {
   describe('DOM element', () => {
@@ -23,29 +26,13 @@ describe('<Comment>', () => {
           author="comment.author"
           publishingDateForDisplay="10:30"
           commentNumber={1}
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
-          reportAbuse={(commentId, captchaKey) =>
-            console.log(
-              `report abuse from Comment.md comment Id: ${commentId}  captchaKey: ${captchaKey}`
-            )
-          }
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />,
         {
           createNodeMock: element => {
-            console.warn('element from Mock');
-            console.warn(element.type);
             if (element.type === 'div') {
               return { clientHeight: 24, };
             }
@@ -64,24 +51,10 @@ describe('<Comment>', () => {
           author="comment.author"
           publishingDateForDisplay="10:30"
           commentNumber={1}
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
-          reportAbuse={(commentId, captchaKey) =>
-            console.log(
-              `report abuse from Comment.md comment Id: ${commentId}  captchaKey: ${captchaKey}`
-            )
-          }
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />,
         { createNodeMock: element => (element.type === 'div' ? { clientHeight: 1064, } : null), }
       );
@@ -97,24 +70,10 @@ describe('<Comment>', () => {
           title="comment.title"
           publishingDateForDisplay="10:30"
           commentNumber={1}
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
-          reportAbuse={(commentId, captchaKey) =>
-            console.log(
-              `report abuse from Comment.md comment Id: ${commentId}  captchaKey: ${captchaKey}`
-            )
-          }
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />,
         { createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null), }
       );
@@ -130,24 +89,10 @@ describe('<Comment>', () => {
           commentText="simpleText"
           publishingDateForDisplay="10:30"
           commentNumber={1}
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
-          reportAbuse={(commentId, captchaKey) =>
-            console.log(
-              `report abuse from Comment.md comment Id: ${commentId}  captchaKey: ${captchaKey}`
-            )
-          }
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />,
         { createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null), }
       );
@@ -163,24 +108,10 @@ describe('<Comment>', () => {
           isEditorPick="true"
           publishingDateForDisplay="10:30"
           commentNumber={1}
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
-          reportAbuse={(commentId, captchaKey) =>
-            console.log(
-              `report abuse from Comment.md comment Id: ${commentId}  captchaKey: ${captchaKey}`
-            )
-          }
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />,
         { createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null), }
       );
@@ -201,24 +132,10 @@ describe('<Comment>', () => {
           commentsMinusRate={{
             'comment.commentId': 3,
           }}
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
-          reportAbuse={(commentId, captchaKey) =>
-            console.log(
-              `report abuse from Comment.md comment Id: ${commentId}  captchaKey: ${captchaKey}`
-            )
-          }
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />,
         { createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null), }
       );
@@ -239,24 +156,10 @@ describe('<Comment>', () => {
           commentsMinusRate={{
             'comment.commentId': 3,
           }}
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
-          reportAbuse={(commentId, captchaKey) =>
-            console.log(
-              `report abuse from Comment.md comment Id: ${commentId}  captchaKey: ${captchaKey}`
-            )
-          }
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />,
         { createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null), }
       );
@@ -273,24 +176,10 @@ describe('<Comment>', () => {
           commentNumber={1}
           isSubComment
           isFirstSubComment
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
-          reportAbuse={(commentId, captchaKey) =>
-            console.log(
-              `report abuse from Comment.md comment Id: ${commentId}  captchaKey: ${captchaKey}`
-            )
-          }
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />,
         { createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null), }
       );
@@ -307,24 +196,10 @@ describe('<Comment>', () => {
           commentNumber={1}
           isSubComment
           isLastSubComment
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
-          reportAbuse={(commentId, captchaKey) =>
-            console.log(
-              `report abuse from Comment.md comment Id: ${commentId}  captchaKey: ${captchaKey}`
-            )
-          }
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />,
         { createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null), }
       );
@@ -351,24 +226,10 @@ describe('<Comment>', () => {
               publishingDateSortable: '20171119002050',
             },
           ]}
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
-          reportAbuse={(commentId, captchaKey) =>
-            console.log(
-              `report abuse from Comment.md comment Id: ${commentId}  captchaKey: ${captchaKey}`
-            )
-          }
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />,
         { createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null), }
       );
@@ -384,20 +245,10 @@ describe('<Comment>', () => {
           author="comment.author comment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.author"
           publishingDateForDisplay="10:30"
           commentNumber={1}
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
+          initVote={mockFunc}
           reportAbuse={reportAbuse}
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />
       );
       const reportButton = output.find('button').at(3);
@@ -413,20 +264,10 @@ describe('<Comment>', () => {
           author="comment.author comment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.author"
           publishingDateForDisplay="10:30"
           commentNumber={1}
-          initVote={(commentId, rate) =>
-            console.log(`initVote from Comment.md commentId: ${commentId} rate: ${rate}`)
-          }
-          reportAbuse={() => console.log('report')}
-          initNewComment={(commentAuthor, commentHtml, parentCommentId) =>
-            console.log(
-              `init Comment from Comment.md commentAuthor: ${commentAuthor}, commentHtml: ${
-                commentHtml
-              } parentCommentId: ${parentCommentId}`
-            )
-          }
-          signUpNotification={email =>
-            console.log(`sign up comment notifications from Comment.md email: ${email}`)
-          }
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />
       );
       const replyButton = output.find('button').at(0);

@@ -7,42 +7,6 @@ import CommentSent from './CommentSent';
 import Form from '../Form/Form'; // eslint-disable-line import/no-named-as-default
 import TextInput from '../TextInput/TextInput';
 
-const propTypes = {
-  /**
-   * Update the parent element state that the `<CommentForm />`
-   * that is used to reply to another comment should close
-   * undefined for the main `<CommentForm />` which never needs to close
-   */
-  closeReplyForm: PropTypes.func,
-  /**
-   * A callback that gets called when subbmiting a new comment
-   * @param {String} commentAuthor - the new comment author
-   * @param {String} commentTextHtml - the new comment text innerHTML
-   * @param {String} parentCommentId - the parent CommentId - defaults to '0' if there is no `parentCommentId`
-   */
-  initNewComment: PropTypes.func.isRequired,
-  /**
-   * The parent commentId when the `<CommentForm />` is a reply form to another Comment
-   */
-  parentCommentId: PropTypes.string,
-  /**
-   * A callback that gets the called when submitting the sign up to notification form in `<CommentSent />`
-   * @param {String} - notificationEmail - The email the user entered
-   */
-  signUpNotification: PropTypes.func.isRequired,
-  /** passed as a a prop by fela's withTheme func before default export */
-  theme: PropTypes.shape({
-    commentsStyle: PropTypes.shape({
-      textInputVariant: PropTypes.string,
-    }),
-  }).isRequired,
-};
-
-const defaultProps = {
-  parentCommentId: '0',
-  closeReplyForm: undefined,
-};
-
 const formStyle = ({ theme, isReplyForm, }) => ({
   backgroundColor: isReplyForm ? theme.color('bg', 'base') : theme.color('white'),
   display: 'flex',
@@ -122,14 +86,48 @@ function getPrintableCharsCount(html) {
 
 class CommentForm extends React.Component {
   // Todo: check if user is logged in, add state and display toggle identified comment button, handle button logic
-  constructor(props) {
-    super(props);
-    this.state = {
-      displaySentComp: false,
-      displayThankYou: false,
-    };
-    this.handleSubmitComment = this.handleSubmitComment.bind(this);
-  }
+
+  static propTypes = {
+    /**
+     * Update the parent element state that the `<CommentForm />`
+     * that is used to reply to another comment should close
+     * undefined for the main `<CommentForm />` which never needs to close
+     */
+    closeReplyForm: PropTypes.func,
+    /**
+     * A callback that gets called when subbmiting a new comment
+     * @param {String} commentAuthor - the new comment author
+     * @param {String} commentTextHtml - the new comment text innerHTML
+     * @param {String} parentCommentId - the parent CommentId - defaults to '0' if there is no `parentCommentId`
+     */
+    initNewComment: PropTypes.func.isRequired,
+    /**
+     * The parent commentId when the `<CommentForm />` is a reply form to another Comment,
+     * defaults to '0' because of polopoly legacy
+     */
+    parentCommentId: PropTypes.string,
+    /**
+     * A callback that gets the called when submitting the sign up to notification form in `<CommentSent />`
+     * @param {String} - notificationEmail - The email the user entered
+     */
+    signUpNotification: PropTypes.func.isRequired,
+    /** passed as a a prop by fela's withTheme func before default export */
+    theme: PropTypes.shape({
+      commentsStyle: PropTypes.shape({
+        textInputVariant: PropTypes.string,
+      }),
+    }).isRequired,
+  };
+
+  static defaultProps = {
+    parentCommentId: '0',
+    closeReplyForm: undefined,
+  };
+
+  state = {
+    displaySentComp: false,
+    displayThankYou: false,
+  };
 
   isReplyForm = this.props.parentCommentId !== '0';
 
@@ -137,10 +135,10 @@ class CommentForm extends React.Component {
     ? `${this.props.theme.commentsStyle.textInputVariant}Inverse`
     : this.props.theme.commentsStyle.textInputVariant;
 
-  handleSubmitComment(commentAuthor, commentTextHtml) {
+  handleSubmitComment = (commentAuthor, commentTextHtml) => {
     this.props.initNewComment(commentAuthor, commentTextHtml, this.props.parentCommentId);
     this.setState({ displaySentComp: true, });
-  }
+  };
 
   handleSignUpNotification(didSignUp, notificationEmail) {
     if (!didSignUp) {
@@ -262,7 +260,5 @@ class CommentForm extends React.Component {
   }
 }
 
-CommentForm.propTypes = propTypes;
-CommentForm.defaultProps = defaultProps;
 
 export default withTheme(CommentForm);

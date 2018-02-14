@@ -401,8 +401,8 @@ apollo-link-schema@^1.0.2:
     apollo-link "^1.0.7"
 
 apollo-link-state@^0.4.0:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/apollo-link-state/-/apollo-link-state-0.3.1.tgz#e323d41357bb908c7b888d51a5650b8cdcef025d"
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/apollo-link-state/-/apollo-link-state-0.4.0.tgz#916dab5fa4ecc18d99dd9664b1d22476f4b280a6"
   dependencies:
     apollo-utilities "^1.0.6"
     graphql-anywhere "^4.1.0-alpha.0"
@@ -452,13 +452,13 @@ apollo-utilities@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.2.tgz#bcf348a7e613e82e2624ddb5be2b9f6bf1259c6d"
 
+apollo-utilities@^1.0.1, apollo-utilities@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.6.tgz#7bfd7a702b5225c9a4591fe28c5899d9b5f08889"
+
 apollo-utilities@^1.0.4, apollo-utilities@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.5.tgz#a5e99507d730ce21e84e07c7a9c7586b2ccdc58e"
-
-apollo-utilities@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.6.tgz#7bfd7a702b5225c9a4591fe28c5899d9b5f08889"
 
 app-root-path@^2.0.0:
   version "2.0.1"

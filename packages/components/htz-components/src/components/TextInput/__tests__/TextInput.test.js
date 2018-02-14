@@ -9,6 +9,7 @@ import TextInput from '../TextInput';
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail
 Math.random = jest.fn(() => 123456789);
+const mockFunc = jest.fn();
 
 describe('<TextInput>', () => {
   describe('DOM element', () => {
@@ -91,7 +92,7 @@ describe('<TextInput>', () => {
     });
     it('renders correctly a input with a onInput function', () => {
       const { component, styles, } = felaSnapshotter(
-        <TextInput onInput={() => console.log('got input')} />
+        <TextInput onInput={mockFunc} />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -171,8 +172,8 @@ describe('<TextInput>', () => {
       const output = felaMount(
         <TextInput
           label="label"
-          onFocus={() => console.log('focusing')}
-          onBlur={() => console.log('bluring')}
+          onFocus={mockFunc}
+          onBlur={mockFunc}
         />
       );
       expect(output.state().isFocused).toEqual(false);
@@ -229,9 +230,7 @@ describe('<TextInput>', () => {
     });
     it('onInput function gets called by InputElement when input happens', () => {
       const mockCallback = jest.fn();
-      const output = felaMount(
-        <TextInput label="label" onInput={mockCallback} />
-      );
+      const output = felaMount(<TextInput label="label" onInput={mockCallback} />);
       const input = output.find('input');
       input.simulate('focus');
       input.simulate('input', { which: 'a', });
@@ -240,9 +239,7 @@ describe('<TextInput>', () => {
     });
     it('onChange function gets called by InputElement when change happens', () => {
       const mockCallback = jest.fn();
-      const output = felaMount(
-        <TextInput label="label" onChange={mockCallback} />
-      );
+      const output = felaMount(<TextInput label="label" onChange={mockCallback} />);
       const input = output.find('input');
       input.simulate('focus');
       input.simulate('change', { which: 'a', });
@@ -258,4 +255,3 @@ describe('<TextInput>', () => {
     });
   });
 });
-

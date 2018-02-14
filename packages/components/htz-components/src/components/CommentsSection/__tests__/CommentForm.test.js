@@ -1,6 +1,6 @@
 /* global window document */
 import React from 'react';
-import toJson from 'enzyme-to-json';
+// import toJson from 'enzyme-to-json';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
 import queryCommandStatePolyFill from '../../../test-helpers/queryCommandStatePolyFill';
@@ -10,15 +10,13 @@ import CommentForm from '../CommentForm';
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail
 Math.random = jest.fn(() => 123456789);
+const mockFunc = jest.fn();
 
 describe('<Comment>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
       const { component, styles, } = felaSnapshotter(
-        <CommentForm
-          initNewComment={() => console.log('i should be a callback')}
-          signUpNotification={() => console.log('i should be a callback')}
-        />
+        <CommentForm initNewComment={mockFunc} signUpNotification={mockFunc} />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -29,8 +27,8 @@ describe('<Comment>', () => {
         <CommentForm
           closeReplyForm={mockCallback}
           parentCommentId="123"
-          initNewComment={() => console.log('i should be a callback')}
-          signUpNotification={() => console.log('i should be a callback')}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />
       );
       const closeButton = output.find('button').at(3);
@@ -41,10 +39,10 @@ describe('<Comment>', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
         <CommentForm
-          closeReplyForm={() => console.log('i should be a callback')}
+          closeReplyForm={mockFunc}
           parentCommentId="123"
           initNewComment={mockCallback}
-          signUpNotification={() => console.log('i should be a callback')}
+          signUpNotification={mockFunc}
         />
       );
       const submitButton = output.find('button').at(4);
@@ -57,10 +55,10 @@ describe('<Comment>', () => {
       const oldQueryCommandState = queryCommandStatePolyFill();
       const output = felaMount(
         <CommentForm
-          closeReplyForm={() => console.log('i should be a callback')}
+          closeReplyForm={mockFunc}
           parentCommentId="123"
           initNewComment={mockCallback}
-          signUpNotification={() => console.log('i should be a callback')}
+          signUpNotification={mockFunc}
         />
       );
       const input = output.find('input');
@@ -82,9 +80,9 @@ describe('<Comment>', () => {
       const oldQueryCommandState = queryCommandStatePolyFill();
       const output = felaMount(
         <CommentForm
-          closeReplyForm={() => console.log('i should be a callback')}
+          closeReplyForm={mockFunc}
           parentCommentId="123"
-          initNewComment={() => console.log('i should be a callback')}
+          initNewComment={mockFunc}
           signUpNotification={mockCallback}
         />
       );
@@ -108,9 +106,9 @@ describe('<Comment>', () => {
       const oldQueryCommandState = queryCommandStatePolyFill();
       const output = felaMount(
         <CommentForm
-          closeReplyForm={() => console.log('i should be a callback')}
+          closeReplyForm={mockFunc}
           parentCommentId="123"
-          initNewComment={() => console.log('i should be a callback')}
+          initNewComment={mockFunc}
           signUpNotification={mockCallback}
         />
       );
@@ -140,8 +138,8 @@ describe('<Comment>', () => {
         <CommentForm
           closeReplyForm={mockCallback}
           parentCommentId="123"
-          initNewComment={() => console.log('i should be a callback')}
-          signUpNotification={() => console.log('i should be a callback')}
+          initNewComment={mockFunc}
+          signUpNotification={mockFunc}
         />
       );
       const input = output.find('input');

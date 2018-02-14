@@ -10,13 +10,7 @@ import inputStyle from './consts/inputStyle';
 import fontStacks from './consts/fontStacks';
 import gridStyle from './consts/gridStyle';
 import typeConf from './consts/typeConf';
-<<<<<<< HEAD
 import i18n, {
-  tagsElement,
-=======
-import internationalization from './consts/internationalization';
-import {
->>>>>>> FIX(htz-components/htz-theme) after rebasing rename tagElementI18n, delete commentList snapshot
   commentI18n,
   commentFormI18n,
   commentSentI18n,
@@ -130,4 +124,4 @@ const htzTheme = Object.freeze({
 });
 
 export default htzTheme;
-export { bps, getColor, getTransition, mq, pxToRem, typesetter, };
+export { bps, getColor, getTransition, mq, pxToRem, typesetter, i18n, };

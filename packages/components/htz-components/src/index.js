@@ -7,20 +7,23 @@ import ArticleBody from './components/ArticleBody/ArticleBody';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import Caption from './components/Caption/Caption';
+import Comments from './components/CommentsSection/CommentsWithApollo';
 import Embed from './components/Embed/Embed';
+import Form from './components/Form/Form';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
-import Quote from './components/Quote/Quote';
-import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
+import Image from './components/Image/Image';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
-import StandardArticlePageLayout from './components/PageLayout/StandardArticlePageLayout';
+import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
+import Quote from './components/Quote/Quote';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
+import StandardArticlePageLayout from './components/PageLayout/StandardArticlePageLayout';
 import Scroll from './components/Scroll/Scroll';
 import ScrollListener from './components/EventListeners/ScrollListener';
+import Select from './components/Select/Select';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 import Tags from './components/Tags/Tags';
-import Image from './components/Image/Image';
-import Comments from './components/CommentsSection/CommentsWithApollo';
+import TextInput from './components/TextInput/TextInput';
 
 // Icons
 import IconAccessibility from './components/Icon/icons/IconAccessibility';
@@ -69,9 +72,25 @@ export {
   Button,
   ButtonGroup,
   Caption,
+  Comments,
+  Embed,
+  Form,
   Grid,
   GridItem,
-  Comments,
+  Image,
+  LinksBlock,
+  MobileQuickRegistration,
+  Quote,
+  RelatedArticles,
+  Scroll,
+  ScrollListener,
+  Select,
+  SeriesArticles,
+  StandardArticlePageLayout,
+  Tags,
+  TextInput,
+
+  // Icons
   IconAccessibility,
   IconAlef,
   IconAlefLogo,
@@ -106,16 +125,7 @@ export {
   IconZen,
   IconZoomIn,
   IconZoomOut,
-  MobileQuickRegistration,
+
+  // Utils
   createDocument,
-  Embed,
-  Quote,
-  LinksBlock,
-  StandardArticlePageLayout,
-  RelatedArticles,
-  Scroll,
-  ScrollListener,
-  SeriesArticles,
-  Tags,
-  Image,
 };

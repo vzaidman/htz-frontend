@@ -98,7 +98,7 @@ exports[`<CommentSent> DOM element renders correctly with minimal required props
       <button
         className="htz-l htz-m htz-n htz-o htz-j htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-e htz-f htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
         id={null}
-        onClick={[Function]}
+        onClick={[MockFunction]}
         type="button"
       >
         סגור

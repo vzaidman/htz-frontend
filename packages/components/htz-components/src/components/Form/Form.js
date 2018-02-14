@@ -2,89 +2,84 @@ import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 
-const propTypes = {
-  /**
-   * An object of attrbutes to set on the DOM element.
-   * Passed to the underlying input/textarea element in this component
-   */
-  attrs: attrsPropType,
-  /**
-   * If true when handleSubmit function is called
-   * native submit behaviour wont be prevented
-   */
-  disablePreventDefault: PropTypes.bool,
-  /**
-   * Initial values to inject to the Form state,
-   * The initial values are spread into he Form's state.values object
-   * The given values name key should corrospond to the name attribute given to the relevant input
-   */
-  initialValues: PropTypes.shape({
-    name: PropTypes.string,
-  }),
-  /**
-   * Should The Form check for if the validation passes when the input blurs
-   */
-  isValidateOnBlur: PropTypes.bool,
-  /**
-   * Should The Form check for if the validation passes when the user enters new input
-   */
-  isValidateOnChange: PropTypes.bool,
-  /**
-   * A callback that gets the the values object from the Form state
-   * Gets called through handleSubmit() if the validation callback returns no errors
-   * @param {Object} values - The Values Object from the Form state
-   */
-  onSubmit: PropTypes.func.isRequired,
-
-  /**
-   * A callback that should validate inputs inside that the form controls
-   *
-   * The function should return and Array of error objects that have the following keys:
-   *
-   * name: required, and needs to corespond with the input name
-   *
-   * order: required, in case of an error after trying to submit the for will focus
-   *        on the input that is in error state and has the lowest order value
-   *
-   * errorText: optional, will render the given errorNote in case of error
-   * @param {Object} values - The Values Object from the Form state
-   */
-  validate: PropTypes.func,
-  /**
-   * The render Props callback
-   * This component was built using the render props pattern together with prop getters pattern
-   *
-   * Checkout the following link to learn about render props pattern http://bit.ly/2CSxs7g
-   *
-   * And the following link to learn about prop getters http://bit.ly/2Fk27bY
-   *
-   * The Form Component passes an Object to its render function.
-   * @param {Object} - holds the getInputProps, handleSubmit, and clearForm functions
-   */
-  render: PropTypes.func.isRequired,
-};
-const defaultProps = {
-  attrs: null,
-  disablePreventDefault: false,
-  initialValues: {},
-  isValidateOnBlur: true,
-  isValidateOnChange: true,
-  validate: null,
-};
-
 const callAll = (...fns) => (...args) => fns.forEach(fn => fn && fn(...args));
 
 export class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      values: { ...props.initialValues, },
-      errors: [],
-      touched: {},
-      isSubmiting: false,
-    };
-    this.clearForm = this.clearForm.bind(this);
-  }
+  static propTypes = {
+    /**
+     * An object of attrbutes to set on the DOM element.
+     * Passed to the underlying input/textarea element in this component
+     */
+    attrs: attrsPropType,
+    /**
+     * If true when handleSubmit function is called
+     * native submit behaviour wont be prevented
+     */
+    disablePreventDefault: PropTypes.bool,
+    /**
+     * Initial values to inject to the Form state,
+     * The initial values are spread into he Form's state.values object
+     * The given values name key should corrospond to the name attribute given to the relevant input
+     */
+    initialValues: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+    /**
+     * Should The Form check for if the validation passes when the input blurs
+     */
+    isValidateOnBlur: PropTypes.bool,
+    /**
+     * Should The Form check for if the validation passes when the user enters new input
+     */
+    isValidateOnChange: PropTypes.bool,
+    /**
+     * A callback that gets the the values object from the Form state
+     * Gets called through handleSubmit() if the validation callback returns no errors
+     * @param {Object} values - The Values Object from the Form state
+     */
+    onSubmit: PropTypes.func.isRequired,
+    /**
+     * A callback that should validate inputs inside that the form controls
+     *
+     * The function should return and Array of error objects that have the following keys:
+     *
+     * name: required, and needs to corespond with the input name
+     *
+     * order: required, in case of an error after trying to submit the for will focus
+     *        on the input that is in error state and has the lowest order value
+     *
+     * errorText: optional, will render the given errorNote in case of error
+     * @param {Object} values - The Values Object from the Form state
+     */
+    validate: PropTypes.func,
+    /**
+     * The render Props callback
+     * This component was built using the render props pattern together with prop getters pattern
+     *
+     * Checkout the following link to learn about render props pattern http://bit.ly/2CSxs7g
+     *
+     * And the following link to learn about prop getters http://bit.ly/2Fk27bY
+     *
+     * The Form Component passes an Object to its render function.
+     * @param {Object} - holds the getInputProps, handleSubmit, and clearForm functions
+     */
+    render: PropTypes.func.isRequired,
+  };
+  static defaultProps = {
+    attrs: null,
+    disablePreventDefault: false,
+    initialValues: {},
+    isValidateOnBlur: true,
+    isValidateOnChange: true,
+    validate: null,
+  };
+
+  state = {
+    values: { ...this.props.initialValues, },
+    errors: [],
+    touched: {},
+    isSubmiting: false,
+  };
 
   /**
    * A function that is used to spread all the props on a input element that is controlled by the form.
@@ -211,7 +206,7 @@ export class Form extends Component {
    * A function that clears all errors, values, and reset the touched fields
    */
 
-  clearForm() {
+  clearForm = () => {
     const values = {};
     const keys = Object.keys(this.state.values);
     keys.forEach(key => {
@@ -255,8 +250,5 @@ export class Form extends Component {
     );
   }
 }
-
-Form.propTypes = propTypes;
-Form.defaultProps = defaultProps;
 
 export default Form;

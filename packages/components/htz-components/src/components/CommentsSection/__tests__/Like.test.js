@@ -3,25 +3,18 @@ import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
 import Like from '../Like'; // eslint-disable-line import/no-named-as-default
 
+const mockFunc = jest.fn();
+
 describe('<Like>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
-      const { component, styles, } = felaSnapshotter(
-        <Like
-          initVote={(commentId, rateSign) => console.log(`initing vote ${commentId} ${rateSign}`)}
-          commentId="12345"
-        />
-      );
+      const { component, styles, } = felaSnapshotter(<Like initVote={mockFunc} commentId="12345" />);
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with custom iconsColor', () => {
       const { component, styles, } = felaSnapshotter(
-        <Like
-          initVote={(commentId, rateSign) => console.log(`initing vote ${commentId} ${rateSign}`)}
-          commentId="12345"
-          iconColor="facebook"
-        />
+        <Like initVote={mockFunc} commentId="12345" iconColor="facebook" />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();

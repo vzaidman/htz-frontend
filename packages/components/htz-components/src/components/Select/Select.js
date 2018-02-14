@@ -16,70 +16,6 @@ const itemPropType = shape({
   key: oneOfType([ PropTypes.string, PropTypes.number, ]),
 });
 
-const propTypes = {
-  /**
-   * An object of attrbutes to set on the DOM element.
-   * Passed to the underlying react element
-   */
-  attrs: attrsPropType,
-  /**
-   * selectedItem of a controlled `<Select />`.
-   * Should never be passed manually by the consumer, but rather
-   * set by the controlling component.
-   */
-  controlledSelectedItem: itemPropType,
-  /**
-   * The initial selected item of an uncontrolled `<Select />`.
-   *
-   * Only relevant when using an uncontrolled select.
-   * Allows specifying the initial item but leaving subsequent
-   * updates uncontrolled.
-   */
-  defaultSelectedItem: itemPropType,
-  /**
-   * An Array of option Objects for the Select,
-   *
-   * display key is the display string that will show in the Select
-   *
-   * the value key is the value of the input when option is chosen
-   *
-   * if the value is not unique, a unique key should be given to each option
-   */
-  items: PropTypes.arrayOf(itemPropType).isRequired,
-  /**
-   * A special property holding miscellaneous CSS values that
-   * trump all default values. Processed by
-   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
-   */
-  miscStyles: stylesPropType,
-  /**
-   * A callback that gets the the new selectedItem
-   * @param {object} item - The selected Item Object
-   */
-  onChange: PropTypes.func,
-  /** The placeholder to display when no item is selected */
-  placeholder: PropTypes.string,
-  /** The `<Select />`'s stylistic variant */
-  variant: PropTypes.oneOfType([
-    selectVariants,
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        ...responsivePropBaseType,
-        value: selectVariants.isRequired,
-      })
-    ),
-  ]),
-};
-const defaultProps = {
-  attrs: null,
-  controlledSelectedItem: null,
-  defaultSelectedItem: null,
-  miscStyles: null,
-  onChange: null,
-  placeholder: 'בחר אחת מהאפשרויות הבאות',
-  variant: 'primary',
-};
-
 const StyledSelectWrapper = createComponent(selectStyle);
 
 const dropDownMenuStyle = ({ theme, variant, }) => ({
@@ -176,18 +112,78 @@ const StyledSelectedItem = createComponent(selectedItemStyle, StyledItem, props 
 });
 
 export class Select extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedItem: null,
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
+  static propTypes = {
+    /**
+     * An object of attrbutes to set on the DOM element.
+     * Passed to the underlying react element
+     */
+    attrs: attrsPropType,
+    /**
+     * selectedItem of a controlled `<Select />`.
+     * Should never be passed manually by the consumer, but rather
+     * set by the controlling component.
+     */
+    controlledSelectedItem: itemPropType,
+    /**
+     * The initial selected item of an uncontrolled `<Select />`.
+     *
+     * Only relevant when using an uncontrolled select.
+     * Allows specifying the initial item but leaving subsequent
+     * updates uncontrolled.
+     */
+    defaultSelectedItem: itemPropType,
+    /**
+     * An Array of option Objects for the Select,
+     *
+     * display key is the display string that will show in the Select
+     *
+     * the value key is the value of the input when option is chosen
+     *
+     * if the value is not unique, a unique key should be given to each option
+     */
+    items: PropTypes.arrayOf(itemPropType).isRequired,
+    /**
+     * A special property holding miscellaneous CSS values that
+     * trump all default values. Processed by
+     * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+     */
+    miscStyles: stylesPropType,
+    /**
+     * A callback that gets the the new selectedItem
+     * @param {object} item - The selected Item Object
+     */
+    onChange: PropTypes.func,
+    /** The placeholder to display when no item is selected */
+    placeholder: PropTypes.string,
+    /** The `<Select />`'s stylistic variant */
+    variant: PropTypes.oneOfType([
+      selectVariants,
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          ...responsivePropBaseType,
+          value: selectVariants.isRequired,
+        })
+      ),
+    ]),
+  };
+  static defaultProps = {
+    attrs: null,
+    controlledSelectedItem: null,
+    defaultSelectedItem: null,
+    miscStyles: null,
+    onChange: null,
+    placeholder: 'בחר אחת מהאפשרויות הבאות',
+    variant: 'primary',
+  };
 
-  handleChange(selectedItem) {
+  state = {
+    selectedItem: null,
+  };
+
+  handleChange = selectedItem => {
     this.setState({ selectedItem, });
     if (this.props.onChange) this.props.onChange(selectedItem);
-  }
+  };
 
   render() {
     const {
@@ -267,8 +263,5 @@ export class Select extends Component {
     );
   }
 }
-
-Select.propTypes = propTypes;
-Select.defaultProps = defaultProps;
 
 export default Select;

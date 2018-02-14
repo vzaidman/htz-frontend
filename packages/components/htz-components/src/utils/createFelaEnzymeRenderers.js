@@ -1,8 +1,12 @@
+// todo: move to fela-utils
 import React from 'react';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { shallow, mount, } from 'enzyme';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { renderToString, } from 'fela-tools';
 // import toJson from 'enzyme-to-json';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { createTheme, } from 'fela-bindings';
 
 /*
@@ -29,7 +33,8 @@ export default function createFelaEnzymeRenderers(renderer, theme) {
     return component;
   }
 
-  function felaMount(node, options = {}) {
+  function felaMount(node, options = {}, userTheme) {
+    const chosenTheme = userTheme || theme;
     const component = mount(node, {
       childContextTypes: {
         renderer: PropTypes.object,
@@ -37,7 +42,7 @@ export default function createFelaEnzymeRenderers(renderer, theme) {
       },
       context: {
         renderer,
-        theme: createTheme(theme),
+        theme: createTheme(chosenTheme),
       },
       ...options,
     });

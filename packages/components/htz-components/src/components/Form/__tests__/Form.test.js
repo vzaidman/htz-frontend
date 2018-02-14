@@ -10,13 +10,14 @@ import TextInput from '../../TextInput/TextInput';
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail
 Math.random = jest.fn(() => 123456789);
+const mockFunc = jest.fn();
 
 describe('<Form>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
       const { component, styles, } = felaSnapshotter(
         <Form
-          onSubmit={({ email, }) => console.log(`email submitted: ${email}`)}
+          onSubmit={mockFunc}
           render={({ getInputProps, handleSubmit, clearForm, }) => (
             <div>
               <TextInput
@@ -43,7 +44,7 @@ describe('<Form>', () => {
       const { component, styles, } = felaSnapshotter(
         <Form
           initialValues={{ email: 'example@email.com', }}
-          onSubmit={({ email, }) => console.log(`email submitted: ${email}`)}
+          onSubmit={mockFunc}
           render={({ getInputProps, handleSubmit, clearForm, }) => (
             <div>
               <TextInput
@@ -70,7 +71,7 @@ describe('<Form>', () => {
     it('correctly validates an error', () => {
       const output = felaMount(
         <Form
-          onSubmit={({ email, }) => console.log(`email submitted: ${email}`)}
+          onSubmit={mockFunc}
           validate={({ email, text, }) => {
             const errors = [];
             if (!email) {
@@ -104,7 +105,7 @@ describe('<Form>', () => {
       const output = felaMount(
         <Form
           initialValues={{ email: 'example@email.com', }}
-          onSubmit={({ email, }) => console.log(`email submitted: ${email}`)}
+          onSubmit={mockFunc}
           validate={({ email, text, }) => {
             const errors = [];
             if (!email) {

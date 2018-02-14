@@ -7,68 +7,6 @@ import CommentList from './CommentList'; // eslint-disable-line import/no-named-
 import Select from '../Select/Select'; // eslint-disable-line import/no-named-as-default
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 
-const propTypes = {
-  /**
-   * An Array of comment objects
-   */
-  comments: PropTypes.arrayOf(PropTypes.object),
-  /**
-   * An Object holding the Minus Rates of all the comments in the `CommentsElement`.
-   * The Object has an id key for each comment that has at least one Minus vote.
-   * The corresponding value is the total number of Minus votes the comment has.
-   */
-  commentsMinusRate: PropTypes.shape({
-    id: PropTypes.number,
-  }),
-  /**
-   * An Object holding the Plus Rates of all the comments in the `CommentsElement`.
-   * The Object has an id key for each comment that has at least one Plus vote.
-   * The corresponding value is the rate of Plus votes the comment has.
-   */
-  commentsPlusRate: PropTypes.shape({
-    id: PropTypes.number,
-  }),
-  /**
-   * A callback passed on to the reply `<CommentForm />`
-   * @param {String} commentAuthor - the new comment author
-   * @param {String} commentTextHtml - the new comment text innerHTML
-   * @param {String} parentCommentId - the parent CommentId - defaults to '0' if there is no `parentCommentId`
-   */
-  initNewComment: PropTypes.func.isRequired,
-  /**
-   * A callaback that initiates a vote, `<Likes />` sends up the commentId and the rate ("plus"/"minus")
-   */
-  initVote: PropTypes.func.isRequired,
-  /** A callback that get's called when clicking load more button */
-  loadAllComments: PropTypes.func.isRequired,
-  /**
-   * A CallBack that gets called `onReCaptchaResolve`,
-   * `onSubmitCaptcha` which executes the captcha gets called when the
-   * reportAbuse event from `<CommentList />` gets called, it saves the commentId in
-   * `<CommentSection/>` state to later use `onCaptchaResolve`
-   * @param {String} - commentId
-   * @param {String} - captchaKey
-   */
-  reportAbuse: PropTypes.func.isRequired,
-  /**
-   * A callback that gets the called when submitting the sign up to notification form in `<CommentSent />`
-   * @param {String} - notificationEmail - The email the user entered
-   */
-  signUpNotification: PropTypes.func.isRequired,
-  /** passed as a a prop by fela's withTheme func before default export */
-  theme: PropTypes.shape({
-    commentsSectionI18n: PropTypes.object.isRequired,
-  }).isRequired,
-  /** used to calculate comment numbers */
-  totalHits: PropTypes.number.isRequired,
-};
-
-const defaultProps = {
-  comments: [],
-  commentsPlusRate: {},
-  commentsMinusRate: {},
-};
-
 const sectionStyle = ({ theme, }) => ({});
 
 const StyledSection = createComponent(sectionStyle);
@@ -96,19 +34,76 @@ const SelectStyle = {
 };
 
 export class CommentsSection extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sortMethod: { value: 'dateDescending', display: 'מהאחרונה לראשונה', },
-      reportCommentId: null,
-    };
-    this.onReCaptchaResolve = this.onReCaptchaResolve.bind(this);
-  }
+  static propTypes = {
+    /**
+     * An Array of comment objects
+     */
+    comments: PropTypes.arrayOf(PropTypes.object),
+    /**
+     * An Object holding the Minus Rates of all the comments in the `CommentsElement`.
+     * The Object has an id key for each comment that has at least one Minus vote.
+     * The corresponding value is the total number of Minus votes the comment has.
+     */
+    commentsMinusRate: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+    /**
+     * An Object holding the Plus Rates of all the comments in the `CommentsElement`.
+     * The Object has an id key for each comment that has at least one Plus vote.
+     * The corresponding value is the rate of Plus votes the comment has.
+     */
+    commentsPlusRate: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+    /**
+     * A callback passed on to the reply `<CommentForm />`
+     * @param {String} commentAuthor - the new comment author
+     * @param {String} commentTextHtml - the new comment text innerHTML
+     * @param {String} parentCommentId - the parent CommentId - defaults to '0' if there is no `parentCommentId`
+     */
+    initNewComment: PropTypes.func.isRequired,
+    /**
+     * A callaback that initiates a vote, `<Likes />` sends up the commentId and the rate ("plus"/"minus")
+     */
+    initVote: PropTypes.func.isRequired,
+    /** A callback that get's called when clicking load more button */
+    loadAllComments: PropTypes.func.isRequired,
+    /**
+     * A CallBack that gets called `onReCaptchaResolve`,
+     * `onSubmitCaptcha` which executes the captcha gets called when the
+     * reportAbuse event from `<CommentList />` gets called, it saves the commentId in
+     * `<CommentSection/>` state to later use `onCaptchaResolve`
+     * @param {String} - commentId
+     * @param {String} - captchaKey
+     */
+    reportAbuse: PropTypes.func.isRequired,
+    /**
+     * A callback that gets the called when submitting the sign up to notification form in `<CommentSent />`
+     * @param {String} - notificationEmail - The email the user entered
+     */
+    signUpNotification: PropTypes.func.isRequired,
+    /** passed as a a prop by fela's withTheme func before default export */
+    theme: PropTypes.shape({
+      commentsSectionI18n: PropTypes.object.isRequired,
+    }).isRequired,
+    /** used to calculate comment numbers */
+    totalHits: PropTypes.number.isRequired,
+  };
 
-  onSubmitCaptcha(commentId) {
+  static defaultProps = {
+    comments: [],
+    commentsPlusRate: {},
+    commentsMinusRate: {},
+  };
+
+  state = {
+    sortMethod: { value: 'dateDescending', display: 'מהאחרונה לראשונה', },
+    reportCommentId: null,
+  };
+  onSubmitCaptcha = commentId => {
     this.setState({ reportCommentId: commentId, });
     this.recaptcha.execute();
-  }
+  };
 
   onReCaptchaResolve() {
     const captchaKey = this.recaptcha.getResponse();
@@ -228,9 +223,5 @@ export class CommentsSection extends React.Component {
     );
   }
 }
-
-CommentsSection.propTypes = propTypes;
-
-CommentsSection.defaultProps = defaultProps;
 
 export default withTheme(CommentsSection);

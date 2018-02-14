@@ -23,20 +23,20 @@
     "lint": "htz-scripts lint",
     "prepare": "npm run build",
     "styleguide": "htz-scripts styleguide",
-<<<<<<< HEAD
     "styleguide:build": "htz-scripts styleguide:build",
-=======
-    "styleguide:build":
-      "htz-scripts styleguide:build && rm -rf ../../../docs/htz-components/**/* && cp -r dist/styleguide/* ../../../docs/htz-components",
->>>>>>> chore(htz-components) remove unsused concurrent package
     "test": "htz-scripts test",
     "test:debug": "node --inspect-brk ./node_modules/.bin/htz-scripts test",
     "update-scripts": "htz-scripts update-scripts"
   },
   "peerDependencies": {
+    "@haaretz/htz-react-server": "^0.0.0",
+    "apollo-client-preset": "^1.0.6",
+    "apollo-link-state": "^0.4.0",
     "fela": "^6.0.2",
+    "graphql-tag": "^2.5.0",
     "next": "^4.2.1",
     "react": "^16.2.0",
+    "react-apollo": "^2.0.0",
     "react-dom": "^16.2.0",
     "react-fela": "^6.0.2"
   },
@@ -53,8 +53,8 @@
     "lodash": "4.17.4",
     "prop-types": "^15.6.0",
     "react-fns": "^1.3.0",
-    "react-intersection-observer": "^3.0.2",
     "react-google-invisible-recaptcha": "^0.2.1",
+    "react-intersection-observer": "^3.0.2",
     "react-no-ssr": "^1.1.0",
     "react-test-renderer": "^16.2.0",
     "serialize-javascript": "^1.4.0",

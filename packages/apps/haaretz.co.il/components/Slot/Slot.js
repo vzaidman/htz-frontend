@@ -62,8 +62,6 @@ export function Slot({ name, content, styles, pageContentId, }) {
         jsx = <StandardArticle {...element} {...element.properties} />;
         break;
       case 'com.tm.CommentsElement':
-        // jsx = <CommentsElement contentId={element.contentId}/>;
-        console.warn(pageContentId);
         jsx = <Comments contentId={element.contentId} articleId={pageContentId} />;
         break;
       default:

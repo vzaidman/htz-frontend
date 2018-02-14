@@ -7,6 +7,7 @@ import CommentList from '../CommentList'; // eslint-disable-line import/no-named
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail
 Math.random = jest.fn(() => 123456789);
+const mockFunc = jest.fn();
 
 describe('<Comment>', () => {
   describe('DOM element', () => {
@@ -16,8 +17,8 @@ describe('<Comment>', () => {
     it('renders correctly with required props', () => {
       const { component, styles, } = felaSnapshotter(
         <CommentList
-          initVote={() => console.log('i should be a callback')}
-          reportAbuse={() => console.log('i should be a callback')}
+          initVote={mockFunc}
+          reportAbuse={mockFunc}
           comments={[
             {
               author:
