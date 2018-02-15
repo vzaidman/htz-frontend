@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { GraphQLObjectType, GraphQLList, GraphQLInt, } from 'graphql';
+
 import GraphQLJSON from 'graphql-type-json';
 
 import CommentType from './comment_type';

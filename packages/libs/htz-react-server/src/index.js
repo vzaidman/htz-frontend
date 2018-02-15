@@ -3,6 +3,7 @@ import express from 'express';
 import { graphqlExpress, graphiqlExpress, } from 'graphql-server-express';
 import bodyParser from 'body-parser';
 import compression from 'compression';
+import { schema, } from '@haaretz/app-utils';
 import helmet from 'helmet';
 import next from 'next';
 import cors from 'cors';
@@ -13,7 +14,6 @@ import config from 'config';
 // adding this `fetch` global) here. That way they'll be available to any
 // modules that Next.js imports while routing and rendering pages.
 import 'isomorphic-fetch';
-import schema from './schema/schema';
 import createContext from './createContext';
 
 const DEV = process.env.NODE_ENV !== 'production';

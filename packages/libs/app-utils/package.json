@@ -25,6 +25,7 @@
     "apollo-client-preset": "^1.0.6",
     "apollo-link-state": "^0.4.0",
     "config": "^1.26.2",
+    "graphql": "^0.11.7",
     "isomorphic-unfetch": "^2.0.0",
     "next": "^4.2.1",
     "prop-types": "^15.6.0",
@@ -36,10 +37,14 @@
     "apollo-client-preset": "^1.0.6",
     "apollo-link-state": "^0.4.0",
     "config": "^1.26.2",
+    "graphql": "^0.11.7",
     "isomorphic-unfetch": "^2.0.0",
     "next": "^4.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-apollo": "^2.0.0"
+  },
+  "dependencies": {
+    "graphql-type-json": "^0.1.4"
   }
 }

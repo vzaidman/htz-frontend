@@ -26,6 +26,7 @@
     "next": "^4.2.1"
   },
   "dependencies": {
+    "@haaretz/app-utils": "^0.1.0",
     "body-parser": "^1.18.1",
     "compression": "^1.7.0",
     "config": "^1.26.2",

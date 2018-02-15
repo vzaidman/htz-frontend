@@ -2,27 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import htzTheme, { cssReset, } from '@haaretz/htz-theme';
+import { schema, } from '@haaretz/app-utils';
 import { ApolloClient, InMemoryCache, ApolloLink, } from 'apollo-client-preset';
 import { withClientState, } from 'apollo-link-state';
 import { ApolloProvider, } from 'react-apollo';
 import { createRenderer, StyleProvider, } from '@haaretz/fela-utils';
 import { SchemaLink, } from 'apollo-link-schema';
-import { makeExecutableSchema, addMockFunctionsToSchema, } from 'graphql-tools';
-import GraphQLJSON from 'graphql-type-json';
-import typeDefs from './typeDefs';
+import { addMockFunctionsToSchema, } from 'graphql-tools';
 import mocks from './mocks';
 
-const resolveFunctions = {
-  JSON: GraphQLJSON,
-};
-
-const schema = makeExecutableSchema({ typeDefs, resolvers: resolveFunctions, });
 addMockFunctionsToSchema({
   schema,
   mocks,
 });
-
-// const hostIp = config.get('hostIp');
 
 const link = new SchemaLink({ schema, });
 
@@ -79,18 +71,12 @@ StyleGuideProvider.defaultProps = {
 export default function StyleGuideProvider({ children, }) {
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
-    [
-      '../src/fonts/OpenSansHebrewRegular.woff',
-      '../src/fonts/OpenSansHebrewRegular.woff2',
-    ],
+    [ '../src/fonts/OpenSansHebrewRegular.woff', '../src/fonts/OpenSansHebrewRegular.woff2', ],
     { fontWeight: 400, }
   );
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
-    [
-      '../src/fonts/OpenSansHebrewBold.woff',
-      '../src/fonts/OpenSansHebrewBold.woff2',
-    ],
+    [ '../src/fonts/OpenSansHebrewBold.woff', '../src/fonts/OpenSansHebrewBold.woff2', ],
     { fontWeight: 700, }
   );
 
