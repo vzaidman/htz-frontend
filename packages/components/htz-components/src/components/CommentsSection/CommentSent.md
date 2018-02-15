@@ -19,6 +19,7 @@ The form is handled by `<Form />` and `<TextInput />`, including email verificat
 ```jsx
 <div dir="rtl">
   <CommentSent
+    isReplyForm={false}
     closeDisplayThankYou={() => console.log("will close display thank you")}
     displayThankYou={false}
     signUpNotification={(bool, email) =>
@@ -36,6 +37,7 @@ stop displaying the `<CommentSent />` when clicking the close button
 ```jsx
 <div dir="rtl">
   <CommentSent
+    isReplyForm={false}
     closeDisplayThankYou={() => console.log("will close display thank you")}
     displayThankYou={true}
     signUpNotification={bool => console.log("init sign up func " + bool)}
