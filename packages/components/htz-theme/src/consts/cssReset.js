@@ -165,6 +165,14 @@ const styles =
   '-webkit-text-decoration-skip:skip;' + // 3
   'text-decoration-skip:ink;' + // 3
   '}' +
+  /** make links inherit their ansestor's color by default */
+  'a,' +
+  'a:visited,' +
+  'a:hover,' +
+  'a:active,' +
+  'a:focus{' +
+  'color: inherit;' +
+  '}' +
   /**
    * abbr element
    * 1. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
