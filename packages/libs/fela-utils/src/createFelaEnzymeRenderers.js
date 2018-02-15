@@ -14,11 +14,11 @@ import { createTheme, } from 'fela-bindings';
  * Fela components with Enzyme
  */
 export default function createFelaEnzymeRenderers(renderer, theme) {
-  function felaShallow(node, options = {}, userTheme) {
+  function felaShallow(node, options = {}, mockTheme) {
     const component = shallow(node, {
       context: {
         renderer,
-        theme: userTheme || theme,
+        theme: mockTheme || theme,
       },
       ...options,
     });
@@ -27,7 +27,7 @@ export default function createFelaEnzymeRenderers(renderer, theme) {
     return component;
   }
 
-  function felaMount(node, options = {}, userTheme) {
+  function felaMount(node, options = {}, mockTheme) {
     const component = mount(node, {
       childContextTypes: {
         renderer: PropTypes.object,
@@ -35,7 +35,7 @@ export default function createFelaEnzymeRenderers(renderer, theme) {
       },
       context: {
         renderer,
-        theme: createTheme(userTheme || theme),
+        theme: createTheme(mockTheme || theme),
       },
       ...options,
     });

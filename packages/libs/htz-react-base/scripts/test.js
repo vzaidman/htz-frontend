@@ -24,6 +24,7 @@ const defaultConfig = {
   testPathIgnorePatterns: [
     '/node_modules/',
     '/dist/',
+    '/docs/',
     '__mocks__',
     '/__tests__/helpers/',
     '/fixtures/',

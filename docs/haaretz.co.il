@@ -1,0 +1,1 @@
+../packages/apps/haaretz.co.il/docs/

@@ -16,7 +16,7 @@
   "module": "dist/esm/index.js",
   "esnext": "dist/esnext/index.js",
   "scripts": {
-    "build": "htz-scripts build && yarn run build:docs",
+    "build": "htz-scripts build",
     "build:docs": "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
     "clean": "htz-scripts clean",
     "flow": "htz-scripts flow",
@@ -35,6 +35,6 @@
     "@haaretz/htz-react-base": "^1.0.0",
     "documentation": "^5.3.3",
     "mq-polyfill": "^1.1.8",
-    "rimraf": "2.6.2"
+    "rimraf": "^2.6.2"
   }
 }

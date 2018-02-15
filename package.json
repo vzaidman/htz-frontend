@@ -130,16 +130,19 @@
       }
     },
     "enzyme": {
-      "3.2.0": {
-        "packages/libs/app-utils": [
+      "^3.3.0": {
+        "packages/libs/{fela-utils,htz-react-base}": [
           "dependencies"
         ]
       }
     },
     "enzyme-to-json": {
-      "3.2.2": {
-        "packages/libs/app-utils": [
+      "^3.3.1": {
+        "packages/libs/{fela-utils,htz-react-base}": [
           "dependencies"
+        ],
+        "packages/{apps,components}/*": [
+          "devDependencies"
         ]
       }
     },
@@ -177,7 +180,7 @@
       }
     },
     "lodash": {
-      "4.17.4": {
+      "^4.17.5": {
         "packages/{apps,components}/*": ["dependencies"]
       }
     },
@@ -232,7 +235,7 @@
       }
     },
     "rimraf": {
-      "2.6.2": {
+      "^2.6.2": {
         "[\"packages/{apps,components,libs}/*\", \"!packages/libs/htz-react-base\"]": [
           "devDependencies"
         ],
@@ -254,7 +257,7 @@
   "lint-staged": {
     "linters": {
       "**/*.{js,jsx}": [
-        "node packages/libs/htz-react-base/bin/htz-scripts.js lint --ignore-pattern '.jest/*' --ignore-pattern '.next/*' --ignore-pattern 'dist/*' --ignore-pattern 'node_modules/*' --fix",
+        "node packages/libs/htz-react-base/bin/htz-scripts.js lint --ignore-pattern '.jest/*' --ignore-pattern '.next/*' --ignore-pattern 'dist/*' --ignore-pattern 'docs/*' --ignore-pattern 'packages/*/*/docs/*' --ignore-pattern 'node_modules/*' --fix",
         "node scripts/runTests.js",
         "node packages/libs/htz-react-base/bin/htz-scripts.js flow focus-check",
         "git add"

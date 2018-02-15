@@ -28,18 +28,19 @@
   "dependencies": {
     "@haaretz/htz-css-tools": "^1.0.1",
     "config": "^1.26.2",
-    "lodash": "4.17.4",
+    "lodash": "^4.17.5",
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
     "@haaretz/fela-utils": "^0.1.0",
     "@haaretz/htz-react-base": "^1.0.0",
     "babel-loader": "^7.1.2",
+    "enzyme-to-json": "^3.3.1",
     "fela": "^6.0.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-fela": "^6.0.2",
-    "rimraf": "2.6.2"
+    "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "fela": "^6.0.2",

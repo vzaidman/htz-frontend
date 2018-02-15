@@ -65,6 +65,16 @@
               
                 
                 <li><a
+                  href='#felasnapshotter'
+                  class="">
+                  FelaSnapshotter
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#fela-related'
                   class="h5 bold black caps">
                   Fela related
@@ -156,8 +166,8 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/6fca7b00784e7997a6caa9ad84d1d24ed058904a/packages/components/fela-utils/src/createFelaSnapshotter.js#L16-L37'>
-      <span>packages/components/fela-utils/src/createFelaSnapshotter.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/34cb01f83429482ab8b43c5440a6567f35f68053/packages/libs/fela-utils/src/createFelaSnapshotter.js#L32-L54'>
+      <span>packages/libs/fela-utils/src/createFelaSnapshotter.js</span>
       </a>
     
   </div>
@@ -167,7 +177,7 @@
 styled Fela components.</p>
 
 
-  <div class='pre p1 fill-light mt0'>createFelaSnapshotter(StyleProvider: ReactComponent, testRenderer: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>, theme: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a></div>
+  <div class='pre p1 fill-light mt0'>createFelaSnapshotter(StyleProvider: ReactComponent, testRenderer: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>, theme: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?): <a href="#felasnapshotter">FelaSnapshotter</a></div>
   
   
 
@@ -221,7 +231,7 @@ styled Fela components.</p>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a></code>:
+      <code><a href="#felasnapshotter">FelaSnapshotter</a></code>:
         a 
 <code>felaSnapshotter</code>
  function that creates a snapshot of a
@@ -255,8 +265,8 @@ styled Fela componet html as well as its styles
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/6fca7b00784e7997a6caa9ad84d1d24ed058904a/packages/components/fela-utils/src/createFelaEnzymeRenderers.js#L16-L48'>
-      <span>packages/components/fela-utils/src/createFelaEnzymeRenderers.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/34cb01f83429482ab8b43c5440a6567f35f68053/packages/libs/fela-utils/src/createFelaEnzymeRenderers.js#L16-L48'>
+      <span>packages/libs/fela-utils/src/createFelaEnzymeRenderers.js</span>
       </a>
     
   </div>
@@ -335,6 +345,123 @@ Fela components with Enzyme
           
         
           
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='felasnapshotter'>
+      FelaSnapshotter
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/34cb01f83429482ab8b43c5440a6567f35f68053/packages/libs/fela-utils/src/createFelaSnapshotter.js#L32-L54'>
+      <span>packages/libs/fela-utils/src/createFelaSnapshotter.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>FelaSnapshotter</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>component</span> <code class='quiet'>(Component)</code>
+	    The React Element to take a snapshot of
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>testRendererOptions</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?)</code>
+	    An object that allows for custom mocking behavior in the react-test-renderer.
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>testRendererOptions.createNodeMock</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>?</code>
+  </td>
+  <td class='break-word'><span>A callback function is passed a dom element from a 
+<code>ref</code>
+ and should return a mock ref object.
+See: 
+<a href="http://bit.ly/2BaUNQw">http://bit.ly/2BaUNQw</a>
+ and 
+<a href="http://bit.ly/2AJ8fIT">http://bit.ly/2AJ8fIT</a>
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>felaSnapshotter(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">MyComponent</span> /&gt;</span>, {
+  createNodeMock: element =&gt; (element.type === 'div' ? { clientHeight: 1064, } : null),
+});</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
             <div class='keyline-top-not py2'><section class='py2 clearfix'>
 
   <h2 id='fela-related' class='mt0'>
@@ -360,8 +487,8 @@ Fela components with Enzyme
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/6fca7b00784e7997a6caa9ad84d1d24ed058904a/packages/components/fela-utils/src/createRenderer.js#L36-L79'>
-      <span>packages/components/fela-utils/src/createRenderer.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/34cb01f83429482ab8b43c5440a6567f35f68053/packages/libs/fela-utils/src/createRenderer.js#L36-L79'>
+      <span>packages/libs/fela-utils/src/createRenderer.js</span>
       </a>
     
   </div>
@@ -487,8 +614,8 @@ Can be useful, e.g., for testing. Set according to
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/6fca7b00784e7997a6caa9ad84d1d24ed058904a/packages/components/fela-utils/src/StyleProvider.js#L38-L48'>
-      <span>packages/components/fela-utils/src/StyleProvider.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/34cb01f83429482ab8b43c5440a6567f35f68053/packages/libs/fela-utils/src/StyleProvider.js#L38-L48'>
+      <span>packages/libs/fela-utils/src/StyleProvider.js</span>
       </a>
     
   </div>
@@ -610,8 +737,8 @@ Can be useful, e.g., for testing. Set according to
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/6fca7b00784e7997a6caa9ad84d1d24ed058904a/packages/components/fela-utils/src/StyleProvider.js#L20-L24'>
-      <span>packages/components/fela-utils/src/StyleProvider.js</span>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/Haaretz/htz-frontend/blob/34cb01f83429482ab8b43c5440a6567f35f68053/packages/libs/fela-utils/src/StyleProvider.js#L20-L24'>
+      <span>packages/libs/fela-utils/src/StyleProvider.js</span>
       </a>
     
   </div>

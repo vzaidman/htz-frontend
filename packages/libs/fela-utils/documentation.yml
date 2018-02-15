@@ -11,6 +11,7 @@ toc:
   - name: Testing Utils
   - createFelaSnapshotter
   - createFelaEnzymeRenderers
+  - FelaSnapshotter
 
   - name: Fela related
   - createRenderer

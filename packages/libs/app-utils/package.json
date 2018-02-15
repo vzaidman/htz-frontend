@@ -30,7 +30,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-apollo": "^2.0.0",
-    "rimraf": "2.6.2"
+    "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "apollo-client-preset": "^1.0.6",
@@ -41,9 +41,5 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-apollo": "^2.0.0"
-  },
-  "dependencies": {
-    "enzyme": "3.2.0",
-    "enzyme-to-json": "3.2.2"
   }
 }

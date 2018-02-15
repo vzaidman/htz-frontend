@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "enzyme": "^3.3.0",
-    "enzyme-to-json": "^3.3.0",
+    "enzyme-to-json": "^3.3.1",
     "fela-beautifier": "^5.0.15",
     "fela-bindings": "^1.3.4",
     "fela-combine-arrays": "^1.0.6",
@@ -45,7 +45,7 @@
     "fela-plugin-validator": "^5.0.17",
     "fela-statistics": "^5.0.17",
     "fela-tools": "^5.1.2",
-    "lodash": "4.17.4",
+    "lodash": "^4.17.5",
     "prop-types": "^15.6.0",
     "react-test-renderer": "^16.2.0"
   },
@@ -57,7 +57,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-fela": "^6.0.2",
-    "rimraf": "2.6.2"
+    "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "fela": "^6.0.2",

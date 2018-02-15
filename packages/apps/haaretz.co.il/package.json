@@ -38,7 +38,7 @@
     "graphql-anywhere": "^3.1.0",
     "graphql-tag": "^2.5.0",
     "isomorphic-unfetch": "^2.0.0",
-    "lodash": "4.17.4",
+    "lodash": "^4.17.5",
     "next": "^4.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -50,6 +50,7 @@
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
     "babel-loader": "^7.1.2",
-    "rimraf": "2.6.2"
+    "enzyme-to-json": "^3.3.1",
+    "rimraf": "^2.6.2"
   }
 }
