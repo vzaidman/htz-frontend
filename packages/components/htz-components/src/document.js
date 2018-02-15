@@ -17,12 +17,13 @@ import serialize from 'serialize-javascript';
  *
  * @return {class} A Next.js `document` component
  */
-const createDocument = (
+const createDocument = ({
   styleRenderer,
   fontRules = [],
   staticRules = '',
-  appData = { config, }
-) =>
+  appData = { config, },
+  isRtl,
+}) =>
   class HaaretzDocument extends Document {
     static getInitialProps({ renderPage, }) {
       fontRules.forEach(rule => styleRenderer.renderFont(...rule));
@@ -38,6 +39,7 @@ const createDocument = (
         ...page,
         sheetList,
         appData,
+        isRtl,
       };
     }
 

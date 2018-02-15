@@ -11,10 +11,7 @@ import styleRenderer from '../components/styleRenderer/styleRenderer';
 const fonts = [
   [
     '"Open Sans Hebrew"',
-    [
-      './static/fonts/OpenSansHebrewRegular.woff',
-      './static/fonts/OpenSansHebrewRegular.woff2',
-    ],
+    [ './static/fonts/OpenSansHebrewRegular.woff', './static/fonts/OpenSansHebrewRegular.woff2', ],
     { fontWeight: 400, },
   ],
   [
@@ -24,5 +21,10 @@ const fonts = [
   ],
 ];
 
-const HaaretzDocument = createDocument(styleRenderer, fonts, cssReset);
+const HaaretzDocument = createDocument({
+  styleRenderer,
+  fontRules: fonts,
+  staticRules: cssReset,
+  isRtl: true,
+});
 export default HaaretzDocument;

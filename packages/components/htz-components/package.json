@@ -48,6 +48,7 @@
     "async": "^2.6.0",
     "config": "^1.26.2",
     "downshift": "^1.22.5",
+    "fela-dom": "^7.0.4",
     "graphql-tools": "^2.20.1",
     "graphql-type-json": "^0.1.4",
     "lodash": "^4.17.5",
