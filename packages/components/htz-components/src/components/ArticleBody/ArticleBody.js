@@ -3,14 +3,22 @@ import PropTypes from 'prop-types';
 import { withTheme, createComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
+import Caption from '../Caption/Caption';
 
 const propTypes = {
   /**
    * The elements composing the article’s body.
    */
   body: PropTypes.arrayOf(
-    PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+    ])
   ).isRequired,
+  /**
+   * The app's theme (get imported automatically with the `withTheme` method).
+   */
+  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
@@ -57,43 +65,82 @@ const bodyWrapperStyle = ({ theme, }) => ({
 
 const BodyWrapper = createComponent(bodyWrapperStyle);
 
-const wrappedWithFigure = [ 'embedElement', 'com.tm.Image', 'com.tm.Video', ];
+const mediaComponents = [ 'embedElement', 'com.tm.Image', 'com.tm.Video', ];
 
-const buildComponent = (componentType, index, isLastItem, theme) => {
+const imgOptions = {
+  transforms: {
+    width: '700',
+    aspect: 'regular',
+    quality: 'auto',
+  },
+};
+
+const buildComponent = (context, index, isLastItem, theme) => {
   const uniqueId =
-    componentType.elementType ||
-    componentType.inputTemplate ||
-    componentType.tag ||
+    context.elementType ||
+    context.inputTemplate ||
+    context.tag ||
     null;
   const Component = getComponent(uniqueId);
-  return wrappedWithFigure.includes(uniqueId) ? (
-    <Figure key={index} lastItem={isLastItem}>
-      <Component {...componentType} />
-    </Figure>
-  ) : uniqueId ? (
-    uniqueId === 'com.htz.MagazineArticleQuote' ? (
-      <Aside>
-        <Component {...componentType} />
-      </Aside>
-    ) : (
-      <Component
-        key={index}
-        {...componentType}
-        marginBottom={
-          isLastItem
-            ? null
-            : parseComponentProp(
-              'marginBottom',
-              theme.articleStyle.body.marginBottom,
-              theme.mq,
-              mediaQueryCallback
-            )
-        }
-      />
-    )
-  ) : (
-    <p key={index}>{componentType}</p>
-  );
+
+  switch (uniqueId) {
+    case 'com.tm.Image' :
+      return (
+        <Figure
+          key={index}
+          lastItem={isLastItem}
+        >
+          <Component
+            data={context}
+            imgOptions={imgOptions}
+          />
+          {(context.title || context.credit) &&
+            <Caption
+              caption={context.title}
+              credit={context.credit}
+            />
+          }
+        </Figure>
+      );
+    case mediaComponents.includes(uniqueId) :
+      return (
+        <Figure
+          key={index}
+          lastItem={isLastItem}
+        >
+          <Component {...context} />
+          {(context.caption || context.credit) &&
+          <Caption
+            caption={context.caption}
+            credit={context.credit}
+          />
+          }
+        </Figure>
+      );
+    case 'com.htz.MagazineArticleQuote' :
+      return (
+        <Aside key={index}>
+          <Component {...context} />
+        </Aside>
+      );
+    default :
+      return (
+        <Component
+          key={index}
+          {...context}
+          marginBottom={
+            isLastItem
+              ? null
+              : parseComponentProp(
+                'marginBottom',
+                theme.articleStyle.body.marginBottom,
+                theme.mq,
+                mediaQueryCallback
+              )
+          }
+        />
+      );
+  }
 };
 
 function ArticleBody(props) {
@@ -104,13 +151,10 @@ function ArticleBody(props) {
           component,
           i,
           i === props.body.length - 1,
-          // eslint-disable-next-line react/prop-types
           props.theme
         )
       )}
     </BodyWrapper>
-    // eslint-disable-next-line react/no-array-index-key
-    // return Comp ? <Comp key={i} {...component, props.theme.articleStyle.body} /> : <p>{component}</p>;
   );
 }
 

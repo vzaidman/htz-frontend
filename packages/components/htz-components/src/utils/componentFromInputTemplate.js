@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/no-named-as-default
 import Article from '../components/Article/Article';
 import Embed from '../components/Embed/Embed';
+import Image from '../components/Image/Image';
 import Paragraph from '../components/Paragraph/Paragraph';
 import Quote from '../components/Quote/Quote';
 import RelatedArticles from '../components/RelatedArticles/RelatedArticles';
@@ -32,7 +33,7 @@ const inputTemplateToComponent = new Map([
   [ 'relatedArticleSeries', SeriesArticles, ],
 
   /* Misc components */
-  [ 'com.tm.Image', () => <p>Image</p>, ],
+  [ 'com.tm.Image', Image, ],
   [ 'com.tm.HtmlElement', () => <p>HtmlElement</p>, ],
   [ 'com.tm.ListElement', () => <p>ListElement</p>, ],
   [ 'com.tm.TabViewElement', () => <p>TabViewElement</p>, ],
