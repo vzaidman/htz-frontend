@@ -1,6 +1,5 @@
-
 /* global window */
-/* *************************************************************** *
+/** ************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
@@ -230,8 +229,8 @@ export default class Embed extends React.Component {
             <option value="Youtube">Youtube</option>
           </MenuList>
           <LoadingScreen isLoading={this.state.isLoading} />
-          { this.state.multiProps !== null ? this.getButtonsComponent() : '' }
-          { this.state.props !== null ? this.getEmbedComponentFromState() : '' }
+          {this.state.multiProps !== null ? this.getButtonsComponent() : ''}
+          {this.state.props !== null ? this.getEmbedComponentFromState() : ''}
         </div>
       );
     }

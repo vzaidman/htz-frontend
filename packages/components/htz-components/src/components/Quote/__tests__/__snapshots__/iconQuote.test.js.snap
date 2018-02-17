@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Border Quote  1`] = `
+exports[`Icon Quote  1`] = `
 Object {
   "component": <div>
     <blockquote

@@ -2,7 +2,7 @@ import React from 'react';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import Quote from '../Quote';
 
-it('Border Quote ', () => {
+it('Image Quote ', () => {
   const snapshot = felaSnapshotter(
     <Quote
       text="בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר  הביטחון"
@@ -11,10 +11,55 @@ it('Border Quote ', () => {
       afterParagraph="2"
       imagesList={[
         {
-          alt: 'Nils02',
-          caption: 'me',
-          credit: 'me',
-          image: 'image/3984584833.jpg',
+          alt: 'נתניהו בישיבת הממשלה השבועית, בתחילת השבוע',
+          credit: 'אמיל סלמן',
+          title: 'נתניהו בישיבת הממשלה השבועית, בתחילת השבוע',
+          aspects: {
+            regular: {
+              width: 1942,
+              height: 1456,
+              x: 258,
+              y: 12,
+            },
+            headline: {
+              width: 2200,
+              height: 1277,
+              x: 0,
+              y: 56,
+            },
+            belgrade: {
+              width: 2200,
+              height: 690,
+              x: 0,
+              y: 369,
+            },
+            landscape: {
+              width: 2200,
+              height: 949,
+              x: 0,
+              y: 194,
+            },
+            square: {
+              width: 1461,
+              height: 1460,
+              x: 592,
+              y: 8,
+            },
+            vertical: {
+              width: 1227,
+              height: 1440,
+              x: 731,
+              y: 28,
+            },
+          },
+          isAnimated: false,
+          imgArray: [
+            {
+              imgName: 'image/2151933599.jpg',
+              version: '1518556356',
+            },
+          ],
+          imageType: 'image',
           inputTemplate: 'com.tm.Image',
           contentId: '1.5580',
           contentName: 'Nils02',

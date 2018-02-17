@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
+import Image from '../Image/Image';
 import IconQuote from '../Icon/icons/IconQuote';
 
-const propTypes = {
+Quote.propTypes = {
   /** The Quote's Main content. */
   text: PropTypes.string.isRequired,
   /** The Quote's source (the quotee). */
@@ -12,7 +13,7 @@ const propTypes = {
   imagesList: PropTypes.arrayOf(PropTypes.object),
 };
 
-const defaultProps = {
+Quote.defaultProps = {
   credit: null,
   imagesList: null,
 };
@@ -21,6 +22,7 @@ const quoteWrapperStyle = ({ theme, }) => ({
   color: theme.color('neutral', '-3'),
   fontWeight: '700',
 });
+
 const QuoteWrapper = createComponent(quoteWrapperStyle, 'blockquote');
 
 const quoteStyle = ({ theme, quoteType, }) => ({
@@ -67,6 +69,22 @@ function getStyleObj(theme, quoteType) {
   }
 }
 
+const imageStyle = () => ({
+  width: '10rem',
+  borderRadius: '50%',
+  overflow: 'hidden',
+  display: 'inline-block',
+});
+const ImgWrapper = createComponent(imageStyle);
+
+const imgOptions = {
+  transforms: {
+    width: '100',
+    aspect: 'square',
+    quality: 'auto',
+  },
+};
+
 /*
  * The quote component may result with three different decorations,
  * depends on the props its given.
@@ -89,7 +107,9 @@ function Quote({ text, credit, imagesList, }) {
   return (
     <QuoteWrapper>
       {quoteType === 'image' ? (
-        <span>Image Here</span>
+        <ImgWrapper>
+          <Image imgOptions={imgOptions} data={imagesList[0]} />
+        </ImgWrapper>
       ) : quoteType === 'quote' ? (
         <IconQuote
           size={6.5}
@@ -104,8 +124,5 @@ function Quote({ text, credit, imagesList, }) {
     </QuoteWrapper>
   );
 }
-
-Quote.propTypes = propTypes;
-Quote.defaultProps = defaultProps;
 
 export default Quote;

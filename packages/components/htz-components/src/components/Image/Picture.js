@@ -9,7 +9,13 @@ import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { buildURLs, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
 
-const PictureWrapperStyle = ({ sources, theme, defaultImg, bgc, miscStyles, }) => ({
+const PictureWrapperStyle = ({
+  sources,
+  theme,
+  defaultImg,
+  bgc,
+  miscStyles,
+}) => ({
   height: '0',
   width: '100%',
   position: 'relative',
