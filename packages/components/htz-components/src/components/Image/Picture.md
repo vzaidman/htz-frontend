@@ -16,12 +16,11 @@ built-in support for lazy-loading
 <Picture
   defaultImg={{
     sourceOptions: {
-      sizes: "(min-width:1420px) 610px,(min-width:1320px) 500px, 280px",
       transforms: { width: "1045", aspect: "full" }
     },
     data: {
       isAnimatedGif: false,
-      imgCore: { imgName: "image/2092337187.jpg", version: "1516524320" },
+      imgArray: [{ imgName: "image/2092337187.jpg", version: "1516524320" }],
       credit: "this is title/credit",
       alt: "this alt from data",
       contentId: "1.5748461",
@@ -32,45 +31,16 @@ built-in support for lazy-loading
   }}
   sources={[
     {
-      from: "s",
       until: "l",
-      misc: "landscape",
-      type: "screen",
-      mimeType: "jpg",
-      sourceOptions: { transforms: { width: "1045", aspect: "full" } },
-      data: {
-        isAnimatedGif: false,
-        imgCore: { imgName: "image/2092337187.jpg", version: "1516524320" },
-        credit: "this is title/credit",
-        alt: "this alt from data",
-        contentId: "1.5748461",
-        aspects: {
-          full: { width: "1680", height: "1260", x: "0", y: "0" }
-        }
-      }
-    },
-    {
-      from: "l",
-      until: "xl",
-      misc: "landscape",
-      type: "screen",
-      mimeType: "gif",
       sourceOptions: {
-        sizes: "(min-width:1420px) 610px,(min-width:1320px) 500px, 280px",
         transforms: [
-          {
-            width: "145",
-            height: "100",
-            aspect: "landscape",
-            quality: "auto:best"
-          },
           { width: "645", height: "309", aspect: "landscape" },
           { width: "945", aspect: "landscape" }
         ]
       },
       data: {
         isAnimatedGif: true,
-        imgCore: { imgName: "image/4030303706.gif", version: "1515097953" },
+        imgArray: [{ imgName: "image/4030303706.gif", version: "1515097953" }],
         credit: "this is title/credit",
         caption: "this caption from data",
         alt: "this alt from data",
@@ -79,6 +49,22 @@ built-in support for lazy-loading
           full: { width: "400", height: "400", x: "0", y: "0" }
         },
         contentId: "1.5599867"
+      }
+    },
+    {
+      from: "l",
+      misc: "landscape",
+      type: "screen",
+      sourceOptions: { transforms: { width: "1045", aspect: "full" } },
+      data: {
+        isAnimatedGif: false,
+        imgArray: [{ imgName: "image/2092337187.jpg", version: "1516524320" }],
+        credit: "this is title/credit",
+        alt: "this alt from data",
+        contentId: "1.5748461",
+        aspects: {
+          full: { width: "1680", height: "1260", x: "0", y: "0" }
+        }
       }
     }
   ]}
@@ -100,10 +86,12 @@ built-in support for lazy-loading
     },
     data: {
       isAnimatedGif: false,
-      imgCore: {
-        imgName: "image/2196292809.jpg",
-        version: "1517913716"
-      },
+      imgArray: [
+        {
+          imgName: "image/2196292809.jpg",
+          version: "1517913716"
+        }
+      ],
       alt: "סיכות של קמפיים #METOO",
       credit: "LUCY NICHOLSON/רויטרס",
       contentId: "1.5791650",
@@ -123,10 +111,12 @@ built-in support for lazy-loading
       sourceOptions: { transforms: { width: "1045", aspect: "landscape" } },
       data: {
         isAnimatedGif: false,
-        imgCore: {
-          imgName: "image/2196292809.jpg",
-          version: "1517913716"
-        },
+        imgArray: [
+          {
+            imgName: "image/2196292809.jpg",
+            version: "1517913716"
+          }
+        ],
         alt: "סיכות של קמפיים #METOO",
         credit: "LUCY NICHOLSON/רויטרס",
         contentId: "1.5791650",
@@ -142,7 +132,6 @@ built-in support for lazy-loading
     },
     {
       until: "xl",
-      mimeType: "jpg",
       sourceOptions: {
         transforms: [
           {
@@ -174,10 +163,12 @@ built-in support for lazy-loading
           }
         },
         isAnimated: false,
-        imgCore: {
-          imgName: "image/392731171.jpg",
-          version: "1518001678"
-        },
+        imgArray: [
+          {
+            imgName: "image/392731171.jpg",
+            version: "1518001678"
+          }
+        ],
         imageType: "image",
         inputTemplate: "com.tm.Image",
         contentId: "1.5803155",
@@ -187,7 +178,7 @@ built-in support for lazy-loading
     {
       from: "xl",
       misc: "landscape",
-      mimeType: "gif",
+      mimeType: "image/webp",
       sourceOptions: {
         transforms: [
           {
@@ -211,10 +202,12 @@ built-in support for lazy-loading
           }
         },
         isAnimated: false,
-        imgCore: {
-          imgName: "image/3063850623.gif",
-          version: "1518084212"
-        },
+        imgArray: [
+          {
+            imgName: "image/3063850623.gif",
+            version: "1518084212"
+          }
+        ],
         imageType: "image",
         inputTemplate: "com.tm.Image",
         contentId: "1.5804697",

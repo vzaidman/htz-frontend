@@ -261,7 +261,7 @@ export default Image;
 // //////////////////////////////////////////////////////////////////////
 function getDimensions({ data: { aspects, }, imgOptions: { transforms, }, }) {
   const { aspect, } = Array.isArray(transforms) ? transforms[0] : transforms;
-  const { height, width, } = aspects[aspect];
+  const { height, width, } = aspects[aspect] || aspects.full;
 
   return { height, width, };
 }

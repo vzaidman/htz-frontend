@@ -132,9 +132,7 @@ export function buildUrl(contentId, data, options = {}) {
   // Fail early when mandatory options aren't present.
   // eslint-disable-next-line eqeqeq
   if (options.width == undefined) {
-    throw new Error(
-      'width is a mandatory option property for rendering image urls'
-    );
+    throw new Error('width is a mandatory option property for rendering image urls');
   }
 
   if (!baseUrl) {
@@ -167,27 +165,18 @@ export function buildUrl(contentId, data, options = {}) {
     x: 'x_',
     y: 'y_',
   };
-  const cropData = aspects[settings.aspect];
+  const cropData = aspects[settings.aspect] || aspects.full;
 
-  const initialTransforms = `${Object.keys(cropData).reduce(
-    (allTransforms, propName) => {
-      const transfromString =
-        transformPrefixes[propName] + cropData[propName].toString();
-      return allTransforms + (allTransforms ? ',' : '/') + transfromString;
-    },
-    ''
-  )},c_crop,g_north_west`;
+  const initialTransforms = `${Object.keys(cropData).reduce((allTransforms, propName) => {
+    const transfromString = transformPrefixes[propName] + cropData[propName].toString();
+    return allTransforms + (allTransforms ? ',' : '/') + transfromString;
+  }, '')},c_crop,g_north_west`;
 
-  const userTransforms = `${Object.keys(settings).reduce(
-    (allTransforms, propName) => {
-      const prefix = transformPrefixes[propName];
-      const transfromString = prefix ? prefix + settings[propName] : '';
-      return prefix
-        ? allTransforms + (allTransforms ? ',' : '/') + transfromString
-        : allTransforms;
-    },
-    ''
-  )},c_fill,f_auto`;
+  const userTransforms = `${Object.keys(settings).reduce((allTransforms, propName) => {
+    const prefix = transformPrefixes[propName];
+    const transfromString = prefix ? prefix + settings[propName] : '';
+    return prefix ? allTransforms + (allTransforms ? ',' : '/') + transfromString : allTransforms;
+  }, '')},c_fill,f_auto`;
 
   const { transforms, flags, } = settings;
   const baseFlags = `/fl_any_format.preserve_transparency.progressive:${
@@ -220,8 +209,6 @@ function computeHeight(width, aspect, aspects) {
   const aspectsHasAspect = !!aspects[aspect];
   const scaleRatio = (aspectsHasAspect ? aspects[aspect].width : width) / width;
   return Math.round(
-    aspectsHasAspect
-      ? aspects[aspect].height / scaleRatio
-      : width / aspectRatios[aspect]
+    aspectsHasAspect ? aspects[aspect].height / scaleRatio : width / aspectRatios[aspect]
   );
 }
