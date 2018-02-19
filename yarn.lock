@@ -123,9 +123,9 @@
     lodash "^4.17.4"
     pify "^3.0.0"
 
-"@types/async@2.0.47":
-  version "2.0.47"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.47.tgz#f49ba1dd1f189486beb6e1d070a850f6ab4bd521"
+"@types/async@2.0.46":
+  version "2.0.46"
+  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.46.tgz#f13a6c336a6582b95d0c0269e796b709488fd54d"
 
 "@types/graphql@^0.9.0":
   version "0.9.4"
@@ -354,11 +354,11 @@ apollo-cache-inmemory@^1.1.5:
     apollo-utilities "^1.0.4"
     graphql-anywhere "^4.1.1"
 
-apollo-cache@^1.1.0, apollo-cache@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.1.tgz#bfe9b718ebc94774fbf1981a1ef4f1391bdfc7ae"
+apollo-cache@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.0.tgz#281b6a0fb6ca2c5bce69825642f685de92d05f3c"
   dependencies:
-    apollo-utilities "^1.0.5"
+    apollo-utilities "^1.0.4"
 
 apollo-client-preset@^1.0.6:
   version "1.0.6"
@@ -371,18 +371,18 @@ apollo-client-preset@^1.0.6:
     graphql-tag "^2.4.2"
 
 apollo-client@^2.1.0:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.2.1.tgz#9402ea5aa71d49c668c5a8451025001e135b0beb"
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.2.0.tgz#e22c4ba3a3c01aec6dc916a5dbc0f39c58d277fb"
   dependencies:
     "@types/zen-observable" "^0.5.3"
-    apollo-cache "^1.1.1"
+    apollo-cache "^1.1.0"
     apollo-link "^1.0.0"
     apollo-link-dedup "^1.0.0"
-    apollo-utilities "^1.0.5"
+    apollo-utilities "^1.0.4"
     symbol-observable "^1.0.2"
     zen-observable "^0.7.0"
   optionalDependencies:
-    "@types/async" "2.0.47"
+    "@types/async" "2.0.46"
 
 apollo-link-dedup@^1.0.0:
   version "1.0.2"
@@ -452,13 +452,13 @@ apollo-utilities@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.2.tgz#bcf348a7e613e82e2624ddb5be2b9f6bf1259c6d"
 
-apollo-utilities@^1.0.1, apollo-utilities@^1.0.6:
+apollo-utilities@^1.0.1, apollo-utilities@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.4.tgz#560009ea5541b9fdc4ee07ebb1714ee319a76c15"
+
+apollo-utilities@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.6.tgz#7bfd7a702b5225c9a4591fe28c5899d9b5f08889"
-
-apollo-utilities@^1.0.4, apollo-utilities@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.5.tgz#a5e99507d730ce21e84e07c7a9c7586b2ccdc58e"
 
 app-root-path@^2.0.0:
   version "2.0.1"
@@ -5178,10 +5178,10 @@ graphql-anywhere@^3.1.0:
   resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-3.1.0.tgz#3ea0d8e8646b5cee68035016a9a7557c15c21e96"
 
 graphql-anywhere@^4.1.0-alpha.0, graphql-anywhere@^4.1.1:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-4.1.2.tgz#55e58593158f3deb0814def522c55e948c57cabb"
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-4.1.1.tgz#67924b67b053d1a23bc30d0e4c8db943c1d791a8"
   dependencies:
-    apollo-utilities "^1.0.5"
+    apollo-utilities "^1.0.4"
 
 graphql-extensions@^0.0.x:
   version "0.0.5"
@@ -6429,6 +6429,14 @@ jest-docblock@^22.2.0:
   dependencies:
     detect-newline "^2.1.0"
 
+jest-environment-jsdom-global@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/jest-environment-jsdom-global/-/jest-environment-jsdom-global-1.0.2.tgz#b3449e016e0b13cb0779704e29a1377f927b38a3"
+
+jest-environment-jsdom-global@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/jest-environment-jsdom-global/-/jest-environment-jsdom-global-1.0.3.tgz#e0616c235709e6919f33f9b5e5c3854cd8edba39"
+
 jest-environment-jsdom@^22.2.0:
   version "22.2.0"
   resolved "https://registry.yarnpkg.com/jest-environment-jsdom/-/jest-environment-jsdom-22.2.0.tgz#e9537400cbdef2d1e61d7196f8afa40e826fe9d8"
@@ -6437,12 +6445,32 @@ jest-environment-jsdom@^22.2.0:
     jest-util "^22.2.0"
     jsdom "^11.5.1"
 
+jest-environment-jsdom@^22.3.0:
+  version "22.3.0"
+  resolved "https://registry.yarnpkg.com/jest-environment-jsdom/-/jest-environment-jsdom-22.3.0.tgz#c267a063e5dc16219fba0e07542d8aa2576a1c88"
+  dependencies:
+    jest-mock "^22.2.0"
+    jest-util "^22.3.0"
+    jsdom "^11.5.1"
+
 jest-environment-node@^22.2.0:
   version "22.2.0"
   resolved "https://registry.yarnpkg.com/jest-environment-node/-/jest-environment-node-22.2.0.tgz#ba7d0183fac076d34867367a4ac53ced69e3d3a9"
   dependencies:
     jest-mock "^22.2.0"
     jest-util "^22.2.0"
+
+jest-fetch-mock@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/jest-fetch-mock/-/jest-fetch-mock-1.4.0.tgz#ca4e0e911cdc6f7b5b4e4bd707296b66f82d5a21"
+  dependencies:
+    isomorphic-fetch "^2.2.1"
+
+jest-fetch-mock@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/jest-fetch-mock/-/jest-fetch-mock-1.4.1.tgz#32fcfc5fa3117af0d64994b688b16fe973ee6327"
+  dependencies:
+    isomorphic-fetch "^2.2.1"
 
 jest-get-type@^21.2.0:
   version "21.2.0"
@@ -6484,6 +6512,10 @@ jest-leak-detector@^22.1.0:
   resolved "https://registry.yarnpkg.com/jest-leak-detector/-/jest-leak-detector-22.1.0.tgz#08376644cee07103da069baac19adb0299b772c2"
   dependencies:
     pretty-format "^22.1.0"
+
+jest-localstorage-mock@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/jest-localstorage-mock/-/jest-localstorage-mock-2.2.0.tgz#ce9a9de01dfdde2ad8aa08adf73acc7e5cc394cf"
 
 jest-matcher-utils@^22.2.0:
   version "22.2.0"
@@ -6587,6 +6619,18 @@ jest-util@^22.2.0:
     jest-validate "^22.2.0"
     mkdirp "^0.5.1"
 
+jest-util@^22.3.0:
+  version "22.3.0"
+  resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-22.3.0.tgz#d05bff567a3a86c0e9b3838d812f8290aa768097"
+  dependencies:
+    callsites "^2.0.0"
+    chalk "^2.0.1"
+    graceful-fs "^4.1.11"
+    is-ci "^1.0.10"
+    jest-message-util "^22.2.0"
+    jest-validate "^22.2.2"
+    mkdirp "^0.5.1"
+
 jest-validate@^21.1.0:
   version "21.2.1"
   resolved "https://registry.yarnpkg.com/jest-validate/-/jest-validate-21.2.1.tgz#cc0cbca653cd54937ba4f2a111796774530dd3c7"
@@ -6599,6 +6643,15 @@ jest-validate@^21.1.0:
 jest-validate@^22.2.0:
   version "22.2.0"
   resolved "https://registry.yarnpkg.com/jest-validate/-/jest-validate-22.2.0.tgz#f7ce459105a8210825e5e57279f868ab080063fa"
+  dependencies:
+    chalk "^2.0.1"
+    jest-get-type "^22.1.0"
+    leven "^2.1.0"
+    pretty-format "^22.1.0"
+
+jest-validate@^22.2.2:
+  version "22.2.2"
+  resolved "https://registry.yarnpkg.com/jest-validate/-/jest-validate-22.2.2.tgz#9cdce422c93cc28395e907ac6bbc929158d9a6ba"
   dependencies:
     chalk "^2.0.1"
     jest-get-type "^22.1.0"
@@ -10098,7 +10151,7 @@ right-pad@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/right-pad/-/right-pad-1.0.1.tgz#8ca08c2cbb5b55e74dafa96bf7fd1a27d568c8d0"
 
-rimraf@2, rimraf@^2.2.8, rimraf@^2.5.1, rimraf@^2.5.2, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
+rimraf@2, rimraf@2.6.2, rimraf@^2.2.8, rimraf@^2.5.1, rimraf@^2.5.2, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
   dependencies:

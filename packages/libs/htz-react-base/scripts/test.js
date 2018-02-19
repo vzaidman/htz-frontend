@@ -8,14 +8,16 @@ process.env.BABEL_ENV = 'commonjs';
 
 const packageInfo = require(path.join(process.cwd(), 'package.json'));
 const configFile = resolveFrom.silent(process.cwd(), './jest.config.js');
-
 const argv = process.argv.slice(2);
 const defaultConfig = {
   cacheDirectory: '.jest',
   setupFiles: [
     `${__dirname}/jestRAFPolyfill.js`,
     `${__dirname}/enzyme-setup.js`,
+    `${__dirname}/fetch-mock-setup.js`,
+    'jest-localstorage-mock',
   ],
+  testEnvironment: 'jest-environment-jsdom-global',
   snapshotSerializers: [ 'enzyme-to-json/serializer', ],
   transform: {
     '^.+\\.jsx?$': require.resolve('babel-jest'),
@@ -49,5 +51,5 @@ else {
 }
 
 argv.push('--config', JSON.stringify(config));
-
+// console.log(config);
 jest.run(argv);
