@@ -1,12 +1,8 @@
 import React from 'react';
 import { createComponent, } from 'react-fela';
-import {
-  borderBottom,
-  borderTop,
-  parseComponentProp,
-  parseStyleProps,
-} from '@haaretz/htz-css-tools';
-import Button from '../../Button/Button';
+import { borderBottom, } from '@haaretz/htz-css-tools';
+import ButtonFooter from '../../Button/Button';
+import Link from '../../Link/Link';
 import IconFaceBookLogo from '../../Icon/icons/IconFacebookLogo';
 import IconTwitter from '../../Icon/icons/IconTwitter';
 import IconGPlus from '../../Icon/icons/IconGPlus';
@@ -14,7 +10,29 @@ import IconRss from '../../Icon/icons/IconRss';
 // import IconMail from '../../Icon/icons/IconMail';
 // import IconApple from '../../Icon/icons/IconApple';
 // import IconAndroid from '../../Icon/icons/IconAndroid';
-// import { buttonBoxModelType, } from './buttonBoxModelType';
+
+const mockMainLinkList = [
+  { text: 'מערכת', link: 'https://www.haaretz.co.il', },
+  { text: 'הנהלה', link: 'https://www.haaretz.co.il', },
+  { text: 'אודות הארץ', link: 'https://www.haaretz.co.il', },
+  { text: 'דרושים', link: 'https://www.haaretz.co.il', },
+  { text: 'צור קשר', link: 'https://www.haaretz.co.il', },
+  { text: 'עשה מנוי', link: 'https://www.haaretz.co.il', },
+  { text: 'שאלות ותשובות', link: 'https://www.haaretz.co.il', },
+  { text: 'ביטול מנוי דיגיטלי', link: 'https://www.haaretz.co.il', },
+  { text: 'פרסם אלינו', link: 'https://www.haaretz.co.il', },
+];
+const linkStyle = ({ theme, isLast, }) => ({
+  ':after': {
+    content: isLast ? '""' : '" | "',
+    marginRight: '0.5rem',
+  },
+  marginLeft: '0.5rem',
+  fontSize: '2.4rem',
+  fontWeight: 'bold',
+});
+
+const StyledLink = createComponent(linkStyle, Link, [ 'content', 'href', ]);
 
 const wrapperStyle = ({ theme, }) => ({
   display: 'block',
@@ -37,7 +55,7 @@ const StyledDesktopHead = createComponent(desktopHeadStyle);
 const desktopMainListStyle = ({ theme, }) => ({
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'baseline',
+  alignItems: 'space-between',
   paddingBottom: '4rem',
   paddingTop: '2rem',
 });
@@ -45,6 +63,7 @@ const StyledDesktopMainList = createComponent(desktopMainListStyle);
 
 const desktopTextStyle = ({ theme, }) => ({
   fontSize: '10px',
+  marginTop: '-1rem',
 });
 const StyledDesktopText = createComponent(desktopTextStyle);
 
@@ -88,19 +107,24 @@ class DesktopView extends React.Component {
           </div>
         </StyledDesktopHead>
         <StyledDesktopMainList>
-          <span>
-            מערכת | הנהלה | אודות הארץ | דרושים | צור קשר | עשה מנוי | שאלות ותשובות | ביטול מנוי
-            דיגיטלי | פרסם אלינו
-          </span>
-          <span>
-            <Button
+          <div>
+            {mockMainLinkList.map((item, index) => (
+              <StyledLink
+                content={item.text}
+                href={item.link}
+                isLast={index === mockMainLinkList.length - 1}
+              />
+            ))}
+          </div>
+          <div>
+            <ButtonFooter
               variant="secondary"
-              boxModel={{ hp: 4.5, vp: 1, }}
+              boxModel={{ hp: 4.5, vp: 0.75, }}
               onClick={() => this.handleClick()}
             >
               {expanded ? 'סגור' : 'הצג עוד'}
-            </Button>
-          </span>
+            </ButtonFooter>
+          </div>
         </StyledDesktopMainList>
         {expanded ? (
           <StyledExpandedLists>
@@ -115,7 +139,7 @@ class DesktopView extends React.Component {
           חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי
           עומק באתר האיכותי בישראל
         </StyledDesktopText>
-        <StyledDesktopText>© כל הזכויות שמורות להוצאת עיתון הארץ בע"מ</StyledDesktopText>
+        <StyledDesktopText>© כל הזכויות שמורות להוצאת עיתון הארץ בעמ</StyledDesktopText>
       </Wrapper>
     );
   }

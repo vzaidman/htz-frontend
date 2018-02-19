@@ -1,16 +1,10 @@
 import React from 'react';
 import { createComponent, } from 'react-fela';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { bps, } from '@haaretz/htz-theme';
 import mediaMatchesQuery from '../../utils/mediaMatchesQuery';
-import {
-  borderBottom,
-  borderTop,
-  parseComponentProp,
-  parseStyleProps,
-} from '@haaretz/htz-css-tools';
 import DesktopView from './elemets/DesktopView';
 import MobileView from './elemets/MobileView';
-
 
 class Footer extends React.Component {
   state = { breakPoint: null, toggle: false, };
@@ -41,6 +35,7 @@ class Footer extends React.Component {
 
   render() {
     const { breakPoint, toggle, } = this.state;
+    // eslint-disable-next-line eqeqeq
     if (breakPoint == undefined) {
       return <div>Loading...</div>;
     }

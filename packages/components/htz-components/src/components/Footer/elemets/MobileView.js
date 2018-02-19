@@ -1,12 +1,11 @@
 import React from 'react';
-import { createComponent, } from 'react-fela';
-import {
-  borderBottom,
-  borderTop,
-  parseComponentProp,
-  parseStyleProps,
-} from '@haaretz/htz-css-tools';
-// import { buttonBoxModelType, } from './buttonBoxModelType';
+import { createComponent, withTheme, } from 'react-fela';
+import { borderBottom, } from '@haaretz/htz-css-tools';
+import Button from '../../Button/Button'; // eslint-disable-line import/no-named-as-default
+import IconFaceBookLogo from '../../Icon/icons/IconFacebookLogo';
+import IconTwitter from '../../Icon/icons/IconTwitter';
+import IconGPlus from '../../Icon/icons/IconGPlus';
+import Link from '../../Link/Link'; // eslint-disable-line import/no-named-as-default
 
 const wrapperStyle = ({ theme, }) => ({
   display: 'block',
@@ -20,17 +19,21 @@ const wrapperStyle = ({ theme, }) => ({
 const Wrapper = createComponent(wrapperStyle);
 
 const mobileHeadStyle = ({ theme, }) => ({
-  fontSize: '4rem',
+  fontSize: '5rem',
   ...borderBottom('1px', '2', 'solid', 'white'),
 });
 const StyledMobileHead = createComponent(mobileHeadStyle);
+
+const IconMiscStyle = {
+  margin: '3rem',
+  marginTop: '2rem',
+};
 
 const mobileMainListStyle = ({ theme, }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   flexDirection: 'row',
   paddingBottom: '4rem',
-  paddingTop: '4rem',
 });
 const StyledMobileMainList = createComponent(mobileMainListStyle, 'div');
 
@@ -44,42 +47,47 @@ const StyledLinkBox = createComponent(linkBoxStyle, 'ul');
 
 const linkStyle = ({ theme, }) => ({
   fontWeight: 'bold',
+  fontSize: '2.7rem',
   marginTop: '1rem',
   marginBottom: '1rem',
 });
 
-const StyledLink = createComponent(linkStyle, 'li');
+const StyledLink = createComponent(linkStyle, Link, [ 'content', 'href', ]);
 
 const textStyle = ({ theme, }) => ({
   fontSize: '10px',
 });
 const StyledText = createComponent(textStyle);
 
-const listOne = [ 'רכשו מנוי', 'בלוגים', 'תנאי שימוש', ];
-
-const MobileView = props => (
+// eslint-disable-next-line react/prop-types
+const MobileView = ({ theme: { footerMobileListsI18n, }, }) => (
   <Wrapper>
     <StyledMobileHead> הארץ </StyledMobileHead>
-    <div> Icons </div>
+    <IconFaceBookLogo size={3.5} miscStyles={IconMiscStyle} />
+    <IconTwitter size={3.5} miscStyles={IconMiscStyle} />
+    <IconGPlus size={3.5} miscStyles={IconMiscStyle} />
     <StyledMobileMainList>
-      <StyledLinkBox>{listOne.map(link => <StyledLink>{link}</StyledLink>)}</StyledLinkBox>
-      <StyledLinkBox>{listOne.map(link => <StyledLink>{link}</StyledLink>)}</StyledLinkBox>
-      {/* <StyledRow>
-        <div>רכשו מנוי</div>
-        <div>צרו קשר</div>
-      </StyledRow>
-      <StyledRow>
-        <div>בלוגים</div>
-        <div>פרסמו באתר</div>
-      </StyledRow>
-      <StyledRow>
-        <div>שירות למנויים</div>
-        <div>תנאי שימוש</div>
-      </StyledRow> */}
+      <StyledLinkBox>
+        {footerMobileListsI18n.ListOne.map(link => (
+          <StyledLink key={link.text} content={link.text} href={link.link} />
+        ))}
+      </StyledLinkBox>
+      <StyledLinkBox>
+        {footerMobileListsI18n.ListTwo.map(link => (
+          <StyledLink key={link.text} content={link.text} href={link.link} />
+        ))}
+      </StyledLinkBox>
     </StyledMobileMainList>
-    <button>להורדת האפליקציה</button>
+    <Button
+      variant="secondary"
+      boxModel={{ hp: 4.5, vp: 1, }}
+      onClick={() => console.warn('WIP!')}
+    >
+      להורדת האפליקציה
+    </Button>
+
     <StyledText>© כל הזכויות שמורות</StyledText>
   </Wrapper>
 );
 
-export default MobileView;
+export default withTheme(MobileView);

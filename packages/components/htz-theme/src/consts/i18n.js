@@ -89,3 +89,34 @@ export const commentsSectionI18n = Object.freeze({
     chooseSortMethodText: 'סדרו את התגובות',
   }),
 });
+
+export const footerMobileListsI18n = Object.freeze({
+  ListOne: [
+    Object.freeze({
+      text: 'רכשו מנוי',
+      link: 'https://www.haaretz.co.il/promotions-page',
+    }),
+    Object.freeze({
+      text: 'בלוגים',
+      link: 'https://www.haaretz.co.il/blogs',
+    }),
+    Object.freeze({
+      text: 'תנאי שימוש',
+      link: 'https://www.haaretz.co.il/misc/terms-of-use',
+    }),
+  ],
+  ListTwo: [
+    Object.freeze({
+      text: 'צרו קשר',
+      link: 'https://www.haaretz.co.il/misc/contact-us',
+    }),
+    Object.freeze({
+      text: 'פרסמו באתר',
+      link: 'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
+    }),
+    Object.freeze({
+      text: 'שירות למנויים',
+      link: 'https://www.haaretz.co.il/personal-area/my-account',
+    }),
+  ],
+});

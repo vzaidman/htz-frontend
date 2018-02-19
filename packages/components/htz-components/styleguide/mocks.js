@@ -31,9 +31,43 @@ const mocks = {
     },
     totalHits: 2,
   }),
+
   addComment: () => ({
     newCommentId: '12345',
     hash: 'abcde',
+  }),
+
+  Footer: () => ({
+    head: [
+      { key: 'מערכת', value: 'https://www.haaretz.co.il/misc/editors', },
+      { key: 'הנהלה', value: 'https://www.haaretz.co.il/misc/management', },
+      { key: 'אודות הארץ', value: 'https://www.haaretz.co.il/misc/about-haaretz', },
+      { key: 'דרושים', value: 'https://www.haaretz.co.il/misc/jobs', },
+      { key: 'צור קשר', value: 'https://www.haaretz.co.il/misc/contact-us', },
+      { key: 'עשה מנוי', value: 'https://www.haaretz.co.il/promotions-page', },
+      { key: 'צור קשר', value: 'https://www.haaretz.co.il/misc/contact-us', },
+      { key: 'שאלות ותשובות', value: 'https://www.haaretz.co.il/misc/faq', },
+      {
+        key: 'פרסם אצלנו',
+        value: 'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
+      },
+    ],
+    columns: [
+      { key: 'מערכת', value: 'https://www.haaretz.co.il/misc/editors', },
+      { key: 'הנהלה', value: 'https://www.haaretz.co.il/misc/management', },
+      { key: 'אודות הארץ', value: 'https://www.haaretz.co.il/misc/about-haaretz', },
+      { key: 'דרושים', value: 'https://www.haaretz.co.il/misc/jobs', },
+      { key: 'צור קשר', value: 'https://www.haaretz.co.il/misc/contact-us', },
+      { key: 'עשה מנוי', value: 'https://www.haaretz.co.il/promotions-page', },
+      { key: 'צור קשר', value: 'https://www.haaretz.co.il/misc/contact-us', },
+      { key: 'שאלות ותשובות', value: 'https://www.haaretz.co.il/misc/faq', },
+      {
+        key: 'פרסם אצלנו',
+        value: 'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
+      },
+    ],
+    // credit:,
+    // toolbox: ,
   }),
 
   OsakaList: () => ({
