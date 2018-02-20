@@ -1,6 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
+import { graphql, } from 'react-apollo';
+import gql from 'graphql-tag';
 import ButtonFooter from '../../Button/Button';
 import Link from '../../Link/Link';
 import IconFaceBookLogo from '../../Icon/icons/IconFacebookLogo';
@@ -22,7 +25,7 @@ const mockMainLinkList = [
   { text: 'ביטול מנוי דיגיטלי', link: 'https://www.haaretz.co.il', },
   { text: 'פרסם אלינו', link: 'https://www.haaretz.co.il', },
 ];
-const linkStyle = ({ theme, isLast, }) => ({
+const headLinkStyle = ({ theme, isLast, }) => ({
   ':after': {
     content: isLast ? '""' : '" | "',
     marginRight: '0.5rem',
@@ -32,7 +35,21 @@ const linkStyle = ({ theme, isLast, }) => ({
   fontWeight: 'bold',
 });
 
-const StyledLink = createComponent(linkStyle, Link, [ 'content', 'href', ]);
+const StyledHeadLink = createComponent(headLinkStyle, Link, [ 'content', 'href', ]);
+
+const listLinkStyle = ({ theme, isLast, }) => ({
+  marginLeft: '0.5rem',
+  fontSize: '2rem',
+});
+
+const StyledListLink = createComponent(listLinkStyle, Link, [ 'content', 'href', ]);
+
+const toolBoxLinkStyle = ({ theme, isLast, }) => ({
+  fontSize: '2.4rem',
+  fontWeight: 'bold',
+});
+
+const StyledToolBoxHeadLink = createComponent(toolBoxLinkStyle, Link, [ 'content', 'href', ]);
 
 const wrapperStyle = ({ theme, }) => ({
   display: 'block',
@@ -55,7 +72,7 @@ const StyledDesktopHead = createComponent(desktopHeadStyle);
 const desktopMainListStyle = ({ theme, }) => ({
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'space-between',
+  alignItems: 'center',
   paddingBottom: '4rem',
   paddingTop: '2rem',
 });
@@ -73,6 +90,8 @@ const expandedListStyle = ({ theme, }) => ({
   alignItems: 'baseline',
   paddingBottom: '6rem',
   paddingTop: '1rem',
+  ...borderBottom('1px', '2', 'solid', 'white'),
+  marginBottom: '2rem',
 });
 const StyledExpandedLists = createComponent(expandedListStyle);
 
@@ -80,10 +99,44 @@ const IconMiscStyle = {
   marginRight: '3.5rem',
 };
 
+const PairTypes = PropTypes.arrayOf(
+  PropTypes.shape({
+    text: PropTypes.string,
+    href: PropTypes.string,
+  })
+);
+
+const ColumnTypes = PropTypes.arrayOf(
+  PropTypes.shape({
+    combineWithNextColumn: PropTypes.bool,
+    items: PairTypes,
+    title: PropTypes.string,
+  })
+);
+
 class DesktopView extends React.Component {
+  static propTypes = {
+    Footer: PropTypes.shape({
+      /** Indicates data loading state */
+      loading: PropTypes.bool,
+      /** Indicates data error state */
+      error: PropTypes.bool,
+      /** Footer data */
+      footer: PropTypes.shape({
+        head: PairTypes,
+        columns: ColumnTypes,
+        credit: PairTypes,
+        toolbox: PairTypes,
+      }),
+    }).isRequired,
+  };
   state = {
     expanded: false,
   };
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.props !== nextProps || this.state.expanded !== nextState.expanded;
+  // }
+
   handleClick = () => {
     console.warn('clicked');
     this.setState(prevState => ({
@@ -91,7 +144,13 @@ class DesktopView extends React.Component {
     }));
   };
   render() {
+    const { footer, loading, } = this.props.Footer;
     const { expanded, } = this.state;
+    if (loading) {
+      return <div> Loading... </div>;
+    }
+    console.warn('footer data ', this.props.Footer);
+    // console.warn('footer data ', footer);
     return (
       <Wrapper>
         <StyledDesktopHead>
@@ -108,10 +167,10 @@ class DesktopView extends React.Component {
         </StyledDesktopHead>
         <StyledDesktopMainList>
           <div>
-            {mockMainLinkList.map((item, index) => (
-              <StyledLink
+            {footer.head.map((item, index) => (
+              <StyledHeadLink
                 content={item.text}
-                href={item.link}
+                href={item.href}
                 isLast={index === mockMainLinkList.length - 1}
               />
             ))}
@@ -128,11 +187,25 @@ class DesktopView extends React.Component {
         </StyledDesktopMainList>
         {expanded ? (
           <StyledExpandedLists>
-            <div>List 1</div>
-            <div>List 2</div>
-            <div>List 3</div>
-            <div>List 4</div>
-            <div>List 5</div>
+            {footer.columns.map(list => (
+              <ul>
+                <li>
+                  <strong>{list.title}</strong>
+                </li>
+                {list.items.map(link => (
+                  <div>
+                    <StyledListLink content={link.text} href={link.href} />
+                  </div>
+                ))}
+              </ul>
+            ))}
+            <ul>
+              {footer.toolbox.map(link => (
+                <li>
+                  <StyledToolBoxHeadLink content={link.text} href={link.href} />
+                </li>
+              ))}
+            </ul>
           </StyledExpandedLists>
         ) : null}
         <StyledDesktopText>
@@ -145,4 +218,32 @@ class DesktopView extends React.Component {
   }
 }
 
-export default DesktopView;
+export default graphql(
+  gql`
+    {
+      footer {
+        head {
+          text
+          href
+        }
+        columns {
+          title
+          combineWithNextColumn
+          items {
+            text
+            href
+          }
+        }
+        credit {
+          text
+          href
+        }
+        toolbox {
+          text
+          href
+        }
+      }
+    }
+  `,
+  { name: 'Footer', }
+)(DesktopView);

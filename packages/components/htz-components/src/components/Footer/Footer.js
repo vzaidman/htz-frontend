@@ -1,5 +1,4 @@
 import React from 'react';
-import { createComponent, } from 'react-fela';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { bps, } from '@haaretz/htz-theme';
 import mediaMatchesQuery from '../../utils/mediaMatchesQuery';
