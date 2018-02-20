@@ -61,6 +61,14 @@ import IconZen from './components/Icon/icons/IconZen';
 import IconZoomIn from './components/Icon/icons/IconZoomIn';
 import IconZoomOut from './components/Icon/icons/IconZoomOut';
 
+// User
+import Login from './components/User/Login';
+import Logout from './components/User/Logout';
+import Register from './components/User/Register';
+import UserDispenser from './components/User/UserDispenser';
+import UserInjector from './components/User/UserInjector';
+import { LoginExample, RegisterExample, } from './components/User/UserExamples';
+
 /** ************************************ *
  *       U  T  I  L  I  T  I  E  S       *
  * ************************************* */
@@ -126,6 +134,13 @@ export {
   IconZoomIn,
   IconZoomOut,
 
+  Login,
+  Logout,
+  Register,
+  UserDispenser,
+  UserInjector,
+  LoginExample,
+  RegisterExample,
   // Utils
   createDocument,
 };

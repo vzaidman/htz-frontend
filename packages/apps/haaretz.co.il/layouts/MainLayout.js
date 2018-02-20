@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Error from 'next/error';
@@ -7,9 +7,13 @@ import gql from 'graphql-tag';
 import { propType, } from 'graphql-anywhere';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import htzTheme from '@haaretz/htz-theme';
+import dynamic from 'next/dynamic';
+import { UserInjector, LoginExample, RegisterExample, } from '@haaretz/htz-components';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import TopNav from '../components/TopNav/TopNav';
+// eslint-disable-next-line import/no-named-as-default
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
+// eslint-disable-next-line import/no-named-as-default
 import Slot from '../components/Slot/Slot';
 
 const PageData = gql`
@@ -91,15 +95,20 @@ export class MainLayout extends React.Component {
       return <Error statusCode={isNotFound ? 404 : 500} />;
     }
     return (
-      <StyleProvider renderer={styleRenderer} theme={htzTheme}>
-        <div>
-          {this.renderHead()}
-          <TopNav />
-          <h1>{data.loading ? 'Loading…' : data.page ? data.page.contentName : ''}</h1>
-          {data.page ? <Breadcrumbs page={data.page} /> : null}
-          {this.renderSlots()}
-        </div>
-      </StyleProvider>
+      <Fragment>
+        <UserInjector />
+        {LoginExample}
+        {RegisterExample}
+        <StyleProvider renderer={styleRenderer} theme={htzTheme}>
+          <div>
+            {this.renderHead()}
+            <TopNav />
+            <h1>{data.loading ? 'Loading…' : data.page ? data.page.contentName : ''}</h1>
+            {data.page ? <Breadcrumbs page={data.page} /> : null}
+            {this.renderSlots()}
+          </div>
+        </StyleProvider>
+      </Fragment>
     );
   }
 }
