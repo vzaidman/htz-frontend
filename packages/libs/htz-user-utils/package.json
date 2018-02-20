@@ -1,0 +1,35 @@
+{
+  "name": "@haaretz/htz-user-utils",
+  "version": "0.1.0",
+  "description": "A user service layer",
+  "keywords": [],
+  "author": "eliagrady",
+  "license": "UNLICENSED",
+  "repository": "Haaretz/htz-frontend",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/lib/index.js",
+  "module": "dist/esm/index.js",
+  "esnext": "dist/esnext/index.js",
+  "scripts": {
+    "build": "htz-scripts build",
+    "clean": "htz-scripts clean",
+    "flow": "htz-scripts flow",
+    "format": "htz-scripts format",
+    "lint": "htz-scripts lint",
+    "prepare": "npm run build",
+    "test": "htz-scripts test",
+    "dev": "htz-scripts test --watchAll",
+    "update-scripts": "htz-scripts update-scripts"
+  },
+  "devDependencies": {
+    "@haaretz/htz-react-base": "^1.0.0",
+    "jest-environment-jsdom-global": "^1.0.2",
+    "rimraf": "2.6.2"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "jest-fetch-mock": "^1.4.0"
+  }
+}
