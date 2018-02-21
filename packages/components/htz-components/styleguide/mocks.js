@@ -70,30 +70,6 @@ const mocks = {
             href: 'https://www.haaretz.co.il/news/weather',
           },
           {
-            text: 'אוכל',
-            href: 'https://www.haaretz.co.il/food',
-          },
-          {
-            text: 'מסעדות מומלצות',
-            href: 'https://www.haaretz.co.il/food/restaurant-guide',
-          },
-          {
-            text: 'ספרים',
-            href: 'https://www.haaretz.co.il/literature',
-          },
-          {
-            text: 'סרטים',
-            href: 'https://www.haaretz.co.il/opinions',
-          },
-          {
-            text: 'דעות',
-            href: 'https://www.haaretz.co.il/misc/management',
-          },
-          {
-            text: 'גלריה',
-            href: 'https://www.haaretz.co.il/gallery',
-          },
-          {
             text: 'ספורט',
             href: 'https://www.haaretz.co.il/sport',
           },

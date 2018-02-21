@@ -149,6 +149,32 @@ class DesktopView extends React.Component {
     if (loading) {
       return <div> Loading... </div>;
     }
+    const columnsArr = footer.columns.reduce((r, e, i, arr) => {
+      const prev = arr[i - 1];
+      if (prev && prev.combineWithNextColumn) r[r.length - 1].push(e);
+      else r.push([ e, ]);
+      return r;
+    }, []);
+
+    console.warn(columnsArr);
+
+    const result = columnsArr.map(lists => (
+      <ul>
+        {lists.map(innerList => (
+          <div>
+            <li>
+              <strong>{innerList.title}</strong>
+            </li>
+            {innerList.items.map(link => (
+              <li>
+                <StyledListLink content={link.text} href={link.href} />
+              </li>
+            ))}
+          </div>
+        ))}
+      </ul>
+    ));
+    console.warn('good???', result);
     console.warn('footer data ', this.props.Footer);
     // console.warn('footer data ', footer);
     return (
@@ -187,18 +213,29 @@ class DesktopView extends React.Component {
         </StyledDesktopMainList>
         {expanded ? (
           <StyledExpandedLists>
-            {footer.columns.map(list => (
-              <ul>
-                <li>
-                  <strong>{list.title}</strong>
-                </li>
-                {list.items.map(link => (
-                  <div>
-                    <StyledListLink content={link.text} href={link.href} />
-                  </div>
-                ))}
-              </ul>
-            ))}
+            {/* {columnsArr.map(list => (
+                <ul>
+                  {list.map(innerList =>
+                    (
+                      <li>
+                        <strong>{innerList.title}</strong>
+                      </li>
+                    {innerList.items.map(link =>
+                        (
+                        <li>
+                          <StyledListLink content={link.text} href={link.href} />
+                        </li>
+                        )
+                    )}
+                    )
+                    )})
+                  })}
+                </ul>
+              );
+              console.warn(result);
+              return result;
+            })} */}
+            {result}
             <ul>
               {footer.toolbox.map(link => (
                 <li>
