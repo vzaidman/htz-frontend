@@ -106,7 +106,69 @@
       inputTemplate: "com.tm.Image",
       contentId: "1.5811062",
       contentName: "הכנרת, באוקטובר 2017"
-    }, 
+    },
+    {
+      alt: "cat",
+      aspects: {
+        regular: {
+          x: 3,
+          y: 4,
+          width: 388,
+          height: 291
+        },
+        full: {
+          width: 400,
+          height: 332
+        },
+        headline: {
+          x: 0,
+          y: 32,
+          width: 399,
+          height: 233
+        },
+        square: {
+          x: 33,
+          y: 7,
+          width: 318,
+          height: 318
+        }
+      },
+      isAnimated: false,
+      imgArray: [
+        {
+          imgName: "image/4030303706.gif",
+          version: "1516120525"
+        }
+      ],
+      imageType: "image",
+      inputTemplate: "com.tm.Image",
+      contentId: "1.6651",
+      contentName: "cat"
+    },
+    {
+      alt: "fgh",
+      aspects: {
+        full: {
+          width: 1024,
+          height: 768
+        }
+      },
+      isAnimated: false,
+      imgArray: [
+        {
+          imgName: "image/3169121816.jpg",
+          version: "1512396165"
+        },
+        {
+          imgName: "image/509020086.jpg",
+          version: "1512396167"
+        }
+      ],
+      imageType: "infographic",
+      inputTemplate: "com.tm.Image",
+      contentId: "1.5804",
+      contentName: "ghf"
+    },
     {
       "text": "בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר במשרד הביטחון",
       "credit": "מישהו",

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withTheme, createComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
+import ArticleImage from '../ArticleImage/ArticleImage';
 import Caption from '../Caption/Caption';
 
 const propTypes = {
@@ -67,41 +68,15 @@ const BodyWrapper = createComponent(bodyWrapperStyle);
 
 const mediaComponents = [ 'embedElement', 'com.tm.Image', 'com.tm.Video', ];
 
-const imgOptions = {
-  transforms: {
-    width: '700',
-    aspect: 'regular',
-    quality: 'auto',
-  },
-};
-
 const buildComponent = (context, index, isLastItem, theme) => {
   const uniqueId =
     context.elementType ||
     context.inputTemplate ||
     context.tag ||
     null;
-  const Component = getComponent(uniqueId);
+  const Component = uniqueId === 'com.tm.Image' ? ArticleImage : getComponent(uniqueId);
 
   switch (uniqueId) {
-    case 'com.tm.Image' :
-      return (
-        <Figure
-          key={index}
-          lastItem={isLastItem}
-        >
-          <Component
-            data={context}
-            imgOptions={imgOptions}
-          />
-          {(context.title || context.credit) &&
-            <Caption
-              caption={context.title}
-              credit={context.credit}
-            />
-          }
-        </Figure>
-      );
     case mediaComponents.includes(uniqueId) :
       return (
         <Figure
