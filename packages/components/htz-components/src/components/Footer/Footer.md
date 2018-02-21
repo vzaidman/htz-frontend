@@ -20,5 +20,7 @@ flexible and easy to use. No custom user props needed to be passed through.
 #### **Basic use**
 
 ```jsx
-<Footer />
+<div dir="rtl">
+  <Footer />
+</div>
 ```

@@ -33,6 +33,7 @@ const btnVariants = PropTypes.oneOf([
   'twitterOpaque',
   'sales',
   'salesOpaque',
+  'secondary',
   'whatsapp',
   'whatsappOpaque',
   'formattingOpaque',

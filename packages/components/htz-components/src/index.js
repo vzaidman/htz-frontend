@@ -42,6 +42,8 @@ import IconAccessibility from './components/Icon/icons/IconAccessibility';
 import IconAlef from './components/Icon/icons/IconAlef';
 import IconAlefLogo from './components/Icon/icons/IconAlefLogo';
 import IconAlert from './components/Icon/icons/IconAlert';
+import IconAndroid from './components/Icon/icons/IconAndroid';
+import IconApple from './components/Icon/icons/IconApple';
 import IconAvatar from './components/Icon/icons/IconAvatar';
 import IconBack from './components/Icon/icons/IconBack';
 import IconBold from './components/Icon/icons/IconBold';
@@ -58,6 +60,7 @@ import IconItalic from './components/Icon/icons/IconItalic';
 import IconLike from './components/Icon/icons/IconLike';
 import IconMail from './components/Icon/icons/IconMail';
 import IconMailAlert from './components/Icon/icons/IconMailAlert';
+import IconMailFooter from './components/Icon/icons/IconMailFooter';
 import IconMenu from './components/Icon/icons/IconMenu';
 import IconPlus from './components/Icon/icons/IconPlus';
 import IconPrint from './components/Icon/icons/IconPrint';
@@ -133,6 +136,8 @@ export {
   IconAlef,
   IconAlefLogo,
   IconAlert,
+  IconAndroid,
+  IconApple,
   IconAvatar,
   IconBack,
   IconBold,
@@ -149,6 +154,7 @@ export {
   IconLike,
   IconMail,
   IconMailAlert,
+  IconMailFooter,
   IconMenu,
   IconPlus,
   IconPrint,

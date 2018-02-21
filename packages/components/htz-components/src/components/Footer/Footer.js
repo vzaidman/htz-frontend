@@ -1,3 +1,4 @@
+/* globals window */
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { bps, } from '@haaretz/htz-theme';
@@ -6,8 +7,10 @@ import DesktopView from './elemets/DesktopView';
 import MobileView from './elemets/MobileView';
 
 class Footer extends React.Component {
-  state = { breakPoint: null, toggle: false, };
+  // todo: should default be mobile?
+  state = { isDesktop: false, };
 
+  // todo: should we add a resize component like scroll?
   componentDidMount() {
     window.addEventListener('resize', () => this.checkBreakPoint());
     this.checkBreakPoint();
@@ -19,31 +22,16 @@ class Footer extends React.Component {
 
   checkBreakPoint = () => {
     this.setState({
-      breakPoint: mediaMatchesQuery(bps, {
-        queries: [ { until: 's', value: 'mobile', }, { from: 's', value: 'desktop', }, ],
+      isDesktop: mediaMatchesQuery(bps, {
+        queries: [ { until: 's', value: false, }, { from: 's', value: true, }, ],
       }),
     });
   };
 
-  handleClick = () => {
-    console.warn('clicked');
-    this.setState(prevState => ({
-      toggle: !prevState.toggle,
-    }));
-  };
-
   render() {
-    const { breakPoint, toggle, } = this.state;
-    // eslint-disable-next-line eqeqeq
-    if (breakPoint == undefined) {
-      return <div>Loading...</div>;
-    }
+    const { isDesktop, } = this.state;
 
-    console.warn('this is break point', breakPoint);
-    console.warn('this is toggle state ', toggle);
-    const FooterReady = breakPoint === 'desktop' ? <DesktopView /> : <MobileView />;
-
-    return FooterReady;
+    return isDesktop ? <DesktopView /> : <MobileView />;
   }
 }
 

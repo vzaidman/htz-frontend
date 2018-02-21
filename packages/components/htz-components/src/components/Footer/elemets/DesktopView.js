@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
@@ -10,54 +10,45 @@ import IconFaceBookLogo from '../../Icon/icons/IconFacebookLogo';
 import IconTwitter from '../../Icon/icons/IconTwitter';
 import IconGPlus from '../../Icon/icons/IconGPlus';
 import IconRss from '../../Icon/icons/IconRss';
-// import IconMail from '../../Icon/icons/IconMail';
-// import IconApple from '../../Icon/icons/IconApple';
-// import IconAndroid from '../../Icon/icons/IconAndroid';
+import IconMailFooter from '../../Icon/icons/IconMailFooter';
+import IconApple from '../../Icon/icons/IconApple';
+import IconAndroid from '../../Icon/icons/IconAndroid';
 
-const mockMainLinkList = [
-  { text: 'מערכת', link: 'https://www.haaretz.co.il', },
-  { text: 'הנהלה', link: 'https://www.haaretz.co.il', },
-  { text: 'אודות הארץ', link: 'https://www.haaretz.co.il', },
-  { text: 'דרושים', link: 'https://www.haaretz.co.il', },
-  { text: 'צור קשר', link: 'https://www.haaretz.co.il', },
-  { text: 'עשה מנוי', link: 'https://www.haaretz.co.il', },
-  { text: 'שאלות ותשובות', link: 'https://www.haaretz.co.il', },
-  { text: 'ביטול מנוי דיגיטלי', link: 'https://www.haaretz.co.il', },
-  { text: 'פרסם אלינו', link: 'https://www.haaretz.co.il', },
-];
 const headLinkStyle = ({ theme, isLast, }) => ({
   ':after': {
     content: isLast ? '""' : '" | "',
     marginRight: '0.5rem',
   },
+  // todo: ask for accurate margin left and right
   marginLeft: '0.5rem',
-  fontSize: '2.4rem',
   fontWeight: 'bold',
 });
 
 const StyledHeadLink = createComponent(headLinkStyle, Link, [ 'content', 'href', ]);
 
-const listLinkStyle = ({ theme, isLast, }) => ({
-  marginLeft: '0.5rem',
-  fontSize: '2rem',
+const listLinkStyle = ({ theme, isLast, isBold = false, }) => ({
+  ...(isBold ? { fontWeight: 'bold', } : {}),
+  extend: [ theme.type(-1), ],
 });
 
-const StyledListLink = createComponent(listLinkStyle, Link, [ 'content', 'href', ]);
+const StyledListLink = createComponent(listLinkStyle, Link, [ 'content', 'href', 'ref', ]);
 
-const toolBoxLinkStyle = ({ theme, isLast, }) => ({
-  fontSize: '2.4rem',
-  fontWeight: 'bold',
+const headWrapperLinkStyle = ({ theme, }) => ({
+  display: 'flex',
+  flexWrap: 'wrap',
 });
 
-const StyledToolBoxHeadLink = createComponent(toolBoxLinkStyle, Link, [ 'content', 'href', ]);
+const StyledHeadLinksWrapper = createComponent(headWrapperLinkStyle);
 
+// todo: instead of wrapper use LayoutRow and LayoutContainer
 const wrapperStyle = ({ theme, }) => ({
-  display: 'block',
-  width: '100%',
-  padding: '3rem 20rem 3rem 20rem',
+  paddingTop: '3rem',
+  paddingBottom: '3rem',
+  // todo: remove left and right padding, add a LayoutContainer component that will control max width
+  paddingRight: '4rem',
+  paddingLeft: '4rem',
   backgroundColor: theme.color('footer', 'bg'),
   color: theme.color('footer', 'text'),
-  direction: 'rtl',
 });
 const Wrapper = createComponent(wrapperStyle);
 
@@ -73,27 +64,56 @@ const desktopMainListStyle = ({ theme, }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  paddingBottom: '4rem',
-  paddingTop: '2rem',
+  marginBottom: '4rem',
+  marginTop: '2rem',
 });
 const StyledDesktopMainList = createComponent(desktopMainListStyle);
 
 const desktopTextStyle = ({ theme, }) => ({
-  fontSize: '10px',
-  marginTop: '-1rem',
+  extend: [ theme.type(-2), ],
 });
+
+// todo: change from div to p or something else?
 const StyledDesktopText = createComponent(desktopTextStyle);
+
+const expandedListContStyle = ({ theme, }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  paddingBottom: '6rem',
+  ...borderBottom('1px', '2', 'solid', 'white'),
+  marginBottom: '2rem',
+});
+
+const StyledExpandedListsCont = createComponent(expandedListContStyle);
 
 const expandedListStyle = ({ theme, }) => ({
   display: 'flex',
   justifyContent: 'space-between',
+  flexWrap: 'wrap',
   alignItems: 'baseline',
-  paddingBottom: '6rem',
-  paddingTop: '1rem',
-  ...borderBottom('1px', '2', 'solid', 'white'),
-  marginBottom: '2rem',
 });
+
 const StyledExpandedLists = createComponent(expandedListStyle);
+
+const listUlStyle = ({ theme, }) => ({
+  marginInlineEnd: '12rem',
+  paddingTop: '3rem',
+  paddingBottom: '3rem',
+});
+
+const StyledLinkUl = createComponent(listUlStyle, 'ul');
+
+const toolboxListStyle = () => ({
+  minWidth: '20rem',
+});
+
+const StyledToolboxList = createComponent(toolboxListStyle, StyledLinkUl);
+
+const titleLiStyle = ({ theme, }) => ({
+  fontWeight: 'bold',
+});
+
+const StyledTitleLi = createComponent(titleLiStyle, 'li');
 
 const IconMiscStyle = {
   marginRight: '3.5rem',
@@ -138,10 +158,10 @@ class DesktopView extends React.Component {
   // }
 
   handleClick = () => {
-    console.warn('clicked');
     this.setState(prevState => ({
       expanded: !prevState.expanded,
     }));
+    this.firstLiEl.focus();
   };
   render() {
     const { footer, loading, } = this.props.Footer;
@@ -156,27 +176,6 @@ class DesktopView extends React.Component {
       return r;
     }, []);
 
-    console.warn(columnsArr);
-
-    const result = columnsArr.map(lists => (
-      <ul>
-        {lists.map(innerList => (
-          <div>
-            <li>
-              <strong>{innerList.title}</strong>
-            </li>
-            {innerList.items.map(link => (
-              <li>
-                <StyledListLink content={link.text} href={link.href} />
-              </li>
-            ))}
-          </div>
-        ))}
-      </ul>
-    ));
-    console.warn('good???', result);
-    console.warn('footer data ', this.props.Footer);
-    // console.warn('footer data ', footer);
     return (
       <Wrapper>
         <StyledDesktopHead>
@@ -184,66 +183,72 @@ class DesktopView extends React.Component {
           <div>
             <IconFaceBookLogo size={3} miscStyles={IconMiscStyle} />
             <IconTwitter size={3} miscStyles={IconMiscStyle} />
+            <IconAndroid size={3} miscStyles={IconMiscStyle} />
+            <IconApple size={3} miscStyles={IconMiscStyle} />
             <IconGPlus size={3} miscStyles={IconMiscStyle} />
-            <IconRss size={3} miscStyles={IconMiscStyle} />
-            <IconRss size={3} miscStyles={IconMiscStyle} />
-            <IconRss size={3} miscStyles={IconMiscStyle} />
+            <IconMailFooter size={3} miscStyles={IconMiscStyle} />
             <IconRss size={3} miscStyles={IconMiscStyle} />
           </div>
         </StyledDesktopHead>
         <StyledDesktopMainList>
-          <div>
+          <StyledHeadLinksWrapper>
             {footer.head.map((item, index) => (
               <StyledHeadLink
                 content={item.text}
                 href={item.href}
-                isLast={index === mockMainLinkList.length - 1}
+                isLast={index === footer.head.length - 1}
               />
             ))}
-          </div>
+          </StyledHeadLinksWrapper>
           <div>
             <ButtonFooter
               variant="secondary"
               boxModel={{ hp: 4.5, vp: 0.75, }}
               onClick={() => this.handleClick()}
+              attrs={{
+                'aria-exapnded': expanded ? 'true' : 'false',
+              }}
             >
               {expanded ? 'סגור' : 'הצג עוד'}
             </ButtonFooter>
           </div>
         </StyledDesktopMainList>
         {expanded ? (
-          <StyledExpandedLists>
-            {/* {columnsArr.map(list => (
-                <ul>
-                  {list.map(innerList =>
-                    (
-                      <li>
-                        <strong>{innerList.title}</strong>
-                      </li>
-                    {innerList.items.map(link =>
-                        (
+          <StyledExpandedListsCont>
+            <StyledExpandedLists>
+              {columnsArr.map((lists, colIdx) => (
+                <StyledLinkUl>
+                  {lists.map((innerList, listIdx) => (
+                    <div>
+                      <StyledTitleLi>{innerList.title}</StyledTitleLi>
+                      {innerList.items.map(link => (
                         <li>
-                          <StyledListLink content={link.text} href={link.href} />
+                          <StyledListLink
+                            content={link.text}
+                            href={link.href}
+                            {...(colIdx === 0 && listIdx === 0
+                              ? {
+                                ref: firstLiEl => {
+                                  this.firstLiEl = firstLiEl;
+                                },
+                              }
+                              : {})}
+                          />
                         </li>
-                        )
-                    )}
-                    )
-                    )})
-                  })}
-                </ul>
-              );
-              console.warn(result);
-              return result;
-            })} */}
-            {result}
-            <ul>
+                      ))}
+                    </div>
+                  ))}
+                </StyledLinkUl>
+              ))}
+            </StyledExpandedLists>
+            <StyledToolboxList>
               {footer.toolbox.map(link => (
                 <li>
-                  <StyledToolBoxHeadLink content={link.text} href={link.href} />
+                  <StyledListLink content={link.text} href={link.href} isBold />
                 </li>
               ))}
-            </ul>
-          </StyledExpandedLists>
+            </StyledToolboxList>
+          </StyledExpandedListsCont>
         ) : null}
         <StyledDesktopText>
           חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי
