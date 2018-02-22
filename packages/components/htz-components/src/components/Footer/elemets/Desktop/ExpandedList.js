@@ -1,18 +1,16 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import Link from '../../../Link/Link';
 import { ColumnTypes, PairTypes, } from './DesktopElementPropTypes';
+import LayoutExtendedFooterContainer from '../../../PageLayout/LayoutContainer';
 
-const expandedListContStyle = ({ theme, showMe, }) => ({
-  display: showMe ? 'flex' : 'none',
+const extendedListContainerStyle = {
   justifyContent: 'space-between',
   paddingBottom: '6rem',
-  ...borderBottom('1px', '2', 'solid', 'white'),
   marginBottom: '2rem',
-});
-const StyledExpandedListsCont = createComponent(expandedListContStyle);
+};
 
 const expandedListStyle = ({ theme, }) => ({
   display: 'flex',
@@ -23,7 +21,7 @@ const expandedListStyle = ({ theme, }) => ({
 const StyledExpandedLists = createComponent(expandedListStyle);
 
 const listUlStyle = ({ theme, }) => ({
-  marginInlineEnd: '12rem',
+  marginInlineEnd: '8rem',
   paddingTop: '3rem',
   paddingBottom: '3rem',
 });
@@ -57,10 +55,19 @@ ExpandedList.propTypes = {
   /** Footer's toolbox data */
   toolbox: PairTypes.isRequired,
 };
-
-function ExpandedList({ columnsArr, toolbox, showMe, }) {
+// eslint-disable-next-line react/prop-types
+function ExpandedList({ columnsArr, toolbox, showMe, theme, }) {
   return (
-    <StyledExpandedListsCont showMe={showMe}>
+    // <StyledExpandedListsCont showMe={showMe}>
+    <LayoutExtendedFooterContainer
+      bgc={theme.color('footer', 'bg')}
+      miscStyles={Object.assign(
+        { display: showMe ? 'flex' : 'none', },
+        // todo : check how to pass borderBottom to LayoutContainer
+        { borderBottom: borderBottom('1px', '2', 'solid', 'white'), },
+        extendedListContainerStyle
+      )}
+    >
       <StyledExpandedLists>
         {columnsArr.map((lists, colIdx) => (
           // eslint-disable-next-line react/no-array-index-key
@@ -95,8 +102,8 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
           </li>
         ))}
       </StyledToolboxList>
-    </StyledExpandedListsCont>
+    </LayoutExtendedFooterContainer>
   );
 }
 
-export default ExpandedList;
+export default withTheme(ExpandedList);

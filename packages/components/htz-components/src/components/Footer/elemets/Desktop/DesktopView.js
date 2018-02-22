@@ -1,11 +1,13 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, withTheme, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
 import ButtonFooter from '../../../Button/Button';
 import Link from '../../../Link/Link';
+import LayoutFooterRow from '../../../PageLayout/LayoutRow';
+import LayoutFooterContainer from '../../../PageLayout/LayoutContainer';
 import IconFaceBookLogo from '../../../Icon/icons/IconFacebookLogo';
 import IconTwitter from '../../../Icon/icons/IconTwitter';
 import IconGPlus from '../../../Icon/icons/IconGPlus';
@@ -18,11 +20,11 @@ import { ColumnTypes, PairTypes, } from './DesktopElementPropTypes';
 
 const headLinkStyle = ({ theme, isLast, }) => ({
   ':after': {
-    content: isLast ? '""' : '" | "',
-    marginRight: '0.5rem',
+    content: isLast ? '""' : '"|"',
+    marginRight: '1rem',
   },
   // todo: ask for accurate margin left and right
-  marginLeft: '0.5rem',
+  marginLeft: '1rem',
   fontWeight: 'bold',
 });
 
@@ -31,21 +33,25 @@ const StyledHeadLink = createComponent(headLinkStyle, Link, [ 'content', 'href',
 const headWrapperLinkStyle = ({ theme, }) => ({
   display: 'flex',
   flexWrap: 'wrap',
+  marginLeft: '0.5rem',
 });
 
 const StyledHeadLinksWrapper = createComponent(headWrapperLinkStyle);
 
-// todo: instead of wrapper use LayoutRow and LayoutContainer
-const wrapperStyle = ({ theme, }) => ({
+const layoutWrapperAttrsStyle = {
   paddingTop: '3rem',
   paddingBottom: '3rem',
-  // todo: remove left and right padding, add a LayoutContainer component that will control max width
-  paddingInlineStart: '4rem',
-  paddingInlineEnd: '4rem',
-  backgroundColor: theme.color('footer', 'bg'),
-  color: theme.color('footer', 'text'),
-});
-const Wrapper = createComponent(wrapperStyle);
+  paddingInlineStart: '15rem',
+  paddingInlineEnd: '15rem',
+};
+
+const desktopMainListLayoutContainerStyle = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom: '4rem',
+  marginTop: '2rem',
+};
 
 const desktopHeadStyle = ({ theme, }) => ({
   display: 'flex',
@@ -55,18 +61,7 @@ const desktopHeadStyle = ({ theme, }) => ({
 });
 const StyledDesktopHead = createComponent(desktopHeadStyle);
 
-const desktopMainListStyle = ({ theme, }) => ({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginBottom: '4rem',
-  marginTop: '2rem',
-});
-const StyledDesktopMainList = createComponent(desktopMainListStyle);
-
-const optionalExtendedWrapper = ({ theme, }) => ({
-
-});
+const optionalExtendedWrapper = ({ theme, }) => ({});
 const StyledDesktopText = createComponent(optionalExtendedWrapper);
 
 const IconMiscStyle = {
@@ -103,6 +98,8 @@ class DesktopView extends React.Component {
     // this.firstLiEl.focus();
   };
   render() {
+    // eslint-disable-next-line react/prop-types
+    const { theme, } = this.props;
     const { footer, loading, } = this.props.Footer;
     const { expanded, } = this.state;
     if (loading) {
@@ -116,7 +113,13 @@ class DesktopView extends React.Component {
     }, []);
 
     return (
-      <Wrapper>
+      <LayoutFooterRow
+        miscStyles={Object.assign(
+          { color: theme.color('footer', 'text'), },
+          layoutWrapperAttrsStyle
+        )}
+        bgc={theme.color('footer', 'bg')}
+      >
         <StyledDesktopHead>
           <div>הארץ</div>
           <div>
@@ -129,7 +132,7 @@ class DesktopView extends React.Component {
             <IconRss size={3} miscStyles={IconMiscStyle} />
           </div>
         </StyledDesktopHead>
-        <StyledDesktopMainList>
+        <LayoutFooterContainer miscStyles={desktopMainListLayoutContainerStyle} bgc={theme.color('footer', 'bg')}>
           <StyledHeadLinksWrapper>
             {footer.head.map((item, index) => (
               <StyledHeadLink
@@ -152,18 +155,19 @@ class DesktopView extends React.Component {
               {expanded ? 'סגור' : 'הצג עוד'}
             </ButtonFooter>
           </div>
-        </StyledDesktopMainList>
+        </LayoutFooterContainer>
         <ExpandedList toolbox={footer.toolbox} columnsArr={columnsArr} showMe={expanded} />
         <StyledDesktopText>
           חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי
           עומק באתר האיכותי בישראל
         </StyledDesktopText>
         <StyledDesktopText>© כל הזכויות שמורות להוצאת עיתון הארץ בעמ</StyledDesktopText>
-      </Wrapper>
+      </LayoutFooterRow>
     );
   }
 }
 
+const StyledDesktopView = withTheme(DesktopView);
 export default graphql(
   gql`
     {
@@ -192,4 +196,4 @@ export default graphql(
     }
   `,
   { name: 'Footer', }
-)(DesktopView);
+)(StyledDesktopView);
