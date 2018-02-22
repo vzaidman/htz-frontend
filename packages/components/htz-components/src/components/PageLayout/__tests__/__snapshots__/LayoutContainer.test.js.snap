@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LayoutContainer> DOM element renders correctly  with a custom backgroundColor 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+  >
+    Customizing backgroundColor
+  </div>
+</div>
+`;
+
+exports[`<LayoutContainer> DOM element renders correctly  with a custom backgroundColor 2`] = `".htz-a{background-color:green}.htz-b{margin-right:auto}.htz-c{margin-left:auto}.htz-d{width:100%}@media (min-width: 37.5em) and (max-width: 48em){.htz-e{max-width:100rem}}@media (min-width: 48em) and (max-width: 64em){.htz-f{max-width:128rem}}@media (min-width: 64em) and (max-width: 80em){.htz-g{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-h{max-width:184.71428571428572rem}}"`;
+
+exports[`<LayoutContainer> DOM element renders correctly  with custom miscStyles 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
+  >
+    Customizing miscStyles
+  </div>
+</div>
+`;
+
+exports[`<LayoutContainer> DOM element renders correctly  with custom miscStyles 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{margin-right:auto}.htz-c{margin-left:auto}.htz-d{width:100%}.htz-i{padding-top:5rem}@media (min-width: 37.5em) and (max-width: 48em){.htz-e{max-width:100rem}}@media (min-width: 48em) and (max-width: 64em){.htz-f{max-width:128rem}}@media (min-width: 64em) and (max-width: 80em){.htz-g{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-h{max-width:184.71428571428572rem}}"`;
+
+exports[`<LayoutContainer> DOM element renders correctly with custom attrs 1`] = `
+<div>
+  <div
+    ariaLabel="I am custom"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+  >
+    Customizing attrs
+  </div>
+</div>
+`;
+
+exports[`<LayoutContainer> DOM element renders correctly with custom attrs 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{margin-right:auto}.htz-c{margin-left:auto}.htz-d{width:100%}@media (min-width: 37.5em) and (max-width: 48em){.htz-e{max-width:100rem}}@media (min-width: 48em) and (max-width: 64em){.htz-f{max-width:128rem}}@media (min-width: 64em) and (max-width: 80em){.htz-g{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-h{max-width:184.71428571428572rem}}"`;
+
+exports[`<LayoutContainer> DOM element renders correctly with minimal required props 1`] = `
+<div>
+  <div
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+  >
+    Hello LayoutContainer
+  </div>
+</div>
+`;
+
+exports[`<LayoutContainer> DOM element renders correctly with minimal required props 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{margin-right:auto}.htz-c{margin-left:auto}.htz-d{width:100%}@media (min-width: 37.5em) and (max-width: 48em){.htz-e{max-width:100rem}}@media (min-width: 48em) and (max-width: 64em){.htz-f{max-width:128rem}}@media (min-width: 64em) and (max-width: 80em){.htz-g{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-h{max-width:184.71428571428572rem}}"`;

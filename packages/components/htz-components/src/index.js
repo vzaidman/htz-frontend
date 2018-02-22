@@ -13,6 +13,8 @@ import Form from './components/Form/Form';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
 import Image from './components/Image/Image';
+import LayoutContainer from './components/PageLayout/LayoutContainer';
+import LayoutRow from './components/PageLayout/LayoutRow';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import Quote from './components/Quote/Quote';
@@ -86,6 +88,8 @@ export {
   Grid,
   GridItem,
   Image,
+  LayoutContainer,
+  LayoutRow,
   LinksBlock,
   MobileQuickRegistration,
   Quote,

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LayoutRow> DOM element renders correctly  with a custom backgroundColor 1`] = `
+<div>
+  <section
+    className="htz-a htz-b"
+  >
+    Customizing backgroundColor
+  </section>
+</div>
+`;
+
+exports[`<LayoutRow> DOM element renders correctly  with a custom backgroundColor 2`] = `".htz-a{background-color:green}.htz-b{width:100%}"`;
+
+exports[`<LayoutRow> DOM element renders correctly  with custom miscStyles 1`] = `
+<div>
+  <section
+    className="htz-a htz-b htz-c"
+  >
+    Customizing miscStyles
+  </section>
+</div>
+`;
+
+exports[`<LayoutRow> DOM element renders correctly  with custom miscStyles 2`] = `".htz-a{background-color:#E6EDF0}.htz-b{width:100%}.htz-c{padding-top:5rem}"`;
+
+exports[`<LayoutRow> DOM element renders correctly with custom attrs 1`] = `
+<div>
+  <section
+    ariaLabel="I am custom"
+    className="htz-a htz-b"
+  >
+    Customizing attrs
+  </section>
+</div>
+`;
+
+exports[`<LayoutRow> DOM element renders correctly with custom attrs 2`] = `".htz-a{background-color:#E6EDF0}.htz-b{width:100%}"`;
+
+exports[`<LayoutRow> DOM element renders correctly with minimal required props 1`] = `
+<div>
+  <section
+    className="htz-a htz-b"
+  >
+    Hello LayoutRow
+  </section>
+</div>
+`;
+
+exports[`<LayoutRow> DOM element renders correctly with minimal required props 2`] = `".htz-a{background-color:#E6EDF0}.htz-b{width:100%}"`;
