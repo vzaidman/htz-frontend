@@ -3,7 +3,7 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { bps, } from '@haaretz/htz-theme';
 import mediaMatchesQuery from '../../utils/mediaMatchesQuery';
-import DesktopView from './elemets/DesktopView';
+import DesktopView from './elemets/Desktop/DesktopView';
 import MobileView from './elemets/MobileView';
 
 class Footer extends React.Component {

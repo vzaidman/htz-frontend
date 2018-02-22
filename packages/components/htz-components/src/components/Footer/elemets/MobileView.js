@@ -14,7 +14,6 @@ const wrapperStyle = ({ theme, }) => ({
   padding: '2rem 7rem 2rem 7rem',
   backgroundColor: '#005479',
   color: 'white',
-  direction: 'rtl',
 });
 const Wrapper = createComponent(wrapperStyle);
 

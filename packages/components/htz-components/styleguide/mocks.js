@@ -43,7 +43,6 @@ const mocks = {
       { text: 'הנהלה', href: 'https://www.haaretz.co.il/misc/management', },
       { text: 'אודות הארץ', href: 'https://www.haaretz.co.il/misc/about-haaretz', },
       { text: 'דרושים', href: 'https://www.haaretz.co.il/misc/jobs', },
-      { text: 'צור קשר', href: 'https://www.haaretz.co.il/misc/contact-us', },
       { text: 'עשה מנוי', href: 'https://www.haaretz.co.il/promotions-page', },
       { text: 'צור קשר', href: 'https://www.haaretz.co.il/misc/contact-us', },
       { text: 'שאלות ותשובות', href: 'https://www.haaretz.co.il/misc/faq', },
@@ -218,7 +217,7 @@ const mocks = {
         ],
       },
       {
-        title: 'TheMarker',
+        title: { text: 'TheMarker', href: 'www', },
         combineWithNextColumn: true,
         items: [
           {
