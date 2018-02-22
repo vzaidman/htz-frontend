@@ -66,8 +66,6 @@ const bodyWrapperStyle = ({ theme, }) => ({
 
 const BodyWrapper = createComponent(bodyWrapperStyle);
 
-const mediaComponents = [ 'embedElement', 'com.tm.Image', 'com.tm.Video', ];
-
 const buildComponent = (context, index, isLastItem, theme) => {
   const uniqueId =
     context.elementType ||
@@ -77,16 +75,18 @@ const buildComponent = (context, index, isLastItem, theme) => {
   const Component = uniqueId === 'com.tm.Image' ? ArticleImage : getComponent(uniqueId);
 
   switch (uniqueId) {
-    case mediaComponents.includes(uniqueId) :
+    case 'embedElement' :
+    case 'com.tm.Image' :
+    case 'com.tm.Video' :
       return (
         <Figure
           key={index}
           lastItem={isLastItem}
         >
           <Component {...context} />
-          {(context.caption || context.credit) &&
+          {((context.title || context.caption) || context.credit) &&
           <Caption
-            caption={context.caption}
+            caption={context.title || context.caption}
             credit={context.credit}
           />
           }

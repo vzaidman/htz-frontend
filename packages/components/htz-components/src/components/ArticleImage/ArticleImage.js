@@ -1,43 +1,70 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, withTheme, } from 'react-fela';
 
+import Caption from '../Caption/Caption';
+import IconClose from '../Icon/icons/IconClose';
+import IconZoomIn from '../Icon/icons/IconZoomIn';
 import Image from '../Image/Image';
 import Picture from '../Image/Picture';
-import IconZoomIn from '../Icon/icons/IconZoomIn';
-import IconClose from '../Icon/icons/IconClose';
 
-const propTypes = {
+const articleImagePropTypes = {
+  imageType: PropTypes.string.isRequired,
+  imgArray: PropTypes.arrayOf(
+    PropTypes.object,
+  ).isRequired,
+  title: PropTypes.string,
+  credit: PropTypes.string,
+};
+
+const articleImageDefaultProps = {
+  title: null,
+  credit: null,
+};
+
+const imagePropTypes = {
   imageType: PropTypes.string.isRequired,
   imgArray: PropTypes.arrayOf(
     PropTypes.object,
   ).isRequired,
   isFullScreen: PropTypes.bool,
+  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-const defaultProps = {
+const imageDefaultProps = {
   isFullScreen: false,
 };
 
-const wrapperStyle = ({ isFullScreen, }) => ({
-  ...(isFullScreen ? {
-    position: 'fixed',
-    top: '0',
-    start: '0',
-    width: '100%',
-    zIndex: '6',
-    // backgroundColor: theme.color('neutral', '+1'),
-    backgroundColor: 'rgba(22, 22, 22, 0.5)',
-  } : {
-    position: 'relative',
-  }),
+const wrapperStyle = () => ({
+  position: 'relative',
 });
 const Wrapper = createComponent(wrapperStyle);
 
-const iconWrapperStyle = ({ theme, isFullScreen, }) => ({
+const imageWrapperStyle = () => ({
+
+});
+const ImageWrapper = createComponent(imageWrapperStyle);
+
+const imageCaptionStyle = ({ theme, }) => ({
+  position: 'absolute',
+  color: theme.color('neutral', '-10'),
+});
+const ImageCaption = createComponent(imageCaptionStyle, Caption, props => Object.keys(props));
+
+const fullContainerStyle = ({ theme, }) => ({
+  position: 'fixed',
+  top: '0',
+  start: '0',
+  width: '100%',
+  height: '100%',
+  zIndex: '6',
+});
+const FullScreenContainer = createComponent(fullContainerStyle, Wrapper);
+
+const zoomWrapperStyle = ({ theme, }) => ({
   position: 'absolute',
   top: '1rem',
-  ...(isFullScreen ? { start: '1rem', } : { end: '1rem', }),
+  end: '1rem',
   zIndex: '1',
   // backgroundColor: theme.color('neutral', '+1'),
   backgroundColor: 'rgba(22, 22, 22, 0.5)',
@@ -45,49 +72,107 @@ const iconWrapperStyle = ({ theme, isFullScreen, }) => ({
   width: '5rem',
   height: '5rem',
   borderRadius: '50%',
+  cursor: 'zoom-in',
   ':hover': {
     backgroundColor: theme.color('neutral', '+1'),
   },
 });
-const IconWrapper = createComponent(iconWrapperStyle, 'span', [ 'onClick', ]);
+const ZoomWrapper = createComponent(zoomWrapperStyle, 'span', [ 'onClick', ]);
+
+const closeWrapperStyle = () => ({
+  cursor: 'zoom-out',
+});
+const CloseWrapper = createComponent(closeWrapperStyle, ZoomWrapper, [ 'onClick', ]);
+
+const ImageElement = props => {
+  const { imageType, imgArray, isFullScreen, theme, } = props;
+
+  const imgOptions = {
+    transforms: {
+      width: isFullScreen ? '1920' : '700',
+      aspect: isFullScreen ? 'full' : 'regular',
+      quality: 'auto',
+    },
+  };
+  const sourceOptions = {
+    transforms: {
+      width: isFullScreen ? '1920' : '700',
+      aspect: 'full',
+      quality: 'auto',
+    },
+  };
+
+  const overrideStyles = {
+    miscStyles: {
+      position: 'unset',
+      ...(isFullScreen && {
+        backgroundColor: theme.color('neutral'),
+      }),
+    },
+    attrs: {
+      style: {
+        width: 'auto',
+        ...(isFullScreen && {
+          left: '50%',
+          transform: 'translateX(-50%)',
+        }),
+      },
+    },
+  };
+
+  return imageType === 'image' ?
+    (<Image
+      {...overrideStyles}
+      data={props}
+      imgOptions={imgOptions}
+    />) :
+    (<Picture
+      {...overrideStyles}
+      defaultImg={{
+        data: props,
+        sourceOptions,
+      }}
+      sources={[
+        {
+          until: 'm',
+          data: {
+            ...props,
+            imgArray: [ imgArray[1], ],
+          },
+          sourceOptions,
+        },
+        {
+          from: 'm',
+          data: {
+            ...props,
+            imgArray: [ imgArray[0], ],
+          },
+          sourceOptions,
+        },
+      ]}
+    />);
+};
+
+ImageElement.propTypes = imagePropTypes;
+ImageElement.defaultProps = imageDefaultProps;
 
 class ArticleImage extends React.Component {
   state = {
-    goFullScreen: false,
+    fullScreen: false,
   };
 
   toggleFullScreen = () => {
-    console.log(this.props.isFullScreen);
-    console.log(this.state.goFullScreen);
     this.setState({
-      goFullScreen: !this.props.isFullScreen,
+      fullScreen: !this.state.fullScreen,
     });
   };
 
   render() {
-    const { imageType, imgArray, isFullScreen, } = this.props;
-    const imgOptions = {
-      transforms: {
-        width: isFullScreen ? '1920' : '700',
-        aspect: isFullScreen ? 'full' : 'regular',
-        quality: 'auto',
-      },
-    };
-    const sourceOptions = {
-      transforms: {
-        width: isFullScreen ? '1920' : '700',
-        aspect: 'full',
-        quality: 'auto',
-      },
-    };
-
-    const Icon = isFullScreen ? IconClose : IconZoomIn;
-
     return (
       <Fragment>
-        <Wrapper isFullScreen={isFullScreen}>
-          <IconWrapper onClick={this.toggleFullScreen} isFullScreen={isFullScreen}>
-            <Icon
+        <Wrapper>
+          <ZoomWrapper onClick={this.toggleFullScreen}>
+            <IconZoomIn
               color={[ 'neutral', '-10', ]}
               size={2.5}
               miscStyles={{
@@ -96,47 +181,34 @@ class ArticleImage extends React.Component {
                 transform: 'translateY(12.5%)',
               }}
             />
-          </IconWrapper>
-          {imageType === 'image' ?
-            <Image
-              data={this.props}
-              imgOptions={imgOptions}
-            /> :
-            <Picture
-              defaultImg={{
-                data: this.props,
-                sourceOptions,
-              }}
-              sources={[
-                {
-                  until: 'm',
-                  data: {
-                    ...this.props,
-                    imgArray: [ imgArray[1], ],
-                  },
-                  sourceOptions,
-                },
-                {
-                  from: 'm',
-                  data: {
-                    ...this.props,
-                    imgArray: [ imgArray[0], ],
-                  },
-                  sourceOptions,
-                },
-              ]}
-            />
-          }
+          </ZoomWrapper>
+          <ImageElement {...this.props} />
         </Wrapper>
-        {this.state.goFullScreen &&
-          <ArticleImage {...this.props} isFullScreen />
+        {this.state.fullScreen &&
+          <FullScreenContainer>
+            <ImageWrapper>
+              <CloseWrapper onClick={this.toggleFullScreen}>
+                <IconClose
+                  color={[ 'neutral', '-10', ]}
+                  size={2.5}
+                  miscStyles={{
+                    display: 'block',
+                    margin: '0 auto',
+                    transform: 'translateY(12.5%)',
+                  }}
+                />
+              </CloseWrapper>
+              <ImageCaption caption={this.props.title} credit={this.props.credit} />
+              <ImageElement {...this.props} isFullScreen />
+            </ImageWrapper>
+          </FullScreenContainer>
         }
       </Fragment>
     );
   }
 }
 
-ArticleImage.propTypes = propTypes;
-ArticleImage.defaultProps = defaultProps;
+ArticleImage.propTypes = articleImagePropTypes;
+ArticleImage.defaultProps = articleImageDefaultProps;
 
-export default ArticleImage;
+export default withTheme(ArticleImage);

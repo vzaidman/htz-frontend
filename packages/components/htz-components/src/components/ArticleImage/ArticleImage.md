@@ -12,12 +12,15 @@
 ```jsx
 <div style={{ maxWidth: '700px', }}>
   <ArticleImage 
-    alt="fgh"
+    alt="alternative text"
+    viewMode="TwoThirdView"
+    accessibility="fgh"
+    title="this is the image text"
     aspects={{
       full: {
         width: 1024,
-        height: 768
-      },
+          height: 768
+      }
     }}
     isAnimated="false"
     imgArray={[
@@ -40,29 +43,33 @@
 ```jsx
 <div style={{ maxWidth: '700px', }}>
   <ArticleImage 
-    alt="cat"
+    alt="alternative text"
+    viewMode="regularModeBigImage"
+    accessibility="cat"
+    credit="me"
+    title="this is the image text"
     aspects={{
       regular: {
         x: 3,
-        y: 4,
-        width: 388,
-        height: 291
+          y: 4,
+          width: 388,
+          height: 291
       },
       full: {
         width: 400,
-        height: 332
+          height: 332
       },
       headline: {
         x: 0,
-        y: 32,
-        width: 399,
-        height: 233
+          y: 32,
+          width: 399,
+          height: 233
       },
       square: {
         x: 33,
-        y: 7,
-        width: 318,
-        height: 318
+          y: 7,
+          width: 318,
+          height: 318
       }
     }}
     isAnimated="false"

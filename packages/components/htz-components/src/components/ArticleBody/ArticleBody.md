@@ -108,36 +108,40 @@
       contentName: "הכנרת, באוקטובר 2017"
     },
     {
-      alt: "cat",
+      alt: "alternative text",
+      viewMode: "regularModeBigImage",
+      accessibility: "cat",
+      credit: "me",
+      title: "this is the image text",
       aspects: {
         regular: {
           x: 3,
-          y: 4,
-          width: 388,
-          height: 291
+            y: 4,
+            width: 388,
+            height: 291
         },
         full: {
           width: 400,
-          height: 332
+            height: 332
         },
         headline: {
           x: 0,
-          y: 32,
-          width: 399,
-          height: 233
+            y: 32,
+            width: 399,
+            height: 233
         },
         square: {
           x: 33,
-          y: 7,
-          width: 318,
-          height: 318
+            y: 7,
+            width: 318,
+            height: 318
         }
       },
       isAnimated: false,
       imgArray: [
         {
           imgName: "image/4030303706.gif",
-          version: "1516120525"
+          version: "1519208144"
         }
       ],
       imageType: "image",
@@ -146,22 +150,25 @@
       contentName: "cat"
     },
     {
-      alt: "fgh",
+      alt: "alternative text",
+      viewMode: "TwoThirdView",
+      accessibility: "fgh",
+      title: "this is the image text",
       aspects: {
         full: {
           width: 1024,
-          height: 768
+            height: 768
         }
       },
       isAnimated: false,
       imgArray: [
         {
           imgName: "image/3169121816.jpg",
-          version: "1512396165"
+          version: "1519208155"
         },
         {
           imgName: "image/509020086.jpg",
-          version: "1512396167"
+          version: "1519208157"
         }
       ],
       imageType: "infographic",
