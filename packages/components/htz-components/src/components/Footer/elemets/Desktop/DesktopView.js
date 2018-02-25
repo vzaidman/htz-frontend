@@ -52,11 +52,13 @@ const desktopMainListLayoutContainerStyle = {
   marginTop: '2rem',
 };
 
-const desktopHeadStyle = ({ theme, }) => ({
+const desktopHeadStyle = ({
+  theme: { color, footerBorderStyle: { borderWidth, lines, borderStyle, }, },
+}) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'baseline',
-  ...borderBottom('1px', '2', 'solid', 'white'),
+  ...borderBottom(borderWidth, lines, borderStyle, color('footer', 'border')),
 });
 const StyledDesktopHead = createComponent(desktopHeadStyle);
 
@@ -82,6 +84,13 @@ export class DesktopView extends React.Component {
         toolbox: PairTypes,
       }),
     }).isRequired,
+    theme: PropTypes.shape({
+      footerDesktopI18n: PropTypes.shape({
+        ExpandedButton: PropTypes.object,
+        Copyright: PropTypes.object,
+      }),
+      color: PropTypes.func.isRequired,
+    }).isRequired,
   };
   state = {
     expanded: false,
@@ -91,16 +100,19 @@ export class DesktopView extends React.Component {
   // }
 
   handleClick = () => {
-    this.setState(prevState => ({
+    this.setState(prevState => ({ 
       expanded: !prevState.expanded,
     }));
     // this.firstLiEl.focus();
-  };
+  }
   render() {
-    // eslint-disable-next-line react/prop-types
-    const { theme, } = this.props;
-    const { footerDesktopI18n: { ExpandedButton, Copyright, }, } = theme;
-    const { footer, loading, } = this.props.Footer;
+    const {
+      theme: {
+        footerDesktopI18n: { ExpandedButton, Copyright, },
+        color,
+      },
+      Footer: { footer, loading, },
+    } = this.props;
     const { expanded, } = this.state;
     if (loading) {
       return <div> Loading... </div>;
@@ -114,25 +126,25 @@ export class DesktopView extends React.Component {
 
     return (
       <LayoutFooterRow
-        miscStyles={Object.assign(
-          { color: theme.color('footer', 'text'), },
-          layoutWrapperAttrsStyle
-        )}
-        bgc={theme.color('footer', 'bg')}
+        miscStyles={Object.assign({ color: color('footer', 'text'), }, layoutWrapperAttrsStyle)}
+        bgc={color('footer', 'bg')}
       >
         <StyledDesktopHead>
           <div>הארץ</div>
           <div>
-            <IconFaceBookLogo size={3} miscStyles={IconMiscStyle} />
-            <IconTwitter size={3} miscStyles={IconMiscStyle} />
-            <IconAndroid size={3} miscStyles={IconMiscStyle} />
-            <IconApple size={3} miscStyles={IconMiscStyle} />
-            <IconGPlus size={3} miscStyles={IconMiscStyle} />
-            <IconMailFooter size={3} miscStyles={IconMiscStyle} />
-            <IconRss size={3} miscStyles={IconMiscStyle} />
+            <Link content={<IconFaceBookLogo size={3} miscStyles={IconMiscStyle} />} href="https://www.facebook.com/haaretz" />
+            <Link content={<IconTwitter size={3} miscStyles={IconMiscStyle} />} href="https://twitter.com/haaretz" />
+            <Link content={<IconAndroid size={3} miscStyles={IconMiscStyle} />} href="https://play.google.com/store/apps/details?id=com.haaretz" />
+            <Link content={<IconApple size={3} miscStyles={IconMiscStyle} />} href="https://itunes.apple.com/us/app/id521559643" />
+            <Link content={<IconGPlus size={3} miscStyles={IconMiscStyle} />} href="https://plus.google.com/+haaretzcoil" />
+            <Link content={<IconMailFooter size={3} miscStyles={IconMiscStyle} />} href="https://www.haaretz.co.il/misc/redemail" />
+            <Link content={<IconRss size={3} miscStyles={IconMiscStyle} />} href="https://www.haaretz.co.il/misc/rss" />
           </div>
         </StyledDesktopHead>
-        <LayoutFooterContainer miscStyles={desktopMainListLayoutContainerStyle} bgc={theme.color('footer', 'bg')}>
+        <LayoutFooterContainer
+          miscStyles={desktopMainListLayoutContainerStyle}
+          bgc={color('footer', 'bg')}
+        >
           <StyledHeadLinksWrapper>
             {footer.head.map((item, index) => (
               <StyledHeadLink
@@ -149,17 +161,22 @@ export class DesktopView extends React.Component {
               boxModel={{ hp: 4.5, vp: 0.75, }}
               onClick={() => this.handleClick()}
               attrs={{
-                'aria-exapnded': expanded ? 'true' : 'false',
+                'aria-expanded': expanded ? 'true' : 'false',
               }}
             >
-              {expanded ? ExpandedButton.close : ExpandedButton.showMore }
+              {expanded ? ExpandedButton.close : ExpandedButton.showMore}
             </ButtonFooter>
           </div>
         </LayoutFooterContainer>
-        <ExpandedList toolbox={footer.toolbox} columnsArr={columnsArr} showMe={expanded} />
-        <StyledDesktopText>
-          {Copyright.firstRow}
-        </StyledDesktopText>
+        <ExpandedList
+          toolbox={footer.toolbox}
+          columnsArr={columnsArr}
+          showMe={expanded}
+          // innerRef={firstLiEl => {
+          //   this.firstLiEl = firstLiEl;
+          // }}
+        />
+        <StyledDesktopText>{Copyright.firstRow}</StyledDesktopText>
         <StyledDesktopText>{Copyright.secondRow}</StyledDesktopText>
       </LayoutFooterRow>
     );

@@ -9,7 +9,13 @@ import MobileView from './elemets/MobileView';
 // eslint-disable-next-line react/prop-types
 const Footer = ({ theme, }) => (
   <Media query={`(max-width: ${theme.bps.widths.s}px)`}>
-    {matches => (matches ? <MobileView theme={theme} /> : <DesktopViewWithApollo theme={theme} />)}
+    {matches =>
+      (matches ? (
+        <MobileView footerMobileListsI18n={theme.footerMobileListsI18n} />
+      ) : (
+        <DesktopViewWithApollo theme={theme} />
+      ))
+    }
   </Media>
 );
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import Button from '../../Button/Button'; // eslint-disable-line import/no-named-as-default
@@ -20,9 +21,13 @@ const wrapperStyle = ({ theme, }) => ({
 });
 const Wrapper = createComponent(wrapperStyle);
 
-const mobileHeadStyle = ({ theme, }) => ({
+const mobileHeadStyle = ({
+  theme: { color, footerBorderStyle: { borderWidth, lines, borderStyle, }, },
+}) => ({
   fontSize: '5rem',
-  ...borderBottom('1px', '2', 'solid', 'white'),
+  // todo: get from theme, see select example
+  // todo : add semantic footer border color theme.color('footer', 'borderColor')
+  ...borderBottom(borderWidth, lines, borderStyle, color('footer', 'border')),
 });
 const StyledMobileHead = createComponent(mobileHeadStyle);
 
@@ -61,42 +66,45 @@ const textStyle = ({ theme, }) => ({
 });
 const StyledText = createComponent(textStyle);
 
-
-const MobileView = (
-// eslint-disable-next-line react/prop-types
-  { theme:
-    { footerMobileListsI18n:
-      { ButtonName, Copyright, ListOne, ListTwo, },
-    },
-  }
-) => (
+const propTypes = {
+  footerMobileListsI18n: PropTypes.shape({
+    ButtonName: PropTypes.object,
+    Copyright: PropTypes.object,
+    ListOne: PropTypes.arrayOf(PropTypes.object),
+    ListTwo: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+};
+const MobileView = ({ footerMobileListsI18n: { ButtonName, Copyright, ListOne, ListTwo, }, }) => (
   <Wrapper>
     <StyledMobileHead> הארץ </StyledMobileHead>
-    <IconFaceBookLogo size={3.5} miscStyles={IconMiscStyle} />
-    <IconTwitter size={3.5} miscStyles={IconMiscStyle} />
-    <IconGPlus size={3.5} miscStyles={IconMiscStyle} />
+    <Link
+      href="https://www.facebook.com/haaretz"
+      content={<IconFaceBookLogo size={3.5} miscStyles={IconMiscStyle} />}
+    />
+    <Link
+      href="https://twitter.com/haaretz"
+      content={<IconTwitter size={3.5} miscStyles={IconMiscStyle} />}
+    />
+    <Link
+      href="https://play.google.com/store/apps/details?id=com.haaretz"
+      content={<IconGPlus size={3.5} miscStyles={IconMiscStyle} />}
+    />
     <StyledMobileMainList>
       <StyledLinkBox>
-        {ListOne.map(link => (
-          <StyledLink key={link.text} content={link.text} href={link.link} />
-        ))}
+        {ListOne.map(link => <StyledLink key={link.text} content={link.text} href={link.link} />)}
       </StyledLinkBox>
       <StyledLinkBox>
-        {ListTwo.map(link => (
-          <StyledLink key={link.text} content={link.text} href={link.link} />
-        ))}
+        {ListTwo.map(link => <StyledLink key={link.text} content={link.text} href={link.link} />)}
       </StyledLinkBox>
     </StyledMobileMainList>
-    <Button
-      variant="secondary"
-      boxModel={{ hp: 4.5, vp: 1, }}
-      onClick={() => console.warn('WIP!')}
-    >
+    <Button variant="secondary" boxModel={{ hp: 4.5, vp: 1, }} onClick={() => console.warn('WIP!')}>
       {ButtonName.text}
     </Button>
 
     <StyledText>{Copyright.text}</StyledText>
   </Wrapper>
 );
+
+MobileView.propTypes = propTypes;
 
 export default MobileView;

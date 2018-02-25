@@ -61,15 +61,10 @@ function ExpandedList({ columnsArr, toolbox, showMe, theme, }) {
     // <StyledExpandedListsCont showMe={showMe}>
     <LayoutExtendedFooterContainer
       bgc={theme.color('footer', 'bg')}
-      // miscStyles={Object.assign(
-      //   { display: showMe ? 'flex' : 'none', },
-      //   // todo : check how to pass borderBottom to LayoutContainer
-      //   { ...borderBottom('1px', '2', 'solid', 'white'), },
-      //   extendedListContainerStyle
-      // )}
       miscStyles={{
         ...extendedListContainerStyle,
         ...{ display: showMe ? 'flex' : 'none', },
+        // todo: check why borderBottom not passed to LayoutContainer
         ...borderBottom('1px', '2', 'solid', 'white'),
       }}
     >
@@ -87,9 +82,7 @@ function ExpandedList({ columnsArr, toolbox, showMe, theme, }) {
                       href={link.href}
                       // {...(colIdx === 0 && listIdx === 0
                       //   ? {
-                      //     ref: firstLiEl => {
-                      //       this.firstLiEl = firstLiEl;
-                      //     },
+                      //     ref: innerRef
                       //   }
                       //   : {})}
                     />

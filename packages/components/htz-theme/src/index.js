@@ -5,10 +5,11 @@ import btnStyle from './consts/btnStyle';
 import captionStyles from './consts/captionStyles';
 import cssReset from './consts/cssReset';
 import commentsStyle from './consts/commentsStyle';
-import selectStyle from './consts/selectStyle';
-import inputStyle from './consts/inputStyle';
 import fontStacks from './consts/fontStacks';
+import footerBorderStyle from './consts/footerBorderStyle';
 import gridStyle from './consts/gridStyle';
+import inputStyle from './consts/inputStyle';
+import selectStyle from './consts/selectStyle';
 import typeConf from './consts/typeConf';
 import i18n, {
   commentI18n,
@@ -115,6 +116,8 @@ const htzTheme = Object.freeze({
   direction: 'rtl',
   gridStyle,
   fontStacks,
+  footerBorderStyle,
+  gridStyle,
   inputStyle,
   selectStyle,
   typeConf,
