@@ -14,7 +14,7 @@ inquirer
     {
       type: 'input',
       name: 'name',
-      message: `Pakage Name (it will be automatically "@haaretz/" namespaced):\n  ${chalk.magenta(
+      message: `Package Name (it will be automatically "@haaretz/" namespaced):\n  ${chalk.magenta(
         '❯'
       )}`,
       default: process.argv[2],
@@ -197,7 +197,7 @@ inquirer
 
 function writeFile(outputPath, content) {
   console.log(`Writing ${chalk.cyan(outputPath)}...`);
-  fse.outputFile(outputPath, content);
+  fse.outputFileSync(outputPath, content);
 }
 
 function createDirs(pkgPath, ...dirNames) {
