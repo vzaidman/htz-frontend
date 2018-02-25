@@ -1,38 +1,16 @@
 /* globals window */
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { bps, } from '@haaretz/htz-theme';
-import mediaMatchesQuery from '../../utils/mediaMatchesQuery';
-import DesktopView from './elemets/Desktop/DesktopView';
+import { withTheme, } from 'react-fela';
+import { Media, } from 'react-fns';
+import DesktopViewWithApollo from './elemets/Desktop/DesktopView';
 import MobileView from './elemets/MobileView';
 
-class Footer extends React.Component {
-  // todo: should default be mobile?
-  state = { isDesktop: false, };
+// eslint-disable-next-line react/prop-types
+const Footer = ({ theme, }) => (
+  <Media query={`(max-width: ${theme.bps.widths.s}px)`}>
+    {matches => (matches ? <MobileView theme={theme} /> : <DesktopViewWithApollo theme={theme} />)}
+  </Media>
+);
 
-  // todo: should we add a resize component like scroll?
-  componentDidMount() {
-    window.addEventListener('resize', () => this.checkBreakPoint());
-    this.checkBreakPoint();
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState !== this.state;
-  }
-
-  checkBreakPoint = () => {
-    this.setState({
-      isDesktop: mediaMatchesQuery(bps, {
-        queries: [ { until: 's', value: false, }, { from: 's', value: true, }, ],
-      }),
-    });
-  };
-
-  render() {
-    const { isDesktop, } = this.state;
-
-    return isDesktop ? <DesktopView /> : <MobileView />;
-  }
-}
-
-export default Footer;
+export default withTheme(Footer);

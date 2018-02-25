@@ -61,12 +61,17 @@ function ExpandedList({ columnsArr, toolbox, showMe, theme, }) {
     // <StyledExpandedListsCont showMe={showMe}>
     <LayoutExtendedFooterContainer
       bgc={theme.color('footer', 'bg')}
-      miscStyles={Object.assign(
-        { display: showMe ? 'flex' : 'none', },
-        // todo : check how to pass borderBottom to LayoutContainer
-        { borderBottom: borderBottom('1px', '2', 'solid', 'white'), },
-        extendedListContainerStyle
-      )}
+      // miscStyles={Object.assign(
+      //   { display: showMe ? 'flex' : 'none', },
+      //   // todo : check how to pass borderBottom to LayoutContainer
+      //   { ...borderBottom('1px', '2', 'solid', 'white'), },
+      //   extendedListContainerStyle
+      // )}
+      miscStyles={{
+        ...extendedListContainerStyle,
+        ...{ display: showMe ? 'flex' : 'none', },
+        ...borderBottom('1px', '2', 'solid', 'white'),
+      }}
     >
       <StyledExpandedLists>
         {columnsArr.map((lists, colIdx) => (

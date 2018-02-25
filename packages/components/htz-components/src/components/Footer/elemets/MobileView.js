@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponent, withTheme, } from 'react-fela';
+import { createComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import Button from '../../Button/Button'; // eslint-disable-line import/no-named-as-default
 import IconFaceBookLogo from '../../Icon/icons/IconFacebookLogo';
@@ -11,7 +11,10 @@ const wrapperStyle = ({ theme, }) => ({
   display: 'block',
   textAlign: 'center',
   width: '100%',
-  padding: '2rem 7rem 2rem 7rem',
+  paddingTop: '2rem',
+  paddingBottom: '2rem',
+  paddingInlineStart: '7rem',
+  paddingInlineEnd: '7rem',
   backgroundColor: '#005479',
   color: 'white',
 });
@@ -46,20 +49,27 @@ const StyledLinkBox = createComponent(linkBoxStyle, 'ul');
 
 const linkStyle = ({ theme, }) => ({
   fontWeight: 'bold',
-  fontSize: '2.7rem',
   marginTop: '1rem',
   marginBottom: '1rem',
+  extend: [ theme.type(-1), ],
 });
 
 const StyledLink = createComponent(linkStyle, Link, [ 'content', 'href', ]);
 
 const textStyle = ({ theme, }) => ({
-  fontSize: '10px',
+  extend: [ theme.type(-3), ],
 });
 const StyledText = createComponent(textStyle);
 
+
+const MobileView = (
 // eslint-disable-next-line react/prop-types
-const MobileView = ({ theme: { footerMobileListsI18n, }, }) => (
+  { theme:
+    { footerMobileListsI18n:
+      { ButtonName, Copyright, ListOne, ListTwo, },
+    },
+  }
+) => (
   <Wrapper>
     <StyledMobileHead> הארץ </StyledMobileHead>
     <IconFaceBookLogo size={3.5} miscStyles={IconMiscStyle} />
@@ -67,12 +77,12 @@ const MobileView = ({ theme: { footerMobileListsI18n, }, }) => (
     <IconGPlus size={3.5} miscStyles={IconMiscStyle} />
     <StyledMobileMainList>
       <StyledLinkBox>
-        {footerMobileListsI18n.ListOne.map(link => (
+        {ListOne.map(link => (
           <StyledLink key={link.text} content={link.text} href={link.link} />
         ))}
       </StyledLinkBox>
       <StyledLinkBox>
-        {footerMobileListsI18n.ListTwo.map(link => (
+        {ListTwo.map(link => (
           <StyledLink key={link.text} content={link.text} href={link.link} />
         ))}
       </StyledLinkBox>
@@ -82,11 +92,11 @@ const MobileView = ({ theme: { footerMobileListsI18n, }, }) => (
       boxModel={{ hp: 4.5, vp: 1, }}
       onClick={() => console.warn('WIP!')}
     >
-      להורדת האפליקציה
+      {ButtonName.text}
     </Button>
 
-    <StyledText>© כל הזכויות שמורות</StyledText>
+    <StyledText>{Copyright.text}</StyledText>
   </Wrapper>
 );
 
-export default withTheme(MobileView);
+export default MobileView;

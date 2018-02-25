@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, withTheme, } from 'react-fela';
+import { createComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -23,7 +23,6 @@ const headLinkStyle = ({ theme, isLast, }) => ({
     content: isLast ? '""' : '"|"',
     marginRight: '1rem',
   },
-  // todo: ask for accurate margin left and right
   marginLeft: '1rem',
   fontWeight: 'bold',
 });
@@ -68,7 +67,7 @@ const IconMiscStyle = {
   marginInlineStart: '3.5rem',
 };
 
-class DesktopView extends React.Component {
+export class DesktopView extends React.Component {
   static propTypes = {
     Footer: PropTypes.shape({
       /** Indicates data loading state */
@@ -100,6 +99,7 @@ class DesktopView extends React.Component {
   render() {
     // eslint-disable-next-line react/prop-types
     const { theme, } = this.props;
+    const { footerDesktopI18n: { ExpandedButton, Copyright, }, } = theme;
     const { footer, loading, } = this.props.Footer;
     const { expanded, } = this.state;
     if (loading) {
@@ -152,22 +152,20 @@ class DesktopView extends React.Component {
                 'aria-exapnded': expanded ? 'true' : 'false',
               }}
             >
-              {expanded ? 'סגור' : 'הצג עוד'}
+              {expanded ? ExpandedButton.close : ExpandedButton.showMore }
             </ButtonFooter>
           </div>
         </LayoutFooterContainer>
         <ExpandedList toolbox={footer.toolbox} columnsArr={columnsArr} showMe={expanded} />
         <StyledDesktopText>
-          חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי
-          עומק באתר האיכותי בישראל
+          {Copyright.firstRow}
         </StyledDesktopText>
-        <StyledDesktopText>© כל הזכויות שמורות להוצאת עיתון הארץ בעמ</StyledDesktopText>
+        <StyledDesktopText>{Copyright.secondRow}</StyledDesktopText>
       </LayoutFooterRow>
     );
   }
 }
 
-const StyledDesktopView = withTheme(DesktopView);
 export default graphql(
   gql`
     {
@@ -196,4 +194,4 @@ export default graphql(
     }
   `,
   { name: 'Footer', }
-)(StyledDesktopView);
+)(DesktopView);

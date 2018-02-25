@@ -119,4 +119,21 @@ export const footerMobileListsI18n = Object.freeze({
       link: 'https://www.haaretz.co.il/personal-area/my-account',
     }),
   ],
+  ButtonName: Object.freeze({
+    text: 'להורדת האפליקציה',
+  }),
+  Copyright: Object.freeze({
+    text: '© כל הזכויות שמורות',
+  }),
+});
+
+export const footerDesktopI18n = Object.freeze({
+  ExpandedButton: Object.freeze({
+    close: 'סגור',
+    showMore: 'הצג עוד',
+  }),
+  Copyright: Object.freeze({
+    firstRow: 'חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל',
+    secondRow: '© כל הזכויות שמורות להוצאת עיתון הארץ בע"מ',
+  }),
 });
