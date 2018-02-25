@@ -17,13 +17,13 @@ class AlertsButton extends Component {
     this.toggleExpanded = this.toggleExpanded.bind(this);
   }
 
-  toggleExpanded(){
+  toggleExpanded() {
     this.setState(prevState => ({
       isExpanded: !prevState.isExpanded,
     }));
   }
 
-  //TODO: add open-dialog logic to Alerts button
+  // TODO: add open-dialog logic to Alerts button
   openFollowAuthorDialog() {
     this.toggleExpanded();
   }
@@ -38,7 +38,9 @@ class AlertsButton extends Component {
         onClick={this.openFollowAuthorDialog}
         aria-describedby="alerts_btn_description"
       >
-        <AriaDescription id="alerts_btn_description">קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ {author.name}</AriaDescription>
+        <AriaDescription id="alerts_btn_description">
+          קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ {author.name}
+        </AriaDescription>
         {children}
       </button>
     );
@@ -51,11 +53,11 @@ AlertsButton.propTypes = {
    * CSS class names provided by Fela
    */
   className: PropTypes.string,
-}
+};
 
 AlertsButton.defaultProps = {
   className: null,
-}
+};
 
 export default AlertsButton;
 export { authorPropTypes, };

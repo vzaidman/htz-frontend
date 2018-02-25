@@ -1,4 +1,3 @@
-import React from 'react';
 import { createComponent, } from 'react-fela';
 import { parseStyleProps, parseTypographyProp, } from '@haaretz/htz-css-tools';
 
@@ -18,5 +17,7 @@ const styleArticleSubtitle = ({ miscStyles, theme, }) => ({
   ],
 });
 
-const Subtitle = createComponent(styleArticleSubtitle, 'p', props => Object.keys(props), );
+const Subtitle = createComponent(styleArticleSubtitle, 'p', props =>
+  Object.keys(props)
+);
 export default Subtitle;

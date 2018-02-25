@@ -20,7 +20,7 @@ describe('Kicker component', () => {
   it('renders correctly a div tag for kicker', () => {
     const snapshot = felaSnapshotter(
       <Kicker
-        isBlock={true}
+        isBlock
         fontSize={[
           { until: 'm', value: 3, },
           { from: 'm', until: 'l', value: 4, },

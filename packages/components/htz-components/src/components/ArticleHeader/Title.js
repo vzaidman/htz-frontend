@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import { parseStyleProps, parseTypographyProp, } from '@haaretz/htz-css-tools';
-import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType'
+import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const titlePropTypes = {
@@ -24,7 +24,8 @@ const titlePropTypes = {
       PropTypes.shape({
         ...responsivePropBaseType,
         value: PropTypes.number,
-      })),
+      })
+    ),
   ]).isRequired,
   /**
    * Heading level. The H<x> tag to create.
@@ -49,10 +50,15 @@ const titleDefaultProps = {
 
 /**
  * See Title.propTypes of details
- * @param {boolean} isBlock - Sets heading element to be _block_ or _inline_.(default is inline)
- * @param {number|Array} fontSize - Font-size configuration for the heading
- * @param {object} miscStyles - A special property holding miscellaneous CSS values
- * @param {object} theme - theme :-)
+ * @param {object} props
+ * @param {boolean} props.isBlock
+ *   Sets heading element to be _block_ or _inline_.(default is inline)
+ * @param {number|Array} props.fontSize
+ *   Font-size configuration for the heading
+ * @param {object} props.miscStyles
+ *   A special property holding miscellaneous CSS values
+ * @param {object} props.theme
+ *   theme :-)
  */
 const styleTitle = ({ isBlock, fontSize, miscStyles, theme, }) => ({
   display: isBlock ? 'block' : 'inline',
@@ -62,19 +68,26 @@ const styleTitle = ({ isBlock, fontSize, miscStyles, theme, }) => ({
   ],
 });
 
+// eslint-disable-next-line react/prop-types
 function TitleComponent({ level, className, text, }) {
   const HeadingTag = `h${level}`;
-  return (
-    <HeadingTag className={className}>
-      {text}
-    </HeadingTag>
-  );
+  return <HeadingTag className={className}>{text}</HeadingTag>;
 }
 
-const TitleStyled = createComponent(styleTitle, TitleComponent, props => Object.keys(props));
+const TitleStyled = createComponent(styleTitle, TitleComponent, props =>
+  Object.keys(props)
+);
 
 function Title({ isBlock, fontSize, level, text, miscStyles, }) {
-  return <TitleStyled isBlock={isBlock} fontSize={fontSize} level={level} text={text} miscStyles={miscStyles} />;
+  return (
+    <TitleStyled
+      isBlock={isBlock}
+      fontSize={fontSize}
+      level={level}
+      text={text}
+      miscStyles={miscStyles}
+    />
+  );
 }
 
 Title.propTypes = titlePropTypes;

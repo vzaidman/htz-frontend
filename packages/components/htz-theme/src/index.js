@@ -101,6 +101,7 @@ const htzTheme = Object.freeze({
   bps,
   btnStyle,
   captionStyles,
+  commentsStyle,
   direction: 'rtl',
   gridStyle,
   fontStacks,

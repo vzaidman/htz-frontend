@@ -7,9 +7,11 @@ describe('AlertsDesktopButton component', () => {
     const author = {
       name: 'Avi Kaufman',
     };
-    
+
     const snapshot = felaSnapshotter(
-      <AlertsDesktopButton author={author}>This is a subtitle</AlertsDesktopButton>
+      <AlertsDesktopButton author={author}>
+        This is a subtitle
+      </AlertsDesktopButton>
     );
     expect(snapshot).toMatchSnapshot();
   });

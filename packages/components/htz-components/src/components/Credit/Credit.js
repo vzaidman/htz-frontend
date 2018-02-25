@@ -16,7 +16,7 @@ const creditPropTypes = {
 
 const creditDefaultProps = {
   url: null,
-}
+};
 
 const LinkStyled = createComponent(
   theme => ({
@@ -32,23 +32,13 @@ const LinkStyled = createComponent(
   [ 'href', 'content', ]
 );
 
-
-function Credit({
-  name,
-  url,
-  className,
-}) {
+function Credit({ name, url, className, }) {
   const tname = name.trim();
-  return (
-    tname ? (
-      <address {...className && { className, }}>
-        { url ?
-          <LinkStyled href={url} content={tname} /> :
-          `${tname}`
-        }
-      </address>
-    ) : null
-  );
+  return tname ? (
+    <address {...className && { className, }}>
+      {url ? <LinkStyled href={url} content={tname} /> : `${tname}`}
+    </address>
+  ) : null;
 }
 
 Credit.propTypes = {
@@ -62,7 +52,7 @@ Credit.propTypes = {
 Credit.defaultProps = {
   ...creditDefaultProps,
   className: null,
-}
+};
 
 export default Credit;
 export { creditPropTypes, creditDefaultProps, };

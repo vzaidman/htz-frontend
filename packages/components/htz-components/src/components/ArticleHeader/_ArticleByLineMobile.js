@@ -1,8 +1,14 @@
 import React from 'react';
 import { createComponent, withTheme, } from 'react-fela';
-import { parseStyleProps, parseTypographyProp, borderVertical, } from '@haaretz/htz-css-tools';
+import {
+  parseStyleProps,
+  parseTypographyProp,
+  borderVertical,
+} from '@haaretz/htz-css-tools';
 
+// eslint-disable-next-line import/no-named-as-default
 import Grid from '../Grid/Grid';
+// eslint-disable-next-line import/no-named-as-default
 import GridItem from '../Grid/GridItem';
 import CreditArticle from '../Credit/CreditArticle';
 import AlertsDesktopButton from '../AlertsButton/AlertsDesktopButton';
@@ -37,18 +43,18 @@ const TimeStyled = createComponent(
   [ 'time', 'format', ]
 );
 
+// eslint-disable-next-line react/prop-types
 function ArticleByLineMobileComponent({ author, publishDateTime, className, }) {
   return (
     <Grid className={className} gutter={1} vAlign="center">
-      { /*  Author image */ }
+      {/*  Author image */}
       <GridItem
         width={6}
         miscStyles={{
-          display: [
-            { from: 'm', value: 'none', },
-          ],
+          display: [ { from: 'm', value: 'none', }, ],
         }}
       >
+        {/* FIXME Use the <Image /> component */}
         <img
           style={{
             borderRadius: '50%',
@@ -59,14 +65,13 @@ function ArticleByLineMobileComponent({ author, publishDateTime, className, }) {
           src={author.image}
         />
       </GridItem>
-      { /* Author name and publish-date */ }
-      <GridItem miscStyles={{
-        display: 'flex',
-        flexGrow: 0,
-        flexDirection: [
-          { until: 'm', value: 'column', },
-        ],
-      }}
+      {/* Author name and publish-date */}
+      <GridItem
+        miscStyles={{
+          display: 'flex',
+          flexGrow: 0,
+          flexDirection: [ { until: 'm', value: 'column', }, ],
+        }}
       >
         <CreditArticle
           {...author}
@@ -74,28 +79,23 @@ function ArticleByLineMobileComponent({ author, publishDateTime, className, }) {
             marginEnd: '1rem',
           }}
         />
-        <TimeStyled
-          time={publishDateTime}
-          format="DD.MM.YYYY HH:mm"
-        />
+        <TimeStyled time={publishDateTime} format="DD.MM.YYYY HH:mm" />
       </GridItem>
-      { /* Follow author */ }
-      <GridItem miscStyles={{
-        flexGrow: 0,
-        marginStart: 'auto',
-        display: [
-          { from: 'm', value: 'none', },
-        ],
-      }}
+      {/* Follow author */}
+      <GridItem
+        miscStyles={{
+          flexGrow: 0,
+          marginStart: 'auto',
+          display: [ { from: 'm', value: 'none', }, ],
+        }}
       >
         <AlertsMobileButton author={author} />
       </GridItem>
-      <GridItem miscStyles={{
-        flexGrow: 0,
-        display: [
-          { until: 'm', value: 'none', },
-        ],
-      }}
+      <GridItem
+        miscStyles={{
+          flexGrow: 0,
+          display: [ { until: 'm', value: 'none', }, ],
+        }}
       >
         <AlertsDesktopButton author={author} />
       </GridItem>
@@ -104,11 +104,14 @@ function ArticleByLineMobileComponent({ author, publishDateTime, className, }) {
 }
 
 const ArticleByLineMobileThemed = withTheme(ArticleByLineMobileComponent);
-const ArticleByLineMobileStyled = createComponent(styleArticleByLineMobile, ArticleByLineMobileThemed, props => ([ ...Object.keys(props), 'theme', ]));
+const ArticleByLineMobileStyled = createComponent(
+  styleArticleByLineMobile,
+  ArticleByLineMobileThemed,
+  props => [ ...Object.keys(props), 'theme', ]
+);
 
 function ArticleByLineMobile(props) {
   return <ArticleByLineMobileStyled {...props} />;
 }
 
 export default ArticleByLineMobile;
-

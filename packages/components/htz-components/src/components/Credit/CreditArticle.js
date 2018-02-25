@@ -4,12 +4,14 @@ import { parseStyleProps, parseTypographyProp, } from '@haaretz/htz-css-tools';
 import Credit, { creditPropTypes, creditDefaultProps, } from './Credit';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
-
 const CreditArticleStyled = createComponent(
   ({ miscStyles, theme, }) => ({
     color: theme.articleStyle.header.bylineCreditColor,
     fontWeight: 700,
-    ...parseTypographyProp(theme.articleStyle.header.bylineFontSize, theme.type),
+    ...parseTypographyProp(
+      theme.articleStyle.header.bylineFontSize,
+      theme.type
+    ),
     extend: [
       ...parseStyleProps(
         {
@@ -24,11 +26,7 @@ const CreditArticleStyled = createComponent(
   [ 'name', 'url', ]
 );
 
-export default function CreditArticle({
-  name,
-  url,
-  miscStyles,
-}) {
+export default function CreditArticle({ name, url, miscStyles, }) {
   return <CreditArticleStyled name={name} url={url} miscStyles={miscStyles} />;
 }
 
@@ -45,4 +43,4 @@ CreditArticle.propTypes = {
 CreditArticle.defaultProps = {
   ...creditDefaultProps,
   miscStyles: null,
-}
+};
