@@ -25,8 +25,6 @@ const mobileHeadStyle = ({
   theme: { color, footerBorderStyle: { borderWidth, lines, borderStyle, }, },
 }) => ({
   fontSize: '5rem',
-  // todo: get from theme, see select example
-  // todo : add semantic footer border color theme.color('footer', 'borderColor')
   ...borderBottom(borderWidth, lines, borderStyle, color('footer', 'border')),
 });
 const StyledMobileHead = createComponent(mobileHeadStyle);
@@ -97,6 +95,7 @@ const MobileView = ({ footerMobileListsI18n: { ButtonName, Copyright, ListOne, L
         {ListTwo.map(link => <StyledLink key={link.text} content={link.text} href={link.link} />)}
       </StyledLinkBox>
     </StyledMobileMainList>
+    {/* todo: onClick button should direct to download app (hardcoded?) */}
     <Button variant="secondary" boxModel={{ hp: 4.5, vp: 1, }} onClick={() => console.warn('WIP!')}>
       {ButtonName.text}
     </Button>

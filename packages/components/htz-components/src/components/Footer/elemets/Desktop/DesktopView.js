@@ -95,16 +95,13 @@ export class DesktopView extends React.Component {
   state = {
     expanded: false,
   };
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return this.props !== nextProps || this.state.expanded !== nextState.expanded;
-  // }
 
   handleClick = () => {
-    this.setState(prevState => ({ 
+    this.setState(prevState => ({
       expanded: !prevState.expanded,
     }));
-    // this.firstLiEl.focus();
   }
+
   render() {
     const {
       theme: {
@@ -172,9 +169,6 @@ export class DesktopView extends React.Component {
           toolbox={footer.toolbox}
           columnsArr={columnsArr}
           showMe={expanded}
-          // innerRef={firstLiEl => {
-          //   this.firstLiEl = firstLiEl;
-          // }}
         />
         <StyledDesktopText>{Copyright.firstRow}</StyledDesktopText>
         <StyledDesktopText>{Copyright.secondRow}</StyledDesktopText>

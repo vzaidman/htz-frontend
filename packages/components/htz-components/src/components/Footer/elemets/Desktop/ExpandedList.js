@@ -39,7 +39,7 @@ const listLinkStyle = ({ theme, isLast, isBold = false, }) => ({
   extend: [ theme.type(-1), ],
 });
 
-const StyledListLink = createComponent(listLinkStyle, Link, [ 'content', 'href', 'ref', ]);
+const StyledListLink = createComponent(listLinkStyle, Link, [ 'content', 'href', 'focus', ]);
 
 const toolboxListStyle = () => ({
   minWidth: '20rem',
@@ -54,18 +54,31 @@ ExpandedList.propTypes = {
   showMe: PropTypes.bool.isRequired,
   /** Footer's toolbox data */
   toolbox: PairTypes.isRequired,
+  theme: PropTypes.shape({
+    /**
+     * Customized object defined in htz-theme.
+     * No nested border properties for flexablity and reusability
+     * */
+    footerBorderStyle: PropTypes.object.isRequired,
+    color: PropTypes.func.isRequired,
+  }).isRequired,
 };
-// eslint-disable-next-line react/prop-types
-function ExpandedList({ columnsArr, toolbox, showMe, theme, }) {
+
+function ExpandedList({
+  columnsArr,
+  toolbox,
+  showMe,
+  theme: { color, footerBorderStyle: { borderWidth, lines, borderStyle, }, },
+}) {
   return (
-    // <StyledExpandedListsCont showMe={showMe}>
     <LayoutExtendedFooterContainer
-      bgc={theme.color('footer', 'bg')}
+      bgc={color('footer', 'bg')}
       miscStyles={{
         ...extendedListContainerStyle,
         ...{ display: showMe ? 'flex' : 'none', },
+        // ...borderBottom('1px', '2', 'solid', 'white'),
         // todo: check why borderBottom not passed to LayoutContainer
-        ...borderBottom('1px', '2', 'solid', 'white'),
+        ...borderBottom(borderWidth, lines, borderStyle, color('footer', 'border')),
       }}
     >
       <StyledExpandedLists>
@@ -80,11 +93,9 @@ function ExpandedList({ columnsArr, toolbox, showMe, theme, }) {
                     <StyledListLink
                       content={link.text}
                       href={link.href}
-                      // {...(colIdx === 0 && listIdx === 0
-                      //   ? {
-                      //     ref: innerRef
-                      //   }
-                      //   : {})}
+                      {...(showMe && (colIdx === 0 && listIdx === 0 && linkIdx === 0)
+                        ? { focus: true, }
+                        : {})}
                     />
                   </li>
                 ))}
