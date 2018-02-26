@@ -158,7 +158,10 @@ describe('<Image />', () => {
     });
 
     it('Prints warning on console when both "isPresentational" and "attr" has keys of "role" or "aria-hidden" ', () => {
-      const wrapper = felaShallow(
+      const original = console.warn;
+      console.warn = jest.fn();
+
+      felaShallow(
         <Image
           data={mockData}
           imgOptions={{
@@ -178,8 +181,11 @@ describe('<Image />', () => {
           isPresentational
         />
       );
-      console.warn = jest.fn();
-      global.console = { warn: jest.fn(), };
+
+      expect(console.warn).toHaveBeenCalled();
+
+      // Restore console.warn
+      console.warn = original;
     });
   });
 });

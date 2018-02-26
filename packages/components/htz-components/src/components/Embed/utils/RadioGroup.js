@@ -52,24 +52,24 @@ export default class RadioGroup extends React.Component {
   render() {
     return (
       <SelectionWrapper>
-        {
-          this.props.options.map(
-            (option, index) =>
-              (
-                <Selection
-                  key={option.embedType}
-                  isSelected={
-                    this.state.groupName === this.props.groupName &&
-                    this.state.selectedIndex &&
-                    index === +this.state.selectedIndex
-                  }
-                >
-                  <input type="radio" value={index} name={this.props.groupName} onChange={this.onSelected || false} />
-                  {option.contentName}
-                </Selection>
-              )
-          )
-        }
+        {this.props.options.map((option, index) => (
+          <Selection
+            key={option.embedType}
+            isSelected={
+              this.state.groupName === this.props.groupName &&
+              this.state.selectedIndex &&
+              index === +this.state.selectedIndex
+            }
+          >
+            <input
+              type="radio"
+              value={index}
+              name={this.props.groupName}
+              onChange={this.onSelected || false}
+            />
+            {option.contentName}
+          </Selection>
+        ))}
       </SelectionWrapper>
     );
   }

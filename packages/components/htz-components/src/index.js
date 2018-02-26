@@ -101,7 +101,6 @@ export {
   StandardArticlePageLayout,
   Tags,
   TextInput,
-
   // Icons
   IconAccessibility,
   IconAlef,
@@ -137,7 +136,6 @@ export {
   IconZen,
   IconZoomIn,
   IconZoomOut,
-
   Login,
   Logout,
   Register,

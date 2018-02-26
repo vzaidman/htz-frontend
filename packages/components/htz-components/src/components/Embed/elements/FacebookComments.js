@@ -48,7 +48,7 @@ export default class FacebookComments extends React.Component {
 
     FB.Event.subscribe('xfbml.render', () => {
       console.log('fb embed is loaded');
-      this.props.onLoadCallback ? this.props.onLoadCallback() : '';
+      this.props.onLoadCallback && this.props.onLoadCallback();
     });
   };
 

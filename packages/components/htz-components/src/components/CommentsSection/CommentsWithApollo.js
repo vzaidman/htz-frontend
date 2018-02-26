@@ -146,7 +146,9 @@ class CommentsWithApollo extends React.Component {
       // todo: check why global rtl is not working in haaretz.co.il
       <CommentSection
         initVote={this.initVote}
-        reportAbuse={(commentId, captchaKey) => this.initReportAbuse(commentId, captchaKey)}
+        reportAbuse={(commentId, captchaKey) =>
+          this.initReportAbuse(commentId, captchaKey)
+        }
         initNewComment={this.initNewComment}
         signUpNotification={email => this.initSignUpNotificationEmail(email)}
         loadAllComments={() => this.handleLoadAllComments()}

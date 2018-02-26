@@ -187,7 +187,9 @@ const styles = ({
   appearance: 'none',
   cursor: isDisabled || isBusy ? 'not-allowed' : 'pointer',
   display: 'inline-flex',
-  ...(theme.btnStyle.fontWeight ? { fontWeight: theme.btnStyle.fontWeight, } : undefined),
+  ...(theme.btnStyle.fontWeight
+    ? { fontWeight: theme.btnStyle.fontWeight, }
+    : undefined),
   fontSize: 'inherit',
   justifyContent: 'center',
   ...(isDisabled ? { opacity: 0.4, } : undefined),
@@ -238,7 +240,14 @@ const styles = ({
     ),
     // Set width and display
     parseComponentProp(undefined, isFull, theme.mq, full),
-    parseComponentProp(undefined, variant, theme.mq, setVariant, theme.color, isFlat),
+    parseComponentProp(
+      undefined,
+      variant,
+      theme.mq,
+      setVariant,
+      theme.color,
+      isFlat
+    ),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -247,21 +256,29 @@ const styles = ({
 function setVariant(prop, variant, getColor, isFlat) {
   return {
     backgroundColor: getColor('button', `${variant}Bg`),
-    borderColor: isFlat ? 'transparent' : getColor('button', `${variant}Border`),
+    borderColor: isFlat
+      ? 'transparent'
+      : getColor('button', `${variant}Border`),
     color: getColor('button', `${variant}Text`),
     ':hover': {
       backgroundColor: getColor('button', `${variant}HoverBg`),
-      borderColor: isFlat ? 'transparent' : getColor('button', `${variant}HoverBorder`),
+      borderColor: isFlat
+        ? 'transparent'
+        : getColor('button', `${variant}HoverBorder`),
       color: getColor('button', `${variant}HoverText`),
     },
     ':active': {
       backgroundColor: getColor('button', `${variant}ActiveBg`),
-      borderColor: isFlat ? 'transparent' : getColor('button', `${variant}ActiveBorder`),
+      borderColor: isFlat
+        ? 'transparent'
+        : getColor('button', `${variant}ActiveBorder`),
       color: getColor('button', `${variant}ActiveText`),
     },
     ':focus': {
       backgroundColor: getColor('button', `${variant}FocusBg`),
-      borderColor: isFlat ? 'transparent' : getColor('button', `${variant}FocusBorder`),
+      borderColor: isFlat
+        ? 'transparent'
+        : getColor('button', `${variant}FocusBorder`),
       color: getColor('button', `${variant}FocusText`),
     },
   };
@@ -278,7 +295,9 @@ function full(prop, isFull) {
 
 function setBoxModel(prop, boxModel, isColumn, isHard, isRound, btnStyle) {
   if (isHard && isRound) {
-    throw new Error('A "<Button>" cannot be "hard" and "round" at the same time');
+    throw new Error(
+      'A "<Button>" cannot be "hard" and "round" at the same time'
+    );
   }
 
   const { groupPlacement, hp, vp, } = boxModel;
@@ -287,7 +306,13 @@ function setBoxModel(prop, boxModel, isColumn, isHard, isRound, btnStyle) {
   // eslint-disble-next-line eqeqeq
   const verticalPadding = vp != null ? vp : btnStyle.boxModel.vp;
   const ret = {
-    ...setBorder(btnStyle, isColumn, groupPlacement, horizontalPadding, verticalPadding),
+    ...setBorder(
+      btnStyle,
+      isColumn,
+      groupPlacement,
+      horizontalPadding,
+      verticalPadding
+    ),
     ...radiusRules(btnStyle.radius, isColumn, groupPlacement, isHard, isRound),
   };
 

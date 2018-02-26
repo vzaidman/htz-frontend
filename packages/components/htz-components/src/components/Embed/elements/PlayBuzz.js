@@ -72,7 +72,13 @@ export default class PlayBuzz extends React.Component {
     const async = true;
     const id = 'playbuzz-js';
 
-    appendScript(src, id, async, this.props.onLoadCallback, this.props.onLoadCallback);
+    appendScript(
+      src,
+      id,
+      async,
+      this.props.onLoadCallback,
+      this.props.onLoadCallback
+    );
   }
 
   render() {

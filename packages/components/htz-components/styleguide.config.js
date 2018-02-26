@@ -35,7 +35,10 @@ const sectionPatterns = {
 };
 
 function getSectionPattern(section) {
-  return sectionPatterns[section] || `${path.join(componentSectionsPath, section)}**/[A-Z]*.js{,x}`;
+  return (
+    sectionPatterns[section] ||
+    `${path.join(componentSectionsPath, section)}**/[A-Z]*.js{,x}`
+  );
 }
 
 module.exports = configure(config =>

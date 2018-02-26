@@ -79,12 +79,10 @@ export default class Twitter extends React.Component {
   }
 
   initScript = () => {
-    twttr.events.bind(
-      'rendered', event => {
-        console.log('twitter embed is loaded');
-        this.props.onLoadCallback ? this.props.onLoadCallback() : '';
-      }
-    );
+    twttr.events.bind('rendered', event => {
+      console.log('twitter embed is loaded');
+      this.props.onLoadCallback && this.props.onLoadCallback();
+    });
   };
 
   updateScript = () => {

@@ -43,7 +43,9 @@ function Giphy(props) {
   const height = settings.height;
   const width = settings.width;
 
-  const innerWidth = 600; // TODO: Temporary
+  // TODO: Temporary
+  const innerWidth = 600;
+  // prettier-ignore
   const newHeight = (innerWidth / width) * height;
 
   return (

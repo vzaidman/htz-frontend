@@ -22,13 +22,12 @@ const mainWrapper = ({ theme, }) => ({
   ...parseComponentProp(
     'marginRight',
     [
-      { from: 'l', until: 'xl', value: 156/6 },
-      { from: 'xl', value: 209/7 },
+      { from: 'l', until: 'xl', value: 156 / 6, },
+      { from: 'xl', value: 209 / 7, },
     ],
     theme.mq,
     mediaQueryCallback
   ),
-
 });
 const Wrapper = createComponent(mainWrapper, 'main');
 
@@ -41,10 +40,7 @@ const asideWrapper = ({ theme, }) => ({
 
   ...parseComponentProp(
     'display',
-    [
-      { until: 'l', value: 'none', },
-      { from: 'l', value: 'block', },
-    ],
+    [ { until: 'l', value: 'none', }, { from: 'l', value: 'block', }, ],
     theme.mq,
     mediaQueryCallback
   ),
@@ -59,27 +55,22 @@ const asideStyle = ({ theme, }) => ({
 });
 const Aside = createComponent(asideStyle);
 
-const extractContent = content => (
+const extractContent = content =>
   content.map(element => {
     const Element = getComponent(element.inputTemplate);
-    return <Element key={element.contentId} {...element}/>;
-  })
-);
+    return <Element key={element.contentId} {...element} />;
+  });
 
-function Main ({ content, }) {
+function Main({ content, }) {
   const { article, aside, } = content;
   return (
     <Wrapper>
-      <article>
-        {extractContent(article)}
-      </article>
+      <article>{extractContent(article)}</article>
       <AsideWrapper>
-        <Aside>
-          {extractContent(aside)}
-        </Aside>
+        <Aside>{extractContent(aside)}</Aside>
       </AsideWrapper>
     </Wrapper>
-  )
+  );
 }
 
 export default Main;

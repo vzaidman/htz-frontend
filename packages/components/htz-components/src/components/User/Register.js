@@ -59,10 +59,10 @@ class Register extends React.Component {
     plantImages,
     handleImgOnload
   ) {
-    const userService = new UserService(
-      { plantImagesCallback: plantImages,
-        onImageLoadCallback: handleImgOnload,
-      });
+    const userService = new UserService({
+      plantImagesCallback: plantImages,
+      onImageLoadCallback: handleImgOnload,
+    });
     const user = this.props.user;
     userService
       .register({

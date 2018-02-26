@@ -143,9 +143,11 @@ function GoogleMap(props) {
       <MapElement
         width="600"
         height="450"
-        src={`https://www.google.com/maps/embed/v1/${searchString}&key=${key}&language=${settings.language}${waypoints ||
-          ''}${method || ''}${units || ''}${satellite || ''}${fov ||
-          ''}${heading || ''}${zoom || ''}${pitch || ''}`}
+        src={`https://www.google.com/maps/embed/v1/${searchString}&key=${
+          key
+        }&language=${settings.language}${waypoints || ''}${method ||
+          ''}${units || ''}${satellite || ''}${fov || ''}${heading ||
+          ''}${zoom || ''}${pitch || ''}`}
         frameBorder="0"
         allowFullScreen=""
         onLoad={props.onLoadCallback}

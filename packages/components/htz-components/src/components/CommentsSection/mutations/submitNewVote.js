@@ -3,7 +3,9 @@ import gql from 'graphql-tag';
 
 export default gql`
   mutation AddVote($articleId: String!, $commentId: ID!, $group: String!) {
-    addVote(newVote: { articleId: $articleId, commentId: $commentId, group: $group }) {
+    addVote(
+      newVote: { articleId: $articleId, commentId: $commentId, group: $group }
+    ) {
       status
     }
   }

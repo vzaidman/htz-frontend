@@ -84,7 +84,9 @@ function Youtube(props) {
         id={`yt_embed_${props.content}`}
         width="560"
         height="315"
-        src={`//www.youtube.com/embed/${props.content}${startAt}${settings.startAt}
+        src={`//www.youtube.com/embed/${props.content}${startAt}${
+          settings.startAt
+        }
                 &controls=${settings.controls}
                 &loop=${settings.loop}
                 &modestbranding=${settings.logo}

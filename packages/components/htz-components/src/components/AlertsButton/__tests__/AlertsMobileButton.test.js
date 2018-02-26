@@ -8,7 +8,9 @@ describe('AlertsMobileButton component', () => {
       name: 'Avi Kaufman',
     };
     const snapshot = felaSnapshotter(
-      <AlertsMobileButton author={author}>This is a subtitle</AlertsMobileButton>
+      <AlertsMobileButton author={author}>
+        This is a subtitle
+      </AlertsMobileButton>
     );
     expect(snapshot).toMatchSnapshot();
   });

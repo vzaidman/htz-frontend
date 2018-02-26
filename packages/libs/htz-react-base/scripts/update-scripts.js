@@ -98,6 +98,6 @@ mapPackages().then(() => {
   console.log(
     `Added ${added.length}, updated ${updated.length}, skipped ${
       skipped.length
-    } script(s) in\n` + `"${chalk.bold(packagePath)}"\n\n`
+    } script(s) in\n"${chalk.bold(packagePath)}"\n\n`
   );
 });

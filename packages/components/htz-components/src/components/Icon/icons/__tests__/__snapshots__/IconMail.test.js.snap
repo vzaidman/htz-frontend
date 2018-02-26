@@ -9,7 +9,7 @@ exports[`<IconMail /> DOM element add "id" attribute to DOM element 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
@@ -29,7 +29,7 @@ exports[`<IconMail /> DOM element add "onClick" attribute to DOM element 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
@@ -49,7 +49,7 @@ exports[`<IconMail /> DOM element pass attributes defined in the "attrs" prop to
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
@@ -68,7 +68,7 @@ exports[`<IconMail /> DOM element render correctly when no props are passed 1`] 
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
@@ -87,7 +87,7 @@ exports[`<IconMail /> styles responsively set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
@@ -106,7 +106,7 @@ exports[`<IconMail /> styles set icon's color 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
@@ -125,7 +125,7 @@ exports[`<IconMail /> styles set icon's color responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
@@ -144,7 +144,7 @@ exports[`<IconMail /> styles set icon's fill 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
@@ -163,7 +163,7 @@ exports[`<IconMail /> styles set icon's fill responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
@@ -182,7 +182,7 @@ exports[`<IconMail /> styles set icon's size 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
@@ -201,7 +201,7 @@ exports[`<IconMail /> styles set icon's size responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
@@ -220,7 +220,7 @@ exports[`<IconMail /> styles set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"

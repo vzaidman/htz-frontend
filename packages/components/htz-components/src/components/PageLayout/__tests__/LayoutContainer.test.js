@@ -13,14 +13,18 @@ describe('<LayoutContainer>', () => {
     });
     it('renders correctly with custom attrs', () => {
       const { component, styles, } = felaSnapshotter(
-        <LayoutContainer attrs={{ ariaLabel: 'I am custom', }}>Customizing attrs</LayoutContainer>
+        <LayoutContainer attrs={{ ariaLabel: 'I am custom', }}>
+          Customizing attrs
+        </LayoutContainer>
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly  with a custom backgroundColor', () => {
       const { component, styles, } = felaSnapshotter(
-        <LayoutContainer bgc="green">Customizing backgroundColor</LayoutContainer>
+        <LayoutContainer bgc="green">
+          Customizing backgroundColor
+        </LayoutContainer>
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();

@@ -1,5 +1,5 @@
 import React from 'react';
-import toJson from 'enzyme-to-json';
+// import toJson from 'enzyme-to-json';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
 import Select from '../Select'; // eslint-disable-line import/no-named-as-default
@@ -173,7 +173,9 @@ describe('<Select>', () => {
     });
     it('closes menu when pressing tab key', () => {
       const output = felaMount(
-        <Select items={[ { value: 1, }, { value: 2, }, { value: 3, display: 'שלוש', }, ]} />
+        <Select
+          items={[ { value: 1, }, { value: 2, }, { value: 3, display: 'שלוש', }, ]}
+        />
       );
       const button = output.find('button');
       button.simulate('keydown', { key: 'ArrowDown', });

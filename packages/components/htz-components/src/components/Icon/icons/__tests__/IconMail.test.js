@@ -36,10 +36,7 @@ describe('<IconMail />', () => {
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconMail attrs={{ 'aria-hidden': true, }} />
     );
-    testCase(
-      'add "id" attribute to DOM element',
-      <IconMail id="hasId" />
-    );
+    testCase('add "id" attribute to DOM element', <IconMail id="hasId" />);
     testCase(
       'add "onClick" attribute to DOM element',
       <IconMail id={e => console.log('a')} />
@@ -47,10 +44,9 @@ describe('<IconMail />', () => {
   });
 
   describe('styles', () => {
-    testCase("set icon's color",
-      <IconMail color={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's color responsively",
+    testCase("set icon's color", <IconMail color={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's color responsively",
       <IconMail
         color={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -58,10 +54,9 @@ describe('<IconMail />', () => {
         ]}
       />
     );
-    testCase("set icon's fill",
-      <IconMail fill={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's fill responsively",
+    testCase("set icon's fill", <IconMail fill={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's fill responsively",
       <IconMail
         fill={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -69,18 +64,17 @@ describe('<IconMail />', () => {
         ]}
       />
     );
-    testCase("set icon's size",
-      <IconMail size={6} />
+    testCase("set icon's size", <IconMail size={6} />);
+    testCase(
+      "set icon's size responsively",
+      <IconMail size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]} />
     );
-    testCase("set icon's size responsively",
-      <IconMail
-        size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]}
-      />
-    );
-    testCase('set misc styles on an icon',
+    testCase(
+      'set misc styles on an icon',
       <IconMail miscStyles={{ position: 'relative', }} />
     );
-    testCase('responsively set misc styles on an icon',
+    testCase(
+      'responsively set misc styles on an icon',
       <IconMail
         miscStyles={{
           position: [

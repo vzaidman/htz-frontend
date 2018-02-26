@@ -8,12 +8,16 @@ import serialize from 'serialize-javascript';
  * The returned class should be exported as the default export in the
  * `pages/_document.js` file of a Next.js app.
  *
- * @param {object} styleRenderer - a react-fela renderer
- * @param {string|string[]} staticRules - css string (or an array of)
- *   for Fela to render with `renderStatic`
- * @param {Array} fontRules - An array of argument arrays for Fela's `renderFont`
- * @param {object} appData - An application data object, defaults to just having
- *                           a `config` field with data from the `config` module.
+ * @param {object} props
+ * @param {object} props.styleRenderer
+ *   a react-fela renderer
+ * @param {string|string[]} props.staticRules
+ *   css string (or an array of) for Fela to render with `renderStatic`
+ * @param {Array} props.fontRules
+ *   An array of argument arrays for Fela's `renderFont`
+ * @param {object} props.appData
+ *   An application data object, defaults to just having
+ *   a `config` field with data from the `config` module.
  *
  * @return {class} A Next.js `document` component
  */

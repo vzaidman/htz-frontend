@@ -51,14 +51,17 @@ const defaultProps = {
 const relatedArticlesWrapperStyle = ({ theme, marginBottom, }) => ({
   ...(marginBottom || []),
 });
-const RelatedArticlesWrapper = createComponent(relatedArticlesWrapperStyle, 'ul');
+const RelatedArticlesWrapper = createComponent(
+  relatedArticlesWrapperStyle,
+  'ul'
+);
 
 const articleWrapperStyle = ({ theme, lastItem, }) => ({
   marginInlineStart: '1em',
   position: 'relative',
   color: theme.color('primary', '+1'),
-  ...(!lastItem ?
-    {
+  ...(!lastItem
+    ? {
       ...parseComponentProp(
         'marginBottom',
         theme.articleStyle.body.marginBottom,
@@ -66,10 +69,9 @@ const articleWrapperStyle = ({ theme, lastItem, }) => ({
         (prop, value) => ({ [prop]: value, })
       ),
     }
-    :
-    {}),
+    : {}),
   ':before': {
-    ...(theme.type(-1)),
+    ...theme.type(-1),
     content: '"\\25cf"',
     position: 'absolute',
     start: '0',
@@ -82,10 +84,9 @@ const ArticleWrapper = createComponent(articleWrapperStyle, 'li');
 const RelatedArticles = ({ articles, marginBottom, }) => (
   <RelatedArticlesWrapper marginBottom={marginBottom}>
     {articles.map((article, i) => (
+      // eslint-disable-next-line react/no-array-index-key
       <ArticleWrapper key={i} lastItem={i === articles.length - 1}>
-        <ArticleLink
-          article={article}
-        />
+        <ArticleLink article={article} />
       </ArticleWrapper>
     ))}
   </RelatedArticlesWrapper>

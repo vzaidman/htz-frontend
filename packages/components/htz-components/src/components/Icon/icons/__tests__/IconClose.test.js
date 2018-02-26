@@ -36,10 +36,7 @@ describe('<IconClose />', () => {
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconClose attrs={{ 'aria-hidden': true, }} />
     );
-    testCase(
-      'add "id" attribute to DOM element',
-      <IconClose id="hasId" />
-    );
+    testCase('add "id" attribute to DOM element', <IconClose id="hasId" />);
     testCase(
       'add "onClick" attribute to DOM element',
       <IconClose id={e => console.log('a')} />
@@ -47,10 +44,9 @@ describe('<IconClose />', () => {
   });
 
   describe('styles', () => {
-    testCase("set icon's color",
-      <IconClose color={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's color responsively",
+    testCase("set icon's color", <IconClose color={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's color responsively",
       <IconClose
         color={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -58,10 +54,9 @@ describe('<IconClose />', () => {
         ]}
       />
     );
-    testCase("set icon's fill",
-      <IconClose fill={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's fill responsively",
+    testCase("set icon's fill", <IconClose fill={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's fill responsively",
       <IconClose
         fill={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -69,18 +64,17 @@ describe('<IconClose />', () => {
         ]}
       />
     );
-    testCase("set icon's size",
-      <IconClose size={6} />
+    testCase("set icon's size", <IconClose size={6} />);
+    testCase(
+      "set icon's size responsively",
+      <IconClose size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]} />
     );
-    testCase("set icon's size responsively",
-      <IconClose
-        size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]}
-      />
-    );
-    testCase('set misc styles on an icon',
+    testCase(
+      'set misc styles on an icon',
       <IconClose miscStyles={{ position: 'relative', }} />
     );
-    testCase('responsively set misc styles on an icon',
+    testCase(
+      'responsively set misc styles on an icon',
       <IconClose
         miscStyles={{
           position: [

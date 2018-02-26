@@ -40,7 +40,6 @@ export default class Tline extends React.Component {
     onLoadCallback: null,
   };
 
-
   componentDidMount() {
     const src = 'https://tline.io/assets/js/release/loader.js';
     const async = true;

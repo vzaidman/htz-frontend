@@ -57,7 +57,7 @@ const rules = {
   link: props => ({}),
 };
 
-/**
+/*
  * Renders breadcrumb links for a page using a `lineage` array.
  */
 export function Breadcrumbs({ page, styles, }) {

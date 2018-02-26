@@ -15,6 +15,7 @@ function checkDir(path) {
 }
 
 function buildApp() {
+  // eslint-disable-next-line import/no-unresolved
   require('./next');
 }
 

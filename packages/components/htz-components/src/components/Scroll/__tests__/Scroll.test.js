@@ -6,14 +6,18 @@ describe('<Scroll>', () => {
   describe('DOM element', () => {
     it('correctly renders when passed a loading prop', () => {
       const mockFunc = jest.fn();
-      const { component, styles, } = felaSnapshotter(<Scroll loading render={mockFunc} />);
+      const { component, styles, } = felaSnapshotter(
+        <Scroll loading render={mockFunc} />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
       expect(mockFunc).toHaveBeenCalledTimes(0);
     });
     it('correctly renders when passed a error prop', () => {
       const mockFunc = jest.fn();
-      const { component, styles, } = felaSnapshotter(<Scroll error render={mockFunc} />);
+      const { component, styles, } = felaSnapshotter(
+        <Scroll error render={mockFunc} />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
       expect(mockFunc).toHaveBeenCalledTimes(0);

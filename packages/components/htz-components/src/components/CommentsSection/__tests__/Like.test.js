@@ -8,7 +8,9 @@ const mockFunc = jest.fn();
 describe('<Like>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
-      const { component, styles, } = felaSnapshotter(<Like initVote={mockFunc} commentId="12345" />);
+      const { component, styles, } = felaSnapshotter(
+        <Like initVote={mockFunc} commentId="12345" />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });

@@ -57,9 +57,12 @@ export class CommentsSection extends React.Component {
     }),
     /**
      * A callback passed on to the reply `<CommentForm />`
-     * @param {String} commentAuthor - the new comment author
-     * @param {String} commentTextHtml - the new comment text innerHTML
-     * @param {String} parentCommentId - the parent CommentId - defaults to '0' if there is no `parentCommentId`
+     * @param {String} commentAuthor
+     *   The new comment author
+     * @param {String} commentTextHtml
+     *   The new comment text innerHTML
+     * @param {String} parentCommentId
+     *   The parent CommentId. Defaults to '0' if there is no `parentCommentId`
      */
     initNewComment: PropTypes.func.isRequired,
     /**
@@ -130,7 +133,9 @@ export class CommentsSection extends React.Component {
   }
 
   getCommentsWithNumber(comments) {
-    const sortedComments = comments.concat().sort(this.sortCommentsByMethod('dateDescending'));
+    const sortedComments = comments
+      .concat()
+      .sort(this.sortCommentsByMethod('dateDescending'));
     const sortedCommentsWithNumbers = sortedComments.map((comment, idx) => ({
       ...comment,
       number: this.props.totalHits - idx,
@@ -144,17 +149,22 @@ export class CommentsSection extends React.Component {
       return (a, b) => a.publishingDateSortable - b.publishingDateSortable;
     }
     else if (orderName === 'commentRating') {
-      return (a, b) => this.getCommentNetRate(b.commentId) - this.getCommentNetRate(a.commentId);
+      return (a, b) =>
+        this.getCommentNetRate(b.commentId) -
+        this.getCommentNetRate(a.commentId);
     }
     else if (orderName === 'editorsPick') {
-      return (a, b) => (a.isEditorPick === b.isEditorPick ? 0 : a.isEditorPick ? 1 : -1);
+      return (a, b) =>
+        (a.isEditorPick === b.isEditorPick ? 0 : a.isEditorPick ? 1 : -1);
     }
     return (a, b) => b.publishingDateSortable - a.publishingDateSortable;
   }
 
   sortComments(comments) {
     const commentsWithNumber = this.getCommentsWithNumber(comments);
-    return commentsWithNumber.concat().sort(this.sortCommentsByMethod(this.state.sortMethod.value));
+    return commentsWithNumber
+      .concat()
+      .sort(this.sortCommentsByMethod(this.state.sortMethod.value));
   }
 
   render() {
@@ -183,7 +193,10 @@ export class CommentsSection extends React.Component {
 
     return (
       <StyledSection>
-        <CommentForm initNewComment={initNewComment} signUpNotification={signUpNotification} />
+        <CommentForm
+          initNewComment={initNewComment}
+          signUpNotification={signUpNotification}
+        />
         <SelectCont>
           <span>{chooseSortMethodText}</span>
           <Select
@@ -211,7 +224,9 @@ export class CommentsSection extends React.Component {
           signUpNotification={signUpNotification}
         />
         <LoadMoreCont>
-          <Button onClick={() => loadAllComments()}>{loadAllCommentsBtnText}</Button>
+          <Button onClick={() => loadAllComments()}>
+            {loadAllCommentsBtnText}
+          </Button>
         </LoadMoreCont>
         <Recaptcha
           ref={ref => (this.recaptcha = ref)} // eslint-disable-line no-return-assign

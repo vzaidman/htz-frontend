@@ -1,3 +1,4 @@
+/* global window */
 /* *************************************************************** *
  * This element accepts these inputTemplates:
   [

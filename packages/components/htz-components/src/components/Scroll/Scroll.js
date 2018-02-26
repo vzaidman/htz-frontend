@@ -30,8 +30,11 @@ const propTypes = {
    * Holds the scroll Object with x, y coords and scroll velocity
    * Passed implicitly by Apollo, not directly as an attribute on the component
    */
-  scroll: PropTypes.shape({ x: PropTypes.number, y: PropTypes.number, velocity: PropTypes.number, })
-    .isRequired,
+  scroll: PropTypes.shape({
+    x: PropTypes.number,
+    y: PropTypes.number,
+    velocity: PropTypes.number,
+  }).isRequired,
   /**
    * The render Props callback
    * This component was built using the render props pattern

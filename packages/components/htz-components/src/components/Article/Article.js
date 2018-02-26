@@ -1,21 +1,25 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import ArticleBody from '../ArticleBody/ArticleBody';
 
 const propTypes = {
-  title: PropTypes.node,
-  author: PropTypes.node,
+  // author: PropTypes.node,
+  body: PropTypes.node,
+  // title: PropTypes.node,
 };
 const defaultProps = {
-  title: null,
-  author: null,
+  // author: null,
+  body: null,
+  // title: null,
 };
-export default function Article(props) {
-  return (
-    <React.Fragment>
-      <ArticleBody body={props.body}/>
-    </React.Fragment>
-  );
-}
+
 Article.propTypes = propTypes;
 Article.defaultProps = defaultProps;
+
+export default function Article(props) {
+  return (
+    <Fragment>
+      <ArticleBody body={props.body} />
+    </Fragment>
+  );
+}

@@ -7,17 +7,17 @@ it('MobileQuickRegistration ', () => {
     <Tags
       tagsList={[
         {
-          "url": "http://eran.themarker.com:8080/hayehudim-baim-1.2670",
-          "contentName": "היהודים באים"
+          url: 'http://eran.themarker.com:8080/hayehudim-baim-1.2670',
+          contentName: 'היהודים באים',
         },
         {
-          "url": "/food/dairy-1.2429",
-          "contentName": "חלבי"
+          url: '/food/dairy-1.2429',
+          contentName: 'חלבי',
         },
         {
-          "url": "/news/terror-1.2603",
-          "contentName": "טרור"
-        }
+          url: '/news/terror-1.2603',
+          contentName: 'טרור',
+        },
       ]}
     />
   );

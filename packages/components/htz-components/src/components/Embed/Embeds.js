@@ -1,4 +1,5 @@
 
+/* global window */
 /* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
@@ -13,7 +14,6 @@ import embedTypes from './utils/embedTypes';
 import exampleProps from './utils/exampleProps';
 import RadioGroup from './utils/RadioGroup';
 import LoadingScreen from './utils/LoadingScreen';
-
 
 const views = {
   ArtiMedia: dynamic(import('./elements/ArtiMedia.js')),
@@ -47,18 +47,21 @@ const menuListStyle = () => ({
   appearance: 'menulist',
 });
 
-const MenuList = createComponent(menuListStyle, 'select', props => Object.keys(props));
+const MenuList = createComponent(menuListStyle, 'select', props =>
+  Object.keys(props)
+);
 
-/**
- * An embed component that holds a verity of elements (such as: Youtube, Twitter, Facebook, etc).
- */
+/*
+  * An embed component that holds a verity of elements
+  * (such as: Youtube, Twitter, Facebook, etc).
+  */
 export default class Embed extends React.Component {
   static propTypes = {
     /**
-     * This input template is created in Polopoly, and by it this Embed component can
-     * determined which element to import and mount
-     * (for example: for 'com.polobase.YouTubeEmbed' inputTemplate, the Embed component will import the
-     * [***Youtube***](./#youtube) component).
+     * This input template is created in Polopoly, and by it this Embed
+     * component can determined which element to import and mount
+     * (for example: for 'com.polobase.YouTubeEmbed' inputTemplate, the Embed
+     * component will import the [***Youtube***](./#youtube) component).
      */
     inputTemplate: PropTypes.string.isRequired,
     /**
@@ -94,8 +97,6 @@ export default class Embed extends React.Component {
     isLoading: false,
   };
 
-  componentsWhoDoNotReceiveOnLoadCallback = [ 'ArtiMedia', 'FileUpload', 'Instagram', 'Pinterest', 'Tline', ]; // eslint-disable-line react/sort-comp
-
   componentDidMount() {
     if (this.props.inputTemplate) {
       this.setState({ fromProps: true, }); // eslint-disable-line react/no-did-mount-set-state
@@ -103,23 +104,29 @@ export default class Embed extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (!this.state.props || (nextState.props !== this.state.props)) {
+    if (!this.state.props || nextState.props !== this.state.props) {
       return true;
     }
-    return (nextState.isLoading !== this.state.isLoading);
+    return nextState.isLoading !== this.state.isLoading;
   }
 
   componentDidUpdate() {
     switch (this.state.type) {
-      case 'Facebook' :
+      case 'Facebook':
+        // eslint-disable-next-line no-undef
         return typeof FB !== 'undefined' ? FB.XFBML.parse() : '';
-      case 'Instagram' :
-        return typeof window.instgrm !== 'undefined' ? window.instgrm.Embeds.process() : '';
-      case 'Pinterest' :
+      case 'Instagram':
+        // eslint-disable-next-line no-undef
+        return typeof window.instgrm !== 'undefined'
+          ? window.instgrm.Embeds.process()
+          : '';
+      case 'Pinterest':
+        // eslint-disable-next-line no-undef
         return typeof doBuild !== 'undefined' ? doBuild() : '';
-      case 'Twitter' :
+      case 'Twitter':
+        // eslint-disable-next-line no-undef
         return typeof twttr !== 'undefined' ? twttr.widgets.load() : '';
-      default :
+      default:
         return null;
     }
   }
@@ -128,7 +135,10 @@ export default class Embed extends React.Component {
     if (e.target.selectedOptions) {
       const type = e.target.selectedOptions[0].value;
       const props = exampleProps(type);
-      const showLoading = this.componentsWhoDoNotReceiveOnLoadCallback.findIndex(component => component === type) === -1;
+      const showLoading =
+        this.componentsWhoDoNotReceiveOnLoadCallback.findIndex(
+          component => component === type
+        ) === -1;
       this.setState({
         type,
         props,
@@ -180,12 +190,26 @@ export default class Embed extends React.Component {
     />
   );
 
+  componentsWhoDoNotReceiveOnLoadCallback = [
+    'ArtiMedia',
+    'FileUpload',
+    'Instagram',
+    'Pinterest',
+    'Tline',
+  ];
+
   render() {
     if (!this.state.fromProps) {
       return (
         <div style={{ position: 'relative', }}>
-          <MenuList name="elementType" onChange={this.onSelectEmbed} defaultValue={'placeHolder'}>
-            <option value="placeHolder" disabled>Select a preview</option>
+          <MenuList
+            name="elementType"
+            onChange={this.onSelectEmbed}
+            defaultValue={'placeHolder'}
+          >
+            <option value="placeHolder" disabled>
+              Select a preview
+            </option>
             <option value="ArtiMedia">ArtiMedia</option>
             <option value="BandCamp">BandCamp</option>
             <option value="Facebook">Facebook</option>
@@ -206,18 +230,11 @@ export default class Embed extends React.Component {
             <option value="Youtube">Youtube</option>
           </MenuList>
           <LoadingScreen isLoading={this.state.isLoading} />
-          {
-            this.state.multiProps !== null ? this.getButtonsComponent() : ''
-          }
-
-          {
-            this.state.props !== null ? this.getEmbedComponentFromState() : ''
-          }
+          { this.state.multiProps !== null ? this.getButtonsComponent() : '' }
+          { this.state.props !== null ? this.getEmbedComponentFromState() : '' }
         </div>
       );
     }
-    return (
-      this.getEmbedComponentFromProps()
-    );
+    return this.getEmbedComponentFromProps();
   }
 }

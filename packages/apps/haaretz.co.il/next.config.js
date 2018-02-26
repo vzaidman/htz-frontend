@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-const path = require('path');
+// const path = require('path');
 
 /**
  * NOTE: Next.js builds the output directory in a temporary location before
@@ -12,7 +12,7 @@ module.exports = {
     config.resolve.alias = config.resolve.alias || {};
 
     config.resolve.alias.config$ = require.resolve(
-      "@haaretz/htz-react-base/webpack/configShim"
+      '@haaretz/htz-react-base/webpack/configShim'
     );
 
     return config;

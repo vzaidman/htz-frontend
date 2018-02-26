@@ -24,7 +24,9 @@ function ScrollListener({ throttle, }) {
     // This `<Scroll />` is from react-fns package
     <Scroll
       throttle={throttle}
-      render={({ x, y, }) => <ScrollStoreMutator x={x} y={y} throttle={throttle} />}
+      render={({ x, y, }) => (
+        <ScrollStoreMutator x={x} y={y} throttle={throttle} />
+      )}
     />
   );
 }

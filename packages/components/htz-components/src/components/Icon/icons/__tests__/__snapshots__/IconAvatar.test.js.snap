@@ -9,7 +9,7 @@ exports[`<IconAvatar /> DOM element add "id" attribute to DOM element 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"
@@ -29,7 +29,7 @@ exports[`<IconAvatar /> DOM element add "onClick" attribute to DOM element 1`] =
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"
@@ -49,7 +49,7 @@ exports[`<IconAvatar /> DOM element pass attributes defined in the "attrs" prop 
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"
@@ -68,7 +68,7 @@ exports[`<IconAvatar /> DOM element render correctly when no props are passed 1`
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"
@@ -87,7 +87,7 @@ exports[`<IconAvatar /> styles responsively set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"
@@ -106,7 +106,7 @@ exports[`<IconAvatar /> styles set icon's color 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"
@@ -125,7 +125,7 @@ exports[`<IconAvatar /> styles set icon's color responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"
@@ -144,7 +144,7 @@ exports[`<IconAvatar /> styles set icon's fill 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"
@@ -163,7 +163,7 @@ exports[`<IconAvatar /> styles set icon's fill responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"
@@ -182,7 +182,7 @@ exports[`<IconAvatar /> styles set icon's size 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"
@@ -201,7 +201,7 @@ exports[`<IconAvatar /> styles set icon's size responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"
@@ -220,7 +220,7 @@ exports[`<IconAvatar /> styles set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
       fill="currentColor"

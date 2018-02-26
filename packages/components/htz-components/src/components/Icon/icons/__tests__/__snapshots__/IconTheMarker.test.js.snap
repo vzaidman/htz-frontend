@@ -9,14 +9,14 @@ exports[`<IconTheMarker /> DOM element add "id" attribute to DOM element 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />
@@ -35,14 +35,14 @@ exports[`<IconTheMarker /> DOM element add "onClick" attribute to DOM element 1`
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />
@@ -61,14 +61,14 @@ exports[`<IconTheMarker /> DOM element pass attributes defined in the "attrs" pr
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />
@@ -86,14 +86,14 @@ exports[`<IconTheMarker /> DOM element render correctly when no props are passed
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />
@@ -111,14 +111,14 @@ exports[`<IconTheMarker /> styles responsively set misc styles on an icon 1`] = 
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />
@@ -136,14 +136,14 @@ exports[`<IconTheMarker /> styles set icon's color 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />
@@ -161,14 +161,14 @@ exports[`<IconTheMarker /> styles set icon's color responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />
@@ -186,14 +186,14 @@ exports[`<IconTheMarker /> styles set icon's fill 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />
@@ -211,14 +211,14 @@ exports[`<IconTheMarker /> styles set icon's fill responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />
@@ -236,14 +236,14 @@ exports[`<IconTheMarker /> styles set icon's size 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />
@@ -261,14 +261,14 @@ exports[`<IconTheMarker /> styles set icon's size responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />
@@ -286,14 +286,14 @@ exports[`<IconTheMarker /> styles set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <circle
       cx={128}
       cy={128}
       fill="currentColor"
       r={120}
     />
-      
+     
     <path
       d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
     />

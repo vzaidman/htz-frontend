@@ -2,8 +2,18 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  mutation ReportAbuse($commentId: ID!, $commentElementId: ID!, $captchaKey: String!) {
-    reportAbuse(newAbuseReport: { commentId: $commentId, commentElementId: $commentElementId, captchaKey: $captchaKey }) {
+  mutation ReportAbuse(
+    $commentId: ID!
+    $commentElementId: ID!
+    $captchaKey: String!
+  ) {
+    reportAbuse(
+      newAbuseReport: {
+        commentId: $commentId
+        commentElementId: $commentElementId
+        captchaKey: $captchaKey
+      }
+    ) {
       status
     }
   }

@@ -8,9 +8,7 @@ const AlertsMobileButtonStyled = createComponent(
   ({ theme, }) => ({
     textAlign: 'center',
     width: '5rem',
-    extend: [
-      parseTypographyProp(-2, theme.type),
-    ],
+    extend: [ parseTypographyProp(-2, theme.type), ],
   }),
   AlertsButton,
   [ 'author', ]

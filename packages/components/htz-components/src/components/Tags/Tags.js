@@ -49,7 +49,7 @@ const tagsWrapperStyle = ({ theme, }) => ({
 });
 const TagsWrapper = createComponent(tagsWrapperStyle);
 
-/**
+/*
  * Returns an inline list of the article's related tags.
  */
 function Tags({ tagsList, theme, }) {
@@ -59,7 +59,10 @@ function Tags({ tagsList, theme, }) {
       <ul>
         {tagsList.map((tag, i) => (
           <Tag key={tag.contentName} isLast={tagsList.length === i + 1}>
-            <Link href={tag.url} content={<TagContent>{tag.contentName}</TagContent>} />
+            <Link
+              href={tag.url}
+              content={<TagContent>{tag.contentName}</TagContent>}
+            />
           </Tag>
         ))}
       </ul>

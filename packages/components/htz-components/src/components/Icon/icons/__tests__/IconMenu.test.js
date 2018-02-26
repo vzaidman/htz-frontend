@@ -36,10 +36,7 @@ describe('<IconMenu />', () => {
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconMenu attrs={{ 'aria-hidden': true, }} />
     );
-    testCase(
-      'add "id" attribute to DOM element',
-      <IconMenu id="hasId" />
-    );
+    testCase('add "id" attribute to DOM element', <IconMenu id="hasId" />);
     testCase(
       'add "onClick" attribute to DOM element',
       <IconMenu id={e => console.log('a')} />
@@ -47,10 +44,9 @@ describe('<IconMenu />', () => {
   });
 
   describe('styles', () => {
-    testCase("set icon's color",
-      <IconMenu color={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's color responsively",
+    testCase("set icon's color", <IconMenu color={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's color responsively",
       <IconMenu
         color={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -58,10 +54,9 @@ describe('<IconMenu />', () => {
         ]}
       />
     );
-    testCase("set icon's fill",
-      <IconMenu fill={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's fill responsively",
+    testCase("set icon's fill", <IconMenu fill={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's fill responsively",
       <IconMenu
         fill={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -69,18 +64,17 @@ describe('<IconMenu />', () => {
         ]}
       />
     );
-    testCase("set icon's size",
-      <IconMenu size={6} />
+    testCase("set icon's size", <IconMenu size={6} />);
+    testCase(
+      "set icon's size responsively",
+      <IconMenu size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]} />
     );
-    testCase("set icon's size responsively",
-      <IconMenu
-        size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]}
-      />
-    );
-    testCase('set misc styles on an icon',
+    testCase(
+      'set misc styles on an icon',
       <IconMenu miscStyles={{ position: 'relative', }} />
     );
-    testCase('responsively set misc styles on an icon',
+    testCase(
+      'responsively set misc styles on an icon',
       <IconMenu
         miscStyles={{
           position: [

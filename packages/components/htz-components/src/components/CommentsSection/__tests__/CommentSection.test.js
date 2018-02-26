@@ -101,9 +101,13 @@ describe('<CommentSection>', () => {
           totalHits={2}
         />
       );
-      expect(output.find('CommentList').props().comments[0].author).toEqual('second');
+      expect(output.find('CommentList').props().comments[0].author).toEqual(
+        'second'
+      );
       output.setState({ sortMethod: { value: 'dateAscending', }, });
-      expect(output.find('CommentList').props().comments[0].author).toEqual('first');
+      expect(output.find('CommentList').props().comments[0].author).toEqual(
+        'first'
+      );
     });
     it('correctly changes sorting order according to commentRating', () => {
       const output = felaMount(
@@ -146,7 +150,9 @@ describe('<CommentSection>', () => {
           }}
         />
       );
-      expect(output.find('CommentList').props().comments[0].author).toEqual('second');
+      expect(output.find('CommentList').props().comments[0].author).toEqual(
+        'second'
+      );
       output.setState({ sortMethod: { value: 'commentRating', }, });
       expect(output.find('CommentList').props().comments[0].author).toEqual(
         'first and better rating'
@@ -211,7 +217,9 @@ describe('<CommentSection>', () => {
           }}
         />
       );
-      expect(output.find('CommentList').props().comments[0].author).toEqual('second');
+      expect(output.find('CommentList').props().comments[0].author).toEqual(
+        'second'
+      );
       output.setState({ sortMethod: { value: 'editorsPick', }, });
       expect(output.find('CommentList').props().comments[0].author).toEqual(
         'first and editorsPick'

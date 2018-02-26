@@ -30,7 +30,12 @@ export const LoginExample = (
           render={({ login, email, password, handleInputChange, }) => (
             <div style={{ marginTop: '24px', marginBottom: '24px', }}>
               <h2>Login</h2>
-              <input name="email" onChange={handleInputChange} value={email} placeholder="Email" />
+              <input
+                name="email"
+                onChange={handleInputChange}
+                value={email}
+                placeholder="Email"
+              />
               <input
                 name="password"
                 onChange={handleInputChange}
@@ -70,13 +75,19 @@ export const RegisterExample = (
           mobileNumber,
           termsChk,
           gRecaptchaResponse,
+          // eslint-disable-next-line no-shadow
           user,
           handleInputChange,
         }) =>
           (isLoggedIn ? null : (
             <div style={{ marginTop: '24px', marginBottom: '24px', }}>
               <h2>Register</h2>
-              <input name="email" onChange={handleInputChange} value={email} placeholder="Email" />
+              <input
+                name="email"
+                onChange={handleInputChange}
+                value={email}
+                placeholder="Email"
+              />
               <br />
               <input
                 name="password"
@@ -133,8 +144,13 @@ export const RegisterExample = (
                 aria-labelledby="frmRegister_termsChk-lbl"
                 aria-describedby="frmRegister_termsChk-message"
               />
-              <label id="frmRegister_termsChk-lbl" htmlFor="pTermsChk" className="t-milli">
-                אני מאשר/ת את תנאי השימוש באתר הארץ, וכן קבלת דיוורים מהאתר והצעות לרכישת מינוי
+              <label
+                id="frmRegister_termsChk-lbl"
+                htmlFor="pTermsChk"
+                className="t-milli"
+              >
+                אני מאשר/ת את תנאי השימוש באתר הארץ, וכן קבלת דיוורים מהאתר
+                והצעות לרכישת מינוי
               </label>
               <div id="frmRegister_termsChk-message" className="form__note" />
               <br />

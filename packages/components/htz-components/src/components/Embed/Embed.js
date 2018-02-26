@@ -7,14 +7,24 @@ import LoadingScreen from './utils/LoadingScreen';
 const embedWrapper = ({ setHeight, }) => ({
   position: 'relative',
   width: 'inherit',
-  extend: [
-    ...(setHeight ? [ { height: '350px', }, ] : []),
-  ],
+  extend: [ ...(setHeight ? [ { height: '350px', }, ] : []), ],
 });
 
 const EmbedWrapper = createComponent(embedWrapper);
 
 export default class Embed extends React.Component {
+  static propTypes = {
+    content: PropTypes.string.isRequired,
+    embedType: PropTypes.string.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    settings: PropTypes.object,
+    inputTemplate: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    settings: null,
+  };
+
   state = {
     isLoading: false,
   };
@@ -37,16 +47,3 @@ export default class Embed extends React.Component {
     );
   }
 }
-
-Embed.propTypes = {
-  content: PropTypes.string.isRequired,
-  embedType: PropTypes.string.isRequired,
-  settings: PropTypes.object,
-  inputTemplate: PropTypes.string.isRequired,
-};
-
-const defaultProps = {
-  settings: null,
-};
-
-Embed.defaultProps = defaultProps;

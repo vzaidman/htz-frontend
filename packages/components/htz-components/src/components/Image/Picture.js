@@ -5,7 +5,7 @@ import Observer from 'react-intersection-observer';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { imageOptionsType, } from '../../propTypes/imageOptionsType';
-import { buildURLs, buildUrl, } from '../../utils/buildImgURLs';
+import { buildURLs, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
 
 const PictureWrapperStyle = ({ sources, theme, defaultImg, bgc, }) => ({

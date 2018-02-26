@@ -9,7 +9,7 @@ exports[`<IconClose /> DOM element add "id" attribute to DOM element 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"
@@ -29,7 +29,7 @@ exports[`<IconClose /> DOM element add "onClick" attribute to DOM element 1`] = 
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"
@@ -49,7 +49,7 @@ exports[`<IconClose /> DOM element pass attributes defined in the "attrs" prop t
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"
@@ -68,7 +68,7 @@ exports[`<IconClose /> DOM element render correctly when no props are passed 1`]
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"
@@ -87,7 +87,7 @@ exports[`<IconClose /> styles responsively set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"
@@ -106,7 +106,7 @@ exports[`<IconClose /> styles set icon's color 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"
@@ -125,7 +125,7 @@ exports[`<IconClose /> styles set icon's color responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"
@@ -144,7 +144,7 @@ exports[`<IconClose /> styles set icon's fill 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"
@@ -163,7 +163,7 @@ exports[`<IconClose /> styles set icon's fill responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"
@@ -182,7 +182,7 @@ exports[`<IconClose /> styles set icon's size 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"
@@ -201,7 +201,7 @@ exports[`<IconClose /> styles set icon's size responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"
@@ -220,7 +220,7 @@ exports[`<IconClose /> styles set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
       d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
       fill="currentColor"

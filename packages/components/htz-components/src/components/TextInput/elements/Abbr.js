@@ -76,6 +76,10 @@ function Abbr({ className, isSup, requiredText, }) {
 Abbr.propTypes = propTypes;
 Abbr.defaultProps = defaultProps;
 
-const StyledAbbr = createComponent(styles, Abbr, [ 'requiredText', 'isSup', 'variant', ]);
+const StyledAbbr = createComponent(styles, Abbr, [
+  'requiredText',
+  'isSup',
+  'variant',
+]);
 
 export default StyledAbbr;

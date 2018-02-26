@@ -48,7 +48,6 @@ const defaultProps = {
   rate: 0,
 };
 
-
 const counterStyle = ({ theme, }) => ({
   color: theme.color('neutral', '-3'),
   verticalAlign: 'center',
@@ -63,10 +62,19 @@ const styles = ({ theme, miscStyles, }) => ({
   display: 'inline-flex',
   alignItems: 'center',
   marginInlineStart: '2rem',
-  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
+  extend: [
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
 });
 
-export function Like({ commentId, iconColor, initVote, isDisLike, rate, className, }) {
+export function Like({
+  commentId,
+  iconColor,
+  initVote,
+  isDisLike,
+  rate,
+  className,
+}) {
   function executeVote() {
     const likeSign = isDisLike ? 'minus' : 'plus';
     initVote(commentId, likeSign);

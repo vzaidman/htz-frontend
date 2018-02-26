@@ -8,7 +8,9 @@ import Form from '../Form/Form'; // eslint-disable-line import/no-named-as-defau
 import TextInput from '../TextInput/TextInput';
 
 const formStyle = ({ theme, isReplyForm, }) => ({
-  backgroundColor: isReplyForm ? theme.color('bg', 'base') : theme.color('white'),
+  backgroundColor: isReplyForm
+    ? theme.color('bg', 'base')
+    : theme.color('white'),
   display: 'flex',
   flexDirection: 'column',
   extend: [
@@ -62,7 +64,10 @@ const toggleButtonStyle = ({ theme, }) => ({
   ],
 });
 
-const ToggleButton = createComponent(toggleButtonStyle, 'button', [ 'type', 'onClick', ]);
+const ToggleButton = createComponent(toggleButtonStyle, 'button', [
+  'type',
+  'onClick',
+]);
 
 const AddCommentFooterStyle = () => ({
   display: 'flex',
@@ -77,16 +82,18 @@ const sendCommentButtonsContStyle = ({ theme, }) => ({
   marginInlineStart: 'auto',
 });
 
-const StyledSendCommentButtonsCont = createComponent(sendCommentButtonsContStyle);
+const StyledSendCommentButtonsCont = createComponent(
+  sendCommentButtonsContStyle
+);
 
 function getPrintableCharsCount(html) {
   const regex = /(<([^>]+)>)/gi;
   return html.replace(regex, '').length;
 }
 
+// Todo: check if user is logged in, add state and display toggle
+// identified comment button, handle button logic.
 class CommentForm extends React.Component {
-  // Todo: check if user is logged in, add state and display toggle identified comment button, handle button logic
-
   static propTypes = {
     /**
      * Update the parent element state that the `<CommentForm />`
@@ -96,14 +103,17 @@ class CommentForm extends React.Component {
     closeReplyForm: PropTypes.func,
     /**
      * A callback that gets called when subbmiting a new comment
-     * @param {String} commentAuthor - the new comment author
-     * @param {String} commentTextHtml - the new comment text innerHTML
-     * @param {String} parentCommentId - the parent CommentId - defaults to '0' if there is no `parentCommentId`
+     * @param {String} commentAuthor
+     *   The new comment author
+     * @param {String} commentTextHtml
+     *   The new comment text innerHTML
+     * @param {String} parentCommentId
+     *   The parent CommentId - defaults to '0' if there is no `parentCommentId`
      */
     initNewComment: PropTypes.func.isRequired,
     /**
-     * The parent commentId when the `<CommentForm />` is a reply form to another Comment,
-     * defaults to '0' because of polopoly legacy
+     * The parent commentId when the `<CommentForm />` is a reply
+     * form to another Comment, defaults to '0' because of polopoly legacy
      */
     parentCommentId: PropTypes.string,
     /**
@@ -136,7 +146,11 @@ class CommentForm extends React.Component {
     : this.props.theme.commentsStyle.textInputVariant;
 
   handleSubmitComment = (commentAuthor, commentTextHtml) => {
-    this.props.initNewComment(commentAuthor, commentTextHtml, this.props.parentCommentId);
+    this.props.initNewComment(
+      commentAuthor,
+      commentTextHtml,
+      this.props.parentCommentId
+    );
     this.setState({ displaySentComp: true, });
   };
 
@@ -188,7 +202,10 @@ class CommentForm extends React.Component {
               order: 1,
             });
           }
-          if (!commentTextHtml || getPrintableCharsCount(commentTextHtml).length === 0) {
+          if (
+            !commentTextHtml ||
+            getPrintableCharsCount(commentTextHtml).length === 0
+          ) {
             errors.push({ name: 'commentTextHtml', order: 2, });
           }
 
@@ -259,6 +276,5 @@ class CommentForm extends React.Component {
     );
   }
 }
-
 
 export default withTheme(CommentForm);

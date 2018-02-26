@@ -122,16 +122,19 @@ export class Form extends Component {
     return {
       ...(isContentEditable
         ? {
-          onContentEditableChange: callAll(onContentEditableChange, (evt, value) => {
-            const values = { ...this.state.values, [name]: value, };
-            const errors = this.props.isValidateOnChange
-              ? this.handleTouchedValidate(values)
-              : null;
-            this.setState({
-              values,
-              ...(errors ? { errors, } : {}),
-            });
-          }),
+          onContentEditableChange: callAll(
+            onContentEditableChange,
+            (evt, value) => {
+              const values = { ...this.state.values, [name]: value, };
+              const errors = this.props.isValidateOnChange
+                ? this.handleTouchedValidate(values)
+                : null;
+              this.setState({
+                values,
+                ...(errors ? { errors, } : {}),
+              });
+            }
+          ),
         }
         : {
           onChange: callAll(onChange, evt => {
@@ -175,14 +178,18 @@ export class Form extends Component {
   /**
    * A function that handles submitting data from the Form
    * @param {SyntheticEvent} evt - The event object
-   * @param {Boolean} disablePreventDefault - If true the submit will not prevent form submit default behaviour
-   * The function first checks if the values pass the validation function.
-   * If there are errors it will focus on the error with the lowest error.order value
-   * If there are no errors or no validation function it will call the onSubmit function provided to the
-   * Form with the values from the state, and then clear the form.
+   * @param {Boolean} disablePreventDefault
+   *   If true the submit will not prevent form submit default behaviour
+   *   The function first checks if the values pass the validation function.
+   *   If there are errors it will focus on the error with the lowest error.order value
+   *   If there are no errors or no validation function it will call the
+   *   `onSubmit` function provided to the Form with the values from the state,
    *
-   * By default submit event is prevented with evt.preventDefault() in the handle submit func
-   * If the consumer wants default form submit functionallity he can simply pass disablePreventDefault prop to the Form
+   *   and then clear the form.
+   *   By default, submit event is prevented with evt.preventDefault() in the
+   *   handle submit function.
+   *   The `disablePreventDefault` prop will resture the default submit
+   *   functionallity of the form.
    */
   handleSubmit = (evt, disablePreventDefault = false) => {
     if (!disablePreventDefault) evt.preventDefault();
@@ -217,7 +224,7 @@ export class Form extends Component {
       errors: [],
       touched: {},
     });
-  }
+  };
 
   focusFirstError(errors) {
     if (errors.length > 0) {
@@ -230,7 +237,9 @@ export class Form extends Component {
   handleTouchedValidate(values) {
     if (this.props.validate) {
       const errors = this.props.validate(values);
-      const cleanErrors = errors.filter(error => this.state.touched[error.name]);
+      const cleanErrors = errors.filter(
+        error => this.state.touched[error.name]
+      );
       return cleanErrors;
     }
     return [];
