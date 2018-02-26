@@ -117,7 +117,6 @@ const htzTheme = Object.freeze({
   gridStyle,
   fontStacks,
   footerBorderStyle,
-  gridStyle,
   inputStyle,
   selectStyle,
   typeConf,
