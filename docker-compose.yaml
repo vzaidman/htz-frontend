@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  htz_react:
+    build: .
+    image: "nexus.themarker.com:8083/htz_react_server:${version:-latest}"
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=production
+      # the following environment is optional
+      - PORT=3000
+      - BIND_ADDRESS=0.0.0.0
+
+
