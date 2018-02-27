@@ -58,7 +58,7 @@
       credit: "גיל אליהו",
       title: "הכנרת, באוקטובר 2017",
       aspects: {
-        regular: {
+        full: {
           width: 1819,
             height: 1364,
             x: 358,

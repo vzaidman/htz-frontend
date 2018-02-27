@@ -13,9 +13,10 @@
 <div style={{ maxWidth: '700px', }}>
   <ArticleImage 
     alt="alternative text"
-    viewMode="TwoThirdView"
+    viewMode="OneThirdView"
     accessibility="fgh"
-    title="this is the image text"
+    title="חיידק הקפה נדבק בו בגיל מבוגר יחסית, פאולו פנרו בבוטגה שלו בעיר ברה נדבק בו בגיל מבוגר"
+    credit="קרדיט"
     aspects={{
       full: {
         width: 1024,
@@ -44,7 +45,7 @@
 <div style={{ maxWidth: '700px', }}>
   <ArticleImage 
     alt="alternative text"
-    viewMode="regularModeBigImage"
+    viewMode="FullColumnWithVerticalImage"
     accessibility="cat"
     credit="me"
     title="this is the image text"
@@ -83,6 +84,32 @@
     inputTemplate="com.tm.Image"
     contentId="1.6651"
     contentName="cat"
+  />
+</div>
+```
+```jsx
+<div style={{ maxWidth: '700px', }}>
+  <ArticleImage 
+    viewMode="regularModeBigImage"
+    accessibility="אימפריית הפשע"
+    title="אימפריית הפשע"
+    aspects={{
+      full: {
+        width: 960,
+        height: 1440
+      }
+    }}
+    isAnimated="false"
+    imgArray={[
+      {
+        imgName: "image/4224562979.jpg",
+        version: "1519208169"
+      }
+    ]}
+    imageType="image"
+    inputTemplate="com.tm.Image"
+    contentId="1.2589"
+    contentName="אימפריית הפשע"
   />
 </div>
 ```
