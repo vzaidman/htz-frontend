@@ -56,7 +56,7 @@ const imageCaptionStyle = ({ theme, }) => ({
   marginEnd: '2rem',
   marginBottom: '10rem',
   textAlign: 'start',
-  flexBasis: '50rem',
+  flexBasis: '45rem',
   alignSelf: 'flex-end',
 });
 const ImageCaption = createComponent(imageCaptionStyle);
@@ -71,7 +71,8 @@ const separatorStyle = ({ theme, }) => ({
 const Separator = createComponent(separatorStyle);
 
 const iconsStyle = () => ({
-
+  display: 'flex',
+  alignItems: 'center',
 });
 const SharingIcons = createComponent(iconsStyle);
 
@@ -84,7 +85,7 @@ const fullContainerStyle = ({ theme, }) => ({
   height: '100%',
   zIndex: '6',
   display: 'flex',
-  justifyContent: 'flex-start',
+  justifyContent: 'flex-end',
 });
 const FullScreenContainer = createComponent(fullContainerStyle, Wrapper);
 
@@ -105,7 +106,8 @@ const zoomWrapperStyle = ({ theme, }) => ({
 });
 const ZoomWrapper = createComponent(zoomWrapperStyle, 'span', [ 'onClick', ]);
 
-const closeWrapperStyle = () => ({
+const closeWrapperStyle = ({ theme, }) => ({
+  backgroundColor: theme.color('neutral'),
   cursor: 'zoom-out',
 });
 const CloseWrapper = createComponent(closeWrapperStyle, ZoomWrapper, [ 'onClick', ]);
@@ -191,6 +193,13 @@ class ArticleImage extends React.Component {
   };
 
   render() {
+    const iconsAttrs = {
+      color: [ 'neutral', '-10', ],
+      miscStyles: {
+        marginEnd: '6rem',
+      },
+    };
+
     return (
       <Fragment>
         <Wrapper>
@@ -233,25 +242,16 @@ class ArticleImage extends React.Component {
               <Separator />
               <SharingIcons>
                 <IconFacebookLogo
-                  color={[ 'neutral', '-10', ]}
+                  {...iconsAttrs}
                   size={3}
-                  miscStyles={{
-                    marginEnd: '6rem',
-                  }}
                 />
                 <IconWhatsapp
-                  color={[ 'neutral', '-10', ]}
+                  {...iconsAttrs}
                   size={3}
-                  miscStyles={{
-                    marginEnd: '6rem',
-                  }}
                 />
                 <IconMailAlert
-                  color={[ 'neutral', '-10', ]}
+                  {...iconsAttrs}
                   size={5}
-                  miscStyles={{
-                    marginEnd: '6rem',
-                  }}
                 />
               </SharingIcons>
             </ImageCaption>
