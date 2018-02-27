@@ -63,6 +63,6 @@ Object {
       </ul>
     </div>
   </div>,
-  "styles": ".htz-e{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-f{color:#00537A}.htz-g{margin-left:1rem}.htz-h{display:inline}.htz-i{color:#505050}.htz-j{text-decoration:underline}@media (max-width: 80em){.htz-a{font-size:2.3333333333333335rem}.htz-b{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-c{font-size:2.2857142857142856rem}.htz-d{line-height:1.3125em}}",
+  "styles": ".htz-e{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-f{color:#00537A}.htz-g{margin-left:1rem}.htz-h{display:inline}.htz-i{color:#505050}.htz-j{text-decoration:underline}@media (max-width: 79.9375em){.htz-a{font-size:2.3333333333333335rem}.htz-b{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-c{font-size:2.2857142857142856rem}.htz-d{line-height:1.3125em}}",
 }
 `;

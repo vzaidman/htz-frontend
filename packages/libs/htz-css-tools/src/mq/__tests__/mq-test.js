@@ -76,13 +76,15 @@ describe('# Media Queries', () => {
       });
       it('Return a max-width media-query', () => {
         expect(mq({ until: 's', }, { color: 'red', })).toEqual({
-          '@media (max-width: 37.5em)': { color: 'red', },
+          '@media (max-width: 37.4375em)': { color: 'red', },
         });
       });
       it('Return a typed max-width media-query', () => {
         expect(
           mq({ until: '320px', type: 'screen', }, { color: 'red', })
-        ).toEqual({ '@media screen and (max-width: 20em)': { color: 'red', }, });
+        ).toEqual({
+          '@media screen and (max-width: 19.9375em)': { color: 'red', },
+        });
       });
       it('Return a misc media-query from a named misc breakpoint', () => {
         expect(mq({ misc: 'hidpi', }, { color: 'red', })).toEqual({
@@ -106,7 +108,9 @@ describe('# Media Queries', () => {
       });
       it('Return a min-width and max-width media-query', () => {
         expect(mq({ from: 's', until: 'm', }, { color: 'red', })).toEqual({
-          '@media (min-width: 37.5em) and (max-width: 48em)': { color: 'red', },
+          '@media (min-width: 37.5em) and (max-width: 47.9375em)': {
+            color: 'red',
+          },
         });
       });
       it('Return a typed min-width and max-width media-query', () => {
@@ -116,7 +120,7 @@ describe('# Media Queries', () => {
             { color: 'red', }
           )
         ).toEqual({
-          '@media screen and (min-width: 20em) and (max-width: 40em)': {
+          '@media screen and (min-width: 20em) and (max-width: 39.9375em)': {
             color: 'red',
           },
         });
@@ -153,7 +157,7 @@ describe('# Media Queries', () => {
             { color: 'green', }
           )
         ).toEqual({
-          '@media (max-width: 37.5em) and (orientation: landscape)': {
+          '@media (max-width: 37.4375em) and (orientation: landscape)': {
             color: 'green',
           },
         });
@@ -169,7 +173,7 @@ describe('# Media Queries', () => {
             { color: '#222', }
           )
         ).toEqual({
-          '@media screen and (max-width: 20em) and (orientation: landscape)': {
+          '@media screen and (max-width: 19.9375em) and (orientation: landscape)': {
             color: '#222',
           },
         });
@@ -181,7 +185,7 @@ describe('# Media Queries', () => {
             { left: 0, }
           )
         ).toEqual({
-          '@media (min-width: 37.5em) and (max-width: 48em) and (orientation: landscape)': {
+          '@media (min-width: 37.5em) and (max-width: 47.9375em) and (orientation: landscape)': {
             left: 0,
           },
         });
@@ -198,7 +202,7 @@ describe('# Media Queries', () => {
             { right: 0, }
           )
         ).toEqual({
-          '@media screen and (min-width: 20em) and (max-width: 40em) and (orientation: landscape)': {
+          '@media screen and (min-width: 20em) and (max-width: 39.9375em) and (orientation: landscape)': {
             right: 0,
           },
         });

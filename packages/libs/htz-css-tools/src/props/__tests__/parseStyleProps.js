@@ -60,7 +60,7 @@ describe('parseStyleProps', () => {
     );
     const expected = [
       {
-        '@media (min-width: 37.5em) and (max-width: 48em)': {
+        '@media (min-width: 37.5em) and (max-width: 47.9375em)': {
           fontSize: '3rem',
           lineHeight: '1.3333333333333333em',
         },

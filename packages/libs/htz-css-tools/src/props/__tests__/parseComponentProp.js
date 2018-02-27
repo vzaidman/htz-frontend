@@ -66,7 +66,7 @@ describe('parseProp()', () => {
           ],
         ],
         {
-          '@media (max-width: 48em)': {
+          '@media (max-width: 47.9375em)': {
             color: 'red',
           },
           '@media (min-width: 80em)': {
@@ -91,7 +91,7 @@ describe('parseProp()', () => {
             (value === true ? { backgroundColor: 'red', } : undefined),
         ],
         {
-          '@media (min-width: 37.5em) and (max-width: 48em)': {
+          '@media (min-width: 37.5em) and (max-width: 47.9375em)': {
             backgroundColor: 'red',
           },
           '@media (min-width: 80em)': {
@@ -110,7 +110,7 @@ describe('parseProp()', () => {
           [ true, ],
         ],
         {
-          '@media (min-width: 37.5em) and (max-width: 48em)': {
+          '@media (min-width: 37.5em) and (max-width: 47.9375em)': {
             borderRadius: '4px',
           },
           '@media (min-width: 80em)': {

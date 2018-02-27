@@ -96,7 +96,7 @@ exports[`<IconTwitter /> styles responsively set misc styles on an icon 1`] = `
 </div>
 `;
 
-exports[`<IconTwitter /> styles responsively set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{position:relative}}@media (min-width: 80em){.htz-e{position:static}}"`;
+exports[`<IconTwitter /> styles responsively set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 79.9375em){.htz-d{position:relative}}@media (min-width: 80em){.htz-e{position:static}}"`;
 
 exports[`<IconTwitter /> styles set icon's color 1`] = `
 <div>
@@ -134,7 +134,7 @@ exports[`<IconTwitter /> styles set icon's color responsively 1`] = `
 </div>
 `;
 
-exports[`<IconTwitter /> styles set icon's color responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-d{fill:#FFF}@media (max-width: 80em){.htz-b{color:#0B7EB5}}@media (min-width: 80em){.htz-c{color:#2D2D2D}}"`;
+exports[`<IconTwitter /> styles set icon's color responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-d{fill:#FFF}@media (max-width: 79.9375em){.htz-b{color:#0B7EB5}}@media (min-width: 80em){.htz-c{color:#2D2D2D}}"`;
 
 exports[`<IconTwitter /> styles set icon's fill 1`] = `
 <div>
@@ -172,7 +172,7 @@ exports[`<IconTwitter /> styles set icon's fill responsively 1`] = `
 </div>
 `;
 
-exports[`<IconTwitter /> styles set icon's fill responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}@media (max-width: 80em){.htz-c{fill:#0B7EB5}}@media (min-width: 80em){.htz-d{fill:#2D2D2D}}"`;
+exports[`<IconTwitter /> styles set icon's fill responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}@media (max-width: 79.9375em){.htz-c{fill:#0B7EB5}}@media (min-width: 80em){.htz-d{fill:#2D2D2D}}"`;
 
 exports[`<IconTwitter /> styles set icon's size 1`] = `
 <div>
@@ -210,7 +210,7 @@ exports[`<IconTwitter /> styles set icon's size responsively 1`] = `
 </div>
 `;
 
-exports[`<IconTwitter /> styles set icon's size responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{font-size:6rem}}@media (min-width: 80em){.htz-e{font-size:7rem}}"`;
+exports[`<IconTwitter /> styles set icon's size responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 79.9375em){.htz-d{font-size:6rem}}@media (min-width: 80em){.htz-e{font-size:7rem}}"`;
 
 exports[`<IconTwitter /> styles set misc styles on an icon 1`] = `
 <div>

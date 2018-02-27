@@ -33,6 +33,6 @@ Object {
       עקוב
     </button>
   </div>,
-  "styles": ".htz-a{text-align:center}.htz-b{width:5rem}.htz-g{border:0px}.htz-h{clip:rect(0 0 0 0)}.htz-i{clip-path:inset(50%);-webkit-clip-path:inset(50%)}.htz-j{height:1px}.htz-k{margin:-1px}.htz-l{overflow:hidden}.htz-m{padding:0rem}.htz-n{position:absolute}.htz-o{width:1px}.htz-p{white-space:nowrap}.htz-q{vertical-align:-0.15em}.htz-r{color:#006B96}.htz-s{fill:#FFF}.htz-t{font-size:3rem}@media (max-width: 80em){.htz-c{font-size:2rem}.htz-d{line-height:1.5em}}@media (min-width: 80em){.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}",
+  "styles": ".htz-a{text-align:center}.htz-b{width:5rem}.htz-g{border:0px}.htz-h{clip:rect(0 0 0 0)}.htz-i{clip-path:inset(50%);-webkit-clip-path:inset(50%)}.htz-j{height:1px}.htz-k{margin:-1px}.htz-l{overflow:hidden}.htz-m{padding:0rem}.htz-n{position:absolute}.htz-o{width:1px}.htz-p{white-space:nowrap}.htz-q{vertical-align:-0.15em}.htz-r{color:#006B96}.htz-s{fill:#FFF}.htz-t{font-size:3rem}@media (max-width: 79.9375em){.htz-c{font-size:2rem}.htz-d{line-height:1.5em}}@media (min-width: 80em){.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}",
 }
 `;

@@ -82,8 +82,8 @@ describe('pxToRem factory function', () => {
   it('behaves according to "defaultFallback" argument', () => {
     // Without pixel fallback by defualt
     expect(rem('padding', 6)).toEqual({
-      '@media (max-width: 37.5em)': { padding: '1rem', },
-      '@media (min-width: 37.5em) and (max-width: 80em)': {
+      '@media (max-width: 37.4375em)': { padding: '1rem', },
+      '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
         padding: `${6 / 7}rem`,
       },
       '@media (min-width: 80em)': { padding: `${6 / 8}rem`, },
@@ -91,8 +91,8 @@ describe('pxToRem factory function', () => {
 
     // With pixel fallback by default
     expect(remWithDefaultFallback('padding', 6)).toEqual({
-      '@media (max-width: 37.5em)': { padding: [ '6px', '1rem', ], },
-      '@media (min-width: 37.5em) and (max-width: 80em)': {
+      '@media (max-width: 37.4375em)': { padding: [ '6px', '1rem', ], },
+      '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
         padding: [ '6px', `${6 / 7}rem`, ],
       },
       '@media (min-width: 80em)': { padding: [ '6px', `${6 / 8}rem`, ], },
@@ -125,9 +125,9 @@ describe('pxToRem factory function', () => {
     function testUsecases(fn, testCases) {
       testCases.forEach(testCase => {
         const [ args, expected, ] = testCase;
-        it(`returns ${JSON.stringify(
-          expected
-        )} when passed (padding,${args})`, () => {
+        it(`returns ${JSON.stringify(expected)} when passed (padding,${
+          args
+        })`, () => {
           expect(fn('padding', ...args)).toEqual(expected);
         });
       });
@@ -138,8 +138,8 @@ describe('pxToRem factory function', () => {
       [
         [ [ 6, 12, ], ],
         {
-          '@media (max-width: 37.5em)': { padding: '1rem 2rem', },
-          '@media (min-width: 37.5em) and (max-width: 80em)': {
+          '@media (max-width: 37.4375em)': { padding: '1rem 2rem', },
+          '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
             padding: `${6 / 7}rem ${12 / 7}rem`,
           },
           '@media (min-width: 80em)': { padding: `${6 / 8}rem ${12 / 8}rem`, },
@@ -149,8 +149,8 @@ describe('pxToRem factory function', () => {
       [
         [ 6, ],
         {
-          '@media (max-width: 37.5em)': { padding: '1rem', },
-          '@media (min-width: 37.5em) and (max-width: 80em)': {
+          '@media (max-width: 37.4375em)': { padding: '1rem', },
+          '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
             padding: `${6 / 7}rem`,
           },
           '@media (min-width: 80em)': { padding: `${6 / 8}rem`, },
@@ -161,8 +161,8 @@ describe('pxToRem factory function', () => {
       [
         [ 6, undefined, undefined, true, ],
         {
-          '@media (max-width: 37.5em)': { padding: [ '6px', '1rem', ], },
-          '@media (min-width: 37.5em) and (max-width: 80em)': {
+          '@media (max-width: 37.4375em)': { padding: [ '6px', '1rem', ], },
+          '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
             padding: [ '6px', `${6 / 7}rem`, ],
           },
           '@media (min-width: 80em)': { padding: [ '6px', `${6 / 8}rem`, ], },
@@ -171,8 +171,10 @@ describe('pxToRem factory function', () => {
       [
         [ [ 6, 12, ], undefined, undefined, true, ],
         {
-          '@media (max-width: 37.5em)': { padding: [ '6px 12px', '1rem 2rem', ], },
-          '@media (min-width: 37.5em) and (max-width: 80em)': {
+          '@media (max-width: 37.4375em)': {
+            padding: [ '6px 12px', '1rem 2rem', ],
+          },
+          '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
             padding: [ '6px 12px', `${6 / 7}rem ${12 / 7}rem`, ],
           },
           '@media (min-width: 80em)': {
@@ -185,8 +187,8 @@ describe('pxToRem factory function', () => {
       [
         [ 6, 'default', ],
         {
-          '@media (max-width: 37.5em)': { padding: '1rem', },
-          '@media (min-width: 37.5em) and (max-width: 80em)': {
+          '@media (max-width: 37.4375em)': { padding: '1rem', },
+          '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
             padding: `${6 / 7}rem`,
           },
           '@media (min-width: 80em)': { padding: `${6 / 8}rem`, },
@@ -195,7 +197,7 @@ describe('pxToRem factory function', () => {
       [
         [ 6, 'm', ],
         {
-          '@media (min-width: 37.5em) and (max-width: 80em)': {
+          '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
             padding: `${6 / 7}rem`,
           },
           '@media (min-width: 80em)': { padding: `${6 / 8}rem`, },
@@ -204,7 +206,7 @@ describe('pxToRem factory function', () => {
       [
         [ 6, 'l', ],
         {
-          '@media (min-width: 64em) and (max-width: 80em)': {
+          '@media (min-width: 64em) and (max-width: 79.9375em)': {
             padding: `${6 / 7}rem`,
           },
           '@media (min-width: 80em)': { padding: `${6 / 8}rem`, },
@@ -221,14 +223,14 @@ describe('pxToRem factory function', () => {
       [
         [ 6, undefined, 'm', ],
         {
-          '@media (max-width: 37.5em)': { padding: '1rem', },
+          '@media (max-width: 37.4375em)': { padding: '1rem', },
         },
       ],
       [
         [ 6, undefined, 'l', ],
         {
-          '@media (max-width: 37.5em)': { padding: '1rem', },
-          '@media (min-width: 37.5em) and (max-width: 64em)': {
+          '@media (max-width: 37.4375em)': { padding: '1rem', },
+          '@media (min-width: 37.5em) and (max-width: 63.9375em)': {
             padding: `${6 / 7}rem`,
           },
         },
@@ -236,8 +238,8 @@ describe('pxToRem factory function', () => {
       [
         [ 6, undefined, 'xl', ],
         {
-          '@media (max-width: 37.5em)': { padding: '1rem', },
-          '@media (min-width: 37.5em) and (max-width: 80em)': {
+          '@media (max-width: 37.4375em)': { padding: '1rem', },
+          '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
             padding: `${6 / 7}rem`,
           },
         },
@@ -246,13 +248,13 @@ describe('pxToRem factory function', () => {
       // min and max-width
       [
         [ 6, 'default', 'm', ],
-        { '@media (max-width: 37.5em)': { padding: '1rem', }, },
+        { '@media (max-width: 37.4375em)': { padding: '1rem', }, },
       ],
       [
         [ 6, 'default', 'l', ],
         {
-          '@media (max-width: 37.5em)': { padding: '1rem', },
-          '@media (min-width: 37.5em) and (max-width: 64em)': {
+          '@media (max-width: 37.4375em)': { padding: '1rem', },
+          '@media (min-width: 37.5em) and (max-width: 63.9375em)': {
             padding: `${6 / 7}rem`,
           },
         },
@@ -260,8 +262,8 @@ describe('pxToRem factory function', () => {
       [
         [ 6, 'default', 'xl', ],
         {
-          '@media (max-width: 37.5em)': { padding: '1rem', },
-          '@media (min-width: 37.5em) and (max-width: 80em)': {
+          '@media (max-width: 37.4375em)': { padding: '1rem', },
+          '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
             padding: `${6 / 7}rem`,
           },
         },
@@ -269,7 +271,7 @@ describe('pxToRem factory function', () => {
       [
         [ 6, 'm', 'l', ],
         {
-          '@media (min-width: 37.5em) and (max-width: 64em)': {
+          '@media (min-width: 37.5em) and (max-width: 63.9375em)': {
             padding: `${6 / 7}rem`,
           },
         },
@@ -277,7 +279,7 @@ describe('pxToRem factory function', () => {
       [
         [ 6, 'm', 'xl', ],
         {
-          '@media (min-width: 37.5em) and (max-width: 80em)': {
+          '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
             padding: `${6 / 7}rem`,
           },
         },
@@ -285,7 +287,7 @@ describe('pxToRem factory function', () => {
       [
         [ 6, 'l', 'xl', ],
         {
-          '@media (min-width: 64em) and (max-width: 80em)': {
+          '@media (min-width: 64em) and (max-width: 79.9375em)': {
             padding: `${6 / 7}rem`,
           },
         },
