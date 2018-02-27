@@ -93,6 +93,11 @@ Picture.propTypes = {
       isAnimatedGif: PropTypes.bool,
     }).isRequired,
   }),
+  /**
+   * Determines if the image will be surrounded by
+   * a wrapper to prevent content jumping
+   */
+  hasWrapper: PropTypes.bool,
   /** Passing attributes role="presentation" and aria-hidden="true" if exists  */
   isPresentational: PropTypes.bool,
   /**
@@ -169,6 +174,7 @@ Picture.defaultProps = {
   getDimensions: null,
   lazyLoad: false,
   miscStyles: null,
+  hasWrapper: true,
   isPresentational: false,
 };
 
@@ -177,6 +183,7 @@ function Picture(props) {
     attrs,
     bgcolor,
     defaultImg,
+    hasWrapper,
     isPresentational,
     lazyLoad,
     miscStyles,
@@ -229,6 +236,7 @@ function Picture(props) {
       <ImgSource
         alt={alt}
         src={imgSrc}
+        hasWrapper={hasWrapper}
         {...(imgSrcSet ? { srcSet: imgSrcSet, } : {})}
         {...(defaultSizes ? { sizes: defaultSizes, } : {})}
         title={credit}
@@ -246,29 +254,39 @@ function Picture(props) {
   );
 
   if (lazyLoad) {
-    return (
+    return hasWrapper
+      ? (
+        <StyledPictureWrapper
+          miscStyles={miscStyles}
+          sources={sources}
+          defaultImg={defaultImg}
+          bgc={bgcolor}
+        >
+          <Observer triggerOnce rootMargin={lazyLoad}>
+            {inView => (inView ? Element : null)}
+          </Observer>
+        </StyledPictureWrapper>
+      )
+      : (
+        <Observer triggerOnce rootMargin={lazyLoad}>
+          {inView => (inView ? Element : null)}
+        </Observer>
+      );
+  }
+  return hasWrapper ?
+    (
       <StyledPictureWrapper
         miscStyles={miscStyles}
         sources={sources}
         defaultImg={defaultImg}
         bgc={bgcolor}
       >
-        <Observer triggerOnce rootMargin={lazyLoad}>
-          {inView => (inView ? Element : null)}
-        </Observer>
+        {Element}
       </StyledPictureWrapper>
+    )
+    : (
+      Element
     );
-  }
-  return (
-    <StyledPictureWrapper
-      miscStyles={miscStyles}
-      sources={sources}
-      defaultImg={defaultImg}
-      bgc={bgcolor}
-    >
-      {Element}
-    </StyledPictureWrapper>
-  );
 }
 
 export default withTheme(Picture);

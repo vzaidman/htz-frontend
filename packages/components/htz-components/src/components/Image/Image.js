@@ -119,6 +119,11 @@ class Image extends React.Component {
     }).isRequired,
     /** An image options for user transforms and sizes */
     imgOptions: imageOptionsType.isRequired,
+    /**
+     * Determines if the image will be surrounded by
+     * a wrapper to prevent content jumping
+     */
+    hasWrapper: PropTypes.bool,
     /** Passing attributes role="presentation" and aria-hidden="true" if exists  */
     isPresentational: PropTypes.bool,
     /**
@@ -143,6 +148,7 @@ class Image extends React.Component {
     attrs: null,
     bgcolor: null,
     className: null,
+    hasWrapper: true,
     isPresentational: false,
     lazyLoad: false,
     miscStyles: null,
@@ -184,6 +190,7 @@ Please use the "<Picture />" component`
       isPresentational,
       lazyLoad,
       miscStyles,
+      hasWrapper,
     } = this.props;
 
     if (
@@ -215,6 +222,7 @@ Please use the "<Picture />" component`
         <ImgSource
           alt={alt}
           src={src}
+          hasWrapper={hasWrapper}
           {...(srcSet ? { srcSet, } : {})}
           {...(sizes ? { sizes, } : {})}
           title={credit}
@@ -232,6 +240,7 @@ Please use the "<Picture />" component`
     ) : (
       <ImgSource
         alt={alt}
+        hasWrapper={hasWrapper}
         title={credit}
         src={src}
         {...(srcSet ? { srcSet, } : {})}
@@ -249,30 +258,37 @@ Please use the "<Picture />" component`
     );
 
     if (!lazyLoad) {
-      return (
+      return hasWrapper
+        ? (
+          <StyledImgWrapper
+            width={width}
+            height={height}
+            bgc={bgcolor}
+            miscStyles={miscStyles}
+          >
+            {Sources}
+          </StyledImgWrapper>
+        )
+        : Sources;
+    }
+
+    return hasWrapper ?
+      (
         <StyledImgWrapper
           width={width}
           height={height}
           bgc={bgcolor}
           miscStyles={miscStyles}
         >
-          {Sources}
+          <Observer triggerOnce rootMargin={lazyLoad}>
+            {inView => (inView ? Sources : null)}
+          </Observer>
         </StyledImgWrapper>
-      );
-    }
-
-    return (
-      <StyledImgWrapper
-        width={width}
-        height={height}
-        bgc={bgcolor}
-        miscStyles={miscStyles}
-      >
+      ) : (
         <Observer triggerOnce rootMargin={lazyLoad}>
           {inView => (inView ? Sources : null)}
         </Observer>
-      </StyledImgWrapper>
-    );
+      );
   }
 }
 
