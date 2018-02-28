@@ -7,6 +7,7 @@ import {
 } from '@haaretz/htz-css-tools';
 import ArticleCredit from '../Credit/CreditArticle';
 import AlertsDesktopButton from '../AlertsButton/AlertsDesktopButton';
+import Image from '../Image/Image';
 import Time from '../Time/Time';
 
 const styleArticleByLineDesktop = ({ theme, miscStyles, }) => ({
@@ -48,21 +49,22 @@ function ArticleByLineDesktopComponent({
 }) {
   return (
     <div className={className}>
-      {/* FIXME Use the <Image /> component */}
-      <img
-        style={{
+      <Image
+        data={author.image}
+        imgOptions={{
+          transforms: {
+            width: '100',
+            aspect: 'square',
+            quality: 'auto',
+          },
+        }}
+        miscStyles={{
+          width: '10rem',
+          paddingBottom: '10rem',
           borderRadius: '50%',
           overflow: 'hidden',
-          width: '11.666rem',
-          backgroundColor: author.image
-            ? 'transparent'
-            : theme.color('bg', '+1'),
+          display: 'inline-block',
         }}
-        alt={author.name}
-        src={
-          author.image ||
-          'https://images.haarets.co.il/image/fetch/w_70,h_70,q_auto,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/https://www.haaretz.co.il/polopoly_fs/1.1479631.1316696805!/image/936552297.png'
-        }
       />
 
       <ArticleCredit {...author} miscStyles={{ marginTop: '1rem', }} />

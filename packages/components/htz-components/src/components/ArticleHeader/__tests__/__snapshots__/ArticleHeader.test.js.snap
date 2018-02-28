@@ -24,8 +24,32 @@ Object {
           id={null}
         >
           <img
-            alt="Avi Kaufman"
-            src={undefined}
+            alt={undefined}
+            src={
+              Object {
+                "accessibility": "ren & stimpy",
+                "aspects": Object {
+                  "square": Object {
+                    "height": 360,
+                    "width": 360,
+                    "x": 0,
+                    "y": 170,
+                  },
+                },
+                "contentId": "1.6738",
+                "contentName": "ren & stimpy",
+                "imageType": "image",
+                "imgArray": Array [
+                  Object {
+                    "imgName": "image/1536361643.png",
+                    "version": "1519832762",
+                  },
+                ],
+                "inputTemplate": "com.tm.Image",
+                "isAnimated": false,
+                "viewMode": "FullColumnWithVerticalImage",
+              }
+            }
             style={
               Object {
                 "borderRadius": "50%",
@@ -66,7 +90,6 @@ Object {
               id="alerts_btn_description"
             >
               קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
-              Avi Kaufman
             </span>
             <div>
               <svg
@@ -100,7 +123,6 @@ Object {
               id="alerts_btn_description"
             >
               קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
-              Avi Kaufman
             </span>
             <span
               className="htz-ch htz-ba htz-ci htz-cj htz-bg htz-bh"
@@ -125,20 +147,16 @@ Object {
       <div
         className="htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-cg htz-cl"
       >
-        <img
-          alt="Avi Kaufman"
-          src="https://images.haarets.co.il/image/fetch/w_70,h_70,q_auto,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/https://www.haaretz.co.il/polopoly_fs/1.1479631.1316696805!/image/936552297.png"
-          style={
-            Object {
-              "backgroundColor": "#E6EDF0",
-              "borderRadius": "50%",
-              "overflow": "hidden",
-              "width": "11.666rem",
-            }
-          }
-        />
+        <div
+          className="htz-cm htz-cn htz-a htz-co htz-cp htz-cq htz-bv htz-cr"
+        >
+          <img
+            className="htz-cs htz-ct htz-bx htz-cu htz-cf"
+            src="https://images.haarets.co.il/image/upload/x_0,y_170,w_360,h_360,c_crop,g_north_west/q_auto,h_100,w_100,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1519832762/1.6738.1536361643.png"
+          />
+        </div>
         <address
-          className="htz-az htz-ba htz-bb htz-bc htz-bd htz-f htz-be htz-bf htz-bg htz-bh htz-bi htz-cm"
+          className="htz-az htz-ba htz-bb htz-bc htz-bd htz-f htz-be htz-bf htz-bg htz-bh htz-bi htz-cv"
         >
           Avi Kaufman
         </address>
@@ -153,7 +171,6 @@ Object {
             id="alerts_btn_description"
           >
             קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
-            Avi Kaufman
           </span>
           <span
             className="htz-ch htz-ba htz-ci htz-cj htz-bg htz-bh"
@@ -174,7 +191,7 @@ Object {
           </span>
         </button>
         <time
-          className="htz-ce htz-cn htz-bb htz-bc htz-bd htz-f htz-be htz-bf htz-bg htz-bh"
+          className="htz-ce htz-cw htz-bb htz-bc htz-bd htz-f htz-be htz-bf htz-bg htz-bh"
           dateTime="1957-11-19T00:00:00+02:00"
         >
           19.11.1957 00:00
@@ -182,6 +199,6 @@ Object {
       </div>
     </header>
   </div>,
-  "styles": ".htz-a{position:relative}.htz-b{display:inline}.htz-k{margin-top:2rem}.htz-ah{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ai{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-aj{list-style:none}.htz-ak{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-al{margin-right:-0.5rem}.htz-am{margin-left:-0.5rem}.htz-an{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-ao{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ap{box-sizing:border-box}.htz-aq{flex-basis:6rem;-webkit-flex-basis:6rem}.htz-ar{flex-grow:0;-webkit-flex-grow:0}.htz-as{flex-shrink:0;-webkit-flex-shrink:0}.htz-at{padding-left:0.5rem}.htz-au{padding-right:0.5rem}.htz-aw{flex-basis:auto;-webkit-flex-basis:auto}.htz-ax{flex-shrink:1;-webkit-flex-shrink:1}.htz-az{color:#006B96}.htz-ba{font-weight:700}.htz-bj{margin-left:1rem}.htz-bk{margin-right:auto}.htz-bl{text-align:center}.htz-bm{width:5rem}.htz-bq{border:0px}.htz-br{clip:rect(0 0 0 0)}.htz-bs{clip-path:inset(50%);-webkit-clip-path:inset(50%)}.htz-bt{height:1px}.htz-bu{margin:-1px}.htz-bv{overflow:hidden}.htz-bw{padding:0rem}.htz-bx{position:absolute}.htz-by{width:1px}.htz-bz{white-space:nowrap}.htz-ca{vertical-align:-0.15em}.htz-cb{fill:#FFF}.htz-cc{font-size:3rem}.htz-ce{display:block}.htz-cf{width:100%}.htz-cg{text-align:left}.htz-ch{color:#A8001C}.htz-ck{color:inherit}.htz-cm{margin-top:1rem}.htz-cn{margin-top:0.5rem}@media (max-width: 47.9375em){.htz-c{font-size:4rem}.htz-d{line-height:1.25em}.htz-p{margin-top:3rem}.htz-w{border-top-width:1px}.htz-x{border-top-style:solid}.htz-y{border-top-color:#EBEBEB}.htz-z{padding-top:calc(1rem - 1px)}.htz-ab{border-bottom-width:1px}.htz-ac{border-bottom-style:solid}.htz-ae{border-bottom-color:#EBEBEB}.htz-af{padding-bottom:calc(1rem - 1px)}.htz-ay{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-bb{font-size:2rem}.htz-bc{line-height:1.5em}.htz-cd{display:none}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-e{font-size:4.666666666666667rem}.htz-f{line-height:1.2857142857142858em}.htz-q{margin-top:2rem}.htz-bd{font-size:2.3333333333333335rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-g{font-size:5.333333333333333rem}.htz-h{line-height:1.125em}.htz-be{font-size:2.3333333333333335rem}.htz-bf{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-i{font-size:5.142857142857143rem}.htz-j{line-height:1.1666666666666667em}.htz-n{font-size:3rem}.htz-o{line-height:1.3333333333333333em}.htz-bg{font-size:2.2857142857142856rem}.htz-bh{line-height:1.3125em}.htz-bo{font-size:2rem}.htz-bp{line-height:1.5em}}@media (max-width: 79.9375em){.htz-l{font-size:2.6666666666666665rem}.htz-m{line-height:1.5em}.htz-bn{font-size:2rem}.htz-ci{font-size:2.3333333333333335rem}.htz-cj{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-r{position:absolute}.htz-s{top:0rem}.htz-t{right:-6rem}.htz-u{transform:translateX(100%);-webkit-transform:logical translateX(100%)}.htz-v{overflow:hidden}.htz-ag{display:none}}@media (min-width: 48em){.htz-av{display:none}}@media (max-width: 63.9375em){.htz-bi{margin-left:1rem}.htz-cl{display:none}}",
+  "styles": ".htz-a{position:relative}.htz-b{display:inline}.htz-k{margin-top:2rem}.htz-ah{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ai{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-aj{list-style:none}.htz-ak{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-al{margin-right:-0.5rem}.htz-am{margin-left:-0.5rem}.htz-an{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-ao{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ap{box-sizing:border-box}.htz-aq{flex-basis:6rem;-webkit-flex-basis:6rem}.htz-ar{flex-grow:0;-webkit-flex-grow:0}.htz-as{flex-shrink:0;-webkit-flex-shrink:0}.htz-at{padding-left:0.5rem}.htz-au{padding-right:0.5rem}.htz-aw{flex-basis:auto;-webkit-flex-basis:auto}.htz-ax{flex-shrink:1;-webkit-flex-shrink:1}.htz-az{color:#006B96}.htz-ba{font-weight:700}.htz-bj{margin-left:1rem}.htz-bk{margin-right:auto}.htz-bl{text-align:center}.htz-bm{width:5rem}.htz-bq{border:0px}.htz-br{clip:rect(0 0 0 0)}.htz-bs{clip-path:inset(50%);-webkit-clip-path:inset(50%)}.htz-bt{height:1px}.htz-bu{margin:-1px}.htz-bv{overflow:hidden}.htz-bw{padding:0rem}.htz-bx{position:absolute}.htz-by{width:1px}.htz-bz{white-space:nowrap}.htz-ca{vertical-align:-0.15em}.htz-cb{fill:#FFF}.htz-cc{font-size:3rem}.htz-ce{display:block}.htz-cf{width:100%}.htz-cg{text-align:left}.htz-ch{color:#A8001C}.htz-ck{color:inherit}.htz-cm{height:0rem}.htz-cn{padding-bottom:10rem}.htz-co{width:10rem}.htz-cp{background-color:#EBEBEB}.htz-cq{border-radius:50%}.htz-cr{display:inline-block}.htz-cs{height:100%}.htz-ct{left:0rem}.htz-cu{top:0rem}.htz-cv{margin-top:1rem}.htz-cw{margin-top:0.5rem}@media (max-width: 47.9375em){.htz-c{font-size:4rem}.htz-d{line-height:1.25em}.htz-p{margin-top:3rem}.htz-w{border-top-width:1px}.htz-x{border-top-style:solid}.htz-y{border-top-color:#EBEBEB}.htz-z{padding-top:calc(1rem - 1px)}.htz-ab{border-bottom-width:1px}.htz-ac{border-bottom-style:solid}.htz-ae{border-bottom-color:#EBEBEB}.htz-af{padding-bottom:calc(1rem - 1px)}.htz-ay{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-bb{font-size:2rem}.htz-bc{line-height:1.5em}.htz-cd{display:none}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-e{font-size:4.666666666666667rem}.htz-f{line-height:1.2857142857142858em}.htz-q{margin-top:2rem}.htz-bd{font-size:2.3333333333333335rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-g{font-size:5.333333333333333rem}.htz-h{line-height:1.125em}.htz-be{font-size:2.3333333333333335rem}.htz-bf{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-i{font-size:5.142857142857143rem}.htz-j{line-height:1.1666666666666667em}.htz-n{font-size:3rem}.htz-o{line-height:1.3333333333333333em}.htz-bg{font-size:2.2857142857142856rem}.htz-bh{line-height:1.3125em}.htz-bo{font-size:2rem}.htz-bp{line-height:1.5em}}@media (max-width: 79.9375em){.htz-l{font-size:2.6666666666666665rem}.htz-m{line-height:1.5em}.htz-bn{font-size:2rem}.htz-ci{font-size:2.3333333333333335rem}.htz-cj{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-r{position:absolute}.htz-s{top:0rem}.htz-t{right:-6rem}.htz-u{transform:translateX(100%);-webkit-transform:logical translateX(100%)}.htz-v{overflow:hidden}.htz-ag{display:none}}@media (min-width: 48em){.htz-av{display:none}}@media (max-width: 63.9375em){.htz-bi{margin-left:1rem}.htz-cl{display:none}}",
 }
 `;

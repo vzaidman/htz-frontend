@@ -20,7 +20,7 @@ describe('Credit of article', () => {
 describe('CreditArticle themed credit of article', () => {
   it('renders correctly with a url prop', () => {
     const snapshot = felaSnapshotter(
-      <CreditArticle name="test name" url="/misc/writers/1.593896" />
+      <CreditArticle contentName="test name" url="/misc/writers/1.593896" />
     );
     expect(snapshot).toMatchSnapshot();
   });

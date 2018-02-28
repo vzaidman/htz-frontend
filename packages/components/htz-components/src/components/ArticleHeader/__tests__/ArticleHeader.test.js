@@ -8,7 +8,30 @@ describe('ArticleHeader component', () => {
       'עפרה חזָה (19 בנובמבר 1957 – 23 בפברואר 2000) הייתה זמרת ושחקנית ישראלית בינלאומית. ',
     publishDateTime: new Date('19 Nov 1957'), // Ofra Haza birthday
     author: {
-      name: 'Avi Kaufman',
+      contentName: 'Avi Kaufman',
+      image: {
+        viewMode: 'FullColumnWithVerticalImage',
+        accessibility: 'ren & stimpy',
+        aspects: {
+          square: {
+            x: 0,
+            y: 170,
+            width: 360,
+            height: 360,
+          },
+        },
+        isAnimated: false,
+        imgArray: [
+          {
+            imgName: 'image/1536361643.png',
+            version: '1519832762',
+          },
+        ],
+        imageType: 'image',
+        inputTemplate: 'com.tm.Image',
+        contentId: '1.6738',
+        contentName: 'ren & stimpy',
+      },
     },
   };
 

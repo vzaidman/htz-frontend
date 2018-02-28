@@ -26,8 +26,8 @@ const CreditArticleStyled = createComponent(
   [ 'name', 'url', ]
 );
 
-export default function CreditArticle({ name, url, miscStyles, }) {
-  return <CreditArticleStyled name={name} url={url} miscStyles={miscStyles} />;
+export default function CreditArticle({ contentName, url, miscStyles, }) {
+  return <CreditArticleStyled name={contentName} url={url} miscStyles={miscStyles} />;
 }
 
 CreditArticle.propTypes = {
