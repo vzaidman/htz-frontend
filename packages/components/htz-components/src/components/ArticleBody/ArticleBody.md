@@ -28,32 +28,6 @@
       ]
     },
     {
-      "text": "בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר במשרד הביטחון",
-      "position": "midCenterPosition",
-      "afterParagraph": "1",
-      "imagesList": [
-        
-      ],
-      "inputTemplate": "com.htz.MagazineArticleQuote",
-      "contentId": "1.6664",
-      "contentName": "no credit nor image"
-    }, 
-    {
-      "attributes": [],
-      "tag": "p",
-      "content": [
-        {
-          "attributes": [
-            {
-              "key": "text",
-              "value": "שלושה מחברי הכנסת של המפלגה, עזריה, פולקמן ובן-ארי, השתתפו במוצאי שבת האחרון בהפגנת הימין נגד השחיתות בכיכר ציון בירושלים. כחלון לא מנע מהם להשתתף בה, אך לפי פרסום של ספי עובדיה אמש בערוץ 10 - בישיבת הסיעה אתמול אמר כחלון לח\"כים: \"בסוף מתברר שמי שמזיק הכי הרבה למפלגה הם אנשי כולנו. אני מבקש דממת אלחוט. זה לא מוסיף לנו קולות. לא בטוח שתחזרו לכנסת אחרי הבחירות\". כחלון הוסיף: \"אני מבקש שאף אחד לא ידבר בחוץ, לא פייסבוק ולא טוויטר. אנחנו לא מדברים על ההמלצות. חוק ההמלצות יעבור, אני לא מדבר על זה. אני מדבר על ההמלצות שיוגשו נגד ביבי - אני מבקש שלא לעסוק בזה!\"."
-            }
-          ],
-          "tag": "#text"
-        }
-      ]
-    },
-    {
       alt: "הכנרת, באוקטובר 2017",
       credit: "גיל אליהו",
       title: "הכנרת, באוקטובר 2017",
@@ -108,6 +82,32 @@
       contentName: "הכנרת, באוקטובר 2017"
     },
     {
+      "text": "בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר במשרד הביטחון",
+      "position": "midCenterPosition",
+      "afterParagraph": "1",
+      "imagesList": [
+        
+      ],
+      "inputTemplate": "com.htz.MagazineArticleQuote",
+      "contentId": "1.6664",
+      "contentName": "no credit nor image"
+    }, 
+    {
+      "attributes": [],
+      "tag": "p",
+      "content": [
+        {
+          "attributes": [
+            {
+              "key": "text",
+              "value": "שלושה מחברי הכנסת של המפלגה, עזריה, פולקמן ובן-ארי, השתתפו במוצאי שבת האחרון בהפגנת הימין נגד השחיתות בכיכר ציון בירושלים. כחלון לא מנע מהם להשתתף בה, אך לפי פרסום של ספי עובדיה אמש בערוץ 10 - בישיבת הסיעה אתמול אמר כחלון לח\"כים: \"בסוף מתברר שמי שמזיק הכי הרבה למפלגה הם אנשי כולנו. אני מבקש דממת אלחוט. זה לא מוסיף לנו קולות. לא בטוח שתחזרו לכנסת אחרי הבחירות\". כחלון הוסיף: \"אני מבקש שאף אחד לא ידבר בחוץ, לא פייסבוק ולא טוויטר. אנחנו לא מדברים על ההמלצות. חוק ההמלצות יעבור, אני לא מדבר על זה. אני מדבר על ההמלצות שיוגשו נגד ביבי - אני מבקש שלא לעסוק בזה!\"."
+            }
+          ],
+          "tag": "#text"
+        }
+      ]
+    },
+    {
       alt: "alternative text",
       viewMode: "regularModeBigImage",
       accessibility: "cat",
@@ -148,33 +148,6 @@
       inputTemplate: "com.tm.Image",
       contentId: "1.6651",
       contentName: "cat"
-    },
-    {
-      alt: "alternative text",
-      viewMode: "TwoThirdView",
-      accessibility: "fgh",
-      title: "this is the image text",
-      aspects: {
-        full: {
-          width: 1024,
-            height: 768
-        }
-      },
-      isAnimated: false,
-      imgArray: [
-        {
-          imgName: "image/3169121816.jpg",
-          version: "1519208155"
-        },
-        {
-          imgName: "image/509020086.jpg",
-          version: "1519208157"
-        }
-      ],
-      imageType: "infographic",
-      inputTemplate: "com.tm.Image",
-      contentId: "1.5804",
-      contentName: "ghf"
     },
     {
       "text": "בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר במשרד הביטחון",
@@ -306,6 +279,29 @@
        ]
      },
      {
+        viewMode: "OneThirdView",
+        accessibility: "אימפריית הפשע",
+        title: "חיידק הקפה נדבק בו בגיל מבוגר יחסית, פאולו פנרו בבוטגה שלו בעיר ברה נדבק בו בגיל מבוגר",
+        credit: "אימפריית הפשע",
+        aspects: {
+          full: {
+            width: 960,
+            height: 1440
+          }
+        },
+         isAnimated: "false",
+         imgArray: [
+           {
+             imgName: "image/4224562979.jpg",
+             version: "1519208169"
+           }
+         ],
+         imageType: "image",
+         inputTemplate: "com.tm.Image",
+         contentId: "1.2589",
+         contentName: "אימפריית הפשע"
+     },
+     {
        "attributes": [
          
        ],
@@ -430,7 +426,35 @@
            "tag": "#text"
          }
        ]
-     }       
+     },
+     {
+       alt: "alternative text",
+       viewMode: "regularModeBigImage",
+       accessibility: "fgh",
+       title: "חיידק הקפה נדבק בו בגיל מבוגר יחסית, פאולו פנרו בבוטגה שלו בעיר ברה נדבק בו בגיל מבוגר",
+       credit: "קרדיט",
+       aspects: {
+         full: {
+           width: 1024,
+             height: 768
+         }
+       },
+       isAnimated: false,
+       imgArray: [
+         {
+           imgName: "image/3169121816.jpg",
+           version: "1519208155"
+         },
+         {
+           imgName: "image/509020086.jpg",
+           version: "1519208157"
+         }
+       ],
+       imageType: "infographic",
+       inputTemplate: "com.tm.Image",
+       contentId: "1.5804",
+       contentName: "ghf"
+     }     
   ]} />
 </div>
 ```

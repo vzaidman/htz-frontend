@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme, createComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
@@ -75,18 +75,25 @@ const buildComponent = (context, index, isLastItem, theme) => {
   const Component = uniqueId === 'com.tm.Image' ? ArticleImage : getComponent(uniqueId);
 
   switch (uniqueId) {
-    case 'embedElement' :
     case 'com.tm.Image' :
-    case 'com.tm.Video' :
+      return (
+        <Component
+          key={index}
+          lastItem={isLastItem}
+          {...context}
+        />
+      );
+    case 'embedElement' :
+    case 'com.tm.Video' : // eslint-disable-line no-case-declarations
       return (
         <Figure
           key={index}
           lastItem={isLastItem}
         >
           <Component {...context} />
-          {((context.title || context.caption) || context.credit) &&
+          {(context.caption || context.credit) &&
           <Caption
-            caption={context.title || context.caption}
+            caption={context.caption}
             credit={context.credit}
           />
           }

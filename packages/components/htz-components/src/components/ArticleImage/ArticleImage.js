@@ -1,6 +1,7 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
+import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { rgba, } from 'polished';
 
 import Caption from '../Caption/Caption';
@@ -13,25 +14,58 @@ import Image from '../Image/Image';
 import Picture from '../Image/Picture';
 
 const articleImagePropTypes = {
+  /**
+   * Is it a standard image or infographic.
+   */
   imageType: PropTypes.string.isRequired,
+  /**
+   * Image's dada that comes from polopoly.
+   */
   imgArray: PropTypes.arrayOf(
     PropTypes.object,
   ).isRequired,
+  /**
+   * The image's selected view mode set by the editor (regular, full or 1/3).
+   */
+  viewMode: PropTypes.string.isRequired,
+  /**
+   * Is this image is the last item in the article body (needed for margin bottom).
+   */
+  lastItem: PropTypes.bool,
+  /**
+   * Image's title.
+   */
   title: PropTypes.string,
+  /**
+   * Image's credit.
+   */
   credit: PropTypes.string,
 };
 
 const articleImageDefaultProps = {
+  lastItem: false,
   title: null,
   credit: null,
 };
 
 const imagePropTypes = {
+  /**
+   * Is it a standard image or infographic.
+   */
   imageType: PropTypes.string.isRequired,
+  /**
+   * Image's dada that comes from polopoly.
+   */
   imgArray: PropTypes.arrayOf(
     PropTypes.object,
   ).isRequired,
+  /**
+   * Should the view switch to full-screen.
+   */
   isFullScreen: PropTypes.bool,
+  /**
+   * The image's selected view mode set by the editor (regular, full or 1/3).
+   */
   viewMode: PropTypes.string,
 };
 
@@ -40,10 +74,30 @@ const imageDefaultProps = {
   viewMode: 'FullColumnWithVerticalImage',
 };
 
-const wrapperStyle = () => ({
+const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
+
+const wrapperStyle = ({ viewMode, lastItem, theme, }) => ({
   position: 'relative',
+  ...(!lastItem &&
+    parseComponentProp(
+      'marginBottom',
+      theme.articleStyle.body.marginBottom,
+      theme.mq,
+      mediaQueryCallback,
+    )
+  ),
+  ...(viewMode === 'OneThirdView' && {
+    extend: [
+      {
+        width: 'calc(100%/3)',
+        marginStart: '1.5rem',
+        marginBottom: '0.75rem',
+        float: 'end',
+      },
+    ],
+  }),
 });
-const Wrapper = createComponent(wrapperStyle);
+const Wrapper = createComponent(wrapperStyle, 'figure');
 
 const imageWrapperStyle = () => ({
   position: 'relative',
@@ -193,6 +247,7 @@ class ArticleImage extends React.Component {
   };
 
   render() {
+    const { viewMode, lastItem, title, credit, } = this.props;
     const iconsAttrs = {
       color: [ 'neutral', '-10', ],
       miscStyles: {
@@ -202,7 +257,10 @@ class ArticleImage extends React.Component {
 
     return (
       <Fragment>
-        <Wrapper>
+        <Wrapper
+          viewMode={viewMode}
+          lastItem={lastItem}
+        >
           <ZoomWrapper onClick={this.toggleFullScreen}>
             <IconZoomIn
               color={[ 'neutral', '-10', ]}
@@ -215,6 +273,10 @@ class ArticleImage extends React.Component {
             />
           </ZoomWrapper>
           <ImageElement {...this.props} />
+          <Caption
+            caption={title}
+            credit={credit}
+          />
         </Wrapper>
         {this.state.fullScreen &&
           <FullScreenContainer>
@@ -234,8 +296,8 @@ class ArticleImage extends React.Component {
             </ImageWrapper>
             <ImageCaption>
               <Caption
-                caption={this.props.title}
-                credit={this.props.credit}
+                caption={title}
+                credit={credit}
                 color={[ 'neutral', '-10', ]}
                 typeStyles={-1}
               />
