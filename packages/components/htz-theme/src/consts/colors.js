@@ -272,6 +272,14 @@ const colors = {
     salesOpaqueHoverBorder: 'transparent',
     salesOpaqueHoverText: 'white',
   },
+  checkBox: {
+    bg: 'white',
+    bgChecked: [ 'primary', 'base', ],
+    border: [ 'primary', 'base', ],
+    borderDisabled: [ 'neutral', '-5', ],
+    check: 'white',
+    ripple: [ 'primary', 'base', ],
+  },
   comments: {
     authorName: [ 'primary', 'base', ],
     bg: 'white',
