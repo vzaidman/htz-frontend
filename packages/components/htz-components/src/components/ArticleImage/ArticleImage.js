@@ -1,7 +1,7 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
-import { parseComponentProp, } from '@haaretz/htz-css-tools';
+import { parseComponentProp, createMqFunc, } from '@haaretz/htz-css-tools';
 import { rgba, } from 'polished';
 
 import Caption from '../Caption/Caption';
@@ -105,14 +105,32 @@ const imageWrapperStyle = () => ({
 });
 const ImageWrapper = createComponent(imageWrapperStyle);
 
-const imageCaptionStyle = ({ theme, }) => ({
-  marginStart: '3rem',
-  marginEnd: '2rem',
-  marginBottom: '10rem',
-  textAlign: 'start',
-  flexBasis: '45rem',
-  alignSelf: 'flex-end',
-});
+const imageCaptionStyle = ({ theme, }) => {
+  const mq = createMqFunc();
+  return ({
+    marginEnd: '2rem',
+    textAlign: 'start',
+    alignSelf: 'flex-end',
+    ...mq(
+      { until: 'm', }, {
+        backgroundColor: rgba(theme.color('neutral'), 0.85),
+        position: 'absolute',
+        width: '100%',
+        paddingBottom: '4rem',
+        paddingLeft: '2rem',
+        paddingRight: '2rem',
+        flexBasis: '0',
+      },
+    ),
+    ...mq(
+      { from: 'm', }, {
+        marginStart: '3rem',
+        marginBottom: '10rem',
+        flexBasis: '45rem',
+      }
+    ),
+  });
+};
 const ImageCaption = createComponent(imageCaptionStyle);
 
 const separatorStyle = ({ theme, }) => ({
@@ -140,6 +158,14 @@ const fullContainerStyle = ({ theme, }) => ({
   zIndex: '6',
   display: 'flex',
   justifyContent: 'flex-end',
+  ...parseComponentProp(
+    'flexDirection',
+    [
+      { until: 'm', value: 'column', },
+    ],
+    theme.mq,
+    mediaQueryCallback,
+  ),
 });
 const FullScreenContainer = createComponent(fullContainerStyle, Wrapper);
 
