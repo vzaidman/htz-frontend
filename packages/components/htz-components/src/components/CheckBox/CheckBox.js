@@ -8,7 +8,6 @@ import { attrsPropType, } from '../../propTypes/attrsPropType';
 const styles = ({ miscStyles, theme, }) => ({
   display: 'flex',
   alignItems: 'center',
-  margin: '5rem',
   position: 'relative',
   extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
@@ -119,13 +118,17 @@ export class CheckBox extends Component {
      */
     checkBoxId: PropTypes.string,
     /**
+     * The default checked value of an unconrolled checkbox
+     */
+    defaultValue: PropTypes.bool,
+    /**
      * Is The checkBox disabled
      */
     isDisabled: PropTypes.bool,
     /**
      * The label text/node associated with the checkbox
      */
-    label: PropTypes.oneOf([ PropTypes.string, PropTypes.node, ]),
+    label: PropTypes.oneOfType([ PropTypes.string, PropTypes.node, ]),
     /**
      * A callback that gets the event that holds new checked value of the checkbox
      * used to update state of parent when using as react controlled checkbox
@@ -145,6 +148,7 @@ export class CheckBox extends Component {
     checked: null,
     className: null,
     checkBoxId: null,
+    defaultValue: false,
     isDisabled: false,
     label: null,
     onChange: null,
@@ -152,18 +156,21 @@ export class CheckBox extends Component {
   };
   state = {
     checkBoxId: this.props.checkBoxId || Math.random().toString(),
-    checked: this.props.checked !== null ? this.props.checked : false,
+    ...(this.props.checked === null ? { checked: this.props.defaultValue, } : {}),
     isFocused: false,
   };
 
   render() {
     const { attrs, checked, className, isDisabled, label, onChange, } = this.props;
+
+    const controllingChecked = checked !== null ? checked : this.state.checked;
+
     return (
       <label htmlFor={this.state.checkBoxId} className={className}>
         <input
           type="checkbox"
           {...attrs}
-          checked={this.state.checked}
+          checked={controllingChecked}
           {...(isDisabled ? { disabled: true, } : {})}
           id={this.state.checkBoxId}
           onClick={evt => {
@@ -191,8 +198,8 @@ export class CheckBox extends Component {
           {...(onChange ? { onChange, } : {})}
         />
         <StyledRipple isFocused={this.state.isFocused} />
-        <StyledCheckBox checked={this.state.checked} isDisabled={isDisabled}>
-          <StyledCheck checked={this.state.checked} />
+        <StyledCheckBox checked={controllingChecked} isDisabled={isDisabled}>
+          <StyledCheck checked={controllingChecked} />
         </StyledCheckBox>
         <StyledSpan>{label}</StyledSpan>
       </label>
@@ -204,6 +211,7 @@ export default createComponent(styles, CheckBox, [
   'attrs',
   'checked',
   'checkBoxId',
+  'defaultValue',
   'label',
   'onChange',
   'isDisabled',

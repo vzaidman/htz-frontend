@@ -20,14 +20,8 @@ In most cases, we recommend using controlled components to implement forms. In a
 At minimum can be used without any props
 
 ```jsx
-<div dir="rtl">
-  <CheckBox
-    attrs={{
-      onClick: () => console.log("click working"),
-      onFocus: () => console.log("focus working"),
-      onBlur: () => console.log("blur working")
-    }}
-  />
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <CheckBox />
 </div>
 ```
 
@@ -36,8 +30,30 @@ At minimum can be used without any props
 The custom attributes passed to attrs will be spread on the hidden input
 
 ```jsx
-<div dir="rtl">
-  <CheckBox attrs={{ name: "customName" }} />
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <CheckBox
+    attrs={{ name: "customName", onClick: () => console.log("click working") }}
+  />
+</div>
+```
+
+**defaultValue**
+
+A custom `defaultValue` can be passed to an uncontrolled checkbox
+
+```jsx
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <CheckBox label="I start as checked" defaultValue={true} />
+</div>
+```
+
+**Disabled CheckBox**
+
+Simply pass isDisabled prop to disable the checkbox
+
+```jsx
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <CheckBox isDisabled label="label" />
 </div>
 ```
 
@@ -46,27 +62,76 @@ The custom attributes passed to attrs will be spread on the hidden input
 The label associated with the checkBox, can be simple text or a node
 
 ```jsx
-<div dir="rtl">
+<div dir="rtl" style={{ padding: "5rem" }}>
   <CheckBox label="לייבל" />
 </div>
 ```
 
-**isDisabled**
-
-Simply pass isDisabled prop to disable the checkbox
+**miscStyles**
 
 ```jsx
-<div dir="rtl">
-  <CheckBox isDisabled label="label" />
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <CheckBox miscStyles={{ color: "red" }} label="labelRed" />
 </div>
 ```
 
-**isDisabled**
+### Conrolled Examples
 
-Simply pass isDisabled prop to disable the checkbox
+**Basic controlled**
+
+Simple example of changing state `onChange` of `<CheckBox />`, and sending the checked value down creates a React controlled CheckBox.
+
+```jsx static
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: false,
+    };
+  }
+
+  render() {
+    return (
+        <div>the value from the state is: {this.state.checked}</div>
+        <CheckBox
+          label="label"
+          onChange={evt => this.setState({ checked: evt.checked })}
+          checked={this.state.checked}
+        />;
+    );
+  }
+}
+  <Example />
+```
 
 ```jsx
-<div dir="rtl">
-  <CheckBox isDisabled label="label" />
-</div>
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: true
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          the value from the state is: {this.state.checked ? "true" : "false"}
+        </div>
+        <CheckBox
+          label="label"
+          onChange={evt => {
+            console.log(evt.target.checked);
+            this.setState({ checked: evt.target.checked });
+          }}
+          checked={this.state.checked}
+        />;
+      </div>
+    );
+  }
+}
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <Example />
+</div>;
 ```
