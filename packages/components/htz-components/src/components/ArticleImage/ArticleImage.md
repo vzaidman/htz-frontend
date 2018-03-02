@@ -2,13 +2,13 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [ArticleBody examples](#articlebody-examples)
+- [ArticleImage examples](#articleimage-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### ArticleBody examples
+### ArticleImage examples
 
-
+Infographic image with 1/3 viewMode
 ```jsx
 <div style={{ maxWidth: '700px', }}>
   <ArticleImage 
@@ -41,6 +41,8 @@
   />
 </div>
 ```
+
+Gif image with full viewMode
 ```jsx
 <div style={{ maxWidth: '700px', }}>
   <ArticleImage 
@@ -87,6 +89,8 @@
   />
 </div>
 ```
+
+Vertical image with regular viewMode
 ```jsx
 <div style={{ maxWidth: '700px', }}>
   <ArticleImage 

@@ -1,15 +1,12 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, withTheme, } from 'react-fela';
-import { parseComponentProp, createMqFunc, } from '@haaretz/htz-css-tools';
+import { createComponent, } from 'react-fela';
+import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { rgba, } from 'polished';
 
 import Caption from '../Caption/Caption';
-import IconClose from '../Icon/icons/IconClose';
+import FullScreenImage from './FullScreenImage';
 import IconZoomIn from '../Icon/icons/IconZoomIn';
-import IconMailAlert from '../Icon/icons/IconMailAlert';
-import IconWhatsapp from '../Icon/icons/IconWhatsapp';
-import IconFacebookLogo from '../Icon/icons/IconFacebookLogo';
 import Image from '../Image/Image';
 import Picture from '../Image/Picture';
 
@@ -89,108 +86,32 @@ const wrapperStyle = ({ viewMode, lastItem, theme, }) => ({
   ...(viewMode === 'OneThirdView' && {
     extend: [
       {
-        width: 'calc(100%/3)',
-        marginStart: '1.5rem',
-        marginBottom: '0.75rem',
         float: 'end',
+        marginBottom: '0.75rem',
+        marginStart: '1.5rem',
+        width: 'calc(100%/3)',
       },
     ],
   }),
 });
 const Wrapper = createComponent(wrapperStyle, 'figure');
 
-const imageWrapperStyle = () => ({
-  position: 'relative',
-  height: '100%',
-});
-const ImageWrapper = createComponent(imageWrapperStyle);
-
-const imageCaptionStyle = ({ theme, }) => {
-  const mq = createMqFunc();
-  return ({
-    marginEnd: '2rem',
-    textAlign: 'start',
-    alignSelf: 'flex-end',
-    ...mq(
-      { until: 'm', }, {
-        backgroundColor: rgba(theme.color('neutral'), 0.85),
-        position: 'absolute',
-        width: '100%',
-        paddingBottom: '4rem',
-        paddingLeft: '2rem',
-        paddingRight: '2rem',
-        flexBasis: '0',
-      },
-    ),
-    ...mq(
-      { from: 'm', }, {
-        marginStart: '3rem',
-        marginBottom: '10rem',
-        flexBasis: '45rem',
-      }
-    ),
-  });
-};
-const ImageCaption = createComponent(imageCaptionStyle);
-
-const separatorStyle = ({ theme, }) => ({
-  marginBottom: '3rem',
-  marginTop: '3rem',
-  width: '100%',
-  height: '1px',
-  backgroundColor: theme.color('neutral', '-4'),
-});
-const Separator = createComponent(separatorStyle);
-
-const iconsStyle = () => ({
-  display: 'flex',
-  alignItems: 'center',
-});
-const SharingIcons = createComponent(iconsStyle);
-
-const fullContainerStyle = ({ theme, }) => ({
-  backgroundColor: theme.color('neutral'),
-  position: 'fixed',
-  top: '0',
-  start: '0',
-  width: '100%',
-  height: '100%',
-  zIndex: '6',
-  display: 'flex',
-  justifyContent: 'flex-end',
-  ...parseComponentProp(
-    'flexDirection',
-    [
-      { until: 'm', value: 'column', },
-    ],
-    theme.mq,
-    mediaQueryCallback,
-  ),
-});
-const FullScreenContainer = createComponent(fullContainerStyle, Wrapper);
-
 const zoomWrapperStyle = ({ theme, }) => ({
-  position: 'absolute',
-  top: '1rem',
-  end: '1rem',
-  zIndex: '1',
   backgroundColor: rgba(theme.color('neutral', '+1'), 0.5),
-  padding: '1rem',
-  width: '5rem',
-  height: '5rem',
   borderRadius: '50%',
   cursor: 'zoom-in',
+  end: '1rem',
+  height: '5rem',
+  padding: '1rem',
+  position: 'absolute',
+  top: '1rem',
+  width: '5rem',
+  zIndex: '1',
   ':hover': {
     backgroundColor: theme.color('neutral', '+1'),
   },
 });
 const ZoomWrapper = createComponent(zoomWrapperStyle, 'span', [ 'onClick', ]);
-
-const closeWrapperStyle = ({ theme, }) => ({
-  backgroundColor: theme.color('neutral'),
-  cursor: 'zoom-out',
-});
-const CloseWrapper = createComponent(closeWrapperStyle, ZoomWrapper, [ 'onClick', ]);
 
 const getAspect = viewMode => {
   switch (viewMode) {
@@ -261,6 +182,12 @@ const ImageElement = props => {
 ImageElement.propTypes = imagePropTypes;
 ImageElement.defaultProps = imageDefaultProps;
 
+/**
+ * The ArticleImage component takes the Image/Picture component, strips it
+ * from it's wrapper and wraps it with a specific new one, according to the
+ * image's Meta (which is unique per article), and adds a [`full-screen`](./#fullscreenimage-1) option as
+ * a default.
+ */
 class ArticleImage extends React.Component {
   state = {
     fullScreen: false,
@@ -274,12 +201,6 @@ class ArticleImage extends React.Component {
 
   render() {
     const { viewMode, lastItem, title, credit, } = this.props;
-    const iconsAttrs = {
-      color: [ 'neutral', '-10', ],
-      miscStyles: {
-        marginEnd: '6rem',
-      },
-    };
 
     return (
       <Fragment>
@@ -305,45 +226,14 @@ class ArticleImage extends React.Component {
           />
         </Wrapper>
         {this.state.fullScreen &&
-          <FullScreenContainer>
-            <CloseWrapper onClick={this.toggleFullScreen}>
-              <IconClose
-                color={[ 'neutral', '-10', ]}
-                size={2.5}
-                miscStyles={{
-                  display: 'block',
-                  margin: '0 auto',
-                  transform: 'translateY(12.5%)',
-                }}
-              />
-            </CloseWrapper>
-            <ImageWrapper>
+          <FullScreenImage
+            imageElement={
               <ImageElement {...this.props} isFullScreen />
-            </ImageWrapper>
-            <ImageCaption>
-              <Caption
-                caption={title}
-                credit={credit}
-                color={[ 'neutral', '-10', ]}
-                typeStyles={-1}
-              />
-              <Separator />
-              <SharingIcons>
-                <IconFacebookLogo
-                  {...iconsAttrs}
-                  size={3}
-                />
-                <IconWhatsapp
-                  {...iconsAttrs}
-                  size={3}
-                />
-                <IconMailAlert
-                  {...iconsAttrs}
-                  size={5}
-                />
-              </SharingIcons>
-            </ImageCaption>
-          </FullScreenContainer>
+            }
+            closeCallBack={this.toggleFullScreen}
+            title={title}
+            credit={credit}
+          />
         }
       </Fragment>
     );
@@ -353,4 +243,4 @@ class ArticleImage extends React.Component {
 ArticleImage.propTypes = articleImagePropTypes;
 ArticleImage.defaultProps = articleImageDefaultProps;
 
-export default withTheme(ArticleImage);
+export default ArticleImage;
