@@ -7,18 +7,14 @@ Object {
       className="htz-a htz-b"
     >
       <div
-        className="htz-c htz-d htz-e htz-f"
+        className="htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
       >
-        <div
-          className="htz-g htz-h htz-i htz-j htz-k"
-        >
-          <img
-            alt="נתניהו בישיבת הממשלה השבועית, בתחילת השבוע"
-            className="htz-l htz-m htz-n htz-o htz-j"
-            src="https://images.haarets.co.il/image/upload/w_1461,h_1460,x_592,y_8,c_crop,g_north_west/q_auto,h_100,w_100,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518556356/1.5580.2151933599.jpg"
-            title="אמיל סלמן"
-          />
-        </div>
+        <img
+          alt="נתניהו בישיבת הממשלה השבועית, בתחילת השבוע"
+          className="htz-k htz-l htz-m htz-n htz-o"
+          src="https://images.haarets.co.il/image/upload/w_1461,h_1460,x_592,y_8,c_crop,g_north_west/q_auto,h_100,w_100,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518556356/1.5580.2151933599.jpg"
+          title="אמיל סלמן"
+        />
       </div>
       <p
         className="htz-p htz-q htz-r htz-s htz-t htz-u"
@@ -32,6 +28,6 @@ Object {
       </span>
     </blockquote>
   </div>,
-  "styles": ".htz-a{color:#787878}.htz-b{font-weight:700}.htz-c{width:10rem}.htz-d{border-radius:50%}.htz-e{overflow:hidden}.htz-f{display:inline-block}.htz-g{height:0rem}.htz-h{padding-bottom:99.9315537303217%}.htz-i{position:relative}.htz-j{width:100%}.htz-k{background-color:#EBEBEB}.htz-l{height:100%}.htz-m{left:0rem}.htz-n{position:absolute}.htz-o{top:0rem}.htz-t:after{content:'\\"'}.htz-u:before{content:'\\"'}@media (max-width: 79.9375em){.htz-p{font-size:3.5rem}.htz-q{line-height:1.4285714285714286em}.htz-v{font-size:2.3333333333333335rem}.htz-w{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-r{font-size:3.4285714285714284rem}.htz-s{line-height:1.1666666666666667em}.htz-x{font-size:2.2857142857142856rem}.htz-y{line-height:1.3125em}}",
+  "styles": ".htz-a{color:#787878}.htz-b{font-weight:700}.htz-c{height:0rem}.htz-d{padding-bottom:10rem}.htz-e{position:relative}.htz-f{width:10rem}.htz-g{background-color:#EBEBEB}.htz-h{border-radius:50%}.htz-i{overflow:hidden}.htz-j{display:inline-block}.htz-k{height:100%}.htz-l{left:0rem}.htz-m{position:absolute}.htz-n{top:0rem}.htz-o{width:100%}.htz-t:after{content:'\\"'}.htz-u:before{content:'\\"'}@media (max-width: 79.9375em){.htz-p{font-size:3.5rem}.htz-q{line-height:1.4285714285714286em}.htz-v{font-size:2.3333333333333335rem}.htz-w{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-r{font-size:3.4285714285714284rem}.htz-s{line-height:1.1666666666666667em}.htz-x{font-size:2.2857142857142856rem}.htz-y{line-height:1.3125em}}",
 }
 `;

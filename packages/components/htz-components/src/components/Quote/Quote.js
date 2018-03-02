@@ -69,14 +69,6 @@ function getStyleObj(theme, quoteType) {
   }
 }
 
-const imageStyle = () => ({
-  width: '10rem',
-  borderRadius: '50%',
-  overflow: 'hidden',
-  display: 'inline-block',
-});
-const ImgWrapper = createComponent(imageStyle);
-
 const imgOptions = {
   transforms: {
     width: '100',
@@ -107,9 +99,17 @@ function Quote({ text, credit, imagesList, }) {
   return (
     <QuoteWrapper>
       {quoteType === 'image' ? (
-        <ImgWrapper>
-          <Image imgOptions={imgOptions} data={imagesList[0]} />
-        </ImgWrapper>
+        <Image
+          imgOptions={imgOptions}
+          data={imagesList[0]}
+          miscStyles={{
+            width: '10rem',
+            paddingBottom: '10rem',
+            borderRadius: '50%',
+            overflow: 'hidden',
+            display: 'inline-block',
+          }}
+        />
       ) : quoteType === 'quote' ? (
         <IconQuote
           size={6.5}
