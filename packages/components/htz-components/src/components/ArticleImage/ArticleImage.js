@@ -1,6 +1,6 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, withTheme, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { rgba, } from 'polished';
 
@@ -18,9 +18,7 @@ const articleImagePropTypes = {
   /**
    * Image's dada that comes from polopoly.
    */
-  imgArray: PropTypes.arrayOf(
-    PropTypes.object,
-  ).isRequired,
+  imgArray: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
    * The image's selected view mode set by the editor (regular, full or 1/3).
    */
@@ -53,9 +51,7 @@ const imagePropTypes = {
   /**
    * Image's dada that comes from polopoly.
    */
-  imgArray: PropTypes.arrayOf(
-    PropTypes.object,
-  ).isRequired,
+  imgArray: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
    * Should the view switch to full-screen.
    */
@@ -80,9 +76,8 @@ const wrapperStyle = ({ viewMode, lastItem, theme, }) => ({
       'marginBottom',
       theme.articleStyle.body.marginBottom,
       theme.mq,
-      mediaQueryCallback,
-    )
-  ),
+      mediaQueryCallback
+    )),
   ...(viewMode === 'OneThirdView' && {
     extend: [
       {
@@ -111,15 +106,37 @@ const zoomWrapperStyle = ({ theme, }) => ({
     backgroundColor: theme.color('neutral', '+1'),
   },
 });
-const ZoomWrapper = createComponent(zoomWrapperStyle, 'span', [ 'onClick', ]);
+
+// eslint-disable-next-line react/prop-types
+function ZoomWrapperUnstyled({ theme, onClick, }) {
+  return (
+    <button onClick={onClick} aria-label={theme.zoominText}>
+      <IconZoomIn
+        color={[ 'neutral', '-10', ]}
+        size={2.5}
+        miscStyles={{
+          display: 'block',
+          margin: '0 auto',
+          transform: 'translateY(12.5%)',
+        }}
+      />
+    </button>
+  );
+}
+
+const ZoomWrapper = createComponent(
+  zoomWrapperStyle,
+  withTheme(ZoomWrapperUnstyled),
+  [ 'onClick', ]
+);
 
 const getAspect = viewMode => {
   switch (viewMode) {
-    case 'regularModeBigImage' :
+    case 'regularModeBigImage':
       return 'full';
-    case 'OneThirdView' :
+    case 'OneThirdView':
       return 'full';
-    default :
+    default:
       return 'full';
   }
 };
@@ -144,14 +161,15 @@ const ImageElement = props => {
     },
   };
 
-  return imageType === 'image' ?
-    (<Image
+  return imageType === 'image' ? (
+    <Image
       hasWrapper={!isFullScreen}
       data={props}
       imgOptions={imgOptions}
       bgcolor={isFullScreen && 'neutral'}
-    />) :
-    (<Picture
+    />
+  ) : (
+    <Picture
       hasWrapper={!isFullScreen}
       defaultImg={{
         data: props,
@@ -176,7 +194,8 @@ const ImageElement = props => {
         },
       ]}
       bgcolor={isFullScreen && 'neutral'}
-    />);
+    />
+  );
 };
 
 ImageElement.propTypes = imagePropTypes;
@@ -204,37 +223,19 @@ class ArticleImage extends React.Component {
 
     return (
       <Fragment>
-        <Wrapper
-          viewMode={viewMode}
-          lastItem={lastItem}
-        >
-          <ZoomWrapper onClick={this.toggleFullScreen}>
-            <IconZoomIn
-              color={[ 'neutral', '-10', ]}
-              size={2.5}
-              miscStyles={{
-                display: 'block',
-                margin: '0 auto',
-                transform: 'translateY(12.5%)',
-              }}
-            />
-          </ZoomWrapper>
+        <Wrapper viewMode={viewMode} lastItem={lastItem}>
+          <ZoomWrapper onClick={this.toggleFullScreen} />
           <ImageElement {...this.props} />
-          <Caption
-            caption={title}
-            credit={credit}
-          />
+          <Caption caption={title} credit={credit} />
         </Wrapper>
-        {this.state.fullScreen &&
+        {this.state.fullScreen && (
           <FullScreenImage
-            imageElement={
-              <ImageElement {...this.props} isFullScreen />
-            }
+            imageElement={<ImageElement {...this.props} isFullScreen />}
             closeCallBack={this.toggleFullScreen}
             title={title}
             credit={credit}
           />
-        }
+        )}
       </Fragment>
     );
   }

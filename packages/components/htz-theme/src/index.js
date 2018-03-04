@@ -16,6 +16,8 @@ import i18n, {
   commentSentI18n,
   commentsSectionI18n,
   tagsElementI18n,
+  zoominText,
+  zoomoutText,
 } from './consts/i18n';
 
 // methods
@@ -115,6 +117,8 @@ const htzTheme = Object.freeze({
   commentSentI18n,
   commentsSectionI18n,
   tagsElementI18n,
+  zoominText,
+  zoomoutText,
 
   // Methods
   color: getColor,

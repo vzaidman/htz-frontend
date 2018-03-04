@@ -9,6 +9,9 @@ const seriesArticle = Object.freeze({
 
 export default { seriesArticle, };
 
+export const zoominText = 'הגדל';
+export const zoomoutText = 'הקטן';
+
 export const tagsElementI18n = Object.freeze({
   prefix: 'תגיות:',
 });
