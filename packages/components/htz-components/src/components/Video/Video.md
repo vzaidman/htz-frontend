@@ -38,7 +38,7 @@
 <div style={{ maxWidth: '700px', direction: 'rtl' }}>
   <Video
     videoType="embed"
-    videoContent={"<div id=\"fb-root\"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = \"//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3\"; fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script> <div class=\"fb-video\" data-allowfullscreen=\"true\" data-href=\"https://www.facebook.com/haaretz/videos/10153264819942520/\"> <div class=\"fb-xfbml-parse-ignore\"> <blockquote cite=\"/haaretz/videos/10153264819942520/\"> <a href=\"/haaretz/videos/10153264819942520/\"></a><p>אחרי שצופים בסרטון המטורף שצולם באוורסט, מבינים מדוע מדובר באסון הכבד בהיסטוריה של ההר. לסרטון המלא והדרמטי שתיעד את אימת המטיילים ועדכונים שוטפים מנפאל, שם ממשיכים להתברר מימדי ההרס http://htz.li/2g9</p>Posted by ‎<a href=\"https://www.facebook.com/haaretz\">Haaretz הארץ</a>‎ on Sunday, April 26, 2015 </blockquote> </div> </div>"}
+    videoContent={"<iframe frameborder=\"0\" width=\"480\" height=\"270\" src=\"//www.dailymotion.com/embed/video/x3hlqq9\" allowfullscreen=\"\" allow=\"autoplay\"></iframe>"}
     inputTemplate="com.tm.Video"
    />
  </div>
