@@ -104,8 +104,9 @@ export class Form extends Component {
 
   getInputProps = ({
     errorText,
-    isContentEditable,
+    isContentEditable = false,
     name,
+    formElementType = 'text',
     onBlur,
     onChange,
     onContentEditableChange,
@@ -120,25 +121,43 @@ export class Form extends Component {
       return null;
     });
     return {
-      ...(isContentEditable
+      ...(formElementType === 'text'
         ? {
-          onContentEditableChange: callAll(
-            onContentEditableChange,
-            (evt, value) => {
-              const values = { ...this.state.values, [name]: value, };
-              const errors = this.props.isValidateOnChange
-                ? this.handleTouchedValidate(values)
-                : null;
-              this.setState({
-                values,
-                ...(errors ? { errors, } : {}),
-              });
+          ...(isContentEditable
+            ? {
+              onContentEditableChange: callAll(onContentEditableChange, (evt, value) => {
+                const values = { ...this.state.values, [name]: value, };
+                const errors = this.props.isValidateOnChange
+                  ? this.handleTouchedValidate(values)
+                  : null;
+                this.setState({
+                  values,
+                  ...(errors ? { errors, } : {}),
+                });
+              }),
+              isContentEditable,
             }
-          ),
+            : {
+              onChange: callAll(onChange, evt => {
+                const values = { ...this.state.values, [name]: evt.target.value, };
+                const errors = this.props.isValidateOnChange
+                  ? this.handleTouchedValidate(values)
+                  : null;
+                this.setState({
+                  values,
+                  ...(errors ? { errors, } : {}),
+                });
+              }),
+            }),
+          /** empty string is needed so react wont think it is an uncontrolled input when the value is empty */
+          value: this.state.values[name] || '',
         }
-        : {
+        : {}),
+      ...(formElementType === 'checkBox'
+        ? {
+          checked: this.state.values[name] || false,
           onChange: callAll(onChange, evt => {
-            const values = { ...this.state.values, [name]: evt.target.value, };
+            const values = { ...this.state.values, [name]: evt.target.checked, };
             const errors = this.props.isValidateOnChange
               ? this.handleTouchedValidate(values)
               : null;
@@ -147,7 +166,8 @@ export class Form extends Component {
               ...(errors ? { errors, } : {}),
             });
           }),
-        }),
+        }
+        : {}),
       onBlur: callAll(onBlur, evt => {
         if (this.props.isValidateOnBlur) {
           const errors = this.handleTouchedValidate(this.state.values);
@@ -161,13 +181,10 @@ export class Form extends Component {
           });
         }
       }),
-      /** empty string is needed so react wont think it is an uncontrolled input when the value is empty */
-      value: this.state.values[name] || '',
       ...(stateError ? { isError: true, } : {}),
       ...(stateError && stateError.errorText
         ? { errorText: stateError.errorText, }
         : errorText ? { errorText, } : {}),
-      ...(isContentEditable ? { isContentEditable: true, } : {}),
       refFunc: elem => {
         this[`${name}El`] = elem;
       },
@@ -217,7 +234,8 @@ export class Form extends Component {
     const values = {};
     const keys = Object.keys(this.state.values);
     keys.forEach(key => {
-      values[key] = '';
+      if (typeof this.state.values[key] === 'string') values[key] = '';
+      if (typeof this.state.values[key] === 'boolean') values[key] = false;
     });
     this.setState({
       values,
@@ -237,9 +255,7 @@ export class Form extends Component {
   handleTouchedValidate(values) {
     if (this.props.validate) {
       const errors = this.props.validate(values);
-      const cleanErrors = errors.filter(
-        error => this.state.touched[error.name]
-      );
+      const cleanErrors = errors.filter(error => this.state.touched[error.name]);
       return cleanErrors;
     }
     return [];

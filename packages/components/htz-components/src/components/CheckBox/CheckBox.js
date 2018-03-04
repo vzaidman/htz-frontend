@@ -4,6 +4,7 @@ import { createComponent, } from 'react-fela';
 import { border, borderBottom, borderStart, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
+import Note from '../Note/Note';
 
 const styles = ({ miscStyles, theme, }) => ({
   display: 'flex',
@@ -121,20 +122,18 @@ export class CheckBox extends Component {
      * The default checked value of an unconrolled checkbox
      */
     defaultValue: PropTypes.bool,
+    /** error note to display if input is passed a `isError` prop */
+    errorText: PropTypes.string,
     /**
      * Is The checkBox disabled
      */
     isDisabled: PropTypes.bool,
+    /** Is this input in error state */
+    isError: PropTypes.bool,
     /**
      * The label text/node associated with the checkbox
      */
     label: PropTypes.oneOfType([ PropTypes.string, PropTypes.node, ]),
-    /**
-     * A callback that gets the event that holds new checked value of the checkbox
-     * used to update state of parent when using as react controlled checkbox
-     * @param {SyntheticEvent} evt - The event object
-     */
-    onChange: PropTypes.func,
     /**
      * miscStyles of the label
      * A special property holding miscellaneous CSS values that
@@ -142,6 +141,39 @@ export class CheckBox extends Component {
      * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
      */
     miscStyles: stylesPropType,
+    /**
+     * Id used to connect the note to input with aria-describedby for a11y reasons,
+     * default will generate random id
+     */
+    noteId: PropTypes.string,
+    /** Note explaining the CheckBox field  */
+    noteText: PropTypes.string,
+    /**
+     * A callback that gets called when the CheckBox is Blurred
+     * @param {SyntheticEvent} evt - The event object
+     */
+    onBlur: PropTypes.func,
+    /**
+     * A callback that gets the event that holds new checked value of the checkbox
+     * used to update state of parent when using as react controlled checkbox
+     * @param {SyntheticEvent} evt - The event object
+     */
+    onChange: PropTypes.func,
+    /**
+     * A callback that gets called when the CheckBox is clicked
+     * @param {SyntheticEvent} evt - The event object
+     */
+    onClick: PropTypes.func,
+    /**
+     * A callback that gets called when the CheckBox is focused
+     * @param {SyntheticEvent} evt - The event object
+     */
+    onFocus: PropTypes.func,
+    /**
+     * A callback function to allow parent component to get ref of input,
+     * example use case: focusing the input.
+     */
+    refFunc: PropTypes.func,
   };
   static defaultProps = {
     attrs: null,
@@ -149,60 +181,99 @@ export class CheckBox extends Component {
     className: null,
     checkBoxId: null,
     defaultValue: false,
+    errorText: null,
     isDisabled: false,
+    isError: false,
     label: null,
-    onChange: null,
     miscStyles: null,
+    noteId: null,
+    noteText: null,
+    onBlur: null,
+    onChange: null,
+    onClick: null,
+    onFocus: null,
+    refFunc: undefined,
   };
   state = {
     checkBoxId: this.props.checkBoxId || Math.random().toString(),
     ...(this.props.checked === null ? { checked: this.props.defaultValue, } : {}),
     isFocused: false,
+    noteId: this.props.noteId
+      ? this.props.noteId
+      : this.props.errorText || this.props.noteText ? Math.random().toString() : null,
   };
 
   render() {
-    const { attrs, checked, className, isDisabled, label, onChange, } = this.props;
+    const {
+      attrs,
+      checked,
+      className,
+      errorText,
+      isDisabled,
+      isError,
+      label,
+      noteText,
+      onBlur,
+      onChange,
+      onClick,
+      onFocus,
+      refFunc,
+    } = this.props;
 
     const controllingChecked = checked !== null ? checked : this.state.checked;
 
     return (
-      <label htmlFor={this.state.checkBoxId} className={className}>
-        <input
-          type="checkbox"
-          {...attrs}
-          checked={controllingChecked}
-          {...(isDisabled ? { disabled: true, } : {})}
-          id={this.state.checkBoxId}
-          onClick={evt => {
-            if (!isDisabled) {
-              if (checked === null) {
-                this.setState((prevState, props) => ({
-                  checked: !prevState.checked,
-                }));
+      <div>
+        <label
+          htmlFor={this.state.checkBoxId}
+          className={className}
+          {...(refFunc ? { ref: el => refFunc(el), } : {})}
+        >
+          <input
+            type="checkbox"
+            {...(this.state.noteId ? { 'aria-describedby': this.state.noteId, } : {})}
+            {...attrs}
+            checked={controllingChecked}
+            {...(isDisabled ? { disabled: true, } : {})}
+            id={this.state.checkBoxId}
+            onClick={evt => {
+              if (!isDisabled) {
+                if (checked === null) {
+                  this.setState((prevState, props) => ({
+                    checked: !prevState.checked,
+                  }));
+                }
+                if (onClick) onClick(evt);
               }
-              if (attrs && attrs.onClick) attrs.onClick(evt);
-            }
-          }}
-          onFocus={evt => {
-            this.setState((prevState, props) => ({
-              isFocused: true,
-            }));
-            if (attrs && attrs.onFocus) attrs.onFocus(evt);
-          }}
-          onBlur={evt => {
-            this.setState((prevState, props) => ({
-              isFocused: false,
-            }));
-            if (attrs && attrs.onBlur) attrs.onBlur(evt);
-          }}
-          {...(onChange ? { onChange, } : {})}
-        />
-        <StyledRipple isFocused={this.state.isFocused} />
-        <StyledCheckBox checked={controllingChecked} isDisabled={isDisabled}>
-          <StyledCheck checked={controllingChecked} />
-        </StyledCheckBox>
-        <StyledSpan>{label}</StyledSpan>
-      </label>
+            }}
+            onFocus={evt => {
+              this.setState((prevState, props) => ({
+                isFocused: true,
+              }));
+              if (onFocus) onFocus(evt);
+            }}
+            onBlur={evt => {
+              this.setState((prevState, props) => ({
+                isFocused: false,
+              }));
+              if (onBlur) onBlur(evt);
+            }}
+            {...(onChange ? { onChange, } : {})}
+          />
+          <StyledRipple isFocused={this.state.isFocused} />
+          <StyledCheckBox checked={controllingChecked} isDisabled={isDisabled}>
+            <StyledCheck checked={controllingChecked} />
+          </StyledCheckBox>
+          <StyledSpan>{label}</StyledSpan>
+        </label>
+        {errorText || noteText ? (
+          <Note
+            text={isError ? errorText : noteText}
+            isError={isError}
+            noteId={this.state.noteId}
+          />
+        ) : null}
+      </div>
     );
   }
 }
@@ -211,8 +282,16 @@ export default createComponent(styles, CheckBox, [
   'attrs',
   'checked',
   'checkBoxId',
-  'defaultValue',
-  'label',
-  'onChange',
+  'defaultVlue',
+  'errorText',
   'isDisabled',
+  'isError',
+  'label',
+  'noteText',
+  'noteId',
+  'onBlur',
+  'onChange',
+  'onClick',
+  'onFocus',
+  'refFunc',
 ]);

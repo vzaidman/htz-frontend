@@ -31,8 +31,20 @@ The custom attributes passed to attrs will be spread on the hidden input
 
 ```jsx
 <div dir="rtl" style={{ padding: "5rem" }}>
+  <CheckBox attrs={{ name: "customName" }} />
+</div>
+```
+
+**onFocus onBlur and onClick**
+
+These functions should be passed directly, and not through attrs
+
+```jsx
+<div dir="rtl" style={{ padding: "5rem" }}>
   <CheckBox
-    attrs={{ name: "customName", onClick: () => console.log("click working") }}
+    onClick={() => console.log("clicked")}
+    onFocus={() => console.log("focused")}
+    onBlue={() => console.log("blured")}
   />
 </div>
 ```
@@ -75,6 +87,32 @@ The label associated with the checkBox, can be simple text or a node
 </div>
 ```
 
+**Note**
+
+```jsx
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <CheckBox label="label" noteText="decription" errorText="error" />
+</div>
+```
+
+```jsx
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <CheckBox label="label" noteText="decription" errorText="error" isError />
+</div>
+```
+
+```jsx
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <CheckBox
+    label="label"
+    noteText="decription"
+    errorText="error"
+    isError
+    noteId="customNoteId"
+  />
+</div>
+```
+
 ### Conrolled Examples
 
 **Basic controlled**
@@ -92,7 +130,7 @@ class Example extends React.Component {
 
   render() {
     return (
-        <div>the value from the state is: {this.state.checked}</div>
+        <div>the value from the state is: {this.state.checked ? "true" : "false"}</div>
         <CheckBox
           label="label"
           onChange={evt => this.setState({ checked: evt.checked })}
@@ -127,6 +165,68 @@ class Example extends React.Component {
           }}
           checked={this.state.checked}
         />;
+      </div>
+    );
+  }
+}
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <Example />
+</div>;
+```
+
+**Basic controlled with ref**
+
+Simple example of focusing on a CheckBox with the `refFunc`
+
+```jsx static
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: false,
+    };
+  }
+
+  render() {
+    return (
+        <div>the value from the state is: {this.state.checked ? "true" : "false"}</div>
+        <Button onClick={()=> this.checkBoxEl.focus()}> focus CheckBox</Button>
+        <CheckBox
+          label="label"
+          onChange={evt => this.setState({ checked: evt.checked })}
+          checked={this.state.checked}
+          refFunc={el => {this.checkBoxEl = el}}
+        />
+    );
+  }
+}
+  <Example />
+```
+
+```jsx
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: true
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          the value from the state is: {this.state.checked ? "true" : "false"}
+        </div>
+        <Button onClick={() => this.checkBoxEl.focus()}> focus CheckBox</Button>
+        <CheckBox
+          label="label"
+          onChange={evt => this.setState({ checked: evt.checked })}
+          checked={this.state.checked}
+          refFunc={el => {
+            this.checkBoxEl = el;
+          }}
+        />
       </div>
     );
   }

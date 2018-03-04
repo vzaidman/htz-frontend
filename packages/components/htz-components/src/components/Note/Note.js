@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import { responsivePropBaseType, } from '../../../propTypes/responsivePropBaseType';
-import { textInputVariantType, } from './../textInputVariantType';
+import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
+import { textInputVariantType, } from '../TextInput/textInputVariantType';
 
 const TextInputVariants = textInputVariantType;
 

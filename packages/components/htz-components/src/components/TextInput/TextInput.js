@@ -16,7 +16,7 @@ import Button from '../Button/Button'; // eslint-disable-line import/no-named-as
 import IconBold from '../Icon/icons/IconBold';
 import IconItalic from '../Icon/icons/IconItalic';
 import InputElement from './elements/InputElement';
-import Note from './elements/Note';
+import Note from '../Note/Note';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import { textInputVariantType, } from './textInputVariantType';
 

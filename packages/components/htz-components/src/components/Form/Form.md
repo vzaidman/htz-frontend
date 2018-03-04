@@ -5,14 +5,14 @@ Quoting from Formik package https://npm.im/formik (which this Component uses Ide
 
 `Let's face it, forms are really verbose in React. To make matters worse,most form helpers do wayyyy too much magic and often have a significant performance cost associated with them.`
 
-For these reasons we built a generic `<Form />` that works well with our custom `<TextInput />` and has the following features:
+For these reasons we built a generic `<Form />` that works well with our custom input elements and has the following features:
 
 ### Features
 
 * Get values in and out of form state easily
 * Handle Validation and error messages (including focusing on the correct error)
 * Handle form submission
-* Designed to work with Our custom `<TextInput />` including error messages
+* Designed to work with Our custom `<TextInput />` and `<CheckBox/>` including error messages
 * Handle working with our custom `<TextInput />` when in contenteditable mode without requiring consumer to take care of differences
 * Fully customizable design using the render props pattern
 
@@ -26,9 +26,15 @@ A function that gets called by `<Form />`'s `handleSubmit` function.
 
 `onSubmit` gets a the values Object from the `<Form />` state.
 
-The values object holds a key value set for each input that the `<Form />` controls, the key will be the name of the input, and the value will be the value of the controlled `<TextInput />`.
+The values object holds a key value set for each input that the `<Form />` controls, the key will be the name of the input, and the value will be the value of the controlled input.
 
-Each input should get a unique name through `getInputProps` method(see below)
+Each input should get a unique name through `getInputProps` method(see below).
+
+The default `formElementType` is `TextInput`, each element that is not a `TextInput` should be passed the apropriate `formElementType`
+
+e.g: `<CheckBox getInputProps({ formElementType: 'checkBox', })/>`
+
+The availble types are: 'text' and 'checkBox'
 
 **The `<Form />` render function passes an Object with the following methods for the consumer to use.**
 
@@ -270,7 +276,7 @@ By default the `<Form />` will validate elements that the user touched when blur
 
 **`isValidateOnChange`**
 
-By default the `<Form />` will recheck validation of input when the user enters new data (to touched elements, i.e elements that were blured at least once), cancel this behaviour by simply passing `isValidateOnChange=false`
+By default the `<Form />` will recheck validation of input when the user enters new data (to touched elements, i.e elements that were focused at least once), cancel this behaviour by simply passing `isValidateOnChange=false`
 
 ```jsx
 <div dir="rtl">
@@ -389,6 +395,63 @@ In order to set the initial values of an input controlled by `<Form />` simply p
           })}
         />
         <br />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Button onClick={handleSubmit}>submit</Button>
+          <Button onClick={clearForm}>clear</Button>
+        </div>
+      </div>
+    )}
+  />
+</div>
+```
+
+**Working with CheckBox**
+
+`<Form />` can handle our `<CheckBox/>` component as well.
+
+```jsx
+<div dir="rtl">
+  <Form
+    onSubmit={({ email, terms }) =>
+      alert(
+        `email submitted: ${email} agreed to terms: ${terms ? "true" : "false"}`
+      )
+    }
+    validate={({ email, terms }) => {
+      let errors = [];
+      if (!email) {
+        errors.push({
+          name: "email",
+          order: 1,
+          errorText: "must provide email"
+        });
+      }
+      if (!terms) {
+        errors.push({
+          name: "terms",
+          order: 2,
+          errorText: "must accept terms"
+        });
+      }
+      return errors;
+    }}
+    render={({ getInputProps, handleSubmit, clearForm }) => (
+      <div>
+        <TextInput
+          {...getInputProps({
+            name: "email",
+            label: "email",
+            type: "email"
+          })}
+        />
+        <br />
+        <CheckBox
+          {...getInputProps({
+            name: "terms",
+            label: "I agree to the site terms",
+            formElementType: "checkBox"
+          })}
+        />
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Button onClick={handleSubmit}>submit</Button>
           <Button onClick={clearForm}>clear</Button>

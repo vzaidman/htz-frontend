@@ -50,9 +50,23 @@ describe('<CheckBox>', () => {
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
+    it('renders correctly with Note', () => {
+      const { component, styles, } = felaSnapshotter(
+        <StyledCheckBox noteText="text" errorText="error" label="labelRed" />
+      );
+      expect(component).toMatchSnapshot();
+      expect(styles).toMatchSnapshot();
+    });
+    it('renders correctly with Note in and error', () => {
+      const { component, styles, } = felaSnapshotter(
+        <StyledCheckBox noteText="text" isError errorText="error" label="labelRed" />
+      );
+      expect(component).toMatchSnapshot();
+      expect(styles).toMatchSnapshot();
+    });
     it('renders handles click events correctly', () => {
       const onClick = jest.fn();
-      const output = felaMount(<CheckBox attrs={{ onClick, }} label="labelRed" />);
+      const output = felaMount(<CheckBox onClick={onClick} label="labelRed" />);
 
       expect(output.state().checked).toBe(false);
       const input = output.find('input');
@@ -70,7 +84,7 @@ describe('<CheckBox>', () => {
     });
     it('renders handles click events correctly on a disabled CheckBox', () => {
       const onClick = jest.fn();
-      const output = felaMount(<CheckBox isDisabled attrs={{ onClick, }} label="labelRed" />);
+      const output = felaMount(<CheckBox isDisabled onClick={onClick} label="labelRed" />);
 
       expect(output.state().checked).toBe(false);
       const input = output.find('input');
@@ -81,7 +95,7 @@ describe('<CheckBox>', () => {
     it('renders handles focus and blur events correctly', () => {
       const onFocus = jest.fn();
       const onBlur = jest.fn();
-      const output = felaMount(<CheckBox attrs={{ onFocus, onBlur, }} label="labelRed" />);
+      const output = felaMount(<CheckBox onFocus={onFocus} onBlur={onBlur} label="labelRed" />);
 
       expect(output.state().isFocused).toBe(false);
       const input = output.find('input');
