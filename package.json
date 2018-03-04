@@ -24,6 +24,7 @@
     "prepush": "node scripts/githooks/prepush",
     "sync": "node scripts/sync.js",
     "test": "lerna exec --no-bail -- yarn run test",
+    "test:deploy": "lerna exec -- yarn run test",
     "update": "yarn && yarn run lerna run --no-bail prepare",
     "update-packages-scripts":
       "lerna exec --no-bail --loglevel verbose --ignore @haaretz/htz-react-base -- yarn run update-scripts"
