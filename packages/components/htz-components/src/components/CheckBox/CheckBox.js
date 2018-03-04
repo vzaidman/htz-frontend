@@ -8,7 +8,7 @@ import Note from '../Note/Note';
 
 const styles = ({ miscStyles, theme, }) => ({
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'baseline',
   position: 'relative',
   extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
@@ -16,6 +16,7 @@ const styles = ({ miscStyles, theme, }) => ({
 const checkBoxStyle = ({ checked, isDisabled, theme, }) => ({
   height: '2rem',
   width: '2rem',
+  flexShrink: 0,
   backgroundColor: checked ? theme.color('checkBox', 'bgChecked') : theme.color('checkBox', 'bg'),
   transitionProperty: 'all',
   extend: [
@@ -282,7 +283,7 @@ export default createComponent(styles, CheckBox, [
   'attrs',
   'checked',
   'checkBoxId',
-  'defaultVlue',
+  'defaultValue',
   'errorText',
   'isDisabled',
   'isError',

@@ -83,7 +83,10 @@ The label associated with the checkBox, can be simple text or a node
 
 ```jsx
 <div dir="rtl" style={{ padding: "5rem" }}>
-  <CheckBox miscStyles={{ color: "red" }} label="labelRed" />
+  <CheckBox
+    miscStyles={{ color: "red", alignItems: "center" }}
+    label="labelRed"
+  />
 </div>
 ```
 
