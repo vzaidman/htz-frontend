@@ -40,7 +40,6 @@ const inputTemplateToComponent = new Map([
   [ 'com.tm.Image', Image, ],
   [ 'com.tm.Video', Video, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
-  [ 'com.tm.HtmlElement', () => <p>HtmlElement</p>, ],
   [ 'com.tm.ListElement', () => <p>ListElement</p>, ],
   [ 'com.tm.TabViewElement', () => <p>TabViewElement</p>, ],
   [ 'com.polobase.JSONListsWrapper', () => <p>JSONListsWrapper</p>, ],
