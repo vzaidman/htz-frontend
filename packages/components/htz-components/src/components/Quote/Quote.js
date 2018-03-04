@@ -26,16 +26,38 @@ const quoteWrapperStyle = ({ theme, }) => ({
 const QuoteWrapper = createComponent(quoteWrapperStyle, 'blockquote');
 
 const quoteStyle = ({ theme, quoteType, }) => ({
-  ...theme.type(2),
   ':after': {
     content: "'\"'",
   },
-  ...getStyleObj(theme, quoteType),
+  ...theme.mq(
+    { until: 'm', },
+    { ...theme.type(1), }
+  ),
+  ...theme.mq(
+    { from: 'm', until: 'xl', },
+    { ...theme.type(0), }
+  ),
+  ...theme.mq(
+    { from: 'xl', },
+    { ...theme.type(2), }
+  ),
+  ...getStyleObj(quoteType),
 });
 const QuoteElement = createComponent(quoteStyle, 'p');
 
 const citeStyle = ({ theme, }) => ({
-  ...theme.type(-1),
+  ...theme.mq(
+    { until: 'm', },
+    { ...theme.type(-1), }
+  ),
+  ...theme.mq(
+    { from: 'm', until: 'xl', },
+    { ...theme.type(-2), }
+  ),
+  ...theme.mq(
+    { from: 'xl', },
+    { ...theme.type(-1), }
+  ),
 });
 const Cite = createComponent(citeStyle, 'span');
 
@@ -50,7 +72,7 @@ const topBorderStyle = ({ theme, }) => ({
 });
 const TopBorder = createComponent(topBorderStyle, 'span');
 
-function getStyleObj(theme, quoteType) {
+function getStyleObj(quoteType) {
   switch (quoteType) {
     case 'image':
       return {
