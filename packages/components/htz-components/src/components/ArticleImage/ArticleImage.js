@@ -108,26 +108,24 @@ const zoomWrapperStyle = ({ theme, }) => ({
 });
 
 // eslint-disable-next-line react/prop-types
-function ZoomWrapperUnstyled({ theme, onClick, }) {
-  return (
-    <button onClick={onClick} aria-label={theme.zoominText}>
-      <IconZoomIn
-        color={[ 'neutral', '-10', ]}
-        size={2.5}
-        miscStyles={{
-          display: 'block',
-          margin: '0 auto',
-          transform: 'translateY(12.5%)',
-        }}
-      />
-    </button>
-  );
-}
+const ZoomWrapperUnstyled = ({ theme, ...props }) => (
+  <button {...props} aria-label={theme.zoominText}>
+    <IconZoomIn
+      color={[ 'neutral', '-10', ]}
+      size={2.5}
+      miscStyles={{
+        display: 'block',
+        margin: '0 auto',
+      }}
+    />
+  </button>
+);
+
 
 const ZoomWrapper = createComponent(
   zoomWrapperStyle,
   withTheme(ZoomWrapperUnstyled),
-  [ 'onClick', ]
+  props => Object.keys(props)
 );
 
 const getAspect = viewMode => {

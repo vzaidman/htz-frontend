@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, withTheme, } from 'react-fela';
 import { createMqFunc, } from '@haaretz/htz-css-tools';
 import { rgba, } from 'polished';
 
@@ -142,7 +142,26 @@ const closeWrapperStyle = ({ theme, }) => ({
     backgroundColor: theme.color('neutral', '+1'),
   },
 });
-const CloseWrapper = createComponent(closeWrapperStyle, 'span', [ 'onClick', ]);
+
+// eslint-disable-next-line react/prop-types
+const CloseWrapperUnstyled = ({ theme, ...props }) => (
+  <button {...props} aria-label={theme.zoomoutText}>
+    <IconClose
+      color={[ 'neutral', '-10', ]}
+      size={2.5}
+      miscStyles={{
+        display: 'block',
+        margin: '0 auto',
+      }}
+    />
+  </button>
+);
+
+const CloseWrapper = createComponent(
+  closeWrapperStyle,
+  withTheme(CloseWrapperUnstyled),
+  props => Object.keys(props)
+);
 
 /**
  * This component receives an Image/Picture component **WITHOUT** it's wrapper
@@ -175,17 +194,7 @@ class FullScreenImage extends React.Component {
 
     return (
       <FullScreenContainer>
-        <CloseWrapper onClick={closeCallBack}>
-          <IconClose
-            color={[ 'neutral', '-10', ]}
-            size={2.5}
-            miscStyles={{
-              display: 'block',
-              margin: '0 auto',
-              transform: 'translateY(12.5%)',
-            }}
-          />
-        </CloseWrapper>
+        <CloseWrapper onClick={closeCallBack} />
         <ImageWrapper
           innerRef={image => this.image = image} // eslint-disable-line no-return-assign
         >
