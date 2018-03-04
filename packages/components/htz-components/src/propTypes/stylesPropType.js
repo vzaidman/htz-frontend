@@ -17,9 +17,9 @@ export const stylesPropType = objectOf(
       shape({
         ...responsivePropBaseType,
         /** Miscellaneous options to be passed to a function parsing
-        * the prop, e.g., the `type` prop, which is parsed by the
-        * typesetter function.
-        */
+         * the prop, e.g., the `type` prop, which is parsed by the
+         * typesetter function.
+         */
         options: object,
       })
     ),

@@ -5,7 +5,6 @@ import { graphql, compose, } from 'react-apollo';
 import { UPDATE_USER, GET_USER, } from './UserInjector';
 import ImageCookies from './ImageCookies';
 
-
 export const userScheme = {
   type: null,
   id: null,
@@ -110,7 +109,10 @@ class LoginStateWrapper extends React.Component {
       );
       return (
         <Fragment>
-          <ImageCookies images={this.state.images} onload={this.handleImgOnload} />
+          <ImageCookies
+            images={this.state.images}
+            onload={this.handleImgOnload}
+          />
           {this.props.render({
             isLoggedIn,
             user: this.props.user,

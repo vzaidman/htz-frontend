@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { i18n, } from '@haaretz/htz-theme';
 import ArticleLink from './articleLink';
 
@@ -41,10 +40,7 @@ const propTypes = {
        * An array of Article's authors (if more than one, only the first will be displayed).
        */
       authors: PropTypes.arrayOf(
-        PropTypes.oneOfType([
-          PropTypes.string,
-          PropTypes.object,
-        ])
+        PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
       ).isRequired,
     })
   ).isRequired,
@@ -82,43 +78,50 @@ const wrapperStyle = ({ theme, marginBottom, }) => ({
 const ArticleListWrapper = createComponent(wrapperStyle);
 
 const seriesTitleStyle = ({ theme, }) => ({
-  ...(theme.type(0)),
+  ...theme.type(0),
   color: theme.color('neutral', '-1'),
   display: 'inline',
   marginEnd: '1rem',
   ':after': {
     content: '":"',
-  }
+  },
 });
 const SeriesTitle = createComponent(seriesTitleStyle, 'h4');
 
 const articleWrapperStyle = ({ theme, lastItem, }) => ({
   display: 'inline',
   color: theme.color('primary', '+1'),
-  ...(!lastItem &&
-    {
-      ':after': {
-        content: '"|"',
-        marginStart: '0.75rem',
-        marginEnd: '0.75rem',
-        fontWeight: '700',
-        color: theme.color('neutral', '-1'),
-      },
-    }),
+  ...(!lastItem && {
+    ':after': {
+      content: '"|"',
+      marginStart: '0.75rem',
+      marginEnd: '0.75rem',
+      fontWeight: '700',
+      color: theme.color('neutral', '-1'),
+    },
+  }),
 });
 const ArticleWrapper = createComponent(articleWrapperStyle, 'li');
 
-function LinksBlock({ seriesTitle, articlePositionInTheSeries, articles, marginBottom, }) {
+function LinksBlock({
+  seriesTitle,
+  articlePositionInTheSeries,
+  articles,
+  marginBottom,
+}) {
   const { titlePrefix, } = i18n.seriesArticle;
   return (
     <ArticleListWrapper marginBottom={marginBottom}>
       <SeriesTitle>{titlePrefix + seriesTitle}</SeriesTitle>
-      {articles.map((article, i) => (
-        articlePositionInTheSeries !== i+1 &&
-        <ArticleWrapper key={i} lastItem={i === articles.length - 1}>
-          <ArticleLink article={article} isBlock />
-        </ArticleWrapper>
-      ))}
+      {articles.map(
+        (article, i) =>
+          articlePositionInTheSeries !== i + 1 && (
+            // eslint-disable-next-line react/no-array-index-key
+            <ArticleWrapper key={i} lastItem={i === articles.length - 1}>
+              <ArticleLink article={article} isBlock />
+            </ArticleWrapper>
+          )
+      )}
     </ArticleListWrapper>
   );
 }

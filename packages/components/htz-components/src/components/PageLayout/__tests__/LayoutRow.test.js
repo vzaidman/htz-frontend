@@ -5,13 +5,17 @@ import LayoutRow from '../LayoutRow'; // eslint-disable-line import/no-named-as-
 describe('<LayoutRow>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
-      const { component, styles, } = felaSnapshotter(<LayoutRow>Hello LayoutRow</LayoutRow>);
+      const { component, styles, } = felaSnapshotter(
+        <LayoutRow>Hello LayoutRow</LayoutRow>
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with custom attrs', () => {
       const { component, styles, } = felaSnapshotter(
-        <LayoutRow attrs={{ ariaLabel: 'I am custom', }}>Customizing attrs</LayoutRow>
+        <LayoutRow attrs={{ ariaLabel: 'I am custom', }}>
+          Customizing attrs
+        </LayoutRow>
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -25,7 +29,9 @@ describe('<LayoutRow>', () => {
     });
     it('renders correctly  with custom miscStyles', () => {
       const { component, styles, } = felaSnapshotter(
-        <LayoutRow miscStyles={{ paddingTop: '5rem', }}>Customizing miscStyles</LayoutRow>
+        <LayoutRow miscStyles={{ paddingTop: '5rem', }}>
+          Customizing miscStyles
+        </LayoutRow>
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();

@@ -14,7 +14,9 @@ const loadingStyle = ({ height, opacity, }) => ({
   zIndex: '6',
 });
 
-const Loading = createComponent(loadingStyle, 'div', props => Object.keys(props));
+const Loading = createComponent(loadingStyle, 'div', props =>
+  Object.keys(props)
+);
 
 const wrapperStyle = ({ props, }) => ({
   width: '150px',
@@ -26,7 +28,9 @@ const wrapperStyle = ({ props, }) => ({
   display: props,
 });
 
-const Wrapper = createComponent(wrapperStyle, 'div', props => Object.keys(props));
+const Wrapper = createComponent(wrapperStyle, 'div', props =>
+  Object.keys(props)
+);
 
 const spinnerRotation = () => ({
   from: {
@@ -50,7 +54,9 @@ const spinnerStyle = (props, renderer) => ({
   animationTimingFunction: 'linear',
 });
 
-const Spinner = createComponent(spinnerStyle, 'div', props => Object.keys(props));
+const Spinner = createComponent(spinnerStyle, 'div', props =>
+  Object.keys(props)
+);
 
 const textStyle = () => ({
   fontSize: '3rem',
@@ -64,12 +70,6 @@ const textStyle = () => ({
 const Text = createComponent(textStyle, 'p', props => Object.keys(props));
 
 export default class LoadingScreen extends React.Component {
-  componentStatus = {
-    height: '0',
-    opacity: '0',
-    display: 'none',
-  };
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.isLoading) {
       this.componentStatus.opacity = '1';
@@ -83,16 +83,18 @@ export default class LoadingScreen extends React.Component {
     }
   }
 
+  componentStatus = {
+    height: '0',
+    opacity: '0',
+    display: 'none',
+  };
+
   render() {
     return (
       <Loading {...this.componentStatus}>
         <Wrapper props={this.componentStatus.display}>
           <Spinner />
-          <Text>
-            {
-              this.props.loadingMessage
-            }
-          </Text>
+          <Text>{this.props.loadingMessage}</Text>
         </Wrapper>
       </Loading>
     );

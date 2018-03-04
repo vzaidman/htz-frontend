@@ -25,7 +25,6 @@ NYT.defaultProps = {
   onLoadCallback: null,
 };
 
-
 function NYT(props) {
   return (
     <VideoWrapper aspectRatio={'16/9'} nyt>

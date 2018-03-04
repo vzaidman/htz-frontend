@@ -42,7 +42,7 @@ describe('parseStyleProp()', () => {
       borderRadius: '5px',
     });
     testCase('return correct typographic values', 'type', 0, {
-      '@media (max-width: 80em)': {
+      '@media (max-width: 79.9375em)': {
         fontSize: '2.6666666666666665rem',
         lineHeight: '1.5em',
       },
@@ -208,7 +208,7 @@ describe('parseStyleProp()', () => {
         },
       ],
       {
-        '@media (max-width: 37.5em)': { color: 'red', },
+        '@media (max-width: 37.4375em)': { color: 'red', },
       }
     );
     testCase(
@@ -222,7 +222,9 @@ describe('parseStyleProp()', () => {
         },
       ],
       {
-        '@media (min-width: 37.5em) and (max-width: 48em)': { color: 'red', },
+        '@media (min-width: 37.5em) and (max-width: 47.9375em)': {
+          color: 'red',
+        },
       }
     );
     testCase(
@@ -238,7 +240,7 @@ describe('parseStyleProp()', () => {
         },
       ],
       {
-        '@media print and (min-width: 37.5em) and (max-width: 48em) and (orientation: landscape)': {
+        '@media print and (min-width: 37.5em) and (max-width: 47.9375em) and (orientation: landscape)': {
           color: 'red',
         },
       }
@@ -272,7 +274,9 @@ describe('parseStyleProp()', () => {
         },
       ],
       {
-        '@media (min-width: 37.5em) and (max-width: 48em)': { color: 'red', },
+        '@media (min-width: 37.5em) and (max-width: 47.9375em)': {
+          color: 'red',
+        },
         '@media (min-width: 48em)': { color: 'blue', },
       }
     );
@@ -439,7 +443,7 @@ describe('parseStyleProp()', () => {
         },
       ],
       {
-        '@media (min-width: 64em) and (max-width: 80em)': {
+        '@media (min-width: 64em) and (max-width: 79.9375em)': {
           fontSize: '2.6666666666666665rem',
           lineHeight: '4rem',
         },

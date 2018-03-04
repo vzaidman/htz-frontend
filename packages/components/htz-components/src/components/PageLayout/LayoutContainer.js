@@ -57,7 +57,7 @@ const styles = ({ bgc, miscStyles, theme, }) => ({
   ],
 });
 
-export function LayoutContainter({ attrs, children, className, }) {
+export function LayoutContainer({ attrs, children, className, }) {
   return (
     <div className={className} {...attrs}>
       {children}
@@ -65,7 +65,7 @@ export function LayoutContainter({ attrs, children, className, }) {
   );
 }
 
-LayoutContainter.propTypes = propTypes;
-LayoutContainter.defaultProps = defaultProps;
+LayoutContainer.propTypes = propTypes;
+LayoutContainer.defaultProps = defaultProps;
 
-export default createComponent(styles, LayoutContainter, [ 'attrs', 'children', ]);
+export default createComponent(styles, LayoutContainer, [ 'attrs', 'children', ]);

@@ -79,11 +79,11 @@ describe('typography factory function', () => {
   it('behaves according to "defaultFallback" argument', () => {
     // Without pixel fallback by default
     expect(type(0)).toEqual({
-      '@media (max-width: 37.5em)': {
+      '@media (max-width: 37.4375em)': {
         fontSize: '2.6666666666666665rem',
         lineHeight: '1.5em',
       },
-      '@media (min-width: 37.5em) and (max-width: 80em)': {
+      '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
         fontSize: '2.5714285714285716rem',
         lineHeight: '1.5555555555555556em',
       },
@@ -95,11 +95,11 @@ describe('typography factory function', () => {
 
     // With pixel fallback by default
     expect(typeDefaultFallback(0)).toEqual({
-      '@media (max-width: 37.5em)': {
+      '@media (max-width: 37.4375em)': {
         fontSize: [ '16px', '2.6666666666666665rem', ],
         lineHeight: '1.5em',
       },
-      '@media (min-width: 37.5em) and (max-width: 80em)': {
+      '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
         fontSize: [ '18px', '2.5714285714285716rem', ],
         lineHeight: '1.5555555555555556em',
       },
@@ -161,7 +161,7 @@ describe('typography factory function', () => {
       type,
       [ 0, { untilBp: 'm', pxFallback: true, }, ],
       {
-        '@media (max-width: 37.5em)': {
+        '@media (max-width: 37.4375em)': {
           fontSize: [ '16px', `${16 / 6}rem`, ],
           lineHeight: '1.5em',
         },
@@ -173,7 +173,7 @@ describe('typography factory function', () => {
       typeDefaultFallback,
       [ 0, { untilBp: 'm', pxFallback: false, }, ],
       {
-        '@media (max-width: 37.5em)': {
+        '@media (max-width: 37.4375em)': {
           fontSize: `${16 / 6}rem`,
           lineHeight: '1.5em',
         },
@@ -185,7 +185,7 @@ describe('typography factory function', () => {
       type,
       [ 0, { fromBp: 'default', untilBp: 'm', }, ],
       {
-        '@media (max-width: 37.5em)': {
+        '@media (max-width: 37.4375em)': {
           fontSize: `${16 / 6}rem`,
           lineHeight: '1.5em',
         },
@@ -197,7 +197,7 @@ describe('typography factory function', () => {
       type,
       [ 0, { fromBp: 'default', untilBp: 'm', lines: 5, }, ],
       {
-        '@media (max-width: 37.5em)': {
+        '@media (max-width: 37.4375em)': {
           fontSize: `${16 / 6}rem`,
           lineHeight: '5rem',
         },
@@ -209,7 +209,7 @@ describe('typography factory function', () => {
       type,
       [ 0, { fromBp: 'default', untilBp: 'm', lines: 5, pxFallback: true, }, ],
       {
-        '@media (max-width: 37.5em)': {
+        '@media (max-width: 37.4375em)': {
           fontSize: [ '16px', `${16 / 6}rem`, ],
           lineHeight: [ `${5 * 6}px`, '5rem', ],
         },
@@ -221,11 +221,11 @@ describe('typography factory function', () => {
       type,
       [ 0, ],
       {
-        '@media (max-width: 37.5em)': {
+        '@media (max-width: 37.4375em)': {
           fontSize: `${16 / 6}rem`,
           lineHeight: '1.5em',
         },
-        '@media (min-width: 37.5em) and (max-width: 80em)': {
+        '@media (min-width: 37.5em) and (max-width: 79.9375em)': {
           fontSize: `${18 / 7}rem`,
           lineHeight: '1.5555555555555556em',
         },
@@ -251,7 +251,7 @@ describe('typography factory function', () => {
       type,
       [ 5, { untilBp: 'm', }, ],
       {
-        '@media (max-width: 37.5em)': {
+        '@media (max-width: 37.4375em)': {
           // prettier-ignore
           fontSize: `${(16 / 6) * 2}rem`,
           lineHeight: '1.125em',

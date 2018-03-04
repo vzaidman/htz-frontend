@@ -40,7 +40,9 @@ const defaultProps = {
 const styles = ({ bgc, theme, miscStyles, }) => ({
   backgroundColor: bgc || theme.color('primary', '-5'),
   width: '100%',
-  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
+  extend: [
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
 });
 
 export function LayoutRow({ attrs, children, className, }) {

@@ -1,3 +1,4 @@
+/* global document embedArtiPlayer */
 /* *************************************************************** *
  * This element accepts these inputTemplates:
   [
@@ -48,9 +49,8 @@ export default class ArtiMedia extends React.Component {
     });
 
     script.addEventListener('load', () => {
-      // eslint-disable-next-line no-undef
       embedArtiPlayer({ targetId: settings.playerId, ...settings, });
-      this.props.onLoadCallback ? this.props.onLoadCallback() : '';
+      this.props.onLoadCallback && this.props.onLoadCallback();
     });
   }
 
@@ -60,7 +60,12 @@ export default class ArtiMedia extends React.Component {
 
     return (
       <VideoWrapper aspectRatio={'16/9'}>
-        <VideoElement as="div" id={playerId} className="arti-media-video" artiMedia />
+        <VideoElement
+          as="div"
+          id={playerId}
+          className="arti-media-video"
+          artiMedia
+        />
       </VideoWrapper>
     );
   }

@@ -1,10 +1,10 @@
 const os = require('os');
 
 function getLocalExternalIp() {
-  var bindAddress = process.env.BIND_ADDRESS;
-  if (bindAddress){
-    return bindAddress;
+  if (process.env.BIND_ADDRESS){
+    return process.env.BIND_ADDRESS;
   }
+
   return Array.prototype.concat
     .apply([], Object.values(os.networkInterfaces()))
     .filter(details => details.family === 'IPv4' && !details.internal)

@@ -70,7 +70,11 @@ describe('<Comment>', () => {
       const submitButton = output.find('button').at(4);
       submitButton.simulate('click');
       expect(mockCallback).toHaveBeenCalledTimes(1);
-      expect(mockCallback).toHaveBeenCalledWith('author value', 'text value', '123');
+      expect(mockCallback).toHaveBeenCalledWith(
+        'author value',
+        'text value',
+        '123'
+      );
       document.execCommand = oldExecCommand;
       document.queryCommandState = oldQueryCommandState;
     });

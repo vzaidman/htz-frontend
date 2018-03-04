@@ -24,7 +24,7 @@ const PinterestWrapper = createComponent(pinterestWrapper, 'figure', props =>
 );
 
 const updateScript = () => {
-// eslint-disable-next-line no-undef
+  // eslint-disable-next-line no-undef
   doBuild();
 };
 
@@ -55,13 +55,14 @@ export default class Pinterest extends React.Component {
     onLoadCallback: null,
   };
 
-
   componentDidMount() {
     const src = '//assets.pinterest.com/js/pinit.js';
     const async = true;
     const id = 'pinterest-js';
 
-    appendScript(src, id, async, this.props.onLoadCallback, updateScript, { 'data-pin-build': 'doBuild', });
+    appendScript(src, id, async, this.props.onLoadCallback, updateScript, {
+      'data-pin-build': 'doBuild',
+    });
   }
 
   render() {
@@ -86,10 +87,6 @@ export default class Pinterest extends React.Component {
           href={this.props.content}
         />
       );
-    return (
-      <PinterestWrapper>
-        {tag}
-      </PinterestWrapper>
-    );
+    return <PinterestWrapper>{tag}</PinterestWrapper>;
   }
 }

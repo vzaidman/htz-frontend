@@ -2,7 +2,7 @@
 
 import getLengthProps from '../units/getLengthProps';
 import { DEFAULT_BROWSER_FONT_SIZE, } from '../consts/index';
-import type { BpsConfig, MiscBpsConfig, MqOptions, WidthBpsConfig, } from './mq';
+import type { BpsConfig, MqOptions, WidthBpsConfig, } from './mq';
 
 /**
  * Get a media-query string from a query against
@@ -67,7 +67,8 @@ export default function getMqString(
   const maxString = until
     ? `${typeString || minString ? ' and ' : ''}(max-width: ${getLengthString(
       until,
-      widths
+      widths,
+      true
     )})`
     : '';
   const namedMisc = miscBps[misc || ''];
@@ -104,14 +105,17 @@ export default function getMqString(
  */
 export function getLengthString(
   length: string | number,
-  breakpoints: WidthBpsConfig
+  breakpoints: WidthBpsConfig,
+  isUntil?: true
 ): string {
   // if `length` is a number, assume it is in pixels and convert to em
   if (typeof length === 'number') {
-    return `${length / DEFAULT_BROWSER_FONT_SIZE}em`;
+    return `${(length - (isUntil ? 1 : 0)) / DEFAULT_BROWSER_FONT_SIZE}em`;
   }
-  const lengthNumber = breakpoints[length];
-  if (lengthNumber) return getLengthString(lengthNumber, breakpoints);
+  const lengthNumber = breakpoints[length] ? breakpoints[length] : undefined;
+  if (lengthNumber) return getLengthString(lengthNumber, breakpoints, isUntil);
   const { unitlessValue, unit, } = getLengthProps(length);
-  return unit === 'px' ? getLengthString(unitlessValue, breakpoints) : length;
+  return unit === 'px'
+    ? getLengthString(unitlessValue, breakpoints, isUntil)
+    : length;
 }

@@ -9,9 +9,9 @@ exports[`<IconMail /> DOM element add "id" attribute to DOM element 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>
@@ -29,9 +29,9 @@ exports[`<IconMail /> DOM element add "onClick" attribute to DOM element 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>
@@ -49,9 +49,9 @@ exports[`<IconMail /> DOM element pass attributes defined in the "attrs" prop to
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>
@@ -68,9 +68,9 @@ exports[`<IconMail /> DOM element render correctly when no props are passed 1`] 
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>
@@ -87,16 +87,16 @@ exports[`<IconMail /> styles responsively set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconMail /> styles responsively set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{position:relative}}@media (min-width: 80em){.htz-e{position:static}}"`;
+exports[`<IconMail /> styles responsively set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 79.9375em){.htz-d{position:relative}}@media (min-width: 80em){.htz-e{position:static}}"`;
 
 exports[`<IconMail /> styles set icon's color 1`] = `
 <div>
@@ -106,9 +106,9 @@ exports[`<IconMail /> styles set icon's color 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>
@@ -125,16 +125,16 @@ exports[`<IconMail /> styles set icon's color responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconMail /> styles set icon's color responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-d{fill:#FFF}@media (max-width: 80em){.htz-b{color:#0B7EB5}}@media (min-width: 80em){.htz-c{color:#2D2D2D}}"`;
+exports[`<IconMail /> styles set icon's color responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-d{fill:#FFF}@media (max-width: 79.9375em){.htz-b{color:#0B7EB5}}@media (min-width: 80em){.htz-c{color:#2D2D2D}}"`;
 
 exports[`<IconMail /> styles set icon's fill 1`] = `
 <div>
@@ -144,9 +144,9 @@ exports[`<IconMail /> styles set icon's fill 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>
@@ -163,16 +163,16 @@ exports[`<IconMail /> styles set icon's fill responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconMail /> styles set icon's fill responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}@media (max-width: 80em){.htz-c{fill:#0B7EB5}}@media (min-width: 80em){.htz-d{fill:#2D2D2D}}"`;
+exports[`<IconMail /> styles set icon's fill responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}@media (max-width: 79.9375em){.htz-c{fill:#0B7EB5}}@media (min-width: 80em){.htz-d{fill:#2D2D2D}}"`;
 
 exports[`<IconMail /> styles set icon's size 1`] = `
 <div>
@@ -182,9 +182,9 @@ exports[`<IconMail /> styles set icon's size 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>
@@ -201,16 +201,16 @@ exports[`<IconMail /> styles set icon's size responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconMail /> styles set icon's size responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 80em){.htz-d{font-size:6rem}}@media (min-width: 80em){.htz-e{font-size:7rem}}"`;
+exports[`<IconMail /> styles set icon's size responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 79.9375em){.htz-d{font-size:6rem}}@media (min-width: 80em){.htz-e{font-size:7rem}}"`;
 
 exports[`<IconMail /> styles set misc styles on an icon 1`] = `
 <div>
@@ -220,9 +220,9 @@ exports[`<IconMail /> styles set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-      
+     
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
       fill="currentColor"
     />
   </svg>

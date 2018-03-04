@@ -1,4 +1,4 @@
-import {buildURLs, buildUrl,} from '../buildImgURLs';
+import { buildURLs, buildUrl, } from '../buildImgURLs';
 
 const data = [
   {
@@ -6,13 +6,13 @@ const data = [
     description: 'string',
     credit: 'string',
     aspects: {
-      belgrade: {width: '100', height: '100', x: '10', y: '10',},
-      landscape: {width: '500', height: '200', x: '20', y: '20',},
-      headline: {width: '300', height: '150', x: '20', y: '0',},
-      regular: {width: '200', height: '100', x: '5', y: '0',},
-      square: {width: '200', height: '200', x: '0', y: '0',},
-      vertical: {width: '300', height: '100', x: '0', y: '10',},
-      full: {width: '300', height: '300', x: '10', y: '0',},
+      belgrade: { width: '100', height: '100', x: '10', y: '10', },
+      landscape: { width: '500', height: '200', x: '20', y: '20', },
+      headline: { width: '300', height: '150', x: '20', y: '0', },
+      regular: { width: '200', height: '100', x: '5', y: '0', },
+      square: { width: '200', height: '200', x: '0', y: '0', },
+      vertical: { width: '300', height: '100', x: '0', y: '10', },
+      full: { width: '300', height: '300', x: '10', y: '0', },
     },
     isAnimated: false,
     imgName: 'sample.jpg',
@@ -24,13 +24,13 @@ const data = [
     description: 'string',
     credit: 'string',
     aspects: {
-      belgrade: {width: '100', height: '100', x: '10', y: '10',},
-      landscape: {width: '500', height: '200', x: '20', y: '20',},
-      headline: {width: '300', height: '150', x: '20', y: '0',},
-      regular: {width: '200', height: '100', x: '5', y: '0',},
-      square: {width: '200', height: '200', x: '0', y: '0',},
-      vertical: {width: '300', height: '100', x: '0', y: '10',},
-      full: {width: '300', height: '300', x: '10', y: '0',},
+      belgrade: { width: '100', height: '100', x: '10', y: '10', },
+      landscape: { width: '500', height: '200', x: '20', y: '20', },
+      headline: { width: '300', height: '150', x: '20', y: '0', },
+      regular: { width: '200', height: '100', x: '5', y: '0', },
+      square: { width: '200', height: '200', x: '0', y: '0', },
+      vertical: { width: '300', height: '100', x: '0', y: '10', },
+      full: { width: '300', height: '300', x: '10', y: '0', },
     },
     isAnimated: false,
     imgName: 'mobileSample.jpg',
@@ -47,18 +47,16 @@ const uploadedImageData = data[0];
 const fetchedImageData = data[1];
 
 describe('buildUrl()', () => {
-
   it('process all default values correctly', () => {
-    const result = buildUrl('1.44444', data[0], {width: '200',});
-    expect(result)
-      .toMatch(
-        /image\/upload\/w_300,h_300,x_10,y_0,c_crop,g_north_west.q_auto,h_200,w_200,c_fill,f_auto.fl_any_format\.preserve_transparency\.progressive:none/
-      );
+    const result = buildUrl('1.44444', data[0], { width: '200', });
+    expect(result).toMatch(
+      /image\/upload\/w_300,h_300,x_10,y_0,c_crop,g_north_west.q_auto,h_200,w_200,c_fill,f_auto.fl_any_format\.preserve_transparency\.progressive:none/
+    );
   });
 
   describe('user defined options', () => {
     it('process "width" correctly', () => {
-      const result = buildUrl('1.44444', data[0], {width: '200',});
+      const result = buildUrl('1.44444', data[0], { width: '200', });
       expect(result).toMatch(/image\/upload\/.+w_200/);
     });
 
@@ -73,7 +71,7 @@ describe('buildUrl()', () => {
     it('process "transforms" correctly', () => {
       const result = buildUrl('1.44444', data[0], {
         width: '200',
-        transforms: ['c_fit', 'r_100',],
+        transforms: [ 'c_fit', 'r_100', ],
       });
       expect(result).toMatch(/image\/upload\/.+c_fit\/r_100/);
     });
@@ -81,7 +79,7 @@ describe('buildUrl()', () => {
     it('process "flags" correctly', () => {
       const result = buildUrl('1.44444', data[0], {
         width: '200',
-        flags: ['apng', 'immutable_cache',],
+        flags: [ 'apng', 'immutable_cache', ],
       });
       expect(result).toMatch(/image\/upload\/.+apng\.immutable_cache/);
     });
@@ -106,24 +104,24 @@ describe('buildUrl()', () => {
   // Images that were uploaded to Cloudinary should have
   // the default URL scheme
   it('builds an "upload" url correctly', () => {
-    const result = buildUrl('1.1212', uploadedImageData, {width: '100',});
+    const result = buildUrl('1.1212', uploadedImageData, { width: '100', });
     expect(result).toMatch(/image\/upload\//);
   });
 
   // Older images that were not originally uploaded to
   // Cloudinary have different url structure
   it('builds a "fetch" url correctly', () => {
-    const result = buildUrl('1.1212', fetchedImageData, {width: '100',});
+    const result = buildUrl('1.1212', fetchedImageData, { width: '100', });
     expect(result).toMatch(/image\/fetch\/.+\/polopoly_fs\//);
   });
 
   describe('Error messages', () => {
     it('throw an error when "width" is not defined in "options"', () => {
       const optionNoWidth = {
-        transforms: ['c_fit',],
+        transforms: [ 'c_fit', ],
         isProgressive: true,
         aspect: 'headline',
-        flags: ['apng', 'immutable_cache',],
+        flags: [ 'apng', 'immutable_cache', ],
       };
       expect(() => buildUrl('1.44444', data[0], optionNoWidth)).toThrow(
         'width is a mandatory option property for rendering image urls'
@@ -138,17 +136,17 @@ describe('buildURLs()', () => {
       {
         width: '200',
         quality: 'auto:best',
-        transforms: ['c_fit', 'r_100',],
+        transforms: [ 'c_fit', 'r_100', ],
         isProgressive: false,
         aspect: 'headline',
-        flags: ['apng', 'immutable_cache',],
+        flags: [ 'apng', 'immutable_cache', ],
       },
       {
         width: '100',
-        transforms: ['c_fit',],
+        transforms: [ 'c_fit', ],
         isProgressive: true,
         aspect: 'landscape',
-        flags: ['apng', 'immutable_cache',],
+        flags: [ 'apng', 'immutable_cache', ],
       },
     ];
     const results = buildURLs('1.44444', data[0], multiOptions);
@@ -159,10 +157,10 @@ describe('buildURLs()', () => {
       {
         width: '200',
         quality: 'auto:best',
-        transforms: ['c_fit', 'r_100',],
+        transforms: [ 'c_fit', 'r_100', ],
         isProgressive: false,
         aspect: 'headline',
-        flags: ['apng', 'immutable_cache',],
+        flags: [ 'apng', 'immutable_cache', ],
       },
     ];
     const result = buildURLs('1.44444', data[0], oneOption, true);
@@ -173,10 +171,10 @@ describe('buildURLs()', () => {
       {
         width: '200',
         quality: 'auto:best',
-        transforms: ['c_fit', 'r_100',],
+        transforms: [ 'c_fit', 'r_100', ],
         isProgressive: false,
         aspect: 'headline',
-        flags: ['apng', 'immutable_cache',],
+        flags: [ 'apng', 'immutable_cache', ],
       },
     ];
     const buildURLsResult = buildURLs('1.1212', data[0], oneOption);
@@ -187,17 +185,17 @@ describe('buildURLs()', () => {
       {
         width: '200',
         quality: 'auto:best',
-        transforms: ['c_fit', 'r_100',],
+        transforms: [ 'c_fit', 'r_100', ],
         isProgressive: false,
         aspect: 'headline',
-        flags: ['apng', 'immutable_cache',],
+        flags: [ 'apng', 'immutable_cache', ],
       },
       {
         width: '100',
-        transforms: ['c_fit',],
+        transforms: [ 'c_fit', ],
         isProgressive: true,
         aspect: 'landscape',
-        flags: ['apng', 'immutable_cache',],
+        flags: [ 'apng', 'immutable_cache', ],
       },
     ];
     const buildURLsResult = buildURLs('1.1212', data[0], twoOptions);
@@ -208,25 +206,25 @@ describe('buildURLs()', () => {
       {
         width: '200',
         quality: 'auto:best',
-        transforms: ['c_fit', 'r_100',],
+        transforms: [ 'c_fit', 'r_100', ],
         isProgressive: false,
         aspect: 'headline',
-        flags: ['apng', 'immutable_cache',],
+        flags: [ 'apng', 'immutable_cache', ],
       },
       {
         width: '100',
-        transforms: ['c_fit',],
+        transforms: [ 'c_fit', ],
         isProgressive: true,
         aspect: 'landscape',
-        flags: ['apng', 'immutable_cache',],
+        flags: [ 'apng', 'immutable_cache', ],
       },
       {
         width: '200',
         quality: 'auto:best',
-        transforms: ['c_fit', 'r_100',],
+        transforms: [ 'c_fit', 'r_100', ],
         isProgressive: false,
         aspect: 'headline',
-        flags: ['apng', 'immutable_cache',],
+        flags: [ 'apng', 'immutable_cache', ],
       },
     ];
     const buildURLsResult = buildURLs('1.1212', data[0], threeOptions);

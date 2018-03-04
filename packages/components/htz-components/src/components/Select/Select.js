@@ -70,7 +70,13 @@ const ItemStyle = ({ theme, variant = 'primary', isSelected, activeItem, }) => (
 
 const StyledItem = createComponent(ItemStyle, 'button', props => {
   /* eslint-disable no-unused-vars */
-  const { activeItem, isOpen, isSelected, noHighlitedItems, ...noCustomAtrrProps } = props;
+  const {
+    activeItem,
+    isOpen,
+    isSelected,
+    noHighlitedItems,
+    ...noCustomAtrrProps
+  } = props;
   return Object.keys(noCustomAtrrProps);
 });
 
@@ -105,11 +111,15 @@ const selectedItemStyle = ({ noHighlitedItems, theme, variant, isOpen, }) => ({
   ],
 });
 
-const StyledSelectedItem = createComponent(selectedItemStyle, StyledItem, props => {
-  /* eslint-disable no-unused-vars */
-  const { isOpen, noHighlitedItems, variant, ...noCustomAtrrProps } = props;
-  return Object.keys(noCustomAtrrProps);
-});
+const StyledSelectedItem = createComponent(
+  selectedItemStyle,
+  StyledItem,
+  props => {
+    /* eslint-disable no-unused-vars */
+    const { isOpen, noHighlitedItems, variant, ...noCustomAtrrProps } = props;
+    return Object.keys(noCustomAtrrProps);
+  }
+);
 
 export class Select extends Component {
   static propTypes = {
@@ -226,7 +236,11 @@ export class Select extends Component {
               }
             }}
           >
-            <StyledSelectWrapper miscStyles={miscStyles} isOpen={isOpen} variant={variant}>
+            <StyledSelectWrapper
+              miscStyles={miscStyles}
+              isOpen={isOpen}
+              variant={variant}
+            >
               <StyledSelectedItem
                 {...getButtonProps({
                   variant,
@@ -235,11 +249,16 @@ export class Select extends Component {
                   type: 'button',
                 })}
               >
-                {selectedItem ? selectedItem.display || selectedItem.value : placeholder}
+                {selectedItem
+                  ? selectedItem.display || selectedItem.value
+                  : placeholder}
               </StyledSelectedItem>
               <div style={{ position: 'relative', }}>
                 {isOpen && (
-                  <StyledDropDownMenu variant={variant} data-test="dropdown-menu">
+                  <StyledDropDownMenu
+                    variant={variant}
+                    data-test="dropdown-menu"
+                  >
                     {items.map((item, index) => (
                       <StyledItem
                         {...getItemProps({

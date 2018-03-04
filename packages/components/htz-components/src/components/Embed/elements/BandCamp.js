@@ -105,7 +105,11 @@ function BandCamp(props) {
         title="BandCamp"
         width="100%"
         height={height}
-        src={`https://bandcamp.com/EmbeddedPlayer/transparent=true/album=${album}/size=${size}/bgcol=${settings.theme}/linkcol=${settings.linkcol}${minimal}${trackList}${track}${artwork}`}
+        src={`https://bandcamp.com/EmbeddedPlayer/transparent=true/album=${
+          album
+        }/size=${size}/bgcol=${settings.theme}/linkcol=${settings.linkcol}${
+          minimal
+        }${trackList}${track}${artwork}`}
         frameBorder="0"
         allowFullScreen=""
         onLoad={props.onLoadCallback}

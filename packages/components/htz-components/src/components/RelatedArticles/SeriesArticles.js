@@ -4,6 +4,7 @@ import { createComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { i18n, } from '@haaretz/htz-theme';
 import ArticleLink from './articleLink';
+// eslint-disable-next-line import/no-named-as-default
 import Button from '../Button/Button';
 
 const propTypes = {
@@ -21,17 +22,12 @@ const propTypes = {
   /**
    * Should I use pagination, or just display the whole list ??
    */
-  usePagination: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool,
-  ]).isRequired,
+  usePagination: PropTypes.oneOfType([ PropTypes.string, PropTypes.bool, ])
+    .isRequired,
   /**
    * In case you choose to use pagination, how many article should be displayed ?
    */
-  itemsPerPage: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  itemsPerPage: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ]),
   /**
    * An array of article objects.
    */
@@ -90,7 +86,7 @@ const wrapperStyle = ({ theme, marginBottom, }) => ({
 const SeriesArticlesWrapper = createComponent(wrapperStyle);
 
 const seriesTitleStyle = ({ theme, }) => ({
-  ...(theme.type(0)),
+  ...theme.type(0),
   color: theme.color('neutral', '-1'),
   marginBottom: '1rem',
 });
@@ -99,13 +95,17 @@ const SeriesTitle = createComponent(seriesTitleStyle, 'h4');
 
 const articleListWrapperStyle = ({ theme, }) => ({
   transitionProperty: 'height',
-  ...(theme.getDelay('transition', -1)),
-  ...(theme.getDuration('transition', -1)),
-  ...(theme.getTimingFunction('transition', 'linear')),
+  ...theme.getDelay('transition', -1),
+  ...theme.getDuration('transition', -1),
+  ...theme.getTimingFunction('transition', 'linear'),
   marginBottom: '3rem',
 });
 
-const ArticleListWrapper = createComponent(articleListWrapperStyle, 'ul', props => Object.keys(props));
+const ArticleListWrapper = createComponent(
+  articleListWrapperStyle,
+  'ul',
+  props => Object.keys(props)
+);
 
 const AriaHidden = createComponent(() => ({ display: 'none', }), 'span');
 
@@ -113,26 +113,25 @@ const articleWrapperStyle = ({ theme, lastItem, }) => ({
   marginInlineStart: '1em',
   position: 'relative',
   color: theme.color('primary', '+1'),
-  ...(!lastItem &&
-    {
-      ...parseComponentProp(
-        'marginBottom',
-        theme.articleStyle.body.marginBottom,
-        theme.mq,
-        (prop, value) => ({ [prop]: value, })
-      ),
-      ':after': {
-        content: '""',
-        position: 'absolute',
-        start: '0',
-        top: '1.5em',
-        height: 'calc(100%)',
-        transform: 'translate(485%, 0%)',
-        borderWidth: '1.2px',
-        borderStyle: 'solid',
-        borderColor: theme.color('primary', '-1'),
-      },
-    }),
+  ...(!lastItem && {
+    ...parseComponentProp(
+      'marginBottom',
+      theme.articleStyle.body.marginBottom,
+      theme.mq,
+      (prop, value) => ({ [prop]: value, })
+    ),
+    ':after': {
+      content: '""',
+      position: 'absolute',
+      start: '0',
+      top: '1.5em',
+      height: 'calc(100%)',
+      transform: 'translate(485%, 0%)',
+      borderWidth: '1.2px',
+      borderStyle: 'solid',
+      borderColor: theme.color('primary', '-1'),
+    },
+  }),
   ':before': {
     content: '"\\25cf"',
     position: 'absolute',
@@ -145,11 +144,19 @@ const articleWrapperStyle = ({ theme, lastItem, }) => ({
 const ArticleWrapper = createComponent(articleWrapperStyle, 'li');
 
 export default class SeriesArticles extends React.Component {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
   componentWillMount() {
     const { articles, usePagination, itemsPerPage, } = this.props;
-    const pagination = (articles.length > 3 && !(!usePagination || (usePagination && usePagination === 'false')) && articles.length > +itemsPerPage);
+    const pagination =
+      articles.length > 3 &&
+      !(!usePagination || (usePagination && usePagination === 'false')) &&
+      articles.length > +itemsPerPage;
     const perPage = +itemsPerPage || 3;
-    const articlesToDisplay = pagination ? this.props.articles.slice(0, perPage) : articles;
+    const articlesToDisplay = pagination
+      ? this.props.articles.slice(0, perPage)
+      : articles;
     const articlePosition = +this.props.articlePositionInTheSeries;
     const remainingArticlesCount = articles.length - itemsPerPage;
 
@@ -166,12 +173,9 @@ export default class SeriesArticles extends React.Component {
   setArticlesToDisplay = () => {
     this.setState({
       isOpen: !this.state.isOpen,
-      articlesToDisplay:
-        this.state.isOpen
-          ?
-          this.props.articles.slice(0, this.state.itemsPerPage)
-          :
-          this.props.articles,
+      articlesToDisplay: this.state.isOpen
+        ? this.props.articles.slice(0, this.state.itemsPerPage)
+        : this.props.articles,
     });
   };
 
@@ -179,51 +183,56 @@ export default class SeriesArticles extends React.Component {
     const { loadButton, titlePrefix, } = i18n.seriesArticle;
     return (
       <SeriesArticlesWrapper marginBottom={this.props.marginBottom}>
-        <ArticleListWrapper  aria-live='polite'>
+        <ArticleListWrapper aria-live="polite">
           <SeriesTitle>{titlePrefix + this.props.seriesTitle}</SeriesTitle>
           {this.state.articlesToDisplay.map((article, i) => (
-            <ArticleWrapper key={i} lastItem={i === this.state.articlesToDisplay.length - 1}>
-              {
-                this.state.isOpen &&
-                this.state.itemsPerPage === i &&
-                <AriaHidden>
-                  {loadButton.ariaText(this.state.remainingArticlesCount)}
-                </AriaHidden>
-              }
+            <ArticleWrapper
+              // eslint-disable-next-line react/no-array-index-key
+              key={i}
+              lastItem={i === this.state.articlesToDisplay.length - 1}
+            >
+              {this.state.isOpen &&
+                this.state.itemsPerPage === i && (
+                  <AriaHidden>
+                    {loadButton.ariaText(this.state.remainingArticlesCount)}
+                  </AriaHidden>
+                )}
               <ArticleLink
                 article={article}
-                currentArticle={this.state.articlePosition && +this.state.articlePosition === i + 1}
+                currentArticle={
+                  this.state.articlePosition &&
+                  +this.state.articlePosition === i + 1
+                }
                 focus={this.state.isOpen && this.state.itemsPerPage === i}
               />
             </ArticleWrapper>
           ))}
         </ArticleListWrapper>
-        {
-          this.state.usePagination &&
+        {this.state.usePagination && (
           <Button
             boxModel={{ hp: 3, vp: 1, }}
             miscStyles={{ type: -1, }}
             onClick={this.setArticlesToDisplay}
           >
-            {this.state.isOpen ? loadButton.open : `${loadButton.close} ${this.state.remainingArticlesCount}`}
+            {this.state.isOpen
+              ? loadButton.open
+              : `${loadButton.close} ${this.state.remainingArticlesCount}`}
           </Button>
-        }
+        )}
         <script type="application/ld+json">
           {JSON.stringify({
-            "@context":"http://schema.org",
-            "@type":"ItemList",
-            "itemListElement": [
-              ...(this.props.articles.map((article, i) => ({
-                "@type":"ListItem",
-                "position":i + 1,
-                "url":article.url,
-              }))),
-            ]
+            '@context': 'http://schema.org',
+            '@type': 'ItemList',
+            itemListElement: [
+              ...this.props.articles.map((article, i) => ({
+                '@type': 'ListItem',
+                position: i + 1,
+                url: article.url,
+              })),
+            ],
           })}
         </script>
       </SeriesArticlesWrapper>
     );
   }
 }
-SeriesArticles.propTypes = propTypes;
-SeriesArticles.defaultProps = defaultProps;

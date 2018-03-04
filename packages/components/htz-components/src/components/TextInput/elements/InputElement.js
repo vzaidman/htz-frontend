@@ -145,7 +145,15 @@ class InputElement extends Component {
      */
     setFormatButtonsState: PropTypes.func,
     /** The html input type */
-    type: PropTypes.oneOf('email', 'number', 'password', 'search', 'tel', 'text', 'url'),
+    type: PropTypes.oneOf(
+      'email',
+      'number',
+      'password',
+      'search',
+      'tel',
+      'text',
+      'url'
+    ),
     /**
      * Value of a controlled `<TextInput />`.
      * Should never be passed manually by the consumer, but rather
@@ -248,7 +256,9 @@ class InputElement extends Component {
       );
     }
 
-    const TagName = isContentEditable ? 'div' : isTextArea ? 'textarea' : 'input';
+    const TagName = isContentEditable
+      ? 'div'
+      : isTextArea ? 'textarea' : 'input';
     return (
       <TagName
         {...(ariaDescribedBy ? { 'aria-describedby': ariaDescribedBy, } : {})}
@@ -264,7 +274,9 @@ class InputElement extends Component {
         onBlur={onBlur}
         {...(onChange ? { onChange: evt => onChange(evt), } : {})}
         onFocus={onFocus}
-        {...(onInput && !onContentEditableChange ? { onInput: evt => onInput(evt), } : {})}
+        {...(onInput && !onContentEditableChange
+          ? { onInput: evt => onInput(evt), }
+          : {})}
         {...(placeholder ? { placeholder, } : {})}
         {...(refFunc || isContentEditable
           ? {
@@ -281,12 +293,18 @@ class InputElement extends Component {
             role: 'textbox',
             'aria-multiline': true,
             'aria-labelledby': labelId,
-            ...(value || value === '' ? { dangerouslySetInnerHTML: { __html: value, }, } : {}),
+            ...(value || value === ''
+              ? { dangerouslySetInnerHTML: { __html: value, }, }
+              : {}),
             onInput: this.handleContentEditableChange,
             onMouseDown: evt => (isDisabled ? evt.preventDefault() : null),
             onPaste: evt => {
               evt.preventDefault();
-              document.execCommand('insertHTML', false, evt.clipboardData.getData('text/plain'));
+              document.execCommand(
+                'insertHTML',
+                false,
+                evt.clipboardData.getData('text/plain')
+              );
             },
             ...(setFormatButtonsState
               ? {

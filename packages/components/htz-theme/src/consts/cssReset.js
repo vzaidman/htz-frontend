@@ -1,6 +1,9 @@
 import getColor from '../methods/getColor';
 import fontStacks from './fontStacks';
-import { htmlFontSizesAsString, bodyTypographyRulesAsString, } from './typographicBaseline';
+import {
+  htmlFontSizesAsString,
+  bodyTypographyRulesAsString,
+} from './typographicBaseline';
 
 /**
  * Universal
@@ -182,8 +185,15 @@ const styles =
   'text-decoration:underline dotted;' +
   '}' +
   /**
-   * strong, b elements
+   * address elements
+   * 1. Remove opinionated italics
+   */
+    'address{' +
+    'font-style: normal;' +
+    '}' +
+  /**
    * Set the `font-weight` of `<b>` and `<strong>` elements to `700`
+   * strong, b elements
    * instead of the relative `bolder`.
    */
   'b,' +
@@ -445,9 +455,9 @@ const styles =
   'template{' +
   'display:none;' +
   '}' +
-  /*
- * Remove the tapping delay on clickable elements
- */
+  /**
+   * Remove the tapping delay on clickable elements
+   */
   'a,' +
   'area,' +
   'button,' +

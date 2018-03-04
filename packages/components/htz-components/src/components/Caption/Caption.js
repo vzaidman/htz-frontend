@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import { parseComponentProp, parseStyleProps, parseTypographyProp, } from '@haaretz/htz-css-tools';
-import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
+import {
+  parseComponentProp,
+  parseStyleProps,
+  parseTypographyProp,
+} from '@haaretz/htz-css-tools';
 
 const setColor = (prop, value, getColor) => {
   const colorArgs = Array.isArray(value) ? value : [ value, ];
@@ -15,19 +18,12 @@ const captionWrapper = ({
   theme,
   backgroundColor,
   color,
-  typeStyles, // Not responsive. can only take "number"
+  typeStyles,
   miscStyles,
 }) => {
-  let {
-    bgc,
-    captionColor,
-    captionTypeSettings,
-    fontFamily,
-    fontWeight,
-  } = theme.captionStyles || {};
-  backgroundColor = backgroundColor || bgc;
-  captionColor = color || captionColor;
-  captionTypeSettings = typeStyles || captionTypeSettings;
+  const { bgc, captionColor, captionTypeSettings, fontFamily, fontWeight, } =
+    theme.captionStyles || {};
+  const typeSettings = typeStyles || captionTypeSettings;
 
   return {
     fontFamily,
@@ -35,15 +31,35 @@ const captionWrapper = ({
 
     extend: [
       // Set background color
-      ...(backgroundColor ? [ parseComponentProp('backgroundColor', backgroundColor, theme.mq, setColor, theme.color) ] : []),
+      ...(backgroundColor || bgc
+        ? [
+          parseComponentProp(
+            'backgroundColor',
+            backgroundColor || bgc,
+            theme.mq,
+            setColor,
+            theme.color
+          ),
+        ]
+        : []),
+
       // Set color
-      ...(captionColor ? [ parseComponentProp('color', captionColor, theme.mq, setColor, theme.color) ] : []),
+      ...(captionColor || color
+        ? [
+          parseComponentProp(
+            'color',
+            color || captionColor,
+            theme.mq,
+            setColor,
+            theme.color
+          ),
+        ]
+        : []),
       // set typographic styles (line height and font-size)
-      ...(captionTypeSettings ? [ parseTypographyProp(captionTypeSettings, theme.type) ] : []),
+      ...(typeSettings ? [ parseTypographyProp(typeSettings, theme.type), ] : []),
       // Trump all other styles with those defined in `miscStyles`
       ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-    ]
-
+    ],
   };
 };
 
@@ -76,11 +92,12 @@ const Caption = props => {
     <CaptionWrapper {...props}>
       {props.caption}
       {props.credit ? (
-        <Credit
-          prefix={props.creditprefix}
-          floatCredit={props.floatCredit}
-        >{props.credit}</Credit>
-      ) : ''}
+        <Credit prefix={props.creditprefix} floatCredit={props.floatCredit}>
+          {props.credit}
+        </Credit>
+      ) : (
+        ''
+      )}
     </CaptionWrapper>
   );
 };

@@ -1,27 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ArticleBody, } from '@haaretz/htz-components';
+// import { ArticleBody, } from '@haaretz/htz-components';
 import dynamic from 'next/dynamic';
 
-const DynamicScrollListener = dynamic(import('../ScrollListener/ScrollListener'), {
-  ssr: false,
-});
+const DynamicScrollListener = dynamic(
+  import('../ScrollListener/ScrollListener'),
+  {
+    ssr: false,
+  }
+);
 const DynamicScroll = dynamic(import('../Scroll/Scroll'), {
   ssr: false,
 });
 const propTypes = {
-  /**
-   * The title of the article.
-   */
+  /** The title of the article. */
   title: PropTypes.string.isRequired,
-  /**
-   * The article’s subtitle.
-   */
+  /** The article’s subtitle. */
   subtitle: PropTypes.string,
-  /**
-   * The elements composing the article’s body.
-   */
-  body: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
+  /** The elements composing the article’s body. */
+  body: PropTypes.arrayOf(
+    PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
+  ).isRequired,
 };
 
 const defaultProps = {

@@ -31,7 +31,10 @@ describe('<IconAccessibility />', () => {
     });
   });
   describe('DOM element', () => {
-    testCase('render correctly when no props are passed', <IconAccessibility />);
+    testCase(
+      'render correctly when no props are passed',
+      <IconAccessibility />
+    );
     testCase(
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconAccessibility attrs={{ 'aria-hidden': true, }} />
@@ -47,10 +50,12 @@ describe('<IconAccessibility />', () => {
   });
 
   describe('styles', () => {
-    testCase("set icon's color",
+    testCase(
+      "set icon's color",
       <IconAccessibility color={[ 'primary', 'base', ]} />
     );
-    testCase("set icon's color responsively",
+    testCase(
+      "set icon's color responsively",
       <IconAccessibility
         color={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -58,10 +63,12 @@ describe('<IconAccessibility />', () => {
         ]}
       />
     );
-    testCase("set icon's fill",
+    testCase(
+      "set icon's fill",
       <IconAccessibility fill={[ 'primary', 'base', ]} />
     );
-    testCase("set icon's fill responsively",
+    testCase(
+      "set icon's fill responsively",
       <IconAccessibility
         fill={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -69,18 +76,19 @@ describe('<IconAccessibility />', () => {
         ]}
       />
     );
-    testCase("set icon's size",
-      <IconAccessibility size={6} />
-    );
-    testCase("set icon's size responsively",
+    testCase("set icon's size", <IconAccessibility size={6} />);
+    testCase(
+      "set icon's size responsively",
       <IconAccessibility
         size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]}
       />
     );
-    testCase('set misc styles on an icon',
+    testCase(
+      'set misc styles on an icon',
       <IconAccessibility miscStyles={{ position: 'relative', }} />
     );
-    testCase('responsively set misc styles on an icon',
+    testCase(
+      'responsively set misc styles on an icon',
       <IconAccessibility
         miscStyles={{
           position: [

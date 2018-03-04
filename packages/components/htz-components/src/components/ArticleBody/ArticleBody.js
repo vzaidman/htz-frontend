@@ -15,9 +15,9 @@ const propTypes = {
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
-const figureStyle = ({ theme, lastItem, }) => (
-  !lastItem ?
-    {
+const figureStyle = ({ theme, lastItem, }) =>
+  (!lastItem
+    ? {
       ...parseComponentProp(
         'marginBottom',
         theme.articleStyle.body.marginBottom,
@@ -25,18 +25,25 @@ const figureStyle = ({ theme, lastItem, }) => (
         mediaQueryCallback
       ),
     }
-    :
-    {}
-);
+    : {});
 const Figure = createComponent(figureStyle, 'figure');
 
 const asideStyle = ({ theme, }) => ({
-    ...theme.mq({ from: 'l', }, { width: '26rem', position: 'absolute', textAlign: 'end', start: '6rem', }, ),
-    extend: [
-      ...([parseComponentProp('marginBottom', theme.articleStyle.body.marginBottom, theme.mq, mediaQueryCallback)]),
-    ]
-  }
-);
+  ...theme.mq(
+    { from: 'l', },
+    { width: '26rem', position: 'absolute', textAlign: 'end', start: '6rem', }
+  ),
+  extend: [
+    ...[
+      parseComponentProp(
+        'marginBottom',
+        theme.articleStyle.body.marginBottom,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+  ],
+});
 const Aside = createComponent(asideStyle, 'aside');
 
 const bodyWrapperStyle = ({ theme, }) => ({
@@ -53,32 +60,39 @@ const BodyWrapper = createComponent(bodyWrapperStyle);
 const wrappedWithFigure = [ 'embedElement', 'com.tm.Image', 'com.tm.Video', ];
 
 const buildComponent = (componentType, index, isLastItem, theme) => {
-  const uniqueId = componentType.elementType || componentType.inputTemplate || componentType.tag || null;
+  const uniqueId =
+    componentType.elementType ||
+    componentType.inputTemplate ||
+    componentType.tag ||
+    null;
   const Component = getComponent(uniqueId);
-  return (
-    wrappedWithFigure.includes(uniqueId) ?
-      <Figure key={index} lastItem={isLastItem}><Component {...componentType} /></Figure>
-      :
-      uniqueId ?
-        uniqueId === 'com.htz.MagazineArticleQuote' ?
-          <Aside><Component {...componentType} /></Aside> :
-            <Component
-              key={index}
-              {...componentType}
-              marginBottom={
-                isLastItem ?
-                  null
-                  :
-                  parseComponentProp(
-                    'marginBottom',
-                    theme.articleStyle.body.marginBottom,
-                    theme.mq,
-                    mediaQueryCallback
-                  )
-              }
-            />
-        :
-        <p key={index}>{componentType}</p>
+  return wrappedWithFigure.includes(uniqueId) ? (
+    <Figure key={index} lastItem={isLastItem}>
+      <Component {...componentType} />
+    </Figure>
+  ) : uniqueId ? (
+    uniqueId === 'com.htz.MagazineArticleQuote' ? (
+      <Aside>
+        <Component {...componentType} />
+      </Aside>
+    ) : (
+      <Component
+        key={index}
+        {...componentType}
+        marginBottom={
+          isLastItem
+            ? null
+            : parseComponentProp(
+              'marginBottom',
+              theme.articleStyle.body.marginBottom,
+              theme.mq,
+              mediaQueryCallback
+            )
+        }
+      />
+    )
+  ) : (
+    <p key={index}>{componentType}</p>
   );
 };
 
@@ -86,14 +100,19 @@ function ArticleBody(props) {
   return (
     <BodyWrapper>
       {props.body.map((component, i) =>
-        buildComponent(component, i, i === props.body.length - 1, props.theme))
-      }
+        buildComponent(
+          component,
+          i,
+          i === props.body.length - 1,
+          // eslint-disable-next-line react/prop-types
+          props.theme
+        )
+      )}
     </BodyWrapper>
     // eslint-disable-next-line react/no-array-index-key
     // return Comp ? <Comp key={i} {...component, props.theme.articleStyle.body} /> : <p>{component}</p>;
   );
 }
-
 
 ArticleBody.propTypes = propTypes;
 

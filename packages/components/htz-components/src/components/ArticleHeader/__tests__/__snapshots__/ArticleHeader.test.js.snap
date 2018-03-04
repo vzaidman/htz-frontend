@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleHeader component renders correctly with minimum required props 1`] = `
+Object {
+  "component": <div>
+    <header
+      className="htz-a"
+    >
+      
+      <h1
+        className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+      >
+        עפרה חזָה (19 בנובמבר 1957 – 23 בפברואר 2000) הייתה זמרת ושחקנית ישראלית בינלאומית. 
+      </h1>
+      <p
+        className="htz-k htz-l htz-m htz-n htz-o"
+      />
+      <div
+        className="htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+        id={null}
+      >
+        <div
+          className="htz-ap htz-aq htz-ar htz-as htz-aj htz-at htz-au htz-av"
+          id={null}
+        >
+          <img
+            alt="Avi Kaufman"
+            src={undefined}
+            style={
+              Object {
+                "borderRadius": "50%",
+                "overflow": "hidden",
+                "width": "5rem",
+              }
+            }
+          />
+        </div>
+        <div
+          className="htz-ap htz-aw htz-ar htz-ax htz-aj htz-at htz-au htz-ah htz-ay"
+          id={null}
+        >
+          <address
+            className="htz-az htz-ba htz-bb htz-bc htz-bd htz-f htz-be htz-bf htz-bg htz-bh htz-bi htz-bj"
+          >
+            Avi Kaufman
+          </address>
+          <time
+            className="htz-bj htz-bb htz-bc htz-bd htz-f htz-be htz-bf htz-bg htz-bh"
+            dateTime="1957-11-19T00:00:00+02:00"
+          >
+            19.11.1957 00:00
+          </time>
+        </div>
+        <div
+          className="htz-ap htz-aw htz-ar htz-ax htz-aj htz-at htz-au htz-bk htz-av"
+          id={null}
+        >
+          <button
+            aria-describedby="alerts_btn_description"
+            aria-expanded={false}
+            className="htz-bl htz-bm htz-bn htz-m htz-bo htz-bp"
+            onClick={[Function]}
+          >
+            <span
+              className="htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz"
+              id="alerts_btn_description"
+            >
+              קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
+              Avi Kaufman
+            </span>
+            <div>
+              <svg
+                className="htz-ca htz-az htz-cb htz-cc"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                 
+                <path
+                  d="M215.1 183.5c-5.1-5.1-8.2-11.9-8.6-19.2l-4.3-77c0-32.2-27.3-58.2-63.2-62.4 0-1.6-.1-3.6-.1-5.6 0-4.6-2.9-8.8-7.3-10-6.6-1.9-12.7 3.1-12.7 9.4 0 2.7.1 4.8.1 6.2C83.1 29.1 55.2 55 55.2 87.2l-4.3 77c-.4 7.2-3.4 14-8.6 19.2L21 204.9v9.1h216v-9l-21.9-21.5zM103.3 225h49c0 13.5-10.7 24-24.2 24s-24.8-10.5-24.8-24z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            עקוב
+          </button>
+        </div>
+        <div
+          className="htz-ap htz-aw htz-ar htz-ax htz-aj htz-at htz-au htz-cd"
+          id={null}
+        >
+          <button
+            aria-describedby="alerts_btn_description"
+            aria-expanded={false}
+            className="htz-ce htz-cf htz-cg"
+            onClick={[Function]}
+          >
+            <span
+              className="htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz"
+              id="alerts_btn_description"
+            >
+              קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
+              Avi Kaufman
+            </span>
+            <span
+              className="htz-ch htz-ba htz-ci htz-cj htz-bg htz-bh"
+            >
+              <svg
+                className="htz-ca htz-ck htz-cb htz-cc htz-bj"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                 
+                <path
+                  d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
+                  fill="currentColor"
+                />
+              </svg>
+              התראות במייל
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        className="htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-cg htz-cl"
+      >
+        <img
+          alt="Avi Kaufman"
+          src="https://images.haarets.co.il/image/fetch/w_70,h_70,q_auto,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/https://www.haaretz.co.il/polopoly_fs/1.1479631.1316696805!/image/936552297.png"
+          style={
+            Object {
+              "backgroundColor": "#E6EDF0",
+              "borderRadius": "50%",
+              "overflow": "hidden",
+              "width": "11.666rem",
+            }
+          }
+        />
+        <address
+          className="htz-az htz-ba htz-bb htz-bc htz-bd htz-f htz-be htz-bf htz-bg htz-bh htz-bi htz-cm"
+        >
+          Avi Kaufman
+        </address>
+        <button
+          aria-describedby="alerts_btn_description"
+          aria-expanded={false}
+          className="htz-ce htz-cf htz-cg"
+          onClick={[Function]}
+        >
+          <span
+            className="htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz"
+            id="alerts_btn_description"
+          >
+            קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
+            Avi Kaufman
+          </span>
+          <span
+            className="htz-ch htz-ba htz-ci htz-cj htz-bg htz-bh"
+          >
+            <svg
+              className="htz-ca htz-ck htz-cb htz-cc htz-bj"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+            >
+               
+              <path
+                d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
+                fill="currentColor"
+              />
+            </svg>
+            התראות במייל
+          </span>
+        </button>
+        <time
+          className="htz-ce htz-cn htz-bb htz-bc htz-bd htz-f htz-be htz-bf htz-bg htz-bh"
+          dateTime="1957-11-19T00:00:00+02:00"
+        >
+          19.11.1957 00:00
+        </time>
+      </div>
+    </header>
+  </div>,
+  "styles": ".htz-a{position:relative}.htz-b{display:inline}.htz-k{margin-top:2rem}.htz-ah{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ai{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-aj{list-style:none}.htz-ak{justify-content:flex-start;-webkit-box-pack:start;-webkit-justify-content:flex-start}.htz-al{margin-right:-0.5rem}.htz-am{margin-left:-0.5rem}.htz-an{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-ao{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ap{box-sizing:border-box}.htz-aq{flex-basis:6rem;-webkit-flex-basis:6rem}.htz-ar{flex-grow:0;-webkit-flex-grow:0}.htz-as{flex-shrink:0;-webkit-flex-shrink:0}.htz-at{padding-left:0.5rem}.htz-au{padding-right:0.5rem}.htz-aw{flex-basis:auto;-webkit-flex-basis:auto}.htz-ax{flex-shrink:1;-webkit-flex-shrink:1}.htz-az{color:#006B96}.htz-ba{font-weight:700}.htz-bj{margin-left:1rem}.htz-bk{margin-right:auto}.htz-bl{text-align:center}.htz-bm{width:5rem}.htz-bq{border:0px}.htz-br{clip:rect(0 0 0 0)}.htz-bs{clip-path:inset(50%);-webkit-clip-path:inset(50%)}.htz-bt{height:1px}.htz-bu{margin:-1px}.htz-bv{overflow:hidden}.htz-bw{padding:0rem}.htz-bx{position:absolute}.htz-by{width:1px}.htz-bz{white-space:nowrap}.htz-ca{vertical-align:-0.15em}.htz-cb{fill:#FFF}.htz-cc{font-size:3rem}.htz-ce{display:block}.htz-cf{width:100%}.htz-cg{text-align:left}.htz-ch{color:#A8001C}.htz-ck{color:inherit}.htz-cm{margin-top:1rem}.htz-cn{margin-top:0.5rem}@media (max-width: 47.9375em){.htz-c{font-size:4rem}.htz-d{line-height:1.25em}.htz-p{margin-top:3rem}.htz-w{border-top-width:1px}.htz-x{border-top-style:solid}.htz-y{border-top-color:#EBEBEB}.htz-z{padding-top:calc(1rem - 1px)}.htz-ab{border-bottom-width:1px}.htz-ac{border-bottom-style:solid}.htz-ae{border-bottom-color:#EBEBEB}.htz-af{padding-bottom:calc(1rem - 1px)}.htz-ay{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-bb{font-size:2rem}.htz-bc{line-height:1.5em}.htz-cd{display:none}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-e{font-size:4.666666666666667rem}.htz-f{line-height:1.2857142857142858em}.htz-q{margin-top:2rem}.htz-bd{font-size:2.3333333333333335rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-g{font-size:5.333333333333333rem}.htz-h{line-height:1.125em}.htz-be{font-size:2.3333333333333335rem}.htz-bf{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-i{font-size:5.142857142857143rem}.htz-j{line-height:1.1666666666666667em}.htz-n{font-size:3rem}.htz-o{line-height:1.3333333333333333em}.htz-bg{font-size:2.2857142857142856rem}.htz-bh{line-height:1.3125em}.htz-bo{font-size:2rem}.htz-bp{line-height:1.5em}}@media (max-width: 79.9375em){.htz-l{font-size:2.6666666666666665rem}.htz-m{line-height:1.5em}.htz-bn{font-size:2rem}.htz-ci{font-size:2.3333333333333335rem}.htz-cj{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-r{position:absolute}.htz-s{top:0rem}.htz-t{right:-6rem}.htz-u{transform:translateX(100%);-webkit-transform:logical translateX(100%)}.htz-v{overflow:hidden}.htz-ag{display:none}}@media (min-width: 48em){.htz-av{display:none}}@media (max-width: 63.9375em){.htz-bi{margin-left:1rem}.htz-cl{display:none}}",
+}
+`;

@@ -13,7 +13,8 @@ it('Render paragraph as heading correctly ', () => {
             attributes: [
               {
                 key: 'text',
-                value: 'צבא אסד מעמיק את המתקפה לכיבוש כפרי המורדים סמוך לגבול עם ישראל.',
+                value:
+                  'צבא אסד מעמיק את המתקפה לכיבוש כפרי המורדים סמוך לגבול עם ישראל.',
               },
             ],
             tag: '#text',

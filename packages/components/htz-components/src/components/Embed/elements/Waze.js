@@ -48,7 +48,9 @@ function Waze(props) {
       <MapElement
         width="600"
         height="450"
-        src={`https://embed.waze.com/${language}/iframe${coordinates[0]}&${coordinates[1]}&${coordinates[2]}&${pin}`}
+        src={`https://embed.waze.com/${language}/iframe${coordinates[0]}&${
+          coordinates[1]
+        }&${coordinates[2]}&${pin}`}
         frameBorder="0"
         allowFullScreen=""
         onLoad={props.onLoadCallback}

@@ -50,7 +50,11 @@ const fragments = {
 };
 
 const rules = {
-  container: props => ({ border: '1px solid #bbb', margin: 0.25, padding: 0.25, }),
+  container: props => ({
+    border: '1px solid #bbb',
+    margin: 0.25,
+    padding: 0.25,
+  }),
   content: props => ({ border: '1px solid #ddd', margin: 0.25, padding: 0.25, }),
 };
 
@@ -62,7 +66,9 @@ export function Slot({ name, content, styles, pageContentId, }) {
         jsx = <StandardArticle {...element} {...element.properties} />;
         break;
       case 'com.tm.CommentsElement':
-        jsx = <Comments contentId={element.contentId} articleId={pageContentId} />;
+        jsx = (
+          <Comments contentId={element.contentId} articleId={pageContentId} />
+        );
         break;
       default:
         jsx = (

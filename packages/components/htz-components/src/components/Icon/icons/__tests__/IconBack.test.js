@@ -36,10 +36,7 @@ describe('<IconBack />', () => {
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconBack attrs={{ 'aria-hidden': true, }} />
     );
-    testCase(
-      'add "id" attribute to DOM element',
-      <IconBack id="hasId" />
-    );
+    testCase('add "id" attribute to DOM element', <IconBack id="hasId" />);
     testCase(
       'add "onClick" attribute to DOM element',
       <IconBack id={e => console.log('a')} />
@@ -47,10 +44,9 @@ describe('<IconBack />', () => {
   });
 
   describe('styles', () => {
-    testCase("set icon's color",
-      <IconBack color={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's color responsively",
+    testCase("set icon's color", <IconBack color={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's color responsively",
       <IconBack
         color={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -58,10 +54,9 @@ describe('<IconBack />', () => {
         ]}
       />
     );
-    testCase("set icon's fill",
-      <IconBack fill={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's fill responsively",
+    testCase("set icon's fill", <IconBack fill={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's fill responsively",
       <IconBack
         fill={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -69,18 +64,17 @@ describe('<IconBack />', () => {
         ]}
       />
     );
-    testCase("set icon's size",
-      <IconBack size={6} />
+    testCase("set icon's size", <IconBack size={6} />);
+    testCase(
+      "set icon's size responsively",
+      <IconBack size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]} />
     );
-    testCase("set icon's size responsively",
-      <IconBack
-        size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]}
-      />
-    );
-    testCase('set misc styles on an icon',
+    testCase(
+      'set misc styles on an icon',
       <IconBack miscStyles={{ position: 'relative', }} />
     );
-    testCase('responsively set misc styles on an icon',
+    testCase(
+      'responsively set misc styles on an icon',
       <IconBack
         miscStyles={{
           position: [

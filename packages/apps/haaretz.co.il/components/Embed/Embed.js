@@ -7,6 +7,7 @@ EmbedElement.propTypes = {
   inputTemplate: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   embedType: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   settings: PropTypes.object,
   caption: PropTypes.string,
   credit: PropTypes.string,

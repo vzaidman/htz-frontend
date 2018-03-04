@@ -25,7 +25,7 @@ function create(initialState) {
   }).restore(initialState || {});
 
   const stateLink = withClientState({
-    inMemoryCache,
+    cache: inMemoryCache,
     defaults: {
       // todo: remove after bug fix, this is a workaround explained here:
       // https://github.com/apollographql/apollo-link-state/issues/187#issuecomment-361753208
@@ -84,7 +84,7 @@ function create(initialState) {
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     link: ApolloLink.from([ stateLink, link, ]),
-    inMemoryCache,
+    cache: inMemoryCache,
     queryDeduplication: true,
   });
 }

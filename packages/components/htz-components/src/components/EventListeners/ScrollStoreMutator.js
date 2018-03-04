@@ -1,11 +1,17 @@
-import React, { Component, } from 'react';
+import { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
 
 export const UPDATE_SCROLL = gql`
-  mutation updateScroll($x: Int!, $y: Int!, $direction: String!, $velocity: Int!) {
-    updateScroll(x: $x, y: $y, direction: $direction, velocity: $velocity) @client {
+  mutation updateScroll(
+    $x: Int!
+    $y: Int!
+    $direction: String!
+    $velocity: Int!
+  ) {
+    updateScroll(x: $x, y: $y, direction: $direction, velocity: $velocity)
+      @client {
       scroll {
         x
         y
@@ -17,7 +23,8 @@ export const UPDATE_SCROLL = gql`
 
 const propTypes = {
   /**
-   *  The Throttling used by `<ScrollListener/>` on the scroll event listener, needed to calculate the velocity.
+   *  The Throttling used by `<ScrollListener/>` on the scroll event listener,
+   *  needed to calculate the velocity.
    */
   throttle: PropTypes.number.isRequired,
   /**

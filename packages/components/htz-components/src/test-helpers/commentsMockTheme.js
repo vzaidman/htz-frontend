@@ -90,7 +90,8 @@ const mockTheme = {
     }),
     notes: Object.freeze({
       nameNoteTxt: 'הזינו שם שיוצג כמחבר התגובה',
-      commentNoteTxt: 'בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ',
+      commentNoteTxt:
+        'בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ',
     }),
     errorNotes: Object.freeze({
       nameErrorNoteTxt: 'חובה להזין שם',
@@ -115,9 +116,11 @@ const mockTheme = {
     texts: Object.freeze({
       commentRecievedBoldText: 'תגובתך נקלטה בהצלחה, ',
       commentRecievedText: 'ותפורסם על פי מדיניות המערכת.',
-      commentRecievedTextSecondRow: 'באפשרותך לקבל התראה בדוא"ל כאשר תגובתך תאושר ותפורסם',
+      commentRecievedTextSecondRow:
+        'באפשרותך לקבל התראה בדוא"ל כאשר תגובתך תאושר ותפורסם',
       commentRecievedBoldTextThankYouPage: 'תודה!',
-      commentRecievedTextThankYouPage: 'תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת',
+      commentRecievedTextThankYouPage:
+        'תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת',
     }),
   }),
   commentsSectionI18n: Object.freeze({

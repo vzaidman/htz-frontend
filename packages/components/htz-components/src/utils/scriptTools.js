@@ -3,17 +3,29 @@ const appendedScripts = {};
 
 /**
  *
- * @param src = the script source url
- * @param id = a unique id for this script, to avoid duplications
- * @param isAsync = is this script is async or not
- * @param onLoadFunction = an init function (not required)
- * @param updateFunction = an update function (not required), in case that the script already exist in the DOM,
- *    but you're in need to refresh the already mounted elements
- * @param attributes = an object with additional attributes to be assign to the Script tag (not required).
- *    for example: {'data-pin-build': 'doBuild'}
+ * @param {string} src
+ *   the script source url
+ * @param {string} id
+ *   a unique id for this script, to avoid duplications
+ * @param {boolean} isAsync
+ *   is this script is async or not
+ * @param {function} onLoadFunction
+ *   an init function (not required)
+ * @param {function} updateFunction
+ *   an update function (not required), in case that the script already
+ *   exist in the DOM, but you're in need to refresh the already mounted elements
+ * @param {object} attributes
+ *   an object with additional attributes to be assigned to the
+ *   script tag (not required). e.g., `{'data-pin-build': 'doBuild'}`
  */
-
-export const appendScript = (src, id, isAsync = false, onLoadFunction = null, updateFunction = null, attributes = null) => {
+export const appendScript = (
+  src,
+  id,
+  isAsync = false,
+  onLoadFunction = null,
+  updateFunction = null,
+  attributes = null
+) => {
   if (!appendedScripts[id]) {
     const script = document.createElement('script');
 
@@ -22,7 +34,9 @@ export const appendScript = (src, id, isAsync = false, onLoadFunction = null, up
     script.id = id;
 
     if (attributes) {
-      Object.keys(attributes).map(attribute => script.setAttribute(attribute, attributes[attribute]));
+      Object.keys(attributes).map(attribute =>
+        script.setAttribute(attribute, attributes[attribute])
+      );
     }
 
     document.body.appendChild(script);
@@ -35,13 +49,11 @@ export const appendScript = (src, id, isAsync = false, onLoadFunction = null, up
 
     script.addEventListener('load', runCallbacks(id));
   }
+  else if (appendedScripts[id].isLoaded) {
+    updateFunction && updateFunction();
+  }
   else {
-    if (appendedScripts[id].isLoaded) {
-      updateFunction && updateFunction();
-    }
-    else {
-      appendedScripts[id].callbacks.push(onLoadFunction);
-    }
+    appendedScripts[id].callbacks.push(onLoadFunction);
   }
 };
 

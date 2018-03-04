@@ -5,21 +5,14 @@ import Paragraph from '../Paragraph/Paragraph';
 
 it('Simple link ', () => {
   const snapshot = felaSnapshotter(
-    <Link
-      href="https://www.haaretz.co.il"
-      content="Haaretz"
-    />
+    <Link href="https://www.haaretz.co.il" content="Haaretz" />
   );
   expect(snapshot).toMatchSnapshot();
 });
 
 it('Link with target blank ', () => {
   const snapshot = felaSnapshotter(
-    <Link
-      href="https://themarker.com"
-      content="The Marker"
-      target="_blank"
-    />
+    <Link href="https://themarker.com" content="The Marker" target="_blank" />
   );
   expect(snapshot).toMatchSnapshot();
 });
@@ -31,7 +24,8 @@ it('Link within paragraph component ', () => {
         attributes: [
           {
             key: 'href',
-            value: 'http://www.iflscience.com/physics/new-type-of-bizarre-quantum-material-discovered/',
+            value:
+              'http://www.iflscience.com/physics/new-type-of-bizarre-quantum-material-discovered/',
           },
           {
             key: 'target',

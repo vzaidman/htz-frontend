@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Simple Time component renders correctly with default format DD.MM.YYYY HH:mm 1`] = `
+Object {
+  "component": <div>
+    <time
+      className={null}
+      dateTime="2018-01-31T15:24:00+02:00"
+    >
+      31.01.2018 15:24
+    </time>
+  </div>,
+  "styles": "",
+}
+`;
+
+exports[`Simple Time component renders correctly with format prop 1`] = `
+Object {
+  "component": <div>
+    <time
+      className={null}
+      dateTime="2018-01-02T16:30:00+02:00"
+    >
+      02-01-2018 04:30
+    </time>
+  </div>,
+  "styles": "",
+}
+`;
+
+exports[`Time component with DateFormatRule renders correctly using [Last hour] format 1`] = `
+Object {
+  "component": <div>
+    <time
+      className={null}
+      dateTime="1977-11-07T23:30:00+02:00"
+    >
+      Last hour
+    </time>
+  </div>,
+  "styles": "",
+}
+`;
+
+exports[`Time component with DateFormatRule renders correctly using HH:mm format 1`] = `
+Object {
+  "component": <div>
+    <time
+      className={null}
+      dateTime="1977-11-07T21:30:00+02:00"
+    >
+      21:30
+    </time>
+  </div>,
+  "styles": "",
+}
+`;
+
+exports[`Time component with DateFormatRule renders correctly using HH:mm format 2`] = `
+Object {
+  "component": <div>
+    <time
+      className={null}
+      dateTime="1977-11-07T21:30:00+02:00"
+    >
+      21:30
+    </time>
+  </div>,
+  "styles": "",
+}
+`;

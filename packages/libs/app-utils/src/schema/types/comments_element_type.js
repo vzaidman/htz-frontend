@@ -1,8 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { GraphQLObjectType, GraphQLList, GraphQLInt, } from 'graphql';
-
 import GraphQLJSON from 'graphql-type-json';
-
 import CommentType from './comment_type';
 
 const CommentsElement = new GraphQLObjectType({
@@ -29,12 +27,13 @@ const CommentsElement = new GraphQLObjectType({
     properties: {
       type: GraphQLJSON,
       resolve(parentValue, args, context) {
-        // eslint-disable-next-line no-unused-vars
         const {
+          /* eslint-disable no-unused-vars */
           comments,
           commentsPlusRate,
           commentsMinusRate,
           totalHits,
+          /* eslint-enable no-unused-vars */
           ...Properties
         } = parentValue;
         return { Properties, };

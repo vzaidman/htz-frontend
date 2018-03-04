@@ -364,8 +364,6 @@ const colors = {
     primaryInverseHoverBg: [ 'primary', '-5', ],
     primaryInverseHoverBorder: [ 'primary', '-4', ],
     primaryInverseHoverText: [ 'bodyText', 'base', ],
-
-    // TODO: Fill up
   },
   image: {
     bgc: [ 'neutral', '-6', ],

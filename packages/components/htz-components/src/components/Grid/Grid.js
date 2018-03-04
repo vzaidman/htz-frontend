@@ -231,9 +231,7 @@ function setVerticalAlignment(prop, alignment) {
  */
 function setMarginByGutter(prop, gutterWidth, defaultGutter) {
   // eslint-disable-next-line eqeqeq
-  const gutter = gutterWidth == null
-    ? defaultGutter
-    : gutterWidth;
+  const gutter = gutterWidth == null ? defaultGutter : gutterWidth;
 
   return {
     marginStart: `-${gutter / 2}rem`,
@@ -255,7 +253,7 @@ function setDirection(prop, isRev) {
   return { flexDirection: isRev ? 'row-reverse' : 'row', };
 }
 
-let hasMatchMedia = undefined;
+let hasMatchMedia;
 
 export class Grid extends Component {
   static propTypes = StyledGridPropTypes;
@@ -269,6 +267,7 @@ export class Grid extends Component {
   state = {
     gutter: getInitialGutter(
       this.props.gutter,
+      // eslint-disable-next-line react/prop-types
       this.props.theme.gridStyle.gutterWidth
     ),
   };
@@ -284,10 +283,7 @@ export class Grid extends Component {
       this.getUpdatedGutter();
       if (!this.instanceIsMounted) {
         // eslint-disable-next-line no-undef
-        window.addEventListener(
-          'resize',
-          this.getUpdatedGutter
-        );
+        window.addEventListener('resize', this.getUpdatedGutter);
       }
     }
     this.instanceIsMounted = true;

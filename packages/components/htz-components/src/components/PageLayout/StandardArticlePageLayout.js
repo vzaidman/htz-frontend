@@ -1,5 +1,4 @@
 import React, { Fragment, } from 'react';
-import { createComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import LayoutRow from './LayoutRow'; // eslint-disable-line import/no-named-as-default
 import LayoutContainer from './LayoutContainer'; // eslint-disable-line import/no-named-as-default

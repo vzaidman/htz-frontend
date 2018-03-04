@@ -63,13 +63,13 @@ export default class Facebook extends React.Component {
   };
 
   componentDidMount() {
-
     appendScript(
       '//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.9',
       'facebook-jssdk',
       true,
       this.initScript,
-      this.updateScript);
+      this.updateScript
+    );
   }
 
   initScript = () => {
@@ -82,7 +82,7 @@ export default class Facebook extends React.Component {
 
     FB.Event.subscribe('xfbml.render', () => {
       console.log('fb embed is loaded');
-      this.props.onLoadCallback ? this.props.onLoadCallback() : '';
+      this.props.onLoadCallback && this.props.onLoadCallback();
     });
   };
 
@@ -114,10 +114,6 @@ export default class Facebook extends React.Component {
         />
       );
 
-    return (
-      <FacebookWrapper type={this.props.embedType}>
-        {tag}
-      </FacebookWrapper>
-    );
+    return <FacebookWrapper type={this.props.embedType}>{tag}</FacebookWrapper>;
   }
 }

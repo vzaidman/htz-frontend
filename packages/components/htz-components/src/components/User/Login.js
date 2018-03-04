@@ -45,11 +45,9 @@ class Login extends React.Component {
       onImageLoadCallback: handleImgOnload,
     });
     const user = this.props.user;
-    userService
-      .login({ username, password, user, })
-      .then(result => {
-        console.log(result);
-      });
+    userService.login({ username, password, user, }).then(result => {
+      console.log(result);
+    });
   }
 
   render() {

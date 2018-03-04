@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Credit of article renders correctly with a url prop 1`] = `
+Object {
+  "component": <div>
+    <address>
+      <a
+        className="htz-a htz-b htz-c"
+        href="/misc/writers/1.593896"
+        onClick={[Function]}
+        target={null}
+      >
+        test name
+      </a>
+    </address>
+  </div>,
+  "styles": ".htz-a{color:currentcolor}.htz-b:hover{text-decoration:underline}.htz-c:focus{text-decoration:underline}",
+}
+`;
+
+exports[`Credit of article renders correctly with minimum required props 1`] = `
+Object {
+  "component": <div>
+    <address>
+      Test Name
+    </address>
+  </div>,
+  "styles": "",
+}
+`;
+
+exports[`CreditArticle themed credit of article renders correctly with a url prop 1`] = `
+Object {
+  "component": <div>
+    <address
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
+    >
+      <a
+        className="htz-l htz-m htz-n"
+        href="/misc/writers/1.593896"
+        onClick={[Function]}
+        target={null}
+      >
+        test name
+      </a>
+    </address>
+  </div>,
+  "styles": ".htz-a{color:#006B96}.htz-b{font-weight:700}.htz-l{color:currentcolor}.htz-m:hover{text-decoration:underline}.htz-n:focus{text-decoration:underline}@media (max-width: 47.9375em){.htz-c{font-size:2rem}.htz-d{line-height:1.5em}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-e{font-size:2.3333333333333335rem}.htz-f{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-g{font-size:2.3333333333333335rem}.htz-h{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-i{font-size:2.2857142857142856rem}.htz-j{line-height:1.3125em}}@media (max-width: 63.9375em){.htz-k{margin-left:1rem}}",
+}
+`;

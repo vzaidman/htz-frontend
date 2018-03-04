@@ -89,7 +89,11 @@ function CommentSent({
   theme,
 }) {
   const {
-    buttons: { getNotificationsBtnTxt, dontGetNotificationsBtnTxt, closeBtnText, },
+    buttons: {
+      getNotificationsBtnTxt,
+      dontGetNotificationsBtnTxt,
+      closeBtnText,
+    },
     labels: { emailLabelTxt, },
     notes: { emailNoteTxt, },
     errorNotes: { emailErrorNoteTxt, },
@@ -163,7 +167,10 @@ function CommentSent({
                   {getNotificationsBtnTxt}
                 </Button>
                 <Button
-                  miscStyles={{ backgroundColor: 'transparent', fontWeight: 'bold', }}
+                  miscStyles={{
+                    backgroundColor: 'transparent',
+                    fontWeight: 'bold',
+                  }}
                   boxModel={{ hp: 4, vp: 1, }}
                   onClick={() => signUpNotification(false)}
                 >

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { createRenderer, StyleProvider, } from '@haaretz/fela-utils';
 
 import cssReset from '../src/consts/cssReset';

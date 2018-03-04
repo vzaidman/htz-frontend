@@ -36,10 +36,7 @@ describe('<IconZen />', () => {
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconZen attrs={{ 'aria-hidden': true, }} />
     );
-    testCase(
-      'add "id" attribute to DOM element',
-      <IconZen id="hasId" />
-    );
+    testCase('add "id" attribute to DOM element', <IconZen id="hasId" />);
     testCase(
       'add "onClick" attribute to DOM element',
       <IconZen id={e => console.log('a')} />
@@ -47,10 +44,9 @@ describe('<IconZen />', () => {
   });
 
   describe('styles', () => {
-    testCase("set icon's color",
-      <IconZen color={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's color responsively",
+    testCase("set icon's color", <IconZen color={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's color responsively",
       <IconZen
         color={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -58,10 +54,9 @@ describe('<IconZen />', () => {
         ]}
       />
     );
-    testCase("set icon's fill",
-      <IconZen fill={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's fill responsively",
+    testCase("set icon's fill", <IconZen fill={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's fill responsively",
       <IconZen
         fill={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -69,18 +64,17 @@ describe('<IconZen />', () => {
         ]}
       />
     );
-    testCase("set icon's size",
-      <IconZen size={6} />
+    testCase("set icon's size", <IconZen size={6} />);
+    testCase(
+      "set icon's size responsively",
+      <IconZen size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]} />
     );
-    testCase("set icon's size responsively",
-      <IconZen
-        size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]}
-      />
-    );
-    testCase('set misc styles on an icon',
+    testCase(
+      'set misc styles on an icon',
       <IconZen miscStyles={{ position: 'relative', }} />
     );
-    testCase('responsively set misc styles on an icon',
+    testCase(
+      'responsively set misc styles on an icon',
       <IconZen
         miscStyles={{
           position: [

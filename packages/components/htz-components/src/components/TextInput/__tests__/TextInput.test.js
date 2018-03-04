@@ -34,7 +34,11 @@ describe('<TextInput>', () => {
     });
     it('renders correctly with isError and errorText prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <TextInput isError errorText="אנא הזינו כתובת תקינה" noteText="i shouldnt render" />
+        <TextInput
+          isError
+          errorText="אנא הזינו כתובת תקינה"
+          noteText="i shouldnt render"
+        />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -48,23 +52,33 @@ describe('<TextInput>', () => {
     });
     it('renders correctly with custom inputId, labelId and noteId', () => {
       const { component, styles, } = felaSnapshotter(
-        <TextInput inputId="customInputId" labelId="customLabelId" noteId="customNoteId" />
+        <TextInput
+          inputId="customInputId"
+          labelId="customLabelId"
+          noteId="customNoteId"
+        />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with labelHidden', () => {
-      const { component, styles, } = felaSnapshotter(<TextInput label="label" labelHidden />);
+      const { component, styles, } = felaSnapshotter(
+        <TextInput label="label" labelHidden />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly a contentEditable div', () => {
-      const { component, styles, } = felaSnapshotter(<TextInput isContentEditable />);
+      const { component, styles, } = felaSnapshotter(
+        <TextInput isContentEditable />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly a contentEditable div with label', () => {
-      const { component, styles, } = felaSnapshotter(<TextInput isContentEditable label="label" />);
+      const { component, styles, } = felaSnapshotter(
+        <TextInput isContentEditable label="label" />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
@@ -98,7 +112,9 @@ describe('<TextInput>', () => {
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly a input with a placeholder', () => {
-      const { component, styles, } = felaSnapshotter(<TextInput placeholder="im a placeholder" />);
+      const { component, styles, } = felaSnapshotter(
+        <TextInput placeholder="im a placeholder" />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
@@ -135,12 +151,16 @@ describe('<TextInput>', () => {
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly a input with a value prop', () => {
-      const { component, styles, } = felaSnapshotter(<TextInput value="value from parent" />);
+      const { component, styles, } = felaSnapshotter(
+        <TextInput value="value from parent" />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly a input with a variant prop', () => {
-      const { component, styles, } = felaSnapshotter(<TextInput variant="primaryInverse" />);
+      const { component, styles, } = felaSnapshotter(
+        <TextInput variant="primaryInverse" />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
@@ -152,7 +172,9 @@ describe('<TextInput>', () => {
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly a textArea with a simple height prop', () => {
-      const { component, styles, } = felaSnapshotter(<TextInput isTextArea height={5} />);
+      const { component, styles, } = felaSnapshotter(
+        <TextInput isTextArea height={5} />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
@@ -170,11 +192,7 @@ describe('<TextInput>', () => {
     });
     it('changes isFocused state correctlly when focusing and bluring the input and fires custom onFocus and onBlur from props', () => {
       const output = felaMount(
-        <TextInput
-          label="label"
-          onFocus={mockFunc}
-          onBlur={mockFunc}
-        />
+        <TextInput label="label" onFocus={mockFunc} onBlur={mockFunc} />
       );
       expect(output.state().isFocused).toEqual(false);
       const input = output.find('input');
@@ -195,7 +213,9 @@ describe('<TextInput>', () => {
       expect(output.state().isFocused).toEqual(false);
     });
     it('doesnt focus on a disabled contentEditable', () => {
-      const output = felaMount(<TextInput label="label" isContentEditable isDisabled />);
+      const output = felaMount(
+        <TextInput label="label" isContentEditable isDisabled />
+      );
       expect(output.state().isFocused).toEqual(false);
       const label = output.find('label');
       label.simulate('click');
@@ -230,7 +250,9 @@ describe('<TextInput>', () => {
     });
     it('onInput function gets called by InputElement when input happens', () => {
       const mockCallback = jest.fn();
-      const output = felaMount(<TextInput label="label" onInput={mockCallback} />);
+      const output = felaMount(
+        <TextInput label="label" onInput={mockCallback} />
+      );
       const input = output.find('input');
       input.simulate('focus');
       input.simulate('input', { which: 'a', });
@@ -239,7 +261,9 @@ describe('<TextInput>', () => {
     });
     it('onChange function gets called by InputElement when change happens', () => {
       const mockCallback = jest.fn();
-      const output = felaMount(<TextInput label="label" onChange={mockCallback} />);
+      const output = felaMount(
+        <TextInput label="label" onChange={mockCallback} />
+      );
       const input = output.find('input');
       input.simulate('focus');
       input.simulate('change', { which: 'a', });
@@ -248,7 +272,10 @@ describe('<TextInput>', () => {
     });
     it('renders correctly a textArea with a responsive height prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <TextInput isTextArea height={[ { from: 's', value: 17.5, }, { from: 'l', value: 37, }, ]} />
+        <TextInput
+          isTextArea
+          height={[ { from: 's', value: 17.5, }, { from: 'l', value: 37, }, ]}
+        />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();

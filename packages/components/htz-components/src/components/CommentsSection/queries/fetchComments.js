@@ -20,7 +20,6 @@ export default gql`
           publishingDateForDisplay
           publishingDateSortable
           isEditorPick
-
         }
       }
       commentsPlusRate

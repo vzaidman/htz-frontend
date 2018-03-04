@@ -15,9 +15,13 @@ describe('<ScrollStoreMutator>', () => {
     });
     it('calls mutate function with the correct params', () => {
       const onMutate = jest.fn();
-      const output = felaMount(<ScrollStoreMutator throttle={100} x={0} y={0} mutate={onMutate} />);
+      const output = felaMount(
+        <ScrollStoreMutator throttle={100} x={0} y={0} mutate={onMutate} />
+      );
       output.setProps({ y: 100, x: 50, });
-      expect(onMutate).toHaveBeenCalledWith({ variables: { x: 50, y: 100, velocity: -1, }, });
+      expect(onMutate).toHaveBeenCalledWith({
+        variables: { x: 50, y: 100, velocity: -1, },
+      });
     });
     it('calls doesnt call mutate if x and y dont change', () => {
       const onMutate = jest.fn();

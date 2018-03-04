@@ -20,7 +20,12 @@ import i18n, {
 
 // methods
 import getColor from './methods/getColor';
-import { getDelay, getDuration, getTimingFunction, getTransition, } from './methods/animation';
+import {
+  getDelay,
+  getDuration,
+  getTimingFunction,
+  getTransition,
+} from './methods/animation';
 import getMqString from './methods/getMqString';
 import pxToRem from './methods/pxToRem';
 import typesetter from './methods/typesetter';
@@ -63,6 +68,8 @@ export { cssReset, };
  * @prop {Object} typeConf - An immutable
  *   [TypeConf](https://haaretz.github.io/htz-frontend/htz-css-tools#typeconf) object per-breakpoint
  *   typographic and vertical-rhythm values
+ * @prop {Object} articleStyle - An object contains theme properties for article content.
+ * @prop {Object} articleStyle.header - An object contains theme properties for article header.
  * @prop {function} color - A [colorGetter](https://haaretz.github.io/htz-frontend/htz-css-tools#colorgetter)
  *   function for retrieving color values from the predefined color palette.
  * @prop {function} getTransition - A function taking `duration` (`number`), `easing` (`string`)
@@ -78,11 +85,9 @@ export { cssReset, };
  *   to which the timing function is applied to (`animation`|`transition`) and an `easing` (`string`)
  *   argument, referring to a named timing-function describing how the intermediate values of the CSS
  *   properties being affected by an animation or transition effect are calculated.
- * @prop {function} getMqString - A function that intelligently returns a media-query string
- *   based on breakpoints defined in `theme.bps`
+ * @prop {function} getMqString - A function that intelligently returns a media-query
+ * string based on breakpoints defined in `theme.bps`
  * @prop {function} mq - A [media-query function](https://haaretz.github.io/htz-frontend/htz-css-tools#mqfunc),
- *   which intelligently returns a media-query scoped css-in-js object based on breakpoints defined
- *   in `theme.bps`
  * @prop {function} pxToRem - A function that
  *   [converts px values to rem](https://haaretz.github.io/htz-frontend/htz-css-tools#remfunctiontype)
  *   at given breakpoints while accounting to changes in vertical rhythm
@@ -97,7 +102,7 @@ const htzTheme = Object.freeze({
   btnStyle,
   captionStyles,
   commentsStyle,
-  direrction: 'rtl',
+  direction: 'rtl',
   gridStyle,
   fontStacks,
   inputStyle,

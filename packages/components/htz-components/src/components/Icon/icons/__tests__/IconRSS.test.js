@@ -36,10 +36,7 @@ describe('<IconRss />', () => {
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconRss attrs={{ 'aria-hidden': true, }} />
     );
-    testCase(
-      'add "id" attribute to DOM element',
-      <IconRss id="hasId" />
-    );
+    testCase('add "id" attribute to DOM element', <IconRss id="hasId" />);
     testCase(
       'add "onClick" attribute to DOM element',
       <IconRss id={e => console.log('a')} />
@@ -47,10 +44,9 @@ describe('<IconRss />', () => {
   });
 
   describe('styles', () => {
-    testCase("set icon's color",
-      <IconRss color={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's color responsively",
+    testCase("set icon's color", <IconRss color={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's color responsively",
       <IconRss
         color={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -58,10 +54,9 @@ describe('<IconRss />', () => {
         ]}
       />
     );
-    testCase("set icon's fill",
-      <IconRss fill={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's fill responsively",
+    testCase("set icon's fill", <IconRss fill={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's fill responsively",
       <IconRss
         fill={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -69,18 +64,17 @@ describe('<IconRss />', () => {
         ]}
       />
     );
-    testCase("set icon's size",
-      <IconRss size={6} />
+    testCase("set icon's size", <IconRss size={6} />);
+    testCase(
+      "set icon's size responsively",
+      <IconRss size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]} />
     );
-    testCase("set icon's size responsively",
-      <IconRss
-        size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]}
-      />
-    );
-    testCase('set misc styles on an icon',
+    testCase(
+      'set misc styles on an icon',
       <IconRss miscStyles={{ position: 'relative', }} />
     );
-    testCase('responsively set misc styles on an icon',
+    testCase(
+      'responsively set misc styles on an icon',
       <IconRss
         miscStyles={{
           position: [

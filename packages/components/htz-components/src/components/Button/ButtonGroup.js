@@ -74,7 +74,7 @@ const ButtonGroupStyles = ({ isColumn, miscStyles, theme, }) => ({
   ],
 });
 
-let hasMatchMedia = undefined;
+let hasMatchMedia;
 
 export class ButtonGroup extends Component {
   static propTypes = ButtonGroupPropTypes;
@@ -109,7 +109,9 @@ export class ButtonGroup extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.isColumn !== nextState.isColumn || this.props !== nextProps;
+    return (
+      this.state.isColumn !== nextState.isColumn || this.props !== nextProps
+    );
   }
 
   componentWillUnmount() {
@@ -123,7 +125,9 @@ export class ButtonGroup extends Component {
   getUpdatedIsColumn = () => {
     const { isColumn, } = this.props;
     const isColumnIsResponsive = typeof isColumn === 'object';
-    const defaultValue = isColumnIsResponsive ? isColumn.onServerRender : isColumn;
+    const defaultValue = isColumnIsResponsive
+      ? isColumn.onServerRender
+      : isColumn;
 
     if (
       // When not responsive
@@ -169,7 +173,11 @@ export class ButtonGroup extends Component {
             (React.isValidElement(child)
               ? React.cloneElement(child, {
                 isColumn: this.state.isColumn,
-                boxModel: getGroupPlacement(child, index, Children.count(children)),
+                boxModel: getGroupPlacement(
+                  child,
+                  index,
+                  Children.count(children)
+                ),
               })
               : child)
         )}
@@ -183,7 +191,8 @@ function groupDirection(prop, isColumn) {
 }
 
 function getGroupPlacement(child, index, length) {
-  const groupPlacement = index === 0 ? 'start' : index === length - 1 ? 'end' : 'middle';
+  const groupPlacement =
+    index === 0 ? 'start' : index === length - 1 ? 'end' : 'middle';
   const childBoxModel = child.props.boxModel;
 
   return !childBoxModel
@@ -196,13 +205,16 @@ function getGroupPlacement(child, index, length) {
           ...{ value: { ...item.value, ...{ groupPlacement, }, }, },
         };
       })
-      : childBoxModel.groupPlacement ? childBoxModel : { ...childBoxModel, groupPlacement, };
+      : childBoxModel.groupPlacement
+        ? childBoxModel
+        : { ...childBoxModel, groupPlacement, };
 }
 
-const StyledButtonGroup = createComponent(ButtonGroupStyles, withTheme(ButtonGroup), [
-  'attrs',
-  'isColumn',
-]);
+const StyledButtonGroup = createComponent(
+  ButtonGroupStyles,
+  withTheme(ButtonGroup),
+  [ 'attrs', 'isColumn', ]
+);
 
 ButtonGroup.propTypes = ButtonGroupPropTypes;
 ButtonGroup.defaultProps = ButtonGroupDefaultProps;

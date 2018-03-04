@@ -34,6 +34,7 @@ const stateLink = withClientState({
   },
   resolvers: {
     Mutation: {
+      // eslint-disable-next-line no-shadow
       updateScroll: (_, { x, y, direction, velocity, }, { cache, }) => {
         const data = {
           // todo: remove after bug fix, this is a workaround explained here:
@@ -71,12 +72,18 @@ StyleGuideProvider.defaultProps = {
 export default function StyleGuideProvider({ children, }) {
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
-    [ '../src/fonts/OpenSansHebrewRegular.woff', '../src/fonts/OpenSansHebrewRegular.woff2', ],
+    [
+      '../src/fonts/OpenSansHebrewRegular.woff',
+      '../src/fonts/OpenSansHebrewRegular.woff2',
+    ],
     { fontWeight: 400, }
   );
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
-    [ '../src/fonts/OpenSansHebrewBold.woff', '../src/fonts/OpenSansHebrewBold.woff2', ],
+    [
+      '../src/fonts/OpenSansHebrewBold.woff',
+      '../src/fonts/OpenSansHebrewBold.woff2',
+    ],
     { fontWeight: 700, }
   );
 

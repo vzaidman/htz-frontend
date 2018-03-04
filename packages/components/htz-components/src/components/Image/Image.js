@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import Observer from 'react-intersection-observer';
-import { parseComponentProp, } from '@haaretz/htz-css-tools';
+import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { buildURLs, buildUrl, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
 
-const ImgWrapperStyle = ({ bgc, height, theme, width, }) => ({
+const ImgWrapperStyle = ({ bgc, height, theme, width, miscStyles, }) => ({
   height: '0',
   // prettier-ignore
   paddingBottom: `${(height / width) * 100}%`,
@@ -21,6 +22,8 @@ const ImgWrapperStyle = ({ bgc, height, theme, width, }) => ({
       setColor,
       theme.color
     ),
+    // Trump all other styles with those defined in `miscStyles`
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
 });
 
@@ -128,6 +131,13 @@ class Image extends React.Component {
      * Strings should be in css length units.
      */
     lazyLoad: PropTypes.oneOfType([ PropTypes.bool, PropTypes.string, ]),
+    /**
+     * A special property holding miscellaneous CSS values that
+     * trumps all default values. Processed by
+     * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops).
+     * passes down only to the image wrapper.
+     */
+    miscStyles: stylesPropType,
   };
   static defaultProps = {
     attrs: null,
@@ -135,6 +145,7 @@ class Image extends React.Component {
     className: null,
     isPresentational: false,
     lazyLoad: false,
+    miscStyles: null,
     sizes: null,
     tagName: 'img',
   };
@@ -172,6 +183,7 @@ Please use the "<Picture />" component`
       imgOptions: { sizes, },
       isPresentational,
       lazyLoad,
+      miscStyles,
     } = this.props;
 
     if (
@@ -238,14 +250,24 @@ Please use the "<Picture />" component`
 
     if (!lazyLoad) {
       return (
-        <StyledImgWrapper width={width} height={height} bgc={bgcolor}>
+        <StyledImgWrapper
+          width={width}
+          height={height}
+          bgc={bgcolor}
+          miscStyles={miscStyles}
+        >
           {Sources}
         </StyledImgWrapper>
       );
     }
 
     return (
-      <StyledImgWrapper width={width} height={height} bgc={bgcolor}>
+      <StyledImgWrapper
+        width={width}
+        height={height}
+        bgc={bgcolor}
+        miscStyles={miscStyles}
+      >
         <Observer triggerOnce rootMargin={lazyLoad}>
           {inView => (inView ? Sources : null)}
         </Observer>

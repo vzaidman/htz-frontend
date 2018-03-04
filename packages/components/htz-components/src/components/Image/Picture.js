@@ -2,13 +2,20 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
 import Observer from 'react-intersection-observer';
-import { parseComponentProp, } from '@haaretz/htz-css-tools';
+import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { imageOptionsType, } from '../../propTypes/imageOptionsType';
-import { buildURLs, buildUrl, } from '../../utils/buildImgURLs';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
+import { buildURLs, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
 
-const PictureWrapperStyle = ({ sources, theme, defaultImg, bgc, }) => ({
+const PictureWrapperStyle = ({
+  sources,
+  theme,
+  defaultImg,
+  bgc,
+  miscStyles,
+}) => ({
   height: '0',
   width: '100%',
   position: 'relative',
@@ -27,6 +34,8 @@ const PictureWrapperStyle = ({ sources, theme, defaultImg, bgc, }) => ({
       setColor,
       theme.color
     ),
+    // Trump all other styles with those defined in `miscStyles`
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
 });
 
@@ -94,6 +103,13 @@ Picture.propTypes = {
    * the image will be lazyloaded 400px before entering the screen.
    */
   lazyLoad: PropTypes.oneOfType([ PropTypes.bool, PropTypes.string, ]),
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trumps all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops).
+   * passes down only to the picture wrapper.
+   */
+  miscStyles: stylesPropType,
   /** Sources are required to create each of source tag attributes */
   sources: PropTypes.arrayOf(
     PropTypes.shape({
@@ -106,7 +122,7 @@ Picture.propTypes = {
        * Pass this to create custom source tag Media attribute.
        * Accepts 's','m',l' and 'xl' to define each breakpoint max-width, can be undefined
        */
-      untill: PropTypes.string,
+      until: PropTypes.string,
       /**
        * Miscellaneous media feature queries. Either a named breakpoint,
        * or a feature string, e.g., (misc: 'landscape')
@@ -152,6 +168,7 @@ Picture.defaultProps = {
   defaultImg: null,
   getDimensions: null,
   lazyLoad: false,
+  miscStyles: null,
   isPresentational: false,
 };
 
@@ -162,6 +179,7 @@ function Picture(props) {
     defaultImg,
     isPresentational,
     lazyLoad,
+    miscStyles,
     sources,
   } = props;
   const { data: { alt, credit, }, sourceOptions, } = defaultImg;
@@ -230,6 +248,7 @@ function Picture(props) {
   if (lazyLoad) {
     return (
       <StyledPictureWrapper
+        miscStyles={miscStyles}
         sources={sources}
         defaultImg={defaultImg}
         bgc={bgcolor}
@@ -242,6 +261,7 @@ function Picture(props) {
   }
   return (
     <StyledPictureWrapper
+      miscStyles={miscStyles}
       sources={sources}
       defaultImg={defaultImg}
       bgc={bgcolor}

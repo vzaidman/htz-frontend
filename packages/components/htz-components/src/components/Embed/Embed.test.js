@@ -1,20 +1,16 @@
 /* eslint-disable max-len */
 import React from 'react';
 import felaSnapshotter from '../../test-helpers/felaSnapshotter';
-import Embed from './Embed';
+// import Embed from './Embed';
 
 describe('Embeds', () => {
-  beforeEach(() => {
-
-  });
+  beforeEach(() => {});
 
   it('Youtube Video ', () => {
-    const snapshot = felaSnapshotter(
-      <p>fake test</p>
-    );
+    const snapshot = felaSnapshotter(<p>fake test</p>);
     expect(snapshot).toMatchSnapshot();
   });
-/*
+  /*
   it('Youtube Video ', () => {
     const snapshot = felaSnapshotter(
       <Embed

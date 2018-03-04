@@ -11,24 +11,16 @@ const EmbedDir = path.relative(
   path.join('src', 'components', 'Embed')
 );
 
-const elementsPath = path.join(
-  process.cwd(),
-  EmbedDir,
-  'elements'
-);
+const elementsPath = path.join(process.cwd(), EmbedDir, 'elements');
 
-const utilsPath = path.join(
-  process.cwd(),
-  EmbedDir,
-  'utils'
-);
+const utilsPath = path.join(process.cwd(), EmbedDir, 'utils');
 
 fs.readdir(elementsPath, (err, files) => {
   if (err) {
     console.log(err);
   }
   else {
-    files.map(file => {
+    files.forEach(file => {
       if (file.includes('.js')) {
         elements[file.slice(0, file.indexOf('.'))] = `./elements/${file}`;
       }
@@ -40,36 +32,48 @@ fs.readdir(elementsPath, (err, files) => {
 function readFromFiles() {
   const views = {};
   const exceptionalElements = [];
-  async.eachSeries(Object.keys(elements), (fileName, callback) => {
-    fs.readFile(`${elementsPath}/${fileName}.js`, 'utf8', (err, data) => {
-      if (err) callback(err);
+  async.eachSeries(
+    Object.keys(elements),
+    (fileName, callback) => {
+      fs.readFile(`${elementsPath}/${fileName}.js`, 'utf8', (err, data) => {
+        if (err) callback(err);
 
-      const searchString = 'This element accepts these inputTemplates:';
-      const index = data ? data.indexOf(searchString) : null;
+        const searchString = 'This element accepts these inputTemplates:';
+        const index = data ? data.indexOf(searchString) : null;
 
-      if (index && index > -1) {
-        let inputTemplates = data.substring(index + searchString.length, data.indexOf(']')).trim();
-        inputTemplates = inputTemplates.replace(/\r?\n|\r|\[|]/g, '');
-        if (inputTemplates[inputTemplates.length - 1] === ',') {
-          inputTemplates = inputTemplates.slice(0, inputTemplates.length - 1);
+        if (index && index > -1) {
+          let inputTemplates = data
+            .substring(index + searchString.length, data.indexOf(']'))
+            .trim();
+          inputTemplates = inputTemplates.replace(/\r?\n|\r|\[|]/g, '');
+          if (inputTemplates[inputTemplates.length - 1] === ',') {
+            inputTemplates = inputTemplates.slice(0, inputTemplates.length - 1);
+          }
+          inputTemplates = inputTemplates.split(',');
+          inputTemplates.forEach(inputTemplate => {
+            views[inputTemplate.trim()] = `${path.relative(
+              utilsPath,
+              elementsPath
+            )}/${fileName}`;
+          });
         }
-        inputTemplates = inputTemplates.split(',');
-        inputTemplates.forEach(inputTemplate => {
-          views[inputTemplate.trim()] = `${path.relative(utilsPath, elementsPath)}/${fileName}`;
-        });
-      }
 
-      if (data && data.indexOf('This element does not emits an onLoad event') >= 0) {
-        exceptionalElements.push(fileName);
-      }
+        if (
+          data &&
+          data.indexOf('This element does not emits an onLoad event') >= 0
+        ) {
+          exceptionalElements.push(fileName);
+        }
 
-      callback();
-    });
-  }, err => {
-    if (!err) {
-      writeFiles(views, exceptionalElements);
+        callback();
+      });
+    },
+    err => {
+      if (!err) {
+        writeFiles(views, exceptionalElements);
+      }
     }
-  });
+  );
 }
 
 function writeFiles(views, exceptionalElements) {
@@ -98,20 +102,21 @@ function writeFiles(views, exceptionalElements) {
     [
       { file: embedFile, path: embedFilePath, },
       { file: embedTypesFile, path: embedTypesFilePath, },
-    ], (file, callback) => {
+    ],
+    (file, callback) => {
       fs.writeFile(file.path, file.file, err => {
         if (err) {
           console.error(
             `${err.stack}\n${chalk.yellow(
-              chalk.bold(
-                `Failed to write '${file.path}' to disk.`
-              )
+              chalk.bold(`Failed to write '${file.path}' to disk.`)
             )}`
           );
         }
         callback();
       });
-    }, err => {
+    },
+    err => {
       if (err) console.log(err);
-    });
+    }
+  );
 }

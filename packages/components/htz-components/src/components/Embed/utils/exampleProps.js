@@ -73,7 +73,8 @@ const props = {
       contentName: 'Video',
     },
     {
-      content: 'https://www.facebook.com/haaretz/posts/10155571966087520?comment_id=10155572023347520&comment_tracking=%7B%22tn%22%3A%22R0%22%7D',
+      content:
+        'https://www.facebook.com/haaretz/posts/10155571966087520?comment_id=10155572023347520&comment_tracking=%7B%22tn%22%3A%22R0%22%7D',
       caption: 'comment',
       credit: 'comment',
       embedType: 'comments',
@@ -204,7 +205,8 @@ const props = {
     },
   ],
   ArtiMedia: {
-    content: "<div id='artimedia-player-989314' style='width:500px!important;  height:281px!important;'></div>\r\n<script type='text/javascript' async src='//p.artipbox.net/amapi.js' onload='\r\n  embedArtiPlayer({ \r\n      targetId:'artimedia-player-989314', \r\n      videoId: 'e0f2fad6-3675-45b0-90ab-71c3dc27b7d0', \r\n      publisherId: '5',\r\n      sitekey: 'TheMarker',\r\n      autoplay: true,\r\n      category: 'news'\r\n  });'>\r\n </script>",
+    content:
+      "<div id='artimedia-player-989314' style='width:500px!important;  height:281px!important;'></div>\r\n<script type='text/javascript' async src='//p.artipbox.net/amapi.js' onload='\r\n  embedArtiPlayer({ \r\n      targetId:'artimedia-player-989314', \r\n      videoId: 'e0f2fad6-3675-45b0-90ab-71c3dc27b7d0', \r\n      publisherId: '5',\r\n      sitekey: 'TheMarker',\r\n      autoplay: true,\r\n      category: 'news'\r\n  });'>\r\n </script>",
     caption: 'artimedia',
     credit: 'artimedia',
     embedType: 'arti-media',
@@ -221,7 +223,8 @@ const props = {
     contentName: 'artimedia',
   },
   NYT: {
-    content: 'https://graphics8.nytimes.com/video/players/offsite/index.html?videoId=100000005256748',
+    content:
+      'https://graphics8.nytimes.com/video/players/offsite/index.html?videoId=100000005256748',
     caption: 'New York Times',
     credit: 'New York Times',
     embedType: 'NYTvideo',
@@ -232,7 +235,8 @@ const props = {
   },
   StandardVideo: [
     {
-      content: 'https://www.bloomberg.com/api/embed/iframe?id=11433877-bb50-4b36-974c-ea3e5b2c3260',
+      content:
+        'https://www.bloomberg.com/api/embed/iframe?id=11433877-bb50-4b36-974c-ea3e5b2c3260',
       caption: 'bloomberg',
       credit: 'bloomberg',
       embedType: 'bloomberg',
@@ -242,7 +246,8 @@ const props = {
       contentName: 'Bloomberg',
     },
     {
-      content: 'https://www.reuters.com/assets/iframe/yovideo?videoId=372329416',
+      content:
+        'https://www.reuters.com/assets/iframe/yovideo?videoId=372329416',
       caption: 'reuters',
       credit: 'reuters',
       embedType: 'reuters',
@@ -252,7 +257,8 @@ const props = {
       contentName: 'Reuters',
     },
     {
-      content: 'https://embed.theguardian.com/embed/video/politics/commentisfree/video/2017/jun/07/britain-transformed-election-what-on-earth-is-going-on-video',
+      content:
+        'https://embed.theguardian.com/embed/video/politics/commentisfree/video/2017/jun/07/britain-transformed-election-what-on-earth-is-going-on-video',
       caption: 'guardian',
       credit: 'guardian',
       embedType: 'guardianVideo',
@@ -262,7 +268,8 @@ const props = {
       contentName: 'Guardian',
     },
     {
-      content: '//fave.api.cnn.io/v1/fav/?video=world/2017/01/19/donald-trump-putin-russia-best-prostitutes-moos-pkg.cnn&customer=cnn&edition=international&env=prod',
+      content:
+        '//fave.api.cnn.io/v1/fav/?video=world/2017/01/19/donald-trump-putin-russia-best-prostitutes-moos-pkg.cnn&customer=cnn&edition=international&env=prod',
       caption: 'cnn',
       credit: 'cnn',
       embedType: 'cnn',
@@ -272,7 +279,8 @@ const props = {
       contentName: 'CNN',
     },
     {
-      content: 'https://www.mako.co.il/AjaxPage?jspName=embedHTML5video.jsp&galleryChannelId=5287910d276cd510VgnVCM100000290c10acRCRD&videoChannelId=02a034d102bfc510VgnVCM100000290c10acRCRD&vcmid=5e41465459b6d510VgnVCM100000290c10acRCRD',
+      content:
+        'https://www.mako.co.il/AjaxPage?jspName=embedHTML5video.jsp&galleryChannelId=5287910d276cd510VgnVCM100000290c10acRCRD&videoChannelId=02a034d102bfc510VgnVCM100000290c10acRCRD&vcmid=5e41465459b6d510VgnVCM100000290c10acRCRD',
       caption: 'Mako',
       credit: 'Mako',
       embedType: 'mako',
@@ -289,7 +297,8 @@ const props = {
   },
   Twitter: [
     {
-      content: '<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/Netflix?src=hash">#Netflix</a>&#39;s <a href="https://twitter.com/hashtag/BoJackHorseman?src=hash">#BoJackHorseman</a> finally has a season 4 premiere date <a href="https://t.co/xt08ol2mN2">https://t.co/xt08ol2mN2</a> <a href="https://t.co/IYI8pq05rc">pic.twitter.com/IYI8pq05rc</a></p>&mdash; UPROXX (@UPROXX) <a href="https://twitter.com/UPROXX/status/884416188280864768">July 10, 2017</a></blockquote>',
+      content:
+        '<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/Netflix?src=hash">#Netflix</a>&#39;s <a href="https://twitter.com/hashtag/BoJackHorseman?src=hash">#BoJackHorseman</a> finally has a season 4 premiere date <a href="https://t.co/xt08ol2mN2">https://t.co/xt08ol2mN2</a> <a href="https://t.co/IYI8pq05rc">pic.twitter.com/IYI8pq05rc</a></p>&mdash; UPROXX (@UPROXX) <a href="https://twitter.com/UPROXX/status/884416188280864768">July 10, 2017</a></blockquote>',
       caption: 'tweet',
       credit: 'tweet',
       embedType: 'single tweet',
@@ -299,7 +308,8 @@ const props = {
       contentName: 'Single Tweet',
     },
     {
-      content: '<a class="twitter-grid" data-partner="tweetdeck" href="https://twitter.com/woodenecho/timelines/890172042527592448">Testing collections</a>',
+      content:
+        '<a class="twitter-grid" data-partner="tweetdeck" href="https://twitter.com/woodenecho/timelines/890172042527592448">Testing collections</a>',
       caption: 'grid Caption',
       credit: 'grid',
       embedType: 'collection timeline',
@@ -309,7 +319,8 @@ const props = {
       contentName: 'Grid',
     },
     {
-      content: '<a class="twitter-timeline" data-partner="tweetdeck" href="https://twitter.com/woodenecho/timelines/890172042527592448">Testing collections - Curated tweets by woodenecho</a>',
+      content:
+        '<a class="twitter-timeline" data-partner="tweetdeck" href="https://twitter.com/woodenecho/timelines/890172042527592448">Testing collections - Curated tweets by woodenecho</a>',
       caption: 'timeline',
       credit: 'timeline',
       embedType: 'user timeline',
@@ -319,7 +330,8 @@ const props = {
       contentName: 'User Timeline',
     },
     {
-      content: '<a class="twitter-timeline" href="https://twitter.com/hashtag/webdesign" data-widget-id="890169905349357568">#webdesign Tweets</a>',
+      content:
+        '<a class="twitter-timeline" href="https://twitter.com/hashtag/webdesign" data-widget-id="890169905349357568">#webdesign Tweets</a>',
       caption: 'search',
       credit: 'search',
       embedType: 'search timeline',
@@ -329,7 +341,8 @@ const props = {
       contentName: 'Search',
     },
     {
-      content: '<blockquote class="twitter-video" data-lang="en"><p lang="en" dir="ltr">Tips For Combating Climate Change <a href="https://t.co/QXm60aJyTR">pic.twitter.com/QXm60aJyTR</a></p>&mdash; The Onion (@TheOnion) <a href="https://twitter.com/TheOnion/status/890050311196254211">July 26, 2017</a></blockquote>',
+      content:
+        '<blockquote class="twitter-video" data-lang="en"><p lang="en" dir="ltr">Tips For Combating Climate Change <a href="https://t.co/QXm60aJyTR">pic.twitter.com/QXm60aJyTR</a></p>&mdash; The Onion (@TheOnion) <a href="https://twitter.com/TheOnion/status/890050311196254211">July 26, 2017</a></blockquote>',
       caption: 'twitter',
       credit: 'twitter',
       embedType: 'video',
@@ -341,7 +354,8 @@ const props = {
   ],
   Instagram: [
     {
-      content: '<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:33.33333333333333% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BW-gRJSAoHd/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Meet our champion doggy paddling #Doogler, Skylos, who can spend hours on end in the water. Although he is over 145 pounds, Skylos loves befriending little dogs. A true gentle giant.</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by Google (@google) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-07-25T16:41:47+00:00">Jul 25, 2017 at 9:41am PDT</time></p></div></blockquote>',
+      content:
+        '<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:33.33333333333333% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BW-gRJSAoHd/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Meet our champion doggy paddling #Doogler, Skylos, who can spend hours on end in the water. Although he is over 145 pounds, Skylos loves befriending little dogs. A true gentle giant.</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by Google (@google) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-07-25T16:41:47+00:00">Jul 25, 2017 at 9:41am PDT</time></p></div></blockquote>',
       caption: 'instagram',
       credit: 'instagram',
       embedType: 'instagram',
@@ -351,7 +365,8 @@ const props = {
       contentName: 'Post',
     },
     {
-      content: '<blockquote class="instagram-media" data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/BWiUVfxAhlZ/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Google (@google)</a> on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-07-14T17:58:47+00:00">Jul 14, 2017 at 10:58am PDT</time></p></div></blockquote>',
+      content:
+        '<blockquote class="instagram-media" data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/BWiUVfxAhlZ/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Google (@google)</a> on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-07-14T17:58:47+00:00">Jul 14, 2017 at 10:58am PDT</time></p></div></blockquote>',
       caption: 'ins video',
       credit: 'ins video',
       embedType: 'instagram video',
@@ -383,7 +398,8 @@ const props = {
       contentName: 'SoundCloud Track',
     },
     {
-      content: 'https://soundcloud.com/maikbaptist-two/sets/bad-religion-plus-coversongs',
+      content:
+        'https://soundcloud.com/maikbaptist-two/sets/bad-religion-plus-coversongs',
       caption: 'playlist',
       credit: 'playlist',
       embedType: 'playlist',
@@ -394,7 +410,8 @@ const props = {
     },
   ],
   BandCamp: {
-    content: '<iframe style="border: 0; width: 100%; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3087453349/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://kidsinsane.bandcamp.com/album/cluster">Cluster by Kids Insane</a></iframe>',
+    content:
+      '<iframe style="border: 0; width: 100%; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3087453349/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://kidsinsane.bandcamp.com/album/cluster">Cluster by Kids Insane</a></iframe>',
     caption: 'bandCamp - track',
     credit: 'bandCamp - track',
     embedType: 'album',
@@ -404,7 +421,8 @@ const props = {
       artworkSize: 'large',
       album: '3087453349',
       linkcol: '0687f5',
-      link: '<a href="http://kidsinsane.bandcamp.com/album/cluster">Cluster by Kids Insane</a>',
+      link:
+        '<a href="http://kidsinsane.bandcamp.com/album/cluster">Cluster by Kids Insane</a>',
       bgcol: 'ffffff',
       transparent: 'true',
       showTrackList: 'true',
@@ -421,13 +439,15 @@ const props = {
     contentName: 'bandCamp - track',
   },
   Tline: {
-    content: '<figure data-alias="donald-trumps-path-to-the-white-house" data-version="0.1.1" class="tline-embed op-interactive" style="text-align: center; margin: 0 auto"><embed class="tline-embed-nojs" src="https://view.tline.io/embed/donald-trumps-path-to-the-white-house/?noJS=1&v=0.1.1" height="500" width="500" scrolling="yes" frameborder="0"></embed></figure>',
+    content:
+      '<figure data-alias="donald-trumps-path-to-the-white-house" data-version="0.1.1" class="tline-embed op-interactive" style="text-align: center; margin: 0 auto"><embed class="tline-embed-nojs" src="https://view.tline.io/embed/donald-trumps-path-to-the-white-house/?noJS=1&v=0.1.1" height="500" width="500" scrolling="yes" frameborder="0"></embed></figure>',
     caption: 'tline',
     credit: 'tline',
     embedType: 'tline',
     elementType: 'embedElement',
     settings: {
-      src: 'https://view.tline.io/embed/donald-trumps-path-to-the-white-house/?noJS=1&v=0.1.1',
+      src:
+        'https://view.tline.io/embed/donald-trumps-path-to-the-white-house/?noJS=1&v=0.1.1',
       'data-alias': 'donald-trumps-path-to-the-white-house',
       'data-version': '0.1.1',
     },
@@ -440,16 +460,13 @@ const props = {
     credit: 'Waze',
     settings: {
       pin: 'true',
-      coordinates: [
-        '?zoom=15',
-        'lat=32.06408',
-        'lon=34.77688',
-      ],
+      coordinates: [ '?zoom=15', 'lat=32.06408', 'lon=34.77688', ],
       language: 'he',
     },
   },
   Giphy: {
-    content: '<embed src="https://giphy.com/embed/I5xVnGJRHZZf2" width="480" height="433" frameBorder="0" class="giphy-embed" allowFullScreen></embed><p><a href="https://giphy.com/gifs/police-francisco-among-I5xVnGJRHZZf2">via GIPHY</a></p>',
+    content:
+      '<embed src="https://giphy.com/embed/I5xVnGJRHZZf2" width="480" height="433" frameBorder="0" class="giphy-embed" allowFullScreen></embed><p><a href="https://giphy.com/gifs/police-francisco-among-I5xVnGJRHZZf2">via GIPHY</a></p>',
     caption: 'giphy',
     credit: 'giphy',
     embedType: 'giphy',
@@ -464,7 +481,8 @@ const props = {
     contentName: 'giphy',
   },
   PlayBuzz: {
-    content: '<div class="pb_feed" data-shares="false" data-comments="false" data-game-info="false" data-item="df25b0eb-1402-435d-a4f2-83ff06cf7b36" data-embed-by="5d056e35-f42e-456c-aa99-d57c2371e11f" data-version="2" ></div>',
+    content:
+      '<div class="pb_feed" data-shares="false" data-comments="false" data-game-info="false" data-item="df25b0eb-1402-435d-a4f2-83ff06cf7b36" data-embed-by="5d056e35-f42e-456c-aa99-d57c2371e11f" data-version="2" ></div>',
     caption: 'playBuzz1',
     credit: 'playBuzz1',
     embedType: 'playBuzz',
@@ -491,6 +509,5 @@ const props = {
     contentName: 'gdfjgh',
   },
 };
-
 
 export default type => props[type];

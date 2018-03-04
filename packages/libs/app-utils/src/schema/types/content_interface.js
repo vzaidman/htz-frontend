@@ -12,7 +12,10 @@ const ContentInterface = new GraphQLInterfaceType({
   // resolveType: (data) => {
   //   if (data.lin) return tagType;
   //   if (data.email) return userType;
-  //   // And so on. But how return proper Type if my Tag Type is similar to Category Type? That's the reason why I prefer the second way and use isTypeOf
+  // And so on.
+  // But how to return a proper Type if my Tag Type is similar to
+  // Category Type? That's the reason why I prefer the second way and
+  // use isTypeOf
   //   return null;
   // }
 });

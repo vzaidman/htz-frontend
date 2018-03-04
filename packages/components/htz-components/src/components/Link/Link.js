@@ -3,38 +3,25 @@ import PropTypes from 'prop-types';
 import NextLink from 'next/link';
 
 const propTypes = {
-  /**
-   * Link's destination.
-   * */
-  href: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string,
-  ]).isRequired,
-  /**
-   * Link's content (simple string or another component/element)
-   * */
-  content: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.string,
-  ]).isRequired,
-  /**
-   * Basic HTML target (destination window).
-   * */
+  /** Link's destination */
+  href: PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ]).isRequired,
+  /** Link's content (simple string or another component/element) */
+  content: PropTypes.oneOfType([ PropTypes.node, PropTypes.string, ]).isRequired,
+  /** Basic HTML target (destination window) */
   target: PropTypes.string,
-  /**
-   * Should prefetch.
-   * */
+  /** Should prefetch */
   prefetch: PropTypes.bool,
-  /**
-   * react-fela class names.
-   * */
+  /** react-fela class names */
   className: PropTypes.string,
+  /** Set the focus on this component */
+  focus: PropTypes.bool,
 };
 
 const defaultProps = {
-  target: null,
-  prefetch: null,
   className: null,
+  focus: false,
+  prefetch: null,
+  target: null,
 };
 
 function Link({ href, target, content, prefetch, className, focus, }) {
@@ -43,7 +30,7 @@ function Link({ href, target, content, prefetch, className, focus, }) {
       <a
         target={target}
         className={className}
-        ref={(linkRef) => (focus && linkRef && linkRef.focus())}
+        ref={linkRef => focus && linkRef && linkRef.focus()}
       >
         {content}
       </a>

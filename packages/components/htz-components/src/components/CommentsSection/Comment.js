@@ -18,7 +18,12 @@ const wrapperStyle = ({ theme, isSubComment, isLastSubComment, bgColor, }) => ({
     },
     {
       condition: isSubComment && !isLastSubComment,
-      style: borderBottom('1px', 2, 'solid', theme.color('comments', 'subcommentBorder')),
+      style: borderBottom(
+        '1px',
+        2,
+        'solid',
+        theme.color('comments', 'subcommentBorder')
+      ),
     },
   ],
 });
@@ -44,7 +49,9 @@ const commentNumberContainerStyle = ({ theme, }) => ({
   ...theme.type(3),
 });
 
-const StyledCommentNumberContainer = createComponent(commentNumberContainerStyle);
+const StyledCommentNumberContainer = createComponent(
+  commentNumberContainerStyle
+);
 
 const commentContainerStyle = () => ({
   width: '100%',
@@ -86,7 +93,9 @@ const CommentAuthorStyle = ({ theme, truncate, }) => ({
   ...theme.type(0),
 });
 
-const StyledCommentAuthor = createComponent(CommentAuthorStyle, 'h4', [ 'onClick', ]);
+const StyledCommentAuthor = createComponent(CommentAuthorStyle, 'h4', [
+  'onClick',
+]);
 
 const PublishingDateStyle = ({ theme, }) => ({
   color: theme.color('comments', 'date'),
@@ -169,7 +178,8 @@ class Comment extends React.Component {
     /** The Comment ID */
     commentId: PropTypes.string.isRequired,
     /** The Comment Number */
-    commentNumber: PropTypes.oneOfType([ PropTypes.number, PropTypes.string, ]).isRequired,
+    commentNumber: PropTypes.oneOfType([ PropTypes.number, PropTypes.string, ])
+      .isRequired,
     /**
      * An Object holding the Minus Rates of all the comments in the `CommentsElement`.
      * The Object has an id key for each comment that has at least one Minus vote.
@@ -194,9 +204,12 @@ class Comment extends React.Component {
     commentText: PropTypes.string,
     /**
      * A callback passed on to the reply `<CommentForm />`
-     * @param {String} commentAuthor - the new comment author
-     * @param {String} commentTextHtml - the new comment text innerHTML
-     * @param {String} parentCommentId - the parent CommentId - defaults to '0' if there is no `parentCommentId`
+     * @param {String} commentAuthor
+     *   The new comment author
+     * @param {String} commentTextHtml
+     *   The new comment text innerHTML
+     * @param {String} parentCommentId
+     *   The parent CommentId - defaults to '0' if there is no `parentCommentId`
      */
     initNewComment: PropTypes.func,
     /**
@@ -276,7 +289,11 @@ class Comment extends React.Component {
 
   componentDidMount() {
     const height = this.commentTextEl.clientHeight;
-    const remHeight = getRemFromPx(this.props.theme.bps, this.props.theme.typeConf, height);
+    const remHeight = getRemFromPx(
+      this.props.theme.bps,
+      this.props.theme.typeConf,
+      height
+    );
     if (remHeight > 42) {
       // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({ fadeText: true, });
@@ -372,7 +389,9 @@ class Comment extends React.Component {
                 {author}
               </StyledCommentAuthor>
 
-              <StyledPublishingDate>{publishingDateForDisplay}</StyledPublishingDate>
+              <StyledPublishingDate>
+                {publishingDateForDisplay}
+              </StyledPublishingDate>
 
               {isSubComment ? (
                 <StyledSubCommentAuthor>
@@ -444,7 +463,10 @@ class Comment extends React.Component {
                 isFlat
                 variant="negative"
                 boxModel={{ hp: 2, vp: 0.5, }}
-                miscStyles={{ backgroundColor: 'transparent', type: [ { value: -2, }, ], }}
+                miscStyles={{
+                  backgroundColor: 'transparent',
+                  type: [ { value: -2, }, ],
+                }}
                 onClick={() => {
                   reportAbuse(commentId);
                 }}
@@ -461,7 +483,9 @@ class Comment extends React.Component {
                 commentsPlusRate={commentsPlusRate}
                 commentsMinusRate={commentsMinusRate}
                 reportAbuse={reportAbuse}
-                openParentReplyForm={() => this.setState({ displayReplyForm: true, })}
+                openParentReplyForm={() =>
+                  this.setState({ displayReplyForm: true, })
+                }
               />
             ) : null}
           </StyledCommentContainer>

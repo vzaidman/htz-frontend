@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Kicker component renders correctly a div tag for kicker 1`] = `
+Object {
+  "component": <div>
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+    >
+      פרשנות
+    </div>
+  </div>,
+  "styles": ".htz-a{background-color:#A8001C}.htz-b{color:#FFF}@media (max-width: 47.9375em){.htz-c{font-size:4rem}.htz-d{line-height:1.25em}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-e{font-size:4.666666666666667rem}.htz-f{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-g{font-size:5.333333333333333rem}.htz-h{line-height:1.125em}}@media (min-width: 80em){.htz-i{font-size:5.142857142857143rem}.htz-j{line-height:1.1666666666666667em}}",
+}
+`;
+
+exports[`Kicker component renders correctly a span tag for kicker 1`] = `
+Object {
+  "component": <div>
+    <span
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l"
+    >
+      פרשנות
+    </span>
+  </div>,
+  "styles": ".htz-a{background-color:transparent}.htz-b{color:#A8001C}.htz-c:after{content:'|'}.htz-d:after{padding-right:1rem}@media (max-width: 47.9375em){.htz-e{font-size:4rem}.htz-f{line-height:1.25em}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-g{font-size:4.666666666666667rem}.htz-h{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-i{font-size:5.333333333333333rem}.htz-j{line-height:1.125em}}@media (min-width: 80em){.htz-k{font-size:5.142857142857143rem}.htz-l{line-height:1.1666666666666667em}}",
+}
+`;

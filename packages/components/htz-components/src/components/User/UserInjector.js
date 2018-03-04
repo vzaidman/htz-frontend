@@ -67,7 +67,11 @@ class UserInjector extends Component {
       if (loading) return <div>loading...user...</div>; // null;
       if (error) return <div>error...user...</div>;
       if (user) {
-        return <pre style={{ direction: 'ltr', }}>{JSON.stringify(this.props.user, null, 2)}</pre>;
+        return (
+          <pre style={{ direction: 'ltr', }}>
+            {JSON.stringify(this.props.user, null, 2)}
+          </pre>
+        );
       }
       console.error('User Injector failed creating a user:', this.props.user);
       return null;

@@ -12,22 +12,25 @@ const MainWrapper = createComponent(mainWrapperStyle, 'div');
 
 const inlineLinkStyle = ({ theme, }) => theme.articleStyle.paragraphLink;
 
-const InlineLink = createComponent(inlineLinkStyle, Link, props => Object.keys(props));
+const InlineLink = createComponent(inlineLinkStyle, Link, props =>
+  Object.keys(props)
+);
 
 const paragraphStyle = ({ theme, }) => {
-  const { type, color, ...paragraphStyles } = theme.articleStyle.paragraphStyles || {};
+  const { type, color, ...paragraphStyles } =
+    theme.articleStyle.paragraphStyles || {};
 
   return {
     extend: [
-      ...(
-        theme.articleStyle.paragraphStyles
-          ? [ {
+      ...(theme.articleStyle.paragraphStyles
+        ? [
+          {
             ...(paragraphStyles || []),
             ...(type ? theme.type(...type) : []),
             ...(color ? { color: theme.color(...color), } : []),
-          }, ]
-          : []
-      ),
+          },
+        ]
+        : []),
     ],
   };
 };
@@ -36,7 +39,9 @@ const P = createComponent(paragraphStyle, 'p', props => Object.keys(props));
 const strongStyle = () => ({
   fontWeight: '700',
 });
-const Strong = createComponent(strongStyle, 'strong', props => Object.keys(props));
+const Strong = createComponent(strongStyle, 'strong', props =>
+  Object.keys(props)
+);
 
 const emphasisStyle = () => ({
   fontStyle: 'italic',
@@ -59,7 +64,8 @@ const extractAttributes = attrArray => {
   const whiteList = [ 'class', 'href', 'target', 'id', 'name', ]; // List of all the acceptable attributes.
   const attributes = {};
   if (attrArray && attrArray.length > 0) {
-    attrArray.map(attribute => { // eslint-disable-line array-callback-return
+    // eslint-disable-line array-callback-return
+    attrArray.forEach(attribute => {
       if (whiteList.includes(attribute.key)) {
         const key = attribute.key === 'class' ? 'hasClass' : attribute.key; // Switching 'class' to 'className'.
         attributes[key] = attribute.value;
@@ -118,7 +124,9 @@ export default class Paragraph extends React.Component {
 
   render() {
     return (
-      <MainWrapper marginBottom={this.state.margin ? this.props.marginBottom : null}>
+      <MainWrapper
+        marginBottom={this.state.margin ? this.props.marginBottom : null}
+      >
         <Content content={this.props} />
       </MainWrapper>
     );
@@ -152,11 +160,11 @@ function WrapperTag({ tag: tagName, content: tagElements, attributes, }) {
   if (attributes.hasClass && attributes.hasClass === 'bg-brand--d') {
     tagName = 'mark'; // eslint-disable-line no-param-reassign
   }
-  /**
-   * In case of an anchor inside the paragraph,
-   * we don't need a new component but just a `<span />` with the anchors ID.
-   */
   else if (attributes.id) {
+    /**
+     * In case of an anchor inside the paragraph,
+     * we don't need a new component but just a `<span />` with the anchors ID.
+     */
     tagName = 'span'; // eslint-disable-line no-param-reassign
   }
   const Tag = getTag(tagName);
@@ -169,46 +177,44 @@ function WrapperTag({ tag: tagName, content: tagElements, attributes, }) {
     attributes.content = genChildren(tagElements); // eslint-disable-line no-param-reassign
   }
 
-  return (
-    <Tag {...attributes}>
-      {genChildren(tagElements)}
-    </Tag>
-  );
+  return <Tag {...attributes}>{genChildren(tagElements)}</Tag>;
 }
 
 function genChildren(tagElements) {
-  return tagElements.map((tag, index) => (
-    tag.content ?
-      <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
-      : tag.attributes[0].value)
+  return tagElements.map(
+    (tag, index) =>
+      (tag.content ? (
+        <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
+      ) : (
+        tag.attributes[0].value
+      ))
   );
 }
 
 /** Components props */
 Paragraph.propTypes = {
   /** The HTML tag name */
+  // eslint-disable-next-line react/no-unused-prop-types
   tag: PropTypes.string.isRequired,
   /** The tag attributes (className, href, etc) */
-  attributes: PropTypes.array.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  attributes: PropTypes.array.isRequired, // eslint-disable-line react/no-unused-prop-types
   /** The paragraphs content.<br/>
    * If the value of content contains children, they must have this exact prop structure
    * {tag, attributes, content}.
    */
-  content: PropTypes.array.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  content: PropTypes.array.isRequired, // eslint-disable-line react/no-unused-prop-types
   /**
    * Should be passed if the paragraph should have a MarginBottom style
    * (some types of paragraphs would never have a MarginBottom and will override this prop).
    */
   marginBottom: PropTypes.oneOfType([
-    /**
-     * simple fela style object.
-     */
+    /** simple fela style object */
     PropTypes.shape({
       marginBottom: PropTypes.string,
     }),
-    /**
-     * multiple objects, each for a different break.
-     */
+    /** multiple objects, each for a different break */
     PropTypes.shape({
       break: PropTypes.shape({
         marginBottom: PropTypes.string,

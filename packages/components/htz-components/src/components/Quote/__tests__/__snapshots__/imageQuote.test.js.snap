@@ -1,26 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Border Quote  1`] = `
+exports[`Image Quote  1`] = `
 Object {
   "component": <div>
     <blockquote
       className="htz-a htz-b"
     >
-      <span>
-        Image Here
-      </span>
+      <div
+        className="htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+      >
+        <img
+          alt="נתניהו בישיבת הממשלה השבועית, בתחילת השבוע"
+          className="htz-k htz-l htz-m htz-n htz-o"
+          src="https://images.haarets.co.il/image/upload/w_1461,h_1460,x_592,y_8,c_crop,g_north_west/q_auto,h_100,w_100,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518556356/1.5580.2151933599.jpg"
+          title="אמיל סלמן"
+        />
+      </div>
       <p
-        className="htz-c htz-d htz-e htz-f htz-g htz-h"
+        className="htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae"
       >
         בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר  הביטחון
       </p>
       <span
-        className="htz-i htz-j htz-k htz-l"
+        className="htz-af htz-ag htz-ah htz-ai htz-aj htz-v htz-ak htz-al htz-am htz-an htz-ao htz-ap"
       >
         מישהו
       </span>
     </blockquote>
   </div>,
-  "styles": ".htz-a{color:#787878}.htz-b{font-weight:700}.htz-g:after{content:'\\"'}.htz-h:before{content:'\\"'}@media (max-width: 80em){.htz-c{font-size:3.5rem}.htz-d{line-height:1.4285714285714286em}.htz-i{font-size:2.3333333333333335rem}.htz-j{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-e{font-size:3.4285714285714284rem}.htz-f{line-height:1.1666666666666667em}.htz-k{font-size:2.2857142857142856rem}.htz-l{line-height:1.3125em}}",
+  "styles": ".htz-a{color:#787878}.htz-b{font-weight:700}.htz-c{height:0rem}.htz-d{padding-bottom:10rem}.htz-e{position:relative}.htz-f{width:10rem}.htz-g{background-color:#EBEBEB}.htz-h{border-radius:50%}.htz-i{overflow:hidden}.htz-j{display:inline-block}.htz-k{height:100%}.htz-l{left:0rem}.htz-m{position:absolute}.htz-n{top:0rem}.htz-o{width:100%}.htz-p:after{content:'\\"'}.htz-ae:before{content:'\\"'}@media (max-width: 47.9375em) and (max-width: 79.9375em){.htz-q{font-size:3rem}.htz-r{line-height:1.3333333333333333em}.htz-af{font-size:2.3333333333333335rem}.htz-ag{line-height:1.2857142857142858em}}@media (max-width: 47.9375em) and (min-width: 80em){.htz-s{font-size:3rem}.htz-t{line-height:1.3333333333333333em}.htz-ah{font-size:2.2857142857142856rem}.htz-ai{line-height:1.3125em}}@media (min-width: 48em) and (max-width: 79.9375em) and (max-width: 79.9375em){.htz-u{font-size:2.6666666666666665rem}.htz-v{line-height:1.5em}.htz-aj{font-size:2rem}}@media (min-width: 48em) and (max-width: 79.9375em) and (min-width: 80em){.htz-w{font-size:2.5714285714285716rem}.htz-x{line-height:1.5555555555555556em}.htz-ak{font-size:2rem}.htz-al{line-height:1.5em}}@media (min-width: 80em) and (max-width: 79.9375em){.htz-y{font-size:3.5rem}.htz-z{line-height:1.4285714285714286em}.htz-am{font-size:2.3333333333333335rem}.htz-an{line-height:1.2857142857142858em}}@media (min-width: 80em) and (min-width: 80em){.htz-ab{font-size:3.4285714285714284rem}.htz-ac{line-height:1.1666666666666667em}.htz-ao{font-size:2.2857142857142856rem}.htz-ap{line-height:1.3125em}}",
 }
 `;

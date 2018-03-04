@@ -36,10 +36,7 @@ describe('<IconAlert />', () => {
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconAlert attrs={{ 'aria-hidden': true, }} />
     );
-    testCase(
-      'add "id" attribute to DOM element',
-      <IconAlert id="hasId" />
-    );
+    testCase('add "id" attribute to DOM element', <IconAlert id="hasId" />);
     testCase(
       'add "onClick" attribute to DOM element',
       <IconAlert id={e => console.log('a')} />
@@ -47,10 +44,9 @@ describe('<IconAlert />', () => {
   });
 
   describe('styles', () => {
-    testCase("set icon's color",
-      <IconAlert color={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's color responsively",
+    testCase("set icon's color", <IconAlert color={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's color responsively",
       <IconAlert
         color={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -58,10 +54,9 @@ describe('<IconAlert />', () => {
         ]}
       />
     );
-    testCase("set icon's fill",
-      <IconAlert fill={[ 'primary', 'base', ]} />
-    );
-    testCase("set icon's fill responsively",
+    testCase("set icon's fill", <IconAlert fill={[ 'primary', 'base', ]} />);
+    testCase(
+      "set icon's fill responsively",
       <IconAlert
         fill={[
           { until: 'xl', value: [ 'primary', 'base', ], },
@@ -69,18 +64,17 @@ describe('<IconAlert />', () => {
         ]}
       />
     );
-    testCase("set icon's size",
-      <IconAlert size={6} />
+    testCase("set icon's size", <IconAlert size={6} />);
+    testCase(
+      "set icon's size responsively",
+      <IconAlert size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]} />
     );
-    testCase("set icon's size responsively",
-      <IconAlert
-        size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]}
-      />
-    );
-    testCase('set misc styles on an icon',
+    testCase(
+      'set misc styles on an icon',
       <IconAlert miscStyles={{ position: 'relative', }} />
     );
-    testCase('responsively set misc styles on an icon',
+    testCase(
+      'responsively set misc styles on an icon',
       <IconAlert
         miscStyles={{
           position: [
