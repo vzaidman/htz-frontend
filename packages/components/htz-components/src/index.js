@@ -8,6 +8,7 @@ import BeforeAndAfter from './components/Interactive/BeforeAndAfter';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import Caption from './components/Caption/Caption';
+import CheckBox from './components/CheckBox/CheckBox';
 import Comments from './components/CommentsSection/CommentsWithApollo';
 import Embed from './components/Embed/Embed';
 import Form from './components/Form/Form';
@@ -85,6 +86,7 @@ export {
   Button,
   ButtonGroup,
   Caption,
+  CheckBox,
   Comments,
   Embed,
   Form,
