@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Note> DOM element renders correctly with \`isError prop 1`] = `
+<div>
+  <span
+    className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    id={null}
+  >
+    error text
+  </span>
+</div>
+`;
+
+exports[`<Note> DOM element renders correctly with \`isError prop 2`] = `".htz-a{display:block}.htz-b{color:#A8001C}@media (max-width: 80em){.htz-c{font-size:1.8333333333333333rem}.htz-d{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-e{font-size:1.7142857142857142rem}.htz-f{line-height:1.75em}}"`;
+
+exports[`<Note> DOM element renders correctly with minimal required props 1`] = `
+<div>
+  <span
+    className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    id={null}
+  >
+    text
+  </span>
+</div>
+`;
+
+exports[`<Note> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:block}.htz-b{color:#B4B4B4}@media (max-width: 80em){.htz-c{font-size:1.8333333333333333rem}.htz-d{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-e{font-size:1.7142857142857142rem}.htz-f{line-height:1.75em}}"`;

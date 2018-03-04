@@ -39,7 +39,7 @@ exports[`<Comment> DOM element renders correctly with minimal required props 1`]
               />
             </label>
             <span
-              className="htz-bb htz-bc htz-bd htz-be htz-bf"
+              className="htz-j htz-bb htz-bc htz-bd htz-be htz-bf"
               id="123456789"
             >
               הזינו שם שיוצג כמחבר התגובה
@@ -143,7 +143,7 @@ exports[`<Comment> DOM element renders correctly with minimal required props 1`]
           />
         </label>
         <span
-          className="htz-bb htz-bc htz-bd htz-be htz-bf"
+          className="htz-j htz-bb htz-bc htz-bd htz-be htz-bf"
           id="123456789"
         >
           בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ

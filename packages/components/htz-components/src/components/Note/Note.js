@@ -44,6 +44,7 @@ const defaultProps = {
 };
 
 const styles = ({ theme, isError, variant, }) => ({
+  display: 'block',
   color: isError
     ? theme.color('input', `${variant}ErrorTextNote`)
     : theme.color('input', `${variant}TextNote`),
