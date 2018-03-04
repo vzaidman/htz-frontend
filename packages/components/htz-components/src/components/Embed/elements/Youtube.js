@@ -11,6 +11,17 @@ import PropTypes from 'prop-types';
 import { VideoWrapper, } from '../sharedStyles/videoWrapper';
 import { VideoElement, } from '../sharedStyles/videoElement';
 
+const defaultSettings = {
+  controls: '1',
+  related: '1',
+  loop: '0',
+  logo: '1',
+  mute: false,
+  autoplay: false,
+  startAt: 0,
+  videoImage: null,
+};
+
 Youtube.propTypes = {
   /**
    * The type of this youtube element
@@ -26,36 +37,36 @@ Youtube.propTypes = {
     /**
      * Should it display Youtube's controls ('0' || '1').
      */
-    controls: PropTypes.string.isRequired,
+    controls: PropTypes.string,
     /**
      * Should it display related videos after the playback ('0' || '1').
      */
-    related: PropTypes.string.isRequired,
+    related: PropTypes.string,
     /**
      * Should it play in continuously loop ('0' || '1').
      */
-    loop: PropTypes.string.isRequired,
+    loop: PropTypes.string,
     /**
      * Should it display Youtube's logo ('0' || '1').
      */
-    logo: PropTypes.string.isRequired,
+    logo: PropTypes.string,
     /**
      * Should it automatically play in mute ('0' || '1').
      */
-    mute: PropTypes.bool.isRequired,
+    mute: PropTypes.bool,
     /**
      * Should it play automatically ('0' || '1').
      */
-    autoplay: PropTypes.bool.isRequired,
+    autoplay: PropTypes.bool,
     /**
      * Should it start at a specific time ('0' || '1').
      */
-    startAt: PropTypes.number.isRequired,
+    startAt: PropTypes.number,
     /**
      * A link to the video image (for smartphone app).
      */
-    videoImage: PropTypes.string.isRequired,
-  }).isRequired,
+    videoImage: PropTypes.string,
+  }),
   /**
    * A function to be called when the video finishes to load.
    */
@@ -63,21 +74,14 @@ Youtube.propTypes = {
 };
 
 Youtube.defaultProps = {
-  settings: {
-    controls: '1',
-    related: '1',
-    loop: '0',
-    logo: '1',
-    mute: false,
-    autoplay: false,
-    startAt: 0,
-  },
+  settings: defaultSettings,
   onLoadCallback: null,
 };
 
 function Youtube(props) {
   const startAt = props.embedType === 'playlist' ? '&start=' : '?start=';
-  const { settings, } = props;
+  const settings = props.settings || defaultSettings;
+
   return (
     <VideoWrapper aspectRatio={'16/9'}>
       <VideoElement

@@ -3,12 +3,13 @@ import React from 'react';
 import Article from '../components/Article/Article';
 import Embed from '../components/Embed/Embed';
 import HtmlElement from '../components/Interactive/HtmlElement';
-import InteractiveElement from '../components/Interactive/interactiveElement';
 import Image from '../components/Image/Image';
+import InteractiveElement from '../components/Interactive/interactiveElement';
 import Paragraph from '../components/Paragraph/Paragraph';
 import Quote from '../components/Quote/Quote';
 import RelatedArticles from '../components/RelatedArticles/RelatedArticles';
 import SeriesArticles from '../components/RelatedArticles/SeriesArticles';
+import Video from '../components/Video/Video';
 
 const inputTemplateToComponent = new Map([
   /* HeaderSlots components */
@@ -37,7 +38,9 @@ const inputTemplateToComponent = new Map([
 
   /* Misc components */
   [ 'com.tm.Image', Image, ],
+  [ 'com.tm.Video', Video, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
+  [ 'com.tm.HtmlElement', () => <p>HtmlElement</p>, ],
   [ 'com.tm.ListElement', () => <p>ListElement</p>, ],
   [ 'com.tm.TabViewElement', () => <p>TabViewElement</p>, ],
   [ 'com.polobase.JSONListsWrapper', () => <p>JSONListsWrapper</p>, ],

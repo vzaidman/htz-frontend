@@ -29,6 +29,7 @@ import Select from './components/Select/Select';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 import Tags from './components/Tags/Tags';
 import TextInput from './components/TextInput/TextInput';
+import Video from './components/Video/Video';
 
 // Icons
 import IconAccessibility from './components/Icon/icons/IconAccessibility';
@@ -107,6 +108,7 @@ export {
   StandardArticlePageLayout,
   Tags,
   TextInput,
+  Video,
   // Icons
   IconAccessibility,
   IconAlef,
