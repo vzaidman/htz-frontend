@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Media /> on server does not match on the server by default 1`] = `
+<div>
+  <p>
+    did not match on server
+  </p>
+</div>
+`;
+
+exports[`<Media /> on server match on the server when "matchOnServer" is true 1`] = `
+<div>
+  <p>
+    matched on server
+  </p>
+</div>
+`;
