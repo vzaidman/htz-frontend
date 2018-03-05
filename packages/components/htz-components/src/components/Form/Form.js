@@ -88,7 +88,7 @@ export class Form extends Component {
    * @param {Object} userProps
    *   An Object holding all the props the user wants to spread on the input element.
    *   The consumer must pass an Object with a name key that has a unique value, the
-   *   rest of the properties are optional.
+   *   rest of the formElementProperties are optional.
    *
    *   All props passed to a input element controlled by the Form should be passed
    *   through the getInputProps func, e.g.,
@@ -120,9 +120,44 @@ export class Form extends Component {
       }
       return null;
     });
-    return {
-      ...(formElementType === 'text'
-        ? {
+
+    let formElementProperties;
+
+    switch (formElementType) {
+      case 'radio':
+        formElementProperties = {
+          // RadioGroup needs the name in order to pass it to RadioButton
+          name,
+          onChange: callAll(onChange, evt => {
+            const values = { ...this.state.values, [name]: evt.target.value, };
+            const errors = this.props.isValidateOnChange
+              ? this.handleTouchedValidate(values)
+              : null;
+            this.setState({
+              values,
+              ...(errors ? { errors, } : {}),
+            });
+          }),
+          value: this.state.values[name] || false,
+        };
+        break;
+      case 'checkBox':
+        formElementProperties = {
+          checked: this.state.values[name] || false,
+          onChange: callAll(onChange, evt => {
+            const values = { ...this.state.values, [name]: evt.target.checked, };
+            const errors = this.props.isValidateOnChange
+              ? this.handleTouchedValidate(values)
+              : null;
+            this.setState({
+              values,
+              ...(errors ? { errors, } : {}),
+            });
+          }),
+        };
+        break;
+      default:
+        formElementProperties = {
           ...(isContentEditable
             ? {
               onContentEditableChange: callAll(onContentEditableChange, (evt, value) => {
@@ -151,23 +186,10 @@ export class Form extends Component {
             }),
           /** empty string is needed so react wont think it is an uncontrolled input when the value is empty */
           value: this.state.values[name] || '',
-        }
-        : {}),
-      ...(formElementType === 'checkBox'
-        ? {
-          checked: this.state.values[name] || false,
-          onChange: callAll(onChange, evt => {
-            const values = { ...this.state.values, [name]: evt.target.checked, };
-            const errors = this.props.isValidateOnChange
-              ? this.handleTouchedValidate(values)
-              : null;
-            this.setState({
-              values,
-              ...(errors ? { errors, } : {}),
-            });
-          }),
-        }
-        : {}),
+        };
+    }
+    return {
+      ...formElementProperties,
       onBlur: callAll(onBlur, evt => {
         if (this.props.isValidateOnBlur) {
           const errors = this.handleTouchedValidate(this.state.values);

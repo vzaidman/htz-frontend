@@ -1,10 +1,11 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import { border, borderBottom, borderStart, parseStyleProps, } from '@haaretz/htz-css-tools';
+import { borderStart, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import Note from '../Note/Note';
+import Ripple from '../Animations/Ripple';
 
 const styles = ({ miscStyles, theme, }) => ({
   display: 'flex',
@@ -13,66 +14,23 @@ const styles = ({ miscStyles, theme, }) => ({
   extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
 
-const checkBoxStyle = ({ checked, isDisabled, theme, }) => ({
+const checkBoxStyle = ({ checked, isDisabled, isFocused, theme, }) => ({
   height: '2rem',
   width: '2rem',
   flexShrink: 0,
   backgroundColor: checked ? theme.color('checkBox', 'bgChecked') : theme.color('checkBox', 'bg'),
   transitionProperty: 'all',
+  borderWidth: isFocused && !checked ? '2px' : '1px',
+  borderStyle: 'solid',
+  borderColor: isDisabled ? theme.color('checkBox', 'borderDisabled') : theme.color('checkBox', 'border'),
+  paddingTop: '0.2rem',
+  paddingBottom: '0.2rem',
   extend: [
-    border(
-      '1px',
-      0.2,
-      'solid',
-      isDisabled ? theme.color('checkBox', 'borderDisabled') : theme.color('checkBox', 'border')
-    ),
     theme.getTransition(1, 'swiftIn'),
   ],
 });
 
 const StyledCheckBox = createComponent(checkBoxStyle);
-
-const rippleStyle = ({ isFocused, theme, }) => ({
-  position: 'absolute',
-
-  height: '8rem',
-  width: '8rem',
-  right: '-7rem',
-  top: '50%',
-  borderRadius: '50%',
-  backgroundColor: theme.color('checkBox', 'ripple'),
-  display: 'block',
-  opacity: 0,
-  ...(isFocused
-    ? {
-      animationDuration: '0.5s',
-      animationDirection: 'alternate',
-      animationName: [
-        {
-          '0%': {
-            opacity: 0,
-            transform: 'translate(-50%, -50%) scale(0)',
-          },
-
-          '50%': {
-            opacity: '.3',
-          },
-
-          '70%': {
-            transform: 'translate(-50%, -50%) scale(1)',
-          },
-
-          '100%': {
-            opacity: 0,
-            transform: 'translate(-50%, -50%) scale(0)',
-          },
-        },
-      ],
-    }
-    : {}),
-});
-
-const StyledRipple = createComponent(rippleStyle);
 
 const checkStyle = ({ checked, theme, }) => ({
   height: '100%',
@@ -82,8 +40,10 @@ const checkStyle = ({ checked, theme, }) => ({
   overflow: 'hidden',
   opacity: checked ? 1 : 0,
   transitionProperty: 'all',
+  borderBottomWidth: '2px',
+  borderBottomStyle: 'solid',
+  borderBottomColor: theme.color('checkBox', 'check'),
   extend: [
-    borderBottom('2px', 0, 'solid', theme.color('checkBox', 'check')),
     borderStart('2px', 'solid', theme.color('checkBox', 'check')),
     theme.getTransition(1, 'swiftIn'),
   ],
@@ -261,8 +221,8 @@ export class CheckBox extends Component {
             }}
             {...(onChange ? { onChange, } : {})}
           />
-          <StyledRipple isFocused={this.state.isFocused} />
-          <StyledCheckBox checked={controllingChecked} isDisabled={isDisabled}>
+          <Ripple isActive={this.state.isFocused} />
+          <StyledCheckBox checked={controllingChecked} isDisabled={isDisabled} isFocused={this.state.isFocused}>
             <StyledCheck checked={controllingChecked} />
           </StyledCheckBox>
           <StyledSpan>{label}</StyledSpan>

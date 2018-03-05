@@ -410,14 +410,16 @@ In order to set the initial values of an input controlled by `<Form />` simply p
 `<Form />` can handle our `<CheckBox/>` component as well.
 
 ```jsx
-<div dir="rtl">
+<div dir="rtl" style={{ padding: "5rem" }}>
   <Form
-    onSubmit={({ email, terms }) =>
+    onSubmit={({ email, terms, radio }) =>
       alert(
-        `email submitted: ${email} agreed to terms: ${terms ? "true" : "false"}`
+        `email submitted: ${email} agreed to terms: ${
+          terms ? "true" : "false"
+        } radio : ${radio}`
       )
     }
-    validate={({ email, terms }) => {
+    validate={({ email, terms, radio }) => {
       let errors = [];
       if (!email) {
         errors.push({
@@ -433,6 +435,13 @@ In order to set the initial values of an input controlled by `<Form />` simply p
           errorText: "must accept terms"
         });
       }
+      if (radio === undefined) {
+        errors.push({
+          name: "radio",
+          order: 3,
+          errorText: "must choose radio"
+        });
+      }
       return errors;
     }}
     render={({ getInputProps, handleSubmit, clearForm }) => (
@@ -445,11 +454,16 @@ In order to set the initial values of an input controlled by `<Form />` simply p
           })}
         />
         <br />
-        <CheckBox
+
+        <RadioGroup
           {...getInputProps({
-            name: "terms",
-            label: "I agree to the site terms",
-            formElementType: "checkBox"
+            name: "radio",
+            noteText: "choose",
+            radioButtons: [
+              { value: "1", label: "one" },
+              { value: "2", label: "two" }
+            ],
+            formElementType: "radio"
           })}
         />
         <div style={{ display: "flex", justifyContent: "space-between" }}>
