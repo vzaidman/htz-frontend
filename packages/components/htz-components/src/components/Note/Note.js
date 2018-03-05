@@ -21,7 +21,7 @@ const propTypes = {
    */
   noteId: PropTypes.string,
   /** the note text, parent component responsible for changing the text when there is an error */
-  text: PropTypes.string,
+  text: PropTypes.oneOfType([ PropTypes.string, PropTypes.element, PropTypes.node, ]),
   /** The TextInput stylistic variant */
   // used for styling
   // eslint-disable-next-line react/no-unused-prop-types
