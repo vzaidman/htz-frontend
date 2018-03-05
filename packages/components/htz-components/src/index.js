@@ -18,6 +18,7 @@ import ApolloBoundary from './components/ApolloBoundary/ApolloBoundary';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import Caption from './components/Caption/Caption';
+import Carousel from './components/Carousel/Carousel';
 import ChangeableElementGroup from './components/ChangeableElementGroup/ChangeableElementGroup';
 import CheckBox from './components/CheckBox/CheckBox';
 import Comments from './components/CommentsSection/WrappedComments';
@@ -33,6 +34,7 @@ import H from './components/AutoLevels/H';
 import HeadlineElement from './components/HeadlineElement/HeadlineElement';
 import HtmlElement from './components/Interactive/components/HtmlElement';
 import Image from './components/Image/Image';
+import ImageGallery from './components/ImageGallery/ImageGallery';
 import Interactive from './components/Interactive/Interactive';
 import DeviceTypeInjector from './components/DeviceTypeInjector/DeviceTypeInjector';
 import LayoutContainer from './components/PageLayout/LayoutContainer';
@@ -168,6 +170,7 @@ export {
   Button,
   ButtonGroup,
   Caption,
+  Carousel,
   ChangeableElementGroup,
   CheckBox,
   Comments,
@@ -184,6 +187,7 @@ export {
   HeadlineElement,
   HtmlElement,
   Image,
+  ImageGallery,
   Interactive,
   LayoutContainer,
   LayoutRow,

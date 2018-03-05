@@ -14,6 +14,7 @@ import Embed from '../components/Embed/Embed';
 import Footer from '../components/Footer/Footer';
 import HtmlElement from '../components/Interactive/components/HtmlElement';
 import Image from '../components/Image/Image';
+import ImageGallery from '../components/ImageGallery/ImageGallery';
 import Interactive from '../components/Interactive/Interactive';
 import LinksBlock from '../components/RelatedArticles/LinksBlock';
 import List from '../components/List/List';
@@ -81,6 +82,7 @@ const inputTemplateToComponent = new Map([
 
   /* Misc components */
   [ 'com.tm.Image', Image, ],
+  [ 'com.tm.ImageGalleryElement', ImageGallery, ],
   [ 'com.tm.Video', Video, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
   [ 'com.tm.newsLetterQuickRegistrationRespAuto', Newsletter, ],
