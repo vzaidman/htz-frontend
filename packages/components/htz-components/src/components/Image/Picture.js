@@ -254,39 +254,35 @@ function Picture(props) {
   );
 
   if (lazyLoad) {
-    return hasWrapper
-      ? (
-        <StyledPictureWrapper
-          miscStyles={miscStyles}
-          sources={sources}
-          defaultImg={defaultImg}
-          bgc={bgcolor}
-        >
-          <Observer triggerOnce rootMargin={lazyLoad}>
-            {inView => (inView ? Element : null)}
-          </Observer>
-        </StyledPictureWrapper>
-      )
-      : (
-        <Observer triggerOnce rootMargin={lazyLoad}>
-          {inView => (inView ? Element : null)}
-        </Observer>
-      );
-  }
-  return hasWrapper ?
-    (
+    return hasWrapper ? (
       <StyledPictureWrapper
         miscStyles={miscStyles}
         sources={sources}
         defaultImg={defaultImg}
         bgc={bgcolor}
       >
-        {Element}
+        <Observer triggerOnce rootMargin={lazyLoad}>
+          {inView => (inView ? Element : null)}
+        </Observer>
       </StyledPictureWrapper>
-    )
-    : (
-      Element
+    ) : (
+      <Observer triggerOnce rootMargin={lazyLoad}>
+        {inView => (inView ? Element : null)}
+      </Observer>
     );
+  }
+  return hasWrapper ? (
+    <StyledPictureWrapper
+      miscStyles={miscStyles}
+      sources={sources}
+      defaultImg={defaultImg}
+      bgc={bgcolor}
+    >
+      {Element}
+    </StyledPictureWrapper>
+  ) : (
+    Element
+  );
 }
 
 export default withTheme(Picture);
@@ -341,7 +337,7 @@ function getMedia({ sources, theme, }) {
       .some(item => item != undefined);
 
     return imgHasMedia
-      ? theme.getMqString({ from, until, misc, type, }).split('@media ')[1]
+      ? theme.getMqString({ from, until, misc, type, }, true)
       : undefined;
   });
   return finalMedia;

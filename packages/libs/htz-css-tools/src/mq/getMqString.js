@@ -55,7 +55,8 @@ import type { BpsConfig, MqOptions, WidthBpsConfig, } from './mq';
  */
 export default function getMqString(
   { widths, misc: miscBps, }: BpsConfig,
-  { from, until, misc, type, }: MqOptions
+  { from, until, misc, type, }: MqOptions,
+  noCssMedia?: true
 ): string {
   const typeString = !type || type.toLowerCase() === 'all' ? '' : type;
   const minString = from
@@ -78,7 +79,9 @@ export default function getMqString(
       ? ` and ${miscOption}`
       : miscOption;
 
-  return `@media ${typeString + minString + maxString + miscString}`;
+  const mediaString = typeString + minString + maxString + miscString;
+
+  return noCssMedia ? mediaString : `@media ${mediaString}`;
 }
 
 // //////////////// //

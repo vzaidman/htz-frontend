@@ -1,4 +1,4 @@
-import { getLengthString, } from '../getMqString.js';
+import getMqString, { getLengthString, } from '../getMqString.js';
 import createMqFunc from '../mq';
 
 describe('# Media Queries', () => {
@@ -22,6 +22,37 @@ describe('# Media Queries', () => {
     });
   });
 
+  describe('## getMqString()', () => {
+    it('return a media query string with the "@media" prefix', () => {
+      const result = getMqString(
+        {
+          widths: { s: 600, m: 1024, l: 1280, },
+          misc: { landscape: '(orientation: landscape)', },
+        },
+        { from: 's', until: 'm', misc: 'landscape', }
+      );
+
+      expect(result).toBe(
+        `@media (min-width: ${600 / 16}em) and (max-width: ${(1024 - 1) /
+          16}em) and (orientation: landscape)`
+      );
+    });
+    it('return a media query string without the "@media" prefix', () => {
+      const result = getMqString(
+        {
+          widths: { s: 600, m: 1024, l: 1280, },
+          misc: { landscape: '(orientation: landscape)', },
+        },
+        { from: 's', until: 'm', misc: 'landscape', },
+        true
+      );
+
+      expect(result).toBe(
+        `(min-width: ${600 / 16}em) and (max-width: ${(1024 - 1) /
+          16}em) and (orientation: landscape)`
+      );
+    });
+  });
   describe('## mqFuncFactory()', () => {
     it('Return a function when not passing a configuration oject', () => {
       expect(typeof createMqFunc()).toBe('function');
