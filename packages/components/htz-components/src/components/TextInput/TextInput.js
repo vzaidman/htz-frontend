@@ -306,7 +306,7 @@ class TextInput extends Component {
      * The html input type
      * oneOf('email', 'number', 'password', 'search', 'tel', 'text', 'url')
      */
-    type: PropTypes.oneOf('email', 'number', 'password', 'search', 'tel', 'text', 'url'),
+    type: PropTypes.oneOf([ 'email', 'number', 'password', 'search', 'tel', 'text', 'url', ]),
     /**
      * Value of a controlled `<TextInput />`.
      * Should never be passed manually by the consumer, but rather

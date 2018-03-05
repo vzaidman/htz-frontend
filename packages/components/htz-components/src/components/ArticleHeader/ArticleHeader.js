@@ -31,7 +31,7 @@ const articleHeaderPropTypes = {
         'col',
         'unknown',
         'none',
-      ]).isRequired,
+      ]),
       contentId: PropTypes.string.isRequired,
       contentName: PropTypes.string,
       email: PropTypes.string,
@@ -44,7 +44,7 @@ const articleHeaderPropTypes = {
       inputTemplate: PropTypes.string,
       twitter: PropTypes.string,
       url: PropTypes.string,
-    }).isRequired,
+    }),
   ]).isRequired,
   /** publishDateTime of an Article */
   publishDateTime: PropTypes.instanceOf(Date).isRequired,
@@ -103,10 +103,8 @@ function ArticleHeaderComponent({
   );
 }
 
-const ArticleHeaderStyled = createComponent(
-  styleArticleHeader,
-  ArticleHeaderComponent,
-  props => Object.keys(props)
+const ArticleHeaderStyled = createComponent(styleArticleHeader, ArticleHeaderComponent, props =>
+  Object.keys(props)
 );
 
 function ArticleHeader(props) {

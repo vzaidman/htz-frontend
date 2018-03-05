@@ -28,7 +28,7 @@ const titlePropTypes = {
     ),
   ]).isRequired,
   /**
-   * Heading level. The H<x> tag to create.
+   * Heading level. The h`${level}` tag to create.
    */
   level: PropTypes.oneOf([ 1, 2, 3, 4, 5, 6, ]).isRequired,
   /**

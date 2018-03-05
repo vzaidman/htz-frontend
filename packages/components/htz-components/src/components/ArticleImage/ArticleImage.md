@@ -1,17 +1,20 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
-- [ArticleImage examples](#articleimage-examples)
+* [ArticleImage examples](#articleimage-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ### ArticleImage examples
 
 Infographic image with 1/3 viewMode
+
 ```jsx
-<div style={{ maxWidth: '700px', }}>
-  <ArticleImage 
+<div style={{ maxWidth: "700px" }}>
+  <ArticleImage
     alt="alternative text"
     viewMode="OneThirdView"
     accessibility="fgh"
@@ -20,7 +23,7 @@ Infographic image with 1/3 viewMode
     aspects={{
       full: {
         width: 1024,
-          height: 768
+        height: 768
       }
     }}
     isAnimated="false"
@@ -43,9 +46,10 @@ Infographic image with 1/3 viewMode
 ```
 
 Gif image with full viewMode
+
 ```jsx
-<div style={{ maxWidth: '700px', }}>
-  <ArticleImage 
+<div style={{ maxWidth: "700px" }}>
+  <ArticleImage
     alt="alternative text"
     viewMode="FullColumnWithVerticalImage"
     accessibility="cat"
@@ -54,25 +58,25 @@ Gif image with full viewMode
     aspects={{
       regular: {
         x: 3,
-          y: 4,
-          width: 388,
-          height: 291
+        y: 4,
+        width: 388,
+        height: 291
       },
       full: {
         width: 400,
-          height: 332
+        height: 332
       },
       headline: {
         x: 0,
-          y: 32,
-          width: 399,
-          height: 233
+        y: 32,
+        width: 399,
+        height: 233
       },
       square: {
         x: 33,
-          y: 7,
-          width: 318,
-          height: 318
+        y: 7,
+        width: 318,
+        height: 318
       }
     }}
     isAnimated="false"
@@ -91,9 +95,10 @@ Gif image with full viewMode
 ```
 
 Vertical image with regular viewMode
+
 ```jsx
-<div style={{ maxWidth: '700px', }}>
-  <ArticleImage 
+<div style={{ maxWidth: "700px" }}>
+  <ArticleImage
     viewMode="regularModeBigImage"
     accessibility="אימפריית הפשע"
     title="אימפריית הפשע"

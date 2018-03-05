@@ -145,15 +145,15 @@ class InputElement extends Component {
      */
     setFormatButtonsState: PropTypes.func,
     /** The html input type */
-    type: PropTypes.oneOf(
+    type: PropTypes.oneOf([
       'email',
       'number',
       'password',
       'search',
       'tel',
       'text',
-      'url'
-    ),
+      'url',
+    ]),
     /**
      * Value of a controlled `<TextInput />`.
      * Should never be passed manually by the consumer, but rather

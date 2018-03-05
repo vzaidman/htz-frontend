@@ -24,7 +24,8 @@ const propTypes = {
    * Indicates data error state
    * Passed implicitly by Apollo, not directly as an attribute on the component
    */
-  error: PropTypes.bool,
+  // eslint-disable-next-line react/forbid-prop-types
+  error: PropTypes.object,
 
   /**
    * Holds the scroll Object with x, y coords and scroll velocity
@@ -34,7 +35,7 @@ const propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
     velocity: PropTypes.number,
-  }).isRequired,
+  }),
   /**
    * The render Props callback
    * This component was built using the render props pattern
@@ -47,7 +48,8 @@ const propTypes = {
   render: PropTypes.func.isRequired,
 };
 const defaultProps = {
-  error: false,
+  error: null,
+  scroll: null,
 };
 
 export function Scroll({ loading, error, scroll, render, }) {

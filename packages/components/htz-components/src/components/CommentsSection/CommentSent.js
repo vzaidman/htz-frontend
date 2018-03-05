@@ -18,8 +18,8 @@ const propTypes = {
   isReplyForm: PropTypes.bool.isRequired,
   /**
    * A callback that gets the called when submitting the Form
-   * @param {Boolean} - True if the user clicked the sign up button, false if clicked no thanks button
-   * @param {String} - The email the user entered
+   * @param {Boolean} didSignUp- True if the user clicked the sign up button, false if clicked no thanks button
+   * @param {String} userEmail - The email the user entered
    */
   signUpNotification: PropTypes.func.isRequired,
   /** passed as a a prop by fela's withTheme func before default export */

@@ -76,9 +76,9 @@ export class CommentsSection extends React.Component {
      * `onSubmitCaptcha` which executes the captcha gets called when the
      * reportAbuse event from `<CommentList />` gets called, it saves the commentId in
      * `<CommentSection/>` state to later use `onCaptchaResolve`
-     * @param {String} - commentId
-     * @param {String} - captchaKey
-     */
+     * @param {String} commentId - commentId
+     * @param {String} captchaKey - captchaKey
+    */
     reportAbuse: PropTypes.func.isRequired,
     /**
      * A callback that gets the called when submitting the sign up to notification form in `<CommentSent />`

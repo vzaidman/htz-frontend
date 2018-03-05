@@ -9,11 +9,11 @@ LayoutContainer defines the max width and background color of a row responsivly 
 **A `<LayoutContainer>` with custom attrs**
 
 ```jsx static
-<LayoutContainer attrs={{ ariaLabel: "I am custom" }}>Customizing attrs</LayoutContainer>
+<LayoutContainer attrs={{ "aria-label": "I am custom" }}>Customizing attrs</LayoutContainer>
 ```
 
 ```jsx
-<LayoutContainer attrs={{ ariaLabel: "I am custom" }}>
+<LayoutContainer attrs={{ "aria-label": "I am custom" }}>
   Customizing attrs
 </LayoutContainer>
 ```
