@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 
 import IconBack from '../Icon/icons/IconBack';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const propTypes = {
   buttonsColor: PropTypes.oneOfType([
@@ -12,26 +13,35 @@ const propTypes = {
   ]),
   Component: PropTypes.node.isRequired,
   componentAttrs: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  inView: PropTypes.number,
   items: PropTypes.arrayOf(
     PropTypes.object
   ).isRequired,
   loop: PropTypes.bool,
-  onView: PropTypes.number,
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trumps all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  miscStyles: stylesPropType,
+  onStateChangeCB: PropTypes.func,
   step: PropTypes.number,
 };
 
 const defaultProps = {
   buttonsColor: null,
   componentAttrs: {},
+  inView: 1,
   loop: false,
-  onView: 1,
+  miscStyles: null,
+  onStateChangeCB: null,
   step: 1,
 };
 
 const wrapperStyle = () => ({
   position: 'relative',
 });
-const ImageWrapper = createComponent(wrapperStyle);
+const ItemsWrapper = createComponent(wrapperStyle);
 
 const navigationStyle = ({ theme, buttonsColor, }) => ({
   backgroundColor: buttonsColor,
@@ -62,55 +72,144 @@ const PreviousButton = createComponent(
   [ 'onClick', ]
 );
 
+const itemsStyle = ({ theme, }) => ({
+  top: '0',
+  width: '100%',
+  position: 'absolute',
+  transitionProperty: 'all',
+  ...theme.getDelay('transition', -1),
+  ...theme.getDuration('transition', -1),
+  ...theme.getTimingFunction('transition', 'linear'),
+});
+const Items = createComponent(itemsStyle);
+
+const nextItemsStyle = ({ moving, direction, }) => ({
+  transform:
+    moving ?
+      direction === 'next' ?
+        'translateX(0)'
+        :
+        'translateX(200%)'
+      :
+      'translateX(100%)',
+});
+const NextItems = createComponent(nextItemsStyle, Items);
+
+const currentItemsStyle = ({ moving, direction, changeState, }) => ({
+  position: 'static',
+  transform:
+    moving ?
+      direction === 'next' ?
+        'translateX(-100%)'
+        :
+        'translateX(100%)'
+      :
+      'translateX(0)',
+  transitionEnd: changeState(direction),
+});
+const CurrentItems = createComponent(currentItemsStyle, Items);
+
+const previousItemsStyle = ({ moving, direction, }) => ({
+  transform:
+    moving ?
+      direction === 'next' ?
+        'translateX(-200%)'
+        :
+        'translateX(0)'
+      :
+      'translateX(-100%)',
+});
+const PreviousItems = createComponent(previousItemsStyle, Items);
+
 class Carousel extends React.Component {
   state = {
-    displayImageNum: 0,
+    displayItemNum: 0,
+    moving: false,
+    direction: null,
   };
 
-  changeImage = (direction, step) => {
-    direction === 'next' ?
-      this.setState({
-        displayImageNum: this.state.displayImageNum + step,
-      }) :
-      this.setState({
-        displayImageNum: this.state.displayImageNum - step,
-      });
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.state.displayItemNum !== nextState.displayItemNum
+    );
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.moving);
+    this.props.onStateChangeCB(this.state.displayItemNum);
+  }
+
+  changeItem = direction => {
+    this.setState({
+      moving: true,
+      direction,
+    });
   };
+
+  changeState = direction => {
+
+  }
 
   render() {
     const {
       buttonsColor,
       Component,
       componentAttrs,
+      inView,
       items,
-      onView,
       step,
     } = this.props;
-    return (
-      <ImageWrapper>
-        <PreviousButton
-          buttonsColor={buttonsColor}
-          onClick={() => this.changeImage('previous', step)}
-        >
-          <IconBack
-            size={2.5}
-            miscStyles={{
-              transform: 'rotateY(180deg)',
-            }}
-          />
-        </PreviousButton>
-        <Component {...componentAttrs} {...items[this.state.displayImageNum]} />
 
-        <NextButton
-          buttonsColor={buttonsColor}
-          onClick={() => this.changeImage('next', step)}
+    return (
+      <ItemsWrapper>
+        {this.state.displayItemNum > 0 &&
+          <Fragment>
+            <PreviousButton
+              buttonsColor={buttonsColor}
+              onClick={() => this.changeItem('previous', step)}
+            >
+              <IconBack
+                size={2.5}
+                miscStyles={{
+                  transform: 'rotateY(180deg)',
+                }}
+              />
+            </PreviousButton>
+            <PreviousItems
+              moving={this.state.moving}
+              direction={this.state.direction}
+            >
+              <Component {...componentAttrs} {...items[this.state.displayItemNum - step]} />
+            </PreviousItems>
+          </Fragment>
+        }
+        <CurrentItems
+          moving={this.state.moving}
+          direction={this.state.direction}
+          changeState={this.changeState}
         >
-          <IconBack
-            color={'neutral'}
-            size={2.5}
-          />
-        </NextButton>
-      </ImageWrapper>
+          <Component {...componentAttrs} {...items[this.state.displayItemNum]} />
+        </CurrentItems>
+        {this.state.displayItemNum < items.length &&
+          <Fragment>
+            <NextItems
+              moving={this.state.moving}
+              direction={this.state.direction}
+            >
+              <Component {...componentAttrs} {...items[this.state.displayItemNum + step]} />
+            </NextItems>
+            <NextButton
+              buttonsColor={buttonsColor}
+              onClick={() => this.changeItem('next', step)}
+            >
+              <IconBack
+                color={'neutral'}
+                size={2.5}
+              />
+            </NextButton>
+          </Fragment>
+        }
+      </ItemsWrapper>
     );
   }
 }

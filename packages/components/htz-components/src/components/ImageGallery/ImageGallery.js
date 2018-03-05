@@ -53,7 +53,21 @@ const Dot = createComponent(dotStyle, 'span');
 
 class ImageGallery extends React.Component {
   state = {
-    displayImageNum: 0,
+    currentDisplaying: 0,
+  };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.currentDisplaying !== nextState.currentDisplaying;
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.currentDisplaying);
+  }
+
+  currentDisplaying = index => {
+    this.setState({
+      currentDisplaying: index,
+    });
   };
 
   render() {
@@ -64,18 +78,22 @@ class ImageGallery extends React.Component {
       showTitle,
       accessibility,
     } = this.props;
-    const image = images[this.state.displayImageNum];
+    const image = images[this.state.currentDisplaying];
     return (
       <Fragment>
         <Carousel
           buttonsColor={rgba(theme.color('quaternary'), 0.9)}
           Component={ArticleImage}
           componentAttrs={{
-            forceAspect: 'regular',
+            forceAspect: 'full',
             showCaption: false,
+            miscStyles: {
+              marginBottom: '0 !important', /** TODO: for some reason it won't Trump */
+            },
           }}
           items={images}
           loop
+          onStateChangeCB={this.currentDisplaying}
         />
         <CaptionWrapper>
           <Caption
@@ -87,7 +105,7 @@ class ImageGallery extends React.Component {
           <DotsWrapper>
             {images.map((img, i) => (
               <Dot
-                active={i === this.state.displayImageNum}
+                active={i === this.state.currentDisplaying}
               />
             ))}
           </DotsWrapper>
