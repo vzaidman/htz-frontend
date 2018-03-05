@@ -297,9 +297,18 @@ export default Image;
 // //////////////////////////////////////////////////////////////////////
 //                          Helper Functions                          //
 // //////////////////////////////////////////////////////////////////////
+const aspectRatios = {
+  regular: { height: 3, width: 4, },
+  headline: { height: 9, width: 16, },
+  landscape: { height: 9, width: 21, },
+  square: { height: 1, width: 1, },
+  vertical: { height: 20, width: 17, },
+  belgrade: { height: 1, width: 3.18, },
+};
+
 function getDimensions({ data: { aspects, }, imgOptions: { transforms, }, }) {
   const { aspect, } = Array.isArray(transforms) ? transforms[0] : transforms;
-  const { height, width, } = aspects[aspect] || aspects.full;
+  const { height, width, } = aspects[aspect] || aspectRatios[aspect];
 
   return { height, width, };
 }

@@ -12,6 +12,7 @@ built-in support for lazy-loading
 
 ```jsx
 <Image
+  // hasWrapper={false}
   data={{
     isAnimatedGif: false,
     imgArray: [{ imgName: "image/2092337187.jpg", version: "1516524320" }],
@@ -23,9 +24,10 @@ built-in support for lazy-loading
     }
   }}
   imgOptions={{
-    transforms: { width: "1045", aspect: "full" }
+    transforms: { width: "1200", aspect: "square" }
   }}
   bgcolor={"black"}
+  lazyLoad={"600px"}
 />
 ```
 

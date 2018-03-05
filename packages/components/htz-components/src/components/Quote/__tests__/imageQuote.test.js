@@ -15,6 +15,12 @@ it('Image Quote ', () => {
           credit: 'אמיל סלמן',
           title: 'נתניהו בישיבת הממשלה השבועית, בתחילת השבוע',
           aspects: {
+            full: {
+              width: 1942,
+              height: 1456,
+              x: 0,
+              y: 0,
+            },
             regular: {
               width: 1942,
               height: 1456,

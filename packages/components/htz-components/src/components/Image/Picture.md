@@ -14,6 +14,7 @@ built-in support for lazy-loading
 
 ```jsx
 <Picture
+  lazyLoad={"600px"}
   defaultImg={{
     sourceOptions: {
       transforms: { width: "1045", aspect: "full" }
@@ -73,6 +74,7 @@ built-in support for lazy-loading
 
 ```jsx
 <Picture
+  lazyLoad={"600px"}
   defaultImg={{
     sourceOptions: {
       transforms: [
