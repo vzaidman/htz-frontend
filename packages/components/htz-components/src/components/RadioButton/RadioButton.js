@@ -20,13 +20,13 @@ const radioButtonStyle = ({ checked, isDisabled, isFocused, theme, }) => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: theme.color('checkBox', 'bg'),
+  backgroundColor: theme.color('radioButton', 'bg'),
   transitionProperty: 'all',
   borderWidth: isFocused && !checked ? '2px' : '1px',
   borderStyle: 'solid',
   borderColor: isDisabled
-    ? theme.color('checkBox', 'borderDisabled')
-    : theme.color('checkBox', 'border'),
+    ? theme.color('radioButton', 'borderDisabled')
+    : theme.color('radioButton', 'border'),
 });
 
 const StyledRadioButton = createComponent(radioButtonStyle);
@@ -35,7 +35,7 @@ const checkStyle = ({ checked, theme, }) => ({
   height: '80%',
   width: '80%',
   borderRadius: '50%',
-  backgroundColor: theme.color('checkBox', 'bgChecked'),
+  backgroundColor: theme.color('radioButton', 'bgChecked'),
   opacity: checked ? 1 : 0,
   transitionProperty: 'all',
   borderWidth: '1px',

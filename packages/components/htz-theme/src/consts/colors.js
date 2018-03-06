@@ -280,6 +280,7 @@ const colors = {
     check: 'white',
     ripple: [ 'primary', 'base', ],
   },
+
   comments: {
     authorName: [ 'primary', 'base', ],
     bg: 'white',
@@ -380,6 +381,14 @@ const colors = {
     base: [ 'primary', 'base', ],
     a11yOnDark: [ 'primary', '-2', ],
     a11yOnLight: [ 'primary', '+1', ],
+  },
+  radioButton: {
+    bg: 'white',
+    bgChecked: [ 'primary', 'base', ],
+    border: [ 'primary', 'base', ],
+    borderDisabled: [ 'neutral', '-5', ],
+    check: 'white',
+    ripple: [ 'primary', 'base', ],
   },
   sales: {
     '-2': '#FFF1E5',
