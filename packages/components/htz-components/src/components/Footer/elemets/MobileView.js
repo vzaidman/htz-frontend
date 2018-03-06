@@ -65,14 +65,18 @@ const textStyle = ({ theme, }) => ({
 const StyledText = createComponent(textStyle);
 
 const propTypes = {
-  footerMobileListsI18n: PropTypes.shape({
-    ButtonName: PropTypes.object,
-    Copyright: PropTypes.object,
-    ListOne: PropTypes.arrayOf(PropTypes.object),
-    ListTwo: PropTypes.arrayOf(PropTypes.object),
+  theme: PropTypes.shape({
+    footerMobileListsI18n: PropTypes.shape({
+      ButtonName: PropTypes.object,
+      Copyright: PropTypes.object,
+      ListOne: PropTypes.arrayOf(PropTypes.object),
+      ListTwo: PropTypes.arrayOf(PropTypes.object),
+    }),
   }).isRequired,
 };
-const MobileView = ({ footerMobileListsI18n: { ButtonName, Copyright, ListOne, ListTwo, }, }) => (
+const MobileView = ({
+  theme: { footerMobileListsI18n: { ButtonName, Copyright, ListOne, ListTwo, }, },
+}) => (
   <Wrapper>
     <StyledMobileHead> הארץ </StyledMobileHead>
     <Link

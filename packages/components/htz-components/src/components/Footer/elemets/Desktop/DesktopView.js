@@ -62,7 +62,10 @@ const desktopHeadStyle = ({
 });
 const StyledDesktopHead = createComponent(desktopHeadStyle);
 
-const optionalExtendedWrapper = ({ theme, }) => ({});
+const optionalExtendedWrapper = ({ theme, }) => ({
+  extend: [ theme.type(-2), ],
+
+});
 const StyledDesktopText = createComponent(optionalExtendedWrapper);
 
 const IconMiscStyle = {
