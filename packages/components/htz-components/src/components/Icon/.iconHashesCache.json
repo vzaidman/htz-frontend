@@ -34,5 +34,7 @@
   "src/components/Icon/icons/IconQuote.js": "4b0a2551cb472dd8067861d3e86f410c",
   "src/components/Icon/icons/IconArrow.js": "b7a747bcfaf3c13be45da455bbc0472c",
   "src/components/Icon/icons/IconReply.js": "507b541b3686ceb763ec3bc2936137a3",
-  "src/components/Icon/icons/IconItalic.js": "353638d7a91d1536ae2c949c183f09d7"
+  "src/components/Icon/icons/IconItalic.js": "353638d7a91d1536ae2c949c183f09d7",
+  "src/components/Icon/icons/IconHtzLoader.js": "74c72fd6192b7b95cf25c4a9b80acd9b",
+  "src/components/Icon/icons/IconTmLoader.js": "3b26c1eb4c687271914c7093670b1c3d"
 }

@@ -1,4 +1,4 @@
-/** ************************************************************** *
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
@@ -44,6 +44,9 @@ import IconQuote from './icons/IconQuote';
 import IconArrow from './icons/IconArrow';
 import IconReply from './icons/IconReply';
 import IconItalic from './icons/IconItalic';
+import IconHtzLoader from './icons/IconHtzLoader';
+import IconTmLoader from './icons/IconTmLoader';
+
 
 const gutterWidth = '1rem';
 
@@ -116,76 +119,48 @@ export default class Icons extends React.Component {
             name="iconSize"
             value={this.state.size}
             onChange={this.handleSizeChange}
-          />{' '}
-          <span style={{ fontFamily: 'monospace', }}>
-            ({this.state.size}rem)
-          </span>
+          />{' '
+          }<span style={{ fontFamily: 'monospace', }}>({this.state.size}rem)</span>
         </p>
         <Wrapper>
           <Cell name="IconAlef">{<IconAlef size={this.state.size} />}</Cell>
-          <Cell name="IconAlefLogo">
-            {<IconAlefLogo size={this.state.size} />}
-          </Cell>
+          <Cell name="IconAlefLogo">{<IconAlefLogo size={this.state.size} />}</Cell>
           <Cell name="IconAvatar">{<IconAvatar size={this.state.size} />}</Cell>
           <Cell name="IconAlert">{<IconAlert size={this.state.size} />}</Cell>
           <Cell name="IconBack">{<IconBack size={this.state.size} />}</Cell>
           <Cell name="IconClose">{<IconClose size={this.state.size} />}</Cell>
           <Cell name="IconCamera">{<IconCamera size={this.state.size} />}</Cell>
-          <Cell name="IconComment">
-            {<IconComment size={this.state.size} />}
-          </Cell>
-          <Cell name="IconFacebookLogo">
-            {<IconFacebookLogo size={this.state.size} />}
-          </Cell>
-          <Cell name="IconDislike">
-            {<IconDislike size={this.state.size} />}
-          </Cell>
-          <Cell name="IconFacebook">
-            {<IconFacebook size={this.state.size} />}
-          </Cell>
-          <Cell name="IconHalfStar">
-            {<IconHalfStar size={this.state.size} />}
-          </Cell>
+          <Cell name="IconComment">{<IconComment size={this.state.size} />}</Cell>
+          <Cell name="IconFacebookLogo">{<IconFacebookLogo size={this.state.size} />}</Cell>
+          <Cell name="IconDislike">{<IconDislike size={this.state.size} />}</Cell>
+          <Cell name="IconFacebook">{<IconFacebook size={this.state.size} />}</Cell>
+          <Cell name="IconHalfStar">{<IconHalfStar size={this.state.size} />}</Cell>
           <Cell name="IconGPlus">{<IconGPlus size={this.state.size} />}</Cell>
           <Cell name="IconLike">{<IconLike size={this.state.size} />}</Cell>
-          <Cell name="IconMailAlert">
-            {<IconMailAlert size={this.state.size} />}
-          </Cell>
+          <Cell name="IconMailAlert">{<IconMailAlert size={this.state.size} />}</Cell>
           <Cell name="IconMail">{<IconMail size={this.state.size} />}</Cell>
           <Cell name="IconPlus">{<IconPlus size={this.state.size} />}</Cell>
           <Cell name="IconPrint">{<IconPrint size={this.state.size} />}</Cell>
-          <Cell name="IconReading">
-            {<IconReading size={this.state.size} />}
-          </Cell>
+          <Cell name="IconReading">{<IconReading size={this.state.size} />}</Cell>
           <Cell name="IconMenu">{<IconMenu size={this.state.size} />}</Cell>
           <Cell name="IconRss">{<IconRss size={this.state.size} />}</Cell>
           <Cell name="IconSearch">{<IconSearch size={this.state.size} />}</Cell>
           <Cell name="IconStar">{<IconStar size={this.state.size} />}</Cell>
-          <Cell name="IconSettings">
-            {<IconSettings size={this.state.size} />}
-          </Cell>
-          <Cell name="IconTheMarker">
-            {<IconTheMarker size={this.state.size} />}
-          </Cell>
-          <Cell name="IconTwitter">
-            {<IconTwitter size={this.state.size} />}
-          </Cell>
+          <Cell name="IconSettings">{<IconSettings size={this.state.size} />}</Cell>
+          <Cell name="IconTheMarker">{<IconTheMarker size={this.state.size} />}</Cell>
+          <Cell name="IconTwitter">{<IconTwitter size={this.state.size} />}</Cell>
           <Cell name="IconZen">{<IconZen size={this.state.size} />}</Cell>
-          <Cell name="IconWhatsapp">
-            {<IconWhatsapp size={this.state.size} />}
-          </Cell>
-          <Cell name="IconZoomOut">
-            {<IconZoomOut size={this.state.size} />}
-          </Cell>
+          <Cell name="IconWhatsapp">{<IconWhatsapp size={this.state.size} />}</Cell>
+          <Cell name="IconZoomOut">{<IconZoomOut size={this.state.size} />}</Cell>
           <Cell name="IconZoomIn">{<IconZoomIn size={this.state.size} />}</Cell>
-          <Cell name="IconAccessibility">
-            {<IconAccessibility size={this.state.size} />}
-          </Cell>
+          <Cell name="IconAccessibility">{<IconAccessibility size={this.state.size} />}</Cell>
           <Cell name="IconBold">{<IconBold size={this.state.size} />}</Cell>
           <Cell name="IconQuote">{<IconQuote size={this.state.size} />}</Cell>
           <Cell name="IconArrow">{<IconArrow size={this.state.size} />}</Cell>
           <Cell name="IconReply">{<IconReply size={this.state.size} />}</Cell>
           <Cell name="IconItalic">{<IconItalic size={this.state.size} />}</Cell>
+          <Cell name="IconHtzLoader">{<IconHtzLoader size={this.state.size} />}</Cell>
+          <Cell name="IconTmLoader">{<IconTmLoader size={this.state.size} />}</Cell>
         </Wrapper>
       </div>
     );
@@ -196,9 +171,9 @@ export default class Icons extends React.Component {
 // documents the propTypes an `<Icon />` can take
 /* eslint-disable */
 import PropTypes from 'prop-types';
-import { responsivePropBaseType } from '../../propTypes/responsivePropBaseType';
-import { stylesPropType } from '../../propTypes/stylesPropType';
-import { attrsPropType } from '../../propTypes/attrsPropType';
+import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
+import { attrsPropType, } from '../../propTypes/attrsPropType';
 
 const colorShape = PropTypes.oneOfType([
   PropTypes.string,

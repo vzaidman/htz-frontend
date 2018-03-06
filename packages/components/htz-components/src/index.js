@@ -47,6 +47,7 @@ import IconFacebook from './components/Icon/icons/IconFacebook';
 import IconFacebookLogo from './components/Icon/icons/IconFacebookLogo';
 import IconGPlus from './components/Icon/icons/IconGPlus';
 import IconHalfStar from './components/Icon/icons/IconHalfStar';
+import IconHtzLoader from './components/Icon/icons/IconHtzLoader';
 import IconItalic from './components/Icon/icons/IconItalic';
 import IconLike from './components/Icon/icons/IconLike';
 import IconMail from './components/Icon/icons/IconMail';
@@ -61,6 +62,7 @@ import IconSearch from './components/Icon/icons/IconSearch';
 import IconSettings from './components/Icon/icons/IconSettings';
 import IconStar from './components/Icon/icons/IconStar';
 import IconTheMarker from './components/Icon/icons/IconTheMarker';
+import IconTmLoader from './components/Icon/icons/IconTmLoader';
 import IconTwitter from './components/Icon/icons/IconTwitter';
 import IconWhatsapp from './components/Icon/icons/IconWhatsapp';
 import IconZen from './components/Icon/icons/IconZen';
@@ -125,6 +127,7 @@ export {
   IconFacebookLogo,
   IconGPlus,
   IconHalfStar,
+  IconHtzLoader,
   IconItalic,
   IconLike,
   IconMail,
@@ -139,11 +142,13 @@ export {
   IconSettings,
   IconStar,
   IconTheMarker,
+  IconTmLoader,
   IconTwitter,
   IconWhatsapp,
   IconZen,
   IconZoomIn,
   IconZoomOut,
+  // User
   Login,
   Logout,
   Register,

@@ -100,12 +100,18 @@ Promise.all(
             .then(component => {
               const componentHash = md5(component);
               const cachedHash = cache[componentPath];
+              console.log(fs.existsSync(componentPath));
+              const noOverWrite =
+                fs.existsSync(componentPath) &&
+                fs
+                  .readFileSync(componentPath, 'utf8')
+                  .startsWith('/* noOverWrite */');
 
               // Check if the component needs to be create or updated
               // We check the against component hases instead of svg hashes,
               // so that changes to the template automatically affect all generated
               // components, even if the svg itself hasn't changed.
-              if (componentHash !== cachedHash) {
+              if (componentHash !== cachedHash && !noOverWrite) {
                 fs.writeFile(componentPath, component, error => {
                   if (error) {
                     console.error(
@@ -153,6 +159,9 @@ Promise.all(
         `${err.stack}\n\nFailed to write the updated icon cache to disk.`
       );
     }
+    else {
+      console.log(`${chalk.yellow(chalk.bold('Updating cache file'))}`);
+    }
   });
 
   // Write styleguide example file
@@ -168,6 +177,11 @@ Promise.all(
             'Failed to write the updated styleguide example file to disk.'
           )
         )}`
+      );
+    }
+    else {
+      console.log(
+        `${chalk.yellow(chalk.bold('Writing example to styleguide'))}`
       );
     }
   });
