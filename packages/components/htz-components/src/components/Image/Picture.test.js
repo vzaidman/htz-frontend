@@ -89,7 +89,7 @@ describe('<Picture />', () => {
     const { component, styles, } = felaSnapshotter(
       <Picture
         isPresentational
-        bgcolor={'black'}
+        bgcolor="black"
         defaultImg={{
           sourceOptions: {
             transforms: [

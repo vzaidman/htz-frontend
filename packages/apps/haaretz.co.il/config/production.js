@@ -1,7 +1,7 @@
 const os = require('os');
 
 function getLocalExternalIp() {
-  if (process.env.BIND_ADDRESS){
+  if (process.env.BIND_ADDRESS) {
     return process.env.BIND_ADDRESS;
   }
 

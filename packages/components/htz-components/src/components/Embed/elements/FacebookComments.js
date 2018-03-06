@@ -62,7 +62,7 @@ export default class FacebookComments extends React.Component {
       <div
         className="fb-comments"
         data-width="100%"
-        data-href={location.href}
+        data-href={window.location.href}
         data-order-by={embedType}
         data-numposts={content}
       />

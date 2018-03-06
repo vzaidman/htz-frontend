@@ -160,7 +160,7 @@ class CommentForm extends React.Component {
     }
     else {
       this.props.signUpNotification(notificationEmail);
-      this.setState({ notificationEmail: '', displayThankYou: true, });
+      this.setState({ displayThankYou: true, });
     }
   }
 

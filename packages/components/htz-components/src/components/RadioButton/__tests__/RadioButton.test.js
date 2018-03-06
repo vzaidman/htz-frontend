@@ -1,5 +1,4 @@
 import React from 'react';
-import toJson from 'enzyme-to-json';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import StyledRadioButton, { RadioButton, } from '../RadioButton'; // eslint-disable-line import/no-named-as-default
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
@@ -21,12 +20,16 @@ describe('<RadioButton>', () => {
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with isDisabled prop', () => {
-      const { component, styles, } = felaSnapshotter(<StyledRadioButton isDisabled />);
+      const { component, styles, } = felaSnapshotter(
+        <StyledRadioButton isDisabled />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with label prop', () => {
-      const { component, styles, } = felaSnapshotter(<StyledRadioButton label="customLabel" />);
+      const { component, styles, } = felaSnapshotter(
+        <StyledRadioButton label="customLabel" />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
@@ -38,12 +41,16 @@ describe('<RadioButton>', () => {
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with name prop', () => {
-      const { component, styles, } = felaSnapshotter(<StyledRadioButton name="customName" />);
+      const { component, styles, } = felaSnapshotter(
+        <StyledRadioButton name="customName" />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with a value prop', () => {
-      const { component, styles, } = felaSnapshotter(<StyledRadioButton value="customValue" />);
+      const { component, styles, } = felaSnapshotter(
+        <StyledRadioButton value="customValue" />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
@@ -57,7 +64,9 @@ describe('<RadioButton>', () => {
     });
     it('handles click events correctly', () => {
       const onClick = jest.fn();
-      const output = felaMount(<RadioButton onClick={onClick} label="labelRed" />);
+      const output = felaMount(
+        <RadioButton onClick={onClick} label="labelRed" />
+      );
 
       expect(output.state().checked).toBe(false);
       const input = output.find('input');
@@ -75,7 +84,9 @@ describe('<RadioButton>', () => {
     });
     it('renders handles click events correctly on a disabled RadioButton', () => {
       const onClick = jest.fn();
-      const output = felaMount(<RadioButton isDisabled onClick={onClick} label="labelRed" />);
+      const output = felaMount(
+        <RadioButton isDisabled onClick={onClick} label="labelRed" />
+      );
 
       expect(output.state().checked).toBe(false);
       const input = output.find('input');
@@ -86,7 +97,9 @@ describe('<RadioButton>', () => {
     it('renders handles focus and blur events correctly', () => {
       const onFocus = jest.fn();
       const onBlur = jest.fn();
-      const output = felaMount(<RadioButton onFocus={onFocus} onBlur={onBlur} label="labelRed" />);
+      const output = felaMount(
+        <RadioButton onFocus={onFocus} onBlur={onBlur} label="labelRed" />
+      );
 
       expect(output.state().isFocused).toBe(false);
       const input = output.find('input');

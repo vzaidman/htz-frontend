@@ -6,6 +6,7 @@ module.exports = {
 
   rules: {
     'brace-style': [ 2, 'stroustrup', { allowSingleLine: true, }, ],
+    'function-paren-newline': 0,
     /* Warn about long line */
     'max-len': [
       'warn',
@@ -31,15 +32,21 @@ module.exports = {
     /* Forbid referencing a variable before it is defined, but allow using declared functions */
     'no-use-before-define': [ 2, 'nofunc', ],
     /* Warn when referencing an undefined variable */
-    'no-undef': [ 1, ],
+    'no-undef': [ 2, ],
     /* Forbid expressions that are never used */
     'no-unused-expressions': [
       2,
       { allowShortCircuit: true, allowTernary: true, },
     ],
-    /* Warn when declaring a variable without using it */
-    'no-unused-vars': [ 1, { vars: 'local', args: 'none', }, ],
+    /* Throw when declaring a variable without using it */
+    'no-unused-vars': [
+      2,
+      { vars: 'local', args: 'none', ignoreRestSiblings: true, },
+    ],
     'no-warning-comments': [ 1, { terms: [ 'fixme', 'todo', ], location: 'start', }, ],
+    'object-curly-newline': 0,
+    'prefer-destructuring': 0,
+
     /* JSDoc rules */
     'jsdoc/check-param-names': 1,
     'jsdoc/check-tag-names': 0,
@@ -112,6 +119,9 @@ module.exports = {
 
     /* eslint/react related rules */
     'react/jsx-filename-extension': [ 1, { extensions: [ '.js', '.jsx', ], }, ],
+
+    /* eslint/jsx-11y related rules */
+    'jsx-a11y/anchor-is-valid': 0,
   },
 
   overrides: [

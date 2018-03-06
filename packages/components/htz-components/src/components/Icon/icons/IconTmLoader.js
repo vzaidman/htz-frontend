@@ -1,5 +1,6 @@
 /* noOverWrite */
 
+/* eslint-disable react/no-danger */
 import React from 'react';
 import { createComponent, } from 'react-fela';
 import iconStyle from '../iconStyle';

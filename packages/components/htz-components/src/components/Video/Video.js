@@ -33,15 +33,15 @@ const defaultProps = {
 
 const getElement = (type, content) => {
   switch (type) {
-    case 'videoId' :
+    case 'videoId':
       return (
         <Embed
-          inputTemplate={'com.polobase.YouTubeEmbed'}
+          inputTemplate="com.polobase.YouTubeEmbed"
           embedType={content.includes('?list=') ? 'playlist' : 'video'}
           content={content}
         />
       );
-    case 'embed' :
+    case 'embed':
       return (
         <HtmlElement
           code={content}
@@ -50,11 +50,12 @@ const getElement = (type, content) => {
           }}
         />
       );
-    default :
+    default:
       return null;
   }
 };
-/**
+
+/*
  * This Video component is for **legacy** purpose only.<br/>
  * It received the old video element (`input-template: com.tm.video`),
  * and according to its selected type it sends the video to [Youtube component](./#youtube)
@@ -66,13 +67,7 @@ function Video({ videoType, videoContent, credit, title, }) {
   return (
     <figure>
       {VideoElement && VideoElement}
-      {
-        (title || credit) &&
-          <Caption
-            caption={title}
-            credit={credit}
-          />
-      }
+      {(title || credit) && <Caption caption={title} credit={credit} />}
     </figure>
   );
 }

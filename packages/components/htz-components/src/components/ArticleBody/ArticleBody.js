@@ -1,4 +1,4 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme, createComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
@@ -11,10 +11,7 @@ const propTypes = {
    * The elements composing the article’s body.
    */
   body: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-    ])
+    PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
   ).isRequired,
   /**
    * The app's theme (get imported automatically with the `withTheme` method).
@@ -68,44 +65,30 @@ const BodyWrapper = createComponent(bodyWrapperStyle);
 
 const buildComponent = (context, index, isLastItem, theme) => {
   const uniqueId =
-    context.elementType ||
-    context.inputTemplate ||
-    context.tag ||
-    null;
-  const Component = uniqueId === 'com.tm.Image' ? ArticleImage : getComponent(uniqueId);
+    context.elementType || context.inputTemplate || context.tag || null;
+  const Component =
+    uniqueId === 'com.tm.Image' ? ArticleImage : getComponent(uniqueId);
 
   switch (uniqueId) {
-    case 'com.tm.Image' :
+    case 'com.tm.Image':
+      return <Component key={index} lastItem={isLastItem} {...context} />;
+    case 'embedElement':
+    case 'com.tm.Video': // eslint-disable-line no-case-declarations
       return (
-        <Component
-          key={index}
-          lastItem={isLastItem}
-          {...context}
-        />
-      );
-    case 'embedElement' :
-    case 'com.tm.Video' : // eslint-disable-line no-case-declarations
-      return (
-        <Figure
-          key={index}
-          lastItem={isLastItem}
-        >
+        <Figure key={index} lastItem={isLastItem}>
           <Component {...context} />
-          {(context.caption || context.credit) &&
-          <Caption
-            caption={context.caption}
-            credit={context.credit}
-          />
-          }
+          {(context.caption || context.credit) && (
+            <Caption caption={context.caption} credit={context.credit} />
+          )}
         </Figure>
       );
-    case 'com.htz.MagazineArticleQuote' :
+    case 'com.htz.MagazineArticleQuote':
       return (
         <Aside key={index}>
           <Component {...context} />
         </Aside>
       );
-    default :
+    default:
       return (
         <Component
           key={index}
@@ -114,11 +97,11 @@ const buildComponent = (context, index, isLastItem, theme) => {
             isLastItem
               ? null
               : parseComponentProp(
-                'marginBottom',
-                theme.articleStyle.body.marginBottom,
-                theme.mq,
-                mediaQueryCallback
-              )
+                  'marginBottom',
+                  theme.articleStyle.body.marginBottom,
+                  theme.mq,
+                  mediaQueryCallback
+                )
           }
         />
       );
@@ -129,12 +112,7 @@ function ArticleBody(props) {
   return (
     <BodyWrapper>
       {props.body.map((component, i) =>
-        buildComponent(
-          component,
-          i,
-          i === props.body.length - 1,
-          props.theme
-        )
+        buildComponent(component, i, i === props.body.length - 1, props.theme)
       )}
     </BodyWrapper>
   );

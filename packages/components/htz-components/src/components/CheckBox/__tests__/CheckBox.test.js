@@ -1,5 +1,4 @@
 import React from 'react';
-import toJson from 'enzyme-to-json';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import StyledCheckBox, { CheckBox, } from '../CheckBox'; // eslint-disable-line import/no-named-as-default
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
@@ -21,17 +20,23 @@ describe('<CheckBox>', () => {
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with defaultValue prop', () => {
-      const { component, styles, } = felaSnapshotter(<StyledCheckBox defaultValue />);
+      const { component, styles, } = felaSnapshotter(
+        <StyledCheckBox defaultValue />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with isDisabled prop', () => {
-      const { component, styles, } = felaSnapshotter(<StyledCheckBox isDisabled />);
+      const { component, styles, } = felaSnapshotter(
+        <StyledCheckBox isDisabled />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with label prop', () => {
-      const { component, styles, } = felaSnapshotter(<StyledCheckBox label="customLabel" />);
+      const { component, styles, } = felaSnapshotter(
+        <StyledCheckBox label="customLabel" />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
@@ -59,7 +64,12 @@ describe('<CheckBox>', () => {
     });
     it('renders correctly with Note in and error', () => {
       const { component, styles, } = felaSnapshotter(
-        <StyledCheckBox noteText="text" isError errorText="error" label="labelRed" />
+        <StyledCheckBox
+          noteText="text"
+          isError
+          errorText="error"
+          label="labelRed"
+        />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -85,7 +95,9 @@ describe('<CheckBox>', () => {
     });
     it('handles change events correctly on a disabled CheckBox', () => {
       const onClick = jest.fn();
-      const output = felaMount(<CheckBox isDisabled onClick={onClick} label="labelRed" />);
+      const output = felaMount(
+        <CheckBox isDisabled onClick={onClick} label="labelRed" />
+      );
 
       expect(output.state().checked).toBe(false);
       const input = output.find('input');
@@ -97,7 +109,9 @@ describe('<CheckBox>', () => {
     it('renders handles focus and blur events correctly', () => {
       const onFocus = jest.fn();
       const onBlur = jest.fn();
-      const output = felaMount(<CheckBox onFocus={onFocus} onBlur={onBlur} label="labelRed" />);
+      const output = felaMount(
+        <CheckBox onFocus={onFocus} onBlur={onBlur} label="labelRed" />
+      );
 
       expect(output.state().isFocused).toBe(false);
       const input = output.find('input');

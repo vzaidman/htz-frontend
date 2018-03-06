@@ -62,7 +62,8 @@ class RadioGroup extends Component {
      *
      * name, and checked shoud not be passed manually to a RadioButton
      */
-    radioButtons: PropTypes.arrayOf(PropTypes.shape(radioButtonPropType)).isRequired,
+    radioButtons: PropTypes.arrayOf(PropTypes.shape(radioButtonPropType))
+      .isRequired,
     /**
      * The refFunc is passed to the first RadioButton
      * A callback function to allow parent component to get ref of input,
@@ -81,7 +82,6 @@ class RadioGroup extends Component {
     className: null,
     defaultValue: null,
     errorText: null,
-    isDisabled: false,
     isError: false,
     noteId: null,
     noteText: null,
@@ -94,7 +94,9 @@ class RadioGroup extends Component {
   state = {
     noteId: this.props.noteId
       ? this.props.noteId
-      : this.props.errorText || this.props.noteText ? Math.random().toString() : null,
+      : this.props.errorText || this.props.noteText
+        ? Math.random().toString()
+        : null,
     ...(this.props.value === null ? { value: this.props.defaultValue, } : {}),
   };
 

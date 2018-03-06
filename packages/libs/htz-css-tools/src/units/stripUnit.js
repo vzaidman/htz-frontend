@@ -13,7 +13,7 @@
  */
 export default function stripUnit(length: string): number {
   const unitlessValue = parseFloat(length);
-  if (isNaN(unitlessValue)) {
+  if (Number.isNaN(unitlessValue)) {
     throw new Error(`"${length}" cannot be converted to a number`);
   }
   return unitlessValue;

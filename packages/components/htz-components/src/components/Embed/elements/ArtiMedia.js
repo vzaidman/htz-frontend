@@ -59,7 +59,7 @@ export default class ArtiMedia extends React.Component {
     const playerId = settings.playerId;
 
     return (
-      <VideoWrapper aspectRatio={'16/9'}>
+      <VideoWrapper aspectRatio="16/9">
         <VideoElement
           as="div"
           id={playerId}

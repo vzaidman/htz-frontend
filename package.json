@@ -10,17 +10,19 @@
     "commitmsg": "commitlint -e",
     "create-package": "node scripts/create-package.js",
     "docs": "doctoc --title \"**Table of Contents**\" .",
-    "flow": "lerna exec --no-bail --ignore @haaretz/htz-react-base -- yarn run flow check",
+    "flow":
+      "lerna exec --no-bail --ignore @haaretz/htz-react-base -- yarn run flow check",
     "format": "yarn run format:self && yarn run format:packages",
     "format:packages": "lerna exec --no-bail -- yarn run format",
-    "format:self": "node packages/libs/htz-react-base/bin/htz-scripts.js format",
+    "format:self":
+      "node packages/libs/htz-react-base/bin/htz-scripts.js format",
     "gc": "node packages/libs/htz-react-base/bin/htz-scripts.js commitizen",
     "lerna-do": "lerna-wizard",
     "lint": "yarn run lint:self && yarn run lint:packages",
     "lint:packages": "lerna exec --no-bail -- yarn run lint",
     "lint:self": "node packages/libs/htz-react-base/bin/htz-scripts.js lint",
     "postcheckout": "node scripts/githooks/postcheckout",
-    "precommit": "node scripts/githooks/precommit",
+    "precommit": "pretty-quick --staged && node scripts/githooks/precommit",
     "prepush": "node scripts/githooks/prepush",
     "sync": "node scripts/sync.js",
     "test": "lerna exec --no-bail -- yarn run test",
@@ -58,7 +60,9 @@
     },
     "@haaretz/app-utils": {
       "^0.1.0": {
-        "packages/{apps/*,components/htz-components,libs/htz-react-server}": ["dependencies"]
+        "packages/{apps/*,components/htz-components,libs/htz-react-server}": [
+          "dependencies"
+        ]
       }
     },
     "@haaretz/htz-css-tools": {
@@ -76,7 +80,10 @@
     "@haaretz/htz-react-server": {
       "^0.0.0": {
         "packages/apps/*": ["dependencies"],
-        "packages/components/htz-components": ["devDependencies", "peerDependencies"]
+        "packages/components/htz-components": [
+          "devDependencies",
+          "peerDependencies"
+        ]
       }
     },
     "@haaretz/htz-theme": {
@@ -111,7 +118,9 @@
     },
     "config": {
       "^1.26.2": {
-        "packages/{apps/*,components/*,libs/htz-react-server}": ["dependencies"],
+        "packages/{apps/*,components/*,libs/htz-react-server}": [
+          "dependencies"
+        ],
         "packages/libs/app-utils": ["devDependencies", "peerDependencies"]
       }
     },
@@ -151,7 +160,10 @@
     "graphql-tag": {
       "^2.5.0": {
         "packages/apps/*": ["dependencies"],
-        "packages/components/htz-components": ["devDependencies", "peerDependencies"]
+        "packages/components/htz-components": [
+          "devDependencies",
+          "peerDependencies"
+        ]
       }
     },
     "graphql-type-json": {
@@ -180,7 +192,7 @@
       }
     },
     "prop-types": {
-      "^15.6.0": {
+      "^15.6.1": {
         "packages/{components,apps}/*": ["dependencies"],
         "packages/libs/app-utils": ["devDependencies", "peerDependencies"]
       }
@@ -205,7 +217,10 @@
     },
     "react-dom": {
       "^16.2.0": {
-        "packages/{libs/htz-react-base,components/*}": ["devDependencies", "peerDependencies"],
+        "packages/{libs/htz-react-base,components/*}": [
+          "devDependencies",
+          "peerDependencies"
+        ],
         "packages/apps/*": ["dependencies"]
       }
     },
@@ -217,7 +232,9 @@
     },
     "react-test-renderer": {
       "^16.2.0": {
-        "packages/{libs/htz-react-base,components/htz-components}": ["dependencies"]
+        "packages/{libs/htz-react-base,components/htz-components}": [
+          "dependencies"
+        ]
       }
     },
     "rimraf": {
@@ -250,8 +267,7 @@
       ],
       "./*.md": ["yarn run docs", "git add"],
       "docs/**/*.md": ["yarn run docs", "git add"]
-    },
-    "verbose": false
+    }
   },
   "devDependencies": {
     "@commitlint/cli": "^4.1.0",
@@ -266,9 +282,10 @@
     "inquirer": "^3.3.0",
     "lerna": "^2.1.2",
     "lerna-wizard": "^1.0.9",
-    "lint-staged": "^4.2.3",
+    "lint-staged": "^7.0.0",
     "lodash.template": "^4.4.0",
     "node-dir": "^0.1.17",
+    "pretty-quick": "^1.4.1",
     "rimraf": "^2.6.2",
     "write-pkg": "^3.1.0"
   }

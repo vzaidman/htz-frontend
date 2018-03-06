@@ -35,11 +35,11 @@ const sliderStyle = ({ theme, }) => ({
   opacity: '1',
   boxShadow: `3px 0 5px ${theme.color('neutral', '-1')}`,
   backgroundColor: theme.color('neutral', '-1'),
-  ...(border('3px', 0.1, 'solid', theme.color('neutral', '-10'))),
+  ...border('3px', 0.1, 'solid', theme.color('neutral', '-10')),
   borderRadius: '50%',
   transitionProperty: 'opacity',
-  ...(theme.getDuration('transition', -1)),
-  ...(theme.getTimingFunction('transition', 'swiftIn')),
+  ...theme.getDuration('transition', -1),
+  ...theme.getTimingFunction('transition', 'swiftIn'),
   ':before': {
     ...sliderPseudoStyles,
     left: '-2px',
@@ -93,8 +93,9 @@ const imgOptions = {
   },
 };
 
-/**
- * This component accepts an array of (at least) 2 images, and renders them on top of each other with a slider
+/*
+ * This component accepts an array of (at least) 2 images,
+ * and renders them on top of each other with a slider
  * that controls how much to expose from each of them.
  */
 export default class BeforeAndAfter extends React.Component {
@@ -103,6 +104,7 @@ export default class BeforeAndAfter extends React.Component {
   };
 
   componentDidMount() {
+    /* eslint-disable react/no-did-mount-set-state */
     this.setState({
       wrapperWidth: this.wrapper.offsetWidth,
       wrapperX: this.wrapper.offsetLeft,
@@ -115,7 +117,8 @@ export default class BeforeAndAfter extends React.Component {
 
   dragging = e => {
     e.preventDefault();
-    const sliderRelativeX = (e.clientX - this.state.wrapperX);
+    const sliderRelativeX = e.clientX - this.state.wrapperX;
+    // prettier-ignore
     const newLineX = (sliderRelativeX / this.state.wrapperWidth) * 100;
     this.setState({
       lineX: newLineX,
@@ -125,11 +128,11 @@ export default class BeforeAndAfter extends React.Component {
   render() {
     return (
       <Wrapper
-        innerRef={wrapper => this.wrapper = wrapper} // eslint-disable-line no-return-assign
+        innerRef={wrapper => (this.wrapper = wrapper)} // eslint-disable-line no-return-assign
         onDragOver={this.dragging}
       >
         <Slider
-          innerRef={slider => this.slider = slider} // eslint-disable-line no-return-assign
+          innerRef={slider => (this.slider = slider)} // eslint-disable-line no-return-assign
           style={{ left: `${this.state.lineX}%`, }}
           draggable
         />
@@ -168,9 +171,7 @@ BeforeAndAfter.propTypes = {
    * List of images (takes only the first 2), the first one goes to the right,
    * and the second goes to the left.
    */
-  elementsList: PropTypes.arrayOf(
-    PropTypes.object,
-  ).isRequired,
+  elementsList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 BeforeAndAfter.defaultProps = {

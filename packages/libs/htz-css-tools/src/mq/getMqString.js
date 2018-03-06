@@ -40,6 +40,9 @@ import type { BpsConfig, MqOptions, WidthBpsConfig, } from './mq';
  *   e.g., `(orientation: landscape)`.
  * @param {string} [query.type]
  *   A media type, e.g., `only screen`, `print`, etc.
+ * @param {true} [noCssMedia]
+ *   Omit the `@media` prefix from the returned string.
+ *   Useful for usage in `matchMedia`
  *
  * @return {string} a media-query string
  *
@@ -49,9 +52,17 @@ import type { BpsConfig, MqOptions, WidthBpsConfig, } from './mq';
  *     widths: { s: 400, m: 600, l: 1000, },
  *     misc: { landscape: 'orientation: landscape', },
  *   },
+ *   { from: 's', until: 'l', type: 'screen' }
+ * ); // => '@media screen and (min-width: 25em) and (max-width: 999)'
+ *
+ * getMqString(
+ *   {
+ *     widths: { s: 400, m: 600, l: 1000, },
+ *     misc: { landscape: 'orientation: landscape', },
+ *   },
  *   { from: 's', until: 'l', type: 'screen' },
- * ); // => '(@media screen and (min-width: 25em) and (max-width: 999))'
- * @TODO Make max-width exclusive
+ *   true
+ * ); // => 'screen and (min-width: 25em) and (max-width: 999)'
  */
 export default function getMqString(
   { widths, misc: miscBps, }: BpsConfig,
@@ -93,10 +104,15 @@ export default function getMqString(
  * A private function that tries to convert a breakpoint-name, a `number` or a `number-string`
  * from `px` to `em`. Returns the original value if conversion fails.
  *
- * @param {string|number} length - A named breakpoint, a length-string or
- *   a number representing pixel values (will be converted to ems)
- * @param {WidthBpsConfig} breakpoints - A `{ name: number }` object with keys for named length breakpoints
- * and values representing lengths in pixels
+ * @param {string|number} length
+ *   A named breakpoint, a length-string or a number
+ *   representing pixel values (will be converted to ems)
+ * @param {WidthBpsConfig} breakpoints
+ *   A `{ name: number }` object with keys for named length
+ *   breakpoints and values representing lengths in pixels
+ * @param {true} [isUntil]
+ *   Indicates that the length being calculated is for an
+ *   `until` query, and should be exclusive.
  *
  * @return {string} A CSS length-string for a media-query
  * @private

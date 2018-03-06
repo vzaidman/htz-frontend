@@ -144,6 +144,7 @@ export const RegisterExample = (
                 aria-labelledby="frmRegister_termsChk-lbl"
                 aria-describedby="frmRegister_termsChk-message"
               />
+              {/* eslint-disable-next-line jsx-a11y/label-has-for */}
               <label
                 id="frmRegister_termsChk-lbl"
                 htmlFor="pTermsChk"

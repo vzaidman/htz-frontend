@@ -16,7 +16,7 @@ export type ComponentPropResponsiveObject = {
   until?: string,
   misc?: string,
   type?: string,
-  value: boolean | string | number | (string | number)[],
+  value: boolean | string | number | (string | number)[]
 };
 
 /**
@@ -114,18 +114,14 @@ export default function parseComponentProp(
   values: ComponentPropValue,
   mq: MqFunc,
   converter?: ComponentPropConverterFn,
-  ...converterArgs?: any
+  ...converterArgs: any
 ): Object {
   if (isResponsiveOptions(values)) {
     // Flow doesn't recognise that we validated `values` to be an `array` in `isResponsiveOptions()`
     // $FlowFixMe
     return values.reduce((styles, { from, until, misc, type, value, }) => {
       const styleRules = converter
-        ? converter(
-          prop,
-          value,
-          ...converterArgs
-        )
+        ? converter(prop, value, ...converterArgs)
         : { [prop]: value, };
 
       return {
@@ -162,6 +158,7 @@ function isResponsiveOptions(candidate: any): boolean {
       // to make sure it is a responsive options object.
       // The whole point is to fail when the type is incorrect
       // $FlowFixMe
-      typeof item.value !== 'undefined' && (item.from || item.until || item.misc || item.type)
+      typeof item.value !== 'undefined' &&
+      (item.from || item.until || item.misc || item.type)
   );
 }

@@ -27,7 +27,7 @@ NYT.defaultProps = {
 
 function NYT(props) {
   return (
-    <VideoWrapper aspectRatio={'16/9'} nyt>
+    <VideoWrapper aspectRatio="16/9" nyt>
       <VideoElement
         title="New York Times Video - Embed Player"
         width="auto"

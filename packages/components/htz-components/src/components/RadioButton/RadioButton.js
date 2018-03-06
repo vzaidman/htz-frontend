@@ -1,5 +1,4 @@
 import React, { Component, } from 'react';
-import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import { radioButtonPropType, } from './RadioButtonPropType';
@@ -8,7 +7,9 @@ import Ripple from '../Animations/Ripple';
 const styles = ({ miscStyles, theme, }) => ({
   display: 'flex',
   alignItems: 'center',
-  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
+  extend: [
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
 });
 
 const radioButtonStyle = ({ checked, isDisabled, isFocused, theme, }) => ({

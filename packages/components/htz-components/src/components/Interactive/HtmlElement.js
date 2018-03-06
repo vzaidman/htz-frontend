@@ -4,7 +4,6 @@ import { createComponent, } from 'react-fela';
 
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
-
 const propTypes = {
   /**
    * The Html code that ought to be injected into the page.
@@ -31,21 +30,18 @@ const wrapperStyle = ({ miscStyles, }) => ({
 });
 const Wrapper = createComponent(wrapperStyle);
 
-/**
+/*
  * This component is designed for **legacy and interactive** purpose only.<br/>
  * It receives a pure Html code and <u>**dangerously**</u> injects it into the page.
  */
 function HtmlElement({ code, hideOnSite, miscStyles, }) {
   return (
-    <Wrapper
-      miscStyles={miscStyles}
-    >
-      {
-        !hideOnSite &&
-          <div
-            dangerouslySetInnerHTML={{ __html: code, }} // eslint-disable-line react/no-danger
-          />
-      }
+    <Wrapper miscStyles={miscStyles}>
+      {!hideOnSite && (
+        <div
+          dangerouslySetInnerHTML={{ __html: code, }} // eslint-disable-line react/no-danger
+        />
+      )}
     </Wrapper>
   );
 }

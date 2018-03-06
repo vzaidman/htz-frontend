@@ -83,7 +83,7 @@ function Youtube(props) {
   const settings = props.settings || defaultSettings;
 
   return (
-    <VideoWrapper aspectRatio={'16/9'}>
+    <VideoWrapper aspectRatio="16/9">
       <VideoElement
         id={`yt_embed_${props.content}`}
         width="560"

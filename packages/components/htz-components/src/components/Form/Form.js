@@ -78,7 +78,8 @@ export class Form extends Component {
     values: { ...this.props.initialValues, },
     errors: [],
     touched: {},
-    isSubmiting: false,
+    // TODO: handle submitting state
+    // isSubmiting: false,
   };
 
   /**
@@ -175,21 +176,27 @@ export class Form extends Component {
         formElementProperties = {
           ...(isContentEditable
             ? {
-              onContentEditableChange: callAll(onContentEditableChange, (evt, value) => {
-                const values = { ...this.state.values, [name]: value, };
-                const errors = this.props.isValidateOnChange
-                  ? this.handleTouchedValidate(values)
-                  : null;
-                this.setState({
-                  values,
-                  ...(errors ? { errors, } : {}),
-                });
-              }),
+              onContentEditableChange: callAll(
+                onContentEditableChange,
+                (evt, value) => {
+                  const values = { ...this.state.values, [name]: value, };
+                  const errors = this.props.isValidateOnChange
+                    ? this.handleTouchedValidate(values)
+                    : null;
+                  this.setState({
+                    values,
+                    ...(errors ? { errors, } : {}),
+                  });
+                }
+              ),
               isContentEditable,
             }
             : {
               onChange: callAll(onChange, evt => {
-                const values = { ...this.state.values, [name]: evt.target.value, };
+                const values = {
+                  ...this.state.values,
+                  [name]: evt.target.value,
+                };
                 const errors = this.props.isValidateOnChange
                   ? this.handleTouchedValidate(values)
                   : null;
@@ -199,7 +206,10 @@ export class Form extends Component {
                 });
               }),
             }),
-          /** empty string is needed so react wont think it is an uncontrolled input when the value is empty */
+          /**
+           * empty string is needed so react wont think it is an
+           * uncontrolled input when the value is empty
+           */
           value: this.state.values[name] || '',
         };
     }
@@ -292,7 +302,9 @@ export class Form extends Component {
   handleTouchedValidate(values) {
     if (this.props.validate) {
       const errors = this.props.validate(values);
-      const cleanErrors = errors.filter(error => this.state.touched[error.name]);
+      const cleanErrors = errors.filter(
+        error => this.state.touched[error.name]
+      );
       return cleanErrors;
     }
     return [];
