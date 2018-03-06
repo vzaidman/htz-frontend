@@ -153,7 +153,7 @@ export class Form extends Component {
               ...(errors ? { errors, } : {}),
             });
           }),
-          value: this.state.values[name] || false,
+          value: this.state.values[name] || null,
         };
         break;
       case 'select':

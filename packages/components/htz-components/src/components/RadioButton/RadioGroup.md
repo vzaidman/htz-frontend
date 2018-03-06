@@ -54,7 +54,7 @@ At minimum can be used with a radioButtons array and a name prop.
 ```jsx
 <div style={{ padding: "5rem" }} dir="rtl">
   <RadioGroup
-    attrs={{ customAttr: "customAttr" }}
+    attrs={{ customattr: "customattr" }}
     name="testName"
     radioButtons={[{ value: "1", label: "one" }, { value: "2", label: "two" }]}
   />
@@ -139,7 +139,7 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: true
+      value: null
     };
   }
 

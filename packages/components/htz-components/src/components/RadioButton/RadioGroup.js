@@ -123,7 +123,7 @@ class RadioGroup extends Component {
       <div>
         <ul className={className} {...attrs}>
           {radioButtons.map((radioButton, idx) => (
-            <li>
+            <li key={name + radioButton.value}>
               <RadioButton
                 // radioButton is spread first so controlling attrs will run over attrs passed through props
                 {...radioButton}
