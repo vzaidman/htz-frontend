@@ -88,7 +88,7 @@ export class Form extends Component {
    * @param {Object} userProps
    *   An Object holding all the props the user wants to spread on the input element.
    *   The consumer must pass an Object with a name key that has a unique value, the
-   *   rest of the formElementProperties are optional.
+   *   rest of the properties are optional.
    *
    *   All props passed to a input element controlled by the Form should be passed
    *   through the getInputProps func, e.g.,
