@@ -161,10 +161,20 @@ export class Select extends Component {
     /** Note explaining the RadioGroup field  */
     noteText: PropTypes.string,
     /**
+     * A callback that gets called when a RadioButton is Blurred
+     * @param {SyntheticEvent} evt - The event object
+     */
+    onBlur: PropTypes.func,
+    /**
      * A callback that gets the the new selectedItem
      * @param {object} item - The selected Item Object
      */
     onChange: PropTypes.func,
+    /**
+     * A callback that gets called when a `RadioButton` is focused
+     * @param {SyntheticEvent} evt - The event object
+     */
+    onFocus: PropTypes.func,
     /** The placeholder to display when no item is selected */
     placeholder: PropTypes.string,
     /**
@@ -193,7 +203,9 @@ export class Select extends Component {
     noteId: null,
     noteText: null,
     miscStyles: null,
+    onBlur: null,
     onChange: null,
+    onFocus: null,
     placeholder: 'בחר אחת מהאפשרויות הבאות',
     refFunc: null,
     variant: 'primary',
@@ -222,7 +234,9 @@ export class Select extends Component {
       noteId,
       noteText,
       miscStyles,
+      onBlur,
       onChange,
+      onFocus,
       placeholder,
       refFunc,
       variant,
@@ -266,6 +280,8 @@ export class Select extends Component {
                     noHighlitedItems: highlightedIndex === null,
                     type: 'button',
                     ...(refFunc ? { innerRef: el => refFunc(el), } : {}),
+                    ...(onBlur ? { onBlur, } : {}),
+                    ...(onFocus ? { onFocus, } : {}),
                   })}
                 >
                   {selectedItem ? selectedItem.display || selectedItem.value : placeholder}
