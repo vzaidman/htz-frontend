@@ -8,32 +8,18 @@ import { imageOptionsType, } from '../../propTypes/imageOptionsType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { buildURLs, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
+import { aspectRatios, } from './Image';
 
-const PictureWrapperStyle = ({
-  sources,
-  theme,
-  defaultImg,
-  bgc,
-  miscStyles,
-}) => ({
+const PictureWrapperStyle = ({ sources, theme, defaultImg, bgc, miscStyles, }) => ({
   height: '0',
   width: '100%',
   position: 'relative',
   paddingBottom: getDimensions(defaultImg),
   extend: [
     ...sources.map(({ from, until, misc, type, ...restOfImgData }) =>
-      theme.mq(
-        { from, until, misc, type, },
-        { paddingBottom: getDimensions(restOfImgData), }
-      )
+      theme.mq({ from, until, misc, type, }, { paddingBottom: getDimensions(restOfImgData), })
     ),
-    parseComponentProp(
-      'backgroundColor',
-      bgc || [ 'image', 'bgc', ],
-      theme.mq,
-      setColor,
-      theme.color
-    ),
+    parseComponentProp('backgroundColor', bgc || [ 'image', 'bgc', ], theme.mq, setColor, theme.color),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -46,7 +32,7 @@ function setColor(prop, value, converter) {
 
 function getDimensions({ data, sourceOptions: { transforms, }, }) {
   const { aspect, } = Array.isArray(transforms) ? transforms[0] : transforms;
-  const { width, height, } = data.aspects[aspect];
+  const { width, height, } = data.aspects[aspect] || aspectRatios[aspect];
   // prettier-ignore
   return `${(height / width) * 100}%`;
 }
@@ -70,7 +56,7 @@ Picture.propTypes = {
     /** Image data object from polopoly */
     data: PropTypes.shape({
       /** Image alt from polopoly */
-      alt: PropTypes.string.isRequired,
+      alt: PropTypes.string,
       /** Holds the image aspects object */
       aspects: PropTypes.object,
       /** Each image name, type and version will build a "source" tag */
@@ -142,7 +128,7 @@ Picture.propTypes = {
       /** Image data object from polopoly */
       data: PropTypes.shape({
         /** Image alt from polopoly */
-        alt: PropTypes.string.isRequired,
+        alt: PropTypes.string,
         /** Holds the image aspects object */
         aspects: PropTypes.object,
         /** Each image name, type and version will build a "source" tag */
@@ -206,17 +192,13 @@ function Picture(props) {
                 tagName="source"
                 type="image/webp"
                 srcSet={getSources(props, index, true)}
-                {...(img.sourceOptions.sizes
-                  ? { sizes: img.sourceOptions.sizes, }
-                  : {})}
+                {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
               />
               <ImgSource
                 {...(media[index] ? { media: media[index], } : [])}
                 tagName="source"
                 srcSet={getSources(props, index, false)}
-                {...(img.sourceOptions.sizes
-                  ? { sizes: img.sourceOptions.sizes, }
-                  : {})}
+                {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
               />
             </Fragment>
           ) : (
@@ -227,14 +209,12 @@ function Picture(props) {
               tagName="source"
               {...(img.mimeType ? { type: img.mimeType, } : {})}
               srcSet={getSources(props, index, false)}
-              {...(img.sourceOptions.sizes
-                ? { sizes: img.sourceOptions.sizes, }
-                : {})}
+              {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
             />
           ))
       )}
       <ImgSource
-        alt={alt}
+        {...(alt ? { alt, } : {})}
         src={imgSrc}
         hasWrapper={hasWrapper}
         {...(imgSrcSet ? { srcSet: imgSrcSet, } : {})}
@@ -252,7 +232,6 @@ function Picture(props) {
       />
     </picture>
   );
-
   if (lazyLoad) {
     return hasWrapper ? (
       <StyledPictureWrapper
@@ -301,9 +280,7 @@ function getSources({ sources, }, imgPosition = 0, isAnimatedGif) {
 
   const imageNameFromData = imgCore.imgName.split('/')[1];
   const imgVersion = imgCore.version;
-  const imgName = isAnimatedGif
-    ? `${imageNameFromData.split('.')[0]}.webp`
-    : imageNameFromData;
+  const imgName = isAnimatedGif ? `${imageNameFromData.split('.')[0]}.webp` : imageNameFromData;
 
   const imgData = { imgName, version: imgVersion, aspects, };
 
@@ -311,10 +288,7 @@ function getSources({ sources, }, imgPosition = 0, isAnimatedGif) {
 }
 
 function getImgSources({
-  defaultImg: {
-    data: { aspects, contentId, imgArray, },
-    sourceOptions: { transforms, },
-  },
+  defaultImg: { data: { aspects, contentId, imgArray, }, sourceOptions: { transforms, }, },
 }) {
   const { imgName, version, } = imgArray[0];
   const transformsArray = Array.isArray(transforms) ? transforms : [ transforms, ];
@@ -336,9 +310,7 @@ function getMedia({ sources, theme, }) {
       // eslint-disable-next-line eqeqeq
       .some(item => item != undefined);
 
-    return imgHasMedia
-      ? theme.getMqString({ from, until, misc, type, }, true)
-      : undefined;
+    return imgHasMedia ? theme.getMqString({ from, until, misc, type, }, true) : undefined;
   });
   return finalMedia;
 }

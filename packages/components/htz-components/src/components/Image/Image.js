@@ -92,7 +92,7 @@ class Image extends React.Component {
     /** Image data from polopoly */
     data: PropTypes.shape({
       /** Image alt from polopoly */
-      alt: PropTypes.string.isRequired,
+      alt: PropTypes.string,
       /** Holds the image aspects object */
       aspects: PropTypes.object,
       /**
@@ -220,7 +220,7 @@ Please use the "<Picture />" component`
         />
 
         <ImgSource
-          alt={alt}
+          {...(alt ? { alt, } : {})}
           src={src}
           hasWrapper={hasWrapper}
           {...(srcSet ? { srcSet, } : {})}
@@ -239,7 +239,7 @@ Please use the "<Picture />" component`
       </picture>
     ) : (
       <ImgSource
-        alt={alt}
+        {...(alt ? { alt, } : {})}
         hasWrapper={hasWrapper}
         title={credit}
         src={src}
@@ -297,7 +297,7 @@ export default Image;
 // //////////////////////////////////////////////////////////////////////
 //                          Helper Functions                          //
 // //////////////////////////////////////////////////////////////////////
-const aspectRatios = {
+export const aspectRatios = {
   regular: { height: 3, width: 4, },
   headline: { height: 9, width: 16, },
   landscape: { height: 9, width: 21, },
