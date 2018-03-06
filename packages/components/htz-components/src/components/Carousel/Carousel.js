@@ -6,17 +6,35 @@ import IconBack from '../Icon/icons/IconBack';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const propTypes = {
+  /**
+   * Change the default color of the next/previous buttons as you wish.
+   */
   buttonsColor: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
     PropTypes.object,
   ]),
+  /**
+   * The render component who should render the received items.
+   */
   Component: PropTypes.node.isRequired,
+  /**
+   * Misc attributes who'd pass down to the renderer component.
+   */
   componentAttrs: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  /**
+   * How many items should be rendered in the carousel's view.
+   */
   inView: PropTypes.number,
+  /**
+   * An array of items objects who should populate the carousel.
+   */
   items: PropTypes.arrayOf(
     PropTypes.object
   ).isRequired,
+  /**
+   * Should the carousel iterate over the given items in a loop, or start at 0 and end with n.
+   */
   loop: PropTypes.bool,
   /**
    * A special property holding miscellaneous CSS values that
@@ -24,13 +42,23 @@ const propTypes = {
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: stylesPropType,
+  /**
+   * A method given from the parent component, which will be fired whenever the
+   * carousel's state changes, and send back the item's index who's currently displayed.
+   */
   onStateChangeCB: PropTypes.func,
+  /**
+   * At which position in the item's array (index) should the carousel start at mounting time.
+   */
   startAt: PropTypes.number,
+  /**
+   * How many steps should the carousel iterate over the items list, whenever a next/previous button is fired.
+   */
   step: PropTypes.number,
 };
 
 const defaultProps = {
-  buttonsColor: null,
+  buttonsColor: 'neutral',
   componentAttrs: {},
   inView: 1,
   loop: false,
@@ -41,6 +69,7 @@ const defaultProps = {
 };
 
 const wrapperStyle = () => ({
+  maxHeight: '100%',
   overflow: 'hidden',
   position: 'relative',
 });
@@ -98,6 +127,11 @@ const CurrentItems = createComponent(
   props => Object.keys(props)
 );
 
+/**
+ * The Carousel component takes an array of objects and a renderer component, and renders
+ * to its view **only** the amount of items specified by the props, and some extra items from
+ * each side of its view, according to the settings given to it (loop, step, inView, etc).
+ */
 class Carousel extends React.Component {
   state = {
     displayItemNum: this.props.startAt,
@@ -121,7 +155,7 @@ class Carousel extends React.Component {
   }
 
   componentDidUpdate() {
-    this.props.onStateChangeCB(this.state.displayItemNum);
+    this.props.onStateChangeCB && this.props.onStateChangeCB(this.state.displayItemNum);
   }
 
   getTransitionEnd = () => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
 import { rgba, } from 'polished';
@@ -6,22 +6,49 @@ import { rgba, } from 'polished';
 import ArticleImage from '../ArticleImage/ArticleImage';
 import Caption from '../Caption/Caption';
 import Carousel from '../Carousel/Carousel';
+import FullScreenGallery from '../FullScreenMedia/FullScreenGallery';
 import IconZoomIn from '../Icon/icons/IconZoomIn';
 
 const propTypes = {
+  /**
+   * Gallery's title/name for Aria.
+   */
+  accessibility: PropTypes.string.isRequired,
+  /**
+   * Enable the button that allows you to see the gallery in full-screen.
+   */
+  enableEnlarge: PropTypes.bool,
+  /**
+   * Force the images in the gallery to render in a specific aspect,
+   * regardless of the gallery's default.
+   */
+  forceAspect: PropTypes.string,
+  /**
+   * An array of images' objects you want to display in the gallery.
+   */
+  images: PropTypes.arrayOf(
+    PropTypes.object
+  ).isRequired,
+  /**
+   * Gallery's title/name for display (if enabled).
+   */
   name: PropTypes.string.isRequired,
+  /**
+   * Should the gallery's title be displayed on the page.
+   */
   showTitle: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool,
   ]),
-  accessibility: PropTypes.string.isRequired,
-  images: PropTypes.arrayOf(
-    PropTypes.object
-  ).isRequired,
+  /**
+   * The app's theme (get imported automatically with the `withTheme` method).
+   */
   theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 const defaultProps = {
+  enableEnlarge: true,
+  forceAspect: null,
   showTitle: true,
 };
 
@@ -94,6 +121,11 @@ const dotStyle = ({ theme, active, }) => ({
 });
 const Dot = createComponent(dotStyle, 'span');
 
+/**
+ * The ImageGallery component receives an array of images/pictures objects,
+ * and mount them in a [`Carousel`](./#carousel) component, with [`ArticleImage`](./#articleimage)
+ * component as a renderer.
+ */
 class ImageGallery extends React.Component {
   state = {
     currentDisplaying: 0,
@@ -125,48 +157,76 @@ class ImageGallery extends React.Component {
 
   render() {
     const {
+      accessibility,
+      enableEnlarge,
+      forceAspect,
       images,
-      theme,
       name,
       showTitle,
-      accessibility,
+      theme,
     } = this.props;
+
     const image = images[this.state.currentDisplaying];
-    return (
-      <Wrapper>
-        <ZoomWrapper onClick={this.toggleFullScreen} />
-        <Carousel
-          buttonsColor={rgba(theme.color('quaternary'), 0.9)}
-          Component={ArticleImage}
-          componentAttrs={{
-            forceAspect: 'regular',
-            showCaption: false,
-            enableEnlarge: false,
-            miscStyles: {
-              marginBottom: '0 !important', /** TODO: for some reason it won't Trump */
-            },
-          }}
-          items={images}
-          loop
-          onStateChangeCB={this.currentDisplaying}
-          startAt={this.state.currentDisplaying}
-        />
-        <CaptionWrapper>
-          <Caption
-            caption={image.title}
-            credit={image.credit}
-            color={[ 'neutral', '-10', ]}
-            typeStyles={-2}
+
+    const CarouselElement = ({ isFullScreen, }) => (
+      <Carousel
+        buttonsColor={rgba(theme.color('quaternary'), 0.9)}
+        Component={ArticleImage}
+        componentAttrs={{
+          forceAspect: isFullScreen ? 'full' : forceAspect || 'regular',
+          isFullScreen,
+          showCaption: false,
+          enableEnlarge: false,
+          miscStyles: {
+            marginBottom: '0 !important', /** TODO: for some reason it won't Trump */
+          },
+        }}
+        items={images}
+        loop
+        onStateChangeCB={this.currentDisplaying}
+        startAt={this.state.currentDisplaying}
+      />
+    );
+
+    const DotsElement = () => (
+      <DotsWrapper>
+        {images.map((img, i) => (
+          <Dot
+            active={i === this.state.currentDisplaying}
           />
-          <DotsWrapper>
-            {images.map((img, i) => (
-              <Dot
-                active={i === this.state.currentDisplaying}
-              />
-            ))}
-          </DotsWrapper>
-        </CaptionWrapper>
-      </Wrapper>
+        ))}
+      </DotsWrapper>
+    );
+
+    return (
+      <Fragment>
+        <Wrapper>
+          {enableEnlarge && <ZoomWrapper onClick={this.toggleFullScreen} />}
+          <CarouselElement />
+          <CaptionWrapper>
+            <Caption
+              caption={image.title}
+              credit={image.credit}
+              color={[ 'neutral', '-10', ]}
+              typeStyles={-2}
+            />
+            <DotsElement />
+          </CaptionWrapper>
+        </Wrapper>
+        {this.state.fullScreen && (
+          <FullScreenGallery
+            carousel={
+              <CarouselElement isFullScreen />
+            }
+            closeCallBack={this.toggleFullScreen}
+            title={image.title}
+            credit={image.credit}
+            dots={
+              <DotsElement />
+            }
+          />
+        )}
+      </Fragment>
     );
   }
 }
