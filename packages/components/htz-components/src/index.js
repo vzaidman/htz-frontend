@@ -22,6 +22,8 @@ import LinksBlock from './components/RelatedArticles/LinksBlock';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import Quote from './components/Quote/Quote';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
+import RadioButton from './components/RadioButton/RadioButton';
+import RadioGroup from './components/RadioButton/RadioGroup';
 import StandardArticlePageLayout from './components/PageLayout/StandardArticlePageLayout';
 import Scroll from './components/Scroll/Scroll';
 import ScrollListener from './components/EventListeners/ScrollListener';
@@ -102,6 +104,8 @@ export {
   LinksBlock,
   MobileQuickRegistration,
   Quote,
+  RadioButton,
+  RadioGroup,
   RelatedArticles,
   Scroll,
   ScrollListener,
