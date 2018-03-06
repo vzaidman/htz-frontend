@@ -176,33 +176,35 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
       <span>
         סדרו את התגובות
       </span>
-      <div
-        onKeyDown={[Function]}
-      >
+      <div>
         <div
-          className="htz-el htz-bh htz-w htz-x htz-em htz-z htz-ab htz-en htz-p htz-eo htz-ck htz-cl htz-cm htz-cn htz-co htz-ep htz-eq htz-er htz-es htz-cf htz-cg htz-ch htz-ci htz-cj htz-et"
+          onKeyDown={[Function]}
         >
-          <button
-            aria-expanded={false}
-            aria-haspopup={true}
-            aria-label="open menu"
-            className="htz-o htz-eu htz-m htz-n htz-a htz-b htz-bu htz-l htz-cf htz-ev htz-ew htz-ex htz-ey htz-ez htz-fa htz-fb htz-fc htz-fd htz-p htz-fe htz-ff htz-cl htz-cm htz-cn htz-co htz-ep htz-eq htz-fg htz-fh htz-az htz-fi"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            role="button"
-            type="button"
-            variant="primary"
-          >
-            מהאחרונה לראשונה
-          </button>
           <div
-            style={
-              Object {
-                "position": "relative",
+            className="htz-el htz-bh htz-w htz-x htz-em htz-z htz-ab htz-en htz-p htz-eo htz-ck htz-cl htz-cm htz-cn htz-co htz-ep htz-eq htz-er htz-es htz-cf htz-cg htz-ch htz-ci htz-cj htz-et"
+          >
+            <button
+              aria-expanded={false}
+              aria-haspopup={true}
+              aria-label="open menu"
+              className="htz-o htz-eu htz-m htz-n htz-a htz-b htz-bu htz-l htz-cf htz-ev htz-ew htz-ex htz-ey htz-ez htz-fa htz-fb htz-fc htz-fd htz-p htz-fe htz-ff htz-cl htz-cm htz-cn htz-co htz-ep htz-eq htz-fg htz-fh htz-az htz-fi"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+              type="button"
+              variant="primary"
+            >
+              מהאחרונה לראשונה
+            </button>
+            <div
+              style={
+                Object {
+                  "position": "relative",
+                }
               }
-            }
-          />
+            />
+          </div>
         </div>
       </div>
     </div>

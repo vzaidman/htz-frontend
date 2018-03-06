@@ -1,0 +1,276 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RadioButton> DOM element renders correctly with a checked and onChange func passed 1`] = `
+<div>
+  <label
+    className="htz-a htz-b"
+    htmlFor="123456789"
+  >
+    <input
+      checked={true}
+      id="123456789"
+      onBlur={[Function]}
+      onChange={[MockFunction]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="radio"
+    />
+    <div
+      className="htz-c htz-d htz-e htz-f htz-g htz-a htz-h htz-b htz-i htz-j htz-k htz-l htz-m"
+    >
+      <div
+        className="htz-n htz-o htz-p htz-q htz-r htz-g htz-s htz-t htz-u"
+      />
+      <div
+        className="htz-v htz-w htz-g htz-s htz-x htz-j htz-k htz-l htz-y htz-z htz-ab"
+      />
+    </div>
+    <div
+      className="htz-ac"
+    >
+      labelRed
+    </div>
+  </label>
+</div>
+`;
+
+exports[`<RadioButton> DOM element renders correctly with a checked and onChange func passed 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-c{position:relative}.htz-d{height:2rem}.htz-e{width:2rem}.htz-f{flex-shrink:0;-webkit-flex-shrink:0}.htz-g{border-radius:50%}.htz-h{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-i{background-color:#FFF}.htz-j{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-k{border-width:1px}.htz-l{border-style:solid}.htz-m{border-color:#0B7EB5}.htz-n{position:absolute}.htz-o{height:8rem}.htz-p{width:8rem}.htz-q{left:50%}.htz-r{top:50%}.htz-s{background-color:#0B7EB5}.htz-t{display:block}.htz-u{opacity:0}.htz-v{height:80%}.htz-w{width:80%}.htz-x{opacity:1}.htz-y{border-color:white}.htz-z{transition-duration:.3s;-webkit-transition-duration:.3s}.htz-ab{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ac{margin-right:0.3em}"`;
+
+exports[`<RadioButton> DOM element renders correctly with a value prop 1`] = `
+<div>
+  <label
+    className="htz-a htz-b"
+    htmlFor="123456789"
+  >
+    <input
+      checked={false}
+      id="123456789"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="radio"
+      value="customValue"
+    />
+    <div
+      className="htz-c htz-d htz-e htz-f htz-g htz-a htz-h htz-b htz-i htz-j htz-k htz-l htz-m"
+    >
+      <div
+        className="htz-n htz-o htz-p htz-q htz-r htz-g htz-s htz-t htz-u"
+      />
+      <div
+        className="htz-v htz-w htz-g htz-s htz-u htz-j htz-k htz-l htz-x htz-y htz-z"
+      />
+    </div>
+    <div
+      className="htz-ab"
+    />
+  </label>
+</div>
+`;
+
+exports[`<RadioButton> DOM element renders correctly with a value prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-c{position:relative}.htz-d{height:2rem}.htz-e{width:2rem}.htz-f{flex-shrink:0;-webkit-flex-shrink:0}.htz-g{border-radius:50%}.htz-h{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-i{background-color:#FFF}.htz-j{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-k{border-width:1px}.htz-l{border-style:solid}.htz-m{border-color:#0B7EB5}.htz-n{position:absolute}.htz-o{height:8rem}.htz-p{width:8rem}.htz-q{left:50%}.htz-r{top:50%}.htz-s{background-color:#0B7EB5}.htz-t{display:block}.htz-u{opacity:0}.htz-v{height:80%}.htz-w{width:80%}.htz-x{border-color:white}.htz-y{transition-duration:.3s;-webkit-transition-duration:.3s}.htz-z{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ab{margin-right:0.3em}"`;
+
+exports[`<RadioButton> DOM element renders correctly with an attrs prop 1`] = `
+<div>
+  <label
+    className="htz-a htz-b"
+    htmlFor="123456789"
+  >
+    <input
+      checked={false}
+      id="123456789"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      testAttr="customAttr"
+      type="radio"
+    />
+    <div
+      className="htz-c htz-d htz-e htz-f htz-g htz-a htz-h htz-b htz-i htz-j htz-k htz-l htz-m"
+    >
+      <div
+        className="htz-n htz-o htz-p htz-q htz-r htz-g htz-s htz-t htz-u"
+      />
+      <div
+        className="htz-v htz-w htz-g htz-s htz-u htz-j htz-k htz-l htz-x htz-y htz-z"
+      />
+    </div>
+    <div
+      className="htz-ab"
+    />
+  </label>
+</div>
+`;
+
+exports[`<RadioButton> DOM element renders correctly with an attrs prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-c{position:relative}.htz-d{height:2rem}.htz-e{width:2rem}.htz-f{flex-shrink:0;-webkit-flex-shrink:0}.htz-g{border-radius:50%}.htz-h{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-i{background-color:#FFF}.htz-j{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-k{border-width:1px}.htz-l{border-style:solid}.htz-m{border-color:#0B7EB5}.htz-n{position:absolute}.htz-o{height:8rem}.htz-p{width:8rem}.htz-q{left:50%}.htz-r{top:50%}.htz-s{background-color:#0B7EB5}.htz-t{display:block}.htz-u{opacity:0}.htz-v{height:80%}.htz-w{width:80%}.htz-x{border-color:white}.htz-y{transition-duration:.3s;-webkit-transition-duration:.3s}.htz-z{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ab{margin-right:0.3em}"`;
+
+exports[`<RadioButton> DOM element renders correctly with isDisabled prop 1`] = `
+<div>
+  <label
+    className="htz-a htz-b"
+    htmlFor="123456789"
+  >
+    <input
+      checked={false}
+      disabled={true}
+      id="123456789"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="radio"
+    />
+    <div
+      className="htz-c htz-d htz-e htz-f htz-g htz-a htz-h htz-b htz-i htz-j htz-k htz-l htz-m"
+    >
+      <div
+        className="htz-n htz-o htz-p htz-q htz-r htz-g htz-s htz-t htz-u"
+      />
+      <div
+        className="htz-v htz-w htz-g htz-s htz-u htz-j htz-k htz-l htz-x htz-y htz-z"
+      />
+    </div>
+    <div
+      className="htz-ab"
+    />
+  </label>
+</div>
+`;
+
+exports[`<RadioButton> DOM element renders correctly with isDisabled prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-c{position:relative}.htz-d{height:2rem}.htz-e{width:2rem}.htz-f{flex-shrink:0;-webkit-flex-shrink:0}.htz-g{border-radius:50%}.htz-h{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-i{background-color:#FFF}.htz-j{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-k{border-width:1px}.htz-l{border-style:solid}.htz-m{border-color:#CCC}.htz-n{position:absolute}.htz-o{height:8rem}.htz-p{width:8rem}.htz-q{left:50%}.htz-r{top:50%}.htz-s{background-color:#0B7EB5}.htz-t{display:block}.htz-u{opacity:0}.htz-v{height:80%}.htz-w{width:80%}.htz-x{border-color:white}.htz-y{transition-duration:.3s;-webkit-transition-duration:.3s}.htz-z{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ab{margin-right:0.3em}"`;
+
+exports[`<RadioButton> DOM element renders correctly with label prop 1`] = `
+<div>
+  <label
+    className="htz-a htz-b"
+    htmlFor="123456789"
+  >
+    <input
+      checked={false}
+      id="123456789"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="radio"
+    />
+    <div
+      className="htz-c htz-d htz-e htz-f htz-g htz-a htz-h htz-b htz-i htz-j htz-k htz-l htz-m"
+    >
+      <div
+        className="htz-n htz-o htz-p htz-q htz-r htz-g htz-s htz-t htz-u"
+      />
+      <div
+        className="htz-v htz-w htz-g htz-s htz-u htz-j htz-k htz-l htz-x htz-y htz-z"
+      />
+    </div>
+    <div
+      className="htz-ab"
+    >
+      customLabel
+    </div>
+  </label>
+</div>
+`;
+
+exports[`<RadioButton> DOM element renders correctly with label prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-c{position:relative}.htz-d{height:2rem}.htz-e{width:2rem}.htz-f{flex-shrink:0;-webkit-flex-shrink:0}.htz-g{border-radius:50%}.htz-h{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-i{background-color:#FFF}.htz-j{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-k{border-width:1px}.htz-l{border-style:solid}.htz-m{border-color:#0B7EB5}.htz-n{position:absolute}.htz-o{height:8rem}.htz-p{width:8rem}.htz-q{left:50%}.htz-r{top:50%}.htz-s{background-color:#0B7EB5}.htz-t{display:block}.htz-u{opacity:0}.htz-v{height:80%}.htz-w{width:80%}.htz-x{border-color:white}.htz-y{transition-duration:.3s;-webkit-transition-duration:.3s}.htz-z{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ab{margin-right:0.3em}"`;
+
+exports[`<RadioButton> DOM element renders correctly with minimal required props 1`] = `
+<div>
+  <label
+    className="htz-a htz-b"
+    htmlFor="123456789"
+  >
+    <input
+      checked={false}
+      id="123456789"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="radio"
+    />
+    <div
+      className="htz-c htz-d htz-e htz-f htz-g htz-a htz-h htz-b htz-i htz-j htz-k htz-l htz-m"
+    >
+      <div
+        className="htz-n htz-o htz-p htz-q htz-r htz-g htz-s htz-t htz-u"
+      />
+      <div
+        className="htz-v htz-w htz-g htz-s htz-u htz-j htz-k htz-l htz-x htz-y htz-z"
+      />
+    </div>
+    <div
+      className="htz-ab"
+    />
+  </label>
+</div>
+`;
+
+exports[`<RadioButton> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-c{position:relative}.htz-d{height:2rem}.htz-e{width:2rem}.htz-f{flex-shrink:0;-webkit-flex-shrink:0}.htz-g{border-radius:50%}.htz-h{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-i{background-color:#FFF}.htz-j{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-k{border-width:1px}.htz-l{border-style:solid}.htz-m{border-color:#0B7EB5}.htz-n{position:absolute}.htz-o{height:8rem}.htz-p{width:8rem}.htz-q{left:50%}.htz-r{top:50%}.htz-s{background-color:#0B7EB5}.htz-t{display:block}.htz-u{opacity:0}.htz-v{height:80%}.htz-w{width:80%}.htz-x{border-color:white}.htz-y{transition-duration:.3s;-webkit-transition-duration:.3s}.htz-z{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ab{margin-right:0.3em}"`;
+
+exports[`<RadioButton> DOM element renders correctly with miscStyles prop 1`] = `
+<div>
+  <label
+    className="htz-a htz-b htz-c"
+    htmlFor="123456789"
+  >
+    <input
+      checked={false}
+      id="123456789"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="radio"
+    />
+    <div
+      className="htz-d htz-e htz-f htz-g htz-h htz-a htz-i htz-b htz-j htz-k htz-l htz-m htz-n"
+    >
+      <div
+        className="htz-o htz-p htz-q htz-r htz-s htz-h htz-t htz-u htz-v"
+      />
+      <div
+        className="htz-w htz-x htz-h htz-t htz-v htz-k htz-l htz-m htz-y htz-z htz-ab"
+      />
+    </div>
+    <div
+      className="htz-ac"
+    >
+      labelRed
+    </div>
+  </label>
+</div>
+`;
+
+exports[`<RadioButton> DOM element renders correctly with miscStyles prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-c{color:red}.htz-d{position:relative}.htz-e{height:2rem}.htz-f{width:2rem}.htz-g{flex-shrink:0;-webkit-flex-shrink:0}.htz-h{border-radius:50%}.htz-i{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-j{background-color:#FFF}.htz-k{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-l{border-width:1px}.htz-m{border-style:solid}.htz-n{border-color:#0B7EB5}.htz-o{position:absolute}.htz-p{height:8rem}.htz-q{width:8rem}.htz-r{left:50%}.htz-s{top:50%}.htz-t{background-color:#0B7EB5}.htz-u{display:block}.htz-v{opacity:0}.htz-w{height:80%}.htz-x{width:80%}.htz-y{border-color:white}.htz-z{transition-duration:.3s;-webkit-transition-duration:.3s}.htz-ab{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ac{margin-right:0.3em}"`;
+
+exports[`<RadioButton> DOM element renders correctly with name prop 1`] = `
+<div>
+  <label
+    className="htz-a htz-b"
+    htmlFor="123456789"
+  >
+    <input
+      checked={false}
+      id="123456789"
+      name="customName"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="radio"
+    />
+    <div
+      className="htz-c htz-d htz-e htz-f htz-g htz-a htz-h htz-b htz-i htz-j htz-k htz-l htz-m"
+    >
+      <div
+        className="htz-n htz-o htz-p htz-q htz-r htz-g htz-s htz-t htz-u"
+      />
+      <div
+        className="htz-v htz-w htz-g htz-s htz-u htz-j htz-k htz-l htz-x htz-y htz-z"
+      />
+    </div>
+    <div
+      className="htz-ab"
+    />
+  </label>
+</div>
+`;
+
+exports[`<RadioButton> DOM element renders correctly with name prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-c{position:relative}.htz-d{height:2rem}.htz-e{width:2rem}.htz-f{flex-shrink:0;-webkit-flex-shrink:0}.htz-g{border-radius:50%}.htz-h{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-i{background-color:#FFF}.htz-j{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-k{border-width:1px}.htz-l{border-style:solid}.htz-m{border-color:#0B7EB5}.htz-n{position:absolute}.htz-o{height:8rem}.htz-p{width:8rem}.htz-q{left:50%}.htz-r{top:50%}.htz-s{background-color:#0B7EB5}.htz-t{display:block}.htz-u{opacity:0}.htz-v{height:80%}.htz-w{width:80%}.htz-x{border-color:white}.htz-y{transition-duration:.3s;-webkit-transition-duration:.3s}.htz-z{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ab{margin-right:0.3em}"`;

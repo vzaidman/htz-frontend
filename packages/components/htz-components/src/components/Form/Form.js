@@ -124,6 +124,21 @@ export class Form extends Component {
     let formElementProperties;
 
     switch (formElementType) {
+      case 'checkBox':
+        formElementProperties = {
+          checked: this.state.values[name] || false,
+          onChange: callAll(onChange, evt => {
+            const values = { ...this.state.values, [name]: evt.target.checked, };
+            const errors = this.props.isValidateOnChange
+              ? this.handleTouchedValidate(values)
+              : null;
+            this.setState({
+              values,
+              ...(errors ? { errors, } : {}),
+            });
+          }),
+        };
+        break;
       case 'radio':
         formElementProperties = {
           // RadioGroup needs the name in order to pass it to RadioButton
@@ -141,11 +156,10 @@ export class Form extends Component {
           value: this.state.values[name] || false,
         };
         break;
-      case 'checkBox':
+      case 'select':
         formElementProperties = {
-          checked: this.state.values[name] || false,
-          onChange: callAll(onChange, evt => {
-            const values = { ...this.state.values, [name]: evt.target.checked, };
+          onChange: callAll(onChange, selectedItem => {
+            const values = { ...this.state.values, [name]: selectedItem, };
             const errors = this.props.isValidateOnChange
               ? this.handleTouchedValidate(values)
               : null;
@@ -154,6 +168,7 @@ export class Form extends Component {
               ...(errors ? { errors, } : {}),
             });
           }),
+          controlledSelectedItem: this.state.values[name] || null,
         };
         break;
       default:

@@ -5,11 +5,11 @@ import Note from '../Note/Note';
 import RadioButton from './RadioButton'; // eslint-disable-line import/no-named-as-default
 import { radioButtonPropType, } from './RadioButtonPropType';
 
-export class RadioGroup extends Component {
+class RadioGroup extends Component {
   static propTypes = {
     /**
      * An object of attrbutes to set on the DOM element.
-     * Passed to the underlying label element wrapping the checkbox input in this component
+     * Passed to the underlying ul element wrapping the radioButtons
      */
     attrs: attrsPropType,
 
@@ -18,16 +18,49 @@ export class RadioGroup extends Component {
      */
     className: PropTypes.string,
     /**
-     * The default checked value of an unconrolled checkbox
+     * The default value of an unconrolled RadioGroup, should not be passed if the radio group is controlled
      */
-    defaultValue: PropTypes.bool,
+    defaultValue: PropTypes.string,
     /** error note to display if input is passed a `isError` prop */
     errorText: PropTypes.string,
-    /** Is this input in error state */
+    /** Is this RadioGroup in error state */
     isError: PropTypes.bool,
     /**
-     * The following attrs should not be passed through the radioButtons prop,
-     * if passed to the RadioGroup as props: name, refFunc, onChange, onFocus, onBlur and checked
+     * The name attribute of the `RadioGroup`, passed to each of The `RadioButton`s
+     * rendered by the component.
+     */
+    name: PropTypes.string.isRequired,
+    /**
+     * Id used to connect the note to `RadioGroup` with aria-describedby for a11y reasons,
+     * default will generate random id
+     */
+    noteId: PropTypes.string,
+    /** Note explaining the RadioGroup field  */
+    noteText: PropTypes.string,
+    /**
+     * A callback that gets called when a RadioButton is Blurred
+     * @param {SyntheticEvent} evt - The event object
+     */
+    onBlur: PropTypes.func,
+    /**
+     * A callback that gets the event that holds new value of the checked `RadioButton`
+     * used to update state of parent when using as react controlled radioButton
+     * @param {SyntheticEvent} evt - The event object
+     */
+    onChange: PropTypes.func,
+    /**
+     * A callback that gets called when a `RadioButton` is focused
+     * @param {SyntheticEvent} evt - The event object
+     */
+    onFocus: PropTypes.func,
+    /**
+     * An Array of objects with props to pass to each RadioButton,
+     *
+     * The value of each radioButton is required for the RadioGroup to work properly
+     * The following props should not be passed both to a RadioButton and to the RadioGroup
+     * refFunc, onChange, onFocus, onBlur
+     *
+     * name, and checked shoud not be passed manually to a RadioButton
      */
     radioButtons: PropTypes.arrayOf(PropTypes.shape(radioButtonPropType)).isRequired,
     /**
@@ -36,31 +69,10 @@ export class RadioGroup extends Component {
      * example use case: focusing the input.
      */
     refFunc: PropTypes.func,
-    name: PropTypes.string.isRequired,
     /**
-     * A callback that gets called when the RadioButton is Blurred
-     * @param {SyntheticEvent} evt - The event object
+     * The value of the selected `RadioButton`, null if no value is passed
+     * Used to use `RadioGroup` as a Controlled component.
      */
-    onBlur: PropTypes.func,
-    /**
-     * A callback that gets the event that holds new checked value of the radioButton
-     * used to update state of parent when using as react controlled radioButton
-     * @param {SyntheticEvent} evt - The event object
-     */
-    onChange: PropTypes.func,
-    /**
-     * A callback that gets called when a RadioButton is focused
-     * @param {SyntheticEvent} evt - The event object
-     */
-    onFocus: PropTypes.func,
-    /**
-     * Id used to connect the note to input with aria-describedby for a11y reasons,
-     * default will generate random id
-     */
-    noteId: PropTypes.string,
-    /** Note explaining the RadioGroup field  */
-    noteText: PropTypes.string,
-    /** The value of the selected radio, null if no button was selected */
     value: PropTypes.string,
   };
 

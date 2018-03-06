@@ -188,3 +188,46 @@ class Example extends React.Component {
   <Example />
 </div>;
 ```
+
+Example with description Note and refFunc
+
+```jsx
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedItem: { value: 3, display: "שלוש" }
+    };
+  }
+
+  render() {
+    return (
+      <div dir="rtl" style={{ height: "25rem" }}>
+        <div>the value from the state is: {this.state.selectedItem.value}</div>
+        <Button onClick={() => this.selectEl.focus()}>Focus Select</Button>
+        <br />
+        <br />
+        <Select
+          noteText="description"
+          errorText="error"
+          refFunc={el => {
+            this.selectEl = el;
+          }}
+          onChange={selectedItem => {
+            this.setState({ selectedItem });
+          }}
+          controlledSelectedItem={this.state.selectedItem}
+          items={[
+            { value: 1, display: "אחד" },
+            { value: 2, display: "שתיים" },
+            { value: 3, display: "שלוש" }
+          ]}
+        />
+      </div>
+    );
+  }
+}
+<div dir="rtl" style={{ height: "45rem" }}>
+  <Example />
+</div>;
+```

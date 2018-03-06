@@ -1,7 +1,7 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import { borderStart, parseStyleProps, } from '@haaretz/htz-css-tools';
+import { borderRight, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import Note from '../Note/Note';
@@ -10,11 +10,11 @@ import Ripple from '../Animations/Ripple';
 const styles = ({ miscStyles, theme, }) => ({
   display: 'flex',
   alignItems: 'baseline',
-  position: 'relative',
   extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
 
 const checkBoxStyle = ({ checked, isDisabled, isFocused, theme, }) => ({
+  position: 'relative',
   height: '2rem',
   width: '2rem',
   flexShrink: 0,
@@ -22,12 +22,12 @@ const checkBoxStyle = ({ checked, isDisabled, isFocused, theme, }) => ({
   transitionProperty: 'all',
   borderWidth: isFocused && !checked ? '2px' : '1px',
   borderStyle: 'solid',
-  borderColor: isDisabled ? theme.color('checkBox', 'borderDisabled') : theme.color('checkBox', 'border'),
+  borderColor: isDisabled
+    ? theme.color('checkBox', 'borderDisabled')
+    : theme.color('checkBox', 'border'),
   paddingTop: '0.2rem',
   paddingBottom: '0.2rem',
-  extend: [
-    theme.getTransition(1, 'swiftIn'),
-  ],
+  extend: [ theme.getTransition(1, 'swiftIn'), ],
 });
 
 const StyledCheckBox = createComponent(checkBoxStyle);
@@ -44,7 +44,7 @@ const checkStyle = ({ checked, theme, }) => ({
   borderBottomStyle: 'solid',
   borderBottomColor: theme.color('checkBox', 'check'),
   extend: [
-    borderStart('2px', 'solid', theme.color('checkBox', 'check')),
+    borderRight('2px', 'solid', theme.color('checkBox', 'check')),
     theme.getTransition(1, 'swiftIn'),
   ],
 });
@@ -197,32 +197,36 @@ export class CheckBox extends Component {
             checked={controllingChecked}
             {...(isDisabled ? { disabled: true, } : {})}
             id={this.state.checkBoxId}
-            onClick={evt => {
-              if (!isDisabled) {
-                if (checked === null) {
-                  this.setState((prevState, props) => ({
-                    checked: !prevState.checked,
-                  }));
-                }
-                if (onClick) onClick(evt);
-              }
-            }}
-            onFocus={evt => {
-              this.setState((prevState, props) => ({
-                isFocused: true,
-              }));
-              if (onFocus) onFocus(evt);
-            }}
             onBlur={evt => {
               this.setState((prevState, props) => ({
                 isFocused: false,
               }));
               if (onBlur) onBlur(evt);
             }}
-            {...(onChange ? { onChange, } : {})}
+            onChange={evt => {
+              if (!isDisabled) {
+                if (checked === null) {
+                  this.setState((prevState, props) => ({
+                    checked: !prevState.checked,
+                  }));
+                }
+                if (onChange) onChange(evt);
+              }
+            }}
+            {...(onClick ? { onClick, } : {})}
+            onFocus={evt => {
+              this.setState((prevState, props) => ({
+                isFocused: true,
+              }));
+              if (onFocus) onFocus(evt);
+            }}
           />
-          <Ripple isActive={this.state.isFocused} />
-          <StyledCheckBox checked={controllingChecked} isDisabled={isDisabled} isFocused={this.state.isFocused}>
+          <StyledCheckBox
+            checked={controllingChecked}
+            isDisabled={isDisabled}
+            isFocused={this.state.isFocused}
+          >
+            <Ripple isActive={this.state.isFocused} />
             <StyledCheck checked={controllingChecked} />
           </StyledCheckBox>
           <StyledSpan>{label}</StyledSpan>

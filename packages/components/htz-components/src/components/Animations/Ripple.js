@@ -5,7 +5,7 @@ const rippleStyle = ({ isActive, theme, }) => ({
 
   height: '8rem',
   width: '8rem',
-  start: '-7rem',
+  end: '50%',
   top: '50%',
   borderRadius: '50%',
   // todo: different named color from theme

@@ -8,11 +8,11 @@ import Ripple from '../Animations/Ripple';
 const styles = ({ miscStyles, theme, }) => ({
   display: 'flex',
   alignItems: 'center',
-  position: 'relative',
   extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
 
 const radioButtonStyle = ({ checked, isDisabled, isFocused, theme, }) => ({
+  position: 'relative',
   height: '2rem',
   width: '2rem',
   flexShrink: 0,
@@ -62,11 +62,13 @@ export class RadioButton extends Component {
     isDisabled: false,
     label: null,
     miscStyles: null,
+    name: null,
     onBlur: null,
     onChange: null,
     onClick: null,
     onFocus: null,
     refFunc: undefined,
+    value: null,
   };
   state = {
     radioButtonId: this.props.radioButtonId || Math.random().toString(),
@@ -99,19 +101,25 @@ export class RadioButton extends Component {
         {...(refFunc ? { ref: el => refFunc(el), } : {})}
       >
         <input
-          type="checkBox"
-          {...(this.state.noteId ? { 'aria-describedby': this.state.noteId, } : {})}
+          type="radio"
           {...attrs}
           checked={controllingChecked}
           {...(isDisabled ? { disabled: true, } : {})}
           id={this.state.radioButtonId}
-          name={name}
-          value={value}
+          {...(name ? { name, } : {})}
+          {...(value ? { value, } : {})}
+          onBlur={evt => {
+            this.setState((prevState, props) => ({
+              isFocused: false,
+            }));
+            if (onBlur) onBlur(evt);
+          }}
+          {...(onChange ? { onChange, } : {})}
           onClick={evt => {
             if (!isDisabled) {
               if (checked === null) {
                 this.setState((prevState, props) => ({
-                  checked: !prevState.checked,
+                  checked: true,
                 }));
               }
               if (onClick) onClick(evt);
@@ -123,16 +131,13 @@ export class RadioButton extends Component {
             }));
             if (onFocus) onFocus(evt);
           }}
-          onBlur={evt => {
-            this.setState((prevState, props) => ({
-              isFocused: false,
-            }));
-            if (onBlur) onBlur(evt);
-          }}
-          {...(onChange ? { onChange, } : {})}
         />
-        <Ripple isActive={this.state.isFocused} />
-        <StyledRadioButton checked={controllingChecked} isDisabled={isDisabled} isFocused={this.state.isFocused}>
+        <StyledRadioButton
+          checked={controllingChecked}
+          isDisabled={isDisabled}
+          isFocused={this.state.isFocused}
+        >
+          <Ripple isActive={this.state.isFocused} />
           <StyledCheck checked={controllingChecked} />
         </StyledRadioButton>
         <StyledSpan>{label}</StyledSpan>

@@ -19,11 +19,6 @@ export const radioButtonPropType = {
    */
   className: PropTypes.string,
   /**
-   * The radioButtonId that connects the label for with the radioButton,
-   * if no radioButtonId is provided, and radioButtonId will be generated automatically
-   */
-  radioButtonId: PropTypes.string,
-  /**
    * Is The radioButton disabled
    */
   isDisabled: PropTypes.bool,
@@ -41,7 +36,7 @@ export const radioButtonPropType = {
   /**
    * The radio element name, used to identify it as part of a radio group
    */
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   /**
    * A callback that gets called when the RadioButton is Blurred
    * @param {SyntheticEvent} evt - The event object
@@ -62,7 +57,13 @@ export const radioButtonPropType = {
    * A callback that gets called when the RadioButton is focused
    * @param {SyntheticEvent} evt - The event object
    */
+
   onFocus: PropTypes.func,
+  /**
+   * The radioButtonId that connects the label for with the radioButton,
+   * if no radioButtonId is provided, and radioButtonId will be generated automatically
+   */
+  radioButtonId: PropTypes.string,
   /**
    * A callback function to allow parent component to get ref of input,
    * example use case: focusing the input.
@@ -71,5 +72,5 @@ export const radioButtonPropType = {
   /**
    * The radio input value, must be a string because the value on the input will always be a string
    */
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };

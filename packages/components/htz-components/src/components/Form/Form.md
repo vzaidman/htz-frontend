@@ -414,12 +414,10 @@ In order to set the initial values of an input controlled by `<Form />` simply p
   <Form
     onSubmit={({ email, terms, radio }) =>
       alert(
-        `email submitted: ${email} agreed to terms: ${
-          terms ? "true" : "false"
-        } radio : ${radio}`
+        `email submitted: ${email} agreed to terms: ${terms ? "true" : "false"}`
       )
     }
-    validate={({ email, terms, radio }) => {
+    validate={({ email, terms }) => {
       let errors = [];
       if (!email) {
         errors.push({
@@ -433,6 +431,55 @@ In order to set the initial values of an input controlled by `<Form />` simply p
           name: "terms",
           order: 2,
           errorText: "must accept terms"
+        });
+      }
+      return errors;
+    }}
+    render={({ getInputProps, handleSubmit, clearForm }) => (
+      <div>
+        <TextInput
+          {...getInputProps({
+            name: "email",
+            label: "email",
+            type: "email"
+          })}
+        />
+        <br />
+
+        <CheckBox
+          {...getInputProps({
+            name: "terms",
+            noteText: "agree to terms",
+            formElementType: "checkBox"
+          })}
+        />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Button onClick={handleSubmit}>submit</Button>
+          <Button onClick={clearForm}>clear</Button>
+        </div>
+      </div>
+    )}
+  />
+</div>
+```
+
+**Working with RadioGroup**
+
+handling our `<RadioGroup/>` component.
+
+```jsx
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <Form
+    onSubmit={({ email, radio }) =>
+      alert(`email submitted: ${email} radio : ${radio}`)
+    }
+    validate={({ email, radio }) => {
+      let errors = [];
+      if (!email) {
+        errors.push({
+          name: "email",
+          order: 1,
+          errorText: "must provide email"
         });
       }
       if (radio === undefined) {
@@ -466,6 +513,76 @@ In order to set the initial values of an input controlled by `<Form />` simply p
             formElementType: "radio"
           })}
         />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Button onClick={handleSubmit}>submit</Button>
+          <Button onClick={clearForm}>clear</Button>
+        </div>
+      </div>
+    )}
+  />
+</div>
+```
+
+**Working with Select**
+
+handling our `<Select/>` component.
+
+notice The select parent component needs to hold the whole selectedItem, so we need to get the value when submitting
+
+```jsx static
+  <Form
+    onSubmit={({ email, select }) =>
+      alert(`email submitted: ${email} select : ${select.value}`)
+    }
+```
+
+```jsx
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <Form
+    onSubmit={({ email, select }) =>
+      alert(`email submitted: ${email} select : ${select.value}`)
+    }
+    validate={({ email, select }) => {
+      let errors = [];
+      if (!email) {
+        errors.push({
+          name: "email",
+          order: 1,
+          errorText: "must provide email"
+        });
+      }
+      if (!select) {
+        errors.push({
+          name: "select",
+          order: 2,
+          errorText: "must choose select"
+        });
+      }
+      return errors;
+    }}
+    render={({ getInputProps, handleSubmit, clearForm }) => (
+      <div>
+        <TextInput
+          {...getInputProps({
+            name: "email",
+            label: "email",
+            type: "email"
+          })}
+        />
+        <br />
+
+        <Select
+          {...getInputProps({
+            name: "select",
+            items: [
+              { value: "1", display: "one" },
+              { value: "2", display: "two" }
+            ],
+            formElementType: "select"
+          })}
+        />
+        <br />
+        <br />
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Button onClick={handleSubmit}>submit</Button>
           <Button onClick={clearForm}>clear</Button>

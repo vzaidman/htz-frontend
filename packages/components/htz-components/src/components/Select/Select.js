@@ -7,6 +7,7 @@ import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import selectStyle from './selectStyle';
+import Note from '../Note/Note';
 
 const selectVariants = oneOf([ 'primary', ]);
 
@@ -70,13 +71,7 @@ const ItemStyle = ({ theme, variant = 'primary', isSelected, activeItem, }) => (
 
 const StyledItem = createComponent(ItemStyle, 'button', props => {
   /* eslint-disable no-unused-vars */
-  const {
-    activeItem,
-    isOpen,
-    isSelected,
-    noHighlitedItems,
-    ...noCustomAtrrProps
-  } = props;
+  const { activeItem, isOpen, isSelected, noHighlitedItems, ...noCustomAtrrProps } = props;
   return Object.keys(noCustomAtrrProps);
 });
 
@@ -111,15 +106,11 @@ const selectedItemStyle = ({ noHighlitedItems, theme, variant, isOpen, }) => ({
   ],
 });
 
-const StyledSelectedItem = createComponent(
-  selectedItemStyle,
-  StyledItem,
-  props => {
-    /* eslint-disable no-unused-vars */
-    const { isOpen, noHighlitedItems, variant, ...noCustomAtrrProps } = props;
-    return Object.keys(noCustomAtrrProps);
-  }
-);
+const StyledSelectedItem = createComponent(selectedItemStyle, StyledItem, props => {
+  /* eslint-disable no-unused-vars */
+  const { isOpen, noHighlitedItems, variant, ...noCustomAtrrProps } = props;
+  return Object.keys(noCustomAtrrProps);
+});
 
 export class Select extends Component {
   static propTypes = {
@@ -142,6 +133,10 @@ export class Select extends Component {
      * updates uncontrolled.
      */
     defaultSelectedItem: itemPropType,
+    /** error note to display if input is passed a `isError` prop */
+    errorText: PropTypes.string,
+    /** Is this RadioGroup in error state */
+    isError: PropTypes.bool,
     /**
      * An Array of option Objects for the Select,
      *
@@ -159,12 +154,25 @@ export class Select extends Component {
      */
     miscStyles: stylesPropType,
     /**
+     * Id used to connect the note to `RadioGroup` with aria-describedby for a11y reasons,
+     * default will generate random id
+     */
+    noteId: PropTypes.string,
+    /** Note explaining the RadioGroup field  */
+    noteText: PropTypes.string,
+    /**
      * A callback that gets the the new selectedItem
      * @param {object} item - The selected Item Object
      */
     onChange: PropTypes.func,
     /** The placeholder to display when no item is selected */
     placeholder: PropTypes.string,
+    /**
+     * The refFunc is passed to the wrapping div
+     * A callback function to allow parent component to get ref of Select,
+     * example use case: focusing the Select.
+     */
+    refFunc: PropTypes.func,
     /** The `<Select />`'s stylistic variant */
     variant: PropTypes.oneOfType([
       selectVariants,
@@ -180,13 +188,21 @@ export class Select extends Component {
     attrs: null,
     controlledSelectedItem: null,
     defaultSelectedItem: null,
+    errorText: null,
+    isError: false,
+    noteId: null,
+    noteText: null,
     miscStyles: null,
     onChange: null,
     placeholder: 'בחר אחת מהאפשרויות הבאות',
+    refFunc: null,
     variant: 'primary',
   };
 
   state = {
+    noteId: this.props.noteId
+      ? this.props.noteId
+      : this.props.errorText || this.props.noteText ? Math.random().toString() : null,
     selectedItem: null,
   };
 
@@ -200,10 +216,15 @@ export class Select extends Component {
       attrs,
       controlledSelectedItem,
       defaultSelectedItem,
+      errorText,
       items,
+      isError,
+      noteId,
+      noteText,
       miscStyles,
       onChange,
       placeholder,
+      refFunc,
       variant,
     } = this.props;
     const selectedItem = controlledSelectedItem || this.state.selectedItem;
@@ -212,73 +233,74 @@ export class Select extends Component {
       .indexOf(selectedItem ? selectedItem.key || selectedItem.value : null);
 
     return (
-      <Downshift
-        selectedItem={selectedItem}
-        {...(defaultSelectedItem ? { defaultSelectedItem, } : {})}
-        defaultHighlightedIndex={selectedItem ? selectedItemIndex : 0}
-        itemToString={item => (item ? item.display : null)}
-        onChange={this.handleChange}
-        render={({
-          isOpen,
-          getButtonProps,
-          getItemProps,
-          highlightedIndex,
-          toggleMenu,
-          selectItemAtIndex,
-        }) => (
-          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-          <div
-            {...attrs}
-            onKeyDown={evt => {
-              if (isOpen) {
-                if (evt.keyCode === 9) toggleMenu();
-                if (evt.keyCode === 32) selectItemAtIndex(highlightedIndex);
-              }
-            }}
-          >
-            <StyledSelectWrapper
-              miscStyles={miscStyles}
-              isOpen={isOpen}
-              variant={variant}
+      <div>
+        <Downshift
+          selectedItem={selectedItem}
+          {...(defaultSelectedItem ? { defaultSelectedItem, } : {})}
+          defaultHighlightedIndex={selectedItem ? selectedItemIndex : 0}
+          itemToString={item => (item ? item.display : null)}
+          onChange={this.handleChange}
+          render={({
+            isOpen,
+            getButtonProps,
+            getItemProps,
+            highlightedIndex,
+            toggleMenu,
+            selectItemAtIndex,
+          }) => (
+            // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+            <div
+              {...attrs}
+              onKeyDown={evt => {
+                if (isOpen) {
+                  if (evt.keyCode === 9) toggleMenu();
+                  if (evt.keyCode === 32) selectItemAtIndex(highlightedIndex);
+                }
+              }}
             >
-              <StyledSelectedItem
-                {...getButtonProps({
-                  variant,
-                  isOpen,
-                  noHighlitedItems: highlightedIndex === null,
-                  type: 'button',
-                })}
-              >
-                {selectedItem
-                  ? selectedItem.display || selectedItem.value
-                  : placeholder}
-              </StyledSelectedItem>
-              <div style={{ position: 'relative', }}>
-                {isOpen && (
-                  <StyledDropDownMenu
-                    variant={variant}
-                    data-test="dropdown-menu"
-                  >
-                    {items.map((item, index) => (
-                      <StyledItem
-                        {...getItemProps({
-                          item,
-                          key: item.key || item.value,
-                          activeItem: highlightedIndex === index,
-                          isSelected: selectedItem === item,
-                          role: 'button',
-                        })}
-                      >
-                        {item.display || item.value}
-                      </StyledItem>
-                    ))}
-                  </StyledDropDownMenu>
-                )}
-              </div>
-            </StyledSelectWrapper>
-          </div>
-        )}
-      />
+              <StyledSelectWrapper miscStyles={miscStyles} isOpen={isOpen} variant={variant}>
+                <StyledSelectedItem
+                  {...getButtonProps({
+                    variant,
+                    isOpen,
+                    noHighlitedItems: highlightedIndex === null,
+                    type: 'button',
+                    ...(refFunc ? { innerRef: el => refFunc(el), } : {}),
+                  })}
+                >
+                  {selectedItem ? selectedItem.display || selectedItem.value : placeholder}
+                </StyledSelectedItem>
+                <div style={{ position: 'relative', }}>
+                  {isOpen && (
+                    <StyledDropDownMenu variant={variant} data-test="dropdown-menu">
+                      {items.map((item, index) => (
+                        <StyledItem
+                          {...getItemProps({
+                            item,
+                            key: item.key || item.value,
+                            activeItem: highlightedIndex === index,
+                            isSelected: selectedItem === item,
+                            role: 'button',
+                          })}
+                        >
+                          {item.display || item.value}
+                        </StyledItem>
+                      ))}
+                    </StyledDropDownMenu>
+                  )}
+                </div>
+              </StyledSelectWrapper>
+            </div>
+          )}
+        />
+        {errorText || noteText ? (
+          <Note
+            text={isError ? errorText : noteText}
+            isError={isError}
+            noteId={this.state.noteId}
+          />
+        ) : null}
+      </div>
     );
   }
 }

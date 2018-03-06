@@ -2,7 +2,7 @@
 
 `<RadioButton>` is a generically styled RadioButton, with a styleable label, easy to use and a11y compliant.
 
-**React Controllable InRadioButton**
+**React Controllable RadioButton**
 
 **From the react docs:**  
 In most cases, we recommend using controlled components to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
@@ -17,11 +17,11 @@ In most cases, we recommend using controlled components to implement forms. In a
 
 **Minimum required props**
 
-At minimum can be used without any props
+At minimum can be used with no props
 
 ```jsx
 <div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton label="test" value={1} name="test" />
+  <RadioButton />
 </div>
 ```
 
@@ -31,38 +31,7 @@ The custom attributes passed to attrs will be spread on the hidden input
 
 ```jsx
 <div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton attrs={{ name: "customName" }} value={1} name="test" />
-</div>
-```
-
-**onFocus onBlur and onClick**
-
-These functions should be passed directly, and not through attrs
-
-```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton
-    value={1}
-    name="test"
-    onClick={() => console.log("clicked")}
-    onFocus={() => console.log("focused")}
-    onBlue={() => console.log("blured")}
-  />
-</div>
-```
-
-**defaultValue**
-
-A custom `defaultValue` can be passed to an uncontrolled RadioButton
-
-```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton
-    label="I start as checked"
-    defaultValue={true}
-    value={1}
-    name="test"
-  />
+  <RadioButton attrs={{ example: "exampleAttr" }} />
 </div>
 ```
 
@@ -72,7 +41,7 @@ Simply pass isDisabled prop to disable the RadioButton
 
 ```jsx
 <div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton isDisabled label="label" value={1} name="test" />
+  <RadioButton isDisabled />
 </div>
 ```
 
@@ -82,46 +51,100 @@ The label associated with the RadioButton, can be simple text or a node
 
 ```jsx
 <div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton label="לייבל" value={1} name="test" />
+  <RadioButton label="לייבל" />
 </div>
 ```
 
 **miscStyles**
 
-```jsx
+miscStyles trump all styles applyed to the wrapping label of the input
+
+```jsx static
 <div dir="rtl" style={{ padding: "5rem" }}>
   <RadioButton
-    value={1}
-    name="test"
-    miscStyles={{ color: "red", alignItems: "center" }}
+    miscStyles={{ color: "red", alignItems: "baseline" }}
     label="labelRed"
   />
 </div>
 ```
 
+```jsx
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <RadioButton
+    miscStyles={{ color: "red", alignItems: "baseline" }}
+    label="labelRed"
+  />
+</div>
+```
+
+**name**
+
+native html name attribute, should connect all radioButtons with the same name, radio groups shoud use `<RadioGroup/>` component simply implementing the same name will not work properly.
+
+```jsx static
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <RadioButton name="group" label="1" value="1" />
+</div>
+```
+
+**onFocus onBlur and onClick**
+
+These functions should be passed directly, and not through attrs
+
+```jsx static
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <RadioButton
+    onClick={() => console.log("clicked")}
+    onFocus={() => console.log("focused")}
+    onBlur={() => console.log("blured")}
+  />
+</div>
+```
+
+**radioButtonId**
+
+A custom id can be passed to the input, if no id is passed, a random one will be genrated.
+
+```jsx
+<div dir="rtl" style={{ padding: "5rem" }}>
+  <RadioButton radioButtonId="1234" />
+</div>
+```
+
 ### Conrolled Examples
 
-<!-- **Basic controlled**
+**Basic controlled**
 
 Simple example of changing state `onChange` of `<RadioButton />`, and sending the checked value down creates a React controlled RadioButton.
+
+`<RadioGroup/>` is a a11y compliant component that should usually be used to control RadioButtons
 
 ```jsx static
 class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false,
+      value: null,
     };
   }
 
   render() {
     return (
-        <div>the value from the state is: {this.state.checked ? "true" : "false"}</div>
+      <div>
+        <div>the value from the state is: {this.state.value}</div>
         <RadioButton
-          label="label"
-          onChange={evt => this.setState({ checked: evt.checked })}
-          checked={this.state.checked}
-        />;
+          label="1"
+          value="1"
+          onChange={evt => this.setState({ value: evt.target.value })}
+          checked={this.state.value === '1' }
+        />
+        <RadioButton
+          label="2"
+          value="2"
+          onChange={evt => this.setState({ value: evt.target.value })}
+          checked={this.state.value === '2' }
+        />
+      </div>
     );
   }
 }
@@ -133,24 +156,26 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: true
+      value: true
     };
   }
 
   render() {
     return (
       <div>
-        <div>
-          the value from the state is: {this.state.checked ? "true" : "false"}
-        </div>
+        <div>the value from the state is: {this.state.value}</div>
         <RadioButton
-          label="label"
-          onChange={evt => {
-            console.log(evt.target.checked);
-            this.setState({ checked: evt.target.checked });
-          }}
-          checked={this.state.checked}
-        />;
+          label="1"
+          value="1"
+          onChange={evt => this.setState({ value: evt.target.value })}
+          checked={this.state.value === "1"}
+        />
+        <RadioButton
+          label="2"
+          value="2"
+          onChange={evt => this.setState({ value: evt.target.value })}
+          checked={this.state.value === "2"}
+        />
       </div>
     );
   }
@@ -158,4 +183,4 @@ class Example extends React.Component {
 <div dir="rtl" style={{ padding: "5rem" }}>
   <Example />
 </div>;
-``` -->
+```

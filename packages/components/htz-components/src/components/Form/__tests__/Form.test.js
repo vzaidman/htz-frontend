@@ -7,6 +7,7 @@ import execCommandPolyfill from '../../../test-helpers/execCommandPolyfill';
 import Form from '../Form'; // eslint-disable-line import/no-named-as-default
 import TextInput from '../../TextInput/TextInput';
 import CheckBox from '../../CheckBox/CheckBox'; // eslint-disable-line import/no-named-as-default
+import RadioGroup from '../../RadioButton/RadioGroup';
 
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail
@@ -318,6 +319,35 @@ describe('<Form>', () => {
       input.instance().checked = true;
       input.simulate('change');
       expect(output.state().values.terms).toEqual(true);
+    });
+    it('Correctly handles an RadioGroup change and updates form state value', () => {
+      const mockCallback = jest.fn();
+
+      const output = felaMount(
+        <Form
+          onSubmit={mockCallback}
+          render={({ getInputProps, handleSubmit, clearForm, }) => (
+            <div>
+              <RadioGroup
+                {...getInputProps({
+                  name: 'radio',
+                  noteText: 'choose',
+                  radioButtons: [ { value: '1', label: 'one', }, { value: '2', label: 'two', }, ],
+                  formElementType: 'radio',
+                })}
+              />
+              <br />
+              <div style={{ display: 'flex', justifyContent: 'space-between', }}>
+                <button onClick={handleSubmit}>submit</button>
+              </div>
+            </div>
+          )}
+        />
+      );
+      const input = output.find('input').at(0);
+      input.simulate('change', { target: { value: '1', }, });
+      expect(input.instance().checked).toEqual(true);
+      expect(output.state().values.radio).toEqual('1');
     });
     it('Correctly handles a contentEditable change and updates form state value', () => {
       const mockCallback = jest.fn();

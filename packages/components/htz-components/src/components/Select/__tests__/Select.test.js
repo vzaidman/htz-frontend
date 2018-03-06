@@ -4,6 +4,8 @@ import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
 import Select from '../Select'; // eslint-disable-line import/no-named-as-default
 
+Math.random = jest.fn(() => 123456789);
+
 describe('<Select>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
@@ -93,6 +95,31 @@ describe('<Select>', () => {
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
+    it('renders correctly with a Note', () => {
+      const { component, styles, } = felaSnapshotter(
+        <Select
+          noteText="text"
+          errorText="error"
+          items={[ { value: 1, }, { value: 2, }, { value: 3, }, ]}
+          controlledSelectedItem={{ value: 3, }}
+        />
+      );
+      expect(component).toMatchSnapshot();
+      expect(styles).toMatchSnapshot();
+    });
+    it('renders correctly with a Error', () => {
+      const { component, styles, } = felaSnapshotter(
+        <Select
+          isError
+          noteText="text"
+          errorText="error"
+          items={[ { value: 1, }, { value: 2, }, { value: 3, }, ]}
+          controlledSelectedItem={{ value: 3, }}
+        />
+      );
+      expect(component).toMatchSnapshot();
+      expect(styles).toMatchSnapshot();
+    });
     it('lists items with a keydown of ArrowDown on the input', () => {
       const output = felaMount(
         <Select
@@ -173,9 +200,7 @@ describe('<Select>', () => {
     });
     it('closes menu when pressing tab key', () => {
       const output = felaMount(
-        <Select
-          items={[ { value: 1, }, { value: 2, }, { value: 3, display: 'שלוש', }, ]}
-        />
+        <Select items={[ { value: 1, }, { value: 2, }, { value: 3, display: 'שלוש', }, ]} />
       );
       const button = output.find('button');
       button.simulate('keydown', { key: 'ArrowDown', });
