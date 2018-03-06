@@ -39,6 +39,7 @@ const defaultProps = {
 };
 
 const wrapperStyle = () => ({
+  overflow: 'hidden',
   position: 'relative',
 });
 const ItemsWrapper = createComponent(wrapperStyle);
@@ -77,8 +78,8 @@ const itemsStyle = ({ theme, }) => ({
   width: '100%',
   position: 'absolute',
   transitionProperty: 'all',
-  ...theme.getDelay('transition', -1),
-  ...theme.getDuration('transition', -1),
+  ...theme.getDelay('transition', 1),
+  ...theme.getDuration('transition', 3),
   ...theme.getTimingFunction('transition', 'linear'),
 });
 const Items = createComponent(itemsStyle);
@@ -95,7 +96,7 @@ const nextItemsStyle = ({ moving, direction, }) => ({
 });
 const NextItems = createComponent(nextItemsStyle, Items);
 
-const currentItemsStyle = ({ moving, direction, changeState, }) => ({
+const currentItemsStyle = ({ moving, direction, }) => ({
   position: 'static',
   transform:
     moving ?
@@ -105,7 +106,6 @@ const currentItemsStyle = ({ moving, direction, changeState, }) => ({
         'translateX(100%)'
       :
       'translateX(0)',
-  transitionEnd: changeState(direction),
 });
 const CurrentItems = createComponent(currentItemsStyle, Items);
 
@@ -128,14 +128,28 @@ class Carousel extends React.Component {
     direction: null,
   };
 
+  componentDidMount() {
+    this.currentItems.addEventListener(
+      'webkitTransitionEnd',
+      this.changeState,
+      false
+    );
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.state.displayItemNum !== nextState.displayItemNum
+      this.state.displayItemNum !== nextState.displayItemNum ||
+      this.state.moving !== nextState.moving
     );
   }
 
   componentDidUpdate() {
     console.log(this.state.moving);
+    this.currentItems.addEventListener(
+      'webkitTransitionEnd',
+      this.changeState,
+      false
+    );
     this.props.onStateChangeCB(this.state.displayItemNum);
   }
 
@@ -146,8 +160,21 @@ class Carousel extends React.Component {
     });
   };
 
-  changeState = direction => {
-
+  changeState = () => {
+    console.log(this.state.direction);
+    const newDisplay =
+      this.state.moving ?
+        this.state.direction === 'next' ?
+          this.state.displayItemNum + this.props.step
+          :
+          this.state.displayItemNum - this.props.step
+        :
+        null;
+    newDisplay &&
+      this.setState({
+        displayItemNum: newDisplay,
+        moving: false,
+      });
   }
 
   render() {
@@ -186,7 +213,8 @@ class Carousel extends React.Component {
         <CurrentItems
           moving={this.state.moving}
           direction={this.state.direction}
-          changeState={this.changeState}
+          // eslint-disable-next-line no-return-assign
+          innerRef={currentItems => this.currentItems = currentItems}
         >
           <Component {...componentAttrs} {...items[this.state.displayItemNum]} />
         </CurrentItems>
