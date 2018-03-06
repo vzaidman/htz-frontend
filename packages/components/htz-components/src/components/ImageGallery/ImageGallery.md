@@ -40,33 +40,6 @@
       },
       {
         viewMode: "FullColumnWithVerticalImage",
-        accessibility: "fgh",
-        title: "חיידק הקפה נדבק בו בגיל מבוגר יחסית, פאולו פנרו בבוטגה שלו בעיר ברה נדבק בו בגיל מבוגר",
-        credit: "קרדיט",
-        aspects: {
-          full: {
-            width: 1024,
-              height: 768
-          }
-        },
-        isAnimated: "false",
-        imgArray: [
-          {
-            imgName: "image/3169121816.jpg",
-            version: "1519208155"
-          },
-          {
-            imgName: "image/509020086.jpg",
-            version: "1519208157"
-          }
-        ],
-        imageType: "infographic",
-        inputTemplate: "com.tm.Image",
-        contentId: "1.5804",
-        contentName: "ghf",
-      },
-      {
-        viewMode: "FullColumnWithVerticalImage",
         accessibility: "טיגריס",
         title: "טיגריס רעב",
         aspects: {
@@ -130,6 +103,33 @@
         inputTemplate: "com.tm.Image",
         contentId: "1.2221",
         contentName: "חתלתול"
+      },
+      {
+        viewMode: "FullColumnWithVerticalImage",
+        accessibility: "fgh",
+        title: "חיידק הקפה נדבק בו בגיל מבוגר יחסית, פאולו פנרו בבוטגה שלו בעיר ברה נדבק בו בגיל מבוגר",
+        credit: "קרדיט",
+        aspects: {
+          full: {
+            width: 1024,
+              height: 768
+          }
+        },
+        isAnimated: "false",
+        imgArray: [
+          {
+            imgName: "image/3169121816.jpg",
+            version: "1519208155"
+          },
+          {
+            imgName: "image/509020086.jpg",
+            version: "1519208157"
+          }
+        ],
+        imageType: "infographic",
+        inputTemplate: "com.tm.Image",
+        contentId: "1.5804",
+        contentName: "ghf",
       },
       {
         viewMode: "FullColumnWithVerticalImage",

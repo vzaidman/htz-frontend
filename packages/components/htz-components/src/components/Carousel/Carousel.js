@@ -25,6 +25,7 @@ const propTypes = {
    */
   miscStyles: stylesPropType,
   onStateChangeCB: PropTypes.func,
+  startAt: PropTypes.number,
   step: PropTypes.number,
 };
 
@@ -35,6 +36,7 @@ const defaultProps = {
   loop: false,
   miscStyles: null,
   onStateChangeCB: null,
+  startAt: 0,
   step: 1,
 };
 
@@ -73,64 +75,39 @@ const PreviousButton = createComponent(
   [ 'onClick', ]
 );
 
-const itemsStyle = ({ theme, }) => ({
+const itemsStyle = ({ theme, position, moving, }) => ({
   top: '0',
   width: '100%',
   position: 'absolute',
-  transitionProperty: 'all',
-  ...theme.getDelay('transition', 1),
-  ...theme.getDuration('transition', 3),
-  ...theme.getTimingFunction('transition', 'linear'),
+  transform: `translateX(${position}%)`,
+  ...moving && {
+    transitionProperty: 'all',
+    ...theme.getDelay('transition', 1),
+    ...theme.getDuration('transition', 3),
+    ...theme.getTimingFunction('transition', 'linear'),
+  },
 });
 const Items = createComponent(itemsStyle);
 
-const nextItemsStyle = ({ moving, direction, }) => ({
-  transform:
-    moving ?
-      direction === 'next' ?
-        'translateX(0)'
-        :
-        'translateX(200%)'
-      :
-      'translateX(100%)',
-});
-const NextItems = createComponent(nextItemsStyle, Items);
-
 const currentItemsStyle = ({ moving, direction, }) => ({
   position: 'static',
-  transform:
-    moving ?
-      direction === 'next' ?
-        'translateX(-100%)'
-        :
-        'translateX(100%)'
-      :
-      'translateX(0)',
 });
-const CurrentItems = createComponent(currentItemsStyle, Items);
-
-const previousItemsStyle = ({ moving, direction, }) => ({
-  transform:
-    moving ?
-      direction === 'next' ?
-        'translateX(-200%)'
-        :
-        'translateX(0)'
-      :
-      'translateX(-100%)',
-});
-const PreviousItems = createComponent(previousItemsStyle, Items);
+const CurrentItems = createComponent(
+  currentItemsStyle,
+  Items,
+  props => Object.keys(props)
+);
 
 class Carousel extends React.Component {
   state = {
-    displayItemNum: 0,
+    displayItemNum: this.props.startAt,
     moving: false,
     direction: null,
   };
 
   componentDidMount() {
     this.currentItems.addEventListener(
-      'webkitTransitionEnd',
+      this.getTransitionEnd(),
       this.changeState,
       false
     );
@@ -144,14 +121,58 @@ class Carousel extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state.moving);
-    this.currentItems.addEventListener(
-      'webkitTransitionEnd',
-      this.changeState,
-      false
-    );
     this.props.onStateChangeCB(this.state.displayItemNum);
   }
+
+  getTransitionEnd = () => {
+    if ('ontransitionend' in window) {
+      // Firefox
+      return 'transitionend';
+    }
+    else if ('onwebkittransitionend' in window) {
+      // Chrome/Saf (+ Mobile Saf)/Android
+      return 'webkitTransitionEnd';
+    }
+    else if ('onotransitionend' in this.currentItems || navigator.appName === 'Opera') {
+      // Opera
+      // As of Opera 10.61, there is no "onotransitionend" property added to DOM elements,
+      // so it will always use the navigator.appName fallback
+      return 'oTransitionEnd';
+    }
+    // IE - not implemented (even in IE9) :(
+    return false;
+  };
+
+  getIndex = pos => {
+    const current = this.state.displayItemNum;
+    const total = this.props.items.length;
+    const step = this.props.step;
+    const loop = this.props.loop;
+
+    let index;
+
+    if (pos === 'next') {
+      if (current + step < total) {
+        index = current + step;
+      }
+      else if (loop) {
+        index = (current + step) - total;
+      }
+      else {
+        index = total;
+      }
+    }
+    else if (current - step >= 0) {
+      index = current - step;
+    }
+    else if (loop) {
+      index = total + (current - step);
+    }
+    else index = 0;
+
+    return index;
+  };
+
 
   changeItem = direction => {
     this.setState({
@@ -161,21 +182,18 @@ class Carousel extends React.Component {
   };
 
   changeState = () => {
-    console.log(this.state.direction);
     const newDisplay =
       this.state.moving ?
-        this.state.direction === 'next' ?
-          this.state.displayItemNum + this.props.step
-          :
-          this.state.displayItemNum - this.props.step
+        this.getIndex(this.state.direction)
         :
         null;
-    newDisplay &&
-      this.setState({
-        displayItemNum: newDisplay,
-        moving: false,
-      });
-  }
+    newDisplay !== null &&
+    this.setState({
+      displayItemNum: newDisplay,
+      moving: false,
+      direction: null,
+    });
+  };
 
   render() {
     const {
@@ -184,16 +202,27 @@ class Carousel extends React.Component {
       componentAttrs,
       inView,
       items,
-      step,
+      loop,
+      startAt,
     } = this.props;
+
+    const positionChange =
+      this.state.direction === 'next' ?
+        100
+        :
+        this.state.direction === 'previous' ?
+          -100
+          :
+          0;
 
     return (
       <ItemsWrapper>
-        {this.state.displayItemNum > 0 &&
+        {(this.state.displayItemNum > 0 || loop) &&
           <Fragment>
             <PreviousButton
               buttonsColor={buttonsColor}
-              onClick={() => this.changeItem('previous', step)}
+              disabled={this.state.moving}
+              onClick={() => this.changeItem('previous')}
             >
               <IconBack
                 size={2.5}
@@ -202,33 +231,34 @@ class Carousel extends React.Component {
                 }}
               />
             </PreviousButton>
-            <PreviousItems
+            <Items
+              position={100 + positionChange}
               moving={this.state.moving}
-              direction={this.state.direction}
             >
-              <Component {...componentAttrs} {...items[this.state.displayItemNum - step]} />
-            </PreviousItems>
+              <Component {...componentAttrs} {...items[this.getIndex('prev')]} />
+            </Items>
           </Fragment>
         }
         <CurrentItems
+          position={positionChange}
           moving={this.state.moving}
-          direction={this.state.direction}
           // eslint-disable-next-line no-return-assign
           innerRef={currentItems => this.currentItems = currentItems}
         >
           <Component {...componentAttrs} {...items[this.state.displayItemNum]} />
         </CurrentItems>
-        {this.state.displayItemNum < items.length &&
+        {(this.state.displayItemNum < items.length - 1 || loop) &&
           <Fragment>
-            <NextItems
+            <Items
+              position={-100 + positionChange}
               moving={this.state.moving}
-              direction={this.state.direction}
             >
-              <Component {...componentAttrs} {...items[this.state.displayItemNum + step]} />
-            </NextItems>
+              <Component {...componentAttrs} {...items[this.getIndex('next')]} />
+            </Items>
             <NextButton
               buttonsColor={buttonsColor}
-              onClick={() => this.changeItem('next', step)}
+              disabled={this.state.moving}
+              onClick={() => this.changeItem('next')}
             >
               <IconBack
                 color={'neutral'}
