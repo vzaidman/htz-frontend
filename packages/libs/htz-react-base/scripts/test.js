@@ -50,6 +50,5 @@ else {
   config = defaultConfig;
 }
 
-argv.push('--config', JSON.stringify(config));
-// console.log(config);
+argv.unshift('--config', JSON.stringify(config), '--passWithNoTests');
 jest.run(argv);
