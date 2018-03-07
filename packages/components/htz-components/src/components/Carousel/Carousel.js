@@ -69,6 +69,7 @@ const defaultProps = {
 };
 
 const wrapperStyle = () => ({
+  height: '100%',
   maxHeight: '100%',
   overflow: 'hidden',
   position: 'relative',
@@ -101,14 +102,15 @@ const previousButtonStyle = () => ({
 const PreviousButton = createComponent(
   previousButtonStyle,
   NavigationButton,
-  [ 'onClick', ]
+  props => Object.keys(props)
 );
 
 const itemsStyle = ({ theme, position, moving, }) => ({
-  top: '0',
-  width: '100%',
+  height: '100%',
   position: 'absolute',
+  top: '0',
   transform: `translateX(${position}%)`,
+  width: '100%',
   ...moving && {
     transitionProperty: 'all',
     ...theme.getDelay('transition', 1),
@@ -145,6 +147,7 @@ class Carousel extends React.Component {
       this.changeState,
       false
     );
+    document.addEventListener('click', this.handleGlobalClick); // eslint-disable-line no-undef
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -157,8 +160,8 @@ class Carousel extends React.Component {
   componentDidUpdate() {
     this.props.onStateChangeCB && this.props.onStateChangeCB(this.state.displayItemNum);
   }
-
   getTransitionEnd = () => {
+  /* eslint-disable no-undef */
     if ('ontransitionend' in window) {
       // Firefox
       return 'transitionend';
@@ -175,6 +178,7 @@ class Carousel extends React.Component {
     }
     // IE - not implemented (even in IE9) :(
     return false;
+  /* eslint-enable no-undef */
   };
 
   getIndex = pos => {
@@ -207,6 +211,20 @@ class Carousel extends React.Component {
     return index;
   };
 
+  handleGlobalClick = e => {
+  /* eslint-disable no-undef */
+    this.wrapper && this.wrapper.contains(e.target) ?
+      document.addEventListener('keydown', this.handleGlobalKeydown)
+      :
+      document.removeEventListener('keydown', this.handleGlobalKeydown);
+  /* eslint-enable no-undef */
+  };
+
+  handleGlobalKeydown = e => {
+    const key = e.which || e.keyCode;
+    const direction = key === 37 ? 'next' : 'previous';
+    (key === 37 || key === 39) && this.changeItem(direction);
+  };
 
   changeItem = direction => {
     this.setState({
@@ -250,12 +268,15 @@ class Carousel extends React.Component {
           0;
 
     return (
-      <ItemsWrapper>
+      <ItemsWrapper
+        innerRef={wrapper => this.wrapper = wrapper} // eslint-disable-line no-return-assign
+      >
         {(this.state.displayItemNum > 0 || loop) &&
           <Fragment>
             <PreviousButton
+              // eslint-disable-next-line no-return-assign
               buttonsColor={buttonsColor}
-              disabled={this.state.moving}
+              // disabled={this.state.moving}
               onClick={() => this.changeItem('previous')}
             >
               <IconBack
@@ -290,8 +311,9 @@ class Carousel extends React.Component {
               <Component {...componentAttrs} {...items[this.getIndex('next')]} />
             </Items>
             <NextButton
+              // eslint-disable-next-line no-return-assign
               buttonsColor={buttonsColor}
-              disabled={this.state.moving}
+              // disabled={this.state.moving}
               onClick={() => this.changeItem('next')}
             >
               <IconBack

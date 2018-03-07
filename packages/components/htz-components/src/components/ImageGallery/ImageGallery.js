@@ -2,11 +2,12 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
 import { rgba, } from 'polished';
+import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
 import ArticleImage from '../ArticleImage/ArticleImage';
 import Caption from '../Caption/Caption';
 import Carousel from '../Carousel/Carousel';
-import FullScreenGallery from '../FullScreenMedia/FullScreenGallery';
+import FullScreenMedia from '../FullScreenMedia/FullScreenMedia';
 import IconZoomIn from '../Icon/icons/IconZoomIn';
 
 const propTypes = {
@@ -52,8 +53,14 @@ const defaultProps = {
   showTitle: true,
 };
 
-const wrapperStyle = () => ({
+const wrapperStyle = ({ theme, }) => ({
   position: 'relative',
+  ...parseComponentProp(
+    'marginBottom',
+    theme.articleStyle.body.marginBottom,
+    theme.mq,
+    (prop, value) => ({ [prop]: value, })
+  ),
 });
 const Wrapper = createComponent(wrapperStyle);
 
@@ -139,10 +146,6 @@ class ImageGallery extends React.Component {
     );
   }
 
-  componentDidUpdate() {
-    console.log(this.state);
-  }
-
   toggleFullScreen = () => {
     this.setState({
       fullScreen: !this.state.fullScreen,
@@ -179,6 +182,7 @@ class ImageGallery extends React.Component {
           enableEnlarge: false,
           miscStyles: {
             marginBottom: '0 !important', /** TODO: for some reason it won't Trump */
+            height: '100%',
           },
         }}
         items={images}
@@ -214,16 +218,17 @@ class ImageGallery extends React.Component {
           </CaptionWrapper>
         </Wrapper>
         {this.state.fullScreen && (
-          <FullScreenGallery
-            carousel={
-              <CarouselElement isFullScreen />
-            }
+          <FullScreenMedia
             closeCallBack={this.toggleFullScreen}
-            title={image.title}
             credit={image.credit}
-            dots={
-              <DotsElement />
+            media={
+              <Fragment>
+                <CarouselElement isFullScreen />
+                <DotsElement />
+              </Fragment>
             }
+            mediaType={'gallery'}
+            title={image.title}
           />
         )}
       </Fragment>
