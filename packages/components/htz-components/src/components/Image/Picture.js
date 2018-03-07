@@ -157,7 +157,6 @@ Picture.defaultProps = {
   attrs: null,
   bgcolor: null,
   defaultImg: null,
-  getDimensions: null,
   lazyLoad: false,
   miscStyles: null,
   hasWrapper: true,

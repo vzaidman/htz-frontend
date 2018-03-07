@@ -147,13 +147,10 @@ class Image extends React.Component {
   static defaultProps = {
     attrs: null,
     bgcolor: null,
-    className: null,
     hasWrapper: true,
     isPresentational: false,
     lazyLoad: false,
     miscStyles: null,
-    sizes: null,
-    tagName: 'img',
   };
 
   componentWillMount() {
