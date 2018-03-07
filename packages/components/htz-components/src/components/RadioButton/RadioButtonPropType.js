@@ -25,7 +25,7 @@ export const radioButtonPropType = {
   /**
    * The label text/node associated with the radioButton
    */
-  label: PropTypes.oneOfType([ PropTypes.string, PropTypes.node, ]),
+  label: PropTypes.oneOfType([ PropTypes.string, PropTypes.node, ]).isRequired,
   /**
    * miscStyles of the label
    * A special property holding miscellaneous CSS values that

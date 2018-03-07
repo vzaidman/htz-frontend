@@ -60,7 +60,6 @@ export class RadioButton extends Component {
     className: null,
     radioButtonId: null,
     isDisabled: false,
-    label: null,
     miscStyles: null,
     name: null,
     onBlur: null,

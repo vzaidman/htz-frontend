@@ -17,11 +17,11 @@ In most cases, we recommend using controlled components to implement forms. In a
 
 **Minimum required props**
 
-At minimum can be used with no props
+At minimum can be used with the label prop
 
 ```jsx
 <div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton />
+  <RadioButton label="one"/>
 </div>
 ```
 
@@ -31,7 +31,7 @@ The custom attributes passed to attrs will be spread on the hidden input
 
 ```jsx
 <div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton attrs={{ example: "exampleAttr" }} />
+  <RadioButton attrs={{ example: "exampleAttr" }}  label="one"/>
 </div>
 ```
 
@@ -41,17 +41,7 @@ Simply pass isDisabled prop to disable the RadioButton
 
 ```jsx
 <div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton isDisabled />
-</div>
-```
-
-**label**
-
-The label associated with the RadioButton, can be simple text or a node
-
-```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton label="לייבל" />
+  <RadioButton isDisabled label="one"/>
 </div>
 ```
 
@@ -94,6 +84,7 @@ These functions should be passed directly, and not through attrs
 ```jsx static
 <div dir="rtl" style={{ padding: "5rem" }}>
   <RadioButton
+  label="one"
     onClick={() => console.log("clicked")}
     onFocus={() => console.log("focused")}
     onBlur={() => console.log("blured")}
@@ -105,9 +96,9 @@ These functions should be passed directly, and not through attrs
 
 A custom id can be passed to the input, if no id is passed, a random one will be genrated.
 
-```jsx
+```jsx static
 <div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton radioButtonId="1234" />
+  <RadioButton radioButtonId="1234" label="one" />
 </div>
 ```
 

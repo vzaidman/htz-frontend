@@ -22,36 +22,32 @@ At minimum can be used with a radioButtons array and a name prop.
 
 ```jsx static
 <div style={{ padding: "5rem" }} dir="rtl">
-  <RadioGroup name="testName" radioButtons={[{ value: "1" }, { value: "2" }]} />
+  <RadioGroup name="testName" radioButtons={[{ value: "1", label: "one" }, { value: "2", label: "two" }]} />
 </div>
 ```
 
 ```jsx
 <div style={{ padding: "5rem" }} dir="rtl">
-  <RadioGroup name="testName" radioButtons={[{ value: "1" }, { value: "2" }]} />
+  <RadioGroup name="testName" radioButtons={[{ value: "1", label: "one" }, { value: "2", label: "two" }]} />
 </div>
 ```
 
 **radioButtons custom props**
 
+```jsx
+<div style={{ padding: "5rem" }} dir="rtl">
+  <RadioGroup 
+    name="testName" 
+    radioButtons={[
+      { value: "1", label:"one", miscStyles: { color: 'red', }, }, 
+      { value: "2", label:"two", miscStyles: { color: 'green', }, },
+    ]} />
+</div>
+```
+
+**RadioGroup with Custom Attrs on the wrapping ul element**
+
 ```jsx static
-<div style={{ padding: "5rem" }} dir="rtl">
-  <RadioGroup name="testName" radioButtons={[{ value: "1", label:"one",  }, { value: "2", label:"two" }]} />
-</div>
-```
-
-```jsx
-<div style={{ padding: "5rem" }} dir="rtl">
-  <RadioGroup
-    name="testName"
-    radioButtons={[{ value: "1", label: "one" }, { value: "2", label: "two" }]}
-  />
-</div>
-```
-
-**RadioGroup with Custom Attrs**
-
-```jsx
 <div style={{ padding: "5rem" }} dir="rtl">
   <RadioGroup
     attrs={{ customattr: "customattr" }}
@@ -63,12 +59,19 @@ At minimum can be used with a radioButtons array and a name prop.
 
 **RadioGroup with defaultValue**
 
-```jsx
+Setting the `defaultValue` prop on the `RadioGroup` element will cause the
+the button with corresponding `value` to be selected by default.
+
+```jsx static
 <div style={{ padding: "5rem" }} dir="rtl">
   <RadioGroup
     defaultValue="2"
     name="testName"
-    radioButtons={[{ value: "1", label: "one" }, { value: "2", label: "two" }]}
+    radioButtons={[
+      { value: "1", label: "one", }, 
+      // This element will be selected by default
+      { value: "2", label: "two", },
+      ]}
   />
 </div>
 ```
@@ -86,7 +89,7 @@ At minimum can be used with a radioButtons array and a name prop.
 </div>
 ```
 
-**RadioGroup with that has an error**
+**RadioGroup that has an error**
 
 ```jsx
 <div style={{ padding: "5rem" }} dir="rtl">
