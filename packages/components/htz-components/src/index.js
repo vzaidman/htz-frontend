@@ -54,6 +54,7 @@ import IconDislike from './components/Icon/icons/IconDislike';
 import IconFacebook from './components/Icon/icons/IconFacebook';
 import IconFacebookLogo from './components/Icon/icons/IconFacebookLogo';
 import IconGPlus from './components/Icon/icons/IconGPlus';
+import IconHaaretzLogo from './components/Icon/icons/IconHaaretzLogo';
 import IconHalfStar from './components/Icon/icons/IconHalfStar';
 import IconHtzLoader from './components/Icon/icons/IconHtzLoader';
 import IconItalic from './components/Icon/icons/IconItalic';
@@ -148,6 +149,7 @@ export {
   IconFacebook,
   IconFacebookLogo,
   IconGPlus,
+  IconHaaretzLogo,
   IconHalfStar,
   IconHtzLoader,
   IconItalic,

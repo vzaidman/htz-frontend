@@ -37,7 +37,8 @@
   "src/components/Icon/icons/IconItalic.js": "353638d7a91d1536ae2c949c183f09d7",
   "src/components/Icon/icons/IconAndroid.js": "9fa3eea10a95d130c3bcb207b4153732",
   "src/components/Icon/icons/IconMailFooter.js": "84c82d7bd35e6648b7e632a8372bf57a",
-  "src/components/Icon/icons/IconApple.js": "4fca8276594baeb899d670b7f499cdb9"
+  "src/components/Icon/icons/IconApple.js": "4fca8276594baeb899d670b7f499cdb9",
   "src/components/Icon/icons/IconHtzLoader.js": "74c72fd6192b7b95cf25c4a9b80acd9b",
-  "src/components/Icon/icons/IconTmLoader.js": "3b26c1eb4c687271914c7093670b1c3d"
+  "src/components/Icon/icons/IconTmLoader.js": "3b26c1eb4c687271914c7093670b1c3d",
+  "src/components/Icon/icons/IconHaaretzLogo.js": "38d620dfe799899a437d48ac4741c313"
 }

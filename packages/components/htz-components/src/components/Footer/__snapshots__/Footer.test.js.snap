@@ -9,7 +9,18 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
       className="htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
     >
       <div>
-        הארץ
+        <svg
+          className="htz-o htz-p htz-q htz-r htz-s htz-t htz-u"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+        >
+            
+          <path
+            d="M38.1 135.4c-2.8 14.8-5.2 25.2-5.3 26.1-.1.9-7.1-24.9-6.8-25.8 5.5-15.4.9-22.7-3.7-22.7H12c0-2.4.5-11-5-19h25c-6.6 17.6 2 31.7 6.1 41.4zm-3-41.4c3.7 8.5 2.9 17.6-.2 25.9-.6 1.6.5 6 1.8 5.7 2.8-7.7 3.9-11.6 10.9-12.6h9.5c-1-2-5.1-8.5.1-19H35.1zm80.1 12.4c-.2-2.2-.7-8.7-3.4-12.4H62c-4.3 6.5-2.9 14.1.1 19 .1-.1 39.8 0 40 0 6.2.1 8.2 4.5 7.7 12.6-.2 3.6-2.6 9.1-4.5 11.7-.5.7 4.2 15.9 5.6 22.9 0 0 .5 0 .7-.7.9-1.9 3-11.5 3.6-17.8.6-5.6-1.4-12.3-1.7-15.7-.7-7.6 2-16.2 1.7-19.6zm74.3 16.4s-.8 7.5-4.1 15.5c-1 5-.2 8.5.9 13.3.9 4 2 5.7 3 8.5h.9c6.3-14.9 5.6-22.3.1-37.2-.1-.4-.8.1-.8-.1zm-60.5-3.4l54.9 40.1c0-.9-2.7-8.3-3.3-12-.8-4.7-.5-5.9.5-10.4-6.5-4.3-11.6-8.3-19.8-13.8-1.1-.7-2-3.1-1.7-5.1.4-2.6 2.9-5.2 5.1-5.2H181s-5.9-9.5 0-19h-23s-.8 3.2-.6 6.4c.2 3.3 2.3 6 1 10.9-1.1 3.9-2.4 5.6-3.5 6.3-10.6-7.7-32.6-23.6-32.6-23.6h-4.4s-.4.1-.3.3c2.3 4.4 3.3 10.2 2.8 15.2-.7 6.8-1.6 7.8-1.6 13.5 0 6.2 2.2 11.4 1.8 17.6-.6 8.9-2.5 15.9-3.3 18.6-.3.9.2.8.2.8h27.1c-4.9-9.4-2.8-16-2.8-16h-9.7c-7.3.1-8-10-7.1-16.8.5-5.2 3.7-7.7 4-7.8zm114.4 6.4c-1.4-5.6-.3-8.3 2.2-13.4 1.1-2.2 1.3-8.5 1.3-9.3 0 0-.1-9.1-4.7-9.1h-55.8s-5.8 8.5.5 19h47c4.2 0 5.1 4.7 5.2 8.5 0 3.8-1.9 9.8-3 13.3-.8 2.6 3.1 15.1 5.2 25.2h.9c.3-.8 4.3-21.9 4-24.9-.2-1.7-1.8-5.2-2.8-9.3z"
+            fill="currentColor"
+          />
+        </svg>
       </div>
       <div>
         <a
@@ -19,7 +30,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
           target={null}
         >
           <svg
-            className="htz-o htz-p htz-q htz-r htz-s"
+            className="htz-o htz-p htz-q htz-v htz-w"
             height="1em"
             viewBox="0 0 256 256"
             width="1em"
@@ -38,7 +49,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
           target={null}
         >
           <svg
-            className="htz-o htz-p htz-q htz-r htz-s"
+            className="htz-o htz-p htz-q htz-v htz-w"
             height="1em"
             viewBox="0 0 256 256"
             width="1em"
@@ -57,7 +68,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
           target={null}
         >
           <svg
-            className="htz-o htz-p htz-q htz-r htz-s"
+            className="htz-o htz-p htz-q htz-v htz-w"
             height="1em"
             viewBox="0 0 256 256"
             width="1em"
@@ -76,7 +87,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
           target={null}
         >
           <svg
-            className="htz-o htz-p htz-q htz-r htz-s"
+            className="htz-o htz-p htz-q htz-v htz-w"
             height="1em"
             viewBox="0 0 256 256"
             width="1em"
@@ -95,7 +106,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
           target={null}
         >
           <svg
-            className="htz-o htz-p htz-q htz-r htz-s"
+            className="htz-o htz-p htz-q htz-v htz-w"
             height="1em"
             viewBox="0 0 256 256"
             width="1em"
@@ -114,7 +125,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
           target={null}
         >
           <svg
-            className="htz-o htz-p htz-q htz-r htz-s"
+            className="htz-o htz-p htz-q htz-v htz-w"
             height="1em"
             viewBox="0 0 256 256"
             width="1em"
@@ -133,7 +144,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
           target={null}
         >
           <svg
-            className="htz-o htz-p htz-q htz-r htz-s"
+            className="htz-o htz-p htz-q htz-v htz-w"
             height="1em"
             viewBox="0 0 256 256"
             width="1em"
@@ -148,13 +159,13 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
       </div>
     </div>
     <div
-      className="htz-a htz-t htz-u htz-b htz-v htz-w htz-x htz-y htz-h htz-i htz-z htz-ab htz-ac"
+      className="htz-a htz-x htz-y htz-b htz-z htz-ab htz-ac htz-ae htz-h htz-i htz-af htz-ag htz-ah"
     >
       <div
-        className="htz-h htz-ae htz-af"
+        className="htz-h htz-ai htz-aj"
       >
         <a
-          className="htz-ag htz-ah htz-ai htz-aj"
+          className="htz-ak htz-al htz-am htz-an"
           href="https://www.haaretz.co.il/misc/editors"
           onClick={[Function]}
           target={null}
@@ -165,7 +176,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
       <div>
         <button
           aria-expanded="false"
-          className="htz-z htz-ak htz-al htz-am htz-aj htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-k htz-l htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-a htz-bh htz-c htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca"
+          className="htz-af htz-ao htz-ap htz-aq htz-an htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-k htz-l htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-a htz-bl htz-c htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce"
           id={null}
           onClick={[Function]}
           type="button"
@@ -175,23 +186,23 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
       </div>
     </div>
     <div
-      className="htz-a htz-t htz-u htz-b htz-v htz-w htz-x htz-y htz-i htz-n htz-cb htz-cc"
+      className="htz-a htz-x htz-y htz-b htz-z htz-ab htz-ac htz-ae htz-i htz-n htz-cf htz-cg"
     >
       <div
-        className="htz-h htz-i htz-ae htz-j"
+        className="htz-h htz-i htz-ai htz-j"
       >
         <ul
-          className="htz-cd htz-d htz-e"
+          className="htz-ch htz-d htz-e"
         >
           <div>
             <li
-              className="htz-aj"
+              className="htz-an"
             >
               מדורים
             </li>
             <li>
               <a
-                className="htz-ce htz-cf htz-cg htz-ch"
+                className="htz-ci htz-cj htz-ck htz-cl"
                 href="https://www.haaretz.co.il/news"
                 onClick={[Function]}
                 target={null}
@@ -202,13 +213,13 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
           </div>
           <div>
             <li
-              className="htz-aj"
+              className="htz-an"
             >
               Haaretz.com
             </li>
             <li>
               <a
-                className="htz-ce htz-cf htz-cg htz-ch"
+                className="htz-ci htz-cj htz-ck htz-cl"
                 href="https://www.haaretz.com/israel-news/with-eye-on-iran-israel-increases-military-support-for-syrian-rebels-1.5826348"
                 onClick={[Function]}
                 target={null}
@@ -218,7 +229,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
             </li>
             <li>
               <a
-                className="htz-ce htz-cf htz-cg htz-ch"
+                className="htz-ci htz-cj htz-ck htz-cl"
                 href="https://www.haaretz.com/israel-news/MAGAZINE-not-a-cult-the-freemasons-want-you-unless-you-you-1.5824127"
                 onClick={[Function]}
                 target={null}
@@ -230,11 +241,11 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
         </ul>
       </div>
       <ul
-        className="htz-cd htz-d htz-e htz-ci"
+        className="htz-ch htz-d htz-e htz-cm"
       >
         <li>
           <a
-            className="htz-aj htz-ce htz-cf htz-cg htz-ch"
+            className="htz-an htz-ci htz-cj htz-ck htz-cl"
             href="https://www.haaretz.co.il/misc/editors"
             onClick={[Function]}
             target={null}
@@ -245,12 +256,12 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
       </ul>
     </div>
     <div
-      className="htz-cj htz-ck htz-cl htz-cm"
+      className="htz-cn htz-co htz-cp htz-cq"
     >
       חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל
     </div>
     <div
-      className="htz-cj htz-ck htz-cl htz-cm"
+      className="htz-cn htz-co htz-cp htz-cq"
     >
       © כל הזכויות שמורות להוצאת עיתון הארץ בע"מ
     </div>
@@ -258,7 +269,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
 </div>
 `;
 
-exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element correctly 2`] = `".htz-a{background-color:#00537A}.htz-b{width:100%}.htz-c{color:#FFF}.htz-d{padding-top:3rem}.htz-e{padding-bottom:3rem}.htz-f{padding-right:15rem}.htz-g{padding-left:15rem}.htz-h{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-i{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-j{align-items:baseline;-webkit-box-align:baseline;-webkit-align-items:baseline}.htz-k{border-bottom-width:1px}.htz-l{border-bottom-style:solid}.htz-m{border-bottom-color:#FFF}.htz-n{padding-bottom:calc(2rem - 1px)}.htz-o{vertical-align:-0.15em}.htz-p{color:inherit}.htz-q{fill:#FFF}.htz-r{font-size:3rem}.htz-s{margin-right:3.5rem}.htz-t{margin-right:auto}.htz-u{margin-left:auto}.htz-z{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ab{margin-bottom:4rem}.htz-ac{margin-top:2rem}.htz-ae{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-af{margin-left:0.5rem}.htz-ag:after{content:\\"\\"}.htz-ah:after{margin-right:1rem}.htz-ai{margin-left:1rem}.htz-aj{font-weight:bold}.htz-ak{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-al{cursor:pointer}.htz-am{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-an{font-size:inherit}.htz-ao{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-ap{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-aq{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-as{text-decoration:none}.htz-at{white-space:nowrap}.htz-au::moz-focus-inner{border:0px}.htz-av::moz-focus-inner{padding:0rem}.htz-aw{padding-bottom:calc(0.75rem - 1px)}.htz-ax{border-top-width:1px}.htz-ay{border-top-style:solid}.htz-az{padding-top:calc(0.75rem - 1px)}.htz-ba{border-right-width:1px}.htz-bb{border-right-style:solid}.htz-bc{padding-right:4.5rem}.htz-bd{border-left-width:1px}.htz-be{border-left-style:solid}.htz-bf{padding-left:4.5rem}.htz-bg{border-radius:0rem}.htz-bh{border-color:#FFF}.htz-bi:hover{text-decoration:none}.htz-bj:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bk:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bl:hover{background-color:#003D59}.htz-bm:hover{border-color:#FFF}.htz-bn:hover{color:#FFF}.htz-bo:focus{outline:none}.htz-bp:focus{text-decoration:none}.htz-bq:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-br:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bs:focus{background-color:#003147}.htz-bt:focus{border-color:#FFF}.htz-bu:focus{color:#FFF}.htz-bv:active{outline:none}.htz-bw:active{text-decoration:none}.htz-bx:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-by:active{background-color:#003D59}.htz-bz:active{border-color:#FFF}.htz-ca:active{color:#FFF}.htz-cb{margin-bottom:2rem}.htz-cc{display:none}.htz-cd{margin-left:8rem}.htz-ci{min-width:20rem}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-v{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-w{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-x{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-y{max-width:184.71428571428572rem}.htz-cg{font-size:2.2857142857142856rem}.htz-ch{line-height:1.3125em}.htz-cl{font-size:2rem}.htz-cm{line-height:1.5em}}@media (max-width: 79.9375em){.htz-ce{font-size:2.3333333333333335rem}.htz-cf{line-height:1.2857142857142858em}.htz-cj{font-size:2rem}.htz-ck{line-height:1.5em}}"`;
+exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element correctly 2`] = `".htz-a{background-color:#00537A}.htz-b{width:100%}.htz-c{color:#FFF}.htz-d{padding-top:3rem}.htz-e{padding-bottom:3rem}.htz-f{padding-right:15rem}.htz-g{padding-left:15rem}.htz-h{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-i{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-j{align-items:baseline;-webkit-box-align:baseline;-webkit-align-items:baseline}.htz-k{border-bottom-width:1px}.htz-l{border-bottom-style:solid}.htz-m{border-bottom-color:#FFF}.htz-n{padding-bottom:calc(2rem - 1px)}.htz-o{vertical-align:-0.15em}.htz-p{color:inherit}.htz-q{fill:#FFF}.htz-r{font-size:17.7rem}.htz-s{margin-bottom:-5rem}.htz-t{margin-top:-5rem}.htz-u{margin-right:-0.5rem}.htz-v{font-size:3rem}.htz-w{margin-right:3.5rem}.htz-x{margin-right:auto}.htz-y{margin-left:auto}.htz-af{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ag{margin-bottom:4rem}.htz-ah{margin-top:2rem}.htz-ai{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-aj{margin-left:0.5rem}.htz-ak:after{content:\\"\\"}.htz-al:after{margin-right:1rem}.htz-am{margin-left:1rem}.htz-an{font-weight:bold}.htz-ao{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-ap{cursor:pointer}.htz-aq{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ar{font-size:inherit}.htz-as{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-at{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-au{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-av{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aw{text-decoration:none}.htz-ax{white-space:nowrap}.htz-ay::moz-focus-inner{border:0px}.htz-az::moz-focus-inner{padding:0rem}.htz-ba{padding-bottom:calc(0.75rem - 1px)}.htz-bb{border-top-width:1px}.htz-bc{border-top-style:solid}.htz-bd{padding-top:calc(0.75rem - 1px)}.htz-be{border-right-width:1px}.htz-bf{border-right-style:solid}.htz-bg{padding-right:4.5rem}.htz-bh{border-left-width:1px}.htz-bi{border-left-style:solid}.htz-bj{padding-left:4.5rem}.htz-bk{border-radius:0rem}.htz-bl{border-color:#FFF}.htz-bm:hover{text-decoration:none}.htz-bn:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bo:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bp:hover{background-color:#003D59}.htz-bq:hover{border-color:#FFF}.htz-br:hover{color:#FFF}.htz-bs:focus{outline:none}.htz-bt:focus{text-decoration:none}.htz-bu:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bv:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bw:focus{background-color:#003147}.htz-bx:focus{border-color:#FFF}.htz-by:focus{color:#FFF}.htz-bz:active{outline:none}.htz-ca:active{text-decoration:none}.htz-cb:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-cc:active{background-color:#003D59}.htz-cd:active{border-color:#FFF}.htz-ce:active{color:#FFF}.htz-cf{margin-bottom:2rem}.htz-cg{display:none}.htz-ch{margin-left:8rem}.htz-cm{min-width:20rem}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-z{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-ab{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ac{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-ae{max-width:184.71428571428572rem}.htz-ck{font-size:2.2857142857142856rem}.htz-cl{line-height:1.3125em}.htz-cp{font-size:2rem}.htz-cq{line-height:1.5em}}@media (max-width: 79.9375em){.htz-ci{font-size:2.3333333333333335rem}.htz-cj{line-height:1.2857142857142858em}.htz-cn{font-size:2rem}.htz-co{line-height:1.5em}}"`;
 
 exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 1`] = `
 <div>
@@ -268,7 +279,18 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
     <div
       className="htz-j htz-k htz-l htz-m htz-n"
     >
-       הארץ 
+      <svg
+        className="htz-o htz-p htz-q htz-r htz-s htz-t"
+        height="1em"
+        viewBox="0 0 256 256"
+        width="1em"
+      >
+          
+        <path
+          d="M38.1 135.4c-2.8 14.8-5.2 25.2-5.3 26.1-.1.9-7.1-24.9-6.8-25.8 5.5-15.4.9-22.7-3.7-22.7H12c0-2.4.5-11-5-19h25c-6.6 17.6 2 31.7 6.1 41.4zm-3-41.4c3.7 8.5 2.9 17.6-.2 25.9-.6 1.6.5 6 1.8 5.7 2.8-7.7 3.9-11.6 10.9-12.6h9.5c-1-2-5.1-8.5.1-19H35.1zm80.1 12.4c-.2-2.2-.7-8.7-3.4-12.4H62c-4.3 6.5-2.9 14.1.1 19 .1-.1 39.8 0 40 0 6.2.1 8.2 4.5 7.7 12.6-.2 3.6-2.6 9.1-4.5 11.7-.5.7 4.2 15.9 5.6 22.9 0 0 .5 0 .7-.7.9-1.9 3-11.5 3.6-17.8.6-5.6-1.4-12.3-1.7-15.7-.7-7.6 2-16.2 1.7-19.6zm74.3 16.4s-.8 7.5-4.1 15.5c-1 5-.2 8.5.9 13.3.9 4 2 5.7 3 8.5h.9c6.3-14.9 5.6-22.3.1-37.2-.1-.4-.8.1-.8-.1zm-60.5-3.4l54.9 40.1c0-.9-2.7-8.3-3.3-12-.8-4.7-.5-5.9.5-10.4-6.5-4.3-11.6-8.3-19.8-13.8-1.1-.7-2-3.1-1.7-5.1.4-2.6 2.9-5.2 5.1-5.2H181s-5.9-9.5 0-19h-23s-.8 3.2-.6 6.4c.2 3.3 2.3 6 1 10.9-1.1 3.9-2.4 5.6-3.5 6.3-10.6-7.7-32.6-23.6-32.6-23.6h-4.4s-.4.1-.3.3c2.3 4.4 3.3 10.2 2.8 15.2-.7 6.8-1.6 7.8-1.6 13.5 0 6.2 2.2 11.4 1.8 17.6-.6 8.9-2.5 15.9-3.3 18.6-.3.9.2.8.2.8h27.1c-4.9-9.4-2.8-16-2.8-16h-9.7c-7.3.1-8-10-7.1-16.8.5-5.2 3.7-7.7 4-7.8zm114.4 6.4c-1.4-5.6-.3-8.3 2.2-13.4 1.1-2.2 1.3-8.5 1.3-9.3 0 0-.1-9.1-4.7-9.1h-55.8s-5.8 8.5.5 19h47c4.2 0 5.1 4.7 5.2 8.5 0 3.8-1.9 9.8-3 13.3-.8 2.6 3.1 15.1 5.2 25.2h.9c.3-.8 4.3-21.9 4-24.9-.2-1.7-1.8-5.2-2.8-9.3z"
+          fill="currentColor"
+        />
+      </svg>
     </div>
     <a
       className={null}
@@ -277,7 +299,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
       target={null}
     >
       <svg
-        className="htz-o htz-p htz-q htz-r htz-s htz-t"
+        className="htz-o htz-p htz-q htz-u htz-v htz-w"
         height="1em"
         viewBox="0 0 256 256"
         width="1em"
@@ -296,7 +318,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
       target={null}
     >
       <svg
-        className="htz-o htz-p htz-q htz-r htz-s htz-t"
+        className="htz-o htz-p htz-q htz-u htz-v htz-w"
         height="1em"
         viewBox="0 0 256 256"
         width="1em"
@@ -315,7 +337,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
       target={null}
     >
       <svg
-        className="htz-o htz-p htz-q htz-r htz-s htz-t"
+        className="htz-o htz-p htz-q htz-u htz-v htz-w"
         height="1em"
         viewBox="0 0 256 256"
         width="1em"
@@ -328,13 +350,13 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
       </svg>
     </a>
     <div
-      className="htz-u htz-v htz-w htz-x"
+      className="htz-x htz-y htz-z htz-ab"
     >
       <ul
-        className="htz-u htz-y htz-z htz-ab"
+        className="htz-x htz-ac htz-ae htz-af"
       >
         <a
-          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj"
+          className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am"
           href="https://www.haaretz.co.il/promotions-page"
           onClick={[Function]}
           target={null}
@@ -342,7 +364,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           רכשו מנוי
         </a>
         <a
-          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj"
+          className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am"
           href="https://www.haaretz.co.il/blogs"
           onClick={[Function]}
           target={null}
@@ -350,7 +372,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           בלוגים
         </a>
         <a
-          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj"
+          className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am"
           href="https://www.haaretz.co.il/misc/terms-of-use"
           onClick={[Function]}
           target={null}
@@ -359,10 +381,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
         </a>
       </ul>
       <ul
-        className="htz-u htz-y htz-z htz-ab"
+        className="htz-x htz-ac htz-ae htz-af"
       >
         <a
-          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj"
+          className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am"
           href="https://www.haaretz.co.il/misc/contact-us"
           onClick={[Function]}
           target={null}
@@ -370,7 +392,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           צרו קשר
         </a>
         <a
-          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj"
+          className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am"
           href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
           onClick={[Function]}
           target={null}
@@ -378,7 +400,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           פרסמו באתר
         </a>
         <a
-          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj"
+          className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am"
           href="https://www.haaretz.co.il/personal-area/my-account"
           onClick={[Function]}
           target={null}
@@ -387,16 +409,17 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
         </a>
       </ul>
     </div>
-    <button
-      className="htz-ak htz-al htz-am htz-an htz-ac htz-ao htz-z htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-k htz-l htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc"
+    <a
+      className="htz-an htz-ao htz-ap htz-aq htz-ag htz-ar htz-ae htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-k htz-l htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf"
+      href="https://www.haaretz.co.il/st/inter/shivuk-digital/hebrew/mtm/haaretzapp.html"
       id={null}
       onClick={[Function]}
       type="button"
     >
       להורדת האפליקציה
-    </button>
+    </a>
     <div
-      className="htz-cd htz-ce htz-cf htz-cg"
+      className="htz-cg htz-ch htz-ci htz-cj"
     >
       © כל הזכויות שמורות
     </div>
@@ -404,4 +427,4 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
 </div>
 `;
 
-exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 2`] = `".htz-a{display:block}.htz-b{text-align:center}.htz-c{width:100%}.htz-d{padding-top:2rem}.htz-e{padding-bottom:2rem}.htz-f{padding-right:7rem}.htz-g{padding-left:7rem}.htz-h{background-color:#005479}.htz-i{color:white}.htz-j{font-size:5rem}.htz-k{border-bottom-width:1px}.htz-l{border-bottom-style:solid}.htz-m{border-bottom-color:#FFF}.htz-n{padding-bottom:calc(2rem - 1px)}.htz-o{vertical-align:-0.15em}.htz-p{color:inherit}.htz-q{fill:#FFF}.htz-r{font-size:3.5rem}.htz-s{margin:3rem}.htz-t{margin-top:2rem}.htz-u{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-v{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-w{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-x{padding-bottom:4rem}.htz-y{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-z{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-ab{align-items:space-around;-webkit-box-align:justify;-webkit-align-items:space-around}.htz-ac{font-weight:bold}.htz-ae{margin-top:1rem}.htz-af{margin-bottom:1rem}.htz-ak{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-al{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-am{cursor:pointer}.htz-an{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ao{font-size:inherit}.htz-ap{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-aq{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-as{text-decoration:none}.htz-at{white-space:nowrap}.htz-au::moz-focus-inner{border:0px}.htz-av::moz-focus-inner{padding:0rem}.htz-aw{padding-bottom:calc(1rem - 1px)}.htz-ax{border-top-width:1px}.htz-ay{border-top-style:solid}.htz-az{padding-top:calc(1rem - 1px)}.htz-ba{border-right-width:1px}.htz-bb{border-right-style:solid}.htz-bc{padding-right:4.5rem}.htz-bd{border-left-width:1px}.htz-be{border-left-style:solid}.htz-bf{padding-left:4.5rem}.htz-bg{border-radius:0rem}.htz-bh{background-color:#00537A}.htz-bi{border-color:#FFF}.htz-bj{color:#FFF}.htz-bk:hover{text-decoration:none}.htz-bl:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bm:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bn:hover{background-color:#003D59}.htz-bo:hover{border-color:#FFF}.htz-bp:hover{color:#FFF}.htz-bq:focus{outline:none}.htz-br:focus{text-decoration:none}.htz-bs:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bt:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bu:focus{background-color:#003147}.htz-bv:focus{border-color:#FFF}.htz-bw:focus{color:#FFF}.htz-bx:active{outline:none}.htz-by:active{text-decoration:none}.htz-bz:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-ca:active{background-color:#003D59}.htz-cb:active{border-color:#FFF}.htz-cc:active{color:#FFF}@media (max-width: 79.9375em){.htz-ag{font-size:2.3333333333333335rem}.htz-ah{line-height:1.2857142857142858em}.htz-cd{font-size:1.8333333333333333rem}.htz-ce{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-ai{font-size:2.2857142857142856rem}.htz-aj{line-height:1.3125em}.htz-cf{font-size:1.7142857142857142rem}.htz-cg{line-height:1.75em}}"`;
+exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 2`] = `".htz-a{display:block}.htz-b{text-align:center}.htz-c{width:100%}.htz-d{padding-top:1rem}.htz-e{padding-bottom:2rem}.htz-f{padding-right:7rem}.htz-g{padding-left:7rem}.htz-h{background-color:#005479}.htz-i{color:white}.htz-j{font-size:5rem}.htz-k{border-bottom-width:1px}.htz-l{border-bottom-style:solid}.htz-m{border-bottom-color:#FFF}.htz-n{padding-bottom:calc(2rem - 1px)}.htz-o{vertical-align:-0.15em}.htz-p{color:inherit}.htz-q{fill:#FFF}.htz-r{font-size:12.5rem}.htz-s{margin-bottom:-4.5rem}.htz-t{margin-top:-4.5rem}.htz-u{font-size:3.5rem}.htz-v{margin:3rem}.htz-w{margin-top:2rem}.htz-x{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-y{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-z{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-ab{padding-bottom:4rem}.htz-ac{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-ae{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-af{align-items:space-around;-webkit-box-align:justify;-webkit-align-items:space-around}.htz-ag{font-weight:bold}.htz-ah{margin-top:1rem}.htz-ai{margin-bottom:1rem}.htz-an{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-ao{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-ap{cursor:pointer}.htz-aq{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ar{font-size:inherit}.htz-as{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-at{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-au{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-av{text-decoration:none}.htz-aw{white-space:nowrap}.htz-ax::moz-focus-inner{border:0px}.htz-ay::moz-focus-inner{padding:0rem}.htz-az{padding-bottom:calc(1rem - 1px)}.htz-ba{border-top-width:1px}.htz-bb{border-top-style:solid}.htz-bc{padding-top:calc(1rem - 1px)}.htz-bd{border-right-width:1px}.htz-be{border-right-style:solid}.htz-bf{padding-right:4.5rem}.htz-bg{border-left-width:1px}.htz-bh{border-left-style:solid}.htz-bi{padding-left:4.5rem}.htz-bj{border-radius:0rem}.htz-bk{background-color:#00537A}.htz-bl{border-color:#FFF}.htz-bm{color:#FFF}.htz-bn:hover{text-decoration:none}.htz-bo:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bp:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bq:hover{background-color:#003D59}.htz-br:hover{border-color:#FFF}.htz-bs:hover{color:#FFF}.htz-bt:focus{outline:none}.htz-bu:focus{text-decoration:none}.htz-bv:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bw:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bx:focus{background-color:#003147}.htz-by:focus{border-color:#FFF}.htz-bz:focus{color:#FFF}.htz-ca:active{outline:none}.htz-cb:active{text-decoration:none}.htz-cc:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-cd:active{background-color:#003D59}.htz-ce:active{border-color:#FFF}.htz-cf:active{color:#FFF}@media (max-width: 79.9375em){.htz-aj{font-size:2.3333333333333335rem}.htz-ak{line-height:1.2857142857142858em}.htz-cg{font-size:1.8333333333333333rem}.htz-ch{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-al{font-size:2.2857142857142856rem}.htz-am{line-height:1.3125em}.htz-ci{font-size:1.7142857142857142rem}.htz-cj{line-height:1.75em}}"`;

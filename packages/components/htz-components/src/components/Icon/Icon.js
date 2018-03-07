@@ -49,6 +49,7 @@ import IconMailFooter from './icons/IconMailFooter';
 import IconApple from './icons/IconApple';
 import IconHtzLoader from './icons/IconHtzLoader';
 import IconTmLoader from './icons/IconTmLoader';
+import IconHaaretzLogo from './icons/IconHaaretzLogo';
 
 
 const gutterWidth = '1rem';
@@ -162,11 +163,12 @@ export default class Icons extends React.Component {
           <Cell name="IconArrow">{<IconArrow size={this.state.size} />}</Cell>
           <Cell name="IconReply">{<IconReply size={this.state.size} />}</Cell>
           <Cell name="IconItalic">{<IconItalic size={this.state.size} />}</Cell>
-          <Cell name="IconHtzLoader">{<IconHtzLoader size={this.state.size} />}</Cell>
-          <Cell name="IconTmLoader">{<IconTmLoader size={this.state.size} />}</Cell>
           <Cell name="IconAndroid">{<IconAndroid size={this.state.size} />}</Cell>
           <Cell name="IconMailFooter">{<IconMailFooter size={this.state.size} />}</Cell>
           <Cell name="IconApple">{<IconApple size={this.state.size} />}</Cell>
+          <Cell name="IconHtzLoader">{<IconHtzLoader size={this.state.size} />}</Cell>
+          <Cell name="IconTmLoader">{<IconTmLoader size={this.state.size} />}</Cell>
+          <Cell name="IconHaaretzLogo">{<IconHaaretzLogo size={this.state.size} />}</Cell>
         </Wrapper>
       </div>
     );

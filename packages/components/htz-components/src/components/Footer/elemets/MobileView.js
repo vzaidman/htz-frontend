@@ -4,15 +4,22 @@ import { createComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import Button from '../../Button/Button'; // eslint-disable-line import/no-named-as-default
 import IconFaceBookLogo from '../../Icon/icons/IconFacebookLogo';
+import IconHaaretzLogo from '../../Icon/icons/IconHaaretzLogo';
 import IconTwitter from '../../Icon/icons/IconTwitter';
 import IconGPlus from '../../Icon/icons/IconGPlus';
 import Link from '../../Link/Link'; // eslint-disable-line import/no-named-as-default
+
+// todo: ask if there is better fix for logo when svg shape is not square
+const LogoMiscStyle = {
+  marginBottom: '-4.5rem',
+  marginTop: '-4.5rem',
+};
 
 const wrapperStyle = ({ theme, }) => ({
   display: 'block',
   textAlign: 'center',
   width: '100%',
-  paddingTop: '2rem',
+  paddingTop: '1rem',
   paddingBottom: '2rem',
   paddingInlineStart: '7rem',
   paddingInlineEnd: '7rem',
@@ -78,7 +85,9 @@ const MobileView = ({
   theme: { footerMobileListsI18n: { ButtonName, Copyright, ListOne, ListTwo, }, },
 }) => (
   <Wrapper>
-    <StyledMobileHead> הארץ </StyledMobileHead>
+    <StyledMobileHead>
+      <IconHaaretzLogo size={12.5} miscStyles={LogoMiscStyle} />
+    </StyledMobileHead>
     <Link
       href="https://www.facebook.com/haaretz"
       content={<IconFaceBookLogo size={3.5} miscStyles={IconMiscStyle} />}
@@ -100,7 +109,13 @@ const MobileView = ({
       </StyledLinkBox>
     </StyledMobileMainList>
     {/* todo: onClick button should direct to download app (hardcoded?) */}
-    <Button variant="secondary" boxModel={{ hp: 4.5, vp: 1, }} onClick={() => console.warn('WIP!')}>
+    <Button
+      variant="secondary"
+      boxModel={{ hp: 4.5, vp: 1, }}
+      // Link not in console(smart phone mode). However, Its working on smart phone.
+      href={'https://www.haaretz.co.il/st/inter/shivuk-digital/hebrew/mtm/haaretzapp.html'}
+      onClick={() => console.warn('WIP!')}
+    >
       {ButtonName.text}
     </Button>
 

@@ -9,6 +9,7 @@ import Link from '../../../Link/Link';
 import LayoutFooterRow from '../../../PageLayout/LayoutRow';
 import LayoutFooterContainer from '../../../PageLayout/LayoutContainer';
 import IconFaceBookLogo from '../../../Icon/icons/IconFacebookLogo';
+import IconHaaretzLogo from '../../../Icon/icons/IconHaaretzLogo';
 import IconTwitter from '../../../Icon/icons/IconTwitter';
 import IconGPlus from '../../../Icon/icons/IconGPlus';
 import IconRss from '../../../Icon/icons/IconRss';
@@ -32,7 +33,7 @@ const StyledHeadLink = createComponent(headLinkStyle, Link, [ 'content', 'href',
 const headWrapperLinkStyle = ({ theme, }) => ({
   display: 'flex',
   flexWrap: 'wrap',
-  marginLeft: '0.5rem',
+  marginInlineEnd: '0.5rem',
 });
 
 const StyledHeadLinksWrapper = createComponent(headWrapperLinkStyle);
@@ -70,6 +71,12 @@ const StyledDesktopText = createComponent(optionalExtendedWrapper);
 
 const IconMiscStyle = {
   marginInlineStart: '3.5rem',
+};
+// todo: ask if there is better fix for logo when svg shape is not square
+const LogoMiscStyle = {
+  marginBottom: '-5rem',
+  marginTop: '-5rem',
+  marginInlineStart: '-0.5rem',
 };
 
 export class DesktopView extends React.Component {
@@ -130,7 +137,7 @@ export class DesktopView extends React.Component {
         bgc={color('footer', 'bg')}
       >
         <StyledDesktopHead>
-          <div>הארץ</div>
+          <div><IconHaaretzLogo size={17.7} miscStyles={LogoMiscStyle} /></div>
           <div>
             <Link content={<IconFaceBookLogo size={3} miscStyles={IconMiscStyle} />} href="https://www.facebook.com/haaretz" />
             <Link content={<IconTwitter size={3} miscStyles={IconMiscStyle} />} href="https://twitter.com/haaretz" />
