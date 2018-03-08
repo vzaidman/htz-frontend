@@ -27,9 +27,11 @@ const propTypes = {
   /**
    * An array of images' objects you want to display in the gallery.
    */
-  images: PropTypes.arrayOf(
-    PropTypes.object
-  ).isRequired,
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /**
+   * Should the gallery be rendered as full-screen.
+   */
+  isFullScreen: PropTypes.bool,
   /**
    * Gallery's title/name for display (if enabled).
    */
@@ -47,13 +49,26 @@ const propTypes = {
   theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
+const galleryProps = {
+  ...propTypes,
+  /**
+   * A callback that changes the Main component's state with the current displaying image's index.
+   */
+  changeCurrentDisplaying: PropTypes.func.isRequired,
+  /**
+   * Current displaying image's index.
+   */
+  currentDisplaying: PropTypes.number.isRequired,
+};
+
 const defaultProps = {
   enableEnlarge: true,
   forceAspect: null,
+  isFullScreen: false,
   showTitle: true,
 };
 
-const wrapperStyle = ({ theme, }) => ({
+const wrapperStyle = ({ theme, isFullScreen, }) => ({
   position: 'relative',
   ...parseComponentProp(
     'marginBottom',
@@ -61,45 +76,11 @@ const wrapperStyle = ({ theme, }) => ({
     theme.mq,
     (prop, value) => ({ [prop]: value, })
   ),
+  ...(isFullScreen && {
+    height: '100%',
+  }),
 });
 const Wrapper = createComponent(wrapperStyle);
-
-const zoomWrapperStyle = ({ theme, }) => ({
-  backgroundColor: rgba(theme.color('neutral', '+1'), 0.5),
-  borderRadius: '50%',
-  cursor: 'zoom-in',
-  end: '1rem',
-  height: '5rem',
-  padding: '1rem',
-  position: 'absolute',
-  top: '1rem',
-  width: '5rem',
-  zIndex: '1',
-  ':hover': {
-    backgroundColor: theme.color('neutral', '+1'),
-  },
-});
-
-// eslint-disable-next-line react/prop-types
-const ZoomWrapperUnstyled = ({ theme, ...props }) => (
-  <button {...props} aria-label={theme.zoominText}>
-    <IconZoomIn
-      color={[ 'neutral', '-10', ]}
-      size={2.5}
-      miscStyles={{
-        display: 'block',
-        margin: '0 auto',
-      }}
-    />
-  </button>
-);
-
-
-const ZoomWrapper = createComponent(
-  zoomWrapperStyle,
-  withTheme(ZoomWrapperUnstyled),
-  props => Object.keys(props)
-);
 
 const captionWrapperStyle = ({ theme, }) => ({
   backgroundColor: theme.color('neutral'),
@@ -128,6 +109,81 @@ const dotStyle = ({ theme, active, }) => ({
 });
 const Dot = createComponent(dotStyle, 'span');
 
+const dotsPropTypes = {
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  currentDisplaying: PropTypes.number.isRequired,
+};
+
+const DotsElement = ({ items, currentDisplaying, }) => (
+  <DotsWrapper>
+    {items.map((img, i) => (
+      <Dot
+        active={i === currentDisplaying}
+      />
+    ))}
+  </DotsWrapper>
+);
+
+DotsElement.propTypes = dotsPropTypes;
+
+const Gallery = ({
+  accessibility,
+  changeCurrentDisplaying,
+  currentDisplaying,
+  enableEnlarge,
+  forceAspect,
+  images,
+  isFullScreen,
+  name,
+  showTitle,
+  theme,
+}) => {
+  const CarouselElement = () => (
+    <Carousel
+      buttonsColor={rgba(theme.color('quaternary'), 0.9)}
+      Component={ArticleImage}
+      componentAttrs={{
+        forceAspect: isFullScreen ? 'full' : forceAspect || 'regular',
+        isFullScreen,
+        showCaption: false,
+        enableEnlarge: false,
+        miscStyles: {
+          marginBottom: '0 !important', /** TODO: for some reason it won't Trump */
+          height: '100%',
+        },
+      }}
+      IndicationComponent={DotsElement}
+      items={images}
+      loop
+      onStateChangeCB={changeCurrentDisplaying}
+      startAt={currentDisplaying}
+    />
+  );
+
+  return (
+    <Wrapper isFullScreen={isFullScreen}>
+      <CarouselElement isFullScreen={isFullScreen} />
+      <CaptionWrapper>
+        {!isFullScreen &&
+          <Caption
+            caption={images[currentDisplaying].title}
+            credit={images[currentDisplaying].credit}
+            color={[ 'neutral', '-10', ]}
+            typeStyles={-2}
+          />
+        }
+        <DotsElement
+          items={images}
+          currentDisplaying={currentDisplaying}
+        />
+      </CaptionWrapper>
+    </Wrapper>
+  );
+};
+
+Gallery.propTypes = galleryProps;
+Gallery.defaultProps = defaultProps;
+
 /**
  * The ImageGallery component receives an array of images/pictures objects,
  * and mount them in a [`Carousel`](./#carousel) component, with [`ArticleImage`](./#articleimage)
@@ -136,102 +192,45 @@ const Dot = createComponent(dotStyle, 'span');
 class ImageGallery extends React.Component {
   state = {
     currentDisplaying: 0,
-    fullScreen: false,
+    isFullScreen: false,
   };
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
       this.state.currentDisplaying !== nextState.currentDisplaying ||
-      this.state.fullScreen !== nextState.fullScreen
+      this.state.isFullScreen !== nextState.isFullScreen
     );
   }
-
   toggleFullScreen = () => {
     this.setState({
-      fullScreen: !this.state.fullScreen,
+      isFullScreen: !this.state.isFullScreen,
     });
   };
 
-  currentDisplaying = index => {
+  changeCurrentDisplaying = index => {
     this.setState({
       currentDisplaying: index,
     });
   };
 
   render() {
-    const {
-      accessibility,
-      enableEnlarge,
-      forceAspect,
-      images,
-      name,
-      showTitle,
-      theme,
-    } = this.props;
-
-    const image = images[this.state.currentDisplaying];
-
-    const CarouselElement = ({ isFullScreen, }) => (
-      <Carousel
-        buttonsColor={rgba(theme.color('quaternary'), 0.9)}
-        Component={ArticleImage}
-        componentAttrs={{
-          forceAspect: isFullScreen ? 'full' : forceAspect || 'regular',
-          isFullScreen,
-          showCaption: false,
-          enableEnlarge: false,
-          miscStyles: {
-            marginBottom: '0 !important', /** TODO: for some reason it won't Trump */
-            height: '100%',
-          },
-        }}
-        items={images}
-        loop
-        onStateChangeCB={this.currentDisplaying}
-        startAt={this.state.currentDisplaying}
-      />
-    );
-
-    const DotsElement = () => (
-      <DotsWrapper>
-        {images.map((img, i) => (
-          <Dot
-            active={i === this.state.currentDisplaying}
-          />
-        ))}
-      </DotsWrapper>
-    );
-
     return (
-      <Fragment>
-        <Wrapper>
-          {enableEnlarge && <ZoomWrapper onClick={this.toggleFullScreen} />}
-          <CarouselElement />
-          <CaptionWrapper>
-            <Caption
-              caption={image.title}
-              credit={image.credit}
-              color={[ 'neutral', '-10', ]}
-              typeStyles={-2}
+      this.props.enableEnlarge ?
+        <FullScreenMedia
+          credit={this.props.images[this.state.currentDisplaying].credit}
+          media={
+            <Gallery
+              {...this.props}
+              changeCurrentDisplaying={this.changeCurrentDisplaying}
+              currentDisplaying={this.state.currentDisplaying}
+              isFullScreen={this.state.isFullScreen}
             />
-            <DotsElement />
-          </CaptionWrapper>
-        </Wrapper>
-        {this.state.fullScreen && (
-          <FullScreenMedia
-            closeCallBack={this.toggleFullScreen}
-            credit={image.credit}
-            media={
-              <Fragment>
-                <CarouselElement isFullScreen />
-                <DotsElement />
-              </Fragment>
-            }
-            mediaType={'gallery'}
-            title={image.title}
-          />
-        )}
-      </Fragment>
+          }
+          title={this.props.images[this.state.currentDisplaying].title}
+          toggleFullScreenCB={this.toggleFullScreen}
+        />
+        :
+        <Gallery {...this.props} />
     );
   }
 }

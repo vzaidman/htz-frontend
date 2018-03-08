@@ -4,46 +4,50 @@ import { createComponent, withTheme, } from 'react-fela';
 import { createMqFunc, } from '@haaretz/htz-css-tools';
 
 import IconClose from '../../Icon/icons/IconClose';
+import IconZoomIn from '../../Icon/icons/IconZoomIn';
 
 const propTypes = {
   /**
    * Nested children inside this component.
    */
-  children: PropTypes.node.isRequired,
+  caption: PropTypes.node.isRequired,
   /**
-   * A method that should be executed for exiting full-screen mode.
+   * Nested children inside this component.
    */
-  closeCallBack: PropTypes.func.isRequired,
+  media: PropTypes.node.isRequired,
+  /**
+   *
+   */
+  toggleFullScreen: PropTypes.func.isRequired,
 };
 
-const containerStyle = ({ theme, }) => {
+const containerStyle = ({ isFullScreen, theme, }) => {
   const mq = createMqFunc();
   return ({
-    alignItems: 'center',
-    backgroundColor: theme.color('neutral'),
-    display: 'flex',
-    height: '100%',
-    position: 'fixed',
-    start: '0',
-    top: '0',
-    width: '100%',
-    zIndex: '6',
-    ...mq(
-      { until: 'm', }, {
+    position: 'relative',
+    ...(isFullScreen && {
+      alignItems: 'center',
+      backgroundColor: theme.color('neutral'),
+      display: 'flex',
+      height: '100%',
+      position: 'fixed',
+      start: '0',
+      top: '0',
+      width: '100%',
+      zIndex: '6',
+      ...mq({ until: 'm', }, {
         flexDirection: 'column',
         justifyContent: 'center',
-      }
-    ),
-    ...mq(
-      { from: 'm', }, {
+      }),
+      ...mq({ from: 'm', }, {
         justifyContent: 'flex-end',
-      }
-    ),
+      }),
+    }),
   });
 };
 const Container = createComponent(containerStyle, 'figure');
 
-const closeWrapperStyle = ({ theme, }) => ({
+const iconStyle = ({ theme, }) => ({
   backgroundColor: theme.color('neutral'),
   borderRadius: '50%',
   cursor: 'zoom-out',
@@ -60,32 +64,55 @@ const closeWrapperStyle = ({ theme, }) => ({
 });
 
 // eslint-disable-next-line react/prop-types
-const CloseWrapperUnstyled = ({ theme, ...props }) => (
-  <button {...props} aria-label={theme.zoomoutText}>
-    <IconClose
-      color={[ 'neutral', '-10', ]}
-      size={2.5}
-      miscStyles={{
-        display: 'block',
-        margin: '0 auto',
-      }}
-    />
-  </button>
-);
+const IconUnstyled = ({ theme, isFullScreen, ...props }) => {
+  const ToggleIcon = isFullScreen ? IconClose : IconZoomIn;
+  return (
+    <button {...props} aria-label={theme.zoomoutText}>
+      <ToggleIcon
+        color={[ 'neutral', '-10', ]}
+        size={2.5}
+        miscStyles={{
+          display: 'block',
+          margin: '0 auto',
+        }}
+      />
+    </button>
+  );
+};
 
-const CloseWrapper = createComponent(
-  closeWrapperStyle,
-  withTheme(CloseWrapperUnstyled),
+const Icon = createComponent(
+  iconStyle,
+  withTheme(IconUnstyled),
   props => Object.keys(props)
 );
 
 
-const FullScreenContainer = ({ closeCallBack, children, }) => (
-  <Container>
-    <CloseWrapper onClick={closeCallBack} />
-    {children}
-  </Container>
-);
+class FullScreenContainer extends React.Component {
+  state = {
+    isFullScreen: false,
+  };
+
+  toggleFullScreen = () => {
+    this.props.toggleFullScreen();
+    this.setState({
+      isFullScreen: !this.state.isFullScreen,
+    });
+  };
+
+  render() {
+    const { isFullScreen, } = this.state;
+    return (
+      <Container isFullScreen={isFullScreen}>
+        <Icon
+          isFullScreen={isFullScreen}
+          onClick={this.toggleFullScreen}
+        />
+        {this.props.media}
+        {isFullScreen && this.props.caption}
+      </Container>
+    );
+  }
+}
 
 FullScreenContainer.propTypes = propTypes;
 

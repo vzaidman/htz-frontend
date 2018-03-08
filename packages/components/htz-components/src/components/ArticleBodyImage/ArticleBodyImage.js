@@ -197,7 +197,13 @@ const getAspect = viewMode => {
 };
 
 const ImageElement = props => {
-  const { imageType, imgArray, isFullScreen, viewMode, forceAspect, } = props;
+  const {
+    imageType,
+    imgArray,
+    isFullScreen,
+    viewMode,
+    forceAspect,
+  } = props;
 
   const aspect = forceAspect || getAspect(viewMode);
 

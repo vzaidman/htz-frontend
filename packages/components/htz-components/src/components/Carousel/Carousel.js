@@ -29,9 +29,7 @@ const propTypes = {
   /**
    * An array of items objects who should populate the carousel.
    */
-  items: PropTypes.arrayOf(
-    PropTypes.object
-  ).isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
    * Should the carousel iterate over the given items in a loop, or start at 0 and end with n.
    */
@@ -74,7 +72,7 @@ const wrapperStyle = () => ({
   overflow: 'hidden',
   position: 'relative',
 });
-const ItemsWrapper = createComponent(wrapperStyle);
+const ItemsWrapper = createComponent(wrapperStyle, 'div', [ 'tabindex', ]);
 
 const navigationStyle = ({ theme, buttonsColor, }) => ({
   backgroundColor: buttonsColor,
@@ -157,35 +155,23 @@ class Carousel extends React.Component {
     );
   }
 
-  componentDidUpdate() {
+  /* componentDidUpdate() {
     this.props.onStateChangeCB && this.props.onStateChangeCB(this.state.displayItemNum);
-  }
-  getTransitionEnd = () => {
+    console.log(this.wrapper);
+    this.wrapper.focus();
+  } */
+
+  componentWillUnmount() {
   /* eslint-disable no-undef */
-    if ('ontransitionend' in window) {
-      // Firefox
-      return 'transitionend';
-    }
-    else if ('onwebkittransitionend' in window) {
-      // Chrome/Saf (+ Mobile Saf)/Android
-      return 'webkitTransitionEnd';
-    }
-    else if ('onotransitionend' in this.currentItems || navigator.appName === 'Opera') {
-      // Opera
-      // As of Opera 10.61, there is no "onotransitionend" property added to DOM elements,
-      // so it will always use the navigator.appName fallback
-      return 'oTransitionEnd';
-    }
-    // IE - not implemented (even in IE9) :(
-    return false;
+    document.removeEventListener('click', this.handleGlobalClick);
+    document.removeEventListener('keydown', this.handleGlobalKeydown);
   /* eslint-enable no-undef */
-  };
+  }
 
   getIndex = pos => {
     const current = this.state.displayItemNum;
     const total = this.props.items.length;
-    const step = this.props.step;
-    const loop = this.props.loop;
+    const { step, loop, } = this.props.step;
 
     let index;
 
@@ -209,6 +195,27 @@ class Carousel extends React.Component {
     else index = 0;
 
     return index;
+  };
+
+  getTransitionEnd = () => {
+    /* eslint-disable no-undef */
+    if ('ontransitionend' in window) {
+      // Firefox
+      return 'transitionend';
+    }
+    else if ('onwebkittransitionend' in window) {
+      // Chrome/Saf (+ Mobile Saf)/Android
+      return 'webkitTransitionEnd';
+    }
+    else if ('onotransitionend' in this.currentItems || navigator.appName === 'Opera') {
+      // Opera
+      // As of Opera 10.61, there is no "onotransitionend" property added to DOM elements,
+      // so it will always use the navigator.appName fallback
+      return 'oTransitionEnd';
+    }
+    // IE - not implemented (even in IE9) :(
+    return false;
+    /* eslint-enable no-undef */
   };
 
   handleGlobalClick = e => {
@@ -252,6 +259,7 @@ class Carousel extends React.Component {
       buttonsColor,
       Component,
       componentAttrs,
+      // IndicationComponent,
       inView,
       items,
       loop,
@@ -270,6 +278,7 @@ class Carousel extends React.Component {
     return (
       <ItemsWrapper
         innerRef={wrapper => this.wrapper = wrapper} // eslint-disable-line no-return-assign
+        tabindex="0"
       >
         {(this.state.displayItemNum > 0 || loop) &&
           <Fragment>
@@ -317,7 +326,7 @@ class Carousel extends React.Component {
               onClick={() => this.changeItem('next')}
             >
               <IconBack
-                color={'neutral'}
+                color="neutral"
                 size={2.5}
               />
             </NextButton>
