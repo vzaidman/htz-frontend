@@ -23,11 +23,17 @@ const CreditArticleStyled = createComponent(
     ],
   }),
   Credit,
-  [ 'name', 'url', ]
+  [ 'contentName', 'url', ]
 );
 
 export default function CreditArticle({ contentName, url, miscStyles, }) {
-  return <CreditArticleStyled name={contentName} url={url} miscStyles={miscStyles} />;
+  return (
+    <CreditArticleStyled
+      contentName={contentName}
+      url={url}
+      miscStyles={miscStyles}
+    />
+  );
 }
 
 CreditArticle.propTypes = {

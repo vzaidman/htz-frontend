@@ -13,6 +13,7 @@ import GridItem from '../Grid/GridItem';
 import CreditArticle from '../Credit/CreditArticle';
 import AlertsDesktopButton from '../AlertsButton/AlertsDesktopButton';
 import AlertsMobileButton from '../AlertsButton/AlertsMobileButton';
+import Image from '../Image/Image';
 import Time from '../Time/Time';
 
 const styleArticleByLineMobile = ({ theme, miscStyles, }) => ({
@@ -54,15 +55,22 @@ function ArticleByLineMobileComponent({ author, publishDateTime, className, }) {
           display: [ { from: 'm', value: 'none', }, ],
         }}
       >
-        {/* FIXME Use the <Image /> component */}
-        <img
-          style={{
+        <Image
+          data={author.image}
+          imgOptions={{
+            transforms: {
+              width: '100',
+              aspect: 'square',
+              quality: 'auto',
+            },
+          }}
+          miscStyles={{
+            width: '10rem',
+            paddingBottom: '10rem',
             borderRadius: '50%',
             overflow: 'hidden',
-            width: '5rem',
+            display: 'inline-block',
           }}
-          alt={author.name}
-          src={author.image}
         />
       </GridItem>
       {/* Author name and publish-date */}

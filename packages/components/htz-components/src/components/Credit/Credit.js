@@ -7,7 +7,7 @@ const creditPropTypes = {
   /**
    * Author name/Credit text
    */
-  name: PropTypes.string.isRequired,
+  contentName: PropTypes.string.isRequired,
   /**
    * Authors page url
    */
@@ -32,8 +32,8 @@ const LinkStyled = createComponent(
   [ 'href', 'content', ]
 );
 
-function Credit({ name, url, className, }) {
-  const tname = name.trim();
+function Credit({ contentName, url, className, }) {
+  const tname = contentName.trim();
   return tname ? (
     <address {...className && { className, }}>
       {url ? <LinkStyled href={url} content={tname} /> : `${tname}`}
