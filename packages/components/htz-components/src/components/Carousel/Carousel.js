@@ -72,7 +72,7 @@ const wrapperStyle = () => ({
   overflow: 'hidden',
   position: 'relative',
 });
-const ItemsWrapper = createComponent(wrapperStyle, 'div', [ 'tabindex', ]);
+const ItemsWrapper = createComponent(wrapperStyle);
 
 const navigationStyle = ({ theme, buttonsColor, }) => ({
   backgroundColor: buttonsColor,
