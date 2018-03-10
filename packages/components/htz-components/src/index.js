@@ -2,6 +2,7 @@
 /** *************************************** *
  *       C  O  M  P  O  N  E  N  T  S       *
  * **************************************** */
+import ActionButtons from './components/ActionButtons/ActionButtons';
 import Article from './components/Article/Article';
 import ArticleBody from './components/ArticleBody/ArticleBody';
 import BeforeAndAfter from './components/Interactive/BeforeAndAfter';
@@ -92,6 +93,7 @@ import AdSlot from './components/Ads/AdSlot';
 import createDocument from './document';
 
 export {
+  ActionButtons,
   Article,
   ArticleBody,
   BeforeAndAfter,
