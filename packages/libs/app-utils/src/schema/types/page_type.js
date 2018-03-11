@@ -4,6 +4,7 @@ import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList, GraphQLNonNul
 import TaxonomyItem from './taxonomy_item_type';
 import seoData from './seo_data_type';
 import SlotType from './slot_type';
+import DfpConfigType from './dfp_config_type';
 
 const Page = new GraphQLObjectType({
   name: 'Page',
@@ -36,6 +37,9 @@ const Page = new GraphQLObjectType({
           name,
           content: parentValue.slots[name] || [],
         })),
+    },
+    dfpConfig: {
+      type: DfpConfigType,
     },
   }),
 });

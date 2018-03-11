@@ -45,6 +45,7 @@
     "@haaretz/fela-utils": "^0.1.0",
     "@haaretz/htz-css-tools": "^1.0.1",
     "@haaretz/htz-user-utils": "^0.1.0",
+    "@haaretz/dfp": "^0.1.0",
     "apollo-link-schema": "^1.0.2",
     "async": "^2.6.0",
     "config": "^1.26.2",

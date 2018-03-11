@@ -81,6 +81,10 @@ import UserInjector from './components/User/UserInjector';
 import LoginExample from './components/User/LoginExample';
 import RegisterExample from './components/User/RegisterExample';
 
+// DFP
+import DfpInjector from './components/Ads/DfpInjector';
+import AdSlot from './components/Ads/AdSlot';
+
 /** ************************************ *
  *       U  T  I  L  I  T  I  E  S       *
  * ************************************* */
@@ -163,6 +167,10 @@ export {
   UserInjector,
   LoginExample,
   RegisterExample,
+
+  DfpInjector,
+  AdSlot,
+
   // Utils
   createDocument,
 };

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect, } from 'react-fela';
 import dynamic from 'next/dynamic';
 import gql from 'graphql-tag';
+import { AdSlot, } from '@haaretz/htz-components';
 
 import Comments from '../Comments/Comments';
 // const CommentsElement = dynamic(import ('../Comments/Comments'));
@@ -65,11 +66,12 @@ export function Slot({ name, content, styles, pageContentId, }) {
       case 'com.htz.StandardArticle':
         jsx = <StandardArticle {...element} {...element.properties} />;
         break;
-      case 'com.tm.CommentsElement':
-        jsx = (
-          <Comments contentId={element.contentId} articleId={pageContentId} />
-        );
-        break;
+        case 'com.polobase.DfpBannerElement':
+          jsx = <AdSlot {...element.properties} />;
+          break;
+        case 'com.tm.CommentsElement':
+          jsx = <Comments contentId={element.contentId} articleId={pageContentId} />;
+          break;
       default:
         jsx = (
           <dl>

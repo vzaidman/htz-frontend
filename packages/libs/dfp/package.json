@@ -1,7 +1,7 @@
 {
-  "name": "@haaretz/htz-user-utils",
+  "name": "@haaretz/dfp",
   "version": "0.1.0",
-  "description": "A user service layer",
+  "description": "Base DFP implementation for Haaretz apps",
   "keywords": [],
   "author": "eliagrady",
   "license": "UNLICENSED",
@@ -18,18 +18,19 @@
     "flow": "htz-scripts flow",
     "format": "htz-scripts format",
     "lint": "htz-scripts lint",
+    "gc": "htz-scripts commitizen",
     "prepare": "npm run build",
     "test": "htz-scripts test",
-    "dev": "htz-scripts test --watchAll",
     "update-scripts": "htz-scripts update-scripts"
+  },
+  "dependencies": {
+    "@haaretz/htz-user-utils": "^0.1.0",
+    "lodash": "^4.17.5"
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
-    "jest-environment-jsdom-global": "^1.0.2",
+    "gpt-mock": "^1.0.2",
+    "jest-matcher-one-of": "^0.1.2",
     "rimraf": "^2.6.2"
-  },
-  "dependencies": {
-    "isomorphic-fetch": "^2.2.1",
-    "jest-fetch-mock": "^1.4.0"
   }
 }

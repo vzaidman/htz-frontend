@@ -5,6 +5,13 @@ import UserFactory from './user-factory-cookie-based';
 import UserService from './service/user-services';
 import AbuseService from './service/abuse-service';
 import { getSubdomain, } from './util/domain-utils';
+import {
+  setCookie,
+  getCookieAsMap,
+  getCookie,
+  plantCookie,
+  deleteAllCookies,
+} from './util/cookie-utils';
 
 describe('Index', () => {
   it('should expose a siteConfig function', () => {
@@ -37,6 +44,27 @@ describe('Index', () => {
     expect(Index.DomainUtils).toBeDefined();
     expect(Index.DomainUtils.getSubdomain).toBeDefined();
     expect(Index.DomainUtils.getSubdomain).toEqual(getSubdomain);
+  });
+
+  it('should expose a CookieUtils', () => {
+    expect(Index.CookieUtils).toBeDefined();
+    expect(Index.CookieUtils.default).toBeDefined();
+    expect(Index.CookieUtils.default).toEqual(getCookieAsMap);
+
+    expect(Index.CookieUtils.getCookieAsMap).toBeDefined();
+    expect(Index.CookieUtils.getCookieAsMap).toEqual(getCookieAsMap);
+
+    expect(Index.CookieUtils.setCookie).toBeDefined();
+    expect(Index.CookieUtils.setCookie).toEqual(setCookie);
+
+    expect(Index.CookieUtils.getCookie).toBeDefined();
+    expect(Index.CookieUtils.getCookie).toEqual(getCookie);
+
+    expect(Index.CookieUtils.plantCookie).toBeDefined();
+    expect(Index.CookieUtils.plantCookie).toEqual(plantCookie);
+
+    expect(Index.CookieUtils.deleteAllCookies).toBeDefined();
+    expect(Index.CookieUtils.deleteAllCookies).toEqual(deleteAllCookies);
   });
 
   it('should expose the UserTypes object', () => {

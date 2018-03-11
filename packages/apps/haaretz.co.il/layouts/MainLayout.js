@@ -10,6 +10,7 @@ import htzTheme from '@haaretz/htz-theme';
 // import dynamic from 'next/dynamic';
 import {
   UserInjector,
+  DfpInjector,
   LoginExample,
   RegisterExample,
 } from '@haaretz/htz-components';
@@ -37,6 +38,20 @@ const PageData = gql`
       ...BreadcrumbsPage
       slots {
         ...SlotContent
+      }
+      dfpConfig {
+        adSlotConfig
+        adManagerConfig {
+          network
+          adUnitBase
+        }
+        conflictManagementConfig
+        impressionManagerConfig
+        googleGlobalSettings {
+          enableSingleRequest
+          enableAsyncRendering
+          breakpointType
+        }
       }
     }
   }
@@ -109,6 +124,7 @@ export class MainLayout extends React.Component {
         <UserInjector />
         {LoginExample}
         {RegisterExample}
+        <DfpInjector />
         <StyleProvider renderer={styleRenderer} theme={htzTheme}>
           <div>
             {this.renderHead()}

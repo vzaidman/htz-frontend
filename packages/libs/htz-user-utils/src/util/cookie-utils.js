@@ -42,7 +42,7 @@ let cookieAsMap; // Memoization of cookie parsing
  * @param {boolean} forceRefresh - flag to force re-creation of the cookie map.
  * @returns {object} the cookie string represented as a key-value pairs
  */
-export default function getCookieAsMap(forceRefresh = false) {
+export function getCookieAsMap(forceRefresh = false) {
   if (!cookieAsMap || forceRefresh) {
     cookieAsMap = stringToMap(document.cookie, { separator: /;\s?/, });
     if (cookieAsMap.tmsso !== undefined) {
@@ -146,3 +146,5 @@ export function deleteAllCookies() {
     }
   }
 }
+
+export default getCookieAsMap;

@@ -19,7 +19,7 @@ const RootQuery = new GraphQLObjectType({
       resolve(parentValue, { path, }, context) {
         return context.pageLoader.load(path);
       },
-    },
+    },    
   }),
 });
 

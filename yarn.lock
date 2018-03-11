@@ -5200,6 +5200,10 @@ got@^6.7.1:
     unzip-response "^2.0.1"
     url-parse-lax "^1.0.0"
 
+gpt-mock@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/gpt-mock/-/gpt-mock-1.0.2.tgz#daa52a60d12e5030d3150dc73e332bd294a630ce"
+
 graceful-fs@^4.0.0, graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.3, graceful-fs@^4.1.4, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
@@ -6624,6 +6628,10 @@ jest-leak-detector@^22.1.0:
 jest-localstorage-mock@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/jest-localstorage-mock/-/jest-localstorage-mock-2.2.0.tgz#ce9a9de01dfdde2ad8aa08adf73acc7e5cc394cf"
+
+jest-matcher-one-of@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/jest-matcher-one-of/-/jest-matcher-one-of-0.1.2.tgz#4d9a428c489c55275f69e058c91fb33f61c327b7"
 
 jest-matcher-utils@^22.2.0:
   version "22.2.0"
@@ -10155,7 +10163,7 @@ right-pad@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/right-pad/-/right-pad-1.0.1.tgz#8ca08c2cbb5b55e74dafa96bf7fd1a27d568c8d0"
 
-rimraf@2, rimraf@2.6.2, rimraf@^2.2.8, rimraf@^2.5.1, rimraf@^2.5.2, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
+rimraf@2, rimraf@^2.2.8, rimraf@^2.5.1, rimraf@^2.5.2, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
   dependencies:

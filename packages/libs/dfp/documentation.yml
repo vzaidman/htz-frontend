@@ -1,0 +1,14 @@
+access:
+  - undefined
+  - public
+  - private
+github: true
+
+toc:
+  - name: ' '
+    file: README.md
+
+  - name: 'Public API'
+  - DFP
+
+  - name: 'private methods and props'
