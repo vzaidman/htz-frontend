@@ -1,4 +1,4 @@
-import React, { Fragment, } from 'react';
+import React, { Component, Fragment, } from 'react';
 import { UserFactory, UserTypes, } from '@haaretz/htz-user-utils';
 import PropTypes from 'prop-types';
 import { graphql, compose, } from 'react-apollo';
@@ -41,7 +41,7 @@ const defaultProps = {
   error: false,
 };
 
-class LoginStateWrapper extends React.Component {
+class UserDispenser extends Component {
   state = {
     shouldRender: false,
     // isLoggedIn: false,
@@ -54,14 +54,6 @@ class LoginStateWrapper extends React.Component {
       this.setState({ shouldRender: true, });
     }
   }
-
-  componentWillReceiveProps(nextProps) {
-    // console.log('componentWillReceiveProps', nextProps.user);
-  }
-
-  // toggleLoginState = () => {
-  //   this.setState((prevState, props) => ({ isLoggedIn: !prevState.isLoggedIn, }));
-  // };
 
   handleImgOnload = () => {
     const user = new UserFactory(true).build();
@@ -101,12 +93,6 @@ class LoginStateWrapper extends React.Component {
         (this.props.user.type === UserTypes.paying ||
           this.props.user.type === UserTypes.registered);
       const { user, } = this.props;
-      console.log(
-        'MAIN RENDER - LOGIN STATE WRAPPER - isLoggedIn:',
-        isLoggedIn,
-        'user from props:',
-        user
-      );
       return (
         <Fragment>
           <ImageCookies
@@ -115,7 +101,7 @@ class LoginStateWrapper extends React.Component {
           />
           {this.props.render({
             isLoggedIn,
-            user: this.props.user,
+            user,
             plantImages: this.plantImages,
             handleImgOnload: this.handleImgOnload,
           })}
@@ -126,13 +112,13 @@ class LoginStateWrapper extends React.Component {
   }
 }
 
-LoginStateWrapper.propTypes = propTypes;
-LoginStateWrapper.defaultProps = defaultProps;
+UserDispenser.propTypes = propTypes;
+UserDispenser.defaultProps = defaultProps;
 
-const UserDispenser = compose(
+const WrappedUserDispenser = compose(
   graphql(UPDATE_USER),
   graphql(GET_USER, {
     props: ({ data, }) => data,
   })
-)(LoginStateWrapper);
-export default UserDispenser;
+)(UserDispenser);
+export default WrappedUserDispenser;

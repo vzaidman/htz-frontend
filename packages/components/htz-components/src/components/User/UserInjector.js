@@ -1,5 +1,5 @@
 /* global window */
-import React, { Component, } from 'react';
+import { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { graphql, compose, } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -35,14 +35,33 @@ const propTypes = {
   loading: PropTypes.bool,
   /** Indicates data error state */
   error: PropTypes.bool,
-  user: PropTypes.shape({ images: PropTypes.array, }),
+  /** A user object that the injector holds */
+  user: PropTypes.shape({
+    type: PropTypes.string,
+    id: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ]),
+    email: PropTypes.email,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    emailStatus: PropTypes.bool,
+    token: PropTypes.string,
+    anonymousId: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ]),
+    __typename: PropTypes.string.isRequired,
+  }),
+  /** A mutate function for updating the currently set user */
   mutate: PropTypes.func.isRequired,
 };
 const defaultProps = {
   loading: false,
   error: false,
   user: {
-    images: [],
+    email: null,
+    emailStatus: null,
+    firstName: null,
+    lastName: null,
+    id: null,
+    anonymousId: null,
+    type: null,
+    token: null,
   },
 };
 
@@ -62,16 +81,14 @@ class UserInjector extends Component {
 
   render() {
     if (this.state.shouldRender) {
-      // console.info('MAIN RENDER - USER PLACEHOLDER');
       const { loading, error, user, } = this.props;
-      if (loading) return <div>loading...user...</div>; // null;
-      if (error) return <div>error...user...</div>;
+      if (loading) return null;
+      if (error) {
+        console.error(error);
+        return null;
+      }
       if (user) {
-        return (
-          <pre style={{ direction: 'ltr', }}>
-            {JSON.stringify(this.props.user, null, 2)}
-          </pre>
-        );
+        return null;
       }
       console.error('User Injector failed creating a user:', this.props.user);
       return null;

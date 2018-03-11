@@ -10,12 +10,12 @@ import { createRenderer, StyleProvider, } from '@haaretz/fela-utils';
 import { SchemaLink, } from 'apollo-link-schema';
 import { addMockFunctionsToSchema, } from 'graphql-tools';
 import mocks from './mocks';
+import { userScheme, } from '../src/components/User/UserDispenser';
 
 addMockFunctionsToSchema({
   schema,
   mocks,
 });
-
 const link = new SchemaLink({ schema, });
 
 const cache = new InMemoryCache();
@@ -23,13 +23,22 @@ const cache = new InMemoryCache();
 const stateLink = withClientState({
   cache,
   defaults: {
-    // todo: remove after bug fix, this is a workaround explained here:
-    // https://github.com/apollographql/apollo-link-state/issues/187#issuecomment-361753208
-    'scroll@client': {
+    scroll: {
       velocity: null,
       x: 0,
       y: 0,
       __typename: 'Scroll',
+    },
+    user: {
+      type: 'paying',
+      id: '1',
+      email: 'e@ma.il',
+      firstName: 'null',
+      lastName: 'undefined',
+      emailStatus: null,
+      token: 'imatoken',
+      anonymousId: '22',
+      __typename: 'User',
     },
   },
   resolvers: {
@@ -37,13 +46,24 @@ const stateLink = withClientState({
       // eslint-disable-next-line no-shadow
       updateScroll: (_, { x, y, direction, velocity, }, { cache, }) => {
         const data = {
-          // todo: remove after bug fix, this is a workaround explained here:
-          // https://github.com/apollographql/apollo-link-state/issues/187#issuecomment-361753208
-          'scroll@client': {
+          scroll: {
             velocity,
             x,
             y,
             __typename: 'Scroll',
+          },
+        };
+        cache.writeData({ data, });
+        // resolver needs to return something / null https://github.com/apollographql/apollo-link-state/issues/160
+        return null;
+      },
+      updateUser: (_, { user, }, { cache, }) => {
+        console.log('update User:', user);
+        const data = {
+          user: {
+            ...userScheme,
+            ...user,
+            id: '1',
           },
         };
         cache.writeData({ data, });

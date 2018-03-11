@@ -77,7 +77,8 @@ import Logout from './components/User/Logout';
 import Register from './components/User/Register';
 import UserDispenser from './components/User/UserDispenser';
 import UserInjector from './components/User/UserInjector';
-import { LoginExample, RegisterExample, } from './components/User/UserExamples';
+import LoginExample from './components/User/LoginExample';
+import RegisterExample from './components/User/RegisterExample';
 
 /** ************************************ *
  *       U  T  I  L  I  T  I  E  S       *
