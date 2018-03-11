@@ -8,17 +8,17 @@ import { createTheme, } from 'fela-bindings';
  * with package configuration backed in.
  *
  * @param {function} renderer - The Fela renderer used in the targes package's tests
- * @param {Object} [theme] - The `theme` object used in the target package
+ * @param {Object} [baseTheme] - The `theme` object used in the target package
  *
  * @return {Object} - An Object with `shallow` and `mount` methods for testing
  * Fela components with Enzyme
  */
-export default function createFelaEnzymeRenderers(renderer, theme) {
+export default function createFelaEnzymeRenderers(renderer, baseTheme) {
   function felaShallow(node, options = {}, mockTheme) {
     const component = shallow(node, {
       context: {
         renderer,
-        theme: mockTheme || theme,
+        _FELA_THEME_: mockTheme || baseTheme,
       },
       ...options,
     });
@@ -27,17 +27,18 @@ export default function createFelaEnzymeRenderers(renderer, theme) {
     return component;
   }
 
-  function felaMount(node, options = {}, mockTheme) {
+  function felaMount(node, mockTheme) {
+    const theme = createTheme(mockTheme || baseTheme);
+
     const component = mount(node, {
       childContextTypes: {
         renderer: PropTypes.object,
-        theme: PropTypes.object,
+        _FELA_THEME_: PropTypes.object,
       },
       context: {
         renderer,
-        theme: createTheme(mockTheme || theme),
+        _FELA_THEME_: theme,
       },
-      ...options,
     });
 
     // component.snapshot = snapshot(component, renderer);

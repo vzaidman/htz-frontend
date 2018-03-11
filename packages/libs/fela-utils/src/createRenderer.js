@@ -1,12 +1,12 @@
 import { createRenderer as createFelaRenderer, } from 'fela';
 
 // Fela plugins
-import bidi from 'fela-plugin-bidi';
+import bidiTransformer from 'bidi-css-js';
 import embedded from 'fela-plugin-embedded';
 import extend from 'fela-plugin-extend';
 import fallbackValue from 'fela-plugin-fallback-value';
 import lvha from 'fela-plugin-lvha';
-import prefixer from 'fela-plugin-prefixer';
+import prefix from 'inline-style-prefixer/static';
 import placeholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import unit from 'fela-plugin-unit';
 import removeUndefined from 'fela-plugin-remove-undefined'; // Only used in prod
@@ -19,6 +19,10 @@ import combineArrays from 'fela-combine-arrays';
 import beautifier from 'fela-beautifier';
 // import perf from 'fela-perf';
 // import statistics from 'fela-statistics';
+
+const prefixer = () => style => prefix(style);
+const bidi = flowDirection => style => bidiTransformer(style, flowDirection);
+const isDevEnv = process.env.NODE_ENV !== 'production';
 
 /**
  * A factory for creating a custom Fela renderer,
@@ -34,18 +38,17 @@ import beautifier from 'fela-beautifier';
  * @return {function} A fela `createRenderer` function
  */
 export default function createRenderer({
-  isDev = process.env.NODE_ENV !== 'production',
+  isDev = isDevEnv,
   isRtl,
-  selectorPrefix = 'htz-',
+  selectorPrefix = isDevEnv ? 'htz-' : '',
 } = {}) {
   const plugins = [
+    // Allows extending instead of overwriting style objects
     extend(),
+    // Hendles @font-face and @keyframes
     embedded(),
     // Sort pseudo-classes in a predictable order
     lvha(),
-    // Auto-prefix properties and values
-    placeholderPrefixer(),
-    prefixer(),
     // Treat number primitives as a specific css unit
     unit('rem', {
       border: 'px',
@@ -54,10 +57,11 @@ export default function createRenderer({
       borderRight: 'px',
       borderTop: 'px',
       opacity: '',
+      zIndex: '',
     }),
-    // Allows extending instead of overwriting style objects
+    placeholderPrefixer(),
+    prefixer(),
     // Allows providing fallback values as an array.
-    // Must be last to be included
     fallbackValue(),
     bidi(isRtl ? 'rtl' : 'ltr'),
   ];

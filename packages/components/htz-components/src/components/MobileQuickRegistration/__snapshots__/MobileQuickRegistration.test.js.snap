@@ -7,10 +7,10 @@ Object {
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
     >
       <span
-        className="htz-l htz-m htz-n htz-o htz-p htz-q"
+        className="htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
       >
         <svg
-          className="htz-r htz-s htz-t htz-u"
+          className="htz-s htz-t htz-u htz-v"
           height="1em"
           viewBox="0 0 256 256"
           width="1em"
@@ -23,25 +23,25 @@ Object {
         </svg>
       </span>
       <div
-        className="htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac"
+        className="htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae"
       >
         הירשמו עכשיו להמלצות הקריאה של הארץ
       </div>
       <a
-        className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-h htz-at htz-au htz-d htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-o htz-bd htz-s htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw"
+        className="htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-h htz-ay htz-az htz-d htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-p htz-bi htz-t htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf"
         href="mailto:doptint-subscribe-1338625@newsletters.haaretz.co.il?subject=הרשמה להמלצות הקריאה של הארץ&body=להרשמה מהירה שילחו מייל זה מבלי לשנות את כתובת הנמען"
         id={null}
         onClick={[Function]}
         type="button"
       >
         <span
-          className="htz-bx htz-by htz-bz htz-ca htz-z"
+          className="htz-cg htz-ch htz-ci htz-cj htz-ab"
         >
           הרשמה בקליק
         </span>
       </a>
     </div>
   </div>,
-  "styles": ".htz-a{position:relative}.htz-b{text-align:center}.htz-c{border-top-width:2px}.htz-d{border-top-style:solid}.htz-e{border-top-color:#0B7EB5}.htz-f{padding-top:calc(3rem - 2px)}.htz-g{border-bottom-width:2px}.htz-h{border-bottom-style:solid}.htz-i{border-bottom-color:#0B7EB5}.htz-j{padding-bottom:calc(3rem - 2px)}.htz-k{margin-top:1rem}.htz-l{position:absolute}.htz-m{transform:translate(-50%, -50%);-webkit-transform:translate(-50%, -50%)}.htz-n{top:0rem}.htz-o{background-color:#FFF}.htz-p{padding-left:2rem}.htz-q{padding-right:2rem}.htz-r{vertical-align:-0.15em}.htz-s{color:#0B7EB5}.htz-t{fill:#FFF}.htz-u{font-size:5rem}.htz-z{font-weight:700}.htz-ab{color:#787878}.htz-ac{margin-bottom:2rem}.htz-ae{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-af{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-ag{cursor:pointer}.htz-ah{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ai{font-weight:bold}.htz-aj{font-size:inherit}.htz-ak{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-al{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-am{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-an{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ao{text-decoration:none}.htz-ap{white-space:nowrap}.htz-aq::moz-focus-inner{border:0px}.htz-ar::moz-focus-inner{padding:0rem}.htz-as{border-bottom-width:1px}.htz-at{padding-bottom:calc(1rem - 1px)}.htz-au{border-top-width:1px}.htz-av{padding-top:calc(1rem - 1px)}.htz-aw{border-right-width:1px}.htz-ax{border-right-style:solid}.htz-ay{padding-right:4rem}.htz-az{border-left-width:1px}.htz-ba{border-left-style:solid}.htz-bb{padding-left:4rem}.htz-bc{border-radius:0rem}.htz-bd{border-color:#0B7EB5}.htz-be:hover{text-decoration:none}.htz-bf:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bg:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bh:hover{background-color:#EBF2F5}.htz-bi:hover{border-color:#006B96}.htz-bj:hover{color:#006B96}.htz-bk:focus{outline:none}.htz-bl:focus{text-decoration:none}.htz-bm:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bn:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bo:focus{background-color:#0B7EB5}.htz-bp:focus{border-color:#0B7EB5}.htz-bq:focus{color:#FFF}.htz-br:active{outline:none}.htz-bs:active{text-decoration:none}.htz-bt:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-bu:active{background-color:#fff !important}.htz-bv:active{border-color:#0B7EB5}.htz-bw:active{color:#0B7EB5}@media (max-width: 79.9375em){.htz-v{font-size:2rem}.htz-w{line-height:1.5em}.htz-bx{font-size:2.3333333333333335rem}.htz-by{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-x{font-size:2rem}.htz-y{line-height:1.5em}.htz-bz{font-size:2.2857142857142856rem}.htz-ca{line-height:1.3125em}}",
+  "styles": ".htz-a{position:relative}.htz-b{text-align:center}.htz-c{border-top-width:2px}.htz-d{border-top-style:solid}.htz-e{border-top-color:#0B7EB5}.htz-f{padding-top:calc(3rem - 2px)}.htz-g{border-bottom-width:2px}.htz-h{border-bottom-style:solid}.htz-i{border-bottom-color:#0B7EB5}.htz-j{padding-bottom:calc(3rem - 2px)}.htz-k{margin-top:1rem}.htz-l{position:absolute}.htz-m{-webkit-transform:translate(-50%, -50%)}.htz-n{transform:translate(-50%, -50%)}.htz-o{top:0rem}.htz-p{background-color:#FFF}.htz-q{padding-left:2rem}.htz-r{padding-right:2rem}.htz-s{vertical-align:-0.15em}.htz-t{color:#0B7EB5}.htz-u{fill:#FFF}.htz-v{font-size:5rem}.htz-ab{font-weight:700}.htz-ac{color:#787878}.htz-ae{margin-bottom:2rem}.htz-af{-webkit-align-items:center}.htz-ag{align-items:center}.htz-ah{-webkit-appearance:none}.htz-ai{-moz-appearance:none}.htz-aj{appearance:none}.htz-ak{cursor:pointer}.htz-al{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-am{font-weight:bold}.htz-an{font-size:inherit}.htz-ao{-webkit-justify-content:center}.htz-ap{justify-content:center}.htz-aq{transition-property:all}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-at{text-decoration:none}.htz-au{white-space:nowrap}.htz-av::moz-focus-inner{border:0px}.htz-aw::moz-focus-inner{padding:0rem}.htz-ax{border-bottom-width:1px}.htz-ay{padding-bottom:calc(1rem - 1px)}.htz-az{border-top-width:1px}.htz-ba{padding-top:calc(1rem - 1px)}.htz-bb{border-right-width:1px}.htz-bc{border-right-style:solid}.htz-bd{padding-right:4rem}.htz-be{border-left-width:1px}.htz-bf{border-left-style:solid}.htz-bg{padding-left:4rem}.htz-bh{border-radius:0rem}.htz-bi{border-color:#0B7EB5}.htz-bj:hover{text-decoration:none}.htz-bk:hover{transition-duration:0.16666666666666666s}.htz-bl:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bm:hover{background-color:#EBF2F5}.htz-bn:hover{border-color:#006B96}.htz-bo:hover{color:#006B96}.htz-bp:focus{outline:none}.htz-bq:focus{text-decoration:none}.htz-br:focus{transition-duration:0.16666666666666666s}.htz-bs:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bt:focus{background-color:#0B7EB5}.htz-bu:focus{border-color:#0B7EB5}.htz-bv:focus{color:#FFF}.htz-bw:active{outline:none}.htz-bx:active{text-decoration:none}.htz-by:active{transition-duration:0s}.htz-bz:active{background-color:#fff !important}.htz-ca:active{border-color:#0B7EB5}.htz-cb:active{color:#0B7EB5}.htz-cc{-webkit-box-align:center}.htz-cd{-webkit-box-pack:center}.htz-ce{-webkit-transition-property:all}.htz-cf{-moz-transition-property:all}@media (max-width: 79.9375em){.htz-w{font-size:2rem}.htz-x{line-height:1.5em}.htz-cg{font-size:2.3333333333333335rem}.htz-ch{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-y{font-size:2rem}.htz-z{line-height:1.5em}.htz-ci{font-size:2.2857142857142856rem}.htz-cj{line-height:1.3125em}}",
 }
 `;

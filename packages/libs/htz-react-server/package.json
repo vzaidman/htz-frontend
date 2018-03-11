@@ -23,7 +23,7 @@
     "update-scripts": "htz-scripts update-scripts"
   },
   "peerDependencies": {
-    "next": "^4.2.1"
+    "next": "^5.0.0"
   },
   "dependencies": {
     "@haaretz/app-utils": "^0.1.0",

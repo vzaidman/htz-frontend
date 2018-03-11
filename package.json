@@ -141,8 +141,11 @@
       }
     },
     "fela": {
-      "^6.0.2": {
-        "packages/components/*": ["devDependencies", "peerDependencies"],
+      "^6.1.5": {
+        "packages/{components/*,libs/fela-utils}": [
+          "devDependencies",
+          "peerDependencies"
+        ],
         "packages/apps/*": ["dependencies"]
       }
     },
@@ -225,8 +228,11 @@
       }
     },
     "react-fela": {
-      "^6.0.2": {
-        "packages/components/*": ["devDependencies", "peerDependencies"],
+      "^7.1.0": {
+        "packages/{components/*,libs/fela-utils}": [
+          "devDependencies",
+          "peerDependencies"
+        ],
         "packages/apps/*": ["dependencies"]
       }
     },

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renderer plugins fela-plugin-bidi converts logical values 1`] = `".htz-a{background-position:23% 44%}"`;
+
+exports[`renderer plugins fela-plugin-bidi converts logical values 2`] = `".htz-a{background-position:77% 44%}"`;
+
+exports[`renderer plugins fela-plugin-bidi converts prefixed logical values 1`] = `".htz-a{-webkit-transform:translateX(-77%)}.htz-b{transform:translateX(-77%)}"`;
+
+exports[`renderer plugins fela-plugin-bidi converts prefixed logical values 2`] = `".htz-a{-webkit-transform:translateX(77%)}.htz-b{transform:translateX(77%)}"`;
+
+exports[`renderer plugins fela-plugin-prefixer correctly prefixes fallback values 1`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}"`;

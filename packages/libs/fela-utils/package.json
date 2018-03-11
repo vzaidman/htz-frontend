@@ -1,7 +1,8 @@
 {
   "name": "@haaretz/fela-utils",
   "version": "0.1.0",
-  "description": "General, non-ui helpers for building Fela apps and components in the Haaretz stack",
+  "description":
+    "General, non-ui helpers for building Fela apps and components in the Haaretz stack",
   "keywords": [],
   "author": "TxHawks",
   "license": "UNLICENSED",
@@ -14,7 +15,8 @@
   "esnext": "dist/esnext/index.js",
   "scripts": {
     "build": "htz-scripts build",
-    "build:docs": "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
+    "build:docs":
+      "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
     "build:all": "yarn run build && yarn run build:docs",
     "clean": "htz-scripts clean",
     "flow": "htz-scripts flow",
@@ -27,24 +29,24 @@
     "update-scripts": "htz-scripts update-scripts"
   },
   "dependencies": {
+    "bidi-css-js": "^3.1.0",
     "enzyme": "^3.3.0",
     "enzyme-to-json": "^3.3.1",
     "fela-beautifier": "^5.0.15",
-    "fela-bindings": "^1.3.4",
-    "fela-combine-arrays": "^1.0.6",
+    "fela-bindings": "^2.1.0",
+    "fela-combine-arrays": "^1.0.7",
     "fela-perf": "^5.0.3",
-    "fela-plugin-bidi": "^2.0.1",
-    "fela-plugin-embedded": "^5.2.4",
-    "fela-plugin-extend": "^6.0.3",
-    "fela-plugin-fallback-value": "^5.0.16",
+    "fela-plugin-embedded": "^5.2.6",
+    "fela-plugin-extend": "^6.0.4",
+    "fela-plugin-fallback-value": "^5.0.17",
     "fela-plugin-lvha": "^5.0.15",
-    "fela-plugin-placeholder-prefixer": "^5.0.16",
-    "fela-plugin-prefixer": "^5.0.16",
-    "fela-plugin-remove-undefined": "^5.0.17",
-    "fela-plugin-unit": "^5.0.15",
+    "fela-plugin-placeholder-prefixer": "^5.0.18",
+    "fela-plugin-remove-undefined": "^5.0.19",
+    "fela-plugin-unit": "^5.0.16",
     "fela-plugin-validator": "^5.0.17",
-    "fela-statistics": "^5.0.17",
-    "fela-tools": "^5.1.2",
+    "fela-statistics": "^5.0.19",
+    "fela-tools": "^5.1.4",
+    "inline-style-prefixer": "^4.0.0",
     "lodash": "^4.17.5",
     "prop-types": "^15.6.1",
     "react-test-renderer": "^16.2.0"
@@ -53,16 +55,16 @@
     "@haaretz/htz-react-base": "^1.0.0",
     "babel-loader": "^7.1.2",
     "documentation": "^5.3.3",
-    "fela": "^6.0.2",
+    "fela": "^6.1.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-fela": "^6.0.2",
+    "react-fela": "^7.1.0",
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {
-    "fela": "^6.0.2",
+    "fela": "^6.1.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-fela": "^6.0.2"
+    "react-fela": "^7.1.0"
   }
 }

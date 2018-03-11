@@ -10,7 +10,7 @@ Object {
       onClick={[Function]}
     >
       <span
-        className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+        className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
         id="alerts_btn_description"
       >
         קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
@@ -19,6 +19,6 @@ Object {
       Follow me
     </button>
   </div>,
-  "styles": ".htz-a{border:0px}.htz-b{clip:rect(0 0 0 0)}.htz-c{clip-path:inset(50%);-webkit-clip-path:inset(50%)}.htz-d{height:1px}.htz-e{margin:-1px}.htz-f{overflow:hidden}.htz-g{padding:0rem}.htz-h{position:absolute}.htz-i{width:1px}.htz-j{white-space:nowrap}",
+  "styles": ".htz-a{border:0px}.htz-b{clip:rect(0 0 0 0)}.htz-c{-webkit-clip-path:inset(50%)}.htz-d{clip-path:inset(50%)}.htz-e{height:1px}.htz-f{margin:-1px}.htz-g{overflow:hidden}.htz-h{padding:0rem}.htz-i{position:absolute}.htz-j{width:1px}.htz-k{white-space:nowrap}",
 }
 `;

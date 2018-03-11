@@ -82,7 +82,6 @@ Session.vim
 # temporary
 .netrwhist
 # auto-generated tag files
-tags
 # tern
 .tern-port
 

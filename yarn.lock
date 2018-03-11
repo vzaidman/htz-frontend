@@ -1633,11 +1633,11 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bidi-css-js@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/bidi-css-js/-/bidi-css-js-2.0.0.tgz#b55b7098a9694225dc284c801eb72ad8da8d4e5c"
+bidi-css-js@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/bidi-css-js/-/bidi-css-js-3.1.0.tgz#369c611b0ac6b5fc8e834f7c36b2eada60a7fe61"
   dependencies:
-    rtl-css-js "^1.4.2"
+    rtl-css-js "^1.9.0"
 
 big.js@^3.1.3:
   version "3.2.0"
@@ -4398,7 +4398,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.16, fbjs@^0.8.9:
+fbjs@^0.8.16:
   version "0.8.16"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
   dependencies:
@@ -4417,76 +4417,62 @@ fela-beautifier@^5.0.15:
     cssbeautify "^0.3.1"
     fast-loops "^1.0.0"
 
-fela-bindings@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/fela-bindings/-/fela-bindings-1.1.0.tgz#06ecaf886c6cac55b2125b2b9557700817e3c922"
-  dependencies:
-    fela-dom "^6.0.6"
-    fela-utils "^7.0.5"
-    shallow-equal "1.0.0"
-
-fela-bindings@^1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/fela-bindings/-/fela-bindings-1.3.4.tgz#f48887dfed8c0948d851af14b18434d902cb034f"
+fela-bindings@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/fela-bindings/-/fela-bindings-2.1.0.tgz#e70ae4ea834fb80b501433ae2c13b7f47d621582"
   dependencies:
     fast-loops "^1.0.0"
-    fela-dom "^7.0.4"
-    fela-tools "^5.1.2"
+    fela-dom "^7.0.6"
+    fela-tools "^5.1.4"
     shallow-equal "^1.0.0"
 
-fela-combine-arrays@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/fela-combine-arrays/-/fela-combine-arrays-1.0.6.tgz#358a1ecbfb44e561b806e605fc08fda7004e33ee"
+fela-combine-arrays@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/fela-combine-arrays/-/fela-combine-arrays-1.0.7.tgz#167d7ab13d4c79a8fd0c2720565336af6af746d2"
   dependencies:
     fast-loops "^1.0.0"
+    isobject "^3.0.1"
 
-fela-dom@^6.0.6:
-  version "6.0.6"
-  resolved "https://registry.yarnpkg.com/fela-dom/-/fela-dom-6.0.6.tgz#8cf324b5fd685d7f91c79eced37a9fb6820f297f"
-  dependencies:
-    fela-tools "^5.0.13"
-    fela-utils "^7.0.5"
-
-fela-dom@^7.0.4:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/fela-dom/-/fela-dom-7.0.4.tgz#30a159d12142c5cec376608a5dd1d4395462c4a0"
+fela-dom@^7.0.6:
+  version "7.0.6"
+  resolved "https://registry.yarnpkg.com/fela-dom/-/fela-dom-7.0.6.tgz#10e84a8cf65c6ffc4b2449820799d214b74f191f"
   dependencies:
     css-in-js-utils "^2.0.0"
     fast-loops "^1.0.0"
-    fela-utils "^8.0.3"
+    fela-utils "^8.0.5"
 
 fela-perf@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/fela-perf/-/fela-perf-5.0.3.tgz#8795057c99b8bd4464d86d2bf02e7f4eee4f0020"
 
-fela-plugin-bidi@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/fela-plugin-bidi/-/fela-plugin-bidi-2.0.1.tgz#f3058a8536690aab6d01f1d6f9f923b8b7889a85"
+fela-plugin-custom-property@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/fela-plugin-custom-property/-/fela-plugin-custom-property-7.0.1.tgz#032795d608a639f2deb6254c79e5738533057fcf"
   dependencies:
-    bidi-css-js "^2.0.0"
+    isobject "^3.0.1"
 
-fela-plugin-custom-property@^6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/fela-plugin-custom-property/-/fela-plugin-custom-property-6.0.3.tgz#22e6039c921238829188454319e10c382afd3472"
-
-fela-plugin-embedded@^5.2.4:
-  version "5.2.4"
-  resolved "https://registry.yarnpkg.com/fela-plugin-embedded/-/fela-plugin-embedded-5.2.4.tgz#01880217e34b040ecabe5f082a8c1fbcecc65618"
+fela-plugin-embedded@^5.2.6:
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/fela-plugin-embedded/-/fela-plugin-embedded-5.2.6.tgz#601be89155299dc816d168c4bd177672edfb9ba3"
   dependencies:
     fast-loops "^1.0.0"
+    isobject "^3.0.1"
 
-fela-plugin-extend@^6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/fela-plugin-extend/-/fela-plugin-extend-6.0.3.tgz#9b963cf353323bbea4f87f4e224c44d086098031"
+fela-plugin-extend@^6.0.4:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/fela-plugin-extend/-/fela-plugin-extend-6.0.4.tgz#4c938b992ca0f007f886cdb16ef4b331e8365d49"
   dependencies:
     css-in-js-utils "2.0.0"
     fast-loops "^1.0.0"
+    fela-plugin-remove-undefined "^5.0.19"
+    isobject "^3.0.1"
 
-fela-plugin-fallback-value@^5.0.16:
-  version "5.0.16"
-  resolved "https://registry.yarnpkg.com/fela-plugin-fallback-value/-/fela-plugin-fallback-value-5.0.16.tgz#4814118fadacae3e6367e1877b2bdb37d04fe7dc"
+fela-plugin-fallback-value@^5.0.17:
+  version "5.0.17"
+  resolved "https://registry.yarnpkg.com/fela-plugin-fallback-value/-/fela-plugin-fallback-value-5.0.17.tgz#09be0508030905b111d5195f57d29fbdfffade3d"
   dependencies:
     css-in-js-utils "2.0.0"
+    isobject "^3.0.1"
 
 fela-plugin-lvha@^5.0.15:
   version "5.0.15"
@@ -4494,33 +4480,26 @@ fela-plugin-lvha@^5.0.15:
   dependencies:
     fast-loops "^1.0.0"
 
-fela-plugin-placeholder-prefixer@^5.0.16:
-  version "5.0.16"
-  resolved "https://registry.yarnpkg.com/fela-plugin-placeholder-prefixer/-/fela-plugin-placeholder-prefixer-5.0.16.tgz#4bbc269369a79fb078457ce34f63d89545d7cf92"
+fela-plugin-placeholder-prefixer@^5.0.18:
+  version "5.0.18"
+  resolved "https://registry.yarnpkg.com/fela-plugin-placeholder-prefixer/-/fela-plugin-placeholder-prefixer-5.0.18.tgz#ccbf7478ce43991d738c145d8d6a4f399d55046b"
   dependencies:
     fast-loops "^1.0.0"
-    fela-plugin-custom-property "^6.0.3"
+    fela-plugin-custom-property "^7.0.1"
 
-fela-plugin-prefixer@^5.0.16:
+fela-plugin-remove-undefined@^5.0.19:
+  version "5.0.19"
+  resolved "https://registry.yarnpkg.com/fela-plugin-remove-undefined/-/fela-plugin-remove-undefined-5.0.19.tgz#3a075ab961a9b90d96039025f186ccda0d20b00a"
+  dependencies:
+    fela-utils "^8.0.5"
+    isobject "^3.0.1"
+
+fela-plugin-unit@^5.0.16:
   version "5.0.16"
-  resolved "https://registry.yarnpkg.com/fela-plugin-prefixer/-/fela-plugin-prefixer-5.0.16.tgz#2138770edc79d8e1c21b5530bc496e6a7bd74268"
+  resolved "https://registry.yarnpkg.com/fela-plugin-unit/-/fela-plugin-unit-5.0.16.tgz#74ea91aedd6e21f90279c589cfebe0d809b5b770"
   dependencies:
     css-in-js-utils "^2.0.0"
-    fast-loops "^1.0.0"
-    fela-plugin-fallback-value "^5.0.16"
-    inline-style-prefixer "^3.0.8"
-
-fela-plugin-remove-undefined@^5.0.17:
-  version "5.0.17"
-  resolved "https://registry.yarnpkg.com/fela-plugin-remove-undefined/-/fela-plugin-remove-undefined-5.0.17.tgz#51da42bf15d03e4fdba05fa32cd2861cad3cf225"
-  dependencies:
-    fela-utils "^8.0.3"
-
-fela-plugin-unit@^5.0.15:
-  version "5.0.15"
-  resolved "https://registry.yarnpkg.com/fela-plugin-unit/-/fela-plugin-unit-5.0.15.tgz#f3193fb0b924a97892135ef2b9933667453e8dc4"
-  dependencies:
-    css-in-js-utils "^2.0.0"
+    isobject "^3.0.1"
 
 fela-plugin-validator@^5.0.17:
   version "5.0.17"
@@ -4528,34 +4507,21 @@ fela-plugin-validator@^5.0.17:
   dependencies:
     fela-utils "^8.0.3"
 
-fela-statistics@^5.0.17:
-  version "5.0.17"
-  resolved "https://registry.yarnpkg.com/fela-statistics/-/fela-statistics-5.0.17.tgz#8132d2e802282b81ea18f8a905ead1edbca4cebb"
+fela-statistics@^5.0.19:
+  version "5.0.19"
+  resolved "https://registry.yarnpkg.com/fela-statistics/-/fela-statistics-5.0.19.tgz#0c41713cf5c123bd2858e749d19df82480d0df07"
   dependencies:
-    fela-utils "^8.0.3"
+    fela-utils "^8.0.5"
     gzip-size "^3.0.0"
 
-fela-tools@^5.0.13:
-  version "5.0.13"
-  resolved "https://registry.yarnpkg.com/fela-tools/-/fela-tools-5.0.13.tgz#4ec2854475a879ac5ccf201c30b1888a055100ab"
-  dependencies:
-    css-in-js-utils "2.0.0"
-    fela-utils "^7.0.5"
-
-fela-tools@^5.1.2:
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/fela-tools/-/fela-tools-5.1.2.tgz#c6760b42d72116911c2c0341b6d880cfc11c76a8"
+fela-tools@^5.1.4:
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/fela-tools/-/fela-tools-5.1.4.tgz#3fe20f2135ce607b52a93caad6c695da1cca380c"
   dependencies:
     css-in-js-utils "2.0.0"
     fast-loops "^1.0.0"
-    fela "^6.1.3"
-    fela-utils "^8.0.3"
-
-fela-utils@^7.0.5:
-  version "7.0.5"
-  resolved "https://registry.yarnpkg.com/fela-utils/-/fela-utils-7.0.5.tgz#62397db8abf8294bb160ba7575b31d68495283b2"
-  dependencies:
-    css-in-js-utils "2.0.0"
+    fela "^6.1.5"
+    fela-utils "^8.0.5"
 
 fela-utils@^8.0.3:
   version "8.0.3"
@@ -4564,20 +4530,22 @@ fela-utils@^8.0.3:
     css-in-js-utils "^2.0.0"
     fast-loops "^1.0.0"
 
-fela@^6.0.2:
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/fela/-/fela-6.0.5.tgz#3631a39a4c1d94e5e281ec2b5ca66b71e3104fca"
+fela-utils@^8.0.5:
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/fela-utils/-/fela-utils-8.0.5.tgz#2017ac77d85b7ba396c91121feb0b59050f9c7d4"
   dependencies:
-    css-in-js-utils "2.0.0"
-    fela-utils "^7.0.5"
+    css-in-js-utils "^2.0.0"
+    fast-loops "^1.0.0"
+    string-hash "^1.1.3"
 
-fela@^6.1.3:
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/fela/-/fela-6.1.3.tgz#c3bc8726dada63c23914bed9ca79d902e61e9a74"
+fela@^6.1.5:
+  version "6.1.5"
+  resolved "https://registry.yarnpkg.com/fela/-/fela-6.1.5.tgz#7d675ace877f99d61ef356aa3629d75023c831bc"
   dependencies:
     css-in-js-utils "2.0.0"
     fast-loops "^1.0.0"
-    fela-utils "^8.0.3"
+    fela-utils "^8.0.5"
+    isobject "^3.0.1"
 
 figures@^1.3.5, figures@^1.7.0:
   version "1.7.0"
@@ -5800,9 +5768,9 @@ ini@^1.3.3:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
 
-inline-style-prefixer@^3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-3.0.8.tgz#8551b8e5b4d573244e66a34b04f7d32076a2b534"
+inline-style-prefixer@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-4.0.0.tgz#30a03df1b346ba6b1fb8a812bc3c9dabef48022d"
   dependencies:
     bowser "^1.7.3"
     css-in-js-utils "^2.0.0"
@@ -9166,12 +9134,6 @@ prop-types-exact@1.1.1:
     has "^1.0.1"
     object.assign "^4.0.4"
 
-prop-types@15.5.8:
-  version "15.5.8"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
-  dependencies:
-    fbjs "^0.8.9"
-
 prop-types@15.6.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
@@ -9447,13 +9409,13 @@ react-error-overlay@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
 
-react-fela@^6.0.2:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/react-fela/-/react-fela-6.1.0.tgz#7571e08b09359b342688f4f81125794e2bdf2b9c"
+react-fela@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/react-fela/-/react-fela-7.1.0.tgz#ab4b1db858f083b54d4128e8a46b30adf45107da"
   dependencies:
-    fela-bindings "^1.1.0"
-    fela-dom "^6.0.6"
-    prop-types "15.5.8"
+    fela-bindings "^2.1.0"
+    fela-dom "^7.0.6"
+    prop-types "^15.5.8"
 
 react-fns@^1.3.0:
   version "1.3.0"
@@ -10193,9 +10155,9 @@ rst-selector-parser@^2.2.3:
     lodash.flattendeep "^4.4.0"
     nearley "^2.7.10"
 
-rtl-css-js@^1.4.2:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/rtl-css-js/-/rtl-css-js-1.8.0.tgz#af8ccdf5944bd8d6a2657fcf2e4a4e9adf62361b"
+rtl-css-js@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/rtl-css-js/-/rtl-css-js-1.9.0.tgz#3052f8ba39c7afd1450b06602a7606480c5dcc7f"
 
 run-async@^2.2.0:
   version "2.3.0"
@@ -10394,7 +10356,7 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-shallow-equal@1.0.0, shallow-equal@^1.0.0:
+shallow-equal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shallow-equal/-/shallow-equal-1.0.0.tgz#508d1838b3de590ab8757b011b25e430900945f7"
 
@@ -10786,7 +10748,7 @@ string-convert@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/string-convert/-/string-convert-0.2.1.tgz#6982cc3049fbb4cd85f8b24568b9d9bf39eeff97"
 
-string-hash@1.1.3:
+string-hash@1.1.3, string-hash@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/string-hash/-/string-hash-1.1.3.tgz#e8aafc0ac1855b4666929ed7dd1275df5d6c811b"
 

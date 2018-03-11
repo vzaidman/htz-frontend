@@ -11,10 +11,10 @@ import { Provider, ThemeProvider, } from 'react-fela';
  *   Allows tailoring of the renderer to different environments and needs,
  *   e.g., rtl vs. ltr, plugins, enhancers, etc.
  * @prop {node} [children=null]
- *   May only contain a single child to which, will be passed down
- *   any non-standard props passed to `<StyleProvider />`
+ *   May only contain a single child to which, any non-standard props
+ *   passed to `<StyleProvider />` will be passed down
  * @prop {Object} [theme=null]
- *   A theme object tailored for the tested use-case.
+ *   A theme object tailored for the use-case.
  */
 
 StyleProvider.propTypes = {
@@ -29,7 +29,7 @@ StyleProvider.defaultProps = {
 };
 
 /**
- * A Fela `Provider` component that makes the Fela renderer available via `context`.
+ * A Fela `Provider` component that makes the Fela renderer and theme available via `context`.
  *
  * @param {StyleProviderPropTypes} The properties passed to the `<StyleProvider />` component
  *

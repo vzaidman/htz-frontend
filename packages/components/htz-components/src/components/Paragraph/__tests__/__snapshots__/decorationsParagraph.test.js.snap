@@ -11,19 +11,19 @@ Object {
       >
         זהו תפקידו של הזיכרון האולטימטיבי הזה, וזה גם המחולל שלו, ואת העדות לכך מספק קנאוסגורד בהצהרה כי את אמו, שהוא מכנה 
         <span
-          className="htz-a htz-b"
+          className="htz-a htz-b htz-c"
         >
           קרקעית הבאר של הילדות
         </span>
         , הנחמה שבביבים של ההשפלה והפחד מהאב, הוא אינו זוכר. היא תמיד היתה שם, הוא מעיד, 
         <em
-          className="htz-c"
+          className="htz-d"
         >
           אני פשוט לא מצליח לזכור את זה
         </em>
         . כלומר, הזיכרון המושלם שקנאוסגורד מפגין מולנו כבר שלושה כרכים פגום. אבל הוא לא רק פגום, הוא הפגם עצמו. הוא היסוד לכל מה שמושחת, הוא התשוקה לשכוח. המאבק שלי, המאבק של קנאוסגורד, הוא הניסיון לנקז את הנורא מכל שהתגלה במצבור שופע בנפשו במהלך החקירה הזאת. 
         <a
-          className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+          className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
           href="https://www.haaretz.co.il/literature/prose/.premium-REVIEW-1.4740317"
           onClick={[Function]}
           target="_blank"
@@ -34,6 +34,6 @@ Object {
       </p>
     </div>
   </div>,
-  "styles": ".htz-a{text-decoration:underline}.htz-b{text-decoration-skip:ink;-webkit-text-decoration-skip:ink}.htz-c{font-style:italic}.htz-d{color:#0B7EB5}.htz-e:hover{border-bottom-width:1px}.htz-f:hover{border-bottom-style:solid}.htz-g:hover{border-bottom-color:#0B7EB5}.htz-h:focus{border-bottom-width:2px}.htz-i:focus{border-bottom-style:solid}.htz-j:focus{border-bottom-color:#0B7EB5}",
+  "styles": ".htz-a{text-decoration:underline}.htz-b{-webkit-text-decoration-skip:ink}.htz-c{text-decoration-skip:ink}.htz-d{font-style:italic}.htz-e{color:#0B7EB5}.htz-f:hover{border-bottom-width:1px}.htz-g:hover{border-bottom-style:solid}.htz-h:hover{border-bottom-color:#0B7EB5}.htz-i:focus{border-bottom-width:2px}.htz-j:focus{border-bottom-style:solid}.htz-k:focus{border-bottom-color:#0B7EB5}",
 }
 `;
