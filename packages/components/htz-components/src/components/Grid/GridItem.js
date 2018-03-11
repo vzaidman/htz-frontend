@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
+// ////////////////////////////////////////////////////////////////// //
+//                             PROP-TYPES                             //
+// ////////////////////////////////////////////////////////////////// //
 /**
  * Properties of a `<GridItem />`
  */
-const StyledGridItemPropTypes = {
-  // Underlying component props //
+GridItem.propTypes = {
   /**
    * An object of attributes to set on the DOM element.
    */
@@ -28,9 +30,9 @@ const StyledGridItemPropTypes = {
 
   // Styling props //
   /**
-   * The width (in `rem`) of the gutter between `<GridItem />`s in a `<Grid />`.
-   * The parent `<Grid />` component will automatically augment its children
-   * with this prop, so it should never be set directly on the component itself.
+   * The width (in `rem`) of the gutter between `<GridItem />`s in a `<Grid />`.<br />
+   * **The parent `<Grid />` component will automatically augment its children
+   * with this prop, so it should never be set directly on the component itself.**
    */
   gutter: PropTypes.number,
   /**
@@ -111,7 +113,7 @@ const StyledGridItemPropTypes = {
 };
 
 /** The default values of a `<GridItem>`'s props */
-const StyledGridItemDefaultProps = {
+GridItem.defaultProps = {
   attrs: null,
   children: null,
   id: null,
@@ -123,6 +125,9 @@ const StyledGridItemDefaultProps = {
   miscStyles: null,
 };
 
+// ////////////////////////////////////////////////////////////////// //
+//                               STYLES                               //
+// ////////////////////////////////////////////////////////////////// //
 const gridItemStyles = ({
   gutter,
   offset,
@@ -130,7 +135,6 @@ const gridItemStyles = ({
   width,
   miscStyles,
   theme,
-  ...props
 }) => ({
   // Include gutter width (padding) in total width calculation
   boxSizing: 'border-box',
@@ -158,6 +162,9 @@ const gridItemStyles = ({
   ],
 });
 
+// ///////////////// //
+//  Styling Helpers  //
+// ///////////////// //
 function setOffset(prop, offset) {
   const offsetInPercent = `${offset * 100}%`;
   return {
@@ -206,35 +213,38 @@ function setRule(prop, ruleOptions, theme) {
   };
 }
 
-GridItem.propTypes = StyledGridItemPropTypes;
-GridItem.defaultProps = StyledGridItemDefaultProps;
-
-/**
- * A generic, stylable GridItem component
- * @param {Object} props
- */
-export function GridItem({
-  attrs,
-  className, // eslint-disable-line react/prop-types
+// ////////////////////////////////////////////////////////////////// //
+//                             COMPONENT                              //
+// ////////////////////////////////////////////////////////////////// //
+export default function GridItem({
   children,
+  gutter,
   id,
+  offset,
+  rule,
   tagName,
-  ...props
+  width,
+  attrs,
+  miscStyles,
 }) {
-  const GridItemElement = tagName;
   return (
-    <GridItemElement id={id} className={className} {...attrs}>
-      {children}
-    </GridItemElement>
+    <FelaComponent
+      {...{
+        gutter,
+        offset,
+        rule,
+        width,
+        miscStyles,
+      }}
+      rule={gridItemStyles}
+      render={({ className, }) => {
+        const GridItemElement = tagName;
+        return (
+          <GridItemElement id={id} className={className} {...attrs}>
+            {children}
+          </GridItemElement>
+        );
+      }}
+    />
   );
 }
-
-const StyledGridItem = createComponent(gridItemStyles, GridItem, [
-  'attrs',
-  'tagName',
-]);
-
-StyledGridItem.propTypes = StyledGridItemPropTypes;
-StyledGridItem.defaultProps = StyledGridItemDefaultProps;
-
-export default StyledGridItem;

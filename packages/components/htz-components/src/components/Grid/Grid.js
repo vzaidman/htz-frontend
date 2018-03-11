@@ -1,6 +1,6 @@
 import React, { Component, Children, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, withTheme, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import {
   parseComponentProp,
   parseStyleProps,
@@ -13,6 +13,9 @@ import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
+// ////////////////////////////////////////////////////////////////// //
+//                             PROP-TYPES                             //
+// ////////////////////////////////////////////////////////////////// //
 const alignOptions = PropTypes.oneOf([
   'start',
   'center',
@@ -28,7 +31,7 @@ const vAlignOptions = PropTypes.oneOf([
   'stretch',
 ]);
 
-export const StyledGridPropTypes = {
+Grid.propTypes = {
   /**
    * An object of attrbutes to set on the DOM element.
    * Passed to the underlying react element
@@ -111,7 +114,7 @@ export const StyledGridPropTypes = {
   miscStyles: stylesPropType,
 };
 
-export const StyledGridDefaultProps = {
+Grid.defaultProps = {
   attrs: null,
   children: null,
   id: null,
@@ -124,6 +127,9 @@ export const StyledGridDefaultProps = {
   miscStyles: null,
 };
 
+// ///////////////////////////////////////////////////////////////// ///
+//                               STYLES                               //
+// ///////////////////////////////////////////////////////////////// ///
 const gridStyles = ({
   gutter,
   align,
@@ -158,6 +164,9 @@ const gridStyles = ({
   ],
 });
 
+// //////////////// ///
+//  Style Functions  //
+// //////////////// ///
 /**
  * Set the margin between rows of the grid by adding `margin-top` to
  * each grid item, except those on the first row.
@@ -255,10 +264,8 @@ function setDirection(prop, isRev) {
 
 let hasMatchMedia;
 
-export class Grid extends Component {
-  static propTypes = StyledGridPropTypes;
-  static defaultProps = StyledGridDefaultProps;
-
+/* eslint-disable react/prop-types */
+class GridComponent extends Component {
   constructor(props) {
     super(props);
     this.getUpdatedGutter = debounce(this.getUpdatedGutter.bind(this), 150);
@@ -267,7 +274,6 @@ export class Grid extends Component {
   state = {
     gutter: getInitialGutter(
       this.props.gutter,
-      // eslint-disable-next-line react/prop-types
       this.props.theme.gridStyle.gutterWidth
     ),
   };
@@ -334,30 +340,18 @@ export class Grid extends Component {
   instanceIsMounted = false;
 
   render() {
-    const {
-      align, // eslint-disable-line no-unused-vars
-      attrs,
-      children,
-      gutter, // eslint-disable-line no-unused-vars
-      isRev, // eslint-disable-line no-unused-vars
-      miscStyles, // eslint-disable-line no-unused-vars
-      rowSpacing, // eslint-disable-line no-unused-vars
-      tagName,
-      theme, // eslint-disable-line no-unused-vars
-      vAlign, // eslint-disable-line no-unused-vars
-      ...props
-    } = this.props;
+    const { attrs, children, className, id, tagName, } = this.props;
     const GridElement = tagName;
     return (
-      <GridElement {...attrs} {...props}>
+      <GridElement className={className} id={id} {...attrs}>
         {/* Pass down `gutter` to children */}
         {Children.map(
           children,
           (child, index) =>
             (React.isValidElement(child)
               ? React.cloneElement(child, {
-                gutter: this.state.gutter,
-              })
+                  gutter: this.state.gutter,
+                })
               : child)
         )}
       </GridElement>
@@ -365,19 +359,32 @@ export class Grid extends Component {
   }
 }
 
+export default function Grid({ children, ...props }) {
+  return (
+    <FelaComponent
+      {...props}
+      rule={gridStyles}
+      render={({ className, theme, }) => {
+        const { attrs, gutter, id, tagName, } = props;
+        return (
+          <GridComponent
+            attrs={attrs}
+            className={className}
+            gutter={gutter}
+            id={id}
+            tagName={tagName}
+            theme={theme}
+          >
+            {children}
+          </GridComponent>
+        );
+      }}
+    />
+  );
+}
+
 function getInitialGutter(gutter, defaultGutter) {
   return gutter === null
     ? defaultGutter
     : typeof gutter === 'number' ? gutter : gutter.onServerRender;
 }
-
-const StyledGrid = createComponent(gridStyles, withTheme(Grid), [
-  'attrs',
-  'gutter',
-  'tagName',
-]);
-
-StyledGrid.propTypes = StyledGridPropTypes;
-StyledGrid.defaultProps = StyledGridDefaultProps;
-
-export default StyledGrid;
