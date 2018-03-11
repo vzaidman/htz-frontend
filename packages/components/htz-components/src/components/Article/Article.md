@@ -4,14 +4,14 @@
 
 **Table of Contents**
 
-* [ArticleBody examples](#articlebody-examples)
+* [Article examples](#article-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### ArticleBody examples
+### Article examples
 
 ```jsx
-<div style={{ direction: 'rtl', marginRight: '34rem' }}>
+<div style={{ direction: 'rtl' }}>
   <Article
     articleType="regularArticle"
     exclusive="KICKER"
@@ -85,6 +85,22 @@
     pubDate={1517757663241}
     modDate={1517757635308}
     body={[
+      {
+        videoType: 'videoId',
+        videoContent: '3SzXM019pbs',
+        title: 'old video',
+        credit: 'old video',
+        inputTemplate: 'com.tm.Video',
+        contentId: '1.2037',
+      },
+      {
+        videoType: 'videoId',
+        videoContent: '3SzXM019pbs',
+        title: 'old video',
+        credit: 'old video',
+        inputTemplate: 'com.tm.Video',
+        contentId: '1.2037',
+      },
       {
         attributes: [],
         tag: 'h4',
@@ -280,6 +296,26 @@
         ],
       },
       {
+        content: 'pe7driNrW9k?list=PLJzja_wfYCI3pO9p6FGujWTWVeYz5Q_Dw&t=1',
+        caption: 'Ren and Stimpy',
+        credit: 'youtube',
+        embedType: 'playlist',
+        elementType: 'embedElement',
+        settings: {
+          controls: '1',
+          related: '1',
+          loop: '0',
+          videoImage: 'http://img.youtube.com/vi/pe7driNrW9k/0.jpg',
+          logo: '1',
+          mute: false,
+          autoplay: false,
+          startAt: 0,
+        },
+        inputTemplate: 'com.polobase.YouTubeEmbed',
+        contentId: '7.5218',
+        contentName: 'Playlist',
+      },
+      {
         attributes: [],
         tag: 'p',
         content: [
@@ -313,6 +349,78 @@
             ],
           },
         ],
+      },
+      {
+        text:
+          'בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר  הביטחון',
+        credit: 'קרדיט קרדיט',
+        position: 'midCenterPosition',
+        afterParagraph: '2',
+        imagesList: [
+          {
+            alt: 'נתניהו בישיבת הממשלה השבועית, בתחילת השבוע',
+            credit: 'אמיל סלמן',
+            title: 'נתניהו בישיבת הממשלה השבועית, בתחילת השבוע',
+            aspects: {
+              full: {
+                width: 1942,
+                height: 1456,
+                x: 0,
+                y: 0,
+              },
+              regular: {
+                width: 1942,
+                height: 1456,
+                x: 258,
+                y: 12,
+              },
+              headline: {
+                width: 2200,
+                height: 1277,
+                x: 0,
+                y: 56,
+              },
+              belgrade: {
+                width: 2200,
+                height: 690,
+                x: 0,
+                y: 369,
+              },
+              landscape: {
+                width: 2200,
+                height: 949,
+                x: 0,
+                y: 194,
+              },
+              square: {
+                width: 1461,
+                height: 1460,
+                x: 592,
+                y: 8,
+              },
+              vertical: {
+                width: 1227,
+                height: 1440,
+                x: 731,
+                y: 28,
+              },
+            },
+            isAnimated: false,
+            imgArray: [
+              {
+                imgName: 'image/2151933599.jpg',
+                version: '1518556356',
+              },
+            ],
+            imageType: 'image',
+            inputTemplate: 'com.tm.Image',
+            contentId: '1.5821197',
+            contentName: 'נתניהו בישיבת הממשלה השבועית, בתחילת השבוע',
+          },
+        ],
+        inputTemplate: 'com.htz.MagazineArticleQuote',
+        contentId: '1.6662',
+        contentName: 'credit and image',
       },
       {
         attributes: [],
@@ -361,73 +469,89 @@
         ],
       },
       {
-        text:
-          'בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר  הביטחון',
-        credit: 'קרדיט קרדיט',
-        position: 'midCenterPosition',
-        afterParagraph: '2',
-        imagesList: [
+        elementType: 'linksBlock',
+        seriesTitle: '50 שנה לששת הימים',
+        articlePositionInTheSeries: '2',
+        usePagination: 'true',
+        itemsPerPage: '3',
+        articles: [
           {
-            viewMode: 'FullColumnWithVerticalImage',
-            accessibility: 'ren & stimpy',
-            aspects: {
-              regular: {
-                x: 19,
-                y: 94,
-                width: 545,
-                height: 409,
-              },
-              full: {
-                width: 600,
-                height: 600,
-              },
-              headline: {
-                x: 0,
-                y: 174,
-                width: 600,
-                height: 348,
-              },
-              belgrade: {
-                x: 0,
-                y: 212,
-                width: 600,
-                height: 189,
-              },
-              landscape: {
-                x: 0,
-                y: 188,
-                width: 600,
-                height: 260,
-              },
-              square: {
-                x: 0,
-                y: 170,
-                width: 360,
-                height: 360,
-              },
-              vertical: {
-                x: 0,
-                y: 167,
-                width: 305,
-                height: 358,
-              },
-            },
-            isAnimated: false,
-            imgArray: [
+            url: 'http://eran.haaretz.co.il/1.6614',
+            positionInSeries: '1',
+            inputTemplate: 'com.htz.StandardArticle',
+            contentId: '1.6614',
+            contentName: 'ukjhkj',
+            authors: [
               {
-                imgName: 'image/1536361643.png',
-                version: '1519832762',
+                showInNewsLetterAlerts: false,
+                displayAuthorPage: false,
+                inputTemplate: 'com.tm.Author',
+                contentId: '1.1925',
+                contentName: 'אורנה פילץ ',
+              },
+              {
+                email: 'kazmit@netvision.net.il',
+                showInNewsLetterAlerts: false,
+                displayAuthorPage: false,
+                inputTemplate: 'com.tm.Author',
+                contentId: '1.1967',
+                contentName: 'שהם סמיט',
               },
             ],
-            imageType: 'image',
-            inputTemplate: 'com.tm.Image',
-            contentId: '1.6738',
-            contentName: 'ren & stimpy',
+          },
+          {
+            url: 'http://eran.haaretz.co.il/news/world/LIVE-1.2597',
+            positionInSeries: '2',
+            inputTemplate: 'com.htz.StandardArticle',
+            contentId: '1.2597',
+            contentName:
+              'ראש ממשלת צרפת: נרקמות מזימות נוספות לפיגועים במדינה וברחבי אירופה',
+            authors: [
+              'אורנה פילץ',
+              {
+                email: 'kazmit@netvision.net.il',
+                showInNewsLetterAlerts: false,
+                displayAuthorPage: false,
+                inputTemplate: 'com.tm.Author',
+                contentId: '1.1967',
+                contentName: 'שהם סמיט',
+              },
+            ],
+          },
+          {
+            url: 'http://eran.haaretz.co.il/news/education/.premium-1.5662',
+            positionInSeries: '3',
+            inputTemplate: 'com.htz.StandardArticle',
+            contentId: '1.5662',
+            contentName: 'סופו של מקדש השמחה משנות התשעים - "אלנבי 58"',
+            authors: [
+              {
+                email: 'kazmit@netvision.net.il',
+                showInNewsLetterAlerts: false,
+                displayAuthorPage: false,
+                inputTemplate: 'com.tm.Author',
+                contentId: '1.1967',
+                contentName: 'שהם סמיט',
+              },
+            ],
+          },
+          {
+            url: 'http://eran.themarker.com:8080/1.6636',
+            positionInSeries: '4',
+            inputTemplate: 'com.tm.StandardArticle',
+            contentId: '1.6636',
+            contentName: 'aaaa',
+            authors: ['אורנה פילץ', 'שהם סמיט'],
+          },
+          {
+            url: 'http://eran.haaretz.co.il/1.6643',
+            positionInSeries: '5',
+            inputTemplate: 'com.htz.StandardArticle',
+            contentId: '1.6643',
+            contentName: 'embeds',
+            authors: ['שהם סמיט'],
           },
         ],
-        inputTemplate: 'com.htz.MagazineArticleQuote',
-        contentId: '1.6662',
-        contentName: 'credit and image',
       },
       {
         attributes: [],

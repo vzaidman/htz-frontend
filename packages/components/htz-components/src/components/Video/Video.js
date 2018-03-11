@@ -1,34 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Caption from '../Caption/Caption';
 import Embed from '../Embed/Embed';
 import HtmlElement from '../Interactive/HtmlElement';
 
 const propTypes = {
-  /**
-   * VideoType (`embed` or `videoId`) helps to determine which component should handle the video,
-   * when `videoId` sends it to [Youtube component](./#youtube),
-   * and `embed` to [HTMLElement component](./#htmlelement)
-   */
-  videoType: PropTypes.string.isRequired,
   /**
    * The video's source code (in case of embed, it will be an html snippet,
    * and in videoId, it will be youtube's video/playlist id).
    */
   videoContent: PropTypes.string.isRequired,
   /**
-   * Video's title.
+   * VideoType (`embed` or `videoId`) helps to determine which component should handle the video,
+   * when `videoId` sends it to [Youtube component](./#youtube),
+   * and `embed` to [HTMLElement component](./#htmlelement)
    */
-  title: PropTypes.string,
-  /**
-   * Video's credit.
-   */
-  credit: PropTypes.string,
-};
-
-const defaultProps = {
-  credit: null,
-  title: null,
+  videoType: PropTypes.string.isRequired,
 };
 
 const getElement = (type, content) => {
@@ -61,18 +47,12 @@ const getElement = (type, content) => {
  * and according to its selected type it sends the video to [Youtube component](./#youtube)
  * or [HtmlElement component](./#htmlelement).
  */
-function Video({ videoType, videoContent, credit, title, }) {
+function Video({ videoContent, videoType, }) {
   const VideoElement = getElement(videoType, videoContent);
 
-  return (
-    <figure>
-      {VideoElement && VideoElement}
-      {(title || credit) && <Caption caption={title} credit={credit} />}
-    </figure>
-  );
+  return <figure>{VideoElement && VideoElement}</figure>;
 }
 
 Video.propTypes = propTypes;
-Video.defaultProps = defaultProps;
 
 export default Video;

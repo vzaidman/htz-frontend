@@ -6,6 +6,7 @@ import {
   parseStyleProps,
   parseTypographyProp,
 } from '@haaretz/htz-css-tools';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const setColor = (prop, value, getColor) => {
   const colorArgs = Array.isArray(value) ? value : [ value, ];
@@ -143,6 +144,12 @@ Caption.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]),
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trumps all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  miscStyles: stylesPropType,
 };
 
 Caption.defaultProps = {
@@ -153,6 +160,7 @@ Caption.defaultProps = {
   backgroundColor: null,
   color: null,
   typeStyles: null,
+  miscStyles: null,
 };
 
 export default Caption;

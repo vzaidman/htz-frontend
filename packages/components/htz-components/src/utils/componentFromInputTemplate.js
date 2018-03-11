@@ -5,6 +5,7 @@ import Embed from '../components/Embed/Embed';
 import HtmlElement from '../components/Interactive/HtmlElement';
 import Image from '../components/Image/Image';
 import InteractiveElement from '../components/Interactive/interactiveElement';
+import LinksBlock from '../components/RelatedArticles/LinksBlock';
 import Paragraph from '../components/Paragraph/Paragraph';
 import Quote from '../components/Quote/Quote';
 import RelatedArticles from '../components/RelatedArticles/RelatedArticles';
@@ -33,12 +34,14 @@ const inputTemplateToComponent = new Map([
   [ 'h4', Paragraph, ],
   [ 'a', Paragraph, ],
   [ 'com.htz.MagazineArticleQuote', Quote, ],
+  [ 'linksBlock', LinksBlock, ],
   [ 'relatedArticles', RelatedArticles, ],
   [ 'relatedArticleSeries', SeriesArticles, ],
 
   /* Misc components */
   [ 'com.tm.Image', Image, ],
   [ 'com.tm.Video', Video, ],
+  [ 'com.tm.ImageGalleryElement', () => <p>ImageGallery</p>, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
   [ 'com.tm.ListElement', () => <p>ListElement</p>, ],
   [ 'com.tm.TabViewElement', () => <p>TabViewElement</p>, ],

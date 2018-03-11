@@ -28,6 +28,10 @@ const articleImagePropTypes = {
    */
   lastItem: PropTypes.bool,
   /**
+   * Should the image be rendered with its caption.
+   */
+  showCaption: PropTypes.bool,
+  /**
    * Image's title.
    */
   title: PropTypes.string,
@@ -39,6 +43,7 @@ const articleImagePropTypes = {
 
 const articleImageDefaultProps = {
   lastItem: false,
+  showCaption: true,
   title: null,
   credit: null,
 };
@@ -120,7 +125,6 @@ const ZoomWrapperUnstyled = ({ theme, ...props }) => (
     />
   </button>
 );
-
 
 const ZoomWrapper = createComponent(
   zoomWrapperStyle,
@@ -217,14 +221,14 @@ class ArticleImage extends React.Component {
   };
 
   render() {
-    const { viewMode, lastItem, title, credit, } = this.props;
+    const { viewMode, lastItem, title, credit, showCaption, } = this.props;
 
     return (
       <Fragment>
         <Wrapper viewMode={viewMode} lastItem={lastItem}>
           <ZoomWrapper onClick={this.toggleFullScreen} />
           <ImageElement {...this.props} />
-          <Caption caption={title} credit={credit} />
+          {showCaption && <Caption caption={title} credit={credit} />}
         </Wrapper>
         {this.state.fullScreen && (
           <FullScreenImage

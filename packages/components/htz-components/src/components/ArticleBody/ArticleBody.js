@@ -5,6 +5,7 @@ import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
 import ArticleImage from '../ArticleImage/ArticleImage';
 import Caption from '../Caption/Caption';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const propTypes = {
   /**
@@ -14,9 +15,25 @@ const propTypes = {
     PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
   ).isRequired,
   /**
+   * A callback to the parent component (`<Article />`)
+   * with the Headline Element (position 0)
+   * if present.
+   */
+  setHeadlineElement: PropTypes.func.isRequired,
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trumps all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  miscStyles: stylesPropType,
+  /**
    * The app's theme (get imported automatically with the `withTheme` method).
    */
   theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+
+const defaultProps = {
+  miscStyles: null,
 };
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
@@ -37,7 +54,13 @@ const Figure = createComponent(figureStyle, 'figure');
 const asideStyle = ({ theme, }) => ({
   ...theme.mq(
     { from: 'l', },
-    { width: '26rem', position: 'absolute', textAlign: 'end', start: '6rem', }
+    {
+      width: '26rem',
+      position: 'absolute',
+      textAlign: 'end',
+      start: '-6rem',
+      transform: 'translateX(100%)',
+    }
   ),
   extend: [
     ...[
@@ -52,22 +75,42 @@ const asideStyle = ({ theme, }) => ({
 });
 const Aside = createComponent(asideStyle, 'aside');
 
-const bodyWrapperStyle = ({ theme, }) => ({
+const bodyWrapperStyle = ({ miscStyles, theme, }) => ({
+  position: 'relative',
   ...parseComponentProp(
     'width',
     theme.articleStyle.body.width,
     theme.mq,
     mediaQueryCallback
   ),
+  ...(miscStyles || {}),
 });
 
-const BodyWrapper = createComponent(bodyWrapperStyle);
+const BodyWrapper = createComponent(bodyWrapperStyle, 'section');
 
-const buildComponent = (context, index, isLastItem, theme) => {
+const mediaComponents = [
+  'embedElement',
+  'com.tm.Image',
+  'com.tm.Video',
+  'com.tm.ImageGalleryElement',
+];
+
+const buildComponent = (
+  context,
+  index,
+  isLastItem,
+  theme,
+  setHeadlineElement
+) => {
   const uniqueId =
     context.elementType || context.inputTemplate || context.tag || null;
   const Component =
     uniqueId === 'com.tm.Image' ? ArticleImage : getComponent(uniqueId);
+
+  if (index === 0 && mediaComponents.includes(uniqueId)) {
+    setHeadlineElement(context);
+    return null;
+  }
 
   switch (uniqueId) {
     case 'com.tm.Image':
@@ -108,16 +151,23 @@ const buildComponent = (context, index, isLastItem, theme) => {
   }
 };
 
-function ArticleBody(props) {
+function ArticleBody({ body, setHeadlineElement, miscStyles, theme, }) {
   return (
-    <BodyWrapper>
-      {props.body.map((component, i) =>
-        buildComponent(component, i, i === props.body.length - 1, props.theme)
+    <BodyWrapper miscStyles={miscStyles}>
+      {body.map((component, i) =>
+        buildComponent(
+          component,
+          i,
+          i === body.length - 1,
+          theme,
+          setHeadlineElement
+        )
       )}
     </BodyWrapper>
   );
 }
 
 ArticleBody.propTypes = propTypes;
+ArticleBody.defaultProps = defaultProps;
 
 export default withTheme(ArticleBody);
