@@ -27,6 +27,7 @@ import {
   getDuration,
   getTimingFunction,
   getTransition,
+  getTransitionString,
 } from './methods/animation';
 import getMqString from './methods/getMqString';
 import pxToRem from './methods/pxToRem';
@@ -74,6 +75,10 @@ export { cssReset, };
  * @prop {Object} articleStyle.header - An object contains theme properties for article header.
  * @prop {function} color - A [colorGetter](https://haaretz.github.io/htz-frontend/htz-css-tools#colorgetter)
  *   function for retrieving color values from the predefined color palette.
+ * @prop {function} getTransitionString
+ *   A function taking `prop` (strin) `duration` (`number`), `easing` (`string`) and
+ *   `delay` (`number`) arguments. `duration` and `delay` steps start with `0`, which equals to `.25s`,
+ *   continue with `1`, which equals `.3s` and continue upwards, with every step equaling `step * 0.25s`.
  * @prop {function} getTransition - A function taking `duration` (`number`), `easing` (`string`)
  *   and `delay` (`number`) arguments. `duration` and `delay` steps start with `0`, which equals to `.25s`,
  *   continue with `1`, which equals `.3s` and continue upwards, with every step equaling `step * 0.25s`.
@@ -126,6 +131,7 @@ const htzTheme = Object.freeze({
   getDuration,
   getTimingFunction,
   getTransition,
+  getTransitionString,
   getMqString,
   mq,
   pxToRem,
