@@ -49,7 +49,7 @@ const styles = ({ bgc, miscStyles, theme, }) => ({
         { from: 's', until: 'm', value: 100, },
         { from: 'm', until: 'l', value: 768 / 6, },
         { from: 'l', until: 'xl', value: 1024 / 6, },
-        { from: 'xl', value: 1293 / 7, },
+        { from: 'xl', value: (1280 - 17) / 7, },
       ],
       theme.mq
     ),
