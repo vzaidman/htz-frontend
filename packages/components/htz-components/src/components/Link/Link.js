@@ -5,8 +5,12 @@ import NextLink from 'next/link';
 const propTypes = {
   /** Link's destination */
   href: PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ]).isRequired,
-  /** Link's content (simple string or another component/element) */
-  content: PropTypes.oneOfType([ PropTypes.node, PropTypes.string, ]).isRequired,
+  children: PropTypes.node,
+  /**
+   * Link's content (simple string or another component/element).
+   * Overrides `children` when both are defined.
+   */
+  content: PropTypes.oneOfType([ PropTypes.node, PropTypes.string, ]),
   /** Basic HTML target (destination window) */
   target: PropTypes.string,
   /** Should prefetch */
@@ -19,12 +23,17 @@ const propTypes = {
 
 const defaultProps = {
   className: null,
+  children: null,
+  content: null,
   focus: false,
   prefetch: null,
   target: null,
 };
 
-function Link({ href, target, content, prefetch, className, focus, }) {
+function Link({ href, target, children, content, prefetch, className, focus, }) {
+  // eslint-disable-next-line eqeqeq
+  const renderContent = content != undefined ? content : children;
+
   return (
     <NextLink prefetch={prefetch} href={href}>
       <a
@@ -32,7 +41,7 @@ function Link({ href, target, content, prefetch, className, focus, }) {
         className={className}
         ref={linkRef => focus && linkRef && linkRef.focus()}
       >
-        {content}
+        {renderContent}
       </a>
     </NextLink>
   );

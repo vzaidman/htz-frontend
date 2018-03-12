@@ -10,6 +10,22 @@ it('Simple link ', () => {
   expect(snapshot).toMatchSnapshot();
 });
 
+it('render content from "children"', () => {
+  const snapshot = felaSnapshotter(
+    <Link href="https://www.haaretz.co.il">test content</Link>
+  );
+  expect(snapshot).toMatchSnapshot();
+});
+
+it('override "children" with content', () => {
+  const snapshot = felaSnapshotter(
+    <Link href="https://www.haaretz.co.il" content="Haaretz">
+      test content
+    </Link>
+  );
+  expect(snapshot).toMatchSnapshot();
+});
+
 it('Link with target blank ', () => {
   const snapshot = felaSnapshotter(
     <Link href="https://themarker.com" content="The Marker" target="_blank" />

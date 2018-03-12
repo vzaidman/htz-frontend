@@ -59,3 +59,35 @@ Object {
   "styles": "",
 }
 `;
+
+exports[`override "children" with content 1`] = `
+Object {
+  "component": <div>
+    <a
+      className={null}
+      href="https://www.haaretz.co.il"
+      onClick={[Function]}
+      target={null}
+    >
+      Haaretz
+    </a>
+  </div>,
+  "styles": "",
+}
+`;
+
+exports[`render content from "children" 1`] = `
+Object {
+  "component": <div>
+    <a
+      className={null}
+      href="https://www.haaretz.co.il"
+      onClick={[Function]}
+      target={null}
+    >
+      test content
+    </a>
+  </div>,
+  "styles": "",
+}
+`;
