@@ -6,14 +6,16 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
     className="htz-a htz-b htz-c htz-d htz-e"
   >
     <div
-      className="htz-a htz-f htz-g htz-b htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
+      className="htz-a htz-f htz-g htz-b htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
     >
       <div
-        className="htz-l htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
+        className="htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
       >
-        <div>
+        <div
+          className="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+        >
           <svg
-            className="htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
+            className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap"
             height="1em"
             viewBox="0 0 256 256"
             width="1em"
@@ -25,7 +27,9 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
             />
           </svg>
         </div>
-        <div>
+        <div
+          className="htz-ab htz-ac htz-aq htz-ar"
+        >
           <a
             className={null}
             href="https://www.facebook.com/haaretz"
@@ -33,7 +37,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
             target={null}
           >
             <svg
-              className="htz-y htz-z htz-ab htz-ah htz-ai"
+              className="htz-ai htz-aj htz-ak htz-as htz-at htz-au"
               height="1em"
               viewBox="0 0 256 256"
               width="1em"
@@ -52,7 +56,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
             target={null}
           >
             <svg
-              className="htz-y htz-z htz-ab htz-ah htz-ai"
+              className="htz-ai htz-aj htz-ak htz-as htz-at htz-au"
               height="1em"
               viewBox="0 0 256 256"
               width="1em"
@@ -71,7 +75,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
             target={null}
           >
             <svg
-              className="htz-y htz-z htz-ab htz-ah htz-ai"
+              className="htz-ai htz-aj htz-ak htz-as htz-av htz-at"
               height="1em"
               viewBox="0 0 256 256"
               width="1em"
@@ -90,7 +94,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
             target={null}
           >
             <svg
-              className="htz-y htz-z htz-ab htz-ah htz-ai"
+              className="htz-ai htz-aj htz-ak htz-as htz-av htz-at"
               height="1em"
               viewBox="0 0 256 256"
               width="1em"
@@ -109,7 +113,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
             target={null}
           >
             <svg
-              className="htz-y htz-z htz-ab htz-ah htz-ai"
+              className="htz-ai htz-aj htz-ak htz-as htz-at htz-au"
               height="1em"
               viewBox="0 0 256 256"
               width="1em"
@@ -128,7 +132,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
             target={null}
           >
             <svg
-              className="htz-y htz-z htz-ab htz-ah htz-ai"
+              className="htz-ai htz-aj htz-ak htz-as htz-av htz-at"
               height="1em"
               viewBox="0 0 256 256"
               width="1em"
@@ -147,7 +151,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
             target={null}
           >
             <svg
-              className="htz-y htz-z htz-ab htz-ah htz-ai"
+              className="htz-ai htz-aj htz-ak htz-as htz-av htz-at"
               height="1em"
               viewBox="0 0 256 256"
               width="1em"
@@ -162,16 +166,94 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
         </div>
       </div>
       <div
-        className="htz-l htz-aj htz-p htz-ak htz-al htz-am"
+        className="htz-aw htz-ab htz-ac"
       >
-        <ul
-          className="htz-an"
+        <div
+          className="htz-l htz-ax htz-ay htz-az"
         >
-          <li
-            className="htz-ao"
+          <ul
+            className="htz-l htz-m htz-ba htz-bb"
           >
             <a
-              className="htz-t htz-ap htz-aq htz-ar"
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/promotions-page"
+              onClick={[Function]}
+              target={null}
+            >
+              רכשו מנוי
+            </a>
+            <a
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/blogs"
+              onClick={[Function]}
+              target={null}
+            >
+              בלוגים
+            </a>
+            <a
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/misc/terms-of-use"
+              onClick={[Function]}
+              target={null}
+            >
+              תנאי שימוש
+            </a>
+          </ul>
+          <ul
+            className="htz-l htz-m htz-ba htz-bb"
+          >
+            <a
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/misc/contact-us"
+              onClick={[Function]}
+              target={null}
+            >
+              צרו קשר
+            </a>
+            <a
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
+              onClick={[Function]}
+              target={null}
+            >
+              פרסמו באתר
+            </a>
+            <a
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/personal-area/my-account"
+              onClick={[Function]}
+              target={null}
+            >
+              שירות למנויים
+            </a>
+          </ul>
+        </div>
+        <a
+          className="htz-bj htz-bk htz-bl htz-bm htz-bc htz-bn htz-ba htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-a htz-ci htz-c htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
+          href="https://www.haaretz.co.il/st/inter/shivuk-digital/hebrew/mtm/haaretzapp.html"
+          id={null}
+          onClick={[Function]}
+          type="button"
+        >
+          להורדת האפליקציה
+        </a>
+        <div
+          className="htz-dc htz-dd htz-de htz-df"
+        >
+          © כל הזכויות שמורות
+        </div>
+      </div>
+      <div
+        className="htz-l htz-dg htz-ax htz-bj htz-bd htz-az htz-av"
+      >
+        <ul
+          className="htz-dh"
+        >
+          <li
+            className="htz-di"
+          >
+            <a
+              className="htz-dj htz-dk htz-dl htz-bc"
               href="https://www.haaretz.co.il/misc/editors"
               onClick={[Function]}
               target={null}
@@ -181,11 +263,11 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
           </li>
         </ul>
         <li
-          className="htz-ao"
+          className="htz-di"
         >
           <button
             aria-expanded="false"
-            className="htz-ak htz-as htz-at htz-au htz-ar htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-a htz-br htz-c htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck"
+            className="htz-bj htz-bk htz-bl htz-bm htz-bc htz-bn htz-ba htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-dm htz-by htz-bz htz-dn htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-a htz-ci htz-c htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
             id={null}
             onClick={[Function]}
             type="button"
@@ -195,23 +277,23 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
         </li>
       </div>
       <div
-        className="htz-a htz-f htz-g htz-b htz-h htz-i htz-j htz-k htz-p htz-cl htz-cm htz-cn htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
+        className="htz-a htz-f htz-g htz-b htz-h htz-i htz-j htz-k htz-ax htz-do htz-dp htz-dq htz-dr htz-ds htz-dj htz-dt htz-du htz-dv htz-dw"
       >
         <div
-          className="htz-l htz-p htz-co htz-q"
+          className="htz-l htz-ax htz-dx htz-dy"
         >
           <ul
-            className="htz-cp htz-cq htz-cr"
+            className="htz-dz htz-ea htz-eb"
           >
             <div>
               <li
-                className="htz-ar"
+                className="htz-bc"
               >
                 מדורים
               </li>
               <li>
                 <a
-                  className="htz-cs htz-ct htz-cu htz-cv"
+                  className="htz-bf htz-bg htz-bh htz-bi"
                   href="https://www.haaretz.co.il/news"
                   onClick={[Function]}
                   target={null}
@@ -222,13 +304,13 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
             </div>
             <div>
               <li
-                className="htz-ar"
+                className="htz-bc"
               >
                 Haaretz.com
               </li>
               <li>
                 <a
-                  className="htz-cs htz-ct htz-cu htz-cv"
+                  className="htz-bf htz-bg htz-bh htz-bi"
                   href="https://www.haaretz.com/israel-news/with-eye-on-iran-israel-increases-military-support-for-syrian-rebels-1.5826348"
                   onClick={[Function]}
                   target={null}
@@ -238,7 +320,7 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
               </li>
               <li>
                 <a
-                  className="htz-cs htz-ct htz-cu htz-cv"
+                  className="htz-bf htz-bg htz-bh htz-bi"
                   href="https://www.haaretz.com/israel-news/MAGAZINE-not-a-cult-the-freemasons-want-you-unless-you-you-1.5824127"
                   onClick={[Function]}
                   target={null}
@@ -250,11 +332,11 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
           </ul>
         </div>
         <ul
-          className="htz-cp htz-cq htz-cr htz-cw"
+          className="htz-dz htz-ea htz-eb htz-ec"
         >
           <li>
             <a
-              className="htz-ar htz-cs htz-ct htz-cu htz-cv"
+              className="htz-bc htz-bf htz-bg htz-bh htz-bi"
               href="https://www.haaretz.co.il/misc/editors"
               onClick={[Function]}
               target={null}
@@ -265,12 +347,12 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
         </ul>
       </div>
       <div
-        className="htz-cx htz-cy htz-cz htz-da"
+        className="htz-ed htz-ee htz-ef htz-eg htz-av"
       >
         חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל
       </div>
       <div
-        className="htz-cx htz-cy htz-cz htz-da"
+        className="htz-ed htz-ee htz-ef htz-eg htz-av"
       >
         © כל הזכויות שמורות להוצאת עיתון הארץ בע"מ
       </div>
@@ -279,166 +361,367 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
 </div>
 `;
 
-exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element correctly 2`] = `".htz-a{background-color:#00537A}.htz-b{width:100%}.htz-c{color:#FFF}.htz-d{padding-right:8rem}.htz-e{padding-left:8rem}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-l{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-m{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-n{padding-top:10rem}.htz-o{padding-bottom:10rem}.htz-p{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-q{align-items:baseline;-webkit-box-align:baseline;-webkit-align-items:baseline}.htz-r{position:relative}.htz-s:after{background-color:#FFF}.htz-t:after{content:\\"\\"}.htz-u:after{height:1px}.htz-v:after{position:absolute}.htz-w:after{width:100%}.htz-x:after{bottom:0rem}.htz-y{vertical-align:-0.15em}.htz-z{color:inherit}.htz-ab{fill:#FFF}.htz-ac{font-size:17.7rem}.htz-ae{margin-bottom:-5rem}.htz-af{margin-top:-5.5rem}.htz-ag{margin-right:-0.5rem}.htz-ah{font-size:3rem}.htz-ai{margin-right:3.5rem}.htz-aj{flex-wrap:no-wrap;-webkit-box-lines:no-wrap;-webkit-flex-wrap:no-wrap}.htz-ak{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-al{margin-top:1rem}.htz-am{margin-bottom:5rem}.htz-an{margin-left:2rem}.htz-ao{display:inline-block}.htz-ap:after{margin-right:1rem}.htz-aq{margin-left:1rem}.htz-ar{font-weight:bold}.htz-as{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-at{cursor:pointer}.htz-au{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-av{font-size:inherit}.htz-aw{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-ax{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-ay{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-az{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ba{text-decoration:none}.htz-bb{white-space:nowrap}.htz-bc::moz-focus-inner{border:0px}.htz-bd::moz-focus-inner{padding:0rem}.htz-be{border-bottom-width:1px}.htz-bf{border-bottom-style:solid}.htz-bg{padding-bottom:calc(0.75rem - 1px)}.htz-bh{border-top-width:1px}.htz-bi{border-top-style:solid}.htz-bj{padding-top:calc(0.75rem - 1px)}.htz-bk{border-right-width:1px}.htz-bl{border-right-style:solid}.htz-bm{padding-right:4.5rem}.htz-bn{border-left-width:1px}.htz-bo{border-left-style:solid}.htz-bp{padding-left:4.5rem}.htz-bq{border-radius:0rem}.htz-br{border-color:#FFF}.htz-bs:hover{text-decoration:none}.htz-bt:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bu:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bv:hover{background-color:#003D59}.htz-bw:hover{border-color:#FFF}.htz-bx:hover{color:#FFF}.htz-by:focus{outline:none}.htz-bz:focus{text-decoration:none}.htz-ca:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cb:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cc:focus{background-color:#003147}.htz-cd:focus{border-color:#FFF}.htz-ce:focus{color:#FFF}.htz-cf:active{outline:none}.htz-cg:active{text-decoration:none}.htz-ch:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-ci:active{background-color:#003D59}.htz-cj:active{border-color:#FFF}.htz-ck:active{color:#FFF}.htz-cl{padding-bottom:6rem}.htz-cm{margin-bottom:2rem}.htz-cn{display:none}.htz-co{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-cp{margin-left:8rem}.htz-cq{padding-top:3rem}.htz-cr{padding-bottom:3rem}.htz-cw{min-width:20rem}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-cu{font-size:2.2857142857142856rem}.htz-cv{line-height:1.3125em}.htz-cz{font-size:2rem}.htz-da{line-height:1.5em}}@media (max-width: 79.9375em){.htz-cs{font-size:2.3333333333333335rem}.htz-ct{line-height:1.2857142857142858em}.htz-cx{font-size:2rem}.htz-cy{line-height:1.5em}}"`;
+exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element correctly 2`] = `".htz-a{background-color:#00537A}.htz-b{width:100%}.htz-c{color:#FFF}.htz-d{padding-right:8rem}.htz-e{padding-left:8rem}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-l{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-m{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-ai{vertical-align:-0.15em}.htz-aj{color:inherit}.htz-ak{fill:#FFF}.htz-al{font-size:17.7rem}.htz-am{margin-bottom:-5rem}.htz-an{margin-top:-5.5rem}.htz-ao{margin-right:-0.5rem}.htz-as{font-size:3rem}.htz-at{margin-right:3.5rem}.htz-ax{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ay{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-az{margin-bottom:5rem}.htz-ba{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-bb{align-items:space-around;-webkit-box-align:justify;-webkit-align-items:space-around}.htz-bc{font-weight:bold}.htz-bd{margin-top:1rem}.htz-be{margin-bottom:1rem}.htz-bj{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-bk{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-bl{cursor:pointer}.htz-bm{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bn{font-size:inherit}.htz-bo{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-bp{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bq{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-br{text-decoration:none}.htz-bs{white-space:nowrap}.htz-bt::moz-focus-inner{border:0px}.htz-bu::moz-focus-inner{padding:0rem}.htz-bv{border-bottom-width:1px}.htz-bw{border-bottom-style:solid}.htz-bx{padding-bottom:calc(1rem - 1px)}.htz-by{border-top-width:1px}.htz-bz{border-top-style:solid}.htz-ca{padding-top:calc(1rem - 1px)}.htz-cb{border-right-width:1px}.htz-cc{border-right-style:solid}.htz-cd{padding-right:4.5rem}.htz-ce{border-left-width:1px}.htz-cf{border-left-style:solid}.htz-cg{padding-left:4.5rem}.htz-ch{border-radius:0rem}.htz-ci{border-color:#FFF}.htz-cj:hover{text-decoration:none}.htz-ck:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cl:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{background-color:#003D59}.htz-cn:hover{border-color:#FFF}.htz-co:hover{color:#FFF}.htz-cp:focus{outline:none}.htz-cq:focus{text-decoration:none}.htz-cr:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cs:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ct:focus{background-color:#003147}.htz-cu:focus{border-color:#FFF}.htz-cv:focus{color:#FFF}.htz-cw:active{outline:none}.htz-cx:active{text-decoration:none}.htz-cy:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-cz:active{background-color:#003D59}.htz-da:active{border-color:#FFF}.htz-db:active{color:#FFF}.htz-dg{flex-wrap:no-wrap;-webkit-box-lines:no-wrap;-webkit-flex-wrap:no-wrap}.htz-dh{margin-left:2rem}.htz-di{display:inline-block}.htz-dj:after{content:\\"\\"}.htz-dk:after{margin-right:1rem}.htz-dl{margin-left:1rem}.htz-dm{padding-bottom:calc(0.75rem - 1px)}.htz-dn{padding-top:calc(0.75rem - 1px)}.htz-do{padding-bottom:6rem}.htz-dp{margin-bottom:2rem}.htz-dq{display:none}.htz-dr{position:relative}.htz-ds:after{background-color:#FFF}.htz-dt:after{height:1px}.htz-du:after{position:absolute}.htz-dv:after{width:100%}.htz-dw:after{bottom:0rem}.htz-dx{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-dy{align-items:baseline;-webkit-box-align:baseline;-webkit-align-items:baseline}.htz-dz{margin-left:8rem}.htz-ea{padding-top:3rem}.htz-eb{padding-bottom:3rem}.htz-ec{min-width:20rem}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-bh{font-size:2.2857142857142856rem}.htz-bi{line-height:1.3125em}.htz-de{font-size:1.7142857142857142rem}.htz-df{line-height:1.75em}.htz-ef{font-size:2rem}.htz-eg{line-height:1.5em}}@media (min-width: 37.5em){.htz-n{padding-top:10rem}.htz-o{padding-bottom:10rem}.htz-q{position:relative}.htz-r:after{background-color:#FFF}.htz-s:after{content:\\"\\"}.htz-t:after{height:1px}.htz-u:after{position:absolute}.htz-v:after{width:100%}.htz-w:after{bottom:0rem}.htz-x{align-items:baseline;-webkit-box-align:baseline;-webkit-align-items:baseline}.htz-y{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-z{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-aw{display:none}}@media (max-width: 37.4375em){.htz-p{padding-bottom:2rem}.htz-ab{display:block}.htz-ac{text-align:center}.htz-ae{border-bottom-width:1px}.htz-af{border-bottom-style:solid}.htz-ag{border-bottom-color:#FFF}.htz-ah{padding-bottom:calc(2rem - 1px)}.htz-ap{padding-top:4rem}.htz-aq{margin-right:-3.5rem}.htz-ar{margin-bottom:3rem}.htz-au{margin-top:1.5rem}.htz-av{display:none}}@media (max-width: 79.9375em){.htz-bf{font-size:2.3333333333333335rem}.htz-bg{line-height:1.2857142857142858em}.htz-dc{font-size:1.8333333333333333rem}.htz-dd{line-height:1.6363636363636365em}.htz-ed{font-size:2rem}.htz-ee{line-height:1.5em}}"`;
 
 exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 1`] = `
 <div>
   <section
-    className="htz-a htz-b htz-c"
+    className="htz-a htz-b htz-c htz-d htz-e"
   >
     <div
-      className="htz-d htz-e htz-f htz-b htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
+      className="htz-a htz-f htz-g htz-b htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
     >
       <div
-        className="htz-r htz-s htz-t htz-u htz-v"
+        className="htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
       >
-        <svg
-          className="htz-w htz-x htz-y htz-z htz-ab htz-ac"
-          height="1em"
-          viewBox="0 0 256 256"
-          width="1em"
+        <div
+          className="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
         >
-            
-          <path
-            d="M38.1 135.4c-2.8 14.8-5.2 25.2-5.3 26.1-.1.9-7.1-24.9-6.8-25.8 5.5-15.4.9-22.7-3.7-22.7H12c0-2.4.5-11-5-19h25c-6.6 17.6 2 31.7 6.1 41.4zm-3-41.4c3.7 8.5 2.9 17.6-.2 25.9-.6 1.6.5 6 1.8 5.7 2.8-7.7 3.9-11.6 10.9-12.6h9.5c-1-2-5.1-8.5.1-19H35.1zm80.1 12.4c-.2-2.2-.7-8.7-3.4-12.4H62c-4.3 6.5-2.9 14.1.1 19 .1-.1 39.8 0 40 0 6.2.1 8.2 4.5 7.7 12.6-.2 3.6-2.6 9.1-4.5 11.7-.5.7 4.2 15.9 5.6 22.9 0 0 .5 0 .7-.7.9-1.9 3-11.5 3.6-17.8.6-5.6-1.4-12.3-1.7-15.7-.7-7.6 2-16.2 1.7-19.6zm74.3 16.4s-.8 7.5-4.1 15.5c-1 5-.2 8.5.9 13.3.9 4 2 5.7 3 8.5h.9c6.3-14.9 5.6-22.3.1-37.2-.1-.4-.8.1-.8-.1zm-60.5-3.4l54.9 40.1c0-.9-2.7-8.3-3.3-12-.8-4.7-.5-5.9.5-10.4-6.5-4.3-11.6-8.3-19.8-13.8-1.1-.7-2-3.1-1.7-5.1.4-2.6 2.9-5.2 5.1-5.2H181s-5.9-9.5 0-19h-23s-.8 3.2-.6 6.4c.2 3.3 2.3 6 1 10.9-1.1 3.9-2.4 5.6-3.5 6.3-10.6-7.7-32.6-23.6-32.6-23.6h-4.4s-.4.1-.3.3c2.3 4.4 3.3 10.2 2.8 15.2-.7 6.8-1.6 7.8-1.6 13.5 0 6.2 2.2 11.4 1.8 17.6-.6 8.9-2.5 15.9-3.3 18.6-.3.9.2.8.2.8h27.1c-4.9-9.4-2.8-16-2.8-16h-9.7c-7.3.1-8-10-7.1-16.8.5-5.2 3.7-7.7 4-7.8zm114.4 6.4c-1.4-5.6-.3-8.3 2.2-13.4 1.1-2.2 1.3-8.5 1.3-9.3 0 0-.1-9.1-4.7-9.1h-55.8s-5.8 8.5.5 19h47c4.2 0 5.1 4.7 5.2 8.5 0 3.8-1.9 9.8-3 13.3-.8 2.6 3.1 15.1 5.2 25.2h.9c.3-.8 4.3-21.9 4-24.9-.2-1.7-1.8-5.2-2.8-9.3z"
-            fill="currentColor"
-          />
-        </svg>
+          <svg
+            className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+          >
+              
+            <path
+              d="M38.1 135.4c-2.8 14.8-5.2 25.2-5.3 26.1-.1.9-7.1-24.9-6.8-25.8 5.5-15.4.9-22.7-3.7-22.7H12c0-2.4.5-11-5-19h25c-6.6 17.6 2 31.7 6.1 41.4zm-3-41.4c3.7 8.5 2.9 17.6-.2 25.9-.6 1.6.5 6 1.8 5.7 2.8-7.7 3.9-11.6 10.9-12.6h9.5c-1-2-5.1-8.5.1-19H35.1zm80.1 12.4c-.2-2.2-.7-8.7-3.4-12.4H62c-4.3 6.5-2.9 14.1.1 19 .1-.1 39.8 0 40 0 6.2.1 8.2 4.5 7.7 12.6-.2 3.6-2.6 9.1-4.5 11.7-.5.7 4.2 15.9 5.6 22.9 0 0 .5 0 .7-.7.9-1.9 3-11.5 3.6-17.8.6-5.6-1.4-12.3-1.7-15.7-.7-7.6 2-16.2 1.7-19.6zm74.3 16.4s-.8 7.5-4.1 15.5c-1 5-.2 8.5.9 13.3.9 4 2 5.7 3 8.5h.9c6.3-14.9 5.6-22.3.1-37.2-.1-.4-.8.1-.8-.1zm-60.5-3.4l54.9 40.1c0-.9-2.7-8.3-3.3-12-.8-4.7-.5-5.9.5-10.4-6.5-4.3-11.6-8.3-19.8-13.8-1.1-.7-2-3.1-1.7-5.1.4-2.6 2.9-5.2 5.1-5.2H181s-5.9-9.5 0-19h-23s-.8 3.2-.6 6.4c.2 3.3 2.3 6 1 10.9-1.1 3.9-2.4 5.6-3.5 6.3-10.6-7.7-32.6-23.6-32.6-23.6h-4.4s-.4.1-.3.3c2.3 4.4 3.3 10.2 2.8 15.2-.7 6.8-1.6 7.8-1.6 13.5 0 6.2 2.2 11.4 1.8 17.6-.6 8.9-2.5 15.9-3.3 18.6-.3.9.2.8.2.8h27.1c-4.9-9.4-2.8-16-2.8-16h-9.7c-7.3.1-8-10-7.1-16.8.5-5.2 3.7-7.7 4-7.8zm114.4 6.4c-1.4-5.6-.3-8.3 2.2-13.4 1.1-2.2 1.3-8.5 1.3-9.3 0 0-.1-9.1-4.7-9.1h-55.8s-5.8 8.5.5 19h47c4.2 0 5.1 4.7 5.2 8.5 0 3.8-1.9 9.8-3 13.3-.8 2.6 3.1 15.1 5.2 25.2h.9c.3-.8 4.3-21.9 4-24.9-.2-1.7-1.8-5.2-2.8-9.3z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        <div
+          className="htz-ab htz-ac htz-aq htz-ar"
+        >
+          <a
+            className={null}
+            href="https://www.facebook.com/haaretz"
+            onClick={[Function]}
+            target={null}
+          >
+            <svg
+              className="htz-ai htz-aj htz-ak htz-as htz-at htz-au"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+            >
+               
+              <path
+                d="M233.4 8H23.7C15.1 8 8 15.1 8 23.9v207.8c0 8.9 7.2 16.3 16 16.3h116v-94h-23v-36h23V91.9c0-17.3 6.9-43.9 42-43.9h31v35h-24c-3.8 0-8 2.9-8 11.2V118h32l-4 36h-28v94h54c6.8 0 13-4.6 13-11.5V22.8c0-8.1-6.6-14.8-14.6-14.8z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+          <a
+            className={null}
+            href="https://twitter.com/haaretz"
+            onClick={[Function]}
+            target={null}
+          >
+            <svg
+              className="htz-ai htz-aj htz-ak htz-as htz-at htz-au"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+            >
+               
+              <path
+                d="M224 75.9c.1 2.3.2 4.6.2 6.8 0 70.7-49.6 152.3-140.1 152.3-27.9 0-53.7-8.9-75.5-24.1 3.8.5 7.8.7 11.8.7 23.1 0 44.3-8.5 61.1-22.9-21.5-.3-39.7-15.8-46-37.2 3 .7 6 .9 9.2.9 4.5 0 8.9-.6 13-1.8-22.5-5-39.5-26.6-39.5-52.5v-.7c6.6 4 14.2 6.3 22.3 6.7-13.2-9.5-21.9-25.9-21.9-44.5 0-9.8 2.4-19 6.6-26.9C49.5 65 85.8 86.4 126.7 88.5c-.8-3.9-1.2-8-1.2-12.1 0-29.6 22-53.5 49.2-53.5 14.1 0 27 6.5 35.9 17 11.2-2.5 21.8-6.9 31.3-13-3.7 12.5-11.5 22.9-21.7 29.6 10-1.3 19.4-4.1 28.3-8.4-6.5 10.7-14.9 20.1-24.5 27.8z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+          <a
+            className={null}
+            href="https://play.google.com/store/apps/details?id=com.haaretz"
+            onClick={[Function]}
+            target={null}
+          >
+            <svg
+              className="htz-ai htz-aj htz-ak htz-as htz-av htz-at"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+            >
+                
+              <path
+                d="M61 179c0 12.4 8.4 23 20.7 23H91v31c0 6.2 3.7 11.9 9.5 14 10.3 3.7 18.5-5.9 18.5-15.6V202h15v29.5c0 8.2 8.6 16.4 15 16.4 8.4 0 14-8.2 14-16.4V202h7c12.3 0 24-9.5 24-21.9V99H61v80zm93.4-149.5l9.4-18.1c.5-.9.1-2-.8-2.4-.9-.5-2-.2-2.5.7L151 28.1c-7.5-2.9-15.5-5.1-24-5.1s-16.8 2.2-24.3 5.1L93.2 9.7c-.4-.7-1.3-1.1-2.1-.8-1 .4-1.7 1.5-1.2 2.5l9.4 18.1C78.2 39.1 64.6 60.1 62 84h132c-2.7-23.9-18.5-44.9-39.6-54.5zm-50.9 39.9c-5.6 0-10.1-4.5-10.1-10.1s4.5-10.1 10.1-10.1 10.1 4.5 10.1 10.1-4.6 10.1-10.1 10.1zm48.8 0c-5.6 0-10.1-4.5-10.1-10.1s4.5-10.1 10.1-10.1 10.1 4.5 10.1 10.1-4.5 10.1-10.1 10.1zM39.6 173h-.1c-7.9 0-14.4-6.5-14.4-14.4V95.4C25 87.5 31.5 81 39.4 81h.1c8 0 14.5 6.5 14.5 14.4v63.1c0 8-6.5 14.5-14.4 14.5zm177 0h-.1c-7.9 0-14.4-6.5-14.4-14.4V95.4c0-7.9 6.5-14.4 14.4-14.4h.1c7.9 0 14.4 6.5 14.4 14.4v63.1c0 8-6.5 14.5-14.4 14.5z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+          <a
+            className={null}
+            href="https://itunes.apple.com/us/app/id521559643"
+            onClick={[Function]}
+            target={null}
+          >
+            <svg
+              className="htz-ai htz-aj htz-ak htz-as htz-av htz-at"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+            >
+                
+              <path
+                d="M193.5 135.5c-.3-30.3 24.8-44.9 25.9-45.6-14.1-20.6-36-23.4-43.9-23.7-18.7-1.9-36.4 11-45.9 11S105.5 66.5 90 66.8c-20.4.3-39.1 11.8-49.6 30-21.1 36.7-5.4 90.9 15.2 120.7 10.1 14.5 22.1 30.9 37.9 30.3 15.2-.6 20.9-9.8 39.3-9.8s23.5 9.8 39.6 9.5c16.3-.3 26.7-14.8 36.7-29.4 11.6-16.9 16.3-33.2 16.6-34.1-.4-.2-31.9-12.3-32.2-48.5m-30.2-89c8.4-10.1 14-24.2 12.5-38.3-12.1.5-26.7 8-35.3 18.1-7.8 9-14.7 23.7-12.9 37.4 13.4 1.1 27.3-7.1 35.7-17.2"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+          <a
+            className={null}
+            href="https://plus.google.com/+haaretzcoil"
+            onClick={[Function]}
+            target={null}
+          >
+            <svg
+              className="htz-ai htz-aj htz-ak htz-as htz-at htz-au"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+            >
+               
+              <path
+                d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+          <a
+            className={null}
+            href="https://www.haaretz.co.il/misc/redemail"
+            onClick={[Function]}
+            target={null}
+          >
+            <svg
+              className="htz-ai htz-aj htz-ak htz-as htz-av htz-at"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+            >
+                
+              <path
+                d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+          <a
+            className={null}
+            href="https://www.haaretz.co.il/misc/rss"
+            onClick={[Function]}
+            target={null}
+          >
+            <svg
+              className="htz-ai htz-aj htz-ak htz-as htz-av htz-at"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+            >
+               
+              <path
+                d="M15 59V15c125.4 0 227 101.6 227 227h-44c0-101.1-81.9-183-183-183zm96 179.5c0 1.2 0 2.3-.1 3.5h43v-3.5C154 163.1 92.9 102 17.5 102H15v43h2.5c51.6 0 93.5 41.9 93.5 93.5zM67.9 242c.1-1 .1-2 .1-3 0-27.6-22.4-50-50-50-1 0-2 0-3 .1V242h52.9z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
-      <a
-        className={null}
-        href="https://www.facebook.com/haaretz"
-        onClick={[Function]}
-        target={null}
-      >
-        <svg
-          className="htz-w htz-x htz-y htz-ae htz-af htz-ag"
-          height="1em"
-          viewBox="0 0 256 256"
-          width="1em"
-        >
-           
-          <path
-            d="M233.4 8H23.7C15.1 8 8 15.1 8 23.9v207.8c0 8.9 7.2 16.3 16 16.3h116v-94h-23v-36h23V91.9c0-17.3 6.9-43.9 42-43.9h31v35h-24c-3.8 0-8 2.9-8 11.2V118h32l-4 36h-28v94h54c6.8 0 13-4.6 13-11.5V22.8c0-8.1-6.6-14.8-14.6-14.8z"
-            fill="currentColor"
-          />
-        </svg>
-      </a>
-      <a
-        className={null}
-        href="https://twitter.com/haaretz"
-        onClick={[Function]}
-        target={null}
-      >
-        <svg
-          className="htz-w htz-x htz-y htz-ae htz-af htz-ag"
-          height="1em"
-          viewBox="0 0 256 256"
-          width="1em"
-        >
-           
-          <path
-            d="M224 75.9c.1 2.3.2 4.6.2 6.8 0 70.7-49.6 152.3-140.1 152.3-27.9 0-53.7-8.9-75.5-24.1 3.8.5 7.8.7 11.8.7 23.1 0 44.3-8.5 61.1-22.9-21.5-.3-39.7-15.8-46-37.2 3 .7 6 .9 9.2.9 4.5 0 8.9-.6 13-1.8-22.5-5-39.5-26.6-39.5-52.5v-.7c6.6 4 14.2 6.3 22.3 6.7-13.2-9.5-21.9-25.9-21.9-44.5 0-9.8 2.4-19 6.6-26.9C49.5 65 85.8 86.4 126.7 88.5c-.8-3.9-1.2-8-1.2-12.1 0-29.6 22-53.5 49.2-53.5 14.1 0 27 6.5 35.9 17 11.2-2.5 21.8-6.9 31.3-13-3.7 12.5-11.5 22.9-21.7 29.6 10-1.3 19.4-4.1 28.3-8.4-6.5 10.7-14.9 20.1-24.5 27.8z"
-            fill="currentColor"
-          />
-        </svg>
-      </a>
-      <a
-        className={null}
-        href="https://play.google.com/store/apps/details?id=com.haaretz"
-        onClick={[Function]}
-        target={null}
-      >
-        <svg
-          className="htz-w htz-x htz-y htz-ae htz-af htz-ag"
-          height="1em"
-          viewBox="0 0 256 256"
-          width="1em"
-        >
-           
-          <path
-            d="M226 136v25h-21v-25h-24v-21h24V91h21v24h24v21h-24zm-58.2-21h-77v27h45c-6.8 33.9-52.5 45.3-77 23.2-25.2-19.4-24-61.9 2.2-80 18.3-14.5 44.3-10.9 62.6 1.6 7.2-6.6 13.9-13.7 20.4-21-15.2-12.1-33.9-20.7-53.7-19.8-41.4-1.4-79.6 34.8-80.2 76.1-2.7 33.7 19.6 66.8 51.1 78.8 31.3 12 71.5 3.8 91.5-24.2 13.2-17.7 15.1-40.7 15.1-61.7z"
-            fill="currentColor"
-          />
-        </svg>
-      </a>
       <div
-        className="htz-ah htz-ai htz-aj htz-ak"
+        className="htz-aw htz-ab htz-ac"
+      >
+        <div
+          className="htz-l htz-ax htz-ay htz-az"
+        >
+          <ul
+            className="htz-l htz-m htz-ba htz-bb"
+          >
+            <a
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/promotions-page"
+              onClick={[Function]}
+              target={null}
+            >
+              רכשו מנוי
+            </a>
+            <a
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/blogs"
+              onClick={[Function]}
+              target={null}
+            >
+              בלוגים
+            </a>
+            <a
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/misc/terms-of-use"
+              onClick={[Function]}
+              target={null}
+            >
+              תנאי שימוש
+            </a>
+          </ul>
+          <ul
+            className="htz-l htz-m htz-ba htz-bb"
+          >
+            <a
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/misc/contact-us"
+              onClick={[Function]}
+              target={null}
+            >
+              צרו קשר
+            </a>
+            <a
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
+              onClick={[Function]}
+              target={null}
+            >
+              פרסמו באתר
+            </a>
+            <a
+              className="htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/personal-area/my-account"
+              onClick={[Function]}
+              target={null}
+            >
+              שירות למנויים
+            </a>
+          </ul>
+        </div>
+        <a
+          className="htz-bj htz-bk htz-bl htz-bm htz-bc htz-bn htz-ba htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-a htz-ci htz-c htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
+          href="https://www.haaretz.co.il/st/inter/shivuk-digital/hebrew/mtm/haaretzapp.html"
+          id={null}
+          onClick={[Function]}
+          type="button"
+        >
+          להורדת האפליקציה
+        </a>
+        <div
+          className="htz-dc htz-dd htz-de htz-df"
+        >
+          © כל הזכויות שמורות
+        </div>
+      </div>
+      <div
+        className="htz-l htz-dg htz-ax htz-bj htz-bd htz-az htz-av"
       >
         <ul
-          className="htz-ah htz-al htz-am htz-an"
+          className="htz-dh"
         >
-          <a
-            className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au"
-            href="https://www.haaretz.co.il/promotions-page"
-            onClick={[Function]}
-            target={null}
+          <li
+            className="htz-di"
           >
-            רכשו מנוי
-          </a>
-          <a
-            className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au"
-            href="https://www.haaretz.co.il/blogs"
-            onClick={[Function]}
-            target={null}
-          >
-            בלוגים
-          </a>
-          <a
-            className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au"
-            href="https://www.haaretz.co.il/misc/terms-of-use"
-            onClick={[Function]}
-            target={null}
-          >
-            תנאי שימוש
-          </a>
+            <a
+              className="htz-dj htz-dk htz-dl htz-bc"
+              href="https://www.haaretz.co.il/misc/editors"
+              onClick={[Function]}
+              target={null}
+            >
+              מערכת
+            </a>
+          </li>
         </ul>
-        <ul
-          className="htz-ah htz-al htz-am htz-an"
+        <li
+          className="htz-di"
         >
-          <a
-            className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au"
-            href="https://www.haaretz.co.il/misc/contact-us"
+          <button
+            aria-expanded="false"
+            className="htz-bj htz-bk htz-bl htz-bm htz-bc htz-bn htz-ba htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-dm htz-by htz-bz htz-dn htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-a htz-ci htz-c htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
+            id={null}
             onClick={[Function]}
-            target={null}
+            type="button"
           >
-            צרו קשר
-          </a>
-          <a
-            className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au"
-            href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
-            onClick={[Function]}
-            target={null}
+            הצג עוד
+          </button>
+        </li>
+      </div>
+      <div
+        className="htz-a htz-f htz-g htz-b htz-h htz-i htz-j htz-k htz-ax htz-do htz-dp htz-dq htz-dr htz-ds htz-dj htz-dt htz-du htz-dv htz-dw"
+      >
+        <div
+          className="htz-l htz-ax htz-dx htz-dy"
+        >
+          <ul
+            className="htz-dz htz-ea htz-eb"
           >
-            פרסמו באתר
-          </a>
-          <a
-            className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au"
-            href="https://www.haaretz.co.il/personal-area/my-account"
-            onClick={[Function]}
-            target={null}
-          >
-            שירות למנויים
-          </a>
+            <div>
+              <li
+                className="htz-bc"
+              >
+                מדורים
+              </li>
+              <li>
+                <a
+                  className="htz-bf htz-bg htz-bh htz-bi"
+                  href="https://www.haaretz.co.il/news"
+                  onClick={[Function]}
+                  target={null}
+                >
+                  חדשות
+                </a>
+              </li>
+            </div>
+            <div>
+              <li
+                className="htz-bc"
+              >
+                Haaretz.com
+              </li>
+              <li>
+                <a
+                  className="htz-bf htz-bg htz-bh htz-bi"
+                  href="https://www.haaretz.com/israel-news/with-eye-on-iran-israel-increases-military-support-for-syrian-rebels-1.5826348"
+                  onClick={[Function]}
+                  target={null}
+                >
+                  Israel - Syria rebels
+                </a>
+              </li>
+              <li>
+                <a
+                  className="htz-bf htz-bg htz-bh htz-bi"
+                  href="https://www.haaretz.com/israel-news/MAGAZINE-not-a-cult-the-freemasons-want-you-unless-you-you-1.5824127"
+                  onClick={[Function]}
+                  target={null}
+                >
+                  Freemasons
+                </a>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <ul
+          className="htz-dz htz-ea htz-eb htz-ec"
+        >
+          <li>
+            <a
+              className="htz-bc htz-bf htz-bg htz-bh htz-bi"
+              href="https://www.haaretz.co.il/misc/editors"
+              onClick={[Function]}
+              target={null}
+            >
+              מערכת
+            </a>
+          </li>
         </ul>
       </div>
-      <a
-        className="htz-av htz-aw htz-ax htz-ay htz-ao htz-az htz-am htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-s htz-t htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-a htz-bs htz-c htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl"
-        href="https://www.haaretz.co.il/st/inter/shivuk-digital/hebrew/mtm/haaretzapp.html"
-        id={null}
-        onClick={[Function]}
-        type="button"
-      >
-        להורדת האפליקציה
-      </a>
       <div
-        className="htz-cm htz-cn htz-co htz-cp"
+        className="htz-ed htz-ee htz-ef htz-eg htz-av"
       >
-        © כל הזכויות שמורות
+        חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל
+      </div>
+      <div
+        className="htz-ed htz-ee htz-ef htz-eg htz-av"
+      >
+        © כל הזכויות שמורות להוצאת עיתון הארץ בע"מ
       </div>
     </div>
   </section>
 </div>
 `;
 
-exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 2`] = `".htz-a{background-color:#00537A}.htz-b{width:100%}.htz-c{color:#FFF}.htz-d{background-color:#005479}.htz-e{margin-right:auto}.htz-f{margin-left:auto}.htz-g{display:block}.htz-h{text-align:center}.htz-i{padding-top:1rem}.htz-j{padding-bottom:2rem}.htz-k{padding-right:7rem}.htz-l{padding-left:7rem}.htz-m{color:white}.htz-r{font-size:5rem}.htz-s{border-bottom-width:1px}.htz-t{border-bottom-style:solid}.htz-u{border-bottom-color:#FFF}.htz-v{padding-bottom:calc(2rem - 1px)}.htz-w{vertical-align:-0.15em}.htz-x{color:inherit}.htz-y{fill:#FFF}.htz-z{font-size:12.5rem}.htz-ab{margin-bottom:-4.5rem}.htz-ac{margin-top:-4.5rem}.htz-ae{font-size:3.5rem}.htz-af{margin:3rem}.htz-ag{margin-top:2rem}.htz-ah{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ai{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-aj{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-ak{padding-bottom:4rem}.htz-al{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-am{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-an{align-items:space-around;-webkit-box-align:justify;-webkit-align-items:space-around}.htz-ao{font-weight:bold}.htz-ap{margin-top:1rem}.htz-aq{margin-bottom:1rem}.htz-av{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-aw{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-ax{cursor:pointer}.htz-ay{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-az{font-size:inherit}.htz-ba{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-bb{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bc{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-bd{text-decoration:none}.htz-be{white-space:nowrap}.htz-bf::moz-focus-inner{border:0px}.htz-bg::moz-focus-inner{padding:0rem}.htz-bh{padding-bottom:calc(1rem - 1px)}.htz-bi{border-top-width:1px}.htz-bj{border-top-style:solid}.htz-bk{padding-top:calc(1rem - 1px)}.htz-bl{border-right-width:1px}.htz-bm{border-right-style:solid}.htz-bn{padding-right:4.5rem}.htz-bo{border-left-width:1px}.htz-bp{border-left-style:solid}.htz-bq{padding-left:4.5rem}.htz-br{border-radius:0rem}.htz-bs{border-color:#FFF}.htz-bt:hover{text-decoration:none}.htz-bu:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bv:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bw:hover{background-color:#003D59}.htz-bx:hover{border-color:#FFF}.htz-by:hover{color:#FFF}.htz-bz:focus{outline:none}.htz-ca:focus{text-decoration:none}.htz-cb:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cc:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cd:focus{background-color:#003147}.htz-ce:focus{border-color:#FFF}.htz-cf:focus{color:#FFF}.htz-cg:active{outline:none}.htz-ch:active{text-decoration:none}.htz-ci:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-cj:active{background-color:#003D59}.htz-ck:active{border-color:#FFF}.htz-cl:active{color:#FFF}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-n{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-o{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-p{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-q{max-width:180.42857142857142rem}.htz-at{font-size:2.2857142857142856rem}.htz-au{line-height:1.3125em}.htz-co{font-size:1.7142857142857142rem}.htz-cp{line-height:1.75em}}@media (max-width: 79.9375em){.htz-ar{font-size:2.3333333333333335rem}.htz-as{line-height:1.2857142857142858em}.htz-cm{font-size:1.8333333333333333rem}.htz-cn{line-height:1.6363636363636365em}}"`;
+exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 2`] = `".htz-a{background-color:#00537A}.htz-b{width:100%}.htz-c{color:#FFF}.htz-d{padding-right:8rem}.htz-e{padding-left:8rem}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-l{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-m{flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column}.htz-ai{vertical-align:-0.15em}.htz-aj{color:inherit}.htz-ak{fill:#FFF}.htz-al{font-size:17.7rem}.htz-am{margin-bottom:-5rem}.htz-an{margin-top:-5.5rem}.htz-ao{margin-right:-0.5rem}.htz-as{font-size:3rem}.htz-at{margin-right:3.5rem}.htz-ax{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-ay{flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row}.htz-az{margin-bottom:5rem}.htz-ba{justify-content:center;-webkit-box-pack:center;-webkit-justify-content:center}.htz-bb{align-items:space-around;-webkit-box-align:justify;-webkit-align-items:space-around}.htz-bc{font-weight:bold}.htz-bd{margin-top:1rem}.htz-be{margin-bottom:1rem}.htz-bj{align-items:center;-webkit-box-align:center;-webkit-align-items:center}.htz-bk{appearance:none;-webkit-appearance:none;-moz-appearance:none}.htz-bl{cursor:pointer}.htz-bm{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bn{font-size:inherit}.htz-bo{transition-property:all;-webkit-transition-property:all;-moz-transition-property:all}.htz-bp{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-bq{transition-timing-function:cubic-bezier(0, 0, .2, 0);-webkit-transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-br{text-decoration:none}.htz-bs{white-space:nowrap}.htz-bt::moz-focus-inner{border:0px}.htz-bu::moz-focus-inner{padding:0rem}.htz-bv{border-bottom-width:1px}.htz-bw{border-bottom-style:solid}.htz-bx{padding-bottom:calc(1rem - 1px)}.htz-by{border-top-width:1px}.htz-bz{border-top-style:solid}.htz-ca{padding-top:calc(1rem - 1px)}.htz-cb{border-right-width:1px}.htz-cc{border-right-style:solid}.htz-cd{padding-right:4.5rem}.htz-ce{border-left-width:1px}.htz-cf{border-left-style:solid}.htz-cg{padding-left:4.5rem}.htz-ch{border-radius:0rem}.htz-ci{border-color:#FFF}.htz-cj:hover{text-decoration:none}.htz-ck:hover{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cl:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{background-color:#003D59}.htz-cn:hover{border-color:#FFF}.htz-co:hover{color:#FFF}.htz-cp:focus{outline:none}.htz-cq:focus{text-decoration:none}.htz-cr:focus{transition-duration:0.16666666666666666s;-webkit-transition-duration:0.16666666666666666s}.htz-cs:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1);-webkit-transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ct:focus{background-color:#003147}.htz-cu:focus{border-color:#FFF}.htz-cv:focus{color:#FFF}.htz-cw:active{outline:none}.htz-cx:active{text-decoration:none}.htz-cy:active{transition-duration:0s;-webkit-transition-duration:0s}.htz-cz:active{background-color:#003D59}.htz-da:active{border-color:#FFF}.htz-db:active{color:#FFF}.htz-dg{flex-wrap:no-wrap;-webkit-box-lines:no-wrap;-webkit-flex-wrap:no-wrap}.htz-dh{margin-left:2rem}.htz-di{display:inline-block}.htz-dj:after{content:\\"\\"}.htz-dk:after{margin-right:1rem}.htz-dl{margin-left:1rem}.htz-dm{padding-bottom:calc(0.75rem - 1px)}.htz-dn{padding-top:calc(0.75rem - 1px)}.htz-do{padding-bottom:6rem}.htz-dp{margin-bottom:2rem}.htz-dq{display:none}.htz-dr{position:relative}.htz-ds:after{background-color:#FFF}.htz-dt:after{height:1px}.htz-du:after{position:absolute}.htz-dv:after{width:100%}.htz-dw:after{bottom:0rem}.htz-dx{flex-wrap:wrap;-webkit-box-lines:multiple;-webkit-flex-wrap:wrap}.htz-dy{align-items:baseline;-webkit-box-align:baseline;-webkit-align-items:baseline}.htz-dz{margin-left:8rem}.htz-ea{padding-top:3rem}.htz-eb{padding-bottom:3rem}.htz-ec{min-width:20rem}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-bh{font-size:2.2857142857142856rem}.htz-bi{line-height:1.3125em}.htz-de{font-size:1.7142857142857142rem}.htz-df{line-height:1.75em}.htz-ef{font-size:2rem}.htz-eg{line-height:1.5em}}@media (min-width: 37.5em){.htz-n{padding-top:10rem}.htz-o{padding-bottom:10rem}.htz-q{position:relative}.htz-r:after{background-color:#FFF}.htz-s:after{content:\\"\\"}.htz-t:after{height:1px}.htz-u:after{position:absolute}.htz-v:after{width:100%}.htz-w:after{bottom:0rem}.htz-x{align-items:baseline;-webkit-box-align:baseline;-webkit-align-items:baseline}.htz-y{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-z{justify-content:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between}.htz-aw{display:none}}@media (max-width: 37.4375em){.htz-p{padding-bottom:2rem}.htz-ab{display:block}.htz-ac{text-align:center}.htz-ae{border-bottom-width:1px}.htz-af{border-bottom-style:solid}.htz-ag{border-bottom-color:#FFF}.htz-ah{padding-bottom:calc(2rem - 1px)}.htz-ap{padding-top:4rem}.htz-aq{margin-right:-3.5rem}.htz-ar{margin-bottom:3rem}.htz-au{margin-top:1.5rem}.htz-av{display:none}}@media (max-width: 79.9375em){.htz-bf{font-size:2.3333333333333335rem}.htz-bg{line-height:1.2857142857142858em}.htz-dc{font-size:1.8333333333333333rem}.htz-dd{line-height:1.6363636363636365em}.htz-ed{font-size:2rem}.htz-ee{line-height:1.5em}}"`;

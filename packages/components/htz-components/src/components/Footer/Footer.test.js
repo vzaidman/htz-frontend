@@ -4,8 +4,7 @@ import matchMediaPolyfill from 'mq-polyfill';
 import { withTheme, } from 'react-fela';
 import felaSnapshotter from '../../test-helpers/felaSnapshotter';
 // import { felaMount, felaShallow, } from '../../test-helpers/felaEnzymeRenderers';
-import { DesktopView, } from './elemets/Desktop/DesktopView';
-import MobileView from './elemets/MobileView';
+import { Footer, } from './Footer';
 
 const FooterDesktopMock = {
   /** Indicates data loading state */
@@ -44,17 +43,18 @@ const FooterDesktopMock = {
       },
     ],
     credit: [ { text: 'מערכת', href: 'https://www.haaretz.co.il/misc/editors', }, ],
-    toolbox: [ { text: 'מערכת', href: 'https://www.haaretz.co.il/misc/editors', }, ],
+    toolbox: [
+      { text: 'מערכת', href: 'https://www.haaretz.co.il/misc/editors', },
+    ],
   },
 };
-const DesktopFooterWithTheme = withTheme(DesktopView);
-const MobileViewWithTheme = withTheme(MobileView);
+const FooterWithTheme = withTheme(Footer);
 
 describe('<Footer /> ', () => {
   describe('Desktop view DOM elements ', () => {
     it('Render desktop Footer element correctly', () => {
       const { component, styles, } = felaSnapshotter(
-        <DesktopFooterWithTheme Footer={FooterDesktopMock} />
+        <FooterWithTheme Footer={FooterDesktopMock} />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -65,7 +65,9 @@ describe('<Footer /> ', () => {
       matchMediaPolyfill(window);
       window.resizeTo = resizeTo;
       window.resizeTo(350, 768);
-      const { component, styles, } = felaSnapshotter(<MobileViewWithTheme />);
+      const { component, styles, } = felaSnapshotter(
+        <FooterWithTheme Footer={FooterDesktopMock} />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });

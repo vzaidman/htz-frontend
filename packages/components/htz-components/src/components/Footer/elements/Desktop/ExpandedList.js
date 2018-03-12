@@ -39,7 +39,11 @@ const listLinkStyle = ({ theme, isLast, isBold = false, }) => ({
   extend: [ theme.type(-1), ],
 });
 
-const StyledListLink = createComponent(listLinkStyle, Link, [ 'content', 'href', 'focus', ]);
+const StyledListLink = createComponent(listLinkStyle, Link, [
+  'content',
+  'href',
+  'focus',
+]);
 
 const toolboxListStyle = () => ({
   minWidth: '20rem',
@@ -76,9 +80,12 @@ function ExpandedList({
       miscStyles={{
         ...extendedListContainerStyle,
         ...{ display: showMe ? 'flex' : 'none', },
-        // ...borderBottom('1px', '2', 'solid', 'white'),
-        // todo: check why borderBottom not passed to LayoutContainer
-        ...borderBottom(borderWidth, lines, borderStyle, color('footer', 'border')),
+        ...borderBottom(
+          borderWidth,
+          lines,
+          borderStyle,
+          color('footer', 'border')
+        ),
       }}
     >
       <StyledExpandedLists>
@@ -93,7 +100,8 @@ function ExpandedList({
                     <StyledListLink
                       content={link.text}
                       href={link.href}
-                      {...(showMe && (colIdx === 0 && listIdx === 0 && linkIdx === 0)
+                      {...(showMe &&
+                      (colIdx === 0 && listIdx === 0 && linkIdx === 0)
                         ? { focus: true, }
                         : {})}
                     />
