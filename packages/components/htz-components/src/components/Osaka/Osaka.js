@@ -4,15 +4,15 @@ import { createComponent, withTheme, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import List from './elements/list';
 import Link from '../Link/Link';
-import Grid from '../Grid/Grid'; // eslint-disable-line import/no-named-as-default
-import GridItem from '../Grid/GridItem'; // eslint-disable-line import/no-named-as-default
+import StyledGrid from '../Grid/Grid';
+import StyledGridItem from '../Grid/GridItem';
 
 const singleArticlePropTypes = PropTypes.arrayOf(
   PropTypes.shape({
-    exclusive: PropTypes.string,
     title: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,
     url: PropTypes.string.isRequired,
+    sourceName: PropTypes.string,
   })
 );
 
@@ -38,20 +38,31 @@ const propTypes = {
    * The current break point (`'s'`, `'m'`, `'l'` or `'xl'`).
    */
   bp: PropTypes.string.isRequired,
+  /**
+   * The app's theme (get imported automatically with the `withTheme` method).
+   */
+  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 const wrapperStyle = ({ theme, }) => ({
   ...borderBottom('2px', 0, 'solid', theme.color('primary')),
   marginStart: '0.5rem',
 });
-const OsakaWrapper = createComponent(wrapperStyle, Grid);
+const OsakaWrapper = createComponent(wrapperStyle, StyledGrid);
+
+const listWrapperStyle = ({ theme, }) => ({
+  paddingTop: '1rem',
+  paddingBottom: '1rem',
+});
+const ListWrapper = createComponent(listWrapperStyle, StyledGridItem, props =>
+  Object.keys(props)
+);
 
 const nextWrapperStyle = ({ theme, }) => ({
   backgroundColor: theme.color('quaternary'),
   display: 'flex',
-  padding: '1rem',
 });
-const NextWrapper = createComponent(nextWrapperStyle, GridItem, props =>
+const NextWrapper = createComponent(nextWrapperStyle, StyledGridItem, props =>
   Object.keys(props)
 );
 
@@ -88,23 +99,22 @@ const getWidth = bp => {
   }
 };
 
-// eslint-disable-next-line react/prop-types
 function Osaka({ nextArticleUrl, sectionName, lists, bp, theme, }) {
   const itemsWidth = getWidth(bp);
   const numOfLocalArticles = bp === 'xl' ? 2 : 1;
   return (
     <OsakaWrapper gutter={0} miscStyles={{ flexWrap: false, }}>
-      <GridItem>
-        <Grid gutter={0}>
-          <GridItem
+      <StyledGridItem>
+        <StyledGrid gutter={0}>
+          <ListWrapper
             width={itemsWidth.local}
             miscStyles={{
               backgroundColor: theme.color('neutral', '-10'),
             }}
           >
             <List articles={lists.local.slice(0, numOfLocalArticles)} />
-          </GridItem>
-          <GridItem
+          </ListWrapper>
+          <ListWrapper
             width={1 - itemsWidth.local}
             miscStyles={{
               paddingTop: '1rem',
@@ -112,21 +122,27 @@ function Osaka({ nextArticleUrl, sectionName, lists, bp, theme, }) {
               backgroundColor: theme.color('neutral', '-6'),
             }}
           >
-            <Grid>
+            <StyledGrid>
               {bp !== 'm' && (
-                <GridItem width={itemsWidth.promoted} rule>
+                <StyledGridItem width={itemsWidth.promoted} rule>
                   <List articles={lists.promoted} promoted />
-                </GridItem>
+                </StyledGridItem>
               )}
-              <GridItem width={itemsWidth.outbrain}>
-                <List articles={lists.outbrain} border />
-              </GridItem>
-            </Grid>
-          </GridItem>
-        </Grid>
-      </GridItem>
+              <StyledGridItem width={itemsWidth.outbrain}>
+                <List articles={lists.outbrain} border outbrain />
+              </StyledGridItem>
+            </StyledGrid>
+          </ListWrapper>
+        </StyledGrid>
+      </StyledGridItem>
       {bp !== 'm' && (
-        <NextWrapper width={18}>
+        <NextWrapper
+          width={18}
+          miscStyles={{
+            paddingRight: '1rem',
+            paddingLeft: '1rem',
+          }}
+        >
           <Next
             href={nextArticleUrl}
             content={

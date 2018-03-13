@@ -1,54 +1,101 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Grid from '../../Grid/Grid'; // eslint-disable-line import/no-named-as-default
-import GridItem from '../../Grid/GridItem'; // eslint-disable-line import/no-named-as-default
+
+import Image from '../../Image/Image';
+import Kicker from '../../ArticleHeader/Kicker';
+import Title from '../../ArticleHeader/Title';
+import StyledGrid from '../../Grid/Grid';
+import StyledGridItem from '../../Grid/GridItem';
+
+const propTypes = {
+  /**
+   * Advertiser's name.
+   */
+  sourceName: PropTypes.string,
+  /**
+   * Article's title to display.
+   */
+  title: PropTypes.string.isRequired,
+  /**
+   * Article's image object to display.
+   */
+  image: PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ]).isRequired,
+  /**
+   * Should there be a border after the article.
+   */
+  border: PropTypes.bool,
+};
+
+const defaultProps = {
+  sourceName: null,
+  border: false,
+};
 
 const titleWrapperStyle = ({ theme, }) => ({
   ...theme.type(-2),
-  fontWeight: '700',
-  color: theme.color('neutral'),
   marginStart: '1rem',
 });
-const TitleWrapper = createComponent(titleWrapperStyle, GridItem, props =>
+const TitleWrapper = createComponent(titleWrapperStyle, StyledGridItem, props =>
   Object.keys(props)
 );
 
-const exclusiveStyle = ({ theme, }) => ({
-  color: theme.color('tertiary'),
-  marginEnd: '1rem',
-  ':after': {
-    content: '"|"',
-    marginStart: '1rem',
+const imgOptions = {
+  transforms: {
+    width: '84',
+    aspect: 'regular',
+    quality: 'auto',
   },
-});
-const Exclusive = createComponent(exclusiveStyle, 'span');
+};
 
 // eslint-disable-next-line react/prop-types
-function Article({ exclusive, title, imageUrl, sourceName, border, }) {
+function Article({ title, image, sourceName, border, }) {
   return (
-    <Grid gutter={0} miscStyles={{ flexWrap: false, padding: '1rem', }}>
-      <GridItem
+    <StyledGrid
+      gutter={0}
+      miscStyles={{
+        flexWrap: false,
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
+      }}
+    >
+      <StyledGridItem
         width={12}
         rule={
           border && {
-            color: [ 'neutral', '-4', ],
-            width: 1,
-            miscStyles: { marginStart: -1, },
             atStart: true,
+            color: [ 'neutral', '-4', ],
+            miscStyles: { marginStart: -1, },
+            width: 1,
           }
         }
       >
-        <img // eslint-disable-line jsx-a11y/alt-text
-          src={imageUrl}
-          width="100%"
-        />
-      </GridItem>
+        {typeof image === 'string' ? (
+          <img // eslint-disable-line jsx-a11y/alt-text
+            src={image}
+            width="100%"
+          />
+        ) : (
+          <Image imgOptions={imgOptions} data={image} />
+        )}
+      </StyledGridItem>
       <TitleWrapper>
-        {exclusive && <Exclusive>{exclusive}</Exclusive>}
-        {title}
+        {sourceName && (
+          <Kicker
+            fontSize={-2}
+            miscStyles={{
+              fontWeight: '700',
+            }}
+            text={sourceName}
+          />
+        )}
+        <Title fontSize={-2} level={4} text={title} />
       </TitleWrapper>
-    </Grid>
+    </StyledGrid>
   );
 }
+
+Article.propTypes = propTypes;
+Article.defaultProps = defaultProps;
 
 export default Article;
