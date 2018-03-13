@@ -1,5 +1,5 @@
 import React, { Fragment, } from 'react';
-import { createComponent, withTheme, } from 'react-fela';
+import { createComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import ArticleBody from '../ArticleBody/ArticleBody';
@@ -17,13 +17,14 @@ const propTypes = {
   pubDate: PropTypes.number.isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 const defaultProps = {
   exclusive: null,
   modDate: null,
 };
+
+const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
 const wrapperStyle = () => ({
   display: 'flex',
@@ -35,13 +36,24 @@ const contentStyle = ({ theme, }) => ({
     'width',
     theme.articleStyle.article.width,
     theme.mq,
-    (prop, value) => ({ [prop]: value, })
+    mediaQueryCallback
   ),
 });
 const ArticleContent = createComponent(contentStyle);
 
 const asideStyle = ({ theme, }) => ({
-  width: '30rem',
+  ...parseComponentProp(
+    'width',
+    theme.articleStyle.aside.width,
+    theme.mq,
+    mediaQueryCallback
+  ),
+  ...parseComponentProp(
+    'display',
+    theme.articleStyle.aside.display,
+    theme.mq,
+    mediaQueryCallback
+  ),
   backgroundColor: theme.color('primary', '-6'),
 });
 const ArticleAside = createComponent(asideStyle, 'aside');
@@ -52,11 +64,60 @@ const breadCrumbsStyle = () => ({
 });
 const BreadCrumbs = createComponent(breadCrumbsStyle);
 
-const headerStyle = () => ({
-  marginStart: '4rem',
+const headerStyle = ({ theme, }) => ({
   marginBottom: '3rem',
+  extend: [
+    ...[
+      parseComponentProp(
+        'marginStart',
+        theme.articleStyle.header.marginStart,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+    ...[
+      parseComponentProp(
+        'marginEnd',
+        theme.articleStyle.header.marginEnd,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+  ],
 });
 const Header = createComponent(headerStyle, ArticleHeader, props =>
+  Object.keys(props)
+);
+
+const bodyStyle = ({ theme, }) => ({
+  extend: [
+    ...[
+      parseComponentProp(
+        'width',
+        theme.articleStyle.body.width,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+    ...[
+      parseComponentProp(
+        'marginStart',
+        theme.articleStyle.body.marginStart,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+    ...[
+      parseComponentProp(
+        'marginEnd',
+        theme.articleStyle.body.marginEnd,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+  ],
+});
+const Body = createComponent(bodyStyle, ArticleBody, props =>
   Object.keys(props)
 );
 
@@ -89,7 +150,6 @@ class Article extends React.Component {
       pubDate,
       subtitle,
       title,
-      theme,
     } = this.props;
     return (
       <Fragment>
@@ -108,32 +168,7 @@ class Article extends React.Component {
             {this.state.headlineElement && (
               <HeadlineElement elementObj={this.state.headlineElement} />
             )}
-            <ArticleBody
-              body={body}
-              miscStyles={{
-                ...theme.mq(
-                  { until: 'm', },
-                  {
-                    marginStart: '2rem',
-                    marginEnd: '2rem',
-                  }
-                ),
-                ...theme.mq(
-                  { from: 'm', until: 'l', },
-                  {
-                    marginStart: '10rem',
-                    marginEnd: '10rem',
-                  }
-                ),
-                ...theme.mq(
-                  { from: 'l', },
-                  {
-                    marginStart: '4rem',
-                  }
-                ),
-              }}
-              setHeadlineElement={this.setHeadlineElement}
-            />
+            <Body body={body} setHeadlineElement={this.setHeadlineElement} />
           </ArticleContent>
         </ArticleWrapper>
       </Fragment>
@@ -144,4 +179,4 @@ class Article extends React.Component {
 Article.propTypes = propTypes;
 Article.defaultProps = defaultProps;
 
-export default withTheme(Article);
+export default Article;

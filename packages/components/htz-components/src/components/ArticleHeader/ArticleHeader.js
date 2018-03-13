@@ -47,7 +47,11 @@ const articleHeaderPropTypes = {
     }),
   ]).isRequired,
   /** publishDateTime of an Article */
-  publishDateTime: PropTypes.instanceOf(Date).isRequired,
+  publishDateTime: PropTypes.oneOfType([
+    PropTypes.instanceOf(Date),
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
 };
 
 const articleHeaderDefaultProps = {
@@ -103,8 +107,10 @@ function ArticleHeaderComponent({
   );
 }
 
-const ArticleHeaderStyled = createComponent(styleArticleHeader, ArticleHeaderComponent, props =>
-  Object.keys(props)
+const ArticleHeaderStyled = createComponent(
+  styleArticleHeader,
+  ArticleHeaderComponent,
+  props => Object.keys(props)
 );
 
 function ArticleHeader(props) {

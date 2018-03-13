@@ -6,14 +6,14 @@ const propTypes = {
   inputTemplate: PropTypes.string.isRequired,
 };
 
-const template = new Map([
-  [ 'com.interactive.beforeafter', BeforeAndAfter, ],
-]);
+const template = new Map([ [ 'com.interactive.beforeafter', BeforeAndAfter, ], ]);
 
 function InteractiveElement(props) {
   const Element = template.get(props.inputTemplate);
-  return (
+  return Element ? (
     <Element {...props} />
+  ) : (
+    <p>not supported interactive element</p>
   );
 }
 

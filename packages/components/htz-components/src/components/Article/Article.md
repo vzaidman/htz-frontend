@@ -86,66 +86,10 @@
     modDate={1517757635308}
     body={[
       {
-        videoType: 'videoId',
-        videoContent: '3SzXM019pbs',
-        title: 'old video',
-        credit: 'old video',
-        inputTemplate: 'com.tm.Video',
-        contentId: '1.2037',
-      },
-      {
-        videoType: 'videoId',
-        videoContent: '3SzXM019pbs',
-        title: 'old video',
-        credit: 'old video',
-        inputTemplate: 'com.tm.Video',
-        contentId: '1.2037',
-      },
-      {
-        attributes: [],
-        tag: 'h4',
-        content: [
-          {
-            attributes: [
-              {
-                key: 'text',
-                value:
-                  'צבא אסד מעמיק את המתקפה לכיבוש כפרי המורדים סמוך לגבול עם ישראל.',
-              },
-            ],
-            tag: '#text',
-          },
-        ],
-      },
-      {
-        text:
-          'בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר במשרד הביטחון',
-        position: 'midCenterPosition',
-        afterParagraph: '1',
-        imagesList: [],
-        inputTemplate: 'com.htz.MagazineArticleQuote',
-        contentId: '1.6664',
-        contentName: 'no credit nor image',
-      },
-      {
-        attributes: [],
-        tag: 'p',
-        content: [
-          {
-            attributes: [
-              {
-                key: 'text',
-                value:
-                  'שלושה מחברי הכנסת של המפלגה, עזריה, פולקמן ובן-ארי, השתתפו במוצאי שבת האחרון בהפגנת הימין נגד השחיתות בכיכר ציון בירושלים. כחלון לא מנע מהם להשתתף בה, אך לפי פרסום של ספי עובדיה אמש בערוץ 10 - בישיבת הסיעה אתמול אמר כחלון לח"כים: "בסוף מתברר שמי שמזיק הכי הרבה למפלגה הם אנשי כולנו. אני מבקש דממת אלחוט. זה לא מוסיף לנו קולות. לא בטוח שתחזרו לכנסת אחרי הבחירות". כחלון הוסיף: "אני מבקש שאף אחד לא ידבר בחוץ, לא פייסבוק ולא טוויטר. אנחנו לא מדברים על ההמלצות. חוק ההמלצות יעבור, אני לא מדבר על זה. אני מדבר על ההמלצות שיוגשו נגד ביבי - אני מבקש שלא לעסוק בזה!".',
-              },
-            ],
-            tag: '#text',
-          },
-        ],
-      },
-      {
         viewMode: 'FullColumnWithVerticalImage',
         accessibility: 'ren & stimpy',
+        credit: 'me',
+        title: 'Ren & Stimpy',
         aspects: {
           regular: {
             x: 19,
@@ -199,6 +143,64 @@
         inputTemplate: 'com.tm.Image',
         contentId: '1.6738',
         contentName: 'ren & stimpy',
+      },
+      {
+        videoType: 'videoId',
+        videoContent: '3SzXM019pbs',
+        title: 'old video',
+        credit: 'old video',
+        inputTemplate: 'com.tm.Video',
+        contentId: '1.2037',
+      },
+      {
+        attributes: [],
+        tag: 'h4',
+        content: [
+          {
+            attributes: [
+              {
+                key: 'text',
+                value:
+                  'צבא אסד מעמיק את המתקפה לכיבוש כפרי המורדים סמוך לגבול עם ישראל.',
+              },
+            ],
+            tag: '#text',
+          },
+        ],
+      },
+      {
+        text:
+          'בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר במשרד הביטחון',
+        position: 'midCenterPosition',
+        afterParagraph: '1',
+        imagesList: [],
+        inputTemplate: 'com.htz.MagazineArticleQuote',
+        contentId: '1.6664',
+        contentName: 'no credit nor image',
+      },
+      {
+        attributes: [],
+        tag: 'p',
+        content: [
+          {
+            attributes: [
+              {
+                key: 'text',
+                value:
+                  'שלושה מחברי הכנסת של המפלגה, עזריה, פולקמן ובן-ארי, השתתפו במוצאי שבת האחרון בהפגנת הימין נגד השחיתות בכיכר ציון בירושלים. כחלון לא מנע מהם להשתתף בה, אך לפי פרסום של ספי עובדיה אמש בערוץ 10 - בישיבת הסיעה אתמול אמר כחלון לח"כים: "בסוף מתברר שמי שמזיק הכי הרבה למפלגה הם אנשי כולנו. אני מבקש דממת אלחוט. זה לא מוסיף לנו קולות. לא בטוח שתחזרו לכנסת אחרי הבחירות". כחלון הוסיף: "אני מבקש שאף אחד לא ידבר בחוץ, לא פייסבוק ולא טוויטר. אנחנו לא מדברים על ההמלצות. חוק ההמלצות יעבור, אני לא מדבר על זה. אני מדבר על ההמלצות שיוגשו נגד ביבי - אני מבקש שלא לעסוק בזה!".',
+              },
+            ],
+            tag: '#text',
+          },
+        ],
+      },
+      {
+        videoType: 'videoId',
+        videoContent: '3SzXM019pbs',
+        title: 'old video',
+        credit: 'old video',
+        inputTemplate: 'com.tm.Video',
+        contentId: '1.2037',
       },
       {
         text:
@@ -296,24 +298,80 @@
         ],
       },
       {
-        content: 'pe7driNrW9k?list=PLJzja_wfYCI3pO9p6FGujWTWVeYz5Q_Dw&t=1',
-        caption: 'Ren and Stimpy',
-        credit: 'youtube',
-        embedType: 'playlist',
-        elementType: 'embedElement',
-        settings: {
-          controls: '1',
-          related: '1',
-          loop: '0',
-          videoImage: 'http://img.youtube.com/vi/pe7driNrW9k/0.jpg',
-          logo: '1',
-          mute: false,
-          autoplay: false,
-          startAt: 0,
-        },
-        inputTemplate: 'com.polobase.YouTubeEmbed',
-        contentId: '7.5218',
-        contentName: 'Playlist',
+        elementsList: [
+          {
+            viewMode: 'FullColumnWithVerticalImage',
+            accessibility: 'מרק ריבולטה טוסקני',
+            aspects: {
+              regular: {
+                x: 194,
+                y: 0,
+                width: 852,
+                height: 640,
+              },
+              full: {
+                width: 1105,
+                height: 640,
+              },
+              headline: {
+                x: 0,
+                y: 0,
+                width: 1102,
+                height: 640,
+              },
+              belgrade: {
+                x: 126,
+                y: 123,
+                width: 820,
+                height: 258,
+              },
+            },
+            isAnimated: false,
+            imgArray: [
+              {
+                imgName: 'image/2005660405.jpg',
+                version: '1520779784',
+              },
+            ],
+            imageType: 'image',
+            inputTemplate: 'com.tm.Image',
+            contentId: '1.2453',
+            contentName: 'מרק ריבולטה טוסקני',
+          },
+          {
+            viewMode: 'FullColumnWithVerticalImage',
+            accessibility: 'דוד לוי',
+            credit: 'Credit',
+            aspects: {
+              full: {
+                width: 470,
+                height: 313,
+              },
+              headline: {
+                x: 0,
+                y: 40,
+                width: 470,
+                height: 273,
+              },
+            },
+            isAnimated: false,
+            imgArray: [
+              {
+                imgName: 'image/1365043816.jpg',
+                version: '1520779792',
+              },
+            ],
+            imageType: 'image',
+            inputTemplate: 'com.tm.Image',
+            contentId: '1.2359',
+            contentName: 'דוד לוי',
+          },
+        ],
+        linePos: '50%',
+        elementType: 'interactiveElement',
+        inputTemplate: 'com.interactive.beforeafter',
+        contentId: '7.7434',
+        contentName: 'before/after',
       },
       {
         attributes: [],

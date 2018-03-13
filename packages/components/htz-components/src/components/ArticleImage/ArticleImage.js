@@ -12,6 +12,10 @@ import Picture from '../Image/Picture';
 
 const articleImagePropTypes = {
   /**
+   * Force the image to render in a specific aspect, regardless of the editor's choice.
+   */
+  forceAspect: PropTypes.string,
+  /**
    * Is it a standard image or infographic.
    */
   imageType: PropTypes.string.isRequired,
@@ -19,6 +23,10 @@ const articleImagePropTypes = {
    * Image's dada that comes from polopoly.
    */
   imgArray: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /**
+   * Is the image is a headline (Position 0).
+   */
+  isHeadline: PropTypes.bool,
   /**
    * The image's selected view mode set by the editor (regular, full or 1/3).
    */
@@ -42,13 +50,19 @@ const articleImagePropTypes = {
 };
 
 const articleImageDefaultProps = {
+  credit: null,
+  forceAspect: null,
+  isHeadline: false,
   lastItem: false,
   showCaption: true,
   title: null,
-  credit: null,
 };
 
 const imagePropTypes = {
+  /**
+   * Force the image to render in a specific aspect, regardless of the editor's choice.
+   */
+  forceAspect: PropTypes.string,
   /**
    * Is it a standard image or infographic.
    */
@@ -70,13 +84,15 @@ const imagePropTypes = {
 const imageDefaultProps = {
   isFullScreen: false,
   viewMode: 'FullColumnWithVerticalImage',
+  forceAspect: null,
 };
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
-const wrapperStyle = ({ viewMode, lastItem, theme, }) => ({
+const wrapperStyle = ({ viewMode, lastItem, isHeadline, theme, }) => ({
   position: 'relative',
   ...(!lastItem &&
+    !isHeadline &&
     parseComponentProp(
       'marginBottom',
       theme.articleStyle.body.marginBottom,
@@ -144,9 +160,9 @@ const getAspect = viewMode => {
 };
 
 const ImageElement = props => {
-  const { imageType, imgArray, isFullScreen, viewMode, } = props;
+  const { imageType, imgArray, isFullScreen, viewMode, forceAspect, } = props;
 
-  const aspect = getAspect(viewMode);
+  const aspect = forceAspect || getAspect(viewMode);
 
   const imgOptions = {
     transforms: {
@@ -168,7 +184,7 @@ const ImageElement = props => {
       hasWrapper={!isFullScreen}
       data={props}
       imgOptions={imgOptions}
-      bgcolor={isFullScreen && 'neutral'}
+      bgcolor={isFullScreen ? 'neutral' : ''}
     />
   ) : (
     <Picture
@@ -195,7 +211,7 @@ const ImageElement = props => {
           sourceOptions,
         },
       ]}
-      bgcolor={isFullScreen && 'neutral'}
+      bgcolor={isFullScreen ? 'neutral' : ''}
     />
   );
 };
@@ -211,26 +227,38 @@ ImageElement.defaultProps = imageDefaultProps;
  */
 class ArticleImage extends React.Component {
   state = {
-    fullScreen: false,
+    isFullScreen: false,
   };
 
   toggleFullScreen = () => {
     this.setState({
-      fullScreen: !this.state.fullScreen,
+      isFullScreen: !this.state.isFullScreen,
     });
   };
 
   render() {
-    const { viewMode, lastItem, title, credit, showCaption, } = this.props;
+    const {
+      credit,
+      forceAspect,
+      isHeadline,
+      lastItem,
+      showCaption,
+      title,
+      viewMode,
+    } = this.props;
 
     return (
       <Fragment>
-        <Wrapper viewMode={viewMode} lastItem={lastItem}>
+        <Wrapper
+          viewMode={!forceAspect && viewMode}
+          lastItem={lastItem}
+          isHeadline={isHeadline}
+        >
           <ZoomWrapper onClick={this.toggleFullScreen} />
           <ImageElement {...this.props} />
           {showCaption && <Caption caption={title} credit={credit} />}
         </Wrapper>
-        {this.state.fullScreen && (
+        {this.state.isFullScreen && (
           <FullScreenImage
             imageElement={<ImageElement {...this.props} isFullScreen />}
             closeCallBack={this.toggleFullScreen}

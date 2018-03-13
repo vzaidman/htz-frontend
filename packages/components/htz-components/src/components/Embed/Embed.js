@@ -39,11 +39,13 @@ export default class Embed extends React.Component {
 
   render() {
     const EmbedType = embedTypes[this.props.inputTemplate];
-    return (
+    return EmbedType ? (
       <EmbedWrapper setHeight={this.state.isLoading}>
         <LoadingScreen isLoading={this.state.isLoading} />
         <EmbedType {...this.props} onLoadCallback={this.onLoaded} />
       </EmbedWrapper>
+    ) : (
+      <p>not supported embed element</p>
     );
   }
 }

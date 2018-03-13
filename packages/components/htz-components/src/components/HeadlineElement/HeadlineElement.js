@@ -35,7 +35,14 @@ function HeadlineElement({ elementObj, }) {
   const Element = () => {
     switch (uniqueId) {
       case 'com.tm.Image':
-        return <ArticleImage {...elementObj} showCaption={false} />;
+        return (
+          <ArticleImage
+            {...elementObj}
+            showCaption={false}
+            forceAspect="headline"
+            isHeadline
+          />
+        );
       case 'com.tm.ImageGalleryElement':
         // return <ImageGallery {...elementObj} forceAspect="headline" />;
         return () => <p>ImageGallery</p>;

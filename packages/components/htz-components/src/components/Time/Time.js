@@ -7,8 +7,11 @@ const timePropTypes = {
    * The Date to format. Can be Date object or String in ISO 8601 formats.
    * For more information about ISO_8601, [read here](http://en.wikipedia.org/wiki/ISO_8601)
    */
-  time: PropTypes.oneOfType([ PropTypes.string, PropTypes.instanceOf(Date), ])
-    .isRequired,
+  time: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.instanceOf(Date),
+  ]).isRequired,
   /**
    * The output format for the time prop.<br/>
    * Can be a __string__ or an array of __DateFormatRule__ objects({ from, until, format }).

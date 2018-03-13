@@ -11,8 +11,8 @@ const article = Object.freeze({
 });
 
 const aside = Object.freeze({
+  display: [ { until: 'l', value: 'none', }, { from: 'l', value: 'block', }, ],
   width: [
-    { until: 'm', value: '0', },
     { from: 'l', until: 'xl', value: '27rem', },
     { from: 'xl', value: '30rem', },
   ],
@@ -41,10 +41,17 @@ const linksBlockLink = Object.freeze({
 const body = Object.freeze({
   marginBottom: [ { until: 'xl', value: '4rem', }, { from: 'xl', value: '3rem', }, ],
   width: [
-    { until: 'm', value: '49.3rem', },
-    { from: 'm', until: 'l', value: '80rem', },
     { from: 'l', until: 'xl', value: '70.5rem', },
     { from: 'xl', value: '80rem', },
+  ],
+  marginStart: [
+    { until: 'm', value: '2rem', },
+    { from: 'm', until: 'l', value: '10rem', },
+    { from: 'l', value: '4rem', },
+  ],
+  marginEnd: [
+    { until: 'm', value: '2rem', },
+    { from: 'm', until: 'l', value: '10rem', },
   ],
 });
 
@@ -110,6 +117,11 @@ const header = Object.freeze({
     { until: 'm', value: -2, },
     { from: 'm', until: 'l', value: -1, },
     { from: 'l', value: -1, },
+  ],
+  marginStart: [ { until: 'l', value: '2rem', }, { from: 'l', value: '4rem', }, ],
+  marginEnd: [
+    { until: 'm', value: '2rem', },
+    { from: 'm', until: 'l', value: '2rem', },
   ],
 });
 
