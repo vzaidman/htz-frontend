@@ -8,18 +8,32 @@ exports[`<ButtonGroup> DOM element pass and spread the attrs prop 1`] = `
     tabIndex="-1"
   >
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+      />
     </button>
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-bp htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-ct htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+      />
     </button>
   </div>
 </div>
@@ -32,18 +46,32 @@ exports[`<ButtonGroup> DOM element render the id prop 1`] = `
     id="testId"
   >
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+      />
     </button>
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-bp htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-ct htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+      />
     </button>
   </div>
 </div>
@@ -56,31 +84,52 @@ exports[`<ButtonGroup> apply border radius correctly within a column group 1`] =
     id={null}
   >
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-y htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr"
+      />
     </button>
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-bp htz-bq htz-br htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-cs htz-ct htz-cu htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-y htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr"
+      />
     </button>
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-bp htz-bq htz-br htz-bs htz-bt htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-bu htz-bv htz-bw htz-bx htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-cs htz-ct htz-cu htz-cv htz-cw htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-cx htz-cy htz-cz htz-da htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-y htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr"
+      />
     </button>
   </div>
 </div>
 `;
 
-exports[`<ButtonGroup> apply border radius correctly within a column group 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-direction:column}.htz-c{flex-direction:column}.htz-d{-webkit-box-orient:vertical}.htz-e{-webkit-box-direction:normal}.htz-f{-webkit-align-items:center}.htz-g{align-items:center}.htz-h{-webkit-appearance:none}.htz-i{-moz-appearance:none}.htz-j{appearance:none}.htz-k{cursor:pointer}.htz-l{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-m{font-weight:bold}.htz-n{font-size:inherit}.htz-o{-webkit-justify-content:center}.htz-p{justify-content:center}.htz-q{transition-property:all}.htz-r{transition-duration:0.16666666666666666s}.htz-s{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-t{text-decoration:none}.htz-u{white-space:nowrap}.htz-v::moz-focus-inner{border:0px}.htz-w::moz-focus-inner{padding:0rem}.htz-x{width:100%}.htz-y{border-bottom:0px}.htz-z{padding-bottom:1rem}.htz-ab{border-top-width:1px}.htz-ac{border-top-style:solid}.htz-ae{padding-top:calc(1rem - 1px)}.htz-af{border-right-width:1px}.htz-ag{border-right-style:solid}.htz-ah{padding-right:4rem}.htz-ai{border-left-width:1px}.htz-aj{border-left-style:solid}.htz-ak{padding-left:4rem}.htz-al{border-top-right-radius:50%}.htz-am{border-top-left-radius:50%}.htz-an{border-bottom-right-radius:0rem}.htz-ao{border-bottom-left-radius:0rem}.htz-ap{background-color:#FFF}.htz-aq{border-color:#0B7EB5}.htz-ar{color:#0B7EB5}.htz-as:hover{text-decoration:none}.htz-at:hover{transition-duration:0.16666666666666666s}.htz-au:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-av:hover{background-color:#EBF2F5}.htz-aw:hover{border-color:#006B96}.htz-ax:hover{color:#006B96}.htz-ay:focus{outline:none}.htz-az:focus{text-decoration:none}.htz-ba:focus{transition-duration:0.16666666666666666s}.htz-bb:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bc:focus{background-color:#0B7EB5}.htz-bd:focus{border-color:#0B7EB5}.htz-be:focus{color:#FFF}.htz-bf:active{outline:none}.htz-bg:active{text-decoration:none}.htz-bh:active{transition-duration:0s}.htz-bi:active{background-color:#fff !important}.htz-bj:active{border-color:#0B7EB5}.htz-bk:active{color:#0B7EB5}.htz-bl{-webkit-box-align:center}.htz-bm{-webkit-box-pack:center}.htz-bn{-webkit-transition-property:all}.htz-bo{-moz-transition-property:all}.htz-bp{border-bottom-width:1px}.htz-bq{border-bottom-style:solid}.htz-br{padding-bottom:calc(1rem - 1px)}.htz-bs{border-top:0px}.htz-bt{padding-top:1rem}.htz-bu{border-top-right-radius:0rem}.htz-bv{border-top-left-radius:0rem}.htz-bw{border-bottom-right-radius:50%}.htz-bx{border-bottom-left-radius:50%}"`;
+exports[`<ButtonGroup> apply border radius correctly within a column group 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-direction:column}.htz-c{flex-direction:column}.htz-d{-webkit-box-orient:vertical}.htz-e{-webkit-box-direction:normal}.htz-f{-webkit-align-items:center}.htz-g{align-items:center}.htz-h{-webkit-appearance:none}.htz-i{-moz-appearance:none}.htz-j{appearance:none}.htz-k{cursor:pointer}.htz-l{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-m{font-weight:bold}.htz-n{font-size:inherit}.htz-o{-webkit-justify-content:center}.htz-p{justify-content:center}.htz-q{position:relative}.htz-r{-webkit-transform:scale(1)}.htz-s{transform:scale(1)}.htz-t{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-u{text-decoration:none}.htz-v{white-space:nowrap}.htz-w::moz-focus-inner{border:0px}.htz-x::moz-focus-inner{padding:0rem}.htz-y{width:100%}.htz-z{border-bottom:0px}.htz-ab{padding-bottom:1rem}.htz-ac{border-top-width:1px}.htz-ae{border-top-style:solid}.htz-af{padding-top:calc(1rem - 1px)}.htz-ag{border-right-width:1px}.htz-ah{border-right-style:solid}.htz-ai{padding-right:4rem}.htz-aj{border-left-width:1px}.htz-ak{border-left-style:solid}.htz-al{padding-left:4rem}.htz-am{border-top-right-radius:50%}.htz-an{border-top-left-radius:50%}.htz-ao{border-bottom-right-radius:0rem}.htz-ap{border-bottom-left-radius:0rem}.htz-aq{background-color:#FFF}.htz-ar{border-color:#0B7EB5}.htz-as{color:#0B7EB5}.htz-at:hover{text-decoration:none}.htz-au:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-av:hover{background-color:#EBF2F5}.htz-aw:hover{border-color:#006B96}.htz-ax:hover{color:#006B96}.htz-ay:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-az:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ba:focus{outline:none}.htz-bb:focus{text-decoration:none}.htz-bc:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bd:focus{background-color:#0B7EB5}.htz-be:focus{border-color:#0B7EB5}.htz-bf:focus{color:#FFF}.htz-bg:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bh:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bi:active{outline:none}.htz-bj:active{text-decoration:none}.htz-bk:active{transition-duration:0s}.htz-bl:active{background-color:#fff !important}.htz-bm:active{border-color:#0B7EB5}.htz-bn:active{color:#0B7EB5}.htz-bo{-webkit-box-align:center}.htz-bp{-webkit-box-pack:center}.htz-bq{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-br{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bs{opacity:1}.htz-bt{transition-property:opacity}.htz-bu{transition-duration:0.16666666666666666s}.htz-bv{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bw{transition-delay:.3s}.htz-bx{-webkit-transition-property:opacity}.htz-by{-moz-transition-property:opacity}.htz-bz{background-color:rgba(0, 0, 0, 0.2)}.htz-ca{height:100%}.htz-cb{inline-inset-start:0rem}.htz-cc{position:absolute}.htz-cd{top:0rem}.htz-ce{-webkit-transform:scaleX(0)}.htz-cf{transform:scaleX(0)}.htz-cg{-webkit-transform-origin:right}.htz-ch{transform-origin:right}.htz-ci{-webkit-animation-direction:alternate}.htz-cj{animation-direction:alternate}.htz-ck{-webkit-animation-iteration-count:infinite}.htz-cl{animation-iteration-count:infinite}.htz-cm{-webkit-animation-duration:1s}.htz-cn{animation-duration:1s}.htz-co{-webkit-animation-delay:0.75s}.htz-cp{animation-delay:0.75s}.htz-cq{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cr{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cs{border-bottom-width:1px}.htz-ct{border-bottom-style:solid}.htz-cu{padding-bottom:calc(1rem - 1px)}.htz-cv{border-top:0px}.htz-cw{padding-top:1rem}.htz-cx{border-top-right-radius:0rem}.htz-cy{border-top-left-radius:0rem}.htz-cz{border-bottom-right-radius:50%}.htz-da{border-bottom-left-radius:50%}"`;
 
 exports[`<ButtonGroup> apply border radius correctly within a row group 1`] = `
 <div>
@@ -89,31 +138,52 @@ exports[`<ButtonGroup> apply border radius correctly within a row group 1`] = `
     id={null}
   >
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+      />
     </button>
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+      />
     </button>
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-bp htz-aj htz-ak htz-bq htz-br htz-bs htz-bt htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-ct htz-ak htz-al htz-cu htz-cv htz-cw htz-cx htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+      />
     </button>
   </div>
 </div>
 `;
 
-exports[`<ButtonGroup> apply border radius correctly within a row group 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-direction:row}.htz-c{flex-direction:row}.htz-d{-webkit-box-orient:horizontal}.htz-e{-webkit-box-direction:normal}.htz-f{-webkit-align-items:center}.htz-g{align-items:center}.htz-h{-webkit-appearance:none}.htz-i{-moz-appearance:none}.htz-j{appearance:none}.htz-k{cursor:pointer}.htz-l{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-m{font-weight:bold}.htz-n{font-size:inherit}.htz-o{-webkit-justify-content:center}.htz-p{justify-content:center}.htz-q{transition-property:all}.htz-r{transition-duration:0.16666666666666666s}.htz-s{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-t{text-decoration:none}.htz-u{white-space:nowrap}.htz-v::moz-focus-inner{border:0px}.htz-w::moz-focus-inner{padding:0rem}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{padding-bottom:calc(1rem - 1px)}.htz-ab{border-top-width:1px}.htz-ac{border-top-style:solid}.htz-ae{padding-top:calc(1rem - 1px)}.htz-af{border-right-width:1px}.htz-ag{border-right-style:solid}.htz-ah{padding-right:4rem}.htz-ai{border-left-width:0rem}.htz-aj{border-left-style:solid}.htz-ak{padding-left:4rem}.htz-al{border-top-right-radius:50%}.htz-am{border-top-left-radius:0rem}.htz-an{border-bottom-right-radius:50%}.htz-ao{border-bottom-left-radius:0rem}.htz-ap{background-color:#FFF}.htz-aq{border-color:#0B7EB5}.htz-ar{color:#0B7EB5}.htz-as:hover{text-decoration:none}.htz-at:hover{transition-duration:0.16666666666666666s}.htz-au:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-av:hover{background-color:#EBF2F5}.htz-aw:hover{border-color:#006B96}.htz-ax:hover{color:#006B96}.htz-ay:focus{outline:none}.htz-az:focus{text-decoration:none}.htz-ba:focus{transition-duration:0.16666666666666666s}.htz-bb:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bc:focus{background-color:#0B7EB5}.htz-bd:focus{border-color:#0B7EB5}.htz-be:focus{color:#FFF}.htz-bf:active{outline:none}.htz-bg:active{text-decoration:none}.htz-bh:active{transition-duration:0s}.htz-bi:active{background-color:#fff !important}.htz-bj:active{border-color:#0B7EB5}.htz-bk:active{color:#0B7EB5}.htz-bl{-webkit-box-align:center}.htz-bm{-webkit-box-pack:center}.htz-bn{-webkit-transition-property:all}.htz-bo{-moz-transition-property:all}.htz-bp{border-left-width:1px}.htz-bq{border-top-right-radius:0rem}.htz-br{border-top-left-radius:50%}.htz-bs{border-bottom-right-radius:0rem}.htz-bt{border-bottom-left-radius:50%}"`;
+exports[`<ButtonGroup> apply border radius correctly within a row group 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-direction:row}.htz-c{flex-direction:row}.htz-d{-webkit-box-orient:horizontal}.htz-e{-webkit-box-direction:normal}.htz-f{-webkit-align-items:center}.htz-g{align-items:center}.htz-h{-webkit-appearance:none}.htz-i{-moz-appearance:none}.htz-j{appearance:none}.htz-k{cursor:pointer}.htz-l{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-m{font-weight:bold}.htz-n{font-size:inherit}.htz-o{-webkit-justify-content:center}.htz-p{justify-content:center}.htz-q{position:relative}.htz-r{-webkit-transform:scale(1)}.htz-s{transform:scale(1)}.htz-t{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-u{text-decoration:none}.htz-v{white-space:nowrap}.htz-w::moz-focus-inner{border:0px}.htz-x::moz-focus-inner{padding:0rem}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac{border-top-width:1px}.htz-ae{border-top-style:solid}.htz-af{padding-top:calc(1rem - 1px)}.htz-ag{border-right-width:1px}.htz-ah{border-right-style:solid}.htz-ai{padding-right:4rem}.htz-aj{border-left-width:0rem}.htz-ak{border-left-style:solid}.htz-al{padding-left:4rem}.htz-am{border-top-right-radius:50%}.htz-an{border-top-left-radius:0rem}.htz-ao{border-bottom-right-radius:50%}.htz-ap{border-bottom-left-radius:0rem}.htz-aq{background-color:#FFF}.htz-ar{border-color:#0B7EB5}.htz-as{color:#0B7EB5}.htz-at:hover{text-decoration:none}.htz-au:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-av:hover{background-color:#EBF2F5}.htz-aw:hover{border-color:#006B96}.htz-ax:hover{color:#006B96}.htz-ay:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-az:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ba:focus{outline:none}.htz-bb:focus{text-decoration:none}.htz-bc:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bd:focus{background-color:#0B7EB5}.htz-be:focus{border-color:#0B7EB5}.htz-bf:focus{color:#FFF}.htz-bg:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bh:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bi:active{outline:none}.htz-bj:active{text-decoration:none}.htz-bk:active{transition-duration:0s}.htz-bl:active{background-color:#fff !important}.htz-bm:active{border-color:#0B7EB5}.htz-bn:active{color:#0B7EB5}.htz-bo{-webkit-box-align:center}.htz-bp{-webkit-box-pack:center}.htz-bq{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-br{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bs{opacity:1}.htz-bt{transition-property:opacity}.htz-bu{transition-duration:0.16666666666666666s}.htz-bv{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bw{transition-delay:.3s}.htz-bx{-webkit-transition-property:opacity}.htz-by{-moz-transition-property:opacity}.htz-bz{background-color:rgba(0, 0, 0, 0.2)}.htz-ca{height:100%}.htz-cb{inline-inset-start:0rem}.htz-cc{position:absolute}.htz-cd{top:0rem}.htz-ce{-webkit-transform:scaleX(0)}.htz-cf{transform:scaleX(0)}.htz-cg{-webkit-transform-origin:right}.htz-ch{transform-origin:right}.htz-ci{width:100%}.htz-cj{-webkit-animation-direction:alternate}.htz-ck{animation-direction:alternate}.htz-cl{-webkit-animation-iteration-count:infinite}.htz-cm{animation-iteration-count:infinite}.htz-cn{-webkit-animation-duration:1s}.htz-co{animation-duration:1s}.htz-cp{-webkit-animation-delay:0.75s}.htz-cq{animation-delay:0.75s}.htz-cr{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cs{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ct{border-left-width:1px}.htz-cu{border-top-right-radius:0rem}.htz-cv{border-top-left-radius:50%}.htz-cw{border-bottom-right-radius:0rem}.htz-cx{border-bottom-left-radius:50%}"`;
 
 exports[`<ButtonGroup> renders a group in column layout 1`] = `
 <div>
@@ -122,31 +192,52 @@ exports[`<ButtonGroup> renders a group in column layout 1`] = `
     id={null}
   >
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-y htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr"
+      />
     </button>
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-bp htz-bq htz-br htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-cs htz-ct htz-cu htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-y htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr"
+      />
     </button>
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-bp htz-bq htz-br htz-bs htz-bt htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-cs htz-ct htz-cu htz-cv htz-cw htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-y htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr"
+      />
     </button>
   </div>
 </div>
 `;
 
-exports[`<ButtonGroup> renders a group in column layout 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-direction:column}.htz-c{flex-direction:column}.htz-d{-webkit-box-orient:vertical}.htz-e{-webkit-box-direction:normal}.htz-f{-webkit-align-items:center}.htz-g{align-items:center}.htz-h{-webkit-appearance:none}.htz-i{-moz-appearance:none}.htz-j{appearance:none}.htz-k{cursor:pointer}.htz-l{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-m{font-weight:bold}.htz-n{font-size:inherit}.htz-o{-webkit-justify-content:center}.htz-p{justify-content:center}.htz-q{transition-property:all}.htz-r{transition-duration:0.16666666666666666s}.htz-s{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-t{text-decoration:none}.htz-u{white-space:nowrap}.htz-v::moz-focus-inner{border:0px}.htz-w::moz-focus-inner{padding:0rem}.htz-x{width:100%}.htz-y{border-bottom:0px}.htz-z{padding-bottom:1rem}.htz-ab{border-top-width:1px}.htz-ac{border-top-style:solid}.htz-ae{padding-top:calc(1rem - 1px)}.htz-af{border-right-width:1px}.htz-ag{border-right-style:solid}.htz-ah{padding-right:4rem}.htz-ai{border-left-width:1px}.htz-aj{border-left-style:solid}.htz-ak{padding-left:4rem}.htz-al{border-top-right-radius:0rem}.htz-am{border-top-left-radius:0rem}.htz-an{border-bottom-right-radius:0rem}.htz-ao{border-bottom-left-radius:0rem}.htz-ap{background-color:#FFF}.htz-aq{border-color:#0B7EB5}.htz-ar{color:#0B7EB5}.htz-as:hover{text-decoration:none}.htz-at:hover{transition-duration:0.16666666666666666s}.htz-au:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-av:hover{background-color:#EBF2F5}.htz-aw:hover{border-color:#006B96}.htz-ax:hover{color:#006B96}.htz-ay:focus{outline:none}.htz-az:focus{text-decoration:none}.htz-ba:focus{transition-duration:0.16666666666666666s}.htz-bb:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bc:focus{background-color:#0B7EB5}.htz-bd:focus{border-color:#0B7EB5}.htz-be:focus{color:#FFF}.htz-bf:active{outline:none}.htz-bg:active{text-decoration:none}.htz-bh:active{transition-duration:0s}.htz-bi:active{background-color:#fff !important}.htz-bj:active{border-color:#0B7EB5}.htz-bk:active{color:#0B7EB5}.htz-bl{-webkit-box-align:center}.htz-bm{-webkit-box-pack:center}.htz-bn{-webkit-transition-property:all}.htz-bo{-moz-transition-property:all}.htz-bp{border-bottom-width:1px}.htz-bq{border-bottom-style:solid}.htz-br{padding-bottom:calc(1rem - 1px)}.htz-bs{border-top:0px}.htz-bt{padding-top:1rem}"`;
+exports[`<ButtonGroup> renders a group in column layout 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-direction:column}.htz-c{flex-direction:column}.htz-d{-webkit-box-orient:vertical}.htz-e{-webkit-box-direction:normal}.htz-f{-webkit-align-items:center}.htz-g{align-items:center}.htz-h{-webkit-appearance:none}.htz-i{-moz-appearance:none}.htz-j{appearance:none}.htz-k{cursor:pointer}.htz-l{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-m{font-weight:bold}.htz-n{font-size:inherit}.htz-o{-webkit-justify-content:center}.htz-p{justify-content:center}.htz-q{position:relative}.htz-r{-webkit-transform:scale(1)}.htz-s{transform:scale(1)}.htz-t{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-u{text-decoration:none}.htz-v{white-space:nowrap}.htz-w::moz-focus-inner{border:0px}.htz-x::moz-focus-inner{padding:0rem}.htz-y{width:100%}.htz-z{border-bottom:0px}.htz-ab{padding-bottom:1rem}.htz-ac{border-top-width:1px}.htz-ae{border-top-style:solid}.htz-af{padding-top:calc(1rem - 1px)}.htz-ag{border-right-width:1px}.htz-ah{border-right-style:solid}.htz-ai{padding-right:4rem}.htz-aj{border-left-width:1px}.htz-ak{border-left-style:solid}.htz-al{padding-left:4rem}.htz-am{border-top-right-radius:0rem}.htz-an{border-top-left-radius:0rem}.htz-ao{border-bottom-right-radius:0rem}.htz-ap{border-bottom-left-radius:0rem}.htz-aq{background-color:#FFF}.htz-ar{border-color:#0B7EB5}.htz-as{color:#0B7EB5}.htz-at:hover{text-decoration:none}.htz-au:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-av:hover{background-color:#EBF2F5}.htz-aw:hover{border-color:#006B96}.htz-ax:hover{color:#006B96}.htz-ay:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-az:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ba:focus{outline:none}.htz-bb:focus{text-decoration:none}.htz-bc:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bd:focus{background-color:#0B7EB5}.htz-be:focus{border-color:#0B7EB5}.htz-bf:focus{color:#FFF}.htz-bg:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bh:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bi:active{outline:none}.htz-bj:active{text-decoration:none}.htz-bk:active{transition-duration:0s}.htz-bl:active{background-color:#fff !important}.htz-bm:active{border-color:#0B7EB5}.htz-bn:active{color:#0B7EB5}.htz-bo{-webkit-box-align:center}.htz-bp{-webkit-box-pack:center}.htz-bq{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-br{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bs{opacity:1}.htz-bt{transition-property:opacity}.htz-bu{transition-duration:0.16666666666666666s}.htz-bv{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bw{transition-delay:.3s}.htz-bx{-webkit-transition-property:opacity}.htz-by{-moz-transition-property:opacity}.htz-bz{background-color:rgba(0, 0, 0, 0.2)}.htz-ca{height:100%}.htz-cb{inline-inset-start:0rem}.htz-cc{position:absolute}.htz-cd{top:0rem}.htz-ce{-webkit-transform:scaleX(0)}.htz-cf{transform:scaleX(0)}.htz-cg{-webkit-transform-origin:right}.htz-ch{transform-origin:right}.htz-ci{-webkit-animation-direction:alternate}.htz-cj{animation-direction:alternate}.htz-ck{-webkit-animation-iteration-count:infinite}.htz-cl{animation-iteration-count:infinite}.htz-cm{-webkit-animation-duration:1s}.htz-cn{animation-duration:1s}.htz-co{-webkit-animation-delay:0.75s}.htz-cp{animation-delay:0.75s}.htz-cq{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cr{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cs{border-bottom-width:1px}.htz-ct{border-bottom-style:solid}.htz-cu{padding-bottom:calc(1rem - 1px)}.htz-cv{border-top:0px}.htz-cw{padding-top:1rem}"`;
 
 exports[`<ButtonGroup> renders a group in row layout by default 1`] = `
 <div>
@@ -155,28 +246,49 @@ exports[`<ButtonGroup> renders a group in row layout by default 1`] = `
     id={null}
   >
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+      />
     </button>
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+      />
     </button>
     <button
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-bp htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-ct htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br"
       id={null}
       type="button"
     >
-      click
+      <span
+        className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by"
+      >
+        click
+      </span>
+      <span
+        className="htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+      />
     </button>
   </div>
 </div>
 `;
 
-exports[`<ButtonGroup> renders a group in row layout by default 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-direction:row}.htz-c{flex-direction:row}.htz-d{-webkit-box-orient:horizontal}.htz-e{-webkit-box-direction:normal}.htz-f{-webkit-align-items:center}.htz-g{align-items:center}.htz-h{-webkit-appearance:none}.htz-i{-moz-appearance:none}.htz-j{appearance:none}.htz-k{cursor:pointer}.htz-l{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-m{font-weight:bold}.htz-n{font-size:inherit}.htz-o{-webkit-justify-content:center}.htz-p{justify-content:center}.htz-q{transition-property:all}.htz-r{transition-duration:0.16666666666666666s}.htz-s{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-t{text-decoration:none}.htz-u{white-space:nowrap}.htz-v::moz-focus-inner{border:0px}.htz-w::moz-focus-inner{padding:0rem}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{padding-bottom:calc(1rem - 1px)}.htz-ab{border-top-width:1px}.htz-ac{border-top-style:solid}.htz-ae{padding-top:calc(1rem - 1px)}.htz-af{border-right-width:1px}.htz-ag{border-right-style:solid}.htz-ah{padding-right:4rem}.htz-ai{border-left-width:0rem}.htz-aj{border-left-style:solid}.htz-ak{padding-left:4rem}.htz-al{border-top-right-radius:0rem}.htz-am{border-top-left-radius:0rem}.htz-an{border-bottom-right-radius:0rem}.htz-ao{border-bottom-left-radius:0rem}.htz-ap{background-color:#FFF}.htz-aq{border-color:#0B7EB5}.htz-ar{color:#0B7EB5}.htz-as:hover{text-decoration:none}.htz-at:hover{transition-duration:0.16666666666666666s}.htz-au:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-av:hover{background-color:#EBF2F5}.htz-aw:hover{border-color:#006B96}.htz-ax:hover{color:#006B96}.htz-ay:focus{outline:none}.htz-az:focus{text-decoration:none}.htz-ba:focus{transition-duration:0.16666666666666666s}.htz-bb:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bc:focus{background-color:#0B7EB5}.htz-bd:focus{border-color:#0B7EB5}.htz-be:focus{color:#FFF}.htz-bf:active{outline:none}.htz-bg:active{text-decoration:none}.htz-bh:active{transition-duration:0s}.htz-bi:active{background-color:#fff !important}.htz-bj:active{border-color:#0B7EB5}.htz-bk:active{color:#0B7EB5}.htz-bl{-webkit-box-align:center}.htz-bm{-webkit-box-pack:center}.htz-bn{-webkit-transition-property:all}.htz-bo{-moz-transition-property:all}.htz-bp{border-left-width:1px}"`;
+exports[`<ButtonGroup> renders a group in row layout by default 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-direction:row}.htz-c{flex-direction:row}.htz-d{-webkit-box-orient:horizontal}.htz-e{-webkit-box-direction:normal}.htz-f{-webkit-align-items:center}.htz-g{align-items:center}.htz-h{-webkit-appearance:none}.htz-i{-moz-appearance:none}.htz-j{appearance:none}.htz-k{cursor:pointer}.htz-l{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-m{font-weight:bold}.htz-n{font-size:inherit}.htz-o{-webkit-justify-content:center}.htz-p{justify-content:center}.htz-q{position:relative}.htz-r{-webkit-transform:scale(1)}.htz-s{transform:scale(1)}.htz-t{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-u{text-decoration:none}.htz-v{white-space:nowrap}.htz-w::moz-focus-inner{border:0px}.htz-x::moz-focus-inner{padding:0rem}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac{border-top-width:1px}.htz-ae{border-top-style:solid}.htz-af{padding-top:calc(1rem - 1px)}.htz-ag{border-right-width:1px}.htz-ah{border-right-style:solid}.htz-ai{padding-right:4rem}.htz-aj{border-left-width:0rem}.htz-ak{border-left-style:solid}.htz-al{padding-left:4rem}.htz-am{border-top-right-radius:0rem}.htz-an{border-top-left-radius:0rem}.htz-ao{border-bottom-right-radius:0rem}.htz-ap{border-bottom-left-radius:0rem}.htz-aq{background-color:#FFF}.htz-ar{border-color:#0B7EB5}.htz-as{color:#0B7EB5}.htz-at:hover{text-decoration:none}.htz-au:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-av:hover{background-color:#EBF2F5}.htz-aw:hover{border-color:#006B96}.htz-ax:hover{color:#006B96}.htz-ay:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-az:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ba:focus{outline:none}.htz-bb:focus{text-decoration:none}.htz-bc:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bd:focus{background-color:#0B7EB5}.htz-be:focus{border-color:#0B7EB5}.htz-bf:focus{color:#FFF}.htz-bg:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bh:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bi:active{outline:none}.htz-bj:active{text-decoration:none}.htz-bk:active{transition-duration:0s}.htz-bl:active{background-color:#fff !important}.htz-bm:active{border-color:#0B7EB5}.htz-bn:active{color:#0B7EB5}.htz-bo{-webkit-box-align:center}.htz-bp{-webkit-box-pack:center}.htz-bq{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-br{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bs{opacity:1}.htz-bt{transition-property:opacity}.htz-bu{transition-duration:0.16666666666666666s}.htz-bv{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bw{transition-delay:.3s}.htz-bx{-webkit-transition-property:opacity}.htz-by{-moz-transition-property:opacity}.htz-bz{background-color:rgba(0, 0, 0, 0.2)}.htz-ca{height:100%}.htz-cb{inline-inset-start:0rem}.htz-cc{position:absolute}.htz-cd{top:0rem}.htz-ce{-webkit-transform:scaleX(0)}.htz-cf{transform:scaleX(0)}.htz-cg{-webkit-transform-origin:right}.htz-ch{transform-origin:right}.htz-ci{width:100%}.htz-cj{-webkit-animation-direction:alternate}.htz-ck{animation-direction:alternate}.htz-cl{-webkit-animation-iteration-count:infinite}.htz-cm{animation-iteration-count:infinite}.htz-cn{-webkit-animation-duration:1s}.htz-co{animation-duration:1s}.htz-cp{-webkit-animation-delay:0.75s}.htz-cq{animation-delay:0.75s}.htz-cr{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cs{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ct{border-left-width:1px}"`;

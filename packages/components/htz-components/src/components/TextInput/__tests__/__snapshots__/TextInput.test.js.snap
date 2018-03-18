@@ -20,55 +20,69 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
           <button
             aria-checked={false}
             arial-label="italic"
-            className="htz-az htz-ba htz-bb htz-bc htz-bd htz-a htz-be htz-ap htz-bf htz-bg htz-bh htz-bi htz-ar htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-r htz-s htz-bz htz-o htz-p htz-ca htz-cb htz-n htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-ae htz-cm htz-ag htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd"
+            className="htz-az htz-ba htz-bb htz-bc htz-bd htz-a htz-be htz-ap htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-r htz-s htz-ca htz-o htz-p htz-cb htz-cc htz-n htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-ae htz-cm htz-ag htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
             role="switch"
             type="button"
           >
-            <svg
-              className="htz-de htz-df htz-dg"
-              height="1em"
-              viewBox="0 0 256 256"
-              width="1em"
+            <span
+              className="htz-dh htz-di htz-ar htz-as htz-dj htz-dk htz-dl"
             >
-               
-              <path
-                d="M147.7 229.7l-2.2 7H53.6l2.2-7h5c6.6 0 12.2-1.2 16.8-3.6 4.6-2.4 7.7-5.2 9.4-8.3 1.7-3.2 4.1-10.1 7.3-20.8l41.9-138.4c3.3-10.7 5-17.4 5-20 0-7.7-6.9-11.5-20.7-11.5l-5.8-1 2.2-7h85.6l-2.2 7h-4.5c-5.1 0-9.8.9-14 2.7-4.2 1.8-7.1 4.3-8.9 7.5-1.8 3.2-4.7 11.5-8.7 24.9l-40.6 133.3c-3.1 10.2-4.7 16.6-4.7 19.2 0 5.2 2.3 9.1 6.8 11.5 4.5 2.4 9.8 3.6 15.6 3.6l6.4.9z"
-                fill="currentColor"
-              />
-            </svg>
+              <svg
+                className="htz-dm htz-dn htz-do"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                 
+                <path
+                  d="M147.7 229.7l-2.2 7H53.6l2.2-7h5c6.6 0 12.2-1.2 16.8-3.6 4.6-2.4 7.7-5.2 9.4-8.3 1.7-3.2 4.1-10.1 7.3-20.8l41.9-138.4c3.3-10.7 5-17.4 5-20 0-7.7-6.9-11.5-20.7-11.5l-5.8-1 2.2-7h85.6l-2.2 7h-4.5c-5.1 0-9.8.9-14 2.7-4.2 1.8-7.1 4.3-8.9 7.5-1.8 3.2-4.7 11.5-8.7 24.9l-40.6 133.3c-3.1 10.2-4.7 16.6-4.7 19.2 0 5.2 2.3 9.1 6.8 11.5 4.5 2.4 9.8 3.6 15.6 3.6l6.4.9z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <span
+              className="htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-i htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh"
+            />
           </button>
           <button
             aria-checked={false}
             arial-label="bold"
-            className="htz-az htz-ba htz-bb htz-bc htz-bd htz-a htz-be htz-ap htz-bf htz-bg htz-bh htz-bi htz-ar htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-r htz-s htz-bz htz-o htz-p htz-ca htz-cb htz-n htz-cc htz-cd htz-cf htz-dh htz-ch htz-ci htz-cj htz-ck htz-cl htz-ae htz-cm htz-ag htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd"
+            className="htz-az htz-ba htz-bb htz-bc htz-bd htz-a htz-be htz-ap htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-r htz-s htz-ca htz-o htz-p htz-cb htz-cc htz-n htz-cd htz-ce htz-cg htz-ei htz-ci htz-cj htz-ck htz-cl htz-ae htz-cm htz-ag htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
             role="switch"
             type="button"
           >
-            <svg
-              className="htz-de htz-df htz-dg"
-              height="1em"
-              viewBox="0 0 256 256"
-              width="1em"
+            <span
+              className="htz-dh htz-di htz-ar htz-as htz-dj htz-dk htz-dl"
             >
-               
-              <path
-                d="M163.1 122c20.3 3.7 35.4 10.2 45.6 19.6 10.1 9.4 15.2 21.6 15.2 36.7 0 16.9-6.5 30.3-19.4 40-13 9.8-34.5 14.6-64.6 14.6h-108V216c10.8 0 18-1.7 21.6-5.2 3.5-3.4 5.3-10.2 5.3-20.4V68c0-9.9-1.7-16.6-5-20.2-3.3-3.6-10.6-5.4-21.9-5.4V25.3L111 23h11.2c35.6 0 59.9 4.5 72.9 13.5 13 9 19.4 21.2 19.4 36.7 0 11.7-4.3 21.6-12.8 29.7-8.5 8.2-21.4 14.5-38.6 19.1zm-49.6-8.4h10.6c11.3 0 19.7-2.6 25.2-7.9 5.5-5.3 8.3-14.4 8.3-27.5 0-9.7-1.7-17.4-5.2-23.1-3.5-5.6-8.1-9.3-13.8-10.9-5.7-1.6-14.1-2.5-25.2-2.5v71.9zm0 17.9v59.2c0 5.7.6 10.1 1.8 13.1 1.2 3 3.5 5.5 6.9 7.5 3.4 2 8.3 3 14.5 3 9.7 0 17.1-3.4 21.9-10.3 4.9-6.9 7.3-17.2 7.3-30.9 0-11-1.6-19.6-4.8-25.8-3.2-6.2-7.5-10.4-13.1-12.5-5.5-2.2-13.7-3.2-24.6-3.2h-9.9z"
-                fill="currentColor"
-              />
-            </svg>
+              <svg
+                className="htz-dm htz-dn htz-do"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                 
+                <path
+                  d="M163.1 122c20.3 3.7 35.4 10.2 45.6 19.6 10.1 9.4 15.2 21.6 15.2 36.7 0 16.9-6.5 30.3-19.4 40-13 9.8-34.5 14.6-64.6 14.6h-108V216c10.8 0 18-1.7 21.6-5.2 3.5-3.4 5.3-10.2 5.3-20.4V68c0-9.9-1.7-16.6-5-20.2-3.3-3.6-10.6-5.4-21.9-5.4V25.3L111 23h11.2c35.6 0 59.9 4.5 72.9 13.5 13 9 19.4 21.2 19.4 36.7 0 11.7-4.3 21.6-12.8 29.7-8.5 8.2-21.4 14.5-38.6 19.1zm-49.6-8.4h10.6c11.3 0 19.7-2.6 25.2-7.9 5.5-5.3 8.3-14.4 8.3-27.5 0-9.7-1.7-17.4-5.2-23.1-3.5-5.6-8.1-9.3-13.8-10.9-5.7-1.6-14.1-2.5-25.2-2.5v71.9zm0 17.9v59.2c0 5.7.6 10.1 1.8 13.1 1.2 3 3.5 5.5 6.9 7.5 3.4 2 8.3 3 14.5 3 9.7 0 17.1-3.4 21.9-10.3 4.9-6.9 7.3-17.2 7.3-30.9 0-11-1.6-19.6-4.8-25.8-3.2-6.2-7.5-10.4-13.1-12.5-5.5-2.2-13.7-3.2-24.6-3.2h-9.9z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <span
+              className="htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-i htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh"
+            />
           </button>
         </div>
       </div>
       <div
         aria-labelledby="123456789"
         aria-multiline={true}
-        className="htz-di htz-dj htz-dk htz-bf htz-i htz-a htz-dl htz-cn htz-dm"
+        className="htz-ej htz-ek htz-el htz-bf htz-i htz-a htz-em htz-cp htz-en"
         contentEditable={true}
         id="123456789"
         onBlur={[Function]}
@@ -83,14 +97,14 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
       />
     </label>
     <span
-      className="htz-dn htz-do htz-dp htz-dq htz-dr htz-ds"
+      className="htz-eo htz-ep htz-eq htz-er htz-es htz-et"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a contentEditable div 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{-webkit-justify-content:space-between}.htz-al{justify-content:space-between}.htz-am{-webkit-box-pack:justify}.htz-an{margin-left:1rem}.htz-ao{color:#006B96}.htz-ap{font-weight:bold}.htz-aq{transition-property:-webkit-transform,transform}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-flex-grow:1}.htz-au{flex-grow:1}.htz-av{margin-bottom:1rem}.htz-aw{border-bottom-color:transparent}.htz-ax{-webkit-transition-property:-webkit-transform,transform}.htz-ay{-moz-transition-property:transform}.htz-az{-webkit-align-items:center}.htz-ba{align-items:center}.htz-bb{-webkit-appearance:none}.htz-bc{-moz-appearance:none}.htz-bd{appearance:none}.htz-be{display:none}.htz-bf{font-size:inherit}.htz-bg{-webkit-justify-content:center}.htz-bh{justify-content:center}.htz-bi{transition-property:all}.htz-bj{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-bk{text-decoration:none}.htz-bl{white-space:nowrap}.htz-bm::moz-focus-inner{border:0px}.htz-bn::moz-focus-inner{padding:0rem}.htz-bo{position:relative}.htz-bp:after{content:\\"\\"}.htz-bq:after{height:1px}.htz-br:after{position:absolute}.htz-bs:after{width:100%}.htz-bt:after{bottom:0rem}.htz-bu:before{content:\\"\\"}.htz-bv:before{height:1px}.htz-bw:before{position:absolute}.htz-bx:before{width:100%}.htz-by:before{top:0rem}.htz-bz{padding-right:0rem}.htz-ca{padding-left:0rem}.htz-cb{border-radius:0rem}.htz-cc{border-color:transparent}.htz-cd{color:#2D2D2D}.htz-ce{font-style:italic}.htz-cf{height:5rem}.htz-cg{margin-left:0.1rem}.htz-ch{margin-top:calc(1px - 1rem)}.htz-ci{width:5rem}.htz-cj:hover{text-decoration:none}.htz-ck:hover{transition-duration:0.16666666666666666s}.htz-cl:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{border-color:transparent}.htz-cn:focus{outline:none}.htz-co:focus{text-decoration:none}.htz-cp:focus{transition-duration:0.16666666666666666s}.htz-cq:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cr:focus{background-color:#0B7EB5}.htz-cs:focus{border-color:transparent}.htz-ct:focus{color:#FFF}.htz-cu:active{outline:none}.htz-cv:active{text-decoration:none}.htz-cw:active{transition-duration:0s}.htz-cx:active{background-color:#0B7EB5}.htz-cy:active{border-color:transparent}.htz-cz:active{color:#FFF}.htz-da{-webkit-box-align:center}.htz-db{-webkit-box-pack:center}.htz-dc{-webkit-transition-property:all}.htz-dd{-moz-transition-property:all}.htz-de{vertical-align:-0.15em}.htz-df{color:inherit}.htz-dg{fill:#FFF}.htz-dh{margin-left:-1rem}.htz-di{border:none}.htz-dj{background-color:transparent}.htz-dk{overflow:auto}.htz-dl{height:6rem}.htz-dm:focus{cursor:text}.htz-dn{display:block}.htz-do{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-dp{font-size:1.8333333333333333rem}.htz-dq{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-dr{font-size:1.7142857142857142rem}.htz-ds{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a contentEditable div 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{-webkit-justify-content:space-between}.htz-al{justify-content:space-between}.htz-am{-webkit-box-pack:justify}.htz-an{margin-left:1rem}.htz-ao{color:#006B96}.htz-ap{font-weight:bold}.htz-aq{transition-property:-webkit-transform,transform}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-flex-grow:1}.htz-au{flex-grow:1}.htz-av{margin-bottom:1rem}.htz-aw{border-bottom-color:transparent}.htz-ax{-webkit-transition-property:-webkit-transform,transform}.htz-ay{-moz-transition-property:transform}.htz-az{-webkit-align-items:center}.htz-ba{align-items:center}.htz-bb{-webkit-appearance:none}.htz-bc{-moz-appearance:none}.htz-bd{appearance:none}.htz-be{display:none}.htz-bf{font-size:inherit}.htz-bg{-webkit-justify-content:center}.htz-bh{justify-content:center}.htz-bi{position:relative}.htz-bj{-webkit-transform:scale(1)}.htz-bk{transform:scale(1)}.htz-bl{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bm{text-decoration:none}.htz-bn{white-space:nowrap}.htz-bo::moz-focus-inner{border:0px}.htz-bp::moz-focus-inner{padding:0rem}.htz-bq:after{content:\\"\\"}.htz-br:after{height:1px}.htz-bs:after{position:absolute}.htz-bt:after{width:100%}.htz-bu:after{bottom:0rem}.htz-bv:before{content:\\"\\"}.htz-bw:before{height:1px}.htz-bx:before{position:absolute}.htz-by:before{width:100%}.htz-bz:before{top:0rem}.htz-ca{padding-right:0rem}.htz-cb{padding-left:0rem}.htz-cc{border-radius:0rem}.htz-cd{border-color:transparent}.htz-ce{color:#2D2D2D}.htz-cf{font-style:italic}.htz-cg{height:5rem}.htz-ch{margin-left:0.1rem}.htz-ci{margin-top:calc(1px - 1rem)}.htz-cj{width:5rem}.htz-ck:hover{text-decoration:none}.htz-cl:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{border-color:transparent}.htz-cn:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-co:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{outline:none}.htz-cq:focus{text-decoration:none}.htz-cr:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:focus{background-color:#0B7EB5}.htz-ct:focus{border-color:transparent}.htz-cu:focus{color:#FFF}.htz-cv:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cw:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cx:active{outline:none}.htz-cy:active{text-decoration:none}.htz-cz:active{transition-duration:0s}.htz-da:active{background-color:#0B7EB5}.htz-db:active{border-color:transparent}.htz-dc:active{color:#FFF}.htz-dd{-webkit-box-align:center}.htz-de{-webkit-box-pack:center}.htz-df{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dg{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dh{opacity:1}.htz-di{transition-property:opacity}.htz-dj{transition-delay:.3s}.htz-dk{-webkit-transition-property:opacity}.htz-dl{-moz-transition-property:opacity}.htz-dm{vertical-align:-0.15em}.htz-dn{color:inherit}.htz-do{fill:#FFF}.htz-dp{background-color:rgba(0, 0, 0, 0.2)}.htz-dq{height:100%}.htz-dr{inline-inset-start:0rem}.htz-ds{position:absolute}.htz-dt{top:0rem}.htz-du{-webkit-transform:scaleX(0)}.htz-dv{transform:scaleX(0)}.htz-dw{-webkit-transform-origin:right}.htz-dx{transform-origin:right}.htz-dy{-webkit-animation-direction:alternate}.htz-dz{animation-direction:alternate}.htz-ea{-webkit-animation-iteration-count:infinite}.htz-eb{animation-iteration-count:infinite}.htz-ec{-webkit-animation-duration:1s}.htz-ed{animation-duration:1s}.htz-ee{-webkit-animation-delay:0.75s}.htz-ef{animation-delay:0.75s}.htz-eg{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-eh{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ei{margin-left:-1rem}.htz-ej{border:none}.htz-ek{background-color:transparent}.htz-el{overflow:auto}.htz-em{height:6rem}.htz-en:focus{cursor:text}.htz-eo{display:block}.htz-ep{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-eq{font-size:1.8333333333333333rem}.htz-er{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-es{font-size:1.7142857142857142rem}.htz-et{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a contentEditable div with label 1`] = `
 <div>
@@ -114,55 +128,69 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
           <button
             aria-checked={false}
             arial-label="italic"
-            className="htz-az htz-ba htz-bb htz-bc htz-bd htz-a htz-be htz-ap htz-bf htz-bg htz-bh htz-bi htz-ar htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-r htz-s htz-bz htz-o htz-p htz-ca htz-cb htz-n htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-ae htz-cm htz-ag htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd"
+            className="htz-az htz-ba htz-bb htz-bc htz-bd htz-a htz-be htz-ap htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-r htz-s htz-ca htz-o htz-p htz-cb htz-cc htz-n htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-ae htz-cm htz-ag htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
             role="switch"
             type="button"
           >
-            <svg
-              className="htz-de htz-df htz-dg"
-              height="1em"
-              viewBox="0 0 256 256"
-              width="1em"
+            <span
+              className="htz-dh htz-di htz-ar htz-as htz-dj htz-dk htz-dl"
             >
-               
-              <path
-                d="M147.7 229.7l-2.2 7H53.6l2.2-7h5c6.6 0 12.2-1.2 16.8-3.6 4.6-2.4 7.7-5.2 9.4-8.3 1.7-3.2 4.1-10.1 7.3-20.8l41.9-138.4c3.3-10.7 5-17.4 5-20 0-7.7-6.9-11.5-20.7-11.5l-5.8-1 2.2-7h85.6l-2.2 7h-4.5c-5.1 0-9.8.9-14 2.7-4.2 1.8-7.1 4.3-8.9 7.5-1.8 3.2-4.7 11.5-8.7 24.9l-40.6 133.3c-3.1 10.2-4.7 16.6-4.7 19.2 0 5.2 2.3 9.1 6.8 11.5 4.5 2.4 9.8 3.6 15.6 3.6l6.4.9z"
-                fill="currentColor"
-              />
-            </svg>
+              <svg
+                className="htz-dm htz-dn htz-do"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                 
+                <path
+                  d="M147.7 229.7l-2.2 7H53.6l2.2-7h5c6.6 0 12.2-1.2 16.8-3.6 4.6-2.4 7.7-5.2 9.4-8.3 1.7-3.2 4.1-10.1 7.3-20.8l41.9-138.4c3.3-10.7 5-17.4 5-20 0-7.7-6.9-11.5-20.7-11.5l-5.8-1 2.2-7h85.6l-2.2 7h-4.5c-5.1 0-9.8.9-14 2.7-4.2 1.8-7.1 4.3-8.9 7.5-1.8 3.2-4.7 11.5-8.7 24.9l-40.6 133.3c-3.1 10.2-4.7 16.6-4.7 19.2 0 5.2 2.3 9.1 6.8 11.5 4.5 2.4 9.8 3.6 15.6 3.6l6.4.9z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <span
+              className="htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-i htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh"
+            />
           </button>
           <button
             aria-checked={false}
             arial-label="bold"
-            className="htz-az htz-ba htz-bb htz-bc htz-bd htz-a htz-be htz-ap htz-bf htz-bg htz-bh htz-bi htz-ar htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-r htz-s htz-bz htz-o htz-p htz-ca htz-cb htz-n htz-cc htz-cd htz-cf htz-dh htz-ch htz-ci htz-cj htz-ck htz-cl htz-ae htz-cm htz-ag htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd"
+            className="htz-az htz-ba htz-bb htz-bc htz-bd htz-a htz-be htz-ap htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-r htz-s htz-ca htz-o htz-p htz-cb htz-cc htz-n htz-cd htz-ce htz-cg htz-ei htz-ci htz-cj htz-ck htz-cl htz-ae htz-cm htz-ag htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
             role="switch"
             type="button"
           >
-            <svg
-              className="htz-de htz-df htz-dg"
-              height="1em"
-              viewBox="0 0 256 256"
-              width="1em"
+            <span
+              className="htz-dh htz-di htz-ar htz-as htz-dj htz-dk htz-dl"
             >
-               
-              <path
-                d="M163.1 122c20.3 3.7 35.4 10.2 45.6 19.6 10.1 9.4 15.2 21.6 15.2 36.7 0 16.9-6.5 30.3-19.4 40-13 9.8-34.5 14.6-64.6 14.6h-108V216c10.8 0 18-1.7 21.6-5.2 3.5-3.4 5.3-10.2 5.3-20.4V68c0-9.9-1.7-16.6-5-20.2-3.3-3.6-10.6-5.4-21.9-5.4V25.3L111 23h11.2c35.6 0 59.9 4.5 72.9 13.5 13 9 19.4 21.2 19.4 36.7 0 11.7-4.3 21.6-12.8 29.7-8.5 8.2-21.4 14.5-38.6 19.1zm-49.6-8.4h10.6c11.3 0 19.7-2.6 25.2-7.9 5.5-5.3 8.3-14.4 8.3-27.5 0-9.7-1.7-17.4-5.2-23.1-3.5-5.6-8.1-9.3-13.8-10.9-5.7-1.6-14.1-2.5-25.2-2.5v71.9zm0 17.9v59.2c0 5.7.6 10.1 1.8 13.1 1.2 3 3.5 5.5 6.9 7.5 3.4 2 8.3 3 14.5 3 9.7 0 17.1-3.4 21.9-10.3 4.9-6.9 7.3-17.2 7.3-30.9 0-11-1.6-19.6-4.8-25.8-3.2-6.2-7.5-10.4-13.1-12.5-5.5-2.2-13.7-3.2-24.6-3.2h-9.9z"
-                fill="currentColor"
-              />
-            </svg>
+              <svg
+                className="htz-dm htz-dn htz-do"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                 
+                <path
+                  d="M163.1 122c20.3 3.7 35.4 10.2 45.6 19.6 10.1 9.4 15.2 21.6 15.2 36.7 0 16.9-6.5 30.3-19.4 40-13 9.8-34.5 14.6-64.6 14.6h-108V216c10.8 0 18-1.7 21.6-5.2 3.5-3.4 5.3-10.2 5.3-20.4V68c0-9.9-1.7-16.6-5-20.2-3.3-3.6-10.6-5.4-21.9-5.4V25.3L111 23h11.2c35.6 0 59.9 4.5 72.9 13.5 13 9 19.4 21.2 19.4 36.7 0 11.7-4.3 21.6-12.8 29.7-8.5 8.2-21.4 14.5-38.6 19.1zm-49.6-8.4h10.6c11.3 0 19.7-2.6 25.2-7.9 5.5-5.3 8.3-14.4 8.3-27.5 0-9.7-1.7-17.4-5.2-23.1-3.5-5.6-8.1-9.3-13.8-10.9-5.7-1.6-14.1-2.5-25.2-2.5v71.9zm0 17.9v59.2c0 5.7.6 10.1 1.8 13.1 1.2 3 3.5 5.5 6.9 7.5 3.4 2 8.3 3 14.5 3 9.7 0 17.1-3.4 21.9-10.3 4.9-6.9 7.3-17.2 7.3-30.9 0-11-1.6-19.6-4.8-25.8-3.2-6.2-7.5-10.4-13.1-12.5-5.5-2.2-13.7-3.2-24.6-3.2h-9.9z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <span
+              className="htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-i htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh"
+            />
           </button>
         </div>
       </div>
       <div
         aria-labelledby="123456789"
         aria-multiline={true}
-        className="htz-di htz-dj htz-dk htz-bf htz-i htz-a htz-dl htz-cn htz-dm"
+        className="htz-ej htz-ek htz-el htz-bf htz-i htz-a htz-em htz-cp htz-en"
         contentEditable={true}
         id="123456789"
         onBlur={[Function]}
@@ -177,14 +205,14 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
       />
     </label>
     <span
-      className="htz-dn htz-do htz-dp htz-dq htz-dr htz-ds"
+      className="htz-eo htz-ep htz-eq htz-er htz-es htz-et"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a contentEditable div with label 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{-webkit-justify-content:space-between}.htz-al{justify-content:space-between}.htz-am{-webkit-box-pack:justify}.htz-an{margin-left:1rem}.htz-ao{color:#006B96}.htz-ap{font-weight:bold}.htz-aq{transition-property:-webkit-transform,transform}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-flex-grow:1}.htz-au{flex-grow:1}.htz-av{margin-bottom:1rem}.htz-aw{border-bottom-color:transparent}.htz-ax{-webkit-transition-property:-webkit-transform,transform}.htz-ay{-moz-transition-property:transform}.htz-az{-webkit-align-items:center}.htz-ba{align-items:center}.htz-bb{-webkit-appearance:none}.htz-bc{-moz-appearance:none}.htz-bd{appearance:none}.htz-be{display:none}.htz-bf{font-size:inherit}.htz-bg{-webkit-justify-content:center}.htz-bh{justify-content:center}.htz-bi{transition-property:all}.htz-bj{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-bk{text-decoration:none}.htz-bl{white-space:nowrap}.htz-bm::moz-focus-inner{border:0px}.htz-bn::moz-focus-inner{padding:0rem}.htz-bo{position:relative}.htz-bp:after{content:\\"\\"}.htz-bq:after{height:1px}.htz-br:after{position:absolute}.htz-bs:after{width:100%}.htz-bt:after{bottom:0rem}.htz-bu:before{content:\\"\\"}.htz-bv:before{height:1px}.htz-bw:before{position:absolute}.htz-bx:before{width:100%}.htz-by:before{top:0rem}.htz-bz{padding-right:0rem}.htz-ca{padding-left:0rem}.htz-cb{border-radius:0rem}.htz-cc{border-color:transparent}.htz-cd{color:#2D2D2D}.htz-ce{font-style:italic}.htz-cf{height:5rem}.htz-cg{margin-left:0.1rem}.htz-ch{margin-top:calc(1px - 1rem)}.htz-ci{width:5rem}.htz-cj:hover{text-decoration:none}.htz-ck:hover{transition-duration:0.16666666666666666s}.htz-cl:hover{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{border-color:transparent}.htz-cn:focus{outline:none}.htz-co:focus{text-decoration:none}.htz-cp:focus{transition-duration:0.16666666666666666s}.htz-cq:focus{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cr:focus{background-color:#0B7EB5}.htz-cs:focus{border-color:transparent}.htz-ct:focus{color:#FFF}.htz-cu:active{outline:none}.htz-cv:active{text-decoration:none}.htz-cw:active{transition-duration:0s}.htz-cx:active{background-color:#0B7EB5}.htz-cy:active{border-color:transparent}.htz-cz:active{color:#FFF}.htz-da{-webkit-box-align:center}.htz-db{-webkit-box-pack:center}.htz-dc{-webkit-transition-property:all}.htz-dd{-moz-transition-property:all}.htz-de{vertical-align:-0.15em}.htz-df{color:inherit}.htz-dg{fill:#FFF}.htz-dh{margin-left:-1rem}.htz-di{border:none}.htz-dj{background-color:transparent}.htz-dk{overflow:auto}.htz-dl{height:6rem}.htz-dm:focus{cursor:text}.htz-dn{display:block}.htz-do{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-dp{font-size:1.8333333333333333rem}.htz-dq{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-dr{font-size:1.7142857142857142rem}.htz-ds{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a contentEditable div with label 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{-webkit-justify-content:space-between}.htz-al{justify-content:space-between}.htz-am{-webkit-box-pack:justify}.htz-an{margin-left:1rem}.htz-ao{color:#006B96}.htz-ap{font-weight:bold}.htz-aq{transition-property:-webkit-transform,transform}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-flex-grow:1}.htz-au{flex-grow:1}.htz-av{margin-bottom:1rem}.htz-aw{border-bottom-color:transparent}.htz-ax{-webkit-transition-property:-webkit-transform,transform}.htz-ay{-moz-transition-property:transform}.htz-az{-webkit-align-items:center}.htz-ba{align-items:center}.htz-bb{-webkit-appearance:none}.htz-bc{-moz-appearance:none}.htz-bd{appearance:none}.htz-be{display:none}.htz-bf{font-size:inherit}.htz-bg{-webkit-justify-content:center}.htz-bh{justify-content:center}.htz-bi{position:relative}.htz-bj{-webkit-transform:scale(1)}.htz-bk{transform:scale(1)}.htz-bl{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bm{text-decoration:none}.htz-bn{white-space:nowrap}.htz-bo::moz-focus-inner{border:0px}.htz-bp::moz-focus-inner{padding:0rem}.htz-bq:after{content:\\"\\"}.htz-br:after{height:1px}.htz-bs:after{position:absolute}.htz-bt:after{width:100%}.htz-bu:after{bottom:0rem}.htz-bv:before{content:\\"\\"}.htz-bw:before{height:1px}.htz-bx:before{position:absolute}.htz-by:before{width:100%}.htz-bz:before{top:0rem}.htz-ca{padding-right:0rem}.htz-cb{padding-left:0rem}.htz-cc{border-radius:0rem}.htz-cd{border-color:transparent}.htz-ce{color:#2D2D2D}.htz-cf{font-style:italic}.htz-cg{height:5rem}.htz-ch{margin-left:0.1rem}.htz-ci{margin-top:calc(1px - 1rem)}.htz-cj{width:5rem}.htz-ck:hover{text-decoration:none}.htz-cl:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{border-color:transparent}.htz-cn:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-co:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{outline:none}.htz-cq:focus{text-decoration:none}.htz-cr:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:focus{background-color:#0B7EB5}.htz-ct:focus{border-color:transparent}.htz-cu:focus{color:#FFF}.htz-cv:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cw:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cx:active{outline:none}.htz-cy:active{text-decoration:none}.htz-cz:active{transition-duration:0s}.htz-da:active{background-color:#0B7EB5}.htz-db:active{border-color:transparent}.htz-dc:active{color:#FFF}.htz-dd{-webkit-box-align:center}.htz-de{-webkit-box-pack:center}.htz-df{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dg{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dh{opacity:1}.htz-di{transition-property:opacity}.htz-dj{transition-delay:.3s}.htz-dk{-webkit-transition-property:opacity}.htz-dl{-moz-transition-property:opacity}.htz-dm{vertical-align:-0.15em}.htz-dn{color:inherit}.htz-do{fill:#FFF}.htz-dp{background-color:rgba(0, 0, 0, 0.2)}.htz-dq{height:100%}.htz-dr{inline-inset-start:0rem}.htz-ds{position:absolute}.htz-dt{top:0rem}.htz-du{-webkit-transform:scaleX(0)}.htz-dv{transform:scaleX(0)}.htz-dw{-webkit-transform-origin:right}.htz-dx{transform-origin:right}.htz-dy{-webkit-animation-direction:alternate}.htz-dz{animation-direction:alternate}.htz-ea{-webkit-animation-iteration-count:infinite}.htz-eb{animation-iteration-count:infinite}.htz-ec{-webkit-animation-duration:1s}.htz-ed{animation-duration:1s}.htz-ee{-webkit-animation-delay:0.75s}.htz-ef{animation-delay:0.75s}.htz-eg{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-eh{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ei{margin-left:-1rem}.htz-ej{border:none}.htz-ek{background-color:transparent}.htz-el{overflow:auto}.htz-em{height:6rem}.htz-en:focus{cursor:text}.htz-eo{display:block}.htz-ep{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-eq{font-size:1.8333333333333333rem}.htz-er{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-es{font-size:1.7142857142857142rem}.htz-et{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a disabled input 1`] = `
 <div>
