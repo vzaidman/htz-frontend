@@ -1,7 +1,10 @@
+/* global fetch, Headers */
 import React, { Fragment, } from 'react';
-import { createComponent, } from 'react-fela';
+import { createComponent, withTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
+
+import ActionButtons from '../ActionButtons/ActionButtons';
 import ArticleBody from '../ArticleBody/ArticleBody';
 import ArticleHeader from '../ArticleHeader/ArticleHeader';
 import HeadlineElement from '../HeadlineElement/HeadlineElement';
@@ -54,6 +57,10 @@ const propTypes = {
    * Article's main headline (comes from polopoly).
    */
   title: PropTypes.string.isRequired,
+  /**
+   * The app's theme (get imported automatically with the `withTheme` method).
+   */
+  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 const defaultProps = {
@@ -73,7 +80,7 @@ const breadCrumbsStyle = () => ({
 const BreadCrumbs = createComponent(breadCrumbsStyle);
 
 const headerStyle = ({ theme, }) => ({
-  marginBottom: '3rem',
+  marginBottom: '2rem',
   extend: [
     ...[
       parseComponentProp(
@@ -94,6 +101,14 @@ const headerStyle = ({ theme, }) => ({
   ],
 });
 const Header = createComponent(headerStyle, ArticleHeader, props =>
+  Object.keys(props)
+);
+
+const sharingToolsStyle = ({ theme, }) => ({
+  ...theme.mq({ until: 'm', }, { display: 'none', }),
+  ...headerStyle({ theme, }),
+});
+const SharingTools = createComponent(sharingToolsStyle, ActionButtons, props =>
   Object.keys(props)
 );
 
@@ -129,29 +144,53 @@ const Body = createComponent(bodyStyle, ArticleBody, props =>
   Object.keys(props)
 );
 
-const sharingToolsStyle = () => ({
-  marginBottom: '2rem',
-});
-const SharingTools = createComponent(sharingToolsStyle);
-
 class Article extends React.Component {
   state = {
+    articleUrl: 'https://www.haaretz.co.il/magazine/tozeret/1.5912533', // TODO move all of it to store
+    facebookCount: null,
     headlineElement: null,
   };
 
   componentDidMount() {
     const { commentsElementId, contentId, setCommentsData, } = this.props;
     setCommentsData && setCommentsData(contentId, commentsElementId);
+    this.getFacebookCount(this.state.articleUrl);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.headlineElement !== nextState.headlineElement;
+    return (
+      this.state.headlineElement !== nextState.headlineElement ||
+      this.state.facebookCount !== nextState.facebookCount
+    );
   }
 
   setHeadlineElement = elementObj =>
     this.setState({
       headlineElement: elementObj,
     });
+
+  getFacebookCount = () => {
+    const accessToken =
+      'EAABkq33GsqwBAMhelXM0V7xJQmgJ1sf0nvxZAyZBZAtStCyZC6Is1m1OgnsL1Jxsw6BJx0zaZA1TOZBrZAYVMiNNEqLwb4ZARsYUZCEKZAG6r4Wnuminzgi41WQUZCCKvpdhjuHKgh1s3R3fWKjZA4rXvYEoHxgWRSzvFrRMkALfoQUAVwZDZD';
+    const url = `https://graph.facebook.com/?fields=share&access_token=${accessToken}&id=${
+      this.state.articleUrl
+    }&format=json`;
+
+    return fetch(url, {
+      method: 'get',
+      headers: new Headers({
+        'content-type': 'application/json',
+      }),
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw Error(response.statusText);
+      })
+      .then(data => this.setState({ facebookCount: data.share.share_count, }))
+      .catch(error => console.log('error: ', error));
+  };
 
   render() {
     const {
@@ -162,6 +201,7 @@ class Article extends React.Component {
       modDate, // eslint-disable-line no-unused-vars
       pubDate,
       subtitle,
+      theme,
       title,
     } = this.props;
     return (
@@ -174,7 +214,46 @@ class Article extends React.Component {
           subtitle={subtitle}
           title={title}
         />
-        <SharingTools>SharingTools Here</SharingTools>
+        <SharingTools
+          articleTitle={title}
+          articleUrl={this.state.articleUrl}
+          buttons={{
+            start: [
+              {
+                name: 'facebookLogo',
+                buttonText: this.state.facebookCount,
+                iconStyles: {
+                  color: theme.color('facebook'),
+                },
+              },
+              {
+                name: 'whatsapp',
+                iconStyles: {
+                  color: theme.color('whatsapp'),
+                },
+              },
+              'mailAlert',
+            ],
+            end: [
+              {
+                name: 'comments',
+                buttonText: 78,
+              },
+              'print',
+              {
+                name: 'zen',
+                buttonText: 'קריאת זן',
+              },
+            ],
+          }}
+          globalButtonsStyles={{
+            minWidth: '10rem',
+          }}
+          globalIconsStyles={{
+            color: theme.color('primary'),
+          }}
+          size={2.5}
+        />
         {this.state.headlineElement && (
           <HeadlineElement elementObj={this.state.headlineElement} />
         )}
@@ -187,4 +266,4 @@ class Article extends React.Component {
 Article.propTypes = propTypes;
 Article.defaultProps = defaultProps;
 
-export default Article;
+export default withTheme(Article);
