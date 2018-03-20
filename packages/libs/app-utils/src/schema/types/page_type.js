@@ -1,9 +1,15 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList, GraphQLNonNull, } from 'graphql';
+import {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLID,
+  GraphQLList,
+  GraphQLNonNull,
+} from 'graphql';
+import GraphQLJSON from 'graphql-type-json';
 
 import TaxonomyItem from './taxonomy_item_type';
 import seoData from './seo_data_type';
-import SlotType from './slot_type';
 import DfpConfigType from './dfp_config_type';
 
 const Page = new GraphQLObjectType({
@@ -31,12 +37,8 @@ const Page = new GraphQLObjectType({
       type: seoData,
     },
     slots: {
-      type: new GraphQLList(SlotType),
-      resolve: parentValue =>
-        Object.keys(parentValue.slots).map(name => ({
-          name,
-          content: parentValue.slots[name] || [],
-        })),
+      type: GraphQLJSON,
+      resolve: parentValue => parentValue.slots,
     },
     dfpConfig: {
       type: DfpConfigType,

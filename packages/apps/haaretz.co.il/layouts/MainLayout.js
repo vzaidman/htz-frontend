@@ -10,9 +10,10 @@ import htzTheme from '@haaretz/htz-theme';
 // import dynamic from 'next/dynamic';
 import {
   UserInjector,
-  DfpInjector,
+  DfpInjector, // eslint-disable-line no-unused-vars
   LoginExample,
   RegisterExample,
+  StandardArticlePageLayout,
 } from '@haaretz/htz-components';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import TopNav from '../components/TopNav/TopNav';
@@ -36,9 +37,7 @@ const PageData = gql`
         obTitle
       }
       ...BreadcrumbsPage
-      slots {
-        ...SlotContent
-      }
+      slots
       dfpConfig {
         adSlotConfig
         adManagerConfig {
@@ -56,7 +55,6 @@ const PageData = gql`
     }
   }
   ${Breadcrumbs.fragments.page}
-  ${Slot.fragments.content}
 `;
 
 export class MainLayout extends React.Component {
@@ -124,7 +122,7 @@ export class MainLayout extends React.Component {
         <UserInjector />
         {LoginExample}
         {RegisterExample}
-        <DfpInjector />
+        {/* <DfpInjector /> */}
         <StyleProvider renderer={styleRenderer} theme={htzTheme}>
           <div>
             {this.renderHead()}
@@ -135,7 +133,10 @@ export class MainLayout extends React.Component {
                 : data.page ? data.page.contentName : ''}
             </h1>
             {data.page ? <Breadcrumbs page={data.page} /> : null}
-            {this.renderSlots()}
+            <StandardArticlePageLayout
+              slots={this.props.data.page.slots}
+              seoData={this.props.data.page.seoData}
+            />
           </div>
         </StyleProvider>
       </Fragment>

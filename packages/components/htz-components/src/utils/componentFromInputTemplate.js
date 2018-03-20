@@ -1,6 +1,7 @@
 import React from 'react';
-// eslint-disable-next-line import/no-named-as-default
+
 import Article from '../components/Article/Article';
+import CommentsWithApollo from '../components/CommentsSection/CommentsWithApollo';
 import Embed from '../components/Embed/Embed';
 import HtmlElement from '../components/Interactive/HtmlElement';
 import Image from '../components/Image/Image';
@@ -10,6 +11,7 @@ import Paragraph from '../components/Paragraph/Paragraph';
 import Quote from '../components/Quote/Quote';
 import RelatedArticles from '../components/RelatedArticles/RelatedArticles';
 import SeriesArticles from '../components/RelatedArticles/SeriesArticles';
+import Tags from '../components/Tags/Tags';
 import Video from '../components/Video/Video';
 
 const inputTemplateToComponent = new Map([
@@ -22,6 +24,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.htz.StandardArticle', Article, ],
   [ 'com.polobase.OutbrainElement', () => <p>OutbrainElement</p>, ],
   [ 'com.tm.CommentsElement', () => <p>CommentsElement</p>, ],
+  [ 'com.tm.ArticleCommentsElement', CommentsWithApollo, ],
 
   /* FooterSlot components */
   [ 'com.tm.FooterElement', () => <p>FooterElement</p>, ],
@@ -37,6 +40,7 @@ const inputTemplateToComponent = new Map([
   [ 'linksBlock', LinksBlock, ],
   [ 'relatedArticles', RelatedArticles, ],
   [ 'relatedArticleSeries', SeriesArticles, ],
+  [ 'tagsElement', Tags, ],
 
   /* Misc components */
   [ 'com.tm.Image', Image, ],

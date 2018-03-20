@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect, } from 'react-fela';
 import dynamic from 'next/dynamic';
-import gql from 'graphql-tag';
 import { AdSlot, } from '@haaretz/htz-components';
 
 import Comments from '../Comments/Comments';
@@ -35,7 +34,7 @@ const propTypes = {
     link: PropTypes.string,
   }).isRequired,
 };
-
+/*
 const fragments = {
   content: gql`
     fragment SlotContent on Slot {
@@ -49,7 +48,7 @@ const fragments = {
     }
   `,
 };
-
+*/
 const rules = {
   container: props => ({
     border: '1px solid #bbb',
@@ -66,12 +65,14 @@ export function Slot({ name, content, styles, pageContentId, }) {
       case 'com.htz.StandardArticle':
         jsx = <StandardArticle {...element} {...element.properties} />;
         break;
-        case 'com.polobase.DfpBannerElement':
-          jsx = <AdSlot {...element.properties} />;
-          break;
-        case 'com.tm.CommentsElement':
-          jsx = <Comments contentId={element.contentId} articleId={pageContentId} />;
-          break;
+      case 'com.polobase.DfpBannerElement':
+        jsx = <AdSlot {...element.properties} />;
+        break;
+      case 'com.tm.CommentsElement':
+        jsx = (
+          <Comments contentId={element.contentId} articleId={pageContentId} />
+        );
+        break;
       default:
         jsx = (
           <dl>
@@ -114,6 +115,6 @@ export function Slot({ name, content, styles, pageContentId, }) {
 Slot.propTypes = propTypes;
 
 const StyledSlot = connect(rules)(Slot);
-StyledSlot.fragments = fragments;
+// StyledSlot.fragments = fragments;
 
 export default StyledSlot;

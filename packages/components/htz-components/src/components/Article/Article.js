@@ -7,19 +7,59 @@ import ArticleHeader from '../ArticleHeader/ArticleHeader';
 import HeadlineElement from '../HeadlineElement/HeadlineElement';
 
 const propTypes = {
+  /**
+   * Type of the article (comes from polopoly).
+   */
   articleType: PropTypes.string.isRequired,
+  /**
+   * Authors list (comes from polopoly).
+   */
   authors: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /**
+   * Article's main content (comes from polopoly).
+   */
   body: PropTypes.arrayOf(
     PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
   ).isRequired,
+  /**
+   * The id of this article's CommentsElement (comes from polopoly).
+   */
+  commentsElementId: PropTypes.string,
+  /**
+   * This article id (comes from polopoly).
+   */
+  contentId: PropTypes.string,
+  /**
+   * A callback that takes this article's id and this article commentsElement's id,
+   * and loads the [comments section](./#commentswithapollo)
+   */
+  setCommentsData: PropTypes.func,
+  /**
+   * Article's kicker (comes from polopoly).
+   */
   exclusive: PropTypes.string,
+  /**
+   * Article's modification date (comes from polopoly).
+   */
   modDate: PropTypes.number,
+  /**
+   * Article's publication date (comes from polopoly).
+   */
   pubDate: PropTypes.number.isRequired,
+  /**
+   * Article's secondary headline (comes from polopoly).
+   */
   subtitle: PropTypes.string.isRequired,
+  /**
+   * Article's main headline (comes from polopoly).
+   */
   title: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
+  commentsElementId: null,
+  contentId: null,
+  setCommentsData: null,
   exclusive: null,
   modDate: null,
 };
@@ -130,6 +170,11 @@ class Article extends React.Component {
   state = {
     headlineElement: null,
   };
+
+  componentDidMount() {
+    const { commentsElementId, contentId, setCommentsData, } = this.props;
+    setCommentsData && setCommentsData(contentId, commentsElementId);
+  }
 
   shouldComponentUpdate(nextProps, nextState) {
     return this.state.headlineElement !== nextState.headlineElement;
