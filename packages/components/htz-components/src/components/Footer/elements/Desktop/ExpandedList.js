@@ -23,8 +23,6 @@ const StyledExpandedLists = createComponent(expandedListStyle);
 
 const listUlStyle = ({ theme, }) => ({
   marginInlineEnd: '8rem',
-  paddingTop: '3rem',
-  paddingBottom: '3rem',
 });
 
 const StyledSection = createComponent(listUlStyle, 'section');
@@ -81,12 +79,7 @@ function ExpandedList({
       miscStyles={{
         ...extendedListContainerStyle,
         ...{ display: showMe ? 'flex' : 'none', },
-        ...borderBottom(
-          borderWidth,
-          lines,
-          borderStyle,
-          color('footer', 'border')
-        ),
+        ...borderBottom(borderWidth, 0, borderStyle, color('footer', 'border')),
       }}
       attrs={{ ...(showMe ? { focus: 'true', } : {}), }}
     >
