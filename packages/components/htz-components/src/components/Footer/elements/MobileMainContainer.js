@@ -27,26 +27,36 @@ const mobileMainListStyle = ({ theme, }) => ({
   justifyContent: 'space-between',
   flexDirection: 'row',
   marginBottom: '5rem',
+  maxWidth: '42rem',
+  marginInlineStart: 'auto',
+  marginInlineEnd: 'auto',
 });
-const StyledMobileMainList = createComponent(mobileMainListStyle, 'div');
+const StyledMobileMainList = createComponent(mobileMainListStyle, 'section');
 
 const linkBoxStyle = ({ theme, }) => ({
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
+  height: '18rem',
+  flexWrap: 'wrap',
+  width: '100%',
+  justifyContent: 'space-between',
+  alignContent: 'space-between',
   alignItems: 'space-around',
 });
 const StyledLinkBox = createComponent(linkBoxStyle, 'ul');
 
 const linkStyle = ({ theme, }) => ({
   fontWeight: 'bold',
-  marginTop: '1rem',
-  marginBottom: '1rem',
-  extend: [ theme.type(-1), ],
+  extend: [ theme.type(0), ],
 });
 
 const StyledLink = createComponent(linkStyle, Link, [ 'content', 'href', ]);
 
+const liStyle = ({ theme, }) => ({
+  marginTop: '1rem',
+  marginBottom: '1rem',
+});
+const StyledLi = createComponent(liStyle, 'li');
 const textStyle = ({ theme, }) => ({
   extend: [ theme.type(-3), ],
 });
@@ -66,26 +76,23 @@ const propTypes = {
 const MobileView = ({
   theme: {
     color,
-    footerMobileListsI18n: { ButtonName, Copyright, ListOne, ListTwo, },
+    footerMobileListsI18n: { ButtonName, Copyright, MobileList, },
   },
 }) => (
   <MobileBody>
     <StyledMobileMainList>
       <StyledLinkBox>
-        {ListOne.map(link => (
-          <StyledLink key={link.text} content={link.text} href={link.link} />
-        ))}
-      </StyledLinkBox>
-      <StyledLinkBox>
-        {ListTwo.map(link => (
-          <StyledLink key={link.text} content={link.text} href={link.link} />
+        {MobileList.map(link => (
+          <StyledLi key={link.text}>
+            <StyledLink key={link.text} content={link.text} href={link.link} />
+          </StyledLi>
         ))}
       </StyledLinkBox>
     </StyledMobileMainList>
     <Button
       variant="secondary"
       boxModel={{ hp: 4.5, vp: 1, }}
-      // Link not in console(smart phone mode). However, Its working on smart phone.
+      // Link not work correctly in inspect (browser's smart phone mode). However, Its working on smart phone.
       href="https://www.haaretz.co.il/st/inter/shivuk-digital/hebrew/mtm/haaretzapp.html"
     >
       {ButtonName.text}

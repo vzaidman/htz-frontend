@@ -86,7 +86,7 @@ const IconsStyle = ({ theme, }) => ({
     {
       display: 'block',
       textAlign: 'center',
-      marginInlineStart: '-3.5rem',
+      marginInlineStart: '-3rem',
       marginBottom: '3rem',
     }
   ),
@@ -94,12 +94,26 @@ const IconsStyle = ({ theme, }) => ({
 const StyledIcons = createComponent(IconsStyle);
 
 const IconMiscStyle = {
-  marginInlineStart: '3.5rem',
+  marginInlineStart: [
+    { from: 's', value: '3rem', },
+    { until: 's', value: '4rem', },
+  ],
   marginTop: [ { until: 's', value: '1.5rem', }, ],
+  fontSize: [ { until: 's', value: '3.5rem', }, ],
 };
+
+const GoogleIconMiscStyle = {
+  marginInlineStart: [
+    { from: 's', value: '3rem', },
+    { until: 's', value: '4rem', },
+  ],
+  marginTop: [ { until: 's', value: '2rem', }, ],
+  fontSize: [ { until: 's', value: '4rem', }, ],
+};
+
 const MobileIconStyle = {
   display: [ { until: 's', value: 'none', }, ],
-  marginInlineStart: '3.5rem',
+  marginInlineStart: '3rem',
 };
 
 const headLinkStyle = ({ theme, isLast, }) => ({
@@ -131,7 +145,7 @@ const headWrapperLinkStyle = ({ theme, }) => ({
   flexWrap: 'no-wrap',
   justifyContent: 'space-between',
   alignItems: 'center',
-  marginTop: '1rem',
+  marginTop: '2rem',
   marginBottom: '5rem',
   extend: [
     {
@@ -166,13 +180,13 @@ const StyledDesktopText = createComponent(optionalExtendedWrapper);
 
 // todo: ask if there is better fix for logo when svg shape is not square
 const LogoMiscStyle = {
-  marginBottom: '-5rem',
-  marginTop: '-5.5rem',
-  marginInlineStart: '-0.5rem',
+  marginBottom: '-1rem',
+  // marginTop: '0.5rem',
+  // marginInlineStart: '-0.5rem',
   paddingTop: [
     {
       until: 's',
-      value: '4rem',
+      value: '1.5rem',
     },
   ],
 };
@@ -243,7 +257,7 @@ export class Footer extends React.Component {
         >
           <StyledDesktopHead>
             <StyledLogo>
-              <IconHaaretzLogo size={17.7} miscStyles={LogoMiscStyle} />
+              <IconHaaretzLogo size={6} miscStyles={LogoMiscStyle} />
             </StyledLogo>
             <StyledIcons>
               <Link
@@ -268,7 +282,9 @@ export class Footer extends React.Component {
                 href="https://itunes.apple.com/us/app/id521559643"
               />
               <Link
-                content={<IconGPlus size={3} miscStyles={IconMiscStyle} />}
+                content={
+                  <IconGPlus size={3} miscStyles={GoogleIconMiscStyle} />
+                }
                 href="https://plus.google.com/+haaretzcoil"
               />
               <Link

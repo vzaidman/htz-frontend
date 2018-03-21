@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
@@ -17,6 +17,7 @@ const expandedListStyle = ({ theme, }) => ({
   justifyContent: 'space-between',
   flexWrap: 'wrap',
   alignItems: 'baseline',
+  tabindex: '-1',
 });
 const StyledExpandedLists = createComponent(expandedListStyle);
 
@@ -26,13 +27,13 @@ const listUlStyle = ({ theme, }) => ({
   paddingBottom: '3rem',
 });
 
-const StyledLinkUl = createComponent(listUlStyle, 'ul');
+const StyledSection = createComponent(listUlStyle, 'section');
 
 const titleLiStyle = ({ theme, }) => ({
   fontWeight: 'bold',
 });
 
-const StyledTitleLi = createComponent(titleLiStyle, 'li');
+const StyledUlTitle = createComponent(titleLiStyle, 'h4');
 
 const listLinkStyle = ({ theme, isLast, isBold = false, }) => ({
   ...(isBold ? { fontWeight: 'bold', } : {}),
@@ -49,7 +50,7 @@ const toolboxListStyle = () => ({
   minWidth: '20rem',
 });
 
-const StyledToolboxList = createComponent(toolboxListStyle, StyledLinkUl);
+const StyledToolboxList = createComponent(toolboxListStyle, StyledSection);
 
 ExpandedList.propTypes = {
   /** Footer's array of columns data */
@@ -87,36 +88,35 @@ function ExpandedList({
           color('footer', 'border')
         ),
       }}
+      attrs={{ ...(showMe ? { focus: 'true', } : {}), }}
     >
       <StyledExpandedLists>
         {columnsArr.map((lists, colIdx) => (
           // eslint-disable-next-line react/no-array-index-key
-          <StyledLinkUl key={colIdx}>
+          <StyledSection key={colIdx}>
             {lists.map((innerList, listIdx) => (
-              <div key={`${innerList.title}`}>
-                <StyledTitleLi>{innerList.title}</StyledTitleLi>
-                {innerList.items.map((link, linkIdx) => (
-                  <li key={`${link.text}${link.href}`}>
-                    <StyledListLink
-                      content={link.text}
-                      href={link.href}
-                      {...(showMe &&
-                      (colIdx === 0 && listIdx === 0 && linkIdx === 0)
-                        ? { focus: true, }
-                        : {})}
-                    />
-                  </li>
-                ))}
-              </div>
+              // eslint-disable-next-line react/no-array-index-key
+              <Fragment key={listIdx}>
+                <StyledUlTitle>{innerList.title}</StyledUlTitle>
+                <ul>
+                  {innerList.items.map((link, linkIdx) => (
+                    <li key={`${link.text}${link.href}`}>
+                      <StyledListLink content={link.text} href={link.href} />
+                    </li>
+                  ))}
+                </ul>
+              </Fragment>
             ))}
-          </StyledLinkUl>
+          </StyledSection>
         ))}
       </StyledExpandedLists>
       <StyledToolboxList>
         {toolbox.map(link => (
-          <li key={`${link.text}${link.href}`}>
-            <StyledListLink content={link.text} href={link.href} isBold />
-          </li>
+          <ul key={link.text}>
+            <li key={`${link.text}${link.href}`}>
+              <StyledListLink content={link.text} href={link.href} isBold />
+            </li>
+          </ul>
         ))}
       </StyledToolboxList>
     </LayoutExtendedFooterContainer>

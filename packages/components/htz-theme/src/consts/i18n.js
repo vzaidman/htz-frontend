@@ -45,7 +45,8 @@ export const commentFormI18n = Object.freeze({
   }),
   notes: Object.freeze({
     nameNoteTxt: 'הזינו שם שיוצג כמחבר התגובה',
-    commentNoteTxt: 'בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ',
+    commentNoteTxt:
+      'בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ',
   }),
   errorNotes: Object.freeze({
     nameErrorNoteTxt: 'חובה להזין שם',
@@ -70,9 +71,11 @@ export const commentSentI18n = Object.freeze({
   texts: Object.freeze({
     commentRecievedBoldText: 'תגובתך נקלטה בהצלחה, ',
     commentRecievedText: 'ותפורסם על פי מדיניות המערכת.',
-    commentRecievedTextSecondRow: 'באפשרותך לקבל התראה בדוא"ל כאשר תגובתך תאושר ותפורסם',
+    commentRecievedTextSecondRow:
+      'באפשרותך לקבל התראה בדוא"ל כאשר תגובתך תאושר ותפורסם',
     commentRecievedBoldTextThankYouPage: 'תודה!',
-    commentRecievedTextThankYouPage: 'תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת',
+    commentRecievedTextThankYouPage:
+      'תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת',
   }),
 });
 export const commentsSectionI18n = Object.freeze({
@@ -91,7 +94,7 @@ export const commentsSectionI18n = Object.freeze({
 });
 
 export const footerMobileListsI18n = Object.freeze({
-  ListOne: [
+  MobileList: [
     Object.freeze({
       text: 'רכשו מנוי',
       link: 'https://www.haaretz.co.il/promotions-page',
@@ -104,15 +107,14 @@ export const footerMobileListsI18n = Object.freeze({
       text: 'תנאי שימוש',
       link: 'https://www.haaretz.co.il/misc/terms-of-use',
     }),
-  ],
-  ListTwo: [
     Object.freeze({
       text: 'צרו קשר',
       link: 'https://www.haaretz.co.il/misc/contact-us',
     }),
     Object.freeze({
       text: 'פרסמו באתר',
-      link: 'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
+      link:
+        'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
     }),
     Object.freeze({
       text: 'שירות למנויים',
@@ -133,7 +135,8 @@ export const footerDesktopI18n = Object.freeze({
     showMore: 'הצג עוד',
   }),
   Copyright: Object.freeze({
-    firstRow: 'חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל',
+    firstRow:
+      'חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל',
     secondRow: '© כל הזכויות שמורות להוצאת עיתון הארץ בע"מ',
   }),
 });
