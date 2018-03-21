@@ -66,38 +66,6 @@ const defaultProps = {
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
-const wrapperStyle = () => ({
-  display: 'flex',
-});
-const ArticleWrapper = createComponent(wrapperStyle, 'article');
-
-const contentStyle = ({ theme, }) => ({
-  ...parseComponentProp(
-    'width',
-    theme.articleStyle.article.width,
-    theme.mq,
-    mediaQueryCallback
-  ),
-});
-const ArticleContent = createComponent(contentStyle);
-
-const asideStyle = ({ theme, }) => ({
-  ...parseComponentProp(
-    'width',
-    theme.articleStyle.aside.width,
-    theme.mq,
-    mediaQueryCallback
-  ),
-  ...parseComponentProp(
-    'display',
-    theme.articleStyle.aside.display,
-    theme.mq,
-    mediaQueryCallback
-  ),
-  backgroundColor: theme.color('primary', '-6'),
-});
-const ArticleAside = createComponent(asideStyle, 'aside');
-
 const breadCrumbsStyle = () => ({
   marginTop: '2rem',
   marginBottom: '3rem',
@@ -198,24 +166,19 @@ class Article extends React.Component {
     } = this.props;
     return (
       <Fragment>
-        <ArticleWrapper>
-          <ArticleAside />
-          <ArticleContent>
-            <BreadCrumbs>BreadCrumbs Here</BreadCrumbs>
-            <Header
-              author={authors[0]}
-              kicker={exclusive}
-              publishDateTime={pubDate}
-              subtitle={subtitle}
-              title={title}
-            />
-            <SharingTools>SharingTools Here</SharingTools>
-            {this.state.headlineElement && (
-              <HeadlineElement elementObj={this.state.headlineElement} />
-            )}
-            <Body body={body} setHeadlineElement={this.setHeadlineElement} />
-          </ArticleContent>
-        </ArticleWrapper>
+        <BreadCrumbs>BreadCrumbs Here</BreadCrumbs>
+        <Header
+          author={authors[0]}
+          kicker={exclusive}
+          publishDateTime={pubDate}
+          subtitle={subtitle}
+          title={title}
+        />
+        <SharingTools>SharingTools Here</SharingTools>
+        {this.state.headlineElement && (
+          <HeadlineElement elementObj={this.state.headlineElement} />
+        )}
+        <Body body={body} setHeadlineElement={this.setHeadlineElement} />
       </Fragment>
     );
   }

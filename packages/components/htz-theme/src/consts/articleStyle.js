@@ -3,19 +3,17 @@ import type from '../methods/typesetter';
 import { getDuration, getTimingFunction, } from '../methods/animation';
 
 const article = Object.freeze({
-  width: [
-    { until: 'm', value: '100%', },
-    { from: 'l', until: 'xl', value: `${520 / 6}rem`, },
-    { from: 'xl', value: '100rem', },
-  ],
-});
-
-const aside = Object.freeze({
-  display: [ { until: 'l', value: 'none', }, { from: 'l', value: 'block', }, ],
-  width: [
+  marginStart: [
+    { until: 'l', value: '0', },
     { from: 'l', until: 'xl', value: '27rem', },
     { from: 'xl', value: '30rem', },
   ],
+  marginEnd: [
+    { until: 'l', value: '0', },
+    { from: 'l', until: 'xl', value: '57rem', },
+    { from: 'xl', value: '51rem', },
+  ],
+  aside: [ { until: 'l', value: 'none', }, { from: 'l', value: 'block', }, ],
 });
 
 const paragraphLink = Object.freeze({
@@ -127,7 +125,6 @@ const header = Object.freeze({
 
 const articleStyle = Object.freeze({
   article,
-  aside,
   header,
   body,
   paragraphStyles,

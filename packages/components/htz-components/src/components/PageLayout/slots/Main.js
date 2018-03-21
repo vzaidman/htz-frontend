@@ -19,66 +19,101 @@ const mainWrapper = ({ theme, }) => ({
   backgroundColor: theme.color('neutral', '-10'),
   paddingBottom: '8rem',
   ...borderBottom('2px', 8, 'solid', theme.color('primary')),
-  ...parseComponentProp(
-    'paddingLeft',
-    [
-      { until: 'l', value: 'unset', },
-      { from: 'l', value: 'calc(300px + 4rem + 4rem)', },
+  ':before': {
+    backgroundColor: theme.color('primary', '-6'),
+    content: '""',
+    height: '100%',
+    position: 'absolute',
+    top: '0',
+    right: '0',
+    zIndex: '0',
+    extend: [
+      ...[
+        parseComponentProp(
+          'width',
+          theme.articleStyle.article.marginStart,
+          theme.mq,
+          mediaQueryCallback
+        ),
+      ],
     ],
-    theme.mq,
-    mediaQueryCallback
-  ),
+  },
 });
-const Wrapper = createComponent(mainWrapper, 'main');
+const ArticleContainer = createComponent(mainWrapper, 'article');
 
-const leftSlotWrapper = ({ theme, }) => ({
+const sectionStyle = ({ theme, }) => ({
+  extend: [
+    ...[
+      parseComponentProp(
+        'marginStart',
+        theme.articleStyle.article.marginStart,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+    ...[
+      parseComponentProp(
+        'marginEnd',
+        theme.articleStyle.article.marginEnd,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+  ],
+});
+const ArticleSection = createComponent(sectionStyle, 'section');
+
+const wideStyle = ({ theme, }) => ({
+  position: 'relative',
+  backgroundColor: theme.color('neutral', '-10'),
+  extend: [
+    ...[
+      parseComponentProp(
+        'marginEnd',
+        theme.articleStyle.article.marginEnd,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+  ],
+});
+const ArticleWide = createComponent(wideStyle, 'section');
+
+const asideStyle = ({ theme, }) => ({
   position: 'absolute',
   height: '100%',
-  width: '300px',
   top: '0',
-  left: '4rem',
-
-  ...parseComponentProp(
-    'display',
-    [ { until: 'l', value: 'none', }, { from: 'l', value: 'block', }, ],
-    theme.mq,
-    mediaQueryCallback
-  ),
+  left: '0',
+  extend: [
+    ...[
+      parseComponentProp(
+        'width',
+        theme.articleStyle.article.marginEnd,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+    ...[
+      parseComponentProp(
+        'display',
+        theme.articleStyle.article.aside,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+  ],
 });
-const LeftSlotWrapper = createComponent(leftSlotWrapper, 'aside');
+const ArticleAside = createComponent(asideStyle, 'aside');
 
-const leftSlotStyle = ({ theme, }) => ({
+const stickyStyle = ({ theme, }) => ({
   backgroundColor: 'red',
   position: 'sticky',
   width: '100%',
   top: '12px',
 });
-const LeftSlot = createComponent(leftSlotStyle);
-
-const wrapperStyle = () => ({
-  display: 'flex',
-});
-const CommentsWrapper = createComponent(wrapperStyle, 'section');
-
-const asideStyle = ({ theme, }) => ({
-  ...parseComponentProp(
-    'minWidth',
-    theme.articleStyle.aside.width,
-    theme.mq,
-    mediaQueryCallback
-  ),
-  ...parseComponentProp(
-    'display',
-    theme.articleStyle.aside.display,
-    theme.mq,
-    mediaQueryCallback
-  ),
-  backgroundColor: theme.color('primary', '-6'),
-});
-const CommentsAside = createComponent(asideStyle, 'aside');
+const Sticky = createComponent(stickyStyle);
 
 const commentsStyle = ({ theme, }) => ({
-  width: '100%',
   extend: [
     ...[
       parseComponentProp(
@@ -109,14 +144,17 @@ class Main extends React.Component {
   extractContent = content =>
     content.map(element => {
       if (element.inputTemplate === 'com.htz.StandardArticle') {
-        return <Article {...element} setCommentsData={this.updateState} />;
+        return (
+          <ArticleSection>
+            <Article {...element} setCommentsData={this.updateState} />
+          </ArticleSection>
+        );
       }
       const Element = getComponent(element.inputTemplate);
       if (element.inputTemplate === 'com.tm.ArticleCommentsElement') {
         return (
           this.state.commentsId && (
-            <CommentsWrapper>
-              <CommentsAside />
+            <ArticleSection>
               <ArticleComments>
                 <Element
                   key={element.contentId}
@@ -124,11 +162,15 @@ class Main extends React.Component {
                   articleId={this.state.articleId}
                 />
               </ArticleComments>
-            </CommentsWrapper>
+            </ArticleSection>
           )
         );
       }
-      return <Element key={element.contentId} {...element} />;
+      return (
+        <ArticleWide>
+          <Element key={element.contentId} {...element} />
+        </ArticleWide>
+      );
     });
 
   updateState = (articleId, commentsId) => {
@@ -141,12 +183,12 @@ class Main extends React.Component {
   render() {
     const { article, aside, } = this.props.content;
     return (
-      <Wrapper>
-        <article>{this.extractContent(article)}</article>
-        <LeftSlotWrapper>
-          <LeftSlot>{this.extractContent(aside)}</LeftSlot>
-        </LeftSlotWrapper>
-      </Wrapper>
+      <ArticleContainer>
+        {this.extractContent(article)}
+        <ArticleAside>
+          <Sticky>{this.extractContent(aside)}</Sticky>
+        </ArticleAside>
+      </ArticleContainer>
     );
   }
 }
