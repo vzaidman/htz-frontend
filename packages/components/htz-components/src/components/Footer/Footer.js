@@ -91,7 +91,7 @@ const IconsStyle = ({ theme, }) => ({
     }
   ),
 });
-const StyledIcons = createComponent(IconsStyle);
+const StyledIcons = createComponent(IconsStyle, 'ul');
 
 const IconMiscStyle = {
   marginInlineStart: [
@@ -100,15 +100,6 @@ const IconMiscStyle = {
   ],
   marginTop: [ { until: 's', value: '1.5rem', }, ],
   fontSize: [ { until: 's', value: '3.5rem', }, ],
-};
-
-const GoogleIconMiscStyle = {
-  marginInlineStart: [
-    { from: 's', value: '3rem', },
-    { until: 's', value: '4rem', },
-  ],
-  marginTop: [ { until: 's', value: '2rem', }, ],
-  fontSize: [ { until: 's', value: '4rem', }, ],
 };
 
 const MobileIconStyle = {
@@ -130,23 +121,18 @@ const StyledHeadLink = createComponent(headLinkStyle, Link, [
   'href',
 ]);
 
+const ListUlStyle = () => ({
+  marginInlineEnd: '2rem',
+  marginTop: '-1.5rem',
+});
+const StyledUlLinks = createComponent(ListUlStyle, 'ul');
+
 const ListLiStyle = () => ({
   display: 'inline-block',
 });
 const StyledLi = createComponent(ListLiStyle, 'li');
 
-const ListUlStyle = () => ({
-  marginInlineEnd: '2rem',
-});
-const StyledUlLinks = createComponent(ListUlStyle, 'ul');
-
-const headWrapperLinkStyle = ({ theme, }) => ({
-  display: 'flex',
-  flexWrap: 'no-wrap',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginTop: '2rem',
-  marginBottom: '5rem',
+const desktopBodyStyle = ({ theme, }) => ({
   extend: [
     {
       ...theme.mq(
@@ -160,29 +146,27 @@ const headWrapperLinkStyle = ({ theme, }) => ({
     },
   ],
 });
+const StyledDesktopBody = createComponent(desktopBodyStyle);
+
+const headWrapperLinkStyle = ({ theme, }) => ({
+  display: 'flex',
+  flexWrap: 'no-wrap',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginTop: '2rem',
+  marginBottom: '4rem',
+});
 
 const StyledHeadLinksWrapper = createComponent(headWrapperLinkStyle);
 
 const optionalExtendedWrapper = ({ theme, }) => ({
-  extend: [
-    theme.type(-2),
-    theme.mq(
-      {
-        until: 's',
-      },
-      {
-        display: 'none',
-      }
-    ),
-  ],
+  extend: [ theme.type(-2), ],
 });
 const StyledDesktopText = createComponent(optionalExtendedWrapper);
 
 // todo: ask if there is better fix for logo when svg shape is not square
 const LogoMiscStyle = {
   marginBottom: '-1rem',
-  // marginTop: '0.5rem',
-  // marginInlineStart: '-0.5rem',
   paddingTop: [
     {
       until: 's',
@@ -222,6 +206,9 @@ export class Footer extends React.Component {
     this.setState(prevState => ({
       expanded: !prevState.expanded,
     }));
+
+    console.log(this.focusElement);
+    this.focusElement.focus();
   };
 
   render() {
@@ -260,80 +247,102 @@ export class Footer extends React.Component {
               <IconHaaretzLogo size={6} miscStyles={LogoMiscStyle} />
             </StyledLogo>
             <StyledIcons>
-              <Link
-                content={
-                  <IconFaceBookLogo
-                    size={mq({ from: 's', }) ? 3 : 5}
-                    miscStyles={IconMiscStyle}
-                  />
-                }
-                href="https://www.facebook.com/haaretz"
-              />
-              <Link
-                content={<IconTwitter size={3} miscStyles={IconMiscStyle} />}
-                href="https://twitter.com/haaretz"
-              />
-              <Link
-                content={<IconAndroid size={3} miscStyles={MobileIconStyle} />}
-                href="https://play.google.com/store/apps/details?id=com.haaretz"
-              />
-              <Link
-                content={<IconApple size={3} miscStyles={MobileIconStyle} />}
-                href="https://itunes.apple.com/us/app/id521559643"
-              />
-              <Link
-                content={
-                  <IconGPlus size={3} miscStyles={GoogleIconMiscStyle} />
-                }
-                href="https://plus.google.com/+haaretzcoil"
-              />
-              <Link
-                content={
-                  <IconMailFooter size={3} miscStyles={MobileIconStyle} />
-                }
-                href="https://www.haaretz.co.il/misc/redemail"
-              />
-              <Link
-                content={<IconRss size={3} miscStyles={MobileIconStyle} />}
-                href="https://www.haaretz.co.il/misc/rss"
-              />
+              <StyledLi>
+                <Link
+                  content={
+                    <IconFaceBookLogo
+                      size={mq({ from: 's', }) ? 3 : 5}
+                      miscStyles={IconMiscStyle}
+                    />
+                  }
+                  href="https://www.facebook.com/haaretz"
+                />
+              </StyledLi>
+              <StyledLi>
+                <Link
+                  content={<IconTwitter size={3} miscStyles={IconMiscStyle} />}
+                  href="https://twitter.com/haaretz"
+                />
+              </StyledLi>
+              <StyledLi>
+                <Link
+                  content={
+                    <IconAndroid size={3} miscStyles={MobileIconStyle} />
+                  }
+                  href="https://play.google.com/store/apps/details?id=com.haaretz"
+                />
+              </StyledLi>
+              <StyledLi>
+                <Link
+                  content={<IconApple size={3} miscStyles={MobileIconStyle} />}
+                  href="https://itunes.apple.com/us/app/id521559643"
+                />
+              </StyledLi>
+              <StyledLi>
+                <Link
+                  content={<IconGPlus size={3} miscStyles={IconMiscStyle} />}
+                  href="https://plus.google.com/+haaretzcoil"
+                />
+              </StyledLi>
+              <StyledLi>
+                <Link
+                  content={
+                    <IconMailFooter size={3} miscStyles={MobileIconStyle} />
+                  }
+                  href="https://www.haaretz.co.il/misc/redemail"
+                />
+              </StyledLi>
+              <StyledLi>
+                <Link
+                  content={<IconRss size={3} miscStyles={MobileIconStyle} />}
+                  href="https://www.haaretz.co.il/misc/rss"
+                />
+              </StyledLi>
             </StyledIcons>
           </StyledDesktopHead>
           <MobileView theme={theme} />
-          <StyledHeadLinksWrapper>
-            <StyledUlLinks>
-              {footer.head.map((item, index) => (
-                <StyledLi key={`${item.text}${item.href}`}>
-                  <StyledHeadLink
-                    key={`${item.text}${item.href}`}
-                    content={item.text}
-                    href={item.href}
-                    isLast={index === footer.head.length - 1}
-                  />
-                </StyledLi>
-              ))}
-            </StyledUlLinks>
-            <StyledLi>
-              <ButtonFooter
-                variant="secondary"
-                boxModel={{ hp: 4.5, vp: 0.75, }}
-                onClick={() => this.handleClick()}
-                attrs={{
-                  'aria-expanded': expanded ? 'true' : 'false',
-                }}
-              >
-                {expanded ? ExpandedButton.close : ExpandedButton.showMore}
-              </ButtonFooter>
-            </StyledLi>
-          </StyledHeadLinksWrapper>
-
-          <ExpandedList
-            toolbox={footer.toolbox}
-            columnsArr={columnsArr}
-            showMe={expanded}
-          />
-          <StyledDesktopText>{Copyright.firstRow}</StyledDesktopText>
-          <StyledDesktopText>{Copyright.secondRow}</StyledDesktopText>
+          <StyledDesktopBody>
+            <StyledHeadLinksWrapper>
+              <StyledUlLinks>
+                {footer.head.map((item, index) => (
+                  <StyledLi key={`${item.text}${item.href}`}>
+                    <StyledHeadLink
+                      key={`${item.text}${item.href}`}
+                      content={item.text}
+                      href={item.href}
+                      isLast={index === footer.head.length - 1}
+                    />
+                  </StyledLi>
+                ))}
+              </StyledUlLinks>
+              <StyledLi>
+                <ButtonFooter
+                  variant="secondary"
+                  boxModel={{ hp: 4.5, vp: 0.75, }}
+                  onClick={() => this.handleClick()}
+                  attrs={{
+                    'aria-expanded': expanded ? 'true' : 'false',
+                  }}
+                >
+                  {expanded ? ExpandedButton.close : ExpandedButton.showMore}
+                </ButtonFooter>
+              </StyledLi>
+            </StyledHeadLinksWrapper>
+            <div
+              ref={el => {
+                this.focusElement = el;
+              }}
+              tabIndex="-1"
+            >
+              <ExpandedList
+                toolbox={footer.toolbox}
+                columnsArr={columnsArr}
+                showMe={expanded}
+              />
+            </div>
+            <StyledDesktopText>{Copyright.firstRow}</StyledDesktopText>
+            <StyledDesktopText>{Copyright.secondRow}</StyledDesktopText>
+          </StyledDesktopBody>
         </LayoutFooterContainer>
       </LayoutFooterRow>
     );
