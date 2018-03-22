@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { withTheme, } from 'react-fela';
 
 import Image from '../../Image/Image';
 import Kicker from '../../ArticleHeader/Kicker';
@@ -18,7 +18,7 @@ const propTypes = {
    */
   title: PropTypes.string.isRequired,
   /**
-   * Article's image object to display.
+   * Article's image to display (image object or image url).
    */
   image: PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ]).isRequired,
   /**
@@ -32,14 +32,6 @@ const defaultProps = {
   border: false,
 };
 
-const titleWrapperStyle = ({ theme, }) => ({
-  ...theme.type(-2),
-  marginStart: '1rem',
-});
-const TitleWrapper = createComponent(titleWrapperStyle, StyledGridItem, props =>
-  Object.keys(props)
-);
-
 const imgOptions = {
   transforms: {
     width: '84',
@@ -49,12 +41,12 @@ const imgOptions = {
 };
 
 // eslint-disable-next-line react/prop-types
-function Article({ title, image, sourceName, border, }) {
+function Article({ title, image, sourceName, border, theme, }) {
   return (
     <StyledGrid
       gutter={0}
       miscStyles={{
-        flexWrap: false,
+        flexWrap: 'nowrap',
         paddingLeft: '1rem',
         paddingRight: '1rem',
       }}
@@ -69,17 +61,29 @@ function Article({ title, image, sourceName, border, }) {
             width: 1,
           }
         }
+        miscStyles={{
+          height: '63px',
+        }}
       >
-        {typeof image === 'string' ? (
-          <img // eslint-disable-line jsx-a11y/alt-text
-            src={image}
+        {typeof image === 'string' || image.path ? (
+          <img
+            alt={image.alt || ''}
+            src={image.path || image}
+            height="100%"
             width="100%"
           />
         ) : (
           <Image imgOptions={imgOptions} data={image} />
         )}
       </StyledGridItem>
-      <TitleWrapper>
+      <StyledGridItem
+        miscStyles={{
+          ...theme.type(-2),
+          marginStart: '1rem',
+          maxHeight: '9rem',
+          overflow: 'hidden',
+        }}
+      >
         {sourceName && (
           <Kicker
             fontSize={-2}
@@ -90,7 +94,7 @@ function Article({ title, image, sourceName, border, }) {
           />
         )}
         <Title fontSize={-2} level={4} text={title} />
-      </TitleWrapper>
+      </StyledGridItem>
     </StyledGrid>
   );
 }
@@ -98,4 +102,4 @@ function Article({ title, image, sourceName, border, }) {
 Article.propTypes = propTypes;
 Article.defaultProps = defaultProps;
 
-export default Article;
+export default withTheme(Article);

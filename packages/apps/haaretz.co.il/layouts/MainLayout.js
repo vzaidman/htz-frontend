@@ -7,7 +7,7 @@ import gql from 'graphql-tag';
 import { propType, } from 'graphql-anywhere';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import htzTheme from '@haaretz/htz-theme';
-// import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 import {
   UserInjector,
   DfpInjector, // eslint-disable-line no-unused-vars
@@ -21,6 +21,11 @@ import TopNav from '../components/TopNav/TopNav';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 // eslint-disable-next-line import/no-named-as-default
 import Slot from '../components/Slot/Slot';
+
+const ScrollInjector = dynamic(
+  import('../components/ScrollListener/ScrollListener'),
+  { ssr: false, }
+);
 
 const PageData = gql`
   query PageData($path: String!) {
@@ -119,6 +124,7 @@ export class MainLayout extends React.Component {
     }
     return (
       <Fragment>
+        <ScrollInjector />
         <UserInjector />
         {LoginExample}
         {RegisterExample}

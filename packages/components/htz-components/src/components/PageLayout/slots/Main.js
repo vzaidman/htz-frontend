@@ -1,9 +1,12 @@
 import React from 'react';
 import { createComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
+import dynamic from 'next/dynamic';
 import { parseComponentProp, borderBottom, } from '@haaretz/htz-css-tools';
 import getComponent from '../../../utils/componentFromInputTemplate';
 import Article from '../../Article/Article';
+
+const Osaka = dynamic(import('../../Osaka/OsakaController'), { ssr: false, });
 
 const propTypes = {
   content: PropTypes.shape({
@@ -139,7 +142,15 @@ class Main extends React.Component {
   state = {
     articleId: null,
     commentsId: null,
+    articleWidth: null,
   };
+
+  componentDidMount() {
+    // eslint-disable-next-line react/no-did-mount-set-state
+    this.setState({
+      articleWidth: this.container.offsetWidth,
+    });
+  }
 
   extractContent = content =>
     content.map(element => {
@@ -183,7 +194,10 @@ class Main extends React.Component {
   render() {
     const { article, aside, } = this.props.content;
     return (
-      <ArticleContainer>
+      <ArticleContainer
+        innerRef={container => (this.container = container)} // eslint-disable-line no-return-assign
+      >
+        <Osaka width={this.state.articleWidth} />
         {this.extractContent(article)}
         <ArticleAside>
           <Sticky>{this.extractContent(aside)}</Sticky>

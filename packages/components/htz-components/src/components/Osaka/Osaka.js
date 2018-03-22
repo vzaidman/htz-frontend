@@ -44,25 +44,11 @@ const propTypes = {
   theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-const wrapperStyle = ({ theme, }) => ({
-  ...borderBottom('2px', 0, 'solid', theme.color('primary')),
-  marginStart: '0.5rem',
-});
-const OsakaWrapper = createComponent(wrapperStyle, StyledGrid);
-
 const listWrapperStyle = ({ theme, }) => ({
   paddingTop: '1rem',
   paddingBottom: '1rem',
 });
 const ListWrapper = createComponent(listWrapperStyle, StyledGridItem, props =>
-  Object.keys(props)
-);
-
-const nextWrapperStyle = ({ theme, }) => ({
-  backgroundColor: theme.color('quaternary'),
-  display: 'flex',
-});
-const NextWrapper = createComponent(nextWrapperStyle, StyledGridItem, props =>
   Object.keys(props)
 );
 
@@ -103,12 +89,20 @@ function Osaka({ nextArticleUrl, sectionName, lists, bp, theme, }) {
   const itemsWidth = getWidth(bp);
   const numOfLocalArticles = bp === 'xl' ? 2 : 1;
   return (
-    <OsakaWrapper gutter={0} miscStyles={{ flexWrap: false, }}>
+    <StyledGrid
+      gutter={0}
+      miscStyles={{
+        flexWrap: 'nowrap',
+        ...borderBottom('2px', 0, 'solid', theme.color('primary')),
+      }}
+    >
       <StyledGridItem>
         <StyledGrid gutter={0}>
           <ListWrapper
             width={itemsWidth.local}
             miscStyles={{
+              paddingTop: '1rem',
+              paddingBottom: '1rem',
               backgroundColor: theme.color('neutral', '-10'),
             }}
           >
@@ -136,9 +130,11 @@ function Osaka({ nextArticleUrl, sectionName, lists, bp, theme, }) {
         </StyledGrid>
       </StyledGridItem>
       {bp !== 'm' && (
-        <NextWrapper
+        <StyledGridItem
           width={18}
           miscStyles={{
+            backgroundColor: theme.color('quaternary'),
+            display: 'flex',
             paddingRight: '1rem',
             paddingLeft: '1rem',
           }}
@@ -151,9 +147,9 @@ function Osaka({ nextArticleUrl, sectionName, lists, bp, theme, }) {
               </p>
             }
           />
-        </NextWrapper>
+        </StyledGridItem>
       )}
-    </OsakaWrapper>
+    </StyledGrid>
   );
 }
 

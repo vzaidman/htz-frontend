@@ -1,4 +1,9 @@
-import { ApolloClient, HttpLink, InMemoryCache, ApolloLink, } from 'apollo-client-preset';
+import {
+  ApolloClient,
+  HttpLink,
+  InMemoryCache,
+  ApolloLink,
+} from 'apollo-client-preset';
 import { withClientState, } from 'apollo-link-state';
 import fetch from 'isomorphic-unfetch';
 import config from 'config';
@@ -29,7 +34,7 @@ function create(initialState) {
     defaults: {
       // todo: remove after bug fix, this is a workaround explained here:
       // https://github.com/apollographql/apollo-link-state/issues/187#issuecomment-361753208
-      'scroll@client': {
+      scroll: {
         velocity: null,
         x: 0,
         y: 0,
@@ -51,9 +56,7 @@ function create(initialState) {
       Mutation: {
         updateScroll: (_, { x, y, velocity, }, { cache, }) => {
           const data = {
-            // todo: remove after bug fix, this is a workaround explained here:
-            // https://github.com/apollographql/apollo-link-state/issues/187#issuecomment-361753208
-            'scroll@client': {
+            scroll: {
               velocity,
               x,
               y,

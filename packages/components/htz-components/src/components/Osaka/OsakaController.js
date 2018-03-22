@@ -2,13 +2,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
+import { graphql, compose, } from 'react-apollo';
 
 import { appendScript, } from '../../utils/scriptTools';
+import OsakaListQuery from './queries/fetchList';
 import mediaMatchesQuery from '../../utils/mediaMatchesQuery';
 import Osaka from './Osaka';
 import WrappedScroll from '../Scroll/Scroll';
 
 const propTypes = {
+  /**
+   * Passed implicitly by Apollo, not directly as an attribute on the component
+   */
+  data: PropTypes.shape({
+    /** Indicates data loading state */
+    loading: PropTypes.bool,
+    /** Indicates data error state */
+    error: PropTypes.bool,
+    osakaList: PropTypes.object,
+  }).isRequired,
   /**
    * The app's theme (get imported automatically with the `withTheme` method).
    */
@@ -16,15 +28,21 @@ const propTypes = {
   /**
    * The scroll speed and direction (Y axis), as brought to us by: [`Scroll`](./#scroll)
    */
-  velocity: PropTypes.number.isRequired,
+  velocity: PropTypes.number,
+  width: PropTypes.number,
 };
 
-const wrapperStyle = ({ shouldDisplay, theme, }) => ({
-  transform: `translateY(${shouldDisplay ? '0' : '-100'}%)`,
+const defaultProps = {
+  velocity: null,
+  width: null,
+};
+
+const wrapperStyle = ({ shouldDisplay, width, theme, }) => ({
+  transform: `translate(50%, ${shouldDisplay ? '0' : '-100'}%)`,
   top: '0',
   position: 'fixed',
-  width: '100%',
-  left: '0',
+  width: width ? `${width}px` : '100%',
+  start: '50%',
   zIndex: '6',
   transitionProperty: 'transform',
   ...theme.getDelay('transition', -1),
@@ -45,23 +63,28 @@ class OsakaWrapper extends React.Component {
     appendScript(
       '//widgets.outbrain.com/outbrain.js',
       'outbrain-widget',
-      false,
-      this.getArticles
+      false
     );
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     const breakPointChange = nextState.breakPoint !== this.state.breakPoint;
     const articlesChange = nextState.articles !== this.state.articles;
+    const apolloChange = nextProps.data.loading !== this.props.data.loading;
     const scrollChange =
       // prettier-ignore
       (nextProps.velocity > 0) !== this.state.display;
-    return articlesChange || breakPointChange || scrollChange;
+    return articlesChange || breakPointChange || apolloChange || scrollChange;
   }
 
   componentWillUpdate(nextProps, nextState) {
     // eslint-disable-next-line react/no-will-update-set-state
     this.setState({ display: nextProps.velocity > 0, });
+
+    !this.props.data.loading &&
+      !this.state.articles &&
+      OBR &&
+      this.getArticles();
   }
 
   getArticles = () => {
@@ -75,6 +98,7 @@ class OsakaWrapper extends React.Component {
         },
         json => {
           const articles = json.doc;
+          const promoted = this.props.data.osakaList.items;
           this.setState({
             articles: {
               local: [
@@ -87,6 +111,13 @@ class OsakaWrapper extends React.Component {
                   title: articles[1].content,
                   image: articles[1].thumbnail.url,
                   url: articles[1].url,
+                },
+              ],
+              promoted: [
+                {
+                  title: promoted[0].title,
+                  image: promoted[0].image,
+                  url: promoted[0].path,
                 },
               ],
               outbrain: [
@@ -120,60 +151,19 @@ class OsakaWrapper extends React.Component {
   };
 
   render() {
-    console.log(this.state.breakPoint, this.state.articles);
+    if (this.props.data.loading) {
+      return <div>loading ...</div>;
+    }
+    if (this.props.data.error) {
+      return <h1>ERROR</h1>;
+    }
     return this.state.breakPoint && this.state.articles ? (
-      <Wrapper shouldDisplay={this.state.display}>
+      <Wrapper shouldDisplay={this.state.display} width={this.props.width}>
         <Osaka
           nextArticleUrl="2.351"
           sectionName="חדשות"
           bp={this.state.breakPoint}
-          lists={{
-            outbrain: this.state.articles.outbrain,
-            promoted: [
-              {
-                exclusive: '',
-                title: 'חמש להקות ישראליות שאסור לכם לפספס',
-                image: {
-                  alt: 'לברוב בכנס הביטחון במינכן, היום',
-                  credit: ' RALPH ORLOWSKI/רויטרס',
-                  title: 'לברוב בכנס הביטחון במינכן, היום',
-                  aspects: {
-                    regular: {
-                      width: 1918,
-                      height: 1438,
-                      x: 196,
-                      y: 12,
-                    },
-                    headline: {
-                      width: 2184,
-                      height: 1270,
-                      x: 16,
-                      y: 27,
-                    },
-                    square: {
-                      width: 1428,
-                      height: 1426,
-                      x: 678,
-                      y: 24,
-                    },
-                  },
-                  isAnimated: false,
-                  imgArray: [
-                    {
-                      imgName: 'image/3837301089.jpg',
-                      version: '1518875453',
-                    },
-                  ],
-                  imageType: 'image',
-                  inputTemplate: 'com.tm.Image',
-                  contentId: '1.5825441',
-                  contentName: 'לברוב בכנס הביטחון במינכן, היום',
-                },
-                url: '',
-              },
-            ],
-            local: this.state.articles.local,
-          }}
+          lists={{ ...this.state.articles, }}
         />
       </Wrapper>
     ) : null;
@@ -181,14 +171,27 @@ class OsakaWrapper extends React.Component {
 }
 
 OsakaWrapper.propTypes = propTypes;
+OsakaWrapper.defaultProps = defaultProps;
 
-function OsakaController() {
+// eslint-disable-next-line react/prop-types
+function OsakaController({ data, width, }) {
   const StyledOsaka = withTheme(OsakaWrapper);
   return (
     <WrappedScroll
-      render={({ velocity, }) => <StyledOsaka velocity={velocity} />}
+      render={({ velocity, }) => (
+        <StyledOsaka width={width} data={data} velocity={velocity} />
+      )}
     />
   );
 }
 
-export default OsakaController;
+export default compose(
+  graphql(OsakaListQuery, {
+    options: props => ({
+      variables: { path: '7.7438652?vm=whtzResponsive&pidx=0', },
+    }),
+    props: props => ({
+      data: props.data,
+    }),
+  })
+)(OsakaController);
