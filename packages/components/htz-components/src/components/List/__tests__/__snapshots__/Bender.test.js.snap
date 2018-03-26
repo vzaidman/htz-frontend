@@ -1,0 +1,323 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Bender/> should render DOM correctly 1`] = `
+Object {
+  "component": <div>
+    <div
+      className="htz-a"
+    >
+      <h2
+        className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
+      >
+        כתבות שאולי פספסתם
+      </h2>
+      <div
+        className="htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac"
+        id={null}
+      >
+        <div
+          className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
+          id={null}
+        >
+          <article
+            className="htz-bh htz-bi htz-l htz-bj htz-bk htz-bl htz-ab"
+          >
+            <div
+              className=""
+            >
+              <div
+                className="htz-bm htz-bn htz-bh htz-a htz-bo"
+              >
+                <img
+                  className="htz-bi htz-bp htz-bq htz-br htz-a"
+                  src="https://images.haarets.co.il/image/upload/w_1304,h_900,c_crop,g_north_west/q_auto,h_588,w_500,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1502966590/1.2162.3337826422.jpg"
+                />
+              </div>
+              <h4
+                className="htz-b htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb"
+              >
+                שדכשדגכ
+              </h4>
+            </div>
+            <footer
+              className="htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci"
+            >
+              <span
+                className="htz-bh htz-cj"
+              >
+                <span>
+                  דשגשדג
+                </span>
+              </span>
+            </footer>
+            <a
+              aria-hidden={true}
+              className="htz-ck htz-cl htz-bp htz-bq htz-cm htz-br htz-cn"
+              href="/1.5768"
+              onClick={[Function]}
+              tabIndex="-1"
+            />
+          </article>
+        </div>
+        <div
+          className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
+          id={null}
+        >
+          <article
+            className="htz-bh htz-bi htz-l htz-bj htz-bk htz-bl htz-ab"
+          >
+            <div
+              className=""
+            >
+              <div
+                className="htz-bm htz-bn htz-bh htz-a htz-bo"
+              >
+                <img
+                  className="htz-bi htz-bp htz-bq htz-br htz-a"
+                  src="https://images.haarets.co.il/image/upload/w_2280,h_1260,x_-800,y_0,c_crop,g_north_west/q_auto,h_588,w_500,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1521316085/1.5911776.4079233716.jpg"
+                />
+              </div>
+              <h4
+                className="htz-b htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb"
+              >
+                מוחמד סלאח חוגג על חשבון ווטפורד, היום באנפילד.
+              </h4>
+            </div>
+            <footer
+              className="htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci"
+            >
+              <span
+                className="htz-bh htz-cj"
+              >
+                <a
+                  className={null}
+                  href="https://www.haaretz.co.il"
+                  onClick={null}
+                  target={null}
+                >
+                  רמי ליבני
+                </a>
+                <span>
+                  נירה רוסו
+                </span>
+              </span>
+            </footer>
+            <a
+              aria-hidden={true}
+              className="htz-ck htz-cl htz-bp htz-bq htz-cm htz-br htz-cn"
+              href="/RECIPE-1.5808"
+              onClick={null}
+              tabIndex="-1"
+              target={null}
+            />
+          </article>
+        </div>
+        <div
+          className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
+          id={null}
+        >
+          <article
+            className="htz-bh htz-bi htz-l htz-bj htz-bk htz-bl htz-ab"
+          >
+            <div
+              className=""
+            >
+              <div
+                className="htz-bm htz-bn htz-bh htz-a htz-bo"
+              >
+                <img
+                  className="htz-bi htz-bp htz-bq htz-br htz-a"
+                  src="https://images.haarets.co.il/image/upload/w_470,h_313,c_crop,g_north_west/q_auto,h_588,w_500,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1520779792/1.2359.1365043816.jpg"
+                  title="Credit"
+                />
+              </div>
+              <h4
+                className="htz-b htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb"
+              >
+                ouujh9
+              </h4>
+            </div>
+            <footer
+              className="htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci"
+            >
+              <span
+                className="htz-bh htz-cj"
+              >
+                <a
+                  className={null}
+                  href="https://www.haaretz.co.il"
+                  onClick={null}
+                  target={null}
+                >
+                  אליה גריידי
+                </a>
+              </span>
+            </footer>
+            <a
+              aria-hidden={true}
+              className="htz-ck htz-cl htz-bp htz-bq htz-cm htz-br htz-cn"
+              href="/1.5764"
+              onClick={[Function]}
+              tabIndex="-1"
+            />
+          </article>
+        </div>
+        <div
+          className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
+          id={null}
+        >
+          <article
+            className="htz-bh htz-bi htz-l htz-bj htz-bk htz-bl htz-ab"
+          >
+            <div
+              className=""
+            >
+              <div
+                className="htz-bm htz-bn htz-bh htz-a htz-bo"
+              >
+                <img
+                  className="htz-bi htz-bp htz-bq htz-br htz-a"
+                  src="https://images.haarets.co.il/image/upload/w_2200,h_1468,c_crop,g_north_west/q_auto,h_588,w_500,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1502965886/1.1228.3447786819.jpg"
+                />
+              </div>
+              <h4
+                className="htz-b htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb"
+              >
+                מקומות בארץ שבהם תקבלו דונם קרקע בחינם לבנות בית
+              </h4>
+            </div>
+            <footer
+              className="htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci"
+            >
+              <span
+                className="htz-bh htz-cj"
+              >
+                <a
+                  className={null}
+                  href="https://www.haaretz.co.il"
+                  onClick={null}
+                  target={null}
+                >
+                  ארי שביט
+                </a>
+              </span>
+            </footer>
+            <a
+              aria-hidden={true}
+              className="htz-ck htz-cl htz-bp htz-bq htz-cm htz-br htz-cn"
+              href="/.premium-1.1204"
+              onClick={null}
+              tabIndex="-1"
+              target={null}
+            />
+          </article>
+        </div>
+        <div
+          className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
+          id={null}
+        >
+          <article
+            className="htz-bh htz-bi htz-l htz-bj htz-bk htz-bl htz-ab"
+          >
+            <div
+              className=""
+            >
+              <div
+                className="htz-bm htz-bn htz-bh htz-a htz-bo"
+              >
+                <img
+                  className="htz-bi htz-bp htz-bq htz-br htz-a"
+                  src="https://images.haarets.co.il/image/upload/w_300,h_175,c_crop,g_north_west/q_auto,h_588,w_500,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1508254402/7.3133.3195964184.jpg"
+                />
+              </div>
+              <h4
+                className="htz-b htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb"
+              >
+                הלזניה הכי קלה בעולם
+              </h4>
+            </div>
+            <footer
+              className="htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci"
+            >
+              <span
+                className="htz-bh htz-cj"
+              >
+                <a
+                  className={null}
+                  href="https://www.haaretz.co.il"
+                  onClick={null}
+                  target={null}
+                >
+                  רמי ליבני
+                </a>
+                <span>
+                  נירה רוסו
+                </span>
+              </span>
+            </footer>
+            <a
+              aria-hidden={true}
+              className="htz-ck htz-cl htz-bp htz-bq htz-cm htz-br htz-cn"
+              href="/RECIPE-1.5808"
+              onClick={null}
+              tabIndex="-1"
+              target={null}
+            />
+          </article>
+        </div>
+        <div
+          className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
+          id={null}
+        >
+          <article
+            className="htz-bh htz-bi htz-l htz-bj htz-bk htz-bl htz-ab"
+          >
+            <div
+              className=""
+            >
+              <div
+                className="htz-bm htz-bn htz-bh htz-a htz-bo"
+              >
+                <img
+                  className="htz-bi htz-bp htz-bq htz-br htz-a"
+                  src="https://images.haarets.co.il/image/upload/w_800,h_343,c_crop,g_north_west/q_auto,h_588,w_500,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1521717860/1.444.1646585932.gif"
+                />
+              </div>
+              <h4
+                className="htz-b htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb"
+              >
+                אמבדים כתבה ביקורת - הארץ
+              </h4>
+            </div>
+            <footer
+              className="htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci"
+            >
+              <span
+                className="htz-bh htz-cj"
+              >
+                <a
+                  className={null}
+                  href="https://www.haaretz.co.il"
+                  onClick={null}
+                  target={null}
+                >
+                  אליה גריידי
+                </a>
+              </span>
+            </footer>
+            <a
+              aria-hidden={true}
+              className="htz-ck htz-cl htz-bp htz-bq htz-cm htz-br htz-cn"
+              href="/premium-REVIEW-1.5814"
+              onClick={null}
+              tabIndex="-1"
+              target={null}
+            />
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "styles": ".htz-a{width:100%}.htz-b{display:block}.htz-i{color:#0B7EB5}.htz-j{margin-bottom:2rem}.htz-l{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-m{-webkit-flex-wrap:nowrap}.htz-n{flex-wrap:nowrap}.htz-o{list-style:none}.htz-p{-webkit-justify-content:flex-start}.htz-q{justify-content:flex-start}.htz-r{margin-right:-2rem}.htz-s{margin-left:-2rem}.htz-t{-webkit-flex-direction:row}.htz-u{flex-direction:row}.htz-v{-webkit-align-items:stretch}.htz-w{align-items:stretch}.htz-x{-webkit-box-lines:nowrap}.htz-y{-webkit-box-pack:right}.htz-z{-webkit-box-orient:horizontal}.htz-ab{-webkit-box-direction:normal}.htz-ac{-webkit-box-align:stretch}.htz-ae{box-sizing:border-box}.htz-af{-webkit-flex-basis:auto}.htz-ag{flex-basis:auto}.htz-ah{-webkit-flex-grow:1}.htz-ai{flex-grow:1}.htz-aj{-webkit-flex-shrink:1}.htz-ak{flex-shrink:1}.htz-al{padding-left:0rem}.htz-am{padding-right:0rem}.htz-bf{margin-right:1rem}.htz-bg{margin-left:1rem}.htz-bh{position:relative}.htz-bi{height:100%}.htz-bj{-webkit-flex-direction:column}.htz-bk{flex-direction:column}.htz-bl{-webkit-box-orient:vertical}.htz-bm{height:0rem}.htz-bn{padding-bottom:117.64705882352942%}.htz-bo{background-color:#EBEBEB}.htz-bp{left:0rem}.htz-bq{position:absolute}.htz-br{top:0rem}.htz-ca{color:#222}.htz-cb{margin-bottom:1rem}.htz-cc{color:#787878}.htz-cd{font-weight:bold}.htz-ce{margin-top:auto}.htz-cj{z-index:1}.htz-ck{background-color:transparent}.htz-cl{bottom:0rem}.htz-cm{right:0rem}.htz-cn{z-index:0}@media (max-width: 47.9375em){.htz-c{font-size:3rem}.htz-d{line-height:1.3333333333333333em}.htz-bs{font-size:2rem}.htz-bt{line-height:1.5em}}@media (min-width: 48em) and (max-width: 79.9375em){.htz-e{font-size:3.5rem}.htz-f{line-height:1.4285714285714286em}}@media (min-width: 80em){.htz-g{font-size:3.4285714285714284rem}.htz-h{line-height:1.1666666666666667em}.htz-az{-webkit-flex-grow:0}.htz-ba{flex-grow:0}.htz-bb{-webkit-flex-shrink:0}.htz-bc{flex-shrink:0}.htz-bd{-webkit-flex-basis:16.666666666666664%}.htz-be{flex-basis:16.666666666666664%}.htz-by{font-size:2.5714285714285716rem}.htz-bz{line-height:1.5555555555555556em}.htz-ch{font-size:2rem}.htz-ci{line-height:1.5em}}@media (max-width: 37.4375em){.htz-k{display:none}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-an{-webkit-flex-grow:0}.htz-ao{flex-grow:0}.htz-ap{-webkit-flex-shrink:0}.htz-aq{flex-shrink:0}.htz-ar{-webkit-flex-basis:33.33333333333333%}.htz-as{flex-basis:33.33333333333333%}.htz-bu{font-size:2.3333333333333335rem}.htz-bv{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-at{-webkit-flex-grow:0}.htz-au{flex-grow:0}.htz-av{-webkit-flex-shrink:0}.htz-aw{flex-shrink:0}.htz-ax{-webkit-flex-basis:25%}.htz-ay{flex-basis:25%}.htz-bw{font-size:2.6666666666666665rem}.htz-bx{line-height:1.5em}}@media (max-width: 79.9375em){.htz-cf{font-size:2rem}.htz-cg{line-height:1.5em}}",
+}
+`;

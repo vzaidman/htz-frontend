@@ -26,7 +26,7 @@ const Example = ({ data, }) => {
   }
   return (
     <Wrapper>
-      {data.list.items.map(item => (
+      {data.list.items.slice(0, 10).map(item => (
         <Item>
           <Image
             data={item.image}

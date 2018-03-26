@@ -1,3 +1,5 @@
+import ListMock from './mocks/List';
+
 const mocks = {
   CommentsElement: () => ({
     comments: [
@@ -1003,6 +1005,7 @@ const mocks = {
     inputTemplate: 'com.tm.element.List',
     contentId: '7.7474',
     contentName: 'הונג קונג',
+    view: 'Bender',
   }),
 };
 

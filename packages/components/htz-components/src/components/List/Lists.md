@@ -9,5 +9,7 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ```jsx
-<List contentId="" view="" />
+<div dir="rtl">
+  <List contentId="" view="" />
+</div>
 ```

@@ -10,6 +10,13 @@ const views = new Map([
       query: () => import('./viewsQueries/example'),
     },
   ],
+  [
+    'Bender',
+    {
+      view: () => import('./views/Bender'),
+      query: () => import('./viewsQueries/bender'),
+    },
+  ],
 ]);
 
 // eslint-disable-next-line react/prop-types

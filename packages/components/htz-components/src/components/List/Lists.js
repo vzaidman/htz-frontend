@@ -10,6 +10,7 @@ const mock = mocks.List;
 
 const views = {
   Example: dynamic(import('./views/Example')),
+  Bender: dynamic(import('./views/Bender')),
 };
 
 const listWrapperStyle = () => ({
@@ -68,6 +69,7 @@ export default class List extends React.Component {
             Select a preview
           </option>
           <option value="Example">Example</option>
+          <option value="Bender">Bender</option>
         </MenuList>
         {this.state.type && (
           <ListWrapper>
