@@ -5,7 +5,7 @@ import { createComponent, withTheme, } from 'react-fela';
 import { graphql, compose, } from 'react-apollo';
 
 import { appendScript, } from '../../utils/scriptTools';
-import OsakaListQuery from './queries/fetchList';
+import ListQuery from './queries/fetchList';
 import mediaMatchesQuery from '../../utils/mediaMatchesQuery';
 import Osaka from './Osaka';
 import WrappedScroll from '../Scroll/Scroll';
@@ -19,7 +19,7 @@ const propTypes = {
     loading: PropTypes.bool,
     /** Indicates data error state */
     error: PropTypes.bool,
-    osakaList: PropTypes.object,
+    list: PropTypes.object,
   }).isRequired,
   /**
    * The app's theme (get imported automatically with the `withTheme` method).
@@ -88,51 +88,52 @@ class OsakaWrapper extends React.Component {
   }
 
   getArticles = () => {
-    OBR.extern.callRecs(
-      {
-        permalink:
-          'https://www.haaretz.co.il/news/world/america/.premium-1.5889230',
-        installationKey: 'HAAREPDLHNAQD24GF05E6D3F5',
-        widgetId: 'APP_1',
-      },
-      json => {
-        const articles = json.doc;
-        const promoted = this.props.data.osakaList.items;
-        this.setState({
-          articles: {
-            local: [
-              {
-                title: articles[0].content,
-                image: articles[0].thumbnail.url,
-                url: articles[0].url,
-              },
-              {
-                title: articles[1].content,
-                image: articles[1].thumbnail.url,
-                url: articles[1].url,
-              },
-            ],
-            promoted: [
-              {
-                title: promoted[0].title,
-                image: promoted[0].image,
-                url: promoted[0].path,
-              },
-            ],
-            outbrain: [
-              {
-                title: articles[4].content,
-                image: articles[4].thumbnail.url,
-                url: articles[4].url,
-                sourceName: articles[4].source_display_name,
-              },
-            ],
-          },
-        });
-        // eslint-disable-next-line no-undef
-        window.addEventListener('resize', evt => this.setBreakPoint());
-      }
-    );
+    OBR &&
+      OBR.extern.callRecs(
+        {
+          permalink:
+            'https://www.haaretz.co.il/news/world/america/.premium-1.5889230',
+          installationKey: 'HAAREPDLHNAQD24GF05E6D3F5',
+          widgetId: 'APP_1',
+        },
+        json => {
+          const articles = json.doc;
+          const promoted = this.props.data.list.items;
+          this.setState({
+            articles: {
+              local: [
+                {
+                  title: articles[0].content,
+                  image: articles[0].thumbnail.url,
+                  url: articles[0].url,
+                },
+                {
+                  title: articles[1].content,
+                  image: articles[1].thumbnail.url,
+                  url: articles[1].url,
+                },
+              ],
+              promoted: [
+                {
+                  title: promoted[0].title,
+                  image: promoted[0].image,
+                  url: promoted[0].path,
+                },
+              ],
+              outbrain: [
+                {
+                  title: articles[4].content,
+                  image: articles[4].thumbnail.url,
+                  url: articles[4].url,
+                  sourceName: articles[4].source_display_name,
+                },
+              ],
+            },
+          });
+          // eslint-disable-next-line no-undef
+          window.addEventListener('resize', evt => this.setBreakPoint());
+        }
+      );
   };
 
   setBreakPoint = () => {
@@ -185,9 +186,9 @@ function OsakaController({ data, width, }) {
 }
 
 export default compose(
-  graphql(OsakaListQuery, {
+  graphql(ListQuery, {
     options: props => ({
-      variables: { path: '7.7438652?vm=whtzResponsive&pidx=0', },
+      variables: { path: '7.7474', },
     }),
     props: props => ({
       data: props.data,

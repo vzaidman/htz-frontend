@@ -319,7 +319,13 @@ const mocks = {
     ],
   }),
 
-  OsakaList: () => ({
+  List: () => ({
+    title: 'הונג קונג',
+    listId: '7.7474',
+    viewtype: 'Tokyo',
+    isDuplicationAllowed: true,
+    pageIndex: 0,
+    pageCount: 1,
     items: [
       {
         id: '1.6712',

@@ -7,6 +7,7 @@ import HtmlElement from '../components/Interactive/HtmlElement';
 import Image from '../components/Image/Image';
 import InteractiveElement from '../components/Interactive/interactiveElement';
 import LinksBlock from '../components/RelatedArticles/LinksBlock';
+import List from '../components/List/List';
 import Paragraph from '../components/Paragraph/Paragraph';
 import Quote from '../components/Quote/Quote';
 import RelatedArticles from '../components/RelatedArticles/RelatedArticles';
@@ -48,6 +49,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.tm.ImageGalleryElement', () => <p>ImageGallery</p>, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
   [ 'com.tm.ListElement', () => <p>ListElement</p>, ],
+  [ 'com.tm.element.List', List, ],
   [ 'com.tm.TabViewElement', () => <p>TabViewElement</p>, ],
   [ 'com.polobase.JSONListsWrapper', () => <p>JSONListsWrapper</p>, ],
   [ 'com.mouse.ChronicalBoardElement', () => <p>ChronicalBoardElement</p>, ],

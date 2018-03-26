@@ -2,7 +2,7 @@
 import { GraphQLObjectType, GraphQLNonNull, GraphQLString, } from 'graphql';
 import CommentsElement from './types/comments_element_type';
 import Footer from './types/footer_type';
-import OsakaList from './types/osaka_list_type';
+import List from './types/list_type';
 import Page from './types/page_type';
 
 const RootQuery = new GraphQLObjectType({
@@ -18,8 +18,8 @@ const RootQuery = new GraphQLObjectType({
     footer: {
       type: Footer,
     },
-    osakaList: {
-      type: OsakaList,
+    list: {
+      type: List,
       args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
       resolve(parentValue, { path, }, context) {
         return context.cmlinkLoader.load(path);

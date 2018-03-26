@@ -22,6 +22,7 @@ import LayoutContainer from './components/PageLayout/LayoutContainer';
 import LayoutRow from './components/PageLayout/LayoutRow';
 import Link from './components/Link/Link';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
+import List from './components/List/List';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import Osaka from './components/Osaka/OsakaController';
 import Quote from './components/Quote/Quote';
@@ -118,6 +119,7 @@ export {
   LayoutRow,
   Link,
   LinksBlock,
+  List,
   MobileQuickRegistration,
   Osaka,
   Quote,

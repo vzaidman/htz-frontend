@@ -4,23 +4,21 @@ import {
   GraphQLBoolean,
   GraphQLString,
   GraphQLList,
-  GraphQLInt,
   GraphQLID,
 } from 'graphql';
 
 import TeaserInListType from './teaser_in_list_type';
 
-const OsakaList = new GraphQLObjectType({
-  name: 'OsakaList',
+const List = new GraphQLObjectType({
+  name: 'List',
   fields: () => ({
     title: { type: GraphQLString, },
-    listId: { type: GraphQLID, },
+    contentName: { type: GraphQLString, },
+    contentId: { type: GraphQLID, },
+    hasPagination: { type: GraphQLBoolean, },
     viewtype: { type: GraphQLString, },
-    isDuplicationAllowed: { type: GraphQLBoolean, },
-    pageIndex: { type: GraphQLInt, },
-    pageCount: { type: GraphQLInt, },
     items: { type: new GraphQLList(TeaserInListType), },
   }),
 });
 
-export default OsakaList;
+export default List;

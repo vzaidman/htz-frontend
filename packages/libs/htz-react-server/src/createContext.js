@@ -20,9 +20,9 @@ export function createLoaders() {
   const cmlinkLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(path =>
-        fetch(`http://${host}.haaretz.co.il/json/cmlink/${path}`).then(
-          response => response.json()
-        )
+        fetch(
+          `http://${host}.haaretz.co.il/papi/cmlink/${path}?vm=whtzResponsive&exploded=true`
+        ).then(response => response.json())
       )
     )
   );
@@ -82,9 +82,7 @@ export function createPosters(cookies) {
   const loggerVotePoster = newVote =>
     fetch(
       // Todo: Change Mador (2.285) from hardcoded to dynamic
-      `http://${
-        host
-      }.haaretz.co.il/logger/p.gif?type=COMMENTS_RATINGS&a=%2F2.285%2F${
+      `http://${host}.haaretz.co.il/logger/p.gif?type=COMMENTS_RATINGS&a=%2F2.285%2F${
         newVote.articleId
       }&comment=${newVote.commentId}&group=${
         newVote.group
