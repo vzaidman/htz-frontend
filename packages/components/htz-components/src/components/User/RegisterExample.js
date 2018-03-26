@@ -1,110 +1,60 @@
 import React from 'react';
 import Register from './Register';
+import Logout from './Logout';
+import Form from '../Form/Form'; // eslint-disable-line import/no-named-as-default
+import TextInput from '../TextInput/TextInput';
+import Button from '../Button/Button';
 import UserDispenser from './UserDispenser';
+import CheckBox from '../CheckBox/CheckBox'; // eslint-disable-line import/no-named-as-default
 
 export function RegisterExample() {
   return (
     <UserDispenser
-      render={({ isLoggedIn, user, plantImages, handleImgOnload, }) => (
-        <Register
-          isLoggedIn={isLoggedIn}
-          user={user}
-          render={({
-            register,
-            email,
-            password,
-            confirmPassword,
-            firstName,
-            lastName,
-            mobilePrefix,
-            mobileNumber,
-            termsChk,
-            gRecaptchaResponse,
-            // eslint-disable-next-line no-shadow
-            user,
-            handleInputChange,
-          }) =>
-            (isLoggedIn ? null : (
+      render={({ isLoggedIn, }) =>
+        (isLoggedIn ? (
+          <Logout
+            render={({ logout, }) => (
               <div style={{ marginTop: '24px', marginBottom: '24px', }}>
-                <h2>Register</h2>
-                <input
-                  name="email"
-                  onChange={handleInputChange}
-                  value={email}
-                  placeholder="Email"
-                />
-                <br />
-                <input
-                  name="password"
-                  onChange={handleInputChange}
-                  value={password}
-                  type="password"
-                  placeholder="Password"
-                />
-                <input
-                  name="confirmPassword"
-                  onChange={handleInputChange}
-                  value={confirmPassword}
-                  type="password"
-                  placeholder="confirmPassword"
-                />
-                <br />
-                <input
-                  name="firstName"
-                  onChange={handleInputChange}
-                  value={firstName}
-                  type="text"
-                  placeholder="First Name"
-                />
-                <input
-                  name="lastName"
-                  onChange={handleInputChange}
-                  value={lastName}
-                  type="text"
-                  placeholder="Last Name"
-                />
-                <br />
-                <input
-                  name="mobilePrefix"
-                  onChange={handleInputChange}
-                  value={mobilePrefix}
-                  type="text"
-                  placeholder="Mobile Prefix"
-                />
-                <input
-                  name="mobileNumber"
-                  onChange={handleInputChange}
-                  value={mobileNumber}
-                  type="text"
-                  placeholder="Mobile Number"
-                />
-                <br />
-                <input
-                  style={{
-                    appearance: 'checkbox',
-                    WebkitAppearance: 'checkbox',
-                  }}
-                  id="pTermsChk"
-                  name="termsChk"
-                  onChange={handleInputChange}
-                  checked={termsChk}
-                  type="checkbox"
-                  aria-labelledby="frmRegister_termsChk-lbl"
-                  aria-describedby="frmRegister_termsChk-message"
-                />
-                {/* eslint-disable-next-line jsx-a11y/label-has-for */}
-                <label
-                  id="frmRegister_termsChk-lbl"
-                  htmlFor="pTermsChk"
-                  className="t-milli"
-                >
-                  אני מאשר/ת את תנאי השימוש באתר הארץ, וכן קבלת דיוורים מהאתר
-                  והצעות לרכישת מינוי
-                </label>
-                <div id="frmRegister_termsChk-message" className="form__note" />
-                <br />
-                <button
+                <Button
                   onClick={() => {
+                    logout()
+                      .then(() => console.log('logoutSuccess'))
+                      .catch(err => console.log('logout failed', err));
+                  }}
+                >
+                  Logout
+                </Button>
+              </div>
+            )}
+          />
+        ) : (
+          <Register
+            render={({ register, }) => (
+              <div>
+                <h2>Register</h2>
+                <Form
+                  onSubmit={({
+                    email,
+                    password,
+                    confirmPassword,
+                    firstName,
+                    lastName,
+                    mobilePrefix,
+                    mobileNumber,
+                    termsChk,
+                    gRecaptchaResponse = '',
+                  }) => {
+                    console.log(
+                      email,
+                      password,
+                      confirmPassword,
+                      firstName,
+                      lastName,
+                      mobilePrefix,
+                      mobileNumber,
+                      termsChk,
+                      gRecaptchaResponse
+                    );
                     register(
                       email,
                       password,
@@ -114,19 +64,72 @@ export function RegisterExample() {
                       mobilePrefix,
                       mobileNumber,
                       termsChk,
-                      gRecaptchaResponse,
-                      plantImages,
-                      handleImgOnload
-                    );
+                      gRecaptchaResponse
+                    )
+                      .then(() => {
+                        console.log('register Success!');
+                      })
+                      .catch(err => {
+                        console.log('register Error!', err);
+                      });
                   }}
-                >
-                  Register
-                </button>
+                  render={({ getInputProps, handleSubmit, }) => (
+                    <div>
+                      <TextInput
+                        {...getInputProps({
+                          name: 'email',
+                          label: 'email',
+                          type: 'email',
+                        })}
+                      />
+                      <TextInput
+                        {...getInputProps({
+                          name: 'password',
+                          label: 'password',
+                          type: 'password',
+                        })}
+                      />
+                      <TextInput
+                        {...getInputProps({
+                          name: 'firstName',
+                          label: 'firstName',
+                        })}
+                      />
+                      <TextInput
+                        {...getInputProps({
+                          name: 'lastName',
+                          label: 'lastName',
+                        })}
+                      />
+                      <TextInput
+                        {...getInputProps({
+                          name: 'mobilePrefix',
+                          label: 'mobilePrefix',
+                        })}
+                      />
+                      <TextInput
+                        {...getInputProps({
+                          name: 'mobileNumber',
+                          label: 'mobileNumber',
+                        })}
+                      />
+                      <CheckBox
+                        {...getInputProps({
+                          name: 'termsChk',
+                          label: 'termsChk',
+                        })}
+                      />
+                      <div>
+                        <Button onClick={handleSubmit}>submit</Button>
+                      </div>
+                    </div>
+                  )}
+                />
               </div>
-            ))
-          }
-        />
-      )}
+            )}
+          />
+        ))
+      }
     />
   );
 }

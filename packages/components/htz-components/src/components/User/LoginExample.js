@@ -2,54 +2,73 @@ import React from 'react';
 import Login from './Login';
 import Logout from './Logout';
 import UserDispenser from './UserDispenser';
+import Form from '../Form/Form'; // eslint-disable-line import/no-named-as-default
+import TextInput from '../TextInput/TextInput';
+import Button from '../Button/Button';
 
 export function LoginExample() {
   return (
     <UserDispenser
-      render={({ isLoggedIn, user, plantImages, handleImgOnload, }) =>
+      render={({ isLoggedIn, }) =>
         (isLoggedIn ? (
           <Logout
-            isLoggedIn={isLoggedIn}
-            user={user}
             render={({ logout, }) => (
               <div style={{ marginTop: '24px', marginBottom: '24px', }}>
-                <button
+                <Button
                   onClick={() => {
-                    logout(plantImages, handleImgOnload);
+                    logout()
+                      .then(() => console.log('logoutSuccess'))
+                      .catch(err => console.log('logout failed', err));
                   }}
                 >
                   Logout
-                </button>
+                </Button>
               </div>
             )}
           />
         ) : (
           <Login
-            isLoggedIn={isLoggedIn}
-            user={user}
-            render={({ login, email, password, handleInputChange, }) => (
+            render={({ login, }) => (
               <div style={{ marginTop: '24px', marginBottom: '24px', }}>
                 <h2>Login</h2>
-                <input
-                  name="email"
-                  onChange={handleInputChange}
-                  value={email}
-                  placeholder="Email"
-                />
-                <input
-                  name="password"
-                  onChange={handleInputChange}
-                  value={password}
-                  type="password"
-                  placeholder="Password"
-                />
-                <button
-                  onClick={() => {
-                    login(email, password, plantImages, handleImgOnload);
+                <Form
+                  onSubmit={({ email, password, }) => {
+                    login(email, password)
+                      .then(() => {
+                        console.log('Login Success!');
+                      })
+                      .catch(err => {
+                        console.log('Login Error!', err);
+                      });
                   }}
-                >
-                  Submit
-                </button>
+                  render={({ getInputProps, handleSubmit, }) => (
+                    <div>
+                      <TextInput
+                        {...getInputProps({
+                          name: 'email',
+                          label: 'email',
+                          type: 'email',
+                        })}
+                      />
+                      <TextInput
+                        {...getInputProps({
+                          name: 'password',
+                          label: 'password',
+                          type: 'password',
+                        })}
+                      />
+
+                      <div
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                        }}
+                      >
+                        <Button onClick={handleSubmit}>submit</Button>
+                      </div>
+                    </div>
+                  )}
+                />
               </div>
             )}
           />
