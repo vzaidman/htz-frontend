@@ -105,6 +105,7 @@ const getTag = tag => {
     [ 'em', Em, ],
     [ 'span', 'span', ],
     [ 'h4', 'h4', ],
+    [ 'br', () => <br />, ],
   ]);
   return tagsMap.get(tag);
 };

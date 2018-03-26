@@ -59,4 +59,11 @@ const inputTemplateToComponent = new Map([
   ],
   [ null, null, ],
 ]);
-export default inputTemplate => inputTemplateToComponent.get(inputTemplate);
+
+// eslint-disable-next-line react/prop-types
+const DefaultComponent = ({ inputTemplate, }) => (
+  <p>{inputTemplate} is currently not supported</p>
+);
+
+export default inputTemplate =>
+  inputTemplateToComponent.get(inputTemplate) || DefaultComponent;
