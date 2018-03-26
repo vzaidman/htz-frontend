@@ -20,6 +20,7 @@ import HtmlElement from './components/Interactive/HtmlElement';
 import Image from './components/Image/Image';
 import LayoutContainer from './components/PageLayout/LayoutContainer';
 import LayoutRow from './components/PageLayout/LayoutRow';
+import Link from './components/Link/Link';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import Osaka from './components/Osaka/OsakaController';
@@ -111,6 +112,7 @@ export {
   Image,
   LayoutContainer,
   LayoutRow,
+  Link,
   LinksBlock,
   MobileQuickRegistration,
   Osaka,

@@ -38,6 +38,7 @@
     "graphql-tools": "^1.2.2",
     "graphql-type-json": "^0.1.4",
     "helmet": "^3.8.1",
+    "http-proxy-middleware": "^0.18.0",
     "isomorphic-fetch": "^2.2.1",
     "universal-cookie": "^2.1.0"
   },

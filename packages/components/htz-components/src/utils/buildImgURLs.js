@@ -126,7 +126,7 @@ export function buildURLs(contentId, data, options, excludeWidthDescriptor) {
 
 export function buildUrl(contentId, data, options = {}) {
   const baseUrl = config.has('imgBaseUrl') && config.get('imgBaseUrl');
-  const domain = config.has('domain') && config.get('domain');
+  const baseHref = config.has('baseHref') && config.get('baseHref');
   const { imgName, version, aspects, } = data;
 
   // Fail early when mandatory options aren't present.
@@ -144,9 +144,9 @@ export function buildUrl(contentId, data, options = {}) {
     );
   }
 
-  if (!version && !domain) {
+  if (!version && !baseHref) {
     throw new Error(
-      'Your app\'s "domain" is not configured.\n' +
+      'Your app\'s "baseHref" is not configured.\n' +
         'See https://github.com/Haaretz/htz-frontend/blob/master/docs/Configuration.md'
     );
   }
@@ -202,7 +202,7 @@ export function buildUrl(contentId, data, options = {}) {
   // Url suffix based on whether this is an uploaded or fetched image
   const urlSuffix = version
     ? `/v${version}/${contentId}.${imgName}`
-    : `/${domain}/polopoly_fs/${contentId}!/${imgName}`;
+    : `/${baseHref}/polopoly_fs/${contentId}!/${imgName}`;
   // construct url string from params
   const url =
     baseUrl +
