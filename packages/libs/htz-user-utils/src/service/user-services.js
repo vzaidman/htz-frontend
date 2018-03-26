@@ -77,7 +77,9 @@ export default function UserService(config = {}) {
     const siteConfig = createSiteConfig();
     const serviceUrl = `${siteConfig.ssoDomain}/sso/logout`;
     const builtUser = user || factory.build();
-    const params = `mobile=true&userId=${builtUser.id}&anonymousId=${builtUser.anonymousId}`;
+    const params = `mobile=true&userId=${builtUser.id}&anonymousId=${
+      builtUser.anonymousId
+    }`;
     return fetch(serviceUrl, {
       method: 'POST',
       body: params,
@@ -101,7 +103,7 @@ export default function UserService(config = {}) {
    * @param {Object} formData
    * @param {string} formData.userName the email of the new user
    * @param {string} formData.password the password of the new user
-   * @param {string} formData.confirmPassword the password of the new user, again, for validataion
+   * @param {string} formData.confirmPassword the password of the new user, again, for validation
    * @param {string} formData.firstName the user first name
    * @param {string} formData.lastName the user last name
    * @param {string} formData.mobilePrefix the first part of the user mobile number
@@ -147,27 +149,18 @@ export default function UserService(config = {}) {
       }),
     })
       .then(parseResponse)
-      .then(
-        registerData =>
-          handleSsoResponse(registerData).then(() => {
-            if (onImageLoadCallback) {
-              onImageLoadCallback();
-            }
-          })
-
-        // .then(() => {
-        //   const usr = user();
-        //   dispatchEvent(window, 'registersuccess', usr);
-        // })
-        // .catch(() => {
-        //   dispatchEvent(window, 'registerfailure', registerData);
-        // });
+      .then(registerData =>
+        handleSsoResponse(registerData).then(() => {
+          if (onImageLoadCallback) {
+            onImageLoadCallback();
+          }
+        })
       );
   }
 
   /**
    * Parses an SSO response to a login request and converts it to an actionable object
-   * @param response the response recieved from an SSO login request
+   * @param response the response received from an SSO login request
    * @return {*} a promise that resolves a parsed object element of the following form:
    * {status: 'success'|'failure' , data: {i:*,}, message}
    */
@@ -201,9 +194,9 @@ export default function UserService(config = {}) {
    * @param serviceData an object element of the following form:
    * {status: 'success'|'failure' , data: {i:*,}, message}
    * @return {*} a promise that resolves iff:
-   * 1) The first param is a succesufully parsed success response from an SSO login endpoint
+   * 1) The first param is a successfully parsed success response from an SSO login endpoint
    * 2) All of the side effect operations that happen as a result of the response,
-   * have completed succesufully.
+   * have completed successfully.
    */
   function handleSsoResponse(serviceData) {
     let promise = null;

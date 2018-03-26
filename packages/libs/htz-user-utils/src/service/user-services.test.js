@@ -61,21 +61,21 @@ describe('UserFactory CookieBased Module', () => {
         username: 'test@haaretz.com',
         password: '1231234',
       };
-      await expect(userService.login(credentials)).rejects.toEqual(
-        loginFailureServiceData
+      await expect(userService.login(credentials)).rejects.toThrow(
+        new Error(loginFailureServiceData)
       );
     });
 
-    it('should reject on any method if the response data is corrupt', async () => {
+    it('should reject on logout method if the response data is corrupt', async () => {
       const userService = createUserService();
       fetch.resetMocks();
       fetch.mockResponses([ loginFailureResponse, ]);
-      await expect(userService.logout()).rejects.toEqual(
-        loginFailureServiceData
+      await expect(userService.logout()).rejects.toThrow(
+        new Error(loginFailureServiceData)
       );
     });
 
-    it('should reject on any method if the response data is corrupt', async () => {
+    it('should reject on register method if the response data is corrupt', async () => {
       const userService = createUserService();
       fetch.resetMocks();
       fetch.mockResponses([ loginFailureResponse, ]);
@@ -92,8 +92,8 @@ describe('UserFactory CookieBased Module', () => {
         gRecaptchaResponse: 'something',
         user: undefined,
       };
-      await expect(userService.register(formData)).rejects.toEqual(
-        loginFailureServiceData
+      await expect(userService.register(formData)).rejects.toThrow(
+        new Error(loginFailureServiceData)
       );
     });
   });
