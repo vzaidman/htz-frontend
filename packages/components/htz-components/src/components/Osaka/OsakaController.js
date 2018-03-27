@@ -83,57 +83,56 @@ class OsakaWrapper extends React.Component {
 
     !this.props.data.loading &&
       !this.state.articles &&
-      OBR &&
+      typeof OBR !== 'undefined' &&
       this.getArticles();
   }
 
   getArticles = () => {
-    OBR &&
-      OBR.extern.callRecs(
-        {
-          permalink:
-            'https://www.haaretz.co.il/news/world/america/.premium-1.5889230',
-          installationKey: 'HAAREPDLHNAQD24GF05E6D3F5',
-          widgetId: 'APP_1',
-        },
-        json => {
-          const articles = json.doc;
-          const promoted = this.props.data.osakaList.items;
-          this.setState({
-            articles: {
-              local: [
-                {
-                  title: articles[0].content,
-                  image: articles[0].thumbnail.url,
-                  url: articles[0].url,
-                },
-                {
-                  title: articles[1].content,
-                  image: articles[1].thumbnail.url,
-                  url: articles[1].url,
-                },
-              ],
-              promoted: [
-                {
-                  title: promoted[0].title,
-                  image: promoted[0].image,
-                  url: promoted[0].path,
-                },
-              ],
-              outbrain: [
-                {
-                  title: articles[4].content,
-                  image: articles[4].thumbnail.url,
-                  url: articles[4].url,
-                  sourceName: articles[4].source_display_name,
-                },
-              ],
-            },
-          });
-          // eslint-disable-next-line no-undef
-          window.addEventListener('resize', evt => this.setBreakPoint());
-        }
-      );
+    OBR.extern.callRecs(
+      {
+        permalink:
+          'https://www.haaretz.co.il/news/world/america/.premium-1.5889230',
+        installationKey: 'HAAREPDLHNAQD24GF05E6D3F5',
+        widgetId: 'APP_1',
+      },
+      json => {
+        const articles = json.doc;
+        const promoted = this.props.data.osakaList.items;
+        this.setState({
+          articles: {
+            local: [
+              {
+                title: articles[0].content,
+                image: articles[0].thumbnail.url,
+                url: articles[0].url,
+              },
+              {
+                title: articles[1].content,
+                image: articles[1].thumbnail.url,
+                url: articles[1].url,
+              },
+            ],
+            promoted: [
+              {
+                title: promoted[0].title,
+                image: promoted[0].image,
+                url: promoted[0].path,
+              },
+            ],
+            outbrain: [
+              {
+                title: articles[4].content,
+                image: articles[4].thumbnail.url,
+                url: articles[4].url,
+                sourceName: articles[4].source_display_name,
+              },
+            ],
+          },
+        });
+        // eslint-disable-next-line no-undef
+        window.addEventListener('resize', evt => this.setBreakPoint());
+      }
+    );
   };
 
   setBreakPoint = () => {
