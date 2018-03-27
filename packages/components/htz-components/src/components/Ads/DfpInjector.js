@@ -59,6 +59,7 @@ export const GET_AD_MANAGER = gql`
           network
           adUnitBase
         }
+        conflictManagementConfig
         impressionManagerConfig
         googleGlobalSettings {
           enableSingleRequest
@@ -101,10 +102,10 @@ class DfpInjector extends Component {
 
   componentDidMount() {
     if (!this.state.shouldRender) {
-      const dfpConfig = this.props.dfpConfig;
-      initDfpScript(dfpConfig);
       // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({ shouldRender: true, });
+      const dfpConfig = this.props.dfpConfig;
+      initDfpScript(dfpConfig);
     }
   }
 
@@ -129,7 +130,7 @@ DfpInjector.defaultProps = defaultProps;
 
 export default graphql(GET_AD_MANAGER, {
   options: props => ({
-    variables: { path: '/', },
+    variables: { path: window.location.path, },
   }),
   props: ({ data, }) => data.page,
 })(DfpInjector);

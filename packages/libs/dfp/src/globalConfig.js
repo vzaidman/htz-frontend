@@ -144,7 +144,7 @@ const dfpBaseConf = {
     return adBlockRemoved;
   },
   get isWriterAlerts() {
-    return location.search.indexOf('writerAlerts=true') > -1;
+    return window.location.search.indexOf('writerAlerts=true') > -1;
   },
   get wifiLocation() {
     let wifiLocation = '';
@@ -346,7 +346,7 @@ function filterUnsettableProperties(config) {
   return ret;
 
   function isGetterBasedProperty(obj, prop) {
-    console.log(obj, prop);
+    // console.log(obj, prop);
     return (
       obj &&
       Object.getOwnPropertyDescriptor(obj, prop) &&

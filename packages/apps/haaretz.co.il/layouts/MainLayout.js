@@ -8,9 +8,10 @@ import { propType, } from 'graphql-anywhere';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import htzTheme from '@haaretz/htz-theme';
 import dynamic from 'next/dynamic';
+import NoSSR from 'react-no-ssr';
 import {
   UserInjector,
-  DfpInjector, // eslint-disable-line no-unused-vars
+  DfpInjector,
   LoginExample,
   RegisterExample,
   StandardArticlePageLayout,
@@ -128,7 +129,9 @@ export class MainLayout extends React.Component {
         <UserInjector />
         {LoginExample}
         {RegisterExample}
-        {/* <DfpInjector /> */}
+        <NoSSR>
+          <DfpInjector />
+        </NoSSR>
         <StyleProvider renderer={styleRenderer} theme={htzTheme}>
           <div>
             {this.renderHead()}
@@ -139,10 +142,12 @@ export class MainLayout extends React.Component {
                 : data.page ? data.page.contentName : ''}
             </h1>
             {data.page ? <Breadcrumbs page={data.page} /> : null}
-            <StandardArticlePageLayout
-              slots={this.props.data.page.slots}
-              seoData={this.props.data.page.seoData}
-            />
+            {data.page.pageType === 'article' && (
+              <StandardArticlePageLayout
+                slots={data.page.slots}
+                seoData={data.page.seoData}
+              />
+            )}
           </div>
         </StyleProvider>
       </Fragment>

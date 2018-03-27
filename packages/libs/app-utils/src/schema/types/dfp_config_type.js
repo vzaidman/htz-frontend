@@ -3,7 +3,7 @@ import { GraphQLObjectType, GraphQLString, GraphQLBoolean, } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
 
 // import ContentType from './content_type';
-import AdUnitConfigType, { AdImpressionConfigType, } from './ad_unit_type';
+// import AdUnitConfigType, { AdImpressionConfigType, } from './ad_unit_type';
 
 const DfpConfigType = new GraphQLObjectType({
   name: 'dfpConfig',

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Article from '../components/Article/Article';
+import AdSlot from '../components/Ads/AdSlot';
 import CommentsWithApollo from '../components/CommentsSection/CommentsWithApollo';
 import Embed from '../components/Embed/Embed';
 import HtmlElement from '../components/Interactive/HtmlElement';
@@ -54,7 +55,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.polobase.JSONListsWrapper', () => <p>JSONListsWrapper</p>, ],
   [ 'com.mouse.ChronicalBoardElement', () => <p>ChronicalBoardElement</p>, ],
   [ 'com.tm.ElementGroup', () => <p>ElementGroup</p>, ],
-  [ 'com.polobase.DfpBannerElement', () => <p>DfpBannerElement</p>, ],
+  [ 'com.polobase.DfpBannerElement', AdSlot, ],
   [
     'com.polobase.ClickTrackerBannersWrapper',
     () => <p>ClickTrackerBannersWrapper</p>,

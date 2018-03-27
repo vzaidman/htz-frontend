@@ -53,6 +53,7 @@ export default Component => {
         query: context.query,
         pathname: context.pathname,
       };
+      console.log(url);
 
       // Evaluate the composed component's `getInitialProps()`.
       let initialProps = { url, };

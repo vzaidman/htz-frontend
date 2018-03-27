@@ -517,9 +517,9 @@ export default class AdManager {
             `${adSlot.id}${this.config.department}`
           );
           this.user.impressionManager.registerImpression(`${adSlot.id}_all`);
-          console.log('registered impression for ', adSlot.id);
-          console.log('showing ', adSlot.id);
-          console.trace();
+          // console.log('registered impression for ', adSlot.id);
+          // console.log('showing ', adSlot.id);
+          // console.trace();
         }
         else {
           /*

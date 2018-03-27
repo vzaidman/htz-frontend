@@ -88,7 +88,14 @@ app
     // /1\.\d+.*$/
     // /^(\/.*(?!\d\.\d+))$/
     server.get([ /^.*(1\.\d+){1}$/, ], (req, res) => {
-      console.log('captured an article!');
+      if (DEV) {
+        console.log(
+          'captured an article at  req.path: ',
+          req.path,
+          ' req.params[0]: ',
+          req.params[0]
+        );
+      }
       if (!req.params[0].startsWith('/')) {
         req.params[0] = `/${req.params[0]}`;
       }

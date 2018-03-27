@@ -32,8 +32,6 @@ function create(initialState) {
   const stateLink = withClientState({
     cache: inMemoryCache,
     defaults: {
-      // todo: remove after bug fix, this is a workaround explained here:
-      // https://github.com/apollographql/apollo-link-state/issues/187#issuecomment-361753208
       scroll: {
         velocity: null,
         x: 0,

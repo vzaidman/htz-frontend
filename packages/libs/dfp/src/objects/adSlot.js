@@ -159,12 +159,12 @@ export default class AdSlot {
         if (this.deferredSlot) {
           this.slot = this.defineSlot();
         }
-        console.log(
-          'calling show for slot',
-          this.id,
-          ' called @',
-          window.performance.now()
-        );
+        // console.log(
+        //   'calling show for slot',
+        //   this.id,
+        //   ' called @',
+        //   window.performance.now()
+        // );
         // console.log('calling show for slot',this.id,' called @',window.performance.now());
         document.getElementById(this.id).classList.remove(hiddenClass);
 
