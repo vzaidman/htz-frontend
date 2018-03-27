@@ -519,16 +519,18 @@ const ButtonWrapper = ({
   WrapperElement,
 }) =>
   (href ? (
-    <Link href={href} prefetch={prefetch}>
-      <a
-        id={id || null}
-        {...attrs}
-        className={className}
-        {...(isDisabled || isBusy ? { disabled: true, tabIndex: '-1', } : {})}
-        {...(onClick ? { onClick, } : {})}
-      >
-        <React.Fragment>{children}</React.Fragment>
-      </a>
+    <Link
+      href={href}
+      prefetch={prefetch}
+      className={className}
+      onClick={onClick}
+      attrs={{
+        id,
+        ...(isDisabled || isBusy ? { disabled: true, tabIndex: '-1', } : {}),
+        ...attrs,
+      }}
+    >
+      <React.Fragment>{children}</React.Fragment>
     </Link>
   ) : (
     <WrapperElement

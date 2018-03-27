@@ -25,7 +25,7 @@ Object {
         <a
           className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
           href="https://www.haaretz.co.il/literature/prose/.premium-REVIEW-1.4740317"
-          onClick={[Function]}
+          onClick={null}
           target="_blank"
         >
           קנאוסגורד פולט את הזיכרונות שלו בכפייה

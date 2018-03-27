@@ -19,7 +19,7 @@ Object {
         <a
           className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
           href="https://www.google.com"
-          onClick={[Function]}
+          onClick={null}
           target={null}
         >
           הכפר חאדר הדרוזי, 

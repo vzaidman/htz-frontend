@@ -74,6 +74,7 @@ const LogoStyle = ({
 
 const IconsUlStyle = ({ theme, }) => ({
   marginInlineStart: 'auto',
+  fontSize: '3rem',
   ...theme.mq(
     {
       until: 's',
@@ -128,10 +129,7 @@ export default function FooterHead() {
                     <li className={className}>
                       <Link
                         content={
-                          <IconFaceBookLogo
-                            miscStyles={IconMiscStyle}
-                            size={theme.mq({ from: 's', }) ? 3 : 5}
-                          />
+                          <IconFaceBookLogo miscStyles={IconMiscStyle} />
                         }
                         href="https://www.facebook.com/haaretz"
                       />
@@ -143,9 +141,7 @@ export default function FooterHead() {
                   render={({ className, }) => (
                     <li className={className}>
                       <Link
-                        content={
-                          <IconTwitter miscStyles={IconMiscStyle} size={3} />
-                        }
+                        content={<IconTwitter miscStyles={IconMiscStyle} />}
                         href="https://twitter.com/haaretz"
                       />
                     </li>
@@ -157,7 +153,7 @@ export default function FooterHead() {
                   render={({ className, }) => (
                     <li className={className}>
                       <Link
-                        content={<IconAndroid size={3} />}
+                        content={<IconAndroid />}
                         href="https://play.google.com/store/apps/details?id=com.haaretz"
                       />
                     </li>
@@ -169,7 +165,7 @@ export default function FooterHead() {
                   render={({ className, }) => (
                     <li className={className}>
                       <Link
-                        content={<IconApple size={3} />}
+                        content={<IconApple />}
                         href="https://itunes.apple.com/us/app/id521559643"
                       />
                     </li>
@@ -194,7 +190,7 @@ export default function FooterHead() {
                   render={({ className, }) => (
                     <li className={className}>
                       <Link
-                        content={<IconMailFooter size={3} />}
+                        content={<IconMailFooter />}
                         href="https://www.haaretz.co.il/misc/redemail"
                       />
                     </li>
@@ -207,7 +203,7 @@ export default function FooterHead() {
                   render={({ className, }) => (
                     <li className={className}>
                       <Link
-                        content={<IconRss size={3} />}
+                        content={<IconRss />}
                         href="https://www.haaretz.co.il/misc/rss"
                       />
                     </li>

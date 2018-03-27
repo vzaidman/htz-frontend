@@ -2,8 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NextLink from 'next/link';
 import isNextLink from './isNextLink';
+import { attrsPropType, } from '../../propTypes/attrsPropType';
 
 const propTypes = {
+  /**
+   * An object of attrbutes to set on the DOM element.
+   * Passed to the underlying react element
+   */
+  attrs: attrsPropType,
   /** Link's destination */
   href: PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ]).isRequired,
   children: PropTypes.node,
@@ -25,6 +31,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  attrs: null,
   className: null,
   children: null,
   content: null,
@@ -34,8 +41,16 @@ const defaultProps = {
   onClick: null,
 };
 
-// eslint-disable-next-line react/prop-types
-const LinkWrapper = ({ href, onClick, passedOnClick, children, }) => {
+/* eslint-disable react/prop-types */
+const LinkWrapper = ({
+  attrs,
+  children,
+  className,
+  href,
+  onClick,
+  passedOnClick,
+  ref,
+}) => {
   const wrappedOnclick = (...args) => {
     if (passedOnClick) {
       passedOnClick(...args);
@@ -45,27 +60,33 @@ const LinkWrapper = ({ href, onClick, passedOnClick, children, }) => {
     console.log('LOGGING BI FOR', href);
     return onClick(...args);
   };
-
+  /* eslint-disable jsx-a11y/no-static-element-interactions */
+  /* eslint-disable jsx-a11y/click-events-have-key-events */
   return (
-    <a href={href} onClick={wrappedOnclick}>
+    <a className={className} onClick={wrappedOnclick} ref={ref} {...attrs}>
       {children}
     </a>
   );
 };
+/* eslint-enable jsx-a11y/no-static-element-interactions */
+/* eslint-enable jsx-a11y/click-events-have-key-events */
+/* eslint-enable react/prop-types */
 
 function Link({
-  href,
-  target,
+  attrs,
   children,
-  content,
-  prefetch,
   className,
+  content,
   focus,
+  href,
   onClick: passedOnClick,
+  prefetch,
+  target,
 }) {
   // eslint-disable-next-line eqeqeq
   const renderContent = content != undefined ? content : children;
-  return isNextLink(href) ? (
+  // eslint-disable-next-line eqeqeq
+  return isNextLink(href) && target == null ? (
     <NextLink
       prefetch={prefetch}
       // href={href}
@@ -73,24 +94,25 @@ function Link({
       as={href}
     >
       <LinkWrapper
-        target={target}
+        attrs={attrs}
         className={className}
-        ref={linkRef => focus && linkRef && linkRef.focus()}
         href={href}
+        ref={linkRef => focus && linkRef && linkRef.focus()}
         passedOnClick={passedOnClick}
       >
-        NextLink: {renderContent}
+        {renderContent}
       </LinkWrapper>
     </NextLink>
   ) : (
     <a
+      {...attrs}
       href={href}
       target={target}
       className={className}
       ref={linkRef => focus && linkRef && linkRef.focus()}
       onClick={passedOnClick}
     >
-      Link: {renderContent}
+      {renderContent}
     </a>
   );
 }

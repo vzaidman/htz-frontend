@@ -21,7 +21,7 @@ Object {
           <a
             className={null}
             href="http://eran.haaretz.co.il/1.6614"
-            onClick={[Function]}
+            onClick={null}
             target={null}
           >
             <span
@@ -46,7 +46,7 @@ Object {
           <a
             className={null}
             href="http://eran.haaretz.co.il/news/education/.premium-1.5662"
-            onClick={[Function]}
+            onClick={null}
             target={null}
           >
             <span

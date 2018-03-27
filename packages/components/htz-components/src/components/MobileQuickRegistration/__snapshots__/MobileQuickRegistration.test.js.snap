@@ -28,28 +28,24 @@ Object {
         הירשמו עכשיו להמלצות הקריאה של הארץ
       </div>
       <a
-        className={null}
+        className="htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-a htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-h htz-ay htz-az htz-d htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-p htz-bi htz-t htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
         href="mailto:doptint-subscribe-1338625@newsletters.haaretz.co.il?subject=הרשמה להמלצות הקריאה של הארץ&body=להרשמה מהירה שילחו מייל זה מבלי לשנות את כתובת הנמען"
-        onClick={[Function]}
+        id={null}
+        onClick={null}
         target={null}
       >
-        <a
-          className="htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-a htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-h htz-ay htz-az htz-d htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-p htz-bi htz-t htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
-          id={null}
+        <span
+          className="htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co"
         >
           <span
-            className="htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co"
+            className="htz-cp htz-cq htz-cr htz-cs htz-ab"
           >
-            <span
-              className="htz-cp htz-cq htz-cr htz-cs htz-ab"
-            >
-              הרשמה בקליק
-            </span>
+            הרשמה בקליק
           </span>
-          <span
-            className="htz-ct htz-cu htz-cv htz-l htz-o htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk"
-          />
-        </a>
+        </span>
+        <span
+          className="htz-ct htz-cu htz-cv htz-l htz-o htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk"
+        />
       </a>
     </div>
   </div>,

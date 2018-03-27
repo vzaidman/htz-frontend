@@ -6,7 +6,7 @@ Object {
     <a
       className={null}
       href="https://themarker.com"
-      onClick={[Function]}
+      onClick={null}
       target="_blank"
     >
       The Marker
@@ -25,7 +25,7 @@ Object {
       <a
         className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"
         href="http://www.iflscience.com/physics/new-type-of-bizarre-quantum-material-discovered/"
-        onClick={[Function]}
+        onClick={null}
         target="_blank"
       >
         <span>
@@ -50,7 +50,7 @@ Object {
     <a
       className={null}
       href="https://www.haaretz.co.il"
-      onClick={[Function]}
+      onClick={null}
       target={null}
     >
       Haaretz
@@ -66,7 +66,7 @@ Object {
     <a
       className={null}
       href="https://www.haaretz.co.il"
-      onClick={[Function]}
+      onClick={null}
       target={null}
     >
       Haaretz
@@ -82,7 +82,7 @@ Object {
     <a
       className={null}
       href="https://www.haaretz.co.il"
-      onClick={[Function]}
+      onClick={null}
       target={null}
     >
       test content

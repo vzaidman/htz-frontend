@@ -18,7 +18,7 @@ Object {
           <a
             className={null}
             href="http://eran.themarker.com:8080/hayehudim-baim-1.2670"
-            onClick={[Function]}
+            onClick={null}
             target={null}
           >
             <span
@@ -34,7 +34,7 @@ Object {
           <a
             className={null}
             href="/food/dairy-1.2429"
-            onClick={[Function]}
+            onClick={null}
             target={null}
           >
             <span
@@ -50,7 +50,7 @@ Object {
           <a
             className={null}
             href="/news/terror-1.2603"
-            onClick={[Function]}
+            onClick={null}
             target={null}
           >
             <span

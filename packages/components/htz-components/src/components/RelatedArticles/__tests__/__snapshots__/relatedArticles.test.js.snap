@@ -12,7 +12,7 @@ Object {
         <a
           className={null}
           href="http://eran.haaretz.co.il/1.6614"
-          onClick={[Function]}
+          onClick={null}
           target={null}
         >
           <span
@@ -28,7 +28,7 @@ Object {
         <a
           className={null}
           href="http://eran.haaretz.co.il/news/world/LIVE-1.2597"
-          onClick={[Function]}
+          onClick={null}
           target={null}
         >
           <span
@@ -44,7 +44,7 @@ Object {
         <a
           className={null}
           href="http://eran.haaretz.co.il/news/education/.premium-1.5662"
-          onClick={[Function]}
+          onClick={null}
           target={null}
         >
           <span
@@ -60,7 +60,7 @@ Object {
         <a
           className={null}
           href="http://eran.themarker.com:8080/1.6636"
-          onClick={[Function]}
+          onClick={null}
           target={null}
         >
           <span
@@ -76,7 +76,7 @@ Object {
         <a
           className={null}
           href="http://eran.haaretz.co.il/1.6643"
-          onClick={[Function]}
+          onClick={null}
           target={null}
         >
           <span
