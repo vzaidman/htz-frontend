@@ -14,7 +14,7 @@ const extendedListContainerStyle = ({
   display: showMe ? 'flex' : 'none',
   backgroundColor: color('footer', 'bg'),
   alignItems: 'baseline',
-  paddingBottom: '6rem',
+  paddingBottom: '3rem',
   marginBottom: '2rem',
   ...borderBottom(borderWidth, 0, borderStyle, color('footer', 'border')),
 });
@@ -34,12 +34,6 @@ const titleLiStyle = ({ theme, }) => ({
 
 const StyledUlTitle = createComponent(titleLiStyle, 'h4');
 
-const ulBodyStyle = ({ theme, }) => ({
-  // marginBottom: '1rem',
-});
-
-const StyledUlBody = createComponent(ulBodyStyle, 'ul');
-
 const listLinkStyle = ({ theme, isLast, isBold = false, }) => ({
   ...(isBold ? { fontWeight: 'bold', } : {}),
   extend: [ theme.type(-1), ],
@@ -50,12 +44,6 @@ const StyledListLink = createComponent(listLinkStyle, Link, [
   'href',
   'focus',
 ]);
-
-const toolboxListStyle = () => ({
-  // minWidth: '20rem',
-});
-
-const StyledToolboxList = createComponent(toolboxListStyle, 'ul');
 
 ExpandedList.propTypes = {
   /** Footer's array of columns data */
@@ -79,7 +67,6 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
         >
           <Grid>
             {columnsArr.map((lists, colIdx) => (
-              // eslint-disable-next-line react/no-array-index-key
               <GridItem
                 width={[
                   { from: 'm', until: 'l', value: 1 / 2, },
@@ -93,7 +80,7 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
                   // eslint-disable-next-line react/no-array-index-key
                   <StyledSection key={listIdx}>
                     <StyledUlTitle>{innerList.title}</StyledUlTitle>
-                    <StyledUlBody>
+                    <ul>
                       {innerList.items.map((link, linkIdx) => (
                         <li key={`${link.text}${link.href}`}>
                           <StyledListLink
@@ -102,7 +89,7 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
                           />
                         </li>
                       ))}
-                    </StyledUlBody>
+                    </ul>
                   </StyledSection>
                 ))}
               </GridItem>
@@ -116,13 +103,13 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
             { from: 'xl', value: 1 / 6, },
           ]}
         >
-          <StyledToolboxList>
+          <ul>
             {toolbox.map(link => (
               <li key={`${link.text}${link.href}`}>
                 <StyledListLink content={link.text} href={link.href} isBold />
               </li>
             ))}
-          </StyledToolboxList>
+          </ul>
         </GridItem>
       </Grid>
     </ExtendedFooterContainer>

@@ -58,6 +58,7 @@ const liStyle = ({ theme, }) => ({
 });
 const StyledLi = createComponent(liStyle, 'li');
 const textStyle = ({ theme, }) => ({
+  marginTop: '1rem',
   extend: [ theme.type(-3), ],
 });
 const StyledText = createComponent(textStyle);

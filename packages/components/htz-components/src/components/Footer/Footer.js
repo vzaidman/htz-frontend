@@ -1,119 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
-import { borderBottom, } from '@haaretz/htz-css-tools';
 import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
 import ButtonFooter from '../Button/Button';
 import Link from '../Link/Link';
 import LayoutFooterRow from '../PageLayout/LayoutRow';
 import LayoutFooterContainer from '../PageLayout/LayoutContainer';
-import IconFaceBookLogo from '../Icon/icons/IconFacebookLogo';
-import IconHaaretzLogo from '../Icon/icons/IconHaaretzLogo';
-import IconTwitter from '../Icon/icons/IconTwitter';
-import IconGPlus from '../Icon/icons/IconGPlus';
-import IconRss from '../Icon/icons/IconRss';
-import IconMailFooter from '../Icon/icons/IconMailFooter';
-import IconApple from '../Icon/icons/IconApple';
-import IconAndroid from '../Icon/icons/IconAndroid';
 import ExpandedList from './elements/Desktop/ExpandedList';
 import {
   ColumnTypes,
   PairTypes,
 } from './elements/Desktop/DesktopElementPropTypes';
+// Views ///////////////////////////////////////////////////////////////////
+import FooterHead from './elements/FooterHead';
 import MobileView from './elements/MobileMainContainer';
+// ///////////////////////////////////////////////////////////////////
 
 const desktopMainListLayoutContainerStyle = {
   display: 'flex',
   flexDirection: 'column',
-  paddingTop: [ { from: 's', value: '10rem', }, ],
-  paddingBottom: [ { from: 's', value: '10rem', }, { until: 's', value: '2rem', }, ],
-};
-
-const desktopHeadStyle = ({
-  theme: { color, mq, footerBorderStyle: { borderWidth, lines, borderStyle, }, },
-}) => ({
-  ...mq(
-    { from: 's', },
-    {
-      ...borderBottom(
-        borderWidth,
-        lines,
-        borderStyle,
-        color('footer', 'border')
-      ),
-      alignItems: 'baseline',
-      display: 'flex',
-      justifyContent: 'space-between',
-    }
-  ),
-});
-
-const StyledDesktopHead = createComponent(desktopHeadStyle);
-
-const LogoStyle = ({
-  theme: {
-    color,
-    mq,
-    footerBorderStyle: {
-      footerMobileBorderStyle: { borderWidth, lines, borderStyle, },
-    },
-  },
-}) => ({
-  ...mq(
-    {
-      until: 's',
-    },
-    {
-      display: 'block',
-      textAlign: 'center',
-      ...borderBottom(
-        borderWidth,
-        lines,
-        borderStyle,
-        color('footer', 'border')
-      ),
-    }
-  ),
-});
-const StyledLogo = createComponent(LogoStyle);
-
-const IconsStyle = ({ theme, }) => ({
-  ...theme.mq(
-    {
-      until: 's',
-    },
-    {
-      display: 'block',
-      textAlign: 'center',
-      marginInlineStart: '-3rem',
-      marginBottom: '3rem',
-    }
-  ),
-});
-const StyledIcons = createComponent(IconsStyle, 'ul');
-
-const IconMiscStyle = {
-  marginInlineStart: [
-    { from: 's', value: '3rem', },
-    { until: 's', value: '4rem', },
-  ],
-  marginTop: [ { until: 's', value: '1.5rem', }, ],
-  fontSize: [ { until: 's', value: '3.5rem', }, ],
-};
-
-const MobileIconStyle = {
-  display: [ { until: 's', value: 'none', }, ],
-  marginInlineStart: '3rem',
+  paddingTop: [ { from: 's', value: '13rem', }, ],
+  paddingBottom: [ { from: 's', value: '8rem', }, { until: 's', value: '4rem', }, ],
 };
 
 const headLinkStyle = ({ theme, isLast, }) => ({
+  marginLeft: '1rem',
+  fontWeight: 'bold',
   ':after': {
     content: isLast ? '""' : '"|"',
     marginRight: '1rem',
   },
-  marginLeft: '1rem',
-  fontWeight: 'bold',
 });
 
 const StyledHeadLink = createComponent(headLinkStyle, Link, [
@@ -123,7 +40,6 @@ const StyledHeadLink = createComponent(headLinkStyle, Link, [
 
 const ListUlStyle = () => ({
   marginInlineEnd: '2rem',
-  marginTop: '-1.5rem',
 });
 const StyledUlLinks = createComponent(ListUlStyle, 'ul');
 
@@ -151,10 +67,10 @@ const StyledDesktopBody = createComponent(desktopBodyStyle);
 const headWrapperLinkStyle = ({ theme, }) => ({
   display: 'flex',
   flexWrap: 'no-wrap',
-  justifyContent: 'space-between',
   alignItems: 'center',
   marginTop: '2rem',
   marginBottom: '4rem',
+  extend: [ theme.mq({ until: 'l', }, { alignItems: 'start', }), ],
 });
 
 const StyledHeadLinksWrapper = createComponent(headWrapperLinkStyle);
@@ -163,17 +79,6 @@ const optionalExtendedWrapper = ({ theme, }) => ({
   extend: [ theme.type(-2), ],
 });
 const StyledDesktopText = createComponent(optionalExtendedWrapper);
-
-// todo: ask if there is better fix for logo when svg shape is not square
-const LogoMiscStyle = {
-  marginBottom: '-1rem',
-  paddingTop: [
-    {
-      until: 's',
-      value: '1.5rem',
-    },
-  ],
-};
 
 export class Footer extends React.Component {
   static propTypes = {
@@ -214,7 +119,7 @@ export class Footer extends React.Component {
   render() {
     const { theme, } = this.props;
     const {
-      theme: { footerDesktopI18n: { ExpandedButton, Copyright, }, color, mq, },
+      theme: { footerDesktopI18n: { ExpandedButton, Copyright, }, color, },
       Footer: { footer, loading, },
     } = this.props;
 
@@ -237,69 +142,13 @@ export class Footer extends React.Component {
           paddingInlineStart: '8rem',
           paddingInlineEnd: '8rem',
         }}
+        tagName="footer"
       >
         <LayoutFooterContainer
           miscStyles={desktopMainListLayoutContainerStyle}
           bgc={color('footer', 'bg')}
         >
-          <StyledDesktopHead>
-            <StyledLogo>
-              <IconHaaretzLogo size={6} miscStyles={LogoMiscStyle} />
-            </StyledLogo>
-            <StyledIcons>
-              <StyledLi>
-                <Link
-                  content={
-                    <IconFaceBookLogo
-                      size={mq({ from: 's', }) ? 3 : 5}
-                      miscStyles={IconMiscStyle}
-                    />
-                  }
-                  href="https://www.facebook.com/haaretz"
-                />
-              </StyledLi>
-              <StyledLi>
-                <Link
-                  content={<IconTwitter size={3} miscStyles={IconMiscStyle} />}
-                  href="https://twitter.com/haaretz"
-                />
-              </StyledLi>
-              <StyledLi>
-                <Link
-                  content={
-                    <IconAndroid size={3} miscStyles={MobileIconStyle} />
-                  }
-                  href="https://play.google.com/store/apps/details?id=com.haaretz"
-                />
-              </StyledLi>
-              <StyledLi>
-                <Link
-                  content={<IconApple size={3} miscStyles={MobileIconStyle} />}
-                  href="https://itunes.apple.com/us/app/id521559643"
-                />
-              </StyledLi>
-              <StyledLi>
-                <Link
-                  content={<IconGPlus size={3} miscStyles={IconMiscStyle} />}
-                  href="https://plus.google.com/+haaretzcoil"
-                />
-              </StyledLi>
-              <StyledLi>
-                <Link
-                  content={
-                    <IconMailFooter size={3} miscStyles={MobileIconStyle} />
-                  }
-                  href="https://www.haaretz.co.il/misc/redemail"
-                />
-              </StyledLi>
-              <StyledLi>
-                <Link
-                  content={<IconRss size={3} miscStyles={MobileIconStyle} />}
-                  href="https://www.haaretz.co.il/misc/rss"
-                />
-              </StyledLi>
-            </StyledIcons>
-          </StyledDesktopHead>
+          <FooterHead />
           <MobileView theme={theme} />
           <StyledDesktopBody>
             <StyledHeadLinksWrapper>
@@ -315,18 +164,17 @@ export class Footer extends React.Component {
                   </StyledLi>
                 ))}
               </StyledUlLinks>
-              <StyledLi>
-                <ButtonFooter
-                  variant="secondary"
-                  boxModel={{ hp: 4.5, vp: 0.75, }}
-                  onClick={() => this.handleClick()}
-                  attrs={{
-                    'aria-expanded': expanded ? 'true' : 'false',
-                  }}
-                >
-                  {expanded ? ExpandedButton.close : ExpandedButton.showMore}
-                </ButtonFooter>
-              </StyledLi>
+              <ButtonFooter
+                variant="secondary"
+                boxModel={{ hp: 4, vp: 1, }}
+                onClick={() => this.handleClick()}
+                attrs={{
+                  'aria-expanded': expanded ? 'true' : 'false',
+                }}
+                miscStyles={{ marginInlineStart: 'auto', }}
+              >
+                {expanded ? ExpandedButton.close : ExpandedButton.showMore}
+              </ButtonFooter>
             </StyledHeadLinksWrapper>
             <div
               ref={el => {
