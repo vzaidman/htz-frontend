@@ -8,10 +8,8 @@ import { propType, } from 'graphql-anywhere';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import htzTheme from '@haaretz/htz-theme';
 import dynamic from 'next/dynamic';
-import NoSSR from 'react-no-ssr';
 import {
   UserInjector,
-  DfpInjector,
   LoginExample,
   RegisterExample,
   StandardArticlePageLayout,
@@ -27,6 +25,9 @@ const ScrollInjector = dynamic(
   import('../components/ScrollListener/ScrollListener'),
   { ssr: false, }
 );
+const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
+  ssr: false,
+});
 
 const PageData = gql`
   query PageData($path: String!) {
@@ -114,7 +115,7 @@ export class MainLayout extends React.Component {
   }
 
   render() {
-    const { data, } = this.props;
+    const { data, url, } = this.props;
     if (data.error) {
       // FIXME: This is essentially duplicated in `withData`. Figure out a
       // more reasonable error handling strategy.
@@ -129,9 +130,7 @@ export class MainLayout extends React.Component {
         <UserInjector />
         {LoginExample}
         {RegisterExample}
-        <NoSSR>
-          <DfpInjector />
-        </NoSSR>
+        <DfpInjector path={url.query.path} />
         <StyleProvider renderer={styleRenderer} theme={htzTheme}>
           <div>
             {this.renderHead()}

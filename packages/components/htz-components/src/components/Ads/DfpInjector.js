@@ -52,7 +52,7 @@ const initDfpScript = (dfpConfig = {}) => {
 
 export const GET_AD_MANAGER = gql`
   query getDfpConfig($path: String!) {
-    page(path: $path) @client {
+    page(path: $path) {
       dfpConfig {
         adSlotConfig
         adManagerConfig {
@@ -76,6 +76,8 @@ const propTypes = {
   loading: PropTypes.bool,
   /** Indicates data error state */
   error: PropTypes.bool,
+  /** Indicates the path of the page to get the dfpConfig from */
+  path: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
   dfpConfig: PropTypes.shape({
     adSlotConfig: PropTypes.shape().isRequired,
     adManagerConfig: PropTypes.shape({
@@ -130,7 +132,7 @@ DfpInjector.defaultProps = defaultProps;
 
 export default graphql(GET_AD_MANAGER, {
   options: props => ({
-    variables: { path: window.location.path, },
+    variables: { path: props.path, },
   }),
   props: ({ data, }) => data.page,
 })(DfpInjector);
