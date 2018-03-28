@@ -111,8 +111,6 @@ export class Footer extends React.Component {
     this.setState(prevState => ({
       expanded: !prevState.expanded,
     }));
-
-    console.log(this.focusElement);
     this.focusElement.focus();
   };
 

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import htzTheme, { cssReset, } from '@haaretz/htz-theme';
 import { schema, } from '@haaretz/app-utils';
-import { ApolloClient, InMemoryCache, ApolloLink, } from 'apollo-client-preset';
+import { ApolloLink, } from 'apollo-link';
+import { ApolloClient, } from 'apollo-client';
+import { InMemoryCache, } from 'apollo-cache-inmemory';
 import { withClientState, } from 'apollo-link-state';
 import { ApolloProvider, } from 'react-apollo';
 import { createRenderer, StyleProvider, } from '@haaretz/fela-utils';

@@ -92,8 +92,35 @@
         "packages/components/htz-components": ["devDependencies"]
       }
     },
-    "apollo-client-preset": {
-      "^1.0.6": {
+    "apollo-client": {
+      "^2.2.8": {
+        "packages/apps/*": ["dependencies"],
+        "packages/{components/htz-components,libs/app-utils}": [
+          "devDependencies",
+          "peerDependencies"
+        ]
+      }
+    },
+    "apollo-cache-inmemory": {
+      "^1.1.12": {
+        "packages/apps/*": ["dependencies"],
+        "packages/{components/htz-components,libs/app-utils}": [
+          "devDependencies",
+          "peerDependencies"
+        ]
+      }
+    },
+    "apollo-link": {
+      "^1.2.1": {
+        "packages/apps/*": ["dependencies"],
+        "packages/{components/htz-components,libs/app-utils}": [
+          "devDependencies",
+          "peerDependencies"
+        ]
+      }
+    },
+    "apollo-link-http": {
+      "^1.5.3": {
         "packages/apps/*": ["dependencies"],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
@@ -102,7 +129,7 @@
       }
     },
     "apollo-link-state": {
-      "^0.4.0": {
+      "^0.4.1": {
         "packages/apps/*": ["dependencies"],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
