@@ -8,14 +8,18 @@ import serialize from 'serialize-javascript';
  * The returned class should be exported as the default export in the
  * `pages/_document.js` file of a Next.js app.
  *
- * @param {object} props
- * @param {object} props.styleRenderer
+ * @param {object} options
+ * @param {object} options.styleRenderer
  *   a react-fela renderer
- * @param {string|string[]} props.staticRules
+ * @param {string|string[]} options.staticRules
  *   css string (or an array of) for Fela to render with `renderStatic`
- * @param {Array} props.fontRules
+ * @param {Component} options.StyleProvider
+ *   The Fela style provider used in the app
+ * @param {object} options.theme
+ *   The Fela theme used in the app
+ * @param {Array} options.fontRules
  *   An array of argument arrays for Fela's `renderFont`
- * @param {object} props.appData
+ * @param {object} options.appData
  *   An application data object, defaults to just having
  *   a `config` field with data from the `config` module.
  *
@@ -23,6 +27,8 @@ import serialize from 'serialize-javascript';
  */
 const createDocument = ({
   styleRenderer,
+  FelaProvider,
+  theme,
   fontRules = [],
   staticRules = '',
   appData = { config, },
@@ -36,9 +42,14 @@ const createDocument = ({
           ? staticRules.forEach(rule => styleRenderer.renderStatic(rule))
           : styleRenderer.renderStatic(staticRules);
       }
-      const page = renderPage();
+      const page = renderPage(App => props => (
+        <FelaProvider theme={theme} renderer={styleRenderer}>
+          <App {...props} />
+        </FelaProvider>
+      ));
       const sheetList = renderToSheetList(styleRenderer);
-      styleRenderer.clear();
+
+      // styleRenderer.clear();
       return {
         ...page,
         sheetList,
@@ -48,15 +59,19 @@ const createDocument = ({
     }
 
     renderStyles() {
-      return this.props.sheetList.map(({ type, media, css, }) => (
-        <style
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: css, }}
-          data-fela-type={type}
-          key={`${type}-${media}`}
-          media={media}
-        />
-      ));
+      return this.props.sheetList.map(
+        ({ type, rehydration, support, media, css, }) => (
+          <style
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: css, }}
+            data-fela-rehydration={rehydration}
+            data-fela-support={support}
+            data-fela-type={type}
+            key={`${type}-${media}`}
+            media={media}
+          />
+        )
+      );
     }
 
     renderData() {

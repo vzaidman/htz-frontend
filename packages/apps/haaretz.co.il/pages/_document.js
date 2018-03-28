@@ -1,5 +1,6 @@
 import { createDocument, } from '@haaretz/htz-components';
-import { cssReset, } from '@haaretz/htz-theme';
+import htzTheme, { cssReset, } from '@haaretz/htz-theme';
+import { StyleProvider, } from '@haaretz/fela-utils';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 
 // TODO: replace this with a more preformant font loading method,
@@ -29,6 +30,8 @@ const fonts = [
 
 const HaaretzDocument = createDocument({
   styleRenderer,
+  FelaProvider: StyleProvider,
+  theme: htzTheme,
   fontRules: fonts,
   staticRules: cssReset,
   isRtl: true,

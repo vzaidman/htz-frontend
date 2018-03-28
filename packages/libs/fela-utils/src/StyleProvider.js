@@ -16,16 +16,20 @@ import { Provider, ThemeProvider, } from 'react-fela';
  * @prop {Object} [theme=null]
  *   A theme object tailored for the use-case.
  */
-
 StyleProvider.propTypes = {
   children: PropTypes.node,
-  renderer: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  renderer: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   theme: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 StyleProvider.defaultProps = {
   children: null,
+  renderer: null,
   theme: null,
+};
+
+StyleProvider.contextTypes = {
+  renderer: PropTypes.object,
 };
 
 /**
@@ -35,10 +39,18 @@ StyleProvider.defaultProps = {
  *
  * @return {ReactElement}
  */
-export default function StyleProvider({ children, renderer, theme, ...props }) {
+export default function StyleProvider(
+  { children, renderer, theme, ...props },
+  context
+) {
   /* This allows us to pass down props */
   const child = Children.only(children);
-  return (
+
+  return context.renderer ? (
+    <ThemeProvider theme={theme || {}}>
+      {isValidElement(child) ? cloneElement(child, { ...props, }) : child}
+    </ThemeProvider>
+  ) : (
     <Provider renderer={renderer}>
       <ThemeProvider theme={theme || {}}>
         {isValidElement(child) ? cloneElement(child, { ...props, }) : child}
