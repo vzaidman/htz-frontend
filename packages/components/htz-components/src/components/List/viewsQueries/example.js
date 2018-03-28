@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 export default gql`
   query ListQuery($path: String!) {
     list(path: $path) {
+      title
       items {
         image {
           viewMode

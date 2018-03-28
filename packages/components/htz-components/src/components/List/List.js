@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql, compose, } from 'react-apollo';
 
-import ListQuery from './queries/fetchList';
 import getView from './getView';
 
 const propTypes = {
@@ -11,39 +10,44 @@ const propTypes = {
    */
   contentId: PropTypes.string.isRequired,
   /**
-   * Passed implicitly by Apollo, not directly as an attribute on the component
+   * List's view name.
    */
-  data: PropTypes.shape({
-    /** Indicates data loading state */
-    loading: PropTypes.bool,
-    /** Indicates data error state */
-    error: PropTypes.bool,
-    list: PropTypes.object,
-  }).isRequired,
+  view: PropTypes.string.isRequired,
 };
 
-const List = props => {
-  const { data, } = props;
-  if (data.loading) {
-    return <div>loading ...</div>;
-  }
-  if (data.error) {
-    return <h1>ERROR</h1>;
-  }
+class List extends React.Component {
+  state = {
+    listComponent: null,
+  };
 
-  const ViewType = getView(data.list.viewtype);
-  return <ViewType {...data.list} />;
-};
+  componentWillMount() {
+    const { contentId, view, } = this.props;
+
+    getView(view)
+      .then(response => {
+        this.setState({
+          listComponent: Array.isArray(response)
+            ? compose(
+              graphql(response[1].default, {
+                options: () => ({
+                  variables: { path: contentId, },
+                }),
+                props: props => ({
+                  data: props.data,
+                }),
+              })
+            )(response[0].default)
+            : response,
+        });
+      })
+      .catch(err => console.log(err));
+  }
+  render() {
+    const ListComponent = this.state.listComponent;
+    return ListComponent ? <ListComponent {...this.props} /> : <p>List</p>;
+  }
+}
 
 List.propTypes = propTypes;
 
-export default compose(
-  graphql(ListQuery, {
-    options: props => ({
-      variables: { path: props.contentId, },
-    }),
-    props: props => ({
-      data: props.data,
-    }),
-  })
-)(List);
+export default List;

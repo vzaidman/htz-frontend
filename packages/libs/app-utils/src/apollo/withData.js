@@ -86,7 +86,7 @@ export default Component => {
             // it's gone now. For now, just throw a 404 if any error message is
             // 'Not Found', and a 500 otherwise.
             console.error('getDataFromTree() failed!');
-            // console.error(err);
+            console.error(err);
 
             const isNotFound = err.graphQLErrors.some(
               ({ message, }) => message === 'Not Found'

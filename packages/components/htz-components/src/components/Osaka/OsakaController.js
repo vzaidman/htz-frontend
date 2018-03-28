@@ -188,7 +188,7 @@ function OsakaController({ data, width, }) {
 export default compose(
   graphql(ListQuery, {
     options: props => ({
-      variables: { path: '7.7474', },
+      variables: { path: '7.7473', },
     }),
     props: props => ({
       data: props.data,
