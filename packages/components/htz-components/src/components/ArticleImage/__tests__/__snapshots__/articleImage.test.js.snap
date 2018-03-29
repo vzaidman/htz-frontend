@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gif image with full viewMode  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c"
+    >
+      <button
+        aria-label="הגדל"
+        className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        onClick={[Function]}
+      >
+        <svg
+          className="htz-o htz-p htz-q htz-r htz-s htz-t"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+        >
+           
+          <path
+            d="M248.1 228.5L175.7 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S9 51.3 9 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2zm10.6-19h-20v-100h20v100zm40-60v20h-100v-20h100z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+      <div
+        className="htz-u htz-v htz-a htz-w htz-x"
+      >
+        <img
+          alt="alternative text"
+          className="htz-y htz-z htz-j htz-ab htz-w"
+          src="https://images.haarets.co.il/image/upload/w_400,h_332,c_crop,g_north_west/q_auto,h_581,w_700,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1519208144/1.6651.4030303706.gif"
+          title="me"
+        />
+      </div>
+      <div
+        className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj"
+      >
+        this is the image text
+        <span
+          className="htz-ak htz-al htz-am"
+        >
+          me
+        </span>
+      </div>
+    </figure>
+  </div>,
+  "styles": ".htz-a{position:relative}.htz-d{background-color:rgba(22,22,22,0.5)}.htz-e{border-radius:50%}.htz-f{cursor:-webkit-zoom-in;cursor:-moz-zoom-in;cursor:zoom-in}.htz-g{left:1rem}.htz-h{height:5rem}.htz-i{padding:1rem}.htz-j{position:absolute}.htz-k{top:1rem}.htz-l{width:5rem}.htz-m{z-index:1}.htz-n:hover{background-color:#161616}.htz-o{vertical-align:-0.15em}.htz-p{color:#FFF}.htz-q{fill:#FFF}.htz-r{font-size:2.5rem}.htz-s{display:block}.htz-t{margin:0 auto}.htz-u{height:0rem}.htz-v{padding-bottom:83%}.htz-w{width:100%}.htz-x{background-color:#EBEBEB}.htz-y{height:100%}.htz-z{left:0rem}.htz-ab{top:0rem}.htz-ac{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-ae{font-weight:700}.htz-af{color:#505050}.htz-ak{font-weight:300}.htz-al:before{content:'קרדיט: '}.htz-am{margin-right:1rem}@media (max-width: 79.9375em){.htz-b{margin-bottom:4rem}.htz-ag{font-size:2rem}.htz-ah{line-height:1.5em}}@media (min-width: 80em){.htz-c{margin-bottom:3rem}.htz-ai{font-size:2rem}.htz-aj{line-height:1.5em}}",
+}
+`;
+
+exports[`Infographic image with 1/3 viewMode  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"
+    >
+      <button
+        aria-label="הגדל"
+        className="htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+        onClick={[Function]}
+      >
+        <svg
+          className="htz-s htz-t htz-u htz-v htz-w htz-x"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+        >
+           
+          <path
+            d="M248.1 228.5L175.7 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S9 51.3 9 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2zm10.6-19h-20v-100h20v100zm40-60v20h-100v-20h100z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+      <div
+        className="htz-y htz-z htz-a htz-ab htz-ac htz-ae htz-af"
+      >
+        <picture>
+          <source
+            media="(max-width: 47.9375em)"
+            srcSet={
+              Array [
+                "https://images.haarets.co.il/image/upload/w_1024,h_768,c_crop,g_north_west/q_auto,h_525,w_700,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1519208157/1.5804.509020086.jpg 700w",
+              ]
+            }
+          />
+          <source
+            media="(min-width: 48em)"
+            srcSet={
+              Array [
+                "https://images.haarets.co.il/image/upload/w_1024,h_768,c_crop,g_north_west/q_auto,h_525,w_700,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1519208155/1.5804.3169121816.jpg 700w",
+              ]
+            }
+          />
+          <img
+            alt="alternative text"
+            className="htz-ag htz-ah htz-n htz-ai htz-z"
+            src="https://images.haarets.co.il/image/upload/w_1024,h_768,c_crop,g_north_west/q_auto,h_525,w_700,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1519208155/1.5804.3169121816.jpg 700w"
+            title="קרדיט"
+          />
+        </picture>
+      </div>
+      <div
+        className="htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap"
+      >
+        חיידק הקפה נדבק בו בגיל מבוגר יחסית, פאולו פנרו בבוטגה שלו בעיר ברה נדבק בו בגיל מבוגר
+        <span
+          className="htz-aq htz-ar htz-as"
+        >
+          קרדיט
+        </span>
+      </div>
+    </figure>
+  </div>,
+  "styles": ".htz-a{position:relative}.htz-d{float:left}.htz-e{margin-bottom:0.75rem}.htz-f{margin-right:1.5rem}.htz-g{width:calc(100%/3)}.htz-h{background-color:rgba(22,22,22,0.5)}.htz-i{border-radius:50%}.htz-j{cursor:-webkit-zoom-in;cursor:-moz-zoom-in;cursor:zoom-in}.htz-k{left:1rem}.htz-l{height:5rem}.htz-m{padding:1rem}.htz-n{position:absolute}.htz-o{top:1rem}.htz-p{width:5rem}.htz-q{z-index:1}.htz-r:hover{background-color:#161616}.htz-s{vertical-align:-0.15em}.htz-t{color:#FFF}.htz-u{fill:#FFF}.htz-v{font-size:2.5rem}.htz-w{display:block}.htz-x{margin:0 auto}.htz-y{height:0rem}.htz-z{width:100%}.htz-ab{padding-bottom:75%}.htz-af{background-color:#EBEBEB}.htz-ag{height:100%}.htz-ah{left:0rem}.htz-ai{top:0rem}.htz-aj{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-ak{font-weight:700}.htz-al{color:#505050}.htz-aq{font-weight:300}.htz-ar:before{content:'קרדיט: '}.htz-as{margin-right:1rem}@media (max-width: 79.9375em){.htz-b{margin-bottom:4rem}.htz-am{font-size:2rem}.htz-an{line-height:1.5em}}@media (min-width: 80em){.htz-c{margin-bottom:3rem}.htz-ao{font-size:2rem}.htz-ap{line-height:1.5em}}@media (max-width: 47.9375em){.htz-ac{padding-bottom:75%}}@media (min-width: 48em){.htz-ae{padding-bottom:75%}}",
+}
+`;
+
+exports[`Vertical image with regular viewMode  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c"
+    >
+      <button
+        aria-label="הגדל"
+        className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        onClick={[Function]}
+      >
+        <svg
+          className="htz-o htz-p htz-q htz-r htz-s htz-t"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+        >
+           
+          <path
+            d="M248.1 228.5L175.7 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S9 51.3 9 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2zm10.6-19h-20v-100h20v100zm40-60v20h-100v-20h100z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+      <div
+        className="htz-u htz-v htz-a htz-w htz-x"
+      >
+        <img
+          className="htz-y htz-z htz-j htz-ab htz-w"
+          src="https://images.haarets.co.il/image/upload/w_960,h_1440,c_crop,g_north_west/q_auto,h_1050,w_700,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1519208169/1.2589.4224562979.jpg"
+        />
+      </div>
+      <div
+        className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj"
+      >
+        אימפריית הפשע
+        
+      </div>
+    </figure>
+  </div>,
+  "styles": ".htz-a{position:relative}.htz-d{background-color:rgba(22,22,22,0.5)}.htz-e{border-radius:50%}.htz-f{cursor:-webkit-zoom-in;cursor:-moz-zoom-in;cursor:zoom-in}.htz-g{left:1rem}.htz-h{height:5rem}.htz-i{padding:1rem}.htz-j{position:absolute}.htz-k{top:1rem}.htz-l{width:5rem}.htz-m{z-index:1}.htz-n:hover{background-color:#161616}.htz-o{vertical-align:-0.15em}.htz-p{color:#FFF}.htz-q{fill:#FFF}.htz-r{font-size:2.5rem}.htz-s{display:block}.htz-t{margin:0 auto}.htz-u{height:0rem}.htz-v{padding-bottom:150%}.htz-w{width:100%}.htz-x{background-color:#EBEBEB}.htz-y{height:100%}.htz-z{left:0rem}.htz-ab{top:0rem}.htz-ac{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-ae{font-weight:700}.htz-af{color:#505050}@media (max-width: 79.9375em){.htz-b{margin-bottom:4rem}.htz-ag{font-size:2rem}.htz-ah{line-height:1.5em}}@media (min-width: 80em){.htz-c{margin-bottom:3rem}.htz-ai{font-size:2rem}.htz-aj{line-height:1.5em}}",
+}
+`;
