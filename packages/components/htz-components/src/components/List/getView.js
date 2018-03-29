@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import dynamic from 'next/dynamic';
 
@@ -33,7 +34,9 @@ const getViews = viewType => {
 
     const promiseQuery = new Promise((resolve, reject) => {
       queryPath()
-        .then(Query => resolve(Query))
+        .then(Query => {
+          resolve(Query);
+        })
         .catch(err => reject(err));
     });
 

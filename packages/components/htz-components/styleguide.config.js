@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const path = require('path');
 const { readdirSync, lstatSync, } = require('fs');
 const { configure, } = require('@haaretz/htz-react-base/styleguide');
@@ -13,7 +14,7 @@ const componentSectionsPath = path.join(process.cwd(), 'src', 'components');
 const isDir = file =>
   lstatSync(path.join(componentSectionsPath, file)).isDirectory();
 
-const isSubsection = [ 'Embed', ];
+const isSubsection = [ 'Embed', 'List', ];
 
 const sectionPatterns = {
   Icon: path.join(componentSectionsPath, 'Icon', 'Icon.js'),
@@ -28,6 +29,21 @@ const sectionPatterns = {
         componentSectionsPath,
         'Embed',
         'elements',
+        '[A-Z]*.js{,x}'
+      ),
+    },
+  ],
+  List: [
+    {
+      name: 'List Examples',
+      components: path.join(componentSectionsPath, 'List', 'Lists.js'),
+    },
+    {
+      name: 'List view-types',
+      components: path.join(
+        componentSectionsPath,
+        'List',
+        'views',
         '[A-Z]*.js{,x}'
       ),
     },
@@ -60,9 +76,11 @@ module.exports = configure(config =>
           return `import { Embed, } from '${packageName}';`;
         }
 
-        return `import { ${componentName}, } from '${packageName}';  (${
-          nonExampleComponentPath
-        })`;
+        if (componentPath.indexOf('Lists') !== -1) {
+          return `import { List, } from '${packageName}';`;
+        }
+
+        return `import { ${componentName}, } from '${packageName}';  (${nonExampleComponentPath})`;
       }
 
       return componentPath;

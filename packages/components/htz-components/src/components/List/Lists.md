@@ -4,12 +4,10 @@
 
 **Table of Contents**
 
-* [List examples](#list-examples)
+* [A List component](#a-list-component)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### List examples
-
 ```jsx
-<List contentId={'1.7474'} />
+<List contentId="" view="" />
 ```
