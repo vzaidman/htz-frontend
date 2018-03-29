@@ -20,13 +20,22 @@ export function createLoaders() {
   const cmlinkLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(path =>
+        fetch(`http://${host}.haaretz.co.il/json/cmlink/${path}`).then(
+          response => response.json()
+        )
+      )
+    )
+  );
+  const listsLoader = new DataLoader(keys =>
+    Promise.all(
+      keys.map(path =>
         fetch(
           `http://${host}.haaretz.co.il/papi/cmlink/${path}?vm=whtzResponsive&exploded=true`
         ).then(response => response.json())
       )
     )
   );
-  return { pageLoader, cmlinkLoader, };
+  return { pageLoader, cmlinkLoader, listsLoader, };
 }
 
 export function createPosters(cookies) {

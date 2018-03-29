@@ -22,7 +22,7 @@ const RootQuery = new GraphQLObjectType({
       type: List,
       args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
       resolve(parentValue, { path, }, context) {
-        return context.cmlinkLoader.load(path);
+        return context.listsLoader.load(path);
       },
     },
     page: {
