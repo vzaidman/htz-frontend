@@ -1,8 +1,9 @@
-/** ************************************************************** *
+module.exports = (views, queries) => `
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the List's views map, it is generated
- * from the `listViewsFileTemplate.js` file is this directory.
+ * from the \`listViewsFileTemplate.js\` file is this directory.
  * *************************************************************** */
 
 /* eslint-disable import/no-unresolved */
@@ -10,25 +11,22 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 
 const views = new Map([
-  [
-    'Example',
+  ${Object.keys(views)
+    .map(
+      view => `[
+    '${view}',
     {
-      view: () => import('./views/Example.js'),
-      query: () => import('./viewsQueries/example.js'),
+      view: () => import('${views[view]}'),
+      query: () => import('${queries[view.toLowerCase()]}'),
     },
-  ],
-  [
-    'Bender',
-    {
-      view: () => import('./views/Bender'),
-      query: () => import('./viewsQueries/bender'),
-    },
-  ],
+  ]`
+    )
+    .join(',\n  ')},
 ]);
 
 // eslint-disable-next-line react/prop-types
 const DefaultComponent = ({ view, }) => (
-  <p>{`There is no template for ${view} yet`}</p>
+  <p>{\`There is no template for \${view} yet\`}</p>
 );
 
 const getViews = viewType => {
@@ -61,3 +59,4 @@ const getViews = viewType => {
 };
 
 export default viewType => getViews(viewType) || DefaultComponent;
+`;

@@ -20,6 +20,7 @@
     "gc": "htz-scripts commitizen",
     "icons": "node scripts/create-icons.js",
     "embeds": "node scripts/update-embed-files.js",
+    "lists": "node scripts/update-list-files.js",
     "lint": "htz-scripts lint",
     "prepare": "npm run build",
     "styleguide": "htz-scripts styleguide",

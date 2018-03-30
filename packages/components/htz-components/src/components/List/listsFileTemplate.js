@@ -1,8 +1,9 @@
-/** ************************************************************** *
+module.exports = views => `
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
- * from the `listsFileTemplate.js` file is this directory.
+ * from the \`listsFileTemplate.js\` file is this directory.
  * *************************************************************** */
 
 /* eslint-disable import/no-unresolved */
@@ -16,8 +17,9 @@ import mocks from '../../../styleguide/mocks';
 const mock = mocks.List;
 
 const views = {
-  Example: dynamic(import('./views/Example.js')),
-  Bender: dynamic(import('./views/Bender')),
+  ${Object.keys(views)
+    .map(view => `${view}: dynamic(import('${views[view]}')),`)
+    .join('\n  ')}
 };
 
 const listWrapperStyle = () => ({
@@ -65,6 +67,8 @@ export default class List extends React.Component {
 
   render() {
     const ExampleList = views[this.state.type];
+    console.clear();
+    console.log(mock());
     return (
       <div style={{ position: 'relative', }}>
         <MenuList
@@ -75,8 +79,9 @@ export default class List extends React.Component {
           <option value="placeHolder" disabled>
             Select a preview
           </option>
-          <option value="Example">Example</option>
-          <option value="Bender">Bender</option>
+          ${Object.keys(views)
+    .map(view => `<option value="${view}">${view}</option>`)
+    .join('\n          ')}
         </MenuList>
         {this.state.type && (
           <ListWrapper>
@@ -87,3 +92,4 @@ export default class List extends React.Component {
     );
   }
 }
+`;
