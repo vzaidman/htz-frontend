@@ -4,7 +4,7 @@
 
 **Table of Contents**
 
-* [A List component](#a-list-component)
+* [Lists Preview](#lists-preview)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
