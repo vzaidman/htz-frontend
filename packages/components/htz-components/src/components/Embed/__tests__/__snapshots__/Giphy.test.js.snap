@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Giphy  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b"
+    >
+      <iframe
+        allowFullScreen={true}
+        className="giphy-embed"
+        frameBorder="0"
+        height={541.25}
+        onLoad={null}
+        src="https://giphy.com/embed/I5xVnGJRHZZf2"
+        title="Giphy"
+        width={600}
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{margin-bottom:-4px}",
+}
+`;

@@ -15,10 +15,25 @@ import exampleProps from './utils/exampleProps';
 import RadioGroup from './utils/RadioGroup';
 import LoadingScreen from './utils/LoadingScreen';
 
-const views = {
+const embeds = {
   ${Object.keys(elementsList)
-    .map(element => `${element}: dynamic(import('${elementsList[element]}')),`)
+    .map(element => `${element}: () => import('${elementsList[element]}'),`)
     .join('\n  ')}
+};
+
+const getEmbed = embedType => {
+  const embedPath = embeds[embedType] || null;
+
+  if (embedPath) {
+    return new Promise((resolve, reject) => {
+      dynamic(
+        embedPath()
+          .then(Embed => resolve(Embed))
+          .catch(err => reject(err))
+      );
+    });
+  }
+  return null;
 };
 
 const embedWrapperStyle = () => ({
@@ -76,9 +91,9 @@ export default class Embed extends React.Component {
   state = {
     showLoading: true,
     props: null,
+    component: null,
     type: null,
     multiProps: null,
-    selectedOption: null,
     isLoading: false,
   };
 
@@ -89,7 +104,11 @@ export default class Embed extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (!this.state.props || nextState.props !== this.state.props) {
+    if (
+      !this.state.props ||
+      nextState.props !== this.state.props ||
+      nextState.component !== this.state.component
+    ) {
       return true;
     }
     return nextState.isLoading !== this.state.isLoading;
@@ -129,7 +148,7 @@ export default class Embed extends React.Component {
         props,
         showLoading,
         multiProps: Array.isArray(props) ? props : null,
-        selectedOption: null,
+        component: null,
         isLoading: showLoading && !Array.isArray(props),
       });
     }
@@ -137,7 +156,6 @@ export default class Embed extends React.Component {
       const propsIndex = e.target.value;
       this.setState({
         props: this.state.multiProps[propsIndex],
-        selectedOption: e.target.value,
         isLoading: this.state.showLoading,
       });
     }
@@ -154,15 +172,13 @@ export default class Embed extends React.Component {
 
   getEmbedComponentFromState = () => {
     if (!Array.isArray(this.state.props)) {
-      const Element = views[this.state.type] || null;
-      return (
-        <EmbedWrapper>
-          <Element
-            {...this.state.props}
-            onLoadCallback={this.state.showLoading ? this.onLoaded : null}
-          />
-        </EmbedWrapper>
-      );
+      getEmbed(this.state.type)
+        .then(response =>
+          this.setState({
+            component: response.default,
+          })
+        )
+        .catch(err => console.log(err));
     }
     return null;
   };
@@ -182,13 +198,14 @@ export default class Embed extends React.Component {
   ];
 
   render() {
+    const Component = this.state.component;
     if (!this.state.fromProps) {
       return (
         <div style={{ position: 'relative', }}>
           <MenuList
             name="elementType"
             onChange={this.onSelectEmbed}
-            defaultValue={'placeHolder'}
+            defaultValue="placeHolder"
           >
             <option value="placeHolder" disabled>
               Select a preview
@@ -198,8 +215,16 @@ export default class Embed extends React.Component {
     .join('\n            ')}
           </MenuList>
           <LoadingScreen isLoading={this.state.isLoading} />
-          { this.state.multiProps !== null ? this.getButtonsComponent() : '' }
-          { this.state.props !== null ? this.getEmbedComponentFromState() : '' }
+          {this.state.multiProps && this.getButtonsComponent()}
+          {this.state.props && this.getEmbedComponentFromState()}
+          {Component && (
+            <EmbedWrapper>
+              <Component
+                {...this.state.props}
+                onLoadCallback={this.state.showLoading ? this.onLoaded : null}
+              />
+            </EmbedWrapper>
+          )}
         </div>
       );
     }

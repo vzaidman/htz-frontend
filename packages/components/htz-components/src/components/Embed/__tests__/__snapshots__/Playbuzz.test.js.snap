@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayBuzz  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e"
+    >
+      <div
+        className="pb_feed"
+        data-comments={false}
+        data-embed-by="5d056e35-f42e-456c-aa99-d57c2371e11f"
+        data-game-info={false}
+        data-item="df25b0eb-1402-435d-a4f2-83ff06cf7b36"
+        data-recommend={false}
+        data-shares={false}
+        data-version="2"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{width:100%}.htz-b{overflow:auto}.htz-c{max-height:700px}.htz-d{position:relative}.htz-e{margin:0 auto}",
+}
+`;

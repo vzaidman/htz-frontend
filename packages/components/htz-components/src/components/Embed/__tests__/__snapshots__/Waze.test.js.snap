@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Waze  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <iframe
+        allowFullScreen=""
+        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        frameBorder="0"
+        height="450"
+        onLoad={null}
+        src="https://embed.waze.com/he/iframe?zoom=15&lat=32.06408&lon=34.77688&&pin=1"
+        width="600"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}",
+}
+`;

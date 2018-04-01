@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Twitter grid  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<a class=\\\\\\"twitter-grid\\\\\\" data-partner=\\\\\\"tweetdeck\\\\\\" href=\\\\\\"https://twitter.com/woodenecho/timelines/890172042527592448\\\\\\">Testing collections</a>",
+          }
+        }
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{overflow:auto}.htz-b{height:400px}.htz-c{max-height:800px}.htz-d{position:relative}.htz-e{margin:0 auto}.htz-f .twitter-tweet{margin-bottom:0 !important}",
+}
+`;
+
+exports[`Twitter search timeline  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<a class=\\\\\\"twitter-timeline\\\\\\" href=\\\\\\"https://twitter.com/hashtag/webdesign\\\\\\" data-widget-id=\\\\\\"890169905349357568\\\\\\">#webdesign Tweets</a>",
+          }
+        }
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{overflow:auto}.htz-b{height:auto}.htz-c{max-height:800px}.htz-d{position:relative}.htz-e{margin:0 auto}.htz-f .twitter-tweet{margin-bottom:0 !important}",
+}
+`;
+
+exports[`Twitter single tweet  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<blockquote class=\\\\\\"twitter-tweet\\\\\\" data-lang=\\\\\\"en\\\\\\"><p lang=\\\\\\"en\\\\\\" dir=\\\\\\"ltr\\\\\\"><a href=\\\\\\"https://twitter.com/hashtag/Netflix?src=hash\\\\\\">#Netflix</a>'s <a href=\\\\\\"https://twitter.com/hashtag/BoJackHorseman?src=hash\\\\\\">#BoJackHorseman</a> finally has a season 4 premiere date <a href=\\\\\\"https://t.co/xt08ol2mN2\\\\\\">https://t.co/xt08ol2mN2</a> <a href=\\\\\\"https://t.co/IYI8pq05rc\\\\\\">pic.twitter.com/IYI8pq05rc</a></p>— UPROXX (@UPROXX) <a href=\\\\\\"https://twitter.com/UPROXX/status/884416188280864768\\\\\\">July 10, 2017</a></blockquote>",
+          }
+        }
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{overflow:auto}.htz-b{height:auto}.htz-c{max-height:800px}.htz-d{position:relative}.htz-e{margin:0 auto}.htz-f .twitter-tweet{margin-bottom:0 !important}",
+}
+`;
+
+exports[`Twitter user timeline  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<a class=\\\\\\"twitter-timeline\\\\\\" data-partner=\\\\\\"tweetdeck\\\\\\" href=\\\\\\"https://twitter.com/woodenecho/timelines/890172042527592448\\\\\\">Testing collections - Curated tweets by woodenecho</a>",
+          }
+        }
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{overflow:auto}.htz-b{height:400px}.htz-c{max-height:800px}.htz-d{position:relative}.htz-e{margin:0 auto}.htz-f .twitter-tweet{margin-bottom:0 !important}",
+}
+`;
+
+exports[`Twitter video  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<blockquote class=\\\\\\"twitter-video\\\\\\" data-lang=\\\\\\"en\\\\\\"><p lang=\\\\\\"en\\\\\\" dir=\\\\\\"ltr\\\\\\">Tips For Combating Climate Change <a href=\\\\\\"https://t.co/QXm60aJyTR\\\\\\">pic.twitter.com/QXm60aJyTR</a></p>— The Onion (@TheOnion) <a href=\\\\\\"https://twitter.com/TheOnion/status/890050311196254211\\\\\\">July 26, 2017</a></blockquote>",
+          }
+        }
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{overflow:auto}.htz-b{height:auto}.htz-c{max-height:800px}.htz-d{position:relative}.htz-e{margin:0 auto}.htz-f .twitter-tweet{margin-bottom:0 !important}",
+}
+`;

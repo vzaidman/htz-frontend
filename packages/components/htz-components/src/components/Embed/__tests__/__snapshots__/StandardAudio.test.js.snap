@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`103FM  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d"
+      height={300}
+    >
+      <iframe
+        frameBorder="no"
+        height="100%"
+        onLoad={null}
+        scrolling="no"
+        seamless={true}
+        src="https://103fm.maariv.co.il/mediaEmbed.aspx?ZrqvnVq=HDGKJL&c41t4nzVQ=EE"
+        title="audio embed"
+        width="100%"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{height:300px}.htz-c{overflow:hidden}.htz-d{position:relative}",
+}
+`;
+
+exports[`SoundCloud playlist  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d"
+      height={450}
+    >
+      <iframe
+        frameBorder="no"
+        height="100%"
+        onLoad={null}
+        scrolling="no"
+        seamless={true}
+        src="https://w.soundcloud.com/player/?url=https://soundcloud.com/maikbaptist-two/sets/bad-religion-plus-coversongs"
+        title="audio embed"
+        width="100%"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{height:450px}.htz-c{overflow:hidden}.htz-d{position:relative}",
+}
+`;
+
+exports[`SoundCloud track  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d"
+      height={180}
+    >
+      <iframe
+        frameBorder="no"
+        height="100%"
+        onLoad={null}
+        scrolling="no"
+        seamless={true}
+        src="https://w.soundcloud.com/player/?url=https://soundcloud.com/defjam/bad_religion"
+        title="audio embed"
+        width="100%"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{height:180px}.htz-c{overflow:hidden}.htz-d{position:relative}",
+}
+`;

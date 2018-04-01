@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Facebook comment  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a"
+    >
+      <div
+        className="fb-video"
+        data-allowfullscreen="true"
+        data-autoplay="false"
+        data-href="https://www.facebook.com/haaretz/posts/10155571966087520?comment_id=10155572023347520&comment_tracking=%7B%22tn%22%3A%22R0%22%7D"
+        data-show-text="false"
+        data-width="auto"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{width:100%}",
+}
+`;
+
+exports[`Facebook post  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a"
+    >
+      <div
+        className="fb-post"
+        data-href="https://www.facebook.com/haaretz/posts/10155626716202520"
+        data-width=""
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{width:552px}",
+}
+`;
+
+exports[`Facebook video  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a"
+    >
+      <div
+        className="fb-video"
+        data-allowfullscreen="true"
+        data-autoplay="false"
+        data-href="https://www.facebook.com/haaretz/videos/10155591353462520/"
+        data-show-text="false"
+        data-width="auto"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{width:100%}",
+}
+`;

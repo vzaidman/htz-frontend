@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bloomberg  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <iframe
+        allowFullScreen=""
+        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        frameBorder="0"
+        height="315"
+        marginHeight="0"
+        marginWidth="0"
+        onLoad={null}
+        scrolling="no"
+        src="https://www.bloomberg.com/api/embed/iframe?id=11433877-bb50-4b36-974c-ea3e5b2c3260"
+        width="560"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}",
+}
+`;
+
+exports[`CNN  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <iframe
+        allowFullScreen=""
+        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        frameBorder="0"
+        height="315"
+        marginHeight="0"
+        marginWidth="0"
+        onLoad={null}
+        scrolling="no"
+        src="//fave.api.cnn.io/v1/fav/?video=world/2017/01/19/donald-trump-putin-russia-best-prostitutes-moos-pkg.cnn&customer=cnn&edition=international&env=prod"
+        width="560"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}",
+}
+`;
+
+exports[`Mako  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <iframe
+        allowFullScreen=""
+        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        frameBorder="0"
+        height="315"
+        marginHeight="0"
+        marginWidth="0"
+        onLoad={null}
+        scrolling="no"
+        src="https://www.mako.co.il/AjaxPage?jspName=embedHTML5video.jsp&galleryChannelId=5287910d276cd510VgnVCM100000290c10acRCRD&videoChannelId=02a034d102bfc510VgnVCM100000290c10acRCRD&vcmid=5e41465459b6d510VgnVCM100000290c10acRCRD"
+        width="560"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}",
+}
+`;
+
+exports[`Reuters  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <iframe
+        allowFullScreen=""
+        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        frameBorder="0"
+        height="315"
+        marginHeight="0"
+        marginWidth="0"
+        onLoad={null}
+        scrolling="no"
+        src="https://www.reuters.com/assets/iframe/yovideo?videoId=372329416"
+        width="560"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}",
+}
+`;
+
+exports[`The Guardian  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <iframe
+        allowFullScreen=""
+        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        frameBorder="0"
+        height="315"
+        marginHeight="0"
+        marginWidth="0"
+        onLoad={null}
+        scrolling="no"
+        src="https://embed.theguardian.com/embed/video/politics/commentisfree/video/2017/jun/07/britain-transformed-election-what-on-earth-is-going-on-video"
+        width="560"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}",
+}
+`;

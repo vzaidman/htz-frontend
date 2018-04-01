@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pinterest board  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c"
+    >
+      <a
+        data-pin-board-width="350"
+        data-pin-do="embedBoard"
+        data-pin-scale-height="500"
+        data-pin-scale-width="240"
+        href="https://www.pinterest.com/ItsSequoia/marvel-comics/"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0 0 -3px}.htz-b{direction:ltr}.htz-c{width:100%}",
+}
+`;
+
+exports[`Pinterest pin  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c"
+    >
+      <a
+        data-pin-do="embedPin"
+        data-pin-terse="true"
+        data-pin-width="large"
+        href="https://www.pinterest.com/pin/372321094177951937/"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0 0 -3px}.htz-b{direction:ltr}.htz-c{width:100%}",
+}
+`;
+
+exports[`Pinterest profile  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c"
+    >
+      <a
+        data-pin-board-width="350"
+        data-pin-do="embedUser"
+        data-pin-scale-height="500"
+        data-pin-scale-width="240"
+        href="https://www.pinterest.com/marvelcomics/"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0 0 -3px}.htz-b{direction:ltr}.htz-c{width:100%}",
+}
+`;

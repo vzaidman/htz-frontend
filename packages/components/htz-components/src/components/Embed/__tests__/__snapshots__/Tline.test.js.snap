@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tline  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="tline-iframe op-interactive htz-a htz-b"
+      data-alias="donald-trumps-path-to-the-white-house"
+      data-version="0.1.1"
+    >
+      <iframe
+        className="tline-iframe-nojs"
+        frameBorder="0"
+        height="700"
+        scrolling="yes"
+        src="https://view.tline.io/embed/donald-trumps-path-to-the-white-house/?noJS=1&v=0.1.1"
+        title="video embed"
+        width="100%"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{text-align:center}.htz-b{margin:0 auto}",
+}
+`;

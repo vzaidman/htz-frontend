@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BandCamp album  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d"
+    >
+      <iframe
+        allowFullScreen=""
+        frameBorder="0"
+        height={600}
+        onLoad={null}
+        src="https://bandcamp.com/EmbeddedPlayer/transparent=true/album=3087453349/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true"
+        title="BandCamp"
+        width="100%"
+      >
+        &lt;a href="http://kidsinsane.bandcamp.com/album/cluster"&gt;Cluster by Kids Insane&lt;/a&gt;
+      </iframe>
+    </figure>
+  </div>,
+  "styles": ".htz-a{overflow:auto}.htz-b{position:relative}.htz-c{margin:0 auto -4px}.htz-d{max-width:700px}",
+}
+`;

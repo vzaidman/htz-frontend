@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Google-Maps directions  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <iframe
+        allowFullScreen=""
+        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        frameBorder="0"
+        height="450"
+        onLoad={null}
+        src="https://www.google.com/maps/embed/v1/directions?origin=shoken 21 tel aviv&destination=tony vespa habima tel aviv&key=AIzaSyBIAxVLUwr1Lls-usIxb0HxCRpCXMhJtlU&language=en&waypoints=(\\"סורה מארה\\")&mode=walking&units=metric&maptype=satellite"
+        width="600"
+      />
+      <div
+        className="htz-o htz-j htz-p htz-k htz-q htz-l htz-r"
+        onClick={[Function]}
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}.htz-o{bottom:0rem}.htz-p{right:0rem}.htz-q{cursor:pointer}.htz-r{z-index:1}",
+}
+`;
+
+exports[`Google-Maps search  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <iframe
+        allowFullScreen=""
+        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        frameBorder="0"
+        height="450"
+        onLoad={null}
+        src="https://www.google.com/maps/embed/v1/search?q=קופיקס בתל אביב&key=AIzaSyBIAxVLUwr1Lls-usIxb0HxCRpCXMhJtlU&language=en&maptype=satellite"
+        width="600"
+      />
+      <div
+        className="htz-o htz-j htz-p htz-k htz-q htz-l htz-r"
+        onClick={[Function]}
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}.htz-o{bottom:0rem}.htz-p{right:0rem}.htz-q{cursor:pointer}.htz-r{z-index:1}",
+}
+`;
+
+exports[`Google-Maps static  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <iframe
+        allowFullScreen=""
+        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        frameBorder="0"
+        height="450"
+        onLoad={null}
+        src="https://www.google.com/maps/embed/v1/place?q=shoken 21 tel aviv&key=AIzaSyBIAxVLUwr1Lls-usIxb0HxCRpCXMhJtlU&language=en&maptype=satellite"
+        width="600"
+      />
+      <div
+        className="htz-o htz-j htz-p htz-k htz-q htz-l htz-r"
+        onClick={[Function]}
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}.htz-o{bottom:0rem}.htz-p{right:0rem}.htz-q{cursor:pointer}.htz-r{z-index:1}",
+}
+`;
+
+exports[`Google-Maps street view  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <iframe
+        allowFullScreen=""
+        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        frameBorder="0"
+        height="450"
+        onLoad={null}
+        src="https://www.google.com/maps/embed/v1/streetview?location=32.05216,34.772368&key=AIzaSyBIAxVLUwr1Lls-usIxb0HxCRpCXMhJtlU&language=en&fov=20&pitch=00"
+        width="600"
+      />
+      <div
+        className="htz-o htz-j htz-p htz-k htz-q htz-l htz-r"
+        onClick={[Function]}
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}.htz-o{bottom:0rem}.htz-p{right:0rem}.htz-q{cursor:pointer}.htz-r{z-index:1}",
+}
+`;

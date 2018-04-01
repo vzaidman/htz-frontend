@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Arti-Media  1`] = `
+Object {
+  "component": <div>
+    <figure
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    >
+      <div
+        artiMedia={true}
+        className="arti-media-video htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+        id="artimedia-player-989314"
+      />
+    </figure>
+  </div>,
+  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}",
+}
+`;

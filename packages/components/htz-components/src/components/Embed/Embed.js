@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
+
 import embedTypes from './utils/embedTypes';
 import LoadingScreen from './utils/LoadingScreen';
 
@@ -16,8 +17,7 @@ export default class Embed extends React.Component {
   static propTypes = {
     content: PropTypes.string.isRequired,
     embedType: PropTypes.string.isRequired,
-    // eslint-disable-next-line react/forbid-prop-types
-    settings: PropTypes.object,
+    settings: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     inputTemplate: PropTypes.string.isRequired,
   };
 
@@ -27,10 +27,18 @@ export default class Embed extends React.Component {
 
   state = {
     isLoading: false,
+    component: null,
   };
 
   componentWillMount() {
     this.setState({ isLoading: true, });
+    embedTypes(this.props.inputTemplate)
+      .then(response =>
+        this.setState({
+          component: response.default,
+        })
+      )
+      .catch(err => console.log(err));
   }
 
   onLoaded = () => {
@@ -38,7 +46,7 @@ export default class Embed extends React.Component {
   };
 
   render() {
-    const EmbedType = embedTypes[this.props.inputTemplate];
+    const EmbedType = this.state.component;
     return EmbedType ? (
       <EmbedWrapper setHeight={this.state.isLoading}>
         <LoadingScreen isLoading={this.state.isLoading} />
