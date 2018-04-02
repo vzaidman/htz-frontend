@@ -63,7 +63,13 @@ const LinkWrapper = ({
   /* eslint-disable jsx-a11y/no-static-element-interactions */
   /* eslint-disable jsx-a11y/click-events-have-key-events */
   return (
-    <a className={className} onClick={wrappedOnclick} ref={ref} {...attrs}>
+    <a
+      href={href}
+      className={className}
+      onClick={wrappedOnclick}
+      ref={ref}
+      {...attrs}
+    >
       {children}
     </a>
   );
@@ -86,9 +92,10 @@ function Link({
   // eslint-disable-next-line eqeqeq
   const renderContent = content != undefined ? content : children;
   // eslint-disable-next-line eqeqeq
-  return isNextLink(href) && target == null ? (
+  return isNextLink(href) && !target ? (
     <NextLink
       prefetch={prefetch}
+      passHref
       // href={href}
       href={{ pathname: '/', query: { path: href, }, }}
       as={href}
@@ -96,7 +103,6 @@ function Link({
       <LinkWrapper
         attrs={attrs}
         className={className}
-        href={href}
         ref={linkRef => focus && linkRef && linkRef.focus()}
         passedOnClick={passedOnClick}
       >
