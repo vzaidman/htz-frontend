@@ -13,8 +13,8 @@ const views = new Map([
   [
     'Example',
     {
-      view: () => import('./views/Example.js'),
-      query: () => import('./viewsQueries/example.js'),
+      view: () => import('./views/Example/Example.view.js'),
+      query: () => import('./views/Example/Example.query.js'),
     },
   ],
   [

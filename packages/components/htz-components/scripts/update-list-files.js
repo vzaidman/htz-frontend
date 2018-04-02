@@ -9,54 +9,38 @@ const ListDir = path.relative(
   path.join('src', 'components', 'List')
 );
 
-const viewsPath = path.join(process.cwd(), ListDir, 'views');
-const queriesPath = path.join(process.cwd(), ListDir, 'viewsQueries');
+const viewsPath = path.join(ListDir, 'views');
 
-async.parallel(
-  {
-    views: callback => {
-      fs.readdir(viewsPath, (err, files) => {
-        const views = {};
-        if (err) {
-          console.log(err);
-        }
-        else {
-          files.forEach(file => {
-            if (file.includes('.js')) {
-              views[file.slice(0, file.indexOf('.'))] = `./views/${file}`;
-            }
-          });
-        }
-        callback(err, views);
-      });
-    },
-    queries: callback => {
-      fs.readdir(queriesPath, (err, files) => {
-        const queries = {};
-        if (err) {
-          console.log(err);
-        }
-        else {
-          files.forEach(file => {
-            if (file.includes('.js')) {
-              queries[
-                file.slice(0, file.indexOf('.'))
-              ] = `./viewsQueries/${file}`;
-            }
-          });
-        }
-        callback(err, queries);
-      });
-    },
-  },
-  (err, results) => {
-    if (!err) {
-      writeFiles(results);
-    }
+fs.readdir(viewsPath, (err, files) => {
+  const views = {};
+  if (err) {
+    console.log(err);
   }
-);
+  else {
+    files.forEach(view => {
+      const viewPath = path.join(viewsPath, view);
+      if (fs.lstatSync(viewPath).isDirectory()) {
+        views[view] = getViewFiles(view, viewPath);
+      }
+    });
+    writeFiles(views);
+  }
+});
 
-function writeFiles({ views, queries, }) {
+function getViewFiles(view, viewPath) {
+  if (
+    fs.lstatSync(path.join(viewPath, `${view}.view.js`)).isFile() &&
+    fs.lstatSync(path.join(viewPath, `${view}.query.js`)).isFile()
+  ) {
+    return {
+      view: `./views/${view}/${view}.view.js`,
+      query: `./views/${view}/${view}.query.js`,
+    };
+  }
+  return null;
+}
+
+function writeFiles(views) {
   const listsFileTemplate = require(path.join(
     process.cwd(),
     ListDir,
@@ -71,7 +55,7 @@ function writeFiles({ views, queries, }) {
 
   // Write styleguide example file
   const listFile = listsFileTemplate(views);
-  const listViewsFile = listViewsFileTemplate(views, queries);
+  const listViewsFile = listViewsFileTemplate(views);
 
   const listFilePath = path.join(process.cwd(), ListDir, 'Lists.js');
   const listViewsFilePath = path.join(process.cwd(), ListDir, 'getView.js');

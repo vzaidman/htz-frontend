@@ -1,4 +1,4 @@
-module.exports = (views, queries) => `
+module.exports = views => `
 /* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
@@ -16,8 +16,8 @@ const views = new Map([
       view => `[
     '${view}',
     {
-      view: () => import('${views[view]}'),
-      query: () => import('${queries[view.toLowerCase()]}'),
+      view: () => import('${views[view].view}'),
+      query: () => import('${views[view].query}'),
     },
   ]`
     )

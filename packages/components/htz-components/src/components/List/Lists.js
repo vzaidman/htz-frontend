@@ -16,7 +16,7 @@ import mocks from '../../../styleguide/mocks';
 const mock = mocks.List;
 
 const views = {
-  Example: dynamic(import('./views/Example.js')),
+  Example: dynamic(import('./views/Example/Example.view.js')),
   Bender: dynamic(import('./views/Bender')),
 };
 

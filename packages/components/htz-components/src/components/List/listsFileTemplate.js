@@ -18,7 +18,7 @@ const mock = mocks.List;
 
 const views = {
   ${Object.keys(views)
-    .map(view => `${view}: dynamic(import('${views[view]}')),`)
+    .map(view => `${view}: dynamic(import('${views[view].view}')),`)
     .join('\n  ')}
 };
 

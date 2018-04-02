@@ -1,7 +1,8 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import { createComponent, } from 'react-fela';
 
-import Image from '../../Image/Image';
+import Image from '../../../Image/Image';
 
 const wrapperStyle = () => ({
   display: 'flex',
