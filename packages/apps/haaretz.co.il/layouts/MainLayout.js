@@ -44,7 +44,26 @@ const PageData = gql`
         obTitle
       }
       ...BreadcrumbsPage
-      slots
+      slots {
+        ... on HomePageSlots {
+          header
+          topwide
+          topwidesecondary
+          aside
+          main
+          bottom
+          footer
+        }
+        ... on StandardArticleSlots {
+          preHeader
+          header
+          postHeader
+          aside
+          article
+          postMain
+          footer
+        }
+      }
       dfpConfig {
         adSlotConfig
         adManagerConfig {

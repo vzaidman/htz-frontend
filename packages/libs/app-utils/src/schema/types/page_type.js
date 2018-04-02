@@ -1,12 +1,15 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
   GraphQLObjectType,
-  GraphQLString,
-  GraphQLID,
-  GraphQLList,
+  GraphQLUnionType,
   GraphQLNonNull,
+  GraphQLString,
+  GraphQLList,
+  GraphQLID,
 } from 'graphql';
-import GraphQLJSON from 'graphql-type-json';
+
+import StandardArticleSlotsType from './standard_article_slots_type';
+import HomePageSlotsType from './home_page_slots_type';
 
 import TaxonomyItem from './taxonomy_item_type';
 import seoData from './seo_data_type';
@@ -37,8 +40,12 @@ const Page = new GraphQLObjectType({
       type: seoData,
     },
     slots: {
-      type: GraphQLJSON,
-      resolve: parentValue => parentValue.slots,
+      type: new GraphQLUnionType({
+        name: 'Slots',
+        types: [ StandardArticleSlotsType, HomePageSlotsType, ],
+        resolveType: value =>
+          (value.topwidesecondary ? HomePageSlotsType : StandardArticleSlotsType),
+      }),
     },
     dfpConfig: {
       type: DfpConfigType,
