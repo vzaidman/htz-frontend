@@ -78,6 +78,22 @@ const LinkWrapper = ({
 /* eslint-enable jsx-a11y/click-events-have-key-events */
 /* eslint-enable react/prop-types */
 
+const getPage = prefix => {
+  if (prefix) {
+    switch (prefix) {
+      case 'MAGAZINE':
+        return '/magazine';
+      case 'RECIPE':
+      case 'REVIEW':
+      case 'LIVE':
+        return '/article';
+      default:
+        return '/';
+    }
+  }
+  return '/article';
+};
+
 function Link({
   attrs,
   children,
@@ -92,24 +108,46 @@ function Link({
   // eslint-disable-next-line eqeqeq
   const renderContent = content != undefined ? content : children;
   // eslint-disable-next-line eqeqeq
-  return isNextLink(href) && !target ? (
-    <NextLink
-      prefetch={prefetch}
-      passHref
-      // href={href}
-      href={{ pathname: '/', query: { path: href, }, }}
-      as={href}
-    >
-      <LinkWrapper
-        attrs={attrs}
-        className={className}
-        ref={linkRef => focus && linkRef && linkRef.focus()}
-        passedOnClick={passedOnClick}
+  if (isNextLink(href) && !target) {
+    /* eslint-disable no-unused-vars */
+    let fullId;
+    let premium;
+    let prefix;
+    let articleId;
+    let params;
+    /* eslint-enable no-unused-vars */
+
+    if (href === '/') {
+      prefix = '';
+      articleId = '/';
+    }
+    else {
+      const hrefPattern = new RegExp(
+        '\\/?(?=[^/]*$)(?:(\\.\\w*)-)?(?:(\\w*)-)?(1\\.\\d*)(?:\\?(.*))?'
+      );
+      // eslint-disable-next-line no-unused-vars
+      [ fullId, premium, prefix, articleId, params, ] = hrefPattern.exec(href);
+    }
+    return (
+      <NextLink
+        prefetch={prefetch}
+        passHref
+        // href={href}
+        href={{ pathname: getPage(prefix), query: { path: `/${articleId}`, }, }}
+        as={href}
       >
-        {renderContent}
-      </LinkWrapper>
-    </NextLink>
-  ) : (
+        <LinkWrapper
+          attrs={attrs}
+          className={className}
+          ref={linkRef => focus && linkRef && linkRef.focus()}
+          passedOnClick={passedOnClick}
+        >
+          {renderContent}
+        </LinkWrapper>
+      </NextLink>
+    );
+  }
+  return (
     <a
       {...attrs}
       href={href}

@@ -152,6 +152,12 @@ class Main extends React.Component {
     });
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.state.articleId !== nextState.articleId || this.props !== nextProps
+    );
+  }
+
   extractContent = content =>
     content.map(element => {
       if (element.inputTemplate === 'com.htz.StandardArticle') {

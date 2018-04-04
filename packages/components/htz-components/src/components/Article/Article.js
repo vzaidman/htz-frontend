@@ -151,17 +151,16 @@ class Article extends React.Component {
     headlineElement: null,
   };
 
-  componentDidMount() {
-    const { commentsElementId, contentId, setCommentsData, } = this.props;
-    setCommentsData && setCommentsData(contentId, commentsElementId);
-    this.getFacebookCount(this.state.articleUrl);
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
     return (
       this.state.headlineElement !== nextState.headlineElement ||
-      this.state.facebookCount !== nextState.facebookCount
+      this.state.facebookCount !== nextState.facebookCount ||
+      this.props !== nextProps
     );
+  }
+
+  componentDidUpdate() {
+    this.updateArticleMeta();
   }
 
   setHeadlineElement = elementObj =>
@@ -190,6 +189,12 @@ class Article extends React.Component {
       })
       .then(data => this.setState({ facebookCount: data.share.share_count, }))
       .catch(error => console.log('error: ', error));
+  };
+
+  updateArticleMeta = () => {
+    const { commentsElementId, contentId, setCommentsData, } = this.props;
+    setCommentsData && setCommentsData(contentId, commentsElementId);
+    this.getFacebookCount(this.state.articleUrl);
   };
 
   render() {

@@ -49,20 +49,11 @@ export default Component => {
       let serverState = {};
       let serverError;
 
-      const url = {
-        query: context.query,
-        pathname: context.pathname,
-      };
-      console.log(url);
-
       // Evaluate the composed component's `getInitialProps()`.
-      let initialProps = { url, };
+      let initialProps = {};
 
       if (Component.getInitialProps) {
-        initialProps = {
-          ...initialProps,
-          ...(await Component.getInitialProps(context)),
-        };
+        initialProps = await Component.getInitialProps(context);
       }
 
       // Run all GraphQL queries in the component tree, extract the resulting
@@ -70,10 +61,21 @@ export default Component => {
       if (!process.browser) {
         const apolloClient = createClient();
         try {
+          const url = {
+            query: context.query,
+            asPath: context.asPath,
+            pathname: context.pathname,
+          };
           await getDataFromTree(
-            <ApolloProvider client={apolloClient}>
-              <Component {...initialProps} />
-            </ApolloProvider>
+            <Component context={context} {...initialProps} url={url} />,
+            {
+              router: {
+                asPath: context.asPath,
+                pathname: context.pathname,
+                query: context.query,
+              },
+              client: apolloClient,
+            }
           );
         }
         catch (err) {

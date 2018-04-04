@@ -25,6 +25,12 @@ const domain = config.get('domain');
 const app = next({ dev: DEV, });
 const handler = app.getRequestHandler();
 
+const htz = require('./routes/htz');
+const tm = require('./routes/tm');
+const hdc = require('./routes/hdc');
+
+const sitesRouting = new Map([ [ 'htz', htz, ], [ 'tm', tm, ], [ 'hdc', hdc, ], ]);
+
 // proxy middleware options
 const options = {
   target: `http://${hostname}.${domain}:8080`, // target host
@@ -46,6 +52,7 @@ const tomcatProxy = proxy(options);
 const hostIp = config.get('hostIp');
 app
   .prepare()
+  // eslint-disable-next-line consistent-return
   .then(() => {
     const server = express();
     server.use(compression()); // Compress responses.
@@ -71,39 +78,8 @@ app
       return app.render(req, res, '/', query);
     });
 
-    server.get('/', (req, res) => {
-      if (req.params[0] && !req.params[0].startsWith('/')) {
-        req.params[0] = `/${req.params[0]}`;
-      }
-      else {
-        req.params[0] = '/';
-      }
-      const query = {
-        path: req.params[0],
-      };
-      return app.render(req, res, '/', query);
-    });
-
-    // Path for articles (?)
-    // /1\.\d+.*$/
-    // /^(\/.*(?!\d\.\d+))$/
-    server.get([ /^.*(1\.\d+){1}$/, ], (req, res) => {
-      if (DEV) {
-        console.log(
-          'captured an article at  req.path: ',
-          req.path,
-          ' req.params[0]: ',
-          req.params[0]
-        );
-      }
-      if (!req.params[0].startsWith('/')) {
-        req.params[0] = `/${req.params[0]}`;
-      }
-      const query = {
-        path: req.params[0],
-      };
-      return app.render(req, res, '/', query);
-    });
+    // Get the current app's routing module.
+    sitesRouting.get(process.argv[2])(app, server, DEV);
 
     // Use static assets from the `static` directory
     server.use(
