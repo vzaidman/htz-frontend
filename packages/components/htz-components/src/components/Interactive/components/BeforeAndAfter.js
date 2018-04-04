@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import { border, borderRight, } from '@haaretz/htz-css-tools';
-import Image from '../Image/Image';
+import Image from '../../Image/Image';
 
 const wrapperStyle = () => ({
   width: '100%',

@@ -5,7 +5,6 @@
 import ActionButtons from './components/ActionButtons/ActionButtons';
 import Article from './components/Article/Article';
 import ArticleBody from './components/ArticleBody/ArticleBody';
-import BeforeAndAfter from './components/Interactive/BeforeAndAfter';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import Caption from './components/Caption/Caption';
@@ -16,8 +15,9 @@ import Form from './components/Form/Form';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
 import HeadlineElement from './components/HeadlineElement/HeadlineElement';
-import HtmlElement from './components/Interactive/HtmlElement';
+import HtmlElement from './components/Interactive/components/HtmlElement';
 import Image from './components/Image/Image';
+import Interactive from './components/Interactive/Interactive';
 import LayoutContainer from './components/PageLayout/LayoutContainer';
 import LayoutRow from './components/PageLayout/LayoutRow';
 import Link from './components/Link/Link';
@@ -102,7 +102,6 @@ export {
   ActionButtons,
   Article,
   ArticleBody,
-  BeforeAndAfter,
   Button,
   ButtonGroup,
   Caption,
@@ -115,6 +114,7 @@ export {
   HeadlineElement,
   HtmlElement,
   Image,
+  Interactive,
   LayoutContainer,
   LayoutRow,
   Link,

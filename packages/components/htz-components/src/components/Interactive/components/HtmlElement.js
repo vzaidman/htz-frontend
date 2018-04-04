@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 
-import { stylesPropType, } from '../../propTypes/stylesPropType';
+import { stylesPropType, } from '../../../propTypes/stylesPropType';
 
 const propTypes = {
   /**

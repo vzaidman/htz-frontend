@@ -14,7 +14,7 @@ const componentSectionsPath = path.join(process.cwd(), 'src', 'components');
 const isDir = file =>
   lstatSync(path.join(componentSectionsPath, file)).isDirectory();
 
-const isSubsection = [ 'Embed', 'List', ];
+const isSubsection = [ 'Embed', 'List', 'Interactive', ];
 
 const sectionPatterns = {
   Icon: path.join(componentSectionsPath, 'Icon', 'Icon.js'),
@@ -44,6 +44,25 @@ const sectionPatterns = {
         componentSectionsPath,
         'List',
         'views',
+        '[A-Z]*.js{,x}'
+      ),
+    },
+  ],
+  Interactive: [
+    {
+      name: 'Interactive Examples',
+      components: path.join(
+        componentSectionsPath,
+        'Interactive',
+        'InteractiveList.js'
+      ),
+    },
+    {
+      name: 'Interactive components',
+      components: path.join(
+        componentSectionsPath,
+        'Interactive',
+        'components',
         '[A-Z]*.js{,x}'
       ),
     },
@@ -78,6 +97,10 @@ module.exports = configure(config =>
 
         if (componentPath.indexOf('Lists') !== -1) {
           return `import { List, } from '${packageName}';`;
+        }
+
+        if (componentPath.indexOf('InteractiveList') !== -1) {
+          return `import { Interactive, } from '${packageName}';`;
         }
 
         return `import { ${componentName}, } from '${packageName}';  (${nonExampleComponentPath})`;

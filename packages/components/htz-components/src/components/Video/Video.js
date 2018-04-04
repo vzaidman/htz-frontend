@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Embed from '../Embed/Embed';
-import HtmlElement from '../Interactive/HtmlElement';
+import HtmlElement from '../Interactive/components/HtmlElement';
 
 const propTypes = {
   /**

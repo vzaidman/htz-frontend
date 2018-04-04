@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BeforeAndAfter from './BeforeAndAfter';
+import BeforeAndAfter from './components/BeforeAndAfter';
 
 const propTypes = {
   inputTemplate: PropTypes.string.isRequired,

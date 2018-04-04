@@ -4,9 +4,9 @@ import Article from '../components/Article/Article';
 import AdSlot from '../components/Ads/AdSlot';
 import CommentsWithApollo from '../components/CommentsSection/CommentsWithApollo';
 import Embed from '../components/Embed/Embed';
-import HtmlElement from '../components/Interactive/HtmlElement';
+import HtmlElement from '../components/Interactive/components/HtmlElement';
 import Image from '../components/Image/Image';
-import InteractiveElement from '../components/Interactive/interactiveElement';
+import Interactive from '../components/Interactive/Interactive';
 import LinksBlock from '../components/RelatedArticles/LinksBlock';
 import List from '../components/List/List';
 import Paragraph from '../components/Paragraph/Paragraph';
@@ -34,7 +34,7 @@ const inputTemplateToComponent = new Map([
 
   /* ArticleBody components */
   [ 'embedElement', Embed, ],
-  [ 'interactiveElement', InteractiveElement, ],
+  [ 'interactiveElement', Interactive, ],
   [ 'p', Paragraph, ],
   [ 'h4', Paragraph, ],
   [ 'a', Paragraph, ],
