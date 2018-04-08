@@ -40,13 +40,13 @@ const colors = {
     '+3': '#480713',
   },
   quaternary: {
-    '-3': '#FCF3CB',
-    '-2': '#FFEC98',
-    '-1': '#FFDF54',
-    base: '#FFD20C',
-    '+1': '#E8BF0C',
-    '+2': '#CCA601',
-    '+3': '#AA8C0B',
+    '-3': '#FFF8BC',
+    '-2': '#FFF17A',
+    '-1': '#FFED4E',
+    base: '#FFE70C',
+    '+1': '#E8D20B',
+    '+2': '#BAA909',
+    '+3': '#A39308',
   },
 
   // semantic use-cases
@@ -439,12 +439,13 @@ const colors = {
     check: 'white',
     ripple: [ 'primary', 'base', ],
   },
+
   sales: {
     '-2': '#FFF7E5',
-    '-1': '#FFC64D',
+    '-1': '#FFBD45',
     base: '#FFA500',
-    '+1': '#FA9E00',
-    '+2': '#F59300',
+    '+1': '#FA9600',
+    '+2': '#ED8600',
     a11yOnLight: '#A7610C',
   },
 
