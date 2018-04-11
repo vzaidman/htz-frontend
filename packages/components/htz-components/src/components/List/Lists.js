@@ -57,8 +57,6 @@ export default class List extends React.Component {
 
   render() {
     const ExampleList = views[this.state.type];
-    console.clear();
-    console.log(mock());
     return (
       <div style={{ position: 'relative', }}>
         <MenuList

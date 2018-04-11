@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import { createComponent, withTheme, } from 'react-fela';
 import {
   parseStyleProps,
@@ -41,7 +41,7 @@ const TimeStyled = createComponent(
 
 function ArticleByLineDesktopComponent({
   /* eslint-disable react/prop-types */
-  author,
+  authors,
   publishDateTime,
   className,
   theme,
@@ -49,28 +49,42 @@ function ArticleByLineDesktopComponent({
 }) {
   return (
     <div className={className}>
-      <Image
-        data={author.image}
-        imgOptions={{
-          transforms: {
-            width: '100',
-            aspect: 'square',
-            quality: 'auto',
-          },
-        }}
-        miscStyles={{
-          width: '10rem',
-          paddingBottom: '10rem',
-          borderRadius: '50%',
-          overflow: 'hidden',
-          display: 'inline-block',
-        }}
-      />
-
-      <ArticleCredit {...author} miscStyles={{ marginTop: '1rem', }} />
-
-      <AlertsDesktopButton author={author} />
-
+      {authors.map((author, key) => (
+        <Fragment key={author.contentId}>
+          {key === 0 &&
+            author.image && (
+              <Image
+                data={author.image}
+                imgOptions={{
+                  transforms: {
+                    width: '100',
+                    aspect: 'square',
+                    quality: 'auto',
+                  },
+                }}
+                miscStyles={{
+                  width: '10rem',
+                  paddingBottom: '10rem',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  display: 'inline-block',
+                }}
+              />
+            )}
+          {typeof author === 'string' ? (
+            <ArticleCredit
+              contentName={author}
+              miscStyles={{ marginTop: '1rem', }}
+            />
+          ) : (
+            <ArticleCredit {...author} miscStyles={{ marginTop: '1rem', }} />
+          )}
+          {authors.length === 1 &&
+            typeof author !== 'string' && (
+              <AlertsDesktopButton author={author} />
+            )}
+        </Fragment>
+      ))}
       {publishDateTime ? (
         <TimeStyled time={publishDateTime} format="DD.MM.YYYY HH:mm" />
       ) : (

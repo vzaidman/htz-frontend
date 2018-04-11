@@ -16,36 +16,38 @@ const articleHeaderPropTypes = {
   title: PropTypes.string.isRequired,
   /** Subtitle of an Article */
   subtitle: PropTypes.string,
-  /** Author/Credit of an Article */
-  author: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({
-      authorType: PropTypes.oneOf([
-        'themarker',
-        'haaretz',
-        'exterior',
-        'agencies',
-        'hct',
-        'hcr',
-        'phot',
-        'col',
-        'unknown',
-        'none',
-      ]),
-      contentId: PropTypes.string.isRequired,
-      contentName: PropTypes.string,
-      email: PropTypes.string,
-      facebook: PropTypes.string,
-      gplus: PropTypes.string,
-      hasEmailAlerts: PropTypes.bool,
-      hasPushAlerts: PropTypes.bool,
-      // eslint-disable-next-line react/forbid-prop-types
-      image: PropTypes.object,
-      inputTemplate: PropTypes.string,
-      twitter: PropTypes.string,
-      url: PropTypes.string,
-    }),
-  ]).isRequired,
+  /** Authors/Credit of an Article */
+  authors: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        authorType: PropTypes.oneOf([
+          'themarker',
+          'haaretz',
+          'exterior',
+          'agencies',
+          'hct',
+          'hcr',
+          'phot',
+          'col',
+          'unknown',
+          'none',
+        ]),
+        contentId: PropTypes.string.isRequired,
+        contentName: PropTypes.string,
+        email: PropTypes.string,
+        facebook: PropTypes.string,
+        gplus: PropTypes.string,
+        hasEmailAlerts: PropTypes.bool,
+        hasPushAlerts: PropTypes.bool,
+        // eslint-disable-next-line react/forbid-prop-types
+        image: PropTypes.object,
+        inputTemplate: PropTypes.string,
+        twitter: PropTypes.string,
+        url: PropTypes.string,
+      }),
+    ])
+  ).isRequired,
   /** publishDateTime of an Article */
   publishDateTime: PropTypes.oneOfType([
     PropTypes.instanceOf(Date),
@@ -70,7 +72,7 @@ function ArticleHeaderComponent({
   kicker,
   title,
   subtitle,
-  author,
+  authors,
   publishDateTime,
   className,
   /* eslint-enable react/prop-types */
@@ -102,7 +104,7 @@ function ArticleHeaderComponent({
         text={title}
       />
       <Subtitle>{subtitle}</Subtitle>
-      <ArticleHeaderMeta author={author} publishDateTime={publishDateTime} />
+      <ArticleHeaderMeta authors={authors} publishDateTime={publishDateTime} />
     </header>
   );
 }

@@ -1,4 +1,4 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import { createComponent, } from 'react-fela';
 
 import ArticleByLineMobile from './_ArticleByLineMobile';
@@ -21,9 +21,11 @@ const styleArticleHeaderMeta = ({ theme, }) => ({
   ],
 });
 
+const ArticleHeaderMeta = createComponent(styleArticleHeaderMeta);
+
 function ArticleHeaderMetaComponent(props) {
   return (
-    <Fragment>
+    <ArticleHeaderMeta>
       <ArticleByLineMobile
         {...props}
         miscStyles={{
@@ -37,14 +39,8 @@ function ArticleHeaderMetaComponent(props) {
           display: [ { until: 'l', value: 'none', }, ],
         }}
       />
-    </Fragment>
+    </ArticleHeaderMeta>
   );
 }
 
-const ArticleHeaderMetaStyled = createComponent(
-  styleArticleHeaderMeta,
-  ArticleHeaderMetaComponent,
-  props => Object.keys(props)
-);
-
-export default ArticleHeaderMetaStyled;
+export default ArticleHeaderMetaComponent;

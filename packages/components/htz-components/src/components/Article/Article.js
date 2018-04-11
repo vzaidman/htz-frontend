@@ -17,7 +17,7 @@ const propTypes = {
   /**
    * Authors list (comes from polopoly).
    */
-  authors: PropTypes.arrayOf(PropTypes.object).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.object),
   /**
    * Article's main content (comes from polopoly).
    */
@@ -32,6 +32,10 @@ const propTypes = {
    * This article id (comes from polopoly).
    */
   contentId: PropTypes.string,
+  /**
+   * Authors list (comes from polopoly).
+   */
+  credit: PropTypes.string,
   /**
    * A callback that takes this article's id and this article commentsElement's id,
    * and loads the [comments section](./#commentswithapollo)
@@ -64,8 +68,10 @@ const propTypes = {
 };
 
 const defaultProps = {
+  authors: null,
   commentsElementId: null,
   contentId: null,
+  credit: null,
   setCommentsData: null,
   exclusive: null,
   modDate: null,
@@ -202,6 +208,7 @@ class Article extends React.Component {
       articleType, // eslint-disable-line no-unused-vars
       authors,
       body,
+      credit,
       exclusive,
       modDate, // eslint-disable-line no-unused-vars
       pubDate,
@@ -213,7 +220,7 @@ class Article extends React.Component {
       <Fragment>
         <BreadCrumbs>BreadCrumbs Here</BreadCrumbs>
         <Header
-          author={authors[0]}
+          authors={authors || [ credit, ]}
           kicker={exclusive}
           publishDateTime={pubDate}
           subtitle={subtitle}

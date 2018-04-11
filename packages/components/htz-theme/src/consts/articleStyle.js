@@ -101,7 +101,7 @@ const header = Object.freeze({
     { from: 'm', until: 'l', value: 4, },
     { from: 'l', value: 5, },
   ],
-  subtitleFontSize: [ { until: 'xl', value: 0, }, { from: 'xl', value: 1, }, ],
+  subtitleFontSize: [ { until: 'xl', value: 1, }, { from: 'xl', value: 1, }, ],
   bylineCreditColor: color('primary', '+1'),
   bylineFontSize: [
     { until: 'm', value: -2, },

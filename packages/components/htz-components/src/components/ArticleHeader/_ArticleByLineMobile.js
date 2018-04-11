@@ -1,9 +1,10 @@
-import React from 'react';
-import { createComponent, withTheme, } from 'react-fela';
+import React, { Fragment, } from 'react';
+import { createComponent, } from 'react-fela';
 import {
   parseStyleProps,
   parseTypographyProp,
   borderVertical,
+  parseComponentProp,
 } from '@haaretz/htz-css-tools';
 
 // eslint-disable-next-line import/no-named-as-default
@@ -16,7 +17,7 @@ import AlertsMobileButton from '../AlertsButton/AlertsMobileButton';
 import Image from '../Image/Image';
 import Time from '../Time/Time';
 
-const styleArticleByLineMobile = ({ theme, miscStyles, }) => ({
+const wrapperStyle = ({ theme, miscStyles, }) => ({
   extend: [
     theme.mq(
       { until: 'm', },
@@ -25,17 +26,28 @@ const styleArticleByLineMobile = ({ theme, miscStyles, }) => ({
           width: '1px',
           lines: 1,
           style: 'solid',
-          color: theme.color('neutral', '-6'),
+          color: theme.color('neutral', '-5'),
         }),
       }
     ),
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
 });
+const Wrapper = createComponent(wrapperStyle);
 
 const TimeStyled = createComponent(
   ({ theme, }) => ({
     marginEnd: '1rem',
+    ...parseComponentProp(
+      'display',
+      [
+        { until: 'm', value: 'block', },
+        { from: 'm', until: 'l', value: 'inline', },
+        { from: 'l', value: 'none', },
+      ],
+      theme.mq,
+      (prop, value) => ({ [prop]: value, })
+    ),
     extend: [
       parseTypographyProp(theme.articleStyle.header.bylineFontSize, theme.type),
     ],
@@ -45,81 +57,107 @@ const TimeStyled = createComponent(
 );
 
 // eslint-disable-next-line react/prop-types
-function ArticleByLineMobileComponent({ author, publishDateTime, className, }) {
+function ArticleByLineMobileComponent({ authors, publishDateTime, }) {
+  const authorMiscStyles = {
+    marginEnd: '1rem',
+    display: [ { until: 'l', value: 'inline', }, { from: 'l', value: 'none', }, ],
+    ...(authors.length > 1 && {
+      ':nth-last-child(1n+4):after': {
+        content: '","',
+      },
+      ':nth-last-child(2):before': {
+        content: '"ו"',
+      },
+    }),
+  };
   return (
-    <Grid className={className} gutter={1} vAlign="center">
-      {/*  Author image */}
-      <GridItem
-        width={6}
+    <Wrapper>
+      <Grid
+        gutter={1}
+        vAlign="center"
         miscStyles={{
-          display: [ { from: 'm', value: 'none', }, ],
+          flexWrap: 'nowrap',
         }}
       >
-        <Image
-          data={author.image}
-          imgOptions={{
-            transforms: {
-              width: '100',
-              aspect: 'square',
-              quality: 'auto',
-            },
-          }}
-          miscStyles={{
-            width: '10rem',
-            paddingBottom: '10rem',
-            borderRadius: '50%',
-            overflow: 'hidden',
-            display: 'inline-block',
-          }}
-        />
-      </GridItem>
-      {/* Author name and publish-date */}
-      <GridItem
-        miscStyles={{
-          display: 'flex',
-          flexGrow: 0,
-          flexDirection: [ { until: 'm', value: 'column', }, ],
-        }}
-      >
-        <CreditArticle
-          {...author}
-          miscStyles={{
-            marginEnd: '1rem',
-          }}
-        />
-        <TimeStyled time={publishDateTime} format="DD.MM.YYYY HH:mm" />
-      </GridItem>
-      {/* Follow author */}
-      <GridItem
-        miscStyles={{
-          flexGrow: 0,
-          marginStart: 'auto',
-          display: [ { from: 'm', value: 'none', }, ],
-        }}
-      >
-        <AlertsMobileButton author={author} />
-      </GridItem>
-      <GridItem
-        miscStyles={{
-          flexGrow: 0,
-          display: [ { until: 'm', value: 'none', }, ],
-        }}
-      >
-        <AlertsDesktopButton author={author} />
-      </GridItem>
-    </Grid>
+        {/*  Author image */}
+        {authors[0].image && (
+          <GridItem
+            width={6}
+            miscStyles={{
+              display: [ { from: 'm', value: 'none', }, ],
+            }}
+          >
+            <Image
+              data={authors[0].image}
+              imgOptions={{
+                transforms: {
+                  width: '100',
+                  aspect: 'square',
+                  quality: 'auto',
+                },
+              }}
+              miscStyles={{
+                width: '6rem',
+                paddingBottom: '6rem',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                display: 'inline-block',
+              }}
+            />
+          </GridItem>
+        )}
+        {/* Author name and publish-date */}
+        <GridItem>
+          {authors.map(
+            (author, key) =>
+              (typeof author === 'string' ? (
+                <CreditArticle
+                  contentName={author}
+                  miscStyles={authorMiscStyles}
+                />
+              ) : (
+                <CreditArticle
+                  key={author.contentId}
+                  {...author}
+                  miscStyles={authorMiscStyles}
+                />
+              ))
+          )}
+          <TimeStyled time={publishDateTime} format="DD.MM.YYYY HH:mm" />
+        </GridItem>
+        {/* Follow author */}
+        {authors.length === 1 &&
+          typeof authors[0] !== 'string' && (
+            <Fragment>
+              <GridItem
+                miscStyles={{
+                  flexGrow: 0,
+                  marginStart: 'auto',
+                  display: [ { from: 'm', value: 'none', }, ],
+                }}
+              >
+                <AlertsMobileButton author={authors[0]} />
+              </GridItem>
+              <GridItem
+                miscStyles={{
+                  flexGrow: 0,
+                  display: [
+                    { until: 'm', value: 'none', },
+                    { from: 'l', value: 'none', },
+                  ],
+                }}
+              >
+                <AlertsDesktopButton author={authors[0]} />
+              </GridItem>
+            </Fragment>
+          )}
+      </Grid>
+    </Wrapper>
   );
 }
 
-const ArticleByLineMobileThemed = withTheme(ArticleByLineMobileComponent);
-const ArticleByLineMobileStyled = createComponent(
-  styleArticleByLineMobile,
-  ArticleByLineMobileThemed,
-  props => [ ...Object.keys(props), 'theme', ]
-);
-
 function ArticleByLineMobile(props) {
-  return <ArticleByLineMobileStyled {...props} />;
+  return <ArticleByLineMobileComponent {...props} />;
 }
 
 export default ArticleByLineMobile;
