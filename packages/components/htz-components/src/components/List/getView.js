@@ -12,6 +12,7 @@ import dynamic from 'next/dynamic';
 
 const views = new Map([
   [
+<<<<<<< HEAD
     'Bender',
     {
       view: () => import('./views/Bender/Bender.view.js'),
@@ -37,6 +38,12 @@ const views = new Map([
     {
       view: () => import('./views/Zoidberg/Zoidberg.view.js'),
       query: () => import('./views/Zoidberg/Zoidberg.query.js'),
+=======
+    'Fry',
+    {
+      view: () => import('./views/Fry/Fry.view.js'),
+      query: () => import('./views/Fry/Fry.query.js'),
+>>>>>>> feat(lists): add Fry view to the list component
     },
   ],
   [
