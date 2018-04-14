@@ -5,5 +5,5 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ```jsx static
-<List contentId={'1.7474'} view={'Example'}/>
+<List contentId={'1.7474'} view={'Fry'}/>
 ```

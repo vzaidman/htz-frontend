@@ -1,15 +1,17 @@
 /* eslint-disable import/no-unresolved */
-import React from 'react';
+import React, { Fragment, } from 'react';
 import { createComponent, } from 'react-fela';
 import { border, borderEnd, borderBottom, } from '@haaretz/htz-css-tools';
 
+import Link from '../../../Link/Link';
 import Image from '../../../Image/Image';
 
 const wrapperStyle = () => ({
   display: 'flex',
   flexDirection: 'column',
+  maxWidth: `${300 / 7}rem`,
 });
-const Wrapper = createComponent(wrapperStyle, 'ul');
+const Wrapper = createComponent(wrapperStyle);
 
 const titleStyle = ({ theme, }) => ({
   ...theme.type(1),
@@ -27,7 +29,7 @@ const itemStyle = ({ theme, }) => ({
   ...border('1px', 0, 'solid', theme.color('neutral', '-4')),
   ...borderEnd('4px', 'solid', theme.color('neutral', '-4')),
 });
-const Item = createComponent(itemStyle, 'li');
+const Item = createComponent(itemStyle, Link, props => Object.keys(props));
 
 const itemImageStyle = () => ({
   width: `${124 / 7}rem`,
@@ -59,24 +61,29 @@ const Leela = ({ data, }) => {
         {data.list.title}
       </Title>
       {data.list.items.map(item => (
-        <Item>
-          <ItemImage>
-            <Image
-              data={item.image}
-              imgOptions={{
-                transforms: {
-                  width: '125',
-                  aspect: 'regular',
-                  quality: 'auto',
-                },
-              }}
-              hasWrapper={false}
-            />
-          </ItemImage>
-          <ItemTitle>
-            {item.title}
-          </ItemTitle>
-        </Item>
+        <Item
+          href={item.path}
+          content={
+            <Fragment>
+              <ItemImage>
+                <Image
+                  data={item.image}
+                  imgOptions={{
+                    transforms: {
+                      width: '125',
+                      aspect: 'regular',
+                      quality: 'auto',
+                    },
+                  }}
+                  hasWrapper={false}
+                />
+              </ItemImage>
+              <ItemTitle>
+                {item.title}
+              </ItemTitle>
+            </Fragment>
+          }
+        />
       ))}
     </Wrapper>
   );

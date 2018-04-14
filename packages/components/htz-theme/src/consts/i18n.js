@@ -193,3 +193,7 @@ export const newsletterI18n = Object.freeze({
     newsletterConfirmedText: 'יש לנו דיוורים נוספים שעשויים לעניין אותך',
   }),
 });
+
+export const fryListI18n = Object.freeze({
+  title: 'מרחבי הרשת',
+});

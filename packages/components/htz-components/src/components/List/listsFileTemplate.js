@@ -83,7 +83,7 @@ export default class List extends React.Component {
         </MenuList>
         {this.state.type && (
           <ListWrapper>
-            <ExampleList data={{ list: mock(), }} />
+            <ExampleList data={{ list: mock(this.state.type), }} />
           </ListWrapper>
         )}
       </div>

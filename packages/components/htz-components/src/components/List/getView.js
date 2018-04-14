@@ -12,10 +12,10 @@ import dynamic from 'next/dynamic';
 
 const views = new Map([
   [
-    'Example',
+    'Fry',
     {
-      view: () => import('./views/Example/Example.view.js'),
-      query: () => import('./views/Example/Example.query.js'),
+      view: () => import('./views/Fry/Fry.view.js'),
+      query: () => import('./views/Fry/Fry.query.js'),
     },
   ],
   [
