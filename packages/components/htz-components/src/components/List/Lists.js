@@ -19,6 +19,7 @@ const mock = mocks.List;
 const views = {
   Example: dynamic(import('./views/Example/Example.view.js')),
   Bender: dynamic(import('./views/Bender')),
+  Leela: dynamic(import('./views/Leela/Leela.view.js')),
   Zoidberg: dynamic(import('./views/Zoidberg/Zoidberg.view.js')),
 };
 
@@ -79,6 +80,7 @@ export default class List extends React.Component {
           </option>
           <option value="Example">Example</option>
           <option value="Bender">Bender</option>
+          <option value="Leela">Leela</option>
           <option value="Zoidberg">Zoidberg</option>
         </MenuList>
         {this.state.type && (
