@@ -59,6 +59,11 @@ export const navigationI18n = Object.freeze({
   }),
 });
 
+export const searchI18n = Object.freeze({
+  button: 'חיפוש',
+  placeHolder: 'הקלידו לחיפוש באתר',
+});
+
 export const osakaI18n = Object.freeze({
   nextArticle: 'לכתבה הבאה במדור',
   promotedContent: 'תוכן מקודם',

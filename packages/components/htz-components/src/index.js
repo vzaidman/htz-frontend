@@ -17,6 +17,7 @@ import Embed from './components/Embed/Embed';
 import Form from './components/Form/Form';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
+import Header from './components/PageHeader/Header';
 import HeadlineElement from './components/HeadlineElement/HeadlineElement';
 import HtmlElement from './components/Interactive/components/HtmlElement';
 import Image from './components/Image/Image';
@@ -142,6 +143,7 @@ export {
   Form,
   Grid,
   GridItem,
+  Header,
   HeadlineElement,
   HtmlElement,
   Image,
