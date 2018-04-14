@@ -4,7 +4,7 @@
 
 **Table of Contents**
 
-* [Lists Preview](#lists-preview)
+* [A List component](#a-list-component)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -23,7 +23,7 @@ for both the apps and the styleguide.
 ### **Lists Preview**
 
 ```jsx
-<div dir="rtl">
+<div style={{ direction: 'rtl', }}>
   <List contentId="" view="" />
 </div>
 ```

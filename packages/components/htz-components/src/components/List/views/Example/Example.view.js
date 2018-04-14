@@ -18,7 +18,6 @@ const Item = createComponent(itemStyle, 'li');
 
 // eslint-disable-next-line react/prop-types
 const Example = ({ data, }) => {
-  console.log(data);
   if (data.loading) {
     return <div>loading ...</div>;
   }

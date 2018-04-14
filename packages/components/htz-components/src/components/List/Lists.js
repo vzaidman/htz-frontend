@@ -1,4 +1,5 @@
-/** ************************************************************** *
+
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
@@ -18,6 +19,7 @@ const mock = mocks.List;
 const views = {
   Example: dynamic(import('./views/Example/Example.view.js')),
   Bender: dynamic(import('./views/Bender')),
+  Zoidberg: dynamic(import('./views/Zoidberg/Zoidberg.view.js')),
 };
 
 const listWrapperStyle = () => ({
@@ -77,6 +79,7 @@ export default class List extends React.Component {
           </option>
           <option value="Example">Example</option>
           <option value="Bender">Bender</option>
+          <option value="Zoidberg">Zoidberg</option>
         </MenuList>
         {this.state.type && (
           <ListWrapper>

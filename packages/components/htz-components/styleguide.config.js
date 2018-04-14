@@ -44,7 +44,8 @@ const sectionPatterns = {
         componentSectionsPath,
         'List',
         'views',
-        '[A-Z]*.js{,x}'
+        '[A-Z]*',
+        '[A-Z]*.view.js{,x}'
       ),
     },
   ],

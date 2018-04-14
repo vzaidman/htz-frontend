@@ -1,4 +1,5 @@
-/** ************************************************************** *
+
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the List's views map, it is generated
@@ -22,6 +23,13 @@ const views = new Map([
     {
       view: () => import('./views/Bender'),
       query: () => import('./viewsQueries/bender'),
+    },
+  ],
+  [
+    'Zoidberg',
+    {
+      view: () => import('./views/Zoidberg/Zoidberg.view.js'),
+      query: () => import('./views/Zoidberg/Zoidberg.query.js'),
     },
   ],
 ]);
