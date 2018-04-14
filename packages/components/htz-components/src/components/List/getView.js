@@ -40,6 +40,13 @@ const views = new Map([
     },
   ],
   [
+    'Leela',
+    {
+      view: () => import('./views/Leela/Leela.view.js'),
+      query: () => import('./views/Leela/Leela.query.js'),
+    },
+  ],
+  [
     'Zoidberg',
     {
       view: () => import('./views/Zoidberg/Zoidberg.view.js'),
