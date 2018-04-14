@@ -39,6 +39,13 @@ const views = new Map([
       query: () => import('./views/Zoidberg/Zoidberg.query.js'),
     },
   ],
+  [
+    'Zoidberg',
+    {
+      view: () => import('./views/Zoidberg/Zoidberg.view.js'),
+      query: () => import('./views/Zoidberg/Zoidberg.query.js'),
+    },
+  ],
 ]);
 
 // eslint-disable-next-line react/prop-types
