@@ -13,7 +13,6 @@ const wrapperStyle = ({ theme, }) => ({
   backgroundColor: theme.color('neutral', '-10'),
   ...borderBottom('1px', 0, 'solid', theme.color('primary')),
   paddingTop: `${10 / 7}rem`,
-  paddingBottom: `${10 / 7}rem`,
   display: 'flex',
 });
 const Wrapper = createComponent(wrapperStyle);

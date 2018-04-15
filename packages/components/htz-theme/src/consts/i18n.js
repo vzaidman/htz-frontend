@@ -59,9 +59,11 @@ export const navigationI18n = Object.freeze({
   }),
 });
 
-export const searchI18n = Object.freeze({
+export const navigationSearchI18n = Object.freeze({
   button: 'חיפוש',
   placeHolder: 'הקלידו לחיפוש באתר',
+  queryUrl: query =>
+    `https://www.haaretz.co.il/misc/search-results?text=${query}&searchType=textSearch`,
 });
 
 export const osakaI18n = Object.freeze({
