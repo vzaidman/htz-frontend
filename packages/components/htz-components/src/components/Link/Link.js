@@ -23,6 +23,11 @@ const propTypes = {
   target: PropTypes.string,
   /** Should prefetch */
   prefetch: PropTypes.bool,
+  /**
+   * A callback function to allow parent component to get ref of the link,
+   * example use case: trigger a click.
+   */
+  refFunc: PropTypes.func,
   /** react-fela class names */
   className: PropTypes.string,
   /** Set the focus on this component */
@@ -39,6 +44,7 @@ const defaultProps = {
   content: null,
   focus: false,
   prefetch: null,
+  refFunc: null,
   target: null,
   onClick: null,
 };
@@ -107,6 +113,7 @@ function Link({
   asPath,
   onClick: passedOnClick,
   prefetch,
+  refFunc,
   target,
 }) {
   // eslint-disable-next-line eqeqeq
@@ -156,7 +163,10 @@ function Link({
         <LinkWrapper
           attrs={attrs}
           className={className}
-          ref={linkRef => focus && linkRef && linkRef.focus()}
+          ref={linkRef => {
+            focus && linkRef && linkRef.focus();
+            refFunc && refFunc(linkRef);
+          }}
           passedOnClick={passedOnClick}
         >
           {renderContent}
@@ -170,7 +180,10 @@ function Link({
       href={href}
       target={target}
       className={className}
-      ref={linkRef => focus && linkRef && linkRef.focus()}
+      ref={linkRef => {
+        focus && linkRef && linkRef.focus();
+        refFunc && refFunc(linkRef);
+      }}
       onClick={passedOnClick}
     >
       {renderContent}
