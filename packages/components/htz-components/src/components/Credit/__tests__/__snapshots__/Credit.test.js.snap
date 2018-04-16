@@ -7,8 +7,7 @@ Object {
       <a
         className="htz-a htz-b htz-c"
         href="/misc/writers/1.593896"
-        onClick={null}
-        target={null}
+        onClick={[Function]}
       >
         test name
       </a>
@@ -38,8 +37,7 @@ Object {
       <a
         className="htz-l htz-m htz-n"
         href="/misc/writers/1.593896"
-        onClick={null}
-        target={null}
+        onClick={[Function]}
       >
         test name
       </a>

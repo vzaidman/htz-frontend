@@ -17,8 +17,7 @@ Object {
         <a
           className={null}
           href="http://eran.haaretz.co.il/1.6614"
-          onClick={null}
-          target={null}
+          onClick={[Function]}
         >
           <span
             className="htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
@@ -101,8 +100,7 @@ Object {
         <a
           className={null}
           href="http://eran.haaretz.co.il/1.6643"
-          onClick={null}
-          target={null}
+          onClick={[Function]}
         >
           <span
             className="htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"

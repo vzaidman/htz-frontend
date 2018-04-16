@@ -138,8 +138,7 @@ exports[`<Button> DOM element render an "<a>" correctly 1`] = `
     className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj"
     href="/"
     id={null}
-    onClick={null}
-    target={null}
+    onClick={[Function]}
   >
     <span
       className="htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq"

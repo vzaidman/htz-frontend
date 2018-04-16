@@ -21,8 +21,7 @@ Object {
           <a
             className={null}
             href="http://eran.haaretz.co.il/1.6614"
-            onClick={null}
-            target={null}
+            onClick={[Function]}
           >
             <span
               className="htz-al htz-am htz-an htz-ao htz-ap htz-o htz-aq htz-p htz-ar htz-c htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb"

@@ -12,8 +12,7 @@ Object {
         <a
           className={null}
           href="http://eran.haaretz.co.il/1.6614"
-          onClick={null}
-          target={null}
+          onClick={[Function]}
         >
           <span
             className="htz-p htz-q htz-r htz-s htz-t htz-b htz-u htz-c htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
@@ -76,8 +75,7 @@ Object {
         <a
           className={null}
           href="http://eran.haaretz.co.il/1.6643"
-          onClick={null}
-          target={null}
+          onClick={[Function]}
         >
           <span
             className="htz-p htz-q htz-r htz-s htz-t htz-b htz-u htz-c htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
