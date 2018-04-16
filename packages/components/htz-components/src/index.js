@@ -2,6 +2,7 @@
 /** *************************************** *
  *       C  O  M  P  O  N  E  N  T  S       *
  * **************************************** */
+import A11yDialog from './components/A11yDialog/A11yDialog';
 import ActionButtons from './components/ActionButtons/ActionButtons';
 import Article from './components/Article/Article';
 import ArticleBody from './components/ArticleBody/ArticleBody';
@@ -26,6 +27,7 @@ import List from './components/List/List';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
 import Osaka from './components/Osaka/OsakaController';
+import Portal from './components/Portal/Portal';
 import Quote from './components/Quote/Quote';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import RadioButton from './components/RadioButton/RadioButton';
@@ -100,6 +102,7 @@ import AdSlot from './components/Ads/AdSlot';
 import createDocument from './document';
 
 export {
+  A11yDialog,
   ActionButtons,
   Article,
   ArticleBody,
@@ -124,6 +127,7 @@ export {
   MobileQuickRegistration,
   NavigationMenu,
   Osaka,
+  Portal,
   Quote,
   RadioButton,
   RadioGroup,
