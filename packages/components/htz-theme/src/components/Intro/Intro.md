@@ -144,6 +144,23 @@ import htzTheme from '@haaretz/htz-theme'
   `easing` argument (`string`) that is a named timing-function.
 * **getMqString** - A function that intelligently returns a media-query string
   based on breakpoints defined in `theme.bps`
+* **getZIndex** - Get predefined named zIndex levels, with ability to offset result
+
+  * _Arguments_:
+
+    * `level` (`string'|'string[]`) - The named level, an array represents
+      hirarchy inside the first item \* e.g., if the `indices` object
+      has a `foo` key, which is itself an object with `base`, `bar` and
+      `bar` keys, `getZIndex(['foo', 'bar'])` will return the value assigned
+      to `indices.foo.bar`. `base` is the default key, so `getZIndex('foo')`
+      will return the value assigned to `indices.header.base`.
+    * `offset` (`number`) default: `0` - The amount by which the returned index
+      should be offset from that assigned to the named level.
+
+  * _return_:
+
+    * (`string`) - The z-index assigned to the named level
+
 * **mq** - A [media-query function](https://haaretz.github.io/htz-frontend/htz-css-tools/#mqfunc),
   which intelligently returns a media-query scoped css-in-js object based on breakpoints defined
   in `theme.bps`
