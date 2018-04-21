@@ -35,7 +35,7 @@ disableConcurrentBuilds()
                     sh '''
                     #!/usr/bin/env bash
                     set -e                                      
-                    #export DOCKER_HOST=unix:///var/run/docker.sock                    
+                    export DOCKER_HOST=unix:///var/run/docker.sock                    
                     docker-compose build                    
                     '''
                 }
