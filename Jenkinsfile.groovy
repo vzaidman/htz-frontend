@@ -43,7 +43,7 @@ disableConcurrentBuilds()
                     '''
                     }
                     stage('Test') {
-                        sh 'docker-compose run ${test_command}'
+                        sh 'docker-compose run htz_react ${test_command}'
                     }
                     stage('Deploy') {
                         sh '''#!/usr/bin/env bash
