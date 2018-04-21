@@ -25,43 +25,44 @@ pipelineTriggers([
 disableConcurrentBuilds()
             ])
     catchError {
-        withEnv(["PATH+NODE=${tool 'node-8.9'}/bin"]) {
-            stage("Initialize") {
-                checkout scm
-                stage('Prepare') {
-                    env.test_command = "yarn test:deploy"
-                    env.DOCKER_HOST = "unix:///var/run/docker.sock"
-                }
-                stage('Build') {
-                    sh '''
+        withDockerServer([uri: 'unix:///var/run/docker.sock']) {
+            // some block
+
+            withEnv(["PATH+NODE=${tool 'node-8.9'}/bin"]) {
+                stage("Initialize") {
+                    checkout scm
+                    stage('Prepare') {
+                        env.test_command = "yarn test:deploy"
+                    }
+                    stage('Build') {
+                        sh '''
                     #!/usr/bin/env bash
                     set -e
-                    echo ${DOCKER_HOST}
-                    export DOCKER_HOST=unix:///var/run/docker.sock                                                                              
                     docker-compose build                    
                     '''
-                }
-                stage('Test') {
-                    sh 'docker-compose run ${test_command}'
-                }
-                stage('Deploy') {
-                    sh '''#!/usr/bin/env bash
+                    }
+                    stage('Test') {
+                        sh 'docker-compose run ${test_command}'
+                    }
+                    stage('Deploy') {
+                        sh '''#!/usr/bin/env bash
                     set -e                    
                     #docker-compose push
                     export version=${container_version}
                     #docker-compose push
                     '''
+                    }
                 }
+            }
+
+            stage('Post-Build') {
+                sh 'docker-compose down -v'
+                //step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'maoz@leadspace.com', sendToIndividuals: true])
+                step([$class                  : 'Mailer',
+                      notifyEveryUnstableBuild: true,
+                      recipients              : emailextrecipients([[$class: 'CulpritsRecipientProvider'],
+                                                                    [$class: 'RequesterRecipientProvider']])])
             }
         }
     }
-    stage('Post-Build') {
-        sh 'docker-compose down -v'
-        //step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'maoz@leadspace.com', sendToIndividuals: true])
-        step([$class                  : 'Mailer',
-              notifyEveryUnstableBuild: true,
-              recipients              : emailextrecipients([[$class: 'CulpritsRecipientProvider'],
-                                                            [$class: 'RequesterRecipientProvider']])])
-    }
-
 }
