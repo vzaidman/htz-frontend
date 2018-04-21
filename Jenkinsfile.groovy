@@ -28,12 +28,7 @@ disableConcurrentBuilds()
         withEnv(["PATH+NODE=${tool 'node-8.9'}/bin"]) {
             stage("Initialize") {
                 checkout scm
-                def dockerRegistry = "docker.themarker.com:8083/"
                 stage('Prepare') {
-                    //sh "npm install -g yarn"
-                    //sh "yarn install"
-                    //def json = readFile(file:'package.json')
-                    //def data = new JsonSlurperClassic().parseText(json)
                     env.test_command = "yarn test:deploy"
                 }
                 stage('Build') {
@@ -50,9 +45,9 @@ disableConcurrentBuilds()
                 stage('Deploy') {
                     sh '''#!/usr/bin/env bash
                     set -e                    
-                    docker-compose push
+                    #docker-compose push
                     export version=${container_version}
-                    docker-compose push
+                    #docker-compose push
                     '''
                 }
             }
