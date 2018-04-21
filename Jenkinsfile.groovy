@@ -30,12 +30,12 @@ disableConcurrentBuilds()
                 checkout scm
                 stage('Prepare') {
                     env.test_command = "yarn test:deploy"
+                    env.DOCKER_HOST = "unix:///var/run/docker.sock"
                 }
                 stage('Build') {
                     sh '''
                     #!/usr/bin/env bash
-                    set -e                                      
-                    export DOCKER_HOST=unix:///var/run/docker.sock                    
+                    set -e                                                                              
                     docker-compose build                    
                     '''
                 }
