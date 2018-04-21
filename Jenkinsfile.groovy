@@ -38,6 +38,7 @@ disableConcurrentBuilds()
                         sh '''
                     #!/usr/bin/env bash
                     set -e
+                    docker ps
                     docker-compose build                    
                     '''
                     }
