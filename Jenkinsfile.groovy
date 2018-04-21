@@ -35,7 +35,9 @@ disableConcurrentBuilds()
                 stage('Build') {
                     sh '''
                     #!/usr/bin/env bash
-                    set -e                                                                              
+                    set -e
+                    echo ${DOCKER_HOST}
+                    export DOCKER_HOST=unix:///var/run/docker.sock                                                                              
                     docker-compose build                    
                     '''
                 }
