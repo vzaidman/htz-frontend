@@ -31,7 +31,7 @@ disableConcurrentBuilds()
             withEnv(["PATH+NODE=${tool 'node-8.9'}/bin"]) {
                 stage("Initialize") {
                     checkout scm
-                    def deployBranch = "ci_build"
+                    def deployBranch = "master"
                     stage('Prepare') {
                         env.test_command = "yarn test:deploy"
 

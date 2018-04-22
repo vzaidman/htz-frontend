@@ -2,7 +2,7 @@ version: "3.3"
 services:
   htz_react:
     build: .
-    image: "nexus.themarker.com:8083/htz_react_server:${version:-latest}"
+    image: "docker.themarker.com:8083/htz_react_server:${version:-latest}"
     ports:
       - 3000:3000
     environment:
