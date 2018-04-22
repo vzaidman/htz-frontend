@@ -33,6 +33,7 @@ disableConcurrentBuilds()
                     checkout scm
                     stage('Prepare') {
                         env.test_command = "yarn test:deploy"
+                        var deployBranch = "ci_build"
                     }
                     stage('Build') {
                         sh '''
@@ -43,19 +44,20 @@ disableConcurrentBuilds()
                     '''
                     }
                     stage('Test') {
-                        sh '''#!/usr/bin/env bash
-                        set -e
-                        docker-compose run htz_react ${test_command}
-                        '''
-
+                        sh 'docker-compose run htz_react ${test_command}'
                     }
                     stage('Deploy') {
-                        sh '''#!/usr/bin/env bash
-                    set -e                    
-                    #docker-compose push
-                    export version=${container_version}
-                    #docker-compose push
-                    '''
+                        if ("${BRANCH_NAME}" == deployBranch ) {
+                            sh '''#!/usr/bin/env bash
+                            set -e                    
+                            #docker-compose push
+                            export version=$(node -e 'console.log(require("./packages/apps/haaretz.co.il/package.json").version)')
+                            docker-compose push
+                            '''
+                        } else {
+                            echo "Deploy not required"
+                        }
+
                     }
                 }
             }
