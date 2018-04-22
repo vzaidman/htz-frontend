@@ -146,7 +146,6 @@ class A11yDialog extends React.Component {
         buttonHandlers.clearHandler(id, this.toggleDialog)
       );
     }
-    this.closeDialogHelpers();
   };
 
   openDialog = () => {
