@@ -51,7 +51,7 @@ disableConcurrentBuilds()
                         if ("${BRANCH_NAME}" == deployBranch ) {
                             sh '''#!/usr/bin/env bash
                             set -e                    
-                            #docker-compose push
+                            docker-compose push
                             export version=$(node -e 'console.log(require("./packages/apps/haaretz.co.il/package.json").version)')
                             docker-compose build
                             docker-compose push
