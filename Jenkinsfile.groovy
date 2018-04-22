@@ -53,6 +53,7 @@ disableConcurrentBuilds()
                             set -e                    
                             #docker-compose push
                             export version=$(node -e 'console.log(require("./packages/apps/haaretz.co.il/package.json").version)')
+                            docker-compose build
                             docker-compose push
                             '''
                         } else {
