@@ -33,7 +33,7 @@ disableConcurrentBuilds()
                     checkout scm
                     stage('Prepare') {
                         env.test_command = "yarn test:deploy"
-                        var deployBranch = "ci_build"
+                        def deployBranch = "ci_build"
                     }
                     stage('Build') {
                         sh '''
@@ -47,7 +47,7 @@ disableConcurrentBuilds()
                         sh 'docker-compose run htz_react ${test_command}'
                     }
                     stage('Deploy') {
-                        if ("${BRANCH_NAME}" == deployBranch ) {
+                        if ("${BRANCH_NAME}" == "${deployBranch}" ) {
                             sh '''#!/usr/bin/env bash
                             set -e                    
                             #docker-compose push
