@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlockLink Component should render element with block link and above block link correctly 1`] = `
+<div>
+  <div>
+    <article
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"
+    >
+      <h3>
+        title
+      </h3>
+      <footer
+        style={
+          Object {
+            "marginTop": "auto",
+          }
+        }
+      >
+        <span
+          className="htz-a htz-h"
+        >
+          I am above the block
+        </span>
+      </footer>
+      <a
+        aria-hidden={true}
+        className="htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
+        href="https://www.haaretz.co.il/news/world/europe/.premium-1.5940125"
+        onClick={null}
+        tabIndex="-1"
+        target={null}
+      />
+    </article>
+  </div>
+</div>
+`;
+
+exports[`BlockLink Component should render element with block link and above block link correctly 2`] = `".htz-a{position:relative}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-flex-direction:column}.htz-d{flex-direction:column}.htz-e{height:200px}.htz-f{-webkit-box-orient:vertical}.htz-g{-webkit-box-direction:normal}.htz-h{z-index:1}.htz-i{background-color:transparent}.htz-j{bottom:0rem}.htz-k{left:0rem}.htz-l{position:absolute}.htz-m{right:0rem}.htz-n{top:0rem}.htz-o{z-index:0}"`;
