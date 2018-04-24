@@ -3,7 +3,12 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import { border, borderBottom, parseStyleProps, parseComponentProp, } from '@haaretz/htz-css-tools';
+import {
+  border,
+  borderBottom,
+  parseStyleProps,
+  parseComponentProp,
+} from '@haaretz/htz-css-tools';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import Abbr from './elements/Abbr';
@@ -28,11 +33,15 @@ const labelStyle = ({
   cursor: 'pointer',
   display: 'flex',
   alignItems: 'center',
-  ...(isTextArea || isContentEditable ? { flexDirection: 'column', alignItems: 'flex-start', } : {}),
+  ...(isTextArea || isContentEditable
+    ? { flexDirection: 'column', alignItems: 'flex-start', }
+    : {}),
   paddingInlineStart: '1rem',
   paddingInlineEnd: '1rem',
   width: '100%',
-  ...(!isTextArea && !isContentEditable ? { position: 'relative', marginTop: '1rem', } : {}),
+  ...(!isTextArea && !isContentEditable
+    ? { position: 'relative', marginTop: '1rem', }
+    : {}),
   extend: [
     theme.type(theme.inputStyle.typeScale),
     parseComponentProp(
@@ -51,9 +60,20 @@ const labelStyle = ({
   ],
 });
 
-const StyledLabel = createComponent(labelStyle, 'label', [ 'htmlFor', 'onClick', ]);
+const StyledLabel = createComponent(labelStyle, 'label', [
+  'htmlFor',
+  'onClick',
+]);
 
-function setVariant(prop, variant, getColor, isError, isFocused, theme, isDisabled) {
+function setVariant(
+  prop,
+  variant,
+  getColor,
+  isError,
+  isFocused,
+  theme,
+  isDisabled
+) {
   const focusedStyle = {
     backgroundColor: getColor('input', `${variant}FocusBg`),
     ...border(
@@ -119,13 +139,13 @@ const labelTextStyle = ({
         {
           condition: !isTextArea && !isContentEditable,
           style: {
-            position: 'absolute',
             bottom: '0.7rem',
             paddingRight: '1rem',
             paddingLeft: '1rem',
             marginInlineStart: '-1rem',
             ...(isFocused || !isInputEmpty
               ? {
+                position: 'absolute',
                 backgroundColor: theme.color(
                   'input',
                   isFocused ? `${variant}FocusBg` : `${variant}Bg`
@@ -145,7 +165,9 @@ const labelTextStyle = ({
               `${theme.inputStyle.borderWidth}px`,
               theme.inputStyle.lines,
               theme.inputStyle.borderStyle,
-              isFocused ? theme.color('input', `${variant}BorderTextLabel`) : 'transparent'
+              isFocused
+                ? theme.color('input', `${variant}BorderTextLabel`)
+                : 'transparent'
             ),
           },
         },
@@ -157,10 +179,14 @@ const StyledLabelText = createComponent(labelTextStyle, 'span', [ 'id', ]);
 
 const labelAndButtonsWrapperStyle = ({ isContentEditable, isTextArea, }) => ({
   ...(isTextArea || isContentEditable ? { width: '100%', } : {}),
-  ...(isContentEditable ? { display: 'flex', justifyContent: 'space-between', } : {}),
+  ...(isContentEditable
+    ? { display: 'flex', justifyContent: 'space-between', }
+    : {}),
 });
 
-const StyledLabelAndButtonsWrapper = createComponent(labelAndButtonsWrapperStyle);
+const StyledLabelAndButtonsWrapper = createComponent(
+  labelAndButtonsWrapperStyle
+);
 
 class TextInput extends Component {
   static propTypes = {
@@ -181,7 +207,11 @@ class TextInput extends Component {
      */
     defaultValue: PropTypes.string,
     /** error note to display if input is passed a `isError` prop, */
-    errorText: PropTypes.oneOfType([ PropTypes.string, PropTypes.element, PropTypes.node, ]),
+    errorText: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element,
+      PropTypes.node,
+    ]),
     /**
      * A callback function to allow parent component to get ref of input,
      * example use case: focusing the input.
@@ -245,7 +275,11 @@ class TextInput extends Component {
      */
     noteId: PropTypes.string,
     /** Note explaining the TextInput field  */
-    noteText: PropTypes.oneOfType([ PropTypes.string, PropTypes.element, PropTypes.node, ]),
+    noteText: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element,
+      PropTypes.node,
+    ]),
     /**
      * A callback that gets called when the input blurs
      * @param {SyntheticEvent} evt - The event object
@@ -306,7 +340,15 @@ class TextInput extends Component {
      * The html input type
      * oneOf('email', 'number', 'password', 'search', 'tel', 'text', 'url')
      */
-    type: PropTypes.oneOf([ 'email', 'number', 'password', 'search', 'tel', 'text', 'url', ]),
+    type: PropTypes.oneOf([
+      'email',
+      'number',
+      'password',
+      'search',
+      'tel',
+      'text',
+      'url',
+    ]),
     /**
      * Value of a controlled `<TextInput />`.
      * Should never be passed manually by the consumer, but rather
@@ -386,7 +428,9 @@ class TextInput extends Component {
     labelId: this.props.labelId || Math.random().toString(),
     noteId: this.props.noteId
       ? this.props.noteId
-      : this.props.errorText || this.props.noteText ? Math.random().toString() : null,
+      : this.props.errorText || this.props.noteText
+        ? Math.random().toString()
+        : null,
   };
 
   /**
@@ -484,7 +528,9 @@ class TextInput extends Component {
           isContentEditable={isContentEditable}
           isTextArea={isTextArea}
           isDisabled={isDisabled}
-          {...(isContentEditable ? { onClick: evt => this.handleClick(evt), } : {})}
+          {...(isContentEditable
+            ? { onClick: evt => this.handleClick(evt), }
+            : {})}
         >
           <StyledLabelAndButtonsWrapper
             isContentEditable={isContentEditable}
@@ -517,7 +563,11 @@ class TextInput extends Component {
               <div>
                 {' '}
                 <Button
-                  variant={this.state.italicActive ? 'primaryOpaque' : 'formattingOpaque'}
+                  variant={
+                    this.state.italicActive
+                      ? 'primaryOpaque'
+                      : 'formattingOpaque'
+                  }
                   attrs={{
                     'aria-checked': this.state.italicActive,
                     'arial-label': 'italic',
@@ -538,7 +588,9 @@ class TextInput extends Component {
                   <IconItalic />
                 </Button>
                 <Button
-                  variant={this.state.boldActive ? 'primaryOpaque' : 'formattingOpaque'}
+                  variant={
+                    this.state.boldActive ? 'primaryOpaque' : 'formattingOpaque'
+                  }
                   attrs={{
                     'aria-checked': this.state.boldActive,
                     'arial-label': 'bold',
@@ -582,18 +634,18 @@ class TextInput extends Component {
             }}
             {...(!isContentEditable
               ? {
-                onChange: evt => {
-                  if (onChange) onChange(evt);
-                  if (!isTextArea) {
-                    if (evt.target.value.length > 0) {
-                      this.setState({ isInputEmpty: false, });
+                  onChange: evt => {
+                    if (onChange) onChange(evt);
+                    if (!isTextArea) {
+                      if (evt.target.value.length > 0) {
+                        this.setState({ isInputEmpty: false, });
+                      }
+                      if (evt.target.value.length === 0) {
+                        this.setState({ isInputEmpty: true, });
+                      }
                     }
-                    if (evt.target.value.length === 0) {
-                      this.setState({ isInputEmpty: true, });
-                    }
-                  }
-                },
-              }
+                  },
+                }
               : {})}
             onFocus={() => {
               this.handleInputFocus(true);
@@ -609,15 +661,20 @@ class TextInput extends Component {
             }}
             {...(isContentEditable
               ? {
-                setFormatButtonsState: this.setFormatButtonsState,
-                onContentEditableChange,
-              }
+                  setFormatButtonsState: this.setFormatButtonsState,
+                  onContentEditableChange,
+                }
               : {})}
             type={type}
             value={value}
           />
         </StyledLabel>
-        <Note text={isError ? errorText : noteText} isError={isError} noteId={this.state.noteId} />
+        <Note
+          text={isError ? errorText : noteText}
+          isError={isError}
+          noteId={this.state.noteId}
+          variant={variant}
+        />
       </div>
     );
   }
