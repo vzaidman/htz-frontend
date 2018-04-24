@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
+import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import { textInputVariantType, } from '../TextInput/textInputVariantType';
 
@@ -21,7 +22,11 @@ const propTypes = {
    */
   noteId: PropTypes.string,
   /** the note text, parent component responsible for changing the text when there is an error */
-  text: PropTypes.oneOfType([ PropTypes.string, PropTypes.element, PropTypes.node, ]),
+  text: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.node,
+  ]),
   /** The TextInput stylistic variant */
   // used for styling
   // eslint-disable-next-line react/no-unused-prop-types
@@ -45,11 +50,26 @@ const defaultProps = {
 
 const styles = ({ theme, isError, variant, }) => ({
   display: 'block',
-  color: isError
-    ? theme.color('input', `${variant}ErrorTextNote`)
-    : theme.color('input', `${variant}TextNote`),
-  ...theme.type(-3),
+  extend: [
+    theme.type(-3),
+    parseComponentProp(
+      undefined,
+      variant,
+      theme.mq,
+      setVariant,
+      theme.color,
+      isError
+    ),
+  ],
 });
+
+function setVariant(prop, variant, getColor, isError) {
+  return {
+    color: isError
+      ? getColor('input', `${variant}ErrorTextNote`)
+      : getColor('input', `${variant}TextNote`),
+  };
+}
 
 function Note({ className, text, noteId, }) {
   return (
