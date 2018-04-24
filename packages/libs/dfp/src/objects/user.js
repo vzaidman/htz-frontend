@@ -4,14 +4,12 @@ import ImpressionManager from './impressionsManager';
 
 let globalConfig;
 
-const getCookieAsMap = CookieUtils.getCookieAsMap;
-
 export default class DfpUser {
   constructor(config) {
     globalConfig = globalConfig || config;
     this.config = Object.assign({}, config.userConfig);
     this.user = new UserFactory(true).build();
-    const cookieMap = getCookieAsMap();
+    const cookieMap = CookieUtils.getCookieAsMap();
     this.ssoKey = globalConfig.sso;
     if (!cookieMap[this.ssoKey]) {
       // Flips the ssoKey, since cookieMap.ssoKey cannot be used to retrieve data

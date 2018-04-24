@@ -16,6 +16,8 @@ export default gql`
           postHeader
           postMain
           footer
+          article
+          aside
         }
       }
       dfpConfig {

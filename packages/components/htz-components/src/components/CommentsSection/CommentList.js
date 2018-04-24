@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
+import Observer from 'react-intersection-observer';
+import debounce from 'lodash/debounce';
 import { createComponent, } from 'react-fela';
 import Comment from './Comment.js';
+// import AdSlot from '../Ads/AdSlot';
+import AdSlot from '../Ads/AdSlot';
+
+// const ObservedAdSlot = (shouldDisplay) => shouldDisplay ?
+//   (<Observer
+//     render={(inView) => (
+//       inView => <AdSlot id="haaretz.co.il.web.fullbanner.talkback" audianceTarget="all" />
+//     )}
+//   />) : null;
+// const ObservedAdSlot = shouldDisplay => (
+//   <Observer>
+//     {inView => <h2>{`Header inside viewport ${inView} and it shouldDisplay: ${shouldDisplay}.`}</h2>}
+//   </Observer>
+// );
+// // const debouncedAdSlot = debounce(ObservedAdSlot, 1000);
 
 const propTypes = {
   /**
@@ -73,48 +90,132 @@ const wrapperStyle = ({ theme, }) => ({
 
 const StyledWrapper = createComponent(wrapperStyle);
 
-export function CommentList({
-  comments,
-  isSubComment,
-  commentsPlusRate,
-  commentsMinusRate,
-  initVote,
-  reportAbuse,
-  parentAuthor,
-  initNewComment,
-  signUpNotification,
-  openParentReplyForm,
-}) {
-  return (
-    <StyledWrapper>
-      {comments.map((comment, idx) => (
-        <Comment
-          key={comment.commentId}
-          commentId={comment.commentId}
-          author={comment.author}
-          title={comment.title}
-          commentText={comment.commentText}
-          parentAuthor={parentAuthor}
-          publishingDateForDisplay={comment.publishingDateForDisplay}
-          commentNumber={comment.number || ''}
-          subComments={comment.subComments}
-          isEditorPick={comment.isEditorPick}
-          // need to pass these down in case subComments have plus or minus rates
-          commentsPlusRate={commentsPlusRate}
-          commentsMinusRate={commentsMinusRate}
-          initVote={initVote}
-          reportAbuse={reportAbuse}
-          initNewComment={initNewComment}
-          signUpNotification={signUpNotification}
-          openParentReplyForm={openParentReplyForm}
-          isSubComment={isSubComment}
-          isFirstSubComment={isSubComment && idx === 0}
-          isLastSubComment={isSubComment && idx === comments.length - 1}
-        />
-      ))}
-    </StyledWrapper>
-  );
+const adSlot = (
+  <AdSlot id="haaretz.co.il.web.fullbanner.talkback" audianceTarget="all" />
+);
+
+const debounced = debounce((component, idx) => {
+  console.log(`next possible AdSlot view in after comment number ${idx}`);
+  component.setState({
+    adLocation: idx,
+  });
+}, 3000); // TODO check optimal debounce timeout
+
+class CommentList extends Component {
+  state = {
+    adLocation: -1,
+  };
+
+  drawAdSlot(idx) {
+    return (
+      <Observer
+        triggerOnce={false}
+        onChange={inView => {
+          if (inView) {
+            debounced(this, idx);
+          }
+        }}
+        render={inView =>
+          (inView && this.state.adLocation === idx ? adSlot : null)
+        }
+      />
+    );
+  }
+
+  render() {
+    const {
+      comments,
+      parentAuthor,
+      commentsPlusRate,
+      commentsMinusRate,
+      initVote,
+      reportAbuse,
+      initNewComment,
+      signUpNotification,
+      openParentReplyForm,
+      isSubComment,
+    } = this.props;
+    return (
+      <StyledWrapper>
+        {comments.map((comment, idx) => (
+          <Fragment>
+            <Comment
+              key={comment.commentId}
+              commentId={comment.commentId}
+              author={comment.author}
+              title={comment.title}
+              commentText={comment.commentText}
+              parentAuthor={parentAuthor}
+              publishingDateForDisplay={comment.publishingDateForDisplay}
+              commentNumber={comment.number || ''}
+              subComments={comment.subComments}
+              isEditorPick={comment.isEditorPick}
+              // need to pass these down in case subComments have plus or minus rates
+              commentsPlusRate={commentsPlusRate}
+              commentsMinusRate={commentsMinusRate}
+              initVote={initVote}
+              reportAbuse={reportAbuse}
+              initNewComment={initNewComment}
+              signUpNotification={signUpNotification}
+              openParentReplyForm={openParentReplyForm}
+              isSubComment={isSubComment}
+              isFirstSubComment={isSubComment && idx === 0}
+              isLastSubComment={isSubComment && idx === comments.length - 1}
+            />
+            {idx % 5 === 0 ? this.drawAdSlot(idx) : null}
+          </Fragment>
+        ))}
+      </StyledWrapper>
+    );
+  }
 }
+
+// export function CommentList({
+//   comments,
+//   isSubComment,
+//   commentsPlusRate,
+//   commentsMinusRate,
+//   initVote,
+//   reportAbuse,
+//   parentAuthor,
+//   initNewComment,
+//   signUpNotification,
+//   openParentReplyForm,
+// }) {
+//   return (
+//     <StyledWrapper>
+//       {comments.map((comment, idx) => (
+//         <Fragment>
+//           <Comment
+//             key={comment.commentId}
+//             commentId={comment.commentId}
+//             author={comment.author}
+//             title={comment.title}
+//             commentText={comment.commentText}
+//             parentAuthor={parentAuthor}
+//             publishingDateForDisplay={comment.publishingDateForDisplay}
+//             commentNumber={comment.number || ''}
+//             subComments={comment.subComments}
+//             isEditorPick={comment.isEditorPick}
+//             // need to pass these down in case subComments have plus or minus rates
+//             commentsPlusRate={commentsPlusRate}
+//             commentsMinusRate={commentsMinusRate}
+//             initVote={initVote}
+//             reportAbuse={reportAbuse}
+//             initNewComment={initNewComment}
+//             signUpNotification={signUpNotification}
+//             openParentReplyForm={openParentReplyForm}
+//             isSubComment={isSubComment}
+//             isFirstSubComment={isSubComment && idx === 0}
+//             isLastSubComment={isSubComment && idx === comments.length - 1}
+//           />
+//           {console.log(idx % 5 === 0)}
+//           {ObservedAdSlot(idx % 5 === 0)}
+//         </Fragment>
+//       ))}
+//     </StyledWrapper>
+//   );
+// }
 
 CommentList.propTypes = propTypes;
 

@@ -5,7 +5,6 @@
  * Inspired by Next.js and `react-scripts` from `create-react-app`.
  * TODO: Make this friendlier (list scripts, help, version, etc.)
  */
-
 const spawn = require('cross-spawn');
 
 const argv = process.argv.slice(2);

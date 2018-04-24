@@ -237,7 +237,7 @@ export default class AdManager {
    * a given adPriority. This is used to cherry pick the init process of ads.
    * @returns {Map}
    */
-  initAdSlots(adSlotConfig, filteredPriority) {
+  initAdSlotsOld(adSlotConfig, filteredPriority) {
     const adSlots = new Map(this.adSlots);
     let adSlotPlaceholders = Array.from(
       document.getElementsByClassName('js-dfp-ad')
@@ -310,6 +310,66 @@ export default class AdManager {
     });
     return adSlots;
   }
+  /**
+   * Initializes adSlots based on the currently found slot markup (HTML page specific),
+   * and the predefined configuration for the slots.
+   * @param {Object} adSlotConfig - the AdSlots configuration object (see: globalConfig)
+   * @param {String} filteredPriority - filters out all adSlots that does not match
+   * a given adPriority. This is used to cherry pick the init process of ads.
+   * @returns {Map}
+   */
+  initAdSlots(adSlotConfig, filteredPriority) {
+    const adSlots = new Map(this.adSlots);
+    // adSlotPlaceholders = adSlotPlaceholders.sort((a, b) => a.offsetTop - b.offsetTop);
+    for (const adSlotId in adSlotConfig) {
+      if (adSlotConfig[adSlotId].priority === filteredPriority) {
+        try {
+          const adSlotHtmlElement = document.getElementById(adSlotId);
+          // adSlotConfig is built from globalConfig, but can be overridden by markup
+          const computedAdSlotConfig = Object.assign(
+            {},
+            adSlotConfig[adSlotId],
+            {
+              id: adSlotId,
+              target: adSlotHtmlElement
+                ? adSlotHtmlElement.attributes['data-audtarget']
+                  ? adSlotHtmlElement.attributes['data-audtarget'].value
+                  : adTargets.all
+                : adTargets.all,
+              type: this.getAdType(adSlotId),
+              responsive: adSlotConfig[adSlotId].responsive,
+              fluid: adSlotConfig[adSlotId].fluid || false,
+              user: this.user,
+              adManager: this,
+              htmlElement: adSlotHtmlElement,
+              department: this.config.department,
+              network: this.config.adManagerConfig.network,
+              adUnitBase: this.config.adManagerConfig.adUnitBase,
+              deferredSlot: this.conflictResolver.isBlocked(adSlotId),
+              priority: adSlotConfig[adSlotId].priority || adPriorities.normal,
+            }
+          );
+          const adSlotInstance = new AdSlot(computedAdSlotConfig);
+          adSlots.set(adSlotId, adSlotInstance);
+          if (
+            adSlotInstance.type !== adTypes.talkback &&
+            adSlotInstance.priority === adPriorities.high &&
+            this.shouldSendRequestToDfp(adSlotInstance)
+          ) {
+            /*
+              console.log('calling show for high priority slot', adSlotInstance.id, ' called @',
+              window.performance.now());
+              */
+            adSlotInstance.show();
+          }
+        }
+        catch (err) {
+          console.error(err); // eslint-disable-line no-console
+        }
+      }
+    }
+    return adSlots;
+  }
   // eslint-disable-next-line class-methods-use-this
   isPriority(adSlotId) {
     return (
@@ -346,6 +406,9 @@ export default class AdManager {
     // Conflict management check
     return (
       adSlot !== undefined &&
+      // Has a required DOM Element
+      adSlot.htmlElement &&
+      // Isn't blocked by another adSlot
       this.conflictResolver.isBlocked(adSlot.id) === false &&
       // Valid Referrer check
       adSlot.isWhitelisted() &&
@@ -655,7 +718,10 @@ export default class AdManager {
    */
   initGoogleGlobalSettings() {
     if (window.googletag && window.googletag.apiReady) {
-      const googleGlobalSettings = this.config.googleGlobalSettings;
+      const googleGlobalSettings = Object.assign(
+        {},
+        this.config.googleGlobalSettings
+      );
       // Enable GET parameter overrides
       if (window.location.search) {
         const search = window.location.search;

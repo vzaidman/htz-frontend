@@ -30,13 +30,13 @@ export function createLoaders(req) {
   );
   const pageLoader = new DataLoader(keys =>
     Promise.all(
-      keys.map(path => {
-        const papiPath = `http://${host}.haaretz.co.il/papi${path}`;
-        console.log(
-          `createContext.js - pageLoader - loading JSON from: ${papiPath}`
-        );
-        return fetch(papiPath).then(response => response.json());
-      })
+      keys.map(path =>
+        fetch(
+          `http://${host}.haaretz.co.il/papi${
+            path.startsWith('/') ? '' : '/'
+          }${path}`
+        ).then(response => response.json())
+      )
     )
   );
 
@@ -99,7 +99,9 @@ export function createLoaders(req) {
     Promise.all(
       keys.map(path =>
         fetch(
-          `http://${host}.haaretz.co.il/papi/cmlink/${path}?vm=whtzResponsive&exploded=true`
+          `http://${host}.haaretz.co.il/papi/cmlink${
+            path.startsWith('/') ? '' : '/'
+          }${path}?vm=whtzResponsive&exploded=true`
         ).then(response => response.json())
       )
     )

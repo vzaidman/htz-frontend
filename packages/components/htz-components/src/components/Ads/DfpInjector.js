@@ -5,7 +5,9 @@ import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
 import DFP from '@haaretz/dfp';
 
-const initDfpScript = dfpConfig => {
+export const instance = {};
+
+const initDfpScript = (dfpConfig = {}) => {
   //  Part I: immidiate initialization of DFP ads, like maaavaron
   let q;
   if (dfpConfig) {
@@ -48,6 +50,7 @@ const initDfpScript = dfpConfig => {
   else {
     throw new Error('Init Part III: dfpConfig is not ready!');
   }
+  return q;
 };
 
 export const GET_AD_MANAGER = gql`
@@ -108,7 +111,7 @@ class DfpInjector extends Component {
       this.setState({ shouldRender: true, });
       const dfpConfig = this.props.dfpConfig;
       try {
-        initDfpScript(dfpConfig);
+        instance.dfp = initDfpScript(dfpConfig);
       }
       catch (e) {
         console.error(e);

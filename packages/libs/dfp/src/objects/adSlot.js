@@ -1,6 +1,6 @@
 /* global window, document, googletag */
 import isEqual from 'lodash/isEqual';
-import { adTypes, } from '../objects/adManager';
+import { adTypes, adTargets, } from '../objects/adManager';
 
 const hiddenClass = 'h-hidden';
 let globalConfig;
@@ -40,12 +40,13 @@ export default class AdSlot {
       : [];
 
     // Part IV : Runtime configuration - calculated data - only present in runtime
+    this.shown = false;
     this.lastResolvedSize = undefined; // Initialized in 'slotRenderEnded' callback
     this.lastResolvedWithBreakpoint = undefined; // Initialized in 'slotRenderEnded' callback
     this.slot = undefined; // Holds a googletag.Slot object
     // [https://developers.google.com/doubleclick-gpt/reference#googletag.Slot]
     try {
-      if (!this.deferredSlot) {
+      if (!this.deferredSlot && this.htmlElement) {
         this.slot = this.defineSlot();
       }
     }
@@ -153,23 +154,42 @@ export default class AdSlot {
    * It assumes a markup is available for this slot (any tag with an id attribute = this.id)
    */
   show() {
-    if (!this.shown === true) {
+    // Late init: htmlElement was not already defined, and the DOM requirement was met
+    if (!this.htmlElement && document.getElementById(this.id)) {
+      this.htmlElement = document.getElementById(this.id);
+      this.target = this.htmlElement.attributes['data-audtarget']
+        ? this.htmlElement.attributes['data-audtarget'].value
+        : adTargets.all;
+    }
+    if (!this.shown === true && this.htmlElement) {
       this.shown = true; // Ensure show will be called once per adSlot
       googletag.cmd.push(() => {
-        if (this.deferredSlot) {
+        if (this.deferredSlot || !this.slot) {
           this.slot = this.defineSlot();
         }
-        // console.log(
-        //   'calling show for slot',
-        //   this.id,
-        //   ' called @',
-        //   window.performance.now()
-        // );
-        // console.log('calling show for slot',this.id,' called @',window.performance.now());
-        document.getElementById(this.id).classList.remove(hiddenClass);
-
+        console.log(
+          'calling show for slot',
+          this.id,
+          ' called @',
+          window.performance.now()
+        );
+        this.htmlElement.classList.remove(hiddenClass);
+        console.log(
+          'calling show for slot',
+          this.id,
+          ' called @',
+          window.performance.now()
+        );
         googletag.display(this.id);
       });
+    }
+    else {
+      console.error(
+        `calling show for an ad slot that ${
+          this.shown ? 'was already shown!' : 'missing a required DOM element!'
+        }`,
+        this
+      );
     }
   }
 
@@ -179,7 +199,9 @@ export default class AdSlot {
    */
   hide() {
     googletag.cmd.push(() => {
-      document.getElementById(this.id).classList.add(hiddenClass);
+      if (this.htmlElement) {
+        this.htmlElement.classList.add(hiddenClass);
+      }
     });
   }
 
@@ -275,9 +297,19 @@ export default class AdSlot {
    * Refresh this adSlot
    */
   refresh() {
-    googletag.cmd.push(() => {
-      googletag.pubads().refresh([ this.slot, ]);
-    });
+    if (this.htmlElement) {
+      googletag.cmd.push(() => {
+        googletag.pubads().refresh([ this.slot, ]);
+      });
+    }
+    else {
+      console.error(
+        `calling refresh for an ad slot that ${
+          this.shown ? 'was already shown!' : 'missing a required DOM element!'
+        }`,
+        this
+      );
+    }
   }
 
   /**
