@@ -1,25 +1,45 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { oneOf, } from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+import { parseStyleProps, parseComponentProp, } from '@haaretz/htz-css-tools';
+import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 import Button from '../Button/Button';
 import IconAlefLogo from '../Icon/icons/IconAlefLogo';
+import IconTheMarker from '../Icon/icons/IconTheMarker';
 import Title from '../ArticleHeader/Title';
-import Link from '../Link/Link';
+import BlockLink from '../BlockLink/BlockLink';
+import AboveBlockLink from '../BlockLink/AboveBlockLink';
 
-const SpecialPromotionsStyle = ({ theme, }) => ({
-  backgroundColor: theme.color('quaternary'),
+const selectVariants = oneOf([ 'primary', 'primaryInverse', ]);
+
+const SpecialPromotionsStyle = ({ theme, miscStyles, variant, }) => ({
+  // backgroundColor: theme.color('specialPromotions', `${variant}Bg`),
+  // backgroundColor: theme.color('quaternary'),
   width: '100%',
   display: 'flex',
   justifyContent: 'space-between',
+  flexDirection: 'row',
+  extend: [
+    // Trump all other styles with those defined in `miscStyles`
+    parseComponentProp(undefined, variant, theme.mq, setVariant, theme.color),
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
 });
-const textStyle = ({ theme, }) => ({
+
+function setVariant(prop, variant, getColor) {
+  return {
+    backgroundColor: getColor('specialPromotions', `${variant}Bg`),
+  };
+}
+
+const textStyle = {
   display: 'flex',
   justifyContent: 'flex-start',
   alignSelf: 'center',
   padding: '1rem',
   fontWeight: 'bold',
-  //   extend: [ theme.type(-1), ],
-});
+};
 const IconStyle = {
   alignSelf: 'center',
   flexShrink: '0',
@@ -28,48 +48,84 @@ SpecialPromotions.propTypes = {
   /**
    * An object comes from polopoly for each special promotion.
    */
-
   data: PropTypes.shape({
     title: PropTypes.string,
     url: PropTypes.string,
     urlText: PropTypes.string,
   }).isRequired,
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trump all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  miscStyles: stylesPropType,
+  /** The `<SpecialPromotions />`'s stylistic variant */
+  variant: PropTypes.oneOfType([
+    selectVariants,
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        ...responsivePropBaseType,
+        value: selectVariants.isRequired,
+      })
+    ),
+  ]),
+};
+SpecialPromotions.defaultProps = {
+  miscStyles: null,
+  variant: 'primary',
 };
 
-function SpecialPromotions(props) {
-  const SpecialData = props.data;
+function SpecialPromotions({
+  data: { url, title, urlText, },
+  miscStyles,
+  variant,
+}) {
   return (
-    <FelaComponent
-      rule={SpecialPromotionsStyle}
-      render={({ className, theme, }) => (
-        <div className={className}>
-          {/* todo: replace this with BlockLink Component */}
-          <Link href={SpecialData.url}>
+    <BlockLink href={url}>
+      <FelaComponent
+        miscStyles={miscStyles}
+        variant={variant}
+        rule={SpecialPromotionsStyle}
+        render={({ className, theme, }) => (
+          <div className={className}>
             <FelaComponent
-              rule={textStyle}
-              render={({ className, }) => (
-                <div className={className}>
-                  <IconAlefLogo
-                    fill="quaternary"
-                    size={3}
-                    miscStyles={IconStyle}
-                  />
-                  <Title
-                    text={SpecialData.title}
-                    level={2}
-                    fontSize={-1}
-                    miscStyles={{ padding: '1rem', }}
-                  />
+              style={textStyle}
+              render={({ className, }) => {
+                const LogoName =
+                  variant === 'primary' ? IconAlefLogo : IconTheMarker;
+                return (
+                  <div className={className}>
+                    <LogoName
+                      fill={theme.specialPromotionStyle[variant].icon}
+                      size={3}
+                      miscStyles={IconStyle}
+                    />
+                    <Title
+                      text={title}
+                      level={2}
+                      fontSize={-1}
+                      miscStyles={{ padding: '1rem', }}
+                    />
+                  </div>
+                );
+              }}
+            />
+            <AboveBlockLink>
+              {({ className, }) => (
+                <div className={className} style={{ display: 'flex', }}>
+                  <Button
+                    variant={theme.specialPromotionStyle[variant].button}
+                    href={url}
+                  >
+                    {urlText}
+                  </Button>
                 </div>
               )}
-            />
-          </Link>
-          <Button variant="neutralOpaque" href={SpecialData.url}>
-            {SpecialData.urlText}
-          </Button>
-        </div>
-      )}
-    />
+            </AboveBlockLink>
+          </div>
+        )}
+      />
+    </BlockLink>
   );
 }
 

@@ -1,16 +1,39 @@
 ### Special promotions
 
-Special promotions element meant to receive an auther/article promotion data and display it in the new promotions style and behavior (e.g: `https://app.zeplin.io/project/59b4e63a7a92547269089328/screen/5a13e64f44db8ca4e2375a7e`).
+Special promotions element meant to receive an auther/article promotion data and display it in the new promotions style and behavior .
 
 ```jsx
-<div dir="rtl" style={{ maxWidth: '80rem' }}>
+<div dir="rtl">
   <SpecialPromotions
     data={{
       title: 'מרוני בר-און ועד נוני מוזס: כל פרשות נתניהו',
-      //   url: '/.premium-1.1204',
       url: 'https://www.haaretz.co.il/news/politics/.premium-1.6014424',
       urlText: 'לכתבה',
     }}
+    miscStyles={{ maxWidth: '80rem' }}
+  />
+</div>
+```
+
+### **Variant**
+
+SpecialPromotion's variant is set using the `variant` prop, which defaults to 'primary'.
+Each variant sets:
+
+* Base `<SpecialPromotions />` background color.
+* button's text and border and background color of a button.
+* icon's fill color and render dynamic icon component.
+
+```jsx
+<div dir="rtl">
+  <SpecialPromotions
+    data={{
+      title: 'החלום האמריקאי על בית מחזיר את הרעל לשווקים',
+      url: 'https://www.themarker.com/wallstreet/1.6026381',
+      urlText: 'לכתבה',
+    }}
+    miscStyles={{ maxWidth: '80rem' }}
+    variant="primaryInverse"
   />
 </div>
 ```

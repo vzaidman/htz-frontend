@@ -11,6 +11,7 @@ import inputStyle from './consts/inputStyle';
 import { benderStyle, } from './consts/listStyle';
 import newsletterStyle from './consts/newsletterStyle';
 import selectStyle from './consts/selectStyle';
+import specialPromotionStyle from './consts/specialPromotionStyle';
 import typeConf from './consts/typeConf';
 import {
   a11yMenuI18n,
@@ -69,6 +70,7 @@ const htzTheme = Object.freeze({
   inputStyle,
   newsletterStyle,
   selectStyle,
+  specialPromotionStyle,
   typeConf,
 
   // I18n

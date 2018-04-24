@@ -529,7 +529,12 @@ const colors = {
     '+2': '#194716',
     a11yOnDark: [ 'positive', '-1', ],
   },
-
+  specialPromotions: {
+    // Primary
+    primaryBg: [ 'quaternary', 'base', ],
+    // PrimaryInverse
+    primaryInverseBg: [ 'tertiary', '-4', ],
+  },
   // social
   facebook: {
     '-2': '#F2F6FF',
