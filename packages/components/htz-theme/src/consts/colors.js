@@ -99,7 +99,7 @@ const colors = {
     neutralActiveText: [ 'button', 'neutralText', ],
     neutralFocusBg: [ 'neutral', '-1', ],
     neutralFocusBorder: [ 'button', 'neutralFocusBg', ],
-    neutralFocusText: 'white',
+    neutralFocusText: 'hsl(0,0%,100%)',
     neutralHoverBg: [ 'neutral', '-6', ],
     neutralHoverBorder: [ 'button', 'neutralHoverText', ],
     neutralHoverText: [ 'button', 'neutralText', ],
