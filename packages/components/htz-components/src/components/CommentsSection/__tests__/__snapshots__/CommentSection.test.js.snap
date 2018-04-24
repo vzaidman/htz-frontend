@@ -24,14 +24,14 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
                   className=""
                 >
                   <span
-                    className="htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-t htz-u htz-bb htz-bc htz-bd htz-be htz-bf"
+                    className="htz-av htz-aw htz-ax htz-ay htz-az htz-t htz-u htz-ba htz-bb htz-bc htz-bd htz-be"
                   >
                     שם
                   </span>
                 </div>
                 <input
                   aria-describedby="123456789"
-                  className="htz-bg htz-bh htz-bi htz-v htz-q htz-bj htz-bk"
+                  className="htz-bf htz-bg htz-bh htz-v htz-q htz-bi htz-bj"
                   id="123456789"
                   maxLength={200}
                   onBlur={[Function]}
@@ -42,7 +42,7 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
                 />
               </label>
               <span
-                className="htz-p htz-bl htz-bm htz-bn htz-bo htz-bp"
+                className="htz-p htz-bk htz-bl htz-bm htz-bn htz-bo"
                 id="123456789"
               >
                 הזינו שם שיוצג כמחבר התגובה
@@ -50,7 +50,7 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
             </div>
           </div>
           <button
-            className="htz-bq htz-br htz-x htz-ax htz-bs htz-bt htz-bu htz-bv htz-bw htz-e htz-f htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-bj"
+            className="htz-bp htz-bq htz-x htz-ax htz-br htz-bs htz-bt htz-bu htz-bv htz-e htz-f htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-bi"
             onClick={[Function]}
             type="button"
           >
@@ -59,15 +59,15 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
         </div>
         <div>
           <label
-            className="htz-q htz-b htz-k htz-l htz-c htz-d htz-t htz-u htz-v htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-e htz-f htz-ap htz-aq htz-cd htz-ar htz-as htz-at htz-m htz-i htz-j"
+            className="htz-q htz-b htz-k htz-l htz-c htz-d htz-t htz-u htz-v htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-e htz-f htz-ap htz-aq htz-cc htz-ar htz-as htz-at htz-m htz-i htz-j"
             htmlFor="123456789"
             onClick={[Function]}
           >
             <div
-              className="htz-v htz-b htz-ce htz-cf htz-cg"
+              className="htz-v htz-b htz-cd htz-ce htz-cf"
             >
               <span
-                className="htz-av htz-aw htz-ax htz-ay htz-bc htz-bd htz-n htz-o htz-ch htz-e htz-f htz-bx htz-aq htz-be htz-bf"
+                className="htz-av htz-aw htz-ax htz-ay htz-bb htz-bc htz-n htz-o htz-cg htz-e htz-f htz-bw htz-aq htz-bd htz-be"
                 id="123456789"
               >
                 תגובה
@@ -77,7 +77,7 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
                 <button
                   aria-checked={false}
                   arial-label="italic"
-                  className="htz-r htz-s htz-ci htz-cj htz-ck htz-q htz-cl htz-ax htz-bi htz-cm htz-cn htz-w htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-ai htz-aj htz-df htz-af htz-ag htz-dg htz-dh htz-ae htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-ar htz-dr htz-at htz-ds htz-dt htz-bj htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-au htz-eh htz-ei htz-ej"
+                  className="htz-r htz-s htz-ch htz-ci htz-cj htz-q htz-ck htz-ax htz-bh htz-cl htz-cm htz-w htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-ai htz-aj htz-de htz-af htz-ag htz-df htz-dg htz-ae htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-ar htz-dq htz-at htz-dr htz-ds htz-bi htz-dt htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-au htz-eg htz-eh htz-ei"
                   id={null}
                   onClick={[Function]}
                   onMouseDown={[Function]}
@@ -85,10 +85,10 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
                   type="button"
                 >
                   <span
-                    className="htz-ek htz-el htz-bc htz-bd htz-em htz-en htz-eo"
+                    className="htz-ej htz-ek htz-bb htz-bc htz-el htz-em htz-en"
                   >
                     <svg
-                      className="htz-ep htz-eq htz-er"
+                      className="htz-eo htz-ep htz-eq"
                       height="1em"
                       viewBox="0 0 256 256"
                       width="1em"
@@ -101,13 +101,13 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
                     </svg>
                   </span>
                   <span
-                    className="htz-es htz-et htz-eu htz-az htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
+                    className="htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
                   />
                 </button>
                 <button
                   aria-checked={false}
                   arial-label="bold"
-                  className="htz-r htz-s htz-ci htz-cj htz-ck htz-q htz-cl htz-ax htz-bi htz-cm htz-cn htz-w htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-ai htz-aj htz-df htz-af htz-ag htz-dg htz-dh htz-ae htz-di htz-dj htz-dl htz-fk htz-dn htz-do htz-dp htz-dq htz-ar htz-dr htz-at htz-ds htz-dt htz-bj htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-au htz-eh htz-ei htz-ej"
+                  className="htz-r htz-s htz-ch htz-ci htz-cj htz-q htz-ck htz-ax htz-bh htz-cl htz-cm htz-w htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-ai htz-aj htz-de htz-af htz-ag htz-df htz-dg htz-ae htz-dh htz-di htz-dk htz-fk htz-dm htz-dn htz-do htz-dp htz-ar htz-dq htz-at htz-dr htz-ds htz-bi htz-dt htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-au htz-eg htz-eh htz-ei"
                   id={null}
                   onClick={[Function]}
                   onMouseDown={[Function]}
@@ -115,10 +115,10 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
                   type="button"
                 >
                   <span
-                    className="htz-ek htz-el htz-bc htz-bd htz-em htz-en htz-eo"
+                    className="htz-ej htz-ek htz-bb htz-bc htz-el htz-em htz-en"
                   >
                     <svg
-                      className="htz-ep htz-eq htz-er"
+                      className="htz-eo htz-ep htz-eq"
                       height="1em"
                       viewBox="0 0 256 256"
                       width="1em"
@@ -131,7 +131,7 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
                     </svg>
                   </span>
                   <span
-                    className="htz-es htz-et htz-eu htz-az htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
+                    className="htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
                   />
                 </button>
               </div>
@@ -140,7 +140,7 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
               aria-describedby="123456789"
               aria-labelledby="123456789"
               aria-multiline={true}
-              className="htz-bg htz-bh htz-fl htz-bi htz-v htz-q htz-fm htz-bj htz-bk"
+              className="htz-bf htz-bg htz-fl htz-bh htz-v htz-q htz-fm htz-bi htz-bj"
               contentEditable={true}
               dangerouslySetInnerHTML={
                 Object {
@@ -160,31 +160,31 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
             />
           </label>
           <span
-            className="htz-p htz-bl htz-bm htz-bn htz-bo htz-bp"
+            className="htz-p htz-bk htz-bl htz-bm htz-bn htz-bo"
             id="123456789"
           >
             בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ
           </span>
         </div>
         <div
-          className="htz-b htz-fn htz-fo htz-ce htz-cf htz-fp htz-j htz-cg"
+          className="htz-b htz-fn htz-fo htz-cd htz-ce htz-fp htz-j htz-cf"
         >
           <div
             className="htz-fq htz-fr"
           >
             <button
-              className="htz-r htz-s htz-ci htz-cj htz-ck htz-q htz-fs htz-ax htz-bi htz-cm htz-cn htz-w htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-e htz-f htz-aq htz-al htz-am htz-ao htz-ai htz-aj htz-ft htz-af htz-ag htz-fu htz-dh htz-bh htz-fv htz-br htz-dp htz-dq htz-fw htz-fx htz-fy htz-ds htz-dt htz-bj htz-du htz-dv htz-dw htz-fz htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed htz-ga htz-gb htz-gc htz-au htz-eh htz-ei htz-ej"
+              className="htz-r htz-s htz-ch htz-ci htz-cj htz-q htz-fs htz-ax htz-bh htz-cl htz-cm htz-w htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-e htz-f htz-aq htz-al htz-am htz-ao htz-ai htz-aj htz-ft htz-af htz-ag htz-fu htz-dg htz-bg htz-fv htz-bq htz-do htz-dp htz-fw htz-fx htz-fy htz-dr htz-ds htz-bi htz-dt htz-du htz-dv htz-fz htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec htz-ga htz-gb htz-gc htz-au htz-eg htz-eh htz-ei"
               id={null}
               onClick={[Function]}
               type="button"
             >
               <span
-                className="htz-ek htz-el htz-bc htz-bd htz-em htz-en htz-eo"
+                className="htz-ej htz-ek htz-bb htz-bc htz-el htz-em htz-en"
               >
                 שלח
               </span>
               <span
-                className="htz-es htz-et htz-eu htz-az htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
+                className="htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
               />
             </button>
           </div>
@@ -202,13 +202,13 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
           onKeyDown={[Function]}
         >
           <div
-            className="htz-gh htz-br htz-af htz-ag htz-gi htz-ai htz-aj htz-gj htz-w htz-gk htz-da htz-db htz-dc htz-dd htz-de htz-gl htz-gm htz-gn htz-go htz-cv htz-cw htz-cx htz-cy htz-cz htz-gp"
+            className="htz-gh htz-bq htz-af htz-ag htz-gi htz-ai htz-aj htz-gj htz-w htz-gk htz-cz htz-da htz-db htz-dc htz-dd htz-gl htz-gm htz-gn htz-go htz-cu htz-cv htz-cw htz-cx htz-cy htz-gp"
           >
             <button
               aria-expanded={false}
               aria-haspopup={true}
               aria-label="open menu"
-              className="htz-v htz-gq htz-t htz-u htz-a htz-b htz-ce htz-cf htz-r htz-s htz-cv htz-gr htz-gs htz-gt htz-gu htz-gv htz-gw htz-gx htz-gy htz-gz htz-ha htz-hb htz-hc htz-w htz-hd htz-he htz-db htz-dc htz-dd htz-de htz-gl htz-gm htz-hf htz-hg htz-bj htz-hh htz-cg htz-au"
+              className="htz-v htz-gq htz-t htz-u htz-a htz-b htz-cd htz-ce htz-r htz-s htz-cu htz-gr htz-gs htz-gt htz-gu htz-gv htz-gw htz-gx htz-gy htz-gz htz-ha htz-hb htz-hc htz-w htz-hd htz-he htz-da htz-db htz-dc htz-dd htz-gl htz-gm htz-hf htz-hg htz-bi htz-hh htz-cf htz-au"
               onBlur={[Function]}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -252,7 +252,7 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
               className="htz-v htz-b htz-fn htz-fo htz-hz htz-ia htz-r htz-s htz-ib htz-ic htz-id htz-fp htz-j htz-ie htz-au"
             >
               <h4
-                className="htz-br htz-if htz-ig htz-cs htz-av htz-ih htz-ii htz-ij htz-ik htz-il htz-im htz-in htz-io"
+                className="htz-bq htz-if htz-ig htz-cr htz-av htz-ih htz-ii htz-ij htz-ik htz-il htz-im htz-in htz-io"
                 onClick={[Function]}
               >
                 אורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלאורי ויסלר
@@ -263,7 +263,7 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
                 08:57
               </span>
               <span
-                className="htz-iq htz-cs"
+                className="htz-iq htz-cr"
               >
                 | 
                 בחירת העורכים
@@ -271,12 +271,12 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
             </div>
             <div>
               <div
-                className="htz-dj htz-ig"
+                className="htz-di htz-ig"
               >
                 התמונה בכתבה היא בסבירות גבוהה לא מבאבי יאר
               </div>
               <div
-                className="htz-dj htz-ig"
+                className="htz-di htz-ig"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "long text sdmgalkgmlaskgmaslkg lsdlk jasldk lsdkj lksajg lskdgjaslkdgjmlaskgjmlasdkgjmslkdgmsldk sdlkmg slakgmsdgasdgb;l,sad;lgb,s;adb,b fl;,b ;dflb,df;lb, dsdfagkjerngkjawn vkrj vkrejv erkjv krejgv krj vkrwej vkrjv kjrv krjv erkj vrej  v",
@@ -288,27 +288,27 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
               className="htz-b htz-fn htz-fo htz-ir htz-is htz-r htz-s htz-fq htz-fp htz-j htz-au"
             >
               <button
-                className="htz-r htz-s htz-ci htz-cj htz-ck htz-q htz-fs htz-ax htz-bi htz-cm htz-cn htz-w htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-e htz-f htz-it htz-al htz-am htz-iu htz-ai htz-aj htz-iv htz-af htz-ag htz-iw htz-dh htz-bh htz-fv htz-br htz-ix htz-ik htz-il htz-im htz-in htz-dp htz-dq htz-fw htz-fx htz-fy htz-ds htz-dt htz-bj htz-du htz-dv htz-dw htz-fz htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed htz-ga htz-gb htz-gc htz-au htz-eh htz-ei htz-ej"
+                className="htz-r htz-s htz-ch htz-ci htz-cj htz-q htz-fs htz-ax htz-bh htz-cl htz-cm htz-w htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-e htz-f htz-it htz-al htz-am htz-iu htz-ai htz-aj htz-iv htz-af htz-ag htz-iw htz-dg htz-bg htz-fv htz-bq htz-ix htz-ik htz-il htz-im htz-in htz-do htz-dp htz-fw htz-fx htz-fy htz-dr htz-ds htz-bi htz-dt htz-du htz-dv htz-fz htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec htz-ga htz-gb htz-gc htz-au htz-eg htz-eh htz-ei"
                 id={null}
                 onClick={[Function]}
                 type="button"
               >
                 <span
-                  className="htz-ek htz-el htz-bc htz-bd htz-em htz-en htz-eo"
+                  className="htz-ej htz-ek htz-bb htz-bc htz-el htz-em htz-en"
                 >
                   הגב
                 </span>
                 <span
-                  className="htz-es htz-et htz-eu htz-az htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
+                  className="htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
                 />
               </button>
               <button
-                className="htz-fs htz-r htz-s htz-fr htz-bw htz-au"
+                className="htz-fs htz-r htz-s htz-fr htz-bv htz-au"
                 onClick={[Function]}
                 type="button"
               >
                 <svg
-                  className="htz-ep htz-br htz-er htz-iy"
+                  className="htz-eo htz-bq htz-eq htz-iy"
                   height="1em"
                   viewBox="0 0 256 256"
                   width="1em"
@@ -320,18 +320,18 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
                   />
                 </svg>
                 <span
-                  className="htz-hn htz-iz htz-ip htz-ax htz-bs htz-il htz-bu htz-ja"
+                  className="htz-hn htz-iz htz-ip htz-ax htz-br htz-il htz-bt htz-ja"
                 >
                   0
                 </span>
               </button>
               <button
-                className="htz-fs htz-r htz-s htz-jb htz-jc htz-bw htz-au"
+                className="htz-fs htz-r htz-s htz-jb htz-jc htz-bv htz-au"
                 onClick={[Function]}
                 type="button"
               >
                 <svg
-                  className="htz-ep htz-br htz-er htz-iy"
+                  className="htz-eo htz-bq htz-eq htz-iy"
                   height="1em"
                   viewBox="0 0 256 256"
                   width="1em"
@@ -343,24 +343,24 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
                   />
                 </svg>
                 <span
-                  className="htz-hn htz-iz htz-ip htz-ax htz-bs htz-il htz-bu htz-ja"
+                  className="htz-hn htz-iz htz-ip htz-ax htz-br htz-il htz-bt htz-ja"
                 >
                   0
                 </span>
               </button>
               <button
-                className="htz-r htz-s htz-ci htz-cj htz-ck htz-q htz-fs htz-ax htz-bi htz-cm htz-cn htz-w htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-e htz-f htz-it htz-al htz-am htz-iu htz-ai htz-aj htz-jd htz-af htz-ag htz-je htz-dh htz-bh htz-di htz-jf htz-bs htz-il htz-bu htz-ja htz-dp htz-dq htz-jg htz-dr htz-jh htz-ds htz-dt htz-bj htz-du htz-dv htz-ji htz-dx htz-jj htz-dz htz-ea htz-eb htz-ec htz-ed htz-ga htz-ef htz-jk htz-au htz-eh htz-ei htz-ej"
+                className="htz-r htz-s htz-ch htz-ci htz-cj htz-q htz-fs htz-ax htz-bh htz-cl htz-cm htz-w htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-e htz-f htz-it htz-al htz-am htz-iu htz-ai htz-aj htz-jd htz-af htz-ag htz-je htz-dg htz-bg htz-dh htz-jf htz-br htz-il htz-bt htz-ja htz-do htz-dp htz-jg htz-dq htz-jh htz-dr htz-ds htz-bi htz-dt htz-du htz-ji htz-dw htz-jj htz-dy htz-dz htz-ea htz-eb htz-ec htz-ga htz-ee htz-jk htz-au htz-eg htz-eh htz-ei"
                 id={null}
                 onClick={[Function]}
                 type="button"
               >
                 <span
-                  className="htz-ek htz-el htz-bc htz-bd htz-em htz-en htz-eo"
+                  className="htz-ej htz-ek htz-bb htz-bc htz-el htz-em htz-en"
                 >
                   דווח כפוגעני
                 </span>
                 <span
-                  className="htz-es htz-et htz-eu htz-az htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
+                  className="htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
                 />
               </button>
             </div>
@@ -372,18 +372,18 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
       className="htz-jl htz-jm"
     >
       <button
-        className="htz-r htz-s htz-ci htz-cj htz-ck htz-q htz-fs htz-ax htz-bi htz-cm htz-cn htz-w htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-e htz-f htz-aq htz-al htz-am htz-ao htz-ai htz-aj htz-iv htz-af htz-ag htz-iw htz-dh htz-a htz-fv htz-br htz-dp htz-dq htz-fw htz-fx htz-fy htz-ds htz-dt htz-bj htz-du htz-dv htz-dw htz-fz htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed htz-ga htz-gb htz-gc htz-au htz-eh htz-ei htz-ej"
+        className="htz-r htz-s htz-ch htz-ci htz-cj htz-q htz-fs htz-ax htz-bh htz-cl htz-cm htz-w htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-e htz-f htz-aq htz-al htz-am htz-ao htz-ai htz-aj htz-iv htz-af htz-ag htz-iw htz-dg htz-a htz-fv htz-bq htz-do htz-dp htz-fw htz-fx htz-fy htz-dr htz-ds htz-bi htz-dt htz-du htz-dv htz-fz htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec htz-ga htz-gb htz-gc htz-au htz-eg htz-eh htz-ei"
         id={null}
         onClick={[Function]}
         type="button"
       >
         <span
-          className="htz-ek htz-el htz-bc htz-bd htz-em htz-en htz-eo"
+          className="htz-ej htz-ek htz-bb htz-bc htz-el htz-em htz-en"
         >
           טען את כל התגובות
         </span>
         <span
-          className="htz-es htz-et htz-eu htz-az htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
+          className="htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey htz-ez htz-v htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj"
         />
       </button>
     </div>
@@ -394,4 +394,4 @@ exports[`<CommentSection> DOM element renders correctly with minimum required pr
 </div>
 `;
 
-exports[`<CommentSection> DOM element renders correctly with minimum required props 2`] = `".htz-a{background-color:#FFF}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-flex-direction:column}.htz-d{flex-direction:column}.htz-e{border-bottom-width:1px}.htz-f{border-bottom-style:solid}.htz-g{border-bottom-color:#B4B4B4}.htz-h{padding-bottom:calc(2rem - 1px)}.htz-i{-webkit-box-orient:vertical}.htz-j{-webkit-box-direction:normal}.htz-k{-webkit-align-items:flex-start}.htz-l{align-items:flex-start}.htz-m{-webkit-box-align:right}.htz-n{-webkit-flex-grow:1}.htz-o{flex-grow:1}.htz-p{display:block}.htz-q{cursor:pointer}.htz-r{-webkit-align-items:center}.htz-s{align-items:center}.htz-t{padding-right:1rem}.htz-u{padding-left:1rem}.htz-v{width:100%}.htz-w{position:relative}.htz-x{margin-top:1rem}.htz-ae{background-color:#EBF2F5}.htz-af{border-left-width:1px}.htz-ag{border-left-style:solid}.htz-ah{border-left-color:#DAE9F2}.htz-ai{border-right-width:1px}.htz-aj{border-right-style:solid}.htz-ak{border-right-color:#DAE9F2}.htz-al{border-top-width:1px}.htz-am{border-top-style:solid}.htz-an{border-top-color:#DAE9F2}.htz-ao{padding-top:calc(1rem - 1px)}.htz-ap{border-bottom-color:#DAE9F2}.htz-aq{padding-bottom:calc(1rem - 1px)}.htz-ar:hover{background-color:#E6EDF0}.htz-as:hover{border-color:#DAE9F2}.htz-at:hover{color:#2D2D2D}.htz-au{-webkit-box-align:center}.htz-av{margin-left:1rem}.htz-aw{color:#006B96}.htz-ax{font-weight:bold}.htz-ay{transition-property:-webkit-transform,transform}.htz-az{position:absolute}.htz-ba{bottom:0.7rem}.htz-bb{margin-right:-1rem}.htz-bc{transition-duration:0.16666666666666666s}.htz-bd{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-be{-webkit-transition-property:-webkit-transform,transform}.htz-bf{-moz-transition-property:transform}.htz-bg{border:none}.htz-bh{background-color:transparent}.htz-bi{font-size:inherit}.htz-bj:focus{outline:none}.htz-bk:focus{cursor:text}.htz-bl{color:#B4B4B4}.htz-bq{width:14.66rem}.htz-br{color:#0B7EB5}.htz-bx{border-bottom-color:transparent}.htz-by{padding-bottom:calc(0.7rem - 1px)}.htz-bz:hover{border-bottom-width:1px}.htz-ca:hover{border-bottom-style:solid}.htz-cb:hover{border-bottom-color:#0B7EB5}.htz-cc:hover{padding-bottom:calc(0.7rem - 1px)}.htz-cd{margin-top:4.14rem}.htz-ce{-webkit-justify-content:space-between}.htz-cf{justify-content:space-between}.htz-cg{-webkit-box-pack:justify}.htz-ch{margin-bottom:1rem}.htz-ci{-webkit-appearance:none}.htz-cj{-moz-appearance:none}.htz-ck{appearance:none}.htz-cl{display:none}.htz-cm{-webkit-justify-content:center}.htz-cn{justify-content:center}.htz-co{-webkit-transform:scale(1)}.htz-cp{transform:scale(1)}.htz-cq{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cr{text-decoration:none}.htz-cs{white-space:nowrap}.htz-ct::moz-focus-inner{border:0px}.htz-cu::moz-focus-inner{padding:0rem}.htz-cv:after{content:\\"\\"}.htz-cw:after{height:1px}.htz-cx:after{position:absolute}.htz-cy:after{width:100%}.htz-cz:after{bottom:0rem}.htz-da:before{content:\\"\\"}.htz-db:before{height:1px}.htz-dc:before{position:absolute}.htz-dd:before{width:100%}.htz-de:before{top:0rem}.htz-df{padding-right:0rem}.htz-dg{padding-left:0rem}.htz-dh{border-radius:0rem}.htz-di{border-color:transparent}.htz-dj{color:#2D2D2D}.htz-dk{font-style:italic}.htz-dl{height:5rem}.htz-dm{margin-left:0.1rem}.htz-dn{margin-top:calc(1px - 1rem)}.htz-do{width:5rem}.htz-dp:hover{text-decoration:none}.htz-dq:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dr:hover{border-color:transparent}.htz-ds:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dt:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-du:focus{text-decoration:none}.htz-dv:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dw:focus{background-color:#0B7EB5}.htz-dx:focus{border-color:transparent}.htz-dy:focus{color:#FFF}.htz-dz:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ea:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-eb:active{outline:none}.htz-ec:active{text-decoration:none}.htz-ed:active{transition-duration:0s}.htz-ee:active{background-color:#0B7EB5}.htz-ef:active{border-color:transparent}.htz-eg:active{color:#FFF}.htz-eh{-webkit-box-pack:center}.htz-ei{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ej{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ek{opacity:1}.htz-el{transition-property:opacity}.htz-em{transition-delay:.3s}.htz-en{-webkit-transition-property:opacity}.htz-eo{-moz-transition-property:opacity}.htz-ep{vertical-align:-0.15em}.htz-eq{color:inherit}.htz-er{fill:#FFF}.htz-es{background-color:rgba(0, 0, 0, 0.2)}.htz-et{height:100%}.htz-eu{inline-inset-start:0rem}.htz-ev{top:0rem}.htz-ew{-webkit-transform:scaleX(0)}.htz-ex{transform:scaleX(0)}.htz-ey{-webkit-transform-origin:right}.htz-ez{transform-origin:right}.htz-fa{-webkit-animation-direction:alternate}.htz-fb{animation-direction:alternate}.htz-fc{-webkit-animation-iteration-count:infinite}.htz-fd{animation-iteration-count:infinite}.htz-fe{-webkit-animation-duration:1s}.htz-ff{animation-duration:1s}.htz-fg{-webkit-animation-delay:0.75s}.htz-fh{animation-delay:0.75s}.htz-fi{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-fj{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-fk{margin-left:-1rem}.htz-fl{overflow:auto}.htz-fm{height:14rem}.htz-fn{-webkit-flex-direction:row}.htz-fo{flex-direction:row}.htz-fp{-webkit-box-orient:horizontal}.htz-fq{margin-top:2rem}.htz-fr{margin-right:auto}.htz-fs{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ft{padding-right:5rem}.htz-fu{padding-left:5rem}.htz-fv{border-color:#0B7EB5}.htz-fw:hover{background-color:#EBF2F5}.htz-fx:hover{border-color:#006B96}.htz-fy:hover{color:#006B96}.htz-fz:focus{border-color:#0B7EB5}.htz-ga:active{background-color:#fff !important}.htz-gb:active{border-color:#0B7EB5}.htz-gc:active{color:#0B7EB5}.htz-gd{margin-bottom:5rem}.htz-ge{-webkit-align-items:baseline}.htz-gf{align-items:baseline}.htz-gg{-webkit-box-align:baseline}.htz-gh{width:28rem}.htz-gi{border-left-color:#0B7EB5}.htz-gj{border-right-color:#0B7EB5}.htz-gk:before{background-color:#0B7EB5}.htz-gl:before{left:0rem}.htz-gm:before{right:0rem}.htz-gn:before{z-index:1}.htz-go:after{background-color:#0B7EB5}.htz-gp{margin-right:2.3rem}.htz-gq{text-align:right}.htz-gr:after{width:0rem}.htz-gs:after{height:0rem}.htz-gt:after{border-left:0.3em solid transparent}.htz-gu:after{border-right:0.3em solid transparent}.htz-gv:after{border-top:0.5em solid #0B7EB5}.htz-gw:after{transition-property:all}.htz-gx:after{-webkit-transform-origin:center center}.htz-gy:after{transform-origin:center center}.htz-gz:after{transition-duration:.25s}.htz-ha:after{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-hb:after{-webkit-transition-property:all}.htz-hc:after{-moz-transition-property:all}.htz-hd:before{background-color:#EBEBEB}.htz-he:before{content:}.htz-hf{padding-bottom:1rem}.htz-hg{padding-top:1rem}.htz-hh:focus{background-color:#EBF2F5}.htz-hi{-webkit-justify-content:flex-end}.htz-hj{justify-content:flex-end}.htz-hk{padding-top:2rem}.htz-hl{-webkit-box-pack:left}.htz-hm{width:8.5rem}.htz-hn{color:#787878}.htz-ho{-webkit-flex-shrink:0}.htz-hp{flex-shrink:0}.htz-hq{-webkit-flex-grow:0}.htz-hr{flex-grow:0}.htz-hw{-webkit-flex-shrink:1}.htz-hx{flex-shrink:1}.htz-hy{min-width:0rem}.htz-hz{-webkit-justify-content:flex-start}.htz-ia{justify-content:flex-start}.htz-ie{-webkit-box-pack:right}.htz-if{padding:0rem}.htz-ig{margin:0rem}.htz-ih{max-width:50%}.htz-ii{overflow:hidden}.htz-ij{text-overflow:ellipsis}.htz-io:hover{cursor:pointer}.htz-ip{margin-right:1rem}.htz-iq{color:#169FD1}.htz-ir{-webkit-align-content:flex-start}.htz-is{align-content:flex-start}.htz-it{padding-bottom:calc(0.5rem - 1px)}.htz-iu{padding-top:calc(0.5rem - 1px)}.htz-iv{padding-right:4rem}.htz-iw{padding-left:4rem}.htz-ix{margin-left:2rem}.htz-iy{font-size:4rem}.htz-iz{vertical-align:center}.htz-jb{margin-right:2rem}.htz-jc{margin-left:4rem}.htz-jd{padding-right:2rem}.htz-je{padding-left:2rem}.htz-jf{color:#A8001C}.htz-jg:hover{background-color:#FEE}.htz-jh:hover{color:#8A021B}.htz-ji:focus{background-color:#A8001C}.htz-jj:focus{color:#fff}.htz-jk:active{color:#A8001C}.htz-jl{margin-top:3rem}.htz-jm{text-align:center}@media (max-width: 79.9375em){.htz-y{font-size:2.3333333333333335rem}.htz-z{line-height:1.2857142857142858em}.htz-bm{font-size:1.8333333333333333rem}.htz-bn{line-height:1.6363636363636365em}.htz-bs{font-size:2rem}.htz-bt{line-height:2.33rem}.htz-hs{font-size:4rem}.htz-ht{line-height:1.25em}.htz-ik{font-size:2.6666666666666665rem}.htz-il{line-height:1.5em}}@media (min-width: 80em){.htz-ab{font-size:2.2857142857142856rem}.htz-ac{line-height:1.3125em}.htz-bo{font-size:1.7142857142857142rem}.htz-bp{line-height:1.75em}.htz-bu{font-size:2rem}.htz-bv{line-height:2.33rem}.htz-hu{font-size:3.857142857142857rem}.htz-hv{line-height:1.2962962962962963em}.htz-im{font-size:2.5714285714285716rem}.htz-in{line-height:1.5555555555555556em}.htz-ja{line-height:1.5em}}@media (max-width: 37.4375em){.htz-bw{display:none}.htz-ib{-webkit-flex-wrap:wrap}.htz-ic{flex-wrap:wrap}.htz-id{-webkit-box-lines:multiple}}"`;
+exports[`<CommentSection> DOM element renders correctly with minimum required props 2`] = `".htz-a{background-color:#FFF}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-flex-direction:column}.htz-d{flex-direction:column}.htz-e{border-bottom-width:1px}.htz-f{border-bottom-style:solid}.htz-g{border-bottom-color:#B4B4B4}.htz-h{padding-bottom:calc(2rem - 1px)}.htz-i{-webkit-box-orient:vertical}.htz-j{-webkit-box-direction:normal}.htz-k{-webkit-align-items:flex-start}.htz-l{align-items:flex-start}.htz-m{-webkit-box-align:right}.htz-n{-webkit-flex-grow:1}.htz-o{flex-grow:1}.htz-p{display:block}.htz-q{cursor:pointer}.htz-r{-webkit-align-items:center}.htz-s{align-items:center}.htz-t{padding-right:1rem}.htz-u{padding-left:1rem}.htz-v{width:100%}.htz-w{position:relative}.htz-x{margin-top:1rem}.htz-ae{background-color:#EBF2F5}.htz-af{border-left-width:1px}.htz-ag{border-left-style:solid}.htz-ah{border-left-color:#DAE9F2}.htz-ai{border-right-width:1px}.htz-aj{border-right-style:solid}.htz-ak{border-right-color:#DAE9F2}.htz-al{border-top-width:1px}.htz-am{border-top-style:solid}.htz-an{border-top-color:#DAE9F2}.htz-ao{padding-top:calc(1rem - 1px)}.htz-ap{border-bottom-color:#DAE9F2}.htz-aq{padding-bottom:calc(1rem - 1px)}.htz-ar:hover{background-color:#E6EDF0}.htz-as:hover{border-color:#DAE9F2}.htz-at:hover{color:#2D2D2D}.htz-au{-webkit-box-align:center}.htz-av{margin-left:1rem}.htz-aw{color:#006B96}.htz-ax{font-weight:bold}.htz-ay{transition-property:-webkit-transform,transform}.htz-az{bottom:0.7rem}.htz-ba{margin-right:-1rem}.htz-bb{transition-duration:0.16666666666666666s}.htz-bc{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bd{-webkit-transition-property:-webkit-transform,transform}.htz-be{-moz-transition-property:transform}.htz-bf{border:none}.htz-bg{background-color:transparent}.htz-bh{font-size:inherit}.htz-bi:focus{outline:none}.htz-bj:focus{cursor:text}.htz-bo{color:#B4B4B4}.htz-bp{width:14.66rem}.htz-bq{color:#0B7EB5}.htz-bw{border-bottom-color:transparent}.htz-bx{padding-bottom:calc(0.7rem - 1px)}.htz-by:hover{border-bottom-width:1px}.htz-bz:hover{border-bottom-style:solid}.htz-ca:hover{border-bottom-color:#0B7EB5}.htz-cb:hover{padding-bottom:calc(0.7rem - 1px)}.htz-cc{margin-top:4.14rem}.htz-cd{-webkit-justify-content:space-between}.htz-ce{justify-content:space-between}.htz-cf{-webkit-box-pack:justify}.htz-cg{margin-bottom:1rem}.htz-ch{-webkit-appearance:none}.htz-ci{-moz-appearance:none}.htz-cj{appearance:none}.htz-ck{display:none}.htz-cl{-webkit-justify-content:center}.htz-cm{justify-content:center}.htz-cn{-webkit-transform:scale(1)}.htz-co{transform:scale(1)}.htz-cp{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cq{text-decoration:none}.htz-cr{white-space:nowrap}.htz-cs::moz-focus-inner{border:0px}.htz-ct::moz-focus-inner{padding:0rem}.htz-cu:after{content:\\"\\"}.htz-cv:after{height:1px}.htz-cw:after{position:absolute}.htz-cx:after{width:100%}.htz-cy:after{bottom:0rem}.htz-cz:before{content:\\"\\"}.htz-da:before{height:1px}.htz-db:before{position:absolute}.htz-dc:before{width:100%}.htz-dd:before{top:0rem}.htz-de{padding-right:0rem}.htz-df{padding-left:0rem}.htz-dg{border-radius:0rem}.htz-dh{border-color:transparent}.htz-di{color:#2D2D2D}.htz-dj{font-style:italic}.htz-dk{height:5rem}.htz-dl{margin-left:0.1rem}.htz-dm{margin-top:calc(1px - 1rem)}.htz-dn{width:5rem}.htz-do:hover{text-decoration:none}.htz-dp:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dq:hover{border-color:transparent}.htz-dr:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ds:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dt:focus{text-decoration:none}.htz-du:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dv:focus{background-color:#0B7EB5}.htz-dw:focus{border-color:transparent}.htz-dx:focus{color:#FFF}.htz-dy:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dz:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ea:active{outline:none}.htz-eb:active{text-decoration:none}.htz-ec:active{transition-duration:0s}.htz-ed:active{background-color:#0B7EB5}.htz-ee:active{border-color:transparent}.htz-ef:active{color:#FFF}.htz-eg{-webkit-box-pack:center}.htz-eh{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ei{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ej{opacity:1}.htz-ek{transition-property:opacity}.htz-el{transition-delay:.3s}.htz-em{-webkit-transition-property:opacity}.htz-en{-moz-transition-property:opacity}.htz-eo{vertical-align:-0.15em}.htz-ep{color:inherit}.htz-eq{fill:#FFF}.htz-er{background-color:rgba(0, 0, 0, 0.2)}.htz-es{height:100%}.htz-et{inline-inset-start:0rem}.htz-eu{position:absolute}.htz-ev{top:0rem}.htz-ew{-webkit-transform:scaleX(0)}.htz-ex{transform:scaleX(0)}.htz-ey{-webkit-transform-origin:right}.htz-ez{transform-origin:right}.htz-fa{-webkit-animation-direction:alternate}.htz-fb{animation-direction:alternate}.htz-fc{-webkit-animation-iteration-count:infinite}.htz-fd{animation-iteration-count:infinite}.htz-fe{-webkit-animation-duration:1s}.htz-ff{animation-duration:1s}.htz-fg{-webkit-animation-delay:0.75s}.htz-fh{animation-delay:0.75s}.htz-fi{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-fj{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-fk{margin-left:-1rem}.htz-fl{overflow:auto}.htz-fm{height:14rem}.htz-fn{-webkit-flex-direction:row}.htz-fo{flex-direction:row}.htz-fp{-webkit-box-orient:horizontal}.htz-fq{margin-top:2rem}.htz-fr{margin-right:auto}.htz-fs{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ft{padding-right:5rem}.htz-fu{padding-left:5rem}.htz-fv{border-color:#0B7EB5}.htz-fw:hover{background-color:#EBF2F5}.htz-fx:hover{border-color:#006B96}.htz-fy:hover{color:#006B96}.htz-fz:focus{border-color:#0B7EB5}.htz-ga:active{background-color:#fff !important}.htz-gb:active{border-color:#0B7EB5}.htz-gc:active{color:#0B7EB5}.htz-gd{margin-bottom:5rem}.htz-ge{-webkit-align-items:baseline}.htz-gf{align-items:baseline}.htz-gg{-webkit-box-align:baseline}.htz-gh{width:28rem}.htz-gi{border-left-color:#0B7EB5}.htz-gj{border-right-color:#0B7EB5}.htz-gk:before{background-color:#0B7EB5}.htz-gl:before{left:0rem}.htz-gm:before{right:0rem}.htz-gn:before{z-index:1}.htz-go:after{background-color:#0B7EB5}.htz-gp{margin-right:2.3rem}.htz-gq{text-align:right}.htz-gr:after{width:0rem}.htz-gs:after{height:0rem}.htz-gt:after{border-left:0.3em solid transparent}.htz-gu:after{border-right:0.3em solid transparent}.htz-gv:after{border-top:0.5em solid #0B7EB5}.htz-gw:after{transition-property:all}.htz-gx:after{-webkit-transform-origin:center center}.htz-gy:after{transform-origin:center center}.htz-gz:after{transition-duration:.25s}.htz-ha:after{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-hb:after{-webkit-transition-property:all}.htz-hc:after{-moz-transition-property:all}.htz-hd:before{background-color:#EBEBEB}.htz-he:before{content:}.htz-hf{padding-bottom:1rem}.htz-hg{padding-top:1rem}.htz-hh:focus{background-color:#EBF2F5}.htz-hi{-webkit-justify-content:flex-end}.htz-hj{justify-content:flex-end}.htz-hk{padding-top:2rem}.htz-hl{-webkit-box-pack:left}.htz-hm{width:8.5rem}.htz-hn{color:#787878}.htz-ho{-webkit-flex-shrink:0}.htz-hp{flex-shrink:0}.htz-hq{-webkit-flex-grow:0}.htz-hr{flex-grow:0}.htz-hw{-webkit-flex-shrink:1}.htz-hx{flex-shrink:1}.htz-hy{min-width:0rem}.htz-hz{-webkit-justify-content:flex-start}.htz-ia{justify-content:flex-start}.htz-ie{-webkit-box-pack:right}.htz-if{padding:0rem}.htz-ig{margin:0rem}.htz-ih{max-width:50%}.htz-ii{overflow:hidden}.htz-ij{text-overflow:ellipsis}.htz-io:hover{cursor:pointer}.htz-ip{margin-right:1rem}.htz-iq{color:#169FD1}.htz-ir{-webkit-align-content:flex-start}.htz-is{align-content:flex-start}.htz-it{padding-bottom:calc(0.5rem - 1px)}.htz-iu{padding-top:calc(0.5rem - 1px)}.htz-iv{padding-right:4rem}.htz-iw{padding-left:4rem}.htz-ix{margin-left:2rem}.htz-iy{font-size:4rem}.htz-iz{vertical-align:center}.htz-jb{margin-right:2rem}.htz-jc{margin-left:4rem}.htz-jd{padding-right:2rem}.htz-je{padding-left:2rem}.htz-jf{color:#A8001C}.htz-jg:hover{background-color:#FEE}.htz-jh:hover{color:#8A021B}.htz-ji:focus{background-color:#A8001C}.htz-jj:focus{color:#fff}.htz-jk:active{color:#A8001C}.htz-jl{margin-top:3rem}.htz-jm{text-align:center}@media (max-width: 79.9375em){.htz-y{font-size:2.3333333333333335rem}.htz-z{line-height:1.2857142857142858em}.htz-bk{font-size:1.8333333333333333rem}.htz-bl{line-height:1.6363636363636365em}.htz-br{font-size:2rem}.htz-bs{line-height:2.33rem}.htz-hs{font-size:4rem}.htz-ht{line-height:1.25em}.htz-ik{font-size:2.6666666666666665rem}.htz-il{line-height:1.5em}}@media (min-width: 80em){.htz-ab{font-size:2.2857142857142856rem}.htz-ac{line-height:1.3125em}.htz-bm{font-size:1.7142857142857142rem}.htz-bn{line-height:1.75em}.htz-bt{font-size:2rem}.htz-bu{line-height:2.33rem}.htz-hu{font-size:3.857142857142857rem}.htz-hv{line-height:1.2962962962962963em}.htz-im{font-size:2.5714285714285716rem}.htz-in{line-height:1.5555555555555556em}.htz-ja{line-height:1.5em}}@media (max-width: 37.4375em){.htz-bv{display:none}.htz-ib{-webkit-flex-wrap:wrap}.htz-ic{flex-wrap:wrap}.htz-id{-webkit-box-lines:multiple}}"`;

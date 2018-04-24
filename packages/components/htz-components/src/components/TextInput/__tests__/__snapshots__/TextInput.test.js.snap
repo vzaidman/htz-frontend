@@ -104,7 +104,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a contentEditable div 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{-webkit-justify-content:space-between}.htz-al{justify-content:space-between}.htz-am{-webkit-box-pack:justify}.htz-an{margin-left:1rem}.htz-ao{color:#006B96}.htz-ap{font-weight:bold}.htz-aq{transition-property:-webkit-transform,transform}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-flex-grow:1}.htz-au{flex-grow:1}.htz-av{margin-bottom:1rem}.htz-aw{border-bottom-color:transparent}.htz-ax{-webkit-transition-property:-webkit-transform,transform}.htz-ay{-moz-transition-property:transform}.htz-az{-webkit-align-items:center}.htz-ba{align-items:center}.htz-bb{-webkit-appearance:none}.htz-bc{-moz-appearance:none}.htz-bd{appearance:none}.htz-be{display:none}.htz-bf{font-size:inherit}.htz-bg{-webkit-justify-content:center}.htz-bh{justify-content:center}.htz-bi{position:relative}.htz-bj{-webkit-transform:scale(1)}.htz-bk{transform:scale(1)}.htz-bl{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bm{text-decoration:none}.htz-bn{white-space:nowrap}.htz-bo::moz-focus-inner{border:0px}.htz-bp::moz-focus-inner{padding:0rem}.htz-bq:after{content:\\"\\"}.htz-br:after{height:1px}.htz-bs:after{position:absolute}.htz-bt:after{width:100%}.htz-bu:after{bottom:0rem}.htz-bv:before{content:\\"\\"}.htz-bw:before{height:1px}.htz-bx:before{position:absolute}.htz-by:before{width:100%}.htz-bz:before{top:0rem}.htz-ca{padding-right:0rem}.htz-cb{padding-left:0rem}.htz-cc{border-radius:0rem}.htz-cd{border-color:transparent}.htz-ce{color:#2D2D2D}.htz-cf{font-style:italic}.htz-cg{height:5rem}.htz-ch{margin-left:0.1rem}.htz-ci{margin-top:calc(1px - 1rem)}.htz-cj{width:5rem}.htz-ck:hover{text-decoration:none}.htz-cl:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{border-color:transparent}.htz-cn:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-co:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{outline:none}.htz-cq:focus{text-decoration:none}.htz-cr:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:focus{background-color:#0B7EB5}.htz-ct:focus{border-color:transparent}.htz-cu:focus{color:#FFF}.htz-cv:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cw:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cx:active{outline:none}.htz-cy:active{text-decoration:none}.htz-cz:active{transition-duration:0s}.htz-da:active{background-color:#0B7EB5}.htz-db:active{border-color:transparent}.htz-dc:active{color:#FFF}.htz-dd{-webkit-box-align:center}.htz-de{-webkit-box-pack:center}.htz-df{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dg{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dh{opacity:1}.htz-di{transition-property:opacity}.htz-dj{transition-delay:.3s}.htz-dk{-webkit-transition-property:opacity}.htz-dl{-moz-transition-property:opacity}.htz-dm{vertical-align:-0.15em}.htz-dn{color:inherit}.htz-do{fill:#FFF}.htz-dp{background-color:rgba(0, 0, 0, 0.2)}.htz-dq{height:100%}.htz-dr{inline-inset-start:0rem}.htz-ds{position:absolute}.htz-dt{top:0rem}.htz-du{-webkit-transform:scaleX(0)}.htz-dv{transform:scaleX(0)}.htz-dw{-webkit-transform-origin:right}.htz-dx{transform-origin:right}.htz-dy{-webkit-animation-direction:alternate}.htz-dz{animation-direction:alternate}.htz-ea{-webkit-animation-iteration-count:infinite}.htz-eb{animation-iteration-count:infinite}.htz-ec{-webkit-animation-duration:1s}.htz-ed{animation-duration:1s}.htz-ee{-webkit-animation-delay:0.75s}.htz-ef{animation-delay:0.75s}.htz-eg{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-eh{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ei{margin-left:-1rem}.htz-ej{border:none}.htz-ek{background-color:transparent}.htz-el{overflow:auto}.htz-em{height:6rem}.htz-en:focus{cursor:text}.htz-eo{display:block}.htz-ep{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-eq{font-size:1.8333333333333333rem}.htz-er{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-es{font-size:1.7142857142857142rem}.htz-et{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a contentEditable div 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{-webkit-justify-content:space-between}.htz-al{justify-content:space-between}.htz-am{-webkit-box-pack:justify}.htz-an{margin-left:1rem}.htz-ao{color:#006B96}.htz-ap{font-weight:bold}.htz-aq{transition-property:-webkit-transform,transform}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-flex-grow:1}.htz-au{flex-grow:1}.htz-av{margin-bottom:1rem}.htz-aw{border-bottom-color:transparent}.htz-ax{-webkit-transition-property:-webkit-transform,transform}.htz-ay{-moz-transition-property:transform}.htz-az{-webkit-align-items:center}.htz-ba{align-items:center}.htz-bb{-webkit-appearance:none}.htz-bc{-moz-appearance:none}.htz-bd{appearance:none}.htz-be{display:none}.htz-bf{font-size:inherit}.htz-bg{-webkit-justify-content:center}.htz-bh{justify-content:center}.htz-bi{position:relative}.htz-bj{-webkit-transform:scale(1)}.htz-bk{transform:scale(1)}.htz-bl{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bm{text-decoration:none}.htz-bn{white-space:nowrap}.htz-bo::moz-focus-inner{border:0px}.htz-bp::moz-focus-inner{padding:0rem}.htz-bq:after{content:\\"\\"}.htz-br:after{height:1px}.htz-bs:after{position:absolute}.htz-bt:after{width:100%}.htz-bu:after{bottom:0rem}.htz-bv:before{content:\\"\\"}.htz-bw:before{height:1px}.htz-bx:before{position:absolute}.htz-by:before{width:100%}.htz-bz:before{top:0rem}.htz-ca{padding-right:0rem}.htz-cb{padding-left:0rem}.htz-cc{border-radius:0rem}.htz-cd{border-color:transparent}.htz-ce{color:#2D2D2D}.htz-cf{font-style:italic}.htz-cg{height:5rem}.htz-ch{margin-left:0.1rem}.htz-ci{margin-top:calc(1px - 1rem)}.htz-cj{width:5rem}.htz-ck:hover{text-decoration:none}.htz-cl:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{border-color:transparent}.htz-cn:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-co:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{outline:none}.htz-cq:focus{text-decoration:none}.htz-cr:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:focus{background-color:#0B7EB5}.htz-ct:focus{border-color:transparent}.htz-cu:focus{color:#FFF}.htz-cv:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cw:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cx:active{outline:none}.htz-cy:active{text-decoration:none}.htz-cz:active{transition-duration:0s}.htz-da:active{background-color:#0B7EB5}.htz-db:active{border-color:transparent}.htz-dc:active{color:#FFF}.htz-dd{-webkit-box-align:center}.htz-de{-webkit-box-pack:center}.htz-df{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dg{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dh{opacity:1}.htz-di{transition-property:opacity}.htz-dj{transition-delay:.3s}.htz-dk{-webkit-transition-property:opacity}.htz-dl{-moz-transition-property:opacity}.htz-dm{vertical-align:-0.15em}.htz-dn{color:inherit}.htz-do{fill:#FFF}.htz-dp{background-color:rgba(0, 0, 0, 0.2)}.htz-dq{height:100%}.htz-dr{inline-inset-start:0rem}.htz-ds{position:absolute}.htz-dt{top:0rem}.htz-du{-webkit-transform:scaleX(0)}.htz-dv{transform:scaleX(0)}.htz-dw{-webkit-transform-origin:right}.htz-dx{transform-origin:right}.htz-dy{-webkit-animation-direction:alternate}.htz-dz{animation-direction:alternate}.htz-ea{-webkit-animation-iteration-count:infinite}.htz-eb{animation-iteration-count:infinite}.htz-ec{-webkit-animation-duration:1s}.htz-ed{animation-duration:1s}.htz-ee{-webkit-animation-delay:0.75s}.htz-ef{animation-delay:0.75s}.htz-eg{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-eh{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ei{margin-left:-1rem}.htz-ej{border:none}.htz-ek{background-color:transparent}.htz-el{overflow:auto}.htz-em{height:6rem}.htz-en:focus{cursor:text}.htz-eo{display:block}.htz-et{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ep{font-size:1.8333333333333333rem}.htz-eq{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-er{font-size:1.7142857142857142rem}.htz-es{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a contentEditable div with label 1`] = `
 <div>
@@ -212,7 +212,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a contentEditable div with label 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{-webkit-justify-content:space-between}.htz-al{justify-content:space-between}.htz-am{-webkit-box-pack:justify}.htz-an{margin-left:1rem}.htz-ao{color:#006B96}.htz-ap{font-weight:bold}.htz-aq{transition-property:-webkit-transform,transform}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-flex-grow:1}.htz-au{flex-grow:1}.htz-av{margin-bottom:1rem}.htz-aw{border-bottom-color:transparent}.htz-ax{-webkit-transition-property:-webkit-transform,transform}.htz-ay{-moz-transition-property:transform}.htz-az{-webkit-align-items:center}.htz-ba{align-items:center}.htz-bb{-webkit-appearance:none}.htz-bc{-moz-appearance:none}.htz-bd{appearance:none}.htz-be{display:none}.htz-bf{font-size:inherit}.htz-bg{-webkit-justify-content:center}.htz-bh{justify-content:center}.htz-bi{position:relative}.htz-bj{-webkit-transform:scale(1)}.htz-bk{transform:scale(1)}.htz-bl{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bm{text-decoration:none}.htz-bn{white-space:nowrap}.htz-bo::moz-focus-inner{border:0px}.htz-bp::moz-focus-inner{padding:0rem}.htz-bq:after{content:\\"\\"}.htz-br:after{height:1px}.htz-bs:after{position:absolute}.htz-bt:after{width:100%}.htz-bu:after{bottom:0rem}.htz-bv:before{content:\\"\\"}.htz-bw:before{height:1px}.htz-bx:before{position:absolute}.htz-by:before{width:100%}.htz-bz:before{top:0rem}.htz-ca{padding-right:0rem}.htz-cb{padding-left:0rem}.htz-cc{border-radius:0rem}.htz-cd{border-color:transparent}.htz-ce{color:#2D2D2D}.htz-cf{font-style:italic}.htz-cg{height:5rem}.htz-ch{margin-left:0.1rem}.htz-ci{margin-top:calc(1px - 1rem)}.htz-cj{width:5rem}.htz-ck:hover{text-decoration:none}.htz-cl:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{border-color:transparent}.htz-cn:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-co:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{outline:none}.htz-cq:focus{text-decoration:none}.htz-cr:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:focus{background-color:#0B7EB5}.htz-ct:focus{border-color:transparent}.htz-cu:focus{color:#FFF}.htz-cv:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cw:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cx:active{outline:none}.htz-cy:active{text-decoration:none}.htz-cz:active{transition-duration:0s}.htz-da:active{background-color:#0B7EB5}.htz-db:active{border-color:transparent}.htz-dc:active{color:#FFF}.htz-dd{-webkit-box-align:center}.htz-de{-webkit-box-pack:center}.htz-df{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dg{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dh{opacity:1}.htz-di{transition-property:opacity}.htz-dj{transition-delay:.3s}.htz-dk{-webkit-transition-property:opacity}.htz-dl{-moz-transition-property:opacity}.htz-dm{vertical-align:-0.15em}.htz-dn{color:inherit}.htz-do{fill:#FFF}.htz-dp{background-color:rgba(0, 0, 0, 0.2)}.htz-dq{height:100%}.htz-dr{inline-inset-start:0rem}.htz-ds{position:absolute}.htz-dt{top:0rem}.htz-du{-webkit-transform:scaleX(0)}.htz-dv{transform:scaleX(0)}.htz-dw{-webkit-transform-origin:right}.htz-dx{transform-origin:right}.htz-dy{-webkit-animation-direction:alternate}.htz-dz{animation-direction:alternate}.htz-ea{-webkit-animation-iteration-count:infinite}.htz-eb{animation-iteration-count:infinite}.htz-ec{-webkit-animation-duration:1s}.htz-ed{animation-duration:1s}.htz-ee{-webkit-animation-delay:0.75s}.htz-ef{animation-delay:0.75s}.htz-eg{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-eh{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ei{margin-left:-1rem}.htz-ej{border:none}.htz-ek{background-color:transparent}.htz-el{overflow:auto}.htz-em{height:6rem}.htz-en:focus{cursor:text}.htz-eo{display:block}.htz-ep{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-eq{font-size:1.8333333333333333rem}.htz-er{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-es{font-size:1.7142857142857142rem}.htz-et{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a contentEditable div with label 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{-webkit-justify-content:space-between}.htz-al{justify-content:space-between}.htz-am{-webkit-box-pack:justify}.htz-an{margin-left:1rem}.htz-ao{color:#006B96}.htz-ap{font-weight:bold}.htz-aq{transition-property:-webkit-transform,transform}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-flex-grow:1}.htz-au{flex-grow:1}.htz-av{margin-bottom:1rem}.htz-aw{border-bottom-color:transparent}.htz-ax{-webkit-transition-property:-webkit-transform,transform}.htz-ay{-moz-transition-property:transform}.htz-az{-webkit-align-items:center}.htz-ba{align-items:center}.htz-bb{-webkit-appearance:none}.htz-bc{-moz-appearance:none}.htz-bd{appearance:none}.htz-be{display:none}.htz-bf{font-size:inherit}.htz-bg{-webkit-justify-content:center}.htz-bh{justify-content:center}.htz-bi{position:relative}.htz-bj{-webkit-transform:scale(1)}.htz-bk{transform:scale(1)}.htz-bl{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bm{text-decoration:none}.htz-bn{white-space:nowrap}.htz-bo::moz-focus-inner{border:0px}.htz-bp::moz-focus-inner{padding:0rem}.htz-bq:after{content:\\"\\"}.htz-br:after{height:1px}.htz-bs:after{position:absolute}.htz-bt:after{width:100%}.htz-bu:after{bottom:0rem}.htz-bv:before{content:\\"\\"}.htz-bw:before{height:1px}.htz-bx:before{position:absolute}.htz-by:before{width:100%}.htz-bz:before{top:0rem}.htz-ca{padding-right:0rem}.htz-cb{padding-left:0rem}.htz-cc{border-radius:0rem}.htz-cd{border-color:transparent}.htz-ce{color:#2D2D2D}.htz-cf{font-style:italic}.htz-cg{height:5rem}.htz-ch{margin-left:0.1rem}.htz-ci{margin-top:calc(1px - 1rem)}.htz-cj{width:5rem}.htz-ck:hover{text-decoration:none}.htz-cl:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{border-color:transparent}.htz-cn:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-co:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{outline:none}.htz-cq:focus{text-decoration:none}.htz-cr:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:focus{background-color:#0B7EB5}.htz-ct:focus{border-color:transparent}.htz-cu:focus{color:#FFF}.htz-cv:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cw:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cx:active{outline:none}.htz-cy:active{text-decoration:none}.htz-cz:active{transition-duration:0s}.htz-da:active{background-color:#0B7EB5}.htz-db:active{border-color:transparent}.htz-dc:active{color:#FFF}.htz-dd{-webkit-box-align:center}.htz-de{-webkit-box-pack:center}.htz-df{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dg{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dh{opacity:1}.htz-di{transition-property:opacity}.htz-dj{transition-delay:.3s}.htz-dk{-webkit-transition-property:opacity}.htz-dl{-moz-transition-property:opacity}.htz-dm{vertical-align:-0.15em}.htz-dn{color:inherit}.htz-do{fill:#FFF}.htz-dp{background-color:rgba(0, 0, 0, 0.2)}.htz-dq{height:100%}.htz-dr{inline-inset-start:0rem}.htz-ds{position:absolute}.htz-dt{top:0rem}.htz-du{-webkit-transform:scaleX(0)}.htz-dv{transform:scaleX(0)}.htz-dw{-webkit-transform-origin:right}.htz-dx{transform-origin:right}.htz-dy{-webkit-animation-direction:alternate}.htz-dz{animation-direction:alternate}.htz-ea{-webkit-animation-iteration-count:infinite}.htz-eb{animation-iteration-count:infinite}.htz-ec{-webkit-animation-duration:1s}.htz-ed{animation-duration:1s}.htz-ee{-webkit-animation-delay:0.75s}.htz-ef{animation-delay:0.75s}.htz-eg{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-eh{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ei{margin-left:-1rem}.htz-ej{border:none}.htz-ek{background-color:transparent}.htz-el{overflow:auto}.htz-em{height:6rem}.htz-en:focus{cursor:text}.htz-eo{display:block}.htz-et{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ep{font-size:1.8333333333333333rem}.htz-eq{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-er{font-size:1.7142857142857142rem}.htz-es{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a disabled input 1`] = `
 <div>
@@ -225,11 +225,11 @@ exports[`<TextInput> DOM element renders correctly a disabled input 1`] = `
         className=""
       >
         <span
-          className="htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-e htz-f htz-ap htz-aq htz-ar htz-as htz-at"
+          className="htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
         />
       </div>
       <input
-        className="htz-au htz-av htz-aw htz-g htz-a htz-ax htz-ay"
+        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
         disabled={true}
         id="123456789"
         onBlur={[Function]}
@@ -239,14 +239,14 @@ exports[`<TextInput> DOM element renders correctly a disabled input 1`] = `
       />
     </label>
     <span
-      className="htz-az htz-ak htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-ak"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a disabled input 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah:hover{cursor:not-allowed}.htz-ai{-webkit-box-align:center}.htz-aj{margin-left:1rem}.htz-ak{color:#B4B4B4}.htz-al{font-weight:bold}.htz-am{transition-property:-webkit-transform,transform}.htz-an{position:absolute}.htz-ao{bottom:0.7rem}.htz-ap{margin-right:-1rem}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{-webkit-transition-property:-webkit-transform,transform}.htz-at{-moz-transition-property:transform}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a disabled input 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah:hover{cursor:not-allowed}.htz-ai{-webkit-box-align:center}.htz-aj{margin-left:1rem}.htz-ak{color:#B4B4B4}.htz-al{font-weight:bold}.htz-am{transition-property:-webkit-transform,transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a disabled input 3`] = `
 <div>
@@ -259,11 +259,11 @@ exports[`<TextInput> DOM element renders correctly a disabled input 3`] = `
         className=""
       >
         <span
-          className="htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-e htz-f htz-ap htz-aq htz-ar htz-as htz-at"
+          className="htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
         />
       </div>
       <input
-        className="htz-au htz-av htz-aw htz-g htz-a htz-ax htz-ay"
+        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
         disabled={true}
         id="123456789"
         onBlur={[Function]}
@@ -273,14 +273,14 @@ exports[`<TextInput> DOM element renders correctly a disabled input 3`] = `
       />
     </label>
     <span
-      className="htz-az htz-ak htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-ak"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a disabled input 4`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah:hover{cursor:not-allowed}.htz-ai{-webkit-box-align:center}.htz-aj{margin-left:1rem}.htz-ak{color:#B4B4B4}.htz-al{font-weight:bold}.htz-am{transition-property:-webkit-transform,transform}.htz-an{position:absolute}.htz-ao{bottom:0.7rem}.htz-ap{margin-right:-1rem}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{-webkit-transition-property:-webkit-transform,transform}.htz-at{-moz-transition-property:transform}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a disabled input 4`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah:hover{cursor:not-allowed}.htz-ai{-webkit-box-align:center}.htz-aj{margin-left:1rem}.htz-ak{color:#B4B4B4}.htz-al{font-weight:bold}.htz-am{transition-property:-webkit-transform,transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a input with a miscStyles prop 1`] = `
 <div>
@@ -293,8 +293,119 @@ exports[`<TextInput> DOM element renders correctly a input with a miscStyles pro
         className=""
       >
         <span
-          className="htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-e htz-f htz-ap htz-aq htz-ar htz-as htz-at"
+          className="htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
         />
+      </div>
+      <input
+        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
+        id="123456789"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </label>
+    <span
+      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      id={null}
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextInput> DOM element renders correctly a input with a miscStyles prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae{padding:5.32rem}.htz-af:hover{background-color:#E6EDF0}.htz-ag:hover{border-color:#DAE9F2}.htz-ah:hover{color:#2D2D2D}.htz-ai{-webkit-box-align:center}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:-webkit-transform,transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+
+exports[`<TextInput> DOM element renders correctly a input with a onInput function 1`] = `
+<div>
+  <div>
+    <label
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+      htmlFor="123456789"
+    >
+      <div
+        className=""
+      >
+        <span
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
+        />
+      </div>
+      <input
+        className="htz-as htz-at htz-au htz-g htz-a htz-av htz-aw"
+        id="123456789"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        type="text"
+      />
+    </label>
+    <span
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
+      id={null}
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextInput> DOM element renders correctly a input with a onInput function 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
+
+exports[`<TextInput> DOM element renders correctly a input with a placeholder 1`] = `
+<div>
+  <div>
+    <label
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+      htmlFor="123456789"
+    >
+      <div
+        className=""
+      >
+        <span
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
+        />
+      </div>
+      <input
+        className="htz-as htz-at htz-au htz-g htz-a htz-av htz-aw"
+        id="123456789"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="im a placeholder"
+        type="text"
+      />
+    </label>
+    <span
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
+      id={null}
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextInput> DOM element renders correctly a input with a placeholder 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
+
+exports[`<TextInput> DOM element renders correctly a input with a requiredText 1`] = `
+<div>
+  <div>
+    <label
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+      htmlFor="123456789"
+    >
+      <div
+        className=""
+      >
+        <span
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
+        >
+          <abbr
+            className="htz-as htz-at"
+            title="im required"
+          >
+             
+            <sup>
+              *
+            </sup>
+          </abbr>
+        </span>
       </div>
       <input
         className="htz-au htz-av htz-aw htz-g htz-a htz-ax htz-ay"
@@ -313,118 +424,7 @@ exports[`<TextInput> DOM element renders correctly a input with a miscStyles pro
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a input with a miscStyles prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae{padding:5.32rem}.htz-af:hover{background-color:#E6EDF0}.htz-ag:hover{border-color:#DAE9F2}.htz-ah:hover{color:#2D2D2D}.htz-ai{-webkit-box-align:center}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:-webkit-transform,transform}.htz-an{position:absolute}.htz-ao{bottom:0.7rem}.htz-ap{margin-right:-1rem}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{-webkit-transition-property:-webkit-transform,transform}.htz-at{-moz-transition-property:transform}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}.htz-ba{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-bb{font-size:1.8333333333333333rem}.htz-bc{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bd{font-size:1.7142857142857142rem}.htz-be{line-height:1.75em}}"`;
-
-exports[`<TextInput> DOM element renders correctly a input with a onInput function 1`] = `
-<div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
-    >
-      <div
-        className=""
-      >
-        <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
-        />
-      </div>
-      <input
-        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
-        id="123456789"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        type="text"
-      />
-    </label>
-    <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
-      id={null}
-    />
-  </div>
-</div>
-`;
-
-exports[`<TextInput> DOM element renders correctly a input with a onInput function 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-az{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
-
-exports[`<TextInput> DOM element renders correctly a input with a placeholder 1`] = `
-<div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
-    >
-      <div
-        className=""
-      >
-        <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
-        />
-      </div>
-      <input
-        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
-        id="123456789"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="im a placeholder"
-        type="text"
-      />
-    </label>
-    <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
-      id={null}
-    />
-  </div>
-</div>
-`;
-
-exports[`<TextInput> DOM element renders correctly a input with a placeholder 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-az{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
-
-exports[`<TextInput> DOM element renders correctly a input with a requiredText 1`] = `
-<div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
-    >
-      <div
-        className=""
-      >
-        <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
-        >
-          <abbr
-            className="htz-at htz-au"
-            title="im required"
-          >
-             
-            <sup>
-              *
-            </sup>
-          </abbr>
-        </span>
-      </div>
-      <input
-        className="htz-av htz-aw htz-ax htz-g htz-a htz-ay htz-az"
-        id="123456789"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="text"
-      />
-    </label>
-    <span
-      className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
-      id={null}
-    />
-  </div>
-</div>
-`;
-
-exports[`<TextInput> DOM element renders correctly a input with a requiredText 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at[title]{text-decoration:none}.htz-au{color:green}.htz-av{border:none}.htz-aw{background-color:transparent}.htz-ax{font-size:inherit}.htz-ay:focus{outline:none}.htz-az:focus{cursor:text}.htz-ba{display:block}.htz-bb{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-bc{font-size:1.8333333333333333rem}.htz-bd{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-be{font-size:1.7142857142857142rem}.htz-bf{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a input with a requiredText 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as[title]{text-decoration:none}.htz-at{color:green}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}.htz-be{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a input with a requiredText that is rendered as sup 1`] = `
 <div>
@@ -437,10 +437,10 @@ exports[`<TextInput> DOM element renders correctly a input with a requiredText t
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
         >
           <abbr
-            className="htz-at htz-au"
+            className="htz-as htz-at"
             title="im required"
           >
              
@@ -451,7 +451,7 @@ exports[`<TextInput> DOM element renders correctly a input with a requiredText t
         </span>
       </div>
       <input
-        className="htz-av htz-aw htz-ax htz-g htz-a htz-ay htz-az"
+        className="htz-au htz-av htz-aw htz-g htz-a htz-ax htz-ay"
         id="123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -460,14 +460,14 @@ exports[`<TextInput> DOM element renders correctly a input with a requiredText t
       />
     </label>
     <span
-      className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+      className="htz-az htz-ba htz-bb htz-bc htz-bd htz-be"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a input with a requiredText that is rendered as sup 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at[title]{text-decoration:none}.htz-au{color:green}.htz-av{border:none}.htz-aw{background-color:transparent}.htz-ax{font-size:inherit}.htz-ay:focus{outline:none}.htz-az:focus{cursor:text}.htz-ba{display:block}.htz-bb{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-bc{font-size:1.8333333333333333rem}.htz-bd{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-be{font-size:1.7142857142857142rem}.htz-bf{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a input with a requiredText that is rendered as sup 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as[title]{text-decoration:none}.htz-at{color:green}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}.htz-be{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a input with a value prop 1`] = `
 <div>
@@ -480,11 +480,11 @@ exports[`<TextInput> DOM element renders correctly a input with a value prop 1`]
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
-        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-g htz-a htz-av htz-aw"
         id="123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -494,14 +494,14 @@ exports[`<TextInput> DOM element renders correctly a input with a value prop 1`]
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a input with a value prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-az{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a input with a value prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a input with a variant prop 1`] = `
 <div>
@@ -514,11 +514,11 @@ exports[`<TextInput> DOM element renders correctly a input with a variant prop 1
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
-        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-g htz-a htz-av htz-aw"
         id="123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -527,14 +527,14 @@ exports[`<TextInput> DOM element renders correctly a input with a variant prop 1
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a input with a variant prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#FFF}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-az{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a input with a variant prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#FFF}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#FFF}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a textArea with a responsive height prop 1`] = `
 <div>
@@ -566,7 +566,7 @@ exports[`<TextInput> DOM element renders correctly a textArea with a responsive 
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a textArea with a responsive height prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{margin-left:1rem}.htz-al{color:#006B96}.htz-am{font-weight:bold}.htz-an{transition-property:-webkit-transform,transform}.htz-ao{display:block}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-flex-grow:1}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:-webkit-transform,transform}.htz-aw{-moz-transition-property:transform}.htz-ax{border:none}.htz-ay{background-color:transparent}.htz-az{resize:none}.htz-ba{font-size:inherit}.htz-bd:focus{outline:none}.htz-be:focus{cursor:text}.htz-bf{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-bg{font-size:1.8333333333333333rem}.htz-bh{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bi{font-size:1.7142857142857142rem}.htz-bj{line-height:1.75em}}@media (min-width: 37.5em){.htz-bb{height:17.5rem}}@media (min-width: 64em){.htz-bc{height:37rem}}"`;
+exports[`<TextInput> DOM element renders correctly a textArea with a responsive height prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{margin-left:1rem}.htz-al{color:#006B96}.htz-am{font-weight:bold}.htz-an{transition-property:-webkit-transform,transform}.htz-ao{display:block}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-flex-grow:1}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:-webkit-transform,transform}.htz-aw{-moz-transition-property:transform}.htz-ax{border:none}.htz-ay{background-color:transparent}.htz-az{resize:none}.htz-ba{font-size:inherit}.htz-bd:focus{outline:none}.htz-be:focus{cursor:text}.htz-bj{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-bf{font-size:1.8333333333333333rem}.htz-bg{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bh{font-size:1.7142857142857142rem}.htz-bi{line-height:1.75em}}@media (min-width: 37.5em){.htz-bb{height:17.5rem}}@media (min-width: 64em){.htz-bc{height:37rem}}"`;
 
 exports[`<TextInput> DOM element renders correctly a textArea with a simple height prop 1`] = `
 <div>
@@ -598,7 +598,7 @@ exports[`<TextInput> DOM element renders correctly a textArea with a simple heig
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a textArea with a simple height prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{margin-left:1rem}.htz-al{color:#006B96}.htz-am{font-weight:bold}.htz-an{transition-property:-webkit-transform,transform}.htz-ao{display:block}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-flex-grow:1}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:-webkit-transform,transform}.htz-aw{-moz-transition-property:transform}.htz-ax{border:none}.htz-ay{background-color:transparent}.htz-az{resize:none}.htz-ba{font-size:inherit}.htz-bb{height:5rem}.htz-bc:focus{outline:none}.htz-bd:focus{cursor:text}.htz-be{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-bf{font-size:1.8333333333333333rem}.htz-bg{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bh{font-size:1.7142857142857142rem}.htz-bi{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a textArea with a simple height prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{margin-left:1rem}.htz-al{color:#006B96}.htz-am{font-weight:bold}.htz-an{transition-property:-webkit-transform,transform}.htz-ao{display:block}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-flex-grow:1}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:-webkit-transform,transform}.htz-aw{-moz-transition-property:transform}.htz-ax{border:none}.htz-ay{background-color:transparent}.htz-az{resize:none}.htz-ba{font-size:inherit}.htz-bb{height:5rem}.htz-bc:focus{outline:none}.htz-bd:focus{cursor:text}.htz-bi{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-be{font-size:1.8333333333333333rem}.htz-bf{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bg{font-size:1.7142857142857142rem}.htz-bh{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a textarea 1`] = `
 <div>
@@ -630,7 +630,7 @@ exports[`<TextInput> DOM element renders correctly a textarea 1`] = `
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a textarea 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{margin-left:1rem}.htz-al{color:#006B96}.htz-am{font-weight:bold}.htz-an{transition-property:-webkit-transform,transform}.htz-ao{display:block}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-flex-grow:1}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:-webkit-transform,transform}.htz-aw{-moz-transition-property:transform}.htz-ax{border:none}.htz-ay{background-color:transparent}.htz-az{resize:none}.htz-ba{font-size:inherit}.htz-bb{height:6rem}.htz-bc:focus{outline:none}.htz-bd:focus{cursor:text}.htz-be{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-bf{font-size:1.8333333333333333rem}.htz-bg{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bh{font-size:1.7142857142857142rem}.htz-bi{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a textarea 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{margin-left:1rem}.htz-al{color:#006B96}.htz-am{font-weight:bold}.htz-an{transition-property:-webkit-transform,transform}.htz-ao{display:block}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-flex-grow:1}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:-webkit-transform,transform}.htz-aw{-moz-transition-property:transform}.htz-ax{border:none}.htz-ay{background-color:transparent}.htz-az{resize:none}.htz-ba{font-size:inherit}.htz-bb{height:6rem}.htz-bc:focus{outline:none}.htz-bd:focus{cursor:text}.htz-bi{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-be{font-size:1.8333333333333333rem}.htz-bf{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bg{font-size:1.7142857142857142rem}.htz-bh{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a textarea with max and min length 1`] = `
 <div>
@@ -664,7 +664,7 @@ exports[`<TextInput> DOM element renders correctly a textarea with max and min l
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a textarea with max and min length 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{margin-left:1rem}.htz-al{color:#006B96}.htz-am{font-weight:bold}.htz-an{transition-property:-webkit-transform,transform}.htz-ao{display:block}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-flex-grow:1}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:-webkit-transform,transform}.htz-aw{-moz-transition-property:transform}.htz-ax{border:none}.htz-ay{background-color:transparent}.htz-az{resize:none}.htz-ba{font-size:inherit}.htz-bb{height:6rem}.htz-bc:focus{outline:none}.htz-bd:focus{cursor:text}.htz-be{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-bf{font-size:1.8333333333333333rem}.htz-bg{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bh{font-size:1.7142857142857142rem}.htz-bi{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a textarea with max and min length 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:flex-start}.htz-d{align-items:flex-start}.htz-e{-webkit-flex-direction:column}.htz-f{flex-direction:column}.htz-g{padding-right:1rem}.htz-h{padding-left:1rem}.htz-i{width:100%}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:right}.htz-ai{-webkit-box-orient:vertical}.htz-aj{-webkit-box-direction:normal}.htz-ak{margin-left:1rem}.htz-al{color:#006B96}.htz-am{font-weight:bold}.htz-an{transition-property:-webkit-transform,transform}.htz-ao{display:block}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-flex-grow:1}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:-webkit-transform,transform}.htz-aw{-moz-transition-property:transform}.htz-ax{border:none}.htz-ay{background-color:transparent}.htz-az{resize:none}.htz-ba{font-size:inherit}.htz-bb{height:6rem}.htz-bc:focus{outline:none}.htz-bd:focus{cursor:text}.htz-bi{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-be{font-size:1.8333333333333333rem}.htz-bf{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bg{font-size:1.7142857142857142rem}.htz-bh{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a type=email prop 1`] = `
 <div>
@@ -677,11 +677,11 @@ exports[`<TextInput> DOM element renders correctly a type=email prop 1`] = `
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
-        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-g htz-a htz-av htz-aw"
         id="123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -690,14 +690,14 @@ exports[`<TextInput> DOM element renders correctly a type=email prop 1`] = `
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a type=email prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-az{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a type=email prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly with attrs prop 1`] = `
 <div>
@@ -710,12 +710,12 @@ exports[`<TextInput> DOM element renders correctly with attrs prop 1`] = `
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
         aria-label="A input with custom attributes"
-        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-g htz-a htz-av htz-aw"
         id="123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -724,14 +724,14 @@ exports[`<TextInput> DOM element renders correctly with attrs prop 1`] = `
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly with attrs prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-az{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly with attrs prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly with custom inputId, labelId and noteId 1`] = `
 <div>
@@ -744,12 +744,12 @@ exports[`<TextInput> DOM element renders correctly with custom inputId, labelId 
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
         aria-describedby="customNoteId"
-        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-g htz-a htz-av htz-aw"
         id="customInputId"
         onBlur={[Function]}
         onChange={[Function]}
@@ -758,14 +758,14 @@ exports[`<TextInput> DOM element renders correctly with custom inputId, labelId 
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id="customNoteId"
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly with custom inputId, labelId and noteId 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-az{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly with custom inputId, labelId and noteId 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly with defaultValue prop 1`] = `
 <div>
@@ -778,7 +778,7 @@ exports[`<TextInput> DOM element renders correctly with defaultValue prop 1`] = 
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-n htz-ap htz-aq htz-ar htz-as htz-at htz-au"
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-n htz-ap htz-aq htz-ar htz-as htz-at htz-au"
         />
       </div>
       <input
@@ -799,7 +799,7 @@ exports[`<TextInput> DOM element renders correctly with defaultValue prop 1`] = 
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly with defaultValue prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{-webkit-transform:translateY(-2.7rem) scale(.8)}.htz-aq{transform:translateY(-2.7rem) scale(.8)}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-transition-property:-webkit-transform,transform}.htz-au{-moz-transition-property:transform}.htz-av{border:none}.htz-aw{background-color:transparent}.htz-ax{font-size:inherit}.htz-ay:focus{outline:none}.htz-az:focus{cursor:text}.htz-ba{display:block}.htz-bb{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-bc{font-size:1.8333333333333333rem}.htz-bd{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-be{font-size:1.7142857142857142rem}.htz-bf{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly with defaultValue prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{position:absolute}.htz-ap{-webkit-transform:translateY(-2.7rem) scale(.8)}.htz-aq{transform:translateY(-2.7rem) scale(.8)}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-transition-property:-webkit-transform,transform}.htz-au{-moz-transition-property:transform}.htz-av{border:none}.htz-aw{background-color:transparent}.htz-ax{font-size:inherit}.htz-ay:focus{outline:none}.htz-az:focus{cursor:text}.htz-ba{display:block}.htz-bf{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-bb{font-size:1.8333333333333333rem}.htz-bc{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bd{font-size:1.7142857142857142rem}.htz-be{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly with isError and errorText prop 1`] = `
 <div>
@@ -812,12 +812,12 @@ exports[`<TextInput> DOM element renders correctly with isError and errorText pr
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
         aria-describedby="123456789"
-        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-g htz-a htz-av htz-aw"
         id="123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -826,7 +826,7 @@ exports[`<TextInput> DOM element renders correctly with isError and errorText pr
       />
     </label>
     <span
-      className="htz-ay htz-aj htz-az htz-ba htz-bb htz-bc"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-aj"
       id="123456789"
     >
       אנא הזינו כתובת תקינה
@@ -835,7 +835,7 @@ exports[`<TextInput> DOM element renders correctly with isError and errorText pr
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly with isError and errorText prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#A8001C}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly with isError and errorText prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#A8001C}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly with labelHidden 1`] = `
 <div>
@@ -871,7 +871,7 @@ exports[`<TextInput> DOM element renders correctly with labelHidden 1`] = `
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly with labelHidden 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{display:none}.htz-aj{border:none}.htz-ak{background-color:transparent}.htz-al{font-size:inherit}.htz-am:focus{outline:none}.htz-an:focus{cursor:text}.htz-ao{display:block}.htz-ap{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-aq{font-size:1.8333333333333333rem}.htz-ar{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-as{font-size:1.7142857142857142rem}.htz-at{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly with labelHidden 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{display:none}.htz-aj{border:none}.htz-ak{background-color:transparent}.htz-al{font-size:inherit}.htz-am:focus{outline:none}.htz-an:focus{cursor:text}.htz-ao{display:block}.htz-at{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ap{font-size:1.8333333333333333rem}.htz-aq{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-ar{font-size:1.7142857142857142rem}.htz-as{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly with minimal required props 1`] = `
 <div>
@@ -884,11 +884,11 @@ exports[`<TextInput> DOM element renders correctly with minimal required props 1
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
-        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-g htz-a htz-av htz-aw"
         id="123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -897,14 +897,14 @@ exports[`<TextInput> DOM element renders correctly with minimal required props 1
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly with minimal required props 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-az{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly with minimal required props 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly without isError, noteText and errorText prop 1`] = `
 <div>
@@ -917,12 +917,12 @@ exports[`<TextInput> DOM element renders correctly without isError, noteText and
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-e htz-f htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-e htz-f htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
         aria-describedby="123456789"
-        className="htz-at htz-au htz-av htz-g htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-g htz-a htz-av htz-aw"
         id="123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -931,7 +931,7 @@ exports[`<TextInput> DOM element renders correctly without isError, noteText and
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id="123456789"
     >
       description note
@@ -940,4 +940,4 @@ exports[`<TextInput> DOM element renders correctly without isError, noteText and
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly without isError, noteText and errorText prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{position:absolute}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:-webkit-transform,transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-az{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly without isError, noteText and errorText prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-align-items:center}.htz-d{align-items:center}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-h{position:relative}.htz-i{margin-top:1rem}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:-webkit-transform,transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:-webkit-transform,transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#B4B4B4}@media (max-width: 79.9375em){.htz-j{font-size:2.3333333333333335rem}.htz-k{line-height:1.2857142857142858em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-l{font-size:2.2857142857142856rem}.htz-m{line-height:1.3125em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
