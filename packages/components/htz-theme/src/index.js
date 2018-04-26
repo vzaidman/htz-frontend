@@ -9,6 +9,7 @@ import fontStacks from './consts/fontStacks';
 import footerBorderStyle from './consts/footerBorderStyle';
 import gridStyle from './consts/gridStyle';
 import inputStyle from './consts/inputStyle';
+import newsletterStyle from './consts/newsletterStyle';
 import selectStyle from './consts/selectStyle';
 import typeConf from './consts/typeConf';
 import i18n, {
@@ -19,8 +20,10 @@ import i18n, {
   footerDesktopI18n,
   footerMobileListsI18n,
   navigationI18n,
+  newsletterI18n,
   osakaI18n,
   tagsElementI18n,
+  textInputI18n,
   zoominText,
   zoomoutText,
 } from './consts/i18n';
@@ -57,6 +60,7 @@ const htzTheme = Object.freeze({
   fontStacks,
   footerBorderStyle,
   inputStyle,
+  newsletterStyle,
   selectStyle,
   typeConf,
 
@@ -68,8 +72,10 @@ const htzTheme = Object.freeze({
   footerDesktopI18n,
   footerMobileListsI18n,
   navigationI18n,
+  newsletterI18n,
   osakaI18n,
   tagsElementI18n,
+  textInputI18n,
   zoominText,
   zoomoutText,
 

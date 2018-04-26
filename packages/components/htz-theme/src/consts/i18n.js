@@ -12,6 +12,11 @@ export default { seriesArticle, };
 export const zoominText = 'הגדל';
 export const zoomoutText = 'הקטן';
 
+export const textInputI18n = Object.freeze({
+  requiredLong: 'שדה חובה',
+  requiredShort: '*',
+});
+
 export const tagsElementI18n = Object.freeze({
   prefix: 'תגיות:',
 });
@@ -174,5 +179,17 @@ export const footerDesktopI18n = Object.freeze({
     firstRow:
       'חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל',
     secondRow: '© כל הזכויות שמורות להוצאת עיתון הארץ בע"מ',
+  }),
+});
+
+export const newsletterI18n = Object.freeze({
+  buttons: Object.freeze({
+    newsletterSubmit: 'הרשמה',
+    newsletterConfirmedButton: 'לרשימה המלא',
+  }),
+  texts: Object.freeze({
+    newsletterTitle: 'הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום',
+    newsletterConfirmedTitleText: 'תודה שנרשמת',
+    newsletterConfirmedText: 'יש לנו דיוורים נוספים שעשויים לעניין אותך',
   }),
 });

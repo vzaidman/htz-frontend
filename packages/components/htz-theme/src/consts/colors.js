@@ -100,8 +100,8 @@ const colors = {
     neutralFocusBg: [ 'neutral', '-1', ],
     neutralFocusBorder: [ 'button', 'neutralFocusBg', ],
     neutralFocusText: 'hsl(0,0%,100%)',
-    neutralHoverBg: [ 'neutral', '-6', ],
-    neutralHoverBorder: [ 'button', 'neutralHoverText', ],
+    neutralHoverBg: 'rgba(0,0,0,.1)',
+    neutralHoverBorder: [ 'button', 'neutralText', ],
     neutralHoverText: [ 'button', 'neutralText', ],
     // Neutral Opaque
 
@@ -344,6 +344,17 @@ const colors = {
     subcommentAuthor: [ 'neutral', '-4', ],
     subcommentBorder: [ 'primary', '-4', ],
     text: [ 'bodyText', 'base', ],
+  },
+  newsletter: {
+    // Newsletter
+    highlightBg: [ 'highlight', 'base', ],
+    highlightTextTitle: [ 'neutral', 'base', ],
+    highlightText: [ 'neutral', 'base', ],
+
+    // Primary
+    primaryBg: [ 'primary', '-6', ],
+    primaryTextTitle: [ 'neutral', 'base', ],
+    primaryText: [ 'neutral', 'base', ],
   },
   highlight: {
     base: [ 'quaternary', 'base', ],
