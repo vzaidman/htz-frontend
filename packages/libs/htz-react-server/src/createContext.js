@@ -129,11 +129,27 @@ export function createPosters(cookies) {
       .then(response => response.status)
       .then(data => data);
 
+  const newsLetterRegister = newsletterSignUp =>
+    fetch(
+      `http://${host}.haaretz.co.il/newsLetterRegister?EMAIL_FIELD=${
+        newsletterSignUp.userEmail
+      }${
+        newsletterSignUp.checkBox ? '&ALLOW_MARKETING_MESSAGES_FIELD=true' : ''
+      }&segmentId=${newsletterSignUp.segmentId}&_=${new Date().getTime()}`,
+      {
+        method: 'get',
+        credentials: 'include',
+        headers: {
+          Accept: '*/*',
+        },
+      }
+    ).then(response => response.ok);
   return {
     cmlinkCommentPoster,
     cmlinkCommentAbuseReport,
     loggerVotePoster,
     notificationSignUpPoster,
+    newsLetterRegister,
   };
 }
 
