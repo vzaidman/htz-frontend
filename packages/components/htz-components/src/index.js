@@ -26,6 +26,7 @@ import LinksBlock from './components/RelatedArticles/LinksBlock';
 import List from './components/List/List';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
+import Newsletter from './components/Newsletter/Newsletter';
 import Osaka from './components/Osaka/OsakaController';
 import Portal from './components/Portal/Portal';
 import Quote from './components/Quote/Quote';
@@ -184,6 +185,7 @@ export {
   // User
   Login,
   Logout,
+  Newsletter,
   Register,
   UserDispenser,
   UserInjector,
