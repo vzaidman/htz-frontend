@@ -85,8 +85,8 @@ const CheckBoxStyle = {
 };
 
 NewsletterForm.propTypes = {
-  /** Indicates registered/paying user email */
-  userEmail: PropTypes.string,
+  /** loading boolean from apollo Mutation */
+  loading: PropTypes.bool.isRequired,
   /** Indicates article category id */
   segmentId: PropTypes.number.isRequired,
   /**
@@ -97,6 +97,8 @@ NewsletterForm.propTypes = {
    * An apollo mutation function.
    */
   signUpNewsletter: PropTypes.func.isRequired,
+  /** Indicates registered/paying user email */
+  userEmail: PropTypes.string,
   /** The `<newsletter />`'s stylistic variant passed to NewsletterForm */
   variant: PropTypes.oneOfType([
     newsletterVariantType,
@@ -114,11 +116,12 @@ NewsletterForm.defaultProps = {
 };
 
 export function NewsletterForm({
-  variant,
-  userEmail,
+  loading,
   segmentId,
-  signUpNewsletter,
   setParentState,
+  signUpNewsletter,
+  userEmail,
+  variant,
 }) {
   return (
     <Form
@@ -130,7 +133,7 @@ export function NewsletterForm({
         })
           .then(data => {
             setParentState(data);
-            console.warn('signUpNewsletter response data:', data);
+            console.log('signUpNewsletter response data:', data);
           })
           .catch(mutationError => {
             console.warn('there was an error sending the query', mutationError);
@@ -205,6 +208,7 @@ export function NewsletterForm({
                       <Button
                         onClick={handleSubmit}
                         boxModel={{ hp: 3, vp: 1, }}
+                        isBusy={loading}
                         miscStyles={ButtonStyle}
                         variant={theme.newsletterStyle[variant].buttonVariant}
                       >

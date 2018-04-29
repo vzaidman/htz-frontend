@@ -43,14 +43,16 @@ class NewsletterWithoutApollo extends React.Component {
       appendTo: PropTypes.string,
       elementToHide: PropTypes.string,
     }).isRequired,
-    /** Indicates registered/paying user email */
-    userEmail: PropTypes.string,
+    /** loading boolean from apollo Mutation */
+    loading: PropTypes.bool.isRequired,
     /** Indicates article category id */
     segmentId: PropTypes.number.isRequired,
     /**
      * An apollo mutation function.
      */
     signUpNewsletter: PropTypes.func.isRequired,
+    /** Indicates registered/paying user email */
+    userEmail: PropTypes.string,
     /**
      * A special property holding miscellaneous CSS values that
      * trump all default values. Processed by
@@ -88,6 +90,7 @@ class NewsletterWithoutApollo extends React.Component {
   render() {
     const {
       dialogRequirements: { appendTo, elementToHide, },
+      loading,
       userEmail,
       segmentId,
       signUpNewsletter,
@@ -103,6 +106,7 @@ class NewsletterWithoutApollo extends React.Component {
           render={({ className, theme, }) => (
             <div className={className} id={elementToHide}>
               <NewsletterForm
+                loading={loading}
                 variant={variant}
                 userEmail={userEmail}
                 segmentId={segmentId}
@@ -144,9 +148,10 @@ class NewsletterWithoutApollo extends React.Component {
 export default function Newsletter(props) {
   return (
     <Mutation mutation={submitNewsletter}>
-      {(signUpNewsletter, { data, }) => (
+      {(signUpNewsletter, { data, loading, }) => (
         <NewsletterWithoutApollo
           signUpNewsletter={signUpNewsletter}
+          loading={loading}
           {...props}
         />
       )}

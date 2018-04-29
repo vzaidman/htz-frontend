@@ -338,9 +338,9 @@ const contentRule = ({ theme, isBusy, }) => ({
 });
 
 const progressRule = ({ theme, isBusy, }) => ({
-  backgroundColor: 'rgba(0, 0, 0, 0.2)',
+  backgroundColor: 'rgba(200,200,200, 0.3)',
   height: '100%',
-  inlineInsetStart: '0',
+  insetInlineStart: '0',
   position: 'absolute',
   top: '0',
   transform: 'scaleX(0)',

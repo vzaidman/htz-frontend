@@ -7256,11 +7256,11 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                             >
                               <div>
                                 <div
-                                  class="htz-bw htz-b htz-dy htz-ah htz-ea htz-eb htz-ga htz-gb htz-gc htz-gd"
+                                  class="htz-bw htz-b htz-dy htz-ah htz-ea htz-eb htz-ga htz-gb htz-dz htz-gc"
                                 />
                                 <div
                                   aria-hidden="true"
-                                  class="htz-ea htz-fn htz-fm htz-ge htz-gf htz-gg"
+                                  class="htz-ea htz-fn htz-fm htz-gd htz-ge htz-gf"
                                   role="dialog"
                                   tabindex="0"
                                 >
@@ -7268,20 +7268,20 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     role="document"
                                   >
                                     <div
-                                      class="htz-gh htz-gi htz-et"
+                                      class="htz-gg htz-gh htz-et"
                                     >
                                       <div
-                                        class="htz-gj htz-et htz-h htz-b htz-c"
+                                        class="htz-gi htz-et htz-h htz-b htz-c"
                                       >
                                         <button
-                                          class="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gk htz-p htz-bt htz-cf htz-cg htz-ea htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-gl htz-ar htz-as htz-j htz-ao htz-ap htz-k htz-cq htz-bs htz-gm htz-cs htz-ga htz-eb htz-cw htz-cx htz-cy htz-gn htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-go htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-gp htz-do htz-bf htz-dp htz-dq htz-dr"
+                                          class="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gj htz-p htz-bt htz-cf htz-cg htz-ea htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-gk htz-ar htz-as htz-j htz-ao htz-ap htz-k htz-cq htz-bs htz-gl htz-cs htz-ga htz-eb htz-cw htz-cx htz-cy htz-gm htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-gn htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-go htz-do htz-bf htz-dp htz-dq htz-dr"
                                           type="button"
                                         >
                                           <span
                                             class="htz-ds htz-dt htz-bl htz-bm htz-du htz-dv htz-dw"
                                           >
                                             <svg
-                                              class="htz-gq htz-gr htz-gs htz-gt"
+                                              class="htz-gp htz-gq htz-gr htz-gs"
                                               height="1em"
                                               viewBox="0 0 256 256"
                                               width="1em"
@@ -7310,7 +7310,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           יש לנו דיוורים נוספים שעשויים לעניין אותך
                                         </div>
                                         <a
-                                          class="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gu htz-p htz-bt htz-cf htz-cg htz-a htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-ax htz-ar htz-as htz-co htz-ao htz-ap htz-cp htz-cq htz-bs htz-cr htz-cs htz-am htz-q htz-r htz-s htz-t htz-gv htz-cw htz-cx htz-cy htz-cz htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-bf htz-dp htz-dq htz-dr"
+                                          class="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gt htz-p htz-bt htz-cf htz-cg htz-a htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-ax htz-ar htz-as htz-co htz-ao htz-ap htz-cp htz-cq htz-bs htz-cr htz-cs htz-am htz-q htz-r htz-s htz-t htz-gu htz-cw htz-cx htz-cy htz-cz htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-bf htz-dp htz-dq htz-dr"
                                           href="https://www.haaretz.co.il/personal-area/newsletter"
                                         >
                                           <span
@@ -7341,11 +7341,11 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                               >
                                 <div>
                                   <div
-                                    class="htz-bw htz-b htz-dy htz-ah htz-ea htz-eb htz-ga htz-gb htz-gc htz-gd"
+                                    class="htz-bw htz-b htz-dy htz-ah htz-ea htz-eb htz-ga htz-gb htz-dz htz-gc"
                                   />
                                   <div
                                     aria-hidden="true"
-                                    class="htz-ea htz-fn htz-fm htz-ge htz-gf htz-gg"
+                                    class="htz-ea htz-fn htz-fm htz-gd htz-ge htz-gf"
                                     role="dialog"
                                     tabindex="0"
                                   >
@@ -7353,20 +7353,20 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                       role="document"
                                     >
                                       <div
-                                        class="htz-gh htz-gi htz-et"
+                                        class="htz-gg htz-gh htz-et"
                                       >
                                         <div
-                                          class="htz-gj htz-et htz-h htz-b htz-c"
+                                          class="htz-gi htz-et htz-h htz-b htz-c"
                                         >
                                           <button
-                                            class="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gk htz-p htz-bt htz-cf htz-cg htz-ea htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-gl htz-ar htz-as htz-j htz-ao htz-ap htz-k htz-cq htz-bs htz-gm htz-cs htz-ga htz-eb htz-cw htz-cx htz-cy htz-gn htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-go htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-gp htz-do htz-bf htz-dp htz-dq htz-dr"
+                                            class="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gj htz-p htz-bt htz-cf htz-cg htz-ea htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-gk htz-ar htz-as htz-j htz-ao htz-ap htz-k htz-cq htz-bs htz-gl htz-cs htz-ga htz-eb htz-cw htz-cx htz-cy htz-gm htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-gn htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-go htz-do htz-bf htz-dp htz-dq htz-dr"
                                             type="button"
                                           >
                                             <span
                                               class="htz-ds htz-dt htz-bl htz-bm htz-du htz-dv htz-dw"
                                             >
                                               <svg
-                                                class="htz-gq htz-gr htz-gs htz-gt"
+                                                class="htz-gp htz-gq htz-gr htz-gs"
                                                 height="1em"
                                                 viewBox="0 0 256 256"
                                                 width="1em"
@@ -7395,7 +7395,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                             יש לנו דיוורים נוספים שעשויים לעניין אותך
                                           </div>
                                           <a
-                                            class="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gu htz-p htz-bt htz-cf htz-cg htz-a htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-ax htz-ar htz-as htz-co htz-ao htz-ap htz-cp htz-cq htz-bs htz-cr htz-cs htz-am htz-q htz-r htz-s htz-t htz-gv htz-cw htz-cx htz-cy htz-cz htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-bf htz-dp htz-dq htz-dr"
+                                            class="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gt htz-p htz-bt htz-cf htz-cg htz-a htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-ax htz-ar htz-as htz-co htz-ao htz-ap htz-cp htz-cq htz-bs htz-cr htz-cs htz-am htz-q htz-r htz-s htz-t htz-gu htz-cw htz-cx htz-cy htz-cz htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-bf htz-dp htz-dq htz-dr"
                                             href="https://www.haaretz.co.il/personal-area/newsletter"
                                           >
                                             <span
@@ -7422,7 +7422,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                               onFocus={[Function]}
                             >
                               <div
-                                className="htz-bw htz-b htz-dy htz-ah htz-ea htz-eb htz-ga htz-gb htz-gc htz-gd"
+                                className="htz-bw htz-b htz-dy htz-ah htz-ea htz-eb htz-ga htz-gb htz-dz htz-gc"
                               />
                               <FelaComponent
                                 isModal={false}
@@ -7434,7 +7434,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                 >
                                   <div
                                     aria-hidden="true"
-                                    className="htz-ea htz-fn htz-fm htz-ge htz-gf htz-gg"
+                                    className="htz-ea htz-fn htz-fm htz-gd htz-ge htz-gf"
                                     role="dialog"
                                     tabIndex="0"
                                   >
@@ -7455,7 +7455,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           render={[Function]}
                                         >
                                           <div
-                                            className="htz-gh htz-gi htz-et"
+                                            className="htz-gg htz-gh htz-et"
                                           >
                                             <NewsletterConfirmed
                                               closeConfirmation={[Function]}
@@ -7470,7 +7470,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   render={[Function]}
                                                 >
                                                   <div
-                                                    className="htz-gj htz-et htz-h htz-b htz-c"
+                                                    className="htz-gi htz-et htz-h htz-b htz-c"
                                                   >
                                                     <Button
                                                       attrs={null}
@@ -7540,7 +7540,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                           <ButtonWrapper
                                                             WrapperElement="button"
                                                             attrs={null}
-                                                            className="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gk htz-p htz-bt htz-cf htz-cg htz-ea htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-gl htz-ar htz-as htz-j htz-ao htz-ap htz-k htz-cq htz-bs htz-gm htz-cs htz-ga htz-eb htz-cw htz-cx htz-cy htz-gn htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-go htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-gp htz-do htz-bf htz-dp htz-dq htz-dr"
+                                                            className="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gj htz-p htz-bt htz-cf htz-cg htz-ea htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-gk htz-ar htz-as htz-j htz-ao htz-ap htz-k htz-cq htz-bs htz-gl htz-cs htz-ga htz-eb htz-cw htz-cx htz-cy htz-gm htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-gn htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-go htz-do htz-bf htz-dp htz-dq htz-dr"
                                                             href={null}
                                                             id={null}
                                                             isBusy={false}
@@ -7551,7 +7551,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                             prefetch={false}
                                                           >
                                                             <button
-                                                              className="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gk htz-p htz-bt htz-cf htz-cg htz-ea htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-gl htz-ar htz-as htz-j htz-ao htz-ap htz-k htz-cq htz-bs htz-gm htz-cs htz-ga htz-eb htz-cw htz-cx htz-cy htz-gn htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-go htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-gp htz-do htz-bf htz-dp htz-dq htz-dr"
+                                                              className="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gj htz-p htz-bt htz-cf htz-cg htz-ea htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-gk htz-ar htz-as htz-j htz-ao htz-ap htz-k htz-cq htz-bs htz-gl htz-cs htz-ga htz-eb htz-cw htz-cx htz-cy htz-gm htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-gn htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-go htz-do htz-bf htz-dp htz-dq htz-dr"
                                                               id={null}
                                                               onClick={[Function]}
                                                               type="button"
@@ -8119,10 +8119,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                       >
                                                                         <UnstyledIconClose
                                                                           attrs={null}
-                                                                          className="htz-gq htz-gr htz-gs htz-gt"
+                                                                          className="htz-gp htz-gq htz-gr htz-gs"
                                                                         >
                                                                           <svg
-                                                                            className="htz-gq htz-gr htz-gs htz-gt"
+                                                                            className="htz-gp htz-gq htz-gr htz-gs"
                                                                             height="1em"
                                                                             viewBox="0 0 256 256"
                                                                             width="1em"
@@ -8253,7 +8253,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                           <ButtonWrapper
                                                             WrapperElement="button"
                                                             attrs={null}
-                                                            className="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gu htz-p htz-bt htz-cf htz-cg htz-a htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-ax htz-ar htz-as htz-co htz-ao htz-ap htz-cp htz-cq htz-bs htz-cr htz-cs htz-am htz-q htz-r htz-s htz-t htz-gv htz-cw htz-cx htz-cy htz-cz htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-bf htz-dp htz-dq htz-dr"
+                                                            className="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gt htz-p htz-bt htz-cf htz-cg htz-a htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-ax htz-ar htz-as htz-co htz-ao htz-ap htz-cp htz-cq htz-bs htz-cr htz-cs htz-am htz-q htz-r htz-s htz-t htz-gu htz-cw htz-cx htz-cy htz-cz htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-bf htz-dp htz-dq htz-dr"
                                                             href="https://www.haaretz.co.il/personal-area/newsletter"
                                                             id={null}
                                                             isBusy={false}
@@ -8269,7 +8269,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                   "id": null,
                                                                 }
                                                               }
-                                                              className="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gu htz-p htz-bt htz-cf htz-cg htz-a htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-ax htz-ar htz-as htz-co htz-ao htz-ap htz-cp htz-cq htz-bs htz-cr htz-cs htz-am htz-q htz-r htz-s htz-t htz-gv htz-cw htz-cx htz-cy htz-cz htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-bf htz-dp htz-dq htz-dr"
+                                                              className="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gt htz-p htz-bt htz-cf htz-cg htz-a htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-ax htz-ar htz-as htz-co htz-ao htz-ap htz-cp htz-cq htz-bs htz-cr htz-cs htz-am htz-q htz-r htz-s htz-t htz-gu htz-cw htz-cx htz-cy htz-cz htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-bf htz-dp htz-dq htz-dr"
                                                               content={null}
                                                               focus={false}
                                                               href="https://www.haaretz.co.il/personal-area/newsletter"
@@ -8278,7 +8278,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                               target={null}
                                                             >
                                                               <a
-                                                                className="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gu htz-p htz-bt htz-cf htz-cg htz-a htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-ax htz-ar htz-as htz-co htz-ao htz-ap htz-cp htz-cq htz-bs htz-cr htz-cs htz-am htz-q htz-r htz-s htz-t htz-gv htz-cw htz-cx htz-cy htz-cz htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-bf htz-dp htz-dq htz-dr"
+                                                                className="htz-ak htz-al htz-cc htz-cd htz-ce htz-ai htz-gt htz-p htz-bt htz-cf htz-cg htz-a htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ay htz-az htz-bb htz-au htz-av htz-ax htz-ar htz-as htz-co htz-ao htz-ap htz-cp htz-cq htz-bs htz-cr htz-cs htz-am htz-q htz-r htz-s htz-t htz-gu htz-cw htz-cx htz-cy htz-cz htz-be htz-da htz-db htz-bu htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-bf htz-dp htz-dq htz-dr"
                                                                 href="https://www.haaretz.co.il/personal-area/newsletter"
                                                                 id={null}
                                                                 onClick={[Function]}
@@ -8426,4 +8426,4 @@ exports[`<Newsletter /> NewsletterConfirmed DOM element should correctly render 
 </div>
 `;
 
-exports[`<Newsletter /> NewsletterConfirmed DOM element should correctly render a NewsletterConfirmed without any props 2`] = `".htz-a{text-align:center}.htz-b{padding-bottom:1rem}.htz-c{padding-top:2rem}.htz-d{background-color:#FFE70C}.htz-e{color:#222}.htz-f{-webkit-align-items:center}.htz-g{align-items:center}.htz-h{-webkit-appearance:none}.htz-i{-moz-appearance:none}.htz-j{appearance:none}.htz-k{cursor:pointer}.htz-l{display:inline-block}.htz-m{font-weight:bold}.htz-n{font-size:inherit}.htz-o{-webkit-justify-content:center}.htz-p{justify-content:center}.htz-q{position:absolute}.htz-r{-webkit-transform:scale(1)}.htz-s{transform:scale(1)}.htz-t{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-u{text-decoration:none}.htz-v{white-space:nowrap}.htz-w::moz-focus-inner{border:0px}.htz-x::moz-focus-inner{padding:0rem}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac{border-top-width:1px}.htz-ae{border-top-style:solid}.htz-af{padding-top:0rem}.htz-ag{border-right-width:1px}.htz-ah{border-right-style:solid}.htz-ai{padding-right:1rem}.htz-aj{border-left-width:1px}.htz-ak{border-left-style:solid}.htz-al{padding-left:1rem}.htz-am{border-radius:0rem}.htz-an{background-color:transparent}.htz-ao{border-color:transparent}.htz-ap{color:#2D2D2D}.htz-aq{left:0rem}.htz-ar{top:0rem}.htz-as:hover{text-decoration:none}.htz-at:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-au:hover{background-color:rgba(0,0,0,.1)}.htz-av:hover{border-color:transparent}.htz-aw:hover{color:#2D2D2D}.htz-ax:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ay:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-az:focus{outline:none}.htz-ba:focus{text-decoration:none}.htz-bb:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bc:focus{background-color:#2D2D2D}.htz-bd:focus{border-color:transparent}.htz-be:focus{color:hsl(0,0%,100%)}.htz-bf:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bg:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bh:active{outline:none}.htz-bi:active{text-decoration:none}.htz-bj:active{transition-duration:0s}.htz-bk:active{background-color:transparent !important}.htz-bl:active{border-color:transparent}.htz-bm:active{color:#2D2D2D}.htz-bn{-webkit-box-align:center}.htz-bo{-webkit-box-pack:center}.htz-bp{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bq{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-br{opacity:1}.htz-bs{transition-property:opacity}.htz-bt{transition-duration:0.16666666666666666s}.htz-bu{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bv{transition-delay:.3s}.htz-bw{-webkit-transition-property:opacity}.htz-bx{-moz-transition-property:opacity}.htz-by{vertical-align:-0.15em}.htz-bz{color:inherit}.htz-ca{fill:#FFF}.htz-cb{font-size:2rem}.htz-cc{background-color:rgba(0, 0, 0, 0.2)}.htz-cd{height:100%}.htz-ce{inline-inset-start:0rem}.htz-cf{-webkit-transform:scaleX(0)}.htz-cg{transform:scaleX(0)}.htz-ch{-webkit-transform-origin:right}.htz-ci{transform-origin:right}.htz-cj{width:100%}.htz-ck{-webkit-animation-direction:alternate}.htz-cl{animation-direction:alternate}.htz-cm{-webkit-animation-iteration-count:infinite}.htz-cn{animation-iteration-count:infinite}.htz-co{-webkit-animation-duration:1s}.htz-cp{animation-duration:1s}.htz-cq{-webkit-animation-delay:0.75s}.htz-cr{animation-delay:0.75s}.htz-cs{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ct{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cy{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-cz{position:relative}.htz-da{padding-top:calc(1rem - 1px)}.htz-db{padding-right:3rem}.htz-dc{padding-left:3rem}.htz-dd{border-color:#2D2D2D}.htz-de{margin-top:1rem}.htz-df{margin-bottom:1rem}.htz-dg:hover{border-color:#2D2D2D}.htz-dh:focus{border-color:#2D2D2D}.htz-di:active{border-color:#2D2D2D}@media (max-width: 79.9375em){.htz-cu{font-size:2.3333333333333335rem}.htz-cv{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cw{font-size:2.2857142857142856rem}.htz-cx{line-height:1.3125em}}"`;
+exports[`<Newsletter /> NewsletterConfirmed DOM element should correctly render a NewsletterConfirmed without any props 2`] = `".htz-a{text-align:center}.htz-b{padding-bottom:1rem}.htz-c{padding-top:2rem}.htz-d{background-color:#FFE70C}.htz-e{color:#222}.htz-f{-webkit-align-items:center}.htz-g{align-items:center}.htz-h{-webkit-appearance:none}.htz-i{-moz-appearance:none}.htz-j{appearance:none}.htz-k{cursor:pointer}.htz-l{display:inline-block}.htz-m{font-weight:bold}.htz-n{font-size:inherit}.htz-o{-webkit-justify-content:center}.htz-p{justify-content:center}.htz-q{position:absolute}.htz-r{-webkit-transform:scale(1)}.htz-s{transform:scale(1)}.htz-t{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-u{text-decoration:none}.htz-v{white-space:nowrap}.htz-w::moz-focus-inner{border:0px}.htz-x::moz-focus-inner{padding:0rem}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac{border-top-width:1px}.htz-ae{border-top-style:solid}.htz-af{padding-top:0rem}.htz-ag{border-right-width:1px}.htz-ah{border-right-style:solid}.htz-ai{padding-right:1rem}.htz-aj{border-left-width:1px}.htz-ak{border-left-style:solid}.htz-al{padding-left:1rem}.htz-am{border-radius:0rem}.htz-an{background-color:transparent}.htz-ao{border-color:transparent}.htz-ap{color:#2D2D2D}.htz-aq{left:0rem}.htz-ar{top:0rem}.htz-as:hover{text-decoration:none}.htz-at:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-au:hover{background-color:rgba(0,0,0,.1)}.htz-av:hover{border-color:transparent}.htz-aw:hover{color:#2D2D2D}.htz-ax:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ay:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-az:focus{outline:none}.htz-ba:focus{text-decoration:none}.htz-bb:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bc:focus{background-color:#2D2D2D}.htz-bd:focus{border-color:transparent}.htz-be:focus{color:hsl(0,0%,100%)}.htz-bf:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bg:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bh:active{outline:none}.htz-bi:active{text-decoration:none}.htz-bj:active{transition-duration:0s}.htz-bk:active{background-color:transparent !important}.htz-bl:active{border-color:transparent}.htz-bm:active{color:#2D2D2D}.htz-bn{-webkit-box-align:center}.htz-bo{-webkit-box-pack:center}.htz-bp{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bq{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-br{opacity:1}.htz-bs{transition-property:opacity}.htz-bt{transition-duration:0.16666666666666666s}.htz-bu{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bv{transition-delay:.3s}.htz-bw{-webkit-transition-property:opacity}.htz-bx{-moz-transition-property:opacity}.htz-by{vertical-align:-0.15em}.htz-bz{color:inherit}.htz-ca{fill:#FFF}.htz-cb{font-size:2rem}.htz-cc{background-color:rgba(200,200,200, 0.3)}.htz-cd{height:100%}.htz-ce{right:0rem}.htz-cf{-webkit-transform:scaleX(0)}.htz-cg{transform:scaleX(0)}.htz-ch{-webkit-transform-origin:right}.htz-ci{transform-origin:right}.htz-cj{width:100%}.htz-ck{-webkit-animation-direction:alternate}.htz-cl{animation-direction:alternate}.htz-cm{-webkit-animation-iteration-count:infinite}.htz-cn{animation-iteration-count:infinite}.htz-co{-webkit-animation-duration:1s}.htz-cp{animation-duration:1s}.htz-cq{-webkit-animation-delay:0.75s}.htz-cr{animation-delay:0.75s}.htz-cs{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ct{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cy{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-cz{position:relative}.htz-da{padding-top:calc(1rem - 1px)}.htz-db{padding-right:3rem}.htz-dc{padding-left:3rem}.htz-dd{border-color:#2D2D2D}.htz-de{margin-top:1rem}.htz-df{margin-bottom:1rem}.htz-dg:hover{border-color:#2D2D2D}.htz-dh:focus{border-color:#2D2D2D}.htz-di:active{border-color:#2D2D2D}@media (max-width: 79.9375em){.htz-cu{font-size:2.3333333333333335rem}.htz-cv{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cw{font-size:2.2857142857142856rem}.htz-cx{line-height:1.3125em}}"`;
