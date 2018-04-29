@@ -12,21 +12,6 @@ import CheckBox from '../../CheckBox/CheckBox'; // eslint-disable-line import/no
 
 const BeforeConfirmedWrapperStyle = ({ theme, }) => ({
   textAlign: 'start',
-  paddingTop: '2rem',
-  paddingBottom: '2rem',
-  paddingInlineStart: '1rem',
-  paddingInlineEnd: '1rem',
-  extend: [
-    theme.mq(
-      { from: 's', },
-      {
-        paddingInlineStart: '2rem',
-        paddingInlineEnd: '2rem',
-        paddingTop: '2rem',
-        paddingBottom: '0rem',
-      }
-    ),
-  ],
 });
 
 const inputUpperNoteStyle = ({ theme, variant, }) => ({
@@ -50,6 +35,7 @@ function setUpperInputVariant(prop, variant, getColor, isError) {
 }
 
 const RowStyle = ({ theme, }) => ({
+  paddingTop: '2rem',
   extend: [
     theme.mq(
       { from: 's', },
@@ -68,7 +54,7 @@ const InputWrapperStyle = {
 };
 
 const ButtonStyle = {
-  marginTop: [ { from: 's', value: '1rem', }, ],
+  marginTop: '1rem',
   type: -1,
   display: 'block',
   marginInlineEnd: 'auto',
@@ -79,9 +65,9 @@ const ButtonStyle = {
 };
 
 const CheckBoxStyle = {
+  display: [ { from: 's', value: 'flex', }, { until: 's', value: 'none', }, ],
   type: -3,
-  marginTop: '0.5rem',
-  paddingBottom: '1rem',
+  marginTop: '1rem',
 };
 
 NewsletterForm.propTypes = {

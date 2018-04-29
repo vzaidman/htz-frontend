@@ -13,6 +13,8 @@ import Dialog from '../A11yDialog/A11yDialog';
 
 const newsletterWrapperStyle = ({ theme, variant, miscStyles, }) => ({
   position: 'relative',
+  padding: '2rem',
+  width: '100%',
   extend: [
     parseComponentProp(
       undefined,
@@ -32,6 +34,12 @@ function setVariant(prop, variant, getColor) {
     color: getColor('newsletter', `${variant}Text`),
   };
 }
+
+const newsletterConfirmStyle = {
+  width: [ { from: 's', value: '99%', }, { until: 's', value: '97%', }, ],
+  paddingTop: [ { from: 's', value: '2rem', }, { until: 's', value: '3rem', }, ],
+  paddingBottom: [ { from: 's', value: '2rem', }, { until: 's', value: '3rem', }, ],
+};
 
 class NewsletterWithoutApollo extends React.Component {
   static propTypes = {
@@ -118,21 +126,11 @@ class NewsletterWithoutApollo extends React.Component {
                 elementToHide={elementToHide}
                 isVisible={this.state.confirmed}
                 overlayBgColor={theme.color('newsletter', `${variant}Bg`)}
+                containerMiscStyles={newsletterConfirmStyle}
                 render={({ handleClose, }) => (
-                  <FelaComponent
-                    style={{
-                      minWidth: '80rem',
-                      paddingTop: '1rem',
-                      paddingBottom: '1rem',
-                    }}
-                    render={({ className, }) => (
-                      <div className={className}>
-                        <NewsletterConfirmed
-                          variant={variant}
-                          closeConfirmation={handleClose}
-                        />
-                      </div>
-                    )}
+                  <NewsletterConfirmed
+                    variant={variant}
+                    closeConfirmation={handleClose}
                   />
                 )}
               />

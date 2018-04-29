@@ -9,9 +9,7 @@ import IconClose from '../../Icon/icons/IconClose';
 
 const NewsLetterConfirmedWrapperStyle = ({ theme, variant, }) => ({
   textAlign: 'center',
-  paddingBottom: '1rem',
-  paddingTop: '2rem',
-  // backgroundColor: theme.color('quaternary'),
+  padding: '2rem',
   extend: [
     parseComponentProp(
       undefined,

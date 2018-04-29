@@ -389,7 +389,7 @@ const colors = {
     primaryText: [ 'bodyText', 'base', ],
     primaryTextLabel: [ 'primary', '+1', ],
     primaryTextLabelDisabled: [ 'neutral', '-4', ],
-    primaryTextNote: [ 'neutral', '-4', ],
+    primaryTextNote: [ 'neutral', '-3', ],
     primaryAbbr: [ 'tertiary', 'base', ],
 
     // Primary Focus
@@ -416,7 +416,7 @@ const colors = {
     primaryInverseText: [ 'bodyText', 'base', ],
     primaryInverseTextLabel: [ 'primary', '+1', ],
     primaryInverseTextLabelDisabled: [ 'neutral', '-4', ],
-    primaryInverseTextNote: 'white',
+    primaryInverseTextNote: [ 'neutral', '-3', ],
     primaryInverseAbbr: [ 'primary', 'base', ],
 
     // PrimaryInverse Focus
