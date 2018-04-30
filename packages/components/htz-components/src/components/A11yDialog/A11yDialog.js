@@ -10,13 +10,7 @@ import setAriaHidden from './utils/setAriaHidden';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 
-const dialogOverlayStyle = ({
-  theme,
-  overlayBgColor,
-  isVisible,
-  isModal,
-  overlayMiscStyles,
-}) => ({
+const dialogOverlayStyle = ({ theme, overlayBgColor, isVisible, isModal, }) => ({
   display: 'block',
   backgroundColor: overlayBgColor || 'rgba(0, 0, 0, 0.66)',
   height: '100%',
@@ -27,15 +21,19 @@ const dialogOverlayStyle = ({
   bottom: '0',
   right: '0',
   zIndex: theme.getZIndex('modal'),
-  extend: [ ...(overlayMiscStyles ? parseStyleProps(overlayMiscStyles) : []), ],
 });
 
-const dialogContentStyle = ({ theme, isModal, }) => ({
+const dialogContentStyle = ({ theme, isModal, containerMiscStyles, }) => ({
   position: isModal ? 'fixed' : 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%,-50%)',
   zIndex: theme.getZIndex('modal', 1),
+  extend: [
+    ...(containerMiscStyles
+      ? parseStyleProps(containerMiscStyles, theme.mq, theme.type)
+      : []),
+  ],
 });
 
 class A11yDialog extends React.Component {
@@ -94,7 +92,7 @@ class A11yDialog extends React.Component {
      * trump all default values. Processed by
      * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
      */
-    overlayMiscStyles: stylesPropType,
+    containerMiscStyles: stylesPropType,
   };
 
   static defaultProps = {
@@ -105,8 +103,8 @@ class A11yDialog extends React.Component {
     onClose: null,
     onOpen: null,
     overlayBgColor: null,
-    overlayMiscStyles: null,
     overlayAttrs: null,
+    containerMiscStyles: null,
   };
 
   state = {
@@ -199,7 +197,7 @@ class A11yDialog extends React.Component {
       render,
       overlayAttrs,
       overlayBgColor,
-      overlayMiscStyles,
+      containerMiscStyles,
       closeOnOutsideClick,
     } = this.props;
     return this.state.isMounted ? (
@@ -210,7 +208,6 @@ class A11yDialog extends React.Component {
             isVisible: this.state.isVisible,
             overlayAttrs,
             overlayBgColor,
-            overlayMiscStyles,
           }}
           rule={dialogOverlayStyle}
           render={({ className, }) => (
@@ -229,7 +226,10 @@ class A11yDialog extends React.Component {
                     : {})}
                 />
                 <FelaComponent
-                  isModal={isModal}
+                  {...{
+                    isModal,
+                    containerMiscStyles,
+                  }}
                   rule={dialogContentStyle}
                   render={({ className, }) => (
                     <div
