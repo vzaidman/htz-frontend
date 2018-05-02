@@ -13,11 +13,7 @@ BlockLink.propTypes = {
    */
   attrs: attrsPropType,
   /**
-<<<<<<< HEAD
    * Nodes rendered inside `BlockLink`.
-=======
-   * Nodes rendered inside `Button`.
->>>>>>> feat(blocklink): add component that puts a link above its content
    * Passed to the underlying react element
    */
   children: PropTypes.node,
@@ -26,11 +22,7 @@ BlockLink.propTypes = {
    * DOM element inside a Next JS `<Link />`
    */
   href: PropTypes.string.isRequired,
-<<<<<<< HEAD
   /** The HTML tag to render the `<BlockLink />` as */
-=======
-  /** The HTML tag to render the `<Button />` as */
->>>>>>> feat(blocklink): add component that puts a link above its content
   tagName: PropTypes.string,
   /**
    * A special property holding miscellaneous CSS values that
