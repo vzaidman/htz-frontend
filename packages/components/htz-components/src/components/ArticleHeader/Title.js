@@ -64,7 +64,7 @@ const styleTitle = ({ isBlock, fontSize, miscStyles, theme, }) => ({
   display: isBlock ? 'block' : 'inline',
   extend: [
     parseTypographyProp(fontSize, theme.type),
-    ...(miscStyles ? parseStyleProps(miscStyles) : []),
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
 });
 
