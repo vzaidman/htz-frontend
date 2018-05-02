@@ -55,7 +55,7 @@ const ButtonStyle = {
   marginBottom: '1rem',
 };
 
-const propTypes = {
+NewsletterConfirmed.propTypes = {
   /**
    * Function that handle on close click.
    */
@@ -73,11 +73,11 @@ const propTypes = {
   ]),
 };
 
-const defaultProps = {
+NewsletterConfirmed.defaultProps = {
   variant: 'highlight',
 };
 
-function NewsletterConfirmed({ closeConfirmation, variant, }) {
+export default function NewsletterConfirmed({ closeConfirmation, variant, }) {
   return (
     <FelaComponent
       variant={variant}
@@ -101,23 +101,18 @@ function NewsletterConfirmed({ closeConfirmation, variant, }) {
             <FelaComponent
               variant={variant}
               rule={inputUpperNoteStyle}
-              render={({ className, }) => (
-                <div className={className}>
-                  <strong>{newsletterConfirmedTitleText}</strong>
-                </div>
-              )}
-            />
+              render="p"
+            >
+              <strong>{newsletterConfirmedTitleText}</strong>
+            </FelaComponent>
             <FelaComponent
               variant={variant}
               rule={inputUpperNoteStyle}
-              render={({ className, }) => (
-                <div className={className}>{newsletterConfirmedText}</div>
-              )}
-            />
+              render="p"
+            >
+              {newsletterConfirmedText}
+            </FelaComponent>
             <Button
-              onClick={() =>
-                console.warn('NewsletterConfirmed ... Redirect to ...')
-              }
               boxModel={{ hp: 3, vp: 1, }}
               miscStyles={ButtonStyle}
               variant={theme.newsletterStyle[variant].buttonVariant}
@@ -131,8 +126,3 @@ function NewsletterConfirmed({ closeConfirmation, variant, }) {
     />
   );
 }
-
-NewsletterConfirmed.propTypes = propTypes;
-NewsletterConfirmed.defaultProps = defaultProps;
-
-export default NewsletterConfirmed;

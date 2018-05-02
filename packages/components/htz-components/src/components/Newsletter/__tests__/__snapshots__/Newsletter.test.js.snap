@@ -2,12 +2,7 @@
 
 exports[`<Newsletter /> Newsletter DOM element should correctly render a Newsletter initial view 1`] = `
 <NewsletterWithoutApollo
-  dialogRequirements={
-    Object {
-      "appendTo": "basic-newsletter-confirmation",
-      "elementToHide": "basic-newsletter",
-    }
-  }
+  id={[Function]}
   miscStyles={
     Object {
       "marginLeft": "auto",
@@ -38,7 +33,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
       >
         <div
           className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
-          id="basic-newsletter"
+          id={[Function]}
         >
           <NewsletterForm
             segmentId={1420800}
@@ -7180,7 +7175,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
             </Form>
           </NewsletterForm>
           <A11yDialog
-            appendTo="basic-newsletter-confirmation"
+            appendTo="function () { [native code] }DialogWrapper"
             closeOnOutsideClick={false}
             containerMiscStyles={
               Object {
@@ -7201,7 +7196,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                   },
                   Object {
                     "until": "s",
-                    "value": "3rem",
+                    "value": "5rem",
                   },
                 ],
                 "width": Array [
@@ -7211,12 +7206,12 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                   },
                   Object {
                     "until": "s",
-                    "value": "97%",
+                    "value": "98%",
                   },
                 ],
               }
             }
-            elementToHide="basic-newsletter"
+            elementToHide={[Function]}
             isModal={false}
             isVisible={false}
             onClose={null}
@@ -7227,7 +7222,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
             toggleRefs={Array []}
           >
             <Portal
-              host="basic-newsletter-confirmation"
+              host="function () { [native code] }DialogWrapper"
             >
               <FelaComponent
                 isModal={false}
@@ -7334,18 +7329,18 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           class="htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-c htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ek"
                                         />
                                       </button>
-                                      <div
+                                      <p
                                         class="htz-k htz-l htz-m htz-n htz-e"
                                       >
                                         <strong>
                                           תודה שנרשמת
                                         </strong>
-                                      </div>
-                                      <div
+                                      </p>
+                                      <p
                                         class="htz-k htz-l htz-m htz-n htz-e"
                                       >
                                         יש לנו דיוורים נוספים שעשויים לעניין אותך
-                                      </div>
+                                      </p>
                                       <a
                                         class="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gr htz-j htz-bp htz-cb htz-cc htz-a htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-at htz-an htz-ao htz-ck htz-ak htz-al htz-cl htz-cm htz-bo htz-cn htz-co htz-ai htz-k htz-l htz-m htz-n htz-gs htz-cr htz-cs htz-ct htz-cu htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-bb htz-dk htz-dl htz-dm"
                                         href="https://www.haaretz.co.il/personal-area/newsletter"
@@ -7415,18 +7410,18 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                             class="htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-c htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ek"
                                           />
                                         </button>
-                                        <div
+                                        <p
                                           class="htz-k htz-l htz-m htz-n htz-e"
                                         >
                                           <strong>
                                             תודה שנרשמת
                                           </strong>
-                                        </div>
-                                        <div
+                                        </p>
+                                        <p
                                           class="htz-k htz-l htz-m htz-n htz-e"
                                         >
                                           יש לנו דיוורים נוספים שעשויים לעניין אותך
-                                        </div>
+                                        </p>
                                         <a
                                           class="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gr htz-j htz-bp htz-cb htz-cc htz-a htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-at htz-an htz-ao htz-ck htz-ak htz-al htz-cl htz-cm htz-bo htz-cn htz-co htz-ai htz-k htz-l htz-m htz-n htz-gs htz-cr htz-cs htz-ct htz-cu htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-bb htz-dk htz-dl htz-dm"
                                           href="https://www.haaretz.co.il/personal-area/newsletter"
@@ -7476,7 +7471,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                       },
                                       Object {
                                         "until": "s",
-                                        "value": "3rem",
+                                        "value": "5rem",
                                       },
                                     ],
                                     "width": Array [
@@ -7486,7 +7481,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                       },
                                       Object {
                                         "until": "s",
-                                        "value": "97%",
+                                        "value": "98%",
                                       },
                                     ],
                                   }
@@ -8208,35 +8203,35 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                 </FelaComponent>
                                               </Button>
                                               <FelaComponent
-                                                render={[Function]}
+                                                render="p"
                                                 rule={[Function]}
                                                 variant="highlight"
                                               >
                                                 <FelaTheme
                                                   render={[Function]}
                                                 >
-                                                  <div
+                                                  <p
                                                     className="htz-k htz-l htz-m htz-n htz-e"
                                                   >
                                                     <strong>
                                                       תודה שנרשמת
                                                     </strong>
-                                                  </div>
+                                                  </p>
                                                 </FelaTheme>
                                               </FelaComponent>
                                               <FelaComponent
-                                                render={[Function]}
+                                                render="p"
                                                 rule={[Function]}
                                                 variant="highlight"
                                               >
                                                 <FelaTheme
                                                   render={[Function]}
                                                 >
-                                                  <div
+                                                  <p
                                                     className="htz-k htz-l htz-m htz-n htz-e"
                                                   >
                                                     יש לנו דיוורים נוספים שעשויים לעניין אותך
-                                                  </div>
+                                                  </p>
                                                 </FelaTheme>
                                               </FelaComponent>
                                               <Button
@@ -8266,7 +8261,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                     "type": -1,
                                                   }
                                                 }
-                                                onClick={[Function]}
+                                                onClick={null}
                                                 prefetch={false}
                                                 tagName="button"
                                                 variant="neutral"
@@ -8310,7 +8305,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                       isDisabled={false}
                                                       isReset={false}
                                                       isSubmit={false}
-                                                      onClick={[Function]}
+                                                      onClick={null}
                                                       prefetch={false}
                                                     >
                                                       <Link
@@ -8323,7 +8318,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                         content={null}
                                                         focus={false}
                                                         href="https://www.haaretz.co.il/personal-area/newsletter"
-                                                        onClick={[Function]}
+                                                        onClick={null}
                                                         prefetch={false}
                                                         target={null}
                                                       >
@@ -8331,7 +8326,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                           className="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gr htz-j htz-bp htz-cb htz-cc htz-a htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-at htz-an htz-ao htz-ck htz-ak htz-al htz-cl htz-cm htz-bo htz-cn htz-co htz-ai htz-k htz-l htz-m htz-n htz-gs htz-cr htz-cs htz-ct htz-cu htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-bb htz-dk htz-dl htz-dm"
                                                           href="https://www.haaretz.co.il/personal-area/newsletter"
                                                           id={null}
-                                                          onClick={[Function]}
+                                                          onClick={null}
                                                           target={null}
                                                         >
                                                           <FelaComponent
@@ -8401,7 +8396,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
             </Portal>
           </A11yDialog>
           <div
-            id="basic-newsletter-confirmation"
+            id="function () { [native code] }DialogWrapper"
           />
         </div>
       </FelaTheme>
@@ -8441,23 +8436,23 @@ exports[`<Newsletter /> NewsletterConfirmed DOM element should correctly render 
         className="htz-cb htz-cc htz-cd htz-p htz-aq htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
       />
     </button>
-    <div
+    <p
       className="htz-ct htz-cu htz-cv htz-cw htz-d"
     >
       <strong>
         תודה שנרשמת
       </strong>
-    </div>
-    <div
+    </p>
+    <p
       className="htz-ct htz-cu htz-cv htz-cw htz-d"
     >
       יש לנו דיוורים נוספים שעשויים לעניין אותך
-    </div>
+    </p>
     <a
       className="htz-e htz-f htz-g htz-h htz-i htz-j htz-cx htz-l htz-m htz-n htz-o htz-cy htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-cz htz-af htz-ag htz-da htz-ai htz-aj htz-db htz-al htz-am htz-dc htz-ao htz-dd htz-ct htz-cu htz-cv htz-cw htz-de htz-ar htz-as htz-at htz-df htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-dg htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-dh htz-bl htz-bm htz-bn htz-bo htz-bp"
       href="https://www.haaretz.co.il/personal-area/newsletter"
       id={null}
-      onClick={[Function]}
+      onClick={null}
       target={null}
     >
       <span

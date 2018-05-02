@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect, } from 'react-fela';
 import dynamic from 'next/dynamic';
-import { AdSlot, } from '@haaretz/htz-components';
+import { AdSlot, Newsletter, } from '@haaretz/htz-components';
 
 import Comments from '../Comments/Comments';
-import Newsletter from '../Newsletter/Newsletter';
 // const CommentsElement = dynamic(import ('../Comments/Comments'));
 const StandardArticle = dynamic(import('../StandardArticle/StandardArticle'));
 
@@ -59,23 +58,6 @@ const rules = {
   content: props => ({ border: '1px solid #ddd', margin: 0.25, padding: 0.25, }),
 };
 
-const NewsletterInSlot = (
-  <div dir="rtl">
-    <Newsletter
-      dialogRequirements={{
-        appendTo: 'basic-newsletter-confirmation',
-        elementToHide: 'basic-newsletter',
-      }}
-      segmentId={1420800}
-      miscStyles={{
-        maxWidth: '80rem',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      }}
-    />
-  </div>
-);
-
 export function Slot({ name, content, styles, pageContentId, }) {
   const mapper = (element, i) => {
     let jsx;
@@ -92,7 +74,16 @@ export function Slot({ name, content, styles, pageContentId, }) {
         );
         break;
       case 'com.tm.newsLetterQuickRegistrationController':
-        jsx = NewsletterInSlot;
+        jsx = (
+          <Newsletter
+            segmentId={1420800}
+            miscStyles={{
+              maxWidth: '80rem',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+          />
+        );
         break;
       default:
         jsx = (

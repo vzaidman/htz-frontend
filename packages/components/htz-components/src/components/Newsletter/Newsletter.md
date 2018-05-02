@@ -22,10 +22,6 @@ Can be used to create a NewsLetter to subscribe with existing or non existing us
 ```jsx
 <div dir="rtl">
   <Newsletter
-    dialogRequirements={{
-      appendTo: 'basic-newsletter-confirmation',
-      elementToHide: 'basic-newsletter',
-    }}
     segmentId={1420800}
     miscStyles={{ maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}
   />
@@ -40,10 +36,6 @@ Can be used to create a NewsLetter to subscribe with existing or non existing us
 ```jsx
 <div dir="rtl">
   <Newsletter
-    dialogRequirements={{
-      appendTo: 'user-newsletter-confirmation',
-      elementToHide: 'user-newsletter',
-    }}
     segmentId={1420800}
     userEmail="user@test.com"
     variant="primary"

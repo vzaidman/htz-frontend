@@ -119,7 +119,6 @@ export function NewsletterForm({
         })
           .then(data => {
             setParentState(data);
-            console.log('signUpNewsletter response data:', data);
           })
           .catch(mutationError => {
             console.warn('there was an error sending the query', mutationError);

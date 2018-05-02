@@ -2,7 +2,7 @@ import React from 'react';
 import EnzymeToJson from 'enzyme-to-json';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
-import { NewsletterWithoutApollo, } from '../Newsletter';
+import NewsletterWithoutApollo from '../NewsletterWithoutApollo';
 import NewsletterConfirmed from '../elements/NewsletterConfirmed';
 
 Math.random = jest.fn(() => 123456789);
@@ -20,10 +20,7 @@ describe('<Newsletter />', () => {
             marginRight: 'auto',
           }}
           segmentId={1420800}
-          dialogRequirements={{
-            appendTo: 'basic-newsletter-confirmation',
-            elementToHide: 'basic-newsletter',
-          }}
+          variant="highlight"
         />
       );
       expect(EnzymeToJson(wrapper)).toMatchSnapshot();
