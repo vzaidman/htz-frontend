@@ -22,6 +22,32 @@ export default function UserService(config = {}) {
   }
 
   /**
+   * Check if a specific email is already registered.
+   * @param {string} ( email )
+   * email: the email of the user
+   * @return {*}
+   */
+  function checkEmailExists(email) {
+    const siteConfig = createSiteConfig();
+    // const serviceUrl = `${siteConfig.ssoDomain}/sso/r/isuser`;
+    const serviceUrl = `${siteConfig.ssoDomain}/sso/r/isuser`;
+    const params = `email=${email}`;
+
+    return fetch(serviceUrl, {
+      method: 'POST',
+      body: params,
+      headers: new Headers({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+    }).then(data =>
+      data.json().then(json => {
+        if (json.success === 1) return json.exists;
+        return Promise.reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
+      })
+    );
+  }
+
+  /**
    * Sign in a user, using it's credentials. Will activate side effects
    * (in this case: planting cookies)
    * @param {object} { username, password, user, }
@@ -39,7 +65,6 @@ export default function UserService(config = {}) {
     else {
       anonymousId = user.anonymousId;
     }
-
     const siteConfig = createSiteConfig();
     const serviceUrl = `${siteConfig.ssoDomain}/sso/sso/signIn`;
     const params =
@@ -213,14 +238,10 @@ export default function UserService(config = {}) {
           cookiesPromises.push(plantCookie(serviceData.data[k]));
         }
       }
-      promise = Promise.all(cookiesPromises);
+      promise = Promise.race(cookiesPromises);
     }
     else {
-      promise = new Promise((resolve, reject) => {
-        if (reject) {
-          reject(serviceData);
-        }
-      });
+      promise = Promise.reject(new Error(serviceData.message));
     }
 
     return promise;
@@ -230,6 +251,7 @@ export default function UserService(config = {}) {
    * Public API for the UserServices
    */
   return {
+    checkEmailExists,
     login,
     logout,
     register,

@@ -16,7 +16,10 @@
  * and value within a pair (default is '=').
  * @returns {object} a map-like object, with key-value mapping according to the passed configuration.
  */
-function stringToMap(string, { separator = /;\s*/, operator = '=', } = {}) {
+export function stringToMap(
+  string,
+  { separator = /;\s*/, operator = '=', } = {}
+) {
   const map = Object.create(null);
   const itemsArr = string.split(separator);
   itemsArr.forEach(element => {
