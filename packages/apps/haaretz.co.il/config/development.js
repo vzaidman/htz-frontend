@@ -13,4 +13,5 @@ module.exports = {
   imgBaseUrl: 'https://images.haarets.co.il/image',
   domain: 'haaretz.co.il',
   baseHref: 'https://www.haaretz.co.il',
+  port: '3000',
 };
