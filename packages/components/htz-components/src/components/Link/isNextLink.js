@@ -11,7 +11,10 @@ const isNonReactArticleType = new RegExp(
 
 const articlePattern = '(\\/1\\.\\d+.*)';
 const homepagePattern = '(^\\/(\\?.*)?$)';
-const reactPathPattern = [ articlePattern, homepagePattern, ].join('|');
+const offersPattern = '(stage|thankYou|debt)';
+const reactPathPattern = [ articlePattern, homepagePattern, offersPattern, ].join(
+  '|'
+);
 const isReactType = new RegExp(reactPathPattern);
 
 /*

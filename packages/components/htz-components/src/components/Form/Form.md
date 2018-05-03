@@ -20,9 +20,12 @@ For these reasons we built a generic `<Form />` that works well with our custom 
 
 The `<Form />` component has 2 required props, `render` function and `onSubmit` function.
 
-**`onSubmit(values)`**
+**`onSubmit(values, ...args)`**
 
-A function that gets called by `<Form />`'s `handleSubmit` function.
+A callback that gets the the values object from the Form state
+Gets called through handleSubmit() if the validation callback returns no errors
+@param {Object} values - The Values Object from the Form state
+@param {Any} args - pass all other arguments needed by onSubmit
 
 `onSubmit` gets a the values Object from the `<Form />` state.
 
@@ -64,19 +67,19 @@ An Object holding all the user props + all the generically generated props neede
 
 **`handleSubmit`**
 A function that handles submitting data from the `<Form />`
-
 `@param {SyntheticEvent} evt` - The event object
 `@param {Boolean} disablePreventDefault` -
 If true the submit will not prevent `form` submit default behaviour.
+`@param {Any} args` - pass all other arguments needed by onSubmit
 
 By default submit event is prevented with evt.preventDefault() in the handle submit func.
 
-If the consumer wants default form submit functionallity he can simply pass `disablePreventDefault` prop to `<Form />`
+If the consumer wants default form submit functionality he can simply pass `disablePreventDefault` prop to `<Form />`
 
 The function first checks if the values pass the validation function.
 If there are errors it will focus on the error with the lowest error.order value
 
-If there are no errors or no validation function it will call the `onSubmit` function provided to the `<Form />` with the values from the state, and then call the `<Form />`'s `clearForm` function.
+If there are no errors or no validation function it will call the `onSubmit` function provided to the `<Form />` with the values from the state, and then, call the `<Form />`'s `clearForm` function (unless `clearFormAfterSubmit=false` is passed to `Form`).
 
 **`clearForm`**
 A function that clears all errors, values, and resets the touched fields in the `<Form />` state
@@ -91,15 +94,15 @@ A function that clears all errors, values, and resets the touched fields in the 
           email:
           <TextInput
             {...getInputProps({
-              name: "email",
-              label: "email",
-              type: "email"
+              name: 'email',
+              label: 'email',
+              type: 'email',
             })}
           />
         </label>
         <br />
         <br />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button onClick={handleSubmit}>submit</Button>
           <Button onClick={clearForm}>clear</Button>
         </div>
@@ -127,7 +130,7 @@ The `values[name]` holds the value of the input with the given name.
 
 The function should return and Array of `error` objects that have the following keys:
 
-`name`: required, and needs to corespond with the input name
+`name`: required, and needs to correspond with the input name
 
 `order`: required, in case of an error after trying to submit the `<Form />` will focus on the input that is in error state and has the lowest `error.order` value
 
@@ -151,11 +154,11 @@ The function should return and Array of `error` objects that have the following 
           errorText: "must provide text",
         });
       }
-      if (text && text.length < 5) {
+      if (text && text.length > 5) {
         errors.push({
           name: "text",
           order: 2,
-          errorText: "text must be at least 5 chars",
+          errorText: "text must be less then 5 chars",
         });
       }
       return errors;
@@ -172,23 +175,23 @@ The function should return and Array of `error` objects that have the following 
       let errors = [];
       if (!email) {
         errors.push({
-          name: "email",
+          name: 'email',
           order: 1,
-          errorText: "must provide email"
+          errorText: 'must provide email',
         });
       }
       if (!text) {
         errors.push({
-          name: "text",
+          name: 'text',
           order: 2,
-          errorText: "must provide text"
+          errorText: 'must provide text',
         });
       }
-      if (text && text.length < 5) {
+      if (text && text.length > 5) {
         errors.push({
-          name: "text",
+          name: 'text',
           order: 2,
-          errorText: "text must be at least 5 chars"
+          errorText: 'text must be less then 5 chars',
         });
       }
       return errors;
@@ -197,20 +200,74 @@ The function should return and Array of `error` objects that have the following 
       <div>
         <TextInput
           {...getInputProps({
-            name: "email",
-            label: "email"
+            name: 'email',
+            label: 'email',
           })}
         />
         <br />
         <TextInput
           {...getInputProps({
-            name: "text",
-            label: "text"
+            name: 'text',
+            label: 'text',
           })}
         />
 
         <br />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Button onClick={handleSubmit}>submit</Button>
+          <Button onClick={clearForm}>clear</Button>
+        </div>
+      </div>
+    )}
+  />
+</div>
+```
+
+**`clearFormAfterSubmit`**
+
+By default the `<Form />` will clear after submitting `clearFormAfterSubmit=false` prop will disable this behaviour
+
+```jsx
+<div dir="rtl">
+  <Form
+    onSubmit={({ email, text }) => alert(`email: ${email} text: ${text}`)}
+    clearFormAfterSubmit={false}
+    validate={({ email, text }) => {
+      let errors = [];
+      if (!email) {
+        errors.push({
+          name: 'email',
+          order: 1,
+          errorText: 'must provide email',
+        });
+      }
+      if (!text) {
+        errors.push({
+          name: 'text',
+          order: 2,
+          errorText: 'must provide text',
+        });
+      }
+      return errors;
+    }}
+    render={({ getInputProps, handleSubmit, clearForm }) => (
+      <div>
+        <TextInput
+          {...getInputProps({
+            name: 'email',
+            label: 'email',
+          })}
+        />
+        <br />
+        <TextInput
+          {...getInputProps({
+            name: 'text',
+            label: 'text',
+          })}
+        />
+
+        <br />
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button onClick={handleSubmit}>submit</Button>
           <Button onClick={clearForm}>clear</Button>
         </div>
@@ -233,16 +290,16 @@ By default the `<Form />` will validate elements that the user touched when blur
       let errors = [];
       if (!email) {
         errors.push({
-          name: "email",
+          name: 'email',
           order: 1,
-          errorText: "must provide email"
+          errorText: 'must provide email',
         });
       }
       if (!text) {
         errors.push({
-          name: "text",
+          name: 'text',
           order: 2,
-          errorText: "must provide text"
+          errorText: 'must provide text',
         });
       }
       return errors;
@@ -251,20 +308,20 @@ By default the `<Form />` will validate elements that the user touched when blur
       <div>
         <TextInput
           {...getInputProps({
-            name: "email",
-            label: "email"
+            name: 'email',
+            label: 'email',
           })}
         />
         <br />
         <TextInput
           {...getInputProps({
-            name: "text",
-            label: "text"
+            name: 'text',
+            label: 'text',
           })}
         />
 
         <br />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button onClick={handleSubmit}>submit</Button>
           <Button onClick={clearForm}>clear</Button>
         </div>
@@ -287,16 +344,16 @@ By default the `<Form />` will recheck validation of input when the user enters 
       let errors = [];
       if (!email) {
         errors.push({
-          name: "email",
+          name: 'email',
           order: 1,
-          errorText: "must provide email"
+          errorText: 'must provide email',
         });
       }
       if (!text) {
         errors.push({
-          name: "text",
+          name: 'text',
           order: 2,
-          errorText: "must provide text"
+          errorText: 'must provide text',
         });
       }
       return errors;
@@ -305,20 +362,20 @@ By default the `<Form />` will recheck validation of input when the user enters 
       <div>
         <TextInput
           {...getInputProps({
-            name: "email",
-            label: "email"
+            name: 'email',
+            label: 'email',
           })}
         />
         <br />
         <TextInput
           {...getInputProps({
-            name: "text",
-            label: "text"
+            name: 'text',
+            label: 'text',
           })}
         />
 
         <br />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button onClick={handleSubmit}>submit</Button>
           <Button onClick={clearForm}>clear</Button>
         </div>
@@ -335,19 +392,19 @@ In order to set the initial values of an input controlled by `<Form />` simply p
 ```jsx
 <div dir="rtl">
   <Form
-    initialValues={{ email: "example@initialemail.com" }}
+    initialValues={{ email: 'example@initialemail.com' }}
     onSubmit={({ email }) => alert(`email submitted: ${email}`)}
     render={({ getInputProps, handleSubmit, clearForm }) => (
       <div>
         <TextInput
           {...getInputProps({
-            name: "email",
-            label: "email",
-            type: "email"
+            name: 'email',
+            label: 'email',
+            type: 'email',
           })}
         />
         <br />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button onClick={handleSubmit}>submit</Button>
           <Button onClick={clearForm}>clear</Button>
         </div>
@@ -373,29 +430,29 @@ In order to set the initial values of an input controlled by `<Form />` simply p
       <div>
         <TextInput
           {...getInputProps({
-            name: "email",
-            label: "email",
-            type: "email"
+            name: 'email',
+            label: 'email',
+            type: 'email',
           })}
         />
         <br />
         <TextInput
           {...getInputProps({
-            name: "richText",
-            label: "richText",
-            isContentEditable: true
+            name: 'richText',
+            label: 'richText',
+            isContentEditable: true,
           })}
         />
         <br />
         <TextInput
           {...getInputProps({
-            name: "multiline",
-            label: "multiline",
-            isTextArea: true
+            name: 'multiline',
+            label: 'multiline',
+            isTextArea: true,
           })}
         />
         <br />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button onClick={handleSubmit}>submit</Button>
           <Button onClick={clearForm}>clear</Button>
         </div>
@@ -410,27 +467,27 @@ In order to set the initial values of an input controlled by `<Form />` simply p
 `<Form />` can handle our `<CheckBox/>` component as well.
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <Form
     onSubmit={({ email, terms, radio }) =>
       alert(
-        `email submitted: ${email} agreed to terms: ${terms ? "true" : "false"}`
+        `email submitted: ${email} agreed to terms: ${terms ? 'true' : 'false'}`
       )
     }
     validate={({ email, terms }) => {
       let errors = [];
       if (!email) {
         errors.push({
-          name: "email",
+          name: 'email',
           order: 1,
-          errorText: "must provide email"
+          errorText: 'must provide email',
         });
       }
       if (!terms) {
         errors.push({
-          name: "terms",
+          name: 'terms',
           order: 2,
-          errorText: "must accept terms"
+          errorText: 'must accept terms',
         });
       }
       return errors;
@@ -439,21 +496,21 @@ In order to set the initial values of an input controlled by `<Form />` simply p
       <div>
         <TextInput
           {...getInputProps({
-            name: "email",
-            label: "email",
-            type: "email"
+            name: 'email',
+            label: 'email',
+            type: 'email',
           })}
         />
         <br />
 
         <CheckBox
           {...getInputProps({
-            name: "terms",
-            noteText: "agree to terms",
-            formElementType: "checkBox"
+            name: 'terms',
+            noteText: 'agree to terms',
+            formElementType: 'checkBox',
           })}
         />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button onClick={handleSubmit}>submit</Button>
           <Button onClick={clearForm}>clear</Button>
         </div>
@@ -468,7 +525,7 @@ In order to set the initial values of an input controlled by `<Form />` simply p
 handling our `<RadioGroup/>` component.
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <Form
     onSubmit={({ email, radio }) =>
       alert(`email submitted: ${email} radio : ${radio}`)
@@ -477,16 +534,16 @@ handling our `<RadioGroup/>` component.
       let errors = [];
       if (!email) {
         errors.push({
-          name: "email",
+          name: 'email',
           order: 1,
-          errorText: "must provide email"
+          errorText: 'must provide email',
         });
       }
       if (radio === undefined) {
         errors.push({
-          name: "radio",
+          name: 'radio',
           order: 3,
-          errorText: "must choose radio"
+          errorText: 'must choose radio',
         });
       }
       return errors;
@@ -495,25 +552,25 @@ handling our `<RadioGroup/>` component.
       <div>
         <TextInput
           {...getInputProps({
-            name: "email",
-            label: "email",
-            type: "email"
+            name: 'email',
+            label: 'email',
+            type: 'email',
           })}
         />
         <br />
 
         <RadioGroup
           {...getInputProps({
-            name: "radio",
-            noteText: "choose",
+            name: 'radio',
+            noteText: 'choose',
             radioButtons: [
-              { value: "1", label: "one" },
-              { value: "2", label: "two" }
+              { value: '1', label: 'one' },
+              { value: '2', label: 'two' },
             ],
-            formElementType: "radio"
+            formElementType: 'radio',
           })}
         />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button onClick={handleSubmit}>submit</Button>
           <Button onClick={clearForm}>clear</Button>
         </div>
@@ -537,7 +594,7 @@ notice The select parent component needs to hold the whole selectedItem, so we n
 ```
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <Form
     onSubmit={({ email, select }) =>
       alert(`email submitted: ${email} select : ${select.value}`)
@@ -546,16 +603,16 @@ notice The select parent component needs to hold the whole selectedItem, so we n
       let errors = [];
       if (!email) {
         errors.push({
-          name: "email",
+          name: 'email',
           order: 1,
-          errorText: "must provide email"
+          errorText: 'must provide email',
         });
       }
       if (!select) {
         errors.push({
-          name: "select",
+          name: 'select',
           order: 2,
-          errorText: "must choose select"
+          errorText: 'must choose select',
         });
       }
       return errors;
@@ -564,26 +621,26 @@ notice The select parent component needs to hold the whole selectedItem, so we n
       <div>
         <TextInput
           {...getInputProps({
-            name: "email",
-            label: "email",
-            type: "email"
+            name: 'email',
+            label: 'email',
+            type: 'email',
           })}
         />
         <br />
 
         <Select
           {...getInputProps({
-            name: "select",
+            name: 'select',
             items: [
-              { value: "1", display: "one" },
-              { value: "2", display: "two" }
+              { value: '1', display: 'one' },
+              { value: '2', display: 'two' },
             ],
-            formElementType: "select"
+            formElementType: 'select',
           })}
         />
         <br />
         <br />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button onClick={handleSubmit}>submit</Button>
           <Button onClick={clearForm}>clear</Button>
         </div>

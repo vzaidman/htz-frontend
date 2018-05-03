@@ -1,30 +1,35 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import { borderRight, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
+import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import Note from '../Note/Note';
 import Ripple from '../Animations/Ripple';
 
 const styles = ({ miscStyles, theme, }) => ({
   display: 'flex',
   alignItems: 'baseline',
-  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
+  extend: [
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
 });
 
-const checkBoxStyle = ({ checked, isDisabled, isFocused, theme, }) => ({
+const checkBoxStyle = ({ checked, isDisabled, isFocused, variant, theme, }) => ({
   position: 'relative',
   height: '2rem',
   width: '2rem',
   flexShrink: 0,
-  backgroundColor: checked ? theme.color('checkBox', 'bgChecked') : theme.color('checkBox', 'bg'),
+  backgroundColor: checked
+    ? theme.color('checkBox', `${variant}BgChecked`)
+    : theme.color('checkBox', `${variant}Bg`),
   transitionProperty: 'all',
   borderWidth: isFocused && !checked ? '2px' : '1px',
   borderStyle: 'solid',
   borderColor: isDisabled
-    ? theme.color('checkBox', 'borderDisabled')
-    : theme.color('checkBox', 'border'),
+    ? theme.color('checkBox', `${variant}BorderDisabled`)
+    : theme.color('checkBox', `${variant}Border`),
   paddingTop: '0.2rem',
   paddingBottom: '0.2rem',
   extend: [ theme.getTransition(1, 'swiftIn'), ],
@@ -32,7 +37,7 @@ const checkBoxStyle = ({ checked, isDisabled, isFocused, theme, }) => ({
 
 const StyledCheckBox = createComponent(checkBoxStyle);
 
-const checkStyle = ({ checked, theme, }) => ({
+const checkStyle = ({ checked, variant, theme, }) => ({
   height: '100%',
   width: '50%',
   backgroundColor: 'transparent',
@@ -42,9 +47,9 @@ const checkStyle = ({ checked, theme, }) => ({
   transitionProperty: 'all',
   borderBottomWidth: '2px',
   borderBottomStyle: 'solid',
-  borderBottomColor: theme.color('checkBox', 'check'),
+  borderBottomColor: theme.color('checkBox', `${variant}Check`),
   extend: [
-    borderRight('2px', 'solid', theme.color('checkBox', 'check')),
+    borderRight('2px', 'solid', theme.color('checkBox', `${variant}Check`)),
     theme.getTransition(1, 'swiftIn'),
   ],
 });
@@ -135,6 +140,16 @@ export class CheckBox extends Component {
      * example use case: focusing the input.
      */
     refFunc: PropTypes.func,
+    /** The `<CheckBox />`'s stylistic variant */
+    variant: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          ...responsivePropBaseType,
+          value: PropTypes.string.isRequired,
+        })
+      ),
+    ]),
   };
   static defaultProps = {
     attrs: null,
@@ -154,14 +169,19 @@ export class CheckBox extends Component {
     onClick: null,
     onFocus: null,
     refFunc: undefined,
+    variant: 'primary',
   };
   state = {
     checkBoxId: this.props.checkBoxId || Math.random().toString(),
-    ...(this.props.checked === null ? { checked: this.props.defaultValue, } : {}),
+    ...(this.props.checked === null
+      ? { checked: this.props.defaultValue, }
+      : {}),
     isFocused: false,
     noteId: this.props.noteId
       ? this.props.noteId
-      : this.props.errorText || this.props.noteText ? Math.random().toString() : null,
+      : this.props.errorText || this.props.noteText
+        ? Math.random().toString()
+        : null,
   };
 
   render() {
@@ -179,6 +199,7 @@ export class CheckBox extends Component {
       onClick,
       onFocus,
       refFunc,
+      variant,
     } = this.props;
 
     const controllingChecked = checked !== null ? checked : this.state.checked;
@@ -192,7 +213,9 @@ export class CheckBox extends Component {
         >
           <input
             type="checkbox"
-            {...(this.state.noteId ? { 'aria-describedby': this.state.noteId, } : {})}
+            {...(this.state.noteId
+              ? { 'aria-describedby': this.state.noteId, }
+              : {})}
             {...attrs}
             checked={controllingChecked}
             {...(isDisabled ? { disabled: true, } : {})}
@@ -225,9 +248,17 @@ export class CheckBox extends Component {
             checked={controllingChecked}
             isDisabled={isDisabled}
             isFocused={this.state.isFocused}
+            variant={variant}
           >
-            <Ripple isActive={this.state.isFocused} />
-            <StyledCheck checked={controllingChecked} />
+            <FelaComponent
+              render={({ theme, }) => (
+                <Ripple
+                  isActive={this.state.isFocused}
+                  bgColor={theme.color('checkBox', `${variant}Ripple`)}
+                />
+              )}
+            />
+            <StyledCheck checked={controllingChecked} variant={variant} />
           </StyledCheckBox>
           <StyledSpan>{label}</StyledSpan>
         </label>
@@ -259,4 +290,5 @@ export default createComponent(styles, CheckBox, [
   'onClick',
   'onFocus',
   'refFunc',
+  'variant',
 ]);

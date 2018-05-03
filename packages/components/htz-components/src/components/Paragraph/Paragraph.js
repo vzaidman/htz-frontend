@@ -10,7 +10,31 @@ const mainWrapperStyle = ({ marginBottom, }) => ({
 
 const MainWrapper = createComponent(mainWrapperStyle, 'div');
 
-const inlineLinkStyle = ({ theme, }) => theme.articleStyle.paragraphLink;
+const inlineLinkStyle = ({ theme: { color, articleStyle, }, }) => ({
+  color: color('link', 'base'),
+
+  ':hover': {
+    color: color('link', 'base'),
+    borderBottomColor: color('link', 'base'),
+    borderBottomWidth: articleStyle.paragraphLink.borderBottomWidth,
+    borderBottomStyle: articleStyle.paragraphLink.borderBottomStyle,
+  },
+  ':focus': {
+    color: color('link', 'base'),
+    borderBottomColor: color('link', 'base'),
+    borderBottomWidth: articleStyle.paragraphLink.borderBottomWidth,
+    borderBottomStyle: articleStyle.paragraphLink.borderBottomStyle,
+  },
+  ':active': {
+    color: color('link', 'base'),
+    borderBottomColor: color('link', 'base'),
+    borderBottomWidth: articleStyle.paragraphLink.borderBottomWidthActive,
+    borderBottomStyle: articleStyle.paragraphLink.borderBottomStyle,
+  },
+  ':visited': {
+    color: color('link', 'base'),
+  },
+});
 
 const InlineLink = createComponent(inlineLinkStyle, Link, props =>
   Object.keys(props)

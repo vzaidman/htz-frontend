@@ -12,6 +12,7 @@ const propTypes = {
   attrs: attrsPropType,
   /** Link's destination */
   href: PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ]).isRequired,
+  asPath: PropTypes.string,
   children: PropTypes.node,
   /**
    * Link's content (simple string or another component/element).
@@ -33,6 +34,7 @@ const propTypes = {
 const defaultProps = {
   attrs: null,
   className: null,
+  asPath: null,
   children: null,
   content: null,
   focus: false,
@@ -78,21 +80,21 @@ const LinkWrapper = ({
 /* eslint-enable jsx-a11y/click-events-have-key-events */
 /* eslint-enable react/prop-types */
 
-const getPage = prefix => {
-  if (prefix) {
-    switch (prefix) {
-      case 'MAGAZINE':
-        return '/magazine';
-      case 'RECIPE':
-      case 'REVIEW':
-      case 'LIVE':
-        return '/article';
-      default:
-        return '/';
-    }
-  }
-  return '/article';
-};
+// const getPage = prefix => {
+//   if (prefix) {
+//     switch (prefix) {
+//       case 'MAGAZINE':
+//         return '/magazine';
+//       case 'RECIPE':
+//       case 'REVIEW':
+//       case 'LIVE':
+//         return '/article';
+//       default:
+//         return '/';
+//     }
+//   }
+//   return '/article';
+// };
 
 function Link({
   attrs,
@@ -101,6 +103,7 @@ function Link({
   content,
   focus,
   href,
+  asPath,
   onClick: passedOnClick,
   prefetch,
   target,
@@ -115,26 +118,39 @@ function Link({
     let prefix;
     let articleId;
     let params;
+    let page;
     /* eslint-enable no-unused-vars */
 
-    if (href === '/') {
-      prefix = '';
-      articleId = '/';
-    }
-    else {
-      const hrefPattern = new RegExp(
-        '\\/?(?=[^/]*$)(?:(\\.\\w*)-)?(?:(\\w*)-)?(1\\.\\d*)(?:\\?(.*))?'
-      );
-      // eslint-disable-next-line no-unused-vars
-      [ fullId, premium, prefix, articleId, params, ] = hrefPattern.exec(href);
-    }
+    // if (href === '/') {
+    //   prefix = '';
+    //   articleId = '/';
+    // }
+
+    // if (href.startsWith('stage') || href.startsWith('thankYou') || href.startsWith('debt')) {
+    //   page = href;
+    // }
+    // else if (href.includes('purchase-page')) {
+    //   page = href.split('/')[href.split('/').length - 1];
+    // }
+    // else {
+    //   const hrefPattern = new RegExp(
+    //     '\\/?(?=[^/]*$)(?:(\\.\\w*)-)?(?:(\\w*)-)?(1\\.\\d*)(?:\\?(.*))?'
+    //   );
+    //   // eslint-disable-next-line no-unused-vars
+    //   [ fullId, premium, prefix, articleId, params, ] = hrefPattern.exec(href);
+    //   page = getPage(prefix);
+    // }
+
+    // TODO check this case
+    const computedHref = typeof href === 'string' ? { pathname: href, } : href;
+
     return (
       <NextLink
         prefetch={prefetch}
         passHref
-        // href={href}
-        href={{ pathname: getPage(prefix), query: { path: `/${articleId}`, }, }}
-        as={href}
+        href={computedHref}
+        // href={{ pathname: page, query: { path: `/${articleId}`, }, }}
+        as={asPath}
       >
         <LinkWrapper
           attrs={attrs}

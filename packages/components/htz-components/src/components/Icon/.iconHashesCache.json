@@ -59,5 +59,16 @@
   "src/components/Icon/icons/IconTmLoader.js":
     "3b26c1eb4c687271914c7093670b1c3d",
   "src/components/Icon/icons/IconHaaretzLogo.js":
-    "7c8e8a1608094e804734cf343815909d"
+    "127c8397d91c8213d25312888d2d09b9",
+  "src/components/Icon/icons/IconBundle.js": "4a9b62c2362c0ba89434eefa605ae68d",
+  "src/components/Icon/icons/IconTablet.js": "63f645059f12fc0ce92af1e4559de01f",
+  "src/components/Icon/icons/IconCredit.js": "5216d2c7ac809fd3c845bf997b1ebc6a",
+  "src/components/Icon/icons/IconHaaretzFullLogo.js":
+    "72c6f2716564d22bd4ac1caf8703d1ce",
+  "src/components/Icon/icons/IconLock.js": "2127d8add369e0c3766bc57b7b1d2efe",
+  "src/components/Icon/icons/IconSafePayment.js":
+    "3efb706762e97a7dbc4b88e4ec65ea1c",
+  "src/components/Icon/icons/IconMarkerLogo.js":
+    "bd56f43d8d24cc0d67bd1a9b34c0769c",
+  "src/components/Icon/icons/IconPaypal.js": "9589c93fc08d622c4867b0d217593de1"
 }

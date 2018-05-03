@@ -19,32 +19,12 @@ export const userScheme = {
 
 const propTypes = {
   render: PropTypes.func.isRequired,
-  // /** Indicates data loading state */
-  // loading: PropTypes.bool,
-  // /** Indicates data error state */
-  // error: PropTypes.bool,
-  // user: PropTypes.shape({
-  //   __typename: PropTypes.string,
-  //   userName: PropTypes.string,
-  //   id: PropTypes.string,
-  //   lastName: PropTypes.string,
-  //   firstName: PropTypes.string,
-  //   emailStatus: PropTypes.string,
-  //   premiumArticlesCount: PropTypes.number,
-  //   type: PropTypes.string,
-  //   anonymousId: PropTypes.string,
-  // }).isRequired,
-  // mutate: PropTypes.func.isRequired,
 };
-const defaultProps = {
-  // loading: false,
-  // error: false,
-};
+const defaultProps = {};
 
 class UserDispenser extends Component {
   state = {
     shouldRender: false,
-    // isLoggedIn: false,
     images: [],
   };
 
@@ -55,44 +35,18 @@ class UserDispenser extends Component {
     }
   }
 
-  handleImgOnload = () => {
-    // console.log('handleImgOnload user:', user);
-    console.log('hsdgsdgsdgsdg');
-    // this.props.mutate({
-    //   variables: { user, },
-    //   // TODO check if there's a way to pass a real object reference for overriding (no-skeleton)
-    //   update: (proxy, { data: { updateUser, }, }) => {
-    //     // Read the data from our cache for this query.
-    //     const data = proxy.readQuery({ query: GET_USER, });
-
-    //     // Add our data from the mutation to the data object.
-    //     data.user = { ...userScheme, ...user, };
-
-    //     // Write our data back to the cache.
-    //     proxy.writeQuery({ query: GET_USER, data, });
-    //   },
-    // });
-    return Promise.resolve(console.log('onload handleImgOnload'));
-  };
+  handleImgOnload = () =>
+    Promise.resolve(console.log('onload handleImgOnload resolved'));
 
   plantImages = images =>
     new Promise((resolve, reject) => {
       console.log('planting Images...', images);
       this.setState((prevState, props) => ({ ...prevState, images, }));
-      resolve();
+      this.state.resolveMeWhenImageWasLoaded = resolve;
     });
 
   render() {
-    // if (this.state.shouldRender && !this.props.loading) {
     if (this.state.shouldRender) {
-      // if (this.props.error) {
-      //   console.error(this.props.error);
-      //   return null;
-      // }
-      // const isLoggedIn =
-      //   this.props.user &&
-      //   (this.props.user.type === UserTypes.paying ||
-      //     this.props.user.type === UserTypes.registered);
       return (
         <Fragment>
           <Mutation mutation={UPDATE_USER}>
@@ -104,7 +58,9 @@ class UserDispenser extends Component {
                   updateUser({
                     variables: { user: { ...userScheme, ...newUser, }, },
                   });
-                  this.state.resolveOnImageLoad();
+                  if (this.state.resolveMeWhenImageWasLoaded) {
+                    this.state.resolveMeWhenImageWasLoaded();
+                  }
                 }}
               />
             )}
@@ -112,13 +68,14 @@ class UserDispenser extends Component {
           <Query query={GET_USER} ssr={false}>
             {({ data: { user, }, }) =>
               this.props.render({
-                isLoggedIn:
+                isLoggedIn: !!(
                   user &&
                   (user.type === UserTypes.paying ||
-                    user.type === UserTypes.registered),
+                    user.type === UserTypes.registered)
+                ),
                 user,
                 plantImages: this.plantImages,
-                // handleImgOnload: this.handleImgOnload,
+                handleImgOnload: this.handleImgOnload,
               })
             }
           </Query>
@@ -132,10 +89,4 @@ class UserDispenser extends Component {
 UserDispenser.propTypes = propTypes;
 UserDispenser.defaultProps = defaultProps;
 
-// const WrappedUserDispenser = compose(
-//   graphql(GET_USER, {
-//     props: ({ data, }) => data,
-//   })
-// )(UserDispenser);
-// export default WrappedUserDispenser;
 export default UserDispenser;

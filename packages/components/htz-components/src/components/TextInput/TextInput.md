@@ -60,8 +60,8 @@ See documantation of `requiredText` prop above to see how to manipulate the styl
   <TextInput
     label="label"
     requiredText={{
-      long: "this field is required",
-      short: "*"
+      long: 'this field is required',
+      short: '*',
     }}
   />
 </div>
@@ -79,7 +79,7 @@ The `primaryInverse` variant is intended for use when placed on dark backgrounds
 ```
 
 ```jsx
-<div dir="rtl" style={{ backgroundColor: "black", padding: "5rem" }}>
+<div dir="rtl" style={{ backgroundColor: 'black', padding: '5rem' }}>
   <TextInput variant="primaryInverse" label="label" noteText="inverse note" />
 </div>
 ```
@@ -98,7 +98,7 @@ The `attrs` prop take an object which is spread on the DOM element, and can be u
 <div dir="rtl">
   <TextInput
     label="label"
-    attrs={{ "aria-label": "A input with custom attributes" }}
+    attrs={{ 'aria-label': 'A input with custom attributes' }}
   />
 </div>
 ```
@@ -192,8 +192,8 @@ Triggered when the `<InputElement />` gets focused/blured
     errorText="נא להכניס כתובת דואל תקינה"
     placeHolder="example@you.com"
     type="email"
-    onFocus={() => console.log("input focused")}
-    onBlur={() => console.log("input blured")}
+    onFocus={() => console.log('input focused')}
+    onBlur={() => console.log('input blured')}
   />
 </div>
 ```
@@ -229,7 +229,7 @@ The number value should be the number of rems the element height should equal.
     label="דואל"
     placeholder="כתובת מייל"
     isTextArea
-    height={[{ until: "s", value: 10 }, { from: "l", value: 23 }]}
+    height={[{ until: 's', value: 10 }, { from: 'l', value: 23 }]}
   />
 </div>
 ```
@@ -276,7 +276,7 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: "initial value"
     };
   }
 
@@ -299,7 +299,7 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: 'initial value',
     };
   }
 
@@ -341,7 +341,7 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: '',
     };
   }
 
@@ -387,7 +387,7 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: '',
     };
   }
 
@@ -439,7 +439,7 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: '',
     };
   }
 
@@ -449,8 +449,7 @@ class Example extends React.Component {
         <div>the value from the state is: {this.state.value}</div>
         <Button
           onClick={() => this.elem.focus()}
-          miscStyles={{ marginTop: "3rem" }}
-        >
+          miscStyles={{ marginTop: '3rem' }}>
           focus on element
         </Button>
         <TextInput
@@ -458,7 +457,7 @@ class Example extends React.Component {
           refFunc={el => (this.elem = el)}
           onChange={evt => this.setState({ value: evt.target.value })}
           value={this.state.value}
-          miscStyles={{ marginTop: "3rem" }}
+          miscStyles={{ marginTop: '3rem' }}
         />;
       </div>
     );

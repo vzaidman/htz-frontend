@@ -24,11 +24,13 @@ import LayoutRow from './components/PageLayout/LayoutRow';
 import Link from './components/Link/Link';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
 import List from './components/List/List';
+import Media from './components/Media/Media';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
 import Newsletter from './components/Newsletter/Newsletter';
 import Osaka from './components/Osaka/OsakaController';
 import Portal from './components/Portal/Portal';
+import Paragraph from './components/Paragraph/Paragraph';
 import Quote from './components/Quote/Quote';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import RadioButton from './components/RadioButton/RadioButton';
@@ -52,30 +54,38 @@ import IconApple from './components/Icon/icons/IconApple';
 import IconAvatar from './components/Icon/icons/IconAvatar';
 import IconBack from './components/Icon/icons/IconBack';
 import IconBold from './components/Icon/icons/IconBold';
+import IconBundle from './components/Icon/icons/IconBundle';
 import IconCamera from './components/Icon/icons/IconCamera';
 import IconClose from './components/Icon/icons/IconClose';
 import IconComment from './components/Icon/icons/IconComment';
+import IconCredit from './components/Icon/icons/IconCredit';
 import IconDislike from './components/Icon/icons/IconDislike';
 import IconFacebook from './components/Icon/icons/IconFacebook';
 import IconFacebookLogo from './components/Icon/icons/IconFacebookLogo';
 import IconGPlus from './components/Icon/icons/IconGPlus';
 import IconHaaretzLogo from './components/Icon/icons/IconHaaretzLogo';
+import IconHaaretzFullLogo from './components/Icon/icons/IconHaaretzFullLogo';
 import IconHalfStar from './components/Icon/icons/IconHalfStar';
 import IconHtzLoader from './components/Icon/icons/IconHtzLoader';
 import IconItalic from './components/Icon/icons/IconItalic';
 import IconLike from './components/Icon/icons/IconLike';
+import IconLock from './components/Icon/icons/IconLock';
 import IconMail from './components/Icon/icons/IconMail';
 import IconMailAlert from './components/Icon/icons/IconMailAlert';
 import IconMailFooter from './components/Icon/icons/IconMailFooter';
+import IconMarkerLogo from './components/Icon/icons/IconMarkerLogo';
 import IconMenu from './components/Icon/icons/IconMenu';
+import IconPaypal from './components/Icon/icons/IconPaypal';
 import IconPlus from './components/Icon/icons/IconPlus';
 import IconPrint from './components/Icon/icons/IconPrint';
 import IconQuote from './components/Icon/icons/IconQuote';
 import IconReading from './components/Icon/icons/IconReading';
 import IconRss from './components/Icon/icons/IconRss';
+import IconSafePayment from './components/Icon/icons/IconSafePayment';
 import IconSearch from './components/Icon/icons/IconSearch';
 import IconSettings from './components/Icon/icons/IconSettings';
 import IconStar from './components/Icon/icons/IconStar';
+import IconTablet from './components/Icon/icons/IconTablet';
 import IconTheMarker from './components/Icon/icons/IconTheMarker';
 import IconTmLoader from './components/Icon/icons/IconTmLoader';
 import IconTwitter from './components/Icon/icons/IconTwitter';
@@ -85,6 +95,7 @@ import IconZoomIn from './components/Icon/icons/IconZoomIn';
 import IconZoomOut from './components/Icon/icons/IconZoomOut';
 
 // User
+import CheckEmailExists from './components/User/CheckEmailExists';
 import Login from './components/User/Login';
 import Logout from './components/User/Logout';
 import Register from './components/User/Register';
@@ -101,6 +112,8 @@ import AdSlot from './components/Ads/AdSlot';
  *       U  T  I  L  I  T  I  E  S       *
  * ************************************* */
 import createDocument from './document';
+import { appendScript, } from './utils/scriptTools';
+import { stylesPropType, } from './propTypes/stylesPropType';
 
 export {
   A11yDialog,
@@ -125,10 +138,12 @@ export {
   Link,
   LinksBlock,
   List,
+  Media,
   MobileQuickRegistration,
   NavigationMenu,
   Osaka,
   Portal,
+  Paragraph,
   Quote,
   RadioButton,
   RadioGroup,
@@ -151,30 +166,38 @@ export {
   IconAvatar,
   IconBack,
   IconBold,
+  IconBundle,
   IconCamera,
   IconClose,
   IconComment,
+  IconCredit,
   IconDislike,
   IconFacebook,
   IconFacebookLogo,
   IconGPlus,
   IconHaaretzLogo,
+  IconHaaretzFullLogo,
   IconHalfStar,
   IconHtzLoader,
   IconItalic,
   IconLike,
+  IconLock,
   IconMail,
   IconMailAlert,
   IconMailFooter,
+  IconMarkerLogo,
   IconMenu,
+  IconPaypal,
   IconPlus,
   IconPrint,
   IconQuote,
   IconReading,
   IconRss,
+  IconSafePayment,
   IconSearch,
   IconSettings,
   IconStar,
+  IconTablet,
   IconTheMarker,
   IconTmLoader,
   IconTwitter,
@@ -183,6 +206,7 @@ export {
   IconZoomIn,
   IconZoomOut,
   // User
+  CheckEmailExists,
   Login,
   Logout,
   Newsletter,
@@ -194,5 +218,7 @@ export {
   DfpInjector,
   AdSlot,
   // Utils
+  appendScript,
   createDocument,
+  stylesPropType,
 };

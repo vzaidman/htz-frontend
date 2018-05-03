@@ -1,6 +1,6 @@
 import { createComponent, } from 'react-fela';
 
-const rippleStyle = ({ isActive, theme, }) => ({
+const rippleStyle = ({ isActive, theme, bgColor, }) => ({
   position: 'absolute',
 
   height: '8rem',
@@ -8,8 +8,7 @@ const rippleStyle = ({ isActive, theme, }) => ({
   end: '50%',
   top: '50%',
   borderRadius: '50%',
-  // todo: different named color from theme
-  backgroundColor: theme.color('checkBox', 'ripple'),
+  backgroundColor: bgColor,
   display: 'block',
   opacity: 0,
   ...(isActive

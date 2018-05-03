@@ -33,23 +33,35 @@ const createDocument = ({
   staticRules = '',
   appData = { config, },
   isRtl,
+  hasToggleableTheme = false,
 }) =>
   class HaaretzDocument extends Document {
-    static getInitialProps({ renderPage, }) {
+    static getInitialProps({ renderPage, req, }) {
+      const host = req.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+
+      const purchasePageTheme = hasToggleableTheme ? theme(host) : theme;
+
+      const purchasePageStaticRules = hasToggleableTheme
+        ? staticRules(host)
+        : staticRules;
+
       fontRules.forEach(rule => styleRenderer.renderFont(...rule));
-      if (staticRules) {
-        Array.isArray(staticRules)
-          ? staticRules.forEach(rule => styleRenderer.renderStatic(rule))
-          : styleRenderer.renderStatic(staticRules);
+      if (purchasePageStaticRules) {
+        Array.isArray(purchasePageStaticRules)
+          ? purchasePageStaticRules.forEach(rule =>
+            styleRenderer.renderStatic(rule)
+          )
+          : styleRenderer.renderStatic(purchasePageStaticRules);
       }
       const page = renderPage(App => props => (
-        <FelaProvider theme={theme} renderer={styleRenderer}>
+        <FelaProvider theme={purchasePageTheme} renderer={styleRenderer}>
           <App {...props} />
         </FelaProvider>
       ));
       const sheetList = renderToSheetList(styleRenderer);
 
-      // styleRenderer.clear();
+      styleRenderer.clear();
+
       return {
         ...page,
         sheetList,
@@ -64,7 +76,7 @@ const createDocument = ({
           <style
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: css, }}
-            data-fela-rehydration={rehydration}
+            // data-fela-rehydration={rehydration}
             data-fela-support={support}
             data-fela-type={type}
             key={`${type}-${media}`}
@@ -91,6 +103,10 @@ const createDocument = ({
           <Head>
             <meta charSet="utf-8" />
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1, minimum-scale=1"
+            />
             <link rel="shortcut icon" href="about:blank" />
             {this.renderStyles()}
             {this.renderData()}

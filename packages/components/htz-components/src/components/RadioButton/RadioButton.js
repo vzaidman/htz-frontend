@@ -1,42 +1,52 @@
 import React, { Component, } from 'react';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import { radioButtonPropType, } from './RadioButtonPropType';
 import Ripple from '../Animations/Ripple';
 
 const styles = ({ miscStyles, theme, }) => ({
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'baseline',
   extend: [
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
 });
 
-const radioButtonStyle = ({ checked, isDisabled, isFocused, theme, }) => ({
+const radioButtonStyle = ({
+  checked,
+  isDisabled,
+  isFocused,
+  variant,
+  theme,
+}) => ({
   position: 'relative',
-  height: '2rem',
-  width: '2rem',
+  top: '0.15em',
+  height: '1em',
+  width: '1em',
   flexShrink: 0,
   borderRadius: '50%',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: theme.color('radioButton', 'bg'),
+  backgroundColor: theme.color('radioButton', `${variant}Bg`),
   transitionProperty: 'all',
   borderWidth: isFocused && !checked ? '2px' : '1px',
   borderStyle: 'solid',
   borderColor: isDisabled
-    ? theme.color('radioButton', 'borderDisabled')
-    : theme.color('radioButton', 'border'),
+    ? theme.color('radioButton', `${variant}BorderDisabled`)
+    : theme.color('radioButton', `${variant}Border`),
 });
 
 const StyledRadioButton = createComponent(radioButtonStyle);
 
-const checkStyle = ({ checked, theme, }) => ({
+const checkStyle = ({ checked, variant, theme, }) => ({
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
   height: '80%',
   width: '80%',
   borderRadius: '50%',
-  backgroundColor: theme.color('radioButton', 'bgChecked'),
+  backgroundColor: theme.color('radioButton', `${variant}BgChecked`),
   opacity: checked ? 1 : 0,
   transitionProperty: 'all',
   borderWidth: '1px',
@@ -69,6 +79,7 @@ export class RadioButton extends Component {
     onFocus: null,
     refFunc: undefined,
     value: null,
+    variant: 'primary',
   };
   state = {
     radioButtonId: this.props.radioButtonId || Math.random().toString(),
@@ -90,6 +101,7 @@ export class RadioButton extends Component {
       onFocus,
       refFunc,
       value,
+      variant,
     } = this.props;
 
     const controllingChecked = checked !== null ? checked : this.state.checked;
@@ -136,9 +148,17 @@ export class RadioButton extends Component {
           checked={controllingChecked}
           isDisabled={isDisabled}
           isFocused={this.state.isFocused}
+          variant={variant}
         >
-          <Ripple isActive={this.state.isFocused} />
-          <StyledCheck checked={controllingChecked} />
+          <FelaComponent
+            render={({ theme, }) => (
+              <Ripple
+                isActive={this.state.isFocused}
+                bgColor={theme.color('checkBox', `${variant}Ripple`)}
+              />
+            )}
+          />
+          <StyledCheck checked={controllingChecked} variant={variant} />
         </StyledRadioButton>
         <StyledSpan>{label}</StyledSpan>
       </label>
@@ -159,4 +179,5 @@ export default createComponent(styles, RadioButton, [
   'onFocus',
   'refFunc',
   'value',
+  'variant',
 ]);

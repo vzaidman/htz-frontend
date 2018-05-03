@@ -36,11 +36,10 @@ function Unstyled${state.componentName}({ attrs, ...props }) {
   return (
     ${code
     .replace(
-      /((?:.|[\n\r])*)((<svg )(width="1em" height="1em" )?((viewbox=")(\d+\s+\d+\s+)(\d+)\s+(\d+)\s*")).*(>(?:.|[\n\r])*)/gim,
+      /((?:.|[\n\r])*)((<svg )(width="1em" height="1em" )?((viewbox=")((?:\d+\.?\d*)+\s+(?:\d+\.?\d*)+\s+)(\d+\.?\d*)\s+(\d+\.?\d*)\s*")).*(>(?:.|[\n\r])*)/gim,
       (matches, pre, g2, svgTag, g4, viewBox, g6, g7, width, height, rest) =>
-        `${pre}${svgTag}width="${width / height}em" height="1em" ${
-          viewBox
-        } {...props} {...attrs} ${rest}`
+        `${pre}${svgTag}width="${width /
+            height}em" height="1em" ${viewBox} {...props} {...attrs} ${rest}`
     )
     .replace(/\r?\n|\r/gm, '')}
   );

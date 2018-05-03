@@ -424,7 +424,7 @@ class TextInput extends Component {
     italicActive: false,
     inputId: this.props.inputId || Math.random().toString(),
     isFocused: false,
-    isInputEmpty: !this.props.defaultValue,
+    isInputEmpty: !this.props.defaultValue && !this.props.value,
     labelId: this.props.labelId || Math.random().toString(),
     noteId: this.props.noteId
       ? this.props.noteId

@@ -6,4 +6,5 @@ module.exports = {
     : 'localhost',
   hostname: process.env.HOSTNAME,
   baseHref: 'https://www.haaretz.co.il',
+  port: process.env.PORT || '6060',
 };

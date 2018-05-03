@@ -94,6 +94,11 @@ StyleGuideProvider.defaultProps = {
 export default function StyleGuideProvider({ children, }) {
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
+    [ '../src/fonts/OpenSansHebrewLight.ttf', ],
+    { fontWeight: 300, }
+  );
+  styleRenderer.renderFont(
+    '"Open Sans Hebrew"',
     [
       '../src/fonts/OpenSansHebrewRegular.woff',
       '../src/fonts/OpenSansHebrewRegular.woff2',

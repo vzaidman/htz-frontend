@@ -18,7 +18,7 @@ class RadioGroup extends Component {
      */
     className: PropTypes.string,
     /**
-     * The default value of an unconrolled RadioGroup, should not be passed if the radio group is controlled
+     * The default value of an uncontrolled RadioGroup, should not be passed if the radio group is controlled
      */
     defaultValue: PropTypes.string,
     /** error note to display if input is passed a `isError` prop */

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
+import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 
 export const radioButtonPropType = {
   /**
@@ -73,4 +74,14 @@ export const radioButtonPropType = {
    * The radio input value, must be a string because the value on the input will always be a string
    */
   value: PropTypes.string,
+  /** The `<RadioButton />`'s stylistic variant */
+  variant: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        ...responsivePropBaseType,
+        value: PropTypes.string.isRequired,
+      })
+    ),
+  ]),
 };

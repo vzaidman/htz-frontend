@@ -58,7 +58,8 @@ Button.propTypes = {
    * A url to be assigned to the DOM element, converts the button to an `'<a>'`
    * DOM element inside a Next JS `<Link />`
    */
-  href: PropTypes.string,
+  href: PropTypes.oneOfType([ PropTypes.node, PropTypes.string, ]),
+  asPath: PropTypes.string,
   /**
    * A value for the `button`s `id` attribute.
    * Passed to the underlying react element
@@ -173,6 +174,7 @@ Button.defaultProps = {
   attrs: null,
   children: null,
   href: null,
+  asPath: null,
   id: null,
   isBusy: false,
   isDisabled: false,
@@ -367,12 +369,14 @@ const progressRule = ({ theme, isBusy, }) => ({
 //  Styling helper functions  //
 // ////////////////////////// //
 function setVariant(prop, variant, getColor, isFlat, isBusy) {
+  const textColor = getColor('button', `${variant}Text`);
   return {
     backgroundColor: getColor('button', `${variant}${isBusy ? 'Focus' : ''}Bg`),
     borderColor: isFlat
       ? 'transparent'
       : getColor('button', `${variant}Border`),
-    color: getColor('button', `${variant}Text`),
+    color: textColor,
+    ':visited': { color: textColor, },
     ':hover': {
       backgroundColor: getColor('button', `${variant}HoverBg`),
       borderColor: isFlat
@@ -509,6 +513,7 @@ const ButtonWrapper = ({
   children,
   className,
   href,
+  asPath,
   id,
   isBusy,
   isDisabled,
@@ -521,6 +526,7 @@ const ButtonWrapper = ({
   (href ? (
     <Link
       href={href}
+      asPath={asPath}
       prefetch={prefetch}
       className={className}
       onClick={onClick}
@@ -551,6 +557,7 @@ export default function Button({
   attrs,
   children,
   href,
+  asPath,
   id,
   isBusy,
   isDisabled,
@@ -593,6 +600,7 @@ export default function Button({
             attrs,
             className,
             href,
+            asPath,
             id,
             isBusy,
             isDisabled,

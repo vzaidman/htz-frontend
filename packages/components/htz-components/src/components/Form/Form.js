@@ -17,6 +17,16 @@ export class Form extends Component {
      */
     disablePreventDefault: PropTypes.bool,
     /**
+     * If true handleSubmit function is called
+     * native submit behaviour wont be prevented
+     */
+    disableSubmitOnEnterKeyDown: PropTypes.bool,
+    /**
+     * If true when handleSubmit function is called
+     * The form wont be cleared
+     */
+    clearFormAfterSubmit: PropTypes.bool,
+    /**
      * Initial values to inject to the Form state,
      * The initial values are spread into he Form's state.values object
      * The given values name key should corrospond to the name attribute given to the relevant input
@@ -36,6 +46,7 @@ export class Form extends Component {
      * A callback that gets the the values object from the Form state
      * Gets called through handleSubmit() if the validation callback returns no errors
      * @param {Object} values - The Values Object from the Form state
+     * @param {Any} args - pass all other arguments needed by onSubmit
      */
     onSubmit: PropTypes.func.isRequired,
     /**
@@ -43,7 +54,7 @@ export class Form extends Component {
      *
      * The function should return and Array of error objects that have the following keys:
      *
-     * name: required, and needs to corespond with the input name
+     * name: required, and needs to correspond with the input name
      *
      * order: required, in case of an error after trying to submit the for will focus
      *        on the input that is in error state and has the lowest order value
@@ -68,6 +79,8 @@ export class Form extends Component {
   static defaultProps = {
     attrs: null,
     disablePreventDefault: false,
+    disableSubmitOnEnterKeyDown: false,
+    clearFormAfterSubmit: true,
     initialValues: {},
     isValidateOnBlur: true,
     isValidateOnChange: true,
@@ -106,12 +119,12 @@ export class Form extends Component {
   getInputProps = ({
     errorText,
     isContentEditable = false,
+    isError,
     name,
     formElementType = 'text',
     onBlur,
     onChange,
     onContentEditableChange,
-    onFocus,
     validationOrder,
     ...rest
   }) => {
@@ -216,19 +229,17 @@ export class Form extends Component {
     return {
       ...formElementProperties,
       onBlur: callAll(onBlur, evt => {
-        if (this.props.isValidateOnBlur) {
-          const errors = this.handleTouchedValidate(this.state.values);
-          this.setState({ errors, });
-        }
-      }),
-      onFocus: callAll(onFocus, evt => {
         if (!this.state.touched[name]) {
           this.setState({
             touched: { ...this.state.touched, [name]: true, },
           });
         }
+        if (this.props.isValidateOnBlur) {
+          const errors = this.handleTouchedValidate(this.state.values, name);
+          this.setState({ errors, });
+        }
       }),
-      ...(stateError ? { isError: true, } : {}),
+      ...(stateError || isError ? { isError: true, } : {}),
       ...(stateError && stateError.errorText
         ? { errorText: stateError.errorText, }
         : errorText ? { errorText, } : {}),
@@ -241,35 +252,43 @@ export class Form extends Component {
 
   /**
    * A function that handles submitting data from the Form
-   * @param {SyntheticEvent} evt - The event object
-   * @param {Boolean} disablePreventDefault
-   *   If true the submit will not prevent form submit default behaviour
+   * @param {SyntheticEvent} evt - Pass the submit event object
+   * @param {Any} args - pass all other arguments needed by onSubmit
+   *   If true the submit will not prevent form submit default behaviour.
    *   The function first checks if the values pass the validation function.
    *   If there are errors it will focus on the error with the lowest error.order value
    *   If there are no errors or no validation function it will call the
    *   `onSubmit` function provided to the Form with the values from the state,
-   *
    *   and then clear the form.
    *   By default, submit event is prevented with evt.preventDefault() in the
    *   handle submit function.
-   *   The `disablePreventDefault` prop will resture the default submit
-   *   functionallity of the form.
+   *   The `disablePreventDefault` prop will restructure the default submit
+   *   functionality of the form.
    */
-  handleSubmit = (evt, disablePreventDefault = false) => {
-    if (!disablePreventDefault) evt.preventDefault();
-    if (this.props.validate) {
-      const errors = this.props.validate(this.state.values);
-      if (errors.length > 0) {
-        this.focusFirstError(errors);
+  handleSubmit = (evt, ...args) => {
+    if (!this.props.disablePreventDefault) evt.preventDefault();
+    // check if enter was pressed and id submit on enter was disabled
+    if (
+      !(
+        args[0] &&
+        args[0].enterKeyPressed &&
+        this.props.disableSubmitOnEnterKeyDown
+      )
+    ) {
+      if (this.props.validate) {
+        const errors = this.props.validate(this.state.values);
+        if (errors.length > 0) {
+          this.focusFirstError(errors);
+        }
+        else {
+          this.props.onSubmit(this.state.values, ...args);
+          if (this.props.clearFormAfterSubmit) this.clearForm();
+        }
       }
       else {
-        this.props.onSubmit(this.state.values);
-        this.clearForm();
+        this.props.onSubmit(this.state.values, ...args);
+        if (this.props.clearFormAfterSubmit) this.clearForm();
       }
-    }
-    else {
-      this.props.onSubmit(this.state.values);
-      this.clearForm();
     }
   };
 
@@ -299,11 +318,11 @@ export class Form extends Component {
     }
   }
 
-  handleTouchedValidate(values) {
+  handleTouchedValidate(values, name = null) {
     if (this.props.validate) {
       const errors = this.props.validate(values);
       const cleanErrors = errors.filter(
-        error => this.state.touched[error.name]
+        error => this.state.touched[error.name] || error.name === name
       );
       return cleanErrors;
     }
@@ -314,7 +333,15 @@ export class Form extends Component {
     const { attrs, render, } = this.props;
 
     return (
-      <form {...attrs}>
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+      <form
+        {...attrs}
+        onKeyDown={evt => {
+          if (evt.keyCode === 13) {
+            this.handleSubmit(evt, { enterKeyPressed: true, });
+          }
+        }}
+      >
         {render({
           getInputProps: this.getInputProps,
           handleSubmit: this.handleSubmit,
