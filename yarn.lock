@@ -160,8 +160,8 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.53.tgz#396b35af826fa66aad472c8cb7b8d5e277f4e6d8"
 
 "@types/node@^9.4.6":
-  version "9.6.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.0.tgz#d3480ee666df9784b1001a1872a2f6ccefb6c2d7"
+  version "9.6.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.2.tgz#e49ac1adb458835e95ca6487bc20f916b37aff23"
 
 "@types/zen-observable@0.5.3", "@types/zen-observable@^0.5.3":
   version "0.5.3"
@@ -187,6 +187,10 @@ JSONStream@^1.0.3, JSONStream@^1.0.4:
   dependencies:
     jsonparse "^1.2.0"
     through ">=2.2.7 <3"
+
+a11y-dialog@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/a11y-dialog/-/a11y-dialog-4.0.1.tgz#41b45d04793f4064c9df3b044160d9fd006f4c0f"
 
 abab@^1.0.3, abab@^1.0.4:
   version "1.0.4"
@@ -4430,6 +4434,15 @@ fela-beautifier@^5.0.15:
     cssbeautify "^0.3.1"
     fast-loops "^1.0.0"
 
+fela-bindings@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/fela-bindings/-/fela-bindings-2.1.0.tgz#e70ae4ea834fb80b501433ae2c13b7f47d621582"
+  dependencies:
+    fast-loops "^1.0.0"
+    fela-dom "^7.0.6"
+    fela-tools "^5.1.4"
+    shallow-equal "^1.0.0"
+
 fela-bindings@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/fela-bindings/-/fela-bindings-2.2.0.tgz#9fd20042b4131289c2124b88c6c5451b13ba292b"
@@ -4446,6 +4459,14 @@ fela-combine-arrays@^1.0.7:
   dependencies:
     fast-loops "^1.0.0"
     isobject "^3.0.1"
+
+fela-dom@^7.0.6:
+  version "7.0.6"
+  resolved "https://registry.yarnpkg.com/fela-dom/-/fela-dom-7.0.6.tgz#10e84a8cf65c6ffc4b2449820799d214b74f191f"
+  dependencies:
+    css-in-js-utils "^2.0.0"
+    fast-loops "^1.0.0"
+    fela-utils "^8.0.5"
 
 fela-dom@^7.0.7:
   version "7.0.7"
@@ -4531,6 +4552,15 @@ fela-statistics@^5.0.20:
     fela-utils "^8.0.6"
     gzip-size "^3.0.0"
 
+fela-tools@^5.1.4:
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/fela-tools/-/fela-tools-5.1.4.tgz#3fe20f2135ce607b52a93caad6c695da1cca380c"
+  dependencies:
+    css-in-js-utils "2.0.0"
+    fast-loops "^1.0.0"
+    fela "^6.1.5"
+    fela-utils "^8.0.5"
+
 fela-tools@^5.1.5:
   version "5.1.5"
   resolved "https://registry.yarnpkg.com/fela-tools/-/fela-tools-5.1.5.tgz#f8f845daab2b22da62cad965f868f945d2606c73"
@@ -4555,6 +4585,15 @@ fela-utils@^8.0.6:
     css-in-js-utils "^2.0.0"
     fast-loops "^1.0.0"
     string-hash "^1.1.3"
+
+fela@^6.1.5:
+  version "6.1.5"
+  resolved "https://registry.yarnpkg.com/fela/-/fela-6.1.5.tgz#7d675ace877f99d61ef356aa3629d75023c831bc"
+  dependencies:
+    css-in-js-utils "2.0.0"
+    fast-loops "^1.0.0"
+    fela-utils "^8.0.5"
+    isobject "^3.0.1"
 
 fela@^6.1.7:
   version "6.1.7"
@@ -4717,9 +4756,9 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
-focus-lock@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.2.1.tgz#52dbd7c7dae5658bc2da5138ead3c90b8f98e8a4"
+focus-lock@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.2.4.tgz#d44d6f96289c03c6bcb19fb0c332a6bc540f60e9"
 
 for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"
@@ -9350,6 +9389,12 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-a11y-dialog@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-a11y-dialog/-/react-a11y-dialog-3.0.4.tgz#32a075894a105ce45c1134af77830998b9accd1d"
+  dependencies:
+    a11y-dialog "^4.0.0"
+
 react-addons-shallow-compare@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react-addons-shallow-compare/-/react-addons-shallow-compare-15.6.2.tgz#198a00b91fc37623db64a28fd17b596ba362702f"
@@ -9429,6 +9474,14 @@ react-error-overlay@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
 
+react-fela@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/react-fela/-/react-fela-7.1.0.tgz#ab4b1db858f083b54d4128e8a46b30adf45107da"
+  dependencies:
+    fela-bindings "^2.1.0"
+    fela-dom "^7.0.6"
+    prop-types "^15.5.8"
+
 react-fela@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/react-fela/-/react-fela-7.2.0.tgz#13fbbac86a7a22bf9a996a8161a18df066b1d631"
@@ -9445,10 +9498,10 @@ react-fns@^1.3.0:
     react-media "^1.6.1"
 
 react-focus-lock@^1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-1.8.1.tgz#1ecc40b8b6fa8e66fb922edfc2fbef2a3dc2d1f0"
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-1.10.0.tgz#3900a9a1c631f5d16dcd4e443ab476daa9a62ee1"
   dependencies:
-    focus-lock "^0.2.1"
+    focus-lock "^0.2.4"
     prop-types "^15.0.0"
     react-side-effect "^1.1.3"
 

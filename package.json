@@ -54,7 +54,7 @@
     },
     "@haaretz/fela-utils": {
       "^0.1.0": {
-        "packages/{apps/*,components/htz-components}": ["dependencies"],
+        "packages/{apps/*,components/*}": ["dependencies"],
         "packages/components/htz-theme": ["devDependencies"]
       }
     },
@@ -86,10 +86,11 @@
         ]
       }
     },
-    "@haaretz/htz-theme": {
+    "@haaretz/htz-user-utils": {
       "^0.1.0": {
-        "packages/apps/haaretz.co.il": ["dependencies"],
-        "packages/components/htz-components": ["devDependencies"]
+        "packages/{components/htz-components,libs/htz-react-server}": [
+          "dependencies"
+        ]
       }
     },
     "apollo-client": {
@@ -126,6 +127,11 @@
           "devDependencies",
           "peerDependencies"
         ]
+      }
+    },
+    "@haaretz/tm-theme": {
+      "^0.1.0": {
+        "packages/apps/purchase-page": ["dependencies"]
       }
     },
     "apollo-link-state": {
@@ -221,6 +227,11 @@
         ]
       }
     },
+    "polished": {
+      "^1.9.2": {
+        "packages/apps/purchase-page": ["dependencies"]
+      }
+    },
     "prop-types": {
       "^15.6.1": {
         "packages/{components,apps}/*": ["dependencies"],
@@ -263,6 +274,13 @@
         "packages/apps/*": ["dependencies"]
       }
     },
+    "react-fns": {
+      "^1.3.0": {
+        "packages/{apps/purchase-page,components/htz-components}": [
+          "dependencies"
+        ]
+      }
+    },
     "react-test-renderer": {
       "^16.2.0": {
         "packages/{libs/htz-react-base,components/htz-components}": [
@@ -281,6 +299,13 @@
     "universal-cookie": {
       "^2.0.8": {
         "packages/apps/*": ["dependencies"]
+      }
+    },
+    "validator": {
+      "^9.1.2": {
+        "packages/{apps/purchase-page,components/htz-components}": [
+          "dependencies"
+        ]
       }
     }
   },
