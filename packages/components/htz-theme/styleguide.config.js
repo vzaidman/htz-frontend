@@ -39,6 +39,6 @@ module.exports = configure(config =>
     contextDependencies: config.contextDependencies.concat([
       path.join(htzComponentsPath, 'src'),
     ]),
-    serverPort: 4040,
+    serverPort: 5050,
   })
 );

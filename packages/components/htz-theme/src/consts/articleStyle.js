@@ -17,17 +17,9 @@ const article = Object.freeze({
 });
 
 const paragraphLink = Object.freeze({
-  color: color('link', 'base'),
-  ':hover': {
-    borderBottomWidth: '1px',
-    borderBottomStyle: 'solid',
-    borderBottomColor: color('link', 'base'),
-  },
-  ':focus': {
-    borderBottomWidth: '2px',
-    borderBottomStyle: 'solid',
-    borderBottomColor: color('link', 'base'),
-  },
+  borderBottomWidth: '1px',
+  borderBottomStyle: 'solid',
+  borderBottomWidthActive: '2px',
 });
 
 const linksBlockLink = Object.freeze({

@@ -1,5 +1,5 @@
-const colors = {
-  // named colors
+// Base named colors
+const baseColors = {
   black: '#000',
   white: '#FFF',
   neutral: {
@@ -48,6 +48,10 @@ const colors = {
     '+2': '#BAA909',
     '+3': '#A39308',
   },
+};
+
+const colors = {
+  ...baseColors,
 
   // semantic use-cases
   accent: {
@@ -316,12 +320,21 @@ const colors = {
     salesOpaqueHoverText: [ 'button', 'salesOpaqueText', ],
   },
   checkBox: {
-    bg: 'white',
-    bgChecked: [ 'primary', 'base', ],
-    border: [ 'primary', 'base', ],
-    borderDisabled: [ 'neutral', '-5', ],
-    check: 'white',
-    ripple: [ 'primary', 'base', ],
+    // Primary
+    primaryBg: 'white',
+    primaryBgChecked: [ 'primary', 'base', ],
+    primaryBorder: [ 'primary', 'base', ],
+    primaryBorderDisabled: [ 'neutral', '-5', ],
+    primaryCheck: 'white',
+    primaryRipple: [ 'primary', 'base', ],
+
+    // Secondary
+    secondaryBg: 'white',
+    secondaryBgChecked: [ 'secondary', 'base', ],
+    secondaryBorder: [ 'secondary', 'base', ],
+    secondaryBorderDisabled: [ 'neutral', '-5', ],
+    secondaryCheck: 'white',
+    secondaryRipple: [ 'secondary', 'base', ],
   },
 
   footer: {
@@ -443,12 +456,21 @@ const colors = {
     a11yOnLight: [ 'primary', '+1', ],
   },
   radioButton: {
-    bg: 'white',
-    bgChecked: [ 'primary', 'base', ],
-    border: [ 'primary', 'base', ],
-    borderDisabled: [ 'neutral', '-5', ],
-    check: 'white',
-    ripple: [ 'primary', 'base', ],
+    // Primary
+    primaryBg: 'white',
+    primaryBgChecked: [ 'primary', 'base', ],
+    primaryBorder: [ 'primary', 'base', ],
+    primaryBorderDisabled: [ 'neutral', '-5', ],
+    primaryCheck: 'white',
+    primaryRipple: [ 'primary', 'base', ],
+
+    // Secondary
+    secondaryBg: 'white',
+    secondaryBgChecked: [ 'secondary', 'base', ],
+    secondaryBorder: [ 'secondary', 'base', ],
+    secondaryBorderDisabled: [ 'neutral', '-5', ],
+    secondaryCheck: 'white',
+    secondaryRipple: [ 'secondary', 'base', ],
   },
 
   sales: {
@@ -510,4 +532,5 @@ const colors = {
   snapchat: '#FFFC00',
 };
 
+export { colors, baseColors, };
 export default colors;

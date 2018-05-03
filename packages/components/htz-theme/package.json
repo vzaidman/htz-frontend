@@ -26,6 +26,7 @@
     "update-scripts": "htz-scripts update-scripts"
   },
   "dependencies": {
+    "@haaretz/fela-utils": "^0.1.0",
     "@haaretz/htz-css-tools": "^1.0.1",
     "config": "^1.26.2",
     "lodash": "^4.17.5",

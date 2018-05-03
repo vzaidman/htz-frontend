@@ -3,6 +3,7 @@ import articleStyle from './consts/articleStyle';
 import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
 import captionStyles from './consts/captionStyles';
+import { baseColors, } from './consts/colors';
 import cssReset from './consts/cssReset';
 import commentsStyle from './consts/commentsStyle';
 import fontStacks from './consts/fontStacks';
@@ -95,16 +96,12 @@ const htzTheme = Object.freeze({
 
 export default htzTheme;
 export {
+  baseColors,
   bps,
-  commentI18n,
-  commentFormI18n,
-  commentSentI18n,
-  commentsSectionI18n,
   getColor,
   getTransition,
-  i18n,
-  tagsElementI18n,
   mq,
   pxToRem,
   typesetter,
+  i18n,
 };
