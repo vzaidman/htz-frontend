@@ -45,11 +45,12 @@ export default function StyleProvider(
 ) {
   /* This allows us to pass down props */
   const child = Children.only(children);
-
   return context.renderer ? (
-    <ThemeProvider theme={theme || {}}>
-      {isValidElement(child) ? cloneElement(child, { ...props, }) : child}
-    </ThemeProvider>
+    isValidElement(child) ? (
+      cloneElement(child, { ...props, })
+    ) : (
+      child
+    )
   ) : (
     <Provider renderer={renderer}>
       <ThemeProvider theme={theme || {}}>
