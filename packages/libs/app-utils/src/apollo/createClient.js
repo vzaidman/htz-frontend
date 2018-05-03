@@ -6,7 +6,7 @@ import { withClientState, } from 'apollo-link-state';
 import fetch from 'isomorphic-unfetch';
 import config from 'config';
 
-const hostIp = config.get('hostIp');
+const port = config.get('port');
 let apolloClient = null;
 
 // Polyfill fetch() on the server (used by apollo-client)
@@ -14,11 +14,21 @@ if (!process.browser) {
   global.fetch = fetch;
 }
 
-function create(initialState) {
+function create(initialState, req) {
+  const graphqlPort = process.env.NODE_ENV === 'production' ? '' : `:${port}`;
+  const hostname =
+    initialState.ROOT_QUERY !== undefined
+      ? initialState.ROOT_QUERY.hostname
+      : req.hostname;
+  const graphqlLink = `${config.get(
+    'graphqlProtocol'
+  )}://${hostname}${graphqlPort}/graphql`;
+
   const link = new HttpLink({
-    uri: `http://${hostIp}:3000/graphql`, // Server URL (must be absolute)
-    opts: {
-      credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+    graphqlLink, // Server URL (must be absolute)
+    credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+    headers: {
+      cookie: req !== undefined ? req.header('Cookie') : undefined,
     },
   });
 
@@ -30,6 +40,8 @@ function create(initialState) {
   const stateLink = withClientState({
     cache: inMemoryCache,
     defaults: {
+      hostname,
+      loggedInOrRegistered: null,
       scroll: {
         velocity: null,
         x: 0,
@@ -46,6 +58,18 @@ function create(initialState) {
         token: null,
         anonymousId: null,
         __typename: 'User',
+      },
+      promotionsPageState: {
+        stage: 2,
+        subStage: 0,
+        chosenSlotIndex: 0,
+        chosenOfferIndex: null,
+        chosenProductIndex: 0,
+        paymentMethodIndex: null,
+        paymentType: null,
+        approveDebtClaim: false,
+        couponProduct: null,
+        __typename: 'PromotionsPageState',
       },
     },
     resolvers: {
@@ -75,6 +99,13 @@ function create(initialState) {
           // resolver needs to return something / null https://github.com/apollographql/apollo-link-state/issues/160
           return null;
         },
+        updateHostname: (_, { hostname, }, { cache, }) => {
+          const data = {
+            hostname,
+          };
+          cache.writeData({ data, });
+          return null;
+        },
       },
     },
   });
@@ -84,15 +115,15 @@ function create(initialState) {
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     link: ApolloLink.from([ stateLink, link, ]),
     cache: inMemoryCache,
-    queryDeduplication: true,
+    queryDuplication: true,
   });
 }
 
-export default function initApollo(initialState) {
+export default function initApollo(initialState, req) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (!process.browser) {
-    return create(initialState);
+    return create(initialState, req);
   }
 
   // Reuse client on the client-side

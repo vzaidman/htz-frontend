@@ -13,7 +13,7 @@ export const pagePropTypes = {
   }),
   url: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
-    query: PropTypes.object.isRequired,
+    query: PropTypes.object,
   }).isRequired,
   /* eslint-enable react/forbid-prop-types */
 };
@@ -46,20 +46,23 @@ export default Component => {
      * @returns {Promise} Promise resolving to an object containing the initial props.
      */
     static async getInitialProps(context) {
-      let serverState = {};
+      let serverState = { apollo: {}, };
       let serverError;
 
       // Evaluate the composed component's `getInitialProps()`.
       let initialProps = {};
 
+      const { req, } = context;
+
       if (Component.getInitialProps) {
         initialProps = await Component.getInitialProps(context);
       }
 
+      // console.log('context from withData: ', context);
       // Run all GraphQL queries in the component tree, extract the resulting
       // data, and save it as the initial state.
       if (!process.browser) {
-        const apolloClient = createClient();
+        const apolloClient = createClient({}, req);
         try {
           const url = {
             query: context.query,
