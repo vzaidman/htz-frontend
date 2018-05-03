@@ -9,7 +9,6 @@ import { schema, } from '@haaretz/app-utils';
 import helmet from 'helmet';
 import next from 'next';
 import cors from 'cors';
-import Cookies from 'universal-cookie';
 import config from 'config';
 // Even though this isn't used directly in this package, this file acts as the
 // server entry point, so it should make any environment adjustments (like
@@ -28,8 +27,14 @@ const handler = app.getRequestHandler();
 const htz = require('./routes/htz');
 const tm = require('./routes/tm');
 const hdc = require('./routes/hdc');
+const purchase = require('./routes/purchase');
 
-const sitesRouting = new Map([ [ 'htz', htz, ], [ 'tm', tm, ], [ 'hdc', hdc, ], ]);
+const sitesRouting = new Map([
+  [ 'htz', htz, ],
+  [ 'tm', tm, ],
+  [ 'hdc', hdc, ],
+  [ 'purchase', purchase, ],
+]);
 
 // proxy middleware options
 const options = {
@@ -57,15 +62,20 @@ app
     const server = express();
     server.use(compression()); // Compress responses.
     server.use(helmet()); // Various security-minded settings.
-    // cors allowes querying the server from different ports and aliases.
+    // cors allows querying the server from different ports and aliases.
     server.use(cors());
     server.use(
       '/graphql',
       bodyParser.json(),
-      graphqlExpress(req => {
-        const cookies = new Cookies(req.headers.cookie);
-        return { schema, context: createContext(cookies), };
-      })
+      graphqlExpress(req =>
+        // const purchasePageUrlOptions = req.headers.host.includes('haaretz')
+        //   ? { domain: 'haaretz.co.il', subDomain: 'pre', }
+        //   : { domain: 'themarker.com', subDomain: 'tmtest', };
+        // console.log('req.headers.host', req.headers.host);
+        // console.log('purchase url options Domain', purchasePageUrlOptions.domain);
+        // console.log('purchase url options subDomain', purchasePageUrlOptions.subDomain);
+        ({ schema, context: createContext(req), })
+      )
     );
     if (DEV) {
       server.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql', }));

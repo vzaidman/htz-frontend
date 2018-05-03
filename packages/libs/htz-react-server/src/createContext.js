@@ -2,12 +2,30 @@
 import DataLoader from 'dataloader';
 import querystring from 'querystring';
 import config from 'config';
+import { CookieUtils, } from '@haaretz/htz-user-utils';
+import Cookies from 'universal-cookie';
 
 const host = (config.has('hostname') && config.get('hostname')) || 'www';
+const ssoSubDomain =
+  (config.has('ssoSubDomain') && config.get('ssoSubDomain')) || 'devsso';
 
-export function createLoaders() {
+const appPrefix = '/promotions-page-react';
+// const protocol = (config.has('polopolyPapiProtocl') && config.get('polopolyPapiProtocl')) || 'http';
+// const domain = (config.has('polopolyPapiDomain') && config.get('polopolyPapiDomain')) || '.haaretz.co.il';
+
+export function createLoaders(req) {
+  const cookies = new Cookies(req.headers.cookie);
   // TODO: By default, `DataLoader` just caches the results forever,
   // but we should eventually expunge them from the cache.
+  const cmlinkLoader = new DataLoader(keys =>
+    Promise.all(
+      keys.map(path =>
+        fetch(`http://${host}.haaretz.co.il/json/cmlink/${path}`).then(
+          response => response.json()
+        )
+      )
+    )
+  );
   const pageLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(path =>
@@ -17,12 +35,60 @@ export function createLoaders() {
       )
     )
   );
-  const cmlinkLoader = new DataLoader(keys =>
+
+  const purchasePageLoader = new DataLoader(keys => {
+    let baseUri = `https://${host}.haaretz.co.il/papi`;
+    if (req !== undefined && process.env.NODE_ENV === 'production') {
+      const papiSubDomainhost = config.get('papiSubDomain');
+      const papiProtocol = config.get('papiProtocol');
+      const papiHostname = `${papiSubDomainhost}.${req.hostname
+        .split('.')
+        .splice(1)
+        .join('.')}`;
+      baseUri = `${papiProtocol}://${papiHostname}/papi`;
+    }
+    const userId = CookieUtils.stringToMap(cookies.get('tmsso') || '', {
+      separator: /:\s?/,
+    }).userId;
+    console.log('userId from loader');
+    console.log(userId);
+    console.log('promos param in request:');
+    console.log(req.params.promo);
+    return Promise.all(
+      keys.map(path => {
+        // Replaces and normalizes path names:
+        // path -> normlized_path
+        // '/' -> '/'
+        // '/promotions-page' -> ''
+        // '/promotions-page/offers' -> '/promotions-page' (special case)
+        // '/promotions-page/promotions-page' -> '/promotions-page'
+        // '/promotions-page/promotions-page/promotions-page' -> '/promotions-page/promotions-page'
+        // '/promotions-page/less-ads' -> '/less-ads'
+        // eslint-disable-next-line no-param-reassign
+        path = req.params.promo ? `${path}/${req.params.promo}` : `${path}`;
+        // '/promotions-page/more-ads/some-sub-promotion' -> '/more-ads/some-sub-promotion'
+        const normlizedPath = `${baseUri}${appPrefix}${(path || '/')
+          .replace(new RegExp(`${appPrefix}/stage[0-9]`), `${appPrefix}`)
+          .replace(`${appPrefix}/offers`, `${appPrefix}`)
+          .replace(`${appPrefix}`, '')}?userId=${userId}`;
+        console.log('GRAPHQL - fetching data from papi: ', normlizedPath);
+        return fetch(normlizedPath)
+          .then(response => {
+            if (response.ok) {
+              return response;
+            }
+            return fetch(`${baseUri}${appPrefix}`);
+          })
+          .then(response => response.json());
+      })
+    );
+  });
+  const couponProductLoader = new DataLoader(keys =>
     Promise.all(
-      keys.map(path =>
-        fetch(`http://${host}.haaretz.co.il/json/cmlink/${path}`).then(
-          response => response.json()
-        )
+      keys.map(couponCode =>
+        fetch(
+          `https://${host}.haaretz.co.il/papi${appPrefix}?couponCode=${couponCode}`
+        ).then(response => response.json())
       )
     )
   );
@@ -35,7 +101,47 @@ export function createLoaders() {
       )
     )
   );
-  return { pageLoader, cmlinkLoader, listsLoader, };
+  const payWithExistingCardLoader = new DataLoader(keys =>
+    Promise.all(
+      keys.map(paymentData =>
+        fetch(
+          `https://${ssoSubDomain}.haaretz.co.il/sso/r/registerWebUser?${querystring.stringify(
+            paymentData
+          )}`
+        ).then(response => response.json())
+      )
+    )
+  );
+  const resetPasswordLoader = new DataLoader(keys =>
+    Promise.all(
+      keys.map(userName =>
+        fetch(`https://${ssoSubDomain}.themarker.com/sso/r/resetPassword`, {
+          method: 'post',
+          credentials: 'include',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+          body: querystring.stringify({
+            newsso: true,
+            layer: 'sendpassword',
+            site: 80,
+            userName,
+          }),
+        }).then(response => response.json())
+      )
+    )
+  );
+
+  return {
+    pageLoader,
+    cmlinkLoader,
+    listsLoader,
+    purchasePageLoader,
+    couponProductLoader,
+    payWithExistingCardLoader,
+    resetPasswordLoader,
+  };
 }
 
 export function createPosters(cookies) {
@@ -153,11 +259,11 @@ export function createPosters(cookies) {
   };
 }
 
-export default function createContext(cookies) {
-  const loaders = createLoaders();
-  const posters = createPosters(cookies);
+export default function createContext(req) {
+  const loaders = createLoaders(req);
+  const posters = createPosters(req);
   return {
-    cookies,
+    req,
     ...loaders,
     ...posters,
   };
