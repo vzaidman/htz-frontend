@@ -77,7 +77,6 @@ const PasswordNote = (text, forgotPasswordText, openModal, userExists) => (
 
 const textInputStyle = {
   marginTop: '2rem',
-  whiteSpace: 'nowrap',
 };
 
 class LoginOrRegisterStage extends React.Component {

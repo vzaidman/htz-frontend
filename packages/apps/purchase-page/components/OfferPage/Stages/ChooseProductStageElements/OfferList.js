@@ -8,28 +8,23 @@ import { ApolloConsumer, } from 'react-apollo';
 
 const propTypes = {
   cancelButtonText: PropTypes.string.isRequired,
-  openModal: PropTypes.func.isRequired,
-  offerList: PropTypes.arrayOf(
-    PropTypes.shape({
-      offerTitle: PropTypes.string.isRequired,
-      offerPrice: PropTypes.string.isRequired,
-      /** under price text */
-      // todo: this might be an array, check how we get 2 lines
-      offerText: PropTypes.arrayOf(PropTypes.string).isRequired,
-      // underPriceTextSecondary: PropTypes.string,
-      offerButtonText: PropTypes.string.isRequired,
-      /** text to display in modal after clicking terms button */
-      offerDisclaimer: PropTypes.string.isRequired,
-      // todo:  check if bool or "true"/ "false" string
-      offerRecommended: PropTypes.bool.isRequired,
-      /** banner text */
-      offerBannerText: PropTypes.string,
-    }).isRequired
-  ).isRequired,
   fourDigits: PropTypes.string,
   isLoggedIn: PropTypes.bool.isRequired,
-  termsButtonText: PropTypes.string.isRequired,
+  offerList: PropTypes.arrayOf(
+    PropTypes.shape({
+      price: PropTypes.string,
+      originalPrice: PropTypes.string.isRequired,
+      buttonText: PropTypes.string.isRequired,
+      disclaimer: PropTypes.arrayOf(PropTypes.object).isRequired,
+      bannerText: PropTypes.string.isRequired,
+      isRecommended: PropTypes.bool,
+      type: PropTypes.string.isRequired,
+      paymentData: PropTypes.object.isRequired,
+    })
+  ).isRequired,
+  openModal: PropTypes.func.isRequired,
   router: PropTypes.shape().isRequired,
+  termsButtonText: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
@@ -207,7 +202,6 @@ const Offer = ({
   cancelButtonText,
   offer,
   openModal,
-  subStage,
   termsButtonText,
   offerIdx,
   isLoggedIn,
@@ -290,7 +284,10 @@ const Offer = ({
           </StyledCancelButtonText>
           <StyledTermsButton
             isRecommended={offer.isRecommended}
-            onClick={() => openModal(offerIdx)}
+            onClick={evt => {
+              evt.stopPropagation();
+              openModal(offerIdx);
+            }}
           >
             {termsButtonText}
           </StyledTermsButton>

@@ -132,14 +132,16 @@ class Stage3 extends Component {
                                               style={{ fontWeight: 'bold', }}
                                               render="span"
                                             >
-                                              ברוכים הבאים!
+                                              {header.registerBoldFirstLine}
                                             </FelaComponent>
                                           ),
-                                          <fragment>
+                                          <Fragment>
                                             {header.dynamicTextNewLineLoginStage[
                                               this.state.registerOrLoginStage
-                                            ].map(line => <p>{line}</p>)}
-                                          </fragment>,
+                                            ].map(line => (
+                                              <p key={Math.random()}>{line}</p>
+                                            ))}
+                                          </Fragment>,
                                         ]}
                                       />
                                     }

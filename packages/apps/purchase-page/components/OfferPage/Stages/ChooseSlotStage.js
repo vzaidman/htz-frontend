@@ -12,9 +12,8 @@ const propTypes = {
   tableData: PropTypes.arrayOf(
     PropTypes.shape({
       subscriptionName: PropTypes.string.isRequired,
-      pricingHead: PropTypes.string.isRequired,
-      pricingMonthly: PropTypes.arrayOf(PropTypes.string).isRequired,
-      pricingYearly: PropTypes.arrayOf(PropTypes.string).isRequired,
+      products: PropTypes.arrayOf(PropTypes.object),
+      couponExist: PropTypes.bool,
     })
   ).isRequired,
   subStage: PropTypes.number.isRequired,

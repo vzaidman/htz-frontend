@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { Paragraph, A11yDialog, } from '@haaretz/htz-components';
 
 import CloseModalButton from '../Elements/CloseModalButton';
-
-const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
 const paragraphStyle = theme => ({
   backgroundColor: 'white',
@@ -41,16 +38,11 @@ function Modal({ closeModal, offerDisclaimer, isVisible, }) {
           closeOnOutsideClick
           overlayBgColor="rgba(22, 22, 22, 0.8)"
           containerMiscStyles={{
-            ...parseComponentProp(
-              'width',
-              [
-                { until: 's', value: '90%', },
-                { from: 's', until: 'l', value: '95rem', },
-                { from: 'l', value: '100rem', },
-              ],
-              theme.mq,
-              mediaQueryCallback
-            ),
+            width: [
+              { until: 's', value: '90%', },
+              { from: 's', until: 'l', value: '95rem', },
+              { from: 'l', value: '100rem', },
+            ],
           }}
           render={({ handleClose, }) => (
             <FelaComponent style={paragraphStyle}>

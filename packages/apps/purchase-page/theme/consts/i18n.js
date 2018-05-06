@@ -183,6 +183,7 @@ export const stage3 = Object.freeze({
       yearly: 'בתשלום שנתי',
       monthly: 'בתשלום חודשי',
     }),
+    registerBoldFirstLine: 'ברוכים הבאים!',
     dynamicTextNewLineLoginStage: Object.freeze({
       checkEmail: [ 'כעת הזינו כתובת דוא"ל.', 'כתובת זאת תהיה שם המשתמש שלכם.', ],
       login: [ 'הזינו את הסיסמה שלכם לאתר', ],

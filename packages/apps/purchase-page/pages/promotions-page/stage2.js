@@ -91,16 +91,16 @@ function Stage2() {
                                     }
                                     stageElement={
                                       <ChooseProductStage
-                                        isLoggedIn={isLoggedIn}
+                                        chosenProductIndex={chosenProductIndex}
+                                        couponExist={chosenSlot.couponExist}
+                                        couponProduct={couponProduct}
                                         fourDigits={
                                           data.purchasePage.fourDigits
                                         }
-                                        subStage={subStage}
-                                        refetch={refetch}
-                                        chosenProductIndex={chosenProductIndex}
-                                        couponExist={chosenSlot.couponExist}
+                                        isLoggedIn={isLoggedIn}
                                         products={chosenSlot.products}
-                                        couponProduct={couponProduct}
+                                        refetch={refetch}
+                                        subStage={subStage}
                                         userMessage={chosenSlot.userMessage}
                                       />
                                     }

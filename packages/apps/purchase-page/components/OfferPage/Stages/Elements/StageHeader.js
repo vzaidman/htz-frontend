@@ -6,7 +6,7 @@ import { FelaComponent, } from 'react-fela';
 
 const propTypes = {
   headerElements: PropTypes.arrayOf(
-    PropTypes.oneOf([ PropTypes.string, PropTypes.element, ])
+    PropTypes.oneOfType([ PropTypes.string, PropTypes.node, ])
   ).isRequired,
 };
 
@@ -36,7 +36,7 @@ function StageHeader({ headerElements, }) {
         render={({ className, }) => (
           <h1 className={className}>
             {headerElements.map(element => (
-              <FelaComponent style={{ display: 'block', }}>
+              <FelaComponent style={{ display: 'block', }} key={Math.random()}>
                 {element}
               </FelaComponent>
             ))}

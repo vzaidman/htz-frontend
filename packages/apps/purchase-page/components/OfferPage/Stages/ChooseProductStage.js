@@ -59,7 +59,9 @@ class ChooseProductStage extends Component {
     chosenProductIndex: PropTypes.number.isRequired,
     couponExist: PropTypes.bool,
     /** JSON of a couponProduct, needs to be parsed */
-    couponProduct: PropTypes.string.isRequired,
+    couponProduct: PropTypes.string,
+    fourDigits: PropTypes.string,
+    isLoggedIn: PropTypes.bool.isRequired,
     products: PropTypes.arrayOf(
       PropTypes.shape({
         /**
@@ -67,26 +69,26 @@ class ChooseProductStage extends Component {
          */
         offerList: PropTypes.arrayOf(
           PropTypes.shape({
-            offerTitle: PropTypes.string.isRequired,
-            offerPrice: PropTypes.string.isRequired,
-            offerText: PropTypes.arrayOf(PropTypes.string.isRequired)
-              .isRequired,
-            offerButtonText: PropTypes.string.isRequired,
-            offerDisclaimer: PropTypes.string.isRequired,
-            offerRecommended: PropTypes.bool.isRequired,
-            offerRecommendedText: PropTypes.string,
-          }).isRequired
+            price: PropTypes.string,
+            originalPrice: PropTypes.string.isRequired,
+            buttonText: PropTypes.string.isRequired,
+            disclaimer: PropTypes.arrayOf(PropTypes.object).isRequired,
+            bannerText: PropTypes.string.isRequired,
+            isRecommended: PropTypes.bool,
+            type: PropTypes.string.isRequired,
+            paymentData: PropTypes.object.isRequired,
+          })
         ).isRequired,
       })
     ).isRequired,
+    refetch: PropTypes.func.isRequired,
     subStage: PropTypes.number.isRequired,
-    fourDigits: PropTypes.string,
-    isLoggedIn: PropTypes.bool.isRequired,
     userMessage: PropTypes.arrayOf(PropTypes.string),
   };
 
   static defaultProps = {
     couponExist: false,
+    couponProduct: null,
     fourDigits: null,
     userMessage: null,
   };
@@ -97,7 +99,6 @@ class ChooseProductStage extends Component {
     couponError: null,
     modalOpen: false,
     offerListChosenTermsIndex: null,
-    // products: this.props.products,
   };
 
   openModal = offerListChosenTermsIndex => {
@@ -119,7 +120,6 @@ class ChooseProductStage extends Component {
       userMessage,
     } = this.props;
 
-    // const { offerList, cancelButtonText, } = products[chosenProductIndex];
     const { offerList, cancelButtonText, } =
       chosenProductIndex === 'couponProduct'
         ? JSON.parse(couponProduct)
@@ -154,13 +154,12 @@ class ChooseProductStage extends Component {
                 />
                 <UserMessage userMessage={userMessage} />
                 <OfferList
+                  cancelButtonText={cancelButtonText}
                   fourDigits={fourDigits}
                   isLoggedIn={isLoggedIn}
-                  cancelButtonText={cancelButtonText}
                   offerList={offerList}
-                  subStage={subStage}
-                  termsButtonText={termsButtonText}
                   openModal={this.openModal}
+                  termsButtonText={termsButtonText}
                 />
                 {!(subStage === 4 || subStage === 6) && (
                   <StyledMoreOptionsCont>
@@ -168,10 +167,10 @@ class ChooseProductStage extends Component {
                       (product, idx) =>
                         (idx !== chosenProductIndex ? (
                           <Button
+                            key={Math.random()}
                             variant="offerPage"
                             miscStyles={moreOptionsButtonsMiscStyles}
                             onClick={() => {
-                              console.log('change product');
                               cache.writeData({
                                 data: {
                                   promotionsPageState: {
@@ -191,7 +190,6 @@ class ChooseProductStage extends Component {
                         <Form
                           clearFormAfterSubmit={false}
                           onSubmit={async ({ couponCode, }) => {
-                            console.log(`couponCode submitted: ${couponCode}`);
                             this.setState({
                               couponLoading: true,
                               couponError: false,
@@ -201,7 +199,6 @@ class ChooseProductStage extends Component {
                                 query: GET_COUPON_DATA,
                                 variables: { couponCode, },
                               });
-                              console.log('data from coupon', data);
                               if (data.couponProduct.couponErrorMessage) {
                                 this.setState({
                                   couponLoading: false,
