@@ -59,7 +59,11 @@ Button.propTypes = {
    * A url to be assigned to the DOM element, converts the button to an `'<a>'`
    * DOM element inside a Next JS `<Link />`
    */
-  href: PropTypes.oneOfType([ PropTypes.node, PropTypes.string, ]),
+  href: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.string,
+    PropTypes.shape({ pathname: PropTypes.string, asPath: PropTypes.string, }),
+  ]),
   asPath: PropTypes.string,
   /**
    * A value for the `button`s `id` attribute.
