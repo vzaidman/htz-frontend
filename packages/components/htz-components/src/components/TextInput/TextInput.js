@@ -86,6 +86,7 @@ function setVariant(
     ),
   };
   return {
+    color: getColor('input', `${variant}Text`),
     backgroundColor: getColor('input', `${variant}Bg`),
     ...border(
       `${theme.inputStyle.borderWidth}px`,
