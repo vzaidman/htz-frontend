@@ -120,6 +120,7 @@ const labelTextStyle = ({
   ...(labelHidden
     ? { display: 'none', }
     : {
+      whiteSpace: 'nowrap',
       marginInlineEnd: '1rem',
       color: isError
         ? theme.color('input', `${variant}ErrorTextLabel`)
