@@ -16,17 +16,17 @@ exports[`<RadioButton> DOM element renders correctly with a checked and onChange
       type="radio"
     />
     <div
-      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-a htz-k htz-l htz-b htz-c htz-m htz-n htz-o htz-p htz-q htz-r htz-d htz-s htz-t"
+      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-a htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <div
-        className="htz-u htz-v htz-w htz-x htz-y htz-j htz-z htz-ab htz-ac"
+        className="htz-y htz-z htz-ab htz-ac htz-ae htz-k htz-af htz-ag htz-ah"
       />
       <div
-        className="htz-ae htz-af htz-j htz-z htz-ag htz-n htz-o htz-p htz-ah htz-ai htz-aj htz-s htz-t"
+        className="htz-y htz-ae htz-ai htz-aj htz-ak htz-al htz-k htz-af htz-am htz-q htz-r htz-s htz-an htz-ao htz-ap htz-w htz-x"
       />
     </div>
     <div
-      className="htz-ak"
+      className="htz-aq"
     >
       labelRed
     </div>
@@ -34,7 +34,7 @@ exports[`<RadioButton> DOM element renders correctly with a checked and onChange
 </div>
 `;
 
-exports[`<RadioButton> DOM element renders correctly with a checked and onChange func passed 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:center}.htz-c{align-items:center}.htz-d{-webkit-box-align:center}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{border-radius:50%}.htz-k{-webkit-justify-content:center}.htz-l{justify-content:center}.htz-m{background-color:#FFF}.htz-n{transition-property:all}.htz-o{border-width:1px}.htz-p{border-style:solid}.htz-q{border-color:#0B7EB5}.htz-r{-webkit-box-pack:center}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{background-color:#0B7EB5}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{height:80%}.htz-af{width:80%}.htz-ag{opacity:1}.htz-ah{border-color:white}.htz-ai{transition-duration:.3s}.htz-aj{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ak{margin-right:0.3em}"`;
+exports[`<RadioButton> DOM element renders correctly with a checked and onChange func passed 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{top:0.15em}.htz-g{height:1em}.htz-h{width:1em}.htz-i{-webkit-flex-shrink:0}.htz-j{flex-shrink:0}.htz-k{border-radius:50%}.htz-l{-webkit-justify-content:center}.htz-m{justify-content:center}.htz-n{-webkit-align-items:center}.htz-o{align-items:center}.htz-p{background-color:#FFF}.htz-q{transition-property:all}.htz-r{border-width:1px}.htz-s{border-style:solid}.htz-t{border-color:#0B7EB5}.htz-u{-webkit-box-pack:center}.htz-v{-webkit-box-align:center}.htz-w{-webkit-transition-property:all}.htz-x{-moz-transition-property:all}.htz-y{position:absolute}.htz-z{height:8rem}.htz-ab{width:8rem}.htz-ac{left:50%}.htz-ae{top:50%}.htz-af{background-color:#0B7EB5}.htz-ag{display:block}.htz-ah{opacity:0}.htz-ai{-webkit-transform:translateY(-50%)}.htz-aj{transform:translateY(-50%)}.htz-ak{height:80%}.htz-al{width:80%}.htz-am{opacity:1}.htz-an{border-color:white}.htz-ao{transition-duration:.3s}.htz-ap{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aq{margin-right:0.3em}"`;
 
 exports[`<RadioButton> DOM element renders correctly with a value prop 1`] = `
 <div>
@@ -52,23 +52,23 @@ exports[`<RadioButton> DOM element renders correctly with a value prop 1`] = `
       value="customValue"
     />
     <div
-      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-a htz-k htz-l htz-b htz-c htz-m htz-n htz-o htz-p htz-q htz-r htz-d htz-s htz-t"
+      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-a htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <div
-        className="htz-u htz-v htz-w htz-x htz-y htz-j htz-z htz-ab htz-ac"
+        className="htz-y htz-z htz-ab htz-ac htz-ae htz-k htz-af htz-ag htz-ah"
       />
       <div
-        className="htz-ae htz-af htz-j htz-z htz-ac htz-n htz-o htz-p htz-ag htz-ah htz-ai htz-s htz-t"
+        className="htz-y htz-ae htz-ai htz-aj htz-ak htz-al htz-k htz-af htz-ah htz-q htz-r htz-s htz-am htz-an htz-ao htz-w htz-x"
       />
     </div>
     <div
-      className="htz-aj"
+      className="htz-ap"
     />
   </label>
 </div>
 `;
 
-exports[`<RadioButton> DOM element renders correctly with a value prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:center}.htz-c{align-items:center}.htz-d{-webkit-box-align:center}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{border-radius:50%}.htz-k{-webkit-justify-content:center}.htz-l{justify-content:center}.htz-m{background-color:#FFF}.htz-n{transition-property:all}.htz-o{border-width:1px}.htz-p{border-style:solid}.htz-q{border-color:#0B7EB5}.htz-r{-webkit-box-pack:center}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{background-color:#0B7EB5}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{height:80%}.htz-af{width:80%}.htz-ag{border-color:white}.htz-ah{transition-duration:.3s}.htz-ai{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{margin-right:0.3em}"`;
+exports[`<RadioButton> DOM element renders correctly with a value prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{top:0.15em}.htz-g{height:1em}.htz-h{width:1em}.htz-i{-webkit-flex-shrink:0}.htz-j{flex-shrink:0}.htz-k{border-radius:50%}.htz-l{-webkit-justify-content:center}.htz-m{justify-content:center}.htz-n{-webkit-align-items:center}.htz-o{align-items:center}.htz-p{background-color:#FFF}.htz-q{transition-property:all}.htz-r{border-width:1px}.htz-s{border-style:solid}.htz-t{border-color:#0B7EB5}.htz-u{-webkit-box-pack:center}.htz-v{-webkit-box-align:center}.htz-w{-webkit-transition-property:all}.htz-x{-moz-transition-property:all}.htz-y{position:absolute}.htz-z{height:8rem}.htz-ab{width:8rem}.htz-ac{left:50%}.htz-ae{top:50%}.htz-af{background-color:#0B7EB5}.htz-ag{display:block}.htz-ah{opacity:0}.htz-ai{-webkit-transform:translateY(-50%)}.htz-aj{transform:translateY(-50%)}.htz-ak{height:80%}.htz-al{width:80%}.htz-am{border-color:white}.htz-an{transition-duration:.3s}.htz-ao{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ap{margin-right:0.3em}"`;
 
 exports[`<RadioButton> DOM element renders correctly with an attrs prop 1`] = `
 <div>
@@ -86,23 +86,23 @@ exports[`<RadioButton> DOM element renders correctly with an attrs prop 1`] = `
       type="radio"
     />
     <div
-      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-a htz-k htz-l htz-b htz-c htz-m htz-n htz-o htz-p htz-q htz-r htz-d htz-s htz-t"
+      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-a htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <div
-        className="htz-u htz-v htz-w htz-x htz-y htz-j htz-z htz-ab htz-ac"
+        className="htz-y htz-z htz-ab htz-ac htz-ae htz-k htz-af htz-ag htz-ah"
       />
       <div
-        className="htz-ae htz-af htz-j htz-z htz-ac htz-n htz-o htz-p htz-ag htz-ah htz-ai htz-s htz-t"
+        className="htz-y htz-ae htz-ai htz-aj htz-ak htz-al htz-k htz-af htz-ah htz-q htz-r htz-s htz-am htz-an htz-ao htz-w htz-x"
       />
     </div>
     <div
-      className="htz-aj"
+      className="htz-ap"
     />
   </label>
 </div>
 `;
 
-exports[`<RadioButton> DOM element renders correctly with an attrs prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:center}.htz-c{align-items:center}.htz-d{-webkit-box-align:center}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{border-radius:50%}.htz-k{-webkit-justify-content:center}.htz-l{justify-content:center}.htz-m{background-color:#FFF}.htz-n{transition-property:all}.htz-o{border-width:1px}.htz-p{border-style:solid}.htz-q{border-color:#0B7EB5}.htz-r{-webkit-box-pack:center}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{background-color:#0B7EB5}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{height:80%}.htz-af{width:80%}.htz-ag{border-color:white}.htz-ah{transition-duration:.3s}.htz-ai{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{margin-right:0.3em}"`;
+exports[`<RadioButton> DOM element renders correctly with an attrs prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{top:0.15em}.htz-g{height:1em}.htz-h{width:1em}.htz-i{-webkit-flex-shrink:0}.htz-j{flex-shrink:0}.htz-k{border-radius:50%}.htz-l{-webkit-justify-content:center}.htz-m{justify-content:center}.htz-n{-webkit-align-items:center}.htz-o{align-items:center}.htz-p{background-color:#FFF}.htz-q{transition-property:all}.htz-r{border-width:1px}.htz-s{border-style:solid}.htz-t{border-color:#0B7EB5}.htz-u{-webkit-box-pack:center}.htz-v{-webkit-box-align:center}.htz-w{-webkit-transition-property:all}.htz-x{-moz-transition-property:all}.htz-y{position:absolute}.htz-z{height:8rem}.htz-ab{width:8rem}.htz-ac{left:50%}.htz-ae{top:50%}.htz-af{background-color:#0B7EB5}.htz-ag{display:block}.htz-ah{opacity:0}.htz-ai{-webkit-transform:translateY(-50%)}.htz-aj{transform:translateY(-50%)}.htz-ak{height:80%}.htz-al{width:80%}.htz-am{border-color:white}.htz-an{transition-duration:.3s}.htz-ao{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ap{margin-right:0.3em}"`;
 
 exports[`<RadioButton> DOM element renders correctly with isDisabled prop 1`] = `
 <div>
@@ -120,23 +120,23 @@ exports[`<RadioButton> DOM element renders correctly with isDisabled prop 1`] = 
       type="radio"
     />
     <div
-      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-a htz-k htz-l htz-b htz-c htz-m htz-n htz-o htz-p htz-q htz-r htz-d htz-s htz-t"
+      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-a htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <div
-        className="htz-u htz-v htz-w htz-x htz-y htz-j htz-z htz-ab htz-ac"
+        className="htz-y htz-z htz-ab htz-ac htz-ae htz-k htz-af htz-ag htz-ah"
       />
       <div
-        className="htz-ae htz-af htz-j htz-z htz-ac htz-n htz-o htz-p htz-ag htz-ah htz-ai htz-s htz-t"
+        className="htz-y htz-ae htz-ai htz-aj htz-ak htz-al htz-k htz-af htz-ah htz-q htz-r htz-s htz-am htz-an htz-ao htz-w htz-x"
       />
     </div>
     <div
-      className="htz-aj"
+      className="htz-ap"
     />
   </label>
 </div>
 `;
 
-exports[`<RadioButton> DOM element renders correctly with isDisabled prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:center}.htz-c{align-items:center}.htz-d{-webkit-box-align:center}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{border-radius:50%}.htz-k{-webkit-justify-content:center}.htz-l{justify-content:center}.htz-m{background-color:#FFF}.htz-n{transition-property:all}.htz-o{border-width:1px}.htz-p{border-style:solid}.htz-q{border-color:#CCC}.htz-r{-webkit-box-pack:center}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{background-color:#0B7EB5}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{height:80%}.htz-af{width:80%}.htz-ag{border-color:white}.htz-ah{transition-duration:.3s}.htz-ai{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{margin-right:0.3em}"`;
+exports[`<RadioButton> DOM element renders correctly with isDisabled prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{top:0.15em}.htz-g{height:1em}.htz-h{width:1em}.htz-i{-webkit-flex-shrink:0}.htz-j{flex-shrink:0}.htz-k{border-radius:50%}.htz-l{-webkit-justify-content:center}.htz-m{justify-content:center}.htz-n{-webkit-align-items:center}.htz-o{align-items:center}.htz-p{background-color:#FFF}.htz-q{transition-property:all}.htz-r{border-width:1px}.htz-s{border-style:solid}.htz-t{border-color:#CCC}.htz-u{-webkit-box-pack:center}.htz-v{-webkit-box-align:center}.htz-w{-webkit-transition-property:all}.htz-x{-moz-transition-property:all}.htz-y{position:absolute}.htz-z{height:8rem}.htz-ab{width:8rem}.htz-ac{left:50%}.htz-ae{top:50%}.htz-af{background-color:#0B7EB5}.htz-ag{display:block}.htz-ah{opacity:0}.htz-ai{-webkit-transform:translateY(-50%)}.htz-aj{transform:translateY(-50%)}.htz-ak{height:80%}.htz-al{width:80%}.htz-am{border-color:white}.htz-an{transition-duration:.3s}.htz-ao{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ap{margin-right:0.3em}"`;
 
 exports[`<RadioButton> DOM element renders correctly with label prop 1`] = `
 <div>
@@ -153,17 +153,17 @@ exports[`<RadioButton> DOM element renders correctly with label prop 1`] = `
       type="radio"
     />
     <div
-      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-a htz-k htz-l htz-b htz-c htz-m htz-n htz-o htz-p htz-q htz-r htz-d htz-s htz-t"
+      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-a htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <div
-        className="htz-u htz-v htz-w htz-x htz-y htz-j htz-z htz-ab htz-ac"
+        className="htz-y htz-z htz-ab htz-ac htz-ae htz-k htz-af htz-ag htz-ah"
       />
       <div
-        className="htz-ae htz-af htz-j htz-z htz-ac htz-n htz-o htz-p htz-ag htz-ah htz-ai htz-s htz-t"
+        className="htz-y htz-ae htz-ai htz-aj htz-ak htz-al htz-k htz-af htz-ah htz-q htz-r htz-s htz-am htz-an htz-ao htz-w htz-x"
       />
     </div>
     <div
-      className="htz-aj"
+      className="htz-ap"
     >
       customLabel
     </div>
@@ -171,7 +171,7 @@ exports[`<RadioButton> DOM element renders correctly with label prop 1`] = `
 </div>
 `;
 
-exports[`<RadioButton> DOM element renders correctly with label prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:center}.htz-c{align-items:center}.htz-d{-webkit-box-align:center}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{border-radius:50%}.htz-k{-webkit-justify-content:center}.htz-l{justify-content:center}.htz-m{background-color:#FFF}.htz-n{transition-property:all}.htz-o{border-width:1px}.htz-p{border-style:solid}.htz-q{border-color:#0B7EB5}.htz-r{-webkit-box-pack:center}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{background-color:#0B7EB5}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{height:80%}.htz-af{width:80%}.htz-ag{border-color:white}.htz-ah{transition-duration:.3s}.htz-ai{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{margin-right:0.3em}"`;
+exports[`<RadioButton> DOM element renders correctly with label prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{top:0.15em}.htz-g{height:1em}.htz-h{width:1em}.htz-i{-webkit-flex-shrink:0}.htz-j{flex-shrink:0}.htz-k{border-radius:50%}.htz-l{-webkit-justify-content:center}.htz-m{justify-content:center}.htz-n{-webkit-align-items:center}.htz-o{align-items:center}.htz-p{background-color:#FFF}.htz-q{transition-property:all}.htz-r{border-width:1px}.htz-s{border-style:solid}.htz-t{border-color:#0B7EB5}.htz-u{-webkit-box-pack:center}.htz-v{-webkit-box-align:center}.htz-w{-webkit-transition-property:all}.htz-x{-moz-transition-property:all}.htz-y{position:absolute}.htz-z{height:8rem}.htz-ab{width:8rem}.htz-ac{left:50%}.htz-ae{top:50%}.htz-af{background-color:#0B7EB5}.htz-ag{display:block}.htz-ah{opacity:0}.htz-ai{-webkit-transform:translateY(-50%)}.htz-aj{transform:translateY(-50%)}.htz-ak{height:80%}.htz-al{width:80%}.htz-am{border-color:white}.htz-an{transition-duration:.3s}.htz-ao{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ap{margin-right:0.3em}"`;
 
 exports[`<RadioButton> DOM element renders correctly with minimal required props 1`] = `
 <div>
@@ -188,23 +188,23 @@ exports[`<RadioButton> DOM element renders correctly with minimal required props
       type="radio"
     />
     <div
-      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-a htz-k htz-l htz-b htz-c htz-m htz-n htz-o htz-p htz-q htz-r htz-d htz-s htz-t"
+      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-a htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <div
-        className="htz-u htz-v htz-w htz-x htz-y htz-j htz-z htz-ab htz-ac"
+        className="htz-y htz-z htz-ab htz-ac htz-ae htz-k htz-af htz-ag htz-ah"
       />
       <div
-        className="htz-ae htz-af htz-j htz-z htz-ac htz-n htz-o htz-p htz-ag htz-ah htz-ai htz-s htz-t"
+        className="htz-y htz-ae htz-ai htz-aj htz-ak htz-al htz-k htz-af htz-ah htz-q htz-r htz-s htz-am htz-an htz-ao htz-w htz-x"
       />
     </div>
     <div
-      className="htz-aj"
+      className="htz-ap"
     />
   </label>
 </div>
 `;
 
-exports[`<RadioButton> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:center}.htz-c{align-items:center}.htz-d{-webkit-box-align:center}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{border-radius:50%}.htz-k{-webkit-justify-content:center}.htz-l{justify-content:center}.htz-m{background-color:#FFF}.htz-n{transition-property:all}.htz-o{border-width:1px}.htz-p{border-style:solid}.htz-q{border-color:#0B7EB5}.htz-r{-webkit-box-pack:center}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{background-color:#0B7EB5}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{height:80%}.htz-af{width:80%}.htz-ag{border-color:white}.htz-ah{transition-duration:.3s}.htz-ai{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{margin-right:0.3em}"`;
+exports[`<RadioButton> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{top:0.15em}.htz-g{height:1em}.htz-h{width:1em}.htz-i{-webkit-flex-shrink:0}.htz-j{flex-shrink:0}.htz-k{border-radius:50%}.htz-l{-webkit-justify-content:center}.htz-m{justify-content:center}.htz-n{-webkit-align-items:center}.htz-o{align-items:center}.htz-p{background-color:#FFF}.htz-q{transition-property:all}.htz-r{border-width:1px}.htz-s{border-style:solid}.htz-t{border-color:#0B7EB5}.htz-u{-webkit-box-pack:center}.htz-v{-webkit-box-align:center}.htz-w{-webkit-transition-property:all}.htz-x{-moz-transition-property:all}.htz-y{position:absolute}.htz-z{height:8rem}.htz-ab{width:8rem}.htz-ac{left:50%}.htz-ae{top:50%}.htz-af{background-color:#0B7EB5}.htz-ag{display:block}.htz-ah{opacity:0}.htz-ai{-webkit-transform:translateY(-50%)}.htz-aj{transform:translateY(-50%)}.htz-ak{height:80%}.htz-al{width:80%}.htz-am{border-color:white}.htz-an{transition-duration:.3s}.htz-ao{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ap{margin-right:0.3em}"`;
 
 exports[`<RadioButton> DOM element renders correctly with miscStyles prop 1`] = `
 <div>
@@ -221,17 +221,17 @@ exports[`<RadioButton> DOM element renders correctly with miscStyles prop 1`] = 
       type="radio"
     />
     <div
-      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-a htz-l htz-m htz-b htz-c htz-n htz-o htz-p htz-q htz-r htz-s htz-e htz-t htz-u"
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-a htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y"
     >
       <div
-        className="htz-v htz-w htz-x htz-y htz-z htz-k htz-ab htz-ac htz-ae"
+        className="htz-z htz-ab htz-ac htz-ae htz-af htz-l htz-ag htz-ah htz-ai"
       />
       <div
-        className="htz-af htz-ag htz-k htz-ab htz-ae htz-o htz-p htz-q htz-ah htz-ai htz-aj htz-t htz-u"
+        className="htz-z htz-af htz-aj htz-ak htz-al htz-am htz-l htz-ag htz-ai htz-r htz-s htz-t htz-an htz-ao htz-ap htz-x htz-y"
       />
     </div>
     <div
-      className="htz-ak"
+      className="htz-aq"
     >
       labelRed
     </div>
@@ -239,7 +239,7 @@ exports[`<RadioButton> DOM element renders correctly with miscStyles prop 1`] = 
 </div>
 `;
 
-exports[`<RadioButton> DOM element renders correctly with miscStyles prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:center}.htz-c{align-items:center}.htz-d{color:red}.htz-e{-webkit-box-align:center}.htz-f{position:relative}.htz-g{height:2rem}.htz-h{width:2rem}.htz-i{-webkit-flex-shrink:0}.htz-j{flex-shrink:0}.htz-k{border-radius:50%}.htz-l{-webkit-justify-content:center}.htz-m{justify-content:center}.htz-n{background-color:#FFF}.htz-o{transition-property:all}.htz-p{border-width:1px}.htz-q{border-style:solid}.htz-r{border-color:#0B7EB5}.htz-s{-webkit-box-pack:center}.htz-t{-webkit-transition-property:all}.htz-u{-moz-transition-property:all}.htz-v{position:absolute}.htz-w{height:8rem}.htz-x{width:8rem}.htz-y{left:50%}.htz-z{top:50%}.htz-ab{background-color:#0B7EB5}.htz-ac{display:block}.htz-ae{opacity:0}.htz-af{height:80%}.htz-ag{width:80%}.htz-ah{border-color:white}.htz-ai{transition-duration:.3s}.htz-aj{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ak{margin-right:0.3em}"`;
+exports[`<RadioButton> DOM element renders correctly with miscStyles prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{color:red}.htz-e{-webkit-box-align:baseline}.htz-f{position:relative}.htz-g{top:0.15em}.htz-h{height:1em}.htz-i{width:1em}.htz-j{-webkit-flex-shrink:0}.htz-k{flex-shrink:0}.htz-l{border-radius:50%}.htz-m{-webkit-justify-content:center}.htz-n{justify-content:center}.htz-o{-webkit-align-items:center}.htz-p{align-items:center}.htz-q{background-color:#FFF}.htz-r{transition-property:all}.htz-s{border-width:1px}.htz-t{border-style:solid}.htz-u{border-color:#0B7EB5}.htz-v{-webkit-box-pack:center}.htz-w{-webkit-box-align:center}.htz-x{-webkit-transition-property:all}.htz-y{-moz-transition-property:all}.htz-z{position:absolute}.htz-ab{height:8rem}.htz-ac{width:8rem}.htz-ae{left:50%}.htz-af{top:50%}.htz-ag{background-color:#0B7EB5}.htz-ah{display:block}.htz-ai{opacity:0}.htz-aj{-webkit-transform:translateY(-50%)}.htz-ak{transform:translateY(-50%)}.htz-al{height:80%}.htz-am{width:80%}.htz-an{border-color:white}.htz-ao{transition-duration:.3s}.htz-ap{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aq{margin-right:0.3em}"`;
 
 exports[`<RadioButton> DOM element renders correctly with name prop 1`] = `
 <div>
@@ -257,20 +257,20 @@ exports[`<RadioButton> DOM element renders correctly with name prop 1`] = `
       type="radio"
     />
     <div
-      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-a htz-k htz-l htz-b htz-c htz-m htz-n htz-o htz-p htz-q htz-r htz-d htz-s htz-t"
+      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-a htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
     >
       <div
-        className="htz-u htz-v htz-w htz-x htz-y htz-j htz-z htz-ab htz-ac"
+        className="htz-y htz-z htz-ab htz-ac htz-ae htz-k htz-af htz-ag htz-ah"
       />
       <div
-        className="htz-ae htz-af htz-j htz-z htz-ac htz-n htz-o htz-p htz-ag htz-ah htz-ai htz-s htz-t"
+        className="htz-y htz-ae htz-ai htz-aj htz-ak htz-al htz-k htz-af htz-ah htz-q htz-r htz-s htz-am htz-an htz-ao htz-w htz-x"
       />
     </div>
     <div
-      className="htz-aj"
+      className="htz-ap"
     />
   </label>
 </div>
 `;
 
-exports[`<RadioButton> DOM element renders correctly with name prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:center}.htz-c{align-items:center}.htz-d{-webkit-box-align:center}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{border-radius:50%}.htz-k{-webkit-justify-content:center}.htz-l{justify-content:center}.htz-m{background-color:#FFF}.htz-n{transition-property:all}.htz-o{border-width:1px}.htz-p{border-style:solid}.htz-q{border-color:#0B7EB5}.htz-r{-webkit-box-pack:center}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{background-color:#0B7EB5}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{height:80%}.htz-af{width:80%}.htz-ag{border-color:white}.htz-ah{transition-duration:.3s}.htz-ai{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-aj{margin-right:0.3em}"`;
+exports[`<RadioButton> DOM element renders correctly with name prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{top:0.15em}.htz-g{height:1em}.htz-h{width:1em}.htz-i{-webkit-flex-shrink:0}.htz-j{flex-shrink:0}.htz-k{border-radius:50%}.htz-l{-webkit-justify-content:center}.htz-m{justify-content:center}.htz-n{-webkit-align-items:center}.htz-o{align-items:center}.htz-p{background-color:#FFF}.htz-q{transition-property:all}.htz-r{border-width:1px}.htz-s{border-style:solid}.htz-t{border-color:#0B7EB5}.htz-u{-webkit-box-pack:center}.htz-v{-webkit-box-align:center}.htz-w{-webkit-transition-property:all}.htz-x{-moz-transition-property:all}.htz-y{position:absolute}.htz-z{height:8rem}.htz-ab{width:8rem}.htz-ac{left:50%}.htz-ae{top:50%}.htz-af{background-color:#0B7EB5}.htz-ag{display:block}.htz-ah{opacity:0}.htz-ai{-webkit-transform:translateY(-50%)}.htz-aj{transform:translateY(-50%)}.htz-ak{height:80%}.htz-al{width:80%}.htz-am{border-color:white}.htz-an{transition-duration:.3s}.htz-ao{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ap{margin-right:0.3em}"`;

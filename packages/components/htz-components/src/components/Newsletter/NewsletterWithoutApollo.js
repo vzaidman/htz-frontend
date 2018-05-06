@@ -41,6 +41,8 @@ const newsletterConfirmStyle = {
 
 export default class NewsletterWithoutApollo extends React.Component {
   static propTypes = {
+    /** determine newsletter icon if exists */
+    brand: PropTypes.oneOf([ 'tm', 'htz', ]),
     /** The element's DOM ID */
     id: PropTypes.string,
     /** indicates loading state of the data */
@@ -71,6 +73,7 @@ export default class NewsletterWithoutApollo extends React.Component {
     ]).isRequired,
   };
   static defaultProps = {
+    brand: null,
     id: PropTypes.string,
     miscStyles: null,
     userEmail: null,
@@ -100,6 +103,7 @@ export default class NewsletterWithoutApollo extends React.Component {
 
   render() {
     const {
+      brand,
       loading,
       userEmail,
       segmentId,
@@ -116,6 +120,7 @@ export default class NewsletterWithoutApollo extends React.Component {
           render={({ className, theme, }) => (
             <div className={className} id={this.state.id}>
               <NewsletterForm
+                brand={brand}
                 loading={loading}
                 variant={variant}
                 userEmail={userEmail}

@@ -70,5 +70,9 @@
     "3efb706762e97a7dbc4b88e4ec65ea1c",
   "src/components/Icon/icons/IconMarkerLogo.js":
     "bd56f43d8d24cc0d67bd1a9b34c0769c",
-  "src/components/Icon/icons/IconPaypal.js": "9589c93fc08d622c4867b0d217593de1"
+  "src/components/Icon/icons/IconPaypal.js": "9589c93fc08d622c4867b0d217593de1",
+  "src/components/Icon/icons/IconMarkerLogoTransparent.js":
+    "f757e326f5068c30af5d6ec9ab2437e8",
+  "src/components/Icon/icons/IconAlefLogoTransparent.js":
+    "2b677a4ce4bee425557b44cae80af76f"
 }

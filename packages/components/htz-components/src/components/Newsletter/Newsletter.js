@@ -8,6 +8,8 @@ import NewsletterWithoutApollo from './NewsletterWithoutApollo';
 import { newsletterVariantType, } from './elements/types/newsletterVariantType';
 
 Newsletter.propTypes = {
+  /** determine newsletter icon if exists */
+  brand: PropTypes.oneOf([ 'tm', 'htz', ]),
   /** The element's DOM ID */
   id: PropTypes.string,
   /** Indicates article category id */
@@ -33,6 +35,7 @@ Newsletter.propTypes = {
 };
 
 Newsletter.defaultProps = {
+  brand: null,
   id: null,
   miscStyles: null,
   userEmail: null,

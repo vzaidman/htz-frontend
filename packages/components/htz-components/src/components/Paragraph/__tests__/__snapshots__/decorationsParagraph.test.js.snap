@@ -23,7 +23,7 @@ Object {
         </em>
         . כלומר, הזיכרון המושלם שקנאוסגורד מפגין מולנו כבר שלושה כרכים פגום. אבל הוא לא רק פגום, הוא הפגם עצמו. הוא היסוד לכל מה שמושחת, הוא התשוקה לשכוח. המאבק שלי, המאבק של קנאוסגורד, הוא הניסיון לנקז את הנורא מכל שהתגלה במצבור שופע בנפשו במהלך החקירה הזאת. 
         <a
-          className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
+          className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
           href="https://www.haaretz.co.il/literature/prose/.premium-REVIEW-1.4740317"
           onClick={null}
           target="_blank"
@@ -34,6 +34,6 @@ Object {
       </p>
     </div>
   </div>,
-  "styles": ".htz-a{text-decoration:underline}.htz-b{-webkit-text-decoration-skip:ink}.htz-c{text-decoration-skip:ink}.htz-d{font-style:italic}.htz-e{color:#0B7EB5}.htz-f:hover{border-bottom-width:1px}.htz-g:hover{border-bottom-style:solid}.htz-h:hover{border-bottom-color:#0B7EB5}.htz-i:focus{border-bottom-width:2px}.htz-j:focus{border-bottom-style:solid}.htz-k:focus{border-bottom-color:#0B7EB5}",
+  "styles": ".htz-a{text-decoration:underline}.htz-b{-webkit-text-decoration-skip:ink}.htz-c{text-decoration-skip:ink}.htz-d{font-style:italic}.htz-e{color:#0B7EB5}.htz-f:visited{color:#0B7EB5}.htz-g:hover{color:#0B7EB5}.htz-h:hover{border-bottom-color:#0B7EB5}.htz-i:hover{border-bottom-width:1px}.htz-j:hover{border-bottom-style:solid}.htz-k:focus{color:#0B7EB5}.htz-l:focus{border-bottom-color:#0B7EB5}.htz-m:focus{border-bottom-width:1px}.htz-n:focus{border-bottom-style:solid}.htz-o:active{color:#0B7EB5}.htz-p:active{border-bottom-color:#0B7EB5}.htz-q:active{border-bottom-width:2px}.htz-r:active{border-bottom-style:solid}",
 }
 `;

@@ -22,6 +22,7 @@ Can be used to create a NewsLetter to subscribe with existing or non existing us
 ```jsx
 <div dir="rtl">
   <Newsletter
+    brand="htz"
     segmentId={1420800}
     miscStyles={{ maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}
   />
@@ -36,6 +37,7 @@ Can be used to create a NewsLetter to subscribe with existing or non existing us
 ```jsx
 <div dir="rtl">
   <Newsletter
+    brand="tm"
     segmentId={1420800}
     userEmail="user@test.com"
     variant="primary"

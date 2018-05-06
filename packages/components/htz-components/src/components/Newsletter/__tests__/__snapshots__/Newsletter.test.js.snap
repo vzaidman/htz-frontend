@@ -2,6 +2,7 @@
 
 exports[`<Newsletter /> Newsletter DOM element should correctly render a Newsletter initial view 1`] = `
 <NewsletterWithoutApollo
+  brand={null}
   id={[Function]}
   miscStyles={
     Object {
@@ -36,6 +37,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
           id={[Function]}
         >
           <NewsletterForm
+            brand={null}
             segmentId={1420800}
             setParentState={[Function]}
             signUpNewsletter={[MockFunction]}
@@ -44,7 +46,9 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
           >
             <Form
               attrs={null}
+              clearFormAfterSubmit={true}
               disablePreventDefault={false}
+              disableSubmitOnEnterKeyDown={false}
               initialValues={
                 Object {
                   "checkBox": false,
@@ -57,7 +61,9 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
               render={[Function]}
               validate={[Function]}
             >
-              <form>
+              <form
+                onKeyDown={[Function]}
+              >
                 <FelaComponent
                   render={[Function]}
                   rule={[Function]}
@@ -71,16 +77,29 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                       <FelaComponent
                         render={[Function]}
                         rule={[Function]}
-                        variant="highlight"
                       >
                         <FelaTheme
                           render={[Function]}
                         >
-                          <h3
-                            className="htz-j htz-k htz-l htz-m htz-n htz-e"
+                          <div
+                            className="htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
                           >
-                            הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום
-                          </h3>
+                            <FelaComponent
+                              render={[Function]}
+                              rule={[Function]}
+                              variant="highlight"
+                            >
+                              <FelaTheme
+                                render={[Function]}
+                              >
+                                <h3
+                                  className="htz-u htz-v htz-w htz-x htz-y htz-e"
+                                >
+                                  הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום
+                                </h3>
+                              </FelaTheme>
+                            </FelaComponent>
+                          </div>
                         </FelaTheme>
                       </FelaComponent>
                       <FelaComponent
@@ -91,7 +110,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                           render={[Function]}
                         >
                           <div
-                            className="htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
+                            className="htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am"
                           >
                             <FelaComponent
                               render={[Function]}
@@ -129,7 +148,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     onContentEditableChange={null}
-                                    onFocus={[Function]}
+                                    onFocus={null}
                                     onInput={null}
                                     placeholder="name@mail.com"
                                     refFunc={[Function]}
@@ -336,16 +355,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   ],
                                                 },
                                                 "linksBlockLink": Object {
-                                                  ":focus": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "2px",
-                                                  },
-                                                  ":hover": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "1px",
-                                                  },
                                                   "@media (max-width: 79.9375em)": Object {
                                                     "fontSize": "2.3333333333333335rem",
                                                     "lineHeight": "1.2857142857142858em",
@@ -354,21 +363,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                     "fontSize": "2.2857142857142856rem",
                                                     "lineHeight": "1.3125em",
                                                   },
-                                                  "color": "#0B7EB5",
+                                                  "borderBottomStyle": "solid",
+                                                  "borderBottomWidth": "1px",
+                                                  "borderBottomWidthActive": "2px",
                                                   "fontWeight": "700",
                                                 },
                                                 "paragraphLink": Object {
-                                                  ":focus": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "2px",
-                                                  },
-                                                  ":hover": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "1px",
-                                                  },
-                                                  "color": "#0B7EB5",
+                                                  "borderBottomStyle": "solid",
+                                                  "borderBottomWidth": "1px",
+                                                  "borderBottomWidthActive": "2px",
                                                 },
                                                 "paragraphStyles": Object {},
                                                 "relatedArticlesLink": Object {
@@ -704,7 +707,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           variant="primary"
                                         >
                                           <label
-                                            className="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-c htz-a htz-ai htz-k htz-l htz-m htz-n htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb"
+                                            className="htz-an htz-j htz-m htz-n htz-ao htz-ap htz-c htz-a htz-aq htz-v htz-w htz-x htz-y htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-r"
                                             htmlFor="123456789"
                                           >
                                             <labelAndButtonsWrapperStyle
@@ -892,16 +895,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                         ],
                                                       },
                                                       "linksBlockLink": Object {
-                                                        ":focus": Object {
-                                                          "borderBottomColor": "#0B7EB5",
-                                                          "borderBottomStyle": "solid",
-                                                          "borderBottomWidth": "2px",
-                                                        },
-                                                        ":hover": Object {
-                                                          "borderBottomColor": "#0B7EB5",
-                                                          "borderBottomStyle": "solid",
-                                                          "borderBottomWidth": "1px",
-                                                        },
                                                         "@media (max-width: 79.9375em)": Object {
                                                           "fontSize": "2.3333333333333335rem",
                                                           "lineHeight": "1.2857142857142858em",
@@ -910,21 +903,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                           "fontSize": "2.2857142857142856rem",
                                                           "lineHeight": "1.3125em",
                                                         },
-                                                        "color": "#0B7EB5",
+                                                        "borderBottomStyle": "solid",
+                                                        "borderBottomWidth": "1px",
+                                                        "borderBottomWidthActive": "2px",
                                                         "fontWeight": "700",
                                                       },
                                                       "paragraphLink": Object {
-                                                        ":focus": Object {
-                                                          "borderBottomColor": "#0B7EB5",
-                                                          "borderBottomStyle": "solid",
-                                                          "borderBottomWidth": "2px",
-                                                        },
-                                                        ":hover": Object {
-                                                          "borderBottomColor": "#0B7EB5",
-                                                          "borderBottomStyle": "solid",
-                                                          "borderBottomWidth": "1px",
-                                                        },
-                                                        "color": "#0B7EB5",
+                                                        "borderBottomStyle": "solid",
+                                                        "borderBottomWidth": "1px",
+                                                        "borderBottomWidthActive": "2px",
                                                       },
                                                       "paragraphStyles": Object {},
                                                       "relatedArticlesLink": Object {
@@ -1447,16 +1434,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                               ],
                                                             },
                                                             "linksBlockLink": Object {
-                                                              ":focus": Object {
-                                                                "borderBottomColor": "#0B7EB5",
-                                                                "borderBottomStyle": "solid",
-                                                                "borderBottomWidth": "2px",
-                                                              },
-                                                              ":hover": Object {
-                                                                "borderBottomColor": "#0B7EB5",
-                                                                "borderBottomStyle": "solid",
-                                                                "borderBottomWidth": "1px",
-                                                              },
                                                               "@media (max-width: 79.9375em)": Object {
                                                                 "fontSize": "2.3333333333333335rem",
                                                                 "lineHeight": "1.2857142857142858em",
@@ -1465,21 +1442,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                 "fontSize": "2.2857142857142856rem",
                                                                 "lineHeight": "1.3125em",
                                                               },
-                                                              "color": "#0B7EB5",
+                                                              "borderBottomStyle": "solid",
+                                                              "borderBottomWidth": "1px",
+                                                              "borderBottomWidthActive": "2px",
                                                               "fontWeight": "700",
                                                             },
                                                             "paragraphLink": Object {
-                                                              ":focus": Object {
-                                                                "borderBottomColor": "#0B7EB5",
-                                                                "borderBottomStyle": "solid",
-                                                                "borderBottomWidth": "2px",
-                                                              },
-                                                              ":hover": Object {
-                                                                "borderBottomColor": "#0B7EB5",
-                                                                "borderBottomStyle": "solid",
-                                                                "borderBottomWidth": "1px",
-                                                              },
-                                                              "color": "#0B7EB5",
+                                                              "borderBottomStyle": "solid",
+                                                              "borderBottomWidth": "1px",
+                                                              "borderBottomWidthActive": "2px",
                                                             },
                                                             "paragraphStyles": Object {},
                                                             "relatedArticlesLink": Object {
@@ -1815,7 +1786,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                       variant="primary"
                                                     >
                                                       <span
-                                                        className="htz-bc htz-bd htz-j htz-be htz-bf htz-ag htz-ah htz-bg htz-bh htz-bi htz-bj htz-bk"
+                                                        className="htz-bj htz-bk htz-bl htz-u htz-bm htz-bn htz-ao htz-ap htz-bo htz-bp htz-bq htz-br htz-bs"
                                                       >
                                                         דוא"ל
                                                         <styles
@@ -2011,16 +1982,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                     ],
                                                                   },
                                                                   "linksBlockLink": Object {
-                                                                    ":focus": Object {
-                                                                      "borderBottomColor": "#0B7EB5",
-                                                                      "borderBottomStyle": "solid",
-                                                                      "borderBottomWidth": "2px",
-                                                                    },
-                                                                    ":hover": Object {
-                                                                      "borderBottomColor": "#0B7EB5",
-                                                                      "borderBottomStyle": "solid",
-                                                                      "borderBottomWidth": "1px",
-                                                                    },
                                                                     "@media (max-width: 79.9375em)": Object {
                                                                       "fontSize": "2.3333333333333335rem",
                                                                       "lineHeight": "1.2857142857142858em",
@@ -2029,21 +1990,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                       "fontSize": "2.2857142857142856rem",
                                                                       "lineHeight": "1.3125em",
                                                                     },
-                                                                    "color": "#0B7EB5",
+                                                                    "borderBottomStyle": "solid",
+                                                                    "borderBottomWidth": "1px",
+                                                                    "borderBottomWidthActive": "2px",
                                                                     "fontWeight": "700",
                                                                   },
                                                                   "paragraphLink": Object {
-                                                                    ":focus": Object {
-                                                                      "borderBottomColor": "#0B7EB5",
-                                                                      "borderBottomStyle": "solid",
-                                                                      "borderBottomWidth": "2px",
-                                                                    },
-                                                                    ":hover": Object {
-                                                                      "borderBottomColor": "#0B7EB5",
-                                                                      "borderBottomStyle": "solid",
-                                                                      "borderBottomWidth": "1px",
-                                                                    },
-                                                                    "color": "#0B7EB5",
+                                                                    "borderBottomStyle": "solid",
+                                                                    "borderBottomWidth": "1px",
+                                                                    "borderBottomWidthActive": "2px",
                                                                   },
                                                                   "paragraphStyles": Object {},
                                                                   "relatedArticlesLink": Object {
@@ -2381,7 +2336,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                             variant="primary"
                                                           >
                                                             <Abbr
-                                                              className="htz-bl htz-bm"
+                                                              className="htz-bt htz-bu"
                                                               isSup={true}
                                                               miscStyles={null}
                                                               requiredText={
@@ -2393,7 +2348,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                               variant="primary"
                                                             >
                                                               <abbr
-                                                                className="htz-bl htz-bm"
+                                                                className="htz-bt htz-bu"
                                                                 title="שדה חובה"
                                                               >
                                                                  
@@ -2617,16 +2572,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                         ],
                                                       },
                                                       "linksBlockLink": Object {
-                                                        ":focus": Object {
-                                                          "borderBottomColor": "#0B7EB5",
-                                                          "borderBottomStyle": "solid",
-                                                          "borderBottomWidth": "2px",
-                                                        },
-                                                        ":hover": Object {
-                                                          "borderBottomColor": "#0B7EB5",
-                                                          "borderBottomStyle": "solid",
-                                                          "borderBottomWidth": "1px",
-                                                        },
                                                         "@media (max-width: 79.9375em)": Object {
                                                           "fontSize": "2.3333333333333335rem",
                                                           "lineHeight": "1.2857142857142858em",
@@ -2635,21 +2580,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                           "fontSize": "2.2857142857142856rem",
                                                           "lineHeight": "1.3125em",
                                                         },
-                                                        "color": "#0B7EB5",
+                                                        "borderBottomStyle": "solid",
+                                                        "borderBottomWidth": "1px",
+                                                        "borderBottomWidthActive": "2px",
                                                         "fontWeight": "700",
                                                       },
                                                       "paragraphLink": Object {
-                                                        ":focus": Object {
-                                                          "borderBottomColor": "#0B7EB5",
-                                                          "borderBottomStyle": "solid",
-                                                          "borderBottomWidth": "2px",
-                                                        },
-                                                        ":hover": Object {
-                                                          "borderBottomColor": "#0B7EB5",
-                                                          "borderBottomStyle": "solid",
-                                                          "borderBottomWidth": "1px",
-                                                        },
-                                                        "color": "#0B7EB5",
+                                                        "borderBottomStyle": "solid",
+                                                        "borderBottomWidth": "1px",
+                                                        "borderBottomWidthActive": "2px",
                                                       },
                                                       "paragraphStyles": Object {},
                                                       "relatedArticlesLink": Object {
@@ -3004,7 +2943,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   ariaDescribedBy="123456789"
                                                   ariaLabel={null}
                                                   attrs={null}
-                                                  className="htz-bn htz-bo htz-bp htz-c htz-ab htz-bq htz-br"
+                                                  className="htz-bv htz-bw htz-bx htz-c htz-an htz-by htz-bz"
                                                   defaultValue={null}
                                                   height={null}
                                                   inputId="123456789"
@@ -3028,7 +2967,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                 >
                                                   <input
                                                     aria-describedby="123456789"
-                                                    className="htz-bn htz-bo htz-bp htz-c htz-ab htz-bq htz-br"
+                                                    className="htz-bv htz-bw htz-bx htz-c htz-an htz-by htz-bz"
                                                     id="123456789"
                                                     onBlur={[Function]}
                                                     onChange={[Function]}
@@ -3231,16 +3170,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   ],
                                                 },
                                                 "linksBlockLink": Object {
-                                                  ":focus": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "2px",
-                                                  },
-                                                  ":hover": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "1px",
-                                                  },
                                                   "@media (max-width: 79.9375em)": Object {
                                                     "fontSize": "2.3333333333333335rem",
                                                     "lineHeight": "1.2857142857142858em",
@@ -3249,21 +3178,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                     "fontSize": "2.2857142857142856rem",
                                                     "lineHeight": "1.3125em",
                                                   },
-                                                  "color": "#0B7EB5",
+                                                  "borderBottomStyle": "solid",
+                                                  "borderBottomWidth": "1px",
+                                                  "borderBottomWidthActive": "2px",
                                                   "fontWeight": "700",
                                                 },
                                                 "paragraphLink": Object {
-                                                  ":focus": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "2px",
-                                                  },
-                                                  ":hover": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "1px",
-                                                  },
-                                                  "color": "#0B7EB5",
+                                                  "borderBottomStyle": "solid",
+                                                  "borderBottomWidth": "1px",
+                                                  "borderBottomWidthActive": "2px",
                                                 },
                                                 "paragraphStyles": Object {},
                                                 "relatedArticlesLink": Object {
@@ -3596,14 +3519,14 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           variant="primary"
                                         >
                                           <Note
-                                            className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx"
+                                            className="htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf"
                                             isError={false}
                                             noteId="123456789"
                                             text="אנא הזינו כתובת אימייל"
                                             variant="primary"
                                           >
                                             <span
-                                              className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx"
+                                              className="htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf"
                                               id="123456789"
                                             >
                                               אנא הזינו כתובת אימייל
@@ -3617,6 +3540,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                               </FelaTheme>
                             </FelaComponent>
                             <Button
+                              asPath={null}
                               attrs={null}
                               boxModel={
                                 Object {
@@ -3701,8 +3625,9 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                 >
                                   <ButtonWrapper
                                     WrapperElement="button"
+                                    asPath={null}
                                     attrs={null}
-                                    className="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-bs htz-j htz-bp htz-cb htz-cc htz-a htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-at htz-an htz-ao htz-ck htz-ak htz-al htz-cl htz-cm htz-bo htz-cn htz-co htz-ai htz-k htz-l htz-m htz-n htz-g htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-bb htz-dk htz-dl htz-dm"
+                                    className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-ca htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-g htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
                                     href={null}
                                     id={null}
                                     isBusy={false}
@@ -3713,7 +3638,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     prefetch={false}
                                   >
                                     <button
-                                      className="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-bs htz-j htz-bp htz-cb htz-cc htz-a htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-at htz-an htz-ao htz-ck htz-ak htz-al htz-cl htz-cm htz-bo htz-cn htz-co htz-ai htz-k htz-l htz-m htz-n htz-g htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-bb htz-dk htz-dl htz-dm"
+                                      className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-ca htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-g htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
                                       id={null}
                                       onClick={[Function]}
                                       type="button"
@@ -3727,7 +3652,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           render={[Function]}
                                         >
                                           <span
-                                            className="htz-dn htz-do htz-bh htz-bi htz-dp htz-dq htz-dr"
+                                            className="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
                                           >
                                             הרשמה
                                           </span>
@@ -3742,7 +3667,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           render={[Function]}
                                         >
                                           <span
-                                            className="htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-c htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ek"
+                                            className="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
                                           />
                                         </FelaTheme>
                                       </FelaComponent>
@@ -3785,9 +3710,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                         onBlur={[Function]}
                         onChange={[Function]}
                         onClick={null}
-                        onFocus={[Function]}
+                        onFocus={null}
                         refFunc={[Function]}
                         value=""
+                        variant="primary"
                       >
                         <styles
                           _felaTheme={
@@ -3970,16 +3896,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                   ],
                                 },
                                 "linksBlockLink": Object {
-                                  ":focus": Object {
-                                    "borderBottomColor": "#0B7EB5",
-                                    "borderBottomStyle": "solid",
-                                    "borderBottomWidth": "2px",
-                                  },
-                                  ":hover": Object {
-                                    "borderBottomColor": "#0B7EB5",
-                                    "borderBottomStyle": "solid",
-                                    "borderBottomWidth": "1px",
-                                  },
                                   "@media (max-width: 79.9375em)": Object {
                                     "fontSize": "2.3333333333333335rem",
                                     "lineHeight": "1.2857142857142858em",
@@ -3988,21 +3904,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     "fontSize": "2.2857142857142856rem",
                                     "lineHeight": "1.3125em",
                                   },
-                                  "color": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                  "borderBottomWidthActive": "2px",
                                   "fontWeight": "700",
                                 },
                                 "paragraphLink": Object {
-                                  ":focus": Object {
-                                    "borderBottomColor": "#0B7EB5",
-                                    "borderBottomStyle": "solid",
-                                    "borderBottomWidth": "2px",
-                                  },
-                                  ":hover": Object {
-                                    "borderBottomColor": "#0B7EB5",
-                                    "borderBottomStyle": "solid",
-                                    "borderBottomWidth": "1px",
-                                  },
-                                  "color": "#0B7EB5",
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": "1px",
+                                  "borderBottomWidthActive": "2px",
                                 },
                                 "paragraphStyles": Object {},
                                 "relatedArticlesLink": Object {
@@ -4358,15 +4268,16 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                           onBlur={[Function]}
                           onChange={[Function]}
                           onClick={null}
-                          onFocus={[Function]}
+                          onFocus={null}
                           refFunc={[Function]}
                           value=""
+                          variant="primary"
                         >
                           <CheckBox
                             attrs={null}
                             checkBoxId={null}
                             checked={null}
-                            className="htz-ac htz-el htz-em htz-p htz-en htz-bt htz-bu htz-bv htz-bw htz-ai htz-eo"
+                            className="htz-j htz-et htz-eu htz-ab htz-ev htz-cb htz-cc htz-cd htz-ce htz-aq htz-ew"
                             defaultValue={false}
                             errorText={null}
                             isDisabled={false}
@@ -4378,12 +4289,13 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={null}
-                            onFocus={[Function]}
+                            onFocus={null}
                             refFunc={[Function]}
+                            variant="primary"
                           >
                             <div>
                               <label
-                                className="htz-ac htz-el htz-em htz-p htz-en htz-bt htz-bu htz-bv htz-bw htz-ai htz-eo"
+                                className="htz-j htz-et htz-eu htz-ab htz-ev htz-cb htz-cc htz-cd htz-ce htz-aq htz-ew"
                                 htmlFor="123456789"
                               >
                                 <input
@@ -4399,6 +4311,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                   checked={false}
                                   isDisabled={false}
                                   isFocused={false}
+                                  variant="primary"
                                 >
                                   <checkBoxStyle
                                     _felaTheme={
@@ -4581,16 +4494,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                             ],
                                           },
                                           "linksBlockLink": Object {
-                                            ":focus": Object {
-                                              "borderBottomColor": "#0B7EB5",
-                                              "borderBottomStyle": "solid",
-                                              "borderBottomWidth": "2px",
-                                            },
-                                            ":hover": Object {
-                                              "borderBottomColor": "#0B7EB5",
-                                              "borderBottomStyle": "solid",
-                                              "borderBottomWidth": "1px",
-                                            },
                                             "@media (max-width: 79.9375em)": Object {
                                               "fontSize": "2.3333333333333335rem",
                                               "lineHeight": "1.2857142857142858em",
@@ -4599,21 +4502,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                               "fontSize": "2.2857142857142856rem",
                                               "lineHeight": "1.3125em",
                                             },
-                                            "color": "#0B7EB5",
+                                            "borderBottomStyle": "solid",
+                                            "borderBottomWidth": "1px",
+                                            "borderBottomWidthActive": "2px",
                                             "fontWeight": "700",
                                           },
                                           "paragraphLink": Object {
-                                            ":focus": Object {
-                                              "borderBottomColor": "#0B7EB5",
-                                              "borderBottomStyle": "solid",
-                                              "borderBottomWidth": "2px",
-                                            },
-                                            ":hover": Object {
-                                              "borderBottomColor": "#0B7EB5",
-                                              "borderBottomStyle": "solid",
-                                              "borderBottomWidth": "1px",
-                                            },
-                                            "color": "#0B7EB5",
+                                            "borderBottomStyle": "solid",
+                                            "borderBottomWidth": "1px",
+                                            "borderBottomWidthActive": "2px",
                                           },
                                           "paragraphStyles": Object {},
                                           "relatedArticlesLink": Object {
@@ -4942,561 +4839,557 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     checked={false}
                                     isDisabled={false}
                                     isFocused={false}
+                                    variant="primary"
                                   >
                                     <div
-                                      className="htz-a htz-ep htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey htz-ez htz-fa htz-fb htz-fc htz-fd"
+                                      className="htz-a htz-ex htz-ey htz-ez htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj htz-fk htz-fl"
                                     >
-                                      <rippleStyle
-                                        isActive={false}
+                                      <FelaComponent
+                                        render={[Function]}
                                       >
-                                        <rippleStyle
-                                          _felaTheme={
-                                            Object {
-                                              "articleStyle": Object {
-                                                "article": Object {
-                                                  "aside": Array [
-                                                    Object {
-                                                      "until": "l",
-                                                      "value": "none",
-                                                    },
-                                                    Object {
-                                                      "from": "l",
-                                                      "value": "block",
-                                                    },
-                                                  ],
-                                                  "marginEnd": Array [
-                                                    Object {
-                                                      "until": "l",
-                                                      "value": "0",
-                                                    },
-                                                    Object {
-                                                      "from": "l",
-                                                      "until": "xl",
-                                                      "value": "57rem",
-                                                    },
-                                                    Object {
-                                                      "from": "xl",
-                                                      "value": "51rem",
-                                                    },
-                                                  ],
-                                                  "marginStart": Array [
-                                                    Object {
-                                                      "until": "l",
-                                                      "value": "0",
-                                                    },
-                                                    Object {
-                                                      "from": "l",
-                                                      "until": "xl",
-                                                      "value": "27rem",
-                                                    },
-                                                    Object {
-                                                      "from": "xl",
-                                                      "value": "30rem",
-                                                    },
-                                                  ],
-                                                },
-                                                "body": Object {
-                                                  "marginBottom": Array [
-                                                    Object {
-                                                      "until": "xl",
-                                                      "value": "4rem",
-                                                    },
-                                                    Object {
-                                                      "from": "xl",
-                                                      "value": "3rem",
-                                                    },
-                                                  ],
-                                                  "marginEnd": Array [
-                                                    Object {
-                                                      "until": "m",
-                                                      "value": "2rem",
-                                                    },
-                                                    Object {
-                                                      "from": "m",
-                                                      "until": "l",
-                                                      "value": "10rem",
-                                                    },
-                                                  ],
-                                                  "marginStart": Array [
-                                                    Object {
-                                                      "until": "m",
-                                                      "value": "2rem",
-                                                    },
-                                                    Object {
-                                                      "from": "m",
-                                                      "until": "l",
-                                                      "value": "10rem",
-                                                    },
-                                                    Object {
-                                                      "from": "l",
-                                                      "value": "4rem",
-                                                    },
-                                                  ],
-                                                  "width": Array [
-                                                    Object {
-                                                      "from": "l",
-                                                      "until": "xl",
-                                                      "value": "70.5rem",
-                                                    },
-                                                    Object {
-                                                      "from": "xl",
-                                                      "value": "80rem",
-                                                    },
-                                                  ],
-                                                },
-                                                "currentArticleInSeries": Object {
-                                                  "@media (max-width: 79.9375em)": Object {
-                                                    "fontSize": "2.3333333333333335rem",
-                                                    "lineHeight": "1.2857142857142858em",
-                                                  },
-                                                  "@media (min-width: 80em)": Object {
-                                                    "fontSize": "2.2857142857142856rem",
-                                                    "lineHeight": "1.3125em",
-                                                  },
-                                                  "backgroundColor": "#FFF17A",
-                                                  "fontWeight": "700",
-                                                },
-                                                "header": Object {
-                                                  "blockKicker": Object {
-                                                    "backgroundColor": "#A8001C",
-                                                    "color": "#FFF",
-                                                  },
-                                                  "bylineCreditColor": "#006B96",
-                                                  "bylineFontSize": Array [
-                                                    Object {
-                                                      "until": "m",
-                                                      "value": -2,
-                                                    },
-                                                    Object {
-                                                      "from": "m",
-                                                      "until": "l",
-                                                      "value": -1,
-                                                    },
-                                                    Object {
-                                                      "from": "l",
-                                                      "value": -1,
-                                                    },
-                                                  ],
-                                                  "inlineKicker": Object {
-                                                    "backgroundColor": "transparent",
-                                                    "color": "#A8001C",
-                                                    "separator": "|",
-                                                  },
-                                                  "marginEnd": Array [
-                                                    Object {
-                                                      "until": "m",
-                                                      "value": "2rem",
-                                                    },
-                                                    Object {
-                                                      "from": "m",
-                                                      "until": "l",
-                                                      "value": "2rem",
-                                                    },
-                                                  ],
-                                                  "marginStart": Array [
-                                                    Object {
-                                                      "until": "l",
-                                                      "value": "2rem",
-                                                    },
-                                                    Object {
-                                                      "from": "l",
-                                                      "value": "4rem",
-                                                    },
-                                                  ],
-                                                  "subtitleFontSize": Array [
-                                                    Object {
-                                                      "until": "xl",
-                                                      "value": 0,
-                                                    },
-                                                    Object {
-                                                      "from": "xl",
-                                                      "value": 1,
-                                                    },
-                                                  ],
-                                                  "titleFontSize": Array [
-                                                    Object {
-                                                      "until": "m",
-                                                      "value": 3,
-                                                    },
-                                                    Object {
-                                                      "from": "m",
-                                                      "until": "l",
-                                                      "value": 4,
-                                                    },
-                                                    Object {
-                                                      "from": "l",
-                                                      "value": 5,
-                                                    },
-                                                  ],
-                                                },
-                                                "linksBlockLink": Object {
-                                                  ":focus": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "2px",
-                                                  },
-                                                  ":hover": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "1px",
-                                                  },
-                                                  "@media (max-width: 79.9375em)": Object {
-                                                    "fontSize": "2.3333333333333335rem",
-                                                    "lineHeight": "1.2857142857142858em",
-                                                  },
-                                                  "@media (min-width: 80em)": Object {
-                                                    "fontSize": "2.2857142857142856rem",
-                                                    "lineHeight": "1.3125em",
-                                                  },
-                                                  "color": "#0B7EB5",
-                                                  "fontWeight": "700",
-                                                },
-                                                "paragraphLink": Object {
-                                                  ":focus": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "2px",
-                                                  },
-                                                  ":hover": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "1px",
-                                                  },
-                                                  "color": "#0B7EB5",
-                                                },
-                                                "paragraphStyles": Object {},
-                                                "relatedArticlesLink": Object {
-                                                  ":focus": Object {
-                                                    "background": "none",
-                                                    "backgroundColor": "#FFE70C",
-                                                  },
-                                                  ":hover": Object {
-                                                    "backgroundPosition": "0 100%",
-                                                    "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
-                                                  },
-                                                  "@media (max-width: 79.9375em)": Object {
-                                                    "fontSize": "2.3333333333333335rem",
-                                                    "lineHeight": "1.2857142857142858em",
-                                                  },
-                                                  "@media (min-width: 80em)": Object {
-                                                    "fontSize": "2.2857142857142856rem",
-                                                    "lineHeight": "1.3125em",
-                                                  },
-                                                  "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFF17A, #FFF17A 50%, #FFF17A )",
-                                                  "backgroundPosition": "0 0",
-                                                  "backgroundSize": "100% 200%",
-                                                  "color": "#006B96",
-                                                  "fontWeight": "700",
-                                                  "position": "relative",
-                                                  "transitionDuration": "0.16666666666666666s",
-                                                  "transitionProperty": "background-position",
-                                                  "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
-                                                  "zIndex": "1",
-                                                },
-                                              },
-                                              "bps": Object {
-                                                "misc": Object {
-                                                  "hidpi": "(min-resolution: 1.5dppx)",
-                                                  "landscape": "(orientation: landscape)",
-                                                  "portrait": "(orientation: portrait)",
-                                                },
-                                                "widths": Object {
-                                                  "l": 1024,
-                                                  "m": 768,
-                                                  "s": 600,
-                                                  "xl": 1280,
-                                                },
-                                              },
-                                              "btnStyle": Object {
-                                                "borderBottomStyle": "solid",
-                                                "borderBottomWidth": 1,
-                                                "borderEndStyle": "solid",
-                                                "borderEndWidth": 1,
-                                                "borderStartStyle": "solid",
-                                                "borderStartWidth": 1,
-                                                "borderTopStyle": "solid",
-                                                "borderTopWidth": 1,
-                                                "boxModel": Object {
-                                                  "hp": 4,
-                                                  "vp": 1,
-                                                },
-                                                "fontWeight": "bold",
-                                                "radius": 0,
-                                              },
-                                              "captionStyles": Object {
-                                                "backgroundColor": Array [
-                                                  "neutral",
-                                                  "-10",
-                                                ],
-                                                "captionColor": Array [
-                                                  "neutral",
-                                                  "-2",
-                                                ],
-                                                "captionTypeSettings": -2,
-                                                "creditStyles": Object {
-                                                  "fontWeight": "300",
-                                                },
-                                                "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
-                                                "fontWeight": "700",
-                                              },
-                                              "color": [Function],
-                                              "commentFormI18n": Object {
-                                                "buttons": Object {
-                                                  "cancelBtnTxt": "בטל",
-                                                  "sendBtnTxt": "שלח",
-                                                  "toggleUserBtnText": "להוספת תגובה מזוהה לחץ כאן",
-                                                },
-                                                "errorNotes": Object {
-                                                  "commentErrorNoteTxt": "נא להזין את תוכן התגובה",
-                                                  "nameErrorNoteTxt": "חובה להזין שם",
-                                                },
-                                                "labels": Object {
-                                                  "commentLabelTxt": "תגובה",
-                                                  "nameLabelTxt": "שם",
-                                                },
-                                                "notes": Object {
-                                                  "commentNoteTxt": "בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ",
-                                                  "nameNoteTxt": "הזינו שם שיוצג כמחבר התגובה",
-                                                },
-                                              },
-                                              "commentI18n": Object {
-                                                "buttons": Object {
-                                                  "readMoreBtnTxt": "קרא עוד",
-                                                  "replyBtnTxt": "הגב",
-                                                  "reportAbuseBtnTxt": "דווח כפוגעני",
-                                                },
-                                                "tags": Object {
-                                                  "editorsPick": "בחירת העורכים",
-                                                  "usersPick": "בחירת הגולשים",
-                                                },
-                                              },
-                                              "commentSentI18n": Object {
-                                                "buttons": Object {
-                                                  "closeBtnText": "סגור",
-                                                  "dontGetNotificationsBtnTxt": "לא תודה",
-                                                  "getNotificationsBtnTxt": "עדכנו אותי",
-                                                },
-                                                "errorNotes": Object {
-                                                  "emailErrorNoteTxt": "נא להזין כתובת דוא\\"ל תקינה",
-                                                },
-                                                "labels": Object {
-                                                  "emailLabelTxt": "דוא\\"ל",
-                                                },
-                                                "notes": Object {
-                                                  "emailNoteTxt": "הזינו כתובת דוא\\"ל לקבלת התראות",
-                                                },
-                                                "texts": Object {
-                                                  "commentRecievedBoldText": "תגובתך נקלטה בהצלחה, ",
-                                                  "commentRecievedBoldTextThankYouPage": "תודה!",
-                                                  "commentRecievedText": "ותפורסם על פי מדיניות המערכת.",
-                                                  "commentRecievedTextSecondRow": "באפשרותך לקבל התראה בדוא\\"ל כאשר תגובתך תאושר ותפורסם",
-                                                  "commentRecievedTextThankYouPage": "תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת",
-                                                },
-                                              },
-                                              "commentsSectionI18n": Object {
-                                                "buttons": Object {
-                                                  "loadAllCommentsBtnText": "טען את כל התגובות",
-                                                },
-                                                "selectItems": Object {
-                                                  "commentRatingItemTxt": "הצג לפי דירוג",
-                                                  "dateAscendingItemTxt": "מהראשונה לאחרונה",
-                                                  "dateDescendingItemTxt": "מהאחרונה לראשונה",
-                                                  "editorsPickItemTxt": "בחירת העורכים",
-                                                },
-                                                "texts": Object {
-                                                  "chooseSortMethodText": "סדרו את התגובות",
-                                                },
-                                              },
-                                              "commentsStyle": Object {
-                                                "textInputVariant": "primary",
-                                              },
-                                              "direction": "rtl",
-                                              "fontStacks": Object {
-                                                "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
-                                                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
-                                              },
-                                              "footerBorderStyle": Object {
-                                                "borderStyle": "solid",
-                                                "borderWidth": "1px",
-                                                "footerMobileBorderStyle": Object {
-                                                  "borderStyle": "solid",
-                                                  "borderWidth": "1px",
-                                                  "lines": 2,
-                                                },
-                                                "lines": 2,
-                                              },
-                                              "footerDesktopI18n": Object {
-                                                "Copyright": Object {
-                                                  "firstRow": "חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל",
-                                                  "secondRow": "© כל הזכויות שמורות להוצאת עיתון הארץ בע\\"מ",
-                                                },
-                                                "ExpandedButton": Object {
-                                                  "close": "סגור",
-                                                  "showMore": "הצג עוד",
-                                                },
-                                              },
-                                              "footerMobileListsI18n": Object {
-                                                "ButtonName": Object {
-                                                  "text": "להורדת האפליקציה",
-                                                },
-                                                "Copyright": Object {
-                                                  "text": "© כל הזכויות שמורות",
-                                                },
-                                                "MobileList": Array [
-                                                  Object {
-                                                    "link": "https://www.haaretz.co.il/promotions-page",
-                                                    "text": "רכשו מנוי",
-                                                  },
-                                                  Object {
-                                                    "link": "https://www.haaretz.co.il/blogs",
-                                                    "text": "בלוגים",
-                                                  },
-                                                  Object {
-                                                    "link": "https://www.haaretz.co.il/misc/terms-of-use",
-                                                    "text": "תנאי שימוש",
-                                                  },
-                                                  Object {
-                                                    "link": "https://www.haaretz.co.il/misc/contact-us",
-                                                    "text": "צרו קשר",
-                                                  },
-                                                  Object {
-                                                    "link": "https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html",
-                                                    "text": "פרסמו באתר",
-                                                  },
-                                                  Object {
-                                                    "link": "https://www.haaretz.co.il/personal-area/my-account",
-                                                    "text": "שירות למנויים",
-                                                  },
-                                                ],
-                                              },
-                                              "getDelay": [Function],
-                                              "getDuration": [Function],
-                                              "getMqString": [Function],
-                                              "getTimingFunction": [Function],
-                                              "getTransition": [Function],
-                                              "getTransitionString": [Function],
-                                              "getZIndex": [Function],
-                                              "gridStyle": Object {
-                                                "gutterWidth": 4,
-                                                "ruleColor": Array [
-                                                  "neutral",
-                                                  "-5",
-                                                ],
-                                                "ruleWidth": 1,
-                                              },
-                                              "inputStyle": Object {
-                                                "borderStyle": "solid",
-                                                "borderWidth": 1,
-                                                "fontWeightLabel": "bold",
-                                                "height": 6,
-                                                "lines": 1,
-                                                "radius": 0,
-                                                "typeScale": -1,
-                                              },
-                                              "mq": [Function],
-                                              "navigationI18n": Object {
-                                                "additionalMenuItems": Object {
-                                                  "promotions": Array [
-                                                    Object {
-                                                      "name": "רכשו מינוי",
-                                                      "url": "https://www.haaretz.co.il/promotions-page",
-                                                    },
-                                                  ],
-                                                  "sections": Array [
-                                                    Object {
-                                                      "name": "מהדורה מודפסת",
-                                                      "url": "https://www.haaretz.co.il/st/inter/Global/dailyedition/today/",
-                                                    },
-                                                    Object {
-                                                      "name": "הארץ שלי",
-                                                      "url": "https://www.haaretz.co.il/personal-area/haaretz-sheli",
-                                                    },
-                                                    Object {
-                                                      "name": "העיתון שלי",
-                                                      "url": "https://www.haaretz.co.il/personal-area/my-account",
-                                                    },
-                                                  ],
-                                                  "sites": Array [
-                                                    Object {
-                                                      "name": "haaretz.com",
-                                                      "url": "https://www.haaretz.com",
-                                                    },
-                                                    Object {
-                                                      "name": "themarker.com",
-                                                      "url": "https://www.themarker.com",
-                                                    },
-                                                  ],
-                                                },
-                                                "button": "ניווט",
-                                              },
-                                              "newsletterI18n": Object {
-                                                "buttons": Object {
-                                                  "newsletterConfirmedButton": "לרשימה המלא",
-                                                  "newsletterSubmit": "הרשמה",
-                                                },
-                                                "texts": Object {
-                                                  "newsletterConfirmedText": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
-                                                  "newsletterConfirmedTitleText": "תודה שנרשמת",
-                                                  "newsletterTitle": "הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום",
-                                                },
-                                              },
-                                              "newsletterStyle": Object {
-                                                "highlight": Object {
-                                                  "buttonVariant": "neutral",
-                                                  "inputVariant": "primary",
-                                                },
-                                                "primary": Object {
-                                                  "buttonVariant": "primary",
-                                                  "inputVariant": "primaryInverse",
-                                                },
-                                              },
-                                              "osakaI18n": Object {
-                                                "nextArticle": "לכתבה הבאה במדור",
-                                                "promotedContent": "תוכן מקודם",
-                                              },
-                                              "pxToRem": [Function],
-                                              "selectStyle": Object {
-                                                "borderStyle": "solid",
-                                                "borderWidth": 1,
-                                                "lines": 0,
-                                              },
-                                              "tagsElementI18n": Object {
-                                                "prefix": "תגיות:",
-                                              },
-                                              "textInputI18n": Object {
-                                                "requiredLong": "שדה חובה",
-                                                "requiredShort": "*",
-                                              },
-                                              "type": [Function],
-                                              "typeConf": Object {
-                                                "default": Object {
-                                                  "base": 16,
-                                                  "minPadding": 2,
-                                                  "ratio": 2,
-                                                  "rhythmUnit": 6,
-                                                  "steps": 5,
-                                                },
-                                                "xl": Object {
-                                                  "base": 18,
-                                                  "minPadding": 2,
-                                                  "ratio": 2,
-                                                  "rhythmUnit": 7,
-                                                  "steps": 5,
-                                                },
-                                              },
-                                              "zoominText": "הגדל",
-                                              "zoomoutText": "הקטן",
-                                            }
-                                          }
-                                          isActive={false}
+                                        <FelaTheme
+                                          render={[Function]}
                                         >
-                                          <div
-                                            className="htz-dv htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj htz-bs htz-fk"
-                                          />
-                                        </rippleStyle>
-                                      </rippleStyle>
+                                          <rippleStyle
+                                            bgColor="#0B7EB5"
+                                            isActive={false}
+                                          >
+                                            <rippleStyle
+                                              _felaTheme={
+                                                Object {
+                                                  "articleStyle": Object {
+                                                    "article": Object {
+                                                      "aside": Array [
+                                                        Object {
+                                                          "until": "l",
+                                                          "value": "none",
+                                                        },
+                                                        Object {
+                                                          "from": "l",
+                                                          "value": "block",
+                                                        },
+                                                      ],
+                                                      "marginEnd": Array [
+                                                        Object {
+                                                          "until": "l",
+                                                          "value": "0",
+                                                        },
+                                                        Object {
+                                                          "from": "l",
+                                                          "until": "xl",
+                                                          "value": "57rem",
+                                                        },
+                                                        Object {
+                                                          "from": "xl",
+                                                          "value": "51rem",
+                                                        },
+                                                      ],
+                                                      "marginStart": Array [
+                                                        Object {
+                                                          "until": "l",
+                                                          "value": "0",
+                                                        },
+                                                        Object {
+                                                          "from": "l",
+                                                          "until": "xl",
+                                                          "value": "27rem",
+                                                        },
+                                                        Object {
+                                                          "from": "xl",
+                                                          "value": "30rem",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "body": Object {
+                                                      "marginBottom": Array [
+                                                        Object {
+                                                          "until": "xl",
+                                                          "value": "4rem",
+                                                        },
+                                                        Object {
+                                                          "from": "xl",
+                                                          "value": "3rem",
+                                                        },
+                                                      ],
+                                                      "marginEnd": Array [
+                                                        Object {
+                                                          "until": "m",
+                                                          "value": "2rem",
+                                                        },
+                                                        Object {
+                                                          "from": "m",
+                                                          "until": "l",
+                                                          "value": "10rem",
+                                                        },
+                                                      ],
+                                                      "marginStart": Array [
+                                                        Object {
+                                                          "until": "m",
+                                                          "value": "2rem",
+                                                        },
+                                                        Object {
+                                                          "from": "m",
+                                                          "until": "l",
+                                                          "value": "10rem",
+                                                        },
+                                                        Object {
+                                                          "from": "l",
+                                                          "value": "4rem",
+                                                        },
+                                                      ],
+                                                      "width": Array [
+                                                        Object {
+                                                          "from": "l",
+                                                          "until": "xl",
+                                                          "value": "70.5rem",
+                                                        },
+                                                        Object {
+                                                          "from": "xl",
+                                                          "value": "80rem",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "currentArticleInSeries": Object {
+                                                      "@media (max-width: 79.9375em)": Object {
+                                                        "fontSize": "2.3333333333333335rem",
+                                                        "lineHeight": "1.2857142857142858em",
+                                                      },
+                                                      "@media (min-width: 80em)": Object {
+                                                        "fontSize": "2.2857142857142856rem",
+                                                        "lineHeight": "1.3125em",
+                                                      },
+                                                      "backgroundColor": "#FFF17A",
+                                                      "fontWeight": "700",
+                                                    },
+                                                    "header": Object {
+                                                      "blockKicker": Object {
+                                                        "backgroundColor": "#A8001C",
+                                                        "color": "#FFF",
+                                                      },
+                                                      "bylineCreditColor": "#006B96",
+                                                      "bylineFontSize": Array [
+                                                        Object {
+                                                          "until": "m",
+                                                          "value": -2,
+                                                        },
+                                                        Object {
+                                                          "from": "m",
+                                                          "until": "l",
+                                                          "value": -1,
+                                                        },
+                                                        Object {
+                                                          "from": "l",
+                                                          "value": -1,
+                                                        },
+                                                      ],
+                                                      "inlineKicker": Object {
+                                                        "backgroundColor": "transparent",
+                                                        "color": "#A8001C",
+                                                        "separator": "|",
+                                                      },
+                                                      "marginEnd": Array [
+                                                        Object {
+                                                          "until": "m",
+                                                          "value": "2rem",
+                                                        },
+                                                        Object {
+                                                          "from": "m",
+                                                          "until": "l",
+                                                          "value": "2rem",
+                                                        },
+                                                      ],
+                                                      "marginStart": Array [
+                                                        Object {
+                                                          "until": "l",
+                                                          "value": "2rem",
+                                                        },
+                                                        Object {
+                                                          "from": "l",
+                                                          "value": "4rem",
+                                                        },
+                                                      ],
+                                                      "subtitleFontSize": Array [
+                                                        Object {
+                                                          "until": "xl",
+                                                          "value": 0,
+                                                        },
+                                                        Object {
+                                                          "from": "xl",
+                                                          "value": 1,
+                                                        },
+                                                      ],
+                                                      "titleFontSize": Array [
+                                                        Object {
+                                                          "until": "m",
+                                                          "value": 3,
+                                                        },
+                                                        Object {
+                                                          "from": "m",
+                                                          "until": "l",
+                                                          "value": 4,
+                                                        },
+                                                        Object {
+                                                          "from": "l",
+                                                          "value": 5,
+                                                        },
+                                                      ],
+                                                    },
+                                                    "linksBlockLink": Object {
+                                                      "@media (max-width: 79.9375em)": Object {
+                                                        "fontSize": "2.3333333333333335rem",
+                                                        "lineHeight": "1.2857142857142858em",
+                                                      },
+                                                      "@media (min-width: 80em)": Object {
+                                                        "fontSize": "2.2857142857142856rem",
+                                                        "lineHeight": "1.3125em",
+                                                      },
+                                                      "borderBottomStyle": "solid",
+                                                      "borderBottomWidth": "1px",
+                                                      "borderBottomWidthActive": "2px",
+                                                      "fontWeight": "700",
+                                                    },
+                                                    "paragraphLink": Object {
+                                                      "borderBottomStyle": "solid",
+                                                      "borderBottomWidth": "1px",
+                                                      "borderBottomWidthActive": "2px",
+                                                    },
+                                                    "paragraphStyles": Object {},
+                                                    "relatedArticlesLink": Object {
+                                                      ":focus": Object {
+                                                        "background": "none",
+                                                        "backgroundColor": "#FFE70C",
+                                                      },
+                                                      ":hover": Object {
+                                                        "backgroundPosition": "0 100%",
+                                                        "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                                                      },
+                                                      "@media (max-width: 79.9375em)": Object {
+                                                        "fontSize": "2.3333333333333335rem",
+                                                        "lineHeight": "1.2857142857142858em",
+                                                      },
+                                                      "@media (min-width: 80em)": Object {
+                                                        "fontSize": "2.2857142857142856rem",
+                                                        "lineHeight": "1.3125em",
+                                                      },
+                                                      "backgroundImage": "linear-gradient(to bottom, transparent 36%, #FFF17A, #FFF17A 50%, #FFF17A )",
+                                                      "backgroundPosition": "0 0",
+                                                      "backgroundSize": "100% 200%",
+                                                      "color": "#006B96",
+                                                      "fontWeight": "700",
+                                                      "position": "relative",
+                                                      "transitionDuration": "0.16666666666666666s",
+                                                      "transitionProperty": "background-position",
+                                                      "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                                                      "zIndex": "1",
+                                                    },
+                                                  },
+                                                  "bps": Object {
+                                                    "misc": Object {
+                                                      "hidpi": "(min-resolution: 1.5dppx)",
+                                                      "landscape": "(orientation: landscape)",
+                                                      "portrait": "(orientation: portrait)",
+                                                    },
+                                                    "widths": Object {
+                                                      "l": 1024,
+                                                      "m": 768,
+                                                      "s": 600,
+                                                      "xl": 1280,
+                                                    },
+                                                  },
+                                                  "btnStyle": Object {
+                                                    "borderBottomStyle": "solid",
+                                                    "borderBottomWidth": 1,
+                                                    "borderEndStyle": "solid",
+                                                    "borderEndWidth": 1,
+                                                    "borderStartStyle": "solid",
+                                                    "borderStartWidth": 1,
+                                                    "borderTopStyle": "solid",
+                                                    "borderTopWidth": 1,
+                                                    "boxModel": Object {
+                                                      "hp": 4,
+                                                      "vp": 1,
+                                                    },
+                                                    "fontWeight": "bold",
+                                                    "radius": 0,
+                                                  },
+                                                  "captionStyles": Object {
+                                                    "backgroundColor": Array [
+                                                      "neutral",
+                                                      "-10",
+                                                    ],
+                                                    "captionColor": Array [
+                                                      "neutral",
+                                                      "-2",
+                                                    ],
+                                                    "captionTypeSettings": -2,
+                                                    "creditStyles": Object {
+                                                      "fontWeight": "300",
+                                                    },
+                                                    "fontFamily": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                                    "fontWeight": "700",
+                                                  },
+                                                  "color": [Function],
+                                                  "commentFormI18n": Object {
+                                                    "buttons": Object {
+                                                      "cancelBtnTxt": "בטל",
+                                                      "sendBtnTxt": "שלח",
+                                                      "toggleUserBtnText": "להוספת תגובה מזוהה לחץ כאן",
+                                                    },
+                                                    "errorNotes": Object {
+                                                      "commentErrorNoteTxt": "נא להזין את תוכן התגובה",
+                                                      "nameErrorNoteTxt": "חובה להזין שם",
+                                                    },
+                                                    "labels": Object {
+                                                      "commentLabelTxt": "תגובה",
+                                                      "nameLabelTxt": "שם",
+                                                    },
+                                                    "notes": Object {
+                                                      "commentNoteTxt": "בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ",
+                                                      "nameNoteTxt": "הזינו שם שיוצג כמחבר התגובה",
+                                                    },
+                                                  },
+                                                  "commentI18n": Object {
+                                                    "buttons": Object {
+                                                      "readMoreBtnTxt": "קרא עוד",
+                                                      "replyBtnTxt": "הגב",
+                                                      "reportAbuseBtnTxt": "דווח כפוגעני",
+                                                    },
+                                                    "tags": Object {
+                                                      "editorsPick": "בחירת העורכים",
+                                                      "usersPick": "בחירת הגולשים",
+                                                    },
+                                                  },
+                                                  "commentSentI18n": Object {
+                                                    "buttons": Object {
+                                                      "closeBtnText": "סגור",
+                                                      "dontGetNotificationsBtnTxt": "לא תודה",
+                                                      "getNotificationsBtnTxt": "עדכנו אותי",
+                                                    },
+                                                    "errorNotes": Object {
+                                                      "emailErrorNoteTxt": "נא להזין כתובת דוא\\"ל תקינה",
+                                                    },
+                                                    "labels": Object {
+                                                      "emailLabelTxt": "דוא\\"ל",
+                                                    },
+                                                    "notes": Object {
+                                                      "emailNoteTxt": "הזינו כתובת דוא\\"ל לקבלת התראות",
+                                                    },
+                                                    "texts": Object {
+                                                      "commentRecievedBoldText": "תגובתך נקלטה בהצלחה, ",
+                                                      "commentRecievedBoldTextThankYouPage": "תודה!",
+                                                      "commentRecievedText": "ותפורסם על פי מדיניות המערכת.",
+                                                      "commentRecievedTextSecondRow": "באפשרותך לקבל התראה בדוא\\"ל כאשר תגובתך תאושר ותפורסם",
+                                                      "commentRecievedTextThankYouPage": "תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת",
+                                                    },
+                                                  },
+                                                  "commentsSectionI18n": Object {
+                                                    "buttons": Object {
+                                                      "loadAllCommentsBtnText": "טען את כל התגובות",
+                                                    },
+                                                    "selectItems": Object {
+                                                      "commentRatingItemTxt": "הצג לפי דירוג",
+                                                      "dateAscendingItemTxt": "מהראשונה לאחרונה",
+                                                      "dateDescendingItemTxt": "מהאחרונה לראשונה",
+                                                      "editorsPickItemTxt": "בחירת העורכים",
+                                                    },
+                                                    "texts": Object {
+                                                      "chooseSortMethodText": "סדרו את התגובות",
+                                                    },
+                                                  },
+                                                  "commentsStyle": Object {
+                                                    "textInputVariant": "primary",
+                                                  },
+                                                  "direction": "rtl",
+                                                  "fontStacks": Object {
+                                                    "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                                    "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                                                  },
+                                                  "footerBorderStyle": Object {
+                                                    "borderStyle": "solid",
+                                                    "borderWidth": "1px",
+                                                    "footerMobileBorderStyle": Object {
+                                                      "borderStyle": "solid",
+                                                      "borderWidth": "1px",
+                                                      "lines": 2,
+                                                    },
+                                                    "lines": 2,
+                                                  },
+                                                  "footerDesktopI18n": Object {
+                                                    "Copyright": Object {
+                                                      "firstRow": "חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל",
+                                                      "secondRow": "© כל הזכויות שמורות להוצאת עיתון הארץ בע\\"מ",
+                                                    },
+                                                    "ExpandedButton": Object {
+                                                      "close": "סגור",
+                                                      "showMore": "הצג עוד",
+                                                    },
+                                                  },
+                                                  "footerMobileListsI18n": Object {
+                                                    "ButtonName": Object {
+                                                      "text": "להורדת האפליקציה",
+                                                    },
+                                                    "Copyright": Object {
+                                                      "text": "© כל הזכויות שמורות",
+                                                    },
+                                                    "MobileList": Array [
+                                                      Object {
+                                                        "link": "https://www.haaretz.co.il/promotions-page",
+                                                        "text": "רכשו מנוי",
+                                                      },
+                                                      Object {
+                                                        "link": "https://www.haaretz.co.il/blogs",
+                                                        "text": "בלוגים",
+                                                      },
+                                                      Object {
+                                                        "link": "https://www.haaretz.co.il/misc/terms-of-use",
+                                                        "text": "תנאי שימוש",
+                                                      },
+                                                      Object {
+                                                        "link": "https://www.haaretz.co.il/misc/contact-us",
+                                                        "text": "צרו קשר",
+                                                      },
+                                                      Object {
+                                                        "link": "https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html",
+                                                        "text": "פרסמו באתר",
+                                                      },
+                                                      Object {
+                                                        "link": "https://www.haaretz.co.il/personal-area/my-account",
+                                                        "text": "שירות למנויים",
+                                                      },
+                                                    ],
+                                                  },
+                                                  "getDelay": [Function],
+                                                  "getDuration": [Function],
+                                                  "getMqString": [Function],
+                                                  "getTimingFunction": [Function],
+                                                  "getTransition": [Function],
+                                                  "getTransitionString": [Function],
+                                                  "getZIndex": [Function],
+                                                  "gridStyle": Object {
+                                                    "gutterWidth": 4,
+                                                    "ruleColor": Array [
+                                                      "neutral",
+                                                      "-5",
+                                                    ],
+                                                    "ruleWidth": 1,
+                                                  },
+                                                  "inputStyle": Object {
+                                                    "borderStyle": "solid",
+                                                    "borderWidth": 1,
+                                                    "fontWeightLabel": "bold",
+                                                    "height": 6,
+                                                    "lines": 1,
+                                                    "radius": 0,
+                                                    "typeScale": -1,
+                                                  },
+                                                  "mq": [Function],
+                                                  "navigationI18n": Object {
+                                                    "additionalMenuItems": Object {
+                                                      "promotions": Array [
+                                                        Object {
+                                                          "name": "רכשו מינוי",
+                                                          "url": "https://www.haaretz.co.il/promotions-page",
+                                                        },
+                                                      ],
+                                                      "sections": Array [
+                                                        Object {
+                                                          "name": "מהדורה מודפסת",
+                                                          "url": "https://www.haaretz.co.il/st/inter/Global/dailyedition/today/",
+                                                        },
+                                                        Object {
+                                                          "name": "הארץ שלי",
+                                                          "url": "https://www.haaretz.co.il/personal-area/haaretz-sheli",
+                                                        },
+                                                        Object {
+                                                          "name": "העיתון שלי",
+                                                          "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                                        },
+                                                      ],
+                                                      "sites": Array [
+                                                        Object {
+                                                          "name": "haaretz.com",
+                                                          "url": "https://www.haaretz.com",
+                                                        },
+                                                        Object {
+                                                          "name": "themarker.com",
+                                                          "url": "https://www.themarker.com",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "button": "ניווט",
+                                                  },
+                                                  "newsletterI18n": Object {
+                                                    "buttons": Object {
+                                                      "newsletterConfirmedButton": "לרשימה המלא",
+                                                      "newsletterSubmit": "הרשמה",
+                                                    },
+                                                    "texts": Object {
+                                                      "newsletterConfirmedText": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
+                                                      "newsletterConfirmedTitleText": "תודה שנרשמת",
+                                                      "newsletterTitle": "הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום",
+                                                    },
+                                                  },
+                                                  "newsletterStyle": Object {
+                                                    "highlight": Object {
+                                                      "buttonVariant": "neutral",
+                                                      "inputVariant": "primary",
+                                                    },
+                                                    "primary": Object {
+                                                      "buttonVariant": "primary",
+                                                      "inputVariant": "primaryInverse",
+                                                    },
+                                                  },
+                                                  "osakaI18n": Object {
+                                                    "nextArticle": "לכתבה הבאה במדור",
+                                                    "promotedContent": "תוכן מקודם",
+                                                  },
+                                                  "pxToRem": [Function],
+                                                  "selectStyle": Object {
+                                                    "borderStyle": "solid",
+                                                    "borderWidth": 1,
+                                                    "lines": 0,
+                                                  },
+                                                  "tagsElementI18n": Object {
+                                                    "prefix": "תגיות:",
+                                                  },
+                                                  "textInputI18n": Object {
+                                                    "requiredLong": "שדה חובה",
+                                                    "requiredShort": "*",
+                                                  },
+                                                  "type": [Function],
+                                                  "typeConf": Object {
+                                                    "default": Object {
+                                                      "base": 16,
+                                                      "minPadding": 2,
+                                                      "ratio": 2,
+                                                      "rhythmUnit": 6,
+                                                      "steps": 5,
+                                                    },
+                                                    "xl": Object {
+                                                      "base": 18,
+                                                      "minPadding": 2,
+                                                      "ratio": 2,
+                                                      "rhythmUnit": 7,
+                                                      "steps": 5,
+                                                    },
+                                                  },
+                                                  "zoominText": "הגדל",
+                                                  "zoomoutText": "הקטן",
+                                                }
+                                              }
+                                              bgColor="#0B7EB5"
+                                              isActive={false}
+                                            >
+                                              <div
+                                                className="htz-ed htz-fm htz-fn htz-fo htz-fp htz-fq htz-fr htz-ca htz-fs"
+                                              />
+                                            </rippleStyle>
+                                          </rippleStyle>
+                                        </FelaTheme>
+                                      </FelaComponent>
                                       <checkStyle
                                         checked={false}
+                                        variant="primary"
                                       >
                                         <checkStyle
                                           _felaTheme={
@@ -5679,16 +5572,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   ],
                                                 },
                                                 "linksBlockLink": Object {
-                                                  ":focus": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "2px",
-                                                  },
-                                                  ":hover": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "1px",
-                                                  },
                                                   "@media (max-width: 79.9375em)": Object {
                                                     "fontSize": "2.3333333333333335rem",
                                                     "lineHeight": "1.2857142857142858em",
@@ -5697,21 +5580,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                     "fontSize": "2.2857142857142856rem",
                                                     "lineHeight": "1.3125em",
                                                   },
-                                                  "color": "#0B7EB5",
+                                                  "borderBottomStyle": "solid",
+                                                  "borderBottomWidth": "1px",
+                                                  "borderBottomWidthActive": "2px",
                                                   "fontWeight": "700",
                                                 },
                                                 "paragraphLink": Object {
-                                                  ":focus": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "2px",
-                                                  },
-                                                  ":hover": Object {
-                                                    "borderBottomColor": "#0B7EB5",
-                                                    "borderBottomStyle": "solid",
-                                                    "borderBottomWidth": "1px",
-                                                  },
-                                                  "color": "#0B7EB5",
+                                                  "borderBottomStyle": "solid",
+                                                  "borderBottomWidth": "1px",
+                                                  "borderBottomWidthActive": "2px",
                                                 },
                                                 "paragraphStyles": Object {},
                                                 "relatedArticlesLink": Object {
@@ -6038,9 +5915,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                             }
                                           }
                                           checked={false}
+                                          variant="primary"
                                         >
                                           <div
-                                            className="htz-dt htz-fl htz-bo htz-fm htz-fn htz-fo htz-fk htz-eu htz-fp htz-av htz-fq htz-fr htz-ao htz-fs htz-fa htz-fb htz-fc htz-fd"
+                                            className="htz-eb htz-ft htz-bw htz-fu htz-fv htz-fw htz-fs htz-fc htz-fx htz-bd htz-fy htz-fz htz-aw htz-ga htz-fi htz-fj htz-fk htz-fl"
                                           />
                                         </checkStyle>
                                       </checkStyle>
@@ -6229,16 +6107,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                             ],
                                           },
                                           "linksBlockLink": Object {
-                                            ":focus": Object {
-                                              "borderBottomColor": "#0B7EB5",
-                                              "borderBottomStyle": "solid",
-                                              "borderBottomWidth": "2px",
-                                            },
-                                            ":hover": Object {
-                                              "borderBottomColor": "#0B7EB5",
-                                              "borderBottomStyle": "solid",
-                                              "borderBottomWidth": "1px",
-                                            },
                                             "@media (max-width: 79.9375em)": Object {
                                               "fontSize": "2.3333333333333335rem",
                                               "lineHeight": "1.2857142857142858em",
@@ -6247,21 +6115,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                               "fontSize": "2.2857142857142856rem",
                                               "lineHeight": "1.3125em",
                                             },
-                                            "color": "#0B7EB5",
+                                            "borderBottomStyle": "solid",
+                                            "borderBottomWidth": "1px",
+                                            "borderBottomWidthActive": "2px",
                                             "fontWeight": "700",
                                           },
                                           "paragraphLink": Object {
-                                            ":focus": Object {
-                                              "borderBottomColor": "#0B7EB5",
-                                              "borderBottomStyle": "solid",
-                                              "borderBottomWidth": "2px",
-                                            },
-                                            ":hover": Object {
-                                              "borderBottomColor": "#0B7EB5",
-                                              "borderBottomStyle": "solid",
-                                              "borderBottomWidth": "1px",
-                                            },
-                                            "color": "#0B7EB5",
+                                            "borderBottomStyle": "solid",
+                                            "borderBottomWidth": "1px",
+                                            "borderBottomWidthActive": "2px",
                                           },
                                           "paragraphStyles": Object {},
                                           "relatedArticlesLink": Object {
@@ -6589,7 +6451,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     }
                                   >
                                     <div
-                                      className="htz-ft"
+                                      className="htz-gb"
                                     >
                                       ברצוני לקבל ניוזלטרים, מידע שיווקי והטבות
                                     </div>
@@ -6784,16 +6646,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           ],
                                         },
                                         "linksBlockLink": Object {
-                                          ":focus": Object {
-                                            "borderBottomColor": "#0B7EB5",
-                                            "borderBottomStyle": "solid",
-                                            "borderBottomWidth": "2px",
-                                          },
-                                          ":hover": Object {
-                                            "borderBottomColor": "#0B7EB5",
-                                            "borderBottomStyle": "solid",
-                                            "borderBottomWidth": "1px",
-                                          },
                                           "@media (max-width: 79.9375em)": Object {
                                             "fontSize": "2.3333333333333335rem",
                                             "lineHeight": "1.2857142857142858em",
@@ -6802,21 +6654,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                             "fontSize": "2.2857142857142856rem",
                                             "lineHeight": "1.3125em",
                                           },
-                                          "color": "#0B7EB5",
+                                          "borderBottomStyle": "solid",
+                                          "borderBottomWidth": "1px",
+                                          "borderBottomWidthActive": "2px",
                                           "fontWeight": "700",
                                         },
                                         "paragraphLink": Object {
-                                          ":focus": Object {
-                                            "borderBottomColor": "#0B7EB5",
-                                            "borderBottomStyle": "solid",
-                                            "borderBottomWidth": "2px",
-                                          },
-                                          ":hover": Object {
-                                            "borderBottomColor": "#0B7EB5",
-                                            "borderBottomStyle": "solid",
-                                            "borderBottomWidth": "1px",
-                                          },
-                                          "color": "#0B7EB5",
+                                          "borderBottomStyle": "solid",
+                                          "borderBottomWidth": "1px",
+                                          "borderBottomWidthActive": "2px",
                                         },
                                         "paragraphStyles": Object {},
                                         "relatedArticlesLink": Object {
@@ -7149,14 +6995,14 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                   variant="primary"
                                 >
                                   <Note
-                                    className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx"
+                                    className="htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf"
                                     isError={false}
                                     noteId="123456789"
                                     text=" "
                                     variant="primary"
                                   >
                                     <span
-                                      className="htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx"
+                                      className="htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf"
                                       id="123456789"
                                     >
                                        
@@ -7291,11 +7137,11 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                             >
                               <div>
                                 <div
-                                  class="htz-bs htz-d htz-dt htz-c htz-dv htz-dw htz-fu htz-fv htz-du htz-fw"
+                                  class="htz-ca htz-d htz-eb htz-c htz-ed htz-ee htz-gc htz-gd htz-ec htz-ge"
                                 />
                                 <div
                                   aria-hidden="true"
-                                  class="htz-dv htz-fh htz-fg htz-fx htz-fy htz-fz htz-ga htz-gb htz-gc htz-gd htz-ge htz-gf"
+                                  class="htz-ed htz-fp htz-fo htz-gf htz-gg htz-gh htz-gi htz-gj htz-gk htz-gl htz-gm htz-gn"
                                   role="dialog"
                                   tabindex="0"
                                 >
@@ -7303,17 +7149,17 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     role="document"
                                   >
                                     <div
-                                      class="htz-gg htz-b htz-d htz-e"
+                                      class="htz-go htz-b htz-d htz-e"
                                     >
                                       <button
-                                        class="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gh htz-j htz-bp htz-cb htz-cc htz-dv htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-gi htz-an htz-ao htz-ag htz-ak htz-al htz-ah htz-cm htz-bo htz-gj htz-co htz-fu htz-dw htz-cr htz-cs htz-ct htz-gk htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-gl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-gm htz-dj htz-bb htz-dk htz-dl htz-dm"
+                                        class="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gp htz-u htz-bx htz-cj htz-ck htz-ed htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-gq htz-av htz-aw htz-ao htz-as htz-at htz-ap htz-ct htz-bw htz-gr htz-cv htz-gc htz-ee htz-cy htz-cz htz-da htz-db htz-gs htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-gt htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-gu htz-dr htz-r htz-ds htz-dt htz-du"
                                         type="button"
                                       >
                                         <span
-                                          class="htz-dn htz-do htz-bh htz-bi htz-dp htz-dq htz-dr"
+                                          class="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
                                         >
                                           <svg
-                                            class="htz-gn htz-go htz-gp htz-gq"
+                                            class="htz-gv htz-gw htz-gx htz-gy"
                                             height="1em"
                                             viewBox="0 0 256 256"
                                             width="1em"
@@ -7326,32 +7172,32 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           </svg>
                                         </span>
                                         <span
-                                          class="htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-c htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ek"
+                                          class="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
                                         />
                                       </button>
                                       <p
-                                        class="htz-k htz-l htz-m htz-n htz-e"
+                                        class="htz-v htz-w htz-x htz-y htz-e"
                                       >
                                         <strong>
                                           תודה שנרשמת
                                         </strong>
                                       </p>
                                       <p
-                                        class="htz-k htz-l htz-m htz-n htz-e"
+                                        class="htz-v htz-w htz-x htz-y htz-e"
                                       >
                                         יש לנו דיוורים נוספים שעשויים לעניין אותך
                                       </p>
                                       <a
-                                        class="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gr htz-j htz-bp htz-cb htz-cc htz-a htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-at htz-an htz-ao htz-ck htz-ak htz-al htz-cl htz-cm htz-bo htz-cn htz-co htz-ai htz-k htz-l htz-m htz-n htz-gs htz-cr htz-cs htz-ct htz-cu htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-bb htz-dk htz-dl htz-dm"
+                                        class="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gz htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-ha htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
                                         href="https://www.haaretz.co.il/personal-area/newsletter"
                                       >
                                         <span
-                                          class="htz-dn htz-do htz-bh htz-bi htz-dp htz-dq htz-dr"
+                                          class="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
                                         >
                                           לרשימה המלא
                                         </span>
                                         <span
-                                          class="htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-c htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ek"
+                                          class="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
                                         />
                                       </a>
                                     </div>
@@ -7372,11 +7218,11 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                               >
                                 <div>
                                   <div
-                                    class="htz-bs htz-d htz-dt htz-c htz-dv htz-dw htz-fu htz-fv htz-du htz-fw"
+                                    class="htz-ca htz-d htz-eb htz-c htz-ed htz-ee htz-gc htz-gd htz-ec htz-ge"
                                   />
                                   <div
                                     aria-hidden="true"
-                                    class="htz-dv htz-fh htz-fg htz-fx htz-fy htz-fz htz-ga htz-gb htz-gc htz-gd htz-ge htz-gf"
+                                    class="htz-ed htz-fp htz-fo htz-gf htz-gg htz-gh htz-gi htz-gj htz-gk htz-gl htz-gm htz-gn"
                                     role="dialog"
                                     tabindex="0"
                                   >
@@ -7384,17 +7230,17 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                       role="document"
                                     >
                                       <div
-                                        class="htz-gg htz-b htz-d htz-e"
+                                        class="htz-go htz-b htz-d htz-e"
                                       >
                                         <button
-                                          class="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gh htz-j htz-bp htz-cb htz-cc htz-dv htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-gi htz-an htz-ao htz-ag htz-ak htz-al htz-ah htz-cm htz-bo htz-gj htz-co htz-fu htz-dw htz-cr htz-cs htz-ct htz-gk htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-gl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-gm htz-dj htz-bb htz-dk htz-dl htz-dm"
+                                          class="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gp htz-u htz-bx htz-cj htz-ck htz-ed htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-gq htz-av htz-aw htz-ao htz-as htz-at htz-ap htz-ct htz-bw htz-gr htz-cv htz-gc htz-ee htz-cy htz-cz htz-da htz-db htz-gs htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-gt htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-gu htz-dr htz-r htz-ds htz-dt htz-du"
                                           type="button"
                                         >
                                           <span
-                                            class="htz-dn htz-do htz-bh htz-bi htz-dp htz-dq htz-dr"
+                                            class="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
                                           >
                                             <svg
-                                              class="htz-gn htz-go htz-gp htz-gq"
+                                              class="htz-gv htz-gw htz-gx htz-gy"
                                               height="1em"
                                               viewBox="0 0 256 256"
                                               width="1em"
@@ -7407,32 +7253,32 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                             </svg>
                                           </span>
                                           <span
-                                            class="htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-c htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ek"
+                                            class="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
                                           />
                                         </button>
                                         <p
-                                          class="htz-k htz-l htz-m htz-n htz-e"
+                                          class="htz-v htz-w htz-x htz-y htz-e"
                                         >
                                           <strong>
                                             תודה שנרשמת
                                           </strong>
                                         </p>
                                         <p
-                                          class="htz-k htz-l htz-m htz-n htz-e"
+                                          class="htz-v htz-w htz-x htz-y htz-e"
                                         >
                                           יש לנו דיוורים נוספים שעשויים לעניין אותך
                                         </p>
                                         <a
-                                          class="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gr htz-j htz-bp htz-cb htz-cc htz-a htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-at htz-an htz-ao htz-ck htz-ak htz-al htz-cl htz-cm htz-bo htz-cn htz-co htz-ai htz-k htz-l htz-m htz-n htz-gs htz-cr htz-cs htz-ct htz-cu htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-bb htz-dk htz-dl htz-dm"
+                                          class="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gz htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-ha htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
                                           href="https://www.haaretz.co.il/personal-area/newsletter"
                                         >
                                           <span
-                                            class="htz-dn htz-do htz-bh htz-bi htz-dp htz-dq htz-dr"
+                                            class="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
                                           >
                                             לרשימה המלא
                                           </span>
                                           <span
-                                            class="htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-c htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ek"
+                                            class="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
                                           />
                                         </a>
                                       </div>
@@ -7449,7 +7295,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                               onFocus={[Function]}
                             >
                               <div
-                                className="htz-bs htz-d htz-dt htz-c htz-dv htz-dw htz-fu htz-fv htz-du htz-fw"
+                                className="htz-ca htz-d htz-eb htz-c htz-ed htz-ee htz-gc htz-gd htz-ec htz-ge"
                               />
                               <FelaComponent
                                 containerMiscStyles={
@@ -7495,7 +7341,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                 >
                                   <div
                                     aria-hidden="true"
-                                    className="htz-dv htz-fh htz-fg htz-fx htz-fy htz-fz htz-ga htz-gb htz-gc htz-gd htz-ge htz-gf"
+                                    className="htz-ed htz-fp htz-fo htz-gf htz-gg htz-gh htz-gi htz-gj htz-gk htz-gl htz-gm htz-gn"
                                     role="dialog"
                                     tabIndex="0"
                                   >
@@ -7515,9 +7361,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                             render={[Function]}
                                           >
                                             <div
-                                              className="htz-gg htz-b htz-d htz-e"
+                                              className="htz-go htz-b htz-d htz-e"
                                             >
                                               <Button
+                                                asPath={null}
                                                 attrs={null}
                                                 boxModel={
                                                   Object {
@@ -7584,8 +7431,9 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   >
                                                     <ButtonWrapper
                                                       WrapperElement="button"
+                                                      asPath={null}
                                                       attrs={null}
-                                                      className="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gh htz-j htz-bp htz-cb htz-cc htz-dv htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-gi htz-an htz-ao htz-ag htz-ak htz-al htz-ah htz-cm htz-bo htz-gj htz-co htz-fu htz-dw htz-cr htz-cs htz-ct htz-gk htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-gl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-gm htz-dj htz-bb htz-dk htz-dl htz-dm"
+                                                      className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gp htz-u htz-bx htz-cj htz-ck htz-ed htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-gq htz-av htz-aw htz-ao htz-as htz-at htz-ap htz-ct htz-bw htz-gr htz-cv htz-gc htz-ee htz-cy htz-cz htz-da htz-db htz-gs htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-gt htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-gu htz-dr htz-r htz-ds htz-dt htz-du"
                                                       href={null}
                                                       id={null}
                                                       isBusy={false}
@@ -7596,7 +7444,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                       prefetch={false}
                                                     >
                                                       <button
-                                                        className="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gh htz-j htz-bp htz-cb htz-cc htz-dv htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-gi htz-an htz-ao htz-ag htz-ak htz-al htz-ah htz-cm htz-bo htz-gj htz-co htz-fu htz-dw htz-cr htz-cs htz-ct htz-gk htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-gl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-gm htz-dj htz-bb htz-dk htz-dl htz-dm"
+                                                        className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gp htz-u htz-bx htz-cj htz-ck htz-ed htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-gq htz-av htz-aw htz-ao htz-as htz-at htz-ap htz-ct htz-bw htz-gr htz-cv htz-gc htz-ee htz-cy htz-cz htz-da htz-db htz-gs htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-gt htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-gu htz-dr htz-r htz-ds htz-dt htz-du"
                                                         id={null}
                                                         onClick={[Function]}
                                                         type="button"
@@ -7610,7 +7458,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                             render={[Function]}
                                                           >
                                                             <span
-                                                              className="htz-dn htz-do htz-bh htz-bi htz-dp htz-dq htz-dr"
+                                                              className="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
                                                             >
                                                               <iconStyle
                                                                 color={null}
@@ -7799,16 +7647,6 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                           ],
                                                                         },
                                                                         "linksBlockLink": Object {
-                                                                          ":focus": Object {
-                                                                            "borderBottomColor": "#0B7EB5",
-                                                                            "borderBottomStyle": "solid",
-                                                                            "borderBottomWidth": "2px",
-                                                                          },
-                                                                          ":hover": Object {
-                                                                            "borderBottomColor": "#0B7EB5",
-                                                                            "borderBottomStyle": "solid",
-                                                                            "borderBottomWidth": "1px",
-                                                                          },
                                                                           "@media (max-width: 79.9375em)": Object {
                                                                             "fontSize": "2.3333333333333335rem",
                                                                             "lineHeight": "1.2857142857142858em",
@@ -7817,21 +7655,15 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                             "fontSize": "2.2857142857142856rem",
                                                                             "lineHeight": "1.3125em",
                                                                           },
-                                                                          "color": "#0B7EB5",
+                                                                          "borderBottomStyle": "solid",
+                                                                          "borderBottomWidth": "1px",
+                                                                          "borderBottomWidthActive": "2px",
                                                                           "fontWeight": "700",
                                                                         },
                                                                         "paragraphLink": Object {
-                                                                          ":focus": Object {
-                                                                            "borderBottomColor": "#0B7EB5",
-                                                                            "borderBottomStyle": "solid",
-                                                                            "borderBottomWidth": "2px",
-                                                                          },
-                                                                          ":hover": Object {
-                                                                            "borderBottomColor": "#0B7EB5",
-                                                                            "borderBottomStyle": "solid",
-                                                                            "borderBottomWidth": "1px",
-                                                                          },
-                                                                          "color": "#0B7EB5",
+                                                                          "borderBottomStyle": "solid",
+                                                                          "borderBottomWidth": "1px",
+                                                                          "borderBottomWidthActive": "2px",
                                                                         },
                                                                         "paragraphStyles": Object {},
                                                                         "relatedArticlesLink": Object {
@@ -8164,10 +7996,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                 >
                                                                   <UnstyledIconClose
                                                                     attrs={null}
-                                                                    className="htz-gn htz-go htz-gp htz-gq"
+                                                                    className="htz-gv htz-gw htz-gx htz-gy"
                                                                   >
                                                                     <svg
-                                                                      className="htz-gn htz-go htz-gp htz-gq"
+                                                                      className="htz-gv htz-gw htz-gx htz-gy"
                                                                       height="1em"
                                                                       viewBox="0 0 256 256"
                                                                       width="1em"
@@ -8193,7 +8025,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                             render={[Function]}
                                                           >
                                                             <span
-                                                              className="htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-c htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ek"
+                                                              className="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
                                                             />
                                                           </FelaTheme>
                                                         </FelaComponent>
@@ -8211,7 +8043,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   render={[Function]}
                                                 >
                                                   <p
-                                                    className="htz-k htz-l htz-m htz-n htz-e"
+                                                    className="htz-v htz-w htz-x htz-y htz-e"
                                                   >
                                                     <strong>
                                                       תודה שנרשמת
@@ -8228,13 +8060,14 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   render={[Function]}
                                                 >
                                                   <p
-                                                    className="htz-k htz-l htz-m htz-n htz-e"
+                                                    className="htz-v htz-w htz-x htz-y htz-e"
                                                   >
                                                     יש לנו דיוורים נוספים שעשויים לעניין אותך
                                                   </p>
                                                 </FelaTheme>
                                               </FelaComponent>
                                               <Button
+                                                asPath={null}
                                                 attrs={null}
                                                 boxModel={
                                                   Object {
@@ -8297,8 +8130,9 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   >
                                                     <ButtonWrapper
                                                       WrapperElement="button"
+                                                      asPath={null}
                                                       attrs={null}
-                                                      className="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gr htz-j htz-bp htz-cb htz-cc htz-a htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-at htz-an htz-ao htz-ck htz-ak htz-al htz-cl htz-cm htz-bo htz-cn htz-co htz-ai htz-k htz-l htz-m htz-n htz-gs htz-cr htz-cs htz-ct htz-cu htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-bb htz-dk htz-dl htz-dm"
+                                                      className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gz htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-ha htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
                                                       href="https://www.haaretz.co.il/personal-area/newsletter"
                                                       id={null}
                                                       isBusy={false}
@@ -8309,12 +8143,13 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                       prefetch={false}
                                                     >
                                                       <Link
+                                                        asPath={null}
                                                         attrs={
                                                           Object {
                                                             "id": null,
                                                           }
                                                         }
-                                                        className="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gr htz-j htz-bp htz-cb htz-cc htz-a htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-at htz-an htz-ao htz-ck htz-ak htz-al htz-cl htz-cm htz-bo htz-cn htz-co htz-ai htz-k htz-l htz-m htz-n htz-gs htz-cr htz-cs htz-ct htz-cu htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-bb htz-dk htz-dl htz-dm"
+                                                        className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gz htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-ha htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
                                                         content={null}
                                                         focus={false}
                                                         href="https://www.haaretz.co.il/personal-area/newsletter"
@@ -8323,7 +8158,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                         target={null}
                                                       >
                                                         <a
-                                                          className="htz-ae htz-af htz-by htz-bz htz-ca htz-ab htz-gr htz-j htz-bp htz-cb htz-cc htz-a htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-au htz-av htz-ax htz-aq htz-ar htz-at htz-an htz-ao htz-ck htz-ak htz-al htz-cl htz-cm htz-bo htz-cn htz-co htz-ai htz-k htz-l htz-m htz-n htz-gs htz-cr htz-cs htz-ct htz-cu htz-ba htz-cv htz-cw htz-bq htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-bb htz-dk htz-dl htz-dm"
+                                                          className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gz htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-ha htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
                                                           href="https://www.haaretz.co.il/personal-area/newsletter"
                                                           id={null}
                                                           onClick={null}
@@ -8338,7 +8173,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                               render={[Function]}
                                                             >
                                                               <span
-                                                                className="htz-dn htz-do htz-bh htz-bi htz-dp htz-dq htz-dr"
+                                                                className="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
                                                               >
                                                                 לרשימה המלא
                                                               </span>
@@ -8353,7 +8188,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                               render={[Function]}
                                                             >
                                                               <span
-                                                                className="htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-c htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ek"
+                                                                className="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
                                                               />
                                                             </FelaTheme>
                                                           </FelaComponent>
@@ -8411,16 +8246,16 @@ exports[`<Newsletter /> NewsletterConfirmed DOM element should correctly render 
     className="htz-a htz-b htz-c htz-d"
   >
     <button
-      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp"
+      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq"
       id={null}
       onClick={[MockFunction]}
       type="button"
     >
       <span
-        className="htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw"
+        className="htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx"
       >
         <svg
-          className="htz-bx htz-by htz-bz htz-ca"
+          className="htz-by htz-bz htz-ca htz-cb"
           height="1em"
           viewBox="0 0 256 256"
           width="1em"
@@ -8433,39 +8268,39 @@ exports[`<Newsletter /> NewsletterConfirmed DOM element should correctly render 
         </svg>
       </span>
       <span
-        className="htz-cb htz-cc htz-cd htz-p htz-aq htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+        className="htz-cc htz-cd htz-ce htz-p htz-aq htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct"
       />
     </button>
     <p
-      className="htz-ct htz-cu htz-cv htz-cw htz-d"
+      className="htz-cu htz-cv htz-cw htz-cx htz-d"
     >
       <strong>
         תודה שנרשמת
       </strong>
     </p>
     <p
-      className="htz-ct htz-cu htz-cv htz-cw htz-d"
+      className="htz-cu htz-cv htz-cw htz-cx htz-d"
     >
       יש לנו דיוורים נוספים שעשויים לעניין אותך
     </p>
     <a
-      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-cx htz-l htz-m htz-n htz-o htz-cy htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-cz htz-af htz-ag htz-da htz-ai htz-aj htz-db htz-al htz-am htz-dc htz-ao htz-dd htz-ct htz-cu htz-cv htz-cw htz-de htz-ar htz-as htz-at htz-df htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-dg htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-dh htz-bl htz-bm htz-bn htz-bo htz-bp"
+      className="htz-e htz-f htz-g htz-h htz-i htz-j htz-cy htz-l htz-m htz-n htz-o htz-cz htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-da htz-af htz-ag htz-db htz-ai htz-aj htz-dc htz-al htz-am htz-dd htz-ao htz-de htz-cu htz-cv htz-cw htz-cx htz-df htz-ar htz-as htz-at htz-au htz-dg htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-dh htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-di htz-bm htz-bn htz-bo htz-bp htz-bq"
       href="https://www.haaretz.co.il/personal-area/newsletter"
       id={null}
       onClick={null}
       target={null}
     >
       <span
-        className="htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw"
+        className="htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx"
       >
         לרשימה המלא
       </span>
       <span
-        className="htz-cb htz-cc htz-cd htz-p htz-aq htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs"
+        className="htz-cc htz-cd htz-ce htz-p htz-aq htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct"
       />
     </a>
   </div>
 </div>
 `;
 
-exports[`<Newsletter /> NewsletterConfirmed DOM element should correctly render a NewsletterConfirmed without any props 2`] = `".htz-a{text-align:center}.htz-b{padding:2rem}.htz-c{background-color:#FFE70C}.htz-d{color:#222}.htz-e{-webkit-align-items:center}.htz-f{align-items:center}.htz-g{-webkit-appearance:none}.htz-h{-moz-appearance:none}.htz-i{appearance:none}.htz-j{cursor:pointer}.htz-k{display:inline-block}.htz-l{font-weight:bold}.htz-m{font-size:inherit}.htz-n{-webkit-justify-content:center}.htz-o{justify-content:center}.htz-p{position:absolute}.htz-q{-webkit-transform:scale(1)}.htz-r{transform:scale(1)}.htz-s{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-t{text-decoration:none}.htz-u{white-space:nowrap}.htz-v::moz-focus-inner{border:0px}.htz-w::moz-focus-inner{padding:0rem}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{padding-bottom:calc(1rem - 1px)}.htz-ab{border-top-width:1px}.htz-ac{border-top-style:solid}.htz-ae{padding-top:0rem}.htz-af{border-right-width:1px}.htz-ag{border-right-style:solid}.htz-ah{padding-right:1rem}.htz-ai{border-left-width:1px}.htz-aj{border-left-style:solid}.htz-ak{padding-left:1rem}.htz-al{border-radius:0rem}.htz-am{background-color:transparent}.htz-an{border-color:transparent}.htz-ao{color:#2D2D2D}.htz-ap{left:0rem}.htz-aq{top:0rem}.htz-ar:hover{text-decoration:none}.htz-as:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-at:hover{background-color:rgba(0,0,0,.1)}.htz-au:hover{border-color:transparent}.htz-av:hover{color:#2D2D2D}.htz-aw:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ax:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ay:focus{outline:none}.htz-az:focus{text-decoration:none}.htz-ba:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bb:focus{background-color:#2D2D2D}.htz-bc:focus{border-color:transparent}.htz-bd:focus{color:hsl(0,0%,100%)}.htz-be:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bf:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bg:active{outline:none}.htz-bh:active{text-decoration:none}.htz-bi:active{transition-duration:0s}.htz-bj:active{background-color:transparent !important}.htz-bk:active{border-color:transparent}.htz-bl:active{color:#2D2D2D}.htz-bm{-webkit-box-align:center}.htz-bn{-webkit-box-pack:center}.htz-bo{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bp{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bq{opacity:1}.htz-br{transition-property:opacity}.htz-bs{transition-duration:0.16666666666666666s}.htz-bt{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bu{transition-delay:.3s}.htz-bv{-webkit-transition-property:opacity}.htz-bw{-moz-transition-property:opacity}.htz-bx{vertical-align:-0.15em}.htz-by{color:inherit}.htz-bz{fill:#FFF}.htz-ca{font-size:2rem}.htz-cb{background-color:rgba(200,200,200, 0.3)}.htz-cc{height:100%}.htz-cd{right:0rem}.htz-ce{-webkit-transform:scaleX(0)}.htz-cf{transform:scaleX(0)}.htz-cg{-webkit-transform-origin:right}.htz-ch{transform-origin:right}.htz-ci{width:100%}.htz-cj{-webkit-animation-direction:alternate}.htz-ck{animation-direction:alternate}.htz-cl{-webkit-animation-iteration-count:infinite}.htz-cm{animation-iteration-count:infinite}.htz-cn{-webkit-animation-duration:1s}.htz-co{animation-duration:1s}.htz-cp{-webkit-animation-delay:0.75s}.htz-cq{animation-delay:0.75s}.htz-cr{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cs{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cx{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-cy{position:relative}.htz-cz{padding-top:calc(1rem - 1px)}.htz-da{padding-right:3rem}.htz-db{padding-left:3rem}.htz-dc{border-color:#2D2D2D}.htz-dd{margin-top:1rem}.htz-de{margin-bottom:1rem}.htz-df:hover{border-color:#2D2D2D}.htz-dg:focus{border-color:#2D2D2D}.htz-dh:active{border-color:#2D2D2D}@media (max-width: 79.9375em){.htz-ct{font-size:2.3333333333333335rem}.htz-cu{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cv{font-size:2.2857142857142856rem}.htz-cw{line-height:1.3125em}}"`;
+exports[`<Newsletter /> NewsletterConfirmed DOM element should correctly render a NewsletterConfirmed without any props 2`] = `".htz-a{text-align:center}.htz-b{padding:2rem}.htz-c{background-color:#FFE70C}.htz-d{color:#222}.htz-e{-webkit-align-items:center}.htz-f{align-items:center}.htz-g{-webkit-appearance:none}.htz-h{-moz-appearance:none}.htz-i{appearance:none}.htz-j{cursor:pointer}.htz-k{display:inline-block}.htz-l{font-weight:bold}.htz-m{font-size:inherit}.htz-n{-webkit-justify-content:center}.htz-o{justify-content:center}.htz-p{position:absolute}.htz-q{-webkit-transform:scale(1)}.htz-r{transform:scale(1)}.htz-s{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-t{text-decoration:none}.htz-u{white-space:nowrap}.htz-v::moz-focus-inner{border:0px}.htz-w::moz-focus-inner{padding:0rem}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{padding-bottom:calc(1rem - 1px)}.htz-ab{border-top-width:1px}.htz-ac{border-top-style:solid}.htz-ae{padding-top:0rem}.htz-af{border-right-width:1px}.htz-ag{border-right-style:solid}.htz-ah{padding-right:1rem}.htz-ai{border-left-width:1px}.htz-aj{border-left-style:solid}.htz-ak{padding-left:1rem}.htz-al{border-radius:0rem}.htz-am{background-color:transparent}.htz-an{border-color:transparent}.htz-ao{color:#2D2D2D}.htz-ap{left:0rem}.htz-aq{top:0rem}.htz-ar:visited{color:#2D2D2D}.htz-as:hover{text-decoration:none}.htz-at:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-au:hover{background-color:rgba(0,0,0,.1)}.htz-av:hover{border-color:transparent}.htz-aw:hover{color:#2D2D2D}.htz-ax:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ay:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-az:focus{outline:none}.htz-ba:focus{text-decoration:none}.htz-bb:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bc:focus{background-color:#2D2D2D}.htz-bd:focus{border-color:transparent}.htz-be:focus{color:hsl(0,0%,100%)}.htz-bf:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bg:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bh:active{outline:none}.htz-bi:active{text-decoration:none}.htz-bj:active{transition-duration:0s}.htz-bk:active{background-color:transparent !important}.htz-bl:active{border-color:transparent}.htz-bm:active{color:#2D2D2D}.htz-bn{-webkit-box-align:center}.htz-bo{-webkit-box-pack:center}.htz-bp{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bq{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-br{opacity:1}.htz-bs{transition-property:opacity}.htz-bt{transition-duration:0.16666666666666666s}.htz-bu{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-bv{transition-delay:.3s}.htz-bw{-webkit-transition-property:opacity}.htz-bx{-moz-transition-property:opacity}.htz-by{vertical-align:-0.15em}.htz-bz{color:inherit}.htz-ca{fill:#FFF}.htz-cb{font-size:2rem}.htz-cc{background-color:rgba(200,200,200, 0.3)}.htz-cd{height:100%}.htz-ce{right:0rem}.htz-cf{-webkit-transform:scaleX(0)}.htz-cg{transform:scaleX(0)}.htz-ch{-webkit-transform-origin:right}.htz-ci{transform-origin:right}.htz-cj{width:100%}.htz-ck{-webkit-animation-direction:alternate}.htz-cl{animation-direction:alternate}.htz-cm{-webkit-animation-iteration-count:infinite}.htz-cn{animation-iteration-count:infinite}.htz-co{-webkit-animation-duration:1s}.htz-cp{animation-duration:1s}.htz-cq{-webkit-animation-delay:0.75s}.htz-cr{animation-delay:0.75s}.htz-cs{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ct{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cy{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-cz{position:relative}.htz-da{padding-top:calc(1rem - 1px)}.htz-db{padding-right:3rem}.htz-dc{padding-left:3rem}.htz-dd{border-color:#2D2D2D}.htz-de{margin-top:1rem}.htz-df{margin-bottom:1rem}.htz-dg:hover{border-color:#2D2D2D}.htz-dh:focus{border-color:#2D2D2D}.htz-di:active{border-color:#2D2D2D}@media (max-width: 79.9375em){.htz-cu{font-size:2.3333333333333335rem}.htz-cv{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cw{font-size:2.2857142857142856rem}.htz-cx{line-height:1.3125em}}"`;

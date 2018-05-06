@@ -48,6 +48,7 @@ import Video from './components/Video/Video';
 import IconAccessibility from './components/Icon/icons/IconAccessibility';
 import IconAlef from './components/Icon/icons/IconAlef';
 import IconAlefLogo from './components/Icon/icons/IconAlefLogo';
+import IconAlefLogoTransparent from './components/Icon/icons/IconAlefLogoTransparent';
 import IconAlert from './components/Icon/icons/IconAlert';
 import IconAndroid from './components/Icon/icons/IconAndroid';
 import IconApple from './components/Icon/icons/IconApple';
@@ -74,6 +75,7 @@ import IconMail from './components/Icon/icons/IconMail';
 import IconMailAlert from './components/Icon/icons/IconMailAlert';
 import IconMailFooter from './components/Icon/icons/IconMailFooter';
 import IconMarkerLogo from './components/Icon/icons/IconMarkerLogo';
+import IconMarkerLogoTransparent from './components/Icon/icons/IconMarkerLogoTransparent';
 import IconMenu from './components/Icon/icons/IconMenu';
 import IconPaypal from './components/Icon/icons/IconPaypal';
 import IconPlus from './components/Icon/icons/IconPlus';
@@ -160,6 +162,7 @@ export {
   IconAccessibility,
   IconAlef,
   IconAlefLogo,
+  IconAlefLogoTransparent,
   IconAlert,
   IconAndroid,
   IconApple,
@@ -186,6 +189,7 @@ export {
   IconMailAlert,
   IconMailFooter,
   IconMarkerLogo,
+  IconMarkerLogoTransparent,
   IconMenu,
   IconPaypal,
   IconPlus,

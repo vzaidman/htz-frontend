@@ -9,9 +9,18 @@ import Button from '../../Button/Button'; // eslint-disable-line import/no-named
 import Form from '../../Form/Form'; // eslint-disable-line import/no-named-as-default
 import TextInput from '../../TextInput/TextInput';
 import CheckBox from '../../CheckBox/CheckBox'; // eslint-disable-line import/no-named-as-default
+import IconAlefLogoTransparent from '../../Icon/icons/IconAlefLogoTransparent';
+import IconMarkerLogoTransparent from '../../Icon/icons/IconMarkerLogoTransparent';
 
 const BeforeConfirmedWrapperStyle = ({ theme, }) => ({
   textAlign: 'start',
+});
+
+const UpperInputRow = ({ theme, }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  flexDirection: 'row',
 });
 
 const inputUpperNoteStyle = ({ theme, variant, }) => ({
@@ -71,6 +80,8 @@ const CheckBoxStyle = {
 };
 
 NewsletterForm.propTypes = {
+  /** determine newsletter icon if exists */
+  brand: PropTypes.oneOf([ 'tm', 'htz', ]),
   /** loading boolean from apollo Mutation */
   loading: PropTypes.bool.isRequired,
   /** Indicates article category id */
@@ -98,10 +109,12 @@ NewsletterForm.propTypes = {
 };
 
 NewsletterForm.defaultProps = {
+  brand: null,
   userEmail: null,
 };
 
 export function NewsletterForm({
+  brand,
   loading,
   segmentId,
   setParentState,
@@ -109,6 +122,11 @@ export function NewsletterForm({
   userEmail,
   variant,
 }) {
+  const NewsletterIcon =
+    brand &&
+    (brand.toLowerCase() === 'htz'
+      ? IconAlefLogoTransparent
+      : brand.toLowerCase() === 'tm' ? IconMarkerLogoTransparent : null);
   return (
     <Form
       initialValues={{ email: userEmail, checkBox: false, }}
@@ -158,10 +176,18 @@ export function NewsletterForm({
             return (
               <div className={className}>
                 <FelaComponent
-                  variant={variant}
-                  rule={inputUpperNoteStyle}
+                  rule={UpperInputRow}
                   render={({ className, }) => (
-                    <h3 className={className}>{newsletterTitle}</h3>
+                    <div className={className}>
+                      <FelaComponent
+                        variant={variant}
+                        rule={inputUpperNoteStyle}
+                        render={({ className, }) => (
+                          <h3 className={className}>{newsletterTitle}</h3>
+                        )}
+                      />
+                      {NewsletterIcon ? <NewsletterIcon /> : null}
+                    </div>
                   )}
                 />
                 <FelaComponent
