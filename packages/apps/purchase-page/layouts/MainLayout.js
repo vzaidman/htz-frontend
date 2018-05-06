@@ -12,7 +12,6 @@ import styleRenderer from '../components/styleRenderer/styleRenderer';
 import PurchaseHeader from '../components/PurchaseHeader/PurchaseHeader';
 import PurchasePageFooter from '../components/PurchasePageFooter/PurchasePageFooter'; // eslint-disable-line import/no-named-as-default
 import UserBanner from '../components/UserBanner/UserBanner';
-import GeoIpInjector from '../components/GeoIpInjector/GeoIpInjector';
 
 const GET_HOST_NAME = gql`
   query {
@@ -76,7 +75,6 @@ class MainLayout extends React.Component {
           return (
             <Fragment>
               <UserInjector />
-              <GeoIpInjector />
               <StyleProvider renderer={styleRenderer} theme={theme(host)}>
                 <div>
                   <div id="pageRoot">
