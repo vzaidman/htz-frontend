@@ -48,7 +48,6 @@ const StyledTable = createComponent(tableStyle, 'table');
 const theadStyle = () => ({
   display: 'table',
   width: '100%',
-  position: 'sticky',
   textAlign: 'center',
   top: 0,
 });
