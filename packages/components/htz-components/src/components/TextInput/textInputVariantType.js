@@ -4,5 +4,4 @@ export const textInputVariantType = oneOf([
   'primary',
   'primaryInverse',
   'neutral',
-  'offerPage',
 ]);
