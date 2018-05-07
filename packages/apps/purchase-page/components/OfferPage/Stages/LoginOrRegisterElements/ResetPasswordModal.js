@@ -115,7 +115,7 @@ class ResetPasswordModal extends Component {
                       {successMessage}
                     </FelaComponent>
                     <Button
-                      variant="offerPageOpaque"
+                      variant="primaryOpaque"
                       miscStyles={buttonStyle}
                       onClick={this.closeModal}
                       isBusy={this.state.loading}
@@ -162,7 +162,7 @@ class ResetPasswordModal extends Component {
                               >
                                 <TextInput
                                   {...getInputProps({
-                                    variant: 'offerPage',
+                                    variant: 'primary',
                                     name: 'email',
                                     label: form.email.label,
                                     type: 'email',
@@ -176,7 +176,7 @@ class ResetPasswordModal extends Component {
                                 />
                               </FelaComponent>
                               <Button
-                                variant="offerPageOpaque"
+                                variant="primaryOpaque"
                                 miscStyles={buttonStyle}
                                 onClick={handleSubmit}
                                 isBusy={this.state.loading}

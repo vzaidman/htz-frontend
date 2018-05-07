@@ -201,7 +201,7 @@ class PaymentStage extends Component {
                                   ...creditCardsDetails.map(
                                     ({ companyCode, fourDigits, }, index) => ({
                                       value: index.toString(),
-                                      variant: 'offerPage',
+                                      variant: 'primary',
                                       label: (
                                         <FelaComponent
                                           style={{
@@ -250,7 +250,7 @@ class PaymentStage extends Component {
                                   ),
                                   {
                                     value: '-1',
-                                    variant: 'offerPage',
+                                    variant: 'primary',
                                     label: 'בחר באמצעי תשלום אחר',
                                     miscStyles: radioButtonStyle,
                                   },
@@ -290,7 +290,7 @@ class PaymentStage extends Component {
                             theme: { payment: { payVia, creditCard, }, },
                           }) => {
                             const buttonProps = {
-                              variant: 'offerPage',
+                              variant: 'primary',
                               fontSize: [
                                 { until: 's', value: -1, },
                                 { from: 's', until: 'l', value: 2, },

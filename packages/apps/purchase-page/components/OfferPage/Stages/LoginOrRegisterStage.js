@@ -233,7 +233,14 @@ class LoginOrRegisterStage extends React.Component {
                                       );
                                     })
                                     .catch(error => {
-                                      this.setState({ error: error.msg, });
+                                      console.log(
+                                        'error from checkemail',
+                                        error
+                                      );
+                                      this.setState({
+                                        error: error.msg,
+                                        loading: false,
+                                      });
                                     });
                                 }
  else if (this.state.userExists) {
@@ -437,7 +444,7 @@ class LoginOrRegisterStage extends React.Component {
                                   {!this.state.loadingAll && (
                                     <TextInput
                                       {...getInputProps({
-                                        variant: 'offerPage',
+                                        variant: 'primary',
                                         name: 'email',
                                         label: form.email.label,
                                         type: 'email',
@@ -452,7 +459,7 @@ class LoginOrRegisterStage extends React.Component {
                                       <Fragment>
                                         <TextInput
                                           {...getInputProps({
-                                            variant: 'offerPage',
+                                            variant: 'primary',
                                             name: 'password',
                                             label: form.password.label,
                                             type: 'password',
@@ -481,7 +488,7 @@ class LoginOrRegisterStage extends React.Component {
                                             >
                                               <TextInput
                                                 {...getInputProps({
-                                                  variant: 'offerPage',
+                                                  variant: 'primary',
                                                   name: 'firstName',
                                                   label: form.firstName.label,
                                                   noteText:
@@ -501,7 +508,7 @@ class LoginOrRegisterStage extends React.Component {
                                             >
                                               <TextInput
                                                 {...getInputProps({
-                                                  variant: 'offerPage',
+                                                  variant: 'primary',
                                                   name: 'lastName',
                                                   label: form.lastName.label,
                                                   noteText:
@@ -516,7 +523,7 @@ class LoginOrRegisterStage extends React.Component {
                                         <CheckBox
                                           {...getInputProps({
                                             name: 'terms',
-                                            variant: 'offerPage',
+                                            variant: 'primary',
                                             label: (
                                               <FelaComponent
                                                 style={theme => ({
@@ -581,7 +588,7 @@ class LoginOrRegisterStage extends React.Component {
                                     ) : null}
 
                                     <Button
-                                      variant="offerPageOpaque"
+                                      variant="primaryOpaque"
                                       onClick={handleSubmit}
                                       {...this.state.loading && {
                                         isBusy: true,

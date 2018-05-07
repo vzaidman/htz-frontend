@@ -168,7 +168,7 @@ class ChooseProductStage extends Component {
                         (idx !== chosenProductIndex ? (
                           <Button
                             key={Math.random()}
-                            variant="offerPage"
+                            variant="primary"
                             miscStyles={moreOptionsButtonsMiscStyles}
                             onClick={() => {
                               cache.writeData({
@@ -283,7 +283,7 @@ class ChooseProductStage extends Component {
                         />
                       ) : (
                         <Button
-                          variant="offerPage"
+                          variant="primary"
                           miscStyles={moreOptionsButtonsMiscStyles}
                           onClick={() => {
                             this.setState({ couponFormOpen: true, });

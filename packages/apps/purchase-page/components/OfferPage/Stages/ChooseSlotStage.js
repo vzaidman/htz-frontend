@@ -122,7 +122,7 @@ function ChooseSlotStage({ tableData, subStage, userMessage, router, }) {
           <StyledMoreOptionsCont>
             {subStage < 2 && (
               <Button
-                variant="offerPage"
+                variant="primary"
                 miscStyles={moreOptionsButtonsMiscStyles}
                 href={theme.stage1.buttons.subscribed.url}
               >
@@ -130,7 +130,7 @@ function ChooseSlotStage({ tableData, subStage, userMessage, router, }) {
               </Button>
             )}
             <Button
-              variant="offerPage"
+              variant="primary"
               miscStyles={moreOptionsButtonsMiscStyles}
               href={theme.stage1.buttons.organizationSubscription.url}
             >

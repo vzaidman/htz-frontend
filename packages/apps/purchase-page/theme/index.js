@@ -3,6 +3,7 @@ import articleStyle from './consts/articleStyle';
 import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
 import cssReset from './consts/cssReset';
+import newsletterStyle from './consts/newsletterStyle';
 import headerStyle from './consts/headerStyle';
 import selectStyle from './consts/selectStyle';
 import tableStyle from './consts/tableStyle';
@@ -23,6 +24,8 @@ import {
   debt,
   payment,
   creditCardIframe,
+  newsletterI18n,
+  textInputI18n,
   thankYou,
 } from './consts/i18n';
 
@@ -115,6 +118,7 @@ const purchasePageTheme = host =>
     gridStyle,
     fontStacks,
     inputStyle,
+    newsletterStyle,
     headerStyle,
     selectStyle,
     tableStyle,
@@ -133,6 +137,8 @@ const purchasePageTheme = host =>
     debt,
     payment,
     creditCardIframe,
+    newsletterI18n,
+    textInputI18n,
     thankYou,
 
     // Methods

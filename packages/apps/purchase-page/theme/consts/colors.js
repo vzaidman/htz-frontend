@@ -10,33 +10,6 @@ const htz = Object.freeze({
     pricingHeadText: [ 'primary', 'base', ],
     paymentSummaryBorder: [ 'primary', '-3', ],
   },
-  button: {
-    offerPageText: [ 'primary', '+1', ],
-    offerPageActiveText: [ 'primary', '+1', ],
-    offerPageFocusBg: [ 'primary', '+1', ],
-    offerPageHoverBg: [ 'primary', '-5', ],
-    offerPageHoverText: [ 'primary', '+1', ],
-    opaque: {
-      offerPageOpaqueBg: [ 'primary', 'base', ],
-      offerPageOpaqueHoverBg: [ 'primary', '+1', ],
-    },
-  },
-  input: {
-    offerPageBg: [ 'primary', '-6', ],
-    offerPageBorder: [ 'primary', '-4', ],
-    offerPageTextLabel: [ 'primary', '+1', ],
-    // OfferPage Focus
-    offerPageFocusBorder: [ 'primary', 'base', ],
-    // OfferPage Hover
-    offerPageHoverBg: [ 'primary', '-5', ],
-    offerPageHoverBorder: [ 'primary', '-4', ],
-    offerPageHoverText: [ 'bodyText', 'base', ],
-  },
-  checkBox: {
-    offerPageBgChecked: [ 'primary', 'base', ],
-    offerPageBorder: [ 'primary', 'base', ],
-    offerPageRipple: [ 'primary', 'base', ],
-  },
   misc: {
     link: {
       base: [ 'primary', 'base', ],
@@ -68,32 +41,39 @@ const tm = Object.freeze({
     pricingHeadText: [ 'secondary', 'base', ],
     paymentSummaryBorder: [ 'primary', '-2', ],
   },
-  button: {
-    offerPageText: [ 'secondary', '+1', ],
-    offerPageActiveText: [ 'secondary', '+1', ],
-    offerPageFocusBg: [ 'secondary', '+1', ],
-    offerPageHoverBg: [ 'primary', '-5', ],
-    offerPageHoverText: [ 'secondary', '+1', ],
-    opaque: {
-      offerPageOpaqueBg: [ 'secondary', 'base', ],
-      offerPageOpaqueHoverBg: [ 'secondary', '+1', ],
+  variants: {
+    button: {
+      primary: {
+        primaryText: [ 'secondary', '+1', ],
+        primaryActiveText: [ 'secondary', '+1', ],
+        primaryFocusBg: [ 'secondary', '+1', ],
+        primaryHoverBg: [ 'primary', '-5', ],
+        primaryHoverText: [ 'secondary', '+1', ],
+      },
+      opaque: {
+        primaryOpaqueBg: [ 'secondary', 'base', ],
+        primaryOpaqueHoverBg: [ 'secondary', '+1', ],
+      },
     },
-  },
-  input: {
-    offerPageBg: [ 'neutral', '-7', ],
-    offerPageBorder: [ 'neutral', '-6', ],
-    offerPageTextLabel: [ 'secondary', '+1', ],
-    // OfferPage Focus
-    offerPageFocusBorder: [ 'secondary', 'base', ],
-    // OfferPage Hover
-    offerPageHoverBg: [ 'primary', '-6', ],
-    offerPageHoverBorder: [ 'primary', '-4', ],
-    offerPageHoverText: [ 'bodyText', 'base', ],
-  },
-  checkBox: {
-    offerPageBgChecked: [ 'secondary', 'base', ],
-    offerPageBorder: [ 'secondary', 'base', ],
-    offerPageRipple: [ 'secondary', 'base', ],
+    input: {
+      primaryBg: [ 'neutral', '-7', ],
+      primaryBorder: [ 'neutral', '-6', ],
+      primaryTextLabel: [ 'secondary', '+1', ],
+      // OfferPage Focus
+      primaryFocusBorder: [ 'secondary', 'base', ],
+      // OfferPage Hover
+      primaryHoverBg: [ 'primary', '-6', ],
+      primaryHoverBorder: [ 'primary', '-4', ],
+      primaryHoverText: [ 'bodyText', 'base', ],
+    },
+    checkBox: {
+      primaryBgChecked: [ 'secondary', 'base', ],
+      primaryBorder: [ 'secondary', 'base', ],
+      primaryRipple: [ 'secondary', 'base', ],
+    },
+    newsletter: {
+      primaryBg: [ 'neutral', '-2', ],
+    },
   },
   misc: {
     link: {
@@ -149,6 +129,8 @@ const colors = host => {
       primaryHoverBorder: [ 'button', 'primaryHoverText', ],
       primaryHoverText: [ 'primary', '+1', ],
 
+      ...(host === 'themarker.com' && tm.variants.button.primary),
+
       // Primary Opaque
       primaryOpaqueBg: [ 'primary', 'base', ],
       primaryOpaqueBorder: 'transparent',
@@ -162,6 +144,36 @@ const colors = host => {
       primaryOpaqueHoverBg: [ 'primary', '+1', ],
       primaryOpaqueHoverBorder: 'transparent',
       primaryOpaqueHoverText: 'white',
+
+      ...(host === 'themarker.com' && tm.variants.button.opaque),
+
+      // Secondary
+      secondaryBg: 'white',
+      secondaryBorder: [ 'button', 'secondaryText', ],
+      secondaryText: [ 'secondary', 'base', ],
+      secondaryActiveBg: '#fff !important',
+      secondaryActiveBorder: [ 'button', 'secondaryText', ],
+      secondaryActiveText: [ 'secondary', 'base', ],
+      secondaryFocusBg: [ 'secondary', 'base', ],
+      secondaryFocusBorder: [ 'button', 'secondaryFocusBg', ],
+      secondaryFocusText: 'white',
+      secondaryHoverBg: [ 'primary', '-5', ],
+      secondaryHoverBorder: [ 'button', 'secondaryHoverText', ],
+      secondaryHoverText: [ 'secondary', '+1', ],
+
+      // Secondary Opaque
+      secondaryOpaqueBg: [ 'secondary', 'base', ],
+      secondaryOpaqueBorder: 'transparent',
+      secondaryOpaqueText: 'white',
+      secondaryOpaqueActiveBg: [ 'primary', 'base', ],
+      secondaryOpaqueActiveBorder: 'transparent',
+      secondaryOpaqueActiveText: 'white',
+      secondaryOpaqueFocusBg: [ 'primary', '+1', ],
+      secondaryOpaqueFocusBorder: 'transparent',
+      secondaryOpaqueFocusText: 'white',
+      secondaryOpaqueHoverBg: [ 'primary', '+1', ],
+      secondaryOpaqueHoverBorder: 'transparent',
+      secondaryOpaqueHoverText: 'white',
 
       // Neutral
       neutralBg: 'transparent',
@@ -372,29 +384,6 @@ const colors = host => {
       salesOpaqueHoverBg: [ 'sales', '+2', ],
       salesOpaqueHoverBorder: 'transparent',
       salesOpaqueHoverText: [ 'button', 'salesOpaqueText', ],
-
-      // OfferPage
-      offerPageBg: 'white',
-      offerPageBorder: [ 'button', 'offerPageText', ],
-      offerPageActiveBg: '#fff !important',
-      offerPageActiveBorder: [ 'button', 'offerPageText', ],
-      offerPageFocusBorder: [ 'button', 'offerPageFocusBg', ],
-      offerPageFocusText: 'white',
-      offerPageHoverBorder: [ 'button', 'offerPageHoverText', ],
-      ...(host === 'themarker.com' ? tm.button : htz.button),
-
-      // Opaque OfferPage
-      offerPageOpaqueText: 'white',
-      offerPageOpaqueBorder: [ 'button', 'offerPageOpaqueText', ],
-      offerPageOpaqueActiveText: [ 'button', 'offerPageOpaqueText', ],
-      offerPageOpaqueActiveBg: '#fff !important',
-      offerPageOpaqueActiveBorder: [ 'button', 'offerPageOpaqueText', ],
-      offerPageOpaqueFocusBorder: [ 'button', 'offerPageOpaqueFocusBg', ],
-      offerPageOpaqueFocusBg: [ 'button', 'offerPageOpaqueBg', ],
-      offerPageOpaqueFocusText: 'white',
-      offerPageOpaqueHoverText: [ 'button', 'offerPageOpaqueText', ],
-      offerPageOpaqueHoverBorder: [ 'button', 'offerPageOpaqueHoverText', ],
-      ...(host === 'themarker.com' ? tm.button.opaque : htz.button.opaque),
     },
     checkBox: {
       // Primary
@@ -405,6 +394,8 @@ const colors = host => {
       primaryCheck: 'white',
       primaryRipple: [ 'primary', 'base', ],
 
+      ...(host === 'themarker.com' && tm.variants.checkBox),
+
       // Secondary
       secondaryBg: 'white',
       secondaryBgChecked: [ 'secondary', 'base', ],
@@ -412,12 +403,19 @@ const colors = host => {
       secondaryBorderDisabled: [ 'neutral', '-5', ],
       secondaryCheck: 'white',
       secondaryRipple: [ 'secondary', 'base', ],
+    },
+    newsletter: {
+      // Newsletter
+      highlightBg: [ 'highlight', 'base', ],
+      highlightTextTitle: [ 'neutral', 'base', ],
+      highlightText: [ 'neutral', 'base', ],
 
-      // OfferPage
-      offerPageBg: 'white',
-      offerPageBorderDisabled: [ 'neutral', '-5', ],
-      offerPageCheck: 'white',
-      ...(host === 'themarker.com' ? tm.checkBox : htz.checkBox),
+      // Primary
+      primaryBg: [ 'primary', '-2', ],
+      primaryTextTitle: [ 'neutral', '-10', ],
+      primaryText: [ 'neutral', '-10', ],
+
+      ...(host === 'themarker.com' && tm.variants.newsletter),
     },
     highlight: {
       base: [ 'quaternary', 'base', ],
@@ -470,6 +468,8 @@ const colors = host => {
       primaryHoverBorder: [ 'primary', '-4', ],
       primaryHoverText: [ 'bodyText', 'base', ],
 
+      ...(host === 'themarker.com' && tm.variants.input),
+
       // PrimaryInverse
       primaryInverseBg: 'white',
       primaryInverseBgWrapper: 'transparent',
@@ -490,31 +490,12 @@ const colors = host => {
       primaryInverseErrorBorder: [ 'tertiary', '+1', ],
       primaryInverseErrorText: [ 'bodyText', 'base', ],
       primaryInverseErrorTextLabel: [ 'tertiary', 'base', ],
-      primaryInverseErrorTextNote: [ 'tertiary', 'base', ],
+      primaryInverseErrorTextNote: [ 'tertiary', '-3', ],
 
       // PrimaryInverse Hover
       primaryInverseHoverBg: [ 'primary', '-5', ],
       primaryInverseHoverBorder: [ 'primary', '-4', ],
       primaryInverseHoverText: [ 'bodyText', 'base', ],
-
-      // OfferPage
-      offerPageBgWrapper: 'transparent',
-      offerPageBorderTextLabel: [ 'primary', '-5', ],
-      offerPagePlaceholder: [ 'neutral', '-4', ],
-      offerPageText: [ 'bodyText', 'base', ],
-      offerPageTextLabelDisabled: [ 'neutral', '-4', ],
-      offerPageTextNote: [ 'neutral', '-4', ],
-      offerPageAbbr: [ 'tertiary', 'base', ],
-
-      // OfferPage Focus
-      offerPageFocusBg: 'white',
-
-      // OfferPage Error state
-      offerPageErrorBorder: [ 'tertiary', '+1', ],
-      offerPageErrorText: [ 'bodyText', 'base', ],
-      offerPageErrorTextLabel: [ 'tertiary', 'base', ],
-      offerPageErrorTextNote: [ 'tertiary', 'base', ],
-      ...(host === 'themarker.com' ? tm.input : htz.input),
     },
     header: {
       backLinkText: [ 'neutral', '-3', ],
@@ -572,11 +553,7 @@ const colors = host => {
       secondaryCheck: 'white',
       secondaryRipple: [ 'secondary', 'base', ],
 
-      // OfferPage
-      offerPageBg: 'white',
-      offerPageBorderDisabled: [ 'neutral', '-5', ],
-      offerPageCheck: 'white',
-      ...(host === 'themarker.com' ? tm.checkBox : htz.checkBox),
+      ...(host === 'themarker.com' && tm.checkBox),
     },
     sales: {
       '-2': '#FFF7E5',

@@ -385,6 +385,23 @@ export const debt = Object.freeze({
   }),
 });
 
+export const newsletterI18n = Object.freeze({
+  buttons: Object.freeze({
+    newsletterSubmit: 'הרשמה',
+    newsletterConfirmedButton: 'לרשימה המלא',
+  }),
+  texts: Object.freeze({
+    newsletterTitle: 'הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום',
+    newsletterConfirmedTitleText: 'תודה שנרשמת',
+    newsletterConfirmedText: 'יש לנו דיוורים נוספים שעשויים לעניין אותך',
+  }),
+});
+
+export const textInputI18n = Object.freeze({
+  requiredLong: 'שדה חובה',
+  requiredShort: '*',
+});
+
 export const thankYou = Object.freeze({
   afterPurchase: product => {
     const item =
