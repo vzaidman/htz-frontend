@@ -1,5 +1,6 @@
 // consts
 import articleStyle from './consts/articleStyle';
+import campaignHeaderStyle from './consts/campaignHeaderStyle';
 import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
 import cssReset from './consts/cssReset';
@@ -112,6 +113,7 @@ const purchasePageTheme = host =>
   Object.freeze({
     // Constants
     articleStyle,
+    campaignHeaderStyle,
     bps,
     btnStyle,
     direction: 'rtl',

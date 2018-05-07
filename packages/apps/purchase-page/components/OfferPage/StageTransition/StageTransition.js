@@ -74,9 +74,12 @@ class StageTransition extends Component {
     stageElement: PropTypes.element.isRequired,
     chosenSubscription: PropTypes.string.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
+    skipTransition: PropTypes.bool,
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    skipTransition: false,
+  };
 
   state = {
     minTimePassed: false,
@@ -86,9 +89,15 @@ class StageTransition extends Component {
   // todo: update load time to 3000
   componentDidMount() {
     window.scrollTo(0, 0);
-    setTimeout(() => {
-      this.setState({ minTimePassed: true, });
-    }, 1000);
+    if (this.props.skipTransition) {
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({ minTimePassed: true, isLoading: false, });
+    }
+    else {
+      setTimeout(() => {
+        this.setState({ minTimePassed: true, });
+      }, 1000);
+    }
   }
 
   render() {

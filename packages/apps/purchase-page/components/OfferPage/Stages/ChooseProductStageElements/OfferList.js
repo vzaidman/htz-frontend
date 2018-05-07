@@ -50,6 +50,7 @@ const offerStyle = ({ theme, isRecommended = false, }) => ({
   position: 'relative',
   marginInlineStart: '0.5rem',
   marginInlineEnd: '0.5rem',
+
   ...(isRecommended
     ? {
       width: '54rem',
@@ -57,7 +58,11 @@ const offerStyle = ({ theme, isRecommended = false, }) => ({
       backgroundColor: theme.color('offerPage', 'bgHighlighted'),
       boxShadow: '1px 1px 6px 0 rgba(0, 0, 0, 0.2)',
     }
-    : { width: '46rem', height: '48rem', }),
+    : {
+      width: '46rem',
+      height: '48rem',
+      backgroundColor: theme.color('offerPage', 'bg'),
+    }),
   extend: [
     border('1px', 4, 'solid', theme.color('offerPage', 'borderHighlighted')),
     theme.mq(

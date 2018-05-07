@@ -11,6 +11,7 @@ import ChooseProductStage from '../../components/OfferPage/Stages/ChooseProductS
 import StageTransition from '../../components/OfferPage/StageTransition/StageTransition';
 import StageCounter from '../../components/OfferPage/Stages/Elements/StageCounter';
 import StageHeader from '../../components/OfferPage/Stages/Elements/StageHeader';
+import CampaignHeader from '../../components/OfferPage/Stages/ChooseProductStageElements/CampaignHeader';
 
 const GET_LOCAL_STATE = gql`
   query {
@@ -44,18 +45,27 @@ function Stage2() {
                 return (
                   <FelaComponent
                     style={{ textAlign: 'center', }}
-                    render={({ className, theme: { stage2: { header, }, }, }) => (
-                      <div className={className}>
-                        <StageCounter stage={2} />
-                        <LayoutContainer
-                          bgc="white"
-                          miscStyles={{ paddingTop: '1.5rem', }}
-                        >
-                          <UserDispenser
-                            render={({ user, isLoggedIn, }) => {
-                              const chosenSlot =
-                                data.purchasePage.slots[chosenSlotIndex];
-                              return (
+                    render={({ className, theme: { stage2: { header, }, }, }) => {
+                      const chosenSlot =
+                        data.purchasePage.slots[chosenSlotIndex];
+                      const chosenProduct =
+                        chosenSlot.products[chosenProductIndex];
+                      return (
+                        <div className={className}>
+                          {chosenProduct.campaignData ? (
+                            <CampaignHeader
+                              campaignData={chosenProduct.campaignData}
+                            />
+                          ) : (
+                            <StageCounter stage={2} />
+                          )}
+                          {/* <StageCounter stage={2} /> */}
+                          <LayoutContainer
+                            bgc="transparent"
+                            miscStyles={{ paddingTop: '1.5rem', }}
+                          >
+                            <UserDispenser
+                              render={({ user, isLoggedIn, }) => (
                                 <div>
                                   <StageTransition
                                     chosenSubscription={
@@ -64,30 +74,35 @@ function Stage2() {
                                     stage={2}
                                     user={user}
                                     isLoggedIn={isLoggedIn}
+                                    skipTransition={
+                                      !!chosenProduct.campaignData
+                                    }
                                     headerElement={
-                                      <StageHeader
-                                        headerElements={[
-                                          <Fragment>
-                                            <span>
-                                              {header.textBeforeChosen}
-                                            </span>{' '}
-                                            <FelaComponent
-                                              style={{ fontWeight: 'bold', }}
-                                              render="span"
-                                            >
-                                              {
-                                                header.chosenSubscriptionText[
-                                                  chosenSlot.subscriptionName
-                                                ]
-                                              }
-                                            </FelaComponent>
-                                            {', '}
-                                            <span>
-                                              {header.textAfterChosen}
-                                            </span>
-                                          </Fragment>,
-                                        ]}
-                                      />
+                                      !chosenProduct.campaignData && (
+                                        <StageHeader
+                                          headerElements={[
+                                            <Fragment>
+                                              <span>
+                                                {header.textBeforeChosen}
+                                              </span>{' '}
+                                              <FelaComponent
+                                                style={{ fontWeight: 'bold', }}
+                                                render="span"
+                                              >
+                                                {
+                                                  header.chosenSubscriptionText[
+                                                    chosenSlot.subscriptionName
+                                                  ]
+                                                }
+                                              </FelaComponent>
+                                              {', '}
+                                              <span>
+                                                {header.textAfterChosen}
+                                              </span>
+                                            </Fragment>,
+                                          ]}
+                                        />
+                                      )
                                     }
                                     stageElement={
                                       <ChooseProductStage
@@ -106,12 +121,12 @@ function Stage2() {
                                     }
                                   />
                                 </div>
-                              );
-                            }}
-                          />
-                        </LayoutContainer>
-                      </div>
-                    )}
+                              )}
+                            />
+                          </LayoutContainer>
+                        </div>
+                      );
+                    }}
                   />
                 );
               }}
