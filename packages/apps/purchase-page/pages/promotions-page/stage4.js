@@ -85,21 +85,14 @@ function Stage4() {
                                     headerElements={[
                                       ...(loggedInOrRegistered
                                         ? [
-                                          <Fragment>
-                                            <span>
-                                              {header.textBeforeName}
-                                            </span>{' '}
-                                            <span>{user.firstName}</span>
-                                            {', '}
-                                            <span>
-                                              {
-                                                  header[
-                                                    loggedInOrRegistered ||
-                                                      'connected'
-                                                  ].textAfterName
-                                                }
-                                            </span>
-                                          </Fragment>,
+                                          <span>
+                                            {
+                                                header[
+                                                  loggedInOrRegistered ||
+                                                    'connected'
+                                                ].textAfterName
+                                              }
+                                          </span>,
                                           <span>
                                             {
                                                 header[

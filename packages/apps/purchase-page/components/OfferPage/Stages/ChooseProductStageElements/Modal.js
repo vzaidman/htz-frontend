@@ -9,10 +9,6 @@ const paragraphStyle = theme => ({
   backgroundColor: 'white',
   display: 'flex',
   flexDirection: 'column',
-  paddingTop: '2rem',
-  paddingBottom: '2rem',
-  paddingInlineStart: '2rem',
-  paddingInlineEnd: '2rem',
 });
 
 const propTypes = {
@@ -28,7 +24,7 @@ const defaultProps = {
 function Modal({ closeModal, offerDisclaimer, isVisible, }) {
   return (
     <FelaComponent
-      render={({ theme, }) => (
+      render={({ theme, theme: { stage2: { disclaimer: { title, }, }, }, }) => (
         <A11yDialog
           appendTo="#modalsRoot"
           elementToHide="#pageRoot"
@@ -46,17 +42,41 @@ function Modal({ closeModal, offerDisclaimer, isVisible, }) {
           }}
           render={({ handleClose, }) => (
             <FelaComponent style={paragraphStyle}>
-              <FelaComponent style={{ textAlign: 'end', }}>
+              <FelaComponent
+                style={{
+                  textAlign: 'end',
+                  marginEnd: '2rem',
+                  marginTop: '1rem',
+                }}
+              >
                 <CloseModalButton handleClose={handleClose} />
               </FelaComponent>
-              {offerDisclaimer &&
-                offerDisclaimer.map(disclaimerParagraph => (
-                  <Paragraph
-                    key={Math.random()}
-                    marginBottom={{ marginBottom: '2rem', }}
-                    {...disclaimerParagraph}
-                  />
-                ))}
+              <FelaComponent
+                render="h2"
+                style={{
+                  textAlign: 'center',
+                  marginBottom: '1rem',
+                }}
+              >
+                {title}
+              </FelaComponent>
+              <FelaComponent
+                render="div"
+                style={{
+                  marginStart: '4rem',
+                  marginBottom: '4rem',
+                  marginLeft: '4rem',
+                }}
+              >
+                {offerDisclaimer &&
+                  offerDisclaimer.map(disclaimerParagraph => (
+                    <Paragraph
+                      key={Math.random()}
+                      marginBottom={{ ...theme.type(-1), }}
+                      {...disclaimerParagraph}
+                    />
+                  ))}
+              </FelaComponent>
             </FelaComponent>
           )}
         />

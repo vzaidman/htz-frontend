@@ -142,7 +142,7 @@ export const stage1 = Object.freeze({
 export const stage2 = Object.freeze({
   header: Object.freeze({
     textBeforeChosen: 'בחרתם',
-    textAfterChosen: 'כעת תבחרו את המסלול המתאים לכם ביותר',
+    textAfterChosen: 'כעת בחרו את המסלול המתאים לכם ביותר',
     chosenSubscriptionText: Object.freeze({
       BOTH: 'במינוי משולב',
       HTZ: 'במינוי הארץ',
@@ -156,6 +156,9 @@ export const stage2 = Object.freeze({
   optionButtons: Object.freeze({
     students: 'מחיר מיוחד לסטודנטים ולחיילים',
     coupon: 'יש לי קופון הנחה',
+  }),
+  disclaimer: Object.freeze({
+    title: 'תנאי רכישה',
   }),
   form: Object.freeze({
     couponError: 'תקלת תקשורת, נא לנסות שוב מאוחר יותר',
@@ -180,12 +183,12 @@ export const stage3 = Object.freeze({
       TM: 'במינוי TheMarker',
     }),
     chosenPaymentArrangementText: Object.freeze({
-      yearly: 'בתשלום שנתי',
-      monthly: 'בתשלום חודשי',
+      yearly: 'במסלול שנתי',
+      monthly: 'במסלול חודשי',
     }),
     registerBoldFirstLine: 'ברוכים הבאים!',
     dynamicTextNewLineLoginStage: Object.freeze({
-      checkEmail: [ 'כעת הזינו כתובת דוא"ל.', 'כתובת זאת תהיה שם המשתמש שלכם.', ],
+      checkEmail: [ 'כעת הזינו כתובת דוא"ל.', 'כתובת זאת תהיה שם המשתמש שלכם', ],
       login: [ 'הזינו את הסיסמה שלכם לאתר', ],
       register: [ 'השלימו את פרטי המשתמש באתר', ],
     }),
@@ -220,12 +223,12 @@ export const stage3 = Object.freeze({
       label: 'שם משפחה',
     }),
     password: Object.freeze({
-      errorTextNoPassword: 'נא למלא סיסמא',
-      errorTextUnderFiveChars: 'יש להזין סיסמא בת 6 תווים ומעלה',
-      noteTextLogin: 'נא למלא סיסמא',
-      noteTextRegister: 'נא לבחור סיסמא',
-      label: 'סיסמא',
-      forgotPasswordText: 'שכחתי סיסמא',
+      errorTextNoPassword: 'נא למלא סיסמה',
+      errorTextUnderFiveChars: 'יש להזין סיסמה בת 6 תווים ומעלה',
+      noteTextLogin: 'נא למלא סיסמה',
+      noteTextRegister: 'נא לבחור סיסמה',
+      label: 'סיסמה',
+      forgotPasswordText: 'שכחתי סיסמה',
     }),
     terms: Object.freeze({
       errorText: 'יש לאשר את תנאי השימוש באתר',
@@ -248,9 +251,9 @@ export const stage3 = Object.freeze({
     }),
   }),
   resetPassword: Object.freeze({
-    header: 'החלפת סיסמא',
+    header: 'החלפת סיסמה',
     resetPasswordButton: 'המשך',
-    successMessage: 'הוראות לאיפוס הסיסמא נשלחו לתיבת הדוא"ל שלך',
+    successMessage: 'הוראות לאיפוס הסיסמה נשלחו לתיבת הדוא"ל שלך',
     successButtonText: 'התחבר',
   }),
   subStage2: Object.freeze({
@@ -285,13 +288,12 @@ export const stage3 = Object.freeze({
 
 export const stage4 = Object.freeze({
   header: Object.freeze({
-    textBeforeName: 'שלום',
     registered: {
       textAfterName: 'נוצר לך משתמש חדש',
-      textNewLine: 'אנא בחרו את צורת התשלום הנוחה לכם',
+      textNewLine: 'בחרו את צורת התשלום הנוחה לכם',
     },
     loggedIn: {
-      textNewLine: 'אנא בחרו את צורת התשלום הנוחה לכם',
+      textNewLine: 'בחרו את צורת התשלום הנוחה לכם',
     },
   }),
   details: Object.freeze({
@@ -303,8 +305,8 @@ export const stage4 = Object.freeze({
       TM: 'במינוי TheMarker',
     }),
     chosenPaymentArrangementText: Object.freeze({
-      yearly: 'בתשלום שנתי',
-      monthly: 'בתשלום חודשי',
+      yearly: 'במסלול שנתי',
+      monthly: 'במסלול חודשי',
     }),
     firstPaymentText: 'תשלום ראשון: ',
     nextPaymentText: 'תשלום הבא: ',
@@ -339,9 +341,9 @@ export const stage5 = Object.freeze({
     textBeforeChosen: 'בחרתם',
     textNewLine: 'אנא הזינו את פרטי כרטיס האשראי',
     chosenSubscriptionText: Object.freeze({
-      BOTH: 'במינוי משולב',
-      HTZ: 'במינוי הארץ',
-      TM: 'במינוי TheMarker',
+      BOTH: 'מינוי משולב',
+      HTZ: 'מינוי הארץ',
+      TM: 'מינוי TheMarker',
     }),
     chosenPaymentArrangementText: Object.freeze({
       yearly: 'במסלול תשלום שנתי',

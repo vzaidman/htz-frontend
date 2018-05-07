@@ -91,6 +91,21 @@ const paymentTextStyle = ({ isFirst, }) => ({
 
 const StyledPaymentText = createComponent(paymentTextStyle, 'span');
 
+const decimalPlaces = num => {
+  // eslint-disable-next-line prefer-template
+  const match = ('' + num).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
+  if (!match) {
+    return 0;
+  }
+  return Math.max(
+    0,
+    // Number of digits right of decimal point.
+    (match[1] ? match[1].length : 0) -
+      // Adjust for scientific notation.
+      (match[2] ? +match[2] : 0)
+  );
+};
+
 function PaymentSummary({
   chosenSubscription,
   chosenPaymentArrangement,
@@ -125,11 +140,17 @@ function PaymentSummary({
             <StyledDetailsPayments>
               <StyledPaymentText isFirst>
                 {firstPaymentText}{' '}
-                <StyledPaymentAmount>{firstPaymentAmount}</StyledPaymentAmount>
+                <StyledPaymentAmount>
+                  {firstPaymentAmount}
+                  {decimalPlaces(firstPaymentAmount) === 1 && '0'}
+                </StyledPaymentAmount>
               </StyledPaymentText>
               <StyledPaymentText>
                 {nextPaymentText}{' '}
-                <StyledPaymentAmount>{nextPaymentAmount}</StyledPaymentAmount>
+                <StyledPaymentAmount>
+                  {nextPaymentAmount}
+                  {decimalPlaces(nextPaymentAmount) === 1 && '0'}
+                </StyledPaymentAmount>
               </StyledPaymentText>
             </StyledDetailsPayments>
           </StyledDetailsCont>
