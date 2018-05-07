@@ -89,6 +89,13 @@ function ChooseSlotStage({
   userMessage,
   router,
 }) {
+  // eslint-disable-next-line prefer-const
+  let [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
+  pathWithoutQuery = pathWithoutQuery.substr(
+    0,
+    pathWithoutQuery.lastIndexOf('/')
+  );
+  const asPath = `${pathWithoutQuery}/stage2`;
   const pathName = '/promotions-page/stage2';
 
   const continueToNextStage = ({ cache, idx, routerPush = false, }) => {
@@ -103,7 +110,16 @@ function ChooseSlotStage({
       },
     });
     if (routerPush) {
-      router.push(pathName, router.asPath);
+      router.push(
+        pathName,
+        queryPartFromPath ? `${asPath}?${queryPartFromPath}` : asPath
+      );
+    }
+    else {
+      router.replace(
+        pathName,
+        queryPartFromPath ? `${asPath}?${queryPartFromPath}` : asPath
+      );
     }
   };
 

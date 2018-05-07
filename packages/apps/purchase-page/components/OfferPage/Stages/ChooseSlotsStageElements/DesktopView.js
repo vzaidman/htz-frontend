@@ -330,13 +330,13 @@ function DesktopView({
                       <StyledColHead>{item.heading}</StyledColHead>
                       <StyledPricingHead>{item.pricingHead}</StyledPricingHead>
                       <Button
-                        href={{ pathname: pathName, }}
-                        asPath={asPath}
+                        href={pathName}
+                        // asPath={asPath}
                         variant="salesOpaque"
                         boxModel={{ vp: 1, hp: 5, }}
                         miscStyles={{ marginTop: '3rem', }}
                         onClick={() => {
-                          continueToNextStage({ cache, idx, });
+                          continueToNextStage({ cache, idx, routerPush: true, });
                         }}
                       >
                         {item.btnText}

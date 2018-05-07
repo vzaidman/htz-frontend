@@ -10,6 +10,7 @@ const ssoSubDomain =
   (config.has('ssoSubDomain') && config.get('ssoSubDomain')) || 'devsso';
 
 const appPrefix = '/promotions-page-react';
+
 // const protocol = (config.has('polopolyPapiProtocl') && config.get('polopolyPapiProtocl')) || 'http';
 // const domain = (config.has('polopolyPapiDomain') && config.get('polopolyPapiDomain')) || '.haaretz.co.il';
 
@@ -20,6 +21,7 @@ export function createLoaders(req) {
   const cmlinkLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(path =>
+        // TODO change hardcoded host
         fetch(`http://${host}.haaretz.co.il/json/cmlink/${path}`).then(
           response => response.json()
         )
@@ -50,10 +52,7 @@ export function createLoaders(req) {
     const userId = CookieUtils.stringToMap(cookies.get('tmsso') || '', {
       separator: /:\s?/,
     }).userId;
-    console.log('userId from loader');
-    console.log(userId);
-    console.log('promos param in request:');
-    console.log(req.params.promo);
+    console.log('userId from loader: ', userId);
     return Promise.all(
       keys.map(path => {
         // Replaces and normalizes path names:
@@ -64,14 +63,25 @@ export function createLoaders(req) {
         // '/promotions-page/promotions-page' -> '/promotions-page'
         // '/promotions-page/promotions-page/promotions-page' -> '/promotions-page/promotions-page'
         // '/promotions-page/less-ads' -> '/less-ads'
+        const [ pathWithoutQuery, queryPartFromPath, ] = path.split(/\?(.+)/);
+        const query = queryPartFromPath
+          ? querystring.parse(queryPartFromPath)
+          : {};
         // eslint-disable-next-line no-param-reassign
-        path = req.params.promo ? `${path}/${req.params.promo}` : `${path}`;
+        path = query.offer
+          ? `${pathWithoutQuery}/${query.offer}`
+          : `${pathWithoutQuery}`; // Augment request for papi
         // '/promotions-page/more-ads/some-sub-promotion' -> '/more-ads/some-sub-promotion'
         const normlizedPath = `${baseUri}${appPrefix}${(path || '/')
           .replace(new RegExp(`${appPrefix}/stage[0-9]`), `${appPrefix}`)
           .replace(`${appPrefix}/offers`, `${appPrefix}`)
-          .replace(`${appPrefix}`, '')}?userId=${userId}`;
-        console.log('GRAPHQL - fetching data from papi: ', normlizedPath);
+          .replace(`${appPrefix}`, '')}${
+          path.includes('?') ? '&' : '?'
+        }userId=${userId}`;
+        console.log(
+          'GRAPHQL - fetching data from papi using endpoint: ',
+          normlizedPath
+        );
         return fetch(normlizedPath)
           .then(response => {
             if (response.ok) {

@@ -22,7 +22,6 @@ const propTypes = {
     tfoot: PropTypes.string.isRequired,
   }).isRequired,
   pathName: PropTypes.string.isRequired,
-  asPath: PropTypes.string.isRequired,
 };
 
 const defaultProps = {};
@@ -135,9 +134,9 @@ class MobileView extends Component {
       tableData,
       staticTableData,
       pathName,
-      asPath,
       continueToNextStage,
     } = this.props;
+
     return (
       <ApolloConsumer>
         {cache => (
@@ -169,12 +168,16 @@ class MobileView extends Component {
                           </div>
                         )}
                         <Button
-                          href={{ pathname: pathName, }}
-                          asPath={asPath}
+                          href={pathName}
+                          // asPath={router.asPath}
                           variant="salesOpaque"
                           miscStyles={{ marginTop: '3rem', }}
                           onClick={() => {
-                            continueToNextStage({ cache, idx, });
+                            continueToNextStage({
+                              cache,
+                              idx,
+                              routerPush: true,
+                            });
                           }}
                         >
                           {staticTableData.thead[item.subscriptionName].btnText}

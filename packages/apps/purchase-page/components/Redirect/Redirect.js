@@ -15,9 +15,19 @@ class Redirect extends React.Component {
 
   componentDidMount() {
     const { destination, replace, router, } = this.props;
+    let [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
+    const destPath = `${pathWithoutQuery.substr(
+      pathWithoutQuery.lastIndexOf('/') + 1
+    )}`; // thankYou, stage3 etc.
+    pathWithoutQuery = pathWithoutQuery.substr(
+      0,
+      pathWithoutQuery.lastIndexOf('/')
+    ); // ${appPrefix}
+    queryPartFromPath = queryPartFromPath ? `?${queryPartFromPath}` : '';
+    const asPath = `${pathWithoutQuery}/${destPath}${queryPartFromPath}`;
     replace
-      ? Router.replace(destination, router.asPath)
-      : Router.push(destination, router.asPath);
+      ? Router.replace(destination, asPath)
+      : Router.push(destination, asPath);
   }
 
   render() {

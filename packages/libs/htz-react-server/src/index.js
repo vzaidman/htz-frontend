@@ -95,7 +95,10 @@ app
     server.use(
       '/static',
       express.static(
-        path.join(__dirname, `../../../../../packages/apps/${domain}/static`)
+        path.join(__dirname, `../../../../../packages/apps/${domain}/static`),
+        {
+          redirect: false,
+        }
       )
     );
 

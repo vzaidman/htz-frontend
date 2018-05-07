@@ -142,7 +142,11 @@ function LandingHeader({
         {/* todo: get dynamically */}
         <StyledPricingHeader>החל מ 4.9 שח בחודש הראשון</StyledPricingHeader>
         <Button
-          href={{ pathname: '/promotions-page/stage1', }}
+          href={{
+            pathname: '/promotions-page/stage1',
+            query: { stage: 'stage1', },
+            options: { shallow: false, },
+          }}
           asPath={`${router.asPath}/offers`}
           prefetch
           variant="salesOpaque"
