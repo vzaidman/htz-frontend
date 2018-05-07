@@ -1,16 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { Link, } from '@haaretz/htz-components';
+import { Query, } from 'react-apollo';
+import gql from 'graphql-tag';
+import { Link, Newsletter, } from '@haaretz/htz-components';
 import Phones from './Elements/Phones';
+
+const GET_HOST_NAME = gql`
+  query {
+    hostname @client
+  }
+`;
 
 const propTypes = {
   product: PropTypes.string,
+  userEmail: PropTypes.string,
   userMessage: PropTypes.arrayOf(PropTypes.string),
 };
 
 const defaultProps = {
   product: null,
+  userEmail: null,
   userMessage: [],
 };
 
@@ -70,39 +80,52 @@ const newsLetterPlaceholder = ({ theme, }) => ({
 
 const StyledNewLetterPlaceholder = createComponent(newsLetterPlaceholder);
 
-function StageThankYou({ product, userMessage, }) {
+function StageThankYou({ userEmail, product, userMessage, }) {
   return (
-    <FelaComponent
-      rule={contStyle}
-      render={({
-        className,
-        theme: {
-          thankYou: {
-            afterPurchase,
-            secondaryHeader,
-            backToArticleText,
-            backToArticleContent,
-          },
-        },
-      }) => (
-        <div className={className}>
-          {product && <Phones subscription={product} size={3.5} />}
-          <StyledHeader>
-            {product ? (
-              <p>{afterPurchase(product)}</p>
-            ) : (
-              userMessage.map(line => <p>{line}</p>)
-            )}
-          </StyledHeader>
-          <StyledSecondaryHeader>{secondaryHeader}</StyledSecondaryHeader>
+    <Query query={GET_HOST_NAME}>
+      {({ data: { hostname, }, }) => {
+        const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+        return (
+          <FelaComponent
+            rule={contStyle}
+            render={({
+              className,
+              theme: {
+                thankYou: {
+                  afterPurchase,
+                  secondaryHeader,
+                  backToArticleText,
+                  backToArticleContent,
+                },
+              },
+            }) => (
+              <div className={className}>
+                {product && <Phones subscription={product} size={3.5} />}
+                <StyledHeader>
+                  {product ? (
+                    <p>{afterPurchase(product)}</p>
+                  ) : (
+                    userMessage.map(line => <p>{line}</p>)
+                  )}
+                </StyledHeader>
+                <StyledSecondaryHeader>{secondaryHeader}</StyledSecondaryHeader>
 
-          {/* TODO: Redo these links `href` */}
-          <StyledOverlinkText>{backToArticleText}</StyledOverlinkText>
-          <StyledLink content={backToArticleContent} href="#" />
-          <StyledNewLetterPlaceholder>NewsLetter</StyledNewLetterPlaceholder>
-        </div>
-      )}
-    />
+                {/* TODO: Redo these links `href` */}
+                <StyledOverlinkText>{backToArticleText}</StyledOverlinkText>
+                <StyledLink content={backToArticleContent} href="#" />
+                <StyledNewLetterPlaceholder>
+                  <Newsletter
+                    variant="primary"
+                    segmentId={host === 'themarker.com' ? 1338618 : 1338625}
+                    userEmail={userEmail}
+                  />
+                </StyledNewLetterPlaceholder>
+              </div>
+            )}
+          />
+        );
+      }}
+    </Query>
   );
 }
 

@@ -20,7 +20,11 @@ const ThankYouElement = ({ product, userMessage, }) => (
             user={user}
             isLoggedIn={isLoggedIn}
             stageElement={
-              <ThankYouStage product={product} userMessage={userMessage} />
+              <ThankYouStage
+                userEmail={user.email}
+                product={product}
+                userMessage={userMessage}
+              />
             }
           />
         )}
