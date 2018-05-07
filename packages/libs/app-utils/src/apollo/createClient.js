@@ -41,6 +41,7 @@ function create(initialState, req) {
     cache: inMemoryCache,
     defaults: {
       hostname,
+      referrer: null,
       loggedInOrRegistered: null,
       scroll: {
         velocity: null,

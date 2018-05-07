@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
@@ -9,6 +9,7 @@ import Phones from './Elements/Phones';
 const GET_HOST_NAME = gql`
   query {
     hostname @client
+    referrer @client
   }
 `;
 
@@ -76,7 +77,7 @@ const StyledLink = createComponent(linkStyle, Link, [ 'content', 'href', ]);
 function StageThankYou({ userEmail, product, userMessage, }) {
   return (
     <Query query={GET_HOST_NAME}>
-      {({ data: { hostname, }, }) => {
+      {({ data: { hostname, referrer, }, }) => {
         const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
         return (
           <FelaComponent
@@ -107,9 +108,15 @@ function StageThankYou({ userEmail, product, userMessage, }) {
                 </StyledHeader>
                 <StyledSecondaryHeader>{secondaryHeader}</StyledSecondaryHeader>
 
-                {/* TODO: Redo these links `href` */}
-                <StyledOverlinkText>{backToArticleText}</StyledOverlinkText>
-                <StyledLink content={backToArticleContent} href="#" />
+                {referrer && (
+                  <Fragment>
+                    <StyledOverlinkText>{backToArticleText}</StyledOverlinkText>
+                    <StyledLink
+                      content={backToArticleContent}
+                      href={referrer}
+                    />
+                  </Fragment>
+                )}
                 <Newsletter
                   variant="primary"
                   segmentId={host === 'themarker.com' ? 1338618 : 1338625}

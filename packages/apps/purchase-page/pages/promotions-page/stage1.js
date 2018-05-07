@@ -9,7 +9,6 @@ import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter'
 import ChooseSlotStage from '../../components/OfferPage/Stages/ChooseSlotStage';
 import Redirect from '../../components/Redirect/Redirect';
 
-// todo: remove unused fields from the query
 const GET_PROMOTIONS_STATE = gql`
   query {
     hostname @client
@@ -29,6 +28,10 @@ const getChooseSlotsData = slots =>
   });
 
 class Stage1 extends React.Component {
+  static getInitialProps({ url, }) {
+    return { url, };
+  }
+
   state = {
     mounted: false,
   };
@@ -41,6 +44,7 @@ class Stage1 extends React.Component {
   }
 
   render() {
+    const { url: { query: { referrer, }, }, } = this.props || null;
     return (
       <MainLayout footerHasIllustration={false} displayBackButton={false}>
         <FelaComponent style={{ position: 'relative', }}>
@@ -54,7 +58,8 @@ class Stage1 extends React.Component {
                   <Redirect destination="/promotions-page/thankYou" replace />
                 ) : slots.length > 1 ? (
                   <Query query={GET_PROMOTIONS_STATE}>
-                    {({ data: clientData, }) => {
+                    {({ data: clientData, client, }) => {
+                      client.writeData({ data: { referrer, }, });
                       const {
                         promotionsPageState: { subStage, },
                         hostname,
