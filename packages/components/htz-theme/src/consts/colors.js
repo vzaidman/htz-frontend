@@ -365,9 +365,9 @@ const colors = {
     highlightText: [ 'neutral', 'base', ],
 
     // Primary
-    primaryBg: [ 'primary', '-6', ],
-    primaryTextTitle: [ 'neutral', 'base', ],
-    primaryText: [ 'neutral', 'base', ],
+    primaryBg: [ 'primary', '-2', ],
+    primaryTextTitle: [ 'neutral', '-10', ],
+    primaryText: [ 'neutral', '-10', ],
   },
   highlight: {
     base: [ 'quaternary', 'base', ],
@@ -429,7 +429,7 @@ const colors = {
     primaryInverseText: [ 'bodyText', 'base', ],
     primaryInverseTextLabel: [ 'primary', '+1', ],
     primaryInverseTextLabelDisabled: [ 'neutral', '-4', ],
-    primaryInverseTextNote: [ 'neutral', '-3', ],
+    primaryInverseTextNote: 'white',
     primaryInverseAbbr: [ 'primary', 'base', ],
 
     // PrimaryInverse Focus
