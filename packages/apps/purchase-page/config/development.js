@@ -20,4 +20,5 @@ module.exports = {
   papiProtocol: 'https',
   ssoSubDomain: 'devsso',
   paymentSubDomain: 'dev-',
+  baseHref: 'https://www.haaretz.co.il',
 };
