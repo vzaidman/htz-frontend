@@ -107,7 +107,7 @@ const StyledOffer = createComponent(offerStyle, 'div', [ 'onClick', ]);
 const offerTitleStyle = ({ theme, isRecommended, }) => ({
   extend: [
     theme.type(2, { fromBp: 's', }),
-    theme.type(isRecommended ? -2 : -3, { untilBp: 's', }),
+    theme.type(isRecommended ? -1 : -2, { untilBp: 's', }),
   ],
 });
 
@@ -115,15 +115,17 @@ const StyledOfferTitle = createComponent(offerTitleStyle, 'h2');
 
 const priceStyle = ({ theme, isRecommended, }) => ({
   display: 'block',
+  fontWeight: 300,
+  letterSpacing: '-1.4px',
   color: theme.color('offerPage', 'pricingHeadText'),
   ':before': {
     content: `"${theme.stage2.offerList.currencySymbol}"`,
     ...theme.type(1, { fromBp: 's', }),
-    ...theme.type(isRecommended ? -3 : -4, { untilBp: 's', }),
+    ...theme.type(isRecommended ? -2 : -3, { untilBp: 's', }),
   },
   extend: [
-    theme.type(8, { fromBp: 's', }),
-    theme.type(isRecommended ? 3 : 2, { untilBp: 's', }),
+    theme.type(9, { fromBp: 's', }),
+    theme.type(isRecommended ? 4 : 3, { untilBp: 's', }),
   ],
 });
 
@@ -135,7 +137,7 @@ const offerTextStyle = ({ theme, isRecommended, isFirst, }) => ({
   ...(isFirst ? {} : { color: theme.color('offerPage', 'secondaryOfferText'), }),
   extend: [
     theme.type(1, { fromBp: 's', }),
-    theme.type(isRecommended ? -3 : -4, { untilBp: 's', }),
+    theme.type(isRecommended ? -2 : -3, { untilBp: 's', }),
   ],
 });
 
@@ -146,7 +148,7 @@ const cancelButtonTextStyle = ({ theme, isRecommended, }) => ({
   marginTop: '4.5rem',
   extend: [
     theme.type(-1, { fromBp: 's', }),
-    theme.type(isRecommended ? -3 : -4, { untilBp: 's', }),
+    theme.type(isRecommended ? -2 : -3, { untilBp: 's', }),
     theme.mq({ until: 's', }, { marginTop: isRecommended ? '2rem' : '1rem', }),
   ],
 });
@@ -162,7 +164,7 @@ const termsButtonStyle = ({ theme, isRecommended, }) => ({
   extend: [
     theme.mq({ until: 's', }, { marginTop: isRecommended ? '1rem' : 0, }),
     theme.type(-1, { fromBp: 's', }),
-    theme.type(isRecommended ? -4 : -5, { untilBp: 's', }),
+    theme.type(isRecommended ? -3 : -4, { untilBp: 's', }),
   ],
 });
 
