@@ -3,6 +3,15 @@ import UserFactory from '../user-factory-cookie-based';
 import { plantCookie, } from '../util/cookie-utils';
 import createSiteConfig from '../site-config';
 
+const withTimeout = (milSec, timeoutErrorMsg, promise) => {
+  const timeout = new Promise((resolve, reject) =>
+    setTimeout(() => {
+      reject(new Error(timeoutErrorMsg));
+    }, milSec)
+  );
+  return Promise.race([ promise, timeout, ]);
+};
+
 /**
  * User Services are the collective functions that are allowed communication with
  * our SSO backend server.
@@ -33,17 +42,26 @@ export default function UserService(config = {}) {
     const serviceUrl = `${siteConfig.ssoDomain}/sso/r/isuser`;
     const params = `email=${email}`;
 
-    return fetch(serviceUrl, {
-      method: 'POST',
-      body: params,
-      headers: new Headers({
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }),
-    }).then(data =>
-      data.json().then(json => {
-        if (json.success === 1) return json.exists;
-        return Promise.reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
-      })
+    const checkEmailPromise = new Promise((resolve, reject) =>
+      fetch(serviceUrl, {
+        method: 'POST',
+        body: params,
+        headers: new Headers({
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }),
+      }).then(data =>
+        data.json().then(json => {
+          if (json.success === 1) return resolve(json.exists);
+          return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
+        })
+      )
+    );
+    // todo get correct text
+
+    return withTimeout(
+      5000,
+      'בדיקת דוא"ל לקחה יותר זמן מהצפוי, נא לנסות שוב',
+      checkEmailPromise
     );
   }
 
@@ -76,21 +94,30 @@ export default function UserService(config = {}) {
       `&anonymousId=${anonymousId}` +
       `&password=${password}`;
 
-    return fetch(serviceUrl, {
-      method: 'POST',
-      body: params,
-      headers: new Headers({
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }),
-    })
-      .then(parseResponse)
-      .then(loginData =>
-        handleSsoResponse(loginData).then(() => {
-          if (onImageLoadCallback) {
-            onImageLoadCallback();
-          }
-        })
-      );
+    const loginPromise = new Promise((resolve, reject) =>
+      fetch(serviceUrl, {
+        method: 'POST',
+        body: params,
+        headers: new Headers({
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }),
+      })
+        .then(parseResponse)
+        .then(loginData =>
+          handleSsoResponse(loginData).then(() => {
+            if (onImageLoadCallback) {
+              onImageLoadCallback();
+            }
+            resolve();
+          })
+        )
+    );
+    // todo get correct text
+    return withTimeout(
+      5000,
+      'כניסה למערכת לקחה יותר זמן מהצפוי, נא לנסות שוב',
+      loginPromise
+    );
   }
 
   /**
@@ -105,21 +132,30 @@ export default function UserService(config = {}) {
     const params = `mobile=true&userId=${builtUser.id}&anonymousId=${
       builtUser.anonymousId
     }`;
-    return fetch(serviceUrl, {
-      method: 'POST',
-      body: params,
-      headers: new Headers({
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }),
-    })
-      .then(parseResponse)
-      .then(logoutData =>
-        handleSsoResponse(logoutData).then(() => {
-          if (onImageLoadCallback) {
-            onImageLoadCallback();
-          }
-        })
-      );
+    const logoutPromise = new Promise((resolve, reject) =>
+      fetch(serviceUrl, {
+        method: 'POST',
+        body: params,
+        headers: new Headers({
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }),
+      })
+        .then(parseResponse)
+        .then(logoutData =>
+          handleSsoResponse(logoutData).then(() => {
+            if (onImageLoadCallback) {
+              onImageLoadCallback();
+              resolve();
+            }
+          })
+        )
+    );
+    // todo get correct text
+    return withTimeout(
+      5000,
+      'התנתקות לקחה יותר זמן מהצפוי, נא לנסות שוב',
+      logoutPromise
+    );
   }
 
   /**
@@ -166,21 +202,30 @@ export default function UserService(config = {}) {
       `&termsChk=${termsChk}` +
       `&g-recaptcha-response=${gRecaptchaResponse}`;
 
-    return fetch(serviceUrl, {
-      method: 'POST',
-      body: params,
-      headers: new Headers({
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }),
-    })
-      .then(parseResponse)
-      .then(registerData =>
-        handleSsoResponse(registerData).then(() => {
-          if (onImageLoadCallback) {
-            onImageLoadCallback();
-          }
-        })
-      );
+    const registerPromise = new Promise((resolve, reject) =>
+      fetch(serviceUrl, {
+        method: 'POST',
+        body: params,
+        headers: new Headers({
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }),
+      })
+        .then(parseResponse)
+        .then(registerData =>
+          handleSsoResponse(registerData).then(() => {
+            if (onImageLoadCallback) {
+              onImageLoadCallback();
+              resolve();
+            }
+          })
+        )
+    );
+    // todo get correct text
+    return withTimeout(
+      5000,
+      'ההרשמה לקחה יותר זמן מהצפוי, נא לנסות שוב',
+      registerPromise
+    );
   }
 
   /**

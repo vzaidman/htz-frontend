@@ -125,7 +125,12 @@ class LoginOrRegisterStage extends React.Component {
           </FelaComponent>
           <Button
             onClick={() =>
-              this.setState({ error: null, loading: false, loadingAll: false, })
+              this.setState({
+                error: null,
+                loading: false,
+                loadingAll: false,
+                email: null,
+              })
             }
             miscStyles={{ marginTop: '5rem', }}
           >
@@ -233,12 +238,8 @@ class LoginOrRegisterStage extends React.Component {
                                       );
                                     })
                                     .catch(error => {
-                                      console.log(
-                                        'error from checkemail',
-                                        error
-                                      );
                                       this.setState({
-                                        error: error.msg,
+                                        error: error.msg || error.message,
                                         loading: false,
                                       });
                                     });
