@@ -2,7 +2,7 @@ import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
-import { Button, Form, TextInput, } from '@haaretz/htz-components';
+import { Button, Form, TextInput, Link, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 import OfferList from './ChooseProductStageElements/OfferList';
 import Modal from './ChooseProductStageElements/Modal';
@@ -44,8 +44,6 @@ const StyledMoreOptionsCont = createComponent(moreOptionsContStyle);
 
 const moreOptionsButtonsMiscStyles = {
   marginTop: '4rem',
-  marginInlineStart: [ { from: 'm', value: '3rem', }, ],
-  maxWidth: '90%',
   type: -1,
 };
 const couponButtonsMiscStyles = {
@@ -136,6 +134,7 @@ class ChooseProductStage extends Component {
                 validation,
                 couponForm: { textLabel, textNote, buttons: { send, close, }, },
               },
+              buttons: { entitlements, },
             },
           },
         }) => (
@@ -292,6 +291,30 @@ class ChooseProductStage extends Component {
                           {coupon}
                         </Button>
                       ))}
+                    <FelaComponent
+                      style={{
+                        ...moreOptionsButtonsMiscStyles,
+                        fontWeight: '700',
+                        marginTop: '6rem',
+                      }}
+                      render="p"
+                    >
+                      {entitlements.beforeLinkText}{' '}
+                      <Link
+                        href={entitlements.link}
+                        content={
+                          <FelaComponent
+                            render="span"
+                            style={{
+                              textDecoration: 'underline',
+                              textDecorationSkip: 'ink',
+                            }}
+                          >
+                            {entitlements.linkText}
+                          </FelaComponent>
+                        }
+                      />
+                    </FelaComponent>
                   </StyledMoreOptionsCont>
                 )}
               </StyledCont>

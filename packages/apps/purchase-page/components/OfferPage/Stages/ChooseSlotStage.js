@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { withRouter, } from 'next/router';
 import { parseTypographyProp, } from '@haaretz/htz-css-tools';
-import { Button, } from '@haaretz/htz-components';
+import { Button, Link, } from '@haaretz/htz-components';
 import DesktopView from './ChooseSlotsStageElements/DesktopView';
 import MobileView from './ChooseSlotsStageElements/MobileView';
 import SubHeader from './ChooseSlotsStageElements/SubHeader';
@@ -79,7 +79,6 @@ const StyledHeading = createComponent(headingStyle, 'h1');
 
 const moreOptionsButtonsMiscStyles = {
   marginTop: '4rem',
-  marginInlineStart: [ { from: 'l', value: '3rem', }, ],
   type: -1,
 };
 
@@ -112,42 +111,70 @@ function ChooseSlotStage({
   return (
     <FelaComponent
       style={contStyle}
-      render={({ className, theme, }) => (
+      render={({
+      className,
+      theme: {
+        stage1,
+          stage1: {
+            headerText,
+            buttons: {
+              entitlements,
+              organizationSubscription,
+            },
+          },
+        },
+      }) => (
         <Fragment>
-          <StyledHeading>{theme.stage1.headerText}</StyledHeading>
+          <StyledHeading>{headerText}</StyledHeading>
           <SubHeader isTheMarker={host === 'themarker.com'} />
           <div className={className}>
             <UserMessage userMessage={userMessage} />
             <DesktopView
               tableData={tableData}
-              staticTableData={theme.stage1}
+              staticTableData={stage1}
               continueToNextStage={continueToNextStage}
               pathName={pathName}
               asPath={router.asPath}
             />
             <MobileView
               tableData={tableData}
-              staticTableData={theme.stage1}
+              staticTableData={stage1}
               continueToNextStage={continueToNextStage}
               pathName={pathName}
               asPath={router.asPath}
             />
             <StyledMoreOptionsCont>
               {subStage < 2 && (
-                <Button
-                  variant="primary"
-                  miscStyles={moreOptionsButtonsMiscStyles}
-                  href={theme.stage1.buttons.subscribed.url}
+                <FelaComponent
+                  style={{
+                  ...moreOptionsButtonsMiscStyles,
+                  fontWeight: '700',
+                  }}
+                  render="p"
                 >
-                  {theme.stage1.buttons.subscribed.text}
-                </Button>
+                  {entitlements.beforeLinkText}{' '}
+                  <Link
+                    href={entitlements.link}
+                    content={
+                      <FelaComponent
+                        render="span"
+                        style={{
+                          textDecoration: 'underline',
+                          textDecorationSkip: 'ink',
+                        }}
+                      >
+                        {entitlements.linkText}
+                      </FelaComponent>
+                    }
+                  />
+                </FelaComponent>
               )}
               <Button
                 variant="primary"
                 miscStyles={moreOptionsButtonsMiscStyles}
-                href={theme.stage1.buttons.organizationSubscription.url}
+                href={organizationSubscription.url}
               >
-                {theme.stage1.buttons.organizationSubscription.text}
+                {organizationSubscription.text}
               </Button>
             </StyledMoreOptionsCont>
           </div>

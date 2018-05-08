@@ -129,9 +129,10 @@ export const stage1 = Object.freeze({
       text: 'מינוי אירגוני',
       url: 'https://secure.pulseem.com/subs_heb_edu/',
     },
-    subscribed: {
-      text: 'יש או היה לי מינוי לעיתון',
-      url: 'https://www.haaretz.co.il/misc/entitlement',
+    entitlements: {
+      beforeLinkText: 'כבר מנויים?',
+      linkText: 'בדקו אם אתם זכאים להנחה',
+      link: 'https://www.haaretz.co.il/misc/entitlement',
     },
   }),
   tfoot: 'ניתן לבטל בכל עת',
@@ -171,6 +172,13 @@ export const stage2 = Object.freeze({
         close: 'סגור',
       }),
     }),
+  }),
+  buttons: Object.freeze({
+    entitlements: {
+      beforeLinkText: 'כבר מנויים?',
+      linkText: 'בדקו אם אתם זכאים להנחה',
+      link: 'https://www.haaretz.co.il/misc/entitlement',
+    },
   }),
 });
 

@@ -6,7 +6,7 @@ const htz = Object.freeze({
   phone: '#169fd1',
   offerPage: {
     bgHighlighted: [ 'primary', '-6', ],
-    buttonText: [ 'primary', '+1', ],
+    buttonText: [ 'primary', 'base', ],
     pricingHeadText: [ 'primary', 'base', ],
     paymentSummaryBorder: [ 'primary', '-3', ],
   },
