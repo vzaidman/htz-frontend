@@ -63,13 +63,13 @@ export default class Facebook extends React.Component {
   };
 
   componentDidMount() {
-    appendScript(
-      '//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.9',
-      'facebook-jssdk',
-      true,
-      this.initScript,
-      this.updateScript
-    );
+    appendScript({
+      src: '//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.9',
+      id: 'facebook-jssdk',
+      isAsync: true,
+      onLoadFunction: this.initScript,
+      updateFunction: this.updateScript,
+    });
   }
 
   initScript = () => {

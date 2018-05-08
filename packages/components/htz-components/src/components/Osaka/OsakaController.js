@@ -60,11 +60,11 @@ class OsakaWrapper extends React.Component {
 
   componentDidMount() {
     this.setBreakPoint();
-    appendScript(
-      '//widgets.outbrain.com/outbrain.js',
-      'outbrain-widget',
-      false
-    );
+    appendScript({
+      src: '//widgets.outbrain.com/outbrain.js',
+      id: 'outbrain-widget',
+      isAsync: false,
+    });
   }
 
   shouldComponentUpdate(nextProps, nextState) {

@@ -31,11 +31,13 @@ export default class FacebookComments extends React.Component {
   };
 
   componentDidMount() {
-    const src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.9';
-    const async = true;
-    const id = 'facebook-jssdk';
-
-    appendScript(src, id, async, this.initScript, this.updateScript);
+    appendScript({
+      src: '//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.9',
+      id: 'facebook-jssdk',
+      isAsync: true,
+      onLoadFunction: this.initScript,
+      updateFunction: this.updateScript,
+    });
   }
 
   initScript = () => {

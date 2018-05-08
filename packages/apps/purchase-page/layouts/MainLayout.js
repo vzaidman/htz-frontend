@@ -56,14 +56,14 @@ const StyledContentWrapper = createComponent(contentWrapperStyle);
 
 class MainLayout extends React.Component {
   componentDidMount() {
-    // appendScript(
-    //   '//script.crazyegg.com/pages/scripts/0011/5351.js',
-    //   'crazyegg',
-    //   true,
-    //   null,
-    //   null,
-    //   { type: 'text/javascript', }
-    // );
+    // appendScript({
+    //   src: '//script.crazyegg.com/pages/scripts/0011/5351.js',
+    //   id: 'crazyegg',
+    //   async: true,
+    //   onLoadFunction: null,
+    //   updateFunction: null,
+    //   attributes: { type: 'text/javascript', },
+    // });
   }
 
   render() {

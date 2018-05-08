@@ -71,11 +71,14 @@ export default class Twitter extends React.Component {
   };
 
   componentDidMount() {
-    const src = '//platform.twitter.com/widgets.js';
-    const async = true;
-    const id = 'twitter-js';
     /* istanbul ignore next */
-    appendScript(src, id, async, this.initScript, this.updateScript);
+    appendScript({
+      src: '//platform.twitter.com/widgets.js',
+      id: 'twitter-js',
+      isAsync: true,
+      onLoadFunction: this.initScript,
+      updateFunction: this.updateScript,
+    });
   }
 
   initScript = () => {

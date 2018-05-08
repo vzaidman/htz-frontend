@@ -68,17 +68,13 @@ export default class PlayBuzz extends React.Component {
   };
 
   componentDidMount() {
-    const src = '//cdn.playbuzz.com/widget/feed.js';
-    const async = true;
-    const id = 'playbuzz-js';
-
-    appendScript(
-      src,
-      id,
-      async,
-      this.props.onLoadCallback,
-      this.props.onLoadCallback
-    );
+    appendScript({
+      src: '//cdn.playbuzz.com/widget/feed.js',
+      id: 'playbuzz-js',
+      isAsync: true,
+      onLoadFunction: this.props.onLoadCallback,
+      updateFunction: this.props.onLoadCallback,
+    });
   }
 
   render() {

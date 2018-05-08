@@ -59,6 +59,7 @@ const LinkWrapper = ({
     }
     // your own code here, this function can even be async
     // TODO: Logging to BI can happen here.
+
     console.log('LOGGING BI FOR', href);
     return onClick(...args);
   };

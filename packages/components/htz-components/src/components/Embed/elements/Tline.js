@@ -41,11 +41,12 @@ export default class Tline extends React.Component {
   };
 
   componentDidMount() {
-    const src = 'https://tline.io/assets/js/release/loader.js';
-    const async = true;
-    const id = 'tline-js';
-
-    appendScript(src, id, async, this.props.onLoadCallback);
+    appendScript({
+      src: 'https://tline.io/assets/js/release/loader.js',
+      id: 'tline-js',
+      isAsync: true,
+      onLoadFunction: this.props.onLoadCallback,
+    });
   }
 
   render() {

@@ -3,29 +3,30 @@ const appendedScripts = {};
 
 /**
  *
- * @param {string} src
+ * @param {object} options an options object for the append script function
+ * @param {string} options.src
  *   the script source url
- * @param {string} id
+ * @param {string} options.id
  *   a unique id for this script, to avoid duplications
- * @param {boolean} isAsync
+ * @param {boolean} options.isAsync
  *   is this script is async or not
- * @param {function} onLoadFunction
+ * @param {function} options.onLoadFunction
  *   an init function (not required)
- * @param {function} updateFunction
+ * @param {function} options.updateFunction
  *   an update function (not required), in case that the script already
  *   exist in the DOM, but you're in need to refresh the already mounted elements
- * @param {object} attributes
+ * @param {object} options.attributes
  *   an object with additional attributes to be assigned to the
  *   script tag (not required). e.g., `{'data-pin-build': 'doBuild'}`
  */
-export const appendScript = (
+export const appendScript = ({
   src,
   id,
   isAsync = false,
   onLoadFunction = null,
   updateFunction = null,
-  attributes = null
-) => {
+  attributes = null,
+} = {}) => {
   if (!appendedScripts[id]) {
     const script = document.createElement('script');
 

@@ -46,11 +46,13 @@ export default class Instagram extends React.Component {
   };
 
   componentDidMount() {
-    const src = '//platform.instagram.com/en_US/embeds.js';
-    const async = true;
-    const id = 'instagram-js';
-
-    appendScript(src, id, async, this.props.onLoadCallback, updateScript);
+    appendScript({
+      src: '//platform.instagram.com/en_US/embeds.js',
+      id: 'instagram-js',
+      isAsync: true,
+      onLoadFunction: this.props.onLoadCallback,
+      updateFunction: updateScript,
+    });
   }
 
   render() {

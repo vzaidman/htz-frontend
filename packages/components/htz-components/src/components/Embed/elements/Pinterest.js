@@ -56,12 +56,15 @@ export default class Pinterest extends React.Component {
   };
 
   componentDidMount() {
-    const src = '//assets.pinterest.com/js/pinit.js';
-    const async = true;
-    const id = 'pinterest-js';
-
-    appendScript(src, id, async, this.props.onLoadCallback, updateScript, {
-      'data-pin-build': 'doBuild',
+    appendScript({
+      src: '//assets.pinterest.com/js/pinit.js',
+      id: 'pinterest-js',
+      isAsync: true,
+      onLoadFunction: this.props.onLoadCallback,
+      updateFunction: updateScript,
+      attributes: {
+        'data-pin-build': 'doBuild',
+      },
     });
   }
 
