@@ -45,7 +45,7 @@ const backLinkTextStyle = theme => ({
 
 const logoContStyle = {
   textAlign: 'center',
-  marginBottom: '2rem',
+  marginBottom: '1rem',
 };
 
 const underLogoStyle = theme => ({
@@ -74,7 +74,7 @@ const trustedBadgeCircleStyle = theme => ({
   height: '10rem',
   marginRight: '0.75rem',
   marginLeft: '0.75rem',
-  marginTop: '0.75rem',
+  marginTop: '-1rem',
   marginBottom: '0.75rem',
   backgroundColor: theme.color('header', 'badgeBg'),
   borderWidth: '2px',
@@ -129,15 +129,15 @@ function PurchaseHeader({ host, router, }) {
           <FelaComponent style={logoContStyle}>
             {host === 'themarker.com' ? (
               <IconMarkerLogo
-                size={4.5}
+                size={4}
                 color="primary"
-                miscStyles={{ marginTop: '3rem', }}
+                miscStyles={{ marginTop: '2rem', }}
               />
             ) : (
               <IconHaaretzLogo
-                size={4.5}
+                size={4}
                 color="black"
-                miscStyles={{ marginTop: '3rem', }}
+                miscStyles={{ marginTop: '2rem', }}
               />
             )}
             <FelaComponent style={underLogoStyle}>

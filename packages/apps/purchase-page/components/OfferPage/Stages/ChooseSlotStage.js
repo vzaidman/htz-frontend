@@ -66,6 +66,7 @@ const headingStyle = ({ theme, }) => ({
   fontWeight: 'normal',
   paddingInlineStart: '4rem',
   paddingInlineEnd: '4rem',
+  marginTop: '2rem',
   extend: [
     parseTypographyProp(
       [ { until: 'l', value: 3, }, { from: 'l', value: 5, }, ],
@@ -74,13 +75,13 @@ const headingStyle = ({ theme, }) => ({
   ],
 });
 
+const StyledHeading = createComponent(headingStyle, 'h1');
+
 const moreOptionsButtonsMiscStyles = {
   marginTop: '4rem',
   marginInlineStart: [ { from: 'l', value: '3rem', }, ],
   type: -1,
 };
-
-const StyledHeading = createComponent(headingStyle, 'h1');
 
 function ChooseSlotStage({
   hostname,

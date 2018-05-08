@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
 import {
   borderBottom,
@@ -228,11 +228,12 @@ const StyledTdInnerCont = createComponent(tdInnerContStyle, 'div', [ 'onClick', 
 const pricingHeadStyle = ({ theme, }) => ({
   color: theme.color('offerPage', 'pricingHeadText'),
   marginTop: '1rem',
+  extend: [ theme.type(-1), ],
 });
 const StyledPricingHead = createComponent(pricingHeadStyle, 'h5');
 
 const colHeadStyle = ({ theme, }) => ({
-  marginTop: '1rem',
+  marginTop: '2rem',
   extend: [ theme.type(2), ],
 });
 const StyledColHead = createComponent(colHeadStyle, 'h2');
@@ -293,118 +294,126 @@ function DesktopView({
   return (
     <ApolloConsumer>
       {cache => (
-        <StyledTable>
-          <StyledThead>
-            <Grid
-              tagName="tr"
-              gutter={0}
-              align="center"
-              vAlign="bottom"
-              miscStyles={{ backgroundColor: 'transparent', }}
-            >
-              <GridItem width={1 / 4} tagName="th">
-                <StyledThInnerCont />
-              </GridItem>
-              {tHeadData.map((item, idx) => (
-                <GridItem width={1 / 4} tagName="th" key={item.heading}>
-                  <StyledThInnerCont
-                    hasBorderTop
-                    hasBorderStart
-                    hasBorderEnd
-                    isHighlighted={
-                      tHeadData.length === 3 ? idx === 1 : idx === 0
-                    }
-                    onClick={() => {
-                      continueToNextStage({ cache, idx, routerPush: true, });
-                    }}
-                  >
-                    <Phones subscription={item.subscriptionName} />
-                    <StyledColHead>{item.heading}</StyledColHead>
-                    <StyledPricingHead>{item.pricingHead}</StyledPricingHead>
-                    <Button
-                      href={{ pathname: pathName, }}
-                      asPath={asPath}
-                      variant="salesOpaque"
-                      boxModel={{ vp: 1, hp: 5, }}
-                      miscStyles={{ marginTop: '3rem', }}
-                      onClick={() => {
-                        continueToNextStage({ cache, idx, });
-                      }}
-                    >
-                      {item.btnText}
-                    </Button>
-                  </StyledThInnerCont>
-                </GridItem>
-              ))}
-            </Grid>
-          </StyledThead>
-          <StyledTBody>
-            {tBodyData.map((row, rowNum) => (
+        <FelaComponent
+          style={{
+            maxWidth: '190rem',
+            marginInlineStart: 'auto',
+            marginInlineEnd: 'auto',
+          }}
+        >
+          <StyledTable>
+            <StyledThead>
               <Grid
                 tagName="tr"
                 gutter={0}
                 align="center"
-                vAlign="stretch"
-                key={Math.random()}
+                vAlign="bottom"
+                miscStyles={{ backgroundColor: 'transparent', }}
               >
-                {row.map((cellData, idx) => (
-                  <GridItem width={1 / 4} tagName="td" key={Math.random()}>
-                    <StyledTdInnerCont
+                <GridItem width={1 / 4} tagName="th">
+                  <StyledThInnerCont />
+                </GridItem>
+                {tHeadData.map((item, idx) => (
+                  <GridItem width={1 / 4} tagName="th" key={item.heading}>
+                    <StyledThInnerCont
+                      hasBorderTop
+                      hasBorderStart
+                      hasBorderEnd
                       isHighlighted={
-                        tBodyData[0].length === 4 ? idx === 2 : idx === 1
+                        tHeadData.length === 3 ? idx === 1 : idx === 0
                       }
-                      isDescription={idx === 0}
-                      isBold={rowNum === tBodyData.length - 2 && idx !== 0}
                       onClick={() => {
-                        continueToNextStage({
-                          cache,
-                          idx: idx - 1,
-                          routerPush: true,
-                        });
+                        continueToNextStage({ cache, idx, routerPush: true, });
                       }}
                     >
-                      {typeof cellData === 'string' ? (
-                        cellData
-                      ) : Array.isArray(cellData) ? (
-                        cellData.map(line => (
-                          <div key={Math.random()}>{line}</div>
-                        ))
-                      ) : cellData ? (
-                        <PositiveCircle />
-                      ) : (
-                        ''
-                      )}
-                    </StyledTdInnerCont>
+                      <Phones subscription={item.subscriptionName} size={7} />
+                      <StyledColHead>{item.heading}</StyledColHead>
+                      <StyledPricingHead>{item.pricingHead}</StyledPricingHead>
+                      <Button
+                        href={{ pathname: pathName, }}
+                        asPath={asPath}
+                        variant="salesOpaque"
+                        boxModel={{ vp: 1, hp: 5, }}
+                        miscStyles={{ marginTop: '3rem', }}
+                        onClick={() => {
+                          continueToNextStage({ cache, idx, });
+                        }}
+                      >
+                        {item.btnText}
+                      </Button>
+                    </StyledThInnerCont>
                   </GridItem>
                 ))}
               </Grid>
-            ))}
-          </StyledTBody>
-          <StyledTFoot>
-            <Grid tagName="tr" gutter={0} align="center" vAlign="top">
-              <GridItem width={1 / 4} tagName="td">
-                <StyledTdFootInnerCont />
-              </GridItem>
-              {tHeadData.map((item, idx) => (
-                <GridItem width={1 / 4} tagName="td" key={Math.random()}>
-                  <StyledTdFootInnerCont
-                    hasBorderBottom
-                    hasBorderStart
-                    hasBorderEnd
-                    isHighlighted={
-                      tHeadData.length === 3 ? idx === 1 : idx === 0
-                    }
-                    onClick={() => {
-                      continueToNextStage({ cache, idx, routerPush: true, });
-                    }}
-                  >
-                    {staticTableData.tfoot}
-                  </StyledTdFootInnerCont>
-                </GridItem>
+            </StyledThead>
+            <StyledTBody>
+              {tBodyData.map((row, rowNum) => (
+                <Grid
+                  tagName="tr"
+                  gutter={0}
+                  align="center"
+                  vAlign="stretch"
+                  key={Math.random()}
+                >
+                  {row.map((cellData, idx) => (
+                    <GridItem width={1 / 4} tagName="td" key={Math.random()}>
+                      <StyledTdInnerCont
+                        isHighlighted={
+                          tBodyData[0].length === 4 ? idx === 2 : idx === 1
+                        }
+                        isDescription={idx === 0}
+                        isBold={rowNum === tBodyData.length - 2 && idx !== 0}
+                        onClick={() => {
+                          continueToNextStage({
+                            cache,
+                            idx: idx - 1,
+                            routerPush: true,
+                          });
+                        }}
+                      >
+                        {typeof cellData === 'string' ? (
+                          cellData
+                        ) : Array.isArray(cellData) ? (
+                          cellData.map(line => (
+                            <div key={Math.random()}>{line}</div>
+                          ))
+                        ) : cellData ? (
+                          <PositiveCircle />
+                        ) : (
+                          ''
+                        )}
+                      </StyledTdInnerCont>
+                    </GridItem>
+                  ))}
+                </Grid>
               ))}
-            </Grid>
-          </StyledTFoot>
-        </StyledTable>
+            </StyledTBody>
+            <StyledTFoot>
+              <Grid tagName="tr" gutter={0} align="center" vAlign="top">
+                <GridItem width={1 / 4} tagName="td">
+                  <StyledTdFootInnerCont />
+                </GridItem>
+                {tHeadData.map((item, idx) => (
+                  <GridItem width={1 / 4} tagName="td" key={Math.random()}>
+                    <StyledTdFootInnerCont
+                      hasBorderBottom
+                      hasBorderStart
+                      hasBorderEnd
+                      isHighlighted={
+                        tHeadData.length === 3 ? idx === 1 : idx === 0
+                      }
+                      onClick={() => {
+                        continueToNextStage({ cache, idx, routerPush: true, });
+                      }}
+                    >
+                      {staticTableData.tfoot}
+                    </StyledTdFootInnerCont>
+                  </GridItem>
+                ))}
+              </Grid>
+            </StyledTFoot>
+          </StyledTable>
+        </FelaComponent>
       )}
     </ApolloConsumer>
   );
