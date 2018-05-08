@@ -35,14 +35,14 @@ const contStyle = theme => ({
   extend: [ theme.mq({ from: 'l', }, { display: 'none', }), ],
 });
 
-const itemContStyle = ({ theme, }) => ({
+const itemContStyle = ({ theme, isFirst = false, }) => ({
   cursor: 'pointer',
   extend: [
     borderTop(
       theme.tableStyle.borderWidth,
       3,
       theme.tableStyle.borderStyle,
-      theme.color('offerPage', 'borderHighlighted')
+      isFirst ? 'transparent' : theme.color('offerPage', 'borderHighlighted')
     ),
   ],
 });
@@ -147,6 +147,7 @@ class MobileView extends Component {
               <div className={className}>
                 {tableData.map((item, idx) => (
                   <StyledItemCont
+                    isFirst={idx === 0}
                     key={Math.random()}
                     onClick={() => {
                       continueToNextStage({ cache, idx, routerPush: true, });

@@ -12,7 +12,7 @@ const defaultProps = {
 
 const stagesCounterStyle = theme => ({
   textAlign: 'center',
-  marginTop: '4rem',
+  paddingTop: '4rem',
   fontWeight: 'bold',
   color: theme.color('stagesCounter', 'step'),
   extend: [ theme.type(-1), ],

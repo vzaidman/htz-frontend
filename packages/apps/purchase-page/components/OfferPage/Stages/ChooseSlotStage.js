@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { withRouter, } from 'next/router';
@@ -6,9 +6,11 @@ import { parseTypographyProp, } from '@haaretz/htz-css-tools';
 import { Button, } from '@haaretz/htz-components';
 import DesktopView from './ChooseSlotsStageElements/DesktopView';
 import MobileView from './ChooseSlotsStageElements/MobileView';
+import SubHeader from './ChooseSlotsStageElements/SubHeader';
 import UserMessage from './Elements/UserMessage';
 
 const propTypes = {
+  hostname: PropTypes.string.isRequired,
   tableData: PropTypes.arrayOf(
     PropTypes.shape({
       subscriptionName: PropTypes.string.isRequired,
@@ -60,6 +62,7 @@ const moreOptionsContStyle = ({ theme, }) => ({
 const StyledMoreOptionsCont = createComponent(moreOptionsContStyle);
 
 const headingStyle = ({ theme, }) => ({
+  textAlign: 'center',
   fontWeight: 'normal',
   paddingInlineStart: '4rem',
   paddingInlineEnd: '4rem',
@@ -79,7 +82,13 @@ const moreOptionsButtonsMiscStyles = {
 
 const StyledHeading = createComponent(headingStyle, 'h1');
 
-function ChooseSlotStage({ tableData, subStage, userMessage, router, }) {
+function ChooseSlotStage({
+  hostname,
+  tableData,
+  subStage,
+  userMessage,
+  router,
+}) {
   const pathName = '/promotions-page/stage2';
 
   const continueToNextStage = ({ cache, idx, routerPush = false, }) => {
@@ -98,46 +107,50 @@ function ChooseSlotStage({ tableData, subStage, userMessage, router, }) {
     }
   };
 
+  const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
   return (
     <FelaComponent
       style={contStyle}
       render={({ className, theme, }) => (
-        <div className={className}>
+        <Fragment>
           <StyledHeading>{theme.stage1.headerText}</StyledHeading>
-          <UserMessage userMessage={userMessage} />
-          <DesktopView
-            tableData={tableData}
-            staticTableData={theme.stage1}
-            continueToNextStage={continueToNextStage}
-            pathName={pathName}
-            asPath={router.asPath}
-          />
-          <MobileView
-            tableData={tableData}
-            staticTableData={theme.stage1}
-            continueToNextStage={continueToNextStage}
-            pathName={pathName}
-            asPath={router.asPath}
-          />
-          <StyledMoreOptionsCont>
-            {subStage < 2 && (
+          <SubHeader isTheMarker={host === 'themarker.com'} />
+          <div className={className}>
+            <UserMessage userMessage={userMessage} />
+            <DesktopView
+              tableData={tableData}
+              staticTableData={theme.stage1}
+              continueToNextStage={continueToNextStage}
+              pathName={pathName}
+              asPath={router.asPath}
+            />
+            <MobileView
+              tableData={tableData}
+              staticTableData={theme.stage1}
+              continueToNextStage={continueToNextStage}
+              pathName={pathName}
+              asPath={router.asPath}
+            />
+            <StyledMoreOptionsCont>
+              {subStage < 2 && (
+                <Button
+                  variant="primary"
+                  miscStyles={moreOptionsButtonsMiscStyles}
+                  href={theme.stage1.buttons.subscribed.url}
+                >
+                  {theme.stage1.buttons.subscribed.text}
+                </Button>
+              )}
               <Button
                 variant="primary"
                 miscStyles={moreOptionsButtonsMiscStyles}
-                href={theme.stage1.buttons.subscribed.url}
+                href={theme.stage1.buttons.organizationSubscription.url}
               >
-                {theme.stage1.buttons.subscribed.text}
+                {theme.stage1.buttons.organizationSubscription.text}
               </Button>
-            )}
-            <Button
-              variant="primary"
-              miscStyles={moreOptionsButtonsMiscStyles}
-              href={theme.stage1.buttons.organizationSubscription.url}
-            >
-              {theme.stage1.buttons.organizationSubscription.text}
-            </Button>
-          </StyledMoreOptionsCont>
-        </div>
+            </StyledMoreOptionsCont>
+          </div>
+        </Fragment>
       )}
     />
   );

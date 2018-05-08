@@ -2,6 +2,7 @@ import React from 'react';
 import { withData, pagePropTypes, } from '@haaretz/app-utils';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
+import { FelaComponent, } from 'react-fela';
 
 import MainLayout from '../../layouts/MainLayout';
 import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter';
@@ -12,6 +13,7 @@ import StageCounter from '../../components/OfferPage/Stages/Elements/StageCounte
 // todo: remove unused fields from the query
 const GET_PROMOTIONS_STATE = gql`
   query {
+    hostname @client
     promotionsPageState @client {
       subStage
     }
@@ -41,35 +43,41 @@ class Stage1 extends React.Component {
 
   render() {
     return (
-      <MainLayout>
-        <StageCounter stage={1} />
-        {this.state.mounted && (
-          <OfferPageDataGetter
-            render={({ data, loading, error, }) => {
-              if (loading) return <div> Loading...</div>;
-              if (error) return <div> Error...</div>;
-              const { slots, pageNumber, } = data.purchasePage;
-              return pageNumber >= 7 ? (
-                <Redirect destination="/promotions-page/thankYou" replace />
-              ) : slots.length > 1 ? (
-                <Query query={GET_PROMOTIONS_STATE}>
-                  {({ data: clientData, }) => {
-                    const { promotionsPageState: { subStage, }, } = clientData;
-                    return (
-                      <ChooseSlotStage
-                        tableData={getChooseSlotsData(slots)}
-                        subStage={subStage}
-                        userMessage={data.purchasePage.userMessage}
-                      />
-                    );
-                  }}
-                </Query>
-              ) : (
-                <Redirect destination="/promotions-page/stage2" replace />
-              );
-            }}
-          />
-        )}
+      <MainLayout footerHasIllustration={false}>
+        <FelaComponent style={{ position: 'relative', }}>
+          <StageCounter stage={1} />
+          {this.state.mounted && (
+            <OfferPageDataGetter
+              render={({ data, loading, error, }) => {
+                if (loading) return <div> Loading...</div>;
+                if (error) return <div> Error...</div>;
+                const { slots, pageNumber, } = data.purchasePage;
+                return pageNumber >= 7 ? (
+                  <Redirect destination="/promotions-page/thankYou" replace />
+                ) : slots.length > 1 ? (
+                  <Query query={GET_PROMOTIONS_STATE}>
+                    {({ data: clientData, }) => {
+                      const {
+                        promotionsPageState: { subStage, },
+                        hostname,
+                      } = clientData;
+                      return (
+                        <ChooseSlotStage
+                          hostname={hostname}
+                          tableData={getChooseSlotsData(slots)}
+                          subStage={subStage}
+                          userMessage={data.purchasePage.userMessage}
+                        />
+                      );
+                    }}
+                  </Query>
+                ) : (
+                  <Redirect destination="/promotions-page/stage2" replace />
+                );
+              }}
+            />
+          )}
+        </FelaComponent>
       </MainLayout>
     );
   }

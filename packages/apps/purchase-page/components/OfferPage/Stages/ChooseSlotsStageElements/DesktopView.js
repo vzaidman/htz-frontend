@@ -300,7 +300,7 @@ function DesktopView({
               gutter={0}
               align="center"
               vAlign="bottom"
-              miscStyles={{ backgroundColor: 'white', }}
+              miscStyles={{ backgroundColor: 'transparent', }}
             >
               <GridItem width={1 / 4} tagName="th">
                 <StyledThInnerCont />
