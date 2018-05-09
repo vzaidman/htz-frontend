@@ -215,9 +215,18 @@ const Offer = ({
   fourDigits,
   router,
 }) => {
+  // eslint-disable-next-line prefer-const
+  let [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
+  pathWithoutQuery = pathWithoutQuery.substr(
+    0,
+    pathWithoutQuery.lastIndexOf('/')
+  );
+  const computedAsPath = `${pathWithoutQuery}/stage${isLoggedIn ? '4' : '3'}${
+    queryPartFromPath ? `?${queryPartFromPath}` : ''
+  }`;
   const pathName = isLoggedIn
-    ? { pathname: '/promotions-page/stage4', }
-    : { pathname: '/promotions-page/stage3', };
+    ? '/promotions-page/stage4'
+    : '/promotions-page/stage3';
 
   const continueToNextStage = ({ cache, idx, routerPush = false, }) => {
     cache.writeData({
@@ -232,7 +241,12 @@ const Offer = ({
       },
     });
     if (routerPush) {
-      router.push(pathName, router.asPath);
+      if (router.asPath) {
+        router.push(pathName, computedAsPath);
+      }
+      else {
+        router.push(pathName, computedAsPath);
+      }
     }
   };
   return (
@@ -269,7 +283,6 @@ const Offer = ({
             ))}
           <Button
             href={pathName}
-            asPath={router.asPath}
             variant="salesOpaque"
             boxModel={{ hp: 3, vp: 1, }}
             miscStyles={{
