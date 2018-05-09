@@ -1,3 +1,16 @@
+export const seo = Object.freeze({
+  'haaretz.co.il': Object.freeze({
+    title: 'מינוי לאתר הארץ',
+    description:
+      'רכשו מינוי לאתר הארץ וקבלו את כל תכני הארץ במחשב ובאפליקציה, פחות פרסומות, פודקסט שבועי ועדכונים שוטפים לכל מכשיר שתרצו.',
+  }),
+  'themarker.com': Object.freeze({
+    title: 'מינוי לאתר TheMarker',
+    description:
+      'רכשו מינוי לדה מרקר וקבלו את כל תכני דה מרקר במחשב ובאפליקציה, פחות פרסומות, פודקסט שבועי ועדכונים שוטפים לכל מכשיר שתרצו.',
+  }),
+});
+
 export const header = Object.freeze({
   backLinkText: 'חזור',
   underLogoText: Object.freeze({

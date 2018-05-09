@@ -13,6 +13,7 @@ import fontStacks from './consts/fontStacks';
 import gridStyle from './consts/gridStyle';
 import typeConf from './consts/typeConf';
 import {
+  seo,
   header,
   offerPage,
   purchasePageFooter,
@@ -127,6 +128,7 @@ const purchasePageTheme = host =>
     typeConf,
 
     // I18n
+    seo,
     header,
     landingHeader,
     offerPage,

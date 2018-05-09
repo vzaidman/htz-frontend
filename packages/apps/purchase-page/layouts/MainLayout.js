@@ -1,7 +1,8 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { StyleProvider, } from '@haaretz/fela-utils';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
+import Head from 'next/head';
 // import { UserInjector, appendScript, } from '@haaretz/htz-components';
 import { UserInjector, BIRequest, } from '@haaretz/htz-components';
 import { Query, } from 'react-apollo';
@@ -86,28 +87,39 @@ class MainLayout extends React.Component {
             <Fragment>
               <UserInjector />
               <StyleProvider renderer={styleRenderer} theme={theme(host)}>
-                <div>
-                  <div id="pageRoot">
-                    <StyledWrapper>
-                      {renderHeader && (
-                        <Fragment>
-                          <PurchaseHeader
+                <FelaComponent
+                  render={({
+                    theme: { seo: { [host]: { title, description, }, }, },
+                  }) => (
+                    <Fragment>
+                      <Head>
+                        <title>{title}</title>
+                        <meta name="description" content={description} />
+                      </Head>
+                      <div id="pageRoot">
+                        <StyledWrapper>
+                          {renderHeader && (
+                            <Fragment>
+                              <PurchaseHeader
+                                host={host}
+                                displayBackButton={displayBackButton}
+                              />
+                              <UserBanner />
+                            </Fragment>
+                          )}
+                          <StyledContentWrapper>
+                            {children}
+                          </StyledContentWrapper>
+                          <PurchasePageFooter
                             host={host}
-                            displayBackButton={displayBackButton}
+                            hasIllustration={footerHasIllustration}
                           />
-                          <UserBanner />
-                        </Fragment>
-                      )}
-
-                      <StyledContentWrapper>{children}</StyledContentWrapper>
-                      <PurchasePageFooter
-                        host={host}
-                        hasIllustration={footerHasIllustration}
-                      />
-                    </StyledWrapper>
-                  </div>
-                  <div id="modalsRoot" />
-                </div>
+                        </StyledWrapper>
+                      </div>
+                      <div id="modalsRoot" />
+                    </Fragment>
+                  )}
+                />
               </StyleProvider>
               <BIRequest />
             </Fragment>
