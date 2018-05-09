@@ -26,7 +26,7 @@ const UpperInputRow = ({ theme, }) => ({
 const inputUpperNoteStyle = ({ theme, variant, }) => ({
   fontWeight: 'bold',
   extend: [
-    theme.type(-1),
+    theme.type(1),
     parseComponentProp(
       undefined,
       variant,
@@ -75,7 +75,7 @@ const ButtonStyle = {
 
 const CheckBoxStyle = {
   display: [ { from: 's', value: 'flex', }, { until: 's', value: 'none', }, ],
-  type: -3,
+  type: -2,
   marginTop: '1rem',
 };
 
@@ -218,7 +218,7 @@ export function NewsletterForm({
                       />
                       <Button
                         onClick={handleSubmit}
-                        boxModel={{ hp: 3, vp: 1, }}
+                        boxModel={{ hp: 3, vp: 1.5, }}
                         isBusy={loading}
                         miscStyles={ButtonStyle}
                         variant={theme.newsletterStyle[variant].buttonVariant}

@@ -707,7 +707,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           variant="primary"
                                         >
                                           <label
-                                            className="htz-an htz-j htz-m htz-n htz-ao htz-ap htz-c htz-a htz-aq htz-v htz-w htz-x htz-y htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-r"
+                                            className="htz-an htz-j htz-m htz-n htz-ao htz-ap htz-c htz-a htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-r"
                                             htmlFor="123456789"
                                           >
                                             <labelAndButtonsWrapperStyle
@@ -1786,7 +1786,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                       variant="primary"
                                                     >
                                                       <span
-                                                        className="htz-bj htz-bk htz-bl htz-u htz-bm htz-bn htz-ao htz-ap htz-bo htz-bp htz-bq htz-br htz-bs"
+                                                        className="htz-bo htz-bp htz-bq htz-u htz-br htz-bs htz-ao htz-ap htz-bt htz-bu htz-bv htz-bw htz-bx"
                                                       >
                                                         דוא"ל
                                                         <styles
@@ -2336,7 +2336,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                             variant="primary"
                                                           >
                                                             <Abbr
-                                                              className="htz-bt htz-bu"
+                                                              className="htz-by htz-bz"
                                                               isSup={true}
                                                               miscStyles={null}
                                                               requiredText={
@@ -2348,7 +2348,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                               variant="primary"
                                                             >
                                                               <abbr
-                                                                className="htz-bt htz-bu"
+                                                                className="htz-by htz-bz"
                                                                 title="שדה חובה"
                                                               >
                                                                  
@@ -2943,7 +2943,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   ariaDescribedBy="123456789"
                                                   ariaLabel={null}
                                                   attrs={null}
-                                                  className="htz-bv htz-bw htz-bx htz-c htz-an htz-by htz-bz"
+                                                  className="htz-ca htz-cb htz-cc htz-c htz-an htz-cd htz-ce"
                                                   defaultValue={null}
                                                   height={null}
                                                   inputId="123456789"
@@ -2967,7 +2967,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                 >
                                                   <input
                                                     aria-describedby="123456789"
-                                                    className="htz-bv htz-bw htz-bx htz-c htz-an htz-by htz-bz"
+                                                    className="htz-ca htz-cb htz-cc htz-c htz-an htz-cd htz-ce"
                                                     id="123456789"
                                                     onBlur={[Function]}
                                                     onChange={[Function]}
@@ -3519,14 +3519,14 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           variant="primary"
                                         >
                                           <Note
-                                            className="htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf"
+                                            className="htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck"
                                             isError={false}
                                             noteId="123456789"
                                             text="אנא הזינו כתובת אימייל"
                                             variant="primary"
                                           >
                                             <span
-                                              className="htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf"
+                                              className="htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck"
                                               id="123456789"
                                             >
                                               אנא הזינו כתובת אימייל
@@ -3545,7 +3545,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                               boxModel={
                                 Object {
                                   "hp": 3,
-                                  "vp": 1,
+                                  "vp": 1.5,
                                 }
                               }
                               fontSize={null}
@@ -3587,7 +3587,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                 boxModel={
                                   Object {
                                     "hp": 3,
-                                    "vp": 1,
+                                    "vp": 1.5,
                                   }
                                 }
                                 fontSize={null}
@@ -3627,7 +3627,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     WrapperElement="button"
                                     asPath={null}
                                     attrs={null}
-                                    className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-ca htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-g htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
+                                    className="htz-m htz-n htz-cl htz-cm htz-cn htz-an htz-cf htz-u htz-cc htz-co htz-cp htz-a htz-cq htz-cr htz-cs htz-ct htz-bo htz-cu htz-cv htz-bh htz-bi htz-cw htz-bd htz-be htz-cx htz-ba htz-bb htz-cy htz-ax htz-ay htz-cz htz-da htz-cb htz-db htz-av htz-aq htz-ar htz-as htz-at htz-au htz-g htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-bn htz-dj htz-dk htz-cd htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-r htz-dy htz-dz htz-ea"
                                     href={null}
                                     id={null}
                                     isBusy={false}
@@ -3638,7 +3638,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     prefetch={false}
                                   >
                                     <button
-                                      className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-ca htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-g htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
+                                      className="htz-m htz-n htz-cl htz-cm htz-cn htz-an htz-cf htz-u htz-cc htz-co htz-cp htz-a htz-cq htz-cr htz-cs htz-ct htz-bo htz-cu htz-cv htz-bh htz-bi htz-cw htz-bd htz-be htz-cx htz-ba htz-bb htz-cy htz-ax htz-ay htz-cz htz-da htz-cb htz-db htz-av htz-aq htz-ar htz-as htz-at htz-au htz-g htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-bn htz-dj htz-dk htz-cd htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-r htz-dy htz-dz htz-ea"
                                       id={null}
                                       onClick={[Function]}
                                       type="button"
@@ -3652,7 +3652,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           render={[Function]}
                                         >
                                           <span
-                                            className="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
+                                            className="htz-eb htz-ec htz-bu htz-bv htz-ed htz-ee htz-ef"
                                           >
                                             הרשמה
                                           </span>
@@ -3667,7 +3667,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           render={[Function]}
                                         >
                                           <span
-                                            className="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
+                                            className="htz-eg htz-eh htz-ei htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-c htz-ep htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey"
                                           />
                                         </FelaTheme>
                                       </FelaComponent>
@@ -3702,7 +3702,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                               },
                             ],
                             "marginTop": "1rem",
-                            "type": -3,
+                            "type": -2,
                           }
                         }
                         noteId={null}
@@ -4260,7 +4260,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                 },
                               ],
                               "marginTop": "1rem",
-                              "type": -3,
+                              "type": -2,
                             }
                           }
                           noteId={null}
@@ -4277,7 +4277,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                             attrs={null}
                             checkBoxId={null}
                             checked={null}
-                            className="htz-j htz-et htz-eu htz-ab htz-ev htz-cb htz-cc htz-cd htz-ce htz-aq htz-ew"
+                            className="htz-j htz-ez htz-fa htz-ab htz-fb htz-fc htz-fd htz-fe htz-ff htz-aq htz-fg"
                             defaultValue={false}
                             errorText={null}
                             isDisabled={false}
@@ -4295,7 +4295,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                           >
                             <div>
                               <label
-                                className="htz-j htz-et htz-eu htz-ab htz-ev htz-cb htz-cc htz-cd htz-ce htz-aq htz-ew"
+                                className="htz-j htz-ez htz-fa htz-ab htz-fb htz-fc htz-fd htz-fe htz-ff htz-aq htz-fg"
                                 htmlFor="123456789"
                               >
                                 <input
@@ -4842,7 +4842,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     variant="primary"
                                   >
                                     <div
-                                      className="htz-a htz-ex htz-ey htz-ez htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj htz-fk htz-fl"
+                                      className="htz-a htz-fh htz-fi htz-fj htz-fk htz-fl htz-fm htz-fn htz-fo htz-fp htz-fq htz-fr htz-fs htz-ft htz-fu htz-fv"
                                     >
                                       <FelaComponent
                                         render={[Function]}
@@ -5381,7 +5381,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                               isActive={false}
                                             >
                                               <div
-                                                className="htz-ed htz-fm htz-fn htz-fo htz-fp htz-fq htz-fr htz-ca htz-fs"
+                                                className="htz-ej htz-fw htz-fx htz-fy htz-fz htz-ga htz-gb htz-cf htz-gc"
                                               />
                                             </rippleStyle>
                                           </rippleStyle>
@@ -5918,7 +5918,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           variant="primary"
                                         >
                                           <div
-                                            className="htz-eb htz-ft htz-bw htz-fu htz-fv htz-fw htz-fs htz-fc htz-fx htz-bd htz-fy htz-fz htz-aw htz-ga htz-fi htz-fj htz-fk htz-fl"
+                                            className="htz-eh htz-gd htz-cb htz-ge htz-gf htz-gg htz-gc htz-fm htz-gh htz-bi htz-gi htz-gj htz-bb htz-gk htz-fs htz-ft htz-fu htz-fv"
                                           />
                                         </checkStyle>
                                       </checkStyle>
@@ -6451,7 +6451,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     }
                                   >
                                     <div
-                                      className="htz-gb"
+                                      className="htz-gl"
                                     >
                                       ברצוני לקבל ניוזלטרים, מידע שיווקי והטבות
                                     </div>
@@ -6995,14 +6995,14 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                   variant="primary"
                                 >
                                   <Note
-                                    className="htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf"
+                                    className="htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck"
                                     isError={false}
                                     noteId="123456789"
                                     text=" "
                                     variant="primary"
                                   >
                                     <span
-                                      className="htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf"
+                                      className="htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck"
                                       id="123456789"
                                     >
                                        
@@ -7137,11 +7137,11 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                             >
                               <div>
                                 <div
-                                  class="htz-ca htz-d htz-eb htz-c htz-ed htz-ee htz-gc htz-gd htz-ec htz-ge"
+                                  class="htz-cf htz-d htz-eh htz-c htz-ej htz-ek htz-gm htz-gn htz-ei htz-go"
                                 />
                                 <div
                                   aria-hidden="true"
-                                  class="htz-ed htz-fp htz-fo htz-gf htz-gg htz-gh htz-gi htz-gj htz-gk htz-gl htz-gm htz-gn"
+                                  class="htz-ej htz-fz htz-fy htz-gp htz-gq htz-gr htz-gs htz-gt htz-gu htz-gv htz-gw htz-gx"
                                   role="dialog"
                                   tabindex="0"
                                 >
@@ -7149,17 +7149,17 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                     role="document"
                                   >
                                     <div
-                                      class="htz-go htz-b htz-d htz-e"
+                                      class="htz-gy htz-b htz-d htz-e"
                                     >
                                       <button
-                                        class="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gp htz-u htz-bx htz-cj htz-ck htz-ed htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-gq htz-av htz-aw htz-ao htz-as htz-at htz-ap htz-ct htz-bw htz-gr htz-cv htz-gc htz-ee htz-cy htz-cz htz-da htz-db htz-gs htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-gt htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-gu htz-dr htz-r htz-ds htz-dt htz-du"
+                                        class="htz-m htz-n htz-cl htz-cm htz-cn htz-an htz-gz htz-u htz-cc htz-co htz-cp htz-ej htz-cq htz-cr htz-cs htz-ct htz-bo htz-cu htz-cv htz-bh htz-bi htz-bk htz-bd htz-be htz-ha htz-ba htz-bb htz-ao htz-ax htz-ay htz-ap htz-da htz-cb htz-hb htz-av htz-gm htz-ek htz-de htz-df htz-dg htz-dh htz-hc htz-bn htz-dj htz-dk htz-cd htz-dl htz-dm htz-dn htz-hd htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-he htz-dx htz-r htz-dy htz-dz htz-ea"
                                         type="button"
                                       >
                                         <span
-                                          class="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
+                                          class="htz-eb htz-ec htz-bu htz-bv htz-ed htz-ee htz-ef"
                                         >
                                           <svg
-                                            class="htz-gv htz-gw htz-gx htz-gy"
+                                            class="htz-hf htz-hg htz-hh htz-hi"
                                             height="1em"
                                             viewBox="0 0 256 256"
                                             width="1em"
@@ -7172,32 +7172,32 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                           </svg>
                                         </span>
                                         <span
-                                          class="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
+                                          class="htz-eg htz-eh htz-ei htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-c htz-ep htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey"
                                         />
                                       </button>
                                       <p
-                                        class="htz-v htz-w htz-x htz-y htz-e"
+                                        class="htz-ar htz-as htz-at htz-au htz-e"
                                       >
                                         <strong>
                                           תודה שנרשמת
                                         </strong>
                                       </p>
                                       <p
-                                        class="htz-v htz-w htz-x htz-y htz-e"
+                                        class="htz-ar htz-as htz-at htz-au htz-e"
                                       >
                                         יש לנו דיוורים נוספים שעשויים לעניין אותך
                                       </p>
                                       <a
-                                        class="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gz htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-ha htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
+                                        class="htz-m htz-n htz-cl htz-cm htz-cn htz-an htz-hj htz-u htz-cc htz-co htz-cp htz-a htz-cq htz-cr htz-cs htz-ct htz-bo htz-cu htz-cv htz-bh htz-bi htz-bk htz-bd htz-be htz-bg htz-ba htz-bb htz-cy htz-ax htz-ay htz-cz htz-da htz-cb htz-db htz-av htz-aq htz-ar htz-as htz-at htz-au htz-hk htz-de htz-df htz-dg htz-dh htz-di htz-bn htz-dj htz-dk htz-cd htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-r htz-dy htz-dz htz-ea"
                                         href="https://www.haaretz.co.il/personal-area/newsletter"
                                       >
                                         <span
-                                          class="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
+                                          class="htz-eb htz-ec htz-bu htz-bv htz-ed htz-ee htz-ef"
                                         >
                                           לרשימה המלא
                                         </span>
                                         <span
-                                          class="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
+                                          class="htz-eg htz-eh htz-ei htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-c htz-ep htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey"
                                         />
                                       </a>
                                     </div>
@@ -7218,11 +7218,11 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                               >
                                 <div>
                                   <div
-                                    class="htz-ca htz-d htz-eb htz-c htz-ed htz-ee htz-gc htz-gd htz-ec htz-ge"
+                                    class="htz-cf htz-d htz-eh htz-c htz-ej htz-ek htz-gm htz-gn htz-ei htz-go"
                                   />
                                   <div
                                     aria-hidden="true"
-                                    class="htz-ed htz-fp htz-fo htz-gf htz-gg htz-gh htz-gi htz-gj htz-gk htz-gl htz-gm htz-gn"
+                                    class="htz-ej htz-fz htz-fy htz-gp htz-gq htz-gr htz-gs htz-gt htz-gu htz-gv htz-gw htz-gx"
                                     role="dialog"
                                     tabindex="0"
                                   >
@@ -7230,17 +7230,17 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                       role="document"
                                     >
                                       <div
-                                        class="htz-go htz-b htz-d htz-e"
+                                        class="htz-gy htz-b htz-d htz-e"
                                       >
                                         <button
-                                          class="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gp htz-u htz-bx htz-cj htz-ck htz-ed htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-gq htz-av htz-aw htz-ao htz-as htz-at htz-ap htz-ct htz-bw htz-gr htz-cv htz-gc htz-ee htz-cy htz-cz htz-da htz-db htz-gs htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-gt htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-gu htz-dr htz-r htz-ds htz-dt htz-du"
+                                          class="htz-m htz-n htz-cl htz-cm htz-cn htz-an htz-gz htz-u htz-cc htz-co htz-cp htz-ej htz-cq htz-cr htz-cs htz-ct htz-bo htz-cu htz-cv htz-bh htz-bi htz-bk htz-bd htz-be htz-ha htz-ba htz-bb htz-ao htz-ax htz-ay htz-ap htz-da htz-cb htz-hb htz-av htz-gm htz-ek htz-de htz-df htz-dg htz-dh htz-hc htz-bn htz-dj htz-dk htz-cd htz-dl htz-dm htz-dn htz-hd htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-he htz-dx htz-r htz-dy htz-dz htz-ea"
                                           type="button"
                                         >
                                           <span
-                                            class="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
+                                            class="htz-eb htz-ec htz-bu htz-bv htz-ed htz-ee htz-ef"
                                           >
                                             <svg
-                                              class="htz-gv htz-gw htz-gx htz-gy"
+                                              class="htz-hf htz-hg htz-hh htz-hi"
                                               height="1em"
                                               viewBox="0 0 256 256"
                                               width="1em"
@@ -7253,32 +7253,32 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                             </svg>
                                           </span>
                                           <span
-                                            class="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
+                                            class="htz-eg htz-eh htz-ei htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-c htz-ep htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey"
                                           />
                                         </button>
                                         <p
-                                          class="htz-v htz-w htz-x htz-y htz-e"
+                                          class="htz-ar htz-as htz-at htz-au htz-e"
                                         >
                                           <strong>
                                             תודה שנרשמת
                                           </strong>
                                         </p>
                                         <p
-                                          class="htz-v htz-w htz-x htz-y htz-e"
+                                          class="htz-ar htz-as htz-at htz-au htz-e"
                                         >
                                           יש לנו דיוורים נוספים שעשויים לעניין אותך
                                         </p>
                                         <a
-                                          class="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gz htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-ha htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
+                                          class="htz-m htz-n htz-cl htz-cm htz-cn htz-an htz-hj htz-u htz-cc htz-co htz-cp htz-a htz-cq htz-cr htz-cs htz-ct htz-bo htz-cu htz-cv htz-bh htz-bi htz-bk htz-bd htz-be htz-bg htz-ba htz-bb htz-cy htz-ax htz-ay htz-cz htz-da htz-cb htz-db htz-av htz-aq htz-ar htz-as htz-at htz-au htz-hk htz-de htz-df htz-dg htz-dh htz-di htz-bn htz-dj htz-dk htz-cd htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-r htz-dy htz-dz htz-ea"
                                           href="https://www.haaretz.co.il/personal-area/newsletter"
                                         >
                                           <span
-                                            class="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
+                                            class="htz-eb htz-ec htz-bu htz-bv htz-ed htz-ee htz-ef"
                                           >
                                             לרשימה המלא
                                           </span>
                                           <span
-                                            class="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
+                                            class="htz-eg htz-eh htz-ei htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-c htz-ep htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey"
                                           />
                                         </a>
                                       </div>
@@ -7295,7 +7295,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                               onFocus={[Function]}
                             >
                               <div
-                                className="htz-ca htz-d htz-eb htz-c htz-ed htz-ee htz-gc htz-gd htz-ec htz-ge"
+                                className="htz-cf htz-d htz-eh htz-c htz-ej htz-ek htz-gm htz-gn htz-ei htz-go"
                               />
                               <FelaComponent
                                 containerMiscStyles={
@@ -7341,7 +7341,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                 >
                                   <div
                                     aria-hidden="true"
-                                    className="htz-ed htz-fp htz-fo htz-gf htz-gg htz-gh htz-gi htz-gj htz-gk htz-gl htz-gm htz-gn"
+                                    className="htz-ej htz-fz htz-fy htz-gp htz-gq htz-gr htz-gs htz-gt htz-gu htz-gv htz-gw htz-gx"
                                     role="dialog"
                                     tabIndex="0"
                                   >
@@ -7361,7 +7361,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                             render={[Function]}
                                           >
                                             <div
-                                              className="htz-go htz-b htz-d htz-e"
+                                              className="htz-gy htz-b htz-d htz-e"
                                             >
                                               <Button
                                                 asPath={null}
@@ -7433,7 +7433,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                       WrapperElement="button"
                                                       asPath={null}
                                                       attrs={null}
-                                                      className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gp htz-u htz-bx htz-cj htz-ck htz-ed htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-gq htz-av htz-aw htz-ao htz-as htz-at htz-ap htz-ct htz-bw htz-gr htz-cv htz-gc htz-ee htz-cy htz-cz htz-da htz-db htz-gs htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-gt htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-gu htz-dr htz-r htz-ds htz-dt htz-du"
+                                                      className="htz-m htz-n htz-cl htz-cm htz-cn htz-an htz-gz htz-u htz-cc htz-co htz-cp htz-ej htz-cq htz-cr htz-cs htz-ct htz-bo htz-cu htz-cv htz-bh htz-bi htz-bk htz-bd htz-be htz-ha htz-ba htz-bb htz-ao htz-ax htz-ay htz-ap htz-da htz-cb htz-hb htz-av htz-gm htz-ek htz-de htz-df htz-dg htz-dh htz-hc htz-bn htz-dj htz-dk htz-cd htz-dl htz-dm htz-dn htz-hd htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-he htz-dx htz-r htz-dy htz-dz htz-ea"
                                                       href={null}
                                                       id={null}
                                                       isBusy={false}
@@ -7444,7 +7444,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                       prefetch={false}
                                                     >
                                                       <button
-                                                        className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gp htz-u htz-bx htz-cj htz-ck htz-ed htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-gq htz-av htz-aw htz-ao htz-as htz-at htz-ap htz-ct htz-bw htz-gr htz-cv htz-gc htz-ee htz-cy htz-cz htz-da htz-db htz-gs htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-gt htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-gu htz-dr htz-r htz-ds htz-dt htz-du"
+                                                        className="htz-m htz-n htz-cl htz-cm htz-cn htz-an htz-gz htz-u htz-cc htz-co htz-cp htz-ej htz-cq htz-cr htz-cs htz-ct htz-bo htz-cu htz-cv htz-bh htz-bi htz-bk htz-bd htz-be htz-ha htz-ba htz-bb htz-ao htz-ax htz-ay htz-ap htz-da htz-cb htz-hb htz-av htz-gm htz-ek htz-de htz-df htz-dg htz-dh htz-hc htz-bn htz-dj htz-dk htz-cd htz-dl htz-dm htz-dn htz-hd htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-he htz-dx htz-r htz-dy htz-dz htz-ea"
                                                         id={null}
                                                         onClick={[Function]}
                                                         type="button"
@@ -7458,7 +7458,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                             render={[Function]}
                                                           >
                                                             <span
-                                                              className="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
+                                                              className="htz-eb htz-ec htz-bu htz-bv htz-ed htz-ee htz-ef"
                                                             >
                                                               <iconStyle
                                                                 color={null}
@@ -7996,10 +7996,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                 >
                                                                   <UnstyledIconClose
                                                                     attrs={null}
-                                                                    className="htz-gv htz-gw htz-gx htz-gy"
+                                                                    className="htz-hf htz-hg htz-hh htz-hi"
                                                                   >
                                                                     <svg
-                                                                      className="htz-gv htz-gw htz-gx htz-gy"
+                                                                      className="htz-hf htz-hg htz-hh htz-hi"
                                                                       height="1em"
                                                                       viewBox="0 0 256 256"
                                                                       width="1em"
@@ -8025,7 +8025,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                             render={[Function]}
                                                           >
                                                             <span
-                                                              className="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
+                                                              className="htz-eg htz-eh htz-ei htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-c htz-ep htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey"
                                                             />
                                                           </FelaTheme>
                                                         </FelaComponent>
@@ -8043,7 +8043,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   render={[Function]}
                                                 >
                                                   <p
-                                                    className="htz-v htz-w htz-x htz-y htz-e"
+                                                    className="htz-ar htz-as htz-at htz-au htz-e"
                                                   >
                                                     <strong>
                                                       תודה שנרשמת
@@ -8060,7 +8060,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   render={[Function]}
                                                 >
                                                   <p
-                                                    className="htz-v htz-w htz-x htz-y htz-e"
+                                                    className="htz-ar htz-as htz-at htz-au htz-e"
                                                   >
                                                     יש לנו דיוורים נוספים שעשויים לעניין אותך
                                                   </p>
@@ -8132,7 +8132,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                       WrapperElement="button"
                                                       asPath={null}
                                                       attrs={null}
-                                                      className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gz htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-ha htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
+                                                      className="htz-m htz-n htz-cl htz-cm htz-cn htz-an htz-hj htz-u htz-cc htz-co htz-cp htz-a htz-cq htz-cr htz-cs htz-ct htz-bo htz-cu htz-cv htz-bh htz-bi htz-bk htz-bd htz-be htz-bg htz-ba htz-bb htz-cy htz-ax htz-ay htz-cz htz-da htz-cb htz-db htz-av htz-aq htz-ar htz-as htz-at htz-au htz-hk htz-de htz-df htz-dg htz-dh htz-di htz-bn htz-dj htz-dk htz-cd htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-r htz-dy htz-dz htz-ea"
                                                       href="https://www.haaretz.co.il/personal-area/newsletter"
                                                       id={null}
                                                       isBusy={false}
@@ -8149,7 +8149,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                             "id": null,
                                                           }
                                                         }
-                                                        className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gz htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-ha htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
+                                                        className="htz-m htz-n htz-cl htz-cm htz-cn htz-an htz-hj htz-u htz-cc htz-co htz-cp htz-a htz-cq htz-cr htz-cs htz-ct htz-bo htz-cu htz-cv htz-bh htz-bi htz-bk htz-bd htz-be htz-bg htz-ba htz-bb htz-cy htz-ax htz-ay htz-cz htz-da htz-cb htz-db htz-av htz-aq htz-ar htz-as htz-at htz-au htz-hk htz-de htz-df htz-dg htz-dh htz-di htz-bn htz-dj htz-dk htz-cd htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-r htz-dy htz-dz htz-ea"
                                                         content={null}
                                                         focus={false}
                                                         href="https://www.haaretz.co.il/personal-area/newsletter"
@@ -8158,7 +8158,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                         target={null}
                                                       >
                                                         <a
-                                                          className="htz-m htz-n htz-cg htz-ch htz-ci htz-an htz-gz htz-u htz-bx htz-cj htz-ck htz-a htz-cl htz-cm htz-cn htz-co htz-bj htz-cp htz-cq htz-bc htz-bd htz-bf htz-ay htz-az htz-bb htz-av htz-aw htz-cr htz-as htz-at htz-cs htz-ct htz-bw htz-cu htz-cv htz-aq htz-v htz-w htz-x htz-y htz-ha htz-cy htz-cz htz-da htz-db htz-dc htz-bi htz-dd htz-de htz-by htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-r htz-ds htz-dt htz-du"
+                                                          className="htz-m htz-n htz-cl htz-cm htz-cn htz-an htz-hj htz-u htz-cc htz-co htz-cp htz-a htz-cq htz-cr htz-cs htz-ct htz-bo htz-cu htz-cv htz-bh htz-bi htz-bk htz-bd htz-be htz-bg htz-ba htz-bb htz-cy htz-ax htz-ay htz-cz htz-da htz-cb htz-db htz-av htz-aq htz-ar htz-as htz-at htz-au htz-hk htz-de htz-df htz-dg htz-dh htz-di htz-bn htz-dj htz-dk htz-cd htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-dw htz-dx htz-r htz-dy htz-dz htz-ea"
                                                           href="https://www.haaretz.co.il/personal-area/newsletter"
                                                           id={null}
                                                           onClick={null}
@@ -8173,7 +8173,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                               render={[Function]}
                                                             >
                                                               <span
-                                                                className="htz-dv htz-dw htz-bp htz-bq htz-dx htz-dy htz-dz"
+                                                                className="htz-eb htz-ec htz-bu htz-bv htz-ed htz-ee htz-ef"
                                                               >
                                                                 לרשימה המלא
                                                               </span>
@@ -8188,7 +8188,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                               render={[Function]}
                                                             >
                                                               <span
-                                                                className="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-c htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es"
+                                                                className="htz-eg htz-eh htz-ei htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-c htz-ep htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ew htz-ex htz-ey"
                                                               />
                                                             </FelaTheme>
                                                           </FelaComponent>

@@ -5,7 +5,7 @@ const inputStyle = Object.freeze({
   radius: 0,
   height: 6,
   // typographic Scale from theme
-  typeScale: -1,
+  typeScale: 0,
   fontWeightLabel: 'bold',
 });
 
