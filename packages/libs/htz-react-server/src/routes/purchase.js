@@ -5,7 +5,6 @@ import querystring from 'querystring';
 const appPrefix = '/promotions-page-react';
 const folderPrefix = '/promotions-page'; // Project structure relative folder
 module.exports = (app, server) => {
-  /* Paths */
   /* Landing Page only */
   server.get(
     `${appPrefix}`,
@@ -69,6 +68,9 @@ module.exports = (app, server) => {
     }`;
     return res.redirect(`${appPrefix}/offers?${promoQuery}`);
   });
+
+  /* Redirect to Landing Page */
+  server.get('/', (req, res) => res.redirect(`${appPrefix}`));
 
   server.use(
     [ '/static', `${appPrefix}/static`, ],
