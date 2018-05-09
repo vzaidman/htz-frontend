@@ -8,7 +8,6 @@ import MainLayout from '../../layouts/MainLayout';
 import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter';
 import ChooseSlotStage from '../../components/OfferPage/Stages/ChooseSlotStage';
 import Redirect from '../../components/Redirect/Redirect';
-import StageCounter from '../../components/OfferPage/Stages/Elements/StageCounter';
 
 // todo: remove unused fields from the query
 const GET_PROMOTIONS_STATE = gql`
@@ -43,9 +42,8 @@ class Stage1 extends React.Component {
 
   render() {
     return (
-      <MainLayout footerHasIllustration={false}>
+      <MainLayout footerHasIllustration={false} displayBackButton={false}>
         <FelaComponent style={{ position: 'relative', }}>
-          <StageCounter stage={1} />
           {this.state.mounted && (
             <OfferPageDataGetter
               render={({ data, loading, error, }) => {

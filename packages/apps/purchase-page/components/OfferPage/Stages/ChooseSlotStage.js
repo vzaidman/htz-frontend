@@ -8,6 +8,7 @@ import DesktopView from './ChooseSlotsStageElements/DesktopView';
 import MobileView from './ChooseSlotsStageElements/MobileView';
 import SubHeader from './ChooseSlotsStageElements/SubHeader';
 import UserMessage from './Elements/UserMessage';
+import StageCounter from './Elements/StageCounter';
 
 const propTypes = {
   hostname: PropTypes.string.isRequired,
@@ -128,19 +129,17 @@ function ChooseSlotStage({
     <FelaComponent
       style={contStyle}
       render={({
-      className,
-      theme: {
-        stage1,
+        className,
+        theme: {
+          stage1,
           stage1: {
             headerText,
-            buttons: {
-              entitlements,
-              organizationSubscription,
-            },
+            buttons: { entitlements, organizationSubscription, },
           },
         },
       }) => (
         <Fragment>
+          <StageCounter stage={1} />
           <StyledHeading>{headerText}</StyledHeading>
           <SubHeader isTheMarker={host === 'themarker.com'} />
           <div className={className}>
@@ -163,8 +162,8 @@ function ChooseSlotStage({
               {subStage < 2 && (
                 <FelaComponent
                   style={{
-                  ...moreOptionsButtonsMiscStyles,
-                  fontWeight: '700',
+                    ...moreOptionsButtonsMiscStyles,
+                    fontWeight: '700',
                   }}
                   render="p"
                 >

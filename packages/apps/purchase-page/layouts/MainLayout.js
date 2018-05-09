@@ -25,6 +25,10 @@ const propTypes = {
    */
   children: PropTypes.node,
   /**
+   * should the footer render Illustrations
+   */
+  displayBackButton: PropTypes.bool,
+  /**
    * should the MainLayout render the header component, used to allow pages to render without regular header
    */
   renderHeader: PropTypes.bool,
@@ -36,6 +40,7 @@ const propTypes = {
 
 const defaultProps = {
   children: null,
+  displayBackButton: true,
   renderHeader: true,
   footerHasIllustration: true,
 };
@@ -67,7 +72,12 @@ class MainLayout extends React.Component {
   }
 
   render() {
-    const { children, renderHeader, footerHasIllustration, } = this.props;
+    const {
+      children,
+      displayBackButton,
+      renderHeader,
+      footerHasIllustration,
+    } = this.props;
     return (
       <Query query={GET_HOST_NAME}>
         {({ data: { hostname, }, }) => {
@@ -81,7 +91,10 @@ class MainLayout extends React.Component {
                     <StyledWrapper>
                       {renderHeader && (
                         <Fragment>
-                          <PurchaseHeader host={host} />
+                          <PurchaseHeader
+                            host={host}
+                            displayBackButton={displayBackButton}
+                          />
                           <UserBanner />
                         </Fragment>
                       )}

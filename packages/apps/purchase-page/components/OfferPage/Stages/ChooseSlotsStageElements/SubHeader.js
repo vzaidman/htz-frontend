@@ -69,31 +69,31 @@ function SubHeader({ isTheMarker, }) {
               extend: isTheMarker
                 ? [
                     theme.mq({ until: 'l', }, { textAlign: 'center', }),
-                    theme.mq({ from: 's', until: 'l', }, { marginTop: '10rem', }),
-                    theme.mq({ until: 's', }, { marginTop: '12rem', }),
+                    theme.mq({ from: 's', until: 'l', }, { marginTop: '12rem', }),
+                    theme.mq({ until: 's', }, { marginTop: '16rem', }),
                   ]
                 : [
                     theme.mq({ until: 'l', }, { textAlign: 'center', }),
-                    theme.mq({ from: 's', until: 'l', }, { marginTop: '8rem', }),
-                    theme.mq({ until: 's', }, { marginTop: '13rem', }),
+                    theme.mq({ from: 's', until: 'l', }, { marginTop: '12rem', }),
+                    theme.mq({ until: 's', }, { marginTop: '17rem', }),
                   ],
             })}
           >
             {isTheMarker ? (
               <Diver
                 size={[
-                  { until: 's', value: 35, },
-                  { from: 's', until: 'm', value: 35, },
-                  { from: 'm', until: 'xl', value: 35, },
+                  { until: 's', value: 30, },
+                  { from: 's', until: 'l', value: 30, },
+                  { from: 'l', until: 'xl', value: 35, },
                   { from: 'xl', value: 40, },
                 ]}
               />
             ) : (
               <Astronaut
                 size={[
-                  { until: 's', value: 45, },
-                  { from: 's', until: 'm', value: 50, },
-                  { from: 'm', value: 60, },
+                  { until: 's', value: 40, },
+                  { from: 's', until: 'l', value: 45, },
+                  { from: 'l', value: 60, },
                 ]}
               />
             )}

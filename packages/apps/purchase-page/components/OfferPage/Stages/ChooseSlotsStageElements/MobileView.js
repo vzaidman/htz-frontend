@@ -191,9 +191,10 @@ class MobileView extends Component {
                         {/* todo: add a variant with correct focus and active colors */}
                         <Button
                           isFlat
-                          onClick={() =>
-                            this.toggleMenu(item.subscriptionName)
-                          }
+                          onClick={evt => {
+                            evt.stopPropagation();
+                            this.toggleMenu(item.subscriptionName);
+                          }}
                         >
                           <FelaComponent
                             style={{
