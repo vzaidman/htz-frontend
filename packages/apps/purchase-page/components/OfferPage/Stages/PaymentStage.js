@@ -6,6 +6,8 @@ import Router, { withRouter, } from 'next/router';
 import { FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
 import { Button, RadioGroup, Form, IconPaypal, } from '@haaretz/htz-components';
+import { parseComponentProp, } from '@haaretz/htz-css-tools';
+
 import SecurePaymentLine from './Elements/SecurePaymentLine';
 import PaymentButtonsDivider from './StagePaymentElements/PaymentButtonsDivider';
 import PaymentSummary from './StagePaymentElements/PaymentSummary';
@@ -53,7 +55,7 @@ const paymentButtonsContStyle = ({ theme, isFourDigits, }) => ({
   display: 'inline-block',
   marginTop: '4rem',
   ...(!isFourDigits
-    ? { marginBottom: '15rem', }
+    ? { marginBottom: '5rem', }
     : theme.mq(
       { from: 's', },
       {
@@ -63,6 +65,23 @@ const paymentButtonsContStyle = ({ theme, isFourDigits, }) => ({
 });
 
 const radioButtonStyle = { marginTop: '3rem', marginInlineEnd: '4rem', };
+
+const securedPaymentStyle = theme => ({
+  width: '80%',
+  marginInlineStart: 'auto',
+  marginInlineEnd: 'auto',
+  marginBottom: '2rem',
+  extend: [
+    {
+      ...parseComponentProp(
+        'marginBottom',
+        [ { until: 's', value: '4rem', }, { from: 's', value: '2rem', }, ],
+        theme.mq,
+        (prop, value) => ({ [prop]: value, })
+      ),
+    },
+  ],
+});
 
 class PaymentStage extends Component {
   state = {
@@ -113,27 +132,12 @@ class PaymentStage extends Component {
             marginInlineEnd: 'auto',
           }}
         >
-          {creditCardsDetails ? (
+          {creditCardsDetails && (
             <PaymentSummary
               chosenSubscription={chosenSubscription}
               chosenPaymentArrangement={chosenPaymentArrangement}
               firstPaymentAmount={firstPaymentAmount}
               nextPaymentAmount={nextPaymentAmount}
-            />
-          ) : (
-            <SecurePaymentLine
-              withLine={false}
-              size={[
-                { until: 's', value: 4, },
-                { from: 's', until: 'l', value: 6, },
-                { from: 'l', value: 4, },
-              ]}
-              miscStyles={{
-                width: '80%',
-                marginTop: '4rem',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}
             />
           )}
         </FelaComponent>
@@ -272,7 +276,7 @@ class PaymentStage extends Component {
                                 marginInlineEnd: 'auto',
                                 marginInlineStart: 'auto',
                                 marginTop: '5rem',
-                                marginBottom: '15rem',
+                                marginBottom: '5rem',
                               }}
                             >
                               {form.continueButton.text}
@@ -356,18 +360,9 @@ class PaymentStage extends Component {
                           }}
                         />
                       )}
-                      {!!creditCardsDetails && (
-                        <FelaComponent
-                          style={{
-                            width: '80%',
-                            marginInlineStart: 'auto',
-                            marginInlineEnd: 'auto',
-                            marginBottom: '2rem',
-                          }}
-                        >
-                          <SecurePaymentLine />
-                        </FelaComponent>
-                      )}
+                      <FelaComponent style={securedPaymentStyle}>
+                        <SecurePaymentLine withLine={false} />
+                      </FelaComponent>
                     </div>
                   )}
                 />

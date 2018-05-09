@@ -2,11 +2,16 @@ const dummyData = {
   purchasePage: {
     pageNumber: 2,
     userBannerMessage: [ 'המנוי שלך תקף עד ל 1.1.1800', ],
-    /* pastDebts: [
+    pastDebts: [
       { productNumber: 123, debt: 100, },
       { productNumber: 125, debt: 150, },
-    ], */
-    fourDigits: [ '1234', ],
+    ],
+    creditCardsDetails: [
+      {
+        companyCode: 5,
+        fourDigits: '9542',
+      },
+    ],
     slots: [
       {
         subscriptionName: 'TM',

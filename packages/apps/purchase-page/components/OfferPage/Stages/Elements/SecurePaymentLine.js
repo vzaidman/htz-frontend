@@ -19,7 +19,7 @@ const defaultProps = {
 const secureLineStyle = ({ theme, withLine, miscStyles, }) => ({
   textAlign: 'center',
   color: theme.color('offerPage', 'borderPositive'),
-  marginTop: '7rem',
+  marginTop: '5rem',
   ...(withLine && {
     borderTopWidth: '1px',
     borderTopColor: theme.color('offerPage', 'borderPositive'),
@@ -42,6 +42,7 @@ const underSecureIconStyle = theme => ({
   lineSpacing: '3px',
   display: 'block',
   letterSpacing: '3px',
+  fontWeight: 'bold',
   extend: [
     theme.type(-3, { untilBp: 's', }),
     theme.type(0, { fromBp: 's', untilBp: 'l', }),
@@ -57,7 +58,7 @@ function SecurePaymentLine({ withLine, size, miscStyles, }) {
       miscStyles={miscStyles}
     >
       <FelaComponent style={iconContainerStyle}>
-        <IconSafePayment size={size} />
+        <IconSafePayment size={size} color={[ 'neutral', '+2', ]} />
       </FelaComponent>
 
       <FelaComponent
