@@ -142,7 +142,7 @@ class StageTransition extends Component {
                     size={10}
                     color="primary"
                     miscStyles={{
-                      marginTop: '2rem',
+                      marginTop: '4rem',
                       ...(transitionStarted ? { display: 'none', } : {}),
                     }}
                   />

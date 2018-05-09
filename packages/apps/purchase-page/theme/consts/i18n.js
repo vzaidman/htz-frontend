@@ -196,9 +196,9 @@ export const stage3 = Object.freeze({
     }),
     registerBoldFirstLine: 'ברוכים הבאים!',
     dynamicTextNewLineLoginStage: Object.freeze({
-      checkEmail: [ 'כעת הזינו כתובת דוא"ל.', 'כתובת זאת תהיה שם המשתמש שלכם', ],
+      checkEmail: [ 'כעת הזינו אימייל, שישמש לכניסה לאתר', ],
       login: [ 'הזינו את הסיסמה שלכם לאתר', ],
-      register: [ 'השלימו את פרטי המשתמש באתר', ],
+      register: [ 'השלימו את ההרשמה לאתר', ],
     }),
   }),
   details: Object.freeze({
@@ -215,6 +215,7 @@ export const stage3 = Object.freeze({
     }),
     email: Object.freeze({
       errorText: 'נא למלא כתובת דוא"ל',
+      errorTextLegalEmail: 'יש להזין כתובת דוא"ל תקנית',
       noteText: 'נא למלא כתובת דוא"ל',
       label: 'דוא"ל',
     }),

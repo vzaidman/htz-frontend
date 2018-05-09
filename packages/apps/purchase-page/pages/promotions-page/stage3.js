@@ -95,13 +95,13 @@ class Stage3 extends Component {
                                           this.state.registerOrLoginStage ===
                                             'checkEmail' && (
                                             <Fragment>
-                                              <span>
-                                                {header.textBeforeChosen}
-                                              </span>{' '}
                                               <FelaComponent
                                                 style={{ fontWeight: 'bold', }}
                                                 render="span"
                                               >
+                                                <span>
+                                                  {header.textBeforeChosen}
+                                                </span>{' '}
                                                 {
                                                   header.chosenSubscriptionText[
                                                     chosenSubscription

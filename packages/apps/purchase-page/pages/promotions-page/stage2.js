@@ -96,9 +96,12 @@ function Stage2() {
                                                 }
                                               </FelaComponent>
                                               {', '}
-                                              <span>
+                                              <FelaComponent
+                                                style={{ display: 'block', }}
+                                                render="span"
+                                              >
                                                 {header.textAfterChosen}
-                                              </span>
+                                              </FelaComponent>
                                             </Fragment>,
                                           ]}
                                         />
