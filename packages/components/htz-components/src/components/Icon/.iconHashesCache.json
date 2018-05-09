@@ -74,5 +74,6 @@
   "src/components/Icon/icons/IconMarkerLogoTransparent.js":
     "f757e326f5068c30af5d6ec9ab2437e8",
   "src/components/Icon/icons/IconAlefLogoTransparent.js":
-    "2b677a4ce4bee425557b44cae80af76f"
+    "2b677a4ce4bee425557b44cae80af76f",
+  "src/components/Icon/icons/IconCheck.js": "312e089c9e46796f4acd8de98cb9d6cc"
 }

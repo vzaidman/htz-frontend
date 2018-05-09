@@ -60,6 +60,7 @@ import IconMarkerLogo from './icons/IconMarkerLogo';
 import IconPaypal from './icons/IconPaypal';
 import IconMarkerLogoTransparent from './icons/IconMarkerLogoTransparent';
 import IconAlefLogoTransparent from './icons/IconAlefLogoTransparent';
+import IconCheck from './icons/IconCheck';
 
 const gutterWidth = '1rem';
 
@@ -238,6 +239,7 @@ export default class Icons extends React.Component {
           <Cell name="IconAlefLogoTransparent">
             {<IconAlefLogoTransparent size={this.state.size} />}
           </Cell>
+          <Cell name="IconCheck">{<IconCheck size={this.state.size} />}</Cell>
         </Wrapper>
       </div>
     );

@@ -57,6 +57,7 @@ import IconBack from './components/Icon/icons/IconBack';
 import IconBold from './components/Icon/icons/IconBold';
 import IconBundle from './components/Icon/icons/IconBundle';
 import IconCamera from './components/Icon/icons/IconCamera';
+import IconCheck from './components/Icon/icons/IconCheck';
 import IconClose from './components/Icon/icons/IconClose';
 import IconComment from './components/Icon/icons/IconComment';
 import IconCredit from './components/Icon/icons/IconCredit';
@@ -171,6 +172,7 @@ export {
   IconBold,
   IconBundle,
   IconCamera,
+  IconCheck,
   IconClose,
   IconComment,
   IconCredit,
