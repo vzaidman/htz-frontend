@@ -3,6 +3,7 @@ import Document, { Head, Main, NextScript, } from 'next/document';
 import { renderToSheetList, } from 'fela-dom';
 import config from 'config';
 import serialize from 'serialize-javascript';
+import SEO from './components/SEO/SEO';
 
 /**
  * The returned class should be exported as the default export in the
@@ -67,6 +68,7 @@ const createDocument = ({
         sheetList,
         appData,
         isRtl,
+        host,
       };
     }
 
@@ -107,7 +109,7 @@ const createDocument = ({
               name="viewport"
               content="width=device-width, initial-scale=1, minimum-scale=1"
             />
-            <link rel="shortcut icon" href="about:blank" />
+            <SEO host={this.props.host} />
             {this.renderStyles()}
             {this.renderData()}
           </Head>
