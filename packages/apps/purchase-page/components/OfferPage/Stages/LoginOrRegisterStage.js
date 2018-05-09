@@ -29,7 +29,7 @@ const GET_PURCHASE_PAGE_DATA = gql`
 
 const formContStyle = theme => ({
   marginTop: '4rem',
-  marginBottom: '30rem',
+  marginBottom: '20rem',
   maxWidth: '85rem',
   marginInlineStart: 'auto',
   marginInlineEnd: 'auto',
@@ -308,11 +308,19 @@ class LoginOrRegisterStage extends React.Component {
                                 terms,
                               }) => {
                                 const errors = [];
-                                if (!isEmail(email)) {
+
+                                if (!email) {
                                   errors.push({
                                     name: 'email',
                                     order: 1,
                                     errorText: form.email.errorText,
+                                  });
+                                }
+ else if (!isEmail(email)) {
+                                  errors.push({
+                                    name: 'email',
+                                    order: 1,
+                                    errorText: form.email.errorTextInvalidEmail,
                                   });
                                 }
 

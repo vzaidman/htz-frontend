@@ -215,7 +215,7 @@ export const stage3 = Object.freeze({
     }),
     email: Object.freeze({
       errorText: 'נא למלא כתובת דוא"ל',
-      errorTextLegalEmail: 'יש להזין כתובת דוא"ל תקנית',
+      errorTextInvalidEmail: 'יש להזין כתובת דוא"ל תקנית',
       noteText: 'נא למלא כתובת דוא"ל',
       label: 'דוא"ל',
     }),

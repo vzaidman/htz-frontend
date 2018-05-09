@@ -76,10 +76,10 @@ const offerStyle = ({ theme, isRecommended = false, }) => ({
         ),
         ...(isRecommended
           ? {
-            width: '26.5rem',
-            height: '33rem',
+            width: '28.5rem',
+            height: '35rem',
           }
-          : { width: '22.5rem', height: '28rem', }),
+          : { width: '24.5rem', height: '30rem', }),
       }
     ),
     theme.mq(

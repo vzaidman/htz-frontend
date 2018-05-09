@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Link, Newsletter, } from '@haaretz/htz-components';
+import { IconCheck, Link, Newsletter, } from '@haaretz/htz-components';
 import Phones from './Elements/Phones';
 
 const GET_HOST_NAME = gql`
@@ -28,7 +28,9 @@ const contStyle = () => ({
   textAlign: 'center',
   marginInlineStart: 'auto',
   marginInlineEnd: 'auto',
-  marginTop: '6rem',
+  paddingInlineStart: '2rem',
+  paddingInlineEnd: '2rem',
+  marginTop: '2rem',
   maxWidth: '84rem',
 });
 
@@ -45,7 +47,7 @@ const secondaryHeaderStyle = ({ theme, }) => ({
   paddingInlineEnd: '8rem',
   fontWeight: 'normal',
   marginTop: '1rem',
-  extend: [ theme.type(3), ],
+  extend: [ theme.type(2), ],
 });
 
 const StyledSecondaryHeader = createComponent(secondaryHeaderStyle, 'h2');
@@ -71,15 +73,6 @@ const linkStyle = ({ theme, }) => ({
 
 const StyledLink = createComponent(linkStyle, Link, [ 'content', 'href', ]);
 
-const newsLetterPlaceholder = ({ theme, }) => ({
-  height: '19rem',
-  backgroundColor: 'teal',
-  marginTop: '9rem',
-  extend: [ theme.type(1), ],
-});
-
-const StyledNewLetterPlaceholder = createComponent(newsLetterPlaceholder);
-
 function StageThankYou({ userEmail, product, userMessage, }) {
   return (
     <Query query={GET_HOST_NAME}>
@@ -100,7 +93,11 @@ function StageThankYou({ userEmail, product, userMessage, }) {
               },
             }) => (
               <div className={className}>
-                {product && <Phones subscription={product} size={3.5} />}
+                {product ? (
+                  <Phones subscription={product} size={3.5} />
+                ) : (
+                  <IconCheck color="positive" size={10} />
+                )}
                 <StyledHeader>
                   {product ? (
                     <p>{afterPurchase(product)}</p>
@@ -113,13 +110,12 @@ function StageThankYou({ userEmail, product, userMessage, }) {
                 {/* TODO: Redo these links `href` */}
                 <StyledOverlinkText>{backToArticleText}</StyledOverlinkText>
                 <StyledLink content={backToArticleContent} href="#" />
-                <StyledNewLetterPlaceholder>
-                  <Newsletter
-                    variant="primary"
-                    segmentId={host === 'themarker.com' ? 1338618 : 1338625}
-                    userEmail={userEmail}
-                  />
-                </StyledNewLetterPlaceholder>
+                <Newsletter
+                  variant="primary"
+                  segmentId={host === 'themarker.com' ? 1338618 : 1338625}
+                  userEmail={userEmail}
+                  miscStyles={{ marginTop: '9rem', marginBottom: '2rem', }}
+                />
               </div>
             )}
           />
