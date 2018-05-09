@@ -231,8 +231,14 @@ export const stage3 = Object.freeze({
       forgotPasswordText: 'שכחתי סיסמה',
     }),
     terms: Object.freeze({
-      errorText: 'יש לאשר את תנאי השימוש באתר',
-      noteText: 'יש לאשר את תנאי השימוש באתר',
+      errorText: Object.freeze({
+        HTZ: 'יש לאשר את תנאי השימוש באתר',
+        TM: 'יש לאשר את תקנון האתר',
+      }),
+      noteText: Object.freeze({
+        HTZ: 'יש לאשר את תנאי השימוש באתר',
+        TM: 'יש לאשר את תקנון האתר',
+      }),
       register: Object.freeze({
         labelBeforeTermsButton: 'אני מאשר/ת את',
         labelTerms: Object.freeze({ HTZ: 'תנאי השימוש', TM: 'התקנון', }),

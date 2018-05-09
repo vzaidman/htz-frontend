@@ -386,7 +386,7 @@ class LoginOrRegisterStage extends React.Component {
                                     errors.push({
                                       name: 'terms',
                                       order: 4,
-                                      errorText: form.terms.errorText,
+                                      errorText: form.terms.errorText[site],
                                     });
                                   }
                                 }
@@ -580,7 +580,7 @@ class LoginOrRegisterStage extends React.Component {
                                                 )}
                                               </FelaComponent>
                                             ),
-                                            noteText: form.terms.noteText,
+                                            noteText: form.terms.noteText[site],
                                             formElementType: 'checkBox',
                                             miscStyles: { marginTop: '3rem', },
                                           })}
