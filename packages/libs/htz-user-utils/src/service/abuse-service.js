@@ -117,7 +117,7 @@ export default class AbuseService {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  getSsoOnAbusePage() {
+  static getSsoOnAbusePage() {
     if (
       window.location.href.includes('abuse-login') &&
       localStorage &&
