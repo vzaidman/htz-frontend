@@ -356,6 +356,7 @@ const styles = host => {
     '-moz-appearance:none;' +
     '-webkit-appearance:none;' +
     'appearance:none;' +
+    'border:0;' +
     '}' +
     /**
      * Buttons

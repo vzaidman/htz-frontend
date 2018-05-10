@@ -188,9 +188,9 @@ const styles =
    * address elements
    * 1. Remove opinionated italics
    */
-    'address{' +
-    'font-style: normal;' +
-    '}' +
+  'address{' +
+  'font-style: normal;' +
+  '}' +
   /**
    * Set the `font-weight` of `<b>` and `<strong>` elements to `700`
    * strong, b elements
@@ -354,6 +354,7 @@ const styles =
   '-moz-appearance:none;' +
   '-webkit-appearance:none;' +
   'appearance:none;' +
+  'border:0;' +
   '}' +
   /**
    * Buttons
