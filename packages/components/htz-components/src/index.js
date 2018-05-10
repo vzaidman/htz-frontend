@@ -117,6 +117,7 @@ import AdSlot from './components/Ads/AdSlot';
 import createDocument from './document';
 import { appendScript, } from './utils/scriptTools';
 import { stylesPropType, } from './propTypes/stylesPropType';
+import extractParameter from './components/BI/extractParamFromUrl';
 
 // BI
 import BIAction from './components/BI/BIAction';
@@ -231,6 +232,7 @@ export {
   appendScript,
   createDocument,
   stylesPropType,
+  extractParameter,
   // BI
   BIAction,
   BIRequest,

@@ -20,6 +20,7 @@ import gql from 'graphql-tag';
 
 import ResetPasswordModal from './LoginOrRegisterElements/ResetPasswordModal';
 import Redirect from '../../Redirect/Redirect';
+import { getCampaignFromPath, } from '../OfferPageDataGetter';
 
 const GET_PURCHASE_PAGE_DATA = gql`
   query PageData($path: String!) {
@@ -146,7 +147,7 @@ class LoginOrRegisterStage extends React.Component {
     return this.state.refetch ? (
       <Query
         query={GET_PURCHASE_PAGE_DATA}
-        variables={{ path: router.asPath, }}
+        variables={{ path: getCampaignFromPath(router.asPath), }}
         fetchPolicy="network-only"
       >
         {({ data, loading, error, client, }) => {

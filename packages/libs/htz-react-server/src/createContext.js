@@ -4,7 +4,6 @@ import querystring from 'querystring';
 import config from 'config';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
 import Cookies from 'universal-cookie';
-import { friendlyRoutes, } from './routes/purchase';
 
 const host = (config.has('hostname') && config.get('hostname')) || 'www';
 const ssoSubDomain =
@@ -55,15 +54,8 @@ export function createLoaders(req) {
     }).userId;
     console.log('userId from loader: ', userId);
     return Promise.all(
+      // 'path' means campaign path relative to polopoly root campaign page (which is '/')
       keys.map(path => {
-        // Replaces and normalizes path names:
-        // path -> normlized_path
-        // '/' -> '/'
-        // '/promotions-page' -> ''
-        // '/promotions-page/offers' -> '/promotions-page' (special case)
-        // '/promotions-page/promotions-page' -> '/promotions-page'
-        // '/promotions-page/promotions-page/promotions-page' -> '/promotions-page/promotions-page'
-        // '/promotions-page/less-ads' -> '/less-ads'
         const [ pathWithoutQuery, queryPartFromPath, ] = path.split(/\?(.+)/);
         const query = queryPartFromPath
           ? querystring.parse(queryPartFromPath)
@@ -73,12 +65,10 @@ export function createLoaders(req) {
           ? `${pathWithoutQuery}/${query.offer}`
           : `${pathWithoutQuery}`; // Augment request for papi
         // '/promotions-page/more-ads/some-sub-promotion' -> '/more-ads/some-sub-promotion'
-        const normlizedPath = `${baseUri}${appPrefix}${(path || '/')
-          .replace(new RegExp(`${appPrefix}/stage[0-9]`), `${appPrefix}`)
-          .replace(`${appPrefix}/${friendlyRoutes.stage1}`, `${appPrefix}`)
-          .replace(`${appPrefix}`, '')}${
-          path.includes('?') ? '&' : '?'
-        }userId=${userId}`;
+        const normlizedPath = `${baseUri}${appPrefix}${(path || '/').replace(
+          `${appPrefix}`,
+          ''
+        )}${path.includes('?') ? '&' : '?'}userId=${userId}`;
         console.log(
           'GRAPHQL - fetching data from papi using endpoint: ',
           normlizedPath

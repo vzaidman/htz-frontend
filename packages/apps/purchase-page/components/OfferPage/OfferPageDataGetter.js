@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withRouter, } from 'next/router';
-// import dummyData from './dummyData';
+import { extractParameter, } from '@haaretz/htz-components';
 
 const GET_PURCHASE_PAGE_DATA = gql`
   query PageData($path: String!) {
@@ -16,16 +16,21 @@ const propTypes = {
   router: PropTypes.shape().isRequired,
 };
 
+export function getCampaignFromPath(path) {
+  const offer = `/${extractParameter('offer', path) || ''}`;
+  return offer;
+}
+
 function OfferPageDataGetter({ render, router, }) {
   return (
     <Fragment>
-      <Query query={GET_PURCHASE_PAGE_DATA} variables={{ path: router.asPath, }}>
+      <Query
+        query={GET_PURCHASE_PAGE_DATA}
+        variables={{ path: getCampaignFromPath(router.asPath), }}
+      >
         {({ loading, error, data, refetch, client, }) =>
           render({ data, loading, error, refetch, client, })
         }
-        {/* {({ loading, error, data, refetch, client, }) =>
-          render({ data: dummyData, loading, error, refetch, client, })
-        } */}
       </Query>
     </Fragment>
   );

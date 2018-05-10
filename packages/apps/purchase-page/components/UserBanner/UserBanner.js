@@ -5,6 +5,7 @@ import { createComponent, FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import Router, { withRouter, } from 'next/router';
 import gql from 'graphql-tag';
+import { getCampaignFromPath, } from '../OfferPage/OfferPageDataGetter';
 
 const GET_PURCHASE_PAGE_DATA = gql`
   query PageData($path: String!) {
@@ -52,7 +53,10 @@ function UserBanner({ router, }) {
                   <UserName>
                     {theme.offerPage.userBanner.hello(user.firstName)}
                   </UserName>
-                  <Query query={GET_PURCHASE_PAGE_DATA} variables={{ path, }}>
+                  <Query
+                    query={GET_PURCHASE_PAGE_DATA}
+                    variables={{ path: getCampaignFromPath(path), }}
+                  >
                     {({ data, loading, }) => (
                       <Fragment>
                         <Logout
