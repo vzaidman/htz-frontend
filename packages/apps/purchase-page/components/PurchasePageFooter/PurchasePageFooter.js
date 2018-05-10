@@ -98,7 +98,7 @@ export function PurchasePageFooter({ host, hasIllustration, }) {
         }) => (
           <div className={className}>
             <StyledHomePageLink
-              href={homePageLink.href}
+              href={homePageLink.href[host]}
               content={
                 <Fragment>
                   {isTheMarker ? (
