@@ -223,7 +223,7 @@ const Offer = ({
     pathWithoutQuery.lastIndexOf('/')
   );
   const computedAsPath = `${pathWithoutQuery}/${
-    isLoggedIn ? friendlyRoutes.stage4 : friendlyRoutes.stage5
+    isLoggedIn ? friendlyRoutes.stage4 : friendlyRoutes.stage3
   }${queryPartFromPath ? `?${queryPartFromPath}` : ''}`;
   const pathName = isLoggedIn
     ? '/promotions-page/stage4'
