@@ -104,6 +104,9 @@ class LoginOrRegisterStage extends React.Component {
   };
 
   render() {
+    // focus the password input when it first loads, form focus will override if there is an error in the form
+    if (this.passwordInputEl) this.passwordInputEl.focus();
+
     const {
       chosenSubscription,
       router,
@@ -291,7 +294,6 @@ class LoginOrRegisterStage extends React.Component {
                                       );
                                     })
                                     .catch(error => {
-                                      console.log('error register in');
                                       this.setState({
                                         error:
                                           error.message ||
@@ -468,6 +470,9 @@ class LoginOrRegisterStage extends React.Component {
                                       <Fragment>
                                         <TextInput
                                           {...getInputProps({
+                                            refFunc: elem => {
+                                              this.passwordInputEl = elem;
+                                            },
                                             variant: 'primary',
                                             name: 'password',
                                             label: form.password.label,
