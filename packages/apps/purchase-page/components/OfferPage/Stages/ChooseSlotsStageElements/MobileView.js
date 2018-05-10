@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
 import { borderTop, borderBottom, } from '@haaretz/htz-css-tools';
-import { Button, } from '@haaretz/htz-components';
+import { Button, BIAction, } from '@haaretz/htz-components';
 import PositiveCircle from './PositiveCircle';
 import Phones from '../Elements/Phones';
 
@@ -167,21 +167,38 @@ class MobileView extends Component {
                             ))}
                           </div>
                         )}
-                        <Button
-                          href={pathName}
-                          // asPath={router.asPath}
-                          variant="salesOpaque"
-                          miscStyles={{ marginTop: '3rem', }}
-                          onClick={() => {
-                            continueToNextStage({
-                              cache,
-                              idx,
-                              routerPush: true,
-                            });
-                          }}
-                        >
-                          {staticTableData.thead[item.subscriptionName].btnText}
-                        </Button>
+                        <BIAction>
+                          {action => (
+                            <Button
+                              href={pathName}
+                              // asPath={router.asPath}
+                              variant="salesOpaque"
+                              miscStyles={{ marginTop: '3rem', }}
+                              onClick={() => {
+                                action({
+                                  actionCode: 105,
+                                  additionalInfo: {
+                                    productId:
+                                      tableData[idx].subscriptionName === 'HTZ'
+                                        ? '243'
+                                        : '273',
+                                    stage: 'slot',
+                                  },
+                                });
+                                continueToNextStage({
+                                  cache,
+                                  idx,
+                                  routerPush: true,
+                                });
+                              }}
+                            >
+                              {
+                                staticTableData.thead[item.subscriptionName]
+                                  .btnText
+                              }
+                            </Button>
+                          )}
+                        </BIAction>
                       </StyledItemStartCont>
                       <StyledItemEndCont>
                         <FelaComponent style={{ marginBottom: '2rem', }}>

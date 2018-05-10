@@ -5,7 +5,13 @@ import PropTypes from 'prop-types';
 import Router, { withRouter, } from 'next/router';
 import { FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
-import { Button, RadioGroup, Form, IconPaypal, } from '@haaretz/htz-components';
+import {
+  Button,
+  RadioGroup,
+  Form,
+  IconPaypal,
+  BIAction,
+} from '@haaretz/htz-components';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
 import SecurePaymentLine from './Elements/SecurePaymentLine';
@@ -265,22 +271,32 @@ class PaymentStage extends Component {
                           </FelaComponent>
 
                           {!this.state.displayPaymentButtons && (
-                            <Button
-                              variant="salesOpaque"
-                              boxModel={{ hp: 6, vp: 1, }}
-                              onClick={evt => {
-                                handleSubmit(evt, 'existingCreditCard');
-                              }}
-                              miscStyles={{
-                                display: 'block',
-                                marginInlineEnd: 'auto',
-                                marginInlineStart: 'auto',
-                                marginTop: '5rem',
-                                marginBottom: '5rem',
-                              }}
-                            >
-                              {form.continueButton.text}
-                            </Button>
+                            <BIAction>
+                              {action => (
+                                <Button
+                                  variant="salesOpaque"
+                                  boxModel={{ hp: 6, vp: 1, }}
+                                  onClick={evt => {
+                                    handleSubmit(evt, 'existingCreditCard');
+                                    action({
+                                      actionCode: 37,
+                                      additionalInfo: {
+                                        stage: 'payment',
+                                      },
+                                    });
+                                  }}
+                                  miscStyles={{
+                                    display: 'block',
+                                    marginInlineEnd: 'auto',
+                                    marginInlineStart: 'auto',
+                                    marginTop: '5rem',
+                                    marginBottom: '5rem',
+                                  }}
+                                >
+                                  {form.continueButton.text}
+                                </Button>
+                              )}
+                            </BIAction>
                           )}
                         </Fragment>
                       )}
@@ -319,39 +335,59 @@ class PaymentStage extends Component {
                             return (
                               <div className={className}>
                                 <div>
-                                  <Button
-                                    {...buttonProps}
-                                    onClick={evt => {
-                                      handleSubmit(evt, 'creditCard');
-                                    }}
-                                  >
-                                    {payVia} <br />
-                                    {creditCard}
-                                  </Button>
+                                  <BIAction>
+                                    {action => (
+                                      <Button
+                                        {...buttonProps}
+                                        onClick={evt => {
+                                          handleSubmit(evt, 'creditCard');
+                                          action({
+                                            actionCode: 109,
+                                            additionalInfo: {
+                                              stage: 'payment',
+                                            },
+                                          });
+                                        }}
+                                      >
+                                        {payVia} <br />
+                                        {creditCard}
+                                      </Button>
+                                    )}
+                                  </BIAction>
                                 </div>
                                 {displayPayPal && (
                                   <Fragment>
                                     <PaymentButtonsDivider />
                                     <div>
-                                      <Button
-                                        {...buttonProps}
-                                        onClick={evt => {
-                                          handleSubmit(evt, 'PayPal');
-                                        }}
-                                      >
-                                        {payVia} <br />
-                                        <IconPaypal
-                                          size={[
-                                            { until: 's', value: 3.5, },
-                                            {
-                                              from: 's',
-                                              until: 'l',
-                                              value: 5.25,
-                                            },
-                                            { from: 'l', value: 3.5, },
-                                          ]}
-                                        />
-                                      </Button>
+                                      <BIAction>
+                                        {action => (
+                                          <Button
+                                            {...buttonProps}
+                                            onClick={evt => {
+                                              handleSubmit(evt, 'PayPal');
+                                              action({
+                                                actionCode: 29,
+                                                additionalInfo: {
+                                                  stage: 'payment',
+                                                },
+                                              });
+                                            }}
+                                          >
+                                            {payVia} <br />
+                                            <IconPaypal
+                                              size={[
+                                                { until: 's', value: 3.5, },
+                                                {
+                                                  from: 's',
+                                                  until: 'l',
+                                                  value: 5.25,
+                                                },
+                                                { from: 'l', value: 3.5, },
+                                              ]}
+                                            />
+                                          </Button>
+                                        )}
+                                      </BIAction>
                                     </div>
                                   </Fragment>
                                 )}

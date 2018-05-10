@@ -1,7 +1,13 @@
 import React, { Fragment, Component, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import { A11yDialog, Button, Form, TextInput, } from '@haaretz/htz-components';
+import {
+  A11yDialog,
+  Button,
+  Form,
+  TextInput,
+  BIAction,
+} from '@haaretz/htz-components';
 import isEmail from 'validator/lib/isEmail';
 import { ApolloConsumer, } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -175,14 +181,26 @@ class ResetPasswordModal extends Component {
                                   })}
                                 />
                               </FelaComponent>
-                              <Button
-                                variant="primaryOpaque"
-                                miscStyles={buttonStyle}
-                                onClick={handleSubmit}
-                                isBusy={this.state.loading}
-                              >
-                                {resetPasswordButton}
-                              </Button>
+                              <BIAction>
+                                {action => (
+                                  <Button
+                                    variant="primaryOpaque"
+                                    miscStyles={buttonStyle}
+                                    onClick={evt => {
+                                      handleSubmit(evt);
+                                      action({
+                                        actionCode: 34,
+                                        additionalInfo: {
+                                          stage: 'login-register',
+                                        },
+                                      });
+                                    }}
+                                    isBusy={this.state.loading}
+                                  >
+                                    {resetPasswordButton}
+                                  </Button>
+                                )}
+                              </BIAction>
                             </Fragment>
                           )}
                         />

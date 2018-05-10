@@ -1,7 +1,12 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { IconAlefLogo, IconTheMarker, Link, } from '@haaretz/htz-components';
+import {
+  IconAlefLogo,
+  IconTheMarker,
+  Link,
+  BIAction,
+} from '@haaretz/htz-components';
 
 import Astronaut from '../illustrations/Astronaut/Astronaut';
 import Diver from '../illustrations/Diver/Diver';
@@ -10,6 +15,8 @@ const propTypes = {
   /** passed as a a prop by fela's withTheme func before default export */
   host: PropTypes.string.isRequired,
   hasIllustration: PropTypes.bool,
+  /** passing stage from client promotionsPageState to BIAction */
+  stage: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ]).isRequired,
 };
 
 const defaultProps = {
@@ -36,7 +43,11 @@ const linkStyle = ({ theme, isLast = false, }) => ({
   extend: [ theme.type(0), ],
 });
 
-const StyledLink = createComponent(linkStyle, Link, [ 'href', 'content', ]);
+const StyledLink = createComponent(linkStyle, Link, [
+  'href',
+  'content',
+  'onClick',
+]);
 
 const homePageLinkStyle = ({ theme, }) => ({
   fontWeight: 'bold',
@@ -47,6 +58,7 @@ const homePageLinkStyle = ({ theme, }) => ({
 const StyledHomePageLink = createComponent(homePageLinkStyle, StyledLink, [
   'href',
   'content',
+  'onClick',
 ]);
 
 const linkListStyle = ({ theme, }) => ({
@@ -86,7 +98,7 @@ const listItemStyle = ({ theme, isLast = false, }) => ({
 
 const StyledListItem = createComponent(listItemStyle, 'li');
 
-export function PurchasePageFooter({ host, hasIllustration, }) {
+export function PurchasePageFooter({ host, hasIllustration, stage, }) {
   const isTheMarker = host === 'themarker.com';
   return (
     <FelaComponent style={footerContStyle}>
@@ -97,31 +109,58 @@ export function PurchasePageFooter({ host, hasIllustration, }) {
           theme: { purchasePageFooter: { homePageLink, links, }, },
         }) => (
           <div className={className}>
-            <StyledHomePageLink
-              href={homePageLink.href[host]}
-              content={
-                <Fragment>
-                  {isTheMarker ? (
-                    <IconTheMarker
-                      color="primary"
-                      fill={[ 'purchasePageFooter', 'bg', ]}
-                      size={6}
-                    />
-                  ) : (
-                    <IconAlefLogo
-                      color="white"
-                      fill={[ 'purchasePageFooter', 'bg', ]}
-                      size={6}
-                    />
-                  )}
-                  <p>{homePageLink.text}</p>
-                </Fragment>
-              }
-            />
+            <BIAction>
+              {action => (
+                <StyledHomePageLink
+                  href={homePageLink.href[host]}
+                  content={
+                    <Fragment>
+                      {isTheMarker ? (
+                        <IconTheMarker
+                          color="primary"
+                          fill={[ 'purchasePageFooter', 'bg', ]}
+                          size={6}
+                        />
+                      ) : (
+                        <IconAlefLogo
+                          color="white"
+                          fill={[ 'purchasePageFooter', 'bg', ]}
+                          size={6}
+                        />
+                      )}
+                      <p>{homePageLink.text}</p>
+                    </Fragment>
+                  }
+                  onClick={() => {
+                    action({
+                      actionCode: 42,
+                      additionalInfo: {
+                        stage,
+                      },
+                    });
+                  }}
+                />
+              )}
+            </BIAction>
             <StyledLinkList>
               {links.map((link, idx) => (
                 <StyledListItem isLast={idx === links.length - 1} key={link.id}>
-                  <StyledLink href={link.href[host]} content={link.text} />
+                  <BIAction>
+                    {action => (
+                      <StyledLink
+                        onClick={() => {
+                          action({
+                            actionCode: link.text === 'שאלות ותשובות' ? 43 : 41,
+                            additionalInfo: {
+                              stage,
+                            },
+                          });
+                        }}
+                        href={link.href[host]}
+                        content={link.text}
+                      />
+                    )}
+                  </BIAction>
                 </StyledListItem>
               ))}
             </StyledLinkList>

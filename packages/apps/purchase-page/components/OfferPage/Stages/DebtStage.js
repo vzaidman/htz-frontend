@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import { Button, CheckBox, Form, } from '@haaretz/htz-components';
+import { Button, CheckBox, Form, BIAction, } from '@haaretz/htz-components';
 import { ApolloConsumer, } from 'react-apollo';
 import Router, { withRouter, } from 'next/router';
 
@@ -144,20 +144,32 @@ function StageDebt({ pastDebts, router, }) {
                         miscStyles: { marginTop: '3rem', fontWeight: 'bold', },
                       })}
                     />
-                    <Button
-                      variant="salesOpaque"
-                      onClick={handleSubmit}
-                      boxModel={{ hp: 3, vp: 1, }}
-                      miscStyles={{
-                        marginTop: '4rem',
-                        marginBottom: '20rem',
-                        display: 'block',
-                        marginInlineEnd: 'auto',
-                        marginInlineStart: 'auto',
-                      }}
-                    >
-                      {submit}
-                    </Button>
+                    <BIAction>
+                      {action => (
+                        <Button
+                          variant="salesOpaque"
+                          onClick={evt => {
+                            handleSubmit(evt);
+                            action({
+                              actionCode: 36,
+                              additionalInfo: {
+                                stage: 'debt',
+                              },
+                            });
+                          }}
+                          boxModel={{ hp: 3, vp: 1, }}
+                          miscStyles={{
+                            marginTop: '4rem',
+                            marginBottom: '20rem',
+                            display: 'block',
+                            marginInlineEnd: 'auto',
+                            marginInlineStart: 'auto',
+                          }}
+                        >
+                          {submit}
+                        </Button>
+                      )}
+                    </BIAction>
                   </FelaComponent>
                 )}
               />

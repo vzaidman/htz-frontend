@@ -9,7 +9,7 @@ import {
   borderTop,
 } from '@haaretz/htz-css-tools';
 
-import { Button, Grid, GridItem, } from '@haaretz/htz-components';
+import { Button, Grid, GridItem, BIAction, } from '@haaretz/htz-components';
 import PositiveCircle from './PositiveCircle';
 import Phones from '../Elements/Phones';
 
@@ -315,33 +315,61 @@ function DesktopView({
                 </GridItem>
                 {tHeadData.map((item, idx) => (
                   <GridItem width={1 / 4} tagName="th" key={item.heading}>
-                    <StyledThInnerCont
-                      hasBorderTop
-                      hasBorderStart
-                      hasBorderEnd
-                      isHighlighted={
-                        tHeadData.length === 3 ? idx === 1 : idx === 0
-                      }
-                      onClick={() => {
-                        continueToNextStage({ cache, idx, routerPush: true, });
-                      }}
-                    >
-                      <Phones subscription={item.subscriptionName} size={7} />
-                      <StyledColHead>{item.heading}</StyledColHead>
-                      <StyledPricingHead>{item.pricingHead}</StyledPricingHead>
-                      <Button
-                        href={pathName}
-                        // asPath={asPath}
-                        variant="salesOpaque"
-                        boxModel={{ vp: 1, hp: 5, }}
-                        miscStyles={{ marginTop: '3rem', }}
-                        onClick={() => {
-                          continueToNextStage({ cache, idx, routerPush: true, });
-                        }}
-                      >
-                        {item.btnText}
-                      </Button>
-                    </StyledThInnerCont>
+                    <BIAction>
+                      {action => (
+                        <StyledThInnerCont
+                          hasBorderTop
+                          hasBorderStart
+                          hasBorderEnd
+                          isHighlighted={
+                            tHeadData.length === 3 ? idx === 1 : idx === 0
+                          }
+                          onClick={() => {
+                            action({
+                              actionCode: 105,
+                              additionalInfo: {
+                                productId:
+                                  tableData[idx].subscriptionName === 'HTZ'
+                                    ? '243'
+                                    : '273',
+                                stage: 'slot',
+                              },
+                            });
+                            continueToNextStage({
+                              cache,
+                              idx,
+                              routerPush: true,
+                            });
+                          }}
+                        >
+                          <Phones
+                            subscription={item.subscriptionName}
+                            size={7}
+                          />
+                          <StyledColHead>{item.heading}</StyledColHead>
+                          <StyledPricingHead>
+                            {item.pricingHead}
+                          </StyledPricingHead>
+
+                          <Button
+                            href={pathName}
+                            // asPath={asPath}
+                            variant="salesOpaque"
+                            boxModel={{ vp: 1, hp: 5, }}
+                            miscStyles={{ marginTop: '3rem', }}
+                            onClick={() => {
+                              continueToNextStage({
+                                cache,
+                                idx,
+                                routerPush: true,
+                              });
+                            }}
+                          >
+                            {item.btnText}
+                          </Button>
+                        </StyledThInnerCont>
+                      )}
+                    </BIAction>
                   </GridItem>
                 ))}
               </Grid>

@@ -1,8 +1,14 @@
-import React, { Component, } from 'react';
+import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
-import { Button, Form, TextInput, Link, } from '@haaretz/htz-components';
+import {
+  Button,
+  BIAction,
+  Form,
+  TextInput,
+  Link,
+} from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 import OfferList from './ChooseProductStageElements/OfferList';
 import Modal from './ChooseProductStageElements/Modal';
@@ -164,23 +170,35 @@ class ChooseProductStage extends Component {
                     {products.map(
                       (product, idx) =>
                         (idx !== chosenProductIndex ? (
-                          <Button
-                            key={product.productTitle}
-                            variant="primary"
-                            miscStyles={moreOptionsButtonsMiscStyles}
-                            onClick={() => {
-                              cache.writeData({
-                                data: {
-                                  promotionsPageState: {
-                                    chosenProductIndex: idx,
-                                    __typename: 'PromotionsPageState',
-                                  },
-                                },
-                              });
-                            }}
-                          >
-                            {product.productTitle}
-                          </Button>
+                          <Fragment key={product.productTitle}>
+                            <BIAction>
+                              {action => (
+                                <Button
+                                  key={product.productTitle}
+                                  variant="primary"
+                                  miscStyles={moreOptionsButtonsMiscStyles}
+                                  onClick={() => {
+                                    cache.writeData({
+                                      data: {
+                                        promotionsPageState: {
+                                          chosenProductIndex: idx,
+                                          __typename: 'PromotionsPageState',
+                                        },
+                                      },
+                                    });
+                                    action({
+                                      actionCode: 25,
+                                      additionalInfo: {
+                                        stage: 'product',
+                                      },
+                                    });
+                                  }}
+                                >
+                                  {product.productTitle}
+                                </Button>
+                              )}
+                            </BIAction>
+                          </Fragment>
                         ) : null)
                     )}
                     {couponExist &&
@@ -256,15 +274,27 @@ class ChooseProductStage extends Component {
                                   miscStyles: { minWidth: '32rem', },
                                 })}
                               />
-                              <Button
-                                variant="primaryOpaque"
-                                isBusy={this.state.couponLoading}
-                                boxModel={{ hp: 3, vp: 0.5, }}
-                                onClick={handleSubmit}
-                                miscStyles={couponButtonsMiscStyles}
-                              >
-                                {send}
-                              </Button>
+                              <BIAction>
+                                {action => (
+                                  <Button
+                                    variant="primaryOpaque"
+                                    isBusy={this.state.couponLoading}
+                                    boxModel={{ hp: 3, vp: 0.5, }}
+                                    onClick={evt => {
+                                      handleSubmit(evt);
+                                      action({
+                                        actionCode: 24,
+                                        additionalInfo: {
+                                          stage: 'product',
+                                        },
+                                      });
+                                    }}
+                                    miscStyles={couponButtonsMiscStyles}
+                                  >
+                                    {send}
+                                  </Button>
+                                )}
+                              </BIAction>
                               <Button
                                 variant="neutral"
                                 isFlat
@@ -280,15 +310,25 @@ class ChooseProductStage extends Component {
                           )}
                         />
                       ) : (
-                        <Button
-                          variant="primary"
-                          miscStyles={moreOptionsButtonsMiscStyles}
-                          onClick={() => {
-                            this.setState({ couponFormOpen: true, });
-                          }}
-                        >
-                          {coupon}
-                        </Button>
+                        <BIAction>
+                          {action => (
+                            <Button
+                              variant="primary"
+                              miscStyles={moreOptionsButtonsMiscStyles}
+                              onClick={() => {
+                                this.setState({ couponFormOpen: true, });
+                                action({
+                                  actionCode: 22,
+                                  additionalInfo: {
+                                    stage: 'product',
+                                  },
+                                });
+                              }}
+                            >
+                              {coupon}
+                            </Button>
+                          )}
+                        </BIAction>
                       ))}
                     <FelaComponent
                       style={theme => ({

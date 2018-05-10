@@ -18,6 +18,8 @@ Newsletter.propTypes = {
   icon: PropTypes.oneOf([ 'tm', 'htz', ]),
   /** The element's DOM ID */
   id: PropTypes.string,
+  /** Trigger user's function when modal is open */
+  onSubmit: PropTypes.func,
   /** Indicates article category id */
   segmentId: PropTypes.number.isRequired,
   /** Indicates registered/paying user email */
@@ -46,6 +48,7 @@ Newsletter.defaultProps = {
   host: null,
   icon: null,
   id: null,
+  onSubmit: () => {},
   miscStyles: null,
   userEmail: null,
   variant: 'highlight',

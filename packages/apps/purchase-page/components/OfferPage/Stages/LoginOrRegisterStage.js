@@ -5,6 +5,7 @@ import { FelaComponent, } from 'react-fela';
 import Router, { withRouter, } from 'next/router';
 import {
   Button,
+  BIAction,
   CheckBox,
   CheckEmailExists,
   Form,
@@ -64,9 +65,25 @@ const PasswordNote = (text, forgotPasswordText, openModal, userExists) => (
             color: theme.color('loginOrRegister', 'inFormText'),
           })}
           render={({ className, }) => (
-            <button className={className} type="button" onClick={openModal}>
-              {forgotPasswordText}
-            </button>
+            <BIAction>
+              {action => (
+                <button
+                  className={className}
+                  type="button"
+                  onClick={evt => {
+                    openModal(evt);
+                    action({
+                      actionCode: 32,
+                      additionalInfo: {
+                        stage: 'login-register',
+                      },
+                    });
+                  }}
+                >
+                  {forgotPasswordText}
+                </button>
+              )}
+            </BIAction>
           )}
         />
       </FelaComponent>
@@ -83,6 +100,7 @@ const textInputStyle = {
 class LoginOrRegisterStage extends React.Component {
   static propTypes = {
     chosenSubscription: PropTypes.string.isRequired,
+    registerOrLoginStage: PropTypes.string.isRequired,
     router: PropTypes.shape().isRequired,
     site: PropTypes.oneOf([ 'HTZ', 'TM', ]).isRequired,
     updateRegisterOrLoginStage: PropTypes.func.isRequired,
@@ -113,6 +131,7 @@ class LoginOrRegisterStage extends React.Component {
       router,
       site,
       updateRegisterOrLoginStage,
+      registerOrLoginStage,
     } = this.props;
 
     if (this.state.error) {
@@ -601,22 +620,40 @@ class LoginOrRegisterStage extends React.Component {
                                         />
                                       </Fragment>
                                     ) : null}
-
-                                    <Button
-                                      variant="primaryOpaque"
-                                      onClick={handleSubmit}
-                                      {...this.state.loading && {
-                                        isBusy: true,
-                                      }}
-                                      miscStyles={{
-                                        marginTop: '4rem',
-                                        display: 'block',
-                                        marginInlineEnd: 'auto',
-                                        marginInlineStart: 'auto',
-                                      }}
-                                    >
-                                      {form.continueButton.text}
-                                    </Button>
+                                    <BIAction>
+                                      {action => (
+                                        <Button
+                                          variant="primaryOpaque"
+                                          {...this.state.loading && {
+                                            isBusy: true,
+                                          }}
+                                          onClick={evt => {
+                                            handleSubmit(evt);
+                                            action({
+                                              actionCode:
+                                                registerOrLoginStage ===
+                                                'checkEmail'
+                                                  ? 107
+                                                  : registerOrLoginStage ===
+                                                    'login'
+                                                    ? 30
+                                                    : 27,
+                                              additionalInfo: {
+                                                stage: 'login-register',
+                                              },
+                                            });
+                                          }}
+                                          miscStyles={{
+                                            marginTop: '4rem',
+                                            display: 'block',
+                                            marginInlineEnd: 'auto',
+                                            marginInlineStart: 'auto',
+                                          }}
+                                        >
+                                          {form.continueButton.text}
+                                        </Button>
+                                      )}
+                                    </BIAction>
                                   </Fragment>
                                 </FelaComponent>
                               )}

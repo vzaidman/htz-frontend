@@ -54,6 +54,8 @@ export default class NewsletterWithoutApollo extends React.Component {
     id: PropTypes.string,
     /** indicates loading state of the data */
     loading: PropTypes.bool.isRequired,
+    /** Trigger user's function when modal is open */
+    onSubmit: PropTypes.func,
     /** Indicates article category id */
     segmentId: PropTypes.number.isRequired,
     /**
@@ -83,6 +85,7 @@ export default class NewsletterWithoutApollo extends React.Component {
     host: null,
     icon: null,
     id: PropTypes.string,
+    onSubmit: () => {},
     miscStyles: null,
     userEmail: null,
   };
@@ -116,6 +119,7 @@ export default class NewsletterWithoutApollo extends React.Component {
       host,
       icon,
       loading,
+      onSubmit,
       userEmail,
       segmentId,
       signUpNewsletter,
@@ -145,6 +149,7 @@ export default class NewsletterWithoutApollo extends React.Component {
                 appendTo={`${this.state.id}DialogWrapper`}
                 elementToHide={this.state.id}
                 isVisible={this.state.confirmed}
+                onOpen={onSubmit}
                 overlayBgColor={theme.color('newsletter', `${variant}Bg`)}
                 containerMiscStyles={newsletterConfirmStyle}
                 render={({ handleClose, }) => (

@@ -12,6 +12,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
       "maxWidth": "80rem",
     }
   }
+  onSubmit={[Function]}
   segmentId={1420800}
   signUpNewsletter={[MockFunction]}
   userEmail={null}
@@ -3713,7 +3714,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
             isModal={false}
             isVisible={false}
             onClose={null}
-            onOpen={null}
+            onOpen={[Function]}
             overlayAttrs={null}
             overlayBgColor="#FFE70C"
             render={[Function]}

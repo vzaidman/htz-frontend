@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter, } from 'next/router';
 import { createComponent, } from 'react-fela';
 import { border, } from '@haaretz/htz-css-tools';
-import { Button, } from '@haaretz/htz-components';
+import { Button, BIAction, } from '@haaretz/htz-components';
 import { ApolloConsumer, } from 'react-apollo';
 import { friendlyRoutes, } from '../../../../routes/routes';
 
@@ -282,36 +282,56 @@ const Offer = ({
                 {text}
               </StyledOfferText>
             ))}
-          <Button
-            href={pathName}
-            variant="salesOpaque"
-            boxModel={{ hp: 3, vp: 1, }}
-            miscStyles={{
-              marginTop: [
-                { until: 's', value: '1rem', },
-                { from: 's', value: '3rem', },
-              ],
-              type: [ { until: 's', value: -1, }, ],
-            }}
-            onClick={() => {
-              continueToNextStage({ cache, idx: offerIdx, });
-            }}
-          >
-            {offer.buttonText}
-          </Button>
-
+          <BIAction>
+            {action => (
+              <Button
+                href={pathName}
+                variant="salesOpaque"
+                boxModel={{ hp: 3, vp: 1, }}
+                miscStyles={{
+                  marginTop: [
+                    { until: 's', value: '1rem', },
+                    { from: 's', value: '3rem', },
+                  ],
+                  type: [ { until: 's', value: -1, }, ],
+                }}
+                onClick={() => {
+                  action({
+                    actionCode: 21,
+                    additionalInfo: {
+                      stage: 'product',
+                      chosenProduct: offer.title,
+                    },
+                  });
+                  continueToNextStage({ cache, idx: offerIdx, });
+                }}
+              >
+                {offer.buttonText}
+              </Button>
+            )}
+          </BIAction>
           <StyledCancelButtonText isRecommended={offer.isRecommended}>
             {cancelButtonText}
           </StyledCancelButtonText>
-          <StyledTermsButton
-            isRecommended={offer.isRecommended}
-            onClick={evt => {
-              evt.stopPropagation();
-              openModal(offerIdx);
-            }}
-          >
-            {termsButtonText}
-          </StyledTermsButton>
+          <BIAction>
+            {action => (
+              <StyledTermsButton
+                isRecommended={offer.isRecommended}
+                onClick={evt => {
+                  evt.stopPropagation();
+                  openModal(offerIdx);
+                  action({
+                    actionCode: 21,
+                    additionalInfo: {
+                      stage: 'product',
+                    },
+                  });
+                }}
+              >
+                {termsButtonText}
+              </StyledTermsButton>
+            )}
+          </BIAction>
         </StyledOffer>
       )}
     </ApolloConsumer>

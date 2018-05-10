@@ -132,6 +132,9 @@ class Stage3 extends Component {
                                         updateRegisterOrLoginStage={
                                           this.updateRegisterOrLoginStage
                                         }
+                                        registerOrLoginStage={
+                                          this.state.registerOrLoginStage
+                                        }
                                       />
                                     }
                                   />

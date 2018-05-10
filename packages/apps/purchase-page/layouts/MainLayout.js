@@ -18,10 +18,13 @@ import Scripts from '../components/Scripts/Scripts';
 const GET_HOST_NAME = gql`
   query {
     hostname @client
+    promotionsPageState @client {
+      stage
+    }
     user @client {
       type
     }
-  }
+  }  
 `;
 
 const propTypes = {
@@ -84,7 +87,7 @@ function MainLayout({
 }) {
   return (
     <Query query={GET_HOST_NAME}>
-      {({ data: { hostname, user: { type, }, }, }) => {
+      {({ data: { hostname, user: { type, }, promotionsPageState: { stage, }, }, }) => {
         const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
         return (
           <Fragment>
@@ -106,6 +109,7 @@ function MainLayout({
                             <PurchaseHeader
                               host={host}
                               displayBackButton={displayBackButton}
+                              stage={stage}
                             />
                             <UserBanner />
                           </Fragment>
@@ -114,6 +118,7 @@ function MainLayout({
                         <PurchasePageFooter
                           host={host}
                           hasIllustration={footerHasIllustration}
+                          stage={stage}
                         />
                       </StyledWrapper>
                     </div>

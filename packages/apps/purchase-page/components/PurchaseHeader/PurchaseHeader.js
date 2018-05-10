@@ -9,6 +9,7 @@ import {
   IconMarkerLogo,
   IconHaaretzLogo,
   IconLock,
+  BIAction,
 } from '@haaretz/htz-components';
 
 const propTypes = {
@@ -16,6 +17,9 @@ const propTypes = {
   /** passed as a a prop by fela's withTheme func before default export */
   host: PropTypes.string.isRequired,
   router: PropTypes.shape().isRequired,
+  /** passing stage from client promotionsPageState to BIAction */
+  stage: PropTypes.PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ])
+    .isRequired,
 };
 
 // const defaultProps = {};
@@ -111,7 +115,7 @@ const trustedBadgeContentStyle = theme => ({
   ],
 });
 
-function PurchaseHeader({ host, router, displayBackButton, }) {
+function PurchaseHeader({ host, router, displayBackButton, stage, }) {
   return (
     <FelaComponent
       style={contStyle}
@@ -125,22 +129,32 @@ function PurchaseHeader({ host, router, displayBackButton, }) {
               <FelaComponent
                 style={backLinkStyle}
                 render={({ className, }) => (
-                  <button
-                    className={className}
-                    onClick={() => {
-                      Router.back();
-                    }}
-                  >
-                    <IconBack
-                      miscStyles={{
-                        transform: 'rotate(180deg)',
-                        marginInlineEnd: '1.5rem',
-                      }}
-                    />
-                    <FelaComponent style={backLinkTextStyle}>
-                      {backLinkText}
-                    </FelaComponent>
-                  </button>
+                  <BIAction>
+                    {action => (
+                      <button
+                        className={className}
+                        onClick={() => {
+                          action({
+                            actionCode: 42,
+                            additionalInfo: {
+                              stage,
+                            },
+                          });
+                          Router.back();
+                        }}
+                      >
+                        <IconBack
+                          miscStyles={{
+                            transform: 'rotate(180deg)',
+                            marginInlineEnd: '1.5rem',
+                          }}
+                        />
+                        <FelaComponent style={backLinkTextStyle}>
+                          {backLinkText}
+                        </FelaComponent>
+                      </button>
+                    )}
+                  </BIAction>
                 )}
               />
             ) : (

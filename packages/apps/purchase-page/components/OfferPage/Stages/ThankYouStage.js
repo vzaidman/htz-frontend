@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
-import { IconCheck, Link, Newsletter, } from '@haaretz/htz-components';
+import { IconCheck, Link, Newsletter, BIAction, } from '@haaretz/htz-components';
 import Phones from './Elements/Phones';
 
 const GET_HOST_NAME = gql`
@@ -100,21 +100,39 @@ function StageThankYou({ userEmail, product, userMessage, }) {
 
                 {referrer &&
                   isArticle(referrer) && (
-                    <StyledLink
-                      content={backToArticleContent}
-                      href={referrer}
+                    <BIAction>
+                      {action => (
+                        <StyledLink
+                          content={backToArticleContent}
+                          href={referrer}
+                        />
+                      )}
+                    </BIAction>
+                  )}
+                <BIAction>
+                  {action => (
+                    <Newsletter
+                      headlineText={newsletterTitle(site)}
+                      buttonText={newsletterButton}
+                      host={site}
+                      icon={site}
+                      onSubmit={() => {
+                        action({
+                          actionCode: 38,
+                          additionalInfo: {
+                            stage: 'thank-you',
+                            context: 'purchase-page',
+                            segmentId: site === 'tm' ? 1338618 : 1338625,
+                          },
+                        });
+                      }}
+                      variant="primary"
+                      segmentId={site === 'tm' ? 1338618 : 1338625}
+                      userEmail={userEmail}
+                      miscStyles={{ marginTop: '9rem', marginBottom: '2rem', }}
                     />
                   )}
-                <Newsletter
-                  headlineText={newsletterTitle(site)}
-                  buttonText={newsletterButton}
-                  host={site}
-                  icon={site}
-                  variant="primary"
-                  segmentId={site === 'tm' ? 1338618 : 1338625}
-                  userEmail={userEmail}
-                  miscStyles={{ marginTop: '9rem', marginBottom: '2rem', }}
-                />
+                </BIAction>
               </div>
             )}
           />
