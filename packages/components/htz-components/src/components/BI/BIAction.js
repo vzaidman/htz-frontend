@@ -13,14 +13,6 @@ const getActionWithQuery = client => async action => {
   const { data, } = await client.query({
     query: GET_USER,
   });
-  // console.log(
-  //   'logging BIAction for',
-  //   action,
-  //   'with client that can make queries on demand: ',
-  //   client,
-  //   ' user fetched from apollo was: ',
-  //   data.user
-  // );
   return doStatAction(action, data.user);
 };
 
