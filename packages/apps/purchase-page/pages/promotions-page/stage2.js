@@ -30,6 +30,7 @@ function Stage2() {
       render={({ data, loading, error, refetch, }) => {
         if (loading) return <div> Loading...</div>;
         if (error) return <div> Error...</div>;
+        const isFirstPage = data.purchasePage.slots.length <= 1;
         return (
           <MainLayout>
             <Query query={GET_LOCAL_STATE}>
@@ -75,35 +76,77 @@ function Stage2() {
                                     user={user}
                                     isLoggedIn={isLoggedIn}
                                     skipTransition={
-                                      !!chosenProduct.campaignData
+                                      !!chosenProduct.campaignData ||
+                                      isFirstPage
                                     }
                                     headerElement={
                                       !chosenProduct.campaignData && (
                                         <StageHeader
-                                          headerElements={[
-                                            <Fragment>
-                                              <span>
-                                                {header.textBeforeChosen}
-                                              </span>{' '}
-                                              <FelaComponent
-                                                style={{ fontWeight: 'bold', }}
-                                                render="span"
-                                              >
-                                                {
-                                                  header.chosenSubscriptionText[
-                                                    chosenSlot.subscriptionName
-                                                  ]
-                                                }
-                                              </FelaComponent>
-                                              {', '}
-                                              <FelaComponent
-                                                style={{ display: 'block', }}
-                                                render="span"
-                                              >
-                                                {header.textAfterChosen}
-                                              </FelaComponent>
-                                            </Fragment>,
-                                          ]}
+                                          headerElements={
+                                            isFirstPage
+                                              ? [
+                                                <Fragment>
+                                                  <FelaComponent
+                                                    style={{ display: 'block', }}
+                                                    render="span"
+                                                  >
+                                                    {header.textAfterChosen(
+                                                        isFirstPage
+                                                      )}
+                                                  </FelaComponent>
+                                                  <FelaComponent
+                                                    style={{ fontWeight: 'bold', }}
+                                                    render="span"
+                                                  >
+                                                    <span>
+                                                      {` ${header.connector(
+                                                          isFirstPage
+                                                        )}`}
+                                                      {
+                                                          header
+                                                            .chosenSubscriptionText[
+                                                            chosenSlot
+                                                              .subscriptionName
+                                                          ]
+                                                        }
+                                                    </span>
+                                                  </FelaComponent>
+                                                </Fragment>,
+                                                ]
+                                              : [
+                                                <Fragment>
+                                                  <span>
+                                                    {header.textBeforeChosen}
+                                                  </span>{' '}
+                                                  <FelaComponent
+                                                    style={{ fontWeight: 'bold', }}
+                                                    render="span"
+                                                  >
+                                                    <span>
+                                                      {` ${header.connector(
+                                                          isFirstPage
+                                                        )}`}
+                                                      {
+                                                          header
+                                                            .chosenSubscriptionText[
+                                                            chosenSlot
+                                                              .subscriptionName
+                                                          ]
+                                                        }
+                                                    </span>
+                                                  </FelaComponent>
+                                                  {', '}
+                                                  <FelaComponent
+                                                    style={{ display: 'block', }}
+                                                    render="span"
+                                                  >
+                                                    {header.textAfterChosen(
+                                                        isFirstPage
+                                                      )}
+                                                  </FelaComponent>
+                                                </Fragment>,
+                                                ]
+                                          }
                                         />
                                       )
                                     }

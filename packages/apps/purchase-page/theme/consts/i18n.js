@@ -143,11 +143,13 @@ export const stage1 = Object.freeze({
 export const stage2 = Object.freeze({
   header: Object.freeze({
     textBeforeChosen: 'בחרתם',
-    textAfterChosen: 'כעת בחרו את המסלול המתאים לכם ביותר',
+    textAfterChosen: isFirst =>
+      `${!isFirst ? 'כעת ' : ''}בחרו את המסלול המתאים לכם ביותר`,
+    connector: isFirst => (isFirst ? 'ל' : 'ב'),
     chosenSubscriptionText: Object.freeze({
-      BOTH: 'במינוי משולב',
-      HTZ: 'במינוי הארץ',
-      TM: 'במינוי TheMarker',
+      BOTH: 'מינוי משולב',
+      HTZ: 'מינוי הארץ',
+      TM: 'מינוי TheMarker',
     }),
   }),
   offerList: Object.freeze({
