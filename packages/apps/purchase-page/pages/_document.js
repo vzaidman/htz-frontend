@@ -12,7 +12,10 @@ import styleRenderer from '../components/styleRenderer/styleRenderer';
 const fonts = [
   [
     '"Open Sans Hebrew"',
-    [ './static/fonts/OpenSansHebrewLight.ttf', ],
+    [
+      './static/fonts/OpenSansHebrewLight.woff2',
+      './static/fonts/OpenSansHebrewLight.woff',
+    ],
     { fontWeight: 300, },
   ],
   [
