@@ -8,7 +8,6 @@ import { newsletterVariantType, } from './types/newsletterVariantType';
 import Button from '../../Button/Button'; // eslint-disable-line import/no-named-as-default
 import Form from '../../Form/Form'; // eslint-disable-line import/no-named-as-default
 import TextInput from '../../TextInput/TextInput';
-import CheckBox from '../../CheckBox/CheckBox'; // eslint-disable-line import/no-named-as-default
 import IconAlefLogoTransparent from '../../Icon/icons/IconAlefLogoTransparent';
 import IconMarkerLogoTransparent from '../../Icon/icons/IconMarkerLogoTransparent';
 
@@ -73,15 +72,9 @@ const ButtonStyle = {
   ],
 };
 
-const CheckBoxStyle = {
-  display: [ { from: 's', value: 'flex', }, { until: 's', value: 'none', }, ],
-  type: -2,
-  marginTop: '1rem',
-};
-
 NewsletterForm.propTypes = {
   /** determine newsletter icon if exists */
-  brand: PropTypes.oneOf([ 'tm', 'htz', ]),
+  icon: PropTypes.oneOf([ 'tm', 'htz', ]),
   /** loading boolean from apollo Mutation */
   loading: PropTypes.bool.isRequired,
   /** Indicates article category id */
@@ -109,12 +102,12 @@ NewsletterForm.propTypes = {
 };
 
 NewsletterForm.defaultProps = {
-  brand: null,
+  icon: null,
   userEmail: null,
 };
 
 export function NewsletterForm({
-  brand,
+  icon,
   loading,
   segmentId,
   setParentState,
@@ -123,10 +116,10 @@ export function NewsletterForm({
   variant,
 }) {
   const NewsletterIcon =
-    brand &&
-    (brand.toLowerCase() === 'htz'
+    icon &&
+    (icon.toLowerCase() === 'htz'
       ? IconAlefLogoTransparent
-      : brand.toLowerCase() === 'tm' ? IconMarkerLogoTransparent : null);
+      : icon.toLowerCase() === 'tm' ? IconMarkerLogoTransparent : null);
   return (
     <Form
       initialValues={{ email: userEmail, checkBox: false, }}
@@ -149,14 +142,14 @@ export function NewsletterForm({
           errors.push({
             name: 'email',
             order: 1,
-            errorText: 'אנא הזינו כתובת אימייל',
+            errorText: 'נא למלא כתובת דוא"ל',
           });
         }
         if (email && !isEmail(email)) {
           errors.push({
             name: 'email',
             order: 1,
-            errorText: 'נא להכניס כתובת דואל תקינה',
+            errorText: 'נא למלא כתובת דוא"ל תקנית',
           });
         }
         return errors;
@@ -186,7 +179,14 @@ export function NewsletterForm({
                           <h3 className={className}>{newsletterTitle}</h3>
                         )}
                       />
-                      {NewsletterIcon ? <NewsletterIcon /> : null}
+                      {NewsletterIcon ? (
+                        <NewsletterIcon
+                          size={[
+                            { from: 's', value: 3, },
+                            { until: 's', value: 7, },
+                          ]}
+                        />
+                      ) : null}
                     </div>
                   )}
                 />
@@ -227,14 +227,6 @@ export function NewsletterForm({
                       </Button>
                     </div>
                   )}
-                />
-                <CheckBox
-                  {...getInputProps({
-                    name: 'checkBox',
-                    label: 'ברצוני לקבל ניוזלטרים, מידע שיווקי והטבות',
-                    miscStyles: CheckBoxStyle,
-                    noteText: ' ',
-                  })}
                 />
               </div>
             );

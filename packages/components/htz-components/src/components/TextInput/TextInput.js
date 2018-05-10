@@ -26,6 +26,7 @@ const labelStyle = ({
   isError,
   isFocused,
   isTextArea,
+  isLabelUp,
   miscStyles,
   theme,
   variant,
@@ -53,7 +54,8 @@ const labelStyle = ({
       isError,
       isFocused,
       theme,
-      isDisabled
+      isDisabled,
+      isLabelUp
     ),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
@@ -72,7 +74,8 @@ function setVariant(
   isError,
   isFocused,
   theme,
-  isDisabled
+  isDisabled,
+  isLabelUp
 ) {
   const focusedStyle = {
     backgroundColor: getColor('input', `${variant}FocusBg`),
@@ -98,7 +101,9 @@ function setVariant(
       ? focusedStyle
       : {
         ':hover': {
-          backgroundColor: getColor('input', `${variant}HoverBg`),
+          ...(!isLabelUp
+            ? { backgroundColor: getColor('input', `${variant}HoverBg`), }
+            : {}),
           borderColor: getColor('input', `${variant}HoverBorder`),
           color: getColor('input', `${variant}HoverText`),
           ...(isDisabled ? { cursor: 'not-allowed', } : {}),
@@ -152,7 +157,8 @@ const labelTextStyle = ({
                   'input',
                   isFocused ? `${variant}FocusBg` : `${variant}Bg`
                 ),
-                transform: 'translateY(-2.7rem) scale(.8)',
+                transform: 'translateY(-3.3rem) scale(.8)',
+                paddingTop: '0.5rem',
               }
               : {}),
           },
@@ -519,6 +525,12 @@ class TextInput extends Component {
       value,
       variant,
     } = this.props;
+
+    const isLabelUp =
+      !isTextArea &&
+      !isContentEditable &&
+      (this.state.isFocused || !this.state.isInputEmpty);
+
     return (
       <div>
         <StyledLabel
@@ -530,6 +542,7 @@ class TextInput extends Component {
           isContentEditable={isContentEditable}
           isTextArea={isTextArea}
           isDisabled={isDisabled}
+          isLabelUp={isLabelUp}
           {...(isContentEditable
             ? { onClick: evt => this.handleClick(evt), }
             : {})}

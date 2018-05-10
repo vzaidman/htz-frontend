@@ -22,9 +22,10 @@ Can be used to create a NewsLetter to subscribe with existing or non existing us
 ```jsx
 <div dir="rtl">
   <Newsletter
-    brand="htz"
+    host="htz"
+    icon="htz"
     segmentId={1420800}
-    miscStyles={{ maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}
+    miscStyles={{ maxWidth: '90rem', marginLeft: 'auto', marginRight: 'auto' }}
   />
 </div>
 ```
@@ -37,11 +38,12 @@ Can be used to create a NewsLetter to subscribe with existing or non existing us
 ```jsx
 <div dir="rtl">
   <Newsletter
-    brand="tm"
+    host="tm"
+    icon="tm"
     segmentId={1420800}
     userEmail="user@test.com"
     variant="primary"
-    miscStyles={{ maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}
+    miscStyles={{ maxWidth: '90rem', marginLeft: 'auto', marginRight: 'auto' }}
   />
 </div>
 ```

@@ -420,7 +420,7 @@ export const debt = Object.freeze({
 export const newsletterI18n = Object.freeze({
   buttons: Object.freeze({
     newsletterSubmit: 'הרשמה',
-    newsletterConfirmedButton: 'לרשימה המלא',
+    newsletterConfirmedButton: 'לרשימה המלאה',
   }),
   texts: Object.freeze({
     newsletterTitle: 'הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום',

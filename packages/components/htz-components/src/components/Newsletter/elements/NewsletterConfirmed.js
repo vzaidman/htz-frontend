@@ -9,7 +9,7 @@ import IconClose from '../../Icon/icons/IconClose';
 
 const NewsLetterConfirmedWrapperStyle = ({ theme, variant, }) => ({
   textAlign: 'center',
-  padding: '2rem',
+  padding: [ { from: 's', value: '2rem', }, { until: 's', value: '0rem', }, ],
   extend: [
     parseComponentProp(
       undefined,
@@ -30,6 +30,7 @@ function setWrapperVariant(prop, variant, getColor) {
 }
 
 const inputUpperNoteStyle = ({ theme, variant, }) => ({
+  paddingBottom: '1rem',
   extend: [
     theme.type(-1),
     parseComponentProp(undefined, variant, theme.mq, setVariant, theme.color),
@@ -60,6 +61,8 @@ NewsletterConfirmed.propTypes = {
    * Function that handle on close click.
    */
   closeConfirmation: PropTypes.func.isRequired,
+  /** determine newsletter host if exists */
+  host: PropTypes.oneOf([ 'tm', 'htz', ]),
   /** The TextInput stylistic variant */
   // used for styling
   variant: PropTypes.oneOfType([
@@ -74,10 +77,15 @@ NewsletterConfirmed.propTypes = {
 };
 
 NewsletterConfirmed.defaultProps = {
+  host: null,
   variant: 'highlight',
 };
 
-export default function NewsletterConfirmed({ closeConfirmation, variant, }) {
+export default function NewsletterConfirmed({
+  closeConfirmation,
+  variant,
+  host,
+}) {
   return (
     <FelaComponent
       variant={variant}
@@ -116,7 +124,11 @@ export default function NewsletterConfirmed({ closeConfirmation, variant, }) {
               boxModel={{ hp: 3, vp: 1, }}
               miscStyles={ButtonStyle}
               variant={theme.newsletterStyle[variant].buttonVariant}
-              href="https://www.haaretz.co.il/personal-area/newsletter"
+              href={
+                host === 'tm'
+                  ? 'https://www.themarker.com/personal-area/newsletter'
+                  : 'https://www.haaretz.co.il/personal-area/newsletter'
+              }
             >
               {newsletterConfirmedButton}
             </Button>

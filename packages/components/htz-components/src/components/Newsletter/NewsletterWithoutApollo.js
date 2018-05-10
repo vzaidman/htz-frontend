@@ -12,6 +12,7 @@ import Dialog from '../A11yDialog/A11yDialog';
 const newsletterWrapperStyle = ({ theme, variant, miscStyles, }) => ({
   position: 'relative',
   padding: '2rem',
+  // padding: [ { from: 's', value: '2rem', }, { until: 's', value: '0rem', }, ],
   width: '100%',
   extend: [
     parseComponentProp(
@@ -35,14 +36,16 @@ function setVariant(prop, variant, getColor) {
 
 const newsletterConfirmStyle = {
   width: [ { from: 's', value: '99%', }, { until: 's', value: '98%', }, ],
-  paddingTop: [ { from: 's', value: '2rem', }, { until: 's', value: '5rem', }, ],
-  paddingBottom: [ { from: 's', value: '2rem', }, { until: 's', value: '3rem', }, ],
+  paddingTop: [ { from: 's', value: '2rem', }, { until: 's', value: '8rem', }, ],
+  paddingBottom: [ { from: 's', value: '2rem', }, { until: 's', value: '5rem', }, ],
 };
 
 export default class NewsletterWithoutApollo extends React.Component {
   static propTypes = {
+    /** determine newsletter host if exists */
+    host: PropTypes.oneOf([ 'tm', 'htz', ]),
     /** determine newsletter icon if exists */
-    brand: PropTypes.oneOf([ 'tm', 'htz', ]),
+    icon: PropTypes.oneOf([ 'tm', 'htz', ]),
     /** The element's DOM ID */
     id: PropTypes.string,
     /** indicates loading state of the data */
@@ -73,7 +76,8 @@ export default class NewsletterWithoutApollo extends React.Component {
     ]).isRequired,
   };
   static defaultProps = {
-    brand: null,
+    host: null,
+    icon: null,
     id: PropTypes.string,
     miscStyles: null,
     userEmail: null,
@@ -103,7 +107,8 @@ export default class NewsletterWithoutApollo extends React.Component {
 
   render() {
     const {
-      brand,
+      host,
+      icon,
       loading,
       userEmail,
       segmentId,
@@ -120,7 +125,7 @@ export default class NewsletterWithoutApollo extends React.Component {
           render={({ className, theme, }) => (
             <div className={className} id={this.state.id}>
               <NewsletterForm
-                brand={brand}
+                icon={icon}
                 loading={loading}
                 variant={variant}
                 userEmail={userEmail}
@@ -136,6 +141,7 @@ export default class NewsletterWithoutApollo extends React.Component {
                 containerMiscStyles={newsletterConfirmStyle}
                 render={({ handleClose, }) => (
                   <NewsletterConfirmed
+                    host={host}
                     variant={variant}
                     closeConfirmation={handleClose}
                   />
