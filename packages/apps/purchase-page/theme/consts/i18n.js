@@ -423,7 +423,11 @@ export const newsletterI18n = Object.freeze({
     newsletterConfirmedButton: 'לרשימה המלאה',
   }),
   texts: Object.freeze({
-    newsletterTitle: 'הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום',
+    newsletterTitle: site =>
+      `קבלו את ${
+        site === 'tm' ? 'TheMarker' : 'הארץ'
+      } בכל בוקר לתיבת האימייל שלכם`,
+    newsletterButton: 'הרשמה בקליק',
     newsletterConfirmedTitleText: 'תודה שנרשמת',
     newsletterConfirmedText: 'יש לנו דיוורים נוספים שעשויים לעניין אותך',
   }),

@@ -67,6 +67,7 @@ function StageThankYou({ userEmail, product, userMessage, }) {
     <Query query={GET_HOST_NAME}>
       {({ data: { hostname, referrer, }, }) => {
         const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+        const site = host === 'themarker.com' ? 'tm' : 'htz';
         return (
           <FelaComponent
             rule={contStyle}
@@ -77,6 +78,9 @@ function StageThankYou({ userEmail, product, userMessage, }) {
                   afterPurchase,
                   secondaryHeader,
                   backToArticleContent,
+                },
+                newsletterI18n: {
+                  texts: { newsletterTitle, newsletterButton, },
                 },
               },
             }) => (
@@ -102,8 +106,12 @@ function StageThankYou({ userEmail, product, userMessage, }) {
                     />
                   )}
                 <Newsletter
+                  headlineText={newsletterTitle(site)}
+                  buttonText={newsletterButton}
+                  host={site}
+                  icon={site}
                   variant="primary"
-                  segmentId={host === 'themarker.com' ? 1338618 : 1338625}
+                  segmentId={site === 'tm' ? 1338618 : 1338625}
                   userEmail={userEmail}
                   miscStyles={{ marginTop: '9rem', marginBottom: '2rem', }}
                 />
