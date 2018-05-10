@@ -92,49 +92,25 @@ class Stage3 extends Component {
                                     headerElement={
                                       <StageHeader
                                         headerElements={[
-                                          this.state.registerOrLoginStage ===
-                                            'checkEmail' && (
-                                            <Fragment>
-                                              <FelaComponent
-                                                style={{ fontWeight: 'bold', }}
-                                                render="span"
-                                              >
-                                                <span>
-                                                  {header.textBeforeChosen}
-                                                </span>{' '}
-                                                {
-                                                  header.chosenSubscriptionText[
-                                                    chosenSubscription
-                                                  ]
-                                                }{' '}
-                                                {
-                                                  header
-                                                    .chosenPaymentArrangementText[
-                                                    chosenPaymentArrangement
-                                                  ]
-                                                }
-                                              </FelaComponent>
-                                              {','}
-                                            </Fragment>
-                                          ),
-                                          this.state.registerOrLoginStage ===
-                                            'login' && (
-                                            <FelaComponent
-                                              style={{ fontWeight: 'bold', }}
-                                              render="span"
-                                            >
-                                              {' '}
-                                            </FelaComponent>
-                                          ),
-                                          this.state.registerOrLoginStage ===
-                                            'register' && (
-                                            <FelaComponent
-                                              style={{ fontWeight: 'bold', }}
-                                              render="span"
-                                            >
-                                              {header.registerBoldFirstLine}
-                                            </FelaComponent>
-                                          ),
+                                          <FelaComponent
+                                            style={{ fontWeight: 'bold', }}
+                                            render="span"
+                                          >
+                                            <span>
+                                              {header.textBeforeChosen}
+                                            </span>{' '}
+                                            {
+                                              header.chosenSubscriptionText[
+                                                chosenSubscription
+                                              ]
+                                            }{' '}
+                                            {`${
+                                              header
+                                                .chosenPaymentArrangementText[
+                                                chosenPaymentArrangement
+                                              ]
+                                            }.`}
+                                          </FelaComponent>,
                                           <Fragment>
                                             {header.dynamicTextNewLineLoginStage[
                                               this.state.registerOrLoginStage

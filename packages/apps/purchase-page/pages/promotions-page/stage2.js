@@ -87,63 +87,59 @@ function Stage2() {
                                               ? [
                                                 <Fragment>
                                                   <FelaComponent
-                                                    style={{ display: 'block', }}
+                                                    style={{
+                                                        fontWeight: 'bold',
+                                                      }}
                                                     render="span"
                                                   >
-                                                    {header.textAfterChosen(
-                                                        isFirstPage
-                                                      )}
+                                                    {
+                                                        header.isFirst
+                                                          .textBeforeChosen
+                                                      }{' '}
+                                                    {
+                                                        header.isFirst
+                                                          .chosenSubscriptionText[
+                                                          chosenSlot
+                                                            .subscriptionName
+                                                        ]
+                                                      }
+                                                    {'.'}
                                                   </FelaComponent>
-                                                  <FelaComponent
-                                                    style={{ fontWeight: 'bold', }}
-                                                    render="span"
-                                                  >
-                                                    <span>
-                                                      {` ${header.connector(
-                                                          isFirstPage
-                                                        )}`}
-                                                      {
-                                                          header
-                                                            .chosenSubscriptionText[
-                                                            chosenSlot
-                                                              .subscriptionName
-                                                          ]
-                                                        }
-                                                    </span>
-                                                  </FelaComponent>
+                                                  <div>
+                                                    {
+                                                        header.isFirst
+                                                          .textAfterChosen
+                                                      }
+                                                  </div>
                                                 </Fragment>,
                                                 ]
                                               : [
                                                 <Fragment>
-                                                  <span>
-                                                    {header.textBeforeChosen}
-                                                  </span>{' '}
                                                   <FelaComponent
-                                                    style={{ fontWeight: 'bold', }}
+                                                    style={{
+                                                        fontWeight: 'bold',
+                                                      }}
                                                     render="span"
                                                   >
-                                                    <span>
-                                                      {` ${header.connector(
-                                                          isFirstPage
-                                                        )}`}
-                                                      {
-                                                          header
-                                                            .chosenSubscriptionText[
-                                                            chosenSlot
-                                                              .subscriptionName
-                                                          ]
-                                                        }
-                                                    </span>
+                                                    {
+                                                        header.notFirst
+                                                          .textBeforeChosen
+                                                      }{' '}
+                                                    {
+                                                        header.notFirst
+                                                          .chosenSubscriptionText[
+                                                          chosenSlot
+                                                            .subscriptionName
+                                                        ]
+                                                      }
                                                   </FelaComponent>
-                                                  {', '}
-                                                  <FelaComponent
-                                                    style={{ display: 'block', }}
-                                                    render="span"
-                                                  >
-                                                    {header.textAfterChosen(
-                                                        isFirstPage
-                                                      )}
-                                                  </FelaComponent>
+                                                  {'.'}
+                                                  <div>
+                                                    {
+                                                        header.notFirst
+                                                          .textAfterChosen
+                                                      }
+                                                  </div>
                                                 </Fragment>,
                                                 ]
                                           }

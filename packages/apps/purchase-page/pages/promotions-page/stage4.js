@@ -85,14 +85,16 @@ function Stage4() {
                                     headerElements={[
                                       ...(loggedInOrRegistered
                                         ? [
-                                          <span>
-                                            {
+                                          <FelaComponent
+                                            style={{ fontWeight: 'bold', }}
+                                          >
+                                            {`${
                                                 header[
                                                   loggedInOrRegistered ||
                                                     'connected'
-                                                ].textAfterName
-                                              }
-                                          </span>,
+                                                ].textTopLine
+                                              }`}
+                                          </FelaComponent>,
                                           <span>
                                             {
                                                 header[
@@ -104,25 +106,23 @@ function Stage4() {
                                           ]
                                         : [
                                           <Fragment>
-                                            <span>
-                                              {details.textBeforeChosen}
-                                            </span>{' '}
                                             <FelaComponent
                                               style={{ fontWeight: 'bold', }}
                                               render="span"
                                             >
+                                              {details.textBeforeChosen}{' '}
                                               {
                                                   details
                                                     .chosenSubscriptionText[
                                                     chosenSubscription
                                                   ]
                                                 }{' '}
-                                              {
+                                              {`${
                                                   details
                                                     .chosenPaymentArrangementText[
                                                     chosenPaymentArrangement
                                                   ]
-                                                }
+                                                }.`}
                                             </FelaComponent>
                                           </Fragment>,
                                           <span>{details.textNewLine}</span>,

@@ -30,7 +30,6 @@ const couponFormStyle = () => ({
 const StyledCouponForm = createComponent(couponFormStyle);
 
 const moreOptionsContStyle = ({ theme, }) => ({
-  marginTop: '6rem',
   color: theme.color('offerPage', 'buttonText'),
   marginBottom: '11rem',
   display: 'inline-flex',
@@ -43,7 +42,7 @@ const moreOptionsContStyle = ({ theme, }) => ({
 const StyledMoreOptionsCont = createComponent(moreOptionsContStyle);
 
 const moreOptionsButtonsMiscStyles = {
-  marginTop: '4rem',
+  marginTop: '2rem',
   type: -1,
 };
 const couponButtonsMiscStyles = {
@@ -166,7 +165,7 @@ class ChooseProductStage extends Component {
                       (product, idx) =>
                         (idx !== chosenProductIndex ? (
                           <Button
-                            key={Math.random()}
+                            key={product.productTitle}
                             variant="primary"
                             miscStyles={moreOptionsButtonsMiscStyles}
                             onClick={() => {
@@ -292,11 +291,11 @@ class ChooseProductStage extends Component {
                         </Button>
                       ))}
                     <FelaComponent
-                      style={{
-                        ...moreOptionsButtonsMiscStyles,
+                      style={theme => ({
+                        marginTop: '4rem',
                         fontWeight: '700',
-                        marginTop: '6rem',
-                      }}
+                        extend: [ theme.type(-1), ],
+                      })}
                       render="p"
                     >
                       {entitlements.beforeLinkText}{' '}

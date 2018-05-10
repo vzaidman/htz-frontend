@@ -66,6 +66,19 @@ export const purchasePageFooter = Object.freeze({
 });
 
 export const stage1 = Object.freeze({
+  buttons: Object.freeze({
+    organizationSubscription: {
+      text: 'לרכישת מינוי אירגוני',
+      url: 'https://secure.pulseem.com/subs_heb_edu/',
+    },
+    entitlements: {
+      beforeLinkText: 'כבר מנויים?',
+      linkText: 'בדקו אם אתם זכאים להנחה',
+      link: 'https://www.haaretz.co.il/misc/entitlement',
+    },
+  }),
+  headerText: 'בחרו את החבילה המשתלמת לכם',
+  mobileExpandBtn: 'מה בחבילה?',
   thead: Object.freeze({
     HTZ: Object.freeze({
       heading: 'מינוי להארץ בלבד',
@@ -137,33 +150,30 @@ export const stage1 = Object.freeze({
       }),
     ]),
   }),
-  buttons: Object.freeze({
-    organizationSubscription: {
-      text: 'מינוי אירגוני',
-      url: 'https://secure.pulseem.com/subs_heb_edu/',
-    },
-    entitlements: {
-      beforeLinkText: 'כבר מנויים?',
-      linkText: 'בדקו אם אתם זכאים להנחה',
-      link: 'https://www.haaretz.co.il/misc/entitlement',
-    },
-  }),
+
   tfoot: 'ניתן לבטל בכל עת',
-  mobileExpandBtn: 'מה בחבילה?',
-  headerText: 'בחרו את החבילה המשתלמת לכם',
 });
 
 export const stage2 = Object.freeze({
   header: Object.freeze({
-    textBeforeChosen: 'בחרתם',
-    textAfterChosen: isFirst =>
-      `${!isFirst ? 'כעת ' : ''}בחרו את המסלול המתאים לכם ביותר`,
-    connector: isFirst => (isFirst ? 'ל' : 'ב'),
-    chosenSubscriptionText: Object.freeze({
-      BOTH: 'מינוי משולב',
-      HTZ: 'מינוי הארץ',
-      TM: 'מינוי TheMarker',
-    }),
+    isFirst: {
+      textBeforeChosen: 'החבילה שלכם:',
+      textAfterChosen: 'כעת בחרו את המסלול המתאים לכם ביותר',
+      chosenSubscriptionText: Object.freeze({
+        BOTH: 'מינוי משולב הארץ-TheMarker',
+        HTZ: 'מינוי הארץ',
+        TM: 'מינוי TheMarker',
+      }),
+    },
+    notFirst: {
+      textBeforeChosen: 'בחרתם',
+      textAfterChosen: 'כעת בחרו את המסלול המתאים לכם ביותר',
+      chosenSubscriptionText: Object.freeze({
+        BOTH: 'במינוי משולב',
+        HTZ: 'במינוי הארץ',
+        TM: 'במינוי TheMarker',
+      }),
+    },
   }),
   offerList: Object.freeze({
     termsButtonText: 'תנאי רכישה',
@@ -209,11 +219,11 @@ export const stage3 = Object.freeze({
       yearly: 'במסלול שנתי',
       monthly: 'במסלול חודשי',
     }),
-    registerBoldFirstLine: 'ברוכים הבאים!',
+    // registerBoldFirstLine: 'ברוכים הבאים!',
     dynamicTextNewLineLoginStage: Object.freeze({
       checkEmail: [ 'כעת הזינו אימייל, שישמש לכניסה לאתר', ],
-      login: [ 'הזינו את הסיסמה שלכם לאתר', ],
-      register: [ 'השלימו את ההרשמה לאתר', ],
+      login: [ 'כעת הזינו את הסיסמה שלכם לאתר', ],
+      register: [ 'כעת השלימו את ההרשמה לאתר', ],
     }),
   }),
   details: Object.freeze({
@@ -319,16 +329,17 @@ export const stage3 = Object.freeze({
 export const stage4 = Object.freeze({
   header: Object.freeze({
     registered: {
-      textAfterName: 'נוצר לך משתמש חדש',
-      textNewLine: 'בחרו את צורת התשלום הנוחה לכם',
+      textTopLine: 'נרשמתם בהצלחה!',
+      textNewLine: 'כעת בחרו את צורת התשלום הנוחה לכם',
     },
     loggedIn: {
+      textTopLine: 'התחברתם בהצלחה!',
       textNewLine: 'בחרו את צורת התשלום הנוחה לכם',
     },
   }),
   details: Object.freeze({
     textBeforeChosen: 'בחרתם',
-    textNewLine: 'אנא בחרו את צורת התשלום הנוחה לכם',
+    textNewLine: 'כעת בחרו את צורת התשלום הנוחה לכם',
     chosenSubscriptionText: Object.freeze({
       BOTH: 'במינוי משולב',
       HTZ: 'במינוי הארץ',
@@ -338,8 +349,6 @@ export const stage4 = Object.freeze({
       yearly: 'במסלול שנתי',
       monthly: 'במסלול חודשי',
     }),
-    firstPaymentText: 'תשלום ראשון: ',
-    nextPaymentText: 'תשלום הבא: ',
   }),
   securePaymentText: 'תשלום מאובטח',
   currencySymbol: '₪',
@@ -358,18 +367,10 @@ export const stage4 = Object.freeze({
 });
 export const stage5 = Object.freeze({
   header: Object.freeze({
-    textBeforeName: 'שלום',
-    registered: {
-      textAfterName: 'נוצר לך משתמש חדש',
-      textNewLine: 'אנא הזינו את פרטי כרטיס האשראי',
-    },
-    loggedIn: {
-      textNewLine: 'אנא הזינו את פרטי כרטיס האשראי',
-    },
+    textTopLine: 'כמעט סיימנו.',
+    textNewLine: 'כעת הזינו את פרטי כרטיס האשראי',
   }),
   details: Object.freeze({
-    textBeforeChosen: 'בחרתם',
-    textNewLine: 'אנא הזינו את פרטי כרטיס האשראי',
     chosenSubscriptionText: Object.freeze({
       BOTH: 'מינוי משולב',
       HTZ: 'מינוי הארץ',
@@ -380,7 +381,7 @@ export const stage5 = Object.freeze({
       monthly: 'במסלול תשלום חודשי',
     }),
     firstPaymentText: 'תשלום ראשון: ',
-    nextPaymentText: 'תשלום הבא: ',
+    nextPaymentText: 'התשלום הבא: ',
   }),
   securePaymentText: 'תשלום מאובטח',
   currencySymbol: '₪',

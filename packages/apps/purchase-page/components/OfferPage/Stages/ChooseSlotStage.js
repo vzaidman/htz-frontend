@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { withRouter, } from 'next/router';
 import { parseTypographyProp, } from '@haaretz/htz-css-tools';
-import { Button, Link, } from '@haaretz/htz-components';
+import { Link, } from '@haaretz/htz-components';
 import DesktopView from './ChooseSlotsStageElements/DesktopView';
 import MobileView from './ChooseSlotsStageElements/MobileView';
 import SubHeader from './ChooseSlotsStageElements/SubHeader';
@@ -41,7 +41,6 @@ const contStyle = theme => ({
 const moreOptionsContStyle = ({ theme, }) => ({
   marginTop: '6rem',
   color: theme.color('offerPage', 'buttonText'),
-  marginBottom: '11rem',
   flexDirection: 'column',
   extend: [
     theme.mq(
@@ -78,11 +77,6 @@ const headingStyle = ({ theme, }) => ({
 });
 
 const StyledHeading = createComponent(headingStyle, 'h1');
-
-const moreOptionsButtonsMiscStyles = {
-  marginTop: '4rem',
-  type: -1,
-};
 
 function ChooseSlotStage({
   hostname,
@@ -162,36 +156,53 @@ function ChooseSlotStage({
             <StyledMoreOptionsCont>
               {subStage < 2 && (
                 <FelaComponent
-                  style={{
-                    ...moreOptionsButtonsMiscStyles,
+                  style={theme => ({
+                    marginTop: '2rem',
                     fontWeight: '700',
-                  }}
+                    extend: [ theme.type(-1), ],
+                  })}
                   render="p"
                 >
-                  {entitlements.beforeLinkText}{' '}
                   <Link
                     href={entitlements.link}
                     content={
-                      <FelaComponent
-                        render="span"
-                        style={{
-                          textDecoration: 'underline',
-                          textDecorationSkip: 'ink',
-                        }}
-                      >
-                        {entitlements.linkText}
-                      </FelaComponent>
+                      <Fragment>
+                        {entitlements.beforeLinkText}{' '}
+                        <FelaComponent
+                          render="span"
+                          style={{
+                            textDecoration: 'underline',
+                            textDecorationSkip: 'ink',
+                          }}
+                        >
+                          {entitlements.linkText}
+                        </FelaComponent>
+                      </Fragment>
                     }
                   />
                 </FelaComponent>
               )}
-              <Button
-                variant="primary"
-                miscStyles={moreOptionsButtonsMiscStyles}
-                href={organizationSubscription.url}
+              <FelaComponent
+                style={theme => ({
+                  marginTop: '2rem',
+                  extend: [ theme.type(-1), ],
+                })}
               >
-                {organizationSubscription.text}
-              </Button>
+                <Link
+                  href={organizationSubscription.url}
+                  content={
+                    <FelaComponent
+                      render="span"
+                      style={{
+                        textDecoration: 'underline',
+                        textDecorationSkip: 'ink',
+                      }}
+                    >
+                      {organizationSubscription.text}
+                    </FelaComponent>
+                  }
+                />
+              </FelaComponent>
             </StyledMoreOptionsCont>
           </div>
         </Fragment>

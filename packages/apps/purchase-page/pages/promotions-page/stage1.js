@@ -52,7 +52,7 @@ class Stage1 extends React.Component {
           {this.state.mounted && (
             <OfferPageDataGetter
               render={({ data, loading, error, client, }) => {
-                if (loading) return <div> Loading...</div>;
+                if (loading) return <div />;
                 if (error) return <div> Error...</div>;
                 client.writeData({ data: { referrer, }, });
                 const { slots, pageNumber, } = data.purchasePage;

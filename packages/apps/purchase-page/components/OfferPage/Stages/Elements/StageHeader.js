@@ -14,7 +14,7 @@ const defaultProps = {};
 
 const headerStyle = theme => ({
   fontWeight: 'normal',
-  maxWidth: '65rem',
+  maxWidth: '80rem',
   marginInlineStart: 'auto',
   marginInlineEnd: 'auto',
   extend: [

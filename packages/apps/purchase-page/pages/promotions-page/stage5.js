@@ -1,5 +1,5 @@
 /* global window */
-import React, { Fragment, } from 'react';
+import React from 'react';
 import { withData, pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
 import { LayoutContainer, UserDispenser, } from '@haaretz/htz-components';
@@ -26,7 +26,6 @@ const GET_PROMOTIONS_STATE = gql`
       paymentMethodIndex
       paymentType
     }
-    loggedInOrRegistered @client
   }
 `;
 
@@ -74,7 +73,6 @@ function Stage5() {
                     paymentMethodIndex,
                     paymentType,
                   },
-                  loggedInOrRegistered,
                 } = clientData;
 
                 const parsedCouponProduct = JSON.parse(couponProduct);
@@ -127,57 +125,12 @@ function Stage5() {
                                 headerElement={
                                   <StageHeader
                                     headerElements={[
-                                      ...(loggedInOrRegistered
-                                        ? [
-                                          <Fragment>
-                                            <span>
-                                              {header.textBeforeName}
-                                            </span>{' '}
-                                            <span>{user.firstName}</span>
-                                            {', '}
-                                            <span>
-                                              {
-                                                  header[
-                                                    loggedInOrRegistered ||
-                                                      'connected'
-                                                  ].textAfterName
-                                                }
-                                            </span>
-                                          </Fragment>,
-                                          <span>
-                                            {
-                                                header[
-                                                  loggedInOrRegistered ||
-                                                    'connected'
-                                                ].textNewLine
-                                              }
-                                          </span>,
-                                          ]
-                                        : [
-                                          <Fragment>
-                                            <span>
-                                              {details.textBeforeChosen}
-                                            </span>{' '}
-                                            <FelaComponent
-                                              style={{ fontWeight: 'bold', }}
-                                              render="span"
-                                            >
-                                              {
-                                                  details
-                                                    .chosenSubscriptionText[
-                                                    chosenSubscription
-                                                  ]
-                                                }{' '}
-                                              {
-                                                  details
-                                                    .chosenPaymentArrangementText[
-                                                    chosenPaymentArrangement
-                                                  ]
-                                                }
-                                            </FelaComponent>
-                                          </Fragment>,
-                                          <span>{details.textNewLine}</span>,
-                                          ]),
+                                      <FelaComponent
+                                        style={{ fontWeight: 'bold', }}
+                                      >
+                                        {header.textTopLine}
+                                      </FelaComponent>,
+                                      <span>{header.textNewLine}</span>,
                                     ]}
                                   />
                                 }
