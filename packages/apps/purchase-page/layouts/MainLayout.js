@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { createComponent, } from 'react-fela';
 // import { UserInjector, appendScript, } from '@haaretz/htz-components';
-import { UserInjector, } from '@haaretz/htz-components';
+import { UserInjector, BIRequest, } from '@haaretz/htz-components';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -109,6 +109,7 @@ class MainLayout extends React.Component {
                   <div id="modalsRoot" />
                 </div>
               </StyleProvider>
+              <BIRequest />
             </Fragment>
           );
         }}

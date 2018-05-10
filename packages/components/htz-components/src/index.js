@@ -118,6 +118,10 @@ import createDocument from './document';
 import { appendScript, } from './utils/scriptTools';
 import { stylesPropType, } from './propTypes/stylesPropType';
 
+// BI
+import BIAction from './components/BI/BIAction';
+import BIRequest from './components/BI/BIRequest';
+
 export {
   A11yDialog,
   ActionButtons,
@@ -227,4 +231,7 @@ export {
   appendScript,
   createDocument,
   stylesPropType,
+  // BI
+  BIAction,
+  BIRequest,
 };

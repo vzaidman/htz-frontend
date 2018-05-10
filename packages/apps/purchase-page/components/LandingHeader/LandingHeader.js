@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, } from 'next/router';
 import { createComponent, withTheme, } from 'react-fela';
-import { IconHaaretzFullLogo, Button, } from '@haaretz/htz-components';
+import { IconHaaretzFullLogo, Button, BIAction, } from '@haaretz/htz-components';
 
 const propTypes = {
   router: PropTypes.shape().isRequired,
@@ -141,32 +141,40 @@ function LandingHeader({
         </StyledMainHeaderCont>
         {/* todo: get dynamically */}
         <StyledPricingHeader>החל מ 4.9 שח בחודש הראשון</StyledPricingHeader>
-        <Button
-          href={{
-            pathname: '/promotions-page/stage1',
-            query: { stage: 'stage1', },
-            options: { shallow: false, },
-          }}
-          asPath={`${router.asPath}/offers`}
-          prefetch
-          variant="salesOpaque"
-          boxModel={{ hp: 3, vp: 1, }}
-          miscStyles={{
-            marginTop: [
-              { until: 's', value: '5rem', },
-              { from: 's', value: '7rem', },
-              { from: 'l', value: '9rem', },
-            ],
-            marginBottom: [
-              { until: 's', value: '15rem', },
-              { from: 's', until: 'l', value: '20rem', },
-              { from: 'l', value: '25rem', },
-            ],
-          }}
-        >
-          {/* todo: get dynamically */}
-          לכל מסלולי המנויים
-        </Button>
+        <BIAction>
+          {action => (
+            <Button
+              href={{ pathname: '/promotions-page/stage1', }}
+              asPath={`${router.asPath}/offers`}
+              onClick={() => {
+                action({
+                  actionCode: 11,
+                  additionalInfo: {
+                    info: 'is additional',
+                  },
+                });
+              }}
+              prefetch
+              variant="salesOpaque"
+              boxModel={{ hp: 3, vp: 1, }}
+              miscStyles={{
+                marginTop: [
+                  { until: 's', value: '5rem', },
+                  { from: 's', value: '7rem', },
+                  { from: 'l', value: '9rem', },
+                ],
+                marginBottom: [
+                  { until: 's', value: '15rem', },
+                  { from: 's', until: 'l', value: '20rem', },
+                  { from: 'l', value: '25rem', },
+                ],
+              }}
+            >
+              {/* todo: get dynamically */}
+              לכל מסלולי המנויים
+            </Button>
+          )}
+        </BIAction>
       </StyledInnerCont>
     </StyledCont>
   );
