@@ -126,6 +126,7 @@ export class Form extends Component {
     onChange,
     onContentEditableChange,
     validationOrder,
+    refFunc,
     ...rest
   }) => {
     const stateError = this.state.errors.find(error => {
@@ -243,9 +244,9 @@ export class Form extends Component {
       ...(stateError && stateError.errorText
         ? { errorText: stateError.errorText, }
         : errorText ? { errorText, } : {}),
-      refFunc: elem => {
+      refFunc: callAll(refFunc, elem => {
         this[`${name}El`] = elem;
-      },
+      }),
       ...rest,
     };
   };
