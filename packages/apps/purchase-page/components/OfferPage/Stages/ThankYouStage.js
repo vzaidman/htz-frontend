@@ -75,6 +75,12 @@ const linkStyle = ({ theme, }) => ({
 const StyledLink = createComponent(linkStyle, Link, [ 'content', 'href', ]);
 
 function StageThankYou({ userEmail, product, userMessage, }) {
+  const isArticle = url => {
+    const articlePattern = new RegExp('(\\/([^a-z]*-)?1\\.\\d+.*$)');
+    console.log('isArticle: ', articlePattern.test(url));
+    return articlePattern.test(url);
+  };
+
   return (
     <Query query={GET_HOST_NAME}>
       {({ data: { hostname, referrer, }, }) => {
@@ -108,15 +114,18 @@ function StageThankYou({ userEmail, product, userMessage, }) {
                 </StyledHeader>
                 <StyledSecondaryHeader>{secondaryHeader}</StyledSecondaryHeader>
 
-                {referrer && (
-                  <Fragment>
-                    <StyledOverlinkText>{backToArticleText}</StyledOverlinkText>
-                    <StyledLink
-                      content={backToArticleContent}
-                      href={referrer}
-                    />
-                  </Fragment>
-                )}
+                {referrer &&
+                  isArticle(referrer) && (
+                    <Fragment>
+                      <StyledOverlinkText>
+                        {backToArticleText}
+                      </StyledOverlinkText>
+                      <StyledLink
+                        content={backToArticleContent}
+                        href={referrer}
+                      />
+                    </Fragment>
+                  )}
                 <Newsletter
                   variant="primary"
                   segmentId={host === 'themarker.com' ? 1338618 : 1338625}

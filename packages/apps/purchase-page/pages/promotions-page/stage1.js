@@ -44,22 +44,23 @@ class Stage1 extends React.Component {
   }
 
   render() {
+    console.log('url: ', this.props.url);
     const { url: { query: { referrer, }, }, } = this.props || null;
     return (
       <MainLayout footerHasIllustration={false} displayBackButton={false}>
         <FelaComponent style={{ position: 'relative', }}>
           {this.state.mounted && (
             <OfferPageDataGetter
-              render={({ data, loading, error, }) => {
+              render={({ data, loading, error, client, }) => {
                 if (loading) return <div> Loading...</div>;
                 if (error) return <div> Error...</div>;
+                client.writeData({ data: { referrer, }, });
                 const { slots, pageNumber, } = data.purchasePage;
                 return pageNumber >= 7 ? (
                   <Redirect destination="/promotions-page/thankYou" replace />
                 ) : slots.length > 1 ? (
                   <Query query={GET_PROMOTIONS_STATE}>
-                    {({ data: clientData, client, }) => {
-                      client.writeData({ data: { referrer, }, });
+                    {({ data: clientData, }) => {
                       const {
                         promotionsPageState: { subStage, },
                         hostname,
