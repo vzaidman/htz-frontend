@@ -73,6 +73,10 @@ const ButtonStyle = {
 };
 
 NewsletterForm.propTypes = {
+  /**  determine newsletter button text */
+  buttonText: PropTypes.string.isRequired,
+  /**  determine newsletter headline text */
+  headlineText: PropTypes.string.isRequired,
   /** determine newsletter icon if exists */
   icon: PropTypes.oneOf([ 'tm', 'htz', ]),
   /** loading boolean from apollo Mutation */
@@ -107,6 +111,8 @@ NewsletterForm.defaultProps = {
 };
 
 export function NewsletterForm({
+  buttonText,
+  headlineText,
   icon,
   loading,
   segmentId,
@@ -159,10 +165,6 @@ export function NewsletterForm({
           rule={BeforeConfirmedWrapperStyle}
           render={({ className, theme, }) => {
             const {
-              newsletterI18n: {
-                buttons: { newsletterSubmit, },
-                texts: { newsletterTitle, },
-              },
               textInputI18n: { requiredLong, requiredShort, },
               newsletterStyle,
             } = theme;
@@ -176,7 +178,7 @@ export function NewsletterForm({
                         variant={variant}
                         rule={inputUpperNoteStyle}
                         render={({ className, }) => (
-                          <h3 className={className}>{newsletterTitle}</h3>
+                          <h3 className={className}>{headlineText}</h3>
                         )}
                       />
                       {NewsletterIcon ? (
@@ -223,7 +225,7 @@ export function NewsletterForm({
                         miscStyles={ButtonStyle}
                         variant={theme.newsletterStyle[variant].buttonVariant}
                       >
-                        {newsletterSubmit}
+                        {buttonText}
                       </Button>
                     </div>
                   )}

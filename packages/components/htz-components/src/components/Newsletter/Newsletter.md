@@ -38,6 +38,8 @@ Can be used to create a NewsLetter to subscribe with existing or non existing us
 ```jsx
 <div dir="rtl">
   <Newsletter
+    buttonText="שליחה"
+    headlineText="הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל "
     host="tm"
     icon="tm"
     segmentId={1420800}

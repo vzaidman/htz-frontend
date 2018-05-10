@@ -42,6 +42,10 @@ const newsletterConfirmStyle = {
 
 export default class NewsletterWithoutApollo extends React.Component {
   static propTypes = {
+    /**  determine newsletter button text */
+    buttonText: PropTypes.string.isRequired,
+    /**  determine newsletter headline text */
+    headlineText: PropTypes.string.isRequired,
     /** determine newsletter host if exists */
     host: PropTypes.oneOf([ 'tm', 'htz', ]),
     /** determine newsletter icon if exists */
@@ -107,6 +111,8 @@ export default class NewsletterWithoutApollo extends React.Component {
 
   render() {
     const {
+      buttonText,
+      headlineText,
       host,
       icon,
       loading,
@@ -125,6 +131,8 @@ export default class NewsletterWithoutApollo extends React.Component {
           render={({ className, theme, }) => (
             <div className={className} id={this.state.id}>
               <NewsletterForm
+                buttonText={buttonText}
+                headlineText={headlineText}
                 icon={icon}
                 loading={loading}
                 variant={variant}

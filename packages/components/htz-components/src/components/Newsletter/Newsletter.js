@@ -8,6 +8,10 @@ import NewsletterWithoutApollo from './NewsletterWithoutApollo';
 import { newsletterVariantType, } from './elements/types/newsletterVariantType';
 
 Newsletter.propTypes = {
+  /**  determine newsletter button text */
+  buttonText: PropTypes.string,
+  /**  determine newsletter headline text */
+  headlineText: PropTypes.string,
   /** determine newsletter host if exists */
   host: PropTypes.oneOf([ 'tm', 'htz', ]),
   /** determine newsletter icon if exists */
@@ -37,6 +41,8 @@ Newsletter.propTypes = {
 };
 
 Newsletter.defaultProps = {
+  buttonText: 'להרשמה',
+  headlineText: 'הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום',
   host: null,
   icon: null,
   id: null,

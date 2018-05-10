@@ -95,9 +95,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                               >
                                 <h3
                                   className="htz-u htz-v htz-w htz-x htz-y htz-e"
-                                >
-                                  הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום
-                                </h3>
+                                />
                               </FelaTheme>
                             </FelaComponent>
                           </div>
@@ -643,12 +641,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                               "newsletterI18n": Object {
                                                 "buttons": Object {
                                                   "newsletterConfirmedButton": "לרשימה המלאה",
-                                                  "newsletterSubmit": "הרשמה",
                                                 },
                                                 "texts": Object {
                                                   "newsletterConfirmedText": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
                                                   "newsletterConfirmedTitleText": "תודה שנרשמת",
-                                                  "newsletterTitle": "הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום",
                                                 },
                                               },
                                               "newsletterStyle": Object {
@@ -1184,12 +1180,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                     "newsletterI18n": Object {
                                                       "buttons": Object {
                                                         "newsletterConfirmedButton": "לרשימה המלאה",
-                                                        "newsletterSubmit": "הרשמה",
                                                       },
                                                       "texts": Object {
                                                         "newsletterConfirmedText": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
                                                         "newsletterConfirmedTitleText": "תודה שנרשמת",
-                                                        "newsletterTitle": "הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום",
                                                       },
                                                     },
                                                     "newsletterStyle": Object {
@@ -1723,12 +1717,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                           "newsletterI18n": Object {
                                                             "buttons": Object {
                                                               "newsletterConfirmedButton": "לרשימה המלאה",
-                                                              "newsletterSubmit": "הרשמה",
                                                             },
                                                             "texts": Object {
                                                               "newsletterConfirmedText": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
                                                               "newsletterConfirmedTitleText": "תודה שנרשמת",
-                                                              "newsletterTitle": "הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום",
                                                             },
                                                           },
                                                           "newsletterStyle": Object {
@@ -2271,12 +2263,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                 "newsletterI18n": Object {
                                                                   "buttons": Object {
                                                                     "newsletterConfirmedButton": "לרשימה המלאה",
-                                                                    "newsletterSubmit": "הרשמה",
                                                                   },
                                                                   "texts": Object {
                                                                     "newsletterConfirmedText": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
                                                                     "newsletterConfirmedTitleText": "תודה שנרשמת",
-                                                                    "newsletterTitle": "הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום",
                                                                   },
                                                                 },
                                                                 "newsletterStyle": Object {
@@ -2861,12 +2851,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                     "newsletterI18n": Object {
                                                       "buttons": Object {
                                                         "newsletterConfirmedButton": "לרשימה המלאה",
-                                                        "newsletterSubmit": "הרשמה",
                                                       },
                                                       "texts": Object {
                                                         "newsletterConfirmedText": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
                                                         "newsletterConfirmedTitleText": "תודה שנרשמת",
-                                                        "newsletterTitle": "הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום",
                                                       },
                                                     },
                                                     "newsletterStyle": Object {
@@ -3459,12 +3447,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                               "newsletterI18n": Object {
                                                 "buttons": Object {
                                                   "newsletterConfirmedButton": "לרשימה המלאה",
-                                                  "newsletterSubmit": "הרשמה",
                                                 },
                                                 "texts": Object {
                                                   "newsletterConfirmedText": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
                                                   "newsletterConfirmedTitleText": "תודה שנרשמת",
-                                                  "newsletterTitle": "הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום",
                                                 },
                                               },
                                               "newsletterStyle": Object {
@@ -3656,9 +3642,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                         >
                                           <span
                                             className="htz-ef htz-eg htz-bu htz-bv htz-eh htz-ei htz-ej"
-                                          >
-                                            הרשמה
-                                          </span>
+                                          />
                                         </FelaTheme>
                                       </FelaComponent>
                                       <FelaComponent
@@ -4602,12 +4586,10 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                       "newsletterI18n": Object {
                                                                         "buttons": Object {
                                                                           "newsletterConfirmedButton": "לרשימה המלאה",
-                                                                          "newsletterSubmit": "הרשמה",
                                                                         },
                                                                         "texts": Object {
                                                                           "newsletterConfirmedText": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
                                                                           "newsletterConfirmedTitleText": "תודה שנרשמת",
-                                                                          "newsletterTitle": "הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום",
                                                                         },
                                                                       },
                                                                       "newsletterStyle": Object {
