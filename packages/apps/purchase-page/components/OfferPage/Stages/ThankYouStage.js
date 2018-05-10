@@ -1,4 +1,4 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
@@ -42,28 +42,10 @@ const headerStyle = ({ theme, }) => ({
 
 const StyledHeader = createComponent(headerStyle, 'h1');
 
-const secondaryHeaderStyle = ({ theme, }) => ({
-  // todo: should we add padding or get 2 lines?
-  paddingInlineStart: '8rem',
-  paddingInlineEnd: '8rem',
-  fontWeight: 'normal',
-  marginTop: '1rem',
-  extend: [ theme.type(2), ],
-});
-
-const StyledSecondaryHeader = createComponent(secondaryHeaderStyle, 'h2');
-
-const overLinkTextStyle = ({ theme, }) => ({
-  // todo: should we add padding or get 2 lines?
-  display: 'block',
-  marginTop: '3rem',
-  extend: [ theme.type(1), ],
-});
-
-const StyledOverlinkText = createComponent(overLinkTextStyle, 'span');
-
 const linkStyle = ({ theme, }) => ({
-  marginTop: '2rem',
+  marginTop: '6rem',
+  display: 'block',
+  fontWeight: '700',
   textDecoration: 'underline',
   color: theme.color('offerPage', 'link'),
   ':hover': {
@@ -94,7 +76,6 @@ function StageThankYou({ userEmail, product, userMessage, }) {
                 thankYou: {
                   afterPurchase,
                   secondaryHeader,
-                  backToArticleText,
                   backToArticleContent,
                 },
               },
@@ -112,19 +93,13 @@ function StageThankYou({ userEmail, product, userMessage, }) {
                     userMessage.map(line => <p>{line}</p>)
                   )}
                 </StyledHeader>
-                <StyledSecondaryHeader>{secondaryHeader}</StyledSecondaryHeader>
 
                 {referrer &&
                   isArticle(referrer) && (
-                    <Fragment>
-                      <StyledOverlinkText>
-                        {backToArticleText}
-                      </StyledOverlinkText>
-                      <StyledLink
-                        content={backToArticleContent}
-                        href={referrer}
-                      />
-                    </Fragment>
+                    <StyledLink
+                      content={backToArticleContent}
+                      href={referrer}
+                    />
                   )}
                 <Newsletter
                   variant="primary"

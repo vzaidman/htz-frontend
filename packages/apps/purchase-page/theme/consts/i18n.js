@@ -444,7 +444,5 @@ export const thankYou = Object.freeze({
           : product === 'BOTH' ? 'משולב להארץ ו-TheMarker' : '';
     return `תודה שרכשתם מינוי ${item}`;
   },
-  secondaryHeader: 'כל כתבות האתר פתוחות כעת בפניך לקריאה רצופה ומהנה',
-  backToArticleText: 'בחזרה לכתבה:',
-  backToArticleContent: 'כל כתבות האתר פתוחות כעת בפניך לקריאה רצופה ומהנה',
+  backToArticleContent: 'חזרה לכתבה ממנה הגעת',
 });
