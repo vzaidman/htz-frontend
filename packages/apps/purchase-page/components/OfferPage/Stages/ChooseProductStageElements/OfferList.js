@@ -5,6 +5,7 @@ import { createComponent, } from 'react-fela';
 import { border, } from '@haaretz/htz-css-tools';
 import { Button, } from '@haaretz/htz-components';
 import { ApolloConsumer, } from 'react-apollo';
+import { friendlyRoutes, } from '../../../../routes/routes';
 
 const propTypes = {
   cancelButtonText: PropTypes.string.isRequired,
@@ -221,9 +222,9 @@ const Offer = ({
     0,
     pathWithoutQuery.lastIndexOf('/')
   );
-  const computedAsPath = `${pathWithoutQuery}/stage${isLoggedIn ? '4' : '3'}${
-    queryPartFromPath ? `?${queryPartFromPath}` : ''
-  }`;
+  const computedAsPath = `${pathWithoutQuery}/${
+    isLoggedIn ? friendlyRoutes.stage4 : friendlyRoutes.stage5
+  }${queryPartFromPath ? `?${queryPartFromPath}` : ''}`;
   const pathName = isLoggedIn
     ? '/promotions-page/stage4'
     : '/promotions-page/stage3';

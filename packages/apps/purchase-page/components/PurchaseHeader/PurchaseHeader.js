@@ -128,9 +128,7 @@ function PurchaseHeader({ host, router, displayBackButton, }) {
                   <button
                     className={className}
                     onClick={() => {
-                      /* TEMPORARY until we fix the routing */
-                      // Router.back();
-                      Router.push('/promotions-page/stage1', router.asPath);
+                      Router.back();
                     }}
                   >
                     <IconBack

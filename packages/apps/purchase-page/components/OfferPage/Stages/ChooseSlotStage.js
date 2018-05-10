@@ -9,6 +9,7 @@ import MobileView from './ChooseSlotsStageElements/MobileView';
 import SubHeader from './ChooseSlotsStageElements/SubHeader';
 import UserMessage from './Elements/UserMessage';
 import StageCounter from './Elements/StageCounter';
+import { friendlyRoutes, } from '../../../routes/routes';
 
 const propTypes = {
   hostname: PropTypes.string.isRequired,
@@ -96,7 +97,7 @@ function ChooseSlotStage({
     0,
     pathWithoutQuery.lastIndexOf('/')
   );
-  const asPath = `${pathWithoutQuery}/stage2`;
+  const asPath = `${pathWithoutQuery}/${friendlyRoutes.stage2}`;
   const pathName = '/promotions-page/stage2';
 
   const continueToNextStage = ({ cache, idx, routerPush = false, }) => {

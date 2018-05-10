@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Router, { withRouter, } from 'next/router';
+import { friendlyRoutes, } from '../../routes/routes';
 
 class Redirect extends React.Component {
   static propTypes = {
@@ -16,9 +17,13 @@ class Redirect extends React.Component {
   componentDidMount() {
     const { destination, replace, router, } = this.props;
     let [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
-    const destPath = `${pathWithoutQuery.substr(
+    let destPath = `${pathWithoutQuery.substr(
       pathWithoutQuery.lastIndexOf('/') + 1
     )}`; // thankYou, stage3 etc.
+    if (friendlyRoutes[destPath]) {
+      // attempt to prettify destPath with friendlyPath
+      destPath = friendlyRoutes[destPath];
+    }
     pathWithoutQuery = pathWithoutQuery.substr(
       0,
       pathWithoutQuery.lastIndexOf('/')

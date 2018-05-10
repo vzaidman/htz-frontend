@@ -16,6 +16,10 @@ import config from 'config';
 // modules that Next.js imports while routing and rendering pages.
 import 'isomorphic-fetch';
 import createContext from './createContext';
+import htz from './routes/htz';
+import tm from './routes/tm';
+import hdc from './routes/hdc';
+import purchase from './routes/purchase';
 
 const DEV = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 3000;
@@ -23,12 +27,6 @@ const hostname = config.get('hostname') || 'www';
 const domain = config.get('domain');
 const app = next({ dev: DEV, });
 const handler = app.getRequestHandler();
-
-const htz = require('./routes/htz');
-const tm = require('./routes/tm');
-const hdc = require('./routes/hdc');
-const purchase = require('./routes/purchase');
-
 const sitesRouting = new Map([
   [ 'htz', htz, ],
   [ 'tm', tm, ],

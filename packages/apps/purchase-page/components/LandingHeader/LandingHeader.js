@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter, } from 'next/router';
 import { createComponent, withTheme, } from 'react-fela';
 import { IconHaaretzFullLogo, Button, BIAction, } from '@haaretz/htz-components';
+import { friendlyRoutes, } from '../../routes/routes';
 
 const propTypes = {
   router: PropTypes.shape().isRequired,
@@ -145,7 +146,7 @@ function LandingHeader({
           {action => (
             <Button
               href={{ pathname: '/promotions-page/stage1', }}
-              asPath={`${router.asPath}/offers`}
+              asPath={`${router.asPath}/${friendlyRoutes.stage1}`}
               onClick={() => {
                 action({
                   actionCode: 11,

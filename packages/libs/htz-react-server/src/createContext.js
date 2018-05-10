@@ -4,12 +4,13 @@ import querystring from 'querystring';
 import config from 'config';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
 import Cookies from 'universal-cookie';
+import { friendlyRoutes, } from './routes/purchase';
 
 const host = (config.has('hostname') && config.get('hostname')) || 'www';
 const ssoSubDomain =
   (config.has('ssoSubDomain') && config.get('ssoSubDomain')) || 'devsso';
 
-const appPrefix = '/promotions-page-react';
+const appPrefix = '/promotions-page-react'; // path in polopoly (pages)
 
 // const protocol = (config.has('polopolyPapiProtocl') && config.get('polopolyPapiProtocl')) || 'http';
 // const domain = (config.has('polopolyPapiDomain') && config.get('polopolyPapiDomain')) || '.haaretz.co.il';
@@ -74,7 +75,7 @@ export function createLoaders(req) {
         // '/promotions-page/more-ads/some-sub-promotion' -> '/more-ads/some-sub-promotion'
         const normlizedPath = `${baseUri}${appPrefix}${(path || '/')
           .replace(new RegExp(`${appPrefix}/stage[0-9]`), `${appPrefix}`)
-          .replace(`${appPrefix}/offers`, `${appPrefix}`)
+          .replace(`${appPrefix}/${friendlyRoutes.stage1}`, `${appPrefix}`)
           .replace(`${appPrefix}`, '')}${
           path.includes('?') ? '&' : '?'
         }userId=${userId}`;

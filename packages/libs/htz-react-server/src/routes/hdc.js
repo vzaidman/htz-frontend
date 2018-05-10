@@ -1,4 +1,4 @@
-module.exports = (app, server, DEV) => {
+export default function hdc(app, server, DEV) {
   /* Home Page */
   server.get('/', (req, res) => {
     if (req.params[0] && !req.params[0].startsWith('/')) {
@@ -12,4 +12,4 @@ module.exports = (app, server, DEV) => {
     };
     return app.render(req, res, '/', query);
   });
-};
+}
