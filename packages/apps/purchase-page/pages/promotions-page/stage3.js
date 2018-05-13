@@ -11,6 +11,7 @@ import LoginOrRegisterStage from '../../components/OfferPage/Stages/LoginOrRegis
 import StageTransition from '../../components/OfferPage/StageTransition/StageTransition';
 import StageCounter from '../../components/OfferPage/Stages/Elements/StageCounter';
 import StageHeader from '../../components/OfferPage/Stages/Elements/StageHeader';
+import LoginRedirect from '../../components/OfferPage/Stages/LoginOrRegisterElements/LoginRedirect';
 
 const GET_PROMOTIONS_STATE = gql`
   query {
@@ -28,6 +29,7 @@ class Stage3 extends Component {
   static propTypes = pagePropTypes;
   state = {
     registerOrLoginStage: 'checkEmail',
+    refetch: false,
   };
 
   updateRegisterOrLoginStage = registerOrLoginStage => {
@@ -36,118 +38,128 @@ class Stage3 extends Component {
     });
   };
 
+  updateRefetchStage = refetch => {
+    this.setState({
+      refetch,
+    });
+  };
+
   render() {
     return (
       <MainLayout>
         <OfferPageDataGetter
           render={({ data, loading, error, refetch, client, }) => {
-            if (loading) return <div> Loading...</div>;
+            if (loading) return <div> Loading stage 3...</div>;
             if (error) return <div> Error at stage3.js ...</div>;
             return (
-              <Query query={GET_PROMOTIONS_STATE}>
-                {({ data: clientData, }) => {
-                  const {
-                    hostname,
-                    promotionsPageState: {
-                      chosenSlotIndex,
-                      chosenProductIndex,
-                      chosenOfferIndex,
-                    },
-                  } = clientData;
+              <UserDispenser
+                render={({ user, isLoggedIn, }) => (
+                  <Query query={GET_PROMOTIONS_STATE}>
+                    {({ data: clientData, }) => {
+                      const {
+                        hostname,
+                        promotionsPageState: {
+                          chosenSlotIndex,
+                          chosenProductIndex,
+                          chosenOfferIndex,
+                        },
+                      } = clientData;
+                      const chosenSubscription = data.purchasePage.slots
+                        ? data.purchasePage.slots[chosenSlotIndex]
+                            .subscriptionName
+                        : null;
 
-                  return (
-                    <FelaComponent
-                      style={{ textAlign: 'center', }}
-                      render={({
-                        className,
-                        theme: { stage3: { header, }, },
-                      }) => (
-                        <div className={className}>
-                          <StageCounter stage={3} />
+                      const chosenPaymentArrangement = data.purchasePage.slots
+                        ? data.purchasePage.slots[chosenSlotIndex].products[
+                            chosenProductIndex
+                          ].offerList[chosenOfferIndex].type
+                        : null;
 
-                          <LayoutContainer
-                            bgc="white"
-                            miscStyles={{ paddingTop: '1.5rem', }}
-                          >
-                            <UserDispenser
-                              render={({ user, isLoggedIn, }) => {
-                                const chosenSubscription = !isLoggedIn
-                                  ? data.purchasePage.slots[chosenSlotIndex]
-                                      .subscriptionName
-                                  : null;
+                      if (this.state.refetch) {
+                        client.writeData({
+                          data: { loggedInOrRegistered: 'loggedIn', },
+                        });
+                        return (
+                          <LoginRedirect
+                            chosenSubscription={chosenSubscription}
+                            refetch={refetch}
+                          />
+                        );
+                      }
+                      return (
+                        <FelaComponent
+                          style={{ textAlign: 'center', }}
+                          render={({
+                            className,
+                            theme: { stage3: { header, }, },
+                          }) => (
+                            <div className={className}>
+                              <StageCounter stage={3} />
 
-                                const chosenPaymentArrangement = !isLoggedIn
-                                  ? data.purchasePage.slots[chosenSlotIndex]
-                                      .products[chosenProductIndex].offerList[
-                                      chosenOfferIndex
-                                    ].type
-                                  : null;
-
-                                return (
-                                  <StageTransition
-                                    stage={3}
-                                    user={user}
-                                    isLoggedIn={isLoggedIn}
-                                    chosenSubscription={chosenSubscription}
-                                    headerElement={
-                                      <StageHeader
-                                        headerElements={[
-                                          <FelaComponent
-                                            style={{ fontWeight: 'bold', }}
-                                            render="span"
-                                          >
-                                            <span>
-                                              {header.textBeforeChosen}
-                                            </span>{' '}
-                                            {
-                                              header.chosenSubscriptionText[
-                                                chosenSubscription
-                                              ]
-                                            }{' '}
-                                            {`${
-                                              header
-                                                .chosenPaymentArrangementText[
-                                                chosenPaymentArrangement
-                                              ]
-                                            }.`}
-                                          </FelaComponent>,
-                                          <Fragment>
-                                            {header.dynamicTextNewLineLoginStage[
-                                              this.state.registerOrLoginStage
-                                            ].map(line => (
-                                              <p key={Math.random()}>{line}</p>
-                                            ))}
-                                          </Fragment>,
-                                        ]}
-                                      />
-                                    }
-                                    stageElement={
-                                      <LoginOrRegisterStage
-                                        site={
-                                          hostname.includes('themarker')
-                                            ? 'TM'
-                                            : 'HTZ'
-                                        }
-                                        chosenSubscription={chosenSubscription}
-                                        updateRegisterOrLoginStage={
-                                          this.updateRegisterOrLoginStage
-                                        }
-                                        registerOrLoginStage={
-                                          this.state.registerOrLoginStage
-                                        }
-                                      />
-                                    }
-                                  />
-                                );
-                              }}
-                            />
-                          </LayoutContainer>
-                        </div>
-                      )}
-                    />
-                  );
-                }}
-              </Query>
+                              <LayoutContainer
+                                bgc="white"
+                                miscStyles={{ paddingTop: '1.5rem', }}
+                              >
+                                <StageTransition
+                                  stage={3}
+                                  user={user}
+                                  isLoggedIn={isLoggedIn}
+                                  chosenSubscription={chosenSubscription}
+                                  headerElement={
+                                    <StageHeader
+                                      headerElements={[
+                                        <FelaComponent
+                                          style={{ fontWeight: 'bold', }}
+                                          render="span"
+                                        >
+                                          <span>{header.textBeforeChosen}</span>{' '}
+                                          {
+                                            header.chosenSubscriptionText[
+                                              chosenSubscription
+                                            ]
+                                          }{' '}
+                                          {`${
+                                            header.chosenPaymentArrangementText[
+                                              chosenPaymentArrangement
+                                            ]
+                                          }.`}
+                                        </FelaComponent>,
+                                        <Fragment>
+                                          {header.dynamicTextNewLineLoginStage[
+                                            this.state.registerOrLoginStage
+                                          ].map(line => (
+                                            <p key={Math.random()}>{line}</p>
+                                          ))}
+                                        </Fragment>,
+                                      ]}
+                                    />
+                                  }
+                                  stageElement={
+                                    <LoginOrRegisterStage
+                                      site={
+                                        hostname.includes('themarker')
+                                          ? 'TM'
+                                          : 'HTZ'
+                                      }
+                                      chosenSubscription={chosenSubscription}
+                                      updateRegisterOrLoginStage={
+                                        this.updateRegisterOrLoginStage
+                                      }
+                                      updateRefetchState={
+                                        this.updateRefetchStage
+                                      }
+                                    />
+                                  }
+                                />
+                              </LayoutContainer>
+                            </div>
+                          )}
+                        />
+                      );
+                    }}
+                  </Query>
+                )}
+              />
             );
           }}
         />

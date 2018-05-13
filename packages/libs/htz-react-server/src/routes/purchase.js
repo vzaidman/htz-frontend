@@ -10,6 +10,7 @@ export const friendlyRoutes = {
   stage3: 'login',
   stage4: 'method',
   stage5: 'payment',
+  thankYou: 'thankYou',
 };
 
 export default function purchase(app, server) {
@@ -62,9 +63,12 @@ export default function purchase(app, server) {
   );
 
   /* Thank you Page */
-  server.get(`${appPrefix}/thankYou`, (req, res) =>
-    app.render(req, res, `${folderPrefix}/thankYou`, req.query)
-  );
+  server.get(`${appPrefix}/thankYou`, (req, res) => {
+    let query = `${querystring.stringify(req.query)}`;
+    query = query ? `?${query}` : '';
+    res.redirect(`${appPrefix}/${friendlyRoutes.stage1}${query}`);
+    // app.render(req, res, `${folderPrefix}/thankYou`, req.query)
+  });
 
   /* Debt Page */
   server.get(`${appPrefix}/debt`, (req, res) =>

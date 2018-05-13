@@ -16,18 +16,9 @@ import {
   Register,
 } from '@haaretz/htz-components';
 import isEmail from 'validator/lib/isEmail';
-import { Query, ApolloConsumer, } from 'react-apollo';
-import gql from 'graphql-tag';
+import { ApolloConsumer, } from 'react-apollo';
 
 import ResetPasswordModal from './LoginOrRegisterElements/ResetPasswordModal';
-import Redirect from '../../Redirect/Redirect';
-import { getCampaignFromPath, } from '../OfferPageDataGetter';
-
-const GET_PURCHASE_PAGE_DATA = gql`
-  query PageData($path: String!) {
-    purchasePage(path: $path)
-  }
-`;
 
 const formContStyle = theme => ({
   marginTop: '4rem',
@@ -104,6 +95,7 @@ class LoginOrRegisterStage extends React.Component {
     router: PropTypes.shape().isRequired,
     site: PropTypes.oneOf([ 'HTZ', 'TM', ]).isRequired,
     updateRegisterOrLoginStage: PropTypes.func.isRequired,
+    updateRefetchState: PropTypes.func.isRequired,
   };
 
   static defaultProps = {};
@@ -114,7 +106,6 @@ class LoginOrRegisterStage extends React.Component {
     loadingAll: false,
     email: null,
     userExists: true,
-    refetch: false,
     resetPasswordModalOpen: false,
   };
 
@@ -127,11 +118,10 @@ class LoginOrRegisterStage extends React.Component {
     if (this.passwordInputEl) this.passwordInputEl.focus();
 
     const {
-      chosenSubscription,
       router,
       site,
       updateRegisterOrLoginStage,
-      registerOrLoginStage,
+      updateRefetchState,
     } = this.props;
 
     if (this.state.error) {
@@ -162,60 +152,7 @@ class LoginOrRegisterStage extends React.Component {
         </div>
       );
     }
-
-    return this.state.refetch ? (
-      <Query
-        query={GET_PURCHASE_PAGE_DATA}
-        variables={{ path: getCampaignFromPath(router.asPath), }}
-        fetchPolicy="network-only"
-      >
-        {({ data, loading, error, client, }) => {
-          if (loading) return <div> Loading...</div>;
-          if (error) return <div> Error...</div>;
-          const { purchasePage: { pageNumber, }, } = data;
-          client.writeData({ data: { loggedInOrRegistered: 'loggedIn', }, });
-          return pageNumber === 2.4 ? (
-            <Redirect
-              destination="/promotions-page/stage1"
-              replace
-              router={router}
-            />
-          ) : pageNumber === 3.2 ? (
-            chosenSubscription === 'TM' || chosenSubscription === 'HTZ' ? (
-              <Redirect
-                destination="/promotions-page/stage2"
-                replace
-                router={router}
-              />
-            ) : (
-              <Redirect
-                destination="/promotions-page/stage4"
-                replace
-                router={router}
-              />
-            )
-          ) : pageNumber === 3.4 || pageNumber === 3.6 ? (
-            <Redirect
-              destination="/promotions-page/stage2"
-              replace
-              router={router}
-            />
-          ) : pageNumber >= 7 ? (
-            <Redirect
-              destination="/promotions-page/thankYou"
-              replace
-              router={router}
-            />
-          ) : (
-            <Redirect
-              destination="/promotions-page/stage4"
-              replace
-              router={router}
-            />
-          );
-        }}
-      </Query>
-    ) : (
+    return (
       <Register
         render={({ register, }) => (
           <Login
@@ -274,9 +211,7 @@ class LoginOrRegisterStage extends React.Component {
                                   });
                                   login(email, password)
                                     .then(() => {
-                                      this.setState({
-                                        refetch: true,
-                                      });
+                                      updateRefetchState(true);
                                     })
                                     .catch(error => {
                                       this.setState({
