@@ -48,7 +48,10 @@ class StageThankYou extends React.Component {
           : product === '273' ? 'TM' : product === '274' ? 'BOTH' : null;
     }
     return (
-      <MainLayout>
+      <MainLayout
+        thankYou
+        product={productId || false}
+      >
         {productId ? (
           <ThankYouElement product={productId} />
         ) : (

@@ -13,10 +13,14 @@ import styleRenderer from '../components/styleRenderer/styleRenderer';
 import PurchaseHeader from '../components/PurchaseHeader/PurchaseHeader';
 import PurchasePageFooter from '../components/PurchasePageFooter/PurchasePageFooter'; // eslint-disable-line import/no-named-as-default
 import UserBanner from '../components/UserBanner/UserBanner';
+import Scripts from '../components/Scripts/Scripts';
 
 const GET_HOST_NAME = gql`
   query {
     hostname @client
+    user @client {
+      type
+    }
   }
 `;
 
@@ -34,6 +38,14 @@ const propTypes = {
    */
   renderHeader: PropTypes.bool,
   /**
+   * Is it the thankYou page.
+   */
+  thankYou: PropTypes.bool,
+  /**
+   * Did the user pay.
+   */
+  userPaid: PropTypes.bool,
+  /**
    * should the footer render Illustrations
    */
   footerHasIllustration: PropTypes.bool,
@@ -43,6 +55,8 @@ const defaultProps = {
   children: null,
   displayBackButton: true,
   renderHeader: true,
+  thankYou: false,
+  userPaid: true,
   footerHasIllustration: true,
 };
 
@@ -60,74 +74,66 @@ const contentWrapperStyle = () => ({
 
 const StyledContentWrapper = createComponent(contentWrapperStyle);
 
-class MainLayout extends React.Component {
-  componentDidMount() {
-    // appendScript({
-    //   src: '//script.crazyegg.com/pages/scripts/0011/5351.js',
-    //   id: 'crazyegg',
-    //   async: true,
-    //   onLoadFunction: null,
-    //   updateFunction: null,
-    //   attributes: { type: 'text/javascript', },
-    // });
-  }
-
-  render() {
-    const {
-      children,
-      displayBackButton,
-      renderHeader,
-      footerHasIllustration,
-    } = this.props;
-    return (
-      <Query query={GET_HOST_NAME}>
-        {({ data: { hostname, }, }) => {
-          const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-          return (
-            <Fragment>
-              <UserInjector />
-              <StyleProvider renderer={styleRenderer} theme={theme(host)}>
-                <FelaComponent
-                  render={({
-                    theme: { seo: { [host]: { title, description, }, }, },
-                  }) => (
-                    <Fragment>
-                      <Head>
-                        <title>{title}</title>
-                        <meta name="description" content={description} />
-                      </Head>
-                      <div id="pageRoot">
-                        <StyledWrapper>
-                          {renderHeader && (
-                            <Fragment>
-                              <PurchaseHeader
-                                host={host}
-                                displayBackButton={displayBackButton}
-                              />
-                              <UserBanner />
-                            </Fragment>
-                          )}
-                          <StyledContentWrapper>
-                            {children}
-                          </StyledContentWrapper>
-                          <PurchasePageFooter
-                            host={host}
-                            hasIllustration={footerHasIllustration}
-                          />
-                        </StyledWrapper>
-                      </div>
-                      <div id="modalsRoot" />
-                    </Fragment>
-                  )}
-                />
-              </StyleProvider>
-              <BIRequest />
-            </Fragment>
-          );
-        }}
-      </Query>
-    );
-  }
+function MainLayout({
+  children,
+  displayBackButton,
+  renderHeader,
+  thankYou,
+  userPaid,
+  footerHasIllustration,
+}) {
+  return (
+    <Query query={GET_HOST_NAME}>
+      {({ data: { hostname, user: { type, }, }, }) => {
+        const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+        return (
+          <Fragment>
+            <UserInjector />
+            <StyleProvider renderer={styleRenderer} theme={theme(host)}>
+              <FelaComponent
+                render={({
+                  theme: { seo: { [host]: { title, description, }, }, },
+                }) => (
+                  <Fragment>
+                    <Head>
+                      <title>{title}</title>
+                      <meta name="description" content={description} />
+                    </Head>
+                    <div id="pageRoot">
+                      <StyledWrapper>
+                        {renderHeader && (
+                          <Fragment>
+                            <PurchaseHeader
+                              host={host}
+                              displayBackButton={displayBackButton}
+                            />
+                            <UserBanner />
+                          </Fragment>
+                        )}
+                        <StyledContentWrapper>{children}</StyledContentWrapper>
+                        <PurchasePageFooter
+                          host={host}
+                          hasIllustration={footerHasIllustration}
+                        />
+                      </StyledWrapper>
+                    </div>
+                    <div id="modalsRoot" />
+                  </Fragment>
+                )}
+              />
+            </StyleProvider>
+            <BIRequest />
+            <Scripts
+              host={host}
+              userType={type}
+              thankYou={thankYou}
+              userPaid={userPaid}
+            />
+          </Fragment>
+        );
+      }}
+    </Query>
+  );
 }
 
 MainLayout.propTypes = propTypes;
