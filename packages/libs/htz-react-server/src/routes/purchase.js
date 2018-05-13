@@ -2,7 +2,7 @@ import path from 'path';
 import express from 'express';
 import querystring from 'querystring';
 
-const appPrefix = '/promotions-page-react'; // path shown in URL
+const appPrefix = '/promotions-page'; // path shown in URL
 const folderPrefix = '/promotions-page'; // Project structure relative folder
 export const friendlyRoutes = {
   stage1: 'product',
