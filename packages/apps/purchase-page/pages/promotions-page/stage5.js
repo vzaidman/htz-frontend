@@ -48,9 +48,7 @@ function buildCreditGuardSrc(
     paymentData.productID
   }&saleCode=${paymentData.saleCode}&promotionNumber=${
     paymentData.promotionNumber
-  }&cgtype=${
-    paymentData.cgtype
-  }&approveDebtClaim=${approveDebtClaim}&thankYouEmailTemplate=${thankYouEmailTemplate}`;
+  }&cgtype=payment_heb2&approveDebtClaim=${approveDebtClaim}&thankYouEmailTemplate=${thankYouEmailTemplate}`;
 }
 
 function Stage5() {
