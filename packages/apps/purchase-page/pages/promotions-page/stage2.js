@@ -80,7 +80,7 @@ function Stage2() {
                                       isFirstPage
                                     }
                                     headerElement={
-                                      !chosenProduct.campaignData && (
+                                      !chosenProduct.campaignData ? (
                                         <StageHeader
                                           headerElements={
                                             isFirstPage
@@ -144,7 +144,7 @@ function Stage2() {
                                                 ]
                                           }
                                         />
-                                      )
+                                      ) : null
                                     }
                                     stageElement={
                                       <ChooseProductStage
