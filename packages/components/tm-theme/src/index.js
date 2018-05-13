@@ -3,7 +3,7 @@ import articleStyle from './consts/articleStyle';
 import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
 import captionStyles from './consts/captionStyles';
-import { baseColors } from './consts/colors';
+import baseColors from './consts/baseColors';
 import cssReset from './consts/cssReset';
 import commentsStyle from './consts/commentsStyle';
 import fontStacks from './consts/fontStacks';
@@ -40,7 +40,7 @@ import pxToRem from './methods/pxToRem';
 import typesetter from './methods/typesetter';
 import mq from './methods/mq';
 
-export { cssReset };
+export { cssReset, };
 
 /**
  * Haaretz theme component
