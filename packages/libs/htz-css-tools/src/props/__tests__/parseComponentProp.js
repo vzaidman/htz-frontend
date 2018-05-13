@@ -1,5 +1,5 @@
 import parseProp from '../parseComponentProp';
-import createMqFunc from '../../mq/mq';
+import createMqFunc from '../../mq/createMqFunc';
 
 const bps = {
   widths: {

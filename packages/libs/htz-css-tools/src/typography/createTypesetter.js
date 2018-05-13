@@ -2,13 +2,13 @@
 
 import getRhythmBpsData from '../helpers/getRhythmBpsData';
 import isNamedBp from '../helpers/isNamedBp';
-import { pxToRem, } from '../units/pxTo';
+import pxToRem from '../units/pxToRem';
 import { fallbackFormatter, } from '../helpers/fallbackFormatter';
 import { styleFormatter, } from '../helpers/styleFormatter';
 import getTypeProps from './getTypeProps';
 
 import type { TypeConf, TypeScaleOpts, } from './confTypes';
-import type { WidthBpsConfig, MqFunc, } from '../mq/mq';
+import type { WidthBpsConfig, MqFunc, } from '../mq/createMqFunc';
 import type { RhythmBpData, } from '../helpers/getRhythmBpsData';
 
 /**

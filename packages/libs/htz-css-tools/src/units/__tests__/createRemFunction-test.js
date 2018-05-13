@@ -1,4 +1,4 @@
-import mqFuncFactory from '../../mq/mq';
+import mqFuncFactory from '../../mq/createMqFunc';
 import createRemFunction from '../createRemFunction';
 
 describe('pxToRem factory function', () => {
@@ -125,9 +125,9 @@ describe('pxToRem factory function', () => {
     function testUsecases(fn, testCases) {
       testCases.forEach(testCase => {
         const [ args, expected, ] = testCase;
-        it(`returns ${JSON.stringify(expected)} when passed (padding,${
-          args
-        })`, () => {
+        it(`returns ${JSON.stringify(
+          expected
+        )} when passed (padding,${args})`, () => {
           expect(fn('padding', ...args)).toEqual(expected);
         });
       });

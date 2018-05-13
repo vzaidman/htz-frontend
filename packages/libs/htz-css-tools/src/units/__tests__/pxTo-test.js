@@ -1,4 +1,6 @@
-import pxTo, { pxToRem, pxToEm, } from '../pxTo';
+import pxTo from '../pxTo';
+import pxToEm from '../pxToEm';
+import pxToRem from '../pxToRem';
 
 describe('# Px to Unit Factory', () => {
   describe('## pxTo()', () => {

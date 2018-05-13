@@ -1,5 +1,5 @@
 import getMqString, { getLengthString, } from '../getMqString.js';
-import createMqFunc from '../mq';
+import createMqFunc from '../createMqFunc';
 
 describe('# Media Queries', () => {
   describe('## getLengthString()', () => {

@@ -1,4 +1,4 @@
-import mqFuncFactory from '../../mq/mq';
+import mqFuncFactory from '../../mq/createMqFunc';
 import createTypesetter from '../createTypesetter';
 
 describe('typography factory function', () => {

@@ -1,6 +1,6 @@
 /* @flow */
 
-import type { MqFunc, } from '../mq/mq';
+import type { MqFunc, } from '../mq/createMqFunc';
 
 /**
  * The shape of a ComponentResponsiveProp's options object
@@ -16,7 +16,7 @@ export type ComponentPropResponsiveObject = {
   until?: string,
   misc?: string,
   type?: string,
-  value: boolean | string | number | (string | number)[]
+  value: boolean | string | number | (string | number)[],
 };
 
 /**

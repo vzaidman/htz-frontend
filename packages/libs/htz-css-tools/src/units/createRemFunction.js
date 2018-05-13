@@ -1,27 +1,27 @@
 /* @flow */
 import getRhythmBpsData from '../helpers/getRhythmBpsData';
 import isNamedBp from '../helpers/isNamedBp';
-import { pxToRem, } from './pxTo';
+import pxToRem from './pxToRem';
 import { fallbackFormatter, } from '../helpers/fallbackFormatter';
 import { styleFormatter, } from '../helpers/styleFormatter';
 
-import type { MqFunc, WidthBpsConfig, } from '../mq/mq';
+import type { MqFunc, WidthBpsConfig, } from '../mq/createMqFunc';
 import type { TypeConf, TypeScaleOpts, } from '../typography/confTypes.js';
 import type { RhythmBpData, } from '../helpers/getRhythmBpsData';
 
 /**
-    * A function that converts px values to rems at given breakpoints
-    * while accounting to changes in vertical rhythm.
-    *
-    * @param {string} property - A CSS property
-    * @param {number|number[]} value - The value(s), in `px` to convert to `rem`
-    * @param {string} [fromBp] - A named breakpoint, used for a `min-width` query
-    * @param {string} [untilBp] - A named breakpoint, used for a `max-width` query
-    * @param {boolean} [pxFallback] - Should `rem` values have `px` fallback
-    *
-    * @return {Object} - A css-in-js styles object with `px` values converted to `rem`
-    *   (with or without `px` fallback)
-    */
+ * A function that converts px values to rems at given breakpoints
+ * while accounting to changes in vertical rhythm.
+ *
+ * @param {string} property - A CSS property
+ * @param {number|number[]} value - The value(s), in `px` to convert to `rem`
+ * @param {string} [fromBp] - A named breakpoint, used for a `min-width` query
+ * @param {string} [untilBp] - A named breakpoint, used for a `max-width` query
+ * @param {boolean} [pxFallback] - Should `rem` values have `px` fallback
+ *
+ * @return {Object} - A css-in-js styles object with `px` values converted to `rem`
+ *   (with or without `px` fallback)
+ */
 export type RemFunctionType = (
   property: string,
   value: number | number[],

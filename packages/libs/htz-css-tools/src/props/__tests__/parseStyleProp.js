@@ -1,5 +1,5 @@
 import parseStyleProp from '../parseStyleProp';
-import createMqFunc from '../../mq/mq';
+import createMqFunc from '../../mq/createMqFunc';
 import createTypesetter from '../../typography/createTypesetter';
 
 const bps = {

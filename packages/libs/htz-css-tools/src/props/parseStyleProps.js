@@ -2,7 +2,7 @@
 
 import parseStyleProp from './parseStyleProp';
 
-import type { MqFunc, } from '../mq/mq';
+import type { MqFunc, } from '../mq/createMqFunc';
 import type { Typesetter, } from '../typography/createTypesetter';
 import type { StyleProp, } from './parseStyleProp';
 

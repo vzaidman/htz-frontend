@@ -2,7 +2,7 @@
 
 import getLengthProps from '../units/getLengthProps';
 import { DEFAULT_BROWSER_FONT_SIZE, } from '../consts/index';
-import type { BpsConfig, MqOptions, WidthBpsConfig, } from './mq';
+import type { BpsConfig, MqOptions, WidthBpsConfig, } from './createMqFunc';
 
 /**
  * Get a media-query string from a query against

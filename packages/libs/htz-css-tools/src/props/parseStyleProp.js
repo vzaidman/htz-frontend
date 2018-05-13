@@ -4,7 +4,7 @@ import setBorder from '../border/setBorder';
 import visuallyHidden from '../mixins/visuallyHidden';
 import autospace from '../mixins/autospace';
 
-import type { MqFunc, } from '../mq/mq';
+import type { MqFunc, } from '../mq/createMqFunc';
 import type { Typesetter, } from '../typography/createTypesetter';
 
 /**
@@ -24,7 +24,7 @@ export type StylePropResponsiveObject = {
   misc?: string,
   type?: string,
   value: string | number | (string | number)[],
-  options?: Object
+  options?: Object,
 };
 
 /**

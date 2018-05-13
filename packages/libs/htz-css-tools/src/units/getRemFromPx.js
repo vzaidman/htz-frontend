@@ -1,5 +1,5 @@
 /* @flow */
-import type { WidthBpsConfig, } from '../mq/mq';
+import type { WidthBpsConfig, } from '../mq/createMqFunc';
 import type { TypeConf, } from '../typography/confTypes';
 
 /**

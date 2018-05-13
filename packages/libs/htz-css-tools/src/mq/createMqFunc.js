@@ -19,7 +19,7 @@ import getMqString from './getMqString';
  * }
  */
 export type WidthBpsConfig = {
-  [bpName: string]: number
+  [bpName: string]: number,
 };
 
 /**
@@ -34,7 +34,7 @@ export type WidthBpsConfig = {
  * }
  */
 export type MiscBpsConfig = {
-  [bpName: string]: string
+  [bpName: string]: string,
 };
 
 /**
@@ -50,7 +50,7 @@ export type MiscBpsConfig = {
  */
 export type BpsConfig = {|
   widths: WidthBpsConfig,
-  misc: MiscBpsConfig
+  misc: MiscBpsConfig,
 |};
 
 /**
@@ -76,7 +76,7 @@ export type MqOptions = {|
   from?: string | number,
   until?: string | number,
   misc?: string | void,
-  type?: string | void
+  type?: string | void,
 |};
 
 /**

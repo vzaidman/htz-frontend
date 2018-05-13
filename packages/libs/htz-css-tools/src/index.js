@@ -18,7 +18,7 @@ import {
   borderVertical,
 } from './border';
 import createColorGetter from './color/createColorGetter';
-import createMqFunc from './mq/mq';
+import createMqFunc from './mq/createMqFunc';
 import createRemFunction from './units/createRemFunction';
 import createTypesetter from './typography/createTypesetter';
 import getLengthProps from './units/getLengthProps';
@@ -26,10 +26,10 @@ import getMqString from './mq/getMqString';
 import getRemFromPx from './units/getRemFromPx';
 import getUnit from './units/getUnit';
 import parseComponentProp from './props/parseComponentProp';
-// import parseStyleProp from './props/parseStyleProp';
 import parseStyleProps from './props/parseStyleProps';
 import parseTypographyProp from './props/parseTypographyProp';
-import pxTo, { pxToEm, } from './units/pxTo';
+import pxTo from './units/pxTo';
+import pxToEm from './units/pxToEm';
 import stripUnit from './units/stripUnit';
 import visuallyHidden from './mixins/visuallyHidden';
 
