@@ -1,22 +1,9 @@
 import React from 'react';
 import Error from 'next/error';
-import PropTypes from 'prop-types';
 import { ApolloProvider, getDataFromTree, } from 'react-apollo';
 import Head from 'next/head';
 import createClient from './createClient';
-
-export const pagePropTypes = {
-  /* eslint-disable react/forbid-prop-types */
-  serverState: PropTypes.object.isRequired,
-  serverError: PropTypes.shape({
-    statusCode: PropTypes.number,
-  }),
-  url: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    query: PropTypes.object,
-  }).isRequired,
-  /* eslint-enable react/forbid-prop-types */
-};
+import pagePropTypes from './pagePropTypes';
 
 export default Component => {
   const componentName = Component.displayName || Component.name || 'Unknown';
