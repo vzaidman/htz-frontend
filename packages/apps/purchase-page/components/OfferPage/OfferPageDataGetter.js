@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withRouter, } from 'next/router';
-import { extractParameter, } from '@haaretz/htz-components';
+import { extractParamFromUrl, } from '@haaretz/htz-components';
 
 const GET_PURCHASE_PAGE_DATA = gql`
   query PageData($path: String!) {
@@ -17,7 +17,7 @@ const propTypes = {
 };
 
 export function getCampaignFromPath(path) {
-  const offer = `/${extractParameter('offer', path) || ''}`;
+  const offer = `/${extractParamFromUrl('offer', path) || ''}`;
   return offer;
 }
 

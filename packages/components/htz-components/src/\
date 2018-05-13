@@ -8,7 +8,7 @@
  * @returns null if no param is present in the URL, an empty string if it
  * is a valueless key that is present, and the string value if one is found.
  */
-export default function extractParamFromUrl(param, url = window.location.href) {
+export default function extractParameterFromUrl(param, url = window.location.href) {
   const name = param.replace(/[[\]]/g, '\\$&');
   const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
   const results = regex.exec(url);
