@@ -14,7 +14,7 @@ import createSiteConfig from '../site-config';
 function withTimeout(
   promise,
   timeout = 5000,
-  msgOnTimeout = 'operation timed out!'
+  msgOnTimeout = 'לא הצלחנו לקבל תשובה מהשרת, אנא נסו שוב'
 ) {
   const timer = new Promise((resolve, reject) =>
     setTimeout(() => {
@@ -69,13 +69,8 @@ export default function UserService(config = {}) {
         })
       )
     );
-    // todo get correct text
 
-    return withTimeout(
-      checkEmailPromise,
-      defaultTimeout,
-      'בדיקת דוא"ל לקחה יותר זמן מהצפוי, נא לנסות שוב'
-    );
+    return withTimeout(checkEmailPromise, defaultTimeout);
   }
 
   /**
@@ -128,12 +123,7 @@ export default function UserService(config = {}) {
           )
         )
     );
-    // todo get correct text
-    return withTimeout(
-      loginPromise,
-      defaultTimeout,
-      'כניסה למערכת לקחה יותר זמן מהצפוי, נא לנסות שוב'
-    );
+    return withTimeout(loginPromise, defaultTimeout);
   }
 
   /**
@@ -169,12 +159,7 @@ export default function UserService(config = {}) {
           )
         )
     );
-    // todo get correct text
-    return withTimeout(
-      logoutPromise,
-      defaultTimeout,
-      'התנתקות לקחה יותר זמן מהצפוי, נא לנסות שוב'
-    );
+    return withTimeout(logoutPromise, defaultTimeout);
   }
 
   /**
@@ -242,12 +227,7 @@ export default function UserService(config = {}) {
           )
         )
     );
-    // todo get correct text
-    return withTimeout(
-      registerPromise,
-      defaultTimeout,
-      'ההרשמה לקחה יותר זמן מהצפוי, נא לנסות שוב'
-    );
+    return withTimeout(registerPromise, defaultTimeout);
   }
 
   /**
