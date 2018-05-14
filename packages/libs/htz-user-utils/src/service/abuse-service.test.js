@@ -1,9 +1,7 @@
 /* global window, document, localStorage, fetch, jsdom, Event */
 import AbuseService, { initiateAbuserLogic, } from './abuse-service';
 import CookieData from '../util/__mocks__/cookie-utils.mock';
-import {
-  deleteAllCookies,
-} from '../util/cookie-utils';
+import { deleteAllCookies, } from '../util/cookie-utils';
 import {
   abuseClearedResponse,
   abuseDetectionResponse,
@@ -20,18 +18,14 @@ describe('AbuseService Module', () => {
     expect(typeof initiateAbuserLogic).toBe('function');
   });
 
-  it("should have an 'activate' and 'getSsoOnAbusePage' class methods", () => {
+  it("should have an 'activate' class method", () => {
     expect(typeof abuseService.activate).toBeDefined();
     expect(typeof abuseService.activate).toBe('function');
-    expect(typeof abuseService.getSsoOnAbusePage).toBeDefined();
-    expect(typeof abuseService.getSsoOnAbusePage).toBe('function');
   });
 
-  it("should have an 'activate' and 'getSsoOnAbusePage' class methods", () => {
-    expect(typeof abuseService.activate).toBeDefined();
-    expect(typeof abuseService.activate).toBe('function');
-    expect(typeof abuseService.getSsoOnAbusePage).toBeDefined();
-    expect(typeof abuseService.getSsoOnAbusePage).toBe('function');
+  it("should have an 'getSsoOnAbusePage' class static method", () => {
+    expect(typeof AbuseService.getSsoOnAbusePage).toBeDefined();
+    expect(typeof AbuseService.getSsoOnAbusePage).toBe('function');
   });
 
   it("should not throw on calling 'activate'", () => {
@@ -55,19 +49,19 @@ describe('AbuseService Module', () => {
 
     it("should not throw on calling 'getSsoOnAbusePage'", () => {
       expect(() => {
-        abuseService.getSsoOnAbusePage();
+        AbuseService.getSsoOnAbusePage();
       }).not.toThrow();
     });
 
     it('should return null if there was no previousely set data at localStorage', () => {
-      expect(abuseService.getSsoOnAbusePage()).toEqual(null);
+      expect(AbuseService.getSsoOnAbusePage()).toEqual(null);
     });
 
     it("should return a properly parsed object if there was a previousely set data at localStorage, and the href contains 'abuse-login'", () => {
       const item = { em: 'hello@haaretz.co.il', id: '123', };
       localStorage.setItem('__uaem', JSON.stringify(item));
       jsdom.reconfigure({ url: 'http://www.haaretz.co.il/abuse-login', });
-      expect(abuseService.getSsoOnAbusePage()).toEqual(item.id);
+      expect(AbuseService.getSsoOnAbusePage()).toEqual(item.id);
     });
   });
 

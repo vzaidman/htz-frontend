@@ -5,7 +5,11 @@ import {
   loginSuccessResponse,
   logoutSuccessResponse,
   loginFailureResponse,
+  logoutFailureResponse,
+  registerFailureResponse,
   loginFailureServiceData,
+  logoutFailureServiceData,
+  registerFailureServiceData,
 } from './__mocks__/sso.mock';
 import CookieData from '../util/__mocks__/cookie-utils.mock';
 import {
@@ -69,16 +73,16 @@ describe('UserFactory CookieBased Module', () => {
     it('should reject on logout method if the response data is corrupt', async () => {
       const userService = createUserService();
       fetch.resetMocks();
-      fetch.mockResponses([ loginFailureResponse, ]);
+      fetch.mockResponses([ logoutFailureResponse, ]);
       await expect(userService.logout()).rejects.toThrow(
-        new Error(loginFailureServiceData)
+        new Error(logoutFailureServiceData)
       );
     });
 
     it('should reject on register method if the response data is corrupt', async () => {
       const userService = createUserService();
       fetch.resetMocks();
-      fetch.mockResponses([ loginFailureResponse, ]);
+      fetch.mockResponses([ registerFailureResponse, ]);
       // user
       const formData = {
         email: 'test@haaretz.com',
@@ -93,7 +97,7 @@ describe('UserFactory CookieBased Module', () => {
         user: undefined,
       };
       await expect(userService.register(formData)).rejects.toThrow(
-        new Error(loginFailureServiceData)
+        new Error(registerFailureServiceData)
       );
     });
   });

@@ -25,23 +25,23 @@ class ImageCookies extends React.Component {
           {this.props.images.map((imageUrl, i) => {
             const src = `${imageUrl}&_ts=${Date.now()}`;
             const key = `login-cookie-${i}`;
-            console.log(
-              `imageCookies mapping | src:${src} | domain:${
-                domain
-              } | src.includes(domain):${src.includes(domain)}`
-            );
             return (
               <img
                 key={key}
                 onLoad={
                   src.includes(domain)
                     ? () => {
-                      this.props.onload();
-                      console.log(
-                        '%c Image runMeWhenYouOnload Event!! Image DOM onLoad done',
-                        'background: #222; color: #bada55'
-                      );
-                    }
+                        this.props.onload();
+                        if (
+                          typeof window !== 'undefined' &&
+                          window.location.search.includes('debug')
+                        ) {
+                          console.log(
+                            '%c Cookie Image DOM onload done',
+                            'background: #232; color: #bada55'
+                          );
+                        }
+                      }
                     : null
                 }
                 src={src}

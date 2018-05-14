@@ -3,14 +3,28 @@ import UserFactory from '../user-factory-cookie-based';
 import { plantCookie, } from '../util/cookie-utils';
 import createSiteConfig from '../site-config';
 
-const withTimeout = (milSec, timeoutErrorMsg, promise) => {
-  const timeout = new Promise((resolve, reject) =>
+/**
+ * A wrapper to a promise that limits it's resolution time
+ * @export
+ * @param {any} promise the promise to be resolved
+ * @param {number} [timeout=5000] an optional timeout, in milliseconds
+ * @param {string} [msgOnTimeout='operation timed out!'] an optional on timeout rejection message
+ * @returns a promise that either resolves in the timeframe, or rejects on timeout.
+ */
+function withTimeout(
+  promise,
+  timeout = 5000,
+  msgOnTimeout = 'operation timed out!'
+) {
+  const timer = new Promise((resolve, reject) =>
     setTimeout(() => {
-      reject(new Error(timeoutErrorMsg));
-    }, milSec)
+      reject(new Error(msgOnTimeout));
+    }, timeout)
   );
-  return Promise.race([ promise, timeout, ]);
-};
+  return Promise.race([ promise, timer, ]);
+}
+
+const defaultTimeout = 5000;
 
 /**
  * User Services are the collective functions that are allowed communication with
@@ -32,9 +46,8 @@ export default function UserService(config = {}) {
 
   /**
    * Check if a specific email is already registered.
-   * @param {string} ( email )
-   * email: the email of the user
-   * @return {*}
+   * @param {string} email the email of the user
+   * @return {*} a promise that resolves to true iff the user exists
    */
   function checkEmailExists(email) {
     const siteConfig = createSiteConfig();
@@ -59,9 +72,9 @@ export default function UserService(config = {}) {
     // todo get correct text
 
     return withTimeout(
-      5000,
-      'בדיקת דוא"ל לקחה יותר זמן מהצפוי, נא לנסות שוב',
-      checkEmailPromise
+      checkEmailPromise,
+      defaultTimeout,
+      'בדיקת דוא"ל לקחה יותר זמן מהצפוי, נא לנסות שוב'
     );
   }
 
@@ -104,19 +117,22 @@ export default function UserService(config = {}) {
       })
         .then(parseResponse)
         .then(loginData =>
-          handleSsoResponse(loginData).then(() => {
-            if (onImageLoadCallback) {
-              onImageLoadCallback();
-            }
-            resolve();
-          })
+          handleSsoResponse(loginData).then(
+            () => {
+              if (onImageLoadCallback) {
+                onImageLoadCallback();
+              }
+              resolve();
+            },
+            reason => reject(reason)
+          )
         )
     );
     // todo get correct text
     return withTimeout(
-      5000,
-      'כניסה למערכת לקחה יותר זמן מהצפוי, נא לנסות שוב',
-      loginPromise
+      loginPromise,
+      defaultTimeout,
+      'כניסה למערכת לקחה יותר זמן מהצפוי, נא לנסות שוב'
     );
   }
 
@@ -142,19 +158,22 @@ export default function UserService(config = {}) {
       })
         .then(parseResponse)
         .then(logoutData =>
-          handleSsoResponse(logoutData).then(() => {
-            if (onImageLoadCallback) {
-              onImageLoadCallback();
-              resolve();
-            }
-          })
+          handleSsoResponse(logoutData).then(
+            () => {
+              if (onImageLoadCallback) {
+                onImageLoadCallback();
+                resolve();
+              }
+            },
+            reason => reject(reason)
+          )
         )
     );
     // todo get correct text
     return withTimeout(
-      5000,
-      'התנתקות לקחה יותר זמן מהצפוי, נא לנסות שוב',
-      logoutPromise
+      logoutPromise,
+      defaultTimeout,
+      'התנתקות לקחה יותר זמן מהצפוי, נא לנסות שוב'
     );
   }
 
@@ -212,19 +231,22 @@ export default function UserService(config = {}) {
       })
         .then(parseResponse)
         .then(registerData =>
-          handleSsoResponse(registerData).then(() => {
-            if (onImageLoadCallback) {
-              onImageLoadCallback();
-              resolve();
-            }
-          })
+          handleSsoResponse(registerData).then(
+            () => {
+              if (onImageLoadCallback) {
+                onImageLoadCallback();
+                resolve();
+              }
+            },
+            reason => reject(reason)
+          )
         )
     );
     // todo get correct text
     return withTimeout(
-      5000,
-      'ההרשמה לקחה יותר זמן מהצפוי, נא לנסות שוב',
-      registerPromise
+      registerPromise,
+      defaultTimeout,
+      'ההרשמה לקחה יותר זמן מהצפוי, נא לנסות שוב'
     );
   }
 
@@ -262,11 +284,12 @@ export default function UserService(config = {}) {
   /**
    * Handle a parsed SSO response payload
    * @param serviceData an object element of the following form:
-   * {status: 'success'|'failure' , data: {i:*,}, message}
+   * {status: 'success'|'failure'|'error' , data: {i:*,} | 'nothing', message}
    * @return {*} a promise that resolves iff:
    * 1) The first param is a successfully parsed success response from an SSO login endpoint
    * 2) All of the side effect operations that happen as a result of the response,
    * have completed successfully.
+   * if the promise rejects, it rejects with an error object that have the sso error message
    */
   function handleSsoResponse(serviceData) {
     let promise = null;
@@ -286,7 +309,7 @@ export default function UserService(config = {}) {
       promise = Promise.race(cookiesPromises);
     }
     else {
-      promise = Promise.reject(new Error(serviceData.message));
+      promise = Promise.reject(new Error(serviceData));
     }
 
     return promise;
