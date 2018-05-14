@@ -25,7 +25,7 @@ const chosenDetailsBoxStyle = theme => ({
     theme.mq(
       { from: 's', },
       {
-        maxWidth: '65rem',
+        maxWidth: '67rem',
       }
     ),
     theme.mq(
