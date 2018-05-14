@@ -2,13 +2,16 @@
 import createSiteConfig from './site-config';
 
 let origHostname;
+let origNodeEnv;
 
 describe('Site Config', () => {
   beforeAll(() => {
     origHostname = window.location.href;
+    origNodeEnv = process.env.NODE_ENV;
   });
   afterAll(() => {
     jsdom.reconfigure({ url: origHostname, });
+    process.env.NODE_ENV = origNodeEnv;
     // Object.defineProperty(window.location, 'hostname', {
     //   value: origHostname,
     //   writable: true,
@@ -41,6 +44,7 @@ describe('Site Config', () => {
   });
 
   it('should have the following keys', () => {
+    process.env.NODE_ENV = 'production';
     const map = createSiteConfig();
     const keys = Object.keys(map);
     const values = Object.values(map);
@@ -53,6 +57,7 @@ describe('Site Config', () => {
   });
 
   it('should have a site configuration for themarker.com', () => {
+    process.env.NODE_ENV = 'production';
     jsdom.reconfigure({ url: 'https://www.themarker.com', });
     // Object.defineProperty(window.location, 'hostname', {
     //   value: 'www.themarker.com',
@@ -70,6 +75,7 @@ describe('Site Config', () => {
   });
 
   it('should have a site configuration for themarker.com', () => {
+    process.env.NODE_ENV = 'production';
     jsdom.reconfigure({ url: 'http://www.haaretz.com', });
     // Object.defineProperty(window.location, 'hostname', {
     //   value: 'www.haaretz.com',
@@ -87,6 +93,7 @@ describe('Site Config', () => {
   });
 
   it('should have a site configuration for a valid IP address', () => {
+    process.env.NODE_ENV = origNodeEnv;
     jsdom.reconfigure({ url: 'http://172.21.1.56', });
     // Object.defineProperty(window.location, 'hostname', {
     //   value: '172.21.1.56',
@@ -104,6 +111,7 @@ describe('Site Config', () => {
   });
 
   it("should throw an error if there isn't a defined site configuration for the current domain", () => {
+    process.env.NODE_ENV = origNodeEnv;
     jsdom.reconfigure({ url: 'http://example.com', });
     // Object.defineProperty(window.location, 'hostname', {
     //   value: 'example.com',
@@ -123,6 +131,7 @@ describe('Site Config', () => {
   });
 
   it("should throw an error if there isn't a defined site configuration for the current domain", () => {
+    process.env.NODE_ENV = origNodeEnv;
     const oldHostname = window.location.href;
     // Object.defineProperty(window.location, 'hostname', {
     //   value: undefined,

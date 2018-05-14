@@ -18,7 +18,6 @@ export default function createSiteConfig() {
   const hostname = window.location.hostname;
   const defaultHostname = 'haaretz.co.il';
   const configurations = new Map();
-  // console.warn(`location is: ${this.hostname}`);
   // https://stackoverflow.com/questions/5284147/validating-ipv4-addresses-with-regexp
   const isIpAddress = suspectedIp =>
     /(?!(10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.).*)(?!255\.255\.255\.255)(25[0-5]|2[0-4]\d|[1]\d\d|[1-9]\d|[1-9])(\.(25[0-5]|2[0-4]\d|[1]\d\d|[1-9]\d|\d)){3}/.test(
@@ -27,11 +26,10 @@ export default function createSiteConfig() {
   const domain = isIpAddress(hostname)
     ? defaultHostname
     : getSubdomain(hostname);
-  const isProduction = hostname.startsWith('www');
+  const isProduction = process.env.NODE_ENV === 'production';
   const ssoDomain = isProduction
     ? `https://sso.${domain}`
     : `https://devsso.${domain}`;
-  // console.warn(`site config ${ssoDomain}`);
   configurations.set('haaretz.co.il', {
     ssoDomain,
     ssoKey: 'tmsso',
