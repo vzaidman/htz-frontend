@@ -17,7 +17,6 @@ import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import SecurePaymentLine from './Elements/SecurePaymentLine';
 import PaymentButtonsDivider from './StagePaymentElements/PaymentButtonsDivider';
 import PaymentSummary from './StagePaymentElements/PaymentSummary';
-import CreditCardSvg from './Elements/CreditCardSvg';
 import Redirect from '../../Redirect/Redirect';
 
 const propTypes = {
@@ -151,6 +150,7 @@ class PaymentStage extends Component {
           {cache => (
             <Form
               disableSubmitOnEnterKeyDown
+              clearFormAfterSubmit={false}
               initialValues={{
                 ...(!!creditCardsDetails && { paymentMethodIndex: '0', }),
               }}
@@ -180,9 +180,7 @@ class PaymentStage extends Component {
                 <FelaComponent
                   style={formContStyle}
                   render={({
-                    theme: {
-                      stage4: { subStage2: { headerPaymentMethod, form, }, },
-                    },
+                    theme: { stage4: { headerPaymentMethod, form, }, },
                     className,
                   }) => (
                     <div className={className}>
@@ -233,24 +231,17 @@ class PaymentStage extends Component {
                                                 })}
                                               >
                                                 <span>
-                                                  המשך תשלום עם כרטיס שמספרו
+                                                  {
+                                                    form.continueWithCreditCardText
+                                                  }
                                                 </span>{' '}
                                               </FelaComponent>
                                               <span className={className}>
                                                 {fourDigits}
-                                              </span>
+                                              </span>{' '}
                                               <span className={className}>
-                                                •••• •••• ••••
+                                                {form.hiddenCreditCardDigits}
                                               </span>
-                                              <FelaComponent
-                                                style={{ marginRight: '2rem', }}
-                                                render={({ className, }) => (
-                                                  <CreditCardSvg
-                                                    companyCode={companyCode}
-                                                    className={className}
-                                                  />
-                                                )}
-                                              />
                                             </Fragment>
                                           )}
                                         />
