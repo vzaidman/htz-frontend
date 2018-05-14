@@ -11,6 +11,13 @@ export const seo = Object.freeze({
   }),
 });
 
+export const linkToHomePage = Object.freeze({
+  href: Object.freeze({
+    'haaretz.co.il': 'https://www.haaretz.co.il/',
+    'themarker.com': 'https://www.themarker.com/',
+  }),
+});
+
 export const header = Object.freeze({
   backLinkText: 'חזור',
   underLogoText: Object.freeze({
@@ -39,10 +46,6 @@ export const offerPage = Object.freeze({
 export const purchasePageFooter = Object.freeze({
   homePageLink: Object.freeze({
     text: 'דף הבית',
-    href: Object.freeze({
-      'haaretz.co.il': 'https://www.haaretz.co.il/',
-      'themarker.com': 'https://www.themarker.com/',
-    }),
   }),
   links: [
     // when adding links make sure to add a uniqe id
