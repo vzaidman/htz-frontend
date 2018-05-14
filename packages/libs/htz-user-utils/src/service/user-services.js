@@ -309,7 +309,9 @@ export default function UserService(config = {}) {
       promise = Promise.race(cookiesPromises);
     }
     else {
-      promise = Promise.reject(new Error(serviceData));
+      promise = Promise.reject(
+        new Error(serviceData.message || 'שגיאה במערכת המנויים')
+      );
     }
 
     return promise;

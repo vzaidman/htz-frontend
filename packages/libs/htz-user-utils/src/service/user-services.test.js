@@ -66,7 +66,7 @@ describe('UserFactory CookieBased Module', () => {
         password: '1231234',
       };
       await expect(userService.login(credentials)).rejects.toThrow(
-        new Error(loginFailureServiceData)
+        new Error(loginFailureServiceData.message)
       );
     });
 
@@ -75,7 +75,7 @@ describe('UserFactory CookieBased Module', () => {
       fetch.resetMocks();
       fetch.mockResponses([ logoutFailureResponse, ]);
       await expect(userService.logout()).rejects.toThrow(
-        new Error(logoutFailureServiceData)
+        new Error(logoutFailureServiceData.message)
       );
     });
 
@@ -97,7 +97,7 @@ describe('UserFactory CookieBased Module', () => {
         user: undefined,
       };
       await expect(userService.register(formData)).rejects.toThrow(
-        new Error(registerFailureServiceData)
+        new Error(registerFailureServiceData.message)
       );
     });
   });
