@@ -72,7 +72,6 @@ function Stage2() {
                                     chosenSubscription={
                                       chosenSlot.subscriptionName
                                     }
-                                    stage={2}
                                     user={user}
                                     isLoggedIn={isLoggedIn}
                                     skipTransition={

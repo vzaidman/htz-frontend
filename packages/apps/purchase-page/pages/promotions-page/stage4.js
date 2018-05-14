@@ -77,7 +77,6 @@ function Stage4() {
                             render={({ user, isLoggedIn, }) => (
                               <StageTransition
                                 chosenSubscription={chosenSubscription}
-                                stage={4}
                                 user={user}
                                 isLoggedIn={isLoggedIn}
                                 headerElement={

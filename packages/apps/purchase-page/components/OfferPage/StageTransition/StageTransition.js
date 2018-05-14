@@ -56,10 +56,17 @@ const elementContStyle = ({ transitionStarted, theme, }) => ({
 
 const StyledElementCont = createComponent(elementContStyle);
 
-const headerStyle = ({ transitionStarted, hasUserBanner, theme, }) => ({
+const headerStyle = ({
+  displayPhones,
+  hasUserBanner,
+  transitionStarted,
+  theme,
+}) => ({
   marginTop: transitionStarted
     ? '1rem'
-    : `${hasUserBanner ? topSpacingWithBanner : topSpacing + 2}rem`,
+    : !displayPhones
+      ? '20rem'
+      : `${hasUserBanner ? topSpacingWithBanner : topSpacing + 2}rem`,
   transform: transitionStarted ? 'scale(1)' : 'scale(1.2)',
   transitionProperty: 'all',
   extend: [ theme.getTransition(transitionDuration, transitionEasing), ],
@@ -69,15 +76,16 @@ const StyledHeader = createComponent(headerStyle, 'h1');
 
 class StageTransition extends Component {
   static propTypes = {
-    stage: PropTypes.number.isRequired,
-    headerElement: PropTypes.element.isRequired,
-    stageElement: PropTypes.element.isRequired,
     chosenSubscription: PropTypes.string.isRequired,
+    displayPhones: PropTypes.bool,
     isLoggedIn: PropTypes.bool.isRequired,
+    headerElement: PropTypes.element.isRequired,
     skipTransition: PropTypes.bool,
+    stageElement: PropTypes.element.isRequired,
   };
 
   static defaultProps = {
+    displayPhones: true,
     skipTransition: false,
   };
 
@@ -105,10 +113,10 @@ class StageTransition extends Component {
 
     const {
       chosenSubscription,
-      stage,
-      stageElement,
+      displayPhones,
       headerElement,
       isLoggedIn,
+      stageElement,
     } = this.props;
 
     return (
@@ -116,22 +124,23 @@ class StageTransition extends Component {
         style={{ textAlign: 'center', }}
         render={({ theme, className, }) => (
           <div className={className}>
-            <StyledPhonesCont
-              transitionStarted={transitionStarted}
-              hasUserBanner={isLoggedIn}
-            >
-              <StyledInnerPhonesCont>
-                <Phones subscription={chosenSubscription} />
-              </StyledInnerPhonesCont>
-            </StyledPhonesCont>
-            {typeof stage === 'number' && (
-              <StyledHeader
+            {displayPhones && (
+              <StyledPhonesCont
                 transitionStarted={transitionStarted}
                 hasUserBanner={isLoggedIn}
               >
-                {headerElement}
-              </StyledHeader>
+                <StyledInnerPhonesCont>
+                  <Phones subscription={chosenSubscription} />
+                </StyledInnerPhonesCont>
+              </StyledPhonesCont>
             )}
+            <StyledHeader
+              transitionStarted={transitionStarted}
+              hasUserBanner={isLoggedIn}
+              displayPhones={displayPhones}
+            >
+              {headerElement}
+            </StyledHeader>
             <Query query={GET_HOST_NAME}>
               {({ data: { hostname, }, }) => {
                 const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];

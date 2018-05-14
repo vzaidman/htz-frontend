@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
-import { IconCheck, Link, Newsletter, BIAction, } from '@haaretz/htz-components';
-import Phones from './Elements/Phones';
+import { Link, Newsletter, BIAction, } from '@haaretz/htz-components';
 
 const GET_HOST_NAME = gql`
   query {
@@ -32,15 +31,8 @@ const contStyle = () => ({
   paddingInlineStart: '2rem',
   paddingInlineEnd: '2rem',
   marginTop: '2rem',
-  maxWidth: '84rem',
+  maxWidth: '87rem',
 });
-
-const headerStyle = ({ theme, }) => ({
-  marginTop: '3rem',
-  extend: [ theme.type(3), ],
-});
-
-const StyledHeader = createComponent(headerStyle, 'h1');
 
 const linkStyle = ({ theme, }) => ({
   marginTop: '6rem',
@@ -74,30 +66,13 @@ function StageThankYou({ userEmail, product, userMessage, }) {
             render={({
               className,
               theme: {
-                thankYou: {
-                  afterPurchase,
-                  secondaryHeader,
-                  backToArticleContent,
-                },
+                thankYou: { backToArticleContent, },
                 newsletterI18n: {
                   texts: { newsletterTitle, newsletterButton, },
                 },
               },
             }) => (
               <div className={className}>
-                {product ? (
-                  <Phones subscription={product} size={3.5} />
-                ) : (
-                  <IconCheck color="positive" size={10} />
-                )}
-                <StyledHeader>
-                  {product ? (
-                    <p>{afterPurchase(product)}</p>
-                  ) : (
-                    userMessage.map(line => <p>{line}</p>)
-                  )}
-                </StyledHeader>
-
                 {referrer &&
                   isArticle(referrer) && (
                     <BIAction>
