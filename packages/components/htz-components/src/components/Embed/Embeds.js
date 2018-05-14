@@ -11,7 +11,7 @@ import { createComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import embedTypes from './utils/embedTypes';
 import exampleProps from './utils/exampleProps';
-import RadioGroup from './utils/RadioGroup';
+import RadioGroup from './utils/EmbedRadioGroup';
 import LoadingScreen from './utils/LoadingScreen';
 
 const embeds = {
