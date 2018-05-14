@@ -3,7 +3,15 @@ import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import Router from 'next/router';
-import { Button, IconHtzLoader, } from '@haaretz/htz-components';
+import { Query, } from 'react-apollo';
+import gql from 'graphql-tag';
+import { Button, IconHtzLoader, IconTmLoader, } from '@haaretz/htz-components';
+
+const GET_HOST_NAME = gql`
+  query {
+    hostname @client
+  }
+`;
 
 const styles = ({ iframeHeight, loading, theme, }) => ({
   width: '100%',
@@ -119,62 +127,73 @@ class CreditCardIframe extends Component {
 
   render() {
     const { creditGuardSrc, } = this.props;
-
     return (
-      <div>
-        {this.state.loading ? (
-          <IconHtzLoader
-            size={15}
-            color="primary"
-            miscStyles={{ marginTop: '15rem', marginBottom: '25rem', }}
-          />
-        ) : null}
-        {this.state.error ? (
-          <FelaComponent
-            rule={{
-              color: 'red',
-              marginTop: '19rem',
-            }}
-            render={({ className, theme: { creditCardIframe, }, }) => (
-              <div>
-                <div className={className}>
-                  {this.state.errorMessage ||
-                    creditCardIframe.defaultErrorMessage}
-                </div>
-                <Button
-                  variant="primaryOpaque"
-                  onClick={() =>
-                    this.setState({ errorMessage: null, error: false, })
-                  }
-                  miscStyles={{ marginTop: '6rem', marginBottom: '25rem', }}
-                  boxModel={{ vp: 1, hp: 5, }}
-                >
-                  {creditCardIframe.tryAgain}
-                </Button>
-              </div>
-            )}
-          />
-        ) : (
-          <FelaComponent
-            iframeHeight={this.state.iframeHeight}
-            loading={this.state.loading}
-            rule={styles}
-            render={({ className, }) => (
-              <iframe
-                className={className}
-                title="secure-credit-card-form"
-                //  todo: go over this list
-                sandbox="allow-forms allow-popups allow-pointer-lock allow-scripts"
-                scrolling="no"
-                src={creditGuardSrc}
-                ref={element => {
-                  this.ifr = element;
-                }}
-              />
-            )}
-          />
-        )}
-      </div>
+      <Query query={GET_HOST_NAME}>
+        {({ data: { hostname, }, }) => {
+          const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+          const LoaderIcon =
+            host === 'themarker.com' ? IconTmLoader : IconHtzLoader;
+          return (
+            <div>
+              {this.state.loading ? (
+                <LoaderIcon
+                  size={15}
+                  color="primary"
+                  miscStyles={{ marginTop: '15rem', marginBottom: '25rem', }}
+                />
+              ) : null}
+              {this.state.error ? (
+                <FelaComponent
+                  rule={{
+                    color: 'red',
+                    marginTop: '19rem',
+                  }}
+                  render={({ className, theme: { creditCardIframe, }, }) => (
+                    <div>
+                      <div className={className}>
+                        {this.state.errorMessage ||
+                          creditCardIframe.defaultErrorMessage}
+                      </div>
+                      <Button
+                        variant="primaryOpaque"
+                        onClick={() =>
+                          this.setState({ errorMessage: null, error: false, })
+                        }
+                        miscStyles={{
+                          marginTop: '6rem',
+                          marginBottom: '25rem',
+                        }}
+                        boxModel={{ vp: 1, hp: 5, }}
+                      >
+                        {creditCardIframe.tryAgain}
+                      </Button>
+                    </div>
+                  )}
+                />
+              ) : (
+                <FelaComponent
+                  iframeHeight={this.state.iframeHeight}
+                  loading={this.state.loading}
+                  rule={styles}
+                  render={({ className, }) => (
+                    <iframe
+                      className={className}
+                      title="secure-credit-card-form"
+                      //  todo: go over this list
+                      sandbox="allow-forms allow-popups allow-pointer-lock allow-scripts"
+                      scrolling="no"
+                      src={creditGuardSrc}
+                      ref={element => {
+                        this.ifr = element;
+                      }}
+                    />
+                  )}
+                />
+              )}
+            </div>
+          );
+        }}
+      </Query>
     );
   }
 }
