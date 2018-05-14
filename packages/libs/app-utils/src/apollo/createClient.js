@@ -41,6 +41,7 @@ function create(initialState, req) {
     cache: inMemoryCache,
     defaults: {
       hostname,
+      startFromStage2: true,
       referrer: null,
       loggedInOrRegistered: null,
       scroll: {
