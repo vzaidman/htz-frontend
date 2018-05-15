@@ -10,6 +10,7 @@ import {
   IconHaaretzLogo,
   IconLock,
   BIAction,
+  Link,
 } from '@haaretz/htz-components';
 
 const propTypes = {
@@ -116,11 +117,15 @@ const trustedBadgeContentStyle = theme => ({
 });
 
 function PurchaseHeader({ host, router, displayBackButton, stage, }) {
+  const isTheMarker = host === 'themarker.com';
   return (
     <FelaComponent
       style={contStyle}
       render={({
-        theme: { header: { backLinkText, underLogoText, trustedBadgeText, }, },
+        theme: {
+          header: { backLinkText, underLogoText, trustedBadgeText, },
+          linkToHomePage: { href, },
+        },
         className,
       }) => (
         <div className={className}>
@@ -163,19 +168,24 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
           </FelaComponent>
 
           <FelaComponent style={logoContStyle}>
-            {host === 'themarker.com' ? (
-              <IconMarkerLogo
-                size={4}
-                color="primary"
-                miscStyles={{ marginTop: '2rem', }}
-              />
-            ) : (
-              <IconHaaretzLogo
-                size={4}
-                color="black"
-                miscStyles={{ marginTop: '2rem', }}
-              />
-            )}
+            <Link
+              href={href[host]}
+              content={
+                isTheMarker ? (
+                  <IconMarkerLogo
+                    size={4}
+                    color="primary"
+                    miscStyles={{ marginTop: '2rem', }}
+                  />
+                ) : (
+                  <IconHaaretzLogo
+                    size={4}
+                    color="black"
+                    miscStyles={{ marginTop: '2rem', }}
+                  />
+                )
+              }
+            />
             <FelaComponent style={underLogoStyle}>
               {underLogoText[host]}
             </FelaComponent>

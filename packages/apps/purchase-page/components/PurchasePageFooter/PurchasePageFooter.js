@@ -106,13 +106,16 @@ export function PurchasePageFooter({ host, hasIllustration, stage, }) {
         style={footerLinkListContStyle}
         render={({
           className,
-          theme: { purchasePageFooter: { homePageLink, links, }, },
+          theme: {
+            purchasePageFooter: { homePageLink, links, },
+            linkToHomePage: { href, },
+          },
         }) => (
           <div className={className}>
             <BIAction>
               {action => (
                 <StyledHomePageLink
-                  href={homePageLink.href[host]}
+                  href={href[host]}
                   content={
                     <Fragment>
                       {isTheMarker ? (
