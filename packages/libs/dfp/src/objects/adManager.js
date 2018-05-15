@@ -7,6 +7,7 @@ import AdSlot from '../objects/adSlot';
 import { getBreakpoint, getBreakpointName, } from '../utils/breakpoints';
 
 let breakpoints;
+let debug = null;
 
 // There are a total of 7 adTargets:
 // "all","nonPaying","anonymous","registered","paying","digitalOnly" and "digitalAndPrint"
@@ -55,17 +56,6 @@ export default class AdManager {
         this.initGoogleGlobalSettings(); //  enableServices()
         this.initSlotRenderedCallback(); //  Define callbacks
       });
-      // Mouse special treatment to base path on mobile breakpoints
-      const currentBreakpointName = getBreakpointName(
-        getBreakpoint(breakpoints),
-        breakpoints
-      );
-      if (
-        this.config.adManagerConfig.adUnitBase.indexOf('mouse.co.il') > -1 &&
-        currentBreakpointName.indexOf('xs') > -1
-      ) {
-        this.config.adManagerConfig.adUnitBase = 'mouse.co.il.mobile_web';
-      }
       // Holds adSlot objects as soon as possible.
       googletag.cmd.push(() => {
         this.adSlots = this.initAdSlots(config.adSlotConfig, adPriorities.high);
@@ -129,6 +119,17 @@ export default class AdManager {
   }
 
   /**
+   * Memoized DEBUGGING flag to show debugging information
+   */
+  static get DEBUG() {
+    if (debug !== null) {
+      return debug;
+    }
+    debug = window.location.search.includes('debug') || false;
+    return debug;
+  }
+
+  /**
    * Shows all of the adSlots that can be displayed.
    */
   showAllSlots() {
@@ -138,13 +139,14 @@ export default class AdManager {
         adSlot.type !== adTypes.talkback &&
         this.shouldSendRequestToDfp(adSlot)
       ) {
-        console.log(
-          `${
-            adSlot.id
-          } this.shouldSendRequestToDfp(adSlot) is: ${!!this.shouldSendRequestToDfp(
-            adSlot
-          )}`
-        );
+        this.DEBUG &&
+          console.log(
+            `${
+              adSlot.id
+            } this.shouldSendRequestToDfp(adSlot) is: ${!!this.shouldSendRequestToDfp(
+              adSlot
+            )}`
+          );
         adSlot.show();
       }
     }
@@ -188,7 +190,7 @@ export default class AdManager {
           adSlot.lastResolvedWithBreakpoint !== currentBreakpoint &&
           this.shouldSendRequestToDfp(adSlot)
         ) {
-          // console.log(`calling refresh for adSlot: ${adSlot.id}`);
+          this.DEBUG && console.log(`calling refresh for adSlot: ${adSlot.id}`);
           adSlot.refresh();
         }
         else {
@@ -563,7 +565,13 @@ export default class AdManager {
         const id = event.slot.getAdUnitPath().split('/')[3];
         const isEmpty = event.isEmpty;
         const resolvedSize = event.size;
-        // console.log('slotRenderEnded for slot',id,' called @',window.performance.now());
+        this.DEBUG &&
+          console.log(
+            'slotRenderEnded for slot',
+            id,
+            ' called @',
+            window.performance.now()
+          );
         if (this.adSlots.has(id)) {
           const adSlot = this.adSlots.get(id);
           adSlot.lastResolvedSize = resolvedSize;
@@ -580,15 +588,13 @@ export default class AdManager {
             `${adSlot.id}${this.config.department}`
           );
           this.user.impressionManager.registerImpression(`${adSlot.id}_all`);
-          // console.log('registered impression for ', adSlot.id);
-          // console.log('showing ', adSlot.id);
+          this.DEBUG && console.log('registered impression for ', adSlot.id);
           // console.trace();
         }
         else {
-          /*
-           console.error(`Cannot find an adSlot with id: ${id} - Ad Unit path is
+          this.DEBUG &&
+            console.error(`Cannot find an adSlot with id: ${id} - Ad Unit path is
            ${event.slot.getAdUnitPath()}`);
-           */
         }
       });
     }
@@ -629,9 +635,8 @@ export default class AdManager {
       }
     }
     catch (err) {
-      /* eslint-disable no-console */
-      console.error(`Cannot updateSlotDependencies for adSlot: ${adSlot.id}`);
-      /* eslint-enable no-console */
+      this.DEBUG &&
+        console.error(`Cannot updateSlotDependencies for adSlot: ${adSlot.id}`);
     }
   }
 

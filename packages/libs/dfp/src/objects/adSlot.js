@@ -167,29 +167,34 @@ export default class AdSlot {
         if (this.deferredSlot || !this.slot) {
           this.slot = this.defineSlot();
         }
-        console.log(
-          'calling show for slot',
-          this.id,
-          ' called @',
-          window.performance.now()
-        );
+        this.adManager.DEBUG &&
+          console.log(
+            'calling show for slot',
+            this.id,
+            ' called @',
+            window.performance.now()
+          );
         this.htmlElement.classList.remove(hiddenClass);
-        console.log(
-          'calling show for slot',
-          this.id,
-          ' called @',
-          window.performance.now()
-        );
+        this.adManager.DEBUG &&
+          console.log(
+            'calling show for slot',
+            this.id,
+            ' called @',
+            window.performance.now()
+          );
         googletag.display(this.id);
       });
     }
     else {
-      console.error(
-        `calling show for an ad slot that ${
-          this.shown ? 'was already shown!' : 'missing a required DOM element!'
-        }`,
-        this
-      );
+      this.adManager.DEBUG &&
+        console.error(
+          `calling show for an ad slot that ${
+            this.shown
+              ? 'was already shown!'
+              : 'missing a required DOM element!'
+          }`,
+          this
+        );
     }
   }
 
@@ -303,12 +308,15 @@ export default class AdSlot {
       });
     }
     else {
-      console.error(
-        `calling refresh for an ad slot that ${
-          this.shown ? 'was already shown!' : 'missing a required DOM element!'
-        }`,
-        this
-      );
+      this.adManager.DEBUG &&
+        console.error(
+          `calling refresh for an ad slot that ${
+            this.shown
+              ? 'was already shown!'
+              : 'missing a required DOM element!'
+          }`,
+          this
+        );
     }
   }
 

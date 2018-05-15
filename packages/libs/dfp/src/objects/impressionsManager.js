@@ -236,7 +236,7 @@ export default class ImpressionsManager {
       const slot = this.impressions[adSlotId];
       if (slot) {
         const exposed = slot[keys.exposed];
-        if (isNaN(parseInt(exposed, 10)) === false) {
+        if (Number.isNaN(parseInt(exposed, 10)) === false) {
           this.impressions[adSlotId][keys.exposed] += 1;
           try {
             this.saveImpressionsToLocalStorage();

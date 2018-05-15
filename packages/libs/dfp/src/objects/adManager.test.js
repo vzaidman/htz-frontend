@@ -7,8 +7,6 @@ import User from './user';
 import AdSlot from './adSlot';
 
 const breakpoints = globalConfigMock.breakpointsConfig.breakpoints;
-prepareMarkup();
-window.googletag = new GPT();
 
 describe('AdManager', () => {
   let adManager;
@@ -16,7 +14,8 @@ describe('AdManager', () => {
   beforeAll(async () => {
     // dfp = new DFP(globalConfigMock);
     // mockGoogleTagInit(dfp);
-
+    prepareMarkup();
+    window.googletag = new GPT();
     adManager = await new AdManager(globalConfigMock);
     // Removes initializers pushed to google's CMD (CommandArray) for later execution
     window.googletag.cmd.splice(0, 3);
@@ -32,6 +31,10 @@ describe('AdManager', () => {
     // dfp.initGoogleTag().then(() => {
     //   done();
     // });
+  });
+
+  afterAll(() => {
+    window.googletag = undefined;
   });
 
   it('should not throw an error', () => {
@@ -201,6 +204,7 @@ describe('AdManager', () => {
       let adSlot;
       beforeAll(() => {
         adSlot = definePlazmaSlot(adManager);
+        adSlot.show();
       });
 
       it("should have the 'shouldSendRequestToDfp' function", () => {
@@ -208,7 +212,9 @@ describe('AdManager', () => {
       });
 
       it('should return a boolean', () => {
-        expect(typeof adManager.shouldSendRequestToDfp(adSlot)).toBe('boolean');
+        expect(adManager.shouldSendRequestToDfp(adSlot)).toEqual(
+          expect.any(Boolean)
+        );
       });
     });
 
@@ -274,9 +280,7 @@ describe('AdManager', () => {
         const breakpointDescription = `${breakpoint}:${
           breakpoints[breakpoint]
         }`;
-        it(`should return an integer on valid breakpoint input: '${
-          breakpointDescription
-        }'`, () => {
+        it(`should return an integer on valid breakpoint input: '${breakpointDescription}'`, () => {
           expect(
             typeof adManager.switchedToBreakpoint(breakpoints[breakpoint])
           ).toBe('number');
@@ -400,7 +404,7 @@ function definePromotionalMadridSlot(adManagerInstance, target) {
   return new AdSlot(adSlotConfig);
 }
 
-function prepareMarkup() {
+export function prepareMarkup() {
   const divs = `<div id="haaretz.co.il.web.plazma" class="js-dfp-ad js-dfp-resp-refresh h-dib"
  data-audtarget="section"></div>
   <div id="haaretz.co.il.web.popunder" class="js-dfp-ad js-dfp-resp-refresh h-dib"

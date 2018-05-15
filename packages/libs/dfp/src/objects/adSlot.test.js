@@ -1,26 +1,37 @@
-/* global window, googletag */
+/* global window, document, googletag */
 import 'jest-matcher-one-of';
 import GPT from 'gpt-mock';
 import AdSlot from './adSlot';
-import AdManager, { adTargets, adTypes, } from './adManager';
+import AdManager, { adTargets, adTypes, adPriorities, } from './adManager';
+import { prepareMarkup, } from './adManager.test';
 import globalConfigMock from '../__mocks__/globalConfig.mock';
-
-window.googletag = new GPT();
 
 describe('adSlot', () => {
   let adSlot;
-  beforeAll(() => {
-    googletag.destroySlots();
-    adSlot = definePlazmaSlot();
+  let adManager;
+
+  beforeAll(async () => {
+    prepareMarkup();
+    window.googletag = new GPT();
+    // googletag.destroySlots();
+    // console.log(window.googletag.pubads());
+    adManager = await new AdManager(globalConfigMock);
+    adSlot = definePlazmaSlot(adManager);
+    // eslint-disable-next-line no-underscore-dangle
+    window.googletag._loaded();
+  });
+
+  afterAll(() => {
+    window.googletag = undefined;
   });
 
   it('should throw an error if no id param is passed', () => {
-    expect(defineSlotWithoutAnId).toThrow();
+    expect(() => defineSlotWithoutAnId(adManager)).toThrow();
   });
 
   it('should not throw an error on a well defined adSlot', () => {
-    googletag.destroySlots(); // We must destroy the slot in order for 'this.defineSlot' to pass;
-    expect(definePlazmaSlot).not.toThrow();
+    // googletag.destroySlots(); // We must destroy the slot in order for 'this.defineSlot' to pass;
+    expect(() => definePlazmaSlot(adManager)).not.toThrow();
   });
 
   it('should be a object', () => {
@@ -100,7 +111,7 @@ describe('adSlot', () => {
     });
 
     describe('slot property', () => {
-      it('should have a slot property ', () => {
+      it('should have a slot property', () => {
         expect(adSlot.slot).toEqual(expect.any(Object));
       });
     });
@@ -307,45 +318,47 @@ describe('adSlot', () => {
   });
 });
 
-function definePlazmaSlot() {
-  const adManagerInstance = new AdManager(globalConfigMock);
-  const user = adManagerInstance.user;
-  // console.log(globalConfigMock.adSlotConfig['haaretz.co.il.web.plazma']);
-
+function definePlazmaSlot(adManager) {
   const adSlotConfig = Object.assign(
     {},
     globalConfigMock.adSlotConfig['haaretz.co.il.web.plazma'],
     {
       id: 'haaretz.co.il.web.plazma',
       target: 'all',
-      type: '',
+      type: adManager.getAdType('haaretz.co.il.web.plazma'),
       responsive: true,
-      user,
-      adManager: adManagerInstance,
+      fluid: false,
+      user: adManager.user,
+      adManager,
+      htmlElement: document.getElementById('haaretz.co.il.web.plazma'),
       department: globalConfigMock.department,
       network: globalConfigMock.adManagerConfig.network,
       adUnitBase: globalConfigMock.adManagerConfig.adUnitBase,
+      deferredSlot: false,
+      priority: adPriorities.normal,
     }
   );
   return new AdSlot(adSlotConfig);
 }
 
-function defineSlotWithoutAnId() {
-  const adManagerInstance = new AdManager(globalConfigMock);
-  const user = adManagerInstance.user;
+function defineSlotWithoutAnId(adManager) {
   const adSlotConfig = Object.assign(
     {},
     globalConfigMock.adSlotConfig['haaretz.co.il.web.plazma'],
     {
       id: undefined,
       target: 'all',
-      type: '',
+      type: adManager.getAdType('haaretz.co.il.web.plazma'),
       responsive: true,
-      user,
-      adManager: adManagerInstance,
+      fluid: false,
+      user: adManager.user,
+      adManager,
+      htmlElement: document.getElementById('haaretz.co.il.web.plazma'),
       department: globalConfigMock.department,
       network: globalConfigMock.adManagerConfig.network,
       adUnitBase: globalConfigMock.adManagerConfig.adUnitBase,
+      deferredSlot: false,
+      priority: adPriorities.normal,
     }
   );
   return new AdSlot(adSlotConfig);
