@@ -68,15 +68,29 @@ const headingStyle = ({ theme, }) => ({
   paddingInlineStart: '4rem',
   paddingInlineEnd: '4rem',
   marginTop: '2rem',
-  extend: [ parseTypographyProp([ { until: 'l', value: 3, }, { from: 'l', value: 5, }, ], theme.type), ],
+  extend: [
+    parseTypographyProp(
+      [ { until: 'l', value: 3, }, { from: 'l', value: 5, }, ],
+      theme.type
+    ),
+  ],
 });
 
 const StyledHeading = createComponent(headingStyle, 'h1');
 
-function ChooseSlotStage({ hostname, tableData, subStage, userMessage, router, }) {
+function ChooseSlotStage({
+  hostname,
+  tableData,
+  subStage,
+  userMessage,
+  router,
+}) {
   // eslint-disable-next-line prefer-const
   let [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
-  pathWithoutQuery = pathWithoutQuery.substr(0, pathWithoutQuery.lastIndexOf('/'));
+  pathWithoutQuery = pathWithoutQuery.substr(
+    0,
+    pathWithoutQuery.lastIndexOf('/')
+  );
   const asPath = `${pathWithoutQuery}/${friendlyRoutes.stage2}`;
   const pathName = '/promotions-page/stage2';
 
@@ -92,10 +106,16 @@ function ChooseSlotStage({ hostname, tableData, subStage, userMessage, router, }
       },
     });
     if (routerPush) {
-      router.push(pathName, queryPartFromPath ? `${asPath}?${queryPartFromPath}` : asPath);
+      router.push(
+        pathName,
+        queryPartFromPath ? `${asPath}?${queryPartFromPath}` : asPath
+      );
     }
     else {
-      router.replace(pathName, queryPartFromPath ? `${asPath}?${queryPartFromPath}` : asPath);
+      router.replace(
+        pathName,
+        queryPartFromPath ? `${asPath}?${queryPartFromPath}` : asPath
+      );
     }
   };
 
@@ -107,7 +127,10 @@ function ChooseSlotStage({ hostname, tableData, subStage, userMessage, router, }
         className,
         theme: {
           stage1,
-          stage1: { headerText, buttons: { entitlements, organizationSubscription, }, },
+          stage1: {
+            headerText,
+            buttons: { entitlements, organizationSubscription, },
+          },
         },
       }) => (
         <Fragment>
@@ -149,10 +172,16 @@ function ChooseSlotStage({ hostname, tableData, subStage, userMessage, router, }
                             {entitlements.beforeLinkText}{' '}
                             <FelaComponent
                               render="span"
-                              style={{
+                              style={theme => ({
                                 textDecoration: 'underline',
                                 textDecorationSkip: 'ink',
-                              }}
+                                extend: [
+                                  theme.mq(
+                                    { until: 's', },
+                                    { display: 'block', }
+                                  ),
+                                ],
+                              })}
                             >
                               {entitlements.linkText}
                             </FelaComponent>
