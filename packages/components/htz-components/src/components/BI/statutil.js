@@ -4,6 +4,7 @@ import querystring from 'querystring';
 import withTimeout from './withTimeout';
 import extractParameter from './extractParamFromUrl';
 
+const isProduction = process.env.NODE_ENV === 'production';
 let dsUrl;
 
 /**
@@ -22,7 +23,7 @@ export function doStatAction(action, user) {
   dsUrl =
     dsUrl ||
     `${window.location.protocol}//ds.haaretz.co.il/${
-      window.location.hostname === 'www.haaretz.co.il' ? 'ds.php' : 'dstest.php'
+      isProduction ? 'ds.php' : 'dstest.php'
     }`;
 
   const { additionalInfo, } = action;
@@ -60,7 +61,7 @@ export function doStat(user) {
   dsUrl =
     dsUrl ||
     `${window.location.protocol}//ds.haaretz.co.il/${
-      window.location.hostname === 'www.haaretz.co.il' ? 'ds.php' : 'dstest.php'
+      isProduction ? 'ds.php' : 'dstest.php'
     }`;
 
   const href = window.location.href;
