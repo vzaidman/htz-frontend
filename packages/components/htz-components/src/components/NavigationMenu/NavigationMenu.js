@@ -1,7 +1,9 @@
-import React from 'react';
+/* global document */
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, withTheme, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import List from './navigationList';
+import Hamburger from '../Animations/Hamburger';
 
 const propTypes = {
   /**
@@ -25,16 +27,7 @@ const propTypes = {
       ),
     }),
   ).isRequired,
-  /**
-   * The app's theme (get imported automatically with the `withTheme` method).
-   */
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
-
-const wrapperStyle = () => ({
-  display: 'inline',
-});
-const Wrapper = createComponent(wrapperStyle);
 
 const menuStyle = () => ({
   position: 'relative',
@@ -55,40 +48,6 @@ const myButtonStyle = ({ theme, collapsed, }) => ({
   ),
 });
 const MyButton = createComponent(myButtonStyle, 'button', [ 'onClick', 'role', 'aria-expanded', ]);
-
-const hamburgerDashStyle = (theme, isOpen) => ({
-  height: '2px',
-  width: '2.5rem',
-  position: 'absolute',
-  backgroundColor: isOpen ? theme.color('neutral', '-10') : theme.color('neutral', '-3'),
-  transition: 'all .5s',
-});
-
-const hamburgerStyle = ({ theme, isOpen, }) => ({
-  ...(hamburgerDashStyle(theme, isOpen)),
-  ...(isOpen && { background: 'none', }),
-  display: 'inline-block',
-  left: '50%',
-  margin: '0 auto',
-  top: '50%',
-  transform: 'translate(-50%, -50%)',
-  opacity: '1',
-  ':before': {
-    ...(hamburgerDashStyle(theme, isOpen)),
-    ...(isOpen && { transform: 'translateY(0.75rem) rotate(45deg)', }),
-    left: '0',
-    top: '-0.75rem',
-    content: '""',
-  },
-  ':after': {
-    ...(hamburgerDashStyle(theme, isOpen)),
-    ...(isOpen && { transform: 'translateY(-0.75rem) rotate(-45deg)', }),
-    left: '0',
-    top: '0.75rem',
-    content: '""',
-  },
-});
-const Hamburger = createComponent(hamburgerStyle, 'i');
 
 const hamburgerWrapperStyle = () => ({
   marginStart: '2rem',
@@ -146,34 +105,45 @@ class NavigationMenu extends React.Component {
 
   render() {
     return (
-      <Wrapper
+      <FelaComponent
         innerRef={wrapper => this.wrapper = wrapper} // eslint-disable-line no-return-assign
-      >
-        <MyButton
-          collapsed={this.state.collapsed}
-          onClick={this.changeState}
-          role={'button'}
-          aria-expanded={this.state.collapsed}
-          innerRef={navButt => this.navButt = navButt} // eslint-disable-line no-return-assign
-        >
-          <HamburgerWrapper>
-            <Hamburger isOpen={this.state.collapsed} />
-          </HamburgerWrapper>
-          <span>{this.props.theme.navigationI18n.button}</span>
-        </MyButton>
-        <Menu>
-          {this.state.collapsed &&
-          <List
-            items={this.props.sections}
-            theme={this.props.theme}
-          />
-          }
-        </Menu>
-      </Wrapper>
+        style={{ display: 'inline', }}
+        render={({ theme, }) => (
+          <Fragment>
+            <MyButton
+              collapsed={this.state.collapsed}
+              onClick={this.changeState}
+              role="button"
+              aria-expanded={this.state.collapsed}
+              innerRef={navButt => this.navButt = navButt} // eslint-disable-line no-return-assign
+            >
+              <HamburgerWrapper>
+                <Hamburger
+                  isOpen={this.state.collapsed}
+                  color={{
+                    close: [ 'neutral', '-3', ],
+                    open: [ 'neutral', '-10', ],
+                  }}
+                  size={2.5}
+                />
+              </HamburgerWrapper>
+              <span>{theme.navigationI18n.button}</span>
+            </MyButton>
+            <Menu>
+              {this.state.collapsed &&
+              <List
+                items={this.props.sections}
+                theme={theme}
+              />
+              }
+            </Menu>
+          </Fragment>
+        )}
+      />
     );
   }
 }
 
 NavigationMenu.propTypes = propTypes;
 
-export default withTheme(NavigationMenu);
+export default NavigationMenu;
