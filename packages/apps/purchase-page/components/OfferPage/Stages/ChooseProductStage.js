@@ -279,7 +279,7 @@ class ChooseProductStage extends Component {
                                   <Button
                                     variant="primaryOpaque"
                                     isBusy={this.state.couponLoading}
-                                    boxModel={{ hp: 3, vp: 0.5, }}
+                                    boxModel={{ hp: 3, vp: 1, }}
                                     onClick={evt => {
                                       handleSubmit(evt);
                                       action({
@@ -298,7 +298,7 @@ class ChooseProductStage extends Component {
                               <Button
                                 variant="neutral"
                                 isFlat
-                                boxModel={{ hp: 3, vp: 0.5, }}
+                                boxModel={{ hp: 3, vp: 1, }}
                                 onClick={() => {
                                   this.setState({ couponFormOpen: false, });
                                 }}
