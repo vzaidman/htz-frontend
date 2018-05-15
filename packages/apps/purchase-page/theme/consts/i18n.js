@@ -75,7 +75,7 @@ export const stage1 = Object.freeze({
       url: 'https://secure.pulseem.com/subs_heb_edu/',
     },
     entitlements: {
-      beforeLinkText: 'כבר מנויים?',
+      beforeLinkText: 'כבר מנויים למהדורה המודפסת?',
       linkText: 'בדקו אם אתם זכאים להנחה',
       link: 'https://www.haaretz.co.il/misc/entitlement',
     },
