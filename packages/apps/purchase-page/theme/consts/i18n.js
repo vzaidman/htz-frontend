@@ -352,23 +352,26 @@ export const stage4 = Object.freeze({
   }),
   securePaymentText: 'תשלום מאובטח',
   currencySymbol: '₪',
-  subStage2: Object.freeze({
-    headerPersonalDetails: 'פרטים  אישיים',
-    headerPaymentMethod: 'אמצעי תשלום',
-    form: Object.freeze({
-      paymentMethod: Object.freeze({
-        errorText: 'בחר אמצעי תשלום',
-      }),
-      continueButton: Object.freeze({
-        text: 'רכישת מנוי',
-      }),
+  headerPaymentMethod: 'אמצעי תשלום',
+  form: Object.freeze({
+    continueWithCreditCardText: 'המשך תשלום עם כרטיס שמספרו',
+    hiddenCreditCardDigits: '•••• •••• ••••',
+    paymentMethod: Object.freeze({
+      errorText: 'בחר אמצעי תשלום',
+    }),
+    continueButton: Object.freeze({
+      text: 'רכישת מנוי',
     }),
   }),
 });
+
 export const stage5 = Object.freeze({
   header: Object.freeze({
     textTopLine: 'כמעט סיימנו.',
-    textNewLine: 'כעת הזינו את פרטי כרטיס האשראי',
+    textNewLine: Object.freeze({
+      existingCreditCard: 'בהמתנה לאישור התשלום בחברת האשראי',
+      creditCard: 'כעת הזינו את פרטי כרטיס האשראי',
+    }),
   }),
   details: Object.freeze({
     chosenSubscriptionText: Object.freeze({
@@ -385,6 +388,11 @@ export const stage5 = Object.freeze({
   }),
   securePaymentText: 'תשלום מאובטח',
   currencySymbol: '₪',
+  existingCreditCard: Object.freeze({
+    buttonText: 'נסו שוב',
+    errorText:
+      'לא הצלחנו לקבל תשובה מהשרת. אנא נסו שוב. אם התקלה חוזרת, בחרו באמצעי תשלום אחר.',
+  }),
 });
 
 export const payment = Object.freeze({

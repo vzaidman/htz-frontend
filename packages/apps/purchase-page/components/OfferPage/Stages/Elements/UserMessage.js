@@ -20,7 +20,7 @@ function UserMessage({ userMessage, }) {
           extend: [ theme.type(1), ],
         })}
       >
-        {userMessage.map(line => <p>{line}</p>)}
+        {userMessage.map(line => <p key={line}>{line}</p>)}
       </FelaComponent>
     );
   }

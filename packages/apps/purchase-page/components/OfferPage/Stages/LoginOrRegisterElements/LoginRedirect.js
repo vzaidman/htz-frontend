@@ -25,7 +25,7 @@ class LoginRedirect extends React.Component {
 
   render() {
     const { chosenSubscription, } = this.props;
-    if (!this.state.pageNumber) { return <div>loading LoginRedirect component</div>; }
+    if (!this.state.pageNumber) return null;
     let redirect;
     switch (this.state.pageNumber) {
       case 2.4:
@@ -50,7 +50,9 @@ class LoginRedirect extends React.Component {
             <Redirect destination="/promotions-page/thankYou" replace />
           );
         }
-        else { redirect = <Redirect destination="/promotions-page/stage4" replace />; }
+        else {
+          redirect = <Redirect destination="/promotions-page/stage4" replace />;
+        }
         break;
     }
 

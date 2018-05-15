@@ -101,7 +101,6 @@ class Stage3 extends Component {
                                 miscStyles={{ paddingTop: '1.5rem', }}
                               >
                                 <StageTransition
-                                  stage={3}
                                   user={user}
                                   isLoggedIn={isLoggedIn}
                                   chosenSubscription={chosenSubscription}

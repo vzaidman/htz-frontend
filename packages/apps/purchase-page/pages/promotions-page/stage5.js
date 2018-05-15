@@ -17,6 +17,7 @@ import StageHeader from '../../components/OfferPage/Stages/Elements/StageHeader'
 
 const GET_PROMOTIONS_STATE = gql`
   query {
+    hostname @client
     promotionsPageState @client {
       approveDebtClaim
       chosenOfferIndex
@@ -62,6 +63,7 @@ function Stage5() {
             <Query query={GET_PROMOTIONS_STATE}>
               {({ data: clientData, }) => {
                 const {
+                  hostname,
                   promotionsPageState: {
                     approveDebtClaim,
                     chosenOfferIndex,
@@ -117,7 +119,6 @@ function Stage5() {
                             render={({ user, isLoggedIn, }) => (
                               <StageTransition
                                 chosenSubscription={chosenSubscription}
-                                stage={5}
                                 user={user}
                                 isLoggedIn={isLoggedIn}
                                 headerElement={
@@ -128,7 +129,9 @@ function Stage5() {
                                       >
                                         {header.textTopLine}
                                       </FelaComponent>,
-                                      <span>{header.textNewLine}</span>,
+                                      <span>
+                                        {header.textNewLine[paymentType]}
+                                      </span>,
                                     ]}
                                   />
                                 }
@@ -139,6 +142,7 @@ function Stage5() {
                                     />
                                   ) : paymentType === 'existingCreditCard' ? (
                                     <ExistingCreditCardStage
+                                      hostname={hostname}
                                       paymentData={paymentData}
                                       user={user}
                                       fourDigits={
