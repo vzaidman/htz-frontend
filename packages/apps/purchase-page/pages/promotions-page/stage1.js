@@ -44,7 +44,6 @@ class Stage1 extends React.Component {
   }
 
   render() {
-    console.log('url: ', this.props.url);
     const { url: { query: { referrer, }, }, } = this.props || null;
     return (
       <MainLayout footerHasIllustration={false} displayBackButton={false}>
@@ -65,6 +64,7 @@ class Stage1 extends React.Component {
                         promotionsPageState: { subStage, },
                         hostname,
                       } = clientData;
+                      client.writeData({ data: { startFromStage2: false, }, });
                       return (
                         <ChooseSlotStage
                           hostname={hostname}

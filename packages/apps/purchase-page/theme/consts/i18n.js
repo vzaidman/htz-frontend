@@ -27,7 +27,7 @@ export const landingHeader = Object.freeze({
 export const offerPage = Object.freeze({
   stagesCounter: Object.freeze({
     beforeCounter: 'שלב',
-    afterCounter: 'מתוך 5',
+    afterCounter: startFromStage2 => `מתוך ${startFromStage2 ? 4 : 5}`,
     debtTxt: 'הסדר חוב',
   }),
   userBanner: Object.freeze({
