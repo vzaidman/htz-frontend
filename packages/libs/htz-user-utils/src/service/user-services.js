@@ -51,8 +51,7 @@ export default function UserService(config = {}) {
    */
   function checkEmailExists(email) {
     const siteConfig = createSiteConfig();
-    // const serviceUrl = `${siteConfig.ssoDomain}/sso/r/isuser`;
-    const serviceUrl = `${siteConfig.ssoDomain}/sso/r/isuser`;
+    const serviceUrl = `${siteConfig.ssoDomain}/sso/sso/isuser`;
     const params = `email=${email}`;
 
     const checkEmailPromise = new Promise((resolve, reject) =>
