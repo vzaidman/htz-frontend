@@ -49,14 +49,15 @@ function Stage2() {
                     render={({ className, theme: { stage2: { header, }, }, }) => {
                       const chosenSlot =
                         data.purchasePage.slots[chosenSlotIndex];
-                      const chosenProduct =
-                        chosenSlot.products[chosenProductIndex];
+                      const campaignData =
+                        chosenProductIndex === 'couponProduct'
+                          ? couponProduct.campaignData
+                          : chosenSlot.products[chosenProductIndex]
+                              .campaignData;
                       return (
                         <div className={className}>
-                          {chosenProduct.campaignData ? (
-                            <CampaignHeader
-                              campaignData={chosenProduct.campaignData}
-                            />
+                          {campaignData ? (
+                            <CampaignHeader campaignData={campaignData} />
                           ) : (
                             <StageCounter stage={2} />
                           )}
@@ -75,11 +76,10 @@ function Stage2() {
                                     user={user}
                                     isLoggedIn={isLoggedIn}
                                     skipTransition={
-                                      !!chosenProduct.campaignData ||
-                                      isFirstPage
+                                      !!campaignData || isFirstPage
                                     }
                                     headerElement={
-                                      !chosenProduct.campaignData ? (
+                                      !campaignData ? (
                                         <StageHeader
                                           headerElements={
                                             isFirstPage
