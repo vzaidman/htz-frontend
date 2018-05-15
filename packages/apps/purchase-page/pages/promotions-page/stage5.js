@@ -15,6 +15,7 @@ import StageTransition from '../../components/OfferPage/StageTransition/StageTra
 import StageCounter from '../../components/OfferPage/Stages/Elements/StageCounter';
 import StageHeader from '../../components/OfferPage/Stages/Elements/StageHeader';
 
+const isProduction = process.env.NODE_ENV === 'production';
 const GET_PROMOTIONS_STATE = gql`
   query {
     hostname @client
@@ -40,12 +41,10 @@ function buildCreditGuardSrc(
       'Tried creating a config with no window.location.hostname context!'
     );
   }
-  const devPrefix = window.location.hostname.startsWith('promotions')
-    ? ''
-    : 'dev-';
-  console.log('DEV-PREFIX', devPrefix);
 
-  return `https://${devPrefix}payment.haaretz.co.il/creditGuard/CreditGuardBridgeServlet?productID=${
+  return `https://${
+    isProduction ? '' : 'dev-'
+  }payment.haaretz.co.il/creditGuard/CreditGuardBridgeServlet?productID=${
     paymentData.productID
   }&saleCode=${paymentData.saleCode}&promotionNumber=${
     paymentData.promotionNumber
