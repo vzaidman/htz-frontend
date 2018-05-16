@@ -1,6 +1,6 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 
 import IconBack from '../Icon/icons/IconBack';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
@@ -22,6 +22,11 @@ const propTypes = {
    * Misc attributes who'd pass down to the renderer component.
    */
   componentAttrs: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  /**
+   * This is an extra component with some details of the current displayed items,
+   * it receives items, currentDisplaying and isFullScreen as props.
+   */
+  IndicationElement: PropTypes.node,
   /**
    * How many items should be rendered in the carousel's view.
    */
@@ -58,6 +63,7 @@ const propTypes = {
 const defaultProps = {
   buttonsColor: 'neutral',
   componentAttrs: {},
+  IndicationElement: null,
   inView: 1,
   loop: false,
   miscStyles: null,
@@ -75,33 +81,31 @@ const wrapperStyle = () => ({
 const ItemsWrapper = createComponent(wrapperStyle);
 
 const navigationStyle = ({ theme, buttonsColor, }) => ({
-  backgroundColor: buttonsColor,
-  position: 'absolute',
+  color: buttonsColor,
   width: '4rem',
   height: '9rem',
-  top: '50%',
-  transform: 'translateY(-50%)',
   zIndex: '3',
 });
-const NavigationButton = createComponent(navigationStyle, 'button');
+const NavigationButton = createComponent(navigationStyle, 'button', [
+  'aria-label',
+  'onClick',
+]);
 
 const nextButtonStyle = () => ({
   end: '0',
 });
-const NextButton = createComponent(
-  nextButtonStyle,
-  NavigationButton,
-  props => Object.keys(props)
-);
+const NextButton = createComponent(nextButtonStyle, NavigationButton, [
+  'aria-label',
+  'onClick',
+]);
 
 const previousButtonStyle = () => ({
   start: '0',
 });
-const PreviousButton = createComponent(
-  previousButtonStyle,
-  NavigationButton,
-  props => Object.keys(props)
-);
+const PreviousButton = createComponent(previousButtonStyle, NavigationButton, [
+  'aria-label',
+  'onClick',
+]);
 
 const itemsStyle = ({ theme, position, moving, }) => ({
   height: '100%',
@@ -109,22 +113,20 @@ const itemsStyle = ({ theme, position, moving, }) => ({
   top: '0',
   transform: `translateX(${position}%)`,
   width: '100%',
-  ...moving && {
+  ...(moving && {
     transitionProperty: 'all',
     ...theme.getDelay('transition', 1),
     ...theme.getDuration('transition', 3),
     ...theme.getTimingFunction('transition', 'linear'),
-  },
+  }),
 });
 const Items = createComponent(itemsStyle);
 
 const currentItemsStyle = ({ moving, direction, }) => ({
   position: 'static',
 });
-const CurrentItems = createComponent(
-  currentItemsStyle,
-  Items,
-  props => Object.keys(props)
+const CurrentItems = createComponent(currentItemsStyle, Items, props =>
+  Object.keys(props)
 );
 
 /**
@@ -155,23 +157,22 @@ class Carousel extends React.Component {
     );
   }
 
-  /* componentDidUpdate() {
-    this.props.onStateChangeCB && this.props.onStateChangeCB(this.state.displayItemNum);
-    console.log(this.wrapper);
-    this.wrapper.focus();
-  } */
+  componentDidUpdate() {
+    this.props.onStateChangeCB &&
+      this.props.onStateChangeCB(this.state.displayItemNum);
+  }
 
   componentWillUnmount() {
-  /* eslint-disable no-undef */
+    /* eslint-disable no-undef */
     document.removeEventListener('click', this.handleGlobalClick);
     document.removeEventListener('keydown', this.handleGlobalKeydown);
-  /* eslint-enable no-undef */
+    /* eslint-enable no-undef */
   }
 
   getIndex = pos => {
     const current = this.state.displayItemNum;
     const total = this.props.items.length;
-    const { step, loop, } = this.props.step;
+    const { step, loop, } = this.props;
 
     let index;
 
@@ -180,7 +181,7 @@ class Carousel extends React.Component {
         index = current + step;
       }
       else if (loop) {
-        index = (current + step) - total;
+        index = current + (step - total);
       }
       else {
         index = total;
@@ -207,7 +208,10 @@ class Carousel extends React.Component {
       // Chrome/Saf (+ Mobile Saf)/Android
       return 'webkitTransitionEnd';
     }
-    else if ('onotransitionend' in this.currentItems || navigator.appName === 'Opera') {
+    else if (
+      'onotransitionend' in this.currentItems ||
+      navigator.appName === 'Opera'
+    ) {
       // Opera
       // As of Opera 10.61, there is no "onotransitionend" property added to DOM elements,
       // so it will always use the navigator.appName fallback
@@ -219,12 +223,11 @@ class Carousel extends React.Component {
   };
 
   handleGlobalClick = e => {
-  /* eslint-disable no-undef */
-    this.wrapper && this.wrapper.contains(e.target) ?
-      document.addEventListener('keydown', this.handleGlobalKeydown)
-      :
-      document.removeEventListener('keydown', this.handleGlobalKeydown);
-  /* eslint-enable no-undef */
+    /* eslint-disable no-undef */
+    this.wrapper && this.wrapper.contains(e.target)
+      ? document.addEventListener('keydown', this.handleGlobalKeydown)
+      : document.removeEventListener('keydown', this.handleGlobalKeydown);
+    /* eslint-enable no-undef */
   };
 
   handleGlobalKeydown = e => {
@@ -241,17 +244,15 @@ class Carousel extends React.Component {
   };
 
   changeState = () => {
-    const newDisplay =
-      this.state.moving ?
-        this.getIndex(this.state.direction)
-        :
-        null;
+    const newDisplay = this.state.moving
+      ? this.getIndex(this.state.direction)
+      : null;
     newDisplay !== null &&
-    this.setState({
-      displayItemNum: newDisplay,
-      moving: false,
-      direction: null,
-    });
+      this.setState({
+        displayItemNum: newDisplay,
+        moving: false,
+        direction: null,
+      });
   };
 
   render() {
@@ -259,80 +260,92 @@ class Carousel extends React.Component {
       buttonsColor,
       Component,
       componentAttrs,
-      // IndicationComponent,
-      inView,
+      IndicationElement,
+      inView, // eslint-disable-line no-unused-vars
       items,
       loop,
-      startAt,
+      startAt, // eslint-disable-line no-unused-vars
     } = this.props;
 
     const positionChange =
-      this.state.direction === 'next' ?
-        100
-        :
-        this.state.direction === 'previous' ?
-          -100
-          :
-          0;
+      this.state.direction === 'next'
+        ? 100
+        : this.state.direction === 'previous' ? -100 : 0;
 
     return (
-      <ItemsWrapper
-        innerRef={wrapper => this.wrapper = wrapper} // eslint-disable-line no-return-assign
-        tabindex="0"
-      >
-        {(this.state.displayItemNum > 0 || loop) &&
-          <Fragment>
-            <PreviousButton
-              // eslint-disable-next-line no-return-assign
-              buttonsColor={buttonsColor}
-              // disabled={this.state.moving}
-              onClick={() => this.changeItem('previous')}
-            >
-              <IconBack
-                size={2.5}
-                miscStyles={{
-                  transform: 'rotateY(180deg)',
-                }}
-              />
-            </PreviousButton>
-            <Items
-              position={100 + positionChange}
-              moving={this.state.moving}
-            >
-              <Component {...componentAttrs} {...items[this.getIndex('prev')]} />
-            </Items>
-          </Fragment>
-        }
-        <CurrentItems
-          position={positionChange}
-          moving={this.state.moving}
-          // eslint-disable-next-line no-return-assign
-          innerRef={currentItems => this.currentItems = currentItems}
+      <Fragment>
+        <ItemsWrapper
+          innerRef={wrapper => (this.wrapper = wrapper)} // eslint-disable-line no-return-assign
+          tabindex="0"
         >
-          <Component {...componentAttrs} {...items[this.state.displayItemNum]} />
-        </CurrentItems>
-        {(this.state.displayItemNum < items.length - 1 || loop) &&
-          <Fragment>
-            <Items
-              position={-100 + positionChange}
-              moving={this.state.moving}
-            >
-              <Component {...componentAttrs} {...items[this.getIndex('next')]} />
-            </Items>
-            <NextButton
-              // eslint-disable-next-line no-return-assign
-              buttonsColor={buttonsColor}
-              // disabled={this.state.moving}
-              onClick={() => this.changeItem('next')}
-            >
-              <IconBack
-                color="neutral"
-                size={2.5}
+          {(this.state.displayItemNum > 0 || loop) && (
+            <Items position={100 + positionChange} moving={this.state.moving}>
+              <Component
+                {...componentAttrs}
+                {...items[this.getIndex('prev')]}
               />
-            </NextButton>
-          </Fragment>
-        }
-      </ItemsWrapper>
+            </Items>
+          )}
+          <CurrentItems
+            position={positionChange}
+            moving={this.state.moving}
+            // eslint-disable-next-line no-return-assign
+            innerRef={currentItems => (this.currentItems = currentItems)}
+          >
+            <Component
+              {...componentAttrs}
+              {...items[this.state.displayItemNum]}
+            />
+          </CurrentItems>
+          {(this.state.displayItemNum < items.length - 1 || loop) && (
+            <Items position={-100 + positionChange} moving={this.state.moving}>
+              <Component
+                {...componentAttrs}
+                {...items[this.getIndex('next')]}
+              />
+            </Items>
+          )}
+        </ItemsWrapper>
+        <FelaComponent
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+          render={({ className, theme, }) => (
+            <div className={className}>
+              <PreviousButton
+                // eslint-disable-next-line no-return-assign
+                buttonsColor={buttonsColor}
+                // disabled={this.state.moving}
+                onClick={() => this.changeItem('previous')}
+                aria-label={theme.previousText}
+              >
+                <IconBack
+                  size={2.5}
+                  miscStyles={{
+                    transform: 'rotateY(180deg)',
+                  }}
+                />
+              </PreviousButton>
+              {IndicationElement && (
+                <IndicationElement
+                  items={items}
+                  currentDisplaying={this.state.displayItemNum}
+                />
+              )}
+              <NextButton
+                // eslint-disable-next-line no-return-assign
+                buttonsColor={buttonsColor}
+                // disabled={this.state.moving}
+                onClick={() => this.changeItem('next')}
+                aria-label={theme.nextText}
+              >
+                <IconBack size={2.5} />
+              </NextButton>
+            </div>
+          )}
+        />
+      </Fragment>
     );
   }
 }

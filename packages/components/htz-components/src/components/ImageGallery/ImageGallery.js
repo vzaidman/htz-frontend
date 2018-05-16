@@ -1,6 +1,6 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, withTheme, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import { rgba, } from 'polished';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
@@ -8,7 +8,6 @@ import ArticleImage from '../ArticleImage/ArticleImage';
 import Caption from '../Caption/Caption';
 import Carousel from '../Carousel/Carousel';
 import FullScreenMedia from '../FullScreenMedia/FullScreenMedia';
-import IconZoomIn from '../Icon/icons/IconZoomIn';
 
 const propTypes = {
   /**
@@ -39,14 +38,7 @@ const propTypes = {
   /**
    * Should the gallery's title be displayed on the page.
    */
-  showTitle: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool,
-  ]),
-  /**
-   * The app's theme (get imported automatically with the `withTheme` method).
-   */
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  showTitle: PropTypes.oneOfType([ PropTypes.string, PropTypes.bool, ]),
 };
 
 const galleryProps = {
@@ -82,25 +74,23 @@ const wrapperStyle = ({ theme, isFullScreen, }) => ({
 });
 const Wrapper = createComponent(wrapperStyle);
 
-const captionWrapperStyle = ({ theme, }) => ({
-  backgroundColor: theme.color('neutral'),
-  padding: '1.5rem',
+const captionWrapperStyle = theme => ({
+  display: 'flex',
   textAlign: 'start',
 });
-const CaptionWrapper = createComponent(captionWrapperStyle);
 
 const dotsWrapperStyle = () => ({
+  alignSelf: 'center',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
-  marginTop: '3rem',
 });
 const DotsWrapper = createComponent(dotsWrapperStyle);
 
 const dotStyle = ({ theme, active, }) => ({
-  backgroundColor: active ?
-    theme.color('quaternary') :
-    rgba(theme.color('neutral', '-6'), 0.5),
+  backgroundColor: active
+    ? theme.color('quaternary')
+    : rgba(theme.color('neutral', '-6'), 0.5),
   borderRadius: '50%',
   display: 'inline-block',
   height: '1.3rem',
@@ -109,22 +99,39 @@ const dotStyle = ({ theme, active, }) => ({
 });
 const Dot = createComponent(dotStyle, 'span');
 
-const dotsPropTypes = {
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  currentDisplaying: PropTypes.number.isRequired,
-};
-
+// eslint-disable-next-line react/prop-types
 const DotsElement = ({ items, currentDisplaying, }) => (
   <DotsWrapper>
-    {items.map((img, i) => (
-      <Dot
-        active={i === currentDisplaying}
-      />
-    ))}
+    {items.map((img, i) => <Dot active={i === currentDisplaying} />)}
   </DotsWrapper>
 );
 
-DotsElement.propTypes = dotsPropTypes;
+// eslint-disable-next-line react/prop-types
+const CaptionElement = ({ items, currentDisplaying, }) => (
+  <FelaComponent
+    style={captionWrapperStyle}
+    render={({ className, theme, }) => (
+      <div className={className}>
+        <Caption
+          caption={items[currentDisplaying].title}
+          credit={items[currentDisplaying].credit}
+          color={[ 'neutral', '-10', ]}
+          miscStyles={{
+            ':before': {
+              content: theme.gallery.captionPrefix(
+                currentDisplaying + 1,
+                items.length
+              ),
+              color: theme.color('quaternary'),
+              fontWeight: '700',
+            },
+          }}
+          typeStyles={-2}
+        />
+      </div>
+    )}
+  />
+);
 
 const Gallery = ({
   accessibility,
@@ -136,47 +143,38 @@ const Gallery = ({
   isFullScreen,
   name,
   showTitle,
-  theme,
 }) => {
   const CarouselElement = () => (
-    <Carousel
-      buttonsColor={rgba(theme.color('quaternary'), 0.9)}
-      Component={ArticleImage}
-      componentAttrs={{
-        forceAspect: isFullScreen ? 'full' : forceAspect || 'regular',
-        isFullScreen,
-        showCaption: false,
-        enableEnlarge: false,
-        miscStyles: {
-          marginBottom: '0 !important', /** TODO: for some reason it won't Trump */
-          height: '100%',
-        },
-      }}
-      IndicationComponent={DotsElement}
-      items={images}
-      loop
-      onStateChangeCB={changeCurrentDisplaying}
-      startAt={currentDisplaying}
+    <FelaComponent
+      render={({ theme, }) => (
+        <Carousel
+          buttonsColor={rgba(theme.color('quaternary'), 0.9)}
+          Component={ArticleImage}
+          componentAttrs={{
+            forceAspect: isFullScreen ? 'full' : forceAspect || 'regular',
+            isFullScreen,
+            showCaption: false,
+            enableEnlarge: false,
+            miscStyles: {
+              marginBottom:
+                '0 !important' /** TODO: for some reason it won't Trump */,
+              height: '100%',
+            },
+          }}
+          IndicationElement={DotsElement}
+          isFullScreen={isFullScreen}
+          items={images}
+          loop
+          onStateChangeCB={changeCurrentDisplaying}
+          startAt={currentDisplaying}
+        />
+      )}
     />
   );
 
   return (
     <Wrapper isFullScreen={isFullScreen}>
       <CarouselElement isFullScreen={isFullScreen} />
-      <CaptionWrapper>
-        {!isFullScreen &&
-          <Caption
-            caption={images[currentDisplaying].title}
-            credit={images[currentDisplaying].credit}
-            color={[ 'neutral', '-10', ]}
-            typeStyles={-2}
-          />
-        }
-        <DotsElement
-          items={images}
-          currentDisplaying={currentDisplaying}
-        />
-      </CaptionWrapper>
     </Wrapper>
   );
 };
@@ -197,10 +195,11 @@ class ImageGallery extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.state.currentDisplaying !== nextState.currentDisplaying ||
-      this.state.isFullScreen !== nextState.isFullScreen
+      this.state.isFullScreen !== nextState.isFullScreen ||
+      this.state.currentDisplaying !== nextState.currentDisplaying
     );
   }
+
   toggleFullScreen = () => {
     this.setState({
       isFullScreen: !this.state.isFullScreen,
@@ -214,23 +213,30 @@ class ImageGallery extends React.Component {
   };
 
   render() {
-    return (
-      this.props.enableEnlarge ?
-        <FullScreenMedia
-          credit={this.props.images[this.state.currentDisplaying].credit}
-          media={
-            <Gallery
-              {...this.props}
-              changeCurrentDisplaying={this.changeCurrentDisplaying}
-              currentDisplaying={this.state.currentDisplaying}
-              isFullScreen={this.state.isFullScreen}
-            />
-          }
-          title={this.props.images[this.state.currentDisplaying].title}
-          toggleFullScreenCB={this.toggleFullScreen}
-        />
-        :
-        <Gallery {...this.props} />
+    const { enableEnlarge, images, } = this.props;
+    const { currentDisplaying, isFullScreen, } = this.state;
+    return enableEnlarge ? (
+      <FullScreenMedia
+        captionElement={
+          <CaptionElement
+            items={images}
+            currentDisplaying={currentDisplaying}
+          />
+        }
+        credit={images[currentDisplaying].credit}
+        media={
+          <Gallery
+            {...this.props}
+            changeCurrentDisplaying={this.changeCurrentDisplaying}
+            currentDisplaying={currentDisplaying}
+            isFullScreen={isFullScreen}
+          />
+        }
+        title={images[currentDisplaying].title}
+        toggleFullScreenCB={this.toggleFullScreen}
+      />
+    ) : (
+      <Gallery {...this.props} />
     );
   }
 }
@@ -238,4 +244,4 @@ class ImageGallery extends React.Component {
 ImageGallery.propTypes = propTypes;
 ImageGallery.defaultProps = defaultProps;
 
-export default withTheme(ImageGallery);
+export default ImageGallery;
