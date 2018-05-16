@@ -25,11 +25,13 @@ function create(initialState, req) {
   )}://${hostname}${graphqlPort}/graphql`;
 
   const link = new HttpLink({
-    graphqlLink, // Server URL (must be absolute)
+    uri: graphqlLink, // Server URL (must be absolute)
     credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
     headers: {
       cookie: req !== undefined ? req.header('Cookie') : undefined,
     },
+    fetch,
+    includeExtensions: true,
   });
 
   const inMemoryCache = new InMemoryCache({

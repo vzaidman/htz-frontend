@@ -15,7 +15,7 @@ module.exports = {
   domain: 'https://www.haaretz.co.il',
   port: process.env.PORT || '3000',
   graphqlSubdomain: 'ms-apps',
-  graphqlProtocol: 'https',
+  graphqlProtocol: 'http',
   papiSubDomain: 'pre',
   papiProtocol: 'https',
   ssoSubDomain: 'devsso',

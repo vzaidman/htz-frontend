@@ -2,7 +2,7 @@ import 'dotenv/config';
 import path from 'path';
 import express from 'express';
 import proxy from 'http-proxy-middleware';
-import { graphqlExpress, graphiqlExpress, } from 'graphql-server-express';
+import { graphqlExpress, graphiqlExpress, } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import { schema, } from '@haaretz/app-utils';
@@ -52,6 +52,24 @@ const options = {
 // create the proxy (without context)
 const tomcatProxy = proxy(options);
 
+// options object
+const GraphQLOptions = {
+  // // a function applied to the parameters of every invocation of runQuery
+  // formatParams?: Function,
+
+  // // * - (optional) validationRules: extra validation rules applied to requests
+  // validationRules?: Array<ValidationRule>,
+
+  // // a function applied to each graphQL execution result
+  // formatResponse?: Function
+
+  // // a custom default field resolver
+  // fieldResolver?: Function
+
+  // a boolean that will print additional debug logging if execution errors occur
+  debug: true,
+};
+
 const hostIp = config.get('hostIp');
 app
   .prepare()
@@ -65,18 +83,21 @@ app
     server.use(
       '/graphql',
       bodyParser.json(),
-      graphqlExpress(req =>
-        // const purchasePageUrlOptions = req.headers.host.includes('haaretz')
-        //   ? { domain: 'haaretz.co.il', subDomain: 'pre', }
-        //   : { domain: 'themarker.com', subDomain: 'tmtest', };
-        // console.log('req.headers.host', req.headers.host);
-        // console.log('purchase url options Domain', purchasePageUrlOptions.domain);
-        // console.log('purchase url options subDomain', purchasePageUrlOptions.subDomain);
-        ({ schema, context: createContext(req), })
-      )
+      graphqlExpress(req => ({
+        schema,
+        context: createContext(req),
+        formatError: err => {
+          if (err.originalError && err.originalError.error_message) {
+            // eslint-disable-next-line no-param-reassign
+            err.message = err.originalError.error_message;
+          }
+          return err;
+        },
+        ...GraphQLOptions,
+      }))
     );
     if (DEV) {
-      server.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql', }));
+      server.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql', }));
     }
 
     server.get([ /^((\/_next\/).*)+$/, ], (req, res) => {
