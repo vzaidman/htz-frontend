@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import { borderBottom, borderStart, } from '@haaretz/htz-css-tools';
 import Link from '../Link/Link';
+import FlippingArrow from '../Animations/FlippingArrow';
 
 const propTypes = {
   /**
@@ -118,31 +119,6 @@ const arrowWrapperStyle = ({ theme, selected, }) => ({
 });
 const ArrowWrapper = createComponent(arrowWrapperStyle, 'button', [ 'onClick', 'role', 'focus', 'aria-expanded', 'aria-label', ]);
 
-const arrowDashStyle = theme => ({
-  height: '2px',
-  width: '1.5rem',
-  position: 'absolute',
-  backgroundColor: theme.color('neutral', '-10'),
-  transition: 'all .5s',
-  left: '50%',
-  content: '""',
-});
-
-const arrowStyle = ({ theme, isOpen, }) => ({
-  display: 'inline-block',
-  ':before': {
-    ...arrowDashStyle(theme),
-    top: '45%',
-    transform: `translateY(0.75rem) translateX(-50%) rotate(${isOpen ? '-45' : '45'}deg)`,
-  },
-  ':after': {
-    ...arrowDashStyle(theme),
-    top: '55%',
-    transform: `translateY(-0.75rem) translateX(-50%) rotate(${isOpen ? '45' : '-45'}deg)`,
-  },
-});
-const ArrowIcon = createComponent(arrowStyle, 'i');
-
 const linkStyle = () => ({
   paddingTop: '1rem',
   paddingBottom: '1rem',
@@ -241,7 +217,7 @@ class List extends React.Component {
           innerRef={listRef => this.listRef = listRef} // eslint-disable-line no-return-assign
           isSub={isSub}
           startOffset={startOffset}
-          role={'region'}
+          role="region"
         >
           {items.map((item, i) => {
             const isSelected = this.state.selectedIndex === i;
@@ -274,12 +250,17 @@ class List extends React.Component {
                 {item.pages && item.pages.length > 0 &&
                 <ArrowWrapper
                   onClick={() => this.changeState(i)}
-                  role={'button'}
+                  role="button"
                   aria-expanded={isSelected}
                   selected={isSelected}
                   aria-label={item.name}
                 >
-                  <ArrowIcon isOpen={this.state.selectedIndex === i} />
+                  <FlippingArrow
+                    isOpen={this.state.selectedIndex === i}
+                    color={[ 'neutral', '-10', ]}
+                    size={1.5}
+                    direction={theme.direction}
+                  />
                 </ArrowWrapper>
                 }
               </Item>
