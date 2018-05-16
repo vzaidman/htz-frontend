@@ -1,4 +1,4 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { createMqFunc, } from '@haaretz/htz-css-tools';
 import { rgba, } from 'polished';
@@ -92,7 +92,15 @@ const Separator = createComponent(separatorStyle);
 class VerticalToolBar extends React.Component {
   state = {
     isOpen: false,
+    toolBarWidth: null,
   };
+
+  componentDidMount() {
+    // eslint-disable-next-line react/no-did-mount-set-state
+    this.setState({
+      toolBarWidth: this.toolBar.offsetWidth,
+    });
+  }
 
   render() {
     // eslint-disable-next-line react/prop-types
@@ -102,11 +110,13 @@ class VerticalToolBar extends React.Component {
         mediaWidth={this.state.mediaWidth}
         style={toolBarWrapper}
         render={({ className, theme, }) => (
-          <Fragment>
+          <FelaComponent
+            style={{ display: 'flex', }}
+          >
             <FelaComponent
               style={{
                 backgroundColor: rgba(theme.color('neutral'), 0.85),
-                end: '8rem',
+                end: `${this.state.toolBarWidth}px` || '8rem',
                 height: '100%',
                 paddingStart: '4rem',
                 paddingEnd: '4rem',
@@ -119,7 +129,10 @@ class VerticalToolBar extends React.Component {
             >
               {captionElement}
             </FelaComponent>
-            <div className={className}>
+            <div
+              className={className}
+              ref={toolBar => this.toolBar = toolBar} // eslint-disable-line no-return-assign
+            >
               <FelaComponent style={{ marginTop: '2rem', }}>
                 {closeButton}
               </FelaComponent>
@@ -164,7 +177,7 @@ class VerticalToolBar extends React.Component {
                 }}
               />
             </div>
-          </Fragment>
+          </FelaComponent>
         )}
       />
     );

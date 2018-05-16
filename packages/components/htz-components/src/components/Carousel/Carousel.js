@@ -1,40 +1,19 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, FelaComponent, } from 'react-fela';
+import { createComponent, } from 'react-fela';
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
-import IconBack from '../Icon/icons/IconBack';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const propTypes = {
-  /**
-   * Change the default color of the next/previous buttons as you wish.
-   */
-  buttonsColor: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array,
-    PropTypes.object,
-  ]),
-  /**
-   * The render component who should render the received items.
-   */
-  Component: PropTypes.node.isRequired,
-  /**
-   * Misc attributes who'd pass down to the renderer component.
-   */
-  componentAttrs: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  /**
-   * This is an extra component with some details of the current displayed items,
-   * it receives items, currentDisplaying and isFullScreen as props.
-   */
-  IndicationElement: PropTypes.node,
   /**
    * How many items should be rendered in the carousel's view.
    */
   inView: PropTypes.number,
   /**
-   * An array of items objects who should populate the carousel.
+   * The length property of the items array.
    */
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  itemsLength: PropTypes.number.isRequired,
   /**
    * Should the carousel iterate over the given items in a loop, or start at 0 and end with n.
    */
@@ -46,10 +25,9 @@ const propTypes = {
    */
   miscStyles: stylesPropType,
   /**
-   * A method given from the parent component, which will be fired whenever the
-   * carousel's state changes, and send back the item's index who's currently displayed.
+   * A render function that passes down the Carousel parts' render functions.
    */
-  onStateChangeCB: PropTypes.func,
+  render: PropTypes.func.isRequired,
   /**
    * At which position in the item's array (index) should the carousel start at mounting time.
    */
@@ -61,51 +39,19 @@ const propTypes = {
 };
 
 const defaultProps = {
-  buttonsColor: 'neutral',
-  componentAttrs: {},
-  IndicationElement: null,
   inView: 1,
   loop: false,
   miscStyles: null,
-  onStateChangeCB: null,
   startAt: 0,
   step: 1,
 };
 
-const wrapperStyle = () => ({
-  height: '100%',
-  maxHeight: '100%',
-  overflow: 'hidden',
-  position: 'relative',
+const wrapperStyle = ({ miscStyles, theme, }) => ({
+  extend: [
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
 });
 const ItemsWrapper = createComponent(wrapperStyle);
-
-const navigationStyle = ({ theme, buttonsColor, }) => ({
-  color: buttonsColor,
-  width: '4rem',
-  height: '9rem',
-  zIndex: '3',
-});
-const NavigationButton = createComponent(navigationStyle, 'button', [
-  'aria-label',
-  'onClick',
-]);
-
-const nextButtonStyle = () => ({
-  end: '0',
-});
-const NextButton = createComponent(nextButtonStyle, NavigationButton, [
-  'aria-label',
-  'onClick',
-]);
-
-const previousButtonStyle = () => ({
-  start: '0',
-});
-const PreviousButton = createComponent(previousButtonStyle, NavigationButton, [
-  'aria-label',
-  'onClick',
-]);
 
 const itemsStyle = ({ theme, position, moving, }) => ({
   height: '100%',
@@ -157,11 +103,6 @@ class Carousel extends React.Component {
     );
   }
 
-  componentDidUpdate() {
-    this.props.onStateChangeCB &&
-      this.props.onStateChangeCB(this.state.displayItemNum);
-  }
-
   componentWillUnmount() {
     /* eslint-disable no-undef */
     document.removeEventListener('click', this.handleGlobalClick);
@@ -171,7 +112,7 @@ class Carousel extends React.Component {
 
   getIndex = pos => {
     const current = this.state.displayItemNum;
-    const total = this.props.items.length;
+    const total = this.props.itemsLength;
     const { step, loop, } = this.props;
 
     let index;
@@ -257,13 +198,11 @@ class Carousel extends React.Component {
 
   render() {
     const {
-      buttonsColor,
-      Component,
-      componentAttrs,
-      IndicationElement,
       inView, // eslint-disable-line no-unused-vars
-      items,
+      itemsLength,
       loop,
+      miscStyles,
+      render,
       startAt, // eslint-disable-line no-unused-vars
     } = this.props;
 
@@ -272,79 +211,52 @@ class Carousel extends React.Component {
         ? 100
         : this.state.direction === 'previous' ? -100 : 0;
 
+    const renderPreviousItems = itemsRenderer =>
+      (this.state.displayItemNum > 0 || loop) && (
+        <Items position={100 + positionChange} moving={this.state.moving}>
+          {itemsRenderer({ itemIndex: this.getIndex('prev'), })}
+        </Items>
+      );
+
+    const renderNextItems = itemsRenderer =>
+      (this.state.displayItemNum < itemsLength - 1 || loop) && (
+        <Items position={-100 + positionChange} moving={this.state.moving}>
+          {itemsRenderer({ itemIndex: this.getIndex('next'), })}
+        </Items>
+      );
+
+    const renderCurrentItems = itemsRenderer => (
+      <CurrentItems
+        position={positionChange}
+        moving={this.state.moving}
+        // eslint-disable-next-line no-return-assign
+        innerRef={currentItems => (this.currentItems = currentItems)}
+      >
+        {itemsRenderer({ itemIndex: this.state.displayItemNum, })}
+      </CurrentItems>
+    );
+
+    const renderButton = buttonRenderer =>
+      buttonRenderer({ changeItem: this.changeItem, });
+
+    const renderIndicator = indicatorRenderer => indicatorRenderer();
+
     return (
       <Fragment>
         <ItemsWrapper
           innerRef={wrapper => (this.wrapper = wrapper)} // eslint-disable-line no-return-assign
+          miscStyles={miscStyles}
           tabindex="0"
         >
-          {(this.state.displayItemNum > 0 || loop) && (
-            <Items position={100 + positionChange} moving={this.state.moving}>
-              <Component
-                {...componentAttrs}
-                {...items[this.getIndex('prev')]}
-              />
-            </Items>
-          )}
-          <CurrentItems
-            position={positionChange}
-            moving={this.state.moving}
-            // eslint-disable-next-line no-return-assign
-            innerRef={currentItems => (this.currentItems = currentItems)}
-          >
-            <Component
-              {...componentAttrs}
-              {...items[this.state.displayItemNum]}
-            />
-          </CurrentItems>
-          {(this.state.displayItemNum < items.length - 1 || loop) && (
-            <Items position={-100 + positionChange} moving={this.state.moving}>
-              <Component
-                {...componentAttrs}
-                {...items[this.getIndex('next')]}
-              />
-            </Items>
-          )}
+          {render({
+            renderPreviousItems,
+            renderNextItems,
+            renderCurrentItems,
+            renderButton,
+            renderIndicator,
+            displayItemNum: this.state.displayItemNum,
+          })}
         </ItemsWrapper>
-        <FelaComponent
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-          render={({ className, theme, }) => (
-            <div className={className}>
-              <PreviousButton
-                // eslint-disable-next-line no-return-assign
-                buttonsColor={buttonsColor}
-                // disabled={this.state.moving}
-                onClick={() => this.changeItem('previous')}
-                aria-label={theme.previousText}
-              >
-                <IconBack
-                  size={2.5}
-                  miscStyles={{
-                    transform: 'rotateY(180deg)',
-                  }}
-                />
-              </PreviousButton>
-              {IndicationElement && (
-                <IndicationElement
-                  items={items}
-                  currentDisplaying={this.state.displayItemNum}
-                />
-              )}
-              <NextButton
-                // eslint-disable-next-line no-return-assign
-                buttonsColor={buttonsColor}
-                // disabled={this.state.moving}
-                onClick={() => this.changeItem('next')}
-                aria-label={theme.nextText}
-              >
-                <IconBack size={2.5} />
-              </NextButton>
-            </div>
-          )}
-        />
       </Fragment>
     );
   }
