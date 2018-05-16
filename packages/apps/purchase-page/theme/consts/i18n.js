@@ -3,11 +3,13 @@ export const seo = Object.freeze({
     title: 'מינוי לאתר הארץ',
     description:
       'רכשו מינוי לאתר הארץ וקבלו את כל תכני הארץ במחשב ובאפליקציה, פחות פרסומות, פודקסט שבועי ועדכונים שוטפים לכל מכשיר שתרצו.',
+    googleSiteVerification: 's8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY',
   }),
   'themarker.com': Object.freeze({
     title: 'מינוי לאתר TheMarker',
     description:
       'רכשו מינוי לדה מרקר וקבלו את כל תכני דה מרקר במחשב ובאפליקציה, פחות פרסומות, פודקסט שבועי ועדכונים שוטפים לכל מכשיר שתרצו.',
+    googleSiteVerification: '-3Rs25_Tuwid8njQF72cVtAcYAxGbYhXewg5Y4ppV_4',
   }),
 });
 
