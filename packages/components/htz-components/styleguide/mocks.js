@@ -39,283 +39,319 @@ const mocks = {
 
   Footer: () => ({
     head: [
-      { text: 'מערכת', href: 'https://www.haaretz.co.il/misc/editors', },
-      { text: 'הנהלה', href: 'https://www.haaretz.co.il/misc/management', },
-      { text: 'אודות הארץ', href: 'https://www.haaretz.co.il/misc/about-haaretz', },
-      { text: 'דרושים', href: 'https://www.haaretz.co.il/misc/jobs', },
-      { text: 'צור קשר', href: 'https://www.haaretz.co.il/misc/contact-us', },
-      { text: 'עשה מנוי', href: 'https://www.haaretz.co.il/promotions-page', },
-      { text: 'ביטול מנוי דיגיטלי', href: 'https://www.haaretz.co.il/misc/contact-us', },
-      { text: 'שאלות ותשובות', href: 'https://www.haaretz.co.il/misc/faq', },
+      { contentName: 'מערכת', value: 'https://www.haaretz.co.il/misc/editors', },
       {
-        text: 'פרסם אצלנו',
-        href: 'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
+        contentName: 'הנהלה',
+        value: 'https://www.haaretz.co.il/misc/management',
+      },
+      {
+        contentName: 'אודות הארץ',
+        value: 'https://www.haaretz.co.il/misc/about-haaretz',
+      },
+      { contentName: 'דרושים', value: 'https://www.haaretz.co.il/misc/jobs', },
+      {
+        contentName: 'צור קשר',
+        value: 'https://www.haaretz.co.il/misc/contact-us',
+      },
+      {
+        contentName: 'עשה מנוי',
+        value: 'https://www.haaretz.co.il/promotions-page',
+      },
+      {
+        contentName: 'ביטול מנוי דיגיטלי',
+        value: 'https://www.haaretz.co.il/misc/contact-us',
+      },
+      {
+        contentName: 'שאלות ותשובות',
+        value: 'https://www.haaretz.co.il/misc/faq',
+      },
+      {
+        contentName: 'פרסם אצלנו',
+        value:
+          'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
       },
     ],
     columns: [
       {
-        title: 'מדורים',
+        contentName: 'מדורים',
         combineWithNextColumn: true,
-        items: [
+        row: [
           {
-            text: 'חדשות',
-            href: 'https://www.haaretz.co.il/news',
+            contentName: 'חדשות',
+            value: 'https://www.haaretz.co.il/news',
           },
           {
-            text: 'סרטים מומלצים',
-            href: 'https://www.haaretz.co.il/misc/tags/movies-1.1653396',
+            contentName: 'סרטים מומלצים',
+            value: 'https://www.haaretz.co.il/misc/tags/movies-1.1653396',
           },
           {
-            text: 'מזג אוויר',
-            href: 'https://www.haaretz.co.il/news/weather',
+            contentName: 'מזג אוויר',
+            value: 'https://www.haaretz.co.il/news/weather',
           },
           {
-            text: 'ספורט',
-            href: 'https://www.haaretz.co.il/sport',
+            contentName: 'ספורט',
+            value: 'https://www.haaretz.co.il/sport',
           },
           {
-            text: 'פורים 2018',
-            href: 'https://www.haaretz.co.il/gallery/purim',
+            contentName: 'פורים 2018',
+            value: 'https://www.haaretz.co.il/gallery/purim',
           },
           {
-            text: 'תחרות הסיפור הקצר',
-            href: 'https://www.haaretz.co.il/short-story/1.5727927',
+            contentName: 'תחרות הסיפור הקצר',
+            value: 'https://www.haaretz.co.il/short-story/1.5727927',
           },
         ],
       },
       {
-        title: 'Haaretz.com',
+        contentName: 'Haaretz.com',
         combineWithNextColumn: false,
-        items: [
+        row: [
           {
-            text: 'Israel - Syria rebels',
-            href:
+            contentName: 'Israel - Syria rebels',
+            value:
               'https://www.haaretz.com/israel-news/with-eye-on-iran-israel-increases-military-support-for-syrian-rebels-1.5826348',
           },
           {
-            text: 'Freemasons',
-            href:
+            contentName: 'Freemasons',
+            value:
               'https://www.haaretz.com/israel-news/MAGAZINE-not-a-cult-the-freemasons-want-you-unless-you-you-1.5824127',
           },
           {
-            text: 'Kurds - Syria',
-            href:
+            contentName: 'Kurds - Syria',
+            value:
               'https://www.haaretz.com/middle-east-news/syria/.premium-with-nowhere-else-to-turn-syrian-kurds-will-have-to-embrace-assad-1.5828926',
           },
           {
-            text: 'Netanyahu graft',
-            href:
+            contentName: 'Netanyahu graft',
+            value:
               'https://www.haaretz.com/israel-news/nix-sara-netanyahu-case-get-top-post-pm-s-confidant-offered-judge-1.5832137',
           },
           {
-            text: 'Israel news',
-            href: 'https://www.haaretz.com/israel-news',
+            contentName: 'Israel news',
+            value: 'https://www.haaretz.com/israel-news',
           },
           {
-            text: 'Middle East',
-            href: 'https://www.haaretz.com/middle-east-news',
+            contentName: 'Middle East',
+            value: 'https://www.haaretz.com/middle-east-news',
           },
           {
-            text: 'Travel in Israel',
-            href: 'https://www.haaretz.com/israel-news/travel',
+            contentName: 'Travel in Israel',
+            value: 'https://www.haaretz.com/israel-news/travel',
           },
           {
-            text: 'Jewish World',
-            href: 'https://www.haaretz.com/jewish',
+            contentName: 'Jewish World',
+            value: 'https://www.haaretz.com/jewish',
           },
           {
-            text: 'Shabbat Times',
-            href: 'https://www.haaretz.com/misc/shabbat-times',
+            contentName: 'Shabbat Times',
+            value: 'https://www.haaretz.com/misc/shabbat-times',
           },
         ],
       },
       {
-        title: 'כלים שימושיים',
+        contentName: 'כלים שימושיים',
         combineWithNextColumn: false,
-        items: [
+        row: [
           {
-            text: 'המייל האדום',
-            href: 'https://www.haaretz.co.il/misc/redemail',
+            contentName: 'המייל האדום',
+            value: 'https://www.haaretz.co.il/misc/redemail',
           },
           {
-            text: 'מדיניות פרטיות',
-            href: 'https://www.haaretz.co.il/misc/privacy-policy',
+            contentName: 'מדיניות פרטיות',
+            value: 'https://www.haaretz.co.il/misc/privacy-policy',
           },
           {
-            text: 'חלון מבזקים',
-            href: 'https://www.haaretz.co.il/misc/widget',
+            contentName: 'חלון מבזקים',
+            value: 'https://www.haaretz.co.il/misc/widget',
           },
           {
-            text: 'ארכיון הארץ',
-            href: 'https://www.haaretz.co.il/misc/1.767350',
+            contentName: 'ארכיון הארץ',
+            value: 'https://www.haaretz.co.il/misc/1.767350',
           },
           {
-            text: 'דיוור הארץ',
-            href: 'https://www.haaretz.co.il/personal-area/newsletter',
+            contentName: 'דיוור הארץ',
+            value: 'https://www.haaretz.co.il/personal-area/newsletter',
           },
           {
-            text: 'כל כותרות היום',
-            href: 'https://www.haaretz.co.il/misc/all-headlines',
+            contentName: 'כל כותרות היום',
+            value: 'https://www.haaretz.co.il/misc/all-headlines',
           },
           {
-            text: 'צור קשר',
-            href: 'https://www.haaretz.co.il/misc/contact-us',
+            contentName: 'צור קשר',
+            value: 'https://www.haaretz.co.il/misc/contact-us',
           },
           {
-            text: 'מודעות אבל',
-            href: 'https://www.haaretz.co.il/misc/1.2768082',
+            contentName: 'מודעות אבל',
+            value: 'https://www.haaretz.co.il/misc/1.2768082',
           },
           {
-            text: 'תנאי שימוש',
-            href: 'https://www.haaretz.co.il/misc/terms-of-use',
+            contentName: 'תנאי שימוש',
+            value: 'https://www.haaretz.co.il/misc/terms-of-use',
           },
           {
-            text: 'מינוי הארץ',
-            href: 'https://www.haaretz.co.il/promotions-page',
+            contentName: 'מינוי הארץ',
+            value: 'https://www.haaretz.co.il/promotions-page',
           },
           {
-            text: 'מינוי לעיתון',
-            href: 'https://www.haaretz.co.il/misc/menuim',
+            contentName: 'מינוי לעיתון',
+            value: 'https://www.haaretz.co.il/misc/menuim',
           },
           {
-            text: 'כנסים',
-            href: 'http://conferences.themarker.com/',
+            contentName: 'כנסים',
+            value: 'http://conferences.themarker.com/',
           },
           {
-            text: 'נגישות',
-            href: 'https://www.haaretz.co.il/misc/accessibility',
+            contentName: 'נגישות',
+            value: 'https://www.haaretz.co.il/misc/accessibility',
           },
         ],
       },
       {
-        title: 'עכבר העיר',
+        contentName: 'עכבר העיר',
         combineWithNextColumn: false,
-        items: [
+        row: [
           {
-            text: 'פורים 2018',
-            href: 'https://www.haaretz.co.il/gallery/purim',
+            contentName: 'פורים 2018',
+            value: 'https://www.haaretz.co.il/gallery/purim',
           },
           {
-            text: 'תחפושות לפורים לילדים',
-            href: 'https://www.haaretz.co.il/gallery/purim/1.3156076',
+            contentName: 'תחפושות לפורים לילדים',
+            value: 'https://www.haaretz.co.il/gallery/purim/1.3156076',
           },
           {
-            text: 'תחפושות לתינוקות',
-            href: 'https://www.haaretz.co.il/gallery/purim/1.3155900',
+            contentName: 'תחפושות לתינוקות',
+            value: 'https://www.haaretz.co.il/gallery/purim/1.3155900',
           },
           {
-            text: 'מתכונים לאוזני המן',
-            href: 'https://www.haaretz.co.il/food/1.3156002',
+            contentName: 'מתכונים לאוזני המן',
+            value: 'https://www.haaretz.co.il/food/1.3156002',
           },
           {
-            text: 'תהלוכות עדלאידע בפורים',
-            href: 'https://www.haaretz.co.il/gallery/purim/1.3155908',
+            contentName: 'תהלוכות עדלאידע בפורים',
+            value: 'https://www.haaretz.co.il/gallery/purim/1.3155908',
           },
           {
-            text: 'מסיבות פורים',
-            href: 'https://www.haaretz.co.il/gallery/night-life/1.3155822',
+            contentName: 'מסיבות פורים',
+            value: 'https://www.haaretz.co.il/gallery/night-life/1.3155822',
           },
         ],
       },
       {
-        title: 'TheMarker',
+        contentName: 'TheMarker',
         combineWithNextColumn: true,
-        items: [
+        row: [
           {
-            text: 'שוק ההון',
-            href: 'https://www.themarker.com/markets',
+            contentName: 'שוק ההון',
+            value: 'https://www.themarker.com/markets',
           },
           {
-            text: 'חדשות',
-            href: 'https://www.themarker.com/allnews',
+            contentName: 'חדשות',
+            value: 'https://www.themarker.com/allnews',
           },
           {
-            text: 'גלובל',
-            href: 'https://www.themarker.com/wallstreet',
+            contentName: 'גלובל',
+            value: 'https://www.themarker.com/wallstreet',
           },
           {
-            text: 'נדל"ן',
-            href: 'https://www.themarker.com/realestate',
+            contentName: 'נדל"ן',
+            value: 'https://www.themarker.com/realestate',
           },
           {
-            text: 'TechNation',
-            href: 'https://www.themarker.com/technation',
+            contentName: 'TechNation',
+            value: 'https://www.themarker.com/technation',
           },
           {
-            text: 'MarkerWeek',
-            href: 'https://www.themarker.com/markerweek',
-          },
-        ],
-      },
-      {
-        title: 'Finance',
-        combineWithNextColumn: false,
-        items: [
-          {
-            text: 'ת"א 35',
-            href: 'http://finance.themarker.com/home/?type=1&documentId=142',
-          },
-          {
-            text: 'ת"א 125',
-            href: 'http://finance.themarker.com/home/?type=1&documentId=137',
-          },
-          {
-            text: 'מניית טבע',
-            href: 'http://finance.themarker.com/quote/?mador=1&documentId=629014',
-          },
-          {
-            text: 'מניית בזק',
-            href: 'http://finance.themarker.com/quote/?mador=1&documentId=230011',
+            contentName: 'MarkerWeek',
+            value: 'https://www.themarker.com/markerweek',
           },
         ],
       },
       {
-        title: 'שיתופי פעולה',
+        contentName: 'Finance',
         combineWithNextColumn: false,
-        items: [
+        row: [
           {
-            text: 'פגסוס טיולים',
-            href: 'https://www.haaretz.co.il/labels/pegasus',
+            contentName: 'ת"א 35',
+            value: 'http://finance.themarker.com/home/?type=1&documentId=142',
           },
           {
-            text: 'בית אבי חי',
-            href: 'https://www.haaretz.co.il/labels/avi-chai',
+            contentName: 'ת"א 125',
+            value: 'http://finance.themarker.com/home/?type=1&documentId=137',
           },
           {
-            text: 'השקעות נדל"ן בחו"ל',
-            href: 'https://www.themarker.com/labels/iintoo',
+            contentName: 'מניית טבע',
+            value:
+              'http://finance.themarker.com/quote/?mador=1&documentId=629014',
           },
           {
-            text: 'ויטרינה',
-            href: 'https://www.vitrina.co.il/',
+            contentName: 'מניית בזק',
+            value:
+              'http://finance.themarker.com/quote/?mador=1&documentId=230011',
+          },
+        ],
+      },
+      {
+        contentName: 'שיתופי פעולה',
+        combineWithNextColumn: false,
+        row: [
+          {
+            contentName: 'פגסוס טיולים',
+            value: 'https://www.haaretz.co.il/labels/pegasus',
           },
           {
-            text: 'SUPERMARKER – צרכנות פיננסית',
-            href: 'https://supermarker.themarker.com/',
+            contentName: 'בית אבי חי',
+            value: 'https://www.haaretz.co.il/labels/avi-chai',
           },
           {
-            text: 'אופנה',
-            href: 'https://www.onlife.co.il/category/fashion',
+            contentName: 'השקעות נדל"ן בחו"ל',
+            value: 'https://www.themarker.com/labels/iintoo',
+          },
+          {
+            contentName: 'ויטרינה',
+            value: 'https://www.vitrina.co.il/',
+          },
+          {
+            contentName: 'SUPERMARKER – צרכנות פיננסית',
+            value: 'https://supermarker.themarker.com/',
+          },
+          {
+            contentName: 'אופנה',
+            value: 'https://www.onlife.co.il/category/fashion',
           },
         ],
       },
     ],
-    credit: [ { text: 'מערכת', href: 'https://www.haaretz.co.il/misc/editors', }, ],
+    credit: [
+      { contentName: 'מערכת', value: 'https://www.haaretz.co.il/misc/editors', },
+    ],
     toolbox: [
-      { text: 'חיבור מינוי דיגיטלי', href: 'https://www.haaretz.co.il/misc/entitlement', },
-      { text: 'עדכונים במייל', href: 'https://www.haaretz.co.il/personal-area/newsletter', },
-      { text: 'קנה מינוי דיגיטלי', href: 'https://www.haaretz.co.il/promotions-page', },
       {
-        text: 'קנה מינוי לעיתון',
-        href:
+        contentName: 'חיבור מינוי דיגיטלי',
+        value: 'https://www.haaretz.co.il/misc/entitlement',
+      },
+      {
+        contentName: 'עדכונים במייל',
+        value: 'https://www.haaretz.co.il/personal-area/newsletter',
+      },
+      {
+        contentName: 'קנה מינוי דיגיטלי',
+        value: 'https://www.haaretz.co.il/promotions-page',
+      },
+      {
+        contentName: 'קנה מינוי לעיתון',
+        value:
           'https://secure.pulseem.com/clientpages/07092017151238sa6045.html?v=89a6c973-41b3-4181-811c-a459ac50164e_',
       },
       {
-        text: 'פרסם אצלנו',
-        href: 'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
+        contentName: 'פרסם אצלנו',
+        value:
+          'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
       },
-      { text: 'לפרסום בעיתון', href: 'mailto: moshem@haaretz.co.il', },
-      { text: 'שירות למנויים', href: 'https://www.haaretz.co.il/personal-area/my-account', },
+      { contentName: 'לפרסום בעיתון', value: 'mailto: moshem@haaretz.co.il', },
+      {
+        contentName: 'שירות למנויים',
+        value: 'https://www.haaretz.co.il/personal-area/my-account',
+      },
     ],
   }),
 

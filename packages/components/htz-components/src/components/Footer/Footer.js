@@ -131,7 +131,7 @@ export class Footer extends React.Component {
       else r.push([ e, ]);
       return r;
     }, []);
-
+    console.warn(columnsArr);
     return (
       <LayoutFooterRow
         bgc={color('footer', 'bg')}
@@ -152,11 +152,11 @@ export class Footer extends React.Component {
             <StyledHeadLinksWrapper>
               <StyledUlLinks>
                 {footer.head.map((item, index) => (
-                  <StyledLi key={`${item.text}${item.href}`}>
+                  <StyledLi key={`${item.contentName}${item.value}`}>
                     <StyledHeadLink
-                      key={`${item.text}${item.href}`}
-                      content={item.text}
-                      href={item.href}
+                      key={`${item.contentName}${item.value}`}
+                      content={item.contentName}
+                      href={item.value}
                       isLast={index === footer.head.length - 1}
                     />
                   </StyledLi>
@@ -201,24 +201,24 @@ export default graphql(
     {
       footer {
         head {
-          text
-          href
+          contentName
+          value
         }
         columns {
-          title
+          contentName
           combineWithNextColumn
-          items {
-            text
-            href
+          row {
+            contentName
+            value
           }
         }
         credit {
-          text
-          href
+          contentName
+          value
         }
         toolbox {
-          text
-          href
+          contentName
+          value
         }
       }
     }

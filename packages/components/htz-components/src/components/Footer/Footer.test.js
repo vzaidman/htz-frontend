@@ -13,38 +13,42 @@ const FooterDesktopMock = {
   error: false,
   /** Footer data */
   footer: {
-    head: [ { text: 'מערכת', href: 'https://www.haaretz.co.il/misc/editors', }, ],
+    head: [
+      { contentName: 'מערכת', value: 'https://www.haaretz.co.il/misc/editors', },
+    ],
     columns: [
       {
-        title: 'מדורים',
+        contentName: 'מדורים',
         combineWithNextColumn: true,
-        items: [
+        row: [
           {
-            text: 'חדשות',
-            href: 'https://www.haaretz.co.il/news',
+            contentName: 'חדשות',
+            value: 'https://www.haaretz.co.il/news',
           },
         ],
       },
       {
-        title: 'Haaretz.com',
+        contentName: 'Haaretz.com',
         combineWithNextColumn: false,
-        items: [
+        row: [
           {
-            text: 'Israel - Syria rebels',
-            href:
+            contentName: 'Israel - Syria rebels',
+            value:
               'https://www.haaretz.com/israel-news/with-eye-on-iran-israel-increases-military-support-for-syrian-rebels-1.5826348',
           },
           {
-            text: 'Freemasons',
-            href:
+            contentName: 'Freemasons',
+            value:
               'https://www.haaretz.com/israel-news/MAGAZINE-not-a-cult-the-freemasons-want-you-unless-you-you-1.5824127',
           },
         ],
       },
     ],
-    credit: [ { text: 'מערכת', href: 'https://www.haaretz.co.il/misc/editors', }, ],
+    credit: [
+      { contentName: 'מערכת', value: 'https://www.haaretz.co.il/misc/editors', },
+    ],
     toolbox: [
-      { text: 'מערכת', href: 'https://www.haaretz.co.il/misc/editors', },
+      { contentName: 'מערכת', value: 'https://www.haaretz.co.il/misc/editors', },
     ],
   },
 };

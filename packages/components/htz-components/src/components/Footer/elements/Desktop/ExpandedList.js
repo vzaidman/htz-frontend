@@ -79,13 +79,13 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
                 {lists.map((innerList, listIdx) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <StyledSection key={listIdx}>
-                    <StyledUlTitle>{innerList.title}</StyledUlTitle>
+                    <StyledUlTitle>{innerList.contentName}</StyledUlTitle>
                     <ul>
-                      {innerList.items.map((link, linkIdx) => (
-                        <li key={`${link.text}${link.href}`}>
+                      {innerList.row.map((link, linkIdx) => (
+                        <li key={`${link.contentName}${link.value}`}>
                           <StyledListLink
-                            content={link.text}
-                            href={link.href}
+                            content={link.contentName}
+                            href={link.value}
                           />
                         </li>
                       ))}
@@ -105,8 +105,12 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
         >
           <ul>
             {toolbox.map(link => (
-              <li key={`${link.text}${link.href}`}>
-                <StyledListLink content={link.text} href={link.href} isBold />
+              <li key={`${link.text}${link.value}`}>
+                <StyledListLink
+                  content={link.contentName}
+                  href={link.value}
+                  isBold
+                />
               </li>
             ))}
           </ul>

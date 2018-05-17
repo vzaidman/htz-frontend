@@ -10,17 +10,17 @@ import {
 const Pair = new GraphQLObjectType({
   name: 'Pair',
   fields: () => ({
-    text: { type: GraphQLString, },
-    href: { type: GraphQLString, },
+    contentName: { type: GraphQLString, },
+    value: { type: GraphQLString, },
   }),
 });
 
 const Column = new GraphQLObjectType({
   name: 'Column',
   fields: () => ({
-    title: { type: GraphQLString, },
+    contentName: { type: GraphQLString, },
     combineWithNextColumn: { type: GraphQLBoolean, },
-    items: { type: new GraphQLList(Pair), },
+    row: { type: new GraphQLList(Pair), },
   }),
 });
 
