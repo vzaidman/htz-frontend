@@ -193,7 +193,7 @@ const DesktopOffer = ({
             {offer.price}
           </StyledPrice>
           {offer.text &&
-            offer.text.map((text, textIndex) => (
+            [ offer.originalPrice, ...offer.text, ].map((text, textIndex) => (
               <StyledOfferText
                 key={Math.random()}
                 isRecommended={offer.isRecommended}
