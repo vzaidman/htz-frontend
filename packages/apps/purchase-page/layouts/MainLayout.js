@@ -24,7 +24,7 @@ const GET_HOST_NAME = gql`
     user @client {
       type
     }
-  }  
+  }
 `;
 
 const propTypes = {
@@ -87,7 +87,9 @@ function MainLayout({
 }) {
   return (
     <Query query={GET_HOST_NAME}>
-      {({ data: { hostname, user: { type, }, promotionsPageState: { stage, }, }, }) => {
+      {({
+        data: { hostname, user: { type, }, promotionsPageState: { stage, }, },
+      }) => {
         const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
         return (
           <Fragment>
@@ -95,12 +97,20 @@ function MainLayout({
             <StyleProvider renderer={styleRenderer} theme={theme(host)}>
               <FelaComponent
                 render={({
-                  theme: { seo: { [host]: { title, description, }, }, },
+                  theme: {
+                    seo: {
+                      [host]: { title, description, googleSiteVerification, },
+                    },
+                  },
                 }) => (
                   <Fragment>
                     <Head>
                       <title>{title}</title>
                       <meta name="description" content={description} />
+                      <meta
+                        name="google-site-verification"
+                        content={googleSiteVerification}
+                      />
                     </Head>
                     <div id="pageRoot">
                       <StyledWrapper>
