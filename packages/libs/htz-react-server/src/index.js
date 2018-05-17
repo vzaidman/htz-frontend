@@ -67,7 +67,7 @@ const GraphQLOptions = {
   // fieldResolver?: Function
 
   // a boolean that will print additional debug logging if execution errors occur
-  debug: true,
+  debug: DEV,
 };
 
 const hostIp = config.get('hostIp');
@@ -76,7 +76,9 @@ app
   // eslint-disable-next-line consistent-return
   .then(() => {
     const server = express();
-    server.use(compression()); // Compress responses.
+    if (!DEV) {
+      server.use(compression()); // Compress responses.
+    }
     server.use(helmet()); // Various security-minded settings.
     // cors allows querying the server from different ports and aliases.
     server.use(cors());
