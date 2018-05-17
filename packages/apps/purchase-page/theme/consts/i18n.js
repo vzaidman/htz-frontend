@@ -205,7 +205,7 @@ export const stage2 = Object.freeze({
   }),
   buttons: Object.freeze({
     entitlements: {
-      beforeLinkText: 'כבר מנויים?',
+      beforeLinkText: 'כבר מנויים למהדורה המודפסת?',
       linkText: 'בדקו אם אתם זכאים להנחה',
       link: 'https://www.haaretz.co.il/misc/entitlement',
     },
