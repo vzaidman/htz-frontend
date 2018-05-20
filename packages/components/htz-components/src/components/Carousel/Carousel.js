@@ -1,3 +1,4 @@
+/* global window, document, navigator */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
@@ -25,7 +26,7 @@ const propTypes = {
    */
   miscStyles: stylesPropType,
   /**
-   * A render function that passes down the Carousel parts' render functions.
+   * A render prop  that passes down the Carousel parts' render functions.
    */
   render: PropTypes.func.isRequired,
   /**
@@ -85,15 +86,39 @@ class Carousel extends React.Component {
     displayItemNum: this.props.startAt,
     moving: false,
     direction: null,
+    startTouchX: null,
   };
 
   componentDidMount() {
+    this.wrapper.addEventListener(
+      'touchstart',
+      event => {
+        const startTouchX = event.touches[0].clientX;
+        this.setState({
+          startTouchX,
+        });
+      },
+      false
+    );
+    this.wrapper.addEventListener(
+      'touchend',
+      event => {
+        const endTouchX = event.changedTouches[0].clientX;
+        if (endTouchX > this.state.startTouchX) {
+          this.changeItem('next');
+        }
+        else if (endTouchX < this.state.startTouchX) {
+          this.changeItem('previous');
+        }
+      },
+      false
+    );
     this.currentItems.addEventListener(
       this.getTransitionEnd(),
       this.changeState,
       false
     );
-    document.addEventListener('click', this.handleGlobalClick); // eslint-disable-line no-undef
+    document.addEventListener('click', this.handleGlobalClick);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -104,10 +129,8 @@ class Carousel extends React.Component {
   }
 
   componentWillUnmount() {
-    /* eslint-disable no-undef */
     document.removeEventListener('click', this.handleGlobalClick);
     document.removeEventListener('keydown', this.handleGlobalKeydown);
-    /* eslint-enable no-undef */
   }
 
   getIndex = pos => {
@@ -140,7 +163,6 @@ class Carousel extends React.Component {
   };
 
   getTransitionEnd = () => {
-    /* eslint-disable no-undef */
     if ('ontransitionend' in window) {
       // Firefox
       return 'transitionend';
@@ -160,15 +182,12 @@ class Carousel extends React.Component {
     }
     // IE - not implemented (even in IE9) :(
     return false;
-    /* eslint-enable no-undef */
   };
 
   handleGlobalClick = e => {
-    /* eslint-disable no-undef */
     this.wrapper && this.wrapper.contains(e.target)
       ? document.addEventListener('keydown', this.handleGlobalKeydown)
       : document.removeEventListener('keydown', this.handleGlobalKeydown);
-    /* eslint-enable no-undef */
   };
 
   handleGlobalKeydown = e => {
@@ -209,7 +228,9 @@ class Carousel extends React.Component {
     const positionChange =
       this.state.direction === 'next'
         ? 100
-        : this.state.direction === 'previous' ? -100 : 0;
+        : this.state.direction === 'previous'
+          ? -100
+          : 0;
 
     const renderPreviousItems = itemsRenderer =>
       (this.state.displayItemNum > 0 || loop) && (

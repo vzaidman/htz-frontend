@@ -5,6 +5,7 @@ import { rgba, } from 'polished';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import ArticleImage from '../ArticleImage/ArticleImage';
+import { buildUrl, } from '../../utils/buildImgURLs';
 import Caption from '../Caption/Caption';
 import Carousel from '../Carousel/Carousel';
 import FullScreenMedia from '../FullScreenMedia/FullScreenMedia';
@@ -135,7 +136,7 @@ const DotsElement = ({ images, displayItemNum, miscStyles, }) => (
 );
 
 // eslint-disable-next-line react/prop-types
-const CaptionElement = ({ caption, credit, index, itemsLength, }) => (
+const CaptionElement = ({ caption, credit, index, itemsLength, size, }) => (
   <FelaComponent
     style={captionWrapperStyle}
     render={({ className, theme, }) => (
@@ -151,7 +152,7 @@ const CaptionElement = ({ caption, credit, index, itemsLength, }) => (
               fontWeight: '700',
             },
           }}
-          typeStyles={-2}
+          typeStyles={size}
         />
       </div>
     )}
@@ -164,26 +165,9 @@ const Gallery = ({
   currentDisplaying,
   forceAspect,
   images,
-  isFullScreen,
   name,
   showTitle,
 }) => {
-  const Image = imageProps => (
-    <ArticleImage
-      forceAspect={isFullScreen ? 'full' : forceAspect || 'regular'}
-      isFullScreen
-      showCaption={false}
-      enableEnlarge={false}
-      miscStyles={{
-        textAlign: 'center',
-        marginBottom:
-          '0 !important' /** TODO: for some reason it won't Trump */,
-        height: '100%',
-      }}
-      {...imageProps}
-    />
-  );
-
   const CarouselElement = () => (
     <FelaComponent
       render={({ theme, }) => (
@@ -201,127 +185,169 @@ const Gallery = ({
             renderButton,
             renderIndicator,
             displayItemNum,
-          }) =>
-            // eslint-disable-line arrow-body-style
-            // changeCurrentDisplaying(displayItemNum);
-             (
-               <Fragment>
-                 <ItemsWrapper>
-                   {renderPreviousItems(({ itemIndex, }) => (
-                     <Image {...images[itemIndex]} />
-                  ))}
-                   {renderCurrentItems(({ itemIndex, }) => (
-                     <Image {...images[itemIndex]} />
-                  ))}
-                   {renderNextItems(({ itemIndex, }) => (
-                     <Image {...images[itemIndex]} />
-                  ))}
-                   {!isFullScreen && (
-                   <FelaComponent
-                     style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        position: 'absolute',
-                        top: '50%',
-                        transform: 'translateY(-50%)',
-                        width: '100%',
+          }) => {
+            const image = images[displayItemNum];
+            return (
+              <FullScreenMedia
+                itemName={image.contentName}
+                itemUrl={
+                  buildUrl(
+                    image.contentId,
+                    { ...image, },
+                    {
+                      width: '1920',
+                      aspect: 'full',
+                      quality: 'auto',
+                    }
+                  )
+                }
+                captionElement={
+                  <CaptionElement
+                    caption={image.title}
+                    credit={image.credit}
+                    index={displayItemNum}
+                    itemsLength={images.length}
+                    size={-1}
+                  />
+                }
+                render={({ isFullScreen, }) => {
+                  const Image = imageProps => (
+                    <ArticleImage
+                      forceAspect={isFullScreen ? 'full' : forceAspect || 'regular'}
+                      isFullScreen
+                      showCaption={false}
+                      enableEnlarge={false}
+                      miscStyles={{
+                        textAlign: 'center',
+                        marginBottom:
+                          '0 !important' /** TODO: for some reason it won't Trump */,
+                        height: '100%',
                       }}
-                   >
-                     {renderButton(({ changeItem, }) => (
-                       <PreviousButton
-                         color={theme.color('neutral', '-1')}
-                         backgroundColor={rgba(theme.color('quaternary'), 0.8)}
-                         onClick={() => changeItem('previous')}
-                         aria-label={theme.previousText}
-                       >
-                         <IconBack
-                           size={2.5}
-                           miscStyles={{
-                              transform: 'rotateY(180deg)',
+                      {...imageProps}
+                    />
+                  );
+                  return (
+                    <Fragment>
+                      <ItemsWrapper>
+                        {renderPreviousItems(({ itemIndex, }) => (
+                          <Image {...images[itemIndex]} />
+                        ))}
+                        {renderCurrentItems(({ itemIndex, }) => (
+                          <Image {...images[itemIndex]} />
+                        ))}
+                        {renderNextItems(({ itemIndex, }) => (
+                          <Image {...images[itemIndex]} />
+                        ))}
+                        {!isFullScreen && (
+                          <FelaComponent
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              position: 'absolute',
+                              top: '50%',
+                              transform: 'translateY(-50%)',
+                              width: '100%',
                             }}
-                         />
-                       </PreviousButton>
-                      ))}
-                     {renderButton(({ changeItem, }) => (
-                       <NextButton
-                         color={theme.color('neutral', '-1')}
-                         backgroundColor={rgba(theme.color('quaternary'), 0.8)}
-                         onClick={() => changeItem('next')}
-                         aria-label={theme.nextText}
-                       >
-                         <IconBack size={2.5} />
-                       </NextButton>
-                      ))}
-                   </FelaComponent>
-                  )}
-                 </ItemsWrapper>
-                 {renderIndicator(() => (
-                   <FelaComponent
-                     style={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                    }}
-                     render={({ className, }) =>
-                      (isFullScreen ? (
-                        <div className={className}>
-                          {renderButton(({ changeItem, }) => (
-                            <PreviousButton
-                              color={theme.color('quaternary')}
-                              onClick={() => changeItem('previous')}
-                              aria-label={theme.previousText}
-                            >
-                              <IconBack
-                                size={2.5}
-                                miscStyles={{
-                                  transform: 'rotateY(180deg)',
-                                }}
-                              />
-                            </PreviousButton>
-                          ))}
-                          <DotsElement {...{ images, displayItemNum, }} />
-                          {renderButton(({ changeItem, }) => (
-                            <NextButton
-                              color={theme.color('quaternary')}
-                              onClick={() => changeItem('next')}
-                              aria-label={theme.nextText}
-                            >
-                              <IconBack size={2.5} />
-                            </NextButton>
-                          ))}
-                        </div>
-                      ) : (
+                          >
+                            {renderButton(({ changeItem, }) => (
+                              <PreviousButton
+                                color={theme.color('neutral', '-1')}
+                                backgroundColor={rgba(theme.color('quaternary'), 0.8)}
+                                onClick={() => changeItem('previous')}
+                                aria-label={theme.previousText}
+                              >
+                                <IconBack
+                                  size={2.5}
+                                  miscStyles={{
+                                    transform: 'rotateY(180deg)',
+                                  }}
+                                />
+                              </PreviousButton>
+                            ))}
+                            {renderButton(({ changeItem, }) => (
+                              <NextButton
+                                color={theme.color('neutral', '-1')}
+                                backgroundColor={rgba(theme.color('quaternary'), 0.8)}
+                                onClick={() => changeItem('next')}
+                                aria-label={theme.nextText}
+                              >
+                                <IconBack size={2.5} />
+                              </NextButton>
+                            ))}
+                          </FelaComponent>
+                        )}
+                      </ItemsWrapper>
+                      {renderIndicator(() => (
                         <FelaComponent
                           style={{
-                            backgroundColor: theme.color('neutral'),
-                            padding: '1rem',
+                            display: 'flex',
+                            justifyContent: 'center',
                           }}
-                        >
-                          <CaptionElement
-                            caption={images[displayItemNum].title}
-                            credit={images[displayItemNum].credit}
-                            index={displayItemNum}
-                            itemsLength={images.length}
-                          />
-                          <DotsElement
-                            miscStyles={{
-                              marginBottom: '1rem',
-                            }}
-                            {...{ images, displayItemNum, }}
-                          />
-                        </FelaComponent>
-                      ))
-                    }
-                   />
-                ))}
-               </Fragment>
-            )
-          }
+                          render={({ className, }) =>
+                            (isFullScreen ? (
+                              <div className={className}>
+                                {renderButton(({ changeItem, }) => (
+                                  <PreviousButton
+                                    color={theme.color('quaternary')}
+                                    onClick={() => changeItem('previous')}
+                                    aria-label={theme.previousText}
+                                  >
+                                    <IconBack
+                                      size={2.5}
+                                      miscStyles={{
+                                        transform: 'rotateY(180deg)',
+                                      }}
+                                    />
+                                  </PreviousButton>
+                                ))}
+                                <DotsElement {...{ images, displayItemNum, }} />
+                                {renderButton(({ changeItem, }) => (
+                                  <NextButton
+                                    color={theme.color('quaternary')}
+                                    onClick={() => changeItem('next')}
+                                    aria-label={theme.nextText}
+                                  >
+                                    <IconBack size={2.5} />
+                                  </NextButton>
+                                ))}
+                              </div>
+                            ) : (
+                              <FelaComponent
+                                style={{
+                                  backgroundColor: theme.color('neutral'),
+                                  padding: '1rem',
+                                }}
+                              >
+                                <CaptionElement
+                                  caption={image.title}
+                                  credit={image.credit}
+                                  index={displayItemNum}
+                                  itemsLength={images.length}
+                                  size={-2}
+                                />
+                                <DotsElement
+                                  miscStyles={{
+                                    marginBottom: '1rem',
+                                  }}
+                                  {...{ images, displayItemNum, }}
+                                />
+                              </FelaComponent>
+                            ))
+                          }
+                        />
+                      ))}
+                    </Fragment>
+                  );
+                }}
+              />
+            );
+          }}
         />
       )}
     />
   );
 
-  return <CarouselElement isFullScreen={isFullScreen} />;
+  return <CarouselElement />;
 };
 
 Gallery.propTypes = galleryProps;
@@ -358,29 +384,14 @@ class ImageGallery extends React.Component {
   };
 
   render() {
-    const { enableEnlarge, images, } = this.props;
-    const { currentDisplaying, } = this.state;
-    return enableEnlarge ? (
-      <FullScreenMedia
-        captionElement={
-          <CaptionElement
-            caption={images[currentDisplaying].title}
-            credit={images[currentDisplaying].credit}
-            index={currentDisplaying}
-            itemsLength={images.length}
-          />
-        }
-        render={({ isFullScreen, mediaRef, }) => (
-          <Gallery
-            {...this.props}
-            changeCurrentDisplaying={this.changeCurrentDisplaying}
-            currentDisplaying={currentDisplaying}
-            isFullScreen={isFullScreen}
-          />
-        )}
+    const { currentDisplaying, isFullScreen, } = this.state;
+    return (
+      <Gallery
+        {...this.props}
+        changeCurrentDisplaying={this.changeCurrentDisplaying}
+        currentDisplaying={currentDisplaying}
+        isFullScreen={isFullScreen}
       />
-    ) : (
-      <Gallery {...this.props} />
     );
   }
 }
