@@ -1,5 +1,5 @@
 import React from 'react';
-import EnzymeToJson from 'enzyme-to-json';
+import toJson from 'enzyme-to-json';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
 import NewsletterWithoutApollo from '../NewsletterWithoutApollo';
@@ -13,6 +13,9 @@ describe('<Newsletter />', () => {
     it('should correctly render a Newsletter initial view', () => {
       const wrapper = felaMount(
         <NewsletterWithoutApollo
+          buttonText="הרשמה"
+          headlineText="headline text"
+          loading={false}
           signUpNewsletter={mockFunc}
           miscStyles={{
             maxWidth: '80rem',
@@ -23,7 +26,7 @@ describe('<Newsletter />', () => {
           variant="highlight"
         />
       );
-      expect(EnzymeToJson(wrapper)).toMatchSnapshot();
+      expect(toJson(wrapper, { mode: 'shallow', })).toMatchSnapshot();
     });
   });
   describe('NewsletterConfirmed DOM element', () => {

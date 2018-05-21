@@ -84,7 +84,7 @@ export default class NewsletterWithoutApollo extends React.Component {
   static defaultProps = {
     host: null,
     icon: null,
-    id: PropTypes.string,
+    id: null,
     onSubmit: () => {},
     miscStyles: null,
     userEmail: null,

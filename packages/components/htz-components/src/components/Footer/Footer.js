@@ -131,7 +131,7 @@ export class Footer extends React.Component {
       else r.push([ e, ]);
       return r;
     }, []);
-    console.warn(columnsArr);
+
     return (
       <LayoutFooterRow
         bgc={color('footer', 'bg')}
