@@ -22,8 +22,8 @@ module.exports = {
   baseHref: 'https://www.haaretz.co.il',
   port: process.env.PORT || '2004',
   graphqlSubdomain: 'promotions',
-  graphqlProtocol: 'https',
+  graphqlProtocol: process.env.NO_SSL ? 'http' : 'https',
   papiSubDomain: 'www',
-  papiProtocol: 'https',
+  papiProtocol: process.env.NO_SSL ? 'http' : 'https',
   ssoSubDomain: 'sso',
 };

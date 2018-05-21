@@ -41,7 +41,6 @@
     "helmet": "^3.8.1",
     "http-proxy-middleware": "^0.18.0",
     "isomorphic-fetch": "^2.2.1",
-    "node-fetch": "^2.1.2",
     "universal-cookie": "^2.1.0"
   },
   "devDependencies": {

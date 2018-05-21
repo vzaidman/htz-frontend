@@ -52,24 +52,6 @@ const options = {
 // create the proxy (without context)
 const tomcatProxy = proxy(options);
 
-// options object
-const GraphQLOptions = {
-  // // a function applied to the parameters of every invocation of runQuery
-  // formatParams?: Function,
-
-  // // * - (optional) validationRules: extra validation rules applied to requests
-  // validationRules?: Array<ValidationRule>,
-
-  // // a function applied to each graphQL execution result
-  // formatResponse?: Function
-
-  // // a custom default field resolver
-  // fieldResolver?: Function
-
-  // a boolean that will print additional debug logging if execution errors occur
-  debug: DEV,
-};
-
 const hostIp = config.get('hostIp');
 app
   .prepare()
@@ -88,14 +70,6 @@ app
       graphqlExpress(req => ({
         schema,
         context: createContext(req),
-        formatError: err => {
-          if (err.originalError && err.originalError.error_message) {
-            // eslint-disable-next-line no-param-reassign
-            err.message = err.originalError.error_message;
-          }
-          return err;
-        },
-        ...GraphQLOptions,
       }))
     );
     if (DEV) {

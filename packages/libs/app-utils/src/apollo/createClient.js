@@ -15,7 +15,8 @@ if (!process.browser) {
 }
 
 function create(initialState, req) {
-  const graphqlPort = process.env.NODE_ENV === 'production' ? '' : `:${port}`;
+  const graphqlPort =
+    process.env.NODE_ENV === 'production' ? `:${port}` : `:${port}`;
   const hostname =
     initialState.ROOT_QUERY !== undefined
       ? initialState.ROOT_QUERY.hostname
@@ -24,14 +25,14 @@ function create(initialState, req) {
     'graphqlProtocol'
   )}://${hostname}${graphqlPort}/graphql`;
 
+  console.log('createClient graphqlLink:', graphqlLink);
+
   const link = new HttpLink({
     uri: graphqlLink, // Server URL (must be absolute)
     credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
     headers: {
       cookie: req !== undefined ? req.header('Cookie') : undefined,
     },
-    fetch,
-    includeExtensions: true,
   });
 
   const inMemoryCache = new InMemoryCache({

@@ -48,6 +48,7 @@ export function createLoaders(req) {
         .splice(1)
         .join('.')}`;
       baseUri = `${papiProtocol}://${papiHostname}/papi`;
+      console.log('baseUri set to ', baseUri);
     }
     const userId = CookieUtils.stringToMap(cookies.get('tmsso') || '', {
       separator: /:\s?/,
