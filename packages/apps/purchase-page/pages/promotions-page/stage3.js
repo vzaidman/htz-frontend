@@ -135,6 +135,9 @@ class Stage3 extends Component {
                                   }
                                   stageElement={
                                     <LoginOrRegisterStage
+                                      registerOrLoginStage={
+                                        this.state.registerOrLoginStage
+                                      }
                                       site={
                                         hostname.includes('themarker')
                                           ? 'TM'
