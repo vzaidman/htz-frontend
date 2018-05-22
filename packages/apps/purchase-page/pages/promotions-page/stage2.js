@@ -32,7 +32,7 @@ function Stage2() {
         if (error) return <div> Error...</div>;
         const isFirstPage = data.purchasePage.slots.length <= 1;
         return (
-          <MainLayout>
+          <MainLayout displayBackButton={!isFirstPage}>
             <Query query={GET_LOCAL_STATE}>
               {({ data: clientData, }) => {
                 const {

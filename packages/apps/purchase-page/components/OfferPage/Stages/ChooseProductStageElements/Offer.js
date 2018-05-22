@@ -1,9 +1,11 @@
 import React from 'react';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
 import { border, } from '@haaretz/htz-css-tools';
 import { Button, BIAction, } from '@haaretz/htz-components';
 import { friendlyRoutes, } from '../../../../routes/routes';
+
+import TermsButton from './TermsButton';
 
 const offerStyle = ({ theme, isRecommended = false, }) => ({
   cursor: 'pointer',
@@ -30,6 +32,24 @@ const offerStyle = ({ theme, isRecommended = false, }) => ({
   extend: [
     border('1px', 4, 'solid', theme.color('offerPage', 'borderHighlighted')),
     theme.mq(
+      { until: 's', },
+      {
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingInlineEnd: '3rem',
+        paddingInlineStart: '3rem',
+        height: 'initial',
+        marginBottom: '2rem',
+        ...border(
+          '1px',
+          isRecommended ? 3 : 2,
+          'solid',
+          theme.color('offerPage', 'borderHighlighted')
+        ),
+      }
+    ),
+    theme.mq(
       { from: 's', until: 'l', },
       {
         ...border(
@@ -52,21 +72,22 @@ const offerStyle = ({ theme, isRecommended = false, }) => ({
 const StyledOffer = createComponent(offerStyle, 'div', [ 'onClick', ]);
 
 const offerTitleStyle = ({ theme, isRecommended, }) => ({
-  ...theme.type(2),
+  extend: [ theme.type(2, { fromBp: 's', }), theme.type(1, { untilBp: 's', }), ],
 });
 
 const StyledOfferTitle = createComponent(offerTitleStyle, 'h2');
 
 const priceStyle = ({ theme, isRecommended, }) => ({
   display: 'block',
-  fontWeight: 300,
+  fontWeight: 400,
   letterSpacing: '-1.4px',
   color: theme.color('offerPage', 'pricingHeadText'),
   ':before': {
     content: `"${theme.stage2.offerList.currencySymbol}"`,
-    ...theme.type(1),
+    ...theme.type(1, { fromBp: 's', }),
+    ...theme.type(-1, { untilBp: 's', }),
   },
-  extend: [ theme.type(9), ],
+  extend: [ theme.type(9, { fromBp: 's', }), theme.type(6, { untilBp: 's', }), {}, ],
 });
 
 const StyledPrice = createComponent(priceStyle, 'span');
@@ -75,7 +96,7 @@ const offerTextStyle = ({ theme, isRecommended, isFirst, }) => ({
   display: 'block',
   fontWeight: '400',
   ...(isFirst ? {} : { color: theme.color('offerPage', 'secondaryOfferText'), }),
-  ...theme.type(1),
+  extend: [ theme.type(1, { fromBp: 's', }), theme.type(-1, { untilBp: 's', }), ],
 });
 
 const StyledOfferText = createComponent(offerTextStyle, 'span');
@@ -83,31 +104,37 @@ const StyledOfferText = createComponent(offerTextStyle, 'span');
 const cancelButtonTextStyle = ({ theme, isRecommended, }) => ({
   display: 'block',
   marginTop: '4.5rem',
-  ...theme.type(-1),
+  extend: [
+    theme.type(-1, { fromBp: 's', }),
+    theme.type(-3, { untilBp: 's', }),
+    theme.mq({ until: 's', }, { marginTop: '1.5rem', }),
+  ],
 });
 
 const StyledCancelButtonText = createComponent(cancelButtonTextStyle, 'span');
-
-const termsButtonStyle = ({ theme, isRecommended, }) => ({
-  textDecoration: 'underline',
-  marginTop: '1.5rem',
-  display: 'block',
-  marginInlineStart: 'auto',
-  marginInlineEnd: 'auto',
-  ...theme.type(-1),
-});
-
-const StyledTermsButton = createComponent(termsButtonStyle, 'button', [
-  'onClick',
-]);
 
 const bannerStyle = ({ theme, }) => ({
   position: 'absolute',
   overflow: 'hidden',
   top: 0,
-  insetInlineStart: 0,
-  width: '20rem',
-  height: '20rem',
+  extend: [
+    theme.mq(
+      { from: 's', },
+      {
+        insetInlineStart: 0,
+        width: '20rem',
+        height: '20rem',
+      }
+    ),
+    theme.mq(
+      { until: 's', },
+      {
+        insetInlineEnd: 0,
+        width: '19rem',
+        height: '12rem',
+      }
+    ),
+  ],
 });
 
 const StyledBanner = createComponent(bannerStyle);
@@ -121,6 +148,15 @@ const bannerInnerContStyle = ({ theme, }) => ({
   // a large enough number to ensure the banner oversteps its boundries
   width: '150%',
   textAlign: 'center',
+  extend: [
+    theme.mq(
+      { until: 's', },
+      {
+        transform: 'rotate(-30deg) translate(6%, 156%)',
+      }
+    ),
+    theme.type(-2, { until: 's', }),
+  ],
 });
 
 const StyledBannerInnerCont = createComponent(bannerInnerContStyle);
@@ -186,72 +222,86 @@ const DesktopOffer = ({
               <StyledBannerInnerCont>{offer.bannerText}</StyledBannerInnerCont>
             </StyledBanner>
           ) : null}
-          <StyledOfferTitle isRecommended={offer.isRecommended}>
-            {offer.title}
-          </StyledOfferTitle>
-          <StyledPrice isRecommended={offer.isRecommended}>
-            {offer.price}
-          </StyledPrice>
-          {offer.text &&
-            [ offer.originalPrice, ...offer.text, ].map((text, textIndex) => (
-              <StyledOfferText
-                key={Math.random()}
-                isRecommended={offer.isRecommended}
-                isFirst={textIndex === 0}
-              >
-                {text}
-              </StyledOfferText>
-            ))}
-          <BIAction>
-            {action => (
-              <Button
-                href={pathName}
-                variant="salesOpaque"
-                boxModel={{ hp: 3, vp: 1, }}
-                miscStyles={{
-                  marginTop: [
-                    { until: 's', value: '1rem', },
-                    { from: 's', value: '3rem', },
-                  ],
-                  type: [ { until: 's', value: -1, }, ],
-                }}
-                onClick={() => {
-                  action({
-                    actionCode: 21,
-                    additionalInfo: {
-                      stage: 'product',
-                      chosenProduct: offer.title,
-                    },
-                  });
-                  continueToNextStage({ cache, idx: offerIdx, });
-                }}
-              >
-                {offer.buttonText}
-              </Button>
-            )}
-          </BIAction>
-          <StyledCancelButtonText isRecommended={offer.isRecommended}>
-            {cancelButtonText}
-          </StyledCancelButtonText>
-          <BIAction>
-            {action => (
-              <StyledTermsButton
-                isRecommended={offer.isRecommended}
-                onClick={evt => {
-                  evt.stopPropagation();
-                  openModal(offerIdx);
-                  action({
-                    actionCode: 21,
-                    additionalInfo: {
-                      stage: 'product',
-                    },
-                  });
-                }}
-              >
-                {termsButtonText}
-              </StyledTermsButton>
-            )}
-          </BIAction>
+          <FelaComponent
+            style={theme => ({
+              extend: [ theme.mq({ until: 's', }, { textAlign: 'right', }), ],
+            })}
+          >
+            <StyledOfferTitle isRecommended={offer.isRecommended}>
+              {offer.title}
+            </StyledOfferTitle>
+            <StyledPrice isRecommended={offer.isRecommended}>
+              {offer.price}
+            </StyledPrice>
+            {offer.text &&
+              [ offer.originalPrice, ...offer.text, ].map((text, textIndex) => (
+                <StyledOfferText
+                  key={Math.random()}
+                  isRecommended={offer.isRecommended}
+                  isFirst={textIndex === 0}
+                >
+                  {text}
+                </StyledOfferText>
+              ))}
+            <TermsButton
+              displayOnMobile
+              isRecommended={offer.isRecommended}
+              offerIdx={offerIdx}
+              termsButtonText={termsButtonText}
+              openModal={openModal}
+            />
+          </FelaComponent>
+          <FelaComponent
+            style={theme => ({
+              extend: [
+                theme.mq(
+                  { until: 's', },
+                  {
+                    alignSelf: 'flex-end',
+                  }
+                ),
+              ],
+            })}
+          >
+            <BIAction>
+              {action => (
+                <Button
+                  href={pathName}
+                  variant="salesOpaque"
+                  boxModel={{ hp: 3, vp: 1, }}
+                  miscStyles={{
+                    marginTop: [
+                      { until: 's', value: '1rem', },
+                      { from: 's', value: '3rem', },
+                    ],
+                    type: [ { until: 's', value: -1, }, ],
+                  }}
+                  onClick={() => {
+                    action({
+                      actionCode: 21,
+                      additionalInfo: {
+                        stage: 'product',
+                        chosenProduct: offer.title,
+                      },
+                    });
+                    continueToNextStage({ cache, idx: offerIdx, });
+                  }}
+                >
+                  {offer.buttonText}
+                </Button>
+              )}
+            </BIAction>
+            <StyledCancelButtonText isRecommended={offer.isRecommended}>
+              {cancelButtonText}
+            </StyledCancelButtonText>
+            <TermsButton
+              displayOnMobile={false}
+              isRecommended={offer.isRecommended}
+              offerIdx={offerIdx}
+              termsButtonText={termsButtonText}
+              openModal={openModal}
+            />
+          </FelaComponent>
         </StyledOffer>
       )}
     </ApolloConsumer>
