@@ -13,7 +13,7 @@ import createSiteConfig from '../site-config';
  */
 function withTimeout(
   promise,
-  timeout = 5000,
+  timeout = 8000,
   msgOnTimeout = 'לא הצלחנו לקבל תשובה מהשרת, אנא נסו שוב'
 ) {
   const timer = new Promise((resolve, reject) =>
@@ -24,7 +24,7 @@ function withTimeout(
   return Promise.race([ promise, timer, ]);
 }
 
-const defaultTimeout = 5000;
+const defaultTimeout = 8000;
 
 /**
  * User Services are the collective functions that are allowed communication with
