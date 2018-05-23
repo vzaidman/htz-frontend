@@ -134,8 +134,7 @@ export default function purchase(app, server) {
       isRedirect && globalStageToRender
         ? globalStageToRender
         : await getPageToRender(req);
-
-    if (pageToRender === 'thankYou') {
+    if (pageToRender === 'thankYou' || req.query.msg === 'thank_user') {
       return render(req, res, 'thankYou');
     }
     return redirect(req, res, pageToRender);
