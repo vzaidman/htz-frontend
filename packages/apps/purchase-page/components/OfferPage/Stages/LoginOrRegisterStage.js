@@ -15,10 +15,13 @@ import {
   Login,
   Register,
 } from '@haaretz/htz-components';
-import isEmail from 'validator/lib/isEmail';
+
 import { ApolloConsumer, } from 'react-apollo';
 
 import ResetPasswordModal from './LoginOrRegisterElements/ResetPasswordModal';
+import submitForm from './LoginOrRegisterElements/submitForm';
+import PasswordNote from './LoginOrRegisterElements/PasswordNote';
+import validateForm from './LoginOrRegisterElements/validateForm';
 
 const formContStyle = theme => ({
   marginTop: '4rem',
@@ -39,50 +42,6 @@ const changeEmailContStyle = {
   display: 'flex',
   justifyContent: 'space-between',
 };
-
-const passwordNoteContStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
-};
-
-const PasswordNote = (text, forgotPasswordText, openModal, userExists) => (
-  <Fragment>
-    {userExists ? (
-      <FelaComponent style={passwordNoteContStyle}>
-        <div>{text}</div>
-        <FelaComponent
-          style={theme => ({
-            textDecoration: 'underline',
-            color: theme.color('loginOrRegister', 'inFormText'),
-          })}
-          render={({ className, }) => (
-            <BIAction>
-              {action => (
-                <button
-                  className={className}
-                  type="button"
-                  onClick={evt => {
-                    openModal(evt);
-                    action({
-                      actionCode: 32,
-                      additionalInfo: {
-                        stage: 'login-register',
-                      },
-                    });
-                  }}
-                >
-                  {forgotPasswordText}
-                </button>
-              )}
-            </BIAction>
-          )}
-        />
-      </FelaComponent>
-    ) : (
-      text
-    )}
-  </Fragment>
-);
 
 const textInputStyle = {
   marginTop: '2rem',
@@ -122,34 +81,39 @@ class LoginOrRegisterStage extends React.Component {
       site,
       updateRegisterOrLoginStage,
       updateRefetchState,
+      registerOrLoginStage,
     } = this.props;
 
     if (this.state.error) {
       return (
-        <div>
-          <FelaComponent
-            style={theme => ({
-              color: theme.color('tertiary'),
-              marginTop: '13rem',
-              fontWeight: 'bold',
-            })}
-          >
-            {this.state.error}
-          </FelaComponent>
-          <Button
-            onClick={() =>
-              this.setState({
-                error: null,
-                loading: false,
-                loadingAll: false,
-                email: null,
-              })
-            }
-            miscStyles={{ marginTop: '5rem', }}
-          >
-            נסו שוב
-          </Button>
-        </div>
+        <FelaComponent
+          render={({ theme: { stage3: { error: { retryButton, }, }, }, }) => (
+            <div>
+              <FelaComponent
+                style={theme => ({
+                  color: theme.color('tertiary'),
+                  marginTop: '13rem',
+                  fontWeight: 'bold',
+                })}
+              >
+                {this.state.error}
+              </FelaComponent>
+              <Button
+                onClick={() =>
+                  this.setState({
+                    error: null,
+                    loading: false,
+                    loadingAll: false,
+                    email: null,
+                  })
+                }
+                miscStyles={{ marginTop: '5rem', }}
+              >
+                {retryButton}
+              </Button>
+            </div>
+          )}
+        />
       );
     }
     return (
@@ -177,188 +141,35 @@ class LoginOrRegisterStage extends React.Component {
                               {...this.state.email && {
                                 initialValues: { email: this.state.email, },
                               }}
-                              onSubmit={({
-                                email,
-                                password,
-                                firstName,
-                                lastName,
-                                terms,
-                              }) => {
-                                if (!this.state.email) {
-                                  this.setState({ loading: true, email, });
-                                  checkEmailExists(email)
-                                    .then(userExists => {
-                                      this.setState({
-                                        loading: false,
-                                        email,
-                                        userExists,
-                                      });
-                                      updateRegisterOrLoginStage(
-                                        userExists ? 'login' : 'register'
-                                      );
-                                    })
-                                    .catch(error => {
-                                      this.setState({
-                                        error: error.msg || error.message,
-                                        loading: false,
-                                      });
-                                    });
-                                }
- else if (this.state.userExists) {
-                                  this.setState({
-                                    loading: true,
-                                    loadingAll: true,
-                                  });
-                                  login(email, password)
-                                    .then(() => {
-                                      updateRefetchState(true);
-                                    })
-                                    .catch(error => {
-                                      this.setState({
-                                        error:
-                                          error.message ||
-                                          'שגיאה במערכת ההתחברות, אנא נסו שוב',
-                                      });
-                                    });
-                                }
- else {
-                                  this.setState({
-                                    loading: true,
-                                    loadingAll: true,
-                                  });
-                                  register(
-                                    email,
-                                    password,
-                                    password,
-                                    firstName,
-                                    lastName,
-                                    '',
-                                    '',
-                                    terms,
-                                    ''
-                                  )
-                                    .then(() => {
-                                      cache.writeData({
-                                        data: {
-                                          loggedInOrRegistered: 'registered',
-                                        },
-                                      });
-                                      Router.replace(
-                                        '/promotions-page/stage4',
-                                        router.asPath
-                                      );
-                                    })
-                                    .catch(error => {
-                                      this.setState({
-                                        error:
-                                          error.message ||
-                                          'שגיאה במערכת ההרשמה, אנא נסו שוב',
-                                      });
-                                    });
-                                }
+                              onSubmit={fields => {
+                                submitForm({
+                                  ...fields,
+                                  checkEmailExists,
+                                  updateRegisterOrLoginStage,
+                                  updateRefetchState,
+                                  login,
+                                  register,
+                                  cache,
+                                  Router,
+                                  router,
+                                  setState: newState => this.setState(newState),
+                                  stateEmail: this.state.email,
+                                  stateUserExists: this.state.userExists,
+                                });
                               }}
-                              validate={({
-                                email = '',
-                                password,
-                                firstName,
-                                lastName,
-                                terms,
-                              }) => {
-                                const errors = [];
-
-                                if (!email) {
-                                  errors.push({
-                                    name: 'email',
-                                    order: 1,
-                                    errorText: form.email.errorText,
-                                  });
-                                }
- else if (!isEmail(email)) {
-                                  errors.push({
-                                    name: 'email',
-                                    order: 1,
-                                    errorText: form.email.errorTextInvalidEmail,
-                                  });
-                                }
-
-                                if (this.state.email) {
-                                  if (!password) {
-                                    errors.push({
-                                      name: 'password',
-                                      order: 2,
-                                      errorText: PasswordNote(
-                                        form.password.errorTextNoPassword,
-                                        form.password.forgotPasswordText,
-                                        this.openModal,
-                                        this.state.userExists
-                                      ),
-                                    });
-                                  }
-                                  if (password && password.length < 5) {
-                                    errors.push({
-                                      name: 'password',
-                                      order: 2,
-                                      errorText: PasswordNote(
-                                        form.password.errorTextUnderFiveChars,
-                                        form.password.forgotPasswordText,
-                                        this.openModal,
-                                        this.state.userExists
-                                      ),
-                                    });
-                                  }
-                                  if (!this.state.userExists) {
-                                    if (!firstName) {
-                                      errors.push({
-                                        name: 'firstName',
-                                        order: 3,
-                                        errorText: form.firstName.errorText,
-                                      });
-                                    }
-                                    const digitRegex = new RegExp('\\d');
-                                    if (
-                                      firstName &&
-                                      (firstName.length < 2 ||
-                                        digitRegex.test(firstName))
-                                    ) {
-                                      errors.push({
-                                        name: 'firstName',
-                                        order: 3,
-                                        errorText:
-                                          form.firstName.errorTextUnderTwoChars,
-                                      });
-                                    }
-                                    if (!lastName) {
-                                      errors.push({
-                                        name: 'lastName',
-                                        order: 4,
-                                        errorText: form.lastName.errorText,
-                                      });
-                                    }
-                                    if (
-                                      lastName &&
-                                      (lastName.length < 2 ||
-                                        digitRegex.test(lastName))
-                                    ) {
-                                      errors.push({
-                                        name: 'lastName',
-                                        order: 4,
-                                        errorText:
-                                          form.lastName.errorTextUnderTwoChars,
-                                      });
-                                    }
-                                  }
-                                  if (!terms) {
-                                    errors.push({
-                                      name: 'terms',
-                                      order: 4,
-                                      errorText: form.terms.errorText[site],
-                                    });
-                                  }
-                                }
-                                return errors;
-                              }}
+                              validate={fields =>
+                                validateForm({
+                                  ...fields,
+                                  form,
+                                  site,
+                                  stateEmail: this.state.email,
+                                  stateUserExists: this.state.userExists,
+                                  openModal: this.openModal,
+                                })
+                              }
                               render={({ getInputProps, handleSubmit, }) => (
                                 <FelaComponent style={formContStyle}>
+                                  {/* render form header only when user is registering and nothing is loading */}
                                   {this.state.email &&
                                     !this.state.userExists &&
                                     !this.state.loading && (
@@ -407,6 +218,7 @@ class LoginOrRegisterStage extends React.Component {
                                         />
                                       </FelaComponent>
                                     )}
+                                  {/* render email input if the whole form is not loading */}
                                   {!this.state.loadingAll && (
                                     <TextInput
                                       {...getInputProps({
@@ -421,6 +233,7 @@ class LoginOrRegisterStage extends React.Component {
                                     />
                                   )}
                                   <Fragment>
+                                    {/* render password input when there is an email, weather registering or logging in */}
                                     {this.state.email && !this.state.loading ? (
                                       <Fragment>
                                         <TextInput
@@ -445,6 +258,7 @@ class LoginOrRegisterStage extends React.Component {
                                           })}
                                           miscStyles={textInputStyle}
                                         />
+                                        {/* render first and last name inputs if the user does not exist */}
                                         {!this.state.userExists && (
                                           <Grid gutter={2}>
                                             <GridItem

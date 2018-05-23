@@ -329,6 +329,9 @@ export const stage3 = Object.freeze({
       }),
     }),
   }),
+  error: Object.freeze({
+    retryButton: 'נסו שוב',
+  }),
 });
 
 export const stage4 = Object.freeze({
