@@ -28,9 +28,9 @@ function Stage2() {
   return (
     <OfferPageDataGetter
       render={({ data, loading, error, refetch, }) => {
-        if (loading) return <div> Loading...</div>;
+        if (loading) return <div />;
         if (error) return <div> Error...</div>;
-        const isFirstPage = data.purchasePage.slots.length <= 1;
+        const isFirstPage = Math.floor(data.purchasePage.pageNumber) === 3;
         return (
           <MainLayout displayBackButton={!isFirstPage}>
             <Query query={GET_LOCAL_STATE}>
@@ -61,7 +61,6 @@ function Stage2() {
                           ) : (
                             <StageCounter stage={2} />
                           )}
-                          {/* <StageCounter stage={2} /> */}
                           <LayoutContainer
                             bgc="transparent"
                             miscStyles={{ paddingTop: '1.5rem', }}

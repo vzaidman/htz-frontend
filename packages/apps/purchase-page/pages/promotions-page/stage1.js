@@ -28,19 +28,10 @@ const getChooseSlotsData = slots =>
   });
 
 class Stage1 extends React.Component {
+  static propTypes = pagePropTypes;
+
   static getInitialProps({ url, }) {
     return { url, };
-  }
-
-  state = {
-    mounted: false,
-  };
-
-  componentDidMount() {
-    // eslint-disable-next-line react/no-did-mount-set-state
-    this.setState({
-      mounted: true,
-    });
   }
 
   render() {
@@ -48,47 +39,41 @@ class Stage1 extends React.Component {
     return (
       <MainLayout footerHasIllustration={false} displayBackButton={false}>
         <FelaComponent style={{ position: 'relative', }}>
-          {this.state.mounted && (
-            <OfferPageDataGetter
-              render={({ data, loading, error, client, }) => {
-                if (loading) return <div />;
-                if (error) return <div> Error...</div>;
-                client.writeData({ data: { referrer, }, });
-                const { slots, pageNumber, } = data.purchasePage;
-                return pageNumber >= 7 ? (
-                  <Redirect destination="/promotions-page/thankYou" replace />
-                ) : slots.length > 1 ? (
-                  <Query query={GET_PROMOTIONS_STATE}>
-                    {({ data: clientData, }) => {
-                      const {
-                        promotionsPageState: { subStage, },
-                        hostname,
-                      } = clientData;
-                      client.writeData({ data: { startFromStage2: false, }, });
-                      return (
-                        <ChooseSlotStage
-                          hostname={hostname}
-                          tableData={getChooseSlotsData(slots)}
-                          subStage={subStage}
-                          userMessage={data.purchasePage.userMessage}
-                        />
-                      );
-                    }}
-                  </Query>
-                ) : (
-                  <Redirect destination="/promotions-page/stage2" replace />
-                );
-              }}
-            />
-          )}
+          <OfferPageDataGetter
+            render={({ data, loading, error, client, }) => {
+              if (loading) return <div />;
+              if (error) return <div> Error...</div>;
+              client.writeData({ data: { referrer, }, });
+              const { slots, pageNumber, } = data.purchasePage;
+              return pageNumber >= 7 ? (
+                <Redirect destination="/promotions-page/thankYou" replace />
+              ) : slots.length > 1 ? (
+                <Query query={GET_PROMOTIONS_STATE}>
+                  {({ data: clientData, }) => {
+                    const {
+                      promotionsPageState: { subStage, },
+                      hostname,
+                    } = clientData;
+                    client.writeData({ data: { startFromStage2: false, }, });
+                    return (
+                      <ChooseSlotStage
+                        hostname={hostname}
+                        tableData={getChooseSlotsData(slots)}
+                        subStage={subStage}
+                        userMessage={data.purchasePage.userMessage}
+                      />
+                    );
+                  }}
+                </Query>
+              ) : (
+                <Redirect destination="/promotions-page/stage2" replace />
+              );
+            }}
+          />
         </FelaComponent>
       </MainLayout>
     );
   }
 }
-
-Stage1.propTypes = pagePropTypes;
-
-Stage1.defaultProps = {};
 
 export default withData(Stage1);
