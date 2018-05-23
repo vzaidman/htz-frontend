@@ -286,10 +286,10 @@ export const stage3 = Object.freeze({
           TM: 'https://www.themarker.com/misc/site-policy',
         }),
         labelAfterTermsButton:
-          ', וכן קבלת דיוורים, המלצות קריאה והצעות לרכישת מינוי מאתרי הארץ-TheMarker',
+          ', וכן קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ - TheMarker',
       }),
       loginText:
-        'אני מאשר/ת קבלת דיוורים, המלצות קריאה והצעות לרכישת מינוי מאתרי הארץ-TheMarker',
+        'אני מאשר/ת קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ - TheMarker',
     }),
     continueButton: Object.freeze({
       text: 'המשך',
