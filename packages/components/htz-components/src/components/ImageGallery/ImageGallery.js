@@ -1,4 +1,4 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { rgba, } from 'polished';
@@ -120,11 +120,15 @@ const PreviousButton = createComponent(previousButtonStyle, NavigationButton, [
   'onClick',
 ]);
 
-const itemsWrapperStyle = ({ miscStyles, theme, }) => ({
+const itemsWrapperStyle = ({ theme, }) => ({
   height: '100%',
-  maxHeight: '100%',
-  overflow: 'hidden',
+  display: 'flex',
+  flexWrap: 'nowrap',
   position: 'relative',
+  extend: [
+    ...theme.mq({ from: 's', misc: 'portrait', }, { flexShrink: '1', }),
+    ...theme.mq({ from: 'm', misc: 'landscape', }, { flexShrink: '1', }),
+  ],
 });
 const ItemsWrapper = createComponent(itemsWrapperStyle);
 
@@ -190,17 +194,15 @@ const Gallery = ({
             return (
               <FullScreenMedia
                 itemName={image.contentName}
-                itemUrl={
-                  buildUrl(
-                    image.contentId,
-                    { ...image, },
-                    {
-                      width: '1920',
-                      aspect: 'full',
-                      quality: 'auto',
-                    }
-                  )
-                }
+                itemUrl={buildUrl(
+                  image.contentId,
+                  { ...image.imgArray[0], aspects: image.aspects, },
+                  {
+                    width: '1920',
+                    aspect: 'full',
+                    quality: 'auto',
+                  }
+                )}
                 captionElement={
                   <CaptionElement
                     caption={image.title}
@@ -213,21 +215,61 @@ const Gallery = ({
                 render={({ isFullScreen, }) => {
                   const Image = imageProps => (
                     <ArticleImage
-                      forceAspect={isFullScreen ? 'full' : forceAspect || 'regular'}
+                      forceAspect={
+                        isFullScreen ? 'full' : forceAspect || 'regular'
+                      }
                       isFullScreen
                       showCaption={false}
                       enableEnlarge={false}
                       miscStyles={{
-                        textAlign: 'center',
-                        marginBottom:
-                          '0 !important' /** TODO: for some reason it won't Trump */,
+                        display: 'block',
+                        width: '100%',
                         height: '100%',
+                        flexShrink: '0',
+                        textAlign: 'center',
+                        ...(isFullScreen
+                          ? {
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }
+                          : {}),
+                        ...theme.mq(
+                          { until: 'm', misc: 'landscape', },
+                          { marginBottom: '0', }
+                        ),
+                        ...theme.mq(
+                          { until: 's', misc: 'portrait', },
+                          { marginBottom: '0', }
+                        ),
+                        ...theme.mq(
+                          { from: 's', misc: 'portrait', },
+                          {
+                            marginBottom: '0',
+                            ...(isFullScreen ? { display: 'block', } : {}),
+                          }
+                        ),
+                        ...theme.mq(
+                          { from: 'm', misc: 'landscape', },
+                          {
+                            marginBottom: '0',
+                            ...(isFullScreen ? { display: 'block', } : {}),
+                          }
+                        ),
                       }}
                       {...imageProps}
                     />
                   );
                   return (
-                    <Fragment>
+                    <FelaComponent
+                      style={{
+                        height: '100%',
+                        width: '100%',
+                        overflow: 'hidden',
+                        display: 'flex',
+                        flexDirection: 'column',
+                      }}
+                    >
                       <ItemsWrapper>
                         {renderPreviousItems(({ itemIndex, }) => (
                           <Image {...images[itemIndex]} />
@@ -238,50 +280,74 @@ const Gallery = ({
                         {renderNextItems(({ itemIndex, }) => (
                           <Image {...images[itemIndex]} />
                         ))}
-                        {!isFullScreen && (
-                          <FelaComponent
-                            style={{
-                              display: 'flex',
-                              justifyContent: 'space-between',
-                              position: 'absolute',
-                              top: '50%',
-                              transform: 'translateY(-50%)',
-                              width: '100%',
-                            }}
-                          >
-                            {renderButton(({ changeItem, }) => (
-                              <PreviousButton
-                                color={theme.color('neutral', '-1')}
-                                backgroundColor={rgba(theme.color('quaternary'), 0.8)}
-                                onClick={() => changeItem('previous')}
-                                aria-label={theme.previousText}
-                              >
-                                <IconBack
-                                  size={2.5}
-                                  miscStyles={{
-                                    transform: 'rotateY(180deg)',
-                                  }}
-                                />
-                              </PreviousButton>
-                            ))}
-                            {renderButton(({ changeItem, }) => (
-                              <NextButton
-                                color={theme.color('neutral', '-1')}
-                                backgroundColor={rgba(theme.color('quaternary'), 0.8)}
-                                onClick={() => changeItem('next')}
-                                aria-label={theme.nextText}
-                              >
-                                <IconBack size={2.5} />
-                              </NextButton>
-                            ))}
-                          </FelaComponent>
-                        )}
                       </ItemsWrapper>
+                      <FelaComponent
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          position: 'absolute',
+                          top: '50%',
+                          start: '0',
+                          transform: 'translateY(-50%)',
+                          width: '100%',
+                          extend: [ isFullScreen && { display: 'none', }, ],
+                        }}
+                      >
+                        {renderButton(({ changeItem, }) => (
+                          <PreviousButton
+                            color={theme.color('neutral', '-1')}
+                            backgroundColor={rgba(
+                              theme.color('quaternary'),
+                              0.8
+                            )}
+                            onClick={() => changeItem('previous')}
+                            aria-label={theme.previousText}
+                          >
+                            <IconBack
+                              size={2.5}
+                              miscStyles={{
+                                transform: 'rotateY(180deg)',
+                              }}
+                            />
+                          </PreviousButton>
+                        ))}
+                        {renderButton(({ changeItem, }) => (
+                          <NextButton
+                            color={theme.color('neutral', '-1')}
+                            backgroundColor={rgba(
+                              theme.color('quaternary'),
+                              0.8
+                            )}
+                            onClick={() => changeItem('next')}
+                            aria-label={theme.nextText}
+                          >
+                            <IconBack size={2.5} />
+                          </NextButton>
+                        ))}
+                      </FelaComponent>
                       {renderIndicator(() => (
                         <FelaComponent
                           style={{
-                            display: 'flex',
-                            justifyContent: 'center',
+                            display: 'none',
+                            extend: [
+                              theme.mq(
+                                { from: 'm', misc: 'landscape', },
+                                {
+                                  display: 'flex',
+                                  justifyContent: 'center',
+                                  alignItems: 'center',
+                                }
+                              ),
+                              theme.mq(
+                                { from: 's', misc: 'portrait', },
+                                {
+                                  display: 'flex',
+                                  justifyContent: 'center',
+                                  alignItems: 'center',
+                                }
+                              ),
+                            ],
                           }}
                           render={({ className, }) =>
                             (isFullScreen ? (
@@ -336,7 +402,7 @@ const Gallery = ({
                           }
                         />
                       ))}
-                    </Fragment>
+                    </FelaComponent>
                   );
                 }}
               />
