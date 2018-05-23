@@ -128,6 +128,7 @@ export function buildUrl(contentId, data, options = {}) {
   const baseUrl = config.has('imgBaseUrl') && config.get('imgBaseUrl');
   const baseHref = config.has('baseHref') && config.get('baseHref');
   const { imgName, version, aspects, } = data;
+  const imageNameFromData = imgName.split('/')[1];
 
   // Fail early when mandatory options aren't present.
   // eslint-disable-next-line eqeqeq
@@ -201,8 +202,8 @@ export function buildUrl(contentId, data, options = {}) {
 
   // Url suffix based on whether this is an uploaded or fetched image
   const urlSuffix = version
-    ? `/v${version}/${contentId}.${imgName}`
-    : `/${baseHref}/polopoly_fs/${contentId}!/${imgName}`;
+    ? `/v${version}/${contentId}.${imageNameFromData}`
+    : `/${baseHref}/polopoly_fs/${contentId}!/${imageNameFromData}`;
   // construct url string from params
   const url =
     baseUrl +

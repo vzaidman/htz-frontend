@@ -332,7 +332,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   "subtitleFontSize": Array [
                                                     Object {
                                                       "until": "xl",
-                                                      "value": 0,
+                                                      "value": 1,
                                                     },
                                                     Object {
                                                       "from": "xl",
@@ -871,7 +871,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                         "subtitleFontSize": Array [
                                                           Object {
                                                             "until": "xl",
-                                                            "value": 0,
+                                                            "value": 1,
                                                           },
                                                           Object {
                                                             "from": "xl",
@@ -1408,7 +1408,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                               "subtitleFontSize": Array [
                                                                 Object {
                                                                   "until": "xl",
-                                                                  "value": 0,
+                                                                  "value": 1,
                                                                 },
                                                                 Object {
                                                                   "from": "xl",
@@ -1954,7 +1954,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                     "subtitleFontSize": Array [
                                                                       Object {
                                                                         "until": "xl",
-                                                                        "value": 0,
+                                                                        "value": 1,
                                                                       },
                                                                       Object {
                                                                         "from": "xl",
@@ -2542,7 +2542,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                         "subtitleFontSize": Array [
                                                           Object {
                                                             "until": "xl",
-                                                            "value": 0,
+                                                            "value": 1,
                                                           },
                                                           Object {
                                                             "from": "xl",
@@ -3138,7 +3138,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                   "subtitleFontSize": Array [
                                                     Object {
                                                       "until": "xl",
-                                                      "value": 0,
+                                                      "value": 1,
                                                     },
                                                     Object {
                                                       "from": "xl",
@@ -4277,7 +4277,7 @@ exports[`<Newsletter /> Newsletter DOM element should correctly render a Newslet
                                                                           "subtitleFontSize": Array [
                                                                             Object {
                                                                               "until": "xl",
-                                                                              "value": 0,
+                                                                              "value": 1,
                                                                             },
                                                                             Object {
                                                                               "from": "xl",

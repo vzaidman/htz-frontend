@@ -318,7 +318,7 @@ function getSources(
 ) {
   const transformsArray = Array.isArray(transforms) ? transforms : [ transforms, ];
   const hasSrcset = transformsArray.length > 1;
-  const imageNameFromData = imgArray[0].imgName.split('/')[1];
+  const imageNameFromData = imgArray[0].imgName;
 
   const imgName =
     isAnimatedGif && isWebP

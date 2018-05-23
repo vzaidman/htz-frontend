@@ -10,16 +10,31 @@ import { buildURLs, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
 import { aspectRatios, } from './Image';
 
-const PictureWrapperStyle = ({ sources, theme, defaultImg, bgc, miscStyles, }) => ({
+const PictureWrapperStyle = ({
+  sources,
+  theme,
+  defaultImg,
+  bgc,
+  miscStyles,
+}) => ({
   height: '0',
   width: '100%',
   position: 'relative',
   paddingBottom: getDimensions(defaultImg),
   extend: [
     ...sources.map(({ from, until, misc, type, ...restOfImgData }) =>
-      theme.mq({ from, until, misc, type, }, { paddingBottom: getDimensions(restOfImgData), })
+      theme.mq(
+        { from, until, misc, type, },
+        { paddingBottom: getDimensions(restOfImgData), }
+      )
     ),
-    parseComponentProp('backgroundColor', bgc || [ 'image', 'bgc', ], theme.mq, setColor, theme.color),
+    parseComponentProp(
+      'backgroundColor',
+      bgc || [ 'image', 'bgc', ],
+      theme.mq,
+      setColor,
+      theme.color
+    ),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -191,13 +206,17 @@ function Picture(props) {
                 tagName="source"
                 type="image/webp"
                 srcSet={getSources(props, index, true)}
-                {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+                {...(img.sourceOptions.sizes
+                  ? { sizes: img.sourceOptions.sizes, }
+                  : {})}
               />
               <ImgSource
                 {...(media[index] ? { media: media[index], } : [])}
                 tagName="source"
                 srcSet={getSources(props, index, false)}
-                {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+                {...(img.sourceOptions.sizes
+                  ? { sizes: img.sourceOptions.sizes, }
+                  : {})}
               />
             </Fragment>
           ) : (
@@ -208,7 +227,9 @@ function Picture(props) {
               tagName="source"
               {...(img.mimeType ? { type: img.mimeType, } : {})}
               srcSet={getSources(props, index, false)}
-              {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+              {...(img.sourceOptions.sizes
+                ? { sizes: img.sourceOptions.sizes, }
+                : {})}
             />
           ))
       )}
@@ -222,10 +243,10 @@ function Picture(props) {
         attrs={
           isPresentational
             ? {
-              ...attrs,
-              role: 'presentation',
-              'aria-hidden': true,
-            }
+                ...attrs,
+                role: 'presentation',
+                'aria-hidden': true,
+              }
             : attrs
         }
       />
@@ -277,9 +298,11 @@ function getSources({ sources, }, imgPosition = 0, isAnimatedGif) {
   const { transforms, } = sourceOptions;
   const transformsArray = Array.isArray(transforms) ? transforms : [ transforms, ];
 
-  const imageNameFromData = imgCore.imgName.split('/')[1];
+  const imageNameFromData = imgCore.imgName;
   const imgVersion = imgCore.version;
-  const imgName = isAnimatedGif ? `${imageNameFromData.split('.')[0]}.webp` : imageNameFromData;
+  const imgName = isAnimatedGif
+    ? `${imageNameFromData.split('.')[0]}.webp`
+    : imageNameFromData;
 
   const imgData = { imgName, version: imgVersion, aspects, };
 
@@ -287,14 +310,17 @@ function getSources({ sources, }, imgPosition = 0, isAnimatedGif) {
 }
 
 function getImgSources({
-  defaultImg: { data: { aspects, contentId, imgArray, }, sourceOptions: { transforms, }, },
+  defaultImg: {
+    data: { aspects, contentId, imgArray, },
+    sourceOptions: { transforms, },
+  },
 }) {
   const { imgName, version, } = imgArray[0];
   const transformsArray = Array.isArray(transforms) ? transforms : [ transforms, ];
 
-  const imageNameFromData = imgName.split('/')[1];
+  // const imageNameFromData = imgName.split('/')[1];
   const imgData = {
-    imgName: imageNameFromData,
+    imgName,
     version,
     aspects,
   };
@@ -309,7 +335,9 @@ function getMedia({ sources, theme, }) {
       // eslint-disable-next-line eqeqeq
       .some(item => item != undefined);
 
-    return imgHasMedia ? theme.getMqString({ from, until, misc, type, }, true) : undefined;
+    return imgHasMedia
+      ? theme.getMqString({ from, until, misc, type, }, true)
+      : undefined;
   });
   return finalMedia;
 }
