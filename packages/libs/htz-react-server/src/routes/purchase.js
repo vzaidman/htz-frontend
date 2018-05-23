@@ -157,6 +157,22 @@ export default function purchase(app, server) {
     }
   );
 
+  // send robots.txt file
+  const options = {
+    root: path.join(
+      __dirname,
+      '../../../../../../packages/apps/purchase-page/static'
+    ),
+    headers: {
+      'Content-Type': 'text/plain;charset=UTF-8',
+    },
+  };
+  server.get('/robots.txt', (req, res) =>
+    res.status(200).sendFile('robots.txt', options)
+  );
+
+  /* Promos */
+
   server.get(`${appPrefix}/:promo`, async (req, res) => {
     req.query = Object.assign({}, req.query, {
       offer: req.params.promo,
