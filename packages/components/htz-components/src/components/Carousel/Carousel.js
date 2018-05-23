@@ -228,9 +228,7 @@ class Carousel extends React.Component {
     const positionChange =
       this.state.direction === 'next'
         ? 100
-        : this.state.direction === 'previous'
-          ? -100
-          : 0;
+        : this.state.direction === 'previous' ? -100 : 0;
 
     const renderPreviousItems = itemsRenderer =>
       (this.state.displayItemNum > 0 || loop) && (
@@ -276,6 +274,10 @@ class Carousel extends React.Component {
             renderButton,
             renderIndicator,
             displayItemNum: this.state.displayItemNum,
+            direction: this.state.direction,
+            moving: this.state.moving,
+            previousItemIndex: this.getIndex('prev'),
+            nextItemIndex: this.getIndex('next'),
           })}
         </ItemsWrapper>
       </Fragment>
