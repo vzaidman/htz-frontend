@@ -7,7 +7,7 @@ const SeoData = new GraphQLObjectType({
     canonicalLink: { type: GraphQLString, },
     metaDescription: { type: GraphQLString, },
     metaImage: { type: GraphQLString, },
-    metaKeywords: { type: new GraphQLList(GraphQLString), },
+    metaKeywords: { type: GraphQLString, },
     metaTitle: { type: GraphQLString, },
     obTitle: { type: GraphQLString, },
     ogImages: { type: new GraphQLList(GraphQLString), },
