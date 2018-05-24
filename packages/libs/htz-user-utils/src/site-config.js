@@ -7,15 +7,15 @@ import { getSubdomain, } from './util/domain-utils';
  *  ssoDomain is the domain of the SSO backend service
  *  ssoKey is the string used to identify the cookie ('tmsso'\'engsso' cookie keys)
  *  siteId is a number (as a string) that is used with the backend service
+ * @param {string} hostname the hostname for which to create a configuration for
  * @return {V} site configuration object, as detailed
  */
-export default function createSiteConfig() {
-  if (!(window && window.location && window.location.hostname)) {
+export default function createSiteConfig(hostname = window.location.hostname) {
+  if (!hostname && !(window && window.location && window.location.hostname)) {
     throw new Error(
       'Tried creating a config with no window.location.hostname context!'
     );
   }
-  const hostname = window.location.hostname;
   const defaultHostname = 'haaretz.co.il';
   const configurations = new Map();
   // https://stackoverflow.com/questions/5284147/validating-ipv4-addresses-with-regexp

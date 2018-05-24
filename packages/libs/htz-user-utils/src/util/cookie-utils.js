@@ -41,13 +41,17 @@ export function stringToMap(
 let cookieAsMap; // Memoization of cookie parsing
 
 /**
- * Converts document.cookie string to a Map
+ * Converts a cookie string to a Map-like plain object
  * @param {boolean} forceRefresh - flag to force re-creation of the cookie map.
+ * @param {string} cookieVal - a cookie value to parse, defaults to document.cookie
  * @returns {object} the cookie string represented as a key-value pairs
  */
-export function getCookieAsMap(forceRefresh = false) {
+export function getCookieAsMap(
+  forceRefresh = false,
+  cookieVal = document.cookie
+) {
   if (!cookieAsMap || forceRefresh) {
-    cookieAsMap = stringToMap(document.cookie, { separator: /;\s?/, });
+    cookieAsMap = stringToMap(cookieVal, { separator: /;\s?/, });
     if (cookieAsMap.tmsso !== undefined) {
       cookieAsMap.tmsso = stringToMap(cookieAsMap.tmsso, { separator: /:\s?/, });
     }

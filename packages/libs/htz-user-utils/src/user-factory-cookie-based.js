@@ -1,5 +1,5 @@
 /* global window */
-import getCookieAsMap, { setCookie, } from './util/cookie-utils';
+import { getCookieAsMap, setCookie, } from './util/cookie-utils';
 import User, { UserTypes, } from './user';
 import createSiteConfig from './site-config';
 import { getSubdomain, } from './util/domain-utils';
@@ -31,22 +31,23 @@ export function generateAnonymousId(hostname = window.location.hostname) {
   const domain = getSubdomain(hostname);
   // Side effect: triggers a cookie reparsing
   setCookie('anonymousId', anonymousId, '/', domain, expire);
-
   return anonymousId;
 }
 
 export default class UserFactory {
-  constructor(forceRefresh) {
+  constructor(forceRefresh, cookieVal, hostname) {
     // Step 1: searching for side effect to determine login state
-    this.cookieMap = getCookieAsMap(forceRefresh);
+    this.cookieMap = getCookieAsMap(forceRefresh, cookieVal);
+    this.hostname = hostname;
   }
 
   /**
    * Allows reusing an instance of a factory that was already created by updating
    * it's internal data, according to the up-to-date side effect
+   * @param {string} cookieVal an optional cookie value that defaults to the browser cookie
    */
-  refreshFactoryInstance() {
-    this.cookieMap = getCookieAsMap(true);
+  refreshFactoryInstance(cookieVal = window.document.cookie) {
+    this.cookieMap = getCookieAsMap(true, cookieVal);
   }
 
   /**
@@ -56,26 +57,33 @@ export default class UserFactory {
    * @return {User}
    */
   build() {
-    this.config = this.config || createSiteConfig();
+    this.config = this.config || createSiteConfig(this.hostname);
     const ssoMap =
       this.cookieMap !== undefined
         ? this.cookieMap[this.config.ssoKey]
         : undefined;
-    // const premiumArticlesCount = this.cookieMap.HtzRusr
-    //   ? parseInt(this.cookieMap.HtzRusr, 10)
-    //   : -1;
-    const anonymousId = this.cookieMap.anonymousId || generateAnonymousId();
-    if (ssoMap !== undefined) {
-      // User side effect not found - build a new user
-      // console.warn('ssoMap:', ssoMap);
-      // User side effect found - recover it
-      return new User(
-        Object.assign({}, ssoMap, { type: UserTypes.paying, }, { anonymousId, })
-      );
+    let anonymousId = this.cookieMap.anonymousId;
+    if (
+      !anonymousId &&
+      typeof window !== 'undefined' &&
+      typeof window.document !== 'undefined'
+    ) {
+      anonymousId = generateAnonymousId();
     }
-    return new User({
-      type: UserTypes.anonymous,
-      anonymousId,
-    });
+    let userOptions = {};
+    if (ssoMap !== undefined) {
+      // User side effect found - recover it
+      userOptions = Object.assign(userOptions, ssoMap, {
+        type: UserTypes.paying,
+      });
+    }
+    else {
+      // User side effect not found - build a new anonymous user
+      userOptions = Object.assign(userOptions, { type: UserTypes.anonymous, });
+    }
+    if (anonymousId) {
+      userOptions = Object.assign(userOptions, { anonymousId, });
+    }
+    return new User(userOptions);
   }
 }

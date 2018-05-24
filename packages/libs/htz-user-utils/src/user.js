@@ -20,12 +20,12 @@ export default class User {
     if (!userOptions.type) {
       throw new Error('Required parameter missing: userOptions.type');
     }
-    if (!userOptions.anonymousId) {
-      throw new Error('Required parameter missing: userOptions.anonymousId');
-    }
+    // if (!userOptions.anonymousId) {
+    //   throw new Error('Required parameter missing: userOptions.anonymousId');
+    // }
     this.type = userOptions.type;
     if (this.type === UserTypes.anonymous) {
-      this.anonymousId = userOptions.anonymousId;
+      this.anonymousId = userOptions.anonymousId || null;
     }
     else if (
       this.type === UserTypes.registered ||

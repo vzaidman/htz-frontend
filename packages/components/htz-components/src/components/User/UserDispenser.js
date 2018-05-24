@@ -24,65 +24,53 @@ const defaultProps = {};
 
 class UserDispenser extends Component {
   state = {
-    shouldRender: false,
     images: [],
   };
-
-  componentDidMount() {
-    if (!this.state.shouldRender) {
-      // eslint-disable-next-line react/no-did-mount-set-state
-      this.setState({ shouldRender: true, });
-    }
-  }
 
   handleImgOnload = () =>
     Promise.resolve(console.log('onload handleImgOnload resolved'));
 
   plantImages = images =>
     new Promise((resolve, reject) => {
-      console.log('planting Images...', images);
       this.setState((prevState, props) => ({ ...prevState, images, }));
       this.state.resolveMeWhenImageWasLoaded = resolve;
     });
 
   render() {
-    if (this.state.shouldRender) {
-      return (
-        <Fragment>
-          <Mutation mutation={UPDATE_USER}>
-            {updateUser => (
-              <ImageCookies
-                images={this.state.images}
-                onload={() => {
-                  const newUser = new UserFactory(true).build();
-                  updateUser({
-                    variables: { user: { ...userScheme, ...newUser, }, },
-                  });
-                  if (this.state.resolveMeWhenImageWasLoaded) {
-                    this.state.resolveMeWhenImageWasLoaded();
-                  }
-                }}
-              />
-            )}
-          </Mutation>
-          <Query query={GET_USER} ssr={false}>
-            {({ data: { user, }, }) =>
-              this.props.render({
-                isLoggedIn: !!(
-                  user &&
-                  (user.type === UserTypes.paying ||
-                    user.type === UserTypes.registered)
-                ),
-                user,
-                plantImages: this.plantImages,
-                handleImgOnload: this.handleImgOnload,
-              })
-            }
-          </Query>
-        </Fragment>
-      );
-    }
-    return null;
+    return (
+      <Fragment>
+        <Mutation mutation={UPDATE_USER}>
+          {updateUser => (
+            <ImageCookies
+              images={this.state.images}
+              onload={() => {
+                const newUser = new UserFactory(true).build();
+                updateUser({
+                  variables: { user: { ...userScheme, ...newUser, }, },
+                });
+                if (this.state.resolveMeWhenImageWasLoaded) {
+                  this.state.resolveMeWhenImageWasLoaded();
+                }
+              }}
+            />
+          )}
+        </Mutation>
+        <Query query={GET_USER}>
+          {({ data: { user, }, }) =>
+            this.props.render({
+              isLoggedIn: !!(
+                user &&
+                (user.type === UserTypes.paying ||
+                  user.type === UserTypes.registered)
+              ),
+              user,
+              plantImages: this.plantImages,
+              handleImgOnload: this.handleImgOnload,
+            })
+          }
+        </Query>
+      </Fragment>
+    );
   }
 }
 

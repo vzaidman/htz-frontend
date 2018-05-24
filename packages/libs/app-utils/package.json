@@ -51,6 +51,7 @@
     "react-apollo": "^2.1.0"
   },
   "dependencies": {
+    "@haaretz/htz-user-utils": "^0.1.0",
     "graphql-type-json": "^0.1.4"
   }
 }

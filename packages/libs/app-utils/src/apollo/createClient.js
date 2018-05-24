@@ -3,8 +3,22 @@ import { ApolloClient, } from 'apollo-client';
 import { InMemoryCache, } from 'apollo-cache-inmemory';
 import { HttpLink, } from 'apollo-link-http';
 import { withClientState, } from 'apollo-link-state';
+import { UserFactory, } from '@haaretz/htz-user-utils';
 import fetch from 'isomorphic-unfetch';
 import config from 'config';
+
+// Basic structure for user data object (Apollo store)
+const defaultUser = {
+  type: null,
+  id: null,
+  email: null,
+  firstName: null,
+  lastName: null,
+  emailStatus: null,
+  token: null,
+  anonymousId: null,
+  __typename: 'User',
+};
 
 const port = config.get('port');
 let apolloClient = null;
@@ -33,11 +47,22 @@ function create(initialState, req) {
     fetch,
     includeExtensions: true,
   });
-
   const inMemoryCache = new InMemoryCache({
     dataIdFromObject: ({ __typename, contentId, }) =>
       (contentId ? `${__typename}:${contentId}` : null),
   }).restore(initialState || {});
+
+  // try creating a user from initial request (server only)
+  const userFromReq = req
+    ? Object.assign(
+      {},
+      defaultUser,
+      new UserFactory(true, req.header('Cookie') || '', hostname).build()
+    )
+    : undefined;
+  // try to rehydrate user on client from server state (client)
+  const userFromCache = inMemoryCache.data.data['$ROOT_QUERY.user'];
+  const user = userFromCache || userFromReq || defaultUser;
 
   const stateLink = withClientState({
     cache: inMemoryCache,
@@ -58,17 +83,7 @@ function create(initialState, req) {
         y: 0,
         __typename: 'Scroll',
       },
-      user: {
-        type: null,
-        id: null,
-        email: null,
-        firstName: null,
-        lastName: null,
-        emailStatus: null,
-        token: null,
-        anonymousId: null,
-        __typename: 'User',
-      },
+      user,
       promotionsPageState: {
         stage: 2,
         subStage: 0,
