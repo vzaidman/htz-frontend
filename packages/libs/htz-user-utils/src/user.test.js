@@ -19,7 +19,7 @@ describe('User', () => {
     expect(() => new User({ type: 'anything', })).toThrow();
   });
 
-  it('should not be be able to instantiate a User without an anonymousId', () => {
+  it('should be be able to instantiate a User without an anonymousId', () => {
     expect(() => {
       const [ anonUser, regUser, payingUser, ] = [
         new User({ type: UserTypes.anonymous, }),
@@ -30,7 +30,7 @@ describe('User', () => {
       expect(regUser).toBeDefined();
       expect(payingUser).toBeDefined();
       return null;
-    }).toThrow();
+    }).not.toThrow();
   });
   it('should be be able to instantiate a User with a valid type', () => {
     expect(() => {
