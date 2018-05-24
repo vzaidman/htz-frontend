@@ -8,6 +8,7 @@ import htzTheme from '@haaretz/htz-theme';
 import dynamic from 'next/dynamic';
 
 import {
+  AriaLive,
   UserInjector,
   StandardArticlePageLayout,
 } from '@haaretz/htz-components';
@@ -95,10 +96,13 @@ export class ArticlePage extends React.Component {
                 return <Error statusCode={isNotFound ? 404 : 500} />;
               }
               return (
-                <StandardArticlePageLayout
-                  articleId={this.props.url.query.path}
-                  slots={data.page.slots}
-                />
+                <Fragment>
+                  <AriaLive />
+                  <StandardArticlePageLayout
+                    articleId={this.props.url.query.path}
+                    slots={data.page.slots}
+                  />
+                </Fragment>
               );
             }}
           </Query>

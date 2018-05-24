@@ -4,6 +4,7 @@
  * **************************************** */
 import A11yDialog from './components/A11yDialog/A11yDialog';
 import ActionButtons from './components/ActionButtons/ActionButtons';
+import AriaLive from './components/AriaLive/AriaLive';
 import Article from './components/Article/Article';
 import ArticleBody from './components/ArticleBody/ArticleBody';
 import Button from './components/Button/Button';
@@ -126,6 +127,7 @@ import BIRequest from './components/BI/BIRequest';
 export {
   A11yDialog,
   ActionButtons,
+  AriaLive,
   Article,
   ArticleBody,
   Button,

@@ -42,6 +42,11 @@ function create(initialState, req) {
   const stateLink = withClientState({
     cache: inMemoryCache,
     defaults: {
+      ariaLive: {
+        assertiveMessage: '',
+        politeMessage: '',
+        __typename: 'AriaLive',
+      },
       hostname,
       startFromStage2: true,
       referrer: null,
