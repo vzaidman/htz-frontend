@@ -88,7 +88,7 @@ const createDocument = ({
           <style
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: css, }}
-            // data-fela-rehydration={rehydration}
+            data-fela-rehydration={rehydration}
             data-fela-support={support}
             data-fela-type={type}
             key={`${type}-${media}`}

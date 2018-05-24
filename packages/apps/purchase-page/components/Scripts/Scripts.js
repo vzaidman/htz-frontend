@@ -23,7 +23,7 @@ class StaticScripts extends React.Component {
     // eslint-disable-next-line react/prop-types
     const { thankYou, userPaid, } = this.props;
     return (
-      <div>
+      <div suppressHydrationWarning>
         {/* <!-- DFP Pixel for Marketing Campaign --> */}
         <script
           // eslint-disable-next-line react/no-danger
@@ -137,6 +137,7 @@ function Scripts({ host, thankYou, userPaid, userType, }) {
     <div>
       <StaticScripts thankYou={thankYou} userPaid={userPaid} />
       <script
+        suppressHydrationWarning
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: `
