@@ -162,4 +162,4 @@ const purchasePageTheme = host =>
   });
 
 export default purchasePageTheme;
-export { bps, getColor, getTransition, mq, pxToRem, typesetter, };
+export { bps, fontStacks, getColor, getTransition, mq, pxToRem, typesetter, };

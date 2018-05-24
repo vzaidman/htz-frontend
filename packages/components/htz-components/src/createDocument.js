@@ -4,6 +4,10 @@ import { renderToSheetList, } from 'fela-dom';
 import config from 'config';
 import serialize from 'serialize-javascript';
 import SEO from './components/SEO/SEO';
+import { buildFontFamilyArray, } from './utils/buildFontFamilyArray';
+import { buildFontPreloadLink, } from './utils/buildFontPreloadLink';
+import { buildFontLoadingScript, } from './utils/buildFontLoadingScript';
+import { buildFontCss, } from './utils/buildFontCss';
 
 /**
  * The returned class should be exported as the default export in the
@@ -30,7 +34,8 @@ const createDocument = ({
   styleRenderer,
   FelaProvider,
   theme,
-  fontRules = [],
+  fontRules,
+  defaultFontStack = 'sans-serif',
   staticRules = '',
   appData = { config, },
   isRtl,
@@ -39,28 +44,33 @@ const createDocument = ({
   class HaaretzDocument extends Document {
     static getInitialProps({ renderPage, req, }) {
       const host = req.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-
-      const purchasePageTheme = hasToggleableTheme ? theme(host) : theme;
-
-      const purchasePageStaticRules = hasToggleableTheme
+      const validatedTheme = hasToggleableTheme ? theme(host) : theme;
+      const varifiedStaticRules = hasToggleableTheme
         ? staticRules(host)
         : staticRules;
+      buildFontFamilyArray(fontRules).forEach(rule =>
+        styleRenderer.renderFont(...rule)
+      );
 
-      fontRules.forEach(rule => styleRenderer.renderFont(...rule));
-      if (purchasePageStaticRules) {
-        Array.isArray(purchasePageStaticRules)
-          ? purchasePageStaticRules.forEach(rule =>
+      if (varifiedStaticRules) {
+        Array.isArray(varifiedStaticRules)
+          ? varifiedStaticRules.forEach(rule =>
             styleRenderer.renderStatic(rule)
           )
-          : styleRenderer.renderStatic(purchasePageStaticRules);
+          : styleRenderer.renderStatic(varifiedStaticRules);
       }
+
+      if (fontRules) {
+        styleRenderer.renderStatic(buildFontCss(fontRules, defaultFontStack));
+      }
+
       const page = renderPage(App => props => (
-        <FelaProvider theme={purchasePageTheme} renderer={styleRenderer}>
+        <FelaProvider theme={validatedTheme} renderer={styleRenderer}>
           <App {...props} />
         </FelaProvider>
       ));
-      const sheetList = renderToSheetList(styleRenderer);
 
+      const sheetList = renderToSheetList(styleRenderer);
       styleRenderer.clear();
 
       return {
@@ -93,7 +103,19 @@ const createDocument = ({
         <script
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: `__HTZ_DATA__ = ${serialize(this.props.appData)};`,
+            __html: `__HTZ_DATA__=${serialize(this.props.appData)};`,
+          }}
+        />
+      );
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+    renderFoftScript() {
+      return (
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: buildFontLoadingScript(fontRules),
           }}
         />
       );
@@ -110,8 +132,11 @@ const createDocument = ({
               content="width=device-width, initial-scale=1, minimum-scale=1"
             />
             <SEO host={this.props.host} />
+            {buildFontPreloadLink(fontRules)}
+            <link rel="shortcut icon" href="about:blank" />
             {this.renderStyles()}
             {this.renderData()}
+            {this.renderFoftScript()}
           </Head>
           <body>
             <Main />

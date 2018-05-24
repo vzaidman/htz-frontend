@@ -3,7 +3,7 @@ import articleStyle from './consts/articleStyle';
 import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
 import captionStyles from './consts/captionStyles';
-import baseColors from './consts/baseColors';
+import { baseColors, } from './consts/colors';
 import cssReset from './consts/cssReset';
 import commentsStyle from './consts/commentsStyle';
 import fontStacks from './consts/fontStacks';
@@ -153,6 +153,7 @@ export default htzTheme;
 export {
   baseColors,
   bps,
+  fontStacks,
   getColor,
   getTransition,
   mq,

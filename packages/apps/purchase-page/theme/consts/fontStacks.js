@@ -1,5 +1,5 @@
 const fontStacks = Object.freeze({
-  default: '"Open Sans Hebrew","Helvetica Neue",Helvetica,Arial,sans-serif',
+  default: '"Helvetica Neue",Helvetica,Arial,sans-serif',
   alt: '"Helvetica Neue",Helvetica,Arial,sans-serif',
 });
 

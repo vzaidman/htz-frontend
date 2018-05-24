@@ -98,6 +98,7 @@ export default htzTheme;
 export {
   baseColors,
   bps,
+  fontStacks,
   getColor,
   getTransition,
   mq,
