@@ -190,7 +190,7 @@ const CaptionElement = ({
             maxHeight: '6rem',
             overflow: 'hidden',
             ':before': {
-              content: theme.gallery.captionPrefix(index + 1, itemsLength),
+              content: theme.galleryI18n.captionPrefix(index + 1, itemsLength),
               color: theme.color('quaternary'),
               fontWeight: '700',
             },

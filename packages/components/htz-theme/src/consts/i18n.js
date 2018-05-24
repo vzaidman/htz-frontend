@@ -15,6 +15,10 @@ export const seriesArticleI18n = Object.freeze({
 export const zoominText = 'הגדל';
 export const zoomoutText = 'הקטן';
 
+export const galleryI18n = Object.freeze({
+  captionPrefix: (current, total) => `"${current} מתוך ${total} | "`,
+});
+
 export const textInputI18n = Object.freeze({
   requiredLong: 'שדה חובה',
   requiredShort: '*',
