@@ -1,12 +1,13 @@
 /* global fetch, Headers */
 import React, { Fragment, } from 'react';
-import { createComponent, withTheme, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
 import ActionButtons from '../ActionButtons/ActionButtons';
 import ArticleBody from '../ArticleBody/ArticleBody';
 import ArticleHeader from '../ArticleHeader/ArticleHeader';
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import HeadlineElement from '../HeadlineElement/HeadlineElement';
 
 const propTypes = {
@@ -23,6 +24,14 @@ const propTypes = {
    */
   body: PropTypes.arrayOf(
     PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
+  ).isRequired,
+  breadcrumbs: PropTypes.arrayOf(
+    PropTypes.shape({
+      pathSegment: PropTypes.string,
+      contentId: PropTypes.string,
+      name: PropTypes.string,
+      url: PropTypes.string,
+    })
   ).isRequired,
   /**
    * The id of this article's CommentsElement (comes from polopoly).
@@ -61,10 +70,6 @@ const propTypes = {
    * Article's main headline (comes from polopoly).
    */
   title: PropTypes.string.isRequired,
-  /**
-   * The app's theme (get imported automatically with the `withTheme` method).
-   */
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 const defaultProps = {
@@ -78,12 +83,6 @@ const defaultProps = {
 };
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
-
-const breadCrumbsStyle = () => ({
-  marginTop: '2rem',
-  marginBottom: '3rem',
-});
-const BreadCrumbs = createComponent(breadCrumbsStyle);
 
 const headerStyle = ({ theme, }) => ({
   marginBottom: '2rem',
@@ -208,69 +207,81 @@ class Article extends React.Component {
       articleType, // eslint-disable-line no-unused-vars
       authors,
       body,
+      breadcrumbs,
       credit,
       exclusive,
       modDate, // eslint-disable-line no-unused-vars
       pubDate,
       subtitle,
-      theme,
       title,
     } = this.props;
     return (
-      <Fragment>
-        <BreadCrumbs>BreadCrumbs Here</BreadCrumbs>
-        <Header
-          authors={authors || [ credit, ]}
-          kicker={exclusive}
-          publishDateTime={pubDate}
-          subtitle={subtitle}
-          title={title}
-        />
-        <SharingTools
-          articleTitle={title}
-          articleUrl={this.state.articleUrl}
-          buttons={{
-            start: [
-              {
-                name: 'facebookLogo',
-                buttonText: this.state.facebookCount,
-                iconStyles: {
-                  color: theme.color('facebook'),
-                },
-              },
-              {
-                name: 'whatsapp',
-                iconStyles: {
-                  color: theme.color('whatsapp'),
-                },
-              },
-              'mailAlert',
-            ],
-            end: [
-              {
-                name: 'comments',
-                buttonText: 78,
-              },
-              'print',
-              {
-                name: 'zen',
-                buttonText: 'קריאת זן',
-              },
-            ],
-          }}
-          globalButtonsStyles={{
-            minWidth: '10rem',
-          }}
-          globalIconsStyles={{
-            color: theme.color('primary'),
-          }}
-          size={2.5}
-        />
-        {this.state.headlineElement && (
-          <HeadlineElement elementObj={this.state.headlineElement} />
+      <FelaComponent
+        render={({ theme, }) => (
+          <Fragment>
+            <FelaComponent
+              style={{
+                marginInlineStart: '4rem',
+                marginTop: '2rem',
+                marginBottom: '3rem',
+              }}
+            >
+              <Breadcrumbs steps={breadcrumbs} />
+            </FelaComponent>
+            <Header
+              authors={authors || [ credit, ]}
+              kicker={exclusive}
+              publishDateTime={pubDate}
+              subtitle={subtitle}
+              title={title}
+            />
+            <SharingTools
+              articleTitle={title}
+              articleUrl={this.state.articleUrl}
+              buttons={{
+                start: [
+                  {
+                    name: 'facebookLogo',
+                    buttonText: this.state.facebookCount,
+                    iconStyles: {
+                      color: theme.color('facebook'),
+                    },
+                  },
+                  {
+                    name: 'whatsapp',
+                    iconStyles: {
+                      color: theme.color('whatsapp'),
+                    },
+                  },
+                  'mailAlert',
+                ],
+                end: [
+                  {
+                    name: 'comments',
+                    buttonText: 78,
+                  },
+                  'print',
+                  {
+                    name: 'zen',
+                    buttonText: 'קריאת זן',
+                  },
+                ],
+              }}
+              globalButtonsStyles={{
+                minWidth: '10rem',
+              }}
+              globalIconsStyles={{
+                color: theme.color('primary'),
+              }}
+              size={2.5}
+            />
+            {this.state.headlineElement && (
+              <HeadlineElement elementObj={this.state.headlineElement} />
+            )}
+            <Body body={body} setHeadlineElement={this.setHeadlineElement} />
+          </Fragment>
         )}
-        <Body body={body} setHeadlineElement={this.setHeadlineElement} />
-      </Fragment>
+      />
     );
   }
 }
@@ -278,4 +289,4 @@ class Article extends React.Component {
 Article.propTypes = propTypes;
 Article.defaultProps = defaultProps;
 
-export default withTheme(Article);
+export default Article;

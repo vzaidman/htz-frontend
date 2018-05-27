@@ -57,7 +57,7 @@ class StandardArticlePageLayout extends React.Component {
             );
             return <Error statusCode={isNotFound ? 404 : 500} />;
           }
-          const { slots, seoData, } = data.page;
+          const { slots, seoData, lineage, } = data.page;
           return (
             <Fragment>
               <LayoutRow>
@@ -77,7 +77,11 @@ class StandardArticlePageLayout extends React.Component {
               </LayoutRow>
               <LayoutRow>
                 <LayoutContainer>
-                  <Main content={{ ...slots, }} seo={seoData} />
+                  <Main
+                    lineage={lineage}
+                    content={{ ...slots, }}
+                    seo={seoData}
+                  />
                 </LayoutContainer>
               </LayoutRow>
               <LayoutRow>

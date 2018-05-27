@@ -26,6 +26,14 @@ const propTypes = {
     ogImage: PropTypes.shape({}),
     obTitle: PropTypes.string,
   }).isRequired,
+  lineage: PropTypes.arrayOf(
+    PropTypes.shape({
+      pathSegment: PropTypes.string,
+      contentId: PropTypes.string,
+      name: PropTypes.string,
+      url: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
@@ -176,7 +184,11 @@ class Main extends React.Component {
       if (element.inputTemplate === 'com.htz.StandardArticle') {
         return (
           <ArticleSection>
-            <Article {...element} setCommentsData={this.updateState} />
+            <Article
+              {...element}
+              breadcrumbs={this.props.lineage}
+              setCommentsData={this.updateState}
+            />
           </ArticleSection>
         );
       }

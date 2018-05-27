@@ -4,8 +4,12 @@ export default gql`
   query PageData($path: String!) {
     page(path: $path) {
       pageType
-      contentId
-      contentName
+      lineage {
+        pathSegment
+        contentId
+        name
+        url
+      }
       seoData {
         metaTitle
         metaDescription

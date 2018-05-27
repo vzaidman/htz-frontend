@@ -93,9 +93,10 @@ export class ArticlePage extends React.Component {
                 );
                 return <Error statusCode={isNotFound ? 404 : 500} />;
               }
+              const { slots, lineage, } = data.page;
               client.writeData({
                 data: {
-                  articleId: data.page.lineage[0].contentId,
+                  articleId: lineage[0].contentId,
                 },
               });
               return (
@@ -103,7 +104,7 @@ export class ArticlePage extends React.Component {
                   <AriaLive />
                   <StandardArticlePageLayout
                     articleId={this.props.url.query.path}
-                    slots={data.page.slots}
+                    slots={slots}
                   />
                 </Fragment>
               );
