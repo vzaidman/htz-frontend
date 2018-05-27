@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { borderBottom, getRemFromPx, } from '@haaretz/htz-css-tools';
-import { createComponent, withTheme, } from 'react-fela';
+import { FelaComponent, createComponent, } from 'react-fela';
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 import CommentList from './CommentList.js'; // eslint-disable-line import/no-named-as-default
 import CommentForm from './CommentForm';
@@ -9,8 +9,16 @@ import IconArrow from '../Icon/icons/IconArrow';
 import IconReply from '../Icon/icons/IconReply';
 import Like from './Like'; // eslint-disable-line import/no-named-as-default
 
-const wrapperStyle = ({ theme, isSubComment, isLastSubComment, bgColor, }) => ({
-  backgroundColor: bgColor,
+const wrapperStyle = ({
+  theme,
+  isSubComment,
+  isLastSubComment,
+  isHighlighted,
+}) => ({
+  backgroundColor: theme.color(
+    'comments',
+    isHighlighted ? 'highlightedCommentBg' : 'bg'
+  ),
   extend: [
     {
       condition: isSubComment === false,
@@ -28,51 +36,39 @@ const wrapperStyle = ({ theme, isSubComment, isLastSubComment, bgColor, }) => ({
   ],
 });
 
-const StyledWrapper = createComponent(wrapperStyle, 'section');
-
-const commentWrapperStyle = ({ theme, }) => ({
+const commentWrapperStyle = {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'flex-end',
   paddingInlineStart: '1rem',
   paddingInlineEnd: '1rem',
   paddingTop: '2rem',
-});
+};
 
-const StyledCommentWrapper = createComponent(commentWrapperStyle);
-
-const commentNumberContainerStyle = ({ theme, }) => ({
+const commentNumberContainerStyle = theme => ({
   width: '8.5rem',
   color: theme.color('comments', 'number'),
   flexShrink: '0',
   flexGrow: '0',
-  ...theme.type(3),
+  extend: [ theme.type(3), ],
 });
 
-const StyledCommentNumberContainer = createComponent(
-  commentNumberContainerStyle
-);
-
-const commentContainerStyle = () => ({
+const commentContainerStyle = {
   width: '100%',
   flexShrink: '1',
   flexGrow: '1',
   minWidth: '0',
-});
+};
 
-const StyledCommentContainer = createComponent(commentContainerStyle);
-
-const CommentHeaderCont = ({ theme, truncate, }) => ({
+const CommentHeaderContStyle = ({ theme, truncate, }) => ({
   width: '100%',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'flex-start',
   alignItems: 'center',
   ...(truncate ? {} : { flexWrap: 'wrap', }),
-  ...theme.mq({ until: 's', }, { flexWrap: 'wrap', }),
+  extend: [ theme.mq({ until: 's', }, { flexWrap: 'wrap', }), ],
 });
-
-const StyledCommentHeaderCont = createComponent(CommentHeaderCont);
 
 const CommentAuthorStyle = ({ theme, truncate, }) => ({
   color: theme.color('comments', 'authorName'),
@@ -97,21 +93,17 @@ const StyledCommentAuthor = createComponent(CommentAuthorStyle, 'h4', [
   'onClick',
 ]);
 
-const PublishingDateStyle = ({ theme, }) => ({
+const publishingDateStyle = theme => ({
   color: theme.color('comments', 'date'),
-  ...theme.type(-1),
   marginInlineEnd: '1rem',
   marginInlineStart: '1rem',
+  extend: [ theme.type(-1), ],
 });
 
-const StyledPublishingDate = createComponent(PublishingDateStyle, 'span');
-
-const subCommentAuthorStyle = ({ theme, }) => ({
+const subCommentAuthorStyle = theme => ({
   color: theme.color('comments', 'subcommentAuthor'),
   fontStyle: 'italic',
 });
-
-const StyledSubCommentAuthor = createComponent(subCommentAuthorStyle, 'span');
 
 const editorPickTagStyle = ({ theme, }) => ({
   color: theme.color('comments', 'highlightStatus'),
@@ -136,7 +128,7 @@ const StyledCommentText = createComponent(commentTextStyle, 'div', [
   'innerRef',
 ]);
 
-const fadeStyle = ({ theme, bgColor, }) => ({
+const fadeStyle = ({ theme, isHighlighted, }) => ({
   display: 'block',
   height: 0,
   ':after': {
@@ -146,21 +138,22 @@ const fadeStyle = ({ theme, bgColor, }) => ({
     height: '14rem',
     position: 'relative',
     top: '-14rem',
-    background: `linear-gradient(transparent, ${bgColor})`,
+    background: `linear-gradient(transparent, ${theme.color(
+      'comments',
+      isHighlighted ? 'highlightedCommentBg' : 'bg'
+    )})`,
   },
 });
 
 const Fade = createComponent(fadeStyle, 'span');
 
-const commentFooterStyle = () => ({
+const commentFooterStyle = {
   display: 'flex',
   flexDirection: 'row',
   alignContent: 'flex-start',
   alignItems: 'center',
   marginTop: '2rem',
-});
-
-const StyledCommentFooter = createComponent(commentFooterStyle);
+};
 
 const likeMiscStyles = {
   marginInlineStart: 'auto',
@@ -175,6 +168,13 @@ class Comment extends React.Component {
   static propTypes = {
     /** The Comment author */
     author: PropTypes.string.isRequired,
+    /** the bps object from the theme */
+    bps: PropTypes.shape({ width: PropTypes.object, }).isRequired,
+    /** the typeConf object from the theme */
+    typeConf: PropTypes.shape({
+      default: PropTypes.object,
+      xl: PropTypes.object,
+    }).isRequired,
     /** The Comment ID */
     commentId: PropTypes.string.isRequired,
     /** The Comment Number */
@@ -256,13 +256,6 @@ class Comment extends React.Component {
      * The `<Comment />` title
      */
     title: PropTypes.string,
-    /** passed as a a prop by fela's withTheme func before default export */
-    theme: PropTypes.shape({
-      color: PropTypes.func.isRequired,
-      bps: PropTypes.object.isRequired,
-      typeConf: PropTypes.object.isRequired,
-      mq: PropTypes.func.isRequired,
-    }).isRequired,
   };
 
   static defaultProps = {
@@ -282,41 +275,39 @@ class Comment extends React.Component {
   };
 
   state = {
+    abuseReported: false,
     displayReplyForm: false,
     fadeText: false,
     truncateAuthorName: true,
+    // can be plus or minus, will disable like buttons and increase like count
+    userLike: null,
   };
 
   componentDidMount() {
     const height = this.commentTextEl.clientHeight;
-    const remHeight = getRemFromPx(
-      this.props.theme.bps,
-      this.props.theme.typeConf,
-      height
-    );
+    const remHeight = getRemFromPx(this.props.bps, this.props.typeConf, height);
     if (remHeight > 42) {
       // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({ fadeText: true, });
     }
   }
 
-  commentPlusRate = Object.prototype.hasOwnProperty.call(
+  commentPlusRateDB = Object.prototype.hasOwnProperty.call(
     this.props.commentsPlusRate,
     this.props.commentId
   )
     ? this.props.commentsPlusRate[this.props.commentId]
     : 0;
-  commentMinusRate = Object.prototype.hasOwnProperty.call(
+
+  commentMinusRateDB = Object.prototype.hasOwnProperty.call(
     this.props.commentsMinusRate,
     this.props.commentId
   )
     ? this.props.commentsMinusRate[this.props.commentId]
     : 0;
+
   isUsersChoice = this.commentPlusRate - this.commentMinusRate > 10;
 
-  bgColor = this.props.isEditorPick === 'true' || this.isUsersChoice
-    ? this.props.theme.color('comments', 'highlightedCommentBg')
-    : this.props.theme.color('comments', 'bg');
   handleReplyClick = () => {
     this.state.displayReplyForm
       ? this.setState({ displayReplyForm: false, })
@@ -348,159 +339,191 @@ class Comment extends React.Component {
       signUpNotification,
       subComments,
       title,
-      theme,
     } = this.props;
 
-    const {
-      tags: { editorsPick, usersPick, },
-      buttons: { replyBtnTxt, readMoreBtnTxt, reportAbuseBtnTxt, },
-    } = theme.commentI18n;
+    const isHighlighted =
+      this.props.isEditorPick === 'true' || this.isUsersChoice;
+    const commentPlusRateUser = this.state.userLike === 'plus' ? 1 : 0;
+    const commentPlusRate = this.commentPlusRateDB + commentPlusRateUser;
+    const commentMinusRateUser = this.state.userLike === 'minus' ? 1 : 0;
+    const commentMinusRate = this.commentMinusRateDB + commentMinusRateUser;
     return (
-      <StyledWrapper
+      <FelaComponent
         isSubComment={isSubComment}
         isLastSubComment={isLastSubComment}
-        bgColor={this.bgColor}
-      >
-        <StyledCommentWrapper>
-          <StyledCommentNumberContainer>
-            <span>
-              {isSubComment ? (
-                isFirstSubComment ? (
-                  <IconReply color={[ 'comments', 'replyIcon', ]} />
-                ) : (
-                  ''
-                )
-              ) : (
-                commentNumber
-              )}
-            </span>
-          </StyledCommentNumberContainer>
-          <StyledCommentContainer>
-            <StyledCommentHeaderCont truncate={this.state.truncateAuthorName}>
-              <StyledCommentAuthor
-                truncate={this.state.truncateAuthorName}
-                data-test="comment-author"
-                onClick={() =>
-                  this.setState((prevState, props) => ({
-                    truncateAuthorName: !prevState.truncateAuthorName,
-                  }))
-                }
-              >
-                {author}
-              </StyledCommentAuthor>
-
-              <StyledPublishingDate>
-                {publishingDateForDisplay}
-              </StyledPublishingDate>
-
-              {isSubComment ? (
-                <StyledSubCommentAuthor>
-                  <IconArrow /> {parentAuthor}
-                </StyledSubCommentAuthor>
-              ) : (
-                undefined
-              )}
-              {isEditorPick === 'true' ? (
-                <StyledEditorPickTag>| {editorsPick}</StyledEditorPickTag>
-              ) : (
-                undefined
-              )}
-              {this.isUsersChoice ? (
-                <StyledEditorPickTag>| {usersPick}</StyledEditorPickTag>
-              ) : (
-                undefined
-              )}
-            </StyledCommentHeaderCont>
-            <div>
-              <StyledCommentText>{title}</StyledCommentText>
-              <StyledCommentText
-                // eslint-disable-next-line
-                innerRef={commentTextEl => (this.commentTextEl = commentTextEl)}
-                dangerouslySetInnerHTML={this.generateCommentMarkup()}
-                fade={this.state.fadeText}
-              />
-              {this.state.fadeText ? <Fade bgColor={this.bgColor} /> : null}
-            </div>
-            <StyledCommentFooter>
-              <Button
-                miscStyles={{
-                  backgroundColor: 'transparent',
-                  marginInlineEnd: '2rem',
-                  type: [ { value: 0, }, ],
-                }}
-                boxModel={{ hp: 4, vp: 0.5, }}
-                onClick={this.handleReplyClick}
-              >
-                {replyBtnTxt}
-              </Button>
-              {this.state.fadeText ? (
-                <Button
-                  miscStyles={{
-                    backgroundColor: 'transparent',
-                    type: [ { value: 0, }, ],
-                  }}
-                  boxModel={{ hp: 4, vp: 0.5, }}
-                  onClick={() => this.setState({ fadeText: false, })}
+        isHighlighted={isHighlighted}
+        rule={wrapperStyle}
+        render={({
+          className,
+          theme: {
+            commentI18n: {
+              tags: { editorsPick, usersPick, },
+              buttons: { replyBtnTxt, readMoreBtnTxt, reportAbuseBtnTxt, },
+            },
+          },
+        }) => (
+          <section className={className}>
+            <FelaComponent style={commentWrapperStyle}>
+              <FelaComponent style={commentNumberContainerStyle}>
+                <span>
+                  {isSubComment ? (
+                    isFirstSubComment ? (
+                      <IconReply color={[ 'comments', 'replyIcon', ]} />
+                    ) : (
+                      ''
+                    )
+                  ) : (
+                    commentNumber
+                  )}
+                </span>
+              </FelaComponent>
+              <FelaComponent style={commentContainerStyle}>
+                <FelaComponent
+                  rule={CommentHeaderContStyle}
+                  truncate={this.state.truncateAuthorName}
                 >
-                  {readMoreBtnTxt}
-                </Button>
-              ) : null}
+                  <StyledCommentAuthor
+                    truncate={this.state.truncateAuthorName}
+                    data-test="comment-author"
+                    onClick={() =>
+                      this.setState((prevState, props) => ({
+                        truncateAuthorName: !prevState.truncateAuthorName,
+                      }))
+                    }
+                  >
+                    {author}
+                  </StyledCommentAuthor>
 
-              <Like
-                miscStyles={likeMiscStyles}
-                initVote={initVote}
-                rate={this.commentPlusRate}
-                commentId={commentId}
-              />
-              <Like
-                miscStyles={disLikeMiscStyles}
-                initVote={initVote}
-                rate={this.commentMinusRate}
-                isDisLike
-                commentId={commentId}
-              />
-              <Button
-                isFlat
-                variant="negative"
-                boxModel={{ hp: 2, vp: 0.5, }}
-                miscStyles={{
-                  backgroundColor: 'transparent',
-                  type: [ { value: -2, }, ],
-                }}
-                onClick={() => {
-                  reportAbuse(commentId);
-                }}
-              >
-                {reportAbuseBtnTxt}
-              </Button>
-            </StyledCommentFooter>
-            {subComments ? (
-              <CommentList
-                comments={subComments}
-                parentAuthor={author}
-                isSubComment
-                initVote={initVote}
-                commentsPlusRate={commentsPlusRate}
-                commentsMinusRate={commentsMinusRate}
-                reportAbuse={reportAbuse}
-                openParentReplyForm={() =>
-                  this.setState({ displayReplyForm: true, })
+                  <FelaComponent style={publishingDateStyle} render="span">
+                    {publishingDateForDisplay}
+                  </FelaComponent>
+
+                  {isSubComment ? (
+                    <FelaComponent style={subCommentAuthorStyle} render="span">
+                      <IconArrow /> {parentAuthor}
+                    </FelaComponent>
+                  ) : (
+                    undefined
+                  )}
+                  {isEditorPick === 'true' ? (
+                    <StyledEditorPickTag>| {editorsPick}</StyledEditorPickTag>
+                  ) : (
+                    undefined
+                  )}
+                  {this.isUsersChoice ? (
+                    <StyledEditorPickTag>| {usersPick}</StyledEditorPickTag>
+                  ) : (
+                    undefined
+                  )}
+                </FelaComponent>
+                <div>
+                  <StyledCommentText>{title}</StyledCommentText>
+                  <StyledCommentText
+                    // eslint-disable-next-line
+                    innerRef={commentTextEl =>
+                      (this.commentTextEl = commentTextEl)
+                    }
+                    dangerouslySetInnerHTML={this.generateCommentMarkup()}
+                    fade={this.state.fadeText}
+                  />
+                  {this.state.fadeText ? (
+                    <Fade isHighlighted={isHighlighted} />
+                  ) : null}
+                </div>
+                <FelaComponent style={commentFooterStyle}>
+                  <Button
+                    miscStyles={{
+                      backgroundColor: 'transparent',
+                      marginInlineEnd: '2rem',
+                      type: [ { value: 0, }, ],
+                    }}
+                    boxModel={{ hp: 4, vp: 0.5, }}
+                    onClick={this.handleReplyClick}
+                  >
+                    {replyBtnTxt}
+                  </Button>
+                  {this.state.fadeText ? (
+                    <Button
+                      miscStyles={{
+                        backgroundColor: 'transparent',
+                        type: [ { value: 0, }, ],
+                      }}
+                      boxModel={{ hp: 4, vp: 0.5, }}
+                      onClick={() => this.setState({ fadeText: false, })}
+                    >
+                      {readMoreBtnTxt}
+                    </Button>
+                  ) : null}
+
+                  <Like
+                    commentId={commentId}
+                    initVote={initVote}
+                    isDisabled={!!this.state.userLike}
+                    miscStyles={likeMiscStyles}
+                    rate={commentPlusRate}
+                    updateUserLike={() => {
+                      this.setState({ userLike: 'plus', });
+                    }}
+                  />
+                  <Like
+                    commentId={commentId}
+                    initVote={initVote}
+                    isDisabled={!!this.state.userLike}
+                    isDisLike
+                    miscStyles={disLikeMiscStyles}
+                    rate={commentMinusRate}
+                    updateUserLike={() => {
+                      this.setState({ userLike: 'minus', });
+                    }}
+                  />
+                  <Button
+                    isFlat
+                    variant="negative"
+                    boxModel={{ hp: 2, vp: 0.5, }}
+                    miscStyles={{
+                      backgroundColor: 'transparent',
+                      type: [ { value: -2, }, ],
+                    }}
+                    isDisabled={this.state.abuseReported}
+                    onClick={() => {
+                      reportAbuse(commentId);
+                      this.setState({ abuseReported: true, });
+                    }}
+                  >
+                    {reportAbuseBtnTxt}
+                  </Button>
+                </FelaComponent>
+                {subComments ? (
+                  <CommentList
+                    comments={subComments}
+                    parentAuthor={author}
+                    isSubComment
+                    initVote={initVote}
+                    commentsPlusRate={commentsPlusRate}
+                    commentsMinusRate={commentsMinusRate}
+                    reportAbuse={reportAbuse}
+                    openParentReplyForm={() =>
+                      this.setState({ displayReplyForm: true, })
+                    }
+                  />
+                ) : null}
+              </FelaComponent>
+            </FelaComponent>
+            {this.state.displayReplyForm ? (
+              <CommentForm
+                parentCommentId={commentId}
+                initNewComment={initNewComment}
+                signUpNotification={signUpNotification}
+                closeReplyForm={() =>
+                  this.setState({ displayReplyForm: false, })
                 }
               />
             ) : null}
-          </StyledCommentContainer>
-        </StyledCommentWrapper>
-        {this.state.displayReplyForm ? (
-          <CommentForm
-            parentCommentId={commentId}
-            initNewComment={initNewComment}
-            signUpNotification={signUpNotification}
-            closeReplyForm={() => this.setState({ displayReplyForm: false, })}
-          />
-        ) : null}
-      </StyledWrapper>
+          </section>
+        )}
+      />
     );
   }
 }
 
-export default withTheme(Comment);
+export default Comment;

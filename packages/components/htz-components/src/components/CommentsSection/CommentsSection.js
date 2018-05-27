@@ -78,7 +78,7 @@ export class CommentsSection extends React.Component {
      * `<CommentSection/>` state to later use `onCaptchaResolve`
      * @param {String} commentId - commentId
      * @param {String} captchaKey - captchaKey
-    */
+     */
     reportAbuse: PropTypes.func.isRequired,
     /**
      * A callback that gets the called when submitting the sign up to notification form in `<CommentSent />`
@@ -108,12 +108,13 @@ export class CommentsSection extends React.Component {
     this.recaptcha.execute();
   };
 
-  onReCaptchaResolve() {
+  onReCaptchaResolve = () => {
+    console.log('on recaptcha resolved');
     const captchaKey = this.recaptcha.getResponse();
     this.props.reportAbuse(this.state.reportCommentId, captchaKey);
     this.setState({ reportCommentId: null, });
     this.recaptcha.reset();
-  }
+  };
 
   getCommentNetRate(commentId) {
     const commentPlusRate = Object.prototype.hasOwnProperty.call(
@@ -233,6 +234,9 @@ export class CommentsSection extends React.Component {
           // todo: 'should site key be prop ? or from theme ?
           sitekey="6Lc6jzoUAAAAAPBTy6ppZ5Et2Yv8zivAiNY-l4ol"
           onResolved={this.onReCaptchaResolve}
+          // todo: decide on captcha style
+          // style={{ , }}
+          badge="inline"
         />
       </StyledSection>
     );

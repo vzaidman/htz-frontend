@@ -11,6 +11,37 @@ import Comment from '../Comment'; // eslint-disable-line import/no-named-as-defa
 // next row is used to produce same id everytime so tests wont fail
 Math.random = jest.fn(() => 123456789);
 
+const bps = Object.freeze({
+  widths: Object.freeze({
+    s: 600,
+    m: 768,
+    l: 1024,
+    xl: 1280,
+  }),
+  misc: Object.freeze({
+    landscape: '(orientation: landscape)',
+    portrait: '(orientation: portrait)',
+    hidpi: '(min-resolution: 1.5dppx)',
+  }),
+});
+
+const typeConf = Object.freeze({
+  default: Object.freeze({
+    base: 16,
+    minPadding: 2,
+    ratio: 2,
+    rhythmUnit: 6,
+    steps: 5,
+  }),
+  xl: Object.freeze({
+    base: 18,
+    minPadding: 2,
+    ratio: 2,
+    rhythmUnit: 7,
+    steps: 5,
+  }),
+});
+
 const mockFunc = jest.fn();
 
 describe('<Comment>', () => {
@@ -21,6 +52,8 @@ describe('<Comment>', () => {
     it('renders correctly with minimum required props', () => {
       const { component, styles, } = felaSnapshotter(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author"
@@ -46,6 +79,8 @@ describe('<Comment>', () => {
     it('renders correctly with truncated comment', () => {
       const { component, styles, } = felaSnapshotter(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author"
@@ -67,6 +102,8 @@ describe('<Comment>', () => {
     it('renders correctly with title prop', () => {
       const { component, styles, } = felaSnapshotter(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author"
@@ -89,6 +126,8 @@ describe('<Comment>', () => {
     it('renders correctly with commentText prop', () => {
       const { component, styles, } = felaSnapshotter(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author"
@@ -111,6 +150,8 @@ describe('<Comment>', () => {
     it('renders correctly with isEditorPick true', () => {
       const { component, styles, } = felaSnapshotter(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author"
@@ -133,6 +174,8 @@ describe('<Comment>', () => {
     it('renders correctly with comments plus rate and minus rate props', () => {
       const { component, styles, } = felaSnapshotter(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author"
@@ -160,6 +203,8 @@ describe('<Comment>', () => {
     it('renders correctly with comments plus rate and minus rate props that create a usersChoice flag', () => {
       const { component, styles, } = felaSnapshotter(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author"
@@ -187,6 +232,8 @@ describe('<Comment>', () => {
     it('renders correctly as a first subComment', () => {
       const { component, styles, } = felaSnapshotter(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author"
@@ -210,6 +257,8 @@ describe('<Comment>', () => {
     it('renders correctly as a last subComment', () => {
       const { component, styles, } = felaSnapshotter(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author"
@@ -233,6 +282,8 @@ describe('<Comment>', () => {
     it('renders correctly as a last subComment', () => {
       const { component, styles, } = felaSnapshotter(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author"
@@ -267,6 +318,8 @@ describe('<Comment>', () => {
       const reportAbuse = jest.fn();
       const output = felaMount(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author comment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.author"
@@ -286,6 +339,8 @@ describe('<Comment>', () => {
     it('correctly calls handles a click on reply form', () => {
       const output = felaMount(
         <Comment
+          bps={bps}
+          typeConf={typeConf}
           key="comment.commentId"
           commentId="comment.commentId"
           author="comment.author comment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.author"

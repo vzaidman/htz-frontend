@@ -3,12 +3,13 @@
 exports[`<Like> DOM element renders correctly with custom iconsColor 1`] = `
 <div>
   <button
-    className="htz-a htz-b htz-c htz-d"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    disabled={undefined}
     onClick={[Function]}
     type="button"
   >
     <svg
-      className="htz-e htz-f htz-g htz-h"
+      className="htz-g htz-h htz-i htz-j"
       height="1em"
       viewBox="0 0 256 256"
       width="1em"
@@ -20,7 +21,7 @@ exports[`<Like> DOM element renders correctly with custom iconsColor 1`] = `
       />
     </svg>
     <span
-      className="htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+      className="htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
     >
       0
     </span>
@@ -28,17 +29,18 @@ exports[`<Like> DOM element renders correctly with custom iconsColor 1`] = `
 </div>
 `;
 
-exports[`<Like> DOM element renders correctly with custom iconsColor 2`] = `".htz-a{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-b{align-items:center}.htz-c{margin-right:2rem}.htz-d{-webkit-box-align:center}.htz-e{vertical-align:-0.15em}.htz-f{color:#3b5998}.htz-g{fill:#FFF}.htz-h{font-size:4rem}.htz-i{color:#787878}.htz-j{vertical-align:center}.htz-k{margin-right:1rem}.htz-l{font-weight:bold}@media (max-width: 79.9375em){.htz-m{font-size:2rem}.htz-n{line-height:1.5em}}@media (min-width: 80em){.htz-o{font-size:2rem}.htz-p{line-height:1.5em}}"`;
+exports[`<Like> DOM element renders correctly with custom iconsColor 2`] = `".htz-a{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-b{-webkit-align-items:center}.htz-c{align-items:center}.htz-d{margin-right:2rem}.htz-e:disabled{cursor:default}.htz-f{-webkit-box-align:center}.htz-g{vertical-align:-0.15em}.htz-h{color:#3b5998}.htz-i{fill:#FFF}.htz-j{font-size:4rem}.htz-k{color:#787878}.htz-l{vertical-align:center}.htz-m{margin-right:1rem}.htz-n{font-weight:bold}@media (max-width: 79.9375em){.htz-o{font-size:2rem}.htz-p{line-height:1.5em}}@media (min-width: 80em){.htz-q{font-size:2rem}.htz-r{line-height:1.5em}}"`;
 
 exports[`<Like> DOM element renders correctly with minimal required props 1`] = `
 <div>
   <button
-    className="htz-a htz-b htz-c htz-d"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    disabled={undefined}
     onClick={[Function]}
     type="button"
   >
     <svg
-      className="htz-e htz-f htz-g htz-h"
+      className="htz-g htz-h htz-i htz-j"
       height="1em"
       viewBox="0 0 256 256"
       width="1em"
@@ -50,7 +52,7 @@ exports[`<Like> DOM element renders correctly with minimal required props 1`] = 
       />
     </svg>
     <span
-      className="htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
+      className="htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
     >
       0
     </span>
@@ -58,4 +60,4 @@ exports[`<Like> DOM element renders correctly with minimal required props 1`] = 
 </div>
 `;
 
-exports[`<Like> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-b{align-items:center}.htz-c{margin-right:2rem}.htz-d{-webkit-box-align:center}.htz-e{vertical-align:-0.15em}.htz-f{color:#0B7EB5}.htz-g{fill:#FFF}.htz-h{font-size:4rem}.htz-i{color:#787878}.htz-j{vertical-align:center}.htz-k{margin-right:1rem}.htz-l{font-weight:bold}@media (max-width: 79.9375em){.htz-m{font-size:2rem}.htz-n{line-height:1.5em}}@media (min-width: 80em){.htz-o{font-size:2rem}.htz-p{line-height:1.5em}}"`;
+exports[`<Like> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-b{-webkit-align-items:center}.htz-c{align-items:center}.htz-d{margin-right:2rem}.htz-e:disabled{cursor:default}.htz-f{-webkit-box-align:center}.htz-g{vertical-align:-0.15em}.htz-h{color:#0B7EB5}.htz-i{fill:#FFF}.htz-j{font-size:4rem}.htz-k{color:#787878}.htz-l{vertical-align:center}.htz-m{margin-right:1rem}.htz-n{font-weight:bold}@media (max-width: 79.9375em){.htz-o{font-size:2rem}.htz-p{line-height:1.5em}}@media (min-width: 80em){.htz-q{font-size:2rem}.htz-r{line-height:1.5em}}"`;

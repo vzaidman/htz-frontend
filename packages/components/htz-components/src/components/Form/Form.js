@@ -17,8 +17,7 @@ export class Form extends Component {
      */
     disablePreventDefault: PropTypes.bool,
     /**
-     * If true handleSubmit function is called
-     * native submit behaviour wont be prevented
+     * If true the form wont submit when pressing enter key
      */
     disableSubmitOnEnterKeyDown: PropTypes.bool,
     /**
@@ -269,27 +268,20 @@ export class Form extends Component {
   handleSubmit = (evt, ...args) => {
     if (!this.props.disablePreventDefault) evt.preventDefault();
     // check if enter was pressed and id submit on enter was disabled
-    if (
-      !(
-        args[0] &&
-        args[0].enterKeyPressed &&
-        this.props.disableSubmitOnEnterKeyDown
-      )
-    ) {
-      if (this.props.validate) {
-        const errors = this.props.validate(this.state.values);
-        if (errors.length > 0) {
-          this.focusFirstError(errors);
-        }
-        else {
-          this.props.onSubmit(this.state.values, ...args);
-          if (this.props.clearFormAfterSubmit) this.clearForm();
-        }
+
+    if (this.props.validate) {
+      const errors = this.props.validate(this.state.values);
+      if (errors.length > 0) {
+        this.focusFirstError(errors);
       }
       else {
         this.props.onSubmit(this.state.values, ...args);
         if (this.props.clearFormAfterSubmit) this.clearForm();
       }
+    }
+    else {
+      this.props.onSubmit(this.state.values, ...args);
+      if (this.props.clearFormAfterSubmit) this.clearForm();
     }
   };
 
@@ -331,17 +323,21 @@ export class Form extends Component {
   }
 
   render() {
-    const { attrs, render, } = this.props;
+    const { attrs, disableSubmitOnEnterKeyDown, render, } = this.props;
 
     return (
       // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
       <form
         {...attrs}
-        onKeyDown={evt => {
-          if (evt.keyCode === 13) {
-            this.handleSubmit(evt, { enterKeyPressed: true, });
-          }
-        }}
+        {...(!disableSubmitOnEnterKeyDown
+          ? {
+              onKeyDown: evt => {
+                if (evt.keyCode === 13) {
+                  this.handleSubmit(evt);
+                }
+              },
+            }
+          : {})}
       >
         {render({
           getInputProps: this.getInputProps,

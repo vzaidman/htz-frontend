@@ -87,7 +87,10 @@ export const commentFormI18n = Object.freeze({
   buttons: Object.freeze({
     sendBtnTxt: 'שלח',
     cancelBtnTxt: 'בטל',
-    toggleUserBtnText: 'להוספת תגובה מזוהה לחץ כאן',
+    toggleUserBtnText: identified =>
+      (identified
+        ? 'להוספת תגובה אנונימית לחץ כאן'
+        : 'להוספת תגובה מזוהה לחץ כאן'),
   }),
   labels: Object.freeze({
     nameLabelTxt: 'שם',

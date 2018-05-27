@@ -9,14 +9,19 @@ describe('<Like>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
       const { component, styles, } = felaSnapshotter(
-        <Like initVote={mockFunc} commentId="12345" />
+        <Like initVote={mockFunc} updateUserLike={mockFunc} commentId="12345" />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with custom iconsColor', () => {
       const { component, styles, } = felaSnapshotter(
-        <Like initVote={mockFunc} commentId="12345" iconColor="facebook" />
+        <Like
+          initVote={mockFunc}
+          updateUserLike={mockFunc}
+          commentId="12345"
+          iconColor="facebook"
+        />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -26,6 +31,7 @@ describe('<Like>', () => {
       const output = felaMount(
         <Like
           initVote={(commentId, rate) => mockCallback(commentId, rate)}
+          updateUserLike={mockFunc}
           commentId="12345"
           iconsColor="facebook"
         />
@@ -39,6 +45,7 @@ describe('<Like>', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
         <Like
+          updateUserLike={mockFunc}
           initVote={(commentId, rateSign) => mockCallback(commentId, rateSign)}
           commentId="12345"
           iconColor="facebook"
@@ -53,6 +60,7 @@ describe('<Like>', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
         <Like
+          updateUserLike={mockFunc}
           initVote={(commentId, rateSign) => mockCallback(commentId, rateSign)}
           commentId="12345"
           iconColor="facebook"
