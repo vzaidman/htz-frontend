@@ -13,11 +13,11 @@ const propTypes = {
       /**
        * Article title to display.
        */
-      contentName: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       /**
        * Article's destination.
        */
-      url: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
     })
   ).isRequired,
   /**

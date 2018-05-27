@@ -23,7 +23,7 @@ const Author = createComponent(authorStyle, 'span');
 ArticleLink.propTypes = {
   /** An object containing the article's properties */
   article: PropTypes.shape({
-    contentName: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     authors: PropTypes.arrayOf(
       PropTypes.oneOfType([
         PropTypes.string,
@@ -32,7 +32,7 @@ ArticleLink.propTypes = {
         }),
       ])
     ),
-    url: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
   }).isRequired,
 
   /** Is the currently viewed article */
@@ -52,7 +52,7 @@ ArticleLink.defaultProps = {
 function ArticleLink({ article, currentArticle, focus, isBlock, }) {
   return currentArticle ? (
     <CurrentArticle>
-      {article.contentName}
+      {article.title}
       {isBlock &&
         article.authors && (
           <Author>
@@ -62,10 +62,10 @@ function ArticleLink({ article, currentArticle, focus, isBlock, }) {
     </CurrentArticle>
   ) : (
     <Link
-      href={article.url}
+      href={article.path}
       content={
         <Article isBlock={isBlock}>
-          {article.contentName}
+          {article.title}
           {isBlock &&
             article.authors && (
               <Author>

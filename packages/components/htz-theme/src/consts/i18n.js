@@ -1,4 +1,4 @@
-const seriesArticle = Object.freeze({
+export const seriesArticleI18n = Object.freeze({
   loadButton: Object.freeze({
     close: 'טען את כל הכתבות בסדרה',
     open: 'סגירת הרשימה',
@@ -6,8 +6,6 @@ const seriesArticle = Object.freeze({
   }),
   titlePrefix: 'סדרת כתבות: ',
 });
-
-export default { seriesArticle, };
 
 export const zoominText = 'הגדל';
 export const zoomoutText = 'הקטן';

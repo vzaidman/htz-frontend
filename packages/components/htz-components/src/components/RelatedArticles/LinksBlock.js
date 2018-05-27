@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
-import { i18n, } from '@haaretz/htz-theme';
+import { createComponent, FelaComponent, } from 'react-fela';
+import { Query, } from 'react-apollo';
+import gql from 'graphql-tag';
 import ArticleLink from './articleLink';
+
+const GET_ARTICLE_ID = gql`
+  query {
+    articleId @client
+  }
+`;
 
 const propTypes = {
   /**
    * The name of the series to display.
    */
   seriesTitle: PropTypes.string.isRequired,
-  /**
-   * The position of the current article in this series.
-   */
-  articlePositionInTheSeries: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
   /**
    * An array of article objects.
    */
@@ -29,13 +29,6 @@ const propTypes = {
        * Article's destination.
        */
       url: PropTypes.string.isRequired,
-      /**
-       * Its position in this series.
-       */
-      positionInSeries: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]).isRequired,
       /**
        * An array of Article's authors (if more than one, only the first will be displayed).
        */
@@ -72,11 +65,6 @@ const defaultProps = {
   marginBottom: null,
 };
 
-const wrapperStyle = ({ theme, marginBottom, }) => ({
-  ...(marginBottom || []),
-});
-const ArticleListWrapper = createComponent(wrapperStyle);
-
 const seriesTitleStyle = ({ theme, }) => ({
   ...theme.type(0),
   color: theme.color('neutral', '-1'),
@@ -103,26 +91,34 @@ const articleWrapperStyle = ({ theme, lastItem, }) => ({
 });
 const ArticleWrapper = createComponent(articleWrapperStyle, 'li');
 
-function LinksBlock({
-  seriesTitle,
-  articlePositionInTheSeries,
-  articles,
-  marginBottom,
-}) {
-  const { titlePrefix, } = i18n.seriesArticle;
+function LinksBlock({ seriesTitle, articles, marginBottom, }) {
   return (
-    <ArticleListWrapper marginBottom={marginBottom}>
-      <SeriesTitle>{titlePrefix + seriesTitle}</SeriesTitle>
-      {articles.map(
-        (article, i) =>
-          articlePositionInTheSeries !== i + 1 && (
-            // eslint-disable-next-line react/no-array-index-key
-            <ArticleWrapper key={i} lastItem={i === articles.length - 1}>
-              <ArticleLink article={article} isBlock />
-            </ArticleWrapper>
-          )
+    <FelaComponent
+      style={{ ...(marginBottom || []), }}
+      render={({
+        className,
+        theme: { seriesArticleI18n: { titlePrefix, }, },
+      }) => (
+        <div className={className}>
+          <SeriesTitle>{titlePrefix + seriesTitle}</SeriesTitle>
+          <Query query={GET_ARTICLE_ID}>
+            {({ data: { articleId, }, }) =>
+              articles.map(
+                (article, i) =>
+                  articleId === article.contentId && (
+                    <ArticleWrapper
+                      key={i} // eslint-disable-line react/no-array-index-key
+                      lastItem={i === articles.length - 1}
+                    >
+                      <ArticleLink article={article} isBlock />
+                    </ArticleWrapper>
+                  )
+              )
+            }
+          </Query>
+        </div>
       )}
-    </ArticleListWrapper>
+    />
   );
 }
 

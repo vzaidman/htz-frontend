@@ -1,24 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
+import { Query, } from 'react-apollo';
+import gql from 'graphql-tag';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
-import { i18n, } from '@haaretz/htz-theme';
 import ArticleLink from './articleLink';
-// eslint-disable-next-line import/no-named-as-default
 import Button from '../Button/Button';
+
+const GET_ARTICLE_ID = gql`
+  query {
+    articleId @client
+  }
+`;
 
 const propTypes = {
   /**
    * The name of the series to display.
    */
   seriesTitle: PropTypes.string.isRequired,
-  /**
-   * The position of the current article in this series.
-   */
-  articlePositionInTheSeries: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
   /**
    * Should I use pagination, or just display the whole list ??
    */
@@ -36,18 +35,11 @@ const propTypes = {
       /**
        * Article title to display.
        */
-      contentName: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       /**
        * Article's destination.
        */
-      url: PropTypes.string.isRequired,
-      /**
-       * Its position in this series.
-       */
-      positionInSeries: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]).isRequired,
+      path: PropTypes.string.isRequired,
     })
   ).isRequired,
   /**
@@ -78,12 +70,6 @@ const defaultProps = {
   itemsPerPage: 3,
   marginBottom: null,
 };
-
-const wrapperStyle = ({ theme, marginBottom, }) => ({
-  ...(marginBottom || []),
-});
-
-const SeriesArticlesWrapper = createComponent(wrapperStyle);
 
 const seriesTitleStyle = ({ theme, }) => ({
   ...theme.type(0),
@@ -157,14 +143,12 @@ export default class SeriesArticles extends React.Component {
     const articlesToDisplay = pagination
       ? this.props.articles.slice(0, perPage)
       : articles;
-    const articlePosition = +this.props.articlePositionInTheSeries;
     const remainingArticlesCount = articles.length - itemsPerPage;
 
     this.setState({
       usePagination: pagination,
       itemsPerPage: perPage,
       articlesToDisplay,
-      articlePosition,
       remainingArticlesCount,
       isOpen: false,
     });
@@ -180,59 +164,71 @@ export default class SeriesArticles extends React.Component {
   };
 
   render() {
-    const { loadButton, titlePrefix, } = i18n.seriesArticle;
     return (
-      <SeriesArticlesWrapper marginBottom={this.props.marginBottom}>
-        <ArticleListWrapper aria-live="polite">
-          <SeriesTitle>{titlePrefix + this.props.seriesTitle}</SeriesTitle>
-          {this.state.articlesToDisplay.map((article, i) => (
-            <ArticleWrapper
-              // eslint-disable-next-line react/no-array-index-key
-              key={i}
-              lastItem={i === this.state.articlesToDisplay.length - 1}
-            >
-              {this.state.isOpen &&
-                this.state.itemsPerPage === i && (
-                  <AriaHidden>
-                    {loadButton.ariaText(this.state.remainingArticlesCount)}
-                  </AriaHidden>
-                )}
-              <ArticleLink
-                article={article}
-                currentArticle={
-                  this.state.articlePosition &&
-                  +this.state.articlePosition === i + 1
+      <FelaComponent
+        style={{ ...(this.props.marginBottom || []), }}
+        render={({
+          className,
+          theme: { seriesArticleI18n: { loadButton, titlePrefix, }, },
+        }) => (
+          <div className={className}>
+            <ArticleListWrapper aria-live="polite">
+              <SeriesTitle>{titlePrefix + this.props.seriesTitle}</SeriesTitle>
+              <Query query={GET_ARTICLE_ID}>
+                {({ data: { articleId, }, }) =>
+                  this.state.articlesToDisplay.map((article, i) => (
+                    <ArticleWrapper
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={i}
+                      lastItem={i === this.state.articlesToDisplay.length - 1}
+                    >
+                      {this.state.isOpen &&
+                        this.state.itemsPerPage === i && (
+                          <AriaHidden>
+                            {loadButton.ariaText(
+                              this.state.remainingArticlesCount
+                            )}
+                          </AriaHidden>
+                        )}
+                      <ArticleLink
+                        article={article}
+                        currentArticle={articleId === article.contentId}
+                        focus={
+                          this.state.isOpen && this.state.itemsPerPage === i
+                        }
+                      />
+                    </ArticleWrapper>
+                  ))
                 }
-                focus={this.state.isOpen && this.state.itemsPerPage === i}
-              />
-            </ArticleWrapper>
-          ))}
-        </ArticleListWrapper>
-        {this.state.usePagination && (
-          <Button
-            boxModel={{ hp: 3, vp: 1, }}
-            miscStyles={{ type: -1, }}
-            onClick={this.setArticlesToDisplay}
-          >
-            {this.state.isOpen
-              ? loadButton.open
-              : `${loadButton.close} ${this.state.remainingArticlesCount}`}
-          </Button>
+              </Query>
+            </ArticleListWrapper>
+            {this.state.usePagination && (
+              <Button
+                boxModel={{ hp: 3, vp: 1, }}
+                miscStyles={{ type: -1, }}
+                onClick={this.setArticlesToDisplay}
+              >
+                {this.state.isOpen
+                  ? loadButton.open
+                  : `${loadButton.close} ${this.state.remainingArticlesCount}`}
+              </Button>
+            )}
+            <script type="application/ld+json">
+              {JSON.stringify({
+                '@context': 'http://schema.org',
+                '@type': 'ItemList',
+                itemListElement: [
+                  ...this.props.articles.map((article, i) => ({
+                    '@type': 'ListItem',
+                    position: i + 1,
+                    url: article.url,
+                  })),
+                ],
+              })}
+            </script>
+          </div>
         )}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'http://schema.org',
-            '@type': 'ItemList',
-            itemListElement: [
-              ...this.props.articles.map((article, i) => ({
-                '@type': 'ListItem',
-                position: i + 1,
-                url: article.url,
-              })),
-            ],
-          })}
-        </script>
-      </SeriesArticlesWrapper>
+      />
     );
   }
 }

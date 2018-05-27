@@ -48,6 +48,7 @@ function create(initialState, req) {
         __typename: 'AriaLive',
       },
       hostname,
+      articleId: null,
       startFromStage2: true,
       referrer: null,
       loggedInOrRegistered: null,

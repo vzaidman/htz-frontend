@@ -65,10 +65,6 @@ export class ArticlePage extends React.Component {
     );
   }
 
-  componentDidUpdate() {
-    console.log(this.state);
-  }
-
   updateState = () => {
     this.setState({
       skip: true,
@@ -88,13 +84,18 @@ export class ArticlePage extends React.Component {
             variables={{ path: url.query.path, }}
             skip={this.state.skip}
           >
-            {({ loading, error, data, }) => {
+            {({ loading, error, data, client, }) => {
               if (error) {
                 const isNotFound = data.error.graphQLErrors.some(
                   ({ message, }) => message === 'Not Found'
                 );
                 return <Error statusCode={isNotFound ? 404 : 500} />;
               }
+              client.writeData({
+                data: {
+                  articleId: data.page.lineage[0].contentId,
+                },
+              });
               return (
                 <Fragment>
                   <AriaLive />
