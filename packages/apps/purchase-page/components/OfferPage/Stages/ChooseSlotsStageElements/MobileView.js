@@ -113,6 +113,7 @@ const StyledItemHeading = createComponent(itemHeadingStyle, 'h2');
 
 const itemPricingMonthlyStyle = ({ theme, }) => ({
   fontWeight: 'bold',
+  color: theme.color('primary'),
   extend: [ theme.type(1), ],
 });
 
@@ -158,15 +159,15 @@ class MobileView extends Component {
                           {staticTableData.thead[item.subscriptionName].heading}
                         </StyledItemHeading>
                         <StyledItemPricingMonthly>
-                          {item.pricingMonthly}
+                          {item.pricingHead}
                         </StyledItemPricingMonthly>
-                        {item.pricingYearly && (
-                          <div>
-                            {item.pricingYearly.map(row => (
-                              <div key={Math.random()}>{row}</div>
-                            ))}
-                          </div>
-                        )}
+                        <div>
+                          {
+                            staticTableData.thead.mobileUnderPricing[
+                              idx !== 0 ? 'default' : 'firstItem'
+                            ]
+                          }
+                        </div>
                         <BIAction>
                           {action => (
                             <Button
@@ -242,6 +243,24 @@ class MobileView extends Component {
                                 <div>{row.description}</div> <PositiveCircle />
                               </StyledTableItem>
                             )
+                        )}
+                        {item.pricingMonthly && (
+                          <StyledTableItem>
+                            <div>
+                              {staticTableData.tbody.pricingMonthlyText}
+                            </div>
+                            <FelaComponent style={{ textAlign: 'end', }}>
+                              {item.pricingMonthly.map(row => <div>{row}</div>)}
+                            </FelaComponent>
+                          </StyledTableItem>
+                        )}
+                        {item.pricingYearly && (
+                          <StyledTableItem>
+                            <div>{staticTableData.tbody.pricingYearlyText}</div>
+                            <FelaComponent style={{ textAlign: 'end', }}>
+                              {item.pricingYearly.map(row => <div>{row}</div>)}
+                            </FelaComponent>
+                          </StyledTableItem>
                         )}
                         <StyledTableFooter>
                           {staticTableData.tfoot}

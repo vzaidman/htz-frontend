@@ -85,18 +85,22 @@ export const stage1 = Object.freeze({
   headerText: 'בחרו את החבילה המשתלמת לכם',
   mobileExpandBtn: 'מה בחבילה?',
   thead: Object.freeze({
+    mobileUnderPricing: Object.freeze({
+      firstItem: 'כל התכנים, בכל מכשיר, בכל זמן',
+      default: 'ניתן לבטל בכל עת',
+    }),
     HTZ: Object.freeze({
-      heading: 'מינוי להארץ בלבד',
+      heading: 'הארץ בדיגיטל',
       src: 'fillup',
       btnText: 'המשך',
     }),
     BOTH: Object.freeze({
-      heading: 'מינוי משולב',
+      heading: 'הארץ+TheMarker בדיגיטל',
       src: 'fillup',
       btnText: 'המשך',
     }),
     TM: Object.freeze({
-      heading: 'מינוי ל-TheMarker בלבד',
+      heading: 'TheMarker בדיגיטל',
       src: 'fillup',
       btnText: 'המשך',
     }),
