@@ -72,6 +72,7 @@ function create(initialState, req) {
         politeMessage: '',
         __typename: 'AriaLive',
       },
+      canonicalUrl: '',
       hostname,
       articleId: null,
       startFromStage2: true,

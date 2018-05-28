@@ -10,9 +10,24 @@ export default gql`
         metaTitle
         metaDescription
         metaKeywords
-        canonicalLink
-        ogImages
-        obTitle
+        canonicalUrl
+        ogTitle
+        ogImage {
+          viewMode
+          accessibility
+          title
+          credit
+          aspects
+          isAnimated
+          contentId
+          imgArray {
+            imgName
+            version
+          }
+          imageType
+          contentName
+        }
+        ogDescription
       }
       slots {
         ... on StandardArticleSlots {

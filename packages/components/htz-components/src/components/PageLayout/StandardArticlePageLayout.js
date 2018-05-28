@@ -46,51 +46,54 @@ class StandardArticlePageLayout extends React.Component {
       footer,
     } = this.props.slots;
     return (
-      <Fragment>
-        <LayoutRow>
-          <LayoutContainer>
-            <PreHeader content={preHeader} />
-          </LayoutContainer>
-        </LayoutRow>
-        <LayoutRow>
-          <LayoutContainer>
-            <Header content={header} />
-          </LayoutContainer>
-        </LayoutRow>
-        <LayoutRow>
-          <LayoutContainer>
-            <PostHeader content={postHeader} />
-          </LayoutContainer>
-        </LayoutRow>
-        <LayoutRow>
-          <LayoutContainer>
-            <Query
-              query={ArticleContentQuery}
-              variables={{ path: this.props.articleId, }}
-            >
-              {({ loading, error, data, }) => {
-                if (error) {
-                  const isNotFound = data.error.graphQLErrors.some(
-                    ({ message, }) => message === 'Not Found'
-                  );
-                  return <Error statusCode={isNotFound ? 404 : 500} />;
-                }
-                return <Main content={{ ...data.page.slots, }} />;
-              }}
-            </Query>
-          </LayoutContainer>
-        </LayoutRow>
-        <LayoutRow>
-          <LayoutContainer>
-            <PostMain content={postMain} />
-          </LayoutContainer>
-        </LayoutRow>
-        <LayoutRow>
-          <LayoutContainer>
-            <Footer content={footer} />
-          </LayoutContainer>
-        </LayoutRow>
-      </Fragment>
+      <Query
+        query={ArticleContentQuery}
+        variables={{ path: this.props.articleId, }}
+      >
+        {({ loading, error, data, }) => {
+          if (error) {
+            const isNotFound = data.error.graphQLErrors.some(
+              ({ message, }) => message === 'Not Found'
+            );
+            return <Error statusCode={isNotFound ? 404 : 500} />;
+          }
+          const { slots, seoData, } = data.page;
+          return (
+            <Fragment>
+              <LayoutRow>
+                <LayoutContainer>
+                  <PreHeader content={preHeader} />
+                </LayoutContainer>
+              </LayoutRow>
+              <LayoutRow>
+                <LayoutContainer>
+                  <Header content={header} />
+                </LayoutContainer>
+              </LayoutRow>
+              <LayoutRow>
+                <LayoutContainer>
+                  <PostHeader content={postHeader} />
+                </LayoutContainer>
+              </LayoutRow>
+              <LayoutRow>
+                <LayoutContainer>
+                  <Main content={{ ...slots, }} seo={seoData} />
+                </LayoutContainer>
+              </LayoutRow>
+              <LayoutRow>
+                <LayoutContainer>
+                  <PostMain content={postMain} />
+                </LayoutContainer>
+              </LayoutRow>
+              <LayoutRow>
+                <LayoutContainer>
+                  <Footer content={footer} />
+                </LayoutContainer>
+              </LayoutRow>
+            </Fragment>
+          );
+        }}
+      </Query>
     );
   }
 }

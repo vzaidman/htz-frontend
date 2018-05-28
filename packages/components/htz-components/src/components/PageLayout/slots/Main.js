@@ -1,17 +1,30 @@
 import React from 'react';
 import { createComponent, } from 'react-fela';
+import { ApolloConsumer, } from 'react-apollo';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import { parseComponentProp, borderBottom, } from '@haaretz/htz-css-tools';
 import getComponent from '../../../utils/componentFromInputTemplate';
 import Article from '../../Article/Article';
+import { buildUrl, } from '../../../utils/buildImgURLs';
 
 const Osaka = dynamic(import('../../Osaka/OsakaController'), { ssr: false, });
 
 const propTypes = {
   content: PropTypes.shape({
-    article: PropTypes.object,
+    article: PropTypes.shape([]),
     aside: PropTypes.object,
+  }).isRequired,
+  seo: PropTypes.shape({
+    metaTitle: PropTypes.string,
+    metaDescription: PropTypes.string,
+    metaKeywords: PropTypes.string,
+    canonicalUrl: PropTypes.string,
+    ogTitle: PropTypes.string,
+    ogDescription: PropTypes.string,
+    ogImage: PropTypes.shape({}),
+    obTitle: PropTypes.string,
   }).isRequired,
 };
 
@@ -199,16 +212,59 @@ class Main extends React.Component {
 
   render() {
     const { article, aside, } = this.props.content;
+    const {
+      metaTitle,
+      metaDescription,
+      metaKeywords,
+      canonicalUrl,
+      ogTitle,
+      ogDescription,
+      ogImage,
+      obTitle,
+    } = this.props.seo;
+    const { contentId, imgArray, aspects, } = ogImage;
+    const ogImageUrl = buildUrl(
+      contentId,
+      { ...imgArray[0], aspects, },
+      {
+        width: '1200',
+        aspect: 'full',
+        quality: 'auto',
+      }
+    );
     return (
-      <ArticleContainer
-        innerRef={container => (this.container = container)} // eslint-disable-line no-return-assign
-      >
-        <Osaka width={this.state.articleWidth} />
-        {this.extractContent(article)}
-        <ArticleAside>
-          <Sticky>{this.extractContent(aside)}</Sticky>
-        </ArticleAside>
-      </ArticleContainer>
+      <ApolloConsumer>
+        {cache => {
+          cache.writeData({
+            data: {
+              canonicalUrl,
+            },
+          });
+          return (
+            <ArticleContainer
+              // eslint-disable-next-line no-return-assign
+              innerRef={container => (this.container = container)}
+            >
+              <Head>
+                <meta name="title" content={metaTitle} />
+                <meta name="description" content={metaDescription} />
+                <meta name="keywords" content={metaKeywords} />
+                <meta property="og:title" content={ogTitle} />
+                <meta property="og:description" content={ogDescription} />
+                <meta property="og:image" content={ogImageUrl} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="ob:title" content={obTitle} />
+              </Head>
+              <Osaka width={this.state.articleWidth} />
+              {this.extractContent(article)}
+              <ArticleAside>
+                <Sticky>{this.extractContent(aside)}</Sticky>
+              </ArticleAside>
+            </ArticleContainer>
+          );
+        }}
+      </ApolloConsumer>
     );
   }
 }
