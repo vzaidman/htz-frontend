@@ -20,9 +20,9 @@ class Diver extends React.Component {
     size: PropTypes.oneOfType([ PropTypes.string, PropTypes.array, ]).isRequired,
   };
 
-  static initialId = 0;
-  // eslint-disable-next-line no-plusplus
-  state = { idSuffix: ++this.initialId, };
+  // TODO missing isomorphic ID solution is missing: https://github.com/reactjs/rfcs/pull/32
+  state = { idSuffix: '', };
+
   render() {
     const { size, } = this.props;
     return (

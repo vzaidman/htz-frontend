@@ -10,10 +10,8 @@ import { attrsPropType, } from '../../../propTypes/attrsPropType';
 class UnstyledIconHtzLoader extends React.Component {
   static propTypes = { attrs: attrsPropType, };
   static defaultProps = { attrs: null, };
-  static initialId = 10;
-
-  // eslint-disable-next-line no-plusplus
-  state = { idPostfix: ++this.initialId, };
+  // TODO missing isomorphic ID solution is missing: https://github.com/reactjs/rfcs/pull/32
+  state = { idPostfix: '', };
 
   render() {
     const { attrs, ...props } = this.props;

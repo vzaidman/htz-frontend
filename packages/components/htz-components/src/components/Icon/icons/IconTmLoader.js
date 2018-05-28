@@ -25,7 +25,8 @@ UnstyledIconTmLoader.defaultProps = {
 };
 
 function UnstyledIconTmLoader({ attrs, ...props }) {
-  const idPostfix = Math.random();
+  // TODO missing isomorphic ID solution is missing: https://github.com/reactjs/rfcs/pull/32
+  const idPostfix = '';
   return (
     <svg width="1em" height="1em" viewBox="0 0 256 256" {...props} {...attrs}>
       <style
