@@ -149,11 +149,11 @@ function Scripts({ host, thankYou, userPaid, userType, }) {
             _gaq.push(['_setAllowLinker', true]);
 
             var visitor = 'Non';
-            if (${userType} == 'anonymous') {
+            if ('${userType}' === 'anonymous') {
               visitor = 'Non-registered';
             }
             else {
-              if (${userType} == 'registered') {
+              if ('${userType}' === 'registered') {
                 visitor = 'Registered';
               }
               else {
