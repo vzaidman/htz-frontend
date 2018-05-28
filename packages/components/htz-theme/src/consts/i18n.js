@@ -19,6 +19,10 @@ export const tagsElementI18n = Object.freeze({
   prefix: 'תגיות:',
 });
 
+export const breadcrumbsI18n = Object.freeze({
+  ariaLabel: 'מיקומך באתר',
+});
+
 export const navigationI18n = Object.freeze({
   button: 'ניווט',
   additionalMenuItems: Object.freeze({

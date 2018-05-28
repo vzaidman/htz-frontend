@@ -12,6 +12,7 @@ import newsletterStyle from './consts/newsletterStyle';
 import selectStyle from './consts/selectStyle';
 import typeConf from './consts/typeConf';
 import {
+  breadcrumbsI18n,
   commentI18n,
   commentFormI18n,
   commentSentI18n,
@@ -63,6 +64,7 @@ const htzTheme = Object.freeze({
   typeConf,
 
   // I18n
+  breadcrumbsI18n,
   commentI18n,
   commentFormI18n,
   commentSentI18n,

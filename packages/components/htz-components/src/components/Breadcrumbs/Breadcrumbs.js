@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import Link from '../Link/Link';
-import Media from '../Media/Media';
 
 const propTypes = {
   /**
@@ -24,43 +23,49 @@ function Breadcrumbs({ steps, }) {
   crumbs.shift();
   crumbs.pop();
   return (
-    <Media query={{ until: 's', }}>
-      {matches =>
-        [ ...(matches ? crumbs.slice(-1) : crumbs), ].map(crumb => (
-          <FelaComponent
-            key={crumb.contentId}
-            style={theme => ({
-              ...theme.type(-1),
-              fontWeight: '700',
-              marginInlineEnd: '1rem',
-              color: theme.color('neutral', '-4'),
-              ':hover': {
-                color: theme.color('neutral', '-3'),
-                textDecoration: 'underline',
-                underlineSkip: 'ink',
-              },
-              extend: [
-                {
-                  ':nth-child(odd)': {
-                    color: theme.color('neutral', '-2'),
-                    ':hover': {
-                      color: theme.color('neutral', '-1'),
+    <FelaComponent
+      render={({ theme: { breadcrumbsI18n: { ariaLabel, }, }, }) => (
+        <nav aria-label={ariaLabel}>
+          {crumbs.map((crumb, index) => (
+            <FelaComponent
+              key={crumb.contentId}
+              style={theme => ({
+                ...theme.type(-1),
+                fontWeight: '700',
+                marginInlineEnd: '1rem',
+                color: theme.color('neutral', '-4'),
+                ':hover': {
+                  color: theme.color('neutral', '-3'),
+                  textDecoration: 'underline',
+                  underlineSkip: 'ink',
+                },
+                extend: [
+                  theme.mq(
+                    { until: 's', },
+                    index !== crumbs.length - 1 ? { display: 'none', } : {}
+                  ),
+                  {
+                    ':nth-child(odd)': {
+                      color: theme.color('neutral', '-2'),
+                      ':hover': {
+                        color: theme.color('neutral', '-1'),
+                      },
                     },
                   },
-                },
-              ],
-            })}
-            render={({ className, }) => (
-              <Link
-                className={className}
-                content={crumb.name}
-                href={crumb.url}
-              />
-            )}
-          />
-        ))
-      }
-    </Media>
+                ],
+              })}
+              render={({ className, }) => (
+                <Link
+                  className={className}
+                  content={crumb.name}
+                  href={crumb.url}
+                />
+              )}
+            />
+          ))}
+        </nav>
+      )}
+    />
   );
 }
 
