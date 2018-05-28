@@ -4,7 +4,7 @@ import Error from 'next/error';
 import { Query, } from 'react-apollo';
 import { withData, } from '@haaretz/app-utils';
 import { StyleProvider, } from '@haaretz/fela-utils';
-import htzTheme from '@haaretz/htz-theme';
+import { htzTheme, } from '@haaretz/htz-theme';
 import dynamic from 'next/dynamic';
 
 import {
@@ -19,7 +19,9 @@ import ArticleInitQuery from './queries/article_layout';
 // eslint-disable-next-line no-unused-vars
 const ScrollInjector = dynamic(
   import('../components/ScrollListener/ScrollListener'),
-  { ssr: false, }
+  {
+    ssr: false,
+  }
 );
 const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
   ssr: false,
