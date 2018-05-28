@@ -43,7 +43,7 @@ class Stage1 extends React.Component {
             render={({ data, loading, error, client, }) => {
               if (loading) return <div />;
               if (error) return <div> Error...</div>;
-              client.writeData({ data: { referrer, }, });
+              client.writeData({ data: { referrer: referrer || null, }, });
               const { slots, pageNumber, } = data.purchasePage;
               return pageNumber >= 7 ? (
                 <Redirect destination="/promotions-page/thankYou" replace />
