@@ -12,13 +12,11 @@ import { createComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 
-import mocks from '../../../styleguide/mocks';
-
-const mock = mocks.List;
+import mock from '../../../styleguide/mocks/list';
 
 const views = {
+  Bender: dynamic(import('./views/Bender/Bender.view.js')),
   Fry: dynamic(import('./views/Fry/Fry.view.js')),
-  Bender: dynamic(import('./views/Bender')),
   Leela: dynamic(import('./views/Leela/Leela.view.js')),
   Zoidberg: dynamic(import('./views/Zoidberg/Zoidberg.view.js')),
 };
@@ -78,8 +76,8 @@ export default class List extends React.Component {
           <option value="placeHolder" disabled>
             Select a preview
           </option>
-          <option value="Fry">Fry</option>
           <option value="Bender">Bender</option>
+          <option value="Fry">Fry</option>
           <option value="Leela">Leela</option>
           <option value="Zoidberg">Zoidberg</option>
         </MenuList>

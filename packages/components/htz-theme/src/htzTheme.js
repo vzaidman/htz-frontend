@@ -8,6 +8,7 @@ import fontStacks from './consts/fontStacks';
 import footerBorderStyle from './consts/footerBorderStyle';
 import gridStyle from './consts/gridStyle';
 import inputStyle from './consts/inputStyle';
+import { benderStyle, } from './consts/listStyle';
 import newsletterStyle from './consts/newsletterStyle';
 import selectStyle from './consts/selectStyle';
 import typeConf from './consts/typeConf';
@@ -19,6 +20,7 @@ import {
   commentsSectionI18n,
   footerDesktopI18n,
   footerMobileListsI18n,
+  fryListI18n,
   navigationI18n,
   newsletterI18n,
   osakaI18n,
@@ -50,6 +52,7 @@ import mq from './methods/mq';
 const htzTheme = Object.freeze({
   // Constants
   articleStyle,
+  benderStyle,
   bps,
   btnStyle,
   captionStyles,
@@ -71,6 +74,7 @@ const htzTheme = Object.freeze({
   commentsSectionI18n,
   footerDesktopI18n,
   footerMobileListsI18n,
+  fryListI18n,
   navigationI18n,
   newsletterI18n,
   osakaI18n,

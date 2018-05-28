@@ -12,9 +12,7 @@ import { createComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 
-import mocks from '../../../styleguide/mocks';
-
-const mock = mocks.List;
+import mock from '../../../styleguide/mocks/list';
 
 const views = {
   ${Object.keys(views)

@@ -12,17 +12,17 @@ import dynamic from 'next/dynamic';
 
 const views = new Map([
   [
+    'Bender',
+    {
+      view: () => import('./views/Bender/Bender.view.js'),
+      query: () => import('./views/Bender/Bender.query.js'),
+    },
+  ],
+  [
     'Fry',
     {
       view: () => import('./views/Fry/Fry.view.js'),
       query: () => import('./views/Fry/Fry.query.js'),
-    },
-  ],
-  [
-    'Bender',
-    {
-      view: () => import('./views/Bender'),
-      query: () => import('./viewsQueries/bender'),
     },
   ],
   [

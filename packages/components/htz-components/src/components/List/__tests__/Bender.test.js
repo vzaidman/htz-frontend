@@ -1,7 +1,7 @@
 /* global window */
 import React from 'react';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
-import Bender from '../views/Bender';
+import Bender from '../views/Bender/Bender';
 
 window.matchMedia =
   window.matchMedia ||

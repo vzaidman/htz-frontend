@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import Grid from '../../Grid/Grid';
-import GridItem from '../../Grid/GridItem';
-import Link from '../../Link/Link';
-import Media from '../../Media/Media';
-import Image from '../../Image/Image';
-import Title from '../../ArticleHeader/Title';
-import BlockLink from '../../BlockLink/BlockLink';
-import AboveBlockLink from '../../BlockLink/AboveBlockLink';
+import Grid from '../../../Grid/Grid';
+import GridItem from '../../../Grid/GridItem';
+import Link from '../../../Link/Link';
+import Media from '../../../Media/Media';
+import Image from '../../../Image/Image';
+import Title from '../../../ArticleHeader/Title';
+import BlockLink from '../../../BlockLink/BlockLink';
+import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
 
 const benderWrapperRules = ({ theme, }) => ({
   width: '100%',

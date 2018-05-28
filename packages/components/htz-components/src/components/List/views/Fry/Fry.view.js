@@ -1,15 +1,14 @@
 /* globals OBR */
 /* eslint-disable import/no-unresolved */
 import React from 'react';
-import { createComponent, withTheme, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 
-const wrapperStyle = () => ({
+const wrapperStyle = {
   display: 'flex',
   flexWrap: 'wrap',
   maxWidth: `${300 / 7}rem`,
-});
-const Wrapper = createComponent(wrapperStyle);
+};
 
 const titleStyle = ({ theme, }) => ({
   ...theme.type(1),
@@ -87,7 +86,7 @@ const itemSourceStyle = ({ theme, }) => ({
 const ItemSource = createComponent(itemSourceStyle, 'p');
 
 // eslint-disable-next-line react/prop-types
-const Fry = ({ data, theme, }) => {
+const Fry = ({ data, }) => {
   if (data.loading) {
     return <div>loading ...</div>;
   }
@@ -95,49 +94,54 @@ const Fry = ({ data, theme, }) => {
     return <h1>ERROR</h1>;
   }
   return (
-    <Wrapper>
-      <Title>
-        {theme.fryListI18n.title}
-        <Outbrain
-          href="#"
-          onMouseDown={event => {
-            // eslint-disable-next-line no-param-reassign
-            event && event.cancelBubble && (event.cancelBubble = true);
-            event && event.stopPropagation && event.stopPropagation();
-            return true;
-          }}
-          onClick={() => {
-            OBR.extern.callWhatIs(
-              'https://www.outbrain.com/what-is/default/he',
-              '',
-              -1,
-              -1,
-              true,
-              null
-            );
-            return false;
-          }}
-        >
-          <span>Recommended by</span>
-        </Outbrain>
-      </Title>
-      {data.list.items.map(item => (
-        <Item
-          href={item.url}
-        >
-          <ItemImage>
-            <img src={item.thumbnail.url} width="143px" alt="" />
-          </ItemImage>
-          <ItemTitle>
-            {item.content}
-          </ItemTitle>
-          <ItemSource>
-            {item.source_display_name}
-          </ItemSource>
-        </Item>
-      ))}
-    </Wrapper>
+    <FelaComponent
+      style={wrapperStyle}
+      render={({ className, theme, }) => (
+        <div className={className}>
+          <Title>
+            {theme.fryListI18n.title}
+            <Outbrain
+              href="#"
+              onMouseDown={event => {
+                // eslint-disable-next-line no-param-reassign
+                event && event.cancelBubble && (event.cancelBubble = true);
+                event && event.stopPropagation && event.stopPropagation();
+                return true;
+              }}
+              onClick={() => {
+                OBR.extern.callWhatIs(
+                  'https://www.outbrain.com/what-is/default/he',
+                  '',
+                  -1,
+                  -1,
+                  true,
+                  null
+                );
+                return false;
+              }}
+            >
+              <span>Recommended by</span>
+            </Outbrain>
+          </Title>
+          {data.list.items.map(item => (
+            <Item
+              href={item.path}
+            >
+              <ItemImage>
+                <img src={item.thumbnail.url} width="143px" alt="" />
+              </ItemImage>
+              <ItemTitle>
+                {item.content}
+              </ItemTitle>
+              <ItemSource>
+                {item.source_display_name}
+              </ItemSource>
+            </Item>
+          ))}
+        </div>
+      )}
+    />
   );
 };
 
-export default withTheme(Fry);
+export default Fry;
