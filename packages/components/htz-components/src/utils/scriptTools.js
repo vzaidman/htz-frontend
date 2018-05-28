@@ -45,7 +45,7 @@ export const appendScript = ({
     appendedScripts[id] = {
       tag: script,
       isLoaded: false,
-      callbacks: [ onLoadFunction, ],
+      callbacks: onLoadFunction ? [ onLoadFunction, ] : [],
     };
 
     script.addEventListener('load', runCallbacks(id));
@@ -54,7 +54,7 @@ export const appendScript = ({
     updateFunction && updateFunction();
   }
   else {
-    appendedScripts[id].callbacks.push(onLoadFunction);
+    onLoadFunction && appendedScripts[id].callbacks.push(onLoadFunction);
   }
 };
 
