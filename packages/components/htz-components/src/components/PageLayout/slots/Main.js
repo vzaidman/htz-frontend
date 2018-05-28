@@ -13,8 +13,8 @@ const Osaka = dynamic(import('../../Osaka/OsakaController'), { ssr: false, });
 
 const propTypes = {
   content: PropTypes.shape({
-    article: PropTypes.shape([]),
-    aside: PropTypes.object,
+    article: PropTypes.arrayOf(PropTypes.shape({})),
+    aside: PropTypes.arrayOf(PropTypes.shape({})),
   }).isRequired,
   seo: PropTypes.shape({
     metaTitle: PropTypes.string,
