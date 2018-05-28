@@ -29,6 +29,7 @@ import Media from './components/Media/Media';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
 import Newsletter from './components/Newsletter/Newsletter';
+import Outbrain from './components/Outbrain/Outbrain';
 import Osaka from './components/Osaka/OsakaController';
 import Portal from './components/Portal/Portal';
 import Paragraph from './components/Paragraph/Paragraph';
@@ -151,6 +152,7 @@ export {
   Media,
   MobileQuickRegistration,
   NavigationMenu,
+  Outbrain,
   Osaka,
   Portal,
   Paragraph,

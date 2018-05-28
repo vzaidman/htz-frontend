@@ -9,6 +9,7 @@ import Image from '../components/Image/Image';
 import Interactive from '../components/Interactive/Interactive';
 import LinksBlock from '../components/RelatedArticles/LinksBlock';
 import List from '../components/List/List';
+import Outbrain from '../components/Outbrain/Outbrain';
 import Paragraph from '../components/Paragraph/Paragraph';
 import Quote from '../components/Quote/Quote';
 import RelatedArticles from '../components/RelatedArticles/RelatedArticles';
@@ -24,7 +25,7 @@ const inputTemplateToComponent = new Map([
 
   /* MainSlot components */
   [ 'com.htz.StandardArticle', Article, ],
-  [ 'com.polobase.OutbrainElement', () => <p>OutbrainElement</p>, ],
+  [ 'com.polobase.OutbrainElement', Outbrain, ],
   [ 'com.tm.CommentsElement', () => <p>CommentsElement</p>, ],
   [ 'com.tm.ArticleCommentsElement', CommentsWithApollo, ],
 
