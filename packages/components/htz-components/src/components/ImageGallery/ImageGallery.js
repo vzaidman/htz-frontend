@@ -287,9 +287,10 @@ const Gallery = ({
                         {renderPreviousItems(({ itemIndex, }) => (
                           <Image {...images[itemIndex]} />
                         ))}
-                        {renderCurrentItems(({ itemIndex, }) => (
-                          <Image {...images[itemIndex]} />
-                        ))}
+                        {renderCurrentItems(
+                          image.alt || image.title,
+                          ({ itemIndex, }) => <Image {...images[itemIndex]} />
+                        )}
                         {renderNextItems(({ itemIndex, }) => (
                           <Image {...images[itemIndex]} />
                         ))}

@@ -1,6 +1,7 @@
 /* global window, document, navigator */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
+import { ApolloConsumer, } from 'react-apollo';
 import { createComponent, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
@@ -244,15 +245,29 @@ class Carousel extends React.Component {
         </Items>
       );
 
-    const renderCurrentItems = itemsRenderer => (
-      <CurrentItems
-        position={positionChange}
-        moving={this.state.moving}
-        // eslint-disable-next-line no-return-assign
-        innerRef={currentItems => (this.currentItems = currentItems)}
-      >
-        {itemsRenderer({ itemIndex: this.state.displayItemNum, })}
-      </CurrentItems>
+    const renderCurrentItems = (ariaText, itemsRenderer) => (
+      <ApolloConsumer>
+        {cache => {
+          cache.writeData({
+            data: {
+              ariaLive: {
+                politeMessage: ariaText || '',
+                __typename: 'AriaLive',
+              },
+            },
+          });
+          return (
+            <CurrentItems
+              position={positionChange}
+              moving={this.state.moving}
+              // eslint-disable-next-line no-return-assign
+              innerRef={currentItems => (this.currentItems = currentItems)}
+            >
+              {itemsRenderer({ itemIndex: this.state.displayItemNum, })}
+            </CurrentItems>
+          );
+        }}
+      </ApolloConsumer>
     );
 
     const renderButton = buttonRenderer =>
