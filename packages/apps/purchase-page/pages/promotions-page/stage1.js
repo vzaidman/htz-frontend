@@ -45,9 +45,11 @@ class Stage1 extends React.Component {
               if (error) return <div> Error...</div>;
               client.writeData({ data: { referrer: referrer || null, }, });
               const { slots, pageNumber, } = data.purchasePage;
-              return pageNumber >= 7 ? (
+              return Math.floor(pageNumber) === 7 ? (
                 <Redirect destination="/promotions-page/thankYou" replace />
-              ) : slots.length > 1 ? (
+              ) : Math.floor(pageNumber) === 3 ? (
+                <Redirect destination="/promotions-page/stage2" replace />
+              ) : (
                 <Query query={GET_PROMOTIONS_STATE}>
                   {({ data: clientData, }) => {
                     const {
@@ -65,8 +67,6 @@ class Stage1 extends React.Component {
                     );
                   }}
                 </Query>
-              ) : (
-                <Redirect destination="/promotions-page/stage2" replace />
               );
             }}
           />

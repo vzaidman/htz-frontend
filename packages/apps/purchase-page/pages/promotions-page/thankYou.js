@@ -12,7 +12,6 @@ import MainLayout from '../../layouts/MainLayout';
 import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter';
 import ThankYouStage from '../../components/OfferPage/Stages/ThankYouStage';
 import StageTransition from '../../components/OfferPage/StageTransition/StageTransition';
-import Redirect from '../../components/Redirect/Redirect';
 
 // eslint-disable-next-line react/prop-types
 const ThankYouElement = ({ product, userMessage, }) => (
@@ -80,9 +79,6 @@ class StageThankYou extends React.Component {
         product === '243'
           ? 'HTZ'
           : product === '273' ? 'TM' : product === '274' ? 'BOTH' : null;
-      if (!productId) {
-        return <Redirect destination="/promotions-page/stage1" replace />;
-      }
     }
     return (
       <MainLayout thankYou product={productId || false}>
