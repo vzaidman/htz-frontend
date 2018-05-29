@@ -1,28 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, };
-  }
+const propTypes = {
+  children: PropTypes.node.isRequired,
+  FallbackComponent: PropTypes.node,
+};
+
+const defaultProps = {
+  FallbackComponent: null,
+};
+
+class ErrorBoundary extends React.Component {
+  state = {
+    hasError: false,
+  };
 
   componentDidCatch(error, info) {
-    // Display fallback UI
     this.setState({
       hasError: true,
-      error,
-      errorInfo: info,
     });
-    // You can also log the error to an error reporting service
     console.log(error, info);
   }
 
   render() {
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
-    }
-    // eslint-disable-next-line react/prop-types
-    return this.props.children;
+    const { children, FallbackComponent, } = this.props;
+    return this.state.hasError ? (
+      FallbackComponent ? (
+        <FallbackComponent />
+      ) : null
+    ) : (
+      children
+    );
   }
 }
+
+ErrorBoundary.propTypes = propTypes;
+ErrorBoundary.defaultProps = defaultProps;
+
+export default ErrorBoundary;
