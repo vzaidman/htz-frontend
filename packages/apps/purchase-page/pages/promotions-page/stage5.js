@@ -115,11 +115,9 @@ function Stage5() {
                           miscStyles={{ paddingTop: '1.5rem', }}
                         >
                           <UserDispenser
-                            render={({ user, isLoggedIn, }) => (
+                            render={({ user, }) => (
                               <StageTransition
                                 chosenSubscription={chosenSubscription}
-                                user={user}
-                                isLoggedIn={isLoggedIn}
                                 headerElement={
                                   <StageHeader
                                     headerElements={[

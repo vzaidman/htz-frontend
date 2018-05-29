@@ -1,7 +1,7 @@
 import React, { Fragment, } from 'react';
 import { withData, pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
-import { LayoutContainer, UserDispenser, } from '@haaretz/htz-components';
+import { LayoutContainer, } from '@haaretz/htz-components';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -73,81 +73,72 @@ function Stage4() {
                           bgc="white"
                           miscStyles={{ paddingTop: '1.5rem', }}
                         >
-                          <UserDispenser
-                            render={({ user, isLoggedIn, }) => (
-                              <StageTransition
-                                chosenSubscription={chosenSubscription}
-                                user={user}
-                                isLoggedIn={isLoggedIn}
-                                headerElement={
-                                  <StageHeader
-                                    headerElements={[
-                                      ...(loggedInOrRegistered
-                                        ? [
-                                          <FelaComponent
-                                            style={{ fontWeight: 'bold', }}
-                                          >
-                                            {`${
-                                                header[
-                                                  loggedInOrRegistered ||
-                                                    'connected'
-                                                ].textTopLine
-                                              }`}
-                                          </FelaComponent>,
-                                          <span>
-                                            {
-                                                header[
-                                                  loggedInOrRegistered ||
-                                                    'connected'
-                                                ].textNewLine
-                                              }
-                                          </span>,
-                                          ]
-                                        : [
-                                          <Fragment>
-                                            <FelaComponent
-                                              style={{ fontWeight: 'bold', }}
-                                              render="span"
-                                            >
-                                              {details.textBeforeChosen}{' '}
-                                              {
-                                                  details
-                                                    .chosenSubscriptionText[
-                                                    chosenSubscription
-                                                  ]
-                                                }{' '}
-                                              {`${
-                                                  details
-                                                    .chosenPaymentArrangementText[
-                                                    chosenPaymentArrangement
-                                                  ]
-                                                }.`}
-                                            </FelaComponent>
-                                          </Fragment>,
-                                          <span>{details.textNewLine}</span>,
-                                          ]),
-                                    ]}
-                                  />
-                                }
-                                stageElement={
-                                  <PaymentStage
-                                    hasDebt={!!data.purchasePage.pastDebts}
-                                    creditCardsDetails={
-                                      data.purchasePage.creditCardsDetails
-                                    }
-                                    chosenSubscription={chosenSubscription}
-                                    chosenPaymentArrangement={
-                                      chosenPaymentArrangement
-                                    }
-                                    firstPaymentAmount={paymentData.prices[0]}
-                                    nextPaymentAmount={paymentData.prices[1]}
-                                    displayPayPal={
-                                      paymentData.paymentType === 'J4'
-                                    }
-                                  />
-                                }
+                          <StageTransition
+                            chosenSubscription={chosenSubscription}
+                            headerElement={
+                              <StageHeader
+                                headerElements={[
+                                  ...(loggedInOrRegistered
+                                    ? [
+                                      <FelaComponent
+                                        style={{ fontWeight: 'bold', }}
+                                      >
+                                        {`${
+                                            header[
+                                              loggedInOrRegistered ||
+                                                'connected'
+                                            ].textTopLine
+                                          }`}
+                                      </FelaComponent>,
+                                      <span>
+                                        {
+                                            header[
+                                              loggedInOrRegistered ||
+                                                'connected'
+                                            ].textNewLine
+                                          }
+                                      </span>,
+                                      ]
+                                    : [
+                                      <Fragment>
+                                        <FelaComponent
+                                          style={{ fontWeight: 'bold', }}
+                                          render="span"
+                                        >
+                                          {details.textBeforeChosen}{' '}
+                                          {
+                                              details.chosenSubscriptionText[
+                                                chosenSubscription
+                                              ]
+                                            }{' '}
+                                          {`${
+                                              details
+                                                .chosenPaymentArrangementText[
+                                                chosenPaymentArrangement
+                                              ]
+                                            }.`}
+                                        </FelaComponent>
+                                      </Fragment>,
+                                      <span>{details.textNewLine}</span>,
+                                      ]),
+                                ]}
                               />
-                            )}
+                            }
+                            stageElement={
+                              <PaymentStage
+                                hasDebt={!!data.purchasePage.pastDebts}
+                                creditCardsDetails={
+                                  data.purchasePage.creditCardsDetails
+                                }
+                                chosenSubscription={chosenSubscription}
+                                chosenPaymentArrangement={
+                                  chosenPaymentArrangement
+                                }
+                                firstPaymentAmount={paymentData.prices[0]}
+                                nextPaymentAmount={paymentData.prices[1]}
+                                displayPayPal={paymentData.paymentType === 'J4'}
+                              />
+                            }
                           />
                         </LayoutContainer>
                       </div>

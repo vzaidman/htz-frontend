@@ -1,7 +1,7 @@
 import React from 'react';
 import { withData, pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
-import { LayoutContainer, UserDispenser, } from '@haaretz/htz-components';
+import { LayoutContainer, } from '@haaretz/htz-components';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -37,23 +37,15 @@ function StageDebt() {
                       bgc="white"
                       miscStyles={{ paddingTop: '1.5rem', }}
                     >
-                      <UserDispenser
-                        render={({ user, isLoggedIn, }) => (
-                          <StageTransition
-                            chosenSubscription={
-                              data.purchasePage.slots[chosenSlotIndex]
-                                .subscriptionName
-                            }
-                            stage="debt"
-                            user={user}
-                            isLoggedIn={isLoggedIn}
-                            stageElement={
-                              <DebtStage
-                                pastDebts={data.purchasePage.pastDebts}
-                              />
-                            }
-                          />
-                        )}
+                      <StageTransition
+                        chosenSubscription={
+                          data.purchasePage.slots[chosenSlotIndex]
+                            .subscriptionName
+                        }
+                        stage="debt"
+                        stageElement={
+                          <DebtStage pastDebts={data.purchasePage.pastDebts} />
+                        }
                       />
                     </LayoutContainer>
                   </FelaComponent>

@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, } from 'next/router';
 import { FelaComponent, } from 'react-fela';
+import { UserDispenser, } from '@haaretz/htz-components';
 import Offer from './Offer';
 
 const propTypes = {
   cancelButtonText: PropTypes.string.isRequired,
   fourDigits: PropTypes.string,
-  isLoggedIn: PropTypes.bool.isRequired,
   offerList: PropTypes.arrayOf(
     PropTypes.shape({
       price: PropTypes.string,
@@ -48,26 +48,29 @@ function OfferList({
   cancelButtonText,
   termsButtonText,
   openModal,
-  isLoggedIn,
   fourDigits,
   router,
 }) {
   return (
     <FelaComponent style={contStyle}>
-      {offerList.map((offer, idx) => (
-        <Offer
-          // eslint-disable-next-line react/no-array-index-key
-          key={`offer-${idx}`}
-          isLoggedIn={isLoggedIn}
-          fourDigits={fourDigits}
-          offer={offer}
-          cancelButtonText={cancelButtonText}
-          termsButtonText={termsButtonText}
-          openModal={openModal}
-          offerIdx={idx}
-          router={router}
-        />
-      ))}
+      <UserDispenser
+        render={({ isLoggedIn, }) =>
+          offerList.map((offer, idx) => (
+            <Offer
+              // eslint-disable-next-line react/no-array-index-key
+              key={`offer-${idx}`}
+              isLoggedIn={isLoggedIn}
+              fourDigits={fourDigits}
+              offer={offer}
+              cancelButtonText={cancelButtonText}
+              termsButtonText={termsButtonText}
+              openModal={openModal}
+              offerIdx={idx}
+              router={router}
+            />
+          ))
+        }
+      />
     </FelaComponent>
   );
 }

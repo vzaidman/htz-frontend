@@ -1,7 +1,7 @@
 import React, { Fragment, } from 'react';
 import { withData, pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
-import { LayoutContainer, UserDispenser, } from '@haaretz/htz-components';
+import { LayoutContainer, } from '@haaretz/htz-components';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -65,104 +65,91 @@ function Stage2() {
                             bgc="transparent"
                             miscStyles={{ paddingTop: '1.5rem', }}
                           >
-                            <UserDispenser
-                              render={({ user, isLoggedIn, }) => (
-                                <div>
-                                  <StageTransition
-                                    chosenSubscription={
-                                      chosenSlot.subscriptionName
-                                    }
-                                    user={user}
-                                    isLoggedIn={isLoggedIn}
-                                    skipTransition={
-                                      !!campaignData || isFirstPage
-                                    }
-                                    headerElement={
-                                      !campaignData ? (
-                                        <StageHeader
-                                          headerElements={
-                                            isFirstPage
-                                              ? [
-                                                <Fragment>
-                                                  <FelaComponent
-                                                    style={{
-                                                        fontWeight: 'bold',
-                                                      }}
-                                                    render="span"
-                                                  >
-                                                    {
-                                                        header.isFirst
-                                                          .textBeforeChosen
-                                                      }{' '}
-                                                    {
-                                                        header.isFirst
-                                                          .chosenSubscriptionText[
-                                                          chosenSlot
-                                                            .subscriptionName
-                                                        ]
-                                                      }
-                                                    {'.'}
-                                                  </FelaComponent>
-                                                  <div>
-                                                    {
-                                                        header.isFirst
-                                                          .textAfterChosen
-                                                      }
-                                                  </div>
-                                                </Fragment>,
-                                                ]
-                                              : [
-                                                <Fragment>
-                                                  <FelaComponent
-                                                    style={{
-                                                        fontWeight: 'bold',
-                                                      }}
-                                                    render="span"
-                                                  >
-                                                    {
-                                                        header.notFirst
-                                                          .textBeforeChosen
-                                                      }{' '}
-                                                    {
-                                                        header.notFirst
-                                                          .chosenSubscriptionText[
-                                                          chosenSlot
-                                                            .subscriptionName
-                                                        ]
-                                                      }
-                                                  </FelaComponent>
-                                                  {'.'}
-                                                  <div>
-                                                    {
-                                                        header.notFirst
-                                                          .textAfterChosen
-                                                      }
-                                                  </div>
-                                                </Fragment>,
-                                                ]
-                                          }
-                                        />
-                                      ) : null
-                                    }
-                                    stageElement={
-                                      <ChooseProductStage
-                                        chosenProductIndex={chosenProductIndex}
-                                        couponExist={chosenSlot.couponExist}
-                                        couponProduct={couponProduct}
-                                        fourDigits={
-                                          data.purchasePage.fourDigits
-                                        }
-                                        isLoggedIn={isLoggedIn}
-                                        products={chosenSlot.products}
-                                        refetch={refetch}
-                                        subStage={subStage}
-                                        userMessage={chosenSlot.userMessage}
-                                      />
-                                    }
+                            <div>
+                              <StageTransition
+                                chosenSubscription={chosenSlot.subscriptionName}
+                                skipTransition={!!campaignData || isFirstPage}
+                                headerElement={
+                                  !campaignData ? (
+                                    <StageHeader
+                                      headerElements={
+                                        isFirstPage
+                                          ? [
+                                            <Fragment>
+                                              <FelaComponent
+                                                style={{
+                                                    fontWeight: 'bold',
+                                                  }}
+                                                render="span"
+                                              >
+                                                {
+                                                    header.isFirst
+                                                      .textBeforeChosen
+                                                  }{' '}
+                                                {
+                                                    header.isFirst
+                                                      .chosenSubscriptionText[
+                                                      chosenSlot
+                                                        .subscriptionName
+                                                    ]
+                                                  }
+                                                {'.'}
+                                              </FelaComponent>
+                                              <div>
+                                                {
+                                                    header.isFirst
+                                                      .textAfterChosen
+                                                  }
+                                              </div>
+                                            </Fragment>,
+                                            ]
+                                          : [
+                                            <Fragment>
+                                              <FelaComponent
+                                                style={{
+                                                    fontWeight: 'bold',
+                                                  }}
+                                                render="span"
+                                              >
+                                                {
+                                                    header.notFirst
+                                                      .textBeforeChosen
+                                                  }{' '}
+                                                {
+                                                    header.notFirst
+                                                      .chosenSubscriptionText[
+                                                      chosenSlot
+                                                        .subscriptionName
+                                                    ]
+                                                  }
+                                              </FelaComponent>
+                                              {'.'}
+                                              <div>
+                                                {
+                                                    header.notFirst
+                                                      .textAfterChosen
+                                                  }
+                                              </div>
+                                            </Fragment>,
+                                            ]
+                                      }
+                                    />
+                                  ) : null
+                                }
+                                stageElement={
+                                  <ChooseProductStage
+                                    chosenProductIndex={chosenProductIndex}
+                                    couponExist={chosenSlot.couponExist}
+                                    couponProduct={couponProduct}
+                                    fourDigits={data.purchasePage.fourDigits}
+                                    products={chosenSlot.products}
+                                    refetch={refetch}
+                                    subStage={subStage}
+                                    userMessage={chosenSlot.userMessage}
                                   />
-                                </div>
-                              )}
-                            />
+                                }
+                              />
+                            </div>
                           </LayoutContainer>
                         </div>
                       );

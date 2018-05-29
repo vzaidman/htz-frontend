@@ -64,7 +64,6 @@ class ChooseProductStage extends Component {
     /** JSON of a couponProduct, needs to be parsed */
     couponProduct: PropTypes.string,
     fourDigits: PropTypes.string,
-    isLoggedIn: PropTypes.bool.isRequired,
     products: PropTypes.arrayOf(
       PropTypes.shape({
         /**
@@ -119,7 +118,6 @@ class ChooseProductStage extends Component {
       products,
       subStage,
       fourDigits,
-      isLoggedIn,
       userMessage,
     } = this.props;
 
@@ -160,7 +158,6 @@ class ChooseProductStage extends Component {
                 <OfferList
                   cancelButtonText={cancelButtonText}
                   fourDigits={fourDigits}
-                  isLoggedIn={isLoggedIn}
                   offerList={offerList}
                   openModal={this.openModal}
                   termsButtonText={termsButtonText}

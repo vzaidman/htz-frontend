@@ -18,12 +18,10 @@ const ThankYouElement = ({ product, userMessage, }) => (
   <FelaComponent style={{ textAlign: 'center', }}>
     <LayoutContainer bgc="white" miscStyles={{ paddingTop: '6rem', }}>
       <UserDispenser
-        render={({ user, isLoggedIn, }) => (
+        render={({ user, }) => (
           <StageTransition
             chosenSubscription={product}
             stage="thankYou"
-            user={user}
-            isLoggedIn={isLoggedIn}
             displayPhones={false}
             headerElement={
               <Fragment>

@@ -16,17 +16,17 @@ const GET_HOST_NAME = gql`
 const transitionDuration = 2;
 const transitionEasing = 'swiftOut';
 const topSpacing = 28;
-const topSpacingWithBanner = 42;
+// const topSpacingWithBanner = 42;
 
-const phonesContStyle = ({ transitionStarted, hasUserBanner, theme, }) => ({
+const phonesContStyle = ({ transitionStarted, theme, }) => ({
   opacity: transitionStarted ? 0 : 1,
   position: 'absolute',
   transform: transitionStarted
-    ? 'translateY(-80%) scale(0)'
-    : 'translateY(0) scale(1)',
+    ? 'translateY(-100%) scale(0)'
+    : 'translateY(-100%) scale(1)',
   transformOrigin: 'center right',
   start: '50%',
-  top: `${hasUserBanner ? topSpacingWithBanner : topSpacing}rem`,
+  top: '-4rem',
   transitionProperty: 'all',
   extend: [ theme.getTransition(transitionDuration, transitionEasing), ],
 });
@@ -56,42 +56,33 @@ const elementContStyle = ({ transitionStarted, theme, }) => ({
 
 const StyledElementCont = createComponent(elementContStyle);
 
-const headerStyle = ({
-  displayPhones,
-  hasUserBanner,
-  transitionStarted,
-  theme,
-}) => ({
+const headerStyle = ({ displayPhones, transitionStarted, theme, }) => ({
   marginTop: transitionStarted
     ? '1rem'
-    : !displayPhones
-      ? '20rem'
-      : `${hasUserBanner ? topSpacingWithBanner : topSpacing + 2}rem`,
+    : !displayPhones ? '20rem' : `${topSpacing + 2}rem`,
   transform: transitionStarted ? 'scale(1)' : 'scale(1.2)',
   transitionProperty: 'all',
   extend: [ theme.getTransition(transitionDuration, transitionEasing), ],
 });
 
-const StyledHeader = createComponent(headerStyle, 'h1');
+const StyledHeader = createComponent(headerStyle);
 
 class StageTransition extends Component {
   static propTypes = {
     chosenSubscription: PropTypes.string.isRequired,
     displayPhones: PropTypes.bool,
-    isLoggedIn: PropTypes.bool.isRequired,
-    headerElement: PropTypes.element,
+    headerElement: PropTypes.element.isRequired,
     skipTransition: PropTypes.bool,
     stageElement: PropTypes.element.isRequired,
   };
 
   static defaultProps = {
     displayPhones: true,
-    headerElement: null,
     skipTransition: false,
   };
 
   state = {
-    minTimePassed: false,
+    minTimePassed: true,
     isLoading: false,
   };
 
@@ -103,6 +94,8 @@ class StageTransition extends Component {
       this.setState({ minTimePassed: true, isLoading: false, });
     }
     else {
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({ minTimePassed: false, isLoading: false, });
       setTimeout(() => {
         this.setState({ minTimePassed: true, });
       }, 1000);
@@ -116,20 +109,16 @@ class StageTransition extends Component {
       chosenSubscription,
       displayPhones,
       headerElement,
-      isLoggedIn,
       stageElement,
     } = this.props;
 
     return (
       <FelaComponent
-        style={{ textAlign: 'center', }}
+        style={{ textAlign: 'center', position: 'relative', }}
         render={({ theme, className, }) => (
           <div className={className}>
             {displayPhones && (
-              <StyledPhonesCont
-                transitionStarted={transitionStarted}
-                hasUserBanner={isLoggedIn}
-              >
+              <StyledPhonesCont transitionStarted={transitionStarted}>
                 <StyledInnerPhonesCont>
                   <Phones subscription={chosenSubscription} />
                 </StyledInnerPhonesCont>
@@ -137,7 +126,6 @@ class StageTransition extends Component {
             )}
             <StyledHeader
               transitionStarted={transitionStarted}
-              hasUserBanner={isLoggedIn}
               displayPhones={displayPhones}
             >
               {headerElement}
