@@ -1,6 +1,6 @@
 /* global fetch, Headers */
 import React, { Fragment, } from 'react';
-import { createComponent, FelaComponent, } from 'react-fela';
+import { createComponent, FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
@@ -216,8 +216,8 @@ class Article extends React.Component {
       title,
     } = this.props;
     return (
-      <FelaComponent
-        render={({ theme, }) => (
+      <FelaTheme
+        render={theme => (
           <Fragment>
             <FelaComponent
               style={{
