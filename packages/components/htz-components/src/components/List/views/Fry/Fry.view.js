@@ -3,6 +3,7 @@
 import React from 'react';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
+import ListItem from '../../elements/ListItem';
 
 const wrapperStyle = {
   display: 'flex',
@@ -124,19 +125,15 @@ const Fry = ({ data, }) => {
             </Outbrain>
           </Title>
           {data.list.items.map(item => (
-            <Item
-              href={item.path}
-            >
-              <ItemImage>
-                <img src={item.thumbnail.url} width="143px" alt="" />
-              </ItemImage>
-              <ItemTitle>
-                {item.content}
-              </ItemTitle>
-              <ItemSource>
-                {item.source_display_name}
-              </ItemSource>
-            </Item>
+            <ListItem>
+              <Item href={item.path}>
+                <ItemImage>
+                  <img src={item.thumbnail.url} width="143px" alt="" />
+                </ItemImage>
+                <ItemTitle>{item.content}</ItemTitle>
+                <ItemSource>{item.source_display_name}</ItemSource>
+              </Item>
+            </ListItem>
           ))}
         </div>
       )}

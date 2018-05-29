@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+import ListItem from '../../elements/ListItem';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import Link from '../../../Link/Link';
@@ -87,67 +88,69 @@ export default function Bender({ data, lazyLoad, }) {
   };
 
   const BenderItem = item => (
-    <GridItem
-      width={[
-        { from: 'm', until: 'l', value: 1 / 3, },
-        { from: 'l', until: 'xl', value: 1 / 4, },
-        { from: 'xl', value: 1 / 6, },
-      ]}
-      miscStyles={{ marginInlineStart: '1rem', marginInlineEnd: '1rem', }}
-    >
-      <BlockLink href={item.path} miscStyles={itemRule}>
-        <FelaComponent
-          render={({ className, theme, }) => {
-            // eslint-disable-next-line no-unused-vars
-            const { image, title, } = theme.benderStyle;
+    <ListItem>
+      <GridItem
+        width={[
+          { from: 'm', until: 'l', value: 1 / 3, },
+          { from: 'l', until: 'xl', value: 1 / 4, },
+          { from: 'xl', value: 1 / 6, },
+        ]}
+        miscStyles={{ marginInlineStart: '1rem', marginInlineEnd: '1rem', }}
+      >
+        <BlockLink href={item.path} miscStyles={itemRule}>
+          <FelaComponent
+            render={({ className, theme, }) => {
+              // eslint-disable-next-line no-unused-vars
+              const { image, title, } = theme.benderStyle;
 
-            return (
-              <div className={className}>
-                <Image
-                  data={item.image}
-                  imgOptions={imgOptions}
-                  lazyLoad={lazyLoad}
-                />
-                <Title
-                  level={title.level}
-                  fontSize={title.fontSize}
-                  text={item.title}
-                  isBlock
-                  miscStyles={{
-                    color: theme.color('neutral'),
-                    marginBottom: '1rem',
-                  }}
-                />
-              </div>
-            );
-          }}
-        />
-        <FelaComponent
-          rule={authorRule}
-          render={({ className, }) => (
-            <footer className={className}>
-              <AboveBlockLink>
-                {({ className, theme, }) => (
-                  <span className={className}>
-                    {item.authors.map(author => {
-                      if (typeof author === 'object') {
-                        return (
-                          <Link
-                            href="https://www.haaretz.co.il"
-                            content={author.contentName}
-                          />
-                        );
-                      }
-                      return <span key={author.contentName}>{author}</span>;
-                    })}
-                  </span>
-                )}
-              </AboveBlockLink>
-            </footer>
-          )}
-        />
-      </BlockLink>
-    </GridItem>
+              return (
+                <div className={className}>
+                  <Image
+                    data={item.image}
+                    imgOptions={imgOptions}
+                    lazyLoad={lazyLoad}
+                  />
+                  <Title
+                    level={title.level}
+                    fontSize={title.fontSize}
+                    text={item.title}
+                    isBlock
+                    miscStyles={{
+                      color: theme.color('neutral'),
+                      marginBottom: '1rem',
+                    }}
+                  />
+                </div>
+              );
+            }}
+          />
+          <FelaComponent
+            rule={authorRule}
+            render={({ className, }) => (
+              <footer className={className}>
+                <AboveBlockLink>
+                  {({ className, theme, }) => (
+                    <span className={className}>
+                      {item.authors.map(author => {
+                        if (typeof author === 'object') {
+                          return (
+                            <Link
+                              href="https://www.haaretz.co.il"
+                              content={author.contentName}
+                            />
+                          );
+                        }
+                        return <span key={author.contentName}>{author}</span>;
+                      })}
+                    </span>
+                  )}
+                </AboveBlockLink>
+              </footer>
+            )}
+          />
+        </BlockLink>
+      </GridItem>
+    </ListItem>
   );
   const iToMedia = {
     0: 'm',

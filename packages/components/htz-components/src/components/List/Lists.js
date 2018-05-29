@@ -1,5 +1,4 @@
-
-/* *************************************************************** *
+/** ************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
@@ -15,10 +14,7 @@ import dynamic from 'next/dynamic';
 import mock from '../../../styleguide/mocks/list';
 
 const views = {
-<<<<<<< HEAD
   Bender: dynamic(import('./views/Bender/Bender.view.js')),
-=======
->>>>>>> feat(lists): add Fry view to the list component
   Fry: dynamic(import('./views/Fry/Fry.view.js')),
   Leela: dynamic(import('./views/Leela/Leela.view.js')),
   Zoidberg: dynamic(import('./views/Zoidberg/Zoidberg.view.js')),
@@ -79,10 +75,7 @@ export default class List extends React.Component {
           <option value="placeHolder" disabled>
             Select a preview
           </option>
-<<<<<<< HEAD
           <option value="Bender">Bender</option>
-=======
->>>>>>> feat(lists): add Fry view to the list component
           <option value="Fry">Fry</option>
           <option value="Leela">Leela</option>
           <option value="Zoidberg">Zoidberg</option>

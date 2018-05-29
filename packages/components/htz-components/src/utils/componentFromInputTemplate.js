@@ -50,7 +50,8 @@ const inputTemplateToComponent = new Map([
   [ 'com.tm.Video', Video, ],
   [ 'com.tm.ImageGalleryElement', () => <p>ImageGallery</p>, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
-  [ 'com.tm.ListElement', () => <p>ListElement</p>, ],
+  // todo: change it to null in production.
+  [ 'com.tm.ListElement', () => <p>Old list, NOT SUPPORTED</p>, ],
   [ 'com.tm.element.List', List, ],
   [ 'com.tm.TabViewElement', () => <p>TabViewElement</p>, ],
   [ 'com.polobase.JSONListsWrapper', () => <p>JSONListsWrapper</p>, ],

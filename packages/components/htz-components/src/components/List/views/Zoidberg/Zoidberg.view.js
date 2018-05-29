@@ -2,6 +2,7 @@
 import React, { Fragment, } from 'react';
 import { createComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
+import ListItem from '../../elements/ListItem';
 
 import Link from '../../../Link/Link';
 import Image from '../../../Image/Image';
@@ -46,42 +47,41 @@ const itemTitleStyle = ({ theme, }) => ({
 const ItemTitle = createComponent(itemTitleStyle, 'p');
 
 // eslint-disable-next-line react/prop-types
-const Zoidberg = ({ data, }) => {
-  if (data.loading) {
+const Zoidberg = ({ data: { loading, error, list, }, }) => {
+  if (loading) {
     return <div>loading ...</div>;
   }
-  if (data.error) {
+  if (error) {
     return <h1>ERROR</h1>;
   }
+  const { title, items, } = list;
   return (
     <Wrapper>
-      <Title>
-        {data.list.title}
-      </Title>
-      {data.list.items.map(item => (
-        <Item
-          href={item.path}
-          content={
-            <Fragment>
-              <ItemImage>
-                <Image
-                  data={item.image}
-                  imgOptions={{
-                    transforms: {
-                      width: '125',
-                      aspect: 'regular',
-                      quality: 'auto',
-                    },
-                  }}
-                  hasWrapper={false}
-                />
-              </ItemImage>
-              <ItemTitle>
-                {item.title}
-              </ItemTitle>
-            </Fragment>
-          }
-        />
+      <Title>{title}</Title>
+      {items.map(item => (
+        <ListItem>
+          <Item
+            href={item.path}
+            content={
+              <Fragment>
+                <ItemImage>
+                  <Image
+                    data={item.image}
+                    imgOptions={{
+                      transforms: {
+                        width: '125',
+                        aspect: 'regular',
+                        quality: 'auto',
+                      },
+                    }}
+                    hasWrapper={false}
+                  />
+                </ItemImage>
+                <ItemTitle>{item.title}</ItemTitle>
+              </Fragment>
+            }
+          />
+        </ListItem>
       ))}
     </Wrapper>
   );

@@ -2,6 +2,7 @@
 import React, { Fragment, } from 'react';
 import { createComponent, } from 'react-fela';
 import { border, borderEnd, borderBottom, } from '@haaretz/htz-css-tools';
+import ListItem from '../../elements/ListItem';
 
 import Link from '../../../Link/Link';
 import Image from '../../../Image/Image';
@@ -57,33 +58,31 @@ const Leela = ({ data, }) => {
   }
   return (
     <Wrapper>
-      <Title>
-        {data.list.title}
-      </Title>
+      <Title>{data.list.title}</Title>
       {data.list.items.map(item => (
-        <Item
-          href={item.path}
-          content={
-            <Fragment>
-              <ItemImage>
-                <Image
-                  data={item.image}
-                  imgOptions={{
-                    transforms: {
-                      width: '125',
-                      aspect: 'regular',
-                      quality: 'auto',
-                    },
-                  }}
-                  hasWrapper={false}
-                />
-              </ItemImage>
-              <ItemTitle>
-                {item.title}
-              </ItemTitle>
-            </Fragment>
-          }
-        />
+        <ListItem>
+          <Item
+            href={item.path}
+            content={
+              <Fragment>
+                <ItemImage>
+                  <Image
+                    data={item.image}
+                    imgOptions={{
+                      transforms: {
+                        width: '125',
+                        aspect: 'regular',
+                        quality: 'auto',
+                      },
+                    }}
+                    hasWrapper={false}
+                  />
+                </ItemImage>
+                <ItemTitle>{item.title}</ItemTitle>
+              </Fragment>
+            }
+          />
+        </ListItem>
       ))}
     </Wrapper>
   );
