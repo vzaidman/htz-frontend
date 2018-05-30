@@ -1,6 +1,8 @@
 /* global fetch, Headers */
 import React, { Fragment, } from 'react';
 import { createComponent, FelaComponent, FelaTheme, } from 'react-fela';
+import { Query, } from 'react-apollo';
+import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
@@ -9,6 +11,12 @@ import ArticleBody from '../ArticleBody/ArticleBody';
 import ArticleHeader from '../ArticleHeader/ArticleHeader';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import HeadlineElement from '../HeadlineElement/HeadlineElement';
+
+const GET_CANONICAL_URL = gql`
+  query {
+    canonicalUrl @client
+  }
+`;
 
 const propTypes = {
   /**
@@ -149,16 +157,21 @@ const Body = createComponent(bodyStyle, ArticleBody, props =>
   Object.keys(props)
 );
 
+const mediaComponents = [
+  'embedElement',
+  'com.tm.Image',
+  'com.tm.Video',
+  'com.tm.ImageGalleryElement',
+];
+
 class Article extends React.Component {
   state = {
     articleUrl: 'https://www.haaretz.co.il/magazine/tozeret/1.5912533', // TODO move all of it to store
     facebookCount: null,
-    headlineElement: null,
   };
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.state.headlineElement !== nextState.headlineElement ||
       this.state.facebookCount !== nextState.facebookCount ||
       this.props !== nextProps
     );
@@ -167,11 +180,6 @@ class Article extends React.Component {
   componentDidUpdate() {
     this.updateArticleMeta();
   }
-
-  setHeadlineElement = elementObj =>
-    this.setState({
-      headlineElement: elementObj,
-    });
 
   getFacebookCount = () => {
     const accessToken =
@@ -196,6 +204,18 @@ class Article extends React.Component {
       .catch(error => console.log('error: ', error));
   };
 
+  extractHeadline = () => {
+    // creating a copy because arrays from apollo are sealed.
+    const body = [ ...this.props.body, ];
+    const element = body[0];
+    const elementType = element.elementType || element.inputTemplate || null;
+    if (mediaComponents.includes(elementType)) {
+      body.shift();
+      return { body, headlineElement: element, };
+    }
+    return { body, };
+  };
+
   updateArticleMeta = () => {
     const { commentsElementId, contentId, setCommentsData, } = this.props;
     setCommentsData && setCommentsData(contentId, commentsElementId);
@@ -206,7 +226,6 @@ class Article extends React.Component {
     const {
       articleType, // eslint-disable-line no-unused-vars
       authors,
-      body,
       breadcrumbs,
       credit,
       exclusive,
@@ -215,73 +234,85 @@ class Article extends React.Component {
       subtitle,
       title,
     } = this.props;
+
+    const { body, headlineElement, } = this.extractHeadline();
+
     return (
-      <FelaTheme
-        render={theme => (
-          <Fragment>
-            <FelaComponent
-              style={{
-                marginInlineStart: '4rem',
-                marginTop: '2rem',
-                marginBottom: '3rem',
-              }}
-            >
-              <Breadcrumbs steps={breadcrumbs} />
-            </FelaComponent>
-            <Header
-              authors={authors || [ credit, ]}
-              kicker={exclusive}
-              publishDateTime={pubDate}
-              subtitle={subtitle}
-              title={title}
+      <Query query={GET_CANONICAL_URL}>
+        {({ data: { canonicalUrl, }, }) => {
+          this.setState({
+            articleUrl: canonicalUrl,
+          });
+          return (
+            <FelaTheme
+              render={theme => (
+                <Fragment>
+                  <FelaComponent
+                    style={{
+                      marginInlineStart: '4rem',
+                      marginTop: '2rem',
+                      marginBottom: '3rem',
+                    }}
+                  >
+                    <Breadcrumbs steps={breadcrumbs} />
+                  </FelaComponent>
+                  <Header
+                    authors={authors || [ credit, ]}
+                    kicker={exclusive}
+                    publishDateTime={pubDate}
+                    subtitle={subtitle}
+                    title={title}
+                  />
+                  <SharingTools
+                    articleTitle={title}
+                    articleUrl={this.state.articleUrl}
+                    buttons={{
+                      start: [
+                        {
+                          name: 'facebookLogo',
+                          buttonText: this.state.facebookCount,
+                          iconStyles: {
+                            color: theme.color('facebook'),
+                          },
+                        },
+                        {
+                          name: 'whatsapp',
+                          iconStyles: {
+                            color: theme.color('whatsapp'),
+                          },
+                        },
+                        'mailAlert',
+                      ],
+                      end: [
+                        {
+                          name: 'comments',
+                          buttonText: 78,
+                        },
+                        'print',
+                        {
+                          name: 'zen',
+                          buttonText: 'קריאת זן',
+                        },
+                      ],
+                    }}
+                    globalButtonsStyles={{
+                      minWidth: '10rem',
+                    }}
+                    globalIconsStyles={{
+                      color: theme.color('primary'),
+                    }}
+                    size={2.5}
+                  />
+                  {headlineElement && (
+                    <HeadlineElement elementObj={headlineElement} />
+                  )}
+                  <Body body={body} />
+                </Fragment>
+              )}
             />
-            <SharingTools
-              articleTitle={title}
-              articleUrl={this.state.articleUrl}
-              buttons={{
-                start: [
-                  {
-                    name: 'facebookLogo',
-                    buttonText: this.state.facebookCount,
-                    iconStyles: {
-                      color: theme.color('facebook'),
-                    },
-                  },
-                  {
-                    name: 'whatsapp',
-                    iconStyles: {
-                      color: theme.color('whatsapp'),
-                    },
-                  },
-                  'mailAlert',
-                ],
-                end: [
-                  {
-                    name: 'comments',
-                    buttonText: 78,
-                  },
-                  'print',
-                  {
-                    name: 'zen',
-                    buttonText: 'קריאת זן',
-                  },
-                ],
-              }}
-              globalButtonsStyles={{
-                minWidth: '10rem',
-              }}
-              globalIconsStyles={{
-                color: theme.color('primary'),
-              }}
-              size={2.5}
-            />
-            {this.state.headlineElement && (
-              <HeadlineElement elementObj={this.state.headlineElement} />
-            )}
-            <Body body={body} setHeadlineElement={this.setHeadlineElement} />
-          </Fragment>
-        )}
-      />
+          );
+        }}
+      </Query>
     );
   }
 }
