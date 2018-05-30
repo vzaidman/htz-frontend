@@ -20,11 +20,11 @@ const propTypes = {
    * Article's slots content.
    */
   slots: PropTypes.shape({
-    preHeader: PropTypes.arrayOf(PropTypes.object).isRequired,
-    header: PropTypes.arrayOf(PropTypes.object).isRequired,
-    postHeader: PropTypes.arrayOf(PropTypes.object).isRequired,
-    postMain: PropTypes.arrayOf(PropTypes.object).isRequired,
-    footer: PropTypes.arrayOf(PropTypes.object).isRequired,
+    preHeader: PropTypes.arrayOf(PropTypes.object),
+    header: PropTypes.arrayOf(PropTypes.object),
+    postHeader: PropTypes.arrayOf(PropTypes.object),
+    postMain: PropTypes.arrayOf(PropTypes.object),
+    footer: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
   /**
    * Article's ID
@@ -62,36 +62,39 @@ class StandardArticlePageLayout extends React.Component {
             <Fragment>
               <LayoutRow>
                 <LayoutContainer>
-                  <PreHeader content={preHeader} />
+                  {preHeader && <PreHeader content={preHeader} />}
                 </LayoutContainer>
               </LayoutRow>
               <LayoutRow>
                 <LayoutContainer>
-                  <Header content={header} />
+                  {header && <Header content={header} />}
                 </LayoutContainer>
               </LayoutRow>
               <LayoutRow>
                 <LayoutContainer>
-                  <PostHeader content={postHeader} />
+                  {postHeader && <PostHeader content={postHeader} />}
                 </LayoutContainer>
               </LayoutRow>
               <LayoutRow>
                 <LayoutContainer>
-                  <Main
-                    lineage={lineage}
-                    content={{ ...slots, }}
-                    seo={seoData}
-                  />
+                  {slots &&
+                    seoData && (
+                      <Main
+                        lineage={lineage}
+                        content={{ ...slots, }}
+                        seo={seoData}
+                      />
+                    )}
                 </LayoutContainer>
               </LayoutRow>
               <LayoutRow>
                 <LayoutContainer>
-                  <PostMain content={postMain} />
+                  {postMain && <PostMain content={postMain} />}
                 </LayoutContainer>
               </LayoutRow>
               <LayoutRow>
                 <LayoutContainer>
-                  <Footer content={footer} />
+                  {footer && <Footer content={footer} />}
                 </LayoutContainer>
               </LayoutRow>
             </Fragment>

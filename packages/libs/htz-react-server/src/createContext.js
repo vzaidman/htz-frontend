@@ -30,11 +30,13 @@ export function createLoaders(req) {
   );
   const pageLoader = new DataLoader(keys =>
     Promise.all(
-      keys.map(path =>
-        fetch(`http://${host}.haaretz.co.il/papi${path}`).then(response =>
-          response.json()
-        )
-      )
+      keys.map(path => {
+        const papiPath = `http://${host}.haaretz.co.il/papi${path}`;
+        console.log(
+          `createContext.js - pageLoader - loading JSON from: ${papiPath}`
+        );
+        return fetch(papiPath).then(response => response.json());
+      })
     )
   );
 

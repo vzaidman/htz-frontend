@@ -142,6 +142,10 @@ function create(initialState, req) {
     link: ApolloLink.from([ stateLink, link, ]),
     cache: inMemoryCache,
     queryDuplication: true,
+    onError: errorObj => {
+      console.log(errorObj.graphQLErrors);
+      console.log(errorObj.networkError);
+    },
   });
 }
 

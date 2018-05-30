@@ -88,13 +88,6 @@ app
       graphqlExpress(req => ({
         schema,
         context: createContext(req),
-        formatError: err => {
-          if (err.originalError && err.originalError.error_message) {
-            // eslint-disable-next-line no-param-reassign
-            err.message = err.originalError.error_message;
-          }
-          return err;
-        },
         ...GraphQLOptions,
       }))
     );

@@ -5,7 +5,7 @@ import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
 import DFP from '@haaretz/dfp';
 
-const initDfpScript = (dfpConfig = {}) => {
+const initDfpScript = dfpConfig => {
   //  Part I: immidiate initialization of DFP ads, like maaavaron
   let q;
   if (dfpConfig) {
@@ -107,7 +107,12 @@ class DfpInjector extends Component {
       // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({ shouldRender: true, });
       const dfpConfig = this.props.dfpConfig;
-      initDfpScript(dfpConfig);
+      try {
+        initDfpScript(dfpConfig);
+      }
+      catch (e) {
+        console.error(e);
+      }
     }
   }
 
