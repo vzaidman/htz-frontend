@@ -234,16 +234,18 @@ class Main extends React.Component {
       ogImage,
       obTitle,
     } = this.props.seo;
-    const { contentId, imgArray, aspects, } = ogImage;
-    const ogImageUrl = buildUrl(
-      contentId,
-      { ...imgArray[0], aspects, },
-      {
-        width: '1200',
-        aspect: 'full',
-        quality: 'auto',
-      }
-    );
+    const { contentId, imgArray, aspects, } = ogImage || {};
+    const ogImageUrl = ogImage
+      ? buildUrl(
+        contentId,
+        { ...imgArray[0], aspects, },
+        {
+          width: '1200',
+          aspect: 'full',
+          quality: 'auto',
+        }
+      )
+      : '';
     return (
       <ApolloConsumer>
         {cache => {
