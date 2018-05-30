@@ -74,7 +74,10 @@ export const stage1 = Object.freeze({
   buttons: Object.freeze({
     organizationSubscription: {
       text: 'לרכישת מינוי אירגוני',
-      url: 'https://secure.pulseem.com/subs_heb_edu/',
+      url: Object.freeze({
+        HTZ: 'https://secure.pulseem.com/subs_heb_edu/',
+        TM: 'http://o-r.co/p/tm_edu_subs',
+      }),
     },
     entitlements: {
       beforeLinkText: 'כבר מנויים למהדורה המודפסת?',

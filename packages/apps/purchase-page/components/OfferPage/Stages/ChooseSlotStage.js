@@ -202,7 +202,11 @@ function ChooseSlotStage({
                     })}
                   >
                     <Link
-                      href={organizationSubscription.url}
+                      href={
+                        organizationSubscription.url[
+                          host === 'themarker.com' ? 'TM' : 'HTZ'
+                        ]
+                      }
                       content={
                         <FelaComponent
                           render="span"
