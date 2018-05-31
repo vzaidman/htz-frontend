@@ -27,6 +27,7 @@ import {
   seriesArticleI18n,
   tagsElementI18n,
   textInputI18n,
+  welcomePageI18n,
   zoominText,
   zoomoutText,
 } from './consts/i18n';
@@ -81,6 +82,7 @@ const htzTheme = Object.freeze({
   seriesArticleI18n,
   tagsElementI18n,
   textInputI18n,
+  welcomePageI18n,
   zoominText,
   zoomoutText,
 

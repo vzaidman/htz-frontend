@@ -197,3 +197,19 @@ export const newsletterI18n = Object.freeze({
 export const fryListI18n = Object.freeze({
   title: 'מרחבי הרשת',
 });
+
+export const welcomePageI18n = Object.freeze({
+  texts: Object.freeze({
+    headerHighLighted: 'ברוכים הבאים',
+    headerNormal: 'לחוויה המשודרגת של הארץ',
+    bullets: [
+      'מהיר יותר',
+      'נוח לקריאה',
+      'מותאם יותר למובייל',
+      'פחות פרסומות',
+      'ממשק תגובות משופר',
+      'קל ומהיר יותר לשתף',
+    ],
+  }),
+  buttonText: 'לעמוד החדש',
+});
