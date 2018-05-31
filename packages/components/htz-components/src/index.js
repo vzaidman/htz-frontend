@@ -3,6 +3,7 @@
  *       C  O  M  P  O  N  E  N  T  S       *
  * **************************************** */
 import A11yDialog from './components/A11yDialog/A11yDialog';
+import A11yError from './components/A11yError/A11yError';
 import ActionButtons from './components/ActionButtons/ActionButtons';
 import AriaLive from './components/AriaLive/AriaLive';
 import Article from './components/Article/Article';
@@ -127,6 +128,7 @@ import BIRequest from './components/BI/BIRequest';
 
 export {
   A11yDialog,
+  A11yError,
   ActionButtons,
   AriaLive,
   Article,
