@@ -1,7 +1,11 @@
 /* global document */
 const setAriaHidden = (boolean, id) => {
   if (!id) return;
-  const element = id.tagName ? id : document.getElementById(id);
+  const element = id.tagName
+    ? id
+    : typeof id === 'string' && id.startsWith('#')
+      ? document.getElementById(id.slice(1))
+      : document.getElementById(id);
   if (!element) return;
   boolean
     ? element.setAttribute('aria-hidden', true)

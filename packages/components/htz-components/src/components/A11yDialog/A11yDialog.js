@@ -147,11 +147,7 @@ class A11yDialog extends React.Component {
   };
 
   openDialog = () => {
-    if (this.container) {
-      this.container.addEventListener('keydown', this.handleKeydown);
-    }
     setAriaHidden.set(this.props.elementToHide);
-
     this.setState(
       (prevState, props) =>
         (prevState.wasRendered
@@ -170,9 +166,6 @@ class A11yDialog extends React.Component {
 
   closeDialog = () => {
     const { returnFocusTo, } = this.state;
-    if (this.container) {
-      this.container.removeEventListener('keydown', this.handleKeydown);
-    }
     setAriaHidden.remove(this.props.elementToHide);
     this.setState({ isVisible: false, returnFocusTo: null, }, () => {
       this.props.onClose && this.props.onClose();
@@ -211,7 +204,11 @@ class A11yDialog extends React.Component {
           }}
           rule={dialogOverlayStyle}
           render={({ className, }) => (
-            <div style={{ display: this.state.isVisible ? 'block' : 'none', }}>
+            // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+            <div
+              style={{ display: this.state.isVisible ? 'block' : 'none', }}
+              onKeyDown={this.handleKeydown}
+            >
               <FocusLock
                 disabled={!(this.state.isVisible && isModal)}
                 autoFocus={false}
