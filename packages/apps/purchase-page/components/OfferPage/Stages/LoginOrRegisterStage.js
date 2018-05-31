@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import Router, { withRouter, } from 'next/router';
 import {
+  A11yError,
   Button,
   BIAction,
   CheckBox,
@@ -62,7 +63,6 @@ class LoginOrRegisterStage extends React.Component {
   state = {
     error: null,
     loading: false,
-    loadingAll: false,
     email: null,
     userExists: true,
     resetPasswordModalOpen: false,
@@ -74,8 +74,9 @@ class LoginOrRegisterStage extends React.Component {
 
   render() {
     // focus the password input when it first loads, form focus will override if there is an error in the form
-    if (this.passwordInputEl) this.passwordInputEl.focus();
-
+    if (this.passwordInputEl) {
+      this.passwordInputEl.focus();
+    }
     const {
       router,
       site,
@@ -84,38 +85,6 @@ class LoginOrRegisterStage extends React.Component {
       registerOrLoginStage,
     } = this.props;
 
-    if (this.state.error) {
-      return (
-        <FelaComponent
-          render={({ theme: { stage3: { error: { retryButton, }, }, }, }) => (
-            <div>
-              <FelaComponent
-                style={theme => ({
-                  color: theme.color('tertiary'),
-                  marginTop: '13rem',
-                  fontWeight: 'bold',
-                })}
-              >
-                {this.state.error}
-              </FelaComponent>
-              <Button
-                onClick={() =>
-                  this.setState({
-                    error: null,
-                    loading: false,
-                    loadingAll: false,
-                    email: null,
-                  })
-                }
-                miscStyles={{ marginTop: '5rem', }}
-              >
-                {retryButton}
-              </Button>
-            </div>
-          )}
-        />
-      );
-    }
     return (
       <Register
         render={({ register, }) => (
@@ -137,7 +106,7 @@ class LoginOrRegisterStage extends React.Component {
                           {cache => (
                             <Form
                               // dont clear the form if there is no email saved in state
-                              clearFormAfterSubmit={!!this.state.email}
+                              clearFormAfterSubmit={false}
                               {...this.state.email && {
                                 initialValues: { email: this.state.email, },
                               }}
@@ -154,7 +123,7 @@ class LoginOrRegisterStage extends React.Component {
                                   router,
                                   setState: newState => this.setState(newState),
                                   stateEmail: this.state.email,
-                                  stateUserExists: this.state.userExists,
+                                  registerOrLoginStage,
                                 });
                               }}
                               validate={fields =>
@@ -170,76 +139,71 @@ class LoginOrRegisterStage extends React.Component {
                               render={({ getInputProps, handleSubmit, }) => (
                                 <FelaComponent style={formContStyle}>
                                   {/* render form header only when user is registering and nothing is loading */}
-                                  {this.state.email &&
-                                    !this.state.userExists &&
-                                    !this.state.loading && (
+                                  {registerOrLoginStage === 'register' && (
+                                    <FelaComponent style={changeEmailContStyle}>
                                       <FelaComponent
-                                        style={changeEmailContStyle}
+                                        style={theme => ({
+                                          extend: [ theme.type(2), ],
+                                        })}
+                                        render="h4"
                                       >
-                                        <FelaComponent
-                                          style={theme => ({
-                                            extend: [ theme.type(2), ],
-                                          })}
-                                          render="h4"
-                                        >
-                                          {form.registerHeader.header}
-                                        </FelaComponent>
-                                        <FelaComponent
-                                          style={theme => ({
-                                            color: theme.color(
-                                              'loginOrRegister',
-                                              'inFormText'
-                                            ),
-                                            extend: [ theme.type(-1), ],
-                                          })}
-                                          render={({ className, }) => (
-                                            <button
-                                              type="button"
-                                              className={className}
-                                              onClick={() => {
-                                                this.setState({ email: null, });
-                                                updateRegisterOrLoginStage(
-                                                  'checkEmail'
-                                                );
-                                              }}
-                                            >
-                                              {form.registerHeader.buttonText}{' '}
-                                              <FelaComponent
-                                                style={{ fontWeight: 'bold', }}
-                                                render="span"
-                                              >
-                                                {
-                                                  form.registerHeader
-                                                    .buttonTextBold
-                                                }
-                                              </FelaComponent>
-                                            </button>
-                                          )}
-                                        />
+                                        {form.registerHeader.header}
                                       </FelaComponent>
-                                    )}
-                                  {/* render email input if the whole form is not loading */}
-                                  {!this.state.loadingAll && (
-                                    <TextInput
-                                      {...getInputProps({
-                                        variant: 'primary',
-                                        name: 'email',
-                                        label: form.email.label,
-                                        type: 'email',
-                                        noteText: form.email.noteText,
-                                        maxLength: 64,
-                                        miscStyles: textInputStyle,
-                                      })}
-                                    />
+                                      <FelaComponent
+                                        style={theme => ({
+                                          color: theme.color(
+                                            'loginOrRegister',
+                                            'inFormText'
+                                          ),
+                                          extend: [ theme.type(-1), ],
+                                        })}
+                                        render={({ className, }) => (
+                                          <button
+                                            type="button"
+                                            className={className}
+                                            onClick={() => {
+                                              this.setState({ email: null, });
+                                              updateRegisterOrLoginStage(
+                                                'checkEmail'
+                                              );
+                                            }}
+                                          >
+                                            {form.registerHeader.buttonText}{' '}
+                                            <FelaComponent
+                                              style={{ fontWeight: 'bold', }}
+                                              render="span"
+                                            >
+                                              {
+                                                form.registerHeader
+                                                  .buttonTextBold
+                                              }
+                                            </FelaComponent>
+                                          </button>
+                                        )}
+                                      />
+                                    </FelaComponent>
                                   )}
+
+                                  <TextInput
+                                    {...getInputProps({
+                                      variant: 'primary',
+                                      name: 'email',
+                                      label: form.email.label,
+                                      type: 'email',
+                                      noteText: form.email.noteText,
+                                      maxLength: 64,
+                                      miscStyles: textInputStyle,
+                                    })}
+                                  />
                                   <Fragment>
-                                    {/* render password input when there is an email, weather registering or logging in */}
-                                    {this.state.email && !this.state.loading ? (
+                                    {/* render password input when registering or logging in */}
+                                    {registerOrLoginStage !== 'checkEmail' && (
                                       <Fragment>
                                         <TextInput
                                           {...getInputProps({
                                             refFunc: elem => {
                                               this.passwordInputEl = elem;
+                                              this.forceUpdate();
                                             },
                                             variant: 'primary',
                                             name: 'password',
@@ -259,7 +223,8 @@ class LoginOrRegisterStage extends React.Component {
                                           miscStyles={textInputStyle}
                                         />
                                         {/* render first and last name inputs if the user does not exist */}
-                                        {!this.state.userExists && (
+                                        {registerOrLoginStage ===
+                                          'register' && (
                                           <Grid gutter={2}>
                                             <GridItem
                                               width={[ { until: 'm', value: 1, }, ]}
@@ -368,7 +333,16 @@ class LoginOrRegisterStage extends React.Component {
                                           })}
                                         />
                                       </Fragment>
-                                    ) : null}
+                                    )}
+                                    {this.state.error && (
+                                      <A11yError
+                                        errorText={this.state.error}
+                                        miscStyles={{
+                                          marginTop: '4rem',
+                                          textAlign: 'center',
+                                        }}
+                                      />
+                                    )}
                                     <BIAction>
                                       {action => (
                                         <Button

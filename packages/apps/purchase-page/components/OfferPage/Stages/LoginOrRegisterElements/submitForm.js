@@ -14,9 +14,9 @@ const submitForm = ({
   router,
   setState,
   stateEmail,
-  stateUserExists,
+  registerOrLoginStage,
 }) => {
-  if (!stateEmail) {
+  if (registerOrLoginStage === 'checkEmail') {
     setState({ loading: true, email, });
     checkEmailExists(email)
       .then(userExists => {
@@ -34,10 +34,10 @@ const submitForm = ({
         });
       });
   }
-  else if (stateUserExists) {
+  else if (registerOrLoginStage === 'login') {
     setState({
       loading: true,
-      loadingAll: true,
+      error: null,
     });
     login(email, password)
       .then(() => {
@@ -46,13 +46,14 @@ const submitForm = ({
       .catch(error => {
         setState({
           error: error.message || 'שגיאה במערכת ההתחברות, אנא נסו שוב',
+          loading: false,
         });
       });
   }
   else {
     setState({
       loading: true,
-      loadingAll: true,
+      error: null,
     });
     register(email, password, password, firstName, lastName, '', '', terms, '')
       .then(() => {
@@ -66,6 +67,7 @@ const submitForm = ({
       .catch(error => {
         setState({
           error: error.message || 'שגיאה במערכת ההרשמה, אנא נסו שוב',
+          loading: false,
         });
       });
   }
