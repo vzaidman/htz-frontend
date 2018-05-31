@@ -45,6 +45,7 @@ const WelcomePage = ({ shouldRender, }) => {
             color: theme.color('bodyText', 'base'),
           })}
           render={({
+            theme,
             theme: {
               welcomePageI18n: {
                 texts: { headerHighLighted, headerNormal, bullets, },
@@ -55,7 +56,7 @@ const WelcomePage = ({ shouldRender, }) => {
           }) => (
             <div className={className}>
               <FelaComponent
-                style={theme => ({
+                style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   extend: [
@@ -66,10 +67,10 @@ const WelcomePage = ({ shouldRender, }) => {
                       }
                     ),
                   ],
-                })}
+                }}
               >
                 <FelaComponent
-                  style={theme => ({
+                  style={{
                     extend: [
                       theme.mq(
                         { until: 'm', },
@@ -102,34 +103,34 @@ const WelcomePage = ({ shouldRender, }) => {
                         }
                       ),
                     ],
-                  })}
+                  }}
                 >
                   <FelaComponent
-                    style={theme => ({
+                    style={{
                       extend: [
                         theme.type(5, { fromBp: 'm', }),
                         theme.type(3, { untilBp: 'm', }),
                       ],
-                    })}
+                    }}
                     render="h2"
                   >
                     <FelaComponent
-                      style={theme => ({
+                      style={{
                         color: theme.color('primary', '-2'),
-                      })}
+                      }}
                     >
                       {headerHighLighted}
                     </FelaComponent>
                     <div>{headerNormal}</div>
                   </FelaComponent>
                   <FelaComponent
-                    style={theme => ({
+                    style={{
                       listStyleType: 'disc',
                       listStylePosition: 'inside',
                       paddingInlineStart: '-4rem',
                       marginTop: '3rem',
                       extend: [ theme.mq({ until: 's', }, { marginTop: '1rem', }), ],
-                    })}
+                    }}
                     render="ul"
                   >
                     {bullets.map(bullet => (
@@ -152,11 +153,10 @@ const WelcomePage = ({ shouldRender, }) => {
                   </Button>
                 </FelaComponent>
                 <FelaComponent
-                  style={theme => ({
+                  style={{
                     position: 'relative',
                     top: '-20%',
-                    // extend: [theme.mq({until: 'm', }, {top: '-30%'})]
-                  })}
+                  }}
                 >
                   <WelcomeCartoon
                     size={[
