@@ -77,7 +77,7 @@ export class ArticlePage extends React.Component {
     const { url, } = this.props;
     return (
       <Fragment>
-        {/* <ScrollInjector /> */}
+        <ScrollInjector />
         <UserInjector />
         <DfpInjector path={url.query.path} />
         <StyleProvider renderer={styleRenderer} theme={htzTheme}>

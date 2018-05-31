@@ -55,9 +55,7 @@ class List extends React.Component {
           ) : (
             <ListComponent />
           )
-        ) : (
-          <p>List</p>
-        )}
+        ) : null}
       </ErrorBoundary>
     );
   }

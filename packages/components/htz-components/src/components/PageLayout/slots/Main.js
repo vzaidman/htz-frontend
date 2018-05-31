@@ -7,6 +7,7 @@ import Head from 'next/head';
 import { parseComponentProp, borderBottom, } from '@haaretz/htz-css-tools';
 import getComponent from '../../../utils/componentFromInputTemplate';
 import Article from '../../Article/Article';
+import SideBar from '../../SideBar/SideBar';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 
 const Osaka = dynamic(import('../../Osaka/OsakaController'), { ssr: false, });
@@ -88,18 +89,10 @@ const sectionStyle = ({ theme, }) => ({
 const ArticleSection = createComponent(sectionStyle, 'section');
 
 const wideStyle = ({ theme, }) => ({
-  position: 'relative',
   backgroundColor: theme.color('neutral', '-10'),
-  extend: [
-    ...[
-      parseComponentProp(
-        'marginEnd',
-        theme.articleStyle.article.marginEnd,
-        theme.mq,
-        mediaQueryCallback
-      ),
-    ],
-  ],
+  display: 'flex',
+  justifyContent: 'center',
+  position: 'relative',
 });
 const ArticleWide = createComponent(wideStyle, 'section');
 
@@ -129,14 +122,6 @@ const asideStyle = ({ theme, }) => ({
 });
 const ArticleAside = createComponent(asideStyle, 'aside');
 
-const stickyStyle = ({ theme, }) => ({
-  backgroundColor: 'red',
-  position: 'sticky',
-  width: '100%',
-  top: '12px',
-});
-const Sticky = createComponent(stickyStyle);
-
 const commentsStyle = ({ theme, }) => ({
   extend: [
     ...[
@@ -164,18 +149,22 @@ class Main extends React.Component {
     articleId: null,
     commentsId: null,
     articleWidth: null,
+    articleHeight: null,
   };
 
   componentDidMount() {
     // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({
       articleWidth: this.container.offsetWidth,
+      articleHeight: this.sideBar.offsetHeight,
     });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.state.articleId !== nextState.articleId || this.props !== nextProps
+      this.state.articleId !== nextState.articleId ||
+      this.props !== nextProps ||
+      this.state.articleHeight !== nextState.articleHeight
     );
   }
 
@@ -272,8 +261,13 @@ class Main extends React.Component {
               </Head>
               <Osaka width={this.state.articleWidth} />
               {this.extractContent(article)}
-              <ArticleAside>
-                <Sticky>{this.extractContent(aside)}</Sticky>
+              <ArticleAside
+                // eslint-disable-next-line no-return-assign
+                innerRef={sideBar => (this.sideBar = sideBar)}
+              >
+                <SideBar height={this.state.articleHeight}>
+                  {this.extractContent(aside)}
+                </SideBar>
               </ArticleAside>
             </ArticleContainer>
           );
