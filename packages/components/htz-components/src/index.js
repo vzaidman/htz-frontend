@@ -15,6 +15,7 @@ import Caption from './components/Caption/Caption';
 import CheckBox from './components/CheckBox/CheckBox';
 import Comments from './components/CommentsSection/CommentsWithApollo';
 import Embed from './components/Embed/Embed';
+import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
@@ -142,6 +143,7 @@ export {
   CheckBox,
   Comments,
   Embed,
+  Footer,
   Form,
   Grid,
   GridItem,
