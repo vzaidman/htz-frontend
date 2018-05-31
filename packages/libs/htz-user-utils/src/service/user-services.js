@@ -62,10 +62,16 @@ export default function UserService(config = {}) {
           'Content-Type': 'application/x-www-form-urlencoded',
         }),
       }).then(data =>
-        data.json().then(json => {
-          if (json.success === 1) return resolve(json.exists);
-          return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
-        })
+        data
+          .json()
+          .then(json => {
+            if (json.success === 1) return resolve(json.exists);
+            return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
+          })
+          .catch(err => {
+            console.log('error from check email', err);
+            return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
+          })
       )
     );
 
