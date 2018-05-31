@@ -100,8 +100,6 @@ const tm = Object.freeze({
 
 const colors = host => {
   const baseColors = host === 'themarker.com' ? tmBaseColors : htzBaseColors;
-  console.log('host', host);
-  console.log('base', baseColors);
   return {
     ...baseColors,
     // semantic use-cases
