@@ -13,7 +13,7 @@
 Infographic image with 1/3 viewMode
 
 ```jsx
-<div style={{ maxWidth: "700px" }}>
+<div style={{ maxWidth: '700px', direction: 'rtl' }}>
   <ArticleImage
     alt="alternative text"
     viewMode="OneThirdView"
@@ -23,19 +23,19 @@ Infographic image with 1/3 viewMode
     aspects={{
       full: {
         width: 1024,
-        height: 768
-      }
+        height: 768,
+      },
     }}
     isAnimated="false"
     imgArray={[
       {
-        imgName: "image/3169121816.jpg",
-        version: "1519208155"
+        imgName: 'image/3169121816.jpg',
+        version: '1519208155',
       },
       {
-        imgName: "image/509020086.jpg",
-        version: "1519208157"
-      }
+        imgName: 'image/509020086.jpg',
+        version: '1519208157',
+      },
     ]}
     imageType="infographic"
     inputTemplate="com.tm.Image"
@@ -48,7 +48,7 @@ Infographic image with 1/3 viewMode
 Gif image with full viewMode
 
 ```jsx
-<div style={{ maxWidth: "700px" }}>
+<div style={{ maxWidth: '700px', direction: 'rtl' }}>
   <ArticleImage
     alt="alternative text"
     viewMode="FullColumnWithVerticalImage"
@@ -60,31 +60,31 @@ Gif image with full viewMode
         x: 3,
         y: 4,
         width: 388,
-        height: 291
+        height: 291,
       },
       full: {
         width: 400,
-        height: 332
+        height: 332,
       },
       headline: {
         x: 0,
         y: 32,
         width: 399,
-        height: 233
+        height: 233,
       },
       square: {
         x: 33,
         y: 7,
         width: 318,
-        height: 318
-      }
+        height: 318,
+      },
     }}
     isAnimated="false"
     imgArray={[
       {
-        imgName: "image/4030303706.gif",
-        version: "1519208144"
-      }
+        imgName: 'image/4030303706.gif',
+        version: '1519208144',
+      },
     ]}
     imageType="image"
     inputTemplate="com.tm.Image"
@@ -97,7 +97,7 @@ Gif image with full viewMode
 Vertical image with regular viewMode
 
 ```jsx
-<div style={{ maxWidth: "700px" }}>
+<div style={{ maxWidth: '700px', direction: 'rtl' }}>
   <ArticleImage
     viewMode="regularModeBigImage"
     accessibility="אימפריית הפשע"
@@ -105,15 +105,15 @@ Vertical image with regular viewMode
     aspects={{
       full: {
         width: 960,
-        height: 1440
-      }
+        height: 1440,
+      },
     }}
     isAnimated="false"
     imgArray={[
       {
-        imgName: "image/4224562979.jpg",
-        version: "1519208169"
-      }
+        imgName: 'image/4224562979.jpg',
+        version: '1519208169',
+      },
     ]}
     imageType="image"
     inputTemplate="com.tm.Image"

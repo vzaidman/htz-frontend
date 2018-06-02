@@ -21,17 +21,13 @@ const buttonPropType = PropTypes.oneOfType([
 
 /* eslint-disable no-trailing-spaces */
 const propTypes = {
-  /**
-   * The title of the article this buttons affect.
-   */
-  articleTitle: PropTypes.string,
-  /**
-   * The path to the article this buttons affect.
-   */
-  articleUrl: PropTypes.string,
+  boxModel: PropTypes.shape({
+    hp: PropTypes.number,
+    vp: PropTypes.number,
+  }),
   /**
    * Each button can be a string (e.g. 'facebook') or an object with additional attributes
-(e.g. {
+   (e.g. {
   name: 'facebookLogo',
   buttonText: 78,
   iconStyles: {
@@ -67,6 +63,14 @@ const propTypes = {
    */
   className: PropTypes.string,
   /**
+   * The name of the element this buttons affect.
+   */
+  elementName: PropTypes.string,
+  /**
+   * The path to the element this buttons affect.
+   */
+  elementUrl: PropTypes.string,
+  /**
    * A style prop that will affect all the buttons in this component.
    */
   globalButtonsStyles: stylesPropType, // eslint-disable-line react/no-unused-prop-types
@@ -80,6 +84,7 @@ const propTypes = {
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: stylesPropType, // eslint-disable-line react/no-unused-prop-types
+  isFlat: PropTypes.bool,
   /**
    * The size of the buttons Icons (according to the [`Icon`](./#icon) component)
    */
@@ -92,11 +97,13 @@ const propTypes = {
 /* eslint-enable no-trailing-spaces */
 
 const defaultProps = {
-  articleTitle: null,
-  articleUrl: null,
+  elementName: null,
+  elementUrl: null,
+  boxModel: { hp: 3, vp: 1, },
   className: null,
   globalButtonsStyles: null,
   globalIconsStyles: null,
+  isFlat: false,
   miscStyles: null,
   vertical: false,
   size: 2,
@@ -110,7 +117,9 @@ const wrapperStyle = ({ vertical, miscStyles, theme, }) => ({
     flexDirection: 'column',
     height: '100%',
   }),
-  ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  extend: [
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
 });
 const ActionWrapper = createComponent(wrapperStyle);
 
@@ -128,24 +137,28 @@ const buttonTextStyle = () => ({
 const ButtonText = createComponent(buttonTextStyle, 'span');
 
 const ActionButtons = ({
-  articleTitle,
-  articleUrl,
+  boxModel,
   buttons,
   className,
+  elementName,
+  elementUrl,
   globalButtonsStyles,
   globalIconsStyles,
+  isFlat,
   miscStyles,
   size,
   vertical,
 }) => {
-  const getButton = button => {
+  const getButton = (button, index) => {
     const { buttonStyles, buttonText, iconStyles, name, } = button;
-    const icon = getIcon(name || button, articleTitle, articleUrl);
+    const icon = getIcon(name || button, elementName, elementUrl);
     const Icon = icon.component;
     return (
       <ActionButton
+        key={index}
         fontSize={-2}
-        boxModel={{ hp: 3, vp: 1, }}
+        boxModel={boxModel}
+        isFlat={isFlat}
         miscStyles={{
           ...(globalButtonsStyles && globalButtonsStyles),
           ...(buttonStyles && buttonStyles),
@@ -168,13 +181,8 @@ const ActionButtons = ({
 
   const getBatch = (buttonsObj, end) =>
     (buttonsObj instanceof Array ? (
-      <ButtonGroup
-        isColumn={vertical}
-        miscStyles={{
-          alignSelf: 'flex-start',
-        }}
-      >
-        {buttonsObj.map(button => getButton(button))}
+      <ButtonGroup isColumn={vertical}>
+        {buttonsObj.map((button, index) => getButton(button, index))}
       </ButtonGroup>
     ) : (
       getButton(buttonsObj)

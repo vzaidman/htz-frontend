@@ -29,11 +29,17 @@ UnstyledIconMailAlert.defaultProps = {
 
 function UnstyledIconMailAlert({ attrs, ...props }) {
   return (
-    <svg width="1em" height="1em" viewBox="0 0 256 256" {...props} {...attrs}>
+    <svg
+      width="1.3671875em"
+      height="1em"
+      viewBox="0 0 350 256"
+      {...props}
+      {...attrs}
+    >
       {' '}
       <path
         fill="currentColor"
-        d="M178 64l-80.9 72.9-80-72.9H178zm-50.1 58.1l50.9 55.2-5.8 7-51.8-56.2-24 21.6-24-21.9L21.7 184l-5.8-7 50.6-55.3L13 73v119h169V73.2l-54.1 48.9zM253 64h-71v9h71v-9zm-11 30h-60v9h60v-9zm-14 30h-46v9h46v-9zm-11 29h-35v9h35v-9zm-13 30h-22v9h22v-9z"
+        d="M233 46.5l-102.9 93-101.9-93H233zm-63.9 73.8l64.7 70.4-7.4 9-65.8-71.7-30.5 27.6-30.6-27.9L34 199.3l-7.4-9L91 119.9 23 57.7v151.8h215V58.1l-68.9 62.2zM327 46.5h-89v12h89v-12zm-14 37h-75v12h75v-12zm-17 38h-58v11h58v-11zm-14 38h-44v12h44v-12zm-17 38h-27v12h27v-12z"
       />
     </svg>
   );

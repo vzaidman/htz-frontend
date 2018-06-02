@@ -35,12 +35,12 @@ const getIcon = (iconName, articleTitle, articleUrl) => {
     mail: {
       component: IconMail,
       actionTag: 'href',
-      action: `mailto:?subject=${articleTitle}&amp;body=${articleUrl}`,
+      action: `mailto:?subject=${articleTitle}&body=${articleUrl}`,
     },
     mailalert: {
       component: IconMailAlert,
       actionTag: 'href',
-      action: '',
+      action: `mailto:?subject=${articleTitle}&body=${articleUrl}`,
     },
     print: {
       component: IconPrint,
@@ -58,9 +58,9 @@ const getIcon = (iconName, articleTitle, articleUrl) => {
       action: () => {
         window.open(
           `https://web.whatsapp.com/send?text=${articleUrl}` + // eslint-disable-line prefer-template
-            encodeURIComponent(
-              '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
-            ),
+          encodeURIComponent(
+            '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
+          ),
           'popup',
           'width=635,height=800,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
         );
