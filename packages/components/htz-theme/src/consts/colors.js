@@ -328,6 +328,12 @@ const colors = {
     base: [ 'primary', 'base', ],
     text: [ 'neutral', '-3', ],
   },
+  navigationA11y: {
+    text: [ 'primary', 'base', ],
+    textOpenOrHover: [ 'neutral', '-10', ],
+    bgOpen: [ 'secondary', 'base', ],
+    bgHover: [ 'primary', 'base', ],
+  },
   // Primary
   select: {
     primaryBg: 'white',

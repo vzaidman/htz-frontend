@@ -220,3 +220,33 @@ export const welcomePageI18n = Object.freeze({
   }),
   buttonText: 'לעמוד החדש',
 });
+
+export const navigationUserI18n = Object.freeze({
+  noUserData: 'התחברות',
+  button: 'שלום',
+  menuItems: Object.freeze([
+    Object.freeze({
+      name: 'הגדרות',
+      url: 'https://www.haaretz.co.il/personal-area/my-account',
+    }),
+    Object.freeze({
+      name: 'שירות למנויים',
+      url: 'https://www.haaretz.co.il/personal-area/my-account',
+    }),
+    Object.freeze({
+      name: 'ניוזלטרים',
+      url: 'https://www.haaretz.co.il/personal-area/newsletter',
+    }),
+  ]),
+  logout: 'התנתקות',
+});
+
+export const navigationA11yI18n = Object.freeze({
+  a11yToggle: state => `${state ? 'הפסק' : 'הפעל'} מצג ניגודיות`,
+  menuItems: Object.freeze([
+    Object.freeze({
+      name: 'דווח על בעיית נגישות',
+      url: 'mailto:accessibility@haaretz.co.il',
+    }),
+  ]),
+});
