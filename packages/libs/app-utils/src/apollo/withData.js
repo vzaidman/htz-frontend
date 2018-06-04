@@ -1,6 +1,5 @@
 import React from 'react';
-import Error from 'next/error';
-import { ApolloProvider, getDataFromTree, } from 'react-apollo';
+import { getDataFromTree, } from 'react-apollo';
 import Head from 'next/head';
 import createClient from './createClient';
 import pagePropTypes from './pagePropTypes';
@@ -11,9 +10,6 @@ export default Component => {
   return class WithData extends React.Component {
     static displayName = `WithData(${componentName})`;
     static propTypes = pagePropTypes;
-    static defaultProps = {
-      serverError: null,
-    };
 
     /**
      * `getInitialProps` is a Next.js feature that can only be used on pages.
@@ -34,7 +30,6 @@ export default Component => {
      */
     static async getInitialProps(context) {
       let serverState = { apollo: {}, };
-      let serverError;
 
       // Evaluate the composed component's `getInitialProps()`.
       let initialProps = {};
@@ -45,65 +40,52 @@ export default Component => {
         initialProps = await Component.getInitialProps(context);
       }
 
-      // console.log('context from withData: ', context);
       // Run all GraphQL queries in the component tree, extract the resulting
       // data, and save it as the initial state.
-      if (!process.browser) {
-        const apolloClient = createClient({}, req);
-        try {
-          const url = {
-            query: context.query,
-            asPath: context.asPath,
-            pathname: context.pathname,
-          };
-          await getDataFromTree(
-            <Component context={context} {...initialProps} url={url} />,
-            {
-              router: {
-                asPath: context.asPath,
-                pathname: context.pathname,
-                query: context.query,
-              },
-              client: apolloClient,
-            }
-          );
-        }
-        catch (err) {
-          // Check if this is indeed a GraphQL error
-          if (err.graphQLErrors) {
-            // FIXME: There must be a better way to do this.
-            // `err` is a wrapper Error created by Apollo that groups all errors
-            // thrown while attempting to render. Even the `graphQLErrors` property
-            // on this object have been rethrown at various layers of the stack, so
-            // if we attached something like a `statusCode` property to an error,
-            // it's gone now. For now, just throw a 404 if any error message is
-            // 'Not Found', and a 500 otherwise.
-            console.error('getDataFromTree() failed!');
-            console.error(err);
 
-            const isNotFound = err.graphQLErrors.some(
-              ({ message, }) => message === 'Not Found'
-            );
-            serverError = {
-              statusCode: isNotFound ? 404 : 500,
-            };
-            // Prevent Apollo Client GraphQL errors from crashing SSR.
-            // Handle them in components via the `data.error` prop:
-            // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
-          }
-        }
-        Head.rewind();
-
-        serverState = {
-          apollo: {
-            data: apolloClient.cache.extract(),
-          },
+      const apolloClient = createClient({}, req);
+      try {
+        const url = {
+          query: context.query,
+          asPath: context.asPath,
+          pathname: context.pathname,
         };
+        await getDataFromTree(
+          <Component
+            context={context}
+            {...initialProps}
+            url={url}
+            router={{
+              asPath: context.asPath,
+              pathname: context.pathname,
+              query: context.query,
+            }}
+            apolloState={serverState || {}}
+            apolloClient={apolloClient || {}}
+          />
+        );
       }
+      catch (error) {
+        // Prevent Apollo Client GraphQL errors from crashing SSR.
+        // Handle them in components via the data.error prop:
+        // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
+        console.error('Error while running `getDataFromTree`', error);
+      }
+
+      if (!process.browser) {
+        // getDataFromTree does not call componentWillUnmount
+        // head side effect therefore need to be cleared manually
+        Head.rewind();
+      }
+
+      serverState = {
+        apollo: {
+          data: apolloClient.cache.extract(),
+        },
+      };
 
       return {
         serverState,
-        serverError,
         ...initialProps,
       };
     }
@@ -111,19 +93,12 @@ export default Component => {
     constructor(props) {
       super(props);
       const { serverState, } = this.props;
-      this.apolloClient = createClient(serverState.apollo.data);
+      this.apolloClient =
+        this.apolloClient || createClient(serverState.apollo.data);
     }
 
     render() {
-      const { serverError, } = this.props;
-      if (serverError) {
-        return <Error statusCode={serverError.statusCode} />;
-      }
-      return (
-        <ApolloProvider client={this.apolloClient}>
-          <Component {...this.props} />
-        </ApolloProvider>
-      );
+      return <Component {...this.props} apolloClient={this.apolloClient} />;
     }
   };
 };

@@ -1,6 +1,6 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
+import { Query, ApolloProvider, } from 'react-apollo';
 import { withData, } from '@haaretz/app-utils';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { htzTheme, } from '@haaretz/htz-theme';
@@ -38,6 +38,7 @@ export class ArticlePage extends React.Component {
         path: PropTypes.string.isRequired,
       }).isRequired,
     }).isRequired,
+    apolloClient: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {};
@@ -73,9 +74,9 @@ export class ArticlePage extends React.Component {
   };
 
   render() {
-    const { url, } = this.props;
+    const { url, apolloClient, } = this.props;
     return (
-      <Fragment>
+      <ApolloProvider client={apolloClient}>
         <ScrollInjector />
         <UserInjector />
         <DfpInjector path={url.query.path} />
@@ -107,7 +108,7 @@ export class ArticlePage extends React.Component {
           </Query>
         </StyleProvider>
         {this.updateState()}
-      </Fragment>
+      </ApolloProvider>
     );
   }
 }
