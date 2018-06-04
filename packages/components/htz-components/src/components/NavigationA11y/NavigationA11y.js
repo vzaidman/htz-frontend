@@ -4,11 +4,8 @@ import { FelaComponent, } from 'react-fela';
 import List from './navigationA11yList';
 import IconAccessibility from '../Icon/icons/IconAccessibility';
 
-const wrapperStyle = () => ({
-  display: 'inline',
-});
-
 const a11yButtonStyle = ({ theme, isOpen, }) => ({
+  display: 'flex',
   ...theme.type(-2),
   color: theme.color('navigationA11y', 'text'),
   border: 'none',
@@ -71,38 +68,41 @@ class NavigationA11y extends React.Component {
 
   render() {
     return (
-      <FelaComponent
-        rule={wrapperStyle}
-        render={({ theme, className, }) => (
-          <div
-            ref={wrapper => (this.wrapper = wrapper)} // eslint-disable-line no-return-assign
-            className={className}
-          >
-            <FelaComponent
-              rule={a11yButtonStyle}
-              isOpen={this.state.isOpen}
-              render={({ className, }) => (
-                <button
-                  className={className}
-                  onClick={this.changeState}
-                  aria-expanded={this.state.isOpen}
-                  ref={navButt => (this.navButt = navButt)} // eslint-disable-line no-return-assign
-                >
-                  <IconAccessibility size={3} />
-                </button>
-              )}
-            />
-            <FelaComponent style={{ position: 'relative', }}>
-              {this.state.isOpen && (
+      <div
+        ref={wrapper => {
+          this.wrapper = wrapper;
+        }}
+      >
+        <FelaComponent
+          rule={a11yButtonStyle}
+          isOpen={this.state.isOpen}
+          render={({ className, }) => (
+            <button
+              className={className}
+              onClick={this.changeState}
+              aria-expanded={this.state.isOpen}
+              ref={navButt => {
+                this.navButt = navButt;
+              }}
+            >
+              <IconAccessibility size={3} />
+            </button>
+          )}
+        />
+        {this.state.isOpen ? (
+          <FelaComponent
+            style={{ position: 'relative', }}
+            render={({ className, theme, }) => (
+              <div className={className}>
                 <List
                   theme={theme}
                   items={theme.navigationA11yI18n.menuItems}
                 />
-              )}
-            </FelaComponent>
-          </div>
-        )}
-      />
+              </div>
+            )}
+          />
+        ) : null}
+      </div>
     );
   }
 }

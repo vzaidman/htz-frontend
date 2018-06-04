@@ -137,11 +137,12 @@ class List extends React.Component {
               startOffset={startOffset}
               role="region"
             >
+              {/* <Item> */}
               <Query query={GET_A11Y_STATE}>
                 {({ data, loading, client, }) => {
                   const { a11yToggle, } = data;
                   return (
-                    <li>
+                    <Item>
                       <Button
                         boxModel={{ vp: 1, hp: 2, }}
                         isFlat
@@ -152,6 +153,12 @@ class List extends React.Component {
                         miscStyles={{
                           display: 'flex',
                           justifyContent: 'flex-start',
+                          ':focus': {
+                            backgroundColor: theme.color('secondary', '+2'),
+                          },
+                          ':hover': {
+                            backgroundColor: theme.color('secondary', '+2'),
+                          },
                         }}
                         onClick={() => {
                           client.writeData({
@@ -165,10 +172,11 @@ class List extends React.Component {
                           {theme.navigationA11yI18n.a11yToggle(a11yToggle)}
                         </ItemName>
                       </Button>
-                    </li>
+                    </Item>
                   );
                 }}
               </Query>
+              {/* </Item> */}
               {items.map((item, i) => (
                 <Item key={item.name}>
                   <StyledLink
@@ -176,7 +184,7 @@ class List extends React.Component {
                     content={<ItemName>{item.name}</ItemName>}
                   />
                 </Item>
-                ))}
+              ))}
             </StyledList>
           )}
         </FocusLock>
