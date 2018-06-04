@@ -334,6 +334,13 @@ const colors = {
     bgOpen: [ 'secondary', 'base', ],
     bgHover: [ 'primary', 'base', ],
   },
+  navigationUser: {
+    bgHover: [ 'primary', 'base', ],
+    bgOpen: [ 'secondary', 'base', ],
+    iconColor: [ 'primary', 'base', ],
+    text: [ 'neutral', '-3', ],
+    textOpenOrHover: [ 'neutral', '-10', ],
+  },
   // Primary
   select: {
     primaryBg: 'white',
