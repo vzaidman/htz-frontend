@@ -1,8 +1,8 @@
 /* global document */
-import React, { Fragment, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, FelaComponent, } from 'react-fela';
-import List from './navigationList';
+import { FelaComponent, } from 'react-fela';
+import List from './navigationMenuList';
 import Hamburger from '../Animations/Hamburger';
 
 const propTypes = {
@@ -22,39 +22,28 @@ const propTypes = {
       /**
        * Section's pages (may contain pages or sub-sections with their own pages).
        */
-      pages: PropTypes.arrayOf(
-        PropTypes.object,
-      ),
-    }),
+      pages: PropTypes.arrayOf(PropTypes.object),
+    })
   ).isRequired,
 };
 
-const menuStyle = () => ({
-  position: 'relative',
-});
-const Menu = createComponent(menuStyle);
-
-const myButtonStyle = ({ theme, collapsed, }) => ({
-  ...(theme.type(-2)),
+const menuButtonStyle = ({ theme, isOpen, }) => ({
+  height: '100%',
+  display: 'block',
   color: theme.color('neutral', '-3'),
   border: 'none',
   padding: '1rem',
   fontWeight: '700',
-  ...(collapsed &&
-    {
-      backgroundColor: theme.color('secondary'),
-      color: theme.color('neutral', '-10'),
-    }
-  ),
+  ...(isOpen && {
+    backgroundColor: theme.color('secondary'),
+    color: theme.color('neutral', '-10'),
+  }),
+  ':hover': {
+    backgroundColor: theme.color('primary'),
+    color: theme.color('neutral', '-10'),
+  },
+  extend: [ theme.type(-2), ],
 });
-const MyButton = createComponent(myButtonStyle, 'button', [ 'onClick', 'role', 'aria-expanded', ]);
-
-const hamburgerWrapperStyle = () => ({
-  marginStart: '2rem',
-  marginEnd: '2rem',
-  position: 'relative',
-});
-const HamburgerWrapper = createComponent(hamburgerWrapperStyle, 'span');
 
 /**
  * A menu component for the page header. A recursive component which receives an array
@@ -64,16 +53,16 @@ const HamburgerWrapper = createComponent(hamburgerWrapperStyle, 'span');
 class NavigationMenu extends React.Component {
   componentWillMount() {
     this.setState({
-      collapsed: false,
+      isOpen: false,
     });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.collapsed !== nextState.collapsed;
+    return this.state.isOpen !== nextState.isOpen;
   }
 
   componentDidUpdate() {
-    if (this.state.collapsed) {
+    if (this.state.isOpen) {
       document.addEventListener('click', this.handleGlobalClick);
       document.addEventListener('keydown', this.handleGlobalKeydown);
     }
@@ -98,46 +87,65 @@ class NavigationMenu extends React.Component {
   };
 
   changeState = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen,
+    }));
   };
 
   render() {
     return (
       <FelaComponent
-        innerRef={wrapper => this.wrapper = wrapper} // eslint-disable-line no-return-assign
-        style={{ display: 'inline', }}
-        render={({ theme, }) => (
-          <Fragment>
-            <MyButton
-              collapsed={this.state.collapsed}
-              onClick={this.changeState}
-              role="button"
-              aria-expanded={this.state.collapsed}
-              innerRef={navButt => this.navButt = navButt} // eslint-disable-line no-return-assign
-            >
-              <HamburgerWrapper>
-                <Hamburger
-                  isOpen={this.state.collapsed}
-                  color={{
-                    close: [ 'neutral', '-3', ],
-                    open: [ 'neutral', '-10', ],
-                  }}
-                  size={2.5}
-                />
-              </HamburgerWrapper>
-              <span>{theme.navigationI18n.button}</span>
-            </MyButton>
-            <Menu>
-              {this.state.collapsed &&
-              <List
-                items={this.props.sections}
-                theme={theme}
-              />
-              }
-            </Menu>
-          </Fragment>
+        style={theme => ({
+          display: 'inline',
+          extend: [
+            theme.mq({ until: 's', }, { display: 'none', }),
+            theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
+          ],
+        })}
+        render={({ theme, className, }) => (
+          <div
+            className={className}
+            ref={wrapper => (this.wrapper = wrapper)} // eslint-disable-line no-return-assign
+          >
+            <FelaComponent
+              rule={menuButtonStyle}
+              isOpen={this.state.isOpen}
+              render={({ className, }) => (
+                <button
+                  className={className}
+                  onClick={this.changeState}
+                  aria-expanded={this.state.isOpen}
+                  ref={navButt => (this.navButt = navButt)} // eslint-disable-line no-return-assign
+                >
+                  {/* TODO: Hamburger should get :hover style color neutral -10 */}
+                  <FelaComponent
+                    style={{
+                      marginStart: '2rem',
+                      marginEnd: '2rem',
+                      position: 'relative',
+                    }}
+                    render="span"
+                  >
+                    <Hamburger
+                      isOpen={this.state.isOpen}
+                      color={{
+                        close: [ 'neutral', '-3', ],
+                        open: [ 'neutral', '-10', ],
+                      }}
+                      size={2.5}
+                    />
+                  </FelaComponent>
+                  <span>{theme.navigationI18n.button}</span>
+                </button>
+              )}
+            />
+            {/* TODO: Get list elements from polopoly */}
+            <FelaComponent style={{ position: 'relative', }}>
+              {this.state.isOpen && (
+                <List items={this.props.sections} theme={theme} />
+              )}
+            </FelaComponent>
+          </div>
         )}
       />
     );
