@@ -293,8 +293,6 @@ function DesktopView({
     .map(col => col.subscriptionName)
     .indexOf('BOTH');
 
-  console.log('HighlightedIndex: ', highlightedIndex);
-
   const tBodyData = buildTbody(tableData, staticTableData.tbody, cols);
 
   return (
