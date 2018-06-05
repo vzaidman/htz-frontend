@@ -289,6 +289,12 @@ function DesktopView({
 
   const tHeadData = buildThead(tableData, staticTableData.thead);
 
+  const highlightedIndex = tHeadData
+    .map(col => col.subscriptionName)
+    .indexOf('BOTH');
+
+  console.log('HighlightedIndex: ', highlightedIndex);
+
   const tBodyData = buildTbody(tableData, staticTableData.tbody, cols);
 
   return (
@@ -321,9 +327,7 @@ function DesktopView({
                           hasBorderTop
                           hasBorderStart
                           hasBorderEnd
-                          isHighlighted={
-                            tHeadData.length === 3 ? idx === 1 : idx === 0
-                          }
+                          isHighlighted={idx === highlightedIndex}
                           onClick={() => {
                             action({
                               actionCode: 105,
@@ -386,9 +390,7 @@ function DesktopView({
                   {row.map((cellData, idx) => (
                     <GridItem width={1 / 4} tagName="td" key={Math.random()}>
                       <StyledTdInnerCont
-                        isHighlighted={
-                          tBodyData[0].length === 4 ? idx === 2 : idx === 1
-                        }
+                        isHighlighted={highlightedIndex + 1 === idx}
                         isDescription={idx === 0}
                         isBold={rowNum === tBodyData.length - 2 && idx !== 0}
                         onClick={() => {
@@ -427,9 +429,7 @@ function DesktopView({
                       hasBorderBottom
                       hasBorderStart
                       hasBorderEnd
-                      isHighlighted={
-                        tHeadData.length === 3 ? idx === 1 : idx === 0
-                      }
+                      isHighlighted={highlightedIndex === idx}
                       onClick={() => {
                         continueToNextStage({ cache, idx, routerPush: true, });
                       }}
