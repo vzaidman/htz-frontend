@@ -4,10 +4,19 @@ import PropTypes from 'prop-types';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 
-
 const colorShape = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.arrayOf(PropTypes.string),
+]);
+
+const colorPropObj = PropTypes.oneOfType([
+  colorShape,
+  PropTypes.arrayOf(
+    PropTypes.shape({
+      ...responsivePropBaseType,
+      value: colorShape,
+    })
+  ),
 ]);
 
 const propTypes = {
@@ -18,13 +27,11 @@ const propTypes = {
    * like different colors for each state.
    */
   color: PropTypes.oneOfType([
-    colorShape,
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        ...responsivePropBaseType,
-        value: colorShape,
-      })
-    ),
+    PropTypes.shape({
+      close: colorPropObj,
+      open: colorPropObj,
+    }),
+    colorPropObj,
   ]),
   /**
    * The state of the Icon.
@@ -53,14 +60,21 @@ const setColor = (prop, value, getColor) => {
   };
 };
 
-const hamburgerDashStyle = (theme, isOpen, color, size, thickness, main = false) => ({
+const hamburgerDashStyle = (
+  theme,
+  isOpen,
+  color,
+  size,
+  thickness,
+  main = false
+) => ({
   height: `${thickness}px`,
   width: `${size}rem`,
   position: 'absolute',
-  transition: 'all .5s',
+  transition: 'transform .5s',
   extend: [
-    ...(isOpen ?
-      !main && [
+    ...(isOpen
+      ? !main && [
         parseComponentProp(
           'backgroundColor',
           color.open || color.close || color,
@@ -69,8 +83,7 @@ const hamburgerDashStyle = (theme, isOpen, color, size, thickness, main = false)
           theme.color
         ),
       ]
-      :
-      [
+      : [
         parseComponentProp(
           'backgroundColor',
           color.close || color.open || color,
@@ -78,14 +91,13 @@ const hamburgerDashStyle = (theme, isOpen, color, size, thickness, main = false)
           setColor,
           theme.color
         ),
-      ]
-    ),
+      ]),
   ],
 });
 
 const hamburgerStyle = ({ theme, isOpen, color, size, thickness, }) => ({
   ...(isOpen && { background: 'none', }),
-  ...(hamburgerDashStyle(theme, isOpen, color, size, thickness, true)),
+  ...hamburgerDashStyle(theme, isOpen, color, size, thickness, true),
   display: 'inline-block',
   left: '50%',
   margin: '0 auto',
@@ -93,15 +105,17 @@ const hamburgerStyle = ({ theme, isOpen, color, size, thickness, }) => ({
   transform: 'translate(-50%, -50%)',
   opacity: '1',
   ':before': {
-    ...(hamburgerDashStyle(theme, isOpen, color, size, thickness)),
+    ...hamburgerDashStyle(theme, isOpen, color, size, thickness),
     ...(isOpen && { transform: `translateY(${size / 3.33}rem) rotate(45deg)`, }),
     left: '0',
     top: `-${size / 3.33}rem`,
     content: '""',
   },
   ':after': {
-    ...(hamburgerDashStyle(theme, isOpen, color, size, thickness)),
-    ...(isOpen && { transform: `translateY(-${size / 3.33}rem) rotate(-45deg)`, }),
+    ...hamburgerDashStyle(theme, isOpen, color, size, thickness),
+    ...(isOpen && {
+      transform: `translateY(-${size / 3.33}rem) rotate(-45deg)`,
+    }),
     left: '0',
     top: `${size / 3.33}rem`,
     content: '""',
@@ -113,11 +127,7 @@ function Hamburger(props) {
     <FelaComponent
       {...props}
       rule={hamburgerStyle}
-      render={({ className, }) => (
-        <i
-          className={className}
-        />
-      )}
+      render={({ className, }) => <i className={className} />}
     />
   );
 }
