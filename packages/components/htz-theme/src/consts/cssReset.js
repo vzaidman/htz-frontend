@@ -319,6 +319,15 @@ const styles =
   'outline:none;' +
   '}' +
   /**
+   * Remove default search styling
+   */
+  'input[type="search"]::-webkit-search-decoration,' +
+  'input[type="search"]::-webkit-search-cancel-button,' +
+  'input[type="search"]::-webkit-search-results-button,' +
+  'input[type="search"]::-webkit-search-results-decoration{' +
+  'display:none' +
+  '}' +
+  /**
    * Inherit styling from parent
    */
   'button,' +
