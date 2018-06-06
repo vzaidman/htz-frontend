@@ -23,8 +23,8 @@ export const breadcrumbsI18n = Object.freeze({
   ariaLabel: 'מיקומך באתר',
 });
 
-export const navigationI18n = Object.freeze({
-  button: 'ניווט',
+export const navigationMenuI18n = Object.freeze({
+  buttonText: 'ניווט',
   additionalMenuItems: Object.freeze({
     sections: Object.freeze([
       Object.freeze({

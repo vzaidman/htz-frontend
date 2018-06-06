@@ -51,14 +51,16 @@ const menuButtonStyle = ({ theme, isOpen, }) => ({
  * pages and sub-section and so on...
  */
 class NavigationMenu extends React.Component {
-  componentWillMount() {
-    this.setState({
-      isOpen: false,
-    });
-  }
+  state = {
+    isHovered: false,
+    isOpen: false,
+  };
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.isOpen !== nextState.isOpen;
+    return (
+      this.state.isOpen !== nextState.isOpen ||
+      this.state.isHovered !== nextState.isHovered
+    );
   }
 
   componentDidUpdate() {
@@ -72,6 +74,8 @@ class NavigationMenu extends React.Component {
     }
   }
 
+  handleMouseEnter = () => this.setState({ isHovered: true, });
+  handleMouseLeave = () => this.setState({ isHovered: false, });
   handleGlobalClick = e => {
     if (!this.wrapper.contains(e.target)) {
       this.changeState();
@@ -93,6 +97,8 @@ class NavigationMenu extends React.Component {
   };
 
   render() {
+    const { isHovered, isOpen, } = this.state;
+
     return (
       <FelaComponent
         style={theme => ({
@@ -109,15 +115,16 @@ class NavigationMenu extends React.Component {
           >
             <FelaComponent
               rule={menuButtonStyle}
-              isOpen={this.state.isOpen}
+              isOpen={isOpen}
               render={({ className, }) => (
                 <button
                   className={className}
                   onClick={this.changeState}
-                  aria-expanded={this.state.isOpen}
+                  aria-expanded={isOpen}
                   ref={navButt => (this.navButt = navButt)} // eslint-disable-line no-return-assign
+                  onMouseEnter={this.handleMouseEnter}
+                  onMouseLeave={this.handleMouseLeave}
                 >
-                  {/* TODO: Hamburger should get :hover style color neutral -10 */}
                   <FelaComponent
                     style={{
                       marginStart: '2rem',
@@ -127,23 +134,23 @@ class NavigationMenu extends React.Component {
                     render="span"
                   >
                     <Hamburger
-                      isOpen={this.state.isOpen}
+                      isOpen={isOpen}
                       color={{
-                        close: [ 'neutral', '-3', ],
+                        close: isHovered
+                          ? [ 'neutral', '-10', ]
+                          : [ 'neutral', '-3', ],
                         open: [ 'neutral', '-10', ],
                       }}
                       size={2.5}
                     />
                   </FelaComponent>
-                  <span>{theme.navigationI18n.button}</span>
+                  <span>{theme.navigationMenuI18n.buttonText}</span>
                 </button>
               )}
             />
             {/* TODO: Get list elements from polopoly */}
             <FelaComponent style={{ position: 'relative', }}>
-              {this.state.isOpen && (
-                <List items={this.props.sections} theme={theme} />
-              )}
+              {isOpen && <List items={this.props.sections} theme={theme} />}
             </FelaComponent>
           </div>
         )}
