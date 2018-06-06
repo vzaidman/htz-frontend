@@ -1,6 +1,9 @@
 import { ApolloLink, } from 'apollo-link';
 import { ApolloClient, } from 'apollo-client';
-import { InMemoryCache, } from 'apollo-cache-inmemory';
+import {
+  InMemoryCache,
+  IntrospectionFragmentMatcher,
+} from 'apollo-cache-inmemory';
 import { HttpLink, } from 'apollo-link-http';
 import { withClientState, } from 'apollo-link-state';
 import { UserFactory, } from '@haaretz/htz-user-utils';
@@ -22,6 +25,14 @@ const defaultUser = {
 
 const port = config.get('port');
 let apolloClient = null;
+
+const customFragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData: {
+    __schema: {
+      types: [], // no types provided
+    },
+  },
+});
 
 // Polyfill fetch() on the server (used by apollo-client)
 if (!process.browser) {
@@ -48,6 +59,7 @@ function create(initialState, req) {
     includeExtensions: true,
   });
   const inMemoryCache = new InMemoryCache({
+    fragmentMatcher: customFragmentMatcher,
     dataIdFromObject: ({ __typename, contentId, }) =>
       (contentId ? `${__typename}:${contentId}` : null),
   }).restore(initialState || {});
