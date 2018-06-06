@@ -2,6 +2,7 @@
 /** *************************************** *
  *       C  O  M  P  O  N  E  N  T  S       *
  * **************************************** */
+
 import A11yDialog from './components/A11yDialog/A11yDialog';
 import A11yError from './components/A11yError/A11yError';
 import ActionButtons from './components/ActionButtons/ActionButtons';
@@ -29,6 +30,7 @@ import LinksBlock from './components/RelatedArticles/LinksBlock';
 import List from './components/List/List';
 import Media from './components/Media/Media';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
+import NavigationHeader from './components/NavigationHeader/NavigationHeader';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
 import Newsletter from './components/Newsletter/Newsletter';
 import Outbrain from './components/Outbrain/Outbrain';
@@ -155,6 +157,7 @@ export {
   List,
   Media,
   MobileQuickRegistration,
+  NavigationHeader,
   NavigationMenu,
   Outbrain,
   Osaka,

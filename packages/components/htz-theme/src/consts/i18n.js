@@ -60,7 +60,7 @@ export const navigationI18n = Object.freeze({
 });
 
 export const navigationSearchI18n = Object.freeze({
-  button: 'חיפוש',
+  buttonText: 'חיפוש',
   placeHolder: 'הקלידו לחיפוש באתר',
   queryUrl: query =>
     `https://www.haaretz.co.il/misc/search-results?text=${query}&searchType=textSearch`,

@@ -341,6 +341,13 @@ const colors = {
     text: [ 'neutral', '-3', ],
     textOpenOrHover: [ 'neutral', '-10', ],
   },
+  navigationSearch: {
+    text: [ 'neutral', '-3', ],
+    bgHover: [ 'primary', 'base', ],
+    bgInputOpen: [ 'primary', '-4', ],
+    textOpenOrHover: [ 'neutral', '-10', ],
+    bgOpen: [ 'secondary', 'base', ],
+  },
   // Primary
   select: {
     primaryBg: 'white',
