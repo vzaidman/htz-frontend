@@ -7,6 +7,7 @@ import ArticleHeader from '../components/ArticleHeader/ArticleHeader';
 import AdSlot from '../components/Ads/AdSlot';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import WrappedComments from '../components/CommentsSection/WrappedComments';
+import ClickTrackerWrapper from '../components/ClickTracker/ClickTrackerWrapper';
 import Embed from '../components/Embed/Embed';
 import Footer from '../components/Footer/Footer';
 import HtmlElement from '../components/Interactive/components/HtmlElement';
@@ -22,6 +23,8 @@ import RelatedArticles from '../components/RelatedArticles/RelatedArticles';
 import SeriesArticles from '../components/RelatedArticles/SeriesArticles';
 import Tags from '../components/Tags/Tags';
 import Video from '../components/Video/Video';
+
+// const isProduction = process.env.NODE_ENV === 'production';
 
 const inputTemplateToComponent = new Map([
   /* HeaderSlots components */
@@ -66,10 +69,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.mouse.ChronicalBoardElement', () => <p>ChronicalBoardElement</p>, ],
   [ 'com.tm.ElementGroup', () => <p>ElementGroup</p>, ],
   [ 'com.polobase.DfpBannerElement', AdSlot, ],
-  [
-    'com.polobase.ClickTrackerBannersWrapper',
-    () => <p>ClickTrackerBannersWrapper</p>,
-  ],
+  [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapper, ],
   [ null, null, ],
 ]);
 
