@@ -173,9 +173,9 @@ class NavigationSearch extends React.Component {
                               marginTop: '0',
                               paddingInlineEnd: '6rem',
                               // TODO: get an error in test: Failed prop type: Invalid prop `miscStyles.:hover` supplied to `TextInput`.
-                              // ':hover': {
-                              //   backgroundColor: 'transparent',
-                              // },
+                              ':hover': {
+                                backgroundColor: 'transparent',
+                              },
                             }}
                           />
                         </FelaComponent>
