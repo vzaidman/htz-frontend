@@ -25,7 +25,7 @@ export const breadcrumbsI18n = Object.freeze({
 
 export const navigationMenuI18n = Object.freeze({
   buttonText: 'ניווט',
-  additionalMenuItems: Object.freeze({
+  menuItems: Object.freeze({
     sections: Object.freeze([
       Object.freeze({
         name: 'מהדורה מודפסת',
@@ -223,7 +223,7 @@ export const welcomePageI18n = Object.freeze({
 
 export const navigationUserI18n = Object.freeze({
   noUserData: 'התחברות',
-  button: 'שלום',
+  buttonText: 'שלום',
   menuItems: Object.freeze([
     Object.freeze({
       name: 'הגדרות',

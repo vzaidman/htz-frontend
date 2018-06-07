@@ -7,7 +7,7 @@ const seriesArticle = Object.freeze({
   titlePrefix: 'סדרת כתבות: ',
 });
 
-export default { seriesArticle };
+export default { seriesArticle, };
 
 export const zoominText = 'הגדל';
 export const zoomoutText = 'הקטן';
@@ -16,9 +16,9 @@ export const tagsElementI18n = Object.freeze({
   prefix: 'תגיות:',
 });
 
-export const navigationI18n = Object.freeze({
-  button: 'ניווט',
-  additionalMenuItems: Object.freeze({
+export const navigationMenuI18n = Object.freeze({
+  buttonText: 'ניווט',
+  menuItems: Object.freeze({
     sections: Object.freeze([
       Object.freeze({
         name: 'מהדורה מודפסת',

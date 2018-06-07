@@ -72,7 +72,7 @@ class UserButton extends React.Component {
                   fontWeight: '400',
                 }}
               >
-                {theme.navigationUserI18n.button}
+                {theme.navigationUserI18n.buttonText}
                 {','}{' '}
               </FelaComponent>
               <FelaComponent

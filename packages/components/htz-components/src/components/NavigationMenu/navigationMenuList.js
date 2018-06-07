@@ -233,7 +233,7 @@ class List extends React.Component {
   render() {
     const { items, theme, isSub, startOffset = 0, } = this.props;
     const { sections, promotions, sites, } = !isSub
-      ? theme.navigationI18n.additionalMenuItems
+      ? theme.navigationMenuI18n.menuItems
       : {};
 
     return (
