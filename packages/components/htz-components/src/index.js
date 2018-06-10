@@ -74,6 +74,7 @@ import IconBold from './components/Icon/icons/IconBold';
 import IconBundle from './components/Icon/icons/IconBundle';
 import IconCamera from './components/Icon/icons/IconCamera';
 import IconCheck from './components/Icon/icons/IconCheck';
+import IconClock from './components/Icon/icons/IconClock';
 import IconClose from './components/Icon/icons/IconClose';
 import IconComment from './components/Icon/icons/IconComment';
 import IconCredit from './components/Icon/icons/IconCredit';
@@ -84,10 +85,10 @@ import IconFacebookLogo from './components/Icon/icons/IconFacebookLogo';
 import IconGPlus from './components/Icon/icons/IconGPlus';
 import IconHaaretzLogo from './components/Icon/icons/IconHaaretzLogo';
 import IconHaaretzFullLogo from './components/Icon/icons/IconHaaretzFullLogo';
-import IconHalfStar from './components/Icon/icons/IconHalfStar';
 import IconHtzLoader from './components/Icon/icons/IconHtzLoader';
 import IconInfo from './components/Icon/icons/IconInfo';
 import IconItalic from './components/Icon/icons/IconItalic';
+import IconLevels from './components/Icon/icons/IconLevels';
 import IconLike from './components/Icon/icons/IconLike';
 import IconLock from './components/Icon/icons/IconLock';
 import IconMail from './components/Icon/icons/IconMail';
@@ -99,6 +100,7 @@ import IconMessenger from './components/Icon/icons/IconMessenger';
 import IconPaypal from './components/Icon/icons/IconPaypal';
 import IconPdf from './components/Icon/icons/IconPdf';
 import IconPlus from './components/Icon/icons/IconPlus';
+import IconPortions from './components/Icon/icons/IconPortions';
 import IconPrint from './components/Icon/icons/IconPrint';
 import IconQuote from './components/Icon/icons/IconQuote';
 import IconReading from './components/Icon/icons/IconReading';
@@ -107,7 +109,7 @@ import IconSafePayment from './components/Icon/icons/IconSafePayment';
 import IconSave from './components/Icon/icons/IconSave';
 import IconSearch from './components/Icon/icons/IconSearch';
 import IconSettings from './components/Icon/icons/IconSettings';
-import IconStar from './components/Icon/icons/IconStar';
+import IconStar from './components/IconStar/IconStar';
 import IconTablet from './components/Icon/icons/IconTablet';
 import IconTheMarker from './components/Icon/icons/IconTheMarker';
 import IconTmLoader from './components/Icon/icons/IconTmLoader';
@@ -217,6 +219,7 @@ export {
   IconBundle,
   IconCamera,
   IconCheck,
+  IconClock,
   IconClose,
   IconComment,
   IconCredit,
@@ -227,10 +230,10 @@ export {
   IconGPlus,
   IconHaaretzLogo,
   IconHaaretzFullLogo,
-  IconHalfStar,
   IconHtzLoader,
   IconInfo,
   IconItalic,
+  IconLevels,
   IconLike,
   IconLock,
   IconMail,
@@ -242,6 +245,7 @@ export {
   IconPaypal,
   IconPdf,
   IconPlus,
+  IconPortions,
   IconPrint,
   IconQuote,
   IconReading,

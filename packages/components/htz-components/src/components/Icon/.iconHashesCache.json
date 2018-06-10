@@ -69,5 +69,10 @@
     "8e6dee4ce09d7eb78c260367bbd17681",
   "src/components/Icon/icons/IconZen.js": "913ec48b5f5b4e6a28bba91672deb076",
   "src/components/Icon/icons/IconZoomIn.js": "daa6d639fd0e91d70252f25784a6a7ba",
-  "src/components/Icon/icons/IconZoomOut.js": "d48c14db13a10713c6f7639008a88ffa"
+  "src/components/Icon/icons/IconZoomOut.js": "d48c14db13a10713c6f7639008a88ffa",
+  "src/components/Icon/icons/IconCheck.js": "312e089c9e46796f4acd8de98cb9d6cc",
+  "src/components/Icon/icons/IconClock.js": "1374ce9a0371048746b339e1291010dc",
+  "src/components/Icon/icons/IconLevels.js": "39859cffdaa1a9513f387b32858fb862",
+  "src/components/Icon/icons/IconPortions.js":
+  "078325c3f0f10217922e9148dc9bb356"
 }
