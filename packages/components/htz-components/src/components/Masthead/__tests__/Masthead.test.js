@@ -4,7 +4,7 @@ import { ApolloProvider, } from 'react-apollo';
 import htzTheme from '@haaretz/htz-theme';
 // import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
-import NavigationHeader from '../NavigationHeader';
+import Masthead from '../Masthead';
 import client from '../../../../styleguide/ApolloMockClient';
 
 Math.random = jest.fn(() => 123456789);
@@ -31,20 +31,20 @@ const btnStyle = Object.freeze({
 });
 
 const colors = {
-  navigationA11y: {
+  a11yMenu: {
     text: '#111111',
     textOpenOrHover: '#222222',
     bgOpen: '#333333',
     bgHover: '#444444',
   },
-  navigationUser: {
+  userMenu: {
     bgHover: '#111111',
     bgOpen: '#222222',
     iconColor: '#333333',
     text: '#444444',
     textOpenOrHover: '#555555',
   },
-  navigationSearch: {
+  headerSearch: {
     text: '#111111',
     bgHover: '#222222',
     bgInputOpen: '#333333',
@@ -114,9 +114,9 @@ const colors = {
 };
 
 const mockTheme = {
-  navigationUserI18n: Object.freeze({
+  userMenuI18n: Object.freeze({
     noUserData: 'התחברות',
-    button: 'שלום',
+    buttonText: 'שלום',
     menuItems: Object.freeze([
       Object.freeze({
         name: 'הגדרות',
@@ -137,7 +137,7 @@ const mockTheme = {
     buttonText: 'ניווט',
   }),
   color: (color, variant = 'base') => colors[color][variant],
-  navigationSearchI18n: Object.freeze({
+  headerSearchI18n: Object.freeze({
     buttonText: 'חיפוש',
     placeHolder: 'הקלידו לחיפוש באתר',
     queryUrl: query =>
@@ -163,12 +163,12 @@ const mockTheme = {
   type: htzTheme.type,
 };
 
-describe('<NavigationSearch', () => {
+describe('<MainHeader', () => {
   describe('DOM element', () => {
     it('check that opening the search input hidden the other components', () => {
       const output = felaMount(
         <ApolloProvider client={client}>
-          <NavigationHeader
+          <Masthead
             menuSections={[
               {
                 name: 'חדשות',

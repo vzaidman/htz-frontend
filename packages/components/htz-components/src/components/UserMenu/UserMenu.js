@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import Link from '../Link/Link';
 import IconAvatar from '../Icon/icons/IconAvatar';
-import List from './navigationUserList';
+import List from './UserMenuList';
 import UserButton from './UserButton';
 
 const propTypes = {
@@ -22,15 +22,15 @@ const noUserButtonStyle = theme => ({
   height: '100%',
   display: 'flex',
   alignItems: 'center',
-  color: theme.color('navigationUser', 'iconColor'),
+  color: theme.color('userMenu', 'iconColor'),
   border: 'none',
   paddingTop: '1rem',
   paddingBottom: '1rem',
   paddingInlineStart: '1rem',
   paddingInlineEnd: '1rem',
   ':hover': {
-    backgroundColor: theme.color('navigationUser', 'bgHover'),
-    color: theme.color('navigationUser', 'textOpenOrHover'),
+    backgroundColor: theme.color('userMenu', 'bgHover'),
+    color: theme.color('userMenu', 'textOpenOrHover'),
   },
   extend: [ theme.type(-2), ],
 });
@@ -41,7 +41,7 @@ const noUserButtonStyle = theme => ({
  * an array of links to generate a menu list,
  * and it also generate a signout function.
  */
-class NavigationUser extends React.Component {
+class UserMenu extends React.Component {
   state = { isOpen: false, };
 
   componentDidUpdate() {
@@ -88,7 +88,7 @@ class NavigationUser extends React.Component {
                     className={className}
                     href="https://www.haaretz.co.il/misc/login-page"
                   >
-                    <span>{theme.navigationUserI18n.noUserData}</span>
+                    <span>{theme.userMenuI18n.noUserData}</span>
                     <IconAvatar size={3} miscStyles={{ marginRight: '2rem', }} />
                   </Link>
                 )}
@@ -117,7 +117,7 @@ class NavigationUser extends React.Component {
               {this.state.isOpen && (
                 <List
                   theme={theme}
-                  items={theme.navigationUserI18n.menuItems}
+                  items={theme.userMenuI18n.menuItems}
                   onLogout={() => this.changeState()}
                 />
               )}
@@ -129,7 +129,7 @@ class NavigationUser extends React.Component {
   }
 }
 
-NavigationUser.propTypes = propTypes;
-NavigationUser.defaultProps = defaultProps;
+UserMenu.propTypes = propTypes;
+UserMenu.defaultProps = defaultProps;
 
-export default NavigationUser;
+export default UserMenu;

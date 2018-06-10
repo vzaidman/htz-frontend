@@ -3,11 +3,9 @@ import { createComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 
 import NavigationMenu from '../NavigationMenu/NavigationMenu';
-import NavigationSearch from '../NavigationSearch/NavigationSearch';
+import HeaderSearch from '../HeaderSearch/HeaderSearch';
 
-const propTypes = {
-
-};
+const propTypes = {};
 
 const wrapperStyle = ({ theme, }) => ({
   backgroundColor: theme.color('neutral', '-10'),
@@ -22,7 +20,7 @@ function Header() {
   return (
     <Wrapper>
       <NavigationMenu />
-      <NavigationSearch
+      <HeaderSearch
         miscStyles={{
           flexGrow: '2',
         }}

@@ -29,7 +29,7 @@ class UserButton extends React.Component {
       <FelaComponent
         style={theme => ({
           height: '100%',
-          color: theme.color('navigationUser', 'iconColor'),
+          color: theme.color('userMenu', 'iconColor'),
           display: 'flex',
           border: 'none',
           paddingTop: '1rem',
@@ -41,9 +41,9 @@ class UserButton extends React.Component {
             isOpen || isHovered
               ? {
                   backgroundColor: isHovered
-                    ? theme.color('navigationUser', 'bgHover')
-                    : theme.color('navigationUser', 'bgOpen'),
-                  color: theme.color('navigationUser', 'textOpenOrHover'),
+                    ? theme.color('userMenu', 'bgHover')
+                    : theme.color('userMenu', 'bgOpen'),
+                  color: theme.color('userMenu', 'textOpenOrHover'),
                 }
               : {},
           ],
@@ -62,8 +62,8 @@ class UserButton extends React.Component {
               style={{
                 color:
                   isHovered || isOpen
-                    ? theme.color('navigationUser', 'textOpenOrHover')
-                    : theme.color('navigationUser', 'text'),
+                    ? theme.color('userMenu', 'textOpenOrHover')
+                    : theme.color('userMenu', 'text'),
               }}
             >
               <FelaComponent
@@ -72,7 +72,7 @@ class UserButton extends React.Component {
                   fontWeight: '400',
                 }}
               >
-                {theme.navigationUserI18n.buttonText}
+                {theme.userMenuI18n.buttonText}
                 {','}{' '}
               </FelaComponent>
               <FelaComponent

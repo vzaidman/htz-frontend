@@ -169,7 +169,7 @@ class List extends React.Component {
                         }}
                       >
                         <ItemName>
-                          {theme.navigationA11yI18n.a11yToggle(a11yToggle)}
+                          {theme.a11yMenuI18n.a11yToggle(a11yToggle)}
                         </ItemName>
                       </Button>
                     </Item>

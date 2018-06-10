@@ -122,7 +122,7 @@ class List extends React.Component {
                     content={<ItemName>{item.name}</ItemName>}
                   />
                 </Item>
-                ))}
+              ))}
               <Logout
                 render={({ logout, }) => (
                   <li>
@@ -141,7 +141,7 @@ class List extends React.Component {
                         logout().then(() => this.props.onLogout())
                       }
                     >
-                      <ItemName>{theme.navigationUserI18n.logout}</ItemName>
+                      <ItemName>{theme.userMenuI18n.logout}</ItemName>
                     </Button>
                   </li>
                 )}

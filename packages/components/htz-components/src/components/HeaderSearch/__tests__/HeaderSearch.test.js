@@ -1,10 +1,10 @@
 import React from 'react';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
-import NavigationSearch from '../NavigationSearch';
+import HeaderSearch from '../HeaderSearch';
 
-it('Navigation Search ', () => {
+it('Header Search ', () => {
   const snapshot = felaSnapshotter(
-    <NavigationSearch
+    <HeaderSearch
       searchIsOpen={false}
       onClick={() => console.log('change state')}
     />

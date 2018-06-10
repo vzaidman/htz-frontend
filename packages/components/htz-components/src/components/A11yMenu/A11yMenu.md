@@ -4,14 +4,14 @@
 
 **Table of Contents**
 
-* [NavigationA11y examples](#navigationA11y-examples)
+* [A11yMenu examples](#A11yMenu-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### NavigationA11y examples
+### A11yMenu examples
 
 ```jsx
 <div style={{ direction: 'rtl' }}>
-  <NavigationA11y />
+  <A11yMenu />
 </div>
 ```

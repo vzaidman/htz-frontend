@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navigation Search  1`] = `
+exports[`Header Search  1`] = `
 Object {
   "component": <div>
     <div

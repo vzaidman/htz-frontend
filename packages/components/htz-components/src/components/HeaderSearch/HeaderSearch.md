@@ -4,14 +4,14 @@
 
 **Table of Contents**
 
-* [NavigationSearch examples](#NavigationSearch-examples)
+* [HeaderSearch examples](#HeaderSearch-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### NavigationSearch examples
+### HeaderSearch examples
 
 ```jsx
 <div style={{ direction: 'rtl' }}>
-  <NavigationSearch />
+  <HeaderSearch />
 </div>
 ```

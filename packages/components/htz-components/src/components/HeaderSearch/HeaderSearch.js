@@ -18,7 +18,7 @@ const propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-class NavigationSearch extends React.Component {
+class HeaderSearch extends React.Component {
   state = {
     query: null,
     isHovered: false,
@@ -71,7 +71,7 @@ class NavigationSearch extends React.Component {
             getDuration,
             getTimingFunction,
             getTransition,
-            navigationSearchI18n: { buttonText, placeHolder, queryUrl, },
+            headerSearchI18n: { buttonText, placeHolder, queryUrl, },
             type,
           },
         }) => (
@@ -79,7 +79,7 @@ class NavigationSearch extends React.Component {
             <FelaComponent
               style={{
                 alignItems: 'center',
-                color: color('navigationSearch', 'text'),
+                color: color('headerSearch', 'text'),
                 display: 'flex',
                 // ':focus': { outline: 'none', },
                 fontWeight: '700',
@@ -90,8 +90,8 @@ class NavigationSearch extends React.Component {
                 zIndex: '1',
                 ...(searchIsOpen
                   ? {
-                      backgroundColor: color('navigationSearch', 'bgHover'),
-                      color: color('navigationSearch', 'textOpenOrHover'),
+                      backgroundColor: color('headerSearch', 'bgHover'),
+                      color: color('headerSearch', 'textOpenOrHover'),
                     }
                   : {}),
                 extend: [
@@ -99,9 +99,9 @@ class NavigationSearch extends React.Component {
                   isHovered
                     ? {
                         backgroundColor: isHovered
-                          ? color('navigationSearch', 'bgHover')
-                          : color('navigationSearch', 'bgOpen'),
-                        color: color('navigationSearch', 'textOpenOrHover'),
+                          ? color('headerSearch', 'bgHover')
+                          : color('headerSearch', 'bgOpen'),
+                        color: color('headerSearch', 'textOpenOrHover'),
                       }
                     : {},
                   getTransition(1, 'swiftOut'),
@@ -126,7 +126,7 @@ class NavigationSearch extends React.Component {
                           marginEnd: '1rem',
                           ...(isHovered
                             ? {}
-                            : { color: color('navigationSearch', 'bgHover'), }),
+                            : { color: color('headerSearch', 'bgHover'), }),
                           extend: [ getTransition(1, 'swiftOut'), ],
                         }}
                       />
@@ -147,7 +147,7 @@ class NavigationSearch extends React.Component {
                         '100%': { transform: 'translateX(0)', },
                       },
                       animationFillMode: 'forwards',
-                      backgroundColor: color('navigationSearch', 'bgInputOpen'),
+                      backgroundColor: color('headerSearch', 'bgInputOpen'),
                       display: 'flex',
                       flexGrow: '1',
                       ...getDuration('animation', 2),
@@ -216,6 +216,6 @@ class NavigationSearch extends React.Component {
   }
 }
 
-NavigationSearch.propTypes = propTypes;
+HeaderSearch.propTypes = propTypes;
 
-export default NavigationSearch;
+export default HeaderSearch;

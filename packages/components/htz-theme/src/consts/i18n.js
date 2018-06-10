@@ -59,7 +59,7 @@ export const navigationMenuI18n = Object.freeze({
   }),
 });
 
-export const navigationSearchI18n = Object.freeze({
+export const headerSearchI18n = Object.freeze({
   buttonText: 'חיפוש',
   placeHolder: 'הקלידו לחיפוש באתר',
   queryUrl: query =>
@@ -221,7 +221,7 @@ export const welcomePageI18n = Object.freeze({
   buttonText: 'לעמוד החדש',
 });
 
-export const navigationUserI18n = Object.freeze({
+export const userMenuI18n = Object.freeze({
   noUserData: 'התחברות',
   buttonText: 'שלום',
   menuItems: Object.freeze([
@@ -241,7 +241,7 @@ export const navigationUserI18n = Object.freeze({
   logout: 'התנתקות',
 });
 
-export const navigationA11yI18n = Object.freeze({
+export const a11yMenuI18n = Object.freeze({
   a11yToggle: state => `${state ? 'הפסק' : 'הפעל'} מצג ניגודיות`,
   menuItems: Object.freeze([
     Object.freeze({

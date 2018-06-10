@@ -1,22 +1,22 @@
 /* global document */
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
-import List from './navigationA11yList';
+import List from './A11yMenuList';
 import IconAccessibility from '../Icon/icons/IconAccessibility';
 
 const a11yButtonStyle = ({ theme, isOpen, }) => ({
   display: 'flex',
   ...theme.type(-2),
-  color: theme.color('navigationA11y', 'text'),
+  color: theme.color('a11yMenu', 'text'),
   border: 'none',
   padding: '1rem',
   ...(isOpen && {
-    backgroundColor: theme.color('navigationA11y', 'bgOpen'),
-    color: theme.color('navigationA11y', 'textOpenOrHover'),
+    backgroundColor: theme.color('a11yMenu', 'bgOpen'),
+    color: theme.color('a11yMenu', 'textOpenOrHover'),
   }),
   ':hover': {
-    backgroundColor: theme.color('navigationA11y', 'bgHover'),
-    color: theme.color('navigationA11y', 'textOpenOrHover'),
+    backgroundColor: theme.color('a11yMenu', 'bgHover'),
+    color: theme.color('a11yMenu', 'textOpenOrHover'),
   },
 });
 
@@ -24,7 +24,7 @@ const a11yButtonStyle = ({ theme, isOpen, }) => ({
  * A menu component for the page header. A component which generate
  * two options: toggle accessibility on apollo link state and report a problem via email
  */
-class NavigationA11y extends React.Component {
+class A11yMenu extends React.Component {
   componentWillMount() {
     this.setState({
       isOpen: false,
@@ -94,10 +94,7 @@ class NavigationA11y extends React.Component {
             style={{ position: 'relative', }}
             render={({ className, theme, }) => (
               <div className={className}>
-                <List
-                  theme={theme}
-                  items={theme.navigationA11yI18n.menuItems}
-                />
+                <List theme={theme} items={theme.a11yMenuI18n.menuItems} />
               </div>
             )}
           />
@@ -107,4 +104,4 @@ class NavigationA11y extends React.Component {
   }
 }
 
-export default NavigationA11y;
+export default A11yMenu;

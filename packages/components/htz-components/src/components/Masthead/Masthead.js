@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+import A11yMenu from '../A11yMenu/A11yMenu';
+import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import IconHaaretzLogo from '../Icon/icons/IconHaaretzLogo';
 import IconReading from '../Icon/icons/IconReading';
 import Link from '../Link/Link';
-import UserDispenser from '../User/UserDispenser';
-import NavigationA11y from '../NavigationA11y/NavigationA11y';
 import NavigationMenu from '../NavigationMenu/NavigationMenu';
-import NavigationSearch from '../NavigationSearch/NavigationSearch';
-import NavigationUser from '../NavigationUser/NavigationUser';
+import UserDispenser from '../User/UserDispenser';
+import UserMenu from '../UserMenu/UserMenu';
 
 const propTypes = {
   /**
@@ -32,7 +32,7 @@ const propTypes = {
   ).isRequired,
 };
 
-const navReadingButtonStyle = theme => ({
+const headerReadingButtonStyle = theme => ({
   display: 'flex',
   alignItems: 'center',
   color: theme.color('primary'),
@@ -48,9 +48,9 @@ const navReadingButtonStyle = theme => ({
   extend: [ theme.type(-2), ],
 });
 
-const NavigationReading = () => (
+const HeaderReading = () => (
   <FelaComponent
-    style={navReadingButtonStyle}
+    style={headerReadingButtonStyle}
     render={({ theme, className, }) => (
       <Link
         className={className}
@@ -90,16 +90,16 @@ const HeaderUserItems = () => (
     render={({ theme, className, }) => (
       <div className={className}>
         <UserDispenser
-          render={({ user, }) => <NavigationUser userName={user.firstName} />}
+          render={({ user, }) => <UserMenu userName={user.firstName} />}
         />
-        <NavigationReading />
-        <NavigationA11y />
+        <HeaderReading />
+        <A11yMenu />
       </div>
     )}
   />
 );
 
-class NavigationHeader extends React.Component {
+class Masthead extends React.Component {
   state = { searchIsOpen: false, };
 
   toggleSearchState = () => {
@@ -117,7 +117,7 @@ class NavigationHeader extends React.Component {
         render={({ theme, className, }) => (
           <header className={className}>
             <NavigationMenu sections={menuSections} />
-            <NavigationSearch
+            <HeaderSearch
               searchIsOpen={this.state.searchIsOpen}
               onClick={this.toggleSearchState}
             />
@@ -130,6 +130,6 @@ class NavigationHeader extends React.Component {
   }
 }
 
-NavigationHeader.propTypes = propTypes;
+Masthead.propTypes = propTypes;
 
-export default NavigationHeader;
+export default Masthead;

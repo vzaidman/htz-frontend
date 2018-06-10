@@ -6,7 +6,7 @@ import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
 import client from '../../../../styleguide/ApolloMockClient';
 
-import NavigationUser from '../NavigationUser'; // eslint-disable-line import/no-named-as-default
+import UserMenu from '../UserMenu';
 
 const btnStyle = Object.freeze({
   // Border width
@@ -30,7 +30,7 @@ const btnStyle = Object.freeze({
 });
 
 const colors = {
-  navigationUser: {
+  userMenu: {
     bgHover: '#111111',
     bgOpen: '#222222',
     iconColor: '#333333',
@@ -46,9 +46,9 @@ const colors = {
 
 const mockTheme = {
   color: (color, variant = 'base') => colors[color][variant],
-  navigationUserI18n: {
+  userMenuI18n: {
     noUserData: 'התחברות',
-    button: 'שלום',
+    buttonText: 'שלום',
     logout: 'התנתקות',
     menuItems: [
       {
@@ -74,18 +74,18 @@ const mockTheme = {
   getTimingFunction: htzTheme.getTimingFunction,
 };
 
-describe('<NavigationUser', () => {
+describe('<UserMenu', () => {
   describe('DOM element', () => {
     it('renders correctly with no props', () => {
       const { component, styles, } = felaSnapshotter(
-        <NavigationUser userName={null} />
+        <UserMenu userName={null} />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with props', () => {
       const { component, styles, } = felaSnapshotter(
-        <NavigationUser userName="[USER]" />
+        <UserMenu userName="[USER]" />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -93,7 +93,7 @@ describe('<NavigationUser', () => {
     it('generate a link with no props', () => {
       const output = felaMount(
         <ApolloProvider client={client}>
-          <NavigationUser userName={null} />
+          <UserMenu userName={null} />
         </ApolloProvider>,
         mockTheme
       );
@@ -102,7 +102,7 @@ describe('<NavigationUser', () => {
     it('generate a click and return a list with 4 li', () => {
       const output = felaMount(
         <ApolloProvider client={client}>
-          <NavigationUser userName="[USER]" />
+          <UserMenu userName="[USER]" />
         </ApolloProvider>,
         mockTheme
       );
@@ -115,7 +115,7 @@ describe('<NavigationUser', () => {
     it('check that mouseEnter event and mouseLeave event change the state', () => {
       const output = felaMount(
         <ApolloProvider client={client}>
-          <NavigationUser userName="[USER]" />
+          <UserMenu userName="[USER]" />
         </ApolloProvider>,
         mockTheme
       );

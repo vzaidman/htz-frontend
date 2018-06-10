@@ -328,20 +328,20 @@ const colors = {
     base: [ 'primary', 'base', ],
     text: [ 'neutral', '-3', ],
   },
-  navigationA11y: {
+  a11yMenu: {
     text: [ 'primary', 'base', ],
     textOpenOrHover: [ 'neutral', '-10', ],
     bgOpen: [ 'secondary', 'base', ],
     bgHover: [ 'primary', 'base', ],
   },
-  navigationUser: {
+  userMenu: {
     bgHover: [ 'primary', 'base', ],
     bgOpen: [ 'secondary', 'base', ],
     iconColor: [ 'primary', 'base', ],
     text: [ 'neutral', '-3', ],
     textOpenOrHover: [ 'neutral', '-10', ],
   },
-  navigationSearch: {
+  headerSearch: {
     text: [ 'neutral', '-3', ],
     bgHover: [ 'primary', 'base', ],
     bgInputOpen: [ 'primary', '-4', ],

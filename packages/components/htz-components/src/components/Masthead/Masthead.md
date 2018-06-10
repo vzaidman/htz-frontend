@@ -4,15 +4,15 @@
 
 **Table of Contents**
 
-* [NavigationHeader examples](#NavigationHeader-examples)
+* [Masthead examples](#Masthead-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### NavigationHeader examples
+### Masthead examples
 
 ```jsx
 <div style={{ direction: 'rtl', marginBottom: '400px' }}>
-  <NavigationHeader
+  <Masthead
     menuSections={[
       {
         name: 'חדשות',

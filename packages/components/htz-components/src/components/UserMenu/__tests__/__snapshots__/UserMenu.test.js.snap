@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NavigationUser DOM element generate a click and return a list with 4 li 1`] = `
+exports[`<UserMenu DOM element generate a click and return a list with 4 li 1`] = `
 <ApolloProvider
   client={
     ApolloClient {
@@ -1391,7 +1391,7 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
     }
   }
 >
-  <NavigationUser
+  <UserMenu
     userName="[USER]"
   >
     <FelaComponent
@@ -1522,8 +1522,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                           "getTimingFunction": [Function],
                           "getTransition": [Function],
                           "getTransitionString": [Function],
-                          "navigationUserI18n": Object {
-                            "button": "שלום",
+                          "type": [Function],
+                          "userMenuI18n": Object {
+                            "buttonText": "שלום",
                             "logout": "התנתקות",
                             "menuItems": Array [
                               Object {
@@ -1541,7 +1542,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                             ],
                             "noUserData": "התחברות",
                           },
-                          "type": [Function],
                         }
                       }
                       color={null}
@@ -1633,8 +1633,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                       "getTimingFunction": [Function],
                       "getTransition": [Function],
                       "getTransitionString": [Function],
-                      "navigationUserI18n": Object {
-                        "button": "שלום",
+                      "type": [Function],
+                      "userMenuI18n": Object {
+                        "buttonText": "שלום",
                         "logout": "התנתקות",
                         "menuItems": Array [
                           Object {
@@ -1652,7 +1653,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                         ],
                         "noUserData": "התחברות",
                       },
-                      "type": [Function],
                     }
                   }
                 >
@@ -1890,8 +1890,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                     "getTimingFunction": [Function],
                                     "getTransition": [Function],
                                     "getTransitionString": [Function],
-                                    "navigationUserI18n": Object {
-                                      "button": "שלום",
+                                    "type": [Function],
+                                    "userMenuI18n": Object {
+                                      "buttonText": "שלום",
                                       "logout": "התנתקות",
                                       "menuItems": Array [
                                         Object {
@@ -1909,7 +1910,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                       ],
                                       "noUserData": "התחברות",
                                     },
-                                    "type": [Function],
                                   }
                                 }
                                 innerRef={[Function]}
@@ -1948,8 +1948,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                           "getTimingFunction": [Function],
                                           "getTransition": [Function],
                                           "getTransitionString": [Function],
-                                          "navigationUserI18n": Object {
-                                            "button": "שלום",
+                                          "type": [Function],
+                                          "userMenuI18n": Object {
+                                            "buttonText": "שלום",
                                             "logout": "התנתקות",
                                             "menuItems": Array [
                                               Object {
@@ -1967,7 +1968,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                             ],
                                             "noUserData": "התחברות",
                                           },
-                                          "type": [Function],
                                         }
                                       }
                                     >
@@ -1987,6 +1987,7 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                           href="https://www.haaretz.co.il/personal-area/my-account"
                                           onClick={null}
                                           prefetch={null}
+                                          refFunc={null}
                                           target={null}
                                         >
                                           <linkStyle
@@ -2015,8 +2016,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                 "getTimingFunction": [Function],
                                                 "getTransition": [Function],
                                                 "getTransitionString": [Function],
-                                                "navigationUserI18n": Object {
-                                                  "button": "שלום",
+                                                "type": [Function],
+                                                "userMenuI18n": Object {
+                                                  "buttonText": "שלום",
                                                   "logout": "התנתקות",
                                                   "menuItems": Array [
                                                     Object {
@@ -2034,7 +2036,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                   ],
                                                   "noUserData": "התחברות",
                                                 },
-                                                "type": [Function],
                                               }
                                             }
                                             asPath={null}
@@ -2049,6 +2050,7 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                             href="https://www.haaretz.co.il/personal-area/my-account"
                                             onClick={null}
                                             prefetch={null}
+                                            refFunc={null}
                                             target={null}
                                           >
                                             <Link
@@ -2064,6 +2066,7 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                               href="https://www.haaretz.co.il/personal-area/my-account"
                                               onClick={null}
                                               prefetch={null}
+                                              refFunc={null}
                                               target={null}
                                             >
                                               <a
@@ -2099,8 +2102,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                         "getTimingFunction": [Function],
                                                         "getTransition": [Function],
                                                         "getTransitionString": [Function],
-                                                        "navigationUserI18n": Object {
-                                                          "button": "שלום",
+                                                        "type": [Function],
+                                                        "userMenuI18n": Object {
+                                                          "buttonText": "שלום",
                                                           "logout": "התנתקות",
                                                           "menuItems": Array [
                                                             Object {
@@ -2118,7 +2122,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                           ],
                                                           "noUserData": "התחברות",
                                                         },
-                                                        "type": [Function],
                                                       }
                                                     }
                                                   >
@@ -2165,8 +2168,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                           "getTimingFunction": [Function],
                                           "getTransition": [Function],
                                           "getTransitionString": [Function],
-                                          "navigationUserI18n": Object {
-                                            "button": "שלום",
+                                          "type": [Function],
+                                          "userMenuI18n": Object {
+                                            "buttonText": "שלום",
                                             "logout": "התנתקות",
                                             "menuItems": Array [
                                               Object {
@@ -2184,7 +2188,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                             ],
                                             "noUserData": "התחברות",
                                           },
-                                          "type": [Function],
                                         }
                                       }
                                     >
@@ -2204,6 +2207,7 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                           href="https://www.haaretz.co.il/personal-area/my-account"
                                           onClick={null}
                                           prefetch={null}
+                                          refFunc={null}
                                           target={null}
                                         >
                                           <linkStyle
@@ -2232,8 +2236,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                 "getTimingFunction": [Function],
                                                 "getTransition": [Function],
                                                 "getTransitionString": [Function],
-                                                "navigationUserI18n": Object {
-                                                  "button": "שלום",
+                                                "type": [Function],
+                                                "userMenuI18n": Object {
+                                                  "buttonText": "שלום",
                                                   "logout": "התנתקות",
                                                   "menuItems": Array [
                                                     Object {
@@ -2251,7 +2256,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                   ],
                                                   "noUserData": "התחברות",
                                                 },
-                                                "type": [Function],
                                               }
                                             }
                                             asPath={null}
@@ -2266,6 +2270,7 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                             href="https://www.haaretz.co.il/personal-area/my-account"
                                             onClick={null}
                                             prefetch={null}
+                                            refFunc={null}
                                             target={null}
                                           >
                                             <Link
@@ -2281,6 +2286,7 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                               href="https://www.haaretz.co.il/personal-area/my-account"
                                               onClick={null}
                                               prefetch={null}
+                                              refFunc={null}
                                               target={null}
                                             >
                                               <a
@@ -2316,8 +2322,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                         "getTimingFunction": [Function],
                                                         "getTransition": [Function],
                                                         "getTransitionString": [Function],
-                                                        "navigationUserI18n": Object {
-                                                          "button": "שלום",
+                                                        "type": [Function],
+                                                        "userMenuI18n": Object {
+                                                          "buttonText": "שלום",
                                                           "logout": "התנתקות",
                                                           "menuItems": Array [
                                                             Object {
@@ -2335,7 +2342,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                           ],
                                                           "noUserData": "התחברות",
                                                         },
-                                                        "type": [Function],
                                                       }
                                                     }
                                                   >
@@ -2382,8 +2388,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                           "getTimingFunction": [Function],
                                           "getTransition": [Function],
                                           "getTransitionString": [Function],
-                                          "navigationUserI18n": Object {
-                                            "button": "שלום",
+                                          "type": [Function],
+                                          "userMenuI18n": Object {
+                                            "buttonText": "שלום",
                                             "logout": "התנתקות",
                                             "menuItems": Array [
                                               Object {
@@ -2401,7 +2408,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                             ],
                                             "noUserData": "התחברות",
                                           },
-                                          "type": [Function],
                                         }
                                       }
                                     >
@@ -2421,6 +2427,7 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                           href="https://www.haaretz.co.il/personal-area/newsletter"
                                           onClick={null}
                                           prefetch={null}
+                                          refFunc={null}
                                           target={null}
                                         >
                                           <linkStyle
@@ -2449,8 +2456,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                 "getTimingFunction": [Function],
                                                 "getTransition": [Function],
                                                 "getTransitionString": [Function],
-                                                "navigationUserI18n": Object {
-                                                  "button": "שלום",
+                                                "type": [Function],
+                                                "userMenuI18n": Object {
+                                                  "buttonText": "שלום",
                                                   "logout": "התנתקות",
                                                   "menuItems": Array [
                                                     Object {
@@ -2468,7 +2476,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                   ],
                                                   "noUserData": "התחברות",
                                                 },
-                                                "type": [Function],
                                               }
                                             }
                                             asPath={null}
@@ -2483,6 +2490,7 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                             href="https://www.haaretz.co.il/personal-area/newsletter"
                                             onClick={null}
                                             prefetch={null}
+                                            refFunc={null}
                                             target={null}
                                           >
                                             <Link
@@ -2498,6 +2506,7 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                               href="https://www.haaretz.co.il/personal-area/newsletter"
                                               onClick={null}
                                               prefetch={null}
+                                              refFunc={null}
                                               target={null}
                                             >
                                               <a
@@ -2533,8 +2542,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                         "getTimingFunction": [Function],
                                                         "getTransition": [Function],
                                                         "getTransitionString": [Function],
-                                                        "navigationUserI18n": Object {
-                                                          "button": "שלום",
+                                                        "type": [Function],
+                                                        "userMenuI18n": Object {
+                                                          "buttonText": "שלום",
                                                           "logout": "התנתקות",
                                                           "menuItems": Array [
                                                             Object {
@@ -2552,7 +2562,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                           ],
                                                           "noUserData": "התחברות",
                                                         },
-                                                        "type": [Function],
                                                       }
                                                     }
                                                   >
@@ -2952,8 +2961,9 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                                   "getTimingFunction": [Function],
                                                                   "getTransition": [Function],
                                                                   "getTransitionString": [Function],
-                                                                  "navigationUserI18n": Object {
-                                                                    "button": "שלום",
+                                                                  "type": [Function],
+                                                                  "userMenuI18n": Object {
+                                                                    "buttonText": "שלום",
                                                                     "logout": "התנתקות",
                                                                     "menuItems": Array [
                                                                       Object {
@@ -2971,7 +2981,6 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
                                                                     ],
                                                                     "noUserData": "התחברות",
                                                                   },
-                                                                  "type": [Function],
                                                                 }
                                                               }
                                                             >
@@ -3036,11 +3045,11 @@ exports[`<NavigationUser DOM element generate a click and return a list with 4 l
         </div>
       </FelaTheme>
     </FelaComponent>
-  </NavigationUser>
+  </UserMenu>
 </ApolloProvider>
 `;
 
-exports[`<NavigationUser DOM element renders correctly with no props 1`] = `
+exports[`<UserMenu DOM element renders correctly with no props 1`] = `
 <div>
   <div
     className=""
@@ -3071,9 +3080,9 @@ exports[`<NavigationUser DOM element renders correctly with no props 1`] = `
 </div>
 `;
 
-exports[`<NavigationUser DOM element renders correctly with no props 2`] = `".htz-a{height:100%}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{color:#0B7EB5}.htz-e{border:none}.htz-f{padding-top:1rem}.htz-g{padding-bottom:1rem}.htz-h{padding-right:1rem}.htz-i{padding-left:1rem}.htz-n:hover{background-color:#0B7EB5}.htz-o:hover{color:#FFF}.htz-p{-webkit-box-align:center}.htz-q{vertical-align:-0.15em}.htz-r{color:inherit}.htz-s{fill:#FFF}.htz-t{font-size:3rem}.htz-u{margin-right:2rem}@media (max-width: 79.9375em){.htz-j{font-size:2rem}.htz-k{line-height:1.5em}}@media (min-width: 80em){.htz-l{font-size:2rem}.htz-m{line-height:1.5em}}"`;
+exports[`<UserMenu DOM element renders correctly with no props 2`] = `".htz-a{height:100%}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{color:#0B7EB5}.htz-e{border:none}.htz-f{padding-top:1rem}.htz-g{padding-bottom:1rem}.htz-h{padding-right:1rem}.htz-i{padding-left:1rem}.htz-n:hover{background-color:#0B7EB5}.htz-o:hover{color:#FFF}.htz-p{-webkit-box-align:center}.htz-q{vertical-align:-0.15em}.htz-r{color:inherit}.htz-s{fill:#FFF}.htz-t{font-size:3rem}.htz-u{margin-right:2rem}@media (max-width: 79.9375em){.htz-j{font-size:2rem}.htz-k{line-height:1.5em}}@media (min-width: 80em){.htz-l{font-size:2rem}.htz-m{line-height:1.5em}}"`;
 
-exports[`<NavigationUser DOM element renders correctly with props 1`] = `
+exports[`<UserMenu DOM element renders correctly with props 1`] = `
 <div>
   <div
     className="htz-a"
@@ -3122,4 +3131,4 @@ exports[`<NavigationUser DOM element renders correctly with props 1`] = `
 </div>
 `;
 
-exports[`<NavigationUser DOM element renders correctly with props 2`] = `".htz-a{display:inline}.htz-b{height:100%}.htz-c{color:#0B7EB5}.htz-d{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-e{border:none}.htz-f{padding-top:1rem}.htz-g{padding-bottom:1rem}.htz-h{padding-right:1rem}.htz-i{padding-left:1rem}.htz-n{color:#787878}.htz-o{font-weight:400}.htz-p{font-weight:700}.htz-q{vertical-align:-0.15em}.htz-r{color:inherit}.htz-s{fill:#FFF}.htz-t{font-size:3rem}.htz-u{margin-right:2rem}.htz-v{position:relative}@media (max-width: 79.9375em){.htz-j{font-size:2rem}.htz-k{line-height:1.5em}}@media (min-width: 80em){.htz-l{font-size:2rem}.htz-m{line-height:1.5em}}"`;
+exports[`<UserMenu DOM element renders correctly with props 2`] = `".htz-a{display:inline}.htz-b{height:100%}.htz-c{color:#0B7EB5}.htz-d{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-e{border:none}.htz-f{padding-top:1rem}.htz-g{padding-bottom:1rem}.htz-h{padding-right:1rem}.htz-i{padding-left:1rem}.htz-n{color:#787878}.htz-o{font-weight:400}.htz-p{font-weight:700}.htz-q{vertical-align:-0.15em}.htz-r{color:inherit}.htz-s{fill:#FFF}.htz-t{font-size:3rem}.htz-u{margin-right:2rem}.htz-v{position:relative}@media (max-width: 79.9375em){.htz-j{font-size:2rem}.htz-k{line-height:1.5em}}@media (min-width: 80em){.htz-l{font-size:2rem}.htz-m{line-height:1.5em}}"`;

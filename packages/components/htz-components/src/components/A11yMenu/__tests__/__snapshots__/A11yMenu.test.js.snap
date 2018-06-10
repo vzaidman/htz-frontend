@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NavigationA11y DOM element generate a click and return a list with 2 ul 1`] = `
+exports[`<A11yMenu DOM element generate a click and return a list with 2 <li> 1`] = `
 <ApolloProvider
   client={
     ApolloClient {
@@ -646,407 +646,445 @@ exports[`<NavigationA11y DOM element generate a click and return a list with 2 u
     }
   }
 >
-  <NavigationA11y>
-    <FelaComponent
-      render={[Function]}
-      rule={[Function]}
-    >
-      <FelaTheme
+  <A11yMenu>
+    <div>
+      <FelaComponent
+        isOpen={true}
         render={[Function]}
+        rule={[Function]}
       >
-        <div
-          className="htz-a"
+        <FelaTheme
+          render={[Function]}
         >
-          <FelaComponent
-            isOpen={true}
-            render={[Function]}
-            rule={[Function]}
+          <button
+            aria-expanded={true}
+            className="htz-a htz-b htz-c htz-d htz-e htz-o htz-g htz-h htz-p htz-i htz-j"
+            onClick={[Function]}
           >
-            <FelaTheme
-              render={[Function]}
+            <iconStyle
+              color={null}
+              fill={null}
+              size={3}
+              stylesProp={null}
             >
-              <button
-                aria-expanded={true}
-                className="htz-b htz-c htz-d htz-e htz-p htz-g htz-h htz-q htz-i htz-j"
-                onClick={[Function]}
+              <iconStyle
+                _felaTheme={
+                  Object {
+                    "a11yMenuI18n": Object {
+                      "a11yToggle": [Function],
+                      "menuItems": Array [
+                        Object {
+                          "name": "דווח על בעיית נגישות",
+                          "url": "mailto:accessibility@haaretz.co.il",
+                        },
+                      ],
+                    },
+                    "btnStyle": Object {
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
+                      "borderEndStyle": "solid",
+                      "borderEndWidth": 1,
+                      "borderStartStyle": "solid",
+                      "borderStartWidth": 1,
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": 1,
+                      "boxModel": Object {
+                        "hp": 4,
+                        "vp": 1,
+                      },
+                      "fontWeight": "bold",
+                      "neutralText": "#999999",
+                      "radius": 0,
+                    },
+                    "color": [Function],
+                    "getDelay": [Function],
+                    "getDuration": [Function],
+                    "getTimingFunction": [Function],
+                    "getTransition": [Function],
+                    "getTransitionString": [Function],
+                    "type": [Function],
+                  }
+                }
+                color={null}
+                fill={null}
+                size={3}
+                stylesProp={null}
               >
-                <iconStyle
-                  color={null}
-                  fill={null}
-                  size={3}
-                  stylesProp={null}
+                <UnstyledIconAccessibility
+                  attrs={null}
+                  className="htz-k htz-l htz-m htz-n"
                 >
-                  <iconStyle
-                    _felaTheme={
-                      Object {
-                        "btnStyle": Object {
-                          "borderBottomStyle": "solid",
-                          "borderBottomWidth": 1,
-                          "borderEndStyle": "solid",
-                          "borderEndWidth": 1,
-                          "borderStartStyle": "solid",
-                          "borderStartWidth": 1,
-                          "borderTopStyle": "solid",
-                          "borderTopWidth": 1,
-                          "boxModel": Object {
-                            "hp": 4,
-                            "vp": 1,
-                          },
-                          "fontWeight": "bold",
-                          "neutralText": "#999999",
-                          "radius": 0,
-                        },
-                        "color": [Function],
-                        "getDelay": [Function],
-                        "getDuration": [Function],
-                        "getTimingFunction": [Function],
-                        "getTransition": [Function],
-                        "getTransitionString": [Function],
-                        "navigationA11yI18n": Object {
-                          "a11yToggle": [Function],
-                          "menuItems": Array [
-                            Object {
-                              "name": "דווח על בעיית נגישות",
-                              "url": "mailto:accessibility@haaretz.co.il",
-                            },
-                          ],
-                        },
-                        "type": [Function],
-                      }
-                    }
-                    color={null}
-                    fill={null}
-                    size={3}
-                    stylesProp={null}
+                  <svg
+                    className="htz-k htz-l htz-m htz-n"
+                    height="1em"
+                    viewBox="0 0 256 256"
+                    width="1em"
                   >
-                    <UnstyledIconAccessibility
-                      attrs={null}
-                      className="htz-k htz-l htz-m htz-n"
-                    >
-                      <svg
-                        className="htz-k htz-l htz-m htz-n"
-                        height="1em"
-                        viewBox="0 0 256 256"
-                        width="1em"
-                      >
-                         
-                        <path
-                          d="M165.5 172c7.3 22.3 19.8 49.8 27.4 76h-25.7c-7.9-24.2-19-43.6-25.1-61.9-2.6-7.8-5.4-14.7-7.5-22.7-1.3-4.7-3.2-5.4-6.4-5.4-3.6-.1-5.5 2.4-6.3 5.1-7.9 26.6-20.9 54.3-30 84.9h-28c8.7-32.8 23.1-68.4 31.2-99.5.6-2.3.9-4.1 1-6.5 1.2-21.1 1-34.7 1-56.1-15.8-2.1-51.4-3.8-75-5.8v-23c24.4 1.7 66.9 3.5 85.1 4.1 20.2.7 40.4-.3 60.6-1.3 14-.7 44.5-1.5 65.3-2.7V79c-21 1.9-51.4 4-65.6 5.8-2.9.4-5.9.4-9.5.9 0 1.7-.1 24.7 0 33.9.1 20.8 1.1 32.7 7.5 52.4zM128.3 51.3c12 0 21.6-9.6 21.6-21.7 0-12-9.5-21.5-21.6-21.5-12.2 0-21.5 9.4-21.5 21.6 0 12 9.5 21.6 21.5 21.6z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </UnstyledIconAccessibility>
-                  </iconStyle>
-                </iconStyle>
-              </button>
-            </FelaTheme>
-          </FelaComponent>
-          <FelaComponent
-            style={
-              Object {
-                "position": "relative",
-              }
-            }
+                     
+                    <path
+                      d="M165.5 172c7.3 22.3 19.8 49.8 27.4 76h-25.7c-7.9-24.2-19-43.6-25.1-61.9-2.6-7.8-5.4-14.7-7.5-22.7-1.3-4.7-3.2-5.4-6.4-5.4-3.6-.1-5.5 2.4-6.3 5.1-7.9 26.6-20.9 54.3-30 84.9h-28c8.7-32.8 23.1-68.4 31.2-99.5.6-2.3.9-4.1 1-6.5 1.2-21.1 1-34.7 1-56.1-15.8-2.1-51.4-3.8-75-5.8v-23c24.4 1.7 66.9 3.5 85.1 4.1 20.2.7 40.4-.3 60.6-1.3 14-.7 44.5-1.5 65.3-2.7V79c-21 1.9-51.4 4-65.6 5.8-2.9.4-5.9.4-9.5.9 0 1.7-.1 24.7 0 33.9.1 20.8 1.1 32.7 7.5 52.4zM128.3 51.3c12 0 21.6-9.6 21.6-21.7 0-12-9.5-21.5-21.6-21.5-12.2 0-21.5 9.4-21.5 21.6 0 12 9.5 21.6 21.5 21.6z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </UnstyledIconAccessibility>
+              </iconStyle>
+            </iconStyle>
+          </button>
+        </FelaTheme>
+      </FelaComponent>
+      <FelaComponent
+        render={[Function]}
+        style={
+          Object {
+            "position": "relative",
+          }
+        }
+      >
+        <FelaTheme
+          render={[Function]}
+        >
+          <div
+            className="htz-q"
           >
-            <FelaTheme
-              render={[Function]}
-            >
-              <div
-                className="htz-o"
-              >
-                <List
-                  items={
-                    Array [
+            <List
+              items={
+                Array [
+                  Object {
+                    "name": "דווח על בעיית נגישות",
+                    "url": "mailto:accessibility@haaretz.co.il",
+                  },
+                ]
+              }
+              startOffset={0}
+              theme={
+                Object {
+                  "a11yMenuI18n": Object {
+                    "a11yToggle": [Function],
+                    "menuItems": Array [
                       Object {
                         "name": "דווח על בעיית נגישות",
                         "url": "mailto:accessibility@haaretz.co.il",
                       },
-                    ]
-                  }
-                  startOffset={0}
-                  theme={
+                    ],
+                  },
+                  "btnStyle": Object {
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": 1,
+                    "borderEndStyle": "solid",
+                    "borderEndWidth": 1,
+                    "borderStartStyle": "solid",
+                    "borderStartWidth": 1,
+                    "borderTopStyle": "solid",
+                    "borderTopWidth": 1,
+                    "boxModel": Object {
+                      "hp": 4,
+                      "vp": 1,
+                    },
+                    "fontWeight": "bold",
+                    "neutralText": "#999999",
+                    "radius": 0,
+                  },
+                  "color": [Function],
+                  "getDelay": [Function],
+                  "getDuration": [Function],
+                  "getTimingFunction": [Function],
+                  "getTransition": [Function],
+                  "getTransitionString": [Function],
+                  "type": [Function],
+                }
+              }
+            >
+              <FocusLock
+                autoFocus={true}
+                disabled={false}
+                noFocusGuards={false}
+                persistentFocus={false}
+                returnFocus={false}
+              >
+                <div
+                  key="guard-first"
+                  style={
                     Object {
-                      "btnStyle": Object {
-                        "borderBottomStyle": "solid",
-                        "borderBottomWidth": 1,
-                        "borderEndStyle": "solid",
-                        "borderEndWidth": 1,
-                        "borderStartStyle": "solid",
-                        "borderStartWidth": 1,
-                        "borderTopStyle": "solid",
-                        "borderTopWidth": 1,
-                        "boxModel": Object {
-                          "hp": 4,
-                          "vp": 1,
-                        },
-                        "fontWeight": "bold",
-                        "neutralText": "#999999",
-                        "radius": 0,
-                      },
-                      "color": [Function],
-                      "getDelay": [Function],
-                      "getDuration": [Function],
-                      "getTimingFunction": [Function],
-                      "getTransition": [Function],
-                      "getTransitionString": [Function],
-                      "navigationA11yI18n": Object {
-                        "a11yToggle": [Function],
-                        "menuItems": Array [
-                          Object {
-                            "name": "דווח על בעיית נגישות",
-                            "url": "mailto:accessibility@haaretz.co.il",
-                          },
-                        ],
-                      },
-                      "type": [Function],
+                      "height": "0px",
+                      "left": 0,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "fixed",
+                      "top": 0,
+                      "width": "1px",
                     }
                   }
+                  tabIndex={0}
+                />
+                <div
+                  key="guard-nearest"
+                  style={
+                    Object {
+                      "height": "0px",
+                      "left": 0,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "fixed",
+                      "top": 0,
+                      "width": "1px",
+                    }
+                  }
+                  tabIndex={1}
+                />
+                <div
+                  data-focus-lock-disabled={false}
                 >
-                  <FocusLock
+                  <SideEffect(FocusTrap)
                     autoFocus={true}
                     disabled={false}
-                    noFocusGuards={false}
-                    persistentFocus={false}
-                    returnFocus={false}
-                  >
-                    <div
-                      key="guard-first"
-                      style={
-                        Object {
-                          "height": "0px",
-                          "left": 0,
-                          "overflow": "hidden",
-                          "padding": 0,
-                          "position": "fixed",
-                          "top": 0,
-                          "width": "1px",
-                        }
-                      }
-                      tabIndex={0}
-                    />
-                    <div
-                      key="guard-nearest"
-                      style={
-                        Object {
-                          "height": "0px",
-                          "left": 0,
-                          "overflow": "hidden",
-                          "padding": 0,
-                          "position": "fixed",
-                          "top": 0,
-                          "width": "1px",
-                        }
-                      }
-                      tabIndex={1}
-                    />
-                    <div
-                      data-focus-lock-disabled={false}
-                    >
-                      <SideEffect(FocusTrap)
-                        autoFocus={true}
-                        disabled={false}
-                        observed={
-                          <div
-                            data-focus-lock-disabled="false"
-                          >
-                            <div>
-                              <ul
-                                class="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
-                                role="region"
-                              >
-                                <li>
-                                  <button
-                                    class="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-b htz-c htz-d htz-e htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca"
-                                    type="button"
-                                  >
-                                    <span
-                                      class="htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
-                                    >
-                                      <span
-                                        class="htz-ci htz-u"
-                                      >
-                                        הפעל מצג ניגודיות
-                                      </span>
-                                    </span>
-                                    <span
-                                      class="htz-cj htz-ck htz-cl htz-r htz-cm htz-cn htz-co htz-be htz-cp htz-cq htz-cr htz-cs htz-ct"
-                                    />
-                                  </button>
-                                </li>
-                                <li
-                                  class="htz-ar htz-as htz-cu htz-cv htz-b htz-c htz-d htz-e htz-ag htz-ah"
-                                >
-                                  <a
-                                    class="htz-cw htz-cx htz-bc htz-az htz-cy htz-cz"
-                                    href="mailto:accessibility@haaretz.co.il"
-                                  >
-                                    <span
-                                      class="htz-ci htz-u"
-                                    >
-                                      דווח על בעיית נגישות
-                                    </span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        }
-                        onActivation={[Function]}
-                        persistentFocus={false}
+                    observed={
+                      <div
+                        data-focus-lock-disabled="false"
                       >
-                        <FocusTrap
-                          autoFocus={true}
-                          disabled={false}
-                          observed={
-                            <div
-                              data-focus-lock-disabled="false"
-                            >
-                              <div>
-                                <ul
-                                  class="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
-                                  role="region"
-                                >
-                                  <li>
-                                    <button
-                                      class="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-b htz-c htz-d htz-e htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca"
-                                      type="button"
-                                    >
-                                      <span
-                                        class="htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
-                                      >
-                                        <span
-                                          class="htz-ci htz-u"
-                                        >
-                                          הפעל מצג ניגודיות
-                                        </span>
-                                      </span>
-                                      <span
-                                        class="htz-cj htz-ck htz-cl htz-r htz-cm htz-cn htz-co htz-be htz-cp htz-cq htz-cr htz-cs htz-ct"
-                                      />
-                                    </button>
-                                  </li>
-                                  <li
-                                    class="htz-ar htz-as htz-cu htz-cv htz-b htz-c htz-d htz-e htz-ag htz-ah"
-                                  >
-                                    <a
-                                      class="htz-cw htz-cx htz-bc htz-az htz-cy htz-cz"
-                                      href="mailto:accessibility@haaretz.co.il"
-                                    >
-                                      <span
-                                        class="htz-ci htz-u"
-                                      >
-                                        דווח על בעיית נגישות
-                                      </span>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          }
-                          onActivation={[Function]}
-                          persistentFocus={false}
-                        >
-                          <div
-                            onBlur={[Function]}
-                            onFocus={[Function]}
+                        <div>
+                          <ul
+                            class="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
+                            role="region"
                           >
-                            <listStyle
-                              innerRef={[Function]}
-                              role="region"
-                              startOffset={0}
+                            <li
+                              class="htz-ab htz-ac htz-ae htz-af htz-b htz-c htz-d htz-e htz-ag htz-a"
                             >
-                              <listStyle
-                                _felaTheme={
-                                  Object {
-                                    "btnStyle": Object {
-                                      "borderBottomStyle": "solid",
-                                      "borderBottomWidth": 1,
-                                      "borderEndStyle": "solid",
-                                      "borderEndWidth": 1,
-                                      "borderStartStyle": "solid",
-                                      "borderStartWidth": 1,
-                                      "borderTopStyle": "solid",
-                                      "borderTopWidth": 1,
-                                      "boxModel": Object {
-                                        "hp": 4,
-                                        "vp": 1,
-                                      },
-                                      "fontWeight": "bold",
-                                      "neutralText": "#999999",
-                                      "radius": 0,
-                                    },
-                                    "color": [Function],
-                                    "getDelay": [Function],
-                                    "getDuration": [Function],
-                                    "getTimingFunction": [Function],
-                                    "getTransition": [Function],
-                                    "getTransitionString": [Function],
-                                    "navigationA11yI18n": Object {
-                                      "a11yToggle": [Function],
-                                      "menuItems": Array [
-                                        Object {
-                                          "name": "דווח על בעיית נגישות",
-                                          "url": "mailto:accessibility@haaretz.co.il",
-                                        },
-                                      ],
-                                    },
-                                    "type": [Function],
-                                  }
-                                }
-                                innerRef={[Function]}
-                                role="region"
-                                startOffset={0}
+                              <button
+                                class="htz-ah htz-ai htz-aj htz-ak htz-ag htz-a htz-al htz-am htz-an htz-q htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-ab htz-ac htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-b htz-c htz-d htz-e htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb"
+                                type="button"
                               >
-                                <ul
-                                  className="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
-                                  role="region"
+                                <span
+                                  class="htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci"
                                 >
-                                  <Query
-                                    query={
+                                  <span
+                                    class="htz-cj htz-u"
+                                  >
+                                    הפעל מצג ניגודיות
+                                  </span>
+                                </span>
+                                <span
+                                  class="htz-ck htz-cl htz-cm htz-r htz-cn htz-co htz-cp htz-bf htz-cq htz-cr htz-cs htz-ct htz-cu"
+                                />
+                              </button>
+                            </li>
+                            <li
+                              class="htz-ab htz-ac htz-ae htz-af htz-b htz-c htz-d htz-e htz-ag htz-a"
+                            >
+                              <a
+                                class="htz-cv htz-cw htz-bd htz-ba htz-cx htz-cy"
+                                href="mailto:accessibility@haaretz.co.il"
+                              >
+                                <span
+                                  class="htz-cj htz-u"
+                                >
+                                  דווח על בעיית נגישות
+                                </span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    }
+                    onActivation={[Function]}
+                    persistentFocus={false}
+                  >
+                    <FocusTrap
+                      autoFocus={true}
+                      disabled={false}
+                      observed={
+                        <div
+                          data-focus-lock-disabled="false"
+                        >
+                          <div>
+                            <ul
+                              class="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
+                              role="region"
+                            >
+                              <li
+                                class="htz-ab htz-ac htz-ae htz-af htz-b htz-c htz-d htz-e htz-ag htz-a"
+                              >
+                                <button
+                                  class="htz-ah htz-ai htz-aj htz-ak htz-ag htz-a htz-al htz-am htz-an htz-q htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-ab htz-ac htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-b htz-c htz-d htz-e htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb"
+                                  type="button"
+                                >
+                                  <span
+                                    class="htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci"
+                                  >
+                                    <span
+                                      class="htz-cj htz-u"
+                                    >
+                                      הפעל מצג ניגודיות
+                                    </span>
+                                  </span>
+                                  <span
+                                    class="htz-ck htz-cl htz-cm htz-r htz-cn htz-co htz-cp htz-bf htz-cq htz-cr htz-cs htz-ct htz-cu"
+                                  />
+                                </button>
+                              </li>
+                              <li
+                                class="htz-ab htz-ac htz-ae htz-af htz-b htz-c htz-d htz-e htz-ag htz-a"
+                              >
+                                <a
+                                  class="htz-cv htz-cw htz-bd htz-ba htz-cx htz-cy"
+                                  href="mailto:accessibility@haaretz.co.il"
+                                >
+                                  <span
+                                    class="htz-cj htz-u"
+                                  >
+                                    דווח על בעיית נגישות
+                                  </span>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      }
+                      onActivation={[Function]}
+                      persistentFocus={false}
+                    >
+                      <div
+                        onBlur={[Function]}
+                        onFocus={[Function]}
+                      >
+                        <listStyle
+                          innerRef={[Function]}
+                          role="region"
+                          startOffset={0}
+                        >
+                          <listStyle
+                            _felaTheme={
+                              Object {
+                                "a11yMenuI18n": Object {
+                                  "a11yToggle": [Function],
+                                  "menuItems": Array [
+                                    Object {
+                                      "name": "דווח על בעיית נגישות",
+                                      "url": "mailto:accessibility@haaretz.co.il",
+                                    },
+                                  ],
+                                },
+                                "btnStyle": Object {
+                                  "borderBottomStyle": "solid",
+                                  "borderBottomWidth": 1,
+                                  "borderEndStyle": "solid",
+                                  "borderEndWidth": 1,
+                                  "borderStartStyle": "solid",
+                                  "borderStartWidth": 1,
+                                  "borderTopStyle": "solid",
+                                  "borderTopWidth": 1,
+                                  "boxModel": Object {
+                                    "hp": 4,
+                                    "vp": 1,
+                                  },
+                                  "fontWeight": "bold",
+                                  "neutralText": "#999999",
+                                  "radius": 0,
+                                },
+                                "color": [Function],
+                                "getDelay": [Function],
+                                "getDuration": [Function],
+                                "getTimingFunction": [Function],
+                                "getTransition": [Function],
+                                "getTransitionString": [Function],
+                                "type": [Function],
+                              }
+                            }
+                            innerRef={[Function]}
+                            role="region"
+                            startOffset={0}
+                          >
+                            <ul
+                              className="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
+                              role="region"
+                            >
+                              <Query
+                                query={
+                                  Object {
+                                    "definitions": Array [
                                       Object {
-                                        "definitions": Array [
-                                          Object {
-                                            "directives": Array [],
-                                            "kind": "OperationDefinition",
-                                            "name": undefined,
-                                            "operation": "query",
-                                            "selectionSet": Object {
-                                              "kind": "SelectionSet",
-                                              "selections": Array [
+                                        "directives": Array [],
+                                        "kind": "OperationDefinition",
+                                        "name": undefined,
+                                        "operation": "query",
+                                        "selectionSet": Object {
+                                          "kind": "SelectionSet",
+                                          "selections": Array [
+                                            Object {
+                                              "alias": null,
+                                              "arguments": Array [],
+                                              "directives": Array [
                                                 Object {
-                                                  "alias": null,
                                                   "arguments": Array [],
-                                                  "directives": Array [
-                                                    Object {
-                                                      "arguments": Array [],
-                                                      "kind": "Directive",
-                                                      "name": Object {
-                                                        "kind": "Name",
-                                                        "value": "client",
-                                                      },
-                                                    },
-                                                  ],
-                                                  "kind": "Field",
+                                                  "kind": "Directive",
                                                   "name": Object {
                                                     "kind": "Name",
-                                                    "value": "a11yToggle",
+                                                    "value": "client",
                                                   },
-                                                  "selectionSet": null,
                                                 },
                                               ],
+                                              "kind": "Field",
+                                              "name": Object {
+                                                "kind": "Name",
+                                                "value": "a11yToggle",
+                                              },
+                                              "selectionSet": null,
                                             },
-                                            "variableDefinitions": Array [],
-                                          },
-                                        ],
-                                        "kind": "Document",
-                                        "loc": Object {
-                                          "end": 38,
-                                          "start": 0,
+                                          ],
                                         },
+                                        "variableDefinitions": Array [],
+                                      },
+                                    ],
+                                    "kind": "Document",
+                                    "loc": Object {
+                                      "end": 38,
+                                      "start": 0,
+                                    },
+                                  }
+                                }
+                              >
+                                <itemStyle>
+                                  <itemStyle
+                                    _felaTheme={
+                                      Object {
+                                        "a11yMenuI18n": Object {
+                                          "a11yToggle": [Function],
+                                          "menuItems": Array [
+                                            Object {
+                                              "name": "דווח על בעיית נגישות",
+                                              "url": "mailto:accessibility@haaretz.co.il",
+                                            },
+                                          ],
+                                        },
+                                        "btnStyle": Object {
+                                          "borderBottomStyle": "solid",
+                                          "borderBottomWidth": 1,
+                                          "borderEndStyle": "solid",
+                                          "borderEndWidth": 1,
+                                          "borderStartStyle": "solid",
+                                          "borderStartWidth": 1,
+                                          "borderTopStyle": "solid",
+                                          "borderTopWidth": 1,
+                                          "boxModel": Object {
+                                            "hp": 4,
+                                            "vp": 1,
+                                          },
+                                          "fontWeight": "bold",
+                                          "neutralText": "#999999",
+                                          "radius": 0,
+                                        },
+                                        "color": [Function],
+                                        "getDelay": [Function],
+                                        "getDuration": [Function],
+                                        "getTimingFunction": [Function],
+                                        "getTransition": [Function],
+                                        "getTransitionString": [Function],
+                                        "type": [Function],
                                       }
                                     }
                                   >
-                                    <li>
+                                    <li
+                                      className="htz-ab htz-ac htz-ae htz-af htz-b htz-c htz-d htz-e htz-ag htz-a"
+                                    >
                                       <Button
                                         asPath={null}
                                         attrs={null}
@@ -1070,6 +1108,8 @@ exports[`<NavigationA11y DOM element generate a click and return a list with 2 u
                                         isSubmit={false}
                                         miscStyles={
                                           Object {
+                                            ":focus": Object {},
+                                            ":hover": Object {},
                                             "display": "flex",
                                             "justifyContent": "flex-start",
                                           }
@@ -1096,6 +1136,8 @@ exports[`<NavigationA11y DOM element generate a click and return a list with 2 u
                                           isRound={false}
                                           miscStyles={
                                             Object {
+                                              ":focus": Object {},
+                                              ":hover": Object {},
                                               "display": "flex",
                                               "justifyContent": "flex-start",
                                             }
@@ -1111,7 +1153,7 @@ exports[`<NavigationA11y DOM element generate a click and return a list with 2 u
                                               WrapperElement="button"
                                               asPath={null}
                                               attrs={null}
-                                              className="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-b htz-c htz-d htz-e htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca"
+                                              className="htz-ah htz-ai htz-aj htz-ak htz-ag htz-a htz-al htz-am htz-an htz-q htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-ab htz-ac htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-b htz-c htz-d htz-e htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb"
                                               href={null}
                                               id={null}
                                               isBusy={false}
@@ -1122,7 +1164,7 @@ exports[`<NavigationA11y DOM element generate a click and return a list with 2 u
                                               prefetch={false}
                                             >
                                               <button
-                                                className="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-b htz-c htz-d htz-e htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca"
+                                                className="htz-ah htz-ai htz-aj htz-ak htz-ag htz-a htz-al htz-am htz-an htz-q htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-ab htz-ac htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-b htz-c htz-d htz-e htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb"
                                                 id={null}
                                                 onClick={[Function]}
                                                 type="button"
@@ -1136,12 +1178,21 @@ exports[`<NavigationA11y DOM element generate a click and return a list with 2 u
                                                     render={[Function]}
                                                   >
                                                     <span
-                                                      className="htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
+                                                      className="htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci"
                                                     >
                                                       <itemNameStyle>
                                                         <itemNameStyle
                                                           _felaTheme={
                                                             Object {
+                                                              "a11yMenuI18n": Object {
+                                                                "a11yToggle": [Function],
+                                                                "menuItems": Array [
+                                                                  Object {
+                                                                    "name": "דווח על בעיית נגישות",
+                                                                    "url": "mailto:accessibility@haaretz.co.il",
+                                                                  },
+                                                                ],
+                                                              },
                                                               "btnStyle": Object {
                                                                 "borderBottomStyle": "solid",
                                                                 "borderBottomWidth": 1,
@@ -1165,21 +1216,12 @@ exports[`<NavigationA11y DOM element generate a click and return a list with 2 u
                                                               "getTimingFunction": [Function],
                                                               "getTransition": [Function],
                                                               "getTransitionString": [Function],
-                                                              "navigationA11yI18n": Object {
-                                                                "a11yToggle": [Function],
-                                                                "menuItems": Array [
-                                                                  Object {
-                                                                    "name": "דווח על בעיית נגישות",
-                                                                    "url": "mailto:accessibility@haaretz.co.il",
-                                                                  },
-                                                                ],
-                                                              },
                                                               "type": [Function],
                                                             }
                                                           }
                                                         >
                                                           <span
-                                                            className="htz-ci htz-u"
+                                                            className="htz-cj htz-u"
                                                           >
                                                             הפעל מצג ניגודיות
                                                           </span>
@@ -1197,7 +1239,7 @@ exports[`<NavigationA11y DOM element generate a click and return a list with 2 u
                                                     render={[Function]}
                                                   >
                                                     <span
-                                                      className="htz-cj htz-ck htz-cl htz-r htz-cm htz-cn htz-co htz-be htz-cp htz-cq htz-cr htz-cs htz-ct"
+                                                      className="htz-ck htz-cl htz-cm htz-r htz-cn htz-co htz-cp htz-bf htz-cq htz-cr htz-cs htz-ct htz-cu"
                                                     />
                                                   </FelaTheme>
                                                 </FelaComponent>
@@ -1207,56 +1249,127 @@ exports[`<NavigationA11y DOM element generate a click and return a list with 2 u
                                         </FelaComponent>
                                       </Button>
                                     </li>
-                                  </Query>
-                                  <itemStyle
-                                    key="דווח על בעיית נגישות"
+                                  </itemStyle>
+                                </itemStyle>
+                              </Query>
+                              <itemStyle
+                                key="דווח על בעיית נגישות"
+                              >
+                                <itemStyle
+                                  _felaTheme={
+                                    Object {
+                                      "a11yMenuI18n": Object {
+                                        "a11yToggle": [Function],
+                                        "menuItems": Array [
+                                          Object {
+                                            "name": "דווח על בעיית נגישות",
+                                            "url": "mailto:accessibility@haaretz.co.il",
+                                          },
+                                        ],
+                                      },
+                                      "btnStyle": Object {
+                                        "borderBottomStyle": "solid",
+                                        "borderBottomWidth": 1,
+                                        "borderEndStyle": "solid",
+                                        "borderEndWidth": 1,
+                                        "borderStartStyle": "solid",
+                                        "borderStartWidth": 1,
+                                        "borderTopStyle": "solid",
+                                        "borderTopWidth": 1,
+                                        "boxModel": Object {
+                                          "hp": 4,
+                                          "vp": 1,
+                                        },
+                                        "fontWeight": "bold",
+                                        "neutralText": "#999999",
+                                        "radius": 0,
+                                      },
+                                      "color": [Function],
+                                      "getDelay": [Function],
+                                      "getDuration": [Function],
+                                      "getTimingFunction": [Function],
+                                      "getTransition": [Function],
+                                      "getTransitionString": [Function],
+                                      "type": [Function],
+                                    }
+                                  }
+                                >
+                                  <li
+                                    className="htz-ab htz-ac htz-ae htz-af htz-b htz-c htz-d htz-e htz-ag htz-a"
                                   >
-                                    <itemStyle
-                                      _felaTheme={
-                                        Object {
-                                          "btnStyle": Object {
-                                            "borderBottomStyle": "solid",
-                                            "borderBottomWidth": 1,
-                                            "borderEndStyle": "solid",
-                                            "borderEndWidth": 1,
-                                            "borderStartStyle": "solid",
-                                            "borderStartWidth": 1,
-                                            "borderTopStyle": "solid",
-                                            "borderTopWidth": 1,
-                                            "boxModel": Object {
-                                              "hp": 4,
-                                              "vp": 1,
-                                            },
-                                            "fontWeight": "bold",
-                                            "neutralText": "#999999",
-                                            "radius": 0,
-                                          },
-                                          "color": [Function],
-                                          "getDelay": [Function],
-                                          "getDuration": [Function],
-                                          "getTimingFunction": [Function],
-                                          "getTransition": [Function],
-                                          "getTransitionString": [Function],
-                                          "navigationA11yI18n": Object {
-                                            "a11yToggle": [Function],
-                                            "menuItems": Array [
-                                              Object {
-                                                "name": "דווח על בעיית נגישות",
-                                                "url": "mailto:accessibility@haaretz.co.il",
-                                              },
-                                            ],
-                                          },
-                                          "type": [Function],
-                                        }
+                                    <linkStyle
+                                      asPath={null}
+                                      attrs={null}
+                                      className={null}
+                                      content={
+                                        <itemNameStyle>
+                                          דווח על בעיית נגישות
+                                        </itemNameStyle>
                                       }
+                                      focus={false}
+                                      href="mailto:accessibility@haaretz.co.il"
+                                      onClick={null}
+                                      prefetch={null}
+                                      refFunc={null}
+                                      target={null}
                                     >
-                                      <li
-                                        className="htz-ar htz-as htz-cu htz-cv htz-b htz-c htz-d htz-e htz-ag htz-ah"
+                                      <linkStyle
+                                        _felaTheme={
+                                          Object {
+                                            "a11yMenuI18n": Object {
+                                              "a11yToggle": [Function],
+                                              "menuItems": Array [
+                                                Object {
+                                                  "name": "דווח על בעיית נגישות",
+                                                  "url": "mailto:accessibility@haaretz.co.il",
+                                                },
+                                              ],
+                                            },
+                                            "btnStyle": Object {
+                                              "borderBottomStyle": "solid",
+                                              "borderBottomWidth": 1,
+                                              "borderEndStyle": "solid",
+                                              "borderEndWidth": 1,
+                                              "borderStartStyle": "solid",
+                                              "borderStartWidth": 1,
+                                              "borderTopStyle": "solid",
+                                              "borderTopWidth": 1,
+                                              "boxModel": Object {
+                                                "hp": 4,
+                                                "vp": 1,
+                                              },
+                                              "fontWeight": "bold",
+                                              "neutralText": "#999999",
+                                              "radius": 0,
+                                            },
+                                            "color": [Function],
+                                            "getDelay": [Function],
+                                            "getDuration": [Function],
+                                            "getTimingFunction": [Function],
+                                            "getTransition": [Function],
+                                            "getTransitionString": [Function],
+                                            "type": [Function],
+                                          }
+                                        }
+                                        asPath={null}
+                                        attrs={null}
+                                        className={null}
+                                        content={
+                                          <itemNameStyle>
+                                            דווח על בעיית נגישות
+                                          </itemNameStyle>
+                                        }
+                                        focus={false}
+                                        href="mailto:accessibility@haaretz.co.il"
+                                        onClick={null}
+                                        prefetch={null}
+                                        refFunc={null}
+                                        target={null}
                                       >
-                                        <linkStyle
+                                        <Link
                                           asPath={null}
                                           attrs={null}
-                                          className={null}
+                                          className="htz-cv htz-cw htz-bd htz-ba htz-cx htz-cy"
                                           content={
                                             <itemNameStyle>
                                               דווח על בעיית נגישות
@@ -1266,176 +1379,106 @@ exports[`<NavigationA11y DOM element generate a click and return a list with 2 u
                                           href="mailto:accessibility@haaretz.co.il"
                                           onClick={null}
                                           prefetch={null}
+                                          refFunc={null}
                                           target={null}
                                         >
-                                          <linkStyle
-                                            _felaTheme={
-                                              Object {
-                                                "btnStyle": Object {
-                                                  "borderBottomStyle": "solid",
-                                                  "borderBottomWidth": 1,
-                                                  "borderEndStyle": "solid",
-                                                  "borderEndWidth": 1,
-                                                  "borderStartStyle": "solid",
-                                                  "borderStartWidth": 1,
-                                                  "borderTopStyle": "solid",
-                                                  "borderTopWidth": 1,
-                                                  "boxModel": Object {
-                                                    "hp": 4,
-                                                    "vp": 1,
-                                                  },
-                                                  "fontWeight": "bold",
-                                                  "neutralText": "#999999",
-                                                  "radius": 0,
-                                                },
-                                                "color": [Function],
-                                                "getDelay": [Function],
-                                                "getDuration": [Function],
-                                                "getTimingFunction": [Function],
-                                                "getTransition": [Function],
-                                                "getTransitionString": [Function],
-                                                "navigationA11yI18n": Object {
-                                                  "a11yToggle": [Function],
-                                                  "menuItems": Array [
-                                                    Object {
-                                                      "name": "דווח על בעיית נגישות",
-                                                      "url": "mailto:accessibility@haaretz.co.il",
-                                                    },
-                                                  ],
-                                                },
-                                                "type": [Function],
-                                              }
-                                            }
-                                            asPath={null}
-                                            attrs={null}
-                                            className={null}
-                                            content={
-                                              <itemNameStyle>
-                                                דווח על בעיית נגישות
-                                              </itemNameStyle>
-                                            }
-                                            focus={false}
+                                          <a
+                                            className="htz-cv htz-cw htz-bd htz-ba htz-cx htz-cy"
                                             href="mailto:accessibility@haaretz.co.il"
                                             onClick={null}
-                                            prefetch={null}
                                             target={null}
                                           >
-                                            <Link
-                                              asPath={null}
-                                              attrs={null}
-                                              className="htz-cw htz-cx htz-bc htz-az htz-cy htz-cz"
-                                              content={
-                                                <itemNameStyle>
-                                                  דווח על בעיית נגישות
-                                                </itemNameStyle>
-                                              }
-                                              focus={false}
-                                              href="mailto:accessibility@haaretz.co.il"
-                                              onClick={null}
-                                              prefetch={null}
-                                              target={null}
-                                            >
-                                              <a
-                                                className="htz-cw htz-cx htz-bc htz-az htz-cy htz-cz"
-                                                href="mailto:accessibility@haaretz.co.il"
-                                                onClick={null}
-                                                target={null}
+                                            <itemNameStyle>
+                                              <itemNameStyle
+                                                _felaTheme={
+                                                  Object {
+                                                    "a11yMenuI18n": Object {
+                                                      "a11yToggle": [Function],
+                                                      "menuItems": Array [
+                                                        Object {
+                                                          "name": "דווח על בעיית נגישות",
+                                                          "url": "mailto:accessibility@haaretz.co.il",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "btnStyle": Object {
+                                                      "borderBottomStyle": "solid",
+                                                      "borderBottomWidth": 1,
+                                                      "borderEndStyle": "solid",
+                                                      "borderEndWidth": 1,
+                                                      "borderStartStyle": "solid",
+                                                      "borderStartWidth": 1,
+                                                      "borderTopStyle": "solid",
+                                                      "borderTopWidth": 1,
+                                                      "boxModel": Object {
+                                                        "hp": 4,
+                                                        "vp": 1,
+                                                      },
+                                                      "fontWeight": "bold",
+                                                      "neutralText": "#999999",
+                                                      "radius": 0,
+                                                    },
+                                                    "color": [Function],
+                                                    "getDelay": [Function],
+                                                    "getDuration": [Function],
+                                                    "getTimingFunction": [Function],
+                                                    "getTransition": [Function],
+                                                    "getTransitionString": [Function],
+                                                    "type": [Function],
+                                                  }
+                                                }
                                               >
-                                                <itemNameStyle>
-                                                  <itemNameStyle
-                                                    _felaTheme={
-                                                      Object {
-                                                        "btnStyle": Object {
-                                                          "borderBottomStyle": "solid",
-                                                          "borderBottomWidth": 1,
-                                                          "borderEndStyle": "solid",
-                                                          "borderEndWidth": 1,
-                                                          "borderStartStyle": "solid",
-                                                          "borderStartWidth": 1,
-                                                          "borderTopStyle": "solid",
-                                                          "borderTopWidth": 1,
-                                                          "boxModel": Object {
-                                                            "hp": 4,
-                                                            "vp": 1,
-                                                          },
-                                                          "fontWeight": "bold",
-                                                          "neutralText": "#999999",
-                                                          "radius": 0,
-                                                        },
-                                                        "color": [Function],
-                                                        "getDelay": [Function],
-                                                        "getDuration": [Function],
-                                                        "getTimingFunction": [Function],
-                                                        "getTransition": [Function],
-                                                        "getTransitionString": [Function],
-                                                        "navigationA11yI18n": Object {
-                                                          "a11yToggle": [Function],
-                                                          "menuItems": Array [
-                                                            Object {
-                                                              "name": "דווח על בעיית נגישות",
-                                                              "url": "mailto:accessibility@haaretz.co.il",
-                                                            },
-                                                          ],
-                                                        },
-                                                        "type": [Function],
-                                                      }
-                                                    }
-                                                  >
-                                                    <span
-                                                      className="htz-ci htz-u"
-                                                    >
-                                                      דווח על בעיית נגישות
-                                                    </span>
-                                                  </itemNameStyle>
-                                                </itemNameStyle>
-                                              </a>
-                                            </Link>
-                                          </linkStyle>
-                                        </linkStyle>
-                                      </li>
-                                    </itemStyle>
-                                  </itemStyle>
-                                </ul>
-                              </listStyle>
-                            </listStyle>
-                          </div>
-                        </FocusTrap>
-                      </SideEffect(FocusTrap)>
-                    </div>
-                    <div
-                      style={
-                        Object {
-                          "height": "0px",
-                          "left": 0,
-                          "overflow": "hidden",
-                          "padding": 0,
-                          "position": "fixed",
-                          "top": 0,
-                          "width": "1px",
-                        }
-                      }
-                      tabIndex={0}
-                    />
-                  </FocusLock>
-                </List>
-              </div>
-            </FelaTheme>
-          </FelaComponent>
-        </div>
-      </FelaTheme>
-    </FelaComponent>
-  </NavigationA11y>
+                                                <span
+                                                  className="htz-cj htz-u"
+                                                >
+                                                  דווח על בעיית נגישות
+                                                </span>
+                                              </itemNameStyle>
+                                            </itemNameStyle>
+                                          </a>
+                                        </Link>
+                                      </linkStyle>
+                                    </linkStyle>
+                                  </li>
+                                </itemStyle>
+                              </itemStyle>
+                            </ul>
+                          </listStyle>
+                        </listStyle>
+                      </div>
+                    </FocusTrap>
+                  </SideEffect(FocusTrap)>
+                </div>
+                <div
+                  style={
+                    Object {
+                      "height": "0px",
+                      "left": 0,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "fixed",
+                      "top": 0,
+                      "width": "1px",
+                    }
+                  }
+                  tabIndex={0}
+                />
+              </FocusLock>
+            </List>
+          </div>
+        </FelaTheme>
+      </FelaComponent>
+    </div>
+  </A11yMenu>
 </ApolloProvider>
 `;
 
-exports[`<NavigationA11y DOM element renders correctly with no props 1`] = `
+exports[`<A11yMenu DOM element renders correctly with no props 1`] = `
 <div>
-  <div
-    className="htz-a"
-  >
+  <div>
     <button
       aria-expanded={false}
-      className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
       onClick={[Function]}
     >
       <svg
@@ -1451,11 +1494,8 @@ exports[`<NavigationA11y DOM element renders correctly with no props 1`] = `
         />
       </svg>
     </button>
-    <div
-      className="htz-o"
-    />
   </div>
 </div>
 `;
 
-exports[`<NavigationA11y DOM element renders correctly with no props 2`] = `".htz-a{display:inline}.htz-f{color:#0B7EB5}.htz-g{border:none}.htz-h{padding:1rem}.htz-i:hover{background-color:#0B7EB5}.htz-j:hover{color:#FFF}.htz-k{vertical-align:-0.15em}.htz-l{color:inherit}.htz-m{fill:#FFF}.htz-n{font-size:3rem}.htz-o{position:relative}@media (max-width: 79.9375em){.htz-b{font-size:2rem}.htz-c{line-height:1.5em}}@media (min-width: 80em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}"`;
+exports[`<A11yMenu DOM element renders correctly with no props 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-f{color:#0B7EB5}.htz-g{border:none}.htz-h{padding:1rem}.htz-i:hover{background-color:#0B7EB5}.htz-j:hover{color:#FFF}.htz-k{vertical-align:-0.15em}.htz-l{color:inherit}.htz-m{fill:#FFF}.htz-n{font-size:3rem}@media (max-width: 79.9375em){.htz-b{font-size:2rem}.htz-c{line-height:1.5em}}@media (min-width: 80em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}"`;

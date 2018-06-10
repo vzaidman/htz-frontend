@@ -6,7 +6,7 @@ import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
 import client from '../../../../styleguide/ApolloMockClient';
 
-import NavigationA11y from '../NavigationA11y'; // eslint-disable-line import/no-named-as-default
+import A11yMenu from '../A11yMenu'; // eslint-disable-line import/no-named-as-default
 
 const btnStyle = Object.freeze({
   // Border width
@@ -30,7 +30,7 @@ const btnStyle = Object.freeze({
 });
 
 const colors = {
-  navigationA11y: {
+  a11yMenu: {
     text: '#111111',
     textOpenOrHover: '#222222',
     bgOpen: '#333333',
@@ -45,7 +45,7 @@ const colors = {
 
 const mockTheme = {
   color: (color, variant = 'base') => colors[color][variant],
-  navigationA11yI18n: {
+  a11yMenuI18n: {
     a11yToggle: state => `${state ? 'הפסק' : 'הפעל'} מצג ניגודיות`,
     menuItems: [
       {
@@ -63,17 +63,17 @@ const mockTheme = {
   getTimingFunction: htzTheme.getTimingFunction,
 };
 
-describe('<NavigationA11y', () => {
+describe('<A11yMenu', () => {
   describe('DOM element', () => {
     it('renders correctly with no props', () => {
-      const { component, styles, } = felaSnapshotter(<NavigationA11y />);
+      const { component, styles, } = felaSnapshotter(<A11yMenu />);
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('generate a click and return a list with 2 <li>', () => {
       const output = felaMount(
         <ApolloProvider client={client}>
-          <NavigationA11y />
+          <A11yMenu />
         </ApolloProvider>,
         mockTheme
       );
@@ -86,7 +86,7 @@ describe('<NavigationA11y', () => {
     it('check that a11yToggle change state and text in the button', () => {
       const output = felaMount(
         <ApolloProvider client={client}>
-          <NavigationA11y />
+          <A11yMenu />
         </ApolloProvider>,
         mockTheme
       );

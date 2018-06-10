@@ -4,21 +4,21 @@
 
 **Table of Contents**
 
-* [NavigationUser examples](#navigationUser-examples)
+* [UserMenu examples](#UserMenu-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### NavigationUser examples
+### UserMenu examples
 
 ```jsx
 <div>
   <p>When user is logged in (userName=[USER]):</p>
   <div style={{ direction: 'rtl', marginBottom: '10rem' }}>
-    <NavigationUser userName="[USER]" />
+    <UserMenu userName="[USER]" />
   </div>
   <p>Without userName data:</p>
   <div style={{ direction: 'rtl' }}>
-    <NavigationUser />
+    <UserMenu />
   </div>
 </div>
 ```
