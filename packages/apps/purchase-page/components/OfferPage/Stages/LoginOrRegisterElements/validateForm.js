@@ -9,9 +9,8 @@ const validateForm = ({
   terms,
   form,
   site,
-  stateEmail,
-  stateUserExists,
   openModal,
+  registerOrLoginStage,
 }) => {
   const errors = [];
 
@@ -30,7 +29,7 @@ const validateForm = ({
     });
   }
 
-  if (stateEmail) {
+  if (registerOrLoginStage !== 'checkEmail') {
     if (!password) {
       errors.push({
         name: 'password',
@@ -39,7 +38,7 @@ const validateForm = ({
           form.password.errorTextNoPassword,
           form.password.forgotPasswordText,
           openModal,
-          stateUserExists
+          registerOrLoginStage === 'login'
         ),
       });
     }
@@ -51,11 +50,11 @@ const validateForm = ({
           form.password.errorTextUnderFiveChars,
           form.password.forgotPasswordText,
           openModal,
-          stateUserExists
+          registerOrLoginStage === 'login'
         ),
       });
     }
-    if (!stateUserExists) {
+    if (registerOrLoginStage === 'register') {
       if (!firstName) {
         errors.push({
           name: 'firstName',

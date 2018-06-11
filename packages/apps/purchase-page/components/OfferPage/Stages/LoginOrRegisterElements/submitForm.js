@@ -13,19 +13,20 @@ const submitForm = ({
   Router,
   router,
   setState,
-  stateEmail,
   registerOrLoginStage,
 }) => {
   if (registerOrLoginStage === 'checkEmail') {
     setState({ loading: true, email, });
     checkEmailExists(email)
       .then(userExists => {
-        setState({
-          loading: false,
-          email,
-          userExists,
-        });
-        updateRegisterOrLoginStage(userExists ? 'login' : 'register');
+        setState(
+          {
+            loading: false,
+            email,
+            userExists,
+          },
+          updateRegisterOrLoginStage(userExists ? 'login' : 'register')
+        );
       })
       .catch(error => {
         setState({

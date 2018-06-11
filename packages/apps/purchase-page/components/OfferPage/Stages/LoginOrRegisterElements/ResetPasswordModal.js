@@ -44,11 +44,13 @@ const buttonStyle = {
 class ResetPasswordModal extends Component {
   static propTypes = {
     closeModal: PropTypes.func.isRequired,
+    email: PropTypes.string,
     isVisible: PropTypes.bool.isRequired,
     offerDisclaimer: PropTypes.arrayOf(PropTypes.object),
   };
 
   static defaultProps = {
+    email: null,
     offerDisclaimer: null,
   };
   state = {
@@ -132,79 +134,82 @@ class ResetPasswordModal extends Component {
                 ) : (
                   <FelaComponent style={{ textAlign: 'center', }}>
                     <ApolloConsumer>
-                      {client => (
-                        <Form
-                          clearFormAfterSubmit={false}
-                          onSubmit={async ({ email, }) => {
-                            this.setState({ loading: true, });
-                            const {
-                              data: { resetPassword: { status, message, }, },
-                            } = await client.query({
-                              query: RESET_PASSWORD,
-                              variables: { userName: email, },
-                            });
-                            this.setState({
-                              resetEmailSent: status === 'success',
-                              message,
-                              loading: false,
-                            });
-                          }}
-                          validate={({ email = '', }) => {
-                            const errors = [];
-                            if (!isEmail(email)) {
-                              errors.push({
-                                name: 'email',
-                                order: 1,
-                                errorText: form.email.errorText,
+                      {client =>
+                        (this.props.isVisible ? (
+                          <Form
+                            clearFormAfterSubmit={false}
+                            initialValues={{ resetEmail: this.props.email, }}
+                            onSubmit={async ({ resetEmail, }) => {
+                              this.setState({ loading: true, });
+                              const {
+                                data: { resetPassword: { status, message, }, },
+                              } = await client.query({
+                                query: RESET_PASSWORD,
+                                variables: { userName: resetEmail, },
                               });
-                            }
+                              this.setState({
+                                resetEmailSent: status === 'success',
+                                message,
+                                loading: false,
+                              });
+                            }}
+                            validate={({ resetEmail = '', }) => {
+                              const errors = [];
+                              if (!isEmail(resetEmail)) {
+                                errors.push({
+                                  name: 'resetEmail',
+                                  order: 1,
+                                  errorText: form.email.errorText,
+                                });
+                              }
 
-                            return errors;
-                          }}
-                          render={({ getInputProps, handleSubmit, }) => (
-                            <Fragment>
-                              <FelaComponent
-                                style={{ textAlign: 'inline-start', }}
-                              >
-                                <TextInput
-                                  {...getInputProps({
-                                    variant: 'primary',
-                                    name: 'email',
-                                    label: form.email.label,
-                                    type: 'email',
-                                    noteText: form.email.noteText,
-                                    errorText: this.state.message,
-                                    isError: !!this.state.message,
-                                    onChange: () => {
-                                      this.setState({ message: null, });
-                                    },
-                                  })}
-                                />
-                              </FelaComponent>
-                              <BIAction>
-                                {action => (
-                                  <Button
-                                    variant="primaryOpaque"
-                                    miscStyles={buttonStyle}
-                                    onClick={evt => {
-                                      handleSubmit(evt);
-                                      action({
-                                        actionCode: 34,
-                                        additionalInfo: {
-                                          stage: 'login-register',
-                                        },
-                                      });
-                                    }}
-                                    isBusy={this.state.loading}
-                                  >
-                                    {resetPasswordButton}
-                                  </Button>
-                                )}
-                              </BIAction>
-                            </Fragment>
-                          )}
-                        />
-                      )}
+                              return errors;
+                            }}
+                            render={({ getInputProps, handleSubmit, }) => (
+                              <Fragment>
+                                <FelaComponent
+                                  style={{ textAlign: 'inline-start', }}
+                                >
+                                  <TextInput
+                                    {...getInputProps({
+                                      variant: 'primary',
+                                      name: 'resetEmail',
+                                      label: form.email.label,
+                                      type: 'email',
+                                      noteText: form.email.noteText,
+                                      errorText: this.state.message,
+                                      isError: !!this.state.message,
+                                      onChange: () => {
+                                        this.setState({ message: null, });
+                                      },
+                                    })}
+                                  />
+                                </FelaComponent>
+                                <BIAction>
+                                  {action => (
+                                    <Button
+                                      variant="primaryOpaque"
+                                      miscStyles={buttonStyle}
+                                      onClick={evt => {
+                                        handleSubmit(evt);
+                                        action({
+                                          actionCode: 34,
+                                          additionalInfo: {
+                                            stage: 'login-register',
+                                          },
+                                        });
+                                      }}
+                                      isBusy={this.state.loading}
+                                    >
+                                      {resetPasswordButton}
+                                    </Button>
+                                  )}
+                                </BIAction>
+                              </Fragment>
+                            )}
+                          />
+                        ) : null)
+                      }
                     </ApolloConsumer>
                   </FelaComponent>
                 )}

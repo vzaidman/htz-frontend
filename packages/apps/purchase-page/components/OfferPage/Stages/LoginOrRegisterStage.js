@@ -65,6 +65,7 @@ class LoginOrRegisterStage extends React.Component {
     loading: false,
     email: null,
     userExists: true,
+    passwordLoaded: false,
     resetPasswordModalOpen: false,
   };
 
@@ -74,8 +75,9 @@ class LoginOrRegisterStage extends React.Component {
 
   render() {
     // focus the password input when it first loads, form focus will override if there is an error in the form
-    if (this.passwordInputEl) {
+    if (this.passwordInputEl && !this.state.passwordLoaded) {
       this.passwordInputEl.focus();
+      this.setState({ passwordLoaded: true, });
     }
     const {
       router,
@@ -84,7 +86,7 @@ class LoginOrRegisterStage extends React.Component {
       updateRefetchState,
       registerOrLoginStage,
     } = this.props;
-
+    const { email, } = this.state;
     return (
       <Register
         render={({ register, }) => (
@@ -97,6 +99,7 @@ class LoginOrRegisterStage extends React.Component {
                     render={({ theme: { stage3: { form, }, }, className, }) => (
                       <div className={className}>
                         <ResetPasswordModal
+                          email={email}
                           closeModal={() =>
                             this.setState({ resetPasswordModalOpen: false, })
                           }
@@ -105,10 +108,9 @@ class LoginOrRegisterStage extends React.Component {
                         <ApolloConsumer>
                           {cache => (
                             <Form
-                              // dont clear the form if there is no email saved in state
                               clearFormAfterSubmit={false}
-                              {...this.state.email && {
-                                initialValues: { email: this.state.email, },
+                              {...email && {
+                                initialValues: { email, },
                               }}
                               onSubmit={fields => {
                                 submitForm({
@@ -122,7 +124,6 @@ class LoginOrRegisterStage extends React.Component {
                                   Router,
                                   router,
                                   setState: newState => this.setState(newState),
-                                  stateEmail: this.state.email,
                                   registerOrLoginStage,
                                 });
                               }}
@@ -131,9 +132,8 @@ class LoginOrRegisterStage extends React.Component {
                                   ...fields,
                                   form,
                                   site,
-                                  stateEmail: this.state.email,
-                                  stateUserExists: this.state.userExists,
                                   openModal: this.openModal,
+                                  registerOrLoginStage,
                                 })
                               }
                               render={({ getInputProps, handleSubmit, }) => (
@@ -193,6 +193,11 @@ class LoginOrRegisterStage extends React.Component {
                                       noteText: form.email.noteText,
                                       maxLength: 64,
                                       miscStyles: textInputStyle,
+                                      onChange: evt => {
+                                        this.setState({
+                                          email: evt.target.value,
+                                        });
+                                      },
                                     })}
                                   />
                                   <Fragment>
@@ -203,7 +208,6 @@ class LoginOrRegisterStage extends React.Component {
                                           {...getInputProps({
                                             refFunc: elem => {
                                               this.passwordInputEl = elem;
-                                              this.forceUpdate();
                                             },
                                             variant: 'primary',
                                             name: 'password',

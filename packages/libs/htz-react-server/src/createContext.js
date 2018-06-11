@@ -119,22 +119,27 @@ export function createLoaders(req) {
   );
   const resetPasswordLoader = new DataLoader(keys =>
     Promise.all(
-      keys.map(userName =>
-        fetch(`https://${ssoSubDomain}.themarker.com/sso/r/resetPassword`, {
-          method: 'post',
-          credentials: 'include',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          },
-          body: querystring.stringify({
-            newsso: true,
-            layer: 'sendpassword',
-            site: 80,
-            userName,
-          }),
-        }).then(response => response.json())
-      )
+      keys.map(userName => {
+        const isTm = req.hostname.includes('themarker');
+        return fetch(
+          `https://${ssoSubDomain}.themarker.com/sso/r/resetPassword`,
+          {
+            method: 'post',
+            credentials: 'include',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type':
+                'application/x-www-form-urlencoded; charset=UTF-8',
+            },
+            body: querystring.stringify({
+              newsso: true,
+              layer: 'sendpassword',
+              site: isTm ? 10 : 80,
+              userName,
+            }),
+          }
+        ).then(response => response.json());
+      })
     )
   );
 
