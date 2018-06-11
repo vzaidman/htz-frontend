@@ -15,7 +15,7 @@ exports[`<Image /> DOM element Render correctly when essential props are passed 
 </div>
 `;
 
-exports[`<Image /> DOM element Render correctly when essential props are passed  2`] = `".htz-a{height:0rem}.htz-b{padding-bottom:80%}.htz-c{position:relative}.htz-d{width:100%}.htz-e{background-color:#EBEBEB}.htz-f{height:100%}.htz-g{left:0rem}.htz-h{position:absolute}.htz-i{top:0rem}"`;
+exports[`<Image /> DOM element Render correctly when essential props are passed  2`] = `".htz-a{height:0}.htz-b{padding-bottom:80%}.htz-c{position:relative}.htz-d{width:100%}.htz-e{background-color:#EBEBEB}.htz-f{height:100%}.htz-g{left:0}.htz-h{position:absolute}.htz-i{top:0}"`;
 
 exports[`<Image /> DOM element Render img correctly when all props are passed, lazyLoad=false  1`] = `
 <div>
@@ -43,7 +43,7 @@ exports[`<Image /> DOM element Render img correctly when all props are passed, l
 </div>
 `;
 
-exports[`<Image /> DOM element Render img correctly when all props are passed, lazyLoad=false  2`] = `".htz-a{height:0rem}.htz-b{padding-bottom:36.03603603603604%}.htz-c{position:relative}.htz-d{width:100%}.htz-e{background-color:#EBEBEB}.htz-f{height:100%}.htz-g{left:0rem}.htz-h{position:absolute}.htz-i{top:0rem}"`;
+exports[`<Image /> DOM element Render img correctly when all props are passed, lazyLoad=false  2`] = `".htz-a{height:0}.htz-b{padding-bottom:36.03603603603604%}.htz-c{position:relative}.htz-d{width:100%}.htz-e{background-color:#EBEBEB}.htz-f{height:100%}.htz-g{left:0}.htz-h{position:absolute}.htz-i{top:0}"`;
 
 exports[`<Image /> DOM element Render picture correctly when all props are passed, lazyLoad=false  1`] = `
 <div>
@@ -84,4 +84,4 @@ exports[`<Image /> DOM element Render picture correctly when all props are passe
 </div>
 `;
 
-exports[`<Image /> DOM element Render picture correctly when all props are passed, lazyLoad=false  2`] = `".htz-a{height:0rem}.htz-b{padding-bottom:50.76142131979695%}.htz-c{position:relative}.htz-d{width:100%}.htz-e{background-color:#EBEBEB}.htz-f{height:100%}.htz-g{left:0rem}.htz-h{position:absolute}.htz-i{top:0rem}"`;
+exports[`<Image /> DOM element Render picture correctly when all props are passed, lazyLoad=false  2`] = `".htz-a{height:0}.htz-b{padding-bottom:50.76142131979695%}.htz-c{position:relative}.htz-d{width:100%}.htz-e{background-color:#EBEBEB}.htz-f{height:100%}.htz-g{left:0}.htz-h{position:absolute}.htz-i{top:0}"`;

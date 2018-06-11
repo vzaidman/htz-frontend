@@ -19,7 +19,7 @@ Object {
       />
     </figure>
   </div>,
-  "styles": ".htz-a{margin:0rem}.htz-b{height:300px}.htz-c{overflow:hidden}.htz-d{position:relative}",
+  "styles": ".htz-a{margin:0}.htz-b{height:300px}.htz-c{overflow:hidden}.htz-d{position:relative}",
 }
 `;
 
@@ -42,7 +42,7 @@ Object {
       />
     </figure>
   </div>,
-  "styles": ".htz-a{margin:0rem}.htz-b{height:450px}.htz-c{overflow:hidden}.htz-d{position:relative}",
+  "styles": ".htz-a{margin:0}.htz-b{height:450px}.htz-c{overflow:hidden}.htz-d{position:relative}",
 }
 `;
 
@@ -65,6 +65,6 @@ Object {
       />
     </figure>
   </div>,
-  "styles": ".htz-a{margin:0rem}.htz-b{height:180px}.htz-c{overflow:hidden}.htz-d{position:relative}",
+  "styles": ".htz-a{margin:0}.htz-b{height:180px}.htz-c{overflow:hidden}.htz-d{position:relative}",
 }
 `;

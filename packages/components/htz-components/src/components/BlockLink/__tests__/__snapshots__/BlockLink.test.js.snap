@@ -4,7 +4,7 @@ exports[`BlockLink Component should render element with block link and above blo
 <div>
   <div>
     <article
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
     >
       <h3>
         title
@@ -17,14 +17,14 @@ exports[`BlockLink Component should render element with block link and above blo
         }
       >
         <span
-          className="htz-a htz-h"
+          className="htz-a htz-g"
         >
           I am above the block
         </span>
       </footer>
       <a
         aria-hidden={true}
-        className="htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
+        className="htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
         href="https://www.haaretz.co.il/news/world/europe/.premium-1.5940125"
         onClick={null}
         tabIndex="-1"
@@ -35,4 +35,4 @@ exports[`BlockLink Component should render element with block link and above blo
 </div>
 `;
 
-exports[`BlockLink Component should render element with block link and above block link correctly 2`] = `".htz-a{position:relative}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{-webkit-flex-direction:column}.htz-d{flex-direction:column}.htz-e{height:200px}.htz-f{-webkit-box-orient:vertical}.htz-g{-webkit-box-direction:normal}.htz-h{z-index:1}.htz-i{background-color:transparent}.htz-j{bottom:0rem}.htz-k{left:0rem}.htz-l{position:absolute}.htz-m{right:0rem}.htz-n{top:0rem}.htz-o{z-index:0}"`;
+exports[`BlockLink Component should render element with block link and above block link correctly 2`] = `".htz-a{position:relative}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{flex-direction:column}.htz-d{height:200px}.htz-e{-webkit-box-orient:vertical}.htz-f{-webkit-box-direction:normal}.htz-g{z-index:1}.htz-h{background-color:transparent}.htz-i{bottom:0}.htz-j{left:0}.htz-k{position:absolute}.htz-l{right:0}.htz-m{top:0}.htz-n{z-index:0}"`;

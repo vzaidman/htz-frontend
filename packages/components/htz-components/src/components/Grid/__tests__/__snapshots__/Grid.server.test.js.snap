@@ -3,17 +3,17 @@
 exports[`<Grid /> gutter value passthrough to children correctly pass gutter value based on window size 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
     id={null}
   >
     <div
-      className="htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-d htz-ab htz-ac"
+      className="htz-p htz-q htz-r htz-s htz-c htz-t htz-u htz-v"
       id={null}
     >
       text
     </div>
     <div
-      className="htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-d htz-ab htz-ac"
+      className="htz-p htz-q htz-r htz-s htz-c htz-t htz-u htz-v"
       id={null}
     >
       text
@@ -22,22 +22,22 @@ exports[`<Grid /> gutter value passthrough to children correctly pass gutter val
 </div>
 `;
 
-exports[`<Grid /> gutter value passthrough to children correctly pass gutter value based on window size 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-wrap:wrap}.htz-c{flex-wrap:wrap}.htz-d{list-style:none}.htz-e{-webkit-justify-content:flex-start}.htz-f{justify-content:flex-start}.htz-k{-webkit-flex-direction:row}.htz-l{flex-direction:row}.htz-m{-webkit-align-items:stretch}.htz-n{align-items:stretch}.htz-o{-webkit-box-lines:multiple}.htz-p{-webkit-box-pack:right}.htz-q{-webkit-box-orient:horizontal}.htz-r{-webkit-box-direction:normal}.htz-s{-webkit-box-align:stretch}.htz-t{box-sizing:border-box}.htz-u{-webkit-flex-basis:auto}.htz-v{flex-basis:auto}.htz-w{-webkit-flex-grow:1}.htz-x{flex-grow:1}.htz-y{-webkit-flex-shrink:1}.htz-z{flex-shrink:1}.htz-ab{padding-left:1rem}.htz-ac{padding-right:1rem}@media (max-width: 37.4375em){.htz-g{margin-right:-2rem}.htz-h{margin-left:-2rem}}@media (min-width: 37.5em){.htz-i{margin-right:-3rem}.htz-j{margin-left:-3rem}}"`;
+exports[`<Grid /> gutter value passthrough to children correctly pass gutter value based on window size 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-i{flex-direction:row}.htz-j{align-items:stretch}.htz-k{-webkit-box-lines:multiple}.htz-l{-webkit-box-pack:right}.htz-m{-webkit-box-orient:horizontal}.htz-n{-webkit-box-direction:normal}.htz-o{-webkit-box-align:stretch}.htz-p{box-sizing:border-box}.htz-q{flex-basis:auto}.htz-r{flex-grow:1}.htz-s{flex-shrink:1}.htz-t{padding-left:1rem}.htz-u{padding-right:1rem}.htz-v{-webkit-box-flex:1}@media (max-width: 37.4375em){.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}}@media (min-width: 37.5em){.htz-g{margin-right:-3rem}.htz-h{margin-left:-3rem}}"`;
 
 exports[`<Grid /> gutter value passthrough to children correctly pass gutter value when it is a "number" 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
     id={null}
   >
     <div
-      className="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-d htz-y htz-z"
+      className="htz-n htz-o htz-p htz-q htz-c htz-r htz-s htz-t"
       id={null}
     >
       text
     </div>
     <div
-      className="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-d htz-y htz-z"
+      className="htz-n htz-o htz-p htz-q htz-c htz-r htz-s htz-t"
       id={null}
     >
       text
@@ -46,4 +46,4 @@ exports[`<Grid /> gutter value passthrough to children correctly pass gutter val
 </div>
 `;
 
-exports[`<Grid /> gutter value passthrough to children correctly pass gutter value when it is a "number" 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-wrap:wrap}.htz-c{flex-wrap:wrap}.htz-d{list-style:none}.htz-e{-webkit-justify-content:flex-start}.htz-f{justify-content:flex-start}.htz-g{margin-right:-4rem}.htz-h{margin-left:-4rem}.htz-i{-webkit-flex-direction:row}.htz-j{flex-direction:row}.htz-k{-webkit-align-items:stretch}.htz-l{align-items:stretch}.htz-m{-webkit-box-lines:multiple}.htz-n{-webkit-box-pack:right}.htz-o{-webkit-box-orient:horizontal}.htz-p{-webkit-box-direction:normal}.htz-q{-webkit-box-align:stretch}.htz-r{box-sizing:border-box}.htz-s{-webkit-flex-basis:auto}.htz-t{flex-basis:auto}.htz-u{-webkit-flex-grow:1}.htz-v{flex-grow:1}.htz-w{-webkit-flex-shrink:1}.htz-x{flex-shrink:1}.htz-y{padding-left:4rem}.htz-z{padding-right:4rem}"`;
+exports[`<Grid /> gutter value passthrough to children correctly pass gutter value when it is a "number" 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-4rem}.htz-f{margin-left:-4rem}.htz-g{flex-direction:row}.htz-h{align-items:stretch}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:right}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-box-align:stretch}.htz-n{box-sizing:border-box}.htz-o{flex-basis:auto}.htz-p{flex-grow:1}.htz-q{flex-shrink:1}.htz-r{padding-left:4rem}.htz-s{padding-right:4rem}.htz-t{-webkit-box-flex:1}"`;

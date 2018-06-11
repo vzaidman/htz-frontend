@@ -18,6 +18,6 @@ Object {
       </span>
     </a>
   </div>,
-  "styles": ".htz-a{color:#0895c3}.htz-b{text-decoration:none}.htz-c:hover{border-bottom:1px solid}.htz-d:hover{padding-bottom:.06em}.htz-e:hover{outline:0rem}.htz-f{float:right}.htz-g{color:#e22134}.htz-h{background-color:transparent}.htz-i{border:0px}.htz-j{cursor:pointer}.htz-k{display:inline-block}.htz-l{padding:0rem}.htz-m{position:relative}.htz-n{text-align:center}.htz-o{vertical-align:middle}.htz-p{height:2.625rem}.htz-q{line-height:2.625rem}.htz-r{min-width:2.625rem}.htz-s{font-style:normal}.htz-t{width:1em}.htz-u{font-size:2.25rem}.htz-v{font-weight:700}.htz-w{text-rendering:optimizeLegibility}",
+  "styles": ".htz-a{color:#0895c3}.htz-b{text-decoration:none}.htz-c:hover{border-bottom:1px solid}.htz-d:hover{padding-bottom:.06em}.htz-e:hover{outline:0}.htz-f{float:right}.htz-g{color:#e22134}.htz-h{background-color:transparent}.htz-i{border:0}.htz-j{cursor:pointer}.htz-k{display:inline-block}.htz-l{padding:0}.htz-m{position:relative}.htz-n{text-align:center}.htz-o{vertical-align:middle}.htz-p{height:2.625rem}.htz-q{line-height:2.625rem}.htz-r{min-width:2.625rem}.htz-s{font-style:normal}.htz-t{width:1em}.htz-u{font-size:2.25rem}.htz-v{font-weight:700}.htz-w{text-rendering:optimizeLegibility}",
 }
 `;

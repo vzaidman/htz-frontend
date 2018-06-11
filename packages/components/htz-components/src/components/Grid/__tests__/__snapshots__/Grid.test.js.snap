@@ -3,7 +3,7 @@
 exports[`<Grid /> pass "id" prop to DOM element attribute 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
     id="hasId"
   />
 </div>
@@ -12,17 +12,17 @@ exports[`<Grid /> pass "id" prop to DOM element attribute 1`] = `
 exports[`<Grid /> passthrough gutter value to children correctly pass gutter value 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
     id={null}
   >
     <div
-      className="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-d htz-y htz-z"
+      className="htz-n htz-o htz-p htz-q htz-c htz-r htz-s htz-t"
       id={null}
     >
       text
     </div>
     <div
-      className="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-d htz-y htz-z"
+      className="htz-n htz-o htz-p htz-q htz-c htz-r htz-s htz-t"
       id={null}
     >
       text
@@ -31,22 +31,22 @@ exports[`<Grid /> passthrough gutter value to children correctly pass gutter val
 </div>
 `;
 
-exports[`<Grid /> passthrough gutter value to children correctly pass gutter value 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-wrap:wrap}.htz-c{flex-wrap:wrap}.htz-d{list-style:none}.htz-e{-webkit-justify-content:flex-start}.htz-f{justify-content:flex-start}.htz-g{margin-right:-4rem}.htz-h{margin-left:-4rem}.htz-i{-webkit-flex-direction:row}.htz-j{flex-direction:row}.htz-k{-webkit-align-items:stretch}.htz-l{align-items:stretch}.htz-m{-webkit-box-lines:multiple}.htz-n{-webkit-box-pack:right}.htz-o{-webkit-box-orient:horizontal}.htz-p{-webkit-box-direction:normal}.htz-q{-webkit-box-align:stretch}.htz-r{box-sizing:border-box}.htz-s{-webkit-flex-basis:auto}.htz-t{flex-basis:auto}.htz-u{-webkit-flex-grow:1}.htz-v{flex-grow:1}.htz-w{-webkit-flex-shrink:1}.htz-x{flex-shrink:1}.htz-y{padding-left:4rem}.htz-z{padding-right:4rem}"`;
+exports[`<Grid /> passthrough gutter value to children correctly pass gutter value 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-4rem}.htz-f{margin-left:-4rem}.htz-g{flex-direction:row}.htz-h{align-items:stretch}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:right}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-box-align:stretch}.htz-n{box-sizing:border-box}.htz-o{flex-basis:auto}.htz-p{flex-grow:1}.htz-q{flex-shrink:1}.htz-r{padding-left:4rem}.htz-s{padding-right:4rem}.htz-t{-webkit-box-flex:1}"`;
 
 exports[`<Grid /> render children correctly 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
     id={null}
   >
     <div
-      className="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-d htz-y htz-z"
+      className="htz-n htz-o htz-p htz-q htz-c htz-r htz-s htz-t"
       id={null}
     >
       text
     </div>
     <div
-      className="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-d htz-y htz-z"
+      className="htz-n htz-o htz-p htz-q htz-c htz-r htz-s htz-t"
       id={null}
     >
       text
@@ -55,12 +55,12 @@ exports[`<Grid /> render children correctly 1`] = `
 </div>
 `;
 
-exports[`<Grid /> render children correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-wrap:wrap}.htz-c{flex-wrap:wrap}.htz-d{list-style:none}.htz-e{-webkit-justify-content:flex-start}.htz-f{justify-content:flex-start}.htz-g{margin-right:-2rem}.htz-h{margin-left:-2rem}.htz-i{-webkit-flex-direction:row}.htz-j{flex-direction:row}.htz-k{-webkit-align-items:stretch}.htz-l{align-items:stretch}.htz-m{-webkit-box-lines:multiple}.htz-n{-webkit-box-pack:right}.htz-o{-webkit-box-orient:horizontal}.htz-p{-webkit-box-direction:normal}.htz-q{-webkit-box-align:stretch}.htz-r{box-sizing:border-box}.htz-s{-webkit-flex-basis:auto}.htz-t{flex-basis:auto}.htz-u{-webkit-flex-grow:1}.htz-v{flex-grow:1}.htz-w{-webkit-flex-shrink:1}.htz-x{flex-shrink:1}.htz-y{padding-left:2rem}.htz-z{padding-right:2rem}"`;
+exports[`<Grid /> render children correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row}.htz-h{align-items:stretch}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:right}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-box-align:stretch}.htz-n{box-sizing:border-box}.htz-o{flex-basis:auto}.htz-p{flex-grow:1}.htz-q{flex-shrink:1}.htz-r{padding-left:2rem}.htz-s{padding-right:2rem}.htz-t{-webkit-box-flex:1}"`;
 
 exports[`<Grid /> spread the "attrs" prop on the Dom element 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
     id={null}
     tabIndex="-1"
   />
@@ -70,76 +70,76 @@ exports[`<Grid /> spread the "attrs" prop on the Dom element 1`] = `
 exports[`<Grid /> styles create correct default styels 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
     id={null}
   />
 </div>
 `;
 
-exports[`<Grid /> styles create correct default styels 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-wrap:wrap}.htz-c{flex-wrap:wrap}.htz-d{list-style:none}.htz-e{-webkit-justify-content:flex-start}.htz-f{justify-content:flex-start}.htz-g{margin-right:-2rem}.htz-h{margin-left:-2rem}.htz-i{-webkit-flex-direction:row}.htz-j{flex-direction:row}.htz-k{-webkit-align-items:stretch}.htz-l{align-items:stretch}.htz-m{-webkit-box-lines:multiple}.htz-n{-webkit-box-pack:right}.htz-o{-webkit-box-orient:horizontal}.htz-p{-webkit-box-direction:normal}.htz-q{-webkit-box-align:stretch}"`;
+exports[`<Grid /> styles create correct default styels 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row}.htz-h{align-items:stretch}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:right}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-box-align:stretch}"`;
 
 exports[`<Grid /> styles reverse grid 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
     id={null}
   />
 </div>
 `;
 
-exports[`<Grid /> styles reverse grid 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-wrap:wrap}.htz-c{flex-wrap:wrap}.htz-d{list-style:none}.htz-e{-webkit-justify-content:flex-start}.htz-f{justify-content:flex-start}.htz-g{margin-right:-2rem}.htz-h{margin-left:-2rem}.htz-i{-webkit-flex-direction:row-reverse}.htz-j{flex-direction:row-reverse}.htz-k{-webkit-align-items:stretch}.htz-l{align-items:stretch}.htz-m{-webkit-box-lines:multiple}.htz-n{-webkit-box-pack:right}.htz-o{-webkit-box-orient:horizontal}.htz-p{-webkit-box-direction:reverse}.htz-q{-webkit-box-align:stretch}"`;
+exports[`<Grid /> styles reverse grid 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row-reverse}.htz-h{align-items:stretch}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:right}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:reverse}.htz-m{-webkit-box-align:stretch}"`;
 
 exports[`<Grid /> styles set "gutter" correctly 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
     id={null}
   />
 </div>
 `;
 
-exports[`<Grid /> styles set "gutter" correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-wrap:wrap}.htz-c{flex-wrap:wrap}.htz-d{list-style:none}.htz-e{-webkit-justify-content:flex-start}.htz-f{justify-content:flex-start}.htz-g{margin-right:-1rem}.htz-h{margin-left:-1rem}.htz-i{-webkit-flex-direction:row}.htz-j{flex-direction:row}.htz-k{-webkit-align-items:stretch}.htz-l{align-items:stretch}.htz-m{-webkit-box-lines:multiple}.htz-n{-webkit-box-pack:right}.htz-o{-webkit-box-orient:horizontal}.htz-p{-webkit-box-direction:normal}.htz-q{-webkit-box-align:stretch}"`;
+exports[`<Grid /> styles set "gutter" correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-1rem}.htz-f{margin-left:-1rem}.htz-g{flex-direction:row}.htz-h{align-items:stretch}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:right}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-box-align:stretch}"`;
 
 exports[`<Grid /> styles set horizontal alignment of "<GridItem>"s correctly 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
     id={null}
   />
 </div>
 `;
 
-exports[`<Grid /> styles set horizontal alignment of "<GridItem>"s correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-wrap:wrap}.htz-c{flex-wrap:wrap}.htz-d{list-style:none}.htz-e{-webkit-justify-content:center}.htz-f{justify-content:center}.htz-g{margin-right:-2rem}.htz-h{margin-left:-2rem}.htz-i{-webkit-flex-direction:row}.htz-j{flex-direction:row}.htz-k{-webkit-align-items:stretch}.htz-l{align-items:stretch}.htz-m{-webkit-box-lines:multiple}.htz-n{-webkit-box-pack:center}.htz-o{-webkit-box-orient:horizontal}.htz-p{-webkit-box-direction:normal}.htz-q{-webkit-box-align:stretch}"`;
+exports[`<Grid /> styles set horizontal alignment of "<GridItem>"s correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:center}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row}.htz-h{align-items:stretch}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:center}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-box-align:stretch}"`;
 
 exports[`<Grid /> styles set misc styles correctly 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
     id={null}
   />
 </div>
 `;
 
-exports[`<Grid /> styles set misc styles correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-wrap:wrap}.htz-c{flex-wrap:wrap}.htz-d{list-style:none}.htz-e{-webkit-justify-content:flex-start}.htz-f{justify-content:flex-start}.htz-g{margin-right:-2rem}.htz-h{margin-left:-2rem}.htz-i{-webkit-flex-direction:row}.htz-j{flex-direction:row}.htz-k{-webkit-align-items:stretch}.htz-l{align-items:stretch}.htz-m{background-color:red}.htz-n{-webkit-box-lines:multiple}.htz-o{-webkit-box-pack:right}.htz-p{-webkit-box-orient:horizontal}.htz-q{-webkit-box-direction:normal}.htz-r{-webkit-box-align:stretch}"`;
+exports[`<Grid /> styles set misc styles correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row}.htz-h{align-items:stretch}.htz-i{background-color:red}.htz-j{-webkit-box-lines:multiple}.htz-k{-webkit-box-pack:right}.htz-l{-webkit-box-orient:horizontal}.htz-m{-webkit-box-direction:normal}.htz-n{-webkit-box-align:stretch}"`;
 
 exports[`<Grid /> styles set row spacing 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
     id={null}
   />
 </div>
 `;
 
-exports[`<Grid /> styles set row spacing 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-wrap:wrap}.htz-c{flex-wrap:wrap}.htz-d{list-style:none}.htz-e{-webkit-justify-content:flex-start}.htz-f{justify-content:flex-start}.htz-g{margin-right:-2rem}.htz-h{margin-left:-2rem}.htz-i{-webkit-flex-direction:row}.htz-j{flex-direction:row}.htz-k> * + *:nth-child(n+3){margin-top:6rem}.htz-l{-webkit-align-items:stretch}.htz-m{align-items:stretch}.htz-n{-webkit-box-lines:multiple}.htz-o{-webkit-box-pack:right}.htz-p{-webkit-box-orient:horizontal}.htz-q{-webkit-box-direction:normal}.htz-r{-webkit-box-align:stretch}"`;
+exports[`<Grid /> styles set row spacing 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row}.htz-h> * + *:nth-child(n+3){margin-top:6rem}.htz-i{align-items:stretch}.htz-j{-webkit-box-lines:multiple}.htz-k{-webkit-box-pack:right}.htz-l{-webkit-box-orient:horizontal}.htz-m{-webkit-box-direction:normal}.htz-n{-webkit-box-align:stretch}"`;
 
 exports[`<Grid /> styles set vertical alignment correctly 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
     id={null}
   />
 </div>
 `;
 
-exports[`<Grid /> styles set vertical alignment correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-flex-wrap:wrap}.htz-c{flex-wrap:wrap}.htz-d{list-style:none}.htz-e{-webkit-justify-content:flex-start}.htz-f{justify-content:flex-start}.htz-g{margin-right:-2rem}.htz-h{margin-left:-2rem}.htz-i{-webkit-flex-direction:row}.htz-j{flex-direction:row}.htz-k{-webkit-align-items:flex-end}.htz-l{align-items:flex-end}.htz-m{-webkit-box-lines:multiple}.htz-n{-webkit-box-pack:right}.htz-o{-webkit-box-orient:horizontal}.htz-p{-webkit-box-direction:normal}.htz-q{-webkit-box-align:left}"`;
+exports[`<Grid /> styles set vertical alignment correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row}.htz-h{align-items:flex-end}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:right}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-box-align:left}"`;

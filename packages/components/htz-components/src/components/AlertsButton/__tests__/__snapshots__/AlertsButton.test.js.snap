@@ -19,6 +19,6 @@ Object {
       Follow me
     </button>
   </div>,
-  "styles": ".htz-a{border:0px}.htz-b{clip:rect(0 0 0 0)}.htz-c{-webkit-clip-path:inset(50%)}.htz-d{clip-path:inset(50%)}.htz-e{height:1px}.htz-f{margin:-1px}.htz-g{overflow:hidden}.htz-h{padding:0rem}.htz-i{position:absolute}.htz-j{width:1px}.htz-k{white-space:nowrap}",
+  "styles": ".htz-a{border:0}.htz-b{clip:rect(0 0 0 0)}.htz-c{-webkit-clip-path:inset(50%)}.htz-d{clip-path:inset(50%)}.htz-e{height:1px}.htz-f{margin:-1px}.htz-g{overflow:hidden}.htz-h{padding:0}.htz-i{position:absolute}.htz-j{width:1px}.htz-k{white-space:nowrap}",
 }
 `;

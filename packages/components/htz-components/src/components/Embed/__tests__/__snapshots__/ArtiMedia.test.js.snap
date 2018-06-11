@@ -13,6 +13,6 @@ Object {
       />
     </figure>
   </div>,
-  "styles": ".htz-a{margin:0rem}.htz-b{padding-bottom:56.25%}.htz-c{height:0rem}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0rem}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0rem}.htz-k{top:0rem}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}",
+  "styles": ".htz-a{margin:0}.htz-b{padding-bottom:56.25%}.htz-c{height:0}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0}.htz-k{top:0}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}",
 }
 `;

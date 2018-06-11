@@ -49,6 +49,7 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
               render={[Function]}
             >
               <div
+                onKeyDown={[Function]}
                 style={
                   Object {
                     "display": "none",
@@ -109,7 +110,7 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                             />
                             <div
                               aria-hidden="true"
-                              class="htz-e htz-k htz-l htz-m htz-n htz-o"
+                              class="htz-e htz-k htz-l htz-m htz-n"
                               role="dialog"
                               tabindex="0"
                             >
@@ -117,7 +118,7 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                                 role="document"
                               >
                                 <div
-                                  class="htz-p htz-q"
+                                  class="htz-o htz-p"
                                 >
                                   <div>
                                      this is Dialog content component 
@@ -156,7 +157,7 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                               />
                               <div
                                 aria-hidden="true"
-                                class="htz-e htz-k htz-l htz-m htz-n htz-o"
+                                class="htz-e htz-k htz-l htz-m htz-n"
                                 role="dialog"
                                 tabindex="0"
                               >
@@ -164,7 +165,7 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                                   role="document"
                                 >
                                   <div
-                                    class="htz-p htz-q"
+                                    class="htz-o htz-p"
                                   >
                                     <div>
                                        this is Dialog content component 
@@ -209,7 +210,7 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                             >
                               <div
                                 aria-hidden="true"
-                                className="htz-e htz-k htz-l htz-m htz-n htz-o"
+                                className="htz-e htz-k htz-l htz-m htz-n"
                                 role="dialog"
                                 tabIndex="0"
                               >
@@ -229,7 +230,7 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                                       render={[Function]}
                                     >
                                       <div
-                                        className="htz-p htz-q"
+                                        className="htz-o htz-p"
                                       >
                                         <div>
                                            this is Dialog content component 
@@ -337,6 +338,7 @@ exports[`Dialog should open dialog with toggle state 1`] = `
               render={[Function]}
             >
               <div
+                onKeyDown={[Function]}
                 style={
                   Object {
                     "display": "block",
@@ -396,7 +398,7 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                               tabindex="-1"
                             />
                             <div
-                              class="htz-e htz-k htz-l htz-m htz-n htz-o"
+                              class="htz-e htz-k htz-l htz-m htz-n"
                               role="dialog"
                               tabindex="0"
                             >
@@ -404,7 +406,7 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                                 role="document"
                               >
                                 <div
-                                  class="htz-p htz-q"
+                                  class="htz-o htz-p"
                                 >
                                   <div>
                                      this is Dialog content component 
@@ -442,7 +444,7 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                                 tabindex="-1"
                               />
                               <div
-                                class="htz-e htz-k htz-l htz-m htz-n htz-o"
+                                class="htz-e htz-k htz-l htz-m htz-n"
                                 role="dialog"
                                 tabindex="0"
                               >
@@ -450,7 +452,7 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                                   role="document"
                                 >
                                   <div
-                                    class="htz-p htz-q"
+                                    class="htz-o htz-p"
                                   >
                                     <div>
                                        this is Dialog content component 
@@ -494,7 +496,7 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                               render={[Function]}
                             >
                               <div
-                                className="htz-e htz-k htz-l htz-m htz-n htz-o"
+                                className="htz-e htz-k htz-l htz-m htz-n"
                                 role="dialog"
                                 tabIndex="0"
                               >
@@ -514,7 +516,7 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                                       render={[Function]}
                                     >
                                       <div
-                                        className="htz-p htz-q"
+                                        className="htz-o htz-p"
                                       >
                                         <div>
                                            this is Dialog content component 

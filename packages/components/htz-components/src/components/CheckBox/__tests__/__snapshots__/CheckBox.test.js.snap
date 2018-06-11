@@ -4,7 +4,7 @@ exports[`<CheckBox> DOM element renders correctly with Note 1`] = `
 <div>
   <div>
     <label
-      className="htz-a htz-b htz-c htz-d"
+      className="htz-a htz-b htz-c"
       htmlFor="123456789"
     >
       <input
@@ -17,23 +17,23 @@ exports[`<CheckBox> DOM element renders correctly with Note 1`] = `
         type="checkbox"
       />
       <div
-        className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
+        className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
       >
         <div
-          className="htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae"
+          className="htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab"
         />
         <div
-          className="htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-ae htz-k htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-q htz-r htz-s htz-t"
+          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ab htz-i htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-o htz-p htz-q htz-r"
         />
       </div>
       <div
-        className="htz-ar"
+        className="htz-ao"
       >
         labelRed
       </div>
     </label>
     <span
-      className="htz-ac htz-as htz-at htz-au htz-av htz-aw"
+      className="htz-z htz-ap htz-aq htz-ar htz-as htz-at"
       id="123456789"
     >
       text
@@ -42,13 +42,13 @@ exports[`<CheckBox> DOM element renders correctly with Note 1`] = `
 </div>
 `;
 
-exports[`<CheckBox> DOM element renders correctly with Note 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{background-color:#FFF}.htz-k{transition-property:all}.htz-l{border-width:1px}.htz-m{border-style:solid}.htz-n{border-color:#0B7EB5}.htz-o{padding-top:0.2rem}.htz-p{padding-bottom:0.2rem}.htz-q{transition-duration:.3s}.htz-r{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{border-radius:50%}.htz-ab{background-color:#0B7EB5}.htz-ac{display:block}.htz-ae{opacity:0}.htz-af{height:100%}.htz-ag{width:50%}.htz-ah{background-color:transparent}.htz-ai{-webkit-transform:rotate(35deg) translate(-45%, 0%)}.htz-aj{transform:rotate(35deg) translate(-45%, 0%)}.htz-ak{overflow:hidden}.htz-al{border-bottom-width:2px}.htz-am{border-bottom-style:solid}.htz-an{border-bottom-color:#FFF}.htz-ao{border-right-width:2px}.htz-ap{border-right-style:solid}.htz-aq{border-right-color:#FFF}.htz-ar{margin-right:0.3em}.htz-aw{color:#787878}@media (max-width: 79.9375em){.htz-as{font-size:1.8333333333333333rem}.htz-at{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-au{font-size:1.7142857142857142rem}.htz-av{line-height:1.75em}}"`;
+exports[`<CheckBox> DOM element renders correctly with Note 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{-webkit-box-align:baseline}.htz-d{position:relative}.htz-e{height:2rem}.htz-f{width:2rem}.htz-g{flex-shrink:0}.htz-h{background-color:#FFF}.htz-i{transition-property:all}.htz-j{border-width:1px}.htz-k{border-style:solid}.htz-l{border-color:#0B7EB5}.htz-m{padding-top:0.2rem}.htz-n{padding-bottom:0.2rem}.htz-o{transition-duration:.3s}.htz-p{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-q{-webkit-transition-property:all}.htz-r{-moz-transition-property:all}.htz-s{position:absolute}.htz-t{height:8rem}.htz-u{width:8rem}.htz-v{left:50%}.htz-w{top:50%}.htz-x{border-radius:50%}.htz-y{background-color:#0B7EB5}.htz-z{display:block}.htz-ab{opacity:0}.htz-ac{height:100%}.htz-ae{width:50%}.htz-af{background-color:transparent}.htz-ag{transform:rotate(35deg) translate(-45%, 0%)}.htz-ah{overflow:hidden}.htz-ai{border-bottom-width:2px}.htz-aj{border-bottom-style:solid}.htz-ak{border-bottom-color:#FFF}.htz-al{border-right-width:2px}.htz-am{border-right-style:solid}.htz-an{border-right-color:#FFF}.htz-ao{margin-right:0.3em}.htz-at{color:#787878}@media (max-width: 79.9375em){.htz-ap{font-size:1.8333333333333333rem}.htz-aq{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-ar{font-size:1.7142857142857142rem}.htz-as{line-height:1.75em}}"`;
 
 exports[`<CheckBox> DOM element renders correctly with Note in and error 1`] = `
 <div>
   <div>
     <label
-      className="htz-a htz-b htz-c htz-d"
+      className="htz-a htz-b htz-c"
       htmlFor="123456789"
     >
       <input
@@ -61,23 +61,23 @@ exports[`<CheckBox> DOM element renders correctly with Note in and error 1`] = `
         type="checkbox"
       />
       <div
-        className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
+        className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
       >
         <div
-          className="htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae"
+          className="htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab"
         />
         <div
-          className="htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-ae htz-k htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-q htz-r htz-s htz-t"
+          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ab htz-i htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-o htz-p htz-q htz-r"
         />
       </div>
       <div
-        className="htz-ar"
+        className="htz-ao"
       >
         labelRed
       </div>
     </label>
     <span
-      className="htz-ac htz-as htz-at htz-au htz-av htz-aw"
+      className="htz-z htz-ap htz-aq htz-ar htz-as htz-at"
       id="123456789"
     >
       error
@@ -86,13 +86,13 @@ exports[`<CheckBox> DOM element renders correctly with Note in and error 1`] = `
 </div>
 `;
 
-exports[`<CheckBox> DOM element renders correctly with Note in and error 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{background-color:#FFF}.htz-k{transition-property:all}.htz-l{border-width:1px}.htz-m{border-style:solid}.htz-n{border-color:#0B7EB5}.htz-o{padding-top:0.2rem}.htz-p{padding-bottom:0.2rem}.htz-q{transition-duration:.3s}.htz-r{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{border-radius:50%}.htz-ab{background-color:#0B7EB5}.htz-ac{display:block}.htz-ae{opacity:0}.htz-af{height:100%}.htz-ag{width:50%}.htz-ah{background-color:transparent}.htz-ai{-webkit-transform:rotate(35deg) translate(-45%, 0%)}.htz-aj{transform:rotate(35deg) translate(-45%, 0%)}.htz-ak{overflow:hidden}.htz-al{border-bottom-width:2px}.htz-am{border-bottom-style:solid}.htz-an{border-bottom-color:#FFF}.htz-ao{border-right-width:2px}.htz-ap{border-right-style:solid}.htz-aq{border-right-color:#FFF}.htz-ar{margin-right:0.3em}.htz-aw{color:#A8001C}@media (max-width: 79.9375em){.htz-as{font-size:1.8333333333333333rem}.htz-at{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-au{font-size:1.7142857142857142rem}.htz-av{line-height:1.75em}}"`;
+exports[`<CheckBox> DOM element renders correctly with Note in and error 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{-webkit-box-align:baseline}.htz-d{position:relative}.htz-e{height:2rem}.htz-f{width:2rem}.htz-g{flex-shrink:0}.htz-h{background-color:#FFF}.htz-i{transition-property:all}.htz-j{border-width:1px}.htz-k{border-style:solid}.htz-l{border-color:#0B7EB5}.htz-m{padding-top:0.2rem}.htz-n{padding-bottom:0.2rem}.htz-o{transition-duration:.3s}.htz-p{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-q{-webkit-transition-property:all}.htz-r{-moz-transition-property:all}.htz-s{position:absolute}.htz-t{height:8rem}.htz-u{width:8rem}.htz-v{left:50%}.htz-w{top:50%}.htz-x{border-radius:50%}.htz-y{background-color:#0B7EB5}.htz-z{display:block}.htz-ab{opacity:0}.htz-ac{height:100%}.htz-ae{width:50%}.htz-af{background-color:transparent}.htz-ag{transform:rotate(35deg) translate(-45%, 0%)}.htz-ah{overflow:hidden}.htz-ai{border-bottom-width:2px}.htz-aj{border-bottom-style:solid}.htz-ak{border-bottom-color:#FFF}.htz-al{border-right-width:2px}.htz-am{border-right-style:solid}.htz-an{border-right-color:#FFF}.htz-ao{margin-right:0.3em}.htz-at{color:#A8001C}@media (max-width: 79.9375em){.htz-ap{font-size:1.8333333333333333rem}.htz-aq{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-ar{font-size:1.7142857142857142rem}.htz-as{line-height:1.75em}}"`;
 
 exports[`<CheckBox> DOM element renders correctly with a checked and onChange func passed 1`] = `
 <div>
   <div>
     <label
-      className="htz-a htz-b htz-c htz-d"
+      className="htz-a htz-b htz-c"
       htmlFor="123456789"
     >
       <input
@@ -104,17 +104,17 @@ exports[`<CheckBox> DOM element renders correctly with a checked and onChange fu
         type="checkbox"
       />
       <div
-        className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
+        className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
       >
         <div
-          className="htz-u htz-v htz-w htz-x htz-y htz-z htz-j htz-ab htz-ac"
+          className="htz-s htz-t htz-u htz-v htz-w htz-x htz-h htz-y htz-z"
         />
         <div
-          className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-k htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-q htz-r htz-s htz-t"
+          className="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-i htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-o htz-p htz-q htz-r"
         />
       </div>
       <div
-        className="htz-ar"
+        className="htz-ao"
       >
         labelRed
       </div>
@@ -123,13 +123,13 @@ exports[`<CheckBox> DOM element renders correctly with a checked and onChange fu
 </div>
 `;
 
-exports[`<CheckBox> DOM element renders correctly with a checked and onChange func passed 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{background-color:#0B7EB5}.htz-k{transition-property:all}.htz-l{border-width:1px}.htz-m{border-style:solid}.htz-n{border-color:#0B7EB5}.htz-o{padding-top:0.2rem}.htz-p{padding-bottom:0.2rem}.htz-q{transition-duration:.3s}.htz-r{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{border-radius:50%}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{height:100%}.htz-af{width:50%}.htz-ag{background-color:transparent}.htz-ah{-webkit-transform:rotate(35deg) translate(-45%, 0%)}.htz-ai{transform:rotate(35deg) translate(-45%, 0%)}.htz-aj{overflow:hidden}.htz-ak{opacity:1}.htz-al{border-bottom-width:2px}.htz-am{border-bottom-style:solid}.htz-an{border-bottom-color:#FFF}.htz-ao{border-right-width:2px}.htz-ap{border-right-style:solid}.htz-aq{border-right-color:#FFF}.htz-ar{margin-right:0.3em}"`;
+exports[`<CheckBox> DOM element renders correctly with a checked and onChange func passed 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{-webkit-box-align:baseline}.htz-d{position:relative}.htz-e{height:2rem}.htz-f{width:2rem}.htz-g{flex-shrink:0}.htz-h{background-color:#0B7EB5}.htz-i{transition-property:all}.htz-j{border-width:1px}.htz-k{border-style:solid}.htz-l{border-color:#0B7EB5}.htz-m{padding-top:0.2rem}.htz-n{padding-bottom:0.2rem}.htz-o{transition-duration:.3s}.htz-p{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-q{-webkit-transition-property:all}.htz-r{-moz-transition-property:all}.htz-s{position:absolute}.htz-t{height:8rem}.htz-u{width:8rem}.htz-v{left:50%}.htz-w{top:50%}.htz-x{border-radius:50%}.htz-y{display:block}.htz-z{opacity:0}.htz-ab{height:100%}.htz-ac{width:50%}.htz-ae{background-color:transparent}.htz-af{transform:rotate(35deg) translate(-45%, 0%)}.htz-ag{overflow:hidden}.htz-ah{opacity:1}.htz-ai{border-bottom-width:2px}.htz-aj{border-bottom-style:solid}.htz-ak{border-bottom-color:#FFF}.htz-al{border-right-width:2px}.htz-am{border-right-style:solid}.htz-an{border-right-color:#FFF}.htz-ao{margin-right:0.3em}"`;
 
 exports[`<CheckBox> DOM element renders correctly with an attrs prop 1`] = `
 <div>
   <div>
     <label
-      className="htz-a htz-b htz-c htz-d"
+      className="htz-a htz-b htz-c"
       htmlFor="123456789"
     >
       <input
@@ -142,30 +142,30 @@ exports[`<CheckBox> DOM element renders correctly with an attrs prop 1`] = `
         type="checkbox"
       />
       <div
-        className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
+        className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
       >
         <div
-          className="htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae"
+          className="htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab"
         />
         <div
-          className="htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-ae htz-k htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-q htz-r htz-s htz-t"
+          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ab htz-i htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-o htz-p htz-q htz-r"
         />
       </div>
       <div
-        className="htz-ar"
+        className="htz-ao"
       />
     </label>
   </div>
 </div>
 `;
 
-exports[`<CheckBox> DOM element renders correctly with an attrs prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{background-color:#FFF}.htz-k{transition-property:all}.htz-l{border-width:1px}.htz-m{border-style:solid}.htz-n{border-color:#0B7EB5}.htz-o{padding-top:0.2rem}.htz-p{padding-bottom:0.2rem}.htz-q{transition-duration:.3s}.htz-r{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{border-radius:50%}.htz-ab{background-color:#0B7EB5}.htz-ac{display:block}.htz-ae{opacity:0}.htz-af{height:100%}.htz-ag{width:50%}.htz-ah{background-color:transparent}.htz-ai{-webkit-transform:rotate(35deg) translate(-45%, 0%)}.htz-aj{transform:rotate(35deg) translate(-45%, 0%)}.htz-ak{overflow:hidden}.htz-al{border-bottom-width:2px}.htz-am{border-bottom-style:solid}.htz-an{border-bottom-color:#FFF}.htz-ao{border-right-width:2px}.htz-ap{border-right-style:solid}.htz-aq{border-right-color:#FFF}.htz-ar{margin-right:0.3em}"`;
+exports[`<CheckBox> DOM element renders correctly with an attrs prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{-webkit-box-align:baseline}.htz-d{position:relative}.htz-e{height:2rem}.htz-f{width:2rem}.htz-g{flex-shrink:0}.htz-h{background-color:#FFF}.htz-i{transition-property:all}.htz-j{border-width:1px}.htz-k{border-style:solid}.htz-l{border-color:#0B7EB5}.htz-m{padding-top:0.2rem}.htz-n{padding-bottom:0.2rem}.htz-o{transition-duration:.3s}.htz-p{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-q{-webkit-transition-property:all}.htz-r{-moz-transition-property:all}.htz-s{position:absolute}.htz-t{height:8rem}.htz-u{width:8rem}.htz-v{left:50%}.htz-w{top:50%}.htz-x{border-radius:50%}.htz-y{background-color:#0B7EB5}.htz-z{display:block}.htz-ab{opacity:0}.htz-ac{height:100%}.htz-ae{width:50%}.htz-af{background-color:transparent}.htz-ag{transform:rotate(35deg) translate(-45%, 0%)}.htz-ah{overflow:hidden}.htz-ai{border-bottom-width:2px}.htz-aj{border-bottom-style:solid}.htz-ak{border-bottom-color:#FFF}.htz-al{border-right-width:2px}.htz-am{border-right-style:solid}.htz-an{border-right-color:#FFF}.htz-ao{margin-right:0.3em}"`;
 
 exports[`<CheckBox> DOM element renders correctly with defaultValue prop 1`] = `
 <div>
   <div>
     <label
-      className="htz-a htz-b htz-c htz-d"
+      className="htz-a htz-b htz-c"
       htmlFor="123456789"
     >
       <input
@@ -177,30 +177,30 @@ exports[`<CheckBox> DOM element renders correctly with defaultValue prop 1`] = `
         type="checkbox"
       />
       <div
-        className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
+        className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
       >
         <div
-          className="htz-u htz-v htz-w htz-x htz-y htz-z htz-j htz-ab htz-ac"
+          className="htz-s htz-t htz-u htz-v htz-w htz-x htz-h htz-y htz-z"
         />
         <div
-          className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-k htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-q htz-r htz-s htz-t"
+          className="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-i htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-o htz-p htz-q htz-r"
         />
       </div>
       <div
-        className="htz-ar"
+        className="htz-ao"
       />
     </label>
   </div>
 </div>
 `;
 
-exports[`<CheckBox> DOM element renders correctly with defaultValue prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{background-color:#0B7EB5}.htz-k{transition-property:all}.htz-l{border-width:1px}.htz-m{border-style:solid}.htz-n{border-color:#0B7EB5}.htz-o{padding-top:0.2rem}.htz-p{padding-bottom:0.2rem}.htz-q{transition-duration:.3s}.htz-r{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{border-radius:50%}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{height:100%}.htz-af{width:50%}.htz-ag{background-color:transparent}.htz-ah{-webkit-transform:rotate(35deg) translate(-45%, 0%)}.htz-ai{transform:rotate(35deg) translate(-45%, 0%)}.htz-aj{overflow:hidden}.htz-ak{opacity:1}.htz-al{border-bottom-width:2px}.htz-am{border-bottom-style:solid}.htz-an{border-bottom-color:#FFF}.htz-ao{border-right-width:2px}.htz-ap{border-right-style:solid}.htz-aq{border-right-color:#FFF}.htz-ar{margin-right:0.3em}"`;
+exports[`<CheckBox> DOM element renders correctly with defaultValue prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{-webkit-box-align:baseline}.htz-d{position:relative}.htz-e{height:2rem}.htz-f{width:2rem}.htz-g{flex-shrink:0}.htz-h{background-color:#0B7EB5}.htz-i{transition-property:all}.htz-j{border-width:1px}.htz-k{border-style:solid}.htz-l{border-color:#0B7EB5}.htz-m{padding-top:0.2rem}.htz-n{padding-bottom:0.2rem}.htz-o{transition-duration:.3s}.htz-p{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-q{-webkit-transition-property:all}.htz-r{-moz-transition-property:all}.htz-s{position:absolute}.htz-t{height:8rem}.htz-u{width:8rem}.htz-v{left:50%}.htz-w{top:50%}.htz-x{border-radius:50%}.htz-y{display:block}.htz-z{opacity:0}.htz-ab{height:100%}.htz-ac{width:50%}.htz-ae{background-color:transparent}.htz-af{transform:rotate(35deg) translate(-45%, 0%)}.htz-ag{overflow:hidden}.htz-ah{opacity:1}.htz-ai{border-bottom-width:2px}.htz-aj{border-bottom-style:solid}.htz-ak{border-bottom-color:#FFF}.htz-al{border-right-width:2px}.htz-am{border-right-style:solid}.htz-an{border-right-color:#FFF}.htz-ao{margin-right:0.3em}"`;
 
 exports[`<CheckBox> DOM element renders correctly with isDisabled prop 1`] = `
 <div>
   <div>
     <label
-      className="htz-a htz-b htz-c htz-d"
+      className="htz-a htz-b htz-c"
       htmlFor="123456789"
     >
       <input
@@ -213,30 +213,30 @@ exports[`<CheckBox> DOM element renders correctly with isDisabled prop 1`] = `
         type="checkbox"
       />
       <div
-        className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
+        className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
       >
         <div
-          className="htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae"
+          className="htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab"
         />
         <div
-          className="htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-ae htz-k htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-q htz-r htz-s htz-t"
+          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ab htz-i htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-o htz-p htz-q htz-r"
         />
       </div>
       <div
-        className="htz-ar"
+        className="htz-ao"
       />
     </label>
   </div>
 </div>
 `;
 
-exports[`<CheckBox> DOM element renders correctly with isDisabled prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{background-color:#FFF}.htz-k{transition-property:all}.htz-l{border-width:1px}.htz-m{border-style:solid}.htz-n{border-color:#CCC}.htz-o{padding-top:0.2rem}.htz-p{padding-bottom:0.2rem}.htz-q{transition-duration:.3s}.htz-r{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{border-radius:50%}.htz-ab{background-color:#0B7EB5}.htz-ac{display:block}.htz-ae{opacity:0}.htz-af{height:100%}.htz-ag{width:50%}.htz-ah{background-color:transparent}.htz-ai{-webkit-transform:rotate(35deg) translate(-45%, 0%)}.htz-aj{transform:rotate(35deg) translate(-45%, 0%)}.htz-ak{overflow:hidden}.htz-al{border-bottom-width:2px}.htz-am{border-bottom-style:solid}.htz-an{border-bottom-color:#FFF}.htz-ao{border-right-width:2px}.htz-ap{border-right-style:solid}.htz-aq{border-right-color:#FFF}.htz-ar{margin-right:0.3em}"`;
+exports[`<CheckBox> DOM element renders correctly with isDisabled prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{-webkit-box-align:baseline}.htz-d{position:relative}.htz-e{height:2rem}.htz-f{width:2rem}.htz-g{flex-shrink:0}.htz-h{background-color:#FFF}.htz-i{transition-property:all}.htz-j{border-width:1px}.htz-k{border-style:solid}.htz-l{border-color:#CCC}.htz-m{padding-top:0.2rem}.htz-n{padding-bottom:0.2rem}.htz-o{transition-duration:.3s}.htz-p{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-q{-webkit-transition-property:all}.htz-r{-moz-transition-property:all}.htz-s{position:absolute}.htz-t{height:8rem}.htz-u{width:8rem}.htz-v{left:50%}.htz-w{top:50%}.htz-x{border-radius:50%}.htz-y{background-color:#0B7EB5}.htz-z{display:block}.htz-ab{opacity:0}.htz-ac{height:100%}.htz-ae{width:50%}.htz-af{background-color:transparent}.htz-ag{transform:rotate(35deg) translate(-45%, 0%)}.htz-ah{overflow:hidden}.htz-ai{border-bottom-width:2px}.htz-aj{border-bottom-style:solid}.htz-ak{border-bottom-color:#FFF}.htz-al{border-right-width:2px}.htz-am{border-right-style:solid}.htz-an{border-right-color:#FFF}.htz-ao{margin-right:0.3em}"`;
 
 exports[`<CheckBox> DOM element renders correctly with label prop 1`] = `
 <div>
   <div>
     <label
-      className="htz-a htz-b htz-c htz-d"
+      className="htz-a htz-b htz-c"
       htmlFor="123456789"
     >
       <input
@@ -248,17 +248,17 @@ exports[`<CheckBox> DOM element renders correctly with label prop 1`] = `
         type="checkbox"
       />
       <div
-        className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
+        className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
       >
         <div
-          className="htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae"
+          className="htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab"
         />
         <div
-          className="htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-ae htz-k htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-q htz-r htz-s htz-t"
+          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ab htz-i htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-o htz-p htz-q htz-r"
         />
       </div>
       <div
-        className="htz-ar"
+        className="htz-ao"
       >
         customLabel
       </div>
@@ -267,9 +267,44 @@ exports[`<CheckBox> DOM element renders correctly with label prop 1`] = `
 </div>
 `;
 
-exports[`<CheckBox> DOM element renders correctly with label prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{background-color:#FFF}.htz-k{transition-property:all}.htz-l{border-width:1px}.htz-m{border-style:solid}.htz-n{border-color:#0B7EB5}.htz-o{padding-top:0.2rem}.htz-p{padding-bottom:0.2rem}.htz-q{transition-duration:.3s}.htz-r{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{border-radius:50%}.htz-ab{background-color:#0B7EB5}.htz-ac{display:block}.htz-ae{opacity:0}.htz-af{height:100%}.htz-ag{width:50%}.htz-ah{background-color:transparent}.htz-ai{-webkit-transform:rotate(35deg) translate(-45%, 0%)}.htz-aj{transform:rotate(35deg) translate(-45%, 0%)}.htz-ak{overflow:hidden}.htz-al{border-bottom-width:2px}.htz-am{border-bottom-style:solid}.htz-an{border-bottom-color:#FFF}.htz-ao{border-right-width:2px}.htz-ap{border-right-style:solid}.htz-aq{border-right-color:#FFF}.htz-ar{margin-right:0.3em}"`;
+exports[`<CheckBox> DOM element renders correctly with label prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{-webkit-box-align:baseline}.htz-d{position:relative}.htz-e{height:2rem}.htz-f{width:2rem}.htz-g{flex-shrink:0}.htz-h{background-color:#FFF}.htz-i{transition-property:all}.htz-j{border-width:1px}.htz-k{border-style:solid}.htz-l{border-color:#0B7EB5}.htz-m{padding-top:0.2rem}.htz-n{padding-bottom:0.2rem}.htz-o{transition-duration:.3s}.htz-p{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-q{-webkit-transition-property:all}.htz-r{-moz-transition-property:all}.htz-s{position:absolute}.htz-t{height:8rem}.htz-u{width:8rem}.htz-v{left:50%}.htz-w{top:50%}.htz-x{border-radius:50%}.htz-y{background-color:#0B7EB5}.htz-z{display:block}.htz-ab{opacity:0}.htz-ac{height:100%}.htz-ae{width:50%}.htz-af{background-color:transparent}.htz-ag{transform:rotate(35deg) translate(-45%, 0%)}.htz-ah{overflow:hidden}.htz-ai{border-bottom-width:2px}.htz-aj{border-bottom-style:solid}.htz-ak{border-bottom-color:#FFF}.htz-al{border-right-width:2px}.htz-am{border-right-style:solid}.htz-an{border-right-color:#FFF}.htz-ao{margin-right:0.3em}"`;
 
 exports[`<CheckBox> DOM element renders correctly with minimal required props 1`] = `
+<div>
+  <div>
+    <label
+      className="htz-a htz-b htz-c"
+      htmlFor="123456789"
+    >
+      <input
+        checked={false}
+        id="123456789"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="checkbox"
+      />
+      <div
+        className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+      >
+        <div
+          className="htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab"
+        />
+        <div
+          className="htz-ac htz-ae htz-af htz-ag htz-ah htz-ab htz-i htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-o htz-p htz-q htz-r"
+        />
+      </div>
+      <div
+        className="htz-ao"
+      />
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<CheckBox> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{-webkit-box-align:baseline}.htz-d{position:relative}.htz-e{height:2rem}.htz-f{width:2rem}.htz-g{flex-shrink:0}.htz-h{background-color:#FFF}.htz-i{transition-property:all}.htz-j{border-width:1px}.htz-k{border-style:solid}.htz-l{border-color:#0B7EB5}.htz-m{padding-top:0.2rem}.htz-n{padding-bottom:0.2rem}.htz-o{transition-duration:.3s}.htz-p{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-q{-webkit-transition-property:all}.htz-r{-moz-transition-property:all}.htz-s{position:absolute}.htz-t{height:8rem}.htz-u{width:8rem}.htz-v{left:50%}.htz-w{top:50%}.htz-x{border-radius:50%}.htz-y{background-color:#0B7EB5}.htz-z{display:block}.htz-ab{opacity:0}.htz-ac{height:100%}.htz-ae{width:50%}.htz-af{background-color:transparent}.htz-ag{transform:rotate(35deg) translate(-45%, 0%)}.htz-ah{overflow:hidden}.htz-ai{border-bottom-width:2px}.htz-aj{border-bottom-style:solid}.htz-ak{border-bottom-color:#FFF}.htz-al{border-right-width:2px}.htz-am{border-right-style:solid}.htz-an{border-right-color:#FFF}.htz-ao{margin-right:0.3em}"`;
+
+exports[`<CheckBox> DOM element renders correctly with miscStyles prop 1`] = `
 <div>
   <div>
     <label
@@ -285,52 +320,17 @@ exports[`<CheckBox> DOM element renders correctly with minimal required props 1`
         type="checkbox"
       />
       <div
-        className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
+        className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s"
       >
         <div
-          className="htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae"
+          className="htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac"
         />
         <div
-          className="htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-ae htz-k htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-q htz-r htz-s htz-t"
+          className="htz-ae htz-af htz-ag htz-ah htz-ai htz-ac htz-j htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-p htz-q htz-r htz-s"
         />
       </div>
       <div
-        className="htz-ar"
-      />
-    </label>
-  </div>
-</div>
-`;
-
-exports[`<CheckBox> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{-webkit-flex-shrink:0}.htz-i{flex-shrink:0}.htz-j{background-color:#FFF}.htz-k{transition-property:all}.htz-l{border-width:1px}.htz-m{border-style:solid}.htz-n{border-color:#0B7EB5}.htz-o{padding-top:0.2rem}.htz-p{padding-bottom:0.2rem}.htz-q{transition-duration:.3s}.htz-r{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{border-radius:50%}.htz-ab{background-color:#0B7EB5}.htz-ac{display:block}.htz-ae{opacity:0}.htz-af{height:100%}.htz-ag{width:50%}.htz-ah{background-color:transparent}.htz-ai{-webkit-transform:rotate(35deg) translate(-45%, 0%)}.htz-aj{transform:rotate(35deg) translate(-45%, 0%)}.htz-ak{overflow:hidden}.htz-al{border-bottom-width:2px}.htz-am{border-bottom-style:solid}.htz-an{border-bottom-color:#FFF}.htz-ao{border-right-width:2px}.htz-ap{border-right-style:solid}.htz-aq{border-right-color:#FFF}.htz-ar{margin-right:0.3em}"`;
-
-exports[`<CheckBox> DOM element renders correctly with miscStyles prop 1`] = `
-<div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e"
-      htmlFor="123456789"
-    >
-      <input
-        checked={false}
-        id="123456789"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="checkbox"
-      />
-      <div
-        className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u"
-      >
-        <div
-          className="htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af"
-        />
-        <div
-          className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-af htz-l htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-r htz-s htz-t htz-u"
-        />
-      </div>
-      <div
-        className="htz-as"
+        className="htz-ap"
       >
         labelRed
       </div>
@@ -339,4 +339,4 @@ exports[`<CheckBox> DOM element renders correctly with miscStyles prop 1`] = `
 </div>
 `;
 
-exports[`<CheckBox> DOM element renders correctly with miscStyles prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{-webkit-align-items:baseline}.htz-c{align-items:baseline}.htz-d{color:red}.htz-e{-webkit-box-align:baseline}.htz-f{position:relative}.htz-g{height:2rem}.htz-h{width:2rem}.htz-i{-webkit-flex-shrink:0}.htz-j{flex-shrink:0}.htz-k{background-color:#FFF}.htz-l{transition-property:all}.htz-m{border-width:1px}.htz-n{border-style:solid}.htz-o{border-color:#0B7EB5}.htz-p{padding-top:0.2rem}.htz-q{padding-bottom:0.2rem}.htz-r{transition-duration:.3s}.htz-s{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-t{-webkit-transition-property:all}.htz-u{-moz-transition-property:all}.htz-v{position:absolute}.htz-w{height:8rem}.htz-x{width:8rem}.htz-y{left:50%}.htz-z{top:50%}.htz-ab{border-radius:50%}.htz-ac{background-color:#0B7EB5}.htz-ae{display:block}.htz-af{opacity:0}.htz-ag{height:100%}.htz-ah{width:50%}.htz-ai{background-color:transparent}.htz-aj{-webkit-transform:rotate(35deg) translate(-45%, 0%)}.htz-ak{transform:rotate(35deg) translate(-45%, 0%)}.htz-al{overflow:hidden}.htz-am{border-bottom-width:2px}.htz-an{border-bottom-style:solid}.htz-ao{border-bottom-color:#FFF}.htz-ap{border-right-width:2px}.htz-aq{border-right-style:solid}.htz-ar{border-right-color:#FFF}.htz-as{margin-right:0.3em}"`;
+exports[`<CheckBox> DOM element renders correctly with miscStyles prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{color:red}.htz-d{-webkit-box-align:baseline}.htz-e{position:relative}.htz-f{height:2rem}.htz-g{width:2rem}.htz-h{flex-shrink:0}.htz-i{background-color:#FFF}.htz-j{transition-property:all}.htz-k{border-width:1px}.htz-l{border-style:solid}.htz-m{border-color:#0B7EB5}.htz-n{padding-top:0.2rem}.htz-o{padding-bottom:0.2rem}.htz-p{transition-duration:.3s}.htz-q{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-r{-webkit-transition-property:all}.htz-s{-moz-transition-property:all}.htz-t{position:absolute}.htz-u{height:8rem}.htz-v{width:8rem}.htz-w{left:50%}.htz-x{top:50%}.htz-y{border-radius:50%}.htz-z{background-color:#0B7EB5}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{height:100%}.htz-af{width:50%}.htz-ag{background-color:transparent}.htz-ah{transform:rotate(35deg) translate(-45%, 0%)}.htz-ai{overflow:hidden}.htz-aj{border-bottom-width:2px}.htz-ak{border-bottom-style:solid}.htz-al{border-bottom-color:#FFF}.htz-am{border-right-width:2px}.htz-an{border-right-style:solid}.htz-ao{border-right-color:#FFF}.htz-ap{margin-right:0.3em}"`;
