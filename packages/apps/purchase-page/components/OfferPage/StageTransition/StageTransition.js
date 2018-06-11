@@ -133,19 +133,18 @@ class StageTransition extends Component {
             </StyledHeader>
             <Query query={GET_HOST_NAME}>
               {({ data: { hostname, }, }) => {
-                const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-                const LoaderIcon =
-                  host === 'themarker.com' ? IconTmLoader : IconHtzLoader;
-                return (
+                const LoaderIcon = hostname.includes('themarker')
+                  ? IconTmLoader
+                  : IconHtzLoader;
+                return !transitionStarted ? (
                   <LoaderIcon
                     size={10}
                     color="primary"
                     miscStyles={{
                       marginTop: '4rem',
-                      ...(transitionStarted ? { display: 'none', } : {}),
                     }}
                   />
-                );
+                ) : null;
               }}
             </Query>
             <StyledElementCont transitionStarted={transitionStarted}>
