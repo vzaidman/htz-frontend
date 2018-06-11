@@ -12,7 +12,7 @@ import StageCounter from './Elements/StageCounter';
 import { friendlyRoutes, } from '../../../routes/routes';
 
 const propTypes = {
-  hostname: PropTypes.string.isRequired,
+  host: PropTypes.oneOf([ 'HTZ', 'TM', ]).isRequired,
   tableData: PropTypes.arrayOf(
     PropTypes.shape({
       subscriptionName: PropTypes.string.isRequired,
@@ -78,13 +78,7 @@ const headingStyle = ({ theme, }) => ({
 
 const StyledHeading = createComponent(headingStyle, 'h1');
 
-function ChooseSlotStage({
-  hostname,
-  tableData,
-  subStage,
-  userMessage,
-  router,
-}) {
+function ChooseSlotStage({ host, tableData, subStage, userMessage, router, }) {
   // eslint-disable-next-line prefer-const
   let [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
   pathWithoutQuery = pathWithoutQuery.substr(
@@ -119,7 +113,6 @@ function ChooseSlotStage({
     }
   };
 
-  const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
   return (
     <FelaComponent
       style={contStyle}
@@ -136,7 +129,7 @@ function ChooseSlotStage({
         <Fragment>
           <StageCounter stage={1} />
           <StyledHeading>{headerText}</StyledHeading>
-          <SubHeader isTheMarker={host === 'themarker.com'} />
+          <SubHeader isTheMarker={host === 'TM'} />
           <div className={className}>
             <UserMessage userMessage={userMessage} />
             <DesktopView
@@ -202,11 +195,7 @@ function ChooseSlotStage({
                     })}
                   >
                     <Link
-                      href={
-                        organizationSubscription.url[
-                          host === 'themarker.com' ? 'TM' : 'HTZ'
-                        ]
-                      }
+                      href={organizationSubscription.url[host]}
                       content={
                         <FelaComponent
                           render="span"

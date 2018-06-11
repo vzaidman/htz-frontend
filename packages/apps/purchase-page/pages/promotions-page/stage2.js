@@ -15,6 +15,7 @@ import CampaignHeader from '../../components/OfferPage/Stages/ChooseProductStage
 
 const GET_LOCAL_STATE = gql`
   query {
+    hostname @client
     promotionsPageState @client {
       subStage
       chosenSlotIndex
@@ -36,6 +37,7 @@ function Stage2() {
             <Query query={GET_LOCAL_STATE}>
               {({ data: clientData, }) => {
                 const {
+                  hostname,
                   promotionsPageState: {
                     subStage,
                     chosenProductIndex,
@@ -138,6 +140,11 @@ function Stage2() {
                                 }
                                 stageElement={
                                   <ChooseProductStage
+                                    host={
+                                      hostname.includes('themarker')
+                                        ? 'TM'
+                                        : 'HTZ'
+                                    }
                                     chosenProductIndex={chosenProductIndex}
                                     couponExist={chosenSlot.couponExist}
                                     couponProduct={couponProduct}

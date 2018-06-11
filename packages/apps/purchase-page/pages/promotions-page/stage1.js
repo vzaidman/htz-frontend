@@ -59,7 +59,7 @@ class Stage1 extends React.Component {
                     client.writeData({ data: { startFromStage2: false, }, });
                     return (
                       <ChooseSlotStage
-                        hostname={hostname}
+                        host={hostname.includes('themarker') ? 'TM' : 'HTZ'}
                         tableData={getChooseSlotsData(slots)}
                         subStage={subStage}
                         userMessage={data.purchasePage.userMessage}

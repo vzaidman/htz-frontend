@@ -71,13 +71,14 @@ class StageTransition extends Component {
   static propTypes = {
     chosenSubscription: PropTypes.string.isRequired,
     displayPhones: PropTypes.bool,
-    headerElement: PropTypes.element.isRequired,
+    headerElement: PropTypes.element,
     skipTransition: PropTypes.bool,
     stageElement: PropTypes.element.isRequired,
   };
 
   static defaultProps = {
     displayPhones: true,
+    headerElement: null,
     skipTransition: false,
   };
 

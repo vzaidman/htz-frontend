@@ -64,6 +64,7 @@ class ChooseProductStage extends Component {
     /** JSON of a couponProduct, needs to be parsed */
     couponProduct: PropTypes.string,
     fourDigits: PropTypes.string,
+    host: PropTypes.oneOf([ 'HTZ', 'TM', ]).isRequired,
     products: PropTypes.arrayOf(
       PropTypes.shape({
         /**
@@ -115,6 +116,7 @@ class ChooseProductStage extends Component {
       chosenProductIndex,
       couponExist,
       couponProduct,
+      host,
       products,
       subStage,
       fourDigits,
@@ -137,7 +139,7 @@ class ChooseProductStage extends Component {
                 validation,
                 couponForm: { textLabel, textNote, buttons: { send, close, }, },
               },
-              buttons: { entitlements, },
+              buttons: { entitlements, organizationSubscription, },
             },
           },
         }) => (
@@ -350,6 +352,41 @@ class ChooseProductStage extends Component {
                           </FelaComponent>
                         }
                       />
+                    </FelaComponent>
+                    <FelaComponent
+                      style={theme => ({
+                        marginTop: '2rem',
+                        extend: [ theme.type(-1), ],
+                      })}
+                    >
+                      <BIAction>
+                        {action => (
+                          <Link
+                            href={organizationSubscription.url[host]}
+                            content={
+                              <FelaComponent
+                                render="span"
+                                style={{
+                                  textDecoration: 'underline',
+                                  textDecorationSkip: 'ink',
+                                }}
+                                onClick={() => {
+                                  // TODO: fix external url fetch
+                                  action({
+                                    actionCode: 42,
+                                    additionalInfo: {
+                                      organization:
+                                        organizationSubscription.text,
+                                    },
+                                  });
+                                }}
+                              >
+                                {organizationSubscription.text}
+                              </FelaComponent>
+                            }
+                          />
+                        )}
+                      </BIAction>
                     </FelaComponent>
                   </StyledMoreOptionsCont>
                 )}

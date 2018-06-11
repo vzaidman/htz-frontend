@@ -72,18 +72,18 @@ export const purchasePageFooter = Object.freeze({
 
 export const stage1 = Object.freeze({
   buttons: Object.freeze({
-    organizationSubscription: {
+    organizationSubscription: Object.freeze({
       text: 'לרכישת מינוי אירגוני',
       url: Object.freeze({
         HTZ: 'https://secure.pulseem.com/subs_heb_edu/',
         TM: 'http://o-r.co/p/tm_edu_subs',
       }),
-    },
-    entitlements: {
+    }),
+    entitlements: Object.freeze({
       beforeLinkText: 'כבר מנויים למהדורה המודפסת?',
       linkText: 'בדקו אם אתם זכאים להנחה',
       link: 'https://www.haaretz.co.il/misc/entitlement',
-    },
+    }),
   }),
   headerText: 'בחרו את החבילה המשתלמת לכם',
   mobileExpandBtn: 'מה בחבילה?',
@@ -211,11 +211,18 @@ export const stage2 = Object.freeze({
     }),
   }),
   buttons: Object.freeze({
-    entitlements: {
+    entitlements: Object.freeze({
       beforeLinkText: 'כבר מנויים למהדורה המודפסת?',
       linkText: 'בדקו אם אתם זכאים להנחה',
       link: 'https://www.haaretz.co.il/misc/entitlement',
-    },
+    }),
+    organizationSubscription: Object.freeze({
+      text: 'לרכישת מינוי אירגוני',
+      url: Object.freeze({
+        HTZ: 'https://secure.pulseem.com/subs_heb_edu/',
+        TM: 'http://o-r.co/p/tm_edu_subs',
+      }),
+    }),
   }),
 });
 
