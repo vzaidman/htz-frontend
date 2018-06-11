@@ -7,17 +7,6 @@ import IconAvatar from '../Icon/icons/IconAvatar';
 import List from './UserMenuList';
 import UserButton from './UserButton';
 
-const propTypes = {
-  /**
-   * A `string` of the user name to display.
-   */
-  userName: PropTypes.string,
-};
-
-const defaultProps = {
-  userName: null,
-};
-
 const noUserButtonStyle = theme => ({
   height: '100%',
   display: 'flex',
@@ -42,26 +31,36 @@ const noUserButtonStyle = theme => ({
  * and it also generate a signout function.
  */
 class UserMenu extends React.Component {
+  static propTypes = {
+    /**
+     * A `string` of the user name to display.
+     */
+    userName: PropTypes.string,
+  };
+
+  static defaultProps = {
+    userName: null,
+  };
   state = { isOpen: false, };
 
   componentDidUpdate() {
     if (this.state.isOpen) {
-      document.addEventListener('click', this.handleGlobalClick);
-      document.addEventListener('keydown', this.handleGlobalKeydown);
+      document.addEventListener('click', this.handleOutsideClick);
+      document.addEventListener('keydown', this.handleEscape);
     }
     else {
-      document.removeEventListener('click', this.handleGlobalClick);
-      document.removeEventListener('keydown', this.handleGlobalKeydown);
+      document.removeEventListener('click', this.handleOutsideClick);
+      document.removeEventListener('keydown', this.handleEscape);
     }
   }
 
-  handleGlobalClick = e => {
+  handleOutsideClick = e => {
     if (!this.wrapper.contains(e.target)) {
       this.changeState();
     }
   };
 
-  handleGlobalKeydown = e => {
+  handleEscape = e => {
     const key = e.which || e.keyCode;
     if (key === 27) {
       this.changeState();
@@ -128,8 +127,5 @@ class UserMenu extends React.Component {
     );
   }
 }
-
-UserMenu.propTypes = propTypes;
-UserMenu.defaultProps = defaultProps;
 
 export default UserMenu;

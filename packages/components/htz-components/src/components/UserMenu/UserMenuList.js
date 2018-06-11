@@ -7,32 +7,6 @@ import Link from '../Link/Link';
 import Button from '../Button/Button';
 import Logout from '../User/Logout';
 
-const propTypes = {
-  /**
-   * An array of sections to be listed, which may contain pages or their own sub-section.
-   */
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * The section's name to display.
-       */
-      name: PropTypes.string,
-      /**
-       * Section's destination.
-       */
-      url: PropTypes.string,
-    })
-  ).isRequired,
-  /**
-   * The app's theme.
-   */
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  /**
-   * A callback to signout.
-   */
-  onLogout: PropTypes.func.isRequired,
-};
-
 const listStyle = ({ theme, }) => ({
   position: 'absolute',
   zIndex: '100',
@@ -86,6 +60,32 @@ const StyledLink = createComponent(linkStyle, Link, props =>
 );
 
 class List extends React.Component {
+  static propTypes = {
+    /**
+     * An array of sections to be listed, which may contain pages or their own sub-section.
+     */
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        /**
+         * The section's name to display.
+         */
+        name: PropTypes.string,
+        /**
+         * Section's destination.
+         */
+        url: PropTypes.string,
+      })
+    ).isRequired,
+    /**
+     * The app's theme.
+     */
+    theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    /**
+     * A callback to signout.
+     */
+    onLogout: PropTypes.func.isRequired,
+  };
+
   componentDidMount() {
     this.addKeysListener();
   }
@@ -153,7 +153,5 @@ class List extends React.Component {
     );
   }
 }
-
-List.propTypes = propTypes;
 
 export default List;

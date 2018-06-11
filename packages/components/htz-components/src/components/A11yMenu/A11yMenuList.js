@@ -14,40 +14,6 @@ const GET_A11Y_STATE = gql`
   }
 `;
 
-const propTypes = {
-  /**
-   * An array of sections to be listed, which may contain pages or their own sub-section.
-   */
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * The section's name to display.
-       */
-      name: PropTypes.string,
-      /**
-       * Section's destination.
-       */
-      url: PropTypes.string,
-      /**
-       * Section's pages (may contain pages or sub-sections with their own pages).
-       */
-      pages: PropTypes.arrayOf(PropTypes.object),
-    })
-  ).isRequired,
-  /**
-   * The app's theme.
-   */
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  /**
-   * List's StartMargin, so it will be positioned next to it's parent list (in case it is a sub-list).
-   */
-  startOffset: PropTypes.number,
-};
-
-const defaultProps = {
-  startOffset: 0,
-};
-
 const listStyle = ({ theme, startOffset, }) => ({
   position: 'absolute',
   zIndex: '100',
@@ -107,6 +73,40 @@ const StyledLink = createComponent(linkStyle, Link, props =>
 );
 
 class List extends React.Component {
+  static propTypes = {
+    /**
+     * An array of sections to be listed, which may contain pages or their own sub-section.
+     */
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        /**
+         * The section's name to display.
+         */
+        name: PropTypes.string,
+        /**
+         * Section's destination.
+         */
+        url: PropTypes.string,
+        /**
+         * Section's pages (may contain pages or sub-sections with their own pages).
+         */
+        pages: PropTypes.arrayOf(PropTypes.object),
+      })
+    ).isRequired,
+    /**
+     * The app's theme.
+     */
+    theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    /**
+     * List's StartMargin, so it will be positioned next to it's parent list (in case it is a sub-list).
+     */
+    startOffset: PropTypes.number,
+  };
+
+  static defaultProps = {
+    startOffset: 0,
+  };
+
   componentDidMount() {
     this.addKeysListener();
   }
@@ -133,11 +133,12 @@ class List extends React.Component {
         <FocusLock>
           {items && (
             <StyledList
-              innerRef={listRef => (this.listRef = listRef)} // eslint-disable-line no-return-assign
+              innerRef={listRef => {
+                this.listRef = listRef;
+              }}
               startOffset={startOffset}
               role="region"
             >
-              {/* <Item> */}
               <Query query={GET_A11Y_STATE}>
                 {({ data, loading, client, }) => {
                   const { a11yToggle, } = data;
@@ -176,7 +177,6 @@ class List extends React.Component {
                   );
                 }}
               </Query>
-              {/* </Item> */}
               {items.map((item, i) => (
                 <Item key={item.name}>
                   <StyledLink
@@ -192,8 +192,5 @@ class List extends React.Component {
     );
   }
 }
-
-List.propTypes = propTypes;
-List.defaultProps = defaultProps;
 
 export default List;

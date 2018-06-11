@@ -5,28 +5,6 @@ import { FelaComponent, } from 'react-fela';
 import List from './navigationMenuList';
 import Hamburger from '../Animations/Hamburger';
 
-const propTypes = {
-  /**
-   * An array of sections to be listed, which may contain pages or their own sub-section.
-   */
-  sections: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * The section's name to display.
-       */
-      name: PropTypes.string,
-      /**
-       * Section's destination.
-       */
-      url: PropTypes.string,
-      /**
-       * Section's pages (may contain pages or sub-sections with their own pages).
-       */
-      pages: PropTypes.arrayOf(PropTypes.object),
-    })
-  ).isRequired,
-};
-
 const menuButtonStyle = ({ theme, isOpen, }) => ({
   height: '100%',
   display: 'block',
@@ -51,12 +29,45 @@ const menuButtonStyle = ({ theme, isOpen, }) => ({
  * pages and sub-section and so on...
  */
 class NavigationMenu extends React.Component {
+  static propTypes = {
+    /**
+     * An array of sections to be listed, which may contain pages or their own sub-section.
+     */
+    sections: PropTypes.arrayOf(
+      PropTypes.shape({
+        /**
+         * The section's name to display.
+         */
+        name: PropTypes.string,
+        /**
+         * Section's destination.
+         */
+        url: PropTypes.string,
+        /**
+         * Section's pages (may contain pages or sub-sections with their own pages).
+         */
+        pages: PropTypes.arrayOf(
+          PropTypes.shape({
+            /**
+             * The page's name to display.
+             */
+            name: PropTypes.string,
+            /**
+             * page's destination.
+             */
+            url: PropTypes.string,
+          })
+        ),
+      })
+    ).isRequired,
+  };
+
   state = {
     isHovered: false,
     isOpen: false,
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextState) {
     return (
       this.state.isOpen !== nextState.isOpen ||
       this.state.isHovered !== nextState.isHovered
@@ -65,24 +76,25 @@ class NavigationMenu extends React.Component {
 
   componentDidUpdate() {
     if (this.state.isOpen) {
-      document.addEventListener('click', this.handleGlobalClick);
-      document.addEventListener('keydown', this.handleGlobalKeydown);
+      document.addEventListener('click', this.handleOutsideClick);
+      document.addEventListener('keydown', this.handleEscape);
     }
     else {
-      document.removeEventListener('click', this.handleGlobalClick);
-      document.removeEventListener('keydown', this.handleGlobalKeydown);
+      document.removeEventListener('click', this.handleOutsideClick);
+      document.removeEventListener('keydown', this.handleEscape);
     }
   }
 
   handleMouseEnter = () => this.setState({ isHovered: true, });
   handleMouseLeave = () => this.setState({ isHovered: false, });
-  handleGlobalClick = e => {
+
+  handleOutsideClick = e => {
     if (!this.wrapper.contains(e.target)) {
       this.changeState();
     }
   };
 
-  handleGlobalKeydown = e => {
+  handleEscape = e => {
     const key = e.which || e.keyCode;
     if (key === 27) {
       this.changeState();
@@ -158,7 +170,5 @@ class NavigationMenu extends React.Component {
     );
   }
 }
-
-NavigationMenu.propTypes = propTypes;
 
 export default NavigationMenu;

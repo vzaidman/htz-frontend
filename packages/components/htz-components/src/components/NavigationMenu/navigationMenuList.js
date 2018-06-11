@@ -5,50 +5,6 @@ import { borderBottom, borderStart, } from '@haaretz/htz-css-tools';
 import Link from '../Link/Link';
 import FlippingArrow from '../Animations/FlippingArrow';
 
-const propTypes = {
-  /**
-   * An array of sections to be listed, which may contain pages or their own sub-section.
-   */
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * The section's name to display.
-       */
-      name: PropTypes.string,
-      /**
-       * Section's destination.
-       */
-      url: PropTypes.string,
-      /**
-       * Section's pages (may contain pages or sub-sections with their own pages).
-       */
-      pages: PropTypes.arrayOf(PropTypes.object),
-    })
-  ).isRequired,
-  /**
-   * The app's theme.
-   */
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  /**
-   * List's StartMargin, so it will be positioned next to it's parent list (in case it is a sub-list).
-   */
-  startOffset: PropTypes.number,
-  /**
-   * A callback function passed down by the parent to its sub-list.
-   */
-  clearParentSelection: PropTypes.func,
-  /**
-   * Is this list is a sub-list.
-   */
-  isSub: PropTypes.bool,
-};
-
-const defaultProps = {
-  startOffset: 0,
-  clearParentSelection: null,
-  isSub: false,
-};
-
 const listStyle = ({ theme, isSub, startOffset, }) => ({
   position: 'absolute',
   zIndex: '100',
@@ -169,6 +125,50 @@ const PromotionItem = createComponent(promotionStyle, Link, props =>
 );
 
 class List extends React.Component {
+  static propTypes = {
+    /**
+     * An array of sections to be listed, which may contain pages or their own sub-section.
+     */
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        /**
+         * The section's name to display.
+         */
+        name: PropTypes.string,
+        /**
+         * Section's destination.
+         */
+        url: PropTypes.string,
+        /**
+         * Section's pages (may contain pages or sub-sections with their own pages).
+         */
+        pages: PropTypes.arrayOf(PropTypes.object),
+      })
+    ).isRequired,
+    /**
+     * The app's theme.
+     */
+    theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    /**
+     * List's StartMargin, so it will be positioned next to it's parent list (in case it is a sub-list).
+     */
+    startOffset: PropTypes.number,
+    /**
+     * A callback function passed down by the parent to its sub-list.
+     */
+    clearParentSelection: PropTypes.func,
+    /**
+     * Is this list is a sub-list.
+     */
+    isSub: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    startOffset: 0,
+    clearParentSelection: null,
+    isSub: false,
+  };
+
   state = {
     lastSelectedIndex: 0,
     selectedIndex: null,
@@ -240,7 +240,9 @@ class List extends React.Component {
       <Fragment>
         {items && (
           <StyledList
-            innerRef={listRef => (this.listRef = listRef)} // eslint-disable-line no-return-assign
+            innerRef={listRef => {
+              this.listRef = listRef;
+            }}
             isSub={isSub}
             startOffset={startOffset}
             role="region"
@@ -340,8 +342,5 @@ class List extends React.Component {
     );
   }
 }
-
-List.propTypes = propTypes;
-List.defaultProps = defaultProps;
 
 export default List;

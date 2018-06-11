@@ -7,18 +7,18 @@ import IconSearch from '../Icon/icons/IconSearch';
 import Link from '../Link/Link';
 import TextInput from '../TextInput/TextInput';
 
-const propTypes = {
-  /**
-   * A boolean from header if the searchbar input is open.
-   */
-  searchIsOpen: PropTypes.bool.isRequired,
-  /**
-   * A callback to toggle searchbar state on `NavigationHeader` component.
-   */
-  onClick: PropTypes.func.isRequired,
-};
-
 class HeaderSearch extends React.Component {
+  static propTypes = {
+    /**
+     * A boolean from header if the searchbar input is open.
+     */
+    searchIsOpen: PropTypes.bool.isRequired,
+    /**
+     * A callback to toggle searchbar state on `NavigationHeader` component.
+     */
+    onClick: PropTypes.func.isRequired,
+  };
+
   state = {
     query: null,
     isHovered: false,
@@ -50,7 +50,6 @@ class HeaderSearch extends React.Component {
     });
 
   render() {
-    // eslint-disable-next-line react/prop-types
     const { isHovered, } = this.state;
     const { onClick, searchIsOpen, } = this.props;
     return (
@@ -215,7 +214,5 @@ class HeaderSearch extends React.Component {
     );
   }
 }
-
-HeaderSearch.propTypes = propTypes;
 
 export default HeaderSearch;

@@ -6,7 +6,6 @@ import IconAccessibility from '../Icon/icons/IconAccessibility';
 
 const a11yButtonStyle = ({ theme, isOpen, }) => ({
   display: 'flex',
-  ...theme.type(-2),
   color: theme.color('a11yMenu', 'text'),
   border: 'none',
   padding: '1rem',
@@ -18,6 +17,7 @@ const a11yButtonStyle = ({ theme, isOpen, }) => ({
     backgroundColor: theme.color('a11yMenu', 'bgHover'),
     color: theme.color('a11yMenu', 'textOpenOrHover'),
   },
+  extend: [ ...theme.type(-2), ],
 });
 
 /**
@@ -25,34 +25,30 @@ const a11yButtonStyle = ({ theme, isOpen, }) => ({
  * two options: toggle accessibility on apollo link state and report a problem via email
  */
 class A11yMenu extends React.Component {
-  componentWillMount() {
-    this.setState({
-      isOpen: false,
-    });
-  }
+  state = { isOpen: false, };
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextState) {
     return this.state.isOpen !== nextState.isOpen;
   }
 
   componentDidUpdate() {
     if (this.state.isOpen) {
-      document.addEventListener('click', this.handleGlobalClick);
-      document.addEventListener('keydown', this.handleGlobalKeydown);
+      document.addEventListener('click', this.handleOutsideClick);
+      document.addEventListener('keydown', this.handleEscape);
     }
     else {
-      document.removeEventListener('click', this.handleGlobalClick);
-      document.removeEventListener('keydown', this.handleGlobalKeydown);
+      document.removeEventListener('click', this.handleOutsideClick);
+      document.removeEventListener('keydown', this.handleEscape);
     }
   }
 
-  handleGlobalClick = e => {
+  handleOutsideClick = e => {
     if (!this.wrapper.contains(e.target)) {
       this.changeState();
     }
   };
 
-  handleGlobalKeydown = e => {
+  handleEscape = e => {
     const key = e.which || e.keyCode;
     if (key === 27) {
       this.changeState();

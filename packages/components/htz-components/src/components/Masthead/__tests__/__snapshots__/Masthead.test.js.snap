@@ -1,0 +1,2280 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MainHeader DOM element check that opening the search input hidden the other components 1`] = `
+<header
+  className="htz-a htz-b htz-c htz-d"
+>
+  <NavigationMenu
+    sections={
+      Array [
+        Object {
+          "name": "חדשות",
+          "url": "/news",
+        },
+        Object {
+          "name": "דעות",
+          "url": "/opinions",
+        },
+      ]
+    }
+  >
+    <FelaComponent
+      render={[Function]}
+      style={[Function]}
+    >
+      <FelaTheme
+        render={[Function]}
+      >
+        <div
+          className="htz-e htz-f htz-g"
+        >
+          <FelaComponent
+            isOpen={false}
+            render={[Function]}
+            rule={[Function]}
+          >
+            <FelaTheme
+              render={[Function]}
+            >
+              <button
+                aria-expanded={false}
+                className="htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                <FelaComponent
+                  render="span"
+                  style={
+                    Object {
+                      "marginEnd": "2rem",
+                      "marginStart": "2rem",
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <FelaTheme
+                    render={[Function]}
+                  >
+                    <span
+                      className="htz-s htz-t htz-u"
+                    >
+                      <Hamburger
+                        color={
+                          Object {
+                            "close": Array [
+                              "neutral",
+                              "-3",
+                            ],
+                            "open": Array [
+                              "neutral",
+                              "-10",
+                            ],
+                          }
+                        }
+                        isOpen={false}
+                        size={2.5}
+                        thickness={2}
+                      >
+                        <FelaComponent
+                          color={
+                            Object {
+                              "close": Array [
+                                "neutral",
+                                "-3",
+                              ],
+                              "open": Array [
+                                "neutral",
+                                "-10",
+                              ],
+                            }
+                          }
+                          isOpen={false}
+                          render={[Function]}
+                          rule={[Function]}
+                          size={2.5}
+                          thickness={2}
+                        >
+                          <FelaTheme
+                            render={[Function]}
+                          >
+                            <i
+                              className="htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+                            />
+                          </FelaTheme>
+                        </FelaComponent>
+                      </Hamburger>
+                    </span>
+                  </FelaTheme>
+                </FelaComponent>
+                <span>
+                  ניווט
+                </span>
+              </button>
+            </FelaTheme>
+          </FelaComponent>
+          <FelaComponent
+            style={
+              Object {
+                "position": "relative",
+              }
+            }
+          >
+            <FelaTheme
+              render={[Function]}
+            >
+              <div
+                className="htz-u"
+              />
+            </FelaTheme>
+          </FelaComponent>
+        </div>
+      </FelaTheme>
+    </FelaComponent>
+  </NavigationMenu>
+  <HeaderSearch
+    onClick={[Function]}
+    searchIsOpen={false}
+  >
+    <FelaComponent
+      render={[Function]}
+      style={[Function]}
+    >
+      <FelaTheme
+        render={[Function]}
+      >
+        <div
+          className="htz-a htz-be htz-bf htz-f htz-g htz-bg"
+        >
+          <FelaComponent
+            render={[Function]}
+            style={
+              Object {
+                "@media (max-width: 79.9375em)": Object {
+                  "fontSize": "2rem",
+                  "lineHeight": "1.5em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2rem",
+                  "lineHeight": "1.5em",
+                },
+                "WebkitBoxAlign": "center",
+                "WebkitBoxPack": "center",
+                "alignItems": "center",
+                "color": "#111111",
+                "display": "-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex",
+                "fontWeight": "700",
+                "justifyContent": "center",
+                "minWidth": "6rem",
+                "padding": "1rem",
+                "position": "relative",
+                "transitionDuration": ".3s",
+                "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                "zIndex": "1",
+              }
+            }
+          >
+            <FelaTheme
+              render={[Function]}
+            >
+              <button
+                aria-expanded={false}
+                className="htz-bh htz-j htz-a htz-m htz-bi htz-bj htz-l htz-u htz-bk htz-n htz-o htz-p htz-q htz-bl htz-bm htz-bn htz-bo"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                type="button"
+              >
+                <iconStyle
+                  color={null}
+                  fill={null}
+                  miscStyles={
+                    Object {
+                      "color": "#222222",
+                      "extend": Array [
+                        Object {
+                          "transitionDuration": ".3s",
+                          "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                        },
+                      ],
+                      "marginEnd": "1rem",
+                    }
+                  }
+                  size={3}
+                  stylesProp={null}
+                >
+                  <iconStyle
+                    _felaTheme={
+                      Object {
+                        "btnStyle": Object {
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": 1,
+                          "borderEndStyle": "solid",
+                          "borderEndWidth": 1,
+                          "borderStartStyle": "solid",
+                          "borderStartWidth": 1,
+                          "borderTopStyle": "solid",
+                          "borderTopWidth": 1,
+                          "boxModel": Object {
+                            "hp": 4,
+                            "vp": 1,
+                          },
+                          "fontWeight": "bold",
+                          "neutralText": "#131313",
+                          "radius": 0,
+                        },
+                        "color": [Function],
+                        "getDelay": [Function],
+                        "getDuration": [Function],
+                        "getTimingFunction": [Function],
+                        "getTransition": [Function],
+                        "getTransitionString": [Function],
+                        "headerSearchI18n": Object {
+                          "buttonText": "חיפוש",
+                          "placeHolder": "הקלידו לחיפוש באתר",
+                          "queryUrl": [Function],
+                        },
+                        "inputStyle": Object {
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "fontWeightLabel": "bold",
+                          "height": 6,
+                          "lines": 1,
+                          "radius": 0,
+                          "typeScale": 0,
+                        },
+                        "mq": [Function],
+                        "navigationMenuI18n": Object {
+                          "buttonText": "ניווט",
+                        },
+                        "type": [Function],
+                        "userMenuI18n": Object {
+                          "buttonText": "שלום",
+                          "logout": "התנתקות",
+                          "menuItems": Array [
+                            Object {
+                              "name": "הגדרות",
+                              "url": "https://www.haaretz.co.il/personal-area/my-account",
+                            },
+                            Object {
+                              "name": "שירות למנויים",
+                              "url": "https://www.haaretz.co.il/personal-area/my-account",
+                            },
+                            Object {
+                              "name": "ניוזלטרים",
+                              "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                            },
+                          ],
+                          "noUserData": "התחברות",
+                        },
+                      }
+                    }
+                    color={null}
+                    fill={null}
+                    miscStyles={
+                      Object {
+                        "color": "#222222",
+                        "extend": Array [
+                          Object {
+                            "transitionDuration": ".3s",
+                            "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                          },
+                        ],
+                        "marginEnd": "1rem",
+                      }
+                    }
+                    size={3}
+                    stylesProp={null}
+                  >
+                    <UnstyledIconSearch
+                      attrs={null}
+                      className="htz-bp htz-bq htz-br htz-bs htz-bt"
+                    >
+                      <svg
+                        className="htz-bp htz-bq htz-br htz-bs htz-bt"
+                        height="1em"
+                        viewBox="0 0 256 256"
+                        width="1em"
+                      >
+                         
+                        <path
+                          d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </UnstyledIconSearch>
+                  </iconStyle>
+                </iconStyle>
+                <span>
+                  חיפוש
+                </span>
+              </button>
+            </FelaTheme>
+          </FelaComponent>
+        </div>
+      </FelaTheme>
+    </FelaComponent>
+  </HeaderSearch>
+  <HeaderHaaretzLogo>
+    <FelaComponent
+      render={[Function]}
+      style={
+        Object {
+          "WebkitBoxAlign": "center",
+          "alignItems": "center",
+          "alignSelf": "center",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+        }
+      }
+    >
+      <FelaTheme
+        render={[Function]}
+      >
+        <Link
+          asPath={null}
+          attrs={null}
+          className="htz-bu htz-bv htz-bw htz-bh htz-bn"
+          content={null}
+          focus={false}
+          href="http://www.haaretz.co.il"
+          onClick={null}
+          prefetch={null}
+          refFunc={null}
+          target={null}
+        >
+          <a
+            className="htz-bu htz-bv htz-bw htz-bh htz-bn"
+            href="http://www.haaretz.co.il"
+            onClick={null}
+            target={null}
+          >
+            <iconStyle
+              color={null}
+              fill={null}
+              size={4}
+              stylesProp={null}
+            >
+              <iconStyle
+                _felaTheme={
+                  Object {
+                    "btnStyle": Object {
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
+                      "borderEndStyle": "solid",
+                      "borderEndWidth": 1,
+                      "borderStartStyle": "solid",
+                      "borderStartWidth": 1,
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": 1,
+                      "boxModel": Object {
+                        "hp": 4,
+                        "vp": 1,
+                      },
+                      "fontWeight": "bold",
+                      "neutralText": "#131313",
+                      "radius": 0,
+                    },
+                    "color": [Function],
+                    "getDelay": [Function],
+                    "getDuration": [Function],
+                    "getTimingFunction": [Function],
+                    "getTransition": [Function],
+                    "getTransitionString": [Function],
+                    "headerSearchI18n": Object {
+                      "buttonText": "חיפוש",
+                      "placeHolder": "הקלידו לחיפוש באתר",
+                      "queryUrl": [Function],
+                    },
+                    "inputStyle": Object {
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "fontWeightLabel": "bold",
+                      "height": 6,
+                      "lines": 1,
+                      "radius": 0,
+                      "typeScale": 0,
+                    },
+                    "mq": [Function],
+                    "navigationMenuI18n": Object {
+                      "buttonText": "ניווט",
+                    },
+                    "type": [Function],
+                    "userMenuI18n": Object {
+                      "buttonText": "שלום",
+                      "logout": "התנתקות",
+                      "menuItems": Array [
+                        Object {
+                          "name": "הגדרות",
+                          "url": "https://www.haaretz.co.il/personal-area/my-account",
+                        },
+                        Object {
+                          "name": "שירות למנויים",
+                          "url": "https://www.haaretz.co.il/personal-area/my-account",
+                        },
+                        Object {
+                          "name": "ניוזלטרים",
+                          "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                        },
+                      ],
+                      "noUserData": "התחברות",
+                    },
+                  }
+                }
+                color={null}
+                fill={null}
+                size={4}
+                stylesProp={null}
+              >
+                <UnstyledIconHaaretzLogo
+                  attrs={null}
+                  className="htz-bp htz-bx htz-br htz-by"
+                >
+                  <svg
+                    className="htz-bp htz-bx htz-br htz-by"
+                    height="1em"
+                    viewBox="0 0 256 86"
+                    width="2.9767441860465116em"
+                  >
+                     
+                    <path
+                      d="M38.1 50.4c-2.8 14.8-5.2 25.2-5.3 26.1-.1.9-7.1-24.9-6.8-25.8 5.5-15.4.9-22.7-3.7-22.7H12c0-2.4.5-11-5-19h25c-6.6 17.6 2 31.7 6.1 41.4zM35.1 9c3.7 8.5 2.9 17.6-.2 25.9-.6 1.6.5 6 1.8 5.7C39.5 32.9 40.6 29 47.6 28h9.5c-1-2-5.1-8.5.1-19H35.1zm80.1 12.4c-.2-2.2-.7-8.7-3.4-12.4H62c-4.3 6.5-2.9 14.1.1 19 .1-.1 39.8 0 40 0 6.2.1 8.2 4.5 7.7 12.6-.2 3.6-2.6 9.1-4.5 11.7-.5.7 4.2 15.9 5.6 22.9 0 0 .5 0 .7-.7.9-1.9 3-11.5 3.6-17.8.6-5.6-1.4-12.3-1.7-15.7-.7-7.6 2-16.2 1.7-19.6zm74.3 16.4s-.8 7.5-4.1 15.5c-1 5-.2 8.5.9 13.3.9 4 2 5.7 3 8.5h.9c6.3-14.9 5.6-22.3.1-37.2-.1-.4-.8.1-.8-.1zM129 34.4l54.9 40.1c0-.9-2.7-8.3-3.3-12-.8-4.7-.5-5.9.5-10.4-6.5-4.3-11.6-8.3-19.8-13.8-1.1-.7-2-3.1-1.7-5.1.4-2.6 2.9-5.2 5.1-5.2H181s-5.9-9.5 0-19h-23s-.8 3.2-.6 6.4c.2 3.3 2.3 6 1 10.9-1.1 3.9-2.4 5.6-3.5 6.3C144.3 24.9 122.3 9 122.3 9h-4.4s-.4.1-.3.3c2.3 4.4 3.3 10.2 2.8 15.2-.7 6.8-1.6 7.8-1.6 13.5 0 6.2 2.2 11.4 1.8 17.6-.6 8.9-2.5 15.9-3.3 18.6-.3.9.2.8.2.8h27.1c-4.9-9.4-2.8-16-2.8-16h-9.7c-7.3.1-8-10-7.1-16.8.5-5.2 3.7-7.7 4-7.8zm114.4 6.4c-1.4-5.6-.3-8.3 2.2-13.4 1.1-2.2 1.3-8.5 1.3-9.3 0 0-.1-9.1-4.7-9.1h-55.8s-5.8 8.5.5 19h47c4.2 0 5.1 4.7 5.2 8.5 0 3.8-1.9 9.8-3 13.3-.8 2.6 3.1 15.1 5.2 25.2h.9c.3-.8 4.3-21.9 4-24.9-.2-1.7-1.8-5.2-2.8-9.3z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </UnstyledIconHaaretzLogo>
+              </iconStyle>
+            </iconStyle>
+          </a>
+        </Link>
+      </FelaTheme>
+    </FelaComponent>
+  </HeaderHaaretzLogo>
+  <HeaderUserItems>
+    <FelaComponent
+      render={[Function]}
+      style={[Function]}
+    >
+      <FelaTheme
+        render={[Function]}
+      >
+        <div
+          className="htz-a htz-f htz-g"
+        >
+          <UserDispenser
+            render={[Function]}
+          >
+            <Mutation
+              mutation={
+                Object {
+                  "definitions": Array [
+                    Object {
+                      "directives": Array [],
+                      "kind": "OperationDefinition",
+                      "name": Object {
+                        "kind": "Name",
+                        "value": "updateUser",
+                      },
+                      "operation": "mutation",
+                      "selectionSet": Object {
+                        "kind": "SelectionSet",
+                        "selections": Array [
+                          Object {
+                            "alias": null,
+                            "arguments": Array [
+                              Object {
+                                "kind": "Argument",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "user",
+                                },
+                                "value": Object {
+                                  "kind": "Variable",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "user",
+                                  },
+                                },
+                              },
+                            ],
+                            "directives": Array [
+                              Object {
+                                "arguments": Array [],
+                                "kind": "Directive",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "client",
+                                },
+                              },
+                            ],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "updateUser",
+                            },
+                            "selectionSet": Object {
+                              "kind": "SelectionSet",
+                              "selections": Array [
+                                Object {
+                                  "alias": null,
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "user",
+                                  },
+                                  "selectionSet": Object {
+                                    "kind": "SelectionSet",
+                                    "selections": Array [
+                                      Object {
+                                        "alias": null,
+                                        "arguments": Array [],
+                                        "directives": Array [],
+                                        "kind": "Field",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "user",
+                                        },
+                                        "selectionSet": null,
+                                      },
+                                    ],
+                                  },
+                                },
+                              ],
+                            },
+                          },
+                        ],
+                      },
+                      "variableDefinitions": Array [
+                        Object {
+                          "defaultValue": null,
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NonNullType",
+                            "type": Object {
+                              "kind": "NamedType",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "User",
+                              },
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "user",
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  ],
+                  "kind": "Document",
+                  "loc": Object {
+                    "end": 121,
+                    "start": 0,
+                  },
+                }
+              }
+            >
+              <ImageCookies
+                images={Array []}
+                onload={[Function]}
+              />
+            </Mutation>
+            <Query
+              query={
+                Object {
+                  "definitions": Array [
+                    Object {
+                      "directives": Array [],
+                      "kind": "OperationDefinition",
+                      "name": undefined,
+                      "operation": "query",
+                      "selectionSet": Object {
+                        "kind": "SelectionSet",
+                        "selections": Array [
+                          Object {
+                            "alias": null,
+                            "arguments": Array [],
+                            "directives": Array [
+                              Object {
+                                "arguments": Array [],
+                                "kind": "Directive",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "client",
+                                },
+                              },
+                            ],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "user",
+                            },
+                            "selectionSet": Object {
+                              "kind": "SelectionSet",
+                              "selections": Array [
+                                Object {
+                                  "alias": null,
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "type",
+                                  },
+                                  "selectionSet": null,
+                                },
+                                Object {
+                                  "alias": null,
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "id",
+                                  },
+                                  "selectionSet": null,
+                                },
+                                Object {
+                                  "alias": null,
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "email",
+                                  },
+                                  "selectionSet": null,
+                                },
+                                Object {
+                                  "alias": null,
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "firstName",
+                                  },
+                                  "selectionSet": null,
+                                },
+                                Object {
+                                  "alias": null,
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "lastName",
+                                  },
+                                  "selectionSet": null,
+                                },
+                                Object {
+                                  "alias": null,
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "emailStatus",
+                                  },
+                                  "selectionSet": null,
+                                },
+                                Object {
+                                  "alias": null,
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "token",
+                                  },
+                                  "selectionSet": null,
+                                },
+                                Object {
+                                  "alias": null,
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "anonymousId",
+                                  },
+                                  "selectionSet": null,
+                                },
+                              ],
+                            },
+                          },
+                        ],
+                      },
+                      "variableDefinitions": Array [],
+                    },
+                  ],
+                  "kind": "Document",
+                  "loc": Object {
+                    "end": 151,
+                    "start": 0,
+                  },
+                }
+              }
+            >
+              <UserMenu
+                userName="FIRSTNAME"
+              >
+                <FelaComponent
+                  render={[Function]}
+                  style={
+                    Object {
+                      "display": "inline",
+                    }
+                  }
+                >
+                  <FelaTheme
+                    render={[Function]}
+                  >
+                    <div
+                      className="htz-e"
+                    >
+                      <UserButton
+                        innerRef={[Function]}
+                        isOpen={false}
+                        onClick={[Function]}
+                        role="button"
+                        userName="FIRSTNAME"
+                      >
+                        <FelaComponent
+                          render={[Function]}
+                          style={[Function]}
+                        >
+                          <FelaTheme
+                            render={[Function]}
+                          >
+                            <button
+                              aria-expanded={false}
+                              className="htz-h htz-bz htz-a htz-k htz-ca htz-cb htz-cc htz-cd htz-n htz-o htz-p htz-q"
+                              onClick={[Function]}
+                              onMouseEnter={[Function]}
+                              onMouseLeave={[Function]}
+                              role="button"
+                            >
+                              <FelaComponent
+                                render="span"
+                                style={
+                                  Object {
+                                    "color": "#444444",
+                                  }
+                                }
+                              >
+                                <FelaTheme
+                                  render={[Function]}
+                                >
+                                  <span
+                                    className="htz-ce"
+                                  >
+                                    <FelaComponent
+                                      render="span"
+                                      style={
+                                        Object {
+                                          "fontWeight": "400",
+                                        }
+                                      }
+                                    >
+                                      <FelaTheme
+                                        render={[Function]}
+                                      >
+                                        <span
+                                          className="htz-cf"
+                                        >
+                                          שלום
+                                          ,
+                                           
+                                        </span>
+                                      </FelaTheme>
+                                    </FelaComponent>
+                                    <FelaComponent
+                                      render="span"
+                                      style={
+                                        Object {
+                                          "fontWeight": "700",
+                                        }
+                                      }
+                                    >
+                                      <FelaTheme
+                                        render={[Function]}
+                                      >
+                                        <span
+                                          className="htz-m"
+                                        >
+                                          FIRSTNAME
+                                        </span>
+                                      </FelaTheme>
+                                    </FelaComponent>
+                                  </span>
+                                </FelaTheme>
+                              </FelaComponent>
+                              <iconStyle
+                                color={null}
+                                fill={null}
+                                miscStyles={
+                                  Object {
+                                    "marginRight": "2rem",
+                                  }
+                                }
+                                size={3}
+                                stylesProp={null}
+                              >
+                                <iconStyle
+                                  _felaTheme={
+                                    Object {
+                                      "btnStyle": Object {
+                                        "borderBottomStyle": "solid",
+                                        "borderBottomWidth": 1,
+                                        "borderEndStyle": "solid",
+                                        "borderEndWidth": 1,
+                                        "borderStartStyle": "solid",
+                                        "borderStartWidth": 1,
+                                        "borderTopStyle": "solid",
+                                        "borderTopWidth": 1,
+                                        "boxModel": Object {
+                                          "hp": 4,
+                                          "vp": 1,
+                                        },
+                                        "fontWeight": "bold",
+                                        "neutralText": "#131313",
+                                        "radius": 0,
+                                      },
+                                      "color": [Function],
+                                      "getDelay": [Function],
+                                      "getDuration": [Function],
+                                      "getTimingFunction": [Function],
+                                      "getTransition": [Function],
+                                      "getTransitionString": [Function],
+                                      "headerSearchI18n": Object {
+                                        "buttonText": "חיפוש",
+                                        "placeHolder": "הקלידו לחיפוש באתר",
+                                        "queryUrl": [Function],
+                                      },
+                                      "inputStyle": Object {
+                                        "borderStyle": "solid",
+                                        "borderWidth": 1,
+                                        "fontWeightLabel": "bold",
+                                        "height": 6,
+                                        "lines": 1,
+                                        "radius": 0,
+                                        "typeScale": 0,
+                                      },
+                                      "mq": [Function],
+                                      "navigationMenuI18n": Object {
+                                        "buttonText": "ניווט",
+                                      },
+                                      "type": [Function],
+                                      "userMenuI18n": Object {
+                                        "buttonText": "שלום",
+                                        "logout": "התנתקות",
+                                        "menuItems": Array [
+                                          Object {
+                                            "name": "הגדרות",
+                                            "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                          },
+                                          Object {
+                                            "name": "שירות למנויים",
+                                            "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                          },
+                                          Object {
+                                            "name": "ניוזלטרים",
+                                            "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                                          },
+                                        ],
+                                        "noUserData": "התחברות",
+                                      },
+                                    }
+                                  }
+                                  color={null}
+                                  fill={null}
+                                  miscStyles={
+                                    Object {
+                                      "marginRight": "2rem",
+                                    }
+                                  }
+                                  size={3}
+                                  stylesProp={null}
+                                >
+                                  <UnstyledIconAvatar
+                                    attrs={null}
+                                    className="htz-bp htz-bx htz-br htz-bs htz-s"
+                                  >
+                                    <svg
+                                      className="htz-bp htz-bx htz-br htz-bs htz-s"
+                                      height="1em"
+                                      viewBox="0 0 256 256"
+                                      width="1em"
+                                    >
+                                       
+                                      <path
+                                        d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </UnstyledIconAvatar>
+                                </iconStyle>
+                              </iconStyle>
+                            </button>
+                          </FelaTheme>
+                        </FelaComponent>
+                      </UserButton>
+                      <FelaComponent
+                        style={
+                          Object {
+                            "position": "relative",
+                          }
+                        }
+                      >
+                        <FelaTheme
+                          render={[Function]}
+                        >
+                          <div
+                            className="htz-u"
+                          />
+                        </FelaTheme>
+                      </FelaComponent>
+                    </div>
+                  </FelaTheme>
+                </FelaComponent>
+              </UserMenu>
+            </Query>
+          </UserDispenser>
+          <HeaderReading>
+            <FelaComponent
+              render={[Function]}
+              style={[Function]}
+            >
+              <FelaTheme
+                render={[Function]}
+              >
+                <Link
+                  asPath={null}
+                  attrs={null}
+                  className="htz-a htz-bh htz-k htz-ca htz-cb htz-cc htz-cd htz-n htz-o htz-p htz-q htz-r htz-bn"
+                  content={null}
+                  focus={false}
+                  href="https://www.haaretz.co.il/personal-area/my-account#readingList"
+                  onClick={null}
+                  prefetch={null}
+                  refFunc={null}
+                  target={null}
+                >
+                  <a
+                    className="htz-a htz-bh htz-k htz-ca htz-cb htz-cc htz-cd htz-n htz-o htz-p htz-q htz-r htz-bn"
+                    href="https://www.haaretz.co.il/personal-area/my-account#readingList"
+                    onClick={null}
+                    target={null}
+                  >
+                    <iconStyle
+                      color={null}
+                      fill={null}
+                      size={3}
+                      stylesProp={null}
+                    >
+                      <iconStyle
+                        _felaTheme={
+                          Object {
+                            "btnStyle": Object {
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": 1,
+                              "borderEndStyle": "solid",
+                              "borderEndWidth": 1,
+                              "borderStartStyle": "solid",
+                              "borderStartWidth": 1,
+                              "borderTopStyle": "solid",
+                              "borderTopWidth": 1,
+                              "boxModel": Object {
+                                "hp": 4,
+                                "vp": 1,
+                              },
+                              "fontWeight": "bold",
+                              "neutralText": "#131313",
+                              "radius": 0,
+                            },
+                            "color": [Function],
+                            "getDelay": [Function],
+                            "getDuration": [Function],
+                            "getTimingFunction": [Function],
+                            "getTransition": [Function],
+                            "getTransitionString": [Function],
+                            "headerSearchI18n": Object {
+                              "buttonText": "חיפוש",
+                              "placeHolder": "הקלידו לחיפוש באתר",
+                              "queryUrl": [Function],
+                            },
+                            "inputStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "fontWeightLabel": "bold",
+                              "height": 6,
+                              "lines": 1,
+                              "radius": 0,
+                              "typeScale": 0,
+                            },
+                            "mq": [Function],
+                            "navigationMenuI18n": Object {
+                              "buttonText": "ניווט",
+                            },
+                            "type": [Function],
+                            "userMenuI18n": Object {
+                              "buttonText": "שלום",
+                              "logout": "התנתקות",
+                              "menuItems": Array [
+                                Object {
+                                  "name": "הגדרות",
+                                  "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                },
+                                Object {
+                                  "name": "שירות למנויים",
+                                  "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                },
+                                Object {
+                                  "name": "ניוזלטרים",
+                                  "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                                },
+                              ],
+                              "noUserData": "התחברות",
+                            },
+                          }
+                        }
+                        color={null}
+                        fill={null}
+                        size={3}
+                        stylesProp={null}
+                      >
+                        <UnstyledIconReading
+                          attrs={null}
+                          className="htz-bp htz-bx htz-br htz-bs"
+                        >
+                          <svg
+                            className="htz-bp htz-bx htz-br htz-bs"
+                            height="1em"
+                            viewBox="0 0 256 256"
+                            width="1em"
+                          >
+                             
+                            <path
+                              d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </UnstyledIconReading>
+                      </iconStyle>
+                    </iconStyle>
+                  </a>
+                </Link>
+              </FelaTheme>
+            </FelaComponent>
+          </HeaderReading>
+          <A11yMenu>
+            <div>
+              <FelaComponent
+                isOpen={false}
+                render={[Function]}
+                rule={[Function]}
+              >
+                <FelaTheme
+                  render={[Function]}
+                >
+                  <button
+                    aria-expanded={false}
+                    className="htz-a htz-j htz-k htz-l htz-cg htz-ch"
+                    onClick={[Function]}
+                  >
+                    <iconStyle
+                      color={null}
+                      fill={null}
+                      size={3}
+                      stylesProp={null}
+                    >
+                      <iconStyle
+                        _felaTheme={
+                          Object {
+                            "btnStyle": Object {
+                              "borderBottomStyle": "solid",
+                              "borderBottomWidth": 1,
+                              "borderEndStyle": "solid",
+                              "borderEndWidth": 1,
+                              "borderStartStyle": "solid",
+                              "borderStartWidth": 1,
+                              "borderTopStyle": "solid",
+                              "borderTopWidth": 1,
+                              "boxModel": Object {
+                                "hp": 4,
+                                "vp": 1,
+                              },
+                              "fontWeight": "bold",
+                              "neutralText": "#131313",
+                              "radius": 0,
+                            },
+                            "color": [Function],
+                            "getDelay": [Function],
+                            "getDuration": [Function],
+                            "getTimingFunction": [Function],
+                            "getTransition": [Function],
+                            "getTransitionString": [Function],
+                            "headerSearchI18n": Object {
+                              "buttonText": "חיפוש",
+                              "placeHolder": "הקלידו לחיפוש באתר",
+                              "queryUrl": [Function],
+                            },
+                            "inputStyle": Object {
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "fontWeightLabel": "bold",
+                              "height": 6,
+                              "lines": 1,
+                              "radius": 0,
+                              "typeScale": 0,
+                            },
+                            "mq": [Function],
+                            "navigationMenuI18n": Object {
+                              "buttonText": "ניווט",
+                            },
+                            "type": [Function],
+                            "userMenuI18n": Object {
+                              "buttonText": "שלום",
+                              "logout": "התנתקות",
+                              "menuItems": Array [
+                                Object {
+                                  "name": "הגדרות",
+                                  "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                },
+                                Object {
+                                  "name": "שירות למנויים",
+                                  "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                },
+                                Object {
+                                  "name": "ניוזלטרים",
+                                  "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                                },
+                              ],
+                              "noUserData": "התחברות",
+                            },
+                          }
+                        }
+                        color={null}
+                        fill={null}
+                        size={3}
+                        stylesProp={null}
+                      >
+                        <UnstyledIconAccessibility
+                          attrs={null}
+                          className="htz-bp htz-bx htz-br htz-bs"
+                        >
+                          <svg
+                            className="htz-bp htz-bx htz-br htz-bs"
+                            height="1em"
+                            viewBox="0 0 256 256"
+                            width="1em"
+                          >
+                             
+                            <path
+                              d="M165.5 172c7.3 22.3 19.8 49.8 27.4 76h-25.7c-7.9-24.2-19-43.6-25.1-61.9-2.6-7.8-5.4-14.7-7.5-22.7-1.3-4.7-3.2-5.4-6.4-5.4-3.6-.1-5.5 2.4-6.3 5.1-7.9 26.6-20.9 54.3-30 84.9h-28c8.7-32.8 23.1-68.4 31.2-99.5.6-2.3.9-4.1 1-6.5 1.2-21.1 1-34.7 1-56.1-15.8-2.1-51.4-3.8-75-5.8v-23c24.4 1.7 66.9 3.5 85.1 4.1 20.2.7 40.4-.3 60.6-1.3 14-.7 44.5-1.5 65.3-2.7V79c-21 1.9-51.4 4-65.6 5.8-2.9.4-5.9.4-9.5.9 0 1.7-.1 24.7 0 33.9.1 20.8 1.1 32.7 7.5 52.4zM128.3 51.3c12 0 21.6-9.6 21.6-21.7 0-12-9.5-21.5-21.6-21.5-12.2 0-21.5 9.4-21.5 21.6 0 12 9.5 21.6 21.5 21.6z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </UnstyledIconAccessibility>
+                      </iconStyle>
+                    </iconStyle>
+                  </button>
+                </FelaTheme>
+              </FelaComponent>
+            </div>
+          </A11yMenu>
+        </div>
+      </FelaTheme>
+    </FelaComponent>
+  </HeaderUserItems>
+</header>
+`;
+
+exports[`<MainHeader DOM element check that opening the search input hidden the other components 2`] = `
+<header
+  className="htz-a htz-b htz-c htz-d"
+>
+  <NavigationMenu
+    sections={
+      Array [
+        Object {
+          "name": "חדשות",
+          "url": "/news",
+        },
+        Object {
+          "name": "דעות",
+          "url": "/opinions",
+        },
+      ]
+    }
+  >
+    <FelaComponent
+      render={[Function]}
+      style={[Function]}
+    >
+      <FelaTheme
+        render={[Function]}
+      >
+        <div
+          className="htz-e htz-f htz-g"
+        >
+          <FelaComponent
+            isOpen={false}
+            render={[Function]}
+            rule={[Function]}
+          >
+            <FelaTheme
+              render={[Function]}
+            >
+              <button
+                aria-expanded={false}
+                className="htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                <FelaComponent
+                  render="span"
+                  style={
+                    Object {
+                      "marginEnd": "2rem",
+                      "marginStart": "2rem",
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <FelaTheme
+                    render={[Function]}
+                  >
+                    <span
+                      className="htz-s htz-t htz-u"
+                    >
+                      <Hamburger
+                        color={
+                          Object {
+                            "close": Array [
+                              "neutral",
+                              "-3",
+                            ],
+                            "open": Array [
+                              "neutral",
+                              "-10",
+                            ],
+                          }
+                        }
+                        isOpen={false}
+                        size={2.5}
+                        thickness={2}
+                      >
+                        <FelaComponent
+                          color={
+                            Object {
+                              "close": Array [
+                                "neutral",
+                                "-3",
+                              ],
+                              "open": Array [
+                                "neutral",
+                                "-10",
+                              ],
+                            }
+                          }
+                          isOpen={false}
+                          render={[Function]}
+                          rule={[Function]}
+                          size={2.5}
+                          thickness={2}
+                        >
+                          <FelaTheme
+                            render={[Function]}
+                          >
+                            <i
+                              className="htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+                            />
+                          </FelaTheme>
+                        </FelaComponent>
+                      </Hamburger>
+                    </span>
+                  </FelaTheme>
+                </FelaComponent>
+                <span>
+                  ניווט
+                </span>
+              </button>
+            </FelaTheme>
+          </FelaComponent>
+          <FelaComponent
+            style={
+              Object {
+                "position": "relative",
+              }
+            }
+          >
+            <FelaTheme
+              render={[Function]}
+            >
+              <div
+                className="htz-u"
+              />
+            </FelaTheme>
+          </FelaComponent>
+        </div>
+      </FelaTheme>
+    </FelaComponent>
+  </NavigationMenu>
+  <HeaderSearch
+    onClick={[Function]}
+    searchIsOpen={true}
+  >
+    <FelaComponent
+      render={[Function]}
+      style={[Function]}
+    >
+      <FelaTheme
+        render={[Function]}
+      >
+        <div
+          className="htz-a htz-ci htz-bf htz-f htz-g htz-cj"
+        >
+          <FelaComponent
+            render={[Function]}
+            style={
+              Object {
+                "@media (max-width: 79.9375em)": Object {
+                  "fontSize": "2rem",
+                  "lineHeight": "1.5em",
+                },
+                "@media (min-width: 80em)": Object {
+                  "fontSize": "2rem",
+                  "lineHeight": "1.5em",
+                },
+                "WebkitBoxAlign": "center",
+                "WebkitBoxPack": "center",
+                "alignItems": "center",
+                "backgroundColor": "#222222",
+                "color": "#444444",
+                "display": "-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex",
+                "fontWeight": "700",
+                "justifyContent": "center",
+                "minWidth": "6rem",
+                "padding": "1rem",
+                "position": "relative",
+                "transitionDuration": ".3s",
+                "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                "zIndex": "1",
+              }
+            }
+          >
+            <FelaTheme
+              render={[Function]}
+            >
+              <button
+                aria-expanded={true}
+                className="htz-bh htz-ce htz-a htz-m htz-bi htz-bj htz-l htz-u htz-bk htz-ck htz-n htz-o htz-p htz-q htz-bl htz-bm htz-bn htz-bo"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                type="button"
+              >
+                <iconStyle
+                  color="white"
+                  fill="primary"
+                  size={3}
+                  stylesProp={null}
+                >
+                  <iconStyle
+                    _felaTheme={
+                      Object {
+                        "btnStyle": Object {
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": 1,
+                          "borderEndStyle": "solid",
+                          "borderEndWidth": 1,
+                          "borderStartStyle": "solid",
+                          "borderStartWidth": 1,
+                          "borderTopStyle": "solid",
+                          "borderTopWidth": 1,
+                          "boxModel": Object {
+                            "hp": 4,
+                            "vp": 1,
+                          },
+                          "fontWeight": "bold",
+                          "neutralText": "#131313",
+                          "radius": 0,
+                        },
+                        "color": [Function],
+                        "getDelay": [Function],
+                        "getDuration": [Function],
+                        "getTimingFunction": [Function],
+                        "getTransition": [Function],
+                        "getTransitionString": [Function],
+                        "headerSearchI18n": Object {
+                          "buttonText": "חיפוש",
+                          "placeHolder": "הקלידו לחיפוש באתר",
+                          "queryUrl": [Function],
+                        },
+                        "inputStyle": Object {
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "fontWeightLabel": "bold",
+                          "height": 6,
+                          "lines": 1,
+                          "radius": 0,
+                          "typeScale": 0,
+                        },
+                        "mq": [Function],
+                        "navigationMenuI18n": Object {
+                          "buttonText": "ניווט",
+                        },
+                        "type": [Function],
+                        "userMenuI18n": Object {
+                          "buttonText": "שלום",
+                          "logout": "התנתקות",
+                          "menuItems": Array [
+                            Object {
+                              "name": "הגדרות",
+                              "url": "https://www.haaretz.co.il/personal-area/my-account",
+                            },
+                            Object {
+                              "name": "שירות למנויים",
+                              "url": "https://www.haaretz.co.il/personal-area/my-account",
+                            },
+                            Object {
+                              "name": "ניוזלטרים",
+                              "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                            },
+                          ],
+                          "noUserData": "התחברות",
+                        },
+                      }
+                    }
+                    color="white"
+                    fill="primary"
+                    size={3}
+                    stylesProp={null}
+                  >
+                    <UnstyledIconClose
+                      attrs={null}
+                      className="htz-bp htz-cl htz-bs"
+                    >
+                      <svg
+                        className="htz-bp htz-cl htz-bs"
+                        height="1em"
+                        viewBox="0 0 256 256"
+                        width="1em"
+                      >
+                         
+                        <path
+                          d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </UnstyledIconClose>
+                  </iconStyle>
+                </iconStyle>
+              </button>
+            </FelaTheme>
+          </FelaComponent>
+          <FelaComponent
+            render={[Function]}
+            style={
+              Object {
+                "display": "-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex",
+              }
+            }
+          >
+            <FelaTheme
+              render={[Function]}
+            >
+              <FelaComponent
+                render={[Function]}
+                style={
+                  Object {
+                    "WebkitBoxFlex": "1",
+                    "animationDuration": "0.5s",
+                    "animationFillMode": "forwards",
+                    "animationName": "k1",
+                    "animationTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                    "backgroundColor": "#333333",
+                    "display": "-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex",
+                    "flexGrow": "1",
+                    "position": "relative",
+                    "transform": "translateX(-100%)",
+                  }
+                }
+              >
+                <FelaTheme
+                  render={[Function]}
+                >
+                  <div
+                    className="htz-cm htz-cn htz-co htz-a htz-ci htz-cp htz-cq htz-u htz-cr htz-cj"
+                  >
+                    <FelaComponent
+                      style={
+                        Object {
+                          "WebkitBoxFlex": 1,
+                          "flexGrow": 1,
+                        }
+                      }
+                    >
+                      <FelaTheme
+                        render={[Function]}
+                      >
+                        <div
+                          className="htz-ci htz-cj"
+                        >
+                          <TextInput
+                            attrs={null}
+                            boxModel={
+                              Object {
+                                "vp": 0.5,
+                              }
+                            }
+                            className={null}
+                            defaultValue={null}
+                            errorText={null}
+                            height={null}
+                            inputId={null}
+                            isContentEditable={false}
+                            isDisabled={false}
+                            isError={false}
+                            isTextArea={false}
+                            label="חיפוש"
+                            labelHidden={true}
+                            labelId={null}
+                            maxLength={null}
+                            minLength={null}
+                            miscStyles={
+                              Object {
+                                ":hover": Object {
+                                  "backgroundColor": "transparent",
+                                },
+                                "backgroundColor": "transparent",
+                                "height": "100%",
+                                "marginTop": "0",
+                                "paddingInlineEnd": "6rem",
+                              }
+                            }
+                            noteId={null}
+                            noteText={null}
+                            onBlur={null}
+                            onChange={[Function]}
+                            onContentEditableChange={null}
+                            onFocus={null}
+                            onInput={null}
+                            placeholder="הקלידו לחיפוש באתר"
+                            refFunc={[Function]}
+                            requiredText={null}
+                            type="search"
+                            variant="primary"
+                          >
+                            <div>
+                              <labelStyle
+                                boxModel={
+                                  Object {
+                                    "vp": 0.5,
+                                  }
+                                }
+                                htmlFor="123456789"
+                                isContentEditable={false}
+                                isDisabled={false}
+                                isError={false}
+                                isFocused={false}
+                                isLabelUp={false}
+                                isTextArea={false}
+                                miscStyles={
+                                  Object {
+                                    ":hover": Object {
+                                      "backgroundColor": "transparent",
+                                    },
+                                    "backgroundColor": "transparent",
+                                    "height": "100%",
+                                    "marginTop": "0",
+                                    "paddingInlineEnd": "6rem",
+                                  }
+                                }
+                                variant="primary"
+                              >
+                                <labelStyle
+                                  _felaTheme={
+                                    Object {
+                                      "btnStyle": Object {
+                                        "borderBottomStyle": "solid",
+                                        "borderBottomWidth": 1,
+                                        "borderEndStyle": "solid",
+                                        "borderEndWidth": 1,
+                                        "borderStartStyle": "solid",
+                                        "borderStartWidth": 1,
+                                        "borderTopStyle": "solid",
+                                        "borderTopWidth": 1,
+                                        "boxModel": Object {
+                                          "hp": 4,
+                                          "vp": 1,
+                                        },
+                                        "fontWeight": "bold",
+                                        "neutralText": "#131313",
+                                        "radius": 0,
+                                      },
+                                      "color": [Function],
+                                      "getDelay": [Function],
+                                      "getDuration": [Function],
+                                      "getTimingFunction": [Function],
+                                      "getTransition": [Function],
+                                      "getTransitionString": [Function],
+                                      "headerSearchI18n": Object {
+                                        "buttonText": "חיפוש",
+                                        "placeHolder": "הקלידו לחיפוש באתר",
+                                        "queryUrl": [Function],
+                                      },
+                                      "inputStyle": Object {
+                                        "borderStyle": "solid",
+                                        "borderWidth": 1,
+                                        "fontWeightLabel": "bold",
+                                        "height": 6,
+                                        "lines": 1,
+                                        "radius": 0,
+                                        "typeScale": 0,
+                                      },
+                                      "mq": [Function],
+                                      "navigationMenuI18n": Object {
+                                        "buttonText": "ניווט",
+                                      },
+                                      "type": [Function],
+                                      "userMenuI18n": Object {
+                                        "buttonText": "שלום",
+                                        "logout": "התנתקות",
+                                        "menuItems": Array [
+                                          Object {
+                                            "name": "הגדרות",
+                                            "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                          },
+                                          Object {
+                                            "name": "שירות למנויים",
+                                            "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                          },
+                                          Object {
+                                            "name": "ניוזלטרים",
+                                            "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                                          },
+                                        ],
+                                        "noUserData": "התחברות",
+                                      },
+                                    }
+                                  }
+                                  boxModel={
+                                    Object {
+                                      "vp": 0.5,
+                                    }
+                                  }
+                                  htmlFor="123456789"
+                                  isContentEditable={false}
+                                  isDisabled={false}
+                                  isError={false}
+                                  isFocused={false}
+                                  isLabelUp={false}
+                                  isTextArea={false}
+                                  miscStyles={
+                                    Object {
+                                      ":hover": Object {
+                                        "backgroundColor": "transparent",
+                                      },
+                                      "backgroundColor": "transparent",
+                                      "height": "100%",
+                                      "marginTop": "0",
+                                      "paddingInlineEnd": "6rem",
+                                    }
+                                  }
+                                  variant="primary"
+                                >
+                                  <label
+                                    className="htz-cs htz-a htz-bh htz-cc htz-ct htz-b htz-u htz-cu htz-cv htz-o htz-cw htz-cx htz-j htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-h htz-dn htz-do htz-dp htz-bn"
+                                    htmlFor="123456789"
+                                  >
+                                    <labelAndButtonsWrapperStyle
+                                      isContentEditable={false}
+                                      isTextArea={false}
+                                    >
+                                      <labelAndButtonsWrapperStyle
+                                        _felaTheme={
+                                          Object {
+                                            "btnStyle": Object {
+                                              "borderBottomStyle": "solid",
+                                              "borderBottomWidth": 1,
+                                              "borderEndStyle": "solid",
+                                              "borderEndWidth": 1,
+                                              "borderStartStyle": "solid",
+                                              "borderStartWidth": 1,
+                                              "borderTopStyle": "solid",
+                                              "borderTopWidth": 1,
+                                              "boxModel": Object {
+                                                "hp": 4,
+                                                "vp": 1,
+                                              },
+                                              "fontWeight": "bold",
+                                              "neutralText": "#131313",
+                                              "radius": 0,
+                                            },
+                                            "color": [Function],
+                                            "getDelay": [Function],
+                                            "getDuration": [Function],
+                                            "getTimingFunction": [Function],
+                                            "getTransition": [Function],
+                                            "getTransitionString": [Function],
+                                            "headerSearchI18n": Object {
+                                              "buttonText": "חיפוש",
+                                              "placeHolder": "הקלידו לחיפוש באתר",
+                                              "queryUrl": [Function],
+                                            },
+                                            "inputStyle": Object {
+                                              "borderStyle": "solid",
+                                              "borderWidth": 1,
+                                              "fontWeightLabel": "bold",
+                                              "height": 6,
+                                              "lines": 1,
+                                              "radius": 0,
+                                              "typeScale": 0,
+                                            },
+                                            "mq": [Function],
+                                            "navigationMenuI18n": Object {
+                                              "buttonText": "ניווט",
+                                            },
+                                            "type": [Function],
+                                            "userMenuI18n": Object {
+                                              "buttonText": "שלום",
+                                              "logout": "התנתקות",
+                                              "menuItems": Array [
+                                                Object {
+                                                  "name": "הגדרות",
+                                                  "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                                },
+                                                Object {
+                                                  "name": "שירות למנויים",
+                                                  "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                                },
+                                                Object {
+                                                  "name": "ניוזלטרים",
+                                                  "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                                                },
+                                              ],
+                                              "noUserData": "התחברות",
+                                            },
+                                          }
+                                        }
+                                        isContentEditable={false}
+                                        isTextArea={false}
+                                      >
+                                        <div
+                                          className=""
+                                        >
+                                          <labelTextStyle
+                                            isContentEditable={false}
+                                            isDisabled={false}
+                                            isError={false}
+                                            isFocused={false}
+                                            isInputEmpty={true}
+                                            isTextArea={false}
+                                            labelHidden={true}
+                                            variant="primary"
+                                          >
+                                            <labelTextStyle
+                                              _felaTheme={
+                                                Object {
+                                                  "btnStyle": Object {
+                                                    "borderBottomStyle": "solid",
+                                                    "borderBottomWidth": 1,
+                                                    "borderEndStyle": "solid",
+                                                    "borderEndWidth": 1,
+                                                    "borderStartStyle": "solid",
+                                                    "borderStartWidth": 1,
+                                                    "borderTopStyle": "solid",
+                                                    "borderTopWidth": 1,
+                                                    "boxModel": Object {
+                                                      "hp": 4,
+                                                      "vp": 1,
+                                                    },
+                                                    "fontWeight": "bold",
+                                                    "neutralText": "#131313",
+                                                    "radius": 0,
+                                                  },
+                                                  "color": [Function],
+                                                  "getDelay": [Function],
+                                                  "getDuration": [Function],
+                                                  "getTimingFunction": [Function],
+                                                  "getTransition": [Function],
+                                                  "getTransitionString": [Function],
+                                                  "headerSearchI18n": Object {
+                                                    "buttonText": "חיפוש",
+                                                    "placeHolder": "הקלידו לחיפוש באתר",
+                                                    "queryUrl": [Function],
+                                                  },
+                                                  "inputStyle": Object {
+                                                    "borderStyle": "solid",
+                                                    "borderWidth": 1,
+                                                    "fontWeightLabel": "bold",
+                                                    "height": 6,
+                                                    "lines": 1,
+                                                    "radius": 0,
+                                                    "typeScale": 0,
+                                                  },
+                                                  "mq": [Function],
+                                                  "navigationMenuI18n": Object {
+                                                    "buttonText": "ניווט",
+                                                  },
+                                                  "type": [Function],
+                                                  "userMenuI18n": Object {
+                                                    "buttonText": "שלום",
+                                                    "logout": "התנתקות",
+                                                    "menuItems": Array [
+                                                      Object {
+                                                        "name": "הגדרות",
+                                                        "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                                      },
+                                                      Object {
+                                                        "name": "שירות למנויים",
+                                                        "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                                      },
+                                                      Object {
+                                                        "name": "ניוזלטרים",
+                                                        "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                                                      },
+                                                    ],
+                                                    "noUserData": "התחברות",
+                                                  },
+                                                }
+                                              }
+                                              isContentEditable={false}
+                                              isDisabled={false}
+                                              isError={false}
+                                              isFocused={false}
+                                              isInputEmpty={true}
+                                              isTextArea={false}
+                                              labelHidden={true}
+                                              variant="primary"
+                                            >
+                                              <span
+                                                className="htz-dq"
+                                              >
+                                                חיפוש
+                                              </span>
+                                            </labelTextStyle>
+                                          </labelTextStyle>
+                                        </div>
+                                      </labelAndButtonsWrapperStyle>
+                                    </labelAndButtonsWrapperStyle>
+                                    <styles
+                                      ariaDescribedBy={null}
+                                      ariaLabel="חיפוש"
+                                      attrs={null}
+                                      className={null}
+                                      defaultValue={null}
+                                      height={null}
+                                      inputId="123456789"
+                                      isContentEditable={false}
+                                      isDisabled={false}
+                                      isFocused={false}
+                                      isTextArea={false}
+                                      labelId={null}
+                                      maxLength={null}
+                                      minLength={null}
+                                      onBlur={[Function]}
+                                      onChange={[Function]}
+                                      onContentEditableChange={null}
+                                      onFocus={[Function]}
+                                      onInput={null}
+                                      placeholder="הקלידו לחיפוש באתר"
+                                      refFunc={[Function]}
+                                      setFormatButtonsState={null}
+                                      type="search"
+                                    >
+                                      <styles
+                                        _felaTheme={
+                                          Object {
+                                            "btnStyle": Object {
+                                              "borderBottomStyle": "solid",
+                                              "borderBottomWidth": 1,
+                                              "borderEndStyle": "solid",
+                                              "borderEndWidth": 1,
+                                              "borderStartStyle": "solid",
+                                              "borderStartWidth": 1,
+                                              "borderTopStyle": "solid",
+                                              "borderTopWidth": 1,
+                                              "boxModel": Object {
+                                                "hp": 4,
+                                                "vp": 1,
+                                              },
+                                              "fontWeight": "bold",
+                                              "neutralText": "#131313",
+                                              "radius": 0,
+                                            },
+                                            "color": [Function],
+                                            "getDelay": [Function],
+                                            "getDuration": [Function],
+                                            "getTimingFunction": [Function],
+                                            "getTransition": [Function],
+                                            "getTransitionString": [Function],
+                                            "headerSearchI18n": Object {
+                                              "buttonText": "חיפוש",
+                                              "placeHolder": "הקלידו לחיפוש באתר",
+                                              "queryUrl": [Function],
+                                            },
+                                            "inputStyle": Object {
+                                              "borderStyle": "solid",
+                                              "borderWidth": 1,
+                                              "fontWeightLabel": "bold",
+                                              "height": 6,
+                                              "lines": 1,
+                                              "radius": 0,
+                                              "typeScale": 0,
+                                            },
+                                            "mq": [Function],
+                                            "navigationMenuI18n": Object {
+                                              "buttonText": "ניווט",
+                                            },
+                                            "type": [Function],
+                                            "userMenuI18n": Object {
+                                              "buttonText": "שלום",
+                                              "logout": "התנתקות",
+                                              "menuItems": Array [
+                                                Object {
+                                                  "name": "הגדרות",
+                                                  "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                                },
+                                                Object {
+                                                  "name": "שירות למנויים",
+                                                  "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                                },
+                                                Object {
+                                                  "name": "ניוזלטרים",
+                                                  "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                                                },
+                                              ],
+                                              "noUserData": "התחברות",
+                                            },
+                                          }
+                                        }
+                                        ariaDescribedBy={null}
+                                        ariaLabel="חיפוש"
+                                        attrs={null}
+                                        className={null}
+                                        defaultValue={null}
+                                        height={null}
+                                        inputId="123456789"
+                                        isContentEditable={false}
+                                        isDisabled={false}
+                                        isFocused={false}
+                                        isTextArea={false}
+                                        labelId={null}
+                                        maxLength={null}
+                                        minLength={null}
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onContentEditableChange={null}
+                                        onFocus={[Function]}
+                                        onInput={null}
+                                        placeholder="הקלידו לחיפוש באתר"
+                                        refFunc={[Function]}
+                                        setFormatButtonsState={null}
+                                        type="search"
+                                      >
+                                        <InputElement
+                                          ariaDescribedBy={null}
+                                          ariaLabel="חיפוש"
+                                          attrs={null}
+                                          className="htz-k htz-cy htz-dr htz-b htz-cs htz-ds htz-dt"
+                                          defaultValue={null}
+                                          height={null}
+                                          inputId="123456789"
+                                          isContentEditable={false}
+                                          isDisabled={false}
+                                          isFocused={false}
+                                          isTextArea={false}
+                                          labelId={null}
+                                          maxLength={null}
+                                          minLength={null}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onContentEditableChange={null}
+                                          onFocus={[Function]}
+                                          onInput={null}
+                                          placeholder="הקלידו לחיפוש באתר"
+                                          refFunc={[Function]}
+                                          setFormatButtonsState={null}
+                                          type="search"
+                                        >
+                                          <input
+                                            aria-label="חיפוש"
+                                            className="htz-k htz-cy htz-dr htz-b htz-cs htz-ds htz-dt"
+                                            id="123456789"
+                                            onBlur={[Function]}
+                                            onChange={[Function]}
+                                            onFocus={[Function]}
+                                            placeholder="הקלידו לחיפוש באתר"
+                                            type="search"
+                                          />
+                                        </InputElement>
+                                      </styles>
+                                    </styles>
+                                  </label>
+                                </labelStyle>
+                              </labelStyle>
+                              <styles
+                                className={null}
+                                isError={false}
+                                noteId={null}
+                                text={null}
+                                variant="primary"
+                              >
+                                <styles
+                                  _felaTheme={
+                                    Object {
+                                      "btnStyle": Object {
+                                        "borderBottomStyle": "solid",
+                                        "borderBottomWidth": 1,
+                                        "borderEndStyle": "solid",
+                                        "borderEndWidth": 1,
+                                        "borderStartStyle": "solid",
+                                        "borderStartWidth": 1,
+                                        "borderTopStyle": "solid",
+                                        "borderTopWidth": 1,
+                                        "boxModel": Object {
+                                          "hp": 4,
+                                          "vp": 1,
+                                        },
+                                        "fontWeight": "bold",
+                                        "neutralText": "#131313",
+                                        "radius": 0,
+                                      },
+                                      "color": [Function],
+                                      "getDelay": [Function],
+                                      "getDuration": [Function],
+                                      "getTimingFunction": [Function],
+                                      "getTransition": [Function],
+                                      "getTransitionString": [Function],
+                                      "headerSearchI18n": Object {
+                                        "buttonText": "חיפוש",
+                                        "placeHolder": "הקלידו לחיפוש באתר",
+                                        "queryUrl": [Function],
+                                      },
+                                      "inputStyle": Object {
+                                        "borderStyle": "solid",
+                                        "borderWidth": 1,
+                                        "fontWeightLabel": "bold",
+                                        "height": 6,
+                                        "lines": 1,
+                                        "radius": 0,
+                                        "typeScale": 0,
+                                      },
+                                      "mq": [Function],
+                                      "navigationMenuI18n": Object {
+                                        "buttonText": "ניווט",
+                                      },
+                                      "type": [Function],
+                                      "userMenuI18n": Object {
+                                        "buttonText": "שלום",
+                                        "logout": "התנתקות",
+                                        "menuItems": Array [
+                                          Object {
+                                            "name": "הגדרות",
+                                            "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                          },
+                                          Object {
+                                            "name": "שירות למנויים",
+                                            "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                          },
+                                          Object {
+                                            "name": "ניוזלטרים",
+                                            "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                                          },
+                                        ],
+                                        "noUserData": "התחברות",
+                                      },
+                                    }
+                                  }
+                                  className={null}
+                                  isError={false}
+                                  noteId={null}
+                                  text={null}
+                                  variant="primary"
+                                >
+                                  <Note
+                                    className="htz-i htz-du htz-dv htz-dw htz-dx htz-j"
+                                    isError={false}
+                                    noteId={null}
+                                    text={null}
+                                    variant="primary"
+                                  >
+                                    <span
+                                      className="htz-i htz-du htz-dv htz-dw htz-dx htz-j"
+                                      id={null}
+                                    />
+                                  </Note>
+                                </styles>
+                              </styles>
+                            </div>
+                          </TextInput>
+                        </div>
+                      </FelaTheme>
+                    </FelaComponent>
+                    <FelaComponent
+                      render={[Function]}
+                      style={
+                        Object {
+                          "WebkitBoxAlign": "center",
+                          "WebkitBoxFlex": "0",
+                          "alignItems": "center",
+                          "display": "-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex",
+                          "flexGrow": "0",
+                          "height": "100%",
+                          "insetInlineEnd": "0",
+                          "paddingLeft": "1rem",
+                          "paddingRight": "1rem",
+                          "position": "absolute",
+                          "top": "0",
+                        }
+                      }
+                    >
+                      <FelaTheme
+                        render={[Function]}
+                      >
+                        <Link
+                          asPath={null}
+                          attrs={null}
+                          className="htz-bh htz-a htz-be htz-h htz-dy htz-cd htz-cc htz-x htz-dz htz-bn htz-bg"
+                          content={
+                            <iconStyle
+                              color="primary"
+                              fill={null}
+                              size={3}
+                              stylesProp={null}
+                            />
+                          }
+                          focus={false}
+                          href="https://www.haaretz.co.il/misc/search-results?text=null&searchType=textSearch"
+                          onClick={null}
+                          prefetch={null}
+                          refFunc={[Function]}
+                          target={null}
+                        >
+                          <a
+                            className="htz-bh htz-a htz-be htz-h htz-dy htz-cd htz-cc htz-x htz-dz htz-bn htz-bg"
+                            href="https://www.haaretz.co.il/misc/search-results?text=null&searchType=textSearch"
+                            onClick={null}
+                            target={null}
+                          >
+                            <iconStyle
+                              color="primary"
+                              fill={null}
+                              size={3}
+                              stylesProp={null}
+                            >
+                              <iconStyle
+                                _felaTheme={
+                                  Object {
+                                    "btnStyle": Object {
+                                      "borderBottomStyle": "solid",
+                                      "borderBottomWidth": 1,
+                                      "borderEndStyle": "solid",
+                                      "borderEndWidth": 1,
+                                      "borderStartStyle": "solid",
+                                      "borderStartWidth": 1,
+                                      "borderTopStyle": "solid",
+                                      "borderTopWidth": 1,
+                                      "boxModel": Object {
+                                        "hp": 4,
+                                        "vp": 1,
+                                      },
+                                      "fontWeight": "bold",
+                                      "neutralText": "#131313",
+                                      "radius": 0,
+                                    },
+                                    "color": [Function],
+                                    "getDelay": [Function],
+                                    "getDuration": [Function],
+                                    "getTimingFunction": [Function],
+                                    "getTransition": [Function],
+                                    "getTransitionString": [Function],
+                                    "headerSearchI18n": Object {
+                                      "buttonText": "חיפוש",
+                                      "placeHolder": "הקלידו לחיפוש באתר",
+                                      "queryUrl": [Function],
+                                    },
+                                    "inputStyle": Object {
+                                      "borderStyle": "solid",
+                                      "borderWidth": 1,
+                                      "fontWeightLabel": "bold",
+                                      "height": 6,
+                                      "lines": 1,
+                                      "radius": 0,
+                                      "typeScale": 0,
+                                    },
+                                    "mq": [Function],
+                                    "navigationMenuI18n": Object {
+                                      "buttonText": "ניווט",
+                                    },
+                                    "type": [Function],
+                                    "userMenuI18n": Object {
+                                      "buttonText": "שלום",
+                                      "logout": "התנתקות",
+                                      "menuItems": Array [
+                                        Object {
+                                          "name": "הגדרות",
+                                          "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                        },
+                                        Object {
+                                          "name": "שירות למנויים",
+                                          "url": "https://www.haaretz.co.il/personal-area/my-account",
+                                        },
+                                        Object {
+                                          "name": "ניוזלטרים",
+                                          "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                                        },
+                                      ],
+                                      "noUserData": "התחברות",
+                                    },
+                                  }
+                                }
+                                color="primary"
+                                fill={null}
+                                size={3}
+                                stylesProp={null}
+                              >
+                                <UnstyledIconSearch
+                                  attrs={null}
+                                  className="htz-bp htz-br htz-bs"
+                                >
+                                  <svg
+                                    className="htz-bp htz-br htz-bs"
+                                    height="1em"
+                                    viewBox="0 0 256 256"
+                                    width="1em"
+                                  >
+                                     
+                                    <path
+                                      d="M247.6 228.5L175.2 156c11-15.2 17.5-33.8 17.5-54 0-50.8-41.3-92.1-92.1-92.1S8.5 51.3 8.5 102.1s41.3 92.1 92.1 92.1c20.6 0 39.7-6.8 55-18.3l72.3 72.3 19.7-19.7zm-147-57.2c-38.2 0-69.2-31.1-69.2-69.2s31-69.2 69.2-69.2 69.2 31.1 69.2 69.2-31.1 69.2-69.2 69.2z"
+                                      fill="currentColor"
+                                    />
+                                  </svg>
+                                </UnstyledIconSearch>
+                              </iconStyle>
+                            </iconStyle>
+                          </a>
+                        </Link>
+                      </FelaTheme>
+                    </FelaComponent>
+                  </div>
+                </FelaTheme>
+              </FelaComponent>
+            </FelaTheme>
+          </FelaComponent>
+        </div>
+      </FelaTheme>
+    </FelaComponent>
+  </HeaderSearch>
+</header>
+`;
