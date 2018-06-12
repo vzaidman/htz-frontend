@@ -34,7 +34,7 @@ function Breadcrumbs({ articleId, }) {
       >
         {({ data, loading, error, }) => {
           if (loading) return <p>loading...</p>;
-          if (error) return <p>Error</p>;
+          if (error) return null;
           if (!data || !data.page) throw new TypeError('no data !!');
           const { lineage, } = data.page;
           // creating a copy because when the 'steps' array is received from apollo, he is sealed.
@@ -44,7 +44,9 @@ function Breadcrumbs({ articleId, }) {
           return (
             <FelaTheme
               render={theme => {
-                const { breadcrumbsI18n: { ariaLabel, }, } = theme;
+                const {
+                  breadcrumbsI18n: { ariaLabel, },
+                } = theme;
                 return (
                   <nav aria-label={ariaLabel}>
                     {crumbs.map((crumb, index) => (

@@ -7,7 +7,11 @@
           {
             "id": [
               "lodash",
-              "@haaretz/htz-components"
+              "@haaretz/htz-components",
+              "@haaretz/htz-theme",
+              "@haaretz/tm-theme",
+              "@haaretz/fela-utils",
+              "@haaretz/app-utils"
             ]
           }
         ]

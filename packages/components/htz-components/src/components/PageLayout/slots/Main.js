@@ -390,7 +390,7 @@ class Main extends React.Component {
       <Query query={ArticleContentQuery} variables={{ path: articleId, }}>
         {({ loading, error, data, client, }) => {
           if (loading) return <p>loading...</p>;
-          if (error) return <p>Error</p>;
+          if (error) return null;
           const {
             slots: { article, aside, },
             seoData: {
