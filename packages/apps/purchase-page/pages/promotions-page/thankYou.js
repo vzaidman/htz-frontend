@@ -1,6 +1,7 @@
 import React, { Fragment, } from 'react';
 import { withData, pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
+import { ApolloProvider, } from 'react-apollo';
 import {
   IconCheck,
   LayoutContainer,
@@ -37,7 +38,9 @@ const ThankYouElement = ({ product, userMessage, }) => (
                   })}
                   render={({
                     className,
-                    theme: { thankYou: { afterPurchase, secondaryHeader, }, },
+                    theme: {
+                      thankYou: { afterPurchase, secondaryHeader, },
+                    },
                   }) => (
                     <div className={className}>
                       {product ? (
@@ -72,30 +75,42 @@ class StageThankYou extends React.Component {
   render() {
     let productId = null;
     if (this.props.url.query) {
-      const { url: { query: { product, }, }, } = this.props;
+      const {
+        url: {
+          query: { product, },
+        },
+      } = this.props;
       productId =
         product === '243'
           ? 'HTZ'
-          : product === '273' ? 'TM' : product === '274' ? 'BOTH' : null;
+          : product === '273'
+            ? 'TM'
+            : product === '274'
+              ? 'BOTH'
+              : null;
     }
     return (
-      <MainLayout thankYou product={productId || false}>
-        {productId ? (
-          <ThankYouElement product={productId} />
-        ) : (
-          <OfferPageDataGetter
-            render={({
-              data: { purchasePage: { userMessage, }, },
-              loading,
-              error,
-            }) => {
-              if (loading) return <div> Loading...</div>;
-              if (error) return <div> Error...</div>;
-              return <ThankYouElement userMessage={userMessage} />;
-            }}
-          />
-        )}
-      </MainLayout>
+      <ApolloProvider client={this.props.apolloClient}>
+        <MainLayout thankYou product={productId || false}>
+          {productId ? (
+            <ThankYouElement product={productId} />
+          ) : (
+            <OfferPageDataGetter
+              render={({
+                data: {
+                  purchasePage: { userMessage, },
+                },
+                loading,
+                error,
+              }) => {
+                if (loading) return <div> Loading...</div>;
+                if (error) return <div> Error...</div>;
+                return <ThankYouElement userMessage={userMessage} />;
+              }}
+            />
+          )}
+        </MainLayout>
+      </ApolloProvider>
     );
   }
 }
