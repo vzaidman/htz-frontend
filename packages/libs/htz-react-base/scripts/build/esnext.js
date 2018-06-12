@@ -6,4 +6,4 @@ if (process.argv.length < 3) {
   process.argv.push('src', '--out-dir', 'dist/esnext');
 }
 
-require('babel-cli/bin/babel');
+require('@babel/cli/bin/babel');

@@ -9,9 +9,9 @@
   "main": "dist/lib/index.js",
   "bin": "./bin/htz-react-server.js",
   "scripts": {
-    "dev": "htz-scripts dev:watch",
     "build": "htz-scripts build:lib",
     "clean": "htz-scripts clean",
+    "dev": "htz-scripts dev:watch",
     "flow": "htz-scripts flow",
     "format": "htz-scripts format",
     "gc": "htz-scripts commitizen",
@@ -23,7 +23,7 @@
     "update-scripts": "htz-scripts update-scripts"
   },
   "peerDependencies": {
-    "next": "^5.1.0"
+    "next": "^6.0.3"
   },
   "dependencies": {
     "@haaretz/app-utils": "^0.1.0",
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
-    "next": "^5.1.0",
+    "next": "^6.0.3",
     "rimraf": "^2.6.2"
   }
 }

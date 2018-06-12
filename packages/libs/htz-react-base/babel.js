@@ -11,9 +11,13 @@
 
 // These are always applied, because they are outside the scope of
 // `babel-preset-env` until such transforms are official.
-const presets = [ 'react', 'flow', ];
-const plugins = [ 'transform-object-rest-spread', 'transform-class-properties', ];
-const ignore = [];
+// const babel = require('@babel/core');
+
+const presets = [ '@babel/preset-react', '@babel/preset-flow', ];
+const plugins = [
+  '@babel/plugin-proposal-object-rest-spread',
+  '@babel/plugin-proposal-class-properties',
+];
 
 switch (process.env.BABEL_ENV) {
   // The `commonjs` environment is used to generate `/dist/lib` and will be
@@ -21,7 +25,7 @@ switch (process.env.BABEL_ENV) {
   // (SSR). It should target the minimum supported Node.js version.
   case 'commonjs':
     presets.push([
-      'env',
+      '@babel/preset-env',
       {
         targets: {
           node: '8',
@@ -33,7 +37,7 @@ switch (process.env.BABEL_ENV) {
   // by bundlers like webpack 2+ with no extra configuration necessary.
   case 'esm':
     presets.push([
-      'env',
+      '@babel/preset-env',
       {
         targets: {
           // The browser list having any slimming effect on the selected
@@ -46,8 +50,8 @@ switch (process.env.BABEL_ENV) {
           // support it too. You may notice that removing this line may not
           // break the build - most likely, that just means the selected
           // browsers happen to require the same transforms.
-          uglify: true,
         },
+        forceAllTransforms: true,
         modules: false,
       },
     ]);
@@ -66,16 +70,9 @@ switch (process.env.BABEL_ENV) {
     break;
 }
 
-switch (process.env.NODE_ENV) {
-  case 'test':
-    break;
-  default:
-    ignore.push('**/*.{spec,test}.{js,jsx}');
-    ignore.push('**/{__tests__/,__mocks__/,__snapshots__/}');
-}
-
-module.exports = {
-  presets,
-  plugins,
-  ignore,
+module.exports = function htzReactBasePreset(api, opts) {
+  return {
+    presets,
+    plugins,
+  };
 };

@@ -1,8 +1,22 @@
 {
+  "presets": ["next/babel"],
   "env": {
     "development": {
-      "plugins": [[ "lodash", { "id": [ "lodash", "@haaretz/htz-components" ] } ]],
-      "presets": "next/babel"
+      "plugins": [
+        [
+          "lodash",
+          {
+            "id": [
+              "lodash",
+              "@haaretz/htz-components",
+              "@haaretz/htz-theme",
+              "@haaretz/tm-theme",
+              "@haaretz/fela-utils",
+              "@haaretz/app-utils"
+            ]
+          }
+        ]
+      ]
     },
     "production": {
       "plugins": [
@@ -19,11 +33,17 @@
             ]
           }
         ]
-      ],
-      "presets": "next/babel"
+      ]
     },
     "commonjs": {
-      "presets": [["env", { "modules": "commonjs" }], "next/babel"]
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": "commonjs"
+          }
+        ]
+      ]
     }
   }
 }

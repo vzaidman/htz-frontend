@@ -17,9 +17,11 @@
     "clean": "htz-scripts clean",
     "flow": "htz-scripts flow",
     "format": "htz-scripts format",
-    "lint": "htz-scripts lint",
     "gc": "htz-scripts commitizen",
+    "lint": "htz-scripts lint",
     "prepare": "npm run build",
+    "styleguide": "htz-scripts styleguide",
+    "styleguide:build": "htz-scripts styleguide:build",
     "test": "htz-scripts test",
     "update-scripts": "htz-scripts update-scripts"
   },

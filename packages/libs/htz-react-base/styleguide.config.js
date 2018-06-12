@@ -18,7 +18,10 @@ const color = {
   secondaryDark: '#003D59',
 };
 
-const Wrapper = resolveFrom.silent(process.cwd(), './styleguide/StyleGuideProvider.js');
+const Wrapper = resolveFrom.silent(
+  process.cwd(),
+  './styleguide/StyleGuideProvider.js'
+);
 
 module.exports = {
   components: path.join(process.cwd(), '{,src/}components/**/[A-Z]*.{js,jsx}'),
@@ -349,7 +352,8 @@ module.exports = {
     // which is not what we want when using the default config.
     if (componentPath.indexOf('..') === 1) {
       // eslint-disable-next-line no-param-reassign
-      componentPath = resolveFrom.silent(__dirname, componentPath) || componentPath;
+      componentPath =
+        resolveFrom.silent(__dirname, componentPath) || componentPath;
     }
     // eslint-disable-next-line no-param-reassign
     componentPath = path.relative(process.cwd(), componentPath);
@@ -367,7 +371,10 @@ module.exports = {
       );
       const packageName = require(packagePath).name;
       const extension = path.extname(componentPath);
-      const componentName = path.basename(pathSegments[pathSegments.length - 2], extension);
+      const componentName = path.basename(
+        pathSegments[pathSegments.length - 2],
+        extension
+      );
       return `import { ${componentName} } from '${packageName}';`;
     }
     return componentPath;
@@ -387,11 +394,7 @@ module.exports = {
   // the same when used in a Next app, but they don't expose it.
   webpackConfig: {
     devServer: {
-      allowedHosts: [
-        '.haaretz.co.il',
-        '.haaretz.com',
-        '.themarker.com',
-      ],
+      allowedHosts: [ '.haaretz.co.il', '.haaretz.com', '.themarker.com', ],
     },
     resolve: {
       alias: {
@@ -404,7 +407,9 @@ module.exports = {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
-          options: require('./babel'),
+          options: {
+            presets: require('./babel')().presets,
+          },
         },
       ],
     },

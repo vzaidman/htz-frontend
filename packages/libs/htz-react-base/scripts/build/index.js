@@ -5,14 +5,7 @@
  */
 const fs = require('fs');
 const spawn = require('cross-spawn');
-
-function checkDir(path) {
-  return new Promise(resolve => {
-    fs.stat(path, (err, stats) => {
-      resolve(!err && stats.isDirectory());
-    });
-  });
-}
+const { checkDir, } = require('./_checkDir');
 
 function buildApp() {
   require('./next');
@@ -74,7 +67,12 @@ checkDir('pages').then(isDir => {
     checkDir('src').then(isDir => {
       if (isDir) {
         console.log('Library package detected.');
-        buildLibrary();
+        checkDir('dist').then(hasDist => {
+          if (!hasDist) {
+            fs.mkdirSync('dist');
+          }
+          buildLibrary();
+        });
       }
       else {
         console.error('Could not determine how to build the current package.');
