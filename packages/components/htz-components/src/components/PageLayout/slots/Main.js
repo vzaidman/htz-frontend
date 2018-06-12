@@ -1,40 +1,29 @@
+/* global fetch, Headers */
 import React from 'react';
-import { createComponent, } from 'react-fela';
-import { ApolloConsumer, } from 'react-apollo';
+import { createComponent, FelaTheme, FelaComponent, } from 'react-fela';
+import { Query, } from 'react-apollo';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+
 import { parseComponentProp, borderBottom, } from '@haaretz/htz-css-tools';
 import getComponent from '../../../utils/componentFromInputTemplate';
-import Article from '../../Article/Article';
+
+import ArticleBody from '../../ArticleBody/ArticleBody';
+import HeadlineElement from '../../HeadlineElement/HeadlineElement';
+import ArticleHeader from '../../ArticleHeader/ArticleHeader';
+import ActionButtons from '../../ActionButtons/ActionButtons';
 import SideBar from '../../SideBar/SideBar';
 import { buildUrl, } from '../../../utils/buildImgURLs';
+import ArticleContentQuery from '../queries/article_content';
 
 const Osaka = dynamic(import('../../Osaka/OsakaController'), { ssr: false, });
 
 const propTypes = {
-  content: PropTypes.shape({
-    article: PropTypes.arrayOf(PropTypes.shape({})),
-    aside: PropTypes.arrayOf(PropTypes.shape({})),
-  }).isRequired,
-  seo: PropTypes.shape({
-    metaTitle: PropTypes.string,
-    metaDescription: PropTypes.string,
-    metaKeywords: PropTypes.string,
-    canonicalUrl: PropTypes.string,
-    ogTitle: PropTypes.string,
-    ogDescription: PropTypes.string,
-    ogImage: PropTypes.shape({}),
-    obTitle: PropTypes.string,
-  }).isRequired,
-  lineage: PropTypes.arrayOf(
-    PropTypes.shape({
-      pathSegment: PropTypes.string,
-      contentId: PropTypes.string,
-      name: PropTypes.string,
-      url: PropTypes.string,
-    })
-  ).isRequired,
+  /**
+   * Article's ID
+   */
+  articleId: PropTypes.string.isRequired,
 };
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
@@ -66,6 +55,39 @@ const mainWrapper = ({ theme, }) => ({
 });
 const ArticleContainer = createComponent(mainWrapper, 'article');
 
+const headerStyle = ({ theme, }) => ({
+  marginBottom: '2rem',
+  extend: [
+    ...[
+      parseComponentProp(
+        'marginStart',
+        theme.articleStyle.header.marginStart,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+    ...[
+      parseComponentProp(
+        'marginEnd',
+        theme.articleStyle.header.marginEnd,
+        theme.mq,
+        mediaQueryCallback
+      ),
+    ],
+  ],
+});
+const Header = createComponent(headerStyle, ArticleHeader, props =>
+  Object.keys(props)
+);
+
+const sharingToolsStyle = ({ theme, }) => ({
+  ...theme.mq({ until: 'm', }, { display: 'none', }),
+  ...headerStyle({ theme, }),
+});
+const SharingTools = createComponent(sharingToolsStyle, ActionButtons, props =>
+  Object.keys(props)
+);
+
 const sectionStyle = ({ theme, }) => ({
   extend: [
     ...[
@@ -86,7 +108,7 @@ const sectionStyle = ({ theme, }) => ({
     ],
   ],
 });
-const ArticleSection = createComponent(sectionStyle, 'section');
+const ArticleSection = createComponent(sectionStyle);
 
 const wideStyle = ({ theme, }) => ({
   backgroundColor: theme.color('neutral', '-10'),
@@ -94,7 +116,43 @@ const wideStyle = ({ theme, }) => ({
   justifyContent: 'center',
   position: 'relative',
 });
-const ArticleWide = createComponent(wideStyle, 'section');
+const ArticleWide = createComponent(wideStyle);
+
+// eslint-disable-next-line react/prop-types
+const BodyWrapper = ({ children, }) => (
+  <FelaComponent
+    style={theme => ({
+      extend: [
+        ...[
+          parseComponentProp(
+            'width',
+            theme.articleStyle.body.width,
+            theme.mq,
+            mediaQueryCallback
+          ),
+        ],
+        ...[
+          parseComponentProp(
+            'marginStart',
+            theme.articleStyle.body.marginStart,
+            theme.mq,
+            mediaQueryCallback
+          ),
+        ],
+        ...[
+          parseComponentProp(
+            'marginEnd',
+            theme.articleStyle.body.marginEnd,
+            theme.mq,
+            mediaQueryCallback
+          ),
+        ],
+      ],
+    })}
+  >
+    {children}
+  </FelaComponent>
+);
 
 const asideStyle = ({ theme, }) => ({
   position: 'absolute',
@@ -146,37 +204,140 @@ const ArticleComments = createComponent(commentsStyle);
 
 class Main extends React.Component {
   state = {
-    articleId: null,
-    commentsId: null,
+    articleUrl: null,
+    articleTitle: null,
     articleWidth: null,
     articleHeight: null,
+    facebookCount: null,
   };
 
   componentDidMount() {
+    this.getFacebookCount(this.state.articleUrl);
     // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({
-      articleWidth: this.container.offsetWidth,
-      articleHeight: this.sideBar.offsetHeight,
+      articleWidth: this.container && this.container.offsetWidth,
+      articleHeight: this.sideBar && this.sideBar.offsetHeight,
     });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.state.articleId !== nextState.articleId ||
       this.props !== nextProps ||
+      this.state.facebookCount !== nextState.facebookCount ||
+      this.state.articleUrl !== nextState.articleUrl ||
       this.state.articleHeight !== nextState.articleHeight
     );
   }
 
-  extractContent = content =>
+  getFacebookCount = () => {
+    const accessToken =
+      'EAABkq33GsqwBAMhelXM0V7xJQmgJ1sf0nvxZAyZBZAtStCyZC6Is1m1OgnsL1Jxsw6BJx0zaZA1TOZBrZAYVMiNNEqLwb4ZARsYUZCEKZAG6r4Wnuminzgi41WQUZCCKvpdhjuHKgh1s3R3fWKjZA4rXvYEoHxgWRSzvFrRMkALfoQUAVwZDZD';
+    const url = `https://graph.facebook.com/?fields=share&access_token=${accessToken}&id=${
+      this.state.articleUrl
+    }&format=json`;
+
+    return fetch(url, {
+      method: 'get',
+      headers: new Headers({
+        'content-type': 'application/json',
+      }),
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw Error(response.statusText);
+      })
+      .then(data => this.setState({ facebookCount: data.share.share_count, }))
+      .catch(error => console.log('error: ', error));
+  };
+
+  extractHeadline = articleBody => {
+    const mediaComponents = [
+      'embedElement',
+      'com.tm.Image',
+      'com.tm.Video',
+      'com.tm.ImageGalleryElement',
+    ];
+    // creating a copy because arrays from apollo are sealed.
+    const body = [ ...articleBody, ];
+    const element = body[0];
+    const elementType = element.elementType || element.inputTemplate || null;
+    if (mediaComponents.includes(elementType)) {
+      body.shift();
+      return { body, headlineElement: element, };
+    }
+    return { body, };
+  };
+
+  extractContent = (content, client) =>
     content.map(element => {
       if (element.inputTemplate === 'com.htz.StandardArticle') {
+        const { commentsElementId, } = element;
+        client.writeData({
+          data: {
+            commentsElementId,
+          },
+        });
+        const { body, headlineElement, } = this.extractHeadline(element.body);
         return (
           <ArticleSection>
-            <Article
-              {...element}
-              breadcrumbs={this.props.lineage}
-              setCommentsData={this.updateState}
+            {headlineElement && (
+              <HeadlineElement elementObj={headlineElement} />
+            )}
+            <BodyWrapper>
+              <ArticleBody body={body} />
+            </BodyWrapper>
+          </ArticleSection>
+        );
+      }
+      if (element.inputTemplate === 'com.htz.ArticleHeaderElement') {
+        return (
+          <ArticleSection>
+            <Header {...element.data} />
+            <FelaTheme
+              render={theme => (
+                <SharingTools
+                  elementName={this.state.articleTitle}
+                  elementUrl={this.state.articleUrl}
+                  buttons={{
+                    start: [
+                      {
+                        name: 'facebookLogo',
+                        buttonText: this.state.facebookCount,
+                        iconStyles: {
+                          color: theme.color('facebook'),
+                        },
+                      },
+                      {
+                        name: 'whatsapp',
+                        iconStyles: {
+                          color: theme.color('whatsapp'),
+                        },
+                      },
+                      'mailAlert',
+                    ],
+                    end: [
+                      {
+                        name: 'comments',
+                        buttonText: 78,
+                      },
+                      'print',
+                      {
+                        name: 'zen',
+                        buttonText: 'קריאת זן',
+                      },
+                    ],
+                  }}
+                  globalButtonsStyles={{
+                    minWidth: '10rem',
+                  }}
+                  globalIconsStyles={{
+                    color: theme.color('primary'),
+                  }}
+                  size={2.5}
+                />
+              )}
             />
           </ArticleSection>
         );
@@ -190,59 +351,80 @@ class Main extends React.Component {
                 <Element
                   key={element.contentId}
                   contentId={this.state.commentsId}
-                  articleId={this.state.articleId}
+                  articleId={this.props.articleId}
                 />
               </ArticleComments>
             </ArticleSection>
           )
         );
       }
+      if (element.inputTemplate === 'com.polobase.OutbrainElement') {
+        return (
+          <ArticleWide>
+            <Element
+              key={element.contentId}
+              articleId={this.props.articleId}
+              {...element}
+            />
+          </ArticleWide>
+        );
+      }
       return (
-        <ArticleWide>
-          <Element key={element.contentId} {...element} />
-        </ArticleWide>
+        <ArticleSection>
+          <BodyWrapper>
+            <Element
+              key={element.contentId}
+              articleId={this.props.articleId}
+              {...element}
+            />
+          </BodyWrapper>
+        </ArticleSection>
       );
     });
 
-  updateState = (articleId, commentsId) => {
-    this.setState({
-      articleId,
-      commentsId,
-    });
-  };
+  updateState = commentsId => console.log('commentsId: ', commentsId);
 
   render() {
-    const { article, aside, } = this.props.content;
-    const {
-      metaTitle,
-      metaDescription,
-      metaKeywords,
-      canonicalUrl,
-      ogTitle,
-      ogDescription,
-      ogImage,
-      obTitle,
-    } = this.props.seo;
-    const { contentId, imgArray, aspects, } = ogImage || {};
-    const ogImageUrl = ogImage
-      ? buildUrl(
-        contentId,
-        { ...imgArray[0], aspects, },
-        {
-          width: '1200',
-          aspect: 'full',
-          quality: 'auto',
-        }
-      )
-      : '';
+    const { articleId, } = this.props;
     return (
-      <ApolloConsumer>
-        {cache => {
-          cache.writeData({
+      <Query query={ArticleContentQuery} variables={{ path: articleId, }}>
+        {({ loading, error, data, client, }) => {
+          if (loading) return <p>loading...</p>;
+          if (error) return <p>Error</p>;
+          const {
+            slots: { article, aside, },
+            seoData: {
+              metaTitle,
+              metaDescription,
+              metaKeywords,
+              canonicalUrl,
+              ogTitle,
+              ogDescription,
+              ogImage,
+              obTitle,
+            },
+          } = data.page;
+          client.writeData({
             data: {
               canonicalUrl,
             },
           });
+          this.setState({
+            articleUrl: canonicalUrl,
+            articleTitle: metaTitle,
+          });
+          const { contentId, imgArray, aspects, } = ogImage || {};
+          const ogImageUrl = ogImage
+            ? buildUrl(
+                contentId,
+                { ...imgArray[0], aspects, },
+                {
+                  width: '1200',
+                  aspect: 'full',
+                  quality: 'auto',
+                }
+              )
+            : '';
           return (
             <ArticleContainer
               // eslint-disable-next-line no-return-assign
@@ -260,19 +442,28 @@ class Main extends React.Component {
                 <meta property="ob:title" content={obTitle} />
               </Head>
               <Osaka width={this.state.articleWidth} />
-              {this.extractContent(article)}
+              {this.extractContent(article, client)}
               <ArticleAside
                 // eslint-disable-next-line no-return-assign
                 innerRef={sideBar => (this.sideBar = sideBar)}
               >
                 <SideBar height={this.state.articleHeight}>
-                  {this.extractContent(aside)}
+                  {aside.map(element => {
+                    const Element = getComponent(element.inputTemplate);
+                    return (
+                      <Element
+                        key={element.contentId}
+                        articleId={this.props.articleId}
+                        {...element}
+                      />
+                    );
+                  })}
                 </SideBar>
               </ArticleAside>
             </ArticleContainer>
           );
         }}
-      </ApolloConsumer>
+      </Query>
     );
   }
 }

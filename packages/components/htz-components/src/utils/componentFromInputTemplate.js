@@ -1,14 +1,18 @@
 import React from 'react';
 
-import Article from '../components/Article/Article';
+import ArticleBody from '../components/ArticleBody/ArticleBody';
+import ArticleHeader from '../components/ArticleHeader/ArticleHeader';
 import AdSlot from '../components/Ads/AdSlot';
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import CommentsWithApollo from '../components/CommentsSection/CommentsWithApollo';
 import Embed from '../components/Embed/Embed';
+import Footer from '../components/Footer/Footer';
 import HtmlElement from '../components/Interactive/components/HtmlElement';
 import Image from '../components/Image/Image';
 import Interactive from '../components/Interactive/Interactive';
 import LinksBlock from '../components/RelatedArticles/LinksBlock';
 import List from '../components/List/List';
+import Newsletter from '../components/Newsletter/Newsletter';
 import Outbrain from '../components/Outbrain/Outbrain';
 import Paragraph from '../components/Paragraph/Paragraph';
 import Quote from '../components/Quote/Quote';
@@ -20,17 +24,18 @@ import Video from '../components/Video/Video';
 const inputTemplateToComponent = new Map([
   /* HeaderSlots components */
   [ 'com.htz.NavigationElementResp', () => <p>NavigationElementResp</p>, ],
-  [ 'com.tm.PageTitle', () => <p>PageTitle</p>, ],
-  [ 'com.htz.ArticleHeaderElement', () => <p>ArticleHeaderElement</p>, ],
+  // [ 'com.tm.PageTitle', () => <p>PageTitle</p>, ],
+  [ 'com.tm.PageTitle', Breadcrumbs, ],
+  [ 'com.htz.ArticleHeaderElement', ArticleHeader, ],
 
   /* MainSlot components */
-  [ 'com.htz.StandardArticle', Article, ],
+  [ 'com.htz.StandardArticle', ArticleBody, ],
   [ 'com.polobase.OutbrainElement', Outbrain, ],
   [ 'com.tm.CommentsElement', () => <p>CommentsElement</p>, ],
   [ 'com.tm.ArticleCommentsElement', CommentsWithApollo, ],
 
   /* FooterSlot components */
-  [ 'com.tm.FooterElement', () => <p>FooterElement</p>, ],
+  [ 'com.tm.FooterElement', Footer, ],
   [ 'com.tm.DisclaimerElement', () => <p>DisclaimerElement</p>, ],
 
   /* ArticleBody components */
@@ -50,6 +55,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.tm.Video', Video, ],
   [ 'com.tm.ImageGalleryElement', () => <p>ImageGallery</p>, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
+  [ 'com.tm.newsLetterQuickRegistrationRespAuto', Newsletter, ],
   // todo: change it to null in production.
   [ 'com.tm.ListElement', () => <p>Old list, NOT SUPPORTED</p>, ],
   [ 'com.tm.element.List', List, ],

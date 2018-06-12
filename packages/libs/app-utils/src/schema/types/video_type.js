@@ -8,6 +8,7 @@ const VideoType = new GraphQLObjectType({
     credit: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
     videoContent: { type: GraphQLString, },
+    inputTemplate: { type: GraphQLString, },
   }),
 });
 

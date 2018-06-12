@@ -1,6 +1,5 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import Error from 'next/error';
 import { Query, } from 'react-apollo';
 import { withData, } from '@haaretz/app-utils';
 import { StyleProvider, } from '@haaretz/fela-utils';
@@ -87,12 +86,8 @@ export class ArticlePage extends React.Component {
             skip={this.state.skip}
           >
             {({ loading, error, data, client, }) => {
-              if (error) {
-                const isNotFound = data.error.graphQLErrors.some(
-                  ({ message, }) => message === 'Not Found'
-                );
-                return <Error statusCode={isNotFound ? 404 : 500} />;
-              }
+              if (loading) return <p>loading...</p>;
+              if (error) console.log(error);
               const { slots, lineage, } = data.page;
               client.writeData({
                 data: {

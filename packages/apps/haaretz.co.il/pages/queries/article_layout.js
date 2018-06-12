@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  query PageData($path: String!) {
+  query PageLayout($path: String!) {
     page(path: $path) {
       lineage {
         pathSegment
@@ -16,8 +16,6 @@ export default gql`
           postHeader
           postMain
           footer
-          article
-          aside
         }
       }
       dfpConfig {
