@@ -110,9 +110,9 @@ function ArticleByLineMobileComponent({ authors, publishDateTime, }) {
         <GridItem>
           {authors.map(
             (author, key) =>
-              (typeof author === 'string' ? (
+              (author.name ? (
                 <CreditArticle
-                  contentName={author}
+                  contentName={author.name}
                   miscStyles={authorMiscStyles}
                 />
               ) : (
@@ -127,7 +127,7 @@ function ArticleByLineMobileComponent({ authors, publishDateTime, }) {
         </GridItem>
         {/* Follow author */}
         {authors.length === 1 &&
-          typeof authors[0] !== 'string' && (
+          !authors[0].name && (
             <Fragment>
               <GridItem
                 miscStyles={{

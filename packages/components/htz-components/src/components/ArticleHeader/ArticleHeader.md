@@ -142,7 +142,9 @@ as well as some meta data about the article.
           contentId: '1.1967',
           contentName: 'שהם סמיט',
         },
-        'מישהו',
+        {
+          name: 'מישהו',
+        },
       ]}
     />
   </GridItem>

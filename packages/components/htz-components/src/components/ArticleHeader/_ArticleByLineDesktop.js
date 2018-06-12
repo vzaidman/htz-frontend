@@ -71,18 +71,16 @@ function ArticleByLineDesktopComponent({
                 }}
               />
             )}
-          {typeof author === 'string' ? (
+          {author.name ? (
             <ArticleCredit
-              contentName={author}
+              contentName={author.name}
               miscStyles={{ marginTop: '1rem', }}
             />
           ) : (
             <ArticleCredit {...author} miscStyles={{ marginTop: '1rem', }} />
           )}
           {authors.length === 1 &&
-            typeof author !== 'string' && (
-              <AlertsDesktopButton author={author} />
-            )}
+            !author.name && <AlertsDesktopButton author={author} />}
         </Fragment>
       ))}
       {publishDateTime ? (

@@ -48,23 +48,37 @@ export default gql`
               inputTemplate
               data {
                 authors {
-                  image {
-                    viewMode
-                    accessibility
-                    title
-                    credit
-                    aspects
-                    isAnimated
-                    contentId
-                    imgArray {
-                      imgName
-                      version
-                    }
-                    imageType
-                    contentName
+                  ... on CreditObject {
+                    name
                   }
-                  contentId
-                  contentName
+                  ... on AuthorObject {
+                    image {
+                      viewMode
+                      accessibility
+                      title
+                      credit
+                      aspects
+                      isAnimated
+                      contentId
+                      imgArray {
+                        imgName
+                        version
+                      }
+                      imageType
+                      contentName
+                    }
+                    contentId
+                    contentName
+                    authorType
+                    email
+                    facebook
+                    gplus
+                    hasEmailAlerts
+                    hasPushAlerts
+                    inputTemplate
+                    twitter
+                    url
+                  }
                 }
                 image {
                   viewMode

@@ -19,7 +19,9 @@ const articleHeaderPropTypes = {
   /** Authors/Credit of an Article */
   authors: PropTypes.arrayOf(
     PropTypes.oneOfType([
-      PropTypes.string,
+      PropTypes.shape({
+        name: PropTypes.string,
+      }),
       PropTypes.shape({
         authorType: PropTypes.oneOf([
           'themarker',
