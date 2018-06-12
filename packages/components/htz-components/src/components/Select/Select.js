@@ -1,7 +1,7 @@
 import React, { Component, } from 'react';
 import PropTypes, { oneOf, shape, oneOfType, } from 'prop-types';
 import Downshift from 'downshift';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import { borderTop, borderBottom, } from '@haaretz/htz-css-tools';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
@@ -22,19 +22,15 @@ const StyledSelectWrapper = createComponent(selectStyle);
 const dropDownMenuStyle = ({ theme, variant, }) => ({
   display: 'flex',
   flexDirection: 'column',
-  position: 'absolute',
-  top: 0,
   extend: [
     borderBottom(
       `${theme.selectStyle.borderWidth}px`,
-      theme.selectStyle.lines,
+      0,
       theme.selectStyle.borderStyle,
       theme.color('select', `${variant}Border`)
     ),
   ],
 });
-
-const StyledDropDownMenu = createComponent(dropDownMenuStyle);
 
 const ItemStyle = ({ theme, variant = 'primary', isSelected, activeItem, }) => ({
   width: '100%',
@@ -71,7 +67,13 @@ const ItemStyle = ({ theme, variant = 'primary', isSelected, activeItem, }) => (
 
 const StyledItem = createComponent(ItemStyle, 'button', props => {
   /* eslint-disable no-unused-vars */
-  const { activeItem, isOpen, isSelected, noHighlitedItems, ...noCustomAtrrProps } = props;
+  const {
+    activeItem,
+    isOpen,
+    isSelected,
+    noHighlitedItems,
+    ...noCustomAtrrProps
+  } = props;
   return Object.keys(noCustomAtrrProps);
 });
 
@@ -106,11 +108,15 @@ const selectedItemStyle = ({ noHighlitedItems, theme, variant, isOpen, }) => ({
   ],
 });
 
-const StyledSelectedItem = createComponent(selectedItemStyle, StyledItem, props => {
-  /* eslint-disable no-unused-vars */
-  const { isOpen, noHighlitedItems, variant, ...noCustomAtrrProps } = props;
-  return Object.keys(noCustomAtrrProps);
-});
+const StyledSelectedItem = createComponent(
+  selectedItemStyle,
+  StyledItem,
+  props => {
+    /* eslint-disable no-unused-vars */
+    const { isOpen, noHighlitedItems, variant, ...noCustomAtrrProps } = props;
+    return Object.keys(noCustomAtrrProps);
+  }
+);
 
 export class Select extends Component {
   static propTypes = {
@@ -214,7 +220,9 @@ export class Select extends Component {
   state = {
     noteId: this.props.noteId
       ? this.props.noteId
-      : this.props.errorText || this.props.noteText ? Math.random().toString() : null,
+      : this.props.errorText || this.props.noteText
+        ? Math.random().toString()
+        : null,
     selectedItem: null,
   };
 
@@ -247,76 +255,98 @@ export class Select extends Component {
       .indexOf(selectedItem ? selectedItem.key || selectedItem.value : null);
 
     return (
-      <div>
-        <Downshift
-          selectedItem={selectedItem}
-          {...(defaultSelectedItem ? { defaultSelectedItem, } : {})}
-          defaultHighlightedIndex={selectedItem ? selectedItemIndex : 0}
-          itemToString={item => (item ? item.display : null)}
-          onChange={this.handleChange}
-          render={({
-            isOpen,
-            getButtonProps,
-            getItemProps,
-            highlightedIndex,
-            toggleMenu,
-            selectItemAtIndex,
-          }) => (
-            // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-            <div
-              {...attrs}
-              onKeyDown={evt => {
-                if (isOpen) {
-                  if (evt.keyCode === 9) toggleMenu();
-                  if (evt.keyCode === 32) selectItemAtIndex(highlightedIndex);
-                }
-              }}
-            >
-              <StyledSelectWrapper miscStyles={miscStyles} isOpen={isOpen} variant={variant}>
-                <StyledSelectedItem
-                  {...getButtonProps({
-                    variant,
-                    isOpen,
-                    noHighlitedItems: highlightedIndex === null,
-                    type: 'button',
-                    ...(refFunc ? { innerRef: el => refFunc(el), } : {}),
-                    ...(onBlur ? { onBlur, } : {}),
-                    ...(onFocus ? { onFocus, } : {}),
-                  })}
+      <FelaComponent
+        style={{ position: 'relative', }}
+        render={({ className, }) => (
+          <div className={className}>
+            <Downshift
+              selectedItem={selectedItem}
+              {...(defaultSelectedItem ? { defaultSelectedItem, } : {})}
+              defaultHighlightedIndex={selectedItem ? selectedItemIndex : 0}
+              itemToString={item => (item ? item.display : null)}
+              onChange={this.handleChange}
+              render={({
+                isOpen,
+                getButtonProps,
+                getItemProps,
+                highlightedIndex,
+                toggleMenu,
+                selectItemAtIndex,
+              }) => (
+                // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+                <div
+                  {...attrs}
+                  onKeyDown={evt => {
+                    if (isOpen) {
+                      if (evt.keyCode === 9) toggleMenu();
+                      if (evt.keyCode === 32) {
+                        selectItemAtIndex(highlightedIndex);
+                      }
+                    }
+                  }}
                 >
-                  {selectedItem ? selectedItem.display || selectedItem.value : placeholder}
-                </StyledSelectedItem>
-                <div style={{ position: 'relative', }}>
-                  {isOpen && (
-                    <StyledDropDownMenu variant={variant} data-test="dropdown-menu">
-                      {items.map((item, index) => (
-                        <StyledItem
-                          {...getItemProps({
-                            item,
-                            key: item.key || item.value,
-                            activeItem: highlightedIndex === index,
-                            isSelected: selectedItem === item,
-                            role: 'button',
-                          })}
-                        >
-                          {item.display || item.value}
-                        </StyledItem>
-                      ))}
-                    </StyledDropDownMenu>
-                  )}
+                  <StyledSelectWrapper
+                    miscStyles={miscStyles}
+                    isOpen={isOpen}
+                    variant={variant}
+                  >
+                    <StyledSelectedItem
+                      {...getButtonProps({
+                        variant,
+                        isOpen,
+                        noHighlitedItems: highlightedIndex === null,
+                        type: 'button',
+                        ...(refFunc ? { innerRef: el => refFunc(el), } : {}),
+                        ...(onBlur ? { onBlur, } : {}),
+                        ...(onFocus ? { onFocus, } : {}),
+                      })}
+                    >
+                      {selectedItem
+                        ? selectedItem.display || selectedItem.value
+                        : placeholder}
+                    </StyledSelectedItem>
+                    <FelaComponent style={{ position: 'relative', }}>
+                      {isOpen && (
+                        <FelaComponent
+                          rule={dropDownMenuStyle}
+                          variant={variant}
+                          render={({ className, }) => (
+                            <div
+                              className={className}
+                              data-test="dropdown-menu"
+                            >
+                              {items.map((item, index) => (
+                                <StyledItem
+                                  {...getItemProps({
+                                    item,
+                                    key: item.key || item.value,
+                                    activeItem: highlightedIndex === index,
+                                    isSelected: selectedItem === item,
+                                    role: 'button',
+                                  })}
+                                >
+                                  {item.display || item.value}
+                                </StyledItem>
+                              ))}
+                            </div>
+                          )}
+                        />
+                      )}
+                    </FelaComponent>
+                  </StyledSelectWrapper>
                 </div>
-              </StyledSelectWrapper>
-            </div>
-          )}
-        />
-        {errorText || noteText ? (
-          <Note
-            text={isError ? errorText : noteText}
-            isError={isError}
-            noteId={this.state.noteId}
-          />
-        ) : null}
-      </div>
+              )}
+            />
+            {errorText || noteText ? (
+              <Note
+                text={isError ? errorText : noteText}
+                isError={isError}
+                noteId={this.state.noteId}
+              />
+            ) : null}
+          </div>
+        )}
+      />
     );
   }
 }

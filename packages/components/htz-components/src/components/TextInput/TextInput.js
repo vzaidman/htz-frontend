@@ -434,7 +434,11 @@ class TextInput extends Component {
     value: undefined,
     variant: 'primary',
   };
-
+  static getDerivedStateFromProps(props, state) {
+    return {
+      isInputEmpty: !this.props.defaultValue && !this.props.value,
+    };
+  }
   state = {
     boldActive: false,
     disableBlur: false,
@@ -606,8 +610,7 @@ class TextInput extends Component {
                     display: this.state.isFocused ? 'initial' : 'none',
                     fontStyle: 'italic',
                     height: '5rem',
-                    marginInlineEnd: '0.1rem',
-                    marginTop: 'calc(1px - 1rem)',
+                    marginInlineEnd: '1rem',
                     width: '5rem',
                   }}
                 >
@@ -628,7 +631,7 @@ class TextInput extends Component {
                   miscStyles={{
                     display: this.state.isFocused ? 'initial' : 'none',
                     height: '5rem',
-                    marginInlineEnd: '-1rem',
+                    // marginInlineEnd: '1rem',
                     marginTop: 'calc(1px - 1rem)',
                     width: '5rem',
                   }}

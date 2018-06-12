@@ -125,6 +125,7 @@ export class Form extends Component {
     onChange,
     onContentEditableChange,
     validationOrder,
+    value,
     refFunc,
     ...rest
   }) => {
@@ -191,8 +192,13 @@ export class Form extends Component {
             ? {
               onContentEditableChange: callAll(
                 onContentEditableChange,
-                (evt, value) => {
-                  const values = { ...this.state.values, [name]: value, };
+                (evt, contentEditableValue) => {
+                  const values = {
+                    ...this.state.values,
+                    [name]: contentEditableValue,
+                    // value from getInputProps trumps all other values
+                    ...(value ? { [name]: value, } : {}),
+                  };
                   const errors = this.props.isValidateOnChange
                     ? this.handleTouchedValidate(values)
                     : null;
@@ -209,6 +215,8 @@ export class Form extends Component {
                 const values = {
                   ...this.state.values,
                   [name]: evt.target.value,
+                  // value from getInputProps trumps all other values
+                  ...(value ? { [name]: value, } : {}),
                 };
                 const errors = this.props.isValidateOnChange
                   ? this.handleTouchedValidate(values)
@@ -220,10 +228,24 @@ export class Form extends Component {
               }),
             }),
           /**
+           * value from getInputProps trumps all other values.
            * empty string is needed so react wont think it is an
            * uncontrolled input when the value is empty
            */
-          value: this.state.values[name] || '',
+          value: (() => {
+            if (value) {
+              if (value !== this.state.values[name]) {
+                const values = {
+                  ...this.state.values,
+                  [name]: value,
+                };
+                const errors = this.handleTouchedValidate(values);
+                this.setState({ values, errors, });
+              }
+              return value;
+            }
+            return this.state.values[name] || '';
+          })(),
         };
     }
     return {

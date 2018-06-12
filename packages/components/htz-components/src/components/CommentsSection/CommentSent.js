@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, withTheme, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import isEmail from 'validator/lib/isEmail';
 import TextInput from '../TextInput/TextInput';
@@ -22,15 +22,15 @@ const propTypes = {
    * @param {String} userEmail - The email the user entered
    */
   signUpNotification: PropTypes.func.isRequired,
-  /** passed as a a prop by fela's withTheme func before default export */
-  theme: PropTypes.shape({
-    commentsStyle: PropTypes.shape({
-      textInputVariant: PropTypes.string,
-    }),
-  }).isRequired,
+  /**
+   * The user email if there is a logged in user
+   */
+  userEmail: PropTypes.string,
 };
 
-const defaultProps = {};
+const defaultProps = {
+  userEmail: null,
+};
 
 const contStyle = ({ theme, displayThankYou, isReplyForm, }) => ({
   backgroundColor: theme.color('input', 'primaryBg'),
@@ -57,131 +57,152 @@ const contStyle = ({ theme, displayThankYou, isReplyForm, }) => ({
   ],
 });
 
-const StyledCont = createComponent(contStyle);
-
-const buttonsWrapperStyle = ({ theme, }) => ({
-  marginTop: '3rem',
-});
-
-const ButtonsWrapper = createComponent(buttonsWrapperStyle);
-
-const boldSpanStyle = () => ({
-  fontWeight: 'bold',
-});
-
-const StyledBoldSpan = createComponent(boldSpanStyle, 'span');
-
-const submittedPStyle = () => ({
-  marginBottom: '5rem',
-});
-
-const StyledSubmittedP = createComponent(submittedPStyle, 'p');
-
-const inputStyle = {
-  marginTop: '4rem',
-};
-
 function CommentSent({
   closeDisplayThankYou,
   displayThankYou,
   isReplyForm,
   signUpNotification,
-  theme,
+  userEmail,
 }) {
-  const {
-    buttons: {
-      getNotificationsBtnTxt,
-      dontGetNotificationsBtnTxt,
-      closeBtnText,
-    },
-    labels: { emailLabelTxt, },
-    notes: { emailNoteTxt, },
-    errorNotes: { emailErrorNoteTxt, },
-    texts: {
-      commentRecievedBoldText,
-      commentRecievedText,
-      commentRecievedTextSecondRow,
-      commentRecievedBoldTextThankYouPage,
-      commentRecievedTextThankYouPage,
-    },
-  } = theme.commentSentI18n;
   return (
-    <StyledCont displayThankYou={displayThankYou} isReplyForm={isReplyForm}>
-      {displayThankYou ? (
-        <div>
-          <StyledBoldSpan>{commentRecievedBoldTextThankYouPage}</StyledBoldSpan>
-          <StyledSubmittedP>{commentRecievedTextThankYouPage}</StyledSubmittedP>
-          <Button
-            miscStyles={{ backgroundColor: 'transparent', fontWeight: 'bold', }}
-            boxModel={{ hp: 3.5, vp: 1, }}
-            onClick={closeDisplayThankYou}
-          >
-            {closeBtnText}
-          </Button>
-        </div>
-      ) : (
-        <Form
-          onSubmit={({ notificationEmail, }) => {
-            signUpNotification(true, notificationEmail);
-          }}
-          validate={({ notificationEmail = '', }) => {
-            const errors = [];
-            if (!isEmail(notificationEmail)) {
-              errors.push({
-                name: 'notificationEmail',
-                order: 1,
-              });
-            }
-
-            return errors;
-          }}
-          render={({ getInputProps, handleSubmit, }) => (
+    <FelaComponent
+      displayThankYou={displayThankYou}
+      isReplyForm={isReplyForm}
+      rule={contStyle}
+      render={({
+        className,
+        theme,
+        theme: {
+          commentSentI18n: {
+            buttons: {
+              getNotificationsBtnTxt,
+              dontGetNotificationsBtnTxt,
+              closeBtnText,
+            },
+            labels: { emailLabelTxt, },
+            notes: { emailNoteTxt, },
+            errorNotes: { emailErrorNoteTxt, },
+            texts: {
+              commentRecievedBoldText,
+              commentRecievedText,
+              commentRecievedTextSecondRow,
+              commentRecievedBoldTextThankYouPage,
+              commentRecievedTextThankYouPage,
+            },
+          },
+        },
+      }) => (
+        <div className={className}>
+          {displayThankYou ? (
             <div>
-              <p>
-                <StyledBoldSpan>{commentRecievedBoldText}</StyledBoldSpan>
-                {commentRecievedText}
-              </p>
-              <p>{commentRecievedTextSecondRow}</p>
-              <TextInput
-                {...getInputProps({
-                  name: 'notificationEmail',
-                  noteText: emailNoteTxt,
-                  errorText: emailErrorNoteTxt,
-                  label: emailLabelTxt,
-                  maxLength: 200,
-                  variant: `${theme.commentsStyle.textInputVariant}Inverse`,
-                  type: 'email',
-                  miscStyles: inputStyle,
-                })}
-              />
-              <ButtonsWrapper>
-                <Button
-                  miscStyles={{
-                    backgroundColor: 'transparent',
-                    marginInlineEnd: '2rem',
-                    fontWeight: 'bold',
-                  }}
-                  boxModel={{ hp: 5, vp: 1, }}
-                  onClick={handleSubmit}
-                >
-                  {getNotificationsBtnTxt}
-                </Button>
-                <Button
-                  miscStyles={{
-                    backgroundColor: 'transparent',
-                    fontWeight: 'bold',
-                  }}
-                  boxModel={{ hp: 4, vp: 1, }}
-                  onClick={() => signUpNotification(false)}
-                >
-                  {dontGetNotificationsBtnTxt}
-                </Button>
-              </ButtonsWrapper>
+              <FelaComponent
+                style={{
+                  fontWeight: 'bold',
+                }}
+                render="span"
+              >
+                {commentRecievedBoldTextThankYouPage}
+              </FelaComponent>
+              <FelaComponent
+                style={{
+                  marginBottom: '5rem',
+                }}
+                render="p"
+              >
+                {commentRecievedTextThankYouPage}
+              </FelaComponent>
+              <Button
+                miscStyles={{
+                  backgroundColor: 'transparent',
+                  fontWeight: 'bold',
+                }}
+                boxModel={{ hp: 3.5, vp: 1, }}
+                onClick={closeDisplayThankYou}
+              >
+                {closeBtnText}
+              </Button>
             </div>
+          ) : (
+            <Form
+              onSubmit={({ notificationEmail, }) => {
+                signUpNotification(true, notificationEmail);
+              }}
+              {...(userEmail
+                ? { initialValues: { notificationEmail: userEmail, }, }
+                : {})}
+              validate={({ notificationEmail = '', }) => {
+                const errors = [];
+                if (!isEmail(notificationEmail)) {
+                  errors.push({
+                    name: 'notificationEmail',
+                    order: 1,
+                  });
+                }
+
+                return errors;
+              }}
+              render={({ getInputProps, handleSubmit, }) => (
+                <div>
+                  <p>
+                    <FelaComponent
+                      style={{
+                        fontWeight: 'bold',
+                      }}
+                      render="span"
+                    >
+                      {commentRecievedBoldText}
+                    </FelaComponent>
+                    {commentRecievedText}
+                  </p>
+                  <p>{commentRecievedTextSecondRow}</p>
+                  <TextInput
+                    {...getInputProps({
+                      name: 'notificationEmail',
+                      noteText: emailNoteTxt,
+                      errorText: emailErrorNoteTxt,
+                      label: emailLabelTxt,
+                      maxLength: 200,
+                      variant: `${theme.commentsStyle.textInputVariant}Inverse`,
+                      type: 'email',
+                      miscStyles: {
+                        marginTop: '4rem',
+                      },
+                    })}
+                  />
+                  <FelaComponent
+                    style={{
+                      marginTop: '3rem',
+                    }}
+                  >
+                    <Button
+                      miscStyles={{
+                        backgroundColor: 'transparent',
+                        marginInlineEnd: '2rem',
+                        fontWeight: 'bold',
+                      }}
+                      boxModel={{ hp: 5, vp: 1, }}
+                      onClick={handleSubmit}
+                    >
+                      {getNotificationsBtnTxt}
+                    </Button>
+                    <Button
+                      miscStyles={{
+                        backgroundColor: 'transparent',
+                        fontWeight: 'bold',
+                      }}
+                      boxModel={{ hp: 4, vp: 1, }}
+                      onClick={() => signUpNotification(false)}
+                    >
+                      {dontGetNotificationsBtnTxt}
+                    </Button>
+                  </FelaComponent>
+                </div>
+              )}
+            />
           )}
-        />
+        </div>
       )}
-    </StyledCont>
+    />
   );
 }
 
@@ -189,4 +210,4 @@ CommentSent.propTypes = propTypes;
 
 CommentSent.defaultProps = defaultProps;
 
-export default withTheme(CommentSent);
+export default CommentSent;

@@ -1,6 +1,8 @@
 /* global window */
 import React from 'react';
 import matchMediaPolyfill from 'mq-polyfill';
+import { ApolloProvider, } from 'react-apollo';
+import client from '../../../../styleguide/ApolloMockClient';
 // import toJson from 'enzyme-to-json';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
@@ -338,19 +340,21 @@ describe('<Comment>', () => {
     });
     it('correctly calls handles a click on reply form', () => {
       const output = felaMount(
-        <Comment
-          bps={bps}
-          typeConf={typeConf}
-          key="comment.commentId"
-          commentId="comment.commentId"
-          author="comment.author comment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.author"
-          publishingDateForDisplay="10:30"
-          commentNumber={1}
-          initVote={mockFunc}
-          reportAbuse={mockFunc}
-          initNewComment={mockFunc}
-          signUpNotification={mockFunc}
-        />
+        <ApolloProvider client={client}>
+          <Comment
+            bps={bps}
+            typeConf={typeConf}
+            key="comment.commentId"
+            commentId="comment.commentId"
+            author="comment.author comment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.authorcomment.author"
+            publishingDateForDisplay="10:30"
+            commentNumber={1}
+            initVote={mockFunc}
+            reportAbuse={mockFunc}
+            initNewComment={mockFunc}
+            signUpNotification={mockFunc}
+          />
+        </ApolloProvider>
       );
       const replyButton = output.find('button').at(0);
       replyButton.simulate('click');

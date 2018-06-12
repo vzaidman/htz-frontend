@@ -92,8 +92,6 @@ function getPrintableCharsCount(html) {
   return html.replace(regex, '').length;
 }
 
-// Todo: check if user is logged in, add state and display toggle
-// identified comment button, handle button logic.
 class CommentForm extends React.Component {
   static propTypes = {
     /**
@@ -175,122 +173,134 @@ class CommentForm extends React.Component {
       errorNotes: { nameErrorNoteTxt, commentErrorNoteTxt, },
     } = theme.commentFormI18n;
 
-    return this.state.displaySentComp ? (
-      <div>
-        <CommentSent
-          closeDisplayThankYou={() => {
-            this.setState({ displayThankYou: false, displaySentComp: false, });
-            if (this.isReplyForm) {
-              closeReplyForm();
-            }
-          }}
-          displayThankYou={this.state.displayThankYou}
-          isReplyForm={this.isReplyForm}
-          signUpNotification={(didSignUp, notificationEmail) =>
-            this.handleSignUpNotification(didSignUp, notificationEmail)
-          }
-        />
-      </div>
-    ) : (
+    return (
       <UserDispenser
-        render={({ user, isLoggedIn, }) => (
-          <Form
-            disableSubmitOnEnterKeyDown
-            onSubmit={({ commentAuthor, commentTextHtml, }) => {
-              this.handleSubmitComment(commentAuthor, commentTextHtml);
-            }}
-            initialValues={
-              this.state.identifiedComment
-                ? { commentAuthor: 'user.firsName + user.lastName', }
-                : {}
-            }
-            validate={({ commentAuthor, commentTextHtml, }) => {
-              const errors = [];
-              if (!commentAuthor) {
-                errors.push({
-                  name: 'commentAuthor',
-                  order: 1,
-                });
-              }
-              if (
-                !commentTextHtml ||
-                getPrintableCharsCount(commentTextHtml).length === 0
-              ) {
-                errors.push({ name: 'commentTextHtml', order: 2, });
-              }
+        render={({ user, isLoggedIn, }) =>
+          (this.state.displaySentComp ? (
+            <div>
+              <CommentSent
+                userEmail={user.email}
+                closeDisplayThankYou={() => {
+                  this.setState({
+                    displayThankYou: false,
+                    displaySentComp: false,
+                  });
+                  if (this.isReplyForm) {
+                    closeReplyForm();
+                  }
+                }}
+                displayThankYou={this.state.displayThankYou}
+                isReplyForm={this.isReplyForm}
+                signUpNotification={(didSignUp, notificationEmail) =>
+                  this.handleSignUpNotification(didSignUp, notificationEmail)
+                }
+              />
+            </div>
+          ) : (
+            <Form
+              disableSubmitOnEnterKeyDown
+              onSubmit={({ commentAuthor, commentTextHtml, }) => {
+                this.handleSubmitComment(commentAuthor, commentTextHtml);
+              }}
+              validate={({ commentAuthor, commentTextHtml, }) => {
+                const errors = [];
+                if (!commentAuthor) {
+                  errors.push({
+                    name: 'commentAuthor',
+                    order: 1,
+                  });
+                }
+                if (
+                  !commentTextHtml ||
+                  getPrintableCharsCount(commentTextHtml).length === 0
+                ) {
+                  errors.push({ name: 'commentTextHtml', order: 2, });
+                }
 
-              return errors;
-            }}
-            render={({ getInputProps, handleSubmit, }) => (
-              <StyledForm isReplyForm={this.isReplyForm}>
-                <InputAndToggleWrapper>
-                  <TextInputWrapper>
-                    <TextInput
-                      {...getInputProps({
-                        name: 'commentAuthor',
-                        errorText: nameErrorNoteTxt,
-                        noteText: nameNoteTxt,
-                        label: nameLabelTxt,
-                        maxLength: 200,
-                        variant: this.TextInputVariant,
-                      })}
-                    />
-                  </TextInputWrapper>
-                  {isLoggedIn && (
-                    <ToggleButton
-                      type="button"
-                      onClick={() => {
-                        this.setState(prevState => ({
-                          identifiedComment: !prevState.identifiedComment,
-                        }));
-                        console.log('will logged in user email');
-                      }}
-                    >
-                      {toggleUserBtnText(this.state.identifiedComment)}
-                    </ToggleButton>
-                  )}
-                </InputAndToggleWrapper>
-                <TextInput
-                  {...getInputProps({
-                    name: 'commentTextHtml',
-                    errorText: commentErrorNoteTxt,
-                    height: 14,
-                    isContentEditable: true,
-                    noteText: commentNoteTxt,
-                    label: commentLabelTxt,
-                    miscStyles: { marginTop: '4.14rem', },
-                    variant: this.TextInputVariant,
-                  })}
-                />
-                <StyledAddCommentFooter>
-                  <StyledSendCommentButtonsCont>
-                    {this.isReplyForm ? (
-                      <Button
-                        variant="negative"
-                        boxModel={{ hp: 5, vp: 1, }}
-                        miscStyles={{
-                          marginInlineEnd: '2rem',
-                          backgroundColor: 'transparent',
+                return errors;
+              }}
+              render={({ getInputProps, handleSubmit, }) => (
+                <StyledForm isReplyForm={this.isReplyForm}>
+                  <InputAndToggleWrapper>
+                    <TextInputWrapper>
+                      <TextInput
+                        {...getInputProps({
+                          name: 'commentAuthor',
+                          errorText: nameErrorNoteTxt,
+                          noteText: nameNoteTxt,
+                          label: nameLabelTxt,
+                          maxLength: 50,
+                          variant: this.TextInputVariant,
+                          isDisabled: this.state.identifiedComment,
+                          refFunc: elem => {
+                            this.commentAuthorElem = elem;
+                          },
+                          ...(this.state.identifiedComment
+                            ? { value: `${user.firstName} ${user.lastName}`, }
+                            : {}),
+                        })}
+                      />
+                    </TextInputWrapper>
+                    {isLoggedIn && (
+                      <ToggleButton
+                        type="button"
+                        onClick={() => {
+                          this.setState(
+                            prevState => ({
+                              identifiedComment: !prevState.identifiedComment,
+                            }),
+                            () => {
+                              this.commentAuthorElem.focus();
+                            }
+                          );
                         }}
-                        onClick={closeReplyForm}
                       >
-                        {cancelBtnTxt}
-                      </Button>
-                    ) : null}
+                        {toggleUserBtnText(this.state.identifiedComment)}
+                      </ToggleButton>
+                    )}
+                  </InputAndToggleWrapper>
+                  <TextInput
+                    {...getInputProps({
+                      name: 'commentTextHtml',
+                      errorText: commentErrorNoteTxt,
+                      height: 14,
+                      isContentEditable: true,
+                      noteText: commentNoteTxt,
+                      label: commentLabelTxt,
+                      miscStyles: { marginTop: '4.14rem', },
+                      variant: this.TextInputVariant,
+                    })}
+                  />
+                  <StyledAddCommentFooter>
+                    <StyledSendCommentButtonsCont>
+                      {this.isReplyForm ? (
+                        <Button
+                          variant="negative"
+                          boxModel={{ hp: 5, vp: 1, }}
+                          miscStyles={{
+                            marginInlineEnd: '2rem',
+                            backgroundColor: 'transparent',
+                          }}
+                          onClick={closeReplyForm}
+                        >
+                          {cancelBtnTxt}
+                        </Button>
+                      ) : null}
 
-                    <Button
-                      miscStyles={{ backgroundColor: 'transparent', }}
-                      boxModel={{ hp: 5, vp: 1, }}
-                      onClick={handleSubmit}
-                    >
-                      {sendBtnTxt}
-                    </Button>
-                  </StyledSendCommentButtonsCont>
-                </StyledAddCommentFooter>
-              </StyledForm>
-            )}
-          />
-        )}
+                      <Button
+                        miscStyles={{ backgroundColor: 'transparent', }}
+                        boxModel={{ hp: 5, vp: 1, }}
+                        onClick={handleSubmit}
+                      >
+                        {sendBtnTxt}
+                      </Button>
+                    </StyledSendCommentButtonsCont>
+                  </StyledAddCommentFooter>
+                </StyledForm>
+              )}
+            />
+          ))
+        }
       />
     );
   }

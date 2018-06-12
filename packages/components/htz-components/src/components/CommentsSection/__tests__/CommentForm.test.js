@@ -1,22 +1,28 @@
 /* global window document */
 import React from 'react';
 // import toJson from 'enzyme-to-json';
+import { ApolloProvider, } from 'react-apollo';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
 import queryCommandStatePolyFill from '../../../test-helpers/queryCommandStatePolyFill';
 import execCommandPolyfill from '../../../test-helpers/execCommandPolyfill';
 import CommentForm from '../CommentForm';
-
+import client from '../../../../styleguide/ApolloMockClient';
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail
 Math.random = jest.fn(() => 123456789);
 const mockFunc = jest.fn();
 
-describe('<Comment>', () => {
+describe('<CommentForm>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
       const { component, styles, } = felaSnapshotter(
-        <CommentForm initNewComment={mockFunc} signUpNotification={mockFunc} />
+        <ApolloProvider client={client}>
+          <CommentForm
+            initNewComment={mockFunc}
+            signUpNotification={mockFunc}
+          />
+        </ApolloProvider>
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -24,12 +30,14 @@ describe('<Comment>', () => {
     it('Correctly calls closeReply Form when close button is clicked', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
-        <CommentForm
-          closeReplyForm={mockCallback}
-          parentCommentId="123"
-          initNewComment={mockFunc}
-          signUpNotification={mockFunc}
-        />
+        <ApolloProvider client={client}>
+          <CommentForm
+            closeReplyForm={mockCallback}
+            parentCommentId="123"
+            initNewComment={mockFunc}
+            signUpNotification={mockFunc}
+          />
+        </ApolloProvider>
       );
       const closeButton = output.find('button').at(3);
       closeButton.simulate('click');
@@ -38,12 +46,14 @@ describe('<Comment>', () => {
     it('Does not call initNewComment when submiting a comment without input', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
-        <CommentForm
-          closeReplyForm={mockFunc}
-          parentCommentId="123"
-          initNewComment={mockCallback}
-          signUpNotification={mockFunc}
-        />
+        <ApolloProvider client={client}>
+          <CommentForm
+            closeReplyForm={mockFunc}
+            parentCommentId="123"
+            initNewComment={mockCallback}
+            signUpNotification={mockFunc}
+          />
+        </ApolloProvider>
       );
       const submitButton = output.find('button').at(4);
       submitButton.simulate('click');
@@ -54,12 +64,14 @@ describe('<Comment>', () => {
       const oldExecCommand = execCommandPolyfill();
       const oldQueryCommandState = queryCommandStatePolyFill();
       const output = felaMount(
-        <CommentForm
-          closeReplyForm={mockFunc}
-          parentCommentId="123"
-          initNewComment={mockCallback}
-          signUpNotification={mockFunc}
-        />
+        <ApolloProvider client={client}>
+          <CommentForm
+            closeReplyForm={mockFunc}
+            parentCommentId="123"
+            initNewComment={mockCallback}
+            signUpNotification={mockFunc}
+          />
+        </ApolloProvider>
       );
       const input = output.find('input');
       input.instance().value = 'author value';
@@ -83,12 +95,14 @@ describe('<Comment>', () => {
       const oldExecCommand = execCommandPolyfill();
       const oldQueryCommandState = queryCommandStatePolyFill();
       const output = felaMount(
-        <CommentForm
-          closeReplyForm={mockFunc}
-          parentCommentId="123"
-          initNewComment={mockFunc}
-          signUpNotification={mockCallback}
-        />
+        <ApolloProvider client={client}>
+          <CommentForm
+            closeReplyForm={mockFunc}
+            parentCommentId="123"
+            initNewComment={mockFunc}
+            signUpNotification={mockCallback}
+          />
+        </ApolloProvider>
       );
       const input = output.find('input');
       input.instance().value = 'author value';
@@ -109,12 +123,14 @@ describe('<Comment>', () => {
       const oldExecCommand = execCommandPolyfill();
       const oldQueryCommandState = queryCommandStatePolyFill();
       const output = felaMount(
-        <CommentForm
-          closeReplyForm={mockFunc}
-          parentCommentId="123"
-          initNewComment={mockFunc}
-          signUpNotification={mockCallback}
-        />
+        <ApolloProvider client={client}>
+          <CommentForm
+            closeReplyForm={mockFunc}
+            parentCommentId="123"
+            initNewComment={mockFunc}
+            signUpNotification={mockCallback}
+          />
+        </ApolloProvider>
       );
       const input = output.find('input');
       input.instance().value = 'author value';
@@ -139,12 +155,14 @@ describe('<Comment>', () => {
       const oldExecCommand = execCommandPolyfill();
       const oldQueryCommandState = queryCommandStatePolyFill();
       const output = felaMount(
-        <CommentForm
-          closeReplyForm={mockCallback}
-          parentCommentId="123"
-          initNewComment={mockFunc}
-          signUpNotification={mockFunc}
-        />
+        <ApolloProvider client={client}>
+          <CommentForm
+            closeReplyForm={mockCallback}
+            parentCommentId="123"
+            initNewComment={mockFunc}
+            signUpNotification={mockFunc}
+          />
+        </ApolloProvider>
       );
       const input = output.find('input');
       input.instance().value = 'author value';

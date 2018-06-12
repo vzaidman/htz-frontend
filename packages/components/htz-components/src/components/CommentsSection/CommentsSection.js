@@ -1,22 +1,18 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, withTheme, } from 'react-fela';
+import { FelaTheme, createComponent, } from 'react-fela';
 import Recaptcha from 'react-google-invisible-recaptcha';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList'; // eslint-disable-line import/no-named-as-default
 import Select from '../Select/Select'; // eslint-disable-line import/no-named-as-default
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 
-const sectionStyle = ({ theme, }) => ({});
-
-const StyledSection = createComponent(sectionStyle);
-
 const SelectContStyle = ({ theme, }) => ({
   width: '100%',
   marginBottom: '5rem',
   marginTop: '2rem',
   display: 'flex',
-  alignItems: 'baseline',
+  alignItems: 'flex-start',
 });
 
 const SelectCont = createComponent(SelectContStyle);
@@ -32,8 +28,7 @@ const SelectStyle = {
   width: '28rem',
   marginInlineStart: '2.3rem',
 };
-
-export class CommentsSection extends React.Component {
+class CommentsSection extends React.Component {
   static propTypes = {
     /**
      * An Array of comment objects
@@ -156,7 +151,9 @@ export class CommentsSection extends React.Component {
     }
     else if (orderName === 'editorsPick') {
       return (a, b) =>
-        (a.isEditorPick === b.isEditorPick ? 0 : a.isEditorPick ? 1 : -1);
+        (a.isEditorPick === b.isEditorPick
+          ? 0
+          : a.isEditorPick === 'true' ? -1 : 1);
     }
     return (a, b) => b.publishingDateSortable - a.publishingDateSortable;
   }
@@ -177,70 +174,72 @@ export class CommentsSection extends React.Component {
       commentsMinusRate,
       initVote,
       loadAllComments,
-      theme,
       ...props // eslint-disable-line no-unused-vars
     } = this.props;
 
-    const {
-      buttons: { loadAllCommentsBtnText, },
-      texts: { chooseSortMethodText, },
-      selectItems: {
-        dateDescendingItemTxt,
-        dateAscendingItemTxt,
-        commentRatingItemTxt,
-        editorsPickItemTxt,
-      },
-    } = theme.commentsSectionI18n;
-
     return (
-      <StyledSection>
-        <CommentForm
-          initNewComment={initNewComment}
-          signUpNotification={signUpNotification}
-        />
-        <SelectCont>
-          <span>{chooseSortMethodText}</span>
-          <Select
-            onChange={selectedItem => {
-              loadAllComments();
-              this.setState({ sortMethod: selectedItem, });
-            }}
-            controlledSelectedItem={this.state.sortMethod}
-            items={[
-              { value: 'dateDescending', display: dateDescendingItemTxt, },
-              { value: 'dateAscending', display: dateAscendingItemTxt, },
-              { value: 'commentRating', display: commentRatingItemTxt, },
-              { value: 'editorsPick', display: editorsPickItemTxt, },
-            ]}
-            miscStyles={SelectStyle}
-          />
-        </SelectCont>
-        <CommentList
-          comments={this.sortComments(comments)}
-          commentsPlusRate={commentsPlusRate}
-          commentsMinusRate={commentsMinusRate}
-          initVote={initVote}
-          reportAbuse={commentId => this.onSubmitCaptcha(commentId)}
-          initNewComment={initNewComment}
-          signUpNotification={signUpNotification}
-        />
-        <LoadMoreCont>
-          <Button onClick={() => loadAllComments()}>
-            {loadAllCommentsBtnText}
-          </Button>
-        </LoadMoreCont>
-        <Recaptcha
-          ref={ref => (this.recaptcha = ref)} // eslint-disable-line no-return-assign
-          // todo: 'should site key be prop ? or from theme ?
-          sitekey="6Lc6jzoUAAAAAPBTy6ppZ5Et2Yv8zivAiNY-l4ol"
-          onResolved={this.onReCaptchaResolve}
-          // todo: decide on captcha style
-          // style={{ , }}
-          badge="inline"
-        />
-      </StyledSection>
+      <FelaTheme
+        render={({
+          commentsSectionI18n: {
+            buttons: { loadAllCommentsBtnText, },
+            texts: { chooseSortMethodText, },
+            selectItems: {
+              dateDescendingItemTxt,
+              dateAscendingItemTxt,
+              commentRatingItemTxt,
+              editorsPickItemTxt,
+            },
+          },
+        }) => (
+          <Fragment>
+            <CommentForm
+              initNewComment={initNewComment}
+              signUpNotification={signUpNotification}
+            />
+            <SelectCont>
+              <span>{chooseSortMethodText}</span>
+              <Select
+                onChange={selectedItem => {
+                  loadAllComments();
+                  this.setState({ sortMethod: selectedItem, });
+                }}
+                controlledSelectedItem={this.state.sortMethod}
+                items={[
+                  { value: 'dateDescending', display: dateDescendingItemTxt, },
+                  { value: 'dateAscending', display: dateAscendingItemTxt, },
+                  { value: 'commentRating', display: commentRatingItemTxt, },
+                  { value: 'editorsPick', display: editorsPickItemTxt, },
+                ]}
+                miscStyles={SelectStyle}
+              />
+            </SelectCont>
+            <CommentList
+              comments={this.sortComments(comments)}
+              commentsPlusRate={commentsPlusRate}
+              commentsMinusRate={commentsMinusRate}
+              initVote={initVote}
+              reportAbuse={commentId => this.onSubmitCaptcha(commentId)}
+              initNewComment={initNewComment}
+              signUpNotification={signUpNotification}
+            />
+            <LoadMoreCont>
+              <Button onClick={() => loadAllComments()}>
+                {loadAllCommentsBtnText}
+              </Button>
+            </LoadMoreCont>
+            <Recaptcha
+              ref={ref => (this.recaptcha = ref)} // eslint-disable-line no-return-assign
+              // todo: 'should site key be prop ? or from theme ?
+              sitekey="6Lc6jzoUAAAAAPBTy6ppZ5Et2Yv8zivAiNY-l4ol"
+              onResolved={this.onReCaptchaResolve}
+              style={{ display: 'none', }}
+              badge="inline"
+            />
+          </Fragment>
+        )}
+      />
     );
   }
 }
 
-export default withTheme(CommentsSection);
+export default CommentsSection;

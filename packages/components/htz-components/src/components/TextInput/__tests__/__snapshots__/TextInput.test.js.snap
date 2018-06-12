@@ -20,7 +20,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
           <button
             aria-checked={false}
             arial-label="italic"
-            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ac htz-ch htz-af htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
+            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-bz htz-ca htz-am htz-cb htz-cc htz-cd htz-ce htz-ac htz-cf htz-af htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -28,10 +28,10 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
             type="button"
           >
             <span
-              className="htz-dc htz-dd htz-aq htz-ar htz-de htz-df htz-dg"
+              className="htz-da htz-db htz-aq htz-ar htz-dc htz-dd htz-de"
             >
               <svg
-                className="htz-dh htz-di htz-dj"
+                className="htz-df htz-dg htz-dh"
                 height="1em"
                 viewBox="0 0 256 256"
                 width="1em"
@@ -44,13 +44,13 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
               </svg>
             </span>
             <span
-              className="htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-g htz-dr htz-ds htz-dt htz-du htz-dv"
+              className="htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-g htz-dp htz-dq htz-dr htz-ds htz-dt"
             />
           </button>
           <button
             aria-checked={false}
             arial-label="bold"
-            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-ca htz-dw htz-cc htz-cd htz-ce htz-cf htz-cg htz-ac htz-ch htz-af htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
+            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-ca htz-du htz-cb htz-cc htz-cd htz-ce htz-ac htz-cf htz-af htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -58,10 +58,10 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
             type="button"
           >
             <span
-              className="htz-dc htz-dd htz-aq htz-ar htz-de htz-df htz-dg"
+              className="htz-da htz-db htz-aq htz-ar htz-dc htz-dd htz-de"
             >
               <svg
-                className="htz-dh htz-di htz-dj"
+                className="htz-df htz-dg htz-dh"
                 height="1em"
                 viewBox="0 0 256 256"
                 width="1em"
@@ -74,7 +74,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
               </svg>
             </span>
             <span
-              className="htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-g htz-dr htz-ds htz-dt htz-du htz-dv"
+              className="htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-g htz-dp htz-dq htz-dr htz-ds htz-dt"
             />
           </button>
         </div>
@@ -82,7 +82,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
       <div
         aria-labelledby="123456789"
         aria-multiline={true}
-        className="htz-dx htz-dy htz-dz htz-bd htz-g htz-a htz-ea htz-ck htz-eb"
+        className="htz-dv htz-dw htz-dx htz-bd htz-g htz-a htz-dy htz-ci htz-dz"
         contentEditable={true}
         id="123456789"
         onBlur={[Function]}
@@ -97,14 +97,14 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
       />
     </label>
     <span
-      className="htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh"
+      className="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a contentEditable div 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start}.htz-d{flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:right}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}.htz-aj{justify-content:space-between}.htz-ak{-webkit-box-pack:justify}.htz-al{white-space:nowrap}.htz-am{margin-left:1rem}.htz-an{color:#006B96}.htz-ao{font-weight:bold}.htz-ap{transition-property:transform}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:transform}.htz-aw{-moz-transition-property:transform}.htz-ax{-webkit-box-flex:1}.htz-ay{align-items:center}.htz-az{-webkit-appearance:none}.htz-ba{-moz-appearance:none}.htz-bb{appearance:none}.htz-bc{display:none}.htz-bd{font-size:inherit}.htz-be{justify-content:center}.htz-bf{position:relative}.htz-bg{transform:scale(1)}.htz-bh{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bi{text-decoration:none}.htz-bj::moz-focus-inner{border:0}.htz-bk::moz-focus-inner{padding:0}.htz-bl:after{content:\\"\\"}.htz-bm:after{height:1px}.htz-bn:after{position:absolute}.htz-bo:after{width:100%}.htz-bp:after{bottom:0}.htz-bq:before{content:\\"\\"}.htz-br:before{height:1px}.htz-bs:before{position:absolute}.htz-bt:before{width:100%}.htz-bu:before{top:0}.htz-bv{padding-right:0rem}.htz-bw{padding-left:0rem}.htz-bx{border-radius:0}.htz-by{border-color:transparent}.htz-bz{font-style:italic}.htz-ca{height:5rem}.htz-cb{margin-left:0.1rem}.htz-cc{margin-top:calc(1px - 1rem)}.htz-cd{width:5rem}.htz-ce:visited{color:#2D2D2D}.htz-cf:hover{text-decoration:none}.htz-cg:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ch:hover{border-color:transparent}.htz-ci:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cj:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ck:focus{outline:none}.htz-cl:focus{text-decoration:none}.htz-cm:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cn:focus{background-color:#0B7EB5}.htz-co:focus{border-color:transparent}.htz-cp:focus{color:#FFF}.htz-cq:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cr:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:active{outline:none}.htz-ct:active{text-decoration:none}.htz-cu:active{transition-duration:0s}.htz-cv:active{background-color:#0B7EB5}.htz-cw:active{border-color:transparent}.htz-cx:active{color:#FFF}.htz-cy{-webkit-box-align:center}.htz-cz{-webkit-box-pack:center}.htz-da{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-db{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dc{opacity:1}.htz-dd{transition-property:opacity}.htz-de{transition-delay:.3s}.htz-df{-webkit-transition-property:opacity}.htz-dg{-moz-transition-property:opacity}.htz-dh{vertical-align:-0.15em}.htz-di{color:inherit}.htz-dj{fill:#FFF}.htz-dk{background-color:rgba(200,200,200, 0.3)}.htz-dl{height:100%}.htz-dm{right:0}.htz-dn{position:absolute}.htz-do{top:0}.htz-dp{transform:scaleX(0)}.htz-dq{transform-origin:right}.htz-dr{animation-direction:alternate}.htz-ds{animation-iteration-count:infinite}.htz-dt{animation-duration:1s}.htz-du{animation-delay:0.75s}.htz-dv{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dw{margin-left:-1rem}.htz-dx{border:none}.htz-dy{background-color:transparent}.htz-dz{overflow:auto}.htz-ea{height:6rem}.htz-eb:focus{cursor:text}.htz-ec{display:block}.htz-eh{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ed{font-size:1.8333333333333333rem}.htz-ee{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ef{font-size:1.7142857142857142rem}.htz-eg{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a contentEditable div 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start}.htz-d{flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:right}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}.htz-aj{justify-content:space-between}.htz-ak{-webkit-box-pack:justify}.htz-al{white-space:nowrap}.htz-am{margin-left:1rem}.htz-an{color:#006B96}.htz-ao{font-weight:bold}.htz-ap{transition-property:transform}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:transform}.htz-aw{-moz-transition-property:transform}.htz-ax{-webkit-box-flex:1}.htz-ay{align-items:center}.htz-az{-webkit-appearance:none}.htz-ba{-moz-appearance:none}.htz-bb{appearance:none}.htz-bc{display:none}.htz-bd{font-size:inherit}.htz-be{justify-content:center}.htz-bf{position:relative}.htz-bg{transform:scale(1)}.htz-bh{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bi{text-decoration:none}.htz-bj::moz-focus-inner{border:0}.htz-bk::moz-focus-inner{padding:0}.htz-bl:after{content:\\"\\"}.htz-bm:after{height:1px}.htz-bn:after{position:absolute}.htz-bo:after{width:100%}.htz-bp:after{bottom:0}.htz-bq:before{content:\\"\\"}.htz-br:before{height:1px}.htz-bs:before{position:absolute}.htz-bt:before{width:100%}.htz-bu:before{top:0}.htz-bv{padding-right:0rem}.htz-bw{padding-left:0rem}.htz-bx{border-radius:0}.htz-by{border-color:transparent}.htz-bz{font-style:italic}.htz-ca{height:5rem}.htz-cb{width:5rem}.htz-cc:visited{color:#2D2D2D}.htz-cd:hover{text-decoration:none}.htz-ce:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cf:hover{border-color:transparent}.htz-cg:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ch:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ci:focus{outline:none}.htz-cj:focus{text-decoration:none}.htz-ck:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cl:focus{background-color:#0B7EB5}.htz-cm:focus{border-color:transparent}.htz-cn:focus{color:#FFF}.htz-co:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cq:active{outline:none}.htz-cr:active{text-decoration:none}.htz-cs:active{transition-duration:0s}.htz-ct:active{background-color:#0B7EB5}.htz-cu:active{border-color:transparent}.htz-cv:active{color:#FFF}.htz-cw{-webkit-box-align:center}.htz-cx{-webkit-box-pack:center}.htz-cy{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cz{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-da{opacity:1}.htz-db{transition-property:opacity}.htz-dc{transition-delay:.3s}.htz-dd{-webkit-transition-property:opacity}.htz-de{-moz-transition-property:opacity}.htz-df{vertical-align:-0.15em}.htz-dg{color:inherit}.htz-dh{fill:#FFF}.htz-di{background-color:rgba(200,200,200, 0.3)}.htz-dj{height:100%}.htz-dk{right:0}.htz-dl{position:absolute}.htz-dm{top:0}.htz-dn{transform:scaleX(0)}.htz-do{transform-origin:right}.htz-dp{animation-direction:alternate}.htz-dq{animation-iteration-count:infinite}.htz-dr{animation-duration:1s}.htz-ds{animation-delay:0.75s}.htz-dt{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-du{margin-top:calc(1px - 1rem)}.htz-dv{border:none}.htz-dw{background-color:transparent}.htz-dx{overflow:auto}.htz-dy{height:6rem}.htz-dz:focus{cursor:text}.htz-ea{display:block}.htz-ef{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-eb{font-size:1.8333333333333333rem}.htz-ec{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ed{font-size:1.7142857142857142rem}.htz-ee{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a contentEditable div with label 1`] = `
 <div>
@@ -128,7 +128,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
           <button
             aria-checked={false}
             arial-label="italic"
-            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ac htz-ch htz-af htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
+            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-bz htz-ca htz-am htz-cb htz-cc htz-cd htz-ce htz-ac htz-cf htz-af htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -136,10 +136,10 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
             type="button"
           >
             <span
-              className="htz-dc htz-dd htz-aq htz-ar htz-de htz-df htz-dg"
+              className="htz-da htz-db htz-aq htz-ar htz-dc htz-dd htz-de"
             >
               <svg
-                className="htz-dh htz-di htz-dj"
+                className="htz-df htz-dg htz-dh"
                 height="1em"
                 viewBox="0 0 256 256"
                 width="1em"
@@ -152,13 +152,13 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
               </svg>
             </span>
             <span
-              className="htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-g htz-dr htz-ds htz-dt htz-du htz-dv"
+              className="htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-g htz-dp htz-dq htz-dr htz-ds htz-dt"
             />
           </button>
           <button
             aria-checked={false}
             arial-label="bold"
-            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-ca htz-dw htz-cc htz-cd htz-ce htz-cf htz-cg htz-ac htz-ch htz-af htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
+            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-ca htz-du htz-cb htz-cc htz-cd htz-ce htz-ac htz-cf htz-af htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -166,10 +166,10 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
             type="button"
           >
             <span
-              className="htz-dc htz-dd htz-aq htz-ar htz-de htz-df htz-dg"
+              className="htz-da htz-db htz-aq htz-ar htz-dc htz-dd htz-de"
             >
               <svg
-                className="htz-dh htz-di htz-dj"
+                className="htz-df htz-dg htz-dh"
                 height="1em"
                 viewBox="0 0 256 256"
                 width="1em"
@@ -182,7 +182,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
               </svg>
             </span>
             <span
-              className="htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-g htz-dr htz-ds htz-dt htz-du htz-dv"
+              className="htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-g htz-dp htz-dq htz-dr htz-ds htz-dt"
             />
           </button>
         </div>
@@ -190,7 +190,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
       <div
         aria-labelledby="123456789"
         aria-multiline={true}
-        className="htz-dx htz-dy htz-dz htz-bd htz-g htz-a htz-ea htz-ck htz-eb"
+        className="htz-dv htz-dw htz-dx htz-bd htz-g htz-a htz-dy htz-ci htz-dz"
         contentEditable={true}
         id="123456789"
         onBlur={[Function]}
@@ -205,14 +205,14 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
       />
     </label>
     <span
-      className="htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh"
+      className="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a contentEditable div with label 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start}.htz-d{flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:right}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}.htz-aj{justify-content:space-between}.htz-ak{-webkit-box-pack:justify}.htz-al{white-space:nowrap}.htz-am{margin-left:1rem}.htz-an{color:#006B96}.htz-ao{font-weight:bold}.htz-ap{transition-property:transform}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:transform}.htz-aw{-moz-transition-property:transform}.htz-ax{-webkit-box-flex:1}.htz-ay{align-items:center}.htz-az{-webkit-appearance:none}.htz-ba{-moz-appearance:none}.htz-bb{appearance:none}.htz-bc{display:none}.htz-bd{font-size:inherit}.htz-be{justify-content:center}.htz-bf{position:relative}.htz-bg{transform:scale(1)}.htz-bh{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bi{text-decoration:none}.htz-bj::moz-focus-inner{border:0}.htz-bk::moz-focus-inner{padding:0}.htz-bl:after{content:\\"\\"}.htz-bm:after{height:1px}.htz-bn:after{position:absolute}.htz-bo:after{width:100%}.htz-bp:after{bottom:0}.htz-bq:before{content:\\"\\"}.htz-br:before{height:1px}.htz-bs:before{position:absolute}.htz-bt:before{width:100%}.htz-bu:before{top:0}.htz-bv{padding-right:0rem}.htz-bw{padding-left:0rem}.htz-bx{border-radius:0}.htz-by{border-color:transparent}.htz-bz{font-style:italic}.htz-ca{height:5rem}.htz-cb{margin-left:0.1rem}.htz-cc{margin-top:calc(1px - 1rem)}.htz-cd{width:5rem}.htz-ce:visited{color:#2D2D2D}.htz-cf:hover{text-decoration:none}.htz-cg:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ch:hover{border-color:transparent}.htz-ci:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cj:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ck:focus{outline:none}.htz-cl:focus{text-decoration:none}.htz-cm:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cn:focus{background-color:#0B7EB5}.htz-co:focus{border-color:transparent}.htz-cp:focus{color:#FFF}.htz-cq:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cr:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:active{outline:none}.htz-ct:active{text-decoration:none}.htz-cu:active{transition-duration:0s}.htz-cv:active{background-color:#0B7EB5}.htz-cw:active{border-color:transparent}.htz-cx:active{color:#FFF}.htz-cy{-webkit-box-align:center}.htz-cz{-webkit-box-pack:center}.htz-da{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-db{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dc{opacity:1}.htz-dd{transition-property:opacity}.htz-de{transition-delay:.3s}.htz-df{-webkit-transition-property:opacity}.htz-dg{-moz-transition-property:opacity}.htz-dh{vertical-align:-0.15em}.htz-di{color:inherit}.htz-dj{fill:#FFF}.htz-dk{background-color:rgba(200,200,200, 0.3)}.htz-dl{height:100%}.htz-dm{right:0}.htz-dn{position:absolute}.htz-do{top:0}.htz-dp{transform:scaleX(0)}.htz-dq{transform-origin:right}.htz-dr{animation-direction:alternate}.htz-ds{animation-iteration-count:infinite}.htz-dt{animation-duration:1s}.htz-du{animation-delay:0.75s}.htz-dv{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dw{margin-left:-1rem}.htz-dx{border:none}.htz-dy{background-color:transparent}.htz-dz{overflow:auto}.htz-ea{height:6rem}.htz-eb:focus{cursor:text}.htz-ec{display:block}.htz-eh{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ed{font-size:1.8333333333333333rem}.htz-ee{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ef{font-size:1.7142857142857142rem}.htz-eg{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a contentEditable div with label 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start}.htz-d{flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:right}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}.htz-aj{justify-content:space-between}.htz-ak{-webkit-box-pack:justify}.htz-al{white-space:nowrap}.htz-am{margin-left:1rem}.htz-an{color:#006B96}.htz-ao{font-weight:bold}.htz-ap{transition-property:transform}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:transform}.htz-aw{-moz-transition-property:transform}.htz-ax{-webkit-box-flex:1}.htz-ay{align-items:center}.htz-az{-webkit-appearance:none}.htz-ba{-moz-appearance:none}.htz-bb{appearance:none}.htz-bc{display:none}.htz-bd{font-size:inherit}.htz-be{justify-content:center}.htz-bf{position:relative}.htz-bg{transform:scale(1)}.htz-bh{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bi{text-decoration:none}.htz-bj::moz-focus-inner{border:0}.htz-bk::moz-focus-inner{padding:0}.htz-bl:after{content:\\"\\"}.htz-bm:after{height:1px}.htz-bn:after{position:absolute}.htz-bo:after{width:100%}.htz-bp:after{bottom:0}.htz-bq:before{content:\\"\\"}.htz-br:before{height:1px}.htz-bs:before{position:absolute}.htz-bt:before{width:100%}.htz-bu:before{top:0}.htz-bv{padding-right:0rem}.htz-bw{padding-left:0rem}.htz-bx{border-radius:0}.htz-by{border-color:transparent}.htz-bz{font-style:italic}.htz-ca{height:5rem}.htz-cb{width:5rem}.htz-cc:visited{color:#2D2D2D}.htz-cd:hover{text-decoration:none}.htz-ce:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cf:hover{border-color:transparent}.htz-cg:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ch:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ci:focus{outline:none}.htz-cj:focus{text-decoration:none}.htz-ck:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cl:focus{background-color:#0B7EB5}.htz-cm:focus{border-color:transparent}.htz-cn:focus{color:#FFF}.htz-co:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cq:active{outline:none}.htz-cr:active{text-decoration:none}.htz-cs:active{transition-duration:0s}.htz-ct:active{background-color:#0B7EB5}.htz-cu:active{border-color:transparent}.htz-cv:active{color:#FFF}.htz-cw{-webkit-box-align:center}.htz-cx{-webkit-box-pack:center}.htz-cy{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cz{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-da{opacity:1}.htz-db{transition-property:opacity}.htz-dc{transition-delay:.3s}.htz-dd{-webkit-transition-property:opacity}.htz-de{-moz-transition-property:opacity}.htz-df{vertical-align:-0.15em}.htz-dg{color:inherit}.htz-dh{fill:#FFF}.htz-di{background-color:rgba(200,200,200, 0.3)}.htz-dj{height:100%}.htz-dk{right:0}.htz-dl{position:absolute}.htz-dm{top:0}.htz-dn{transform:scaleX(0)}.htz-do{transform-origin:right}.htz-dp{animation-direction:alternate}.htz-dq{animation-iteration-count:infinite}.htz-dr{animation-duration:1s}.htz-ds{animation-delay:0.75s}.htz-dt{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-du{margin-top:calc(1px - 1rem)}.htz-dv{border:none}.htz-dw{background-color:transparent}.htz-dx{overflow:auto}.htz-dy{height:6rem}.htz-dz:focus{cursor:text}.htz-ea{display:block}.htz-ef{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-eb{font-size:1.8333333333333333rem}.htz-ec{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ed{font-size:1.7142857142857142rem}.htz-ee{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a disabled input 1`] = `
 <div>

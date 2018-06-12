@@ -206,6 +206,7 @@ class InputElement extends Component {
    * Otherwise update only if value changes
    */
   shouldComponentUpdate(nextProps) {
+    if (this.props.isDisabled !== nextProps.isDisabled) return true;
     if (this.props.isContentEditable && !nextProps.isFocused) return true;
     if (this.props.isContentEditable && nextProps.isFocused) return false;
     if (nextProps.value !== this.props.value) return true;
@@ -280,39 +281,39 @@ class InputElement extends Component {
         {...(placeholder ? { placeholder, } : {})}
         {...(refFunc || isContentEditable
           ? {
-            ref: el => {
-              if (isContentEditable) this.inputEl = el;
-              if (refFunc) refFunc(el);
-            },
-          }
+              ref: el => {
+                if (isContentEditable) this.inputEl = el;
+                if (refFunc) refFunc(el);
+              },
+            }
           : {})}
         // contentEditable attrs
         {...(isContentEditable
           ? {
-            contentEditable: true,
-            role: 'textbox',
-            'aria-multiline': true,
-            'aria-labelledby': labelId,
-            ...(value || value === ''
-              ? { dangerouslySetInnerHTML: { __html: value, }, }
-              : {}),
-            onInput: this.handleContentEditableChange,
-            onMouseDown: evt => (isDisabled ? evt.preventDefault() : null),
-            onPaste: evt => {
-              evt.preventDefault();
-              document.execCommand(
-                'insertHTML',
-                false,
-                evt.clipboardData.getData('text/plain')
-              );
-            },
-            ...(setFormatButtonsState
-              ? {
-                onMouseUp: setFormatButtonsState,
-                onKeyUp: setFormatButtonsState,
-              }
-              : {}),
-          }
+              contentEditable: true,
+              role: 'textbox',
+              'aria-multiline': true,
+              'aria-labelledby': labelId,
+              ...(value || value === ''
+                ? { dangerouslySetInnerHTML: { __html: value, }, }
+                : {}),
+              onInput: this.handleContentEditableChange,
+              onMouseDown: evt => (isDisabled ? evt.preventDefault() : null),
+              onPaste: evt => {
+                evt.preventDefault();
+                document.execCommand(
+                  'insertHTML',
+                  false,
+                  evt.clipboardData.getData('text/plain')
+                );
+              },
+              ...(setFormatButtonsState
+                ? {
+                    onMouseUp: setFormatButtonsState,
+                    onKeyUp: setFormatButtonsState,
+                  }
+                : {}),
+            }
           : value || value === '' ? { value, } : {})}
       />
     );

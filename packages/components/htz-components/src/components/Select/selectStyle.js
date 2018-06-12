@@ -7,6 +7,10 @@ import {
 export default function selectStyle({ theme, miscStyles, variant, isOpen, }) {
   return {
     width: '100%',
+    position: 'absolute',
+    backgroundColor: 'white',
+    zIndex: '1',
+    top: 0,
     color: theme.color('select', `${variant}TextColor`),
     extend: [
       parseComponentProp(

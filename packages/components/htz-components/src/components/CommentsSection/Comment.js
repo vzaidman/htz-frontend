@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { borderBottom, getRemFromPx, } from '@haaretz/htz-css-tools';
 import { FelaComponent, createComponent, } from 'react-fela';
+import Recaptcha from 'react-google-invisible-recaptcha';
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 import CommentList from './CommentList.js'; // eslint-disable-line import/no-named-as-default
 import CommentForm from './CommentForm';
@@ -493,6 +494,22 @@ class Comment extends React.Component {
                     {reportAbuseBtnTxt}
                   </Button>
                 </FelaComponent>
+                {this.state.abuseReported && (
+                  <FelaComponent
+                    style={{
+                      marginTop: '1rem',
+                      marginBottom: '1rem',
+                      display: 'flex',
+                      justifyContent: 'flex-end',
+                    }}
+                  >
+                    <Recaptcha
+                      sitekey="6Lc6jzoUAAAAAPBTy6ppZ5Et2Yv8zivAiNY-l4ol"
+                      onResolved={() => console.log('captcha resolved')}
+                      badge="inline"
+                    />
+                  </FelaComponent>
+                )}
                 {subComments ? (
                   <CommentList
                     comments={subComments}
