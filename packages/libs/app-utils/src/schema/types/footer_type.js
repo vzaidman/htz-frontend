@@ -20,16 +20,16 @@ const Column = new GraphQLObjectType({
   fields: () => ({
     contentName: { type: GraphQLString, },
     combineWithNextColumn: { type: GraphQLBoolean, },
-    row: { type: new GraphQLList(Pair), },
+    rows: { type: new GraphQLList(Pair), },
   }),
 });
 
 const Footer = new GraphQLObjectType({
   name: 'Footer',
   fields: () => ({
-    head: { type: new GraphQLList(Pair), },
+    headList: { type: new GraphQLList(Pair), },
     columns: { type: new GraphQLList(Column), },
-    credit: { type: new GraphQLList(Pair), },
+    creditList: { type: new GraphQLList(Pair), },
     toolbox: { type: new GraphQLList(Pair), },
   }),
 });

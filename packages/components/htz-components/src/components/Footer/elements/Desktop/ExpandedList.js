@@ -81,7 +81,7 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
                   <StyledSection key={listIdx}>
                     <StyledUlTitle>{innerList.contentName}</StyledUlTitle>
                     <ul>
-                      {innerList.row.map((link, linkIdx) => (
+                      {innerList.rows.map((link, linkIdx) => (
                         <li key={`${link.contentName}${link.value}`}>
                           <StyledListLink
                             content={link.contentName}
@@ -103,17 +103,19 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
             { from: 'xl', value: 1 / 6, },
           ]}
         >
-          <ul>
-            {toolbox.map(link => (
-              <li key={`${link.text}${link.value}`}>
-                <StyledListLink
-                  content={link.contentName}
-                  href={link.value}
-                  isBold
-                />
-              </li>
-            ))}
-          </ul>
+          {toolbox && (
+            <ul>
+              {toolbox.map(link => (
+                <li key={`${link.text}${link.value}`}>
+                  <StyledListLink
+                    content={link.contentName}
+                    href={link.value}
+                    isBold
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
         </GridItem>
       </Grid>
     </ExtendedFooterContainer>

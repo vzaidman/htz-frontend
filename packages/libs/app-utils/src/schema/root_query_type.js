@@ -26,6 +26,10 @@ const RootQuery = new GraphQLObjectType({
     },
     footer: {
       type: Footer,
+      args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
+      resolve(parentValue, { path, }, context) {
+        return context.listsLoader.load(path);
+      },
     },
     list: {
       type: List,
