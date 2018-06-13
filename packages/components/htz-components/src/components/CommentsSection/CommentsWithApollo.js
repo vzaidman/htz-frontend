@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Query, Mutation, } from 'react-apollo';
 import CommentSection from './CommentsSection';
+import GET_ID from './queries/getId';
 import FETCH_COMMENTS from './queries/fetchComments';
 import SUBMIT_NEW_COMMENT from './mutations/submitNewComment';
 import SUBMIT_NEW_VOTE from './mutations/submitNewVote';
@@ -33,7 +34,7 @@ class CommentsWithApollo extends React.Component {
       },
     })
       .then(({ data, }) => {
-        console.warn(data.addVote.status);
+        // console.warn(data.addVote.status);
       })
       .catch(mutationError => {
         console.warn('there was an error sending the query', mutationError);
@@ -48,7 +49,6 @@ class CommentsWithApollo extends React.Component {
   ) => {
     const articleId = this.props.articleId;
     const commentElementId = this.props.contentId;
-    console.log('submitting new comment');
     submitNewComment({
       variables: {
         commentText,
@@ -59,7 +59,6 @@ class CommentsWithApollo extends React.Component {
       },
     })
       .then(({ data, }) => {
-        console.log('submitting new comment got response, data: ', data);
         this.setState({
           newCommentId: data.addComment.newCommentId,
           newCommentHash: data.addComment.hash,
@@ -82,7 +81,6 @@ class CommentsWithApollo extends React.Component {
   }
 
   initReportAbuse(commentId, captchaKey, reportAbuse) {
-    console.log('reporting abuse');
     reportAbuse({
       variables: {
         commentId,
@@ -181,4 +179,18 @@ class CommentsWithApollo extends React.Component {
   }
 }
 
-export default CommentsWithApollo;
+function WrappedComments() {
+  return (
+    <Query query={GET_ID}>
+      {({ data: { articleId, commentsElementId, }, }) =>
+        (articleId ? (
+          <CommentsWithApollo
+            articleId={articleId}
+            contentId={commentsElementId}
+          />
+        ) : null)
+      }
+    </Query>
+  );
+}
+export default WrappedComments;
