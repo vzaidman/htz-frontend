@@ -436,7 +436,7 @@ class TextInput extends Component {
   };
   static getDerivedStateFromProps(props, state) {
     return {
-      isInputEmpty: !this.props.defaultValue && !this.props.value,
+      isInputEmpty: !props.defaultValue && !props.value,
     };
   }
   state = {

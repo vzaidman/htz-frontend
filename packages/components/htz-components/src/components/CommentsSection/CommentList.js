@@ -23,7 +23,9 @@ const wrapperStyle = theme => ({
   backgroundColor: theme.color('white'),
 });
 
-const adSlot = <AdSlot id="haaretz.co.il.web.fullbanner.talkback" audianceTarget="all" />;
+const adSlot = (
+  <AdSlot id="haaretz.co.il.web.fullbanner.talkback" audianceTarget="all" />
+);
 
 const debounced = debounce((component, idx) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -112,7 +114,9 @@ class CommentList extends Component {
             debounced(this, idx);
           }
         }}
-        render={inView => (inView && this.state.adLocation === idx ? adSlot : null)}
+        render={inView =>
+          (inView && this.state.adLocation === idx ? adSlot : null)
+        }
       />
     );
   }
@@ -137,7 +141,7 @@ class CommentList extends Component {
         render={({ className, theme: { bps, typeConf, }, }) => (
           <div className={className}>
             {comments.map((comment, idx) => (
-              <Fragment>
+              <Fragment key={comment.commentId}>
                 <Comment
                   bps={bps}
                   typeConf={typeConf}

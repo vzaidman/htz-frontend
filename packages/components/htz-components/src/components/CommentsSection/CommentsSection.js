@@ -80,10 +80,6 @@ class CommentsSection extends React.Component {
      * @param {String} - notificationEmail - The email the user entered
      */
     signUpNotification: PropTypes.func.isRequired,
-    /** passed as a a prop by fela's withTheme func before default export */
-    theme: PropTypes.shape({
-      commentsSectionI18n: PropTypes.object.isRequired,
-    }).isRequired,
     /** used to calculate comment numbers */
     totalHits: PropTypes.number.isRequired,
   };
@@ -153,7 +149,9 @@ class CommentsSection extends React.Component {
       return (a, b) =>
         (a.isEditorPick === b.isEditorPick
           ? 0
-          : a.isEditorPick === 'true' ? -1 : 1);
+          : a.isEditorPick === 'true'
+            ? -1
+            : 1);
     }
     return (a, b) => b.publishingDateSortable - a.publishingDateSortable;
   }
