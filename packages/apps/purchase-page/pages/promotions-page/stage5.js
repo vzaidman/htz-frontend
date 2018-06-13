@@ -1,9 +1,9 @@
 /* global window */
 import React from 'react';
-import { withData, pagePropTypes, } from '@haaretz/app-utils';
+import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
 import { LayoutContainer, UserDispenser, } from '@haaretz/htz-components';
-import { Query, ApolloProvider, } from 'react-apollo';
+import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import MainLayout from '../../layouts/MainLayout';
@@ -51,140 +51,134 @@ function buildCreditGuardSrc(
   }&cgtype=payment_heb2&approveDebtClaim=${approveDebtClaim}&thankYouEmailTemplate=${thankYouEmailTemplate}`;
 }
 
-function Stage5(props) {
+function Stage5() {
   return (
-    <ApolloProvider client={props.apolloClient}>
-      <MainLayout>
-        <OfferPageDataGetter
-          render={({ data, loading, error, refetch, client, }) => {
-            if (loading) return <div> Loading...</div>;
-            if (error) return <div> Error...</div>;
-            return (
-              <Query query={GET_PROMOTIONS_STATE}>
-                {({ data: clientData, }) => {
-                  const {
-                    hostname,
-                    promotionsPageState: {
-                      approveDebtClaim,
-                      chosenOfferIndex,
-                      chosenProductIndex,
-                      chosenSlotIndex,
-                      couponProduct,
-                      paymentMethodIndex,
-                      paymentType,
-                    },
-                  } = clientData;
-
-                  const parsedCouponProduct = JSON.parse(couponProduct);
-
-                  // if couponProduct is chosen use the couponProduct from local state
-                  const chosenProduct =
-                    chosenProductIndex === 'couponProduct'
-                      ? parsedCouponProduct
-                      : data.purchasePage.slots[chosenSlotIndex].products[
-                          chosenProductIndex
-                        ];
-                  const chosenOffer = chosenProduct.offerList[chosenOfferIndex];
-
-                  const paymentData = chosenOffer.paymentData;
-
-                  const thankYouEmailTemplate =
-                    chosenProduct.thankYouEmailTemplate;
-
-                  const creditGuardSrc = buildCreditGuardSrc(
-                    paymentData,
+    <MainLayout>
+      <OfferPageDataGetter
+        render={({ data, loading, error, refetch, client, }) => {
+          if (loading) return <div> Loading...</div>;
+          if (error) return <div> Error...</div>;
+          return (
+            <Query query={GET_PROMOTIONS_STATE}>
+              {({ data: clientData, }) => {
+                const {
+                  hostname,
+                  promotionsPageState: {
                     approveDebtClaim,
-                    thankYouEmailTemplate
-                  );
+                    chosenOfferIndex,
+                    chosenProductIndex,
+                    chosenSlotIndex,
+                    couponProduct,
+                    paymentMethodIndex,
+                    paymentType,
+                  },
+                } = clientData;
 
-                  const chosenSubscription =
-                    data.purchasePage.slots[chosenSlotIndex].subscriptionName;
+                const parsedCouponProduct = JSON.parse(couponProduct);
 
-                  const chosenPaymentArrangement = chosenOffer.type;
+                // if couponProduct is chosen use the couponProduct from local state
+                const chosenProduct =
+                  chosenProductIndex === 'couponProduct'
+                    ? parsedCouponProduct
+                    : data.purchasePage.slots[chosenSlotIndex].products[
+                        chosenProductIndex
+                      ];
+                const chosenOffer = chosenProduct.offerList[chosenOfferIndex];
 
-                  return (
-                    <FelaComponent
-                      style={{ textAlign: 'center', }}
-                      render={({
-                        className,
-                        theme: {
-                          stage5: { header, details, },
-                        },
-                      }) => (
-                        <div className={className}>
-                          <StageCounter stage={5} />
-                          <LayoutContainer
-                            bgc="white"
-                            miscStyles={{ paddingTop: '1.5rem', }}
-                          >
-                            <UserDispenser
-                              render={({ user, }) => (
-                                <StageTransition
-                                  chosenSubscription={chosenSubscription}
-                                  headerElement={
-                                    <StageHeader
-                                      headerElements={[
-                                        <FelaComponent
-                                          style={{ fontWeight: 'bold', }}
-                                        >
-                                          {header.textTopLine}
-                                        </FelaComponent>,
-                                        <span>
-                                          {header.textNewLine[paymentType]}
-                                        </span>,
-                                      ]}
+                const paymentData = chosenOffer.paymentData;
+
+                const thankYouEmailTemplate =
+                  chosenProduct.thankYouEmailTemplate;
+
+                const creditGuardSrc = buildCreditGuardSrc(
+                  paymentData,
+                  approveDebtClaim,
+                  thankYouEmailTemplate
+                );
+
+                const chosenSubscription =
+                  data.purchasePage.slots[chosenSlotIndex].subscriptionName;
+
+                const chosenPaymentArrangement = chosenOffer.type;
+
+                return (
+                  <FelaComponent
+                    style={{ textAlign: 'center', }}
+                    render={({
+                      className,
+                      theme: {
+                        stage5: { header, details, },
+                      },
+                    }) => (
+                      <div className={className}>
+                        <StageCounter stage={5} />
+                        <LayoutContainer
+                          bgc="white"
+                          miscStyles={{ paddingTop: '1.5rem', }}
+                        >
+                          <UserDispenser
+                            render={({ user, }) => (
+                              <StageTransition
+                                chosenSubscription={chosenSubscription}
+                                headerElement={
+                                  <StageHeader
+                                    headerElements={[
+                                      <FelaComponent
+                                        style={{ fontWeight: 'bold', }}
+                                      >
+                                        {header.textTopLine}
+                                      </FelaComponent>,
+                                      <span>
+                                        {header.textNewLine[paymentType]}
+                                      </span>,
+                                    ]}
+                                  />
+                                }
+                                stageElement={
+                                  paymentType === 'PayPal' ? (
+                                    <PayPalStage
+                                      creditGuardSrc={creditGuardSrc}
                                     />
-                                  }
-                                  stageElement={
-                                    paymentType === 'PayPal' ? (
-                                      <PayPalStage
-                                        creditGuardSrc={creditGuardSrc}
-                                      />
-                                    ) : paymentType === 'existingCreditCard' ? (
-                                      <ExistingCreditCardStage
-                                        hostname={hostname}
-                                        paymentData={paymentData}
-                                        user={user}
-                                        fourDigits={
-                                          data.purchasePage.creditCardsDetails[
-                                            paymentMethodIndex
-                                          ].fourDigits
-                                        }
-                                        thankYouEmailTemplate={
-                                          thankYouEmailTemplate
-                                        }
-                                      />
-                                    ) : (
-                                      <CreditCardIframeStage
-                                        creditGuardSrc={creditGuardSrc}
-                                        chosenSubscription={chosenSubscription}
-                                        chosenPaymentArrangement={
-                                          chosenPaymentArrangement
-                                        }
-                                        firstPaymentAmount={
-                                          paymentData.prices[0]
-                                        }
-                                        nextPaymentAmount={
-                                          paymentData.prices[1]
-                                        }
-                                      />
-                                    )
-                                  }
-                                />
-                              )}
-                            />
-                          </LayoutContainer>
-                        </div>
-                      )}
-                    />
-                  );
-                }}
-              </Query>
-            );
-          }}
-        />
-      </MainLayout>
-    </ApolloProvider>
+                                  ) : paymentType === 'existingCreditCard' ? (
+                                    <ExistingCreditCardStage
+                                      hostname={hostname}
+                                      paymentData={paymentData}
+                                      user={user}
+                                      fourDigits={
+                                        data.purchasePage.creditCardsDetails[
+                                          paymentMethodIndex
+                                        ].fourDigits
+                                      }
+                                      thankYouEmailTemplate={
+                                        thankYouEmailTemplate
+                                      }
+                                    />
+                                  ) : (
+                                    <CreditCardIframeStage
+                                      creditGuardSrc={creditGuardSrc}
+                                      chosenSubscription={chosenSubscription}
+                                      chosenPaymentArrangement={
+                                        chosenPaymentArrangement
+                                      }
+                                      firstPaymentAmount={paymentData.prices[0]}
+                                      nextPaymentAmount={paymentData.prices[1]}
+                                    />
+                                  )
+                                }
+                              />
+                            )}
+                          />
+                        </LayoutContainer>
+                      </div>
+                    )}
+                  />
+                );
+              }}
+            </Query>
+          );
+        }}
+      />
+    </MainLayout>
   );
 }
 
@@ -192,4 +186,4 @@ Stage5.propTypes = pagePropTypes;
 
 Stage5.defaultProps = {};
 
-export default withData(Stage5);
+export default Stage5;

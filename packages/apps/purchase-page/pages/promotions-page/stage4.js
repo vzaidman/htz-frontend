@@ -1,8 +1,8 @@
 import React, { Fragment, } from 'react';
-import { withData, pagePropTypes, } from '@haaretz/app-utils';
+import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
 import { LayoutContainer, } from '@haaretz/htz-components';
-import { Query, ApolloProvider, } from 'react-apollo';
+import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import MainLayout from '../../layouts/MainLayout';
@@ -25,138 +25,134 @@ const GET_PROMOTIONS_STATE = gql`
   }
 `;
 
-function Stage4(props) {
+function Stage4() {
   return (
-    <ApolloProvider client={props.apolloClient}>
-      <MainLayout>
-        <OfferPageDataGetter
-          render={({ data, loading, error, refetch, client, }) => {
-            if (loading) return <div> Loading...</div>;
-            if (error) return <div> Error...</div>;
-            return (
-              <Query query={GET_PROMOTIONS_STATE}>
-                {({ data: clientData, }) => {
-                  const {
-                    promotionsPageState: {
-                      chosenOfferIndex,
-                      chosenProductIndex,
-                      chosenSlotIndex,
-                      couponProduct,
-                    },
-                    loggedInOrRegistered,
-                  } = clientData;
-                  const parsedCouponProduct = JSON.parse(couponProduct);
+    <MainLayout>
+      <OfferPageDataGetter
+        render={({ data, loading, error, refetch, client, }) => {
+          if (loading) return <div> Loading...</div>;
+          if (error) return <div> Error...</div>;
+          return (
+            <Query query={GET_PROMOTIONS_STATE}>
+              {({ data: clientData, }) => {
+                const {
+                  promotionsPageState: {
+                    chosenOfferIndex,
+                    chosenProductIndex,
+                    chosenSlotIndex,
+                    couponProduct,
+                  },
+                  loggedInOrRegistered,
+                } = clientData;
+                const parsedCouponProduct = JSON.parse(couponProduct);
 
-                  // if couponProduct is chosen use the couponProduct from local state
-                  const chosenOffer =
-                    chosenProductIndex === 'couponProduct'
-                      ? parsedCouponProduct.offerList[chosenOfferIndex]
-                      : data.purchasePage.slots[chosenSlotIndex].products[
-                          chosenProductIndex
-                        ].offerList[chosenOfferIndex];
-                  const paymentData = chosenOffer.paymentData;
+                // if couponProduct is chosen use the couponProduct from local state
+                const chosenOffer =
+                  chosenProductIndex === 'couponProduct'
+                    ? parsedCouponProduct.offerList[chosenOfferIndex]
+                    : data.purchasePage.slots[chosenSlotIndex].products[
+                        chosenProductIndex
+                      ].offerList[chosenOfferIndex];
+                const paymentData = chosenOffer.paymentData;
 
-                  const chosenSubscription =
-                    data.purchasePage.slots[chosenSlotIndex].subscriptionName;
+                const chosenSubscription =
+                  data.purchasePage.slots[chosenSlotIndex].subscriptionName;
 
-                  const chosenPaymentArrangement = chosenOffer.type;
+                const chosenPaymentArrangement = chosenOffer.type;
 
-                  return (
-                    <FelaComponent
-                      style={{ textAlign: 'center', }}
-                      render={({
-                        className,
-                        theme: {
-                          stage4: { header, details, },
-                        },
-                      }) => (
-                        <div className={className}>
-                          <StageCounter stage={4} />
-                          <LayoutContainer
-                            bgc="white"
-                            miscStyles={{ paddingTop: '1.5rem', }}
-                          >
-                            <StageTransition
-                              chosenSubscription={chosenSubscription}
-                              headerElement={
-                                <StageHeader
-                                  headerElements={[
-                                    ...(loggedInOrRegistered
-                                      ? [
+                return (
+                  <FelaComponent
+                    style={{ textAlign: 'center', }}
+                    render={({
+                      className,
+                      theme: {
+                        stage4: { header, details, },
+                      },
+                    }) => (
+                      <div className={className}>
+                        <StageCounter stage={4} />
+                        <LayoutContainer
+                          bgc="white"
+                          miscStyles={{ paddingTop: '1.5rem', }}
+                        >
+                          <StageTransition
+                            chosenSubscription={chosenSubscription}
+                            headerElement={
+                              <StageHeader
+                                headerElements={[
+                                  ...(loggedInOrRegistered
+                                    ? [
+                                      <FelaComponent
+                                        style={{ fontWeight: 'bold', }}
+                                      >
+                                        {`${
+                                            header[
+                                              loggedInOrRegistered ||
+                                                'connected'
+                                            ].textTopLine
+                                          }`}
+                                      </FelaComponent>,
+                                      <span>
+                                        {
+                                            header[
+                                              loggedInOrRegistered ||
+                                                'connected'
+                                            ].textNewLine
+                                          }
+                                      </span>,
+                                      ]
+                                    : [
+                                      <Fragment>
                                         <FelaComponent
                                           style={{ fontWeight: 'bold', }}
+                                          render="span"
                                         >
-                                          {`${
-                                              header[
-                                                loggedInOrRegistered ||
-                                                  'connected'
-                                              ].textTopLine
-                                            }`}
-                                        </FelaComponent>,
-                                        <span>
+                                          {details.textBeforeChosen}{' '}
                                           {
-                                              header[
-                                                loggedInOrRegistered ||
-                                                  'connected'
-                                              ].textNewLine
-                                            }
-                                        </span>,
-                                        ]
-                                      : [
-                                        <Fragment>
-                                          <FelaComponent
-                                            style={{ fontWeight: 'bold', }}
-                                            render="span"
-                                          >
-                                            {details.textBeforeChosen}{' '}
-                                            {
-                                                details.chosenSubscriptionText[
-                                                  chosenSubscription
-                                                ]
-                                              }{' '}
-                                            {`${
-                                                details
-                                                  .chosenPaymentArrangementText[
-                                                  chosenPaymentArrangement
-                                                ]
-                                              }.`}
-                                          </FelaComponent>
-                                        </Fragment>,
-                                        <span>{details.textNewLine}</span>,
-                                        ]),
-                                  ]}
-                                />
-                              }
-                              stageElement={
-                                <PaymentStage
-                                  hasDebt={!!data.purchasePage.pastDebts}
-                                  creditCardsDetails={
-                                    data.purchasePage.creditCardsDetails
-                                  }
-                                  chosenSubscription={chosenSubscription}
-                                  chosenPaymentArrangement={
-                                    chosenPaymentArrangement
-                                  }
-                                  firstPaymentAmount={paymentData.prices[0]}
-                                  nextPaymentAmount={paymentData.prices[1]}
-                                  displayPayPal={
-                                    paymentData.paymentType === 'J4'
-                                  }
-                                />
-                              }
-                            />
-                          </LayoutContainer>
-                        </div>
-                      )}
-                    />
-                  );
-                }}
-              </Query>
-            );
-          }}
-        />
-      </MainLayout>
-    </ApolloProvider>
+                                              details.chosenSubscriptionText[
+                                                chosenSubscription
+                                              ]
+                                            }{' '}
+                                          {`${
+                                              details
+                                                .chosenPaymentArrangementText[
+                                                chosenPaymentArrangement
+                                              ]
+                                            }.`}
+                                        </FelaComponent>
+                                      </Fragment>,
+                                      <span>{details.textNewLine}</span>,
+                                      ]),
+                                ]}
+                              />
+                            }
+                            stageElement={
+                              <PaymentStage
+                                hasDebt={!!data.purchasePage.pastDebts}
+                                creditCardsDetails={
+                                  data.purchasePage.creditCardsDetails
+                                }
+                                chosenSubscription={chosenSubscription}
+                                chosenPaymentArrangement={
+                                  chosenPaymentArrangement
+                                }
+                                firstPaymentAmount={paymentData.prices[0]}
+                                nextPaymentAmount={paymentData.prices[1]}
+                                displayPayPal={paymentData.paymentType === 'J4'}
+                              />
+                            }
+                          />
+                        </LayoutContainer>
+                      </div>
+                    )}
+                  />
+                );
+              }}
+            </Query>
+          );
+        }}
+      />
+    </MainLayout>
   );
 }
 
@@ -164,4 +160,4 @@ Stage4.propTypes = pagePropTypes;
 
 Stage4.defaultProps = {};
 
-export default withData(Stage4);
+export default Stage4;

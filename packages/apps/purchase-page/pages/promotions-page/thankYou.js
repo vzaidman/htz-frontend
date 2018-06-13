@@ -1,7 +1,6 @@
 import React, { Fragment, } from 'react';
-import { withData, pagePropTypes, } from '@haaretz/app-utils';
+import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
-import { ApolloProvider, } from 'react-apollo';
 import {
   IconCheck,
   LayoutContainer,
@@ -90,27 +89,25 @@ class StageThankYou extends React.Component {
               : null;
     }
     return (
-      <ApolloProvider client={this.props.apolloClient}>
-        <MainLayout thankYou product={productId || false}>
-          {productId ? (
-            <ThankYouElement product={productId} />
-          ) : (
-            <OfferPageDataGetter
-              render={({
-                data: {
-                  purchasePage: { userMessage, },
-                },
-                loading,
-                error,
-              }) => {
-                if (loading) return <div> Loading...</div>;
-                if (error) return <div> Error...</div>;
-                return <ThankYouElement userMessage={userMessage} />;
-              }}
-            />
-          )}
-        </MainLayout>
-      </ApolloProvider>
+      <MainLayout thankYou product={productId || false}>
+        {productId ? (
+          <ThankYouElement product={productId} />
+        ) : (
+          <OfferPageDataGetter
+            render={({
+              data: {
+                purchasePage: { userMessage, },
+              },
+              loading,
+              error,
+            }) => {
+              if (loading) return <div> Loading...</div>;
+              if (error) return <div> Error...</div>;
+              return <ThankYouElement userMessage={userMessage} />;
+            }}
+          />
+        )}
+      </MainLayout>
     );
   }
 }
@@ -119,4 +116,4 @@ StageThankYou.propTypes = pagePropTypes;
 
 StageThankYou.defaultProps = {};
 
-export default withData(StageThankYou);
+export default StageThankYou;

@@ -7,7 +7,6 @@ import A11yDialog from './components/A11yDialog/A11yDialog';
 import A11yError from './components/A11yError/A11yError';
 import ActionButtons from './components/ActionButtons/ActionButtons';
 import AriaLive from './components/AriaLive/AriaLive';
-import Article from './components/Article/Article';
 import ArticleBody from './components/ArticleBody/ArticleBody';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
@@ -19,7 +18,6 @@ import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
-import Header from './components/PageHeader/Header';
 import HeadlineElement from './components/HeadlineElement/HeadlineElement';
 import HtmlElement from './components/Interactive/components/HtmlElement';
 import Image from './components/Image/Image';
@@ -31,7 +29,6 @@ import LinksBlock from './components/RelatedArticles/LinksBlock';
 import List from './components/List/List';
 import Media from './components/Media/Media';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
-import NavigationHeader from './components/NavigationHeader/NavigationHeader';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
 import Newsletter from './components/Newsletter/Newsletter';
 import Outbrain from './components/Outbrain/Outbrain';
@@ -121,6 +118,7 @@ import AdSlot from './components/Ads/AdSlot';
 /** ************************************ *
  *       U  T  I  L  I  T  I  E  S       *
  * ************************************* */
+import createApp from './createApp';
 import createDocument from './createDocument';
 import { appendScript, } from './utils/scriptTools';
 import { stylesPropType, } from './propTypes/stylesPropType';
@@ -135,7 +133,6 @@ export {
   A11yError,
   ActionButtons,
   AriaLive,
-  Article,
   ArticleBody,
   Button,
   ButtonGroup,
@@ -147,7 +144,6 @@ export {
   Form,
   Grid,
   GridItem,
-  Header,
   HeadlineElement,
   HtmlElement,
   Image,
@@ -159,7 +155,6 @@ export {
   List,
   Media,
   MobileQuickRegistration,
-  NavigationHeader,
   NavigationMenu,
   Outbrain,
   Osaka,
@@ -243,6 +238,7 @@ export {
   AdSlot,
   // Utils
   appendScript,
+  createApp,
   createDocument,
   stylesPropType,
   extractParamFromUrl,

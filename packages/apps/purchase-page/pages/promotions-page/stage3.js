@@ -1,8 +1,8 @@
 import React, { Component, Fragment, } from 'react';
-import { withData, pagePropTypes, } from '@haaretz/app-utils';
+import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
 import { LayoutContainer, } from '@haaretz/htz-components';
-import { Query, ApolloProvider, } from 'react-apollo';
+import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import MainLayout from '../../layouts/MainLayout';
@@ -46,124 +46,121 @@ class Stage3 extends Component {
 
   render() {
     return (
-      <ApolloProvider client={this.props.apolloClient}>
-        <MainLayout>
-          <OfferPageDataGetter
-            render={({ data, loading, error, refetch, client, }) => {
-              if (loading) return <div> Loading stage 3...</div>;
-              if (error) return <div> Error at stage3.js ...</div>;
-              return (
-                <Query query={GET_PROMOTIONS_STATE}>
-                  {({ data: clientData, }) => {
-                    const {
-                      hostname,
-                      promotionsPageState: {
-                        chosenSlotIndex,
-                        chosenProductIndex,
-                        chosenOfferIndex,
-                      },
-                    } = clientData;
-                    const chosenSubscription = data.purchasePage.slots
-                      ? data.purchasePage.slots[chosenSlotIndex]
-                          .subscriptionName
-                      : null;
+      <MainLayout>
+        <OfferPageDataGetter
+          render={({ data, loading, error, refetch, client, }) => {
+            if (loading) return <div> Loading stage 3...</div>;
+            if (error) return <div> Error at stage3.js ...</div>;
+            return (
+              <Query query={GET_PROMOTIONS_STATE}>
+                {({ data: clientData, }) => {
+                  const {
+                    hostname,
+                    promotionsPageState: {
+                      chosenSlotIndex,
+                      chosenProductIndex,
+                      chosenOfferIndex,
+                    },
+                  } = clientData;
+                  const chosenSubscription = data.purchasePage.slots
+                    ? data.purchasePage.slots[chosenSlotIndex].subscriptionName
+                    : null;
 
-                    const chosenPaymentArrangement = data.purchasePage.slots
-                      ? data.purchasePage.slots[chosenSlotIndex].products[
-                          chosenProductIndex
-                        ].offerList[chosenOfferIndex].type
-                      : null;
+                  const chosenPaymentArrangement = data.purchasePage.slots
+                    ? data.purchasePage.slots[chosenSlotIndex].products[
+                        chosenProductIndex
+                      ].offerList[chosenOfferIndex].type
+                    : null;
 
-                    if (this.state.refetch) {
-                      client.writeData({
-                        data: { loggedInOrRegistered: 'loggedIn', },
-                      });
-                      return (
-                        <LoginRedirect
-                          chosenSubscription={chosenSubscription}
-                          refetch={refetch}
-                        />
-                      );
-                    }
+                  if (this.state.refetch) {
+                    client.writeData({
+                      data: { loggedInOrRegistered: 'loggedIn', },
+                    });
                     return (
-                      <FelaComponent
-                        style={{ textAlign: 'center', }}
-                        render={({
-                          className,
-                          theme: {
-                            stage3: { header, },
-                          },
-                        }) => (
-                          <div className={className}>
-                            <StageCounter stage={3} />
-
-                            <LayoutContainer
-                              bgc="white"
-                              miscStyles={{ paddingTop: '1.5rem', }}
-                            >
-                              <StageTransition
-                                chosenSubscription={chosenSubscription}
-                                headerElement={
-                                  <StageHeader
-                                    headerElements={[
-                                      <FelaComponent
-                                        style={{ fontWeight: 'bold', }}
-                                        render="span"
-                                      >
-                                        <span>{header.textBeforeChosen}</span>{' '}
-                                        {
-                                          header.chosenSubscriptionText[
-                                            chosenSubscription
-                                          ]
-                                        }{' '}
-                                        {`${
-                                          header.chosenPaymentArrangementText[
-                                            chosenPaymentArrangement
-                                          ]
-                                        }.`}
-                                      </FelaComponent>,
-                                      <Fragment>
-                                        {header.dynamicTextNewLineLoginStage[
-                                          this.state.registerOrLoginStage
-                                        ].map(line => (
-                                          <p key={Math.random()}>{line}</p>
-                                        ))}
-                                      </Fragment>,
-                                    ]}
-                                  />
-                                }
-                                stageElement={
-                                  <LoginOrRegisterStage
-                                    registerOrLoginStage={
-                                      this.state.registerOrLoginStage
-                                    }
-                                    site={
-                                      hostname.includes('themarker')
-                                        ? 'TM'
-                                        : 'HTZ'
-                                    }
-                                    chosenSubscription={chosenSubscription}
-                                    updateRegisterOrLoginStage={
-                                      this.updateRegisterOrLoginStage
-                                    }
-                                    updateRefetchState={this.updateRefetchStage}
-                                  />
-                                }
-                              />
-                            </LayoutContainer>
-                          </div>
-                        )}
+                      <LoginRedirect
+                        chosenSubscription={chosenSubscription}
+                        refetch={refetch}
                       />
                     );
-                  }}
-                </Query>
-              );
-            }}
-          />
-        </MainLayout>
-      </ApolloProvider>
+                  }
+                  return (
+                    <FelaComponent
+                      style={{ textAlign: 'center', }}
+                      render={({
+                        className,
+                        theme: {
+                          stage3: { header, },
+                        },
+                      }) => (
+                        <div className={className}>
+                          <StageCounter stage={3} />
+
+                          <LayoutContainer
+                            bgc="white"
+                            miscStyles={{ paddingTop: '1.5rem', }}
+                          >
+                            <StageTransition
+                              chosenSubscription={chosenSubscription}
+                              headerElement={
+                                <StageHeader
+                                  headerElements={[
+                                    <FelaComponent
+                                      style={{ fontWeight: 'bold', }}
+                                      render="span"
+                                    >
+                                      <span>{header.textBeforeChosen}</span>{' '}
+                                      {
+                                        header.chosenSubscriptionText[
+                                          chosenSubscription
+                                        ]
+                                      }{' '}
+                                      {`${
+                                        header.chosenPaymentArrangementText[
+                                          chosenPaymentArrangement
+                                        ]
+                                      }.`}
+                                    </FelaComponent>,
+                                    <Fragment>
+                                      {header.dynamicTextNewLineLoginStage[
+                                        this.state.registerOrLoginStage
+                                      ].map(line => (
+                                        <p key={Math.random()}>{line}</p>
+                                      ))}
+                                    </Fragment>,
+                                  ]}
+                                />
+                              }
+                              stageElement={
+                                <LoginOrRegisterStage
+                                  registerOrLoginStage={
+                                    this.state.registerOrLoginStage
+                                  }
+                                  site={
+                                    hostname.includes('themarker')
+                                      ? 'TM'
+                                      : 'HTZ'
+                                  }
+                                  chosenSubscription={chosenSubscription}
+                                  updateRegisterOrLoginStage={
+                                    this.updateRegisterOrLoginStage
+                                  }
+                                  updateRefetchState={this.updateRefetchStage}
+                                />
+                              }
+                            />
+                          </LayoutContainer>
+                        </div>
+                      )}
+                    />
+                  );
+                }}
+              </Query>
+            );
+          }}
+        />
+      </MainLayout>
     );
   }
 }
 
-export default withData(Stage3);
+export default Stage3;

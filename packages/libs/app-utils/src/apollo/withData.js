@@ -4,8 +4,8 @@ import Head from 'next/head';
 import createClient from './createClient';
 import pagePropTypes from './pagePropTypes';
 
-export default Component => {
-  const componentName = Component.displayName || Component.name || 'Unknown';
+export default App => {
+  const componentName = App.displayName || App.name || 'Unknown';
 
   return class WithData extends React.Component {
     static displayName = `WithData(${componentName})`;
@@ -34,10 +34,13 @@ export default Component => {
       // Evaluate the composed component's `getInitialProps()`.
       let initialProps = {};
 
-      const { req, } = context;
-
-      if (Component.getInitialProps) {
-        initialProps = await Component.getInitialProps(context);
+      const {
+        Component,
+        ctx: { req, },
+        router,
+      } = context;
+      if (App.getInitialProps) {
+        initialProps = await App.getInitialProps(context);
       }
 
       // Run all GraphQL queries in the component tree, extract the resulting
@@ -45,21 +48,12 @@ export default Component => {
 
       const apolloClient = createClient({}, req);
       try {
-        const url = {
-          query: context.query,
-          asPath: context.asPath,
-          pathname: context.pathname,
-        };
         await getDataFromTree(
-          <Component
+          <App
+            Component={Component}
             context={context}
             {...initialProps}
-            url={url}
-            router={{
-              asPath: context.asPath,
-              pathname: context.pathname,
-              query: context.query,
-            }}
+            router={router}
             apolloState={serverState || {}}
             apolloClient={apolloClient || {}}
           />
@@ -98,7 +92,7 @@ export default Component => {
     }
 
     render() {
-      return <Component {...this.props} apolloClient={this.apolloClient} />;
+      return <App {...this.props} apolloClient={this.apolloClient} />;
     }
   };
 };
