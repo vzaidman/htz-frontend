@@ -42,13 +42,13 @@ const itemStyle = ({ theme, selected, lastItem, isSub, }) => {
   };
   return {
     ...borderBottom('1px', 0.1, 'solid', theme.color('primary', '+1')),
-    ...theme.type(-2),
     cursor: 'pointer',
     display: 'flex',
     ...(selected && { backgroundColor: theme.color('secondary', '+2'), }),
     // ...(lastItem && { paddingBottom: '2rem', }),
     ':hover': hoverFocusStyle,
     ':focus': hoverFocusStyle,
+    extend: [ theme.type(-2), ],
   };
 };
 const Item = createComponent(itemStyle, 'li');
@@ -115,10 +115,10 @@ const promotionStyle = ({ theme, }) => ({
   backgroundColor: theme.color('sales'),
   paddingTop: '1rem',
   paddingBottom: '1rem',
-  ...theme.type(-2),
   ':hover': {
     backgroundColor: theme.color('sales', 'a11yOnLight'),
   },
+  extend: [ theme.type(-2), ],
 });
 const PromotionItem = createComponent(promotionStyle, Link, props =>
   Object.keys(props)

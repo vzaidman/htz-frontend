@@ -74,15 +74,17 @@ const hamburgerDashStyle = (
   transition: 'transform .5s',
   extend: [
     ...(isOpen
-      ? !main && [
-        parseComponentProp(
-          'backgroundColor',
-          color.open || color.close || color,
-          theme.mq,
-          setColor,
-          theme.color
-        ),
-      ]
+      ? !main
+        ? [
+          parseComponentProp(
+            'backgroundColor',
+            color.open || color.close || color,
+            theme.mq,
+            setColor,
+            theme.color
+          ),
+        ]
+        : []
       : [
         parseComponentProp(
           'backgroundColor',

@@ -26,11 +26,11 @@ const StyledList = createComponent(listStyle, 'ul', [ 'role', ]);
 
 const itemStyle = ({ theme, selected, lastItem, }) => ({
   ...borderBottom('1px', 0.1, 'solid', theme.color('primary', '+1')),
-  ...theme.type(-2),
   cursor: 'pointer',
   display: 'flex',
   ...(selected && { backgroundColor: theme.color('secondary', '+2'), }),
   ...(lastItem && { paddingBottom: '2rem', }),
+  extend: [ theme.type(-2), ],
 });
 
 const Item = createComponent(itemStyle, 'li');

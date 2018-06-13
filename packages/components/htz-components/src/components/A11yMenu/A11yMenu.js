@@ -17,7 +17,7 @@ const a11yButtonStyle = ({ theme, isOpen, }) => ({
     backgroundColor: theme.color('a11yMenu', 'bgHover'),
     color: theme.color('a11yMenu', 'textOpenOrHover'),
   },
-  extend: [ ...theme.type(-2), ],
+  extend: [ theme.type(-2), ],
 });
 
 /**
