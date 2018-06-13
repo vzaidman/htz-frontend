@@ -244,6 +244,24 @@ class MobileView extends Component {
                               </StyledTableItem>
                             )
                         )}
+                        {item.pricingYearly && (
+                          <StyledTableItem>
+                            <div>{staticTableData.tbody.pricingYearlyText}</div>
+                            <FelaComponent style={{ textAlign: 'end', }}>
+                              {item.pricingYearly.map((row, jdx) => (
+                                <FelaComponent
+                                  style={{
+                                    ...(jdx === 0
+                                      ? { fontWeight: 'bold', }
+                                      : {}),
+                                  }}
+                                >
+                                  {row}
+                                </FelaComponent>
+                              ))}
+                            </FelaComponent>
+                          </StyledTableItem>
+                        )}
                         {item.pricingMonthly && (
                           <StyledTableItem>
                             <div>
@@ -251,14 +269,6 @@ class MobileView extends Component {
                             </div>
                             <FelaComponent style={{ textAlign: 'end', }}>
                               {item.pricingMonthly.map(row => <div>{row}</div>)}
-                            </FelaComponent>
-                          </StyledTableItem>
-                        )}
-                        {item.pricingYearly && (
-                          <StyledTableItem>
-                            <div>{staticTableData.tbody.pricingYearlyText}</div>
-                            <FelaComponent style={{ textAlign: 'end', }}>
-                              {item.pricingYearly.map(row => <div>{row}</div>)}
                             </FelaComponent>
                           </StyledTableItem>
                         )}

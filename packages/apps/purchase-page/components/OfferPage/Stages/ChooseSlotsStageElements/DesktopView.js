@@ -183,7 +183,6 @@ const StyledTdFootInnerCont = createComponent(tdFootInnerContStyle, 'div', [
 ]);
 
 const tdInnerContStyle = ({
-  isBold = false,
   isDescription = false,
   isHighlighted = false,
   theme,
@@ -197,7 +196,6 @@ const tdInnerContStyle = ({
   backgroundColor: theme.color('offerPage', 'bg'),
   opacity: 1,
   paddingTop: '1.5rem',
-  ...(isBold ? { fontWeight: 'bold', } : {}),
   ...(isDescription
     ? {
       alignItems: 'flex-end',
@@ -248,20 +246,20 @@ function buildThead(dynamicData, staticTheadData) {
 
 function buildTbody(dynamicData, staticTbodyData, cols) {
   const pricingRows = [
-    dynamicData[0].pricingMonthly
-      ? [
-        staticTbodyData.pricingMonthlyText,
-        dynamicData[0].pricingMonthly,
-        ...(dynamicData[1] ? [ dynamicData[1].pricingMonthly, ] : []),
-        ...(dynamicData[2] ? [ dynamicData[2].pricingMonthly, ] : []),
-      ]
-      : [],
     dynamicData[0].pricingYearly
       ? [
         staticTbodyData.pricingYearlyText,
         dynamicData[0].pricingYearly,
         ...(dynamicData[1] ? [ dynamicData[1].pricingYearly, ] : []),
         ...(dynamicData[2] ? [ dynamicData[2].pricingYearly, ] : []),
+      ]
+      : [],
+    dynamicData[0].pricingMonthly
+      ? [
+        staticTbodyData.pricingMonthlyText,
+        dynamicData[0].pricingMonthly,
+        ...(dynamicData[1] ? [ dynamicData[1].pricingMonthly, ] : []),
+        ...(dynamicData[2] ? [ dynamicData[2].pricingMonthly, ] : []),
       ]
       : [],
   ];
@@ -390,7 +388,6 @@ function DesktopView({
                       <StyledTdInnerCont
                         isHighlighted={highlightedIndex + 1 === idx}
                         isDescription={idx === 0}
-                        isBold={rowNum === tBodyData.length - 2 && idx !== 0}
                         onClick={() => {
                           continueToNextStage({
                             cache,
@@ -402,8 +399,17 @@ function DesktopView({
                         {typeof cellData === 'string' ? (
                           cellData
                         ) : Array.isArray(cellData) ? (
-                          cellData.map(line => (
-                            <div key={Math.random()}>{line}</div>
+                          cellData.map((line, jdx) => (
+                            <FelaComponent
+                              style={{
+                                ...(jdx === 0 && rowNum === tBodyData.length - 2
+                                  ? { fontWeight: 'bold', }
+                                  : {}),
+                              }}
+                              key={Math.random()}
+                            >
+                              {line}
+                            </FelaComponent>
                           ))
                         ) : cellData ? (
                           <PositiveCircle />
