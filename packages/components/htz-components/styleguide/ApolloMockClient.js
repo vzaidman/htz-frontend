@@ -38,6 +38,8 @@ const stateLink = withClientState({
       __typename: 'User',
     },
     a11yToggle: false,
+    articleId: null,
+    commentsElementId: null,
   },
   resolvers: {
     Mutation: {

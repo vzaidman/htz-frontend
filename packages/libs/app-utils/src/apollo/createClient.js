@@ -88,6 +88,7 @@ function create(initialState, req) {
       a11yToggle: false,
       hostname,
       articleId: null,
+      commentsElementId: null,
       startFromStage2: true,
       referrer: null,
       loggedInOrRegistered: null,
