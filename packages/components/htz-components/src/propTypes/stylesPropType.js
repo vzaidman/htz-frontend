@@ -15,6 +15,7 @@ export const stylesPropType = objectOf(
     bool,
     number,
     string,
+    object,
     arrayOf(
       shape({
         ...responsivePropBaseType,
