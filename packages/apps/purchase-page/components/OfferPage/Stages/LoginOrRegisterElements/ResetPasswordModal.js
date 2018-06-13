@@ -103,7 +103,7 @@ class ResetPasswordModal extends Component {
                 <FelaComponent
                   style={theme => ({
                     textAlign: 'center',
-                    extend: [ ...theme.type(1), ],
+                    extend: [ theme.type(1), ],
                   })}
                   render="h3"
                 >
@@ -142,7 +142,9 @@ class ResetPasswordModal extends Component {
                             onSubmit={async ({ resetEmail, }) => {
                               this.setState({ loading: true, });
                               const {
-                                data: { resetPassword: { status, message, }, },
+                                data: {
+                                  resetPassword: { status, message, },
+                                },
                               } = await client.query({
                                 query: RESET_PASSWORD,
                                 variables: { userName: resetEmail, },
