@@ -10,11 +10,13 @@ import { parseComponentProp, borderBottom, } from '@haaretz/htz-css-tools';
 import getComponent from '../../../utils/componentFromInputTemplate';
 
 import ArticleBody from '../../ArticleBody/ArticleBody';
-import HeadlineElement from '../../HeadlineElement/HeadlineElement';
 import ArticleHeader from '../../ArticleHeader/ArticleHeader';
 import ActionButtons from '../../ActionButtons/ActionButtons';
+import Media from '../../Media/Media';
 import SideBar from '../../SideBar/SideBar';
+import HeadlineElement from '../../HeadlineElement/HeadlineElement';
 import { buildUrl, } from '../../../utils/buildImgURLs';
+
 import ArticleContentQuery from '../queries/article_content';
 
 const Osaka = dynamic(import('../../Osaka/OsakaController'), { ssr: false, });
@@ -168,65 +170,37 @@ const asideStyle = ({ theme, }) => ({
         mediaQueryCallback
       ),
     ],
-    ...[
-      parseComponentProp(
-        'display',
-        theme.articleStyle.article.aside,
-        theme.mq,
-        mediaQueryCallback
-      ),
-    ],
   ],
 });
 const ArticleAside = createComponent(asideStyle, 'aside');
-
-const commentsStyle = ({ theme, }) => ({
-  extend: [
-    ...[
-      parseComponentProp(
-        'marginStart',
-        theme.articleStyle.body.marginStart,
-        theme.mq,
-        mediaQueryCallback
-      ),
-    ],
-    ...[
-      parseComponentProp(
-        'marginEnd',
-        theme.articleStyle.body.marginEnd,
-        theme.mq,
-        mediaQueryCallback
-      ),
-    ],
-  ],
-});
-const ArticleComments = createComponent(commentsStyle);
 
 class Main extends React.Component {
   state = {
     articleUrl: null,
     articleTitle: null,
     articleWidth: null,
-    articleHeight: null,
     facebookCount: null,
   };
 
   componentDidMount() {
-    this.getFacebookCount(this.state.articleUrl);
     // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({
       articleWidth: this.container && this.container.offsetWidth,
-      articleHeight: this.sideBar && this.sideBar.offsetHeight,
     });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
       this.props !== nextProps ||
-      this.state.facebookCount !== nextState.facebookCount ||
       this.state.articleUrl !== nextState.articleUrl ||
-      this.state.articleHeight !== nextState.articleHeight
+      this.state.articleWidth !== nextState.articleWidth
     );
+  }
+
+  componentDidUpdate() {
+    if (!this.state.facebookCount && this.state.facebookCount) {
+      this.getFacebookCount(this.state.articleUrl);
+    }
   }
 
   getFacebookCount = () => {
@@ -272,25 +246,7 @@ class Main extends React.Component {
 
   extractContent = (content, client) =>
     content.map(element => {
-      if (element.inputTemplate === 'com.htz.StandardArticle') {
-        const { commentsElementId, } = element;
-        client.writeData({
-          data: {
-            commentsElementId,
-          },
-        });
-        const { body, headlineElement, } = this.extractHeadline(element.body);
-        return (
-          <ArticleSection>
-            {headlineElement && (
-              <HeadlineElement elementObj={headlineElement} />
-            )}
-            <BodyWrapper>
-              <ArticleBody body={body} />
-            </BodyWrapper>
-          </ArticleSection>
-        );
-      }
+      // This is the Article Header.
       if (element.inputTemplate === 'com.htz.ArticleHeaderElement') {
         return (
           <ArticleSection>
@@ -342,23 +298,36 @@ class Main extends React.Component {
           </ArticleSection>
         );
       }
-      const Element = getComponent(element.inputTemplate);
-      if (element.inputTemplate === 'com.tm.ArticleCommentsElement') {
+      // This is the Article Body.
+      if (element.inputTemplate === 'com.htz.StandardArticle') {
+        const { commentsElementId, } = element;
+        client.writeData({
+          data: {
+            commentsElementId,
+          },
+        });
+        const { body, headlineElement, } = this.extractHeadline(element.body);
         return (
-          this.state.commentsId && (
-            <ArticleSection>
-              <ArticleComments>
-                <Element
-                  key={element.contentId}
-                  contentId={this.state.commentsId}
-                  articleId={this.props.articleId}
-                />
-              </ArticleComments>
-            </ArticleSection>
-          )
+          <FelaComponent
+            style={{ marginBottom: '5rem', }}
+            render={({ className, }) => (
+              <ArticleSection className={className}>
+                {headlineElement && (
+                  <HeadlineElement elementObj={headlineElement} />
+                )}
+                <BodyWrapper>
+                  <ArticleBody body={body} />
+                </BodyWrapper>
+              </ArticleSection>
+            )}
+          />
         );
       }
-      if (element.inputTemplate === 'com.polobase.OutbrainElement') {
+      const Element = getComponent(element.inputTemplate);
+      if (
+        element.inputTemplate === 'com.polobase.OutbrainElement' ||
+        element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
+      ) {
         return (
           <ArticleWide>
             <Element
@@ -381,8 +350,6 @@ class Main extends React.Component {
         </ArticleSection>
       );
     });
-
-  updateState = commentsId => console.log('commentsId: ', commentsId);
 
   render() {
     const { articleId, } = this.props;
@@ -443,23 +410,25 @@ class Main extends React.Component {
               </Head>
               <Osaka width={this.state.articleWidth} />
               {this.extractContent(article, client)}
-              <ArticleAside
-                // eslint-disable-next-line no-return-assign
-                innerRef={sideBar => (this.sideBar = sideBar)}
-              >
-                <SideBar height={this.state.articleHeight}>
-                  {aside.map(element => {
-                    const Element = getComponent(element.inputTemplate);
-                    return (
-                      <Element
-                        key={element.contentId}
-                        articleId={this.props.articleId}
-                        {...element}
-                      />
-                    );
-                  })}
-                </SideBar>
-              </ArticleAside>
+              <Media
+                query={{ from: 'l', }}
+                render={() => (
+                  <ArticleAside>
+                    <SideBar>
+                      {aside.map(element => {
+                        const Element = getComponent(element.inputTemplate);
+                        return (
+                          <Element
+                            key={element.contentId}
+                            articleId={this.props.articleId}
+                            {...element}
+                          />
+                        );
+                      })}
+                    </SideBar>
+                  </ArticleAside>
+                )}
+              />
             </ArticleContainer>
           );
         }}

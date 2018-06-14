@@ -7,11 +7,12 @@ import WrappedScroll from '../Scroll/Scroll';
 class SideBar extends React.Component {
   static propTypes = {
     children: PropTypes.arrayOf(PropTypes.node),
-    height: PropTypes.number.isRequired,
+    height: PropTypes.number,
   };
 
   static defaultProps = {
     children: null,
+    height: 0,
   };
 
   state = {
@@ -21,10 +22,6 @@ class SideBar extends React.Component {
   changeView = y => {
     const { children, height, } = this.props;
     const range = height / children.length;
-    console.log('height: ', height);
-    console.log('y: ', y);
-    console.log('range: ', range);
-    console.log('index to show: ', Math.floor(y / range));
     this.state.show !== Math.floor(y / range) &&
       this.setState({
         show: Math.floor(y / range) || 0,
@@ -41,14 +38,18 @@ class SideBar extends React.Component {
           width: '100%',
           top: '12px',
           zIndex: '1',
+          paddingInlineStart: '4rem',
+          paddingInlineEnd: '4rem',
         }}
       >
-        <WrappedScroll
-          render={({ y, }) => {
-            this.changeView(y);
-            return children[show] || children[2];
-          }}
-        />
+        {children && children.length > 0 ? (
+          <WrappedScroll
+            render={({ y, }) =>
+              // this.changeView(y);
+               children[show] || children[0] || <p>Out of range</p>
+            }
+          />
+        ) : null}
       </FelaComponent>
     );
   }

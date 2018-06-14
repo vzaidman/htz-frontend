@@ -13,7 +13,6 @@ const article = Object.freeze({
     { from: 'l', until: 'xl', value: '57rem', },
     { from: 'xl', value: '51rem', },
   ],
-  aside: [ { until: 'l', value: 'none', }, { from: 'l', value: 'block', }, ],
 });
 
 const paragraphLink = Object.freeze({
