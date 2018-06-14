@@ -38,14 +38,17 @@ function buildLibrary() {
       // something dirty like delete the cache entry). Easier to just spawn
       // Node multiple times intead.
       /* eslint-disable no-undef */
-      result = spawn.sync('node', [ script, ].concat(args), { stdio: 'inherit', });
-      if (result.signal) {
-        console.error(result.signal);
-        process.exit(1);
-      }
-      if (result.status) {
-        process.exit(result.status);
-      }
+      child = spawn('node', [ script, ].concat(args), { stdio: 'inherit', });
+
+      child.on('close', code => {
+        if (code !== 0) {
+          console.error(`child process exited with code ${code}`);
+          process.exit(code);
+        }
+        else {
+          process.exit(0);
+        }
+      });
       /* eslint-enable no-undef */
       console.log(); // Blank line between different builds.
     }

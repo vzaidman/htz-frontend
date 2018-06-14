@@ -7,7 +7,7 @@ const path = require('path');
 const spawn = require('cross-spawn');
 
 const testArgs = [ require.resolve('./test'), '--showConfig', ];
-const result = spawn.sync('node', testArgs, { encoding: 'utf8', });
+const result = spawn('node', testArgs, { encoding: 'utf8', });
 if (result.error) {
   throw result.error;
 }
