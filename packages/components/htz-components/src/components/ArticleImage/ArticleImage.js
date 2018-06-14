@@ -126,19 +126,18 @@ const wrapperStyle = ({
   isFullScreen,
 }) => ({
   position: 'relative',
-  ...(!lastItem &&
-    !isHeadline &&
-    parseComponentProp(
+  ...(!lastItem && !isHeadline
+    ? parseComponentProp(
       'marginBottom',
       theme.articleStyle.body.marginBottom,
       theme.mq,
       mediaQueryCallback
-    )),
+    )
+    : []),
   display: 'block',
   width: '100%',
   height: '100%',
   flexShrink: '0',
-  textAlign: 'center',
   ...(isFullScreen
     ? {
       display: 'flex',
@@ -160,13 +159,14 @@ const wrapperStyle = ({
   ),
   extend: [
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-    viewMode === 'OneThirdView' &&
-    !isFullScreen && {
-      float: 'end',
-      marginBottom: '0.75rem',
-      marginStart: '1.5rem',
-      width: 'calc(100%/3)',
-    },
+    viewMode === 'OneThirdView' && !isFullScreen
+      ? {
+        float: 'end',
+        marginBottom: '0.75rem',
+        marginStart: '1.5rem',
+        width: 'calc(100%/3)',
+      }
+      : {},
   ],
 });
 const Wrapper = createComponent(wrapperStyle, 'figure');
@@ -264,7 +264,7 @@ const UnwrappedImage = ({
   >
     <ImageElement {...image} isFullScreen={isFullScreen} />
     {showCaption &&
-    !isFullScreen && <Caption caption={title} credit={credit} />}
+      !isFullScreen && <Caption caption={title} credit={credit} />}
   </Wrapper>
 );
 
