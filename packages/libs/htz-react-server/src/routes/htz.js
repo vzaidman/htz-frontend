@@ -27,7 +27,7 @@ export default function htz(app, server, DEV) {
       req.params[0] = `/${req.params[0]}`;
     }
     const query = {
-      path: req.params[0],
+      path: req.query.preview ? req.query.preview : req.params[0],
     };
     return app.render(req, res, '/article', query);
   });

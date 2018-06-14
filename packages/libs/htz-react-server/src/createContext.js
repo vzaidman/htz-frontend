@@ -31,14 +31,11 @@ export function createLoaders(req) {
   const pageLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(path => {
-        console.log(
-          `pageLoader - papi - loading: ${serviceBase}/papi${
-            path.startsWith('/') ? '' : '/'
-          }${path}`
-        );
-        return fetch(
-          `${serviceBase}/papi${path.startsWith('/') ? '' : '/'}${path}`
-        ).then(response => response.json());
+        const fetchPath = path.includes('preview')
+          ? path
+          : `${serviceBase}/papi${path.startsWith('/') ? '' : '/'}${path}`;
+        console.log(`pageLoader - papi - loading: ${fetchPath}`);
+        return fetch(fetchPath).then(response => response.json());
       })
     )
   );
