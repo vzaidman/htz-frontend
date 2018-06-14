@@ -3,6 +3,7 @@ import path from 'path';
 import express from 'express';
 import querystring from 'querystring';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
+import { getWithDomain, } from '@haaretz/app-utils';
 import Cookies from 'universal-cookie';
 import config from 'config';
 
@@ -20,9 +21,8 @@ export const friendlyRoutes = {
 
 let globalStageToRender = null;
 let isRedirect = false;
-const DEV = process.env.NODE_ENV !== 'production';
-
-console.log('proccess dev from purchase', process.env.NODE_ENV);
+const DEV = process.env.NODE_ENV === 'development';
+console.log(`process.env.NODE_ENV:${process.env.NODE_ENV} from purchase`);
 
 /**
  * A function that fetches data from papi endpoint and determines the first page
@@ -31,11 +31,12 @@ console.log('proccess dev from purchase', process.env.NODE_ENV);
  * @returns {string} a stage to render, one of [ stage1, stage2, thankYou ]
  */
 async function getPageToRender(req) {
-  const isTm = req.hostname.includes('themarker.com');
-  const domain = isTm ? 'themarker.com' : 'haaretz.co.il';
-  const subDomain =
-    process.env.NODE_ENV === 'production' ? 'www' : isTm ? 'tmtest' : 'pre';
-  const protocol = config.get('papiProtocol');
+  // const isTm = req.hostname.includes('themarker.com');
+  // const domain = isTm ? 'themarker.com' : 'haaretz.co.il';
+  // const subDomain =
+  //   process.env.NODE_ENV === 'production' ? 'www' : isTm ? 'tmtest' : 'pre';
+  // const protocol = config.get('papiProtocol');
+  const baseService = getWithDomain(req.hostname, config.get('service.base'));
 
   DEV && console.log('promo from getPageToRender', req.params.promo);
   const promoPath = req.params.promo ? `/${req.params.promo}` : null;
@@ -44,7 +45,9 @@ async function getPageToRender(req) {
   const userId = CookieUtils.stringToMap(cookies.get('tmsso') || '', {
     separator: /:\s?/,
   }).userId;
-  const fetchUrl = `${protocol}://${subDomain}.${domain}/papi${polopolyAppPrefix}${promoPath ||
+  // const fetchUrl = `${protocol}://${subDomain}.${domain}/papi${polopolyAppPrefix}${promoPath ||
+  //   ''}?userId=${userId} `;
+  const fetchUrl = `${baseService}/papi${polopolyAppPrefix}${promoPath ||
     ''}?userId=${userId} `;
   DEV && console.log('path from getPageToRender', fetchUrl);
   try {
@@ -53,7 +56,9 @@ async function getPageToRender(req) {
     const stageToRender =
       Math.floor(pageNumber) === 7
         ? 'thankYou'
-        : Math.floor(pageNumber) === 3 ? 'stage2' : 'stage1';
+        : Math.floor(pageNumber) === 3
+          ? 'stage2'
+          : 'stage1';
     globalStageToRender = stageToRender;
     DEV && console.log('pageNumber from async await', pageNumber);
     DEV && console.log('stageToRender ', stageToRender);
@@ -158,10 +163,7 @@ export default function purchase(app, server) {
 
   // send robots.txt file
   const options = {
-    root: path.join(
-      __dirname,
-      '../../../../../../packages/apps/purchase-page/static'
-    ),
+    root: path.join(`${process.cwd()}/static`),
     headers: {
       'Content-Type': 'text/plain;charset=UTF-8',
     },

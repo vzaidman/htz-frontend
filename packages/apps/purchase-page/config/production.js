@@ -1,29 +1,34 @@
-const os = require('os');
-
-function getLocalExternalIp() {
-  if (process.env.BIND_ADDRESS) {
-    return process.env.BIND_ADDRESS;
-  }
-
-  return Array.prototype.concat
-    .apply([], Object.values(os.networkInterfaces()))
-    .filter(details => details.family === 'IPv4' && !details.internal)
-    .pop().address;
-}
-
-// todo: can also be TheMarker
+/* eslint-disable func-names */
+const defer = require('config/defer').deferConfig;
 
 module.exports = {
-  hostIp: getLocalExternalIp(),
-  //  todo : change hostname
-  hostname: 'www',
-  imgBaseUrl: 'https://images.haarets.co.il/image',
+  service: {
+    base: defer(function () {
+      return `http${this.useSSL ? 's' : ''}://${this.remoteFQDN}`;
+    }),
+    sso: 'https://sso.haaretz.co.il',
+    image: 'https://images.haarets.co.il/image',
+    graphql: defer(function () {
+      return `http${
+        this.graphQLuseSSL ? 's' : ''
+      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
+    }),
+    polopolyImageBaseHref: defer(function () {
+      return `http${
+        this.useSSL ? 's' : ''
+      }://${this.hostname ? `${this.hostname}.` : ''}${this.domain}${this.port ? `:${this.port}` : ''}`;
+    }),
+  },
+  appFQDN: defer(function () {
+    return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
+  }),
+  remoteFQDN: defer(function () {
+    return `www.${this.domain}`;
+  }),
+  useSSL: true,
+  graphQLuseSSL: false,
+  graphQLexposedPort: false,
   domain: 'haaretz.co.il',
-  baseHref: 'https://www.haaretz.co.il',
+  hostname: process.env.HOSTNAME,
   port: process.env.PORT || '2004',
-  graphqlSubdomain: 'promotions',
-  graphqlProtocol: 'https',
-  papiSubDomain: 'www',
-  papiProtocol: 'https',
-  ssoSubDomain: 'sso',
 };

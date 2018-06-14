@@ -1,23 +1,30 @@
-const os = require('os');
-
-function getLocalExternalIp() {
-  return Array.prototype.concat
-    .apply([], Object.values(os.networkInterfaces()))
-    .filter(details => details.family === 'IPv4' && !details.internal)
-    .pop().address;
-}
+/* eslint-disable func-names */
+const defer = require('config/defer').deferConfig;
 
 module.exports = {
-  hostIp: getLocalExternalIp(),
-  hostname: process.env.HOSTNAME,
-  imgBaseUrl: 'https://images.haarets.co.il/image',
+  service: {
+    base: defer(function () {
+      return `http${this.useSSL ? 's' : ''}://${this.appFQDN}`;
+    }),
+    sso: 'https://devsso.haaretz.co.il',
+    image: 'http://res.cloudinary.com/kfirlevy/image',
+    graphql: defer(function () {
+      return `http${
+        this.useSSL ? 's' : ''
+      }://${this.appFQDN}${this.port ? `:${this.port}` : ''}/graphql`;
+    }),
+    polopolyImageBaseHref: defer(function () {
+      return `http${
+        this.useSSL ? 's' : ''
+      }://${this.hostname ? `${this.hostname}.` : ''}${this.domain}${this.port ? `:${this.port}` : ''}`;
+    }),
+  },
+  appFQDN: defer(function () {
+    return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
+  }),
+  useSSL: false,
   domain: 'haaretz.co.il',
-  port: '3000',
-  graphqlSubdomain: '',
-  graphqlProtocol: 'http',
-  papiSubDomain: 'elia',
-  papiProtocol: 'http',
-  ssoSubDomain: 'devsso',
-  paymentSubDomain: 'dev-',
-  baseHref: 'https://www.haaretz.co.il',
+  hostname: process.env.HOSTNAME,
+  port: process.env.PORT || '3000',
+  // baseHref: 'https://www.haaretz.co.il',
 };
