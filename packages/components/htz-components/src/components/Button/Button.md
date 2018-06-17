@@ -15,7 +15,7 @@ Buttons' variant is set using the `variant` prop, which defaults to 'primary'.
 Each button variant sets the text and border and background color of a button.
 
 ```jsx static
-<Button variant='positive'>click me</Button>
+<Button variant="positive">click me</Button>
 ```
 
 It is possible to set different variants for different breakpoints:
@@ -23,10 +23,9 @@ It is possible to set different variants for different breakpoints:
 ```jsx static
 <Button
   variant={[
-    { until: 's', value: 'primary', },
-    { from: 's', value: 'primaryOpaque', },
-  ]}
->
+    { until: 's', value: 'primary' },
+    { from: 's', value: 'primaryOpaque' },
+  ]}>
   Will be "primary" until "s", and "primaryOpaque" from "s"
 </Button>
 ```
@@ -60,6 +59,39 @@ for actionable element with no specific semantic meaning.
   <Button variant="primary" isFlat>
     flat primary
   </Button>
+</div>
+```
+
+The `secondary` and `secondaryOpaque` are stylistic variants similar to `primary`, in that they carry no semantic meaning and are not meant to convey a specific message to the user. They are to be used in situations where the using the `primary` variant would create visual discord.
+
+```jsx
+<div>
+  <Button variant="secondary">secondary</Button>{' '}
+  <Button variant="secondaryOpaque">secondaryOpaque</Button>{' '}
+  <Button variant="secondary" isFlat>
+    flat secondary
+  </Button>
+</div>
+```
+
+The `inverse` and `inverseOpaque` are stylistic variants that carry no semantic meaning and are not meant to convey a specific message to the user. They are to be used on dark backgrounds, when `primary` is not suitable.
+
+```jsx
+<div>
+  <div style={{ padding: '12px', background: '#222' }}>
+    <Button variant="inverse">inverse</Button>{' '}
+    <Button variant="inverseOpaque">inverseOpaque</Button>{' '}
+    <Button variant="inverse" isFlat>
+      flat inverse
+    </Button>
+  </div>
+  <div style={{ padding: '12px', background: '#00537a' }}>
+    <Button variant="inverse">inverse</Button>{' '}
+    <Button variant="inverseOpaque">inverseOpaque</Button>{' '}
+    <Button variant="inverse" isFlat>
+      flat inverse
+    </Button>
+  </div>
 </div>
 ```
 
@@ -164,11 +196,7 @@ number representing a step in the pre-configured typographic scale.
 Different font-sizes can be assigned in different breakpoints:
 
 ```jsx static
-<Button fontSize={[
-    { until: 's', value: 3, },
-    { from: 's', value: 4, },
-  ]}
->
+<Button fontSize={[{ until: 's', value: 3 }, { from: 's', value: 4 }]}>
   Gets even bigger after "s"
 </Button>
 ```
@@ -206,7 +234,9 @@ using the `isFull` prop:
 It is also possible to make a button full-width only on select breakpoints
 
 ```jsx static
-<Button isFull={[{ from: 'xl', value: true, }]}>I'm full-width in xl breakpoints</Button>
+<Button isFull={[{ from: 'xl', value: true }]}>
+  I'm full-width in xl breakpoints
+</Button>
 ```
 
 ### **Radius**
@@ -298,7 +328,9 @@ Miscellaneous styles can be set differently for different breakpoints
 A click handler can be attached using the `onClick` prop
 
 ```jsx static
-<Button onClick={evt => alert(`${evt.target.tagName} was clicked`)}>Click!</Button>
+<Button onClick={evt => alert(`${evt.target.tagName} was clicked`)}>
+  Click!
+</Button>
 ```
 
 ### **Button Type**
@@ -309,9 +341,7 @@ in `reset` button.
 
 ```jsx static
 <form>
-  <Button isSubmit>Submit</Button>
-  {' '}
-  <Button isReset>reset</Button>
+  <Button isSubmit>Submit</Button> <Button isReset>reset</Button>
 </form>
 ```
 
@@ -324,8 +354,7 @@ Additional attributes can be set on the DOM element using the `attrs` prop
   attrs={{
     'aria-label': 'A button with custom attributes',
     'aria-describedby': 'someDomElement',
-  }}
->
+  }}>
   Click me!
 </Button>
 ```

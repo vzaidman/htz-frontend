@@ -175,7 +175,7 @@ class Footer extends React.Component {
                             ))}
                           </StyledUlLinks>
                           <ButtonFooter
-                            variant="secondary"
+                            variant="inverse"
                             boxModel={{ hp: 4, vp: 1, }}
                             onClick={() => this.handleClick()}
                             attrs={{

@@ -45,6 +45,34 @@ const colors = {
     primaryOpaqueHoverBorder: 'transparent',
     primaryOpaqueHoverText: 'white',
 
+    // Secondary
+    secondaryBg: 'white',
+    secondaryBorder: [ 'button', 'secondaryText', ],
+    secondaryText: [ 'secondary', 'base', ],
+    secondaryActiveBg: '#fff !important',
+    secondaryActiveBorder: [ 'button', 'secondaryText', ],
+    secondaryActiveText: [ 'secondary', 'base', ],
+    secondaryFocusBg: [ 'secondary', 'base', ],
+    secondaryFocusBorder: [ 'button', 'secondaryFocusBg', ],
+    secondaryFocusText: 'white',
+    secondaryHoverBg: [ 'primary', '-6', ],
+    secondaryHoverBorder: [ 'button', 'secondaryHoverText', ],
+    secondaryHoverText: [ 'secondary', '+1', ],
+
+    // Secondary Opaque
+    secondaryOpaqueBg: [ 'secondary', 'base', ],
+    secondaryOpaqueBorder: 'transparent',
+    secondaryOpaqueText: 'white',
+    secondaryOpaqueActiveBg: [ 'secondary', '+1', ],
+    secondaryOpaqueActiveBorder: 'transparent',
+    secondaryOpaqueActiveText: 'white',
+    secondaryOpaqueFocusBg: [ 'secondary', '+1', ],
+    secondaryOpaqueFocusBorder: 'transparent',
+    secondaryOpaqueFocusText: 'rgb(255,255,254)',
+    secondaryOpaqueHoverBg: [ 'secondary', '+1', ],
+    secondaryOpaqueHoverBorder: 'transparent',
+    secondaryOpaqueHoverText: 'white',
+
     // Neutral
     neutralBg: 'transparent',
     neutralBorder: [ 'button', 'neutralText', ],
@@ -129,20 +157,33 @@ const colors = {
     positiveOpaqueHoverBorder: 'transparent',
     positiveOpaqueHoverText: [ 'neutral', 'base', ],
 
-    // Secondary
-    secondaryBg: [ 'secondary', 'base', ],
-    secondaryBorder: 'white',
-    secondaryText: 'white',
-    // todo: ask max about these colors
-    secondaryActiveBg: [ 'secondary', '+1', ],
-    secondaryActiveBorder: 'white',
-    secondaryActiveText: 'white',
-    secondaryFocusBg: [ 'secondary', '+2', ],
-    secondaryFocusBorder: 'white',
-    secondaryFocusText: 'white',
-    secondaryHoverBg: [ 'secondary', '+1', ],
-    secondaryHoverBorder: 'white',
-    secondaryHoverText: 'white',
+    // Inverse
+    inverseBg: 'transparent',
+    inverseBorder: 'white',
+    inverseText: 'white',
+    inverseActiveBg: 'transparent',
+    inverseActiveBorder: 'white',
+    inverseActiveText: 'white',
+    inverseFocusBg: 'rgba(255,255,255,0.1)',
+    inverseFocusBorder: 'white',
+    inverseFocusText: 'white',
+    inverseHoverBg: 'rgba(255,255,255,0.2)',
+    inverseHoverBorder: 'white',
+    inverseHoverText: 'white',
+
+    // Inverse Opaque
+    inverseOpaqueBg: 'white',
+    inverseOpaqueBorder: 'white',
+    inverseOpaqueText: [ 'primary', 'base', ],
+    inverseOpaqueActiveBg: 'white',
+    inverseOpaqueActiveBorder: 'white',
+    inverseOpaqueActiveText: [ 'primary', 'base', ],
+    inverseOpaqueFocusBg: 'rgba(255,255,255,0.9)',
+    inverseOpaqueFocusBorder: 'white',
+    inverseOpaqueFocusText: [ 'primary', 'base', ],
+    inverseOpaqueHoverBg: 'rgba(255,255,255,0.8)',
+    inverseOpaqueHoverBorder: 'white',
+    inverseOpaqueHoverText: [ 'primary', 'base', ],
 
     // Facebook
     facebookBg: 'white',

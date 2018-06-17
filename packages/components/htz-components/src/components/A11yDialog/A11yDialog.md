@@ -13,11 +13,11 @@ be customizable enough to cover all use cases in the UI system, like : a11y, foc
 
 #### **used props**
 
-* `appendTo` - Set portal `<div>` id to `dialog-example-1`. | **required**
-* `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-dialog-1`. | **required**
-* `isVisible` - Determine dialog mode(opend/closed), accept `true` or `false` usually passing the state of user's custom component.
-* `closeOnOutsideClick` - Close dialog when clicked outside dialog inner content.
-* `overlayBgColor` - Set overlay background color `"rgba(0, 0, 0, 0.5)"`
+- `appendTo` - Set portal `<div>` id to `dialog-example-1`. | **required**
+- `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-dialog-1`. | **required**
+- `isVisible` - Determine dialog mode(opend/closed), accept `true` or `false` usually passing the state of user's custom component.
+- `closeOnOutsideClick` - Close dialog when clicked outside dialog inner content.
+- `overlayBgColor` - Set overlay background color `"rgba(0, 0, 0, 0.5)"`
 
 ```jsx
 const FelaComponent = require('react-fela').FelaComponent;
@@ -65,7 +65,7 @@ class DialogWithStateExample extends React.Component {
                       <div>
                         <Button
                           onClick={handleClose}
-                          variant="secondary"
+                          variant="secondaryOpaque"
                           miscStyles={{ margin: '10px 0px' }}>
                           Button
                         </Button>
@@ -92,14 +92,14 @@ class DialogWithStateExample extends React.Component {
 
 #### **used props**
 
-* `appendTo` - Set portal `div` id to `modal-example-1`. | **required**
-* `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-modal-1`. | **required**
-* `toggleRefs` - Set open and close buttons as id string refs.
-* `onOpen` - Trigger `console.warn` function (or any user callback function) when modal is opened.
-* `onClose` - Trigger `console.warn` function (or any user callback function) when modal is closed.
-* `overlayBgColor` - Set overlay background color to `lightyellow`.
-* `closeOnOutsideClick` - Close modal when clicked outside modal inner content.
-* `isModal`- To determine `modal` mode.
+- `appendTo` - Set portal `div` id to `modal-example-1`. | **required**
+- `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-modal-1`. | **required**
+- `toggleRefs` - Set open and close buttons as id string refs.
+- `onOpen` - Trigger `console.warn` function (or any user callback function) when modal is opened.
+- `onClose` - Trigger `console.warn` function (or any user callback function) when modal is closed.
+- `overlayBgColor` - Set overlay background color to `lightyellow`.
+- `closeOnOutsideClick` - Close modal when clicked outside modal inner content.
+- `isModal`- To determine `modal` mode.
 
 ```jsx
 const FelaComponent = require('react-fela').FelaComponent;
@@ -119,7 +119,7 @@ function ModalExampleWithToggleRefs() {
           open
         </Button>
         <div style={{ top: '50%', position: 'relative' }}>
-          <Button id="additionalOpenRef" variant="secondary">
+          <Button id="additionalOpenRef" variant="secondaryOpaque">
             additionalOpenRef
           </Button>
         </div>
@@ -168,9 +168,9 @@ function ModalExampleWithToggleRefs() {
 
 ### **2. Usage with toggle refs: (Dialog)**
 
-* `appendTo` - Set portal `div` id to `dialog-example-2`. | **required**
-* `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-dialog-2`. | **required**
-* `toggleRefs` - Set toggle buttons (as id string refs) to close/open dialog.
+- `appendTo` - Set portal `div` id to `dialog-example-2`. | **required**
+- `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-dialog-2`. | **required**
+- `toggleRefs` - Set toggle buttons (as id string refs) to close/open dialog.
 
 ```jsx
 const FelaComponent = require('react-fela').FelaComponent;
@@ -191,7 +191,7 @@ function DialogExampleWithToggleRefs() {
         }}
         id="hide-dialog-2">
         <div style={{ top: '42%', position: 'relative' }}>
-          <Button id="Dialog-2-ToggleRef" variant="secondary">
+          <Button id="Dialog-2-ToggleRef" variant="secondaryOpaque">
             Open/Toggle
           </Button>
         </div>
@@ -229,7 +229,7 @@ function DialogExampleWithToggleRefs() {
         />
         <div id="dialog-example-2" />
       </div>
-      <Button variant="secondary" id="Dialog-3-ToggleRef">
+      <Button variant="secondaryOpaque" id="Dialog-3-ToggleRef">
         Toggle
       </Button>
     </div>

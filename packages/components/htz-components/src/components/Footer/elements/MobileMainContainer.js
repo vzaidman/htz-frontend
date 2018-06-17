@@ -91,7 +91,7 @@ const MobileView = ({
       </StyledLinkBox>
     </StyledMobileMainList>
     <Button
-      variant="secondary"
+      variant="inverse"
       boxModel={{ hp: 5, vp: 1, }}
       // Link not work correctly in inspect (browser's smart phone mode). However, Its working on smart phone.
       href="https://www.haaretz.co.il/st/inter/shivuk-digital/hebrew/mtm/haaretzapp.html"
