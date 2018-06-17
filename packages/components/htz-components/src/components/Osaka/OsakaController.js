@@ -1,30 +1,16 @@
 /* globals OBR */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, withTheme, } from 'react-fela';
-import { graphql, compose, } from 'react-apollo';
+import { createComponent, } from 'react-fela';
+import { Query, } from 'react-apollo';
 
 import { appendScript, } from '../../utils/scriptTools';
 import ListQuery from './queries/fetchList';
-import mediaMatchesQuery from '../../utils/mediaMatchesQuery';
+import Media from '../Media/Media';
 import Osaka from './Osaka';
 import WrappedScroll from '../Scroll/Scroll';
 
 const propTypes = {
-  /**
-   * Passed implicitly by Apollo, not directly as an attribute on the component
-   */
-  data: PropTypes.shape({
-    /** Indicates data loading state */
-    loading: PropTypes.bool,
-    /** Indicates data error state */
-    error: PropTypes.bool,
-    list: PropTypes.object,
-  }).isRequired,
-  /**
-   * The app's theme (get imported automatically with the `withTheme` method).
-   */
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   /**
    * The scroll speed and direction (Y axis), as brought to us by: [`Scroll`](./#scroll)
    */
@@ -54,12 +40,10 @@ const Wrapper = createComponent(wrapperStyle);
 class OsakaWrapper extends React.Component {
   state = {
     display: false,
-    breakPoint: null,
     articles: null,
   };
 
   componentDidMount() {
-    this.setBreakPoint();
     appendScript({
       src: '//widgets.outbrain.com/outbrain.js',
       id: 'outbrain-widget',
@@ -68,26 +52,19 @@ class OsakaWrapper extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const breakPointChange = nextState.breakPoint !== this.state.breakPoint;
     const articlesChange = nextState.articles !== this.state.articles;
-    const apolloChange = nextProps.data.loading !== this.props.data.loading;
     const scrollChange =
       // prettier-ignore
       (nextProps.velocity > 0) !== this.state.display;
-    return articlesChange || breakPointChange || apolloChange || scrollChange;
+    return articlesChange || scrollChange;
   }
 
   componentWillUpdate(nextProps, nextState) {
     // eslint-disable-next-line react/no-will-update-set-state
     this.setState({ display: nextProps.velocity > 0, });
-
-    !this.props.data.loading &&
-      !this.state.articles &&
-      typeof OBR !== 'undefined' &&
-      this.getArticles();
   }
 
-  getArticles = () => {
+  getArticles = promoted => {
     OBR &&
       OBR.extern.callRecs(
         {
@@ -98,7 +75,6 @@ class OsakaWrapper extends React.Component {
         },
         json => {
           const articles = json.doc;
-          const promoted = this.props.data.list.items;
           this.setState({
             articles: {
               local: [
@@ -130,43 +106,39 @@ class OsakaWrapper extends React.Component {
               ],
             },
           });
-          // eslint-disable-next-line no-undef
-          window.addEventListener('resize', evt => this.setBreakPoint());
         }
       );
   };
 
-  setBreakPoint = () => {
-    this.setState({
-      // eslint-disable-next-line react/prop-types
-      breakPoint: mediaMatchesQuery(this.props.theme.bps, {
-        queries: [
-          { until: 'm', value: null, },
-          { until: 'l', value: 'm', },
-          { until: 'xl', value: 'l', },
-          { from: 'xl', value: 'xl', },
-        ],
-      }),
-    });
-  };
-
   render() {
-    if (this.props.data.loading) {
-      return <div>loading ...</div>;
-    }
-    if (this.props.data.error) {
-      return <h1>ERROR</h1>;
-    }
-    return this.state.breakPoint && this.state.articles ? (
-      <Wrapper shouldDisplay={this.state.display} width={this.props.width}>
-        <Osaka
-          nextArticleUrl="2.351"
-          sectionName="חדשות"
-          bp={this.state.breakPoint}
-          lists={{ ...this.state.articles, }}
-        />
-      </Wrapper>
-    ) : null;
+    return (
+      <Media
+        query={{ from: 'l', }}
+        render={() => (
+          <Query query={ListQuery} variables={{ path: '7.7473', }}>
+            {({ loading, error, data, }) => {
+              if (loading) return <p>loading...</p>;
+              if (error) return null;
+              !this.state.articles &&
+                typeof OBR !== 'undefined' &&
+                this.getArticles(data.list.items);
+              return this.state.articles ? (
+                <Wrapper
+                  shouldDisplay={this.state.display}
+                  width={this.props.width}
+                >
+                  <Osaka
+                    nextArticleUrl="2.351"
+                    sectionName="חדשות"
+                    lists={{ ...this.state.articles, }}
+                  />
+                </Wrapper>
+              ) : null;
+            }}
+          </Query>
+        )}
+      />
+    );
   }
 }
 
@@ -175,23 +147,13 @@ OsakaWrapper.defaultProps = defaultProps;
 
 // eslint-disable-next-line react/prop-types
 function OsakaController({ data, width, }) {
-  const StyledOsaka = withTheme(OsakaWrapper);
   return (
     <WrappedScroll
       render={({ velocity, }) => (
-        <StyledOsaka width={width} data={data} velocity={velocity} />
+        <OsakaWrapper width={width} data={data} velocity={velocity} />
       )}
     />
   );
 }
 
-export default compose(
-  graphql(ListQuery, {
-    options: props => ({
-      variables: { path: '7.7473', },
-    }),
-    props: props => ({
-      data: props.data,
-    }),
-  })
-)(OsakaController);
+export default OsakaController;
