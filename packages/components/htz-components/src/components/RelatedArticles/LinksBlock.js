@@ -24,7 +24,7 @@ const propTypes = {
       /**
        * Article title to display.
        */
-      contentName: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       /**
        * Article's destination.
        */
@@ -97,7 +97,9 @@ function LinksBlock({ seriesTitle, articles, marginBottom, }) {
       style={{ ...(marginBottom || []), }}
       render={({
         className,
-        theme: { seriesArticleI18n: { titlePrefix, }, },
+        theme: {
+          seriesArticleI18n: { titlePrefix, },
+        },
       }) => (
         <div className={className}>
           <SeriesTitle>{titlePrefix + seriesTitle}</SeriesTitle>
@@ -105,7 +107,7 @@ function LinksBlock({ seriesTitle, articles, marginBottom, }) {
             {({ data: { articleId, }, }) =>
               articles.map(
                 (article, i) =>
-                  articleId === article.contentId && (
+                  articleId !== article.contentId && (
                     <ArticleWrapper
                       key={i} // eslint-disable-line react/no-array-index-key
                       lastItem={i === articles.length - 1}
