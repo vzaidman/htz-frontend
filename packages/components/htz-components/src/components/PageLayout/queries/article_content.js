@@ -1,38 +1,25 @@
 import gql from 'graphql-tag';
+import {
+  articleHeader,
+  embed,
+  htmlElement,
+  image,
+  imageGallery,
+  interactive,
+  paragraph,
+  quote,
+  relatedArticles,
+  seoData,
+  seriesOrBlockArticles,
+  tags,
+  video,
+} from '@haaretz/app-utils';
 
 export default gql`
   query ArticleContent($path: String!) {
     page(path: $path) {
       pageType
-      breadcrumbs: lineage {
-        pathSegment
-        contentId
-        name
-        url
-      }
-      seoData {
-        metaTitle
-        metaDescription
-        metaKeywords
-        canonicalUrl
-        ogTitle
-        ogImage {
-          viewMode
-          accessibility
-          title
-          credit
-          aspects
-          isAnimated
-          contentId
-          imgArray {
-            imgName
-            version
-          }
-          imageType
-          contentName
-        }
-        ogDescription
-      }
+      ...PageSeoData
       slots {
         ... on StandardArticleSlots {
           aside
@@ -43,205 +30,44 @@ export default gql`
               contentName
             }
             ... on ArticleHeader {
-              contentId
-              contentName
-              inputTemplate
-              data {
-                authors {
-                  ... on CreditObject {
-                    name
-                  }
-                  ... on AuthorObject {
-                    image {
-                      viewMode
-                      accessibility
-                      title
-                      credit
-                      aspects
-                      isAnimated
-                      contentId
-                      imgArray {
-                        imgName
-                        version
-                      }
-                      imageType
-                      contentName
-                    }
-                    contentId
-                    contentName
-                    authorType
-                    email
-                    facebook
-                    gplus
-                    hasEmailAlerts
-                    hasPushAlerts
-                    inputTemplate
-                    twitter
-                    url
-                  }
-                }
-                image {
-                  viewMode
-                  accessibility
-                  title
-                  credit
-                  aspects
-                  isAnimated
-                  contentId
-                  imgArray {
-                    imgName
-                    version
-                  }
-                  imageType
-                  contentName
-                }
-                exclusive
-                mobileExclusive
-                mobileSubtitle
-                mobileTitle
-                modDate
-                pubDate
-                reportingFrom
-                subtitle
-                title
-              }
+              ...ArticleHeader
             }
             ... on ArticleData {
               inputTemplate
               commentsElementId
               body {
                 ... on Embed {
-                  input: content
-                  caption
-                  credit
-                  embedType
-                  elementType
-                  contentId
-                  contentName
-                  inputTemplate
-                  settings
+                  ...Embed
                 }
                 ... on HtmlElement {
-                  code
-                  hideOnSite
-                  contentId
-                  contentName
-                  inputTemplate
+                  ...HtmlElement
                 }
                 ... on Image {
-                  inputTemplate
-                  viewMode
-                  accessibility
-                  title
-                  credit
-                  aspects
-                  isAnimated
-                  contentId
-                  imgArray {
-                    imgName
-                    version
-                  }
-                  imageType
-                  contentName
+                  ...Image
                 }
                 ... on ImageGallery {
-                  images {
-                    viewMode
-                    accessibility
-                    title
-                    credit
-                    aspects
-                    isAnimated
-                    contentId
-                    imgArray {
-                      imgName
-                      version
-                    }
-                    imageType
-                    contentName
-                  }
-                  accessibility
-                  name
-                  showTitle
-                  contentId
-                  contentName
-                  inputTemplate
+                  ...ImageGallery
                 }
                 ... on Interactive {
-                  elementType
-                  contentId
-                  contentName
-                  inputTemplate
-                  properties
+                  ...Interactive
                 }
                 ... on Paragraph {
-                  attributes {
-                    key
-                    value
-                  }
-                  tag
-                  content
+                  ...Paragraph
                 }
                 ... on RelatedArticles {
-                  elementType
-                  articles {
-                    title
-                    path
-                  }
+                  ...RelatedArticles
                 }
-                ... on seriesOrBlockArticles {
-                  elementType
-                  seriesTitle
-                  itemsPerPage
-                  usePagination
-                  sort
-                  contentId
-                  contentName
-                  inputTemplate
-                  articles {
-                    title
-                    path
-                  }
+                ... on SeriesOrBlockArticles {
+                  ...SeriesOrBlockArticles
                 }
                 ... on Quote {
-                  text
-                  credit
-                  afterParagraph
-                  imagesList {
-                    viewMode
-                    accessibility
-                    title
-                    credit
-                    aspects
-                    isAnimated
-                    contentId
-                    imgArray {
-                      imgName
-                      version
-                    }
-                    imageType
-                    contentName
-                  }
-                  contentId
-                  contentName
-                  inputTemplate
+                  ...Quote
                 }
                 ... on Tags {
-                  elementType
-                  tagsList {
-                    url
-                    inputTemplate
-                    contentName
-                    contentId
-                  }
+                  ...Tags
                 }
                 ... on Video {
-                  videoType
-                  title
-                  credit
-                  contentId
-                  videoContent
-                  inputTemplate
+                  ...Video
                 }
               }
             }
@@ -250,4 +76,17 @@ export default gql`
       }
     }
   }
+  ${articleHeader}
+  ${embed}
+  ${htmlElement}
+  ${image}
+  ${imageGallery}
+  ${interactive}
+  ${paragraph}
+  ${quote}
+  ${relatedArticles}
+  ${seoData}
+  ${seriesOrBlockArticles}
+  ${tags}
+  ${video}
 `;

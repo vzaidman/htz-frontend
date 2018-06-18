@@ -10,7 +10,7 @@ import {
 import article from './teaser_in_list_type';
 
 const seriesOrBlockArticlesType = new GraphQLObjectType({
-  name: 'seriesOrBlockArticles',
+  name: 'SeriesOrBlockArticles',
   fields: () => ({
     articles: { type: new GraphQLList(article), },
     seriesTitle: { type: GraphQLString, },

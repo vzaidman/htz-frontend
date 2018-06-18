@@ -29,7 +29,25 @@ let apolloClient = null;
 const customFragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData: {
     __schema: {
-      types: [], // no types provided
+      types: [
+        `{
+          kind: 'UNION',
+          name: 'ArticleBody',
+          possibleTypes: {
+            Embed,
+            HtmlElement,
+            Image,
+            ImageGallery,
+            Interactive,
+            Paragraph,
+            RelatedArticles,
+            SeriesOrBlockArticles,
+            Quote,
+            Tags,
+            Video,
+          },
+        }`,
+      ], // no types provided
     },
   },
 });

@@ -248,7 +248,7 @@
         "packages/apps/*": [
           "dependencies"
         ],
-        "packages/components/htz-components": [
+        "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
           "peerDependencies"
         ]

@@ -1,14 +1,10 @@
 import gql from 'graphql-tag';
+import { breadcrumbs, } from '@haaretz/app-utils';
 
 export default gql`
   query PageLayout($path: String!) {
     page(path: $path) {
-      lineage {
-        pathSegment
-        contentId
-        name
-        url
-      }
+      ...PageBreadcrumbs
       slots {
         ... on StandardArticleSlots {
           preHeader
@@ -34,4 +30,5 @@ export default gql`
       }
     }
   }
+  ${breadcrumbs}
 `;

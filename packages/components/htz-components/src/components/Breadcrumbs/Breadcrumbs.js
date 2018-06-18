@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
 import { Query, } from 'react-apollo';
+import { breadcrumbs, } from '@haaretz/app-utils';
 
 import Link from '../Link/Link';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
@@ -14,14 +15,10 @@ const propTypes = {
 const GET_BREADCRUMBS = gql`
   query Breadcrumbs($path: String!) {
     page(path: $path) {
-      lineage {
-        pathSegment
-        contentId
-        name
-        url
-      }
+      ...PageBreadcrumbs
     }
   }
+  ${breadcrumbs}
 `;
 
 function Breadcrumbs({ articleId, }) {
