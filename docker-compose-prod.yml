@@ -1,0 +1,13 @@
+version: "3.3"
+services:
+  htz_react:
+    build: .
+    image: "docker.themarker.com:8083/htz_promotions:${version:-latest}"
+    ports:
+      - 2000:2000
+    environment:
+      - NODE_ENV=production
+      # the following environment is optional
+      - PORT=2002
+      - BIND_ADDRESS=172.21.1.231
+      - HOSTNAME=www
