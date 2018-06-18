@@ -22,6 +22,7 @@ const appendedScripts = {};
 export const appendScript = ({
   src,
   id,
+  innerHtml = null,
   isAsync = false,
   onLoadFunction = null,
   updateFunction = null,
@@ -30,9 +31,10 @@ export const appendScript = ({
   if (!appendedScripts[id]) {
     const script = document.createElement('script');
 
-    script.src = src;
+    if (src) script.src = src;
     script.async = isAsync;
     script.id = id;
+    if (innerHtml) script.innerHTML = innerHtml;
 
     if (attributes) {
       Object.keys(attributes).map(attribute =>
