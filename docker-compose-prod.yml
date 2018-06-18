@@ -8,6 +8,6 @@ services:
     environment:
       - NODE_ENV=production
       # the following environment is optional
-      - PORT=2002
+      - PORT=2000
       - BIND_ADDRESS=172.21.1.231
       - HOSTNAME=www
