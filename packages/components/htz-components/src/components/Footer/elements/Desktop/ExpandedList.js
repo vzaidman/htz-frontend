@@ -5,10 +5,15 @@ import { borderBottom, } from '@haaretz/htz-css-tools';
 import Link from '../../../Link/Link';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
+import H from '../../../AutoLevels/H';
 import { ColumnTypes, PairTypes, } from './DesktopElementPropTypes';
+import Section from '../../../AutoLevels/Section';
 
 const extendedListContainerStyle = ({
-  theme: { color, footerBorderStyle: { borderWidth, lines, borderStyle, }, },
+  theme: {
+    color,
+    footerBorderStyle: { borderWidth, lines, borderStyle, },
+  },
   showMe,
 }) => ({
   display: showMe ? 'flex' : 'none',
@@ -26,13 +31,13 @@ const listUlStyle = ({ theme, }) => ({
   marginBottom: '2rem',
 });
 
-const StyledSection = createComponent(listUlStyle, 'section');
+const StyledSection = createComponent(listUlStyle, Section);
 
 const titleLiStyle = ({ theme, }) => ({
   fontWeight: 'bold',
 });
 
-const StyledUlTitle = createComponent(titleLiStyle, 'h4');
+const StyledUlTitle = createComponent(titleLiStyle, H);
 
 const listLinkStyle = ({ theme, isLast, isBold = false, }) => ({
   ...(isBold ? { fontWeight: 'bold', } : {}),

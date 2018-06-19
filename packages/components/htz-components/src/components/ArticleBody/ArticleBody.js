@@ -5,6 +5,7 @@ import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
 import ArticleImage from '../ArticleImage/ArticleImage';
 import Caption from '../Caption/Caption';
+import Section from '../AutoLevels/Section';
 
 const propTypes = {
   /**
@@ -66,7 +67,7 @@ const bodyWrapperStyle = ({ theme, }) => ({
   position: 'relative',
 });
 
-const BodyWrapper = createComponent(bodyWrapperStyle, 'section');
+const BodyWrapper = createComponent(bodyWrapperStyle, Section);
 
 const buildComponent = (context, index, isLastItem) => {
   const uniqueId =

@@ -17,13 +17,13 @@ Section.defaultProps = {
   tagName: 'section',
 };
 
-function Section({ children, isFragment, tagName, }) {
+function Section({ children, isFragment, tagName, ...props }) {
   const Tag = isFragment ? Fragment : tagName;
   return (
     <LevelConsumer>
       {level => (
         <LevelProvider value={level + 1}>
-          <Tag>{children}</Tag>
+          <Tag {...props}>{children}</Tag>
         </LevelProvider>
       )}
     </LevelConsumer>

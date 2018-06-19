@@ -12,6 +12,7 @@ import {
   Form,
   Grid,
   GridItem,
+  H,
   TextInput,
   Login,
   Register,
@@ -96,7 +97,12 @@ class LoginOrRegisterStage extends React.Component {
                 render={({ checkEmailExists, }) => (
                   <FelaComponent
                     style={{ textAlign: 'center', }}
-                    render={({ theme: { stage3: { form, }, }, className, }) => (
+                    render={({
+                      theme: {
+                        stage3: { form, },
+                      },
+                      className,
+                    }) => (
                       <div className={className}>
                         <ResetPasswordModal
                           email={email}
@@ -145,10 +151,12 @@ class LoginOrRegisterStage extends React.Component {
                                         style={theme => ({
                                           extend: [ theme.type(2), ],
                                         })}
-                                        render="h4"
-                                      >
-                                        {form.registerHeader.header}
-                                      </FelaComponent>
+                                        render={({ className, }) => (
+                                          <H className={className}>
+                                            {form.registerHeader.header}
+                                          </H>
+                                        )}
+                                      />
                                       <FelaComponent
                                         style={theme => ({
                                           color: theme.color(

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect, } from 'react-fela';
 import dynamic from 'next/dynamic';
-import { AdSlot, Newsletter, } from '@haaretz/htz-components';
+import { AdSlot, Newsletter, H, } from '@haaretz/htz-components';
 
 import Comments from '../Comments/Comments';
 // const CommentsElement = dynamic(import ('../Comments/Comments'));
@@ -118,7 +118,7 @@ export function Slot({ name, content, styles, pageContentId, }) {
   // Placeholder output, useful for debugging.
   return (
     <div className={styles.container}>
-      <h2>Slot: {name}</h2>
+      <H>Slot: {name}</H>
       {content.map((element, i) => mapper(element, i))}
     </div>
   );

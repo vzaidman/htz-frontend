@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import { A11yDialog, Button, IconClose, } from '@haaretz/htz-components';
+import { A11yDialog, Button, IconClose, H, } from '@haaretz/htz-components';
 import WelcomeCartoon from './WelcomeCartoon';
 
 const propTypes = {
@@ -112,17 +112,20 @@ const WelcomePage = ({ shouldRender, }) => {
                         theme.type(3, { untilBp: 'm', }),
                       ],
                     }}
-                    render="h2"
-                  >
-                    <FelaComponent
-                      style={{
-                        color: theme.color('primary', '-2'),
-                      }}
-                    >
-                      {headerHighLighted}
-                    </FelaComponent>
-                    <div>{headerNormal}</div>
-                  </FelaComponent>
+                    render={({ className, }) => (
+                      <H className={className}>
+                        <FelaComponent
+                          style={{
+                            color: theme.color('primary', '-2'),
+                          }}
+                        >
+                          {headerHighLighted}
+                        </FelaComponent>
+                        <div>{headerNormal}</div>
+                      </H>
+                    )}
+                  />
+
                   <FelaComponent
                     style={{
                       listStyleType: 'disc',

@@ -6,6 +6,7 @@ import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { responsivePropBaseType, } from '../../../propTypes/responsivePropBaseType';
 import { newsletterVariantType, } from './types/newsletterVariantType';
 import Button from '../../Button/Button'; // eslint-disable-line import/no-named-as-default
+import H from '../../AutoLevels/H';
 import Form from '../../Form/Form'; // eslint-disable-line import/no-named-as-default
 import TextInput from '../../TextInput/TextInput';
 import IconAlefLogoTransparent from '../../Icon/icons/IconAlefLogoTransparent';
@@ -125,7 +126,9 @@ export function NewsletterForm({
     icon &&
     (icon.toLowerCase() === 'htz'
       ? IconAlefLogoTransparent
-      : icon.toLowerCase() === 'tm' ? IconMarkerLogoTransparent : null);
+      : icon.toLowerCase() === 'tm'
+        ? IconMarkerLogoTransparent
+        : null);
   return (
     <Form
       initialValues={{ email: userEmail, checkBox: false, }}
@@ -178,7 +181,7 @@ export function NewsletterForm({
                         variant={variant}
                         rule={inputUpperNoteStyle}
                         render={({ className, }) => (
-                          <h3 className={className}>{headlineText}</h3>
+                          <H className={className}>{headlineText}</H>
                         )}
                       />
                       {NewsletterIcon ? (

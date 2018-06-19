@@ -5,6 +5,7 @@ import UserDispenser from './UserDispenser';
 import Form from '../Form/Form'; // eslint-disable-line import/no-named-as-default
 import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button';
+import H from '../AutoLevels/H';
 
 export function LoginExample() {
   return (
@@ -30,7 +31,7 @@ export function LoginExample() {
           <Login
             render={({ login, }) => (
               <div style={{ marginTop: '24px', marginBottom: '24px', }}>
-                <h2>Login</h2>
+                <H>Login</H>
                 <Form
                   onSubmit={({ email, password, }) => {
                     login(email, password)

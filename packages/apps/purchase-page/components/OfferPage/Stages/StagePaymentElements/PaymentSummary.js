@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { border, } from '@haaretz/htz-css-tools';
+import { H, } from '@haaretz/htz-components';
 import Phones from '../Elements/Phones';
 
 const propTypes = {
@@ -60,7 +61,7 @@ const detailsHeaderStyle = ({ theme, }) => ({
   extend: [ theme.type(1, { fromBp: 'm', }), theme.type(-1, { untilBp: 's', }), ],
 });
 
-const StyledDetailsHeader = createComponent(detailsHeaderStyle, 'h4');
+const StyledDetailsHeader = createComponent(detailsHeaderStyle, H);
 
 const detailsPaymentStyle = ({ theme, }) => ({
   color: theme.color('offerPage', 'secondaryOfferText'),

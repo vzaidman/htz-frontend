@@ -9,6 +9,8 @@ import CommentForm from './CommentForm';
 import IconArrow from '../Icon/icons/IconArrow';
 import IconReply from '../Icon/icons/IconReply';
 import Like from './Like'; // eslint-disable-line import/no-named-as-default
+import H from '../AutoLevels/H';
+import Section from '../AutoLevels/Section';
 
 const wrapperStyle = ({
   theme,
@@ -90,9 +92,7 @@ const CommentAuthorStyle = ({ theme, truncate, }) => ({
   ...theme.type(0),
 });
 
-const StyledCommentAuthor = createComponent(CommentAuthorStyle, 'h4', [
-  'onClick',
-]);
+const StyledCommentAuthor = createComponent(CommentAuthorStyle, H, [ 'onClick', ]);
 
 const publishingDateStyle = theme => ({
   color: theme.color('comments', 'date'),
@@ -363,7 +363,7 @@ class Comment extends React.Component {
             },
           },
         }) => (
-          <section className={className}>
+          <Section className={className}>
             <FelaComponent style={commentWrapperStyle}>
               <FelaComponent style={commentNumberContainerStyle}>
                 <span>
@@ -536,7 +536,7 @@ class Comment extends React.Component {
                 }
               />
             ) : null}
-          </section>
+          </Section>
         )}
       />
     );

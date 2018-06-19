@@ -6,6 +6,7 @@ import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button';
 import UserDispenser from './UserDispenser';
 import CheckBox from '../CheckBox/CheckBox'; // eslint-disable-line import/no-named-as-default
+import H from '../AutoLevels/H';
 
 export function RegisterExample() {
   return (
@@ -31,7 +32,7 @@ export function RegisterExample() {
           <Register
             render={({ register, }) => (
               <div>
-                <h2>Register</h2>
+                <H>Register</H>
                 <Form
                   onSubmit={({
                     email,

@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
 import { border, } from '@haaretz/htz-css-tools';
-import { Button, BIAction, } from '@haaretz/htz-components';
+import { Button, BIAction, H, } from '@haaretz/htz-components';
 import { friendlyRoutes, } from '../../../../routes/routes';
 
 import TermsButton from './TermsButton';
@@ -75,7 +75,7 @@ const offerTitleStyle = ({ theme, isRecommended, }) => ({
   extend: [ theme.type(2, { fromBp: 's', }), theme.type(1, { untilBp: 's', }), ],
 });
 
-const StyledOfferTitle = createComponent(offerTitleStyle, 'h2');
+const StyledOfferTitle = createComponent(offerTitleStyle, H);
 
 const priceStyle = ({ theme, isRecommended, }) => ({
   display: 'block',
