@@ -16,6 +16,8 @@ import Comments from './components/CommentsSection/CommentsWithApollo';
 import Embed from './components/Embed/Embed';
 import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
+import GaDimensions from './components/GoogleAnalytics/GaDimensions';
+import GoogleAnalytics from './components/GoogleAnalytics/GoogleAnalytics';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
 import H from './components/AutoLevels/H';
@@ -23,6 +25,7 @@ import HeadlineElement from './components/HeadlineElement/HeadlineElement';
 import HtmlElement from './components/Interactive/components/HtmlElement';
 import Image from './components/Image/Image';
 import Interactive from './components/Interactive/Interactive';
+import IsMobileInjector from './components/GoogleAnalytics/IsMobileInjector';
 import LayoutContainer from './components/PageLayout/LayoutContainer';
 import LayoutRow from './components/PageLayout/LayoutRow';
 import HtzLink from './components/HtzLink/HtzLink';
@@ -131,6 +134,9 @@ import extractParamFromUrl from './components/BI/extractParamFromUrl';
 import BIAction from './components/BI/BIAction';
 import BIRequest from './components/BI/BIRequest';
 
+// Event tracker
+import EventTracker from './utils/EventTracker';
+
 export {
   A11yDialog,
   A11yError,
@@ -145,6 +151,8 @@ export {
   Embed,
   Footer,
   Form,
+  GaDimensions,
+  GoogleAnalytics,
   Grid,
   GridItem,
   H,
@@ -152,6 +160,7 @@ export {
   HtmlElement,
   Image,
   Interactive,
+  IsMobileInjector,
   LayoutContainer,
   LayoutRow,
   HtzLink,
@@ -251,4 +260,6 @@ export {
   // BI
   BIAction,
   BIRequest,
+  // Event tracker
+  EventTracker,
 };

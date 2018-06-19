@@ -118,6 +118,7 @@ function create(initialState, req) {
         __typename: 'Scroll',
       },
       user,
+      platform: null,
       promotionsPageState: {
         stage: 2,
         subStage: 0,

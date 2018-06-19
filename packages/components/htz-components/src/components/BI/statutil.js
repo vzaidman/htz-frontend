@@ -45,7 +45,7 @@ export function doStatAction(action, user) {
   return withTimeout(
     window.fetch(`${dsUrl}?${querystring.stringify(statData)}`, {
       method: 'GET',
-      cache: false,
+      cache: 'no-cache',
     })
   );
 }
@@ -100,7 +100,7 @@ export function doStat(user) {
   return withTimeout(
     window.fetch(`${dsUrl}?${querystring.stringify(statData)}`, {
       method: 'GET',
-      cache: false,
+      cache: 'no-cache',
     })
   );
 }

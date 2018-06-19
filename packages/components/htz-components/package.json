@@ -63,6 +63,7 @@
     "prop-types": "^15.6.1",
     "react-fns": "^1.4.0",
     "react-focus-lock": "^1.8.1",
+    "react-ga": "^2.5.0",
     "react-google-invisible-recaptcha": "^0.2.1",
     "react-intersection-observer": "^3.0.2",
     "react-media": "^1.8.0",
