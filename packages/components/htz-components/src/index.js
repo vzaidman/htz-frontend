@@ -18,6 +18,7 @@ import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
+import H from './components/AutoLevels/H';
 import HeadlineElement from './components/HeadlineElement/HeadlineElement';
 import HtmlElement from './components/Interactive/components/HtmlElement';
 import Image from './components/Image/Image';
@@ -42,6 +43,7 @@ import RadioGroup from './components/RadioButton/RadioGroup';
 import StandardArticlePageLayout from './components/PageLayout/StandardArticlePageLayout';
 import Scroll from './components/Scroll/Scroll';
 import ScrollListener from './components/EventListeners/ScrollListener';
+import Section from './components/AutoLevels/Section';
 import Select from './components/Select/Select';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 import Tags from './components/Tags/Tags';
@@ -144,6 +146,7 @@ export {
   Form,
   Grid,
   GridItem,
+  H,
   HeadlineElement,
   HtmlElement,
   Image,
@@ -166,6 +169,7 @@ export {
   RelatedArticles,
   Scroll,
   ScrollListener,
+  Section,
   Select,
   SeriesArticles,
   StandardArticlePageLayout,
