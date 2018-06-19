@@ -47,7 +47,7 @@ const customFragmentMatcher = new IntrospectionFragmentMatcher({
             Video,
           },
         }`,
-      ], // no types provided
+      ],
     },
   },
 });
