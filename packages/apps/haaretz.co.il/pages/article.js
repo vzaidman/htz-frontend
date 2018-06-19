@@ -7,6 +7,9 @@ import dynamic from 'next/dynamic';
 
 import {
   AriaLive,
+  GaDimensions,
+  GoogleAnalytics,
+  IsMobileInjector,
   UserInjector,
   ArticlePageLayout,
 } from '@haaretz/htz-components';
@@ -78,6 +81,7 @@ export class ArticlePage extends React.Component {
         <ScrollInjector />
         <UserInjector />
         <DfpInjector path={url.query.path} />
+        <GoogleAnalytics />
         <StyleProvider renderer={styleRenderer} theme={htzTheme}>
           <Query
             query={ArticleInitQuery}
@@ -96,6 +100,9 @@ export class ArticlePage extends React.Component {
               });
               return (
                 <Fragment>
+                  {/* articleMode={null} authors={null} pageType={null} */}
+                  <IsMobileInjector />
+                  <GaDimensions userType={data.user.type} />
                   <AriaLive />
                   <ArticlePageLayout
                     articleId={this.props.url.query.path}
