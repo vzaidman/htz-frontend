@@ -4,7 +4,11 @@ import { StyleProvider, } from '@haaretz/fela-utils';
 import { createComponent, FelaComponent, } from 'react-fela';
 import Head from 'next/head';
 // import { UserInjector, appendScript, } from '@haaretz/htz-components';
-import { UserInjector, BIRequest, } from '@haaretz/htz-components';
+import {
+  UserInjector,
+  BIRequest,
+  GoogleAnalytics,
+} from '@haaretz/htz-components';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -93,6 +97,7 @@ function MainLayout({
         const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
         return (
           <Fragment>
+            <GoogleAnalytics host={host} userType={type} withEC />
             <UserInjector />
             <StyleProvider renderer={styleRenderer} theme={theme(host)}>
               <FelaComponent
@@ -138,12 +143,7 @@ function MainLayout({
               />
             </StyleProvider>
             <BIRequest />
-            <Scripts
-              host={host}
-              userType={type}
-              thankYou={thankYou}
-              userPaid={userPaid}
-            />
+            <Scripts host={host} thankYou={thankYou} userPaid={userPaid} />
           </Fragment>
         );
       }}

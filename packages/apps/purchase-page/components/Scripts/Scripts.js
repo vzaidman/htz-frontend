@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 
 const propTypes = {
-  host: PropTypes.string.isRequired,
+  // host: PropTypes.string.isRequired,
   thankYou: PropTypes.bool,
   userPaid: PropTypes.bool,
-  userType: PropTypes.string,
+  // userType: PropTypes.string,
 };
 
 const defaultProps = {
@@ -131,13 +131,12 @@ class StaticScripts extends React.Component {
     );
   }
 }
-function Scripts({ host, thankYou, userPaid, userType, }) {
+function Scripts({ thankYou, userPaid, }) {
   return (
     // <!-- Google Analytics Script -->
     <div>
       <StaticScripts thankYou={thankYou} userPaid={userPaid} />
-      <script
-        suppressHydrationWarning
+      {/* <script
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: `
@@ -170,7 +169,7 @@ function Scripts({ host, thankYou, userPaid, userType, }) {
             })();
           `,
         }}
-      />
+      /> */}
     </div>
   );
 }

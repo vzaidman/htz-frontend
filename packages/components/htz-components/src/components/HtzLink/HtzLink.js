@@ -60,9 +60,7 @@ const LinkWrapper = React.forwardRef(
         passedOnClick(...args);
       }
       // your own code here, this function can even be async
-      // TODO: Logging to BI can happen here.
 
-      console.log('LOGGING BI FOR', href);
       return onClick(...args);
     };
     /* eslint-disable jsx-a11y/no-static-element-interactions */

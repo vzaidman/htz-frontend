@@ -1,8 +1,9 @@
 import React from 'react';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
+import ReactGA from 'react-ga';
 import { border, } from '@haaretz/htz-css-tools';
-import { Button, BIAction, H, } from '@haaretz/htz-components';
+import { Button, EventTracker, H, } from '@haaretz/htz-components';
 import { friendlyRoutes, } from '../../../../routes/routes';
 
 import TermsButton from './TermsButton';
@@ -164,6 +165,7 @@ const StyledBannerInnerCont = createComponent(bannerInnerContStyle);
 /* eslint-disable react/prop-types */
 const DesktopOffer = ({
   cancelButtonText,
+  contentName,
   offer,
   openModal,
   termsButtonText,
@@ -210,63 +212,127 @@ const DesktopOffer = ({
     <ApolloConsumer>
       {cache => (
         /* eslint-enable react/prop-types */
-        <StyledOffer
-          key={Math.random()}
-          isRecommended={offer.isRecommended}
-          onClick={() => {
-            continueToNextStage({ cache, idx: offerIdx, routerPush: true, });
-          }}
-        >
-          {offer.isRecommended && offer.bannerText ? (
-            <StyledBanner>
-              <StyledBannerInnerCont>{offer.bannerText}</StyledBannerInnerCont>
-            </StyledBanner>
-          ) : null}
-          <FelaComponent
-            style={theme => ({
-              extend: [ theme.mq({ until: 's', }, { textAlign: 'right', }), ],
-            })}
-          >
-            <StyledOfferTitle isRecommended={offer.isRecommended}>
-              {offer.title}
-            </StyledOfferTitle>
-            <StyledPrice isRecommended={offer.isRecommended}>
-              {offer.price}
-            </StyledPrice>
-            {(offer.text || offer.originalPrice) &&
-              [ offer.originalPrice, ...(offer.text ? [ offer.text, ] : []), ].map(
-                (text, textIndex) => (
-                  <StyledOfferText
-                    key={Math.random()}
-                    isRecommended={offer.isRecommended}
-                    isFirst={textIndex === 0}
-                  >
-                    {text}
-                  </StyledOfferText>
-                )
-              )}
-            <TermsButton
-              displayOnMobile
+        <EventTracker>
+          {({ biAction, gaAction, gaMapper, }) => (
+            <StyledOffer
+              key={Math.random()}
               isRecommended={offer.isRecommended}
-              offerIdx={offerIdx}
-              termsButtonText={termsButtonText}
-              openModal={openModal}
-            />
-          </FelaComponent>
-          <FelaComponent
-            style={theme => ({
-              extend: [
-                theme.mq(
-                  { until: 's', },
+              onClick={() => {
+                biAction({
+                  actionCode: 21,
+                  additionalInfo: {
+                    stage: 'product',
+                    chosenProduct: offer.title,
+                  },
+                });
+                gaAction({
+                  category: `promotions-step-3-${
+                    gaMapper.productId[offer.paymentData.productID]
+                  }`,
+                  action: `${gaMapper.productId[offer.paymentData.productID]}
+                  -salecode[${offer.paymentData.saleCode}]
+                  `,
+                  label: `${offer.type}-${
+                    gaMapper.productId[offer.paymentData.productID]
+                  }`,
+                });
+                ReactGA.ga('ec:addProduct', {
+                  id: offer.paymentData.saleCode,
+                  name: `${offer.type}-${contentName}`,
+                  brand: `salecode[${offer.paymentData.saleCode}]`,
+                  price: offer.price,
+                  variant: `promotionNumber-${
+                    offer.paymentData.promotionNumber
+                  }`,
+                });
+                ReactGA.ga('ec:setAction', 'click', {
+                  list: 'Product Stage Results',
+                });
+                ReactGA.ga(
+                  'send',
+                  'event',
+                  `${offer.type}-${contentName}`,
+                  'offer click',
+                  'add to cart',
                   {
-                    alignSelf: 'flex-end',
+                    nonInteraction: 1,
                   }
-                ),
-              ],
-            })}
-          >
-            <BIAction>
-              {action => (
+                ); // Send data using an event.
+
+                ReactGA.ga('ec:addProduct', {
+                  id: offer.paymentData.saleCode,
+                  name: `${offer.type}-${contentName}`,
+                  brand: `salecode[${offer.paymentData.saleCode}]`,
+                  price: offer.price,
+                  variant: `promotionNumber-${
+                    offer.paymentData.promotionNumber
+                  }`,
+                });
+                ReactGA.ga('ec:setAction', 'add', {
+                  list: 'Product Stage Results',
+                });
+                ReactGA.ga(
+                  'send',
+                  'event',
+                  `${offer.type}-${contentName}`,
+                  'offer click',
+                  'add to cart'
+                );
+
+                continueToNextStage({ cache, idx: offerIdx, routerPush: true, });
+              }}
+            >
+              {offer.isRecommended && offer.bannerText ? (
+                <StyledBanner>
+                  <StyledBannerInnerCont>
+                    {offer.bannerText}
+                  </StyledBannerInnerCont>
+                </StyledBanner>
+              ) : null}
+              <FelaComponent
+                style={theme => ({
+                  extend: [ theme.mq({ until: 's', }, { textAlign: 'right', }), ],
+                })}
+              >
+                <StyledOfferTitle isRecommended={offer.isRecommended}>
+                  {offer.title}
+                </StyledOfferTitle>
+                <StyledPrice isRecommended={offer.isRecommended}>
+                  {offer.price}
+                </StyledPrice>
+                {(offer.text || offer.originalPrice) &&
+                  [
+                    offer.originalPrice,
+                    ...(offer.text ? [ offer.text, ] : []),
+                  ].map((text, textIndex) => (
+                    <StyledOfferText
+                      key={Math.random()}
+                      isRecommended={offer.isRecommended}
+                      isFirst={textIndex === 0}
+                    >
+                      {text}
+                    </StyledOfferText>
+                  ))}
+                <TermsButton
+                  displayOnMobile
+                  isRecommended={offer.isRecommended}
+                  offerIdx={offerIdx}
+                  termsButtonText={termsButtonText}
+                  openModal={openModal}
+                />
+              </FelaComponent>
+              <FelaComponent
+                style={theme => ({
+                  extend: [
+                    theme.mq(
+                      { until: 's', },
+                      {
+                        alignSelf: 'flex-end',
+                      }
+                    ),
+                  ],
+                })}
+              >
                 <Button
                   href={pathName}
                   variant="salesOpaque"
@@ -279,32 +345,27 @@ const DesktopOffer = ({
                     type: [ { until: 's', value: -1, }, ],
                   }}
                   onClick={() => {
-                    action({
-                      actionCode: 21,
-                      additionalInfo: {
-                        stage: 'product',
-                        chosenProduct: offer.title,
-                      },
-                    });
                     continueToNextStage({ cache, idx: offerIdx, });
                   }}
                 >
                   {offer.buttonText}
                 </Button>
-              )}
-            </BIAction>
-            <StyledCancelButtonText isRecommended={offer.isRecommended}>
-              {cancelButtonText}
-            </StyledCancelButtonText>
-            <TermsButton
-              displayOnMobile={false}
-              isRecommended={offer.isRecommended}
-              offerIdx={offerIdx}
-              termsButtonText={termsButtonText}
-              openModal={openModal}
-            />
-          </FelaComponent>
-        </StyledOffer>
+
+                <StyledCancelButtonText isRecommended={offer.isRecommended}>
+                  {cancelButtonText}
+                </StyledCancelButtonText>
+                <TermsButton
+                  displayOnMobile={false}
+                  isRecommended={offer.isRecommended}
+                  offerIdx={offerIdx}
+                  offer={offer}
+                  termsButtonText={termsButtonText}
+                  openModal={openModal}
+                />
+              </FelaComponent>
+            </StyledOffer>
+          )}
+        </EventTracker>
       )}
     </ApolloConsumer>
   );

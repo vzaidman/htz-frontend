@@ -1,4 +1,5 @@
 const submitForm = ({
+  gaAction,
   email,
   password,
   firstName,
@@ -27,11 +28,21 @@ const submitForm = ({
           },
           updateRegisterOrLoginStage(userExists ? 'login' : 'register')
         );
+        gaAction({
+          category: 'promotions-step-4-registration',
+          action: 'email-continue',
+          label: `user-${userExists ? 'login' : 'register'}`,
+        });
       })
       .catch(error => {
         setState({
           error: error.msg || error.message,
           loading: false,
+        });
+        gaAction({
+          category: 'promotions-step-4-registration',
+          action: 'email-continue',
+          label: 'error',
         });
       });
   }
@@ -43,11 +54,21 @@ const submitForm = ({
     login(email, password)
       .then(() => {
         updateRefetchState(true);
+        gaAction({
+          category: 'promotions-step-4-registration',
+          action: 'password-continue',
+          label: 'logged-in',
+        });
       })
       .catch(error => {
         setState({
           error: error.message || 'שגיאה במערכת ההתחברות, אנא נסו שוב',
           loading: false,
+        });
+        gaAction({
+          category: 'promotions-step-4-registration',
+          action: 'password-continue',
+          label: 'error',
         });
       });
   }
@@ -63,12 +84,22 @@ const submitForm = ({
             loggedInOrRegistered: 'registered',
           },
         });
+        gaAction({
+          category: 'promotions-step-4-registration',
+          action: 'password-continue',
+          label: 'success',
+        });
         Router.replace('/promotions-page/stage4', router.asPath);
       })
       .catch(error => {
         setState({
           error: error.message || 'שגיאה במערכת ההרשמה, אנא נסו שוב',
           loading: false,
+        });
+        gaAction({
+          category: 'promotions-step-4-registration',
+          action: 'password-continue',
+          label: 'error',
         });
       });
   }

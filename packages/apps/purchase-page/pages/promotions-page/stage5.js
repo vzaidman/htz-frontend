@@ -84,7 +84,7 @@ function Stage5() {
                         chosenProductIndex
                       ];
                 const chosenOffer = chosenProduct.offerList[chosenOfferIndex];
-
+                const chosenProductContentName = chosenProduct.contentName;
                 const paymentData = chosenOffer.paymentData;
 
                 const thankYouEmailTemplate =
@@ -106,9 +106,7 @@ function Stage5() {
                     style={{ textAlign: 'center', }}
                     render={({
                       className,
-                      theme: {
-                        stage5: { header, details, },
-                      },
+                      theme: { stage5: { header, details, }, },
                     }) => (
                       <div className={className}>
                         <StageCounter stage={5} />
@@ -141,14 +139,20 @@ function Stage5() {
                                     />
                                   ) : paymentType === 'existingCreditCard' ? (
                                     <ExistingCreditCardStage
+                                      chosenPaymentArrangement={
+                                        chosenPaymentArrangement
+                                      }
+                                      chosenProductContentName={
+                                        chosenProductContentName
+                                      }
                                       hostname={hostname}
-                                      paymentData={paymentData}
                                       user={user}
                                       fourDigits={
                                         data.purchasePage.creditCardsDetails[
                                           paymentMethodIndex
                                         ].fourDigits
                                       }
+                                      paymentData={paymentData}
                                       thankYouEmailTemplate={
                                         thankYouEmailTemplate
                                       }
@@ -160,8 +164,12 @@ function Stage5() {
                                       chosenPaymentArrangement={
                                         chosenPaymentArrangement
                                       }
+                                      chosenProductContentName={
+                                        chosenProductContentName
+                                      }
                                       firstPaymentAmount={paymentData.prices[0]}
                                       nextPaymentAmount={paymentData.prices[1]}
+                                      paymentData={paymentData}
                                     />
                                   )
                                 }

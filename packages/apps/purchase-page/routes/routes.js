@@ -5,4 +5,5 @@ export const friendlyRoutes = {
   stage4: 'method',
   stage5: 'payment',
   thankYou: 'thankYou',
+  debt: 'debt',
 };

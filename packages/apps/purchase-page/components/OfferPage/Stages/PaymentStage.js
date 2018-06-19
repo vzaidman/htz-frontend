@@ -1,16 +1,16 @@
 /* global window */
-
 import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import Router, { withRouter, } from 'next/router';
 import { FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
+import ReactGA from 'react-ga';
 import {
   Button,
   RadioGroup,
   Form,
   IconPaypal,
-  BIAction,
+  EventTracker,
   H,
 } from '@haaretz/htz-components';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
@@ -19,6 +19,7 @@ import SecurePaymentLine from './Elements/SecurePaymentLine';
 import PaymentButtonsDivider from './StagePaymentElements/PaymentButtonsDivider';
 import PaymentSummary from './StagePaymentElements/PaymentSummary';
 import Redirect from '../../Redirect/Redirect';
+import { friendlyRoutes, } from '../../../routes/routes';
 
 const propTypes = {
   /**
@@ -31,12 +32,14 @@ const propTypes = {
       fourDigits: PropTypes.string,
     })
   ),
+  chosenProductContentName: PropTypes.string.isRequired,
   chosenSubscription: PropTypes.string.isRequired,
   chosenPaymentArrangement: PropTypes.string.isRequired,
   firstPaymentAmount: PropTypes.number.isRequired,
   nextPaymentAmount: PropTypes.number.isRequired,
   displayPayPal: PropTypes.bool.isRequired,
   router: PropTypes.shape().isRequired,
+  paymentData: PropTypes.shape().isRequired,
 };
 
 const defaultProps = {
@@ -96,17 +99,36 @@ class PaymentStage extends Component {
 
   render() {
     const {
-      creditCardsDetails,
+      chosenProductContentName,
       chosenSubscription,
       chosenPaymentArrangement,
+      creditCardsDetails,
       firstPaymentAmount,
       hasDebt,
       nextPaymentAmount,
+      paymentData,
       displayPayPal,
       router,
     } = this.props;
 
     if (!creditCardsDetails && !displayPayPal) {
+      ReactGA.event({
+        category: 'promotions-step-4',
+        action: 'credit-guard',
+        label: chosenProductContentName,
+      });
+      ReactGA.ga('ec:addProduct', {
+        id: paymentData.saleCode,
+        name: `${chosenPaymentArrangement}-${chosenProductContentName}`,
+        brand: `brand-salecode[${paymentData.saleCode}]`,
+        price: paymentData.prices[0].toString(),
+        variant: `promotionNumber-${paymentData.promotionNumber}`,
+      });
+      ReactGA.ga('ec:setAction', 'checkout', {
+        option: 'creditCard',
+      });
+      ReactGA.ga('send', 'pageview');
+
       return (
         <ApolloConsumer>
           {cache => {
@@ -156,6 +178,18 @@ class PaymentStage extends Component {
                 ...(!!creditCardsDetails && { paymentMethodIndex: '0', }),
               }}
               onSubmit={({ paymentMethodIndex, }, paymentType = null) => {
+                ReactGA.ga('ec:addProduct', {
+                  id: paymentData.saleCode,
+                  name: `${chosenPaymentArrangement}-${chosenProductContentName}`,
+                  category: chosenSubscription,
+                  brand: `brand-salecode[${paymentData.saleCode}]`,
+                  variant: `promotionNumber-${paymentData.promotionNumber}`,
+                });
+                ReactGA.ga('ec:setAction', 'checkout', {
+                  option: paymentType,
+                });
+                ReactGA.ga('send', 'pageview');
+
                 cache.writeData({
                   data: {
                     promotionsPageState: {
@@ -165,11 +199,12 @@ class PaymentStage extends Component {
                     },
                   },
                 });
+
                 if (hasDebt) {
-                  Router.push('/promotions-page/debt', router.asPath);
+                  Router.push('/promotions-page/debt', friendlyRoutes.debt);
                 }
  else {
-                  Router.push('/promotions-page/stage5', router.asPath);
+                  Router.push('/promotions-page/stage5', friendlyRoutes.stage5);
                 }
               }}
               validate={({ paymentMethodIndex, }) => {
@@ -270,14 +305,14 @@ class PaymentStage extends Component {
                           </FelaComponent>
 
                           {!this.state.displayPaymentButtons && (
-                            <BIAction>
-                              {action => (
+                            <EventTracker>
+                              {biAction => (
                                 <Button
                                   variant="salesOpaque"
                                   boxModel={{ hp: 6, vp: 1, }}
                                   onClick={evt => {
                                     handleSubmit(evt, 'existingCreditCard');
-                                    action({
+                                    biAction({
                                       actionCode: 37,
                                       additionalInfo: {
                                         stage: 'payment',
@@ -295,7 +330,7 @@ class PaymentStage extends Component {
                                   {form.continueButton.text}
                                 </Button>
                               )}
-                            </BIAction>
+                            </EventTracker>
                           )}
                         </Fragment>
                       )}
@@ -334,43 +369,69 @@ class PaymentStage extends Component {
                               ],
                             };
                             return (
-                              <div className={className}>
-                                <div>
-                                  <BIAction>
-                                    {action => (
+                              <EventTracker>
+                                {({ biAction, gaAction, gaMapper, }) => (
+                                  <div className={className}>
+                                    <div>
                                       <Button
                                         {...buttonProps}
                                         onClick={evt => {
                                           handleSubmit(evt, 'creditCard');
-                                          action({
+                                          biAction({
                                             actionCode: 109,
                                             additionalInfo: {
                                               stage: 'payment',
                                             },
+                                          });
+                                          gaAction({
+                                            category: 'promotions-step-4',
+                                            action: `credit-guard-${
+                                              gaMapper.productId[
+                                                paymentData.productID
+                                              ]
+                                            }`,
+                                            label: `${
+                                              gaMapper.productId[
+                                                paymentData.productID
+                                              ]
+                                            }-salecode[${
+                                              paymentData.saleCode
+                                            }]`,
                                           });
                                         }}
                                       >
                                         {payVia} <br />
                                         {creditCard}
                                       </Button>
-                                    )}
-                                  </BIAction>
-                                </div>
-                                {displayPayPal && (
-                                  <Fragment>
-                                    <PaymentButtonsDivider />
-                                    <div>
-                                      <BIAction>
-                                        {action => (
+                                    </div>
+                                    {displayPayPal && (
+                                      <Fragment>
+                                        <PaymentButtonsDivider />
+                                        <div>
                                           <Button
                                             {...buttonProps}
                                             onClick={evt => {
                                               handleSubmit(evt, 'PayPal');
-                                              action({
+                                              biAction({
                                                 actionCode: 29,
                                                 additionalInfo: {
                                                   stage: 'payment',
                                                 },
+                                              });
+                                              gaAction({
+                                                category: 'promotions-step-4',
+                                                action: `paypal-${
+                                                  gaMapper.productId[
+                                                    paymentData.productID
+                                                  ]
+                                                }`,
+                                                label: `${
+                                                  gaMapper.productId[
+                                                    paymentData.productID
+                                                  ]
+                                                }-salecode[${
+                                                  paymentData.saleCode
+                                                }]`,
                                               });
                                             }}
                                           >
@@ -387,12 +448,12 @@ class PaymentStage extends Component {
                                               ]}
                                             />
                                           </Button>
-                                        )}
-                                      </BIAction>
-                                    </div>
-                                  </Fragment>
+                                        </div>
+                                      </Fragment>
+                                    )}
+                                  </div>
                                 )}
-                              </div>
+                              </EventTracker>
                             );
                           }}
                         />

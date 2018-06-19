@@ -7,6 +7,7 @@ import Offer from './Offer';
 
 const propTypes = {
   cancelButtonText: PropTypes.string.isRequired,
+  contentName: PropTypes.string.isRequired,
   fourDigits: PropTypes.string,
   offerList: PropTypes.arrayOf(
     PropTypes.shape({
@@ -50,6 +51,7 @@ function OfferList({
   openModal,
   fourDigits,
   router,
+  contentName,
 }) {
   return (
     <FelaComponent style={contStyle}>
@@ -67,6 +69,7 @@ function OfferList({
               openModal={openModal}
               offerIdx={idx}
               router={router}
+              contentName={contentName}
             />
           ))
         }

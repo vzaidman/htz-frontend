@@ -5,6 +5,7 @@ import { FelaComponent, } from 'react-fela';
 import Router from 'next/router';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
+import ReactGA from 'react-ga';
 import { Button, IconHtzLoader, IconTmLoader, } from '@haaretz/htz-components';
 
 const GET_HOST_NAME = gql`
@@ -26,10 +27,10 @@ const styles = ({ iframeHeight, loading, theme, }) => ({
 
 class CreditCardIframe extends Component {
   static propTypes = {
-    /**
-     * paymentData
-     */
+    chosenPaymentArrangement: PropTypes.string.isRequired,
+    chosenProductContentName: PropTypes.string.isRequired,
     creditGuardSrc: PropTypes.string.isRequired,
+    paymentData: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {};
@@ -58,6 +59,11 @@ class CreditCardIframe extends Component {
 
   handleFrameTasks = evt => {
     // console.log('got message', evt);
+    const {
+      paymentData,
+      chosenPaymentArrangement,
+      chosenProductContentName,
+    } = this.props;
     const msgData = evt.data;
     if (msgData.type === 'cgmessage') {
       switch (msgData.command) {
@@ -69,6 +75,21 @@ class CreditCardIframe extends Component {
 
         case 'thank_user':
           console.log('got Thank you message', msgData);
+          ReactGA.ga('ec:addProduct', {
+            id: paymentData.saleCode,
+            name: `${chosenPaymentArrangement}-${chosenProductContentName}`,
+            brand: `salecode[${paymentData.saleCode}]`,
+            price: paymentData.prices[0].toString(),
+            variant: `promotionNumber-${paymentData.promotionNumber}`,
+          });
+          ReactGA.ga('ec:setAction', 'purchase', {
+            id: paymentData.saleCode, // (Required) Transaction id (string).
+            list: 'Product Stage Results',
+            revenue: paymentData.prices[0].toString(),
+            coupon: paymentData.saleCode,
+            quantity: 1,
+          });
+          ReactGA.ga('send', 'pageview');
           Router.replace(
             `/promotions-page/thankYou?msg=thank_user&product=${
               msgData.data.pid

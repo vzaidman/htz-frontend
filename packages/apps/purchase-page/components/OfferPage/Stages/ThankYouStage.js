@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
-import { HtzLink, Newsletter, BIAction, } from '@haaretz/htz-components';
+import { HtzLink, Newsletter, EventTracker, } from '@haaretz/htz-components';
 
 const GET_HOST_NAME = gql`
   query {
@@ -54,7 +54,6 @@ function StageThankYou({ userEmail, product, userMessage, }) {
     console.log('isArticle: ', articlePattern.test(url));
     return articlePattern.test(url);
   };
-
   return (
     <Query query={GET_HOST_NAME}>
       {({ data: { hostname, referrer, }, }) => {
@@ -75,17 +74,17 @@ function StageThankYou({ userEmail, product, userMessage, }) {
               <div className={className}>
                 {referrer &&
                   isArticle(referrer) && (
-                    <BIAction>
-                      {action => (
+                    <EventTracker>
+                      {biAction => (
                         <StyledLink
                           content={backToArticleContent}
                           href={referrer}
                         />
                       )}
-                    </BIAction>
+                    </EventTracker>
                   )}
-                <BIAction>
-                  {action => (
+                <EventTracker>
+                  {biAction => (
                     <Newsletter
                       id="ThankYouWrapper-1234"
                       headlineText={newsletterTitle(site)}
@@ -93,7 +92,7 @@ function StageThankYou({ userEmail, product, userMessage, }) {
                       host={site}
                       icon={site}
                       onSubmit={() => {
-                        action({
+                        biAction({
                           actionCode: 38,
                           additionalInfo: {
                             stage: 'thank-you',
@@ -108,7 +107,7 @@ function StageThankYou({ userEmail, product, userMessage, }) {
                       miscStyles={{ marginTop: '9rem', marginBottom: '2rem', }}
                     />
                   )}
-                </BIAction>
+                </EventTracker>
               </div>
             )}
           />

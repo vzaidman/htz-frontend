@@ -2,10 +2,10 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import {
+  EventTracker,
   IconAlefLogo,
   IconTheMarker,
   HtzLink,
-  BIAction,
 } from '@haaretz/htz-components';
 
 import Astronaut from '../illustrations/Astronaut/Astronaut';
@@ -123,8 +123,8 @@ export function PurchasePageFooter({ host, hasIllustration, stage, }) {
           },
         }) => (
           <div className={className}>
-            <BIAction>
-              {action => (
+            <EventTracker>
+              {({ biAction, gaAction, }) => (
                 <StyledHomePageLink
                   href={href[host]}
                   content={
@@ -146,32 +146,42 @@ export function PurchasePageFooter({ host, hasIllustration, stage, }) {
                     </Fragment>
                   }
                   onClick={() => {
-                    action({
+                    biAction({
                       actionCode: 42,
                       additionalInfo: {
                         stage,
                       },
                     });
+                    gaAction({
+                      category: 'promtions-footer',
+                      action: 'homepage',
+                      label: `step ${stage}`,
+                    });
                   }}
                 />
               )}
-            </BIAction>
+            </EventTracker>
             <StyledLinkList>
               {links.map((link, idx) => (
                 <StyledListItem isLast={idx === links.length - 1} key={link.id}>
-                  <BIAction>
-                    {action => (
+                  <EventTracker>
+                    {({ biAction, gaAction, }) => (
                       <Fragment>
                         <StyledLink
                           hide={link.text === 'שאלות ותשובות'}
                           onlyMobile
                           onClick={() => {
-                            action({
-                              actionCode:
-                                link.text === 'שאלות ותשובות' ? 43 : 41,
+                            biAction({
+                              actionCode: link.text === 'שאלות ותשובות' ? 43 : 41,
                               additionalInfo: {
                                 stage,
                               },
+                            });
+                            gaAction({
+                              category: 'promtions-footer',
+                              action:
+                                link.text === 'שאלות ותשובות' ? 'faq' : 'contact',
+                              label: `step ${stage}`,
                             });
                           }}
                           href={link.hrefMobile[host]}
@@ -180,12 +190,17 @@ export function PurchasePageFooter({ host, hasIllustration, stage, }) {
                         <StyledLink
                           onlyDesktop
                           onClick={() => {
-                            action({
-                              actionCode:
-                                link.text === 'שאלות ותשובות' ? 43 : 41,
+                            biAction({
+                              actionCode: link.text === 'שאלות ותשובות' ? 43 : 41,
                               additionalInfo: {
                                 stage,
                               },
+                            });
+                            gaAction({
+                              category: 'promtions-footer',
+                              action:
+                                link.text === 'שאלות ותשובות' ? 'faq' : 'contact',
+                              label: `step ${stage}`,
                             });
                           }}
                           href={link.href[host]}
@@ -193,7 +208,7 @@ export function PurchasePageFooter({ host, hasIllustration, stage, }) {
                         />
                       </Fragment>
                     )}
-                  </BIAction>
+                  </EventTracker>
                 </StyledListItem>
               ))}
             </StyledLinkList>

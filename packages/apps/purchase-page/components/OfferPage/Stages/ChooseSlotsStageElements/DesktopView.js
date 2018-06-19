@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
+import ReactGA from 'react-ga';
 import {
   borderBottom,
   borderEnd,
@@ -9,7 +10,7 @@ import {
   borderTop,
 } from '@haaretz/htz-css-tools';
 
-import { Button, Grid, GridItem, BIAction, H, } from '@haaretz/htz-components';
+import { Button, Grid, GridItem, H, EventTracker } from '@haaretz/htz-components';
 import PositiveCircle from './PositiveCircle';
 import Phones from '../Elements/Phones';
 
@@ -292,7 +293,6 @@ function DesktopView({
     .indexOf('BOTH');
 
   const tBodyData = buildTbody(tableData, staticTableData.tbody, cols);
-
   return (
     <ApolloConsumer>
       {cache => (
@@ -317,23 +317,44 @@ function DesktopView({
                 </GridItem>
                 {tHeadData.map((item, idx) => (
                   <GridItem width={1 / 4} tagName="th" key={item.heading}>
-                    <BIAction>
-                      {action => (
+                    <EventTracker>
+                      {({ biAction, gaAction, }) => (
                         <StyledThInnerCont
                           hasBorderTop
                           hasBorderStart
                           hasBorderEnd
                           isHighlighted={idx === highlightedIndex}
                           onClick={() => {
-                            action({
+                            biAction({
                               actionCode: 105,
                               additionalInfo: {
                                 productId:
-                                  tableData[idx].subscriptionName === 'HTZ'
-                                    ? '243'
-                                    : '273',
+                                  tableData[idx].subscriptionName === 'BOTH'
+                                    ? '274'
+                                    : tableData[idx].subscriptionName === 'HTZ'
+                                      ? '243'
+                                      : '273',
                                 stage: 'slot',
                               },
+                            });
+                            gaAction({
+                              category: 'promotions-step 2',
+                              action: 'continue button',
+                              label:
+                                tableData[idx].subscriptionName === 'BOTH'
+                                  ? 'dual'
+                                  : tableData[idx].subscriptionName === 'HTZ'
+                                    ? 'haaretz'
+                                    : 'themsarker',
+                            });
+                            ReactGA.ga('ec:addProduct', {
+                              id: item.subscriptionName,
+                              name: tableData[idx].productTitle,
+                              position: idx + 1,
+                              brand: item.pricingHead,
+                            });
+                            ReactGA.ga('ec:setAction', 'click', {
+                              list: 'Slot Stage Results',
                             });
                             continueToNextStage({
                               cache,
@@ -369,7 +390,7 @@ function DesktopView({
                           </Button>
                         </StyledThInnerCont>
                       )}
-                    </BIAction>
+                    </EventTracker>
                   </GridItem>
                 ))}
               </Grid>

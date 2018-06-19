@@ -1,9 +1,10 @@
-import React, { Component, } from 'react';
+import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
+import ReactGA from 'react-ga';
 import { ApolloConsumer, } from 'react-apollo';
 import { borderTop, borderBottom, } from '@haaretz/htz-css-tools';
-import { Button, BIAction, H, } from '@haaretz/htz-components';
+import { Button, EventTracker, H, } from '@haaretz/htz-components';
 import PositiveCircle from './PositiveCircle';
 import Phones from '../Elements/Phones';
 
@@ -146,138 +147,177 @@ class MobileView extends Component {
             render={({ className, theme, }) => (
               <div className={className}>
                 {tableData.map((item, idx) => (
-                  <StyledItemCont
-                    isFirst={idx === 0}
-                    key={Math.random()}
-                    onClick={() => {
-                      continueToNextStage({ cache, idx, routerPush: true, });
-                    }}
-                  >
-                    <StyledItemMainCont>
-                      <StyledItemStartCont>
-                        <StyledItemHeading>
-                          {staticTableData.thead[item.subscriptionName].heading}
-                        </StyledItemHeading>
-                        <StyledItemPricingMonthly>
-                          {item.pricingHead}
-                        </StyledItemPricingMonthly>
-                        <div>
-                          {
-                            staticTableData.thead.mobileUnderPricing[
-                              idx !== 0 ? 'default' : 'firstItem'
-                            ]
-                          }
-                        </div>
-                        <BIAction>
-                          {action => (
-                            <Button
-                              href={pathName}
-                              // asPath={router.asPath}
-                              variant="salesOpaque"
-                              miscStyles={{ marginTop: '3rem', }}
-                              onClick={() => {
-                                action({
-                                  actionCode: 105,
-                                  additionalInfo: {
-                                    productId:
-                                      tableData[idx].subscriptionName === 'HTZ'
-                                        ? '243'
-                                        : '273',
-                                    stage: 'slot',
-                                  },
-                                });
-                                continueToNextStage({
-                                  cache,
-                                  idx,
-                                  routerPush: true,
-                                });
-                              }}
-                            >
-                              {
-                                staticTableData.thead[item.subscriptionName]
-                                  .btnText
-                              }
-                            </Button>
-                          )}
-                        </BIAction>
-                      </StyledItemStartCont>
-                      <StyledItemEndCont>
-                        <FelaComponent style={{ marginBottom: '2rem', }}>
-                          <Phones subscription={item.subscriptionName} />
-                        </FelaComponent>
-                        {/* todo: a11y open/close menu */}
-                        {/* todo: add a variant with correct focus and active colors */}
-                        <Button
-                          isFlat
-                          onClick={evt => {
-                            evt.stopPropagation();
-                            this.toggleMenu(item.subscriptionName);
+                  <Fragment key={tableData[idx].subscriptionName}>
+                    <EventTracker>
+                      {({ biAction, gaAction, }) => (
+                        <StyledItemCont
+                          isFirst={idx === 0}
+                          key={Math.random()}
+                          onClick={() => {
+                            biAction({
+                              actionCode: 105,
+                              additionalInfo: {
+                                productId:
+                                  tableData[idx].subscriptionName === 'BOTH'
+                                    ? '274'
+                                    : tableData[idx].subscriptionName === 'HTZ'
+                                      ? '243'
+                                      : '273',
+                                stage: 'slot',
+                              },
+                            });
+                            gaAction({
+                              category: 'promotions-step 2',
+                              action: 'continue button',
+                              label:
+                                tableData[idx].subscriptionName === 'BOTH'
+                                  ? 'dual'
+                                  : tableData[idx].subscriptionName === 'HTZ'
+                                    ? 'haaretz'
+                                    : 'themarker',
+                            });
+                            ReactGA.ga('ec:addProduct', {
+                              id: item.subscriptionName,
+                              name: item.productTitle,
+                              position: idx + 1,
+                              brand: item.pricingHead,
+                            });
+
+                            ReactGA.ga('ec:setAction', 'click', {
+                              list: 'Slot Stage Results',
+                            });
+                            continueToNextStage({
+                              cache,
+                              idx,
+                              routerPush: true,
+                            });
                           }}
                         >
-                          <FelaComponent
-                            style={{
-                              ...theme.type(-2),
-                              fontWeight: '400',
-                              ...borderBottom(
-                                '1px',
-                                0.25,
-                                'solid',
-                                theme.color('offerPage', 'borderHighlighted')
-                              ),
-                            }}
-                            render={({ className, }) => (
-                              <span className={className}>
-                                {staticTableData.mobileExpandBtn}
-                              </span>
-                            )}
-                          />
-                        </Button>
-                      </StyledItemEndCont>
-                    </StyledItemMainCont>
-                    {this.state.menuOpen === item.subscriptionName ? (
-                      <div>
-                        {staticTableData.tbody.list.map(
-                          row =>
-                            row[item.subscriptionName] && (
-                              <StyledTableItem key={Math.random()}>
-                                <div>{row.description}</div> <PositiveCircle />
-                              </StyledTableItem>
-                            )
-                        )}
-                        {item.pricingYearly && (
-                          <StyledTableItem>
-                            <div>{staticTableData.tbody.pricingYearlyText}</div>
-                            <FelaComponent style={{ textAlign: 'end', }}>
-                              {item.pricingYearly.map((row, jdx) => (
+                          <StyledItemMainCont>
+                            <StyledItemStartCont>
+                              <StyledItemHeading>
+                                {
+                                  staticTableData.thead[item.subscriptionName]
+                                    .heading
+                                }
+                              </StyledItemHeading>
+                              <StyledItemPricingMonthly>
+                                {item.pricingHead}
+                              </StyledItemPricingMonthly>
+                              <div>
+                                {
+                                  staticTableData.thead.mobileUnderPricing[
+                                    idx !== 0 ? 'default' : 'firstItem'
+                                  ]
+                                }
+                              </div>
+                              <Button
+                                href={pathName}
+                                // asPath={router.asPath}
+                                variant="salesOpaque"
+                                miscStyles={{ marginTop: '3rem', }}
+                                onClick={() => {
+                                  continueToNextStage({
+                                    cache,
+                                    idx,
+                                    routerPush: true,
+                                  });
+                                }}
+                              >
+                                {
+                                  staticTableData.thead[item.subscriptionName]
+                                    .btnText
+                                }
+                              </Button>
+                            </StyledItemStartCont>
+                            <StyledItemEndCont>
+                              <FelaComponent style={{ marginBottom: '2rem', }}>
+                                <Phones subscription={item.subscriptionName} />
+                              </FelaComponent>
+                              {/* todo: a11y open/close menu */}
+                              {/* todo: add a variant with correct focus and active colors */}
+                              <Button
+                                isFlat
+                                onClick={evt => {
+                                  evt.stopPropagation();
+                                  this.toggleMenu(item.subscriptionName);
+                                }}
+                              >
                                 <FelaComponent
                                   style={{
-                                    ...(jdx === 0
-                                      ? { fontWeight: 'bold', }
-                                      : {}),
+                                    ...theme.type(-2),
+                                    fontWeight: '400',
+                                    ...borderBottom(
+                                      '1px',
+                                      0.25,
+                                      'solid',
+                                      theme.color(
+                                        'offerPage',
+                                        'borderHighlighted'
+                                      )
+                                    ),
                                   }}
-                                >
-                                  {row}
-                                </FelaComponent>
-                              ))}
-                            </FelaComponent>
-                          </StyledTableItem>
-                        )}
-                        {item.pricingMonthly && (
-                          <StyledTableItem>
+                                  render={({ className, }) => (
+                                    <span className={className}>
+                                      {staticTableData.mobileExpandBtn}
+                                    </span>
+                                  )}
+                                />
+                              </Button>
+                            </StyledItemEndCont>
+                          </StyledItemMainCont>
+                          {this.state.menuOpen === item.subscriptionName ? (
                             <div>
-                              {staticTableData.tbody.pricingMonthlyText}
+                              {staticTableData.tbody.list.map(
+                                row =>
+                                  row[item.subscriptionName] && (
+                                    <StyledTableItem key={Math.random()}>
+                                      <div>{row.description}</div>{' '}
+                                      <PositiveCircle />
+                                    </StyledTableItem>
+                                  )
+                              )}
+                              {item.pricingYearly && (
+                                <StyledTableItem>
+                                  <div>
+                                    {staticTableData.tbody.pricingYearlyText}
+                                  </div>
+                                  <FelaComponent style={{ textAlign: 'end', }}>
+                                    {item.pricingYearly.map((row, jdx) => (
+                                      <FelaComponent
+                                        style={{
+                                          ...(jdx === 0
+                                            ? { fontWeight: 'bold', }
+                                            : {}),
+                                        }}
+                                      >
+                                        {row}
+                                      </FelaComponent>
+                                    ))}
+                                  </FelaComponent>
+                                </StyledTableItem>
+                              )}
+                              {item.pricingMonthly && (
+                                <StyledTableItem>
+                                  <div>
+                                    {staticTableData.tbody.pricingMonthlyText}
+                                  </div>
+                                  <FelaComponent style={{ textAlign: 'end', }}>
+                                    {item.pricingMonthly.map(row => (
+                                      <div>{row}</div>
+                                    ))}
+                                  </FelaComponent>
+                                </StyledTableItem>
+                              )}
+                              <StyledTableFooter>
+                                {staticTableData.tfoot}
+                              </StyledTableFooter>
                             </div>
-                            <FelaComponent style={{ textAlign: 'end', }}>
-                              {item.pricingMonthly.map(row => <div>{row}</div>)}
-                            </FelaComponent>
-                          </StyledTableItem>
-                        )}
-                        <StyledTableFooter>
-                          {staticTableData.tfoot}
-                        </StyledTableFooter>
-                      </div>
-                    ) : null}
-                  </StyledItemCont>
+                          ) : null}
+                        </StyledItemCont>
+                      )}
+                    </EventTracker>
+                  </Fragment>
                 ))}
               </div>
             )}

@@ -2,9 +2,10 @@ import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
+import ReactGA from 'react-ga';
 import {
   Button,
-  BIAction,
+  EventTracker,
   Form,
   TextInput,
   HtzLink,
@@ -13,6 +14,14 @@ import gql from 'graphql-tag';
 import OfferList from './ChooseProductStageElements/OfferList';
 import Modal from './ChooseProductStageElements/Modal';
 import UserMessage from './Elements/UserMessage';
+
+const gaMapper = {
+  productId: {
+    243: 'haaretz',
+    273: 'themarker',
+    274: 'dual',
+  },
+};
 
 const GET_COUPON_DATA = gql`
   query couponProduct($couponCode: String!) {
@@ -102,8 +111,42 @@ class ChooseProductStage extends Component {
     couponError: null,
     modalOpen: false,
     offerListChosenTermsIndex: null,
+    chosenProduct: 0,
   };
 
+  componentDidMount() {
+    this.props.products[this.state.chosenProduct].offerList.map((item, idx) =>
+      ReactGA.ga('ec:addImpression', {
+        id: item.paymentData.saleCode,
+        name: `${item.type}-${
+          this.props.products[this.state.chosenProduct].contentName
+        }`,
+        brand: `salecode[${item.paymentData.saleCode}]`,
+        position: idx + 1,
+        price: item.price,
+        variant: `promotionNumber-${item.paymentData.promotionNumber}`,
+        list: 'Product Stage Results',
+      })
+    );
+  }
+  componentDidUpdate(prevProps, prevState) {
+    // only update impressions if the chosenProduct state has changed
+    if (prevState.chosenProduct !== this.state.chosenProduct) {
+      this.props.products[this.state.chosenProduct].offerList.map((item, idx) =>
+        ReactGA.ga('ec:addImpression', {
+          id: item.paymentData.saleCode,
+          name: `${item.type}-${
+            this.props.products[this.state.chosenProduct].contentName
+          }`,
+          brand: `salecode[${item.paymentData.saleCode}]`,
+          position: idx + 1,
+          price: item.price,
+          variant: `promotionNumber-${item.paymentData.promotionNumber}`,
+          list: 'Product Stage Results',
+        })
+      );
+    }
+  }
   openModal = offerListChosenTermsIndex => {
     this.setState({ modalOpen: true, offerListChosenTermsIndex, });
   };
@@ -123,10 +166,11 @@ class ChooseProductStage extends Component {
       userMessage,
     } = this.props;
 
-    const { offerList, cancelButtonText, } =
+    const { offerList, cancelButtonText, contentName, } =
       chosenProductIndex === 'couponProduct'
         ? JSON.parse(couponProduct)
         : products[chosenProductIndex];
+    const productName = gaMapper.productId[offerList[0].paymentData.productID];
     return (
       <FelaComponent
         render={({
@@ -162,6 +206,7 @@ class ChooseProductStage extends Component {
                 />
                 <UserMessage userMessage={userMessage} />
                 <OfferList
+                  contentName={contentName}
                   cancelButtonText={cancelButtonText}
                   fourDigits={fourDigits}
                   offerList={offerList}
@@ -169,13 +214,13 @@ class ChooseProductStage extends Component {
                   termsButtonText={termsButtonText}
                 />
                 {!(subStage === 4 || subStage === 6) && (
-                  <StyledMoreOptionsCont>
-                    {products.map(
-                      (product, idx) =>
-                        (idx !== chosenProductIndex ? (
-                          <Fragment key={product.productTitle}>
-                            <BIAction>
-                              {action => (
+                  <EventTracker>
+                    {({ biAction, gaAction, }) => (
+                      <StyledMoreOptionsCont>
+                        {products.map(
+                          (product, idx) =>
+                            (idx !== chosenProductIndex ? (
+                              <Fragment key={product.productTitle}>
                                 <Button
                                   key={product.productTitle}
                                   variant="primary"
@@ -189,103 +234,115 @@ class ChooseProductStage extends Component {
                                         },
                                       },
                                     });
-                                    action({
+                                    this.setState({ chosenProduct: idx, });
+                                    biAction({
                                       actionCode: 25,
                                       additionalInfo: {
                                         stage: 'product',
                                       },
                                     });
+                                    gaAction({
+                                      category: `promotions-step-3-${productName}`,
+                                      action: 'student-button',
+                                      label: `${productName}`,
+                                    });
                                   }}
                                 >
                                   {product.productTitle}
                                 </Button>
-                              )}
-                            </BIAction>
-                          </Fragment>
-                        ) : null)
-                    )}
-                    {couponExist &&
-                      (this.state.couponFormOpen ? (
-                        <Form
-                          clearFormAfterSubmit={false}
-                          onSubmit={async ({ couponCode, }) => {
-                            this.setState({
-                              couponLoading: true,
-                              couponError: false,
-                            });
-                            try {
-                              const { data, } = await cache.query({
-                                query: GET_COUPON_DATA,
-                                variables: { couponCode, },
-                              });
-                              if (data.couponProduct.couponErrorMessage) {
+                              </Fragment>
+                            ) : null)
+                        )}
+                        {couponExist &&
+                          (this.state.couponFormOpen ? (
+                            <Form
+                              clearFormAfterSubmit={false}
+                              onSubmit={async ({ couponCode, }) => {
                                 this.setState({
-                                  couponLoading: false,
-                                  couponError:
-                                    data.couponProduct.couponErrorMessage,
+                                  couponLoading: true,
+                                  couponError: false,
                                 });
-                              }
+                                try {
+                                  const { data, } = await cache.query({
+                                    query: GET_COUPON_DATA,
+                                    variables: { couponCode, },
+                                  });
+                                  if (data.couponProduct.couponErrorMessage) {
+                                    this.setState({
+                                      couponLoading: false,
+                                      couponError:
+                                        data.couponProduct.couponErrorMessage,
+                                    });
+                                    gaAction({
+                                      category: `promotions-step-3-${productName}`,
+                                      action: `coupon send-${productName}`,
+                                      label: `coupon-submitted-error-${productName}`,
+                                    });
+                                  }
  else {
-                                this.setState({
-                                  couponLoading: false,
-                                  couponFormOpen: false,
-                                });
-                                cache.writeData({
-                                  data: {
-                                    promotionsPageState: {
-                                      chosenProductIndex: 'couponProduct',
-                                      couponProduct: JSON.stringify(
-                                        data.couponProduct
-                                      ),
-                                      __typename: 'PromotionsPageState',
-                                    },
-                                  },
-                                });
-                              }
-                            }
+                                    this.setState({
+                                      couponLoading: false,
+                                      couponFormOpen: false,
+                                    });
+                                    cache.writeData({
+                                      data: {
+                                        promotionsPageState: {
+                                          chosenProductIndex: 'couponProduct',
+                                          couponProduct: JSON.stringify(
+                                            data.couponProduct
+                                          ),
+                                          __typename: 'PromotionsPageState',
+                                        },
+                                      },
+                                    });
+                                    gaAction({
+                                      category: `promotions-step-3-${productName}`,
+                                      action: `coupon send-${productName}`,
+                                      label: `coupon-submitted-${productName}`,
+                                    });
+                                  }
+                                }
  catch (err) {
-                              this.setState({
-                                couponLoading: false,
-                                couponError,
-                              });
-                              console.log('error from catch', err);
-                            }
-                          }}
-                          // todo: validation for coupon
-                          validate={({ couponCode, }) => {
-                            const errors = [];
-                            if (!couponCode) {
-                              errors.push({
-                                name: 'couponCode',
-                                order: 1,
-                                errorText: validation,
-                              });
-                            }
+                                  this.setState({
+                                    couponLoading: false,
+                                    couponError,
+                                  });
+                                  console.log('error from catch', err);
+                                }
+                              }}
+                              // todo: validation for coupon
+                              validate={({ couponCode, }) => {
+                                const errors = [];
+                                if (!couponCode) {
+                                  errors.push({
+                                    name: 'couponCode',
+                                    order: 1,
+                                    errorText: validation,
+                                  });
+                                }
 
-                            return errors;
-                          }}
-                          render={({ getInputProps, handleSubmit, }) => (
-                            <StyledCouponForm>
-                              <TextInput
-                                {...getInputProps({
-                                  name: 'couponCode',
-                                  label: textLabel,
-                                  noteText: textNote,
-                                  errorText: this.state.couponError,
-                                  isError: this.state.couponError,
-                                  // todo: how to get the right width
-                                  miscStyles: { minWidth: '32rem', },
-                                })}
-                              />
-                              <BIAction>
-                                {action => (
+                                return errors;
+                              }}
+                              render={({ getInputProps, handleSubmit, }) => (
+                                <StyledCouponForm>
+                                  <TextInput
+                                    {...getInputProps({
+                                      name: 'couponCode',
+                                      label: textLabel,
+                                      noteText: textNote,
+                                      errorText: this.state.couponError,
+                                      isError: this.state.couponError,
+                                      // todo: how to get the right width
+                                      miscStyles: { minWidth: '32rem', },
+                                    })}
+                                  />
                                   <Button
                                     variant="primaryOpaque"
                                     isBusy={this.state.couponLoading}
                                     boxModel={{ hp: 3, vp: 1, }}
                                     onClick={evt => {
                                       handleSubmit(evt);
-                                      action({
+                                      biAction({
                                         actionCode: 24,
                                         additionalInfo: {
                                           stage: 'product',
@@ -296,75 +353,78 @@ class ChooseProductStage extends Component {
                                   >
                                     {send}
                                   </Button>
-                                )}
-                              </BIAction>
-                              <Button
-                                variant="neutral"
-                                isFlat
-                                boxModel={{ hp: 3, vp: 1, }}
-                                onClick={() => {
-                                  this.setState({ couponFormOpen: false, });
-                                }}
-                                miscStyles={couponButtonsMiscStyles}
-                              >
-                                {close}
-                              </Button>
-                            </StyledCouponForm>
-                          )}
-                        />
-                      ) : (
-                        <BIAction>
-                          {action => (
+                                  <Button
+                                    variant="neutral"
+                                    isFlat
+                                    boxModel={{ hp: 3, vp: 1, }}
+                                    onClick={() => {
+                                      this.setState({ couponFormOpen: false, });
+                                    }}
+                                    miscStyles={couponButtonsMiscStyles}
+                                  >
+                                    {close}
+                                  </Button>
+                                </StyledCouponForm>
+                              )}
+                            />
+                          ) : (
                             <Button
                               variant="primary"
                               miscStyles={moreOptionsButtonsMiscStyles}
                               onClick={() => {
                                 this.setState({ couponFormOpen: true, });
-                                action({
+                                biAction({
                                   actionCode: 22,
                                   additionalInfo: {
                                     stage: 'product',
                                   },
                                 });
+                                gaAction({
+                                  category: `promotions-step-3-${productName}`,
+                                  action: `coupon-clicked-${productName}`,
+                                  label: `coupon-clicked-${productName}`,
+                                });
                               }}
                             >
                               {coupon}
                             </Button>
-                          )}
-                        </BIAction>
-                      ))}
-                    <FelaComponent
-                      style={theme => ({
-                        marginTop: '4rem',
-                        fontWeight: '700',
-                        extend: [ theme.type(-1), ],
-                      })}
-                      render="p"
-                    >
-                      {entitlements.beforeLinkText}{' '}
-                      <HtzLink
-                        href={entitlements.link}
-                        content={
-                          <FelaComponent
-                            render="span"
-                            style={{
-                              textDecoration: 'underline',
-                              textDecorationSkip: 'ink',
+                          ))}
+                        <FelaComponent
+                          style={theme => ({
+                            marginTop: '4rem',
+                            fontWeight: '700',
+                            extend: [ theme.type(-1), ],
+                          })}
+                          render="p"
+                        >
+                          {entitlements.beforeLinkText}{' '}
+                          <HtzLink
+                            onClick={() => {
+                              gaAction({
+                                category: 'promotions-step-3',
+                                action: 'newspaper subscribers',
+                              });
                             }}
-                          >
-                            {entitlements.linkText}
-                          </FelaComponent>
-                        }
-                      />
-                    </FelaComponent>
-                    <FelaComponent
-                      style={theme => ({
-                        marginTop: '2rem',
-                        extend: [ theme.type(-1), ],
-                      })}
-                    >
-                      <BIAction>
-                        {action => (
+                            href={entitlements.link}
+                            content={
+                              <FelaComponent
+                                render="span"
+                                style={{
+                                  textDecoration: 'underline',
+                                  textDecorationSkip: 'ink',
+                                }}
+                              >
+                                {entitlements.linkText}
+                              </FelaComponent>
+                            }
+                          />
+                        </FelaComponent>
+                        <FelaComponent
+                          style={theme => ({
+                            marginTop: '2rem',
+                            extend: [ theme.type(-1), ],
+                          })}
+                        >
                           <HtzLink
                             href={organizationSubscription.url[host]}
                             content={
@@ -376,7 +436,7 @@ class ChooseProductStage extends Component {
                                 }}
                                 onClick={() => {
                                   // TODO: fix external url fetch
-                                  action({
+                                  biAction({
                                     actionCode: 42,
                                     additionalInfo: {
                                       organization:
@@ -389,10 +449,10 @@ class ChooseProductStage extends Component {
                               </FelaComponent>
                             }
                           />
-                        )}
-                      </BIAction>
-                    </FelaComponent>
-                  </StyledMoreOptionsCont>
+                        </FelaComponent>
+                      </StyledMoreOptionsCont>
+                    )}
+                  </EventTracker>
                 )}
               </StyledCont>
             )}

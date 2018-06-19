@@ -47,17 +47,19 @@ function Stage4() {
                 const parsedCouponProduct = JSON.parse(couponProduct);
 
                 // if couponProduct is chosen use the couponProduct from local state
-                const chosenOffer =
+
+                const chosenProduct =
                   chosenProductIndex === 'couponProduct'
-                    ? parsedCouponProduct.offerList[chosenOfferIndex]
+                    ? parsedCouponProduct
                     : data.purchasePage.slots[chosenSlotIndex].products[
                         chosenProductIndex
-                      ].offerList[chosenOfferIndex];
-                const paymentData = chosenOffer.paymentData;
+                      ];
 
+                const chosenOffer = chosenProduct.offerList[chosenOfferIndex];
+                const chosenProductContentName = chosenProduct.contentName;
+                const paymentData = chosenOffer.paymentData;
                 const chosenSubscription =
                   data.purchasePage.slots[chosenSlotIndex].subscriptionName;
-
                 const chosenPaymentArrangement = chosenOffer.type;
 
                 return (
@@ -65,9 +67,7 @@ function Stage4() {
                     style={{ textAlign: 'center', }}
                     render={({
                       className,
-                      theme: {
-                        stage4: { header, details, },
-                      },
+                      theme: { stage4: { header, details, }, },
                     }) => (
                       <div className={className}>
                         <StageCounter stage={4} />
@@ -128,6 +128,10 @@ function Stage4() {
                             }
                             stageElement={
                               <PaymentStage
+                                // chosenOffer={chosenOffer} hope we wont use it
+                                chosenProductContentName={
+                                  chosenProductContentName
+                                }
                                 hasDebt={!!data.purchasePage.pastDebts}
                                 creditCardsDetails={
                                   data.purchasePage.creditCardsDetails
@@ -138,6 +142,7 @@ function Stage4() {
                                 }
                                 firstPaymentAmount={paymentData.prices[0]}
                                 nextPaymentAmount={paymentData.prices[1]}
+                                paymentData={paymentData}
                                 displayPayPal={paymentData.paymentType === 'J4'}
                               />
                             }

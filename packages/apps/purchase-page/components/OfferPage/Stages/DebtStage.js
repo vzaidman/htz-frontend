@@ -5,6 +5,7 @@ import { FelaComponent, } from 'react-fela';
 import { Button, CheckBox, Form, BIAction, } from '@haaretz/htz-components';
 import { ApolloConsumer, } from 'react-apollo';
 import Router, { withRouter, } from 'next/router';
+import { friendlyRoutes, } from '../../../routes/routes';
 
 const propTypes = {
   pastDebts: PropTypes.arrayOf(
@@ -119,7 +120,7 @@ function StageDebt({ pastDebts, router, }) {
                       },
                     },
                   });
-                  Router.push('/promotions-page/stage5', router.asPath);
+                  Router.push('/promotions-page/stage5', friendlyRoutes.stage5);
                 }}
                 validate={({ terms, }) => {
                   const errors = [];

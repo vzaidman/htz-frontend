@@ -9,7 +9,7 @@ import {
   IconMarkerLogo,
   IconHaaretzLogo,
   IconLock,
-  BIAction,
+  EventTracker,
   HtzLink,
 } from '@haaretz/htz-components';
 
@@ -18,7 +18,7 @@ const propTypes = {
   /** passed as a a prop by fela's withTheme func before default export */
   host: PropTypes.string.isRequired,
   router: PropTypes.shape().isRequired,
-  /** passing stage from client promotionsPageState to BIAction */
+  /** passing stage from client promotionsPageState to EventTrackers */
   stage: PropTypes.PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ])
     .isRequired,
 };
@@ -134,16 +134,22 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
               <FelaComponent
                 style={backLinkStyle}
                 render={({ className, }) => (
-                  <BIAction>
-                    {action => (
+                  <EventTracker>
+                    {({ biAction, gaAction, }) => (
                       <button
                         className={className}
                         onClick={() => {
-                          action({
+                          console.warn('stage: ', stage);
+                          biAction({
                             actionCode: 42,
                             additionalInfo: {
                               stage,
                             },
+                          });
+                          gaAction({
+                            category: 'promotion-header',
+                            action: 'navigate-back',
+                            label: `from-stage-${stage}`,
                           });
                           Router.back();
                         }}
@@ -159,7 +165,7 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
                         </FelaComponent>
                       </button>
                     )}
-                  </BIAction>
+                  </EventTracker>
                 )}
               />
             ) : (

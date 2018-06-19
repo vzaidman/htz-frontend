@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import { BIAction, } from '@haaretz/htz-components';
+import { EventTracker, } from '@haaretz/htz-components';
 
 TermsButton.propTypes = {
   displayOnMobile: PropTypes.bool.isRequired,
@@ -47,31 +47,41 @@ const StyledTermsButton = createComponent(termsButtonStyle, 'button', [
 function TermsButton({
   displayOnMobile,
   isRecommended,
+  // eslint-disable-next-line react/prop-types
+  offer,
   offerIdx,
   termsButtonText,
   openModal,
 }) {
   return (
-    <BIAction>
-      {action => (
+    <EventTracker>
+      {({ biAction, gaAction, gaMapper, }) => (
         <StyledTermsButton
           isRecommended={isRecommended}
           displayOnMobile={displayOnMobile}
           onClick={evt => {
             evt.stopPropagation();
             openModal(offerIdx);
-            action({
-              actionCode: 21,
+            biAction({
+              actionCode: 26,
               additionalInfo: {
                 stage: 'product',
               },
+            });
+            gaAction({
+              category: `promotions-step-3-${
+                gaMapper.productId[offer.paymentData.productID]
+              }`,
+              action: `terms-${
+                gaMapper.productId[offer.paymentData.productID]
+              }`,
             });
           }}
         >
           {termsButtonText}
         </StyledTermsButton>
       )}
-    </BIAction>
+    </EventTracker>
   );
 }
 

@@ -6,6 +6,7 @@ import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Button, IconHtzLoader, IconTmLoader, } from '@haaretz/htz-components';
 import Router from 'next/router';
+import ReactGA from 'react-ga';
 import { FelaComponent, } from 'react-fela';
 import Redirect from '../../Redirect/Redirect';
 
@@ -74,6 +75,8 @@ function DisplayError() {
 
 class Wrapper extends Component {
   static propTypes = {
+    chosenPaymentArrangement: PropTypes.string.isRequired,
+    chosenProductContentName: PropTypes.string.isRequired,
     hostname: PropTypes.string.isRequired,
     paymentData: PropTypes.shape({}).isRequired,
     user: PropTypes.shape({}).isRequired,
@@ -94,6 +97,8 @@ class Wrapper extends Component {
   }
   render() {
     const {
+      chosenPaymentArrangement,
+      chosenProductContentName,
       hostname,
       paymentData,
       user,
@@ -142,16 +147,31 @@ class Wrapper extends Component {
             return <DisplayError />;
           }
           // todo: get productId from pay with existing card
-          return data.payWithExistingCard ? (
-            <Redirect
-              destination={`/promotions-page/thankYou?msg=thank_user&product=${
-                paymentData.productID
-              }`}
-              replace
-            />
-          ) : (
-            <DisplayError />
-          );
+          if (data.payWithExistingCard) {
+            ReactGA.ga('ec:addProduct', {
+              id: paymentData.saleCode,
+              name: `${chosenPaymentArrangement}-${chosenProductContentName}`,
+              // category: offer.title,
+              brand: `brand-salecode[${paymentData.saleCode}]`,
+              price: paymentData.prices[0].toString(),
+              variant: `promotionNumber-${paymentData.promotionNumber}`,
+            });
+            ReactGA.ga('ec:setAction', 'purchase', {
+              id: paymentData.saleCode, // (Required) Transaction id (string).
+              list: 'Product Stage Results',
+              revenue: paymentData.prices[0].toString(),
+              coupon: paymentData.saleCode,
+            });
+            return (
+              <Redirect
+                destination={`/promotions-page/thankYou?msg=thank_user&product=${
+                  paymentData.productID
+                }`}
+                replace
+              />
+            );
+          }
+          return <DisplayError />;
         }}
       </Query>
     );

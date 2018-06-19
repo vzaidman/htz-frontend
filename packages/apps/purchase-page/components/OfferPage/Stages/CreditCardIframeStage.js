@@ -8,9 +8,11 @@ import PaymentSummary from './StagePaymentElements/PaymentSummary';
 const propTypes = {
   chosenSubscription: PropTypes.string.isRequired,
   chosenPaymentArrangement: PropTypes.string.isRequired,
+  chosenProductContentName: PropTypes.string.isRequired,
   firstPaymentAmount: PropTypes.number.isRequired,
   nextPaymentAmount: PropTypes.number.isRequired,
   creditGuardSrc: PropTypes.string.isRequired,
+  paymentData: PropTypes.shape({}).isRequired,
 };
 
 const defaultProps = {};
@@ -37,9 +39,11 @@ const secureLineContStyle = {
 function CreditCardIframeStage({
   chosenSubscription,
   chosenPaymentArrangement,
+  chosenProductContentName,
   firstPaymentAmount,
   nextPaymentAmount,
   creditGuardSrc,
+  paymentData,
 }) {
   return (
     <FelaComponent style={contStyle}>
@@ -50,7 +54,12 @@ function CreditCardIframeStage({
           firstPaymentAmount={firstPaymentAmount}
           nextPaymentAmount={nextPaymentAmount}
         />
-        <CreditCardIframe creditGuardSrc={creditGuardSrc} />
+        <CreditCardIframe
+          creditGuardSrc={creditGuardSrc}
+          paymentData={paymentData}
+          chosenProductContentName={chosenProductContentName}
+          chosenPaymentArrangement={chosenPaymentArrangement}
+        />
         <FelaComponent style={secureLineContStyle}>
           <SecurePaymentLine />
         </FelaComponent>
