@@ -140,7 +140,7 @@ describe('<CommentsSection>', () => {
               19.9522181: 0,
               19.9522183: 2,
             }}
-          />{' '}
+          />
         </ApolloProvider>
       );
       expect(output.find('CommentList').props().comments[0].author).toEqual(
@@ -188,7 +188,7 @@ describe('<CommentsSection>', () => {
                 author: 'third and editorsPick',
                 commentText: 'second second',
                 publishingDateForDisplay: '08:57',
-                commentId: '19.9522187',
+                commentId: '19.9551181',
                 reviewState: 'nr',
                 isEditorPick: 'true',
                 publishingDateSortable: '20171119002025',

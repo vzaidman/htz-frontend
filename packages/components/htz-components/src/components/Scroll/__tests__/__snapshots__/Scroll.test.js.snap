@@ -47,7 +47,7 @@ Object {
         "kind": "SelectionSet",
         "selections": Array [
           Object {
-            "alias": null,
+            "alias": undefined,
             "arguments": Array [],
             "directives": Array [
               Object {
@@ -68,7 +68,7 @@ Object {
               "kind": "SelectionSet",
               "selections": Array [
                 Object {
-                  "alias": null,
+                  "alias": undefined,
                   "arguments": Array [],
                   "directives": Array [],
                   "kind": "Field",
@@ -76,10 +76,10 @@ Object {
                     "kind": "Name",
                     "value": "x",
                   },
-                  "selectionSet": null,
+                  "selectionSet": undefined,
                 },
                 Object {
-                  "alias": null,
+                  "alias": undefined,
                   "arguments": Array [],
                   "directives": Array [],
                   "kind": "Field",
@@ -87,10 +87,10 @@ Object {
                     "kind": "Name",
                     "value": "y",
                   },
-                  "selectionSet": null,
+                  "selectionSet": undefined,
                 },
                 Object {
-                  "alias": null,
+                  "alias": undefined,
                   "arguments": Array [],
                   "directives": Array [],
                   "kind": "Field",
@@ -98,7 +98,7 @@ Object {
                     "kind": "Name",
                     "value": "velocity",
                   },
-                  "selectionSet": null,
+                  "selectionSet": undefined,
                 },
               ],
             },

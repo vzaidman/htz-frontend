@@ -38,7 +38,7 @@ const mocks = {
   }),
 
   Footer: () => ({
-    head: [
+    headList: [
       { contentName: 'מערכת', value: 'https://www.haaretz.co.il/misc/editors', },
       {
         contentName: 'הנהלה',

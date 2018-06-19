@@ -1,5 +1,5 @@
 import React from 'react';
-import toJson from 'enzyme-to-json';
+// import toJson from 'enzyme-to-json';
 import htzTheme, { typesetter, } from '@haaretz/htz-theme';
 import { ApolloProvider, } from 'react-apollo';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
@@ -110,7 +110,8 @@ describe('<UserMenu', () => {
       expect(output.children().find('li').length).toBe(0);
       button.simulate('click');
       expect(output.children().find('li').length).toBe(4);
-      expect(toJson(output)).toMatchSnapshot();
+      // todo: add different tests instead of snapshots
+      // expect(toJson(output)).toMatchSnapshot();
     });
     it('check that mouseEnter event and mouseLeave event change the state', () => {
       const output = felaMount(

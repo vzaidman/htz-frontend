@@ -208,6 +208,7 @@ exports[`<CommentsSection> DOM element renders correctly with minimum required p
             aria-haspopup={true}
             aria-label="open menu"
             className="htz-s htz-gd htz-q htz-r htz-a htz-b htz-cc htz-p htz-cp htz-ge htz-gf htz-gg htz-gh htz-gi htz-gj htz-gk htz-gl htz-gm htz-gn htz-go htz-aj htz-ak htz-gp htz-gq htz-fz htz-ga htz-gr htz-gs htz-bh htz-gt htz-cd htz-as"
+            data-toggle={true}
             onBlur={[Function]}
             onClick={[Function]}
             onKeyDown={[Function]}

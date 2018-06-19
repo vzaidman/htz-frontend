@@ -180,7 +180,6 @@ describe('<Select>', () => {
       ).toEqual(3);
       button.simulate('keydown', { key: 'ArrowDown', });
       button.simulate('keydown', { key: 'Enter', });
-      console.log('state output: ', output.state('selectedItem'));
       expect(
         output.find({ 'data-test': 'dropdown-menu', }).children().length
       ).toEqual(0);
