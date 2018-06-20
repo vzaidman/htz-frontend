@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import Link from '../Link/Link';
+import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
 
 /* Components styles */
 const mainWrapperStyle = ({ marginBottom, }) => ({
@@ -40,7 +41,7 @@ const InlineLink = createComponent(inlineLinkStyle, Link, props =>
   Object.keys(props)
 );
 
-const paragraphStyle = ({ theme, }) => {
+const paragraphStyle = theme => {
   const { type, color, ...paragraphStyles } =
     theme.articleStyle.paragraphStyles || {};
 
@@ -58,7 +59,21 @@ const paragraphStyle = ({ theme, }) => {
     ],
   };
 };
-const P = createComponent(paragraphStyle, 'p', props => Object.keys(props));
+
+// eslint-disable-next-line react/prop-types
+const P = ({ children, ...props }) => (
+  <FelaComponent
+    style={paragraphStyle}
+    render={({ className, }) => (
+      <Fragment>
+        <p className={className} {...props}>
+          {children}
+        </p>
+        <FirstImpressionPlaceholder />
+      </Fragment>
+    )}
+  />
+);
 
 const strongStyle = () => ({
   fontWeight: '700',
