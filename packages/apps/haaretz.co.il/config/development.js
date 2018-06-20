@@ -22,6 +22,9 @@ module.exports = {
   appFQDN: defer(function () {
     return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
   }),
+  remoteFQDN: defer(function () {
+    return `www.${this.domain}`;
+  }),
   useSSL: false,
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,

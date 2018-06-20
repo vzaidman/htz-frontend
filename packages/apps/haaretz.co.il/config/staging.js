@@ -21,9 +21,11 @@ module.exports = {
   appFQDN: defer(function () {
     return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
   }),
+  remoteFQDN: defer(function () {
+    return `pre.${this.domain}`;
+  }),
   useSSL: false,
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
   port: process.env.PORT || '3000',
-  // baseHref: 'https://www.haaretz.co.il',
 };

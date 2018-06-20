@@ -1,53 +1,37 @@
-/* eslint-disable func-names */
-// const defer = require('config/defer').deferConfig;
-
 const connectionPreset = process.env.CONNECTION_PRESET;
 let presetOverride = {};
 switch (connectionPreset) {
-  case 'dev':
-    presetOverride = require('./development');
+  case 'dev': {
+    const baseConfigOverride = require('./development');
+    presetOverride = Object.assign(presetOverride, baseConfigOverride.service, {
+      remoteFQDN: baseConfigOverride.remoteFQDN,
+    });
     break;
-  case 'staging':
-    presetOverride = require('./staging');
+  }
+
+  case 'stage': {
+    const baseConfigOverride = require('./staging');
+    Object.assign(presetOverride, baseConfigOverride.service, {
+      remoteFQDN: baseConfigOverride.remoteFQDN,
+    });
     break;
-  case 'prod':
-    presetOverride = require('./production');
+  }
+
+  case 'prod': {
+    const baseConfigOverride = require('./production');
+    Object.assign(presetOverride, baseConfigOverride.service, {
+      remoteFQDN: baseConfigOverride.remoteFQDN,
+    });
     break;
-  default:
+  }
+
+  default: {
     break;
+  }
 }
 
+if (connectionPreset) {
+  console.log(`CONNECTION_PRESET=${connectionPreset} detected!`);
+  console.log('Override is: ', Object.assign({}, presetOverride));
+}
 module.exports = Object.assign({}, presetOverride);
-// module.exports = {
-//   service: {
-//     base: defer(function () {
-//       return `http${
-//         this.useSSL ? 's' : ''
-//       }://${this.remoteFQDN}`;
-//     }),
-//     sso: 'https://sso.haaretz.co.il',
-//     image: 'https://images.haarets.co.il/image',
-//     graphql: defer(function () {
-//       return `http${
-//         this.graphQLuseSSL ? 's' : ''
-//       }://${this.appFQDN}${this.port ? `:${this.port}` : ''}/graphql`;
-//     }),
-//     polopolyImageBaseHref: defer(function () {
-//       return `http${
-//         this.useSSL ? 's' : ''
-//       }://${this.hostname ? `${this.hostname}.` : ''}${this.domain}${this.port ? `:${this.port}` : ''}`;
-//     }),
-//   },
-//   appFQDN: defer(function () {
-//     return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
-//   }),
-//   remoteFQDN: defer(function () {
-//     return `www.${this.domain}`;
-//   }),
-//   useSSL: true,
-//   graphQLuseSSL: false,
-//   domain: 'haaretz.co.il',
-//   hostname: process.env.HOSTNAME,
-//   port: process.env.PORT || '2004',
-//   // baseHref: 'https://www.haaretz.co.il',
-// };

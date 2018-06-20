@@ -27,12 +27,18 @@ const PORT = Number(
 );
 const app = next({ dev: DEV, });
 const handler = app.getRequestHandler();
+const selectedRoute = process.argv[2];
 const sitesRouting = new Map([
   [ 'htz', htz, ],
   [ 'tm', tm, ],
   [ 'hdc', hdc, ],
   [ 'purchase', purchase, ],
 ]);
+
+// Fail-fast in case of missing routing argument
+if (!(selectedRoute && sitesRouting.has(selectedRoute))) {
+  throw new Error('Missing required routing argument!');
+}
 
 const serviceBase = config.get('service.base');
 // proxy middleware options
@@ -104,7 +110,7 @@ app
     });
 
     // Get the current app's routing module.
-    sitesRouting.get(process.argv[2])(app, server, DEV);
+    sitesRouting.get(selectedRoute)(app, server, DEV);
 
     // Use static assets from the `static` directory
     server.use(

@@ -1,5 +1,5 @@
 export const breakUrl = url => {
-  const subdomainRegex = /(https?)?(?::\/\/)((.+?)\.(.+?))(?::)(\d{2,5})?(\/.+)?$/gim;
+  const subdomainRegex = /(https?)?(?::\/\/)?((.+?)\.(.+?))(?!:)(\d{2,5})?(\/.+)?$/gim;
   /*
       [0] - fullMatch. Ex. "http://elia.haaretz.co.il:3000/graphql"
       [1] - Fully Qualified domain name (FQDN). Ex. "elia.haaretz.co.il"
@@ -14,9 +14,8 @@ export const breakUrl = url => {
   const [ fullMatch, protocol, fqdn, hostname, domain, port, path, ] =
     subdomainRegex.exec(url) || [];
 
-  // let regexResult = subdomainRegex.exec(base);
   if (!fqdn) {
-    console.log(
+    console.error(
       `createContext regexResult was null for ${url} - falling back!`
     );
   }
@@ -26,9 +25,6 @@ export const breakUrl = url => {
 const getWithDomain = (fqdnToReplace, service) => {
   const { fqdn, } = breakUrl(service);
   const fqdnFromConfig = fqdn;
-  // console.log(`base service from config is: ${service}`);
-  // console.log(`fqdnFromConfig, ${fqdnFromConfig} fqdnToReplace: ${fqdnToReplace}`);
-  // console.log(`getWithDomain is: ${service.replace(fqdnFromConfig, fqdnToReplace)}`);
   return service.includes(fqdnFromConfig)
     ? service
     : service.replace(fqdnFromConfig, fqdnToReplace);

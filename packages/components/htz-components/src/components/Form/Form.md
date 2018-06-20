@@ -1,3 +1,13 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+- [Form](#form)
+- [Features](#features)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### Form
 
 `<Form />` is intended to help easly manage forms.  
@@ -9,12 +19,12 @@ For these reasons we built a generic `<Form />` that works well with our custom 
 
 ### Features
 
-* Get values in and out of form state easily
-* Handle Validation and error messages (including focusing on the correct error)
-* Handle form submission
-* Designed to work with Our custom `<TextInput />` and `<CheckBox/>` including error messages
-* Handle working with our custom `<TextInput />` when in contenteditable mode without requiring consumer to take care of differences
-* Fully customizable design using the render props pattern
+- Get values in and out of form state easily
+- Handle Validation and error messages (including focusing on the correct error)
+- Handle form submission
+- Designed to work with Our custom `<TextInput />` and `<CheckBox/>` including error messages
+- Handle working with our custom `<TextInput />` when in contenteditable mode without requiring consumer to take care of differences
+- Fully customizable design using the render props pattern
 
 **Basic Usage with minimum required props**
 

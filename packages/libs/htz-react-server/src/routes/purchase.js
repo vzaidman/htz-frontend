@@ -7,9 +7,6 @@ import { getWithDomain, } from '@haaretz/app-utils';
 import Cookies from 'universal-cookie';
 import config from 'config';
 
-const polopolyAppPrefix = '/promotions-page-react'; // path in polopoly (pages)
-const appPrefix = '/promotions-page'; // path shown in URL
-const folderPrefix = '/promotions-page'; // Project structure relative folder
 export const friendlyRoutes = {
   stage1: 'product',
   stage2: 'price',
@@ -18,24 +15,23 @@ export const friendlyRoutes = {
   stage5: 'payment',
   thankYou: 'thankYou',
 };
+const polopolyPromotionsPage =
+  config.get('polopolyPromotionsPagePath') || 'promotions-page-react';
+const appPrefix = '/promotions-page'; // path shown in URL
+const folderPrefix = '/promotions-page'; // Project structure relative folder
 
 let globalStageToRender = null;
 let isRedirect = false;
-const DEV = process.env.NODE_ENV === 'development';
-console.log(`process.env.NODE_ENV:${process.env.NODE_ENV} from purchase`);
 
 /**
  * A function that fetches data from papi endpoint and determines the first page
  * the app should render
  * @param {any} req An express.js request
+ * @param {boolean} DEV is in development mode
  * @returns {string} a stage to render, one of [ stage1, stage2, thankYou ]
  */
-async function getPageToRender(req) {
-  // const isTm = req.hostname.includes('themarker.com');
-  // const domain = isTm ? 'themarker.com' : 'haaretz.co.il';
-  // const subDomain =
-  //   process.env.NODE_ENV === 'production' ? 'www' : isTm ? 'tmtest' : 'pre';
-  // const protocol = config.get('papiProtocol');
+async function getPageToRender(req, DEV = false) {
+  // Path of promotions page in Polopoly CM
   const baseService = getWithDomain(req.hostname, config.get('service.base'));
 
   DEV && console.log('promo from getPageToRender', req.params.promo);
@@ -45,9 +41,9 @@ async function getPageToRender(req) {
   const userId = CookieUtils.stringToMap(cookies.get('tmsso') || '', {
     separator: /:\s?/,
   }).userId;
-  // const fetchUrl = `${protocol}://${subDomain}.${domain}/papi${polopolyAppPrefix}${promoPath ||
+  // const fetchUrl = `${protocol}://${subDomain}.${domain}/papi${polopolyPromotionsPage}${promoPath ||
   //   ''}?userId=${userId} `;
-  const fetchUrl = `${baseService}/papi${polopolyAppPrefix}${promoPath ||
+  const fetchUrl = `${baseService}/papi${polopolyPromotionsPage}${promoPath ||
     ''}?userId=${userId} `;
   DEV && console.log('path from getPageToRender', fetchUrl);
   try {
@@ -72,7 +68,7 @@ async function getPageToRender(req) {
   }
 }
 
-export default function purchase(app, server) {
+export default function purchase(app, server, DEV = false) {
   function render(req, res, stageToRender) {
     isRedirect = false;
     return app.render(req, res, `${folderPrefix}/${stageToRender}`, req.query);
@@ -95,7 +91,7 @@ export default function purchase(app, server) {
       const pageToRender =
         isRedirect && globalStageToRender
           ? globalStageToRender
-          : await getPageToRender(req);
+          : await getPageToRender(req, DEV);
 
       if (pageToRender === 'stage1') {
         return render(req, res, 'stage1');
@@ -118,7 +114,7 @@ export default function purchase(app, server) {
       const pageToRender =
         isRedirect && globalStageToRender
           ? globalStageToRender
-          : await getPageToRender(req);
+          : await getPageToRender(req, DEV);
 
       if (pageToRender === 'stage2') {
         return render(req, res, 'stage2');
@@ -138,7 +134,7 @@ export default function purchase(app, server) {
     const pageToRender =
       isRedirect && globalStageToRender
         ? globalStageToRender
-        : await getPageToRender(req);
+        : await getPageToRender(req, DEV);
     if (pageToRender === 'thankYou' || req.query.msg === 'thank_user') {
       return render(req, res, 'thankYou');
     }
@@ -156,7 +152,7 @@ export default function purchase(app, server) {
       `${appPrefix}/debt`,
     ],
     async (req, res) => {
-      const pageToRender = await getPageToRender(req);
+      const pageToRender = await getPageToRender(req, DEV);
       return redirect(req, res, pageToRender);
     }
   );
@@ -184,7 +180,7 @@ export default function purchase(app, server) {
         req.params.promo
       );
     const promoQuery = `offer=${encodeURIComponent(req.params.promo)}`;
-    const pageToRender = await getPageToRender(req);
+    const pageToRender = await getPageToRender(req, DEV);
     isRedirect = true;
     return res.redirect(
       `${appPrefix}/${friendlyRoutes[pageToRender]}?${promoQuery}`
@@ -204,24 +200,17 @@ export default function purchase(app, server) {
     const promoQuery = `offer=${encodeURIComponent(req.params.promo)}/${
       req.params.subPromo
     }`;
-    const pageToRender = await getPageToRender(req);
+    const pageToRender = await getPageToRender(req, DEV);
     isRedirect = true;
     return res.redirect(
       `${appPrefix}/${friendlyRoutes[pageToRender]}?${promoQuery}`
     );
   });
 
-  // todo: how to get static?
   server.use(
     [ '/static', `${appPrefix}/static`, ],
-    express.static(
-      path.join(
-        __dirname,
-        '../../../../../../packages/apps/purchase-page/static'
-      ),
-      {
-        redirect: false,
-      }
-    )
+    express.static(path.join(`${process.cwd()}/static`), {
+      redirect: false,
+    })
   );
 }

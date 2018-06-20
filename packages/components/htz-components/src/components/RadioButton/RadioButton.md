@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+- [RadioButton](#radiobutton)
+- [Features](#features)
+- [Uncontrolled Examples](#uncontrolled-examples)
+- [Conrolled Examples](#conrolled-examples)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### RadioButton
 
 `<RadioButton>` is a generically styled RadioButton, with a styleable label, easy to use and a11y compliant.
@@ -9,9 +21,9 @@ In most cases, we recommend using controlled components to implement forms. In a
 
 ### Features
 
-* Controllable, can be used both as controlled and uncontrolled input
-* a11y compliant
-* RadioButton is generically styled according to theme
+- Controllable, can be used both as controlled and uncontrolled input
+- a11y compliant
+- RadioButton is generically styled according to theme
 
 ### Uncontrolled Examples
 
@@ -20,8 +32,8 @@ In most cases, we recommend using controlled components to implement forms. In a
 At minimum can be used with the label prop
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton label="one"/>
+<div dir="rtl" style={{ padding: '5rem' }}>
+  <RadioButton label="one" />
 </div>
 ```
 
@@ -30,8 +42,8 @@ At minimum can be used with the label prop
 The custom attributes passed to attrs will be spread on the hidden input
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton attrs={{ example: "exampleAttr" }}  label="one"/>
+<div dir="rtl" style={{ padding: '5rem' }}>
+  <RadioButton attrs={{ example: 'exampleAttr' }} label="one" />
 </div>
 ```
 
@@ -40,8 +52,8 @@ The custom attributes passed to attrs will be spread on the hidden input
 Simply pass isDisabled prop to disable the RadioButton
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
-  <RadioButton isDisabled label="one"/>
+<div dir="rtl" style={{ padding: '5rem' }}>
+  <RadioButton isDisabled label="one" />
 </div>
 ```
 
@@ -50,18 +62,18 @@ Simply pass isDisabled prop to disable the RadioButton
 miscStyles trump all styles applyed to the wrapping label of the input
 
 ```jsx static
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <RadioButton
-    miscStyles={{ color: "red", alignItems: "baseline" }}
+    miscStyles={{ color: 'red', alignItems: 'baseline' }}
     label="labelRed"
   />
 </div>
 ```
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <RadioButton
-    miscStyles={{ color: "red", alignItems: "baseline" }}
+    miscStyles={{ color: 'red', alignItems: 'baseline' }}
     label="labelRed"
   />
 </div>
@@ -72,7 +84,7 @@ miscStyles trump all styles applyed to the wrapping label of the input
 native html name attribute, should connect all radioButtons with the same name, radio groups shoud use `<RadioGroup/>` component simply implementing the same name will not work properly.
 
 ```jsx static
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <RadioButton name="group" label="1" value="1" />
 </div>
 ```
@@ -82,12 +94,12 @@ native html name attribute, should connect all radioButtons with the same name, 
 These functions should be passed directly, and not through attrs
 
 ```jsx static
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <RadioButton
-  label="one"
-    onClick={() => console.log("clicked")}
-    onFocus={() => console.log("focused")}
-    onBlur={() => console.log("blured")}
+    label="one"
+    onClick={() => console.log('clicked')}
+    onFocus={() => console.log('focused')}
+    onBlur={() => console.log('blured')}
   />
 </div>
 ```
@@ -97,7 +109,7 @@ These functions should be passed directly, and not through attrs
 A custom id can be passed to the input, if no id is passed, a random one will be genrated.
 
 ```jsx static
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <RadioButton radioButtonId="1234" label="one" />
 </div>
 ```
@@ -127,19 +139,19 @@ class Example extends React.Component {
           label="1"
           value="1"
           onChange={evt => this.setState({ value: evt.target.value })}
-          checked={this.state.value === '1' }
+          checked={this.state.value === '1'}
         />
         <RadioButton
           label="2"
           value="2"
           onChange={evt => this.setState({ value: evt.target.value })}
-          checked={this.state.value === '2' }
+          checked={this.state.value === '2'}
         />
       </div>
     );
   }
 }
-  <Example />
+<Example />;
 ```
 
 ```jsx
@@ -147,7 +159,7 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: true
+      value: true,
     };
   }
 
@@ -159,19 +171,19 @@ class Example extends React.Component {
           label="1"
           value="1"
           onChange={evt => this.setState({ value: evt.target.value })}
-          checked={this.state.value === "1"}
+          checked={this.state.value === '1'}
         />
         <RadioButton
           label="2"
           value="2"
           onChange={evt => this.setState({ value: evt.target.value })}
-          checked={this.state.value === "2"}
+          checked={this.state.value === '2'}
         />
       </div>
     );
   }
 }
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <Example />
 </div>;
 ```

@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+- [CheckBox](#checkbox)
+- [Features](#features)
+- [Uncontrolled Examples](#uncontrolled-examples)
+- [Conrolled Examples](#conrolled-examples)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### CheckBox
 
 `<CheckBox>` is a generically styled checkBox, with a styleable label, easy to use and a11y compliant.
@@ -9,9 +21,9 @@ In most cases, we recommend using controlled components to implement forms. In a
 
 ### Features
 
-* Controllable, can be used both as controlled and uncontrolled input
-* a11y compliant
-* CheckBox is generically styled according to theme
+- Controllable, can be used both as controlled and uncontrolled input
+- a11y compliant
+- CheckBox is generically styled according to theme
 
 ### Uncontrolled Examples
 
@@ -20,7 +32,7 @@ In most cases, we recommend using controlled components to implement forms. In a
 At minimum can be used without any props
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <CheckBox />
 </div>
 ```
@@ -30,8 +42,8 @@ At minimum can be used without any props
 The custom attributes passed to attrs will be spread on the hidden input
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
-  <CheckBox attrs={{ name: "customName" }} />
+<div dir="rtl" style={{ padding: '5rem' }}>
+  <CheckBox attrs={{ name: 'customName' }} />
 </div>
 ```
 
@@ -40,11 +52,11 @@ The custom attributes passed to attrs will be spread on the hidden input
 These functions should be passed directly, and not through attrs
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <CheckBox
-    onClick={() => console.log("clicked")}
-    onFocus={() => console.log("focused")}
-    onBlue={() => console.log("blured")}
+    onClick={() => console.log('clicked')}
+    onFocus={() => console.log('focused')}
+    onBlue={() => console.log('blured')}
   />
 </div>
 ```
@@ -54,7 +66,7 @@ These functions should be passed directly, and not through attrs
 A custom `defaultValue` can be passed to an uncontrolled checkbox
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <CheckBox label="I start as checked" defaultValue={true} />
 </div>
 ```
@@ -64,7 +76,7 @@ A custom `defaultValue` can be passed to an uncontrolled checkbox
 Simply pass isDisabled prop to disable the checkbox
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <CheckBox isDisabled label="label" />
 </div>
 ```
@@ -74,7 +86,7 @@ Simply pass isDisabled prop to disable the checkbox
 The label associated with the checkBox, can be simple text or a node
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <CheckBox label="לייבל" />
 </div>
 ```
@@ -82,9 +94,9 @@ The label associated with the checkBox, can be simple text or a node
 **miscStyles**
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <CheckBox
-    miscStyles={{ color: "red", alignItems: "center" }}
+    miscStyles={{ color: 'red', alignItems: 'center' }}
     label="labelRed"
   />
 </div>
@@ -93,19 +105,19 @@ The label associated with the checkBox, can be simple text or a node
 **Note**
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <CheckBox label="label" noteText="decription" errorText="error" />
 </div>
 ```
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <CheckBox label="label" noteText="decription" errorText="error" isError />
 </div>
 ```
 
 ```jsx
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <CheckBox
     label="label"
     noteText="decription"
@@ -150,7 +162,7 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: true
+      checked: true,
     };
   }
 
@@ -158,7 +170,7 @@ class Example extends React.Component {
     return (
       <div>
         <div>
-          the value from the state is: {this.state.checked ? "true" : "false"}
+          the value from the state is: {this.state.checked ? 'true' : 'false'}
         </div>
         <CheckBox
           label="label"
@@ -172,7 +184,7 @@ class Example extends React.Component {
     );
   }
 }
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <Example />
 </div>;
 ```
@@ -211,7 +223,7 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: true
+      checked: true,
     };
   }
 
@@ -219,7 +231,7 @@ class Example extends React.Component {
     return (
       <div>
         <div>
-          the value from the state is: {this.state.checked ? "true" : "false"}
+          the value from the state is: {this.state.checked ? 'true' : 'false'}
         </div>
         <Button onClick={() => this.checkBoxEl.focus()}> focus CheckBox</Button>
         <CheckBox
@@ -234,7 +246,7 @@ class Example extends React.Component {
     );
   }
 }
-<div dir="rtl" style={{ padding: "5rem" }}>
+<div dir="rtl" style={{ padding: '5rem' }}>
   <Example />
 </div>;
 ```

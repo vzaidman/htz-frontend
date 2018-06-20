@@ -6,14 +6,9 @@ import { CookieUtils, } from '@haaretz/htz-user-utils';
 import { getWithDomain, } from '@haaretz/app-utils';
 import Cookies from 'universal-cookie';
 
-// const host = (config.has('hostname') && config.get('hostname')) || 'www';
-// const ssoSubDomain =
-//   (config.has('ssoSubDomain') && config.get('ssoSubDomain')) || 'devsso';
-
-const appPrefix = '/promotions-page-react'; // path in polopoly (pages)
-
-// const protocol = (config.has('polopolyPapiProtocl') && config.get('polopolyPapiProtocl')) || 'http';
-// const domain = (config.has('polopolyPapiDomain') && config.get('polopolyPapiDomain')) || '.haaretz.co.il';
+// Path of promotions page in Polopoly CM
+const polopolyPromotionsPage =
+  config.get('polopolyPromotionsPagePath') || 'promotions-page-react';
 
 export function createLoaders(req) {
   const hostname = req.hostname;
@@ -50,19 +45,9 @@ export function createLoaders(req) {
 
   const purchasePageLoader = new DataLoader(keys => {
     const baseUri = `${serviceBase}/papi`;
-    // if (req !== undefined && process.env.NODE_ENV === 'production') {
-    //   const papiSubDomainhost = config.get('papiSubDomain');
-    //   const papiProtocol = config.get('papiProtocol');
-    //   const papiHostname = `${papiSubDomainhost}.${req.hostname
-    //     .split('.')
-    //     .splice(1)
-    //     .join('.')}`;
-    //   baseUri = `${papiProtocol}://${papiHostname}/papi`;
-    // }
     const userId = CookieUtils.stringToMap(cookies.get('tmsso') || '', {
       separator: /:\s?/,
     }).userId;
-    console.log('userId from loader: ', userId);
     return Promise.all(
       // 'path' means campaign path relative to polopoly root campaign page (which is '/')
       keys.map(path => {
@@ -75,10 +60,11 @@ export function createLoaders(req) {
           ? `${pathWithoutQuery}/${query.offer}`
           : `${pathWithoutQuery}`; // Augment request for papi
         // '/promotions-page/more-ads/some-sub-promotion' -> '/more-ads/some-sub-promotion'
-        const normlizedPath = `${baseUri}${appPrefix}${(path || '/').replace(
-          `${appPrefix}`,
-          ''
-        )}${path.includes('?') ? '&' : '?'}userId=${userId}`;
+        const normlizedPath = `${baseUri}/${polopolyPromotionsPage}${(
+          path || '/'
+        ).replace(`${polopolyPromotionsPage}`, '')}${
+          path.includes('?') ? '&' : '?'
+        }userId=${userId}`;
         console.log(
           'GRAPHQL - fetching data from papi using endpoint: ',
           normlizedPath
@@ -88,7 +74,7 @@ export function createLoaders(req) {
             if (response.ok) {
               return response;
             }
-            return fetch(`${baseUri}${appPrefix}`);
+            return fetch(`${baseUri}/${polopolyPromotionsPage}`);
           })
           .then(response => response.json());
       })
@@ -97,9 +83,9 @@ export function createLoaders(req) {
   const couponProductLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(couponCode =>
-        fetch(`${serviceBase}/papi${appPrefix}?couponCode=${couponCode}`).then(
-          response => response.json()
-        )
+        fetch(
+          `${serviceBase}/papi/${polopolyPromotionsPage}?couponCode=${couponCode}`
+        ).then(response => response.json())
       )
     )
   );

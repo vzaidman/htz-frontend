@@ -1,15 +1,16 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
-- [NavigationMenu examples](#navigationMenu-examples)
+- [NavigationMenu examples](#navigationmenu-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ### NavigationMenu examples
 
 ```jsx
-<div style={{ direction: 'rtl', }}>
+<div style={{ direction: 'rtl' }}>
   <NavigationMenu
     sections={[
       {
@@ -71,44 +72,44 @@
             url: '/news/world',
             pages: [
               {
-               name: 'בעולם',
-               url: '/news/world',
+                name: 'בעולם',
+                url: '/news/world',
               },
               {
-               name: 'חינוך וחברה',
-               url: '/news/world',
+                name: 'חינוך וחברה',
+                url: '/news/world',
               },
               {
-               name: 'מדיני ביטחוני',
-               url: '/news/world',
+                name: 'מדיני ביטחוני',
+                url: '/news/world',
               },
               {
-               name: 'מדע וסביבה',
-               url: '/news/world',
+                name: 'מדע וסביבה',
+                url: '/news/world',
               },
               {
-               name: 'מזר האוויר',
-               url: '/news/world',
+                name: 'מזר האוויר',
+                url: '/news/world',
               },
               {
-               name: 'בריאות',
-               url: '/news/world',
+                name: 'בריאות',
+                url: '/news/world',
               },
               {
-               name: 'מקומי',
-               url: '/news/world',
+                name: 'מקומי',
+                url: '/news/world',
               },
               {
-               name: 'משפט ופלילים',
-               url: '/news/world',
+                name: 'משפט ופלילים',
+                url: '/news/world',
               },
               {
-               name: 'פוליטי',
-               url: '/news/world',
+                name: 'פוליטי',
+                url: '/news/world',
               },
               {
-               name: '50 ל-67',
-               url: '/news/world',
+                name: '50 ל-67',
+                url: '/news/world',
               },
             ],
           },

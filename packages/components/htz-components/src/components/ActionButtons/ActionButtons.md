@@ -1,53 +1,52 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 **Table of Contents**
 
-* [A single button](#single)
-* [A few buttons](#few)
-* [Two groups of buttons](#groups)
-* [Vertical](#vertical)
+- [A single button<a name="single"></a>](#a-single-buttona-namesinglea)
+- [A few buttons<a name="few"></a>](#a-few-buttonsa-namefewa)
+- [Two groups of buttons<a name="groups"></a>](#two-groups-of-buttonsa-namegroupsa)
+- [Vertical<a name="vertical"></a>](#verticala-nameverticala)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ### A single button<a name="single"></a>
 
 ```jsx
-<div style={{ direction: "rtl" }}>
-  <ActionButtons buttons={"mail"} />
+<div style={{ direction: 'rtl' }}>
+  <ActionButtons buttons={'mail'} />
 </div>
 ```
 
 ### A few buttons<a name="few"></a>
 
 ```jsx
-<div style={{ direction: "rtl" }}>
+<div style={{ direction: 'rtl' }}>
   <ActionButtons
     buttons={[
       {
-        name: "facebookLogo",
+        name: 'facebookLogo',
         buttonText: 78,
         iconStyles: {
-          color: "red"
-        }
+          color: 'red',
+        },
       },
       {
-        name: "whatsapp",
+        name: 'whatsapp',
         buttonStyles: {
-          backgroundColor: "pink"
-        }
+          backgroundColor: 'pink',
+        },
       },
-      "mail"
+      'mail',
     ]}
     globalIconsStyles={{
-      color: "green"
+      color: 'green',
     }}
     borderStyles={{
-      width: "1px",
+      width: '1px',
       lines: 0.01,
-      style: "solid",
-      color: "#acd2ed"
+      style: 'solid',
+      color: '#acd2ed',
     }}
   />
 </div>
@@ -56,51 +55,51 @@
 ### Two groups of buttons<a name="groups"></a>
 
 ```jsx
-<div style={{ direction: "rtl" }}>
+<div style={{ direction: 'rtl' }}>
   <ActionButtons
     buttons={{
       start: [
         {
-          name: "facebookLogo",
+          name: 'facebookLogo',
           buttonText: 78,
           iconStyles: {
-            color: "#3b5998"
-          }
+            color: '#3b5998',
+          },
         },
         {
-          name: "whatsapp",
+          name: 'whatsapp',
           iconStyles: {
-            color: "#25D366"
-          }
+            color: '#25D366',
+          },
         },
-        "mailAlert"
+        'mailAlert',
       ],
       end: [
         {
-          name: "comments",
-          buttonText: 78
+          name: 'comments',
+          buttonText: 78,
         },
-        "print",
+        'print',
         {
-          name: "zen",
-          buttonText: "קריאת זן"
-        }
-      ]
+          name: 'zen',
+          buttonText: 'קריאת זן',
+        },
+      ],
     }}
     globalButtonsStyles={{
-      fontSize: "14px",
-      lineHeight: "1.29",
-      fontWeight: "300",
-      color: "#2d2d2d"
+      fontSize: '14px',
+      lineHeight: '1.29',
+      fontWeight: '300',
+      color: '#2d2d2d',
     }}
     globalIconsStyles={{
-      color: "#0B7EB5"
+      color: '#0B7EB5',
     }}
     borderStyles={{
-      width: "1px",
+      width: '1px',
       lines: 0.01,
-      style: "solid",
-      color: "#acd2ed"
+      style: 'solid',
+      color: '#acd2ed',
     }}
   />
 </div>
@@ -109,18 +108,18 @@
 ### Vertical<a name="vertical"></a>
 
 ```jsx
-<div style={{ height: "300px", direction: "rtl" }}>
+<div style={{ height: '300px', direction: 'rtl' }}>
   <ActionButtons
     buttons={{
-      start: ["facebook", "whatsapp", "mailAlert"],
-      end: ["comments", "print", "zen"]
+      start: ['facebook', 'whatsapp', 'mailAlert'],
+      end: ['comments', 'print', 'zen'],
     }}
     vertical={true}
     borderStyles={{
-      width: "1px",
+      width: '1px',
       lines: 0.01,
-      style: "solid",
-      color: "#acd2ed"
+      style: 'solid',
+      color: '#acd2ed',
     }}
   />
 </div>
