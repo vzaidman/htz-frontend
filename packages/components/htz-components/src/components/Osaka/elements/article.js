@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTheme, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
+import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
 import Image from '../../Image/Image';
 import Kicker from '../../ArticleHeader/Kicker';
 import Title from '../../ArticleHeader/Title';
-import StyledGrid from '../../Grid/Grid';
-import StyledGridItem from '../../Grid/GridItem';
 
 const propTypes = {
+  /**
+   * Article's image to display (image object or image url).
+   */
+  image: PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ]).isRequired,
   /**
    * Advertiser's name.
    */
@@ -17,19 +20,10 @@ const propTypes = {
    * Article's title to display.
    */
   title: PropTypes.string.isRequired,
-  /**
-   * Article's image to display (image object or image url).
-   */
-  image: PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ]).isRequired,
-  /**
-   * Should there be a border after the article.
-   */
-  border: PropTypes.bool,
 };
 
 const defaultProps = {
   sourceName: null,
-  border: false,
 };
 
 const imgOptions = {
@@ -40,49 +34,57 @@ const imgOptions = {
   },
 };
 
-// eslint-disable-next-line react/prop-types
-function Article({ title, image, sourceName, border, theme, }) {
+function Article({ title, image, sourceName, }) {
   return (
-    <StyledGrid
-      gutter={0}
-      miscStyles={{
+    <FelaComponent
+      style={{
+        display: 'flex',
         flexWrap: 'nowrap',
         paddingLeft: '1rem',
         paddingRight: '1rem',
       }}
     >
-      <StyledGridItem
-        width={12}
-        rule={
-          border && {
-            atStart: true,
-            color: [ 'neutral', '-4', ],
-            miscStyles: { marginStart: -1, },
-            width: 1,
-          }
-        }
-        miscStyles={{
-          height: '63px',
-        }}
-      >
-        {typeof image === 'string' || image.path ? (
+      {typeof image === 'string' || image.path ? (
+        <FelaComponent
+          style={theme => ({
+            flexShrink: '0',
+            flexGrow: '0',
+            extend: [
+              parseComponentProp(
+                'width',
+                [ { until: 'l', value: '14rem', }, { from: 'l', value: '12rem', }, ],
+                theme.mq
+              ),
+              parseComponentProp(
+                'height',
+                [
+                  { until: 'l', value: '10.5rem', },
+                  { from: 'l', value: '9rem', },
+                ],
+                theme.mq
+              ),
+            ],
+            height: '',
+            width: '84px',
+          })}
+        >
           <img
             alt={image.alt || ''}
             src={image.path || image}
             height="100%"
             width="100%"
           />
-        ) : (
-          <Image imgOptions={imgOptions} data={image} />
-        )}
-      </StyledGridItem>
-      <StyledGridItem
-        miscStyles={{
+        </FelaComponent>
+      ) : (
+        <Image imgOptions={imgOptions} data={image} hasWrapper={false} />
+      )}
+      <FelaComponent
+        style={theme => ({
           ...theme.type(-2),
           marginStart: '1rem',
           maxHeight: '9rem',
           overflow: 'hidden',
-        }}
+        })}
       >
         {sourceName && (
           <Kicker
@@ -94,12 +96,12 @@ function Article({ title, image, sourceName, border, theme, }) {
           />
         )}
         <Title fontSize={-2} level={4} text={title} />
-      </StyledGridItem>
-    </StyledGrid>
+      </FelaComponent>
+    </FelaComponent>
   );
 }
 
 Article.propTypes = propTypes;
 Article.defaultProps = defaultProps;
 
-export default withTheme(Article);
+export default Article;

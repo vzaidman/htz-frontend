@@ -9,27 +9,23 @@ import ListQuery from './queries/fetchList';
 import Media from '../Media/Media';
 import Osaka from './Osaka';
 import WrappedScroll from '../Scroll/Scroll';
+import LayoutContainer from '../PageLayout/LayoutContainer'; // eslint-disable-line import/no-named-as-default
 
 const propTypes = {
   /**
    * The scroll speed and direction (Y axis), as brought to us by: [`Scroll`](./#scroll)
    */
   velocity: PropTypes.number,
-  width: PropTypes.number,
+  y: PropTypes.number,
 };
 
 const defaultProps = {
   velocity: null,
-  width: null,
+  y: 0,
 };
 
-const wrapperStyle = ({ shouldDisplay, width, theme, }) => ({
-  transform: `translate(50%, ${shouldDisplay ? '0' : '-100'}%)`,
-  top: '0',
-  position: 'fixed',
-  width: width ? `${width}px` : '100%',
-  start: '50%',
-  zIndex: '6',
+const wrapperStyle = ({ shouldDisplay, theme, }) => ({
+  transform: `translateY(${shouldDisplay ? '0' : '-100'}%)`,
   transitionProperty: 'transform',
   ...theme.getDelay('transition', -1),
   ...theme.getDuration('transition', -1),
@@ -55,13 +51,13 @@ class OsakaWrapper extends React.Component {
     const articlesChange = nextState.articles !== this.state.articles;
     const scrollChange =
       // prettier-ignore
-      (nextProps.velocity > 0) !== this.state.display;
+      (nextProps.velocity > 0 && nextProps.y > 0) !== this.state.display;
     return articlesChange || scrollChange;
   }
 
   componentWillUpdate(nextProps, nextState) {
     // eslint-disable-next-line react/no-will-update-set-state
-    this.setState({ display: nextProps.velocity > 0, });
+    this.setState({ display: nextProps.velocity > 0 && nextProps.y > 0, });
   }
 
   getArticles = promoted => {
@@ -71,7 +67,7 @@ class OsakaWrapper extends React.Component {
           permalink:
             'https://www.haaretz.co.il/news/world/america/.premium-1.5889230',
           installationKey: 'HAAREPDLHNAQD24GF05E6D3F5',
-          widgetId: 'APP_1',
+          widgetId: 'APP_3',
         },
         json => {
           const articles = json.doc;
@@ -113,7 +109,7 @@ class OsakaWrapper extends React.Component {
   render() {
     return (
       <Media
-        query={{ from: 'l', }}
+        query={{ from: 'm', }}
         render={() => (
           <Query query={ListQuery} variables={{ path: '7.7473', }}>
             {({ loading, error, data, }) => {
@@ -123,16 +119,25 @@ class OsakaWrapper extends React.Component {
                 typeof OBR !== 'undefined' &&
                 this.getArticles(data.list.items);
               return this.state.articles ? (
-                <Wrapper
-                  shouldDisplay={this.state.display}
-                  width={this.props.width}
+                <LayoutContainer
+                  miscStyles={{
+                    backgroundColor: 'transparent',
+                    position: 'fixed',
+                    start: '50%',
+                    top: '0',
+                    transform: 'translateX(50%)',
+                    width: '100%',
+                    zIndex: '6',
+                  }}
                 >
-                  <Osaka
-                    nextArticleUrl="2.351"
-                    sectionName="חדשות"
-                    lists={{ ...this.state.articles, }}
-                  />
-                </Wrapper>
+                  <Wrapper shouldDisplay={this.state.display}>
+                    <Osaka
+                      nextArticleUrl="2.351"
+                      sectionName="חדשות"
+                      lists={{ ...this.state.articles, }}
+                    />
+                  </Wrapper>
+                </LayoutContainer>
               ) : null;
             }}
           </Query>
@@ -146,12 +151,10 @@ OsakaWrapper.propTypes = propTypes;
 OsakaWrapper.defaultProps = defaultProps;
 
 // eslint-disable-next-line react/prop-types
-function OsakaController({ data, width, }) {
+function OsakaController() {
   return (
     <WrappedScroll
-      render={({ velocity, }) => (
-        <OsakaWrapper width={width} data={data} velocity={velocity} />
-      )}
+      render={({ velocity, y, }) => <OsakaWrapper velocity={velocity} y={y} />}
     />
   );
 }

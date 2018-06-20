@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, withTheme, } from 'react-fela';
-import { borderBottom, } from '@haaretz/htz-css-tools';
+import { createComponent, FelaTheme, FelaComponent, } from 'react-fela';
+import { parseComponentProp, borderBottom, } from '@haaretz/htz-css-tools';
 import List from './elements/list';
 import Link from '../Link/Link';
-import StyledGrid from '../Grid/Grid';
-import StyledGridItem from '../Grid/GridItem';
+import Media from '../Media/Media';
+import IconBack from '../Icon/icons/IconBack';
 
 const singleArticlePropTypes = PropTypes.arrayOf(
   PropTypes.shape({
@@ -34,23 +34,7 @@ const propTypes = {
     promoted: singleArticlePropTypes,
     outbrain: singleArticlePropTypes,
   }).isRequired,
-  /**
-   * The current break point (`'s'`, `'m'`, `'l'` or `'xl'`).
-   */
-  bp: PropTypes.string.isRequired,
-  /**
-   * The app's theme (get imported automatically with the `withTheme` method).
-   */
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
-
-const listWrapperStyle = ({ theme, }) => ({
-  paddingTop: '1rem',
-  paddingBottom: '1rem',
-});
-const ListWrapper = createComponent(listWrapperStyle, StyledGridItem, props =>
-  Object.keys(props)
-);
 
 const nextStyle = ({ theme, }) => ({
   ...theme.type(-2),
@@ -61,98 +45,112 @@ const nextStyle = ({ theme, }) => ({
 });
 const Next = createComponent(nextStyle, Link, props => Object.keys(props));
 
-const getWidth = bp => {
-  switch (bp) {
-    case 's':
-      return {};
-    case 'm':
-      return {
-        local: 1 / 2,
-        outbrain: 1,
-      };
-    case 'l':
-      return {
-        local: 1 / 3,
-        promoted: 1 / 2,
-        outbrain: 1 / 2,
-      };
-    default:
-      return {
-        local: 2 / 4,
-        promoted: 1 / 2,
-        outbrain: 1 / 2,
-      };
-  }
-};
-
-function Osaka({ nextArticleUrl, sectionName, lists, bp, theme, }) {
-  const itemsWidth = getWidth(bp);
-  const numOfLocalArticles = bp === 'xl' ? 2 : 1;
+function Osaka({ nextArticleUrl, sectionName, lists, }) {
   return (
-    <StyledGrid
-      gutter={0}
-      miscStyles={{
-        flexWrap: 'nowrap',
-        ...borderBottom('2px', 0, 'solid', theme.color('primary')),
-      }}
-    >
-      <StyledGridItem>
-        <StyledGrid gutter={0}>
-          <ListWrapper
-            width={itemsWidth.local}
-            miscStyles={{
-              paddingTop: '1rem',
-              paddingBottom: '1rem',
-              backgroundColor: theme.color('neutral', '-10'),
-            }}
-          >
-            <List articles={lists.local.slice(0, numOfLocalArticles)} />
-          </ListWrapper>
-          <ListWrapper
-            width={1 - itemsWidth.local}
-            miscStyles={{
-              paddingTop: '1rem',
-              paddingBottom: '1rem',
-              backgroundColor: theme.color('neutral', '-6'),
-            }}
-          >
-            <StyledGrid>
-              {bp !== 'm' && (
-                <StyledGridItem width={itemsWidth.promoted} rule>
-                  <List articles={lists.promoted} promoted />
-                </StyledGridItem>
-              )}
-              <StyledGridItem width={itemsWidth.outbrain}>
-                <List articles={lists.outbrain} border outbrain />
-              </StyledGridItem>
-            </StyledGrid>
-          </ListWrapper>
-        </StyledGrid>
-      </StyledGridItem>
-      {bp !== 'm' && (
-        <StyledGridItem
-          width={18}
-          miscStyles={{
-            backgroundColor: theme.color('quaternary'),
+    <FelaTheme
+      render={theme => (
+        <FelaComponent
+          style={{
+            backgroundColor: theme.color('neutral', '-10'),
             display: 'flex',
-            paddingRight: '1rem',
-            paddingLeft: '1rem',
+            flexWrap: 'nowrap',
+            ...borderBottom('2px', 0, 'solid', theme.color('primary')),
           }}
         >
-          <Next
-            href={nextArticleUrl}
-            content={
-              <p>
-                {theme.osakaI18n.nextArticle} {sectionName}
-              </p>
-            }
+          <Media query={{ until: 'xl', }}>
+            {matches => (
+              <List
+                articles={lists.local.slice(0, matches ? 1 : 2)}
+                miscStyles={{
+                  ...parseComponentProp(
+                    'width',
+                    [
+                      { until: 'l', value: '50%', },
+                      { from: 'l', until: 'xl', value: '33%', },
+                      { from: 'xl', value: '50%', },
+                    ],
+                    theme.mq
+                  ),
+                }}
+              />
+            )}
+          </Media>
+
+          <Media
+            query={{ from: 'l', }}
+            render={() => (
+              <List
+                articles={lists.promoted}
+                promoted
+                miscStyles={{
+                  backgroundColor: theme.color('neutral', '-6'),
+                  ...parseComponentProp(
+                    'width',
+                    [
+                      { from: 'l', until: 'xl', value: '33%', },
+                      { from: 'xl', value: '25%', },
+                    ],
+                    theme.mq
+                  ),
+                }}
+              />
+            )}
           />
-        </StyledGridItem>
+
+          <List
+            articles={lists.outbrain}
+            outbrain
+            miscStyles={{
+              backgroundColor: theme.color('neutral', '-6'),
+              ...parseComponentProp(
+                'width',
+                [
+                  { until: 'l', value: '50%', },
+                  { from: 'l', until: 'xl', value: '33%', },
+                  { from: 'xl', value: '25%', },
+                ],
+                theme.mq
+              ),
+            }}
+          />
+
+          <Media
+            query={{ from: 'l', }}
+            render={() => (
+              <FelaComponent
+                style={{
+                  backgroundColor: theme.color('quaternary'),
+                  display: 'flex',
+                  flexShrink: '3',
+                  paddingRight: '1rem',
+                  paddingLeft: '1rem',
+                }}
+              >
+                <Next
+                  href={nextArticleUrl}
+                  content={
+                    <FelaComponent
+                      style={{ display: 'flex', alignItems: 'center', }}
+                      render="p"
+                    >
+                      <span>
+                        {theme.osakaI18n.nextArticle} {sectionName}
+                      </span>
+                      <span>
+                        <IconBack size={4} />
+                      </span>
+                    </FelaComponent>
+                  }
+                />
+              </FelaComponent>
+            )}
+          />
+        </FelaComponent>
       )}
-    </StyledGrid>
+    />
   );
 }
 
 Osaka.propTypes = propTypes;
 
-export default withTheme(Osaka);
+export default Osaka;

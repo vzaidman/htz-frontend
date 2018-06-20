@@ -1,17 +1,23 @@
 /* globals OBR */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, withTheme, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
+import { parseStyleProps, borderEnd, } from '@haaretz/htz-css-tools';
 import Article from './article';
+import { stylesPropType, } from '../../../propTypes/stylesPropType';
 import Link from '../../Link/Link';
-import StyledGrid from '../../Grid/Grid';
-import StyledGridItem from '../../Grid/GridItem';
 
 const propTypes = {
   /**
    * An array of articles to display.
    */
   articles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trumps all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  miscStyles: stylesPropType,
   /**
    * Is the the list of outbrain content.
    */
@@ -20,13 +26,10 @@ const propTypes = {
    * Is the the list of promoted content.
    */
   promoted: PropTypes.bool,
-  /**
-   * The app's theme (get imported automatically with the `withTheme` method).
-   */
-  theme: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 const defaultProps = {
+  miscStyles: null,
   outbrain: false,
   promoted: false,
 };
@@ -64,44 +67,67 @@ const promotedStyle = ({ outbrain, theme, }) => ({
 });
 const Promoted = createComponent(promotedStyle, 'p');
 
-function List({ articles, promoted, outbrain, theme, }) {
+function List({ articles, promoted, outbrain, miscStyles, }) {
   return (
-    <StyledGrid gutter={0}>
-      {articles.map((article, i) => (
-        <StyledGridItem key={article.title} width={1 / articles.length}>
-          <Link href={article.url} content={<Article {...article} />} />
-        </StyledGridItem>
-      ))}
-      {promoted && <Promoted>{theme.osakaI18n.promotedContent}</Promoted>}
-      {outbrain && (
-        <a
-          href="#"
-          onMouseDown={event => {
-            // eslint-disable-next-line no-param-reassign
-            event && event.cancelBubble && (event.cancelBubble = true);
-            event && event.stopPropagation && event.stopPropagation();
-            return true;
-          }}
-          onClick={() => {
-            OBR.extern.callWhatIs(
-              'https://www.outbrain.com/what-is/default/he',
-              '',
-              -1,
-              -1,
-              true,
-              null
-            );
-            return false;
-          }}
-        >
-          <Promoted outbrain>Recommended by</Promoted>
-        </a>
+    <FelaComponent
+      style={{
+        paddingTop: '1rem',
+        paddingBottom: '1rem',
+        display: 'flex',
+        flexDirection: promoted || outbrain ? 'column' : 'row',
+        extend: [ ...(miscStyles ? parseStyleProps(miscStyles) : []), ],
+      }}
+      render={({ className, theme, }) => (
+        <div className={className}>
+          {articles.map((article, i) => (
+            <FelaComponent
+              style={{
+                width: `${100 / articles.length}%`,
+                ...(promoted
+                  ? borderEnd('1px', 'solid', theme.color('neutral', '-4'))
+                  : {}),
+              }}
+              render={({ className: linkClass, }) => (
+                <Link
+                  className={linkClass}
+                  href={article.url}
+                  content={<Article {...article} />}
+                />
+              )}
+            />
+          ))}
+          {promoted && <Promoted>{theme.osakaI18n.promotedContent}</Promoted>}
+          {outbrain && (
+            <a
+              href="#"
+              onMouseDown={event => {
+                // eslint-disable-next-line no-param-reassign
+                event && event.cancelBubble && (event.cancelBubble = true);
+                event && event.stopPropagation && event.stopPropagation();
+                return true;
+              }}
+              onClick={() => {
+                OBR.extern.callWhatIs(
+                  'https://www.outbrain.com/what-is/default/he',
+                  '',
+                  -1,
+                  -1,
+                  true,
+                  null
+                );
+                return false;
+              }}
+            >
+              <Promoted outbrain>Recommended by</Promoted>
+            </a>
+          )}
+        </div>
       )}
-    </StyledGrid>
+    />
   );
 }
 
 List.propTypes = propTypes;
 List.defaultProps = defaultProps;
 
-export default withTheme(List);
+export default List;
