@@ -27,7 +27,7 @@ module.exports = {
   }),
   useSSL: true,
   graphQLuseSSL: false,
-  graphQLexposedPort: false,
+  graphQLexposedPort: true,
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
   port: process.env.PORT || '2004',

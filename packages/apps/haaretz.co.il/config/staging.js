@@ -1,18 +1,17 @@
+/* global window */
 /* eslint-disable func-names */
 const defer = require('config/defer').deferConfig;
 
 module.exports = {
   service: {
-    base: defer(function () {
-      return `http${this.useSSL ? 's' : ''}://${this.remoteFQDN}`;
-    }),
     sso: 'https://sso.haaretz.co.il',
     image: 'https://images.haarets.co.il/image',
     graphql: defer(function () {
       return `http${
-        this.graphQLuseSSL ? 's' : ''
-      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
+        this.useSSL ? 's' : ''
+      }://${this.appFQDN}${this.port ? `:${this.port}` : ''}/graphql`;
     }),
+    papi: 'http://elia.haaretz.co.il',
     polopolyImageBaseHref: defer(function () {
       return `http${
         this.useSSL ? 's' : ''
@@ -22,13 +21,9 @@ module.exports = {
   appFQDN: defer(function () {
     return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
   }),
-  remoteFQDN: defer(function () {
-    return `www.${this.domain}`;
-  }),
-  useSSL: true,
-  graphQLuseSSL: false,
-  graphQLexposedPort: false,
+  useSSL: false,
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
-  port: process.env.PORT || '2004',
+  port: process.env.PORT || '3000',
+  // baseHref: 'https://www.haaretz.co.il',
 };

@@ -9,6 +9,7 @@ import { withClientState, } from 'apollo-link-state';
 import { UserFactory, } from '@haaretz/htz-user-utils';
 import fetch from 'isomorphic-unfetch';
 import config from 'config';
+import getWithDomain from '../utils/parseUrl';
 
 // Basic structure for user data object (Apollo store)
 const defaultUser = {
@@ -23,7 +24,7 @@ const defaultUser = {
   __typename: 'User',
 };
 
-const port = config.get('port');
+// const port = config.get('port');
 let apolloClient = null;
 
 const customFragmentMatcher = new IntrospectionFragmentMatcher({
@@ -58,15 +59,12 @@ if (!process.browser) {
 }
 
 function create(initialState, req) {
-  const graphqlPort = process.env.NODE_ENV === 'production' ? '' : `:${port}`;
+  // const graphqlPort = process.env.NODE_ENV === 'production' ? '' : `:${port}`;
   const hostname =
     initialState.ROOT_QUERY !== undefined
       ? initialState.ROOT_QUERY.hostname
       : req.hostname;
-  const graphqlLink = `${config.get(
-    'graphqlProtocol'
-  )}://${hostname}${graphqlPort}/graphql`;
-
+  const graphqlLink = getWithDomain(hostname, config.get('service.graphql'));
   const link = new HttpLink({
     uri: graphqlLink, // Server URL (must be absolute)
     credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
