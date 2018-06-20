@@ -10,8 +10,8 @@ module.exports = {
     image: 'http://res.cloudinary.com/kfirlevy/image',
     graphql: defer(function () {
       return `http${
-        this.useSSL ? 's' : ''
-      }://${this.appFQDN}${this.port ? `:${this.port}` : ''}/graphql`;
+        this.graphQLuseSSL ? 's' : ''
+      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
     }),
     polopolyImageBaseHref: defer(function () {
       return `http${
@@ -26,8 +26,9 @@ module.exports = {
     return `www.${this.domain}`;
   }),
   useSSL: false,
+  graphQLuseSSL: false,
+  graphQLexposedPort: true,
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
   port: process.env.PORT || '3000',
-  // baseHref: 'https://www.haaretz.co.il',
 };
