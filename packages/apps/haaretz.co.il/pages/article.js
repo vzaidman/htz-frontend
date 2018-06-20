@@ -91,6 +91,7 @@ export class ArticlePage extends React.Component {
               client.writeData({
                 data: {
                   articleId: lineage[0].contentId,
+                  section: lineage[1].name,
                 },
               });
               return (

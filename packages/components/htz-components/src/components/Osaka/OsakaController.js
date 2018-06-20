@@ -5,7 +5,7 @@ import { createComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
 
 import { appendScript, } from '../../utils/scriptTools';
-import ListQuery from './queries/fetchList';
+import OsakaQuery from './queries/getData';
 import Media from '../Media/Media';
 import Osaka from './Osaka';
 import WrappedScroll from '../Scroll/Scroll';
@@ -60,12 +60,11 @@ class OsakaWrapper extends React.Component {
     this.setState({ display: nextProps.velocity > 0 && nextProps.y > 0, });
   }
 
-  getArticles = promoted => {
+  getArticles = (promoted, canonicalUrl) => {
     OBR &&
       OBR.extern.callRecs(
         {
-          permalink:
-            'https://www.haaretz.co.il/news/world/america/.premium-1.5889230',
+          permalink: canonicalUrl,
           installationKey: 'HAAREPDLHNAQD24GF05E6D3F5',
           widgetId: 'APP_3',
         },
@@ -106,18 +105,29 @@ class OsakaWrapper extends React.Component {
       );
   };
 
+  // TODO: Temporary until outbrain will ignore the subDomain
+  changeSubDomain = url => {
+    const subDomain = url.match(
+      /^https?:\/\/(\S+)\.(?:(?:haaretz)|(?:themarker))/
+    )[1];
+    return subDomain === 'www' ? url : url.replace(subDomain, 'www');
+  };
+
   render() {
     return (
       <Media
         query={{ from: 'm', }}
         render={() => (
-          <Query query={ListQuery} variables={{ path: '7.7473', }}>
+          <Query query={OsakaQuery} variables={{ path: '7.7473', }}>
             {({ loading, error, data, }) => {
               if (loading) return <p>loading...</p>;
               if (error) return null;
               !this.state.articles &&
                 typeof OBR !== 'undefined' &&
-                this.getArticles(data.list.items);
+                this.getArticles(
+                  data.list.items,
+                  this.changeSubDomain(data.canonicalUrl)
+                );
               return this.state.articles ? (
                 <LayoutContainer
                   miscStyles={{
@@ -133,7 +143,7 @@ class OsakaWrapper extends React.Component {
                   <Wrapper shouldDisplay={this.state.display}>
                     <Osaka
                       nextArticleUrl="2.351"
-                      sectionName="חדשות"
+                      sectionName={data.sectionName}
                       lists={{ ...this.state.articles, }}
                     />
                   </Wrapper>

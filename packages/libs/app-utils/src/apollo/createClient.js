@@ -101,6 +101,7 @@ function create(initialState, req) {
         __typename: 'AriaLive',
       },
       canonicalUrl: '',
+      section: '',
       a11yToggle: false,
       hostname,
       articleId: null,

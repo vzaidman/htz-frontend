@@ -2,7 +2,7 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  query ListQuery($path: String!) {
+  query OsakaQuery($path: String!) {
     list(path: $path) {
       items {
         image {
@@ -27,5 +27,7 @@ export default gql`
         hash
       }
     }
+    canonicalUrl @client
+    section @client
   }
 `;
