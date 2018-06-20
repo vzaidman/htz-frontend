@@ -96,7 +96,12 @@ class LoginOrRegisterStage extends React.Component {
                 render={({ checkEmailExists, }) => (
                   <FelaComponent
                     style={{ textAlign: 'center', }}
-                    render={({ theme: { stage3: { form, }, }, className, }) => (
+                    render={({
+                      theme: {
+                        stage3: { form, },
+                      },
+                      className,
+                    }) => (
                       <div className={className}>
                         <ResetPasswordModal
                           email={email}
@@ -113,6 +118,7 @@ class LoginOrRegisterStage extends React.Component {
                                 initialValues: { email, },
                               }}
                               onSubmit={fields => {
+                                console.log('submitting');
                                 submitForm({
                                   ...fields,
                                   checkEmailExists,
