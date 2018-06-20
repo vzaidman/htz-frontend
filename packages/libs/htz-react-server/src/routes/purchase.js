@@ -15,8 +15,9 @@ export const friendlyRoutes = {
   stage5: 'payment',
   thankYou: 'thankYou',
 };
-const polopolyPromotionsPage =
-  config.get('polopolyPromotionsPagePath') || 'promotions-page-react';
+const polopolyPromotionsPage = config.has('polopolyPromotionsPagePath')
+  ? config.get('polopolyPromotionsPagePath')
+  : 'promotions-page-react';
 const appPrefix = '/promotions-page'; // path shown in URL
 const folderPrefix = '/promotions-page'; // Project structure relative folder
 

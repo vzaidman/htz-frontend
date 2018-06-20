@@ -7,8 +7,9 @@ import { getWithDomain, } from '@haaretz/app-utils';
 import Cookies from 'universal-cookie';
 
 // Path of promotions page in Polopoly CM
-const polopolyPromotionsPage =
-  config.get('polopolyPromotionsPagePath') || 'promotions-page-react';
+const polopolyPromotionsPage = config.has('polopolyPromotionsPagePath')
+  ? config.get('polopolyPromotionsPagePath')
+  : 'promotions-page-react';
 
 export function createLoaders(req) {
   const hostname = req.hostname;
