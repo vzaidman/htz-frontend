@@ -74,7 +74,7 @@ export default class UserFactory {
     if (ssoMap !== undefined) {
       // User side effect found - recover it
       userOptions = Object.assign(userOptions, ssoMap, {
-        type: UserTypes.paying,
+        type: this.cookieMap.HtzPusr ? UserTypes.paying : UserTypes.registered,
       });
     }
     else {
