@@ -3,7 +3,6 @@ import React from 'react';
 import { createComponent, FelaTheme, FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import PropTypes from 'prop-types';
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 import { parseComponentProp, borderBottom, } from '@haaretz/htz-css-tools';
@@ -18,8 +17,6 @@ import HeadlineElement from '../../HeadlineElement/HeadlineElement';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 
 import ArticleContentQuery from '../queries/article_content';
-
-const Osaka = dynamic(import('../../Osaka/OsakaController'), { ssr: false, });
 
 const propTypes = {
   /**
@@ -408,7 +405,6 @@ class Main extends React.Component {
                 <meta property="og:image:height" content="630" />
                 <meta property="ob:title" content={obTitle} />
               </Head>
-              <Osaka width={this.state.articleWidth} />
               {this.extractContent(article, client)}
               <Media
                 query={{ from: 'l', }}

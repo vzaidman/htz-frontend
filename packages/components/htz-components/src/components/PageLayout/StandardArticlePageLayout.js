@@ -5,6 +5,7 @@ import LayoutRow from './LayoutRow'; // eslint-disable-line import/no-named-as-d
 import LayoutContainer from './LayoutContainer'; // eslint-disable-line import/no-named-as-default
 
 import getComponent from '../../utils/componentFromInputTemplate';
+import Header from './slots/Header';
 import Main from './slots/Main';
 
 const propTypes = {
@@ -42,7 +43,9 @@ const StandardArticlePageLayout = ({
         <LayoutContainer>{preHeader && getElements(preHeader)}</LayoutContainer>
       </LayoutRow>
       <LayoutRow>
-        <LayoutContainer>{header && getElements(header)}</LayoutContainer>
+        <LayoutContainer>
+          {header && <Header content={header} />}
+        </LayoutContainer>
       </LayoutRow>
       <LayoutRow>
         <LayoutContainer>
