@@ -12,6 +12,7 @@ import WrappedScroll from '../Scroll/Scroll';
 import LayoutContainer from '../PageLayout/LayoutContainer'; // eslint-disable-line import/no-named-as-default
 
 const propTypes = {
+  promotedElement: PropTypes.shape({}).isRequired,
   /**
    * The scroll speed and direction (Y axis), as brought to us by: [`Scroll`](./#scroll)
    */
@@ -86,9 +87,9 @@ class OsakaWrapper extends React.Component {
               ],
               promoted: [
                 {
-                  title: promoted[0].title,
-                  image: promoted[0].image,
-                  url: promoted[0].path,
+                  title: promoted.title || promoted.text,
+                  image: promoted.clicktrackerimage,
+                  url: promoted.link,
                 },
               ],
               outbrain: [
@@ -122,10 +123,11 @@ class OsakaWrapper extends React.Component {
             {({ loading, error, data, }) => {
               if (loading) return <p>loading...</p>;
               if (error) return null;
+              const { promotedElement, } = this.props;
               !this.state.articles &&
                 typeof OBR !== 'undefined' &&
                 this.getArticles(
-                  data.list.items,
+                  promotedElement[0].banners[0],
                   this.changeSubDomain(data.canonicalUrl)
                 );
               return this.state.articles ? (
@@ -161,10 +163,12 @@ OsakaWrapper.propTypes = propTypes;
 OsakaWrapper.defaultProps = defaultProps;
 
 // eslint-disable-next-line react/prop-types
-function OsakaController() {
+function OsakaController({ items, }) {
   return (
     <WrappedScroll
-      render={({ velocity, y, }) => <OsakaWrapper velocity={velocity} y={y} />}
+      render={({ velocity, y, }) => (
+        <OsakaWrapper velocity={velocity} y={y} promotedElement={items} />
+      )}
     />
   );
 }
