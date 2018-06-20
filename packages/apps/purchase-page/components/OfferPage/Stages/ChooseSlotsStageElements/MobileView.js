@@ -213,7 +213,6 @@ class MobileView extends Component {
                               </div>
                               <Button
                                 href={pathName}
-                                // asPath={router.asPath}
                                 variant="salesOpaque"
                                 miscStyles={{ marginTop: '3rem', }}
                                 onClick={() => {

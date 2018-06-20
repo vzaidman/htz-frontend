@@ -1,3 +1,5 @@
+import { friendlyRoutes, } from '../../../../routes/routes';
+
 const submitForm = ({
   gaAction,
   email,
@@ -89,7 +91,7 @@ const submitForm = ({
           action: 'password-continue',
           label: 'success',
         });
-        Router.replace('/promotions-page/stage4', router.asPath);
+        Router.replace('/promotions-page/stage4', friendlyRoutes.stage4);
       })
       .catch(error => {
         setState({

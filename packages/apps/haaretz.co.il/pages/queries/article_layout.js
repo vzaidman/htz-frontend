@@ -29,7 +29,6 @@ export default gql`
         }
       }
     }
-    hostname @client
     user @client {
       type
     }

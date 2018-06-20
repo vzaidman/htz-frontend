@@ -139,7 +139,7 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
                       <button
                         className={className}
                         onClick={() => {
-                          console.warn('stage: ', stage);
+                          console.warn('stage: ', router.asPath);
                           biAction({
                             actionCode: 42,
                             additionalInfo: {
@@ -149,7 +149,7 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
                           gaAction({
                             category: 'promotion-header',
                             action: 'navigate-back',
-                            label: `from-stage-${stage}`,
+                            label: `from-stage-${router.asPath}`,
                           });
                           Router.back();
                         }}

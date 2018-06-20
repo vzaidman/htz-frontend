@@ -74,17 +74,13 @@ function StageThankYou({ userEmail, product, userMessage, }) {
               <div className={className}>
                 {referrer &&
                   isArticle(referrer) && (
-                    <EventTracker>
-                      {biAction => (
-                        <StyledLink
-                          content={backToArticleContent}
-                          href={referrer}
-                        />
-                      )}
-                    </EventTracker>
+                    <StyledLink
+                      content={backToArticleContent}
+                      href={referrer}
+                    />
                   )}
                 <EventTracker>
-                  {biAction => (
+                  {({ biAction, }) => (
                     <Newsletter
                       id="ThankYouWrapper-1234"
                       headlineText={newsletterTitle(site)}

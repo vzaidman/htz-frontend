@@ -81,13 +81,13 @@ class CreditCardIframe extends Component {
             brand: `salecode[${paymentData.saleCode}]`,
             price: paymentData.prices[0].toString(),
             variant: `promotionNumber-${paymentData.promotionNumber}`,
+            quantity: 1,
           });
           ReactGA.ga('ec:setAction', 'purchase', {
-            id: paymentData.saleCode, // (Required) Transaction id (string).
+            id: `${Math.floor(Math.random() * 1000000000000)}`, // (Required) Transaction id (string).
             list: 'Product Stage Results',
             revenue: paymentData.prices[0].toString(),
             coupon: paymentData.saleCode,
-            quantity: 1,
           });
           ReactGA.ga('send', 'pageview');
           Router.replace(

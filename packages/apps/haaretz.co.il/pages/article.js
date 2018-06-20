@@ -100,7 +100,6 @@ export class ArticlePage extends React.Component {
               });
               return (
                 <Fragment>
-                  {/* articleMode={null} authors={null} pageType={null} */}
                   <IsMobileInjector />
                   <GaDimensions userType={data.user.type} />
                   <AriaLive />

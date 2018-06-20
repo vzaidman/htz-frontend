@@ -29,7 +29,6 @@ const propTypes = {
     tfoot: PropTypes.string.isRequired,
   }).isRequired,
   pathName: PropTypes.string.isRequired,
-  asPath: PropTypes.string.isRequired,
 };
 
 const defaultProps = {};
@@ -278,7 +277,6 @@ function DesktopView({
   tableData,
   staticTableData,
   pathName,
-  asPath,
 }) {
   const cols = {
     col1: tableData[0].subscriptionName,

@@ -151,14 +151,12 @@ class ChooseSlotStage extends React.Component {
                 staticTableData={stage1}
                 continueToNextStage={continueToNextStage}
                 pathName={pathName}
-                asPath={router.asPath}
               />
               <MobileView
                 tableData={tableData}
                 staticTableData={stage1}
                 continueToNextStage={continueToNextStage}
                 pathName={pathName}
-                asPath={router.asPath}
               />
               <EventTracker>
                 {({ biAction, gaAction, }) => (
