@@ -15,9 +15,9 @@ const EmbedWrapper = createComponent(embedWrapper);
 
 export default class Embed extends React.Component {
   static propTypes = {
-    content: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
     embedType: PropTypes.string.isRequired,
-    settings: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    settings: PropTypes.shape({}),
     inputTemplate: PropTypes.string.isRequired,
   };
 

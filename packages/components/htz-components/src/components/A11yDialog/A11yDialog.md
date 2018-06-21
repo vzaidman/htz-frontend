@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+- [Dialog with Render Props](#dialog-with-render-props)
+- [**Overlay and Content**](#overlay-and-content)
+- [**1. Simple usage with stateful component: (Dialog)**](#1-simple-usage-with-stateful-component-dialog)
+  - [**used props**](#used-props)
+- [**2. Usage with toggle refs: (Modal)**](#2-usage-with-toggle-refs-modal)
+  - [**used props**](#used-props-1)
+- [**2. Usage with toggle refs: (Dialog)**](#2-usage-with-toggle-refs-dialog)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### Dialog with Render Props
 
 `<A11yDialog />` is a render props component used to handle a11y modal/dialog .

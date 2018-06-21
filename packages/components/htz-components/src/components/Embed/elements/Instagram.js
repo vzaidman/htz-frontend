@@ -34,7 +34,7 @@ export default class Instagram extends React.Component {
     /**
      * Instagram's HTML tag (supplied by Instagram `<blockquote>....</blockquote>`).
      */
-    content: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
     /**
      * A function to be called when the audio element finishes to load.
      */
@@ -58,7 +58,7 @@ export default class Instagram extends React.Component {
   render() {
     return (
       <InstagramWrapper>
-        <div dangerouslySetInnerHTML={{ __html: this.props.content, }} />
+        <div dangerouslySetInnerHTML={{ __html: this.props.source, }} />
       </InstagramWrapper>
     );
   }

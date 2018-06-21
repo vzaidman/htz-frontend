@@ -37,10 +37,21 @@ const footerLinkListContStyle = theme => ({
   paddingBottom: '5rem',
 });
 
-const linkStyle = ({ theme, isLast = false, }) => ({
+const linkStyle = ({
+  theme,
+  isLast = false,
+  onlyMobile = false,
+  onlyDesktop = false,
+  hide = false,
+}) => ({
   paddingInlineEnd: '1rem',
   paddingInlineStart: '1rem',
-  extend: [ theme.type(0), ],
+  ...(hide ? { display: 'none', } : {}),
+  extend: [
+    theme.type(0),
+    onlyMobile && theme.mq({ from: 's', }, { display: 'none', }),
+    onlyDesktop && theme.mq({ until: 's', }, { display: 'none', }),
+  ],
 });
 
 const StyledLink = createComponent(linkStyle, Link, [
@@ -150,18 +161,37 @@ export function PurchasePageFooter({ host, hasIllustration, stage, }) {
                 <StyledListItem isLast={idx === links.length - 1} key={link.id}>
                   <BIAction>
                     {action => (
-                      <StyledLink
-                        onClick={() => {
-                          action({
-                            actionCode: link.text === 'שאלות ותשובות' ? 43 : 41,
-                            additionalInfo: {
-                              stage,
-                            },
-                          });
-                        }}
-                        href={link.href[host]}
-                        content={link.text}
-                      />
+                      <Fragment>
+                        <StyledLink
+                          hide={link.text === 'שאלות ותשובות'}
+                          onlyMobile
+                          onClick={() => {
+                            action({
+                              actionCode:
+                                link.text === 'שאלות ותשובות' ? 43 : 41,
+                              additionalInfo: {
+                                stage,
+                              },
+                            });
+                          }}
+                          href={link.hrefMobile[host]}
+                          content={link.text}
+                        />
+                        <StyledLink
+                          onlyDesktop
+                          onClick={() => {
+                            action({
+                              actionCode:
+                                link.text === 'שאלות ותשובות' ? 43 : 41,
+                              additionalInfo: {
+                                stage,
+                              },
+                            });
+                          }}
+                          href={link.href[host]}
+                          content={link.text}
+                        />
+                      </Fragment>
                     )}
                   </BIAction>
                 </StyledListItem>

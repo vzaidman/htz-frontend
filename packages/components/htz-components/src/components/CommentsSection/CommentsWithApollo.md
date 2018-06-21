@@ -1,3 +1,12 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+- [CommentsWithApollo](#commentswithapollo)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### CommentsWithApollo
 
 Manages fetching and writing data from/to the graphql endpoint and rendering the `<CommentSection/>` with all of its required props

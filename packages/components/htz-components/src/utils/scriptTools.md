@@ -1,11 +1,10 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 **Table of Contents**
 
-* [Params](#params)
-* [Example](#example)
+- [Params](#params)
+- [Example](#example)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -25,18 +24,18 @@ A utility that appends a `<script/>` onto the DOM, and with a provided unique id
 ### Example
 
 ```js static
-import { appendScript, } from '../../../utils/scriptTools';
+import { appendScript } from '../../../utils/scriptTools';
 
- const updateScript = () => {
-   doBuild();
- };
+const updateScript = () => {
+  doBuild();
+};
 
- appendScript({
-   src: '//assets.pinterest.com/js/pinit.js',
-   id: 'pinterest-js',
-   isAsync: true,
-   onLoadFunction: null,
-   updateFunction: updateScript,
-   attributes: { 'data-pin-build': 'doBuild', },
-   });
+appendScript({
+  src: '//assets.pinterest.com/js/pinit.js',
+  id: 'pinterest-js',
+  isAsync: true,
+  onLoadFunction: null,
+  updateFunction: updateScript,
+  attributes: { 'data-pin-build': 'doBuild' },
+});
 ```

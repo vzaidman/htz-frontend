@@ -1,3 +1,12 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+- [**Group Order**](#group-order)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 It can sometimes be useful to group buttons together functionally and visually.
 
 By default, the `ButtonGroup` component groups buttons horizontally next
@@ -27,10 +36,10 @@ Passing the `isColumn` prop vertically stacks the buttons on top of each other
 A different stacking direction can be set for different breakpoints by passing
 an object with the following keys to `isColumn` prop:
 
-* `queries` (`array`)
+- `queries` (`array`)
   An array of responsive options, whose items are object denoting `from`,
   `until`, and `misc` breakpoints, and a boolean value in the given breakpoint.
-* `onServerRender`: (`boolean`)
+- `onServerRender`: (`boolean`)
   Sets the default formation on the server.
 
 ```jsx static
@@ -38,13 +47,12 @@ an object with the following keys to `isColumn` prop:
   isColumn={{
     onServerRender: false,
     queries: [
-    { until: 's', value: false, },
-    { from: 's', until: 'l', value: true, },
-    { from: 'l', until: 'xl', value: false, },
-    { from: 'xl', value: true, },
+      { until: 's', value: false },
+      { from: 's', until: 'l', value: true },
+      { from: 'l', until: 'xl', value: false },
+      { from: 'xl', value: true },
     ],
-  }}
->
+  }}>
   {/* ... */}
 </ButtonGroup>
 ```

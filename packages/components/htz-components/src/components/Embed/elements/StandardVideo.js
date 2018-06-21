@@ -19,7 +19,7 @@ StandardVideo.propTypes = {
   /**
    * The video's source code.
    */
-  content: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
   /**
    * A function to be called when the video finishes to load.
    */
@@ -36,7 +36,7 @@ function StandardVideo(props) {
       <VideoElement
         width="560"
         height="315"
-        src={props.content}
+        src={props.source}
         frameBorder="0"
         allowFullScreen=""
         scrolling="no"

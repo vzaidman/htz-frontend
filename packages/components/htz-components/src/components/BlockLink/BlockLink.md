@@ -1,3 +1,14 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+- [**Using BlockLink and AboveBlockLink Components**](#using-blocklink-and-aboveblocklink-components)
+  - [**Styles**](#styles)
+  - [**Attrs**](#attrs)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### **Using BlockLink and AboveBlockLink Components**
 
 BlockLink component make the entire wrapped Element clickable. To exclude linking any children , easy wrap the content with AboveBlockLink Component using Render Prop method (like the example below).

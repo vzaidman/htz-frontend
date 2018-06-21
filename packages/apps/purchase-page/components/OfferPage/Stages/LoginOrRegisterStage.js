@@ -119,6 +119,7 @@ class LoginOrRegisterStage extends React.Component {
                                 initialValues: { email, },
                               }}
                               onSubmit={fields => {
+                                console.log('submitting');
                                 submitForm({
                                   ...fields,
                                   checkEmailExists,

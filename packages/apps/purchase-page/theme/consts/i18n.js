@@ -57,6 +57,10 @@ export const purchasePageFooter = Object.freeze({
         'haaretz.co.il': 'https://www.haaretz.co.il/misc/faq',
         'themarker.com': 'https://www.themarker.com/misc/faq',
       }),
+      hrefMobile: Object.freeze({
+        'haaretz.co.il': 'https://www.haaretz.co.il/misc/faq',
+        'themarker.com': 'https://www.themarker.com/misc/faq',
+      }),
       id: 'q&a',
     },
     {
@@ -64,6 +68,10 @@ export const purchasePageFooter = Object.freeze({
       href: Object.freeze({
         'haaretz.co.il': 'https://www.haaretz.co.il/misc/contact-us',
         'themarker.com': 'https://www.themarker.com/misc/contact-us',
+      }),
+      hrefMobile: Object.freeze({
+        'haaretz.co.il': 'https://www.haaretz.co.il/mobile/contact-us',
+        'themarker.com': 'https://www.themarker.com/mobile/contact-us',
       }),
       id: 'contact',
     },
@@ -476,7 +484,9 @@ export const thankYou = Object.freeze({
         ? 'להארץ'
         : product === 'TM'
           ? 'ל-TheMarker'
-          : product === 'BOTH' ? 'משולב להארץ ו-TheMarker' : '';
+          : product === 'BOTH'
+            ? 'משולב להארץ ו-TheMarker'
+            : '';
     return `תודה שרכשתם מינוי ${item}`;
   },
   backToArticleContent: 'חזרה לכתבה ממנה הגעת',

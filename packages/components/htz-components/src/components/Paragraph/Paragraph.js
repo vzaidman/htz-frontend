@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import Link from '../Link/Link';
 import H from '../AutoLevels/H';
+import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
+
 
 /* Components styles */
 const mainWrapperStyle = ({ marginBottom, }) => ({
@@ -41,7 +43,7 @@ const InlineLink = createComponent(inlineLinkStyle, Link, props =>
   Object.keys(props)
 );
 
-const paragraphStyle = ({ theme, }) => {
+const paragraphStyle = theme => {
   const { type, color, ...paragraphStyles } =
     theme.articleStyle.paragraphStyles || {};
 
@@ -59,7 +61,21 @@ const paragraphStyle = ({ theme, }) => {
     ],
   };
 };
-const P = createComponent(paragraphStyle, 'p', props => Object.keys(props));
+
+// eslint-disable-next-line react/prop-types
+const P = ({ children, renderFirstImpression, ...props }) => (
+  <FelaComponent
+    style={paragraphStyle}
+    render={({ className, }) => (
+      <Fragment>
+        <p className={className} {...props}>
+          {children}
+        </p>
+        {renderFirstImpression && <FirstImpressionPlaceholder />}
+      </Fragment>
+    )}
+  />
+);
 
 const strongStyle = () => ({
   fontWeight: '700',
@@ -149,36 +165,45 @@ export default class Paragraph extends React.Component {
   }
 
   render() {
+    const { renderFirstImpression, marginBottom, ...props } = this.props;
     return (
-      <MainWrapper
-        marginBottom={this.state.margin ? this.props.marginBottom : null}
-      >
-        <Content content={this.props} />
+      <MainWrapper marginBottom={this.state.margin ? marginBottom : null}>
+        <Content
+          content={props}
+          renderFirstImpression={renderFirstImpression}
+        />
       </MainWrapper>
     );
   }
 }
 
 /* Recursive functions */
-function Content({ content, }) {
+function Content({ content, renderFirstImpression, }) {
   const attributesObject = extractAttributes(content.attributes);
   return (
     <WrapperTag
       tag={content.tag}
       attributes={attributesObject}
       content={content.content}
+      renderFirstImpression={renderFirstImpression}
     >
       {content.content.map((tag, index) => (
         <Content
           key={index} // eslint-disable-line react/no-array-index-key
           content={tag}
+          renderFirstImpression={renderFirstImpression}
         />
       ))}
     </WrapperTag>
   );
 }
 
-function WrapperTag({ tag: tagName, content: tagElements, attributes, }) {
+function WrapperTag({
+  tag: tagName,
+  content: tagElements,
+  attributes,
+  renderFirstImpression,
+}) {
   /**
    * Check if the Tag has a class names 'bg-brand--d'.
    * If so, it means that the Tag is actually `<mark />` (That's how the FCKEditor translates it).
@@ -203,7 +228,14 @@ function WrapperTag({ tag: tagName, content: tagElements, attributes, }) {
     attributes.content = genChildren(tagElements); // eslint-disable-line no-param-reassign
   }
 
-  return <Tag {...attributes}>{genChildren(tagElements)}</Tag>;
+  return (
+    <Tag
+      {...attributes}
+      {...(tagName === 'p' ? { renderFirstImpression, } : {})}
+    >
+      {genChildren(tagElements)}
+    </Tag>
+  );
 }
 
 function genChildren(tagElements) {
@@ -250,10 +282,13 @@ Paragraph.propTypes = {
       }),
     }),
   ]),
+  /** Should the Paragraph render a firstImpression placeholder after every p tag */
+  renderFirstImpression: PropTypes.bool,
 };
 
 Paragraph.defaultProps = {
   marginBottom: null,
+  renderFirstImpression: false,
 };
 
 Content.propTypes = {
@@ -262,10 +297,14 @@ Content.propTypes = {
     attributes: PropTypes.array.isRequired,
     content: PropTypes.array,
   }).isRequired,
+  /** Should the Paragraph render a firstImpression placeholder after every p tag */
+  renderFirstImpression: PropTypes.bool.isRequired,
 };
 
 WrapperTag.propTypes = {
   tag: PropTypes.string.isRequired,
   attributes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   content: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+  /** Should the Paragraph render a firstImpression placeholder after every p tag */
+  renderFirstImpression: PropTypes.bool.isRequired,
 };

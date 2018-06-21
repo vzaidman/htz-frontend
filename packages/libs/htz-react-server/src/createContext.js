@@ -3,58 +3,52 @@ import DataLoader from 'dataloader';
 import querystring from 'querystring';
 import config from 'config';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
+import { getWithDomain, } from '@haaretz/app-utils';
 import Cookies from 'universal-cookie';
 
-const host = (config.has('hostname') && config.get('hostname')) || 'www';
-const ssoSubDomain =
-  (config.has('ssoSubDomain') && config.get('ssoSubDomain')) || 'devsso';
-
-const appPrefix = '/promotions-page-react'; // path in polopoly (pages)
-
-// const protocol = (config.has('polopolyPapiProtocl') && config.get('polopolyPapiProtocl')) || 'http';
-// const domain = (config.has('polopolyPapiDomain') && config.get('polopolyPapiDomain')) || '.haaretz.co.il';
+// Path of promotions page in Polopoly CM
+const polopolyPromotionsPage = config.has('polopolyPromotionsPagePath')
+  ? config.get('polopolyPromotionsPagePath')
+  : 'promotions-page-react';
 
 export function createLoaders(req) {
+  const hostname = req.hostname;
+  const ssoService = config.get('service.sso');
+  const serviceBase = getWithDomain(hostname, config.get('service.base'));
+  console.log(`createLoaders got ${hostname} | serviceBase: ${serviceBase}`);
   const cookies = new Cookies(req.headers.cookie);
   // TODO: By default, `DataLoader` just caches the results forever,
   // but we should eventually expunge them from the cache.
+
   const cmlinkLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(path =>
-        // TODO change hardcoded host
-        fetch(`http://${host}.haaretz.co.il/json/cmlink/${path}`).then(
-          response => response.json()
+        fetch(`${serviceBase}/json/cmlink/${path}`).then(response =>
+          response.json()
         )
       )
     )
   );
   const pageLoader = new DataLoader(keys =>
     Promise.all(
-      keys.map(path =>
-        fetch(
-          `http://${host}.haaretz.co.il/papi${
+      keys.map(path => {
+        console.log(
+          `pageLoader - papi - loading: ${serviceBase}/papi${
             path.startsWith('/') ? '' : '/'
           }${path}`
-        ).then(response => response.json())
-      )
+        );
+        return fetch(
+          `${serviceBase}/papi${path.startsWith('/') ? '' : '/'}${path}`
+        ).then(response => response.json());
+      })
     )
   );
 
   const purchasePageLoader = new DataLoader(keys => {
-    let baseUri = `https://${host}.haaretz.co.il/papi`;
-    if (req !== undefined && process.env.NODE_ENV === 'production') {
-      const papiSubDomainhost = config.get('papiSubDomain');
-      const papiProtocol = config.get('papiProtocol');
-      const papiHostname = `${papiSubDomainhost}.${req.hostname
-        .split('.')
-        .splice(1)
-        .join('.')}`;
-      baseUri = `${papiProtocol}://${papiHostname}/papi`;
-    }
+    const baseUri = `${serviceBase}/papi`;
     const userId = CookieUtils.stringToMap(cookies.get('tmsso') || '', {
       separator: /:\s?/,
     }).userId;
-    console.log('userId from loader: ', userId);
     return Promise.all(
       // 'path' means campaign path relative to polopoly root campaign page (which is '/')
       keys.map(path => {
@@ -67,10 +61,11 @@ export function createLoaders(req) {
           ? `${pathWithoutQuery}/${query.offer}`
           : `${pathWithoutQuery}`; // Augment request for papi
         // '/promotions-page/more-ads/some-sub-promotion' -> '/more-ads/some-sub-promotion'
-        const normlizedPath = `${baseUri}${appPrefix}${(path || '/').replace(
-          `${appPrefix}`,
-          ''
-        )}${path.includes('?') ? '&' : '?'}userId=${userId}`;
+        const normlizedPath = `${baseUri}/${polopolyPromotionsPage}${(
+          path || '/'
+        ).replace(`${polopolyPromotionsPage}`, '')}${
+          path.includes('?') ? '&' : '?'
+        }userId=${userId}`;
         console.log(
           'GRAPHQL - fetching data from papi using endpoint: ',
           normlizedPath
@@ -80,7 +75,7 @@ export function createLoaders(req) {
             if (response.ok) {
               return response;
             }
-            return fetch(`${baseUri}${appPrefix}`);
+            return fetch(`${baseUri}/${polopolyPromotionsPage}`);
           })
           .then(response => response.json());
       })
@@ -90,7 +85,7 @@ export function createLoaders(req) {
     Promise.all(
       keys.map(couponCode =>
         fetch(
-          `https://${host}.haaretz.co.il/papi${appPrefix}?couponCode=${couponCode}`
+          `${serviceBase}/papi/${polopolyPromotionsPage}?couponCode=${couponCode}`
         ).then(response => response.json())
       )
     )
@@ -99,7 +94,7 @@ export function createLoaders(req) {
     Promise.all(
       keys.map(path =>
         fetch(
-          `http://${host}.haaretz.co.il/papi/cmlink${
+          `${serviceBase}/papi/cmlink${
             path.startsWith('/') ? '' : '/'
           }${path}?vm=whtzResponsive&exploded=true`
         ).then(response => response.json())
@@ -110,7 +105,7 @@ export function createLoaders(req) {
     Promise.all(
       keys.map(paymentData =>
         fetch(
-          `https://${ssoSubDomain}.haaretz.co.il/sso/r/registerWebUser?${querystring.stringify(
+          `${ssoService}/sso/r/registerWebUser?${querystring.stringify(
             paymentData
           )}`
         ).then(response => response.json())
@@ -119,27 +114,22 @@ export function createLoaders(req) {
   );
   const resetPasswordLoader = new DataLoader(keys =>
     Promise.all(
-      keys.map(userName => {
-        const isTm = req.hostname.includes('themarker');
-        return fetch(
-          `https://${ssoSubDomain}.themarker.com/sso/r/resetPassword`,
-          {
-            method: 'post',
-            credentials: 'include',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type':
-                'application/x-www-form-urlencoded; charset=UTF-8',
-            },
-            body: querystring.stringify({
-              newsso: true,
-              layer: 'sendpassword',
-              site: isTm ? 10 : 80,
-              userName,
-            }),
-          }
-        ).then(response => response.json());
-      })
+      keys.map(userName =>
+        fetch(`${ssoService}/sso/r/resetPassword`, {
+          method: 'post',
+          credentials: 'include',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+          body: querystring.stringify({
+            newsso: true,
+            layer: 'sendpassword',
+            site: 80,
+            userName,
+          }),
+        }).then(response => response.json())
+      )
     )
   );
 
@@ -154,60 +144,58 @@ export function createLoaders(req) {
   };
 }
 
-export function createPosters(cookies) {
+export function createPosters(req) {
+  const hostname = req.hostname;
+  const papiBaseService = getWithDomain(hostname, config.get('service.base'));
+  // const cookies = new Cookies(req.headers.cookie);
+
   const cmlinkCommentPoster = newComment =>
-    fetch(
-      `http://${host}.haaretz.co.il/cmlink/${newComment.commentElementId}`,
-      {
-        method: 'post',
-        credentials: 'include',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        },
-        body: querystring.stringify({
-          commentsId: newComment.commentElementId,
-          comment_author: newComment.commentAuthor,
-          comment_title: newComment.commentTitle,
-          comment_text: newComment.commentText,
-          articleId: newComment.articleId,
-          parentCommentId: newComment.parentCommentId,
-          formId: 'comments-form',
-          action: 'CREATE_COMMENT',
-          ajax: true,
-        }),
-      }
-    )
+    fetch(`${papiBaseService}/cmlink/${newComment.commentElementId}`, {
+      method: 'post',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      },
+      body: querystring.stringify({
+        commentsId: newComment.commentElementId,
+        comment_author: newComment.commentAuthor,
+        comment_title: newComment.commentTitle,
+        comment_text: newComment.commentText,
+        articleId: newComment.articleId,
+        parentCommentId: newComment.parentCommentId,
+        formId: 'comments-form',
+        action: 'CREATE_COMMENT',
+        ajax: true,
+      }),
+    })
       .then(response => response.json())
       .then(data => data);
 
   const cmlinkCommentAbuseReport = newAbuseReport =>
-    fetch(
-      `http://${host}.haaretz.co.il/cmlink/${newAbuseReport.commentElementId}`,
-      {
-        method: 'post',
-        credentials: 'include',
-        headers: {
-          Accept: 'application/json, text/javascript, */*; q=0.01',
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          origin: `http://${host}.haaretz.co.il`,
-        },
-        body: querystring.stringify({
-          commentId: newAbuseReport.commentId,
-          action: 'REPORT_COMMENT_ABUSE',
-          invisible: true,
-          'g-recaptcha-response': newAbuseReport.captchaKey,
-          ajax: true,
-        }),
-      }
-    )
+    fetch(`${papiBaseService}/cmlink/${newAbuseReport.commentElementId}`, {
+      method: 'post',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json, text/javascript, */*; q=0.01',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        // origin: `${papiBaseService}`,
+      },
+      body: querystring.stringify({
+        commentId: newAbuseReport.commentId,
+        action: 'REPORT_COMMENT_ABUSE',
+        invisible: true,
+        'g-recaptcha-response': newAbuseReport.captchaKey,
+        ajax: true,
+      }),
+    })
       .then(response => response.status)
       .then(data => data);
 
   const loggerVotePoster = newVote =>
     fetch(
       // Todo: Change Mador (2.285) from hardcoded to dynamic
-      `http://${host}.haaretz.co.il/logger/p.gif?type=COMMENTS_RATINGS&a=%2F2.285%2F${
+      `${papiBaseService}/logger/p.gif?type=COMMENTS_RATINGS&a=%2F2.285%2F${
         newVote.articleId
       }&comment=${newVote.commentId}&group=${
         newVote.group
@@ -224,7 +212,7 @@ export function createPosters(cookies) {
       .then(data => data);
 
   const notificationSignUpPoster = newSignUpData =>
-    fetch(`http://${host}.haaretz.co.il/comments/acceptreject`, {
+    fetch(`${papiBaseService}/comments/acceptreject`, {
       method: 'post',
       credentials: 'include',
       headers: {
@@ -247,7 +235,7 @@ export function createPosters(cookies) {
 
   const newsLetterRegister = newsletterSignUp =>
     fetch(
-      `http://${host}.haaretz.co.il/newsLetterRegister?EMAIL_FIELD=${
+      `${papiBaseService}/newsLetterRegister?EMAIL_FIELD=${
         newsletterSignUp.userEmail
       }${
         newsletterSignUp.checkBox ? '&ALLOW_MARKETING_MESSAGES_FIELD=true' : ''

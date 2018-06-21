@@ -100,7 +100,7 @@ const imgOptions = {
  */
 export default class BeforeAndAfter extends React.Component {
   state = {
-    lineX: this.props.linePos.replace('%', ''),
+    lineX: this.props.properties.linePos.replace('%', ''),
   };
 
   componentDidMount() {
@@ -126,6 +126,9 @@ export default class BeforeAndAfter extends React.Component {
   };
 
   render() {
+    const {
+      properties: { elementsList, },
+    } = this.props;
     return (
       <Wrapper
         innerRef={wrapper => (this.wrapper = wrapper)} // eslint-disable-line no-return-assign
@@ -137,7 +140,7 @@ export default class BeforeAndAfter extends React.Component {
           draggable
         />
         <Image
-          data={this.props.elementsList[0]}
+          data={elementsList[0]}
           imgOptions={imgOptions}
           attrs={{ draggable: false, }}
         />
@@ -151,7 +154,7 @@ export default class BeforeAndAfter extends React.Component {
             draggable={false}
           >
             <Image
-              data={this.props.elementsList[1]}
+              data={elementsList[1]}
               imgOptions={imgOptions}
               attrs={{ draggable: false, }}
             />
@@ -163,17 +166,15 @@ export default class BeforeAndAfter extends React.Component {
 }
 
 BeforeAndAfter.propTypes = {
-  /**
-   * The initial position of the slider controller.
-   */
-  linePos: PropTypes.string,
-  /**
-   * List of images (takes only the first 2), the first one goes to the right,
-   * and the second goes to the left.
-   */
-  elementsList: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-BeforeAndAfter.defaultProps = {
-  linePos: '50%',
+  properties: PropTypes.shape({
+    /**
+     * The initial position of the slider controller.
+     */
+    linePos: PropTypes.string,
+    /**
+     * List of images (takes only the first 2), the first one goes to the right,
+     * and the second goes to the left.
+     */
+    elementsList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }).isRequired,
 };

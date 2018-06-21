@@ -1,10 +1,9 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 **Table of Contents**
 
-* [Masthead examples](#Masthead-examples)
+- [Masthead examples](#masthead-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

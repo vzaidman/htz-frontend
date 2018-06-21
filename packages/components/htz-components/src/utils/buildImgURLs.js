@@ -125,8 +125,10 @@ export function buildURLs(contentId, data, options, excludeWidthDescriptor) {
  */
 
 export function buildUrl(contentId, data, options = {}) {
-  const baseUrl = config.has('imgBaseUrl') && config.get('imgBaseUrl');
-  const baseHref = config.has('baseHref') && config.get('baseHref');
+  const baseUrl = config.has('service.image') && config.get('service.image');
+  const polopolyImageBaseHref =
+    config.has('service.polopolyImageBaseHref') &&
+    config.get('service.polopolyImageBaseHref');
   const { imgName, version, aspects, } = data;
   const imageNameFromData = imgName.split('/')[1];
 
@@ -145,9 +147,9 @@ export function buildUrl(contentId, data, options = {}) {
     );
   }
 
-  if (!version && !baseHref) {
+  if (!version && !polopolyImageBaseHref) {
     throw new Error(
-      'Your app\'s "baseHref" is not configured.\n' +
+      'Your app\'s "polopolyImageBaseHref" is not configured.\n' +
         'See https://github.com/Haaretz/htz-frontend/blob/master/docs/Configuration.md'
     );
   }
@@ -203,7 +205,7 @@ export function buildUrl(contentId, data, options = {}) {
   // Url suffix based on whether this is an uploaded or fetched image
   const urlSuffix = version
     ? `/v${version}/${contentId}.${imageNameFromData}`
-    : `/${baseHref}/polopoly_fs/${contentId}!/${imageNameFromData}`;
+    : `/${polopolyImageBaseHref}/polopoly_fs/${contentId}!/${imageNameFromData}`;
   // construct url string from params
   const url =
     baseUrl +

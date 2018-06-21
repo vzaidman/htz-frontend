@@ -21,7 +21,7 @@ GoogleMap.propTypes = {
   /**
    * The address (in static map) or starting address (in direction).
    */
-  content: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
   settings: PropTypes.shape({
     /**
      * The language of display.
@@ -90,7 +90,7 @@ const MapCover = createComponent(mapCover, 'div', props => Object.keys(props));
 function GoogleMap(props) {
   const settings = props.settings;
   const type = props.embedType;
-  const address = props.content;
+  const address = props.source;
   const key = 'AIzaSyBIAxVLUwr1Lls-usIxb0HxCRpCXMhJtlU';
 
   let waypoints;
@@ -102,7 +102,9 @@ function GoogleMap(props) {
 
   const zoom =
     type !== 'streetView'
-      ? settings.zoom ? `&zoom=${settings.zoom}` : ''
+      ? settings.zoom
+        ? `&zoom=${settings.zoom}`
+        : ''
       : '';
   const satellite =
     type !== 'streetView' && settings.satellite ? '&maptype=satellite' : '';
@@ -143,11 +145,10 @@ function GoogleMap(props) {
       <MapElement
         width="600"
         height="450"
-        src={`https://www.google.com/maps/embed/v1/${searchString}&key=${
-          key
-        }&language=${settings.language}${waypoints || ''}${method ||
-          ''}${units || ''}${satellite || ''}${fov || ''}${heading ||
-          ''}${zoom || ''}${pitch || ''}`}
+        src={`https://www.google.com/maps/embed/v1/${searchString}&key=${key}&language=${
+          settings.language
+        }${waypoints || ''}${method || ''}${units || ''}${satellite ||
+          ''}${fov || ''}${heading || ''}${zoom || ''}${pitch || ''}`}
         frameBorder="0"
         allowFullScreen=""
         onLoad={props.onLoadCallback}

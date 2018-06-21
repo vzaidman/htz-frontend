@@ -13,14 +13,4 @@ function getLocalExternalIp() {
 
 module.exports = {
   hostIp: getLocalExternalIp(),
-  hostname: process.env.HOSTNAME,
-  imgBaseUrl: 'https://images.haarets.co.il/image',
-  domain: 'haaretz.co.il',
-  baseHref: 'https://www.haaretz.co.il',
-  port: process.env.PORT || '2001',
-  graphqlSubdomain: 'pre',
-  graphqlProtocol: 'http',
-  papiSubDomain: 'pre',
-  papiProtocol: 'http',
-  ssoSubDomain: 'devsso',
 };

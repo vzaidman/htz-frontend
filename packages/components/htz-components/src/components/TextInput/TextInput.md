@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+- [TextInput](#textinput)
+- [Features](#features)
+- [Uncontrolled Examples](#uncontrolled-examples)
+- [Conrolled Examples](#conrolled-examples)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### TextInput
 
 `<TextInput>` is a styleable, easy to use and a11y compliant text input component.  
@@ -10,11 +22,11 @@ In most cases, we recommend using controlled components to implement forms. In a
 
 ### Features
 
-* Controllable, can be used both as controlled and uncontrolled input
-* single and multiline support
-* simple and rich text editing
-* a11y compliant
-* easly styled with variants
+- Controllable, can be used both as controlled and uncontrolled input
+- single and multiline support
+- simple and rich text editing
+- a11y compliant
+- easly styled with variants
 
 ### Uncontrolled Examples
 
@@ -47,13 +59,14 @@ When passed as a prop, the following component is rendered after the label:
 See documantation of `requiredText` prop above to see how to manipulate the styling and presentation of the `<abbr/>`
 
 ```jsx static
-<abbr className={className} title={requiredText.long}>{' '}
- {isSup ? <sup>{requiredText.short}</sup> : requiredText.short}
+<abbr className={className} title={requiredText.long}>
+  {' '}
+  {isSup ? <sup>{requiredText.short}</sup> : requiredText.short}
 </abbr>
 ```
 
-* Default color is dependant on the variant
-* Custom styling can be passed with miscStyles
+- Default color is dependant on the variant
+- Custom styling can be passed with miscStyles
 
 ```jsx
 <div dir="rtl">

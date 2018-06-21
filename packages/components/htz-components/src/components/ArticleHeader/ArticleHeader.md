@@ -1,3 +1,12 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+- [Hebrew header](#hebrew-header)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### Hebrew header
 
 The ArticleHeader component composes key information

@@ -21,12 +21,13 @@ import tm from './routes/tm';
 import hdc from './routes/hdc';
 import purchase from './routes/purchase';
 
-const DEV = process.env.NODE_ENV !== 'production';
-const PORT = process.env.PORT || 3000;
-const hostname = config.get('hostname') || 'www';
-const domain = config.get('domain');
+const DEV = process.env.NODE_ENV === 'development';
+const PORT = Number(
+  process.env.PORT || config.has('port') ? config.get('port') : '3000'
+);
 const app = next({ dev: DEV, });
 const handler = app.getRequestHandler();
+const selectedRoute = process.argv[2];
 const sitesRouting = new Map([
   [ 'htz', htz, ],
   [ 'tm', tm, ],
@@ -34,9 +35,15 @@ const sitesRouting = new Map([
   [ 'purchase', purchase, ],
 ]);
 
+// Fail-fast in case of missing routing argument
+if (!(selectedRoute && sitesRouting.has(selectedRoute))) {
+  throw new Error('Missing required routing argument!');
+}
+
+const serviceBase = config.get('service.base');
 // proxy middleware options
 const options = {
-  target: `http://${hostname}.${domain}:8080`, // target host
+  target: `${serviceBase}:8080`, // target host
   changeOrigin: true, // needed for virtual hosted sites
   ws: true, // proxy websockets
   // pathRewrite: {
@@ -46,7 +53,7 @@ const options = {
   router: {
     // when request.headers.host == 'dev.localhost:3000',
     // override target 'http://www.example.org' to 'http://localhost:8000'
-    [`${hostname}.${domain}:${PORT}`]: `http://${hostname}.${domain}:8080`,
+    [`${serviceBase}:${PORT}`]: `${serviceBase}:8080`,
   },
 };
 // create the proxy (without context)
@@ -70,7 +77,7 @@ const GraphQLOptions = {
   debug: DEV,
 };
 
-const hostIp = config.get('hostIp');
+// const hostIp = config.get('hostIp');
 app
   .prepare()
   // eslint-disable-next-line consistent-return
@@ -103,17 +110,14 @@ app
     });
 
     // Get the current app's routing module.
-    sitesRouting.get(process.argv[2])(app, server, DEV);
+    sitesRouting.get(selectedRoute)(app, server, DEV);
 
     // Use static assets from the `static` directory
     server.use(
       '/static',
-      express.static(
-        path.join(__dirname, `../../../../../packages/apps/${domain}/static`),
-        {
-          redirect: false,
-        }
-      )
+      express.static(path.join(`${process.cwd()}/static`), {
+        redirect: false,
+      })
     );
 
     server.get('/', handler);
@@ -125,9 +129,8 @@ app
 
     server.listen(PORT, err => {
       if (err) throw err;
-
       // eslint-disable-next-line no-console
-      console.log(`> Ready on http://${hostIp}:${PORT}`);
+      console.log(`> Ready on your ${config.get('hostIp')}:${PORT}`);
     });
   })
   .catch(err => {

@@ -1,3 +1,20 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+- [**Variants**](#variants)
+- [**Size**](#size)
+- [**Radius**](#radius)
+- [**State**](#state)
+- [**Custom Styling**](#custom-styling)
+- [**Click Handler**](#click-handler)
+- [**Button Type**](#button-type)
+- [**Miscellaneous DOM Attributes**](#miscellaneous-dom-attributes)
+- [**Underlying Element**](#underlying-element)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 Buttons are essential element of any UI system and is meant to convey a
 notion of actionability and interactivity to the user. They must therefore
 be customizable enough to cover all use cases in the UI system, but still

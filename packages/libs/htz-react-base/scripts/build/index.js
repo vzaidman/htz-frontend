@@ -8,7 +8,14 @@ const spawn = require('cross-spawn');
 const { checkDir, } = require('./_checkDir');
 
 function buildApp() {
-  require('./next');
+  const child = spawn('node', [ require.resolve('./next'), ], {
+    stdio: 'inherit',
+  });
+  child.on('close', code => {
+    if (code === 0) {
+      console.log('Next App successfully built!');
+    }
+  });
 }
 
 function buildLibrary() {

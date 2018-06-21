@@ -16,7 +16,7 @@ Vimeo.propTypes = {
    * The video's Id
    * (for example: '105847954').
    */
-  content: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
   /**
    * A function to be called when the video finishes to load.
    */
@@ -33,7 +33,7 @@ function Vimeo(props) {
       <VideoElement
         width="640"
         height="360"
-        src={`https://player.vimeo.com/video/${props.content}`}
+        src={`https://player.vimeo.com/video/${props.source}`}
         frameBorder="0"
         allowFullScreen=""
         onLoad={props.onLoadCallback}
