@@ -41,6 +41,9 @@ switch (connectionPreset) {
 
 if (connectionPreset) {
   console.log(`CONNECTION_PRESET=${connectionPreset} detected!`);
-  console.log('Override is: ', Object.assign({}, presetOverride));
+  console.log(
+    'Override is: ',
+    JSON.stringify(Object.assign({}, presetOverride))
+  );
 }
 module.exports = Object.assign({}, presetOverride);

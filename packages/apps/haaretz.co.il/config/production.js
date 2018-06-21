@@ -4,7 +4,7 @@ const defer = require('config/defer').deferConfig;
 module.exports = {
   service: {
     base: defer(function () {
-      return `http${this.useSSL ? 's' : ''}://${this.appFQDN}`;
+      return `http${this.useSSL ? 's' : ''}://${this.remoteFQDN}`;
     }),
     sso: 'https://sso.haaretz.co.il',
     image: 'https://images.haarets.co.il/image',
