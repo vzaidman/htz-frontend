@@ -21,6 +21,7 @@
     "gc": "htz-scripts commitizen",
     "icons": "node scripts/create-icons.js",
     "lint": "htz-scripts lint",
+    "lists": "node scripts/update-list-files.js",
     "prepare": "npm run build",
     "styleguide": "htz-scripts styleguide",
     "styleguide:build": "htz-scripts styleguide:build",
