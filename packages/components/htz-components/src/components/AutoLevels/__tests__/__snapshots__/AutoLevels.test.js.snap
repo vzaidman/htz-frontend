@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AutoLevels> renders correctly H and Sections with correct heading level in different scenarios 1`] = `
+<div>
+  <h2>
+    should be h2
+  </h2>
+  <section>
+    <h3>
+      Should be h3
+    </h3>
+    <div>
+      <h4>
+        Should be h4
+      </h4>
+      <h5>
+        Should be h5 because of offSet
+      </h5>
+      <h5>
+        Should be h5 because of fragment
+      </h5>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`<AutoLevels> renders correctly H and Sections with correct heading level in different scenarios 2`] = `""`;

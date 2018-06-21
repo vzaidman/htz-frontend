@@ -5,6 +5,7 @@ import htzTheme, { cssReset, } from '@haaretz/htz-theme';
 import { ApolloProvider, } from 'react-apollo';
 import { createRenderer, StyleProvider, } from '@haaretz/fela-utils';
 import client from './ApolloMockClient';
+import { LevelProvider, } from '../src/components/AutoLevels/LevelContext';
 
 const styleRenderer = createRenderer({ isRtl: true, });
 
@@ -20,7 +21,9 @@ export default function StyleGuideProvider({ children, }) {
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
     [ '../src/fonts/OpenSansHebrewLight.ttf', ],
-    { fontWeight: 300, }
+    {
+      fontWeight: 300,
+    }
   );
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
@@ -44,7 +47,9 @@ export default function StyleGuideProvider({ children, }) {
   return (
     <ApolloProvider client={client}>
       <StyleProvider renderer={styleRenderer} theme={htzTheme}>
-        <div>{children}</div>
+        <LevelProvider value={2}>
+          <div>{children}</div>;
+        </LevelProvider>
       </StyleProvider>
     </ApolloProvider>
   );

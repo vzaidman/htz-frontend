@@ -9,7 +9,7 @@ import {
   borderTop,
 } from '@haaretz/htz-css-tools';
 
-import { Button, Grid, GridItem, BIAction, } from '@haaretz/htz-components';
+import { Button, Grid, GridItem, BIAction, H, } from '@haaretz/htz-components';
 import PositiveCircle from './PositiveCircle';
 import Phones from '../Elements/Phones';
 
@@ -228,13 +228,13 @@ const pricingHeadStyle = ({ theme, }) => ({
   marginTop: '1rem',
   extend: [ theme.type(-1), ],
 });
-const StyledPricingHead = createComponent(pricingHeadStyle, 'h5');
+const StyledPricingHead = createComponent(pricingHeadStyle, H);
 
 const colHeadStyle = ({ theme, }) => ({
   marginTop: '2rem',
   extend: [ theme.type(2), ],
 });
-const StyledColHead = createComponent(colHeadStyle, 'h2');
+const StyledColHead = createComponent(colHeadStyle, H);
 
 function buildThead(dynamicData, staticTheadData) {
   return dynamicData.map(col => ({

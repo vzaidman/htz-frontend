@@ -11,6 +11,7 @@ import {
   Form,
   IconPaypal,
   BIAction,
+  H,
 } from '@haaretz/htz-components';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
@@ -180,7 +181,9 @@ class PaymentStage extends Component {
                 <FelaComponent
                   style={formContStyle}
                   render={({
-                    theme: { stage4: { headerPaymentMethod, form, }, },
+                    theme: {
+                      stage4: { headerPaymentMethod, form, },
+                    },
                     className,
                   }) => (
                     <div className={className}>
@@ -193,9 +196,14 @@ class PaymentStage extends Component {
                               textAlign: 'start',
                             }}
                           >
-                            <FelaComponent style={formHeaderStyle} render="h4">
-                              {headerPaymentMethod}
-                            </FelaComponent>
+                            <FelaComponent
+                              style={formHeaderStyle}
+                              render={({ className, }) => (
+                                <H className={className}>
+                                  {headerPaymentMethod}
+                                </H>
+                              )}
+                            />
                             <RadioGroup
                               {...getInputProps({
                                 name: 'paymentMethodIndex',
@@ -298,7 +306,9 @@ class PaymentStage extends Component {
                           isFourDigits={!!creditCardsDetails}
                           render={({
                             className,
-                            theme: { payment: { payVia, creditCard, }, },
+                            theme: {
+                              payment: { payVia, creditCard, },
+                            },
                           }) => {
                             const buttonProps = {
                               variant: 'primary',

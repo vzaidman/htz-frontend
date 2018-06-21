@@ -7,6 +7,7 @@ import {
   Form,
   TextInput,
   BIAction,
+  H,
 } from '@haaretz/htz-components';
 import isEmail from 'validator/lib/isEmail';
 import { ApolloConsumer, } from 'react-apollo';
@@ -105,10 +106,10 @@ class ResetPasswordModal extends Component {
                     textAlign: 'center',
                     extend: [ theme.type(1), ],
                   })}
-                  render="h3"
-                >
-                  {header}
-                </FelaComponent>
+                  render={({ className, }) => (
+                    <H className={className}>{header}</H>
+                  )}
+                />
                 {this.state.resetEmailSent ? (
                   <Fragment>
                     <FelaComponent

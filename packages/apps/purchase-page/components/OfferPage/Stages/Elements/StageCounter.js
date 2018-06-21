@@ -3,6 +3,7 @@ import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
+import { H, } from '@haaretz/htz-components';
 
 const GET_STARTING_STAGE = gql`
   query {
@@ -40,7 +41,7 @@ function StageCounter({ stage, }) {
       }) => (
         <Query query={GET_STARTING_STAGE}>
           {({ data: { startFromStage2, }, }) => (
-            <h3 className={className}>
+            <H className={className}>
               {stage ? (
                 <Fragment>
                   {beforeCounter} {startFromStage2 ? stage - 1 : stage}{' '}
@@ -49,7 +50,7 @@ function StageCounter({ stage, }) {
               ) : (
                 debtTxt
               )}
-            </h3>
+            </H>
           )}
         </Query>
       )}

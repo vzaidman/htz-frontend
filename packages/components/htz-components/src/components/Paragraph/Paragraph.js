@@ -2,7 +2,9 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import Link from '../Link/Link';
+import H from '../AutoLevels/H';
 import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
+
 
 /* Components styles */
 const mainWrapperStyle = ({ marginBottom, }) => ({
@@ -143,7 +145,7 @@ const getTag = tag => {
     [ 'u', UnderLine, ],
     [ 'em', Em, ],
     [ 'span', 'span', ],
-    [ 'h4', 'h4', ],
+    [ 'h4', H, ],
     [ 'br', () => <br />, ],
   ]);
   return tagsMap.get(tag);

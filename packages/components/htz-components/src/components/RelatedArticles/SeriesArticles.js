@@ -6,6 +6,7 @@ import gql from 'graphql-tag';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import ArticleLink from './articleLink';
 import Button from '../Button/Button';
+import H from '../AutoLevels/H';
 
 const GET_ARTICLE_ID = gql`
   query {
@@ -77,7 +78,7 @@ const seriesTitleStyle = ({ theme, }) => ({
   marginBottom: '1rem',
 });
 
-const SeriesTitle = createComponent(seriesTitleStyle, 'h4');
+const SeriesTitle = createComponent(seriesTitleStyle, H);
 
 const articleListWrapperStyle = ({ theme, }) => ({
   transitionProperty: 'height',
@@ -169,7 +170,9 @@ export default class SeriesArticles extends React.Component {
         style={{ ...(this.props.marginBottom || []), }}
         render={({
           className,
-          theme: { seriesArticleI18n: { loadButton, titlePrefix, }, },
+          theme: {
+            seriesArticleI18n: { loadButton, titlePrefix, },
+          },
         }) => (
           <div className={className}>
             <ArticleListWrapper aria-live="polite">

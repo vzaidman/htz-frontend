@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
 import { borderTop, borderBottom, } from '@haaretz/htz-css-tools';
-import { Button, BIAction, } from '@haaretz/htz-components';
+import { Button, BIAction, H, } from '@haaretz/htz-components';
 import PositiveCircle from './PositiveCircle';
 import Phones from '../Elements/Phones';
 
@@ -109,7 +109,7 @@ const itemHeadingStyle = ({ theme, }) => ({
   extend: [ theme.type(3), ],
 });
 
-const StyledItemHeading = createComponent(itemHeadingStyle, 'h2');
+const StyledItemHeading = createComponent(itemHeadingStyle, H);
 
 const itemPricingMonthlyStyle = ({ theme, }) => ({
   fontWeight: 'bold',
@@ -117,7 +117,7 @@ const itemPricingMonthlyStyle = ({ theme, }) => ({
   extend: [ theme.type(1), ],
 });
 
-const StyledItemPricingMonthly = createComponent(itemPricingMonthlyStyle, 'h4');
+const StyledItemPricingMonthly = createComponent(itemPricingMonthlyStyle, H);
 
 class MobileView extends Component {
   state = {

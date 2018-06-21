@@ -4,6 +4,7 @@ import { createComponent, FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 import ArticleLink from './articleLink';
+import H from '../AutoLevels/H';
 
 const GET_ARTICLE_ID = gql`
   query {
@@ -74,7 +75,7 @@ const seriesTitleStyle = ({ theme, }) => ({
     content: '":"',
   },
 });
-const SeriesTitle = createComponent(seriesTitleStyle, 'h4');
+const SeriesTitle = createComponent(seriesTitleStyle, H);
 
 const articleWrapperStyle = ({ theme, lastItem, }) => ({
   display: 'inline',

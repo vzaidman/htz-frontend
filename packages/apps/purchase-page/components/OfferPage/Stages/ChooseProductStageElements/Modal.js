@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import { Paragraph, A11yDialog, } from '@haaretz/htz-components';
+import { Paragraph, A11yDialog, H, } from '@haaretz/htz-components';
 
 import CloseModalButton from '../Elements/CloseModalButton';
 
@@ -24,7 +24,14 @@ const defaultProps = {
 function Modal({ closeModal, offerDisclaimer, isVisible, }) {
   return (
     <FelaComponent
-      render={({ theme, theme: { stage2: { disclaimer: { title, }, }, }, }) => (
+      render={({
+        theme,
+        theme: {
+          stage2: {
+            disclaimer: { title, },
+          },
+        },
+      }) => (
         <A11yDialog
           appendTo="#modalsRoot"
           elementToHide="#pageRoot"
@@ -52,14 +59,12 @@ function Modal({ closeModal, offerDisclaimer, isVisible, }) {
                 <CloseModalButton handleClose={handleClose} />
               </FelaComponent>
               <FelaComponent
-                render="h2"
                 style={{
                   textAlign: 'center',
                   marginBottom: '1rem',
                 }}
-              >
-                {title}
-              </FelaComponent>
+                render={({ className, }) => <H className={className}>{title}</H>}
+              />
               <FelaComponent
                 render="div"
                 style={{

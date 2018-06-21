@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import Link from '../../Link/Link';
 import Button from '../../Button/Button'; // eslint-disable-line import/no-named-as-default
+import Section from '../../AutoLevels/Section';
 
 const MobileBodyWrapperStyle = ({ theme, }) => ({
   ...theme.mq({ from: 's', }, { display: 'none', }),
@@ -31,7 +32,7 @@ const mobileMainListStyle = ({ theme, }) => ({
   marginInlineStart: 'auto',
   marginInlineEnd: 'auto',
 });
-const StyledMobileMainList = createComponent(mobileMainListStyle, 'section');
+const StyledMobileMainList = createComponent(mobileMainListStyle, Section);
 
 const linkBoxStyle = ({ theme, }) => ({
   display: 'flex',

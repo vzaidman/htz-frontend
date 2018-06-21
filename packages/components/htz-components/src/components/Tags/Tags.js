@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
 import Link from '../Link/Link';
+import H from '../AutoLevels/H';
 
 const propTypes = {
   /**
@@ -29,7 +30,7 @@ const titleStyle = ({ theme, }) => ({
   color: theme.color('secondary'),
   marginEnd: '1rem',
 });
-const TagsTitle = createComponent(titleStyle, 'h4');
+const TagsTitle = createComponent(titleStyle, H);
 
 const contentStyle = ({ theme, }) => ({
   color: theme.color('neutral', '-2'),

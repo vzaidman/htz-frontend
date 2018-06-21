@@ -12,6 +12,7 @@ import {
   Form,
   Grid,
   GridItem,
+  H,
   TextInput,
   Login,
   Register,
@@ -151,10 +152,12 @@ class LoginOrRegisterStage extends React.Component {
                                         style={theme => ({
                                           extend: [ theme.type(2), ],
                                         })}
-                                        render="h4"
-                                      >
-                                        {form.registerHeader.header}
-                                      </FelaComponent>
+                                        render={({ className, }) => (
+                                          <H className={className}>
+                                            {form.registerHeader.header}
+                                          </H>
+                                        )}
+                                      />
                                       <FelaComponent
                                         style={theme => ({
                                           color: theme.color(
