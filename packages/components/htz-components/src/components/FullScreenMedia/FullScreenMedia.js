@@ -71,14 +71,16 @@ const iconStyle = ({ theme, isFullScreen, }) => ({
   ':hover': {
     backgroundColor: theme.color('neutral', '+1'),
   },
-  ...(isFullScreen || {
-    borderRadius: '50%',
-    cursor: 'zoom-in',
-    end: '1rem',
-    position: 'absolute',
-    top: '1rem',
-    width: '5rem',
-  }),
+  ...(!isFullScreen
+    ? {
+      borderRadius: '50%',
+      cursor: 'zoom-in',
+      end: '1rem',
+      position: 'absolute',
+      top: '1rem',
+      width: '5rem',
+    }
+    : {}),
 });
 
 // eslint-disable-next-line react/prop-types
@@ -115,7 +117,7 @@ const mediaWrapperStyle = ({ isFullScreen, theme, }) =>
       height: '100%',
       width: '100%',
       extend: [
-        ...theme.mq(
+        theme.mq(
           { from: 's', },
           {
             display: 'flex',

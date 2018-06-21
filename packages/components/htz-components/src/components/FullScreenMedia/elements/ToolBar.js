@@ -56,7 +56,9 @@ const captionIconStyle = ({ theme, isOpen, }) => ({
   width: '3.5rem',
   ':before': {
     ...captionIconDashStyle(theme),
-    ...(isOpen && { transform: 'translate(1.5rem, -0.25rem) rotate(-180deg)', }),
+    ...(isOpen
+      ? { transform: 'translate(1.5rem, -0.25rem) rotate(-180deg)', }
+      : {}),
     position: 'absolute',
     end: isOpen ? '-1' : '0',
     top: '-1rem',
@@ -65,7 +67,7 @@ const captionIconStyle = ({ theme, isOpen, }) => ({
   },
   ':after': {
     ...captionIconDashStyle(theme),
-    ...(isOpen && { transform: 'translate(0, 0.25rem) rotate(180deg)', }),
+    ...(isOpen ? { transform: 'translate(0, 0.25rem) rotate(180deg)', } : {}),
     position: 'absolute',
     end: isOpen ? '1' : '0',
     top: '1rem',
