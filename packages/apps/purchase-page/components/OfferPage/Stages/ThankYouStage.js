@@ -87,6 +87,7 @@ function StageThankYou({ userEmail, product, userMessage, }) {
                 <BIAction>
                   {action => (
                     <Newsletter
+                      id="ThankYouWrapper-1234"
                       headlineText={newsletterTitle(site)}
                       buttonText={newsletterButton}
                       host={site}
