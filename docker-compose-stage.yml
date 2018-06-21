@@ -4,10 +4,14 @@ services:
     build: .
     image: "docker.themarker.com:8083/htz_promotions:${version:-latest}"
     ports:
-      - 2002:2002
+      - 2001:2001
     environment:
       - NODE_ENV=production
+      - CONNECTION_PRESET=stage
       # the following environment is optional
-      - PORT=2002
-      - BIND_ADDRESS=172.21.1.231
-      - HOSTNAME=www
+      - PORT=2001
+      - BIND_ADDRESS=ms-apps
+      - HOSTNAME=docker
+      - GRAPHQL_USE_SSL=false
+      - GRAPHQL_EXPOSE_PORT=true
+
