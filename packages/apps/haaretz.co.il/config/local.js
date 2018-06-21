@@ -4,6 +4,9 @@ switch (connectionPreset) {
   case 'dev': {
     const baseConfigOverride = require('./development');
     presetOverride = Object.assign(presetOverride, baseConfigOverride.service, {
+      service: {
+        graphql: baseConfigOverride.service.graphql,
+      },
       remoteFQDN: baseConfigOverride.remoteFQDN,
     });
     break;
@@ -12,6 +15,9 @@ switch (connectionPreset) {
   case 'stage': {
     const baseConfigOverride = require('./staging');
     Object.assign(presetOverride, baseConfigOverride.service, {
+      service: {
+        graphql: baseConfigOverride.service.graphql,
+      },
       remoteFQDN: baseConfigOverride.remoteFQDN,
     });
     break;
@@ -20,6 +26,9 @@ switch (connectionPreset) {
   case 'prod': {
     const baseConfigOverride = require('./production');
     Object.assign(presetOverride, baseConfigOverride.service, {
+      service: {
+        graphql: baseConfigOverride.service.graphql,
+      },
       remoteFQDN: baseConfigOverride.remoteFQDN,
     });
     break;

@@ -4,14 +4,14 @@ const defer = require('config/defer').deferConfig;
 module.exports = {
   service: {
     base: defer(function () {
-      return `http${this.useSSL ? 's' : ''}://${this.appFQDN}`;
+      return `http${this.useSSL ? 's' : ''}://${this.remoteFQDN}`;
     }),
     sso: 'https://devsso.haaretz.co.il',
     image: 'http://res.cloudinary.com/kfirlevy/image',
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
-      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
+      }://${this.remoteFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
     }),
     polopolyImageBaseHref: defer(function () {
       return `http${
@@ -23,7 +23,7 @@ module.exports = {
     return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
   }),
   remoteFQDN: defer(function () {
-    return `www.${this.domain}`;
+    return `${this.appFQDN}`;
   }),
   useSSL: false,
   graphQLuseSSL: false,
