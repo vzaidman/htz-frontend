@@ -59,7 +59,7 @@ export default class Twitter extends React.Component {
     /**
      * Twitter's HTML tag (supplied by Twitter).
      */
-    content: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
     /**
      * A function to be called when the element finishes to load.
      */
@@ -93,11 +93,11 @@ export default class Twitter extends React.Component {
   };
 
   render() {
-    const { content, } = this.props;
+    const { source, } = this.props;
 
     return (
       <TwitterWrapper embedType={this.props.embedType}>
-        <div dangerouslySetInnerHTML={{ __html: content, }} />
+        <div dangerouslySetInnerHTML={{ __html: source, }} />
       </TwitterWrapper>
     );
   }

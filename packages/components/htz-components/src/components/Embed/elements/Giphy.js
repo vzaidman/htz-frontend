@@ -38,10 +38,8 @@ const GiphyWrapper = createComponent(giphyWrapper, 'figure', props =>
 );
 
 function Giphy(props) {
-  const settings = props.settings;
-  const src = settings.src;
-  const height = settings.height;
-  const width = settings.width;
+  const { settings, } = props;
+  const { src, height, width, } = settings;
 
   // TODO: Temporary
   const innerWidth = 600;

@@ -24,7 +24,7 @@ const getElement = (type, content) => {
         <Embed
           inputTemplate="com.polobase.YouTubeEmbed"
           embedType={content.includes('?list=') ? 'playlist' : 'video'}
-          content={content}
+          source={content}
         />
       );
     case 'embed':

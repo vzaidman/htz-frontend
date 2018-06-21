@@ -14,7 +14,7 @@ NYT.propTypes = {
   /**
    * The video's source code.
    */
-  content: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
   /**
    * A function to be called when the video finishes to load.
    */
@@ -37,7 +37,7 @@ function NYT(props) {
         marginHeight="0"
         marginWidth="0"
         id="nyt_video_player"
-        src={props.content}
+        src={props.source}
         onLoad={props.onLoadCallback}
       />
     </VideoWrapper>

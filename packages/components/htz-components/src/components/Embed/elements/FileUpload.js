@@ -14,7 +14,7 @@ FileUpload.propTypes = {
   /**
    * Contains the file's URL.
    */
-  content: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
   /**
    * File's type.
    */
@@ -63,14 +63,12 @@ const LinkToFile = createComponent(linkToFile, 'a', props =>
 );
 
 function FileUpload(props) {
-  const content = props.content;
-  const embedType = props.embedType;
-  const contentName = props.contentName;
+  const { source, embedType, contentName, } = props;
 
   const icon = embedType === 'pdf' ? '&' : '-';
 
   return (
-    <LinkToFile href={content} target="_blank">
+    <LinkToFile href={source} target="_blank">
       <FileIcon aria-hidden="true" data-icon={icon} />
       <span>{contentName}</span>
     </LinkToFile>

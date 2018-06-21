@@ -19,7 +19,7 @@ StandardAudio.propTypes = {
   /**
    * The audio's source code.
    */
-  content: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
   /**
    * A function to be called when the audio element finishes to load.
    */
@@ -44,13 +44,15 @@ const AudioWrapper = createComponent(audioWrapper, 'figure', props =>
 function StandardAudio(props) {
   const src =
     props.embedType === '103FM'
-      ? `https://103fm.maariv.co.il/mediaEmbed.aspx?${props.content}`
-      : `https://w.soundcloud.com/player/?url=${props.content}`;
+      ? `https://103fm.maariv.co.il/mediaEmbed.aspx?${props.source}`
+      : `https://w.soundcloud.com/player/?url=${props.source}`;
 
   const height =
     props.embedType === '103FM'
       ? 300
-      : props.embedType === 'playlist' ? 450 : 180;
+      : props.embedType === 'playlist'
+        ? 450
+        : 180;
 
   return (
     <AudioWrapper height={height}>

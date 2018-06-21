@@ -19,7 +19,7 @@ export default class FacebookComments extends React.Component {
     /**
      * The number of posts to display (between 1 and 10).
      */
-    content: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
     /**
      * A function to be called when this item finishes to load.
      */
@@ -59,14 +59,14 @@ export default class FacebookComments extends React.Component {
   };
 
   render() {
-    const { content, embedType, } = this.props;
+    const { source, embedType, } = this.props;
     return (
       <div
         className="fb-comments"
         data-width="100%"
         data-href={window.location.href}
         data-order-by={embedType}
-        data-numposts={content}
+        data-numposts={source}
       />
     );
   }

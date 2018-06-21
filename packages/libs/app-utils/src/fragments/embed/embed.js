@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 
 export default gql`
   fragment Embed on Embed {
-    input: content
+    source: content
     caption
     credit
     embedType

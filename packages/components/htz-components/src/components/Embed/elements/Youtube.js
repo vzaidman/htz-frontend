@@ -32,7 +32,7 @@ Youtube.propTypes = {
    * The video's Id
    * (for example: for video - '3SzXM019pbs').
    */
-  content: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
   settings: PropTypes.shape({
     /**
      * Should it display Youtube's controls ('0' || '1').
@@ -81,21 +81,18 @@ Youtube.defaultProps = {
 function Youtube(props) {
   const startAt = props.embedType === 'playlist' ? '&start=' : '?start=';
   const settings = props.settings || defaultSettings;
-
+  console.log(props);
   return (
     <VideoWrapper aspectRatio="16/9">
       <VideoElement
-        id={`yt_embed_${props.content}`}
+        id={`yt_embed_${props.source}`}
         width="560"
         height="315"
-        src={`//www.youtube.com/embed/${props.content}${startAt}${
+        src={`//www.youtube.com/embed/${props.source}${startAt}${
           settings.startAt
-        }
-                &controls=${settings.controls}
-                &loop=${settings.loop}
-                &modestbranding=${settings.logo}
-                &rel=${settings.related}
-                &enablejsapi=1`}
+        }&controls=${settings.controls}&loop=${settings.loop}&modestbranding=${
+          settings.logo
+        }&rel=${settings.related}&enablejsapi=1`}
         frameBorder="0"
         allowFullScreen=""
         onLoad={props.onLoadCallback}

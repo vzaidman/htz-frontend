@@ -4,6 +4,14 @@ import BeforeAndAfter from './components/BeforeAndAfter';
 
 const propTypes = {
   inputTemplate: PropTypes.string.isRequired,
+  elementType: PropTypes.string.isRequired,
+  contentId: PropTypes.string.isRequired,
+  contentName: PropTypes.string.isRequired,
+  properties: PropTypes.shape({}),
+};
+
+const defaultProps = {
+  properties: null,
 };
 
 const template = new Map([ [ 'com.interactive.beforeafter', BeforeAndAfter, ], ]);
@@ -18,5 +26,6 @@ function InteractiveElement(props) {
 }
 
 InteractiveElement.propTypes = propTypes;
+InteractiveElement.defaultProps = defaultProps;
 
 export default InteractiveElement;

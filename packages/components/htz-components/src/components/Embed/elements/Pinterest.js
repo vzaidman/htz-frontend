@@ -38,7 +38,7 @@ export default class Pinterest extends React.Component {
     /**
      * Pinterest item's URL.
      */
-    content: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
     settings: PropTypes.shape({
       /**
        * Should it display the item's caption ('false' || 'true').
@@ -78,7 +78,7 @@ export default class Pinterest extends React.Component {
           data-pin-do="embedPin"
           data-pin-width="large"
           data-pin-terse={this.props.settings.showCaption ? 'true' : 'false'}
-          href={this.props.content}
+          href={this.props.source}
         />
       ) : (
         // eslint-disable-next-line jsx-a11y/anchor-has-content
@@ -87,7 +87,7 @@ export default class Pinterest extends React.Component {
           data-pin-board-width="350"
           data-pin-scale-height="500"
           data-pin-scale-width="240"
-          href={this.props.content}
+          href={this.props.source}
         />
       );
     return <PinterestWrapper>{tag}</PinterestWrapper>;

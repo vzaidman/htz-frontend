@@ -34,7 +34,7 @@ export default class Facebook extends React.Component {
     /**
      * Facebook's URL (for post and comment) or HTML tag (for video).
      */
-    content: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
     /**
      * These settings are relevant only for video elements.
      */
@@ -96,18 +96,18 @@ export default class Facebook extends React.Component {
 
     const tag =
       type === 'post' ? (
-        <div className="fb-post" data-width="" data-href={this.props.content} />
+        <div className="fb-post" data-width="" data-href={this.props.source} />
       ) : type === 'comment' ? (
         <div
           className="fb-comment-embed"
           data-width="auto"
-          data-href={this.props.content}
+          data-href={this.props.source}
         />
       ) : (
         <div
           className="fb-video"
           data-width="auto"
-          data-href={this.props.content}
+          data-href={this.props.source}
           data-allowfullscreen="true"
           data-autoplay="false"
           data-show-text={showText}

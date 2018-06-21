@@ -78,6 +78,7 @@ const buildComponent = (context, index, isLastItem) => {
     case 'com.tm.Image':
       return <Component key={index} lastItem={isLastItem} {...context} />;
     case 'embedElement':
+    case 'interactiveElement':
     case 'com.tm.Video': // eslint-disable-line no-case-declarations
       return (
         <Figure key={index} lastItem={isLastItem}>
