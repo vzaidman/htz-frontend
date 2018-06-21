@@ -61,12 +61,12 @@ class OsakaWrapper extends React.Component {
     this.setState({ display: nextProps.velocity > 0 && nextProps.y > 0, });
   }
 
-  getArticles = (promoted, canonicalUrl) => {
+  getArticles = (promoted, canonicalUrl, siteKey) => {
     OBR &&
       OBR.extern.callRecs(
         {
           permalink: canonicalUrl,
-          installationKey: 'HAAREPDLHNAQD24GF05E6D3F5',
+          installationKey: siteKey,
           widgetId: 'APP_3',
         },
         json => {
@@ -87,7 +87,7 @@ class OsakaWrapper extends React.Component {
               ],
               promoted: [
                 {
-                  title: promoted.title || promoted.text,
+                  title: promoted.text || '',
                   image: promoted.clicktrackerimage,
                   url: promoted.link,
                 },
@@ -115,20 +115,26 @@ class OsakaWrapper extends React.Component {
   };
 
   render() {
+    const keys = new Map([
+      [ 'haaretz.co.il', 'HAAREPDLHNAQD24GF05E6D3F5', ],
+      [ 'themarker.com', 'THEMA156KEJ20O1N23B59L29D', ],
+    ]);
     return (
       <Media
         query={{ from: 'm', }}
         render={() => (
-          <Query query={OsakaQuery} variables={{ path: '7.7473', }}>
+          <Query query={OsakaQuery}>
             {({ loading, error, data, }) => {
               if (loading) return <p>loading...</p>;
               if (error) return null;
               const { promotedElement, } = this.props;
+              const host = data.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
               !this.state.articles &&
                 typeof OBR !== 'undefined' &&
                 this.getArticles(
                   promotedElement[0].banners[0],
-                  this.changeSubDomain(data.canonicalUrl)
+                  this.changeSubDomain(data.canonicalUrl),
+                  keys.get(host)
                 );
               return this.state.articles ? (
                 <LayoutContainer
