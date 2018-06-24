@@ -7,5 +7,3 @@ RUN yarn && yarn bootstrap
 EXPOSE 3000
 WORKDIR /workspace/
 CMD ["yarn", "workspace", "@haaretz/haaretz.co.il", "start"]
-
-
