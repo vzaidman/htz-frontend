@@ -132,6 +132,14 @@ const BodyWrapper = ({ children, }) => (
         ],
         ...[
           parseComponentProp(
+            'margin',
+            theme.articleStyle.body.margin,
+            theme.mq,
+            mediaQueryCallback
+          ),
+        ],
+        ...[
+          parseComponentProp(
             'marginStart',
             theme.articleStyle.body.marginStart,
             theme.mq,
