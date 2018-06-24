@@ -4,7 +4,7 @@ import { createComponent, FelaComponent, } from 'react-fela';
 import Link from '../Link/Link';
 import H from '../AutoLevels/H';
 import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
-
+import Zen from '../Zen/Zen';
 
 /* Components styles */
 const mainWrapperStyle = ({ marginBottom, }) => ({
@@ -71,7 +71,11 @@ const P = ({ children, renderFirstImpression, ...props }) => (
         <p className={className} {...props}>
           {children}
         </p>
-        {renderFirstImpression && <FirstImpressionPlaceholder />}
+        {renderFirstImpression && (
+          <Zen>
+            <FirstImpressionPlaceholder />
+          </Zen>
+        )}
       </Fragment>
     )}
   />

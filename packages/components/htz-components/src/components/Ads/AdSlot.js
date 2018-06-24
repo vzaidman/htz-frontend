@@ -1,7 +1,8 @@
 /* global window, document, googletag */
-import React, { Fragment, Component, } from 'react';
+import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { instance, } from './DfpInjector';
+import Zen from '../Zen/Zen';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -72,14 +73,14 @@ class AdSlot extends Component {
         });
       }
       return (
-        <Fragment>
+        <Zen>
           {this.state.debugJsx}
           <div
             id={this.props.id}
             className={`js-dfp-ad ${this.props.className}`}
             data-audtarget={audianceTarget}
           />
-        </Fragment>
+        </Zen>
       );
     }
     return null;
