@@ -7,6 +7,7 @@ import getWithDomain from './utils/parseUrl';
 import articleHeader from './fragments/articleHeader/articleHeader';
 import author from './fragments/author/author';
 import breadcrumbs from './fragments/breadcrumbs/breadcrumbs';
+import dfpBanner from './fragments/dfpBanner/dfpBanner';
 import embed from './fragments/embed/embed';
 import htmlElement from './fragments/htmlElement/htmlElement';
 import image from './fragments/image/image';
@@ -30,6 +31,7 @@ export {
   articleHeader,
   author,
   breadcrumbs,
+  dfpBanner,
   embed,
   htmlElement,
   image,

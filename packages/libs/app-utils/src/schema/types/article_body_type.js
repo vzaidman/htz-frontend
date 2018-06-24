@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { GraphQLList, GraphQLUnionType, } from 'graphql';
 
+import dfpBanner from './dfp_banner_type';
 import embed from './embed_type';
 import htmlElement from './html_element_type';
 import image from './image_type';
@@ -14,6 +15,7 @@ import tags from './tags_type';
 import video from './video_type';
 
 const types = new Map([
+  [ 'com.polobase.DfpBannerElement', dfpBanner, ],
   [ 'embedElement', embed, ],
   [ 'com.tm.HtmlElement', htmlElement, ],
   [ 'com.tm.Image', image, ],
@@ -32,6 +34,7 @@ const ArticleBody = new GraphQLList(
   new GraphQLUnionType({
     name: 'ArticleBody',
     types: [
+      dfpBanner,
       embed,
       htmlElement,
       image,

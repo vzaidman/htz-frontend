@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 import {
   articleHeader,
+  dfpBanner,
   embed,
   htmlElement,
   image,
@@ -36,6 +37,9 @@ export default gql`
               inputTemplate
               commentsElementId
               body {
+                ... on DfpBanner {
+                  ...DfpBanner
+                }
                 ... on Embed {
                   ...Embed
                 }
@@ -77,6 +81,7 @@ export default gql`
     }
   }
   ${articleHeader}
+  ${dfpBanner}
   ${embed}
   ${htmlElement}
   ${image}
