@@ -1,13 +1,20 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-
+import { Mutation, } from 'react-apollo';
+import gql from 'graphql-tag';
 import { border, parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import getIcon from './iconList';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 import ButtonGroup from '../Button/ButtonGroup'; // eslint-disable-line import/no-named-as-default
+
+export const TOGGLE_ZEN = gql`
+  mutation ToggleZen {
+    toggleZen @client
+  }
+`;
 
 const buttonPropType = PropTypes.oneOfType([
   PropTypes.shape({
@@ -151,31 +158,42 @@ const ActionButtons = ({
 }) => {
   const getButton = (button, index) => {
     const { buttonStyles, buttonText, iconStyles, name, } = button;
-    const icon = getIcon(name || button, elementName, elementUrl);
-    const Icon = icon.component;
     return (
-      <ActionButton
-        key={index}
-        fontSize={-2}
-        boxModel={boxModel}
-        isFlat={isFlat}
-        miscStyles={{
-          ...(globalButtonsStyles && globalButtonsStyles),
-          ...(buttonStyles && buttonStyles),
+      <Mutation mutation={TOGGLE_ZEN}>
+        {toggleZen => {
+          const icon = getIcon(
+            name || button,
+            elementName,
+            elementUrl,
+            toggleZen
+          );
+          const Icon = icon.component;
+          return (
+            <ActionButton
+              key={index}
+              fontSize={-2}
+              boxModel={boxModel}
+              isFlat={isFlat}
+              miscStyles={{
+                ...(globalButtonsStyles && globalButtonsStyles),
+                ...(buttonStyles && buttonStyles),
+              }}
+              {...(icon.actionTag === 'href'
+                ? { href: icon.action, }
+                : { onClick: icon.action, })}
+            >
+              {buttonText && <ButtonText>{buttonText}</ButtonText>}
+              <Icon
+                size={size}
+                miscStyles={{
+                  ...(globalIconsStyles && globalIconsStyles),
+                  ...(iconStyles && iconStyles),
+                }}
+              />
+            </ActionButton>
+          );
         }}
-        {...(icon.actionTag === 'href'
-          ? { href: icon.action, }
-          : { onClick: icon.action, })}
-      >
-        {buttonText && <ButtonText>{buttonText}</ButtonText>}
-        <Icon
-          size={size}
-          miscStyles={{
-            ...(globalIconsStyles && globalIconsStyles),
-            ...(iconStyles && iconStyles),
-          }}
-        />
-      </ActionButton>
+      </Mutation>
     );
   };
 

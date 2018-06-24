@@ -14,6 +14,7 @@ import ActionButtons from '../../ActionButtons/ActionButtons';
 import Media from '../../Media/Media';
 import SideBar from '../../SideBar/SideBar';
 import HeadlineElement from '../../HeadlineElement/HeadlineElement';
+import Zen from '../../Zen/Zen';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 
 import ArticleContentQuery from '../queries/article_content';
@@ -418,18 +419,20 @@ class Main extends React.Component {
                 query={{ from: 'l', }}
                 render={() => (
                   <ArticleAside>
-                    <SideBar>
-                      {aside.map(element => {
-                        const Element = getComponent(element.inputTemplate);
-                        return (
-                          <Element
-                            key={element.contentId}
-                            articleId={this.props.articleId}
-                            {...element}
-                          />
-                        );
-                      })}
-                    </SideBar>
+                    <Zen>
+                      <SideBar>
+                        {aside.map(element => {
+                          const Element = getComponent(element.inputTemplate);
+                          return (
+                            <Element
+                              key={element.contentId}
+                              articleId={this.props.articleId}
+                              {...element}
+                            />
+                          );
+                        })}
+                      </SideBar>
+                    </Zen>
                   </ArticleAside>
                 )}
               />

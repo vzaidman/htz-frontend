@@ -10,7 +10,7 @@ import IconTwitter from '../Icon/icons/IconTwitter';
 import IconWhatsapp from '../Icon/icons/IconWhatsapp';
 import IconZen from '../Icon/icons/IconZen';
 
-const getIcon = (iconName, articleTitle, articleUrl) => {
+const getIcon = (iconName, articleTitle, articleUrl, toggleZen) => {
   const icons = {
     comments: {
       component: IconComment,
@@ -58,9 +58,9 @@ const getIcon = (iconName, articleTitle, articleUrl) => {
       action: () => {
         window.open(
           `https://web.whatsapp.com/send?text=${articleUrl}` + // eslint-disable-line prefer-template
-          encodeURIComponent(
-            '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
-          ),
+            encodeURIComponent(
+              '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
+            ),
           'popup',
           'width=635,height=800,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
         );
@@ -69,8 +69,8 @@ const getIcon = (iconName, articleTitle, articleUrl) => {
     },
     zen: {
       component: IconZen,
-      actionTag: 'href',
-      action: '',
+      actionTag: 'onClick',
+      action: toggleZen,
     },
   };
   return icons[iconName.toLowerCase()];
