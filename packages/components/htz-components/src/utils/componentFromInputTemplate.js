@@ -1,4 +1,6 @@
 import React from 'react';
+import { FelaComponent, } from 'react-fela';
+import { border, } from '@haaretz/htz-css-tools';
 
 import ArticleBody from '../components/ArticleBody/ArticleBody';
 import ArticleHeader from '../components/ArticleHeader/ArticleHeader';
@@ -72,9 +74,29 @@ const inputTemplateToComponent = new Map([
 ]);
 
 // eslint-disable-next-line react/prop-types
-const DefaultComponent = ({ inputTemplate, }) => (
-  <p>{inputTemplate} is currently not supported</p>
-);
+const DefaultComponent = ({ inputTemplate, contentId, contentName, }) => {
+  console.info(`
+    Element of type ${inputTemplate} is not supported and
+    we don't have any component fot it yet.
+    The id of the element you tried to render on this page is: ${contentId}.
+  `);
+  return (
+    <FelaComponent
+      style={theme => ({
+        color: theme.color('input', 'primaryErrorTextLabel'),
+        ...border(
+          '2px',
+          1,
+          'solid',
+          theme.color('input', 'primaryErrorBorder')
+        ),
+        marginBottom: '2rem',
+      })}
+    >
+      <p>{inputTemplate} is currently not supported</p>
+    </FelaComponent>
+  );
+};
 
 export default inputTemplate =>
   inputTemplateToComponent.get(inputTemplate) || DefaultComponent;

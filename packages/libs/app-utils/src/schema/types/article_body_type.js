@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { GraphQLList, GraphQLUnionType, } from 'graphql';
 
+import content from './content_type';
 import dfpBanner from './dfp_banner_type';
 import embed from './embed_type';
 import htmlElement from './html_element_type';
@@ -34,6 +35,7 @@ const ArticleBody = new GraphQLList(
   new GraphQLUnionType({
     name: 'ArticleBody',
     types: [
+      content,
       dfpBanner,
       embed,
       htmlElement,
@@ -50,7 +52,7 @@ const ArticleBody = new GraphQLList(
     resolveType: value =>
       types.get(
         value.tag ? 'paragraph' : value.elementType || value.inputTemplate
-      ),
+      ) || content,
   })
 );
 
