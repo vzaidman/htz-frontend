@@ -9,6 +9,7 @@ import { withClientState, } from 'apollo-link-state';
 import { UserFactory, } from '@haaretz/htz-user-utils';
 import fetch from 'isomorphic-unfetch';
 import config from 'config';
+import gql from 'graphql-tag';
 import switchToDomain from '../utils/switchToDomain';
 
 // Basic structure for user data object (Apollo store)
@@ -101,6 +102,7 @@ function create(initialState, req) {
         __typename: 'AriaLive',
       },
       canonicalUrl: '',
+      zenMode: false,
       section: '',
       a11yToggle: false,
       hostname,
@@ -131,6 +133,18 @@ function create(initialState, req) {
     },
     resolvers: {
       Mutation: {
+        toggleZen: (_, variables, { cache, }) => {
+          const query = gql`
+            query {
+              zenMode @client
+            }
+          `;
+          const response = cache.readQuery({ query, });
+          const data = { zenMode: !response.zenMode, };
+          cache.writeData({ data, });
+          // resolver needs to return something / null https://github.com/apollographql/apollo-link-state/issues/160
+          return null;
+        },
         updateScroll: (_, { x, y, velocity, }, { cache, }) => {
           const data = {
             scroll: {
