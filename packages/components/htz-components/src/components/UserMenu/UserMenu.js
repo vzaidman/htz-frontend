@@ -1,11 +1,18 @@
 /* global document */
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, } from 'react-fela';
-import Link from '../Link/Link';
+import { FelaComponent, FelaTheme, } from 'react-fela';
+import Button from '../Button/Button';
+import DropdownList from '../DropdownList/DropdownList';
 import IconAvatar from '../Icon/icons/IconAvatar';
-import List from './UserMenuList';
+import Item from '../DropdownList/DropdownItem';
+import Link from '../Link/Link';
+import Logout from '../User/Logout';
 import UserButton from './UserButton';
+import {
+  dropdownItemStyle,
+  dropdownListStyle,
+} from '../Masthead/mastheadDropdownListStyle';
 
 const noUserButtonStyle = theme => ({
   height: '100%',
@@ -41,38 +48,6 @@ class UserMenu extends React.Component {
   static defaultProps = {
     userName: null,
   };
-  state = { isOpen: false, };
-
-  componentDidUpdate() {
-    if (this.state.isOpen) {
-      document.addEventListener('click', this.handleOutsideClick);
-      document.addEventListener('keydown', this.handleEscape);
-    }
-    else {
-      document.removeEventListener('click', this.handleOutsideClick);
-      document.removeEventListener('keydown', this.handleEscape);
-    }
-  }
-
-  handleOutsideClick = e => {
-    if (!this.wrapper.contains(e.target)) {
-      this.changeState();
-    }
-  };
-
-  handleEscape = e => {
-    const key = e.which || e.keyCode;
-    if (key === 27) {
-      this.changeState();
-      this.navButt.focus();
-    }
-  };
-
-  changeState = () => {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen,
-    }));
-  };
 
   render() {
     if (!this.props.userName) {
@@ -98,31 +73,77 @@ class UserMenu extends React.Component {
       );
     }
     return (
-      <FelaComponent
-        style={{ display: 'inline', }}
-        render={({ theme, className, }) => (
-          <div
-            className={className}
-            ref={wrapper => (this.wrapper = wrapper)} // eslint-disable-line no-return-assign
-          >
-            <UserButton
-              isOpen={this.state.isOpen}
-              onClick={this.changeState}
-              userName={this.props.userName}
-              role="button"
-              innerRef={navButt => (this.navButt = navButt)} // eslint-disable-line no-return-assign
-            />
-            <FelaComponent style={{ position: 'relative', }}>
-              {this.state.isOpen && (
-                <List
-                  theme={theme}
-                  items={theme.userMenuI18n.menuItems}
-                  onLogout={() => this.changeState()}
-                />
+      <FelaTheme
+        render={theme => {
+          const items = theme.userMenuI18n.menuItems;
+          const initialCombinedItems = items.map(item => (
+            <Item key={item.name} {...item} />
+          ));
+          const combinedItems = [
+            ...initialCombinedItems,
+            <Logout
+              key="logout"
+              render={({ logout, }) => (
+                <Button
+                  boxModel={{ vp: 1, hp: 2, }}
+                  isFlat
+                  isFull
+                  isHard
+                  fontSize={-2}
+                  variant="negativeOpaque"
+                  miscStyles={{
+                    display: 'flex',
+                    justifyContent: 'flex-start',
+                  }}
+                  // eslint-disable-next-line react/prop-types
+                  onClick={() => logout().then(() => this.props.onLogout())}
+                >
+                  <FelaComponent
+                    render="span"
+                    style={theme => ({
+                      marginInlineEnd: 'auto',
+                      color: theme.color('neutral', '-10'),
+                    })}
+                  >
+                    {theme.userMenuI18n.logout}
+                  </FelaComponent>
+                </Button>
               )}
-            </FelaComponent>
-          </div>
-        )}
+            />,
+          ];
+
+          return (
+            <DropdownList
+              mainMenuStyle={{ position: 'relative', }}
+              onLogout={() => this.changeState()}
+              render={({ renderButton, ListWrapper, isOpen, }) => (
+                <Fragment>
+                  {renderButton(({ toggleState, }) => (
+                    <UserButton
+                      isOpen={isOpen}
+                      onClick={toggleState}
+                      userName={this.props.userName}
+                      role="button"
+                      innerRef={navButt => (this.navButt = navButt)} // eslint-disable-line no-return-assign
+                    />
+                  ))}
+                  {isOpen && (
+                    <FelaTheme
+                      render={theme => (
+                        <ListWrapper
+                          listStyle={{ ...dropdownListStyle(theme), end: '0', }}
+                          itemStyle={dropdownItemStyle(theme)}
+                        >
+                          {combinedItems}
+                        </ListWrapper>
+                      )}
+                    />
+                  )}
+                </Fragment>
+              )}
+            />
+          );
+        }}
       />
     );
   }

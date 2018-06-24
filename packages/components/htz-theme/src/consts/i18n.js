@@ -25,38 +25,6 @@ export const breadcrumbsI18n = Object.freeze({
 
 export const navigationMenuI18n = Object.freeze({
   buttonText: 'ניווט',
-  menuItems: Object.freeze({
-    sections: Object.freeze([
-      Object.freeze({
-        name: 'מהדורה מודפסת',
-        url: 'https://www.haaretz.co.il/st/inter/Global/dailyedition/today/',
-      }),
-      Object.freeze({
-        name: 'הארץ שלי',
-        url: 'https://www.haaretz.co.il/personal-area/haaretz-sheli',
-      }),
-      Object.freeze({
-        name: 'העיתון שלי',
-        url: 'https://www.haaretz.co.il/personal-area/my-account',
-      }),
-    ]),
-    promotions: Object.freeze([
-      Object.freeze({
-        name: 'רכשו מינוי',
-        url: 'https://www.haaretz.co.il/promotions-page',
-      }),
-    ]),
-    sites: Object.freeze([
-      Object.freeze({
-        name: 'haaretz.com',
-        url: 'https://www.haaretz.com',
-      }),
-      Object.freeze({
-        name: 'themarker.com',
-        url: 'https://www.themarker.com',
-      }),
-    ]),
-  }),
 });
 
 export const headerSearchI18n = Object.freeze({
@@ -245,7 +213,7 @@ export const userMenuI18n = Object.freeze({
 });
 
 export const a11yMenuI18n = Object.freeze({
-  a11yToggle: state => `${state ? 'הפסק' : 'הפעל'} מצג ניגודיות`,
+  a11yToggle: state => `${state ? 'הפסק' : 'הפעל'} מצב ניגודיות`,
   menuItems: Object.freeze([
     Object.freeze({
       name: 'דווח על בעיית נגישות',

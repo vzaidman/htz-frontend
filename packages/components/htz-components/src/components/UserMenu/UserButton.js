@@ -34,7 +34,7 @@ class UserButton extends React.Component {
           border: 'none',
           paddingTop: '1rem',
           paddingBottom: '1rem',
-          paddingInlineStart: '1rem',
+          paddingInlineStart: '2rem',
           paddingInlineEnd: '1rem',
           extend: [
             theme.type(-2),

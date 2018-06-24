@@ -1,8 +1,21 @@
-/* global document */
-import React from 'react';
-import { FelaComponent, } from 'react-fela';
-import List from './A11yMenuList';
+import React, { Fragment, } from 'react';
+import { FelaComponent, FelaTheme, } from 'react-fela';
+import { Query, } from 'react-apollo';
+import gql from 'graphql-tag';
+import Button from '../Button/Button';
+import DropdownList from '../DropdownList/DropdownList';
 import IconAccessibility from '../Icon/icons/IconAccessibility';
+import Item from '../DropdownList/DropdownItem';
+import {
+  dropdownItemStyle,
+  dropdownListStyle,
+} from '../Masthead/mastheadDropdownListStyle';
+
+const GET_A11Y_STATE = gql`
+  query {
+    a11yToggle @client
+  }
+`;
 
 const a11yButtonStyle = ({ theme, isOpen, }) => ({
   display: 'flex',
@@ -25,77 +38,86 @@ const a11yButtonStyle = ({ theme, isOpen, }) => ({
  * two options: toggle accessibility on apollo link state and report a problem via email
  */
 class A11yMenu extends React.Component {
-  state = { isOpen: false, };
-
-  shouldComponentUpdate(nextState) {
-    return this.state.isOpen !== nextState.isOpen;
-  }
-
-  componentDidUpdate() {
-    if (this.state.isOpen) {
-      document.addEventListener('click', this.handleOutsideClick);
-      document.addEventListener('keydown', this.handleEscape);
-    }
-    else {
-      document.removeEventListener('click', this.handleOutsideClick);
-      document.removeEventListener('keydown', this.handleEscape);
-    }
-  }
-
-  handleOutsideClick = e => {
-    if (!this.wrapper.contains(e.target)) {
-      this.changeState();
-    }
-  };
-
-  handleEscape = e => {
-    const key = e.which || e.keyCode;
-    if (key === 27) {
-      this.changeState();
-      this.navButt.focus();
-    }
-  };
-
-  changeState = () => {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen,
-    }));
-  };
-
   render() {
     return (
-      <div
-        ref={wrapper => {
-          this.wrapper = wrapper;
-        }}
-      >
-        <FelaComponent
-          rule={a11yButtonStyle}
-          isOpen={this.state.isOpen}
-          render={({ className, }) => (
-            <button
-              className={className}
-              onClick={this.changeState}
-              aria-expanded={this.state.isOpen}
-              ref={navButt => {
-                this.navButt = navButt;
+      <FelaTheme
+        render={theme => {
+          const items = theme.a11yMenuI18n.menuItems;
+          const initialCombinedItems = items.map((item, index) => (
+            <Item key={item.name} {...item} />
+          ));
+          const combinedItems = [
+            <Query query={GET_A11Y_STATE} key="toggleA11y">
+              {({ data, loading, client, }) => {
+                const { a11yToggle, } = data;
+                return (
+                  <Button
+                    boxModel={{ vp: 1, hp: 2, }}
+                    isFull
+                    isHard
+                    fontSize={-2}
+                    variant="secondaryOpaque"
+                    miscStyles={{
+                      display: 'flex',
+                      justifyContent: 'flex-start',
+                    }}
+                    onClick={() => {
+                      client.writeData({
+                        data: {
+                          a11yToggle: !a11yToggle,
+                        },
+                      });
+                    }}
+                  >
+                    <span>{theme.a11yMenuI18n.a11yToggle(a11yToggle)}</span>
+                  </Button>
+                );
               }}
-            >
-              <IconAccessibility size={3} />
-            </button>
-          )}
-        />
-        {this.state.isOpen ? (
-          <FelaComponent
-            style={{ position: 'relative', }}
-            render={({ className, theme, }) => (
-              <div className={className}>
-                <List theme={theme} items={theme.a11yMenuI18n.menuItems} />
-              </div>
-            )}
-          />
-        ) : null}
-      </div>
+            </Query>,
+            ...initialCombinedItems,
+          ];
+
+          return (
+            <DropdownList
+              mainMenuStyle={{ position: 'relative', }}
+              render={({ renderButton, ListWrapper, isOpen, }) => (
+                <Fragment>
+                  {renderButton(({ toggleState, }) => (
+                    <FelaComponent
+                      rule={a11yButtonStyle}
+                      isOpen={isOpen}
+                      render={({ className, }) => (
+                        <button
+                          className={className}
+                          onClick={toggleState}
+                          aria-expanded={isOpen}
+                          ref={navButt => {
+                            this.navButt = navButt;
+                          }}
+                        >
+                          <IconAccessibility size={3} />
+                        </button>
+                      )}
+                    />
+                  ))}
+                  {isOpen && (
+                    <FelaTheme
+                      render={theme => (
+                        <ListWrapper
+                          listStyle={{ ...dropdownListStyle(theme), end: '0', }}
+                          itemStyle={dropdownItemStyle(theme)}
+                        >
+                          {combinedItems}
+                        </ListWrapper>
+                      )}
+                    />
+                  )}
+                </Fragment>
+              )}
+            />
+          );
+        }}
+      />
     );
   }
 }

@@ -1,17 +1,22 @@
 /* global document */
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, } from 'react-fela';
-import List from './navigationMenuList';
+import { FelaComponent, FelaTheme, } from 'react-fela';
+import DropdownList from '../DropdownList/DropdownList';
 import Hamburger from '../Animations/Hamburger';
+import Item from '../DropdownList/DropdownItem';
+import {
+  dropdownItemStyle,
+  dropdownListStyle,
+} from '../Masthead/mastheadDropdownListStyle';
 
 const menuButtonStyle = ({ theme, isOpen, }) => ({
-  height: '100%',
-  display: 'block',
-  color: theme.color('neutral', '-3'),
   border: 'none',
-  padding: '1rem',
+  color: theme.color('neutral', '-3'),
+  display: 'block',
   fontWeight: '700',
+  height: '100%',
+  padding: '1rem',
   ...(isOpen && {
     backgroundColor: theme.color('secondary'),
     color: theme.color('neutral', '-10'),
@@ -20,8 +25,42 @@ const menuButtonStyle = ({ theme, isOpen, }) => ({
     backgroundColor: theme.color('primary'),
     color: theme.color('neutral', '-10'),
   },
-  extend: [ theme.type(-2), ],
+  extend: [
+    theme.type(-2),
+    theme.mq({ until: 's', }, { display: 'none', }),
+    theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
+  ],
 });
+
+const baseProp = {
+  /**
+   * The section's name to display.
+   */
+  name: PropTypes.string,
+  /**
+   * Section's destination.
+   */
+  url: PropTypes.string,
+  /**
+   * Section's pages (may contain pages or sub-sections with their own pages).
+   */
+  pages: PropTypes.arrayOf(
+    PropTypes.shape({
+      /**
+       * The page's name to display.
+       */
+      name: PropTypes.string,
+      /**
+       * page's destination.
+       */
+      url: PropTypes.string,
+      /**
+       * page's sub-pages as described above.
+       */
+      pages: PropTypes.arrayOf(PropTypes.object),
+    })
+  ),
+};
 
 /**
  * A menu component for the page header. A recursive component which receives an array
@@ -31,141 +70,128 @@ const menuButtonStyle = ({ theme, isOpen, }) => ({
 class NavigationMenu extends React.Component {
   static propTypes = {
     /**
-     * An array of sections to be listed, which may contain pages or their own sub-section.
+     * An object of sections to be listed, each with a different styling.
      */
-    sections: PropTypes.arrayOf(
-      PropTypes.shape({
-        /**
-         * The section's name to display.
-         */
-        name: PropTypes.string,
-        /**
-         * Section's destination.
-         */
-        url: PropTypes.string,
-        /**
-         * Section's pages (may contain pages or sub-sections with their own pages).
-         */
-        pages: PropTypes.arrayOf(
-          PropTypes.shape({
-            /**
-             * The page's name to display.
-             */
-            name: PropTypes.string,
-            /**
-             * page's destination.
-             */
-            url: PropTypes.string,
-          })
-        ),
-      })
-    ).isRequired,
+    menuSections: PropTypes.shape({
+      /**
+       * An array of main menu items.
+       */
+      items: PropTypes.arrayOf(PropTypes.shape(baseProp)),
+      /**
+       * An array of sites links.
+       */
+      sites: PropTypes.arrayOf(PropTypes.shape(baseProp)),
+      /**
+       * An array of promotion items.
+       */
+      promotions: PropTypes.arrayOf(PropTypes.shape(baseProp)),
+    }).isRequired,
   };
 
-  state = {
-    isHovered: false,
-    isOpen: false,
-  };
-
-  shouldComponentUpdate(nextState) {
-    return (
-      this.state.isOpen !== nextState.isOpen ||
-      this.state.isHovered !== nextState.isHovered
-    );
-  }
-
-  componentDidUpdate() {
-    if (this.state.isOpen) {
-      document.addEventListener('click', this.handleOutsideClick);
-      document.addEventListener('keydown', this.handleEscape);
-    }
-    else {
-      document.removeEventListener('click', this.handleOutsideClick);
-      document.removeEventListener('keydown', this.handleEscape);
-    }
-  }
+  state = { isHovered: false, };
 
   handleMouseEnter = () => this.setState({ isHovered: true, });
   handleMouseLeave = () => this.setState({ isHovered: false, });
 
-  handleOutsideClick = e => {
-    if (!this.wrapper.contains(e.target)) {
-      this.changeState();
-    }
-  };
-
-  handleEscape = e => {
-    const key = e.which || e.keyCode;
-    if (key === 27) {
-      this.changeState();
-      this.navButt.focus();
-    }
-  };
-
-  changeState = () => {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen,
-    }));
-  };
-
   render() {
-    const { isHovered, isOpen, } = this.state;
-
     return (
-      <FelaComponent
-        style={theme => ({
-          display: 'inline',
-          extend: [
-            theme.mq({ until: 's', }, { display: 'none', }),
-            theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
-          ],
-        })}
-        render={({ theme, className, }) => (
-          <div
-            className={className}
-            ref={wrapper => (this.wrapper = wrapper)} // eslint-disable-line no-return-assign
-          >
-            <FelaComponent
-              rule={menuButtonStyle}
-              isOpen={isOpen}
-              render={({ className, }) => (
-                <button
-                  className={className}
-                  onClick={this.changeState}
-                  aria-expanded={isOpen}
-                  ref={navButt => (this.navButt = navButt)} // eslint-disable-line no-return-assign
-                  onMouseEnter={this.handleMouseEnter}
-                  onMouseLeave={this.handleMouseLeave}
-                >
-                  <FelaComponent
-                    style={{
-                      marginStart: '2rem',
-                      marginEnd: '2rem',
-                      position: 'relative',
-                    }}
-                    render="span"
-                  >
-                    <Hamburger
+      <FelaTheme
+        render={theme => {
+          const { isHovered, } = this.state;
+          const { items, sites, promotions, } = this.props.menuSections;
+
+          const combinedItems = items.map(item => (
+            <Item key={`item ${item.name}`} {...item} />
+          ));
+
+          const combinedSites = sites.map(site => (
+            <Item
+              key={`site ${site.name}`}
+              miscStyles={{
+                textDecoration: 'underline',
+                fontWeight: 'normal',
+                backgroundColor: theme.color('primary', '+1'),
+              }}
+              {...site}
+            />
+          ));
+
+          const combinedPromotions = promotions.map(promotion => (
+            <Item
+              key={`promotion ${promotion.name}`}
+              variant="salesOpaque"
+              miscStyles={{ justifyContent: 'center', }}
+              {...promotion}
+            />
+          ));
+
+          const combinedMenu = [
+            ...combinedItems,
+            ...combinedSites,
+            ...combinedPromotions,
+          ];
+
+          return (
+            <DropdownList
+              mainMenuStyle={{ position: 'relative', }}
+              render={({ renderButton, ListWrapper, isOpen, }) => (
+                <Fragment>
+                  {renderButton(({ toggleState, }) => (
+                    <FelaComponent
+                      rule={menuButtonStyle}
                       isOpen={isOpen}
-                      color={{
-                        close: isHovered
-                          ? [ 'neutral', '-10', ]
-                          : [ 'neutral', '-3', ],
-                        open: [ 'neutral', '-10', ],
-                      }}
-                      size={2.5}
+                      render={({ className, }) => (
+                        <button
+                          className={className}
+                          onClick={toggleState}
+                          aria-expanded={isOpen}
+                          onMouseEnter={this.handleMouseEnter}
+                          onMouseLeave={this.handleMouseLeave}
+                        >
+                          <FelaComponent
+                            style={{
+                              marginStart: '2rem',
+                              marginEnd: '2rem',
+                              position: 'relative',
+                            }}
+                            render="span"
+                          >
+                            <Hamburger
+                              isOpen={isOpen}
+                              color={{
+                                close: isHovered
+                                  ? [ 'neutral', '-10', ]
+                                  : [ 'neutral', '-3', ],
+                                open: [ 'neutral', '-10', ],
+                              }}
+                              size={2.5}
+                            />
+                          </FelaComponent>
+                          <span>{theme.navigationMenuI18n.buttonText}</span>
+                        </button>
+                      )}
                     />
-                  </FelaComponent>
-                  <span>{theme.navigationMenuI18n.buttonText}</span>
-                </button>
+                  ))}
+                  {isOpen && (
+                    <FelaTheme
+                      render={theme => (
+                        <ListWrapper
+                          listStyle={{
+                            ...dropdownListStyle(theme),
+                            minWidth: '6rem',
+                          }}
+                          itemStyle={dropdownItemStyle(theme)}
+                        >
+                          {combinedMenu}
+                        </ListWrapper>
+                      )}
+                    />
+                  )}
+                </Fragment>
               )}
             />
-            {/* TODO: Get list elements from polopoly */}
-            <FelaComponent style={{ position: 'relative', }}>
-              {isOpen && <List items={this.props.sections} theme={theme} />}
-            </FelaComponent>
-          </div>
-        )}
+          );
+        }}
       />
     );
   }

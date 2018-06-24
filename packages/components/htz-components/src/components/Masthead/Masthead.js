@@ -6,30 +6,31 @@ import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import IconHaaretzLogo from '../Icon/icons/IconHaaretzLogo';
 import IconReading from '../Icon/icons/IconReading';
 import Link from '../Link/Link';
-import NavigationMenu from '../NavigationMenu/NavigationMenu';
+import NavigationMenu from '../NavigationMenu/NavigationMenu'; // eslint-disable-line no-unused-vars
 import UserDispenser from '../User/UserDispenser';
 import UserMenu from '../UserMenu/UserMenu';
+
+const baseProp = {
+  name: PropTypes.string,
+  url: PropTypes.string,
+  pages: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      url: PropTypes.string,
+      pages: PropTypes.arrayOf(PropTypes.object),
+    })
+  ),
+};
 
 const propTypes = {
   /**
    * An array of sections to be listed, which may contain pages or their own sub-section.
    */
-  menuSections: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * The section's name to display.
-       */
-      name: PropTypes.string,
-      /**
-       * Section's destination.
-       */
-      url: PropTypes.string,
-      /**
-       * Section's pages (may contain pages or sub-sections with their own pages).
-       */
-      pages: PropTypes.arrayOf(PropTypes.object),
-    })
-  ).isRequired,
+  menuSections: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape(baseProp)),
+    sites: PropTypes.arrayOf(PropTypes.shape(baseProp)),
+    promotions: PropTypes.arrayOf(PropTypes.shape(baseProp)),
+  }).isRequired,
 };
 
 const headerReadingButtonStyle = theme => ({
@@ -44,6 +45,9 @@ const headerReadingButtonStyle = theme => ({
   ':hover': {
     backgroundColor: theme.color('primary'),
     color: theme.color('neutral', '-10'),
+  },
+  ':focus': {
+    color: theme.color('primary'),
   },
   extend: [ theme.type(-2), ],
 });
@@ -64,12 +68,21 @@ const HeaderReading = () => (
 
 const HeaderHaaretzLogo = () => (
   <FelaComponent
-    style={{
+    style={theme => ({
       marginLeft: 'auto',
       marginRight: 'auto',
-      alignSelf: 'center',
-      alignItems: 'center',
-    }}
+      extend: [
+        theme.mq(
+          { from: 's', },
+          {
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%,-50%)',
+          }
+        ),
+      ],
+    })}
     render={({ className, }) => (
       <Link href="http://www.haaretz.co.il" className={className}>
         <IconHaaretzLogo size={4} />
@@ -82,6 +95,7 @@ const HeaderUserItems = () => (
   <FelaComponent
     style={theme => ({
       display: 'flex',
+      marginStart: 'auto',
       extend: [
         theme.mq({ until: 's', }, { display: 'none', }),
         theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
@@ -113,10 +127,15 @@ class Masthead extends React.Component {
 
     return (
       <FelaComponent
-        style={{ display: 'flex', width: '100%', alignItems: 'stretch', }}
+        style={{
+          alignItems: 'stretch',
+          display: 'flex',
+          position: 'relative',
+          width: '100%',
+        }}
         render={({ theme, className, }) => (
           <header className={className}>
-            <NavigationMenu sections={menuSections} />
+            <NavigationMenu menuSections={menuSections} />
             <HeaderSearch
               searchIsOpen={this.state.searchIsOpen}
               onClick={this.toggleSearchState}

@@ -36,14 +36,14 @@ describe('<A11yMenu', () => {
     //     const button = output.find('button');
     //     button.simulate('click');
     //     let toggleButton = output.find('button').at(1);
-    //     expect(toggleButton.contains('הפעל מצג ניגודיות')).toEqual(true);
+    //     expect(toggleButton.contains('הפעל מצב ניגודיות')).toEqual(true);
     //     toggleButton.simulate('click');
     //     toggleButton = output.find('button').at(1);
-    //     console.log(toggleButton.contains('הפעל מצג ניגודיות'));
+    //     console.log(toggleButton.contains('הפעל מצב ניגודיות'));
     //     toggleButton.simulate('click');
-    //     expect(toggleButton.contains('הפסק מצג ניגודיות')).toEqual(true);
+    //     expect(toggleButton.contains('הפסק מצב ניגודיות')).toEqual(true);
     //     toggleButton = output.find('button').at(1);
-    //     expect(toggleButton.contains('הפעל מצג ניגודיות')).toEqual(true);
+    //     expect(toggleButton.contains('הפעל מצב ניגודיות')).toEqual(true);
     //   });
   });
 });
