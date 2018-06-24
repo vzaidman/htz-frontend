@@ -1,20 +1,25 @@
 import config from 'config';
+// import { breakUrl, } from '@haaretz/app-utils';
 
 const domain = config.has('domain') && config.get('domain');
 const isLocal = new RegExp(`(^((?!((https?:)?\\/\\/)).)*$)|(${domain})`);
 
+const premiumPrefix = '(?:\\.premium-)?';
+const articlePattern = '(1\\.\\d+.*)';
+const homepagePattern = '(^\\/(\\?.*)?$)';
+const offersPattern = '(stage|thankYou|debt)';
+
 // TODO Add more non-react time
 const NonReactArticleTypes = [ '(MAGAZINE-)', '(LIVE-)', '(INTERACTIVE-)', ];
 const isNonReactArticleType = new RegExp(
-  `(${NonReactArticleTypes.join('|')})1\\.\\d+`
+  `${premiumPrefix}(${NonReactArticleTypes.join('|')})${articlePattern}`
 );
 
-const articlePattern = '(\\/1\\.\\d+.*)';
-const homepagePattern = '(^\\/(\\?.*)?$)';
-const offersPattern = '(stage|thankYou|debt)';
-const reactPathPattern = [ articlePattern, homepagePattern, offersPattern, ].join(
-  '|'
-);
+const reactPathPattern = [
+  `${premiumPrefix}${articlePattern}`,
+  homepagePattern,
+  offersPattern,
+].join('|');
 const isReactType = new RegExp(reactPathPattern);
 
 /*

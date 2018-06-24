@@ -54,11 +54,13 @@ class AdSlot extends Component {
                 const adSlot = instance.dfp.adManager.adSlots.get(
                   this.props.id
                 );
-                if (adSlot.shown) {
-                  adSlot.refresh();
-                }
-                else {
-                  adSlot.show();
+                if (adSlot) {
+                  if (adSlot.shown) {
+                    adSlot.refresh();
+                  }
+                  else {
+                    adSlot.show();
+                  }
                 }
               }
               if (elem || maxTries < 0) {

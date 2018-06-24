@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import isNextLink from './isNextLink';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 
@@ -34,6 +34,8 @@ const propTypes = {
   focus: PropTypes.bool,
   /** An onClick function */
   onClick: PropTypes.func,
+  /** Force skip link type detection (still unstable) */
+  forceNextLink: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -47,6 +49,7 @@ const defaultProps = {
   refFunc: null,
   target: null,
   onClick: null,
+  forceNextLink: true,
 };
 
 /* eslint-disable react/prop-types */
@@ -103,7 +106,7 @@ const LinkWrapper = ({
 //   return '/article';
 // };
 
-function Link({
+function CustomLink({
   attrs,
   children,
   className,
@@ -115,11 +118,12 @@ function Link({
   prefetch,
   refFunc,
   target,
+  forceNextLink = true,
 }) {
   // eslint-disable-next-line eqeqeq
   const renderContent = content != undefined ? content : children;
   // eslint-disable-next-line eqeqeq
-  if (isNextLink(href) && !target) {
+  if (forceNextLink || (isNextLink(href) && !target)) {
     /* eslint-disable no-unused-vars */
     let fullId;
     let premium;
@@ -153,12 +157,15 @@ function Link({
     const computedHref = typeof href === 'string' ? { pathname: href, } : href;
 
     return (
-      <NextLink
-        prefetch={prefetch}
+      <Link
+        prefetch={true || prefetch}
         passHref
-        href={computedHref}
-        // href={{ pathname: page, query: { path: `/${articleId}`, }, }}
-        as={asPath}
+        // href='/article'
+        href={{
+          pathname: '/article',
+          query: { path: `${computedHref.pathname}`, },
+        }}
+        as={computedHref.pathname}
       >
         <LinkWrapper
           attrs={attrs}
@@ -171,7 +178,7 @@ function Link({
         >
           {renderContent}
         </LinkWrapper>
-      </NextLink>
+      </Link>
     );
   }
   return (
@@ -191,7 +198,7 @@ function Link({
   );
 }
 
-Link.propTypes = propTypes;
-Link.defaultProps = defaultProps;
+CustomLink.propTypes = propTypes;
+CustomLink.defaultProps = defaultProps;
 
-export default Link;
+export default CustomLink;

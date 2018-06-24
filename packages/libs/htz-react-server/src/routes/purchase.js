@@ -3,7 +3,7 @@ import path from 'path';
 import express from 'express';
 import querystring from 'querystring';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
-import { getWithDomain, } from '@haaretz/app-utils';
+import { switchToDomain, } from '@haaretz/app-utils';
 import Cookies from 'universal-cookie';
 import config from 'config';
 
@@ -33,7 +33,7 @@ let isRedirect = false;
  */
 async function getPageToRender(req, DEV = false) {
   // Path of promotions page in Polopoly CM
-  const baseService = getWithDomain(req.hostname, config.get('service.base'));
+  const baseService = switchToDomain(req.hostname, config.get('service.base'));
 
   DEV && console.log('promo from getPageToRender', req.params.promo);
   const promoPath = req.params.promo ? `/${req.params.promo}` : null;

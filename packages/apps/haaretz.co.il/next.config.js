@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-// const path = require('path');
 
 /**
  * NOTE: Next.js builds the output directory in a temporary location before
@@ -8,6 +7,17 @@
  */
 
 module.exports = {
+  // Dealing with multi-server deployment https://nextjs.org/docs/#customizing-webpack-config
+  generateBuildId: async () => {
+    // For example get the latest git commit hash here
+    const revision = require('child_process')
+      .execSync('git rev-parse HEAD')
+      .toString()
+      .trim();
+    console.log(`Next App BuildID is: ${revision}`);
+    return revision;
+  },
+  pageExtensions: [ 'jsx', 'js', ],
   webpack: (config, { dev, }) => {
     config.resolve.alias = config.resolve.alias || {};
 

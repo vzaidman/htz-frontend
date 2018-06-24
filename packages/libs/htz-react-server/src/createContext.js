@@ -3,7 +3,7 @@ import DataLoader from 'dataloader';
 import querystring from 'querystring';
 import config from 'config';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
-import { getWithDomain, } from '@haaretz/app-utils';
+import { switchToDomain, } from '@haaretz/app-utils';
 import Cookies from 'universal-cookie';
 
 // Path of promotions page in Polopoly CM
@@ -14,7 +14,7 @@ const polopolyPromotionsPage = config.has('polopolyPromotionsPagePath')
 export function createLoaders(req) {
   const hostname = req.hostname;
   const ssoService = config.get('service.sso');
-  const serviceBase = getWithDomain(hostname, config.get('service.base'));
+  const serviceBase = switchToDomain(hostname, config.get('service.base'));
   console.log(`createLoaders got ${hostname} | serviceBase: ${serviceBase}`);
   const cookies = new Cookies(req.headers.cookie);
   // TODO: By default, `DataLoader` just caches the results forever,
@@ -146,7 +146,7 @@ export function createLoaders(req) {
 
 export function createPosters(req) {
   const hostname = req.hostname;
-  const papiBaseService = getWithDomain(hostname, config.get('service.base'));
+  const papiBaseService = switchToDomain(hostname, config.get('service.base'));
   // const cookies = new Cookies(req.headers.cookie);
 
   const cmlinkCommentPoster = newComment =>

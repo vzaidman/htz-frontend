@@ -1,7 +1,8 @@
 import withData from './apollo/withData';
 import pagePropTypes from './apollo/pagePropTypes';
 import schema from './schema/schema';
-import getWithDomain from './utils/parseUrl';
+import breakUrl from './utils/breakUrl';
+import switchToDomain from './utils/switchToDomain';
 
 // Schema Fragments
 import articleHeader from './fragments/articleHeader/articleHeader';
@@ -48,5 +49,6 @@ export {
   tags,
   teaser,
   video,
-  getWithDomain,
+  switchToDomain,
+  breakUrl,
 };

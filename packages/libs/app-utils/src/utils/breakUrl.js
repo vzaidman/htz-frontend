@@ -1,4 +1,4 @@
-export const breakUrl = url => {
+export default function breakUrl(url) {
   const subdomainRegex = /(https?)?(?::\/\/)?((.+?)\.(.+?))(?!:)(\d{2,5})?(\/.+)?$/gim;
   /*
       [0] - fullMatch. Ex. "http://elia.haaretz.co.il:3000/graphql"
@@ -20,14 +20,4 @@ export const breakUrl = url => {
     );
   }
   return { fullMatch, protocol, fqdn, hostname, domain, port, path, };
-};
-
-const getWithDomain = (fqdnToReplace, service) => {
-  const { fqdn, } = breakUrl(service);
-  const fqdnFromConfig = fqdn;
-  return service.includes(fqdnFromConfig)
-    ? service
-    : service.replace(fqdnFromConfig, fqdnToReplace);
-};
-
-export default getWithDomain;
+}

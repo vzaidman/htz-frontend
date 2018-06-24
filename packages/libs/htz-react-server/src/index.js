@@ -22,8 +22,9 @@ import hdc from './routes/hdc';
 import purchase from './routes/purchase';
 
 const DEV = process.env.NODE_ENV === 'development';
-const PORT = Number(
-  process.env.PORT || config.has('port') ? config.get('port') : '3000'
+const PORT = parseInt(
+  process.env.PORT || (config.has('port') ? config.get('port') : '3000'),
+  10
 );
 const app = next({ dev: DEV, });
 const handler = app.getRequestHandler();
