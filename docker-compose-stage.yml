@@ -2,14 +2,14 @@ version: "3.3"
 services:
   htz_react:
     build: .
-    image: "docker.themarker.com:8083/htz_promotions:${version:-latest}"
+    image: "docker.themarker.com:8083/htz-front-app:${version:-latest}"
     ports:
-      - 2001:2001
+      - 2200:2200
     environment:
       - NODE_ENV=production
       - CONNECTION_PRESET=stage
       # the following environment is optional
-      - PORT=2001
+      - PORT=2200
       - BIND_ADDRESS=ms-apps
       - HOSTNAME=docker
       - GRAPHQL_USE_SSL=false

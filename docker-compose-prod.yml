@@ -2,12 +2,17 @@ version: "3.3"
 services:
   htz_react:
     build: .
-    image: "docker.themarker.com:8083/htz_promotions:${version:-latest}"
+    #command: ["yarn", "workspace", "@haaretz/haaretz.co.il", "start"]
+    image: "docker.themarker.com:8083/htz-front-app:${version:-latest}"
     ports:
       - 2000:2000
     environment:
       - NODE_ENV=production
+      - CONNECTION_PRESET=prod
       # the following environment is optional
       - PORT=2000
-      - BIND_ADDRESS=172.21.1.231
-      - HOSTNAME=www
+      - BIND_ADDRESS=ms-apps
+      - HOSTNAME=docker
+      - GRAPHQL_USE_SSL=false
+      - GRAPHQL_EXPOSE_PORT=true
+
