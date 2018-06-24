@@ -16,16 +16,19 @@ const getIcon = (iconName, articleTitle, articleUrl, toggleZen) => {
       component: IconComment,
       actionTag: 'href',
       action: '',
+      bi: 111,
     },
     facebook: {
       component: IconFacebook,
       actionTag: 'href',
       action: '',
+      bi: 10,
     },
     facebooklogo: {
       component: IconFacebookLogo,
       actionTag: 'href',
       action: `https://www.facebook.com/sharer/sharer.php?&u=${articleUrl}`,
+      bi: 10,
     },
     googleplus: {
       component: IconGPlus,
@@ -36,16 +39,19 @@ const getIcon = (iconName, articleTitle, articleUrl, toggleZen) => {
       component: IconMail,
       actionTag: 'href',
       action: `mailto:?subject=${articleTitle}&body=${articleUrl}`,
+      bi: 13,
     },
     mailalert: {
       component: IconMailAlert,
       actionTag: 'href',
       action: `mailto:?subject=${articleTitle}&body=${articleUrl}`,
+      bi: 13,
     },
     print: {
       component: IconPrint,
       actionTag: 'href',
       action: `/misc/article-print-page/${articleUrl}`,
+      bi: 112,
     },
     twitter: {
       component: IconTwitter,
@@ -66,11 +72,13 @@ const getIcon = (iconName, articleTitle, articleUrl, toggleZen) => {
         );
         return false;
       },
+      bi: 11,
     },
     zen: {
       component: IconZen,
       actionTag: 'onClick',
       action: toggleZen,
+      bi: 92,
     },
   };
   return icons[iconName.toLowerCase()];

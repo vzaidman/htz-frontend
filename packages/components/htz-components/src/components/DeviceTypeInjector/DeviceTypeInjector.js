@@ -3,16 +3,16 @@ import { ApolloConsumer, } from 'react-apollo';
 import Media from '../Media/Media';
 import NoSSR from '../NoSSR/NoSSR';
 
-const IsMobileInjector = () => (
+const DeviceTypeInjector = () => (
   <NoSSR>
     <ApolloConsumer>
       {client => (
         <Media query={{ until: 's', }} matchOnServer>
           {matches => {
-            client &&
-              client.writeData({
-                data: { platform: matches ? 'mobile' : 'web', },
-              });
+            client.writeData({
+              data: { platform: matches ? 'mobile' : 'web', },
+            });
+
             return null;
           }}
         </Media>
@@ -21,4 +21,4 @@ const IsMobileInjector = () => (
   </NoSSR>
 );
 
-export default IsMobileInjector;
+export default DeviceTypeInjector;

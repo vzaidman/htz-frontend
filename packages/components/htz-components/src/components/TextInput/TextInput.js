@@ -335,6 +335,10 @@ class TextInput extends Component {
     /** placeholder text */
     placeholder: PropTypes.string,
     /**
+     * Callback function to set biAction bold/italic info.
+     */
+    toggleCommandBiCallBack: PropTypes.func,
+    /**
      * Used to mark an input as required, adds an abbr html element after the label
      */
     requiredText: PropTypes.shape({
@@ -430,6 +434,7 @@ class TextInput extends Component {
     onFocus: null,
     placeholder: null,
     requiredText: null,
+    toggleCommandBiCallBack: null,
     type: 'text',
     value: undefined,
     variant: 'primary',
@@ -472,6 +477,8 @@ class TextInput extends Component {
    * @param {aCommandName} command - in our use case either `"bold"` or `"italic"`
    */
   toggleCommand(command) {
+    this.props.toggleCommandBiCallBack &&
+      this.props.toggleCommandBiCallBack(command);
     document.execCommand(command);
     this.handleInputFocus(true, true);
     this.setFormatButtonsState();

@@ -1,15 +1,16 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 **Table of Contents**
 
-- [Dialog with Render Props](#dialog-with-render-props)
-- [**Overlay and Content**](#overlay-and-content)
-- [**1. Simple usage with stateful component: (Dialog)**](#1-simple-usage-with-stateful-component-dialog)
-  - [**used props**](#used-props)
-- [**2. Usage with toggle refs: (Modal)**](#2-usage-with-toggle-refs-modal)
-  - [**used props**](#used-props-1)
-- [**2. Usage with toggle refs: (Dialog)**](#2-usage-with-toggle-refs-dialog)
+* [Dialog with Render Props](#dialog-with-render-props)
+* [**Overlay and Content**](#overlay-and-content)
+* [**1. Simple usage with stateful component: (Dialog)**](#1-simple-usage-with-stateful-component-dialog)
+  * [**used props**](#used-props)
+* [**2. Usage with toggle refs: (Modal)**](#2-usage-with-toggle-refs-modal)
+  * [**used props**](#used-props-1)
+* [**2. Usage with toggle refs: (Dialog)**](#2-usage-with-toggle-refs-dialog)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -28,11 +29,11 @@ be customizable enough to cover all use cases in the UI system, like : a11y, foc
 
 #### **used props**
 
-- `appendTo` - Set portal `<div>` id to `dialog-example-1`. | **required**
-- `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-dialog-1`. | **required**
-- `isVisible` - Determine dialog mode(opend/closed), accept `true` or `false` usually passing the state of user's custom component.
-- `closeOnOutsideClick` - Close dialog when clicked outside dialog inner content.
-- `overlayBgColor` - Set overlay background color `"rgba(0, 0, 0, 0.5)"`
+* `appendTo` - Set portal `<div>` id to `dialog-example-1`. | **required**
+* `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-dialog-1`. | **required**
+* `isVisible` - Determine dialog mode(opend/closed), accept `true` or `false` usually passing the state of user's custom component.
+* `closeOnOutsideClick` - Close dialog when clicked outside dialog inner content.
+* `overlayBgColor` - Set overlay background color `"rgba(0, 0, 0, 0.5)"`
 
 ```jsx
 const FelaComponent = require('react-fela').FelaComponent;
@@ -63,7 +64,7 @@ class DialogWithStateExample extends React.Component {
             <A11yDialog
               appendTo="dialog-example-1"
               elementToHide="hide-dialog-1"
-              isVisible={this.state.isOpen}
+              isVisible={true}
               closeOnOutsideClick
               overlayBgColor="rgba(0, 0, 0, 0.5)"
               render={({ isVisible, handleClose, isModal }) => (
@@ -107,14 +108,14 @@ class DialogWithStateExample extends React.Component {
 
 #### **used props**
 
-- `appendTo` - Set portal `div` id to `modal-example-1`. | **required**
-- `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-modal-1`. | **required**
-- `toggleRefs` - Set open and close buttons as id string refs.
-- `onOpen` - Trigger `console.warn` function (or any user callback function) when modal is opened.
-- `onClose` - Trigger `console.warn` function (or any user callback function) when modal is closed.
-- `overlayBgColor` - Set overlay background color to `lightyellow`.
-- `closeOnOutsideClick` - Close modal when clicked outside modal inner content.
-- `isModal`- To determine `modal` mode.
+* `appendTo` - Set portal `div` id to `modal-example-1`. | **required**
+* `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-modal-1`. | **required**
+* `toggleRefs` - Set open and close buttons as id string refs.
+* `onOpen` - Trigger `console.warn` function (or any user callback function) when modal is opened.
+* `onClose` - Trigger `console.warn` function (or any user callback function) when modal is closed.
+* `overlayBgColor` - Set overlay background color to `lightyellow`.
+* `closeOnOutsideClick` - Close modal when clicked outside modal inner content.
+* `isModal`- To determine `modal` mode.
 
 ```jsx
 const FelaComponent = require('react-fela').FelaComponent;
@@ -183,9 +184,9 @@ function ModalExampleWithToggleRefs() {
 
 ### **2. Usage with toggle refs: (Dialog)**
 
-- `appendTo` - Set portal `div` id to `dialog-example-2`. | **required**
-- `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-dialog-2`. | **required**
-- `toggleRefs` - Set toggle buttons (as id string refs) to close/open dialog.
+* `appendTo` - Set portal `div` id to `dialog-example-2`. | **required**
+* `elementToHide` - Set `aria-hidden=true` where user's `<div>` has an id of `hide-dialog-2`. | **required**
+* `toggleRefs` - Set toggle buttons (as id string refs) to close/open dialog.
 
 ```jsx
 const FelaComponent = require('react-fela').FelaComponent;

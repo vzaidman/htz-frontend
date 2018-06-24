@@ -7,9 +7,9 @@ import dynamic from 'next/dynamic';
 
 import {
   AriaLive,
+  DeviceTypeInjector,
   GaDimensions,
   GoogleAnalytics,
-  IsMobileInjector,
   UserInjector,
   ArticlePageLayout,
 } from '@haaretz/htz-components';
@@ -100,9 +100,9 @@ export class ArticlePage extends React.Component {
               });
               return (
                 <Fragment>
-                  <IsMobileInjector />
-                  <GaDimensions userType={data.user.type} />
                   <AriaLive />
+                  <DeviceTypeInjector />
+                  <GaDimensions userType={data.user.type} />
                   <ArticlePageLayout
                     articleId={this.props.url.query.path}
                     slots={slots}

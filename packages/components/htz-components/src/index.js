@@ -25,7 +25,7 @@ import HeadlineElement from './components/HeadlineElement/HeadlineElement';
 import HtmlElement from './components/Interactive/components/HtmlElement';
 import Image from './components/Image/Image';
 import Interactive from './components/Interactive/Interactive';
-import IsMobileInjector from './components/GoogleAnalytics/IsMobileInjector';
+import DeviceTypeInjector from './components/DeviceTypeInjector/DeviceTypeInjector';
 import LayoutContainer from './components/PageLayout/LayoutContainer';
 import LayoutRow from './components/PageLayout/LayoutRow';
 import HtzLink from './components/HtzLink/HtzLink';
@@ -148,6 +148,7 @@ export {
   Caption,
   CheckBox,
   Comments,
+  DeviceTypeInjector,
   Embed,
   Footer,
   Form,
@@ -160,7 +161,6 @@ export {
   HtmlElement,
   Image,
   Interactive,
-  IsMobileInjector,
   LayoutContainer,
   LayoutRow,
   HtzLink,
