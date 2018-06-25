@@ -1,4 +1,4 @@
-/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default, import/no-unresolved */
 /** *************************************** *
  *       C  O  M  P  O  N  E  N  T  S       *
  * **************************************** */
@@ -40,7 +40,7 @@ import Quote from './components/Quote/Quote';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import RadioButton from './components/RadioButton/RadioButton';
 import RadioGroup from './components/RadioButton/RadioGroup';
-import StandardArticlePageLayout from './components/PageLayout/StandardArticlePageLayout';
+import ArticlePageLayout from './components/PageLayout/ArticlePageLayout';
 import Scroll from './components/Scroll/Scroll';
 import ScrollListener from './components/EventListeners/ScrollListener';
 import Section from './components/AutoLevels/Section';
@@ -172,7 +172,7 @@ export {
   Section,
   Select,
   SeriesArticles,
-  StandardArticlePageLayout,
+  ArticlePageLayout,
   Tags,
   TextInput,
   Video,

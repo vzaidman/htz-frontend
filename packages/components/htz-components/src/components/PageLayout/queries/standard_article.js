@@ -18,7 +18,7 @@ import {
 } from '@haaretz/app-utils';
 
 export default gql`
-  query ArticleContent($path: String!) {
+  query StandardArticleContent($path: String!) {
     page(path: $path) {
       pageType
       ...PageSeoData

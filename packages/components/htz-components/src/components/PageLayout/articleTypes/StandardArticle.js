@@ -1,13 +1,12 @@
 /* global fetch, Headers */
 import React from 'react';
 import { createComponent, FelaTheme, FelaComponent, } from 'react-fela';
-import { Query, } from 'react-apollo';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-
+import { ApolloConsumer, } from 'react-apollo';
 import { parseComponentProp, borderBottom, } from '@haaretz/htz-css-tools';
-import getComponent from '../../../utils/componentFromInputTemplate';
 
+import getComponent from '../../../utils/componentFromInputTemplate';
 import ArticleBody from '../../ArticleBody/ArticleBody';
 import ArticleHeader from '../../ArticleHeader/ArticleHeader';
 import ActionButtons from '../../ActionButtons/ActionButtons';
@@ -17,13 +16,14 @@ import HeadlineElement from '../../HeadlineElement/HeadlineElement';
 import Zen from '../../Zen/Zen';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 
-import ArticleContentQuery from '../queries/article_content';
-
 const propTypes = {
   /**
    * Article's ID
    */
   articleId: PropTypes.string.isRequired,
+  article: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  aside: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  seoData: PropTypes.shape({}).isRequired,
 };
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
@@ -180,7 +180,7 @@ const asideStyle = ({ theme, }) => ({
 });
 const ArticleAside = createComponent(asideStyle, 'aside');
 
-class Main extends React.Component {
+class StandardArticle extends React.Component {
   state = {
     articleUrl: null,
     articleTitle: null,
@@ -250,7 +250,7 @@ class Main extends React.Component {
     return { body, };
   };
 
-  extractContent = (content, client) =>
+  extractContent = content =>
     content.map(element => {
       // This is the Article Header.
       if (element.inputTemplate === 'com.htz.ArticleHeaderElement') {
@@ -306,27 +306,33 @@ class Main extends React.Component {
       }
       // This is the Article Body.
       if (element.inputTemplate === 'com.htz.StandardArticle') {
-        const { commentsElementId, } = element;
-        client.writeData({
-          data: {
-            commentsElementId,
-          },
-        });
         const { body, headlineElement, } = this.extractHeadline(element.body);
         return (
-          <FelaComponent
-            style={{ marginBottom: '5rem', }}
-            render={({ className, }) => (
-              <ArticleSection className={className}>
-                {headlineElement && (
-                  <HeadlineElement elementObj={headlineElement} />
-                )}
-                <BodyWrapper>
-                  <ArticleBody body={body} />
-                </BodyWrapper>
-              </ArticleSection>
-            )}
-          />
+          <ApolloConsumer>
+            {cache => {
+              const { commentsElementId, } = element;
+              cache.writeData({
+                data: {
+                  commentsElementId,
+                },
+              });
+              return (
+                <FelaComponent
+                  style={{ marginBottom: '5rem', }}
+                  render={({ className, }) => (
+                    <ArticleSection className={className}>
+                      {headlineElement && (
+                        <HeadlineElement elementObj={headlineElement} />
+                      )}
+                      <BodyWrapper>
+                        <ArticleBody body={body} />
+                      </BodyWrapper>
+                    </ArticleSection>
+                  )}
+                />
+              );
+            }}
+          </ApolloConsumer>
         );
       }
       const Element = getComponent(element.inputTemplate);
@@ -358,92 +364,81 @@ class Main extends React.Component {
     });
 
   render() {
-    const { articleId, } = this.props;
+    const {
+      articleId,
+      article,
+      aside,
+      seoData: {
+        metaTitle,
+        metaDescription,
+        metaKeywords,
+        canonicalUrl,
+        ogTitle,
+        ogDescription,
+        ogImage,
+        obTitle,
+      },
+    } = this.props;
+
+    this.setState({
+      articleUrl: canonicalUrl,
+      articleTitle: metaTitle,
+    });
+    const { contentId, imgArray, aspects, } = ogImage || {};
+    const ogImageUrl = ogImage
+      ? buildUrl(
+        contentId,
+        { ...imgArray[0], aspects, },
+        {
+          width: '1200',
+          aspect: 'full',
+          quality: 'auto',
+        }
+      )
+      : '';
     return (
-      <Query query={ArticleContentQuery} variables={{ path: articleId, }}>
-        {({ loading, error, data, client, }) => {
-          if (loading) return <p>loading...</p>;
-          if (error) return null;
-          const {
-            slots: { article, aside, },
-            seoData: {
-              metaTitle,
-              metaDescription,
-              metaKeywords,
-              canonicalUrl,
-              ogTitle,
-              ogDescription,
-              ogImage,
-              obTitle,
-            },
-          } = data.page;
-          client.writeData({
-            data: {
-              canonicalUrl,
-            },
-          });
-          this.setState({
-            articleUrl: canonicalUrl,
-            articleTitle: metaTitle,
-          });
-          const { contentId, imgArray, aspects, } = ogImage || {};
-          const ogImageUrl = ogImage
-            ? buildUrl(
-                contentId,
-                { ...imgArray[0], aspects, },
-                {
-                  width: '1200',
-                  aspect: 'full',
-                  quality: 'auto',
-                }
-              )
-            : '';
-          return (
-            <ArticleContainer
-              // eslint-disable-next-line no-return-assign
-              innerRef={container => (this.container = container)}
-            >
-              <Head>
-                <meta name="title" content={metaTitle} />
-                <meta name="description" content={metaDescription} />
-                <meta name="keywords" content={metaKeywords} />
-                <meta property="og:title" content={ogTitle} />
-                <meta property="og:description" content={ogDescription} />
-                <meta property="og:image" content={ogImageUrl} />
-                <meta property="og:image:width" content="1200" />
-                <meta property="og:image:height" content="630" />
-                <meta property="ob:title" content={obTitle} />
-              </Head>
-              {this.extractContent(article, client)}
-              <Media
-                query={{ from: 'l', }}
-                render={() => (
-                  <ArticleAside>
-                    <Zen animate>
-                      <SideBar>
-                        {aside.map(element => {
-                          const Element = getComponent(element.inputTemplate);
-                          return (
-                            <Element
-                              key={element.contentId}
-                              articleId={this.props.articleId}
-                              {...element}
-                            />
-                          );
-                        })}
-                      </SideBar>
-                    </Zen>
-                  </ArticleAside>
-                )}
-              />
-            </ArticleContainer>
-          );
-        }}
-      </Query>
+      <ArticleContainer
+        // eslint-disable-next-line no-return-assign
+        innerRef={container => (this.container = container)}
+      >
+        <Head>
+          <meta name="title" content={metaTitle} />
+          <meta name="description" content={metaDescription} />
+          <meta name="keywords" content={metaKeywords} />
+          <meta property="og:title" content={ogTitle} />
+          <meta property="og:description" content={ogDescription} />
+          <meta property="og:image" content={ogImageUrl} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="ob:title" content={obTitle} />
+        </Head>
+        {this.extractContent(article)}
+        <Media
+          query={{ from: 'l', }}
+          render={() => (
+            <ArticleAside>
+              <Zen animate>
+                <SideBar>
+                  {aside.map(element => {
+                    const Element = getComponent(element.inputTemplate);
+                    return (
+                      <Element
+                        key={element.contentId}
+                        articleId={articleId}
+                        {...element}
+                      />
+                    );
+                  })}
+                </SideBar>
+              </Zen>
+            </ArticleAside>
+          )}
+        />
+      </ArticleContainer>
     );
   }
 }
 
-Main.propTypes = propTypes;
+StandardArticle.propTypes = propTypes;
 
-export default Main;
+export default StandardArticle;

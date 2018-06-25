@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 import {
   AriaLive,
   UserInjector,
-  StandardArticlePageLayout,
+  ArticlePageLayout,
 } from '@haaretz/htz-components';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 
@@ -85,7 +85,7 @@ export class ArticlePage extends React.Component {
             skip={this.state.skip}
           >
             {({ loading, error, data, client, }) => {
-              if (loading) return <p>loading...</p>;
+              if (loading) return null;
               if (error) console.log(error);
               const { slots, lineage, } = data.page;
               client.writeData({
@@ -97,7 +97,7 @@ export class ArticlePage extends React.Component {
               return (
                 <Fragment>
                   <AriaLive />
-                  <StandardArticlePageLayout
+                  <ArticlePageLayout
                     articleId={this.props.url.query.path}
                     slots={slots}
                   />
