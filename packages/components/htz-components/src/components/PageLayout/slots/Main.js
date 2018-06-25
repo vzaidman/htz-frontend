@@ -419,7 +419,7 @@ class Main extends React.Component {
                 query={{ from: 'l', }}
                 render={() => (
                   <ArticleAside>
-                    <Zen>
+                    <Zen animate>
                       <SideBar>
                         {aside.map(element => {
                           const Element = getComponent(element.inputTemplate);

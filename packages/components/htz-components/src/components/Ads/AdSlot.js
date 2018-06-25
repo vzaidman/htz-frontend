@@ -73,7 +73,7 @@ class AdSlot extends Component {
         });
       }
       return (
-        <Zen>
+        <Zen hide>
           {this.state.debugJsx}
           <div
             id={this.props.id}
