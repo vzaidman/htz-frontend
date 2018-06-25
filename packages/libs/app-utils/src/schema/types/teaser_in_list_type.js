@@ -10,6 +10,7 @@ import {
 import author from './author_type';
 import ImageType from './image_type';
 import GraphQLDate from './date_type';
+import Author from './author_type';
 
 const TeaserInListType = new GraphQLObjectType({
   name: 'TeaserInList',
