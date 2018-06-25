@@ -107,13 +107,15 @@ class CommentsWithApollo extends React.Component {
         query={FETCH_COMMENTS}
         variables={{ path: `${contentId}?composite=true&limited=true`, }}
       >
-        {({ data: { commentsElement, }, loading, error, fetchMore, }) => {
+        {({ data, loading, error, fetchMore, }) => {
           if (loading) {
             return <div>loading ...</div>;
           }
           if (error) {
+            console.log(error);
             return <h1>ERROR</h1>;
           }
+          const { commentsElement, } = data;
           return (
             <Mutation mutation={REPORT_ABUSE}>
               {reportAbuse => (
@@ -182,14 +184,15 @@ class CommentsWithApollo extends React.Component {
 function WrappedComments() {
   return (
     <Query query={GET_ID}>
-      {({ data: { articleId, commentsElementId, }, }) =>
-        (articleId ? (
+      {({ data: { articleId, commentsElementId, }, }) => {
+        console.log('article id', articleId);
+        return articleId ? (
           <CommentsWithApollo
             articleId={articleId}
             contentId={commentsElementId}
           />
-        ) : null)
-      }
+        ) : null;
+      }}
     </Query>
   );
 }

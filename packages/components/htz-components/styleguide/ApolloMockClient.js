@@ -2,20 +2,33 @@
 import { schema, } from '@haaretz/app-utils';
 import { ApolloLink, } from 'apollo-link';
 import { ApolloClient, } from 'apollo-client';
-import { InMemoryCache, } from 'apollo-cache-inmemory';
+import {
+  InMemoryCache,
+  IntrospectionFragmentMatcher,
+} from 'apollo-cache-inmemory';
 import { withClientState, } from 'apollo-link-state';
 import { SchemaLink, } from 'apollo-link-schema';
 import { addMockFunctionsToSchema, } from 'graphql-tools';
 import mocks from './mocks';
+import mockContext from './mockContext';
 import { userScheme, } from '../src/components/User/UserDispenser';
 
 addMockFunctionsToSchema({
   schema,
   mocks,
+  preserveResolvers: true,
 });
-const link = new SchemaLink({ schema, });
+const link = new SchemaLink({ schema, context: mockContext, });
 
-const cache = new InMemoryCache();
+const customFragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData: {
+    __schema: {
+      types: [],
+    },
+  },
+});
+
+const cache = new InMemoryCache({ fragmentMatcher: customFragmentMatcher, });
 
 const stateLink = withClientState({
   cache,
@@ -38,8 +51,8 @@ const stateLink = withClientState({
       __typename: 'User',
     },
     a11yToggle: false,
-    articleId: null,
-    commentsElementId: null,
+    articleId: '1.2345',
+    commentsElementId: '1.2345',
   },
   resolvers: {
     Mutation: {

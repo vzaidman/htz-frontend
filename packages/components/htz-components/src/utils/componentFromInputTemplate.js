@@ -6,7 +6,7 @@ import ArticleBody from '../components/ArticleBody/ArticleBody';
 import ArticleHeader from '../components/ArticleHeader/ArticleHeader';
 import AdSlot from '../components/Ads/AdSlot';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
-import CommentsWithApollo from '../components/CommentsSection/CommentsWithApollo';
+import WrappedComments from '../components/CommentsSection/WrappedComments';
 import Embed from '../components/Embed/Embed';
 import Footer from '../components/Footer/Footer';
 import HtmlElement from '../components/Interactive/components/HtmlElement';
@@ -34,7 +34,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.htz.StandardArticle', ArticleBody, ],
   [ 'com.polobase.OutbrainElement', Outbrain, ],
   [ 'com.tm.CommentsElement', () => <p>CommentsElement</p>, ],
-  [ 'com.tm.ArticleCommentsElement', CommentsWithApollo, ],
+  [ 'com.tm.ArticleCommentsElement', WrappedComments, ],
 
   /* FooterSlot components */
   [ 'com.tm.FooterElement', Footer, ],
