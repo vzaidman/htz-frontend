@@ -1,35 +1,19 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 
-const propTypes = {};
+const propTypes = {
+  ingredientLists: PropTypes.arrayOf(
+    PropTypes.shape({
+      header: PropTypes.string,
+      ingredients: PropTypes.arrayOf(PropTypes.string),
+    })
+  ).isRequired,
+};
 const defaultProps = {};
 
-const ingredientLists = [
-  {
-    ingredients: [
-      '2 כפות שמן זית',
-      '2sfasfן זית',
-      '2 כפותasfasfן זית',
-      '2 כפוasf זית',
-      '2 כפוasfasfמן זית',
-      '2 כפוasfafמן זית',
-    ],
-  },
-  {
-    header: 'לבצק',
-    ingredients: [
-      '2 כפות שמן זית',
-      '2sfasfן זית',
-      '2 כפותasfasfן זית',
-      '2 כפוasf זית',
-      '2 כפוasfasfמן זית',
-      '2 כפוasfafמן זית',
-    ],
-  },
-];
-function Ingredients() {
+function Ingredients({ ingredientLists, }) {
   return (
     <FelaComponent
       render={({ theme, }) => (

@@ -6,99 +6,34 @@ import { FelaComponent, } from 'react-fela';
 // import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
 // import ActionButtons from '../ActionButtons/ActionButtons';
-// import ArticleBody from '../ArticleBody/ArticleBody';
 import ArticleHeader from '../ArticleHeader/ArticleHeader';
-// import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
-// import HeadlineElement from '../HeadlineElement/HeadlineElement';
+import ArticleBody from '../ArticleBody/ArticleBody';
 import RecipeRating from './RecepieRating';
 import Ingredients from './Ingredients';
+import Instructions from './Instructions';
 import LayoutRow from '../PageLayout/LayoutRow'; // eslint-disable-line import/no-named-as-default
 import LayoutContainer from '../PageLayout/LayoutContainer'; // eslint-disable-line import/no-named-as-default
+import Nibbler from '../Nibbler/Nibbler';
+import Comments from '../CommentsSection/WrappedComments';
+import SideBar from '../SideBar/SideBar';
+
+import dummyBody from './dummyBody';
+import dummyInstructionLists from './dummyInstructionLists';
+import dummyIngredientLists from './dummyIngredientLists';
 
 const propTypes = {};
 
 const defaultProps = {};
 
-// const Header = createComponent(headerStyle, ArticleHeader, props => Object.keys(props));
-
-// const SharingTools = createComponent(sharingToolsStyle, ActionButtons, props => Object.keys(props));
-
-// const Body = createComponent(bodyStyle, ArticleBody, props => Object.keys(props));
-
 class Recipe extends React.Component {
   state = {};
 
-  //   shouldComponentUpdate(nextProps, nextState) {
-  //     return (
-  //       this.state.facebookCount !== nextState.facebookCount ||
-  //       this.props !== nextProps
-  //     );
-  //   }
-
-  //   componentDidUpdate() {
-  //     this.updateArticleMeta();
-  //   }
-
-  //   getFacebookCount = () => {
-  //     const accessToken =
-  //       'EAABkq33GsqwBAMhelXM0V7xJQmgJ1sf0nvxZAyZBZAtStCyZC6Is1m1OgnsL1Jxsw6BJx0zaZA1TOZBrZAYVMiNNEqLwb4ZARsYUZCEKZAG6r4Wnuminzgi41WQUZCCKvpdhjuHKgh1s3R3fWKjZA4rXvYEoHxgWRSzvFrRMkALfoQUAVwZDZD';
-  //     const url = `https://graph.facebook.com/?fields=share&access_token=${accessToken}&id=${
-  //       this.state.articleUrl
-  //     }&format=json`;
-
-  //     return fetch(url, {
-  //       method: 'get',
-  //       headers: new Headers({
-  //         'content-type': 'application/json',
-  //       }),
-  //     })
-  //       .then(response => {
-  //         if (response.ok) {
-  //           return response.json();
-  //         }
-  //         throw Error(response.statusText);
-  //       })
-  //       .then(data => this.setState({ facebookCount: data.share.share_count, }))
-  //       .catch(error => console.log('error: ', error));
-  //   };
-
-  //   extractHeadline = () => {
-  //     // creating a copy because arrays from apollo are sealed.
-  //     const body = [ ...this.props.body, ];
-  //     const element = body[0];
-  //     const elementType = element.elementType || element.inputTemplate || null;
-  //     if (mediaComponents.includes(elementType)) {
-  //       body.shift();
-  //       return { body, headlineElement: element, };
-  //     }
-  //     return { body, };
-  //   };
-
-  //   updateArticleMeta = () => {
-  //     const { commentsElementId, contentId, setCommentsData, } = this.props;
-  //     setCommentsData && setCommentsData(contentId, commentsElementId);
-  //     this.getFacebookCount(this.state.articleUrl);
-  //   };
-
   render() {
-    // const {} = this.props;
-
-    // const { body, headlineElement, } = this.extractHeadline();
-
     return (
       <FelaComponent
         render={({ theme, }) => (
           <Fragment>
-            {/* <FelaComponent
-              style={{
-                marginInlineStart: '4rem',
-                marginTop: '2rem',
-                marginBottom: '3rem',
-              }}
-            >
-              <Breadcrumbs steps={breadcrumbs} />
-            </FelaComponent> */}
-            <LayoutRow miscStyles={{ textAlign: 'center', }}>
+            <LayoutRow bgc="white" miscStyles={{ textAlign: 'center', }}>
               <LayoutContainer bgc="white">
                 <ArticleHeader
                   authors={[
@@ -136,59 +71,86 @@ class Recipe extends React.Component {
                 />
               </LayoutContainer>
             </LayoutRow>
-            <LayoutRow miscStyles={{ marginTop: '6rem', }}>
-              <LayoutContainer bgc="white">
-                <RecipeRating />
+            <FelaComponent
+              style={{ extend: theme.mq({ from: 'l', }, { display: 'flex', }), }}
+            >
+              <FelaComponent
+                style={{
+                  backgroundColor: theme.color('primary', '-6'),
+                  extend: [
+                    theme.mq({ until: 'l', }, { display: 'none', }),
+                    theme.mq({ from: 'l', until: 'xl', }, { width: '26rem', }),
+                    theme.mq({ from: 'xl', }, { width: '30rem', }),
+                  ],
+                }}
+              >
+                sdad
+              </FelaComponent>
+              <LayoutRow bgc="white">
+                <LayoutContainer
+                  bgc="white"
+                  miscStyles={{ paddingTop: '6rem', }}
+                >
+                  <ArticleBody body={dummyBody} />
+                  <FelaComponent
+                    style={{
+                      marginTop: '6rem',
+                      extend: [ theme.mq({ from: 'l', }, { display: 'none', }), ],
+                    }}
+                  >
+                    <RecipeRating />
+                  </FelaComponent>
+                  <FelaComponent style={{ marginTop: '6rem', }}>
+                    <Instructions instructionLists={dummyInstructionLists} />
+                  </FelaComponent>
+                  <FelaComponent style={{ marginTop: '6rem', }}>
+                    <Ingredients ingredientLists={dummyIngredientLists} />
+                  </FelaComponent>
+                </LayoutContainer>
+              </LayoutRow>
+              <FelaComponent
+                style={{
+                  position: 'relative',
+                  extend: [
+                    theme.mq({ until: 'l', }, { display: 'none', }),
+                    theme.mq({ from: 'l', }, { width: '67rem', }),
+                  ],
+                }}
+              >
+                <FelaComponent
+                  style={{
+                    backgroundColor: 'red',
+                    position: 'absolute',
+                    height: '100%',
+                    width: '100%',
+                    top: '0',
+                    left: '0',
+                  }}
+                >
+                  <SideBar>
+                    {[ 1, 2, 3, 4, 5, ].map(element => (
+                      // const Element = getComponent(element.inputTemplate);
+                      <div>{element}</div>
+                      // <Element
+                      //   key={element.contentId}
+                      //   articleId={this.props.articleId}
+                      //   {...element}
+                      // />
+                    ))}
+                  </SideBar>
+                </FelaComponent>
+              </FelaComponent>
+            </FelaComponent>
+            <LayoutRow bgc="white">
+              <LayoutContainer bgc="white" miscStyles={{ paddingTop: '6rem', }}>
+                <Nibbler />
               </LayoutContainer>
             </LayoutRow>
-            <LayoutRow miscStyles={{ marginTop: '6rem', }}>
-              <LayoutContainer bgc="white">
-                <Ingredients />
+            <LayoutRow bgc="white">
+              <LayoutContainer bgc="white" miscStyles={{ paddingTop: '6rem', }}>
+                <Comments />
               </LayoutContainer>
             </LayoutRow>
-
-            {/* <ActionButtons */}
-            {/* articleTitle={title}
-            articleUrl={this.state.articleUrl}
-            buttons={{
-              start: [
-                {
-                  name: 'facebookLogo',
-                  buttonText: this.state.facebookCount,
-                  iconStyles: {
-                    color: theme.color('facebook'),
-                  },
-                },
-                {
-                  name: 'whatsapp',
-                  iconStyles: {
-                    color: theme.color('whatsapp'),
-                  },
-                },
-                'mailAlert',
-              ],
-              end: [
-                {
-                  name: 'comments',
-                  buttonText: 78,
-                },
-                'print',
-                {
-                  name: 'zen',
-                  buttonText: 'קריאת זן',
-                },
-              ],
-            }}
-            globalButtonsStyles={{
-              minWidth: '10rem',
-            }}
-            globalIconsStyles={{
-              color: theme.color('primary'),
-            }}
-            size={2.5} */}
-            {/* /> */}
-            {/* {headlineElement && <HeadlineElement elementObj={headlineElement} />} */}
-            {/* <ArticleBody body={body} /> */}
           </Fragment>
         )}
       />
