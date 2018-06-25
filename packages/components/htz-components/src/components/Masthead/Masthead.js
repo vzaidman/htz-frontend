@@ -4,6 +4,7 @@ import { FelaComponent, } from 'react-fela';
 import A11yMenu from '../A11yMenu/A11yMenu';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import IconHaaretzLogo from '../Icon/icons/IconHaaretzLogo';
+import IconMarkerLogo from '../Icon/icons/IconMarkerLogo';
 import IconReading from '../Icon/icons/IconReading';
 import Link from '../Link/Link';
 import NavigationMenu from '../NavigationMenu/NavigationMenu'; // eslint-disable-line no-unused-vars
@@ -31,6 +32,22 @@ const propTypes = {
     sites: PropTypes.arrayOf(PropTypes.shape(baseProp)),
     promotions: PropTypes.arrayOf(PropTypes.shape(baseProp)),
   }).isRequired,
+  /**
+   * A string of the host: `tm` for `themarker.com`, `htz` for `haaretz.co.il` and `hdz` for `haaretz.com`.
+   */
+  host: PropTypes.oneOf([ 'tm', 'htz', 'hdc', ]).isRequired,
+};
+
+HeaderLogo.propTypes = {
+  host: PropTypes.oneOf([ 'tm', 'htz', 'hdc', ]).isRequired,
+};
+
+HeaderReading.propTypes = {
+  host: PropTypes.oneOf([ 'tm', 'htz', 'hdc', ]).isRequired,
+};
+
+HeaderUserItems.propTypes = {
+  host: PropTypes.oneOf([ 'tm', 'htz', 'hdc', ]).isRequired,
 };
 
 const headerReadingButtonStyle = theme => ({
@@ -52,66 +69,93 @@ const headerReadingButtonStyle = theme => ({
   extend: [ theme.type(-2), ],
 });
 
-const HeaderReading = () => (
-  <FelaComponent
-    style={headerReadingButtonStyle}
-    render={({ theme, className, }) => (
-      <Link
-        className={className}
-        href="https://www.haaretz.co.il/personal-area/my-account#readingList"
-      >
-        <IconReading size={3} />
-      </Link>
-    )}
-  />
-);
+function HeaderReading({ host, }) {
+  const url =
+    host === 'htz'
+      ? 'https://www.haaretz.co.il/personal-area/my-account#readingList'
+      : host === 'tm'
+        ? 'https://www.themarker.com/personal-area/reading-list'
+        : // change to haaretz.com valid link
+        'https://www.haaretz.com';
 
-const HeaderHaaretzLogo = () => (
-  <FelaComponent
-    style={theme => ({
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      extend: [
-        theme.mq(
-          { from: 's', },
-          {
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%,-50%)',
-          }
-        ),
-      ],
-    })}
-    render={({ className, }) => (
-      <Link href="http://www.haaretz.co.il" className={className}>
-        <IconHaaretzLogo size={4} />
-      </Link>
-    )}
-  />
-);
+  return (
+    <FelaComponent
+      style={headerReadingButtonStyle}
+      render={({ theme, className, }) => (
+        <Link className={className} href={url}>
+          <IconReading size={3} />
+        </Link>
+      )}
+    />
+  );
+}
 
-const HeaderUserItems = () => (
-  <FelaComponent
-    style={theme => ({
-      display: 'flex',
-      marginStart: 'auto',
-      extend: [
-        theme.mq({ until: 's', }, { display: 'none', }),
-        theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
-      ],
-    })}
-    render={({ theme, className, }) => (
-      <div className={className}>
-        <UserDispenser
-          render={({ user, }) => <UserMenu userName={user.firstName} />}
-        />
-        <HeaderReading />
-        <A11yMenu />
-      </div>
-    )}
-  />
-);
+function HeaderLogo({ host, }) {
+  return (
+    <FelaComponent
+      style={theme => ({
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        extend: [
+          theme.mq(
+            { from: 's', },
+            {
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%,-50%)',
+            }
+          ),
+        ],
+      })}
+      render={({ className, }) => {
+        if (host === 'tm') {
+          return (
+            <Link href="http://www.themarker.com" className={className}>
+              <IconMarkerLogo size={4} />
+            </Link>
+          );
+        }
+ else if (host === 'htz') {
+          return (
+            <Link href="http://www.haaretz.co.il" className={className}>
+              <IconHaaretzLogo size={4} />
+            </Link>
+          );
+        }
+        return (
+          <Link href="http://www.haaretz.com" className={className}>
+            <IconHaaretzLogo size={4} />
+          </Link>
+        );
+      }}
+    />
+  );
+}
+
+function HeaderUserItems({ host, }) {
+  return (
+    <FelaComponent
+      style={theme => ({
+        display: 'flex',
+        marginStart: 'auto',
+        extend: [
+          theme.mq({ until: 's', }, { display: 'none', }),
+          theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
+        ],
+      })}
+      render={({ theme, className, }) => (
+        <div className={className}>
+          <UserDispenser
+            render={({ user, }) => <UserMenu userName={user.firstName} />}
+          />
+          <HeaderReading host={host} />
+          <A11yMenu />
+        </div>
+      )}
+    />
+  );
+}
 
 class Masthead extends React.Component {
   state = { searchIsOpen: false, };
@@ -123,7 +167,7 @@ class Masthead extends React.Component {
   };
 
   render() {
-    const { menuSections, } = this.props;
+    const { menuSections, host, } = this.props;
 
     return (
       <FelaComponent
@@ -140,8 +184,8 @@ class Masthead extends React.Component {
               searchIsOpen={this.state.searchIsOpen}
               onClick={this.toggleSearchState}
             />
-            {this.state.searchIsOpen ? null : <HeaderHaaretzLogo />}
-            {this.state.searchIsOpen ? null : <HeaderUserItems />}
+            {this.state.searchIsOpen ? null : <HeaderLogo host={host} />}
+            {this.state.searchIsOpen ? null : <HeaderUserItems host={host} />}
           </header>
         )}
       />

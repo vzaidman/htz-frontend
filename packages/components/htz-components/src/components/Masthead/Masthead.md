@@ -12,6 +12,7 @@
 ```jsx
 <div style={{ direction: 'rtl', marginBottom: '400px' }}>
   <Masthead
+    host="htz"
     menuSections={{
       items: [
         {
