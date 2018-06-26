@@ -26,7 +26,7 @@ module.exports = {
     return `www.${this.domain}`;
   }),
   useSSL: true,
-  graphQLuseSSL: false,
+  graphQLuseSSL: true,
   graphQLexposedPort: false,
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
