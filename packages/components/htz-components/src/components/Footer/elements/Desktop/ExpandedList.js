@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
-import Link from '../../../Link/Link';
+import HtzLink from '../../../HtzLink/HtzLink';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import H from '../../../AutoLevels/H';
@@ -44,7 +44,7 @@ const listLinkStyle = ({ theme, isLast, isBold = false, }) => ({
   extend: [ theme.type(-1), ],
 });
 
-const StyledListLink = createComponent(listLinkStyle, Link, [
+const StyledListLink = createComponent(listLinkStyle, HtzLink, [
   'content',
   'href',
   'focus',

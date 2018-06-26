@@ -10,10 +10,8 @@ module.exports = {
   // Dealing with multi-server deployment https://nextjs.org/docs/#customizing-webpack-config
   generateBuildId: async () => {
     // For example get the latest git commit hash here
-    const revision = require('child_process')
-      .execSync('git rev-parse HEAD')
-      .toString()
-      .trim();
+    // Since this is a production-only issue, provide this as an environment variable at prod
+    const revision = process.env.NEXT_BUILD_ID || 'LATEST';
     console.log(`Next App BuildID is: ${revision}`);
     return revision;
   },

@@ -8,6 +8,7 @@ services:
     environment:
       - NODE_ENV=dev
       - CONNECTION_PRESET=dev
+      - NEXT_BUILD_ID=${BUILD_ID:-LATEST}"
       # the following environment is optional
       - PORT=2100
       - BIND_ADDRESS=ms-apps

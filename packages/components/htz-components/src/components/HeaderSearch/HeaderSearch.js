@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import IconClose from '../Icon/icons/IconClose';
 import IconSearch from '../Icon/icons/IconSearch';
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 import TextInput from '../TextInput/TextInput';
 
 class HeaderSearch extends React.Component {
@@ -189,7 +189,7 @@ class HeaderSearch extends React.Component {
                             top: '0',
                           }}
                           render={({ className, }) => (
-                            <Link
+                            <HtzLink
                               // TODO: Change to Next link.
                               href={queryUrl(this.state.query) || '#'}
                               refFunc={linkRef => {

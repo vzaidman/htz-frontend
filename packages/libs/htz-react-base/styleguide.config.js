@@ -23,9 +23,45 @@ const Wrapper = resolveFrom.silent(
   './styleguide/StyleGuideProvider.js'
 );
 
+const defaultIgnore = [
+  '**/__tests__/**',
+  '**/*.test.{js,jsx,ts,tsx}',
+  '**/*.spec.{js,jsx,ts,tsx}',
+  '**/*.d.ts',
+];
+/*
+  The following ignore attempts to remedy some components that are spamming with the following warning:
+  Warning: matches a pattern defined in “components” or “sections” options in your style guide config
+  but doesn’t export a component.
+  It usually happens when using third-party libraries, see possible solutions here:
+  https://react-styleguidist.js.org/docs/thirdparties.html
+*/
+const additionalIgnore = [
+  '**/Animations/Ripple.js',
+  '**/ArticleImage/ArticleImage.js',
+  '**/AutoLevels/LevelContext.js',
+  '**/Note/Note.js',
+  '**/User/CheckEmailExists.js',
+  '**/RadioButton/RadioButtonPropType.js',
+  '**/Image/Picture.js',
+  '**/Credit/Credit.js',
+  '**/RadioButton/RadioButtonPropType.js',
+  '**/Image/Picture.js',
+  '**/Credit/Credit.js',
+];
+/*
+  TODO the following ignores are problems to be rectified
+   Error: [{type: ImportSpecifier, start: 276, end: 295, loc: [object Object],
+    imported: [object Object], importKind: null, local: [object Object],
+     leadingComments: null, id: null, name: null}] does not match type Printable
+    It usually means that react-docgen does not understand your source code, try to file an issue here:
+    https://github.com/reactjs/react-docgen/issues
+*/
+const errorsIgnore = [ '**/RadioButton/RadioGroup.js', ];
+
 module.exports = {
   components: path.join(process.cwd(), '{,src/}components/**/[A-Z]*.{js,jsx}'),
-
+  ignore: [ ...defaultIgnore, ...additionalIgnore, ...errorsIgnore, ],
   title: 'Haaretz Components',
   showUsage: true,
   showCode: false,

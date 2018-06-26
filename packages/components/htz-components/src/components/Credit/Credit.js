@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 
 const creditPropTypes = {
   /**
@@ -28,7 +28,7 @@ const LinkStyled = createComponent(
       textDecoration: 'underline',
     },
   }),
-  Link,
+  HtzLink,
   [ 'href', 'content', ]
 );
 

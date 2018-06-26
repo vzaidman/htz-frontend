@@ -4,7 +4,7 @@ import { FelaComponent, } from 'react-fela';
 import ListItem from '../../elements/ListItem';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
-import Link from '../../../Link/Link';
+import HtzLink from '../../../HtzLink/HtzLink';
 import Media from '../../../Media/Media';
 import Image from '../../../Image/Image';
 import Title from '../../../ArticleHeader/Title';
@@ -130,7 +130,7 @@ export default function Bender({ data, lazyLoad, }) {
                       {item.authors.map(author => {
                         if (typeof author === 'object') {
                           return (
-                            <Link
+                            <HtzLink
                               href="https://www.haaretz.co.il"
                               content={author.contentName}
                             />

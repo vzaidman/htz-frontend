@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, withTheme, } from 'react-fela';
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 import H from '../AutoLevels/H';
 
 const propTypes = {
@@ -60,7 +60,7 @@ function Tags({ tagsList, theme, }) {
       <ul>
         {tagsList.map((tag, i) => (
           <Tag key={tag.contentName} isLast={tagsList.length === i + 1}>
-            <Link
+            <HtzLink
               href={tag.url}
               content={<TagContent>{tag.contentName}</TagContent>}
             />

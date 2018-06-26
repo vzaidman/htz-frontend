@@ -2,7 +2,7 @@ import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Image from '../../Image/Image';
-import Link from '../../Link/Link';
+import HtzLink from '../../HtzLink/HtzLink';
 
 // const styleRule = ({ theme, isBusy, }) => ({
 //   backgroundColor: 'rgba(200,200,200, 0.3)',
@@ -35,7 +35,7 @@ export default function RespView282({
 }) {
   // do some pre-processing
   return (
-    <Link
+    <HtzLink
       href={link}
       targer={linkTarget}
       content={

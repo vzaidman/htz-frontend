@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 
 const articleStyle = ({ theme, isBlock, }) =>
   (isBlock
@@ -61,7 +61,7 @@ function ArticleLink({ article, currentArticle, focus, isBlock, }) {
         )}
     </CurrentArticle>
   ) : (
-    <Link
+    <HtzLink
       href={article.path}
       content={
         <Article isBlock={isBlock}>

@@ -10,6 +10,7 @@ services:
     environment:
       - NODE_ENV=production
       - CONNECTION_PRESET=prod
+      - NEXT_BUILD_ID=${BUILD_ID:-LATEST}"
       # the following environment is optional
       - PORT=2004
       - BIND_ADDRESS=ms-apps

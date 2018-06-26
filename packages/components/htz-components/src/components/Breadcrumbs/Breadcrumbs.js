@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 import { Query, } from 'react-apollo';
 import { breadcrumbs, } from '@haaretz/app-utils';
 
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 const propTypes = {
@@ -77,7 +77,7 @@ function Breadcrumbs({ articleId, }) {
                           ],
                         }}
                         render={({ className, }) => (
-                          <Link
+                          <HtzLink
                             className={className}
                             content={crumb.name}
                             href={crumb.url}

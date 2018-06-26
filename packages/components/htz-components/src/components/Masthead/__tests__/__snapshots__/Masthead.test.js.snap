@@ -331,7 +331,7 @@ exports[`<MainHeader DOM element check that opening the search input hidden the 
       <FelaTheme
         render={[Function]}
       >
-        <Link
+        <HtzLink
           asPath={null}
           attrs={null}
           className="htz-bu htz-bv htz-bw htz-bh htz-bn"
@@ -954,7 +954,7 @@ exports[`<MainHeader DOM element check that opening the search input hidden the 
               <FelaTheme
                 render={[Function]}
               >
-                <Link
+                <HtzLink
                   asPath={null}
                   attrs={null}
                   className="htz-a htz-bh htz-k htz-ca htz-cb htz-cc htz-cd htz-n htz-o htz-p htz-q htz-r htz-bn"
@@ -2142,7 +2142,7 @@ exports[`<MainHeader DOM element check that opening the search input hidden the 
                       <FelaTheme
                         render={[Function]}
                       >
-                        <Link
+                        <HtzLink
                           asPath={null}
                           attrs={null}
                           className="htz-bh htz-a htz-be htz-h htz-dy htz-cd htz-cc htz-x htz-dz htz-bn htz-bg"

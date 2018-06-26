@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { withRouter, } from 'next/router';
 import { parseTypographyProp, } from '@haaretz/htz-css-tools';
-import { BIAction, Link, } from '@haaretz/htz-components';
+import { BIAction, HtzLink, } from '@haaretz/htz-components';
 import DesktopView from './ChooseSlotsStageElements/DesktopView';
 import MobileView from './ChooseSlotsStageElements/MobileView';
 import SubHeader from './ChooseSlotsStageElements/SubHeader';
@@ -158,7 +158,7 @@ function ChooseSlotStage({ host, tableData, subStage, userMessage, router, }) {
                       })}
                       render="p"
                     >
-                      <Link
+                      <HtzLink
                         href={entitlements.link}
                         content={
                           <Fragment>
@@ -194,7 +194,7 @@ function ChooseSlotStage({ host, tableData, subStage, userMessage, router, }) {
                       extend: [ theme.type(-1), ],
                     })}
                   >
-                    <Link
+                    <HtzLink
                       href={organizationSubscription.url[host]}
                       content={
                         <FelaComponent

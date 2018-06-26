@@ -7,7 +7,7 @@ import {
   BIAction,
   Form,
   TextInput,
-  Link,
+  HtzLink,
 } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 import OfferList from './ChooseProductStageElements/OfferList';
@@ -137,7 +137,11 @@ class ChooseProductStage extends Component {
               form: {
                 couponError,
                 validation,
-                couponForm: { textLabel, textNote, buttons: { send, close, }, },
+                couponForm: {
+                  textLabel,
+                  textNote,
+                  buttons: { send, close, },
+                },
               },
               buttons: { entitlements, organizationSubscription, },
             },
@@ -338,7 +342,7 @@ class ChooseProductStage extends Component {
                       render="p"
                     >
                       {entitlements.beforeLinkText}{' '}
-                      <Link
+                      <HtzLink
                         href={entitlements.link}
                         content={
                           <FelaComponent
@@ -361,7 +365,7 @@ class ChooseProductStage extends Component {
                     >
                       <BIAction>
                         {action => (
-                          <Link
+                          <HtzLink
                             href={organizationSubscription.url[host]}
                             content={
                               <FelaComponent

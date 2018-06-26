@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaTheme, FelaComponent, } from 'react-fela';
 import { parseComponentProp, borderBottom, } from '@haaretz/htz-css-tools';
 import List from './elements/list';
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 import Media from '../Media/Media';
 import IconBack from '../Icon/icons/IconBack';
 
@@ -43,7 +43,7 @@ const nextStyle = ({ theme, }) => ({
   alignSelf: 'center',
   textAlign: 'center',
 });
-const Next = createComponent(nextStyle, Link, props => Object.keys(props));
+const Next = createComponent(nextStyle, HtzLink, props => Object.keys(props));
 
 function Osaka({ nextArticleUrl, sectionName, lists, }) {
   return (

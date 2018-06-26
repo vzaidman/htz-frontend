@@ -9,7 +9,7 @@ import {
   parseStyleProps,
   parseTypographyProp,
 } from '@haaretz/htz-css-tools';
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { buttonBoxModelType, } from './buttonBoxModelType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
@@ -60,7 +60,7 @@ Button.propTypes = {
   children: PropTypes.node,
   /**
    * A url to be assigned to the DOM element, converts the button to an `'<a>'`
-   * DOM element inside a Next JS `<Link />`
+   * DOM element inside a Wrapped Next JS `<HtzLink />`
    */
   href: PropTypes.oneOfType([
     PropTypes.node,
@@ -532,7 +532,7 @@ const ButtonWrapper = ({
   WrapperElement,
 }) =>
   (href ? (
-    <Link
+    <HtzLink
       href={href}
       asPath={asPath}
       prefetch={prefetch}
@@ -545,7 +545,7 @@ const ButtonWrapper = ({
       }}
     >
       <React.Fragment>{children}</React.Fragment>
-    </Link>
+    </HtzLink>
   ) : (
     <WrapperElement
       id={id || null}

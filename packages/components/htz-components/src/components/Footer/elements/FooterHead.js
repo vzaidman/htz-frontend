@@ -1,7 +1,7 @@
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
-import Link from '../../Link/Link';
+import HtzLink from '../../HtzLink/HtzLink';
 import IconFaceBookLogo from '../../Icon/icons/IconFacebookLogo';
 import IconHaaretzLogo from '../../Icon/icons/IconHaaretzLogo';
 import IconTwitter from '../../Icon/icons/IconTwitter';
@@ -17,7 +17,11 @@ const IconMiscStyle = {
 };
 
 const desktopHeadStyle = ({
-  theme: { color, mq, footerBorderStyle: { borderWidth, lines, borderStyle, }, },
+  theme: {
+    color,
+    mq,
+    footerBorderStyle: { borderWidth, lines, borderStyle, },
+  },
 }) => ({
   ...mq(
     { from: 's', },
@@ -127,7 +131,7 @@ export default function FooterHead() {
                   rule={IconsListStyle}
                   render={({ className, }) => (
                     <li className={className}>
-                      <Link
+                      <HtzLink
                         content={
                           <IconFaceBookLogo miscStyles={IconMiscStyle} />
                         }
@@ -140,7 +144,7 @@ export default function FooterHead() {
                   rule={IconsListStyle}
                   render={({ className, }) => (
                     <li className={className}>
-                      <Link
+                      <HtzLink
                         content={<IconTwitter miscStyles={IconMiscStyle} />}
                         href="https://twitter.com/haaretz"
                       />
@@ -152,7 +156,7 @@ export default function FooterHead() {
                   rule={IconsListStyle}
                   render={({ className, }) => (
                     <li className={className}>
-                      <Link
+                      <HtzLink
                         content={<IconAndroid />}
                         href="https://play.google.com/store/apps/details?id=com.haaretz"
                       />
@@ -164,7 +168,7 @@ export default function FooterHead() {
                   rule={IconsListStyle}
                   render={({ className, }) => (
                     <li className={className}>
-                      <Link
+                      <HtzLink
                         content={<IconApple />}
                         href="https://itunes.apple.com/us/app/id521559643"
                       />
@@ -175,7 +179,7 @@ export default function FooterHead() {
                   rule={IconsListStyle}
                   render={({ className, }) => (
                     <li className={className}>
-                      <Link
+                      <HtzLink
                         content={
                           <IconGPlus miscStyles={IconMiscStyle} size={3} />
                         }
@@ -189,7 +193,7 @@ export default function FooterHead() {
                   rule={IconsListStyle}
                   render={({ className, }) => (
                     <li className={className}>
-                      <Link
+                      <HtzLink
                         content={<IconMailFooter />}
                         href="https://www.haaretz.co.il/misc/redemail"
                       />
@@ -202,7 +206,7 @@ export default function FooterHead() {
                   rule={IconsListStyle}
                   render={({ className, }) => (
                     <li className={className}>
-                      <Link
+                      <HtzLink
                         content={<IconRss />}
                         href="https://www.haaretz.co.il/misc/rss"
                       />

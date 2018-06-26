@@ -8,7 +8,7 @@ import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import IconHaaretzLogo from '../Icon/icons/IconHaaretzLogo';
 import IconMarkerLogo from '../Icon/icons/IconMarkerLogo';
 import IconReading from '../Icon/icons/IconReading';
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 import NavigationMenu from '../NavigationMenu/NavigationMenu'; // eslint-disable-line no-unused-vars
 import UserDispenser from '../User/UserDispenser';
 import UserMenu from '../UserMenu/UserMenu';
@@ -85,9 +85,9 @@ function HeaderReading({ host, }) {
     <FelaComponent
       style={headerReadingButtonStyle}
       render={({ theme, className, }) => (
-        <Link className={className} href={url}>
+        <HtzLink className={className} href={url}>
           <IconReading size={3} />
-        </Link>
+        </HtzLink>
       )}
     />
   );
@@ -114,22 +114,22 @@ function HeaderLogo({ host, }) {
       render={({ className, }) => {
         if (host === 'tm') {
           return (
-            <Link href="http://www.themarker.com" className={className}>
+            <HtzLink href="http://www.themarker.com" className={className}>
               <IconMarkerLogo size={4} />
-            </Link>
+            </HtzLink>
           );
         }
  else if (host === 'htz') {
           return (
-            <Link href="http://www.haaretz.co.il" className={className}>
+            <HtzLink href="http://www.haaretz.co.il" className={className}>
               <IconHaaretzLogo size={4} />
-            </Link>
+            </HtzLink>
           );
         }
         return (
-          <Link href="http://www.haaretz.com" className={className}>
+          <HtzLink href="http://www.haaretz.com" className={className}>
             <IconHaaretzLogo size={4} />
-          </Link>
+          </HtzLink>
         );
       }}
     />

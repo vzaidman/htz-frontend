@@ -108,7 +108,7 @@ describe('buildFontPreloadLink()', () => {
     };
 
     const result = buildFontPreloadLink(fonts);
-    it('return a "<Link>" element for each font-family with a subset font', () => {
+    it('return a "<link>" element for each font-family with a subset font', () => {
       expect(result.length).toBe(2);
     });
     it('use the correct subset variation for each item', () => {

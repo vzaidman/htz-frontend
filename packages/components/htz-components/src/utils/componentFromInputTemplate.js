@@ -24,7 +24,7 @@ import SeriesArticles from '../components/RelatedArticles/SeriesArticles';
 import Tags from '../components/Tags/Tags';
 import Video from '../components/Video/Video';
 
-// const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const inputTemplateToComponent = new Map([
   /* HeaderSlots components */
@@ -61,8 +61,15 @@ const inputTemplateToComponent = new Map([
   [ 'com.tm.ImageGalleryElement', () => <p>ImageGallery</p>, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
   [ 'com.tm.newsLetterQuickRegistrationRespAuto', Newsletter, ],
-  // todo: change it to null in production.
-  [ 'com.tm.ListElement', () => <p>Old list, NOT SUPPORTED</p>, ],
+  [
+    'com.tm.ListElement',
+    () => {
+      if (isProduction) {
+        return null;
+      }
+      return <p>Old list, NOT SUPPORTED</p>;
+    },
+  ],
   [ 'com.tm.element.List', List, ],
   [ 'com.tm.TabViewElement', () => <p>TabViewElement</p>, ],
   [ 'com.polobase.JSONListsWrapper', () => <p>JSONListsWrapper</p>, ],

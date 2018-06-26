@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Link, Newsletter, BIAction, } from '@haaretz/htz-components';
+import { HtzLink, Newsletter, BIAction, } from '@haaretz/htz-components';
 
 const GET_HOST_NAME = gql`
   query {
@@ -46,7 +46,7 @@ const linkStyle = ({ theme, }) => ({
   extend: [ theme.type(1), ],
 });
 
-const StyledLink = createComponent(linkStyle, Link, [ 'content', 'href', ]);
+const StyledLink = createComponent(linkStyle, HtzLink, [ 'content', 'href', ]);
 
 function StageThankYou({ userEmail, product, userMessage, }) {
   const isArticle = url => {

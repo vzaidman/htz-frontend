@@ -4,7 +4,7 @@ import { createComponent, } from 'react-fela';
 import { border, borderEnd, borderBottom, } from '@haaretz/htz-css-tools';
 import ListItem from '../../elements/ListItem';
 
-import Link from '../../../Link/Link';
+import HtzLink from '../../../HtzLink/HtzLink';
 import Image from '../../../Image/Image';
 
 const wrapperStyle = () => ({
@@ -30,7 +30,7 @@ const itemStyle = ({ theme, }) => ({
   ...border('1px', 0, 'solid', theme.color('neutral', '-4')),
   ...borderEnd('4px', 'solid', theme.color('neutral', '-4')),
 });
-const Item = createComponent(itemStyle, Link, props => Object.keys(props));
+const Item = createComponent(itemStyle, HtzLink, props => Object.keys(props));
 
 const itemImageStyle = () => ({
   width: `${124 / 7}rem`,

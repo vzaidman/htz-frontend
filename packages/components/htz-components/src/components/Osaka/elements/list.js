@@ -5,7 +5,7 @@ import { createComponent, FelaComponent, } from 'react-fela';
 import { parseStyleProps, borderEnd, } from '@haaretz/htz-css-tools';
 import Article from './article';
 import { stylesPropType, } from '../../../propTypes/stylesPropType';
-import Link from '../../Link/Link';
+import HtzLink from '../../HtzLink/HtzLink';
 
 const propTypes = {
   /**
@@ -88,7 +88,7 @@ function List({ articles, promoted, outbrain, miscStyles, }) {
                   : {}),
               }}
               render={({ className: linkClass, }) => (
-                <Link
+                <HtzLink
                   className={linkClass}
                   href={article.url}
                   content={<Article {...article} />}

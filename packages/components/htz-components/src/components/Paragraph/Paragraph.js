@@ -1,7 +1,7 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 import H from '../AutoLevels/H';
 import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
 import Zen from '../Zen/Zen';
@@ -39,7 +39,7 @@ const inlineLinkStyle = ({ theme: { color, articleStyle, }, }) => ({
   },
 });
 
-const InlineLink = createComponent(inlineLinkStyle, Link, props =>
+const InlineLink = createComponent(inlineLinkStyle, HtzLink, props =>
   Object.keys(props)
 );
 

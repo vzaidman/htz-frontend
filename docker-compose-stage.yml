@@ -9,6 +9,7 @@ services:
     environment:
       - NODE_ENV=production
       - CONNECTION_PRESET=stage
+      - NEXT_BUILD_ID=${BUILD_ID:-LATEST}"
       # the following environment is optional
       - PORT=2200
       - BIND_ADDRESS=ms-apps

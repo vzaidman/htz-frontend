@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import Link from '../../Link/Link';
+import HtzLink from '../../HtzLink/HtzLink';
 import Button from '../../Button/Button'; // eslint-disable-line import/no-named-as-default
 import Section from '../../AutoLevels/Section';
 
@@ -51,7 +51,7 @@ const linkStyle = ({ theme, }) => ({
   extend: [ theme.type(0), ],
 });
 
-const StyledLink = createComponent(linkStyle, Link, [ 'content', 'href', ]);
+const StyledLink = createComponent(linkStyle, HtzLink, [ 'content', 'href', ]);
 
 const liStyle = ({ theme, }) => ({
   marginTop: '1rem',

@@ -1,34 +1,38 @@
 import React from 'react';
 import felaSnapshotter from '../../test-helpers/felaSnapshotter';
-import Link from './Link';
+import HtzLink from './HtzLink';
 import Paragraph from '../Paragraph/Paragraph';
 
 it('Simple link ', () => {
   const snapshot = felaSnapshotter(
-    <Link href="https://www.haaretz.co.il" content="Haaretz" />
+    <HtzLink href="https://www.haaretz.co.il" content="Haaretz" />
   );
   expect(snapshot).toMatchSnapshot();
 });
 
 it('render content from "children"', () => {
   const snapshot = felaSnapshotter(
-    <Link href="https://www.haaretz.co.il">test content</Link>
+    <HtzLink href="https://www.haaretz.co.il">test content</HtzLink>
   );
   expect(snapshot).toMatchSnapshot();
 });
 
 it('override "children" with content', () => {
   const snapshot = felaSnapshotter(
-    <Link href="https://www.haaretz.co.il" content="Haaretz">
+    <HtzLink href="https://www.haaretz.co.il" content="Haaretz">
       test content
-    </Link>
+    </HtzLink>
   );
   expect(snapshot).toMatchSnapshot();
 });
 
 it('Link with target blank ', () => {
   const snapshot = felaSnapshotter(
-    <Link href="https://themarker.com" content="The Marker" target="_blank" />
+    <HtzLink
+      href="https://themarker.com"
+      content="The Marker"
+      target="_blank"
+    />
   );
   expect(snapshot).toMatchSnapshot();
 });

@@ -4,7 +4,7 @@ import { createComponent, FelaComponent, } from 'react-fela';
 import {
   IconAlefLogo,
   IconTheMarker,
-  Link,
+  HtzLink,
   BIAction,
 } from '@haaretz/htz-components';
 
@@ -54,7 +54,7 @@ const linkStyle = ({
   ],
 });
 
-const StyledLink = createComponent(linkStyle, Link, [
+const StyledLink = createComponent(linkStyle, HtzLink, [
   'href',
   'content',
   'onClick',

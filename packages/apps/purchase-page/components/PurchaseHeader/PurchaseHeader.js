@@ -10,7 +10,7 @@ import {
   IconHaaretzLogo,
   IconLock,
   BIAction,
-  Link,
+  HtzLink,
 } from '@haaretz/htz-components';
 
 const propTypes = {
@@ -168,7 +168,7 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
           </FelaComponent>
 
           <FelaComponent style={logoContStyle}>
-            <Link
+            <HtzLink
               href={href[host]}
               content={
                 isTheMarker ? (

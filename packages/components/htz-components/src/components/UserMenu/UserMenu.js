@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 import DropdownList from '../DropdownList/DropdownList';
 import IconAvatar from '../Icon/icons/IconAvatar';
 import Item from '../DropdownList/DropdownItem';
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 import Logout from '../User/Logout';
 import UserButton from './UserButton';
 import {
@@ -58,13 +58,13 @@ class UserMenu extends React.Component {
               <FelaComponent
                 style={noUserButtonStyle}
                 render={({ theme, className, }) => (
-                  <Link
+                  <HtzLink
                     className={className}
                     href="https://www.haaretz.co.il/misc/login-page"
                   >
                     <span>{theme.userMenuI18n.noUserData}</span>
                     <IconAvatar size={3} miscStyles={{ marginRight: '2rem', }} />
-                  </Link>
+                  </HtzLink>
                 )}
               />
             </div>

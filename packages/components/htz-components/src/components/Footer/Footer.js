@@ -4,7 +4,7 @@ import { createComponent, FelaTheme, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 import ButtonFooter from '../Button/Button';
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 import LayoutFooterRow from '../PageLayout/LayoutRow';
 import LayoutFooterContainer from '../PageLayout/LayoutContainer';
 import ExpandedList from './elements/Desktop/ExpandedList';
@@ -56,7 +56,7 @@ const headLinkStyle = ({ theme, isLast, }) => ({
   },
 });
 
-const StyledHeadLink = createComponent(headLinkStyle, Link, [
+const StyledHeadLink = createComponent(headLinkStyle, HtzLink, [
   'content',
   'href',
 ]);

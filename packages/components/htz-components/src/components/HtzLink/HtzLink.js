@@ -106,7 +106,7 @@ const LinkWrapper = ({
 //   return '/article';
 // };
 
-function CustomLink({
+function HtzLink({
   attrs,
   children,
   className,
@@ -198,7 +198,7 @@ function CustomLink({
   );
 }
 
-CustomLink.propTypes = propTypes;
-CustomLink.defaultProps = defaultProps;
+HtzLink.propTypes = propTypes;
+HtzLink.defaultProps = defaultProps;
 
-export default CustomLink;
+export default HtzLink;

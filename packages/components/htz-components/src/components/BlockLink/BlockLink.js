@@ -2,7 +2,7 @@ import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
-import Link from '../Link/Link';
+import HtzLink from '../HtzLink/HtzLink';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 
@@ -19,7 +19,7 @@ BlockLink.propTypes = {
   children: PropTypes.node,
   /**
    * A url to be assigned to the DOM element, converts the button to an `'<a>'`
-   * DOM element inside a Next JS `<Link />`
+   * DOM element inside a Wrapped Next JS `<HtzLink />`
    */
   href: PropTypes.string.isRequired,
   /** The HTML tag to render the `<BlockLink />` as */
@@ -76,7 +76,7 @@ export default function BlockLink({
                 zIndex: '0',
               }}
               render={({ className, }) => (
-                <Link
+                <HtzLink
                   className={className}
                   href={href}
                   attrs={{
