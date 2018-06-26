@@ -89,9 +89,6 @@ const A11yMenu = () => (
                       className={className}
                       onClick={toggleState}
                       aria-expanded={isOpen}
-                      ref={navButt => {
-                        this.navButt = navButt;
-                      }}
                     >
                       <IconAccessibility size={3} />
                     </button>

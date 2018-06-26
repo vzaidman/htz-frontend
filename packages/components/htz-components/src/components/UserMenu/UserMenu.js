@@ -124,7 +124,6 @@ class UserMenu extends React.Component {
                       onClick={toggleState}
                       userName={this.props.userName}
                       role="button"
-                      innerRef={navButt => (this.navButt = navButt)} // eslint-disable-line no-return-assign
                     />
                   ))}
                   {isOpen && (
