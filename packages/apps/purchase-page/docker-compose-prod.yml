@@ -1,0 +1,27 @@
+version: "3.3"
+services:
+  htz_react:
+    hostname: promotions-page
+    build: .
+    #command: ["yarn", "workspace", "@haaretz/haaretz.co.il", "start"]
+    image: "docker.themarker.com:8083/promotions-page:${version:-latest}"
+    ports:
+      - 2004:2004
+    environment:
+      - NODE_ENV=production
+      - CONNECTION_PRESET=prod
+      # the following environment is optional
+      - PORT=2004
+      - BIND_ADDRESS=ms-apps
+      - HOSTNAME=docker
+      - GRAPHQL_USE_SSL=false
+      - GRAPHQL_EXPOSE_PORT=true
+
+
+    networks:
+      - prod01
+
+networks:
+  prod01:
+    external: true
+

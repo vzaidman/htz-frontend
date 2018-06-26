@@ -1,0 +1,18 @@
+version: "3.3"
+services:
+  htz_react:
+    build: .
+    hostname: promotions-page
+    image: "docker.themarker.com:8083/promotions-page:${version:-latest}"
+    ports:
+      - 2101:2101
+    environment:
+      - NODE_ENV=dev
+      - CONNECTION_PRESET=dev
+      # the following environment is optional
+      - PORT=2101
+      - BIND_ADDRESS=ms-apps
+      - HOSTNAME=docker
+      - GRAPHQL_USE_SSL=false
+      - GRAPHQL_EXPOSE_PORT=true
+
