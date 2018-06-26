@@ -432,8 +432,8 @@ class StandardArticle extends React.Component {
         <Media
           query={{ from: 'l', }}
           render={() => (
-            <ArticleAside>
-              <Zen animate>
+            <Zen animate>
+              <ArticleAside>
                 <SideBar>
                   {aside.map(element => {
                     const Element = getComponent(element.inputTemplate);
@@ -446,8 +446,8 @@ class StandardArticle extends React.Component {
                     );
                   })}
                 </SideBar>
-              </Zen>
-            </ArticleAside>
+              </ArticleAside>
+            </Zen>
           )}
         />
       </ArticleContainer>
