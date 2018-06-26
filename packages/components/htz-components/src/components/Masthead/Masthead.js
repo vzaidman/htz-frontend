@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+// import { Query, } from 'react-apollo';
 import A11yMenu from '../A11yMenu/A11yMenu';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import IconHaaretzLogo from '../Icon/icons/IconHaaretzLogo';
@@ -10,6 +11,8 @@ import Link from '../Link/Link';
 import NavigationMenu from '../NavigationMenu/NavigationMenu'; // eslint-disable-line no-unused-vars
 import UserDispenser from '../User/UserDispenser';
 import UserMenu from '../UserMenu/UserMenu';
+
+import mock from './mockData.js';
 
 const baseProp = {
   name: PropTypes.string,
@@ -194,5 +197,28 @@ class Masthead extends React.Component {
 }
 
 Masthead.propTypes = propTypes;
+// TODO: uncomment when data in papi is ready
+/*
+const WrappedMasthead = () => (
+  <Query>
+    {({ loading, error, data, }) => {
+      if (loading) return null;
+      if (error) return null;
+      const { menuSections, host, } = this.data;
+      return (
+        <Masthead
+          menuSections={menuSections}
+          host={host}
+        />
+      );
+    }}
+  </Query>
+);
+*/
 
-export default Masthead;
+const WrappedMasthead = () => {
+  const { menuSections, host, } = mock;
+  return <Masthead menuSections={menuSections} host={host} />;
+};
+
+export default WrappedMasthead;
