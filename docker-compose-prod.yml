@@ -2,6 +2,7 @@ version: "3.3"
 services:
   htz_react:
     build: .
+    hostname: htz-front-app
     #command: ["yarn", "workspace", "@haaretz/haaretz.co.il", "start"]
     image: "docker.themarker.com:8083/htz-front-app:${version:-latest}"
     ports:
@@ -15,4 +16,11 @@ services:
       - HOSTNAME=docker
       - GRAPHQL_USE_SSL=false
       - GRAPHQL_EXPOSE_PORT=true
+
+    networks:
+      - prod01
+
+networks:
+  prod01:
+    external: true
 
