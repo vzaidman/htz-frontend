@@ -22,8 +22,20 @@ const propTypes = {
     })
   ).isRequired,
   totalPercentage: PropTypes.number.isRequired,
+  /** A render prop that by default is set to be:
+   *
+   * ```
+   * (banner, viewMode) => <ClickTrackerElement banner={banner} view={viewMode} />
+   * ```
+   *
+   * can be overriden for custom banner views */
+  render: PropTypes.func,
 };
-const defaultProps = {};
+const defaultProps = {
+  render: (banner, viewMode) => (
+    <ClickTrackerElement banner={banner} view={viewMode} />
+  ),
+};
 
 const isValidViewMode = viewMode => true;
 
@@ -44,9 +56,9 @@ function getRandomIntInclusive(min, max) {
 }
 
 /**
- * A wrapper container for a ClickTracker ad slot.
- * Logical unit that decides which banner (ClickTrackerElement) should be displayed.
- * It's purpose is to decide which banner and view should be displayed.
+ * A wrapper container for a ClickTracker ad-slot.
+ * It is a logical unit that decides which banner and in which view mode
+ * it should be displayed.
  * @class ClickTrackerWrapper
  * @extends {Component}
  */
@@ -55,7 +67,10 @@ class ClickTrackerWrapper extends Component {
     super(props);
     this.banners = this.props.banners || [];
     const hasBanners = this.banners.length > 0;
-    this.viewMode = this.props.viewModes.viewModeHtz || '';
+    this.viewMode =
+      this.props.viewModes && this.props.viewModes.viewModeHtz
+        ? this.props.viewModes.viewModeHtz
+        : '';
     const hasValidViewMode = isValidViewMode(this.viewMode);
     if (hasBanners && hasValidViewMode) {
       this.banners = this.props.banners;
@@ -94,7 +109,8 @@ class ClickTrackerWrapper extends Component {
         // eslint-disable-next-line react/no-did-mount-set-state
         this.setState({
           shouldRender: true,
-          selectedBanner,
+          banner: selectedBanner,
+          viewMode: this.viewMode,
         });
       }
     }
@@ -102,12 +118,8 @@ class ClickTrackerWrapper extends Component {
 
   render() {
     if (this.state.shouldRender) {
-      return (
-        <ClickTrackerElement
-          banner={this.state.selectedBanner}
-          view={this.viewMode}
-        />
-      );
+      const { banner, viewMode, } = this.state;
+      return this.props.render(banner, viewMode);
     }
     return null;
   }

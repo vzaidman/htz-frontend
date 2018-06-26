@@ -1,8 +1,8 @@
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
-import Image from '../../../Image/Image';
-import Link from '../../../Link/Link';
+import Image from '../../Image/Image';
+import Link from '../../Link/Link';
 
 // const styleRule = ({ theme, isBusy, }) => ({
 //   backgroundColor: 'rgba(200,200,200, 0.3)',
