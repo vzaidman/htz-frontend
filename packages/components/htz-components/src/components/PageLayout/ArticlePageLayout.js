@@ -62,7 +62,7 @@ const ArticlePageLayout = ({
             </LayoutRow>
             <LayoutRow>
               <LayoutContainer>
-                {header && <Header content={header} />}
+                <Header content={header} />
               </LayoutContainer>
             </LayoutRow>
             <LayoutRow>
