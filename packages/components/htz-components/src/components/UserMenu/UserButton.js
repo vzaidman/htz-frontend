@@ -37,7 +37,7 @@ class UserButton extends React.Component {
           paddingInlineStart: '2rem',
           paddingInlineEnd: '1rem',
           extend: [
-            theme.type(-2),
+            theme.type(-1),
             isOpen || isHovered
               ? {
                   backgroundColor: isHovered

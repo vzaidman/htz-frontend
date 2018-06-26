@@ -18,9 +18,11 @@ const GET_A11Y_STATE = gql`
 `;
 
 const a11yButtonStyle = ({ theme, isOpen, }) => ({
-  display: 'flex',
-  color: theme.color('a11yMenu', 'text'),
+  alignItems: 'center',
+  height: '100%',
   border: 'none',
+  color: theme.color('a11yMenu', 'text'),
+  display: 'flex',
   padding: '1rem',
   ...(isOpen && {
     backgroundColor: theme.color('a11yMenu', 'bgOpen'),
@@ -30,7 +32,6 @@ const a11yButtonStyle = ({ theme, isOpen, }) => ({
     backgroundColor: theme.color('a11yMenu', 'bgHover'),
     color: theme.color('a11yMenu', 'textOpenOrHover'),
   },
-  extend: [ theme.type(-2), ],
 });
 
 /**

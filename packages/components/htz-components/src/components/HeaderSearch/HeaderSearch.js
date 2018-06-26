@@ -94,7 +94,7 @@ class HeaderSearch extends React.Component {
                     }
                   : {}),
                 extend: [
-                  type(-2),
+                  type(-1),
                   isHovered
                     ? {
                         backgroundColor: isHovered
@@ -169,7 +169,6 @@ class HeaderSearch extends React.Component {
                             miscStyles={{
                               backgroundColor: 'transparent',
                               height: '100%',
-                              marginTop: '0',
                               paddingInlineEnd: '6rem',
                               ':hover': {
                                 backgroundColor: 'transparent',

@@ -389,6 +389,9 @@ const colors = {
     textOpenOrHover: [ 'neutral', '-10', ],
     bgOpen: [ 'secondary', 'base', ],
   },
+  mastheadBorder: {
+    borderColor: [ 'primary', 'base', ],
+  },
   // Primary
   select: {
     primaryBg: 'white',

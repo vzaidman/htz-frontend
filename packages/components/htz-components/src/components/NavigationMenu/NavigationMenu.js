@@ -16,7 +16,11 @@ const menuButtonStyle = ({ theme, isOpen, }) => ({
   display: 'block',
   fontWeight: '700',
   height: '100%',
-  padding: '1rem',
+  // this padding affect all the items in the masthead
+  paddingTop: '2rem',
+  paddingBottom: '2rem',
+  paddingRight: '1rem',
+  paddingLeft: '1rem',
   ...(isOpen && {
     backgroundColor: theme.color('secondary'),
     color: theme.color('neutral', '-10'),
@@ -26,7 +30,7 @@ const menuButtonStyle = ({ theme, isOpen, }) => ({
     color: theme.color('neutral', '-10'),
   },
   extend: [
-    theme.type(-2),
+    theme.type(-1),
     theme.mq({ until: 's', }, { display: 'none', }),
     theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
   ],

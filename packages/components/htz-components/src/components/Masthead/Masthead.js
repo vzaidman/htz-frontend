@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+import { borderBottom, } from '@haaretz/htz-css-tools';
 // import { Query, } from 'react-apollo';
 import A11yMenu from '../A11yMenu/A11yMenu';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
@@ -69,7 +70,6 @@ const headerReadingButtonStyle = theme => ({
   ':focus': {
     color: theme.color('primary'),
   },
-  extend: [ theme.type(-2), ],
 });
 
 function HeaderReading({ host, }) {
@@ -140,6 +140,7 @@ function HeaderUserItems({ host, }) {
   return (
     <FelaComponent
       style={theme => ({
+        alignItems: 'stretch',
         display: 'flex',
         marginStart: 'auto',
         extend: [
@@ -174,12 +175,19 @@ class Masthead extends React.Component {
 
     return (
       <FelaComponent
-        style={{
+        style={theme => ({
           alignItems: 'stretch',
+          backgroundColor: theme.color('neutral', '-10'),
+          ...borderBottom(
+            '1px',
+            0,
+            'solid',
+            theme.color('mastheadBorder', 'borderColor')
+          ),
           display: 'flex',
           position: 'relative',
           width: '100%',
-        }}
+        })}
         render={({ theme, className, }) => (
           <header className={className}>
             <NavigationMenu menuSections={menuSections} />
