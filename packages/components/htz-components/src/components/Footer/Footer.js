@@ -131,8 +131,8 @@ class Footer extends React.Component {
           return (
             <Query query={GET_FOOTER_ITEMS} variables={{ path: contentId, }}>
               {({ data, loading, error, }) => {
-                if (error) return <p>{error}</p>;
-                if (loading) return <div> Loading... </div>;
+                if (error) return null;
+                if (loading) return null;
                 const { footer, } = data;
                 const columnsArr = footer.columns.reduce((r, e, i, arr) => {
                   const prev = arr[i - 1];

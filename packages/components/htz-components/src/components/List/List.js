@@ -36,7 +36,9 @@ class List extends React.Component {
     const { contentId, } = this.props;
     const { selectedView, } = this.state;
     const ListComponent = selectedView
-      ? Array.isArray(selectedView) ? selectedView[0].default : selectedView
+      ? Array.isArray(selectedView)
+        ? selectedView[0].default
+        : selectedView
       : null;
     return (
       <ErrorBoundary>
@@ -47,8 +49,8 @@ class List extends React.Component {
               variables={{ path: contentId, }}
             >
               {({ data, loading, error, }) => {
-                if (error) return <p>{error}</p>;
-                if (loading) return <p>loading</p>;
+                if (loading) return null;
+                if (error) return null;
                 return <ListComponent data={data} />;
               }}
             </Query>

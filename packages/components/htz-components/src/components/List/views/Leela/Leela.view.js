@@ -50,12 +50,8 @@ const ItemTitle = createComponent(itemTitleStyle, 'p');
 
 // eslint-disable-next-line react/prop-types
 const Leela = ({ data, }) => {
-  if (data.loading) {
-    return <div>loading ...</div>;
-  }
-  if (data.error) {
-    return <h1>ERROR</h1>;
-  }
+  if (data.loading) return null;
+  if (data.error) return null;
   return (
     <Wrapper>
       <Title>{data.list.title}</Title>

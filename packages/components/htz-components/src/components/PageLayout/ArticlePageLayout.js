@@ -41,7 +41,7 @@ const ArticlePageLayout = ({
   return (
     <Query query={StandardArticleQuery} variables={{ path: articleId, }}>
       {({ loading, error, data, client, }) => {
-        if (loading) return <p>loading...</p>;
+        if (loading) return null;
         if (error) return null;
         const {
           slots: { article, aside, },

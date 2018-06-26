@@ -74,12 +74,8 @@ Bender.defaultProps = {
 };
 
 export default function Bender({ data, lazyLoad, }) {
-  if (data.loading) {
-    return <div>loading ...</div>;
-  }
-  if (data.error) {
-    return <h1>ERROR</h1>;
-  }
+  if (data.loading) return null;
+  if (data.error) return null;
   const imgOptions = {
     transforms: {
       aspect: 'vertical',

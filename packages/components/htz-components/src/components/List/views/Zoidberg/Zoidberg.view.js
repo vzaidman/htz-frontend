@@ -48,12 +48,8 @@ const ItemTitle = createComponent(itemTitleStyle, 'p');
 
 // eslint-disable-next-line react/prop-types
 const Zoidberg = ({ data: { loading, error, list, }, }) => {
-  if (loading) {
-    return <div>loading ...</div>;
-  }
-  if (error) {
-    return <h1>ERROR</h1>;
-  }
+  if (loading) return null;
+  if (error) return null;
   const { title, items, } = list;
   return (
     <Wrapper>

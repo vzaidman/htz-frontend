@@ -13,7 +13,7 @@ import {
   UserInjector,
   LoginExample,
   RegisterExample,
-  StandardArticlePageLayout,
+  ArticlePageLayout,
 } from '@haaretz/htz-components';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import TopNav from '../components/TopNav/TopNav';
@@ -149,11 +149,13 @@ export class HomePage extends React.Component {
             <h1>
               {data.loading
                 ? 'Loading…'
-                : data.page ? data.page.contentName : ''}
+                : data.page
+                  ? data.page.contentName
+                  : ''}
             </h1>
             {data.page ? <Breadcrumbs page={data.page} /> : null}
             {data.page.pageType === 'article' && (
-              <StandardArticlePageLayout
+              <ArticlePageLayout
                 slots={data.page.slots}
                 seoData={data.page.seoData}
               />

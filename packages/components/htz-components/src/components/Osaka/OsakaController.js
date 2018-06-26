@@ -125,7 +125,7 @@ class OsakaWrapper extends React.Component {
         render={() => (
           <Query query={OsakaQuery}>
             {({ loading, error, data, }) => {
-              if (loading) return <p>loading...</p>;
+              if (loading) return null;
               if (error) return null;
               const { promotedElement, } = this.props;
               const host = data.hostname.match(/^(?:.*?\.)?(.*)/i)[1];

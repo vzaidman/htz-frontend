@@ -30,7 +30,7 @@ function Breadcrumbs({ articleId, }) {
         errorPolicy="all"
       >
         {({ data, loading, error, }) => {
-          if (loading) return <p>loading...</p>;
+          if (loading) return null;
           if (error) return null;
           if (!data || !data.page) throw new TypeError('no data !!');
           const { lineage, } = data.page;
