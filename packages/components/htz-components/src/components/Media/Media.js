@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTheme, } from 'react-fela';
+import { FelaTheme, } from 'react-fela';
 import M from 'react-media';
 
 Media.propTypes = {
@@ -92,13 +92,19 @@ Media.defaultProps = {
 };
 
 // eslint-disable-next-line react/prop-types
-function MediaComponent({ theme, query, matchOnServer, ...props }) {
-  const queryString = theme.getMqString(query, true);
-  return <M query={queryString} defaultMatches={matchOnServer} {...props} />;
+function MediaComponent({ query, matchOnServer, ...props }) {
+  return (
+    <FelaTheme
+      render={theme => {
+        const queryString = theme.getMqString(query, true);
+        return (
+          <M query={queryString} defaultMatches={matchOnServer} {...props} />
+        );
+      }}
+    />
+  );
 }
 
-const ThemedMedia = withTheme(MediaComponent);
-
 export default function Media(props) {
-  return <ThemedMedia {...props} />;
+  return <MediaComponent {...props} />;
 }
