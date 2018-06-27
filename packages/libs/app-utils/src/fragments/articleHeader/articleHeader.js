@@ -20,12 +20,8 @@ export default gql`
       }
       ...HeadlineImage
       exclusive
-      mobileExclusive
-      mobileSubtitle
-      mobileTitle
-      modDate
-      pubDate
-      reportingFrom
+      lastUpdate
+      publishDate
       subtitle
       title
     }
