@@ -160,7 +160,6 @@ class CommentForm extends React.Component {
       commentTextHtml,
       this.props.parentCommentId
     );
-    console.warn('commentTextHtml!#!@$@$,:', commentTextHtml);
     this.setState({ displaySentComp: true, });
   };
 

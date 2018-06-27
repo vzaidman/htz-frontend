@@ -14,11 +14,12 @@ const GET_HOST_USER = gql`
   }
 `;
 
-const propTypes = {
-  // Set true to use enhanced ecommerce if needed
+GoogleAnalytics.propTypes = {
+  // enable ecommerce features
   withEC: PropTypes.bool,
 };
-const defaultProps = {
+
+GoogleAnalytics.defaultProps = {
   withEC: false,
 };
 
@@ -26,7 +27,7 @@ function GoogleAnalytics({ withEC, }) {
   return (
     <Query query={GET_HOST_USER}>
       {({ data: { hostname, user: { type, }, }, }) => {
-        const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+        const host = hostname.match(/^(?:.*?\.)?(.*)/)[1];
 
         if (!host || !type) {
           return null;
@@ -39,8 +40,5 @@ function GoogleAnalytics({ withEC, }) {
     </Query>
   );
 }
-
-GoogleAnalytics.propTypes = propTypes;
-GoogleAnalytics.defaultProps = defaultProps;
 
 export default GoogleAnalytics;

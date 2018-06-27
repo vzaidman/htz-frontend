@@ -81,7 +81,7 @@ export class ArticlePage extends React.Component {
         <ScrollInjector />
         <UserInjector />
         <DfpInjector path={url.query.path} />
-        <GoogleAnalytics />
+        <GoogleAnalytics withEC />
         <StyleProvider renderer={styleRenderer} theme={htzTheme}>
           <Query
             query={ArticleInitQuery}

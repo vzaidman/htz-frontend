@@ -6,6 +6,7 @@ import List from './elements/list';
 import HtzLink from '../HtzLink/HtzLink';
 import Media from '../Media/Media';
 import IconBack from '../Icon/icons/IconBack';
+import EventTracker from '../../utils/EventTracker';
 
 const singleArticlePropTypes = PropTypes.arrayOf(
   PropTypes.shape({
@@ -126,22 +127,37 @@ function Osaka({ nextArticleUrl, sectionName, lists, }) {
                   paddingLeft: '1rem',
                 }}
               >
-                <Next
-                  href={nextArticleUrl}
-                  content={
-                    <FelaComponent
-                      style={{ display: 'flex', alignItems: 'center', }}
-                      render="p"
-                    >
-                      <span>
-                        {theme.osakaI18n.nextArticle} {sectionName}
-                      </span>
-                      <span>
-                        <IconBack size={4} />
-                      </span>
-                    </FelaComponent>
-                  }
-                />
+                <EventTracker>
+                  {({ biAction, }) => (
+                    <Next
+                      href={nextArticleUrl}
+                      onClick={() => {
+                        biAction({
+                          actionCode: 109,
+                          additionalInfo: {
+                            name: 'NextArticleInSection',
+                            article_id: nextArticleUrl,
+                            NumberInList: 1,
+                            platform: 'web',
+                          },
+                        });
+                      }}
+                      content={
+                        <FelaComponent
+                          style={{ display: 'flex', alignItems: 'center', }}
+                          render="p"
+                        >
+                          <span>
+                            {theme.osakaI18n.nextArticle} {sectionName}
+                          </span>
+                          <span>
+                            <IconBack size={4} />
+                          </span>
+                        </FelaComponent>
+                      }
+                    />
+                  )}
+                </EventTracker>
               </FelaComponent>
             )}
           />

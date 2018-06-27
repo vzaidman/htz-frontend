@@ -19,20 +19,12 @@ class GoogleAnalyticsInit extends React.Component {
   };
 
   componentDidMount() {
-    if (!window.GA_INITIALIZED) {
+    if (window && !window.GA_INITIALIZED) {
       this.initGA(this.props.host, this.props.userType, this.props.withEC);
       window.GA_INITIALIZED = true;
     }
     trackPage(window.location.pathname);
   }
-
-  // componentWillReceiveProps(nextProp) {
-  //   const userT = this.props.userType ? this.props.userType : nextProp.userType;
-  //   if (!window.GA_INITIALIZED && userT) {
-  //     this.initGA(this.props.host, userT);
-  //     window.GA_INITIALIZED = true;
-  //   }
-  // }
 
   initGA = (host, userType, withEC) => {
     const GaHost =

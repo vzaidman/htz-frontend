@@ -143,7 +143,7 @@ function MainLayout({
               />
             </StyleProvider>
             <BIRequest />
-            <Scripts host={host} thankYou={thankYou} userPaid={userPaid} />
+            <Scripts thankYou={thankYou} userPaid={userPaid} />
           </Fragment>
         );
       }}

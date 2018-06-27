@@ -139,7 +139,6 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
                       <button
                         className={className}
                         onClick={() => {
-                          console.warn('stage: ', router.asPath);
                           biAction({
                             actionCode: 42,
                             additionalInfo: {

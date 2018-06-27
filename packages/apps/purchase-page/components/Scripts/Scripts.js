@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 
 const propTypes = {
-  // host: PropTypes.string.isRequired,
   thankYou: PropTypes.bool,
   userPaid: PropTypes.bool,
-  // userType: PropTypes.string,
 };
 
 const defaultProps = {
@@ -136,40 +134,6 @@ function Scripts({ thankYou, userPaid, }) {
     // <!-- Google Analytics Script -->
     <div>
       <StaticScripts thankYou={thankYou} userPaid={userPaid} />
-      {/* <script
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: `
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', '${
-              host === 'themarker.com' ? 'UA-3574867-1' : 'UA-589309-3'
-            }']);
-            _gaq.push(['_setDomainName', '${host}']);
-            _gaq.push(['_setAllowLinker', true]);
-
-            var visitor = 'Non';
-            if ('${userType}' === 'anonymous') {
-              visitor = 'Non-registered';
-            }
-            else {
-              if ('${userType}' === 'registered') {
-                visitor = 'Registered';
-              }
-              else {
-                visitor = 'Paying';
-              }
-            }
-            _gaq.push(['._setCustomVar', 1, 'user-type',visitor, 1]);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-              ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-          `,
-        }}
-      /> */}
     </div>
   );
 }

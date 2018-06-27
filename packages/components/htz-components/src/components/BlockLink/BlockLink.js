@@ -22,6 +22,8 @@ BlockLink.propTypes = {
    * DOM element inside a Wrapped Next JS `<HtzLink />`
    */
   href: PropTypes.string.isRequired,
+  /** An onClick function */
+  onClick: PropTypes.func,
   /** The HTML tag to render the `<BlockLink />` as */
   tagName: PropTypes.string,
   /**
@@ -35,6 +37,7 @@ BlockLink.propTypes = {
 BlockLink.defaultProps = {
   attrs: null,
   children: null,
+  onClick: null,
   tagName: 'article',
   miscStyles: null,
 };
@@ -52,6 +55,7 @@ export default function BlockLink({
   attrs,
   children,
   href,
+  onClick,
   tagName,
   miscStyles,
 }) {
@@ -79,6 +83,7 @@ export default function BlockLink({
                 <HtzLink
                   className={className}
                   href={href}
+                  onClick={onClick}
                   attrs={{
                     tabIndex: '-1',
                     'aria-hidden': true,

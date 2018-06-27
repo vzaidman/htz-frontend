@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 class GaDimensions extends React.Component {
   static propTypes = {
-    // article payout status
-    articleMode: PropTypes.string,
+    // The paywall blocking level of the article
+    articlePaywallMode: PropTypes.string,
     // Array of article's author/s
     authors: PropTypes.arrayOf(PropTypes.shape({})),
     // Page type
@@ -15,14 +15,14 @@ class GaDimensions extends React.Component {
     userType: PropTypes.string,
   };
   static defaultProps = {
-    articleMode: null,
+    articlePaywallMode: null,
     authors: null,
     pageType: null,
     userType: null,
   };
 
   componentDidMount() {
-    const { articleMode, authors, pageType, userType, } = this.props;
+    const { articlePaywallMode, authors, pageType, userType, } = this.props;
     if (userType) {
       const visitor =
         userType === 'anonymous'
@@ -31,7 +31,7 @@ class GaDimensions extends React.Component {
       ReactGA.ga('set', 'dimension1', visitor);
     }
     authors && ReactGA.ga('set', 'dimension2', authors);
-    articleMode && ReactGA.ga('set', 'dimension3', articleMode);
+    articlePaywallMode && ReactGA.ga('set', 'dimension3', articlePaywallMode);
     pageType && ReactGA.ga('set', 'dimension4', pageType);
   }
 

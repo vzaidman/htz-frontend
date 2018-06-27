@@ -6,12 +6,6 @@ import ReactGA from 'react-ga';
 import { GET_USER, } from '../components/User/UserInjector';
 import { doStatAction, } from '../components/BI/statutil';
 
-const propTypes = {
-  /** Indicates rendered JSX wrapped */
-  children: PropTypes.func.isRequired,
-};
-const defaultProps = {};
-
 const getBIActionWithQuery = client => async BIaction => {
   const { data, } = await client.query({
     query: GET_USER,
@@ -29,6 +23,12 @@ const getGaActionWithQuery = () => async gaAction => {
 };
 
 class EventTracker extends PureComponent {
+  static propTypes = {
+    /** Indicates rendered JSX wrapped */
+    children: PropTypes.func.isRequired,
+  };
+  static defaultProps = {};
+
   render() {
     return (
       <ApolloConsumer>
@@ -52,8 +52,5 @@ class EventTracker extends PureComponent {
     );
   }
 }
-
-EventTracker.propTypes = propTypes;
-EventTracker.defaultProps = defaultProps;
 
 export default EventTracker;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import { parseTypographyProp, } from '@haaretz/htz-css-tools';
+import { parseTypographyProp, borderTop, } from '@haaretz/htz-css-tools';
 import ListItem from '../../elements/ListItem';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
@@ -15,7 +15,13 @@ import Section from '../../../AutoLevels/Section';
 
 const benderWrapperRules = ({ theme, }) => ({
   width: '100%',
-  extend: [ theme.mq({ until: 's', display: 'none', }), ],
+  paddingInlineStart: '2rem',
+  paddingInlineEnd: '2rem',
+  paddingBottom: '2rem',
+  extend: [
+    theme.mq({ until: 's', display: 'none', }),
+    borderTop('2px', 1, 'solid', theme.color('primary')),
+  ],
 });
 
 const itemRule = {
@@ -54,6 +60,9 @@ const itemsType = PropTypes.shape({
 });
 
 Bender.propTypes = {
+  biAction: PropTypes.func.isRequired,
+  gaAction: PropTypes.func.isRequired,
+  listId: PropTypes.string.isRequired,
   /**
    * data object from polopoly
    */
@@ -72,10 +81,10 @@ Bender.propTypes = {
   lazyLoad: PropTypes.oneOfType([ PropTypes.bool, PropTypes.string, ]),
 };
 Bender.defaultProps = {
-  lazyLoad: '600px',
+  lazyLoad: '1000px',
 };
 
-export default function Bender({ data, lazyLoad, }) {
+export default function Bender({ data, lazyLoad, gaAction, biAction, listId, }) {
   if (data.loading) return null;
   if (data.error) return null;
   const imgOptions = {
@@ -85,23 +94,30 @@ export default function Bender({ data, lazyLoad, }) {
     },
   };
 
-  const BenderItem = item => (
-    <ListItem>
-      <GridItem
-        width={[
-          { from: 'm', until: 'l', value: 1 / 3, },
-          { from: 'l', until: 'xl', value: 1 / 4, },
-          { from: 'xl', value: 1 / 6, },
-        ]}
-        miscStyles={{ marginInlineStart: '1rem', marginInlineEnd: '1rem', }}
-      >
-        <BlockLink href={item.path} miscStyles={itemRule}>
+  const BenderItem = (item, i, itemsToRender) => (
+    <GridItem width={1 / itemsToRender}>
+      <ListItem>
+        <BlockLink
+          href={item.path}
+          miscStyles={itemRule}
+          onClick={() => {
+            biAction({
+              actionCode: 109,
+              additionalInfo: {
+                ArticleId: item.contentId,
+                ListId: listId,
+                Platform: 'web',
+                NoInList: i + 1,
+                ViewName: 'Bender',
+              },
+            });
+          }}
+        >
           <Section isFragment>
             <FelaComponent
               render={({ className, theme, }) => {
                 // eslint-disable-next-line no-unused-vars
                 const { image, title, } = theme.benderStyle;
-
                 return (
                   <div className={className}>
                     <Image
@@ -114,6 +130,7 @@ export default function Bender({ data, lazyLoad, }) {
                         fontWeight: 'bold',
                         color: theme.color('neutral'),
                         marginBottom: '1rem',
+                        marginTop: '1rem',
                         extend: [
                           parseTypographyProp(title.fontSize, theme.type),
                         ],
@@ -152,30 +169,19 @@ export default function Bender({ data, lazyLoad, }) {
             />
           </Section>
         </BlockLink>
-      </GridItem>
-    </ListItem>
+      </ListItem>
+    </GridItem>
   );
-  const iToMedia = {
-    0: 's',
-    1: 's',
-    2: 's',
-    3: 'l',
-    4: 'xl',
-    5: 'xl',
-  };
+
   const { items, } = data.list;
 
-  const content = items
-    .slice(items)
-    .map(
-      (item, i) =>
-        (i > 5 ? null : (
-          <Media
-            query={{ from: iToMedia[i], }}
-            render={() => BenderItem(item)}
-          />
-        ))
-    );
+  const content = itemsToRender =>
+    (itemsToRender
+      ? items
+        .slice(0, itemsToRender)
+        .map((item, i) => BenderItem(item, i, itemsToRender))
+      : null);
+
   return (
     <FelaComponent
       rule={benderWrapperRules}
@@ -191,14 +197,29 @@ export default function Bender({ data, lazyLoad, }) {
                   theme.benderStyle.mainTitle.fontSize,
                   theme.type
                 ),
-                theme.mq({ until: 's', }, { display: 'none', }),
+                theme.mq({ until: 'm', }, { display: 'none', }),
               ],
             }}
             render={({ className, }) => (
               <H className={className}>{theme.benderStyle.mainTitle.text}</H>
             )}
           />
-          <Grid miscStyles={{ flexWrap: 'nowrap', }}>{content}</Grid>
+          <Media query={{ from: 'm', until: 'l', }}>
+            {renderThreeItems => (
+              <Media query={{ from: 'l', until: 'xl', }}>
+                {renderFourItems => (
+                  <Media query={{ from: 'xl', }}>
+                    {renderSixItems => {
+                      const itemsToRender = renderThreeItems
+                        ? 3
+                        : renderFourItems ? 4 : renderSixItems ? 6 : null;
+                      return <Grid gutter={4}>{content(itemsToRender)}</Grid>;
+                    }}
+                  </Media>
+                )}
+              </Media>
+            )}
+          </Media>
         </Section>
       )}
     />

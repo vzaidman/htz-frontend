@@ -5,6 +5,7 @@ import { Query, } from 'react-apollo';
 
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import getView from './getView';
+import EventTracker from '../../utils/EventTracker';
 
 const propTypes = {
   /**
@@ -32,13 +33,12 @@ class List extends React.Component {
       })
       .catch(err => console.log(err));
   }
+
   render() {
     const { contentId, } = this.props;
     const { selectedView, } = this.state;
     const ListComponent = selectedView
-      ? Array.isArray(selectedView)
-        ? selectedView[0].default
-        : selectedView
+      ? Array.isArray(selectedView) ? selectedView[0].default : selectedView
       : null;
     return (
       <ErrorBoundary>
@@ -51,7 +51,25 @@ class List extends React.Component {
               {({ data, loading, error, }) => {
                 if (loading) return null;
                 if (error) return null;
-                return <ListComponent data={data} />;
+                return (
+                  <EventTracker>
+                    {({ biAction, gaAction, HtzReactGA, }) => {
+                      HtzReactGA.ga('ec:addImpression', {
+                        id: contentId,
+                        name: data.list.title,
+                        list: 'List impressions',
+                      });
+                      return (
+                        <ListComponent
+                          data={data}
+                          listId={contentId}
+                          gaAction={gaAction}
+                          biAction={biAction}
+                        />
+                      );
+                    }}
+                  </EventTracker>
+                );
               }}
             </Query>
           ) : (
