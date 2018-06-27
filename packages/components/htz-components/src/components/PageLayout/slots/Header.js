@@ -2,7 +2,7 @@ import React, { Fragment, } from 'react';
 import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 
-import Masthead from '../../Masthead/Masthead';
+// import Masthead from '../../Masthead/Masthead';
 import getComponent from '../../../utils/componentFromInputTemplate';
 
 const Osaka = dynamic(import('../../Osaka/OsakaController'), { ssr: false, });
@@ -17,7 +17,8 @@ const propTypes = {
 function Header({ content, }) {
   return (
     <Fragment>
-      <Masthead />
+      {/* TODO: Replace with dynamic navMenuID */}
+      {/* <Masthead navMenuID="7.3543" /> */}
       {content &&
         content.map(element => {
           const Element =

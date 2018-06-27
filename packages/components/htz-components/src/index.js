@@ -28,6 +28,7 @@ import LayoutRow from './components/PageLayout/LayoutRow';
 import HtzLink from './components/HtzLink/HtzLink';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
 import List from './components/List/List';
+import Masthead from './components/Masthead/Masthead';
 import Media from './components/Media/Media';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
@@ -156,6 +157,7 @@ export {
   HtzLink,
   LinksBlock,
   List,
+  Masthead,
   Media,
   MobileQuickRegistration,
   NavigationMenu,

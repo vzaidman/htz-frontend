@@ -10,6 +10,7 @@ import {
 import GraphQLJSON from 'graphql-type-json';
 import CommentsElement from './types/comments_element_type';
 import Footer from './types/footer_type';
+import NavMenu from './types/navMenu_type';
 import List from './types/list_type';
 import ResetPassword from './types/reset_password_type';
 import Page from './types/page_type';
@@ -26,6 +27,13 @@ const RootQuery = new GraphQLObjectType({
     },
     footer: {
       type: Footer,
+      args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
+      resolve(parentValue, { path, }, context) {
+        return context.listsLoader.load(path);
+      },
+    },
+    navMenu: {
+      type: NavMenu,
       args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
       resolve(parentValue, { path, }, context) {
         return context.listsLoader.load(path);

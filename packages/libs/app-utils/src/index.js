@@ -15,6 +15,7 @@ import htmlElement from './fragments/htmlElement/htmlElement';
 import image from './fragments/image/image';
 import imageGallery from './fragments/imageGallery/imageGallery';
 import interactive from './fragments/interactive/interactive';
+import navMenu from './fragments/navMenu/navMenu';
 import paragraph from './fragments/paragraph/paragraph';
 import quote from './fragments/quote/quote';
 import relatedArticles from './fragments/relatedArticles/relatedArticles';
@@ -40,6 +41,7 @@ export {
   image,
   imageGallery,
   interactive,
+  navMenu,
   paragraph,
   quote,
   relatedArticles,
