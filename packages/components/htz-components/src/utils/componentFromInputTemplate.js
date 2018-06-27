@@ -3,7 +3,6 @@ import { FelaComponent, } from 'react-fela';
 import { border, } from '@haaretz/htz-css-tools';
 
 import ArticleBody from '../components/ArticleBody/ArticleBody';
-import ArticleHeader from '../components/ArticleHeader/ArticleHeader';
 import AdSlot from '../components/Ads/AdSlot';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import WrappedComments from '../components/CommentsSection/WrappedComments';
@@ -31,7 +30,6 @@ const inputTemplateToComponent = new Map([
   [ 'com.htz.NavigationElementResp', () => <p>NavigationElementResp</p>, ],
   // [ 'com.tm.PageTitle', () => <p>PageTitle</p>, ],
   [ 'com.tm.PageTitle', Breadcrumbs, ],
-  [ 'com.htz.ArticleHeaderElement', ArticleHeader, ],
 
   /* MainSlot components */
   [ 'com.htz.StandardArticle', ArticleBody, ],

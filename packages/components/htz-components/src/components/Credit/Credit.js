@@ -33,10 +33,10 @@ const LinkStyled = createComponent(
 );
 
 function Credit({ contentName, url, className, }) {
-  const tname = contentName.trim();
-  return tname ? (
+  const name = contentName.trim();
+  return name ? (
     <address {...className && { className, }}>
-      {url ? <LinkStyled href={url} content={tname} /> : `${tname}`}
+      {url ? <LinkStyled href={url} content={name} /> : `${name}`}
     </address>
   ) : null;
 }

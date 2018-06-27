@@ -13,7 +13,7 @@ A button that opens a registration form for author-alerts.(Email newsletters)
 
 ```jsx
 <div dir="rtl">
-  <AlertsDesktopButton
+  <Alerts
     author={{
       name: 'Avi Kaufman',
     }}

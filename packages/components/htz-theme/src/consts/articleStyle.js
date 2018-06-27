@@ -41,17 +41,6 @@ const body = Object.freeze({
 
 const paragraphStyles = Object.freeze({});
 
-const inlineKicker = {
-  backgroundColor: 'transparent',
-  color: color('tertiary'),
-  separator: '|',
-};
-
-const blockKicker = {
-  backgroundColor: color('tertiary'),
-  color: color('neutral', '-10'),
-};
-
 const relatedArticlesLink = Object.freeze({
   ...type(-1),
   fontWeight: '700',
@@ -88,15 +77,6 @@ const currentArticleInSeries = Object.freeze({
  * @type {Object}
  */
 const header = Object.freeze({
-  inlineKicker,
-  blockKicker,
-  titleFontSize: [
-    { until: 'm', value: 3, },
-    { from: 'm', until: 'l', value: 4, },
-    { from: 'l', value: 5, },
-  ],
-  subtitleFontSize: [ { until: 'xl', value: 1, }, { from: 'xl', value: 1, }, ],
-  bylineCreditColor: color('primary', '+1'),
   bylineFontSize: [
     { until: 'm', value: -2, },
     { from: 'm', until: 'l', value: -1, },

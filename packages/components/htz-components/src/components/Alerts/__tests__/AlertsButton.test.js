@@ -1,7 +1,7 @@
 import React from 'react';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
-import AlertsButton from '../_AlertsButton'; // eslint-disable-line import/no-named-as-default
+import AlertsButton from '../AlertsButton'; // eslint-disable-line import/no-named-as-default
 
 describe('AlertsButton component', () => {
   const author = {

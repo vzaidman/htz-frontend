@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleMetaHeader component correctly renders with  required props 1`] = `
+Object {
+  "component": <div>
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
+    >
+      <div
+        className="htz-a htz-b htz-n htz-o htz-p htz-q htz-r htz-s"
+      >
+        <div
+          className="htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak"
+        >
+          <img
+            className="htz-al htz-am htz-an htz-ao htz-x"
+            src="https://images.haarets.co.il/image/upload/x_0,y_170,w_360,h_360,c_crop,g_north_west/q_auto,h_100,w_100,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1519832762/1.6738.1536361643.png"
+          />
+        </div>
+        <div
+          className="htz-ap htz-aq htz-ar htz-as htz-at"
+        >
+          <div>
+            <address
+              className="htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+            >
+              אורנה פילרררץ
+            </address>
+            <address
+              className="htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-bg htz-bf"
+            >
+              שהועהם סמיט
+            </address>
+            <address
+              className="htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-bf"
+            >
+              רק שם
+            </address>
+          </div>
+          <time
+            className="htz-bh htz-at htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn"
+            dateTime="2018-01-23T16:00:00+02:00"
+          >
+            23.01.2018 16:00
+          </time>
+        </div>
+      </div>
+      <div
+        className="htz-at"
+      >
+        <button
+          aria-describedby="alerts_btn_description"
+          aria-expanded={false}
+          className="htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc"
+          onClick={[Function]}
+        >
+          <span
+            className="htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-ah htz-cj htz-an htz-ck htz-cl"
+            id="alerts_btn_description"
+          >
+            קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
+          </span>
+          <div
+            className="htz-a htz-b htz-s"
+          >
+            <svg
+              className="htz-cm htz-cn htz-co htz-cp htz-ak"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+            >
+               
+              <path
+                d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
+                fill="currentColor"
+              />
+            </svg>
+            התראות במייל
+          </div>
+        </button>
+      </div>
+      <time
+        className="htz-cq htz-bi htz-bj htz-at htz-bk htz-bl htz-bm htz-bn"
+        dateTime="2018-01-23T16:00:00+02:00"
+      >
+        23.01.2018 16:00
+      </time>
+    </div>
+  </div>,
+  "styles": ".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:center}.htz-c{justify-content:space-between}.htz-s{-webkit-box-align:center}.htz-t{-webkit-box-pack:justify}.htz-u{height:0}.htz-v{padding-bottom:6rem}.htz-w{position:relative}.htz-x{width:100%}.htz-y{background-color:#EBEBEB}.htz-ag{border-radius:50%}.htz-ah{overflow:hidden}.htz-ak{margin-left:1rem}.htz-al{height:100%}.htz-am{left:0}.htz-an{position:absolute}.htz-ao{top:0}.htz-au{color:#006B96}.htz-av{font-weight:bold}.htz-be:after{content:\\", \\"}.htz-bf{display:inline}.htz-bg:after{content:\\" ו\\"}.htz-cd{border:0}.htz-ce{clip:rect(0 0 0 0)}.htz-cf{-webkit-clip-path:inset(50%)}.htz-cg{clip-path:inset(50%)}.htz-ch{height:1px}.htz-ci{margin:-1px}.htz-cj{padding:0}.htz-ck{width:1px}.htz-cl{white-space:nowrap}.htz-cm{vertical-align:-0.15em}.htz-cn{color:inherit}.htz-co{fill:#FFF}.htz-cp{font-size:3rem}@media (max-width: 37.4375em){.htz-d{border-top-width:1px}.htz-e{border-top-style:solid}.htz-f{border-top-color:#CCC}.htz-g{padding-top:calc(1rem - 1px)}.htz-h{border-bottom-width:1px}.htz-i{border-bottom-style:solid}.htz-j{border-bottom-color:#CCC}.htz-k{padding-bottom:calc(1rem - 1px)}.htz-ai{display:inline-block}.htz-bx{text-align:center}.htz-by{width:5rem}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-l{justify-content:center}.htz-m{-webkit-box-pack:center}.htz-aj{display:none}.htz-ap{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-aq{flex-direction:row}.htz-ar{-webkit-box-orient:horizontal}.htz-as{-webkit-box-direction:normal}.htz-bi{margin-right:1rem}.htz-bj{margin-left:1rem}}@media (min-width: 64em){.htz-n{flex-direction:column}.htz-o{align-items:flex-start}.htz-p{-webkit-box-orient:vertical}.htz-q{-webkit-box-direction:normal}.htz-r{-webkit-box-align:right}.htz-ac{width:10rem}.htz-ae{height:10rem}.htz-af{display:block}.htz-at{margin-top:2rem}.htz-bh{display:none}}@media (max-width: 63.9375em){.htz-z{width:6rem}.htz-ab{height:6rem}.htz-cq{display:none}}@media (max-width: 47.9375em){.htz-aw{font-size:2rem}.htz-ax{line-height:1.5em}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-ay{font-size:2.3333333333333335rem}.htz-az{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ba{font-size:2.3333333333333335rem}.htz-bb{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-bc{font-size:2.2857142857142856rem}.htz-bd{line-height:1.3125em}.htz-bm{font-size:NaNrem}.htz-bn{line-height:NaNem}}@media (max-width: 79.9375em){.htz-bk{font-size:NaNrem}.htz-bl{line-height:NaNem}}@media (min-width: 37.5em){.htz-bo{display:block}.htz-bp{width:100%}.htz-bq{text-align:left}.htz-br{color:#A8001C}.htz-bs{font-weight:700}}@media (min-width: 37.5em) and (max-width: 79.9375em){.htz-bt{font-size:2.3333333333333335rem}.htz-bu{line-height:1.2857142857142858em}}@media (min-width: 37.5em) and (min-width: 80em){.htz-bv{font-size:2.2857142857142856rem}.htz-bw{line-height:1.3125em}}@media (max-width: 37.4375em) and (max-width: 79.9375em){.htz-bz{font-size:2rem}.htz-ca{line-height:1.5em}}@media (max-width: 37.4375em) and (min-width: 80em){.htz-cb{font-size:2rem}.htz-cc{line-height:1.5em}}",
+}
+`;

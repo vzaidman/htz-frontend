@@ -8,6 +8,13 @@ const colors = {
   accent: {
     base: [ 'tertiary', 'base', ],
   },
+  articleHeader: {
+    kickerBlockBg: [ 'tertiary', ],
+    kickerBlockText: [ 'neutral', '-10', ],
+    kickerInlineBg: 'transparent',
+    kickerInlineText: [ 'tertiary', ],
+    metaBorder: [ 'neutral', '-5', ],
+  },
   bg: {
     base: [ 'primary', '-6', ],
     '+1': [ 'primary', '-5', ],
@@ -327,6 +334,10 @@ const colors = {
     secondaryBorderDisabled: [ 'neutral', '-5', ],
     secondaryCheck: 'white',
     secondaryRipple: [ 'secondary', 'base', ],
+  },
+
+  credit: {
+    creditArticleText: [ 'primary', '+1', ],
   },
 
   footer: {

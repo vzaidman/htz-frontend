@@ -5,7 +5,8 @@ import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
 import Image from '../../Image/Image';
 import Kicker from '../../ArticleHeader/Kicker';
-import Title from '../../ArticleHeader/Title';
+import Section from '../../AutoLevels/Section';
+import H from '../../AutoLevels/H';
 
 const propTypes = {
   /**
@@ -43,61 +44,73 @@ function Article({ title, image, sourceName, }) {
         paddingLeft: '1rem',
         paddingRight: '1rem',
       }}
-    >
-      {typeof image === 'string' || image.path ? (
-        <FelaComponent
-          style={theme => ({
-            flexShrink: '0',
-            flexGrow: '0',
-            extend: [
-              parseComponentProp(
-                'width',
-                [ { until: 'l', value: '14rem', }, { from: 'l', value: '12rem', }, ],
-                theme.mq
-              ),
-              parseComponentProp(
-                'height',
-                [
-                  { until: 'l', value: '10.5rem', },
-                  { from: 'l', value: '9rem', },
+      render={({ className, }) => (
+        <Section className={className}>
+          {typeof image === 'string' || image.path ? (
+            <FelaComponent
+              style={theme => ({
+                flexShrink: '0',
+                flexGrow: '0',
+                extend: [
+                  parseComponentProp(
+                    'width',
+                    [
+                      { until: 'l', value: '14rem', },
+                      { from: 'l', value: '12rem', },
+                    ],
+                    theme.mq
+                  ),
+                  parseComponentProp(
+                    'height',
+                    [
+                      { until: 'l', value: '10.5rem', },
+                      { from: 'l', value: '9rem', },
+                    ],
+                    theme.mq
+                  ),
                 ],
-                theme.mq
-              ),
-            ],
-            height: '',
-            width: '84px',
-          })}
-        >
-          <img
-            alt={image.alt || ''}
-            src={image.path || image}
-            height="100%"
-            width="100%"
-          />
-        </FelaComponent>
-      ) : (
-        <Image imgOptions={imgOptions} data={image} hasWrapper={false} />
+                height: '',
+                width: '84px',
+              })}
+            >
+              <img
+                alt={image.alt || ''}
+                src={image.path || image}
+                height="100%"
+                width="100%"
+              />
+            </FelaComponent>
+          ) : (
+            <Image imgOptions={imgOptions} data={image} hasWrapper={false} />
+          )}
+          <FelaComponent
+            style={theme => ({
+              ...theme.type(-2),
+              marginStart: '1rem',
+              maxHeight: '9rem',
+              overflow: 'hidden',
+            })}
+          >
+            {sourceName && (
+              <Kicker
+                fontSize={-2}
+                miscStyles={{
+                  fontWeight: '700',
+                }}
+                text={sourceName}
+              />
+            )}
+            <FelaComponent
+              style={theme => ({
+                fontWeight: 'bold',
+                extend: [ theme.type(-2), ],
+              })}
+              render={({ className, }) => <H className={className}>{title}</H>}
+            />
+          </FelaComponent>
+        </Section>
       )}
-      <FelaComponent
-        style={theme => ({
-          ...theme.type(-2),
-          marginStart: '1rem',
-          maxHeight: '9rem',
-          overflow: 'hidden',
-        })}
-      >
-        {sourceName && (
-          <Kicker
-            fontSize={-2}
-            miscStyles={{
-              fontWeight: '700',
-            }}
-            text={sourceName}
-          />
-        )}
-        <Title fontSize={-2} level={4} text={title} />
-      </FelaComponent>
-    </FelaComponent>
+    />
   );
 }
 

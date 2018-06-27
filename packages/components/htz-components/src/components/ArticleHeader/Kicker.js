@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, parseTypographyProp, } from '@haaretz/htz-css-tools';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
@@ -43,48 +43,41 @@ const kickerDefaultProps = {
   miscStyles: null,
 };
 
-const styleKicker = ({ isBlock, fontSize, miscStyles, theme, }) => {
-  const kickerTheme = isBlock
-    ? theme.articleStyle.header.blockKicker
-    : theme.articleStyle.header.inlineKicker;
-
-  const style = {
-    backgroundColor: kickerTheme.backgroundColor,
-    color: kickerTheme.color,
-    extend: [
-      parseTypographyProp(fontSize, theme.type),
-      ...(miscStyles ? parseStyleProps(miscStyles) : []),
-    ],
-  };
-
-  if (!isBlock) {
-    style[':after'] = {
-      content: `'${kickerTheme.separator}'`,
-      paddingInlineStart: '1rem',
-    };
-  }
-
-  return style;
-};
-
-// eslint-disable-next-line react/prop-types
-function KickerComponent({ isBlock, className, text, }) {
-  const KickerTag = isBlock ? 'div' : 'span';
-  return <KickerTag className={className}>{text}</KickerTag>;
-}
-
-const KickerStyled = createComponent(styleKicker, KickerComponent, props =>
-  Object.keys(props)
-);
+const style = ({ isBlock, fontSize, miscStyles, theme, }) => ({
+  display: isBlock ? 'block' : 'inline',
+  backgroundColor: theme.color(
+    'articleHeader',
+    isBlock ? 'kickerBlockBg' : 'kickerInlineBg'
+  ),
+  color: theme.color(
+    'articleHeader',
+    isBlock ? 'kickerBlockText' : 'kickerInlineText'
+  ),
+  ...(!isBlock
+    ? {
+      ':after': {
+        content: '"|"',
+        paddingInlineStart: '1rem',
+      },
+    }
+    : {}),
+  extend: [
+    parseTypographyProp(fontSize, theme.type),
+    ...(miscStyles ? parseStyleProps(miscStyles) : []),
+  ],
+});
 
 function Kicker({ isBlock, fontSize, text, miscStyles, }) {
   return (
-    <KickerStyled
+    <FelaComponent
+      rule={style}
       isBlock={isBlock}
       fontSize={fontSize}
-      text={text}
       miscStyles={miscStyles}
-    />
+      render="span"
+    >
+      {text}
+    </FelaComponent>
   );
 }
 

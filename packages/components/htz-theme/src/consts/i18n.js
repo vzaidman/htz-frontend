@@ -1,3 +1,8 @@
+export const alertsI18n = Object.freeze({
+  mobileAlertsText: 'עקוב',
+  desktopAlertsText: 'התראות במייל',
+});
+
 export const seriesArticleI18n = Object.freeze({
   loadButton: Object.freeze({
     close: 'טען את כל הכתבות בסדרה',

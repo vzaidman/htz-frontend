@@ -1,40 +1,8 @@
 import React from 'react';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, parseTypographyProp, } from '@haaretz/htz-css-tools';
 import Credit, { creditPropTypes, creditDefaultProps, } from './Credit';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
-
-const CreditArticleStyled = createComponent(
-  ({ miscStyles, theme, }) => ({
-    color: theme.articleStyle.header.bylineCreditColor,
-    fontWeight: 700,
-    ...parseTypographyProp(
-      theme.articleStyle.header.bylineFontSize,
-      theme.type
-    ),
-    extend: [
-      ...parseStyleProps(
-        {
-          marginEnd: [ { until: 'l', value: '1rem', }, ],
-        },
-        theme.mq
-      ),
-      ...(miscStyles ? parseStyleProps(miscStyles, theme.mq) : []),
-    ],
-  }),
-  Credit,
-  [ 'contentName', 'url', ]
-);
-
-export default function CreditArticle({ contentName, url, miscStyles, }) {
-  return (
-    <CreditArticleStyled
-      contentName={contentName}
-      url={url}
-      miscStyles={miscStyles}
-    />
-  );
-}
 
 CreditArticle.propTypes = {
   ...creditPropTypes,
@@ -50,3 +18,24 @@ CreditArticle.defaultProps = {
   ...creditDefaultProps,
   miscStyles: null,
 };
+
+const style = ({ miscStyles, theme, }) => ({
+  color: theme.color('credit', 'creditArticleText'),
+  fontWeight: 'bold',
+  extend: [
+    parseTypographyProp(theme.articleStyle.header.bylineFontSize, theme.type),
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq) : []),
+  ],
+});
+
+export default function CreditArticle({ contentName, url, miscStyles, }) {
+  return (
+    <FelaComponent
+      miscStyles={miscStyles}
+      rule={style}
+      render={({ className, }) => (
+        <Credit className={className} contentName={contentName} url={url} />
+      )}
+    />
+  );
+}

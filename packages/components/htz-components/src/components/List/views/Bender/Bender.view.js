@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+import { parseTypographyProp, } from '@haaretz/htz-css-tools';
 import ListItem from '../../elements/ListItem';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import HtzLink from '../../../HtzLink/HtzLink';
 import Media from '../../../Media/Media';
 import Image from '../../../Image/Image';
-import Title from '../../../ArticleHeader/Title';
 import BlockLink from '../../../BlockLink/BlockLink';
 import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
+import H from '../../../AutoLevels/H';
+import Section from '../../../AutoLevels/Section';
 
 const benderWrapperRules = ({ theme, }) => ({
   width: '100%',
@@ -94,64 +96,69 @@ export default function Bender({ data, lazyLoad, }) {
         miscStyles={{ marginInlineStart: '1rem', marginInlineEnd: '1rem', }}
       >
         <BlockLink href={item.path} miscStyles={itemRule}>
-          <FelaComponent
-            render={({ className, theme, }) => {
-              // eslint-disable-next-line no-unused-vars
-              const { image, title, } = theme.benderStyle;
+          <Section isFragment>
+            <FelaComponent
+              render={({ className, theme, }) => {
+                // eslint-disable-next-line no-unused-vars
+                const { image, title, } = theme.benderStyle;
 
-              return (
-                <div className={className}>
-                  <Image
-                    data={item.image}
-                    imgOptions={imgOptions}
-                    lazyLoad={lazyLoad}
-                  />
-                  <Title
-                    level={title.level}
-                    fontSize={title.fontSize}
-                    text={item.title}
-                    isBlock
-                    miscStyles={{
-                      color: theme.color('neutral'),
-                      marginBottom: '1rem',
-                    }}
-                  />
-                </div>
-              );
-            }}
-          />
-          <FelaComponent
-            rule={authorRule}
-            render={({ className, }) => (
-              <footer className={className}>
-                <AboveBlockLink>
-                  {({ className, theme, }) => (
-                    <span className={className}>
-                      {item.authors.map(author => {
-                        if (typeof author === 'object') {
-                          return (
-                            <HtzLink
-                              href="https://www.haaretz.co.il"
-                              content={author.contentName}
-                            />
-                          );
-                        }
-                        return <span key={author.contentName}>{author}</span>;
-                      })}
-                    </span>
-                  )}
-                </AboveBlockLink>
-              </footer>
-            )}
-          />
+                return (
+                  <div className={className}>
+                    <Image
+                      data={item.image}
+                      imgOptions={imgOptions}
+                      lazyLoad={lazyLoad}
+                    />
+                    <FelaComponent
+                      style={{
+                        fontWeight: 'bold',
+                        color: theme.color('neutral'),
+                        marginBottom: '1rem',
+                        extend: [
+                          parseTypographyProp(title.fontSize, theme.type),
+                        ],
+                      }}
+                      render={({ className, }) => (
+                        <H className={className}>{item.title}</H>
+                      )}
+                    />
+                  </div>
+                );
+              }}
+            />
+            <FelaComponent
+              rule={authorRule}
+              render={({ className, }) => (
+                <footer className={className}>
+                  <AboveBlockLink>
+                    {({ className, theme, }) => (
+                      <span className={className}>
+                        {item.authors.map(author => {
+                          if (typeof author === 'object') {
+                            return (
+                              <HtzLink
+                                href="https://www.haaretz.co.il"
+                                content={author.contentName}
+                              />
+                            );
+                          }
+                          return <span key={author.contentName}>{author}</span>;
+                        })}
+                      </span>
+                    )}
+                  </AboveBlockLink>
+                </footer>
+              )}
+            />
+          </Section>
         </BlockLink>
       </GridItem>
     </ListItem>
   );
   const iToMedia = {
-    0: 'm',
-    1: 'm',
-    2: 'm',
+    0: 's',
+    1: 's',
+    2: 's',
     3: 'l',
     4: 'xl',
     5: 'xl',
@@ -173,20 +180,26 @@ export default function Bender({ data, lazyLoad, }) {
     <FelaComponent
       rule={benderWrapperRules}
       render={({ className, theme, }) => (
-        <div className={className}>
-          <Title
-            isBlock
-            fontSize={theme.benderStyle.mainTitle.fontSize}
-            level={theme.benderStyle.mainTitle.level}
-            text={theme.benderStyle.mainTitle.text}
-            miscStyles={{
+        <Section className={className}>
+          <FelaComponent
+            style={{
+              fontWeight: 'bold',
               color: theme.color('primary'),
               marginBottom: '2rem',
-              display: [ { until: 's', value: 'none', }, ],
+              extend: [
+                parseTypographyProp(
+                  theme.benderStyle.mainTitle.fontSize,
+                  theme.type
+                ),
+                theme.mq({ until: 's', }, { display: 'none', }),
+              ],
             }}
+            render={({ className, }) => (
+              <H className={className}>{theme.benderStyle.mainTitle.text}</H>
+            )}
           />
           <Grid miscStyles={{ flexWrap: 'nowrap', }}>{content}</Grid>
-        </div>
+        </Section>
       )}
     />
   );

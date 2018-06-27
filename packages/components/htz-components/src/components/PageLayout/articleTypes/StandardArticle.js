@@ -8,7 +8,8 @@ import { parseComponentProp, borderBottom, } from '@haaretz/htz-css-tools';
 
 import getComponent from '../../../utils/componentFromInputTemplate';
 import ArticleBody from '../../ArticleBody/ArticleBody';
-import ArticleHeader from '../../ArticleHeader/ArticleHeader';
+import HeaderText from '../../ArticleHeader/HeaderText';
+import ArticleHeaderMeta from '../../ArticleHeader/ArticleHeaderMeta';
 import ActionButtons from '../../ActionButtons/ActionButtons';
 import Media from '../../Media/Media';
 import SideBar from '../../SideBar/SideBar';
@@ -55,37 +56,52 @@ const mainWrapper = ({ theme, }) => ({
 });
 const ArticleContainer = createComponent(mainWrapper, 'article');
 
-const headerStyle = ({ theme, }) => ({
+const headerStyle = ({ isSharing = false, theme, }) => ({
+  marginTop: isSharing ? '1rem' : '3rem',
   marginBottom: '2rem',
   extend: [
-    ...[
-      parseComponentProp(
-        'marginStart',
-        theme.articleStyle.header.marginStart,
-        theme.mq,
-        mediaQueryCallback
-      ),
-    ],
-    ...[
-      parseComponentProp(
-        'marginEnd',
-        theme.articleStyle.header.marginEnd,
-        theme.mq,
-        mediaQueryCallback
-      ),
-    ],
+    ...(isSharing ? [ theme.mq({ until: 'm', }, { display: 'none', }), ] : []),
+    parseComponentProp(
+      'marginStart',
+      theme.articleStyle.header.marginStart,
+      theme.mq,
+      mediaQueryCallback
+    ),
+    parseComponentProp(
+      'marginEnd',
+      theme.articleStyle.header.marginEnd,
+      theme.mq,
+      mediaQueryCallback
+    ),
   ],
 });
-const Header = createComponent(headerStyle, ArticleHeader, props =>
-  Object.keys(props)
+
+// eslint-disable-next-line react/prop-types
+const Header = ({ authors, title, subtitle, publishDate, exclusive, }) => (
+  <FelaComponent rule={headerStyle} render="header">
+    <HeaderText kicker={exclusive} title={title} subtitle={subtitle} />
+    <ArticleHeaderMeta
+      publishDateTime={publishDate}
+      authors={authors}
+      miscStyles={{
+        marginTop: [
+          { until: 's', value: '3rem', },
+          { from: 's', until: 'l', value: '2rem', },
+        ],
+        display: 'flex',
+        justifyContent: 'flexStart',
+        position: [ { from: 'l', value: 'absolute', }, ],
+        top: [ { from: 'l', value: '3rem', }, ],
+        right: [ { from: 'l', value: '3rem', }, ],
+      }}
+    />
+  </FelaComponent>
 );
 
-const sharingToolsStyle = ({ theme, }) => ({
-  ...theme.mq({ until: 'm', }, { display: 'none', }),
-  ...headerStyle({ theme, }),
-});
-const SharingTools = createComponent(sharingToolsStyle, ActionButtons, props =>
-  Object.keys(props)
+const SharingTools = props => (
+  <FelaComponent rule={headerStyle} isSharing>
+    <ActionButtons {...props} />
+  </FelaComponent>
 );
 
 const sectionStyle = ({ theme, }) => ({

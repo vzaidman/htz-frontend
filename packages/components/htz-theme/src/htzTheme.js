@@ -14,6 +14,7 @@ import selectStyle from './consts/selectStyle';
 import typeConf from './consts/typeConf';
 import {
   a11yMenuI18n,
+  alertsI18n,
   breadcrumbsI18n,
   commentI18n,
   commentFormI18n,
@@ -72,6 +73,7 @@ const htzTheme = Object.freeze({
 
   // I18n
   a11yMenuI18n,
+  alertsI18n,
   breadcrumbsI18n,
   commentI18n,
   commentFormI18n,
