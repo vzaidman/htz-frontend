@@ -124,7 +124,14 @@ export default function Item({ name, url, pages, variant, miscStyles, }) {
                           start: '100%',
                           position: 'absolute',
                         }}
-                        itemStyle={dropdownItemStyle(theme)}
+                        itemStyle={{
+                          ...dropdownItemStyle(theme),
+                          ':last-child': {
+                            borderBottomColor: theme.color('primary', '+1'),
+                            borderBottomStyle: 'solid',
+                            borderBottomWidth: '1px',
+                          },
+                        }}
                       >
                         {combinedItems}
                       </ListWrapper>
