@@ -433,8 +433,10 @@ class StandardArticle extends React.Component {
           query={{ from: 'l', }}
           render={() => (
             <Zen animate>
-              <ArticleAside>
-                <SideBar>
+              <ArticleAside
+                innerRef={side => (this.side = side)} // eslint-disable-line no-return-assign
+              >
+                <SideBar height={this.side && this.side.offsetHeight}>
                   {aside.map(element => {
                     const Element = getComponent(element.inputTemplate);
                     return (

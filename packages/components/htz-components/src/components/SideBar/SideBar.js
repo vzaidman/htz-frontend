@@ -31,6 +31,7 @@ class SideBar extends React.Component {
   render() {
     const { children, } = this.props;
     const { show, } = this.state;
+    console.log('NOW SHOWING: ', show);
     return (
       <FelaComponent
         style={{
@@ -44,10 +45,10 @@ class SideBar extends React.Component {
       >
         {children && children.length > 0 ? (
           <WrappedScroll
-            render={({ y, }) =>
-              // this.changeView(y);
-               children[show] || children[0] || <p>Out of range</p>
-            }
+            render={({ y, }) => {
+              this.changeView(y);
+              return children[show] || null;
+            }}
           />
         ) : null}
       </FelaComponent>
