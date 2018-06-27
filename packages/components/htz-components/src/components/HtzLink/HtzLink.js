@@ -158,7 +158,7 @@ function HtzLink({
 
     return (
       <Link
-        prefetch={true || prefetch}
+        prefetch={prefetch}
         passHref
         // href='/article'
         href={{
