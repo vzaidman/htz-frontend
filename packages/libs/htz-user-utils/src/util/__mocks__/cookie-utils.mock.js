@@ -2,6 +2,15 @@
 const CookieData = {
   /* Valid Cookie, non htz data */
   emptyCookie: '',
+  /* Cookie is partially correct, but messed with */
+  corruptedCookie:
+    '__ga' +
+    'anonymousId=35034348424148872061321062246162; HtzPusr=fb4420f774194212563a298fd0176051;' +
+    'i=619407; l=1530178129; login=elia.grady%40haaretz.co.il; p=d41d8cd98f00b204e9800998ecf8427e;' +
+    'remember=1; tmsso=vvv%3Dundefined%3AemailValidity%3DnotValid; ' +
+    'userProducts=%7B%22products%22%3A%5B%7B%22trial%22%3Afalse%2C%22prodNum%22%3A243%7D%2C%7B%22trial%22%3Atrue' +
+    '%2C%22prodNum%22%3A273%7D%5D%2C%22tempSince%22%3Anull%2C%22temporary%22%3Afalse%7D; _cb=BDWlEdBYHHv7D49SeM;' +
+    '_cb_ls=1; _cb_svref=null;',
   htzAnonCookie:
     '__vrf=1456155277135rWYUjKNIxXut4uWTB3qliRyBnN3zz4KQ;' +
     ' __gads=ID=9e71a1b5a95948a5:T=1456155277:S=ALNI_Mb8tn3A0aqTbOmJ_yqk7o3CwPaH9g;' +

@@ -15,7 +15,6 @@ export function createLoaders(req) {
   const hostname = req.hostname;
   const ssoService = config.get('service.sso');
   const serviceBase = switchToDomain(hostname, config.get('service.base'));
-  console.log(`createLoaders got ${hostname} | serviceBase: ${serviceBase}`);
   const cookies = new Cookies(req.headers.cookie);
   // TODO: By default, `DataLoader` just caches the results forever,
   // but we should eventually expunge them from the cache.

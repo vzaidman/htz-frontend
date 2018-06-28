@@ -91,7 +91,7 @@ function create(initialState, req) {
     : undefined;
   // try to rehydrate user on client from server state (client)
   const userFromCache = inMemoryCache.data.data['$ROOT_QUERY.user'];
-  const user = userFromCache || userFromReq || defaultUser;
+  const user = Object.assign({}, defaultUser, userFromReq || userFromCache);
 
   const stateLink = withClientState({
     cache: inMemoryCache,

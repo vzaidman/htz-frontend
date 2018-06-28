@@ -1,6 +1,6 @@
 /* global document */
 import UserFactory from './user-factory-cookie-based';
-import User from './user';
+import User, { UserTypes, } from './user';
 import { deleteAllCookies, } from './util/cookie-utils';
 import CookieData from './util/__mocks__/cookie-utils.mock';
 
@@ -12,6 +12,47 @@ describe('UserFactory CookieBased Module', () => {
 
   it('should initialize a factory correctly', () => {
     expect(userFactory).toBeDefined();
+  });
+
+  it('should build an anonymous user by default', () => {
+    const user = userFactory.build();
+    expect(user.type).toEqual(UserTypes.anonymous);
+  });
+
+  describe('a corrupted user cookie', () => {
+    beforeAll(done => {
+      deleteAllCookies();
+      CookieData.corruptedCookie.split(';').map(cookie => {
+        document.cookie = cookie;
+        return document.cookie;
+      });
+      done();
+    });
+
+    it("should not throw an error when calling 'build'", () => {
+      expect(() => {
+        const factory = new UserFactory(true);
+        factory.build();
+      }).not.toThrow();
+    });
+
+    it("should create an object when calling 'build'", () => {
+      const factory = new UserFactory(true);
+      const user = factory.build();
+      expect(user).toBeDefined();
+    });
+
+    it("should create and return a User object when calling 'build'", () => {
+      const factory = new UserFactory(true);
+      const user = factory.build();
+      expect(user).toBeInstanceOf(User);
+    });
+
+    it("should create and return an anonymous User object when calling 'build'", () => {
+      const factory = new UserFactory(true);
+      const user = factory.build();
+      expect(user.type).toEqual(UserTypes.anonymous);
+    });
   });
 
   describe('an Anonymous user cookie', () => {

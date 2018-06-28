@@ -15,6 +15,15 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * ((max - min) + 1)) + min;
 }
 
+const isValidSsoMap = ssoMap => {
+  const typeValidity =
+    typeof ssoMap !== 'undefined' &&
+    typeof ssoMap === 'object' &&
+    typeof ssoMap.userId === 'string';
+  const valueValidity = typeValidity && Number(ssoMap.userId) > 0;
+  return typeValidity && valueValidity;
+};
+
 /**
  * Creates a new anonymousId for new user instances.
  * @see getCookieAsMap side effect: plants a client-only cookie with that ID.
@@ -71,14 +80,15 @@ export default class UserFactory {
       anonymousId = generateAnonymousId();
     }
     let userOptions = {};
-    if (ssoMap !== undefined) {
-      // User side effect found - recover it
+
+    if (ssoMap !== undefined && isValidSsoMap(ssoMap)) {
+      // Valid SSO and User side effect found - recover it
       userOptions = Object.assign(userOptions, ssoMap, {
         type: this.cookieMap.HtzPusr ? UserTypes.paying : UserTypes.registered,
       });
     }
     else {
-      // User side effect not found - build a new anonymous user
+      // Invalid SSO or User side effect not found - build a new anonymous user
       userOptions = Object.assign(userOptions, { type: UserTypes.anonymous, });
     }
     if (anonymousId) {

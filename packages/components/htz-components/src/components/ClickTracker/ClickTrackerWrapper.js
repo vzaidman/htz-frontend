@@ -1,3 +1,4 @@
+/* global window */
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import ClickTrackerElement from './ClickTrackerElement';
@@ -83,6 +84,9 @@ class ClickTrackerWrapper extends Component {
 
   componentDidMount() {
     if (!this.state.shouldRender) {
+      const DEBUG =
+        typeof window !== 'undefined' &&
+        window.location.search.includes('debug');
       if (Array.isArray(this.banners) && this.banners.length > 0) {
         const randomSelection = getRandomIntInclusive(
           0,
@@ -95,16 +99,18 @@ class ClickTrackerWrapper extends Component {
         );
         if (!selectedBanner) {
           selectedBanner = this.banners[0];
-          console.log(
-            'selection of banner failed, falling back to the first one'
-          );
+          DEBUG &&
+            console.log(
+              'ClickTrackerWrapper: selection of banner failed, falling back to the first one'
+            );
         }
         else {
-          console.log(
-            `'selection of banner was successfull, selected ${this.banners.indexOf(
-              selectedBanner
-            ) + 1} out of ${this.banners.length}`
-          );
+          DEBUG &&
+            console.log(
+              `ClickTrackerWrapper: selection of banner was successfull, selected ${this.banners.indexOf(
+                selectedBanner
+              ) + 1} out of ${this.banners.length}`
+            );
         }
         // eslint-disable-next-line react/no-did-mount-set-state
         this.setState({
