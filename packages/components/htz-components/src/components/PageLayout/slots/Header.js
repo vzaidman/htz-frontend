@@ -17,8 +17,6 @@ const propTypes = {
 function Header({ content, }) {
   return (
     <Fragment>
-      {/* TODO: Replace with dynamic navMenuID */}
-      {/* <Masthead navMenuID="7.3543" /> */}
       {content &&
         content.map(element => {
           const Element =

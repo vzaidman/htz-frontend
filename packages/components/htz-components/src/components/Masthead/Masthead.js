@@ -1,14 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
 import MastheadElement from './MastheadElement';
 import MastheadQuery from './mastheadData';
 
-const WrappedMasthead = props => (
+const propTypes = {
+  /**
+   * The contentId of the navigation element.
+   */
+  contentId: PropTypes.string.isRequired,
+};
+
+const WrappedMasthead = ({ contentId, }) => (
   <Query
     query={MastheadQuery}
     // navMenuID is generate automatically
     // eslint-disable-next-line react/prop-types
-    variables={{ path: props.navMenuID, }}
+    variables={{ path: contentId, }}
   >
     {({ data, loading, error, }) => {
       if (loading) return null;
@@ -20,5 +28,7 @@ const WrappedMasthead = props => (
     }}
   </Query>
 );
+
+WrappedMasthead.propTypes = propTypes;
 
 export default WrappedMasthead;

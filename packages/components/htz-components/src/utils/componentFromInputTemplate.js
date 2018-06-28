@@ -14,6 +14,7 @@ import Image from '../components/Image/Image';
 import Interactive from '../components/Interactive/Interactive';
 import LinksBlock from '../components/RelatedArticles/LinksBlock';
 import List from '../components/List/List';
+import Masthead from '../components/Masthead/Masthead';
 import Newsletter from '../components/Newsletter/Newsletter';
 import Outbrain from '../components/Outbrain/Outbrain';
 import Paragraph from '../components/Paragraph/Paragraph';
@@ -27,7 +28,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const inputTemplateToComponent = new Map([
   /* HeaderSlots components */
-  [ 'com.htz.NavigationElementResp', () => <p>NavigationElementResp</p>, ],
+  [ 'com.htz.EditableNavigationElement', Masthead, ],
   // [ 'com.tm.PageTitle', () => <p>PageTitle</p>, ],
   [ 'com.tm.PageTitle', Breadcrumbs, ],
 
