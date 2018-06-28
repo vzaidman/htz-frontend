@@ -4,6 +4,7 @@ import { createComponent, } from 'react-fela';
 import { border, borderEnd, borderBottom, } from '@haaretz/htz-css-tools';
 import ListItem from '../../elements/ListItem';
 
+import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
 import HtzLink from '../../../HtzLink/HtzLink';
 import Image from '../../../Image/Image';
 
@@ -30,7 +31,7 @@ const itemStyle = ({ theme, }) => ({
   ...border('1px', 0, 'solid', theme.color('neutral', '-4')),
   ...borderEnd('4px', 'solid', theme.color('neutral', '-4')),
 });
-const Item = createComponent(itemStyle, HtzLink, props => Object.keys(props));
+const Link = createComponent(itemStyle, HtzLink, props => Object.keys(props));
 
 const itemImageStyle = () => ({
   width: `${124 / 7}rem`,
@@ -49,6 +50,31 @@ const itemTitleStyle = ({ theme, }) => ({
 const ItemTitle = createComponent(itemTitleStyle, 'p');
 
 // eslint-disable-next-line react/prop-types
+export const PromotedItem = ({ path, title, image, }) => (
+  <Link
+    href={path}
+    content={
+      <Fragment>
+        <ItemImage>
+          <Image
+            data={image}
+            imgOptions={{
+              transforms: {
+                width: '125',
+                aspect: 'regular',
+                quality: 'auto',
+              },
+            }}
+            hasWrapper={false}
+          />
+        </ItemImage>
+        <ItemTitle>{title}</ItemTitle>
+      </Fragment>
+    }
+  />
+);
+
+// eslint-disable-next-line react/prop-types
 const Leela = ({ data, }) => {
   if (data.loading) return null;
   if (data.error) return null;
@@ -57,26 +83,18 @@ const Leela = ({ data, }) => {
       <Title>{data.list.title}</Title>
       {data.list.items.map(item => (
         <ListItem>
-          <Item
-            href={item.path}
-            content={
-              <Fragment>
-                <ItemImage>
-                  <Image
-                    data={item.image}
-                    imgOptions={{
-                      transforms: {
-                        width: '125',
-                        aspect: 'regular',
-                        quality: 'auto',
-                      },
-                    }}
-                    hasWrapper={false}
-                  />
-                </ItemImage>
-                <ItemTitle>{item.title}</ItemTitle>
-              </Fragment>
-            }
+          <ClickTracker
+            {...item}
+            render={banner => {
+              const { text, link, clicktrackerimage, } = banner;
+              return (
+                <PromotedItem
+                  title={text}
+                  image={clicktrackerimage}
+                  path={link}
+                />
+              );
+            }}
           />
         </ListItem>
       ))}

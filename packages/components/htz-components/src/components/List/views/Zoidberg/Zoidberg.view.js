@@ -4,8 +4,10 @@ import { createComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import ListItem from '../../elements/ListItem';
 
+import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
 import HtzLink from '../../../HtzLink/HtzLink';
 import Image from '../../../Image/Image';
+import { PromotedItem, } from '../Leela/Leela.view';
 
 const wrapperStyle = () => ({
   display: 'flex',
@@ -31,7 +33,7 @@ const itemStyle = ({ theme, }) => ({
     ...borderBottom('1px', 1, 'solid', theme.color('neutral', '-4')),
   },
 });
-const Item = createComponent(itemStyle, HtzLink, props => Object.keys(props));
+const Link = createComponent(itemStyle, HtzLink, [ 'href', 'content', ]);
 
 const itemImageStyle = () => ({
   width: `${124 / 7}rem`,
@@ -47,6 +49,32 @@ const itemTitleStyle = ({ theme, }) => ({
 const ItemTitle = createComponent(itemTitleStyle, 'p');
 
 // eslint-disable-next-line react/prop-types
+const Item = ({ title, image, path, promoted, }) => (
+  <Link
+    href={path}
+    content={
+      <Fragment>
+        <ItemImage>
+          <Image
+            data={image}
+            imgOptions={{
+              transforms: {
+                width: '125',
+                aspect: 'regular',
+                quality: 'auto',
+              },
+            }}
+            hasWrapper={false}
+          />
+        </ItemImage>
+        <ItemTitle>{title}</ItemTitle>
+      </Fragment>
+    }
+    promoted={promoted}
+  />
+);
+
+// eslint-disable-next-line react/prop-types
 const Zoidberg = ({ data: { loading, error, list, }, }) => {
   if (loading) return null;
   if (error) return null;
@@ -56,27 +84,25 @@ const Zoidberg = ({ data: { loading, error, list, }, }) => {
       <Title>{title}</Title>
       {items.map(item => (
         <ListItem>
-          <Item
-            href={item.path}
-            content={
-              <Fragment>
-                <ItemImage>
-                  <Image
-                    data={item.image}
-                    imgOptions={{
-                      transforms: {
-                        width: '125',
-                        aspect: 'regular',
-                        quality: 'auto',
-                      },
-                    }}
-                    hasWrapper={false}
+          {item.inputTemplate &&
+          item.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper' ? (
+            <ClickTracker
+              {...item}
+              render={banner => {
+                const { text, link, clicktrackerimage, } = banner;
+                return (
+                  <PromotedItem
+                    title={text}
+                    image={clicktrackerimage}
+                    path={link}
+                    showBanner
                   />
-                </ItemImage>
-                <ItemTitle>{item.title}</ItemTitle>
-              </Fragment>
-            }
-          />
+                );
+              }}
+            />
+          ) : (
+            <Item {...item} />
+          )}
         </ListItem>
       ))}
     </Wrapper>
