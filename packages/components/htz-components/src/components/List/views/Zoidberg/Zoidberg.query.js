@@ -1,32 +1,24 @@
 /* eslint-disable-next-line import/no-extraneous-dependencies, import/no-unresolved */
 import gql from 'graphql-tag';
+import {
+  clickTrackerBannersWrapper,
+  teaserForLeftElement,
+} from '@haaretz/app-utils';
 
 export default gql`
-  query ListQuery($path: String!) {
+  query ZoidbergQuery($path: String!) {
     list(path: $path) {
       title
       items {
-        image {
-          viewMode
-          aspects
-          accessibility
-          title
-          credit
-          contentId
-          isAnimated
-          imgArray {
-            imgName
-            version
-          }
-          imageType
-          contentName
+        ... on TeaserInList {
+          ...TeaserForLeftElement
         }
-        contentId
-        title
-        path
-        titleMobile
-        hash
+        ... on ClickTrackerBannersWrapper {
+          ...ClickTrackerBannersWrapper
+        }
       }
     }
   }
+  ${clickTrackerBannersWrapper}
+  ${teaserForLeftElement}
 `;

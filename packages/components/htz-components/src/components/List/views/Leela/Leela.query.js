@@ -1,32 +1,17 @@
 /* eslint-disable-next-line import/no-extraneous-dependencies, import/no-unresolved */
 import gql from 'graphql-tag';
+import { clickTrackerBannersWrapper, } from '@haaretz/app-utils';
 
 export default gql`
-  query ListQuery($path: String!) {
+  query LeelaQuery($path: String!) {
     list(path: $path) {
       title
       items {
-        image {
-          viewMode
-          aspects
-          accessibility
-          title
-          credit
-          contentId
-          isAnimated
-          imgArray {
-            imgName
-            version
-          }
-          imageType
-          contentName
+        ... on ClickTrackerBannersWrapper {
+          ...ClickTrackerBannersWrapper
         }
-        contentId
-        title
-        path
-        titleMobile
-        hash
       }
     }
   }
+  ${clickTrackerBannersWrapper}
 `;

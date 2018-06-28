@@ -1,32 +1,17 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import gql from 'graphql-tag';
+import { teaserForBender, } from '@haaretz/app-utils';
 
 export default gql`
-  query ListQuery($path: String!) {
+  query BenderQuery($path: String!) {
     list(path: $path) {
       title
       items {
-        image {
-          aspects
-          accessibility
-          title
-          credit
-          contentId
-          isAnimated
-          imgArray {
-            imgName
-            version
-          }
-          imageType
-          contentName
+        ... on TeaserInList {
+          ...TeaserForBender
         }
-        contentId
-        title
-        path
-        titleMobile
-        hash
-        authors
       }
     }
   }
+  ${teaserForBender}
 `;
