@@ -53,39 +53,33 @@ const defaultProps = {
 };
 
 /* eslint-disable react/prop-types */
-const LinkWrapper = ({
-  attrs,
-  children,
-  className,
-  href,
-  onClick,
-  passedOnClick,
-  ref,
-}) => {
-  const wrappedOnclick = (...args) => {
-    if (passedOnClick) {
-      passedOnClick(...args);
-    }
-    // your own code here, this function can even be async
-    // TODO: Logging to BI can happen here.
+const LinkWrapper = React.forwardRef(
+  ({ attrs, children, className, href, onClick, passedOnClick, ref, }) => {
+    const wrappedOnclick = (...args) => {
+      if (passedOnClick) {
+        passedOnClick(...args);
+      }
+      // your own code here, this function can even be async
+      // TODO: Logging to BI can happen here.
 
-    console.log('LOGGING BI FOR', href);
-    return onClick(...args);
-  };
-  /* eslint-disable jsx-a11y/no-static-element-interactions */
-  /* eslint-disable jsx-a11y/click-events-have-key-events */
-  return (
-    <a
-      href={href}
-      className={className}
-      onClick={wrappedOnclick}
-      ref={ref}
-      {...attrs}
-    >
-      {children}
-    </a>
-  );
-};
+      console.log('LOGGING BI FOR', href);
+      return onClick(...args);
+    };
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    return (
+      <a
+        href={href}
+        className={className}
+        onClick={wrappedOnclick}
+        ref={ref}
+        {...attrs}
+      >
+        {children}
+      </a>
+    );
+  }
+);
 /* eslint-enable jsx-a11y/no-static-element-interactions */
 /* eslint-enable jsx-a11y/click-events-have-key-events */
 /* eslint-enable react/prop-types */
