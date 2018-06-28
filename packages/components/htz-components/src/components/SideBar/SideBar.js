@@ -31,7 +31,6 @@ class SideBar extends React.Component {
   render() {
     const { children, } = this.props;
     const { show, } = this.state;
-    console.log('NOW SHOWING: ', show);
     return (
       <FelaComponent
         style={{

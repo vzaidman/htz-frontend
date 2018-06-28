@@ -1,90 +1,10 @@
 /* globals OBR */
 /* eslint-disable import/no-unresolved */
 import React from 'react';
-import { createComponent, FelaComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import ListItem from '../../elements/ListItem';
-
-const wrapperStyle = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  maxWidth: `${300 / 7}rem`,
-};
-
-const titleStyle = ({ theme, }) => ({
-  ...theme.type(1),
-  display: 'flex',
-  justifyContent: 'space-between',
-  width: '100%',
-  fontWeight: '700',
-  color: theme.color('primary'),
-  ...borderBottom('2px', 1, 'solid', theme.color('primary')),
-  marginBottom: '2rem',
-});
-const Title = createComponent(titleStyle);
-
-const outbrainStyle = ({ outbrain, theme, }) => ({
-  ...theme.type(-3),
-  fontWeight: '300',
-  color: theme.color('neutral', '-3'),
-  marginBottom: '0.25rem',
-  marginStart: '1rem',
-  marginTop: '1rem',
-  position: 'relative',
-  paddingStart: '3rem',
-  ':after': {
-    background:
-      'url(//widgets.outbrain.com/images/widgetIcons/ob_logo_16x16.png) no-repeat center top',
-    backgroundSize: '100% 200%',
-    content: '""',
-    height: '2.3rem',
-    position: 'absolute',
-    right: '0',
-    bottom: '55%',
-    transform: 'translateY(50%)',
-    width: '2.3rem',
-  },
-  ':hover': {
-    color: theme.color('neutral'),
-    textDecoration: 'underline',
-    lineSkip: 'ink',
-    ':after': {
-      backgroundPosition: 'center bottom',
-    },
-  },
-});
-const Outbrain = createComponent(outbrainStyle, 'a');
-
-const itemStyle = ({ theme, }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  width: `${143 / 7}rem`,
-  marginBottom: '3rem',
-  ':nth-of-type(odd)': {
-    marginEnd: '2rem',
-  },
-});
-const Item = createComponent(itemStyle, 'a', [ 'href', ]);
-
-const itemImageStyle = () => ({
-  flexShrink: '0',
-  marginBottom: '1rem',
-});
-const ItemImage = createComponent(itemImageStyle);
-
-const itemTitleStyle = ({ theme, }) => ({
-  ...theme.type(-1),
-  fontWeight: '700',
-});
-const ItemTitle = createComponent(itemTitleStyle, 'p');
-
-const itemSourceStyle = ({ theme, }) => ({
-  ...theme.type(-2),
-  color: theme.color('tertiary'),
-  fontWeight: '700',
-  marginBottom: '1rem',
-});
-const ItemSource = createComponent(itemSourceStyle, 'p');
+import Image from '../../../Image/Image';
 
 // eslint-disable-next-line react/prop-types
 const Fry = ({ data, }) => {
@@ -92,12 +12,58 @@ const Fry = ({ data, }) => {
   if (data.error) return null;
   return (
     <FelaComponent
-      style={wrapperStyle}
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        maxWidth: `${300 / 7}rem`,
+      }}
       render={({ className, theme, }) => (
         <div className={className}>
-          <Title>
+          <FelaComponent
+            style={{
+              ...theme.type(1),
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
+              fontWeight: '700',
+              color: theme.color('primary'),
+              ...borderBottom('2px', 1, 'solid', theme.color('primary')),
+              marginBottom: '2rem',
+            }}
+          >
             {theme.fryListI18n.title}
-            <Outbrain
+            <FelaComponent
+              style={{
+                ...theme.type(-3),
+                fontWeight: '300',
+                color: theme.color('neutral', '-3'),
+                marginBottom: '0.25rem',
+                marginStart: '1rem',
+                marginTop: '1rem',
+                position: 'relative',
+                paddingStart: '3rem',
+                ':after': {
+                  background:
+                    'url(//widgets.outbrain.com/images/widgetIcons/ob_logo_16x16.png) no-repeat center top',
+                  backgroundSize: '100% 200%',
+                  content: '""',
+                  height: '2.3rem',
+                  position: 'absolute',
+                  right: '0',
+                  bottom: '55%',
+                  transform: 'translateY(50%)',
+                  width: '2.3rem',
+                },
+                ':hover': {
+                  color: theme.color('neutral'),
+                  textDecoration: 'underline',
+                  lineSkip: 'ink',
+                  ':after': {
+                    backgroundPosition: 'center bottom',
+                  },
+                },
+              }}
+              render="a"
               href="#"
               onMouseDown={event => {
                 // eslint-disable-next-line no-param-reassign
@@ -118,19 +84,68 @@ const Fry = ({ data, }) => {
               }}
             >
               <span>Recommended by</span>
-            </Outbrain>
-          </Title>
-          {data.list.items.map(item => (
-            <ListItem>
-              <Item href={item.path}>
-                <ItemImage>
-                  <img src={item.thumbnail.url} width="143px" alt="" />
-                </ItemImage>
-                <ItemTitle>{item.content}</ItemTitle>
-                <ItemSource>{item.source_display_name}</ItemSource>
-              </Item>
-            </ListItem>
-          ))}
+            </FelaComponent>
+          </FelaComponent>
+          {data.list.items.map(item => {
+            // eslint-disable-next-line camelcase
+            const { title, image, path, source_display_name, } = item;
+            return (
+              <ListItem>
+                <FelaComponent
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: `${143 / 7}rem`,
+                    marginBottom: '3rem',
+                    ':nth-of-type(odd)': {
+                      marginEnd: '2rem',
+                    },
+                  }}
+                  render="a"
+                  href={path}
+                >
+                  <FelaComponent
+                    style={{
+                      flexShrink: '0',
+                      marginBottom: '1rem',
+                    }}
+                  >
+                    <Image
+                      data={image}
+                      imgOptions={{
+                        transforms: {
+                          width: '125',
+                          aspect: 'regular',
+                          quality: 'auto',
+                        },
+                      }}
+                      hasWrapper={false}
+                    />
+                  </FelaComponent>
+                  <FelaComponent
+                    style={{
+                      ...theme.type(-1),
+                      fontWeight: '700',
+                    }}
+                    render="p"
+                  >
+                    {title}
+                  </FelaComponent>
+                  <FelaComponent
+                    style={{
+                      ...theme.type(-2),
+                      color: theme.color('tertiary'),
+                      fontWeight: '700',
+                      marginBottom: '1rem',
+                    }}
+                    render="p"
+                  >
+                    {source_display_name} {/* eslint-disable-line camelcase */}
+                  </FelaComponent>
+                </FelaComponent>
+              </ListItem>
+            );
+          })}
         </div>
       )}
     />
