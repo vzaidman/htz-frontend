@@ -23,6 +23,11 @@ export const authorImage = gql`
       image ${imageObj}
     }
   `;
+export const clicktrackerImage = gql`
+    fragment ClickTrackerImage on ClickTrackerBanner {
+      clicktrackerimage ${imageObj}
+    }
+  `;
 export const imagesInTeaser = gql`
     fragment ImagesInTeaser on TeaserInList {
       image ${imageObj}

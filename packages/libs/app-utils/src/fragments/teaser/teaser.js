@@ -7,8 +7,51 @@ export const teaserForRelatedArticles = gql`
   fragment TeaserForRelatedArticles on TeaserInList {
     title
     path
-    authors
+    authors {
+      ... on CreditObject {
+        ...CreditObj
+      }
+      ... on AuthorObject {
+        ...AuthorObj
+      }
+    }
   }
+  ${author.authorObj}
+  ${author.creditObj}
+`;
+
+export const teaserForLeftElement = gql`
+  fragment TeaserForLeftElement on TeaserInList {
+    ...ImagesInTeaser
+    contentId
+    title
+    path
+    titleMobile
+    hash
+  }
+  ${imagesInTeaser}
+`;
+
+export const teaserForBender = gql`
+  fragment TeaserForBender on TeaserInList {
+    ...ImagesInTeaser
+    contentId
+    title
+    path
+    titleMobile
+    hash
+    authors {
+      ... on CreditObject {
+        ...CreditObj
+      }
+      ... on AuthorObject {
+        ...AuthorObj
+      }
+    }
+  }
+  ${author.authorObj}
+  ${author.creditObj}
+  ${imagesInTeaser}
 `;
 
 export default gql`

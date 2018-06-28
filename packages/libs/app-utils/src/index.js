@@ -8,6 +8,8 @@ import switchToDomain from './utils/switchToDomain';
 import articleHeader from './fragments/articleHeader/articleHeader';
 import author from './fragments/author/author';
 import breadcrumbs from './fragments/breadcrumbs/breadcrumbs';
+import clickTrackerBanner from './fragments/clickTrackerBanner/clickTrackerBanner';
+import clickTrackerBannersWrapper from './fragments/clickTrackerBannersWrapper/clickTrackerBannersWrapper';
 import content from './fragments/content/content';
 import dfpBanner from './fragments/dfpBanner/dfpBanner';
 import embed from './fragments/embed/embed';
@@ -23,7 +25,10 @@ import seoData from './fragments/seoData/seoData';
 import seriesOrBlockArticles from './fragments/seriesOrBlockArticles/seriesOrBlockArticles';
 import tag from './fragments/tag/tag';
 import tags from './fragments/tags/tags';
-import teaser from './fragments/teaser/teaser';
+import teaser, {
+  teaserForLeftElement,
+  teaserForBender,
+} from './fragments/teaser/teaser';
 import video from './fragments/video/video';
 
 export {
@@ -34,6 +39,8 @@ export {
   articleHeader,
   author,
   breadcrumbs,
+  clickTrackerBanner,
+  clickTrackerBannersWrapper,
   content,
   dfpBanner,
   embed,
@@ -50,6 +57,8 @@ export {
   tag,
   tags,
   teaser,
+  teaserForBender,
+  teaserForLeftElement,
   video,
   switchToDomain,
   breakUrl,
