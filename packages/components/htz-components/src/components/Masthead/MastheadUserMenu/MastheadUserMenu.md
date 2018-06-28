@@ -3,21 +3,21 @@
 
 **Table of Contents**
 
-- [UserMenu examples](#usermenu-examples)
+- [MastheadUserMenu examples](#MastheadUserMenu-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### UserMenu examples
+### MastheadUserMenu examples
 
 ```jsx
 <div>
   <p>When user is logged in (userName=[USER]):</p>
   <div style={{ direction: 'rtl', marginBottom: '10rem' }}>
-    <UserMenu userName="[USER]" />
+    <MastheadUserMenu userName="[USER]" />
   </div>
   <p>Without userName data:</p>
   <div style={{ direction: 'rtl' }}>
-    <UserMenu />
+    <MastheadUserMenu />
   </div>
 </div>
 ```

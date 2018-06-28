@@ -2,17 +2,17 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
-import Button from '../Button/Button';
-import DropdownList from '../DropdownList/DropdownList';
-import IconAvatar from '../Icon/icons/IconAvatar';
-import Item from '../DropdownList/DropdownItem';
-import HtzLink from '../HtzLink/HtzLink';
-import Logout from '../User/Logout';
+import Button from '../../Button/Button';
+import DropdownList from '../../DropdownList/DropdownList';
+import IconAvatar from '../../Icon/icons/IconAvatar';
+import Item from '../../DropdownList/DropdownItem';
+import HtzLink from '../../HtzLink/HtzLink';
+import Logout from '../../User/Logout';
 import UserButton from './UserButton';
 import {
   dropdownItemStyle,
   dropdownListStyle,
-} from '../Masthead/mastheadDropdownListStyle';
+} from '../mastheadDropdownListStyle';
 
 const noUserButtonStyle = theme => ({
   height: '100%',
@@ -37,7 +37,7 @@ const noUserButtonStyle = theme => ({
  * an array of links to generate a menu list,
  * and it also generate a signout function.
  */
-class UserMenu extends React.Component {
+export default class MastheadUserMenu extends React.Component {
   static propTypes = {
     /**
      * A `string` of the user name to display.
@@ -147,5 +147,3 @@ class UserMenu extends React.Component {
     );
   }
 }
-
-export default UserMenu;

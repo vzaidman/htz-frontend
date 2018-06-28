@@ -15,7 +15,6 @@ export const dropdownListStyle = theme => ({
   display: 'inline-block',
   fontWeight: '700',
   minHeight: '100%',
-  // TODO: this looks a little weird...
   minWidth: '100%',
   position: 'absolute',
   zIndex: '100',

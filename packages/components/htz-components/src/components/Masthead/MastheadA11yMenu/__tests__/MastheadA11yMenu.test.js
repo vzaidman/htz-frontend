@@ -1,23 +1,23 @@
 import React from 'react';
 // import toJson from 'enzyme-to-json';
 import { ApolloProvider, } from 'react-apollo';
-import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
-import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
-import client from '../../../../styleguide/ApolloMockClient';
+import felaSnapshotter from '../../../../test-helpers/felaSnapshotter';
+import { felaMount, } from '../../../../test-helpers/felaEnzymeRenderers';
+import client from '../../../../../styleguide/ApolloMockClient';
 
-import A11yMenu from '../A11yMenu'; // eslint-disable-line import/no-named-as-default
+import MastheadA11yMenu from '../MastheadA11yMenu';
 
-describe('<A11yMenu', () => {
+describe('<MastheadA11yMenu', () => {
   describe('DOM element', () => {
     it('renders correctly with no props', () => {
-      const { component, styles, } = felaSnapshotter(<A11yMenu />);
+      const { component, styles, } = felaSnapshotter(<MastheadA11yMenu />);
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('generate a click and return a list with 2 <li>', () => {
       const output = felaMount(
         <ApolloProvider client={client}>
-          <A11yMenu />
+          <MastheadA11yMenu />
         </ApolloProvider>
       );
       const button = output.find('button');

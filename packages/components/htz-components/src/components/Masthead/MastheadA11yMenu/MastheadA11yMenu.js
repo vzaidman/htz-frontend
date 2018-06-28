@@ -2,14 +2,14 @@ import React, { Fragment, } from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
-import Button from '../Button/Button';
-import DropdownList from '../DropdownList/DropdownList';
-import IconAccessibility from '../Icon/icons/IconAccessibility';
-import Item from '../DropdownList/DropdownItem';
+import Button from '../../Button/Button';
+import DropdownList from '../../DropdownList/DropdownList';
+import IconAccessibility from '../../Icon/icons/IconAccessibility';
+import Item from '../../DropdownList/DropdownItem';
 import {
   dropdownItemStyle,
   dropdownListStyle,
-} from '../Masthead/mastheadDropdownListStyle';
+} from '../mastheadDropdownListStyle';
 
 const GET_A11Y_STATE = gql`
   query {
@@ -38,7 +38,7 @@ const a11yButtonStyle = ({ theme, isOpen, }) => ({
  * A menu component for the page header. A component which generate
  * two options: toggle accessibility on apollo link state and report a problem via email
  */
-const A11yMenu = () => (
+const MastheadA11yMenu = () => (
   <FelaTheme
     render={theme => {
       const items = theme.a11yMenuI18n.menuItems;
@@ -116,4 +116,4 @@ const A11yMenu = () => (
   />
 );
 
-export default A11yMenu;
+export default MastheadA11yMenu;

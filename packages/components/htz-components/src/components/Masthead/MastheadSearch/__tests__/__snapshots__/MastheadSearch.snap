@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<HeaderSearch> render correctly 1`] = `
+exports[`<MastheadSearch> render correctly 1`] = `
 Object {
   "component": <div>
     <div

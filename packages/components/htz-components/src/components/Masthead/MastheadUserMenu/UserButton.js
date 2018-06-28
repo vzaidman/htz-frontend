@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import IconAvatar from '../Icon/icons/IconAvatar';
+import IconAvatar from '../../Icon/icons/IconAvatar';
 
 class UserButton extends React.Component {
   static propTypes = {

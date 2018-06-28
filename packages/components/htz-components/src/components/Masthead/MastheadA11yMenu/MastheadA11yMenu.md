@@ -3,14 +3,14 @@
 
 **Table of Contents**
 
-- [A11yMenu examples](#a11ymenu-examples)
+- [MastheadA11yMenu examples](#MastheadA11yMenu-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### A11yMenu examples
+### MastheadA11yMenu examples
 
 ```jsx
 <div style={{ direction: 'rtl' }}>
-  <A11yMenu />
+  <MastheadA11yMenu />
 </div>
 ```

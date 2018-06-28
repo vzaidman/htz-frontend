@@ -2,11 +2,11 @@ import React from 'react';
 // import toJson from 'enzyme-to-json';
 import htzTheme, { typesetter, } from '@haaretz/htz-theme';
 import { ApolloProvider, } from 'react-apollo';
-import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
-import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
-import client from '../../../../styleguide/ApolloMockClient';
+import felaSnapshotter from '../../../../test-helpers/felaSnapshotter';
+import { felaMount, } from '../../../../test-helpers/felaEnzymeRenderers';
+import client from '../../../../../styleguide/ApolloMockClient';
 
-import UserMenu from '../UserMenu';
+import MastheadUserMenu from '../MastheadUserMenu';
 
 const btnStyle = Object.freeze({
   // Border width
@@ -74,18 +74,18 @@ const mockTheme = {
   getTimingFunction: htzTheme.getTimingFunction,
 };
 
-describe('<UserMenu', () => {
+describe('<MastheadUserMenu', () => {
   describe('DOM element', () => {
     it('renders correctly with no props', () => {
       const { component, styles, } = felaSnapshotter(
-        <UserMenu userName={null} />
+        <MastheadUserMenu userName={null} />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with props', () => {
       const { component, styles, } = felaSnapshotter(
-        <UserMenu userName="[USER]" />
+        <MastheadUserMenu userName="[USER]" />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -93,7 +93,7 @@ describe('<UserMenu', () => {
     it('generate a link with no props', () => {
       const output = felaMount(
         <ApolloProvider client={client}>
-          <UserMenu userName={null} />
+          <MastheadUserMenu userName={null} />
         </ApolloProvider>,
         mockTheme
       );
@@ -102,7 +102,7 @@ describe('<UserMenu', () => {
     it('generate a click and return a list with 4 li', () => {
       const output = felaMount(
         <ApolloProvider client={client}>
-          <UserMenu userName="[USER]" />
+          <MastheadUserMenu userName="[USER]" />
         </ApolloProvider>,
         mockTheme
       );
@@ -116,7 +116,7 @@ describe('<UserMenu', () => {
     it('check that mouseEnter event and mouseLeave event change the state', () => {
       const output = felaMount(
         <ApolloProvider client={client}>
-          <UserMenu userName="[USER]" />
+          <MastheadUserMenu userName="[USER]" />
         </ApolloProvider>,
         mockTheme
       );

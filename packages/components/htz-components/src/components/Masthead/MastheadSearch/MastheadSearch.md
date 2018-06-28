@@ -3,14 +3,14 @@
 
 **Table of Contents**
 
-- [HeaderSearch examples](#headersearch-examples)
+- [MastheadSearch examples](#mastheadSearch-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### HeaderSearch examples
+### MastheadSearch examples
 
 ```jsx
 <div style={{ direction: 'rtl' }}>
-  <HeaderSearch />
+  <MastheadSearch />
 </div>
 ```

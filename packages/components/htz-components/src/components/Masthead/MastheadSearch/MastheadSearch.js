@@ -2,10 +2,10 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import IconClose from '../Icon/icons/IconClose';
-import IconSearch from '../Icon/icons/IconSearch';
-import HtzLink from '../HtzLink/HtzLink';
-import TextInput from '../TextInput/TextInput';
+import IconClose from '../../Icon/icons/IconClose';
+import IconSearch from '../../Icon/icons/IconSearch';
+import HtzLink from '../../HtzLink/HtzLink';
+import TextInput from '../../TextInput/TextInput';
 
 class HeaderSearch extends React.Component {
   static propTypes = {

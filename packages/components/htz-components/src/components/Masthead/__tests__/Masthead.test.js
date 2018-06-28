@@ -4,7 +4,7 @@ import { ApolloProvider, } from 'react-apollo';
 import htzTheme from '@haaretz/htz-theme';
 // import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
-import Masthead from '../Masthead';
+import Masthead from '../MastheadElement';
 import client from '../../../../styleguide/ApolloMockClient';
 
 Math.random = jest.fn(() => 123456789);
