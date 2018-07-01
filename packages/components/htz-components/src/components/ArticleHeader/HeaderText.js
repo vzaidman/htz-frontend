@@ -47,6 +47,7 @@ function HeaderText({ kicker, title, subtitle, className, }) {
       render={theme => (
         <div className={className}>
           {kicker ? (
+
             <Kicker
               isBlock={false}
               fontSize={[
