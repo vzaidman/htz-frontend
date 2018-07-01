@@ -98,6 +98,8 @@ const buildComponent = (context, index, isLastItem) => {
           <Component {...context} />
         </Aside>
       );
+    case 'com.polobase.DfpBannerElement':
+      return <Component {...context} {...context.properties} />;
     default:
       return (
         <FelaTheme

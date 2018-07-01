@@ -35,8 +35,14 @@ const ArticlePageLayout = ({
   const getElements = slot =>
     slot.map(element => {
       const Element = getComponent(element.inputTemplate);
+      const { properties, ...elementWithoutProperties } = element;
       return (
-        <Element key={element.contentId} articleId={articleId} {...element} />
+        <Element
+          key={element.contentId}
+          articleId={articleId}
+          {...elementWithoutProperties}
+          {...properties}
+        />
       );
     });
 

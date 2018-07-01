@@ -30,6 +30,7 @@ export default gql`
               inputTemplate
               contentId
               contentName
+              properties
             }
             ... on ArticleHeader {
               ...ArticleHeader

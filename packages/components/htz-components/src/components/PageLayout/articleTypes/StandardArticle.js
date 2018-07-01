@@ -352,6 +352,7 @@ class StandardArticle extends React.Component {
         );
       }
       const Element = getComponent(element.inputTemplate);
+      const { properties, ...elementWithoutProperties } = element;
       if (
         element.inputTemplate === 'com.polobase.OutbrainElement' ||
         element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
@@ -361,7 +362,8 @@ class StandardArticle extends React.Component {
             <Element
               key={element.contentId}
               articleId={this.props.articleId}
-              {...element}
+              {...elementWithoutProperties}
+              {...properties}
             />
           </ArticleWide>
         );
@@ -372,7 +374,8 @@ class StandardArticle extends React.Component {
             <Element
               key={element.contentId}
               articleId={this.props.articleId}
-              {...element}
+              {...elementWithoutProperties}
+              {...properties}
             />
           </BodyWrapper>
         </ArticleSection>
@@ -439,11 +442,13 @@ class StandardArticle extends React.Component {
                 <SideBar height={this.side && this.side.offsetHeight}>
                   {aside.map(element => {
                     const Element = getComponent(element.inputTemplate);
+                    const { properties, ...elementWithoutProperties } = element;
                     return (
                       <Element
                         key={element.contentId}
                         articleId={articleId}
-                        {...element}
+                        {...elementWithoutProperties}
+                        {...properties}
                       />
                     );
                   })}
