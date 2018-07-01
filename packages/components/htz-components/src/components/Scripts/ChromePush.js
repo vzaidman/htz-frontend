@@ -18,7 +18,6 @@ class ChromePush extends Component {
   }
 
   getInnerHtml = () => `
-  alert('running chrom push');
   function getCookie(){
     var cookieName = arguments[0];
     var cookieValue = null;
