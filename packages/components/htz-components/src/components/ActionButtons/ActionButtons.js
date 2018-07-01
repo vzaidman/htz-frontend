@@ -166,64 +166,70 @@ const ActionButtons = ({
 }) => {
   const getButton = (button, index) => {
     const { buttonStyles, buttonText, iconStyles, name, } = button;
-    <Mutation mutation={TOGGLE_ZEN}>
-      {toggleZen => {
-        const icon = getIcon(
-          name || button,
-          elementName,
-          elementUrl,
-          toggleZen
-        );
-        const Icon = icon.component;
-        return (
-          <Query query={PlatformQuery}>
-            {({loading, error, data, client,}) => {
-              if (loading) return <p>loading...</p>;
-              if (error) console.log(error);
-              const {platform,} = data;
-              return (
-                <EventTracker>
-                  {({biAction,}) => (
-                    <ActionButton
-                      key={index}
-                      fontSize={-2}
-                      boxModel={boxModel}
-                      isFlat={isFlat}
-                      miscStyles={{
-                        ...(globalButtonsStyles && globalButtonsStyles),
-                        ...(buttonStyles && buttonStyles),
-                      }}
-                      {...(icon.actionTag === 'href' ? {href: icon.action,} : {})}
-                      onClick={() => {
-                        if (icon.actionTag !== 'href') {
-                          icon.action();
-                        }
-                        biAction({
-                          actionCode: icon.bi,
-                          additionalInfo: {
-                            platform,
-                            ...(buttonText ? {NumOfTalkbacks: buttonText,} : {}),
-                          },
-                        });
-                      }}
-                    >
-                      {buttonText && <ButtonText>{buttonText}</ButtonText>}
-                      <Icon
-                        size={size}
+    return (
+      <Mutation mutation={TOGGLE_ZEN}>
+        {toggleZen => {
+          const icon = getIcon(
+            name || button,
+            elementName,
+            elementUrl,
+            toggleZen
+          );
+          const Icon = icon.component;
+          return (
+            <Query query={PlatformQuery}>
+              {({ loading, error, data, client, }) => {
+                if (loading) return <p>loading...</p>;
+                if (error) console.log(error);
+                const { platform, } = data;
+                return (
+                  <EventTracker>
+                    {({ biAction, }) => (
+                      <ActionButton
+                        key={index}
+                        fontSize={-2}
+                        boxModel={boxModel}
+                        isFlat={isFlat}
                         miscStyles={{
-                          ...(globalIconsStyles && globalIconsStyles),
-                          ...(iconStyles && iconStyles),
+                          ...(globalButtonsStyles && globalButtonsStyles),
+                          ...(buttonStyles && buttonStyles),
                         }}
-                      />
-                    </ActionButton>
-                  )}
-                </EventTracker>
-              );
-            }}
-          </Query>
-        )
-      }}
-    </Mutation>
+                        {...(icon.actionTag === 'href'
+                          ? { href: icon.action, }
+                          : {})}
+                        onClick={() => {
+                          if (icon.actionTag !== 'href') {
+                            icon.action();
+                          }
+                          biAction({
+                            actionCode: icon.bi,
+                            additionalInfo: {
+                              platform,
+                              ...(buttonText
+                                ? { NumOfTalkbacks: buttonText, }
+                                : {}),
+                            },
+                          });
+                        }}
+                      >
+                        {buttonText && <ButtonText>{buttonText}</ButtonText>}
+                        <Icon
+                          size={size}
+                          miscStyles={{
+                            ...(globalIconsStyles && globalIconsStyles),
+                            ...(iconStyles && iconStyles),
+                          }}
+                        />
+                      </ActionButton>
+                    )}
+                  </EventTracker>
+                );
+              }}
+            </Query>
+          );
+        }}
+      </Mutation>
+    );
   };
 
   const getBatch = (buttonsObj, end) =>
