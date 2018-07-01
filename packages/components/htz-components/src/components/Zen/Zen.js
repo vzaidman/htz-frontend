@@ -1,8 +1,9 @@
+/* eslint-disable react/no-unused-state */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
-import { Query, } from 'react-apollo';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import getTransitionEnd from '../../utils/getTransitionEnd';
 
 export const ZEN_QUERY = gql`
@@ -52,7 +53,9 @@ class Zen extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.animate && prevState.zenMode !== this.state.zenMode) { this.changeState(); }
+    if (this.props.animate && prevState.zenMode !== this.state.zenMode) {
+      this.changeState();
+    }
   }
 
   changeState = () => {

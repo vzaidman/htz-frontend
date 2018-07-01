@@ -1,9 +1,8 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
 
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import getView from './getView';
 import EventTracker from '../../utils/EventTracker';
 
@@ -40,44 +39,37 @@ class List extends React.Component {
     const ListComponent = selectedView
       ? Array.isArray(selectedView) ? selectedView[0].default : selectedView
       : null;
-    return (
-      <ErrorBoundary>
-        {ListComponent ? (
-          selectedView[1] ? (
-            <Query
-              query={selectedView[1].default}
-              variables={{ path: contentId, }}
-            >
-              {({ data, loading, error, }) => {
-                if (loading) return null;
-                if (error) return null;
-                return (
-                  <EventTracker>
-                    {({ biAction, gaAction, HtzReactGA, }) => {
-                      HtzReactGA.ga('ec:addImpression', {
-                        id: contentId,
-                        name: data.list.title,
-                        list: 'List impressions',
-                      });
-                      return (
-                        <ListComponent
-                          data={data}
-                          listId={contentId}
-                          gaAction={gaAction}
-                          biAction={biAction}
-                        />
-                      );
-                    }}
-                  </EventTracker>
-                );
-              }}
-            </Query>
-          ) : (
-            <ListComponent />
-          )
-        ) : null}
-      </ErrorBoundary>
-    );
+    return ListComponent ? (
+      selectedView[1] ? (
+        <Query query={selectedView[1].default} variables={{ path: contentId, }}>
+          {({ data, loading, error, }) => {
+            if (loading) return null;
+            if (error) return null;
+            return (
+              <EventTracker>
+                {({ biAction, gaAction, HtzReactGA, }) => {
+                  HtzReactGA.ga('ec:addImpression', {
+                    id: contentId,
+                    name: data.list.title,
+                    list: 'List impressions',
+                  });
+                  return (
+                    <ListComponent
+                      data={data}
+                      listId={contentId}
+                      gaAction={gaAction}
+                      biAction={biAction}
+                    />
+                  );
+                }}
+              </EventTracker>
+            );
+          }}
+        </Query>
+      ) : (
+        <ListComponent />
+      )
+    ) : null;
   }
 }
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import ArticleLink from './articleLink';
 import Button from '../Button/Button';
 import H from '../AutoLevels/H';
@@ -170,9 +170,7 @@ export default class SeriesArticles extends React.Component {
         style={{ ...(this.props.marginBottom || []), }}
         render={({
           className,
-          theme: {
-            seriesArticleI18n: { loadButton, titlePrefix, },
-          },
+          theme: { seriesArticleI18n: { loadButton, titlePrefix, }, },
         }) => (
           <div className={className}>
             <ArticleListWrapper aria-live="polite">

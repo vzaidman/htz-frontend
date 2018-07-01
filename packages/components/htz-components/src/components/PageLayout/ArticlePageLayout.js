@@ -1,7 +1,7 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
 
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import GaDimensions from '../GoogleAnalytics/GaDimensions';
 import { extractAuthorsFromArticle, } from '../GoogleAnalytics/helpers/extractAuthorsFromArticle';
 import LayoutRow from './LayoutRow'; // eslint-disable-line import/no-named-as-default

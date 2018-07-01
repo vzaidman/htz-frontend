@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import ArticleLink from './articleLink';
 import H from '../AutoLevels/H';
 
@@ -98,9 +98,7 @@ function LinksBlock({ seriesTitle, articles, marginBottom, }) {
       style={{ ...(marginBottom || []), }}
       render={({
         className,
-        theme: {
-          seriesArticleI18n: { titlePrefix, },
-        },
+        theme: { seriesArticleI18n: { titlePrefix, }, },
       }) => (
         <div className={className}>
           <SeriesTitle>{titlePrefix + seriesTitle}</SeriesTitle>

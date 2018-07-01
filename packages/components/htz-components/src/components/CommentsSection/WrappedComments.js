@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Query, Mutation, } from 'react-apollo';
+import { Query, Mutation, } from '../ApolloBoundary/ApolloBoundary';
 import CommentSection from './CommentsSection';
 import GET_ID from './queries/getId';
 import FETCH_COMMENTS from './queries/fetchComments';

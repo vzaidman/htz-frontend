@@ -2,8 +2,8 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
-import { Query, } from 'react-apollo';
 
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import NavigationQuery from './navigetionQuery';
 import DropdownList from '../DropdownList/DropdownList';
 import Hamburger from '../Animations/Hamburger';

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 import { borderBottom, } from '@haaretz/htz-css-tools';
+
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import MastheadSearch from './MastheadSearch/MastheadSearch';
 import NavigationMenu from '../NavigationMenu/NavigationMenu';
 import MastheadLogo from './MastheadLogo';

@@ -1,8 +1,8 @@
 /* global window */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import GoogleAnalyticsInit from './GoogleAnalyticsInit';
 
 const GET_HOST_USER = gql`

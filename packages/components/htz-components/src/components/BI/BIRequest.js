@@ -1,5 +1,5 @@
 import React, { Component, } from 'react';
-import { Query, } from 'react-apollo';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import { GET_USER, } from '../User/UserInjector';
 import { doStat, } from './statutil';
 

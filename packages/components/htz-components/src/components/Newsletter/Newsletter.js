@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Mutation, } from 'react-apollo';
+import { Mutation, } from '../ApolloBoundary/ApolloBoundary';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import submitNewsletter from './mutations/submitNewsletter';

@@ -1,8 +1,8 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import { Mutation, } from 'react-apollo';
 import gql from 'graphql-tag';
 import { UserFactory, } from '@haaretz/htz-user-utils';
+import { Mutation, } from '../ApolloBoundary/ApolloBoundary';
 
 export const UPDATE_USER = gql`
   mutation updateUser($user: User!) {

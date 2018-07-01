@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Query as ApolloQuery, } from 'react-apollo';
+import { Query as ApolloQuery, Mutation as ApolloMutation, } from 'react-apollo';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
-export function Query(props) {
-  return (
-    <ErrorBoundary FallbackComponent={() => <p>Error</p>}>
-      <ApolloQuery {...props}>{props.children}</ApolloQuery>
-    </ErrorBoundary>
-  );
-}
+export const Query = props => (
+  <ErrorBoundary>
+    <ApolloQuery {...props}>{props.children}</ApolloQuery>
+  </ErrorBoundary>
+);
+
+export const Mutation = props => (
+  <ErrorBoundary>
+    <ApolloMutation {...props}>{props.children}</ApolloMutation>
+  </ErrorBoundary>
+);

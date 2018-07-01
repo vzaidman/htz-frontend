@@ -1,7 +1,7 @@
 import React, { Component, Fragment, } from 'react';
 import { UserFactory, UserTypes, } from '@haaretz/htz-user-utils';
 import PropTypes from 'prop-types';
-import { Mutation, Query, } from 'react-apollo';
+import { Mutation, Query, } from '../ApolloBoundary/ApolloBoundary';
 import { UPDATE_USER, GET_USER, } from './UserInjector';
 import ImageCookies from './ImageCookies';
 

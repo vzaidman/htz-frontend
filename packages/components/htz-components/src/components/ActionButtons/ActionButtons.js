@@ -1,11 +1,11 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import { Query, Mutation, } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { border, parseStyleProps, } from '@haaretz/htz-css-tools';
 
+import { Query, Mutation, } from '../ApolloBoundary/ApolloBoundary';
 import getIcon from './iconList';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default

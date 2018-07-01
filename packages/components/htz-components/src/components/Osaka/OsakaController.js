@@ -1,8 +1,8 @@
 /* globals OBR */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
 
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import { appendScript, } from '../../utils/scriptTools';
 import OsakaQuery from './queries/getData';
 import WrappedScroll from '../Scroll/Scroll';
