@@ -2,6 +2,9 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
+import { Query, } from 'react-apollo';
+
+import NavigationQuery from './navigetionQuery';
 import DropdownList from '../DropdownList/DropdownList';
 import Hamburger from '../Animations/Hamburger';
 import Item from '../DropdownList/DropdownItem';
@@ -104,35 +107,39 @@ class NavigationMenu extends React.Component {
           const { isHovered, } = this.state;
           const { items, sites, promotions, } = this.props.menuSections;
 
-          const combinedItems = items.map(item => (
-            <Item key={`item ${item.name}`} {...item} />
-          ));
+          const combinedItems =
+            items &&
+            items.map(item => <Item key={`item ${item.name}`} {...item} />);
 
-          const combinedSites = sites.map(site => (
-            <Item
-              key={`site ${site.name}`}
-              miscStyles={{
-                textDecoration: 'underline',
-                fontWeight: 'normal',
-                backgroundColor: theme.color('primary', '+1'),
-              }}
-              {...site}
-            />
-          ));
+          const combinedSites =
+            sites &&
+            sites.map(site => (
+              <Item
+                key={`site ${site.name}`}
+                miscStyles={{
+                  textDecoration: 'underline',
+                  fontWeight: 'normal',
+                  backgroundColor: theme.color('primary', '+1'),
+                }}
+                {...site}
+              />
+            ));
 
-          const combinedPromotions = promotions.map(promotion => (
-            <Item
-              key={`promotion ${promotion.name}`}
-              variant="salesOpaque"
-              miscStyles={{ justifyContent: 'center', }}
-              {...promotion}
-            />
-          ));
+          const combinedPromotions =
+            promotions &&
+            promotions.map(promotion => (
+              <Item
+                key={`promotion ${promotion.name}`}
+                variant="salesOpaque"
+                miscStyles={{ justifyContent: 'center', }}
+                {...promotion}
+              />
+            ));
 
           const combinedMenu = [
-            ...combinedItems,
-            ...combinedSites,
-            ...combinedPromotions,
+            ...(combinedItems || []),
+            ...(combinedSites || []),
+            ...(combinedPromotions || []),
           ];
 
           return (
@@ -177,19 +184,15 @@ class NavigationMenu extends React.Component {
                     />
                   ))}
                   {isOpen && (
-                    <FelaTheme
-                      render={theme => (
-                        <ListWrapper
-                          listStyle={{
-                            ...dropdownListStyle(theme),
-                            minWidth: '6rem',
-                          }}
-                          itemStyle={dropdownItemStyle(theme)}
-                        >
-                          {combinedMenu}
-                        </ListWrapper>
-                      )}
-                    />
+                    <ListWrapper
+                      listStyle={{
+                        ...dropdownListStyle(theme),
+                        minWidth: '6rem',
+                      }}
+                      itemStyle={dropdownItemStyle(theme)}
+                    >
+                      {combinedMenu}
+                    </ListWrapper>
                   )}
                 </Fragment>
               )}
@@ -201,4 +204,14 @@ class NavigationMenu extends React.Component {
   }
 }
 
-export default NavigationMenu;
+// eslint-disable-next-line react/prop-types
+export default ({ contentId, }) => (
+  <Query query={NavigationQuery} variables={{ path: contentId, }}>
+    {({ data, loading, error, }) => {
+      if (error) return null;
+      if (loading) return <NavigationMenu menuSections={{}} />;
+      const { navMenu: { menu, }, } = data;
+      return <NavigationMenu menuSections={menu} />;
+    }}
+  </Query>
+);

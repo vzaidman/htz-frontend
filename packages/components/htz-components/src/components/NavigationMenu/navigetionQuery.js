@@ -6,7 +6,6 @@ export default gql`
     navMenu(path: $path) {
       ...NavMenu
     }
-    hostname @client
   }
   ${navMenu}
 `;
