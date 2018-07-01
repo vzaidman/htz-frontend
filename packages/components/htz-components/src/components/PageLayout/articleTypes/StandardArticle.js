@@ -321,7 +321,10 @@ class StandardArticle extends React.Component {
         );
       }
       // This is the Article Body.
-      if (element.inputTemplate === 'com.htz.StandardArticle') {
+      if (
+        element.inputTemplate === 'com.htz.StandardArticle' ||
+        element.inputTemplate === 'com.tm.StandardArticle'
+      ) {
         const { body, headlineElement, } = this.extractHeadline(element.body);
         return (
           <ApolloConsumer>

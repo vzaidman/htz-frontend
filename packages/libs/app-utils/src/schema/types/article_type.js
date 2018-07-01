@@ -10,7 +10,8 @@ const Article = new GraphQLList(
     name: 'Article',
     types: [ content, articleData, articleHeader, ],
     resolveType: value =>
-      (value.inputTemplate === 'com.htz.StandardArticle'
+      (value.inputTemplate === 'com.htz.StandardArticle' ||
+      value.inputTemplate === 'com.tm.StandardArticle'
         ? articleData
         : value.inputTemplate === 'com.htz.ArticleHeaderElement'
           ? articleHeader
