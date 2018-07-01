@@ -7,7 +7,8 @@ import { stylesPropType, } from '../../propTypes/stylesPropType';
 import Button from '../Button/Button';
 import IconAlefLogo from '../Icon/icons/IconAlefLogo';
 import IconTheMarker from '../Icon/icons/IconTheMarker';
-import Title from '../ArticleHeader/Title';
+import H from '../AutoLevels/H';
+import Section from '../AutoLevels/Section';
 import BlockLink from '../BlockLink/BlockLink';
 import AboveBlockLink from '../BlockLink/AboveBlockLink';
 
@@ -25,6 +26,14 @@ const SpecialPromotionsStyle = ({ theme, miscStyles, variant, }) => ({
     parseComponentProp(undefined, variant, theme.mq, setVariant, theme.color),
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
+});
+
+const titleStyle = ({ theme, }) => ({
+  paddingTop: '1rem',
+  paddingInlineStart: '1rem',
+  paddingInlineEnd: '1rem',
+  paddingBottom: '1rem',
+  extend: [ theme.type(-1), ],
 });
 
 function setVariant(prop, variant, getColor) {
@@ -89,24 +98,24 @@ function SpecialPromotions({
         render={({ className, theme, }) => (
           <div className={className}>
             <FelaComponent
-              style={textStyle}
+              rule={textStyle}
               render={({ className, }) => {
                 const LogoName =
                   variant === 'primary' ? IconAlefLogo : IconTheMarker;
                 return (
-                  <div className={className}>
+                  <Section tagName="div" className={className}>
                     <LogoName
                       fill={theme.specialPromotionStyle[variant].icon}
                       size={3}
                       miscStyles={IconStyle}
                     />
-                    <Title
-                      text={title}
-                      level={2}
-                      fontSize={-1}
-                      miscStyles={{ padding: '1rem', }}
+                    <FelaComponent
+                      rule={titleStyle}
+                      render={({ className, }) => (
+                        <H className={className}>{title}</H>
+                      )}
                     />
-                  </div>
+                  </Section>
                 );
               }}
             />
