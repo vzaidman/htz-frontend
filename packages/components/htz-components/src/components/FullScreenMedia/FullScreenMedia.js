@@ -31,7 +31,6 @@ const defaultProps = {
 const containerStyle = ({ isFullScreen, theme, }) => ({
   overflow: 'hidden',
   position: 'relative',
-  display: 'inline',
   ...(isFullScreen
     ? {
       backgroundColor: theme.color('neutral'),
