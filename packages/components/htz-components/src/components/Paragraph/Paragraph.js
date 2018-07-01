@@ -149,6 +149,7 @@ const getTag = tag => {
     [ 'u', UnderLine, ],
     [ 'em', Em, ],
     [ 'span', 'span', ],
+    [ 'stk', 'span', ],
     [ 'h4', H, ],
     [ 'br', () => <br />, ],
   ]);
@@ -232,14 +233,14 @@ function WrapperTag({
     attributes.content = genChildren(tagElements); // eslint-disable-line no-param-reassign
   }
 
-  return (
+  return Tag ? (
     <Tag
       {...attributes}
       {...(tagName === 'p' ? { renderFirstImpression, } : {})}
     >
       {genChildren(tagElements)}
     </Tag>
-  );
+  ) : null;
 }
 
 function genChildren(tagElements) {
