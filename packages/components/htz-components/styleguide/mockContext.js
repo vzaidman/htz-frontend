@@ -11,6 +11,11 @@ const mockContext = () => {
         console.log('got to mock context', data);
       },
     },
+    pageLoader: {
+      load: data => {
+        console.log('got to mock context', data);
+      },
+    },
   };
 };
 
