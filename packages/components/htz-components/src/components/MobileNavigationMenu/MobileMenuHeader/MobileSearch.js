@@ -2,10 +2,10 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import IconClose from '../../Icon/icons/IconClose';
+import { borderEnd, } from '@haaretz/htz-css-tools';
 import IconSearch from '../../Icon/icons/IconSearch';
-import HtzLink from '../../HtzLink/HtzLink';
 import TextInput from '../../TextInput/TextInput';
+import Button from '../../Button/Button';
 
 class HeaderSearch extends React.Component {
   static propTypes = {
@@ -21,28 +21,9 @@ class HeaderSearch extends React.Component {
 
   state = {
     query: null,
-    isHovered: false,
   };
-
-  componentDidUpdate() {
-    this.props.searchIsOpen
-      ? document.addEventListener('keydown', this.handleGlobalKeydown)
-      : document.removeEventListener('keydown', this.handleGlobalKeydown);
-  }
 
   focusOnInput = inputRef => inputRef && inputRef.focus();
-
-  handleMouseEnter = () => this.setState({ isHovered: true, });
-  handleMouseLeave = () => this.setState({ isHovered: false, });
-  handleGlobalKeydown = e => {
-    const key = e.which || e.keyCode;
-    if (key === 27) {
-      this.props.onClick();
-    }
-    else if (key === 13) {
-      this.linkRef.click();
-    }
-  };
 
   recordQuery = e =>
     this.setState({
@@ -50,7 +31,6 @@ class HeaderSearch extends React.Component {
     });
 
   render() {
-    const { isHovered, } = this.state;
     const { onClick, searchIsOpen, } = this.props;
     return (
       <FelaComponent
@@ -58,11 +38,7 @@ class HeaderSearch extends React.Component {
           display: 'flex',
           flexGrow: searchIsOpen ? '1' : '0',
           overflow: 'hidden',
-          extend: [
-            theme.getTransition(1, 'swiftOut'),
-            theme.mq({ until: 's', }, { display: 'none', }),
-            theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
-          ],
+          extend: [ borderEnd('1px', 'solid', theme.color('primary', '+1')), ],
         })}
         render={({
           className,
@@ -71,72 +47,38 @@ class HeaderSearch extends React.Component {
             getDuration,
             getTimingFunction,
             getTransition,
-            headerSearchI18n: { buttonText, placeHolder, queryUrl, },
+            mobileSearchI18n: { buttonText, placeHolder, queryUrl, },
             type,
           },
         }) => (
           <div className={className}>
-            <FelaComponent
-              style={{
-                alignItems: 'center',
-                color: color('headerSearch', 'text'),
-                display: 'flex',
-                fontWeight: '700',
-                justifyContent: 'center',
-                minWidth: '6rem',
-                padding: '1rem',
-                position: 'relative',
-                zIndex: '1',
+            <Button
+              boxModel={{ vp: 2, hp: 2, }}
+              variant="secondaryOpaque"
+              fontSize={-1}
+              onClick={onClick}
+              aria-expanded={searchIsOpen}
+              miscStyles={{
                 ...(searchIsOpen
                   ? {
-                      backgroundColor: color('headerSearch', 'bgHover'),
-                      color: color('headerSearch', 'textOpenOrHover'),
+                      display: 'none',
                     }
                   : {}),
-                extend: [
-                  type(-1),
-                  isHovered
-                    ? {
-                        backgroundColor: isHovered
-                          ? color('headerSearch', 'bgHover')
-                          : color('headerSearch', 'bgOpen'),
-                        color: color('headerSearch', 'textOpenOrHover'),
-                      }
-                    : {},
-                  getTransition(1, 'swiftOut'),
-                ],
               }}
-              render={({ className, }) => (
-                <button
-                  className={className}
-                  onClick={onClick}
-                  aria-expanded={searchIsOpen}
-                  onMouseEnter={this.handleMouseEnter}
-                  onMouseLeave={this.handleMouseLeave}
-                  onFocus={this.handleMouseEnter}
-                  onBlur={this.handleMouseLeave}
-                  type="button"
-                >
-                  {searchIsOpen ? (
-                    <IconClose size={3} color="white" fill="primary" />
-                  ) : (
-                    <Fragment>
-                      <IconSearch
-                        size={3}
-                        miscStyles={{
-                          marginEnd: '1rem',
-                          ...(isHovered
-                            ? {}
-                            : { color: color('headerSearch', 'bgHover'), }),
-                          extend: [ getTransition(1, 'swiftOut'), ],
-                        }}
-                      />
-                      <span>{buttonText}</span>
-                    </Fragment>
-                  )}
-                </button>
+            >
+              {searchIsOpen ? null : (
+                <Fragment>
+                  <IconSearch
+                    size={3}
+                    miscStyles={{
+                      marginEnd: '1rem',
+                      extend: [ getTransition(1, 'swiftOut'), ],
+                    }}
+                  />
+                  <span>{buttonText}</span>
+                </Fragment>
               )}
-            />
+            </Button>
             {searchIsOpen ? (
               <FelaComponent
                 style={{ display: 'flex', }}
@@ -167,15 +109,12 @@ class HeaderSearch extends React.Component {
                             refFunc={this.focusOnInput}
                             onChange={this.recordQuery}
                             onBlur={this.changeState}
-                            boxModel={{ vp: 0.5, }}
+                            boxModel={{ vp: 1, }}
                             variant="search"
                             miscStyles={{
-                              backgroundColor: 'transparent',
+                              // backgroundColor: 'transparent',
                               height: '100%',
                               paddingInlineEnd: '6rem',
-                              marginTop: '0',
-                              paddingTop: '1rem',
-                              paddingBottom: '1.7rem',
                             }}
                           />
                         </FelaComponent>
@@ -192,15 +131,17 @@ class HeaderSearch extends React.Component {
                             top: '0',
                           }}
                           render={({ className, }) => (
-                            <HtzLink
-                              // TODO: Change to Next link.
+                            <Button
+                              variant="primaryOpaque"
+                              boxModel={{ hp: 2, vp: 2, }}
                               href={queryUrl(this.state.query) || '#'}
                               refFunc={linkRef => {
                                 this.linkRef = linkRef;
                               }}
                               className={className}
-                              content={<IconSearch size={3} color="primary" />}
-                            />
+                            >
+                              <IconSearch size={3} />
+                            </Button>
                           )}
                         />
                       </div>

@@ -32,9 +32,22 @@ export const navigationMenuI18n = Object.freeze({
   buttonText: 'ניווט',
 });
 
+export const mobileNavigationMenuI18n = Object.freeze({
+  buttonText: 'ניווט',
+  subOpen: 'עוד',
+  subClose: 'סגור',
+});
+
 export const headerSearchI18n = Object.freeze({
   buttonText: 'חיפוש',
   placeHolder: 'הקלידו לחיפוש באתר',
+  queryUrl: query =>
+    `https://www.haaretz.co.il/misc/search-results?text=${query}&searchType=textSearch`,
+});
+
+export const mobileSearchI18n = Object.freeze({
+  buttonText: 'חיפוש',
+  placeHolder: 'חיפוש',
   queryUrl: query =>
     `https://www.haaretz.co.il/misc/search-results?text=${query}&searchType=textSearch`,
 });
@@ -218,6 +231,17 @@ export const userMenuI18n = Object.freeze({
   noUserData: 'התחברות',
 });
 
+export const mobileUserMenuI18n = Object.freeze({
+  noUserData: 'כניסה',
+  userLoggedIn: 'יציאה',
+  url: 'https://www.haaretz.co.il/misc/login-page',
+});
+
+export const mobileReadingList = Object.freeze({
+  url: 'https://www.haaretz.co.il/personal-area/my-account#readingList',
+  buttonText: 'רשימת הקריאה',
+});
+
 export const a11yMenuI18n = Object.freeze({
   a11yToggle: state => `${state ? 'הפסק' : 'הפעל'} מצב ניגודיות`,
   menuItems: Object.freeze([
@@ -232,4 +256,8 @@ export const zenTextI18n = 'קריאת זן';
 
 export const readingListMenuI18n = Object.freeze({
   url: 'https://www.haaretz.co.il/personal-area/my-account#readingList',
+});
+
+export const mobileAdditionalShare = Object.freeze({
+  text: 'שיתוף',
 });

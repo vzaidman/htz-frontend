@@ -19,6 +19,7 @@ export default function MastheadLogo({ host, }) {
           theme.mq(
             { from: 's', },
             {
+              backgroundColor: theme.color('neutral', '-10'),
               position: 'absolute',
               top: '50%',
               left: '50%',
