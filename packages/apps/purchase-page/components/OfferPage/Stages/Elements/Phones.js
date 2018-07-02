@@ -4,11 +4,13 @@ import { createComponent, } from 'react-fela';
 import PhoneSvg from '../../../PhoneSvg/PhoneSvg';
 
 const propTypes = {
+  sale: PropTypes.arrayOf(PropTypes.oneOf([ 'HTZ', 'TM', 'BOTH', ])),
   subscription: PropTypes.string.isRequired,
   size: PropTypes.number,
 };
 
 const defaultProps = {
+  sale: [],
   size: 8,
 };
 
@@ -56,17 +58,21 @@ const plusStyle = ({ size, theme, }) => {
 };
 const StyledPlus = createComponent(plusStyle);
 
-function Phones({ subscription, size, }) {
+function Phones({ subscription, size, sale, }) {
   return (
     <div aria-hidden="true">
       {subscription === 'BOTH' ? (
         <StyledPhonesCont>
           <PhoneSvg size={size} />
           <StyledPlus size={size} />
-          <PhoneSvg brand="TM" size={size} />
+          <PhoneSvg brand="TM" size={size} isOnSale={sale.includes('BOTH')} />
         </StyledPhonesCont>
       ) : (
-        <PhoneSvg brand={subscription} size={size} />
+        <PhoneSvg
+          brand={subscription}
+          isOnSale={sale.includes(subscription)}
+          size={size}
+        />
       )}
     </div>
   );

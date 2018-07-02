@@ -231,7 +231,10 @@ class MobileView extends Component {
                             </StyledItemStartCont>
                             <StyledItemEndCont>
                               <FelaComponent style={{ marginBottom: '2rem', }}>
-                                <Phones subscription={item.subscriptionName} />
+                                <Phones
+                                  sale={[ 'HTZ', ]}
+                                  subscription={item.subscriptionName}
+                                />
                               </FelaComponent>
                               {/* todo: a11y open/close menu */}
                               {/* todo: add a variant with correct focus and active colors */}

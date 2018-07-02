@@ -10,7 +10,13 @@ import {
   borderTop,
 } from '@haaretz/htz-css-tools';
 
-import { Button, Grid, GridItem, H, EventTracker } from '@haaretz/htz-components';
+import {
+  Button,
+  Grid,
+  GridItem,
+  H,
+  EventTracker,
+} from '@haaretz/htz-components';
 import PositiveCircle from './PositiveCircle';
 import Phones from '../Elements/Phones';
 
@@ -362,6 +368,7 @@ function DesktopView({
                           }}
                         >
                           <Phones
+                            sale={[ 'HTZ', ]}
                             subscription={item.subscriptionName}
                             size={7}
                           />
