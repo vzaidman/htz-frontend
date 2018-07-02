@@ -144,6 +144,7 @@ function HtzLink({
     //   [ fullId, premium, prefix, articleId, params, ] = hrefPattern.exec(href);
     //   page = getPage(prefix);
     // }
+    const isArticle = typeof href === 'string' && href.includes('1.');
 
     // TODO check this case
     const computedHref = typeof href === 'string' ? { pathname: href, } : href;
@@ -154,7 +155,7 @@ function HtzLink({
         passHref
         // href='/article'
         href={{
-          pathname: '/article',
+          pathname: isArticle ? '/article' : computedHref.pathname, // TODO FIX ME FOR BOTH APPS!
           query: { path: `${computedHref.pathname}`, },
         }}
         as={computedHref.pathname}
