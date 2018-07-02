@@ -68,12 +68,6 @@ export class ArticlePage extends React.Component {
     );
   }
 
-  updateState = () => {
-    this.setState({
-      skip: true,
-    });
-  };
-
   render() {
     const { url, } = this.props;
     return (
@@ -108,7 +102,6 @@ export class ArticlePage extends React.Component {
             }}
           </Query>
         </StyleProvider>
-        {this.updateState()}
       </Fragment>
     );
   }
