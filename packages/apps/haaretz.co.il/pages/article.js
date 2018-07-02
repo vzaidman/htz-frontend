@@ -83,11 +83,7 @@ export class ArticlePage extends React.Component {
         <DfpInjector path={url.query.path} />
         <GoogleAnalytics withEC />
         <StyleProvider renderer={styleRenderer} theme={htzTheme}>
-          <Query
-            query={ArticleInitQuery}
-            variables={{ path: url.query.path, }}
-            skip={this.state.skip}
-          >
+          <Query query={ArticleInitQuery} variables={{ path: url.query.path, }}>
             {({ loading, error, data, client, }) => {
               if (loading) return null;
               if (error) console.log(error);
