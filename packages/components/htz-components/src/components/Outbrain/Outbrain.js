@@ -4,7 +4,7 @@ import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import { appendScript, } from '../../utils/scriptTools';
 
 const GET_CANONICAL_URL = gql`
-  query {
+  query GetCanonicalUrl {
     canonicalUrl @client
   }
 `;

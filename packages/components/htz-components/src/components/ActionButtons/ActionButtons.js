@@ -13,7 +13,7 @@ import ButtonGroup from '../Button/ButtonGroup'; // eslint-disable-line import/n
 import EventTracker from '../../utils/EventTracker';
 
 const PlatformQuery = gql`
-  {
+  query GetPlatform {
     platform @client
   }
 `;

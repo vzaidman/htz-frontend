@@ -7,7 +7,7 @@ import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import getTransitionEnd from '../../utils/getTransitionEnd';
 
 export const ZEN_QUERY = gql`
-  query {
+  query GetZenStatus {
     zenMode @client
   }
 `;

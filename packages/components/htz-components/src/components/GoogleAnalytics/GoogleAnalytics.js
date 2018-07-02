@@ -6,7 +6,7 @@ import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import GoogleAnalyticsInit from './GoogleAnalyticsInit';
 
 const GET_HOST_USER = gql`
-  query {
+  query GetHostAndUserForGoogleAnalytics {
     hostname @client
     user @client {
       type

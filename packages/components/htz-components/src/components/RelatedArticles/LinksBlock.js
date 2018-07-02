@@ -7,7 +7,7 @@ import ArticleLink from './articleLink';
 import H from '../AutoLevels/H';
 
 const GET_ARTICLE_ID = gql`
-  query {
+  query GetArticleId {
     articleId @client
   }
 `;

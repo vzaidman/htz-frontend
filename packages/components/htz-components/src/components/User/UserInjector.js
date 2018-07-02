@@ -15,7 +15,7 @@ export const UPDATE_USER = gql`
 `;
 
 export const GET_USER = gql`
-  query {
+  query GetUser {
     user @client {
       type
       id

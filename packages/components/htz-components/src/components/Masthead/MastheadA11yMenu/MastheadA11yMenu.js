@@ -12,7 +12,7 @@ import {
 } from '../mastheadDropdownListStyle';
 
 const GET_A11Y_STATE = gql`
-  query {
+  query GetA11yStatus {
     a11yToggle @client
   }
 `;

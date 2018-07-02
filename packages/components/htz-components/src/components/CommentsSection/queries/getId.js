@@ -2,7 +2,7 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  query {
+  query GetIdsForComments {
     articleId @client
     commentsElementId @client
   }

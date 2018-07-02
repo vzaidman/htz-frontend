@@ -8,7 +8,7 @@ const propTypes = {};
 const defaultProps = {};
 
 const GET_ARIA_LIVE_MESSAGE = gql`
-  query {
+  query GetAriaLive {
     ariaLive @client {
       politeMessage
       assertiveMessage

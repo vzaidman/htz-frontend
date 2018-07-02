@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 
 export const SCROLL_QUERY = gql`
-  query {
+  query GetScroll {
     scroll @client {
       x
       y
