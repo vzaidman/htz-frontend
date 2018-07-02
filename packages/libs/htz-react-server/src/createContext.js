@@ -60,11 +60,12 @@ export function createLoaders(req) {
           ? `${pathWithoutQuery}/${query.offer}`
           : `${pathWithoutQuery}`; // Augment request for papi
         // '/promotions-page/more-ads/some-sub-promotion' -> '/more-ads/some-sub-promotion'
-        const normlizedPath = `${baseUri}/${polopolyPromotionsPage}${(
-          path || '/'
-        ).replace(`${polopolyPromotionsPage}`, '')}${
-          path.includes('?') ? '&' : '?'
-        }userId=${userId}`;
+        const normlizedPath = `${baseUri}${
+          polopolyPromotionsPage.startsWith('/') ? '' : '/'
+        }${polopolyPromotionsPage}${(path || '/').replace(
+          `${polopolyPromotionsPage}`,
+          ''
+        )}${path.includes('?') ? '&' : '?'}userId=${userId}`;
         console.log(
           'GRAPHQL - fetching data from papi using endpoint: ',
           normlizedPath
@@ -74,7 +75,11 @@ export function createLoaders(req) {
             if (response.ok) {
               return response;
             }
-            return fetch(`${baseUri}/${polopolyPromotionsPage}`);
+            return fetch(
+              `${baseUri}${
+                polopolyPromotionsPage.startsWith('/') ? '' : '/'
+              }${polopolyPromotionsPage}`
+            );
           })
           .then(response => response.json());
       })
@@ -84,7 +89,9 @@ export function createLoaders(req) {
     Promise.all(
       keys.map(couponCode =>
         fetch(
-          `${serviceBase}/papi/${polopolyPromotionsPage}?couponCode=${couponCode}`
+          `${serviceBase}/papi${
+            polopolyPromotionsPage.startsWith('/') ? '' : '/'
+          }${polopolyPromotionsPage}?couponCode=${couponCode}`
         ).then(response => response.json())
       )
     )

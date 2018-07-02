@@ -42,10 +42,9 @@ async function getPageToRender(req, DEV = false) {
   const userId = CookieUtils.stringToMap(cookies.get('tmsso') || '', {
     separator: /:\s?/,
   }).userId;
-  // const fetchUrl = `${protocol}://${subDomain}.${domain}/papi${polopolyPromotionsPage}${promoPath ||
-  //   ''}?userId=${userId} `;
-  const fetchUrl = `${baseService}/papi${polopolyPromotionsPage}${promoPath ||
-    ''}?userId=${userId} `;
+  const fetchUrl = `${baseService}/papi${
+    polopolyPromotionsPage.startsWith('/') ? '' : '/'
+  }${polopolyPromotionsPage}${promoPath || ''}?userId=${userId} `;
   DEV && console.log('path from getPageToRender', fetchUrl);
   try {
     const fetchData = await fetch(fetchUrl);
