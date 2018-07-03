@@ -16,9 +16,7 @@
           }
         ]
       ],
-      "presets": [
-        "next/babel"
-      ]
+      "presets": ["next/babel"]
     },
     "production": {
       "plugins": [
@@ -36,9 +34,7 @@
           }
         ]
       ],
-      "presets": [
-        "next/babel"
-      ]
+      "presets": ["next/babel"]
     },
     "commonjs": {
       "presets": [

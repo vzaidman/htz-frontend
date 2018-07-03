@@ -57,7 +57,6 @@ class BIRequest extends Component {
   state = { shouldRender: false, };
 
   componentDidMount() {
-    console.warn('render count?');
     if (!this.state.shouldRender) {
       // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({ shouldRender: true, });
