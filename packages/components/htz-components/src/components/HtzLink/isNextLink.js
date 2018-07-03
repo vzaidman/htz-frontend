@@ -1,9 +1,5 @@
 /* eslint-disable no-unused-vars */
-import config from 'config';
 import { breakUrl, } from '@haaretz/app-utils';
-
-// const domain = config.has('domain') && config.get('domain');
-// const isLocal = new RegExp(`(^((?!((https?:)?\\/\\/)).)*$)|(${domain})`);
 
 const premiumPrefix = '(?:\\.premium-)?';
 const multiSectionPrefix = '(?:\\/(.+?\\/)+)?';

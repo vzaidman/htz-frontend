@@ -87,15 +87,16 @@ const testUrls = [
 ];
 
 describe('isNextLink', () => {
-  describe('single test urls', () => {
-    const urlTest = testUrls[0];
-    it(`isNextLink ${urlTest[0]} should classify correctly`, () => {
-      expect(isNextLink(urlTest[0])).toEqual(urlTest[1]);
-    });
-  });
+  // describe('single test urls', () => {
+  //   const urlTest = testUrls[0];
+  //   it(`isNextLink ${urlTest[0]} should classify correctly`, () => {
+  //     expect(isNextLink(urlTest[0])).toEqual(urlTest[1]);
+  //   });
+  // });
   describe('test urls', () => {
     testUrls.forEach(urlTest => {
-      it(`isNextLink ${urlTest[0]} should classify correctly`, () => {
+      const modifiedIt = urlTest[2] === 'only' ? it.only : it;
+      modifiedIt(`isNextLink ${urlTest[0]} should classify correctly`, () => {
         expect(isNextLink(urlTest[0])).toEqual(urlTest[1]);
       });
     });
