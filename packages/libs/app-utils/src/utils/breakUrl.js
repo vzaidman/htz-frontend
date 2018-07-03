@@ -1,23 +1,40 @@
 export default function breakUrl(url) {
-  const subdomainRegex = /(https?)?(?::\/\/)?((.+?)\.(.+?))(?!:)(\d{2,5})?(\/.+)?$/gim;
+  const urlRegex = /^((?:(https?)(?::\/\/))?(([^\s?#/]+?)\.([^\s?#/]+?))?(?::(\d{2,5}))?)?(\/[^\s?#]*?)?(?:\/?\?([^\s#]+?))?(?:#(.+))?$/gim;
   /*
-      [0] - fullMatch. Ex. "http://elia.haaretz.co.il:3000/graphql"
-      [1] - Fully Qualified domain name (FQDN). Ex. "elia.haaretz.co.il"
-      [2] - protocol (subdomain). Ex. "elia" , "www" , "promotions"
-      [3] - hostname (subdomain). Ex. "elia" , "www" , "promotions"
-      [4] - domain (root). Ex. "haaretz.co.il" , "themarker.com"
-      [5] - port (optional) - Ex: 3000, 2004
-      [6] - path (optional) - Ex: /graphql, /papi/.premium-1204
+      [0] - fullMatch. Ex. "http://elia.haaretz.co.il:3000/graphql?query#bang"
+      [1] - Base URL (scheme + FQDN + port). Ex. "http://elia.haaretz.co.il:3000"
+      [2] - scheme. Ex. "http" , "www" , "promotions"
+      [3] - Fully Qualified domain name (FQDN). Ex. "elia.haaretz.co.il"
+      [4] - hostname (subdomain). Ex. "elia" , "www" , "promotions"
+      [5] - domain (root). Ex. "haaretz.co.il" , "themarker.com"
+      [6] - port (optional) - Ex: 3000, 2004
+      [7] - path (optional) - Ex: /graphql, /papi/.premium-1204 (forward slash sign is included in result)
+      [8] - query (optional) - Ex: ?key1=value1&key2=value3&key3 (questionmark sign is ommited in result)
+      [9] - fragment (optional) - Ex: #article-comments (hash sign is ommited in result)
     */
-
-  // eslint-disable-next-line max-len
-  const [ fullMatch, protocol, fqdn, hostname, domain, port, path, ] =
-    subdomainRegex.exec(url) || [];
-
-  if (!fqdn) {
-    console.error(
-      `createContext regexResult was null for ${url} - falling back!`
-    );
-  }
-  return { fullMatch, protocol, fqdn, hostname, domain, port, path, };
+  const [
+    fullMatch,
+    baseUrl,
+    scheme,
+    fqdn,
+    hostname,
+    domain,
+    port,
+    path,
+    query,
+    fragment,
+  ] =
+    urlRegex.exec(url) || [];
+  return {
+    fullMatch,
+    baseUrl,
+    scheme,
+    fqdn,
+    hostname,
+    domain,
+    port,
+    path,
+    query,
+    fragment,
+  };
 }

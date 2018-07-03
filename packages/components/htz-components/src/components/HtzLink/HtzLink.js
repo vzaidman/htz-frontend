@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import isNextLink from './isNextLink';
+import isNextLink, { isReactArticle, } from './isNextLink';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 
 const propTypes = {
@@ -78,25 +78,6 @@ const LinkWrapper = React.forwardRef(
     );
   }
 );
-/* eslint-enable jsx-a11y/no-static-element-interactions */
-/* eslint-enable jsx-a11y/click-events-have-key-events */
-/* eslint-enable react/prop-types */
-
-// const getPage = prefix => {
-//   if (prefix) {
-//     switch (prefix) {
-//       case 'MAGAZINE':
-//         return '/magazine';
-//       case 'RECIPE':
-//       case 'REVIEW':
-//       case 'LIVE':
-//         return '/article';
-//       default:
-//         return '/';
-//     }
-//   }
-//   return '/article';
-// };
 
 function HtzLink({
   attrs,
@@ -110,12 +91,11 @@ function HtzLink({
   prefetch,
   refFunc,
   target,
-  forceNextLink = true,
 }) {
   // eslint-disable-next-line eqeqeq
   const renderContent = content != undefined ? content : children;
   // eslint-disable-next-line eqeqeq
-  if (forceNextLink || (isNextLink(href) && !target)) {
+  if (isNextLink(href) && !target) {
     /* eslint-disable no-unused-vars */
     let fullId;
     let premium;
@@ -123,39 +103,19 @@ function HtzLink({
     let articleId;
     let params;
     let page;
-    /* eslint-enable no-unused-vars */
-
-    // if (href === '/') {
-    //   prefix = '';
-    //   articleId = '/';
-    // }
-
-    // if (href.startsWith('stage') || href.startsWith('thankYou') || href.startsWith('debt')) {
-    //   page = href;
-    // }
-    // else if (href.includes('purchase-page')) {
-    //   page = href.split('/')[href.split('/').length - 1];
-    // }
-    // else {
-    //   const hrefPattern = new RegExp(
-    //     '\\/?(?=[^/]*$)(?:(\\.\\w*)-)?(?:(\\w*)-)?(1\\.\\d*)(?:\\?(.*))?'
-    //   );
-    //   // eslint-disable-next-line no-unused-vars
-    //   [ fullId, premium, prefix, articleId, params, ] = hrefPattern.exec(href);
-    //   page = getPage(prefix);
-    // }
-    const isArticle = typeof href === 'string' && href.includes('1.');
-
     // TODO check this case
     const computedHref = typeof href === 'string' ? { pathname: href, } : href;
+    // Enables client-side navigation for react-articles
+    const computedPathname = isReactArticle(computedHref.pathname)
+      ? '/article'
+      : computedHref.pathname;
 
     return (
       <Link
         prefetch={prefetch}
         passHref
-        // href='/article'
         href={{
-          pathname: isArticle ? '/article' : computedHref.pathname, // TODO FIX ME FOR BOTH APPS!
+          pathname: computedPathname,
           query: { path: `${computedHref.pathname}`, },
         }}
         as={computedHref.pathname}
