@@ -28,6 +28,7 @@
     "apollo-cache-inmemory": "^1.2.2",
     "apollo-client": "^2.3.2",
     "apollo-link": "^1.2.2",
+    "apollo-link-error": "^1.1.0",
     "apollo-link-http": "^1.5.4",
     "apollo-link-state": "^0.4.1",
     "config": "^1.26.2",
@@ -44,6 +45,7 @@
     "apollo-cache-inmemory": "^1.1.12",
     "apollo-client": "^2.2.8",
     "apollo-link": "^1.2.1",
+    "apollo-link-error": "^1.1.0",
     "apollo-link-http": "^1.5.3",
     "apollo-link-state": "^0.4.1",
     "config": "^1.26.2",
@@ -57,6 +59,7 @@
   },
   "dependencies": {
     "@haaretz/htz-user-utils": "^0.1.0",
+    "chalk": "^2.4.1",
     "graphql-type-json": "^0.2.1"
   }
 }

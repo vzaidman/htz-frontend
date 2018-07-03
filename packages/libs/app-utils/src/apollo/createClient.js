@@ -4,11 +4,13 @@ import {
   InMemoryCache,
   IntrospectionFragmentMatcher,
 } from 'apollo-cache-inmemory';
+import { onError, } from 'apollo-link-error';
 import { HttpLink, } from 'apollo-link-http';
 import { withClientState, } from 'apollo-link-state';
 import { UserFactory, } from '@haaretz/htz-user-utils';
 import fetch from 'isomorphic-unfetch';
 import config from 'config';
+import chalk from 'chalk';
 import gql from 'graphql-tag';
 import switchToDomain from '../utils/switchToDomain';
 
@@ -75,6 +77,29 @@ function create(initialState, req) {
     fetch,
     includeExtensions: true,
   });
+
+  const errorLink = onError(({ operation, graphQLErrors, networkError, }) => {
+    if (graphQLErrors) {
+      console.log(
+        `${chalk.red('[GraphQL error]:')} Operation Name: ${
+          operation.operationName
+        }`
+      );
+      graphQLErrors.map(({ message, locations, path, }) =>
+        console.log(
+          `${chalk.red(
+            '[GraphQL error]:'
+          )} Message: ${message}, Location: ${locations.map(
+            ({ line, column, }) => `{ line: ${line}, column: ${column} }`
+          )}, Path: ${path}`
+        )
+      );
+    }
+    if (networkError) {
+      console.log(`${chalk.red('[Network error]:')} ${networkError}`);
+    }
+  });
+
   const inMemoryCache = new InMemoryCache({
     fragmentMatcher: customFragmentMatcher,
     dataIdFromObject: ({ __typename, contentId, }) =>
@@ -185,13 +210,9 @@ function create(initialState, req) {
   return new ApolloClient({
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
-    link: ApolloLink.from([ stateLink, link, ]),
+    link: ApolloLink.from([ errorLink, stateLink, link, ]),
     cache: inMemoryCache,
     queryDuplication: true,
-    onError: errorObj => {
-      console.log(errorObj.graphQLErrors);
-      console.log(errorObj.networkError);
-    },
   });
 }
 
