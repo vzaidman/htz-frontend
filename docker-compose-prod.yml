@@ -14,9 +14,9 @@ services:
       # the following environment is optional
       - PORT=2000
       - BIND_ADDRESS=ms-apps
-      - HOSTNAME=docker
-      - GRAPHQL_USE_SSL=false
-      - GRAPHQL_EXPOSE_PORT=true
+      - HOSTNAME=ms-apps
+      - GRAPHQL_USE_SSL=true
+      - GRAPHQL_EXPOSE_PORT=false
 
     networks:
       - prod01
