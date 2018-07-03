@@ -27,8 +27,9 @@ export function doStatAction(action, user) {
     }`;
 
   const { additionalInfo, } = action;
-  const serializedAdditionalInfo =
-    typeof additionalInfo === 'object' ? JSON.stringify(additionalInfo) : '';
+  const serializedAdditionalInfo = JSON.stringify(
+    Object.assign({ isReact: true, }, additionalInfo || {})
+  );
 
   const statData = {
     url: document.URL || '',
@@ -54,10 +55,29 @@ export function doStatAction(action, user) {
  * This function is responsible for sending a request to the DS server on pageload
  * @export
  * @param {object} user a plain user object, as defined in @htz-user-utils
+ * @param {object[]} lineage optional list which contains article content id and sections pathSegments
+ * @param {string} writerId  optional article's writer id.
+ * @param {object} user a plain user object, as defined in @htz-user-utils
  * @returns a promise for the request made to the DS server, which resolves to a Response,
  * or rejected if a timeout (default: 5000ms) has been reached
  */
-export function doStat(user) {
+export function doStat(user, lineage = [], writerId = null) {
+  let primarySection = null;
+  let secondarySection = null;
+  let articleId = null;
+
+  if (lineage.length > 1) {
+    articleId = lineage[0].contentId || null;
+    const partialLineage = lineage.slice(1, -1);
+    const [
+      primarySectionLineage = {},
+      secondarySectionLineage = {},
+    ] = partialLineage.reverse();
+
+    primarySection = primarySectionLineage.pathSegment || null;
+    secondarySection = secondarySectionLineage.pathSegment || null;
+  }
+
   dsUrl =
     dsUrl ||
     `${window.location.protocol}//ds.haaretz.co.il/${
@@ -65,7 +85,6 @@ export function doStat(user) {
     }`;
 
   const href = window.location.href;
-
   const statData = {
     sso_id: user.id || AbuseService.getSsoOnAbusePage() || '',
     anonymous_id: user.anonymousId || '',
@@ -83,10 +102,10 @@ export function doStat(user) {
     url: window.document.URL,
     site: window.document.location.origin,
     domain: window.location.hostname,
-    primary_section: null, // getDataFromElement('statutilsections', { split: { char: '/', place: 1, }, }) || null,
-    secondary_section: null, // getDataFromElement('statutilsections', { split: { char: '/', place: 2, }, }) || '',
-    article_id: null, // getDataFromElement('statutilcontentid') || '',
-    writer_id: null, // getDataFromElement('statutilWriter', { aggregate: true, }) || '',
+    primary_section: primarySection,
+    secondary_section: secondarySection,
+    article_id: articleId,
+    writer_id: writerId, // getDataFromElement('statutilWriter', { aggregate: true, }) || '',
     openmode_back: null, // isOnArticlePage() ? getDataFromElement('statutilispremiumcontent') === 'false' ? 1 : 0 : null,
     openmode_front: null, // isOnArticlePage() ? (typeof openMode !== 'undefined' ? openMode : '') : null, // Defined in global scope.. :-(
     utm_medium: extractParameter('utm_medium', href),
@@ -94,7 +113,7 @@ export function doStat(user) {
     utm_content: extractParameter('utm_content', href),
     utm_campaign: extractParameter('utm_campaign', href),
     referrer_type: window.document.referrer,
-    additional_info: null, // validateInputNullIfInvalid(additionalinfo),
+    additional_info: querystring.stringify({ isReact: true, }),
   };
 
   return withTimeout(

@@ -6,6 +6,7 @@ export default gql`
     lineage {
       contentId
       name
+      pathSegment
       url
     }
   }

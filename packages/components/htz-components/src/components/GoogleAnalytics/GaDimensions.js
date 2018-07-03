@@ -8,7 +8,7 @@ class GaDimensions extends React.Component {
     // The paywall blocking level of the article
     articlePaywallMode: PropTypes.string,
     // Array of article's author/s
-    authors: PropTypes.arrayOf(PropTypes.shape({})),
+    authors: PropTypes.string,
     // Page type
     pageType: PropTypes.string,
     // User type

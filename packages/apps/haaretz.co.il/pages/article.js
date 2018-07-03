@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic';
 import {
   AriaLive,
   ArticlePageLayout,
+  BIRequest,
   DeviceTypeInjector,
   GaDimensions,
   GoogleAnalytics,
@@ -83,6 +84,7 @@ export class ArticlePage extends React.Component {
                 <Fragment>
                   <AriaLive />
                   <DeviceTypeInjector />
+                  <BIRequest articleId={url.query.path} />
                   <GaDimensions userType={data.user.type} />
                   <ArticlePageLayout
                     articleId={this.props.url.query.path}
