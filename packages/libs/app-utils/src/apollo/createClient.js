@@ -78,27 +78,30 @@ function create(initialState, req) {
     includeExtensions: true,
   });
 
-  const errorLink = onError(({ operation, graphQLErrors, networkError, }) => {
-    if (graphQLErrors) {
-      console.log(
-        `${chalk.red('[GraphQL error]:')} Operation Name: ${
-          operation.operationName
-        }`
-      );
-      graphQLErrors.map(({ message, locations, path, }) =>
+  const errorLink = onError(
+    ({ response, operation, graphQLErrors, networkError, }) => {
+      if (graphQLErrors) {
         console.log(
-          `${chalk.red(
-            '[GraphQL error]:'
-          )} Message: ${message}, Location: ${locations.map(
-            ({ line, column, }) => `{ line: ${line}, column: ${column} }`
-          )}, Path: ${path}`
-        )
-      );
+          `${chalk.red('[GraphQL error]:')} Operation Name: ${
+            operation.operationName
+          }`
+        );
+        graphQLErrors.map(({ message, locations, path, }) =>
+          console.log(
+            `${chalk.red(
+              '[GraphQL error]:'
+            )} Message: ${message}, Location: ${locations.map(
+              ({ line, column, }) => `{ line: ${line}, column: ${column} }`
+            )}, Path: ${path}`
+          )
+        );
+      }
+      if (networkError) {
+        console.log(`${chalk.red('[Network error]:')} ${networkError}`);
+      }
+      if (response) response.errors = null;
     }
-    if (networkError) {
-      console.log(`${chalk.red('[Network error]:')} ${networkError}`);
-    }
-  });
+  );
 
   const inMemoryCache = new InMemoryCache({
     fragmentMatcher: customFragmentMatcher,
