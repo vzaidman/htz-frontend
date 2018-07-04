@@ -54,14 +54,10 @@ const IconStyle = {
   flexShrink: '0',
 };
 SpecialPromotions.propTypes = {
-  /**
-   * An object comes from polopoly for each special promotion.
-   */
-  data: PropTypes.shape({
-    title: PropTypes.string,
-    url: PropTypes.string,
-    urlText: PropTypes.string,
-  }).isRequired,
+  contentName: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  toolTip: PropTypes.string.isRequired,
+  linkText: PropTypes.string,
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
@@ -80,17 +76,21 @@ SpecialPromotions.propTypes = {
   ]),
 };
 SpecialPromotions.defaultProps = {
+  linkText: '',
   miscStyles: null,
   variant: 'primary',
 };
 
 function SpecialPromotions({
-  data: { url, title, urlText, },
+  contentName,
+  href,
+  toolTip,
+  linkText,
   miscStyles,
   variant,
 }) {
   return (
-    <BlockLink href={url}>
+    <BlockLink href={href}>
       <FelaComponent
         miscStyles={miscStyles}
         variant={variant}
@@ -112,7 +112,7 @@ function SpecialPromotions({
                     <FelaComponent
                       rule={titleStyle}
                       render={({ className, }) => (
-                        <H className={className}>{title}</H>
+                        <H className={className}>{contentName}</H>
                       )}
                     />
                   </Section>
@@ -124,9 +124,9 @@ function SpecialPromotions({
                 <div className={className} style={{ display: 'flex', }}>
                   <Button
                     variant={theme.specialPromotionStyle[variant].button}
-                    href={url}
+                    href={href}
                   >
-                    {urlText}
+                    {linkText}
                   </Button>
                 </div>
               )}

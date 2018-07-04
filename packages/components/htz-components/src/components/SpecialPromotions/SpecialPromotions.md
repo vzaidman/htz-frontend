@@ -5,11 +5,9 @@ Special promotions element meant to receive an auther/article promotion data and
 ```jsx
 <div dir="rtl">
   <SpecialPromotions
-    data={{
-      title: 'מרוני בר-און ועד נוני מוזס: כל פרשות נתניהו',
-      url: 'https://www.haaretz.co.il/news/politics/.premium-1.6014424',
-      urlText: 'לכתבה',
-    }}
+    contentName='מרוני בר-און ועד נוני מוזס: כל פרשות נתניהו',
+    href='https://www.haaretz.co.il/news/politics/.premium-1.6014424',
+    linkText='לכתבה',
     miscStyles={{ maxWidth: '80rem' }}
   />
 </div>
@@ -27,11 +25,9 @@ Each variant sets:
 ```jsx
 <div dir="rtl">
   <SpecialPromotions
-    data={{
-      title: 'החלום האמריקאי על בית מחזיר את הרעל לשווקים',
-      url: 'https://www.themarker.com/wallstreet/1.6026381',
-      urlText: 'לכתבה',
-    }}
+    contentName='החלום האמריקאי על בית מחזיר את הרעל לשווקים',
+    href='https://www.themarker.com/wallstreet/1.6026381',
+    linkText='לכתבה',
     miscStyles={{ maxWidth: '80rem' }}
     variant="primaryInverse"
   />
