@@ -205,7 +205,7 @@ export function buildUrl(contentId, data, options = {}) {
   // Url suffix based on whether this is an uploaded or fetched image
   const urlSuffix = version
     ? `/v${version}/${contentId}.${imageNameFromData}`
-    : `/${polopolyImageBaseHref}/polopoly_fs/${contentId}!/${imageNameFromData}`;
+    : `/${polopolyImageBaseHref}/polopoly_fs/${contentId}!/image/${imageNameFromData}`;
   // construct url string from params
   const url =
     baseUrl +
