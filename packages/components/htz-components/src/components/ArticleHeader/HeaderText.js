@@ -6,6 +6,10 @@ import Kicker from './Kicker';
 import H from '../AutoLevels/H';
 
 HeaderText.propTypes = {
+  /** Class(es) to be added to the DOM element.
+   * Can be passed by manually, or by Fela's createComponent
+   */
+  className: PropTypes.string,
   /**
    * Kicker of Article. A short, catchy word or phrase over a major headline
    */
@@ -17,6 +21,7 @@ HeaderText.propTypes = {
 };
 
 HeaderText.defaultProps = {
+  className: null,
   kicker: null,
   subtitle: null,
 };
@@ -36,11 +41,11 @@ const subTitleStyle = theme => ({
   extend: [ theme.type(1), ],
 });
 
-function HeaderText({ kicker, title, subtitle, }) {
+function HeaderText({ kicker, title, subtitle, className, }) {
   return (
     <FelaTheme
       render={theme => (
-        <div>
+        <div className={className}>
           {kicker && (
             <Kicker
               isBlock={false}

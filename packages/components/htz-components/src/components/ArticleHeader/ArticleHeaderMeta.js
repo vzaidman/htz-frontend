@@ -20,7 +20,7 @@ ArticleHeaderMeta.propTypes = {
   /**
    * The publishing date of the article
    */
-  publishDateTime: PropTypes.instanceOf(Date).isRequired,
+  publishDate: PropTypes.instanceOf(Date).isRequired,
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
@@ -96,14 +96,14 @@ const alertsAndDesktopTimeContStyle = theme => ({
   extend: [ theme.mq({ from: 'l', }, { marginTop: '2rem', }), ],
 });
 
-function ArticleHeaderMeta({ authors, publishDateTime, miscStyles, }) {
+function ArticleHeaderMeta({ authors, publishDate, miscStyles, }) {
   return (
     <FelaComponent
       miscStyles={miscStyles}
       rule={wrapperStyle}
       render={({ className, theme, }) => (
         <div className={className}>
-          <FelaComponent style={imageAuthorsAndMobileTimeContStyle(theme)}>
+          <FelaComponent style={imageAuthorsAndMobileTimeContStyle}>
             {/*  Author image */}
             {authors[0].image && (
               <Image
@@ -150,9 +150,7 @@ function ArticleHeaderMeta({ authors, publishDateTime, miscStyles, }) {
                           idx === authors.length - 1
                             ? null
                             : authors.length > 1
-                              ? authors.length - 2 === idx
-                                ? '" ו"'
-                                : '", "'
+                              ? authors.length - 2 === idx ? '" ו"' : '", "'
                               : null,
                       },
                       display: 'inline',
@@ -165,7 +163,7 @@ function ArticleHeaderMeta({ authors, publishDateTime, miscStyles, }) {
                 mobileTime
                 render={({ className, }) => (
                   <Time
-                    time={publishDateTime}
+                    time={publishDate}
                     format="DD.MM.YYYY HH:mm"
                     className={className}
                   />
@@ -179,14 +177,14 @@ function ArticleHeaderMeta({ authors, publishDateTime, miscStyles, }) {
               guyk: should it be only if there is only one author
             (that was the way it was here before refactoring) */}
             {// authors.length === 1 &&
-            authors[0].hasPushAlerts && <Alerts author={authors[0]} />}
+            authors[0].hasEmailAlerts && <Alerts author={authors[0]} />}
           </FelaComponent>
           <FelaComponent
             rule={timeStyle}
             mobileTime={false}
             render={({ className, }) => (
               <Time
-                time={publishDateTime}
+                time={publishDate}
                 format="DD.MM.YYYY HH:mm"
                 className={className}
               />
