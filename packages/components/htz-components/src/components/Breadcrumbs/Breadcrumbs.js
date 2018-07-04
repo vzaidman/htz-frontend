@@ -9,6 +9,11 @@ import { Query, } from '../ApolloBoundary/ApolloBoundary';
 
 const propTypes = {
   articleId: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
+
+const defaultProps = {
+  className: null,
 };
 
 const GET_BREADCRUMBS = gql`
@@ -20,7 +25,7 @@ const GET_BREADCRUMBS = gql`
   ${breadcrumbs}
 `;
 
-function Breadcrumbs({ articleId, }) {
+function Breadcrumbs({ articleId, className, }) {
   return (
     <Query
       query={GET_BREADCRUMBS}
@@ -41,7 +46,7 @@ function Breadcrumbs({ articleId, }) {
             render={theme => {
               const { breadcrumbsI18n: { ariaLabel, }, } = theme;
               return (
-                <nav aria-label={ariaLabel}>
+                <nav aria-label={ariaLabel} className={className}>
                   {crumbs.map((crumb, index) => (
                     <FelaComponent
                       key={crumb.contentId}
@@ -92,5 +97,6 @@ function Breadcrumbs({ articleId, }) {
 }
 
 Breadcrumbs.propTypes = propTypes;
+Breadcrumbs.defaultProps = defaultProps;
 
 export default Breadcrumbs;
