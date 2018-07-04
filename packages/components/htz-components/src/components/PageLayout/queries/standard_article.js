@@ -8,6 +8,7 @@ import {
   image,
   imageGallery,
   interactive,
+  link,
   paragraph,
   quote,
   relatedArticles,
@@ -60,6 +61,9 @@ export default gql`
                 ... on Interactive {
                   ...Interactive
                 }
+                ... on Link {
+                  ...Link
+                }
                 ... on Paragraph {
                   ...Paragraph
                 }
@@ -93,6 +97,7 @@ export default gql`
   ${image}
   ${imageGallery}
   ${interactive}
+  ${link}
   ${paragraph}
   ${quote}
   ${relatedArticles}

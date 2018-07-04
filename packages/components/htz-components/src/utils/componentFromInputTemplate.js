@@ -21,6 +21,7 @@ import Paragraph from '../components/Paragraph/Paragraph';
 import Quote from '../components/Quote/Quote';
 import RelatedArticles from '../components/RelatedArticles/RelatedArticles';
 import SeriesArticles from '../components/RelatedArticles/SeriesArticles';
+import SpecialPromotions from '../components/SpecialPromotions/SpecialPromotions';
 import Tags from '../components/Tags/Tags';
 import Video from '../components/Video/Video';
 
@@ -52,6 +53,7 @@ const inputTemplateToComponent = new Map([
   [ 'linksBlock', LinksBlock, ],
   [ 'relatedArticles', RelatedArticles, ],
   [ 'relatedArticleSeries', SeriesArticles, ],
+  [ 'com.tm.Link', SpecialPromotions, ],
   [ 'tagsElement', Tags, ],
 
   /* Misc components */

@@ -8,6 +8,7 @@ import htmlElement from './html_element_type';
 import image from './image_type';
 import imageGallery from './image_gallery_type';
 import interactive from './interactive_type';
+import link from './link_type';
 import paragraph from './paragraph_type';
 import relatedArticles from './related_articles_type';
 import seriesOrBlockArticles from './series_or_block_articles_type';
@@ -22,6 +23,7 @@ const types = new Map([
   [ 'com.tm.Image', image, ],
   [ 'com.tm.ImageGalleryElement', imageGallery, ],
   [ 'interactiveElement', interactive, ],
+  [ 'com.tm.Link', link, ],
   [ 'paragraph', paragraph, ],
   [ 'relatedArticles', relatedArticles, ],
   [ 'relatedArticleSeries', seriesOrBlockArticles, ],
@@ -42,6 +44,7 @@ const ArticleBody = new GraphQLList(
       image,
       imageGallery,
       interactive,
+      link,
       paragraph,
       relatedArticles,
       seriesOrBlockArticles,
