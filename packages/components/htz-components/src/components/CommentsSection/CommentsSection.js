@@ -1,6 +1,6 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { FelaTheme, createComponent, } from 'react-fela';
+import { FelaTheme, createComponent, FelaComponent, } from 'react-fela';
 import Recaptcha from 'react-google-invisible-recaptcha';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList'; // eslint-disable-line import/no-named-as-default
@@ -149,9 +149,7 @@ class CommentsSection extends React.Component {
       return (a, b) =>
         (a.isEditorPick === b.isEditorPick
           ? 0
-          : a.isEditorPick === 'true'
-            ? -1
-            : 1);
+          : a.isEditorPick === 'true' ? -1 : 1);
     }
     return (a, b) => b.publishingDateSortable - a.publishingDateSortable;
   }
@@ -189,7 +187,19 @@ class CommentsSection extends React.Component {
             },
           },
         }) => (
-          <Fragment>
+          <FelaComponent
+            style={theme => ({
+              extend: [
+                theme.mq({ until: 's', }, { paddingBottom: '3rem', }),
+                theme.mq({ from: 's', until: 'l', }, { paddingBottom: '7rem', }),
+                theme.mq(
+                  { from: 'l', until: 'xl', },
+                  { paddingBottom: '14rem', }
+                ),
+                theme.mq({ from: 'xl', }, { paddingBottom: '23rem', }),
+              ],
+            })}
+          >
             <CommentForm
               initNewComment={initNewComment}
               signUpNotification={signUpNotification}
@@ -233,7 +243,7 @@ class CommentsSection extends React.Component {
               style={{ display: 'none', }}
               badge="inline"
             />
-          </Fragment>
+          </FelaComponent>
         )}
       />
     );
