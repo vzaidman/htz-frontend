@@ -1,226 +1,153 @@
 /* global fetch, Headers */
 import React from 'react';
-import { createComponent, FelaTheme, FelaComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ApolloConsumer, } from 'react-apollo';
-import { parseComponentProp, borderBottom, } from '@haaretz/htz-css-tools';
+import { borderTop, } from '@haaretz/htz-css-tools';
 
 import getComponent from '../../../utils/componentFromInputTemplate';
 import ArticleBody from '../../ArticleBody/ArticleBody';
-import HeaderText from '../../ArticleHeader/HeaderText';
 import ArticleHeaderMeta from '../../ArticleHeader/ArticleHeaderMeta';
-import ActionButtons from '../../ActionButtons/ActionButtons';
-import Media from '../../Media/Media';
+import H from '../../AutoLevels/H';
+import Section from '../../AutoLevels/Section';
+import StandardArticleHeader from './StandardArticleElements/StandardArticleHeader';
+import LayoutRow from '../../PageLayout/LayoutRow'; // eslint-disable-line import/no-named-as-default
+import LayoutContainer from '../../PageLayout/LayoutContainer'; // eslint-disable-line import/no-named-as-default
 import SideBar from '../../SideBar/SideBar';
-import HeadlineElement from '../../HeadlineElement/HeadlineElement';
 import Zen from '../../Zen/Zen';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 
-const propTypes = {
-  /**
-   * Article's ID
-   */
-  articleId: PropTypes.string.isRequired,
-  article: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  aside: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  seoData: PropTypes.shape({}).isRequired,
-};
+// const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
-const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
+const startSideElementStyle = ({ theme, hideUnderLargeBreakPoint, }) => ({
+  extend: [
+    ...(hideUnderLargeBreakPoint
+      ? [ theme.mq({ until: 'l', }, { display: 'none', }), ]
+      : []),
+    theme.mq(
+      { from: 'l', },
+      {
+        position: 'absolute',
+        start: '2rem',
+        maxWidth: '25rem',
+      }
+    ),
+  ],
+});
 
-const mainWrapper = ({ theme, }) => ({
-  position: 'relative',
-  backgroundColor: theme.color('neutral', '-10'),
-  paddingBottom: '8rem',
-  ...borderBottom('2px', 8, 'solid', theme.color('primary')),
-  ':before': {
-    backgroundColor: theme.color('primary', '-6'),
-    content: '""',
-    height: '100%',
-    position: 'absolute',
-    top: '0',
-    right: '0',
-    zIndex: '0',
-    extend: [
-      ...[
-        parseComponentProp(
-          'width',
-          theme.articleStyle.article.marginStart,
-          theme.mq,
-          mediaQueryCallback
-        ),
+// eslint-disable-next-line react/prop-types
+const SectionTitle = ({ title, }) => (
+  <FelaComponent
+    style={theme => ({
+      color: theme.color('primary'),
+      fontWeight: 'bold',
+      extend: [
+        theme.type(3, { fromBp: 'l', }),
+        theme.type(1, { untilBp: 'l', }),
+        theme.mq({ until: 'l', }, { marginInlineStart: '2rem', }),
       ],
-    ],
-  },
-});
-const ArticleContainer = createComponent(mainWrapper, 'article');
-
-const headerStyle = ({ isSharing = false, theme, }) => ({
-  marginTop: isSharing ? '1rem' : '3rem',
-  marginBottom: '2rem',
-  extend: [
-    ...(isSharing ? [ theme.mq({ until: 'm', }, { display: 'none', }), ] : []),
-    parseComponentProp(
-      'marginStart',
-      theme.articleStyle.header.marginStart,
-      theme.mq,
-      mediaQueryCallback
-    ),
-    parseComponentProp(
-      'marginEnd',
-      theme.articleStyle.header.marginEnd,
-      theme.mq,
-      mediaQueryCallback
-    ),
-  ],
-});
-
-// eslint-disable-next-line react/prop-types
-const Header = ({ authors, title, subtitle, publishDate, exclusive, }) => (
-  <FelaComponent rule={headerStyle} render="header">
-    <HeaderText kicker={exclusive} title={title} subtitle={subtitle} />
-    <ArticleHeaderMeta
-      publishDateTime={publishDate}
-      authors={authors}
-      miscStyles={{
-        marginTop: [
-          { until: 's', value: '3rem', },
-          { from: 's', until: 'l', value: '2rem', },
-        ],
-        display: 'flex',
-        justifyContent: 'flexStart',
-        position: [ { from: 'l', value: 'absolute', }, ],
-        top: [ { from: 'l', value: '3rem', }, ],
-        right: [ { from: 'l', value: '3rem', }, ],
-      }}
-    />
-  </FelaComponent>
+    })}
+    render={({ className, }) => <H className={className}>{title}</H>}
+  />
 );
-
-const SharingTools = props => (
-  <FelaComponent rule={headerStyle} isSharing>
-    <ActionButtons {...props} />
-  </FelaComponent>
-);
-
-const sectionStyle = ({ theme, }) => ({
-  extend: [
-    ...[
-      parseComponentProp(
-        'marginStart',
-        theme.articleStyle.article.marginStart,
-        theme.mq,
-        mediaQueryCallback
-      ),
-    ],
-    ...[
-      parseComponentProp(
-        'marginEnd',
-        theme.articleStyle.article.marginEnd,
-        theme.mq,
-        mediaQueryCallback
-      ),
-    ],
-  ],
-});
-const ArticleSection = createComponent(sectionStyle);
-
-const wideStyle = ({ theme, }) => ({
-  backgroundColor: theme.color('neutral', '-10'),
-  display: 'flex',
-  justifyContent: 'center',
-  position: 'relative',
-});
-const ArticleWide = createComponent(wideStyle);
-
-// eslint-disable-next-line react/prop-types
-const BodyWrapper = ({ children, }) => (
+/* eslint-disable react/prop-types */
+const StandardLayoutRow = ({
+  children,
+  publishDate,
+  authors,
+  title,
+  isArticleBody,
+  /* eslint-enable react/prop-types */
+}) => (
   <FelaComponent
     style={theme => ({
       extend: [
-        ...[
-          parseComponentProp(
-            'width',
-            theme.articleStyle.body.width,
-            theme.mq,
-            mediaQueryCallback
-          ),
-        ],
-        ...[
-          parseComponentProp(
-            'margin',
-            theme.articleStyle.body.margin,
-            theme.mq,
-            mediaQueryCallback
-          ),
-        ],
-        ...[
-          parseComponentProp(
-            'marginStart',
-            theme.articleStyle.body.marginStart,
-            theme.mq,
-            mediaQueryCallback
-          ),
-        ],
-        ...[
-          parseComponentProp(
-            'marginEnd',
-            theme.articleStyle.body.marginEnd,
-            theme.mq,
-            mediaQueryCallback
-          ),
-        ],
+        borderTop(
+          '2px',
+          isArticleBody ? 0 : 6,
+          'solid',
+          isArticleBody ? 'transparent' : theme.color('primary')
+        ),
       ],
     })}
-  >
-    {children}
-  </FelaComponent>
+    render={({ className, }) => (
+      <Section className={className}>
+        <FelaComponent
+          style={theme => ({
+            position: 'relative',
+            paddingInlineStart: [ { from: 'l', value: '44rem', }, ],
+            extend: [ theme.mq({ from: 'l', }, { paddingInlineStart: '25rem', }), ],
+          })}
+        >
+          <FelaComponent
+            rule={startSideElementStyle}
+            hideUnderLargeBreakPoint={!!authors}
+          >
+            {authors && (
+              <ArticleHeaderMeta authors={authors} publishDate={publishDate} />
+            )}
+            {title && <SectionTitle title={title} />}
+          </FelaComponent>
+          <FelaComponent
+            style={theme => ({
+              extend: [
+                theme.mq(
+                  { until: 'l', },
+                  { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }
+                ),
+                theme.mq(
+                  { from: 'l', },
+                  { paddingInlineStart: '5rem', paddingInlineEnd: '5rem', }
+                ),
+              ],
+            })}
+          >
+            {children}
+          </FelaComponent>
+        </FelaComponent>
+      </Section>
+    )}
+  />
 );
 
-const asideStyle = ({ theme, }) => ({
-  position: 'absolute',
-  height: '100%',
-  top: '0',
-  left: '0',
-  extend: [
-    ...[
-      parseComponentProp(
-        'width',
-        theme.articleStyle.article.marginEnd,
-        theme.mq,
-        mediaQueryCallback
-      ),
-    ],
-  ],
-});
-const ArticleAside = createComponent(asideStyle, 'aside');
+// eslint-disable-next-line react/prop-types
+const WideLayoutRow = ({ children, }) => (
+  <FelaComponent
+    style={theme => ({
+      extend: [ borderTop('2px', 6, 'solid', theme.color('primary')), ],
+    })}
+    render={({ className, }) => (
+      <Section className={className}>{children}</Section>
+    )}
+  />
+);
 
 class StandardArticle extends React.Component {
+  static propTypes = {
+    /**
+     * Article's ID
+     */
+    articleId: PropTypes.string.isRequired,
+    article: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    aside: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    seoData: PropTypes.shape({}).isRequired,
+  };
+
   state = {
     articleUrl: null,
     articleTitle: null,
-    articleWidth: null,
     facebookCount: null,
   };
 
-  componentDidMount() {
-    // eslint-disable-next-line react/no-did-mount-set-state
-    this.setState({
-      articleWidth: this.container && this.container.offsetWidth,
-    });
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.props !== nextProps ||
-      this.state.articleUrl !== nextState.articleUrl ||
-      this.state.articleWidth !== nextState.articleWidth
+      this.props !== nextProps || this.state.articleUrl !== nextState.articleUrl
     );
   }
 
   componentDidUpdate() {
-    if (!this.state.facebookCount && this.state.facebookCount) {
+    if (!this.state.facebookCount) {
       this.getFacebookCount(this.state.articleUrl);
     }
   }
@@ -266,125 +193,6 @@ class StandardArticle extends React.Component {
     return { body, };
   };
 
-  extractContent = content =>
-    content.map(element => {
-      // This is the Article Header.
-      if (element.inputTemplate === 'com.htz.ArticleHeaderElement') {
-        return (
-          <ArticleSection>
-            <Header {...element.data} />
-            <FelaTheme
-              render={theme => (
-                <SharingTools
-                  elementName={this.state.articleTitle}
-                  elementUrl={this.state.articleUrl}
-                  buttons={{
-                    start: [
-                      {
-                        name: 'facebookLogo',
-                        buttonText: this.state.facebookCount,
-                        iconStyles: {
-                          color: theme.color('facebook'),
-                        },
-                      },
-                      {
-                        name: 'whatsapp',
-                        iconStyles: {
-                          color: theme.color('whatsapp'),
-                        },
-                      },
-                      'mailAlert',
-                    ],
-                    end: [
-                      {
-                        name: 'comments',
-                        buttonText: 78,
-                      },
-                      'print',
-                      {
-                        name: 'zen',
-                        buttonText: 'קריאת זן',
-                      },
-                    ],
-                  }}
-                  globalButtonsStyles={{
-                    minWidth: '10rem',
-                  }}
-                  globalIconsStyles={{
-                    color: theme.color('primary'),
-                  }}
-                  size={2.5}
-                />
-              )}
-            />
-          </ArticleSection>
-        );
-      }
-      // This is the Article Body.
-      if (
-        element.inputTemplate === 'com.htz.StandardArticle' ||
-        element.inputTemplate === 'com.tm.StandardArticle'
-      ) {
-        const { body, headlineElement, } = this.extractHeadline(element.body);
-        return (
-          <ApolloConsumer>
-            {cache => {
-              const { commentsElementId, } = element;
-              cache.writeData({
-                data: {
-                  commentsElementId,
-                },
-              });
-              return (
-                <FelaComponent
-                  style={{ marginBottom: '5rem', }}
-                  render={({ className, }) => (
-                    <ArticleSection className={className}>
-                      {headlineElement && (
-                        <HeadlineElement elementObj={headlineElement} />
-                      )}
-                      <BodyWrapper>
-                        <ArticleBody body={body} />
-                      </BodyWrapper>
-                    </ArticleSection>
-                  )}
-                />
-              );
-            }}
-          </ApolloConsumer>
-        );
-      }
-      const Element = getComponent(element.inputTemplate);
-      const { properties, ...elementWithoutProperties } = element;
-      if (
-        element.inputTemplate === 'com.polobase.OutbrainElement' ||
-        element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
-      ) {
-        return (
-          <ArticleWide>
-            <Element
-              key={element.contentId}
-              articleId={this.props.articleId}
-              {...elementWithoutProperties}
-              {...properties}
-            />
-          </ArticleWide>
-        );
-      }
-      return (
-        <ArticleSection>
-          <BodyWrapper>
-            <Element
-              key={element.contentId}
-              articleId={this.props.articleId}
-              {...elementWithoutProperties}
-              {...properties}
-            />
-          </BodyWrapper>
-        </ArticleSection>
-      );
-    });
-
   render() {
     const {
       articleId,
@@ -418,11 +226,29 @@ class StandardArticle extends React.Component {
         }
       )
       : '';
+
+    const breadCrumbs = article.find(
+      element => element.inputTemplate === 'com.tm.PageTitle'
+    );
+
+    const header = article.find(
+      element => element.inputTemplate === 'com.htz.ArticleHeaderElement'
+    );
+    const headerData = header.data;
+    const standardArticleElement = article.find(
+      element =>
+        element.inputTemplate === 'com.htz.StandardArticle' ||
+        element.inputTemplate === 'com.tm.StandardArticle'
+    );
+
+    const authors = standardArticleElement.authors;
+
+    const { body, headlineElement, } = this.extractHeadline(
+      standardArticleElement.body
+    );
+
     return (
-      <ArticleContainer
-        // eslint-disable-next-line no-return-assign
-        innerRef={container => (this.container = container)}
-      >
+      <article>
         <Head>
           <meta name="title" content={metaTitle} />
           <meta name="description" content={metaDescription} />
@@ -434,37 +260,152 @@ class StandardArticle extends React.Component {
           <meta property="og:image:height" content="630" />
           <meta property="ob:title" content={obTitle} />
         </Head>
-        {this.extractContent(article)}
-        <Media
-          query={{ from: 'l', }}
-          render={() => (
-            <Zen animate>
-              <ArticleAside
-                innerRef={side => (this.side = side)} // eslint-disable-line no-return-assign
-              >
-                <SideBar height={this.side && this.side.offsetHeight}>
-                  {aside.map(element => {
+
+        <FelaComponent
+          render={({ theme, }) => (
+            <LayoutRow
+              tagName="div"
+              miscStyles={{ display: [ { from: 'l', value: 'flex', }, ], }}
+            >
+              <LayoutContainer bgc="white">
+                <StandardArticleHeader
+                  // Guy Kedar:
+                  // Overide header data authors with authors from standard article element.
+                  // currently papi doesnt export full authors in the headline element,
+                  // e.g doesnt export hasEmailAlerts
+                  // todo: remove overide when papi exports authors as needed in the headerElement
+                  {...{ ...headerData, authors, }}
+                  // {...headerData}
+                  articleId={articleId}
+                  hasBreadCrumbs={!!breadCrumbs}
+                  elementName={this.state.articleTitle}
+                  elementUrl={this.state.articleUrl}
+                  elementObj={headlineElement}
+                  facebookCount={this.state.facebookCount}
+                />
+                {/* Main */}
+
+                <div>
+                  {article.map(element => {
+                    if (
+                      element.inputTemplate ===
+                        'com.htz.ArticleHeaderElement' ||
+                      element.inputTemplate === 'com.tm.PageTitle'
+                    ) {
+                      return null;
+                    }
+                    if (
+                      element.inputTemplate === 'com.htz.StandardArticle' ||
+                      element.inputTemplate === 'com.tm.StandardArticle'
+                    ) {
+                      return (
+                        <ApolloConsumer>
+                          {cache => {
+                            const { commentsElementId, } = element;
+                            cache.writeData({
+                              data: {
+                                commentsElementId,
+                              },
+                            });
+                            return (
+                              <StandardLayoutRow
+                                isArticleBody
+                                authors={authors}
+                                publishDate={headerData.publishDate}
+                              >
+                                <ArticleBody body={body} />
+                              </StandardLayoutRow>
+                            );
+                          }}
+                        </ApolloConsumer>
+                      );
+                    }
                     const Element = getComponent(element.inputTemplate);
                     const { properties, ...elementWithoutProperties } = element;
+                    if (
+                      element.inputTemplate ===
+                        'com.polobase.OutbrainElement' ||
+                      element.inputTemplate ===
+                        'com.polobase.ClickTrackerBannersWrapper'
+                    ) {
+                      return (
+                        <WideLayoutRow>
+                          <Element
+                            key={element.contentId}
+                            articleId={this.props.articleId}
+                            {...elementWithoutProperties}
+                            {...properties}
+                          />
+                        </WideLayoutRow>
+                      );
+                    }
                     return (
-                      <Element
-                        key={element.contentId}
-                        articleId={articleId}
-                        {...elementWithoutProperties}
-                        {...properties}
-                      />
+                      <StandardLayoutRow
+                        {...(element.inputTemplate ===
+                        'com.tm.ArticleCommentsElement'
+                          ? // todo: theme
+                            { title: 'תגובות', }
+                          : {})}
+                      >
+                        <Element
+                          key={element.contentId}
+                          articleId={articleId}
+                          {...elementWithoutProperties}
+                          {...properties}
+                        />
+                      </StandardLayoutRow>
                     );
                   })}
-                </SideBar>
-              </ArticleAside>
-            </Zen>
+                </div>
+              </LayoutContainer>
+
+              <FelaComponent
+                style={{
+                  backgroundColor: 'white',
+                  position: 'relative',
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  alignItems: 'flex-start',
+                  extend: [
+                    theme.mq({ until: 'l', }, { display: 'none', }),
+                    theme.mq({ from: 'l', }, { width: '67rem', }),
+                  ],
+                }}
+                render={({ className, }) => (
+                  <aside
+                    className={className}
+                    ref={side => {
+                      this.side = side;
+                    }}
+                  >
+                    <Zen animate miscStyles={{ height: '100%', }}>
+                      <SideBar height={this.side && this.side.offsetHeight}>
+                        {aside.map(element => {
+                          const Element = getComponent(element.inputTemplate);
+                          const {
+                            properties,
+                            ...elementWithoutProperties
+                          } = element;
+                          return (
+                            <Element
+                              key={element.contentId}
+                              articleId={articleId}
+                              {...elementWithoutProperties}
+                              {...properties}
+                            />
+                          );
+                        })}
+                      </SideBar>
+                    </Zen>
+                  </aside>
+                )}
+              />
+            </LayoutRow>
           )}
         />
-      </ArticleContainer>
+      </article>
     );
   }
 }
-
-StandardArticle.propTypes = propTypes;
 
 export default StandardArticle;

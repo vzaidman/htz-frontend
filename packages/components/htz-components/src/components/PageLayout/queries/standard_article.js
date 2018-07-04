@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 import {
+  author,
   articleHeader,
   content,
   dfpBanner,
@@ -37,6 +38,15 @@ export default gql`
               ...ArticleHeader
             }
             ... on ArticleData {
+              # Guy Kedar, todo: when papi exports full authors, remove query here and get authors only from article header element
+              authors {
+                ... on CreditObject {
+                  ...CreditObj
+                }
+                ... on AuthorObject {
+                  ...AuthorObj
+                }
+              }
               inputTemplate
               commentsElementId
               body {
@@ -89,6 +99,8 @@ export default gql`
       }
     }
   }
+  ${author.authorObj}
+  ${author.creditObj}
   ${articleHeader}
   ${content}
   ${dfpBanner}

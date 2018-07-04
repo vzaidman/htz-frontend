@@ -27,7 +27,7 @@ const QuoteWrapper = createComponent(quoteWrapperStyle, 'blockquote');
 
 const quoteStyle = ({ theme, quoteType, }) => ({
   ':after': {
-    content: "'\"'",
+    content: "''",
   },
   ...theme.mq({ until: 'm', }, { ...theme.type(1), }),
   ...theme.mq({ from: 'm', until: 'l', }, { ...theme.type(0), }),
