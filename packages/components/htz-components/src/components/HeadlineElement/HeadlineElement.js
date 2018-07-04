@@ -1,24 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import ArticleImage from '../ArticleImage/ArticleImage';
 import Caption from '../Caption/Caption';
 import Embed from '../Embed/Embed';
 // import ImageGallery from '../ImageGallery/ImageGallery';
 import Video from '../Video/Video';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const proptypes = {
   /**
    * The media object as it passed down from papi.
    */
   elementObj: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trump all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  miscStyles: stylesPropType,
 };
 
-const wrapperStyle = () => ({
-  marginBottom: '4rem',
-});
-const Wrapper = createComponent(wrapperStyle, 'figure');
+const defaultProps = {
+  miscStyles: null,
+};
 
 /**
  * HeadlineElement component receive the JSON of an
@@ -29,7 +36,7 @@ const Wrapper = createComponent(wrapperStyle, 'figure');
  * @returns {XML}
  * @constructor
  */
-function HeadlineElement({ elementObj, }) {
+function HeadlineElement({ elementObj, miscStyles, }) {
   const uniqueId = elementObj.elementType || elementObj.inputTemplate || null;
 
   const Element = () => {
@@ -56,7 +63,17 @@ function HeadlineElement({ elementObj, }) {
   };
 
   return (
-    <Wrapper>
+    <FelaComponent
+      style={theme => ({
+        marginBottom: '4rem',
+        extend: [
+          // Trump all other styles with those defined in `miscStyles`
+          ...(miscStyles
+            ? parseStyleProps(miscStyles, theme.mq, theme.type)
+            : []),
+        ],
+      })}
+    >
       <Element />
       <Caption
         caption={elementObj.caption || elementObj.title}
@@ -65,10 +82,11 @@ function HeadlineElement({ elementObj, }) {
           paddingStart: '4rem',
         }}
       />
-    </Wrapper>
+    </FelaComponent>
   );
 }
 
 HeadlineElement.propTypes = proptypes;
+HeadlineElement.defaultProps = defaultProps;
 
 export default HeadlineElement;
