@@ -252,7 +252,7 @@ function buildThead(dynamicData, staticTheadData) {
 
 function buildTbody(dynamicData, staticTbodyData, cols) {
   const pricingRows = [
-    dynamicData[0].pricingYearly
+    dynamicData.some(row => !!row.pricingYearly)
       ? [
         staticTbodyData.pricingYearlyText,
         dynamicData[0].pricingYearly,
@@ -260,7 +260,7 @@ function buildTbody(dynamicData, staticTbodyData, cols) {
         ...(dynamicData[2] ? [ dynamicData[2].pricingYearly, ] : []),
       ]
       : [],
-    dynamicData[0].pricingMonthly
+    dynamicData.some(row => !!row.pricingMonthly)
       ? [
         staticTbodyData.pricingMonthlyText,
         dynamicData[0].pricingMonthly,
