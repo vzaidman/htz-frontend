@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import ArticleLink from './articleLink';
 import H from '../AutoLevels/H';
@@ -41,29 +43,16 @@ const propTypes = {
   /**
    * Should be passed if the component should have a MarginBottom style.
    */
-  marginBottom: PropTypes.oneOfType([
-    /**
-     * simple fela style object.
-     */
-    PropTypes.shape({
-      marginBottom: PropTypes.string,
-    }),
-    /**
-     * multiple objects, each for a different break.
-     */
-    PropTypes.shape({
-      break: PropTypes.shape({
-        marginBottom: PropTypes.string,
-      }),
-      break2: PropTypes.shape({
-        marginBottom: PropTypes.string,
-      }),
-    }),
-  ]),
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trump all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  miscStyles: stylesPropType,
 };
 
 const defaultProps = {
-  marginBottom: null,
+  miscStyles: null,
 };
 
 const seriesTitleStyle = ({ theme, }) => ({
@@ -92,10 +81,16 @@ const articleWrapperStyle = ({ theme, lastItem, }) => ({
 });
 const ArticleWrapper = createComponent(articleWrapperStyle, 'li');
 
-function LinksBlock({ seriesTitle, articles, marginBottom, }) {
+function LinksBlock({ seriesTitle, articles, miscStyles, }) {
   return (
     <FelaComponent
-      style={{ ...(marginBottom || []), }}
+      style={theme => ({
+        extend: [
+          ...(miscStyles
+            ? parseStyleProps(miscStyles, theme.mq, theme.type)
+            : []),
+        ],
+      })}
       render={({
         className,
         theme: { seriesArticleI18n: { titlePrefix, }, },

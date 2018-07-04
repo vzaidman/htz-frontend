@@ -1,6 +1,8 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
+
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 import HtzLink from '../HtzLink/HtzLink';
 import H from '../AutoLevels/H';
 import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
@@ -56,9 +58,9 @@ const paragraphStyle = theme => {
 };
 
 // eslint-disable-next-line react/prop-types
-const P = ({ children, renderFirstImpression, marginBottom, ...props }) => (
+const P = ({ children, renderFirstImpression, miscStyles, ...props }) => (
   <FelaComponent
-    style={{ ...paragraphStyle, ...marginBottom, }}
+    style={{ ...paragraphStyle, ...miscStyles, }}
     render={({ className, }) => (
       <Fragment>
         <p className={className} {...props}>
@@ -163,7 +165,7 @@ export default class Paragraph extends React.Component {
   }
 
   render() {
-    const { renderFirstImpression, marginBottom, ...props } = this.props;
+    const { renderFirstImpression, miscStyles, ...props } = this.props;
 
     /* Recursive functions */
     const Content = ({ content, }) => {
@@ -221,7 +223,7 @@ export default class Paragraph extends React.Component {
 
       return Tag ? (
         <Tag
-          marginBottom={this.state.margin ? marginBottom : null}
+          miscStyles={this.state.margin ? miscStyles : null}
           {...attributes}
           {...(tagName === 'p' ? { renderFirstImpression, } : {})}
         >
@@ -248,29 +250,16 @@ Paragraph.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   content: PropTypes.array.isRequired, // eslint-disable-line react/no-unused-prop-types
   /**
-   * Should be passed if the paragraph should have a MarginBottom style
-   * (some types of paragraphs would never have a MarginBottom and will override this prop).
+   * A special property holding miscellaneous CSS values that
+   * trump all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
-  marginBottom: PropTypes.oneOfType([
-    /** simple fela style object */
-    PropTypes.shape({
-      marginBottom: PropTypes.string,
-    }),
-    /** multiple objects, each for a different break */
-    PropTypes.shape({
-      break: PropTypes.shape({
-        marginBottom: PropTypes.string,
-      }),
-      break2: PropTypes.shape({
-        marginBottom: PropTypes.string,
-      }),
-    }),
-  ]),
+  miscStyles: stylesPropType,
   /** Should the Paragraph render a firstImpression placeholder after every p tag */
   renderFirstImpression: PropTypes.bool,
 };
 
 Paragraph.defaultProps = {
-  marginBottom: null,
+  miscStyles: null,
   renderFirstImpression: false,
 };

@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
-import { parseComponentProp, } from '@haaretz/htz-css-tools';
+import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import ArticleLink from './articleLink';
 import Button from '../Button/Button';
@@ -46,30 +47,17 @@ const propTypes = {
   /**
    * Should be passed if the component should have a MarginBottom style.
    */
-  marginBottom: PropTypes.oneOfType([
-    /**
-     * simple fela style object.
-     */
-    PropTypes.shape({
-      marginBottom: PropTypes.string,
-    }),
-    /**
-     * multiple objects, each for a different break.
-     */
-    PropTypes.shape({
-      break: PropTypes.shape({
-        marginBottom: PropTypes.string,
-      }),
-      break2: PropTypes.shape({
-        marginBottom: PropTypes.string,
-      }),
-    }),
-  ]),
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trump all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  miscStyles: stylesPropType,
 };
 
 const defaultProps = {
   itemsPerPage: 3,
-  marginBottom: null,
+  miscStyles: null,
 };
 
 const seriesTitleStyle = ({ theme, }) => ({
@@ -165,9 +153,16 @@ export default class SeriesArticles extends React.Component {
   };
 
   render() {
+    const { miscStyles, } = this.props;
     return (
       <FelaComponent
-        style={{ ...(this.props.marginBottom || []), }}
+        style={theme => ({
+          extend: [
+            ...(miscStyles
+              ? parseStyleProps(miscStyles, theme.mq, theme.type)
+              : []),
+          ],
+        })}
         render={({
           className,
           theme: { seriesArticleI18n: { loadButton, titlePrefix, }, },

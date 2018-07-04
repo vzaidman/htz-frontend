@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
-import { parseComponentProp, } from '@haaretz/htz-css-tools';
+import { createComponent, FelaComponent, } from 'react-fela';
+import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 import ArticleLink from './articleLink';
 
 const propTypes = {
@@ -23,38 +24,17 @@ const propTypes = {
   /**
    * Should be passed if the component should have a MarginBottom style.
    */
-  marginBottom: PropTypes.oneOfType([
-    /**
-     * simple fela style object.
-     */
-    PropTypes.shape({
-      marginBottom: PropTypes.string,
-    }),
-    /**
-     * multiple objects, each for a different break.
-     */
-    PropTypes.shape({
-      break: PropTypes.shape({
-        marginBottom: PropTypes.string,
-      }),
-      break2: PropTypes.shape({
-        marginBottom: PropTypes.string,
-      }),
-    }),
-  ]),
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trump all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  miscStyles: stylesPropType,
 };
 
 const defaultProps = {
-  marginBottom: null,
+  miscStyles: null,
 };
-
-const relatedArticlesWrapperStyle = ({ theme, marginBottom, }) => ({
-  ...(marginBottom || []),
-});
-const RelatedArticlesWrapper = createComponent(
-  relatedArticlesWrapperStyle,
-  'ul'
-);
 
 const articleWrapperStyle = ({ theme, lastItem, }) => ({
   marginInlineStart: '1em',
@@ -81,15 +61,24 @@ const articleWrapperStyle = ({ theme, lastItem, }) => ({
 });
 const ArticleWrapper = createComponent(articleWrapperStyle, 'li');
 
-const RelatedArticles = ({ articles, marginBottom, }) => (
-  <RelatedArticlesWrapper marginBottom={marginBottom}>
+const RelatedArticles = ({ articles, miscStyles, }) => (
+  <FelaComponent
+    style={theme => ({
+      extend: [
+        ...(miscStyles
+          ? parseStyleProps(miscStyles, theme.mq, theme.type)
+          : []),
+      ],
+    })}
+    render="ul"
+  >
     {articles.map((article, i) => (
       // eslint-disable-next-line react/no-array-index-key
       <ArticleWrapper key={i} lastItem={i === articles.length - 1}>
         <ArticleLink article={article} />
       </ArticleWrapper>
     ))}
-  </RelatedArticlesWrapper>
+  </FelaComponent>
 );
 
 RelatedArticles.propTypes = propTypes;

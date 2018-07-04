@@ -80,6 +80,7 @@ const buildComponent = (context, index, isLastItem) => {
       return <Component key={index} lastItem={isLastItem} {...context} />;
     case 'embedElement':
     case 'interactiveElement':
+    case 'com.tm.ImageGalleryElement':
     case 'com.tm.Video': // eslint-disable-line no-case-declarations
       return (
         <Figure key={index} lastItem={isLastItem}>
@@ -107,7 +108,7 @@ const buildComponent = (context, index, isLastItem) => {
             <Component
               key={index}
               {...context}
-              marginBottom={
+              miscStyles={
                 isLastItem
                   ? null
                   : parseComponentProp(
