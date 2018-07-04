@@ -48,10 +48,9 @@ class List extends React.Component {
             return (
               <EventTracker>
                 {({ biAction, gaAction, HtzReactGA, }) => {
-                  HtzReactGA.ga('ec:addImpression', {
+                  HtzReactGA.ga('ec:addPromo', {
                     id: contentId,
                     name: data.list.title,
-                    list: 'List impressions',
                   });
                   return (
                     <ListComponent
@@ -59,6 +58,7 @@ class List extends React.Component {
                       listId={contentId}
                       gaAction={gaAction}
                       biAction={biAction}
+                      HtzReactGA={HtzReactGA}
                     />
                   );
                 }}

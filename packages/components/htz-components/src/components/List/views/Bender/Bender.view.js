@@ -60,8 +60,13 @@ const itemsType = PropTypes.shape({
 });
 
 Bender.propTypes = {
+  /**
+   * Google Analytics functions and utils
+   */
   biAction: PropTypes.func.isRequired,
   gaAction: PropTypes.func.isRequired,
+  HtzReactGA: PropTypes.shape({}).isRequired,
+
   listId: PropTypes.string.isRequired,
   /**
    * data object from polopoly
@@ -84,9 +89,18 @@ Bender.defaultProps = {
   lazyLoad: '1000px',
 };
 
-export default function Bender({ data, lazyLoad, gaAction, biAction, listId, }) {
+export default function Bender({
+  data,
+  lazyLoad,
+  gaAction,
+  HtzReactGA,
+  biAction,
+  listId,
+}) {
   if (data.loading) return null;
   if (data.error) return null;
+  console.warn('HtzReactGA type in bender : ', typeof HtzReactGA);
+  console.warn('data.list.title in bender : ', data.list.title);
   const imgOptions = {
     transforms: {
       aspect: 'vertical',
@@ -111,6 +125,14 @@ export default function Bender({ data, lazyLoad, gaAction, biAction, listId, }) 
                 ViewName: 'Bender',
               },
             });
+            HtzReactGA.ga('ec:setAction', 'promo_click');
+            HtzReactGA.ga(
+              'send',
+              'event',
+              'Internal Promotions',
+              'click',
+              data.list.title
+            );
           }}
         >
           <Section isFragment>

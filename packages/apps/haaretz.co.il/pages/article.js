@@ -81,6 +81,7 @@ export class ArticlePage extends React.Component {
             {({ loading, error, data, client, }) => {
               if (loading) return null;
               if (error) console.log(error);
+              console.warn(data);
               const { slots, lineage, } = data.page;
               client.writeData({
                 data: {
