@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextLink> DOM element renders correctly with cusom tagName , 1`] = `
+<div>
+  <button
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+  >
+    I am a button
+  </button>
+</div>
+`;
+
+exports[`<TextLink> DOM element renders correctly with cusom tagName , 2`] = `".htz-a{color:#0B7EB5}.htz-b:visited{color:#0B7EB5}.htz-c:hover{color:#0B7EB5}.htz-d:hover{border-bottom-color:#0B7EB5}.htz-e:hover{border-bottom-width:1px}.htz-f:hover{border-bottom-style:solid}.htz-g:focus{color:#0B7EB5}.htz-h:focus{border-bottom-color:#0B7EB5}.htz-i:focus{border-bottom-width:1px}.htz-j:focus{border-bottom-style:solid}.htz-k:active{color:#0B7EB5}.htz-l:active{border-bottom-color:#0B7EB5}.htz-m:active{border-bottom-width:2px}.htz-n:active{border-bottom-style:solid}"`;
+
+exports[`<TextLink> DOM element renders correctly with minimal required props 1`] = `
+<div>
+  <a
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+    href={undefined}
+    onClick={null}
+    target={null}
+  >
+    I am a htzLink
+  </a>
+</div>
+`;
+
+exports[`<TextLink> DOM element renders correctly with minimal required props 2`] = `".htz-a{color:#0B7EB5}.htz-b:visited{color:#0B7EB5}.htz-c:hover{color:#0B7EB5}.htz-d:hover{border-bottom-color:#0B7EB5}.htz-e:hover{border-bottom-width:1px}.htz-f:hover{border-bottom-style:solid}.htz-g:focus{color:#0B7EB5}.htz-h:focus{border-bottom-color:#0B7EB5}.htz-i:focus{border-bottom-width:1px}.htz-j:focus{border-bottom-style:solid}.htz-k:active{color:#0B7EB5}.htz-l:active{border-bottom-color:#0B7EB5}.htz-m:active{border-bottom-width:2px}.htz-n:active{border-bottom-style:solid}"`;
+
+exports[`<TextLink> DOM element renders correctly with miscStyles , 1`] = `
+<div>
+  <a
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+    href={undefined}
+    onClick={null}
+    target={null}
+  >
+    I am a htzLink
+  </a>
+</div>
+`;
+
+exports[`<TextLink> DOM element renders correctly with miscStyles , 2`] = `".htz-a{color:blue}.htz-b:visited{color:#0B7EB5}.htz-c:hover{color:#0B7EB5}.htz-d:hover{border-bottom-color:#0B7EB5}.htz-e:hover{border-bottom-width:1px}.htz-f:hover{border-bottom-style:solid}.htz-g:focus{color:#0B7EB5}.htz-h:focus{border-bottom-color:#0B7EB5}.htz-i:focus{border-bottom-width:1px}.htz-j:focus{border-bottom-style:solid}.htz-k:active{color:#0B7EB5}.htz-l:active{border-bottom-color:#0B7EB5}.htz-m:active{border-bottom-width:2px}.htz-n:active{border-bottom-style:solid}"`;

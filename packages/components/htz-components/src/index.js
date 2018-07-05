@@ -52,6 +52,7 @@ import Select from './components/Select/Select';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 import Tags from './components/Tags/Tags';
 import TextInput from './components/TextInput/TextInput';
+import TextLink from './components/TextLink/TextLink';
 import Video from './components/Video/Video';
 
 // Icons
@@ -188,6 +189,7 @@ export {
   ArticlePageLayout,
   Tags,
   TextInput,
+  TextLink,
   Video,
   // Icons
   IconAccessibility,
