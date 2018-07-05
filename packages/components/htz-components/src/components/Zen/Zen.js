@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
-import getTransitionEnd from '../../utils/getTransitionEnd';
+import ToggleFade from '../Transitions/ToggleFade';
 
 export const ZEN_QUERY = gql`
   query GetZenStatus {
@@ -39,30 +39,7 @@ const defaultProps = {
 class Zen extends React.Component {
   state = {
     animating: false,
-    display: true,
     zenMode: false,
-  };
-
-  componentDidMount() {
-    this.element &&
-      this.element.addEventListener(
-        getTransitionEnd(this.element),
-        this.changeState,
-        false
-      );
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.animate && prevState.zenMode !== this.state.zenMode) {
-      this.changeState();
-    }
-  }
-
-  changeState = () => {
-    this.setState(prevState => ({
-      animating: !prevState.animating,
-      display: !prevState.display,
-    }));
   };
 
   render() {
@@ -73,7 +50,6 @@ class Zen extends React.Component {
           if (loading) return null;
           if (error) return null;
           const { zenMode, } = data;
-          if (zenMode !== this.state.zenMode) this.setState({ zenMode, });
           if (hide) {
             return (
               <FelaComponent
@@ -86,29 +62,7 @@ class Zen extends React.Component {
             );
           }
           if (animate) {
-            const { animating, } = this.state;
-            return (
-              <FelaComponent
-                rule={({ theme, zen, }) => ({
-                  opacity: zen ? '0' : '1',
-                  ...(animating && {
-                    transitionProperty: 'opacity',
-                    ...theme.getDuration('transition', 0),
-                    ...theme.getTimingFunction('transition', 'linear'),
-                  }),
-                })}
-                zen={this.state.zenMode}
-                render={({ className, }) => (
-                  <div
-                    className={className}
-                    // eslint-disable-next-line no-return-assign
-                    ref={element => (this.element = element)}
-                  >
-                    {this.state.zenMode && !animating ? null : children}
-                  </div>
-                )}
-              />
-            );
+            return <ToggleFade show={!zenMode}>{children}</ToggleFade>;
           }
           if (!zenMode) {
             return <Fragment>{children}</Fragment>;
