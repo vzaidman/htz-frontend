@@ -48,13 +48,19 @@
   "syncDependencies": {
     "@haaretz/htz-components": {
       "^0.2.0": {
-        "packages/apps/*": ["dependencies"]
+        "packages/apps/*": [
+          "dependencies"
+        ]
       }
     },
     "@haaretz/fela-utils": {
       "^0.1.0": {
-        "packages/{apps/*,components/*}": ["dependencies"],
-        "packages/components/htz-theme": ["devDependencies"]
+        "packages/{apps/*,components/*}": [
+          "dependencies"
+        ],
+        "packages/components/htz-theme": [
+          "devDependencies"
+        ]
       }
     },
     "@haaretz/app-utils": {
@@ -66,7 +72,9 @@
     },
     "@haaretz/htz-css-tools": {
       "^1.0.1": {
-        "packages/{apps,components}/*": ["dependencies"]
+        "packages/{apps,components}/*": [
+          "dependencies"
+        ]
       }
     },
     "@haaretz/htz-react-base": {
@@ -78,7 +86,9 @@
     },
     "@haaretz/htz-react-server": {
       "^0.0.0": {
-        "packages/apps/*": ["dependencies"],
+        "packages/apps/*": [
+          "dependencies"
+        ],
         "packages/components/htz-components": [
           "devDependencies",
           "peerDependencies"
@@ -94,7 +104,9 @@
     },
     "@haaretz/tm-theme": {
       "^0.1.0": {
-        "packages/apps/purchase-page": ["dependencies"]
+        "packages/apps/purchase-page": [
+          "dependencies"
+        ]
       }
     },
     "apollo-client": {
@@ -126,7 +138,9 @@
     },
     "apollo-link-error": {
       "^1.1.0": {
-        "packages/apps/*": ["dependencies"],
+        "packages/apps/*": [
+          "dependencies"
+        ],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
           "peerDependencies"
@@ -144,7 +158,9 @@
     },
     "apollo-link-state": {
       "^0.4.1": {
-        "packages/apps/*": ["dependencies"],
+        "packages/apps/*": [
+          "dependencies"
+        ],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
           "peerDependencies"
@@ -167,19 +183,22 @@
         "packages/{apps/*,components/*,libs/htz-react-server,libs/htz-user-utils}": [
           "dependencies"
         ],
-        "packages/libs/app-utils": ["devDependencies", "peerDependencies"]
+        "packages/libs/app-utils": [
+          "devDependencies",
+          "peerDependencies"
+        ]
       }
     },
     "dataloader": {
       "^1.3.0": {
-        "packages/apps/*": ["dependencies"]
+        "packages/apps/*": [
+          "dependencies"
+        ]
       }
     },
     "enzyme": {
       "^3.4.1": {
-        "packages/libs/{fela-utils,htz-react-base}": [
-          "dependencies"
-        ]
+        "packages/libs/{fela-utils,htz-react-base}": [ "dependencies" ]
       }
     },
     "enzyme-to-json": {
@@ -194,7 +213,9 @@
           "devDependencies",
           "peerDependencies"
         ],
-        "packages/apps/*": ["dependencies"]
+        "packages/apps/*": [
+          "dependencies"
+        ]
       }
     },
     "graphql": {
@@ -219,13 +240,20 @@
     },
     "graphql-type-json": {
       "^0.1.4": {
-        "packages/libs/app-utils": ["dependencies"]
+        "packages/libs/app-utils": [
+          "dependencies"
+        ]
       }
     },
     "isomorphic-unfetch": {
       "^2.0.0": {
-        "packages/apps/*": ["dependencies"],
-        "packages/libs/app-utils": ["devDependencies", "peerDependencies"]
+        "packages/apps/*": [
+          "dependencies"
+        ],
+        "packages/libs/app-utils": [
+          "devDependencies",
+          "peerDependencies"
+        ]
       }
     },
     "lodash": {
@@ -244,13 +272,20 @@
     },
     "polished": {
       "^1.9.2": {
-        "packages/apps/purchase-page": ["dependencies"]
+        "packages/apps/purchase-page": [
+          "dependencies"
+        ]
       }
     },
     "prop-types": {
       "^15.6.1": {
-        "packages/{components,apps}/*": ["dependencies"],
-        "packages/libs/app-utils": ["devDependencies", "peerDependencies"]
+        "packages/{components,apps}/*": [
+          "dependencies"
+        ],
+        "packages/libs/app-utils": [
+          "devDependencies",
+          "peerDependencies"
+        ]
       }
     },
     "react": {
@@ -259,7 +294,9 @@
           "devDependencies",
           "peerDependencies"
         ],
-        "packages/apps/*": ["dependencies"]
+        "packages/apps/*": [
+          "dependencies"
+        ]
       }
     },
     "react-apollo": {
@@ -277,7 +314,7 @@
           "devDependencies",
           "peerDependencies"
         ],
-        "packages/apps/*": ["dependencies"]
+        "packages/apps/*": [ "dependencies" ]
       }
     },
     "react-fela": {
@@ -286,7 +323,7 @@
           "devDependencies",
           "peerDependencies"
         ],
-        "packages/apps/*": ["dependencies"]
+        "packages/apps/*": [ "dependencies" ]
       }
     },
     "react-fns": {
@@ -308,12 +345,12 @@
         "[\"packages/{apps,components,libs}/*\", \"!packages/libs/htz-react-base\"]": [
           "devDependencies"
         ],
-        "packages/libs/htz-react-base": ["dependencies"]
+        "packages/libs/htz-react-base": [ "dependencies" ]
       }
     },
     "universal-cookie": {
       "^2.0.8": {
-        "packages/apps/*": ["dependencies"]
+        "packages/apps/*": [ "dependencies" ]
       }
     },
     "validator": {
@@ -324,7 +361,7 @@
       }
     }
   },
-  "workspaces": ["packages/*/*"],
+  "workspaces": [ "packages/*/*" ],
   "config": {
     "commitizen": {
       "path": "cz-lerna-changelog"
@@ -384,6 +421,7 @@
     "write-pkg": "^3.1.0"
   },
   "dependencies": {
-    "bunyan": "^1.8.12"
+    "bunyan": "^1.8.12",
+    "cross-env": "^5.2.0"
   }
 }

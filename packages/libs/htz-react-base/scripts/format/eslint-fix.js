@@ -7,7 +7,9 @@ const args = [ require.resolve('../lint'), '--fix', '--format', 'json', ].concat
   // At least one path is required.
   process.argv.slice(2)
 );
-const result = spawn.sync('node', args, { encoding: 'utf8', });
+const result = spawn.sync('cross-env', [ 'node', ].concat(args), {
+  encoding: 'utf8',
+});
 if (result.error) {
   throw result.error;
 }
@@ -30,9 +32,7 @@ if (result.status) {
     if (file.errorCount) {
       file.messages.forEach(message => {
         if (message.fatal) {
-          console.error(
-            `${file.filePath}:${message.line}:${message.column}: ${message.message}`
-          );
+          console.error(`${file.filePath}:${message.line}:${message.column}: ${message.message}`);
           hasFatalError = true;
         }
       });

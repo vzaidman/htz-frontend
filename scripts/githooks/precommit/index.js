@@ -20,6 +20,7 @@ async function runHooks() {
   console.log();
 
   const lintStaged = spawn.sync(
+    'cross-env',
     executor,
     // Pass commandline arguments to lint-staged
     [ lintStagedPath, ].concat(args),
