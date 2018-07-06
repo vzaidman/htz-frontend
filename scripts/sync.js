@@ -76,7 +76,7 @@ Object.keys(dependencyMap).forEach(glob => {
 });
 
 // Run `yarn at the end so the updates are actually installed.
-const result = spawn.sync('yarn', { stdio: 'inherit', });
+const result = spawn.sync('cross-env', [ 'yarn', ], { stdio: 'inherit', });
 if (result.error) {
   throw result.error;
 }

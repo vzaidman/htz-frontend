@@ -16,7 +16,7 @@ const args = argv.slice(1);
 
 if (script) {
   const scriptPath = require.resolve(`../scripts/${script}`);
-  const result = spawn.sync('node', [ scriptPath, ].concat(args), {
+  const result = spawn.sync('cross-env', [ 'node', scriptPath, ].concat(args), {
     stdio: 'inherit',
   });
   if (result.signal) {

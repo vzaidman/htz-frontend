@@ -8,7 +8,9 @@ const gitRoot = execSync('git rev-parse --show-toplevel', { encoding: 'utf8', })
 
 process.chdir(gitRoot);
 
-const result = spawn.sync('git', [ 'cz', ...args, ], { stdio: 'inherit', });
+const result = spawn.sync('cross-env', [ 'git', 'cz', ...args, ], {
+  stdio: 'inherit',
+});
 
 if (result.error) {
   throw result.error;

@@ -40,9 +40,7 @@ inquirer
       type: 'input',
       name: 'author',
       message: `Your name please?\n  ${chalk.magenta('❯')}`,
-      default: execSync('git config user.name', { encoding: 'utf8', }).split(
-        '\n'
-      )[0],
+      default: execSync('git config user.name', { encoding: 'utf8', }).split('\n')[0],
     },
     {
       type: 'confirm',
@@ -61,16 +59,9 @@ inquirer
     if (answers.continue) {
       const { name, pkgType, } = answers;
       const safeName = name.replace(' ', '-');
-      const packagePath = path.join(
-        process.cwd(),
-        'packages/',
-        pkgType,
-        safeName
-      );
+      const packagePath = path.join(process.cwd(), 'packages/', pkgType, safeName);
 
-      console.log(
-        `Creating ${chalk.cyan(name)} package in ${chalk.cyan(packagePath)}...`
-      );
+      console.log(`Creating ${chalk.cyan(name)} package in ${chalk.cyan(packagePath)}...`);
       console.log('');
 
       // Create package directory
@@ -105,19 +96,14 @@ inquirer
             interpolate: /<%=([\s\S]+?)%>/g,
           });
           const processedContent = compiledTemplate({ ...answers, safeName, });
-          const outputPath = path.join(
-            packagePath,
-            path.relative(templatesPath, filename)
-          );
+          const outputPath = path.join(packagePath, path.relative(templatesPath, filename));
 
           if (fse.existsSync(outputPath)) {
             inquirer
               .prompt([
                 {
                   name: 'overwrite',
-                  message: `${chalk.red(
-                    outputPath
-                  )} already exists.\n  ${chalk.yellow(
+                  message: `${chalk.red(outputPath)} already exists.\n  ${chalk.yellow(
                     'Would you like to overwrite it?'
                   )}`,
                   type: 'confirm',
@@ -167,9 +153,13 @@ inquirer
           // Initialize the new package
           console.log(`\n${chalk.yellow(`Initializing ${name}`)}`);
 
-          const result = spawn.sync('yarn', [ 'run', 'sync', '--scope', `@haaretz/${safeName}`, ], {
-            stdio: 'inherit',
-          });
+          const result = spawn.sync(
+            'cross-env',
+            [ 'yarn', 'run', 'sync', '--scope', `@haaretz/${safeName}`, ],
+            {
+              stdio: 'inherit',
+            }
+          );
 
           if (result.error) {
             throw result.error;
@@ -183,9 +173,7 @@ inquirer
           }
           // Say goodbye
           console.log(
-            `\n\n${chalk.magenta(
-              'Thank you. Come again!'
-            )}\n- Dr. Apu Nahasapeemapetilon\n`
+            `\n\n${chalk.magenta('Thank you. Come again!')}\n- Dr. Apu Nahasapeemapetilon\n`
           );
         }
       );

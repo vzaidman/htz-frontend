@@ -30,9 +30,7 @@ function buildLibrary() {
   const args = process.argv.slice(2);
 
   if (BABEL_ENV && !envScripts[BABEL_ENV]) {
-    console.error(
-      'The `BABEL_ENV` environment variable must be empty or one of:'
-    );
+    console.error('The `BABEL_ENV` environment variable must be empty or one of:');
     console.error(`  ${Object.keys(envScripts).join('\n  ')}`);
     process.exit(1);
   }
@@ -46,7 +44,9 @@ function buildLibrary() {
       // something dirty like delete the cache entry). Easier to just spawn
       // Node multiple times intead.
       /* eslint-disable no-undef */
-      result = spawn.sync('node', [ script, ].concat(args), { stdio: 'inherit', });
+      result = spawn.sync('cross-env', [ 'node', script, ].concat(args), {
+        stdio: 'inherit',
+      });
       if (result.signal) {
         console.error(result.signal);
         process.exit(1);
@@ -80,9 +80,7 @@ checkDir('pages').then(isDir => {
       else {
         console.error('Could not determine how to build the current package.');
         console.error('* To build a Next.js app, add a `pages` directory.');
-        console.error(
-          '* To build a consumable library, add a `src` directory.'
-        );
+        console.error('* To build a consumable library, add a `src` directory.');
         process.exit(1);
       }
     });

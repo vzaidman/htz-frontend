@@ -8,7 +8,7 @@ const spawn = require('cross-spawn');
 const { checkDir, } = require('./_checkDir');
 
 function buildApp() {
-  const child = spawn('node', [ require.resolve('./next'), ], {
+  const child = spawn('cross-env', [ 'node', require.resolve('./next'), ], {
     stdio: 'inherit',
   });
   child.on('close', code => {
@@ -29,9 +29,7 @@ function buildLibrary() {
   const args = process.argv.slice(2);
 
   if (BABEL_ENV && !envScripts[BABEL_ENV]) {
-    console.error(
-      'The `BABEL_ENV` environment variable must be empty or one of:'
-    );
+    console.error('The `BABEL_ENV` environment variable must be empty or one of:');
     console.error(`  ${Object.keys(envScripts).join('\n  ')}`);
     process.exit(1);
   }
@@ -45,7 +43,9 @@ function buildLibrary() {
       // something dirty like delete the cache entry). Easier to just spawn
       // Node multiple times intead.
       /* eslint-disable no-undef */
-      child = spawn('node', [ script, ].concat(args), { stdio: 'inherit', });
+      child = spawn('cross-env', [ 'node', script, ].concat(args), {
+        stdio: 'inherit',
+      });
 
       child.on('close', code => {
         if (code !== 0) {
@@ -87,9 +87,7 @@ checkDir('pages').then(isDir => {
       else {
         console.error('Could not determine how to build the current package.');
         console.error('* To build a Next.js app, add a `pages` directory.');
-        console.error(
-          '* To build a consumable library, add an `src` directory.'
-        );
+        console.error('* To build a consumable library, add an `src` directory.');
         process.exit(1);
       }
     });
