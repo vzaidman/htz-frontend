@@ -10,11 +10,11 @@
   "scripts": {
     "build": "htz-scripts build",
     "clean": "htz-scripts clean",
-    "dev": "NODE_ENV=development htz-react-server purchase | bunyan -L",
+    "dev": "cross-env NODE_ENV=development htz-react-server purchase | bunyan -L",
     "format": "htz-scripts format",
     "lint": "htz-scripts lint",
     "prepare": "npm run build",
-    "start": "NODE_ENV=production htz-react-server purchase",
+    "start": "cross-env NODE_ENV=production htz-react-server purchase",
     "styleguide": "htz-scripts styleguide",
     "styleguide:build": "htz-scripts styleguide:build",
     "test": "htz-scripts test",
