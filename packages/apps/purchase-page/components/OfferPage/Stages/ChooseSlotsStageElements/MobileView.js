@@ -17,6 +17,7 @@ const propTypes = {
       couponExist: PropTypes.bool,
     })
   ).isRequired,
+  sale: PropTypes.arrayOf(PropTypes.oneOf([ 'HTZ', 'TM', 'BOTH', ])),
   staticTableData: PropTypes.shape({
     thead: PropTypes.object.isRequired,
     tbody: PropTypes.object.isRequired,
@@ -25,7 +26,9 @@ const propTypes = {
   pathName: PropTypes.string.isRequired,
 };
 
-const defaultProps = {};
+const defaultProps = {
+  sale: null,
+};
 
 const contStyle = theme => ({
   marginTop: '4rem',
@@ -134,6 +137,7 @@ class MobileView extends Component {
   render() {
     const {
       tableData,
+      sale,
       staticTableData,
       pathName,
       continueToNextStage,
@@ -232,7 +236,7 @@ class MobileView extends Component {
                             <StyledItemEndCont>
                               <FelaComponent style={{ marginBottom: '2rem', }}>
                                 <Phones
-                                  sale={[ 'HTZ', ]}
+                                  {...(sale ? { sale, } : {})}
                                   subscription={item.subscriptionName}
                                 />
                               </FelaComponent>

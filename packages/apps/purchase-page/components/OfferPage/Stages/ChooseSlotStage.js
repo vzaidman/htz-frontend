@@ -21,6 +21,7 @@ const propTypes = {
       couponExist: PropTypes.bool,
     })
   ).isRequired,
+  sale: PropTypes.arrayOf(PropTypes.oneOf([ 'HTZ', 'TM', 'BOTH', ])),
   subStage: PropTypes.number.isRequired,
   userMessage: PropTypes.arrayOf(PropTypes.string),
   /** passed by next withRouter */
@@ -29,6 +30,7 @@ const propTypes = {
 
 const defaultProps = {
   userMessage: null,
+  sale: null,
 };
 
 const contStyle = theme => ({
@@ -92,7 +94,7 @@ class ChooseSlotStage extends React.Component {
     );
   }
   render() {
-    const { host, tableData, subStage, userMessage, router, } = this.props;
+    const { host, tableData, sale, subStage, userMessage, router, } = this.props;
     // eslint-disable-next-line prefer-const
     let [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
     pathWithoutQuery = pathWithoutQuery.substr(
@@ -148,12 +150,14 @@ class ChooseSlotStage extends React.Component {
               <UserMessage userMessage={userMessage} />
               <DesktopView
                 tableData={tableData}
+                sale={sale}
                 staticTableData={stage1}
                 continueToNextStage={continueToNextStage}
                 pathName={pathName}
               />
               <MobileView
                 tableData={tableData}
+                sale={sale}
                 staticTableData={stage1}
                 continueToNextStage={continueToNextStage}
                 pathName={pathName}

@@ -29,6 +29,7 @@ const propTypes = {
       couponExist: PropTypes.bool,
     })
   ).isRequired,
+  sale: PropTypes.arrayOf(PropTypes.oneOf([ 'HTZ', 'TM', 'BOTH', ])),
   staticTableData: PropTypes.shape({
     thead: PropTypes.object.isRequired,
     tbody: PropTypes.object.isRequired,
@@ -37,7 +38,9 @@ const propTypes = {
   pathName: PropTypes.string.isRequired,
 };
 
-const defaultProps = {};
+const defaultProps = {
+  sale: null,
+};
 
 const tableStyle = ({ theme, }) => ({
   position: 'relative',
@@ -281,6 +284,7 @@ function buildTbody(dynamicData, staticTbodyData, cols) {
 function DesktopView({
   continueToNextStage,
   tableData,
+  sale,
   staticTableData,
   pathName,
 }) {
@@ -368,7 +372,7 @@ function DesktopView({
                           }}
                         >
                           <Phones
-                            sale={[ 'HTZ', ]}
+                            {...(sale ? { sale, } : {})}
                             subscription={item.subscriptionName}
                             size={7}
                           />

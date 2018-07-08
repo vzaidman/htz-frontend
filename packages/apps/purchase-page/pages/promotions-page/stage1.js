@@ -35,12 +35,7 @@ class Stage1 extends React.Component {
   }
 
   render() {
-    const {
-      url: {
-        query: { referrer, },
-      },
-    } =
-      this.props || null;
+    const { url: { query: { referrer, }, }, } = this.props || null;
     return (
       <MainLayout footerHasIllustration={false} displayBackButton={false}>
         <FelaComponent style={{ position: 'relative', }}>
@@ -62,11 +57,17 @@ class Stage1 extends React.Component {
                       hostname,
                     } = clientData;
                     client.writeData({ data: { startFromStage2: false, }, });
+                    // check which slots are on sale
+                    const sale = slots.reduce((filtered, slot) => {
+                      if (slot.products[0].campaignData) { filtered.push(slot.subscriptionName); }
+                      return filtered;
+                    }, []);
                     return (
                       <ChooseSlotStage
                         host={hostname.includes('themarker') ? 'TM' : 'HTZ'}
                         tableData={getChooseSlotsData(slots)}
                         subStage={subStage}
+                        sale={sale}
                         userMessage={data.purchasePage.userMessage}
                       />
                     );
