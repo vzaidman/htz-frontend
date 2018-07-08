@@ -10,33 +10,33 @@ import iconStyle from '../iconStyle';
 import { iconPropTypes, iconDefaultProps, } from '../iconPropTypes';
 import { attrsPropType, } from '../../../propTypes/attrsPropType';
 
-const IconFacebookLogo = createComponent(iconStyle, UnstyledIconFacebookLogo, [
+const IconInfo = createComponent(iconStyle, UnstyledIconInfo, [
   'attrs',
   'onClick',
 ]);
 
-IconFacebookLogo.propTypes = iconPropTypes;
-IconFacebookLogo.defaultProps = iconDefaultProps;
+IconInfo.propTypes = iconPropTypes;
+IconInfo.defaultProps = iconDefaultProps;
 
 // Underlying component
-UnstyledIconFacebookLogo.propTypes = {
+UnstyledIconInfo.propTypes = {
   attrs: attrsPropType,
 };
 
-UnstyledIconFacebookLogo.defaultProps = {
+UnstyledIconInfo.defaultProps = {
   attrs: null,
 };
 
-function UnstyledIconFacebookLogo({ attrs, ...props }) {
+function UnstyledIconInfo({ attrs, ...props }) {
   return (
     <svg width="1em" height="1em" viewBox="0 0 256 256" {...props} {...attrs}>
       {' '}
       <path
         fill="currentColor"
-        d="M213 31H43.7c-7 0-12.7 5.8-12.7 12.8v168c0 7.2 5.8 13.2 12.9 13.2h93.7v-75.9h-18.2v-28.8h18.2V98.8c0-14.3 5.5-36.1 33.3-36.1h25.3v28.8h-19.4c-3.1 0-6.5 2.4-6.5 9.2v19.6h25.6l-3.2 28.8h-22.4V225h44.1c5.6 0 10.6-3.7 10.6-9.3V43c0-6.6-5.4-12-12-12z"
+        d="M150.3 86.6v107.8c0 9.6 1.1 15.7 3.3 18.4 2.2 2.7 6.6 4.2 13.1 4.6v5.2H93.3v-5.2c6-.2 10.5-1.9 13.4-5.2 1.9-2.2 2.9-8.1 2.9-17.8V115c0-9.6-1.1-15.7-3.3-18.4-2.2-2.7-6.5-4.2-12.9-4.6v-5.4h56.9zm-20.4-65.9c6.3 0 11.6 2.2 16 6.6 4.4 4.4 6.5 9.7 6.5 15.9 0 6.2-2.2 11.5-6.6 15.9-4.4 4.4-9.7 6.5-15.9 6.5-6.2 0-11.5-2.2-15.9-6.5-4.4-4.4-6.5-9.7-6.5-15.9 0-6.2 2.2-11.5 6.5-15.9 4.4-4.4 9.7-6.6 15.9-6.6z"
       />
     </svg>
   );
 }
 
-export default IconFacebookLogo;
+export default IconInfo;

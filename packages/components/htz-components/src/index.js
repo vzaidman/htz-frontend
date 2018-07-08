@@ -79,6 +79,7 @@ import IconHaaretzLogo from './components/Icon/icons/IconHaaretzLogo';
 import IconHaaretzFullLogo from './components/Icon/icons/IconHaaretzFullLogo';
 import IconHalfStar from './components/Icon/icons/IconHalfStar';
 import IconHtzLoader from './components/Icon/icons/IconHtzLoader';
+import IconInfo from './components/Icon/icons/IconInfo';
 import IconItalic from './components/Icon/icons/IconItalic';
 import IconLike from './components/Icon/icons/IconLike';
 import IconLock from './components/Icon/icons/IconLock';
@@ -88,6 +89,7 @@ import IconMailFooter from './components/Icon/icons/IconMailFooter';
 import IconMarkerLogo from './components/Icon/icons/IconMarkerLogo';
 import IconMarkerLogoTransparent from './components/Icon/icons/IconMarkerLogoTransparent';
 import IconMenu from './components/Icon/icons/IconMenu';
+import IconMessenger from './components/Icon/icons/IconMessenger';
 import IconPaypal from './components/Icon/icons/IconPaypal';
 import IconPlus from './components/Icon/icons/IconPlus';
 import IconPrint from './components/Icon/icons/IconPrint';
@@ -95,6 +97,7 @@ import IconQuote from './components/Icon/icons/IconQuote';
 import IconReading from './components/Icon/icons/IconReading';
 import IconRss from './components/Icon/icons/IconRss';
 import IconSafePayment from './components/Icon/icons/IconSafePayment';
+import IconSave from './components/Icon/icons/IconSave';
 import IconSearch from './components/Icon/icons/IconSearch';
 import IconSettings from './components/Icon/icons/IconSettings';
 import IconStar from './components/Icon/icons/IconStar';
@@ -212,6 +215,7 @@ export {
   IconHaaretzFullLogo,
   IconHalfStar,
   IconHtzLoader,
+  IconInfo,
   IconItalic,
   IconLike,
   IconLock,
@@ -221,6 +225,7 @@ export {
   IconMarkerLogo,
   IconMarkerLogoTransparent,
   IconMenu,
+  IconMessenger,
   IconPaypal,
   IconPlus,
   IconPrint,
@@ -228,6 +233,7 @@ export {
   IconReading,
   IconRss,
   IconSafePayment,
+  IconSave,
   IconSearch,
   IconSettings,
   IconStar,

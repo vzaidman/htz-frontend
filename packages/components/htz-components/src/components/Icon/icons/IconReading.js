@@ -31,7 +31,7 @@ function UnstyledIconReading({ attrs, ...props }) {
   return (
     <svg width="1em" height="1em" viewBox="0 0 256 256" {...props} {...attrs}>
       {' '}
-      <path fill="currentColor" d="M208.7 248.3l-80-80-80 80V8.3h160v240z" />
+      <path fill="currentColor" d="M200 237l-72.5-72.7L55 237V19h145v218z" />
     </svg>
   );
 }

@@ -61,6 +61,9 @@ import IconPaypal from './icons/IconPaypal';
 import IconMarkerLogoTransparent from './icons/IconMarkerLogoTransparent';
 import IconAlefLogoTransparent from './icons/IconAlefLogoTransparent';
 import IconCheck from './icons/IconCheck';
+import IconInfo from './icons/IconInfo';
+import IconMessenger from './icons/IconMessenger';
+import IconSave from './icons/IconSave';
 
 const gutterWidth = '1rem';
 
@@ -240,6 +243,11 @@ export default class Icons extends React.Component {
             {<IconAlefLogoTransparent size={this.state.size} />}
           </Cell>
           <Cell name="IconCheck">{<IconCheck size={this.state.size} />}</Cell>
+          <Cell name="IconInfo">{<IconInfo size={this.state.size} />}</Cell>
+          <Cell name="IconMessenger">
+            {<IconMessenger size={this.state.size} />}
+          </Cell>
+          <Cell name="IconSave">{<IconSave size={this.state.size} />}</Cell>
         </Wrapper>
       </div>
     );
