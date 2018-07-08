@@ -2,6 +2,7 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
+import { rgba, } from 'polished';
 
 import ToolBar from './elements/ToolBar';
 import IconClose from '../Icon/icons/IconClose';
@@ -59,22 +60,28 @@ const containerStyle = ({ isFullScreen, theme, }) => ({
     }
     : {}),
 });
-const FullScreenContainer = createComponent(containerStyle, 'figure');
+const FullScreenContainer = createComponent(containerStyle, 'figure', [
+  'onMouseEnter',
+  'onMouseLeave',
+  'onClick',
+]);
 
-const iconStyle = ({ theme, isFullScreen, }) => ({
-  backgroundColor: theme.color('neutral'),
+const iconStyle = ({ theme, isFullScreen, hide, }) => ({
+  backgroundColor: rgba(theme.color('neutral'), 0.8),
   height: '5rem',
   marginBottom: '3rem',
   padding: '1rem',
+  opacity: hide ? '0' : '1',
   width: '100%',
   zIndex: '1',
-  ':hover': {
-    backgroundColor: theme.color('neutral', '+1'),
-  },
+  extend: [
+    { transitionProperty: 'opacity', },
+    theme.getDuration('transition', 0),
+    theme.getTimingFunction('transition', 'linear'),
+  ],
   ...(!isFullScreen
     ? {
       borderRadius: '50%',
-      cursor: 'zoom-in',
       end: '1rem',
       position: 'absolute',
       top: '1rem',
@@ -138,6 +145,7 @@ class FullScreenMedia extends React.Component {
   state = {
     mediaWidth: null,
     isFullScreen: false,
+    hide: true,
   };
 
   componentDidMount() {
@@ -151,6 +159,7 @@ class FullScreenMedia extends React.Component {
     return (
       this.state.mediaWidth !== nextState.mediaWidth ||
       this.state.isFullScreen !== nextState.isFullScreen ||
+      this.state.hide !== nextState.hide ||
       this.props.captionElement !== nextProps.captionElement
     );
   }
@@ -174,20 +183,28 @@ class FullScreenMedia extends React.Component {
   };
 
   toggleFullScreen = () => {
-    this.setState({
-      isFullScreen: !this.state.isFullScreen,
-    });
+    this.setState(prevState => ({
+      isFullScreen: !prevState.isFullScreen,
+    }));
   };
+
+  toggleHide = hide =>
+    this.setState({
+      hide,
+    });
 
   render() {
     const { render, captionElement, itemName, itemUrl, } = this.props;
     const { isFullScreen, } = this.state;
 
     return (
-      <FullScreenContainer isFullScreen={isFullScreen}>
-        {!isFullScreen && (
-          <Icon isFullScreen={false} onClick={this.toggleFullScreen} />
-        )}
+      <FullScreenContainer
+        isFullScreen={isFullScreen}
+        onClick={!isFullScreen ? this.toggleFullScreen : null}
+        onMouseEnter={() => this.toggleHide(false)}
+        onMouseLeave={() => this.toggleHide(true)}
+      >
+        {!isFullScreen && <Icon isFullScreen={false} hide={this.state.hide} />}
         <div />
         <MediaWrapper
           isFullScreen={isFullScreen}
@@ -204,13 +221,17 @@ class FullScreenMedia extends React.Component {
                 end: '2rem',
               }}
             >
-              <Icon isFullScreen onClick={this.toggleFullScreen} />
+              <Icon isFullScreen onClick={this.toggleFullScreen} hide={false} />
             </FelaComponent>
             <ToolBar
               itemName={itemName}
               itemUrl={itemUrl}
               closeButton={
-                <Icon isFullScreen onClick={this.toggleFullScreen} />
+                <Icon
+                  isFullScreen
+                  onClick={this.toggleFullScreen}
+                  hide={false}
+                />
               }
               captionElement={captionElement}
             />
