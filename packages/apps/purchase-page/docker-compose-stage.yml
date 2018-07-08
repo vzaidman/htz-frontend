@@ -17,3 +17,11 @@ services:
       - GRAPHQL_USE_SSL=false
       - GRAPHQL_EXPOSE_PORT=true
 
+    networks:
+      - prod01
+
+networks:
+  prod01:
+    external: true
+
+
