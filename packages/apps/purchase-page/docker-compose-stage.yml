@@ -12,10 +12,10 @@ services:
       - NEXT_BUILD_ID=${BUILD_ID:-LATEST}"
       # the following environment is optional
       - PORT=2201
-      - BIND_ADDRESS=ms-apps
-      - HOSTNAME=docker
-      - GRAPHQL_USE_SSL=false
-      - GRAPHQL_EXPOSE_PORT=true
+      - BIND_ADDRESS=ppromotions
+      - HOSTNAME=ppromotions
+      - GRAPHQL_USE_SSL=true
+      - GRAPHQL_EXPOSE_PORT=false
 
     networks:
       - prod01
