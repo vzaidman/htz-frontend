@@ -169,6 +169,7 @@ export function buildUrl(contentId, data, options = {}) {
     quality: 'q_',
     x: 'x_',
     y: 'y_',
+    gravity: 'g_',
   };
   const cropData = aspects[settings.aspect] || aspects.full;
 
@@ -179,7 +180,7 @@ export function buildUrl(contentId, data, options = {}) {
       return allTransforms + (allTransforms ? ',' : '/') + transfromString;
     },
     ''
-  )},c_crop,g_north_west`;
+  )},c_crop`;
 
   const userTransforms = `${Object.keys(settings).reduce(
     (allTransforms, propName) => {
