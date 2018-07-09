@@ -23,7 +23,7 @@
     "update-scripts": "htz-scripts update-scripts"
   },
   "peerDependencies": {
-    "next": "^6.0.3"
+    "next": "^6.1.1"
   },
   "dependencies": {
     "@haaretz/app-utils": "^0.1.0",
@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
-    "next": "^6.0.3",
+    "next": "^6.1.1",
     "rimraf": "^2.6.2"
   }
 }

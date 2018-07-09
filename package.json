@@ -233,7 +233,7 @@
       }
     },
     "next": {
-      "^6.0.3": {
+      "^6.1.1": {
         "packages/apps/*": ["dependencies"],
         "packages/{libs/htz-react-server,libs/app-utils,components/htz-components}": [
           "devDependencies",
