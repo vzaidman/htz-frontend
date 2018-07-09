@@ -12,8 +12,8 @@ services:
       - NEXT_BUILD_ID=${BUILD_ID:-LATEST}"
       # the following environment is optional
       - PORT=2200
-      - BIND_ADDRESS=stg-ms-apps
-      - HOSTNAME=stg-ms-apps
+      - BIND_ADDRESS=pms-apps
+      - HOSTNAME=pms-apps
       - GRAPHQL_USE_SSL=false
       - GRAPHQL_EXPOSE_PORT=true
 
