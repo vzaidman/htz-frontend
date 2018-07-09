@@ -53,7 +53,7 @@ function buildLibrary() {
           process.exit(code);
         }
         else {
-          process.exit(0);
+          process.exitCode = 0;
         }
       });
       /* eslint-enable no-undef */

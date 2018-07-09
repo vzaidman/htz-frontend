@@ -52,7 +52,7 @@ function buildLibrary() {
         process.exit(1);
       }
       if (result.status) {
-        process.exit(result.status);
+        process.exitCode = result.status;
       }
       /* eslint-enable no-undef */
       console.log(); // Blank line between different builds.

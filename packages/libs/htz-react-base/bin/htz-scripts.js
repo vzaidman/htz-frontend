@@ -23,5 +23,5 @@ if (script) {
     console.error(result.signal);
     process.exit(1);
   }
-  process.exit(result.status);
+  process.exitCode = result.status;
 }

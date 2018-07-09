@@ -37,33 +37,34 @@ const [ executer, command, ...args ] = process.argv;
 //   }
 // }
 // ```
-const dependencyMap = Object.keys(
-  syncDependencies
-).reduce((mapping, depName) => {
-  let newMapping = mapping;
+const dependencyMap = Object.keys(syncDependencies).reduce(
+  (mapping, depName) => {
+    let newMapping = mapping;
 
-  const dep = syncDependencies[depName];
-  for (const version in dep) {
-    if (Object.prototype.hasOwnProperty.call(dep, version)) {
-      for (const glob in dep[version]) {
-        if (Object.prototype.hasOwnProperty.call(dep[version], glob)) {
-          // eslint-disable-next-line no-loop-func
-          dep[version][glob].forEach(depType => {
-            newMapping = deepMerge(newMapping, {
-              [glob]: {
-                [depType]: {
-                  [depName]: version,
+    const dep = syncDependencies[depName];
+    for (const version in dep) {
+      if (Object.prototype.hasOwnProperty.call(dep, version)) {
+        for (const glob in dep[version]) {
+          if (Object.prototype.hasOwnProperty.call(dep[version], glob)) {
+            // eslint-disable-next-line no-loop-func
+            dep[version][glob].forEach(depType => {
+              newMapping = deepMerge(newMapping, {
+                [glob]: {
+                  [depType]: {
+                    [depName]: version,
+                  },
                 },
-              },
+              });
             });
-          });
+          }
         }
       }
     }
-  }
 
-  return newMapping;
-}, {});
+    return newMapping;
+  },
+  {}
+);
 
 // Update `package.json` files matched by each glob.
 Object.keys(dependencyMap).forEach(glob => {
@@ -84,7 +85,7 @@ if (result.signal) {
   process.exit(1);
 }
 if (result.status) {
-  process.exit(result.status);
+  process.exitCode = result.status;
 }
 
 // Parse a glob-like string into a real glob pattern.

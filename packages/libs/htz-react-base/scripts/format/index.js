@@ -40,6 +40,6 @@ commands.forEach(command => {
     process.exit(1);
   }
   if (result.status) {
-    process.exit(result.status);
+    process.exitCode = result.status;
   }
 });
