@@ -452,6 +452,7 @@ module.exports = {
           exclude: /node_modules/,
           loader: 'babel-loader',
           options: {
+            babelrc: false,
             presets: require('./babel')().presets,
           },
         },
