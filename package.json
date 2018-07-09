@@ -99,7 +99,7 @@
       }
     },
     "apollo-client": {
-      "^2.2.8": {
+      "^2.3.2": {
         "packages/apps/*": ["dependencies"],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
@@ -108,7 +108,7 @@
       }
     },
     "apollo-cache-inmemory": {
-      "^1.1.12": {
+      "^1.2.2": {
         "packages/apps/*": ["dependencies"],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
@@ -117,7 +117,7 @@
       }
     },
     "apollo-link": {
-      "^1.2.1": {
+      "^1.2.2": {
         "packages/apps/*": ["dependencies"],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
@@ -135,7 +135,7 @@
       }
     },
     "apollo-link-http": {
-      "^1.5.3": {
+      "^1.5.4": {
         "packages/apps/*": ["dependencies"],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
@@ -197,18 +197,18 @@
       }
     },
     "graphql": {
-      "^0.11.7": {
+      "^0.13.2": {
         "packages/apps/*": ["dependencies"],
         "packages/libs/app-utils": ["devDependencies", "peerDependencies"]
       }
     },
     "graphql-anywhere": {
-      "^3.1.0": {
+      "^4.1.11": {
         "packages/apps/*": ["dependencies"]
       }
     },
     "graphql-tag": {
-      "^2.5.0": {
+      "^2.9.2": {
         "packages/apps/*": ["dependencies"],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
@@ -262,7 +262,7 @@
       }
     },
     "react-apollo": {
-      "^2.1.0": {
+      "^2.1.4": {
         "packages/apps/*": ["dependencies"],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
