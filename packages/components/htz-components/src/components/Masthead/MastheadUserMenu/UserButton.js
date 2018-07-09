@@ -37,6 +37,7 @@ class UserButton extends React.Component {
           paddingInlineStart: '2rem',
           paddingInlineEnd: '1rem',
           extend: [
+            theme.getTransition(1, 'swiftOut'),
             theme.type(-1),
             isOpen || isHovered
               ? {
@@ -66,22 +67,25 @@ class UserButton extends React.Component {
                     : theme.color('userMenu', 'text'),
               }}
             >
-              <FelaComponent
-                render="span"
-                style={{
-                  fontWeight: '400',
-                }}
-              >
-                {theme.userMenuI18n.buttonText}
-                {','}{' '}
-              </FelaComponent>
+              {userName ? (
+                <FelaComponent
+                  render="span"
+                  style={{
+                    fontWeight: '400',
+                  }}
+                >
+                  {theme.userMenuI18n.buttonText}
+                  {','}{' '}
+                </FelaComponent>
+              ) : null}
               <FelaComponent
                 render="span"
                 style={{
                   fontWeight: '700',
                 }}
               >
-                {userName}
+                {/* eslint-disable-next-line no-extra-boolean-cast */}
+                {!!userName ? userName : theme.userMenuI18n.noUserData}
               </FelaComponent>
             </FelaComponent>
             <IconAvatar size={3} miscStyles={{ marginRight: '2rem', }} />

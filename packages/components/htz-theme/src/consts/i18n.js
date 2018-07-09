@@ -198,8 +198,9 @@ export const welcomePageI18n = Object.freeze({
 });
 
 export const userMenuI18n = Object.freeze({
-  noUserData: 'התחברות',
   buttonText: 'שלום',
+  loginUrl: 'https://www.haaretz.co.il/misc/login-page',
+  logout: 'התנתקות',
   menuItems: Object.freeze([
     Object.freeze({
       name: 'הגדרות',
@@ -214,7 +215,7 @@ export const userMenuI18n = Object.freeze({
       url: 'https://www.haaretz.co.il/personal-area/newsletter',
     }),
   ]),
-  logout: 'התנתקות',
+  noUserData: 'התחברות',
 });
 
 export const a11yMenuI18n = Object.freeze({

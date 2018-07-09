@@ -24,6 +24,7 @@ const headerReadingButtonStyle = theme => ({
   ':focus': {
     color: theme.color('primary'),
   },
+  extend: [ theme.getTransition(1, 'swiftOut'), ],
 });
 
 export default function MastheadReadingList({ host, }) {
@@ -38,7 +39,7 @@ export default function MastheadReadingList({ host, }) {
   return (
     <FelaComponent
       style={headerReadingButtonStyle}
-      render={({ theme, className, }) => (
+      render={({ className, }) => (
         <HtzLink className={className} href={url}>
           <IconReading size={3} />
         </HtzLink>

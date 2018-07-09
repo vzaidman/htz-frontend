@@ -33,6 +33,7 @@ const menuButtonStyle = ({ theme, isOpen, }) => ({
     color: theme.color('neutral', '-10'),
   },
   extend: [
+    theme.getTransition(1, 'swiftOut'),
     theme.type(-1),
     theme.mq({ until: 's', }, { display: 'none', }),
     theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
@@ -187,7 +188,7 @@ class NavigationMenu extends React.Component {
                     <ListWrapper
                       listStyle={{
                         ...dropdownListStyle(theme),
-                        minWidth: '6rem',
+                        minWidth: '29rem',
                       }}
                       itemStyle={dropdownItemStyle(theme)}
                     >

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import Button from '../../Button/Button';
 import DropdownList from '../../DropdownList/DropdownList';
-import IconAvatar from '../../Icon/icons/IconAvatar';
 import Item from '../../DropdownList/DropdownItem';
 import HtzLink from '../../HtzLink/HtzLink';
 import Logout from '../../User/Logout';
@@ -13,23 +12,6 @@ import {
   dropdownItemStyle,
   dropdownListStyle,
 } from '../mastheadDropdownListStyle';
-
-const noUserButtonStyle = theme => ({
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  color: theme.color('userMenu', 'iconColor'),
-  border: 'none',
-  paddingTop: '1rem',
-  paddingBottom: '1rem',
-  paddingInlineStart: '1rem',
-  paddingInlineEnd: '1rem',
-  ':hover': {
-    backgroundColor: theme.color('userMenu', 'bgHover'),
-    color: theme.color('userMenu', 'textOpenOrHover'),
-  },
-  extend: [ theme.type(-2), ],
-});
 
 /**
  * A user menu component for the page header. A component which receives
@@ -52,26 +34,23 @@ export default class MastheadUserMenu extends React.Component {
   render() {
     if (!this.props.userName) {
       return (
-        <FelaComponent
-          render={({ theme, className, }) => (
-            <div className={className}>
-              <FelaComponent
-                style={noUserButtonStyle}
-                render={({ theme, className, }) => (
-                  <HtzLink
-                    className={className}
-                    href="https://www.haaretz.co.il/misc/login-page"
-                  >
-                    <span>{theme.userMenuI18n.noUserData}</span>
-                    <IconAvatar size={3} miscStyles={{ marginRight: '2rem', }} />
-                  </HtzLink>
-                )}
-              />
-            </div>
+        <FelaTheme
+          render={theme => (
+            <HtzLink
+              href={theme.userMenuI18n.loginUrl}
+              content={
+                <UserButton
+                  isOpen={false}
+                  userName={this.props.userName}
+                  role="button"
+                />
+              }
+            />
           )}
         />
       );
     }
+
     return (
       <FelaTheme
         render={theme => {
@@ -126,18 +105,22 @@ export default class MastheadUserMenu extends React.Component {
                       role="button"
                     />
                   ))}
-                  {isOpen && (
-                    <FelaTheme
-                      render={theme => (
-                        <ListWrapper
-                          listStyle={{ ...dropdownListStyle(theme), end: '0', }}
-                          itemStyle={dropdownItemStyle(theme)}
-                        >
-                          {combinedItems}
-                        </ListWrapper>
-                      )}
-                    />
-                  )}
+                  {isOpen &&
+                    !!this.props.userName && (
+                      <FelaTheme
+                        render={theme => (
+                          <ListWrapper
+                            listStyle={{
+                              ...dropdownListStyle(theme),
+                              end: '0',
+                            }}
+                            itemStyle={dropdownItemStyle(theme)}
+                          >
+                            {combinedItems}
+                          </ListWrapper>
+                        )}
+                      />
+                    )}
                 </Fragment>
               )}
             />
