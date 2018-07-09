@@ -10,7 +10,7 @@ import Embed from '../Embed/Embed';
 import Video from '../Video/Video';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
-const proptypes = {
+const propTypes = {
   /**
    * The media object as it passed down from papi.
    */
@@ -79,14 +79,15 @@ function HeadlineElement({ elementObj, miscStyles, }) {
         caption={elementObj.caption || elementObj.title}
         credit={elementObj.credit}
         miscStyles={{
-          paddingStart: '4rem',
+          marginTop: '0.5rem',
+          paddingStart: '2rem',
         }}
       />
     </FelaComponent>
   );
 }
 
-HeadlineElement.propTypes = proptypes;
+HeadlineElement.propTypes = propTypes;
 HeadlineElement.defaultProps = defaultProps;
 
 export default HeadlineElement;

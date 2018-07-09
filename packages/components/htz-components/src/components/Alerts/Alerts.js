@@ -1,62 +1,76 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import { FelaComponent, } from 'react-fela';
-import Media from '../Media/Media';
 import AlertsButton, { authorPropTypes, } from './AlertsButton';
-import IconMail from '../Icon/icons/IconMail';
-import IconAlert from '../Icon/icons/IconAlert';
+import IconMailAlert from '../Icon/icons/IconMailAlert';
 
 function Alerts({ author, }) {
   return (
     <FelaComponent
       style={theme => ({
+        color: theme.color('tertiary'),
+        fontWeight: 'bold',
         extend: [
+          theme.type(-2, { fromBp: 'xl', }),
+          theme.type(-1, { fromBp: 'l', untilBp: 'xl', }),
+          theme.type(-2, { untilBp: 'l', }),
           theme.mq(
             { from: 's', },
             {
-              display: 'block',
               width: '100%',
               textAlign: 'end',
-              color: theme.color('tertiary'),
-              fontWeight: 700,
-              ...theme.type(-1),
+            }
+          ),
+          theme.mq(
+            { from: 's', until: 'l', },
+            {
+              display: 'inline',
+            }
+          ),
+          theme.mq(
+            { from: 'l', },
+            {
+              display: 'flex',
             }
           ),
           theme.mq(
             { until: 's', },
             {
               textAlign: 'center',
-              width: '5rem',
-              ...theme.type(-2),
             }
           ),
         ],
       })}
       render={({
         className,
-        theme: {
-          alertsI18n: { mobileAlertsText, desktopAlertsText, },
-        },
+        theme,
+        theme: { alertsI18n: { mobileAlertsText, desktopAlertsText, }, },
       }) => (
         <AlertsButton className={className} author={author}>
-          <Media query={{ from: 's', }} matchOnServer>
-            {matches =>
-              (matches ? (
-                <FelaComponent
-                  style={{ display: 'flex', alignItems: 'center', }}
-                >
-                  <IconMail size={3} miscStyles={{ marginEnd: '1rem', }} />
-                  {desktopAlertsText}
-                </FelaComponent>
-              ) : (
-                <Fragment>
-                  <div>
-                    <IconAlert size={3} color={[ 'primary', '+1', ]} />
-                  </div>
-                  {mobileAlertsText}
-                </Fragment>
-              ))
-            }
-          </Media>
+          <IconMailAlert
+            size={[
+              { until: 's', value: 3, },
+              { from: 's', until: 'l', value: 2.5, },
+              { from: 'l', value: 3, },
+            ]}
+            miscStyles={{ marginEnd: '1rem', }}
+          />
+          <FelaComponent
+            style={{
+              extend: [ theme.mq({ until: 's', }, { display: 'none', }), ],
+            }}
+            render="span"
+          >
+            {desktopAlertsText}
+          </FelaComponent>
+          <FelaComponent
+            style={{
+              display: 'block',
+              extend: [ theme.mq({ from: 's', }, { display: 'none', }), ],
+            }}
+            render="span"
+          >
+            {mobileAlertsText}
+          </FelaComponent>
         </AlertsButton>
       )}
     />

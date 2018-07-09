@@ -57,6 +57,7 @@ const StandardLayoutRow = ({
   publishDate,
   authors,
   title,
+  reportingFrom,
   isArticleBody,
   /* eslint-enable react/prop-types */
 }) => (
@@ -65,7 +66,7 @@ const StandardLayoutRow = ({
       extend: [
         borderTop(
           '2px',
-          isArticleBody ? 0 : 6,
+          isArticleBody ? 0 : 2,
           'solid',
           isArticleBody ? 'transparent' : theme.color('primary')
         ),
@@ -85,7 +86,11 @@ const StandardLayoutRow = ({
             hideUnderLargeBreakPoint={!!authors}
           >
             {authors && (
-              <ArticleHeaderMeta authors={authors} publishDate={publishDate} />
+              <ArticleHeaderMeta
+                authors={authors}
+                reportingFrom={reportingFrom}
+                publishDate={publishDate}
+              />
             )}
             {title && <SectionTitle title={title} />}
           </FelaComponent>
@@ -115,7 +120,7 @@ const StandardLayoutRow = ({
 const WideLayoutRow = ({ children, }) => (
   <FelaComponent
     style={theme => ({
-      extend: [ borderTop('2px', 6, 'solid', theme.color('primary')), ],
+      extend: [ borderTop('2px', 2, 'solid', theme.color('primary')), ],
     })}
     render={({ className, }) => (
       <Section className={className}>{children}</Section>
@@ -242,6 +247,7 @@ class StandardArticle extends React.Component {
     );
 
     const authors = standardArticleElement.authors;
+    const reportingFrom = standardArticleElement.reportingFrom;
 
     const { body, headlineElement, } = this.extractHeadline(
       standardArticleElement.body
@@ -282,6 +288,7 @@ class StandardArticle extends React.Component {
                   elementUrl={this.state.articleUrl}
                   elementObj={headlineElement}
                   facebookCount={this.state.facebookCount}
+                  reportingFrom={reportingFrom}
                 />
                 {/* Main */}
 
@@ -311,6 +318,7 @@ class StandardArticle extends React.Component {
                               <StandardLayoutRow
                                 isArticleBody
                                 authors={authors}
+                                reportingFrom={reportingFrom}
                                 publishDate={headerData.publishDate}
                               >
                                 <ArticleBody body={body} />
@@ -364,6 +372,7 @@ class StandardArticle extends React.Component {
                   backgroundColor: 'white',
                   position: 'relative',
                   display: 'flex',
+                  paddingTop: '3rem',
                   justifyContent: 'space-around',
                   alignItems: 'flex-start',
                   extend: [

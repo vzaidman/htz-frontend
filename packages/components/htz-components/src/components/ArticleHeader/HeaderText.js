@@ -37,7 +37,7 @@ const titleStyle = theme => ({
 
 const subTitleStyle = theme => ({
   fontWeight: 'normal',
-  marginTop: '2rem',
+  marginTop: '1rem',
   extend: [ theme.type(1), ],
 });
 

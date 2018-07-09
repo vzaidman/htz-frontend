@@ -21,6 +21,7 @@ ArticleHeaderMeta.propTypes = {
    * The publishing date of the article
    */
   publishDate: PropTypes.instanceOf(Date).isRequired,
+  reportingFrom: PropTypes.string,
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
@@ -30,16 +31,17 @@ ArticleHeaderMeta.propTypes = {
 };
 
 ArticleHeaderMeta.defaultProps = {
+  reportingFrom: null,
   miscStyles: null,
 };
 const wrapperStyle = ({ theme, miscStyles, }) => ({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-between',
   extend: [
     theme.mq(
       { until: 's', },
       {
+        justifyContent: 'space-between',
         ...borderVertical({
           width: '1px',
           lines: 1,
@@ -48,7 +50,7 @@ const wrapperStyle = ({ theme, miscStyles, }) => ({
         }),
       }
     ),
-    theme.mq({ from: 's', until: 'l', }, { justifyContent: 'center', }),
+    theme.mq({ from: 's', }, { justifyContent: 'flex-start', }),
     theme.mq(
       { from: 'l', },
       { flexDirection: 'column', alignItems: 'flex-start', }
@@ -62,12 +64,14 @@ const wrapperStyle = ({ theme, miscStyles, }) => ({
 const timeStyle = ({ theme, mobileTime, }) => ({
   extend: [
     theme.mq({ [mobileTime ? 'from' : 'until']: 'l', }, { display: 'none', }),
+    theme.mq({ until: 's', }, { display: 'block', }),
     theme.mq(
       { from: 's', until: 'l', },
       { marginInlineStart: '1rem', marginInlineEnd: '1rem', }
     ),
-    theme.mq({ from: 'l', }, { marginTop: '2rem', }),
-    theme.type(theme.articleStyle.header.bylineFontSize),
+    theme.type(-2, { fromBp: 'xl', }),
+    theme.type(-1, { fromBp: 'l', untilBp: 'xl', }),
+    theme.type(-2, { untilBp: 'l', }),
   ],
 });
 
@@ -83,20 +87,19 @@ const imageAuthorsAndMobileTimeContStyle = theme => ({
 });
 
 const authorsAndTimeContStyle = theme => ({
-  extend: [
-    theme.mq(
-      { from: 's', until: 'l', },
-      { display: 'flex', flexDirection: 'row', }
-    ),
-    theme.mq({ from: 'l', }, { marginTop: '2rem', }),
-  ],
+  extend: [ theme.mq({ from: 'l', }, { marginTop: '1rem', }), ],
 });
 
 const alertsAndDesktopTimeContStyle = theme => ({
-  extend: [ theme.mq({ from: 'l', }, { marginTop: '2rem', }), ],
+  extend: [ theme.mq({ from: 'l', }, { marginTop: '1rem', }), ],
 });
 
-function ArticleHeaderMeta({ authors, publishDate, miscStyles, }) {
+function ArticleHeaderMeta({
+  authors,
+  publishDate,
+  reportingFrom,
+  miscStyles,
+}) {
   return (
     <FelaComponent
       miscStyles={miscStyles}
@@ -113,6 +116,7 @@ function ArticleHeaderMeta({ authors, publishDate, miscStyles, }) {
                     width: '100',
                     aspect: 'square',
                     quality: 'auto',
+                    gravity: 'face',
                   },
                 }}
                 miscStyles={{
@@ -139,25 +143,50 @@ function ArticleHeaderMeta({ authors, publishDate, miscStyles, }) {
 
             {/* Author name and publish-date */}
             <FelaComponent style={authorsAndTimeContStyle}>
-              <div>
-                {authors.map((author, idx) => (
-                  <CreditArticle
-                    contentName={author.name || author.contentName}
-                    url={author.url}
-                    miscStyles={{
-                      ':after': {
-                        content:
-                          idx === authors.length - 1
-                            ? null
-                            : authors.length > 1
-                              ? authors.length - 2 === idx ? '" ו"' : '", "'
-                              : null,
-                      },
-                      display: 'inline',
-                    }}
-                  />
-                ))}
-              </div>
+              {authors.map((author, idx) => (
+                <CreditArticle
+                  contentName={author.name || author.contentName}
+                  url={author.url}
+                  miscStyles={{
+                    ':after': {
+                      content:
+                        idx === authors.length - 1
+                          ? null
+                          : authors.length > 1
+                            ? authors.length - 2 === idx ? '" ו"' : '", "'
+                            : null,
+                    },
+                    display: 'inline',
+                  }}
+                />
+              ))}
+              {reportingFrom && (
+                <FelaComponent
+                  style={{
+                    color: theme.color('primary'),
+                    extend: [
+                      theme.type(-2, { fromBp: 'xl', }),
+                      theme.type(-1, { fromBp: 's', untilBp: 'xl', }),
+                      theme.type(-2, { untilBp: 's', }),
+                      theme.mq({ from: 'l', }, { display: 'block', }),
+                      theme.mq(
+                        {
+                          until: 'l',
+                        },
+                        {
+                          ':before': {
+                            content: '" | "',
+                          },
+                        }
+                      ),
+                    ],
+                  }}
+                  render="span"
+                >
+                  {reportingFrom}
+                </FelaComponent>
+              )}
+
               <FelaComponent
                 rule={timeStyle}
                 mobileTime
@@ -172,11 +201,12 @@ function ArticleHeaderMeta({ authors, publishDate, miscStyles, }) {
             </FelaComponent>
           </FelaComponent>
           {/* alerts and desktop time */}
-          <FelaComponent style={alertsAndDesktopTimeContStyle(theme)}>
+          <FelaComponent style={alertsAndDesktopTimeContStyle}>
             {/* display alerts only if the firstFollow author,
               guyk: should it be only if there is only one author
             (that was the way it was here before refactoring) */}
             {// authors.length === 1 &&
+
             authors[0].hasEmailAlerts && <Alerts author={authors[0]} />}
           </FelaComponent>
           <FelaComponent

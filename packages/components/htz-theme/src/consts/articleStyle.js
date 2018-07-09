@@ -78,9 +78,10 @@ const currentArticleInSeries = Object.freeze({
  */
 const header = Object.freeze({
   bylineFontSize: [
-    { until: 'm', value: -2, },
-    { from: 'm', until: 'l', value: -1, },
-    { from: 'l', value: -1, },
+    { until: 's', value: -2, },
+    { from: 's', until: 'l', value: -1, },
+    { from: 'l', until: 'xl', value: 0, },
+    { from: 'xl', value: -1, },
   ],
   marginStart: [ { until: 'l', value: '2rem', }, { from: 'l', value: '4rem', }, ],
   marginEnd: [

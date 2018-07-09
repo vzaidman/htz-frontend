@@ -38,7 +38,7 @@ export default gql`
               ...ArticleHeader
             }
             ... on ArticleData {
-              # Guy Kedar, todo: when papi exports full authors, remove query here and get authors only from article header element
+              # GuyK, todo: when papi exports full authors, remove query here and get authors only from article header element
               authors {
                 ... on CreditObject {
                   ...CreditObj
@@ -47,6 +47,8 @@ export default gql`
                   ...AuthorObj
                 }
               }
+              # GuyK, todo: papi should export reportingFrom in header element
+              reportingFrom
               inputTemplate
               commentsElementId
               body {

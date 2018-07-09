@@ -40,7 +40,7 @@ export function LayoutRow({ attrs, children, tagName, miscStyles, bgc, }) {
   return (
     <FelaComponent
       style={theme => ({
-        backgroundColor: bgc || theme.color('primary', '-5'),
+        backgroundColor: bgc || theme.color('primary', '-6'),
         width: '100%',
         extend: [
           ...(miscStyles

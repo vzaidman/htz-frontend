@@ -38,7 +38,7 @@ const defaultProps = {
 };
 
 const styles = ({ bgc, miscStyles, theme, }) => ({
-  backgroundColor: bgc || theme.color('primary', '-6'),
+  backgroundColor: bgc || theme.color('white'),
   marginRight: 'auto',
   marginLeft: 'auto',
   width: '100%',

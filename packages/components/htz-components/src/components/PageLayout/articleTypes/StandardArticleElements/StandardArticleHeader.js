@@ -29,6 +29,7 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   elementObj: PropTypes.shape({}).isRequired,
   facebookCount: PropTypes.number,
+  reportingFrom: PropTypes.string.isRequired,
 };
 Header.defaultProps = {
   facebookCount: 0,
@@ -46,6 +47,7 @@ function Header({
   title,
   elementObj,
   facebookCount,
+  reportingFrom,
 }) {
   return (
     <FelaComponent
@@ -67,6 +69,7 @@ function Header({
                 paddingInlineStart: '2rem',
                 extend: [
                   theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
+                  theme.mq({ until: 's', }, { order: 1, }),
                 ],
               }}
               render={({ className, }) => (
@@ -81,6 +84,7 @@ function Header({
               extend: [
                 theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
                 theme.mq({ until: 'l', }, { paddingInlineEnd: '2rem', }),
+                theme.mq({ until: 's', }, { order: 2, }),
               ],
             }}
             render={({ className, }) => (
@@ -95,16 +99,16 @@ function Header({
           <ArticleHeaderMeta
             authors={authors}
             publishDate={publishDate}
+            reportingFrom={reportingFrom}
             miscStyles={{
               marginTop: [ { from: 's', until: 'l', value: '2rem', }, ],
-              paddingInlineStart: '2rem',
-              paddingInlineEnd: '2rem',
+              marginInlineStart: '2rem',
+              marginInlineEnd: '2rem',
               display: [
                 { until: 'l', value: 'flex', },
                 { from: 'l', value: 'none', },
               ],
-              order: [ { until: 's', value: 2, }, ],
-              justifyContent: [ { from: 's', value: 'flex-start', }, ],
+              order: [ { until: 's', value: 3, }, ],
             }}
           />
 

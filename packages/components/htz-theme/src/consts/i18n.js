@@ -1,5 +1,5 @@
 export const alertsI18n = Object.freeze({
-  mobileAlertsText: 'עקוב',
+  mobileAlertsText: 'התראות',
   desktopAlertsText: 'התראות במייל',
 });
 

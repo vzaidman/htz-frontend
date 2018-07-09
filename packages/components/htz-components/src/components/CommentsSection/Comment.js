@@ -161,7 +161,7 @@ const likeMiscStyles = {
   display: [ { until: 's', value: 'none', }, ],
 };
 const disLikeMiscStyles = {
-  marginInlineEnd: '4rem',
+  marginInlineEnd: '2rem',
   display: [ { until: 's', value: 'none', }, ],
 };
 

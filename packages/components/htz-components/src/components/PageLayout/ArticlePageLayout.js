@@ -1,5 +1,8 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
+import { FelaComponent, } from 'react-fela';
+
+import { borderBottom, } from '@haaretz/htz-css-tools';
 
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import GaDimensions from '../GoogleAnalytics/GaDimensions';
@@ -76,7 +79,23 @@ const ArticlePageLayout = ({
             </LayoutRow>
             <LayoutRow>
               <LayoutContainer>
-                {postHeader && getElements(postHeader)}
+                {postHeader && (
+                  <FelaComponent
+                    style={theme => ({
+                      paddingTop: '3rem',
+                      extend: [
+                        borderBottom(
+                          '3px',
+                          3,
+                          'solid',
+                          theme.color('primary', '-6')
+                        ),
+                      ],
+                    })}
+                  >
+                    {getElements(postHeader)}
+                  </FelaComponent>
+                )}
               </LayoutContainer>
             </LayoutRow>
             <LayoutRow>
