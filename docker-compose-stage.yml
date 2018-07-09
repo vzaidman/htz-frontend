@@ -12,8 +12,16 @@ services:
       - NEXT_BUILD_ID=${BUILD_ID:-LATEST}"
       # the following environment is optional
       - PORT=2200
-      - BIND_ADDRESS=ms-apps
-      - HOSTNAME=docker
+      - BIND_ADDRESS=stg-ms-apps
+      - HOSTNAME=stg-ms-apps
       - GRAPHQL_USE_SSL=false
       - GRAPHQL_EXPOSE_PORT=true
+
+
+    networks:
+      - prod01
+
+networks:
+  prod01:
+    external: true
 

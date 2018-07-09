@@ -13,8 +13,8 @@ services:
       - NEXT_BUILD_ID=${BUILD_ID:-LATEST}"
       # the following environment is optional
       - PORT=2004
-      - BIND_ADDRESS=ms-apps
-      - HOSTNAME=ms-apps
+      - BIND_ADDRESS=promotions
+      - HOSTNAME=promotions
       - GRAPHQL_USE_SSL=true
       - GRAPHQL_EXPOSE_PORT=false
 
