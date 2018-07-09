@@ -1,16 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import MastheadA11yMenu from './MastheadA11yMenu/MastheadA11yMenu';
 import MastheadReadingList from './MastheadReadingList';
 import MastheadUserMenu from './MastheadUserMenu/MastheadUserMenu';
 import UserDispenser from '../User/UserDispenser';
 
-MastheadUserTools.propTypes = {
-  host: PropTypes.oneOf([ 'tm', 'htz', 'hdc', ]).isRequired,
-};
-
-export default function MastheadUserTools({ host, }) {
+export default function MastheadUserTools() {
   return (
     <FelaComponent
       style={theme => ({
@@ -22,14 +17,14 @@ export default function MastheadUserTools({ host, }) {
           theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
         ],
       })}
-      render={({ theme, className, }) => (
+      render={({ className, }) => (
         <div className={className}>
           <UserDispenser
             render={({ user, }) => (
               <MastheadUserMenu userName={user.firstName} />
             )}
           />
-          <MastheadReadingList host={host} />
+          <MastheadReadingList />
           <MastheadA11yMenu />
         </div>
       )}

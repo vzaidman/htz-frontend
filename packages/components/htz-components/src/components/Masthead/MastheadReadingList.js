@@ -1,12 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import HtzLink from '../HtzLink/HtzLink';
 import IconReading from '../Icon/icons/IconReading';
-
-MastheadReadingList.propTypes = {
-  host: PropTypes.oneOf([ 'tm', 'htz', 'hdc', ]).isRequired,
-};
 
 const headerReadingButtonStyle = theme => ({
   display: 'flex',
@@ -27,23 +22,18 @@ const headerReadingButtonStyle = theme => ({
   extend: [ theme.getTransition(1, 'swiftOut'), ],
 });
 
-export default function MastheadReadingList({ host, }) {
-  const url =
-    host === 'htz'
-      ? 'https://www.haaretz.co.il/personal-area/my-account#readingList'
-      : host === 'tm'
-        ? 'https://www.themarker.com/personal-area/reading-list'
-        : // change to haaretz.com valid link
-        'https://www.haaretz.com';
-
+export default function MastheadReadingList() {
   return (
     <FelaComponent
       style={headerReadingButtonStyle}
-      render={({ className, }) => (
-        <HtzLink className={className} href={url}>
-          <IconReading size={3} />
-        </HtzLink>
-      )}
+      render={({ theme, className, }) => {
+        const { url, } = theme.readingListMenuI18n;
+        return (
+          <HtzLink className={className} href={url}>
+            <IconReading size={3} />
+          </HtzLink>
+        );
+      }}
     />
   );
 }

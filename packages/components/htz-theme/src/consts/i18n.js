@@ -229,3 +229,7 @@ export const a11yMenuI18n = Object.freeze({
 });
 
 export const zenTextI18n = 'קריאת זן';
+
+export const readingListMenuI18n = Object.freeze({
+  url: 'https://www.haaretz.co.il/personal-area/my-account#readingList',
+});

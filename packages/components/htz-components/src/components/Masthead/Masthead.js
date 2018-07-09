@@ -53,36 +53,32 @@ class Masthead extends React.Component {
     }
 
     return (
-      <LayoutContainer>
-        <FelaComponent
-          style={theme => ({
-            alignItems: 'stretch',
-            backgroundColor: theme.color('neutral', '-10'),
-            ...borderBottom(
-              '1px',
-              0,
-              'solid',
-              theme.color('mastheadBorder', 'borderColor')
-            ),
-            display: 'flex',
-            position: 'relative',
-            width: '100%',
-          })}
-          render={({ theme, className, }) => (
-            <header className={className}>
-              <NavigationMenu contentId={contentId} />
-              <MastheadSearch
-                searchIsOpen={this.state.searchIsOpen}
-                onClick={this.toggleSearchState}
-              />
-              {this.state.searchIsOpen ? null : <MastheadLogo host={host} />}
-              {this.state.searchIsOpen ? null : (
-                <MastheadUserTools host={host} />
-              )}
-            </header>
-          )}
-        />
-      </LayoutContainer>
+      <FelaComponent
+        style={theme => ({
+          alignItems: 'stretch',
+          backgroundColor: theme.color('neutral', '-10'),
+          ...borderBottom(
+            '1px',
+            0,
+            'solid',
+            theme.color('mastheadBorder', 'borderColor')
+          ),
+          display: 'flex',
+          position: 'relative',
+          width: '100%',
+        })}
+        render={({ theme, className, }) => (
+          <header className={className}>
+            <NavigationMenu contentId={contentId} />
+            <MastheadSearch
+              searchIsOpen={this.state.searchIsOpen}
+              onClick={this.toggleSearchState}
+            />
+            {this.state.searchIsOpen ? null : <MastheadLogo host={host} />}
+            {this.state.searchIsOpen ? null : <MastheadUserTools />}
+          </header>
+        )}
+      />
     );
   }
 }
