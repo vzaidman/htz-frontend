@@ -1,4 +1,3 @@
-/* global fetch, Headers */
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
@@ -216,29 +215,6 @@ class StandardArticle extends React.Component {
       this.getFacebookCount(this.state.articleUrl);
     }
   }
-
-  getFacebookCount = () => {
-    const accessToken =
-      'EAABkq33GsqwBAMhelXM0V7xJQmgJ1sf0nvxZAyZBZAtStCyZC6Is1m1OgnsL1Jxsw6BJx0zaZA1TOZBrZAYVMiNNEqLwb4ZARsYUZCEKZAG6r4Wnuminzgi41WQUZCCKvpdhjuHKgh1s3R3fWKjZA4rXvYEoHxgWRSzvFrRMkALfoQUAVwZDZD';
-    const url = `https://graph.facebook.com/?fields=share&access_token=${accessToken}&id=${
-      this.state.articleUrl
-    }&format=json`;
-
-    return fetch(url, {
-      method: 'get',
-      headers: new Headers({
-        'content-type': 'application/json',
-      }),
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw Error(response.statusText);
-      })
-      .then(data => this.setState({ facebookCount: data.share.share_count, }))
-      .catch(error => console.log('error: ', error));
-  };
 
   extractHeadline = articleBody => {
     const mediaComponents = [

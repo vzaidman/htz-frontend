@@ -1,28 +1,12 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
-import gql from 'graphql-tag';
 
-import { border, parseStyleProps, } from '@haaretz/htz-css-tools';
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
-import { Query, Mutation, } from '../ApolloBoundary/ApolloBoundary';
 import getIcon from './iconList';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
-import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 import ButtonGroup from '../Button/ButtonGroup'; // eslint-disable-line import/no-named-as-default
-import EventTracker from '../../utils/EventTracker';
-
-const PlatformQuery = gql`
-  query GetPlatform {
-    platform @client
-  }
-`;
-
-export const TOGGLE_ZEN = gql`
-  mutation ToggleZen {
-    toggleZen @client
-  }
-`;
 
 const buttonPropType = PropTypes.oneOfType([
   PropTypes.shape({
@@ -133,19 +117,6 @@ const wrapperStyle = ({ vertical, miscStyles, theme, }) => ({
 });
 const ActionWrapper = createComponent(wrapperStyle);
 
-const buttonStyle = ({ borderStyles, miscStyles, theme, }) => ({
-  ...(borderStyles && border(borderStyles)),
-  ...miscStyles,
-});
-const ActionButton = createComponent(buttonStyle, Button, props =>
-  Object.keys(props)
-);
-
-const buttonTextStyle = () => ({
-  marginEnd: '1rem',
-});
-const ButtonText = createComponent(buttonTextStyle, 'span');
-
 const ActionButtons = ({
   boxModel,
   buttons,
@@ -159,70 +130,26 @@ const ActionButtons = ({
   vertical,
 }) => {
   const getButton = (button, index) => {
-    const { buttonStyles, buttonText, iconStyles, name, } = button;
+    const { buttonStyles, iconStyles, name, } = button;
+    const ActionButton = getIcon(name || button);
     return (
-      <Mutation mutation={TOGGLE_ZEN}>
-        {toggleZen => {
-          const icon = getIcon(
-            name || button,
-            elementName,
-            elementUrl,
-            toggleZen
-          );
-          const Icon = icon.component;
-          return (
-            <Query query={PlatformQuery}>
-              {({ loading, error, data, client, }) => {
-                if (loading) return <p>loading...</p>;
-                if (error) console.log(error);
-                const { platform, } = data;
-                return (
-                  <EventTracker>
-                    {({ biAction, }) => (
-                      <ActionButton
-                        key={index}
-                        fontSize={-2}
-                        boxModel={boxModel}
-                        isFlat={isFlat}
-                        miscStyles={{
-                          ...(globalButtonsStyles && globalButtonsStyles),
-                          ...(buttonStyles && buttonStyles),
-                        }}
-                        {...(icon.actionTag === 'href'
-                          ? { href: icon.action, }
-                          : {})}
-                        onClick={() => {
-                          if (icon.actionTag !== 'href') {
-                            icon.action();
-                          }
-                          biAction({
-                            actionCode: icon.bi,
-                            additionalInfo: {
-                              platform,
-                              ...(buttonText
-                                ? { NumOfTalkbacks: buttonText, }
-                                : {}),
-                            },
-                          });
-                        }}
-                      >
-                        {buttonText && <ButtonText>{buttonText}</ButtonText>}
-                        <Icon
-                          size={size}
-                          miscStyles={{
-                            ...(globalIconsStyles && globalIconsStyles),
-                            ...(iconStyles && iconStyles),
-                          }}
-                        />
-                      </ActionButton>
-                    )}
-                  </EventTracker>
-                );
-              }}
-            </Query>
-          );
+      <ActionButton
+        key={index}
+        fontSize={-2}
+        boxModel={boxModel}
+        isFlat={isFlat}
+        styles={{
+          ...(globalButtonsStyles && globalButtonsStyles),
+          ...(buttonStyles && buttonStyles),
         }}
-      </Mutation>
+        size={size}
+        iconStyles={{
+          ...(globalIconsStyles && globalIconsStyles),
+          ...(iconStyles && iconStyles),
+        }}
+        elementName={elementName}
+        elementUrl={elementUrl}
+      />
     );
   };
 
