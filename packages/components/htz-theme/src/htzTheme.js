@@ -8,6 +8,7 @@ import fontStacks from './consts/fontStacks';
 import footerBorderStyle from './consts/footerBorderStyle';
 import gridStyle from './consts/gridStyle';
 import inputStyle from './consts/inputStyle';
+import layoutStyle from './consts/layoutStyle';
 import { benderStyle, } from './consts/listStyle';
 import newsletterStyle from './consts/newsletterStyle';
 import selectStyle from './consts/selectStyle';
@@ -68,6 +69,7 @@ const htzTheme = Object.freeze({
   fontStacks,
   footerBorderStyle,
   inputStyle,
+  layoutStyle,
   newsletterStyle,
   selectStyle,
   specialPromotionStyle,

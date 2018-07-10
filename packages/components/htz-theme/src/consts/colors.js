@@ -8,6 +8,9 @@ const colors = {
   accent: {
     base: [ 'tertiary', 'base', ],
   },
+  alerts: {
+    openButtonText: [ 'tertiary', 'base', ],
+  },
   articleHeader: {
     kickerBlockBg: [ 'tertiary', ],
     kickerBlockText: [ 'neutral', '-10', ],
@@ -360,6 +363,10 @@ const colors = {
     subcommentAuthor: [ 'neutral', '-4', ],
     subcommentBorder: [ 'primary', '-4', ],
     text: [ 'bodyText', 'base', ],
+  },
+  layout: {
+    containerBg: 'white',
+    rowBg: [ 'primary', '-6', ],
   },
   newsletter: {
     // Newsletter
