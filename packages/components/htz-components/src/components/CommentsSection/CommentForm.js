@@ -151,7 +151,7 @@ class CommentForm extends React.Component {
   isReplyForm = this.props.parentCommentId !== '0';
 
   TextInputVariant = this.isReplyForm
-    ? `${this.props.theme.commentsStyle.textInputVariant}Inverse`
+    ? `${this.props.theme.commentsStyle.textInputVariant}MediumInverse`
     : this.props.theme.commentsStyle.textInputVariant;
 
   handleSubmitComment = (commentAuthor, commentTextHtml) => {
@@ -325,14 +325,14 @@ class CommentForm extends React.Component {
                                     backgroundColor: 'transparent',
                                   }}
                                   boxModel={{ hp: 5, vp: 1, }}
-                                  onClick={() => {
+                                  onClick={evt => {
                                     biAction({
                                       actionCode: 1,
                                       additionalInfo: {
                                         platform,
                                       },
                                     });
-                                    handleSubmit();
+                                    handleSubmit(evt);
                                   }}
                                 >
                                   {sendBtnTxt}
