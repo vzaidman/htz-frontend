@@ -34,6 +34,7 @@ import {
   textInputI18n,
   userMenuI18n,
   welcomePageI18n,
+  zenTextI18n,
   zoominText,
   zoomoutText,
 } from './consts/i18n';
@@ -95,6 +96,7 @@ const htzTheme = Object.freeze({
   textInputI18n,
   userMenuI18n,
   welcomePageI18n,
+  zenTextI18n,
   zoominText,
   zoomoutText,
 

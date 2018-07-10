@@ -226,3 +226,5 @@ export const a11yMenuI18n = Object.freeze({
     }),
   ]),
 });
+
+export const zenTextI18n = 'קריאת זן';

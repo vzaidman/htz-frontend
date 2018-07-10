@@ -43,10 +43,11 @@ const TOGGLE_ZEN = gql`
   }
 `;
 
-const GET_PLATFORM_AND_HOST = gql`
-  query GetPlatformAndHost {
+const GET_PAGE_DATA = gql`
+  query GetPageData {
     platform @client
     hostname @client
+    articleId @client
   }
 `;
 
@@ -71,32 +72,25 @@ const fbAppIds = new Map([
   [ 'haaretz.com', '287530407927859', ],
 ]);
 
-const ActionButton = ({ styles, render, }) => (
-  <Query query={GET_PLATFORM_AND_HOST}>
-    {({ loading, error, data, client, }) => {
+const ActionButton = ({ render, }) => (
+  <Query query={GET_PAGE_DATA}>
+    {({ loading, error, data, }) => {
       if (loading) return null;
       if (error) console.log(error);
-      const { platform, hostname, } = data;
+      const { platform, hostname, articleId, } = data;
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       return (
         <EventTracker>
-          {({ biAction, }) => (
-            <FelaComponent
-              style={{
-                ...styles,
-              }}
-              render={({ className, }) =>
-                render({ className, platform, biAction, host, })
-              }
-            />
-          )}
+          {({ biAction, }) =>
+            render({ platform, biAction, host, hostname, articleId, })
+          }
         </EventTracker>
       );
     }}
   </Query>
 );
 
-const Comments = ({ styles, size, iconStyles, ...props }) => (
+const Comments = ({ buttonStyles, size, iconStyles, ...props }) => (
   <ApolloConsumer>
     {cache => {
       const { commentsElementId, } = cache.readQuery({
@@ -107,43 +101,39 @@ const Comments = ({ styles, size, iconStyles, ...props }) => (
           query={GET_COMMENTS_COUNT}
           variables={{ path: commentsElementId, }}
         >
-          {({ loading, error, data, }) => {
-            const { totalHits, } = data.commentsElement || {};
-            return (
-              <ActionButton
-                styles={styles}
-                render={({ className, platform, biAction, }) => (
-                  <Button
-                    {...props}
-                    className={className}
-                    href="#"
-                    onClick={() => {
-                      biAction({
-                        actionCode: 111,
-                        additionalInfo: {
-                          platform,
-                          ...(!loading && !error
-                            ? { NumOfTalkbacks: totalHits, }
-                            : {}),
-                        },
-                      });
-                    }}
-                  >
-                    {!loading &&
-                      !error && (
-                        <FelaComponent
-                          style={{ marginEnd: '1rem', }}
-                          render="span"
-                        >
-                          {totalHits}
-                        </FelaComponent>
-                      )}
-                    <IconComment size={size} miscStyles={iconStyles} />
-                  </Button>
-                )}
-              />
-            );
-          }}
+          {({ loading, error, data, }) => (
+            <ActionButton
+              render={({ platform, biAction, }) => (
+                <Button
+                  {...props}
+                  miscStyles={buttonStyles}
+                  href="#commentsSection"
+                  onClick={() => {
+                    biAction({
+                      actionCode: 111,
+                      additionalInfo: {
+                        platform,
+                        ...(!loading && !error
+                          ? { NumOfTalkbacks: data.commentsElement.totalHits, }
+                          : {}),
+                      },
+                    });
+                  }}
+                >
+                  {!loading &&
+                    !error && (
+                      <FelaComponent
+                        style={{ marginEnd: '1rem', }}
+                        render="span"
+                      >
+                        {data.commentsElement.totalHits}
+                      </FelaComponent>
+                    )}
+                  <IconComment size={size} miscStyles={iconStyles} />
+                </Button>
+              )}
+            />
+          )}
         </Query>
       );
     }}
@@ -151,7 +141,7 @@ const Comments = ({ styles, size, iconStyles, ...props }) => (
 );
 
 const Facebook = ({
-  styles,
+  buttonStyles,
   buttonText,
   size,
   iconStyles,
@@ -162,11 +152,10 @@ const Facebook = ({
   const FacebookIcon = round ? IconFacebook : IconFacebookLogo;
   return (
     <ActionButton
-      styles={styles}
-      render={({ className, platform, biAction, host, }) => (
+      render={({ platform, biAction, host, }) => (
         <Button
           {...props}
-          className={className}
+          miscStyles={buttonStyles}
           href={`https://www.facebook.com/dialog/feed?app_id=${fbAppIds.get(
             host
           )}&redirect_uri=${elementUrl}&link=${elementUrl}&display=popup`}
@@ -227,19 +216,17 @@ class FacebookLogo extends React.Component {
   };
 
   render() {
-    const { styles, size, iconStyles, elementUrl, ...props } = this.props;
+    const { buttonStyles, size, iconStyles, ...props } = this.props;
 
     const { facebookCount, } = this.state;
     return (
       <ActionButton
-        styles={styles}
-        render={({ className, platform, biAction, host, }) => {
+        render={({ platform, biAction, host, }) => {
           if (!this.state.host) this.setState({ host, });
           return (
             <Button
               {...props}
-              className={className}
-              href={`https://www.facebook.com/sharer/sharer.php?&u=${elementUrl}`}
+              miscStyles={buttonStyles}
               onClick={() => {
                 window.open(
                   'https://www.facebook.com/sharer/sharer.php?&amp;u=https://www.haaretz.co.il/news/science/.premium-1.6248935',
@@ -270,7 +257,7 @@ class FacebookLogo extends React.Component {
 }
 
 const GooglePlus = ({
-  styles,
+  buttonStyles,
   buttonText,
   size,
   iconStyles,
@@ -278,11 +265,10 @@ const GooglePlus = ({
   ...props
 }) => (
   <ActionButton
-    styles={styles}
-    render={({ className, platform, biAction, }) => (
+    render={({ platform, biAction, }) => (
       <Button
         {...props}
-        className={className}
+        miscStyles={buttonStyles}
         href={`https://plus.google.com/share?url=${elementUrl}`}
         onClick={() => {
           biAction({
@@ -306,7 +292,7 @@ const GooglePlus = ({
 );
 
 const Mail = ({
-  styles,
+  buttonStyles,
   size,
   iconStyles,
   elementName,
@@ -314,11 +300,10 @@ const Mail = ({
   ...props
 }) => (
   <ActionButton
-    styles={styles}
-    render={({ className, platform, biAction, }) => (
+    render={({ platform, biAction, }) => (
       <Button
         {...props}
-        className={className}
+        miscStyles={buttonStyles}
         href={`mailto:?subject=${elementName}&body=${elementUrl}`}
         onClick={() => {
           biAction({
@@ -336,7 +321,7 @@ const Mail = ({
 );
 
 const MailAlert = ({
-  styles,
+  buttonStyles,
   size,
   iconStyles,
   elementName,
@@ -344,11 +329,10 @@ const MailAlert = ({
   ...props
 }) => (
   <ActionButton
-    styles={styles}
-    render={({ className, platform, biAction, }) => (
+    render={({ platform, biAction, }) => (
       <Button
         {...props}
-        className={className}
+        miscStyles={buttonStyles}
         href={`mailto:?subject=${elementName}&body=${elementUrl}`}
         onClick={() => {
           biAction({
@@ -366,7 +350,7 @@ const MailAlert = ({
 );
 
 const Messenger = ({
-  styles,
+  buttonStyles,
   buttonText,
   size,
   iconStyles,
@@ -374,11 +358,10 @@ const Messenger = ({
   ...props
 }) => (
   <ActionButton
-    styles={styles}
-    render={({ className, platform, biAction, host, }) => (
+    render={({ platform, biAction, host, }) => (
       <Button
         {...props}
-        className={className}
+        miscStyles={buttonStyles}
         href={`fb-messenger://share/?link=${elementUrl}&app_id=${fbAppIds.get(
           host
         )}`}
@@ -403,21 +386,13 @@ const Messenger = ({
   />
 );
 
-const Print = ({
-  styles,
-  size,
-  iconStyles,
-  elementName,
-  elementUrl,
-  ...props
-}) => (
+const Print = ({ buttonStyles, size, iconStyles, ...props }) => (
   <ActionButton
-    styles={styles}
-    render={({ className, platform, biAction, }) => (
+    render={({ platform, biAction, articleId, hostname, }) => (
       <Button
         {...props}
-        className={className}
-        href={`/misc/article-print-page/${elementUrl}`}
+        miscStyles={buttonStyles}
+        href={`http://${hostname}/misc/article-print-page/${articleId}`}
         onClick={() => {
           biAction({
             actionCode: 112,
@@ -434,7 +409,7 @@ const Print = ({
 );
 
 const Twitter = ({
-  styles,
+  buttonStyles,
   size,
   iconStyles,
   elementName,
@@ -442,11 +417,10 @@ const Twitter = ({
   ...props
 }) => (
   <ActionButton
-    styles={styles}
-    render={({ className, platform, biAction, }) => (
+    render={({ platform, biAction, }) => (
       <Button
         {...props}
-        className={className}
+        miscStyles={buttonStyles}
         href={`https://twitter.com/intent/tweet?text=${elementName}&url=${elementUrl}`}
         onClick={() => {
           biAction({
@@ -463,13 +437,12 @@ const Twitter = ({
   />
 );
 
-const Whatsapp = ({ styles, size, iconStyles, elementUrl, ...props }) => (
+const Whatsapp = ({ buttonStyles, size, iconStyles, elementUrl, ...props }) => (
   <ActionButton
-    styles={styles}
-    render={({ className, platform, biAction, }) => (
+    render={({ platform, biAction, }) => (
       <Button
         {...props}
-        className={className}
+        miscStyles={buttonStyles}
         onClick={() => {
           window.open(
             `https://web.whatsapp.com/send?text=${elementUrl}` + // eslint-disable-line prefer-template
@@ -496,7 +469,7 @@ const Whatsapp = ({ styles, size, iconStyles, elementUrl, ...props }) => (
 );
 
 const Zen = ({
-  styles,
+  buttonStyles,
   size,
   buttonText,
   iconStyles,
@@ -506,11 +479,10 @@ const Zen = ({
   <Mutation mutation={TOGGLE_ZEN}>
     {toggleZen => (
       <ActionButton
-        styles={styles}
-        render={({ className, platform, biAction, }) => (
+        render={({ platform, biAction, }) => (
           <Button
             {...props}
-            className={className}
+            miscStyles={buttonStyles}
             onClick={() => {
               toggleZen();
               biAction({
@@ -523,6 +495,12 @@ const Zen = ({
               return false;
             }}
           >
+            <FelaComponent
+              style={{ marginEnd: '1rem', }}
+              render={({ className, theme: { zenTextI18n, }, }) => (
+                <span className={className}>{zenTextI18n}</span>
+              )}
+            />
             <IconZen size={size} miscStyles={iconStyles} />
           </Button>
         )}
