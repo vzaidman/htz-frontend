@@ -59,6 +59,7 @@ class HeaderSearch extends React.Component {
           flexGrow: searchIsOpen ? '1' : '0',
           overflow: 'hidden',
           extend: [
+            theme.getTransition(1, 'swiftOut'),
             theme.mq({ until: 's', }, { display: 'none', }),
             theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
           ],
@@ -80,7 +81,6 @@ class HeaderSearch extends React.Component {
                 alignItems: 'center',
                 color: color('headerSearch', 'text'),
                 display: 'flex',
-                // ':focus': { outline: 'none', },
                 fontWeight: '700',
                 justifyContent: 'center',
                 minWidth: '6rem',
@@ -113,6 +113,8 @@ class HeaderSearch extends React.Component {
                   aria-expanded={searchIsOpen}
                   onMouseEnter={this.handleMouseEnter}
                   onMouseLeave={this.handleMouseLeave}
+                  onFocus={this.handleMouseEnter}
+                  onBlur={this.handleMouseLeave}
                   type="button"
                 >
                   {searchIsOpen ? (

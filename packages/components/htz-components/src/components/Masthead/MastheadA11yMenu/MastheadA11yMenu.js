@@ -32,6 +32,10 @@ const a11yButtonStyle = ({ theme, isOpen, }) => ({
     backgroundColor: theme.color('a11yMenu', 'bgHover'),
     color: theme.color('a11yMenu', 'textOpenOrHover'),
   },
+  ':focus': {
+    backgroundColor: theme.color('primary'),
+    color: theme.color('neutral', '-10'),
+  },
   extend: [ theme.getTransition(1, 'swiftOut'), ],
 });
 

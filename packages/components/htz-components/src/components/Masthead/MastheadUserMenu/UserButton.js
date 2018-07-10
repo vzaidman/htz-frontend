@@ -57,6 +57,8 @@ class UserButton extends React.Component {
             aria-expanded={isOpen}
             onMouseEnter={this.handleMouseEnter}
             onMouseLeave={this.handleMouseLeave}
+            onFocus={this.handleMouseEnter}
+            onBlur={this.handleMouseLeave}
           >
             <FelaComponent
               render="span"
@@ -65,6 +67,7 @@ class UserButton extends React.Component {
                   isHovered || isOpen
                     ? theme.color('userMenu', 'textOpenOrHover')
                     : theme.color('userMenu', 'text'),
+                extend: [ theme.getTransition(1, 'swiftOut'), ],
               }}
             >
               {userName ? (

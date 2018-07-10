@@ -17,7 +17,8 @@ const headerReadingButtonStyle = theme => ({
     color: theme.color('neutral', '-10'),
   },
   ':focus': {
-    color: theme.color('primary'),
+    backgroundColor: theme.color('primary'),
+    color: theme.color('neutral', '-10'),
   },
   extend: [ theme.getTransition(1, 'swiftOut'), ],
 });

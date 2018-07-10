@@ -13,13 +13,13 @@ import {
   dropdownListStyle,
 } from '../Masthead/mastheadDropdownListStyle';
 
-const menuButtonStyle = ({ theme, isOpen, }) => ({
+const menuButtonStyle = ({ theme, isOpen, isHovered, }) => ({
   border: 'none',
   color: theme.color('neutral', '-3'),
   display: 'block',
   fontWeight: '700',
   height: '100%',
-  // this padding affect all the items in the masthead
+  // this padding affects all the items in the masthead
   paddingTop: '2rem',
   paddingBottom: '2rem',
   paddingRight: '1rem',
@@ -28,13 +28,23 @@ const menuButtonStyle = ({ theme, isOpen, }) => ({
     backgroundColor: theme.color('secondary'),
     color: theme.color('neutral', '-10'),
   }),
-  ':hover': {
-    backgroundColor: theme.color('primary'),
-    color: theme.color('neutral', '-10'),
-  },
+  // ':hover': {
+  //   backgroundColor: theme.color('primary'),
+  //   color: theme.color('neutral', '-10'),
+  // },
+  // ':focus': {
+  //   backgroundColor: theme.color('primary'),
+  //   color: theme.color('neutral', '-10'),
+  // },
   extend: [
-    theme.getTransition(1, 'swiftOut'),
+    isHovered
+      ? {
+        backgroundColor: theme.color('primary'),
+        color: theme.color('neutral', '-10'),
+      }
+      : {},
     theme.type(-1),
+    theme.getTransition(1, 'swiftOut'),
     theme.mq({ until: 's', }, { display: 'none', }),
     theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
   ],
@@ -152,6 +162,7 @@ class NavigationMenu extends React.Component {
                     <FelaComponent
                       rule={menuButtonStyle}
                       isOpen={isOpen}
+                      isHovered={isHovered}
                       render={({ className, }) => (
                         <button
                           className={className}
@@ -159,6 +170,9 @@ class NavigationMenu extends React.Component {
                           aria-expanded={isOpen}
                           onMouseEnter={this.handleMouseEnter}
                           onMouseLeave={this.handleMouseLeave}
+                          onFocus={this.handleMouseEnter}
+                          onBlur={this.handleMouseLeave}
+                          type="button"
                         >
                           <FelaComponent
                             style={{
