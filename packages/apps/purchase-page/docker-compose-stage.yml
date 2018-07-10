@@ -2,7 +2,7 @@ version: "3.3"
 services:
   htz_react:
     hostname: promotions-page
-    commans:["yarn", "workspace", "@haaretz/purchase-page", "start"]
+    command:["yarn", "workspace", "@haaretz/purchase-page", "start"]
     build: .
     image: "docker.themarker.com:8083/promotions-page:${version:-latest}"
     ports:
