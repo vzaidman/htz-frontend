@@ -168,6 +168,7 @@ class HeaderSearch extends React.Component {
                             onChange={this.recordQuery}
                             onBlur={this.changeState}
                             boxModel={{ vp: 0.5, }}
+                            variant="search"
                             miscStyles={{
                               backgroundColor: 'transparent',
                               height: '100%',

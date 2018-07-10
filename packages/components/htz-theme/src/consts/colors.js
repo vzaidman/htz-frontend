@@ -506,6 +506,33 @@ const colors = {
     primaryMediumInverseHoverBg: [ 'primary', '-5', ],
     primaryMediumInverseHoverBorder: [ 'primary', '-4', ],
     primaryMediumInverseHoverText: [ 'bodyText', 'base', ],
+
+    // Search
+    searchBg: 'transparent',
+    searchBgWrapper: 'transparent',
+    searchBorder: 'transparent',
+    searchBorderTextLabel: [ 'primary', '-5', ],
+    searchPlaceholder: [ 'neutral', '-4', ],
+    searchText: [ 'bodyText', 'base', ],
+    searchTextLabel: [ 'primary', '+1', ],
+    searchTextLabelDisabled: [ 'neutral', '-4', ],
+    searchTextNote: [ 'neutral', '-3', ],
+    searchAbbr: [ 'tertiary', 'base', ],
+
+    // Search Focus
+    searchFocusBg: 'transparent',
+    searchFocusBorder: 'transparent',
+
+    // Search Error state
+    searchErrorBorder: [ 'tertiary', '+1', ],
+    searchErrorText: [ 'bodyText', 'base', ],
+    searchErrorTextLabel: [ 'tertiary', 'base', ],
+    searchErrorTextNote: [ 'tertiary', 'base', ],
+
+    // Search Hover
+    searchHoverBg: 'transparent',
+    searchHoverBorder: 'transparent',
+    searchHoverText: [ 'bodyText', 'base', ],
   },
   image: {
     bgc: [ 'neutral', '-6', ],
