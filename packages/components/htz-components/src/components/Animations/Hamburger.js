@@ -42,15 +42,20 @@ const propTypes = {
    */
   size: PropTypes.number,
   /**
-   * The thickness of each line (in **px**)
+   * The thickness of each line (in **px**).
    */
   thickness: PropTypes.number,
+  /**
+   * Transition for the icon: theme.getTransition(1, swiftOut).
+   */
+  isTransition: PropTypes.bool,
 };
 
 const defaultProps = {
   color: [ 'neutral', 'base', ],
   size: 2,
   thickness: 2,
+  isTransition: false,
 };
 
 const setColor = (prop, value, getColor) => {
@@ -66,6 +71,7 @@ const hamburgerDashStyle = (
   color,
   size,
   thickness,
+  isTransition,
   main = false
 ) => ({
   height: `${thickness}px`,
@@ -73,6 +79,7 @@ const hamburgerDashStyle = (
   position: 'absolute',
   transition: 'transform .5s',
   extend: [
+    isTransition ? theme.getTransition(1, 'swiftOut') : null,
     ...(isOpen
       ? !main
         ? [
@@ -97,9 +104,24 @@ const hamburgerDashStyle = (
   ],
 });
 
-const hamburgerStyle = ({ theme, isOpen, color, size, thickness, }) => ({
+const hamburgerStyle = ({
+  theme,
+  isOpen,
+  color,
+  size,
+  thickness,
+  isTransition,
+}) => ({
   ...(isOpen && { background: 'none', }),
-  ...hamburgerDashStyle(theme, isOpen, color, size, thickness, true),
+  ...hamburgerDashStyle(
+    theme,
+    isOpen,
+    color,
+    size,
+    thickness,
+    isTransition,
+    true
+  ),
   display: 'inline-block',
   left: '50%',
   margin: '0 auto',
@@ -107,14 +129,14 @@ const hamburgerStyle = ({ theme, isOpen, color, size, thickness, }) => ({
   transform: 'translate(-50%, -50%)',
   opacity: '1',
   ':before': {
-    ...hamburgerDashStyle(theme, isOpen, color, size, thickness),
+    ...hamburgerDashStyle(theme, isOpen, color, size, thickness, isTransition),
     ...(isOpen && { transform: `translateY(${size / 3.33}rem) rotate(45deg)`, }),
     left: '0',
     top: `-${size / 3.33}rem`,
     content: '""',
   },
   ':after': {
-    ...hamburgerDashStyle(theme, isOpen, color, size, thickness),
+    ...hamburgerDashStyle(theme, isOpen, color, size, thickness, isTransition),
     ...(isOpen && {
       transform: `translateY(-${size / 3.33}rem) rotate(-45deg)`,
     }),

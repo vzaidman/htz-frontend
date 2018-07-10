@@ -191,6 +191,7 @@ class NavigationMenu extends React.Component {
                                 open: [ 'neutral', '-10', ],
                               }}
                               size={2.5}
+                              isTransition
                             />
                           </FelaComponent>
                           <span>{theme.navigationMenuI18n.buttonText}</span>
