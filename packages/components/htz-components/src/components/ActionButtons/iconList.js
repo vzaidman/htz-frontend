@@ -156,37 +156,41 @@ const Facebook = ({
   size,
   iconStyles,
   elementUrl,
+  round,
   ...props
-}) => (
-  <ActionButton
-    styles={styles}
-    render={({ className, platform, biAction, host, }) => (
-      <Button
-        {...props}
-        className={className}
-        href={`https://www.facebook.com/dialog/feed?app_id=${fbAppIds.get(
-          host
-        )}&redirect_uri=${elementUrl}&link=${elementUrl}&display=popup`}
-        onClick={() => {
-          biAction({
-            actionCode: 10,
-            additionalInfo: {
-              platform,
-              ...(buttonText ? { NumOfTalkbacks: buttonText, } : {}),
-            },
-          });
-        }}
-      >
-        {buttonText && (
-          <FelaComponent style={{ marginEnd: '1rem', }} render="span">
-            {buttonText}
-          </FelaComponent>
-        )}
-        <IconFacebook size={size} miscStyles={iconStyles} />
-      </Button>
-    )}
-  />
-);
+}) => {
+  const FacebookIcon = round ? IconFacebook : IconFacebookLogo;
+  return (
+    <ActionButton
+      styles={styles}
+      render={({ className, platform, biAction, host, }) => (
+        <Button
+          {...props}
+          className={className}
+          href={`https://www.facebook.com/dialog/feed?app_id=${fbAppIds.get(
+            host
+          )}&redirect_uri=${elementUrl}&link=${elementUrl}&display=popup`}
+          onClick={() => {
+            biAction({
+              actionCode: 10,
+              additionalInfo: {
+                platform,
+                ...(buttonText ? { NumOfTalkbacks: buttonText, } : {}),
+              },
+            });
+          }}
+        >
+          {buttonText && (
+            <FelaComponent style={{ marginEnd: '1rem', }} render="span">
+              {buttonText}
+            </FelaComponent>
+          )}
+          <FacebookIcon size={size} miscStyles={iconStyles} />
+        </Button>
+      )}
+    />
+  );
+};
 
 class FacebookLogo extends React.Component {
   state = {
@@ -195,7 +199,9 @@ class FacebookLogo extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.host !== this.state.host) { this.getFacebookCount(this.state.host); }
+    if (prevState.host !== this.state.host) {
+      this.getFacebookCount(this.state.host);
+    }
   }
 
   getFacebookCount = host => {
@@ -235,6 +241,11 @@ class FacebookLogo extends React.Component {
               className={className}
               href={`https://www.facebook.com/sharer/sharer.php?&u=${elementUrl}`}
               onClick={() => {
+                window.open(
+                  'https://www.facebook.com/sharer/sharer.php?&amp;u=https://www.haaretz.co.il/news/science/.premium-1.6248935',
+                  'popup',
+                  'width=635,height=342,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
+                );
                 biAction({
                   actionCode: 10,
                   additionalInfo: {
