@@ -541,7 +541,7 @@ const colors = {
     '-1': '#4766A6',
     base: '#3b5998',
     '+1': '#2A4682',
-    messanger: '#0084FF',
+    messenger: '#0084FF',
   },
   twitter: {
     '-2': '#F2FAFF',
