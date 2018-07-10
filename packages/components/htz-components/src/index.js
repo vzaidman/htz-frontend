@@ -85,7 +85,6 @@ import IconLike from './components/Icon/icons/IconLike';
 import IconLock from './components/Icon/icons/IconLock';
 import IconMail from './components/Icon/icons/IconMail';
 import IconMailAlert from './components/Icon/icons/IconMailAlert';
-import IconMailFooter from './components/Icon/icons/IconMailFooter';
 import IconMarkerLogo from './components/Icon/icons/IconMarkerLogo';
 import IconMarkerLogoTransparent from './components/Icon/icons/IconMarkerLogoTransparent';
 import IconMenu from './components/Icon/icons/IconMenu';
@@ -221,7 +220,6 @@ export {
   IconLock,
   IconMail,
   IconMailAlert,
-  IconMailFooter,
   IconMarkerLogo,
   IconMarkerLogoTransparent,
   IconMenu,

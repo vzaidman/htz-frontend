@@ -7,7 +7,7 @@ import IconHaaretzLogo from '../../Icon/icons/IconHaaretzLogo';
 import IconTwitter from '../../Icon/icons/IconTwitter';
 import IconGPlus from '../../Icon/icons/IconGPlus';
 import IconRss from '../../Icon/icons/IconRss';
-import IconMailFooter from '../../Icon/icons/IconMailFooter';
+import IconMail from '../../Icon/icons/IconMail';
 import IconApple from '../../Icon/icons/IconApple';
 import IconAndroid from '../../Icon/icons/IconAndroid';
 
@@ -17,11 +17,7 @@ const IconMiscStyle = {
 };
 
 const desktopHeadStyle = ({
-  theme: {
-    color,
-    mq,
-    footerBorderStyle: { borderWidth, lines, borderStyle, },
-  },
+  theme: { color, mq, footerBorderStyle: { borderWidth, lines, borderStyle, }, },
 }) => ({
   ...mq(
     { from: 's', },
@@ -194,7 +190,7 @@ export default function FooterHead() {
                   render={({ className, }) => (
                     <li className={className}>
                       <HtzLink
-                        content={<IconMailFooter />}
+                        content={<IconMail />}
                         href="https://www.haaretz.co.il/misc/redemail"
                       />
                     </li>

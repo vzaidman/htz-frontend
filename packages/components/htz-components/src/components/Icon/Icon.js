@@ -45,7 +45,6 @@ import IconArrow from './icons/IconArrow';
 import IconReply from './icons/IconReply';
 import IconItalic from './icons/IconItalic';
 import IconAndroid from './icons/IconAndroid';
-import IconMailFooter from './icons/IconMailFooter';
 import IconApple from './icons/IconApple';
 import IconHtzLoader from './icons/IconHtzLoader';
 import IconTmLoader from './icons/IconTmLoader';
@@ -208,9 +207,6 @@ export default class Icons extends React.Component {
           <Cell name="IconItalic">{<IconItalic size={this.state.size} />}</Cell>
           <Cell name="IconAndroid">
             {<IconAndroid size={this.state.size} />}
-          </Cell>
-          <Cell name="IconMailFooter">
-            {<IconMailFooter size={this.state.size} />}
           </Cell>
           <Cell name="IconApple">{<IconApple size={this.state.size} />}</Cell>
           <Cell name="IconHtzLoader">
