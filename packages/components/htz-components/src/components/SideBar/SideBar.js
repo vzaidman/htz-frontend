@@ -21,11 +21,14 @@ class SideBar extends React.Component {
 
   changeView = y => {
     const { children, height, } = this.props;
-    const range = height / children.length;
-    this.state.show !== Math.floor(y / range) &&
-      this.setState({
-        show: Math.floor(y / range) || 0,
-      });
+    // height 0 causes to divide by 0 which returns NAN and causes and infinite loop (seState will always be called)
+    if (height) {
+      const range = height / children.length;
+      this.state.show !== Math.floor(y / range) &&
+        this.setState({
+          show: Math.floor(y / range) || 0,
+        });
+    }
   };
 
   render() {

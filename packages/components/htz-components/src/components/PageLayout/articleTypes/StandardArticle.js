@@ -6,21 +6,24 @@ import Head from 'next/head';
 import { ApolloConsumer, } from 'react-apollo';
 import { borderTop, } from '@haaretz/htz-css-tools';
 
+import LayoutContainer from '../LayoutContainer';
 import getComponent from '../../../utils/componentFromInputTemplate';
 import ArticleBody from '../../ArticleBody/ArticleBody';
 import ArticleHeaderMeta from '../../ArticleHeader/ArticleHeaderMeta';
 import H from '../../AutoLevels/H';
 import Section from '../../AutoLevels/Section';
 import StandardArticleHeader from './StandardArticleElements/StandardArticleHeader';
-import LayoutRow from '../../PageLayout/LayoutRow'; // eslint-disable-line import/no-named-as-default
-import LayoutContainer from '../../PageLayout/LayoutContainer'; // eslint-disable-line import/no-named-as-default
 import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 
 // const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
-const startSideElementStyle = ({ theme, hideUnderLargeBreakPoint, }) => ({
+const margineliaStyle = ({
+  theme,
+  theme: { layoutStyle, },
+  hideUnderLargeBreakPoint,
+}) => ({
   extend: [
     ...(hideUnderLargeBreakPoint
       ? [ theme.mq({ until: 'l', }, { display: 'none', }), ]
@@ -29,70 +32,125 @@ const startSideElementStyle = ({ theme, hideUnderLargeBreakPoint, }) => ({
       { from: 'l', },
       {
         position: 'absolute',
-        start: '2rem',
-        maxWidth: '25rem',
+        start: `${layoutStyle.startColumnPadding}rem`,
+      }
+    ),
+    theme.mq(
+      { from: 'l', until: 'xl', },
+      {
+        maxWidth: `${layoutStyle.startColumnWidthL -
+          layoutStyle.startColumnPadding}rem`,
+      }
+    ),
+    theme.mq(
+      { from: 'xl', },
+      {
+        maxWidth: `${layoutStyle.startColumnWidthXL -
+          layoutStyle.startColumnPadding}rem`,
       }
     ),
   ],
 });
 
 // eslint-disable-next-line react/prop-types
-const SectionTitle = ({ title, }) => (
+const SectionTitleA = ({ title, isInMargin, }) => (
   <FelaComponent
-    style={theme => ({
+    style={({ layoutStyle, ...theme }) => ({
       color: theme.color('primary'),
       fontWeight: 'bold',
+      position: 'relative',
+      paddingInlineStart: `${layoutStyle.startColumnPadding}rem`,
       extend: [
         theme.type(3, { fromBp: 'l', }),
         theme.type(1, { untilBp: 'l', }),
-        theme.mq({ until: 'l', }, { marginInlineStart: '2rem', }),
+        borderTop('2px', 2, 'solid', theme.color('primary')),
       ],
     })}
-    render={({ className, }) => <H className={className}>{title}</H>}
+    render={({ className, }) => (
+      <H className={className}>
+        {isInMargin ? (
+          <FelaComponent
+            style={({ layoutStyle, ...theme }) => ({
+              extend: [
+                theme.mq(
+                  { from: 'l', },
+                  {
+                    position: 'absolute',
+                    insetInlineStart: `${layoutStyle.startColumnPadding}rem`,
+                    overflow: 'hidden',
+                  }
+                ),
+                theme.mq(
+                  { from: 'l', until: 'xl', },
+                  {
+                    maxWidth: `${layoutStyle.startColumnWidthL -
+                      layoutStyle.startColumnPadding}rem`,
+                  }
+                ),
+                theme.mq(
+                  { from: 'xl', },
+                  {
+                    maxWidth: `${layoutStyle.startColumnWidthXL -
+                      layoutStyle.startColumnPadding}rem`,
+                  }
+                ),
+              ],
+            })}
+          >
+            <span>{title}</span>
+          </FelaComponent>
+        ) : (
+          title
+        )}
+      </H>
+    )}
   />
 );
 /* eslint-disable react/prop-types */
 const StandardLayoutRow = ({
-  children,
-  publishDate,
   authors,
-  title,
-  reportingFrom,
+  children,
   isArticleBody,
+  key,
+  publishDate,
+  reportingFrom,
+  title,
   /* eslint-enable react/prop-types */
 }) => (
   <FelaComponent
     style={theme => ({
-      extend: [
-        borderTop(
-          '2px',
-          isArticleBody ? 0 : 2,
-          'solid',
-          isArticleBody ? 'transparent' : theme.color('primary')
-        ),
-      ],
+      marginTop: '3rem',
+      extend: [ theme.mq({ from: 'xl', }, { marginTop: '4rem', }), ],
     })}
     render={({ className, }) => (
-      <Section className={className}>
+      <Section className={className} key={key}>
+        {title ? <SectionTitleA title={title} /> : null}
         <FelaComponent
-          style={theme => ({
+          style={({ layoutStyle, mq, }) => ({
             position: 'relative',
-            paddingInlineStart: [ { from: 'l', value: '44rem', }, ],
-            extend: [ theme.mq({ from: 'l', }, { paddingInlineStart: '25rem', }), ],
+            extend: [
+              mq(
+                { from: 'l', until: 'xl', },
+                { paddingInlineStart: `${layoutStyle.startColumnWidthL}rem`, }
+              ),
+              mq(
+                { from: 'xl', },
+                { paddingInlineStart: `${layoutStyle.startColumnWidthXL}rem`, }
+              ),
+            ],
           })}
         >
           <FelaComponent
-            rule={startSideElementStyle}
+            rule={margineliaStyle}
             hideUnderLargeBreakPoint={!!authors}
           >
-            {authors && (
+            {authors ? (
               <ArticleHeaderMeta
                 authors={authors}
                 reportingFrom={reportingFrom}
                 publishDate={publishDate}
               />
-            )}
-            {title && <SectionTitle title={title} />}
+            ) : null}
           </FelaComponent>
           <FelaComponent
             style={theme => ({
@@ -117,13 +175,15 @@ const StandardLayoutRow = ({
 );
 
 // eslint-disable-next-line react/prop-types
-const WideLayoutRow = ({ children, }) => (
+const WideArticleLayoutRow = ({ children, key, }) => (
   <FelaComponent
     style={theme => ({
       extend: [ borderTop('2px', 2, 'solid', theme.color('primary')), ],
     })}
     render={({ className, }) => (
-      <Section className={className}>{children}</Section>
+      <Section className={className} key={key}>
+        {children}
+      </Section>
     )}
   />
 );
@@ -254,7 +314,7 @@ class StandardArticle extends React.Component {
     );
 
     return (
-      <article>
+      <LayoutContainer tagName="article">
         <Head>
           <meta name="title" content={metaTitle} />
           <meta name="description" content={metaDescription} />
@@ -269,11 +329,12 @@ class StandardArticle extends React.Component {
 
         <FelaComponent
           render={({ theme, }) => (
-            <LayoutRow
-              tagName="div"
-              miscStyles={{ display: [ { from: 'l', value: 'flex', }, ], }}
+            <FelaComponent
+              style={{
+                extend: [ theme.mq({ from: 'l', }, { display: 'flex', }), ],
+              }}
             >
-              <LayoutContainer bgc="white">
+              <div>
                 <StandardArticleHeader
                   // Guy Kedar:
                   // Overide header data authors with authors from standard article element.
@@ -290,86 +351,83 @@ class StandardArticle extends React.Component {
                   facebookCount={this.state.facebookCount}
                   reportingFrom={reportingFrom}
                 />
-                {/* Main */}
 
-                <div>
-                  {article.map(element => {
-                    if (
-                      element.inputTemplate ===
-                        'com.htz.ArticleHeaderElement' ||
-                      element.inputTemplate === 'com.tm.PageTitle'
-                    ) {
-                      return null;
-                    }
-                    if (
-                      element.inputTemplate === 'com.htz.StandardArticle' ||
-                      element.inputTemplate === 'com.tm.StandardArticle'
-                    ) {
-                      return (
-                        <ApolloConsumer>
-                          {cache => {
-                            const { commentsElementId, } = element;
-                            cache.writeData({
-                              data: {
-                                commentsElementId,
-                              },
-                            });
-                            return (
-                              <StandardLayoutRow
-                                isArticleBody
-                                authors={authors}
-                                reportingFrom={reportingFrom}
-                                publishDate={headerData.publishDate}
-                              >
-                                <ArticleBody body={body} />
-                              </StandardLayoutRow>
-                            );
-                          }}
-                        </ApolloConsumer>
-                      );
-                    }
-                    const Element = getComponent(element.inputTemplate);
-                    const { properties, ...elementWithoutProperties } = element;
-                    if (
-                      element.inputTemplate ===
-                        'com.polobase.OutbrainElement' ||
-                      element.inputTemplate ===
-                        'com.polobase.ClickTrackerBannersWrapper'
-                    ) {
-                      return (
-                        <WideLayoutRow>
-                          <Element
-                            key={element.contentId}
-                            articleId={this.props.articleId}
-                            {...elementWithoutProperties}
-                            {...properties}
-                          />
-                        </WideLayoutRow>
-                      );
-                    }
+                {article.map(element => {
+                  if (
+                    element.inputTemplate === 'com.htz.ArticleHeaderElement' ||
+                    element.inputTemplate === 'com.tm.PageTitle'
+                  ) {
+                    return null;
+                  }
+                  if (
+                    element.inputTemplate === 'com.htz.StandardArticle' ||
+                    element.inputTemplate ===
+                      'com.mouse.story.MouseStandardStory' ||
+                    element.inputTemplate === 'com.tm.StandardArticle'
+                  ) {
                     return (
-                      <StandardLayoutRow
-                        {...(element.inputTemplate ===
-                        'com.tm.ArticleCommentsElement'
-                          ? // todo: theme
-                            { title: 'תגובות', }
-                          : {})}
-                      >
+                      <ApolloConsumer key={element.contentId}>
+                        {cache => {
+                          const { commentsElementId, } = element;
+                          cache.writeData({
+                            data: {
+                              commentsElementId,
+                            },
+                          });
+                          return (
+                            <StandardLayoutRow
+                              isArticleBody
+                              authors={authors}
+                              reportingFrom={reportingFrom}
+                              publishDate={headerData.publishDate}
+                            >
+                              <ArticleBody body={body} />
+                            </StandardLayoutRow>
+                          );
+                        }}
+                      </ApolloConsumer>
+                    );
+                  }
+                  const Element = getComponent(element.inputTemplate);
+                  const { properties, ...elementWithoutProperties } = element;
+                  if (
+                    element.inputTemplate === 'com.polobase.OutbrainElement' ||
+                    element.inputTemplate ===
+                      'com.polobase.ClickTrackerBannersWrapper'
+                  ) {
+                    return (
+                      <WideArticleLayoutRow key={element.contentId}>
                         <Element
-                          key={element.contentId}
-                          articleId={articleId}
+                          articleId={this.props.articleId}
                           {...elementWithoutProperties}
                           {...properties}
                         />
-                      </StandardLayoutRow>
+                      </WideArticleLayoutRow>
                     );
-                  })}
-                </div>
-              </LayoutContainer>
+                  }
+                  return (
+                    <StandardLayoutRow
+                      key={element.contentId}
+                      {...(element.inputTemplate ===
+                      'com.tm.ArticleCommentsElement'
+                        ? // todo: theme
+                          { title: 'תגובות', }
+                        : {})}
+                    >
+                      <Element
+                        articleId={articleId}
+                        {...elementWithoutProperties}
+                        {...properties}
+                      />
+                    </StandardLayoutRow>
+                  );
+                })}
+              </div>
 
               <FelaComponent
                 style={{
                   backgroundColor: 'white',
+                  flexShrink: '0',
                   position: 'relative',
                   display: 'flex',
                   paddingTop: '3rem',
@@ -377,7 +435,7 @@ class StandardArticle extends React.Component {
                   alignItems: 'flex-start',
                   extend: [
                     theme.mq({ until: 'l', }, { display: 'none', }),
-                    theme.mq({ from: 'l', }, { width: '67rem', }),
+                    theme.mq({ from: 'l', }, { width: 'calc(300px + 8rem)', }),
                   ],
                 }}
                 render={({ className, }) => (
@@ -387,32 +445,34 @@ class StandardArticle extends React.Component {
                       this.side = side;
                     }}
                   >
-                    <Zen animate miscStyles={{ height: '100%', }}>
-                      <SideBar height={this.side && this.side.offsetHeight}>
-                        {aside.map(element => {
-                          const Element = getComponent(element.inputTemplate);
-                          const {
-                            properties,
-                            ...elementWithoutProperties
-                          } = element;
-                          return (
-                            <Element
-                              key={element.contentId}
-                              articleId={articleId}
-                              {...elementWithoutProperties}
-                              {...properties}
-                            />
-                          );
-                        })}
-                      </SideBar>
-                    </Zen>
+                    {this.side && (
+                      <Zen animate miscStyles={{ height: '100%', }}>
+                        <SideBar height={this.side.offsetHeight}>
+                          {aside.map(element => {
+                            const Element = getComponent(element.inputTemplate);
+                            const {
+                              properties,
+                              ...elementWithoutProperties
+                            } = element;
+                            return (
+                              <Element
+                                key={element.contentId}
+                                articleId={articleId}
+                                {...elementWithoutProperties}
+                                {...properties}
+                              />
+                            );
+                          })}
+                        </SideBar>
+                      </Zen>
+                    )}
                   </aside>
                 )}
               />
-            </LayoutRow>
+            </FelaComponent>
           )}
         />
-      </article>
+      </LayoutContainer>
     );
   }
 }

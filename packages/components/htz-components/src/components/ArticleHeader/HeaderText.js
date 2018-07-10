@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 
 import Kicker from './Kicker';
-import H from '../AutoLevels/H';
 
 HeaderText.propTypes = {
   /** Class(es) to be added to the DOM element.
@@ -64,7 +63,7 @@ function HeaderText({ kicker, title, subtitle, className, }) {
             <FelaComponent
               style={subTitleStyle}
               render={({ className, }) => (
-                <H className={className}>{subtitle}</H>
+                <p className={className}>{subtitle}</p>
               )}
             />
           )}

@@ -39,7 +39,7 @@ const asideStyle = ({ theme, }) => ({
       width: '26rem',
       position: 'absolute',
       textAlign: 'start',
-      start: '2rem',
+      start: theme.layoutStyle.startColumnPadding,
     }
   ),
   extend: [

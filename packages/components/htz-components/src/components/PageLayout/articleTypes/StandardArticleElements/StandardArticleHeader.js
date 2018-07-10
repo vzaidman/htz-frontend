@@ -69,7 +69,7 @@ function Header({
                 paddingInlineStart: '2rem',
                 extend: [
                   theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
-                  theme.mq({ until: 's', }, { order: 1, }),
+                  theme.mq({ until: 's', }, { order: 1, marginTop: '1rem', }),
                 ],
               }}
               render={({ className, }) => (
@@ -101,7 +101,10 @@ function Header({
             publishDate={publishDate}
             reportingFrom={reportingFrom}
             miscStyles={{
-              marginTop: [ { from: 's', until: 'l', value: '2rem', }, ],
+              marginTop: [
+                { until: 's', value: '3rem', },
+                { from: 's', until: 'l', value: '2rem', },
+              ],
               marginInlineStart: '2rem',
               marginInlineEnd: '2rem',
               display: [
@@ -166,7 +169,6 @@ function Header({
             elementObj={elementObj}
             miscStyles={{
               marginTop: '2rem',
-              marginBottom: [ { until: 'm', value: 0, }, ],
             }}
           />
         </header>

@@ -2,7 +2,6 @@ import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
-import Section from '../AutoLevels/Section';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
@@ -32,15 +31,16 @@ const defaultProps = {
   attrs: null,
   bgc: null,
   children: null,
-  tagName: 'section',
+  tagName: 'div',
   miscStyles: null,
 };
 
 export function LayoutRow({ attrs, children, tagName, miscStyles, bgc, }) {
+  const Tag = tagName;
   return (
     <FelaComponent
       style={theme => ({
-        backgroundColor: bgc || theme.color('primary', '-6'),
+        backgroundColor: bgc || theme.color('layout', 'rowBg'),
         width: '100%',
         extend: [
           ...(miscStyles
@@ -49,9 +49,9 @@ export function LayoutRow({ attrs, children, tagName, miscStyles, bgc, }) {
         ],
       })}
       render={({ className, }) => (
-        <Section tagName={tagName} className={className} {...attrs}>
+        <Tag className={className} {...attrs}>
           {children}
-        </Section>
+        </Tag>
       )}
     />
   );

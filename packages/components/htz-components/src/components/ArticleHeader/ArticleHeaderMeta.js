@@ -69,9 +69,9 @@ const timeStyle = ({ theme, mobileTime, }) => ({
       { from: 's', until: 'l', },
       { marginInlineStart: '1rem', marginInlineEnd: '1rem', }
     ),
-    theme.type(-2, { fromBp: 'xl', }),
-    theme.type(-1, { fromBp: 'l', untilBp: 'xl', }),
-    theme.type(-2, { untilBp: 'l', }),
+    theme.mq({ from: 'l', }, { marginTop: '0.5rem', }),
+    theme.type(-3, { fromBp: 'xl', }),
+    theme.type(-2, { untilBp: 'xl', }),
   ],
 });
 
@@ -206,7 +206,6 @@ function ArticleHeaderMeta({
               guyk: should it be only if there is only one author
             (that was the way it was here before refactoring) */}
             {// authors.length === 1 &&
-
             authors[0].hasEmailAlerts && <Alerts author={authors[0]} />}
           </FelaComponent>
           <FelaComponent

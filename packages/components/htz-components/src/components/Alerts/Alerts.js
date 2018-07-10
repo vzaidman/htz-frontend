@@ -7,7 +7,7 @@ function Alerts({ author, }) {
   return (
     <FelaComponent
       style={theme => ({
-        color: theme.color('tertiary'),
+        color: theme.color('alerts', 'openButtonText'),
         fontWeight: 'bold',
         extend: [
           theme.type(-2, { fromBp: 'xl', }),
@@ -47,11 +47,7 @@ function Alerts({ author, }) {
       }) => (
         <AlertsButton className={className} author={author}>
           <IconMailAlert
-            size={[
-              { until: 's', value: 3, },
-              { from: 's', until: 'l', value: 2.5, },
-              { from: 'l', value: 3, },
-            ]}
+            size={[ { until: 's', value: 3, }, { from: 's', value: 2.5, }, ]}
             miscStyles={{ marginEnd: '1rem', }}
           />
           <FelaComponent

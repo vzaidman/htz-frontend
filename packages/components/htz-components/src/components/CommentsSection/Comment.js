@@ -484,6 +484,7 @@ class Comment extends React.Component {
                     miscStyles={{
                       backgroundColor: 'transparent',
                       type: [ { value: -2, }, ],
+                      marginInlineStart: [ { until: 's', value: 'auto', }, ],
                     }}
                     isDisabled={this.state.abuseReported}
                     onClick={() => {

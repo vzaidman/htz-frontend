@@ -37,14 +37,16 @@ const propTypes = {
   }).isRequired,
 };
 
-const nextStyle = ({ theme, }) => ({
+const NextItemStyle = ({ theme, }) => ({
   ...theme.type(-2),
   color: theme.color('neutral'),
   fontWeight: '700',
   alignSelf: 'center',
   textAlign: 'center',
 });
-const Next = createComponent(nextStyle, HtzLink, props => Object.keys(props));
+const NextItem = createComponent(NextItemStyle, HtzLink, props =>
+  Object.keys(props)
+);
 
 function Osaka({ nextArticleUrl, sectionName, lists, }) {
   return (
@@ -129,7 +131,7 @@ function Osaka({ nextArticleUrl, sectionName, lists, }) {
               >
                 <EventTracker>
                   {({ biAction, }) => (
-                    <Next
+                    <NextItem
                       href={nextArticleUrl}
                       onClick={() => {
                         biAction({

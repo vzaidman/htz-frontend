@@ -67,19 +67,13 @@ const ArticlePageLayout = ({
 
         return (
           <Fragment>
+            <LayoutRow>{preHeader && getElements(preHeader)}</LayoutRow>
             <LayoutRow>
-              <LayoutContainer>
-                {preHeader && getElements(preHeader)}
-              </LayoutContainer>
+              <Header content={header} />
             </LayoutRow>
             <LayoutRow>
-              <LayoutContainer>
-                <Header content={header} />
-              </LayoutContainer>
-            </LayoutRow>
-            <LayoutRow>
-              <LayoutContainer>
-                {postHeader && (
+              {postHeader && (
+                <LayoutContainer>
                   <FelaComponent
                     style={theme => ({
                       paddingTop: '3rem',
@@ -95,18 +89,16 @@ const ArticlePageLayout = ({
                   >
                     {getElements(postHeader)}
                   </FelaComponent>
-                )}
-              </LayoutContainer>
+                </LayoutContainer>
+              )}
             </LayoutRow>
-            <LayoutRow>
-              <LayoutContainer>
-                <StandardArticle
-                  articleId={articleId}
-                  article={article}
-                  aside={aside}
-                  seoData={seoData}
-                />
-              </LayoutContainer>
+            <LayoutRow tagName="main">
+              <StandardArticle
+                articleId={articleId}
+                article={article}
+                aside={aside}
+                seoData={seoData}
+              />
             </LayoutRow>
             <LayoutRow>{postMain && getElements(postMain)}</LayoutRow>
             <LayoutRow>{footer && getElements(footer)}</LayoutRow>
