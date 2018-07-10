@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Level = React.createContext(2);
+const Level = React.createContext(1);
 
 export const LevelProvider = Level.Provider;
 

@@ -7,7 +7,7 @@ H.propTypes = {
    * The offSet from the calculated heading level.
    * e.g: the calculated level is 3 and the offSet is 1, the heading level will be 4.
    * The offSet can be negative.
-   * The final Heading level can be between 1 and 6,
+   * The final Heading level can be between 2 and 6,
    * e.g the calculated level is 10, the heading level will be 6.
    */
   offSet: PropTypes.number,
@@ -20,7 +20,7 @@ function H({ offSet, ...props }) {
   return (
     <LevelConsumer>
       {level => {
-        const hLevel = Math.max(Math.min(Math.round(level + offSet), 6), 1);
+        const hLevel = Math.max(Math.min(Math.round(level + offSet), 6), 2);
         const Heading = `h${hLevel}`;
         return <Heading {...props} />;
       }}

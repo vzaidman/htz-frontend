@@ -10,7 +10,7 @@ const createApp = () =>
       return (
         <Container>
           <ApolloProvider client={apolloClient}>
-            <LevelProvider value={2}>
+            <LevelProvider value={1}>
               <Component {...initialProps} url={router} />
             </LevelProvider>
           </ApolloProvider>
