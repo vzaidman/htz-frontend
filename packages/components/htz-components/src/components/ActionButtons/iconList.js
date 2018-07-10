@@ -66,9 +66,9 @@ const fbAcceessTokens = new Map([
 ]);
 
 const fbAppIds = new Map([
-  [ 'haaretz.co.il', '204189766612580', ],
-  [ 'themarker.com', '865781296889153', ],
-  [ 'haaretz.com', '1173232469385534', ],
+  [ 'haaretz.co.il', '110687712359084', ],
+  [ 'themarker.com', '52929925921', ],
+  [ 'haaretz.com', '287530407927859', ],
 ]);
 
 const ActionButton = ({ styles, render, }) => (
