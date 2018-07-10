@@ -12,7 +12,7 @@ class SideBar extends React.Component {
 
   static defaultProps = {
     children: null,
-    height: 0,
+    height: 1,
   };
 
   state = {
