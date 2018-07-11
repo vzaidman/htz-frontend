@@ -104,7 +104,7 @@ const buildComponent = (context, index, isLastItem) => {
                       mediaQueryCallback
                     )
               }
-              renderFirstImpression
+              renderFirstImpression={!isLastItem}
             />
           )}
         />

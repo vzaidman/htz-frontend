@@ -1,6 +1,6 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, FelaTheme, } from 'react-fela';
+import { FelaComponent, createComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
 
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
@@ -13,6 +13,7 @@ import ExpandedList from './elements/Desktop/ExpandedList';
 import FooterHead from './elements/FooterHead';
 import MobileView from './elements/MobileMainContainer';
 // ///////////////////////////////////////////////////////////////////
+import FirstImpressionPlaceHolder from '../Paragraph/FirstImpressionPlaceholder';
 import AccessListByIp from '../Scripts/AccessListByIp';
 import FaceBookReMarketing from '../Scripts/FaceBookReMarketing';
 import FaceBookReTargeting from '../Scripts/FaceBookReTargeting';
@@ -130,6 +131,7 @@ class Footer extends React.Component {
     const { contentId, } = this.props;
     return (
       <Fragment>
+        <FirstImpressionPlaceHolder />
         <FelaTheme
           render={theme => {
             const {
@@ -231,6 +233,9 @@ class Footer extends React.Component {
         <GoogleReMarketingTag />
         <ChartBeat />
         <ChromePush />
+        <FelaComponent style={{ position: 'absolute', right: '-1000rem', }}>
+          <FirstImpressionPlaceHolder />
+        </FelaComponent>
       </Fragment>
     );
   }
