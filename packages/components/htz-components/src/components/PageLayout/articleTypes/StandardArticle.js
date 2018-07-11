@@ -52,7 +52,7 @@ const margineliaStyle = ({
 });
 
 // eslint-disable-next-line react/prop-types
-const SectionTitleA = ({ title, isInMargin, }) => (
+const SectionTitleA = ({ title, isInMargin, id, }) => (
   <FelaComponent
     style={({ layoutStyle, ...theme }) => ({
       color: theme.color('primary'),
@@ -66,7 +66,7 @@ const SectionTitleA = ({ title, isInMargin, }) => (
       ],
     })}
     render={({ className, }) => (
-      <H className={className}>
+      <H className={className} id={id}>
         {isInMargin ? (
           <FelaComponent
             style={({ layoutStyle, ...theme }) => ({
@@ -109,6 +109,7 @@ const SectionTitleA = ({ title, isInMargin, }) => (
 const StandardLayoutRow = ({
   authors,
   children,
+  id,
   isArticleBody,
   key,
   publishDate,
@@ -123,7 +124,7 @@ const StandardLayoutRow = ({
     })}
     render={({ className, }) => (
       <Section className={className} key={key}>
-        {title ? <SectionTitleA title={title} /> : null}
+        {title ? <SectionTitleA title={title} id={id || null} /> : null}
         <FelaComponent
           style={({ layoutStyle, mq, }) => ({
             position: 'relative',
@@ -198,24 +199,6 @@ class StandardArticle extends React.Component {
     seoData: PropTypes.shape({}).isRequired,
   };
 
-  state = {
-    articleUrl: null,
-    articleTitle: null,
-    facebookCount: null,
-  };
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.props !== nextProps || this.state.articleUrl !== nextState.articleUrl
-    );
-  }
-
-  componentDidUpdate() {
-    if (!this.state.facebookCount) {
-      this.getFacebookCount(this.state.articleUrl);
-    }
-  }
-
   extractHeadline = articleBody => {
     const mediaComponents = [
       'embedElement',
@@ -251,10 +234,6 @@ class StandardArticle extends React.Component {
       },
     } = this.props;
 
-    this.setState({
-      articleUrl: canonicalUrl,
-      articleTitle: metaTitle,
-    });
     const { contentId, imgArray, aspects, } = ogImage || {};
     const ogImageUrl = ogImage
       ? buildUrl(
@@ -320,11 +299,9 @@ class StandardArticle extends React.Component {
                   {...{ ...headerData, authors, }}
                   // {...headerData}
                   articleId={articleId}
+                  canonicalUrl={canonicalUrl}
                   hasBreadCrumbs={!!breadCrumbs}
-                  elementName={this.state.articleTitle}
-                  elementUrl={this.state.articleUrl}
                   elementObj={headlineElement}
-                  facebookCount={this.state.facebookCount}
                   reportingFrom={reportingFrom}
                 />
 
@@ -387,7 +364,7 @@ class StandardArticle extends React.Component {
                       {...(element.inputTemplate ===
                       'com.tm.ArticleCommentsElement'
                         ? // todo: theme
-                          { title: 'תגובות', }
+                          { title: 'תגובות', id: 'commentsSection', }
                         : {})}
                     >
                       <Element

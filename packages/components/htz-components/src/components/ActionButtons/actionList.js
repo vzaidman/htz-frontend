@@ -91,53 +91,49 @@ const ActionButton = ({ render, }) => (
 );
 
 const Comments = ({ buttonStyles, size, iconStyles, ...props }) => (
-  <ApolloConsumer>
-    {cache => {
-      const { commentsElementId, } = cache.readQuery({
-        query: GET_COMMENTS_ID,
-      });
-      return (
-        <Query
-          query={GET_COMMENTS_COUNT}
-          variables={{ path: commentsElementId, }}
-        >
-          {({ loading, error, data, }) => (
-            <ActionButton
-              render={({ platform, biAction, }) => (
-                <Button
-                  {...props}
-                  miscStyles={buttonStyles}
-                  href="#commentsSection"
-                  onClick={() => {
-                    biAction({
-                      actionCode: 111,
-                      additionalInfo: {
-                        platform,
-                        ...(!loading && !error
-                          ? { NumOfTalkbacks: data.commentsElement.totalHits, }
-                          : {}),
-                      },
-                    });
-                  }}
-                >
-                  {!loading &&
-                    !error && (
-                      <FelaComponent
-                        style={{ marginEnd: '1rem', }}
-                        render="span"
-                      >
-                        {data.commentsElement.totalHits}
-                      </FelaComponent>
-                    )}
-                  <IconComment size={size} miscStyles={iconStyles} />
-                </Button>
-              )}
-            />
-          )}
-        </Query>
-      );
-    }}
-  </ApolloConsumer>
+  <ActionButton
+    render={({ platform, biAction, }) => (
+      <Button
+        {...props}
+        miscStyles={buttonStyles}
+        href="#commentsSection"
+        onClick={() => {
+          biAction({
+            actionCode: 111,
+            additionalInfo: {
+              platform,
+            },
+          });
+        }}
+      >
+        <ApolloConsumer>
+          {cache => {
+            const { commentsElementId, } = cache.readQuery({
+              query: GET_COMMENTS_ID,
+            });
+            return commentsElementId ? (
+              <Query
+                query={GET_COMMENTS_COUNT}
+                variables={{ path: commentsElementId, }}
+              >
+                {({ loading, error, data, }) => {
+                  if (loading) return null;
+                  if (error) return null;
+                  const { totalHits, } = data.commentsElement;
+                  return (
+                    <FelaComponent style={{ marginEnd: '1rem', }} render="span">
+                      {totalHits}
+                    </FelaComponent>
+                  );
+                }}
+              </Query>
+            ) : null;
+          }}
+        </ApolloConsumer>
+        <IconComment size={size} miscStyles={iconStyles} />
+      </Button>
+    )}
+  />
 );
 
 const Facebook = ({
@@ -509,8 +505,8 @@ const Zen = ({
   </Mutation>
 );
 
-const getIcon = iconName => {
-  const icons = new Map([
+const getAction = iconName => {
+  const actions = new Map([
     [ 'comments', Comments, ],
     [ 'facebook', Facebook, ],
     [ 'facebooklogo', FacebookLogo, ],
@@ -524,7 +520,7 @@ const getIcon = iconName => {
     [ 'zen', Zen, ],
   ]);
 
-  return icons.get(iconName.toLowerCase());
+  return actions.get(iconName.toLowerCase());
 };
 
-export default getIcon;
+export default getAction;

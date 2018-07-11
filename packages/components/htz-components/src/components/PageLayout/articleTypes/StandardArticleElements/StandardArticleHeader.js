@@ -17,8 +17,7 @@ Header.propTypes = {
     PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
   ).isRequired,
   articleId: PropTypes.string.isRequired,
-  elementName: PropTypes.string.isRequired,
-  elementUrl: PropTypes.string.isRequired,
+  canonicalUrl: PropTypes.string.isRequired,
   hasBreadCrumbs: PropTypes.bool.isRequired,
   exclusive: PropTypes.string.isRequired,
   /**
@@ -28,25 +27,19 @@ Header.propTypes = {
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   elementObj: PropTypes.shape({}).isRequired,
-  facebookCount: PropTypes.number,
   reportingFrom: PropTypes.string.isRequired,
-};
-Header.defaultProps = {
-  facebookCount: 0,
 };
 
 function Header({
   articleId,
   hasBreadCrumbs,
-  elementName,
-  elementUrl,
+  canonicalUrl,
   authors,
   exclusive,
   publishDate,
   subtitle,
   title,
   elementObj,
-  facebookCount,
   reportingFrom,
 }) {
   return (
@@ -125,42 +118,28 @@ function Header({
               marginInlineEnd: [ { until: 'l', value: '2rem', }, ],
               display: [ { until: 's', value: 'none', }, ],
             }}
-            elementName={elementName}
-            elementUrl={elementUrl}
+            elementName={title}
+            elementUrl={canonicalUrl}
             buttons={{
               start: [
                 {
                   name: 'facebookLogo',
-                  buttonText: facebookCount,
-                  iconStyles: {
+                  buttonStyles: {
                     color: theme.color('facebook'),
                   },
                 },
                 {
                   name: 'whatsapp',
-                  iconStyles: {
+                  buttonStyles: {
                     color: theme.color('whatsapp'),
                   },
                 },
-                'mailAlert',
+                'mail',
               ],
-              end: [
-                {
-                  name: 'comments',
-                  buttonText: 78,
-                },
-                'print',
-                {
-                  name: 'zen',
-                  buttonText: 'קריאת זן',
-                },
-              ],
+              end: [ 'comments', 'print', 'zen', ],
             }}
             globalButtonsStyles={{
               minWidth: '10rem',
-            }}
-            globalIconsStyles={{
-              color: theme.color('primary'),
             }}
             size={2.5}
           />
