@@ -4,7 +4,7 @@ import { createComponent, FelaComponent, } from 'react-fela';
 import { withRouter, } from 'next/router';
 import ReactGA from 'react-ga';
 import { parseTypographyProp, } from '@haaretz/htz-css-tools';
-import { EventTracker, HtzLink, } from '@haaretz/htz-components';
+import { EventTracker, HtzLink, TextLink, } from '@haaretz/htz-components';
 import DesktopView from './ChooseSlotsStageElements/DesktopView';
 import MobileView from './ChooseSlotsStageElements/MobileView';
 import SubHeader from './ChooseSlotsStageElements/SubHeader';
@@ -203,7 +203,7 @@ class ChooseSlotStage extends React.Component {
                         extend: [ theme.type(-1), ],
                       })}
                     >
-                      <HtzLink
+                      <TextLink
                         href={organizationSubscription.url[host]}
                         onClick={() => {
                           // TODO: fix external url fetch
@@ -218,18 +218,9 @@ class ChooseSlotStage extends React.Component {
                             action: 'org subscription',
                           });
                         }}
-                        content={
-                          <FelaComponent
-                            render="span"
-                            style={{
-                              textDecoration: 'underline',
-                              textDecorationSkip: 'ink',
-                            }}
-                          >
-                            {organizationSubscription.text}
-                          </FelaComponent>
-                        }
-                      />
+                      >
+                        {organizationSubscription.text}
+                      </TextLink>
                     </FelaComponent>
                   </StyledMoreOptionsCont>
                 )}

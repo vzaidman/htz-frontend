@@ -3,40 +3,10 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 
 import { stylesPropType, } from '../../propTypes/stylesPropType';
-import HtzLink from '../HtzLink/HtzLink';
+import TextLink from '../TextLink/TextLink';
 import H from '../AutoLevels/H';
 import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
 import Zen from '../Zen/Zen';
-
-const inlineLinkStyle = ({ theme: { color, articleStyle, }, }) => ({
-  color: color('link', 'base'),
-
-  ':hover': {
-    color: color('link', 'base'),
-    borderBottomColor: color('link', 'base'),
-    borderBottomWidth: articleStyle.paragraphLink.borderBottomWidth,
-    borderBottomStyle: articleStyle.paragraphLink.borderBottomStyle,
-  },
-  ':focus': {
-    color: color('link', 'base'),
-    borderBottomColor: color('link', 'base'),
-    borderBottomWidth: articleStyle.paragraphLink.borderBottomWidth,
-    borderBottomStyle: articleStyle.paragraphLink.borderBottomStyle,
-  },
-  ':active': {
-    color: color('link', 'base'),
-    borderBottomColor: color('link', 'base'),
-    borderBottomWidth: articleStyle.paragraphLink.borderBottomWidthActive,
-    borderBottomStyle: articleStyle.paragraphLink.borderBottomStyle,
-  },
-  ':visited': {
-    color: color('link', 'base'),
-  },
-});
-
-const InlineLink = createComponent(inlineLinkStyle, HtzLink, props =>
-  Object.keys(props)
-);
 
 const paragraphStyle = theme => {
   const { type, color, ...paragraphStyles } =
@@ -137,7 +107,7 @@ const shouldMargin = content => {
 const getTag = tag => {
   const tagsMap = new Map([
     [ 'p', P, ],
-    [ 'a', InlineLink, ],
+    [ 'a', TextLink, ],
     [ 'strong', Strong, ],
     [ 'question', Strong, ],
     [ 'mark', Mark, ],

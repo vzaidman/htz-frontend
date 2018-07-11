@@ -9,6 +9,7 @@ import {
   Form,
   TextInput,
   HtzLink,
+  TextLink,
 } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 import OfferList from './ChooseProductStageElements/OfferList';
@@ -423,30 +424,20 @@ class ChooseProductStage extends Component {
                             extend: [ theme.type(-1), ],
                           })}
                         >
-                          <HtzLink
+                          <TextLink
                             href={organizationSubscription.url[host]}
-                            content={
-                              <FelaComponent
-                                render="span"
-                                style={{
-                                  textDecoration: 'underline',
-                                  textDecorationSkip: 'ink',
-                                }}
-                                onClick={() => {
-                                  // TODO: fix external url fetch
-                                  biAction({
-                                    actionCode: 42,
-                                    additionalInfo: {
-                                      organization:
-                                        organizationSubscription.text,
-                                    },
-                                  });
-                                }}
-                              >
-                                {organizationSubscription.text}
-                              </FelaComponent>
-                            }
-                          />
+                            onClick={() => {
+                              // TODO: fix external url fetch
+                              biAction({
+                                actionCode: 42,
+                                additionalInfo: {
+                                  organization: organizationSubscription.text,
+                                },
+                              });
+                            }}
+                          >
+                            {organizationSubscription.text}
+                          </TextLink>
                         </FelaComponent>
                       </StyledMoreOptionsCont>
                     )}
