@@ -7,6 +7,7 @@ import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { buildURLs, buildUrl, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
+import logger from '../../componentsLogger';
 
 const ImgWrapperStyle = ({ bgc, height, theme, width, miscStyles, }) => ({
   height: '0',
@@ -169,7 +170,7 @@ class Image extends React.Component {
     const isPicture = !aspectMatchResult || imgArray.length > 1;
 
     if (isPicture) {
-      console.error(
+      logger.error(
         `The data structure of the "${
           this.props.data.contentId
         }" image is of a picture element, not an image.
@@ -194,7 +195,7 @@ Please use the "<Picture />" component`
       isPresentational &&
       (attrs && (!!attrs.role || !!attrs['aria-hidden']))
     ) {
-      console.warn(
+      logger.warn(
         'When "isPresentational" prop value is true, "role" and "aria-hidden" are set automatically'
       );
     }

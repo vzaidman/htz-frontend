@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
 import DFP from '@haaretz/dfp';
+import logger from '../../componentsLogger';
 
 export const instance = {};
 
@@ -114,7 +115,7 @@ class DfpInjector extends Component {
         instance.dfp = initDfpScript(dfpConfig);
       }
       catch (e) {
-        console.error(e);
+        logger.error(e);
       }
     }
   }
@@ -126,7 +127,7 @@ class DfpInjector extends Component {
         return null;
       }
       if (error) {
-        console.error(error);
+        logger.error(error);
         return null;
       }
       return null;

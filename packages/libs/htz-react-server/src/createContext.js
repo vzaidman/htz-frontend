@@ -3,9 +3,12 @@ import DataLoader from 'dataloader';
 import querystring from 'querystring';
 import config from 'config';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
-import { switchToDomain, } from '@haaretz/app-utils';
+import { switchToDomain, createLogger, } from '@haaretz/app-utils';
 import Cookies from 'universal-cookie';
 
+const logger = createLogger({
+  name: 'createContext',
+});
 // Path of promotions page in Polopoly CM
 const polopolyPromotionsPage = config.has('polopolyPromotionsPagePath')
   ? config.get('polopolyPromotionsPagePath')
@@ -34,7 +37,7 @@ export function createLoaders(req) {
         const fetchPath = path.includes('preview')
           ? path
           : `${serviceBase}/papi${path.startsWith('/') ? '' : '/'}${path}`;
-        console.log(`pageLoader - papi - loading: ${fetchPath}`);
+        logger.info(`pageLoader - papi - loading: ${fetchPath}`);
         return fetch(fetchPath).then(response => response.json());
       })
     )
@@ -63,7 +66,7 @@ export function createLoaders(req) {
           `${polopolyPromotionsPage}`,
           ''
         )}${path.includes('?') ? '&' : '?'}userId=${userId}`;
-        console.log(
+        logger.info(
           'GRAPHQL - fetching data from papi using endpoint: ',
           normlizedPath
         );

@@ -5,7 +5,7 @@ export default function createNodeLogger(options) {
     name: options.name,
     streams: [
       {
-        level: 'info',
+        level: options.level,
         stream: process.stdout,
       },
       // TODO connect slack web-hook here for fatal errors (stage)
@@ -14,7 +14,7 @@ export default function createNodeLogger(options) {
       //     path: '/var/tmp/bunyan-test-error.log', // log ERROR and above to a file
       //   },
     ],
-    level: 'info',
+    level: options.level,
   });
   return nodeLogger;
 }

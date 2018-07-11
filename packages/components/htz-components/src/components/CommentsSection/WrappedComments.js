@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { createLogger, } from '@haaretz/app-utils';
 import { Query, Mutation, } from '../ApolloBoundary/ApolloBoundary';
 import CommentSection from './CommentsSection';
 import GET_ID from './queries/getId';
@@ -8,6 +9,10 @@ import SUBMIT_NEW_COMMENT from './mutations/submitNewComment';
 import SUBMIT_NEW_VOTE from './mutations/submitNewVote';
 import SUBMIT_NOTIFICATION_EMAIL from './mutations/submitNotificationEmail';
 import REPORT_ABUSE from './mutations/reportAbuse';
+
+const logger = createLogger({
+  name: 'CommentsWithApollo',
+});
 
 class CommentsWithApollo extends React.Component {
   static propTypes = {
@@ -37,7 +42,7 @@ class CommentsWithApollo extends React.Component {
         // console.warn(data.addVote.status);
       })
       .catch(mutationError => {
-        console.warn('there was an error sending the query', mutationError);
+        logger.warn('there was an error sending the query', mutationError);
       });
   };
 
@@ -65,7 +70,7 @@ class CommentsWithApollo extends React.Component {
         });
       })
       .catch(mutationError => {
-        console.warn('there was an error sending the query', mutationError);
+        logger.warn('there was an error sending the query', mutationError);
       });
   };
 
@@ -112,7 +117,7 @@ class CommentsWithApollo extends React.Component {
             return <div>loading ...</div>;
           }
           if (error) {
-            console.log(error);
+            logger.log(error);
             return <h1>ERROR</h1>;
           }
           const { commentsElement, } = data;
@@ -185,7 +190,7 @@ function WrappedComments() {
   return (
     <Query query={GET_ID}>
       {({ data: { articleId, commentsElementId, }, }) => {
-        console.log('article id', articleId);
+        logger.trace('article id', articleId);
         return articleId ? (
           <CommentsWithApollo
             articleId={articleId}

@@ -15,12 +15,12 @@ export default function createBrowserLogger(options) {
     name: options.name,
     streams: [
       {
-        level: 'info',
+        level: options.level,
         stream: new MyRawStream(),
         type: 'raw',
       },
     ],
+    level: options.level,
   });
-
   return logger;
 }

@@ -33,4 +33,5 @@ module.exports = {
   port: process.env.PORT || '2004',
   // Path of promotions page in Polopoly CM
   polopolyPromotionsPagePath: 'promotions-page-react',
+  logLevel: 'error',
 };

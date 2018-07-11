@@ -1,7 +1,6 @@
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import { border, } from '@haaretz/htz-css-tools';
-
 import ArticleBody from '../components/ArticleBody/ArticleBody';
 import AdSlot from '../components/Ads/AdSlot';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
@@ -24,6 +23,7 @@ import SeriesArticles from '../components/RelatedArticles/SeriesArticles';
 import SpecialPromotions from '../components/SpecialPromotions/SpecialPromotions';
 import Tags from '../components/Tags/Tags';
 import Video from '../components/Video/Video';
+import logger from '../componentsLogger';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -83,7 +83,7 @@ const inputTemplateToComponent = new Map([
 
 // eslint-disable-next-line react/prop-types
 const DefaultComponent = ({ inputTemplate, contentId, contentName, }) => {
-  console.info(`
+  logger.info(`
     Element of type ${inputTemplate} is not supported and
     we don't have any component fot it yet.
     The id of the element you tried to render on this page is: ${contentId}.

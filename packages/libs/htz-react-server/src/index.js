@@ -22,7 +22,9 @@ import tm from './routes/tm';
 import hdc from './routes/hdc';
 import purchase from './routes/purchase';
 
-const logger = createLogger();
+const logger = createLogger({
+  name: 'htz-react-server',
+});
 
 const DEV = process.env.NODE_ENV === 'development';
 const PORT = parseInt(
@@ -135,12 +137,10 @@ app
 
     server.listen(PORT, err => {
       if (err) throw err;
-      // eslint-disable-next-line no-console
       logger.info(`> Ready on your ${config.get('hostIp')}:${PORT}`);
     });
   })
   .catch(err => {
-    // eslint-disable-next-line no-console
     logger.error(err);
     process.exit(1);
   });

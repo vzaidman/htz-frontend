@@ -31,4 +31,5 @@ module.exports = {
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
   port: process.env.PORT || '2004',
+  logLevel: 'error',
 };

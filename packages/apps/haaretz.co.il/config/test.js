@@ -5,4 +5,5 @@ module.exports = {
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
   baseHref: 'https://www.haaretz.co.il',
+  logLevel: 'debug',
 };

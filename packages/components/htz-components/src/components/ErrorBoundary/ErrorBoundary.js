@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import logger from '../../componentsLogger';
 
 const propTypes = {
   children: PropTypes.node.isRequired,
@@ -19,7 +20,7 @@ class ErrorBoundary extends React.Component {
     this.setState({
       hasError: true,
     });
-    console.log(error, info);
+    logger.error(error, info);
   }
 
   render() {

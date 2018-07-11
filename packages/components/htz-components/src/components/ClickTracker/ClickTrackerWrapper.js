@@ -2,6 +2,7 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import ClickTrackerElement from './ClickTrackerElement';
+import logger from '../../componentsLogger';
 
 const propTypes = {
   viewModes: PropTypes.shape({
@@ -100,13 +101,13 @@ class ClickTrackerWrapper extends Component {
         if (!selectedBanner) {
           selectedBanner = this.banners[0];
           DEBUG &&
-            console.log(
+            logger.debug(
               'ClickTrackerWrapper: selection of banner failed, falling back to the first one'
             );
         }
         else {
           DEBUG &&
-            console.log(
+            logger.debug(
               `ClickTrackerWrapper: selection of banner was successfull, selected ${this.banners.indexOf(
                 selectedBanner
               ) + 1} out of ${this.banners.length}`

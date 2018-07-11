@@ -6,8 +6,10 @@ switch (connectionPreset) {
     presetOverride = Object.assign(presetOverride, baseConfigOverride.service, {
       service: {
         graphql: baseConfigOverride.service.graphql,
+        image: baseConfigOverride.service.image,
       },
       remoteFQDN: baseConfigOverride.remoteFQDN,
+      logLevel: baseConfigOverride.logLevel,
     });
     break;
   }
@@ -17,8 +19,10 @@ switch (connectionPreset) {
     Object.assign(presetOverride, baseConfigOverride.service, {
       service: {
         graphql: baseConfigOverride.service.graphql,
+        image: baseConfigOverride.service.image,
       },
       remoteFQDN: baseConfigOverride.remoteFQDN,
+      logLevel: baseConfigOverride.logLevel,
     });
     break;
   }
@@ -28,8 +32,10 @@ switch (connectionPreset) {
     Object.assign(presetOverride, baseConfigOverride.service, {
       service: {
         graphql: baseConfigOverride.service.graphql,
+        image: baseConfigOverride.service.image,
       },
       remoteFQDN: baseConfigOverride.remoteFQDN,
+      logLevel: baseConfigOverride.logLevel,
     });
     break;
   }

@@ -14,7 +14,7 @@ export const buildFontPreloadLink = fonts =>
           href={href}
           as="font"
           type="font/woff2"
-          crossOrigin
+          crossOrigin="use-credentials"
         />,
       ]
       : links;

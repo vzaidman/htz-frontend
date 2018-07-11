@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Mutation, Query, } from '../ApolloBoundary/ApolloBoundary';
 import { UPDATE_USER, GET_USER, } from './UserInjector';
 import ImageCookies from './ImageCookies';
+import logger from '../../componentsLogger';
 
 export const userScheme = {
   type: null,
@@ -28,7 +29,7 @@ class UserDispenser extends Component {
   };
 
   handleImgOnload = () =>
-    Promise.resolve(console.log('onload handleImgOnload resolved'));
+    Promise.resolve(logger.debug('onload handleImgOnload resolved'));
 
   plantImages = images =>
     new Promise((resolve, reject) => {
