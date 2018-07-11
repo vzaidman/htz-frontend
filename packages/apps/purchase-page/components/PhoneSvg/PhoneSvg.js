@@ -14,7 +14,6 @@ const defaultProps = {
   size: 8,
 };
 
-// todo: correct colors to theme
 function phoneSvg({ brand, size, isOnSale, }) {
   const brandColor = brand === 'HTZ' ? 'htz' : 'tm';
   const [ width, height, ] = [ 123, 244, ];
@@ -63,7 +62,12 @@ function phoneSvg({ brand, size, isOnSale, }) {
                 top: '20%',
                 start: '7.5rem',
                 transform: 'rotate(-25deg)',
-                extend: [ theme.mq({ until: 'l', }, { start: '5rem', }), ],
+                extend: [
+                  theme.mq(
+                    { until: 'l', },
+                    { start: '4rem', fontSize: '1.8rem', top: '10%', }
+                  ),
+                ],
               }}
               render={({ className, }) => (
                 <svg
