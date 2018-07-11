@@ -13,12 +13,14 @@ import clickTrackerBanner from './fragments/clickTrackerBanner/clickTrackerBanne
 import clickTrackerBannersWrapper from './fragments/clickTrackerBannersWrapper/clickTrackerBannersWrapper';
 import content from './fragments/content/content';
 import dfpBanner from './fragments/dfpBanner/dfpBanner';
+import elementGroup from './fragments/elementGroup/elementGroup';
 import embed from './fragments/embed/embed';
 import htmlElement from './fragments/htmlElement/htmlElement';
 import image from './fragments/image/image';
 import imageGallery from './fragments/imageGallery/imageGallery';
 import interactive from './fragments/interactive/interactive';
 import link from './fragments/link/link';
+import list from './fragments/list/list';
 import navMenu from './fragments/navMenu/navMenu';
 import paragraph from './fragments/paragraph/paragraph';
 import quote from './fragments/quote/quote';
@@ -45,12 +47,14 @@ export {
   clickTrackerBannersWrapper,
   content,
   dfpBanner,
+  elementGroup,
   embed,
   htmlElement,
   image,
   imageGallery,
   interactive,
   link,
+  list,
   navMenu,
   paragraph,
   quote,

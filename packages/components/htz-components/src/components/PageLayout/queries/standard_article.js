@@ -4,6 +4,7 @@ import {
   articleHeader,
   content,
   dfpBanner,
+  elementGroup,
   embed,
   htmlElement,
   image,
@@ -26,7 +27,11 @@ export default gql`
       ...PageSeoData
       slots {
         ... on StandardArticleSlots {
-          aside
+          aside {
+            ... on ElementGroup {
+              ...ElementGroup
+            }
+          }
           article {
             ... on Content {
               inputTemplate
@@ -106,6 +111,7 @@ export default gql`
   ${articleHeader}
   ${content}
   ${dfpBanner}
+  ${elementGroup}
   ${embed}
   ${htmlElement}
   ${image}

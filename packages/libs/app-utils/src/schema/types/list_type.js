@@ -18,6 +18,7 @@ const List = new GraphQLObjectType({
     title: { type: GraphQLString, },
     contentName: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
+    inputTemplate: { type: GraphQLString, },
     hasPagination: { type: GraphQLBoolean, },
     view: { type: GraphQLString, },
     items: {
