@@ -3,6 +3,7 @@ import pagePropTypes from './apollo/pagePropTypes';
 import schema from './schema/schema';
 import breakUrl from './utils/breakUrl';
 import switchToDomain from './utils/switchToDomain';
+import createLogger from './utils/createLogger';
 
 // Schema Fragments
 import articleHeader from './fragments/articleHeader/articleHeader';
@@ -64,4 +65,5 @@ export {
   video,
   switchToDomain,
   breakUrl,
+  createLogger,
 };

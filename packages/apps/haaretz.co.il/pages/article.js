@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { htzTheme, } from '@haaretz/htz-theme';
+import { createLogger, } from '@haaretz/app-utils';
 import dynamic from 'next/dynamic';
 
 import {
@@ -16,6 +17,8 @@ import {
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 
 import ArticleInitQuery from './queries/article_layout';
+
+const logger = createLogger();
 
 // eslint-disable-next-line no-unused-vars
 const ScrollInjector = dynamic(
@@ -80,7 +83,7 @@ export class ArticlePage extends React.Component {
           <Query query={ArticleInitQuery} variables={{ path: url.query.path, }}>
             {({ loading, error, data, client, }) => {
               if (loading) return null;
-              if (error) console.log(error);
+              if (error) logger.error(error);
               const { slots, lineage, } = data.page;
               client.writeData({
                 data: {

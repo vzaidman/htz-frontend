@@ -7,6 +7,7 @@
  * in any plugins in this config, you probably want to reference
  * `config.output.path` instead!
  */
+const emptyShim = require.resolve('@haaretz/htz-react-base/webpack/emptyShim');
 
 module.exports = {
   // useFileSystemPublicRoutes: true,
@@ -27,6 +28,15 @@ module.exports = {
     config.resolve.alias.config$ = require.resolve(
       '@haaretz/htz-react-base/webpack/configShim'
     );
+    // These shims are needed for bunyan (logging)
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'dtrace-provider': emptyShim,
+      fs: emptyShim,
+      'safe-json-stringify': emptyShim,
+      mv: emptyShim,
+      'source-map-support': emptyShim,
+    };
 
     return config;
   },

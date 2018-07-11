@@ -5,7 +5,7 @@ import proxy from 'http-proxy-middleware';
 import { graphqlExpress, graphiqlExpress, } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import compression from 'compression';
-import { schema, } from '@haaretz/app-utils';
+import { schema, createLogger, } from '@haaretz/app-utils';
 import helmet from 'helmet';
 import next from 'next';
 import cors from 'cors';
@@ -21,6 +21,8 @@ import htz from './routes/htz';
 import tm from './routes/tm';
 import hdc from './routes/hdc';
 import purchase from './routes/purchase';
+
+const logger = createLogger();
 
 const DEV = process.env.NODE_ENV === 'development';
 const PORT = parseInt(
@@ -39,7 +41,8 @@ const sitesRouting = new Map([
 
 // Fail-fast in case of missing routing argument
 if (!(selectedRoute && sitesRouting.has(selectedRoute))) {
-  throw new Error('Missing required routing argument!');
+  logger.fatal(new Error('Missing required routing argument!'));
+  process.exit(1);
 }
 
 const serviceBase = config.get('service.base');
@@ -133,11 +136,11 @@ app
     server.listen(PORT, err => {
       if (err) throw err;
       // eslint-disable-next-line no-console
-      console.log(`> Ready on your ${config.get('hostIp')}:${PORT}`);
+      logger.info(`> Ready on your ${config.get('hostIp')}:${PORT}`);
     });
   })
   .catch(err => {
     // eslint-disable-next-line no-console
-    console.error(err.stack);
+    logger.error(err);
     process.exit(1);
   });

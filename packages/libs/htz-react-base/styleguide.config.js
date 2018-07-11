@@ -6,6 +6,8 @@ const config = require('config');
 const webpack = require('webpack');
 const serialize = require('serialize-javascript');
 
+const emptyShim = require.resolve('./webpack/configShim');
+
 const color = {
   bg: '#EBF2F5',
   bgDark: '#E6EDF0',
@@ -435,6 +437,12 @@ module.exports = {
     resolve: {
       alias: {
         config$: require.resolve('./webpack/configShim'),
+        // These shims are needed for bunyan (logging)
+        'dtrace-provider': emptyShim,
+        fs: emptyShim,
+        'safe-json-stringify': emptyShim,
+        mv: emptyShim,
+        'source-map-support': emptyShim,
       },
     },
     module: {
