@@ -128,6 +128,7 @@ class ChooseProductStage extends Component {
         list: 'Product Stage Results',
       })
     );
+    ReactGA.ga('send', 'pageview');
   }
   componentDidUpdate(prevProps, prevState) {
     // only update impressions if the chosenProduct state has changed
@@ -145,6 +146,7 @@ class ChooseProductStage extends Component {
           list: 'Product Stage Results',
         })
       );
+      ReactGA.ga('send', 'pageview');
     }
   }
   openModal = offerListChosenTermsIndex => {
@@ -181,11 +183,7 @@ class ChooseProductStage extends Component {
               form: {
                 couponError,
                 validation,
-                couponForm: {
-                  textLabel,
-                  textNote,
-                  buttons: { send, close, },
-                },
+                couponForm: { textLabel, textNote, buttons: { send, close, }, },
               },
               buttons: { entitlements, organizationSubscription, },
             },

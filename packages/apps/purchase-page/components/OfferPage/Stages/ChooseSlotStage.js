@@ -92,6 +92,7 @@ class ChooseSlotStage extends React.Component {
         list: 'Slot Stage Results',
       })
     );
+    ReactGA.ga('send', 'pageview');
   }
   render() {
     const { host, tableData, sale, subStage, userMessage, router, } = this.props;

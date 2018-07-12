@@ -54,7 +54,7 @@ function trackPage(page) {
   ReactGA.set({
     page,
   });
-  ReactGA.pageview(page);
+  // ReactGA.pageview(page);
 }
 
 export default GoogleAnalyticsInit;
