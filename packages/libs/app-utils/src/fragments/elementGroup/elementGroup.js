@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import gql from 'graphql-tag';
 
-import clickTrackerBannersWrapper from '../clickTrackerBannersWrapper/clickTrackerBannersWrapper';
 import content from '../content/content';
 import dfpBanner from '../dfpBanner/dfpBanner';
+import gridElementGroup from '../gridElementGroup/gridElementGroup';
 import list from '../list/list';
 
 export default gql`
@@ -17,8 +17,8 @@ export default gql`
         ... on DfpBanner {
           ...DfpBanner
         }
-        ... on ClickTrackerBannersWrapper {
-          ...ClickTrackerBannersWrapper
+        ... on GridElementGroup {
+          ...GridElementGroup
         }
         ... on List {
           ...ListInGroup
@@ -30,8 +30,8 @@ export default gql`
     contentName
     contentId
   }
-  ${clickTrackerBannersWrapper}
   ${content}
   ${dfpBanner}
+  ${gridElementGroup}
   ${list}
 `;

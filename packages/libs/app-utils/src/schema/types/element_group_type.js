@@ -9,13 +9,13 @@ import {
   GraphQLID,
 } from 'graphql';
 
-import clickTrackerWrapper from './click_tracker_banner_wrapper_type';
+import gridElementGroup from './grid_element_group_type';
 import content from './content_type';
 import dfpBanner from './dfp_banner_type';
 import list from './list_type';
 
 const types = new Map([
-  [ 'com.polobase.ClickTrackerBannersWrapper', clickTrackerWrapper, ],
+  [ 'com.tm.GridElementGroup', gridElementGroup, ],
   [ 'com.polobase.DfpBannerElement', dfpBanner, ],
   [ 'com.tm.element.List', list, ],
 ]);
@@ -32,7 +32,7 @@ const ElementGroup = new GraphQLObjectType({
             content: {
               type: new GraphQLUnionType({
                 name: 'ElementGroupContent',
-                types: [ clickTrackerWrapper, content, dfpBanner, list, ],
+                types: [ gridElementGroup, content, dfpBanner, list, ],
                 resolveType: value => types.get(value.inputTemplate) || content,
               }),
             },
