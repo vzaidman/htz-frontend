@@ -14,8 +14,8 @@ services:
       - PORT=2200
       - BIND_ADDRESS=react-stage
       - HOSTNAME=react-stage
-      - GRAPHQL_USE_SSL=false
-      - GRAPHQL_EXPOSE_PORT=true
+      - GRAPHQL_USE_SSL=true
+      - GRAPHQL_EXPOSE_PORT=false
 
 
     networks:
