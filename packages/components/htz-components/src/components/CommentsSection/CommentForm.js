@@ -236,7 +236,7 @@ class CommentForm extends React.Component {
                     const { platform, } = data;
                     return (
                       <EventTracker>
-                        {({ biAction, }) => (
+                        {({ biAction, biActionMapper, }) => (
                           <StyledForm isReplyForm={this.isReplyForm}>
                             <InputAndToggleWrapper>
                               <TextInputWrapper>
@@ -290,7 +290,9 @@ class CommentForm extends React.Component {
                                 height: 14,
                                 toggleCommandBiCallBack: command => {
                                   biAction({
-                                    actionCode: 104,
+                                    actionCode: biActionMapper.get(
+                                      'text_design_tools'
+                                    ),
                                     additionalInfo: {
                                       effect: command,
                                       platform,
@@ -327,7 +329,9 @@ class CommentForm extends React.Component {
                                   boxModel={{ hp: 5, vp: 1, }}
                                   onClick={evt => {
                                     biAction({
-                                      actionCode: 1,
+                                      actionCode: biActionMapper.get(
+                                        'send_comment'
+                                      ),
                                       additionalInfo: {
                                         platform,
                                       },

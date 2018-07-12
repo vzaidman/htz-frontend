@@ -89,7 +89,6 @@ const propTypes = {
    */
   vertical: PropTypes.bool,
 };
-/* eslint-enable no-trailing-spaces */
 
 const defaultProps = {
   elementName: null,

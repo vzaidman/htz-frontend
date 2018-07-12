@@ -81,8 +81,15 @@ const ActionButton = ({ render, }) => (
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       return (
         <EventTracker>
-          {({ biAction, }) =>
-            render({ platform, biAction, host, hostname, articleId, })
+          {({ biAction, biActionMapper, }) =>
+            render({
+              platform,
+              biAction,
+              biActionMapper,
+              host,
+              hostname,
+              articleId,
+            })
           }
         </EventTracker>
       );
@@ -92,14 +99,14 @@ const ActionButton = ({ render, }) => (
 
 const Comments = ({ buttonStyles, size, iconStyles, ...props }) => (
   <ActionButton
-    render={({ platform, biAction, }) => (
+    render={({ platform, biAction, biActionMapper, }) => (
       <Button
         {...props}
         miscStyles={buttonStyles}
         href="#commentsSection"
         onClick={() => {
           biAction({
-            actionCode: 111,
+            actionCode: biActionMapper.get('go_to_comments'),
             additionalInfo: {
               platform,
             },
@@ -148,7 +155,7 @@ const Facebook = ({
   const FacebookIcon = round ? IconFacebook : IconFacebookLogo;
   return (
     <ActionButton
-      render={({ platform, biAction, host, }) => (
+      render={({ platform, biAction, biActionMapper, host, }) => (
         <Button
           {...props}
           miscStyles={buttonStyles}
@@ -157,7 +164,7 @@ const Facebook = ({
           )}&redirect_uri=${elementUrl}&link=${elementUrl}&display=popup`}
           onClick={() => {
             biAction({
-              actionCode: 10,
+              actionCode: biActionMapper.get('facebook_share'),
               additionalInfo: {
                 platform,
                 ...(buttonText ? { NumOfTalkbacks: buttonText, } : {}),
@@ -184,7 +191,8 @@ class FacebookLogo extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.host !== this.state.host) {
+    const eligibleForFacebookFetch = prevState.host !== this.state.host;
+    if (eligibleForFacebookFetch) {
       this.getFacebookCount(this.state.host);
     }
   }
@@ -212,12 +220,12 @@ class FacebookLogo extends React.Component {
   };
 
   render() {
-    const { buttonStyles, size, iconStyles, ...props } = this.props;
+    const { buttonStyles, size, iconStyles, elementUrl, ...props } = this.props;
 
     const { facebookCount, } = this.state;
     return (
       <ActionButton
-        render={({ platform, biAction, host, }) => {
+        render={({ platform, biAction, biActionMapper, host, }) => {
           if (!this.state.host) this.setState({ host, });
           return (
             <Button
@@ -225,12 +233,12 @@ class FacebookLogo extends React.Component {
               miscStyles={buttonStyles}
               onClick={() => {
                 window.open(
-                  'https://www.facebook.com/sharer/sharer.php?&amp;u=https://www.haaretz.co.il/news/science/.premium-1.6248935',
+                  `https://www.facebook.com/sharer/sharer.php?&amp;u=${elementUrl}`,
                   'popup',
                   'width=635,height=342,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
                 );
                 biAction({
-                  actionCode: 10,
+                  actionCode: biActionMapper.get('facebook_share'),
                   additionalInfo: {
                     platform,
                     ...(facebookCount ? { NumOfTalkbacks: facebookCount, } : {}),
@@ -296,14 +304,14 @@ const Mail = ({
   ...props
 }) => (
   <ActionButton
-    render={({ platform, biAction, }) => (
+    render={({ platform, biAction, biActionMapper, }) => (
       <Button
         {...props}
         miscStyles={buttonStyles}
         href={`mailto:?subject=${elementName}&body=${elementUrl}`}
         onClick={() => {
           biAction({
-            actionCode: 13,
+            actionCode: biActionMapper.get('mail_share'),
             additionalInfo: {
               platform,
             },
@@ -325,14 +333,14 @@ const MailAlert = ({
   ...props
 }) => (
   <ActionButton
-    render={({ platform, biAction, }) => (
+    render={({ platform, biAction, biActionMapper, }) => (
       <Button
         {...props}
         miscStyles={buttonStyles}
         href={`mailto:?subject=${elementName}&body=${elementUrl}`}
         onClick={() => {
           biAction({
-            actionCode: 13,
+            actionCode: biActionMapper.get('author_alert'),
             additionalInfo: {
               platform,
             },
@@ -384,14 +392,14 @@ const Messenger = ({
 
 const Print = ({ buttonStyles, size, iconStyles, ...props }) => (
   <ActionButton
-    render={({ platform, biAction, articleId, hostname, }) => (
+    render={({ platform, biAction, biActionMapper, articleId, hostname, }) => (
       <Button
         {...props}
         miscStyles={buttonStyles}
         href={`http://${hostname}/misc/article-print-page/${articleId}`}
         onClick={() => {
           biAction({
-            actionCode: 112,
+            actionCode: biActionMapper.get('print'),
             additionalInfo: {
               platform,
             },
@@ -435,7 +443,7 @@ const Twitter = ({
 
 const Whatsapp = ({ buttonStyles, size, iconStyles, elementUrl, ...props }) => (
   <ActionButton
-    render={({ platform, biAction, }) => (
+    render={({ platform, biAction, biActionMapper, }) => (
       <Button
         {...props}
         miscStyles={buttonStyles}
@@ -450,7 +458,7 @@ const Whatsapp = ({ buttonStyles, size, iconStyles, elementUrl, ...props }) => (
           );
 
           biAction({
-            actionCode: 11,
+            actionCode: biActionMapper.get('whatsApp_share'),
             additionalInfo: {
               platform,
             },
@@ -475,14 +483,14 @@ const Zen = ({
   <Mutation mutation={TOGGLE_ZEN}>
     {toggleZen => (
       <ActionButton
-        render={({ platform, biAction, }) => (
+        render={({ platform, biAction, biActionMapper, }) => (
           <Button
             {...props}
             miscStyles={buttonStyles}
             onClick={() => {
               toggleZen();
               biAction({
-                actionCode: 92,
+                actionCode: biActionMapper.get('zen_mode'),
                 additionalInfo: {
                   platform,
                   ...(buttonText ? { NumOfTalkbacks: buttonText, } : {}),

@@ -22,6 +22,22 @@ const getGaActionWithQuery = () => async gaAction => {
   });
 };
 
+const biActionMapper = new Map([
+  [ 'send_comment', 1, ],
+  [ 'newsletter_signUp', 9, ],
+  [ 'facebook_share', 10, ],
+  [ 'whatsApp_share', 11, ],
+  [ 'mail_share', 13, ],
+  [ 'author_alert', 91, ],
+  [ 'zen_mode', 92, ],
+  [ 'author_alert_approve', 93, ],
+  [ 'text_design_tools', 104, ],
+  [ 'next_page', 109, ],
+  [ 'breadcrumbs', 110, ],
+  [ 'go_to_comments', 111, ],
+  [ 'print', 112, ],
+]);
+
 class EventTracker extends PureComponent {
   static propTypes = {
     /** Indicates rendered JSX wrapped */
@@ -38,6 +54,7 @@ class EventTracker extends PureComponent {
               HtzReactGA: ReactGA,
               biAction: getBIActionWithQuery(client),
               gaAction: getGaActionWithQuery(client),
+              biActionMapper,
               gaMapper: {
                 productId: {
                   243: 'haaretz',

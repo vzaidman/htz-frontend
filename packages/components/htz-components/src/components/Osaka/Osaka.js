@@ -130,12 +130,12 @@ function Osaka({ nextArticleUrl, sectionName, lists, }) {
                 }}
               >
                 <EventTracker>
-                  {({ biAction, }) => (
+                  {({ biAction, biActionMapper, }) => (
                     <NextItem
                       href={nextArticleUrl}
                       onClick={() => {
                         biAction({
-                          actionCode: 109,
+                          actionCode: biActionMapper.get('next_page'),
                           additionalInfo: {
                             name: 'NextArticleInSection',
                             article_id: nextArticleUrl,
