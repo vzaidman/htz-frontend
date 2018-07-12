@@ -7,7 +7,7 @@ services:
       - 3000:3000
     environment:
       - NODE_ENV=production
-      - NEXT_BUILD_ID=${BUILD_ID:-LATEST}"
+      - NEXT_BUILD_ID=${BUILD_ID:-LATEST}
       # the following environment is optional
       - PORT=3000
       - BIND_ADDRESS=0.0.0.0
