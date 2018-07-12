@@ -15,6 +15,7 @@ import config from 'config';
 // adding this `fetch` global) here. That way they'll be available to any
 // modules that Next.js imports while routing and rendering pages.
 import 'isomorphic-fetch';
+import morgan from 'morgan';
 import createContext from './createContext';
 import htz from './routes/htz';
 import tm from './routes/tm';
@@ -84,6 +85,7 @@ app
   // eslint-disable-next-line consistent-return
   .then(() => {
     const server = express();
+    server.use(morgan('combined'));
     if (!DEV) {
       server.use(compression()); // Compress responses.
     }
