@@ -383,7 +383,6 @@ class StandardArticle extends React.Component {
                   flexShrink: '0',
                   position: 'relative',
                   display: 'flex',
-                  paddingTop: '3rem',
                   justifyContent: 'space-around',
                   alignItems: 'flex-start',
                   extend: [
@@ -392,15 +391,18 @@ class StandardArticle extends React.Component {
                   ],
                 }}
                 render={({ className, }) => (
-                  <aside
-                    className={className}
-                    ref={side => {
-                      this.side = side;
-                    }}
-                  >
-                    {this.side && (
-                      <Zen animate miscStyles={{ height: '100%', }}>
-                        <SideBar height={this.side.offsetHeight}>
+                  <aside className={className}>
+                    <Zen animate>
+                      <FelaComponent
+                        style={{
+                          height: '100%',
+                          left: '0',
+                          paddingTop: '3rem',
+                          position: 'absolute',
+                          top: '0',
+                        }}
+                      >
+                        <SideBar>
                           {aside.map(element => {
                             const Element = getComponent(element.inputTemplate);
                             const {
@@ -417,8 +419,8 @@ class StandardArticle extends React.Component {
                             );
                           })}
                         </SideBar>
-                      </Zen>
-                    )}
+                      </FelaComponent>
+                    </Zen>
                   </aside>
                 )}
               />

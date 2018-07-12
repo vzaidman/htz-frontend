@@ -3,10 +3,8 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
-import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import ToggleFade from '../Transitions/ToggleFade';
-import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 export const ZEN_QUERY = gql`
   query GetZenStatus {
@@ -32,18 +30,11 @@ class Zen extends React.Component {
      * Should the element be hidden or removed (default).
      */
     hide: PropTypes.bool,
-    /**
-     * A special property holding miscellaneous CSS values that
-     * trump all default values. Processed by
-     * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
-     */
-    miscStyles: stylesPropType,
   };
 
   static defaultProps = {
     animate: false,
     hide: false,
-    miscStyles: null,
   };
 
   state = {
@@ -52,7 +43,7 @@ class Zen extends React.Component {
   };
 
   render() {
-    const { children, hide, animate, miscStyles, } = this.props;
+    const { children, hide, animate, } = this.props;
     return (
       <Query query={ZEN_QUERY}>
         {({ loading, error, data, }) => {
@@ -61,16 +52,7 @@ class Zen extends React.Component {
           const { zenMode, } = data;
           if (hide) {
             return (
-              <FelaComponent
-                style={theme => ({
-                  display: zenMode ? 'none' : 'block',
-                  extend: [
-                    ...(miscStyles
-                      ? parseStyleProps(miscStyles, theme.mq, theme.type)
-                      : []),
-                  ],
-                })}
-              >
+              <FelaComponent style={{ display: zenMode ? 'none' : 'block', }}>
                 {children}
               </FelaComponent>
             );
