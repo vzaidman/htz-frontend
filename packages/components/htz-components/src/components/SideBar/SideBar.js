@@ -3,59 +3,44 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 
 import WrappedScroll from '../Scroll/Scroll';
+import getComponent from '../../utils/componentFromInputTemplate';
 
-class SideBar extends React.Component {
-  static propTypes = {
-    children: PropTypes.arrayOf(PropTypes.node),
-    height: PropTypes.number,
-  };
+const propTypes = {
+  content: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+};
 
-  static defaultProps = {
-    children: null,
-    height: 1,
-  };
-
-  state = {
-    show: 0,
-  };
-
-  changeView = y => {
-    const { children, height, } = this.props;
-    // height 0 causes to divide by 0 which returns NAN and causes and infinite loop (seState will always be called)
-    if (height) {
-      const range = height / children.length;
-      this.state.show !== Math.floor(y / range) &&
-        this.setState({
-          show: Math.floor(y / range) || 0,
-        });
-    }
-  };
-
-  render() {
-    const { children, } = this.props;
-    const { show, } = this.state;
-    return (
-      <FelaComponent
-        style={{
-          position: 'sticky',
-          width: '100%',
-          top: '12px',
-          zIndex: '1',
-          paddingInlineStart: '4rem',
-          paddingInlineEnd: '4rem',
-        }}
-      >
-        {children && children.length > 0 ? (
-          <WrappedScroll
-            render={({ y, }) => {
-              this.changeView(y);
-              return children[show] || null;
-            }}
-          />
-        ) : null}
-      </FelaComponent>
-    );
-  }
+function SideBar({ content, }) {
+  return (
+    <FelaComponent
+      style={{
+        position: 'sticky',
+        width: '100%',
+        top: '12px',
+        zIndex: '1',
+        paddingInlineStart: '4rem',
+        paddingInlineEnd: '4rem',
+      }}
+    >
+      <WrappedScroll
+        render={({ y, }) =>
+          content.map(element => {
+            const Element = getComponent(element.inputTemplate);
+            const { properties, ...elementWithoutProperties } = element;
+            return (
+              <Element
+                scrollY={y}
+                key={element.contentId}
+                {...elementWithoutProperties}
+                {...properties}
+              />
+            );
+          })
+        }
+      />
+    </FelaComponent>
+  );
 }
+
+SideBar.propTypes = propTypes;
 
 export default SideBar;

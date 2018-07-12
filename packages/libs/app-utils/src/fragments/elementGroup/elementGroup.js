@@ -29,6 +29,7 @@ export default gql`
     inputTemplate
     contentName
     contentId
+    totalDisplay
   }
   ${content}
   ${dfpBanner}

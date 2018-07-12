@@ -44,6 +44,16 @@ const ElementGroup = new GraphQLObjectType({
     inputTemplate: { type: GraphQLString, },
     contentName: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
+    totalDisplay: {
+      type: GraphQLInt,
+      resolve: parentValue => {
+        const { contentLists, } = parentValue;
+        let duration = 0;
+        // eslint-disable-next-line no-return-assign
+        contentLists.map(item => (duration += item.displayDuration));
+        return duration;
+      },
+    },
   }),
 });
 

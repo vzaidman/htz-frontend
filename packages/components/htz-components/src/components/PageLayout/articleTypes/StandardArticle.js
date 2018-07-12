@@ -16,8 +16,6 @@ import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 
-// const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
-
 const margineliaStyle = ({
   theme,
   theme: { layoutStyle, },
@@ -392,35 +390,21 @@ class StandardArticle extends React.Component {
                 }}
                 render={({ className, }) => (
                   <aside className={className}>
-                    <Zen animate>
-                      <FelaComponent
-                        style={{
-                          height: '100%',
-                          left: '0',
-                          paddingTop: '3rem',
-                          position: 'absolute',
-                          top: '0',
-                        }}
-                      >
-                        <SideBar>
-                          {aside.map(element => {
-                            const Element = getComponent(element.inputTemplate);
-                            const {
-                              properties,
-                              ...elementWithoutProperties
-                            } = element;
-                            return (
-                              <Element
-                                key={element.contentId}
-                                articleId={articleId}
-                                {...elementWithoutProperties}
-                                {...properties}
-                              />
-                            );
-                          })}
-                        </SideBar>
-                      </FelaComponent>
-                    </Zen>
+                    {aside && (
+                      <Zen animate>
+                        <FelaComponent
+                          style={{
+                            height: '100%',
+                            left: '0',
+                            paddingTop: '3rem',
+                            position: 'absolute',
+                            top: '0',
+                          }}
+                        >
+                          <SideBar content={aside} />
+                        </FelaComponent>
+                      </Zen>
+                    )}
                   </aside>
                 )}
               />

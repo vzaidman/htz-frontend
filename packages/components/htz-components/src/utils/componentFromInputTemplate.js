@@ -6,6 +6,7 @@ import AdSlot from '../components/Ads/AdSlot';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import WrappedComments from '../components/CommentsSection/WrappedComments';
 import ClickTrackerWrapper from '../components/ClickTracker/ClickTrackerWrapper';
+import ElementGroup from '../components/ElementGroup/ElementGroup';
 import Embed from '../components/Embed/Embed';
 import Footer from '../components/Footer/Footer';
 import HtmlElement from '../components/Interactive/components/HtmlElement';
@@ -57,6 +58,7 @@ const inputTemplateToComponent = new Map([
   [ 'tagsElement', Tags, ],
 
   /* Misc components */
+  [ 'com.tm.element.group', ElementGroup, ],
   [ 'com.tm.Image', Image, ],
   [ 'com.tm.Video', Video, ],
   [ 'com.tm.ImageGalleryElement', () => <p>ImageGallery</p>, ],
