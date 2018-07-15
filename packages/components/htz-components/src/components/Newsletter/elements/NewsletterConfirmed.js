@@ -45,7 +45,7 @@ const closeButtonStyle = {
   display: 'inline-block',
   position: 'absolute',
   left: '0',
-  top: '0',
+  top: '0.5rem',
   paddingTop: '0',
 };
 

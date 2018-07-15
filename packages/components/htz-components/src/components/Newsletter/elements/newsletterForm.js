@@ -26,7 +26,6 @@ const UpperInputRow = ({ theme, }) => ({
 const inputUpperNoteStyle = ({ theme, variant, }) => ({
   fontWeight: 'bold',
   extend: [
-    theme.type(1),
     parseComponentProp(
       undefined,
       variant,
@@ -126,9 +125,7 @@ export function NewsletterForm({
     icon &&
     (icon.toLowerCase() === 'htz'
       ? IconAlefLogoTransparent
-      : icon.toLowerCase() === 'tm'
-        ? IconMarkerLogoTransparent
-        : null);
+      : icon.toLowerCase() === 'tm' ? IconMarkerLogoTransparent : null);
   return (
     <Form
       initialValues={{ email: userEmail, checkBox: false, }}
@@ -216,6 +213,7 @@ export function NewsletterForm({
                                   long: requiredLong,
                                   short: requiredShort,
                                 },
+                                miscStyles: { type: -1, },
                               })}
                             />
                           </div>
@@ -223,7 +221,7 @@ export function NewsletterForm({
                       />
                       <Button
                         onClick={handleSubmit}
-                        boxModel={{ hp: 3, vp: 1.5, }}
+                        boxModel={{ hp: 3, vp: 1, }}
                         isBusy={loading}
                         miscStyles={ButtonStyle}
                         variant={theme.newsletterStyle[variant].buttonVariant}
