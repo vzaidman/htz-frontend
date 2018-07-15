@@ -61,7 +61,7 @@ export default class AdSlot {
    * @returns {boolean} true iff this adSlot is one of the predefined 'out-of-page' slots.
    */
   isOutOfPage() {
-    if (typeof this.type !== 'string') {
+    if (typeof this.type !== 'string' && this.type.length < 1) {
       throw new Error('An adSlot cannot by typeless!', this);
     }
     if (this.isMobile() === true) {
@@ -182,7 +182,7 @@ export default class AdSlot {
             ' called @',
             window.performance.now()
           );
-        googletag.display(this.id);
+        googletag.display(this.htmlElement); // must be a 'Div' with an id!
       });
     }
     else {
@@ -310,11 +310,7 @@ export default class AdSlot {
     else {
       this.adManager.DEBUG &&
         console.error(
-          `calling refresh for an ad slot that ${
-            this.shown
-              ? 'was already shown!'
-              : 'missing a required DOM element!'
-          }`,
+          'calling refresh for an ad slot that is missing a required DOM element!',
           this
         );
     }

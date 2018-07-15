@@ -31,7 +31,7 @@ export const adTypes = {
   maavaron: '.maavaron',
   popunder: '.popunder',
   talkback: '.talkback',
-  regular: '',
+  regular: 'regular',
 };
 
 export default class AdManager {
@@ -58,6 +58,12 @@ export default class AdManager {
       });
       // Holds adSlot objects as soon as possible.
       googletag.cmd.push(() => {
+        this.DEBUG &&
+          console.log(
+            `3. Define slots - definition for ${
+              adPriorities.high
+            } priority slots`
+          );
         this.adSlots = this.initAdSlots(config.adSlotConfig, adPriorities.high);
       });
       // Once DOM ready, add more adSlots.
@@ -65,11 +71,23 @@ export default class AdManager {
         // eslint-disable-line no-inner-declarations
         try {
           googletag.cmd.push(() => {
+            this.DEBUG &&
+              console.log(
+                `3. Define slots - secondary definition for ${
+                  adPriorities.high
+                } priority slots`
+              );
             this.adSlots = this.initAdSlots(
               config.adSlotConfig,
               adPriorities.high
             );
             googletag.cmd.push(() => {
+              this.DEBUG &&
+                console.log(
+                  `3. Define slots - definition for ${
+                    adPriorities.normal
+                  } priority slots`
+                );
               this.adSlots = this.initAdSlots(
                 config.adSlotConfig,
                 adPriorities.normal
@@ -85,6 +103,12 @@ export default class AdManager {
       const onWindowLoaded = () => {
         // eslint-disable-line no-inner-declarations
         googletag.cmd.push(() => {
+          this.DEBUG &&
+            console.log(
+              `3. Define slots - definition for ${
+                adPriorities.low
+              } priority slots`
+            );
           this.adSlots = this.initAdSlots(
             config.adSlotConfig,
             adPriorities.low
@@ -121,7 +145,8 @@ export default class AdManager {
   /**
    * Memoized DEBUGGING flag to show debugging information
    */
-  static get DEBUG() {
+  // eslint-disable-next-line class-methods-use-this
+  get DEBUG() {
     if (debug !== null) {
       return debug;
     }
@@ -130,13 +155,16 @@ export default class AdManager {
   }
 
   /**
-   * Shows all of the adSlots that can be displayed.
+   * Shows all of the adSlots that can be displayed, if they haven't been shown already.
+   * @param {string} priorityFilter an optional ad priority to filter slots to show
    */
-  showAllSlots() {
+  showAllSlots(priorityFilter) {
     for (const adSlotKey of this.adSlots.keys()) {
       const adSlot = this.adSlots.get(adSlotKey);
+      const adSlotMatchPriorityFilter = adSlot.priority === priorityFilter;
       if (
         adSlot.type !== adTypes.talkback &&
+        adSlotMatchPriorityFilter &&
         this.shouldSendRequestToDfp(adSlot)
       ) {
         this.DEBUG &&
@@ -147,7 +175,9 @@ export default class AdManager {
               adSlot
             )}`
           );
-        adSlot.show();
+        if (!adSlot.shown) {
+          adSlot.show();
+        }
       }
     }
   }
@@ -239,90 +269,8 @@ export default class AdManager {
    * a given adPriority. This is used to cherry pick the init process of ads.
    * @returns {Map}
    */
-  initAdSlotsOld(adSlotConfig, filteredPriority) {
-    const adSlots = new Map(this.adSlots);
-    let adSlotPlaceholders = Array.from(
-      document.getElementsByClassName('js-dfp-ad')
-    );
-    adSlotPlaceholders = adSlotPlaceholders.filter(node => node.id); // only nodes with an id
-    const adSlotNodeSet = new Set();
-    adSlotPlaceholders = Array.prototype.filter.call(
-      adSlotPlaceholders,
-      node => {
-        if (adSlotNodeSet.has(node.id) === false) {
-          // first occurrence of Node
-          adSlotNodeSet.add(node.id);
-          return true;
-        }
-        return false;
-      }
-    );
-    // adSlotPlaceholders = adSlotPlaceholders.sort((a, b) => a.offsetTop - b.offsetTop);
-    adSlotPlaceholders.forEach(adSlot => {
-      const adSlotPriority = adSlotConfig[adSlot.id]
-        ? adSlotConfig[adSlot.id].priority || adPriorities.normal
-        : undefined;
-      if (
-        adSlotConfig[adSlot.id] &&
-        adSlots.has(adSlot.id) === false &&
-        adSlotPriority === filteredPriority
-      ) {
-        // The markup has a matching configuration from adSlotConfig AND was not already defined
-        try {
-          // adSlotConfig is built from globalConfig, but can be overridden by markup
-          const computedAdSlotConfig = Object.assign(
-            {},
-            adSlotConfig[adSlot.id],
-            {
-              id: adSlot.id,
-              target: adSlot.attributes['data-audtarget']
-                ? adSlot.attributes['data-audtarget'].value
-                : adTargets.all,
-              type: this.getAdType(adSlot.id),
-              responsive: adSlotConfig[adSlot.id].responsive,
-              fluid: adSlotConfig[adSlot.id].fluid || false,
-              user: this.user,
-              adManager: this,
-              htmlElement: adSlot,
-              department: this.config.department,
-              network: this.config.adManagerConfig.network,
-              adUnitBase: this.config.adManagerConfig.adUnitBase,
-              deferredSlot: this.conflictResolver.isBlocked(adSlot.id),
-              priority: adSlotPriority,
-            }
-          );
-          const adSlotInstance = new AdSlot(computedAdSlotConfig);
-          adSlots.set(adSlot.id, adSlotInstance);
-          if (
-            adSlotInstance.type !== adTypes.talkback &&
-            adSlotInstance.priority === adPriorities.high &&
-            this.shouldSendRequestToDfp(adSlotInstance)
-          ) {
-            /*
-             console.log('calling show for high priority slot', adSlotInstance.id, ' called @',
-             window.performance.now());
-             */
-            adSlotInstance.show();
-          }
-        }
-        catch (err) {
-          console.error(err); // eslint-disable-line no-console
-        }
-      }
-    });
-    return adSlots;
-  }
-  /**
-   * Initializes adSlots based on the currently found slot markup (HTML page specific),
-   * and the predefined configuration for the slots.
-   * @param {Object} adSlotConfig - the AdSlots configuration object (see: globalConfig)
-   * @param {String} filteredPriority - filters out all adSlots that does not match
-   * a given adPriority. This is used to cherry pick the init process of ads.
-   * @returns {Map}
-   */
   initAdSlots(adSlotConfig, filteredPriority) {
     const adSlots = new Map(this.adSlots);
-    // adSlotPlaceholders = adSlotPlaceholders.sort((a, b) => a.offsetTop - b.offsetTop);
     for (const adSlotId in adSlotConfig) {
       if (adSlotConfig[adSlotId].priority === filteredPriority) {
         try {
@@ -626,6 +574,12 @@ export default class AdManager {
           if (deferredAdSlot && this.shouldSendRequestToDfp(deferredAdSlot)) {
             this.conflictResolver.deferredSlots.delete(deferredSlotKey);
             if (deferredAdSlot.deferredSlot) {
+              this.DEBUG &&
+                console.log(
+                  `Runtime Define slots - definition for a defered (blocked) slot ${
+                    deferredAdSlot.id
+                  }`
+                );
               deferredAdSlot.defineSlot();
               deferredAdSlot.deferredSlot = false;
             }
@@ -645,6 +599,7 @@ export default class AdManager {
    */
   initGoogleTargetingParams() {
     if (window.googletag && window.googletag.apiReady) {
+      this.DEBUG && console.log('1. Define page-level settings');
       // Returns a reference to the pubads service.
       const pubads = googletag.pubads();
       // Environment targeting (dev, test, prod)
@@ -710,6 +665,8 @@ export default class AdManager {
 
       // Ads Centering
       pubads.setCentering(true);
+      // Ads Collapsing
+      pubads.collapseEmptyDivs();
     }
     else {
       throw new Error(
@@ -723,6 +680,8 @@ export default class AdManager {
    */
   initGoogleGlobalSettings() {
     if (window.googletag && window.googletag.apiReady) {
+      this.DEBUG && console.log('2. enableServices()');
+      const pubads = googletag.pubads();
       const googleGlobalSettings = Object.assign(
         {},
         this.config.googleGlobalSettings
@@ -731,19 +690,19 @@ export default class AdManager {
       if (window.location.search) {
         const search = window.location.search;
         if (search.indexOf('sraon') > 0) {
-          console.log('Single Request Mode: active'); // eslint-disable-line no-console
+          this.DEBUG && console.log('Single Request Mode: active'); // eslint-disable-line no-console
           googleGlobalSettings.enableSingleRequest = true;
         }
         else if (search.indexOf('sraoff') > 0) {
-          console.log('Single Request Mode: disabled'); // eslint-disable-line no-console
+          this.DEBUG && console.log('Single Request Mode: disabled'); // eslint-disable-line no-console
           googleGlobalSettings.enableSingleRequest = false;
         }
         if (search.indexOf('asyncrenderingon') > 0) {
-          console.log('Async rendering mode: active'); // eslint-disable-line no-console
+          this.DEBUG && console.log('Async rendering mode: active'); // eslint-disable-line no-console
           googleGlobalSettings.enableAsyncRendering = true;
         }
         else if (search.indexOf('asyncrenderingonoff') > 0) {
-          console.log('Sync rendering mode: active'); // eslint-disable-line no-console
+          this.DEBUG && console.log('Sync rendering mode: active'); // eslint-disable-line no-console
           googleGlobalSettings.enableAsyncRendering = false;
         }
       }
@@ -753,10 +712,14 @@ export default class AdManager {
       //   googletag.pubads().enableSingleRequest();
       // }
       if (googleGlobalSettings.enableAsyncRendering === true) {
-        googletag.pubads().enableAsyncRendering();
+        pubads.enableAsyncRendering();
+        // if (googleGlobalSettings.disableInitialLoad === true) {
+        //   console.log('disabling initial load');
+        //   pubads.disableInitialLoad();
+        // }
       }
       else {
-        googletag.pubads().enableSyncRendering();
+        pubads.enableSyncRendering();
       }
       // Enables all GPT services that have been defined for ad slots on the page.
       googletag.enableServices();

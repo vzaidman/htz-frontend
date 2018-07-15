@@ -12,7 +12,7 @@ import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import Caption from './components/Caption/Caption';
 import CheckBox from './components/CheckBox/CheckBox';
-import Comments from './components/CommentsSection/CommentsWithApollo';
+import Comments from './components/CommentsSection/WrappedComments';
 import Embed from './components/Embed/Embed';
 import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
