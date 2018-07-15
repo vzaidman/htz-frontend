@@ -6,9 +6,18 @@ import WrappedScroll from '../Scroll/Scroll';
 import getComponent from '../../utils/componentFromInputTemplate';
 
 const propTypes = {
+  /**
+   * An array of children.
+   */
   content: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
+/**
+ * The content of this component consists from `com.tm.element.group` types of elements
+ * (see query at /htz-components/src/components/PageLayout/queries/standard_article.js, line 30).
+ * each element has its 'display duration' (without it it won't pass through papi) which determines
+ * for how long (in pixels) the element should appear on the page.
+ */
 function SideBar({ content, }) {
   return (
     <FelaComponent
