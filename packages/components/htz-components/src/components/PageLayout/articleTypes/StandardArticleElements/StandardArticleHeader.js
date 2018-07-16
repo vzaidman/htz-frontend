@@ -143,13 +143,14 @@ function Header({
             }}
             size={2.5}
           />
-
-          <HeadlineElement
-            elementObj={elementObj}
-            miscStyles={{
-              marginTop: '2rem',
-            }}
-          />
+          {elementObj ? (
+            <HeadlineElement
+              elementObj={elementObj}
+              miscStyles={{
+                marginTop: '2rem',
+              }}
+            />
+          ) : null}
         </header>
       )}
     />
