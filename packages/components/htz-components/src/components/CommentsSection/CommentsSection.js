@@ -17,13 +17,6 @@ const SelectContStyle = ({ theme, }) => ({
 
 const SelectCont = createComponent(SelectContStyle);
 
-const loadMoreContStyle = ({ theme, }) => ({
-  marginTop: '3rem',
-  textAlign: 'center',
-});
-
-const LoadMoreCont = createComponent(loadMoreContStyle);
-
 const SelectStyle = {
   width: '28rem',
   marginInlineStart: '2.3rem',
@@ -170,7 +163,7 @@ class CommentsSection extends React.Component {
       commentsMinusRate,
       initVote,
       loadAllComments,
-      ...props // eslint-disable-line no-unused-vars
+      totalHits,
     } = this.props;
 
     return (
@@ -230,11 +223,18 @@ class CommentsSection extends React.Component {
               initNewComment={initNewComment}
               signUpNotification={signUpNotification}
             />
-            <LoadMoreCont>
-              <Button onClick={() => loadAllComments()}>
-                {loadAllCommentsBtnText}
-              </Button>
-            </LoadMoreCont>
+            {totalHits > comments.length ? (
+              <FelaComponent
+                style={{
+                  marginTop: '3rem',
+                  textAlign: 'center',
+                }}
+              >
+                <Button onClick={() => loadAllComments()}>
+                  {loadAllCommentsBtnText}
+                </Button>
+              </FelaComponent>
+            ) : null}
             <Recaptcha
               ref={ref => (this.recaptcha = ref)} // eslint-disable-line no-return-assign
               // todo: 'should site key be prop ? or from theme ?
