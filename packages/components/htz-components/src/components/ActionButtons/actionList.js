@@ -3,6 +3,7 @@
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
+import querystring from 'querystring';
 import {
   Query,
   ApolloConsumer,
@@ -19,6 +20,7 @@ import IconMail from '../Icon/icons/IconMail';
 import IconMailAlert from '../Icon/icons/IconMailAlert';
 import IconMessenger from '../Icon/icons/IconMessenger';
 import IconPrint from '../Icon/icons/IconPrint';
+import IconSave from '../Icon/icons/IconSave';
 import IconTwitter from '../Icon/icons/IconTwitter';
 import IconWhatsapp from '../Icon/icons/IconWhatsapp';
 import IconZen from '../Icon/icons/IconZen';
@@ -48,6 +50,9 @@ const GET_PAGE_DATA = gql`
     platform @client
     hostname @client
     articleId @client
+    user @client {
+      id
+    }
   }
 `;
 
@@ -77,7 +82,7 @@ const ActionButton = ({ render, }) => (
     {({ loading, error, data, }) => {
       if (loading) return null;
       if (error) console.log(error);
-      const { platform, hostname, articleId, } = data;
+      const { platform, hostname, articleId, user: { id: userId, }, } = data;
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       return (
         <EventTracker>
@@ -89,6 +94,7 @@ const ActionButton = ({ render, }) => (
               host,
               hostname,
               articleId,
+              userId,
             })
           }
         </EventTracker>
@@ -414,6 +420,56 @@ const Print = ({ buttonStyles, size, iconStyles, ...props }) => (
   />
 );
 
+const Save = ({
+  buttonStyles,
+  buttonText,
+  iconStyles,
+  subtract = false,
+  size,
+  ...props
+}) => (
+  <ActionButton
+    render={({ articleId, userId, }) => (
+      <Button
+        {...props}
+        miscStyles={buttonStyles}
+        onClick={() => {
+          const bodyReq = {
+            articleId,
+            userId,
+            // to delete send operation: 'subtract'
+            operation: subtract ? 'subtract' : 'add',
+            readingListId: 'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
+            update: true,
+            pq: 'reading_pq',
+          };
+          fetch(
+            'https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager',
+            {
+              method: 'POST',
+              mode: 'cors',
+              credentials: 'include',
+              headers: {
+                // 'Content-Type': 'application/json; charset=utf-8',
+                'Content-Type':
+                  'application/x-www-form-urlencoded; charset=utf-8',
+              },
+              body: querystring.stringify(bodyReq),
+            }
+          ).then(response => response.json());
+        }}
+      >
+        {buttonText && (
+          <FelaComponent style={{ marginEnd: '1rem', }} render="span">
+            {buttonText}
+          </FelaComponent>
+        )}
+        <IconSave size={size} miscStyles={iconStyles} />
+      </Button>
+    )}
+  />
+);
+
 const Twitter = ({
   buttonStyles,
   size,
@@ -526,6 +582,7 @@ const getAction = iconName => {
     [ 'mailalert', MailAlert, ],
     [ 'messenger', Messenger, ],
     [ 'print', Print, ],
+    [ 'save', Save, ],
     [ 'twitter', Twitter, ],
     [ 'whatsapp', Whatsapp, ],
     [ 'zen', Zen, ],
