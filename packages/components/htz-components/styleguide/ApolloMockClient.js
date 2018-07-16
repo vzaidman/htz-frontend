@@ -53,6 +53,8 @@ const stateLink = withClientState({
     a11yToggle: false,
     articleId: '1.2345',
     commentsElementId: '1.2345',
+    platform: 'web',
+    hostname: 'www.haaretz.co.il',
   },
   resolvers: {
     Mutation: {
