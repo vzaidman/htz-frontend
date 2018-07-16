@@ -7,6 +7,7 @@ import {
   dfpBanner,
   elementGroup,
   embed,
+  headlineElement,
   htmlElement,
   image,
   imageGallery,
@@ -57,6 +58,9 @@ export default gql`
               reportingFrom
               inputTemplate
               commentsElementId
+              headlineElement {
+                ...HeadlineElement
+              }
               body {
                 ... on Content {
                   ...Content
@@ -118,6 +122,7 @@ export default gql`
   ${dfpBanner}
   ${elementGroup}
   ${embed}
+  ${headlineElement}
   ${htmlElement}
   ${image}
   ${imageGallery}
