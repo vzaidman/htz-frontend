@@ -79,7 +79,7 @@ const hamburgerDashStyle = (
   position: 'absolute',
   transition: 'transform .5s',
   extend: [
-    isTransition ? theme.getTransition(1, 'swiftOut') : null,
+    isTransition ? theme.getTransition(1, 'swiftOut') : {},
     ...(isOpen
       ? !main
         ? [
