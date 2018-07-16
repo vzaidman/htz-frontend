@@ -4,32 +4,22 @@ import { Query, } from 'react-apollo';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { htzTheme, } from '@haaretz/htz-theme';
 import { createLogger, } from '@haaretz/app-utils';
-import dynamic from 'next/dynamic';
 
 import {
   AriaLive,
+  ArticlePageLayout,
   DeviceTypeInjector,
+  DfpInjector,
   GaDimensions,
   GoogleAnalytics,
+  ScrollListener,
   UserInjector,
-  ArticlePageLayout,
 } from '@haaretz/htz-components';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 
 import ArticleInitQuery from './queries/article_layout';
 
 const logger = createLogger();
-
-// eslint-disable-next-line no-unused-vars
-const ScrollInjector = dynamic(
-  import('../components/ScrollListener/ScrollListener'),
-  {
-    ssr: false,
-  }
-);
-const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
-  ssr: false,
-});
 
 export class ArticlePage extends React.Component {
   static propTypes = {
@@ -75,7 +65,7 @@ export class ArticlePage extends React.Component {
     const { url, } = this.props;
     return (
       <Fragment>
-        <ScrollInjector />
+        <ScrollListener />
         <UserInjector />
         <DfpInjector path={url.query.path} />
         <GoogleAnalytics withEC />
