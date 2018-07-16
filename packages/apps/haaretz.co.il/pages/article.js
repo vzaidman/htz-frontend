@@ -15,8 +15,8 @@ import {
   ScrollListener,
   UserInjector,
 } from '@haaretz/htz-components';
-import styleRenderer from '../components/styleRenderer/styleRenderer';
 
+import styleRenderer from '../components/styleRenderer/styleRenderer';
 import ArticleInitQuery from './queries/article_layout';
 
 const logger = createLogger();
@@ -38,9 +38,7 @@ export class ArticlePage extends React.Component {
   static defaultProps = {};
 
   state = {
-    // eslint-disable-next-line react/no-unused-state
     articleId: null,
-    skip: false,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -55,10 +53,7 @@ export class ArticlePage extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.state.articleId !== nextState.articleId ||
-      this.state.skip !== nextState.skip
-    );
+    return this.state.articleId !== nextState.articleId;
   }
 
   render() {
