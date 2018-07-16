@@ -1,7 +1,7 @@
-import { Component, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
+import { Mutation, } from '../ApolloBoundary/ApolloBoundary';
 
 export const UPDATE_SCROLL = gql`
   mutation updateScroll(
@@ -11,13 +11,7 @@ export const UPDATE_SCROLL = gql`
     $velocity: Int!
   ) {
     updateScroll(x: $x, y: $y, direction: $direction, velocity: $velocity)
-      @client {
-      scroll {
-        x
-        y
-        velocity
-      }
-    }
+      @client
   }
 `;
 
@@ -43,7 +37,7 @@ const propTypes = {
   mutate: PropTypes.func.isRequired,
 };
 
-export class ScrollStoreMutator extends Component {
+export class ScrollStoreMutator extends React.Component {
   componentWillReceiveProps(nextProps) {
     const { x, y, mutate, throttle, } = this.props;
     const velocity = (y - nextProps.y) / throttle;
@@ -58,4 +52,20 @@ export class ScrollStoreMutator extends Component {
 
 ScrollStoreMutator.propTypes = propTypes;
 
-export default graphql(UPDATE_SCROLL)(ScrollStoreMutator);
+// eslint-disable-next-line react/prop-types
+function WrappedScrollMutator({ x, y, throttle, }) {
+  return (
+    <Mutation mutation={UPDATE_SCROLL}>
+      {updateScroll => (
+        <ScrollStoreMutator
+          x={x}
+          y={y}
+          throttle={throttle}
+          mutate={updateScroll}
+        />
+      )}
+    </Mutation>
+  );
+}
+
+export default WrappedScrollMutator;
