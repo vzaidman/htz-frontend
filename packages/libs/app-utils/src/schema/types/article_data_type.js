@@ -24,53 +24,52 @@ const types = new Map([
   [ 'com.tm.Video', video, ],
 ]);
 
-const headlineTypes = [
-  'embedElement',
-  'com.tm.Image',
-  'com.tm.Video',
-  'com.tm.ImageGalleryElement',
-];
-
 const ArticleData = new GraphQLObjectType({
   name: 'ArticleData',
   fields: () => ({
+    header: {
+      type: new GraphQLObjectType({
+        name: 'ArticleHeader',
+        fields: () => ({
+          exclusive: { type: GraphQLString, },
+          mobileExclusive: { type: GraphQLString, },
+          mobileSubtitle: { type: GraphQLString, },
+          mobileTitle: { type: GraphQLString, },
+          modDate: { type: date, },
+          pubDate: { type: date, },
+          reportingFrom: { type: GraphQLString, },
+          subtitle: { type: GraphQLString, },
+          title: { type: GraphQLString, },
+        }),
+      }),
+      resolve: parentValue => {
+        const {
+          authors,
+          body,
+          commentsElementId,
+          contentId,
+          contentName,
+          inputTemplate,
+          mainElement,
+          ...header
+        } = parentValue;
+        return header;
+      },
+    },
+    mainElement: {
+      type: new GraphQLUnionType({
+        name: 'HeadlineElement',
+        types: [ embed, htmlElement, image, imageGallery, video, ],
+        resolveType: value =>
+          types.get(value.elementType || value.inputTemplate),
+      }),
+    },
     authors: { type: new GraphQLList(author), },
     body: { type: articleBody, },
     commentsElementId: { type: GraphQLID, },
     contentId: { type: GraphQLID, },
     contentName: { type: GraphQLString, },
-    exclusive: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },
-    mobileExclusive: { type: GraphQLString, },
-    mobileSubtitle: { type: GraphQLString, },
-    mobileTitle: { type: GraphQLString, },
-    modDate: { type: date, },
-    pubDate: { type: date, },
-    reportingFrom: { type: GraphQLString, },
-    subtitle: { type: GraphQLString, },
-    title: { type: GraphQLString, },
-    headlineElement: {
-      type: new GraphQLUnionType({
-        name: 'HeadlineElement',
-        types: [
-          embed,
-          htmlElement,
-          image,
-          imageGallery,
-          video,
-        ],
-        resolveType: value =>
-          types.get(value.elementType || value.inputTemplate),
-      }),
-      resolve: parentValue => {
-        const { body, } = parentValue;
-        const firstElement = body[0];
-        if (headlineTypes.includes(firstElement.elementType || firstElement.inputTemplate)) {
-          return firstElement;
-        }
-        return null;
-      },
-    },
   }),
 });
 

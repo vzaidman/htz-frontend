@@ -186,234 +186,202 @@ const WideArticleLayoutRow = ({ children, key, }) => (
   />
 );
 
-class StandardArticle extends React.Component {
-  static propTypes = {
-    /**
-     * Article's ID
-     */
-    articleId: PropTypes.string.isRequired,
-    article: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    aside: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    seoData: PropTypes.shape({}).isRequired,
-  };
+function StandardArticle({
+  articleId,
+  article,
+  aside,
+  seoData: {
+    metaTitle,
+    metaDescription,
+    metaKeywords,
+    canonicalUrl,
+    ogTitle,
+    ogDescription,
+    ogImage,
+    obTitle,
+  },
+}) {
+  const { contentId, imgArray, aspects, } = ogImage || {};
+  const ogImageUrl = ogImage
+    ? buildUrl(
+      contentId,
+      { ...imgArray[0], aspects, },
+      {
+        width: '1200',
+        aspect: 'full',
+        quality: 'auto',
+      }
+    )
+    : '';
 
-  extractHeadline = articleBody => {
-    const mediaComponents = [
-      'embedElement',
-      'com.tm.Image',
-      'com.tm.Video',
-      'com.tm.ImageGalleryElement',
-    ];
-    // creating a copy because arrays from apollo are sealed.
-    const body = [ ...articleBody, ];
-    const element = body[0];
-    const elementType = element.elementType || element.inputTemplate || null;
-    if (mediaComponents.includes(elementType)) {
-      body.shift();
-      return { body, headlineElement: element, };
-    }
-    return { body, };
-  };
+  const breadCrumbs = article.find(
+    element => element.inputTemplate === 'com.tm.PageTitle'
+  );
 
-  render() {
-    const {
-      articleId,
-      article,
-      aside,
-      seoData: {
-        metaTitle,
-        metaDescription,
-        metaKeywords,
-        canonicalUrl,
-        ogTitle,
-        ogDescription,
-        ogImage,
-        obTitle,
-      },
-    } = this.props;
+  const standardArticleElement = article.find(
+    element =>
+      element.inputTemplate === 'com.htz.StandardArticle' ||
+      element.inputTemplate === 'com.tm.StandardArticle'
+  );
 
-    const { contentId, imgArray, aspects, } = ogImage || {};
-    const ogImageUrl = ogImage
-      ? buildUrl(
-        contentId,
-        { ...imgArray[0], aspects, },
-        {
-          width: '1200',
-          aspect: 'full',
-          quality: 'auto',
-        }
-      )
-      : '';
+  const {
+    authors,
+    body,
+    header,
+    headlineElement,
+    reportingFrom,
+  } = standardArticleElement;
+  return (
+    <LayoutContainer tagName="article">
+      <Head>
+        <meta name="title" content={metaTitle} />
+        <meta name="description" content={metaDescription} />
+        <meta name="keywords" content={metaKeywords} />
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={ogDescription} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="ob:title" content={obTitle} />
+      </Head>
 
-    const breadCrumbs = article.find(
-      element => element.inputTemplate === 'com.tm.PageTitle'
-    );
+      <FelaComponent
+        render={({ theme, }) => (
+          <FelaComponent
+            style={{
+              extend: [ theme.mq({ from: 'l', }, { display: 'flex', }), ],
+            }}
+          >
+            <div>
+              <StandardArticleHeader
+                {...header}
+                articleId={articleId}
+                authors={authors}
+                canonicalUrl={canonicalUrl}
+                hasBreadCrumbs={!!breadCrumbs}
+                headlineElement={headlineElement}
+              />
 
-    const header = article.find(
-      element => element.inputTemplate === 'com.htz.ArticleHeaderElement'
-    );
-    const headerData = header.data;
-    const standardArticleElement = article.find(
-      element =>
-        element.inputTemplate === 'com.htz.StandardArticle' ||
-        element.inputTemplate === 'com.tm.StandardArticle'
-    );
-
-    const authors = standardArticleElement.authors;
-    const reportingFrom = standardArticleElement.reportingFrom;
-
-    const { body, headlineElement, } = this.extractHeadline(
-      standardArticleElement.body
-    );
-
-    return (
-      <LayoutContainer tagName="article">
-        <Head>
-          <meta name="title" content={metaTitle} />
-          <meta name="description" content={metaDescription} />
-          <meta name="keywords" content={metaKeywords} />
-          <meta property="og:title" content={ogTitle} />
-          <meta property="og:description" content={ogDescription} />
-          <meta property="og:image" content={ogImageUrl} />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-          <meta property="ob:title" content={obTitle} />
-        </Head>
-
-        <FelaComponent
-          render={({ theme, }) => (
-            <FelaComponent
-              style={{
-                extend: [ theme.mq({ from: 'l', }, { display: 'flex', }), ],
-              }}
-            >
-              <div>
-                <StandardArticleHeader
-                  // Guy Kedar:
-                  // Overide header data authors with authors from standard article element.
-                  // currently papi doesnt export full authors in the headline element,
-                  // e.g doesnt export hasEmailAlerts
-                  // todo: remove overide when papi exports authors as needed in the headerElement
-                  {...{ ...headerData, authors, }}
-                  // {...headerData}
-                  articleId={articleId}
-                  canonicalUrl={canonicalUrl}
-                  hasBreadCrumbs={!!breadCrumbs}
-                  elementObj={headlineElement}
-                  reportingFrom={reportingFrom}
-                />
-
-                {article.map(element => {
-                  if (
-                    element.inputTemplate === 'com.htz.ArticleHeaderElement' ||
-                    element.inputTemplate === 'com.tm.PageTitle'
-                  ) {
-                    return null;
-                  }
-                  if (
-                    element.inputTemplate === 'com.htz.StandardArticle' ||
-                    element.inputTemplate ===
-                      'com.mouse.story.MouseStandardStory' ||
-                    element.inputTemplate === 'com.tm.StandardArticle'
-                  ) {
-                    return (
-                      <ApolloConsumer key={element.contentId}>
-                        {cache => {
-                          const { commentsElementId, } = element;
-                          cache.writeData({
-                            data: {
-                              commentsElementId,
-                            },
-                          });
-                          return (
-                            <StandardLayoutRow
-                              isArticleBody
-                              authors={authors}
-                              reportingFrom={reportingFrom}
-                              publishDate={headerData.publishDate}
-                            >
-                              <ArticleBody body={body} />
-                            </StandardLayoutRow>
-                          );
-                        }}
-                      </ApolloConsumer>
-                    );
-                  }
-                  const Element = getComponent(element.inputTemplate);
-                  const { properties, ...elementWithoutProperties } = element;
-                  if (
-                    element.inputTemplate === 'com.polobase.OutbrainElement' ||
-                    element.inputTemplate ===
-                      'com.polobase.ClickTrackerBannersWrapper'
-                  ) {
-                    return (
-                      <WideArticleLayoutRow key={element.contentId}>
-                        <Element
-                          articleId={this.props.articleId}
-                          {...elementWithoutProperties}
-                          {...properties}
-                        />
-                      </WideArticleLayoutRow>
-                    );
-                  }
+              {article.map(element => {
+                if (
+                  element.inputTemplate === 'com.htz.ArticleHeaderElement' ||
+                  element.inputTemplate === 'com.tm.PageTitle'
+                ) {
+                  return null;
+                }
+                if (
+                  element.inputTemplate === 'com.htz.StandardArticle' ||
+                  element.inputTemplate ===
+                    'com.mouse.story.MouseStandardStory' ||
+                  element.inputTemplate === 'com.tm.StandardArticle'
+                ) {
                   return (
-                    <StandardLayoutRow
-                      key={element.contentId}
-                      {...(element.inputTemplate ===
-                      'com.tm.ArticleCommentsElement'
-                        ? // todo: theme
-                          { title: 'תגובות', id: 'commentsSection', }
-                        : {})}
-                    >
+                    <ApolloConsumer key={element.contentId}>
+                      {cache => {
+                        const { commentsElementId, } = element;
+                        cache.writeData({
+                          data: {
+                            commentsElementId,
+                          },
+                        });
+                        return (
+                          <StandardLayoutRow
+                            isArticleBody
+                            authors={authors}
+                            reportingFrom={reportingFrom}
+                            publishDate={header.publishDate}
+                          >
+                            <ArticleBody body={body} />
+                          </StandardLayoutRow>
+                        );
+                      }}
+                    </ApolloConsumer>
+                  );
+                }
+                const Element = getComponent(element.inputTemplate);
+                const { properties, ...elementWithoutProperties } = element;
+                if (
+                  element.inputTemplate === 'com.polobase.OutbrainElement' ||
+                  element.inputTemplate ===
+                    'com.polobase.ClickTrackerBannersWrapper'
+                ) {
+                  return (
+                    <WideArticleLayoutRow key={element.contentId}>
                       <Element
                         articleId={articleId}
                         {...elementWithoutProperties}
                         {...properties}
                       />
-                    </StandardLayoutRow>
+                    </WideArticleLayoutRow>
                   );
-                })}
-              </div>
+                }
+                return (
+                  <StandardLayoutRow
+                    key={element.contentId}
+                    {...(element.inputTemplate ===
+                    'com.tm.ArticleCommentsElement'
+                      ? // todo: theme
+                        { title: 'תגובות', id: 'commentsSection', }
+                      : {})}
+                  >
+                    <Element
+                      articleId={articleId}
+                      {...elementWithoutProperties}
+                      {...properties}
+                    />
+                  </StandardLayoutRow>
+                );
+              })}
+            </div>
 
-              <FelaComponent
-                style={{
-                  backgroundColor: 'white',
-                  flexShrink: '0',
-                  position: 'relative',
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  alignItems: 'flex-start',
-                  extend: [
-                    theme.mq({ until: 'l', }, { display: 'none', }),
-                    theme.mq({ from: 'l', }, { width: 'calc(300px + 8rem)', }),
-                  ],
-                }}
-                render={({ className, }) => (
-                  <aside className={className}>
-                    {aside && (
-                      <Zen animate>
-                        <FelaComponent
-                          style={{
-                            height: '100%',
-                            left: '0',
-                            paddingTop: '3rem',
-                            position: 'absolute',
-                            top: '0',
-                          }}
-                        >
-                          <SideBar content={aside} />
-                        </FelaComponent>
-                      </Zen>
-                    )}
-                  </aside>
-                )}
-              />
-            </FelaComponent>
-          )}
-        />
-      </LayoutContainer>
-    );
-  }
+            <FelaComponent
+              style={{
+                backgroundColor: 'white',
+                flexShrink: '0',
+                position: 'relative',
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'flex-start',
+                extend: [
+                  theme.mq({ until: 'l', }, { display: 'none', }),
+                  theme.mq({ from: 'l', }, { width: 'calc(300px + 8rem)', }),
+                ],
+              }}
+              render={({ className, }) => (
+                <aside className={className}>
+                  {aside && (
+                    <Zen animate>
+                      <FelaComponent
+                        style={{
+                          height: '100%',
+                          left: '0',
+                          paddingTop: '3rem',
+                          position: 'absolute',
+                          top: '0',
+                        }}
+                      >
+                        <SideBar content={aside} />
+                      </FelaComponent>
+                    </Zen>
+                  )}
+                </aside>
+              )}
+            />
+          </FelaComponent>
+        )}
+      />
+    </LayoutContainer>
+  );
 }
+
+StandardArticle.propTypes = {
+  /**
+   * Article's ID
+   */
+  articleId: PropTypes.string.isRequired,
+  article: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  aside: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  seoData: PropTypes.shape({}).isRequired,
+};
 
 export default StandardArticle;

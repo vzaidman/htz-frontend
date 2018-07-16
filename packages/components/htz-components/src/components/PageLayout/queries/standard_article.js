@@ -1,13 +1,11 @@
 import gql from 'graphql-tag';
 import {
   author,
-  articleHeader,
   changeableElementGroup,
   content,
   dfpBanner,
   elementGroup,
   embed,
-  headlineElement,
   htmlElement,
   image,
   imageGallery,
@@ -41,11 +39,35 @@ export default gql`
               contentName
               properties
             }
-            ... on ArticleHeader {
-              ...ArticleHeader
-            }
             ... on ArticleData {
-              # GuyK, todo: when papi exports full authors, remove query here and get authors only from article header element
+              header {
+                exclusive
+                mobileExclusive
+                mobileSubtitle
+                mobileTitle
+                modDate
+                pubDate
+                reportingFrom
+                subtitle
+                title
+              }
+              headlineElement: mainElement {
+                ... on Embed {
+                  ...Embed
+                }
+                ... on HtmlElement {
+                  ...HtmlElement
+                }
+                ... on Image {
+                  ...Image
+                }
+                ... on ImageGallery {
+                  ...ImageGallery
+                }
+                ... on Video {
+                  ...Video
+                }
+              }
               authors {
                 ... on CreditObject {
                   ...CreditObj
@@ -53,13 +75,6 @@ export default gql`
                 ... on AuthorObject {
                   ...AuthorObj
                 }
-              }
-              # GuyK, todo: papi should export reportingFrom in header element
-              reportingFrom
-              inputTemplate
-              commentsElementId
-              headlineElement {
-                ...HeadlineElement
               }
               body {
                 ... on Content {
@@ -108,6 +123,8 @@ export default gql`
                   ...Video
                 }
               }
+              inputTemplate
+              commentsElementId
             }
           }
         }
@@ -116,13 +133,11 @@ export default gql`
   }
   ${author.authorObj}
   ${author.creditObj}
-  ${articleHeader}
   ${changeableElementGroup}
   ${content}
   ${dfpBanner}
   ${elementGroup}
   ${embed}
-  ${headlineElement}
   ${htmlElement}
   ${image}
   ${imageGallery}

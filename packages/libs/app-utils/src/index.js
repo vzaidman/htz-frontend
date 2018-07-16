@@ -16,7 +16,6 @@ import content from './fragments/content/content';
 import dfpBanner from './fragments/dfpBanner/dfpBanner';
 import elementGroup from './fragments/elementGroup/elementGroup';
 import embed from './fragments/embed/embed';
-import headlineElement from './fragments/headlineElement/headlineElement';
 import htmlElement from './fragments/htmlElement/htmlElement';
 import image from './fragments/image/image';
 import imageGallery from './fragments/imageGallery/imageGallery';
@@ -52,7 +51,6 @@ export {
   dfpBanner,
   elementGroup,
   embed,
-  headlineElement,
   htmlElement,
   image,
   imageGallery,

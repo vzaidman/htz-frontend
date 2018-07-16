@@ -3,19 +3,16 @@ import { GraphQLList, GraphQLUnionType, } from 'graphql';
 
 import content from './content_type';
 import articleData from './article_data_type';
-import articleHeader from './article_header_type';
 
 const Article = new GraphQLList(
   new GraphQLUnionType({
     name: 'Article',
-    types: [ content, articleData, articleHeader, ],
+    types: [ content, articleData, ],
     resolveType: value =>
       (value.inputTemplate === 'com.htz.StandardArticle' ||
       value.inputTemplate === 'com.tm.StandardArticle'
         ? articleData
-        : value.inputTemplate === 'com.htz.ArticleHeaderElement'
-          ? articleHeader
-          : content),
+        : content),
   })
 );
 

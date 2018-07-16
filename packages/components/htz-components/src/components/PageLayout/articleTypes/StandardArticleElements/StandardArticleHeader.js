@@ -26,7 +26,7 @@ Header.propTypes = {
   publishDate: PropTypes.instanceOf(Date).isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  elementObj: PropTypes.shape({}).isRequired,
+  headlineElement: PropTypes.shape({}).isRequired,
   reportingFrom: PropTypes.string.isRequired,
 };
 
@@ -39,7 +39,7 @@ function Header({
   publishDate,
   subtitle,
   title,
-  elementObj,
+  headlineElement,
   reportingFrom,
 }) {
   return (
@@ -143,14 +143,14 @@ function Header({
             }}
             size={2.5}
           />
-          {elementObj ? (
+          {headlineElement &&
             <HeadlineElement
-              elementObj={elementObj}
+              elementObj={headlineElement}
               miscStyles={{
                 marginTop: '2rem',
               }}
             />
-          ) : null}
+          }
         </header>
       )}
     />
