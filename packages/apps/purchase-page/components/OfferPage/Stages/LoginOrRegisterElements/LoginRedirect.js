@@ -29,29 +29,27 @@ class LoginRedirect extends React.Component {
     let redirect;
     switch (this.state.pageNumber) {
       case 2.4:
-        redirect = <Redirect destination="/promotions-page/stage1" replace />;
+        redirect = <Redirect destination="stage1" replace />;
         break;
       case 3.2:
         redirect =
           chosenSubscription === 'TM' || chosenSubscription === 'HTZ' ? (
-            <Redirect destination="/promotions-page/stage2" replace />
+            <Redirect destination="stage2" replace />
           ) : (
-            <Redirect destination="/promotions-page/stage4" replace />
+            <Redirect destination="stage4" replace />
           );
         break;
       case 3.4:
       case 3.6:
-        redirect = <Redirect destination="/promotions-page/stage2" replace />;
+        redirect = <Redirect destination="stage2" replace />;
         break;
 
       default:
         if (this.state.pageNumber >= 7) {
-          redirect = (
-            <Redirect destination="/promotions-page/thankYou" replace />
-          );
+          redirect = <Redirect destination="thankYou" replace />;
         }
         else {
-          redirect = <Redirect destination="/promotions-page/stage4" replace />;
+          redirect = <Redirect destination="stage4" replace />;
         }
         break;
     }

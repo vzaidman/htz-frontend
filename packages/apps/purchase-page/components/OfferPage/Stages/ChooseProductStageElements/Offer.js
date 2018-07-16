@@ -4,7 +4,7 @@ import { ApolloConsumer, } from 'react-apollo';
 import ReactGA from 'react-ga';
 import { border, } from '@haaretz/htz-css-tools';
 import { Button, EventTracker, H, } from '@haaretz/htz-components';
-import { friendlyRoutes, } from '../../../../routes/routes';
+import pathGenerator from '../utils/pathGenerator';
 
 import TermsButton from './TermsButton';
 
@@ -174,18 +174,10 @@ const DesktopOffer = ({
   fourDigits,
   router,
 }) => {
-  // eslint-disable-next-line prefer-const
-  let [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
-  pathWithoutQuery = pathWithoutQuery.substr(
-    0,
-    pathWithoutQuery.lastIndexOf('/')
+  const { pathName, asPath, } = pathGenerator(
+    isLoggedIn ? 'stage4' : 'stage3',
+    router
   );
-  const computedAsPath = `${pathWithoutQuery}/${
-    isLoggedIn ? friendlyRoutes.stage4 : friendlyRoutes.stage3
-  }${queryPartFromPath ? `?${queryPartFromPath}` : ''}`;
-  const pathName = isLoggedIn
-    ? '/promotions-page/stage4'
-    : '/promotions-page/stage3';
 
   const continueToNextStage = ({ cache, idx, routerPush = false, }) => {
     cache.writeData({
@@ -200,12 +192,7 @@ const DesktopOffer = ({
       },
     });
     if (routerPush) {
-      if (router.asPath) {
-        router.push(pathName, computedAsPath);
-      }
-      else {
-        router.push(pathName, computedAsPath);
-      }
+      router.push(pathName, asPath);
     }
   };
   return (

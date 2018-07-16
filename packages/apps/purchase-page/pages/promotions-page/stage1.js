@@ -46,9 +46,9 @@ class Stage1 extends React.Component {
               client.writeData({ data: { referrer: referrer || null, }, });
               const { slots, pageNumber, } = data.purchasePage;
               return Math.floor(pageNumber) === 7 ? (
-                <Redirect destination="/promotions-page/thankYou" replace />
+                <Redirect destination="thankYou" replace />
               ) : Math.floor(pageNumber) === 3 ? (
-                <Redirect destination="/promotions-page/stage2" replace />
+                <Redirect destination="stage2" replace />
               ) : (
                 <Query query={GET_PROMOTIONS_STATE}>
                   {({ data: clientData, }) => {
@@ -59,7 +59,9 @@ class Stage1 extends React.Component {
                     client.writeData({ data: { startFromStage2: false, }, });
                     // check which slots are on sale
                     const sale = slots.reduce((filtered, slot) => {
-                      if (slot.products[0].campaignData) { filtered.push(slot.subscriptionName); }
+                      if (slot.products[0].campaignData) {
+                        filtered.push(slot.subscriptionName);
+                      }
                       return filtered;
                     }, []);
                     return (

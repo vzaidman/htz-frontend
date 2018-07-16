@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Router, { withRouter, } from 'next/router';
-import { friendlyRoutes, } from '../../routes/routes';
+import pathGenerator from '../OfferPage/Stages/utils/pathGenerator';
 
 class Redirect extends React.Component {
   static propTypes = {
     destination: PropTypes.string.isRequired,
+    /** query param string without ? or & which will be added programmatically by pathGenerator */
+    paramString: PropTypes.string.isRequired,
     replace: PropTypes.bool,
     router: PropTypes.shape().isRequired,
   };
@@ -15,23 +17,13 @@ class Redirect extends React.Component {
   };
 
   componentDidMount() {
-    const { destination, replace, router, } = this.props;
-    let [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
-    // let [ pathWithoutQuery, queryPartFromPath, ] = destination.split(/\?(.+)/);
-    let destPath = `${destination.substr(destination.lastIndexOf('/') + 1)}`; // thankYou, stage3 etc.
-    if (friendlyRoutes[destPath]) {
-      // attempt to prettify destPath with friendlyPath
-      destPath = friendlyRoutes[destPath];
-    }
-    pathWithoutQuery = pathWithoutQuery.substr(
-      0,
-      pathWithoutQuery.lastIndexOf('/')
-    ); // ${appPrefix}
-    queryPartFromPath = queryPartFromPath ? `?${queryPartFromPath}` : '';
-    const asPath = `${pathWithoutQuery}/${destPath}${queryPartFromPath}`;
-    replace
-      ? Router.replace(destination, asPath)
-      : Router.push(destination, asPath);
+    const { destination, replace, paramString, router, } = this.props;
+    const { pathName, asPath, } = pathGenerator(
+      destination,
+      router,
+      paramString
+    );
+    replace ? Router.replace(pathName, asPath) : Router.push(pathName, asPath);
   }
 
   render() {

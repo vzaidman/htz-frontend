@@ -164,9 +164,8 @@ class Wrapper extends Component {
             });
             return (
               <Redirect
-                destination={`/promotions-page/thankYou?msg=thank_user&product=${
-                  paymentData.productID
-                }`}
+                destination="thankYou"
+                paramString={`msg=thank_user&product=${paymentData.productID}`}
                 replace
               />
             );

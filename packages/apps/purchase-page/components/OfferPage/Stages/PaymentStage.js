@@ -19,7 +19,7 @@ import SecurePaymentLine from './Elements/SecurePaymentLine';
 import PaymentButtonsDivider from './StagePaymentElements/PaymentButtonsDivider';
 import PaymentSummary from './StagePaymentElements/PaymentSummary';
 import Redirect from '../../Redirect/Redirect';
-import { friendlyRoutes, } from '../../../routes/routes';
+import pathGenerator from './utils/pathGenerator';
 
 const propTypes = {
   /**
@@ -142,7 +142,7 @@ class PaymentStage extends Component {
             });
             return (
               <Redirect
-                destination={`/promotions-page/${hasDebt ? 'debt' : 'stage5'}`}
+                destination={hasDebt ? 'debt' : 'stage5'}
                 replace
                 router={router}
               />
@@ -201,10 +201,12 @@ class PaymentStage extends Component {
                 });
 
                 if (hasDebt) {
-                  Router.push('/promotions-page/debt', friendlyRoutes.debt);
+                  const { pathName, asPath, } = pathGenerator('debt', router);
+                  Router.push(pathName, asPath);
                 }
  else {
-                  Router.push('/promotions-page/stage5', friendlyRoutes.stage5);
+                  const { pathName, asPath, } = pathGenerator('stage5', router);
+                  Router.push(pathName, asPath);
                 }
               }}
               validate={({ paymentMethodIndex, }) => {
@@ -216,9 +218,7 @@ class PaymentStage extends Component {
                 <FelaComponent
                   style={formContStyle}
                   render={({
-                    theme: {
-                      stage4: { headerPaymentMethod, form, },
-                    },
+                    theme: { stage4: { headerPaymentMethod, form, }, },
                     className,
                   }) => (
                     <div className={className}>
@@ -341,9 +341,7 @@ class PaymentStage extends Component {
                           isFourDigits={!!creditCardsDetails}
                           render={({
                             className,
-                            theme: {
-                              payment: { payVia, creditCard, },
-                            },
+                            theme: { payment: { payVia, creditCard, }, },
                           }) => {
                             const buttonProps = {
                               variant: 'primary',

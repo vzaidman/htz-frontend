@@ -10,7 +10,7 @@ import MobileView from './ChooseSlotsStageElements/MobileView';
 import SubHeader from './ChooseSlotsStageElements/SubHeader';
 import UserMessage from './Elements/UserMessage';
 import StageCounter from './Elements/StageCounter';
-import { friendlyRoutes, } from '../../../routes/routes';
+import pathGenerator from './utils/pathGenerator';
 
 const propTypes = {
   host: PropTypes.oneOf([ 'HTZ', 'TM', ]).isRequired,
@@ -96,14 +96,8 @@ class ChooseSlotStage extends React.Component {
   }
   render() {
     const { host, tableData, sale, subStage, userMessage, router, } = this.props;
-    // eslint-disable-next-line prefer-const
-    let [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
-    pathWithoutQuery = pathWithoutQuery.substr(
-      0,
-      pathWithoutQuery.lastIndexOf('/')
-    );
-    const asPath = `${pathWithoutQuery}/${friendlyRoutes.stage2}`;
-    const pathName = '/promotions-page/stage2';
+
+    const { pathName, asPath, } = pathGenerator('stage2', router);
 
     const continueToNextStage = ({ cache, idx, routerPush = false, }) => {
       cache.writeData({
@@ -117,16 +111,10 @@ class ChooseSlotStage extends React.Component {
         },
       });
       if (routerPush) {
-        router.push(
-          pathName,
-          queryPartFromPath ? `${asPath}?${queryPartFromPath}` : asPath
-        );
+        router.push(pathName, asPath);
       }
       else {
-        router.replace(
-          pathName,
-          queryPartFromPath ? `${asPath}?${queryPartFromPath}` : asPath
-        );
+        router.replace(pathName, asPath);
       }
     };
 

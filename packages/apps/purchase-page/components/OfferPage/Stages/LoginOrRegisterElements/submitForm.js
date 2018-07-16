@@ -1,4 +1,4 @@
-import { friendlyRoutes, } from '../../../../routes/routes';
+import pathGenerator from '../utils/pathGenerator';
 
 const submitForm = ({
   gaAction,
@@ -91,7 +91,8 @@ const submitForm = ({
           action: 'password-continue',
           label: 'success',
         });
-        Router.replace('/promotions-page/stage4', friendlyRoutes.stage4);
+        const { pathName, asPath, } = pathGenerator('stage4', router);
+        Router.replace(pathName, asPath);
       })
       .catch(error => {
         setState({
