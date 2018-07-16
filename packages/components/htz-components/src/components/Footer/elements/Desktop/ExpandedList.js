@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import HtzLink from '../../../HtzLink/HtzLink';
 import Grid from '../../../Grid/Grid';
@@ -10,10 +10,7 @@ import { ColumnTypes, PairTypes, } from './DesktopElementPropTypes';
 import Section from '../../../AutoLevels/Section';
 
 const extendedListContainerStyle = ({
-  theme: {
-    color,
-    footerBorderStyle: { borderWidth, lines, borderStyle, },
-  },
+  theme: { color, footerBorderStyle: { borderWidth, lines, borderStyle, }, },
   showMe,
 }) => ({
   display: showMe ? 'flex' : 'none',
@@ -34,14 +31,15 @@ const listUlStyle = ({ theme, }) => ({
 const StyledSection = createComponent(listUlStyle, Section);
 
 const titleLiStyle = ({ theme, }) => ({
+  marginBottom: '1rem',
   fontWeight: 'bold',
 });
 
 const StyledUlTitle = createComponent(titleLiStyle, H);
 
 const listLinkStyle = ({ theme, isLast, isBold = false, }) => ({
+  marginBottom: '1rem',
   ...(isBold ? { fontWeight: 'bold', } : {}),
-  extend: [ theme.type(-1), ],
 });
 
 const StyledListLink = createComponent(listLinkStyle, HtzLink, [
@@ -69,6 +67,7 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
             { from: 'l', until: 'xl', value: 4 / 5, },
             { from: 'xl', value: 5 / 6, },
           ]}
+          miscStyles={{ type: -1, }}
         >
           <Grid>
             {columnsArr.map((lists, colIdx) => (
@@ -87,12 +86,16 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
                     <StyledUlTitle>{innerList.contentName}</StyledUlTitle>
                     <ul>
                       {innerList.rows.map((link, linkIdx) => (
-                        <li key={`${link.contentName}${link.value}`}>
+                        <FelaComponent
+                          style={{ marginBottom: '1rem', }}
+                          render="li"
+                          key={`${link.contentName}${link.value}`}
+                        >
                           <StyledListLink
                             content={link.contentName}
                             href={link.value}
                           />
-                        </li>
+                        </FelaComponent>
                       ))}
                     </ul>
                   </StyledSection>
@@ -111,13 +114,17 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
           {toolbox && (
             <ul>
               {toolbox.map(link => (
-                <li key={`${link.text}${link.value}`}>
+                <FelaComponent
+                  style={{ marginBottom: '1rem', }}
+                  render="li"
+                  key={`${link.text}${link.value}`}
+                >
                   <StyledListLink
                     content={link.contentName}
                     href={link.value}
                     isBold
                   />
-                </li>
+                </FelaComponent>
               ))}
             </ul>
           )}
