@@ -184,6 +184,8 @@ const Facebook = ({
   );
 };
 
+const FacebookRound = props => <Facebook {...props} round />;
+
 class FacebookLogo extends React.Component {
   state = {
     facebookCount: null,
@@ -518,6 +520,7 @@ const getAction = iconName => {
     [ 'comments', Comments, ],
     [ 'facebook', Facebook, ],
     [ 'facebooklogo', FacebookLogo, ],
+    [ 'facebookround', FacebookRound, ],
     [ 'googleplus', GooglePlus, ],
     [ 'mail', Mail, ],
     [ 'mailalert', MailAlert, ],

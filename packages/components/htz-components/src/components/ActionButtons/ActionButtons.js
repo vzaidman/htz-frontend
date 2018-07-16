@@ -80,6 +80,7 @@ const propTypes = {
    */
   miscStyles: stylesPropType, // eslint-disable-line react/no-unused-prop-types
   isFlat: PropTypes.bool,
+  isRound: PropTypes.bool,
   /**
    * The size of the buttons Icons (according to the [`Icon`](./#icon) component)
    */
@@ -97,6 +98,7 @@ const defaultProps = {
   globalButtonsStyles: null,
   globalIconsStyles: null,
   isFlat: false,
+  isRound: false,
   miscStyles: null,
   vertical: false,
   size: 2,
@@ -124,6 +126,7 @@ const ActionButtons = ({
   globalButtonsStyles,
   globalIconsStyles,
   isFlat,
+  isRound,
   miscStyles,
   size,
   vertical,
@@ -137,6 +140,7 @@ const ActionButtons = ({
         fontSize={-2}
         boxModel={boxModel}
         isFlat={isFlat}
+        isRound={isRound}
         buttonStyles={{
           ...(globalButtonsStyles && globalButtonsStyles),
           ...(buttonStyles && buttonStyles),
