@@ -1,9 +1,9 @@
 import React from 'react';
 import { createComponent, withTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 import { borderBottom, } from '@haaretz/htz-css-tools';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 import CommentSent from './CommentSent';
 import Form from '../Form/Form'; // eslint-disable-line import/no-named-as-default
@@ -231,7 +231,7 @@ class CommentForm extends React.Component {
               render={({ getInputProps, handleSubmit, }) => (
                 <Query query={PlatformQuery}>
                   {({ loading, error, data, client, }) => {
-                    if (loading) return <p>loading...</p>;
+                    if (loading) return null;
                     if (error) console.log(error);
                     const { platform, } = data;
                     return (

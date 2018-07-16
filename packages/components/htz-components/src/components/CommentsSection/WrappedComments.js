@@ -114,11 +114,11 @@ class CommentsWithApollo extends React.Component {
       >
         {({ data, loading, error, fetchMore, }) => {
           if (loading) {
-            return <div>loading ...</div>;
+            return null;
           }
           if (error) {
             logger.log(error);
-            return <h1>ERROR</h1>;
+            return null;
           }
           const { commentsElement, } = data;
           return (
