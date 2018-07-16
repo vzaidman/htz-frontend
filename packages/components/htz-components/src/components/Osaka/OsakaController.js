@@ -103,8 +103,8 @@ const OsakaWithApollo = props => (
     {({ loading, error, data, }) => {
       if (loading) return null;
       if (error) return null;
-      const host = data.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-      const { canonicalUrl, section, } = data;
+      const { canonicalUrl, section, hostname, } = data;
+      const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       return (
         <OsakaWithOutbrain {...{ ...props, canonicalUrl, host, section, }} />
       );

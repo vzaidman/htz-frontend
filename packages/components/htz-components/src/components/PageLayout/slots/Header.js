@@ -1,11 +1,8 @@
 import React, { Fragment, } from 'react';
-import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 
-// import Masthead from '../../Masthead/Masthead';
+import Osaka from '../../Osaka/OsakaController';
 import getComponent from '../../../utils/componentFromInputTemplate';
-
-const Osaka = dynamic(import('../../Osaka/OsakaController'), { ssr: false, });
 
 const propTypes = {
   /**
