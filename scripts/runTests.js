@@ -58,7 +58,14 @@ Object.keys(packages).forEach(packageDir =>
 function runTestsLocally(packageDir, files) {
   const jestResult = spawn.sync(
     'yarn',
-    [ 'run', 'test', '--coverage', '--findRelatedTests', ...files, ],
+    [
+      'run',
+      'test',
+      '--coverage',
+      '--findRelatedTests',
+      '--passWithNoTests',
+      ...files,
+    ],
     {
       cwd: packageDir,
       stdio: 'inherit',

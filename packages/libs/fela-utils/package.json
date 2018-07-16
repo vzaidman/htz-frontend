@@ -1,7 +1,8 @@
 {
   "name": "@haaretz/fela-utils",
   "version": "0.1.0",
-  "description": "General, non-ui helpers for building Fela apps and components in the Haaretz stack",
+  "description":
+    "General, non-ui helpers for building Fela apps and components in the Haaretz stack",
   "keywords": [],
   "author": "TxHawks",
   "license": "UNLICENSED",
@@ -15,7 +16,8 @@
   "scripts": {
     "build": "htz-scripts build",
     "build:all": "yarn run build && yarn run build:docs",
-    "build:docs": "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
+    "build:docs":
+      "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
     "clean": "htz-scripts clean",
     "flow": "htz-scripts flow",
     "format": "htz-scripts format",
@@ -49,22 +51,22 @@
     "inline-style-prefixer": "^4.0.0",
     "lodash": "^4.17.5",
     "prop-types": "^15.6.1",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.4.1"
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
-    "babel-loader": "^8.0.0-beta.0",
+    "babel-loader": "^8.0.0-beta.4",
     "documentation": "^5.3.3",
     "fela": "^6.1.7",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-fela": "^7.2.0",
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "fela": "^6.1.7",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-fela": "^7.2.0"
   }
 }

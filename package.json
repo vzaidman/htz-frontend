@@ -154,7 +154,7 @@
     },
     "babel-loader": {
       "^8.0.0-beta.4": {
-        "packages/{components,apps}/*": ["devDependencies"],
+        "packages/{components/*,apps/*,libs/fela-utils}": ["devDependencies"],
         "packages/libs/htz-react-base": ["dependencies"]
       }
     },
@@ -254,7 +254,7 @@
     },
     "react": {
       "^16.4.1": {
-        "packages/{libs/htz-react-base,libs/app-utils,components/*}": [
+        "packages/{libs/htz-react-base,libs/app-utils,libs/fela-utils,components/*}": [
           "devDependencies",
           "peerDependencies"
         ],
@@ -272,7 +272,7 @@
     },
     "react-dom": {
       "^16.4.1": {
-        "packages/{libs/htz-react-base,components/*}": [
+        "packages/{libs/htz-react-base,libs/fela-utils,components/*}": [
           "devDependencies",
           "peerDependencies"
         ],
@@ -297,7 +297,7 @@
     },
     "react-test-renderer": {
       "^16.4.1": {
-        "packages/{libs/htz-react-base,components/htz-components}": [
+        "packages/{libs/htz-react-base,libs/fela-utils,components/htz-components}": [
           "dependencies"
         ]
       }
