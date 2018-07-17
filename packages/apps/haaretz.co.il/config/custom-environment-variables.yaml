@@ -12,5 +12,5 @@ graphQLexposedPort:
   __format: 'json'
 
 enableHttpLogging:
-__name: 'ENABLE_HTTP_LOGGING'
-__format: 'json'
+  __name: 'ENABLE_HTTP_LOGGING'
+  __format: 'json'
