@@ -7,7 +7,7 @@ const path = require('path');
 const spawn = require('cross-spawn');
 
 const testArgs = [ require.resolve('./test'), '--showConfig', ];
-const result = spawn('node', testArgs, { encoding: 'utf8', });
+const result = spawn.sync('node', testArgs, { encoding: 'utf8', });
 if (result.error) {
   throw result.error;
 }
@@ -18,7 +18,10 @@ if (result.signal) {
 if (result.status) {
   process.exitCode = result.status;
 }
-const jestConfig = JSON.parse(result.stdout).config;
+
+const jestConfig = JSON.parse(result.stdout).configs[0];
+
+console.log(`\nCleaning ${process.cwd()}`);
 
 if (process.argv.length < 3) {
   if (jestConfig.cacheDirectory) {

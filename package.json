@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn run clean && yarn run update",
-    "clean": "lerna clean --yes && rimraf \"packages/*/*/{.jest,.next,dist}\"",
+    "clean": "lerna exec -- yarn run clean",
     "commitmsg": "commitlint -e",
     "create-package": "node scripts/create-package.js",
     "docs": "doctoc --title \"**Table of Contents**\" .",
