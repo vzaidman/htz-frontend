@@ -1,8 +1,8 @@
 /* global window */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, } from 'react-fela';
 
+import Debug from '../Debug/Debug';
 import getComponent from '../../utils/componentFromInputTemplate';
 
 const content = {
@@ -54,55 +54,32 @@ const propTypes = {
   totalDisplay: PropTypes.number.isRequired,
 };
 
-class ChangeableElementGroup extends React.Component {
-  state = {
-    window: false,
+function ChangeableElementGroup({ scrollY, contentLists, totalDisplay, }) {
+  const getElementIndex = posY => {
+    let prev = 0;
+    for (const [ index, item, ] of contentLists.entries()) {
+      if (posY > item.displayDuration + prev) {
+        prev += item.displayDuration;
+      }
+      else return index;
+    }
+    return null;
   };
 
-  componentDidMount() {
-    // eslint-disable-next-line react/no-did-mount-set-state
-    this.setState({ window: true, });
-  }
-
-  render() {
-    const { scrollY, contentLists, totalDisplay, } = this.props;
-    const getElementIndex = posY => {
-      let prev = 0;
-      for (const [ index, item, ] of contentLists.entries()) {
-        if (posY > item.displayDuration + prev) {
-          prev += item.displayDuration;
-        }
-        else return index;
-      }
-      return null;
-    };
-
-    const elementIndex = getElementIndex(scrollY % totalDisplay);
-    const element = contentLists[elementIndex].content;
-    const Element = getComponent(element.inputTemplate);
-    const { properties, ...elementWithoutProperties } = element;
-    return (
-      <Fragment>
-        {this.state.window && window.location.search.includes('debug') ? (
-          <FelaComponent
-            style={theme => ({
-              fontSize: '20px',
-              color: theme.color('input', 'primaryErrorTextLabel'),
-              textAlign: 'center',
-            })}
-            render="p"
-          >
-            {`Scroll-Y at: ${scrollY}`}
-          </FelaComponent>
-        ) : null}
-        <Element
-          key={element.contentId}
-          {...elementWithoutProperties}
-          {...properties}
-        />
-      </Fragment>
-    );
-  }
+  const elementIndex = getElementIndex(scrollY % totalDisplay);
+  const element = contentLists[elementIndex].content;
+  const Element = getComponent(element.inputTemplate);
+  const { properties, ...elementWithoutProperties } = element;
+  return (
+    <Fragment>
+      <Debug>{`Scroll-Y at: ${scrollY}`}</Debug>
+      <Element
+        key={element.contentId}
+        {...elementWithoutProperties}
+        {...properties}
+      />
+    </Fragment>
+  );
 }
 
 ChangeableElementGroup.propTypes = propTypes;

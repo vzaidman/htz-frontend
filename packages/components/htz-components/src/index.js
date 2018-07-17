@@ -14,6 +14,7 @@ import Caption from './components/Caption/Caption';
 import ChangeableElementGroup from './components/ChangeableElementGroup/ChangeableElementGroup';
 import CheckBox from './components/CheckBox/CheckBox';
 import Comments from './components/CommentsSection/WrappedComments';
+import Debug from './components/Debug/Debug';
 import Embed from './components/Embed/Embed';
 import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
@@ -153,6 +154,7 @@ export {
   ChangeableElementGroup,
   CheckBox,
   Comments,
+  Debug,
   DeviceTypeInjector,
   Embed,
   Footer,

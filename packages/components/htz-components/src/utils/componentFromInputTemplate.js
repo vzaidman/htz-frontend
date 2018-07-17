@@ -1,11 +1,13 @@
+/* global window */
 import React from 'react';
-import { FelaComponent, } from 'react-fela';
-import { border, } from '@haaretz/htz-css-tools';
+
 import ArticleBody from '../components/ArticleBody/ArticleBody';
 import AdSlot from '../components/Ads/AdSlot';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
+import ChangeableElementGroup from '../components/ChangeableElementGroup/ChangeableElementGroup';
 import WrappedComments from '../components/CommentsSection/WrappedComments';
 import ClickTrackerWrapper from '../components/ClickTracker/ClickTrackerWrapper';
+import Debug from '../components/Debug/Debug';
 import ElementGroup from '../components/ElementGroup/ElementGroup';
 import Embed from '../components/Embed/Embed';
 import Footer from '../components/Footer/Footer';
@@ -31,18 +33,15 @@ const isProduction = process.env.NODE_ENV === 'production';
 const inputTemplateToComponent = new Map([
   /* HeaderSlots components */
   [ 'com.htz.EditableNavigationElement', Masthead, ],
-  // [ 'com.tm.PageTitle', () => <p>PageTitle</p>, ],
   [ 'com.tm.PageTitle', Breadcrumbs, ],
 
   /* MainSlot components */
   [ 'com.htz.StandardArticle', ArticleBody, ],
   [ 'com.polobase.OutbrainElement', Outbrain, ],
-  [ 'com.tm.CommentsElement', () => <p>CommentsElement</p>, ],
   [ 'com.tm.ArticleCommentsElement', WrappedComments, ],
 
   /* FooterSlot components */
   [ 'com.tm.FooterElement', Footer, ],
-  [ 'com.tm.DisclaimerElement', () => <p>DisclaimerElement</p>, ],
 
   /* ArticleBody components */
   [ 'embedElement', Embed, ],
@@ -58,10 +57,8 @@ const inputTemplateToComponent = new Map([
   [ 'tagsElement', Tags, ],
 
   /* Misc components */
-  [ 'com.tm.element.group', ElementGroup, ],
   [ 'com.tm.Image', Image, ],
   [ 'com.tm.Video', Video, ],
-  [ 'com.tm.ImageGalleryElement', () => <p>ImageGallery</p>, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
   [ 'com.tm.newsLetterQuickRegistrationRespAuto', Newsletter, ],
   [
@@ -74,10 +71,8 @@ const inputTemplateToComponent = new Map([
     },
   ],
   [ 'com.tm.element.List', List, ],
-  [ 'com.tm.TabViewElement', () => <p>TabViewElement</p>, ],
-  [ 'com.polobase.JSONListsWrapper', () => <p>JSONListsWrapper</p>, ],
-  [ 'com.mouse.ChronicalBoardElement', () => <p>ChronicalBoardElement</p>, ],
-  [ 'com.tm.ElementGroup', () => <p>ElementGroup</p>, ],
+  [ 'com.tm.element.group', ChangeableElementGroup, ],
+  [ 'com.tm.ElementGroup', ElementGroup, ],
   [ 'com.polobase.DfpBannerElement', AdSlot, ],
   [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapper, ],
   [ null, null, ],
@@ -91,20 +86,9 @@ const DefaultComponent = ({ inputTemplate, contentId, contentName, }) => {
     The id of the element you tried to render on this page is: ${contentId}.
   `);
   return (
-    <FelaComponent
-      style={theme => ({
-        color: theme.color('input', 'primaryErrorTextLabel'),
-        ...border(
-          '2px',
-          1,
-          'solid',
-          theme.color('input', 'primaryErrorBorder')
-        ),
-        marginBottom: '2rem',
-      })}
-    >
+    <Debug>
       <p>{inputTemplate} is currently not supported</p>
-    </FelaComponent>
+    </Debug>
   );
 };
 

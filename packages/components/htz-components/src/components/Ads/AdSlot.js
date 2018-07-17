@@ -2,6 +2,7 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { instance, } from './DfpInjector';
+import Debug from '../Debug/Debug';
 import Zen from '../Zen/Zen';
 
 const propTypes = {
@@ -21,18 +22,7 @@ class AdSlot extends Component {
 
   componentDidMount() {
     if (!this.state.shouldRender) {
-      const debugJsx = window.location.search.includes('debug') ? (
-        <h1
-          style={{
-            fontSize: '20px',
-            color: 'red',
-            textAlign: 'center',
-            margin: '12px',
-          }}
-        >
-          AdUnit: {this.props.id}
-        </h1>
-      ) : null;
+      const debugJsx = <Debug>AdUnit: {this.props.id}</Debug>;
       // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({ shouldRender: true, debugJsx, });
     }
