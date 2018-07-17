@@ -85,8 +85,8 @@ const inputTemplateToComponent = new Map([
 
 // eslint-disable-next-line react/prop-types
 const DefaultComponent = ({ inputTemplate, contentId, contentName, }) => {
-  logger.info(`
-    Element of type ${inputTemplate} is not supported and
+  logger.trace(`
+    Element with inputTemplate: '${inputTemplate}' is not supported and
     we don't have any component fot it yet.
     The id of the element you tried to render on this page is: ${contentId}.
   `);
