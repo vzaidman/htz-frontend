@@ -2,6 +2,7 @@ import gql from 'graphql-tag';
 import {
   author,
   articleHeader,
+  changeableElementGroup,
   content,
   dfpBanner,
   elementGroup,
@@ -28,8 +29,8 @@ export default gql`
       slots {
         ... on StandardArticleSlots {
           aside {
-            ... on ElementGroup {
-              ...ElementGroup
+            ... on ChangeableElementGroup {
+              ...ChangeableElementGroup
             }
           }
           article {
@@ -62,6 +63,9 @@ export default gql`
                 }
                 ... on DfpBanner {
                   ...DfpBanner
+                }
+                ... on ElementGroup {
+                  ...ElementGroup
                 }
                 ... on Embed {
                   ...Embed
@@ -109,6 +113,7 @@ export default gql`
   ${author.authorObj}
   ${author.creditObj}
   ${articleHeader}
+  ${changeableElementGroup}
   ${content}
   ${dfpBanner}
   ${elementGroup}

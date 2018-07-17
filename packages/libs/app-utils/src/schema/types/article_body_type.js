@@ -3,6 +3,7 @@ import { GraphQLList, GraphQLUnionType, } from 'graphql';
 
 import content from './content_type';
 import dfpBanner from './dfp_banner_type';
+import elementGroup from './element_group_type';
 import embed from './embed_type';
 import htmlElement from './html_element_type';
 import image from './image_type';
@@ -18,6 +19,7 @@ import video from './video_type';
 
 const types = new Map([
   [ 'com.polobase.DfpBannerElement', dfpBanner, ],
+  [ 'com.tm.ElementGroup', elementGroup, ],
   [ 'embedElement', embed, ],
   [ 'com.tm.HtmlElement', htmlElement, ],
   [ 'com.tm.Image', image, ],
@@ -39,6 +41,7 @@ const ArticleBody = new GraphQLList(
     types: [
       content,
       dfpBanner,
+      elementGroup,
       embed,
       htmlElement,
       image,

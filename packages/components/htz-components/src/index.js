@@ -11,6 +11,7 @@ import ArticleBody from './components/ArticleBody/ArticleBody';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import Caption from './components/Caption/Caption';
+import ChangeableElementGroup from './components/ChangeableElementGroup/ChangeableElementGroup';
 import CheckBox from './components/CheckBox/CheckBox';
 import Comments from './components/CommentsSection/WrappedComments';
 import Embed from './components/Embed/Embed';
@@ -149,6 +150,7 @@ export {
   Button,
   ButtonGroup,
   Caption,
+  ChangeableElementGroup,
   CheckBox,
   Comments,
   DeviceTypeInjector,

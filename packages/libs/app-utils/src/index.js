@@ -9,6 +9,7 @@ import createLogger from './utils/createLogger';
 import articleHeader from './fragments/articleHeader/articleHeader';
 import author from './fragments/author/author';
 import breadcrumbs from './fragments/breadcrumbs/breadcrumbs';
+import changeableElementGroup from './fragments/changeableElementGroup/changeableElementGroup';
 import clickTrackerBanner from './fragments/clickTrackerBanner/clickTrackerBanner';
 import clickTrackerBannersWrapper from './fragments/clickTrackerBannersWrapper/clickTrackerBannersWrapper';
 import content from './fragments/content/content';
@@ -43,6 +44,7 @@ export {
   articleHeader,
   author,
   breadcrumbs,
+  changeableElementGroup,
   clickTrackerBanner,
   clickTrackerBannersWrapper,
   content,
