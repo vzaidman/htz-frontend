@@ -4,12 +4,11 @@ import { Query, } from 'react-apollo';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { htzTheme, } from '@haaretz/htz-theme';
 import { createLogger, } from '@haaretz/app-utils';
-
+import dynamic from 'next/dynamic';
 import {
   AriaLive,
   ArticlePageLayout,
   DeviceTypeInjector,
-  DfpInjector,
   GaDimensions,
   GoogleAnalytics,
   ScrollListener,
@@ -20,6 +19,10 @@ import styleRenderer from '../components/styleRenderer/styleRenderer';
 import ArticleInitQuery from './queries/article_layout';
 
 const logger = createLogger();
+const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
+  loading: () => null,
+  ssr: false,
+});
 
 export class ArticlePage extends React.Component {
   static propTypes = {

@@ -5,10 +5,8 @@ import Head from 'next/head';
 import Error from 'next/error';
 import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
-import { propType, } from 'graphql-anywhere';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import htzTheme from '@haaretz/htz-theme';
-import dynamic from 'next/dynamic';
 import {
   UserInjector,
   LoginExample,
@@ -19,14 +17,6 @@ import styleRenderer from '../components/styleRenderer/styleRenderer';
 import TopNav from '../components/TopNav/TopNav';
 // eslint-disable-next-line import/no-named-as-default
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
-
-const ScrollInjector = dynamic(
-  import('../components/ScrollListener/ScrollListener'),
-  { ssr: false, }
-);
-const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
-  ssr: false,
-});
 
 const PageData = gql`
   query PageData($path: String!) {
@@ -87,17 +77,17 @@ export class HomePage extends React.Component {
     /**
      * Information about the GraphQL query from Apollo.
      */
-    data: propType(PageData).isRequired,
-    /**
-     * An object containing route information from Next, such as the `pathname`
-     * and `query` object.
-     */
-    url: PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-      query: PropTypes.shape({
-        path: PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
+    data: PropTypes.shape(PageData).isRequired,
+    // /**
+    //  * An object containing route information from Next, such as the `pathname`
+    //  * and `query` object.
+    //  */
+    // url: PropTypes.shape({
+    //   pathname: PropTypes.string.isRequired,
+    //   query: PropTypes.shape({
+    //     path: PropTypes.string.isRequired,
+    //   }).isRequired,
+    // }).isRequired,
   };
 
   static defaultProps = {};
@@ -126,7 +116,7 @@ export class HomePage extends React.Component {
     );
   }
   render() {
-    const { data, url, } = this.props;
+    const { data, } = this.props;
     if (data.error) {
       // FIXME: This is essentially duplicated in `withData`. Figure out a
       // more reasonable error handling strategy.
@@ -137,11 +127,9 @@ export class HomePage extends React.Component {
     }
     return (
       <Fragment>
-        <ScrollInjector />
         <UserInjector />
         {LoginExample}
         {RegisterExample}
-        <DfpInjector path={url.query.path} />
         <StyleProvider renderer={styleRenderer} theme={htzTheme}>
           <div>
             {this.renderHead()}
@@ -149,9 +137,7 @@ export class HomePage extends React.Component {
             <h1>
               {data.loading
                 ? 'Loading…'
-                : data.page
-                  ? data.page.contentName
-                  : ''}
+                : data.page ? data.page.contentName : ''}
             </h1>
             {data.page ? <Breadcrumbs page={data.page} /> : null}
             {data.page.pageType === 'article' && (
