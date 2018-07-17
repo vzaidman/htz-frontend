@@ -10,8 +10,8 @@ const fonts = {
     applyTo: [ 'body', ],
     subset: [
       [
-        './static/fonts/subset/OpenSansHebrewRegularSubset.woff2',
-        './static/fonts/subset/OpenSansHebrewRegularSubset.woff',
+        '/static/fonts/subset/OpenSansHebrewRegularSubset.woff2',
+        '/static/fonts/subset/OpenSansHebrewRegularSubset.woff',
       ],
       {
         unicodeRange: 'U+05D0-U+05EA',
@@ -20,8 +20,8 @@ const fonts = {
     variations: [
       [
         [
-          './static/fonts/OpenSansHebrewRegular.woff2',
-          './static/fonts/OpenSansHebrewRegular.woff',
+          '/static/fonts/OpenSansHebrewRegular.woff2',
+          '/static/fonts/OpenSansHebrewRegular.woff',
         ],
         {
           fontWeight: 400,
@@ -29,8 +29,8 @@ const fonts = {
       ],
       // [
       //   [
-      //     './static/fonts/OpenSansHebrewLight.woff2',
-      //     './static/fonts/OpenSansHebrewLight.woff',
+      //     '/static/fonts/OpenSansHebrewLight.woff2',
+      //     '/static/fonts/OpenSansHebrewLight.woff',
       //   ],
       //   {
       //     fontWeight: 300,
@@ -38,8 +38,8 @@ const fonts = {
       // ],
       [
         [
-          './static/fonts/OpenSansHebrewBold.woff2',
-          './static/fonts/OpenSansHebrewBold.woff',
+          '/static/fonts/OpenSansHebrewBold.woff2',
+          '/static/fonts/OpenSansHebrewBold.woff',
         ],
         {
           fontWeight: 700,

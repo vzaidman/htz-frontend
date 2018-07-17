@@ -43,7 +43,7 @@ export function buildFontLoadingScript(fonts) {
     // use fallback
     var ref = document.getElementsByTagName( 'script' )[ 0 ];
     var script = document.createElement( 'script' );
-    script.src = './static/critical-foft-preload-fallback-optional.js';
+    script.src = '/static/critical-foft-preload-fallback-optional.js';
     script.async = true;
     ref.parentNode.insertBefore( script, ref );
 

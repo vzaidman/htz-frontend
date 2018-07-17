@@ -1,3 +1,4 @@
 {
-  "logLevel": "LOG_LEVEL"
+  "logLevel": "LOG_LEVEL",
+  "assetPrefix": "ASSET_PREFIX"
 }

@@ -7,23 +7,23 @@ describe('buildFontLoadingScript()', () => {
         applyTo: [ 'body', ],
         subset: [
           [
-            './static/fonts/OpenSansHebrewSubset.woff2',
-            './static/fonts/OpenSansHebrewSubset.woff',
+            '/static/fonts/OpenSansHebrewSubset.woff2',
+            '/static/fonts/OpenSansHebrewSubset.woff',
           ],
           { unicodeRange: 'U+05D0-U+05EA', },
         ],
         variations: [
           [
             [
-              './static/fonts/OpenSansHebrewRegular.woff2',
-              './static/fonts/OpenSansHebrewRegular.woff',
+              '/static/fonts/OpenSansHebrewRegular.woff2',
+              '/static/fonts/OpenSansHebrewRegular.woff',
             ],
             { fontWeight: 400, },
           ],
           [
             [
-              './static/fonts/OpenSansHebrewBold.woff2',
-              './static/fonts/OpenSansHebrewBold.woff',
+              '/static/fonts/OpenSansHebrewBold.woff2',
+              '/static/fonts/OpenSansHebrewBold.woff',
             ],
             { fontWeight: 700, fontStyle: 'italic', },
           ],
@@ -43,23 +43,23 @@ describe('buildFontLoadingScript()', () => {
         applyTo: [ 'body', ],
         subset: [
           [
-            './static/fonts/OpenSansHebrewSubset.woff2',
-            './static/fonts/OpenSansHebrewSubset.woff',
+            '/static/fonts/OpenSansHebrewSubset.woff2',
+            '/static/fonts/OpenSansHebrewSubset.woff',
           ],
           { unicodeRange: 'U+05D0-U+05EA', },
         ],
         variations: [
           [
             [
-              './static/fonts/OpenSansHebrewRegular.woff2',
-              './static/fonts/OpenSansHebrewRegular.woff',
+              '/static/fonts/OpenSansHebrewRegular.woff2',
+              '/static/fonts/OpenSansHebrewRegular.woff',
             ],
             { fontWeight: 400, },
           ],
           [
             [
-              './static/fonts/OpenSansHebrewBold.woff2',
-              './static/fonts/OpenSansHebrewBold.woff',
+              '/static/fonts/OpenSansHebrewBold.woff2',
+              '/static/fonts/OpenSansHebrewBold.woff',
             ],
             { fontWeight: 700, },
           ],
@@ -68,19 +68,16 @@ describe('buildFontLoadingScript()', () => {
       fontNameB: {
         applyTo: [ 'body', ],
         subset: [
-          [ './static/fonts/aaaSubset.woff2', './static/fonts/aaaSubset.woff', ],
+          [ '/static/fonts/aaaSubset.woff2', '/static/fonts/aaaSubset.woff', ],
           { unicodeRange: 'U+05D0-U+05EA', },
         ],
         variations: [
           [
-            [
-              './static/fonts/aaaRegular.woff2',
-              './static/fonts/aaaRegular.woff',
-            ],
+            [ '/static/fonts/aaaRegular.woff2', '/static/fonts/aaaRegular.woff', ],
             { fontWeight: 400, },
           ],
           [
-            [ './static/fonts/aaaBold.woff2', './static/fonts/aaaBold.woff', ],
+            [ '/static/fonts/aaaBold.woff2', '/static/fonts/aaaBold.woff', ],
             { fontWeight: 700, },
           ],
         ],
@@ -89,14 +86,11 @@ describe('buildFontLoadingScript()', () => {
         applyTo: [ 'body', ],
         variations: [
           [
-            [
-              './static/fonts/aaaRegular.woff2',
-              './static/fonts/aaaRegular.woff',
-            ],
+            [ '/static/fonts/aaaRegular.woff2', '/static/fonts/aaaRegular.woff', ],
             { fontWeight: 400, },
           ],
           [
-            [ './static/fonts/aaaBold.woff2', './static/fonts/aaaBold.woff', ],
+            [ '/static/fonts/aaaBold.woff2', '/static/fonts/aaaBold.woff', ],
             { fontWeight: 700, },
           ],
         ],

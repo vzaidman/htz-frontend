@@ -32,4 +32,5 @@ module.exports = {
   hostname: process.env.HOSTNAME,
   port: process.env.PORT || '2004',
   logLevel: 'error',
+  assetPrefix: '',
 };

@@ -16,6 +16,7 @@ import config from 'config';
 // modules that Next.js imports while routing and rendering pages.
 import 'isomorphic-fetch';
 import morgan from 'morgan';
+import morganJson from 'morgan-json';
 import createContext from './createContext';
 import htz from './routes/htz';
 import tm from './routes/tm';
@@ -26,11 +27,24 @@ const logger = createLogger({
   name: 'htz-react-server',
 });
 
+// Morgan json formatted messages
+// const morganFormat = json(':remote-addr - :remote-user [:date[clf]]
+// :method :url HTTP/:http-version :status :res[content-length] :referrer :user-agent');
+const morganFormat = morganJson({
+  short: 'HTTP/:http-version :method :url :status',
+  length: ':res[content-length]',
+  'response-time': ':response-time ms',
+  'remote-addr': ':remote-addr',
+  referrer: ':referrer',
+  'user-agent': ':user-agent',
+});
+
 const DEV = process.env.NODE_ENV === 'development';
 const PORT = parseInt(
   process.env.PORT || (config.has('port') ? config.get('port') : '3000'),
   10
 );
+const assetPrefix = config.has('assetPrefix') ? config.get('assetPrefix') : '';
 const app = next({ dev: DEV, });
 const handler = app.getRequestHandler();
 const selectedRoute = process.argv[2];
@@ -90,7 +104,7 @@ app
   // eslint-disable-next-line consistent-return
   .then(() => {
     const server = express();
-    server.use(morgan('combined'));
+    server.use(morgan(morganFormat)); // HTTP logging
     if (!DEV) {
       server.use(compression()); // Compress responses.
     }
@@ -133,7 +147,8 @@ app
     // Fallback to tomcat via proxy
     server.all('*', tomcatProxy);
     // For Zones
-    app.setAssetPrefix('');
+    logger.warn(`assetPrefix set to ${assetPrefix}`);
+    app.setAssetPrefix(assetPrefix);
 
     server.listen(PORT, err => {
       if (err) throw err;
