@@ -11,6 +11,7 @@ switch (connectionPreset) {
       remoteFQDN: baseConfigOverride.remoteFQDN,
       logLevel: baseConfigOverride.logLevel,
       assetPrefix: baseConfigOverride.assetPrefix,
+      enableHttpLogging: baseConfigOverride.enableHttpLogging,
     });
     break;
   }
@@ -25,6 +26,7 @@ switch (connectionPreset) {
       remoteFQDN: baseConfigOverride.remoteFQDN,
       logLevel: baseConfigOverride.logLevel,
       assetPrefix: baseConfigOverride.assetPrefix,
+      enableHttpLogging: baseConfigOverride.enableHttpLogging,
     });
     break;
   }
@@ -39,6 +41,7 @@ switch (connectionPreset) {
       remoteFQDN: baseConfigOverride.remoteFQDN,
       logLevel: baseConfigOverride.logLevel,
       assetPrefix: baseConfigOverride.assetPrefix,
+      enableHttpLogging: baseConfigOverride.enableHttpLogging,
     });
     break;
   }

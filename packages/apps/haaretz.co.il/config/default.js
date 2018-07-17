@@ -13,4 +13,6 @@ function getLocalExternalIp() {
 
 module.exports = {
   hostIp: getLocalExternalIp(),
+  logLevel: process.env.LOG_LEVEL || 'info',
+  enableHttpLogging: true,
 };

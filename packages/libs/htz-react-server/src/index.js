@@ -26,18 +26,9 @@ import purchase from './routes/purchase';
 const logger = createLogger({
   name: 'htz-react-server',
 });
-
-// Morgan json formatted messages
-// const morganFormat = json(':remote-addr - :remote-user [:date[clf]]
-// :method :url HTTP/:http-version :status :res[content-length] :referrer :user-agent');
-const morganFormat = morganJson({
-  short: 'HTTP/:http-version :method :url :status',
-  length: ':res[content-length]',
-  'response-time': ':response-time ms',
-  'remote-addr': ':remote-addr',
-  referrer: ':referrer',
-  'user-agent': ':user-agent',
-});
+const enableHttpLogging = config.has('enableHttpLogging')
+  ? config.get('enableHttpLogging') === true
+  : false;
 
 const DEV = process.env.NODE_ENV === 'development';
 const PORT = parseInt(
@@ -104,7 +95,23 @@ app
   // eslint-disable-next-line consistent-return
   .then(() => {
     const server = express();
-    server.use(morgan(morganFormat)); // HTTP logging
+    if (enableHttpLogging) {
+      // Morgan json formatted messages
+      // const morganFormat = morganJson(':remote-addr - :remote-user [:date[clf]]
+      // :method :url HTTP/:http-version :status :res[content-length] :referrer :user-agent');
+      server.use(
+        morgan(
+          morganJson({
+            short: 'HTTP/:http-version :method :url :status',
+            length: ':res[content-length]',
+            'response-time': ':response-time ms',
+            'remote-addr': ':remote-addr',
+            referrer: ':referrer',
+            'user-agent': ':user-agent',
+          })
+        )
+      ); // HTTP logging
+    }
     if (!DEV) {
       server.use(compression()); // Compress responses.
     }

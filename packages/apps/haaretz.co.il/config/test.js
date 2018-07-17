@@ -6,4 +6,5 @@ module.exports = {
   hostname: process.env.HOSTNAME,
   baseHref: 'https://www.haaretz.co.il',
   logLevel: 'debug',
+  enableHttpLogging: false,
 };

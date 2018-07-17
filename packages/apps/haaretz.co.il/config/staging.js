@@ -33,4 +33,5 @@ module.exports = {
   port: process.env.PORT || '3000',
   logLevel: 'info',
   assetPrefix: '',
+  enableHttpLogging: false,
 };

@@ -34,4 +34,5 @@ module.exports = {
   // Path of promotions page in Polopoly CM
   polopolyPromotionsPagePath: 'promotions-page-react',
   logLevel: 'info',
+  enableHttpLogging: false,
 };
