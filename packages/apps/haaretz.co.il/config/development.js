@@ -1,6 +1,8 @@
 /* eslint-disable func-names */
 const defer = require('config/defer').deferConfig;
 
+const localDev = process.env.LOCAL_DEV;
+
 module.exports = {
   service: {
     base: defer(function () {
@@ -11,7 +13,7 @@ module.exports = {
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
-      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
+      }://${localDev ? this.remoteFQDN : this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
     }),
     polopolyImageBaseHref: defer(function () {
       return `http${
@@ -23,7 +25,7 @@ module.exports = {
     return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
   }),
   remoteFQDN: defer(function () {
-    return `pre.${this.domain}`;
+    return `${localDev ? this.appFQDN : `pre.${this.domain}`}`;
   }),
   useSSL: false,
   graphQLuseSSL: false,
