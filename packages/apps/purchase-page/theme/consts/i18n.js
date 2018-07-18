@@ -484,10 +484,35 @@ export const thankYou = Object.freeze({
         ? 'להארץ'
         : product === 'TM'
           ? 'ל-TheMarker'
-          : product === 'BOTH'
-            ? 'משולב להארץ ו-TheMarker'
-            : '';
+          : product === 'BOTH' ? 'משולב להארץ ו-TheMarker' : '';
     return `תודה שרכשתם מינוי ${item}`;
   },
-  backToArticleContent: 'חזרה לכתבה ממנה הגעת',
+  backToArticle: 'חזרה לכתבה:',
+  backToHomePage: 'לדף הבית',
+  backToHomePageHref: Object.freeze({
+    tm: 'https://.themarker.com',
+    htz: 'https://www.haaretz.co.il/',
+  }),
+  downloadAppText: Object.freeze({
+    tm: 'הורידו חינם את אפליקציית The-Marker והישארו מחוברים',
+    htz: 'הורידו חינם את אפליקציית הארץ והישארו מחוברים',
+  }),
+  downloadAppButtonText: 'להורדה',
+  downloadAppHref: 'http://htz.li/haaretzapp',
+  imgData: Object.freeze({
+    htz: Object.freeze({
+      imgName: 'image/3154103949.png',
+      version: '1531919778',
+      credit: 'הארץ',
+      alt: 'אייפון עם אפליקציה של הארץ',
+      contentId: '1.6290348',
+    }),
+    tm: Object.freeze({
+      imgName: 'image/489174001.png',
+      version: '1531919876',
+      credit: 'הארץ',
+      alt: 'אייפון עם אפליקציה של דה מארקר',
+      contentId: '1.6290357',
+    }),
+  }),
 });

@@ -35,7 +35,6 @@ class Stage1 extends React.Component {
   }
 
   render() {
-    const { url: { query: { referrer, }, }, } = this.props || null;
     return (
       <MainLayout footerHasIllustration={false} displayBackButton={false}>
         <FelaComponent style={{ position: 'relative', }}>
@@ -43,7 +42,6 @@ class Stage1 extends React.Component {
             render={({ data, loading, error, client, }) => {
               if (loading) return <div />;
               if (error) return <div> Error...</div>;
-              client.writeData({ data: { referrer: referrer || null, }, });
               const { slots, pageNumber, } = data.purchasePage;
               return Math.floor(pageNumber) === 7 ? (
                 <Redirect destination="thankYou" replace />

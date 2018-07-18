@@ -6,8 +6,6 @@ import {
   LayoutContainer,
   UserDispenser,
 } from '@haaretz/htz-components';
-
-import Phones from '../../components/OfferPage/Stages/Elements/Phones';
 import MainLayout from '../../layouts/MainLayout';
 import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter';
 import ThankYouStage from '../../components/OfferPage/Stages/ThankYouStage';
@@ -25,11 +23,7 @@ const ThankYouElement = ({ product, userMessage, }) => (
             displayPhones={false}
             headerElement={
               <Fragment>
-                {product ? (
-                  <Phones subscription={product} size={3.5} />
-                ) : (
-                  <IconCheck color="positive" size={10} />
-                )}
+                <IconCheck color="positive" size={10} />
                 <FelaComponent
                   style={theme => ({
                     marginTop: '3rem',

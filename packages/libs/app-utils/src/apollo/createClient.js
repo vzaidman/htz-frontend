@@ -67,6 +67,10 @@ function create(initialState, req) {
     initialState.ROOT_QUERY !== undefined
       ? initialState.ROOT_QUERY.hostname
       : req.hostname;
+  const referer =
+    initialState.ROOT_QUERY !== undefined
+      ? initialState.ROOT_QUERY.referer
+      : req.headers.referer;
   const graphqlLink = switchToDomain(hostname, config.get('service.graphql'));
   const link = new HttpLink({
     uri: graphqlLink, // Server URL (must be absolute)
@@ -137,7 +141,7 @@ function create(initialState, req) {
       articleId: null,
       commentsElementId: null,
       startFromStage2: true,
-      referrer: null,
+      referer: referer || null,
       loggedInOrRegistered: null,
       scroll: {
         velocity: null,
