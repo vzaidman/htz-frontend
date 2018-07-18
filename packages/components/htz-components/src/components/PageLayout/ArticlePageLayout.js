@@ -92,7 +92,7 @@ const ArticlePageLayout = ({
                 </LayoutContainer>
               )}
             </LayoutRow>
-            <LayoutRow tagName="main">
+            <LayoutRow tagName="main" id="pageRoot">
               <StandardArticle
                 articleId={articleId}
                 article={article}
@@ -102,6 +102,7 @@ const ArticlePageLayout = ({
             </LayoutRow>
             <LayoutRow>{postMain && getElements(postMain)}</LayoutRow>
             <LayoutRow>{footer && getElements(footer)}</LayoutRow>
+            <LayoutRow idName="modalsRoot" />
             <GaDimensions
               pageType={data.page.pageType}
               authors={extractAuthorsFromArticle(article)}

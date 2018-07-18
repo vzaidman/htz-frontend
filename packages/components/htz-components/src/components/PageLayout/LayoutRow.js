@@ -19,6 +19,7 @@ const propTypes = {
   children: PropTypes.node,
   /** The HTML tag a `<LayoutRow />` will be rendered as */
   tagName: PropTypes.string,
+  id: PropTypes.string,
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
@@ -32,10 +33,11 @@ const defaultProps = {
   bgc: null,
   children: null,
   tagName: 'div',
+  id: null,
   miscStyles: null,
 };
 
-export function LayoutRow({ attrs, children, tagName, miscStyles, bgc, }) {
+export function LayoutRow({ attrs, children, tagName, id, miscStyles, bgc, }) {
   const Tag = tagName;
   return (
     <FelaComponent
@@ -49,7 +51,7 @@ export function LayoutRow({ attrs, children, tagName, miscStyles, bgc, }) {
         ],
       })}
       render={({ className, }) => (
-        <Tag className={className} {...attrs}>
+        <Tag className={className} id={id} {...attrs}>
           {children}
         </Tag>
       )}
