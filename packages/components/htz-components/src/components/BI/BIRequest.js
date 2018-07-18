@@ -86,9 +86,15 @@ class BIRequest extends Component {
           >
             {({ data, loading, error, }) => {
               if (loading) return null;
-              if (error) return null;
-              const writerId =
-                data.page.slots.article[1].data.authors[0].contentId || null;
+              if (error) return console.error(error);
+              let writerId = null;
+              try {
+                writerId = data.page.slots.article[1].data.authors[0].contentId;
+              }
+ catch (err) {
+                // do fallback here
+              }
+
               doStat(data.user, data.page.lineage, writerId);
               return null;
             }}
@@ -99,7 +105,7 @@ class BIRequest extends Component {
         <Query query={GET_USER}>
           {({ loading, error, data, }) => {
             if (loading) return null;
-            if (error) return null;
+            if (error) return console.error(error);
             doStat(data.user);
             return null;
           }}
