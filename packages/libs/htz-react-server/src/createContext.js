@@ -22,6 +22,19 @@ export function createLoaders(req) {
   // TODO: By default, `DataLoader` just caches the results forever,
   // but we should eventually expunge them from the cache.
 
+  const articleLinkDataLoader = new DataLoader(keys =>
+    Promise.all(
+      keys.map(id => {
+        logger.info(
+          'articleLinkDataLoader path: ',
+          `${serviceBase}/cmlink/Haaretz.Element.ArticleDataElement/${id}`
+        );
+        return fetch(
+          `${serviceBase}/cmlink/Haaretz.Element.ArticleDataElement/${id}`
+        ).then(response => response.json());
+      })
+    )
+  );
   const cmlinkLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(path =>
@@ -118,6 +131,7 @@ export function createLoaders(req) {
       )
     )
   );
+
   const resetPasswordLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(userName =>
@@ -140,6 +154,7 @@ export function createLoaders(req) {
   );
 
   return {
+    articleLinkDataLoader,
     pageLoader,
     cmlinkLoader,
     listsLoader,

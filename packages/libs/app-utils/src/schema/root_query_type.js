@@ -18,6 +18,23 @@ import Page from './types/page_type';
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: () => ({
+    articleLinkData: {
+      args: { id: { type: new GraphQLNonNull(GraphQLString), }, },
+      type: new GraphQLObjectType({
+        name: 'ArticleLinkData',
+        fields: () => ({
+          title: {
+            type: GraphQLString,
+          },
+          url: {
+            type: GraphQLString,
+          },
+        }),
+      }),
+      resolve(parentValue, { id, }, context) {
+        return context.articleLinkDataLoader.load(id);
+      },
+    },
     commentsElement: {
       type: CommentsElement,
       args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
