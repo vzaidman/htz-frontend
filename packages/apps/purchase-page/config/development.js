@@ -29,7 +29,7 @@ module.exports = {
   remoteFQDN: defer(function () {
     return `pre.${this.domain}`;
   }),
-  useSSL: true,
+  useSSL: false,
   graphQLuseSSL: false,
   graphQLexposedPort: true,
   domain: 'haaretz.co.il',
