@@ -11,7 +11,7 @@ module.exports = {
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
-      }://${this.remoteFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
+      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
     }),
     polopolyImageBaseHref: defer(function () {
       return `http${
@@ -23,7 +23,7 @@ module.exports = {
     return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
   }),
   remoteFQDN: defer(function () {
-    return `${this.appFQDN}`;
+    return `pre.${this.domain}`;
   }),
   useSSL: false,
   graphQLuseSSL: false,
