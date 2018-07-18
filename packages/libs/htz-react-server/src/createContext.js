@@ -48,7 +48,7 @@ export function createLoaders(req) {
     Promise.all(
       keys.map(path => {
         const fetchPath = path.includes('preview')
-          ? path
+          ? `http:${path}`
           : `${serviceBase}/papi${path.startsWith('/') ? '' : '/'}${path}`;
         logger.info(`pageLoader - papi - loading: ${fetchPath}`);
         return fetch(fetchPath).then(response => response.json());
