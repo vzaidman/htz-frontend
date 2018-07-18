@@ -10,6 +10,7 @@
   - [Global vs. Contextual](#global-vs-contextual)
 - [Usage](#usage)
 - [Overriding a connection preset](#overriding-a-connection-preset)
+- [Working with local backend](#working-with-local-backend)
 - [Secrets and Internal Values](#secrets-and-internal-values)
 - [Browser Support](#browser-support)
 - [Testing](#testing)
@@ -18,16 +19,16 @@
 
 ## Summary
 
-- We use the popular [node-config][] module to load environment-specific
+* We use the popular [node-config][] module to load environment-specific
   configuration files and merge them into a single object. Modules anywhere
   in the dependency tree can simply `import config from 'config'` to read the
   resulting values.
-- Since node-config is a server-side module (it reads files), in the browser we
+* Since node-config is a server-side module (it reads files), in the browser we
   alias the `config` module to [a shim][shim] that has access to the serialized
   output of the real node-config. Note that all values in the resulting config
   are public information shipped with the client code (anyone can view the
   source to look at the config).
-- Sensitive values (session secrets, database passwords, etc.) and server-only
+* Sensitive values (session secrets, database passwords, etc.) and server-only
   concerns should continue to be loaded via environment variables. These will
   not be public unless explicitly made so in the webpack config.
 
@@ -38,15 +39,15 @@
 There are several reasons to use a more fully-featured solution like [node-config][]
 rather than just supplying everything via environment variables:
 
-- Environment variables are not typed, they are always strings. If you need to
+* Environment variables are not typed, they are always strings. If you need to
   store a number, date, `null`, etc. in an environment variable, it needs to be
   parsed wherever you use it. Configuration files loaded from a format like JSON
   or JavaScript already have all the types you need.
-- Environment variables don’t support any data structures like objects or arrays.
+* Environment variables don’t support any data structures like objects or arrays.
   It is inevitable that a configuration value will come along that can’t just be
   a flat scalar. Sometimes you need a list of tracking events, a list of links,
   a mapping of old URL patterns to new URL patterns… to name a few examples.
-- It is clearer to say that configuration objects are always sent to the browser,
+* It is clearer to say that configuration objects are always sent to the browser,
   while environment variables aren’t. This will hopefully prevent people from
   accidentally exposing secrets and other internal values.
 
@@ -162,6 +163,19 @@ variable called `CONNECTION_PRESET` which can take the following values:
 `dev`, `stage` and `prod`. This will start the application with another
 connection preset.
 
+## Working with local backend
+
+When working on features that also require backend developments, it could be
+convenient to point the application at the database of your local dev machine
+rather than the general one. This allows breaking things and debugging them locally,
+without disrupting the work of others.
+
+To use the local database, simply set the `LOCAL_DEV` env variable to `true`:
+
+```sh
+LOCAL_DEV=true yarn workspace @haaretz/haaretz.co.il dev
+```
+
 ## Secrets and Internal Values
 
 Some configuration values should be kept secure (like session secrets, database
@@ -185,11 +199,11 @@ file lookup and merging procedure, we need a way to serialize the final object
 it generates and send it to the browser. There are multiple ways to accomplish
 this:
 
-- For apps, the [custom Document class][haaretzdocument], which only runs
+* For apps, the [custom Document class][haaretzdocument], which only runs
   server-side, renders a `<script>` tag that sets `__HTZ_DATA__`. This makes
   it very easy to inspect the page to see what configuration is supplied (as
   opposed to digging around in the generated bundle).
-- For component styleguides, since there may not be any server-side logic to
+* For component styleguides, since there may not be any server-side logic to
   override, it is defined in [the webpack config][styleguide.config.js].
 
 ## Testing
@@ -197,14 +211,14 @@ this:
 It may be necessary to test pieces of code under multiple configuration
 scenarios. There are a few different ways to approach this:
 
-- Mock the `config` module using Jest’s [Manual Mocks][] or the [moduleNameMapper][]
+* Mock the `config` module using Jest’s [Manual Mocks][] or the [moduleNameMapper][]
   option (the documentation there conveniently uses the `config` module as an
   example).
-- Mutate the returned configuration into the desired state directly in each test,
+* Mutate the returned configuration into the desired state directly in each test,
   before the code using it is executed.
-- For components, use a `config` prop that defaults to the global config, but
+* For components, use a `config` prop that defaults to the global config, but
   can be overridden for tests. Or, supply it via a Higher Order Component.
-- The crudest option: run your test suite multiple times with different `NODE_ENV`,
+* The crudest option: run your test suite multiple times with different `NODE_ENV`,
   `NODE_CONFIG`, or `--NODE_CONFIG` settings.
 
 [node-config]: https://github.com/lorenwest/node-config
