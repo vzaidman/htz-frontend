@@ -22,9 +22,7 @@ let dsUrl;
 export function doStatAction(action, user) {
   dsUrl =
     dsUrl ||
-    `${window.location.protocol}//ds.haaretz.co.il/${
-      isProduction ? 'ds.php' : 'dstest.php'
-    }`;
+    `https://ms-apps.haaretz.co.il/${isProduction ? 'ds' : 'ds-dev'}/request`;
 
   const { additionalInfo, } = action;
   const serializedAdditionalInfo = JSON.stringify(
@@ -44,8 +42,13 @@ export function doStatAction(action, user) {
   };
 
   return withTimeout(
-    window.fetch(`${dsUrl}?${querystring.stringify(statData)}`, {
-      method: 'GET',
+    window.fetch(`${dsUrl}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(statData),
       cache: 'no-cache',
     })
   );
@@ -80,9 +83,7 @@ export function doStat(user, lineage = [], writerId = null) {
 
   dsUrl =
     dsUrl ||
-    `${window.location.protocol}//ds.haaretz.co.il/${
-      isProduction ? 'ds.php' : 'dstest.php'
-    }`;
+    `https://ms-apps.haaretz.co.il/${isProduction ? 'ds' : 'ds-dev'}/request`;
 
   const href = window.location.href;
   const statData = {
@@ -117,8 +118,13 @@ export function doStat(user, lineage = [], writerId = null) {
   };
 
   return withTimeout(
-    window.fetch(`${dsUrl}?${querystring.stringify(statData)}`, {
-      method: 'GET',
+    window.fetch(`${dsUrl}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(statData),
       cache: 'no-cache',
     })
   );
