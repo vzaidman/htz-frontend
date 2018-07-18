@@ -1,6 +1,6 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, createComponent, FelaTheme, } from 'react-fela';
+import { createComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
 
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
@@ -233,9 +233,7 @@ class Footer extends React.Component {
         <GoogleReMarketingTag />
         <ChartBeat />
         <ChromePush />
-        <FelaComponent style={{ position: 'absolute', right: '-1000rem', }}>
-          <FirstImpressionPlaceHolder />
-        </FelaComponent>
+        <FirstImpressionPlaceHolder />
       </Fragment>
     );
   }
