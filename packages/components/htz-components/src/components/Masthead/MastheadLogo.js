@@ -28,27 +28,29 @@ export default function MastheadLogo({ host, }) {
           ),
         ],
       })}
-      render={({ className, }) => {
-        if (host === 'tm') {
-          return (
-            <HtzLink href="http://www.themarker.com" className={className}>
-              <IconMarkerLogo size={4} />
-            </HtzLink>
-          );
+      render={({ theme, className, }) => {
+        const { tmUrl, htzUrl, hdcUrl, } = theme.mastheadLogoI18n;
+        switch (host) {
+          case 'tm':
+            return (
+              <HtzLink href={tmUrl} className={className}>
+                <IconMarkerLogo size={4} />
+              </HtzLink>
+            );
+          case 'hdc':
+            return (
+              <HtzLink href={hdcUrl} className={className}>
+                {/* change to haaretz.com logo */}
+                <IconHaaretzLogo size={4} />
+              </HtzLink>
+            );
+          default:
+            return (
+              <HtzLink href={htzUrl} className={className}>
+                <IconHaaretzLogo size={4} />
+              </HtzLink>
+            );
         }
- else if (host === 'hdc') {
-          return (
-            <HtzLink href="http://www.haaretz.com" className={className}>
-              {/* change to haaretz.com logo */}
-              <IconHaaretzLogo size={4} />
-            </HtzLink>
-          );
-        }
-        return (
-          <HtzLink href="http://www.haaretz.co.il" className={className}>
-            <IconHaaretzLogo size={4} />
-          </HtzLink>
-        );
       }}
     />
   );
