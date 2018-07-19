@@ -8,6 +8,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 
 const embeds = {
+  'com.polobase.ApesterEmbed': () => import('../elements/Apester'),
   'com.polobase.ArtiMediaEmbed': () => import('../elements/ArtiMedia'),
   'com.polobase.BandCampEmbed': () => import('../elements/BandCamp'),
   'com.polobase.FacebookEmbed': () => import('../elements/Facebook'),
@@ -17,6 +18,7 @@ const embeds = {
   'com.polobase.GoogleMapEmbed': () => import('../elements/GoogleMap'),
   'com.polobase.InstagramEmbed': () => import('../elements/Instagram'),
   'com.polobase.NYTEmbed': () => import('../elements/NYT'),
+  'com.polobase.OmnyStudioEmbed': () => import('../elements/OmniStudio'),
   'com.polobase.PinterestEmbed': () => import('../elements/Pinterest'),
   'com.polobase.PlayBuzzEmbed': () => import('../elements/PlayBuzz'),
   'com.polobase.SoundCloudEmbed': () => import('../elements/StandardAudio'),
@@ -26,6 +28,8 @@ const embeds = {
   'com.polobase.CNNEmbed': () => import('../elements/StandardVideo'),
   'com.polobase.GuardianEmbed': () => import('../elements/StandardVideo'),
   'com.polobase.MakoEmbed': () => import('../elements/StandardVideo'),
+  'com.polobase.KanEmbed': () => import('../elements/StandardVideo'),
+  'com.polobase.WashingtonPostEmbed': () => import('../elements/StandardVideo'),
   'com.polobase.TlineEmbed': () => import('../elements/Tline'),
   'com.polobase.TwitterEmbed': () => import('../elements/Twitter'),
   'com.polobase.VimeoEmbed': () => import('../elements/Vimeo'),

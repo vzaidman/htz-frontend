@@ -11,10 +11,11 @@ import { createComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import embedTypes from './utils/embedTypes';
 import exampleProps from './utils/exampleProps';
-import RadioGroup from './utils/EmbedRadioGroup';
+import RadioGroup from '../RadioButton/RadioGroup';
 import LoadingScreen from './utils/LoadingScreen';
 
 const embeds = {
+  Apester: () => import('./elements/Apester.js'),
   ArtiMedia: () => import('./elements/ArtiMedia.js'),
   BandCamp: () => import('./elements/BandCamp.js'),
   Facebook: () => import('./elements/Facebook.js'),
@@ -24,6 +25,7 @@ const embeds = {
   GoogleMap: () => import('./elements/GoogleMap.js'),
   Instagram: () => import('./elements/Instagram.js'),
   NYT: () => import('./elements/NYT.js'),
+  OmniStudio: () => import('./elements/OmniStudio.js'),
   Pinterest: () => import('./elements/Pinterest.js'),
   PlayBuzz: () => import('./elements/PlayBuzz.js'),
   StandardAudio: () => import('./elements/StandardAudio.js'),
@@ -206,6 +208,7 @@ export default class Embed extends React.Component {
   );
 
   componentsWhoDoNotReceiveOnLoadCallback = [
+    'Apester',
     'ArtiMedia',
     'FileUpload',
     'Instagram',
@@ -226,6 +229,7 @@ export default class Embed extends React.Component {
             <option value="placeHolder" disabled>
               Select a preview
             </option>
+            <option value="Apester">Apester</option>
             <option value="ArtiMedia">ArtiMedia</option>
             <option value="BandCamp">BandCamp</option>
             <option value="Facebook">Facebook</option>
@@ -235,6 +239,7 @@ export default class Embed extends React.Component {
             <option value="GoogleMap">GoogleMap</option>
             <option value="Instagram">Instagram</option>
             <option value="NYT">NYT</option>
+            <option value="OmniStudio">OmniStudio</option>
             <option value="Pinterest">Pinterest</option>
             <option value="PlayBuzz">PlayBuzz</option>
             <option value="StandardAudio">StandardAudio</option>

@@ -12,7 +12,7 @@ import { createComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import embedTypes from './utils/embedTypes';
 import exampleProps from './utils/exampleProps';
-import EmbedRadioGroup from './utils/EmbedRadioGroup';
+import RadioGroup from '../RadioButton/RadioGroup';
 import LoadingScreen from './utils/LoadingScreen';
 
 const embeds = {
