@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FelaTheme, createComponent, FelaComponent, } from 'react-fela';
+import { FelaTheme, FelaComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
 import ArticleImage from '../ArticleImage/ArticleImage';
@@ -19,41 +19,56 @@ const defaultProps = {};
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
-const figureStyle = ({ theme, lastItem, }) =>
-  (!lastItem
-    ? {
-      ...parseComponentProp(
-        'marginBottom',
-        theme.articleStyle.body.marginBottom,
-        theme.mq,
-        mediaQueryCallback
-      ),
+// eslint-disable-next-line react/prop-types
+const Figure = ({ lastItem, children, }) => (
+  <FelaComponent
+    style={theme =>
+      (!lastItem
+        ? {
+            ...parseComponentProp(
+              'marginBottom',
+              theme.articleStyle.body.marginBottom,
+              theme.mq,
+              mediaQueryCallback
+            ),
+          }
+        : {})
     }
-    : {});
-const Figure = createComponent(figureStyle, 'figure');
+    render="figure"
+  >
+    {children}
+  </FelaComponent>
+);
 
-const asideStyle = ({ theme, }) => ({
-  ...theme.mq(
-    { from: 'l', },
-    {
-      width: '26rem',
-      position: 'absolute',
-      textAlign: 'start',
-      start: theme.layoutStyle.startColumnPadding,
-    }
-  ),
-  extend: [
-    ...[
-      parseComponentProp(
-        'marginBottom',
-        theme.articleStyle.body.marginBottom,
-        theme.mq,
-        mediaQueryCallback
+// eslint-disable-next-line react/prop-types
+const Aside = ({ children, }) => (
+  <FelaComponent
+    style={theme => ({
+      ...theme.mq(
+        { from: 'l', },
+        {
+          width: '26rem',
+          position: 'absolute',
+          textAlign: 'start',
+          start: theme.layoutStyle.startColumnPadding,
+        }
       ),
-    ],
-  ],
-});
-const Aside = createComponent(asideStyle, 'aside');
+      extend: [
+        ...[
+          parseComponentProp(
+            'marginBottom',
+            theme.articleStyle.body.marginBottom,
+            theme.mq,
+            mediaQueryCallback
+          ),
+        ],
+      ],
+    })}
+    render="aside"
+  >
+    {children}
+  </FelaComponent>
+);
 
 const buildComponent = (context, index, isLastItem) => {
   const uniqueId =
@@ -65,6 +80,11 @@ const buildComponent = (context, index, isLastItem) => {
     case 'com.tm.Image':
       return <Component key={index} lastItem={isLastItem} {...context} />;
     case 'embedElement':
+      return (
+        <Figure key={index} lastItem={isLastItem}>
+          <Component {...context} />
+        </Figure>
+      );
     case 'interactiveElement':
     case 'com.tm.ImageGalleryElement':
     case 'com.tm.Video': // eslint-disable-line no-case-declarations
