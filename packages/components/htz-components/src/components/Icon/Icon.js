@@ -63,6 +63,8 @@ import IconCheck from './icons/IconCheck';
 import IconInfo from './icons/IconInfo';
 import IconMessenger from './icons/IconMessenger';
 import IconSave from './icons/IconSave';
+import IconDrive from './icons/IconDrive';
+import IconPdf from './icons/IconPdf';
 
 const gutterWidth = '1rem';
 
@@ -244,6 +246,8 @@ export default class Icons extends React.Component {
             {<IconMessenger size={this.state.size} />}
           </Cell>
           <Cell name="IconSave">{<IconSave size={this.state.size} />}</Cell>
+          <Cell name="IconDrive">{<IconDrive size={this.state.size} />}</Cell>
+          <Cell name="IconPdf">{<IconPdf size={this.state.size} />}</Cell>
         </Wrapper>
       </div>
     );

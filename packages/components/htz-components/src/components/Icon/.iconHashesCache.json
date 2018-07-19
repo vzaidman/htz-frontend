@@ -8,7 +8,7 @@
   "src/components/Icon/icons/IconClose.js": "3bd7513fd328ee78b22a32806554e4b9",
   "src/components/Icon/icons/IconCamera.js": "6e5b1d183cb3d0d4bd3ffe5b51cbf8e8",
   "src/components/Icon/icons/IconComment.js":
-    "c6d702c1e14861dc84bffc3585f50fdf",
+    "d53082decc8e3eeec1c388863f5430e2",
   "src/components/Icon/icons/IconFacebookLogo.js":
     "b088cf36bb6c48ecdf757631d4c9861a",
   "src/components/Icon/icons/IconDislike.js":
@@ -23,7 +23,7 @@
     "b16a9458eeae918af2114733f490f223",
   "src/components/Icon/icons/IconMail.js": "1f05ad130af77921b5394ee881d40551",
   "src/components/Icon/icons/IconPlus.js": "c48695c9615437c2dabe1277648e8bfc",
-  "src/components/Icon/icons/IconPrint.js": "533ecea46bbc02dd4850e8875b691d7e",
+  "src/components/Icon/icons/IconPrint.js": "8beb09a8b27eaeb0729e871d497dcb59",
   "src/components/Icon/icons/IconReading.js":
     "6e0871b42c3637776ae14e2ec3169bba",
   "src/components/Icon/icons/IconMenu.js": "1f19dc7407ea748719fb47af06ac5126",
@@ -77,5 +77,7 @@
   "src/components/Icon/icons/IconInfo.js": "80ef8ce9fd16ce8d6693a431443962db",
   "src/components/Icon/icons/IconMessenger.js":
     "c811a8e09da590adcc25c7627a9f15c4",
-  "src/components/Icon/icons/IconSave.js": "45a940367bc23c51a7f523af4ce631f3"
+  "src/components/Icon/icons/IconSave.js": "45a940367bc23c51a7f523af4ce631f3",
+  "src/components/Icon/icons/IconDrive.js": "5d1850789f9ffda23dca0d5cb0281962",
+  "src/components/Icon/icons/IconPdf.js": "ab86c876cae9043261843cebd5372b32"
 }

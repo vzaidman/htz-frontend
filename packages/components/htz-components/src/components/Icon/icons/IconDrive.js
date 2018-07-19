@@ -10,33 +10,33 @@ import iconStyle from '../iconStyle';
 import { iconPropTypes, iconDefaultProps, } from '../iconPropTypes';
 import { attrsPropType, } from '../../../propTypes/attrsPropType';
 
-const IconComment = createComponent(iconStyle, UnstyledIconComment, [
+const IconDrive = createComponent(iconStyle, UnstyledIconDrive, [
   'attrs',
   'onClick',
 ]);
 
-IconComment.propTypes = iconPropTypes;
-IconComment.defaultProps = iconDefaultProps;
+IconDrive.propTypes = iconPropTypes;
+IconDrive.defaultProps = iconDefaultProps;
 
 // Underlying component
-UnstyledIconComment.propTypes = {
+UnstyledIconDrive.propTypes = {
   attrs: attrsPropType,
 };
 
-UnstyledIconComment.defaultProps = {
+UnstyledIconDrive.defaultProps = {
   attrs: null,
 };
 
-function UnstyledIconComment({ attrs, ...props }) {
+function UnstyledIconDrive({ attrs, ...props }) {
   return (
     <svg width="1em" height="1em" viewBox="0 0 256 256" {...props} {...attrs}>
       {' '}
       <path
         fill="currentColor"
-        d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+        d="M96 35h70.7l68.1 115h-70.7L96 35zM64.7 218h134.6l36-60H99.9l-35.2 60zm-44-63.4l35.9 58.9L124 99.1 89 40.2 20.7 154.6z"
       />
     </svg>
   );
 }
 
-export default IconComment;
+export default IconDrive;

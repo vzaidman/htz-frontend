@@ -76,6 +76,7 @@ import IconClose from './components/Icon/icons/IconClose';
 import IconComment from './components/Icon/icons/IconComment';
 import IconCredit from './components/Icon/icons/IconCredit';
 import IconDislike from './components/Icon/icons/IconDislike';
+import IconDrive from './components/Icon/icons/IconDrive';
 import IconFacebook from './components/Icon/icons/IconFacebook';
 import IconFacebookLogo from './components/Icon/icons/IconFacebookLogo';
 import IconGPlus from './components/Icon/icons/IconGPlus';
@@ -94,6 +95,7 @@ import IconMarkerLogoTransparent from './components/Icon/icons/IconMarkerLogoTra
 import IconMenu from './components/Icon/icons/IconMenu';
 import IconMessenger from './components/Icon/icons/IconMessenger';
 import IconPaypal from './components/Icon/icons/IconPaypal';
+import IconPdf from './components/Icon/icons/IconPdf';
 import IconPlus from './components/Icon/icons/IconPlus';
 import IconPrint from './components/Icon/icons/IconPrint';
 import IconQuote from './components/Icon/icons/IconQuote';
@@ -215,6 +217,7 @@ export {
   IconComment,
   IconCredit,
   IconDislike,
+  IconDrive,
   IconFacebook,
   IconFacebookLogo,
   IconGPlus,
@@ -233,6 +236,7 @@ export {
   IconMenu,
   IconMessenger,
   IconPaypal,
+  IconPdf,
   IconPlus,
   IconPrint,
   IconQuote,

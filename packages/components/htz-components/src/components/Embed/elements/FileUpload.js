@@ -8,7 +8,50 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
+import HtzLink from '../../HtzLink/HtzLink';
+import IconPdf from '../../Icon/icons/IconPdf';
+import IconDrive from '../../Icon/icons/IconDrive';
+
+// eslint-disable-next-line react/prop-types
+const LinkToFile = ({ href, target, children, }) => (
+  <FelaComponent
+    style={{
+      color: '#0895c3',
+      textDecoration: 'none',
+      ':hover': {
+        borderBottom: '1px solid',
+        paddingBottom: '.06em',
+        outline: '0',
+      },
+    }}
+    render={({ className, }) => (
+      <HtzLink className={className} href={href} target={target}>
+        {children}
+      </HtzLink>
+    )}
+  />
+);
+
+class FileUpload extends React.Component {
+  componentDidMount() {
+    // This component doesn't have an onLoad event,
+    // so we run this function as the component is mounted.
+    this.props.onLoadCallback();
+  }
+
+  render() {
+    const { source, embedType, contentName, } = this.props;
+    const Icon = embedType === 'pdf' ? IconPdf : IconDrive;
+
+    return (
+      <LinkToFile href={source} target="_blank">
+        <Icon size={4} />
+        <span>{contentName}</span>
+      </LinkToFile>
+    );
+  }
+}
 
 FileUpload.propTypes = {
   /**
@@ -23,56 +66,14 @@ FileUpload.propTypes = {
    * File's description.
    */
   contentName: PropTypes.string.isRequired,
+  /**
+   * A function to be called when the audio element finishes to load.
+   */
+  onLoadCallback: PropTypes.func,
 };
 
-const fileIcon = () => ({
-  float: 'right',
-  color: '#e22134',
-  backgroundColor: 'transparent',
-  border: '0',
-  cursor: 'pointer',
-  display: 'inline-block',
-  padding: '0',
-  position: 'relative',
-  textAlign: 'center',
-  verticalAlign: 'middle',
-  height: '2.625rem',
-  lineHeight: '2.625rem',
-  minWidth: '2.625rem',
-  fontStyle: 'normal',
-  width: '1em',
-  fontSize: '2.25rem',
-  fontWeight: '700',
-  textRendering: 'optimizeLegibility',
-});
-
-const FileIcon = createComponent(fileIcon, 'i', props => Object.keys(props));
-
-const linkToFile = () => ({
-  color: '#0895c3',
-  textDecoration: 'none',
-  ':hover': {
-    borderBottom: '1px solid',
-    paddingBottom: '.06em',
-    outline: '0',
-  },
-});
-
-const LinkToFile = createComponent(linkToFile, 'a', props =>
-  Object.keys(props)
-);
-
-function FileUpload(props) {
-  const { source, embedType, contentName, } = props;
-
-  const icon = embedType === 'pdf' ? '&' : '-';
-
-  return (
-    <LinkToFile href={source} target="_blank">
-      <FileIcon aria-hidden="true" data-icon={icon} />
-      <span>{contentName}</span>
-    </LinkToFile>
-  );
-}
+FileUpload.defaultProps = {
+  onLoadCallback: null,
+};
 
 export default FileUpload;
