@@ -6,6 +6,8 @@
     com.polobase.CNNEmbed,
     com.polobase.GuardianEmbed,
     com.polobase.MakoEmbed,
+    com.polobase.KanEmbed,
+    com.polobase.WashingtonPostEmbed,
   ]
  * *************************************************************** */
 
@@ -30,19 +32,19 @@ StandardVideo.defaultProps = {
   onLoadCallback: null,
 };
 
-function StandardVideo(props) {
+function StandardVideo({ source, onLoadCallback, }) {
   return (
     <VideoWrapper>
       <VideoElement
         width="560"
         height="315"
-        src={props.source}
+        src={source.replace(/&amp;/g, '&')}
         frameBorder="0"
         allowFullScreen=""
         scrolling="no"
         marginHeight="0"
         marginWidth="0"
-        onLoad={props.onLoadCallback}
+        onLoad={onLoadCallback}
       />
     </VideoWrapper>
   );
