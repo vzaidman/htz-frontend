@@ -1,0 +1,19 @@
+{
+  "type": "Organization",
+  "name": "הארץ",
+  "url": "http://www.haaretz.co.il",
+  "sameAs": [
+    "https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%A8%D7%A5",
+    "https://www.facebook.com/haaretz/",
+    "https://twitter.com/haaretz",
+    "https://www.youtube.com/user/haaretzdaily",
+    "https://plus.google.com/+haaretzcoil"
+  ],
+  "logo": {
+    "type": "ImageObject",
+    "image": "image/png",
+    "url": "https://www.haaretz.co.il/htz/images/logos/htz-logo-icon.png",
+    "__typename": "Logo"
+  },
+  "__typename": "Publisher"
+}

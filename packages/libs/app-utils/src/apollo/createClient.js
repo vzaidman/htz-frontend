@@ -13,6 +13,7 @@ import config from 'config';
 import chalk from 'chalk';
 import gql from 'graphql-tag';
 import switchToDomain from '../utils/switchToDomain';
+import pageSchema from './pageSchema';
 
 // Basic structure for user data object (Apollo store)
 const defaultUser = {
@@ -163,6 +164,7 @@ function create(initialState, req) {
         couponProduct: null,
         __typename: 'PromotionsPageState',
       },
+      pageSchema,
     },
     resolvers: {
       Mutation: {

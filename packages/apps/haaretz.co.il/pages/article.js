@@ -12,12 +12,14 @@ import {
   DeviceTypeInjector,
   GaDimensions,
   GoogleAnalytics,
+  PageSchema,
   ScrollListener,
   UserInjector,
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import ArticleInitQuery from './queries/article_layout';
+import publisher from './schema/publisher';
 
 const logger = createLogger();
 const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
@@ -63,39 +65,44 @@ export class ArticlePage extends React.Component {
   render() {
     const { url, } = this.props;
     return (
-      <Fragment>
-        <ScrollListener />
-        <UserInjector />
-        <DfpInjector path={url.query.path} />
-        <GoogleAnalytics withEC />
-        <StyleProvider renderer={styleRenderer} theme={htzTheme}>
-          <Query query={ArticleInitQuery} variables={{ path: url.query.path, }}>
-            {({ loading, error, data, client, }) => {
-              if (loading) return null;
-              if (error) logger.error(error);
-              const { slots, lineage, } = data.page;
-              client.writeData({
-                data: {
-                  articleId: lineage[0].contentId,
-                  section: lineage[1] ? lineage[1].name : '',
-                },
-              });
-              return (
+      <Query query={ArticleInitQuery} variables={{ path: url.query.path, }}>
+        {({ loading, error, data, client, }) => {
+          if (loading) return null;
+          if (error) logger.error(error);
+          const { page: { slots, lineage, }, user, } = data;
+          client.writeData({
+            data: {
+              articleId: lineage[0].contentId,
+              section: lineage[1] ? lineage[1].name : '',
+              pageSchema: {
+                publisher,
+                __typename: 'PageSchema',
+              },
+            },
+          });
+          return (
+            <Fragment>
+              <ScrollListener />
+              <UserInjector />
+              <DfpInjector path={url.query.path} />
+              <GoogleAnalytics withEC />
+              <StyleProvider renderer={styleRenderer} theme={htzTheme}>
                 <Fragment>
                   <AriaLive />
                   <DeviceTypeInjector />
                   <BIRequest articleId={url.query.path} />
-                  <GaDimensions userType={data.user.type} />
+                  <GaDimensions userType={user.type} />
                   <ArticlePageLayout
                     articleId={this.props.url.query.path}
                     slots={slots}
                   />
                 </Fragment>
-              );
-            }}
-          </Query>
-        </StyleProvider>
-      </Fragment>
+              </StyleProvider>
+              <PageSchema />
+            </Fragment>
+          );
+        }}
+      </Query>
     );
   }
 }

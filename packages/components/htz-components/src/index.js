@@ -40,8 +40,9 @@ import NavigationMenu from './components/NavigationMenu/NavigationMenu';
 import Newsletter from './components/Newsletter/Newsletter';
 import Outbrain from './components/Outbrain/Outbrain';
 import Osaka from './components/Osaka/OsakaController';
-import Portal from './components/Portal/Portal';
+import PageSchema from './components/PageSchema/PageSchema';
 import Paragraph from './components/Paragraph/Paragraph';
+import Portal from './components/Portal/Portal';
 import Quote from './components/Quote/Quote';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import RadioButton from './components/RadioButton/RadioButton';
@@ -179,8 +180,9 @@ export {
   NavigationMenu,
   Outbrain,
   Osaka,
-  Portal,
+  PageSchema,
   Paragraph,
+  Portal,
   Quote,
   RadioButton,
   RadioGroup,
