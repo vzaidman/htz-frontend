@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { borderBottom, getRemFromPx, } from '@haaretz/htz-css-tools';
-import { FelaComponent, createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import Recaptcha from 'react-google-invisible-recaptcha';
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 import CommentList from './CommentList.js'; // eslint-disable-line import/no-named-as-default
@@ -73,26 +73,37 @@ const CommentHeaderContStyle = ({ theme, truncate, }) => ({
   extend: [ theme.mq({ until: 's', }, { flexWrap: 'wrap', }), ],
 });
 
-const CommentAuthorStyle = ({ theme, truncate, }) => ({
-  color: theme.color('comments', 'authorName'),
-  padding: '0',
-  margin: '0',
-  ':hover': {
-    cursor: 'pointer',
-  },
-  ...(truncate
-    ? {
-      whiteSpace: 'nowrap',
-      marginInlineEnd: '1rem',
-      maxWidth: '50%',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-    }
-    : {}),
-  ...theme.type(0),
-});
-
-const StyledCommentAuthor = createComponent(CommentAuthorStyle, H, [ 'onClick', ]);
+// eslint-disable-next-line react/prop-types
+const StyledCommentAuthor = ({ truncate, children, ...props }) => (
+  <FelaComponent
+    style={theme => ({
+      color: theme.color('comments', 'authorName'),
+      padding: '0',
+      margin: '0',
+      ':hover': {
+        cursor: 'pointer',
+      },
+      ...(truncate
+        ? {
+          whiteSpace: 'nowrap',
+          marginInlineEnd: '1rem',
+          maxWidth: '50%',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        }
+        : {}),
+      ...theme.type(0),
+    })}
+    render={({ className, }) => (
+      <H
+        className={className}
+        {...props}
+      >
+        {children}
+      </H>
+    )}
+  />
+);
 
 const publishingDateStyle = theme => ({
   color: theme.color('comments', 'date'),
@@ -106,47 +117,68 @@ const subCommentAuthorStyle = theme => ({
   fontStyle: 'italic',
 });
 
-const editorPickTagStyle = ({ theme, }) => ({
-  color: theme.color('comments', 'highlightStatus'),
-  whiteSpace: 'nowrap',
-});
+// eslint-disable-next-line react/prop-types
+const StyledEditorPickTag = ({ children, }) => (
+  <FelaComponent
+    style={theme => ({
+      color: theme.color('comments', 'highlightStatus'),
+      whiteSpace: 'nowrap',
+    })}
+    render="span"
+  >
+    {children}
+  </FelaComponent>
+);
 
-const StyledEditorPickTag = createComponent(editorPickTagStyle, 'span');
+// eslint-disable-next-line react/prop-types
+const StyledCommentText = ({ fade, children, ...props }) => (
+  <FelaComponent
+    style={theme => ({
+      color: theme.color('comments', 'text'),
+      margin: 0,
+      wordBreak: 'break-word',
+      ...(fade
+        ? {
+          overflow: 'hidden',
+          maxHeight: '41rem',
+        }
+        : {}),
+    })}
+    render={({ className, }) => (
+      <div
+        className={className}
+        {...props}
+      >
+        {children}
+      </div>
+    )}
+  />
+);
 
-const commentTextStyle = ({ theme, fade, }) => ({
-  color: theme.color('comments', 'text'),
-  margin: 0,
-  ...(fade
-    ? {
-      overflow: 'hidden',
-      maxHeight: '41rem',
-    }
-    : {}),
-});
-
-const StyledCommentText = createComponent(commentTextStyle, 'div', [
-  'dangerouslySetInnerHTML',
-  'innerRef',
-]);
-
-const fadeStyle = ({ theme, isHighlighted, }) => ({
-  display: 'block',
-  height: 0,
-  ':after': {
-    display: 'block',
-    content: '""',
-    width: '100%',
-    height: '14rem',
-    position: 'relative',
-    top: '-14rem',
-    background: `linear-gradient(transparent, ${theme.color(
-      'comments',
-      isHighlighted ? 'highlightedCommentBg' : 'bg'
-    )})`,
-  },
-});
-
-const Fade = createComponent(fadeStyle, 'span');
+// eslint-disable-next-line react/prop-types
+const Fade = ({ isHighlighted, children, }) => (
+  <FelaComponent
+    style={theme => ({
+      display: 'block',
+      height: 0,
+      ':after': {
+        display: 'block',
+        content: '""',
+        width: '100%',
+        height: '14rem',
+        position: 'relative',
+        top: '-14rem',
+        background: `linear-gradient(transparent, ${theme.color(
+          'comments',
+          isHighlighted ? 'highlightedCommentBg' : 'bg'
+        )})`,
+      },
+    })}
+    render="span"
+  >
+    {children}
+  </FelaComponent>
+);
 
 const commentFooterStyle = {
   display: 'flex',
@@ -417,13 +449,14 @@ class Comment extends React.Component {
                     undefined
                   )}
                 </FelaComponent>
-                <div>
+                <div
+                  // eslint-disable-next-line
+                  ref={commentTextEl =>
+                    (this.commentTextEl = commentTextEl)
+                  }
+                >
                   <StyledCommentText>{title}</StyledCommentText>
                   <StyledCommentText
-                    // eslint-disable-next-line
-                    innerRef={commentTextEl =>
-                      (this.commentTextEl = commentTextEl)
-                    }
                     dangerouslySetInnerHTML={this.generateCommentMarkup()}
                     fade={this.state.fadeText}
                   />
