@@ -73,7 +73,7 @@ export default class SlideinBox extends React.Component {
             width: '100%',
             backgroundColor: theme.color('primary', '-1'),
             ...(direction === 'btt' ? { bottom: '0', } : { top: '0', }),
-            transform: `logical translateX(${show ? '0' : '-100'}%)`,
+            transform: `logical translateX(${show ? 0 : -100}%)`,
             zIndex: 1,
           },
         })}
@@ -82,7 +82,7 @@ export default class SlideinBox extends React.Component {
             <FelaComponent
               rule={({ theme, }) => ({
                 transform: `logical translate${axis}(${tdir *
-                  (show ? '0' : '100')}%)`,
+                  (show ? 0 : 100)}%)`,
                 transitionProperty: 'transform',
                 ...theme.getDuration('transition', duration / 2),
                 ...theme.getDelay('transition', duration / 2),

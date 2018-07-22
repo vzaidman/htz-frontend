@@ -18,7 +18,7 @@ class Example extends React.Component {
       <div>
         <SlideinBox
           show={this.state.toggleBoxShow}
-          direction="ttb"
+          direction="btt"
           duration={2}
           focus={true}
           maxHeight={[{ value: 20 }, { from: 's', value: 40 }]}>
