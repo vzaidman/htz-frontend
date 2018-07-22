@@ -92,7 +92,7 @@ export class ArticlePage extends React.Component {
               <ScrollListener />
               <UserInjector />
               <DfpInjector path={url.query.path} />
-              <GoogleAnalytics withEC />
+              <GoogleAnalytics withEC withPageView />
               <StyleProvider renderer={styleRenderer} theme={htzTheme}>
                 <Fragment>
                   <AriaLive />

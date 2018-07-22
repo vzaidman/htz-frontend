@@ -11,11 +11,14 @@ class GoogleAnalyticsInit extends React.Component {
     userType: PropTypes.string,
     // Set true to use enhanced ecommerce if needed
     withEC: PropTypes.bool,
+    // Set true to Track pageView manually
+    withPageView: PropTypes.bool,
   };
   static defaultProps = {
     host: null,
     userType: null,
     withEC: false,
+    withPageView: false,
   };
 
   componentDidMount() {
@@ -23,7 +26,10 @@ class GoogleAnalyticsInit extends React.Component {
       this.initGA(this.props.host, this.props.userType, this.props.withEC);
       window.GA_INITIALIZED = true;
     }
-    trackPage(window.location.pathname);
+    trackPage(
+      window.location.pathname + window.location.search,
+      this.props.withPageView
+    );
   }
 
   initGA = (host, userType, withEC) => {
@@ -50,10 +56,13 @@ class GoogleAnalyticsInit extends React.Component {
   }
 }
 
-function trackPage(page) {
+function trackPage(page, withPageView) {
   ReactGA.set({
     page,
   });
+  if (withPageView) {
+    ReactGA.pageview(page);
+  }
 }
 
 export default GoogleAnalyticsInit;

@@ -17,13 +17,16 @@ const GET_HOST_USER = gql`
 GoogleAnalytics.propTypes = {
   // enable ecommerce features
   withEC: PropTypes.bool,
+  // Set true to Track pageView manually
+  withPageView: PropTypes.bool,
 };
 
 GoogleAnalytics.defaultProps = {
   withEC: false,
+  withPageView: false,
 };
 
-function GoogleAnalytics({ withEC, }) {
+function GoogleAnalytics({ withEC, withPageView, }) {
   return (
     <Query query={GET_HOST_USER}>
       {({ data: { hostname, user: { type, }, }, }) => {
@@ -34,7 +37,12 @@ function GoogleAnalytics({ withEC, }) {
         }
 
         return (
-          <GoogleAnalyticsInit host={host} userType={type} withEC={withEC} />
+          <GoogleAnalyticsInit
+            host={host}
+            userType={type}
+            withEC={withEC}
+            withPageView={withPageView}
+          />
         );
       }}
     </Query>
