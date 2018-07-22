@@ -17,8 +17,6 @@ export default class SlideinBox extends React.Component {
         this.changeState,
         false
       );
-
-    this.element && this.props.show && this.props.focus && this.element.focus();
   }
 
   componentDidUpdate(prevProps) {
@@ -36,6 +34,7 @@ export default class SlideinBox extends React.Component {
         this.element &&
           this.props.show &&
           this.props.focus &&
+          !this.state.animating &&
           this.element.focus();
       }
     );
@@ -54,7 +53,7 @@ export default class SlideinBox extends React.Component {
           overflow: 'hidden',
           extend: [
             ...parseStyleProps(
-              show ? { maxHeight, } : { maxHeight: 2, },
+              show ? { maxHeight, } : { maxHeight: 0.333, },
               theme.mq,
               theme.type
             ),
@@ -73,7 +72,8 @@ export default class SlideinBox extends React.Component {
             height: '2px',
             width: '100%',
             backgroundColor: theme.color('primary', '-1'),
-            transform: show ? '0' : 'logical translateX(-100%)',
+            ...(direction === 'btt' ? { bottom: '0', } : { top: '0', }),
+            transform: `logical translateX(${show ? '0' : '-100'}%)`,
             zIndex: 1,
           },
         })}
@@ -82,7 +82,7 @@ export default class SlideinBox extends React.Component {
             <FelaComponent
               rule={({ theme, }) => ({
                 transform: `logical translate${axis}(${tdir *
-                  (show ? 0 : 100)}%)`,
+                  (show ? '0' : '100')}%)`,
                 transitionProperty: 'transform',
                 ...theme.getDuration('transition', duration / 2),
                 ...theme.getDelay('transition', duration / 2),
