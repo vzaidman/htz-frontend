@@ -8,15 +8,11 @@ module.exports = {
     }),
     sso: 'https://devsso.haaretz.co.il',
     image: 'https://images.haarets.co.il/image',
+    polopolyImageBaseHref: 'https://www.haaretz.co.il',
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
       }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
-    }),
-    polopolyImageBaseHref: defer(function () {
-      return `http${
-        this.useSSL ? 's' : ''
-      }://${this.remoteFQDN}${this.port ? `:${this.port}` : ''}`;
     }),
   },
   appFQDN: defer(function () {
