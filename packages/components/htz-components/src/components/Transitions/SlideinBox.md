@@ -1,6 +1,8 @@
-### Toggle Fade
+**Table of Contents**
 
-ToggleFade is a wrapper that gives its children a fade-in/fade-out transition
+### Conditioned time formatting.
+
+_Time in example is set to 6 hours ago._
 
 ```jsx
 class Example extends React.Component {
@@ -14,7 +16,12 @@ class Example extends React.Component {
   render() {
     return (
       <div>
-        <ToggleFade show={this.state.toggleBoxShow} duration={0.3}>
+        <SlideinBox
+          show={this.state.toggleBoxShow}
+          direction="ttb"
+          duration={2}
+          focus={true}
+          maxHeight={[{ value: 20 }, { from: 's', value: 40 }]}>
           <div
             style={{
               backgroundColor: 'yellow',
@@ -25,7 +32,7 @@ class Example extends React.Component {
             }}>
             Hello
           </div>
-        </ToggleFade>
+        </SlideinBox>
 
         <button
           onClick={() =>

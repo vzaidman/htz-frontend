@@ -118,7 +118,7 @@ function getProps(type, duration, easing, delay) {
     throw new Error('You must pass at least one of the arguments');
   }
   const timingFunction = Array.isArray(easing)
-    ? easing.map(value => timingFunctions[value]).totring()
+    ? easing.map(value => timingFunctions[value]).toString()
     : timingFunctions[easing];
 
   if ([ 'animation', 'transition', ].indexOf(type) < 0) {
