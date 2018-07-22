@@ -9,11 +9,12 @@
 /* globals twttr */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 
 import { appendScript, } from '../../../utils/scriptTools';
 
-const twitterWrapper = ({ embedType, }) => {
+// eslint-disable-next-line react/prop-types
+const TwitterWrapper = ({ embedType, children, }) => {
   let height;
 
   switch (embedType) {
@@ -35,19 +36,23 @@ const twitterWrapper = ({ embedType, }) => {
 
     default:
   }
-  return {
-    overflow: 'auto',
-    height: height || '400px',
-    maxHeight: '800px',
-    position: 'relative',
-    margin: '0 auto',
-    '& .twitter-tweet': {
-      marginBottom: '0!important',
-    },
-  };
+  return (
+    <FelaComponent
+      style={{
+        overflow: 'auto',
+        height: height || '400px',
+        maxHeight: '800px',
+        position: 'relative',
+        margin: '0 auto',
+        '& .twitter-tweet': {
+          marginBottom: '0!important',
+        },
+      }}
+    >
+      {children}
+    </FelaComponent>
+  );
 };
-
-const TwitterWrapper = createComponent(twitterWrapper, 'figure');
 
 export default class Twitter extends React.Component {
   static propTypes = {
@@ -82,7 +87,7 @@ export default class Twitter extends React.Component {
   }
 
   initScript = () => {
-    twttr.events.bind('rendered', event => {
+    twttr.events.bind('rendered', () => {
       console.log('twitter embed is loaded');
       this.props.onLoadCallback && this.props.onLoadCallback();
     });
@@ -93,10 +98,10 @@ export default class Twitter extends React.Component {
   };
 
   render() {
-    const { source, } = this.props;
+    const { source, embedType, } = this.props;
 
     return (
-      <TwitterWrapper embedType={this.props.embedType}>
+      <TwitterWrapper embedType={embedType}>
         <div dangerouslySetInnerHTML={{ __html: source, }} />
       </TwitterWrapper>
     );

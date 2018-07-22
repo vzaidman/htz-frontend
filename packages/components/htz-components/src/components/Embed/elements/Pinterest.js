@@ -5,26 +5,29 @@
   ]
  * This element does not emits an onLoad event
  * *************************************************************** */
+/* global doBuild */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { appendScript, } from '../../../utils/scriptTools';
 
-const pinterestWrapper = props => {
-  const width = props.embedType === 'pin' ? 'auto' : '100%';
-  return {
-    margin: '0 0 -3px',
-    direction: 'ltr',
-    width,
-  };
+// eslint-disable-next-line react/prop-types
+const PinterestWrapper = ({ embedType, children, }) => {
+  const width = embedType === 'pin' ? 'auto' : '100%';
+  return (
+    <FelaComponent
+      style={{
+        margin: '0 0 -3px',
+        direction: 'ltr',
+        width,
+      }}
+    >
+      {children}
+    </FelaComponent>
+  );
 };
 
-const PinterestWrapper = createComponent(pinterestWrapper, 'figure', props =>
-  Object.keys(props)
-);
-
 const updateScript = () => {
-  // eslint-disable-next-line no-undef
   doBuild();
 };
 
@@ -69,7 +72,7 @@ export default class Pinterest extends React.Component {
   }
 
   render() {
-    const type = this.props.embedType;
+    const { embedType: type, source, settings: { showCaption, }, } = this.props;
 
     const tag =
       type === 'pin' ? (
@@ -77,8 +80,8 @@ export default class Pinterest extends React.Component {
         <a
           data-pin-do="embedPin"
           data-pin-width="large"
-          data-pin-terse={this.props.settings.showCaption ? 'true' : 'false'}
-          href={this.props.source}
+          data-pin-terse={showCaption ? 'true' : 'false'}
+          href={source}
         />
       ) : (
         // eslint-disable-next-line jsx-a11y/anchor-has-content
@@ -87,7 +90,7 @@ export default class Pinterest extends React.Component {
           data-pin-board-width="350"
           data-pin-scale-height="500"
           data-pin-scale-width="240"
-          href={this.props.source}
+          href={source}
         />
       );
     return <PinterestWrapper>{tag}</PinterestWrapper>;

@@ -1,3 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 256 256">
-  <path fill="currentColor" d="M96 35h70.7l68.1 115h-70.7L96 35zM64.7 218h134.6l36-60H99.9L64.7 218zM20.7 154.6l35.9 58.9L124 99.1 89 40.2 20.7 154.6z"/>
+  <style type="text/css">
+
+    .st0{fill:#FFD04B;}
+    .st1{fill:#4688F4;}
+    .st2{fill:#1FA463;}
+
+  </style>
+  <path class="st0" d="M96 37h70.7l68.1 115h-70.7L96 37z"/>
+  <path class="st1" d="M64.7 220h134.6l36-60H99.9L64.7 220z"/>
+  <path class="st2" d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"/>
 </svg>

@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 
 Giphy.propTypes = {
   /**
@@ -28,19 +28,19 @@ Giphy.defaultProps = {
   onLoadCallback: null,
 };
 
-const giphyWrapper = () => ({
-  margin: '0',
-  marginBottom: '-4px',
-});
-
-const GiphyWrapper = createComponent(giphyWrapper, 'figure', props =>
-  Object.keys(props)
+// eslint-disable-next-line react/prop-types
+const GiphyWrapper = ({ children, }) => (
+  <FelaComponent
+    style={{
+      margin: '0',
+      marginBottom: '-4px',
+    }}
+  >
+    {children}
+  </FelaComponent>
 );
 
-function Giphy(props) {
-  const { settings, } = props;
-  const { src, height, width, } = settings;
-
+function Giphy({ settings: { src, height, width, }, onLoadCallback, }) {
   // TODO: Temporary
   const innerWidth = 600;
   // prettier-ignore
@@ -56,7 +56,7 @@ function Giphy(props) {
         frameBorder="0"
         className="giphy-embed"
         allowFullScreen
-        onLoad={props.onLoadCallback}
+        onLoad={onLoadCallback}
       />
     </GiphyWrapper>
   );

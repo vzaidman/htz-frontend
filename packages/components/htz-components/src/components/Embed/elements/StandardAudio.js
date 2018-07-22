@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 
 StandardAudio.propTypes = {
   /**
@@ -30,29 +30,28 @@ StandardAudio.defaultProps = {
   onLoadCallback: null,
 };
 
-const audioWrapper = ({ height, }) => ({
-  margin: '0',
-  height: `${height}px` || 'auto',
-  overflow: 'hidden',
-  position: 'relative',
-});
-
-const AudioWrapper = createComponent(audioWrapper, 'figure', props =>
-  Object.keys(props)
+// eslint-disable-next-line react/prop-types
+const AudioWrapper = ({ height, children, }) => (
+  <FelaComponent
+    style={{
+      margin: '0',
+      height: `${height}px` || 'auto',
+      overflow: 'hidden',
+      position: 'relative',
+    }}
+  >
+    {children}
+  </FelaComponent>
 );
 
-function StandardAudio(props) {
+function StandardAudio({ embedType, source, onLoadCallback, }) {
   const src =
-    props.embedType === '103FM'
-      ? `https://103fm.maariv.co.il/mediaEmbed.aspx?${props.source}`
-      : `https://w.soundcloud.com/player/?url=${props.source}`;
+    embedType === '103FM'
+      ? `https://103fm.maariv.co.il/mediaEmbed.aspx?${source}`
+      : `https://w.soundcloud.com/player/?url=${source}`;
 
   const height =
-    props.embedType === '103FM'
-      ? 300
-      : props.embedType === 'playlist'
-        ? 450
-        : 180;
+    embedType === '103FM' ? 300 : embedType === 'playlist' ? 450 : 180;
 
   return (
     <AudioWrapper height={height}>
@@ -64,7 +63,7 @@ function StandardAudio(props) {
         frameBorder="no"
         src={src}
         seamless
-        onLoad={props.onLoadCallback}
+        onLoad={onLoadCallback}
       />
     </AudioWrapper>
   );

@@ -31,9 +31,11 @@ function UnstyledIconDrive({ attrs, ...props }) {
   return (
     <svg width="1em" height="1em" viewBox="0 0 256 256" {...props} {...attrs}>
       {' '}
+      <path d="M96 37h70.7l68.1 115h-70.7L96 37z" fill="#ffd04b" />{' '}
+      <path d="M64.7 220h134.6l36-60H99.9l-35.2 60z" fill="#4688f4" />{' '}
       <path
-        fill="currentColor"
-        d="M96 35h70.7l68.1 115h-70.7L96 35zM64.7 218h134.6l36-60H99.9l-35.2 60zm-44-63.4l35.9 58.9L124 99.1 89 40.2 20.7 154.6z"
+        d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
+        fill="#1fa463"
       />
     </svg>
   );

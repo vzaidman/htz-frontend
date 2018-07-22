@@ -37,12 +37,10 @@ Waze.defaultProps = {
   onLoadCallback: null,
 };
 
-function Waze(props) {
-  const settings = props.settings;
-  const pin = settings.pin ? '&pin=1' : '';
-  const language = settings.language;
-  const coordinates = settings.coordinates;
-
+function Waze({
+  settings: { pin = '&pin=1', language, coordinates, },
+  onLoadCallback,
+}) {
   return (
     <MapWrapper>
       <MapElement
@@ -53,7 +51,7 @@ function Waze(props) {
         }&${coordinates[2]}&${pin}`}
         frameBorder="0"
         allowFullScreen=""
-        onLoad={props.onLoadCallback}
+        onLoad={onLoadCallback}
       />
     </MapWrapper>
   );

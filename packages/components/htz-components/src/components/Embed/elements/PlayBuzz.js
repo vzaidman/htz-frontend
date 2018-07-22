@@ -7,19 +7,22 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { appendScript, } from '../../../utils/scriptTools';
 
-const playBuzzWrapper = () => ({
-  width: '100%',
-  overflow: 'auto',
-  maxHeight: '700px',
-  position: 'relative',
-  margin: '0 auto',
-});
-
-const PlayBuzzWrapper = createComponent(playBuzzWrapper, 'figure', props =>
-  Object.keys(props)
+// eslint-disable-next-line react/prop-types
+const PlayBuzzWrapper = ({ children, }) => (
+  <FelaComponent
+    style={{
+      width: '100%',
+      overflow: 'auto',
+      maxHeight: '100rem',
+      position: 'relative',
+      margin: '0 auto',
+    }}
+  >
+    {children}
+  </FelaComponent>
 );
 
 export default class PlayBuzz extends React.Component {
@@ -47,15 +50,11 @@ export default class PlayBuzz extends React.Component {
       /**
        * Get extracted from the PlayBuzz source code.
        */
-      'data-item': PropTypes.string.isRequired,
+      'data-item': PropTypes.string,
       /**
        * Get extracted from the PlayBuzz source code.
        */
-      'data-embed-by': PropTypes.string.isRequired,
-      /**
-       * Get extracted from the PlayBuzz source code.
-       */
-      'data-version': PropTypes.string.isRequired,
+      'data-id': PropTypes.string,
     }).isRequired,
     /**
      * A function to be called when this item finishes to load.
@@ -69,7 +68,7 @@ export default class PlayBuzz extends React.Component {
 
   componentDidMount() {
     appendScript({
-      src: '//cdn.playbuzz.com/widget/feed.js',
+      src: '//embed.playbuzz.com/sdk.js',
       id: 'playbuzz-js',
       isAsync: true,
       onLoadFunction: this.props.onLoadCallback,
@@ -84,31 +83,23 @@ export default class PlayBuzz extends React.Component {
     const facebook = settings.facebook || false;
     const recommendations = settings.recommendations || false;
 
-    const dataItem =
-      settings['data-item'].substring(
+    const dataId = settings['data-id']
+      ? settings['data-id'].substring(
+        settings['data-id'].indexOf('"') + 1,
+        settings['data-id'].lastIndexOf('"')
+      )
+      : settings['data-item'].substring(
         settings['data-item'].indexOf('"') + 1,
         settings['data-item'].lastIndexOf('"')
-      ) || '';
-    const dataEmbedBy =
-      settings['data-embed-by'].substring(
-        settings['data-embed-by'].indexOf('"') + 1,
-        settings['data-embed-by'].lastIndexOf('"')
-      ) || '';
-    const dataVersion =
-      settings['data-version'].substring(
-        settings['data-version'].indexOf('"') + 1,
-        settings['data-version'].lastIndexOf('"')
       ) || '';
 
     return (
       <PlayBuzzWrapper>
         <div
-          className="pb_feed"
-          data-item={dataItem}
-          data-embed-by={dataEmbedBy}
-          data-version={dataVersion}
-          data-game-info={info}
-          data-shares={share}
+          className="playbuzz pb_feed"
+          data-id={dataId}
+          data-show-info={info}
+          data-show-share={share}
           data-comments={facebook}
           data-recommend={recommendations}
         />

@@ -5,10 +5,18 @@
   ]
  * *************************************************************** */
 
-/* globals window location FB */
+/* globals FB */
 import React from 'react';
 import PropTypes from 'prop-types';
+import gql from 'graphql-tag';
 import { appendScript, } from '../../../utils/scriptTools';
+import { Query, } from '../../ApolloBoundary/ApolloBoundary';
+
+const GET_CANONICAL = gql`
+  query GetCanonicalUrl {
+    canonicalUrl @client
+  }
+`;
 
 export default class FacebookComments extends React.Component {
   static propTypes = {
@@ -61,13 +69,17 @@ export default class FacebookComments extends React.Component {
   render() {
     const { source, embedType, } = this.props;
     return (
-      <div
-        className="fb-comments"
-        data-width="100%"
-        data-href={window.location.href}
-        data-order-by={embedType}
-        data-numposts={source}
-      />
+      <Query query={GET_CANONICAL}>
+        {({ loading, error, data: { canonicalUrl, }, }) => (
+          <div
+            className="fb-comments"
+            data-width="100%"
+            data-href={canonicalUrl}
+            data-order-by={embedType}
+            data-numposts={source}
+          />
+        )}
+      </Query>
     );
   }
 }

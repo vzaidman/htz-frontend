@@ -8,16 +8,22 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { appendScript, } from '../../../utils/scriptTools';
 
-const tlineWrapper = () => ({
-  textAlign: 'center',
-  margin: '0 auto',
-});
-
-const TlineWrapper = createComponent(tlineWrapper, 'figure', props =>
-  Object.keys(props)
+// eslint-disable-next-line react/prop-types
+const TlineWrapper = ({ className, children, ...props }) => (
+  <FelaComponent
+    style={{
+      textAlign: 'center',
+      margin: '0 auto',
+    }}
+    render={({ className: classes, }) => (
+      <div className={`${classes} ${className}`} {...props}>
+        {children}
+      </div>
+    )}
+  />
 );
 
 export default class Tline extends React.Component {
@@ -50,8 +56,8 @@ export default class Tline extends React.Component {
   }
 
   render() {
-    const settings = this.props.settings;
-    const src = settings.src;
+    const { settings, } = this.props;
+    const { src, } = settings;
     const alias = settings['data-alias'];
     const version = settings['data-version'];
 

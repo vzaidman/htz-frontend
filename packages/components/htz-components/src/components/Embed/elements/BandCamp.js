@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 
 BandCamp.propTypes = {
   /**
@@ -47,34 +47,43 @@ BandCamp.defaultProps = {
   onLoadCallback: null,
 };
 
-const bandCampWrapper = () => ({
-  overflow: 'auto',
-  position: 'relative',
-  margin: '0 auto -4px',
-  maxWidth: '700px',
-});
-
-const BandCampWrapper = createComponent(bandCampWrapper, 'figure', props =>
-  Object.keys(props)
+// eslint-disable-next-line react/prop-types
+const BandCampWrapper = ({ children, }) => (
+  <FelaComponent
+    style={{
+      overflow: 'auto',
+      position: 'relative',
+      margin: '0 auto -4px',
+      maxWidth: '700px',
+    }}
+  >
+    {children}
+  </FelaComponent>
 );
 
-function BandCamp(props) {
-  const settings = props.settings;
-  const type = props.embedType;
-  const layout = settings.layout;
-  const link = settings.link;
-  const album = settings.album;
-  const trackId = settings.track;
+function BandCamp({ embedType: type, settings, onLoadCallback, }) {
+  const {
+    layout,
+    link,
+    album,
+    track: trackId,
+    showTrackList,
+    slimShowArt,
+    standardShowArt,
+    artworkSize,
+    theme,
+    linkcol,
+  } = settings;
 
   const size = layout === 'slim' ? 'small' : 'large';
   const minimal = layout === 'artworkOnly' ? '/minimal=true' : '';
   const trackList =
-    layout === 'standard' && !settings.showTrackList ? '/tracklist=false' : '';
+    layout === 'standard' && !showTrackList ? '/tracklist=false' : '';
   const track = type === 'track' ? `/track=${trackId}` : '';
   const artwork =
-    !settings.slimShowArt || !settings.standardShowArt
+    !slimShowArt || !standardShowArt
       ? '/artwork=none'
-      : layout === 'standard' && settings.artworkSize === 'small'
+      : layout === 'standard' && artworkSize === 'small'
         ? '/artwork=small'
         : '';
 
@@ -85,17 +94,16 @@ function BandCamp(props) {
       ? 42
       : layout === 'artworkOnly'
         ? width
-        : settings.standardShowArt === true &&
-          settings.artworkSize === 'large' &&
-          settings.showTrackList === false
+        : standardShowArt === true &&
+          artworkSize === 'large' &&
+          showTrackList === false
           ? width + 117
-          : settings.standardShowArt === true &&
-            settings.artworkSize === 'large' &&
-            settings.showTrackList === true
+          : standardShowArt === true &&
+            artworkSize === 'large' &&
+            showTrackList === true
             ? width + 436
-            : (settings.standardShowArt === false ||
-                settings.artworkSize === 'small') &&
-              settings.showTrackList === false
+            : (standardShowArt === false || artworkSize === 'small') &&
+              showTrackList === false
               ? 120
               : 472;
 
@@ -105,14 +113,10 @@ function BandCamp(props) {
         title="BandCamp"
         width="100%"
         height={height}
-        src={`https://bandcamp.com/EmbeddedPlayer/transparent=true/album=${
-          album
-        }/size=${size}/bgcol=${settings.theme}/linkcol=${settings.linkcol}${
-          minimal
-        }${trackList}${track}${artwork}`}
+        src={`https://bandcamp.com/EmbeddedPlayer/transparent=true/album=${album}/size=${size}/bgcol=${theme}/linkcol=${linkcol}${minimal}${trackList}${track}${artwork}`}
         frameBorder="0"
         allowFullScreen=""
-        onLoad={props.onLoadCallback}
+        onLoad={onLoadCallback}
       >
         {link}
       </iframe>

@@ -25,7 +25,7 @@ NYT.defaultProps = {
   onLoadCallback: null,
 };
 
-function NYT(props) {
+function NYT({ source, onLoadCallback, }) {
   return (
     <VideoWrapper aspectRatio="16/9" nyt>
       <VideoElement
@@ -37,8 +37,8 @@ function NYT(props) {
         marginHeight="0"
         marginWidth="0"
         id="nyt_video_player"
-        src={props.source}
-        onLoad={props.onLoadCallback}
+        src={source}
+        onLoad={onLoadCallback}
       />
     </VideoWrapper>
   );

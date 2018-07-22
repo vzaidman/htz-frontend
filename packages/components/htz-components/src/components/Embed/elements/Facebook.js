@@ -8,21 +8,16 @@
 /* globals FB */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { appendScript, } from '../../../utils/scriptTools';
 
-const facebookWrapper = props => {
-  const { type, } = props;
-
+// eslint-disable-next-line react/prop-types
+const FacebookWrapper = ({ type, children, }) => {
   const width =
     type === 'post' ? '552px' : type === 'comment' ? '620px' : '100%';
 
-  return {
-    width,
-  };
+  return <FelaComponent style={{ width, }}>{children}</FelaComponent>;
 };
-
-const FacebookWrapper = createComponent(facebookWrapper, 'figure');
 
 export default class Facebook extends React.Component {
   static propTypes = {

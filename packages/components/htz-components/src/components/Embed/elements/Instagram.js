@@ -10,19 +10,21 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { appendScript, } from '../../../utils/scriptTools';
 
-const instagramWrapper = () => ({
-  clear: 'both',
-  overflow: 'hidden',
-  position: 'relative',
-  margin: '0 auto',
-  marginBottom: '-12px',
-});
-
-const InstagramWrapper = createComponent(instagramWrapper, 'figure', props =>
-  Object.keys(props)
+const InstagramWrapper = children => (
+  <FelaComponent
+    style={{
+      clear: 'both',
+      overflow: 'hidden',
+      position: 'relative',
+      margin: '0 auto',
+      marginBottom: '-12px',
+    }}
+  >
+    {children}
+  </FelaComponent>
 );
 
 const updateScript = () => {

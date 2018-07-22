@@ -16,15 +16,16 @@ import IconDrive from '../../Icon/icons/IconDrive';
 // eslint-disable-next-line react/prop-types
 const LinkToFile = ({ href, target, children, }) => (
   <FelaComponent
-    style={{
-      color: '#0895c3',
+    style={theme => ({
+      color: theme.color('link'),
       textDecoration: 'none',
       ':hover': {
+        color: theme.color('link'),
         borderBottom: '1px solid',
         paddingBottom: '.06em',
         outline: '0',
       },
-    }}
+    })}
     render={({ className, }) => (
       <HtzLink className={className} href={href} target={target}>
         {children}
@@ -33,24 +34,17 @@ const LinkToFile = ({ href, target, children, }) => (
   />
 );
 
-class FileUpload extends React.Component {
-  componentDidMount() {
-    // This component doesn't have an onLoad event,
-    // so we run this function as the component is mounted.
-    this.props.onLoadCallback();
-  }
+function FileUpload({ source, embedType, contentName, }) {
+  const Icon = embedType === 'pdf' ? IconPdf : IconDrive;
 
-  render() {
-    const { source, embedType, contentName, } = this.props;
-    const Icon = embedType === 'pdf' ? IconPdf : IconDrive;
-
-    return (
-      <LinkToFile href={source} target="_blank">
-        <Icon size={4} />
-        <span>{contentName}</span>
-      </LinkToFile>
-    );
-  }
+  return (
+    <LinkToFile href={source} target="_blank">
+      <Icon size={5.5} />
+      <FelaComponent style={{ marginStart: '1rem', }} render="span">
+        {contentName}
+      </FelaComponent>
+    </LinkToFile>
+  );
 }
 
 FileUpload.propTypes = {
@@ -66,14 +60,6 @@ FileUpload.propTypes = {
    * File's description.
    */
   contentName: PropTypes.string.isRequired,
-  /**
-   * A function to be called when the audio element finishes to load.
-   */
-  onLoadCallback: PropTypes.func,
-};
-
-FileUpload.defaultProps = {
-  onLoadCallback: null,
 };
 
 export default FileUpload;

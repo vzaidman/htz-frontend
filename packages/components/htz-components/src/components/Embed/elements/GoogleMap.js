@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 
 import { VideoWrapper as MapWrapper, } from '../sharedStyles/videoWrapper';
 import { VideoElement as MapElement, } from '../sharedStyles/videoElement';
@@ -75,22 +75,31 @@ GoogleMap.defaultProps = {
   onLoadCallback: null,
 };
 
-const mapCover = () => ({
-  bottom: '0',
-  left: '0',
-  right: '0',
-  top: '0',
-  cursor: 'pointer',
-  position: 'absolute',
-  zIndex: '1',
-});
+// eslint-disable-next-line react/prop-types
+const MapCover = ({ onClick, }) => (
+  <FelaComponent
+    style={{
+      bottom: '0',
+      left: '0',
+      right: '0',
+      top: '0',
+      cursor: 'pointer',
+      position: 'absolute',
+      zIndex: '1',
+    }}
+    render={({ className, }) => (
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
+      <div className={className} onClick={onClick} />
+    )}
+  />
+);
 
-const MapCover = createComponent(mapCover, 'div', props => Object.keys(props));
-
-function GoogleMap(props) {
-  const settings = props.settings;
-  const type = props.embedType;
-  const address = props.source;
+function GoogleMap({
+  embedType: type,
+  source: address,
+  settings,
+  onLoadCallback,
+}) {
   const key = 'AIzaSyBIAxVLUwr1Lls-usIxb0HxCRpCXMhJtlU';
 
   let waypoints;
@@ -102,9 +111,7 @@ function GoogleMap(props) {
 
   const zoom =
     type !== 'streetView'
-      ? settings.zoom
-        ? `&zoom=${settings.zoom}`
-        : ''
+      ? settings.zoom ? `&zoom=${settings.zoom}` : ''
       : '';
   const satellite =
     type !== 'streetView' && settings.satellite ? '&maptype=satellite' : '';
@@ -151,7 +158,7 @@ function GoogleMap(props) {
           ''}${fov || ''}${heading || ''}${zoom || ''}${pitch || ''}`}
         frameBorder="0"
         allowFullScreen=""
-        onLoad={props.onLoadCallback}
+        onLoad={onLoadCallback}
       />
 
       <MapCover onClick={removeCover} />

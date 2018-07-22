@@ -27,16 +27,16 @@ Vimeo.defaultProps = {
   onLoadCallback: null,
 };
 
-function Vimeo(props) {
+function Vimeo({ source, onLoadCallback, }) {
   return (
     <VideoWrapper>
       <VideoElement
         width="640"
         height="360"
-        src={`https://player.vimeo.com/video/${props.source}`}
+        src={`https://player.vimeo.com/video/${source}`}
         frameBorder="0"
         allowFullScreen=""
-        onLoad={props.onLoadCallback}
+        onLoad={onLoadCallback}
       />
     </VideoWrapper>
   );
