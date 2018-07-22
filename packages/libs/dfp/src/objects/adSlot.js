@@ -28,6 +28,10 @@ export default class AdSlot {
     this.department = this.config.department;
     this.network = this.config.network;
     this.adUnitBase = this.config.adUnitBase;
+    if (this.id.includes('mobile_web')) {
+      // TODO find a better impl
+      this.adUnitBase = this.adUnitBase.replace('.web', '.mobile_web');
+    }
 
     // Part III : ad specific configuration - passed from globalConfig.adSlotConfig
     this.adSizeMapping = this.config.adSizeMapping;
@@ -335,5 +339,14 @@ export default class AdSlot {
       return slot;
     }
     return null;
+  }
+
+  debug() {
+    if (this.slot) {
+      googletag.openConsole(this.id);
+    }
+    else {
+      console.warn(`no slot was defined for slot: ${this.id}`);
+    }
   }
 }

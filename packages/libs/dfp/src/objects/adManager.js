@@ -367,6 +367,8 @@ export default class AdManager {
       this.shouldDisplayAdAfterAdBlockRemoval(adSlot) &&
       //  if a paywall pop-up is shown And the number is 12 or more - SHOW MAAVRON
       this.shouldDisplayAdMaavaronAfterPayWallBanner(adSlot) &&
+      // Mobile device detection (responsive)
+      this.isMobile(adSlot) &&
       // Responsive: breakpoint contains ad?
       this.doesBreakpointContainAd(adSlot) &&
       // check in case of Smartphoneapp
@@ -501,6 +503,24 @@ export default class AdManager {
       containsBreakpoint = mapping.length > 0 && !isEqual(mapping, [ [ 0, 0, ], ]);
     }
     return containsBreakpoint;
+  }
+
+  /**
+   * Checks whether an adSlot should be loaded on mobile or desktop.
+   * If the adSlot is for mobile, only load it when the user is on mobile devices.
+   * If the adSlot isn't for mobile, make sure it doesn't load on mobile devices.
+   * @param {AdSlot} adSlot - the adSlot to check.
+   * @returns {boolean} true iff the adSlot should be displayed.
+   */
+  isMobile(adSlot) {
+    if (!adSlot) {
+      throw new Error(
+        'Missing argument: a call to isMobile must have an adSlot'
+      );
+    }
+    const isMobileAdSlot = adSlot.id.includes('mobile_web');
+    const isOnMobile = this.config.isMobile;
+    return isMobileAdSlot === isOnMobile;
   }
 
   /**

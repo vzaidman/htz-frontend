@@ -90,13 +90,14 @@ const dfpBaseConf = {
     return window.location.port === '8080' || window.location.port === '3000'
       ? env.dev
       : window.location.hostname.indexOf('pre.haaretz.co.il') > -1 ||
+        window.location.hostname.indexOf('pre.haaretz.com') > -1 ||
         window.location.hostname.indexOf('tmtest.themarker.com') > -1 ||
-        window.location.hostname.indexOf('prodmouse.mouse.co.il') > -1 ||
-        window.location.hostname.indexOf('docker.themarker.com') > -1
+        window.location.hostname.indexOf('pre.themarker.com') > -1 ||
+        window.location.hostname.indexOf('react-stage.') > -1
         ? env.test
         : window.location.pathname.indexOf('/cmlink/Haaretz.HomePage') > -1 ||
           window.location.pathname.indexOf('/cmlink/TheMarker.HomePage') > -1 ||
-          window.location.pathname.indexOf('/cmlink/Mouse.HomePage') > -1
+          window.location.pathname.indexOf('react-prod.') > -1
           ? env.prod
           : undefined;
   },
