@@ -11,8 +11,8 @@ import TextInput from '../TextInput/TextInput';
 import UserDispenser from '../User/UserDispenser';
 import EventTracker from '../../utils/EventTracker';
 
-const PlatformQuery = gql`
-  {
+const PLATFORM_QUERY = gql`
+  query GetPlatform {
     platform @client
   }
 `;
@@ -229,7 +229,7 @@ class CommentForm extends React.Component {
                 return errors;
               }}
               render={({ getInputProps, handleSubmit, }) => (
-                <Query query={PlatformQuery}>
+                <Query query={PLATFORM_QUERY}>
                   {({ loading, error, data, client, }) => {
                     if (loading) return null;
                     if (error) console.log(error);
