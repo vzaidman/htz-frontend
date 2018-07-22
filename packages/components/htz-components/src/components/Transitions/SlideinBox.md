@@ -1,8 +1,6 @@
 **Table of Contents**
 
-### Conditioned time formatting.
-
-_Time in example is set to 6 hours ago._
+### Slide-in animation box.
 
 ```jsx
 class Example extends React.Component {
