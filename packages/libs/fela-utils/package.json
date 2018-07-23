@@ -33,7 +33,7 @@
   "dependencies": {
     "bidi-css-js": "^3.1.0",
     "enzyme": "^3.3.0",
-    "enzyme-to-json": "^3.3.1",
+    "enzyme-to-json": "^3.3.0",
     "fela-beautifier": "^5.0.15",
     "fela-bindings": "^2.2.0",
     "fela-combine-arrays": "^1.0.7",
