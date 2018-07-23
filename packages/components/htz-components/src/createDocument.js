@@ -45,6 +45,7 @@ const createDocument = ({
     static getInitialProps({ renderPage, req, }) {
       const host = req.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       const ampUrl = `${req.hostname}/amp${req.url}`;
+      const canonicalUrl = `${req.hostname}${req.url}`;
       const validatedTheme = hasToggleableTheme ? theme(host) : theme;
       const varifiedStaticRules = hasToggleableTheme
         ? staticRules(host)
@@ -81,6 +82,7 @@ const createDocument = ({
         isRtl,
         host,
         ampUrl,
+        canonicalUrl,
       };
     }
 
@@ -133,7 +135,11 @@ const createDocument = ({
               name="viewport"
               content="width=device-width, initial-scale=1, minimum-scale=1"
             />
-            <SEO host={this.props.host} ampUrl={this.props.ampUrl} />
+            <SEO
+              host={this.props.host}
+              ampUrl={this.props.ampUrl}
+              canonicalUrl={this.props.canonicalUrl}
+            />
             {buildFontPreloadLink(fontRules)}
             <link rel="shortcut icon" href="about:blank" />
             {this.renderStyles()}

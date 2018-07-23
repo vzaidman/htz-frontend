@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 const propTypes = {
   host: PropTypes.string.isRequired,
   ampUrl: PropTypes.string.isRequired,
+  canonicalUrl: PropTypes.string.isRequired,
 };
 
 const defaultProps = {};
 
-function SEO({ host, ampUrl, }) {
+function SEO({ host, ampUrl, canonicalUrl, }) {
   const site = host === 'themarker.com' ? 'tm' : 'htz';
 
   return (
@@ -39,6 +40,9 @@ function SEO({ host, ampUrl, }) {
 
       {/* <!-- AMP --> */}
       <link rel="amphtml" href={ampUrl} />
+
+      {/* <!-- canonical --> */}
+      <link rel="canonical" href={canonicalUrl} />
 
       {/* <!-- FAVICONS --> */}
       <link rel="shortcut icon" href={`/static/${site}/images/favicon.ico`} />
