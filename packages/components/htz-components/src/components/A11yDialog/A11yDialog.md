@@ -27,6 +27,8 @@ be customizable enough to cover all use cases in the UI system, like : a11y, foc
 
 ### **1. Simple usage with stateful component: (Dialog)**
 
+* In this example a prop `isVisible` is set to `true` so the dialog opens automatically.
+
 #### **used props**
 
 * `appendTo` - Set portal `<div>` id to `dialog-example-1`. | **required**

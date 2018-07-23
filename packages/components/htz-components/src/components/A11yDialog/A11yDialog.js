@@ -114,17 +114,17 @@ class A11yDialog extends React.Component {
   };
 
   componentDidMount = () => {
-    const { isVisible, } = this.props;
-    this.setState({ isMounted: true, });
-    const { toggleRefs, } = this.props;
+    const { isVisible, toggleRefs, } = this.props;
+
+    this.setState({ isMounted: true, }, () => {
+      if (isVisible) {
+        this.openDialog();
+      }
+    });
     if (Array.isArray(toggleRefs)) {
       toggleRefs.forEach(id =>
         buttonHandlers.setToggleHandler(id, this.toggleDialog)
       );
-    }
-
-    if (isVisible && this.state.isMounted) {
-      this.openDialog();
     }
   };
 
