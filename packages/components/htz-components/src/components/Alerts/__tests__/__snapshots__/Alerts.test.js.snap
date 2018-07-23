@@ -6,35 +6,40 @@ Object {
     <button
       aria-describedby="alerts_btn_description"
       aria-expanded={false}
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
       onClick={[Function]}
     >
       <span
-        className="htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
+        className="htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
         id="alerts_btn_description"
       >
         קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
         Avi Kaufman
       </span>
-      <div
-        className="htz-ab htz-ac htz-ae"
+      <svg
+        className="htz-y htz-z htz-ab htz-ac htz-ae htz-af"
+        height="1em"
+        viewBox="0 0 350 256"
+        width="1.3671875em"
       >
-        <svg
-          className="htz-af htz-ag htz-ah htz-ai htz-aj"
-          height="1em"
-          viewBox="0 0 256 256"
-          width="1em"
-        >
-           
-          <path
-            d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
-            fill="currentColor"
-          />
-        </svg>
+         
+        <path
+          d="M233 46.5l-102.9 93-101.9-93H233zm-63.9 73.8l64.7 70.4-7.4 9-65.8-71.7-30.5 27.6-30.6-27.9L34 199.3l-7.4-9L91 119.9 23 57.7v151.8h215V58.1l-68.9 62.2zM327 46.5h-89v12h89v-12zm-14 37h-75v12h75v-12zm-17 38h-58v11h58v-11zm-14 38h-44v12h44v-12zm-17 38h-27v12h27v-12z"
+          fill="currentColor"
+        />
+      </svg>
+      <span
+        className="htz-ag"
+      >
         התראות במייל
-      </div>
+      </span>
+      <span
+        className="htz-ah htz-ai"
+      >
+        התראות
+      </span>
     </button>
   </div>,
-  "styles": ".htz-p{border:0}.htz-q{clip:rect(0 0 0 0)}.htz-r{-webkit-clip-path:inset(50%)}.htz-s{clip-path:inset(50%)}.htz-t{height:1px}.htz-u{margin:-1px}.htz-v{overflow:hidden}.htz-w{padding:0}.htz-x{position:absolute}.htz-y{width:1px}.htz-z{white-space:nowrap}.htz-ab{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ac{align-items:center}.htz-ae{-webkit-box-align:center}.htz-af{vertical-align:-0.15em}.htz-ag{color:inherit}.htz-ah{fill:#FFF}.htz-ai{font-size:3rem}.htz-aj{margin-left:1rem}@media (min-width: 37.5em){.htz-a{display:block}.htz-b{width:100%}.htz-c{text-align:left}.htz-d{color:#A8001C}.htz-e{font-weight:700}}@media (min-width: 37.5em) and (max-width: 79.9375em){.htz-f{font-size:2.3333333333333335rem}.htz-g{line-height:1.2857142857142858em}}@media (min-width: 37.5em) and (min-width: 80em){.htz-h{font-size:2.2857142857142856rem}.htz-i{line-height:1.3125em}}@media (max-width: 37.4375em){.htz-j{text-align:center}.htz-k{width:5rem}}@media (max-width: 37.4375em) and (max-width: 79.9375em){.htz-l{font-size:2rem}.htz-m{line-height:1.5em}}@media (max-width: 37.4375em) and (min-width: 80em){.htz-n{font-size:2rem}.htz-o{line-height:1.5em}}",
+  "styles": ".htz-a{color:#A8001C}.htz-b{font-weight:bold}.htz-n{border:0}.htz-o{clip:rect(0 0 0 0)}.htz-p{-webkit-clip-path:inset(50%)}.htz-q{clip-path:inset(50%)}.htz-r{height:1px}.htz-s{margin:-1px}.htz-t{overflow:hidden}.htz-u{padding:0}.htz-v{position:absolute}.htz-w{width:1px}.htz-x{white-space:nowrap}.htz-y{vertical-align:-0.15em}.htz-z{color:inherit}.htz-ab{fill:#FFF}.htz-af{margin-left:1rem}.htz-ah{display:block}@media (min-width: 80em){.htz-c{font-size:2rem}.htz-d{line-height:1.5em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-e{font-size:2.3333333333333335rem}.htz-f{line-height:1.2857142857142858em}}@media (max-width: 63.9375em){.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}@media (min-width: 37.5em){.htz-i{width:100%}.htz-j{text-align:left}.htz-ae{font-size:2.5rem}.htz-ai{display:none}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-k{display:inline}}@media (min-width: 64em){.htz-l{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}}@media (max-width: 37.4375em){.htz-m{text-align:center}.htz-ac{font-size:3rem}.htz-ag{display:none}}",
 }
 `;

@@ -3,36 +3,32 @@
 exports[`A Paragraph with italic, underline and link  1`] = `
 Object {
   "component": <div>
-    <div
+    <p
       className=""
     >
-      <p
-        className=""
+      זהו תפקידו של הזיכרון האולטימטיבי הזה, וזה גם המחולל שלו, ואת העדות לכך מספק קנאוסגורד בהצהרה כי את אמו, שהוא מכנה 
+      <span
+        className="htz-a htz-b htz-c"
       >
-        זהו תפקידו של הזיכרון האולטימטיבי הזה, וזה גם המחולל שלו, ואת העדות לכך מספק קנאוסגורד בהצהרה כי את אמו, שהוא מכנה 
-        <span
-          className="htz-a htz-b htz-c"
-        >
-          קרקעית הבאר של הילדות
-        </span>
-        , הנחמה שבביבים של ההשפלה והפחד מהאב, הוא אינו זוכר. היא תמיד היתה שם, הוא מעיד, 
-        <em
-          className="htz-d"
-        >
-          אני פשוט לא מצליח לזכור את זה
-        </em>
-        . כלומר, הזיכרון המושלם שקנאוסגורד מפגין מולנו כבר שלושה כרכים פגום. אבל הוא לא רק פגום, הוא הפגם עצמו. הוא היסוד לכל מה שמושחת, הוא התשוקה לשכוח. המאבק שלי, המאבק של קנאוסגורד, הוא הניסיון לנקז את הנורא מכל שהתגלה במצבור שופע בנפשו במהלך החקירה הזאת. 
-        <a
-          className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
-          href="https://www.haaretz.co.il/literature/prose/.premium-REVIEW-1.4740317"
-          onClick={null}
-          target="_blank"
-        >
-          קנאוסגורד פולט את הזיכרונות שלו בכפייה
-        </a>
-         כדי לא להיות היחיד שנושא בעול הזה: להיות הריאקציה למהפכת השוויון, ריאקציה שחותרת למחנה השמדה.
-      </p>
-    </div>
+        קרקעית הבאר של הילדות
+      </span>
+      , הנחמה שבביבים של ההשפלה והפחד מהאב, הוא אינו זוכר. היא תמיד היתה שם, הוא מעיד, 
+      <em
+        className="htz-d"
+      >
+        אני פשוט לא מצליח לזכור את זה
+      </em>
+      . כלומר, הזיכרון המושלם שקנאוסגורד מפגין מולנו כבר שלושה כרכים פגום. אבל הוא לא רק פגום, הוא הפגם עצמו. הוא היסוד לכל מה שמושחת, הוא התשוקה לשכוח. המאבק שלי, המאבק של קנאוסגורד, הוא הניסיון לנקז את הנורא מכל שהתגלה במצבור שופע בנפשו במהלך החקירה הזאת. 
+      <a
+        className="htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+        href="https://www.haaretz.co.il/literature/prose/.premium-REVIEW-1.4740317"
+        onClick={null}
+        target="_blank"
+      >
+        קנאוסגורד פולט את הזיכרונות שלו בכפייה
+      </a>
+       כדי לא להיות היחיד שנושא בעול הזה: להיות הריאקציה למהפכת השוויון, ריאקציה שחותרת למחנה השמדה.
+    </p>
   </div>,
   "styles": ".htz-a{text-decoration:underline}.htz-b{-webkit-text-decoration-skip:ink}.htz-c{text-decoration-skip:ink}.htz-d{font-style:italic}.htz-e{color:#0B7EB5}.htz-f:visited{color:#0B7EB5}.htz-g:hover{color:#0B7EB5}.htz-h:hover{border-bottom-color:#0B7EB5}.htz-i:hover{border-bottom-width:1px}.htz-j:hover{border-bottom-style:solid}.htz-k:focus{color:#0B7EB5}.htz-l:focus{border-bottom-color:#0B7EB5}.htz-m:focus{border-bottom-width:1px}.htz-n:focus{border-bottom-style:solid}.htz-o:active{color:#0B7EB5}.htz-p:active{border-bottom-color:#0B7EB5}.htz-q:active{border-bottom-width:2px}.htz-r:active{border-bottom-style:solid}",
 }

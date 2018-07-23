@@ -19,26 +19,25 @@ Object {
 exports[`Link within paragraph component  1`] = `
 Object {
   "component": <div>
-    <div
-      className=""
+    <a
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+      href="http://www.iflscience.com/physics/new-type-of-bizarre-quantum-material-discovered/"
+      onClick={null}
+      target="_blank"
     >
-      <a
-        className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
-        href="http://www.iflscience.com/physics/new-type-of-bizarre-quantum-material-discovered/"
-        onClick={null}
-        target="_blank"
+      <span
+        miscStyles={null}
       >
-        <span>
-          New Type Of 
-          <strong
-            className="htz-o"
-          >
-            Bizarre Quantum Material
-          </strong>
-           Discovered.
-        </span>
-      </a>
-    </div>
+        New Type Of 
+        <strong
+          className="htz-o"
+          miscStyles={null}
+        >
+          Bizarre Quantum Material
+        </strong>
+         Discovered.
+      </span>
+    </a>
   </div>,
   "styles": ".htz-a{color:#0B7EB5}.htz-b:visited{color:#0B7EB5}.htz-c:hover{color:#0B7EB5}.htz-d:hover{border-bottom-color:#0B7EB5}.htz-e:hover{border-bottom-width:1px}.htz-f:hover{border-bottom-style:solid}.htz-g:focus{color:#0B7EB5}.htz-h:focus{border-bottom-color:#0B7EB5}.htz-i:focus{border-bottom-width:1px}.htz-j:focus{border-bottom-style:solid}.htz-k:active{color:#0B7EB5}.htz-l:active{border-bottom-color:#0B7EB5}.htz-m:active{border-bottom-width:2px}.htz-n:active{border-bottom-style:solid}.htz-o{font-weight:700}",
 }

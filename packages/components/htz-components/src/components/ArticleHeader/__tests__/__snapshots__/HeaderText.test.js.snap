@@ -3,7 +3,9 @@
 exports[`HeaderText component correctly renders with all possible props 1`] = `
 Object {
   "component": <div>
-    <div>
+    <div
+      className={null}
+    >
       <span
         className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
       >
@@ -14,21 +16,23 @@ Object {
       >
         ישראל שומרת על ריסון בעזה ומאמצת גישה תקיפה בגבול הצפון
       </h1>
-      <h2
+      <p
         className="htz-n htz-o htz-p htz-q htz-r htz-s"
       >
         ההודעה הישראלית על החזרת אספקת החשמל לעזה היא חלק מהצורך לנהל כמה משברים במקביל. קשה לראות את וושינגטון מתערבת כדי להגביל מהלכים ישראלים בצפון, אם נתניהו יחליט שאלה פעולות נדרשות
-      </h2>
+      </p>
     </div>
   </div>,
-  "styles": ".htz-a{display:inline}.htz-b{background-color:transparent}.htz-c{color:#A8001C}.htz-d:after{content:\\"|\\"}.htz-e:after{padding-right:1rem}.htz-n{font-weight:normal}.htz-o{margin-top:2rem}@media (max-width: 47.9375em){.htz-f{font-size:4rem}.htz-g{line-height:1.25em}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-h{font-size:4.666666666666667rem}.htz-i{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{font-size:5.333333333333333rem}.htz-k{line-height:1.125em}}@media (min-width: 80em){.htz-l{font-size:5.142857142857143rem}.htz-m{line-height:1.1666666666666667em}.htz-r{font-size:3rem}.htz-s{line-height:1.3333333333333333em}}@media (max-width: 79.9375em){.htz-p{font-size:3rem}.htz-q{line-height:1.3333333333333333em}}",
+  "styles": ".htz-a{display:inline}.htz-b{background-color:transparent}.htz-c{color:#A8001C}.htz-d:after{content:\\"|\\"}.htz-e:after{padding-right:1rem}.htz-n{font-weight:normal}.htz-o{margin-top:1rem}@media (max-width: 47.9375em){.htz-f{font-size:4rem}.htz-g{line-height:1.25em}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-h{font-size:4.666666666666667rem}.htz-i{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{font-size:5.333333333333333rem}.htz-k{line-height:1.125em}}@media (min-width: 80em){.htz-l{font-size:5.142857142857143rem}.htz-m{line-height:1.1666666666666667em}.htz-r{font-size:3rem}.htz-s{line-height:1.3333333333333333em}}@media (max-width: 79.9375em){.htz-p{font-size:3rem}.htz-q{line-height:1.3333333333333333em}}",
 }
 `;
 
 exports[`HeaderText component correctly renders with minimum required props 1`] = `
 Object {
   "component": <div>
-    <div>
+    <div
+      className={null}
+    >
       <h1
         className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
       >

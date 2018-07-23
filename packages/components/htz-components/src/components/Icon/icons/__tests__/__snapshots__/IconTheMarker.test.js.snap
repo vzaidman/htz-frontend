@@ -10,15 +10,9 @@ exports[`<IconTheMarker /> DOM element add "id" attribute to DOM element 1`] = `
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>
@@ -36,15 +30,9 @@ exports[`<IconTheMarker /> DOM element add "onClick" attribute to DOM element 1`
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>
@@ -62,15 +50,9 @@ exports[`<IconTheMarker /> DOM element pass attributes defined in the "attrs" pr
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>
@@ -87,15 +69,9 @@ exports[`<IconTheMarker /> DOM element render correctly when no props are passed
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>
@@ -112,15 +88,9 @@ exports[`<IconTheMarker /> styles responsively set misc styles on an icon 1`] = 
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>
@@ -137,15 +107,9 @@ exports[`<IconTheMarker /> styles set icon's color 1`] = `
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>
@@ -162,15 +126,9 @@ exports[`<IconTheMarker /> styles set icon's color responsively 1`] = `
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>
@@ -187,15 +145,9 @@ exports[`<IconTheMarker /> styles set icon's fill 1`] = `
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>
@@ -212,15 +164,9 @@ exports[`<IconTheMarker /> styles set icon's fill responsively 1`] = `
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>
@@ -237,15 +183,9 @@ exports[`<IconTheMarker /> styles set icon's size 1`] = `
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>
@@ -262,15 +202,9 @@ exports[`<IconTheMarker /> styles set icon's size responsively 1`] = `
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>
@@ -287,15 +221,9 @@ exports[`<IconTheMarker /> styles set misc styles on an icon 1`] = `
     width="1em"
   >
      
-    <circle
-      cx={128}
-      cy={128}
-      fill="currentColor"
-      r={120}
-    />
-     
     <path
-      d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+      fill="currentColor"
     />
   </svg>
 </div>

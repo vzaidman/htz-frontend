@@ -8,7 +8,7 @@ exports[`<Image /> DOM element Render correctly when essential props are passed 
     <img
       alt="this alt from data"
       className="htz-f htz-g htz-h htz-i htz-d"
-      src="https://images.haarets.co.il/image/upload/w_500,h_400,x_0,y_0,c_crop,g_north_west/q_auto,h_836,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1514197183/1.4921360.922278056.jpg"
+      src="https://images.haarets.co.il/image/upload/w_500,h_400,x_0,y_0,c_crop/q_auto,h_836,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1514197183/1.4921360.922278056.jpg"
       title="this is credit"
     />
   </div>
@@ -29,12 +29,12 @@ exports[`<Image /> DOM element Render img correctly when all props are passed, l
       data-test="test"
       role="presentation"
       sizes="(min-width:1420px) 610px,(min-width:1320px) 500px, 280px"
-      src="https://images.haarets.co.il/image/upload/w_2220,h_800,x_10,y_0,c_crop,g_north_west/q_auto:best,h_100,w_145,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1514197183/1.4921360.922278056.jpg"
+      src="https://images.haarets.co.il/image/upload/w_2220,h_800,x_10,y_0,c_crop/q_auto:best,h_100,w_145,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1514197183/1.4921360.922278056.jpg"
       srcSet={
         Array [
-          "https://images.haarets.co.il/image/upload/w_2220,h_800,x_10,y_0,c_crop,g_north_west/q_auto:best,h_100,w_145,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1514197183/1.4921360.922278056.jpg 145w",
-          "https://images.haarets.co.il/image/upload/w_2220,h_800,x_10,y_0,c_crop,g_north_west/q_auto,h_159,w_245,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1514197183/1.4921360.922278056.jpg 245w",
-          "https://images.haarets.co.il/image/upload/w_2220,h_800,x_10,y_0,c_crop,g_north_west/q_auto,h_160,w_445,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1514197183/1.4921360.922278056.jpg 445w",
+          "https://images.haarets.co.il/image/upload/w_2220,h_800,x_10,y_0,c_crop/q_auto:best,h_100,w_145,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1514197183/1.4921360.922278056.jpg 145w",
+          "https://images.haarets.co.il/image/upload/w_2220,h_800,x_10,y_0,c_crop/q_auto,h_159,w_245,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1514197183/1.4921360.922278056.jpg 245w",
+          "https://images.haarets.co.il/image/upload/w_2220,h_800,x_10,y_0,c_crop/q_auto,h_160,w_445,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1514197183/1.4921360.922278056.jpg 445w",
         ]
       }
       title="this is credit"
@@ -55,9 +55,9 @@ exports[`<Image /> DOM element Render picture correctly when all props are passe
         sizes="(min-width:1420px) 610px,(min-width:1320px) 500px, 240px"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop,g_north_west/q_auto:best,h_100,w_145,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.webp 145w",
-            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop,g_north_west/q_auto,h_159,w_245,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.webp 245w",
-            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop,g_north_west/q_auto,h_226,w_445,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.webp 445w",
+            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto:best,h_100,w_145,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.webp 145w",
+            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto,h_159,w_245,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.webp 245w",
+            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto,h_226,w_445,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.webp 445w",
           ]
         }
         type="image/webp"
@@ -69,12 +69,12 @@ exports[`<Image /> DOM element Render picture correctly when all props are passe
         className="htz-f htz-g htz-h htz-i htz-d"
         role="presentation"
         sizes="(min-width:1420px) 610px,(min-width:1320px) 500px, 240px"
-        src="https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop,g_north_west/q_auto:best,h_100,w_145,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif"
+        src="https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto:best,h_100,w_145,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop,g_north_west/q_auto:best,h_100,w_145,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 145w",
-            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop,g_north_west/q_auto,h_159,w_245,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 245w",
-            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop,g_north_west/q_auto,h_226,w_445,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 445w",
+            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto:best,h_100,w_145,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 145w",
+            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto,h_159,w_245,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 245w",
+            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto,h_226,w_445,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 445w",
           ]
         }
         title="this is title/credit"

@@ -6,13 +6,13 @@ exports[`<SpecialPromotions /> should render SpecialPromotions currectly 1`] = `
     className="htz-a"
   >
     <div
-      className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
+      className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
     >
       <div
-        className="htz-c htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+        className="htz-c htz-j htz-k htz-l htz-m htz-n"
       >
         <svg
-          className="htz-s htz-t htz-u htz-v htz-n htz-o htz-w htz-x"
+          className="htz-o htz-p htz-q htz-r htz-k htz-s"
           height="1em"
           viewBox="0 0 256 256"
           width="1em"
@@ -30,13 +30,13 @@ exports[`<SpecialPromotions /> should render SpecialPromotions currectly 1`] = `
           />
         </svg>
         <h2
-          className="htz-y htz-z htz-ab htz-ac htz-ae htz-p"
+          className="htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab"
         >
           hello special
         </h2>
       </div>
       <div
-        className="htz-a htz-af"
+        className="htz-a htz-ac"
         style={
           Object {
             "display": "flex",
@@ -44,36 +44,34 @@ exports[`<SpecialPromotions /> should render SpecialPromotions currectly 1`] = `
         }
       >
         <a
-          className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-q htz-an htz-ao htz-ap htz-a htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm"
+          className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-m htz-ak htz-al htz-a htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
           href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
           id={null}
-          onClick={null}
-          target={null}
+          onClick={[Function]}
         >
           <span
-            className="htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct"
+            className="htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co"
           >
             לכתבה
           </span>
           <span
-            className="htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-b htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm"
+            className="htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-b htz-cw htz-cx htz-cy htz-cz htz-da"
           />
         </a>
       </div>
     </div>
     <a
       aria-hidden={true}
-      className="htz-dn htz-do htz-dp htz-cx htz-cw htz-cy htz-dq"
+      className="htz-db htz-dc htz-dd htz-cs htz-cr htz-ct htz-de"
       href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
-      onClick={null}
+      onClick={[Function]}
       tabIndex="-1"
-      target={null}
     />
   </article>
 </div>
 `;
 
-exports[`<SpecialPromotions /> should render SpecialPromotions currectly 2`] = `".htz-a{position:relative}.htz-b{width:100%}.htz-c{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-d{-webkit-justify-content:space-between}.htz-e{justify-content:space-between}.htz-f{-webkit-flex-direction:row}.htz-g{flex-direction:row}.htz-h{background-color:#FFE70C}.htz-i{-webkit-box-pack:justify}.htz-j{-webkit-box-orient:horizontal}.htz-k{-webkit-box-direction:normal}.htz-l{-webkit-justify-content:flex-start}.htz-m{justify-content:flex-start}.htz-n{-webkit-align-self:center}.htz-o{align-self:center}.htz-p{padding:1rem}.htz-q{font-weight:bold}.htz-r{-webkit-box-pack:right}.htz-s{vertical-align:-0.15em}.htz-t{color:inherit}.htz-u{fill:#FFE70C}.htz-v{font-size:3rem}.htz-w{-webkit-flex-shrink:0}.htz-x{flex-shrink:0}.htz-y{display:inline}.htz-af{z-index:1}.htz-ag{-webkit-align-items:center}.htz-ah{align-items:center}.htz-ai{-webkit-appearance:none}.htz-aj{-moz-appearance:none}.htz-ak{appearance:none}.htz-al{cursor:pointer}.htz-am{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-an{font-size:inherit}.htz-ao{-webkit-justify-content:center}.htz-ap{justify-content:center}.htz-aq{-webkit-transform:scale(1)}.htz-ar{transform:scale(1)}.htz-as{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-at{text-decoration:none}.htz-au{white-space:nowrap}.htz-av::moz-focus-inner{border:0px}.htz-aw::moz-focus-inner{padding:0rem}.htz-ax{border-bottom-width:1px}.htz-ay{border-bottom-style:solid}.htz-az{padding-bottom:calc(1rem - 1px)}.htz-ba{border-top-width:1px}.htz-bb{border-top-style:solid}.htz-bc{padding-top:calc(1rem - 1px)}.htz-bd{border-right-width:1px}.htz-be{border-right-style:solid}.htz-bf{padding-right:4rem}.htz-bg{border-left-width:1px}.htz-bh{border-left-style:solid}.htz-bi{padding-left:4rem}.htz-bj{border-radius:0rem}.htz-bk{background-color:#2D2D2D}.htz-bl{border-color:transparent}.htz-bm{color:#EBEBEB}.htz-bn:visited{color:#EBEBEB}.htz-bo:hover{text-decoration:none}.htz-bp:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bq:hover{background-color:#505050}.htz-br:hover{border-color:transparent}.htz-bs:hover{color:#FFF}.htz-bt:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bu:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bv:focus{outline:none}.htz-bw:focus{text-decoration:none}.htz-bx:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-by:focus{background-color:#505050}.htz-bz:focus{border-color:#000}.htz-ca:focus{color:#FFF}.htz-cb:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cc:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cd:active{outline:none}.htz-ce:active{text-decoration:none}.htz-cf:active{transition-duration:0s}.htz-cg:active{background-color:#B4B4B4}.htz-ch:active{border-color:transparent}.htz-ci:active{color:#222}.htz-cj{-webkit-box-align:center}.htz-ck{-webkit-box-pack:center}.htz-cl{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cm{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cn{opacity:1}.htz-co{transition-property:opacity}.htz-cp{transition-duration:0.16666666666666666s}.htz-cq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cr{transition-delay:.3s}.htz-cs{-webkit-transition-property:opacity}.htz-ct{-moz-transition-property:opacity}.htz-cu{background-color:rgba(200,200,200, 0.3)}.htz-cv{height:100%}.htz-cw{right:0rem}.htz-cx{position:absolute}.htz-cy{top:0rem}.htz-cz{-webkit-transform:scaleX(0)}.htz-da{transform:scaleX(0)}.htz-db{-webkit-transform-origin:right}.htz-dc{transform-origin:right}.htz-dd{-webkit-animation-direction:alternate}.htz-de{animation-direction:alternate}.htz-df{-webkit-animation-iteration-count:infinite}.htz-dg{animation-iteration-count:infinite}.htz-dh{-webkit-animation-duration:1s}.htz-di{animation-duration:1s}.htz-dj{-webkit-animation-delay:0.75s}.htz-dk{animation-delay:0.75s}.htz-dl{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dm{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dn{background-color:transparent}.htz-do{bottom:0rem}.htz-dp{left:0rem}.htz-dq{z-index:0}@media (max-width: 79.9375em){.htz-z{font-size:2.3333333333333335rem}.htz-ab{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-ac{font-size:2.2857142857142856rem}.htz-ae{line-height:1.3125em}}"`;
+exports[`<SpecialPromotions /> should render SpecialPromotions currectly 2`] = `".htz-a{position:relative}.htz-b{width:100%}.htz-c{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-d{justify-content:space-between}.htz-e{flex-direction:row}.htz-f{background-color:#FFE70C}.htz-g{-webkit-box-pack:justify}.htz-h{-webkit-box-orient:horizontal}.htz-i{-webkit-box-direction:normal}.htz-j{justify-content:flex-start}.htz-k{align-self:center}.htz-l{padding:1rem}.htz-m{font-weight:bold}.htz-n{-webkit-box-pack:right}.htz-o{vertical-align:-0.15em}.htz-p{color:inherit}.htz-q{fill:#FFE70C}.htz-r{font-size:3rem}.htz-s{flex-shrink:0}.htz-t{padding-top:1rem}.htz-u{padding-right:1rem}.htz-v{padding-left:1rem}.htz-w{padding-bottom:1rem}.htz-ac{z-index:1}.htz-ae{align-items:center}.htz-af{-webkit-appearance:none}.htz-ag{-moz-appearance:none}.htz-ah{appearance:none}.htz-ai{cursor:pointer}.htz-aj{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ak{font-size:inherit}.htz-al{justify-content:center}.htz-am{transform:scale(1)}.htz-an{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ao{text-decoration:none}.htz-ap{white-space:nowrap}.htz-aq::moz-focus-inner{border:0}.htz-ar::moz-focus-inner{padding:0}.htz-as{border-bottom-width:1px}.htz-at{border-bottom-style:solid}.htz-au{padding-bottom:calc(1rem - 1px)}.htz-av{border-top-width:1px}.htz-aw{border-top-style:solid}.htz-ax{padding-top:calc(1rem - 1px)}.htz-ay{border-right-width:1px}.htz-az{border-right-style:solid}.htz-ba{padding-right:4rem}.htz-bb{border-left-width:1px}.htz-bc{border-left-style:solid}.htz-bd{padding-left:4rem}.htz-be{border-radius:0}.htz-bf{background-color:#2D2D2D}.htz-bg{border-color:transparent}.htz-bh{color:#EBEBEB}.htz-bi:visited{color:#EBEBEB}.htz-bj:hover{text-decoration:none}.htz-bk:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bl:hover{background-color:#505050}.htz-bm:hover{border-color:transparent}.htz-bn:hover{color:#FFF}.htz-bo:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bp:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bq:focus{outline:none}.htz-br:focus{text-decoration:none}.htz-bs:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bt:focus{background-color:#505050}.htz-bu:focus{border-color:#000}.htz-bv:focus{color:#FFF}.htz-bw:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bx:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-by:active{outline:none}.htz-bz:active{text-decoration:none}.htz-ca:active{transition-duration:0s}.htz-cb:active{background-color:#B4B4B4}.htz-cc:active{border-color:transparent}.htz-cd:active{color:#222}.htz-ce{-webkit-box-align:center}.htz-cf{-webkit-box-pack:center}.htz-cg{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ch{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ci{opacity:1}.htz-cj{transition-property:opacity}.htz-ck{transition-duration:0.16666666666666666s}.htz-cl{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cm{transition-delay:.3s}.htz-cn{-webkit-transition-property:opacity}.htz-co{-moz-transition-property:opacity}.htz-cp{background-color:rgba(200,200,200, 0.3)}.htz-cq{height:100%}.htz-cr{right:0}.htz-cs{position:absolute}.htz-ct{top:0}.htz-cu{transform:scaleX(0)}.htz-cv{transform-origin:right}.htz-cw{animation-direction:alternate}.htz-cx{animation-iteration-count:infinite}.htz-cy{animation-duration:1s}.htz-cz{animation-delay:0.75s}.htz-da{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-db{background-color:transparent}.htz-dc{bottom:0}.htz-dd{left:0}.htz-de{z-index:0}@media (max-width: 79.9375em){.htz-x{font-size:2.3333333333333335rem}.htz-y{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-z{font-size:2.2857142857142856rem}.htz-ab{line-height:1.3125em}}"`;
 
 exports[`<SpecialPromotions /> should render SpecialPromotions currectly when passing miscStyles prop 1`] = `
 <div>
@@ -81,13 +79,13 @@ exports[`<SpecialPromotions /> should render SpecialPromotions currectly when pa
     className="htz-a"
   >
     <div
-      className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l"
+      className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
     >
       <div
-        className="htz-c htz-m htz-n htz-o htz-p htz-q htz-r htz-s"
+        className="htz-c htz-k htz-l htz-m htz-n htz-o"
       >
         <svg
-          className="htz-t htz-u htz-v htz-w htz-o htz-p htz-x htz-y"
+          className="htz-p htz-q htz-r htz-s htz-l htz-t"
           height="1em"
           viewBox="0 0 256 256"
           width="1em"
@@ -105,13 +103,13 @@ exports[`<SpecialPromotions /> should render SpecialPromotions currectly when pa
           />
         </svg>
         <h2
-          className="htz-z htz-ab htz-ac htz-ae htz-af htz-q"
+          className="htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac"
         >
           hello special
         </h2>
       </div>
       <div
-        className="htz-a htz-ag"
+        className="htz-a htz-ae"
         style={
           Object {
             "display": "flex",
@@ -119,36 +117,34 @@ exports[`<SpecialPromotions /> should render SpecialPromotions currectly when pa
         }
       >
         <a
-          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-r htz-ao htz-ap htz-aq htz-a htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn"
+          className="htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-n htz-al htz-am htz-a htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci"
           href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
           id={null}
-          onClick={null}
-          target={null}
+          onClick={[Function]}
         >
           <span
-            className="htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu"
+            className="htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp"
           >
             לכתבה
           </span>
           <span
-            className="htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-b htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn"
+            className="htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-b htz-cx htz-cy htz-cz htz-da htz-db"
           />
         </a>
       </div>
     </div>
     <a
       aria-hidden={true}
-      className="htz-do htz-dp htz-dq htz-cy htz-cx htz-cz htz-dr"
+      className="htz-dc htz-dd htz-de htz-ct htz-cs htz-cu htz-df"
       href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
-      onClick={null}
+      onClick={[Function]}
       tabIndex="-1"
-      target={null}
     />
   </article>
 </div>
 `;
 
-exports[`<SpecialPromotions /> should render SpecialPromotions currectly when passing miscStyles prop 2`] = `".htz-a{position:relative}.htz-b{width:100%}.htz-c{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-d{-webkit-justify-content:space-between}.htz-e{justify-content:space-between}.htz-f{-webkit-flex-direction:row}.htz-g{flex-direction:row}.htz-h{background-color:#FFE70C}.htz-i{max-width:80rem}.htz-j{-webkit-box-pack:justify}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-justify-content:flex-start}.htz-n{justify-content:flex-start}.htz-o{-webkit-align-self:center}.htz-p{align-self:center}.htz-q{padding:1rem}.htz-r{font-weight:bold}.htz-s{-webkit-box-pack:right}.htz-t{vertical-align:-0.15em}.htz-u{color:inherit}.htz-v{fill:#FFE70C}.htz-w{font-size:3rem}.htz-x{-webkit-flex-shrink:0}.htz-y{flex-shrink:0}.htz-z{display:inline}.htz-ag{z-index:1}.htz-ah{-webkit-align-items:center}.htz-ai{align-items:center}.htz-aj{-webkit-appearance:none}.htz-ak{-moz-appearance:none}.htz-al{appearance:none}.htz-am{cursor:pointer}.htz-an{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ao{font-size:inherit}.htz-ap{-webkit-justify-content:center}.htz-aq{justify-content:center}.htz-ar{-webkit-transform:scale(1)}.htz-as{transform:scale(1)}.htz-at{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-au{text-decoration:none}.htz-av{white-space:nowrap}.htz-aw::moz-focus-inner{border:0px}.htz-ax::moz-focus-inner{padding:0rem}.htz-ay{border-bottom-width:1px}.htz-az{border-bottom-style:solid}.htz-ba{padding-bottom:calc(1rem - 1px)}.htz-bb{border-top-width:1px}.htz-bc{border-top-style:solid}.htz-bd{padding-top:calc(1rem - 1px)}.htz-be{border-right-width:1px}.htz-bf{border-right-style:solid}.htz-bg{padding-right:4rem}.htz-bh{border-left-width:1px}.htz-bi{border-left-style:solid}.htz-bj{padding-left:4rem}.htz-bk{border-radius:0rem}.htz-bl{background-color:#2D2D2D}.htz-bm{border-color:transparent}.htz-bn{color:#EBEBEB}.htz-bo:visited{color:#EBEBEB}.htz-bp:hover{text-decoration:none}.htz-bq:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-br:hover{background-color:#505050}.htz-bs:hover{border-color:transparent}.htz-bt:hover{color:#FFF}.htz-bu:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bv:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bw:focus{outline:none}.htz-bx:focus{text-decoration:none}.htz-by:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bz:focus{background-color:#505050}.htz-ca:focus{border-color:#000}.htz-cb:focus{color:#FFF}.htz-cc:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cd:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ce:active{outline:none}.htz-cf:active{text-decoration:none}.htz-cg:active{transition-duration:0s}.htz-ch:active{background-color:#B4B4B4}.htz-ci:active{border-color:transparent}.htz-cj:active{color:#222}.htz-ck{-webkit-box-align:center}.htz-cl{-webkit-box-pack:center}.htz-cm{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cn{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-co{opacity:1}.htz-cp{transition-property:opacity}.htz-cq{transition-duration:0.16666666666666666s}.htz-cr{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cs{transition-delay:.3s}.htz-ct{-webkit-transition-property:opacity}.htz-cu{-moz-transition-property:opacity}.htz-cv{background-color:rgba(200,200,200, 0.3)}.htz-cw{height:100%}.htz-cx{right:0rem}.htz-cy{position:absolute}.htz-cz{top:0rem}.htz-da{-webkit-transform:scaleX(0)}.htz-db{transform:scaleX(0)}.htz-dc{-webkit-transform-origin:right}.htz-dd{transform-origin:right}.htz-de{-webkit-animation-direction:alternate}.htz-df{animation-direction:alternate}.htz-dg{-webkit-animation-iteration-count:infinite}.htz-dh{animation-iteration-count:infinite}.htz-di{-webkit-animation-duration:1s}.htz-dj{animation-duration:1s}.htz-dk{-webkit-animation-delay:0.75s}.htz-dl{animation-delay:0.75s}.htz-dm{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dn{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-do{background-color:transparent}.htz-dp{bottom:0rem}.htz-dq{left:0rem}.htz-dr{z-index:0}@media (max-width: 79.9375em){.htz-ab{font-size:2.3333333333333335rem}.htz-ac{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-ae{font-size:2.2857142857142856rem}.htz-af{line-height:1.3125em}}"`;
+exports[`<SpecialPromotions /> should render SpecialPromotions currectly when passing miscStyles prop 2`] = `".htz-a{position:relative}.htz-b{width:100%}.htz-c{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-d{justify-content:space-between}.htz-e{flex-direction:row}.htz-f{background-color:#FFE70C}.htz-g{max-width:80rem}.htz-h{-webkit-box-pack:justify}.htz-i{-webkit-box-orient:horizontal}.htz-j{-webkit-box-direction:normal}.htz-k{justify-content:flex-start}.htz-l{align-self:center}.htz-m{padding:1rem}.htz-n{font-weight:bold}.htz-o{-webkit-box-pack:right}.htz-p{vertical-align:-0.15em}.htz-q{color:inherit}.htz-r{fill:#FFE70C}.htz-s{font-size:3rem}.htz-t{flex-shrink:0}.htz-u{padding-top:1rem}.htz-v{padding-right:1rem}.htz-w{padding-left:1rem}.htz-x{padding-bottom:1rem}.htz-ae{z-index:1}.htz-af{align-items:center}.htz-ag{-webkit-appearance:none}.htz-ah{-moz-appearance:none}.htz-ai{appearance:none}.htz-aj{cursor:pointer}.htz-ak{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-al{font-size:inherit}.htz-am{justify-content:center}.htz-an{transform:scale(1)}.htz-ao{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ap{text-decoration:none}.htz-aq{white-space:nowrap}.htz-ar::moz-focus-inner{border:0}.htz-as::moz-focus-inner{padding:0}.htz-at{border-bottom-width:1px}.htz-au{border-bottom-style:solid}.htz-av{padding-bottom:calc(1rem - 1px)}.htz-aw{border-top-width:1px}.htz-ax{border-top-style:solid}.htz-ay{padding-top:calc(1rem - 1px)}.htz-az{border-right-width:1px}.htz-ba{border-right-style:solid}.htz-bb{padding-right:4rem}.htz-bc{border-left-width:1px}.htz-bd{border-left-style:solid}.htz-be{padding-left:4rem}.htz-bf{border-radius:0}.htz-bg{background-color:#2D2D2D}.htz-bh{border-color:transparent}.htz-bi{color:#EBEBEB}.htz-bj:visited{color:#EBEBEB}.htz-bk:hover{text-decoration:none}.htz-bl:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bm:hover{background-color:#505050}.htz-bn:hover{border-color:transparent}.htz-bo:hover{color:#FFF}.htz-bp:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bq:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-br:focus{outline:none}.htz-bs:focus{text-decoration:none}.htz-bt:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bu:focus{background-color:#505050}.htz-bv:focus{border-color:#000}.htz-bw:focus{color:#FFF}.htz-bx:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-by:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bz:active{outline:none}.htz-ca:active{text-decoration:none}.htz-cb:active{transition-duration:0s}.htz-cc:active{background-color:#B4B4B4}.htz-cd:active{border-color:transparent}.htz-ce:active{color:#222}.htz-cf{-webkit-box-align:center}.htz-cg{-webkit-box-pack:center}.htz-ch{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ci{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cj{opacity:1}.htz-ck{transition-property:opacity}.htz-cl{transition-duration:0.16666666666666666s}.htz-cm{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cn{transition-delay:.3s}.htz-co{-webkit-transition-property:opacity}.htz-cp{-moz-transition-property:opacity}.htz-cq{background-color:rgba(200,200,200, 0.3)}.htz-cr{height:100%}.htz-cs{right:0}.htz-ct{position:absolute}.htz-cu{top:0}.htz-cv{transform:scaleX(0)}.htz-cw{transform-origin:right}.htz-cx{animation-direction:alternate}.htz-cy{animation-iteration-count:infinite}.htz-cz{animation-duration:1s}.htz-da{animation-delay:0.75s}.htz-db{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dc{background-color:transparent}.htz-dd{bottom:0}.htz-de{left:0}.htz-df{z-index:0}@media (max-width: 79.9375em){.htz-y{font-size:2.3333333333333335rem}.htz-z{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-ab{font-size:2.2857142857142856rem}.htz-ac{line-height:1.3125em}}"`;
 
 exports[`<SpecialPromotions /> should render SpecialPromotions with "primaryInverse" variant 1`] = `
 <div>
@@ -156,37 +152,31 @@ exports[`<SpecialPromotions /> should render SpecialPromotions with "primaryInve
     className="htz-a"
   >
     <div
-      className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
+      className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
     >
       <div
-        className="htz-c htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+        className="htz-c htz-j htz-k htz-l htz-m htz-n"
       >
         <svg
-          className="htz-s htz-t htz-u htz-v htz-n htz-o htz-w htz-x"
+          className="htz-o htz-p htz-q htz-r htz-k htz-s"
           height="1em"
           viewBox="0 0 256 256"
           width="1em"
         >
            
-          <circle
-            cx={128}
-            cy={128}
-            fill="currentColor"
-            r={120}
-          />
-           
           <path
-            d="M191 181h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
+            d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm56 155h-26v-68.9L140.5 175h-25.1L98 106.1V175H72V80h42.8l12.8 53.8 13-53.8H184v95z"
+            fill="currentColor"
           />
         </svg>
         <h2
-          className="htz-y htz-z htz-ab htz-ac htz-ae htz-p"
+          className="htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab"
         >
           hello special
         </h2>
       </div>
       <div
-        className="htz-a htz-af"
+        className="htz-a htz-ac"
         style={
           Object {
             "display": "flex",
@@ -194,33 +184,31 @@ exports[`<SpecialPromotions /> should render SpecialPromotions with "primaryInve
         }
       >
         <a
-          className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-q htz-an htz-ao htz-ap htz-a htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm"
+          className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-m htz-ak htz-al htz-a htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
           href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
           id={null}
-          onClick={null}
-          target={null}
+          onClick={[Function]}
         >
           <span
-            className="htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct"
+            className="htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co"
           >
             לכתבה
           </span>
           <span
-            className="htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-b htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm"
+            className="htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-b htz-cw htz-cx htz-cy htz-cz htz-da"
           />
         </a>
       </div>
     </div>
     <a
       aria-hidden={true}
-      className="htz-dn htz-do htz-dp htz-cx htz-cw htz-cy htz-dq"
+      className="htz-db htz-dc htz-dd htz-cs htz-cr htz-ct htz-de"
       href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
-      onClick={null}
+      onClick={[Function]}
       tabIndex="-1"
-      target={null}
     />
   </article>
 </div>
 `;
 
-exports[`<SpecialPromotions /> should render SpecialPromotions with "primaryInverse" variant 2`] = `".htz-a{position:relative}.htz-b{width:100%}.htz-c{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-d{-webkit-justify-content:space-between}.htz-e{justify-content:space-between}.htz-f{-webkit-flex-direction:row}.htz-g{flex-direction:row}.htz-h{background-color:#FEE}.htz-i{-webkit-box-pack:justify}.htz-j{-webkit-box-orient:horizontal}.htz-k{-webkit-box-direction:normal}.htz-l{-webkit-justify-content:flex-start}.htz-m{justify-content:flex-start}.htz-n{-webkit-align-self:center}.htz-o{align-self:center}.htz-p{padding:1rem}.htz-q{font-weight:bold}.htz-r{-webkit-box-pack:right}.htz-s{vertical-align:-0.15em}.htz-t{color:inherit}.htz-u{fill:#FEE}.htz-v{font-size:3rem}.htz-w{-webkit-flex-shrink:0}.htz-x{flex-shrink:0}.htz-y{display:inline}.htz-af{z-index:1}.htz-ag{-webkit-align-items:center}.htz-ah{align-items:center}.htz-ai{-webkit-appearance:none}.htz-aj{-moz-appearance:none}.htz-ak{appearance:none}.htz-al{cursor:pointer}.htz-am{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-an{font-size:inherit}.htz-ao{-webkit-justify-content:center}.htz-ap{justify-content:center}.htz-aq{-webkit-transform:scale(1)}.htz-ar{transform:scale(1)}.htz-as{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-at{text-decoration:none}.htz-au{white-space:nowrap}.htz-av::moz-focus-inner{border:0px}.htz-aw::moz-focus-inner{padding:0rem}.htz-ax{border-bottom-width:1px}.htz-ay{border-bottom-style:solid}.htz-az{padding-bottom:calc(1rem - 1px)}.htz-ba{border-top-width:1px}.htz-bb{border-top-style:solid}.htz-bc{padding-top:calc(1rem - 1px)}.htz-bd{border-right-width:1px}.htz-be{border-right-style:solid}.htz-bf{padding-right:4rem}.htz-bg{border-left-width:1px}.htz-bh{border-left-style:solid}.htz-bi{padding-left:4rem}.htz-bj{border-radius:0rem}.htz-bk{background-color:#00537A}.htz-bl{border-color:#FFF}.htz-bm{color:#FFF}.htz-bn:visited{color:#FFF}.htz-bo:hover{text-decoration:none}.htz-bp:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bq:hover{background-color:#003D59}.htz-br:hover{border-color:#FFF}.htz-bs:hover{color:#FFF}.htz-bt:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bu:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bv:focus{outline:none}.htz-bw:focus{text-decoration:none}.htz-bx:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-by:focus{background-color:#003147}.htz-bz:focus{border-color:#FFF}.htz-ca:focus{color:#FFF}.htz-cb:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cc:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cd:active{outline:none}.htz-ce:active{text-decoration:none}.htz-cf:active{transition-duration:0s}.htz-cg:active{background-color:#003D59}.htz-ch:active{border-color:#FFF}.htz-ci:active{color:#FFF}.htz-cj{-webkit-box-align:center}.htz-ck{-webkit-box-pack:center}.htz-cl{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , -webkit-transform .3s cubic-bezier(.55, 0, .1, 1) .3s, transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cm{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cn{opacity:1}.htz-co{transition-property:opacity}.htz-cp{transition-duration:0.16666666666666666s}.htz-cq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cr{transition-delay:.3s}.htz-cs{-webkit-transition-property:opacity}.htz-ct{-moz-transition-property:opacity}.htz-cu{background-color:rgba(200,200,200, 0.3)}.htz-cv{height:100%}.htz-cw{right:0rem}.htz-cx{position:absolute}.htz-cy{top:0rem}.htz-cz{-webkit-transform:scaleX(0)}.htz-da{transform:scaleX(0)}.htz-db{-webkit-transform-origin:right}.htz-dc{transform-origin:right}.htz-dd{-webkit-animation-direction:alternate}.htz-de{animation-direction:alternate}.htz-df{-webkit-animation-iteration-count:infinite}.htz-dg{animation-iteration-count:infinite}.htz-dh{-webkit-animation-duration:1s}.htz-di{animation-duration:1s}.htz-dj{-webkit-animation-delay:0.75s}.htz-dk{animation-delay:0.75s}.htz-dl{-webkit-animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dm{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dn{background-color:transparent}.htz-do{bottom:0rem}.htz-dp{left:0rem}.htz-dq{z-index:0}@media (max-width: 79.9375em){.htz-z{font-size:2.3333333333333335rem}.htz-ab{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-ac{font-size:2.2857142857142856rem}.htz-ae{line-height:1.3125em}}"`;
+exports[`<SpecialPromotions /> should render SpecialPromotions with "primaryInverse" variant 2`] = `".htz-a{position:relative}.htz-b{width:100%}.htz-c{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-d{justify-content:space-between}.htz-e{flex-direction:row}.htz-f{background-color:#FEE}.htz-g{-webkit-box-pack:justify}.htz-h{-webkit-box-orient:horizontal}.htz-i{-webkit-box-direction:normal}.htz-j{justify-content:flex-start}.htz-k{align-self:center}.htz-l{padding:1rem}.htz-m{font-weight:bold}.htz-n{-webkit-box-pack:right}.htz-o{vertical-align:-0.15em}.htz-p{color:inherit}.htz-q{fill:#FEE}.htz-r{font-size:3rem}.htz-s{flex-shrink:0}.htz-t{padding-top:1rem}.htz-u{padding-right:1rem}.htz-v{padding-left:1rem}.htz-w{padding-bottom:1rem}.htz-ac{z-index:1}.htz-ae{align-items:center}.htz-af{-webkit-appearance:none}.htz-ag{-moz-appearance:none}.htz-ah{appearance:none}.htz-ai{cursor:pointer}.htz-aj{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ak{font-size:inherit}.htz-al{justify-content:center}.htz-am{transform:scale(1)}.htz-an{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ao{text-decoration:none}.htz-ap{white-space:nowrap}.htz-aq::moz-focus-inner{border:0}.htz-ar::moz-focus-inner{padding:0}.htz-as{border-bottom-width:1px}.htz-at{border-bottom-style:solid}.htz-au{padding-bottom:calc(1rem - 1px)}.htz-av{border-top-width:1px}.htz-aw{border-top-style:solid}.htz-ax{padding-top:calc(1rem - 1px)}.htz-ay{border-right-width:1px}.htz-az{border-right-style:solid}.htz-ba{padding-right:4rem}.htz-bb{border-left-width:1px}.htz-bc{border-left-style:solid}.htz-bd{padding-left:4rem}.htz-be{border-radius:0}.htz-bf{background-color:#FFF}.htz-bg{border-color:#00537A}.htz-bh{color:#00537A}.htz-bi:visited{color:#00537A}.htz-bj:hover{text-decoration:none}.htz-bk:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bl:hover{background-color:#EBF2F5}.htz-bm:hover{border-color:#003D59}.htz-bn:hover{color:#003D59}.htz-bo:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bp:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bq:focus{outline:none}.htz-br:focus{text-decoration:none}.htz-bs:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bt:focus{background-color:#00537A}.htz-bu:focus{border-color:#00537A}.htz-bv:focus{color:#FFF}.htz-bw:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-bx:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-by:active{outline:none}.htz-bz:active{text-decoration:none}.htz-ca:active{transition-duration:0s}.htz-cb:active{background-color:#fff !important}.htz-cc:active{border-color:#00537A}.htz-cd:active{color:#00537A}.htz-ce{-webkit-box-align:center}.htz-cf{-webkit-box-pack:center}.htz-cg{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ch{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ci{opacity:1}.htz-cj{transition-property:opacity}.htz-ck{transition-duration:0.16666666666666666s}.htz-cl{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-cm{transition-delay:.3s}.htz-cn{-webkit-transition-property:opacity}.htz-co{-moz-transition-property:opacity}.htz-cp{background-color:rgba(200,200,200, 0.3)}.htz-cq{height:100%}.htz-cr{right:0}.htz-cs{position:absolute}.htz-ct{top:0}.htz-cu{transform:scaleX(0)}.htz-cv{transform-origin:right}.htz-cw{animation-direction:alternate}.htz-cx{animation-iteration-count:infinite}.htz-cy{animation-duration:1s}.htz-cz{animation-delay:0.75s}.htz-da{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-db{background-color:transparent}.htz-dc{bottom:0}.htz-dd{left:0}.htz-de{z-index:0}@media (max-width: 79.9375em){.htz-x{font-size:2.3333333333333335rem}.htz-y{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-z{font-size:2.2857142857142856rem}.htz-ab{line-height:1.3125em}}"`;

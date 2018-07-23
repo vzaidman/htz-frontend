@@ -11,7 +11,7 @@ exports[`<IconZen /> DOM element add "id" attribute to DOM element 1`] = `
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>
@@ -31,7 +31,7 @@ exports[`<IconZen /> DOM element add "onClick" attribute to DOM element 1`] = `
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>
@@ -51,7 +51,7 @@ exports[`<IconZen /> DOM element pass attributes defined in the "attrs" prop to 
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>
@@ -70,7 +70,7 @@ exports[`<IconZen /> DOM element render correctly when no props are passed 1`] =
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>
@@ -89,7 +89,7 @@ exports[`<IconZen /> styles responsively set misc styles on an icon 1`] = `
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>
@@ -108,7 +108,7 @@ exports[`<IconZen /> styles set icon's color 1`] = `
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>
@@ -127,7 +127,7 @@ exports[`<IconZen /> styles set icon's color responsively 1`] = `
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>
@@ -146,7 +146,7 @@ exports[`<IconZen /> styles set icon's fill 1`] = `
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>
@@ -165,7 +165,7 @@ exports[`<IconZen /> styles set icon's fill responsively 1`] = `
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>
@@ -184,7 +184,7 @@ exports[`<IconZen /> styles set icon's size 1`] = `
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>
@@ -203,7 +203,7 @@ exports[`<IconZen /> styles set icon's size responsively 1`] = `
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>
@@ -222,7 +222,7 @@ exports[`<IconZen /> styles set misc styles on an icon 1`] = `
   >
      
     <path
-      d="M128 8C61.7 8 8 61.7 8 128s53.7 120 120 120 120-53.7 120-120S194.3 8 128 8zm17 188h-34V60h34v136z"
+      d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z"
       fill="currentColor"
     />
   </svg>

@@ -6,11 +6,11 @@ Object {
     <div
       className="htz-a htz-b htz-c htz-d htz-e"
     >
-      <h4
+      <h2
         className="htz-f htz-g"
       >
         תגיות:
-      </h4>
+      </h2>
       <ul>
         <li
           className="htz-h htz-g"
@@ -18,8 +18,7 @@ Object {
           <a
             className={null}
             href="http://eran.themarker.com:8080/hayehudim-baim-1.2670"
-            onClick={null}
-            target={null}
+            onClick={[Function]}
           >
             <span
               className="htz-i htz-j"
@@ -34,8 +33,7 @@ Object {
           <a
             className={null}
             href="/food/dairy-1.2429"
-            onClick={null}
-            target={null}
+            onClick={[Function]}
           >
             <span
               className="htz-i htz-j"
@@ -50,8 +48,7 @@ Object {
           <a
             className={null}
             href="/news/terror-1.2603"
-            onClick={null}
-            target={null}
+            onClick={[Function]}
           >
             <span
               className="htz-i htz-j"

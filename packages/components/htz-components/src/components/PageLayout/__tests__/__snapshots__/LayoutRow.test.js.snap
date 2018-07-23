@@ -2,11 +2,11 @@
 
 exports[`<LayoutRow> DOM element renders correctly  with a custom backgroundColor 1`] = `
 <div>
-  <section
+  <div
     className="htz-a htz-b"
   >
     Customizing backgroundColor
-  </section>
+  </div>
 </div>
 `;
 
@@ -14,37 +14,37 @@ exports[`<LayoutRow> DOM element renders correctly  with a custom backgroundColo
 
 exports[`<LayoutRow> DOM element renders correctly  with custom miscStyles 1`] = `
 <div>
-  <section
+  <div
     className="htz-a htz-b htz-c"
   >
     Customizing miscStyles
-  </section>
+  </div>
 </div>
 `;
 
-exports[`<LayoutRow> DOM element renders correctly  with custom miscStyles 2`] = `".htz-a{background-color:#E6EDF0}.htz-b{width:100%}.htz-c{padding-top:5rem}"`;
+exports[`<LayoutRow> DOM element renders correctly  with custom miscStyles 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{width:100%}.htz-c{padding-top:5rem}"`;
 
 exports[`<LayoutRow> DOM element renders correctly with custom attrs 1`] = `
 <div>
-  <section
+  <div
     ariaLabel="I am custom"
     className="htz-a htz-b"
   >
     Customizing attrs
-  </section>
+  </div>
 </div>
 `;
 
-exports[`<LayoutRow> DOM element renders correctly with custom attrs 2`] = `".htz-a{background-color:#E6EDF0}.htz-b{width:100%}"`;
+exports[`<LayoutRow> DOM element renders correctly with custom attrs 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{width:100%}"`;
 
 exports[`<LayoutRow> DOM element renders correctly with minimal required props 1`] = `
 <div>
-  <section
+  <div
     className="htz-a htz-b"
   >
     Hello LayoutRow
-  </section>
+  </div>
 </div>
 `;
 
-exports[`<LayoutRow> DOM element renders correctly with minimal required props 2`] = `".htz-a{background-color:#E6EDF0}.htz-b{width:100%}"`;
+exports[`<LayoutRow> DOM element renders correctly with minimal required props 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{width:100%}"`;

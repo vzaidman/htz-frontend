@@ -3,35 +3,33 @@
 exports[`A Paragraph with bold and nesting  1`] = `
 Object {
   "component": <div>
-    <div
+    <p
       className=""
     >
-      <p
-        className=""
+      על פי הערכות בישראל, 
+      <strong
+        className="htz-a"
+        miscStyles={null}
       >
-        על פי הערכות בישראל, 
+        צבא אסד מתכנן לנסות לגרש את המורדים הסונים
+      </strong>
+       גם ממרכז ודרום רמת הגולן הסורי בגיבוי חיזבאללה והמיליציות. בשנה האחרונה שררה יציבות יחסית באזור. בחלק הצפוני ביותר של הגבול עם ישראל שלט המשטר, שחזר לאייש עמדות בחרמון הסורי ובעיירה קונייטרה החדשה. סמוך לשטח שבשליטתו היו שתי מובלעות: 
+      <a
+        className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
+        href="https://www.google.com"
+        onClick={null}
+        target={null}
+      >
+        הכפר חאדר הדרוזי, 
         <strong
           className="htz-a"
+          miscStyles={null}
         >
-          צבא אסד מתכנן לנסות לגרש את המורדים הסונים
+          שנשלט בידי מיליציה מקומית ששמרה על קשר עם המשטר
         </strong>
-         גם ממרכז ודרום רמת הגולן הסורי בגיבוי חיזבאללה והמיליציות. בשנה האחרונה שררה יציבות יחסית באזור. בחלק הצפוני ביותר של הגבול עם ישראל שלט המשטר, שחזר לאייש עמדות בחרמון הסורי ובעיירה קונייטרה החדשה. סמוך לשטח שבשליטתו היו שתי מובלעות: 
-        <a
-          className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
-          href="https://www.google.com"
-          onClick={null}
-          target={null}
-        >
-          הכפר חאדר הדרוזי, 
-          <strong
-            className="htz-a"
-          >
-            שנשלט בידי מיליציה מקומית ששמרה על קשר עם המשטר
-          </strong>
-          , והשנייה סונית, בכפרים הסמוכים לגבול לבנון.
-        </a>
-      </p>
-    </div>
+        , והשנייה סונית, בכפרים הסמוכים לגבול לבנון.
+      </a>
+    </p>
   </div>,
   "styles": ".htz-a{font-weight:700}.htz-b{color:#0B7EB5}.htz-c:visited{color:#0B7EB5}.htz-d:hover{color:#0B7EB5}.htz-e:hover{border-bottom-color:#0B7EB5}.htz-f:hover{border-bottom-width:1px}.htz-g:hover{border-bottom-style:solid}.htz-h:focus{color:#0B7EB5}.htz-i:focus{border-bottom-color:#0B7EB5}.htz-j:focus{border-bottom-width:1px}.htz-k:focus{border-bottom-style:solid}.htz-l:active{color:#0B7EB5}.htz-m:active{border-bottom-color:#0B7EB5}.htz-n:active{border-bottom-width:2px}.htz-o:active{border-bottom-style:solid}",
 }

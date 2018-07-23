@@ -11,7 +11,7 @@ exports[`<IconReading /> DOM element add "id" attribute to DOM element 1`] = `
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>
@@ -31,7 +31,7 @@ exports[`<IconReading /> DOM element add "onClick" attribute to DOM element 1`] 
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>
@@ -51,7 +51,7 @@ exports[`<IconReading /> DOM element pass attributes defined in the "attrs" prop
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>
@@ -70,7 +70,7 @@ exports[`<IconReading /> DOM element render correctly when no props are passed 1
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>
@@ -89,7 +89,7 @@ exports[`<IconReading /> styles responsively set misc styles on an icon 1`] = `
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>
@@ -108,7 +108,7 @@ exports[`<IconReading /> styles set icon's color 1`] = `
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>
@@ -127,7 +127,7 @@ exports[`<IconReading /> styles set icon's color responsively 1`] = `
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>
@@ -146,7 +146,7 @@ exports[`<IconReading /> styles set icon's fill 1`] = `
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>
@@ -165,7 +165,7 @@ exports[`<IconReading /> styles set icon's fill responsively 1`] = `
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>
@@ -184,7 +184,7 @@ exports[`<IconReading /> styles set icon's size 1`] = `
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>
@@ -203,7 +203,7 @@ exports[`<IconReading /> styles set icon's size responsively 1`] = `
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>
@@ -222,7 +222,7 @@ exports[`<IconReading /> styles set misc styles on an icon 1`] = `
   >
      
     <path
-      d="M208.7 248.3l-80-80-80 80V8.3h160v240z"
+      d="M200 237l-72.5-72.7L55 237V19h145v218z"
       fill="currentColor"
     />
   </svg>

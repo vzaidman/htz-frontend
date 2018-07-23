@@ -3,13 +3,11 @@
 exports[`Render paragraph as heading correctly  1`] = `
 Object {
   "component": <div>
-    <div
-      className=""
+    <h2
+      miscStyles={null}
     >
-      <h4>
-        צבא אסד מעמיק את המתקפה לכיבוש כפרי המורדים סמוך לגבול עם ישראל.
-      </h4>
-    </div>
+      צבא אסד מעמיק את המתקפה לכיבוש כפרי המורדים סמוך לגבול עם ישראל.
+    </h2>
   </div>,
   "styles": "",
 }
