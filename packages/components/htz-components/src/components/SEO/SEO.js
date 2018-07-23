@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   host: PropTypes.string.isRequired,
+  ampUrl: PropTypes.string.isRequired,
 };
 
 const defaultProps = {};
 
-function SEO({ host, }) {
+function SEO({ host, ampUrl, }) {
   const site = host === 'themarker.com' ? 'tm' : 'htz';
+
   return (
     <Fragment>
       <meta charSet="utf-8" />
@@ -34,6 +36,9 @@ function SEO({ host, }) {
         href="//www.googletagservices.com/tag/js/gpt.js"
         as="script"
       />
+
+      {/* <!-- AMP --> */}
+      <link rel="amphtml" href={ampUrl} />
 
       {/* <!-- FAVICONS --> */}
       <link rel="shortcut icon" href={`/static/${site}/images/favicon.ico`} />
