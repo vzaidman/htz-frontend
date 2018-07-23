@@ -5,6 +5,7 @@ import { StyleProvider, } from '@haaretz/fela-utils';
 import { htzTheme, } from '@haaretz/htz-theme';
 import { createLogger, } from '@haaretz/app-utils';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import {
   AriaLive,
   ArticlePageLayout,
@@ -80,8 +81,14 @@ export class ArticlePage extends React.Component {
               },
             },
           });
+          const titleSEO = `${lineage[0].name} - ${
+            lineage[1] ? lineage[1].name : ''
+          } - ${lineage.length > 2 ? lineage[lineage.length - 1].name : ''}`;
           return (
             <Fragment>
+              <Head>
+                <title>{titleSEO}</title>
+              </Head>
               <ScrollListener />
               <UserInjector />
               <DfpInjector path={url.query.path} />
