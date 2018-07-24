@@ -498,7 +498,16 @@ export const thankYou = Object.freeze({
     htz: 'הורידו חינם את אפליקציית הארץ והישארו מחוברים',
   }),
   downloadAppButtonText: 'להורדה',
-  downloadAppHref: 'http://htz.li/haaretzapp',
+  downloadAppHref: Object.freeze({
+    htz: Object.freeze({
+      iphone: 'https://itunes.apple.com/us/app/id521559643',
+      android: 'https://play.google.com/store/apps/details?id=com.haaretz',
+    }),
+    tm: Object.freeze({
+      iphone: 'https://itunes.apple.com/il/app/id360938308',
+      android: 'https://play.google.com/store/apps/details?id=com.themarker',
+    }),
+  }),
   imgData: Object.freeze({
     htz: Object.freeze({
       imgName: 'image/3154103949.png',
