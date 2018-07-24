@@ -144,6 +144,7 @@ function create(initialState, req) {
       startFromStage2: true,
       referer: referer || null,
       loggedInOrRegistered: null,
+      readingListArray: [],
       scroll: {
         velocity: null,
         x: 0,

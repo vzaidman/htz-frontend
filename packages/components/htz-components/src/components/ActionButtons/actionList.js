@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-/* global window, fetch, Headers  */
+/* global window, document, fetch, Headers  */
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
@@ -422,7 +422,6 @@ const Print = ({ buttonStyles, size, iconStyles, ...props }) => (
 
 const Save = ({
   buttonStyles,
-  buttonText,
   iconStyles,
   subtract = false,
   size,
@@ -430,42 +429,49 @@ const Save = ({
 }) => (
   <ActionButton
     render={({ articleId, userId, }) => (
-      <Button
-        {...props}
-        miscStyles={buttonStyles}
-        onClick={() => {
-          const bodyReq = {
-            articleId,
-            userId,
-            // to delete send operation: 'subtract'
-            operation: subtract ? 'subtract' : 'add',
-            readingListId: 'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
-            update: true,
-            pq: 'reading_pq',
-          };
-          fetch(
-            'https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager',
-            {
-              method: 'POST',
-              mode: 'cors',
-              credentials: 'include',
-              headers: {
-                // 'Content-Type': 'application/json; charset=utf-8',
-                'Content-Type':
-                  'application/x-www-form-urlencoded; charset=utf-8',
-              },
-              body: querystring.stringify(bodyReq),
-            }
-          ).then(response => response.json());
-        }}
-      >
-        {buttonText && (
-          <FelaComponent style={{ marginEnd: '1rem', }} render="span">
-            {buttonText}
-          </FelaComponent>
+      <ApolloConsumer>
+        {cache => (
+          <Button
+            {...props}
+            miscStyles={buttonStyles}
+            onClick={() => {
+              const bodyReq = {
+                articleId,
+                userId,
+                // to delete send operation: 'subtract'
+                operation: subtract ? 'subtract' : 'add',
+                readingListId: 'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
+                update: true,
+                pq: 'reading_pq',
+              };
+              fetch(
+                'https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager',
+                {
+                  method: 'POST',
+                  cache: 'no-cache',
+                  credentials: 'include',
+                  headers: {
+                    // 'Content-Type': 'application/json; charset=utf-8',
+                    'Content-Type':
+                      'application/x-www-form-urlencoded; charset=utf-8',
+                  },
+                  body: querystring.stringify(bodyReq),
+                }
+              )
+                .then(response => response.json())
+                .then(response =>
+                  cache.writeData({
+                    data: {
+                      readingListArray: response.readinglist.articlesIdsList,
+                    },
+                  })
+                );
+            }}
+          >
+            <IconSave size={size} miscStyles={iconStyles} />
+          </Button>
         )}
-        <IconSave size={size} miscStyles={iconStyles} />
-      </Button>
+      </ApolloConsumer>
     )}
   />
 );

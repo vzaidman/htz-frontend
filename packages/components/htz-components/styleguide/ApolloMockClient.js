@@ -55,6 +55,7 @@ const stateLink = withClientState({
     commentsElementId: '1.2345',
     platform: 'web',
     hostname: 'www.haaretz.co.il',
+    readingListArray: [],
   },
   resolvers: {
     Mutation: {
