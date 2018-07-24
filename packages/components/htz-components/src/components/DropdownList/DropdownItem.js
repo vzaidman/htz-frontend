@@ -17,7 +17,9 @@ Item.propTypes = {
   /**
    * Item's destination.
    */
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
+  /** An onClick function */
+  onClick: PropTypes.func,
   /**
    * Item's pages (may contain pages or sub-pages with their own pages).
    */
@@ -46,12 +48,21 @@ Item.propTypes = {
 };
 
 Item.defaultProps = {
+  onClick: null,
   pages: null,
+  url: null,
   variant: 'secondaryOpaque',
   miscStyles: {},
 };
 
-export default function Item({ name, url, pages, variant, miscStyles, }) {
+export default function Item({
+  name,
+  url,
+  pages,
+  variant,
+  miscStyles,
+  onClick,
+}) {
   return (
     <FelaTheme
       render={theme => (
@@ -61,6 +72,7 @@ export default function Item({ name, url, pages, variant, miscStyles, }) {
             isFull
             fontSize={-2}
             variant={variant}
+            onClick={onClick}
             href={url}
             miscStyles={{
               display: 'flex',
@@ -94,7 +106,7 @@ export default function Item({ name, url, pages, variant, miscStyles, }) {
                     {renderButton(({ toggleState, }) => (
                       <Button
                         boxModel={{ vp: 1, hp: 2, }}
-                        variant="secondaryOpaque"
+                        variant={variant}
                         isHard
                         onClick={toggleState}
                         aria-expanded={isOpen}

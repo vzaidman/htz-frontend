@@ -89,6 +89,8 @@ export function setCookie(
   if (domain) {
     params.push(`domain=${domain}`);
   }
+  console.warn('path: ', path);
+  console.warn('domain: ', domain);
   params.push(`expires=${expires.toUTCString()}`);
 
   document.cookie = params.join(';');
@@ -130,6 +132,9 @@ export function plantCookie(imageUrl) {
   });
 
   return promise;
+}
+export function deleteCookie(name) {
+  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
 }
 
 // Delete all cookies (including paths) helper for testing purposes

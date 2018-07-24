@@ -1,7 +1,9 @@
 /* global document */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
+import config from 'config';
 import { FelaComponent, FelaTheme, } from 'react-fela';
+import { CookieUtils, } from '@haaretz/htz-user-utils';
 
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import NavigationQuery from './navigationQuery';
@@ -110,6 +112,16 @@ class NavigationMenu extends React.Component {
 
   handleMouseEnter = () => this.setState({ isHovered: true, });
   handleMouseLeave = () => this.setState({ isHovered: false, });
+  optOut = () => {
+    CookieUtils.deleteCookie('react');
+    let domain = config.has('domain') && config.get('domain');
+    if (!domain) {
+      // set default domain if config's domain not found.
+      domain = 'haaretz.co.il';
+    }
+    CookieUtils.setCookie('react', 'false', '/', `.${domain}`);
+    document.location.reload();
+  };
 
   render() {
     return (
@@ -118,9 +130,24 @@ class NavigationMenu extends React.Component {
           const { isHovered, } = this.state;
           const { items, sites, promotions, } = this.props.menuSections;
 
+          // TODO: remove this line when optOut item is deprecated
+          const optOut = (
+            <Item
+              key="item HardCoded חזרה לכתבה רגילה"
+              name="חזרה לכתבה רגילה"
+              onClick={this.optOut}
+              miscStyles={{
+                backgroundColor: theme.color('primary', '+1'),
+              }}
+            />
+          );
+
           const combinedItems =
             items &&
             items.map(item => <Item key={`item ${item.name}`} {...item} />);
+
+          // TODO: remove this line when optOut item is deprecated
+          combinedItems.splice(combinedItems.length - 1, 0, optOut);
 
           const combinedSites =
             sites &&
