@@ -166,17 +166,23 @@ function Header({
                         name: 'facebookLogo',
                         buttonStyles: {
                           color: theme.color('facebook'),
+                          ':hover': {
+                            color: theme.color('facebook'),
+                          },
                         },
                       },
                       {
                         name: 'whatsapp',
                         buttonStyles: {
                           color: theme.color('whatsapp'),
+                          ':hover': {
+                            color: theme.color('whatsapp'),
+                          },
                         },
                       },
                       'mail',
                     ],
-                    end: [ 'comments', 'print', 'zen', ],
+                    end: [ 'comments', 'save', 'print', 'zen', ],
                   }}
                   globalButtonsStyles={{
                     minWidth: '10rem',
