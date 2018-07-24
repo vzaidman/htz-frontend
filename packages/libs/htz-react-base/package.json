@@ -14,11 +14,11 @@
     "htz-scripts": "./bin/htz-scripts.js"
   },
   "scripts": {
-    "clean": "./bin/htz-scripts.js clean",
-    "format": "./bin/htz-scripts.js format",
-    "lint": "./bin/htz-scripts.js lint",
-    "test": "./bin/htz-scripts.js test",
-    "gc": "./bin/htz-scripts.js commitizen"
+    "clean": "node ./bin/htz-scripts.js clean",
+    "format": "node ./bin/htz-scripts.js format",
+    "lint": "node ./bin/htz-scripts.js lint",
+    "test": "node ./bin/htz-scripts.js test",
+    "gc": "node ./bin/htz-scripts.js commitizen"
   },
   "config": {
     "commitizen": {
