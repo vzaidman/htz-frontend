@@ -123,7 +123,13 @@ const StandardLayoutRow = ({
     })}
     render={({ className, }) => (
       <Section className={className} key={key}>
-        {title ? <SectionTitleA title={title} id={id || null} /> : null}
+        {title ? (
+          <SectionTitleA
+            isInMargin={!!(id === 'commentsSection')}
+            title={title}
+            id={id || null}
+          />
+        ) : null}
         <FelaComponent
           style={({ layoutStyle, mq, }) => ({
             position: 'relative',
