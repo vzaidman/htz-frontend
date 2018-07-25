@@ -101,8 +101,13 @@ const articleWrapperStyle = ({ theme, lastItem, }) => ({
       start: '0',
       top: '1.5em',
       height: 'calc(100%)',
-      transform: 'translate(485%, 0%)',
-      borderWidth: '1.2px',
+      ...theme.mq({ until: 'm', }, { transform: 'translate(530%, 0)', }),
+      ...theme.mq(
+        { from: 'm', until: 'xl', },
+        { transform: 'translate(540%, -2%)', }
+      ),
+      ...theme.mq({ from: 'xl', }, { transform: 'translate(600%, -7%)', }),
+      borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: theme.color('primary', '-1'),
     },
