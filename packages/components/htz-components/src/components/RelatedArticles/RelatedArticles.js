@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
+import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import ArticleLink from './articleLink';
 
@@ -44,7 +44,7 @@ const articleWrapperStyle = ({ theme, lastItem, }) => ({
     ? {
       ...parseComponentProp(
         'marginBottom',
-        theme.articleStyle.body.marginBottom,
+        theme.articleStyle.relatedArticlesLink.marginBottom,
         theme.mq,
         (prop, value) => ({ [prop]: value, })
       ),
@@ -65,9 +65,8 @@ const RelatedArticles = ({ articles, miscStyles, }) => (
   <FelaComponent
     style={theme => ({
       extend: [
-        ...(miscStyles
-          ? parseStyleProps(miscStyles, theme.mq, theme.type)
-          : []),
+        ...[ parseComponentProp('marginBottom', '5rem', theme.mq), ],
+        ...[ parseComponentProp('marginTop', '5rem', theme.mq), ],
       ],
     })}
     render="ul"
