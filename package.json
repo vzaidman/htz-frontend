@@ -412,6 +412,19 @@
     }
   },
   "lint-staged": {
+    "**/*.{js,jsx}": [
+      "node ./scripts/runTests.js"
+    ],
+    "./*.md": [
+      "yarn run docs",
+      "git add"
+    ],
+    "docs/**/*.md": [
+      "yarn run docs",
+      "git add"
+    ]
+  },
+  "lint-staged-old": {
     "linters": {
       "**/*.{js,jsx}": [
         "node packages/libs/htz-react-base/bin/htz-scripts.js lint --ignore-pattern '.jest/*' --ignore-pattern '.next/*' --ignore-pattern 'dist/*' --ignore-pattern 'docs/*' --ignore-pattern 'packages/*/*/docs/*' --ignore-pattern 'node_modules/*' --fix",
@@ -447,7 +460,7 @@
     "lint-staged": "^7.2.0",
     "lodash.template": "^4.4.0",
     "node-dir": "^0.1.17",
-    "pretty-quick": "^1.4.1",
+    "pretty-quick": "^1.6.0",
     "rimraf": "^2.6.2",
     "write-pkg": "^3.1.0"
   },
