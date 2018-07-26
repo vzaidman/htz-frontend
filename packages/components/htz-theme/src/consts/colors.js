@@ -8,6 +8,24 @@ const colors = {
   accent: {
     base: [ 'tertiary', 'base', ],
   },
+
+  adSlots: {
+    // Primary
+    primaryWrapperBGcolor: 'white',
+    primaryText: [ 'neutral', 'base', ],
+    primaryTextBGcolor: 'white',
+
+    // Primary Opaque
+    primaryOpaqueWrapperBGcolor: [ 'primary', '-6', ],
+    primaryOpaqueText: [ 'tertiary', 'base', ],
+    primaryOpaqueTextBGcolor: 'transparent',
+
+    // Secondary
+    secondaryWrapperBGcolor: [ 'tertiary', '-4', ],
+    secondaryText: [ 'secondary', 'base', ],
+    secondaryTextBGcolor: [ 'bg', '+1', ],
+  },
+
   alerts: {
     openButtonText: [ 'tertiary', 'base', ],
   },

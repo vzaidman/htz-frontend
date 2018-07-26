@@ -128,6 +128,7 @@ import RegisterExample from './components/User/RegisterExample';
 // DFP
 import DfpInjector from './components/Ads/DfpInjector';
 import AdSlot from './components/Ads/AdSlot';
+import MarkedAdSlot from './components/Ads/MarkedAdSlot';
 
 /** ************************************ *
  *       U  T  I  L  I  T  I  E  S       *
@@ -267,6 +268,7 @@ export {
   RegisterExample,
   DfpInjector,
   AdSlot,
+  MarkedAdSlot,
   // Utils
   appendScript,
   createApp,

@@ -2,7 +2,7 @@
 import React from 'react';
 
 import ArticleBody from '../components/ArticleBody/ArticleBody';
-import AdSlot from '../components/Ads/AdSlot';
+import MarkedAdSlot from '../components/Ads/MarkedAdSlot';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import ChangeableElementGroup from '../components/ChangeableElementGroup/ChangeableElementGroup';
 import WrappedComments from '../components/CommentsSection/WrappedComments';
@@ -75,7 +75,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.tm.element.List', List, ],
   [ 'com.tm.element.group', ChangeableElementGroup, ],
   [ 'com.tm.ElementGroup', ElementGroup, ],
-  [ 'com.polobase.DfpBannerElement', AdSlot, ],
+  [ 'com.polobase.DfpBannerElement', MarkedAdSlot, ],
   [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapper, ],
   [ null, null, ],
 ]);
