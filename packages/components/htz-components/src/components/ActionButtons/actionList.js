@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
-/* global window, document, fetch, Headers  */
+/* global window, fetch, Headers  */
 import React from 'react';
-import { FelaComponent, FelaTheme, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
-import querystring from 'querystring';
 import {
   Query,
   ApolloConsumer,
@@ -11,6 +10,7 @@ import {
 } from '../ApolloBoundary/ApolloBoundary';
 import Button from '../Button/Button';
 import EventTracker from '../../utils/EventTracker';
+import Save from './ActionSave';
 
 import IconComment from '../Icon/icons/IconComment';
 import IconFacebook from '../Icon/icons/IconFacebook';
@@ -20,7 +20,6 @@ import IconMail from '../Icon/icons/IconMail';
 import IconMailAlert from '../Icon/icons/IconMailAlert';
 import IconMessenger from '../Icon/icons/IconMessenger';
 import IconPrint from '../Icon/icons/IconPrint';
-import IconSave from '../Icon/icons/IconSave';
 import IconTwitter from '../Icon/icons/IconTwitter';
 import IconWhatsapp from '../Icon/icons/IconWhatsapp';
 import IconZen from '../Icon/icons/IconZen';
@@ -56,12 +55,6 @@ const GET_PAGE_DATA = gql`
   }
 `;
 
-const GET_READING_LIST = gql`
-  query GetReadingList {
-    readingListArray @client
-  }
-`;
-
 const fbAcceessTokens = new Map([
   [
     'haaretz.co.il',
@@ -83,7 +76,7 @@ const fbAppIds = new Map([
   [ 'haaretz.com', '287530407927859', ],
 ]);
 
-const ActionButton = ({ render, }) => (
+export const ActionButton = ({ render, }) => (
   <Query query={GET_PAGE_DATA}>
     {({ loading, error, data, }) => {
       if (loading) return null;
@@ -426,68 +419,7 @@ const Print = ({ buttonStyles, size, iconStyles, ...props }) => (
   />
 );
 
-const Save = ({ buttonStyles, iconStyles, size, ...props }) => (
-  <ActionButton
-    render={({ articleId, userId, }) => (
-      <ApolloConsumer>
-        {cache => {
-          const { readingListArray, } = cache.readQuery({
-            query: GET_READING_LIST,
-          });
-          let isArticleSaved = readingListArray.includes(articleId);
-
-          return (
-            <FelaTheme
-              render={theme => (
-                <Button
-                  {...props}
-                  miscStyles={buttonStyles(isArticleSaved)}
-                  onClick={() => {
-                    const bodyReq = {
-                      articleId,
-                      userId,
-                      operation: isArticleSaved ? 'subtract' : 'add',
-                      readingListId:
-                        'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
-                      update: true,
-                      pq: 'reading_pq',
-                    };
-                    fetch(
-                      'https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager',
-                      {
-                        method: 'POST',
-                        cache: 'no-cache',
-                        credentials: 'include',
-                        headers: {
-                          // 'Content-Type': 'application/json; charset=utf-8',
-                          'Content-Type':
-                            'application/x-www-form-urlencoded; charset=utf-8',
-                        },
-                        body: querystring.stringify(bodyReq),
-                      }
-                    )
-                      .then(response => response.json())
-                      .then(response => {
-                        cache.writeData({
-                          data: {
-                            readingListArray:
-                              response.readinglist.articlesIdsListStr,
-                          },
-                        });
-                        isArticleSaved = !isArticleSaved;
-                      });
-                  }}
-                >
-                  <IconSave size={size} miscStyles={iconStyles} />
-                </Button>
-              )}
-            />
-          );
-        }}
-      </ApolloConsumer>
-    )}
-  />
-);
+// Save component is set from ActionSave.js
 
 const Twitter = ({
   buttonStyles,
