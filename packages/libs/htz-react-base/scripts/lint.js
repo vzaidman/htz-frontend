@@ -1,11 +1,11 @@
 const args = process.argv.slice(2);
 
-// Unfortunately, eslint doesn't just lint the current directory by default -
-// it requires a path to lint. To know if we should add '.' to the argument
-// list, check if any args were passed. If any arg whatsoever was passed, then
-// the user must also specify the path they wish to lint, instead of us adding
-// the current directory by default.
-if (!args.length) {
+/**
+ * Use current directory as path argument to eslint if no path was provided
+ * We assume that any argument that starts with '-' is a flag to eslint and
+ * not a path.
+ */
+if (args.every(arg => arg.startsWith('-'))) {
   process.argv.push('.');
 }
 
