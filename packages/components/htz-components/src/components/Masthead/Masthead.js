@@ -88,7 +88,11 @@ export default props => (
     {({ loading, error, data, }) => {
       if (loading) return null;
       if (error) return null;
-      return <Masthead hostname={data.hostname} {...props} />;
+      return (
+        <LayoutContainer>
+          <Masthead hostname={data.hostname} {...props} />
+        </LayoutContainer>
+      );
     }}
   </Query>
 );
