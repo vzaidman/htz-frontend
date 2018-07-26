@@ -81,6 +81,16 @@ const options = {
 // create the proxy (without context)
 const tomcatProxy = proxy(options);
 
+// create Solr proxy (READ ONLY)
+const solrProxy = proxy({
+  target: `${serviceBase}:8080/solr`, // target host
+  changeOrigin: true, // needed for virtual hosted sites
+  ws: true, // proxy websockets
+  pathRewrite: {
+    '^/solr': 'public/select/', // rewrite path
+  },
+});
+
 // options object
 const GraphQLOptions = {
   // // a function applied to the parameters of every invocation of runQuery
@@ -176,6 +186,7 @@ async function run() {
       );
 
       server.get('/', handler);
+      server.get('/solr', solrProxy);
 
       // Fallback to tomcat via proxy
       server.all('*', tomcatProxy);
