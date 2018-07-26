@@ -1,8 +1,9 @@
-import React, { Component, } from 'react';
+import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { UserFactory, } from '@haaretz/htz-user-utils';
 import { Mutation, } from '../ApolloBoundary/ApolloBoundary';
+import GetReadingList from './GetReadingList';
 
 export const UPDATE_USER = gql`
   mutation updateUser($user: User!) {
@@ -60,9 +61,12 @@ UserInjector.defaultProps = defaultProps;
 
 function Wrapper() {
   return (
-    <Mutation mutation={UPDATE_USER}>
-      {updateUser => <UserInjector updateUser={updateUser} />}
-    </Mutation>
+    <Fragment>
+      <Mutation mutation={UPDATE_USER}>
+        {updateUser => <UserInjector updateUser={updateUser} />}
+      </Mutation>
+      <GetReadingList />
+    </Fragment>
   );
 }
 
