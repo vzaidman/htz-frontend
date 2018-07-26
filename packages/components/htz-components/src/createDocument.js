@@ -44,7 +44,6 @@ const createDocument = ({
   class HaaretzDocument extends Document {
     static getInitialProps({ renderPage, req, }) {
       const host = req.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-      const ampUrl = `${req.hostname}/amp${req.url}`;
       const canonicalUrl = `${req.hostname}${req.url}`;
       const validatedTheme = hasToggleableTheme ? theme(host) : theme;
       const varifiedStaticRules = hasToggleableTheme
@@ -81,7 +80,6 @@ const createDocument = ({
         appData,
         isRtl,
         host,
-        ampUrl,
         canonicalUrl,
       };
     }
@@ -137,9 +135,9 @@ const createDocument = ({
             />
             <SEO
               host={this.props.host}
-              ampUrl={this.props.ampUrl}
               canonicalUrl={this.props.canonicalUrl}
             />
+            <SEO host={this.props.host} />
             {buildFontPreloadLink(fontRules)}
             <link rel="shortcut icon" href="about:blank" />
             {this.renderStyles()}
