@@ -17,11 +17,12 @@
     "format:self": "node packages/libs/htz-react-base/bin/htz-scripts.js format",
     "gc": "node packages/libs/htz-react-base/bin/htz-scripts.js commitizen",
     "lerna-do": "lerna-wizard",
-    "lint": "yarn run lint:self && yarn run lint:packages",
+    "lint": "yarn run lint:self",
+    "lint:all": "yarn run lint:self && yarn run lint:packages",
     "lint:packages": "lerna exec --no-bail -- yarn run lint",
     "lint:self": "node packages/libs/htz-react-base/bin/htz-scripts.js lint",
     "postcheckout": "node scripts/githooks/postcheckout",
-    "precommit": "pretty-quick --staged && node scripts/githooks/precommit",
+    "precommit": "node scripts/githooks/precommit",
     "prepush": "node scripts/githooks/prepush",
     "sync": "node scripts/sync.js",
     "test": "lerna exec --no-bail -- yarn run test",
@@ -330,12 +331,17 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx}": [
-      "node ./scripts/lintFiles.js",
-      "node ./scripts/runTests.js"
-    ],
-    "./*.md": ["yarn run docs", "git add"],
-    "docs/**/*.md": ["yarn run docs", "git add"]
+    "linters": {
+      "**/*.{js,jsx}": [
+        "pretty-quick",
+        "node ./scripts/lintFiles.js",
+        "node ./scripts/runTests.js"
+      ],
+      "**/*.json": ["jsonlint-cli"],
+      "./*.md": ["yarn run docs", "git add"],
+      "docs/**/*.md": ["yarn run docs", "git add"]
+    },
+    "concurrent": false
   },
   "lint-staged-old": {
     "linters": {
@@ -368,6 +374,7 @@
     "globby": "^6.1.0",
     "husky-interactive": "^0.1.1",
     "inquirer": "^3.3.0",
+    "jsonlint-cli": "^1.0.1",
     "lerna": "^2.11.0",
     "lerna-wizard": "^1.0.9",
     "lint-staged": "^7.2.0",
