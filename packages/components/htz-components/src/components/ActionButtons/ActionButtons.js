@@ -141,10 +141,19 @@ const ActionButtons = ({
         boxModel={boxModel}
         isFlat={isFlat}
         isRound={isRound}
-        buttonStyles={{
-          ...(globalButtonsStyles && globalButtonsStyles),
-          ...(buttonStyles && buttonStyles),
-        }}
+        // Ben:
+        // The 'save action button' style should sent by parent component,
+        // but the state if the article is saved or not is from the 'actionList',
+        // so for those cases the style is a function to run by 'actionList'.
+        // Make sure to add the 'globalButtonsStyles' to that function.
+        buttonStyles={
+          buttonStyles && typeof buttonStyles === 'function'
+            ? buttonStyles
+            : {
+                ...(globalButtonsStyles && globalButtonsStyles),
+                ...(buttonStyles && buttonStyles),
+              }
+        }
         size={size}
         iconStyles={{
           ...(globalIconsStyles && globalIconsStyles),

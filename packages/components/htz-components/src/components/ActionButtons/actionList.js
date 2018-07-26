@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* global window, document, fetch, Headers  */
 import React from 'react';
-import { FelaComponent, } from 'react-fela';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
 import querystring from 'querystring';
 import {
@@ -53,6 +53,12 @@ const GET_PAGE_DATA = gql`
     user @client {
       id
     }
+  }
+`;
+
+const GET_READING_LIST = gql`
+  query GetReadingList {
+    readingListArray @client
   }
 `;
 
@@ -420,57 +426,64 @@ const Print = ({ buttonStyles, size, iconStyles, ...props }) => (
   />
 );
 
-const Save = ({
-  buttonStyles,
-  iconStyles,
-  subtract = false,
-  size,
-  ...props
-}) => (
+const Save = ({ buttonStyles, iconStyles, size, ...props }) => (
   <ActionButton
     render={({ articleId, userId, }) => (
       <ApolloConsumer>
-        {cache => (
-          <Button
-            {...props}
-            miscStyles={buttonStyles}
-            onClick={() => {
-              const bodyReq = {
-                articleId,
-                userId,
-                // to delete send operation: 'subtract'
-                operation: subtract ? 'subtract' : 'add',
-                readingListId: 'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
-                update: true,
-                pq: 'reading_pq',
-              };
-              fetch(
-                'https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager',
-                {
-                  method: 'POST',
-                  cache: 'no-cache',
-                  credentials: 'include',
-                  headers: {
-                    // 'Content-Type': 'application/json; charset=utf-8',
-                    'Content-Type':
-                      'application/x-www-form-urlencoded; charset=utf-8',
-                  },
-                  body: querystring.stringify(bodyReq),
-                }
-              )
-                .then(response => response.json())
-                .then(response =>
-                  cache.writeData({
-                    data: {
-                      readingListArray: response.readinglist.articlesIdsList,
-                    },
-                  })
-                );
-            }}
-          >
-            <IconSave size={size} miscStyles={iconStyles} />
-          </Button>
-        )}
+        {cache => {
+          const { readingListArray, } = cache.readQuery({
+            query: GET_READING_LIST,
+          });
+          let isArticleSaved = readingListArray.includes(articleId);
+
+          return (
+            <FelaTheme
+              render={theme => (
+                <Button
+                  {...props}
+                  miscStyles={buttonStyles(isArticleSaved)}
+                  onClick={() => {
+                    const bodyReq = {
+                      articleId,
+                      userId,
+                      operation: isArticleSaved ? 'subtract' : 'add',
+                      readingListId:
+                        'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
+                      update: true,
+                      pq: 'reading_pq',
+                    };
+                    fetch(
+                      'https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager',
+                      {
+                        method: 'POST',
+                        cache: 'no-cache',
+                        credentials: 'include',
+                        headers: {
+                          // 'Content-Type': 'application/json; charset=utf-8',
+                          'Content-Type':
+                            'application/x-www-form-urlencoded; charset=utf-8',
+                        },
+                        body: querystring.stringify(bodyReq),
+                      }
+                    )
+                      .then(response => response.json())
+                      .then(response => {
+                        cache.writeData({
+                          data: {
+                            readingListArray:
+                              response.readinglist.articlesIdsListStr,
+                          },
+                        });
+                        isArticleSaved = !isArticleSaved;
+                      });
+                  }}
+                >
+                  <IconSave size={size} miscStyles={iconStyles} />
+                </Button>
+              )}
+            />
+          );
+        }}
       </ApolloConsumer>
     )}
   />

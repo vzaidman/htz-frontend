@@ -5,6 +5,7 @@ import { Mutation, Query, } from '../ApolloBoundary/ApolloBoundary';
 import { UPDATE_USER, GET_USER, } from './UserInjector';
 import ImageCookies from './ImageCookies';
 import logger from '../../componentsLogger';
+import GetReadingList from './GetReadingList';
 
 export const userScheme = {
   type: null,
@@ -70,6 +71,7 @@ class UserDispenser extends Component {
             })
           }
         </Query>
+        <GetReadingList />
       </Fragment>
     );
   }

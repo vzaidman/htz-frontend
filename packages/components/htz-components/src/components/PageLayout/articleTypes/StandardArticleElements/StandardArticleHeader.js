@@ -72,6 +72,7 @@ function Header({
             },
           },
         });
+
         return (
           <FelaComponent
             style={theme => ({
@@ -182,7 +183,25 @@ function Header({
                       },
                       'mail',
                     ],
-                    end: [ 'comments', 'save', 'print', 'zen', ],
+                    end: [
+                      'comments',
+                      {
+                        name: 'save',
+                        buttonStyles: isArticleSaved => ({
+                          minWidth: '10rem',
+                          ...(isArticleSaved && {
+                            color: theme.color('neutral', '-10'),
+                            backgroundColor: theme.color('primary'),
+                            ':hover': {
+                              color: theme.color('neutral', '-10'),
+                              backgroundColor: theme.color('secondary'),
+                            },
+                          }),
+                        }),
+                      },
+                      'print',
+                      'zen',
+                    ],
                   }}
                   globalButtonsStyles={{
                     minWidth: '10rem',
