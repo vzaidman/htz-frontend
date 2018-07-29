@@ -24,7 +24,7 @@ services:
     environment:
       - NODE_ENV=production
       - CONNECTION_PRESET=prod
-      - NEXT_BUILD_ID=${version:-latest}
+      - NEXT_BUILD_ID=${BUILD_ID:-latest}
       # the following environment is optional
       - PORT=2500
       - PM2_PUBLIC_KEY=1pu5b2hg3lk4y1b
