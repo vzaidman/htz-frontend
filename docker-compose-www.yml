@@ -20,7 +20,7 @@ services:
       update_config:
         parallelism: 2
         delay: 10s
-        order: start-first
+        #order: start-first
       restart_policy:
         condition: on-failure
 
