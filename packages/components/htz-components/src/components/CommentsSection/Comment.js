@@ -12,6 +12,8 @@ import Like from './Like'; // eslint-disable-line import/no-named-as-default
 import H from '../AutoLevels/H';
 import Section from '../AutoLevels/Section';
 
+import decodeCommonHTMLEntities from '../../utils/decodeCommonHTMLEntities';
+
 const wrapperStyle = ({
   theme,
   isSubComment,
@@ -85,20 +87,17 @@ const StyledCommentAuthor = ({ truncate, children, ...props }) => (
       },
       ...(truncate
         ? {
-          whiteSpace: 'nowrap',
-          marginInlineEnd: '1rem',
-          maxWidth: '50%',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-        }
+            whiteSpace: 'nowrap',
+            marginInlineEnd: '1rem',
+            maxWidth: '50%',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }
         : {}),
       ...theme.type(0),
     })}
     render={({ className, }) => (
-      <H
-        className={className}
-        {...props}
-      >
+      <H className={className} {...props}>
         {children}
       </H>
     )}
@@ -139,16 +138,13 @@ const StyledCommentText = ({ fade, children, ...props }) => (
       wordBreak: 'break-word',
       ...(fade
         ? {
-          overflow: 'hidden',
-          maxHeight: '41rem',
-        }
+            overflow: 'hidden',
+            maxHeight: '41rem',
+          }
         : {}),
     })}
     render={({ className, }) => (
-      <div
-        className={className}
-        {...props}
-      >
+      <div className={className} {...props}>
         {children}
       </div>
     )}
@@ -350,7 +346,7 @@ class Comment extends React.Component {
   };
 
   generateCommentMarkup() {
-    return { __html: this.props.commentText, };
+    return { __html: decodeCommonHTMLEntities(this.props.commentText), };
   }
 
   render() {
@@ -451,10 +447,7 @@ class Comment extends React.Component {
                 </FelaComponent>
                 <div
                   // eslint-disable-next-line
-                  ref={commentTextEl =>
-                    (this.commentTextEl = commentTextEl)
-                  }
-                >
+                  ref={commentTextEl => (this.commentTextEl = commentTextEl)}>
                   <StyledCommentText>{title}</StyledCommentText>
                   <StyledCommentText
                     dangerouslySetInnerHTML={this.generateCommentMarkup()}
