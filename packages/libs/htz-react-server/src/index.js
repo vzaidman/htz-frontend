@@ -115,7 +115,7 @@ app
     if (!DEV) {
       server.use(compression()); // Compress responses.
     }
-    server.use(helmet()); // Various security-minded settings.
+    server.use(helmet({ frameguard: false, })); // Various security-minded settings.
     // cors allows querying the server from different ports and aliases.
     server.use(cors());
     server.use(
