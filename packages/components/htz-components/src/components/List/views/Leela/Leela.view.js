@@ -13,7 +13,6 @@ export const PromotedItem = ({ path, title, image, suffix, }) => (
   <FelaComponent
     style={theme => ({
       display: 'flex',
-      height: `${91 / 7}rem`,
       marginBottom: '2rem',
       ...border('1px', 0, 'solid', theme.color('neutral', '-4')),
       ...borderEnd('4px', 'solid', theme.color('neutral', '-4')),

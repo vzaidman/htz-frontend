@@ -2,6 +2,7 @@
 import gql from 'graphql-tag';
 import {
   clickTrackerBannersWrapper,
+  dfpBanner,
   teaserForLeftElement,
 } from '@haaretz/app-utils';
 
@@ -16,9 +17,13 @@ export default gql`
         ... on ClickTrackerBannersWrapper {
           ...ClickTrackerBannersWrapper
         }
+        ... on DfpBanner {
+          ...DfpBanner
+        }
       }
     }
   }
   ${clickTrackerBannersWrapper}
+  ${dfpBanner}
   ${teaserForLeftElement}
 `;

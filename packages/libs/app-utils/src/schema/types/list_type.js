@@ -9,8 +9,14 @@ import {
 } from 'graphql';
 
 import Content from './content_type';
+import DfpBanner from './dfp_banner_type';
 import TeaserInListType from './teaser_in_list_type';
 import ClickTrackerWrapperType from './click_tracker_banner_wrapper_type';
+
+const types = new Map([
+  [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapperType, ],
+  [ 'com.polobase.DfpBannerElement', DfpBanner, ],
+]);
 
 const List = new GraphQLObjectType({
   name: 'List',
@@ -25,13 +31,15 @@ const List = new GraphQLObjectType({
       type: new GraphQLList(
         new GraphQLUnionType({
           name: 'ListItems',
-          types: [ Content, TeaserInListType, ClickTrackerWrapperType, ],
+          types: [
+            Content,
+            TeaserInListType,
+            ClickTrackerWrapperType,
+            DfpBanner,
+          ],
           resolveType: value =>
             (value.inputTemplate
-              ? value.inputTemplate ===
-                'com.polobase.ClickTrackerBannersWrapper'
-                ? ClickTrackerWrapperType
-                : Content
+              ? types.get(value.inputTemplate) || Content
               : TeaserInListType),
         })
       ),
