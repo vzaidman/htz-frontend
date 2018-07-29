@@ -333,7 +333,6 @@
   "lint-staged": {
     "linters": {
       "**/*.{js,jsx}": [
-        "pretty-quick",
         "node ./scripts/lintFiles.js",
         "node ./scripts/runTests.js"
       ],

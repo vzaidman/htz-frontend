@@ -9,7 +9,7 @@ const spawn = require('cross-spawn');
 const repoDir = process.cwd();
 
 // Extract list of stages `js` files.
-const [, , ...filePaths] = process.argv;
+const [ , , ...filePaths ] = process.argv;
 
 // Sort staged `js` into packages
 const packages = filePaths.reduce((result, file) => {
@@ -23,7 +23,7 @@ const packages = filePaths.reduce((result, file) => {
     return newResult;
   }
 
-  newResult[packageDir] = [fileRelativeToPackage];
+  newResult[packageDir] = [ fileRelativeToPackage, ];
   return newResult;
 }, {});
 
