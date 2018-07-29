@@ -10,7 +10,9 @@ const styles = ({ theme, isContentEditable, isTextArea, height, }) => ({
   border: 'none',
   backgroundColor: 'transparent',
   ...(isTextArea ? { resize: 'none', } : {}),
-  ...(isContentEditable ? { overflow: 'auto', } : {}),
+  ...(isContentEditable
+    ? { overflow: 'auto', wordWrap: 'break-word', wordBreak: 'break-word', }
+    : {}),
   fontSize: 'inherit',
   width: '100%',
   cursor: 'pointer',
