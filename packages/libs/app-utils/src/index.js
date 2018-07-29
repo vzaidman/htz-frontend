@@ -22,6 +22,7 @@ import imageGallery from './fragments/imageGallery/imageGallery';
 import interactive from './fragments/interactive/interactive';
 import link from './fragments/link/link';
 import list from './fragments/list/list';
+import mobileQuickRegistration from './fragments/mobileQuickRegistration/mobileQuickRegistration';
 import navMenu from './fragments/navMenu/navMenu';
 import paragraph from './fragments/paragraph/paragraph';
 import quote from './fragments/quote/quote';
@@ -57,6 +58,7 @@ export {
   interactive,
   link,
   list,
+  mobileQuickRegistration,
   navMenu,
   paragraph,
   quote,

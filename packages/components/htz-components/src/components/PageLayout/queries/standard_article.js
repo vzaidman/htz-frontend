@@ -11,6 +11,7 @@ import {
   imageGallery,
   interactive,
   link,
+  mobileQuickRegistration,
   paragraph,
   quote,
   relatedArticles,
@@ -104,6 +105,9 @@ export default gql`
                 ... on Link {
                   ...Link
                 }
+                ... on MobileQuickRegistration {
+                  ...MobileQuickRegistration
+                }
                 ... on Paragraph {
                   ...Paragraph
                 }
@@ -143,6 +147,7 @@ export default gql`
   ${imageGallery}
   ${interactive}
   ${link}
+  ${mobileQuickRegistration}
   ${paragraph}
   ${quote}
   ${relatedArticles}

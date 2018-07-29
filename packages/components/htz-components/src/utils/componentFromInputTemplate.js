@@ -17,6 +17,7 @@ import Interactive from '../components/Interactive/Interactive';
 import LinksBlock from '../components/RelatedArticles/LinksBlock';
 import List from '../components/List/List';
 import Masthead from '../components/Masthead/Masthead';
+import MobileQuickRegistration from '../components/MobileQuickRegistration/MobileQuickRegistration';
 import Newsletter from '../components/Newsletter/Newsletter';
 import Outbrain from '../components/Outbrain/Outbrain';
 import Paragraph from '../components/Paragraph/Paragraph';
@@ -51,6 +52,7 @@ const inputTemplateToComponent = new Map([
   [ 'a', Paragraph, ],
   [ 'com.htz.MagazineArticleQuote', Quote, ],
   [ 'linksBlock', LinksBlock, ],
+  [ 'com.polobase.quickNewsletterRegistration', MobileQuickRegistration, ],
   [ 'relatedArticles', RelatedArticles, ],
   [ 'relatedArticleSeries', SeriesArticles, ],
   [ 'com.tm.Link', SpecialPromotions, ],
