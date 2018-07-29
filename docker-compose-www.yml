@@ -7,11 +7,11 @@ services:
     image: "docker.themarker.com:8083/htz-front-app:${version:-latest}"
     ports:
       - 2500:2500
-    healthcheck:
-      test: ["CMD", "curl", "-f","-H","Host:","docker.haaretz.co.il", "http://localhost:2500/1.6318504"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+    #healthcheck:
+    #  test: ["CMD", "curl", "-f","-H","Host:","docker.haaretz.co.il", "http://localhost:2500/1.6318504"]
+    #  interval: 10s
+    #  timeout: 5s
+    #  retries: 3
     deploy:
       replicas: 5
       update_config:
