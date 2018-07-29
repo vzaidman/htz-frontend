@@ -27,6 +27,8 @@ services:
       - NEXT_BUILD_ID=${version:-latest}
       # the following environment is optional
       - PORT=2000
+      - PM2_PUBLIC_KEY=1pu5b2hg3lk4y1b
+      - PM2_SECRET_KEY=2sffny3viue6z15
       - BIND_ADDRESS=react-prod
       - HOSTNAME=react-prod
       - GRAPHQL_USE_SSL=true
