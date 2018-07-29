@@ -8,7 +8,7 @@ services:
     ports:
       - 2500:2500
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:2500/1.6318504"]
+      test: ["CMD", "curl", "-f","-H","Host:","www.haaretz.co.il", "http://localhost:2500/1.6318504"]
       interval: 10s
       timeout: 5s
       retries: 3
