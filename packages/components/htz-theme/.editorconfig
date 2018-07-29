@@ -13,8 +13,8 @@ indent_style = space
 # The number of spaces for each tab when using soft tabs
 indent_size = 2
 
-## Newlines
-end_of_line = lf # Unix-style newlines
+
+
 insert_final_newline = true # Newline ending every file
 
 ## Misc

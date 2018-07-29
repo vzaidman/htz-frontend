@@ -5,6 +5,7 @@ module.exports = {
   parser: 'babel-eslint',
 
   rules: {
+    'linebreak-style': 0,
     'brace-style': [ 2, 'stroustrup', { allowSingleLine: true, }, ],
     'function-paren-newline': 0,
     /* Warn about long line */
