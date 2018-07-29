@@ -1,5 +1,5 @@
 import { createDocument, } from '@haaretz/htz-components';
-import { htzTheme, cssReset, fontStacks, } from '@haaretz/htz-theme';
+import { htzTheme, cssReset, globalAds, fontStacks, } from '@haaretz/htz-theme';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 
@@ -55,7 +55,7 @@ const HaaretzDocument = createDocument({
   theme: htzTheme,
   fontRules: fonts,
   defaultFontStack: fontStacks.default,
-  staticRules: cssReset,
+  staticRules: [ cssReset, globalAds, ],
   isRtl: true,
 });
 export default HaaretzDocument;
