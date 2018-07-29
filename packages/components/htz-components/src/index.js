@@ -154,6 +154,7 @@ export {
   ActionButtons,
   AriaLive,
   ArticleBody,
+  ApolloBoundary,
   Button,
   ButtonGroup,
   Caption,
