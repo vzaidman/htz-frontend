@@ -1,8 +1,9 @@
 version: "3.4"
 services:
   htz_react:
-    build: .
-      args:
+    build: 
+     context: .
+     args:
         NEXT_BUILD_ID: ${version:-latest}
     hostname: htz-front-app
     #command: ["yarn", "workspace", "@haaretz/haaretz.co.il", "start"]

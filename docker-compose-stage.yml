@@ -2,7 +2,8 @@ version: "3.3"
 services:
   htz_react:
     hostname: htz-front-app
-    build: .
+    build:
+     context: .
      args:
         NEXT_BUILD_ID: ${version:-latest}
     image: "docker.themarker.com:8083/htz-front-app:${version:-latest}"
