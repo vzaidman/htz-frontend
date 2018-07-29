@@ -3,13 +3,15 @@ services:
   htz_react:
     hostname: htz-front-app
     build: .
+     args:
+        NEXT_BUILD_ID: ${version:-latest}
     image: "docker.themarker.com:8083/htz-front-app:${version:-latest}"
     ports:
       - 2200:2200
     environment:
       - NODE_ENV=production
       - CONNECTION_PRESET=stage
-      - NEXT_BUILD_ID=${BUILD_ID:-LATEST}
+      - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
       - PORT=2200
       - BIND_ADDRESS=react-stage

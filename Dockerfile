@@ -1,7 +1,9 @@
 FROM node:8.9
+ARG NEXT_BUILD_ID 
 COPY  . /workspace/
 WORKDIR /workspace/
-ENV BUILD_ID $(git rev-parse --verify HEAD)
+ENV NEXT_BUILD_ID=${NEXT_BUILD_ID}
+#ENV BUILD_ID $(git rev-parse --verify HEAD)
 RUN rm -f /etc/localtime; ln -s /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime
 RUN yarn && yarn bootstrap
 #RUN yarn test:deploy
