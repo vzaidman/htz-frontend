@@ -21,9 +21,8 @@ async function runHooks() {
 
   const lintStaged = spawn.sync(
     'cross-env',
-    executor,
     // Pass commandline arguments to lint-staged
-    [ lintStagedPath, ].concat(args),
+    [ executor, lintStagedPath, ].concat(args),
     { stdio: 'inherit', }
   );
 
