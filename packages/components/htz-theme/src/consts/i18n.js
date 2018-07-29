@@ -231,17 +231,6 @@ export const userMenuI18n = Object.freeze({
   noUserData: 'התחברות',
 });
 
-export const mobileUserMenuI18n = Object.freeze({
-  noUserData: 'כניסה',
-  userLoggedIn: 'יציאה',
-  url: 'https://www.haaretz.co.il/misc/login-page',
-});
-
-export const mobileReadingList = Object.freeze({
-  url: 'https://www.haaretz.co.il/readingList',
-  buttonText: 'רשימת הקריאה',
-});
-
 export const a11yMenuI18n = Object.freeze({
   a11yToggle: state => `${state ? 'הפסק' : 'הפעל'} מצב ניגודיות`,
   menuItems: Object.freeze([
@@ -258,10 +247,17 @@ export const readingListMenuI18n = Object.freeze({
   url: 'https://www.haaretz.co.il/personal-area/my-account#readingList',
 });
 
-export const mobileAdditionalShare = Object.freeze({
-  text: 'שיתוף',
-});
+export const serviceByMailI18n = Object.freeze({
+  authorAlertServiceTitle: 'שלח לי התראה על כל כתבה חדשה של ',
+  inpEmailLabelText: 'דוא"ל',
+  inpEmailNoteText: 'אנא הזינו כתובת אימייל',
+  btnSubmitText: 'שלח',
+  btnCancelText: 'לא תודה',
+  btnCloseText: 'סגור',
 
-export const ModifiedDateText = Object.freeze({
-  text: 'עודכן ב-',
+  inpEmailErrorRequired: 'יש להכניס כתובת דואר אלקטרוני',
+  inpEmailErrorInvalid: 'כתובת דואר אלקטרוני אינה תקינה',
+
+  successDefaultMessage: 'נרשמתך בהצלחה!',
+  failureDefaultMessage: 'ההרשמה נכשלה, אנא נסה שנית מאוחר יותר.',
 });

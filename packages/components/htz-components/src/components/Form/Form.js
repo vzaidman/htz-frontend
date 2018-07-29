@@ -4,7 +4,7 @@ import { attrsPropType, } from '../../propTypes/attrsPropType';
 
 const callAll = (...fns) => (...args) => fns.forEach(fn => fn && fn(...args));
 
-export class Form extends Component {
+export default class Form extends Component {
   static propTypes = {
     /**
      * An object of attrbutes to set on the DOM element.
@@ -370,5 +370,3 @@ export class Form extends Component {
     );
   }
 }
-
-export default Form;

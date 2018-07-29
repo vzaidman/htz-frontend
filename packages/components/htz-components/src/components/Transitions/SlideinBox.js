@@ -14,13 +14,19 @@ export default class SlideinBox extends React.Component {
     this.element &&
       this.element.addEventListener(
         getTransitionEnd(this.element),
-        this.changeState,
+        this.handleTransitionEnd,
         false
       );
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.show !== this.props.show) {
+      this.changeState();
+    }
+  }
+
+  handleTransitionEnd(event) {
+    if (event.target === this.element) {
       this.changeState();
     }
   }

@@ -471,6 +471,33 @@ const colors = {
     primaryHoverBorder: [ 'primary', '-4', ],
     primaryHoverText: [ 'bodyText', 'base', ],
 
+    // Primary Opaque
+    primaryOpaqueBg: 'white',
+    primaryOpaqueBgWrapper: 'transparent',
+    primaryOpaqueBorder: [ 'primary', '-4', ],
+    primaryOpaqueBorderTextLabel: [ 'primary', '-5', ],
+    primaryOpaquePlaceholder: [ 'neutral', '-4', ],
+    primaryOpaqueText: [ 'bodyText', 'base', ],
+    primaryOpaqueTextLabel: [ 'primary', '+1', ],
+    primaryOpaqueTextLabelDisabled: [ 'neutral', '-4', ],
+    primaryOpaqueTextNote: [ 'neutral', '-3', ],
+    primaryOpaqueAbbr: [ 'tertiary', 'base', ],
+
+    // Primary Opaque Focus
+    primaryOpaqueFocusBg: 'white',
+    primaryOpaqueFocusBorder: [ 'primary', 'base', ],
+
+    // Primary Opaque Error state
+    primaryOpaqueErrorBorder: [ 'tertiary', '+1', ],
+    primarOpaqueErrorText: [ 'bodyText', 'base', ],
+    primaryOpaqueErrorTextLabel: [ 'tertiary', 'base', ],
+    primaryOpaqueErrorTextNote: [ 'tertiary', 'base', ],
+
+    // Primary Opaque Hover
+    primaryOpaqueHoverBg: [ 'primary', '-5', ],
+    primaryOpaqueHoverBorder: [ 'primary', '-4', ],
+    primaryOpaqueHoverText: [ 'bodyText', 'base', ],
+
     // PrimaryInverse
     primaryInverseBg: 'white',
     primaryInverseBgWrapper: 'transparent',

@@ -5,7 +5,7 @@ The ArticleHeaderMeta displays the publishing date and authors, and email alerts
 ```jsx
 <div dir="rtl">
   <ArticleHeaderMeta
-    publishDateTime={new Date(2018, 0, 23, 16, 0, 0)}
+    publishDate={new Date(2018, 0, 23, 16, 0, 0)}
     authors={[
       {
         image: {
@@ -68,7 +68,7 @@ The ArticleHeaderMeta displays the publishing date and authors, and email alerts
         inputTemplate: 'com.tm.Author',
         contentId: '1.1925',
         contentName: 'אורנה פילרררץ ',
-        hasPushAlerts: true,
+        hasEmailAlerts: true,
       },
       {
         image: {

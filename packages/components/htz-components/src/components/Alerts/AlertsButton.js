@@ -2,8 +2,20 @@ import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import AriaDescription from '../AriaDescription/AriaDescription';
 
-const authorPropTypes = {
+const alertButtonPropTypes = {
+  /**
+   * The author object which the user can register for his alerts.
+   */
   author: PropTypes.object.isRequired,
+  /**
+   * A function to execute when button is toggled.
+   * (Use to show/hide the registration form)
+   */
+  onToggle: PropTypes.func,
+};
+
+const alertsButtonDefaultProps = {
+  onToggle: null,
 };
 
 class AlertsButton extends Component {
@@ -13,29 +25,29 @@ class AlertsButton extends Component {
       isExpanded: false,
     };
 
-    this.openFollowAuthorDialog = this.openFollowAuthorDialog.bind(this);
     this.toggleExpanded = this.toggleExpanded.bind(this);
   }
 
   toggleExpanded() {
-    this.setState(prevState => ({
-      isExpanded: !prevState.isExpanded,
-    }));
-  }
-
-  // TODO: add open-dialog logic to Alerts button
-  openFollowAuthorDialog() {
-    this.toggleExpanded();
+    this.setState(
+      prevState => ({
+        isExpanded: !prevState.isExpanded,
+      }),
+      () => {
+        this.props.onToggle(this.state.isExpanded);
+      }
+    );
   }
 
   render() {
-    const { author, className, children, } = this.props;
+    const { author, className, children, forwardedRef, } = this.props;
 
     return (
       <button
+        ref={forwardedRef}
         className={className}
         aria-expanded={this.state.isExpanded}
-        onClick={this.openFollowAuthorDialog}
+        onClick={this.toggleExpanded}
         aria-describedby="alerts_btn_description"
       >
         <AriaDescription id="alerts_btn_description">
@@ -48,7 +60,7 @@ class AlertsButton extends Component {
 }
 
 AlertsButton.propTypes = {
-  ...authorPropTypes,
+  ...alertButtonPropTypes,
   /**
    * CSS class names provided by Fela
    */
@@ -56,8 +68,9 @@ AlertsButton.propTypes = {
 };
 
 AlertsButton.defaultProps = {
+  ...alertsButtonDefaultProps,
   className: null,
 };
 
 export default AlertsButton;
-export { authorPropTypes, };
+export { alertButtonPropTypes, alertsButtonDefaultProps, };
