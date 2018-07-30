@@ -49,7 +49,7 @@ export default class AuthorNotificationsRegistration extends React.Component {
                 title={`${theme.serviceByMailI18n.authorAlertServiceTitle}${
                   this.props.author.contentName
                 }`}
-                serviceUrl={`hsttps://alerts.haaretz.co.il/alerts/register?newsletterId=${
+                serviceUrl={`https://alerts.haaretz.co.il/alerts/register?newsletterId=${
                   this.props.author.contentId
                 }&type=writers`}
                 onRegistrationSuccess={this.onRegistrationSuccess}
