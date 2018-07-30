@@ -9,6 +9,7 @@ import MastheadSearch from './MastheadSearch/MastheadSearch';
 import MastheadUserTools from './MastheadUserTools';
 import Media from '../Media/Media';
 import MobileNavigation from '../MobileNavigationMenu/MobileNavigationController';
+import LayoutContainer from '../PageLayout/LayoutContainer';
 import NavigationMenu from '../NavigationMenu/NavigationMenu';
 
 const hostQuery = gql`

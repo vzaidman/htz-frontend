@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
-import NavigationQuery from './navigetionQuery';
+import NavigationQuery from './navigationQuery';
 import DropdownList from '../DropdownList/DropdownList';
 import Hamburger from '../Animations/Hamburger';
 import Item from '../DropdownList/DropdownItem';
