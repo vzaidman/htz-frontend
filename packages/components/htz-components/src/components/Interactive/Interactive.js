@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BeforeAndAfter from './components/BeforeAndAfter';
+import Debug from '../Debug/Debug';
 
 const propTypes = {
   inputTemplate: PropTypes.string.isRequired,
@@ -21,7 +22,12 @@ function InteractiveElement(props) {
   return Element ? (
     <Element {...props} />
   ) : (
-    <p>not supported interactive element</p>
+    <Debug>
+      <p>{`${
+        this.props.inputTemplate
+      } is not supported interactive element`}
+      </p>
+    </Debug>
   );
 }
 

@@ -141,7 +141,7 @@ export default class BeforeAndAfter extends React.Component {
 
   render() {
     const { properties: { elementsList, }, } = this.props;
-    return (
+    return elementsList && elementsList.length >= 2 ? (
       <FelaComponent
         style={{
           width: '100%',
@@ -177,7 +177,7 @@ export default class BeforeAndAfter extends React.Component {
           </div>
         )}
       />
-    );
+    ) : null;
   }
 }
 
