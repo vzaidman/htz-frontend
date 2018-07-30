@@ -306,7 +306,7 @@ function StandardArticle({
                             isArticleBody
                             authors={authors}
                             reportingFrom={reportingFrom}
-                            publishDate={header.publishDate}
+                            publishDate={header.pubDate}
                           >
                             <ArticleBody body={body} />
                           </StandardLayoutRow>

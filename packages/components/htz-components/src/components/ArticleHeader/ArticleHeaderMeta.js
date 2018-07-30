@@ -70,7 +70,7 @@ const timeStyle = ({ theme, mobileTime, }) => ({
       { marginInlineStart: '1rem', marginInlineEnd: '1rem', }
     ),
     theme.mq({ from: 'l', }, { marginTop: '0.5rem', }),
-    theme.type(-3, { fromBp: 'xl', }),
+    theme.type(-2, { fromBp: 'xl', }),
     theme.type(-2, { untilBp: 'xl', }),
   ],
 });
@@ -193,7 +193,7 @@ function ArticleHeaderMeta({
                 render={({ className, }) => (
                   <Time
                     time={publishDate}
-                    format="DD.MM.YYYY HH:mm"
+                    format="HH:mm DD.MM.YYYY"
                     className={className}
                   />
                 )}
@@ -214,7 +214,7 @@ function ArticleHeaderMeta({
             render={({ className, }) => (
               <Time
                 time={publishDate}
-                format="DD.MM.YYYY HH:mm"
+                format="HH:mm DD.MM.YYYY"
                 className={className}
               />
             )}
