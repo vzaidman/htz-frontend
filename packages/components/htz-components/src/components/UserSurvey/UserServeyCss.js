@@ -4,6 +4,7 @@ const SURVEY_SKEW = 4;
 const slopeWrapper = {
   overflow: 'hidden',
   position: 'relative',
+  marginBottom: '5rem',
 };
 
 const slopeElement = theme => ({
@@ -16,7 +17,6 @@ const slopeElement = theme => ({
   width: '100%',
   height: '100%',
   position: 'absolute',
-  marginBottom: '5rem',
   pointerEvents: 'none',
   top: '4rem',
   extend: [
