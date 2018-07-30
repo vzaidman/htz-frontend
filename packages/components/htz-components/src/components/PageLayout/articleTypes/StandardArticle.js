@@ -111,6 +111,7 @@ const StandardLayoutRow = ({
   isArticleBody,
   key,
   publishDate,
+  modifiedDate,
   reportingFrom,
   title,
   /* eslint-enable react/prop-types */
@@ -147,6 +148,7 @@ const StandardLayoutRow = ({
                 authors={authors}
                 reportingFrom={reportingFrom}
                 publishDate={publishDate}
+                modifiedDate={modifiedDate}
               />
             ) : null}
           </FelaComponent>
@@ -231,6 +233,7 @@ function StandardArticle({
     headlineElement,
     reportingFrom,
   } = standardArticleElement;
+
   return (
     <LayoutContainer tagName="article">
       <Head>
@@ -307,6 +310,7 @@ function StandardArticle({
                             authors={authors}
                             reportingFrom={reportingFrom}
                             publishDate={header.pubDate}
+                            modifiedDate={header.modDate}
                           >
                             <ArticleBody body={body} />
                           </StandardLayoutRow>

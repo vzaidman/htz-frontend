@@ -61,7 +61,7 @@ function Header({
               headline: title,
               description: subtitle,
               datePublished: pubDate,
-              dateModified: modDate || pubDate,
+              dateModified: modDate || null,
               author: authors.map(author => ({
                 type: 'Person',
                 name: author.contentName || author.name,
@@ -91,12 +91,21 @@ function Header({
                     style={{
                       paddingInlineStart: '2rem',
                       extend: [
-                        theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
-                        theme.mq({ until: 's', }, { order: 1, marginTop: '1rem', }),
+                        theme.mq(
+                          { from: 'xl', },
+                          { paddingInlineStart: '3rem', }
+                        ),
+                        theme.mq(
+                          { until: 's', },
+                          { order: 1, marginTop: '1rem', }
+                        ),
                       ],
                     }}
                     render={({ className, }) => (
-                      <Breadcrumbs articleId={articleId} className={className} />
+                      <Breadcrumbs
+                        articleId={articleId}
+                        className={className}
+                      />
                     )}
                   />
                 )}
@@ -122,6 +131,7 @@ function Header({
                 <ArticleHeaderMeta
                   authors={authors}
                   publishDate={pubDate}
+                  modifiedDate={modDate}
                   reportingFrom={reportingFrom}
                   miscStyles={{
                     marginTop: [
@@ -173,14 +183,14 @@ function Header({
                   }}
                   size={2.5}
                 />
-                {headlineElement &&
-                <HeadlineElement
-                  elementObj={headlineElement}
-                  miscStyles={{
-                    marginTop: '2rem',
-                  }}
-                />
-                }
+                {headlineElement && (
+                  <HeadlineElement
+                    elementObj={headlineElement}
+                    miscStyles={{
+                      marginTop: '2rem',
+                    }}
+                  />
+                )}
               </header>
             )}
           />

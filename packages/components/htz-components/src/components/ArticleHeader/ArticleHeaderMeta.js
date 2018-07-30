@@ -21,6 +21,7 @@ ArticleHeaderMeta.propTypes = {
    * The publishing date of the article
    */
   publishDate: PropTypes.instanceOf(Date).isRequired,
+  modifiedDate: PropTypes.instanceOf(Date),
   reportingFrom: PropTypes.string,
   /**
    * A special property holding miscellaneous CSS values that
@@ -33,6 +34,7 @@ ArticleHeaderMeta.propTypes = {
 ArticleHeaderMeta.defaultProps = {
   reportingFrom: null,
   miscStyles: null,
+  modifiedDate: null,
 };
 const wrapperStyle = ({ theme, miscStyles, }) => ({
   display: 'flex',
@@ -97,6 +99,7 @@ const alertsAndDesktopTimeContStyle = theme => ({
 function ArticleHeaderMeta({
   authors,
   publishDate,
+  modifiedDate,
   reportingFrom,
   miscStyles,
 }) {
@@ -198,6 +201,23 @@ function ArticleHeaderMeta({
                   />
                 )}
               />
+              <FelaComponent
+                rule={timeStyle}
+                mobileTime
+                render={({ className, theme, }) => {
+                  const text = theme.ModifiedDateText.text;
+                  return (
+                    <span className={className}>
+                      {text}
+                      <Time
+                        time={modifiedDate}
+                        format="HH:mm"
+                        className={className}
+                      />
+                    </span>
+                  );
+                }}
+              />
             </FelaComponent>
           </FelaComponent>
           {/* alerts and desktop time */}
@@ -219,6 +239,25 @@ function ArticleHeaderMeta({
               />
             )}
           />
+          {modifiedDate && (
+            <FelaComponent
+              rule={timeStyle}
+              mobileTime={false}
+              render={({ className, theme, }) => {
+                const text = theme.ModifiedDateText.text;
+                return (
+                  <span className={className}>
+                    {text}
+                    <Time
+                      time={modifiedDate}
+                      format="HH:mm"
+                      className={className}
+                    />
+                  </span>
+                );
+              }}
+            />
+          )}
         </div>
       )}
     />

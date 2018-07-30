@@ -261,3 +261,7 @@ export const readingListMenuI18n = Object.freeze({
 export const mobileAdditionalShare = Object.freeze({
   text: 'שיתוף',
 });
+
+export const ModifiedDateText = Object.freeze({
+  text: 'עודכן ב-',
+});
