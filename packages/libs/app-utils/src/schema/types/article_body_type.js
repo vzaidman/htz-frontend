@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { GraphQLList, GraphQLUnionType, } from 'graphql';
+import getSchema from '../getSchema';
 
 import content from './content_type';
 import dfpBanner from './dfp_banner_type';
@@ -17,25 +18,6 @@ import seriesOrBlockArticles from './series_or_block_articles_type';
 import quote from './quote_type';
 import tags from './tags_type';
 import video from './video_type';
-
-const types = new Map([
-  [ 'com.polobase.DfpBannerElement', dfpBanner, ],
-  [ 'com.tm.ElementGroup', elementGroup, ],
-  [ 'embedElement', embed, ],
-  [ 'com.tm.HtmlElement', htmlElement, ],
-  [ 'com.tm.Image', image, ],
-  [ 'com.tm.ImageGalleryElement', imageGallery, ],
-  [ 'interactiveElement', interactive, ],
-  [ 'com.tm.Link', link, ],
-  [ 'com.polobase.quickNewsletterRegistration', mobileQuickRegistrationType, ],
-  [ 'paragraph', paragraph, ],
-  [ 'relatedArticles', relatedArticles, ],
-  [ 'relatedArticleSeries', seriesOrBlockArticles, ],
-  [ 'linksBlock', seriesOrBlockArticles, ],
-  [ 'com.htz.MagazineArticleQuote', quote, ],
-  [ 'tagsElement', tags, ],
-  [ 'com.tm.Video', video, ],
-]);
 
 const ArticleBody = new GraphQLList(
   new GraphQLUnionType({
@@ -59,7 +41,7 @@ const ArticleBody = new GraphQLList(
       video,
     ],
     resolveType: value =>
-      types.get(
+      getSchema(
         value.tag ? 'paragraph' : value.elementType || value.inputTemplate
       ) || content,
   })

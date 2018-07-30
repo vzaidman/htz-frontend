@@ -3,13 +3,14 @@ import { GraphQLList, GraphQLUnionType, } from 'graphql';
 
 import content from './content_type';
 import changeableElementGroup from './changeable_element_group_type';
+import getInputTemplate from '../getInputTemplate';
 
 const SideBar = new GraphQLList(
   new GraphQLUnionType({
     name: 'SideBar',
     types: [ content, changeableElementGroup, ],
     resolveType: value =>
-      (value.inputTemplate === 'com.tm.element.group'
+      (value.inputTemplate === getInputTemplate('ChangeableElementGroup')
         ? changeableElementGroup
         : content),
   })

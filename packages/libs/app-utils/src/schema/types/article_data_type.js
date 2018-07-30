@@ -6,6 +6,7 @@ import {
   GraphQLList,
   GraphQLID,
 } from 'graphql';
+import getSchema from '../getSchema';
 
 import author from './author_type';
 import articleBody from './article_body_type';
@@ -15,14 +16,6 @@ import htmlElement from './html_element_type';
 import embed from './embed_type';
 import image from './image_type';
 import video from './video_type';
-
-const types = new Map([
-  [ 'embedElement', embed, ],
-  [ 'com.tm.HtmlElement', htmlElement, ],
-  [ 'com.tm.Image', image, ],
-  [ 'com.tm.ImageGalleryElement', imageGallery, ],
-  [ 'com.tm.Video', video, ],
-]);
 
 const ArticleData = new GraphQLObjectType({
   name: 'ArticleData',
@@ -61,7 +54,7 @@ const ArticleData = new GraphQLObjectType({
         name: 'HeadlineElement',
         types: [ embed, htmlElement, image, imageGallery, video, ],
         resolveType: value =>
-          types.get(value.elementType || value.inputTemplate),
+          getSchema(value.elementType || value.inputTemplate),
       }),
     },
     authors: { type: new GraphQLList(author), },

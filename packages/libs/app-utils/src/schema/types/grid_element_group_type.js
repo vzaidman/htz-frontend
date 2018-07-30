@@ -10,11 +10,7 @@ import {
 import clickTrackerBannersWrapper from './click_tracker_banner_wrapper_type';
 import content from './content_type';
 import dfpBanner from './dfp_banner_type';
-
-const types = new Map([
-  [ 'com.polobase.ClickTrackerBannersWrapper', clickTrackerBannersWrapper, ],
-  [ 'com.polobase.DfpBannerElement', dfpBanner, ],
-]);
+import getSchema from '../getSchema';
 
 const GridElementGroup = new GraphQLObjectType({
   name: 'GridElementGroup',
@@ -27,7 +23,7 @@ const GridElementGroup = new GraphQLObjectType({
         new GraphQLUnionType({
           name: 'GridElementItem',
           types: [ clickTrackerBannersWrapper, content, dfpBanner, ],
-          resolveType: value => types.get(value.inputTemplate) || content,
+          resolveType: value => getSchema(value.inputTemplate) || content,
         })
       ),
     },

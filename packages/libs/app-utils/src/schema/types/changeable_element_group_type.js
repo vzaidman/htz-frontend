@@ -13,12 +13,7 @@ import gridElementGroup from './grid_element_group_type';
 import content from './content_type';
 import dfpBanner from './dfp_banner_type';
 import list from './list_type';
-
-const types = new Map([
-  [ 'com.tm.GridElementGroup', gridElementGroup, ],
-  [ 'com.polobase.DfpBannerElement', dfpBanner, ],
-  [ 'com.tm.element.List', list, ],
-]);
+import getSchema from '../getSchema';
 
 const ChangeableElementGroup = new GraphQLObjectType({
   name: 'ChangeableElementGroup',
@@ -33,7 +28,7 @@ const ChangeableElementGroup = new GraphQLObjectType({
               type: new GraphQLUnionType({
                 name: 'ElementGroupItemContent',
                 types: [ gridElementGroup, content, dfpBanner, list, ],
-                resolveType: value => types.get(value.inputTemplate) || content,
+                resolveType: value => getSchema(value.inputTemplate) || content,
               }),
             },
           }),
