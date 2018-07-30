@@ -1,15 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { border, borderRight, } from '@haaretz/htz-css-tools';
 import Image from '../../Image/Image';
-
-const wrapperStyle = () => ({
-  width: '100%',
-  position: 'relative',
-  overflow: 'hidden',
-});
-const Wrapper = createComponent(wrapperStyle, 'div', [ 'onDragOver', ]);
 
 const sliderPseudoStyles = {
   content: '""',
@@ -18,72 +11,100 @@ const sliderPseudoStyles = {
   position: 'absolute',
   top: '50%',
   marginTop: '-10px',
-  transition: 'right .2s, left .2s',
+  transition: 'start .2s, end .2s',
   border: '10px inset transparent',
 };
 
-const sliderStyle = ({ theme, }) => ({
-  userDrag: 'none',
-  width: '50px',
-  height: '50px',
-  top: '50%',
-  transform: 'translate(-50%, -50%)',
-  position: 'absolute',
-  overflow: 'hidden',
-  zIndex: '6',
-  cursor: 'col-resize',
-  opacity: '1',
-  boxShadow: `3px 0 5px ${theme.color('neutral', '-1')}`,
-  backgroundColor: theme.color('neutral', '-1'),
-  ...border('3px', 0.1, 'solid', theme.color('neutral', '-10')),
-  borderRadius: '50%',
-  transitionProperty: 'opacity',
-  ...theme.getDuration('transition', -1),
-  ...theme.getTimingFunction('transition', 'swiftIn'),
-  ':before': {
-    ...sliderPseudoStyles,
-    left: '-2px',
-    borderRight: `10px solid ${theme.color('neutral', '-10')}`,
-  },
-  ':after': {
-    ...sliderPseudoStyles,
-    right: '-2px',
-    borderLeft: `10px solid ${theme.color('neutral', '-10')}`,
-  },
-  ':active': {
-    opacity: '0.2',
-  },
-  ':active:before': {
-    left: '-6px',
-  },
-  ':active:after': {
-    right: '-6px',
-  },
-});
-const Slider = createComponent(sliderStyle, 'div', [ 'draggable', ]);
+// eslint-disable-next-line react/prop-types
+const Slider = ({ innerRef, linePos, }) => (
+  <FelaComponent
+    style={theme => ({
+      end: `${linePos}%`,
+      userDrag: 'none',
+      width: '50px',
+      height: '50px',
+      top: '50%',
+      transform: 'translate(-50%, -50%)',
+      position: 'absolute',
+      overflow: 'hidden',
+      zIndex: '6',
+      cursor: 'col-resize',
+      opacity: '1',
+      boxShadow: `3px 0 5px ${theme.color('neutral', '-1')}`,
+      backgroundColor: theme.color('neutral', '-1'),
+      ...border('3px', 0.1, 'solid', theme.color('neutral', '-10')),
+      borderRadius: '50%',
+      transitionProperty: 'opacity',
+      ...theme.getDuration('transition', -1),
+      ...theme.getTimingFunction('transition', 'swiftIn'),
+      ':before': {
+        ...sliderPseudoStyles,
+        end: '-2px',
+        borderRight: `10px solid ${theme.color('neutral', '-10')}`,
+      },
+      ':after': {
+        ...sliderPseudoStyles,
+        start: '-2px',
+        borderLeft: `10px solid ${theme.color('neutral', '-10')}`,
+      },
+      ':active': {
+        opacity: '0.2',
+      },
+      ':active:before': {
+        end: '-6px',
+      },
+      ':active:after': {
+        start: '-6px',
+      },
+    })}
+    render={({ className, }) => (
+      <div ref={innerRef} className={className} draggable />
+    )}
+  />
+);
 
-const afterStyle = ({ theme, width, }) => ({
-  display: 'inline-block',
-  position: 'absolute',
-  overflow: 'hidden',
-  ...borderRight('3px', 'solid', theme.color('neutral', '-10')),
-  height: '100%',
-  top: '0',
-  left: '0',
-  width: '100%',
-  boxSizing: 'content-box',
-  boxShadow: '3px 0 5px 0 rgba(0,0,0,.75)',
-});
-const After = createComponent(afterStyle, 'div', [ 'draggable', ]);
+// eslint-disable-next-line react/prop-types
+const After = ({ linePos, children, }) => (
+  <FelaComponent
+    style={theme => ({
+      transform: `translateX(-${100 - linePos}%)`,
+      display: 'inline-block',
+      position: 'absolute',
+      overflow: 'hidden',
+      ...borderRight('3px', 'solid', theme.color('neutral', '-10')),
+      height: '100%',
+      top: '0',
+      end: '0',
+      width: '100%',
+      boxSizing: 'content-box',
+      boxShadow: '3px 0 5px 0 rgba(0,0,0,.75)',
+    })}
+    render={({ className, }) => (
+      <div className={className} draggable={false}>
+        {children}
+      </div>
+    )}
+  />
+);
 
-const imageWrapperStyle = ({ theme, width, }) => ({
-  position: 'absolute',
-  overflow: 'hidden',
-  width: '100%',
-  top: '0',
-  left: '0',
-});
-const ImageWrapper = createComponent(imageWrapperStyle, 'div', [ 'draggable', ]);
+// eslint-disable-next-line react/prop-types
+const ImageWrapper = ({ linePos, children, }) => (
+  <FelaComponent
+    style={theme => ({
+      transform: `translateX(${100 - linePos}%)`,
+      position: 'absolute',
+      overflow: 'hidden',
+      width: '100%',
+      top: '0',
+      end: '0',
+    })}
+    render={({ className, }) => (
+      <div className={className} draggable={false}>
+        {children}
+      </div>
+    )}
+  />
+);
 
 const imgOptions = {
   transforms: {
@@ -103,64 +124,59 @@ export default class BeforeAndAfter extends React.Component {
     lineX: this.props.properties.linePos.replace('%', ''),
   };
 
-  componentDidMount() {
-    /* eslint-disable react/no-did-mount-set-state */
-    this.setState({
-      wrapperWidth: this.wrapper.offsetWidth,
-      wrapperX: this.wrapper.offsetLeft,
-    });
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state.lineX !== nextState.lineX;
-  }
-
   dragging = e => {
     e.preventDefault();
-    const sliderRelativeX = e.clientX - this.state.wrapperX;
+    const wrapperWidth = this.wrapper.offsetWidth;
+    const wrapperX = this.wrapper.offsetLeft;
+    const offSetX = this.wrapper.getBoundingClientRect().left;
+    const sliderOffset = this.slider.offsetWidth;
     // prettier-ignore
-    const newLineX = (sliderRelativeX / this.state.wrapperWidth) * 100;
+    const sliderRelativeX = ((e.clientX - offSetX) - wrapperX) + (sliderOffset * 0.5);
+    // prettier-ignore
+    const newLineX = (sliderRelativeX / wrapperWidth) * 100;
     this.setState({
       lineX: newLineX,
     });
   };
 
   render() {
-    const {
-      properties: { elementsList, },
-    } = this.props;
+    const { properties: { elementsList, }, } = this.props;
     return (
-      <Wrapper
-        innerRef={wrapper => (this.wrapper = wrapper)} // eslint-disable-line no-return-assign
-        onDragOver={this.dragging}
-      >
-        <Slider
-          innerRef={slider => (this.slider = slider)} // eslint-disable-line no-return-assign
-          style={{ left: `${this.state.lineX}%`, }}
-          draggable
-        />
-        <Image
-          data={elementsList[0]}
-          imgOptions={imgOptions}
-          attrs={{ draggable: false, }}
-        />
-        <After
-          draggable={false}
-          style={{ transform: `translateX(-${100 - this.state.lineX}%)`, }}
-        >
-          {/* Temporary wrapper, until the image wrapper will be able to get MiscStyles. */}
-          <ImageWrapper
-            style={{ transform: `translateX(${100 - this.state.lineX}%)`, }}
-            draggable={false}
+      <FelaComponent
+        style={{
+          width: '100%',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+        render={({ className, }) => (
+          <div
+            className={className}
+            ref={wrapper => (this.wrapper = wrapper)} // eslint-disable-line no-return-assign
+            onDragOver={this.dragging}
           >
+            <Slider
+              // eslint-disable-next-line no-return-assign
+              innerRef={slider => (this.slider = slider)}
+              linePos={this.state.lineX}
+            />
             <Image
-              data={elementsList[1]}
+              data={elementsList[0]}
               imgOptions={imgOptions}
               attrs={{ draggable: false, }}
             />
-          </ImageWrapper>
-        </After>
-      </Wrapper>
+            <After linePos={this.state.lineX}>
+              {/* Temporary wrapper, until the image wrapper will be able to get MiscStyles. */}
+              <ImageWrapper linePos={this.state.lineX}>
+                <Image
+                  data={elementsList[1]}
+                  imgOptions={imgOptions}
+                  attrs={{ draggable: false, }}
+                />
+              </ImageWrapper>
+            </After>
+          </div>
+        )}
+      />
     );
   }
 }
