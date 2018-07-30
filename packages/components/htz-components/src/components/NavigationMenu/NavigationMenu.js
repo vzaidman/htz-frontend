@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 import config from 'config';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
+import { Mutation, } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import UserDispenser from '../User/UserDispenser';
 import NavigationQuery from './navigationQuery';
 import DropdownList from '../DropdownList/DropdownList';
 import Hamburger from '../Animations/Hamburger';
@@ -14,6 +17,13 @@ import {
   dropdownItemStyle,
   dropdownListStyle,
 } from '../Masthead/mastheadDropdownListStyle';
+
+// TODO: remove this when optOut item is deprecated
+const OPT_OUT = gql`
+  mutation SetReactHtzArticleOptIn($id: String!, $value: Boolean!) {
+    setReactHtzArticleOptIn(id: $id, value: $value)
+  }
+`;
 
 const menuButtonStyle = ({ theme, isOpen, isHovered, }) => ({
   border: 'none',
@@ -112,15 +122,17 @@ class NavigationMenu extends React.Component {
 
   handleMouseEnter = () => this.setState({ isHovered: true, });
   handleMouseLeave = () => this.setState({ isHovered: false, });
-  optOut = () => {
-    CookieUtils.deleteCookie('react');
-    let domain = config.has('domain') && config.get('domain');
-    if (!domain) {
-      // set default domain if config's domain not found.
-      domain = 'haaretz.co.il';
-    }
-    CookieUtils.setCookie('react', 'false', '/', `.${domain}`);
-    document.location.reload();
+
+  optOut = (id, optOutMutation) => {
+    const domain = config.has('domain') && config.get('domain');
+    // CookieUtils.deleteCookie('react');
+    CookieUtils.modifyCookie('react', false, '/', `.${domain}`);
+    // mutation function MongoDB
+    optOutMutation({ variables: { id, value: false, }, })
+      .then(success => {
+        document.location.reload();
+      })
+      .catch(err => console.warn('err mutation:', err));
   };
 
   render() {
@@ -130,15 +142,23 @@ class NavigationMenu extends React.Component {
           const { isHovered, } = this.state;
           const { items, sites, promotions, } = this.props.menuSections;
 
-          // TODO: remove this line when optOut item is deprecated
+          // TODO: remove this when optOut item is deprecated
           const optOut = (
-            <Item
-              key="item HardCoded חזרה לכתבה רגילה"
-              name="חזרה לכתבה רגילה"
-              onClick={this.optOut}
-              miscStyles={{
-                backgroundColor: theme.color('primary', '+1'),
-              }}
+            <UserDispenser
+              render={({ user: { id, }, }) => (
+                <Mutation mutation={OPT_OUT}>
+                  {(optOutMutation, { data, }) => (
+                    <Item
+                      key="item HardCoded חזרה לכתבה רגילה"
+                      name="חזרה לכתבה רגילה"
+                      onClick={() => this.optOut(id, optOutMutation)}
+                      miscStyles={{
+                        backgroundColor: theme.color('primary', '+1'),
+                      }}
+                    />
+                  )}
+                </Mutation>
+              )}
             />
           );
 

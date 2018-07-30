@@ -119,7 +119,7 @@
     "apollo-link": {
       "^1.2.2": {
         "packages/apps/*": ["dependencies"],
-        "packages/{components/htz-components,libs/app-utils}": [
+        "packages/{components/htz-components,libs/app-utils,libs/htz-react-server}": [
           "devDependencies",
           "peerDependencies"
         ]
@@ -137,7 +137,7 @@
     "apollo-link-http": {
       "^1.5.4": {
         "packages/apps/*": ["dependencies"],
-        "packages/{components/htz-components,libs/app-utils}": [
+        "packages/{components/htz-components,libs/app-utils,libs/htz-react-server}": [
           "devDependencies",
           "peerDependencies"
         ]
