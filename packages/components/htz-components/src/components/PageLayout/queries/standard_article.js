@@ -12,6 +12,7 @@ import {
   interactive,
   link,
   mobileQuickRegistration,
+  newsLetter,
   paragraph,
   quote,
   relatedArticles,
@@ -108,6 +109,9 @@ export default gql`
                 ... on MobileQuickRegistration {
                   ...MobileQuickRegistration
                 }
+                ... on NewsLetter {
+                  ...NewsLetter
+                }
                 ... on Paragraph {
                   ...Paragraph
                 }
@@ -148,6 +152,7 @@ export default gql`
   ${interactive}
   ${link}
   ${mobileQuickRegistration}
+  ${newsLetter}
   ${paragraph}
   ${quote}
   ${relatedArticles}

@@ -10,6 +10,7 @@ import interactive from './types/interactive_type';
 import link from './types/link_type';
 import list from './types/list_type';
 import mobileQuickRegistrationType from './types/mobile_quick_registration_type';
+import newsLetter from './types/news_letter_type';
 import paragraph from './types/paragraph_type';
 import relatedArticles from './types/related_articles_type';
 import seriesOrBlockArticles from './types/series_or_block_articles_type';
@@ -30,6 +31,7 @@ const types = new Map([
   [ 'com.tm.Link', link, ],
   [ 'com.tm.element.List', list, ],
   [ 'com.polobase.quickNewsletterRegistration', mobileQuickRegistrationType, ],
+  [ 'com.tm.newsLetterQuickRegistrationRespAuto', newsLetter, ],
   [ 'paragraph', paragraph, ],
   [ 'relatedArticles', relatedArticles, ],
   [ 'relatedArticleSeries', seriesOrBlockArticles, ],

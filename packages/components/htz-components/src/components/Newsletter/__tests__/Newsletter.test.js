@@ -15,6 +15,7 @@ describe('<Newsletter />', () => {
       const wrapper = felaMount(
         <NewsletterWithoutApollo
           buttonText="הרשמה"
+          contentId="7.1234567"
           headlineText="headline text"
           loading={false}
           signUpNewsletter={mockFunc}

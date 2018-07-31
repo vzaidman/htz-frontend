@@ -6,24 +6,26 @@ import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType'
 import submitNewsletter from './mutations/submitNewsletter';
 import NewsletterWithoutApollo from './NewsletterWithoutApollo';
 import { newsletterVariantType, } from './elements/types/newsletterVariantType';
+import UserDispenser from '../User/UserDispenser';
 
 Newsletter.propTypes = {
   /**  determine newsletter button text */
   buttonText: PropTypes.string,
+  /**
+   * The element's DOM ID needs to be unique per page,
+   * if there are 2 newsletter components in one page they should be passed an id manually
+   * */
+  contentId: PropTypes.string.isRequired,
   /**  determine newsletter headline text */
   headlineText: PropTypes.string,
   /** determine newsletter host if exists */
   host: PropTypes.oneOf([ 'tm', 'htz', ]),
   /** determine newsletter icon if exists */
   icon: PropTypes.oneOf([ 'tm', 'htz', ]),
-  /** The element's DOM ID */
-  id: PropTypes.string,
   /** Trigger user's function when modal is open */
   onSubmit: PropTypes.func,
   /** Indicates article category id */
   segmentId: PropTypes.number.isRequired,
-  /** Indicates registered/paying user email */
-  userEmail: PropTypes.string,
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
@@ -47,10 +49,8 @@ Newsletter.defaultProps = {
   headlineText: 'הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום',
   host: null,
   icon: null,
-  id: null,
   onSubmit: () => {},
   miscStyles: null,
-  userEmail: null,
   variant: 'highlight',
 };
 
@@ -58,10 +58,15 @@ function Newsletter(props) {
   return (
     <Mutation mutation={submitNewsletter}>
       {(signUpNewsletter, { data, loading, }) => (
-        <NewsletterWithoutApollo
-          signUpNewsletter={signUpNewsletter}
-          loading={loading}
-          {...props}
+        <UserDispenser
+          render={({ user: { email, }, }) => (
+            <NewsletterWithoutApollo
+              signUpNewsletter={signUpNewsletter}
+              loading={loading}
+              userEmail={email}
+              {...props}
+            />
+          )}
         />
       )}
     </Mutation>

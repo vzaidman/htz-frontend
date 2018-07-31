@@ -206,7 +206,6 @@ export function NewsletterForm({
                                 label: 'דוא"ל',
                                 variant: newsletterStyle[variant].inputVariant,
                                 type: 'email',
-                                placeholder: 'name@mail.com',
                                 noteText: 'אנא הזינו כתובת אימייל',
                                 requiredText: {
                                   isSup: true,

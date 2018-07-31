@@ -24,6 +24,7 @@ import link from './fragments/link/link';
 import list from './fragments/list/list';
 import mobileQuickRegistration from './fragments/mobileQuickRegistration/mobileQuickRegistration';
 import navMenu from './fragments/navMenu/navMenu';
+import newsLetter from './fragments/newsLetter/newsLetter';
 import paragraph from './fragments/paragraph/paragraph';
 import quote from './fragments/quote/quote';
 import relatedArticles from './fragments/relatedArticles/relatedArticles';
@@ -60,6 +61,7 @@ export {
   list,
   mobileQuickRegistration,
   navMenu,
+  newsLetter,
   paragraph,
   quote,
   relatedArticles,

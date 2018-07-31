@@ -12,6 +12,7 @@ import imageGallery from './image_gallery_type';
 import interactive from './interactive_type';
 import link from './link_type';
 import mobileQuickRegistrationType from './mobile_quick_registration_type';
+import newsLetter from './news_letter_type';
 import paragraph from './paragraph_type';
 import relatedArticles from './related_articles_type';
 import seriesOrBlockArticles from './series_or_block_articles_type';
@@ -33,6 +34,7 @@ const ArticleBody = new GraphQLList(
       interactive,
       link,
       mobileQuickRegistrationType,
+      newsLetter,
       paragraph,
       relatedArticles,
       seriesOrBlockArticles,

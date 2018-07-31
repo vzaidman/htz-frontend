@@ -44,14 +44,17 @@ export default class NewsletterWithoutApollo extends React.Component {
   static propTypes = {
     /**  determine newsletter button text */
     buttonText: PropTypes.string.isRequired,
+    /**
+     * The element's DOM ID needs to be unique per page,
+     * if there are 2 newsletter components in one page they should be passed an id manually
+     * */
+    contentId: PropTypes.string.isRequired,
     /**  determine newsletter headline text */
     headlineText: PropTypes.string.isRequired,
     /** determine newsletter host if exists */
     host: PropTypes.oneOf([ 'tm', 'htz', ]),
     /** determine newsletter icon if exists */
     icon: PropTypes.oneOf([ 'tm', 'htz', ]),
-    /** The element's DOM ID */
-    id: PropTypes.string,
     /** indicates loading state of the data */
     loading: PropTypes.bool.isRequired,
     /** Trigger user's function when modal is open */
@@ -84,25 +87,13 @@ export default class NewsletterWithoutApollo extends React.Component {
   static defaultProps = {
     host: null,
     icon: null,
-    id: null,
     onSubmit: () => {},
     miscStyles: null,
     userEmail: null,
   };
   state = {
     confirmed: false,
-    id: null,
   };
-
-  componentWillMount() {
-    if (!this.state.id) {
-      this.setState({
-        id:
-          this.props.id ||
-          `newsletterRegForm${Math.round(Math.random() * 1000000)}`,
-      });
-    }
-  }
 
   confirmState = ({ data, }) => {
     if (data.signUpNewsletter) {
@@ -113,6 +104,7 @@ export default class NewsletterWithoutApollo extends React.Component {
   };
 
   render() {
+    const id = `newsletterRegForm${this.props.contentId}`;
     const {
       buttonText,
       headlineText,
@@ -133,7 +125,7 @@ export default class NewsletterWithoutApollo extends React.Component {
           miscStyles={miscStyles}
           rule={newsletterWrapperStyle}
           render={({ className, theme, }) => (
-            <div className={className} id={this.state.id}>
+            <div className={className} id={id}>
               <NewsletterForm
                 buttonText={buttonText}
                 headlineText={headlineText}
@@ -146,8 +138,8 @@ export default class NewsletterWithoutApollo extends React.Component {
                 setParentState={this.confirmState}
               />
               <Dialog
-                appendTo={`${this.state.id}DialogWrapper`}
-                elementToHide={this.state.id}
+                appendTo={`${id}DialogWrapper`}
+                elementToHide={id}
                 isVisible={this.state.confirmed}
                 onOpen={onSubmit}
                 overlayBgColor={theme.color('newsletter', `${variant}Bg`)}
@@ -160,7 +152,7 @@ export default class NewsletterWithoutApollo extends React.Component {
                   />
                 )}
               />
-              <div id={`${this.state.id}DialogWrapper`} />
+              <div id={`${id}DialogWrapper`} />
             </div>
           )}
         />
