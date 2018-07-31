@@ -401,6 +401,9 @@ const Print = ({ buttonStyles, size, iconStyles, ...props }) => (
   <ActionButton
     render={({ platform, biAction, biActionMapper, articleId, hostname, }) => (
       <Button
+        attrs={{
+          target: '_blank',
+        }}
         {...props}
         miscStyles={buttonStyles}
         href={`http://${hostname}/misc/article-print-page/${articleId}`}

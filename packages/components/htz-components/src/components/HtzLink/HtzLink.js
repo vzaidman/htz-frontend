@@ -138,7 +138,7 @@ function HtzLink({
     <a
       {...attrs}
       href={href}
-      target={target}
+      {...(target ? { target, } : {})}
       className={className}
       ref={linkRef => {
         focus && linkRef && linkRef.focus();
