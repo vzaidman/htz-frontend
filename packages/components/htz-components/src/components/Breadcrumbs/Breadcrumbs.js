@@ -42,9 +42,7 @@ const ColoredLink = ({ crumb, index, length, }) => (
       extend: [
         theme.mq(
           { until: 's', },
-          index !== length - 1
-            ? { display: 'none', }
-            : {}
+          index !== length - 1 ? { display: 'none', } : {}
         ),
         {
           ':nth-child(odd)': {
@@ -57,11 +55,7 @@ const ColoredLink = ({ crumb, index, length, }) => (
       ],
     })}
     render={({ className, }) => (
-      <HtzLink
-        className={className}
-        content={crumb.name}
-        href={crumb.url}
-      />
+      <HtzLink className={className} content={crumb.name} href={crumb.url} />
     )}
   />
 );
@@ -112,9 +106,12 @@ function Breadcrumbs({ articleId, className, }) {
                       );
                     })}
                   </nav>
-                  <script type="application/ld+json">
-                    {JSON.stringify(breadcrumbsSchema, null, 2)}
-                  </script>
+                  <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                      __html: JSON.stringify(breadcrumbsSchema, null, 2),
+                    }}
+                  />
                 </Fragment>
               );
             }}

@@ -200,7 +200,7 @@ function create(initialState, req) {
           const currentImages = response.pageSchema.image;
           const updatedImages =
             // Removing the first image which is kind of a placeholder, cuz stateLink doesn't have schemas.
-            currentImages.length === 1 && !currentImages[0].type
+            currentImages.length === 1 && !currentImages[0].url
               ? [ image, ]
               : // Make sure the the image doesn't already exists.
               currentImages.find(
@@ -208,9 +208,6 @@ function create(initialState, req) {
               )
                 ? [ ...currentImages, ]
                 : [ ...currentImages, image, ];
-          console.log('NEW IMAGE: ', image);
-          console.log('CURRENT IMAGES: ', response.pageSchema.image);
-          console.log('UPDATED IMAGES: ', updatedImages);
           cache.writeData({
             data: {
               pageSchema: {

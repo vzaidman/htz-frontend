@@ -39,7 +39,7 @@ export default {
   },
   image: [
     {
-      type: null,
+      type: 'ImageObject',
       url: null,
       description: null,
       name: null,
