@@ -238,7 +238,7 @@ export const mobileUserMenuI18n = Object.freeze({
 });
 
 export const mobileReadingList = Object.freeze({
-  url: 'https://www.haaretz.co.il/personal-area/my-account#readingList',
+  url: 'https://www.haaretz.co.il/readingList',
   buttonText: 'רשימת הקריאה',
 });
 
