@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   host: PropTypes.string.isRequired,
-  canonicalUrl: PropTypes.string.isRequired,
 };
 
 const defaultProps = {};
 
-function SEO({ host, canonicalUrl, }) {
+function SEO({ host, }) {
   const site = host === 'themarker.com' ? 'tm' : 'htz';
   return (
     <Fragment>
@@ -35,9 +34,6 @@ function SEO({ host, canonicalUrl, }) {
         href="//www.googletagservices.com/tag/js/gpt.js"
         as="script"
       />
-
-      {/* <!-- canonical --> */}
-      <link rel="canonical" href={canonicalUrl} />
 
       {/* <!-- FAVICONS --> */}
       <link rel="shortcut icon" href={`/static/${site}/images/favicon.ico`} />

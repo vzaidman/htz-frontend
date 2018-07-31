@@ -252,6 +252,7 @@ function StandardArticle({
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="ob:title" content={obTitle} />
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
 
       <FelaComponent

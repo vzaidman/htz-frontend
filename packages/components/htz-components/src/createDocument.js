@@ -44,7 +44,6 @@ const createDocument = ({
   class HaaretzDocument extends Document {
     static getInitialProps({ renderPage, req, }) {
       const host = req.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-      const canonicalUrl = `${req.hostname}${req.url}`;
       const validatedTheme = hasToggleableTheme ? theme(host) : theme;
       const varifiedStaticRules = hasToggleableTheme
         ? staticRules(host)
@@ -80,7 +79,6 @@ const createDocument = ({
         appData,
         isRtl,
         host,
-        canonicalUrl,
       };
     }
 
@@ -132,10 +130,6 @@ const createDocument = ({
             <meta
               name="viewport"
               content="width=device-width, initial-scale=1, minimum-scale=1"
-            />
-            <SEO
-              host={this.props.host}
-              canonicalUrl={this.props.canonicalUrl}
             />
             <SEO host={this.props.host} />
             {buildFontPreloadLink(fontRules)}
