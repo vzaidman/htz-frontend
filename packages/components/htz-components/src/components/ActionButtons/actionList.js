@@ -238,9 +238,10 @@ class FacebookLogo extends React.Component {
             <Button
               {...props}
               miscStyles={buttonStyles}
+              target="_black"
               onClick={() => {
                 window.open(
-                  `https://www.facebook.com/sharer/sharer.php?&amp;u=${elementUrl}`,
+                  `https://www.facebook.com/sharer/sharer.php?&u=${elementUrl}`,
                   'popup',
                   'width=635,height=342,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
                 );
