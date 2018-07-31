@@ -98,15 +98,18 @@ export default function MobileBarActionButtons({ elementUrl, }) {
               }}
             />
             <ActionButtons
-              isFlat
+              // isFlat
               isRound
               boxModel={{ hp: 1, vp: 1, }}
               size={4}
               buttons={{
                 name: 'save',
-                iconStyles: {
-                  color: theme.color('primary'),
-                },
+                buttonStyles: isArticleSaved => ({
+                  ...(isArticleSaved && {
+                    color: theme.color('neutral', '-10'),
+                    backgroundColor: theme.color('secondary'),
+                  }),
+                }),
               }}
             />
             <ActionButtons

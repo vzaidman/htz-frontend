@@ -7,6 +7,7 @@ import MobileBarActionButtons from './MobileMenuFooter/MobileBarActionButtons';
 export default class MobileNavigationMain extends React.Component {
   static propTypes = {
     contentId: PropTypes.string.isRequired,
+    // shouldDisplay: PropTypes.bool.isRequired,
   };
 
   state = { menuIsOpen: false, shareIsOpen: false, };
@@ -24,6 +25,7 @@ export default class MobileNavigationMain extends React.Component {
   };
 
   render() {
+    // const { contentId, shouldDisplay, } = this.props;
     const { contentId, } = this.props;
     const { menuIsOpen, shareIsOpen, } = this.state;
 
@@ -49,6 +51,7 @@ export default class MobileNavigationMain extends React.Component {
               )}
               {menuIsOpen ? null : (
                 <MobileBarActionButtons onClick={this.toggleShare} />
+                // <MobileBarActionButtons onClick={this.toggleShare} shouldDisplay={shouldDisplay} />
               )}
             </div>
           </Fragment>

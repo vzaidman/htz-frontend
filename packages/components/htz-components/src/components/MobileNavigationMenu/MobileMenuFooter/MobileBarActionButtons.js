@@ -21,6 +21,7 @@ export default class MobileBarActionButtons extends React.Component {
      * A callback function to hide/display the menu button and some share icons.
      */
     onClick: PropTypes.func.isRequired,
+    // shouldDisplay: PropTypes.bool.isRequired,
   };
 
   state = { shareIsOpen: false, };
@@ -34,6 +35,7 @@ export default class MobileBarActionButtons extends React.Component {
 
   render() {
     const { shareIsOpen, } = this.state;
+    // const { shouldDisplay, } = this.props;
 
     return (
       <FelaComponent
@@ -81,9 +83,12 @@ export default class MobileBarActionButtons extends React.Component {
                           size={4}
                           buttons={{
                             name: 'save',
-                            iconStyles: {
-                              color: theme.color('primary'),
-                            },
+                            buttonStyles: isArticleSaved => ({
+                              ...(isArticleSaved && {
+                                color: theme.color('neutral', '-10'),
+                                backgroundColor: theme.color('primary'),
+                              }),
+                            }),
                           }}
                         />
                       </Fragment>
@@ -112,6 +117,7 @@ export default class MobileBarActionButtons extends React.Component {
                         isOpen={shareIsOpen}
                       />
                     </Button>
+                    {/* {shareIsOpen && shouldDisplay && ( */}
                     {shareIsOpen && (
                       <FelaComponent
                         style={{
