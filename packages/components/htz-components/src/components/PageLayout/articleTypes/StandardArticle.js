@@ -209,7 +209,7 @@ function StandardArticle({
     obTitle,
   },
 }) {
-  const { contentId, imgArray, aspects, title, } = ogImage || {};
+  const { contentId, imgArray, aspects, } = ogImage || {};
   const ogImageUrl = ogImage
     ? buildUrl(
       contentId,
@@ -297,14 +297,6 @@ function StandardArticle({
                                 type: 'WebPage',
                                 id: canonicalUrl,
                                 __typename: 'MainEntityOfPage',
-                              },
-                              image: {
-                                url: ogImageUrl,
-                                description: title,
-                                name: title,
-                                width: 640,
-                                height: 370,
-                                __typename: 'Image',
                               },
                               __typename: 'PageSchema',
                             },

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import gql from 'graphql-tag';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 
@@ -9,8 +10,19 @@ import Image from '../Image/Image';
 import Picture from '../Image/Picture';
 import { buildUrl, } from '../../utils/buildImgURLs';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
+import { Mutation, } from '../ApolloBoundary/ApolloBoundary';
+
+const ADD_IMAGE = gql`
+  mutation AddImageToSchema($image: Object!) {
+    addImageToSchema(image: $image) @client
+  }
+`;
 
 const articleImagePropTypes = {
+  /**
+   * A mutation function that passes from `AddImageToSchema` mutation.
+   */
+  addImageToSchema: PropTypes.func.isRequired,
   /** The image's aspect ratio to use as base crop, default 'full' */
   aspects: PropTypes.string.isRequired,
   /**
@@ -277,59 +289,85 @@ UnwrappedImage.defaultProps = articleImageDefaultProps;
  * image's Meta (which is unique per article), and adds a [`full-screen`](./#fullscreenmedia) option as
  * a default.
  */
-const ArticleImage = props => {
-  const {
-    enableEnlarge,
-    contentName,
-    contentId,
-    imgArray,
-    aspects,
-    title,
-    credit,
-  } = props;
-  const CaptionElement = () => (
-    <FelaComponent
-      style={{
-        display: 'flex',
-        marginBottom: '3rem',
-        textAlign: 'start',
-      }}
-      render={({ className, theme, }) => (
-        <div className={className}>
-          <Caption
-            caption={title}
-            credit={credit}
-            color={[ 'neutral', '-10', ]}
-            typeStyles={-1}
-          />
-        </div>
-      )}
-    />
-  );
+class ArticleImage extends React.Component {
+  componentDidMount() {
+    const { title, addImageToSchema, } = this.props;
+    addImageToSchema({
+      variables: {
+        image: {
+          type: 'ImageObject',
+          url: this.getImageUrl(),
+          description: title,
+          name: title,
+          width: 640,
+          height: 370,
+          __typename: 'Image',
+        },
+      },
+    }).then(() => {
+      console.log('ADDED TO SCHEMA');
+      return null;
+    });
+  }
 
-  return enableEnlarge ? (
-    <FullScreenMedia
-      itemName={contentName}
-      itemUrl={buildUrl(
-        contentId,
-        { ...imgArray[0], aspects, },
-        {
-          width: '1920',
-          aspect: 'full',
-          quality: 'auto',
-        }
-      )}
-      captionElement={<CaptionElement />}
-      render={({ isFullScreen, }) => (
-        <UnwrappedImage {...props} isFullScreen={isFullScreen} />
-      )}
-    />
-  ) : (
-    <UnwrappedImage {...props} />
-  );
-};
+  getImageUrl = () => {
+    const { contentId, imgArray, aspects, } = this.props;
+    return buildUrl(
+      contentId,
+      { ...imgArray[0], aspects, },
+      {
+        width: '1920',
+        aspect: 'full',
+        quality: 'auto',
+      }
+    );
+  };
+
+  render() {
+    const { enableEnlarge, contentName, title, credit, } = this.props;
+
+    const CaptionElement = () => (
+      <FelaComponent
+        style={{
+          display: 'flex',
+          marginBottom: '3rem',
+          textAlign: 'start',
+        }}
+        render={({ className, theme, }) => (
+          <div className={className}>
+            <Caption
+              caption={title}
+              credit={credit}
+              color={[ 'neutral', '-10', ]}
+              typeStyles={-1}
+            />
+          </div>
+        )}
+      />
+    );
+
+    return enableEnlarge ? (
+      <FullScreenMedia
+        itemName={contentName}
+        itemUrl={this.getImageUrl()}
+        captionElement={<CaptionElement />}
+        render={({ isFullScreen, }) => (
+          <UnwrappedImage {...this.props} isFullScreen={isFullScreen} />
+        )}
+      />
+    ) : (
+      <UnwrappedImage {...this.props} />
+    );
+  }
+}
 
 ArticleImage.propTypes = articleImagePropTypes;
 ArticleImage.defaultProps = articleImageDefaultProps;
 
-export default ArticleImage;
+export default props => (
+  <Mutation mutation={ADD_IMAGE}>
+    {addImageToSchema => (
+      <ArticleImage {...props} addImageToSchema={addImageToSchema} />
+    )}
+  </Mutation>
+);

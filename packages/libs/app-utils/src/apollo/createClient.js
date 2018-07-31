@@ -181,6 +181,48 @@ function create(initialState, req) {
           // resolver needs to return something / null https://github.com/apollographql/apollo-link-state/issues/160
           return null;
         },
+        addImageToSchema: (_, { image, }, { cache, }) => {
+          const query = gql`
+            query {
+              pageSchema @client {
+                image {
+                  type
+                  url
+                  description
+                  name
+                  width
+                  height
+                }
+              }
+            }
+          `;
+          const response = cache.readQuery({ query, });
+          const currentImages = response.pageSchema.image;
+          const updatedImages =
+            // Removing the first image which is kind of a placeholder, cuz stateLink doesn't have schemas.
+            currentImages.length === 1 && !currentImages[0].type
+              ? [ image, ]
+              : // Make sure the the image doesn't already exists.
+              currentImages.find(
+                currentimage => currentimage.url === image.url
+              )
+                ? [ ...currentImages, ]
+                : [ ...currentImages, image, ];
+          console.log('NEW IMAGE: ', image);
+          console.log('CURRENT IMAGES: ', response.pageSchema.image);
+          console.log('UPDATED IMAGES: ', updatedImages);
+          cache.writeData({
+            data: {
+              pageSchema: {
+                image: updatedImages,
+                __typename: 'PageSchema',
+              },
+            },
+          });
+
+          // resolver needs to return something / null https://github.com/apollographql/apollo-link-state/issues/160
+          return null;
+        },
         updateScroll: (_, { x, y, velocity, }, { cache, }) => {
           const data = {
             scroll: {

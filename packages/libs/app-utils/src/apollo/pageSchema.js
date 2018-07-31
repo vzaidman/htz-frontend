@@ -37,15 +37,16 @@ export default {
     cssSelector: '.paywall',
     __typename: 'HasPart',
   },
-  image: {
-    type: 'ImageObject',
-    url: null,
-    datePublished: null,
-    description: null,
-    name: null,
-    width: null,
-    height: null,
-    __typename: 'Image',
-  },
+  image: [
+    {
+      type: null,
+      url: null,
+      description: null,
+      name: null,
+      width: null,
+      height: null,
+      __typename: 'Image',
+    },
+  ],
   __typename: 'PageSchema',
 };

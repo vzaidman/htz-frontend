@@ -37,7 +37,6 @@ export default gql`
       image {
         type
         url
-        datePublished
         description
         name
         width

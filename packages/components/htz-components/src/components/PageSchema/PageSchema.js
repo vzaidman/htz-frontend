@@ -1,15 +1,13 @@
 import React from 'react';
-import { Query, } from 'react-apollo';
 import _ from 'lodash';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import schemaQuery from './queries/schema';
 
 function PageSchema() {
   return (
-    <Query
-      query={schemaQuery}
-    >
+    <Query query={schemaQuery}>
       {({ data: { pageSchema: schema, }, }) => {
-        const pageSchema = _.cloneDeep(schema);
+        const pageSchema = schema ? _.cloneDeep(schema) : {};
         pageSchema['@context'] = 'http://schema.org';
         return (
           <script type="application/ld+json">
