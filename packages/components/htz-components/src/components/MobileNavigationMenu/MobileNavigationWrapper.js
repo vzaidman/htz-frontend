@@ -13,10 +13,12 @@ export default class MobileNavigationWrapper extends React.Component {
      */
     contentId: PropTypes.string.isRequired,
     velocity: PropTypes.number,
+    y: PropTypes.number,
   };
 
   static defaultProps = {
     velocity: 0,
+    y: 0,
   };
 
   state = { shouldDisplay: true, };
@@ -29,7 +31,8 @@ export default class MobileNavigationWrapper extends React.Component {
   shouldComponentUpdate(nextProps) {
     return (
       (nextProps.velocity < 0 && this.state.shouldDisplay) ||
-      (nextProps.velocity > 0 && !this.state.shouldDisplay)
+      (nextProps.velocity > 0 && !this.state.shouldDisplay) ||
+      (nextProps.y === 0 && !this.state.shouldDisplay)
     );
   }
 

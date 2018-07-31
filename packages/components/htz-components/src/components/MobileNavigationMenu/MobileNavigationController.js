@@ -10,8 +10,8 @@ MobileNavigationController.propTypes = {
 export default function MobileNavigationController(contentId) {
   return (
     <WrappedScroll
-      render={({ velocity, }) => (
-        <MobileNavigationWrapper {...{ velocity, contentId, }} />
+      render={({ velocity, y, }) => (
+        <MobileNavigationWrapper {...{ velocity, y, contentId, }} />
       )}
     />
   );
