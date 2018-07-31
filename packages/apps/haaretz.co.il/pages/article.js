@@ -15,6 +15,7 @@ import {
   GoogleAnalytics,
   PageSchema,
   ScrollListener,
+  RouteChangeListener,
   UserInjector,
 } from '@haaretz/htz-components';
 
@@ -90,6 +91,7 @@ export class ArticlePage extends React.Component {
                 <title>{titleSEO}</title>
               </Head>
               <ScrollListener />
+              <RouteChangeListener />
               <UserInjector />
               <DfpInjector path={url.query.path} />
               <GoogleAnalytics withEC withPageView />

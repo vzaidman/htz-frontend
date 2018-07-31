@@ -47,6 +47,7 @@ import Quote from './components/Quote/Quote';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import RadioButton from './components/RadioButton/RadioButton';
 import RadioGroup from './components/RadioButton/RadioGroup';
+import RouteChangeListener from './components/EventListeners/RouteChangeListener';
 import ArticlePageLayout from './components/PageLayout/ArticlePageLayout';
 import Scroll from './components/Scroll/Scroll';
 import ScrollListener from './components/EventListeners/ScrollListener';
@@ -190,6 +191,7 @@ export {
   RadioButton,
   RadioGroup,
   RelatedArticles,
+  RouteChangeListener,
   Scroll,
   ScrollListener,
   Section,
