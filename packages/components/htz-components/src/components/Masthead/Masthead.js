@@ -8,9 +8,10 @@ import MastheadLogo from './MastheadLogo';
 import MastheadSearch from './MastheadSearch/MastheadSearch';
 import MastheadUserTools from './MastheadUserTools';
 import Media from '../Media/Media';
-import MobileNavigation from '../MobileNavigationMenu/MobileNavigationController';
+import MobileNavigation from '../MobileNavigationMenu/MobileNavigationWrapper';
 import LayoutContainer from '../PageLayout/LayoutContainer';
 import NavigationMenu from '../NavigationMenu/NavigationMenu';
+import WrappedScroll from '../Scroll/Scroll';
 
 const hostQuery = gql`
   query Hostname($path: String!) {
@@ -28,18 +29,31 @@ class Masthead extends React.Component {
      * A string of the host: `tm` for `themarker.com`, `htz` for `haaretz.co.il` and `hdz` for `haaretz.com`.
      */
     hostname: PropTypes.string.isRequired,
+    velocity: PropTypes.number,
+    y: PropTypes.number,
+  };
+
+  static defaultProps = {
+    velocity: 0,
+    y: 0,
   };
 
   state = { searchIsOpen: false, };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.y > 0 && this.state.searchIsOpen) {
+      this.toggleSearchState();
+    }
+  }
+
   toggleSearchState = () => {
-    this.setState({
-      searchIsOpen: !this.state.searchIsOpen,
-    });
+    this.setState(prevState => ({
+      searchIsOpen: !prevState.searchIsOpen,
+    }));
   };
 
   render() {
-    const { contentId, hostname, } = this.props;
+    const { contentId, hostname, velocity, y, } = this.props;
     const hostMatch = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
     let host;
     switch (hostMatch) {
@@ -61,7 +75,7 @@ class Masthead extends React.Component {
               const isMobile = mobilePortrait || mobileLandscape;
               return isMobile ? (
                 <header>
-                  <MobileNavigation contentId={contentId} />
+                  <MobileNavigation contentId={contentId} velocity={velocity} />
                 </header>
               ) : (
                 <FelaComponent
@@ -90,7 +104,9 @@ class Masthead extends React.Component {
                       {this.state.searchIsOpen ? null : (
                         <MastheadLogo host={host} />
                       )}
-                      {this.state.searchIsOpen ? null : <MastheadUserTools />}
+                      {this.state.searchIsOpen ? null : (
+                        <MastheadUserTools y={y} />
+                      )}
                     </header>
                   )}
                 />
@@ -109,9 +125,18 @@ export default props => (
       if (loading) return null;
       if (error) return null;
       return (
-        <LayoutContainer>
-          <Masthead hostname={data.hostname} {...props} />
-        </LayoutContainer>
+        <WrappedScroll
+          render={({ velocity, y, }) => (
+            <LayoutContainer>
+              <Masthead
+                hostname={data.hostname}
+                velocity={velocity}
+                y={y}
+                {...props}
+              />
+            </LayoutContainer>
+          )}
+        />
       );
     }}
   </Query>

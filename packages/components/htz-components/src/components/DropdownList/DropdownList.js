@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 // import FocusLock from 'react-focus-lock';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import ListWrapper from './ListWrapper';
+import WrappedScroll from '../Scroll/Scroll';
 
 ThemedDropdownList.propTypes = {
   /**
@@ -42,7 +43,11 @@ ThemedDropdownList.defaultProps = {
 class DropdownList extends React.Component {
   state = { isOpen: false, };
 
-  componentDidUpdate() {
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.y === 0 || (nextProps.y > 0 && this.state.isOpen);
+  }
+
+  componentDidUpdate(prevProps) {
     if (this.state.isOpen) {
       document.addEventListener('click', this.handleOutsideClick);
       document.addEventListener('keydown', this.handleEscape);
@@ -52,6 +57,10 @@ class DropdownList extends React.Component {
       document.removeEventListener('click', this.handleOutsideClick);
       document.removeEventListener('keydown', this.handleEscape);
       document.removeEventListener('keydown', this.handleArrowKey);
+    }
+
+    if (prevProps.y > 0 && this.state.isOpen) {
+      this.toggleState();
     }
   }
 
@@ -119,9 +128,13 @@ class DropdownList extends React.Component {
 
 function ThemedDropdownList(props) {
   return (
-    <FelaTheme
-      render={({ direction, }) => (
-        <DropdownList direction={direction} {...props} />
+    <WrappedScroll
+      render={({ y, }) => (
+        <FelaTheme
+          render={({ direction, }) => (
+            <DropdownList direction={direction} y={y} {...props} />
+          )}
+        />
       )}
     />
   );
