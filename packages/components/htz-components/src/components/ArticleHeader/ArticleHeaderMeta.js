@@ -48,7 +48,7 @@ const timeStyle = ({ theme, mobileTime, }) => ({
       { marginInlineStart: '1rem', marginInlineEnd: '1rem', }
     ),
     theme.mq({ from: 'l', }, { marginTop: '0.5rem', }),
-    theme.type(-3, { fromBp: 'xl', }),
+    theme.type(-2, { fromBp: 'xl', }),
     theme.type(-2, { untilBp: 'xl', }),
   ],
 });
@@ -139,85 +139,6 @@ class ArticleHeaderMeta extends React.Component {
                   />
                 )}
 
-            {/* Author name and publish-date */}
-            <FelaComponent style={authorsAndTimeContStyle}>
-              {authors.map((author, idx) => (
-                <CreditArticle
-                  contentName={author.name || author.contentName}
-                  url={author.url}
-                  miscStyles={{
-                    ':after': {
-                      content:
-                        idx === authors.length - 1
-                          ? null
-                          : authors.length > 1
-                            ? authors.length - 2 === idx ? '" ו"' : '", "'
-                            : null,
-                    },
-                    display: 'inline',
-                  }}
-                />
-              ))}
-              {reportingFrom && (
-                <FelaComponent
-                  style={{
-                    color: theme.color('primary'),
-                    extend: [
-                      theme.type(-2, { fromBp: 'xl', }),
-                      theme.type(-1, { fromBp: 's', untilBp: 'xl', }),
-                      theme.type(-2, { untilBp: 's', }),
-                      theme.mq({ from: 'l', }, { display: 'block', }),
-                      theme.mq(
-                        {
-                          until: 'l',
-||||||| merged common ancestors
-function ArticleHeaderMeta({
-  authors,
-  publishDate,
-  reportingFrom,
-  miscStyles,
-}) {
-  return (
-    <FelaComponent
-      miscStyles={miscStyles}
-      rule={wrapperStyle}
-      render={({ className, theme, }) => (
-        <div className={className}>
-          <FelaComponent style={imageAuthorsAndMobileTimeContStyle}>
-            {/*  Author image */}
-            {authors[0].image && (
-              <Image
-                data={authors[0].image}
-                imgOptions={{
-                  transforms: {
-                    width: '100',
-                    aspect: 'square',
-                    quality: 'auto',
-                    gravity: 'face',
-                  },
-                }}
-                miscStyles={{
-                  width: [
-                    { until: 'l', value: '6rem', },
-                    { from: 'l', value: '10rem', },
-                  ],
-                  height: [
-                    { until: 'l', value: '6rem', },
-                    { from: 'l', value: '10rem', },
-                  ],
-                  paddingBottom: '6rem',
-                  borderRadius: '50%',
-                  overflow: 'hidden',
-                  display: [
-                    { until: 's', value: 'inline-block', },
-                    { from: 's', until: 'l', value: 'none', },
-                    { from: 'l', value: 'block', },
-                  ],
-                  marginInlineEnd: '1rem',
-                }}
-              />
-            )}
-
                 {/* Author name and publish-date */}
                 <FelaComponent style={authorsAndTimeContStyle}>
                   {authors.map((author, idx) => (
@@ -298,7 +219,7 @@ function ArticleHeaderMeta({
                 render={({ className, }) => (
                   <Time
                     time={publishDate}
-                    format="DD.MM.YYYY HH:mm"
+                    format="HH:mm DD.MM.YYYY"
                     className={className}
                   />
                 )}
