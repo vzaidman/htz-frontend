@@ -8,16 +8,30 @@ const homepagePattern = '(^\\/(\\?.*)?$)';
 const offersPattern =
   '(\\/promotions-page\\/(product|price|login|method|payment|thankYou|debt|stage\\d))';
 
-// TODO Add more non-react time
 const NonReactArticleTypes = [
   '(MAGAZINE-)',
   '(REVIEW-)',
   '(TAG-)',
   '(WRITER-)',
   '(BLOG-)',
+  '(CARD-)',
+  '(INTERVIEW-)',
+  '(RECIPE-)',
   '(LIVE-)',
   '(INTERACTIVE-)',
 ];
+
+const nonReactSections = [
+  '(article-print-page)',
+  '(tags)',
+  '(writers)',
+  '(misc)',
+  '(labels)',
+  // TODO: are there any more st/something paths
+  '(\\/st\\/inter)',
+  '(\\/st\\/c)',
+];
+
 const isNonReactArticleType = new RegExp(
   `${multiSectionPrefix}${premiumPrefix}(${NonReactArticleTypes.join(
     '|'
@@ -29,6 +43,7 @@ const reactPathPattern = [ isReactArticleType, offersPattern, ].join('|');
 
 const isReactType = new RegExp(reactPathPattern);
 const isReactArticleTypeRegex = new RegExp(isReactArticleType);
+const isNonReactSectionRegex = new RegExp(nonReactSections.join('|'));
 
 // Method for next to replace pathname with article.js for in-app browsing
 export function isReactArticle(href) {
@@ -75,5 +90,9 @@ function isNextLinkSimpleString(href) {
     query,
     fragment,
   } = all;
-  return !isNonReactArticleType.test(path) && isReactType.test(path);
+  return (
+    !isNonReactArticleType.test(path) &&
+    isReactType.test(path) &&
+    !isNonReactSectionRegex.test(path)
+  );
 }
