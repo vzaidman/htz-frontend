@@ -79,6 +79,7 @@ const Zoidberg = ({ list, lazyLoad, gaAction, biAction, listId, }) => {
               image={clicktrackerimage}
               path={link}
               suffix
+              paragraphHeight={{ maxHeight: '9rem', }}
             />
           </BlockLink>
         );

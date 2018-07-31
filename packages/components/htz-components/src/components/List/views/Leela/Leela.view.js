@@ -13,7 +13,13 @@ import Image from '../../../Image/Image';
 import HtzLink from '../../../HtzLink/HtzLink';
 
 // eslint-disable-next-line react/prop-types
-export const PromotedItem = ({ path, title, image, suffix, }) => (
+export const PromotedItem = ({
+	path,
+	title,
+	image,
+	suffix,
+	paragraphHeight,
+}) => (
   <FelaTheme
     render={theme => (
       <Fragment>
@@ -46,7 +52,12 @@ export const PromotedItem = ({ path, title, image, suffix, }) => (
                     marginStart: '1rem',
                     marginEnd: '1rem',
                     marginTop: '1rem',
-                    extend: [ theme.type(-1), ],
+                    maxHeight: '12rem',
+                    overflow: 'hidden',
+                    extend: [
+                      theme.type(-1),
+                      paragraphHeight || {},
+                    ],
                   }}
                   render={({ className, }) => (
                     <H className={`${aboveBlockLinkClasses} ${className}`}>
