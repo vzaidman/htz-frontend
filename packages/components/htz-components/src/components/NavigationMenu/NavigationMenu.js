@@ -21,7 +21,7 @@ import {
 // TODO: remove this when optOut item is deprecated
 const OPT_OUT = gql`
   mutation SetReactHtzArticleOptIn($id: String!, $value: Boolean!) {
-    setReactHtzArticleOptIn(id: $id, value: $value)
+    setReactHtzArticleOptOut(id: $id, value: $value)
   }
 `;
 
@@ -128,7 +128,7 @@ class NavigationMenu extends React.Component {
     // CookieUtils.deleteCookie('react');
     CookieUtils.modifyCookie('react', false, '/', `.${domain}`);
     // mutation function MongoDB
-    optOutMutation({ variables: { id, value: false, }, })
+    optOutMutation({ variables: { id, value: true, }, })
       .then(success => {
         document.location.reload();
       })

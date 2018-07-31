@@ -338,6 +338,20 @@ const colors = {
     salesOpaqueHoverBg: [ 'sales', '+2', ],
     salesOpaqueHoverBorder: 'transparent',
     salesOpaqueHoverText: [ 'button', 'salesOpaqueText', ],
+
+    // Opaque Quaternary button
+    quaternaryOpaqueBg: [ 'quaternary', 'base', ],
+    quaternaryOpaqueBorder: 'transparent',
+    quaternaryOpaqueText: [ 'neutral', '-1', ],
+    quaternaryOpaqueActiveBg: [ 'quaternary', '+1', ],
+    quaternaryOpaqueActiveBorder: 'transparent',
+    quaternaryOpaqueActiveText: [ 'button', 'quaternaryOpaqueText', ],
+    quaternaryOpaqueFocusBg: [ 'quaternary', '+2', ],
+    quaternaryOpaqueFocusBorder: 'transparent',
+    quaternaryOpaqueFocusText: [ 'button', 'quaternaryOpaqueText', ],
+    quaternaryOpaqueHoverBg: [ 'quaternary', '+2', ],
+    quaternaryOpaqueHoverBorder: 'transparent',
+    quaternaryOpaqueHoverText: [ 'button', 'quaternaryOpaqueText', ],
   },
   checkBox: {
     // Primary
