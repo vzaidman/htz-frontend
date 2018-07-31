@@ -44,13 +44,7 @@ const ThankYouElement = ({ product, userMessage, }) => (
                 />
               </Fragment>
             }
-            stageElement={
-              <ThankYouStage
-                userEmail={user.email}
-                product={product}
-                userMessage={userMessage}
-              />
-            }
+            stageElement={<ThankYouStage />}
           />
         )}
       />

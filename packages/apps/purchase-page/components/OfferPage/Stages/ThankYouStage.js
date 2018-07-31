@@ -1,6 +1,5 @@
 /* global navigator */
 import React, { Fragment, } from 'react';
-import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -30,13 +29,6 @@ const GET_ARTICLE_DATA = gql`
     }
   }
 `;
-const propTypes = {
-  userEmail: PropTypes.string,
-};
-
-const defaultProps = {
-  userEmail: null,
-};
 
 const contStyle = () => ({
   textAlign: 'center',
@@ -61,7 +53,6 @@ class StageThankYou extends React.Component {
   }
 
   render() {
-    const { userEmail, } = this.props;
     const getArticleID = url => {
       const { path, } = breakUrl(url);
       const regex = /1\.\d+$/;
@@ -234,7 +225,7 @@ class StageThankYou extends React.Component {
                             </FelaComponent>
                           </BlockLink>
                           <Newsletter
-                            id="ThankYouWrapper-1234"
+                            contentId="ThankYouWrapper-1234"
                             headlineText={newsletterTitle(site)}
                             buttonText={newsletterButton}
                             host={site}
@@ -251,7 +242,6 @@ class StageThankYou extends React.Component {
                             }}
                             variant="primary"
                             segmentId={site === 'tm' ? 1338618 : 1338625}
-                            userEmail={userEmail}
                             miscStyles={{
                               display: [ { until: 's', value: 'none', }, ],
                             }}
@@ -269,9 +259,5 @@ class StageThankYou extends React.Component {
     );
   }
 }
-
-StageThankYou.propTypes = propTypes;
-
-StageThankYou.defaultProps = defaultProps;
 
 export default StageThankYou;
