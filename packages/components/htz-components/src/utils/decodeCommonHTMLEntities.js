@@ -19,5 +19,5 @@ export default function decodeHTMLEntities(text) {
       entity[1]
     );
   });
-  return text;
+  return decodedText;
 }

@@ -448,7 +448,9 @@ class Comment extends React.Component {
                 <div
                   // eslint-disable-next-line
                   ref={commentTextEl => (this.commentTextEl = commentTextEl)}>
-                  <StyledCommentText>{title}</StyledCommentText>
+                  <StyledCommentText>
+                    {decodeCommonHTMLEntities(title)}
+                  </StyledCommentText>
                   <StyledCommentText
                     dangerouslySetInnerHTML={this.generateCommentMarkup()}
                     fade={this.state.fadeText}
