@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { breadcrumbs, } from '@haaretz/app-utils';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
-import { GET_USER, } from '../User/UserInjector';
 import { doStat, } from './statutil';
+import UserDispenser from '../User/UserDispenser';
 
 const AuthorId = gql`
   fragment AuthorId on AuthorObject {
@@ -31,16 +31,6 @@ const GET_DOSTAT_DATA = gql`
           }
         }
       }
-    }
-    user @client {
-      type
-      id
-      email
-      firstName
-      lastName
-      emailStatus
-      token
-      anonymousId
     }
   }
   ${breadcrumbs}
@@ -77,39 +67,38 @@ class BIRequest extends Component {
   render() {
     const { articleId, } = this.props;
     if (this.state.shouldRender) {
-      if (articleId) {
-        return (
-          <Query
-            query={GET_DOSTAT_DATA}
-            variables={{ path: articleId, }}
-            errorPolicy="all"
-          >
-            {({ data, loading, error, }) => {
-              if (loading) return null;
-              if (error) return console.error(error);
-              let writerId = null;
-              try {
-                writerId = data.page.slots.article[1].data.authors[0].contentId;
-              }
- catch (err) {
-                // do fallback here
-              }
-
-              doStat(data.user, data.page.lineage, writerId);
-              return null;
-            }}
-          </Query>
-        );
-      }
       return (
-        <Query query={GET_USER}>
-          {({ loading, error, data, }) => {
-            if (loading) return null;
-            if (error) return console.error(error);
-            doStat(data.user);
+        <UserDispenser
+          render={({ user, }) => {
+            if (articleId) {
+              return (
+                <Query
+                  query={GET_DOSTAT_DATA}
+                  variables={{ path: articleId, }}
+                  errorPolicy="all"
+                >
+                  {({ data, loading, error, }) => {
+                    if (loading) return null;
+                    if (error) return console.error(error);
+                    let writerId = null;
+                    try {
+                      writerId =
+                        data.page.slots.article[1].data.authors[0].contentId;
+                    }
+ catch (err) {
+                      // do fallback here
+                    }
+
+                    doStat(user, data.page.lineage, writerId);
+                    return null;
+                  }}
+                </Query>
+              );
+            }
+            doStat(user);
             return null;
           }}
-        </Query>
+        />
       );
     }
     return null;
