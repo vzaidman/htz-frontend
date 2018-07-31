@@ -10,7 +10,7 @@
   "scripts": {
     "build": "htz-scripts build",
     "clean": "htz-scripts clean",
-    "dev": "NODE_ENV=development htz-react-server htz",
+    "dev": "NODE_ENV=development htz-react-server htz | bunyan -L",
     "debug": "htz-react-server htz --inspect",
     "flow": "htz-scripts flow",
     "format": "htz-scripts format",
