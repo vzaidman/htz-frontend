@@ -1,6 +1,7 @@
 import React from 'react';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
+import config from 'config';
 import A11yDialog from '../A11yDialog/A11yDialog';
 import Button from '../Button/Button';
 import ServiceByMailRegistration from './ServiceByMailRegistration';
@@ -40,6 +41,7 @@ export default class AuthorNotificationsRegistration extends React.Component {
   }
 
   render() {
+    console.log(config);
     return (
       <FelaTheme
         render={theme => (
@@ -49,7 +51,9 @@ export default class AuthorNotificationsRegistration extends React.Component {
                 title={`${theme.serviceByMailI18n.authorAlertServiceTitle}${
                   this.props.author.contentName
                 }`}
-                serviceUrl={`https://alerts.haaretz.co.il/alerts/register?newsletterId=${
+                serviceUrl={`${
+                  config.service.alerts
+                }/alerts/register?newsletterId=${
                   this.props.author.contentId
                 }&type=writers`}
                 onRegistrationSuccess={this.onRegistrationSuccess}

@@ -15,6 +15,7 @@ switch (connectionPreset) {
           }://${this.hostname ? `${this.hostname}.` : ''}${this.domain}${this.port ? `:${this.port}` : ''}`;
         }),
       },
+      alerts: baseConfigOverride.service.alerts,
       remoteFQDN: baseConfigOverride.appFQDN,
       useSSL: false,
       graphQLuseSSL: false,

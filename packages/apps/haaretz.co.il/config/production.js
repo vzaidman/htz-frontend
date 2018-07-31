@@ -14,6 +14,7 @@ module.exports = {
         this.graphQLuseSSL ? 's' : ''
       }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
     }),
+    alerts: 'https://alerts.haaretz.co.il',
   },
   appFQDN: defer(function () {
     return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
