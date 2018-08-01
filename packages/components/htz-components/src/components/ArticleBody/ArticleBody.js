@@ -5,7 +5,6 @@ import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
 import ArticleImage from '../ArticleImage/ArticleImage';
 import Caption from '../Caption/Caption';
-import UserSurvey from '../UserSurvey/UserSurvey';
 
 const propTypes = {
   /**
@@ -160,12 +159,9 @@ function ArticleBody({ body, }) {
         marginLeft: 'auto',
       })}
     >
-      {body.map((component, i) => {
-        if (i === body.length - 3) {
-          return <UserSurvey />;
-        }
-        return buildComponent(component, i, i === body.length - 1);
-      })}
+      {body.map((component, i) =>
+        buildComponent(component, i, i === body.length - 1)
+      )}
     </FelaComponent>
   );
 }

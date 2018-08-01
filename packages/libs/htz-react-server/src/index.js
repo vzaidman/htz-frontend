@@ -5,6 +5,7 @@ import proxy from 'http-proxy-middleware';
 import { graphqlExpress, graphiqlExpress, } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import compression from 'compression';
+import { schema, createLogger, } from '@haaretz/app-utils';
 import helmet from 'helmet';
 import next from 'next';
 import cors from 'cors';
@@ -14,24 +15,13 @@ import config from 'config';
 // adding this `fetch` global) here. That way they'll be available to any
 // modules that Next.js imports while routing and rendering pages.
 import 'isomorphic-fetch';
-import 'apollo-link';
 import morgan from 'morgan';
 import morganJson from 'morgan-json';
-import {
-  makeRemoteExecutableSchema,
-  mergeSchemas,
-  introspectSchema,
-} from 'graphql-tools';
-import fetch from 'node-fetch';
-import { schema, createLogger, } from '@haaretz/app-utils';
-import { HttpLink, } from 'apollo-link-http';
 import createContext from './createContext';
 import htz from './routes/htz';
 import tm from './routes/tm';
 import hdc from './routes/hdc';
 import purchase from './routes/purchase';
-
-// To satisfy Extend peer dependencies
 
 const logger = createLogger({
   name: 'htz-react-server',
@@ -99,105 +89,80 @@ const GraphQLOptions = {
   debug: DEV,
 };
 
-async function run() {
-  const createRemoteSchema = async (uri, fetch) => {
-    const fetcher = new HttpLink({ uri, fetch, });
-    return makeRemoteExecutableSchema({
-      schema: await introspectSchema(fetcher),
-      link: fetcher,
-    });
-  };
+// const hostIp = config.get('hostIp');
+app
+  .prepare()
+  // eslint-disable-next-line consistent-return
+  .then(() => {
+    const server = express();
+    if (enableHttpLogging) {
+      // Morgan json formatted messages
+      // const morganFormat = morganJson(':remote-addr - :remote-user [:date[clf]]
+      // :method :url HTTP/:http-version :status :res[content-length] :referrer :user-agent');
+      server.use(
+        morgan(
+          morganJson({
+            short: 'HTTP/:http-version :method :url :status',
+            length: ':res[content-length]',
+            'response-time': ':response-time ms',
+            'remote-addr': ':remote-addr',
+            referrer: ':referrer',
+            'user-agent': ':user-agent',
+          })
+        )
+      ); // HTTP logging
+    }
+    if (!DEV) {
+      server.use(compression()); // Compress responses.
+    }
+    server.use(helmet({ frameguard: false, })); // Various security-minded settings.
+    // cors allows querying the server from different ports and aliases.
+    server.use(cors());
+    server.use(
+      '/graphql',
+      bodyParser.json(),
+      graphqlExpress(req => ({
+        schema,
+        context: createContext(req),
+        ...GraphQLOptions,
+      }))
+    );
+    if (DEV) {
+      server.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql', }));
+    }
 
-  const userInfo = await createRemoteSchema(
-    'https://ms-apps.themarker.com/userInfo',
-    fetch
-  );
-  const schemas = mergeSchemas({
-    schemas: [ userInfo, schema, ],
+    server.get([ /^((\/_next\/).*)+$/, ], (req, res) => {
+      const query = {
+        path: req.params[0],
+      };
+      return app.render(req, res, '/', query);
+    });
+
+    // Get the current app's routing module.
+    sitesRouting.get(selectedRoute)(app, server, DEV);
+
+    // Use static assets from the `static` directory
+    server.use(
+      '/static',
+      express.static(path.join(`${process.cwd()}/static`), {
+        redirect: false,
+      })
+    );
+
+    server.get('/', handler);
+
+    // Fallback to tomcat via proxy
+    server.all('*', tomcatProxy);
+    // For Zones
+    logger.warn(`assetPrefix set to ${assetPrefix}`);
+    app.setAssetPrefix(assetPrefix);
+
+    server.listen(PORT, err => {
+      if (err) throw err;
+      logger.info(`> Ready on your ${config.get('hostIp')}:${PORT}`);
+    });
+  })
+  .catch(err => {
+    logger.error(err);
+    process.exit(1);
   });
-  // const hostIp = config.get('hostIp');
-  app
-    .prepare()
-    // eslint-disable-next-line consistent-return
-    .then(() => {
-      const server = express();
-      if (enableHttpLogging) {
-        // Morgan json formatted messages
-        // const morganFormat = morganJson(':remote-addr - :remote-user [:date[clf]]
-        // :method :url HTTP/:http-version :status :res[content-length] :referrer :user-agent');
-        server.use(
-          morgan(
-            morganJson({
-              short: 'HTTP/:http-version :method :url :status',
-              length: ':res[content-length]',
-              'response-time': ':response-time ms',
-              'remote-addr': ':remote-addr',
-              referrer: ':referrer',
-              'user-agent': ':user-agent',
-            })
-          )
-        ); // HTTP logging
-      }
-      if (!DEV) {
-        server.use(compression()); // Compress responses.
-      }
-      server.use(helmet({ frameguard: false, })); // Various security-minded settings.
-      // cors allows querying the server from different ports and aliases.
-      server.use(cors());
-      server.use(
-        '/graphql',
-        bodyParser.json(),
-        graphqlExpress(req => ({
-          schema: schemas,
-          context: createContext(req),
-          ...GraphQLOptions,
-        }))
-      );
-      if (DEV) {
-        server.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql', }));
-      }
-
-      server.get([ /^((\/_next\/).*)+$/, ], (req, res) => {
-        const query = {
-          path: req.params[0],
-        };
-        return app.render(req, res, '/', query);
-      });
-
-      // Get the current app's routing module.
-      sitesRouting.get(selectedRoute)(app, server, DEV);
-
-      // Use static assets from the `static` directory
-      server.use(
-        '/static',
-        express.static(path.join(`${process.cwd()}/static`), {
-          redirect: false,
-        })
-      );
-
-      server.get('/', handler);
-
-      // Fallback to tomcat via proxy
-      server.all('*', tomcatProxy);
-      // For Zones
-      logger.warn(`assetPrefix set to ${assetPrefix}`);
-      app.setAssetPrefix(assetPrefix);
-
-      server.listen(PORT, err => {
-        if (err) throw err;
-        logger.info(`> Ready on your ${config.get('hostIp')}:${PORT}`);
-      });
-    })
-    .catch(err => {
-      logger.error(err);
-      process.exit(1);
-    });
-}
-
-try {
-  run();
-}
-catch (e) {
-  console.error(e, e.message, e.stack);
-  process.exit(1);
-}
