@@ -267,3 +267,18 @@ export const mastheadLogoI18n = Object.freeze({
   htzUrl: 'https://www.haaretz.co.il',
   tmUrl: 'http://www.themarker.com',
 });
+
+export const mobileAdditionalShare = Object.freeze({
+  text: 'שיתוף',
+});
+
+export const mobileUserMenuI18n = Object.freeze({
+  noUserData: 'כניסה',
+  userLoggedIn: 'יציאה',
+  url: 'https://www.haaretz.co.il/misc/login-page',
+});
+
+export const mobileReadingList = Object.freeze({
+  url: 'https://www.haaretz.co.il/readingList',
+  buttonText: 'רשימת הקריאה',
+});
