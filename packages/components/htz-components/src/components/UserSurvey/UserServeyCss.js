@@ -5,7 +5,6 @@ const slopeWrapper = {
   overflow: 'hidden',
   position: 'relative',
   marginBottom: '5rem',
-  marginTop: '5rem',
 };
 
 const slopeElement = theme => ({
