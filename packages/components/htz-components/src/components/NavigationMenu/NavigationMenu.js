@@ -145,14 +145,14 @@ class NavigationMenu extends React.Component {
           // TODO: remove this when optOut item is deprecated
           const optOut = (
             <UserDispenser
-              render={({ user: { id, }, }) =>
-                (!id ? null : (
+              render={({ user, isLoggedIn, }) =>
+                (!isLoggedIn || typeof user.id !== 'string' ? null : (
                   <Mutation mutation={OPT_OUT}>
                     {(optOutMutation, { data, }) => (
                       <Item
                         key="item HardCoded חזרה לכתבה רגילה"
                         name="חזרה לכתבה רגילה"
-                        onClick={() => this.optOut(id, optOutMutation)}
+                        onClick={() => this.optOut(user.id, optOutMutation)}
                         miscStyles={{
                           backgroundColor: theme.color('primary', '+1'),
                         }}

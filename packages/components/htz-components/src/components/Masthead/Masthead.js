@@ -1,10 +1,10 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
-import OptOutStrip from '../OptOut/OptOutStrip';
 import MastheadLogo from './MastheadLogo';
 import MastheadSearch from './MastheadSearch/MastheadSearch';
 import MastheadUserTools from './MastheadUserTools';
@@ -13,6 +13,11 @@ import MobileNavigationWrapper from '../MobileNavigationMenu/MobileNavigationWra
 import LayoutContainer from '../PageLayout/LayoutContainer';
 import NavigationMenu from '../NavigationMenu/NavigationMenu';
 import WrappedScroll from '../Scroll/Scroll';
+
+const OptOutStrip = dynamic(import('../OptOut/OptOutStrip'), {
+  ssr: false,
+  loading: () => null,
+});
 
 const hostQuery = gql`
   query Hostname($path: String!) {
