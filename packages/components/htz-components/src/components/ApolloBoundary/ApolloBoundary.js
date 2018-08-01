@@ -24,3 +24,5 @@ export const ApolloConsumer = props => (
     <Consumer {...props}>{props.children}</Consumer>
   </ErrorBoundary>
 );
+
+export default { Query, Mutation, ApolloConsumer, };

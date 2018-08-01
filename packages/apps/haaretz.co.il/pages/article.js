@@ -20,6 +20,7 @@ import {
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
+import WelcomePage from '../components/WelcomePage/WelcomePage';
 import ArticleInitQuery from './queries/article_layout';
 import publisher from './schema/publisher';
 
@@ -105,8 +106,10 @@ export class ArticlePage extends React.Component {
                     articleId={this.props.url.query.path}
                     slots={slots}
                   />
+                  <WelcomePage />
                 </Fragment>
               </StyleProvider>
+              <div id="welcomePageModal" />
               <PageSchema />
             </Fragment>
           );
