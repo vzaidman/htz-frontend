@@ -143,10 +143,17 @@ function ArticleBody({ body, }) {
       })}
     >
       {body.map((component, i) => {
-        if (i === body.length - 3) {
-          return <UserSurvey />;
+        let res = buildComponent(component, i, i === body.length - 1);
+        if (i === body.length - 1) {
+          console.log('1234567');
+          res = (
+            <div>
+              {res}
+              <UserSurvey />
+            </div>
+          );
         }
-        return buildComponent(component, i, i === body.length - 1);
+        return res;
       })}
     </FelaComponent>
   );
