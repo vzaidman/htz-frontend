@@ -75,7 +75,11 @@ class Masthead extends React.Component {
               const isMobile = mobilePortrait || mobileLandscape;
               return isMobile ? (
                 <header>
-                  <MobileNavigation contentId={contentId} velocity={velocity} />
+                  <MobileNavigation
+                    contentId={contentId}
+                    velocity={velocity}
+                    y={y}
+                  />
                 </header>
               ) : (
                 <FelaComponent
