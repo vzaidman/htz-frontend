@@ -4,7 +4,6 @@ import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
-import OptOutStrip from '../OptOut/OptOutStrip';
 import MastheadLogo from './MastheadLogo';
 import MastheadSearch from './MastheadSearch/MastheadSearch';
 import MastheadUserTools from './MastheadUserTools';
@@ -83,41 +82,38 @@ class Masthead extends React.Component {
                   />
                 </header>
               ) : (
-                <React.Fragment>
-                  <OptOutStrip />
-                  <FelaComponent
-                    style={theme => ({
-                      alignItems: 'stretch',
-                      backgroundColor: theme.color('neutral', '-10'),
-                      display: 'flex',
-                      position: 'relative',
-                      width: '100%',
-                      extend: [
-                        borderBottom(
-                          '1px',
-                          0,
-                          'solid',
-                          theme.color('mastheadBorder', 'borderColor')
-                        ),
-                      ],
-                    })}
-                    render={({ className, }) => (
-                      <header className={className}>
-                        <NavigationMenu contentId={contentId} />
-                        <MastheadSearch
-                          searchIsOpen={this.state.searchIsOpen}
-                          onClick={this.toggleSearchState}
-                        />
-                        {this.state.searchIsOpen ? null : (
-                          <MastheadLogo host={host} />
-                        )}
-                        {this.state.searchIsOpen ? null : (
-                          <MastheadUserTools y={y} />
-                        )}
-                      </header>
-                    )}
-                  />
-                </React.Fragment>
+                <FelaComponent
+                  style={theme => ({
+                    alignItems: 'stretch',
+                    backgroundColor: theme.color('neutral', '-10'),
+                    display: 'flex',
+                    position: 'relative',
+                    width: '100%',
+                    extend: [
+                      borderBottom(
+                        '1px',
+                        0,
+                        'solid',
+                        theme.color('mastheadBorder', 'borderColor')
+                      ),
+                    ],
+                  })}
+                  render={({ className, }) => (
+                    <header className={className}>
+                      <NavigationMenu contentId={contentId} />
+                      <MastheadSearch
+                        searchIsOpen={this.state.searchIsOpen}
+                        onClick={this.toggleSearchState}
+                      />
+                      {this.state.searchIsOpen ? null : (
+                        <MastheadLogo host={host} />
+                      )}
+                      {this.state.searchIsOpen ? null : (
+                        <MastheadUserTools y={y} />
+                      )}
+                    </header>
+                  )}
+                />
               );
             }}
           </Media>
