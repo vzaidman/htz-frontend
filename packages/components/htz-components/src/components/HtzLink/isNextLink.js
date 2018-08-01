@@ -3,7 +3,7 @@ import { breakUrl, } from '@haaretz/app-utils';
 
 const premiumPrefix = '(?:\\.premium-)?';
 const multiSectionPrefix = '(?:\\/(.+?\\/)+)?';
-const articlePattern = '(1\\.\\d+.*)';
+const articlePattern = '(?:.*-?)(1\\.\\d+.*)';
 const homepagePattern = '(^\\/(\\?.*)?$)';
 const offersPattern =
   '(\\/promotions-page\\/(product|price|login|method|payment|thankYou|debt|stage\\d))';
