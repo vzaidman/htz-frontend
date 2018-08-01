@@ -75,16 +75,13 @@ class OptOutStrip extends React.PureComponent {
             render={({ user: { id, }, }) =>
               (!id ? null : (
                 <Query query={CHECK_OPT_OUT} variables={{ id, }}>
-                  {({
-                    loading,
-                    error,
-                    data: { userInfo: { reactHtzArticleOptOut, }, },
-                  }) => {
+                  {({ loading, error, data, }) => {
                     if (loading) return 'Loading...';
                     if (error) return `Error! ${error.message}`;
+                    if (data.userInfo.reactHtzArticleOptOut === undefined) { return null; }
                     if (
-                      reactHtzArticleOptOut !== null &&
-                      reactHtzArticleOptOut !== true
+                      data.userInfo.reactHtzArticleOptOut !== null &&
+                      data.userInfo.reactHtzArticleOptOut !== true
                     ) {
                       return null;
                     }
