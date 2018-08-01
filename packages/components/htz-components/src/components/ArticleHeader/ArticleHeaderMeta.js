@@ -96,7 +96,7 @@ class ArticleHeaderMeta extends React.Component {
 
   render() {
     const { authors, publishDate, reportingFrom, miscStyles, } = this.props;
-
+    console.log('DDD');
     return (
       <FelaComponent
         miscStyles={miscStyles}
@@ -247,7 +247,7 @@ class ArticleHeaderMeta extends React.Component {
 
 ArticleHeaderMeta.propTypes = {
   /**
-   * An array of Article's authors.
+   * An array of Article's authors
    */
   authors: PropTypes.arrayOf(
     PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
