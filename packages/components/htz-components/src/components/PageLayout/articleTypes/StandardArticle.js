@@ -190,6 +190,7 @@ const StandardLayoutRow = ({
 const WideArticleLayoutRow = ({ children, key, }) => (
   <FelaComponent
     style={theme => ({
+      marginTop: '3rem',
       extend: [ borderTop('2px', 2, 'solid', theme.color('primary')), ],
     })}
     render={({ className, }) => (
