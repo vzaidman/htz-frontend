@@ -1,21 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FelaTheme, createComponent, FelaComponent, } from 'react-fela';
+import { FelaTheme, FelaComponent, } from 'react-fela';
 import Recaptcha from 'react-google-invisible-recaptcha';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList'; // eslint-disable-line import/no-named-as-default
 import Select from '../Select/Select'; // eslint-disable-line import/no-named-as-default
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
-
-const SelectContStyle = ({ theme, }) => ({
-  width: '100%',
-  marginBottom: '5rem',
-  marginTop: '2rem',
-  display: 'flex',
-  alignItems: 'flex-start',
-});
-
-const SelectCont = createComponent(SelectContStyle);
 
 const SelectStyle = {
   width: '28rem',
@@ -197,8 +187,18 @@ class CommentsSection extends React.Component {
               initNewComment={initNewComment}
               signUpNotification={signUpNotification}
             />
-            <SelectCont>
-              <span>{chooseSortMethodText}</span>
+            <FelaComponent
+              style={{
+                width: '100%',
+                marginBottom: '5rem',
+                marginTop: '2rem',
+                display: 'flex',
+                alignItems: 'flex-start',
+              }}
+            >
+              <FelaComponent style={{ marginTop: 'calc(1rem + 2px)', }}>
+                {chooseSortMethodText}
+              </FelaComponent>
               <Select
                 onChange={selectedItem => {
                   loadAllComments();
@@ -213,7 +213,7 @@ class CommentsSection extends React.Component {
                 ]}
                 miscStyles={SelectStyle}
               />
-            </SelectCont>
+            </FelaComponent>
             <CommentList
               comments={this.sortComments(comments)}
               commentsPlusRate={commentsPlusRate}

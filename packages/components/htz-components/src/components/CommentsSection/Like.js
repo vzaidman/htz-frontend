@@ -98,9 +98,9 @@ export function Like({
           disabled={isDisabled}
         >
           {isDisLike ? (
-            <IconDislike size={4} color={computedIconColor} />
+            <IconDislike size={3.5} color={computedIconColor} />
           ) : (
-            <IconLike size={4} color={computedIconColor} />
+            <IconLike size={3.5} color={computedIconColor} />
           )}
 
           <FelaComponent style={counterStyle} render="span">

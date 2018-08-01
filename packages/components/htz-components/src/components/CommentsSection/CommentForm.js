@@ -58,7 +58,6 @@ const toggleButtonStyle = ({ theme, }) => ({
   width: '16rem',
   color: theme.color('primary'),
   marginTop: '1rem',
-  fontWeight: 'bold',
   ':focus': {
     outline: 'none',
   },
@@ -88,7 +87,7 @@ const AddCommentFooterStyle = () => ({
 const StyledAddCommentFooter = createComponent(AddCommentFooterStyle);
 
 const sendCommentButtonsContStyle = ({ theme, }) => ({
-  marginTop: '2rem',
+  marginTop: '1rem',
   marginInlineStart: 'auto',
 });
 
@@ -312,10 +311,9 @@ class CommentForm extends React.Component {
                                 {this.isReplyForm ? (
                                   <Button
                                     variant="negative"
-                                    boxModel={{ hp: 5, vp: 1, }}
+                                    boxModel={{ hp: 5, vp: 0.5, }}
                                     miscStyles={{
                                       marginInlineEnd: '2rem',
-                                      backgroundColor: 'transparent',
                                     }}
                                     onClick={closeReplyForm}
                                   >
@@ -323,10 +321,8 @@ class CommentForm extends React.Component {
                                   </Button>
                                 ) : null}
                                 <Button
-                                  miscStyles={{
-                                    backgroundColor: 'transparent',
-                                  }}
-                                  boxModel={{ hp: 5, vp: 1, }}
+                                  miscStyles={{}}
+                                  boxModel={{ hp: 5, vp: 0.5, }}
                                   onClick={evt => {
                                     biAction({
                                       actionCode: biActionMapper.get(
