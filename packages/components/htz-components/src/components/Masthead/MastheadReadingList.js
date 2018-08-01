@@ -10,8 +10,8 @@ const headerReadingButtonStyle = theme => ({
   border: 'none',
   paddingTop: '1rem',
   paddingBottom: '1rem',
-  paddingInlineStart: '1rem',
-  paddingInlineEnd: '1rem',
+  paddingInlineStart: '2rem',
+  paddingInlineEnd: '2rem',
   ':hover': {
     backgroundColor: theme.color('primary'),
     color: theme.color('neutral', '-10'),

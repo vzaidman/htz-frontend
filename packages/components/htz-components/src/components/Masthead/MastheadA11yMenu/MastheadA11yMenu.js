@@ -23,7 +23,10 @@ const a11yButtonStyle = ({ theme, isOpen, }) => ({
   border: 'none',
   color: theme.color('a11yMenu', 'text'),
   display: 'flex',
-  padding: '1rem',
+  paddingTop: '1rem',
+  paddingBottom: '1rem',
+  paddingInlineStart: '2rem',
+  paddingInlineEnd: '2rem',
   ...(isOpen && {
     backgroundColor: theme.color('a11yMenu', 'bgOpen'),
     color: theme.color('a11yMenu', 'textOpenOrHover'),
