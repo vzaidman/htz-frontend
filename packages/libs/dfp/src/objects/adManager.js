@@ -128,8 +128,10 @@ export default class AdManager {
           window.addEventListener('load', onWindowLoaded);
           break;
         case 'interactive':
-          onDomLoaded();
-          window.addEventListener('load', onWindowLoaded);
+          window.addEventListener('load', () => {
+            onDomLoaded();
+            onWindowLoaded();
+          });
           break;
         default:
           // 'complete' - no need for event listeners.
