@@ -125,7 +125,8 @@ const MarkedAdSlot = ({
   id,
   ...adSlotProps
 }) => {
-  if (id.includes('inread')) {
+  // TODO: remove -NA this when dfp is ready
+  if (id.includes('inread-NA')) {
     return (
       <React.Fragment>
         <FelaComponent
