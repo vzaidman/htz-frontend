@@ -5,9 +5,10 @@ import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 import { Query, } from '../../ApolloBoundary/ApolloBoundary';
 import ActionButtons from '../../ActionButtons/ActionButtons';
-import PlusClose from '../../Animations/PlusClose';
+import A11yDialog from '../../A11yDialog/A11yDialog';
 import Button from '../../Button/Button';
 import MobileAdditionalShare from './MobileAdditionalShare';
+import PlusClose from '../../Animations/PlusClose';
 
 const actionBarData = gql`
   query GetActionBarData {
@@ -41,8 +42,8 @@ export default class MobileBarActionButtons extends React.Component {
       <FelaComponent
         style={{
           display: 'flex',
-          // justifyContent: shareIsOpen ? 'flex-end' : 'space-between',
-          justifyContent: shareIsOpen ? 'flex-end' : 'space-around',
+          justifyContent: shareIsOpen ? 'flex-end' : 'space-between',
+          // justifyContent: shareIsOpen ? 'flex-end' : 'space-around',
           flexGrow: '1',
         }}
         render={({ theme, className, }) => (
@@ -96,8 +97,8 @@ export default class MobileBarActionButtons extends React.Component {
                     <Button
                       isFlat
                       miscStyles={{
-                        paddingRight: '3rem',
-                        paddingLeft: '3rem',
+                        paddingRight: '4rem',
+                        paddingLeft: '4rem',
                         ':focus': {
                           backgroundColor: theme.color('secondary'),
                         },
@@ -112,26 +113,37 @@ export default class MobileBarActionButtons extends React.Component {
                       }}
                     >
                       <PlusClose
-                        size={4}
+                        size={3}
                         color={shareIsOpen ? 'white' : 'primary'}
                         isOpen={shareIsOpen}
                       />
                     </Button>
-                    {/* {shareIsOpen && shouldDisplay && ( */}
-                    {shareIsOpen && (
-                      <FelaComponent
-                        style={{
-                          height: '48rem',
-                          position: 'absolute',
-                          top: '0',
-                          transform: 'translateY(-100%)',
-                          width: '100%',
-                          backgroundColor: theme.color('secondary'),
-                        }}
-                      >
-                        <MobileAdditionalShare elementUrl={articleUrl} />
-                      </FelaComponent>
-                    )}
+                    <A11yDialog
+                      appendTo="modalsRoot"
+                      elementToHide="pageRoot"
+                      isVisible={shareIsOpen}
+                      isModal
+                      closeOnOutsideClick
+                      containerMiscStyles={{
+                        height: '48rem',
+                        width: '100%',
+                        position: 'fixed',
+                        overflowY: 'auto',
+                        top: 'auto',
+                        bottom: '8rem',
+                        left: '0',
+                        right: '0',
+                        outline: 'none',
+                        transform: 'none',
+                        backgroundColor: theme.color('secondary'),
+                      }}
+                      render={({ handleClose, isVisible, isModal, }) => {
+                        !isVisible && shareIsOpen && this.toggleShareState();
+                        return (
+                          <MobileAdditionalShare elementUrl={articleUrl} />
+                        );
+                      }}
+                    />
                   </Fragment>
                 );
               }}
