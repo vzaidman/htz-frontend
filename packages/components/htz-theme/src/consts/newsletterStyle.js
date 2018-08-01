@@ -1,7 +1,7 @@
 const newsletterStyle = Object.freeze({
   highlight: Object.freeze({
     buttonVariant: 'neutral',
-    inputVariant: 'primary',
+    inputVariant: 'primaryMediumInverse',
   }),
   primary: Object.freeze({
     buttonVariant: 'primary',

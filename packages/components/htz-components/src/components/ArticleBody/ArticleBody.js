@@ -118,6 +118,14 @@ const buildComponent = (context, index, isLastItem) => {
       );
     case 'com.polobase.DfpBannerElement':
       return <Component {...context} {...context.properties} />;
+    case 'com.tm.newsLetterQuickRegistrationRespAuto':
+      return (
+        <Component
+          key={index}
+          {...context}
+          miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }}
+        />
+      );
     default:
       return (
         <FelaTheme

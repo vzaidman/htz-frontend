@@ -8457,7 +8457,6 @@ exports[`<Newsletter /> NewsletterConfirmed DOM element should correctly render 
       href="https://www.haaretz.co.il/personal-area/newsletter"
       id={null}
       onClick={null}
-      target={null}
     >
       <span
         className="htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt"

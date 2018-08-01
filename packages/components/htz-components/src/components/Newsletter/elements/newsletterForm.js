@@ -43,7 +43,7 @@ function setUpperInputVariant(prop, variant, getColor, isError) {
 }
 
 const RowStyle = ({ theme, }) => ({
-  paddingTop: '2rem',
+  paddingTop: '1rem',
   extend: [
     theme.mq(
       { from: 's', },
