@@ -169,7 +169,7 @@ class NavigationMenu extends React.Component {
             items.map(item => <Item key={`item ${item.name}`} {...item} />);
 
           // TODO: remove this when optOut item is deprecated
-          if (combinedItems !== undefined && combinedItems.length > 2) {
+          if (combinedItems.length > 2) {
             combinedItems.splice(combinedItems.length - 1, 0, optOut);
           }
 
