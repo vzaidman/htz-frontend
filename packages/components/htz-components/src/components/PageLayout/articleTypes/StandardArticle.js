@@ -29,12 +29,12 @@ const margineliaStyle = ({
       { from: 'l', },
       {
         position: 'absolute',
-        start: `${layoutStyle.startColumnPadding}rem`,
       }
     ),
     theme.mq(
       { from: 'l', until: 'xl', },
       {
+        start: `${layoutStyle.startColumnPadding}rem`,
         maxWidth: `${layoutStyle.startColumnWidthL -
           layoutStyle.startColumnPadding}rem`,
       }
@@ -42,8 +42,9 @@ const margineliaStyle = ({
     theme.mq(
       { from: 'xl', },
       {
+        start: `${layoutStyle.startColumnPaddingXL}rem`,
         maxWidth: `${layoutStyle.startColumnWidthXL -
-          layoutStyle.startColumnPadding}rem`,
+          layoutStyle.startColumnPaddingXL}rem`,
       }
     ),
   ],
@@ -58,6 +59,10 @@ const SectionTitleA = ({ title, isInMargin, id, }) => (
       position: 'relative',
       paddingInlineStart: `${layoutStyle.startColumnPadding}rem`,
       extend: [
+        theme.mq(
+          { from: 'xl', },
+          { paddingInlineStart: `${layoutStyle.startColumnPaddingXL}rem`, }
+        ),
         theme.type(3, { fromBp: 'l', }),
         theme.type(1, { untilBp: 'l', }),
         borderTop('2px', 2, 'solid', theme.color('primary')),
@@ -73,13 +78,13 @@ const SectionTitleA = ({ title, isInMargin, id, }) => (
                   { from: 'l', },
                   {
                     position: 'absolute',
-                    insetInlineStart: `${layoutStyle.startColumnPadding}rem`,
                     overflow: 'hidden',
                   }
                 ),
                 theme.mq(
                   { from: 'l', until: 'xl', },
                   {
+                    insetInlineStart: `${layoutStyle.startColumnPadding}rem`,
                     maxWidth: `${layoutStyle.startColumnWidthL -
                       layoutStyle.startColumnPadding}rem`,
                   }
@@ -87,8 +92,9 @@ const SectionTitleA = ({ title, isInMargin, id, }) => (
                 theme.mq(
                   { from: 'xl', },
                   {
+                    insetInlineStart: `${layoutStyle.startColumnPaddingXL}rem`,
                     maxWidth: `${layoutStyle.startColumnWidthXL -
-                      layoutStyle.startColumnPadding}rem`,
+                      layoutStyle.startColumnPaddingXL}rem`,
                   }
                 ),
               ],

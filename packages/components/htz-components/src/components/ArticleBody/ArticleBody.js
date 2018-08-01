@@ -45,24 +45,34 @@ const Figure = ({ lastItem, children, }) => (
 const Aside = ({ children, }) => (
   <FelaComponent
     style={theme => ({
-      ...theme.mq(
-        { from: 'l', },
-        {
-          width: '26rem',
-          position: 'absolute',
-          textAlign: 'start',
-          start: theme.layoutStyle.startColumnPadding,
-        }
-      ),
       extend: [
-        ...[
-          parseComponentProp(
-            'marginBottom',
-            theme.articleStyle.body.marginBottom,
-            theme.mq,
-            mediaQueryCallback
-          ),
-        ],
+        theme.mq(
+          { from: 'l', },
+          {
+            width: '26rem',
+            position: 'absolute',
+            textAlign: 'start',
+            start: theme.layoutStyle.startColumnPadding,
+          }
+        ),
+        theme.mq(
+          { from: 'l', until: 'xl', },
+          {
+            start: theme.layoutStyle.startColumnPadding,
+          }
+        ),
+        theme.mq(
+          { from: 'xl', },
+          {
+            start: theme.layoutStyle.startColumnPaddingXL,
+          }
+        ),
+        parseComponentProp(
+          'marginBottom',
+          theme.articleStyle.body.marginBottom,
+          theme.mq,
+          mediaQueryCallback
+        ),
       ],
     })}
     render="aside"
