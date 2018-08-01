@@ -14,6 +14,7 @@ describe('<CommentSent>', () => {
     it('renders correctly with minimal required props', () => {
       const { component, styles, } = felaSnapshotter(
         <CommentSent
+          isReplyForm={false}
           closeDisplayThankYou={mockFunc}
           displayThankYou={false}
           signUpNotification={mockFunc}
@@ -25,6 +26,7 @@ describe('<CommentSent>', () => {
     it('renders correctly with minimal required props, display Thank you true', () => {
       const { component, styles, } = felaSnapshotter(
         <CommentSent
+          isReplyForm={false}
           closeDisplayThankYou={mockFunc}
           displayThankYou
           signUpNotification={mockFunc}
@@ -37,6 +39,7 @@ describe('<CommentSent>', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
         <CommentSent
+          isReplyForm={false}
           closeDisplayThankYou={mockCallback}
           displayThankYou
           signUpNotification={mockFunc}
@@ -50,6 +53,7 @@ describe('<CommentSent>', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
         <CommentSent
+          isReplyForm={false}
           closeDisplayThankYou={() => console.log('close display thank you')}
           displayThankYou={false}
           signUpNotification={mockCallback}
@@ -67,6 +71,7 @@ describe('<CommentSent>', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
         <CommentSent
+          isReplyForm={false}
           closeDisplayThankYou={() => console.log('close display thank you')}
           displayThankYou={false}
           signUpNotification={mockCallback}
@@ -86,6 +91,7 @@ describe('<CommentSent>', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
         <CommentSent
+          isReplyForm={false}
           closeDisplayThankYou={() => console.log('close display thank you')}
           displayThankYou={false}
           signUpNotification={mockCallback}

@@ -8,20 +8,22 @@ Math.random = jest.fn(() => 123456789);
 describe('<RadioButton>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
-      const { component, styles, } = felaSnapshotter(<StyledRadioButton />);
+      const { component, styles, } = felaSnapshotter(
+        <StyledRadioButton label="label" />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with an attrs prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <StyledRadioButton attrs={{ testAttr: 'customAttr', }} />
+        <StyledRadioButton label="label" attrs={{ testAttr: 'customAttr', }} />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with isDisabled prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <StyledRadioButton isDisabled />
+        <StyledRadioButton label="label" isDisabled />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -42,14 +44,14 @@ describe('<RadioButton>', () => {
     });
     it('renders correctly with name prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <StyledRadioButton name="customName" />
+        <StyledRadioButton label="label" name="customName" />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with a value prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <StyledRadioButton value="customValue" />
+        <StyledRadioButton label="label" value="customValue" />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();

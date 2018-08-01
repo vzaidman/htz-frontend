@@ -17,6 +17,7 @@ describe('<Like>', () => {
     it('renders correctly with custom iconsColor', () => {
       const { component, styles, } = felaSnapshotter(
         <Like
+          isDisabled={false}
           initVote={mockFunc}
           updateUserLike={mockFunc}
           commentId="12345"
@@ -30,6 +31,7 @@ describe('<Like>', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
         <Like
+          isDisabled={false}
           initVote={(commentId, rate) => mockCallback(commentId, rate)}
           updateUserLike={mockFunc}
           commentId="12345"
@@ -45,6 +47,7 @@ describe('<Like>', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
         <Like
+          isDisabled={false}
           updateUserLike={mockFunc}
           initVote={(commentId, rateSign) => mockCallback(commentId, rateSign)}
           commentId="12345"
@@ -60,6 +63,7 @@ describe('<Like>', () => {
       const mockCallback = jest.fn();
       const output = felaMount(
         <Like
+          isDisabled={false}
           updateUserLike={mockFunc}
           initVote={(commentId, rateSign) => mockCallback(commentId, rateSign)}
           commentId="12345"

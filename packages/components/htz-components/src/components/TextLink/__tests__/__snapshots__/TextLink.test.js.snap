@@ -16,9 +16,8 @@ exports[`<TextLink> DOM element renders correctly with minimal required props 1`
 <div>
   <a
     className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
-    href={undefined}
+    href="test.com"
     onClick={null}
-    target={null}
   >
     I am a htzLink
   </a>
@@ -31,9 +30,8 @@ exports[`<TextLink> DOM element renders correctly with miscStyles , 1`] = `
 <div>
   <a
     className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
-    href={undefined}
+    href="test.com"
     onClick={null}
-    target={null}
   >
     I am a htzLink
   </a>

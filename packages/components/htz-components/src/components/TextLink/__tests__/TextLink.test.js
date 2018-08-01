@@ -6,14 +6,16 @@ describe('<TextLink>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
       const { component, styles, } = felaSnapshotter(
-        <TextLink>I am a htzLink</TextLink>
+        <TextLink href="test.com">I am a htzLink</TextLink>
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with miscStyles ,', () => {
       const { component, styles, } = felaSnapshotter(
-        <TextLink miscStyles={{ color: 'blue', }}>I am a htzLink</TextLink>
+        <TextLink href="test.com" miscStyles={{ color: 'blue', }}>
+          I am a htzLink
+        </TextLink>
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();

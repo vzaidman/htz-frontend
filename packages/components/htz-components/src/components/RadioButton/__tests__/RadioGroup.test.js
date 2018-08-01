@@ -11,7 +11,10 @@ describe('<RadioGroup>', () => {
       const { component, styles, } = felaSnapshotter(
         <RadioGroup
           name="testName"
-          radioButtons={[ { value: '1', }, { value: '2', }, ]}
+          radioButtons={[
+            { value: '1', label: 'label', },
+            { value: '2', label: 'label', },
+          ]}
         />
       );
       expect(component).toMatchSnapshot();
@@ -22,7 +25,10 @@ describe('<RadioGroup>', () => {
         <RadioGroup
           attrs={{ testAttr: 'test', }}
           name="testName"
-          radioButtons={[ { value: '1', }, { value: '2', }, ]}
+          radioButtons={[
+            { value: '1', label: 'label', },
+            { value: '2', label: 'label', },
+          ]}
         />
       );
       expect(component).toMatchSnapshot();
@@ -33,7 +39,10 @@ describe('<RadioGroup>', () => {
         <RadioGroup
           defaultValue="2"
           name="testName"
-          radioButtons={[ { value: '1', }, { value: '2', }, ]}
+          radioButtons={[
+            { value: '1', label: 'label', },
+            { value: '2', label: 'label', },
+          ]}
         />
       );
       expect(component).toMatchSnapshot();
@@ -93,7 +102,10 @@ describe('<RadioGroup>', () => {
         <RadioGroup
           value="2"
           name="testName"
-          radioButtons={[ { value: '1', }, { value: '2', }, ]}
+          radioButtons={[
+            { value: '1', label: 'label', },
+            { value: '2', label: 'label', },
+          ]}
         />
       );
       expect(component).toMatchSnapshot();
@@ -103,7 +115,10 @@ describe('<RadioGroup>', () => {
       const output = felaMount(
         <RadioGroup
           name="testName"
-          radioButtons={[ { value: '1', }, { value: '2', }, ]}
+          radioButtons={[
+            { value: '1', label: 'label', },
+            { value: '2', label: 'label', },
+          ]}
         />
       );
 
@@ -118,7 +133,10 @@ describe('<RadioGroup>', () => {
         <RadioGroup
           name="testName"
           onChange={onChange}
-          radioButtons={[ { value: '1', }, { value: '2', }, ]}
+          radioButtons={[
+            { value: '1', label: 'label', },
+            { value: '2', label: 'label', },
+          ]}
         />
       );
 

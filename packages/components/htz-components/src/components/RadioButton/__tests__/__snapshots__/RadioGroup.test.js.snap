@@ -289,7 +289,9 @@ exports[`<RadioGroup> DOM element renders correctly with a value prop 1`] = `
           </div>
           <div
             className="htz-ak"
-          />
+          >
+            label
+          </div>
         </label>
       </li>
       <li>
@@ -320,7 +322,9 @@ exports[`<RadioGroup> DOM element renders correctly with a value prop 1`] = `
           </div>
           <div
             className="htz-ak"
-          />
+          >
+            label
+          </div>
         </label>
       </li>
     </ul>
@@ -365,7 +369,9 @@ exports[`<RadioGroup> DOM element renders correctly with custom attr prop 1`] = 
           </div>
           <div
             className="htz-ak"
-          />
+          >
+            label
+          </div>
         </label>
       </li>
       <li>
@@ -396,7 +402,9 @@ exports[`<RadioGroup> DOM element renders correctly with custom attr prop 1`] = 
           </div>
           <div
             className="htz-ak"
-          />
+          >
+            label
+          </div>
         </label>
       </li>
     </ul>
@@ -440,7 +448,9 @@ exports[`<RadioGroup> DOM element renders correctly with defaultValue prop 1`] =
           </div>
           <div
             className="htz-ak"
-          />
+          >
+            label
+          </div>
         </label>
       </li>
       <li>
@@ -471,7 +481,9 @@ exports[`<RadioGroup> DOM element renders correctly with defaultValue prop 1`] =
           </div>
           <div
             className="htz-ak"
-          />
+          >
+            label
+          </div>
         </label>
       </li>
     </ul>
@@ -515,7 +527,9 @@ exports[`<RadioGroup> DOM element renders correctly with minimal required props 
           </div>
           <div
             className="htz-ak"
-          />
+          >
+            label
+          </div>
         </label>
       </li>
       <li>
@@ -546,7 +560,9 @@ exports[`<RadioGroup> DOM element renders correctly with minimal required props 
           </div>
           <div
             className="htz-ak"
-          />
+          >
+            label
+          </div>
         </label>
       </li>
     </ul>

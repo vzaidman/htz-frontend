@@ -4,7 +4,7 @@ exports[`<Like> DOM element renders correctly with custom iconsColor 1`] = `
 <div>
   <button
     className="htz-a htz-b htz-c htz-d htz-e"
-    disabled={undefined}
+    disabled={false}
     onClick={[Function]}
     type="button"
   >
