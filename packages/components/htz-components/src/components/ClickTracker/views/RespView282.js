@@ -1,6 +1,7 @@
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
+import { borderBottom, } from '@haaretz/htz-css-tools';
 import Image from '../../Image/Image';
 import HtzLink from '../../HtzLink/HtzLink';
 
@@ -40,56 +41,68 @@ export default function RespView282({
       targer={linkTarget}
       content={
         <FelaComponent
-          // rule={styleRule}
-          style={{
-            backgroundColor: '#ebebeb',
+          style={theme => ({
+            backgroundColor: theme.color('neutral', '-6'),
             width: '100%',
-            height: '152px',
+            height: '22rem',
             display: 'flex',
-          }}
-          render="div"
-        >
-          <Image
-            data={{
-              ...clicktrackerimage,
-              isAnimatedGif: clicktrackerimage.isAnimated,
-            }}
-            hasWrapper={false}
-            imgOptions={{
-              sizes: '(min-width:1420px) 610px,(min-width:1320px) 500px, 280px',
-              transforms: [
-                {
-                  width: '252',
-                  height: '152',
-                  aspect: 'landscape',
-                  quality: 'auto:best',
-                },
-              ],
-            }}
-            miscStyles={{ backgroundColor: 'transparent', }}
-          />
-          <FelaComponent
-            style={{
-              width: '408px',
-              height: '152px',
-              paddingTop: '21px',
-              paddingRight: '12px',
-              paddingLeft: '12px',
-              paddingBottom: '22px',
-              fontFamily: 'Arial',
-              fontSize: '20px',
-              fontWeight: 'bold',
-              fontStyle: 'normal',
-              fontStretch: 'normal',
-              lineHeight: 1.4,
-              letterSpacing: 'normal',
-              textAlign: 'right',
-              color: '#2d2d2d',
-            }}
-          >
-            {contentName}
-          </FelaComponent>
-        </FelaComponent>
+            extend: [
+              borderBottom('2px', 0.0001, 'dashed', theme.color('primary')),
+            ],
+          })}
+          render={({ className, theme, }) => (
+            <div className={className}>
+              <Image
+                data={{
+                  ...clicktrackerimage,
+                  isAnimatedGif: clicktrackerimage.isAnimated,
+                }}
+                hasWrapper={false}
+                imgOptions={{
+                  sizes:
+                    '(min-width:1420px) 610px,(min-width:1320px) 500px, 280px',
+                  transforms: [
+                    {
+                      width: '252',
+                      height: '152',
+                      aspect: 'landscape',
+                      quality: 'auto:best',
+                    },
+                  ],
+                }}
+                miscStyles={{ backgroundColor: 'transparent', }}
+              />
+              <FelaComponent
+                style={{
+                  height: '100%',
+                  paddingTop: '3rem',
+                  paddingRight: '2rem',
+                  paddingLeft: '2rem',
+                  paddingBottom: '3rem',
+                  fontFamily: 'Arial',
+                  fontWeight: 'bold',
+                  textAlign: 'start',
+                  extend: [ theme.type(1), ],
+                }}
+              >
+                {contentName}
+              </FelaComponent>
+              <FelaComponent
+                style={{
+                  color: theme.color('primary'),
+                  alignSelf: 'flex-end',
+                  marginInlineStart: 'auto',
+                  marginInlineEnd: '1rem',
+                  marginBottom: '1rem',
+                  fontWeight: 'bold',
+                  extend: [ theme.type(-1), ],
+                }}
+              >
+                {theme.clickTrackerI18n.promotedContentLabel}
+              </FelaComponent>
+            </div>
+          )}
+        />
       }
     />
   );

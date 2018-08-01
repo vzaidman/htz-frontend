@@ -187,11 +187,30 @@ const StandardLayoutRow = ({
 );
 
 // eslint-disable-next-line react/prop-types
-const WideArticleLayoutRow = ({ children, key, }) => (
+const WideArticleLayoutRow = ({ children, key, hideDivider, }) => (
   <FelaComponent
     style={theme => ({
       marginTop: '3rem',
-      extend: [ borderTop('2px', 2, 'solid', theme.color('primary')), ],
+      extend: [
+        borderTop(
+          '2px',
+          2,
+          'solid',
+          hideDivider ? 'transparent' : theme.color('primary')
+        ),
+        theme.mq(
+          { from: 'l', until: 'xl', },
+          {
+            paddingInlineStart: `${theme.layoutStyle.startColumnPadding}rem`,
+          }
+        ),
+        theme.mq(
+          { from: 'xl', },
+          {
+            paddingInlineStart: `${theme.layoutStyle.startColumnPaddingXL}rem`,
+          }
+        ),
+      ],
     })}
     render={({ className, }) => (
       <Section className={className} key={key}>
@@ -333,7 +352,13 @@ function StandardArticle({
                     'com.polobase.ClickTrackerBannersWrapper'
                 ) {
                   return (
-                    <WideArticleLayoutRow key={element.contentId}>
+                    <WideArticleLayoutRow
+                      key={element.contentId}
+                      hideDivider={
+                        element.inputTemplate ===
+                        'com.polobase.ClickTrackerBannersWrapper'
+                      }
+                    >
                       <Element
                         articleId={articleId}
                         {...elementWithoutProperties}

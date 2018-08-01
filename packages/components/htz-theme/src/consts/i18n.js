@@ -27,6 +27,9 @@ export const tagsElementI18n = Object.freeze({
 export const breadcrumbsI18n = Object.freeze({
   ariaLabel: 'מיקומך באתר',
 });
+export const clickTrackerI18n = Object.freeze({
+  promotedContentLabel: 'תוכן מקודם',
+});
 
 export const navigationMenuI18n = Object.freeze({
   buttonText: 'ניווט',

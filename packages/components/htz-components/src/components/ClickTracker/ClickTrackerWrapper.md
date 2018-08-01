@@ -8,50 +8,52 @@ as the second parameter.
 
 ```jsx
 const ClickTrackerElement = require('./ClickTrackerElement');
-<ClickTrackerWrapper
-  viewModes={{
-    viewModeHtz: 'resp282',
-  }}
-  banners={[
-    {
-      priority: 2,
-      link:
-        'http://rmkz.themarker.com/gampad/clk?id=4604476275&iu=/9401/Haaretz.co.il.ClickTracker/Haaretz.co.il.ClickTracker.AdBlocker ',
-      linkTarget: '_blank',
-      departments: ['all', 'haaretz', 'haaretz/', 'sport'],
-      replaceDomainForAdBlocker: true,
-      clicktrackerimage: {
-        accessibility: 'מנטוס',
-        credit: 'פרסומת',
-        aspects: {
-          full: {
-            width: 970,
-            height: 90,
+<div dir="rtl">
+  <ClickTrackerWrapper
+    viewModes={{
+      viewModeHtz: 'resp282',
+    }}
+    banners={[
+      {
+        priority: 2,
+        link:
+          'http://rmkz.themarker.com/gampad/clk?id=4604476275&iu=/9401/Haaretz.co.il.ClickTracker/Haaretz.co.il.ClickTracker.AdBlocker ',
+        linkTarget: '_blank',
+        departments: ['all', 'haaretz', 'haaretz/', 'sport'],
+        replaceDomainForAdBlocker: true,
+        clicktrackerimage: {
+          accessibility: 'מנטוס',
+          credit: 'פרסומת',
+          aspects: {
+            full: {
+              width: 970,
+              height: 90,
+            },
           },
+          isAnimated: false,
+          imgArray: [
+            {
+              imgName: 'image/881450998.gif',
+              version: '1520774010',
+            },
+          ],
+          imageType: 'image',
+          inputTemplate: 'com.tm.Image',
+          contentId: '1.5890588',
+          contentName: 'מנטוס',
         },
-        isAnimated: false,
-        imgArray: [
-          {
-            imgName: 'image/881450998.gif',
-            version: '1520774010',
-          },
-        ],
-        imageType: 'image',
-        inputTemplate: 'com.tm.Image',
-        contentId: '1.5890588',
+        advertiserCamp: 'פרסומת',
+        percentage: 100,
+        minRange: 0,
+        maxRange: 100,
+        chance: 1,
+        inputTemplate: 'com.polobase.ClickTrackerBannerElement',
+        contentId: '7.3566',
         contentName: 'מנטוס',
       },
-      advertiserCamp: 'פרסומת',
-      percentage: 100,
-      minRange: 0,
-      maxRange: 100,
-      chance: 1,
-      inputTemplate: 'com.polobase.ClickTrackerBannerElement',
-      contentId: '7.3566',
-      contentName: 'מנטוס',
-    },
-  ]}
-/>;
+    ]}
+  />
+</div>;
 ```
 
 #### Method Two: Overriding using a render prop on the ClickTrackerWrapper Element in order to generate a custom view
