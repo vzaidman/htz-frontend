@@ -60,8 +60,8 @@ export default class MobileNavigationWrapper extends React.Component {
                   theme.color('mastheadBorder', 'borderColor')
                 ),
                 display: 'flex',
-                paddingBottom: '1rem',
-                paddingTop: '1rem',
+                paddingBottom: '1.5rem',
+                paddingTop: '1.5rem',
                 position: 'fixed',
                 start: '50%',
                 top: '0',

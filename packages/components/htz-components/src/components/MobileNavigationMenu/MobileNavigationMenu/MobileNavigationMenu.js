@@ -15,7 +15,6 @@ const menuButtonStyle = ({ theme, menuIsOpen, }) => ({
   height: '100%',
   display: 'block',
   color: theme.color('neutral', '-3'),
-  border: 'none',
   paddingLeft: '2rem',
   paddingRight: '2rem',
   paddingTop: '2rem',
