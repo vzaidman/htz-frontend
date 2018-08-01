@@ -5,13 +5,12 @@ Object {
   "component": <div>
     <div>
       <p
-        className=""
+        className="htz-a htz-b htz-c htz-d htz-e"
       >
         
  
         <strong
-          className="htz-a"
-          miscStyles={null}
+          className="htz-f"
         >
           
    איך הגעת לתפקיד הנוכחי? 
@@ -19,11 +18,11 @@ Object {
         </strong>
       </p>
       <p
-        className=""
+        className="htz-a htz-b htz-c htz-d htz-e"
       >
         הכל מתחיל בעצם מאיך שהגעתי לישראל מלכתחילה. את בעלי הישראלי פגשתי בצרפת כששנינו למדנו שם, וב-2012 עברתי איתו לארץ בעקבות האהבה. לחברה הגעתי דרך אחד העובדים הוותיקים בחברה שהוא חבר טוב של בעלי (בינתיים ״גנבתי״ אותו והוא חבר טוב גם שלי), והוא הכיר אותי לחברה 
         <mark
-          className="htz-b"
+          className="htz-g"
         >
           לפני קצת יותר משלוש שנים.
         </mark>
@@ -31,6 +30,6 @@ Object {
       </p>
     </div>
   </div>,
-  "styles": ".htz-a{font-weight:700}.htz-b{background-color:#ACD2ED}",
+  "styles": ".htz-a{margin-bottom:3rem}.htz-f{font-weight:700}.htz-g{background-color:#ACD2ED}@media (max-width: 79.9375em){.htz-b{font-size:3rem}.htz-c{line-height:5rem}}@media (min-width: 80em){.htz-d{font-size:3rem}.htz-e{line-height:5rem}}",
 }
 `;

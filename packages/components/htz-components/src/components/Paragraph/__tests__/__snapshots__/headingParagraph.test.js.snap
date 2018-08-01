@@ -3,9 +3,7 @@
 exports[`Render paragraph as heading correctly  1`] = `
 Object {
   "component": <div>
-    <h2
-      miscStyles={null}
-    >
+    <h2>
       צבא אסד מעמיק את המתקפה לכיבוש כפרי המורדים סמוך לגבול עם ישראל.
     </h2>
   </div>,

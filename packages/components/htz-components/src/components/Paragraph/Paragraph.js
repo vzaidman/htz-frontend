@@ -2,35 +2,20 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 
-import { stylesPropType, } from '../../propTypes/stylesPropType';
 import TextLink from '../TextLink/TextLink';
 import H from '../AutoLevels/H';
 import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
 import Zen from '../Zen/Zen';
 
-const paragraphStyle = theme => {
-  const { type, color, ...paragraphStyles } =
-    theme.articleStyle.paragraphStyles || {};
-
-  return {
-    extend: [
-      ...(theme.articleStyle.paragraphStyles
-        ? [
-          {
-            ...(paragraphStyles || []),
-            ...(type ? theme.type(...type) : []),
-            ...(color ? { color: theme.color(...color), } : []),
-          },
-        ]
-        : []),
-    ],
-  };
-};
+const paragraphStyle = theme => ({
+  marginBottom: '3rem',
+  extend: [ theme.type(1, { lines: 5, }), ],
+});
 
 // eslint-disable-next-line react/prop-types
-const P = ({ children, renderFirstImpression, miscStyles, ...props }) => (
+const P = ({ children, renderFirstImpression, ...props }) => (
   <FelaComponent
-    style={{ ...paragraphStyle, ...miscStyles, }}
+    style={paragraphStyle}
     render={({ className, }) => (
       <Fragment>
         <p className={className} {...props}>
@@ -127,82 +112,71 @@ const getTag = tag => {
  *
  * @param {Object} props
  */
-export default class Paragraph extends React.Component {
-  state = { margin: true, };
+export default function Paragraph({ renderFirstImpression, ...props }) {
+  /* Recursive functions */
+  const Content = ({ content, }) => {
+    const attributesObject = extractAttributes(content.attributes);
+    return (
+      <WrapperTag
+        tag={content.tag}
+        attributes={attributesObject}
+        content={content.content}
+      >
+        {content.content.map((tag, index) => (
+          <Content
+            key={index} // eslint-disable-line react/no-array-index-key
+            content={tag}
+          />
+        ))}
+      </WrapperTag>
+    );
+  };
 
-  componentWillMount() {
-    this.setState({ margin: shouldMargin(this.props), });
-  }
+  const genChildren = tagElements =>
+    tagElements.map(
+      (tag, index) =>
+        (tag.content ? (
+          <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
+        ) : (
+          tag.attributes[0].value
+        ))
+    );
 
-  render() {
-    const { renderFirstImpression, miscStyles, ...props } = this.props;
-
-    /* Recursive functions */
-    const Content = ({ content, }) => {
-      const attributesObject = extractAttributes(content.attributes);
-      return (
-        <WrapperTag
-          tag={content.tag}
-          attributes={attributesObject}
-          content={content.content}
-        >
-          {content.content.map((tag, index) => (
-            <Content
-              key={index} // eslint-disable-line react/no-array-index-key
-              content={tag}
-            />
-          ))}
-        </WrapperTag>
-      );
-    };
-
-    const genChildren = tagElements =>
-      tagElements.map(
-        (tag, index) =>
-          (tag.content ? (
-            <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
-          ) : (
-            tag.attributes[0].value
-          ))
-      );
-
-    const WrapperTag = ({ tag: tagName, content: tagElements, attributes, }) => {
+  const WrapperTag = ({ tag: tagName, content: tagElements, attributes, }) => {
+    /**
+     * Check if the Tag has a class names 'bg-brand--d'.
+     * If so, it means that the Tag is actually `<mark />` (That's how the FCKEditor translates it).
+     */
+    if (attributes.hasClass && attributes.hasClass === 'bg-brand--d') {
+      tagName = 'mark'; // eslint-disable-line no-param-reassign
+    }
+    else if (attributes.id) {
       /**
-       * Check if the Tag has a class names 'bg-brand--d'.
-       * If so, it means that the Tag is actually `<mark />` (That's how the FCKEditor translates it).
+       * In case of an anchor inside the paragraph,
+       * we don't need a new component but just a `<span />` with the anchors ID.
        */
-      if (attributes.hasClass && attributes.hasClass === 'bg-brand--d') {
-        tagName = 'mark'; // eslint-disable-line no-param-reassign
-      }
-      else if (attributes.id) {
-        /**
-         * In case of an anchor inside the paragraph,
-         * we don't need a new component but just a `<span />` with the anchors ID.
-         */
-        tagName = 'span'; // eslint-disable-line no-param-reassign
-      }
-      const Tag = getTag(tagName);
-      if (tagName === 'a') {
-        /**
-         * In case that the paragraph tree continues inside the Link component,
-         * we send it this component (the `<Paragraph />`) recursive function as the content,
-         * so the Link component will continue the building of the paragraph.
-         */
-        attributes.content = genChildren(tagElements); // eslint-disable-line no-param-reassign
-      }
+      tagName = 'span'; // eslint-disable-line no-param-reassign
+    }
+    const Tag = getTag(tagName);
+    if (tagName === 'a') {
+      /**
+       * In case that the paragraph tree continues inside the Link component,
+       * we send it this component (the `<Paragraph />`) recursive function as the content,
+       * so the Link component will continue the building of the paragraph.
+       */
+      attributes.content = genChildren(tagElements); // eslint-disable-line no-param-reassign
+    }
 
-      return Tag ? (
-        <Tag
-          miscStyles={this.state.margin ? miscStyles : null}
-          {...attributes}
-          {...(tagName === 'p' ? { renderFirstImpression, } : {})}
-        >
-          {genChildren(tagElements)}
-        </Tag>
-      ) : null;
-    };
-    return <Content content={props} />;
-  }
+    return Tag ? (
+      <Tag
+        {...attributes}
+        {...(tagName === 'p' ? { renderFirstImpression, } : {})}
+      >
+        {genChildren(tagElements)}
+      </Tag>
+    ) : null;
+  };
+  return <Content content={props} />;
 }
 
 /** Components props */
@@ -219,17 +193,10 @@ Paragraph.propTypes = {
    */
   // eslint-disable-next-line react/forbid-prop-types
   content: PropTypes.array.isRequired, // eslint-disable-line react/no-unused-prop-types
-  /**
-   * A special property holding miscellaneous CSS values that
-   * trump all default values. Processed by
-   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
-   */
-  miscStyles: stylesPropType,
   /** Should the Paragraph render a firstImpression placeholder after every p tag */
   renderFirstImpression: PropTypes.bool,
 };
 
 Paragraph.defaultProps = {
-  miscStyles: null,
   renderFirstImpression: false,
 };
