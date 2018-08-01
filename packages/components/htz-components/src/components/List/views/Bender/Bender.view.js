@@ -15,6 +15,7 @@ import Section from '../../../AutoLevels/Section';
 
 const benderWrapperRules = ({ theme, }) => ({
   width: '100%',
+  backgroundColor: theme.color('white'),
   paddingInlineStart: '2rem',
   paddingInlineEnd: '2rem',
   paddingBottom: '2rem',
