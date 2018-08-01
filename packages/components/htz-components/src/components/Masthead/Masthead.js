@@ -8,7 +8,7 @@ import MastheadLogo from './MastheadLogo';
 import MastheadSearch from './MastheadSearch/MastheadSearch';
 import MastheadUserTools from './MastheadUserTools';
 import Media from '../Media/Media';
-import MobileNavigation from '../MobileNavigationMenu/MobileNavigationWrapper';
+import MobileNavigationWrapper from '../MobileNavigationMenu/MobileNavigationWrapper';
 import LayoutContainer from '../PageLayout/LayoutContainer';
 import NavigationMenu from '../NavigationMenu/NavigationMenu';
 import WrappedScroll from '../Scroll/Scroll';
@@ -75,7 +75,7 @@ class Masthead extends React.Component {
               const isMobile = mobilePortrait || mobileLandscape;
               return isMobile ? (
                 <header>
-                  <MobileNavigation
+                  <MobileNavigationWrapper
                     contentId={contentId}
                     velocity={velocity}
                     y={y}

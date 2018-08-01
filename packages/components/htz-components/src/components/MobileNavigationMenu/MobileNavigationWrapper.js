@@ -37,7 +37,7 @@ export default class MobileNavigationWrapper extends React.Component {
   }
 
   render() {
-    const { contentId, } = this.props.contentId;
+    const { contentId, } = this.props;
     const { shouldDisplay, } = this.state;
 
     return (
