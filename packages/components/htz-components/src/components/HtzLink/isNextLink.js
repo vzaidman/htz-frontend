@@ -15,21 +15,19 @@ const NonReactArticleTypes = [
   '(WRITER-)',
   '(BLOG-)',
   '(CARD-)',
-  '(INTERVIEW-)',
+  '(CAREER-)',
   '(RECIPE-)',
   '(LIVE-)',
   '(INTERACTIVE-)',
 ];
 
 const nonReactSections = [
-  '(article-print-page)',
-  '(tags)',
-  '(writers)',
-  '(misc)',
-  '(labels)',
-  // TODO: are there any more st/something paths
-  '(\\/st\\/inter)',
-  '(\\/st\\/c)',
+  '(\\/article-print-page)',
+  '(\\/tags)',
+  '(\\/writers)',
+  '(\\/misc)',
+  '(\\/labels)',
+  '(\\/st)',
 ];
 
 const isNonReactArticleType = new RegExp(
@@ -43,17 +41,18 @@ const reactPathPattern = [ isReactArticleType, offersPattern, ].join('|');
 
 const isReactType = new RegExp(reactPathPattern);
 const isReactArticleTypeRegex = new RegExp(isReactArticleType);
-const isNonReactSectionRegex = new RegExp(nonReactSections.join('|'));
+const isNonReactSectionRegex = new RegExp(nonReactSections.join('|'), 'i');
 
 // Method for next to replace pathname with article.js for in-app browsing
 export function isReactArticle(href) {
   return isReactArticleTypeRegex.test(href);
 }
 
-/*
+/**
  * This function takes an href and decides whether or not
  * the link should be handled as a Next link or a regular link
  * @param href
+ * @return {boolean}
  */
 export default function isNextLink(href) {
   // `href` is a simple string
@@ -75,9 +74,9 @@ export default function isNextLink(href) {
 /**
  * Internal tester - works only for simple strings
  * @param {string} href the url to test
+ * @return {boolean}
  */
 function isNextLinkSimpleString(href) {
-  const all = breakUrl(href);
   const {
     fullMatch,
     baseUrl,
@@ -89,7 +88,8 @@ function isNextLinkSimpleString(href) {
     path,
     query,
     fragment,
-  } = all;
+  } =
+    breakUrl(href) || {};
   return (
     !isNonReactArticleType.test(path) &&
     isReactType.test(path) &&
