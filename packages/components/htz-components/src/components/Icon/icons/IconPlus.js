@@ -33,7 +33,7 @@ function UnstyledIconPlus({ attrs, ...props }) {
       {' '}
       <path
         fill="currentColor"
-        d="M249 142H143v106h-28V142H9v-28h106V8h28v106h106v28z"
+        d="M228 141h-87v87h-23v-87H28v-24h89V28h24v89h87v24z"
       />
     </svg>
   );
