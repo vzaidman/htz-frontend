@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { breakUrl, } from '@haaretz/app-utils';
 import isNextLink, { isReactArticle, } from './isNextLink';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 
@@ -79,6 +80,15 @@ const LinkWrapper = React.forwardRef(
   }
 );
 
+// If the href is an absolute path, instead we return only the path and not the whole href.
+const ensureRelativity = hrefObj => {
+  const acceptableDomains = [ 'haaretz.co.il', 'themarker.com', ];
+  const { domain, path, } = breakUrl(hrefObj.pathname);
+  return domain && acceptableDomains.includes(domain)
+    ? { ...hrefObj, pathname: path, }
+    : hrefObj;
+};
+
 function HtzLink({
   attrs,
   children,
@@ -104,7 +114,9 @@ function HtzLink({
     let params;
     let page;
     // TODO check this case
-    const computedHref = typeof href === 'string' ? { pathname: href, } : href;
+    const computedHref = ensureRelativity(
+      typeof href === 'string' ? { pathname: href, } : href
+    );
     // Enables client-side navigation for react-articles
     const computedPathname = isReactArticle(computedHref.pathname)
       ? '/article'
