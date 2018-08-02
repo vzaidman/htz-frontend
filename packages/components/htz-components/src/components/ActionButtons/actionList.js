@@ -1,14 +1,35 @@
+// @flow
 /* eslint-disable react/prop-types */
 /* global window, fetch, Headers  */
 import React from 'react';
+import type {
+  StatelessFunctionalComponent,
+  Node,
+} from 'react';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
+import type {
+  ActionButtonProps,
+  ButtonProps,
+  CommentButtonProps,
+  FacebookButtonProps, FacebookLogoProps, FacebookLogoState,
+  GooglePlusButtonProps,
+  MailAlertButtonProps,
+  MailButtonProps,
+  MessengerButtonProps,
+  PrintButtonProps,
+  TwitterButtonProps,
+  WhatsappButtonProps,
+  ZenButtonProps,
+} from './types';
+
 import {
   Query,
   ApolloConsumer,
   Mutation,
 } from '../ApolloBoundary/ApolloBoundary';
-import Button from '../Button/Button';
+import HtzLink from '../HtzLink/HtzLink';
 import EventTracker from '../../utils/EventTracker';
 import Save from './ActionSave';
 
@@ -24,13 +45,13 @@ import IconTwitter from '../Icon/icons/IconTwitter';
 import IconWhatsapp from '../Icon/icons/IconWhatsapp';
 import IconZen from '../Icon/icons/IconZen';
 
-const GET_COMMENTS_ID = gql`
+const GET_COMMENTS_ID: Object = gql`
   query GetCommentsId {
     commentsElementId @client
   }
 `;
 
-const GET_COMMENTS_COUNT = gql`
+const GET_COMMENTS_COUNT: Object = gql`
   query CommentsCount($path: String!) {
     commentsElement(path: $path) {
       totalHits
@@ -38,13 +59,13 @@ const GET_COMMENTS_COUNT = gql`
   }
 `;
 
-const TOGGLE_ZEN = gql`
+const TOGGLE_ZEN: Object = gql`
   mutation ToggleZen {
     toggleZen @client
   }
 `;
 
-const GET_PAGE_DATA = gql`
+const GET_PAGE_DATA: Object = gql`
   query GetPageData {
     platform @client
     hostname @client
@@ -55,7 +76,7 @@ const GET_PAGE_DATA = gql`
   }
 `;
 
-const fbAcceessTokens = new Map([
+const fbAcceessTokens: Object = new Map([
   [
     'haaretz.co.il',
     'EAABkq33GsqwBAMhelXM0V7xJQmgJ1sf0nvxZAyZBZAtStCyZC6Is1m1OgnsL1Jxsw6BJx0zaZA1TOZBrZAYVMiNNEqLwb4ZARsYUZCEKZAG6r4Wnuminzgi41WQUZCCKvpdhjuHKgh1s3R3fWKjZA4rXvYEoHxgWRSzvFrRMkALfoQUAVwZDZD',
@@ -70,13 +91,13 @@ const fbAcceessTokens = new Map([
   ],
 ]);
 
-const fbAppIds = new Map([
+const fbAppIds: Object = new Map([
   [ 'haaretz.co.il', '110687712359084', ],
   [ 'themarker.com', '52929925921', ],
   [ 'haaretz.com', '287530407927859', ],
 ]);
 
-export const ActionButton = ({ render, }) => (
+export const ActionButton = ({ render, }: ActionButtonProps): Node => (
   <Query query={GET_PAGE_DATA}>
     {({ loading, error, data, }) => {
       if (loading) return null;
@@ -102,7 +123,62 @@ export const ActionButton = ({ render, }) => (
   </Query>
 );
 
-const Comments = ({ buttonStyles, size, iconStyles, ...props }) => (
+export const Button: StatelessFunctionalComponent<ButtonProps> = ({
+  children,
+  miscStyles,
+  href,
+  ...props
+}): Node => (
+  <FelaComponent
+    style={(theme: Object) => ({
+      ...theme.type(-2),
+      fontWeight: '700',
+      backgroundColor: theme.color('button', 'primaryBg'),
+      color: theme.color('button', 'primaryText'),
+      paddingTop: '1rem',
+      paddingStart: '2rem',
+      paddingBottom: '1rem',
+      paddingEnd: '2rem',
+      position: 'relative',
+      ':visited': { color: theme.color('button', 'primaryText'), },
+      ':hover': {
+        backgroundColor: theme.color('button', 'primaryHoverBg'),
+        color: theme.color('button', 'primaryHoverText'),
+      },
+      ':active': {
+        backgroundColor: theme.color('button', 'primaryActiveBg'),
+        color: theme.color('button', 'primaryActiveText'),
+      },
+      ':focus': {
+        backgroundColor: theme.color('button', 'primaryFocusBg'),
+        color: theme.color('button', 'primaryFocusText'),
+      },
+      extend: [
+        ...(miscStyles
+          ? parseStyleProps(miscStyles, theme.mq, theme.type)
+          : []),
+      ],
+    })}
+    render={({ className, }: { className: string }) =>
+      (href ? (
+        <HtzLink href={href} className={className} {...props}>
+          {children}
+        </HtzLink>
+      ) : (
+        <button className={className} {...props}>
+          {children}
+        </button>
+      ))
+    }
+  />
+);
+
+const Comments: StatelessFunctionalComponent<CommentButtonProps> = ({
+  buttonStyles,
+  size,
+  iconStyles,
+  ...props
+}): Node => (
   <ActionButton
     render={({ platform, biAction, biActionMapper, }) => (
       <Button
@@ -148,7 +224,7 @@ const Comments = ({ buttonStyles, size, iconStyles, ...props }) => (
   />
 );
 
-const Facebook = ({
+const Facebook: StatelessFunctionalComponent<FacebookButtonProps> = ({
   buttonStyles,
   buttonText,
   size,
@@ -156,7 +232,7 @@ const Facebook = ({
   elementUrl,
   round,
   ...props
-}) => {
+}): Node => {
   const FacebookIcon = round ? IconFacebook : IconFacebookLogo;
   return (
     <ActionButton
@@ -177,11 +253,11 @@ const Facebook = ({
             });
           }}
         >
-          {buttonText && (
+          {buttonText ? (
             <FelaComponent style={{ marginEnd: '1rem', }} render="span">
               {buttonText}
             </FelaComponent>
-          )}
+          ) : null}
           <FacebookIcon size={size} miscStyles={iconStyles} />
         </Button>
       )}
@@ -189,24 +265,19 @@ const Facebook = ({
   );
 };
 
-const FacebookRound = props => <Facebook {...props} round />;
+const FacebookRound = (props: Object) => <Facebook {...props} round />;
 
-class FacebookLogo extends React.Component {
-  state = {
-    facebookCount: null,
-    host: null,
-  };
-
-  componentDidUpdate(prevProps, prevState) {
-    const eligibleForFacebookFetch = prevState.host !== this.state.host;
+class FacebookLogo extends React.Component<FacebookLogoProps, FacebookLogoState> {
+  componentDidUpdate(prevProps: FacebookLogoProps, prevState: FacebookLogoState) {
+    const eligibleForFacebookFetch: boolean = prevState.host !== this.state.host;
     if (eligibleForFacebookFetch) {
       this.getFacebookCount(this.state.host);
     }
   }
 
-  getFacebookCount = host => {
-    const accessToken = fbAcceessTokens.get(host);
-    const url = `https://graph.facebook.com/?fields=share&access_token=${accessToken}&id=${
+  getFacebookCount = (host: string) => {
+    const accessToken: string = fbAcceessTokens.get(host);
+    const url: string = `https://graph.facebook.com/?fields=share&access_token=${accessToken}&id=${
       this.props.elementUrl
     }&format=json`;
 
@@ -226,7 +297,7 @@ class FacebookLogo extends React.Component {
       .catch(error => console.log('error: ', error));
   };
 
-  render() {
+  render(): Node {
     const { buttonStyles, size, iconStyles, elementUrl, ...props } = this.props;
 
     const { facebookCount, } = this.state;
@@ -268,14 +339,14 @@ class FacebookLogo extends React.Component {
   }
 }
 
-const GooglePlus = ({
+const GooglePlus: StatelessFunctionalComponent<GooglePlusButtonProps> = ({
   buttonStyles,
   buttonText,
   size,
   iconStyles,
   elementUrl,
   ...props
-}) => (
+}): Node => (
   <ActionButton
     render={({ platform, biAction, }) => (
       <Button
@@ -292,25 +363,25 @@ const GooglePlus = ({
           });
         }}
       >
-        {buttonText && (
+        {buttonText ? (
           <FelaComponent style={{ marginEnd: '1rem', }} render="span">
             {buttonText}
           </FelaComponent>
-        )}
+        ) : null}
         <IconGPlus size={size} miscStyles={iconStyles} />
       </Button>
     )}
   />
 );
 
-const Mail = ({
+const Mail: StatelessFunctionalComponent<MailButtonProps> = ({
   buttonStyles,
   size,
   iconStyles,
   elementName,
   elementUrl,
   ...props
-}) => (
+}): Node => (
   <ActionButton
     render={({ platform, biAction, biActionMapper, }) => (
       <Button
@@ -332,14 +403,14 @@ const Mail = ({
   />
 );
 
-const MailAlert = ({
+const MailAlert: StatelessFunctionalComponent<MailAlertButtonProps> = ({
   buttonStyles,
   size,
   iconStyles,
   elementName,
   elementUrl,
   ...props
-}) => (
+}): Node => (
   <ActionButton
     render={({ platform, biAction, biActionMapper, }) => (
       <Button
@@ -361,14 +432,14 @@ const MailAlert = ({
   />
 );
 
-const Messenger = ({
+const Messenger: StatelessFunctionalComponent<MessengerButtonProps> = ({
   buttonStyles,
   buttonText,
   size,
   iconStyles,
   elementUrl,
   ...props
-}) => (
+}): Node => (
   <ActionButton
     render={({ platform, biAction, host, }) => (
       <Button
@@ -387,18 +458,23 @@ const Messenger = ({
           });
         }}
       >
-        {buttonText && (
+        {buttonText ? (
           <FelaComponent style={{ marginEnd: '1rem', }} render="span">
             {buttonText}
           </FelaComponent>
-        )}
+        ) : null}
         <IconMessenger size={size} miscStyles={iconStyles} />
       </Button>
     )}
   />
 );
 
-const Print = ({ buttonStyles, size, iconStyles, ...props }) => (
+const Print: StatelessFunctionalComponent<PrintButtonProps> = ({
+  buttonStyles,
+  size,
+  iconStyles,
+  ...props
+}): Node => (
   <ActionButton
     render={({ platform, biAction, biActionMapper, articleId, hostname, }) => (
       <Button
@@ -425,14 +501,14 @@ const Print = ({ buttonStyles, size, iconStyles, ...props }) => (
 
 // Save component is set from ActionSave.js
 
-const Twitter = ({
+const Twitter: StatelessFunctionalComponent<TwitterButtonProps> = ({
   buttonStyles,
   size,
   iconStyles,
   elementName,
   elementUrl,
   ...props
-}) => (
+}): Node => (
   <ActionButton
     render={({ platform, biAction, }) => (
       <Button
@@ -454,7 +530,13 @@ const Twitter = ({
   />
 );
 
-const Whatsapp = ({ buttonStyles, size, iconStyles, elementUrl, ...props }) => (
+const Whatsapp: StatelessFunctionalComponent<WhatsappButtonProps> = ({
+  buttonStyles,
+  size,
+  iconStyles,
+  elementUrl,
+  ...props
+}): Node => (
   <ActionButton
     render={({ platform, biAction, biActionMapper, }) => (
       <Button
@@ -485,14 +567,14 @@ const Whatsapp = ({ buttonStyles, size, iconStyles, elementUrl, ...props }) => (
   />
 );
 
-const Zen = ({
+const Zen: StatelessFunctionalComponent<ZenButtonProps> = ({
   buttonStyles,
   size,
   buttonText,
   iconStyles,
   elementUrl,
   ...props
-}) => (
+}): Node => (
   <Mutation mutation={TOGGLE_ZEN}>
     {toggleZen => (
       <ActionButton
@@ -526,7 +608,7 @@ const Zen = ({
   </Mutation>
 );
 
-const getAction = iconName => {
+const getAction = (iconName: string) => {
   const actions = new Map([
     [ 'comments', Comments, ],
     [ 'facebook', Facebook, ],

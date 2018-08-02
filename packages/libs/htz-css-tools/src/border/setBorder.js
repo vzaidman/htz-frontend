@@ -79,7 +79,12 @@ export default function setBorder(
     : undefined;
 
   if (lines === 0 && verticalSides) {
-    const ruleSet = {
+    // type RulesetType = {
+    //   ':after'?: Object,
+    //   ':before'?: Object,
+    //   position: string,
+    // }
+    const ruleSet: BorderRuleset = {
       ...horizontalRuleSet,
       position: 'relative',
     };

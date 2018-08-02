@@ -206,7 +206,7 @@ function Header({
                   globalButtonsStyles={{
                     minWidth: '10rem',
                   }}
-                  size={2.5}
+                  size={3}
                 />
                 {headlineElement && (
                   <HeadlineElement
