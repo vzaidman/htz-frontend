@@ -50,67 +50,64 @@ const ArticlePageLayout = ({
     });
 
   return (
-    <Query query={StandardArticleQuery} variables={{ path: articleId, }}>
-      {({ loading, error, data, client, }) => {
-        if (loading) return null;
-        if (error) return null;
-        const {
-          slots: { article, aside, },
-          seoData,
-          seoData: { canonicalUrl, },
-        } = data.page;
-        client.writeData({
-          data: {
-            canonicalUrl,
-          },
-        });
+    <Fragment>
+      <LayoutRow>{preHeader && getElements(preHeader)}</LayoutRow>
+      <LayoutRow>
+        <Header content={header} />
+      </LayoutRow>
+      <LayoutRow>
+        {postHeader && (
+          <LayoutContainer>
+            <FelaComponent
+              style={theme => ({
+                paddingTop: '3rem',
+                extend: [
+                  borderBottom('3px', 3, 'solid', theme.color('primary', '-6')),
+                ],
+              })}
+            >
+              {getElements(postHeader)}
+            </FelaComponent>
+          </LayoutContainer>
+        )}
+      </LayoutRow>
+      <Query query={StandardArticleQuery} variables={{ path: articleId, }}>
+        {({ loading, error, data, client, }) => {
+          if (loading) return null;
+          if (error) return null;
+          const {
+            slots: { article, aside, },
+            seoData,
+            seoData: { canonicalUrl, },
+          } = data.page;
+          client.writeData({
+            data: {
+              canonicalUrl,
+            },
+          });
 
-        return (
-          <Fragment>
-            <LayoutRow>{preHeader && getElements(preHeader)}</LayoutRow>
-            <LayoutRow>
-              <Header content={header} />
-            </LayoutRow>
-            <LayoutRow>
-              {postHeader && (
-                <LayoutContainer>
-                  <FelaComponent
-                    style={theme => ({
-                      paddingTop: '3rem',
-                      extend: [
-                        borderBottom(
-                          '3px',
-                          3,
-                          'solid',
-                          theme.color('primary', '-6')
-                        ),
-                      ],
-                    })}
-                  >
-                    {getElements(postHeader)}
-                  </FelaComponent>
-                </LayoutContainer>
-              )}
-            </LayoutRow>
-            <LayoutRow tagName="main" id="pageRoot">
-              <StandardArticle
-                articleId={articleId}
-                article={article}
-                aside={aside}
-                seoData={seoData}
+          return (
+            <Fragment>
+              <LayoutRow tagName="main" id="pageRoot">
+                <StandardArticle
+                  articleId={articleId}
+                  article={article}
+                  aside={aside}
+                  seoData={seoData}
+                />
+              </LayoutRow>
+              <LayoutRow>{postMain && getElements(postMain)}</LayoutRow>
+              <LayoutRow>{footer && getElements(footer)}</LayoutRow>
+              <GaDimensions
+                pageType={data.page.pageType}
+                authors={extractAuthorsFromArticle(article)}
               />
-            </LayoutRow>
-            <LayoutRow>{postMain && getElements(postMain)}</LayoutRow>
-            <LayoutRow>{footer && getElements(footer)}</LayoutRow>
-            <LayoutRow idName="modalsRoot" />
-            <GaDimensions
-              pageType={data.page.pageType}
-              authors={extractAuthorsFromArticle(article)}
-            />
-          </Fragment>
-        );
-      }}
-    </Query>
+            </Fragment>
+          );
+        }}
+      </Query>
+      <LayoutRow idName="modalsRoot" />
+    </Fragment>
   );
 };
 
