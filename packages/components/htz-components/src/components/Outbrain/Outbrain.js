@@ -28,7 +28,7 @@ class Outbrain extends React.Component {
           <div
             className="OUTBRAIN"
             data-src={canonicalUrl}
-            data-widget-id="AR_4"
+            data-widget-id="AR_14"
             data-ob-template="haaretz-heb"
           />
         )}
