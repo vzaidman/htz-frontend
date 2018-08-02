@@ -14,7 +14,7 @@ RespView282.propTypes = {
   clicktrackerimage: PropTypes.shape({}),
   link: PropTypes.string.isRequired,
   linkTarget: PropTypes.string.isRequired,
-  contentName: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 RespView282.defaultProps = {
@@ -25,14 +25,14 @@ RespView282.defaultProps = {
  * A Simple ClickTrackerBanner view.
  * It's purpose is to display a certain banner according to passed-down props.
  * @export RespView282 which is a pure function component (get props, returns JSX)
- * @param {*} { clicktrackerimage, link, linkTarget, contentName, } destructuerd props
+ * @param {*} { clicktrackerimage, link, linkTarget, text, } destructuerd props
  * @returns a banner component to be displayed.
  */
 export default function RespView282({
   clicktrackerimage,
   link,
   linkTarget,
-  contentName,
+  text,
 }) {
   // do some pre-processing
   return (
@@ -85,7 +85,7 @@ export default function RespView282({
                   extend: [ theme.type(1), ],
                 }}
               >
-                {contentName}
+                {text}
               </FelaComponent>
               <FelaComponent
                 style={{
