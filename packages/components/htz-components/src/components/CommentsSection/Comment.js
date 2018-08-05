@@ -391,7 +391,7 @@ class Comment extends React.Component {
             },
           },
         }) => (
-          <Section className={className}>
+          <Section tagName="article" className={className}>
             <FelaComponent style={commentWrapperStyle}>
               <FelaComponent style={commentNumberContainerStyle}>
                 <span>

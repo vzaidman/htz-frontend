@@ -66,9 +66,9 @@ export const commentI18n = Object.freeze({
     usersPick: 'בחירת הגולשים',
   }),
   buttons: Object.freeze({
-    readMoreBtnTxt: 'קרא עוד',
-    replyBtnTxt: 'הגב',
-    reportAbuseBtnTxt: 'דווח כפוגעני',
+    readMoreBtnTxt: 'קראו עוד',
+    replyBtnTxt: 'הגיבו',
+    reportAbuseBtnTxt: 'דווחו כפוגעני',
   }),
 });
 
@@ -78,8 +78,8 @@ export const commentFormI18n = Object.freeze({
     cancelBtnTxt: 'בטל',
     toggleUserBtnText: identified =>
       (identified
-        ? 'להוספת תגובה אנונימית לחץ כאן'
-        : 'להוספת תגובה מזוהה לחץ כאן'),
+        ? 'להוספת תגובה אנונימית לחצו כאן'
+        : 'להוספת תגובה מזוהה לחצו כאן'),
   }),
   labels: Object.freeze({
     nameLabelTxt: 'שם',
