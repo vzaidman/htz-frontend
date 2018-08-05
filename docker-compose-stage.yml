@@ -6,7 +6,7 @@ services:
      context: .
      args:
         NEXT_BUILD_ID: ${version:-latest}
-    image: "docker.themarker.com:8083/htz-front-app:${version:-latest}"
+    image: "nexus-ng.themarker.com/htz-front-app:${version:-latest}"
     ports:
       - 2200:2200
     environment:
