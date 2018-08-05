@@ -32,7 +32,8 @@ class GaDimensions extends React.Component {
     }
     authors && ReactGA.ga('set', 'dimension2', authors);
     articlePaywallMode && ReactGA.ga('set', 'dimension3', articlePaywallMode);
-    pageType && ReactGA.ga('set', 'dimension4', pageType);
+    pageType && ReactGA.ga('set', 'dimension4', `${pageType}-REACT`);
+    ReactGA.ga('send', 'pageview');
   }
 
   render() {

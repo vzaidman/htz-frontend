@@ -153,9 +153,8 @@ class NavigationMenu extends React.Component {
                         key="item HardCoded חזרה לכתבה רגילה"
                         name="חזרה לכתבה רגילה"
                         onClick={() => this.optOut(user.id, optOutMutation)}
-                        miscStyles={{
-                          backgroundColor: theme.color('primary', '+1'),
-                        }}
+                        variant="negativeOpaque"
+                        miscStyles={{ justifyContent: 'center', }}
                       />
                     )}
                   </Mutation>
@@ -167,11 +166,6 @@ class NavigationMenu extends React.Component {
           const combinedItems =
             items &&
             items.map(item => <Item key={`item ${item.name}`} {...item} />);
-
-          // TODO: remove this when optOut item is deprecated
-          if (combinedItems !== undefined && combinedItems.length > 2) {
-            combinedItems.splice(combinedItems.length - 1, 0, optOut);
-          }
 
           const combinedSites =
             sites &&
@@ -198,6 +192,10 @@ class NavigationMenu extends React.Component {
               />
             ));
 
+          // TODO: remove this when optOut item is deprecated
+          if (combinedPromotions !== undefined && combinedPromotions.length) {
+            combinedPromotions.unshift(optOut);
+          }
           const combinedMenu = [
             ...(combinedItems || []),
             ...(combinedSites || []),

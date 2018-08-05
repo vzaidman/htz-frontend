@@ -111,7 +111,7 @@ export class ArticlePage extends React.Component {
               <RouteChangeListener />
               <UserInjector />
               <DfpInjector path={url.query.path} />
-              <GoogleAnalytics withEC withPageView />
+              <GoogleAnalytics withEC />
               <StyleProvider renderer={styleRenderer} theme={htzTheme}>
                 <Fragment>
                   <AriaLive />

@@ -10,7 +10,7 @@ import IconAlefLogoTransparent from '../Icon/icons/IconAlefLogoTransparent';
 
 import UserDispenser from '../User/UserDispenser';
 import Button from '../Button/Button';
-import IconClose from '../Icon/icons/IconClose';
+// import IconClose from '../Icon/icons/IconClose';
 
 const OPT_OUT = gql`
   mutation SetReactHtzArticleOptIn($id: String!, $value: Boolean!) {
@@ -36,12 +36,12 @@ const optOutStripStyle = theme => ({
   backgroundColor: theme.color('primary'),
 });
 
-const closeButtonStyle = {
-  position: 'absolute',
-  color: 'white',
-  left: '2rem',
-  backgroundColor: 'transparent',
-};
+// const closeButtonStyle = {
+//   position: 'absolute',
+//   color: 'white',
+//   left: '2rem',
+//   backgroundColor: 'transparent',
+// };
 
 class OptOutStrip extends React.PureComponent {
   state = {
@@ -67,11 +67,11 @@ class OptOutStrip extends React.PureComponent {
       .catch(err => console.warn('err mutation:', err));
   };
 
-  closeOptOutStrip = (id, optOutMutation) => {
-    this.setState({ isStripVisible: false, }, () => {
-      optOutMutation({ variables: { id, value: false, }, });
-    });
-  };
+  // closeOptOutStrip = (id, optOutMutation) => {
+  //   this.setState({ isStripVisible: false, }, () => {
+  //     optOutMutation({ variables: { id, value: false, }, });
+  //   });
+  // };
 
   render() {
     const { isStripVisible, } = this.state;
@@ -94,47 +94,44 @@ class OptOutStrip extends React.PureComponent {
                     }
                     return (
                       <Mutation mutation={OPT_OUT}>
-                        {(optOutMutation, { data, }) => {
-                          console.warn('optOutMutation : ', optOutMutation);
-                          console.warn('data optOutMutation : ', data);
-                          return (
+                        {(optOutMutation, { data, }) => (
+                          <FelaComponent
+                            style={theme => optOutStripStyle(theme)}
+                            render="div"
+                          >
+                            <IconAlefLogoTransparent
+                              size={3}
+                              color="white"
+                              miscStyles={{
+                                marginInlineStart: 'auto',
+                                marginInlineEnd: '2rem',
+                              }}
+                            />
                             <FelaComponent
-                              style={theme => optOutStripStyle(theme)}
-                              render="div"
+                              style={theme => ({
+                                color: theme.color('neutral', '-10'),
+                                marginInlineEnd: '2rem',
+                              })}
+                              render={({ className, }) => (
+                                <span className={className}>
+                                  לכתבה בתצוגה רגילה
+                                </span>
+                              )}
+                            />
+                            <Button
+                              onClick={() =>
+                                this.optOut(user.id, optOutMutation)
+                              }
+                              miscStyles={{
+                                marginInlineEnd: 'auto',
+                                fontSize: '2rem',
+                              }}
+                              boxModel={{ hp: 2, vp: 0, }}
+                              variant="quaternaryOpaque"
                             >
-                              <IconAlefLogoTransparent
-                                size={3}
-                                color="white"
-                                miscStyles={{
-                                  marginInlineStart: 'auto',
-                                  marginInlineEnd: '2rem',
-                                }}
-                              />
-                              <FelaComponent
-                                style={theme => ({
-                                  color: theme.color('neutral', '-10'),
-                                  marginInlineEnd: '2rem',
-                                })}
-                                render={({ className, }) => (
-                                  <span className={className}>
-                                    לכתבה בתצוגה רגילה
-                                  </span>
-                                )}
-                              />
-                              <Button
-                                onClick={() =>
-                                  this.optOut(user.id, optOutMutation)
-                                }
-                                miscStyles={{
-                                  marginInlineEnd: 'auto',
-                                  fontSize: '2rem',
-                                }}
-                                boxModel={{ hp: 2, vp: 0, }}
-                                variant="quaternaryOpaque"
-                              >
-                                חזור
-                              </Button>
-                              <FelaComponent
+                              חזור
+                            </Button>
+                            {/* <FelaComponent
                                 style={closeButtonStyle}
                                 render={({ className, }) => (
                                   <button
@@ -149,10 +146,9 @@ class OptOutStrip extends React.PureComponent {
                                     <IconClose size={2} />
                                   </button>
                                 )}
-                              />
-                            </FelaComponent>
-                          );
-                        }}
+                              /> */}
+                          </FelaComponent>
+                        )}
                       </Mutation>
                     );
                   }}
