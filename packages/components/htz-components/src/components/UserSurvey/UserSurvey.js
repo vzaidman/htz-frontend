@@ -6,6 +6,13 @@ import UserDispenser from '../User/UserDispenser';
 import UserSurveyInner from './UserSurveyInner';
 
 export default function UserSurvey() {
+  const isOptOut = userInfo =>
+    userInfo.articlePageSurvey !== null && userInfo.articlePageSurvey.isOptOut;
+
+  const isSubmitted = userInfo =>
+    userInfo.articlePageSurvey !== null &&
+    userInfo.articlePageSurvey.isSubmitted;
+
   return (
     <UserDispenser
       render={({ isLoggedIn, user, }) =>
@@ -16,8 +23,9 @@ export default function UserSurvey() {
 
               if (
                 data.userInfo.pageCount < 3 ||
-                data.userInfo.articlePageSurvey.isOptOut ||
-                data.userInfo.articlePageSurvey.isSubmitted
+                data.userInfo.articlePageSurvey ||
+                isOptOut(data.userInfo) ||
+                isSubmitted(data.userInfo)
               ) {
                 return null;
               }
