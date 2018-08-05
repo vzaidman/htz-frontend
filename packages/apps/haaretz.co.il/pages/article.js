@@ -21,7 +21,6 @@ import {
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
-import WelcomePage from '../components/WelcomePage/WelcomePage';
 import ArticleInitQuery from './queries/article_layout';
 import publisher from './schema/publisher';
 
@@ -29,7 +28,13 @@ import publisher from './schema/publisher';
 const { Query, } = ApolloBoundary;
 
 const logger = createLogger();
+
 const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
+  loading: () => null,
+  ssr: false,
+});
+
+const WelcomePage = dynamic(import('../components/WelcomePage/WelcomePage'), {
   loading: () => null,
   ssr: false,
 });
