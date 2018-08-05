@@ -2,9 +2,8 @@
 import {
   GraphQLObjectType,
   GraphQLNonNull,
-  GraphQLBoolean,
   GraphQLString,
-  GraphQLList,
+  GraphQLBoolean,
   GraphQLInt,
   GraphQLID,
 } from 'graphql';
@@ -13,19 +12,8 @@ import CommentsElement from './types/comments_element_type';
 import Footer from './types/footer_type';
 import NavMenu from './types/navMenu_type';
 import List from './types/list_type';
-import SolrResponse from './types/solr_response_type';
 import ResetPassword from './types/reset_password_type';
 import Page from './types/page_type';
-
-const argumentsForSolr = {
-  query: { type: new GraphQLNonNull(GraphQLString), },
-  filterQuery: { type: new GraphQLList(GraphQLString), },
-  sortBy: { type: GraphQLString, },
-  desc: { type: GraphQLBoolean, },
-  startAt: { type: GraphQLInt, },
-  numOfResults: { type: GraphQLInt, },
-  fields: { type: new GraphQLList(GraphQLString), },
-};
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -94,13 +82,6 @@ const RootQuery = new GraphQLObjectType({
       type: GraphQLJSON,
       resolve(parentValue, { couponCode, }, context) {
         return context.couponProductLoader.load(couponCode);
-      },
-    },
-    solrQuery: {
-      type: SolrResponse,
-      args: argumentsForSolr,
-      resolve(parentValue, args, context) {
-        return context.solrLoader.load(args);
       },
     },
     payWithExistingCard: {

@@ -56,30 +56,6 @@ export function createLoaders(req) {
     )
   );
 
-  const solrLoader = new DataLoader(keys =>
-    Promise.all(
-      keys.map(
-        ({
-          query,
-          filterQuery,
-          sortBy,
-          desc,
-          startAt,
-          numOfResults,
-          fields,
-        }) => {
-          const queryString = `q=${query}&${
-            filterQuery ? filterQuery.map(fq => `fq=${fq}`).join('&') : 'fq= '
-          }&sort=${sortBy}${desc ? '+desc' : '+asc'}&start=${startAt ||
-            0}&rows=${numOfResults || 1}&fl=${fields.join('+')}`;
-          return fetch(
-            `${serviceBase}:3000/solr?${queryString}&wt=json&indent=true`
-          ).then(response => response.json());
-        }
-      )
-    )
-  );
-
   const purchasePageLoader = new DataLoader(keys => {
     const baseUri = `${serviceBase}/papi`;
     const userId = CookieUtils.stringToMap(cookies.get('tmsso') || '', {
@@ -182,7 +158,6 @@ export function createLoaders(req) {
     pageLoader,
     cmlinkLoader,
     listsLoader,
-    solrLoader,
     purchasePageLoader,
     couponProductLoader,
     payWithExistingCardLoader,
