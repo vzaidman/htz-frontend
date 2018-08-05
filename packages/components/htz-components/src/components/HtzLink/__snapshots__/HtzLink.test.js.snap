@@ -25,13 +25,10 @@ Object {
       onClick={null}
       target="_blank"
     >
-      <span
-        miscStyles={null}
-      >
+      <span>
         New Type Of 
         <strong
           className="htz-o"
-          miscStyles={null}
         >
           Bizarre Quantum Material
         </strong>
@@ -50,7 +47,6 @@ Object {
       className={null}
       href="https://www.haaretz.co.il"
       onClick={null}
-      target={null}
     >
       Haaretz
     </a>
@@ -66,7 +62,6 @@ Object {
       className={null}
       href="https://www.haaretz.co.il"
       onClick={null}
-      target={null}
     >
       Haaretz
     </a>
@@ -82,7 +77,6 @@ Object {
       className={null}
       href="https://www.haaretz.co.il"
       onClick={null}
-      target={null}
     >
       test content
     </a>

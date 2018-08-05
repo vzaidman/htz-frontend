@@ -45,7 +45,7 @@ exports[`<SpecialPromotions /> should render SpecialPromotions currectly 1`] = `
       >
         <a
           className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-m htz-ak htz-al htz-a htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
-          href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
+          href="/news/politics/.premium-1.6014424"
           id={null}
           onClick={[Function]}
         >
@@ -63,7 +63,7 @@ exports[`<SpecialPromotions /> should render SpecialPromotions currectly 1`] = `
     <a
       aria-hidden={true}
       className="htz-db htz-dc htz-dd htz-cs htz-cr htz-ct htz-de"
-      href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
+      href="/news/politics/.premium-1.6014424"
       onClick={[Function]}
       tabIndex="-1"
     />
@@ -118,7 +118,7 @@ exports[`<SpecialPromotions /> should render SpecialPromotions currectly when pa
       >
         <a
           className="htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-n htz-al htz-am htz-a htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci"
-          href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
+          href="/news/politics/.premium-1.6014424"
           id={null}
           onClick={[Function]}
         >
@@ -136,7 +136,7 @@ exports[`<SpecialPromotions /> should render SpecialPromotions currectly when pa
     <a
       aria-hidden={true}
       className="htz-dc htz-dd htz-de htz-ct htz-cs htz-cu htz-df"
-      href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
+      href="/news/politics/.premium-1.6014424"
       onClick={[Function]}
       tabIndex="-1"
     />
@@ -185,7 +185,7 @@ exports[`<SpecialPromotions /> should render SpecialPromotions with "primaryInve
       >
         <a
           className="htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-m htz-ak htz-al htz-a htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
-          href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
+          href="/news/politics/.premium-1.6014424"
           id={null}
           onClick={[Function]}
         >
@@ -203,7 +203,7 @@ exports[`<SpecialPromotions /> should render SpecialPromotions with "primaryInve
     <a
       aria-hidden={true}
       className="htz-db htz-dc htz-dd htz-cs htz-cr htz-ct htz-de"
-      href="https://www.haaretz.co.il/news/politics/.premium-1.6014424"
+      href="/news/politics/.premium-1.6014424"
       onClick={[Function]}
       tabIndex="-1"
     />

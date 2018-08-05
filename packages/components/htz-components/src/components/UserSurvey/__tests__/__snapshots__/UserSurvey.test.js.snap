@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserSurveyInner /> should render UserSurveyInner currectly 1`] = `
+<div>
+  <aside
+    className="htz-a htz-b htz-c htz-d htz-e"
+  >
+    <div
+      className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
+    />
+    <div
+      className="htz-p htz-q htz-r htz-b htz-s htz-t"
+    >
+      <div />
+    </div>
+  </aside>
+</div>
+`;
+
+exports[`<UserSurveyInner /> should render UserSurveyInner currectly 2`] = `".htz-a{overflow:hidden}.htz-b{position:relative}.htz-c{margin-bottom:5rem}.htz-d{margin-top:5rem}.htz-e{display:block}.htz-f{background-image:-webkit-linear-gradient(to bottom, #EBEBEB, #DAE9F2);background-image:-moz-linear-gradient(to bottom, #EBEBEB, #DAE9F2);background-image:linear-gradient(to bottom, #EBEBEB, #DAE9F2)}.htz-g{transform-origin:top left}.htz-h{transform:skewY(10deg)}.htz-i{width:100%}.htz-j{height:100%}.htz-k{position:absolute}.htz-l{pointer-events:none}.htz-m{top:4rem}.htz-p{padding-left:2rem}.htz-q{padding-right:2rem}.htz-r{padding-bottom:2rem}@media (min-width: 37.5em){.htz-n{top:0}.htz-o{transform:skewY(4deg)}.htz-s{padding-left:5rem}.htz-t{padding-right:5rem}}"`;

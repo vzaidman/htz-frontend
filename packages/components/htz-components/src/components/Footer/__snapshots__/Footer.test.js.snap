@@ -45,6 +45,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
   />
   <footer
     className="htz-a htz-b htz-c htz-d htz-e"
+    id={null}
   >
     <div
       className="htz-a htz-f htz-g htz-b htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
@@ -78,7 +79,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               className={null}
               href="https://www.facebook.com/haaretz"
               onClick={null}
-              target={null}
             >
               <svg
                 className="htz-aj htz-ak htz-al htz-as htz-av"
@@ -101,7 +101,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               className={null}
               href="https://twitter.com/haaretz"
               onClick={null}
-              target={null}
             >
               <svg
                 className="htz-aj htz-ak htz-al htz-as htz-av"
@@ -124,7 +123,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               className={null}
               href="https://play.google.com/store/apps/details?id=com.haaretz"
               onClick={null}
-              target={null}
             >
               <svg
                 className="htz-aj htz-ak htz-al"
@@ -147,7 +145,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               className={null}
               href="https://itunes.apple.com/us/app/id521559643"
               onClick={null}
-              target={null}
             >
               <svg
                 className="htz-aj htz-ak htz-al"
@@ -170,7 +167,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               className={null}
               href="https://plus.google.com/+haaretzcoil"
               onClick={null}
-              target={null}
             >
               <svg
                 className="htz-aj htz-ak htz-al htz-an htz-as htz-av"
@@ -193,7 +189,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               className={null}
               href="https://www.haaretz.co.il/misc/redemail"
               onClick={null}
-              target={null}
             >
               <svg
                 className="htz-aj htz-ak htz-al"
@@ -216,7 +211,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               className={null}
               href="https://www.haaretz.co.il/misc/rss"
               onClick={null}
-              target={null}
             >
               <svg
                 className="htz-aj htz-ak htz-al"
@@ -250,7 +244,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-bm htz-bn htz-bo htz-bp htz-bq"
                 href="https://www.haaretz.co.il/promotions-page"
                 onClick={null}
-                target={null}
               >
                 רכשו מנוי
               </a>
@@ -262,7 +255,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-bm htz-bn htz-bo htz-bp htz-bq"
                 href="https://www.haaretz.co.il/blogs"
                 onClick={null}
-                target={null}
               >
                 בלוגים
               </a>
@@ -274,7 +266,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-bm htz-bn htz-bo htz-bp htz-bq"
                 href="https://www.haaretz.co.il/misc/terms-of-use"
                 onClick={null}
-                target={null}
               >
                 תנאי שימוש
               </a>
@@ -286,7 +277,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-bm htz-bn htz-bo htz-bp htz-bq"
                 href="https://www.haaretz.co.il/misc/contact-us"
                 onClick={null}
-                target={null}
               >
                 צרו קשר
               </a>
@@ -298,7 +288,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-bm htz-bn htz-bo htz-bp htz-bq"
                 href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
                 onClick={null}
-                target={null}
               >
                 פרסמו באתר
               </a>
@@ -310,7 +299,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-bm htz-bn htz-bo htz-bp htz-bq"
                 href="https://www.haaretz.co.il/personal-area/my-account"
                 onClick={null}
-                target={null}
               >
                 שירות למנויים
               </a>
@@ -322,7 +310,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           href="https://www.haaretz.co.il/st/inter/shivuk-digital/hebrew/mtm/haaretzapp.html"
           id={null}
           onClick={null}
-          target={null}
         >
           <span
             className="htz-dv htz-dw htz-dx htz-dy htz-dz htz-ea htz-eb"
@@ -355,7 +342,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-ez htz-bm htz-fa htz-fb"
                 href="https://www.haaretz.co.il/misc/editors"
                 onClick={null}
-                target={null}
               >
                 מערכת
               </a>
@@ -367,7 +353,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-ez htz-bm htz-fa htz-fb"
                 href="https://www.haaretz.co.il/misc/management"
                 onClick={null}
-                target={null}
               >
                 הנהלה
               </a>
@@ -379,7 +364,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-ez htz-bm htz-fa htz-fb"
                 href="https://www.haaretz.co.il/misc/about-haaretz"
                 onClick={null}
-                target={null}
               >
                 אודות הארץ
               </a>
@@ -391,7 +375,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-ez htz-bm htz-fa htz-fb"
                 href="https://www.haaretz.co.il/misc/jobs"
                 onClick={null}
-                target={null}
               >
                 דרושים
               </a>
@@ -403,7 +386,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-ez htz-bm htz-fa htz-fb"
                 href="https://www.haaretz.co.il/misc/contact-us"
                 onClick={null}
-                target={null}
               >
                 צור קשר
               </a>
@@ -415,7 +397,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-ez htz-bm htz-fa htz-fb"
                 href="https://www.haaretz.co.il/promotions-page"
                 onClick={null}
-                target={null}
               >
                 עשה מנוי
               </a>
@@ -427,7 +408,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-ez htz-bm htz-fa htz-fb"
                 href="https://www.haaretz.co.il/misc/contact-us"
                 onClick={null}
-                target={null}
               >
                 ביטול מנוי דיגיטלי
               </a>
@@ -439,7 +419,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-ez htz-bm htz-fa htz-fb"
                 href="https://www.haaretz.co.il/misc/faq"
                 onClick={null}
-                target={null}
               >
                 שאלות ותשובות
               </a>
@@ -451,7 +430,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 className="htz-ez htz-bm htz-fc htz-fb"
                 href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
                 onClick={null}
-                target={null}
               >
                 פרסם אצלנו
               </a>
@@ -512,7 +490,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -524,7 +501,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -547,7 +523,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -559,7 +534,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -587,7 +561,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -599,7 +572,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -627,7 +599,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -639,7 +610,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -667,7 +637,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -679,7 +648,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -702,7 +670,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -714,7 +681,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -742,7 +708,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -754,7 +719,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                             className="htz-bl"
                             href="Hello World"
                             onClick={null}
-                            target={null}
                           >
                             Hello World
                           </a>
@@ -776,7 +740,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                       className="htz-bl htz-bm"
                       href="https://www.haaretz.co.il/misc/entitlement"
                       onClick={null}
-                      target={null}
                     >
                       חיבור מינוי דיגיטלי
                     </a>
@@ -788,7 +751,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                       className="htz-bl htz-bm"
                       href="https://www.haaretz.co.il/personal-area/newsletter"
                       onClick={null}
-                      target={null}
                     >
                       עדכונים במייל
                     </a>
@@ -800,7 +762,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                       className="htz-bl htz-bm"
                       href="https://www.haaretz.co.il/promotions-page"
                       onClick={null}
-                      target={null}
                     >
                       קנה מינוי דיגיטלי
                     </a>
@@ -812,7 +773,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                       className="htz-bl htz-bm"
                       href="https://secure.pulseem.com/clientpages/07092017151238sa6045.html?v=89a6c973-41b3-4181-811c-a459ac50164e_"
                       onClick={null}
-                      target={null}
                     >
                       קנה מינוי לעיתון
                     </a>
@@ -824,7 +784,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                       className="htz-bl htz-bm"
                       href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
                       onClick={null}
-                      target={null}
                     >
                       פרסם אצלנו
                     </a>
@@ -836,7 +795,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                       className="htz-bl htz-bm"
                       href="mailto: moshem@haaretz.co.il"
                       onClick={null}
-                      target={null}
                     >
                       לפרסום בעיתון
                     </a>
@@ -848,7 +806,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                       className="htz-bl htz-bm"
                       href="https://www.haaretz.co.il/personal-area/my-account"
                       onClick={null}
-                      target={null}
                     >
                       שירות למנויים
                     </a>

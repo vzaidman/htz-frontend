@@ -139,7 +139,6 @@ exports[`<Button> DOM element render an "<a>" correctly 1`] = `
     href="/"
     id={null}
     onClick={null}
-    target={null}
   >
     <span
       className="htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
