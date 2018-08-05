@@ -1,7 +1,7 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 
-import Osaka from '../../Osaka/OsakaController';
+// import Osaka from '../../Osaka/OsakaController';
 import getComponent from '../../../utils/componentFromInputTemplate';
 
 const propTypes = {
@@ -16,10 +16,7 @@ function Header({ content, }) {
     <Fragment>
       {content &&
         content.map(element => {
-          const Element =
-            element.inputTemplate === 'com.tm.GridElementGroup'
-              ? Osaka
-              : getComponent(element.inputTemplate);
+          const Element = getComponent(element.inputTemplate);
           return <Element key={element.contentId} {...element} />;
         })}
     </Fragment>
