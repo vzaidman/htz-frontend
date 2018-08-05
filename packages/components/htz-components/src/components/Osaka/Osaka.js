@@ -19,10 +19,6 @@ const singleArticlePropTypes = PropTypes.arrayOf(
 
 const propTypes = {
   /**
-   * Text to be shown on the next article button.
-   */
-  nextArticleText: PropTypes.string.isRequired,
-  /**
    * The path for the next article in the list.
    */
   nextArticleUrl: PropTypes.string.isRequired,
@@ -52,7 +48,7 @@ const NextItem = createComponent(NextItemStyle, HtzLink, props =>
   Object.keys(props)
 );
 
-function Osaka({ nextArticleText, nextArticleUrl, sectionName, lists, }) {
+function Osaka({ nextArticleUrl, sectionName, lists, }) {
   return (
     <FelaTheme
       render={theme => (
@@ -153,7 +149,9 @@ function Osaka({ nextArticleText, nextArticleUrl, sectionName, lists, }) {
                           style={{ display: 'flex', alignItems: 'center', }}
                           render="p"
                         >
-                          <span>{nextArticleText}</span>
+                          <span>
+                            {theme.osakaI18n.nextArticle} {sectionName}
+                          </span>
                           <span>
                             <IconBack size={4} />
                           </span>

@@ -1,6 +1,6 @@
-/* global sessionStorage */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
+import { Query, } from 'react-apollo';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { htzTheme, } from '@haaretz/htz-theme';
 import { createLogger, } from '@haaretz/app-utils';
@@ -9,7 +9,6 @@ import Head from 'next/head';
 import {
   AriaLive,
   ArticlePageLayout,
-  ApolloBoundary,
   // BIRequest,
   DeviceTypeInjector,
   GaDimensions,
@@ -23,9 +22,6 @@ import {
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import ArticleInitQuery from './queries/article_layout';
 import publisher from './schema/publisher';
-
-// TODO: Get rid of ApolloBoundary
-const { Query, } = ApolloBoundary;
 
 const logger = createLogger();
 
@@ -59,24 +55,20 @@ export class ArticlePage extends React.Component {
     articleId: null,
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (
+      !this.state.articleId ||
+      this.state.articleId !== nextProps.url.query.path
+    ) {
+      this.setState({
+        articleId: nextProps.url.query.path,
+      });
+    }
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     return this.state.articleId !== nextState.articleId;
   }
-
-  componentDidUpdate() {
-    this.writeToSession(this.state.articleId);
-  }
-
-  writeToSession = articleId => {
-    const history = JSON.parse(sessionStorage.getItem('readingHistory')) || [];
-    if (!history.includes(articleId)) {
-      history.push(articleId);
-      sessionStorage.setItem(
-        'readingHistory',
-        JSON.stringify(history, null, 2)
-      );
-    }
-  };
 
   render() {
     const { url, } = this.props;
@@ -86,18 +78,10 @@ export class ArticlePage extends React.Component {
           if (loading) return null;
           if (error) logger.error(error);
           const { page: { slots, lineage, }, user, } = data;
-          const articleId = lineage[0].contentId;
-          this.setState({
-            articleId,
-          });
           client.writeData({
             data: {
-              articleId,
-              articleParent: {
-                name: lineage[1] ? lineage[1].name : '',
-                id: lineage[1] ? lineage[1].contentId : '',
-                __typename: 'ArticleParent',
-              },
+              articleId: lineage[0].contentId,
+              section: lineage[1] ? lineage[1].name : '',
               pageSchema: {
                 publisher,
                 __typename: 'PageSchema',

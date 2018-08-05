@@ -154,7 +154,6 @@ export {
   ActionButtons,
   AriaLive,
   ArticleBody,
-  ApolloBoundary,
   Button,
   ButtonGroup,
   Caption,
@@ -284,4 +283,5 @@ export {
   BIRequest,
   // Event tracker
   EventTracker,
+  ApolloBoundary,
 };

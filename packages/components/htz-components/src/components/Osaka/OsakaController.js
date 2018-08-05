@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import { appendScript, } from '../../utils/scriptTools';
-import { fromCache, } from './queries/getData';
+import OsakaQuery from './queries/getData';
 import WrappedScroll from '../Scroll/Scroll';
 import OsakaWrapper from './OsakaWrapper';
 
@@ -99,13 +99,15 @@ class OsakaWithOutbrain extends React.Component {
 }
 
 const OsakaWithApollo = props => (
-  <Query query={fromCache}>
+  <Query query={OsakaQuery}>
     {({ loading, error, data, }) => {
       if (loading) return null;
       if (error) return null;
-      const { hostname, ...queryProps } = data;
+      const { canonicalUrl, section, hostname, } = data;
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-      return <OsakaWithOutbrain {...{ ...props, ...queryProps, host, }} />;
+      return (
+        <OsakaWithOutbrain {...{ ...props, canonicalUrl, host, section, }} />
+      );
     }}
   </Query>
 );
@@ -114,8 +116,8 @@ const OsakaWithApollo = props => (
 function OsakaController({ items, }) {
   return (
     <WrappedScroll
-      render={scrollProps => (
-        <OsakaWithApollo {...{ ...scrollProps, promotedElement: items, }} />
+      render={({ velocity, y, }) => (
+        <OsakaWithApollo {...{ velocity, y, promotedElement: items, }} />
       )}
     />
   );
