@@ -108,13 +108,22 @@ async function run() {
     });
   };
 
-  const userInfo = await createRemoteSchema(
-    'https://ms-apps.themarker.com/userInfo',
-    fetch
-  );
-  const schemas = mergeSchemas({
-    schemas: [ userInfo, schema, ],
-  });
+  let schemas;
+  try {
+    const userInfo = await createRemoteSchema(
+      'https://ms-apps.themarker.com/userInfo',
+      fetch
+    );
+    schemas = mergeSchemas({
+      schemas: [ userInfo, schema, ],
+    });
+  }
+  catch (err) {
+    console.log(`ms-apps user info error: ${err}`);
+    // Assign the papi schema to schemas without stitching,
+    // because fetching of userInfo failed
+    schemas = schema;
+  }
   // const hostIp = config.get('hostIp');
   app
     .prepare()
