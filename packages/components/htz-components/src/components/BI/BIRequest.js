@@ -40,9 +40,11 @@ const GET_DOSTAT_DATA = gql`
 class BIRequest extends Component {
   static propTypes = {
     articleId: PropTypes.string,
+    authors: PropTypes.string,
   };
   static defaultProps = {
     articleId: null,
+    authors: null,
   };
   state = { shouldRender: false, };
 
@@ -65,7 +67,7 @@ class BIRequest extends Component {
   }
 
   render() {
-    const { articleId, } = this.props;
+    const { articleId, authors, } = this.props;
     if (this.state.shouldRender) {
       return (
         <UserDispenser
@@ -80,16 +82,7 @@ class BIRequest extends Component {
                   {({ data, loading, error, }) => {
                     if (loading) return null;
                     if (error) return console.error(error);
-                    let writerId = null;
-                    try {
-                      writerId =
-                        data.page.slots.article[1].data.authors[0].contentId;
-                    }
- catch (err) {
-                      // do fallback here
-                    }
-
-                    doStat(user, data.page.lineage, writerId);
+                    doStat(user, data.page.lineage, authors);
                     return null;
                   }}
                 </Query>

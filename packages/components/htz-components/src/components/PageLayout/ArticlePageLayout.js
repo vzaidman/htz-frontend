@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic';
 
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
-import GaDimensions from '../GoogleAnalytics/GaDimensions';
 import { extractAuthorsFromArticle, } from '../GoogleAnalytics/helpers/extractAuthorsFromArticle';
 import LayoutRow from './LayoutRow'; // eslint-disable-line import/no-named-as-default
 import LayoutContainer from './LayoutContainer'; // eslint-disable-line import/no-named-as-default
@@ -13,8 +12,14 @@ import getComponent from '../../utils/componentFromInputTemplate';
 import Header from './slots/Header';
 import StandardArticle from './articleTypes/StandardArticle';
 import StandardArticleQuery from './queries/standard_article';
+import UserDispenser from '../User/UserDispenser';
 
 const BIRequest = dynamic(import('../BI/BIRequest'), {
+  ssr: false,
+  loading: () => null,
+});
+
+const GaDimensions = dynamic(import('../GoogleAnalytics/GaDimensions'), {
   ssr: false,
   loading: () => null,
 });
@@ -90,7 +95,6 @@ const ArticlePageLayout = ({
               canonicalUrl,
             },
           });
-
           return (
             <Fragment>
               <LayoutRow tagName="main" id="pageRoot">
@@ -103,10 +107,23 @@ const ArticlePageLayout = ({
               </LayoutRow>
               <LayoutRow>{postMain && getElements(postMain)}</LayoutRow>
               <LayoutRow>{footer && getElements(footer)}</LayoutRow>
-              <BIRequest articleId={articleId} />
-              <GaDimensions
-                pageType={data.page.pageType}
+              <BIRequest
+                articleId={articleId}
                 authors={extractAuthorsFromArticle(article)}
+              />
+              <UserDispenser
+                render={({ user, isLoggedIn, }) => {
+                  if (isLoggedIn) {
+                    return (
+                      <GaDimensions
+                        pageType={data.page.pageType}
+                        authors={extractAuthorsFromArticle(article)}
+                        userType={user.type}
+                      />
+                    );
+                  }
+                  return null;
+                }}
               />
             </Fragment>
           );

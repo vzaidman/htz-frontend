@@ -14,5 +14,5 @@ export function extractAuthorsFromArticle(article) {
     []
   );
 
-  return `[${ArticleAuthors}]`;
+  return `${ArticleAuthors}`;
 }

@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaTheme, FelaComponent, } from 'react-fela';
+import dynamic from 'next/dynamic';
+
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
 import ArticleImage from '../ArticleImage/ArticleImage';
 import Caption from '../Caption/Caption';
-import UserSurvey from '../UserSurvey/UserSurvey';
+
+const UserSurvey = dynamic(import('../UserSurvey/UserSurvey'), {
+  ssr: false,
+  loading: () => null,
+});
 
 const propTypes = {
   /**

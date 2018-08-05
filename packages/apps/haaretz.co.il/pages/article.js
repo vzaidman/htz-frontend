@@ -9,9 +9,7 @@ import Head from 'next/head';
 import {
   AriaLive,
   ArticlePageLayout,
-  // BIRequest,
   DeviceTypeInjector,
-  GaDimensions,
   GoogleAnalytics,
   PageSchema,
   ScrollListener,
@@ -77,7 +75,7 @@ export class ArticlePage extends React.Component {
         {({ loading, error, data, client, }) => {
           if (loading) return null;
           if (error) logger.error(error);
-          const { page: { slots, lineage, }, user, } = data;
+          const { page: { slots, lineage, }, } = data;
           client.writeData({
             data: {
               articleId: lineage[0].contentId,
@@ -105,8 +103,6 @@ export class ArticlePage extends React.Component {
                 <Fragment>
                   <AriaLive />
                   <DeviceTypeInjector />
-                  {/* <BIRequest articleId={url.query.path} /> */}
-                  <GaDimensions userType={user.type} />
                   <ArticlePageLayout
                     articleId={this.props.url.query.path}
                     slots={slots}

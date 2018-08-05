@@ -29,9 +29,6 @@ export default gql`
         }
       }
     }
-    user @client {
-      type
-    }
   }
   ${breadcrumbs}
 `;
