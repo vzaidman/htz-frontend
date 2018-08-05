@@ -1,5 +1,5 @@
 import React from 'react';
-import { FelaComponent, } from 'react-fela';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ApolloConsumer, } from 'react-apollo';
@@ -267,162 +267,166 @@ function StandardArticle({
   } = standardArticleElement;
 
   return (
-    <LayoutContainer tagName="article">
-      <Head>
-        <meta name="title" content={metaTitle} />
-        <meta name="description" content={metaDescription} />
-        <meta name="keywords" content={metaKeywords} />
-        <meta property="og:title" content={ogTitle} />
-        <meta property="og:description" content={ogDescription} />
-        <meta property="og:image" content={ogImageUrl} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="ob:title" content={obTitle} />
-        <link rel="canonical" href={canonicalUrl} />
-      </Head>
+    <FelaTheme
+      render={theme => (
+        <LayoutContainer
+          tagName="article"
+          miscStyles={{
+            display: [ { from: 'l', value: 'flex', }, ],
+          }}
+        >
+          <Head>
+            <meta name="title" content={metaTitle} />
+            <meta name="description" content={metaDescription} />
+            <meta name="keywords" content={metaKeywords} />
+            <meta property="og:title" content={ogTitle} />
+            <meta property="og:description" content={ogDescription} />
+            <meta property="og:image" content={ogImageUrl} />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta property="ob:title" content={obTitle} />
+            <link rel="canonical" href={canonicalUrl} />
+          </Head>
 
-      <FelaComponent
-        render={({ theme, }) => (
           <FelaComponent
             style={{
-              extend: [ theme.mq({ from: 'l', }, { display: 'flex', }), ],
+              extend: [
+                theme.mq({ from: 'l', }, { width: 'calc(100% - 300px - 8rem)', }),
+              ],
             }}
           >
-            <div>
-              <StandardArticleHeader
-                {...header}
-                articleId={articleId}
-                authors={authors}
-                canonicalUrl={canonicalUrl}
-                hasBreadCrumbs={!!breadCrumbs}
-                headlineElement={headlineElement}
-              />
+            <StandardArticleHeader
+              {...header}
+              articleId={articleId}
+              authors={authors}
+              canonicalUrl={canonicalUrl}
+              hasBreadCrumbs={!!breadCrumbs}
+              headlineElement={headlineElement}
+            />
 
-              {article.map(element => {
-                if (
-                  element.inputTemplate === 'com.htz.ArticleHeaderElement' ||
-                  element.inputTemplate === 'com.tm.PageTitle'
-                ) {
-                  return null;
-                }
-                if (
-                  element.inputTemplate === 'com.htz.StandardArticle' ||
-                  element.inputTemplate ===
-                    'com.mouse.story.MouseStandardStory' ||
-                  element.inputTemplate === 'com.tm.StandardArticle'
-                ) {
-                  return (
-                    <ApolloConsumer key={element.contentId}>
-                      {cache => {
-                        const { commentsElementId, } = element;
-                        cache.writeData({
-                          data: {
-                            commentsElementId,
-                            pageSchema: {
-                              type: 'NewsArticle',
-                              mainEntityOfPage: {
-                                type: 'WebPage',
-                                id: canonicalUrl,
-                                __typename: 'MainEntityOfPage',
-                              },
-                              __typename: 'PageSchema',
-                            },
-                          },
-                        });
-                        return (
-                          <StandardLayoutRow
-                            isArticleBody
-                            authors={authors}
-                            reportingFrom={reportingFrom}
-                            publishDate={header.pubDate}
-                            modifiedDate={header.modDate}
-                          >
-                            <ArticleBody body={body} />
-                          </StandardLayoutRow>
-                        );
-                      }}
-                    </ApolloConsumer>
-                  );
-                }
-                const Element = getComponent(element.inputTemplate);
-                const { properties, ...elementWithoutProperties } = element;
-                if (
-                  element.inputTemplate === 'com.polobase.OutbrainElement' ||
-                  element.inputTemplate ===
-                    'com.polobase.ClickTrackerBannersWrapper'
-                ) {
-                  return (
-                    <WideArticleLayoutRow
-                      key={element.contentId}
-                      hideDivider={
-                        element.inputTemplate ===
-                        'com.polobase.ClickTrackerBannersWrapper'
-                      }
-                    >
-                      <Element
-                        articleId={articleId}
-                        {...elementWithoutProperties}
-                        {...properties}
-                      />
-                    </WideArticleLayoutRow>
-                  );
-                }
+            {article.map(element => {
+              if (
+                element.inputTemplate === 'com.htz.ArticleHeaderElement' ||
+                element.inputTemplate === 'com.tm.PageTitle'
+              ) {
+                return null;
+              }
+              if (
+                element.inputTemplate === 'com.htz.StandardArticle' ||
+                element.inputTemplate ===
+                  'com.mouse.story.MouseStandardStory' ||
+                element.inputTemplate === 'com.tm.StandardArticle'
+              ) {
                 return (
-                  <StandardLayoutRow
+                  <ApolloConsumer key={element.contentId}>
+                    {cache => {
+                      const { commentsElementId, } = element;
+                      cache.writeData({
+                        data: {
+                          commentsElementId,
+                          pageSchema: {
+                            type: 'NewsArticle',
+                            mainEntityOfPage: {
+                              type: 'WebPage',
+                              id: canonicalUrl,
+                              __typename: 'MainEntityOfPage',
+                            },
+                            __typename: 'PageSchema',
+                          },
+                        },
+                      });
+                      return (
+                        <StandardLayoutRow
+                          isArticleBody
+                          authors={authors}
+                          reportingFrom={reportingFrom}
+                          publishDate={header.pubDate}
+                          modifiedDate={header.modDate}
+                        >
+                          <ArticleBody body={body} />
+                        </StandardLayoutRow>
+                      );
+                    }}
+                  </ApolloConsumer>
+                );
+              }
+              const Element = getComponent(element.inputTemplate);
+              const { properties, ...elementWithoutProperties } = element;
+              if (
+                element.inputTemplate === 'com.polobase.OutbrainElement' ||
+                element.inputTemplate ===
+                  'com.polobase.ClickTrackerBannersWrapper'
+              ) {
+                return (
+                  <WideArticleLayoutRow
                     key={element.contentId}
-                    {...(element.inputTemplate ===
-                    'com.tm.ArticleCommentsElement'
-                      ? // todo: theme
-                        { title: 'תגובות', id: 'commentsSection', }
-                      : {})}
+                    hideDivider={
+                      element.inputTemplate ===
+                      'com.polobase.ClickTrackerBannersWrapper'
+                    }
                   >
                     <Element
                       articleId={articleId}
                       {...elementWithoutProperties}
                       {...properties}
                     />
-                  </StandardLayoutRow>
+                  </WideArticleLayoutRow>
                 );
-              })}
-            </div>
-
-            <FelaComponent
-              style={{
-                backgroundColor: 'white',
-                flexShrink: '0',
-                position: 'relative',
-                display: 'flex',
-                justifyContent: 'space-around',
-                alignItems: 'flex-start',
-                extend: [
-                  theme.mq({ until: 'l', }, { display: 'none', }),
-                  theme.mq({ from: 'l', }, { width: 'calc(300px + 8rem)', }),
-                ],
-              }}
-              render={({ className, }) => (
-                <aside className={className}>
-                  {aside && (
-                    <Zen animate>
-                      <FelaComponent
-                        style={{
-                          height: '100%',
-                          left: '0',
-                          paddingTop: '3rem',
-                          position: 'absolute',
-                          top: '0',
-                        }}
-                      >
-                        <SideBar content={aside} />
-                      </FelaComponent>
-                    </Zen>
-                  )}
-                </aside>
-              )}
-            />
+              }
+              return (
+                <StandardLayoutRow
+                  key={element.contentId}
+                  {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
+                    ? // todo: theme
+                      { title: 'תגובות', id: 'commentsSection', }
+                    : {})}
+                >
+                  <Element
+                    articleId={articleId}
+                    {...elementWithoutProperties}
+                    {...properties}
+                  />
+                </StandardLayoutRow>
+              );
+            })}
           </FelaComponent>
-        )}
-      />
-    </LayoutContainer>
+
+          <FelaComponent
+            style={{
+              backgroundColor: 'white',
+              flexShrink: '0',
+              position: 'relative',
+              display: 'flex',
+              justifyContent: 'space-around',
+              alignItems: 'flex-start',
+              extend: [
+                theme.mq({ until: 'l', }, { display: 'none', }),
+                theme.mq({ from: 'l', }, { width: 'calc(300px + 8rem)', }),
+              ],
+            }}
+            render={({ className, }) => (
+              <aside className={className}>
+                {aside && (
+                  <Zen animate>
+                    <FelaComponent
+                      style={{
+                        height: '100%',
+                        left: '0',
+                        paddingTop: '3rem',
+                        position: 'absolute',
+                        top: '0',
+                      }}
+                    >
+                      <SideBar content={aside} />
+                    </FelaComponent>
+                  </Zen>
+                )}
+              </aside>
+            )}
+          />
+        </LayoutContainer>
+      )}
+    />
   );
 }
 
