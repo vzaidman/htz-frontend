@@ -112,9 +112,22 @@ class OptOutStrip extends React.PureComponent {
                                 color: theme.color('neutral', '-10'),
                                 marginInlineEnd: '2rem',
                               })}
-                              render={({ className, }) => (
+                              render={({ theme, className, }) => (
                                 <span className={className}>
-                                  לכתבה בתצוגה רגילה
+                                  <FelaComponent
+                                    style={{
+                                      extend: [
+                                        theme.mq(
+                                          { until: 'm', },
+                                          { display: 'none', }
+                                        ),
+                                      ],
+                                    }}
+                                    render="span"
+                                  >
+                                    התקדמנו מהר מדי?
+                                  </FelaComponent>
+                                  לחצו כאן כדי לחזור לגרסה הישנה
                                 </span>
                               )}
                             />
@@ -127,9 +140,9 @@ class OptOutStrip extends React.PureComponent {
                                 fontSize: '2rem',
                               }}
                               boxModel={{ hp: 2, vp: 0, }}
-                              variant="quaternaryOpaque"
+                              variant="inverseOpaque"
                             >
-                              חזור
+                              קחו אותי מכאן
                             </Button>
                             {/* <FelaComponent
                                 style={closeButtonStyle}
