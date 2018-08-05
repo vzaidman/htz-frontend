@@ -1,9 +1,9 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+import dynamic from 'next/dynamic';
 
 import { borderBottom, } from '@haaretz/htz-css-tools';
-
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import GaDimensions from '../GoogleAnalytics/GaDimensions';
 import { extractAuthorsFromArticle, } from '../GoogleAnalytics/helpers/extractAuthorsFromArticle';
@@ -13,6 +13,11 @@ import getComponent from '../../utils/componentFromInputTemplate';
 import Header from './slots/Header';
 import StandardArticle from './articleTypes/StandardArticle';
 import StandardArticleQuery from './queries/standard_article';
+
+const BIRequest = dynamic(import('../BI/BIRequest'), {
+  ssr: false,
+  loading: () => null,
+});
 
 const propTypes = {
   /**
@@ -98,6 +103,7 @@ const ArticlePageLayout = ({
               </LayoutRow>
               <LayoutRow>{postMain && getElements(postMain)}</LayoutRow>
               <LayoutRow>{footer && getElements(footer)}</LayoutRow>
+              <BIRequest articleId={articleId} />
               <GaDimensions
                 pageType={data.page.pageType}
                 authors={extractAuthorsFromArticle(article)}

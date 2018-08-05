@@ -10,7 +10,7 @@ import {
   AriaLive,
   ArticlePageLayout,
   ApolloBoundary,
-  BIRequest,
+  // BIRequest,
   DeviceTypeInjector,
   GaDimensions,
   GoogleAnalytics,
@@ -121,7 +121,7 @@ export class ArticlePage extends React.Component {
                 <Fragment>
                   <AriaLive />
                   <DeviceTypeInjector />
-                  <BIRequest articleId={url.query.path} />
+                  {/* <BIRequest articleId={url.query.path} /> */}
                   <GaDimensions userType={user.type} />
                   <ArticlePageLayout
                     articleId={this.props.url.query.path}
