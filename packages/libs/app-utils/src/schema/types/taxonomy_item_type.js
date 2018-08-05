@@ -9,7 +9,7 @@ import {
 const TaxonomyItem = new GraphQLObjectType({
   name: 'TaxonomyItem',
   fields: () => ({
-    pathSegment: { type: new GraphQLNonNull(GraphQLID), },
+    pathSegment: { type: GraphQLID, },
     contentId: { type: new GraphQLNonNull(GraphQLID), },
     name: { type: new GraphQLNonNull(GraphQLString), },
     url: { type: new GraphQLNonNull(GraphQLString), },
