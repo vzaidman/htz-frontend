@@ -117,7 +117,7 @@ class OptOutStrip extends React.PureComponent {
                                 })}
                                 render={({ className, }) => (
                                   <span className={className}>
-                                    לחזרה לכתבה רגילה
+                                    לכתבה בתצוגה רגילה
                                   </span>
                                 )}
                               />
@@ -132,7 +132,7 @@ class OptOutStrip extends React.PureComponent {
                                 boxModel={{ hp: 2, vp: 0, }}
                                 variant="quaternaryOpaque"
                               >
-                                לחצו כאן
+                                חזור
                               </Button>
                               <FelaComponent
                                 style={closeButtonStyle}
