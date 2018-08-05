@@ -251,10 +251,10 @@ export const readingListMenuI18n = Object.freeze({
 });
 
 export const serviceByMailI18n = Object.freeze({
-  authorAlertServiceTitle: 'שלח לי התראה על כל כתבה חדשה של ',
+  authorAlertServiceTitle: 'שלחו לי התראה על כל כתבה חדשה של ',
   inpEmailLabelText: 'דוא"ל',
   inpEmailNoteText: 'אנא הזינו כתובת אימייל',
-  btnSubmitText: 'שלח',
+  btnSubmitText: 'שלחו',
   btnCancelText: 'לא תודה',
   btnCloseText: 'סגור',
 
