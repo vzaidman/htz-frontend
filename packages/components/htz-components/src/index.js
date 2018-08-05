@@ -284,6 +284,4 @@ export {
   BIRequest,
   // Event tracker
   EventTracker,
-  // ApolloBoundary
-  ApolloBoundary,
 };
