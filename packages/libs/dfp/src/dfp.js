@@ -45,6 +45,13 @@ export default class DFP {
       }
       else {
         dfpThis.initStarted = true;
+        try {
+          // clear ads if googletag is already present on the window
+          window.googletag.pubads().clear();
+        }
+        catch (err) {
+          // no harm if unable to call clear - this case happends on browser reload
+        }
         // set up a place holder for the gpt code downloaded from google
         window.googletag = window.googletag || {};
 
