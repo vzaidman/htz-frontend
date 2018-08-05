@@ -21,15 +21,17 @@ export default function UserSurvey() {
             {({ data, error, loading, }) => {
               if (error || loading) return null;
 
-              if (
+              const hide =
                 data.userInfo.pageCount < 3 ||
-                data.userInfo.articlePageSurvey ||
                 isOptOut(data.userInfo) ||
-                isSubmitted(data.userInfo)
-              ) {
-                return null;
-              }
-              return <UserSurveyInner userInfo={data.userInfo} user={user} />;
+                isSubmitted(data.userInfo);
+              return (
+                <UserSurveyInner
+                  userInfo={data.userInfo}
+                  user={user}
+                  hide={hide}
+                />
+              );
             }}
           </Query>
         ))

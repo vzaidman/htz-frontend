@@ -58,12 +58,18 @@ class UserSurveyInner extends Component {
       lastName: PropTypes.string,
       id: PropTypes.number,
     }).isRequired,
+    /* Display the survey */
+    hide: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    hide: false,
   };
 
   state = {
     didCount: false,
     userAnswer: null,
-    showSurvey: true,
+    showSurvey: !this.props.hide,
     userText: '',
     surveySubmited: false,
   };
