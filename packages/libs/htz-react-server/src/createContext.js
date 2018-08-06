@@ -260,7 +260,9 @@ export function createPosters(req) {
         newsletterSignUp.userEmail
       }${
         newsletterSignUp.checkBox ? '&ALLOW_MARKETING_MESSAGES_FIELD=true' : ''
-      }&segmentId=${newsletterSignUp.segmentId}&_=${new Date().getTime()}`,
+      }&segmentId=${
+        newsletterSignUp.segmentId
+      }&_=${new Date().getTime()}&responseType=json`,
       {
         method: 'get',
         credentials: 'include',
@@ -268,7 +270,7 @@ export function createPosters(req) {
           Accept: '*/*',
         },
       }
-    ).then(response => response.ok);
+    ).then(response => response.json());
   return {
     cmlinkCommentPoster,
     cmlinkCommentAbuseReport,

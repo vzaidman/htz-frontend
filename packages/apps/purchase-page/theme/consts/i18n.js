@@ -459,7 +459,11 @@ export const debt = Object.freeze({
 export const newsletterI18n = Object.freeze({
   buttons: Object.freeze({
     newsletterSubmit: 'הרשמה',
-    newsletterConfirmedButton: 'לרשימה המלאה',
+    newsletterConfirmedButton: Object.freeze({
+      ok: 'לרשימה המלאה',
+      alreadyRegister: 'להרשמה לדיוורים נוספים',
+      failed: 'נסו שנית',
+    }),
   }),
   texts: Object.freeze({
     newsletterTitle: site =>
@@ -467,8 +471,16 @@ export const newsletterI18n = Object.freeze({
         site === 'tm' ? 'TheMarker' : 'הארץ'
       } בכל בוקר לתיבת האימייל שלכם`,
     newsletterButton: 'הרשמה בקליק',
-    newsletterConfirmedTitleText: 'תודה שנרשמת',
-    newsletterConfirmedText: 'יש לנו דיוורים נוספים שעשויים לעניין אותך',
+    newsletterConfirmedTitleText: Object.freeze({
+      ok: 'תודה שנרשמת',
+      alreadyRegister: 'אנחנו כבר מכירים',
+      failed: 'קרתה תקלה ברישום',
+    }),
+    newsletterConfirmedText: Object.freeze({
+      ok: 'יש לנו דיוורים נוספים שעשויים לעניין אותך',
+      alreadyRegister: 'כתובת הדוא"ל שלך כבר רשומה לדיוור זה',
+      failed: 'אנא נסו להרשם שוב במועד מאוחר יותר',
+    }),
   }),
 });
 

@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { GraphQLObjectType, GraphQLBoolean, } from 'graphql';
+import { GraphQLObjectType, GraphQLString, } from 'graphql';
 import CommentInput from './types/comment_input_type';
 import VoteVars from './types/vote_vars_type';
 import signUpNotificationVars from './types/sign_up_notification_vars_type';
@@ -37,10 +37,17 @@ const mutation = new GraphQLObjectType({
       },
     },
     signUpNewsletter: {
-      type: GraphQLBoolean,
+      type: new GraphQLObjectType({
+        name: 'status',
+        fields: {
+          status: {
+            type: GraphQLString,
+          },
+        },
+      }),
       args: { newsletterSignUp: { type: signUpNewsletterVars, }, },
       resolve(parentValue, { newsletterSignUp, }, context) {
-        return context.newsLetterRegister(newsletterSignUp).then(ok => ok);
+        return context.newsLetterRegister(newsletterSignUp).then(json => json);
       },
     },
     signUpNotificationEmail: {

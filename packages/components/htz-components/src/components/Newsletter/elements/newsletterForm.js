@@ -128,17 +128,19 @@ export function NewsletterForm({
       : icon.toLowerCase() === 'tm' ? IconMarkerLogoTransparent : null);
   return (
     <Form
+      clearFormAfterSubmit={false}
       initialValues={{ email: userEmail, checkBox: false, }}
       onSubmit={({ email, checkBox, }) => {
         const Checked = !!checkBox;
         signUpNewsletter({
           variables: { email, segmentId, checkBox: Checked, },
         })
-          .then(data => {
-            setParentState(data);
+          .then(({ data: { signUpNewsletter: { status, }, }, }) => {
+            setParentState(status);
           })
           .catch(mutationError => {
             console.warn('there was an error sending the query', mutationError);
+            setParentState('failed');
           });
       }}
       validate={({ email, checkBox, }) => {

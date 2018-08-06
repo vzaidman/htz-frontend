@@ -62,6 +62,8 @@ NewsletterConfirmed.propTypes = {
   closeConfirmation: PropTypes.func.isRequired,
   /** determine newsletter host if exists */
   host: PropTypes.oneOf([ 'tm', 'htz', ]),
+  /** The Registration status to the newletter */
+  signUpStatus: PropTypes.oneOf([ 'ok', 'alredyRegister', 'failed', ]).isRequired,
   /** The TextInput stylistic variant */
   // used for styling
   variant: PropTypes.oneOfType([
@@ -84,6 +86,7 @@ export default function NewsletterConfirmed({
   closeConfirmation,
   variant,
   host,
+  signUpStatus,
 }) {
   return (
     <FelaComponent
@@ -92,7 +95,7 @@ export default function NewsletterConfirmed({
       render={({ className, theme, }) => {
         const {
           buttons: { newsletterConfirmedButton, },
-          texts: { newsletterConfirmedText, newsletterConfirmedTitleText, }, // eslint-disable-next-line react/prop-types
+          texts: { newsletterConfirmedText, newsletterConfirmedTitleText, },
         } = theme.newsletterI18n;
         return (
           <div className={className}>
@@ -110,26 +113,29 @@ export default function NewsletterConfirmed({
               rule={inputUpperNoteStyle}
               render="p"
             >
-              <strong>{newsletterConfirmedTitleText}</strong>
+              <strong>{newsletterConfirmedTitleText[signUpStatus]}</strong>
             </FelaComponent>
             <FelaComponent
               variant={variant}
               rule={inputUpperNoteStyle}
               render="p"
             >
-              {newsletterConfirmedText}
+              {newsletterConfirmedText[signUpStatus]}
             </FelaComponent>
             <Button
               boxModel={{ hp: 3, vp: 1, }}
               miscStyles={ButtonStyle}
               variant={theme.newsletterStyle[variant].buttonVariant}
-              href={
-                host === 'tm'
-                  ? 'https://www.themarker.com/personal-area/newsletter'
-                  : 'https://www.haaretz.co.il/personal-area/newsletter'
-              }
+              {...(signUpStatus === 'failed'
+                ? { onClick: () => closeConfirmation(), }
+                : {
+                    href:
+                      host === 'tm'
+                        ? 'https://www.themarker.com/personal-area/newsletter'
+                        : 'https://www.haaretz.co.il/personal-area/newsletter',
+                  })}
             >
-              {newsletterConfirmedButton}
+              {newsletterConfirmedButton[signUpStatus]}
             </Button>
           </div>
         );

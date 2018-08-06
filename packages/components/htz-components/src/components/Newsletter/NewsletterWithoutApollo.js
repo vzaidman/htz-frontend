@@ -92,15 +92,13 @@ export default class NewsletterWithoutApollo extends React.Component {
     userEmail: null,
   };
   state = {
-    confirmed: false,
+    signUpStatus: null,
   };
 
-  confirmState = ({ data, }) => {
-    if (data.signUpNewsletter) {
-      this.setState({
-        confirmed: true,
-      });
-    }
+  confirmState = signUpStatus => {
+    this.setState({
+      signUpStatus,
+    });
   };
 
   render() {
@@ -140,7 +138,7 @@ export default class NewsletterWithoutApollo extends React.Component {
               <Dialog
                 appendTo={`${id}DialogWrapper`}
                 elementToHide={id}
-                isVisible={this.state.confirmed}
+                isVisible={!!this.state.signUpStatus}
                 onOpen={onSubmit}
                 overlayBgColor={theme.color('newsletter', `${variant}Bg`)}
                 containerMiscStyles={newsletterConfirmStyle}
@@ -149,6 +147,7 @@ export default class NewsletterWithoutApollo extends React.Component {
                     host={host}
                     variant={variant}
                     closeConfirmation={handleClose}
+                    signUpStatus={this.state.signUpStatus}
                   />
                 )}
               />

@@ -187,11 +187,23 @@ export const footerDesktopI18n = Object.freeze({
 
 export const newsletterI18n = Object.freeze({
   buttons: Object.freeze({
-    newsletterConfirmedButton: 'לרשימה המלאה',
+    newsletterConfirmedButton: Object.freeze({
+      ok: 'לרשימה המלאה',
+      alreadyRegister: 'להרשמה לדיוורים נוספים',
+      failed: 'נסו שנית',
+    }),
   }),
   texts: Object.freeze({
-    newsletterConfirmedTitleText: 'תודה שנרשמת',
-    newsletterConfirmedText: 'יש לנו דיוורים נוספים שעשויים לעניין אותך',
+    newsletterConfirmedTitleText: Object.freeze({
+      ok: 'תודה שנרשמת',
+      alreadyRegister: 'אנחנו כבר מכירים',
+      failed: 'קרתה תקלה ברישום',
+    }),
+    newsletterConfirmedText: Object.freeze({
+      ok: 'יש לנו דיוורים נוספים שעשויים לעניין אותך',
+      alreadyRegister: 'כתובת הדוא"ל שלך כבר רשומה לדיוור זה',
+      failed: 'אנא נסו להרשם שוב במועד מאוחר יותר',
+    }),
   }),
 });
 

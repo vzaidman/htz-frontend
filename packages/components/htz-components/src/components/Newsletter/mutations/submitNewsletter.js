@@ -13,6 +13,8 @@ export default gql`
         segmentId: $segmentId
         checkBox: $checkBox
       }
-    )
+    ) {
+      status
+    }
   }
 `;
