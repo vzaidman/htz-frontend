@@ -125,7 +125,7 @@ class OptOutStrip extends React.PureComponent {
                                     }}
                                     render="span"
                                   >
-                                    התקדמנו מהר מדי?
+                                    התקדמנו מהר מדי?{' '}
                                   </FelaComponent>
                                   לחצו כאן כדי לחזור לגרסה הישנה
                                 </span>
