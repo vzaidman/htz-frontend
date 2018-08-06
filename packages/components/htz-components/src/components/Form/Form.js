@@ -87,7 +87,7 @@ export default class Form extends Component {
   };
 
   state = {
-    values: { ...this.props.initialValues, },
+    values: {},
     errors: [],
     touched: {},
     // TODO: handle submitting state
@@ -115,6 +115,10 @@ export default class Form extends Component {
    *   Form to control the input
    */
 
+  componentDidMount() {
+    // eslint-disable-next-line react/no-did-mount-set-state
+    if (this.props.initialValues) { this.setState({ values: { ...this.props.initialValues, }, }); }
+  }
   getInputProps = ({
     errorText,
     isContentEditable = false,
