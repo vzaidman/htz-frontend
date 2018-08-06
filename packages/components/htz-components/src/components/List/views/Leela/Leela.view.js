@@ -21,6 +21,7 @@ export const PromotedItem = ({ path, title, image, suffix, }) => (
       <HtzLink
         className={className}
         href={path}
+        target="_blank"
         content={
           <Fragment>
             <FelaComponent

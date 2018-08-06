@@ -96,7 +96,6 @@ class ArticleHeaderMeta extends React.Component {
 
   render() {
     const { authors, publishDate, reportingFrom, miscStyles, } = this.props;
-    console.log('DDD');
     return (
       <FelaComponent
         miscStyles={miscStyles}

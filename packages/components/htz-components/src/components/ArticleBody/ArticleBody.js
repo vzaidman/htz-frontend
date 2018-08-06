@@ -169,7 +169,6 @@ function ArticleBody({ body, }) {
       {body.map((component, i) => {
         let res = buildComponent(component, i, i === body.length - 1);
         if (i === body.length - 1) {
-          console.log('1234567');
           res = (
             <div>
               {res}

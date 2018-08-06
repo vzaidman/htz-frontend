@@ -38,7 +38,7 @@ export default function RespView282({
   return (
     <HtzLink
       href={link}
-      targer={linkTarget}
+      target={linkTarget}
       content={
         <FelaComponent
           style={theme => ({
