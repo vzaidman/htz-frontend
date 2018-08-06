@@ -20,9 +20,9 @@ let dsUrl;
  * or rejected if a timeout (default: 5000ms) has been reached
  */
 export function doStatAction(action, user) {
-  dsUrl =
-    dsUrl ||
-    `https://ms-apps.haaretz.co.il/${isProduction ? 'ds' : 'ds-dev'}/request`;
+  dsUrl = `https://ms-apps.haaretz.co.il/${
+    isProduction ? 'ds' : 'ds-dev'
+  }/action`;
 
   const { additionalInfo, } = action;
   const serializedAdditionalInfo = JSON.stringify(
@@ -81,9 +81,9 @@ export function doStat(user, lineage = [], writerId = null) {
     secondarySection = secondarySectionLineage.pathSegment || null;
   }
 
-  dsUrl =
-    dsUrl ||
-    `https://ms-apps.haaretz.co.il/${isProduction ? 'ds' : 'ds-dev'}/request`;
+  dsUrl = `https://ms-apps.haaretz.co.il/${
+    isProduction ? 'ds' : 'ds-dev'
+  }/request`;
 
   const href = window.location.href;
   const statData = {
