@@ -92,6 +92,7 @@ const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
 
 export const GET_AD_MANAGER = gql`
   query getDfpConfig($path: String!) {
+    articleId @client
     page(path: $path) {
       dfpConfig {
         adSlotConfig
@@ -178,12 +179,17 @@ DfpInjector.defaultProps = defaultProps;
 
 function DfpInjectorWrapper(pathObject) {
   return (
-    <Query query={GET_AD_MANAGER} variables={{ path: pathObject.path, }}>
+    <Query
+      query={GET_AD_MANAGER}
+      variables={{ path: pathObject.path, }}
+      fetchPolicy="no-cache"
+    >
       {({ loading, error, data, client, }) => {
         if (loading) return null;
         if (error) logger.error(error);
+        const { articleId, } = data;
         const { dfpConfig, } = data.page;
-        return <DfpInjector dfpConfig={dfpConfig} path={pathObject.path} />;
+        return <DfpInjector dfpConfig={dfpConfig} articleId={articleId} />;
       }}
     </Query>
   );
