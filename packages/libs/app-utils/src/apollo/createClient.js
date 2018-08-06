@@ -136,7 +136,12 @@ function create(initialState, req) {
       },
       canonicalUrl: '',
       zenMode: false,
-      section: '',
+      articleParent: {
+        name: null,
+        id: null,
+        url: null,
+        __typename: 'ArticleParent',
+      },
       a11yToggle: false,
       hostname,
       articleId: null,

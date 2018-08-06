@@ -26,6 +26,7 @@ class OsakaWithOutbrain extends React.Component {
       id: 'outbrain-widget',
       isAsync: false,
       onLoadFunction: this.getArticles,
+      updateFunction: this.getArticles,
     });
   }
 
@@ -98,26 +99,27 @@ class OsakaWithOutbrain extends React.Component {
   }
 }
 
-const OsakaWithApollo = props => (
-  <Query query={OsakaQuery}>
+// eslint-disable-next-line react/prop-types
+const OsakaWithApollo = ({ articleId, ...props }) => (
+  <Query query={OsakaQuery} variables={{ path: articleId, }}>
     {({ loading, error, data, }) => {
       if (loading) return null;
       if (error) return null;
-      const { canonicalUrl, section, hostname, } = data;
+      const { hostname, ...queryProps } = data;
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-      return (
-        <OsakaWithOutbrain {...{ ...props, canonicalUrl, host, section, }} />
-      );
+      return <OsakaWithOutbrain {...{ ...props, ...queryProps, host, }} />;
     }}
   </Query>
 );
 
 // eslint-disable-next-line react/prop-types
-function OsakaController({ items, }) {
+function OsakaController({ items, articleId, }) {
   return (
     <WrappedScroll
       render={({ velocity, y, }) => (
-        <OsakaWithApollo {...{ velocity, y, promotedElement: items, }} />
+        <OsakaWithApollo
+          {...{ velocity, y, promotedElement: items, articleId, }}
+        />
       )}
     />
   );

@@ -2,9 +2,13 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  query OsakaQuery {
+  query OsakaQuery($path: String!) {
     canonicalUrl @client
-    section @client
+    articleParent @client {
+      name
+      id
+      url
+    }
     hostname @client
   }
 `;

@@ -56,6 +56,8 @@ export const mobileSearchI18n = Object.freeze({
 });
 
 export const osakaI18n = Object.freeze({
+  backToHome: 'בחזרה לעמוד הבית',
+  backToSection: 'בחזרה למדור',
   nextArticle: 'לכתבה הבאה במדור',
   promotedContent: 'תוכן מקודם',
 });

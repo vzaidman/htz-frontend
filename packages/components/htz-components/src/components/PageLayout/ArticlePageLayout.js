@@ -63,7 +63,7 @@ const ArticlePageLayout = ({
     <Fragment>
       <LayoutRow>{preHeader && getElements(preHeader)}</LayoutRow>
       <LayoutRow>
-        <Header content={header} />
+        <Header content={header} articleId={articleId} />
       </LayoutRow>
       <LayoutRow>
         {postHeader && (

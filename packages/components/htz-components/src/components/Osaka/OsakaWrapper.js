@@ -8,7 +8,7 @@ import LayoutContainer from '../PageLayout/LayoutContainer'; // eslint-disable-l
 
 const propTypes = {
   articles: PropTypes.shape({}).isRequired,
-  section: PropTypes.string.isRequired,
+  articleParent: PropTypes.shape({}).isRequired,
   /**
    * The scroll speed and direction (Y axis), as brought to us by: [`Scroll`](./#scroll)
    */
@@ -41,34 +41,52 @@ class OsakaWrapper extends React.Component {
         query={{ from: 'm', }}
         render={() => {
           const shouldDisplay = this.state.display;
-          const { articles, section, } = this.props;
+          const {
+            articles,
+            articleParent: { name: sectionName, url: sectionUrl, },
+          } = this.props;
           return (
             <FelaTheme
-              render={theme => (
-                <LayoutContainer
-                  miscStyles={{
-                    backgroundColor: 'transparent',
-                    transform: `translate(50%, ${
-                      shouldDisplay ? '0%' : 'calc(-2px - 100%)'
-                    })`,
-                    transitionProperty: 'transform',
-                    ...theme.getDelay('transition', -1),
-                    ...theme.getDuration('transition', -1),
-                    ...theme.getTimingFunction('transition', 'linear'),
-                    position: 'fixed',
-                    start: '50%',
-                    top: '0',
-                    width: '100%',
-                    zIndex: '6',
-                  }}
-                >
-                  <Osaka
-                    nextArticleUrl="2.351"
-                    sectionName={section}
-                    lists={{ ...articles, }}
-                  />
-                </LayoutContainer>
-              )}
+              render={theme => {
+                let nextArticleUrl;
+                let nextArticleText;
+                if (sectionUrl) {
+                  nextArticleUrl = sectionUrl;
+                  nextArticleText = `${
+                    theme.osakaI18n.backToSection
+                  } ${sectionName}`;
+                }
+ else {
+                  nextArticleUrl = '/';
+                  nextArticleText = theme.osakaI18n.backToHome;
+                }
+                return (
+                  <LayoutContainer
+                    miscStyles={{
+                      backgroundColor: 'transparent',
+                      transform: `translate(50%, ${
+                        shouldDisplay ? '0%' : 'calc(-2px - 100%)'
+                      })`,
+                      transitionProperty: 'transform',
+                      ...theme.getDelay('transition', -1),
+                      ...theme.getDuration('transition', -1),
+                      ...theme.getTimingFunction('transition', 'linear'),
+                      position: 'fixed',
+                      start: '50%',
+                      top: '0',
+                      width: '100%',
+                      zIndex: '6',
+                    }}
+                  >
+                    <Osaka
+                      nextArticleUrl={nextArticleUrl}
+                      nextArticleText={nextArticleText}
+                      sectionName={sectionName}
+                      lists={{ ...articles, }}
+                    />
+                  </LayoutContainer>
+                );
+              }}
             />
           );
         }}

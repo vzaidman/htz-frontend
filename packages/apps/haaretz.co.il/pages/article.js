@@ -76,10 +76,29 @@ export class ArticlePage extends React.Component {
           if (loading) return null;
           if (error) logger.error(error);
           const { page: { slots, lineage, }, } = data;
+          const articleId = lineage[0].contentId;
+          this.setState({
+            articleId,
+          });
+          const articleParent =
+            lineage[1] && lineage.length > 2
+              ? {
+                  name: lineage[1].name,
+                  id: lineage[1].contentId,
+                  url: lineage[1].url,
+                }
+              : {
+                  name: null,
+                  id: null,
+                  url: null,
+                };
           client.writeData({
             data: {
-              articleId: lineage[0].contentId,
-              section: lineage[1] ? lineage[1].name : '',
+              articleId,
+              articleParent: {
+                ...articleParent,
+                __typename: 'ArticleParent',
+              },
               pageSchema: {
                 publisher,
                 __typename: 'PageSchema',
