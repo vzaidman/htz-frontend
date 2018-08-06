@@ -76,8 +76,8 @@ export const commentI18n = Object.freeze({
 
 export const commentFormI18n = Object.freeze({
   buttons: Object.freeze({
-    sendBtnTxt: 'שלח',
-    cancelBtnTxt: 'בטל',
+    sendBtnTxt: 'שלחו',
+    cancelBtnTxt: 'בטלו',
     toggleUserBtnText: identified =>
       (identified
         ? 'להוספת תגובה אנונימית לחצו כאן'
