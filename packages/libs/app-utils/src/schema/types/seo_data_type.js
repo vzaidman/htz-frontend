@@ -6,6 +6,7 @@ const SeoData = new GraphQLObjectType({
   name: 'SeoData',
   fields: () => ({
     canonicalUrl: { type: GraphQLString, },
+    amphtml: { type: GraphQLString, },
     metaDescription: { type: GraphQLString, },
     metaImage: { type: GraphQLString, },
     metaKeywords: { type: GraphQLString, },

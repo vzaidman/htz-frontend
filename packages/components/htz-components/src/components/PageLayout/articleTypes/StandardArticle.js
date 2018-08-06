@@ -229,6 +229,7 @@ function StandardArticle({
     metaDescription,
     metaKeywords,
     canonicalUrl,
+    amphtml,
     ogTitle,
     ogDescription,
     ogImage,
@@ -286,6 +287,7 @@ function StandardArticle({
             <meta property="og:image:height" content="630" />
             <meta property="ob:title" content={obTitle} />
             <link rel="canonical" href={canonicalUrl} />
+            {amphtml ? <link rel="amphtml" href={amphtml} /> : null}
           </Head>
 
           <FelaComponent

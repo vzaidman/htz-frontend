@@ -9,6 +9,7 @@ export default gql`
       metaDescription
       metaKeywords
       canonicalUrl
+      amphtml
       ...SeoImage
       ogTitle
       ogDescription
