@@ -3,7 +3,7 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ApolloConsumer, } from 'react-apollo';
-import { borderTop, } from '@haaretz/htz-css-tools';
+import { borderTop, parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import LayoutContainer from '../LayoutContainer';
 import getComponent from '../../../utils/componentFromInputTemplate';
@@ -187,7 +187,7 @@ const StandardLayoutRow = ({
 );
 
 // eslint-disable-next-line react/prop-types
-const WideArticleLayoutRow = ({ children, key, hideDivider, }) => (
+const WideArticleLayoutRow = ({ children, key, hideDivider, miscStyles, }) => (
   <FelaComponent
     style={theme => ({
       marginTop: '3rem',
@@ -210,6 +210,9 @@ const WideArticleLayoutRow = ({ children, key, hideDivider, }) => (
             paddingInlineStart: `${theme.layoutStyle.startColumnPaddingXL}rem`,
           }
         ),
+        ...(miscStyles
+          ? parseStyleProps(miscStyles, theme.mq, theme.type)
+          : []),
       ],
     })}
     render={({ className, }) => (
@@ -362,10 +365,15 @@ function StandardArticle({
                 return (
                   <WideArticleLayoutRow
                     key={element.contentId}
-                    hideDivider={
-                      element.inputTemplate ===
-                      'com.polobase.ClickTrackerBannersWrapper'
-                    }
+                    {...(element.inputTemplate ===
+                    'com.polobase.ClickTrackerBannersWrapper'
+                      ? {
+                          hideDivider: true,
+                          miscStyles: {
+                            display: [ { until: 's', value: 'none', }, ],
+                          },
+                        }
+                      : {})}
                   >
                     <Element
                       articleId={articleId}
