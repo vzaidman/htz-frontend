@@ -1,9 +1,21 @@
 import { createLogger, } from '@haaretz/app-utils';
+import path from 'path';
 
 export default function htz(app, server, DEV) {
   const logger = createLogger({
     name: 'htz-router',
   });
+
+  // send robots.txt file
+  const options = {
+    root: path.join(`${process.cwd()}/static`),
+    headers: {
+      'Content-Type': 'text/plain;charset=UTF-8',
+    },
+  };
+  server.get('/robots.txt', (req, res) =>
+    res.status(200).sendFile('robots.txt', options)
+  );
 
   /* Home Page */
   server.get('/', (req, res) => {
