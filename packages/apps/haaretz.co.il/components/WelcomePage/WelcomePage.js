@@ -37,14 +37,10 @@ class WelcomePage extends Component {
             <Mutation mutation={UPDATE_WELCOME_SCREEN_VIEWED}>
               {setWelcomeScreenViewed => (
                 <Query query={WELCOME_SCREEN_VIEWED} variables={{ id, }}>
-                  {({
-                    data: { userInfo: { welcomeScreenViewed, }, },
-                    loading,
-                    error,
-                    refetch,
-                  }) => {
+                  {({ data, loading, error, refetch, }) => {
                     if (loading) return null;
                     if (error) return null;
+                    const { userInfo: { welcomeScreenViewed, }, } = data;
                     if (welcomeScreenViewed) return null;
                     return (
                       <A11yDialog
