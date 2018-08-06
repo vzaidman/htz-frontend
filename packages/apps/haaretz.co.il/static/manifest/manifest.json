@@ -1,0 +1,7 @@
+{
+  "name": "Haaretz",
+  "short_name": "Haaretz",
+  "gcm_sender_id": "370902602780",
+  "display": "standalone",
+  "gcm_user_visible_only": true
+}

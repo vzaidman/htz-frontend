@@ -131,6 +131,10 @@ const createDocument = ({
               name="viewport"
               content="width=device-width, initial-scale=1, minimum-scale=1"
             />
+            {/* dont add link to manifest on purchase-page app  */}
+            {hasToggleableTheme ? null : (
+              <link rel="manifest" href="/static/manifest/manifest.json" />
+            )}
             <SEO host={this.props.host} />
             {buildFontPreloadLink(fontRules)}
             <link rel="shortcut icon" href="about:blank" />
