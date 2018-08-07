@@ -20,7 +20,6 @@ function SEO({ host, }) {
 
       {/* <!-- Domains --> */}
       <link rel="preconnect dns-prefetch" href="//images.haaretz.co.il" />
-      <link rel="preconnect dns-prefetch" href="//cdn.polyfill.io" />
       <link rel="preconnect dns-prefetch" href="//cm.g.doubleclick.net" />
       <link
         rel="preconnect dns-prefetch"
@@ -32,6 +31,11 @@ function SEO({ host, }) {
       <link
         rel="preload"
         href="//www.googletagservices.com/tag/js/gpt.js"
+        as="script"
+      />
+      <link
+        rel="preload"
+        href="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.includes,Object.entries&flags=gated"
         as="script"
       />
 

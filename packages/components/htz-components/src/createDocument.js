@@ -135,15 +135,16 @@ const createDocument = ({
             {hasToggleableTheme ? null : (
               <link rel="manifest" href="/static/manifest/manifest.json" />
             )}
-            <SEO host={this.props.host} />
             {buildFontPreloadLink(fontRules)}
             <link rel="shortcut icon" href="about:blank" />
+            <SEO host={this.props.host} />
             {this.renderStyles()}
             {this.renderData()}
             {this.renderFoftScript()}
           </Head>
           <body>
             <Main />
+            <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.includes,Object.entries&flags=gated" />
             <NextScript />
           </body>
         </html>
