@@ -149,7 +149,11 @@ const buildComponent = (context, index, isLastItem) => {
                       mediaQueryCallback
                     )
               }
-              renderFirstImpression={!isLastItem}
+              {...(uniqueId === 'p' || uniqueId === 'a' || uniqueId === 'h4'
+                ? {
+                    renderFirstImpression: !isLastItem,
+                  }
+                : {})}
             />
           )}
         />
