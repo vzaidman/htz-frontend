@@ -50,8 +50,8 @@ const commentWrapperStyle = {
   paddingTop: '2rem',
 };
 
-const commentNumberContainerStyle = theme => ({
-  width: '8.5rem',
+const commentNumberContainerStyle = ({ theme, isSubComment, }) => ({
+  width: isSubComment ? '6rem' : '8.5rem',
   color: theme.color('comments', 'number'),
   flexShrink: '0',
   flexGrow: '0',
@@ -393,7 +393,10 @@ class Comment extends React.Component {
         }) => (
           <Section tagName="article" className={className}>
             <FelaComponent style={commentWrapperStyle}>
-              <FelaComponent style={commentNumberContainerStyle}>
+              <FelaComponent
+                isSubComment={isSubComment}
+                rule={commentNumberContainerStyle}
+              >
                 <span>
                   {isSubComment ? (
                     isFirstSubComment ? (
@@ -466,7 +469,7 @@ class Comment extends React.Component {
                       marginInlineEnd: '2rem',
                       type: [ { value: 0, }, ],
                     }}
-                    boxModel={{ hp: 4, vp: 0.5, }}
+                    boxModel={{ hp: 2, vp: 0.5, }}
                     onClick={this.handleReplyClick}
                   >
                     {replyBtnTxt}
@@ -477,7 +480,7 @@ class Comment extends React.Component {
                         backgroundColor: 'transparent',
                         type: [ { value: 0, }, ],
                       }}
-                      boxModel={{ hp: 4, vp: 0.5, }}
+                      boxModel={{ hp: 2, vp: 0.5, }}
                       onClick={() => this.setState({ fadeText: false, })}
                     >
                       {readMoreBtnTxt}
@@ -505,23 +508,25 @@ class Comment extends React.Component {
                       this.setState({ userLike: 'minus', });
                     }}
                   />
-                  <Button
-                    isFlat
-                    variant="negative"
-                    boxModel={{ hp: 2, vp: 0.5, }}
-                    miscStyles={{
-                      backgroundColor: 'transparent',
-                      type: [ { value: -2, }, ],
-                      marginInlineStart: [ { until: 's', value: 'auto', }, ],
-                    }}
-                    isDisabled={this.state.abuseReported}
-                    onClick={() => {
-                      reportAbuse(commentId);
-                      this.setState({ abuseReported: true, });
-                    }}
-                  >
-                    {reportAbuseBtnTxt}
-                  </Button>
+                  {!this.state.fadeText ? (
+                    <Button
+                      isFlat
+                      variant="negative"
+                      boxModel={{ hp: 2, vp: 0.5, }}
+                      miscStyles={{
+                        backgroundColor: 'transparent',
+                        type: [ { value: -2, }, ],
+                        marginInlineStart: [ { until: 's', value: 'auto', }, ],
+                      }}
+                      isDisabled={this.state.abuseReported}
+                      onClick={() => {
+                        reportAbuse(commentId);
+                        this.setState({ abuseReported: true, });
+                      }}
+                    >
+                      {reportAbuseBtnTxt}
+                    </Button>
+                  ) : null}
                 </FelaComponent>
                 {this.state.abuseReported && (
                   <FelaComponent
