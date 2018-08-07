@@ -1,4 +1,4 @@
-FROM node:8.9
+FROM node:10.8
 ARG NEXT_BUILD_ID 
 COPY  . /workspace/
 WORKDIR /workspace/
