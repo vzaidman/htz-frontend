@@ -12,6 +12,11 @@ import Time from '../Time/Time';
 import AuthorNotificationsRegistration from '../ServiceByMailRegistration/AuthorNotificationsRegistration';
 import SlideinBox from '../Transitions/SlideinBox';
 
+const outerStyle = ({ theme, miscStyles, }) => ({
+  extend: [
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
+});
 const wrapperStyle = ({ theme, miscStyles, }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -33,7 +38,6 @@ const wrapperStyle = ({ theme, miscStyles, }) => ({
       { from: 'l', },
       { flexDirection: 'column', alignItems: 'flex-start', }
     ),
-    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
 });
 
@@ -97,149 +101,150 @@ class ArticleHeaderMeta extends React.Component {
   render() {
     const { authors, publishDate, reportingFrom, miscStyles, } = this.props;
     return (
-      <FelaComponent
-        miscStyles={miscStyles}
-        rule={wrapperStyle}
-        render={({ className, theme, }) => (
-          <Fragment>
-            <div className={className}>
-              <FelaComponent style={imageAuthorsAndMobileTimeContStyle}>
-                {/*  Author image */}
-                {authors[0].image && (
-                  <Image
-                    data={authors[0].image}
-                    imgOptions={{
-                      transforms: {
-                        width: '100',
-                        aspect: 'square',
-                        quality: 'auto',
-                        gravity: 'face',
-                      },
-                    }}
-                    miscStyles={{
-                      width: [
-                        { until: 'l', value: '6rem', },
-                        { from: 'l', value: '10rem', },
-                      ],
-                      height: [
-                        { until: 'l', value: '6rem', },
-                        { from: 'l', value: '10rem', },
-                      ],
-                      paddingBottom: '6rem',
-                      borderRadius: '50%',
-                      overflow: 'hidden',
-                      display: [
-                        { until: 's', value: 'inline-block', },
-                        { from: 's', until: 'l', value: 'none', },
-                        { from: 'l', value: 'block', },
-                      ],
-                      marginInlineEnd: '1rem',
-                    }}
-                  />
-                )}
-
-                {/* Author name and publish-date */}
-                <FelaComponent style={authorsAndTimeContStyle}>
-                  {authors.map((author, idx) => (
-                    <CreditArticle
-                      key={author.contentId || author.name}
-                      contentName={author.name || author.contentName}
-                      url={author.url}
-                      miscStyles={{
-                        ':after': {
-                          content:
-                            idx === authors.length - 1
-                              ? null
-                              : authors.length > 1
-                                ? authors.length - 2 === idx ? '" ו"' : '", "'
-                                : null,
+      <FelaComponent rule={outerStyle} miscStyles={miscStyles}>
+        <FelaComponent
+          rule={wrapperStyle}
+          render={({ className, theme, }) => (
+            <Fragment>
+              <div className={className}>
+                <FelaComponent style={imageAuthorsAndMobileTimeContStyle}>
+                  {/*  Author image */}
+                  {authors[0].image && (
+                    <Image
+                      data={authors[0].image}
+                      imgOptions={{
+                        transforms: {
+                          width: '100',
+                          aspect: 'square',
+                          quality: 'auto',
+                          gravity: 'face',
                         },
-                        display: 'inline',
+                      }}
+                      miscStyles={{
+                        width: [
+                          { until: 'l', value: '6rem', },
+                          { from: 'l', value: '10rem', },
+                        ],
+                        height: [
+                          { until: 'l', value: '6rem', },
+                          { from: 'l', value: '10rem', },
+                        ],
+                        paddingBottom: '6rem',
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        display: [
+                          { until: 's', value: 'inline-block', },
+                          { from: 's', until: 'l', value: 'none', },
+                          { from: 'l', value: 'block', },
+                        ],
+                        marginInlineEnd: '1rem',
                       }}
                     />
-                  ))}
-                  {reportingFrom && (
-                    <FelaComponent
-                      style={{
-                        color: theme.color('primary'),
-                        extend: [
-                          theme.type(-2, { fromBp: 'xl', }),
-                          theme.type(-1, { fromBp: 's', untilBp: 'xl', }),
-                          theme.type(-2, { untilBp: 's', }),
-                          theme.mq({ from: 'l', }, { display: 'block', }),
-                          theme.mq(
-                            {
-                              until: 'l',
-                            },
-                            {
-                              ':before': {
-                                content: '" | "',
-                              },
-                            }
-                          ),
-                        ],
-                      }}
-                      render="span"
-                    >
-                      {reportingFrom}
-                    </FelaComponent>
                   )}
 
-                  <FelaComponent
-                    rule={timeStyle}
-                    mobileTime
-                    render={({ className, }) => (
-                      <Time
-                        time={publishDate}
-                        format="DD.MM.YYYY HH:mm"
-                        className={className}
+                  {/* Author name and publish-date */}
+                  <FelaComponent style={authorsAndTimeContStyle}>
+                    {authors.map((author, idx) => (
+                      <CreditArticle
+                        key={author.contentId || author.name}
+                        contentName={author.name || author.contentName}
+                        url={author.url}
+                        miscStyles={{
+                          ':after': {
+                            content:
+                              idx === authors.length - 1
+                                ? null
+                                : authors.length > 1
+                                  ? authors.length - 2 === idx ? '" ו"' : '", "'
+                                  : null,
+                          },
+                          display: 'inline',
+                        }}
                       />
+                    ))}
+                    {reportingFrom && (
+                      <FelaComponent
+                        style={{
+                          color: theme.color('primary'),
+                          extend: [
+                            theme.type(-2, { fromBp: 'xl', }),
+                            theme.type(-1, { fromBp: 's', untilBp: 'xl', }),
+                            theme.type(-2, { untilBp: 's', }),
+                            theme.mq({ from: 'l', }, { display: 'block', }),
+                            theme.mq(
+                              {
+                                until: 'l',
+                              },
+                              {
+                                ':before': {
+                                  content: '" | "',
+                                },
+                              }
+                            ),
+                          ],
+                        }}
+                        render="span"
+                      >
+                        {reportingFrom}
+                      </FelaComponent>
                     )}
-                  />
+
+                    <FelaComponent
+                      rule={timeStyle}
+                      mobileTime
+                      render={({ className, }) => (
+                        <Time
+                          time={publishDate}
+                          format="DD.MM.YYYY HH:mm"
+                          className={className}
+                        />
+                      )}
+                    />
+                  </FelaComponent>
                 </FelaComponent>
-              </FelaComponent>
-              {/* alerts and desktop time */}
-              <FelaComponent style={alertsAndDesktopTimeContStyle}>
-                {/* display alerts only if the firstFollow author,
-                  guyk: should it be only if there is only one author
-                (that was the way it was here before refactoring) */}
-                {// authors.length === 1 &&
-                authors[0].hasEmailAlerts && (
-                  <Alerts
-                    author={authors[0]}
-                    onToggle={this.toggleAuthorAlertsForm}
-                    ref={this.alertsToggleBtnRef}
-                  />
-                )}
-              </FelaComponent>
-              <FelaComponent
-                rule={timeStyle}
-                mobileTime={false}
-                render={({ className, }) => (
-                  <Time
-                    time={publishDate}
-                    format="HH:mm DD.MM.YYYY"
-                    className={className}
-                  />
-                )}
-              />
-            </div>
-            <SlideinBox
-              show={
-                authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm
-              }
-              duration={2}
-              focus
-              maxHeight={100}
-            >
-              <AuthorNotificationsRegistration
-                author={authors[0]}
-                onCancel={this.toggleAuthorAlertsForm}
-              />
-            </SlideinBox>
-          </Fragment>
-        )}
-      />
+                {/* alerts and desktop time */}
+                <FelaComponent style={alertsAndDesktopTimeContStyle}>
+                  {/* display alerts only if the firstFollow author,
+                    guyk: should it be only if there is only one author
+                  (that was the way it was here before refactoring) */}
+                  {// authors.length === 1 &&
+                  authors[0].hasEmailAlerts && (
+                    <Alerts
+                      author={authors[0]}
+                      onToggle={this.toggleAuthorAlertsForm}
+                      ref={this.alertsToggleBtnRef}
+                    />
+                  )}
+                </FelaComponent>
+                <FelaComponent
+                  rule={timeStyle}
+                  mobileTime={false}
+                  render={({ className, }) => (
+                    <Time
+                      time={publishDate}
+                      format="HH:mm DD.MM.YYYY"
+                      className={className}
+                    />
+                  )}
+                />
+              </div>
+              <SlideinBox
+                show={
+                  authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm
+                }
+                duration={2}
+                focus
+                maxHeight={100}
+              >
+                <AuthorNotificationsRegistration
+                  author={authors[0]}
+                  onCancel={this.toggleAuthorAlertsForm}
+                />
+              </SlideinBox>
+            </Fragment>
+          )}
+        />
+      </FelaComponent>
     );
   }
 }

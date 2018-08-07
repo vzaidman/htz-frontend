@@ -98,7 +98,7 @@ function Header({
                         ),
                         theme.mq(
                           { until: 's', },
-                          { order: 1, marginTop: '1rem', }
+                          { order: -2, marginTop: '1rem', }
                         ),
                       ],
                     }}
@@ -117,7 +117,6 @@ function Header({
                     extend: [
                       theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
                       theme.mq({ until: 'l', }, { paddingInlineEnd: '2rem', }),
-                      theme.mq({ until: 's', }, { order: 2, }),
                     ],
                   }}
                   render={({ className, }) => (
@@ -142,10 +141,9 @@ function Header({
                     marginInlineStart: '2rem',
                     marginInlineEnd: '2rem',
                     display: [
-                      { until: 'l', value: 'flex', },
+                      { until: 'l', value: 'block', },
                       { from: 'l', value: 'none', },
                     ],
-                    order: [ { until: 's', value: 3, }, ],
                   }}
                 />
                 <FelaComponent
@@ -163,6 +161,7 @@ function Header({
                     elementObj={headlineElement}
                     miscStyles={{
                       marginTop: '2rem',
+                      order: [ { until: 's', value: -1, }, ],
                     }}
                   />
                 )}

@@ -10,7 +10,7 @@ import authorPropTypes from '../../propTypes/authorPropTypes';
 export default class AuthorNotificationsRegistration extends React.Component {
   constructor(props) {
     super(props);
-    this.id = `authorAlerts_${Math.floor(Math.random() * 100)}}`;
+    this.id = `authorAlerts_${Math.floor(Math.random() * 100)}`;
     this.state = {
       showDialog: false,
       registrationSuccess: false,
