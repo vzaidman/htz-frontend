@@ -9,7 +9,7 @@ type CommonButtonProps = {
   size: number,
   iconStyles: StyleObj,
   props: Object,
-}
+};
 
 type ActionButtonRenderObject = {
   platform: string,
@@ -27,9 +27,11 @@ export type ActionButtonProps = {
 
 export type ButtonProps = {
   children: ChildrenArray<Element<any> | null>,
-  miscStyles: StyleObj,
+  miscStyles?: StyleObj,
   href?: string | null,
-  props: Object,
+  title?: ?string,
+  props?: Object,
+  onClick?: any => any,
 };
 
 export type CommentButtonProps = {
@@ -49,8 +51,8 @@ export type FacebookLogoProps = {
 };
 
 export type FacebookLogoState = {
-  facebookCount: number | string,
-  host: string,
+  facebookCount?: number | string,
+  host: ?string,
 };
 
 export type GooglePlusButtonProps = {
@@ -78,7 +80,7 @@ export type MessengerButtonProps = {
 };
 
 export type PrintButtonProps = {
-  ...CommonButtonProps
+  ...CommonButtonProps,
 };
 
 export type TwitterButtonProps = {

@@ -4,9 +4,8 @@ import React from 'react';
 import gql from 'graphql-tag';
 import querystring from 'querystring';
 import { ApolloConsumer, } from '../ApolloBoundary/ApolloBoundary';
-import Button from '../Button/Button';
 import IconSave from '../Icon/icons/IconSave';
-import { ActionButton, } from './actionList';
+import { ActionButton, Button, } from './actionList';
 
 const GET_READING_LIST = gql`
   query GetReadingList {
@@ -40,6 +39,7 @@ export default class ActionSave extends React.Component {
               }
               return (
                 <Button
+                  title="שמירת כתבה"
                   {...props}
                   miscStyles={buttonStyles(isArticleSaved)}
                   onClick={() => {

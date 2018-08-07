@@ -20,10 +20,6 @@ const buttonPropType = PropTypes.oneOfType([
 
 /* eslint-disable no-trailing-spaces */
 const propTypes = {
-  boxModel: PropTypes.shape({
-    hp: PropTypes.number,
-    vp: PropTypes.number,
-  }),
   /**
    * Each button can be a string (e.g. 'facebook') or an object with additional attributes
    (e.g. {
@@ -79,8 +75,6 @@ const propTypes = {
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: stylesPropType, // eslint-disable-line react/no-unused-prop-types
-  isFlat: PropTypes.bool,
-  isRound: PropTypes.bool,
   /**
    * The size of the buttons Icons (according to the [`Icon`](./#icon) component)
    */
@@ -94,11 +88,8 @@ const propTypes = {
 const defaultProps = {
   elementName: null,
   elementUrl: null,
-  boxModel: { hp: 3, vp: 0.5, },
   globalButtonsStyles: null,
   globalIconsStyles: null,
-  isFlat: false,
-  isRound: false,
   miscStyles: null,
   vertical: false,
   size: 2,
@@ -119,14 +110,11 @@ const wrapperStyle = ({ vertical, miscStyles, theme, }) => ({
 const ActionWrapper = createComponent(wrapperStyle);
 
 const ActionButtons = ({
-  boxModel,
   buttons,
   elementName,
   elementUrl,
   globalButtonsStyles,
   globalIconsStyles,
-  isFlat,
-  isRound,
   miscStyles,
   size,
   vertical,
@@ -138,9 +126,6 @@ const ActionButtons = ({
       <ActionButton
         key={index}
         fontSize={-2}
-        boxModel={boxModel}
-        isFlat={isFlat}
-        isRound={isRound}
         // Ben:
         // The 'save action button' style should sent by parent component,
         // but the state if the article is saved or not is from the 'actionList',

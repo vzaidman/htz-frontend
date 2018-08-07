@@ -6,9 +6,9 @@ import { ApolloConsumer, } from 'react-apollo';
 
 import HeaderText from '../../../ArticleHeader/HeaderText';
 import ArticleHeaderMeta from '../../../ArticleHeader/ArticleHeaderMeta';
-import ActionButtons from '../../../ActionButtons/ActionButtons';
 import HeadlineElement from '../../../HeadlineElement/HeadlineElement';
 import Breadcrumbs from '../../../Breadcrumbs/Breadcrumbs';
+import ShareBar from './ShareBar';
 
 Header.propTypes = {
   /**
@@ -148,66 +148,16 @@ function Header({
                     order: [ { until: 's', value: 3, }, ],
                   }}
                 />
-
-                <ActionButtons
-                  miscStyles={{
-                    marginTop: '3rem',
-                    marginInlineStart: [
-                      { until: 'xl', value: '2rem', },
-                      { from: 'xl', value: '3rem', },
-                    ],
-                    marginInlineEnd: [ { until: 'l', value: '2rem', }, ],
-                    display: [ { until: 's', value: 'none', }, ],
-                  }}
-                  elementName={title}
-                  elementUrl={canonicalUrl}
-                  buttons={{
-                    start: [
-                      {
-                        name: 'facebookLogo',
-                        buttonStyles: {
-                          color: theme.color('facebook'),
-                          ':hover': {
-                            color: theme.color('facebook'),
-                          },
-                        },
-                      },
-                      {
-                        name: 'whatsapp',
-                        buttonStyles: {
-                          color: theme.color('whatsapp'),
-                          ':hover': {
-                            color: theme.color('whatsapp'),
-                          },
-                        },
-                      },
-                      'mail',
-                    ],
-                    end: [
-                      'comments',
-                      {
-                        name: 'save',
-                        buttonStyles: isArticleSaved => ({
-                          minWidth: '10rem',
-                          ...(isArticleSaved && {
-                            color: theme.color('neutral', '-10'),
-                            backgroundColor: theme.color('primary'),
-                            ':hover': {
-                              color: theme.color('neutral', '-10'),
-                              backgroundColor: theme.color('secondary'),
-                            },
-                          }),
-                        }),
-                      },
-                      'print',
-                      'zen',
+                <FelaComponent
+                  style={{
+                    paddingInlineStart: '2rem',
+                    extend: [
+                      theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
                     ],
                   }}
-                  globalButtonsStyles={{
-                    minWidth: '10rem',
-                  }}
-                  size={3}
-                />
+                >
+                  <ShareBar title={title} canonicalUrl={canonicalUrl} />
+                </FelaComponent>
                 {headlineElement && (
                   <HeadlineElement
                     elementObj={headlineElement}

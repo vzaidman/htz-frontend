@@ -2,10 +2,7 @@
 /* eslint-disable react/prop-types */
 /* global window, fetch, Headers  */
 import React from 'react';
-import type {
-  StatelessFunctionalComponent,
-  Node,
-} from 'react';
+import type { StatelessFunctionalComponent, Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
@@ -13,7 +10,9 @@ import type {
   ActionButtonProps,
   ButtonProps,
   CommentButtonProps,
-  FacebookButtonProps, FacebookLogoProps, FacebookLogoState,
+  FacebookButtonProps,
+  FacebookLogoProps,
+  FacebookLogoState,
   GooglePlusButtonProps,
   MailAlertButtonProps,
   MailButtonProps,
@@ -126,20 +125,25 @@ export const ActionButton = ({ render, }: ActionButtonProps): Node => (
 export const Button: StatelessFunctionalComponent<ButtonProps> = ({
   children,
   miscStyles,
+  title,
   href,
   ...props
 }): Node => (
   <FelaComponent
     style={(theme: Object) => ({
       ...theme.type(-2),
-      fontWeight: '700',
+      alignItems: 'center',
+      display: 'flex',
       backgroundColor: theme.color('button', 'primaryBg'),
       color: theme.color('button', 'primaryText'),
+      fontWeight: '700',
+      justifyContent: 'center',
       paddingTop: '1rem',
       paddingStart: '2rem',
       paddingBottom: '1rem',
       paddingEnd: '2rem',
       position: 'relative',
+      textAlign: 'center',
       ':visited': { color: theme.color('button', 'primaryText'), },
       ':hover': {
         backgroundColor: theme.color('button', 'primaryHoverBg'),
@@ -161,11 +165,11 @@ export const Button: StatelessFunctionalComponent<ButtonProps> = ({
     })}
     render={({ className, }: { className: string }) =>
       (href ? (
-        <HtzLink href={href} className={className} {...props}>
+        <HtzLink href={href} className={className} attrs={{ title, }} {...props}>
           {children}
         </HtzLink>
       ) : (
-        <button className={className} {...props}>
+        <button className={className} title={title} {...props}>
           {children}
         </button>
       ))
@@ -184,6 +188,7 @@ const Comments: StatelessFunctionalComponent<CommentButtonProps> = ({
       <Button
         {...props}
         miscStyles={buttonStyles}
+        title="מעבר לטוקבקים"
         href="#commentsSection"
         onClick={() => {
           biAction({
@@ -207,12 +212,14 @@ const Comments: StatelessFunctionalComponent<CommentButtonProps> = ({
                 {({ loading, error, data, }) => {
                   if (loading) return null;
                   if (error) return null;
-                  const { totalHits, } = data.commentsElement;
-                  return (
+                  const totalHits: number = Number(
+                    data.commentsElement.totalHits
+                  );
+                  return totalHits && totalHits > 0 ? (
                     <FelaComponent style={{ marginEnd: '1rem', }} render="span">
                       {totalHits}
                     </FelaComponent>
-                  );
+                  ) : null;
                 }}
               </Query>
             ) : null;
@@ -240,6 +247,7 @@ const Facebook: StatelessFunctionalComponent<FacebookButtonProps> = ({
         <Button
           {...props}
           miscStyles={buttonStyles}
+          title="שתפו בפייסבוק"
           href={`https://www.facebook.com/dialog/feed?app_id=${fbAppIds.get(
             host
           )}&redirect_uri=${elementUrl}&link=${elementUrl}&display=popup`}
@@ -267,15 +275,27 @@ const Facebook: StatelessFunctionalComponent<FacebookButtonProps> = ({
 
 const FacebookRound = (props: Object) => <Facebook {...props} round />;
 
-class FacebookLogo extends React.Component<FacebookLogoProps, FacebookLogoState> {
-  componentDidUpdate(prevProps: FacebookLogoProps, prevState: FacebookLogoState) {
-    const eligibleForFacebookFetch: boolean = prevState.host !== this.state.host;
+class FacebookLogo extends React.Component<
+  FacebookLogoProps,
+  FacebookLogoState
+> {
+  state = {
+    host: null,
+    facebookCount: 0,
+  };
+
+  componentDidUpdate(
+    prevProps: FacebookLogoProps,
+    prevState: FacebookLogoState
+  ) {
+    const eligibleForFacebookFetch: boolean =
+      prevState.host !== this.state.host;
     if (eligibleForFacebookFetch) {
       this.getFacebookCount(this.state.host);
     }
   }
 
-  getFacebookCount = (host: string) => {
+  getFacebookCount = (host: ?string) => {
     const accessToken: string = fbAcceessTokens.get(host);
     const url: string = `https://graph.facebook.com/?fields=share&access_token=${accessToken}&id=${
       this.props.elementUrl
@@ -309,6 +329,7 @@ class FacebookLogo extends React.Component<FacebookLogoProps, FacebookLogoState>
             <Button
               {...props}
               miscStyles={buttonStyles}
+              title="שתפו בפייסבוק"
               target="_black"
               onClick={() => {
                 window.open(
@@ -352,6 +373,7 @@ const GooglePlus: StatelessFunctionalComponent<GooglePlusButtonProps> = ({
       <Button
         {...props}
         miscStyles={buttonStyles}
+        title="שתפו בגוגל פלוס"
         href={`https://plus.google.com/share?url=${elementUrl}`}
         onClick={() => {
           biAction({
@@ -387,6 +409,7 @@ const Mail: StatelessFunctionalComponent<MailButtonProps> = ({
       <Button
         {...props}
         miscStyles={buttonStyles}
+        title="שתפו כתבה במייל"
         href={`mailto:?subject=${elementName}&body=${elementUrl}`}
         onClick={() => {
           biAction({
@@ -445,6 +468,7 @@ const Messenger: StatelessFunctionalComponent<MessengerButtonProps> = ({
       <Button
         {...props}
         miscStyles={buttonStyles}
+        title="שתפו כתבה במסנג'ר"
         href={`fb-messenger://share/?link=${elementUrl}&app_id=${fbAppIds.get(
           host
         )}`}
@@ -482,6 +506,7 @@ const Print: StatelessFunctionalComponent<PrintButtonProps> = ({
           target: '_blank',
         }}
         {...props}
+        title="הדפיסו כתבה"
         miscStyles={buttonStyles}
         href={`http://${hostname}/misc/article-print-page/${articleId}`}
         onClick={() => {
@@ -514,6 +539,7 @@ const Twitter: StatelessFunctionalComponent<TwitterButtonProps> = ({
       <Button
         {...props}
         miscStyles={buttonStyles}
+        title="שתפו בטוויטר"
         href={`https://twitter.com/intent/tweet?text=${elementName}&url=${elementUrl}`}
         onClick={() => {
           biAction({
@@ -542,6 +568,7 @@ const Whatsapp: StatelessFunctionalComponent<WhatsappButtonProps> = ({
       <Button
         {...props}
         miscStyles={buttonStyles}
+        title="שתפו בוואטסאפ"
         onClick={() => {
           window.open(
             `https://web.whatsapp.com/send?text=${elementUrl}` + // eslint-disable-line prefer-template
