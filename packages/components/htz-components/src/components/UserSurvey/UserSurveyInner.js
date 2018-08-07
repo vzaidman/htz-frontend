@@ -126,6 +126,7 @@ class UserSurveyInner extends Component {
       1: 'מרוצה מאוד',
       2: 'מרוצה',
       3: 'לא מרוצה',
+      4: 'זה גרוע',
     };
 
     const radios = Object.keys(userOptions).map(option => (
@@ -219,8 +220,8 @@ class UserSurveyInner extends Component {
                             labelHidden
                             placeholder="בחוויה שלי..."
                             height={[
-                              { from: 's', value: 13, },
-                              { until: 's', value: 16, },
+                              { from: 's', value: 16, },
+                              { until: 's', value: 19, },
                             ]}
                             miscStyles={textArea}
                             onChange={evt =>
