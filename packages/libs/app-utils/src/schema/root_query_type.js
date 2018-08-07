@@ -2,8 +2,9 @@
 import {
   GraphQLObjectType,
   GraphQLNonNull,
-  GraphQLString,
   GraphQLBoolean,
+  GraphQLString,
+  GraphQLList,
   GraphQLInt,
   GraphQLID,
 } from 'graphql';
@@ -54,6 +55,21 @@ const RootQuery = new GraphQLObjectType({
       args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
       resolve(parentValue, { path, }, context) {
         return context.listsLoader.load(path);
+      },
+    },
+    nextArticle: {
+      type: new GraphQLObjectType({
+        name: 'NextArticle',
+        fields: () => ({
+          result: { type: GraphQLString, },
+        }),
+      }),
+      args: {
+        sectionId: { type: new GraphQLNonNull(GraphQLID), },
+        readingHistory: { type: new GraphQLList(GraphQLID), },
+      },
+      resolve(parentValue, args, context) {
+        return context.nextArticleLoader.load(args);
       },
     },
     list: {

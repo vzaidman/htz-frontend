@@ -1,3 +1,4 @@
+/* global sessionStorage */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
@@ -49,24 +50,52 @@ export class ArticlePage extends React.Component {
 
   static defaultProps = {};
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const nextArticleId = nextProps.url.query.path.match(
+      /(?:.*-?)(1\.\d+.*)/
+    )[1];
+
+    if (!prevState.articleId || prevState.articleId !== nextArticleId) {
+      return { articleId: nextArticleId, };
+    }
+
+    return { articleId: prevState.articleId, };
+  }
+
   state = {
     articleId: null,
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (
-      !this.state.articleId ||
-      this.state.articleId !== nextProps.url.query.path
-    ) {
-      this.setState({
-        articleId: nextProps.url.query.path,
-      });
-    }
+  componentDidMount() {
+    const articleId = this.props.url.query.path.match(/(?:.*-?)(1\.\d+.*)/)[1];
+    this.writeToSession(articleId);
+
+    // eslint-disable-next-line react/no-did-mount-set-state
+    this.setState({
+      articleId,
+    });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return this.state.articleId !== nextState.articleId;
   }
+
+  componentDidUpdate() {
+    console.log('updated');
+    console.log(this.state);
+    this.writeToSession(this.state.articleId);
+  }
+
+  writeToSession = articleId => {
+    const history = JSON.parse(sessionStorage.getItem('readingHistory')) || [];
+    if (!history.includes(articleId)) {
+      history.push(articleId);
+      sessionStorage.setItem(
+        'readingHistory',
+        JSON.stringify(history, null, 2)
+      );
+    }
+  };
 
   render() {
     const { url, } = this.props;

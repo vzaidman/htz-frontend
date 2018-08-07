@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import { appendScript, } from '../../utils/scriptTools';
-import OsakaQuery from './queries/getData';
+import { fromCache, } from './queries/getData';
 import WrappedScroll from '../Scroll/Scroll';
 import OsakaWrapper from './OsakaWrapper';
 
@@ -33,7 +33,7 @@ class OsakaWithOutbrain extends React.Component {
   getArticles = () => {
     // eslint-disable-next-line react/prop-types
     const { promotedElement, hostname, canonicalUrl, } = this.props;
-    const url = this.changeSubDomain(canonicalUrl);
+    const url = canonicalUrl ? this.changeSubDomain(canonicalUrl) : '';
     const promoted = promotedElement[0].banners[0];
     const siteKey = this.keys.get(hostname);
     OBR &&
@@ -101,13 +101,21 @@ class OsakaWithOutbrain extends React.Component {
 
 // eslint-disable-next-line react/prop-types
 const OsakaWithApollo = ({ articleId, ...props }) => (
-  <Query query={OsakaQuery} variables={{ path: articleId, }}>
+  <Query query={fromCache} variables={{ path: articleId, }}>
     {({ loading, error, data, }) => {
       if (loading) return null;
       if (error) return null;
-      const { hostname, ...queryProps } = data;
+      const {
+        page: { seoData: { canonicalUrl, }, },
+        hostname,
+        articleParent,
+      } = data;
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-      return <OsakaWithOutbrain {...{ ...props, ...queryProps, host, }} />;
+      return (
+        <OsakaWithOutbrain
+          {...{ ...props, articleParent, host, canonicalUrl, }}
+        />
+      );
     }}
   </Query>
 );
@@ -116,9 +124,9 @@ const OsakaWithApollo = ({ articleId, ...props }) => (
 function OsakaController({ items, articleId, }) {
   return (
     <WrappedScroll
-      render={({ velocity, y, }) => (
+      render={scrollProps => (
         <OsakaWithApollo
-          {...{ velocity, y, promotedElement: items, articleId, }}
+          {...{ ...scrollProps, promotedElement: items, articleId, }}
         />
       )}
     />

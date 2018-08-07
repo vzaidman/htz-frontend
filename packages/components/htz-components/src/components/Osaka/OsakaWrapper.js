@@ -1,10 +1,13 @@
+/* global sessionStorage */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaTheme, } from 'react-fela';
 
 import Media from '../Media/Media';
 import Osaka from './Osaka';
-import LayoutContainer from '../PageLayout/LayoutContainer'; // eslint-disable-line import/no-named-as-default
+import LayoutContainer from '../PageLayout/LayoutContainer';
+import { nextArticle, } from './queries/getData';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 
 const propTypes = {
   articles: PropTypes.shape({}).isRequired,
@@ -36,6 +39,7 @@ class OsakaWrapper extends React.Component {
   }
 
   render() {
+    const readingHistory = JSON.parse(sessionStorage.getItem('readingHistory'));
     return (
       <Media
         query={{ from: 'm', }}
@@ -43,23 +47,17 @@ class OsakaWrapper extends React.Component {
           const shouldDisplay = this.state.display;
           const {
             articles,
-            articleParent: { name: sectionName, url: sectionUrl, },
+            articleParent: {
+              name: sectionName,
+              url: sectionUrl,
+              id: sectionId,
+            },
           } = this.props;
           return (
             <FelaTheme
               render={theme => {
-                let nextArticleUrl;
-                let nextArticleText;
-                if (sectionUrl) {
-                  nextArticleUrl = sectionUrl;
-                  nextArticleText = `${
-                    theme.osakaI18n.backToSection
-                  } ${sectionName}`;
-                }
- else {
-                  nextArticleUrl = '/';
-                  nextArticleText = theme.osakaI18n.backToHome;
-                }
+                let nextArticleUrl = '/';
+                let nextArticleText = theme.osakaI18n.backToHome;
                 return (
                   <LayoutContainer
                     miscStyles={{
@@ -78,12 +76,50 @@ class OsakaWrapper extends React.Component {
                       zIndex: '6',
                     }}
                   >
-                    <Osaka
-                      nextArticleUrl={nextArticleUrl}
-                      nextArticleText={nextArticleText}
-                      sectionName={sectionName}
-                      lists={{ ...articles, }}
-                    />
+                    {sectionId ? (
+                      <Query
+                        query={nextArticle}
+                        variables={{
+                          sectionId,
+                          readingHistory,
+                        }}
+                      >
+                        {({ loading, error, data, }) => {
+                          if (loading || error) return null;
+                          const { nextArticle: { result: articleUrl, }, } = data;
+
+                          if (articleUrl) {
+                            nextArticleUrl = articleUrl;
+                            nextArticleText = `${
+                              theme.osakaI18n.nextArticle
+                            } ${sectionName}`;
+                          }
+ else if (sectionUrl) {
+                            nextArticleUrl = sectionUrl;
+                            nextArticleText = `${
+                              theme.osakaI18n.backToSection
+                            } ${sectionName}`;
+                          }
+ else {
+                            nextArticleUrl = '/';
+                            nextArticleText = theme.osakaI18n.backToHome;
+                          }
+                          return (
+                            <Osaka
+                              nextArticleUrl={nextArticleUrl}
+                              nextArticleText={nextArticleText}
+                              lists={{ ...articles, }}
+                            />
+                          );
+                        }}
+                      </Query>
+                    ) : (
+                      <Osaka
+                        nextArticleUrl={nextArticleUrl}
+                        nextArticleText={nextArticleText}
+                        lists={{ ...articles, }}
+                      />
+                    )}
                   </LayoutContainer>
                 );
               }}

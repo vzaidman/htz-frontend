@@ -27,10 +27,6 @@ const propTypes = {
    */
   nextArticleUrl: PropTypes.string.isRequired,
   /**
-   * The name of the current article's section.
-   */
-  sectionName: PropTypes.string.isRequired,
-  /**
    * An object of Arrays, which each contains article objects:<br/>
    * `{exclusive: 'string', title: 'string', imageUrl: 'string', url: 'string'}`.
    */
@@ -52,7 +48,7 @@ const NextItem = createComponent(NextItemStyle, HtzLink, props =>
   Object.keys(props)
 );
 
-function Osaka({ nextArticleUrl, nextArticleText, sectionName, lists, }) {
+function Osaka({ nextArticleUrl, nextArticleText, lists, }) {
   return (
     <FelaTheme
       render={theme => (

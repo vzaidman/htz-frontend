@@ -56,6 +56,18 @@ export function createLoaders(req) {
     )
   );
 
+  const nextArticleLoader = new DataLoader(keys =>
+    Promise.all(
+      keys.map(({ sectionId, readingHistory = [], }) =>
+        fetch(
+          `${serviceBase}/findNextArticleBySection?sectionId=${sectionId}&excludedArticles=${readingHistory.join(
+            ','
+          )}`
+        ).then(response => response.json())
+      )
+    )
+  );
+
   const purchasePageLoader = new DataLoader(keys => {
     const baseUri = `${serviceBase}/papi`;
     const userId = CookieUtils.stringToMap(cookies.get('tmsso') || '', {
@@ -156,6 +168,7 @@ export function createLoaders(req) {
   return {
     articleLinkDataLoader,
     pageLoader,
+    nextArticleLoader,
     cmlinkLoader,
     listsLoader,
     purchasePageLoader,
