@@ -11,6 +11,7 @@ export default function decodeHTMLEntities(text) {
     [ 'gt', '>', ],
     [ 'nbsp', ' ', ],
     [ 'quot', '"', ],
+    [ 'hellip', '...', ],
   ];
 
   entities.forEach(entity => {
