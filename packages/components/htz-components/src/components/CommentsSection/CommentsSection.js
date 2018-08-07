@@ -76,7 +76,9 @@ class CommentsSection extends React.Component {
   state = {
     sortMethod: { value: 'dateDescending', display: 'מהאחרונה לראשונה', },
     reportCommentId: null,
+    maxCommentsToRender: 10,
   };
+
   onSubmitCaptcha = commentId => {
     this.setState({ reportCommentId: commentId, });
     this.recaptcha.execute();
@@ -119,6 +121,9 @@ class CommentsSection extends React.Component {
     return sortedCommentsWithNumbers;
   }
 
+  // number of additional comments to render each time load more button is clicked
+  commentPaginationCount = 50;
+
   sortCommentsByMethod(orderName) {
     if (orderName === 'dateAscending') {
       return (a, b) => a.publishingDateSortable - b.publishingDateSortable;
@@ -141,7 +146,12 @@ class CommentsSection extends React.Component {
     const commentsWithNumber = this.getCommentsWithNumber(comments);
     return commentsWithNumber
       .concat()
-      .sort(this.sortCommentsByMethod(this.state.sortMethod.value));
+      .sort(this.sortCommentsByMethod(this.state.sortMethod.value))
+      .slice(0, this.state.maxCommentsToRender - 1);
+  }
+
+  loadComments() {
+    if (this.props.totalHits > this.props.comments.length) { this.props.loadAllComments(); }
   }
 
   render() {
@@ -152,7 +162,6 @@ class CommentsSection extends React.Component {
       commentsPlusRate,
       commentsMinusRate,
       initVote,
-      loadAllComments,
       totalHits,
     } = this.props;
 
@@ -160,7 +169,7 @@ class CommentsSection extends React.Component {
       <FelaTheme
         render={({
           commentsSectionI18n: {
-            buttons: { loadAllCommentsBtnText, },
+            buttons: { loadMoreCommentsBtnText, },
             texts: { chooseSortMethodText, },
             selectItems: {
               dateDescendingItemTxt,
@@ -201,7 +210,7 @@ class CommentsSection extends React.Component {
               </FelaComponent>
               <Select
                 onChange={selectedItem => {
-                  loadAllComments();
+                  this.loadComments();
                   this.setState({ sortMethod: selectedItem, });
                 }}
                 controlledSelectedItem={this.state.sortMethod}
@@ -223,20 +232,31 @@ class CommentsSection extends React.Component {
               initNewComment={initNewComment}
               signUpNotification={signUpNotification}
             />
-            {totalHits > comments.length ? (
+            {totalHits > this.state.maxCommentsToRender ? (
               <FelaComponent
                 style={{
                   marginTop: '3rem',
                   textAlign: 'center',
                 }}
               >
-                <Button onClick={() => loadAllComments()}>
-                  {loadAllCommentsBtnText}
+                <Button
+                  onClick={() => {
+                    this.loadComments();
+                    this.setState(prevState => ({
+                      maxCommentsToRender:
+                        prevState.maxCommentsToRender +
+                        this.commentPaginationCount,
+                    }));
+                  }}
+                >
+                  {loadMoreCommentsBtnText}
                 </Button>
               </FelaComponent>
             ) : null}
             <Recaptcha
-              ref={ref => (this.recaptcha = ref)} // eslint-disable-line no-return-assign
+              ref={ref => {
+                this.recaptcha = ref;
+              }}
               // todo: 'should site key be prop ? or from theme ?
               sitekey="6Lc6jzoUAAAAAPBTy6ppZ5Et2Yv8zivAiNY-l4ol"
               onResolved={this.onReCaptchaResolve}

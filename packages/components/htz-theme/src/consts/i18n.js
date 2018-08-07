@@ -124,7 +124,7 @@ export const commentSentI18n = Object.freeze({
 });
 export const commentsSectionI18n = Object.freeze({
   buttons: Object.freeze({
-    loadAllCommentsBtnText: 'טען את כל התגובות',
+    loadMoreCommentsBtnText: 'טענו עוד תגובות',
   }),
   selectItems: Object.freeze({
     dateDescendingItemTxt: 'מהאחרונה לראשונה',
