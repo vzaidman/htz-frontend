@@ -7,7 +7,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, FelaTheme, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
+import gql from 'graphql-tag';
+import { Query, } from '../../ApolloBoundary/ApolloBoundary';
+
+const GET_HOST = gql`
+  query GetHost {
+    hostname @client
+  }
+`;
 
 OmnyStudio.propTypes = {
   /**
@@ -63,32 +71,25 @@ function OmnyStudio({ source, settings, onLoadCallback, }) {
   } = settings;
 
   return (
-    <FelaTheme
-      render={theme => (
-        <OmnyStudioWrapper>
-          <iframe
-            title="OmnyStudio"
-            width="100%"
-            height={height}
-            src={`
-            ${source}
-            ?style=${style}
-            &image=${image}
-            &share=${share}
-            &download=${download}
-            &description=${description}
-            &subscribe=${subscribe}
-            &foreground=222222
-            &background=f3f3f3
-            &highlight=${theme.color('primary')}
-          `}
-            frameBorder="0"
-            allowFullScreen=""
-            onLoad={onLoadCallback}
-          />
-        </OmnyStudioWrapper>
-      )}
-    />
+    <Query query={GET_HOST}>
+      {({ loading, error, data: { hostname, }, }) => {
+        const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+        const highlight = host === 'themarker.com' ? '00c800' : '09a5d9';
+        return (
+          <OmnyStudioWrapper>
+            <iframe
+              title="OmnyStudio"
+              width="100%"
+              height={height}
+              src={`${source}?style=${style}&image=${image}&share=${share}&download=${download}&description=${description}&subscribe=${subscribe}&foreground=222222&background=f3f3f3&highlight=${highlight}`}
+              frameBorder="0"
+              allowFullScreen=""
+              onLoad={onLoadCallback}
+            />
+          </OmnyStudioWrapper>
+        );
+      }}
+    </Query>
   );
 }
 
