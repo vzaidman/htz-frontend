@@ -13,6 +13,7 @@ export const adPriorities = {
   normal: 'normal',
   low: 'low',
 };
+const NORMAL_PRIORITY_ADS_DELAY_MS = 0;
 const LOW_PRIORITY_ADS_DELAY_MS = 5000;
 
 const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
@@ -27,62 +28,25 @@ const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
     // if (typeof AdBlockUtil !== 'undefined' && typeof AdBlockUtil.killadblock === 'function') {
     //   window.addEventListener('adblockDetected', AdBlockUtil.killadblock);
     // }
-    const displayHighPrioritySlots = () => {
-      q.initGoogleTag().then(() => {
-        DEBUG &&
-          logger.info(
-            `4. Display slots - calling for display for all ${
-              adPriorities.high
-            } priority slots`
-          );
-        q.adManager.showAllSlots(adPriorities.high);
-      });
-    };
 
-    const displayNormalPrioritySlots = () => {
-      q.initGoogleTag().then(() => {
-        DEBUG &&
+    q.initGoogleTag().then(dfp => {
+      const showSlots = priority => {
+        if (DEBUG) {
           logger.info(
-            `4. Display slots - calling for display for all ${
-              adPriorities.normal
-            } priority slots`
+            `4. Display slots - calling for display for all ${priority} priority slots`
           );
-        q.adManager.showAllSlots(adPriorities.normal);
-      });
-    };
+        }
+        dfp.adManager.showAllSlots(priority);
+      };
 
-    const displayLowPrioritySlots = () => {
+      showSlots(adPriorities.high);
       setTimeout(() => {
-        q.initGoogleTag().then(() => {
-          DEBUG &&
-            logger.info(
-              `4. Display slots - calling for display for all ${
-                adPriorities.low
-              } priority slots`
-            );
-          q.adManager.showAllSlots(adPriorities.low);
-        });
+        showSlots(adPriorities.normal);
+      }, NORMAL_PRIORITY_ADS_DELAY_MS);
+      setTimeout(() => {
+        showSlots(adPriorities.low);
       }, LOW_PRIORITY_ADS_DELAY_MS);
-    };
-    switch (window.document.readyState) {
-      case 'loading':
-        window.document.addEventListener('DOMContentLoaded', () => {
-          displayHighPrioritySlots();
-          displayNormalPrioritySlots();
-          displayLowPrioritySlots();
-        });
-        break;
-      case 'interactive':
-        displayHighPrioritySlots();
-        displayNormalPrioritySlots();
-        displayLowPrioritySlots();
-        break;
-      default:
-        // 'complete' - no need for event listeners.
-        displayHighPrioritySlots();
-        displayNormalPrioritySlots();
-        displayLowPrioritySlots();
-    }
+    });
   }
   else {
     throw new Error('DfpInjectorInit error: dfpConfig is not ready!');

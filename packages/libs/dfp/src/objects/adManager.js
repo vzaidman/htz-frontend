@@ -274,7 +274,7 @@ export default class AdManager {
   initAdSlots(adSlotConfig, filteredPriority) {
     const adSlots = new Map(this.adSlots);
     for (const adSlotId in adSlotConfig) {
-      if (adSlotConfig[adSlotId].priority === filteredPriority) {
+      if (true) {
         try {
           const adSlotHtmlElement = document.getElementById(adSlotId);
           // adSlotConfig is built from globalConfig, but can be overridden by markup

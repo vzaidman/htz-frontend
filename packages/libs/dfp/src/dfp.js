@@ -37,13 +37,7 @@ export default class DFP {
   initGoogleTag() {
     const dfpThis = this;
     return new Promise((resolve, reject) => {
-      if (dfpThis.initStarted === true) {
-        googletag.cmd.push(() => {
-          dfpThis.wasInitialized = true;
-          resolve(dfpThis);
-        });
-      }
-      else {
+      if (dfpThis.initStarted !== true) {
         dfpThis.initStarted = true;
         // set up a place holder for the gpt code downloaded from google
         window.googletag = window.googletag || {};
@@ -62,10 +56,6 @@ export default class DFP {
           const node = window.document.getElementsByTagName('script')[0];
           tag.addEventListener('load', () => {
             dfpThis.resumeInit();
-            googletag.cmd.push(() => {
-              dfpThis.wasInitialized = true;
-              resolve(this);
-            });
           });
           tag.addEventListener('error', error => {
             dfpThis.wasInitialized = false;
@@ -79,6 +69,10 @@ export default class DFP {
           }
         })();
       }
+      googletag.cmd.push(() => {
+        dfpThis.wasInitialized = true;
+        resolve(this);
+      });
     });
   }
 
