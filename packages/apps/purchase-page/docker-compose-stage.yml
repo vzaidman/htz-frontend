@@ -1,18 +1,18 @@
-version: "3.3"
+version: '3.3'
 services:
   htz_react:
     hostname: promotions-page
-    command:["yarn", "workspace", "@haaretz/purchase-page", "start"]
     build: .
-    image: "docker.themarker.com:8083/promotions-page:${version:-latest}"
+    #command: ["yarn", "workspace", "@haaretz/haaretz.co.il", "start"]
+    image: 'nexus-ng.themarker.com/ppromotions-page:${version:-latest}'
     ports:
-      - 2201:2201
+      - 2002:2002
     environment:
       - NODE_ENV=production
       - CONNECTION_PRESET=stage
       - NEXT_BUILD_ID=${BUILD_ID:-LATEST}
       # the following environment is optional
-      - PORT=2201
+      - PORT=2002
       - BIND_ADDRESS=ppromotions
       - HOSTNAME=ppromotions
       - GRAPHQL_USE_SSL=true
@@ -24,5 +24,3 @@ services:
 networks:
   prod01:
     external: true
-
-
