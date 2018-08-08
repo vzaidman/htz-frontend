@@ -8,16 +8,7 @@
 /* globals FB */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, } from 'react-fela';
 import { appendScript, } from '../../../utils/scriptTools';
-
-// eslint-disable-next-line react/prop-types
-const FacebookWrapper = ({ type, children, }) => {
-  const width =
-    type === 'post' ? '552px' : type === 'comment' ? '620px' : '100%';
-
-  return <FelaComponent style={{ width, }}>{children}</FelaComponent>;
-};
 
 export default class Facebook extends React.Component {
   static propTypes = {
@@ -76,7 +67,6 @@ export default class Facebook extends React.Component {
     });
 
     FB.Event.subscribe('xfbml.render', () => {
-      console.log('fb embed is loaded');
       this.props.onLoadCallback && this.props.onLoadCallback();
     });
   };
@@ -89,26 +79,27 @@ export default class Facebook extends React.Component {
     const type = this.props.embedType;
     const showText = this.props.settings.showText || false;
 
-    const tag =
-      type === 'post' ? (
-        <div className="fb-post" data-width="" data-href={this.props.source} />
-      ) : type === 'comment' ? (
-        <div
-          className="fb-comment-embed"
-          data-width="auto"
-          data-href={this.props.source}
-        />
-      ) : (
-        <div
-          className="fb-video"
-          data-width="auto"
-          data-href={this.props.source}
-          data-allowfullscreen="true"
-          data-autoplay="false"
-          data-show-text={showText}
-        />
-      );
-
-    return <FacebookWrapper type={this.props.embedType}>{tag}</FacebookWrapper>;
+    return type === 'post' ? (
+      <div
+        className="fb-post"
+        data-width="auto"
+        data-href={this.props.source}
+      />
+    ) : type === 'comment' ? (
+      <div
+        className="fb-comment-embed"
+        data-width="auto"
+        data-href={this.props.source}
+      />
+    ) : (
+      <div
+        className="fb-video"
+        data-width="auto"
+        data-href={this.props.source}
+        data-allowfullscreen="true"
+        data-autoplay="false"
+        data-show-text={showText}
+      />
+    );
   }
 }
