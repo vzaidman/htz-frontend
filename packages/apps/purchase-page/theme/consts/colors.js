@@ -450,7 +450,7 @@ const colors = host => {
       primaryText: [ 'bodyText', 'base', ],
       primaryTextLabel: [ 'primary', '+1', ],
       primaryTextLabelDisabled: [ 'neutral', '-4', ],
-      primaryTextNote: [ 'neutral', '-4', ],
+      primaryTextNote: [ 'neutral', '-3', ],
       primaryAbbr: [ 'tertiary', 'base', ],
 
       // Primary Focus
