@@ -1,9 +1,32 @@
-import { createComponent, } from 'react-fela';
+import React from 'react';
+import FelaComponent from 'react-fela/lib/FelaComponent';
+import { AriaDescription, } from '@haaretz/htz-components';
+import PropTypes from 'prop-types';
 
-const circleStyle = ({ theme, isHighlighted = false, }) => ({
+const circleStyle = theme => ({
   width: '2rem',
   height: '2rem',
   backgroundColor: '#2f872a',
   borderRadius: '50%',
 });
-export default createComponent(circleStyle);
+const id = Math.random();
+function circle({ headers, }) {
+  return (
+    <div>
+      <FelaComponent id={id} style={circleStyle} />
+      <AriaDescription id={id} headers={headers}>
+        כלול
+      </AriaDescription>
+    </div>
+  );
+}
+
+circle.propTypes = {
+  headers: PropTypes.string,
+};
+
+circle.defaultProps = {
+  headers: null,
+};
+
+export default circle;

@@ -69,7 +69,8 @@ export function createLoaders(req) {
   );
 
   const purchasePageLoader = new DataLoader(keys => {
-    const baseUri = `${serviceBase}/papi`;
+    // const baseUri = `${serviceBase}/papi`;
+    const baseUri = 'http://pre.haaretz.co.il/papi';
     const userId = CookieUtils.stringToMap(cookies.get('tmsso') || '', {
       separator: /:\s?/,
     }).userId;

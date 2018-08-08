@@ -66,7 +66,7 @@ class LoginOrRegisterStage extends React.Component {
     loading: false,
     email: null,
     userExists: true,
-    passwordLoaded: false,
+    signUpButtonLoaded: false,
     resetPasswordModalOpen: false,
   };
 
@@ -76,9 +76,9 @@ class LoginOrRegisterStage extends React.Component {
 
   render() {
     // focus the password input when it first loads, form focus will override if there is an error in the form
-    if (this.passwordInputEl && !this.state.passwordLoaded) {
-      this.passwordInputEl.focus();
-      this.setState({ passwordLoaded: true, });
+    if (this.signUpButton && !this.state.signUpButtonLoaded) {
+      this.signUpButton.focus();
+      this.setState({ signUpButtonLoaded: true, });
     }
     const {
       router,
@@ -97,18 +97,19 @@ class LoginOrRegisterStage extends React.Component {
                 render={({ checkEmailExists, }) => (
                   <FelaComponent
                     style={{ textAlign: 'center', }}
-                    render={({
-                      theme: {
-                        stage3: { form, },
-                      },
-                      className,
-                    }) => (
-                      <div className={className}>
+                    render={({ theme: { stage3: { form, }, }, className, }) => (
+                      <div
+                        className={className}
+                        ref={node => {
+                          this.forgotPasswordElem = node;
+                        }}
+                      >
                         <ResetPasswordModal
                           email={email}
-                          closeModal={() =>
-                            this.setState({ resetPasswordModalOpen: false, })
-                          }
+                          closeModal={() => {
+                            this.setState({ resetPasswordModalOpen: false, });
+                            this.resetPasswordButtonEl.focus();
+                          }}
                           isVisible={this.state.resetPasswordModalOpen}
                         />
                         <EventTracker>
@@ -164,8 +165,7 @@ class LoginOrRegisterStage extends React.Component {
                                                 {form.registerHeader.header}
                                               </H>
                                             )}
-                                          >
-                                          </FelaComponent>
+                                          />
                                           <FelaComponent
                                             style={theme => ({
                                               color: theme.color(
@@ -178,6 +178,9 @@ class LoginOrRegisterStage extends React.Component {
                                               <button
                                                 type="button"
                                                 className={className}
+                                                ref={node => {
+                                                  this.signUpButton = node;
+                                                }}
                                                 onClick={() => {
                                                   this.setState({
                                                     email: null,
@@ -242,7 +245,10 @@ class LoginOrRegisterStage extends React.Component {
                                                   form.password
                                                     .forgotPasswordText,
                                                   this.openModal,
-                                                  this.state.userExists
+                                                  this.state.userExists,
+                                                  el => {
+                                                    this.resetPasswordButtonEl = el;
+                                                  }
                                                 ),
                                               })}
                                               miscStyles={textInputStyle}
@@ -380,15 +386,17 @@ class LoginOrRegisterStage extends React.Component {
                                             />
                                           </Fragment>
                                         )}
-                                        {this.state.error && (
-                                          <A11yError
-                                            errorText={this.state.error}
-                                            miscStyles={{
-                                              marginTop: '4rem',
-                                              textAlign: 'center',
-                                            }}
-                                          />
-                                        )}
+                                        <div aria-live="assertive">
+                                          {this.state.error && (
+                                            <A11yError
+                                              errorText={this.state.error}
+                                              miscStyles={{
+                                                marginTop: '4rem',
+                                                textAlign: 'center',
+                                              }}
+                                            />
+                                          )}
+                                        </div>
                                         <Button
                                           variant="primaryOpaque"
                                           {...this.state.loading && {

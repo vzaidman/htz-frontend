@@ -57,6 +57,7 @@ const PromotionDocument = createDocument({
   defaultFontStack: fontStacks.default,
   staticRules: cssReset,
   isRtl: true,
+  lang: 'heb',
   hasToggleableTheme: true,
 });
 export default PromotionDocument;

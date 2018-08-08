@@ -96,7 +96,7 @@ const StyledPrice = createComponent(priceStyle, 'span');
 const offerTextStyle = ({ theme, isRecommended, isFirst, }) => ({
   display: 'block',
   fontWeight: '400',
-  ...(isFirst ? {} : { color: theme.color('offerPage', 'secondaryOfferText'), }),
+  ...(isFirst ? {} : { color: theme.color('neutral', '-1'), }),
   extend: [ theme.type(1, { fromBp: 's', }), theme.type(-1, { untilBp: 's', }), ],
 });
 

@@ -245,6 +245,10 @@ class MobileView extends Component {
                               {/* todo: add a variant with correct focus and active colors */}
                               <Button
                                 isFlat
+                                attrs={{
+                                  'aria-expanded':
+                                    this.state.menuOpen === 'HTZ',
+                                }}
                                 onClick={evt => {
                                   evt.stopPropagation();
                                   this.toggleMenu(item.subscriptionName);

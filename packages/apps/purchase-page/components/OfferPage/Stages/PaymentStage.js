@@ -95,6 +95,7 @@ const securedPaymentStyle = theme => ({
 class PaymentStage extends Component {
   state = {
     displayPaymentButtons: !this.props.creditCardsDetails,
+    paymentHeaderElLoaded: false,
   };
 
   render() {
@@ -151,7 +152,10 @@ class PaymentStage extends Component {
         </ApolloConsumer>
       );
     }
-
+    if (this.paymentHeaderEl && !this.state.paymentHeaderElLoaded) {
+      this.paymentHeaderEl.focus();
+      this.setState({ paymentHeaderElLoaded: true, });
+    }
     return (
       <Fragment>
         <FelaComponent
@@ -222,7 +226,7 @@ class PaymentStage extends Component {
                     className,
                   }) => (
                     <div className={className}>
-                      {!!creditCardsDetails && (
+                      {creditCardsDetails ? (
                         <Fragment>
                           <FelaComponent
                             style={{
@@ -234,7 +238,10 @@ class PaymentStage extends Component {
                             <FelaComponent
                               style={formHeaderStyle}
                               render={({ className, }) => (
-                                <H className={className}>
+                                <H
+                                  ref={el => this.paymentHeaderEl}
+                                  className={className}
+                                >
                                   {headerPaymentMethod}
                                 </H>
                               )}
@@ -333,7 +340,7 @@ class PaymentStage extends Component {
                             </EventTracker>
                           )}
                         </Fragment>
-                      )}
+                      ) : null}
 
                       {this.state.displayPaymentButtons && (
                         <FelaComponent
@@ -434,6 +441,11 @@ class PaymentStage extends Component {
                                             }}
                                           >
                                             {payVia} <br />
+                                            <FelaComponent
+                                              style={{ display: 'none', }}
+                                            >
+                                              Paypal
+                                            </FelaComponent>
                                             <IconPaypal
                                               size={[
                                                 { until: 's', value: 3.5, },

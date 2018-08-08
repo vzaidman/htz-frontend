@@ -7,8 +7,8 @@ const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 const secureLineStyle = theme => ({
   textAlign: 'center',
   borderTopWidth: '1px',
-  borderTopColor: theme.color('offerPage', 'borderDivider'),
-  color: theme.color('offerPage', 'borderDivider'),
+  borderTopColor: theme.color('neutral', '-3'),
+  color: theme.color('neutral', '-3'),
   borderTopStyle: 'solid',
   ...theme.mq(
     { until: 's', },
@@ -36,6 +36,7 @@ const secureLineStyle = theme => ({
 const iconContainerStyle = theme => ({
   transform: 'translateY(-75%)',
   display: 'inline-block',
+  color: theme.color('neutral', '-3'),
   backgroundColor: 'white',
   paddingInlineEnd: '1rem',
   paddingInlineStart: '1rem',

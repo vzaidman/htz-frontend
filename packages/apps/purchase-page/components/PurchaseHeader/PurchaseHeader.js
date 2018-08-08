@@ -11,6 +11,7 @@ import {
   IconLock,
   EventTracker,
   HtzLink,
+  AriaDescription,
 } from '@haaretz/htz-components';
 
 const propTypes = {
@@ -177,17 +178,25 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
               href={href[host]}
               content={
                 isTheMarker ? (
-                  <IconMarkerLogo
-                    size={4}
-                    color="primary"
-                    miscStyles={{ marginTop: '2rem', }}
-                  />
+                  <div>
+                    <IconMarkerLogo
+                      size={4}
+                      color="primary"
+                      miscStyles={{ marginTop: '2rem', }}
+                    />
+                    <AriaDescription id="theMarkerLogo">
+                      דה מרקר
+                    </AriaDescription>
+                  </div>
                 ) : (
-                  <IconHaaretzLogo
-                    size={4}
-                    color="black"
-                    miscStyles={{ marginTop: '2rem', }}
-                  />
+                  <div>
+                    <IconHaaretzLogo
+                      size={4}
+                      color="black"
+                      miscStyles={{ marginTop: '2rem', }}
+                    />
+                    <AriaDescription id="haaretzLogo">הארץ</AriaDescription>
+                  </div>
                 )
               }
             />

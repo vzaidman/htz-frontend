@@ -8,7 +8,13 @@ const passwordNoteContStyle = {
   justifyContent: 'space-between',
 };
 
-const PasswordNote = (text, forgotPasswordText, openModal, userExists) => (
+const PasswordNote = (
+  text,
+  forgotPasswordText,
+  openModal,
+  userExists,
+  refFunc
+) => (
   <Fragment>
     {userExists ? (
       <FelaComponent style={passwordNoteContStyle}>
@@ -24,6 +30,7 @@ const PasswordNote = (text, forgotPasswordText, openModal, userExists) => (
                 <button
                   className={className}
                   type="button"
+                  ref={refFunc}
                   onClick={evt => {
                     openModal(evt);
                     action({

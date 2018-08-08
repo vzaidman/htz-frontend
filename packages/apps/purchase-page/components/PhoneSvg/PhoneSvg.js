@@ -25,6 +25,8 @@ function phoneSvg({ brand, size, isOnSale, }) {
       render={({ theme, theme: { color, }, className, }) => (
         <div className={className}>
           <svg
+            role="img"
+            aria-hidden="true"
             height={`${size}em`}
             width={`${size * aspectRatio}em`}
             viewBox={`0 0 ${width} ${height}`}

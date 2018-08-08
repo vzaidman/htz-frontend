@@ -232,12 +232,12 @@ const tdInnerContStyle = ({
 });
 const StyledTdInnerCont = createComponent(tdInnerContStyle, 'div', [ 'onClick', ]);
 
-const pricingHeadStyle = ({ theme, }) => ({
+const pricingHeadStyle = theme => ({
   color: theme.color('offerPage', 'pricingHeadText'),
   marginTop: '1rem',
   extend: [ theme.type(-1), ],
 });
-const StyledPricingHead = createComponent(pricingHeadStyle, H);
+// const StyledPricingHead = createComponent(pricingHeadStyle, H);
 
 const colHeadStyle = ({ theme, }) => ({
   marginTop: '2rem',
@@ -295,7 +295,7 @@ function DesktopView({
   };
 
   const tHeadData = buildThead(tableData, staticTableData.thead);
-
+  console.log(tHeadData);
   const highlightedIndex = tHeadData
     .map(col => col.subscriptionName)
     .indexOf('BOTH');
@@ -324,7 +324,12 @@ function DesktopView({
                   <StyledThInnerCont />
                 </GridItem>
                 {tHeadData.map((item, idx) => (
-                  <GridItem width={1 / 4} tagName="th" key={item.heading}>
+                  <GridItem
+                    width={1 / 4}
+                    id={item.subscriptionName}
+                    tagName="th"
+                    key={item.heading}
+                  >
                     <EventTracker>
                       {({ biAction, gaAction, }) => (
                         <StyledThInnerCont
@@ -377,9 +382,10 @@ function DesktopView({
                             size={7}
                           />
                           <StyledColHead>{item.heading}</StyledColHead>
-                          <StyledPricingHead>
+
+                          <FelaComponent style={pricingHeadStyle} render="p">
                             {item.pricingHead}
-                          </StyledPricingHead>
+                          </FelaComponent>
 
                           <Button
                             href={pathName}
@@ -415,7 +421,15 @@ function DesktopView({
                   key={Math.random()}
                 >
                   {row.map((cellData, idx) => (
-                    <GridItem width={1 / 4} tagName="td" key={Math.random()}>
+                    <GridItem
+                      width={1 / 4}
+                      tagName="td"
+                      id={`id${idx}`}
+                      headers={
+                        idx > 0 ? `${tHeadData[idx - 1].subscriptionName}` : ''
+                      }
+                      key={Math.random()}
+                    >
                       <StyledTdInnerCont
                         isHighlighted={highlightedIndex + 1 === idx}
                         isDescription={idx === 0}
@@ -443,7 +457,9 @@ function DesktopView({
                             </FelaComponent>
                           ))
                         ) : cellData ? (
-                          <PositiveCircle />
+                          <PositiveCircle
+                            header={tHeadData[idx - 1].subscriptionName}
+                          />
                         ) : (
                           ''
                         )}

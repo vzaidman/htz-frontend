@@ -42,6 +42,7 @@ const createDocument = ({
   staticRules = '',
   appData = { config, },
   isRtl,
+  lang,
   hasToggleableTheme = false,
 }) =>
   class HaaretzDocument extends Document {
@@ -81,6 +82,7 @@ const createDocument = ({
         sheetList,
         appData,
         isRtl,
+        lang,
         host,
       };
     }

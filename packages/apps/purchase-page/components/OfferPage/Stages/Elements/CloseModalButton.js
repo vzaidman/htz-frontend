@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+import { AriaDescription, } from '@haaretz/htz-components';
 
 const closeButtonStyle = theme => ({
   height: '100%',
@@ -41,6 +42,7 @@ function CloseModalButton({ handleClose, }) {
       render={({ className, }) => (
         <button className={className} onClick={() => handleClose()}>
           <FelaComponent style={closeButtonStyle} render="span" />
+          <AriaDescription id="closeModal">סגירה</AriaDescription>
         </button>
       )}
     />

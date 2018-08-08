@@ -107,14 +107,16 @@ class ResetPasswordModal extends Component {
                     extend: [ theme.type(1), ],
                   })}
                   render={({ className, }) => (
-                    <H className={className}>{header}</H>
+                    <H id="forgetPasswordDescription" className={className}>
+                      {header}
+                    </H>
                   )}
                 />
                 {this.state.resetEmailSent ? (
                   <Fragment>
                     <FelaComponent
                       style={theme => ({
-                        color: theme.color('primary'),
+                        color: theme.color('neutral', -3),
                         textAlign: 'center',
                         fontWeight: 'bold',
                         marginTop: '3rem',
@@ -143,9 +145,7 @@ class ResetPasswordModal extends Component {
                             onSubmit={async ({ resetEmail, }) => {
                               this.setState({ loading: true, });
                               const {
-                                data: {
-                                  resetPassword: { status, message, },
-                                },
+                                data: { resetPassword: { status, message, }, },
                               } = await client.query({
                                 query: RESET_PASSWORD,
                                 variables: { userName: resetEmail, },
@@ -193,6 +193,10 @@ class ResetPasswordModal extends Component {
                                     <Button
                                       variant="primaryOpaque"
                                       miscStyles={buttonStyle}
+                                      attrs={{
+                                        'aria-described':
+                                          'forgetPasswordDescription',
+                                      }}
                                       onClick={evt => {
                                         handleSubmit(evt);
                                         action({

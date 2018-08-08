@@ -34,7 +34,11 @@ export function A11yError({ errorText, miscStyles, }) {
         ],
       })}
       render={({ className, }) => (
-        <div className={className} aria-live="polite" aria-relevant="additions">
+        <div
+          className={className}
+          aria-live="assertive"
+          aria-relevant="additions"
+        >
           {errorText}
         </div>
       )}
