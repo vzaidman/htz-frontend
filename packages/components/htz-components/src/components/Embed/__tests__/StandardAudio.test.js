@@ -6,7 +6,7 @@ import StandardAudio from '../elements/StandardAudio';
 it('103FM ', () => {
   const snapshot = felaSnapshotter(
     <StandardAudio
-      content="ZrqvnVq=HDGKJL&c41t4nzVQ=EE"
+      source="ZrqvnVq=HDGKJL&c41t4nzVQ=EE"
       caption="103FM"
       credit="103FM"
       embedType="103FM"
@@ -22,7 +22,7 @@ it('103FM ', () => {
 it('SoundCloud track ', () => {
   const snapshot = felaSnapshotter(
     <StandardAudio
-      content="https://soundcloud.com/defjam/bad_religion"
+      source="https://soundcloud.com/defjam/bad_religion"
       caption="gjh"
       credit="gjh"
       embedType="track"
@@ -38,7 +38,7 @@ it('SoundCloud track ', () => {
 it('SoundCloud playlist ', () => {
   const snapshot = felaSnapshotter(
     <StandardAudio
-      content="https://soundcloud.com/maikbaptist-two/sets/bad-religion-plus-coversongs"
+      source="https://soundcloud.com/maikbaptist-two/sets/bad-religion-plus-coversongs"
       caption="playlist"
       credit="playlist"
       embedType="playlist"

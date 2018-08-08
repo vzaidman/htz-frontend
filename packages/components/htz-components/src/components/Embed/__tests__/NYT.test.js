@@ -6,7 +6,7 @@ import NYT from '../elements/NYT';
 it('New-York times ', () => {
   const snapshot = felaSnapshotter(
     <NYT
-      content="https://graphics8.nytimes.com/video/players/offsite/index.html?videoId=100000005256748"
+      source="https://graphics8.nytimes.com/video/players/offsite/index.html?videoId=100000005256748"
       caption="New York Times"
       credit="New York Times"
       embedType="NYTvideo"

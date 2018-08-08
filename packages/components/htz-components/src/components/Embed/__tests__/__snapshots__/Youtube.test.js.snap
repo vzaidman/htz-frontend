@@ -13,12 +13,7 @@ Object {
         height="315"
         id="yt_embed_3SzXM019pbs"
         onLoad={null}
-        src="//www.youtube.com/embed/3SzXM019pbs?start=740
-                &controls=1
-                &loop=1
-                &modestbranding=1
-                &rel=0
-                &enablejsapi=1"
+        src="//www.youtube.com/embed/3SzXM019pbs?start=740&controls=1&loop=1&modestbranding=1&rel=0&enablejsapi=1"
         width="560"
       />
     </figure>
@@ -40,12 +35,7 @@ Object {
         height="315"
         id="yt_embed_rmRouEds_2A?list=RDrmRouEds_2A&t=1"
         onLoad={null}
-        src="//www.youtube.com/embed/rmRouEds_2A?list=RDrmRouEds_2A&t=1&start=0
-                &controls=1
-                &loop=0
-                &modestbranding=1
-                &rel=1
-                &enablejsapi=1"
+        src="//www.youtube.com/embed/rmRouEds_2A?list=RDrmRouEds_2A&t=1&start=0&controls=1&loop=0&modestbranding=1&rel=1&enablejsapi=1"
         width="560"
       />
     </figure>

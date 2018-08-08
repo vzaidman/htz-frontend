@@ -12,7 +12,7 @@ Object {
         frameBorder="0"
         height="450"
         onLoad={null}
-        src="https://embed.waze.com/he/iframe?zoom=15&lat=32.06408&lon=34.77688&&pin=1"
+        src="https://embed.waze.com/he/iframe?zoom=15&lat=32.06408&lon=34.77688&true"
         width="600"
       />
     </figure>

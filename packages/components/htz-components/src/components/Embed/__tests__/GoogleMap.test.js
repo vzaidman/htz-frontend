@@ -6,7 +6,7 @@ import GoogleMap from '../elements/GoogleMap';
 it('Google-Maps static ', () => {
   const snapshot = felaSnapshotter(
     <GoogleMap
-      content="shoken 21 tel aviv"
+      source="shoken 21 tel aviv"
       caption="static - satellite - eng"
       credit="static - satellite - eng"
       embedType="static"
@@ -26,7 +26,7 @@ it('Google-Maps static ', () => {
 it('Google-Maps directions ', () => {
   const snapshot = felaSnapshotter(
     <GoogleMap
-      content="shoken 21 tel aviv"
+      source="shoken 21 tel aviv"
       caption="shoken 21 tel aviv ---> tony vespa habima tel aviv"
       credit="directions - noSatellite - eng"
       embedType="directions"
@@ -50,7 +50,7 @@ it('Google-Maps directions ', () => {
 it('Google-Maps search ', () => {
   const snapshot = felaSnapshotter(
     <GoogleMap
-      content="קופיקס בתל אביב"
+      source="קופיקס בתל אביב"
       caption="קופיקס בתל אביב"
       credit="search- satellite - eng"
       embedType="search"
@@ -70,7 +70,7 @@ it('Google-Maps search ', () => {
 it('Google-Maps street view ', () => {
   const snapshot = felaSnapshotter(
     <GoogleMap
-      content="streetView"
+      source="streetView"
       caption="street view"
       credit="street view"
       embedType="streetView"

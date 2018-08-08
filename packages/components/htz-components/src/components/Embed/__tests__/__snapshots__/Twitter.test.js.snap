@@ -3,7 +3,7 @@
 exports[`Twitter grid  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c htz-d htz-e htz-f"
     >
       <div
@@ -13,7 +13,7 @@ Object {
           }
         }
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{overflow:auto}.htz-b{height:400px}.htz-c{max-height:800px}.htz-d{position:relative}.htz-e{margin:0 auto}.htz-f .twitter-tweet{margin-bottom:0 !important}",
 }
@@ -22,7 +22,7 @@ Object {
 exports[`Twitter search timeline  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c htz-d htz-e htz-f"
     >
       <div
@@ -32,7 +32,7 @@ Object {
           }
         }
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{overflow:auto}.htz-b{height:auto}.htz-c{max-height:800px}.htz-d{position:relative}.htz-e{margin:0 auto}.htz-f .twitter-tweet{margin-bottom:0 !important}",
 }
@@ -41,7 +41,7 @@ Object {
 exports[`Twitter single tweet  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c htz-d htz-e htz-f"
     >
       <div
@@ -51,7 +51,7 @@ Object {
           }
         }
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{overflow:auto}.htz-b{height:auto}.htz-c{max-height:800px}.htz-d{position:relative}.htz-e{margin:0 auto}.htz-f .twitter-tweet{margin-bottom:0 !important}",
 }
@@ -60,7 +60,7 @@ Object {
 exports[`Twitter user timeline  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c htz-d htz-e htz-f"
     >
       <div
@@ -70,7 +70,7 @@ Object {
           }
         }
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{overflow:auto}.htz-b{height:400px}.htz-c{max-height:800px}.htz-d{position:relative}.htz-e{margin:0 auto}.htz-f .twitter-tweet{margin-bottom:0 !important}",
 }
@@ -79,7 +79,7 @@ Object {
 exports[`Twitter video  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c htz-d htz-e htz-f"
     >
       <div
@@ -89,7 +89,7 @@ Object {
           }
         }
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{overflow:auto}.htz-b{height:auto}.htz-c{max-height:800px}.htz-d{position:relative}.htz-e{margin:0 auto}.htz-f .twitter-tweet{margin-bottom:0 !important}",
 }

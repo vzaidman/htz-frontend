@@ -6,7 +6,7 @@ import Youtube from '../elements/Youtube';
 it('Youtube Video ', () => {
   const snapshot = felaSnapshotter(
     <Youtube
-      content="3SzXM019pbs"
+      source="3SzXM019pbs"
       caption="youtube headline"
       credit="youtube headline"
       embedType="video"
@@ -32,7 +32,7 @@ it('Youtube Video ', () => {
 it('Youtube playlist ', () => {
   const snapshot = felaSnapshotter(
     <Youtube
-      content="rmRouEds_2A?list=RDrmRouEds_2A&t=1"
+      source="rmRouEds_2A?list=RDrmRouEds_2A&t=1"
       caption="conan playlist"
       credit="conan playlist"
       embedType="playlist"

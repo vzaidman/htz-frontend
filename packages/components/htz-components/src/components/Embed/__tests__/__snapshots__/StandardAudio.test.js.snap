@@ -3,9 +3,8 @@
 exports[`103FM  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c htz-d"
-      height={300}
     >
       <iframe
         frameBorder="no"
@@ -17,7 +16,7 @@ Object {
         title="audio embed"
         width="100%"
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{margin:0}.htz-b{height:300px}.htz-c{overflow:hidden}.htz-d{position:relative}",
 }
@@ -26,9 +25,8 @@ Object {
 exports[`SoundCloud playlist  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c htz-d"
-      height={450}
     >
       <iframe
         frameBorder="no"
@@ -40,7 +38,7 @@ Object {
         title="audio embed"
         width="100%"
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{margin:0}.htz-b{height:450px}.htz-c{overflow:hidden}.htz-d{position:relative}",
 }
@@ -49,9 +47,8 @@ Object {
 exports[`SoundCloud track  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c htz-d"
-      height={180}
     >
       <iframe
         frameBorder="no"
@@ -63,7 +60,7 @@ Object {
         title="audio embed"
         width="100%"
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{margin:0}.htz-b{height:180px}.htz-c{overflow:hidden}.htz-d{position:relative}",
 }

@@ -6,7 +6,7 @@ import Facebook from '../elements/Facebook';
 it('Facebook post ', () => {
   const snapshot = felaSnapshotter(
     <Facebook
-      content="https://www.facebook.com/haaretz/posts/10155626716202520"
+      source="https://www.facebook.com/haaretz/posts/10155626716202520"
       caption="hkj"
       credit="hjk"
       embedType="post"
@@ -27,7 +27,7 @@ it('Facebook post ', () => {
 it('Facebook video ', () => {
   const snapshot = felaSnapshotter(
     <Facebook
-      content="https://www.facebook.com/haaretz/videos/10155591353462520/"
+      source="https://www.facebook.com/haaretz/videos/10155591353462520/"
       caption="aa"
       credit="aa"
       embedType="video"
@@ -48,7 +48,7 @@ it('Facebook video ', () => {
 it('Facebook comment ', () => {
   const snapshot = felaSnapshotter(
     <Facebook
-      content="https://www.facebook.com/haaretz/posts/10155571966087520?comment_id=10155572023347520&comment_tracking=%7B%22tn%22%3A%22R0%22%7D"
+      source="https://www.facebook.com/haaretz/posts/10155571966087520?comment_id=10155572023347520&comment_tracking=%7B%22tn%22%3A%22R0%22%7D"
       caption="comment"
       credit="comment"
       embedType="comments"

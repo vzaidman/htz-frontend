@@ -3,7 +3,7 @@
 exports[`BandCamp album  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c htz-d"
     >
       <iframe
@@ -17,7 +17,7 @@ Object {
       >
         &lt;a href="http://kidsinsane.bandcamp.com/album/cluster"&gt;Cluster by Kids Insane&lt;/a&gt;
       </iframe>
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{overflow:auto}.htz-b{position:relative}.htz-c{margin:0 auto -4px}.htz-d{max-width:700px}",
 }

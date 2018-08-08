@@ -4,20 +4,40 @@ exports[`File upload  1`] = `
 Object {
   "component": <div>
     <a
-      className="htz-a htz-b htz-c htz-d htz-e"
-      href=""
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+      href="https://docs.google.com/document/d/1t7fYkPye3uwUnDnImV-1GqcLitnpNiCDc22k2TU9EoA/edit#heading=h.5x0d5h95i329"
+      onClick={null}
       target="_blank"
     >
-      <i
-        aria-hidden="true"
-        className="htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w"
-        data-icon="-"
-      />
-      <span>
+      <svg
+        className="htz-g htz-h htz-i htz-j"
+        height="1em"
+        viewBox="0 0 256 256"
+        width="1em"
+      >
+         
+        <path
+          d="M96 37h70.7l68.1 115h-70.7L96 37z"
+          fill="#ffd04b"
+        />
+         
+        <path
+          d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
+          fill="#4688f4"
+        />
+         
+        <path
+          d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
+          fill="#1fa463"
+        />
+      </svg>
+      <span
+        className="htz-k"
+      >
         gdfjgh
       </span>
     </a>
   </div>,
-  "styles": ".htz-a{color:#0895c3}.htz-b{text-decoration:none}.htz-c:hover{border-bottom:1px solid}.htz-d:hover{padding-bottom:.06em}.htz-e:hover{outline:0}.htz-f{float:right}.htz-g{color:#e22134}.htz-h{background-color:transparent}.htz-i{border:0}.htz-j{cursor:pointer}.htz-k{display:inline-block}.htz-l{padding:0}.htz-m{position:relative}.htz-n{text-align:center}.htz-o{vertical-align:middle}.htz-p{height:2.625rem}.htz-q{line-height:2.625rem}.htz-r{min-width:2.625rem}.htz-s{font-style:normal}.htz-t{width:1em}.htz-u{font-size:2.25rem}.htz-v{font-weight:700}.htz-w{text-rendering:optimizeLegibility}",
+  "styles": ".htz-a{color:#0B7EB5}.htz-b{text-decoration:none}.htz-c:hover{color:#0B7EB5}.htz-d:hover{border-bottom:1px solid}.htz-e:hover{padding-bottom:.06em}.htz-f:hover{outline:0}.htz-g{vertical-align:-0.15em}.htz-h{color:inherit}.htz-i{fill:#FFF}.htz-j{font-size:5.5rem}.htz-k{margin-right:1rem}",
 }
 `;

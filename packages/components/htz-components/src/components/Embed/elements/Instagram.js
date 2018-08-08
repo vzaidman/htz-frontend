@@ -13,7 +13,8 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import { appendScript, } from '../../../utils/scriptTools';
 
-const InstagramWrapper = children => (
+// eslint-disable-next-line react/prop-types
+const InstagramWrapper = ({ children, }) => (
   <FelaComponent
     style={{
       clear: 'both',

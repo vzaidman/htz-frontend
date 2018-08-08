@@ -3,7 +3,7 @@
 exports[`Pinterest board  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c"
     >
       <a
@@ -13,7 +13,7 @@ Object {
         data-pin-scale-width="240"
         href="https://www.pinterest.com/ItsSequoia/marvel-comics/"
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{margin:0 0 -3px}.htz-b{direction:ltr}.htz-c{width:100%}",
 }
@@ -22,7 +22,7 @@ Object {
 exports[`Pinterest pin  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c"
     >
       <a
@@ -31,7 +31,7 @@ Object {
         data-pin-width="large"
         href="https://www.pinterest.com/pin/372321094177951937/"
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{margin:0 0 -3px}.htz-b{direction:ltr}.htz-c{width:100%}",
 }
@@ -40,7 +40,7 @@ Object {
 exports[`Pinterest profile  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c"
     >
       <a
@@ -50,7 +50,7 @@ Object {
         data-pin-scale-width="240"
         href="https://www.pinterest.com/marvelcomics/"
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{margin:0 0 -3px}.htz-b{direction:ltr}.htz-c{width:100%}",
 }

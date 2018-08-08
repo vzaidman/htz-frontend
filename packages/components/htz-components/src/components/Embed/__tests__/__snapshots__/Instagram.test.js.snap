@@ -3,7 +3,7 @@
 exports[`Instagram  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c htz-d htz-e"
     >
       <div
@@ -13,7 +13,7 @@ Object {
           }
         }
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{clear:both}.htz-b{overflow:hidden}.htz-c{position:relative}.htz-d{margin:0 auto}.htz-e{margin-bottom:-12px}",
 }
@@ -22,7 +22,7 @@ Object {
 exports[`Instagram video  1`] = `
 Object {
   "component": <div>
-    <figure
+    <div
       className="htz-a htz-b htz-c htz-d htz-e"
     >
       <div
@@ -32,7 +32,7 @@ Object {
           }
         }
       />
-    </figure>
+    </div>
   </div>,
   "styles": ".htz-a{clear:both}.htz-b{overflow:hidden}.htz-c{position:relative}.htz-d{margin:0 auto}.htz-e{margin-bottom:-12px}",
 }

@@ -6,7 +6,7 @@ import Vimeo from '../elements/Vimeo';
 it('Vimeo ', () => {
   const snapshot = felaSnapshotter(
     <Vimeo
-      content="105847954"
+      source="105847954"
       caption="vimeo"
       credit="vimeo"
       embedType="vimeo"

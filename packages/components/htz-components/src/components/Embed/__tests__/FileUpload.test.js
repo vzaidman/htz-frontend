@@ -6,11 +6,8 @@ import FileUpload from '../elements/FileUpload';
 it('File upload ', () => {
   const snapshot = felaSnapshotter(
     <FileUpload
-      content=""
+      source="https://docs.google.com/document/d/1t7fYkPye3uwUnDnImV-1GqcLitnpNiCDc22k2TU9EoA/edit#heading=h.5x0d5h95i329"
       embedType="excel"
-      elementType="embedElement"
-      inputTemplate="com.polobase.fileUpload"
-      contentId="7.4136"
       contentName="gdfjgh"
     />
   );
