@@ -54,7 +54,11 @@ function DisplayError() {
       })}
       render={({
         className,
-        theme: { stage5: { existingCreditCard: { buttonText, errorText, }, }, },
+        theme: {
+          stage5: {
+            existingCreditCard: { buttonText, errorText, },
+          },
+        },
       }) => (
         <div className={className}>
           {errorText}
@@ -122,11 +126,7 @@ class Wrapper extends Component {
       lastFourDigits: fourDigits.toString(),
     };
     return (
-      <Query
-        query={PAY_WITH_EXISTING_CARD}
-        variables={queryVars}
-        fetchPolicy="network-only"
-      >
+      <Query query={PAY_WITH_EXISTING_CARD} variables={queryVars}>
         {({ data, loading, error, }) => {
           const LoaderIcon = hostname.includes('themarker')
             ? IconTmLoader
