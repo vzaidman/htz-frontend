@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
 // import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
-import DFP from '@haaretz/dfp';
+import { getDfpSingleton, } from '@haaretz/dfp';
 import logger from '../../componentsLogger';
 
 export const instance = {};
@@ -19,7 +19,7 @@ const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
   //  Part I: immidiate initialization of high priority DFP ads, like maaavaron
   let q;
   if (dfpConfig) {
-    q = new DFP(dfpConfig);
+    q = getDfpSingleton(dfpConfig);
     if (DEBUG) {
       window.q = q;
     }
