@@ -11,13 +11,16 @@ export default function (nextStage, router, paramString = null) {
   }${
     queryPartFromPath
       ? `?${queryPartFromPath}${paramString ? `&${paramString}` : ''}`
-      : paramString ? `?${paramString}` : ''
+      : paramString
+        ? `?${paramString}`
+        : ''
   }`;
 
   const pathObj = {
     asPath: computedAsPath,
-    pathName: `/promotions-page/${nextStage}`,
+    pathName: `/promotions-page/${nextStage}${
+      paramString ? `?${paramString}` : ''
+    }`,
   };
-  console.log('retuning object from path generator', pathObj);
   return pathObj;
 }
