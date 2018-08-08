@@ -1,8 +1,7 @@
 {
   "name": "@haaretz/fela-utils",
   "version": "0.1.0",
-  "description":
-    "General, non-ui helpers for building Fela apps and components in the Haaretz stack",
+  "description": "General, non-ui helpers for building Fela apps and components in the Haaretz stack",
   "keywords": [],
   "author": "TxHawks",
   "license": "UNLICENSED",
@@ -16,8 +15,7 @@
   "scripts": {
     "build": "htz-scripts build",
     "build:all": "yarn run build && yarn run build:docs",
-    "build:docs":
-      "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
+    "build:docs": "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
     "clean": "htz-scripts clean",
     "flow": "htz-scripts flow",
     "format": "htz-scripts format",
