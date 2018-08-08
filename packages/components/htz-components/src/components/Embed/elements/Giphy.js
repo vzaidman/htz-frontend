@@ -9,7 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 
-Giphy.propTypes = {
+const propTypes = {
   /**
    * These settings are extracted from the Giphy source code.
    */
@@ -24,42 +24,49 @@ Giphy.propTypes = {
   onLoadCallback: PropTypes.func,
 };
 
-Giphy.defaultProps = {
+const defaultProps = {
   onLoadCallback: null,
 };
 
-// eslint-disable-next-line react/prop-types
-const GiphyWrapper = ({ children, }) => (
-  <FelaComponent
-    style={{
-      margin: '0',
-      marginBottom: '-4px',
-    }}
-  >
-    {children}
-  </FelaComponent>
-);
-
 function Giphy({ settings: { src, height, width, }, onLoadCallback, }) {
-  // TODO: Temporary
-  const innerWidth = 600;
-  // prettier-ignore
-  const newHeight = (innerWidth / width) * height;
-
   return (
-    <GiphyWrapper>
-      <iframe
-        title="Giphy"
-        src={src}
-        width={innerWidth}
-        height={newHeight}
-        frameBorder="0"
-        className="giphy-embed"
-        allowFullScreen
-        onLoad={onLoadCallback}
-      />
-    </GiphyWrapper>
+    <FelaComponent
+      style={{
+        left: '0px',
+        width: '100%',
+        height: '0px',
+        position: 'relative',
+        // prettier-ignore
+        paddingBottom: `${(height / width) * 100}%`,
+      }}
+      render={({ className, }) => (
+        <div className={className}>
+          <FelaComponent
+            style={{
+              top: '0px',
+              left: '0px',
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+            }}
+            render={({ className: iframeStyles, }) => (
+              <iframe
+                className={`${iframeStyles} 'giphy-embed'`}
+                title="Giphy"
+                src={src}
+                frameBorder="0"
+                allowFullScreen
+                onLoad={onLoadCallback}
+              />
+            )}
+          />
+        </div>
+      )}
+    />
   );
 }
+
+Giphy.propTypes = propTypes;
+Giphy.defaultProps = defaultProps;
 
 export default Giphy;
