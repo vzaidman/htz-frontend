@@ -9,7 +9,10 @@ import Zen from '../Zen/Zen';
 
 const paragraphStyle = theme => ({
   marginBottom: '3rem',
-  extend: [ theme.type(1, { lines: 5, }), ],
+  extend: [
+    theme.type(1, { until: 'xl', lines: 5, }),
+    theme.type(0, { from: 'xl', lines: 5, }),
+  ],
 });
 
 // eslint-disable-next-line react/prop-types
