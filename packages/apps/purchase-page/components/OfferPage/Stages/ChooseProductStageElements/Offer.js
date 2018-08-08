@@ -331,7 +331,8 @@ const DesktopOffer = ({
                     ],
                     type: [ { until: 's', value: -1, }, ],
                   }}
-                  onClick={() => {
+                  onClick={evt => {
+                    evt.preventDefault();
                     continueToNextStage({ cache, idx: offerIdx, });
                   }}
                 >

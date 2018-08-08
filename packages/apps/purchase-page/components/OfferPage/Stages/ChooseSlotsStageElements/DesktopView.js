@@ -387,7 +387,8 @@ function DesktopView({
                             variant="salesOpaque"
                             boxModel={{ vp: 1, hp: 5, }}
                             miscStyles={{ marginTop: '3rem', }}
-                            onClick={() => {
+                            onClick={evt => {
+                              evt.preventDefault();
                               continueToNextStage({
                                 cache,
                                 idx,

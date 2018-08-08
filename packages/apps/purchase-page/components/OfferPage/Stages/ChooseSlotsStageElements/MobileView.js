@@ -219,7 +219,8 @@ class MobileView extends Component {
                                 href={pathName}
                                 variant="salesOpaque"
                                 miscStyles={{ marginTop: '3rem', }}
-                                onClick={() => {
+                                onClick={evt => {
+                                  evt.preventDefault();
                                   continueToNextStage({
                                     cache,
                                     idx,
