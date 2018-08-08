@@ -30,7 +30,6 @@ const embeds = {
   PlayBuzz: () => import('./elements/PlayBuzz.js'),
   StandardAudio: () => import('./elements/StandardAudio.js'),
   StandardVideo: () => import('./elements/StandardVideo.js'),
-  Tline: () => import('./elements/Tline.js'),
   Twitter: () => import('./elements/Twitter.js'),
   Vimeo: () => import('./elements/Vimeo.js'),
   Waze: () => import('./elements/Waze.js'),
@@ -213,7 +212,6 @@ export default class Embed extends React.Component {
     'FileUpload',
     'Instagram',
     'Pinterest',
-    'Tline',
   ];
 
   render() {
@@ -244,7 +242,6 @@ export default class Embed extends React.Component {
             <option value="PlayBuzz">PlayBuzz</option>
             <option value="StandardAudio">StandardAudio</option>
             <option value="StandardVideo">StandardVideo</option>
-            <option value="Tline">Tline</option>
             <option value="Twitter">Twitter</option>
             <option value="Vimeo">Vimeo</option>
             <option value="Waze">Waze</option>

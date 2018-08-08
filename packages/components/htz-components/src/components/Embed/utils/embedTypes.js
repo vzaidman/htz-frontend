@@ -30,7 +30,6 @@ const embeds = {
   'com.polobase.MakoEmbed': () => import('../elements/StandardVideo'),
   'com.polobase.KanEmbed': () => import('../elements/StandardVideo'),
   'com.polobase.WashingtonPostEmbed': () => import('../elements/StandardVideo'),
-  'com.polobase.TlineEmbed': () => import('../elements/Tline'),
   'com.polobase.TwitterEmbed': () => import('../elements/Twitter'),
   'com.polobase.VimeoEmbed': () => import('../elements/Vimeo'),
   'com.polobase.WazeEmbed': () => import('../elements/Waze'),
