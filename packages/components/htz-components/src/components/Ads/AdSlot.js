@@ -17,14 +17,12 @@ const defaultProps = {
 class AdSlot extends Component {
   state = {
     shouldRender: false,
-    debugJsx: null,
   };
 
   componentDidMount() {
     if (!this.state.shouldRender) {
-      const debugJsx = <Debug>AdUnit: {this.props.id}</Debug>;
       // eslint-disable-next-line react/no-did-mount-set-state
-      this.setState({ shouldRender: true, debugJsx, });
+      this.setState({ shouldRender: true, });
     }
   }
 
@@ -64,7 +62,7 @@ class AdSlot extends Component {
       }
       return (
         <Zen hide>
-          {this.state.debugJsx}
+          <Debug>AdUnit: {this.props.id}</Debug>
           <div
             id={this.props.id}
             className={`js-dfp-ad ${this.props.className}`}
