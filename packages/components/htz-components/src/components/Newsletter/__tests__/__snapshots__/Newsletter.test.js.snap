@@ -8443,15 +8443,11 @@ exports[`<Newsletter /> NewsletterConfirmed DOM element should correctly render 
     <p
       className="htz-ck htz-cl htz-cm htz-cn htz-co htz-c"
     >
-      <strong>
-        תודה שנרשמת
-      </strong>
+      <strong />
     </p>
     <p
       className="htz-ck htz-cl htz-cm htz-cn htz-co htz-c"
-    >
-      יש לנו דיוורים נוספים שעשויים לעניין אותך
-    </p>
+    />
     <a
       className="htz-d htz-e htz-f htz-g htz-h htz-cp htz-j htz-k htz-l htz-cq htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-cr htz-z htz-ab htz-cs htz-ae htz-af htz-ct htz-ah htz-ai htz-cu htz-ak htz-cv htz-cl htz-cm htz-cn htz-co htz-cw htz-an htz-ao htz-ap htz-aq htz-cx htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-cy htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-cz htz-bi htz-bj htz-bk htz-bl htz-bm"
       href="https://www.haaretz.co.il/personal-area/newsletter"
@@ -8460,9 +8456,7 @@ exports[`<Newsletter /> NewsletterConfirmed DOM element should correctly render 
     >
       <span
         className="htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt"
-      >
-        לרשימה המלאה
-      </span>
+      />
       <span
         className="htz-by htz-bz htz-ca htz-m htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj"
       />

@@ -15,7 +15,7 @@ exports[`<CommentForm> DOM element renders correctly with minimal required props
           <div>
             <label
               className="htz-o htz-b htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar htz-as"
-              htmlFor="123456789"
+              htmlFor="0.123456789"
             >
               <div
                 className=""
@@ -27,9 +27,9 @@ exports[`<CommentForm> DOM element renders correctly with minimal required props
                 </span>
               </div>
               <input
-                aria-describedby="123456789"
+                aria-describedby="0.123456789"
                 className="htz-be htz-bf htz-bg htz-s htz-o htz-bh htz-bi"
-                id="123456789"
+                id="0.123456789"
                 maxLength={50}
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -40,7 +40,7 @@ exports[`<CommentForm> DOM element renders correctly with minimal required props
             </label>
             <span
               className="htz-m htz-bj htz-bk htz-bl htz-bm htz-bn"
-              id="123456789"
+              id="0.123456789"
             >
               הזינו שם שיוצג כמחבר התגובה
             </span>
@@ -51,13 +51,13 @@ exports[`<CommentForm> DOM element renders correctly with minimal required props
           onClick={[Function]}
           type="button"
         >
-          להוספת תגובה מזוהה לחץ כאן
+          להוספת תגובה מזוהה לחצו כאן
         </button>
       </div>
       <div>
         <label
           className="htz-o htz-b htz-j htz-c htz-q htz-r htz-s htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-cb htz-ap htz-aq htz-ar htz-k htz-h htz-i"
-          htmlFor="123456789"
+          htmlFor="0.123456789"
           onClick={[Function]}
         >
           <div
@@ -65,7 +65,7 @@ exports[`<CommentForm> DOM element renders correctly with minimal required props
           >
             <span
               className="htz-at htz-au htz-av htz-aw htz-ax htz-ba htz-bb htz-l htz-ce htz-d htz-e htz-bv htz-ao htz-bc htz-bd htz-n"
-              id="123456789"
+              id="0.123456789"
             >
               תגובה
             </span>
@@ -134,8 +134,8 @@ exports[`<CommentForm> DOM element renders correctly with minimal required props
             </div>
           </div>
           <div
-            aria-describedby="123456789"
-            aria-labelledby="123456789"
+            aria-describedby="0.123456789"
+            aria-labelledby="0.123456789"
             aria-multiline={true}
             className="htz-be htz-bf htz-ex htz-ey htz-ez htz-bg htz-s htz-o htz-fa htz-bh htz-bi"
             contentEditable={true}
@@ -144,7 +144,7 @@ exports[`<CommentForm> DOM element renders correctly with minimal required props
                 "__html": "",
               }
             }
-            id="123456789"
+            id="0.123456789"
             onBlur={[Function]}
             onFocus={[Function]}
             onInput={[Function]}
@@ -158,7 +158,7 @@ exports[`<CommentForm> DOM element renders correctly with minimal required props
         </label>
         <span
           className="htz-m htz-bj htz-bk htz-bl htz-bm htz-bn"
-          id="123456789"
+          id="0.123456789"
         >
           בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ
         </span>
@@ -178,7 +178,7 @@ exports[`<CommentForm> DOM element renders correctly with minimal required props
             <span
               className="htz-ec htz-ed htz-ba htz-bb htz-ee htz-ef htz-eg"
             >
-              שלח
+              שלחו
             </span>
             <span
               className="htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-s htz-er htz-es htz-et htz-eu htz-ev"
