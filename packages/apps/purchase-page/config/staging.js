@@ -27,10 +27,10 @@ module.exports = {
   }),
   useSSL: true,
   graphQLuseSSL: true,
-  graphQLexposedPort: true,
+  graphQLexposedPort: false,
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
-  port: process.env.PORT || '3000',
+  port: process.env.PORT || '2002',
   // Path of promotions page in Polopoly CM
   polopolyPromotionsPagePath: 'promotions-page-react',
   logLevel: 'info',
