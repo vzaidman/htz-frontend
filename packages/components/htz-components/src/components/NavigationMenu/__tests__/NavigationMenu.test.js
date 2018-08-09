@@ -2,7 +2,7 @@ import React from 'react';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import NavigationMenu from '../NavigationMenu';
 
-it('Navigation Menu ', () => {
+it.skip('Navigation Menu ', () => {
   const snapshot = felaSnapshotter(
     <NavigationMenu
       sections={[

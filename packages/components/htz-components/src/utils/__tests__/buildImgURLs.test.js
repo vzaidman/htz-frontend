@@ -15,7 +15,7 @@ const data = [
       full: { width: '300', height: '300', x: '10', y: '0', },
     },
     isAnimated: false,
-    imgName: 'sample.jpg',
+    imgName: 'image/sample.jpg',
     version: '0001524022',
     imageType: 'image',
   },
@@ -33,7 +33,7 @@ const data = [
       full: { width: '300', height: '300', x: '10', y: '0', },
     },
     isAnimated: false,
-    imgName: 'mobileSample.jpg',
+    imgName: 'image/mobileSample.jpg',
     imageType: 'image',
   },
 ];
@@ -50,7 +50,7 @@ describe('buildUrl()', () => {
   it('process all default values correctly', () => {
     const result = buildUrl('1.44444', data[0], { width: '200', });
     expect(result).toMatch(
-      /image\/upload\/w_300,h_300,x_10,y_0,c_crop,g_north_west.q_auto,h_200,w_200,c_fill,f_auto.fl_any_format\.preserve_transparency\.progressive:none/
+      /image\/upload\/w_300,h_300,x_10,y_0,c_crop\/q_auto,h_200,w_200,c_fill,f_auto\/fl_any_format\.preserve_transparency\.progressive:none/
     );
   });
 

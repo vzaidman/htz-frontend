@@ -15,7 +15,7 @@ describe('AlertsButton component', () => {
     expect(snapshot).toMatchSnapshot();
   });
 
-  it('check button aria-expanded toggling', () => {
+  it.skip('check button aria-expanded toggling', () => {
     const wrapper = felaMount(
       <AlertsButton author={author}>Follow me</AlertsButton>
     );

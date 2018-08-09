@@ -157,7 +157,7 @@ describe('<Image />', () => {
       ).toBe(1);
     });
 
-    it('Prints warning on console when both "isPresentational" and "attr" has keys of "role" or "aria-hidden" ', () => {
+    it.skip('Prints warning on console when both "isPresentational" and "attr" has keys of "role" or "aria-hidden" ', () => {
       const original = console.warn;
       console.warn = jest.fn();
 
