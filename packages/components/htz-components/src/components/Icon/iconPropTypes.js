@@ -37,14 +37,14 @@ const iconPropTypes = {
       })
     ),
   ]),
-  stylesProp: stylesPropType,
+  miscStyles: stylesPropType,
 };
 
 const iconDefaultProps = {
   color: null,
   fill: null,
   size: null,
-  stylesProp: null,
+  miscStyles: null,
 };
 
 export { iconPropTypes, iconDefaultProps, };

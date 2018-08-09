@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IconBundle /> DOM element add "id" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id="hasId"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> DOM element add "id" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconBundle /> DOM element add "onClick" attribute to DOM element 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    id={[Function]}
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> DOM element add "onClick" attribute to DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconBundle /> DOM element pass attributes defined in the "attrs" prop to the DOM element 1`] = `
+<div>
+  <svg
+    aria-hidden={true}
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> DOM element pass attributes defined in the "attrs" prop to the DOM element 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconBundle /> DOM element render correctly when no props are passed 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> DOM element render correctly when no props are passed 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}"`;
+
+exports[`<IconBundle /> styles responsively set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> styles responsively set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 79.9375em){.htz-d{position:relative}}@media (min-width: 80em){.htz-e{position:static}}"`;
+
+exports[`<IconBundle /> styles set icon's color 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> styles set icon's color 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:#0B7EB5}.htz-c{fill:#FFF}"`;
+
+exports[`<IconBundle /> styles set icon's color responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> styles set icon's color responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-d{fill:#FFF}@media (max-width: 79.9375em){.htz-b{color:#0B7EB5}}@media (min-width: 80em){.htz-c{color:#2D2D2D}}"`;
+
+exports[`<IconBundle /> styles set icon's fill 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> styles set icon's fill 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#0B7EB5}"`;
+
+exports[`<IconBundle /> styles set icon's fill responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> styles set icon's fill responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}@media (max-width: 79.9375em){.htz-c{fill:#0B7EB5}}@media (min-width: 80em){.htz-d{fill:#2D2D2D}}"`;
+
+exports[`<IconBundle /> styles set icon's size 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> styles set icon's size 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{font-size:6rem}"`;
+
+exports[`<IconBundle /> styles set icon's size responsively 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d htz-e"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> styles set icon's size responsively 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}@media (max-width: 79.9375em){.htz-d{font-size:6rem}}@media (min-width: 80em){.htz-e{font-size:7rem}}"`;
+
+exports[`<IconBundle /> styles set misc styles on an icon 1`] = `
+<div>
+  <svg
+    className="htz-a htz-b htz-c htz-d"
+    height="1em"
+    viewBox="0 0 256 256"
+    width="1em"
+  >
+     
+    <path
+      d="M162 170H22.4c-.2 0-.4-.2-.4-.4V43.4c0-.2.2-.4.4-.4h178.2c.2 0 .4.2.4.4V84h-6V49H28v115h134v6zm0 9H21c-3.3 0-6-2.7-6-6V42c0-3.3 2.7-6 6-6h182c3.3 0 6 2.7 6 6v42h6V42c0-6.6-5.4-12-12-12H21c-6.6 0-12 5.4-12 12v131c0 6.6 5.4 12 12 12h141v-6zm74-82h-56c-3.3 0-6 2.7-6 6v119c0 3.3 2.7 6 6 6h56c3.3 0 6-2.7 6-6V103c0-3.3-2.7-6-6-6m0-6c6.6 0 12 5.4 12 12v119c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12V103c0-6.6 5.4-12 12-12h56zm-3 22h-49v97h49v-97m5.6-6c.2 0 .4.2.4.4v108.2c0 .2-.2.4-.4.4h-60.2c-.2 0-.4-.2-.4-.4V107.4c0-.2.2-.4.4-.4h60.2zM218 222c0-1.1-.9-2-2-2h-13c-1.1 0-2 .9-2 2s.9 2 2 2h13c1.1 0 2-.9 2-2zm-7-120v-1c0-1.1-.9-2-2-2h-1c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2zm13.3 19.1l-33.2 33.2 3.5 3.5 33.2-33.2-3.5-3.5zm-12.1 33.1l-21.1 21.1 3.5 3.5 21.1-21.1-3.5-3.5zM163 210c0-8.3-6.5-15-14.4-15H76.4c-7.9 0-14.4 6.7-14.4 15v6h6v-6c0-5 3.8-9 8.4-9h72.2c4.6 0 8.4 4 8.4 9v6h6v-6zm-73-25h-5v11h5v-11zm49 0h-5v11h5v-11z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`<IconBundle /> styles set misc styles on an icon 2`] = `".htz-a{vertical-align:-0.15em}.htz-b{color:inherit}.htz-c{fill:#FFF}.htz-d{position:relative}"`;

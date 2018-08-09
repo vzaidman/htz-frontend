@@ -8,43 +8,47 @@ const template = (opts = {}) => (
  * from the \`iconTamplate.js\` file the parent directory.
  * *************************************************************** */
 import React from 'react';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import iconStyle from '../iconStyle';
 import { iconPropTypes, iconDefaultProps, } from '../iconPropTypes';
-import { attrsPropType, } from '../../../propTypes/attrsPropType';
 
-const ${state.componentName} = createComponent(
-  iconStyle,
-  Unstyled${state.componentName},
-  [ 'attrs', 'onClick', ]
+const ${
+  state.componentName
+} = ({ size, fill, color, attrs, miscStyles, ...props }) => (
+  <FelaComponent
+    size={size}
+    fill={fill}
+    color={color}
+    attrs={attrs}
+    miscStyles={miscStyles}
+    rule={iconStyle}
+    render={({ className, }) => (
+      ${code
+    .replace(
+      /((?:.|[\n\r])*)((<svg )(width="1em" height="1em" )?((viewbox=")((?:\d+\.?\d*)+\s+(?:\d+\.?\d*)+\s+)(\d+\.?\d*)\s+(\d+\.?\d*)\s*")).*(>(?:.|[\n\r])*)/gim,
+      (
+        matches,
+        pre,
+        g2,
+        svgTag,
+        g4,
+        viewBox,
+        g6,
+        g7,
+        width,
+        height,
+        rest
+      ) =>
+        `${pre}${svgTag}width="${width /
+              height}em" height="1em" ${viewBox} className={className} {...props} {...attrs} ${rest}`
+    )
+    .replace(/\r?\n|\r/gm, '')}
+    )}
+  />
 );
 
 ${state.componentName}.propTypes = iconPropTypes;
 ${state.componentName}.defaultProps = iconDefaultProps;
-
-
-// Underlying component
-Unstyled${state.componentName}.propTypes = {
-  attrs: attrsPropType,
-};
-
-Unstyled${state.componentName}.defaultProps = {
-  attrs: null,
-};
-
-function Unstyled${state.componentName}({ attrs, ...props }) {
-  return (
-    ${code
-    .replace(
-      /((?:.|[\n\r])*)((<svg )(width="1em" height="1em" )?((viewbox=")((?:\d+\.?\d*)+\s+(?:\d+\.?\d*)+\s+)(\d+\.?\d*)\s+(\d+\.?\d*)\s*")).*(>(?:.|[\n\r])*)/gim,
-      (matches, pre, g2, svgTag, g4, viewBox, g6, g7, width, height, rest) =>
-        `${pre}${svgTag}width="${width /
-            height}em" height="1em" ${viewBox} {...props} {...attrs} ${rest}`
-    )
-    .replace(/\r?\n|\r/gm, '')}
-  );
-}
-
 
 export default ${state.componentName};
 `;

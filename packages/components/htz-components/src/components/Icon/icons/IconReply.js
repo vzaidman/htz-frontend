@@ -5,38 +5,38 @@
  * from the `iconTamplate.js` file the parent directory.
  * *************************************************************** */
 import React from 'react';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import iconStyle from '../iconStyle';
 import { iconPropTypes, iconDefaultProps, } from '../iconPropTypes';
-import { attrsPropType, } from '../../../propTypes/attrsPropType';
 
-const IconReply = createComponent(iconStyle, UnstyledIconReply, [
-  'attrs',
-  'onClick',
-]);
+const IconReply = ({ size, fill, color, attrs, miscStyles, ...props }) => (
+  <FelaComponent
+    size={size}
+    fill={fill}
+    color={color}
+    attrs={attrs}
+    miscStyles={miscStyles}
+    rule={iconStyle}
+    render={({ className, }) => (
+      <svg
+        width="1em"
+        height="1em"
+        viewBox="0 0 256 256"
+        className={className}
+        {...props}
+        {...attrs}
+      >
+        {' '}
+        <path
+          fill="currentColor"
+          d="M240 25.5v107l-23 24H69.9l42.4 42.4-19.6 19.6-76-76L92.3 67l19.6 19.6L70 128.5h142v-103h28z"
+        />
+      </svg>
+    )}
+  />
+);
 
 IconReply.propTypes = iconPropTypes;
 IconReply.defaultProps = iconDefaultProps;
-
-// Underlying component
-UnstyledIconReply.propTypes = {
-  attrs: attrsPropType,
-};
-
-UnstyledIconReply.defaultProps = {
-  attrs: null,
-};
-
-function UnstyledIconReply({ attrs, ...props }) {
-  return (
-    <svg width="1em" height="1em" viewBox="0 0 256 256" {...props} {...attrs}>
-      {' '}
-      <path
-        fill="currentColor"
-        d="M240 25.5v107l-23 24H69.9l42.4 42.4-19.6 19.6-76-76L92.3 67l19.6 19.6L70 128.5h142v-103h28z"
-      />
-    </svg>
-  );
-}
 
 export default IconReply;

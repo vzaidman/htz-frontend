@@ -1,35 +1,43 @@
+/* global window */
+/** ************************************************************** *
+ * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
+ *
+ * If you want to change the styleguide example, it is generated
+ * from the `embedsFileTemplate.js` file is this directory.
+ * *************************************************************** */
 import React from 'react';
 import felaSnapshotter from '../../../../test-helpers/felaSnapshotter';
 import IconPrint from '../IconPrint';
 
 describe('<IconPrint />', () => {
-  describe('Errors', () => {
-    it('throw an error when the value passed to the "size" prop isn\'t a number', () => {
-      expect(() => felaSnapshotter(<IconPrint size="2rem" />)).toThrow(
-        /^An Icon's "size" prop may only be passed a "number"/
-      );
-    });
-    it('throw an error when the value passed to the "color" prop isn\'t a named color (string)', () => {
-      expect(() => felaSnapshotter(<IconPrint color="red" />)).toThrow(
-        /is not a named-color/
-      );
-    });
-    it('throw an error when the value passed to the "color" prop isn\'t a named color (array of strings)', () => {
-      expect(() =>
-        felaSnapshotter(<IconPrint color={[ 'primary', 'nope', ]} />)
-      ).toThrow(/is not a named-color/);
-    });
-    it('throw an error when the value passed to the "fill" prop isn\'t a named color (string)', () => {
-      expect(() => felaSnapshotter(<IconPrint fill="red" />)).toThrow(
-        /is not a named-color/
-      );
-    });
-    it('throw an error when the value passed to the "fill" prop isn\'t a named color (array of strings)', () => {
-      expect(() =>
-        felaSnapshotter(<IconPrint fill={[ 'primary', 'nope', ]} />)
-      ).toThrow(/is not a named-color/);
-    });
-  });
+  /* The error tests are left as documentation, but are commented out for the redability of the test results */
+  // describe('Errors', () => {
+  //   it('throw an error when the value passed to the "size" prop isn't a number', () => {
+  //     expect(() => felaSnapshotter(<IconPrint size="2rem" />)).toThrow(
+  //       /^An Icon's "size" prop may only be passed a "number"/
+  //     );
+  //   });
+  //   it('throw an error when the value passed to the "color" prop isn't a named color (string)', () => {
+  //     expect(() => felaSnapshotter(<IconPrint color="red" />)).toThrow(
+  //       /is not a named-color/
+  //     );
+  //   });
+  //   it('throw an error when the value passed to the "color" prop isn't a named color (array of strings)', () => {
+  //     expect(() =>
+  //       felaSnapshotter(<IconPrint color={[ 'primary', 'nope', ]} />)
+  //     ).toThrow(/is not a named-color/);
+  //   });
+  //   it('throw an error when the value passed to the "fill" prop isn't a named color (string)', () => {
+  //     expect(() => felaSnapshotter(<IconPrint fill="red" />)).toThrow(
+  //       /is not a named-color/
+  //     );
+  //   });
+  //   it('throw an error when the value passed to the "fill" prop isn't a named color (array of strings)', () => {
+  //     expect(() =>
+  //       felaSnapshotter(<IconPrint fill={[ 'primary', 'nope', ]} />)
+  //     ).toThrow(/is not a named-color/);
+  //   });
+  // });
   describe('DOM element', () => {
     testCase('render correctly when no props are passed', <IconPrint />);
     testCase(

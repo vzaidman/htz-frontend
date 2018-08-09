@@ -5,38 +5,38 @@
  * from the `iconTamplate.js` file the parent directory.
  * *************************************************************** */
 import React from 'react';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import iconStyle from '../iconStyle';
 import { iconPropTypes, iconDefaultProps, } from '../iconPropTypes';
-import { attrsPropType, } from '../../../propTypes/attrsPropType';
 
-const IconComment = createComponent(iconStyle, UnstyledIconComment, [
-  'attrs',
-  'onClick',
-]);
+const IconComment = ({ size, fill, color, attrs, miscStyles, ...props }) => (
+  <FelaComponent
+    size={size}
+    fill={fill}
+    color={color}
+    attrs={attrs}
+    miscStyles={miscStyles}
+    rule={iconStyle}
+    render={({ className, }) => (
+      <svg
+        width="1em"
+        height="1em"
+        viewBox="0 0 256 256"
+        className={className}
+        {...props}
+        {...attrs}
+      >
+        {' '}
+        <path
+          fill="currentColor"
+          d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+        />
+      </svg>
+    )}
+  />
+);
 
 IconComment.propTypes = iconPropTypes;
 IconComment.defaultProps = iconDefaultProps;
-
-// Underlying component
-UnstyledIconComment.propTypes = {
-  attrs: attrsPropType,
-};
-
-UnstyledIconComment.defaultProps = {
-  attrs: null,
-};
-
-function UnstyledIconComment({ attrs, ...props }) {
-  return (
-    <svg width="1em" height="1em" viewBox="0 0 256 256" {...props} {...attrs}>
-      {' '}
-      <path
-        fill="currentColor"
-        d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
-      />
-    </svg>
-  );
-}
 
 export default IconComment;

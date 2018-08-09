@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
+const async = require('async');
 
 const md5 = require('md5');
 const svgr = require('svgr').default;
@@ -12,6 +13,9 @@ const IconDir = path.relative(
   process.cwd(),
   path.join('src', 'components', 'Icon')
 );
+
+const IconsTestsDir = path.join(IconDir, 'icons', '__tests__');
+
 const inDir = path.join(IconDir, 'svgs');
 const outDir = path.join(IconDir, 'icons');
 const cacheFilePath = path.join(
@@ -24,6 +28,12 @@ const componentTemplate = require(path.join(
   process.cwd(),
   IconDir,
   'iconTemplate.js'
+));
+
+const componentTestTemplate = require(path.join(
+  process.cwd(),
+  IconDir,
+  'iconTestTemplate.js'
 ));
 const exampleTemplate = require(path.join(
   process.cwd(),
@@ -82,8 +92,9 @@ Promise.all(
             path.basename(filePath),
             outDir
           );
+          const componentName = path.basename(componentPath, '.js');
           svgr(svg, {
-            componentName: path.basename(componentPath, '.js'),
+            componentName,
             prettier: false,
             semi: true,
             singleQuote: true,
@@ -112,37 +123,53 @@ Promise.all(
               // so that changes to the template automatically affect all generated
               // components, even if the svg itself hasn't changed.
               if (componentHash !== cachedHash && !noOverWrite) {
-                fs.writeFile(componentPath, component, error => {
-                  if (error) {
-                    console.error(
-                      `${error.stack}\n\n${chalk.red(
-                        `Failed to write the updated "${chalk.yellow(
-                          path.basename(componentPath)
-                        )}" component to disk. Please try again later\n`
-                      )}`
+                const iconTestFile = componentTestTemplate(componentName);
+                const IconTestFilePath = path.join(
+                  IconsTestsDir,
+                  `${componentName}.test.js`
+                );
+                async.each(
+                  [
+                    { file: component, path: componentPath, },
+                    { file: iconTestFile, path: IconTestFilePath, },
+                  ],
+                  (icon, callback) => {
+                    fs.writeFile(icon.path, icon.file, error => {
+                      if (error) {
+                        console.error(
+                          `${error.stack}\n\n${chalk.red(
+                            `Failed to write the updated "${chalk.yellow(
+                              path.basename(componentPath)
+                            )}" component to disk. Please try again later\n`
+                          )}`
+                        );
+                        callback(error);
+                      }
+                      callback();
+                    });
+                  },
+                  error => {
+                    if (error) resolve(error.message);
+                    // Update the cache
+                    cache[componentPath] = componentHash;
+
+                    // Inform the user
+                    console.log(
+                      componentFiles.includes(componentPath)
+                        ? chalk.yellow(
+                          `The source svg of "${chalk.magenta(
+                            path.basename(componentPath)
+                          )}" has changed. Updating the icon component.\n`
+                        )
+                        : `${chalk.yellow(
+                          `Generated a new "${chalk.magenta(
+                            chalk.bold(path.basename(componentPath))
+                          )}" component.`
+                        )}\nDon't forget to add it to the exported component in "src/index.js"..\n`
                     );
-                    resolve(error.message);
+                    resolve(component);
                   }
-
-                  // Update the cache
-                  cache[componentPath] = componentHash;
-
-                  // Inform the user
-                  console.log(
-                    componentFiles.includes(componentPath)
-                      ? chalk.yellow(
-                        `The source svg of "${chalk.magenta(
-                          path.basename(componentPath)
-                        )}" has changed. Updating the icon component.\n`
-                      )
-                      : `${chalk.yellow(
-                        `Generated a new "${chalk.magenta(
-                          chalk.bold(path.basename(componentPath))
-                        )}" component.`
-                      )}\nDon't forget to add it to the exported component in "src/index.js"..\n`
-                  );
-                  resolve(component);
-                });
+                );
               }
               else {
                 resolve(component);

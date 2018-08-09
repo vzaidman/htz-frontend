@@ -1,83 +1,73 @@
 {
-  "src/components/Icon/icons/IconAlef.js": "8e52091d89aa4b1643e1b4501e9fc671",
-  "src/components/Icon/icons/IconAlefLogo.js":
-    "d879a757295a7f5bd0361fc766bff820",
-  "src/components/Icon/icons/IconAvatar.js": "b2257d5148ea8a606b37362d9c083602",
-  "src/components/Icon/icons/IconAlert.js": "8892696838e55d5a952ebd72a9dc6b0c",
-  "src/components/Icon/icons/IconBack.js": "96a48e87e4706b94da3d122c056a91bf",
-  "src/components/Icon/icons/IconClose.js": "3bd7513fd328ee78b22a32806554e4b9",
-  "src/components/Icon/icons/IconCamera.js": "6e5b1d183cb3d0d4bd3ffe5b51cbf8e8",
-  "src/components/Icon/icons/IconComment.js":
-    "d53082decc8e3eeec1c388863f5430e2",
-  "src/components/Icon/icons/IconFacebookLogo.js":
-    "b088cf36bb6c48ecdf757631d4c9861a",
-  "src/components/Icon/icons/IconDislike.js":
-    "1a5c38cdf6c2716ace9e1381f035f829",
-  "src/components/Icon/icons/IconFacebook.js":
-    "d7baa447b0ff5f0ae575f6de6e003dad",
-  "src/components/Icon/icons/IconHalfStar.js":
-    "6d8695c5f9173bbe21a87146a24288aa",
-  "src/components/Icon/icons/IconGPlus.js": "8f3cdf7564304e39adf2834f95cca56b",
-  "src/components/Icon/icons/IconLike.js": "c3f0db3f17c8f69ff616f423ed9da0c5",
-  "src/components/Icon/icons/IconMailAlert.js":
-    "b16a9458eeae918af2114733f490f223",
-  "src/components/Icon/icons/IconMail.js": "1f05ad130af77921b5394ee881d40551",
-  "src/components/Icon/icons/IconPlus.js": "3c88fbca51e79977e8d9b482ddd7005d",
-  "src/components/Icon/icons/IconPrint.js": "8beb09a8b27eaeb0729e871d497dcb59",
-  "src/components/Icon/icons/IconReading.js":
-    "6e0871b42c3637776ae14e2ec3169bba",
-  "src/components/Icon/icons/IconMenu.js": "1f19dc7407ea748719fb47af06ac5126",
-  "src/components/Icon/icons/IconRss.js": "f90f77a75faeb8259d5699b08b867ca9",
-  "src/components/Icon/icons/IconSearch.js": "01b7ec753e042f63f750eea7c6d3b7bf",
-  "src/components/Icon/icons/IconStar.js": "80d835f6a0bf6c4eeff29d09d7a794f7",
-  "src/components/Icon/icons/IconSettings.js":
-    "30d3b20accccb5ab7141f87dd8e3090d",
-  "src/components/Icon/icons/IconTheMarker.js":
-    "c731640a5a301826ef82af4eb36fcaa0",
-  "src/components/Icon/icons/IconTwitter.js":
-    "2f7833ccd0c5ef4238030b9ffb90200d",
-  "src/components/Icon/icons/IconZen.js": "915c3c7b21bb54c468f15006910dd717",
-  "src/components/Icon/icons/IconWhatsapp.js":
-    "77a53b5a297e77f52cbfb9402aa14e88",
-  "src/components/Icon/icons/IconZoomOut.js":
-    "6cf91bacf5522dfdfc03fc73399c08ba",
-  "src/components/Icon/icons/IconZoomIn.js": "5991ab491e272a7c84f166a0395a07c0",
   "src/components/Icon/icons/IconAccessibility.js":
-    "10999a82332837e75040e94493ca84a0",
-  "src/components/Icon/icons/IconBold.js": "8882fd1cde107c37367b321928f1c784",
-  "src/components/Icon/icons/IconQuote.js": "4b0a2551cb472dd8067861d3e86f410c",
-  "src/components/Icon/icons/IconArrow.js": "b7a747bcfaf3c13be45da455bbc0472c",
-  "src/components/Icon/icons/IconReply.js": "507b541b3686ceb763ec3bc2936137a3",
-  "src/components/Icon/icons/IconItalic.js": "353638d7a91d1536ae2c949c183f09d7",
-  "src/components/Icon/icons/IconAndroid.js":
-    "cab24a64be9ce3df4db57d06fd258698",
-  "src/components/Icon/icons/IconApple.js": "673bc0ab80089c0cf821f5fedef3303b",
-  "src/components/Icon/icons/IconHtzLoader.js":
-    "74c72fd6192b7b95cf25c4a9b80acd9b",
-  "src/components/Icon/icons/IconTmLoader.js":
-    "3b26c1eb4c687271914c7093670b1c3d",
-  "src/components/Icon/icons/IconHaaretzLogo.js":
-    "127c8397d91c8213d25312888d2d09b9",
-  "src/components/Icon/icons/IconBundle.js": "4a9b62c2362c0ba89434eefa605ae68d",
-  "src/components/Icon/icons/IconTablet.js": "63f645059f12fc0ce92af1e4559de01f",
-  "src/components/Icon/icons/IconCredit.js": "5216d2c7ac809fd3c845bf997b1ebc6a",
-  "src/components/Icon/icons/IconHaaretzFullLogo.js":
-    "72c6f2716564d22bd4ac1caf8703d1ce",
-  "src/components/Icon/icons/IconLock.js": "2127d8add369e0c3766bc57b7b1d2efe",
-  "src/components/Icon/icons/IconSafePayment.js":
-    "fbaa68d038ebc11d8983420aa1002441",
-  "src/components/Icon/icons/IconMarkerLogo.js":
-    "bd56f43d8d24cc0d67bd1a9b34c0769c",
-  "src/components/Icon/icons/IconPaypal.js": "9589c93fc08d622c4867b0d217593de1",
-  "src/components/Icon/icons/IconMarkerLogoTransparent.js":
-    "f757e326f5068c30af5d6ec9ab2437e8",
+    "652bdebefbee800176ef47d6ea945026",
   "src/components/Icon/icons/IconAlefLogoTransparent.js":
-    "2b677a4ce4bee425557b44cae80af76f",
-  "src/components/Icon/icons/IconCheck.js": "312e089c9e46796f4acd8de98cb9d6cc",
-  "src/components/Icon/icons/IconInfo.js": "80ef8ce9fd16ce8d6693a431443962db",
+    "dfc49e35ee0bb513e20304895e0bbfe8",
+  "src/components/Icon/icons/IconAlefLogo.js":
+    "7d14f450d8d33bfd698b0b98fd5d0348",
+  "src/components/Icon/icons/IconAlef.js": "cc6863f179abf99175c1dedea6fe0754",
+  "src/components/Icon/icons/IconAlert.js": "956c704016cad47fb63130b7d6b4d0d2",
+  "src/components/Icon/icons/IconAndroid.js":
+    "7aaa65d006d3ca4e2290cc5da17d8d77",
+  "src/components/Icon/icons/IconApple.js": "040a6bea4f643ab5e8bbf1aa72062d96",
+  "src/components/Icon/icons/IconArrow.js": "5bcc3c4442f87b3bc553f5dd54808b67",
+  "src/components/Icon/icons/IconAvatar.js": "ad3f349fe64a2f80261b36e64d09158b",
+  "src/components/Icon/icons/IconBack.js": "efbe8d4ee035eb3ba41f3968c6c7dec8",
+  "src/components/Icon/icons/IconBold.js": "dd45094618cfcfa59c8f2e3e86fc5d63",
+  "src/components/Icon/icons/IconBundle.js": "582459afd385622b8362da98ae2b79e7",
+  "src/components/Icon/icons/IconCamera.js": "b23a9b74d46aab915be36bdca8486535",
+  "src/components/Icon/icons/IconClose.js": "6526a2c881ade67c09858e972f79b4d1",
+  "src/components/Icon/icons/IconCheck.js": "3a2794c8ad38d1acd00897ecde13dc8b",
+  "src/components/Icon/icons/IconComment.js":
+    "c28a371762f9105162362307d1944a08",
+  "src/components/Icon/icons/IconCredit.js": "51f60093e1081bd581a351b491cffd7f",
+  "src/components/Icon/icons/IconDislike.js":
+    "68345c2803bf6bd4f8d9ebbc3a0c1e47",
+  "src/components/Icon/icons/IconDrive.js": "db5254704fa008faef178ff6811e8755",
+  "src/components/Icon/icons/IconFacebookLogo.js":
+    "96937636171c52b5dc2acba02b70f6fd",
+  "src/components/Icon/icons/IconGPlus.js": "868f3557b6e51547160e762640f83034",
+  "src/components/Icon/icons/IconFacebook.js":
+    "1781ed8a14c56d3c88fbe4ace279ee86",
+  "src/components/Icon/icons/IconHaaretzLogo.js":
+    "fb94fffa1e1c2f0a665d6fe95ec45d0a",
+  "src/components/Icon/icons/IconHalfStar.js":
+    "3a9b0996e8668cb73b1d283a26ad5530",
+  "src/components/Icon/icons/IconInfo.js": "db2033afd4f262d5d5ac11c1d866e05c",
+  "src/components/Icon/icons/IconItalic.js": "dbecc5af0cfe142f54fdc818ccf5863d",
+  "src/components/Icon/icons/IconLock.js": "0e0f316f422a5044f0f32ba82aa6ff85",
+  "src/components/Icon/icons/IconLike.js": "7595826d84be380b884f0cffedb09707",
+  "src/components/Icon/icons/IconMailAlert.js":
+    "1ba0a1e033e3f6e6f45bcfcacc98700e",
+  "src/components/Icon/icons/IconMail.js": "2fb83f90a385d90b7a3785db1bea0778",
+  "src/components/Icon/icons/IconMarkerLogoTransparent.js":
+    "95b08b13ad64f1dda5d488fc20da1304",
+  "src/components/Icon/icons/IconMarkerLogo.js":
+    "da09f07ed46d2e64fd8d119b1279263d",
+  "src/components/Icon/icons/IconMenu.js": "fb74fd81e20930f436b60790a66696ef",
   "src/components/Icon/icons/IconMessenger.js":
-    "c811a8e09da590adcc25c7627a9f15c4",
-  "src/components/Icon/icons/IconSave.js": "45a940367bc23c51a7f523af4ce631f3",
-  "src/components/Icon/icons/IconDrive.js": "f5bd8caf3ed0430d3a60927b73fb087c",
-  "src/components/Icon/icons/IconPdf.js": "ffdce75d2b9b929c19b6805d47ccfce0"
+    "fff5273f7a4d2de9ef7e8f471bacaf9b",
+  "src/components/Icon/icons/IconPdf.js": "71376b9a1c31c2952a26696c261c49a0",
+  "src/components/Icon/icons/IconPlus.js": "83a1b75209485eef36a48ac35c29728d",
+  "src/components/Icon/icons/IconPrint.js": "c600d4b3bb867b7595eff5825c2cb1b0",
+  "src/components/Icon/icons/IconQuote.js": "121f7d11ed22065def415ced03f2b3f2",
+  "src/components/Icon/icons/IconReading.js":
+    "27339b30eddf95a8aed254e57fa6f31d",
+  "src/components/Icon/icons/IconReply.js": "9c1166b35b6b4186585098d6964936b4",
+  "src/components/Icon/icons/IconRss.js": "c7826cf6ce7232d85a839866a04ac2ad",
+  "src/components/Icon/icons/IconSave.js": "703e351b2a883223993761b178106de4",
+  "src/components/Icon/icons/IconSettings.js":
+    "bc3193c2b0f13e4c8acf0bffdd87c817",
+  "src/components/Icon/icons/IconStar.js": "c3851a5d12947657e9ec3fffd2d266d0",
+  "src/components/Icon/icons/IconSearch.js": "34ecf20c97329622c67d33ab1f417747",
+  "src/components/Icon/icons/IconTablet.js": "d4aff42d193bbf0649f9f8deae41d908",
+  "src/components/Icon/icons/IconTheMarker.js":
+    "1fdc508ba4fbba06382d07d08f973af0",
+  "src/components/Icon/icons/IconTwitter.js":
+    "f2dff9c742977828ddb058c8565e7aed",
+  "src/components/Icon/icons/IconWhatsapp.js":
+    "8e6dee4ce09d7eb78c260367bbd17681",
+  "src/components/Icon/icons/IconZen.js": "913ec48b5f5b4e6a28bba91672deb076",
+  "src/components/Icon/icons/IconZoomIn.js": "daa6d639fd0e91d70252f25784a6a7ba",
+  "src/components/Icon/icons/IconZoomOut.js": "d48c14db13a10713c6f7639008a88ffa"
 }
