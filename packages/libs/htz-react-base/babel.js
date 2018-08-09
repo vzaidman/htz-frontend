@@ -51,6 +51,7 @@ switch (process.env.BABEL_ENV) {
           // break the build - most likely, that just means the selected
           // browsers happen to require the same transforms.
         },
+        useBuiltIns: 'entry',
         forceAllTransforms: true,
         modules: false,
       },

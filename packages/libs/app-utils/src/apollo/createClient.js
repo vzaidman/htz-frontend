@@ -10,7 +10,7 @@ import { withClientState, } from 'apollo-link-state';
 import { UserFactory, } from '@haaretz/htz-user-utils';
 import fetch from 'isomorphic-unfetch';
 import config from 'config';
-import chalk from 'chalk';
+// import chalk from 'chalk';
 import gql from 'graphql-tag';
 import switchToDomain from '../utils/switchToDomain';
 import pageSchema from './pageSchema';
@@ -87,22 +87,18 @@ function create(initialState, req) {
     ({ response, operation, graphQLErrors, networkError, }) => {
       if (graphQLErrors) {
         console.log(
-          `${chalk.red('[GraphQL error]:')} Operation Name: ${
-            operation.operationName
-          }`
+          `${'[GraphQL error]:'} Operation Name: ${operation.operationName}`
         );
         graphQLErrors.map(({ message, locations, path, }) =>
           console.log(
-            `${chalk.red(
-              '[GraphQL error]:'
-            )} Message: ${message}, Location: ${locations.map(
+            `${'[GraphQL error]:'} Message: ${message}, Location: ${locations.map(
               ({ line, column, }) => `{ line: ${line}, column: ${column} }`
             )}, Path: ${path}`
           )
         );
       }
       if (networkError) {
-        console.log(`${chalk.red('[Network error]:')} ${networkError}`);
+        console.log(`${'[Network error]:'} ${networkError}`);
       }
       if (response) response.errors = null;
     }

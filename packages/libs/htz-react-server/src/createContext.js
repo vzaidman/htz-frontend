@@ -134,13 +134,19 @@ export function createLoaders(req) {
   );
   const payWithExistingCardLoader = new DataLoader(keys =>
     Promise.all(
-      keys.map(paymentData =>
-        fetch(
+      keys.map(paymentData => {
+        console.log(
+          'fetch url for payWithExistingCard from create context: ',
           `${ssoService}/sso/r/registerWebUser?${querystring.stringify(
             paymentData
           )}`
-        ).then(response => response.json())
-      )
+        );
+        return fetch(
+          `${ssoService}/sso/r/registerWebUser?${querystring.stringify(
+            paymentData
+          )}`
+        ).then(response => response.json());
+      })
     )
   );
 

@@ -18,7 +18,7 @@ export function buildFontLoadingScript(fonts) {
       else if ('fonts' in document) {`;
       if (fonts[fontFamily].subset) {
         string += `document.fonts.load('1em ${fontFamily}Subset')
-          .then(() => {
+          .then(function() {
             document.documentElement.className += ' fontsLoaded${i + 1}Subset';
             ${loadPromiseAddClassAndLocalStorageHandler(
     font,
@@ -72,7 +72,7 @@ function loadPromiseAddClassAndLocalStorageHandler(
     }1em ${fontFamily}'`;
     return `document.fonts.load(${loadString})`;
   })} ])
-    .then(() => {
+    .then(function() {
       document.documentElement.className += ' fontsLoaded${i + 1}';
       if (localStorage) { localStorage.${keyName} = true; }
     });`;
