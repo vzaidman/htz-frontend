@@ -17,29 +17,13 @@ switch (connectionPreset) {
 
   case 'stage': {
     const baseConfigOverride = require('./staging');
-    Object.assign(presetOverride, baseConfigOverride.service, {
-      service: {
-        graphql: baseConfigOverride.service.graphql,
-        image: baseConfigOverride.service.image,
-      },
-      remoteFQDN: baseConfigOverride.remoteFQDN,
-      logLevel: baseConfigOverride.logLevel,
-      enableHttpLogging: baseConfigOverride.enableHttpLogging,
-    });
+    presetOverride = Object.assign(presetOverride, baseConfigOverride, {});
     break;
   }
 
   case 'prod': {
     const baseConfigOverride = require('./production');
-    Object.assign(presetOverride, baseConfigOverride.service, {
-      service: {
-        graphql: baseConfigOverride.service.graphql,
-        image: baseConfigOverride.service.image,
-      },
-      remoteFQDN: baseConfigOverride.remoteFQDN,
-      logLevel: baseConfigOverride.logLevel,
-      enableHttpLogging: baseConfigOverride.enableHttpLogging,
-    });
+    presetOverride = Object.assign(presetOverride, baseConfigOverride, {});
     break;
   }
 
