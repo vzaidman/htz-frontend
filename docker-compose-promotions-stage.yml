@@ -1,0 +1,29 @@
+version: '3.3'
+services:
+  htz_promotions_react:
+    hostname: htz-promotions-app
+    build:
+      context: .
+      dockerfile: Dockerfile-promotions
+      args:
+        NEXT_BUILD_ID: ${version:-latest}
+    image: 'nexus-ng.themarker.com/htz-promotions-app:${version:-latest}'
+    ports:
+      - 2002:2002
+    environment:
+      - NODE_ENV=production
+      - CONNECTION_PRESET=stage
+      - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
+      # the following environment is optional
+      - PORT=2002
+      - BIND_ADDRESS=ppromotions
+      - HOSTNAME=ppromotions
+      - GRAPHQL_USE_SSL=true
+      - GRAPHQL_EXPOSE_PORT=false
+
+    networks:
+      - prod01
+
+networks:
+  prod01:
+    external: true
