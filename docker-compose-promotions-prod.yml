@@ -9,7 +9,7 @@ services:
         NEXT_BUILD_ID: ${version:-latest}
     image: 'nexus-ng.themarker.com/htz-promotions-app:${version:-latest}'
     ports:
-      - 2002:2002
+      - 2004:2004
     deploy:
       replicas: 3
       update_config:
@@ -23,9 +23,9 @@ services:
       - CONNECTION_PRESET=stage
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
-      - PORT=2002
-      - BIND_ADDRESS=ppromotions
-      - HOSTNAME=ppromotions
+      - PORT=2004
+      - BIND_ADDRESS=promotions
+      - HOSTNAME=promotions
       - GRAPHQL_USE_SSL=true
       - GRAPHQL_EXPOSE_PORT=false
 
