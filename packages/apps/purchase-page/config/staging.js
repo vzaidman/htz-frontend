@@ -23,7 +23,7 @@ module.exports = {
     return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
   }),
   remoteFQDN: defer(function () {
-    return `pre.${this.domain}`;
+    return `www.${this.domain}`;
   }),
   useSSL: true,
   graphQLuseSSL: true,
