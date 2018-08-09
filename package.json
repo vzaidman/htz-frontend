@@ -108,7 +108,7 @@
       }
     },
     "apollo-client": {
-      "^2.3.2": {
+      "^2.3.8": {
         "packages/apps/*": [
           "dependencies"
         ],
@@ -119,7 +119,7 @@
       }
     },
     "apollo-cache-inmemory": {
-      "^1.2.2": {
+      "^1.2.7": {
         "packages/apps/*": [
           "dependencies"
         ],
@@ -209,14 +209,14 @@
       }
     },
     "enzyme": {
-      "^3.3.0": {
+      "^3.4.1": {
         "packages/libs/{fela-utils,htz-react-base}": [
           "dependencies"
         ]
       }
     },
     "enzyme-to-json": {
-      "^3.3.0": {
+      "^3.3.4": {
         "packages/libs/{fela-utils,htz-react-base}": [
           "dependencies"
         ],
@@ -320,7 +320,7 @@
       }
     },
     "react": {
-      "^16.4.1": {
+      "^16.4.2": {
         "packages/{libs/htz-react-base,libs/app-utils,libs/fela-utils,components/*}": [
           "devDependencies",
           "peerDependencies"
@@ -331,7 +331,7 @@
       }
     },
     "react-apollo": {
-      "^2.1.4": {
+      "^2.1.11": {
         "packages/apps/*": [
           "dependencies"
         ],
@@ -342,7 +342,7 @@
       }
     },
     "react-dom": {
-      "^16.4.1": {
+      "^16.4.2": {
         "packages/{libs/htz-react-base,libs/fela-utils,components/*}": [
           "devDependencies",
           "peerDependencies"
@@ -371,7 +371,7 @@
       }
     },
     "react-test-renderer": {
-      "^16.4.1": {
+      "^16.4.2": {
         "packages/{libs/htz-react-base,libs/fela-utils,components/htz-components}": [
           "dependencies"
         ]

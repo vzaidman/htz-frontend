@@ -25,8 +25,8 @@
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
-    "apollo-cache-inmemory": "^1.2.2",
-    "apollo-client": "^2.3.2",
+    "apollo-cache-inmemory": "^1.2.7",
+    "apollo-client": "^2.3.8",
     "apollo-link": "^1.2.2",
     "apollo-link-error": "^1.1.0",
     "apollo-link-http": "^1.5.4",
@@ -37,13 +37,13 @@
     "isomorphic-unfetch": "^2.0.0",
     "next": "^6.1.1",
     "prop-types": "^15.6.1",
-    "react": "^16.4.1",
-    "react-apollo": "^2.1.4",
+    "react": "^16.4.2",
+    "react-apollo": "^2.1.11",
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {
-    "apollo-cache-inmemory": "^1.2.2",
-    "apollo-client": "^2.3.2",
+    "apollo-cache-inmemory": "^1.2.7",
+    "apollo-client": "^2.3.8",
     "apollo-link": "^1.2.2",
     "apollo-link-error": "^1.1.0",
     "apollo-link-http": "^1.5.4",
@@ -54,8 +54,8 @@
     "isomorphic-unfetch": "^2.0.0",
     "next": "^6.1.1",
     "prop-types": "^15.6.1",
-    "react": "^16.4.1",
-    "react-apollo": "^2.1.4"
+    "react": "^16.4.2",
+    "react-apollo": "^2.1.11"
   },
   "dependencies": {
     "@haaretz/htz-user-utils": "^0.1.0",

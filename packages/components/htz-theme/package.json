@@ -29,24 +29,24 @@
     "@haaretz/fela-utils": "^0.1.0",
     "@haaretz/htz-css-tools": "^1.0.1",
     "config": "^1.26.2",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.10",
     "prop-types": "^15.6.1"
   },
   "devDependencies": {
     "@haaretz/fela-utils": "^0.1.0",
     "@haaretz/htz-react-base": "^1.0.0",
     "babel-loader": "^8.0.0-beta.4",
-    "enzyme-to-json": "^3.3.0",
+    "enzyme-to-json": "^3.3.4",
     "fela": "^6.1.7",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "react-fela": "^7.2.0",
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "fela": "^6.1.7",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "react-fela": "^7.2.0"
   }
 }
