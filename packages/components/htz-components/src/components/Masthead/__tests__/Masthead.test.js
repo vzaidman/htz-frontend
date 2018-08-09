@@ -1,13 +1,13 @@
-// import React from 'react';
+import React from 'react';
 // import toJson from 'enzyme-to-json';
 // import { ApolloProvider, } from 'react-apollo';
 // import htzTheme from '@haaretz/htz-theme';
-// import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
+import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 // import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
 // import Masthead from '../Masthead';
 // import client from '../../../../styleguide/ApolloMockClient';
 
-// Math.random = jest.fn(() => 123456789);
+// Math.random = jest.fn(() => 0.123456789);
 
 // const btnStyle = Object.freeze({
 //   // Border width
@@ -164,20 +164,22 @@
 // };
 
 // TODO: fix this test without the media in the component.
-// describe('<MainHeader', () => {
-//   describe('DOM element', () => {
-//     it('check that opening the search input hide the other components', () => {
-//       const output = felaMount(
-//         <ApolloProvider client={client}>
-//           <Masthead hostname="haaretz.co.il" contentId="1" />
-//         </ApolloProvider>
-//       );
-// let wrapper = output.find('header');
-// expect(toJson(wrapper)).toMatchSnapshot();
-// const button = output.find('button').at(1);
-// button.simulate('click');
-// wrapper = output.find('header');
-// expect(toJson(wrapper)).toMatchSnapshot();
-//     });
-//   });
-// });
+describe.skip('<MainHeader', () => {
+  describe('DOM element', () => {
+    it('check that opening the search input hide the other components', () => {
+      const component = felaSnapshotter(<div>WIP</div>);
+      expect(component).toMatchSnapshot();
+      //   const output = felaMount(
+      //     <ApolloProvider client={client}>
+      //       <Masthead hostname="haaretz.co.il" contentId="1" />
+      //     </ApolloProvider>
+      //   );
+      // let wrapper = output.find('header');
+      // expect(toJson(wrapper)).toMatchSnapshot();
+      // const button = output.find('button').at(1);
+      // button.simulate('click');
+      // wrapper = output.find('header');
+      // expect(toJson(wrapper)).toMatchSnapshot();
+    });
+  });
+});

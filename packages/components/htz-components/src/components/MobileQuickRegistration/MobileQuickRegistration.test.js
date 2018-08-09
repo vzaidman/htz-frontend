@@ -2,7 +2,7 @@ import React from 'react';
 import felaSnapshotter from '../../test-helpers/felaSnapshotter';
 import MobileQuickRegistration from './MobileQuickRegistration';
 
-it('MobileQuickRegistration ', () => {
+it.skip('MobileQuickRegistration ', () => {
   const snapshot = felaSnapshotter(
     <MobileQuickRegistration
       teaserBody="הירשמו עכשיו להמלצות הקריאה של הארץ"

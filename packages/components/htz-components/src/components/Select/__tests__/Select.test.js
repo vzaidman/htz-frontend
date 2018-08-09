@@ -3,7 +3,7 @@ import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
 import Select from '../Select'; // eslint-disable-line import/no-named-as-default
 
-Math.random = jest.fn(() => 123456789);
+Math.random = jest.fn(() => 0.123456789);
 
 describe('<Select>', () => {
   describe('DOM element', () => {

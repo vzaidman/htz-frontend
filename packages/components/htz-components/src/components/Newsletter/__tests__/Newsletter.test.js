@@ -5,7 +5,7 @@ import { felaMount, } from '../../../test-helpers/felaEnzymeRenderers';
 import NewsletterWithoutApollo from '../NewsletterWithoutApollo';
 import NewsletterConfirmed from '../elements/NewsletterConfirmed';
 
-Math.random = jest.fn(() => 123456789);
+Math.random = jest.fn(() => 0.123456789);
 const mockFunc = jest.fn();
 
 describe('<Newsletter />', () => {

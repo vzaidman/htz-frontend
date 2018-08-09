@@ -10,7 +10,7 @@ import CommentForm from '../CommentForm';
 import client from '../../../../styleguide/ApolloMockClient';
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail
-Math.random = jest.fn(() => 123456789);
+Math.random = jest.fn(() => 0.123456789);
 const mockFunc = jest.fn();
 
 describe('<CommentForm>', () => {

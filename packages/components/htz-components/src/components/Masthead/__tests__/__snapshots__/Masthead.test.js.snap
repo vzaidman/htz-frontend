@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MainHeader DOM element check that opening the search input hide the other components 1`] = `null`;
+
+exports[`<MainHeader DOM element check that opening the search input hide the other components 2`] = `""`;

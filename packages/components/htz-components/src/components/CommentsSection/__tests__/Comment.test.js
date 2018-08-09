@@ -11,7 +11,7 @@ import Comment from '../Comment'; // eslint-disable-line import/no-named-as-defa
 
 // Math random used to generate random ids in TextInput,
 // next row is used to produce same id everytime so tests wont fail
-Math.random = jest.fn(() => 123456789);
+Math.random = jest.fn(() => 0.123456789);
 
 const bps = Object.freeze({
   widths: Object.freeze({
