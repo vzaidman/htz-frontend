@@ -48,6 +48,7 @@ class ShareBar extends React.Component<Props, State> {
       <FelaComponent
         style={(theme: Object) => ({
           marginTop: '3rem',
+          overflow: 'hidden',
           extend: [
             borderTop({
               width: '1px',
@@ -149,7 +150,9 @@ class ShareBar extends React.Component<Props, State> {
                 size={3}
                 color={
                   focused
-                    ? hover ? [ 'primary', ] : [ 'neutral', '-10', ]
+                    ? hover
+                      ? [ 'primary', ]
+                      : [ 'neutral', '-10', ]
                     : [ 'primary', ]
                 }
               />
