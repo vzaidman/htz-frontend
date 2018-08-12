@@ -192,7 +192,7 @@
     },
     "config": {
       "^1.26.2": {
-        "packages/{apps/*,components/*,libs/htz-react-server}": [
+        "packages/{apps/*,components/*,libs/htz-react-server,libs/htz-user-utils}": [
           "dependencies"
         ],
         "packages/libs/app-utils": [

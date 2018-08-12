@@ -1,4 +1,5 @@
 /* global window */
+import config from 'config';
 import { getSubdomain, } from './util/domain-utils';
 
 /**
@@ -26,10 +27,7 @@ export default function createSiteConfig(hostname = window.location.hostname) {
   const domain = isIpAddress(hostname)
     ? defaultHostname
     : getSubdomain(hostname);
-  const isProduction = process.env.NODE_ENV === 'production';
-  const ssoDomain = isProduction
-    ? `https://sso.${domain}`
-    : `https://devsso.${domain}`;
+  const ssoDomain = config.get('service.sso');
   configurations.set('haaretz.co.il', {
     ssoDomain,
     ssoKey: 'tmsso',
