@@ -30,7 +30,8 @@ const titleStyle = theme => ({
   extend: [
     theme.type(3, { untilBp: 'm', }),
     theme.type(4, { fromBp: 'm', untilBp: 'l', }),
-    theme.type(5, { fromBp: 'l', }),
+    theme.type(5, { fromBp: 'l', untilBp: 'xl', }),
+    theme.type(6, { fromBp: 'xl', }),
   ],
 });
 
