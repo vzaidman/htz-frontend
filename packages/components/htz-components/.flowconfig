@@ -1,4 +1,7 @@
 [ignore]
+.*/pkg_templates/.*
+.*/node_modules/.*/test/.*
+.*/node_modules/.*/__tests__/.*
 
 [include]
 

@@ -6703,6 +6703,10 @@ flow-bin@^0.77.0:
   version "0.77.0"
   resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.77.0.tgz#4e5c93929f289a0c28e08fb361a9734944a11297"
 
+flow-bin@^0.78.0:
+  version "0.78.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.78.0.tgz#df9fe7f9c9a2dfaff39083949fe2d831b41627b7"
+
 flow-mono-cli@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/flow-mono-cli/-/flow-mono-cli-1.3.4.tgz#ebd80a565fc9238e0e4b4b60ee645a40d25dd340"
