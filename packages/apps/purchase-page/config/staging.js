@@ -6,7 +6,7 @@ module.exports = {
     base: defer(function () {
       return `http${this.useSSL ? 's' : ''}://${this.remoteFQDN}`;
     }),
-    sso: 'https://devsso.haaretz.co.il',
+    sso: 'https://sso.haaretz.co.il',
     payment: 'https://payment.haaretz.co.il',
     image: 'https://images.haarets.co.il/image',
     graphql: defer(function () {
