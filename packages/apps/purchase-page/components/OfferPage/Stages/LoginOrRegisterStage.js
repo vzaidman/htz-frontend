@@ -316,79 +316,93 @@ class LoginOrRegisterStage extends React.Component {
                                                 </GridItem>
                                               </Grid>
                                             )}
-                                            <CheckBox
-                                              {...getInputProps({
-                                                name: 'terms',
-                                                variant: 'primary',
-                                                label: (
-                                                  <FelaComponent
-                                                    style={theme => ({
-                                                      extend: [ theme.type(-1), ],
-                                                    })}
-                                                  >
-                                                    {this.state.userExists ? (
+                                            <FelaComponent
+                                              render={({
+                                                className,
+                                                theme,
+                                              }) => (
+                                                <CheckBox
+                                                  {...getInputProps({
+                                                    name: 'terms',
+                                                    labelStyle: {
+                                                      ...theme.type(-1),
+                                                    },
+                                                    variant: 'primary',
+                                                    label: (
                                                       <Fragment>
-                                                        {form.terms.loginText}
-                                                      </Fragment>
-                                                    ) : (
-                                                      <Fragment>
-                                                        {
-                                                          form.terms.register
-                                                            .labelBeforeTermsButton
-                                                        }{' '}
-                                                        <FelaComponent
-                                                          style={theme => ({
-                                                            color: theme.color(
-                                                              'loginOrRegister',
-                                                              'inFormText'
-                                                            ),
-                                                            ':visited': {
-                                                              color: theme.color(
-                                                                'loginOrRegister',
-                                                                'inFormText'
-                                                              ),
-                                                            },
-                                                          })}
-                                                          render={({
-                                                            className,
-                                                          }) => (
-                                                            <a
-                                                              className={
-                                                                className
-                                                              }
-                                                              href={
-                                                                form.terms
-                                                                  .register
-                                                                  .href[site]
-                                                              }
-                                                              target="_blank"
-                                                              rel="noopener noreferrer"
-                                                            >
+                                                        {this.state
+                                                          .userExists ? (
+                                                            <Fragment>
                                                               {
-                                                                form.terms
-                                                                  .register
-                                                                  .labelTerms[
-                                                                  site
-                                                                ]
-                                                              }
-                                                            </a>
-                                                          )}
-                                                        />
-                                                        {
-                                                          form.terms.register
-                                                            .labelAfterTermsButton
-                                                        }
+                                                              form.terms
+                                                                .loginText
+                                                            }
+                                                            </Fragment>
+                                                        ) : (
+                                                          <Fragment>
+                                                            {
+                                                              form.terms
+                                                                .register
+                                                                .labelBeforeTermsButton
+                                                            }{' '}
+                                                            <FelaComponent
+                                                              style={theme => ({
+                                                                color: theme.color(
+                                                                  'loginOrRegister',
+                                                                  'inFormText'
+                                                                ),
+                                                                ':visited': {
+                                                                  color: theme.color(
+                                                                    'loginOrRegister',
+                                                                    'inFormText'
+                                                                  ),
+                                                                },
+                                                              })}
+                                                              render={({
+                                                                className,
+                                                              }) => (
+                                                                <a
+                                                                  className={
+                                                                    className
+                                                                  }
+                                                                  href={
+                                                                    form.terms
+                                                                      .register
+                                                                      .href[
+                                                                      site
+                                                                    ]
+                                                                  }
+                                                                  target="_blank"
+                                                                  rel="noopener noreferrer"
+                                                                >
+                                                                  {
+                                                                    form.terms
+                                                                      .register
+                                                                      .labelTerms[
+                                                                      site
+                                                                    ]
+                                                                  }
+                                                                </a>
+                                                              )}
+                                                            />
+                                                            {
+                                                              form.terms
+                                                                .register
+                                                                .labelAfterTermsButton
+                                                            }
+                                                          </Fragment>
+                                                        )}
                                                       </Fragment>
-                                                    )}
-                                                  </FelaComponent>
-                                                ),
-                                                noteText:
-                                                  form.terms.noteText[site],
-                                                formElementType: 'checkBox',
-                                                miscStyles: {
-                                                  marginTop: '3rem',
-                                                },
-                                              })}
+                                                    ),
+                                                    noteText:
+                                                      form.terms.noteText[site],
+                                                    formElementType: 'checkBox',
+                                                    miscStyles: {
+                                                      marginTop: '3rem',
+                                                    },
+                                                  })}
+                                                />
+                                              )}
                                             />
                                           </Fragment>
                                         )}

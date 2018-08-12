@@ -56,11 +56,12 @@ const checkStyle = ({ checked, variant, theme, }) => ({
 
 const StyledCheck = createComponent(checkStyle);
 
-const spanStyle = () => ({
+const spanStyle = ({ theme, miscStyles, }) => ({
   marginInlineStart: '0.3em',
+  extend: [
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
 });
-
-const StyledSpan = createComponent(spanStyle);
 
 export class CheckBox extends Component {
   static propTypes = {
@@ -107,6 +108,13 @@ export class CheckBox extends Component {
      * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
      */
     miscStyles: stylesPropType,
+    /**
+     * miscStyles of the label
+     * A special property holding miscellaneous CSS values that
+     * trump all default values. Processed by
+     * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+     */
+    labelStyle: stylesPropType,
     /**
      * Id used to connect the note to input with aria-describedby for a11y reasons,
      * default will generate random id
@@ -162,6 +170,7 @@ export class CheckBox extends Component {
     isError: false,
     label: null,
     miscStyles: null,
+    labelStyle: null,
     noteId: null,
     noteText: null,
     onBlur: null,
@@ -196,6 +205,7 @@ export class CheckBox extends Component {
       noteText,
       onBlur,
       onChange,
+      labelStyle,
       onClick,
       onFocus,
       refFunc,
@@ -260,7 +270,9 @@ export class CheckBox extends Component {
             />
             <StyledCheck checked={controllingChecked} variant={variant} />
           </StyledCheckBox>
-          <StyledSpan>{label}</StyledSpan>
+          <FelaComponent rule={spanStyle} miscStyles={labelStyle}>
+            {label}
+          </FelaComponent>
         </label>
         {errorText || noteText ? (
           <Note
@@ -283,6 +295,7 @@ export default createComponent(styles, CheckBox, [
   'isDisabled',
   'isError',
   'label',
+  'labelStyle',
   'noteText',
   'noteId',
   'onBlur',

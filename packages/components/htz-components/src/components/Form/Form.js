@@ -115,10 +115,12 @@ export default class Form extends Component {
    *   Form to control the input
    */
 
-  componentDidMount() {
-    // eslint-disable-next-line react/no-did-mount-set-state
-    if (this.props.initialValues) { this.setState({ values: { ...this.props.initialValues, }, }); }
-  }
+  componentDidUpdate = (prevProps, prevState) => {
+    if (this.props.initialValues !== prevProps.initialValues) {
+      this.setState({ values: { ...this.props.initialValues, }, });
+    }
+  };
+
   getInputProps = ({
     errorText,
     isContentEditable = false,
@@ -133,6 +135,7 @@ export default class Form extends Component {
     refFunc,
     ...rest
   }) => {
+    console.log('rest props from get input props', rest);
     const stateError = this.state.errors.find(error => {
       if (error && error.name === name) {
         return error;
@@ -268,7 +271,9 @@ export default class Form extends Component {
       ...(stateError || isError ? { isError: true, } : {}),
       ...(stateError && stateError.errorText
         ? { errorText: stateError.errorText, }
-        : errorText ? { errorText, } : {}),
+        : errorText
+          ? { errorText, }
+          : {}),
       refFunc: callAll(refFunc, elem => {
         this[`${name}El`] = elem;
       }),
