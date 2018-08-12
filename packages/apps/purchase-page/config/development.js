@@ -9,6 +9,7 @@ module.exports = {
       return `http${this.useSSL ? 's' : ''}://${this.remoteFQDN}`;
     }),
     sso: 'https://devsso.haaretz.co.il',
+    payment: 'https://dev-payment.haaretz.co.il',
     image: 'https://images.haarets.co.il/image',
     graphql: defer(function () {
       return `http${

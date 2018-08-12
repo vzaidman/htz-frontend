@@ -5,6 +5,7 @@ import { FelaComponent, } from 'react-fela';
 import { LayoutContainer, UserDispenser, } from '@haaretz/htz-components';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
+import config from 'config';
 
 import MainLayout from '../../layouts/MainLayout';
 import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter';
@@ -15,7 +16,8 @@ import StageTransition from '../../components/OfferPage/StageTransition/StageTra
 import StageCounter from '../../components/OfferPage/Stages/Elements/StageCounter';
 import StageHeader from '../../components/OfferPage/Stages/Elements/StageHeader';
 
-const isProduction = process.env.NODE_ENV === 'production';
+const paymentService = config.get('service.payment');
+
 const GET_PROMOTIONS_STATE = gql`
   query {
     hostname @client
@@ -42,9 +44,7 @@ function buildCreditGuardSrc(
     );
   }
 
-  return `https://${
-    isProduction ? '' : 'dev-'
-  }payment.haaretz.co.il/creditGuard/CreditGuardBridgeServlet?productID=${
+  return `${paymentService}/creditGuard/CreditGuardBridgeServlet?productID=${
     paymentData.productID
   }&saleCode=${paymentData.saleCode}&promotionNumber=${
     paymentData.promotionNumber
@@ -106,7 +106,9 @@ function Stage5() {
                     style={{ textAlign: 'center', }}
                     render={({
                       className,
-                      theme: { stage5: { header, details, }, },
+                      theme: {
+                        stage5: { header, details, },
+                      },
                     }) => (
                       <div className={className}>
                         <StageCounter stage={5} />
