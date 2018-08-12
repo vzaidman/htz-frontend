@@ -97,7 +97,12 @@ class LoginOrRegisterStage extends React.Component {
                 render={({ checkEmailExists, }) => (
                   <FelaComponent
                     style={{ textAlign: 'center', }}
-                    render={({ theme: { stage3: { form, }, }, className, }) => (
+                    render={({
+                      theme: {
+                        stage3: { form, },
+                      },
+                      className,
+                    }) => (
                       <div
                         className={className}
                         ref={node => {
@@ -357,6 +362,7 @@ class LoginOrRegisterStage extends React.Component {
                                                                   .href[site]
                                                               }
                                                               target="_blank"
+                                                              rel="noopener noreferrer"
                                                             >
                                                               {
                                                                 form.terms
@@ -386,17 +392,13 @@ class LoginOrRegisterStage extends React.Component {
                                             />
                                           </Fragment>
                                         )}
-                                        <div aria-live="assertive">
-                                          {this.state.error && (
-                                            <A11yError
-                                              errorText={this.state.error}
-                                              miscStyles={{
-                                                marginTop: '4rem',
-                                                textAlign: 'center',
-                                              }}
-                                            />
-                                          )}
-                                        </div>
+                                        <A11yError
+                                          errorText={this.state.error || ''}
+                                          miscStyles={{
+                                            marginTop: '4rem',
+                                            textAlign: 'center',
+                                          }}
+                                        />
                                         <Button
                                           variant="primaryOpaque"
                                           {...this.state.loading && {

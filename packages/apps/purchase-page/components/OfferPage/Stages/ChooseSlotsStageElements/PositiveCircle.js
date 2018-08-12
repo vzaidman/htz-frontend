@@ -14,7 +14,7 @@ function circle({ headers, }) {
   return (
     <div>
       <FelaComponent id={id} style={circleStyle} />
-      <AriaDescription id={id} headers={headers}>
+      <AriaDescription id={`Description${id}`} headers={headers}>
         כלול
       </AriaDescription>
     </div>

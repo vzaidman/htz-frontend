@@ -295,7 +295,7 @@ function DesktopView({
   };
 
   const tHeadData = buildThead(tableData, staticTableData.thead);
-  console.log(tHeadData);
+
   const highlightedIndex = tHeadData
     .map(col => col.subscriptionName)
     .indexOf('BOTH');
@@ -326,7 +326,11 @@ function DesktopView({
                 {tHeadData.map((item, idx) => (
                   <GridItem
                     width={1 / 4}
-                    id={item.subscriptionName}
+                    id={
+                      item.subscriptionName
+                        ? `${item.subscriptionName}TableHead`
+                        : null
+                    }
                     tagName="th"
                     key={item.heading}
                   >
@@ -424,10 +428,15 @@ function DesktopView({
                     <GridItem
                       width={1 / 4}
                       tagName="td"
-                      id={`id${idx}`}
-                      headers={
-                        idx > 0 ? `${tHeadData[idx - 1].subscriptionName}` : ''
-                      }
+                      id={idx === 0 ? `itemDescription${rowNum}` : null}
+                      attrs={{
+                        headers:
+                          idx > 0
+                            ? `${
+                                tHeadData[idx - 1].subscriptionName
+                              }TableHead itemDescription${rowNum}`
+                            : null,
+                      }}
                       key={Math.random()}
                     >
                       <StyledTdInnerCont
@@ -458,7 +467,9 @@ function DesktopView({
                           ))
                         ) : cellData ? (
                           <PositiveCircle
-                            header={tHeadData[idx - 1].subscriptionName}
+                            header={`${
+                              tHeadData[idx - 1].subscriptionName
+                            }TableHead `}
                           />
                         ) : (
                           ''

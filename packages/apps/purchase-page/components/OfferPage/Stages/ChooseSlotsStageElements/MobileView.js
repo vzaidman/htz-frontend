@@ -246,8 +246,12 @@ class MobileView extends Component {
                               <Button
                                 isFlat
                                 attrs={{
+                                  'aria-controls': `${
+                                    tableData[idx].subscriptionName
+                                  }HTZExpendedArea`,
                                   'aria-expanded':
-                                    this.state.menuOpen === 'HTZ',
+                                    this.state.menuOpen ===
+                                    tableData[idx].subscriptionName,
                                 }}
                                 onClick={evt => {
                                   evt.stopPropagation();
@@ -278,7 +282,7 @@ class MobileView extends Component {
                             </StyledItemEndCont>
                           </StyledItemMainCont>
                           {this.state.menuOpen === item.subscriptionName ? (
-                            <div>
+                            <div id="HTZExpendedArea">
                               {staticTableData.tbody.list.map(
                                 row =>
                                   row[item.subscriptionName] && (

@@ -54,27 +54,32 @@ function OfferList({
   contentName,
 }) {
   return (
-    <FelaComponent style={contStyle}>
-      <UserDispenser
-        render={({ isLoggedIn, }) =>
-          offerList.map((offer, idx) => (
-            <Offer
-              // eslint-disable-next-line react/no-array-index-key
-              key={`offer-${idx}`}
-              isLoggedIn={isLoggedIn}
-              fourDigits={fourDigits}
-              offer={offer}
-              cancelButtonText={cancelButtonText}
-              termsButtonText={termsButtonText}
-              openModal={openModal}
-              offerIdx={idx}
-              router={router}
-              contentName={contentName}
-            />
-          ))
-        }
-      />
-    </FelaComponent>
+    <FelaComponent
+      style={contStyle}
+      render={({ className, }) => (
+        <div className={className} id="offerListWrapper">
+          <UserDispenser
+            render={({ isLoggedIn, }) =>
+              offerList.map((offer, idx) => (
+                <Offer
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={`offer-${idx}`}
+                  isLoggedIn={isLoggedIn}
+                  fourDigits={fourDigits}
+                  offer={offer}
+                  cancelButtonText={cancelButtonText}
+                  termsButtonText={termsButtonText}
+                  openModal={openModal}
+                  offerIdx={idx}
+                  router={router}
+                  contentName={contentName}
+                />
+              ))
+            }
+          />
+        </div>
+      )}
+    />
   );
 }
 

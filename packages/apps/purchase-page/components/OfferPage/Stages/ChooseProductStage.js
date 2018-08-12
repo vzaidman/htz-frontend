@@ -184,7 +184,11 @@ class ChooseProductStage extends Component {
               form: {
                 couponError,
                 validation,
-                couponForm: { textLabel, textNote, buttons: { send, close, }, },
+                couponForm: {
+                  textLabel,
+                  textNote,
+                  buttons: { send, close, },
+                },
               },
               buttons: { entitlements, organizationSubscription, },
             },
@@ -223,6 +227,9 @@ class ChooseProductStage extends Component {
                                 <Button
                                   key={product.productTitle}
                                   variant="primary"
+                                  attrs={{
+                                    'aria-controls': 'offerListWrapper',
+                                  }}
                                   miscStyles={moreOptionsButtonsMiscStyles}
                                   onClick={() => {
                                     cache.writeData({
