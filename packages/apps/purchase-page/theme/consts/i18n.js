@@ -496,13 +496,15 @@ export const thankYou = Object.freeze({
         ? 'להארץ'
         : product === 'TM'
           ? 'ל-TheMarker'
-          : product === 'BOTH' ? 'משולב להארץ ו-TheMarker' : '';
+          : product === 'BOTH'
+            ? 'משולב להארץ ו-TheMarker'
+            : '';
     return `תודה שרכשתם מינוי ${item}`;
   },
   backToArticle: 'חזרה לכתבה:',
   backToHomePage: 'לדף הבית',
   backToHomePageHref: Object.freeze({
-    tm: 'https://.themarker.com',
+    tm: 'https://www.themarker.com',
     htz: 'https://www.haaretz.co.il/',
   }),
   downloadAppText: Object.freeze({
