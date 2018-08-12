@@ -62,14 +62,34 @@ class Stage3 extends Component {
                       chosenOfferIndex,
                     },
                   } = clientData;
-                  const chosenSubscription = data.purchasePage.slots
-                    ? data.purchasePage.slots[chosenSlotIndex].subscriptionName
+
+                  const chosenSlot = data.purchasePage.slots
+                    ? data.purchasePage.slots[chosenSlotIndex] ||
+                      // slot might be invalid due to getting new data with only one slot
+                      // in such a case we need to update the PromotionsPageState back to defaults
+                      (() => {
+                        client.writeData({
+                          data: {
+                            promotionsPageState: {
+                              chosenSlotIndex: 0,
+                              chosenProductIndex: 0,
+                              chosenOfferIndex: 0,
+                              __typename: 'PromotionsPageState',
+                            },
+                          },
+                        });
+                        return 0;
+                      })()
                     : null;
 
-                  const chosenPaymentArrangement = data.purchasePage.slots
-                    ? data.purchasePage.slots[chosenSlotIndex].products[
-                        chosenProductIndex
-                      ].offerList[chosenOfferIndex].type
+                  const chosenSubscription = chosenSlot
+                    ? chosenSlot.subscriptionName
+                    : null;
+
+                  const chosenPaymentArrangement = chosenSlot
+                    ? chosenSlot.products[chosenProductIndex].offerList[
+                        chosenOfferIndex
+                      ].type
                     : null;
 
                   if (this.state.refetch) {
