@@ -4,8 +4,8 @@ import React, { Fragment, } from 'react';
 import config from 'config';
 import { FelaComponent, } from 'react-fela';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
-import { Mutation, Query, } from 'react-apollo';
 import gql from 'graphql-tag';
+import { Mutation, Query, } from '../ApolloBoundary/ApolloBoundary';
 import IconAlefLogoTransparent from '../Icon/icons/IconAlefLogoTransparent';
 
 import UserDispenser from '../User/UserDispenser';
@@ -84,7 +84,7 @@ class OptOutStrip extends React.PureComponent {
                 <Query query={CHECK_OPT_OUT} variables={{ id: user.id, }}>
                   {({ loading, error, data, }) => {
                     if (loading) return null;
-                    if (error) return `Error! ${error.message}`;
+                    if (error) return null;
                     if (
                       data.userInfo.reactHtzArticleOptOut === undefined ||
                       (data.userInfo.reactHtzArticleOptOut !== null &&
