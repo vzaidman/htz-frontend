@@ -1,6 +1,11 @@
 import { friendlyRoutes, } from '../../../../routes/routes';
 
-export default function (nextStage, router, paramString = null) {
+export default function (
+  nextStage,
+  router,
+  paramString = null,
+  ignoreQueryParam = false
+) {
   const [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
   const cleanPathWithoutQuery = pathWithoutQuery.substr(
     0,
@@ -9,7 +14,7 @@ export default function (nextStage, router, paramString = null) {
   const computedAsPath = `${cleanPathWithoutQuery}/${
     friendlyRoutes[nextStage]
   }${
-    queryPartFromPath
+    queryPartFromPath && !ignoreQueryParam
       ? `?${queryPartFromPath}${paramString ? `&${paramString}` : ''}`
       : paramString
         ? `?${paramString}`
@@ -19,7 +24,7 @@ export default function (nextStage, router, paramString = null) {
   const pathObj = {
     asPath: computedAsPath,
     pathName: `/promotions-page/${nextStage}${
-      paramString ? `?${paramString}` : ''
+      paramString && !ignoreQueryParam ? `?${paramString}` : ''
     }`,
   };
   return pathObj;

@@ -2,16 +2,8 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { UserDispenser, Logout, } from '@haaretz/htz-components';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { Query, } from 'react-apollo';
 import Router, { withRouter, } from 'next/router';
-import gql from 'graphql-tag';
-import { getCampaignFromPath, } from '../OfferPage/OfferPageDataGetter';
-
-const GET_PURCHASE_PAGE_DATA = gql`
-  query PageData($path: String!) {
-    purchasePage(path: $path)
-  }
-`;
+import pathGenerator from '../OfferPage/Stages/utils/pathGenerator';
 
 const userBannerStyle = theme => ({
   backgroundColor: theme.color('userBanner', 'bg'),
@@ -34,13 +26,20 @@ const switchUserStyle = {
 
 const propTypes = {
   /**
+   * should the path generator for logout ignore the query params.
+   */
+  ignoreQueryParam: PropTypes.bool,
+  /**
    * Children nodes
    */
   router: PropTypes.shape().isRequired,
 };
 
-function UserBanner({ router, }) {
-  const path = router.asPath || '/promotions-page';
+const defaultProps = {
+  ignoreQueryParam: false,
+};
+
+function UserBanner({ router, ignoreQueryParam, }) {
   return (
     <UserDispenser
       render={({ user, isLoggedIn, }) => (
@@ -53,40 +52,32 @@ function UserBanner({ router, }) {
                   <UserName>
                     {theme.offerPage.userBanner.hello(user.firstName)}
                   </UserName>
-                  <Query
-                    query={GET_PURCHASE_PAGE_DATA}
-                    variables={{ path: getCampaignFromPath(path), }}
-                  >
-                    {({ data, loading, }) => (
-                      <Fragment>
-                        <Logout
-                          render={({ logout, }) => (
-                            <FelaComponent
-                              style={switchUserStyle}
-                              render={({ className, }) => (
-                                <button
-                                  className={className}
-                                  type="button"
-                                  onClick={() =>
-                                    logout().then(() => {
-                                      // todo: take care of getting fresh data
-                                      // refetch();
-                                      Router.push(
-                                        '/promotions-page/offers',
-                                        router.asPath
-                                      );
-                                    })
-                                  }
-                                >
-                                  {theme.offerPage.userBanner.switch}
-                                </button>
-                              )}
-                            />
-                          )}
-                        />
-                      </Fragment>
+                  <Logout
+                    render={({ logout, }) => (
+                      <FelaComponent
+                        style={switchUserStyle}
+                        render={({ className, }) => (
+                          <button
+                            className={className}
+                            type="button"
+                            onClick={() =>
+                              logout().then(() => {
+                                const { pathName, asPath, } = pathGenerator(
+                                  'stage1',
+                                  router,
+                                  null,
+                                  ignoreQueryParam
+                                );
+                                Router.push(pathName, asPath);
+                              })
+                            }
+                          >
+                            {theme.offerPage.userBanner.switch}
+                          </button>
+                        )}
+                      />
                     )}
-                  </Query>
+                  />
                 </div>
               )}
             />
@@ -98,5 +89,6 @@ function UserBanner({ router, }) {
 }
 
 UserBanner.propTypes = propTypes;
+UserBanner.defaultProps = defaultProps;
 
 export default withRouter(UserBanner);

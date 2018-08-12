@@ -47,7 +47,7 @@ const propTypes = {
   /**
    * Is it the thankYou page.
    */
-  thankYou: PropTypes.bool,
+  isThankYou: PropTypes.bool,
   /**
    * Did the user pay.
    */
@@ -62,7 +62,7 @@ const defaultProps = {
   children: null,
   displayBackButton: true,
   renderHeader: true,
-  thankYou: false,
+  isThankYou: false,
   userPaid: true,
   footerHasIllustration: true,
 };
@@ -85,14 +85,18 @@ function MainLayout({
   children,
   displayBackButton,
   renderHeader,
-  thankYou,
+  isThankYou,
   userPaid,
   footerHasIllustration,
 }) {
   return (
     <Query query={GET_HOST_NAME}>
       {({
-        data: { hostname, user: { type, }, promotionsPageState: { stage, }, },
+        data: {
+          hostname,
+          user: { type, },
+          promotionsPageState: { stage, },
+        },
       }) => {
         const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
         return (
@@ -126,7 +130,7 @@ function MainLayout({
                               displayBackButton={displayBackButton}
                               stage={stage}
                             />
-                            <UserBanner />
+                            <UserBanner ignoreQueryParam={isThankYou} />
                           </Fragment>
                         )}
                         <StyledContentWrapper>{children}</StyledContentWrapper>
@@ -143,7 +147,7 @@ function MainLayout({
               />
             </StyleProvider>
             <BIRequest />
-            <Scripts thankYou={thankYou} userPaid={userPaid} />
+            <Scripts thankYou={isThankYou} userPaid={userPaid} />
           </Fragment>
         );
       }}
