@@ -8,6 +8,7 @@ import { stylesPropType, } from '../../propTypes/stylesPropType';
 import CreditArticle from '../Credit/CreditArticle';
 import Alerts from '../Alerts/Alerts';
 import Image from '../Image/Image';
+import IconAlefLogo from '../Icon/icons/IconAlefLogo';
 import Time from '../Time/Time';
 import AuthorNotificationsRegistration from '../ServiceByMailRegistration/AuthorNotificationsRegistration';
 import SlideinBox from '../Transitions/SlideinBox';
@@ -109,7 +110,23 @@ class ArticleHeaderMeta extends React.Component {
               <div className={className}>
                 <FelaComponent style={imageAuthorsAndMobileTimeContStyle}>
                   {/*  Author image */}
-                  {authors[0].image && (
+                  {authors.length > 1 || !authors[0].image ? (
+                    <IconAlefLogo
+                      color="primary"
+                      size={[
+                        { until: 'l', value: 6, },
+                        { from: 'l', value: 10, },
+                      ]}
+                      miscStyles={{
+                        display: [
+                          { until: 's', value: 'inline-block', },
+                          { from: 's', until: 'l', value: 'none', },
+                          { from: 'l', value: 'block', },
+                        ],
+                        marginInlineEnd: '1rem',
+                      }}
+                    />
+                  ) : (
                     <Image
                       data={authors[0].image}
                       imgOptions={{
@@ -155,7 +172,9 @@ class ArticleHeaderMeta extends React.Component {
                               idx === authors.length - 1
                                 ? null
                                 : authors.length > 1
-                                  ? authors.length - 2 === idx ? '" ו"' : '", "'
+                                  ? authors.length - 2 === idx
+                                    ? '" ו"'
+                                    : '", "'
                                   : null,
                           },
                           display: 'inline',
@@ -204,17 +223,14 @@ class ArticleHeaderMeta extends React.Component {
                 </FelaComponent>
                 {/* alerts and desktop time */}
                 <FelaComponent style={alertsAndDesktopTimeContStyle}>
-                  {/* display alerts only if the firstFollow author,
-                    guyk: should it be only if there is only one author
-                  (that was the way it was here before refactoring) */}
-                  {// authors.length === 1 &&
-                  authors[0].hasEmailAlerts && (
-                    <Alerts
-                      author={authors[0]}
-                      onToggle={this.toggleAuthorAlertsForm}
-                      ref={this.alertsToggleBtnRef}
-                    />
-                  )}
+                  {authors.length === 1 &&
+                    authors[0].hasEmailAlerts && (
+                      <Alerts
+                        author={authors[0]}
+                        onToggle={this.toggleAuthorAlertsForm}
+                        ref={this.alertsToggleBtnRef}
+                      />
+                    )}
                 </FelaComponent>
                 <FelaComponent
                   rule={timeStyle}
