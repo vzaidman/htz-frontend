@@ -23,7 +23,7 @@ class OsakaWithOutbrain extends React.Component {
   componentDidMount() {
     appendScript({
       src: '//widgets.outbrain.com/outbrain.js',
-      id: 'outbrain-widget',
+      id: 'outbrain',
       isAsync: false,
       onLoadFunction: this.getArticles,
       updateFunction: this.getArticles,
@@ -31,6 +31,7 @@ class OsakaWithOutbrain extends React.Component {
   }
 
   getArticles = () => {
+    console.log('getting articles osaka controller');
     // eslint-disable-next-line react/prop-types
     const { promotedElement, hostname, canonicalUrl, } = this.props;
     const url = canonicalUrl ? this.changeSubDomain(canonicalUrl) : '';
@@ -45,6 +46,7 @@ class OsakaWithOutbrain extends React.Component {
         },
         json => {
           const articles = json.doc;
+          console.log('setting state osaka coroller json: ', json);
           this.setState({
             articles: {
               local: [

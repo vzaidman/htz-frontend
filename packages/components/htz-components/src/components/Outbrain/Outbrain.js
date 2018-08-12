@@ -1,3 +1,4 @@
+/* global OBR */
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
@@ -14,6 +15,13 @@ class Outbrain extends React.Component {
     appendScript({
       src: 'https://widgets.outbrain.com/outbrain.js',
       id: 'outbrain',
+      isAsync: false,
+      updateFunction: () => {
+        console.log(' updatin outbrain');
+        if (OBR) {
+          OBR.extern.reloadWidget();
+        }
+      },
     });
   }
 
