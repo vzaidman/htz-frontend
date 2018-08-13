@@ -15,6 +15,17 @@ switch (connectionPreset) {
     break;
   }
 
+  case 'dev2prod': {
+    const baseConfigOverride = require('./production');
+    presetOverride = Object.assign(presetOverride, baseConfigOverride, {
+      port: 3000,
+      useSSL: true,
+      graphQLuseSSL: false,
+      graphQLexposedPort: true,
+    });
+    break;
+  }
+
   case 'stage': {
     const baseConfigOverride = require('./staging');
     presetOverride = Object.assign(presetOverride, baseConfigOverride, {});
