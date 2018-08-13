@@ -11,7 +11,7 @@ import { Query, } from '../ApolloBoundary/ApolloBoundary';
 
 const propTypes = {
   articles: PropTypes.shape({}).isRequired,
-  articleParent: PropTypes.shape({}).isRequired,
+  articleSection: PropTypes.shape({}).isRequired,
   /**
    * The scroll speed and direction (Y axis), as brought to us by: [`Scroll`](./#scroll)
    */
@@ -47,7 +47,7 @@ class OsakaWrapper extends React.Component {
           const shouldDisplay = this.state.display;
           const {
             articles,
-            articleParent: {
+            articleSection: {
               name: sectionName,
               url: sectionUrl,
               id: sectionId,
@@ -86,7 +86,9 @@ class OsakaWrapper extends React.Component {
                       >
                         {({ loading, error, data, }) => {
                           if (loading || error) return null;
-                          const { nextArticle: { result: articleUrl, }, } = data;
+                          const {
+                            nextArticle: { result: articleUrl, },
+                          } = data;
 
                           if (articleUrl) {
                             nextArticleUrl = articleUrl;

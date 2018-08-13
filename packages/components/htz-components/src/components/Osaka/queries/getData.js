@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 
 export const fromCache = gql`
   query OsakaCacheQuery($path: String!) {
-    articleParent @client {
+    articleSection @client {
       name
       id
       url

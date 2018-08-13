@@ -106,14 +106,16 @@ const OsakaWithApollo = ({ articleId, ...props }) => (
       if (loading) return null;
       if (error) return null;
       const {
-        page: { seoData: { canonicalUrl, }, },
+        page: {
+          seoData: { canonicalUrl, },
+        },
         hostname,
-        articleParent,
+        articleSection,
       } = data;
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       return (
         <OsakaWithOutbrain
-          {...{ ...props, articleParent, host, canonicalUrl, }}
+          {...{ ...props, articleSection, host, canonicalUrl, }}
         />
       );
     }}

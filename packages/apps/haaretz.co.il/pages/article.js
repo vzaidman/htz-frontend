@@ -50,6 +50,10 @@ export class ArticlePage extends React.Component {
 
   static defaultProps = {};
 
+  state = {
+    articleId: null,
+  };
+
   static getDerivedStateFromProps(nextProps, prevState) {
     const nextArticleId = nextProps.url.query.path.match(
       /(?:.*-?)(1\.\d+.*)/
@@ -61,10 +65,6 @@ export class ArticlePage extends React.Component {
 
     return { articleId: prevState.articleId, };
   }
-
-  state = {
-    articleId: null,
-  };
 
   componentDidMount() {
     const articleId = this.props.url.query.path.match(/(?:.*-?)(1\.\d+.*)/)[1];
@@ -81,8 +81,6 @@ export class ArticlePage extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('updated');
-    console.log(this.state);
     this.writeToSession(this.state.articleId);
   }
 
@@ -104,30 +102,16 @@ export class ArticlePage extends React.Component {
         {({ loading, error, data, client, }) => {
           if (loading) return null;
           if (error) logger.error(error);
-          const { page: { slots, lineage, }, } = data;
+          const {
+            page: { slots, lineage, },
+          } = data;
           const articleId = lineage[0].contentId;
           this.setState({
             articleId,
           });
-          const articleParent =
-            lineage[1] && lineage.length > 2
-              ? {
-                  name: lineage[1].name,
-                  id: lineage[1].contentId,
-                  url: lineage[1].url,
-                }
-              : {
-                  name: null,
-                  id: null,
-                  url: null,
-                };
           client.writeData({
             data: {
               articleId,
-              articleParent: {
-                ...articleParent,
-                __typename: 'ArticleParent',
-              },
               pageSchema: {
                 publisher,
                 __typename: 'PageSchema',

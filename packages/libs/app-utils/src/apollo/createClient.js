@@ -132,11 +132,11 @@ function create(initialState, req) {
       },
       canonicalUrl: '',
       zenMode: false,
-      articleParent: {
+      articleSection: {
         name: null,
         id: null,
         url: null,
-        __typename: 'ArticleParent',
+        __typename: 'ArticleSection',
       },
       a11yToggle: false,
       hostname,
@@ -218,6 +218,20 @@ function create(initialState, req) {
             },
           });
 
+          // resolver needs to return something / null https://github.com/apollographql/apollo-link-state/issues/160
+          return null;
+        },
+        updateArticleSection: (_, { id, name, url, }, { cache, }) => {
+          console.log({ id, name, url, });
+          const data = {
+            articleSection: {
+              id,
+              name,
+              url,
+              __typename: 'ArticleSection',
+            },
+          };
+          cache.writeData({ data, });
           // resolver needs to return something / null https://github.com/apollographql/apollo-link-state/issues/160
           return null;
         },
