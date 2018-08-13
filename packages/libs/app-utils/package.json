@@ -13,7 +13,6 @@
   "scripts": {
     "build": "htz-scripts build",
     "clean": "htz-scripts clean",
-    "flow": "htz-scripts flow",
     "format": "htz-scripts format",
     "gc": "htz-scripts commitizen",
     "lint": "htz-scripts lint",

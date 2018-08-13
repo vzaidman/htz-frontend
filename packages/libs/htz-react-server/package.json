@@ -12,7 +12,6 @@
     "build": "htz-scripts build:lib",
     "clean": "htz-scripts clean",
     "dev": "htz-scripts dev:watch",
-    "flow": "htz-scripts flow",
     "format": "htz-scripts format",
     "gc": "htz-scripts commitizen",
     "lint": "htz-scripts lint",
