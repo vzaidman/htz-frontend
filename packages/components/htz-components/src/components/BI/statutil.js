@@ -107,8 +107,8 @@ export function doStat(user, lineage = [], writerId = null) {
     secondary_section: secondarySection,
     article_id: articleId,
     writer_id: writerId, // getDataFromElement('statutilWriter', { aggregate: true, }) || '',
-    openmode_back: null, // isOnArticlePage() ? getDataFromElement('statutilispremiumcontent') === 'false' ? 1 : 0 : null,
-    openmode_front: null, // isOnArticlePage() ? (typeof openMode !== 'undefined' ? openMode : '') : null, // Defined in global scope.. :-(
+    openmode_back: 1, // isOnArticlePage() ? getDataFromElement('statutilispremiumcontent') === 'false' ? 1 : 0 : null,
+    openmode_front: 1, // isOnArticlePage() ? (typeof openMode !== 'undefined' ? openMode : '') : null, // Defined in global scope.. :-(
     utm_medium: extractParameter('utm_medium', href),
     utm_source: extractParameter('utm_source', href),
     utm_content: extractParameter('utm_content', href),
