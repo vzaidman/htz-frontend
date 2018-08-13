@@ -30,6 +30,7 @@ class Stage3 extends Component {
   state = {
     registerOrLoginStage: 'checkEmail',
     refetch: false,
+    chosenSubscription: null,
   };
 
   updateRegisterOrLoginStage = registerOrLoginStage => {
@@ -82,9 +83,14 @@ class Stage3 extends Component {
                       })()
                     : null;
 
-                  const chosenSubscription = chosenSlot
-                    ? chosenSlot.subscriptionName
-                    : null;
+                  const chosenSubscription = (() => {
+                    if (!this.state.chosenSubscription && chosenSlot) {
+                      this.setState({
+                        chosenSubscription: chosenSlot.subscriptionName,
+                      });
+                    }
+                    return chosenSlot.subscriptionName;
+                  })();
 
                   const chosenPaymentArrangement = chosenSlot
                     ? chosenSlot.products[chosenProductIndex].offerList[
@@ -98,7 +104,7 @@ class Stage3 extends Component {
                     });
                     return (
                       <LoginRedirect
-                        chosenSubscription={chosenSubscription}
+                        chosenSubscription={this.state.chosenSubscription}
                         refetch={refetch}
                       />
                     );

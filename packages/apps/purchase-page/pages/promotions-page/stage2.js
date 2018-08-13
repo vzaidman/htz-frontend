@@ -16,6 +16,7 @@ import CampaignHeader from '../../components/OfferPage/Stages/ChooseProductStage
 const GET_LOCAL_STATE = gql`
   query {
     hostname @client
+    startFromStage2 @client
     promotionsPageState @client {
       subStage
       chosenSlotIndex
@@ -28,7 +29,7 @@ const GET_LOCAL_STATE = gql`
 function Stage2() {
   return (
     <OfferPageDataGetter
-      render={({ data, loading, error, refetch, }) => {
+      render={({ data, loading, error, refetch, client, }) => {
         if (loading) return <div />;
         if (error) return <div> Error...</div>;
         const isFirstPage = Math.floor(data.purchasePage.pageNumber) === 3;
@@ -38,6 +39,7 @@ function Stage2() {
               {({ data: clientData, }) => {
                 const {
                   hostname,
+                  startFromStage2,
                   promotionsPageState: {
                     subStage,
                     chosenProductIndex,
@@ -45,6 +47,9 @@ function Stage2() {
                     couponProduct,
                   },
                 } = clientData;
+                if (!startFromStage2 && isFirstPage) {
+                  client.writeData({ data: { startFromStage2: true, }, });
+                }
                 return (
                   <FelaComponent
                     style={{ textAlign: 'center', }}

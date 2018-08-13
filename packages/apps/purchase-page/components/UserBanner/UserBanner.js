@@ -4,6 +4,7 @@ import { UserDispenser, Logout, } from '@haaretz/htz-components';
 import { createComponent, FelaComponent, } from 'react-fela';
 import Router, { withRouter, } from 'next/router';
 import pathGenerator from '../OfferPage/Stages/utils/pathGenerator';
+import OfferPageDataGetter from '../OfferPage/OfferPageDataGetter';
 
 const userBannerStyle = theme => ({
   backgroundColor: theme.color('userBanner', 'bg'),
@@ -52,28 +53,34 @@ function UserBanner({ router, ignoreQueryParam, }) {
                   <UserName>
                     {theme.offerPage.userBanner.hello(user.firstName)}
                   </UserName>
-                  <Logout
-                    render={({ logout, }) => (
-                      <FelaComponent
-                        style={switchUserStyle}
-                        render={({ className, }) => (
-                          <button
-                            className={className}
-                            type="button"
-                            onClick={() =>
-                              logout().then(() => {
-                                const { pathName, asPath, } = pathGenerator(
-                                  'stage1',
-                                  router,
-                                  null,
-                                  ignoreQueryParam
-                                );
-                                Router.push(pathName, asPath);
-                              })
-                            }
-                          >
-                            {theme.offerPage.userBanner.switch}
-                          </button>
+                  <OfferPageDataGetter
+                    render={({ refetch, }) => (
+                      <Logout
+                        render={({ logout, }) => (
+                          <FelaComponent
+                            style={switchUserStyle}
+                            render={({ className, }) => (
+                              <button
+                                className={className}
+                                type="button"
+                                onClick={() =>
+                                  logout().then(() => {
+                                    const { pathName, asPath, } = pathGenerator(
+                                      'stage1',
+                                      router,
+                                      null,
+                                      ignoreQueryParam
+                                    );
+                                    refetch().then(() => {
+                                      Router.push(pathName, asPath);
+                                    });
+                                  })
+                                }
+                              >
+                                {theme.offerPage.userBanner.switch}
+                              </button>
+                            )}
+                          />
                         )}
                       />
                     )}
