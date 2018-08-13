@@ -89,7 +89,7 @@ class Stage3 extends Component {
                         chosenSubscription: chosenSlot.subscriptionName,
                       });
                     }
-                    return chosenSlot.subscriptionName;
+                    return chosenSlot ? chosenSlot.subscriptionName : null;
                   })();
 
                   const chosenPaymentArrangement = chosenSlot
