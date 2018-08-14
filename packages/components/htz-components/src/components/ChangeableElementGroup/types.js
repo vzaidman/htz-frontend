@@ -40,11 +40,12 @@ export type ContentType = {
 
 export type PropTypes = {
   scrollY: number,
+  velocity: number,
   contentLists: Array<ContentType>,
   totalDisplay: number,
 };
 
 export type StateTypes = {
-  someoneIsAnimating: boolean,
   elementIndex: ?number,
+  someoneIsAnimating: boolean,
 };

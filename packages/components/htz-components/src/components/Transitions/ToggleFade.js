@@ -12,6 +12,10 @@ class ToggleFade extends React.Component {
      */
     children: PropTypes.node,
     /**
+     * The delay of the transition.
+     */
+    delay: PropTypes.number,
+    /**
      * The duration of the transition.
      */
     duration: PropTypes.number,
@@ -38,6 +42,7 @@ class ToggleFade extends React.Component {
 
   static defaultProps = {
     children: null,
+    delay: null,
     duration: null,
     durationIn: null,
     durationOut: null,
@@ -82,6 +87,7 @@ class ToggleFade extends React.Component {
     const { animating, } = this.state;
     const {
       children,
+      delay,
       duration,
       durationIn,
       durationOut,
@@ -101,6 +107,7 @@ class ToggleFade extends React.Component {
                   show ? durationIn || duration : durationOut || duration
                 ),
                 ...theme.getTimingFunction('transition', 'linear'),
+                ...(delay != null ? theme.getDelay('transition', delay) : {}),
               }
             : {}),
           extend: [

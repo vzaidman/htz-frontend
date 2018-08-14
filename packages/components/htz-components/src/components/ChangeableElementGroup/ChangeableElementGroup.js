@@ -64,24 +64,36 @@ class ChangeableElementGroup extends React.Component<PropTypes, StateTypes> {
           );
           const show: boolean = elementIndex === index;
           return (
-            <ToggleFade
+            <FelaComponent
               key={element.contentId}
-              show={show && !someoneIsAnimating}
-              durationIn={2}
-              durationOut={0}
-              render={({ animating, }) => {
-                this.setState({ someoneIsAnimating: animating, });
-                return (
-                  <FelaComponent
-                    style={{
-                      display: !show && !someoneIsAnimating ? 'none' : 'block',
-                    }}
-                  >
-                    <Element {...elementWithoutProperties} {...properties} />
-                  </FelaComponent>
-                );
-              }}
-            />
+              style={theme => ({
+                transform: `translateY(${show ? '0' : '8'}rem)`,
+                transitionProperty: 'transform',
+                ...theme.getDuration('transition', 1),
+                ...theme.getTimingFunction('transition', 'linear'),
+                ...theme.getDelay('transition', 0),
+              })}
+            >
+              <ToggleFade
+                show={show && !someoneIsAnimating}
+                delay={0}
+                durationIn={3}
+                durationOut={0}
+                render={({ animating, }) => {
+                  this.setState({ someoneIsAnimating: animating, });
+                  return (
+                    <FelaComponent
+                      style={{
+                        display:
+                          !show && !someoneIsAnimating ? 'none' : 'block',
+                      }}
+                    >
+                      <Element {...elementWithoutProperties} {...properties} />
+                    </FelaComponent>
+                  );
+                }}
+              />
+            </FelaComponent>
           );
         })}
       </Fragment>
