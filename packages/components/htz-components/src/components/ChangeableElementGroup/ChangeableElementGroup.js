@@ -1,87 +1,92 @@
 /* global window */
+// @flow
 import React, { Fragment, } from 'react';
-import PropTypes from 'prop-types';
+import { FelaComponent, } from 'react-fela';
 
-import Debug from '../Debug/Debug';
+import type { Node, ComponentType, } from 'react';
+
 import getComponent from '../../utils/componentFromInputTemplate';
+import ToggleFade from '../Transitions/ToggleFade';
 
-const content = {
-  contentName: PropTypes.string,
-  contentId: PropTypes.string,
-  inputTemplate: PropTypes.string,
-};
-const dfpBannerType = {
-  contentName: PropTypes.string,
-  contentId: PropTypes.string,
-  inputTemplate: PropTypes.string,
-  id: PropTypes.string,
-  style: PropTypes.string,
-  audianceTarget: PropTypes.string,
-  hideOnSite: PropTypes.bool,
-};
-const gridElementGroup = {
-  contentName: PropTypes.string,
-  contentId: PropTypes.string,
-  inputTemplate: PropTypes.string,
-  items: PropTypes.array,
-};
-const listType = {
-  contentName: PropTypes.string,
-  contentId: PropTypes.string,
-  inputTemplate: PropTypes.string,
-  title: PropTypes.string,
-  view: PropTypes.string,
-  hasPagination: PropTypes.bool,
-};
+import type { PropTypes, StateTypes, ContentType, } from './types';
 
-const propTypes = {
-  scrollY: PropTypes.number.isRequired,
-  contentLists: PropTypes.arrayOf(
-    PropTypes.shape({
-      displayDuration: PropTypes.number.isRequired,
-      content: PropTypes.oneOfType([
-        dfpBannerType,
-        gridElementGroup,
-        listType,
-        content,
-      ]),
-    })
-  ).isRequired,
-  hideOnSite: PropTypes.bool.isRequired,
-  inputTemplate: PropTypes.string.isRequired,
-  contentName: PropTypes.string.isRequired,
-  contentId: PropTypes.string.isRequired,
-  totalDisplay: PropTypes.number.isRequired,
-};
-
-function ChangeableElementGroup({ scrollY, contentLists, totalDisplay, }) {
-  const getElementIndex = posY => {
-    let prev = 0;
-    for (const [ index, item, ] of contentLists.entries()) {
-      if (posY > item.displayDuration + prev) {
-        prev += item.displayDuration;
-      }
-      else return index;
-    }
-    return null;
+class ChangeableElementGroup extends React.Component<PropTypes, StateTypes> {
+  state = {
+    someoneIsAnimating: false,
+    elementIndex: null,
   };
 
-  const elementIndex = getElementIndex(scrollY % totalDisplay);
-  const element = contentLists[elementIndex].content;
-  const Element = getComponent(element.inputTemplate);
-  const { properties, ...elementWithoutProperties } = element;
-  return (
-    <Fragment>
-      <Debug>{`Scroll-Y at: ${scrollY}`}</Debug>
-      <Element
-        key={element.contentId}
-        {...elementWithoutProperties}
-        {...properties}
-      />
-    </Fragment>
-  );
-}
+  static getDerivedStateFromProps(nextProps: PropTypes, prevState: StateTypes) {
+    const { scrollY, totalDisplay, contentLists, } = nextProps;
 
-ChangeableElementGroup.propTypes = propTypes;
+    const getElementIndex: () => ?number = () => {
+      const posY: number = scrollY % totalDisplay;
+      let prev: number = 0;
+      for (const [ index, item, ]: [
+        number,
+        ContentType,
+      ] of contentLists.entries()) {
+        if (posY > item.displayDuration + prev) {
+          prev += item.displayDuration;
+        }
+        else return index;
+      }
+      return null;
+    };
+
+    const elementIndex: ?number = getElementIndex();
+
+    return elementIndex !== prevState.elementIndex
+      ? {
+        elementIndex,
+      }
+      : prevState;
+  }
+
+  shouldComponentUpdate(nextProps: PropTypes, nextState: StateTypes) {
+    return (
+      (!nextState.someoneIsAnimating &&
+        this.state.someoneIsAnimating !== nextState.someoneIsAnimating) ||
+      this.state.elementIndex !== nextState.elementIndex
+    );
+  }
+
+  render(): Node {
+    const { contentLists, } = this.props;
+    const { elementIndex, someoneIsAnimating, } = this.state;
+
+    return (
+      <Fragment>
+        {contentLists.map(({ content: element, }, index) => {
+          const { properties, ...elementWithoutProperties } = element;
+          const Element: ComponentType<any> = getComponent(
+            element.inputTemplate
+          );
+          const show: boolean = elementIndex === index;
+          return (
+            <ToggleFade
+              key={element.contentId}
+              show={show && !someoneIsAnimating}
+              durationIn={2}
+              durationOut={0}
+              render={({ animating, }) => {
+                this.setState({ someoneIsAnimating: animating, });
+                return (
+                  <FelaComponent
+                    style={{
+                      display: !show && !someoneIsAnimating ? 'none' : 'block',
+                    }}
+                  >
+                    <Element {...elementWithoutProperties} {...properties} />
+                  </FelaComponent>
+                );
+              }}
+            />
+          );
+        })}
+      </Fragment>
+    );
+  }
+}
 
 export default ChangeableElementGroup;

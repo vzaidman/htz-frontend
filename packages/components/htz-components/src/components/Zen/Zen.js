@@ -58,7 +58,11 @@ class Zen extends React.Component {
             );
           }
           if (animate) {
-            return <ToggleFade show={!zenMode}>{children}</ToggleFade>;
+            return (
+              <ToggleFade duration={0} show={!zenMode}>
+                {children}
+              </ToggleFade>
+            );
           }
           if (!zenMode) {
             return <Fragment>{children}</Fragment>;
