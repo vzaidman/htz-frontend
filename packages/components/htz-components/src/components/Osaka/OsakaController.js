@@ -31,7 +31,6 @@ class OsakaWithOutbrain extends React.Component {
   }
 
   getArticles = () => {
-    console.log('getting articles osaka controller outbrain');
     // eslint-disable-next-line react/prop-types
     const { promotedElement, hostname, canonicalUrl, } = this.props;
     const url = canonicalUrl ? this.changeSubDomain(canonicalUrl) : '';
