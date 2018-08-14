@@ -1,17 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaTheme, FelaComponent, } from 'react-fela';
-import dynamic from 'next/dynamic';
-
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
 import ArticleImage from '../ArticleImage/ArticleImage';
 import Caption from '../Caption/Caption';
-
-const UserSurvey = dynamic(import('../UserSurvey/UserSurvey'), {
-  ssr: false,
-  loading: () => null,
-});
 
 const propTypes = {
   /**
@@ -170,18 +163,9 @@ function ArticleBody({ body, }) {
         marginLeft: 'auto',
       })}
     >
-      {body.map((component, i) => {
-        let res = buildComponent(component, i, i === body.length - 1);
-        if (i === body.length - 1) {
-          res = (
-            <div>
-              {res}
-              <UserSurvey />
-            </div>
-          );
-        }
-        return res;
-      })}
+      {body.map((component, i) =>
+        buildComponent(component, i, i === body.length - 1)
+      )}
     </FelaComponent>
   );
 }
