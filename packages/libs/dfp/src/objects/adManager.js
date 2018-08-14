@@ -65,6 +65,18 @@ export default class AdManager {
             } priority slots`
           );
         this.adSlots = this.initAdSlots(config.adSlotConfig, adPriorities.high);
+        googletag.cmd.push(() => {
+          this.DEBUG &&
+            console.log(
+              `3. Define slots - definition for ${
+                adPriorities.normal
+              } priority slots`
+            );
+          this.adSlots = this.initAdSlots(
+            config.adSlotConfig,
+            adPriorities.normal
+          );
+        });
       });
       // Once DOM ready, add more adSlots.
       const onDomLoaded = () => {
@@ -81,18 +93,6 @@ export default class AdManager {
               config.adSlotConfig,
               adPriorities.high
             );
-            googletag.cmd.push(() => {
-              this.DEBUG &&
-                console.log(
-                  `3. Define slots - definition for ${
-                    adPriorities.normal
-                  } priority slots`
-                );
-              this.adSlots = this.initAdSlots(
-                config.adSlotConfig,
-                adPriorities.normal
-              );
-            });
           });
         }
         catch (err) {
