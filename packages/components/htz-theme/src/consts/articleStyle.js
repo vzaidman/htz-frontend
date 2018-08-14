@@ -51,7 +51,7 @@ const relatedArticlesLink = Object.freeze({
   transitionProperty: 'background-position',
   ...getDuration('transition', -1),
   ...getTimingFunction('transition', 'swiftIn'),
-  backgroundImage: `linear-gradient(to bottom, transparent 36%, ${color(
+  backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0) 36%, ${color(
     'quaternary',
     '-2'
   )}, ${color('quaternary', '-2')} 50%, ${color('quaternary', '-2')} )`,
