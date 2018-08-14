@@ -181,7 +181,7 @@ class ArticleHeaderMeta extends React.Component {
                         }}
                       />
                     ))}
-                    {reportingFrom && (
+                    {reportingFrom ? (
                       <FelaComponent
                         style={{
                           color: theme.color('primary'),
@@ -206,7 +206,7 @@ class ArticleHeaderMeta extends React.Component {
                       >
                         {reportingFrom}
                       </FelaComponent>
-                    )}
+                    ) : null}
 
                     <FelaComponent
                       rule={timeStyle}
@@ -223,14 +223,13 @@ class ArticleHeaderMeta extends React.Component {
                 </FelaComponent>
                 {/* alerts and desktop time */}
                 <FelaComponent style={alertsAndDesktopTimeContStyle}>
-                  {authors.length === 1 &&
-                    authors[0].hasEmailAlerts && (
-                      <Alerts
-                        author={authors[0]}
-                        onToggle={this.toggleAuthorAlertsForm}
-                        ref={this.alertsToggleBtnRef}
-                      />
-                    )}
+                  {authors.length === 1 && authors[0].hasEmailAlerts ? (
+                    <Alerts
+                      author={authors[0]}
+                      onToggle={this.toggleAuthorAlertsForm}
+                      ref={this.alertsToggleBtnRef}
+                    />
+                  ) : null}
                 </FelaComponent>
                 <FelaComponent
                   rule={timeStyle}

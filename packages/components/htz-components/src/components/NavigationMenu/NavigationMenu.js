@@ -36,10 +36,12 @@ const menuButtonStyle = ({ theme, isOpen, isHovered, }) => ({
   paddingBottom: '2rem',
   paddingRight: '1rem',
   paddingLeft: '1rem',
-  ...(isOpen && {
-    backgroundColor: theme.color('secondary'),
-    color: theme.color('neutral', '-10'),
-  }),
+  ...(isOpen
+    ? {
+      backgroundColor: theme.color('secondary'),
+      color: theme.color('neutral', '-10'),
+    }
+    : {}),
   // ':hover': {
   //   backgroundColor: theme.color('primary'),
   //   color: theme.color('neutral', '-10'),
@@ -248,7 +250,7 @@ class NavigationMenu extends React.Component {
                       )}
                     />
                   ))}
-                  {isOpen && (
+                  {isOpen ? (
                     <ListWrapper
                       listStyle={{
                         ...dropdownListStyle(theme),
@@ -258,7 +260,7 @@ class NavigationMenu extends React.Component {
                     >
                       {combinedMenu}
                     </ListWrapper>
-                  )}
+                  ) : null}
                 </Fragment>
               )}
             />
@@ -275,7 +277,9 @@ export default ({ contentId, }) => (
     {({ data, loading, error, }) => {
       if (error) return null;
       if (loading) return <NavigationMenu menuSections={{}} />;
-      const { navMenu: { menu, }, } = data;
+      const {
+        navMenu: { menu, },
+      } = data;
       return <NavigationMenu menuSections={menu} />;
     }}
   </Query>

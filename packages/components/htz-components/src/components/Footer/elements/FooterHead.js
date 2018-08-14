@@ -17,7 +17,11 @@ const IconMiscStyle = {
 };
 
 const desktopHeadStyle = ({
-  theme: { color, mq, footerBorderStyle: { borderWidth, lines, borderStyle, }, },
+  theme: {
+    color,
+    mq,
+    footerBorderStyle: { borderWidth, lines, borderStyle, },
+  },
 }) => ({
   ...mq(
     { from: 's', },
@@ -89,7 +93,7 @@ const IconsUlStyle = ({ theme, }) => ({
 
 const IconsListStyle = ({ theme, isHiddenOnMobile, isLast, }) => ({
   display: 'inline-block',
-  ...(!isLast && { marginInlineEnd: '3rem', }),
+  ...(!isLast ? { marginInlineEnd: '3rem', } : {}),
   extend: [
     theme.mq(
       {

@@ -85,10 +85,12 @@ export default class MobileBarActionButtons extends React.Component {
                           buttons={{
                             name: 'save',
                             buttonStyles: isArticleSaved => ({
-                              ...(isArticleSaved && {
-                                color: theme.color('neutral', '-10'),
-                                backgroundColor: theme.color('primary'),
-                              }),
+                              ...(isArticleSaved
+                                ? {
+                                    color: theme.color('neutral', '-10'),
+                                    backgroundColor: theme.color('primary'),
+                                  }
+                                : {}),
                             }),
                           }}
                         />

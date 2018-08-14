@@ -31,8 +31,8 @@ export default function MobileMenuHeader({ searchIsOpen, onClick, }) {
           <UserDispenser
             render={({ isLoggedIn, }) => (
               <Fragment>
-                {!searchIsOpen && isLoggedIn && <MobileReadingList />}
-                {!searchIsOpen && <MobileUser isLoggedIn={isLoggedIn} />}
+                {!searchIsOpen && isLoggedIn ? <MobileReadingList /> : null}
+                {!searchIsOpen ? <MobileUser isLoggedIn={isLoggedIn} /> : null}
               </Fragment>
             )}
           />

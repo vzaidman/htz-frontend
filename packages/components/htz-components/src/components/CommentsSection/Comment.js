@@ -528,7 +528,7 @@ class Comment extends React.Component {
                     </Button>
                   ) : null}
                 </FelaComponent>
-                {this.state.abuseReported && (
+                {this.state.abuseReported ? (
                   <FelaComponent
                     style={{
                       marginTop: '1rem',
@@ -543,7 +543,7 @@ class Comment extends React.Component {
                       badge="inline"
                     />
                   </FelaComponent>
-                )}
+                ) : null}
                 {subComments ? (
                   <CommentList
                     comments={subComments}

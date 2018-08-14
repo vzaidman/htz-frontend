@@ -88,30 +88,32 @@ const articleWrapperStyle = ({ theme, lastItem, }) => ({
   marginInlineStart: '1em',
   position: 'relative',
   color: theme.color('primary', '+1'),
-  ...(!lastItem && {
-    ...parseComponentProp(
-      'marginBottom',
-      theme.articleStyle.body.marginBottom,
-      theme.mq,
-      (prop, value) => ({ [prop]: value, })
-    ),
-    ':after': {
-      content: '""',
-      position: 'absolute',
-      start: '0',
-      top: '1.5em',
-      height: 'calc(100%)',
-      ...theme.mq({ until: 'm', }, { transform: 'translate(530%, 0)', }),
-      ...theme.mq(
-        { from: 'm', until: 'xl', },
-        { transform: 'translate(540%, -2%)', }
+  ...(!lastItem
+    ? {
+      ...parseComponentProp(
+        'marginBottom',
+        theme.articleStyle.body.marginBottom,
+        theme.mq,
+        (prop, value) => ({ [prop]: value, })
       ),
-      ...theme.mq({ from: 'xl', }, { transform: 'translate(600%, -7%)', }),
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: theme.color('primary', '-1'),
-    },
-  }),
+      ':after': {
+        content: '""',
+        position: 'absolute',
+        start: '0',
+        top: '1.5em',
+        height: 'calc(100%)',
+        ...theme.mq({ until: 'm', }, { transform: 'translate(530%, 0)', }),
+        ...theme.mq(
+          { from: 'm', until: 'xl', },
+          { transform: 'translate(540%, -2%)', }
+        ),
+        ...theme.mq({ from: 'xl', }, { transform: 'translate(600%, -7%)', }),
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: theme.color('primary', '-1'),
+      },
+    }
+    : {}),
   ':before': {
     content: '"\\25cf"',
     position: 'absolute',
@@ -170,7 +172,9 @@ export default class SeriesArticles extends React.Component {
         })}
         render={({
           className,
-          theme: { seriesArticleI18n: { loadButton, titlePrefix, }, },
+          theme: {
+            seriesArticleI18n: { loadButton, titlePrefix, },
+          },
         }) => (
           <div className={className}>
             <ArticleListWrapper aria-live="polite">
@@ -183,14 +187,13 @@ export default class SeriesArticles extends React.Component {
                       key={i}
                       lastItem={i === this.state.articlesToDisplay.length - 1}
                     >
-                      {this.state.isOpen &&
-                        this.state.itemsPerPage === i && (
-                          <AriaHidden>
-                            {loadButton.ariaText(
-                              this.state.remainingArticlesCount
-                            )}
-                          </AriaHidden>
-                        )}
+                      {this.state.isOpen && this.state.itemsPerPage === i ? (
+                        <AriaHidden>
+                          {loadButton.ariaText(
+                            this.state.remainingArticlesCount
+                          )}
+                        </AriaHidden>
+                      ) : null}
                       <ArticleLink
                         article={article}
                         currentArticle={articleId === article.contentId}
@@ -203,7 +206,7 @@ export default class SeriesArticles extends React.Component {
                 }
               </Query>
             </ArticleListWrapper>
-            {this.state.usePagination && (
+            {this.state.usePagination ? (
               <Button
                 boxModel={{ hp: 3, vp: 1, }}
                 miscStyles={{ type: -1, }}
@@ -213,7 +216,7 @@ export default class SeriesArticles extends React.Component {
                   ? loadButton.open
                   : `${loadButton.close} ${this.state.remainingArticlesCount}`}
               </Button>
-            )}
+            ) : null}
             <script type="application/ld+json">
               {JSON.stringify({
                 '@context': 'http://schema.org',

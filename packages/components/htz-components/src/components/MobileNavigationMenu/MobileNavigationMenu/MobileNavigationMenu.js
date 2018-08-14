@@ -20,10 +20,12 @@ const menuButtonStyle = ({ theme, menuIsOpen, }) => ({
   paddingTop: '2rem',
   paddingBottom: '2rem',
   fontWeight: '700',
-  ...(menuIsOpen && {
-    backgroundColor: theme.color('secondary'),
-    color: theme.color('neutral', '-10'),
-  }),
+  ...(menuIsOpen
+    ? {
+      backgroundColor: theme.color('secondary'),
+      color: theme.color('neutral', '-10'),
+    }
+    : {}),
   extend: [
     theme.type(-1),
     borderEnd('1px', 'solid', theme.color('neutral', '-5')),
@@ -204,7 +206,9 @@ export default ({ contentId, menuIsOpen, onClick, }) => (
     {({ data, loading, error, }) => {
       if (error) return null;
       if (loading) return <MobileNavigationMenu />;
-      const { navMenu: { menu, }, } = data;
+      const {
+        navMenu: { menu, },
+      } = data;
       return (
         <MobileNavigationMenu
           menuSections={menu}

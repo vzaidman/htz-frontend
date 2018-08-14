@@ -55,7 +55,7 @@ export const PromotedItem = ({ path, title, image, suffix, }) => (
               >
                 {title}
               </FelaComponent>
-              {suffix && (
+              {suffix ? (
                 <FelaComponent
                   style={{
                     ...theme.type(-3),
@@ -69,7 +69,7 @@ export const PromotedItem = ({ path, title, image, suffix, }) => (
                 >
                   {theme.osakaI18n.promotedContent}
                 </FelaComponent>
-              )}
+              ) : null}
             </div>
           </Fragment>
         }

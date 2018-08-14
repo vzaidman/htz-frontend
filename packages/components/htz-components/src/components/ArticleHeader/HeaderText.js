@@ -46,7 +46,7 @@ function HeaderText({ kicker, title, subtitle, className, }) {
     <FelaTheme
       render={theme => (
         <div className={className}>
-          {kicker && (
+          {kicker ? (
             <Kicker
               isBlock={false}
               fontSize={[
@@ -56,18 +56,18 @@ function HeaderText({ kicker, title, subtitle, className, }) {
               ]}
               text={kicker}
             />
-          )}
+          ) : null}
           <FelaComponent style={titleStyle} render="h1">
             {title}
           </FelaComponent>
-          {subtitle && (
+          {subtitle ? (
             <FelaComponent
               style={subTitleStyle}
               render={({ className, }) => (
                 <p className={className}>{subtitle}</p>
               )}
             />
-          )}
+          ) : null}
         </div>
       )}
     />

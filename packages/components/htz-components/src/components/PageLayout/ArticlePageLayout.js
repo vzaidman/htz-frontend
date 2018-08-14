@@ -61,12 +61,12 @@ const ArticlePageLayout = ({
 
   return (
     <Fragment>
-      <LayoutRow>{preHeader && getElements(preHeader)}</LayoutRow>
+      <LayoutRow>{preHeader ? getElements(preHeader) : null}</LayoutRow>
       <LayoutRow>
         <Header content={header} articleId={articleId} />
       </LayoutRow>
       <LayoutRow>
-        {postHeader && (
+        {postHeader ? (
           <LayoutContainer>
             <FelaComponent
               style={theme => ({
@@ -79,7 +79,7 @@ const ArticlePageLayout = ({
               {getElements(postHeader)}
             </FelaComponent>
           </LayoutContainer>
-        )}
+        ) : null}
       </LayoutRow>
       <Query query={StandardArticleQuery} variables={{ path: articleId, }}>
         {({ loading, error, data, client, }) => {
@@ -105,8 +105,8 @@ const ArticlePageLayout = ({
                   seoData={seoData}
                 />
               </LayoutRow>
-              <LayoutRow>{postMain && getElements(postMain)}</LayoutRow>
-              <LayoutRow>{footer && getElements(footer)}</LayoutRow>
+              <LayoutRow>{postMain ? getElements(postMain) : null}</LayoutRow>
+              <LayoutRow>{footer ? getElements(footer) : null}</LayoutRow>
               <BIRequest
                 articleId={articleId}
                 authors={extractAuthorsFromArticle(article)}

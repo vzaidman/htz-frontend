@@ -26,7 +26,7 @@ const defaultProps = {
 };
 
 const wrapperStyle = ({ miscStyles, }) => ({
-  ...(miscStyles && miscStyles),
+  ...(miscStyles || {}),
 });
 const Wrapper = createComponent(wrapperStyle);
 
@@ -37,11 +37,11 @@ const Wrapper = createComponent(wrapperStyle);
 function HtmlElement({ code, hideOnSite, miscStyles, }) {
   return (
     <Wrapper miscStyles={miscStyles}>
-      {!hideOnSite && (
+      {!hideOnSite ? (
         <div
           dangerouslySetInnerHTML={{ __html: code, }} // eslint-disable-line react/no-danger
         />
-      )}
+      ) : null}
     </Wrapper>
   );
 }

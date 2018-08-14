@@ -261,7 +261,7 @@ class CommentForm extends React.Component {
                                   })}
                                 />
                               </TextInputWrapper>
-                              {isLoggedIn && (
+                              {isLoggedIn ? (
                                 <ToggleButton
                                   type="button"
                                   onClick={() => {
@@ -279,7 +279,7 @@ class CommentForm extends React.Component {
                                     this.state.identifiedComment
                                   )}
                                 </ToggleButton>
-                              )}
+                              ) : null}
                             </InputAndToggleWrapper>
 
                             <TextInput

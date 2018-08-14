@@ -87,7 +87,7 @@ function Header({
             })}
             render={({ className, theme, }) => (
               <header className={className}>
-                {hasBreadCrumbs && (
+                {hasBreadCrumbs ? (
                   <FelaComponent
                     style={{
                       paddingInlineStart: '2rem',
@@ -109,7 +109,7 @@ function Header({
                       />
                     )}
                   />
-                )}
+                ) : null}
                 <FelaComponent
                   style={{
                     marginTop: '3rem',
@@ -156,7 +156,7 @@ function Header({
                 >
                   <ShareBar title={title} canonicalUrl={canonicalUrl} />
                 </FelaComponent>
-                {headlineElement && (
+                {headlineElement ? (
                   <HeadlineElement
                     elementObj={headlineElement}
                     miscStyles={{
@@ -164,7 +164,7 @@ function Header({
                       order: [ { until: 's', value: -1, }, ],
                     }}
                   />
-                )}
+                ) : null}
               </header>
             )}
           />

@@ -105,10 +105,12 @@ export default function MobileBarActionButtons({ elementUrl, }) {
               buttons={{
                 name: 'save',
                 buttonStyles: isArticleSaved => ({
-                  ...(isArticleSaved && {
-                    color: theme.color('neutral', '-10'),
-                    backgroundColor: theme.color('secondary'),
-                  }),
+                  ...(isArticleSaved
+                    ? {
+                        color: theme.color('neutral', '-10'),
+                        backgroundColor: theme.color('secondary'),
+                      }
+                    : {}),
                 }),
               }}
             />

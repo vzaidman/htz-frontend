@@ -27,10 +27,12 @@ const a11yButtonStyle = ({ theme, isOpen, }) => ({
   paddingBottom: '1rem',
   paddingInlineStart: '2rem',
   paddingInlineEnd: '2rem',
-  ...(isOpen && {
-    backgroundColor: theme.color('a11yMenu', 'bgOpen'),
-    color: theme.color('a11yMenu', 'textOpenOrHover'),
-  }),
+  ...(isOpen
+    ? {
+      backgroundColor: theme.color('a11yMenu', 'bgOpen'),
+      color: theme.color('a11yMenu', 'textOpenOrHover'),
+    }
+    : {}),
   ':hover': {
     backgroundColor: theme.color('a11yMenu', 'bgHover'),
     color: theme.color('a11yMenu', 'textOpenOrHover'),
@@ -104,7 +106,7 @@ const MastheadA11yMenu = () => (
                   )}
                 />
               ))}
-              {isOpen && (
+              {isOpen ? (
                 <FelaTheme
                   render={theme => (
                     <ListWrapper
@@ -115,7 +117,7 @@ const MastheadA11yMenu = () => (
                     </ListWrapper>
                   )}
                 />
-              )}
+              ) : null}
             </Fragment>
           )}
         />

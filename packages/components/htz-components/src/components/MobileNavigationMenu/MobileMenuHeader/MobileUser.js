@@ -15,9 +15,11 @@ export default function MobileUserButton({ isLoggedIn, }) {
     <FelaComponent
       style={theme => ({
         display: 'flex',
-        ...(!isLoggedIn && {
-          extend: [ borderEnd('1px', 'solid', theme.color('primary', '+1')), ],
-        }),
+        ...(!isLoggedIn
+          ? {
+              extend: [ borderEnd('1px', 'solid', theme.color('primary', '+1')), ],
+            }
+          : {}),
       })}
       render={({ theme, className, }) => {
         const { userLoggedIn, noUserData, url, } = theme.mobileUserMenuI18n;

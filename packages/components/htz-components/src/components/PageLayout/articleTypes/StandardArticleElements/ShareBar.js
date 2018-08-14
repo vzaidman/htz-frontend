@@ -117,14 +117,16 @@ class ShareBar extends React.Component<Props, State> {
                   name: 'save',
                   buttonStyles: isArticleSaved => ({
                     minWidth: '10rem',
-                    ...(isArticleSaved && {
-                      color: theme.color('neutral', '-10'),
-                      backgroundColor: theme.color('primary'),
-                      ':hover': {
-                        color: theme.color('neutral', '-10'),
-                        backgroundColor: theme.color('secondary'),
-                      },
-                    }),
+                    ...(isArticleSaved
+                      ? {
+                          color: theme.color('neutral', '-10'),
+                          backgroundColor: theme.color('primary'),
+                          ':hover': {
+                            color: theme.color('neutral', '-10'),
+                            backgroundColor: theme.color('secondary'),
+                          },
+                        }
+                      : {}),
                   }),
                 },
               ]}

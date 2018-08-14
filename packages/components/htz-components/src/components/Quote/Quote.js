@@ -100,7 +100,9 @@ function Quote({ text, credit, imagesList, }) {
   const quoteType =
     imagesList && imagesList.length > 0
       ? 'image'
-      : credit && credit.trim().length > 0 ? 'quote' : 'border';
+      : credit && credit.trim().length > 0
+        ? 'quote'
+        : 'border';
 
   return (
     <QuoteWrapper>
@@ -126,7 +128,7 @@ function Quote({ text, credit, imagesList, }) {
         <TopBorder />
       )}
       <QuoteElement quoteType={quoteType}>{text}</QuoteElement>
-      {credit && <Cite>{credit}</Cite>}
+      {credit ? <Cite>{credit}</Cite> : null}
     </QuoteWrapper>
   );
 }

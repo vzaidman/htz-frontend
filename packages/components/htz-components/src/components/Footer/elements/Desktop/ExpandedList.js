@@ -10,7 +10,10 @@ import { ColumnTypes, PairTypes, } from './DesktopElementPropTypes';
 import Section from '../../../AutoLevels/Section';
 
 const extendedListContainerStyle = ({
-  theme: { color, footerBorderStyle: { borderWidth, lines, borderStyle, }, },
+  theme: {
+    color,
+    footerBorderStyle: { borderWidth, lines, borderStyle, },
+  },
   showMe,
 }) => ({
   display: showMe ? 'flex' : 'none',
@@ -111,7 +114,7 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
             { from: 'xl', value: 1 / 6, },
           ]}
         >
-          {toolbox && (
+          {toolbox ? (
             <ul>
               {toolbox.map(link => (
                 <FelaComponent
@@ -127,7 +130,7 @@ function ExpandedList({ columnsArr, toolbox, showMe, }) {
                 </FelaComponent>
               ))}
             </ul>
-          )}
+          ) : null}
         </GridItem>
       </Grid>
     </ExtendedFooterContainer>

@@ -69,15 +69,17 @@ const SeriesTitle = createComponent(seriesTitleStyle, H);
 const articleWrapperStyle = ({ theme, lastItem, }) => ({
   display: 'inline',
   color: theme.color('primary', '+1'),
-  ...(!lastItem && {
-    ':after': {
-      content: '"|"',
-      marginStart: '0.75rem',
-      marginEnd: '0.75rem',
-      fontWeight: '700',
-      color: theme.color('neutral', '-1'),
-    },
-  }),
+  ...(!lastItem
+    ? {
+      ':after': {
+        content: '"|"',
+        marginStart: '0.75rem',
+        marginEnd: '0.75rem',
+        fontWeight: '700',
+        color: theme.color('neutral', '-1'),
+      },
+    }
+    : {}),
 });
 const ArticleWrapper = createComponent(articleWrapperStyle, 'li');
 
@@ -93,7 +95,9 @@ function LinksBlock({ seriesTitle, articles, miscStyles, }) {
       })}
       render={({
         className,
-        theme: { seriesArticleI18n: { titlePrefix, }, },
+        theme: {
+          seriesArticleI18n: { titlePrefix, },
+        },
       }) => (
         <div className={className}>
           <SeriesTitle>{titlePrefix + seriesTitle}</SeriesTitle>
@@ -101,14 +105,14 @@ function LinksBlock({ seriesTitle, articles, miscStyles, }) {
             {({ data: { articleId, }, }) =>
               articles.map(
                 (article, i) =>
-                  articleId !== article.contentId && (
+                  (articleId !== article.contentId ? (
                     <ArticleWrapper
                       key={i} // eslint-disable-line react/no-array-index-key
                       lastItem={i === articles.length - 1}
                     >
                       <ArticleLink article={article} isBlock />
                     </ArticleWrapper>
-                  )
+                  ) : null)
               )
             }
           </Query>

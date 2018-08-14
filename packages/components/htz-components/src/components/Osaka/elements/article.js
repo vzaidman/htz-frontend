@@ -91,7 +91,7 @@ function Article({ title, image, sourceName, }) {
               overflow: 'hidden',
             })}
           >
-            {sourceName && (
+            {sourceName ? (
               <Kicker
                 fontSize={-2}
                 miscStyles={{
@@ -99,7 +99,7 @@ function Article({ title, image, sourceName, }) {
                 }}
                 text={sourceName}
               />
-            )}
+            ) : null}
             <FelaComponent
               style={theme => ({
                 fontWeight: 'bold',

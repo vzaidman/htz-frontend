@@ -108,12 +108,12 @@ const buildComponent = (context, index, isLastItem) => {
       return (
         <Figure key={index} lastItem={isLastItem}>
           <Component {...context} />
-          {(context.title || context.caption || context.credit) && (
+          {context.title || context.caption || context.credit ? (
             <Caption
               caption={context.title || context.caption}
               credit={context.credit}
             />
-          )}
+          ) : null}
         </Figure>
       );
     case 'com.htz.MagazineArticleQuote':

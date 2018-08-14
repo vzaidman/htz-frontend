@@ -41,29 +41,31 @@ const promotedStyle = ({ outbrain, theme, }) => ({
   marginStart: '1rem',
   marginTop: '1rem',
   position: 'relative',
-  ...(outbrain && {
-    paddingStart: '2rem',
-    ':after': {
-      background:
-        'url(//widgets.outbrain.com/images/widgetIcons/ob_logo_16x16.png) no-repeat center top',
-      backgroundSize: '100% 200%',
-      content: '""',
-      height: '1.75rem',
-      position: 'absolute',
-      right: '0',
-      bottom: '50%',
-      transform: 'translateY(50%)',
-      width: '1.75rem',
-    },
-    ':hover': {
-      color: theme.color('neutral'),
-      textDecoration: 'underline',
-      lineSkip: 'ink',
+  ...(outbrain
+    ? {
+      paddingStart: '2rem',
       ':after': {
-        backgroundPosition: 'center bottom',
+        background:
+            'url(//widgets.outbrain.com/images/widgetIcons/ob_logo_16x16.png) no-repeat center top',
+        backgroundSize: '100% 200%',
+        content: '""',
+        height: '1.75rem',
+        position: 'absolute',
+        right: '0',
+        bottom: '50%',
+        transform: 'translateY(50%)',
+        width: '1.75rem',
       },
-    },
-  }),
+      ':hover': {
+        color: theme.color('neutral'),
+        textDecoration: 'underline',
+        lineSkip: 'ink',
+        ':after': {
+          backgroundPosition: 'center bottom',
+        },
+      },
+    }
+    : {}),
 });
 const Promoted = createComponent(promotedStyle, 'p');
 
@@ -96,8 +98,10 @@ function List({ articles, promoted, outbrain, miscStyles, }) {
               )}
             />
           ))}
-          {promoted && <Promoted>{theme.osakaI18n.promotedContent}</Promoted>}
-          {outbrain && (
+          {promoted ? (
+            <Promoted>{theme.osakaI18n.promotedContent}</Promoted>
+          ) : null}
+          {outbrain ? (
             <a
               href="#"
               onMouseDown={event => {
@@ -120,7 +124,7 @@ function List({ articles, promoted, outbrain, miscStyles, }) {
             >
               <Promoted outbrain>Recommended by</Promoted>
             </a>
-          )}
+          ) : null}
         </div>
       )}
     />

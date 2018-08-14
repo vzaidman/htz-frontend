@@ -53,12 +53,9 @@ function ArticleLink({ article, currentArticle, focus, isBlock, }) {
   return currentArticle ? (
     <CurrentArticle>
       {article.title}
-      {isBlock &&
-        article.authors && (
-          <Author>
-            {article.authors[0].contentName || article.authors[0]}
-          </Author>
-        )}
+      {isBlock && article.authors ? (
+        <Author>{article.authors[0].contentName || article.authors[0]}</Author>
+      ) : null}
     </CurrentArticle>
   ) : (
     <HtzLink
@@ -66,12 +63,11 @@ function ArticleLink({ article, currentArticle, focus, isBlock, }) {
       content={
         <Article isBlock={isBlock}>
           {article.title}
-          {isBlock &&
-            article.authors && (
-              <Author>
-                {article.authors[0].contentName || article.authors[0]}
-              </Author>
-            )}
+          {isBlock && article.authors ? (
+            <Author>
+              {article.authors[0].contentName || article.authors[0]}
+            </Author>
+          ) : null}
         </Article>
       }
       focus={focus}

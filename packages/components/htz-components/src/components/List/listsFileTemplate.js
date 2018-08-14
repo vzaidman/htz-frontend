@@ -79,11 +79,11 @@ export default class List extends React.Component {
     .map(view => `<option value="${view}">${view}</option>`)
     .join('\n          ')}
         </MenuList>
-        {this.state.type && (
+        {this.state.type ? (
           <ListWrapper>
             <ExampleList data={{ list: mock(this.state.type), }} />
           </ListWrapper>
-        )}
+        ) : null}
       </div>
     );
   }

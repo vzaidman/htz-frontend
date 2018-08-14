@@ -18,20 +18,21 @@ const propTypes = {
 function Header({ content, articleId, }) {
   return (
     <Fragment>
-      {content &&
-        content.map(element => {
-          const Element =
-            element.inputTemplate === 'com.tm.GridElementGroup'
-              ? Osaka
-              : getComponent(element.inputTemplate);
-          return (
-            <Element
-              key={element.contentId}
-              {...element}
-              articleId={articleId}
-            />
-          );
-        })}
+      {content
+        ? content.map(element => {
+            const Element =
+              element.inputTemplate === 'com.tm.GridElementGroup'
+                ? Osaka
+                : getComponent(element.inputTemplate);
+            return (
+              <Element
+                key={element.contentId}
+                {...element}
+                articleId={articleId}
+              />
+            );
+          })
+        : null}
     </Fragment>
   );
 }

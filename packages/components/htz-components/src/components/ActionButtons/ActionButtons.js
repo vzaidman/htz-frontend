@@ -99,10 +99,12 @@ const wrapperStyle = ({ vertical, miscStyles, theme, }) => ({
   display: 'flex',
   flexDirection: vertical ? 'column' : 'row',
   justifyContent: 'space-between',
-  ...(vertical && {
-    flexDirection: 'column',
-    height: '100%',
-  }),
+  ...(vertical
+    ? {
+      flexDirection: 'column',
+      height: '100%',
+    }
+    : {}),
   extend: [
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -135,14 +137,14 @@ const ActionButtons = ({
           buttonStyles && typeof buttonStyles === 'function'
             ? buttonStyles
             : {
-                ...(globalButtonsStyles && globalButtonsStyles),
-                ...(buttonStyles && buttonStyles),
+                ...(globalButtonsStyles || {}),
+                ...(buttonStyles || {}),
               }
         }
         size={size}
         iconStyles={{
-          ...(globalIconsStyles && globalIconsStyles),
-          ...(iconStyles && iconStyles),
+          ...(globalIconsStyles || {}),
+          ...(iconStyles || {}),
         }}
         elementName={elementName}
         elementUrl={elementUrl}

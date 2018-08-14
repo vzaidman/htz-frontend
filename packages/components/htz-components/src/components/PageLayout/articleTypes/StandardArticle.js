@@ -416,7 +416,7 @@ function StandardArticle({
             }}
             render={({ className, }) => (
               <aside className={className}>
-                {aside && (
+                {aside ? (
                   <Zen animate>
                     <FelaComponent
                       style={{
@@ -430,7 +430,7 @@ function StandardArticle({
                       <SideBar content={aside} />
                     </FelaComponent>
                   </Zen>
-                )}
+                ) : null}
               </aside>
             )}
           />

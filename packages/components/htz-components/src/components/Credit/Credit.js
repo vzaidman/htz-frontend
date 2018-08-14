@@ -35,7 +35,7 @@ const LinkStyled = createComponent(
 function Credit({ contentName, url, className, }) {
   const name = contentName.trim();
   return name ? (
-    <address {...className && { className, }}>
+    <address {...(className ? { className, } : null)}>
       {url ? <LinkStyled href={url} content={name} /> : `${name}`}
     </address>
   ) : null;

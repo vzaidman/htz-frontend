@@ -80,11 +80,11 @@ export default class List extends React.Component {
           <option value="Leela">Leela</option>
           <option value="Zoidberg">Zoidberg</option>
         </MenuList>
-        {this.state.type && (
+        {this.state.type ? (
           <ListWrapper>
             <ExampleList data={{ list: mock(this.state.type), }} />
           </ListWrapper>
-        )}
+        ) : null}
       </div>
     );
   }

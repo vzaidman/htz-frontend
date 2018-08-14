@@ -24,11 +24,11 @@ const P = ({ children, renderFirstImpression, ...props }) => (
         <p className={className} {...props}>
           {children}
         </p>
-        {renderFirstImpression && (
+        {renderFirstImpression ? (
           <Zen>
             <FirstImpressionPlaceholder />
           </Zen>
-        )}
+        ) : null}
       </Fragment>
     )}
   />

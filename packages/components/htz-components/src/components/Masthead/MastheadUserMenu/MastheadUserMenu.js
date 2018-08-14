@@ -105,22 +105,21 @@ export default class MastheadUserMenu extends React.Component {
                       role="button"
                     />
                   ))}
-                  {isOpen &&
-                    !!this.props.userName && (
-                      <FelaTheme
-                        render={theme => (
-                          <ListWrapper
-                            listStyle={{
-                              ...dropdownListStyle(theme),
-                              end: '0',
-                            }}
-                            itemStyle={dropdownItemStyle(theme)}
-                          >
-                            {combinedItems}
-                          </ListWrapper>
-                        )}
-                      />
-                    )}
+                  {isOpen && !!this.props.userName ? (
+                    <FelaTheme
+                      render={theme => (
+                        <ListWrapper
+                          listStyle={{
+                            ...dropdownListStyle(theme),
+                            end: '0',
+                          }}
+                          itemStyle={dropdownItemStyle(theme)}
+                        >
+                          {combinedItems}
+                        </ListWrapper>
+                      )}
+                    />
+                  ) : null}
                 </Fragment>
               )}
             />

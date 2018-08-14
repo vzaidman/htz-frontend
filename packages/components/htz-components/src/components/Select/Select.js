@@ -306,7 +306,7 @@ export class Select extends Component {
                         : placeholder}
                     </StyledSelectedItem>
                     <FelaComponent style={{ position: 'relative', }}>
-                      {isOpen && (
+                      {isOpen ? (
                         <FelaComponent
                           rule={dropDownMenuStyle}
                           variant={variant}
@@ -331,7 +331,7 @@ export class Select extends Component {
                             </div>
                           )}
                         />
-                      )}
+                      ) : null}
                     </FelaComponent>
                   </StyledSelectWrapper>
                 </div>

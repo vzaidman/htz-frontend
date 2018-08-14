@@ -112,7 +112,7 @@ const hamburgerStyle = ({
   thickness,
   isTransition,
 }) => ({
-  ...(isOpen && { background: 'none', }),
+  ...(isOpen ? { background: 'none', } : {}),
   ...hamburgerDashStyle(
     theme,
     isOpen,
@@ -130,16 +130,20 @@ const hamburgerStyle = ({
   opacity: '1',
   ':before': {
     ...hamburgerDashStyle(theme, isOpen, color, size, thickness, isTransition),
-    ...(isOpen && { transform: `translateY(${size / 3.33}rem) rotate(45deg)`, }),
+    ...(isOpen
+      ? { transform: `translateY(${size / 3.33}rem) rotate(45deg)`, }
+      : {}),
     left: '0',
     top: `-${size / 3.33}rem`,
     content: '""',
   },
   ':after': {
     ...hamburgerDashStyle(theme, isOpen, color, size, thickness, isTransition),
-    ...(isOpen && {
-      transform: `translateY(-${size / 3.33}rem) rotate(-45deg)`,
-    }),
+    ...(isOpen
+      ? {
+        transform: `translateY(-${size / 3.33}rem) rotate(-45deg)`,
+      }
+      : {}),
     left: '0',
     top: `${size / 3.33}rem`,
     content: '""',

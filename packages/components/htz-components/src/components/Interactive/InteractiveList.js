@@ -65,11 +65,11 @@ export default class Interactive extends React.Component {
           <option value="BeforeAndAfter">Before & After</option>
           <option value="HtmlElement">HTML Element</option>
         </MenuList>
-        {this.state.component && (
+        {this.state.component ? (
           <ListWrapper>
             <Component {...mock[this.state.component]} />
           </ListWrapper>
-        )}
+        ) : null}
       </div>
     );
   }

@@ -128,7 +128,7 @@ export default function Item({
                         />
                       </Button>
                     ))}
-                    {isOpen && (
+                    {isOpen ? (
                       <ListWrapper
                         listStyle={{
                           ...dropdownListStyle(theme),
@@ -147,7 +147,7 @@ export default function Item({
                       >
                         {combinedItems}
                       </ListWrapper>
-                    )}
+                    ) : null}
                   </Fragment>
                 );
               }}

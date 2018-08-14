@@ -204,7 +204,9 @@ class FullScreenMedia extends React.Component {
         onMouseEnter={() => this.toggleHide(false)}
         onMouseLeave={() => this.toggleHide(true)}
       >
-        {!isFullScreen && <Icon isFullScreen={false} hide={this.state.hide} />}
+        {!isFullScreen ? (
+          <Icon isFullScreen={false} hide={this.state.hide} />
+        ) : null}
         <div />
         <MediaWrapper
           isFullScreen={isFullScreen}
@@ -212,7 +214,7 @@ class FullScreenMedia extends React.Component {
         >
           {render({ isFullScreen, })}
         </MediaWrapper>
-        {isFullScreen && (
+        {isFullScreen ? (
           <Fragment>
             <FelaComponent
               style={{
@@ -236,7 +238,7 @@ class FullScreenMedia extends React.Component {
               captionElement={captionElement}
             />
           </Fragment>
-        )}
+        ) : null}
       </FullScreenContainer>
     );
   }

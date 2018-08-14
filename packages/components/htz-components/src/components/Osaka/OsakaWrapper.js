@@ -63,7 +63,7 @@ class OsakaWrapper extends React.Component {
                     miscStyles={{
                       backgroundColor: 'transparent',
                       transform: `translate(50%, ${
-                        shouldDisplay ? '0%' : 'calc(-2px - 100%)'
+                        shouldDisplay ? '0%' : '-105%)'
                       })`,
                       transitionProperty: 'transform',
                       ...theme.getDelay('transition', -1),

@@ -55,11 +55,13 @@ class ToggleFade extends React.Component {
       <FelaComponent
         rule={({ theme, }) => ({
           opacity: show ? '1' : '0',
-          ...(animating && {
-            transitionProperty: 'opacity',
-            ...theme.getDuration('transition', duration),
-            ...theme.getTimingFunction('transition', 'linear'),
-          }),
+          ...(animating
+            ? {
+                transitionProperty: 'opacity',
+                ...theme.getDuration('transition', duration),
+                ...theme.getTimingFunction('transition', 'linear'),
+              }
+            : {}),
         })}
         render={({ className, }) => (
           <div
