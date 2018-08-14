@@ -35,7 +35,7 @@ function SEO({ host, }) {
       />
       <link
         rel="preload"
-        href="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,es5,es6,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.includes,Object.entries,Function.name,Array.prototype.@@iterator&flags=gated"
+        href="https://cdn.polyfill.io/v2/polyfill.js?features=default,Object.entries,Array.prototype.entries,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.includes,Function.name,Array.prototype.@@iterator&flags=gated"
         as="script"
       />
 
