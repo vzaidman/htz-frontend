@@ -122,6 +122,8 @@ const buildComponent = (context, index, isLastItem) => {
         <Component
           key={index}
           {...context}
+          // temp number until we get it from papi
+          renderFrequency={10}
           miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }}
         />
       );

@@ -1,4 +1,4 @@
-/* global sessionStorage */
+/* global sessionStorage localStorage */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
@@ -69,6 +69,7 @@ export class ArticlePage extends React.Component {
   componentDidMount() {
     const articleId = this.props.url.query.path.match(/(?:.*-?)(1\.\d+.*)/)[1];
     this.writeToSession(articleId);
+    this.writeToLocal(articleId);
 
     // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({
@@ -82,6 +83,7 @@ export class ArticlePage extends React.Component {
 
   componentDidUpdate() {
     this.writeToSession(this.state.articleId);
+    this.writeToLocal(this.state.articleId);
   }
 
   writeToSession = articleId => {
@@ -92,6 +94,14 @@ export class ArticlePage extends React.Component {
         'readingHistory',
         JSON.stringify(history, null, 2)
       );
+    }
+  };
+
+  writeToLocal = articleId => {
+    const history = JSON.parse(localStorage.getItem('readingHistory')) || [];
+    if (!history.includes(articleId)) {
+      history.push(articleId);
+      localStorage.setItem('readingHistory', JSON.stringify(history, null, 2));
     }
   };
 

@@ -1,3 +1,4 @@
+/* global localStorage */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Mutation, } from '../ApolloBoundary/ApolloBoundary';
@@ -24,6 +25,8 @@ Newsletter.propTypes = {
   icon: PropTypes.oneOf([ 'tm', 'htz', ]),
   /** Trigger user's function when modal is open */
   onSubmit: PropTypes.func,
+  /** Render The newsletter component every x articles, this prop will indicate the x */
+  renderFrequency: PropTypes.number,
   /** Indicates article category id */
   segmentId: PropTypes.number.isRequired,
   /**
@@ -51,11 +54,18 @@ Newsletter.defaultProps = {
   icon: null,
   onSubmit: () => {},
   miscStyles: null,
+  renderFrequency: null,
   variant: 'highlight',
 };
 
-function Newsletter(props) {
-  return (
+function Newsletter({ renderFrequency, ...props }) {
+  let history;
+  let shouldRender = true;
+  if (typeof localStorage !== 'undefined' && renderFrequency) {
+    history = JSON.parse(localStorage.getItem('readingHistory'));
+    shouldRender = history.length % renderFrequency === 0;
+  }
+  return shouldRender ? (
     <Mutation mutation={submitNewsletter}>
       {(signUpNewsletter, { data, loading, }) => (
         <UserDispenser
@@ -70,6 +80,6 @@ function Newsletter(props) {
         />
       )}
     </Mutation>
-  );
+  ) : null;
 }
 export default Newsletter;
