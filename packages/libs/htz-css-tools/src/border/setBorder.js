@@ -1,6 +1,6 @@
 /* @flow */
 
-import type { BorderSide, BorderStyle, BorderRuleset, } from './types';
+import type { BorderSide, BorderStyle, BorderRuleset } from './types';
 
 /**
  * Generate a css-in-js object with border related styles, in a manner that
@@ -73,7 +73,7 @@ export default function setBorder(
 ): BorderRuleset {
   const widthValue = typeof width === 'number' ? `${width}px` : width;
   const sides = getSides(side);
-  const { horizontalSides, verticalSides, } = sides;
+  const { horizontalSides, verticalSides } = sides;
   const horizontalRuleSet = horizontalSides
     ? setBorderStyleRules(horizontalSides, widthValue, style, color)
     : undefined;
@@ -92,7 +92,7 @@ export default function setBorder(
     const pseudoElRules = {
       ...(typeof color === 'undefined'
         ? undefined
-        : { backgroundColor: color, }),
+        : { backgroundColor: color }),
       content: '""',
       height: widthValue,
       position: 'absolute',
@@ -102,6 +102,7 @@ export default function setBorder(
     if (verticalSides.includes('top')) {
       ruleSet[':before'] = {
         ...pseudoElRules,
+        start: '0',
         top: '0',
       };
     }
@@ -109,6 +110,7 @@ export default function setBorder(
       ruleSet[':after'] = {
         ...pseudoElRules,
         bottom: '0',
+        start: '0',
       };
     }
 
@@ -119,13 +121,13 @@ export default function setBorder(
     ...horizontalRuleSet,
     ...(verticalSides
       ? setBorderStyleRules(
-        verticalSides,
-        widthValue,
-        style,
-        color,
-        lines,
-        true
-      )
+          verticalSides,
+          widthValue,
+          style,
+          color,
+          lines,
+          true
+        )
       : undefined),
   };
 }
@@ -146,19 +148,19 @@ function setBorderStyleRules(
   return sides.reduce(
     (styles, sideString) => ({
       ...styles,
-      ...{ [`border${char0ToUpper(sideString)}Width`]: width, },
+      ...{ [`border${char0ToUpper(sideString)}Width`]: width },
       ...(style
-        ? { [`border${char0ToUpper(sideString)}Style`]: style, }
+        ? { [`border${char0ToUpper(sideString)}Style`]: style }
         : undefined),
       ...(color
-        ? { [`border${char0ToUpper(sideString)}Color`]: color, }
+        ? { [`border${char0ToUpper(sideString)}Color`]: color }
         : undefined),
       ...(withPadding && lines
         ? {
-          [`padding${char0ToUpper(
-            sideString
-          )}`]: `calc(${lines}rem - ${width})`,
-        }
+            [`padding${char0ToUpper(
+              sideString
+            )}`]: `calc(${lines}rem - ${width})`,
+          }
         : undefined),
     }),
     {}
@@ -170,29 +172,29 @@ function getSides(
 ): { verticalSides?: string[], horizontalSides?: string[] } {
   if (side === 'all') {
     return {
-      verticalSides: [ 'top', 'bottom', ],
-      horizontalSides: [ 'InlineEnd', 'InlineStart', ],
+      verticalSides: ['top', 'bottom'],
+      horizontalSides: ['InlineEnd', 'InlineStart'],
     };
   }
   if (side === 'horizontal') {
     return {
       verticalSides: undefined,
-      horizontalSides: [ 'inlineEnd', 'inlineStart', ],
+      horizontalSides: ['inlineEnd', 'inlineStart'],
     };
   }
   if (side === 'vertical') {
-    return { verticalSides: [ 'top', 'bottom', ], horizontalSides: undefined, };
+    return { verticalSides: ['top', 'bottom'], horizontalSides: undefined };
   }
-  if ([ 'start', 'end', ].includes(side)) {
+  if (['start', 'end'].includes(side)) {
     return {
       verticalSides: undefined,
-      horizontalSides: [ `Inline${char0ToUpper(side)}`, ],
+      horizontalSides: [`Inline${char0ToUpper(side)}`],
     };
   }
-  if ([ 'top', 'bottom', ].includes(side)) {
-    return { verticalSides: [ side, ], horizontalSides: undefined, };
+  if (['top', 'bottom'].includes(side)) {
+    return { verticalSides: [side], horizontalSides: undefined };
   }
-  return { verticalSides: undefined, horizontalSides: [ side, ], };
+  return { verticalSides: undefined, horizontalSides: [side] };
 }
 
 function char0ToUpper(side: string): string {
