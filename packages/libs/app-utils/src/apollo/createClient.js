@@ -143,6 +143,9 @@ function create(initialState, req) {
       articleId: null,
       commentsElementId: null,
       startFromStage2: true,
+      //  makes sure that if we have another outbrain element on the page it calls outbrains
+      // reload function script before calling the outbrain json api
+      osakaCanRender: false,
       referer: referer || null,
       loggedInOrRegistered: null,
       readingListArray: [],

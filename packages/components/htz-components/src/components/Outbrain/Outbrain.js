@@ -1,7 +1,8 @@
 /* global OBR */
 import React from 'react';
 import gql from 'graphql-tag';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import PropTypes from 'prop-types';
+import { ApolloConsumer, Query, } from '../ApolloBoundary/ApolloBoundary';
 import { appendScript, } from '../../utils/scriptTools';
 
 const GET_CANONICAL_URL = gql`
@@ -11,22 +12,32 @@ const GET_CANONICAL_URL = gql`
 `;
 
 class Outbrain extends React.Component {
+  static propTypes = {
+    client: PropTypes.shape({
+      writeData: PropTypes.func,
+    }).isRequired,
+  };
+
   componentDidMount() {
     appendScript({
       src: 'https://widgets.outbrain.com/outbrain.js',
       id: 'outbrain',
       isAsync: false,
       updateFunction: () => {
-        console.log(' updatin outbrain');
         if (OBR) {
           OBR.extern.reloadWidget();
         }
       },
     });
+    this.props.client.writeData({ data: { osakaCanRender: true, }, });
   }
 
   shouldComponentUpdate() {
     return false;
+  }
+
+  componentWillUnmount() {
+    this.props.client.writeData({ data: { osakaCanRender: false, }, });
   }
 
   render() {
@@ -45,4 +56,10 @@ class Outbrain extends React.Component {
   }
 }
 
-export default Outbrain;
+const OutbrainWithClient = props => (
+  <ApolloConsumer>
+    {client => <Outbrain client={client} {...props} />}
+  </ApolloConsumer>
+);
+
+export default OutbrainWithClient;

@@ -31,7 +31,7 @@ class OsakaWithOutbrain extends React.Component {
   }
 
   getArticles = () => {
-    console.log('getting articles osaka controller');
+    console.log('getting articles osaka controller outbrain');
     // eslint-disable-next-line react/prop-types
     const { promotedElement, hostname, canonicalUrl, } = this.props;
     const url = canonicalUrl ? this.changeSubDomain(canonicalUrl) : '';
@@ -46,7 +46,6 @@ class OsakaWithOutbrain extends React.Component {
         },
         json => {
           const articles = json.doc;
-          console.log('setting state osaka coroller json: ', json);
           this.setState({
             articles: {
               local: [
@@ -108,6 +107,7 @@ const OsakaWithApollo = ({ articleId, ...props }) => (
       if (loading) return null;
       if (error) return null;
       const {
+        osakaCanRender,
         page: {
           seoData: { canonicalUrl, },
         },
@@ -115,11 +115,14 @@ const OsakaWithApollo = ({ articleId, ...props }) => (
         articleSection,
       } = data;
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-      return (
+
+      //  makes sure that if we have another outbrain element on the page it calls outbrains
+      // reload function script before calling the outbrain json api
+      return osakaCanRender ? (
         <OsakaWithOutbrain
           {...{ ...props, articleSection, host, canonicalUrl, }}
         />
-      );
+      ) : null;
     }}
   </Query>
 );
