@@ -139,7 +139,7 @@ const StyledCommentText = ({ fade, children, ...props }) => (
       ...(fade
         ? {
             overflow: 'hidden',
-            maxHeight: '40rem',
+            maxHeight: '80rem',
           }
         : {}),
     })}
@@ -315,7 +315,7 @@ class Comment extends React.Component {
   componentDidMount() {
     const height = this.commentTextEl.clientHeight;
     const remHeight = getRemFromPx(this.props.bps, this.props.typeConf, height);
-    if (remHeight > 40) {
+    if (remHeight > 80) {
       // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({ fadeText: true, });
     }

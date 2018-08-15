@@ -178,7 +178,11 @@ class CommentForm extends React.Component {
       buttons: { sendBtnTxt, cancelBtnTxt, toggleUserBtnText, },
       labels: { nameLabelTxt, commentLabelTxt, },
       notes: { nameNoteTxt, commentNoteTxt, },
-      errorNotes: { nameErrorNoteTxt, commentErrorNoteTxt, },
+      errorNotes: {
+        nameErrorNoteTxt,
+        commentErrorNoteTxt,
+        commentErrorToLongNoteTxt,
+      },
     } = theme.commentFormI18n;
 
     return (
@@ -220,9 +224,16 @@ class CommentForm extends React.Component {
                 }
                 if (
                   !commentTextHtml ||
-                  getPrintableCharsCount(commentTextHtml).length === 0
+                  getPrintableCharsCount(commentTextHtml) === 0
                 ) {
                   errors.push({ name: 'commentTextHtml', order: 2, });
+                }
+                if (getPrintableCharsCount(commentTextHtml) > 600) {
+                  errors.push({
+                    name: 'commentTextHtml',
+                    errorText: commentErrorToLongNoteTxt,
+                    order: 2,
+                  });
                 }
 
                 return errors;

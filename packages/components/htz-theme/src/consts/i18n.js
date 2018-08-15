@@ -99,6 +99,7 @@ export const commentFormI18n = Object.freeze({
   errorNotes: Object.freeze({
     nameErrorNoteTxt: 'חובה להזין שם',
     commentErrorNoteTxt: 'נא להזין את תוכן התגובה',
+    commentErrorToLongNoteTxt: 'אין להזין יותר מ-600 תווים בתוכן התגובה',
   }),
 });
 export const commentSentI18n = Object.freeze({
