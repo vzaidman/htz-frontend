@@ -1,5 +1,5 @@
 import React, { Fragment, } from 'react';
-import { createComponent, FelaComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { rgba, } from 'polished';
 
@@ -27,8 +27,6 @@ const toolBarWrapper = ({ theme, isOpen, }) => {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     paddingBottom: '4rem',
-    paddingLeft: '2rem',
-    paddingRight: '2rem',
     position: 'relative',
     width: '8rem',
     extend: [
@@ -75,25 +73,23 @@ const captionIconStyle = ({ theme, isOpen, }) => ({
     width: '2.5rem',
   },
 });
-const CaptionIcon = createComponent(captionIconStyle, 'i');
 
-const captionIconWrapperStyle = () => ({
-  position: 'relative',
-});
-const CaptionIconWrapper = createComponent(
-  captionIconWrapperStyle,
-  Button,
-  props => Object.keys(props)
+// eslint-disable-next-line react/prop-types
+const CaptionIcon = ({ isOpen, }) => (
+  <FelaComponent isOpen={isOpen} rule={captionIconStyle} render="i" />
 );
 
-const separatorStyle = ({ theme, }) => ({
-  backgroundColor: theme.color('neutral', '-3'),
-  height: '1px',
-  marginBottom: '2rem',
-  marginTop: '2rem',
-  width: '100%',
-});
-const Separator = createComponent(separatorStyle);
+const Separator = () => (
+  <FelaComponent
+    style={theme => ({
+      backgroundColor: theme.color('neutral', '-3'),
+      height: '1px',
+      marginBottom: '2rem',
+      marginTop: '2rem',
+      width: '70%',
+    })}
+  />
+);
 
 class ToolBar extends React.Component {
   state = {
@@ -165,10 +161,11 @@ class ToolBar extends React.Component {
                   <FelaComponent style={{ marginTop: '2rem', width: '100%', }}>
                     {closeButton}
                   </FelaComponent>
-                  <CaptionIconWrapper
+                  <Button
                     isFlat
                     boxModel={{ hp: 1, vp: 0.5, }}
                     miscStyles={{
+                      position: 'relative',
                       backgroundColor: 'transparent',
                       width: '100%',
                       ':hover': {
@@ -182,7 +179,7 @@ class ToolBar extends React.Component {
                     }
                   >
                     <CaptionIcon isOpen={this.state.isOpen} />
-                  </CaptionIconWrapper>
+                  </Button>
                 </FelaComponent>
                 <Media query={{ until: 's', misc: 'portrait', }}>
                   {mobilePortrait => (
@@ -212,15 +209,10 @@ class ToolBar extends React.Component {
                             <ActionButtons
                               elementName={itemName}
                               elementUrl={itemUrl}
-                              buttons={[
-                                'facebooklogo',
-                                'whatsapp',
-                                'mailalert',
-                              ]}
-                              size={isMobile ? 4 : 3}
+                              buttons={[ 'facebooklogo', 'whatsapp', 'mail', ]}
+                              size={isMobile ? 5 : 4}
                               isFlat
                               vertical={!isMobile}
-                              boxModel={{ hp: 1, vp: 1, }}
                               globalButtonsStyles={{
                                 backgroundColor: 'transparent',
                                 width: '100%',
@@ -249,7 +241,7 @@ class ToolBar extends React.Component {
         />
         <FelaComponent
           render={({ theme, }) => (
-            <CaptionIconWrapper
+            <Button
               isFlat
               boxModel={{ hp: 1, vp: 0.5, }}
               miscStyles={{
@@ -279,7 +271,7 @@ class ToolBar extends React.Component {
                 color={[ 'neutral', '-10', ]}
                 size={2}
               />
-            </CaptionIconWrapper>
+            </Button>
           )}
         />
       </Fragment>

@@ -1,12 +1,11 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import getAction from './actionList';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
-import ButtonGroup from '../Button/ButtonGroup'; // eslint-disable-line import/no-named-as-default
 
 const buttonPropType = PropTypes.oneOfType([
   PropTypes.shape({
@@ -154,9 +153,14 @@ const ActionButtons = ({
 
   const getBatch = (buttonsObj, end) =>
     (buttonsObj instanceof Array ? (
-      <ButtonGroup isColumn={vertical}>
+      <FelaComponent
+        style={{
+          display: 'flex',
+          flexDirection: vertical ? 'column' : 'row',
+        }}
+      >
         {buttonsObj.map((button, index) => getButton(button, index))}
-      </ButtonGroup>
+      </FelaComponent>
     ) : (
       getButton(buttonsObj)
     ));
