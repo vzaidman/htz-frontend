@@ -17,6 +17,7 @@ import Interactive from '../components/Interactive/Interactive';
 import LinksBlock from '../components/RelatedArticles/LinksBlock';
 import List from '../components/List/List';
 import Masthead from '../components/Masthead/Masthead';
+import MobileListWrapper from '../components/MobileListWrapper/MobileListWrapper';
 import MobileQuickRegistration from '../components/MobileQuickRegistration/MobileQuickRegistration';
 import Newsletter from '../components/Newsletter/Newsletter';
 import Outbrain from '../components/Outbrain/Outbrain';
@@ -73,6 +74,7 @@ const inputTemplateToComponent = new Map([
     },
   ],
   [ 'com.tm.element.List', List, ],
+  [ 'com.polobase.whtzMobileSiteListsWrapper', MobileListWrapper, ],
   [ 'com.tm.element.group', ChangeableElementGroup, ],
   [ 'com.tm.ElementGroup', ElementGroup, ],
   [ 'com.polobase.DfpBannerElement', MarkedAdSlot, ],
