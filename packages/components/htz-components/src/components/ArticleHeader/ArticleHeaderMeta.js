@@ -88,6 +88,17 @@ class ArticleHeaderMeta extends React.Component {
     this.alertsToggleBtnRef = React.createRef();
   }
 
+  setModifiedDate = (modifiedDate, className) => {
+    if (!modifiedDate) {
+      return null;
+    }
+    const format =
+      new Date(modifiedDate).toDateString() === new Date().toDateString()
+        ? 'HH:mm'
+        : 'HH:mm | DD.MM.YYYY';
+    return <Time time={modifiedDate} format={format} className={className} />;
+  };
+
   toggleAuthorAlertsForm() {
     this.setState(
       prevState => ({
@@ -100,7 +111,13 @@ class ArticleHeaderMeta extends React.Component {
   }
 
   render() {
-    const { authors, publishDate, reportingFrom, miscStyles, } = this.props;
+    const {
+      authors,
+      publishDate,
+      reportingFrom,
+      miscStyles,
+      modifiedDate,
+    } = this.props;
     return (
       <FelaComponent rule={outerStyle} miscStyles={miscStyles}>
         <FelaComponent
@@ -212,11 +229,14 @@ class ArticleHeaderMeta extends React.Component {
                       rule={timeStyle}
                       mobileTime
                       render={({ className, }) => (
-                        <Time
-                          time={publishDate}
-                          format="DD.MM.YYYY HH:mm"
-                          className={className}
-                        />
+                        <Fragment>
+                          <Time
+                            time={publishDate}
+                            format="HH:mm | DD.MM.YYYY"
+                            className={className}
+                          />
+                          {this.setModifiedDate(modifiedDate, className)}
+                        </Fragment>
                       )}
                     />
                   </FelaComponent>
@@ -235,11 +255,14 @@ class ArticleHeaderMeta extends React.Component {
                   rule={timeStyle}
                   mobileTime={false}
                   render={({ className, }) => (
-                    <Time
-                      time={publishDate}
-                      format="HH:mm DD.MM.YYYY"
-                      className={className}
-                    />
+                    <Fragment>
+                      <Time
+                        time={publishDate}
+                        format="HH:mm | DD.MM.YYYY"
+                        className={className}
+                      />
+                      {this.setModifiedDate(modifiedDate, className)}
+                    </Fragment>
                   )}
                 />
               </div>
@@ -275,6 +298,11 @@ ArticleHeaderMeta.propTypes = {
    * The publishing date of the article
    */
   publishDate: PropTypes.instanceOf(Date).isRequired,
+  /**
+   * The modified date of the article
+   */
+  modifiedDate: PropTypes.instanceOf(Date),
+
   reportingFrom: PropTypes.string,
   /**
    * A special property holding miscellaneous CSS values that
@@ -286,6 +314,7 @@ ArticleHeaderMeta.propTypes = {
 
 ArticleHeaderMeta.defaultProps = {
   reportingFrom: null,
+  modifiedDate: null,
   miscStyles: null,
 };
 
