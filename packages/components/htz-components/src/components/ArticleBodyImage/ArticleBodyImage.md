@@ -3,17 +3,17 @@
 
 **Table of Contents**
 
-- [ArticleImage examples](#articleimage-examples)
+- [ArticleBodyImage examples](#articleimage-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### ArticleImage examples
+### ArticleBodyImage examples
 
 Infographic image with 1/3 viewMode
 
 ```jsx
 <div style={{ maxWidth: '700px', direction: 'rtl' }}>
-  <ArticleImage
+  <ArticleBodyImage
     alt="alternative text"
     viewMode="OneThirdView"
     accessibility="fgh"
@@ -48,7 +48,7 @@ Gif image with full viewMode
 
 ```jsx
 <div style={{ maxWidth: '700px', direction: 'rtl' }}>
-  <ArticleImage
+  <ArticleBodyImage
     alt="alternative text"
     viewMode="FullColumnWithVerticalImage"
     accessibility="cat"
@@ -97,7 +97,7 @@ Vertical image with regular viewMode
 
 ```jsx
 <div style={{ maxWidth: '700px', direction: 'rtl' }}>
-  <ArticleImage
+  <ArticleBodyImage
     viewMode="regularModeBigImage"
     accessibility="אימפריית הפשע"
     title="אימפריית הפשע"

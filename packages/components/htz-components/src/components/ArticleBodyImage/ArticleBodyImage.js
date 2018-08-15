@@ -290,7 +290,7 @@ UnwrappedImage.defaultProps = articleImageDefaultProps;
  * image's Meta (which is unique per article), and adds a [`full-screen`](./#fullscreenmedia) option as
  * a default.
  */
-class ArticleImage extends React.Component {
+class ArticleBodyImage extends React.Component {
   componentDidMount() {
     const { title, addImageToSchema, } = this.props;
     addImageToSchema({
@@ -362,13 +362,13 @@ class ArticleImage extends React.Component {
   }
 }
 
-ArticleImage.propTypes = articleImagePropTypes;
-ArticleImage.defaultProps = articleImageDefaultProps;
+ArticleBodyImage.propTypes = articleImagePropTypes;
+ArticleBodyImage.defaultProps = articleImageDefaultProps;
 
 export default props => (
   <Mutation mutation={ADD_IMAGE}>
     {addImageToSchema => (
-      <ArticleImage {...props} addImageToSchema={addImageToSchema} />
+      <ArticleBodyImage {...props} addImageToSchema={addImageToSchema} />
     )}
   </Mutation>
 );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
-import ArticleImage from '../ArticleImage/ArticleImage';
+import ArticleImage from '../ArticleBodyImage/ArticleBodyImage';
 import Caption from '../Caption/Caption';
 import NoSSR from '../NoSSR/NoSSR';
 
