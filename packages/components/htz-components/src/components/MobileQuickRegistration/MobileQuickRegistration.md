@@ -1,5 +1,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [An example for MobileQuickRegistration](#an-example-for-mobilequickregistration)
@@ -10,7 +11,7 @@
 
 ```jsx
 <MobileQuickRegistration
-  teaserBody="הירשמו עכשיו להמלצות הקריאה של הארץ"
+  teaserBody="מה קוראים היום?"
   doubleOptIn="doptint"
   mailto="subscribe-1338625@newsletters.haaretz.co.il"
   mailSubject="הרשמה להמלצות הקריאה של הארץ"

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, } from 'react-fela';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, borderVertical, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import Button from '../Button/Button';
-import IconMailAlert from '../Icon/icons/IconMailAlert';
+import IconAlefLogo from '../Icon/icons/IconAlefLogo';
 import Media from '../Media/Media';
 
 const propTypes = {
@@ -50,9 +50,9 @@ const RegistrationWrapper = ({ miscStyles, children, }) => (
     style={theme => ({
       position: 'relative',
       textAlign: 'center',
-      ...borderVertical('2px', 3, 'solid', theme.color('primary')),
-      marginTop: '1rem',
+      marginTop: '2rem',
       extend: [
+        borderVertical('1px', 4, 'solid', theme.color('primary')),
         ...(miscStyles
           ? parseStyleProps(miscStyles, theme.mq, theme.type)
           : []),
@@ -68,10 +68,10 @@ const RegistrationWrapper = ({ miscStyles, children, }) => (
 const TeaserBody = ({ children, }) => (
   <FelaComponent
     style={theme => ({
-      ...theme.type(-2),
       fontWeight: '700',
       color: theme.color('neutral', '-3'),
       marginBottom: '2rem',
+      extend: [ theme.type(5), ],
     })}
   >
     {children}
@@ -82,8 +82,8 @@ const TeaserBody = ({ children, }) => (
 const ButtonText = ({ children, }) => (
   <FelaComponent
     style={theme => ({
-      ...theme.type(-1),
       fontWeight: '700',
+      extend: [ theme.type(-1), ],
     })}
     render="span"
   >
@@ -113,33 +113,64 @@ const IconWrapper = ({ children, }) => (
  * This quick registration is for **mobile only**.<br/>All of it's props are required
  * and changes to them ought to be done in polopoly (template ID: com.polobase.quickNewsletterRegistration)
  */
-function MobileQuickRegistration({
-  teaserBody,
-  doubleOptIn,
-  mailto,
-  mailSubject,
-  mailBody,
-  teaserButton,
-  miscStyles,
-}) {
-  const href = `mailto:${doubleOptIn}-${mailto}?subject=${mailSubject}&body=${mailBody}`;
+class MobileQuickRegistration extends Component {
+  state = {
+    signedUp: false,
+  };
+  render() {
+    const {
+      teaserBody,
+      doubleOptIn,
+      mailto,
+      mailSubject,
+      mailBody,
+      teaserButton,
+      miscStyles,
+    } = this.props;
+    const href = `mailto:${doubleOptIn}-${mailto}?subject=${mailSubject}&body=${mailBody}`;
 
-  return (
-    <Media
-      query={{ until: 's', }}
-      render={() => (
-        <RegistrationWrapper miscStyles={miscStyles}>
-          <IconWrapper>
-            <IconMailAlert size={5} color="primary" />
-          </IconWrapper>
-          <TeaserBody>{teaserBody}</TeaserBody>
-          <Button href={href} boxModel={{ hp: 4, vp: 1, }}>
-            <ButtonText>{teaserButton}</ButtonText>
-          </Button>
-        </RegistrationWrapper>
-      )}
-    />
-  );
+    return (
+      <FelaTheme
+        render={theme => (
+          <Media
+            query={{ until: 's', }}
+            render={() => (
+              <RegistrationWrapper miscStyles={miscStyles}>
+                <IconWrapper>
+                  <IconAlefLogo size={4} color="primary" />
+                </IconWrapper>
+                {this.state.signedUp ? (
+                  <FelaComponent
+                    style={{
+                      fontWeight: '700',
+                      color: theme.color('neutral', '-3'),
+                      marginTop: '5rem',
+                      marginBottom: '6rem',
+                      extend: [ theme.type(3), ],
+                    }}
+                  >
+                    {theme.mobileQuickRegistrationI18n.signedUpText}
+                  </FelaComponent>
+                ) : (
+                  <Fragment>
+                    <TeaserBody>{teaserBody}</TeaserBody>
+                    <Button
+                      variant="primaryOpaque"
+                      href={href}
+                      boxModel={{ hp: 4, vp: 1, }}
+                      onClick={() => this.setState({ signedUp: true, })}
+                    >
+                      <ButtonText>{teaserButton}</ButtonText>
+                    </Button>
+                  </Fragment>
+                )}
+              </RegistrationWrapper>
+            )}
+          />
+        )}
+      />
+    );
+  }
 }
 
 MobileQuickRegistration.propTypes = propTypes;

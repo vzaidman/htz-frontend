@@ -41,6 +41,10 @@ export const mobileNavigationMenuI18n = Object.freeze({
   subClose: 'סגור',
 });
 
+export const mobileQuickRegistrationI18n = Object.freeze({
+  signedUpText: 'תודה שנרשמת',
+});
+
 export const headerSearchI18n = Object.freeze({
   buttonText: 'חיפוש',
   placeHolder: 'הקלידו לחיפוש באתר',
