@@ -7,6 +7,11 @@ module.exports = {
       return `http${this.useSSL ? 's' : ''}://${this.remoteFQDN}`;
     }),
     sso: 'https://sso.haaretz.co.il',
+    newSso: {
+      HTZ_HEB: 'https://ms-apps.haaretz.co.il/sso-dev',
+      HTZ_COM: 'https://ms-apps.haaretz.com/sso-dev',
+      TM: 'https://ms-apps.themarker.com/sso-dev',
+    },
     image: 'https://images.haarets.co.il/image',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
     graphql: defer(function () {

@@ -1,6 +1,6 @@
 /* global fetch Headers */
 import UserFactory from '../user-factory-cookie-based';
-import { plantCookie, } from '../util/cookie-utils';
+import { plantCookie } from '../util/cookie-utils';
 import createSiteConfig from '../site-config';
 
 /**
@@ -21,7 +21,7 @@ function withTimeout(
       reject(new Error(msgOnTimeout));
     }, timeout)
   );
-  return Promise.race([ promise, timer, ]);
+  return Promise.race([promise, timer]);
 }
 
 const defaultTimeout = 8000;
@@ -78,6 +78,34 @@ export default function UserService(config = {}) {
     return withTimeout(checkEmailPromise, defaultTimeout);
   }
 
+  function checkPhoneValid(email) {
+    const siteConfig = createSiteConfig();
+    const serviceUrl = `${siteConfig.newSso}/TODO`; // TODO check phone valid by email
+    const params = `email=${email}`;
+
+    const checkPhoneValidPromise = new Promise((resolve, reject) =>
+      fetch(serviceUrl, {
+        method: 'POST',
+        body: params,
+        headers: new Headers({
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }),
+      }).then(data =>
+        data
+          .json()
+          .then(json => {
+            if (json.success === 1) return resolve(json.valid);
+            return reject(new Error('בדיקה נכשלה, נא לנסות שנית'));
+          }).catch(() => resolve(true)) // TODO(write an actual service to answer the request)
+          // .catch(err => {
+          //   console.log('error from check email', err);
+          //   return reject(new Error('בדיקה נכשלה, נא לנסות שנית'));
+          // })
+      )
+    );
+    return withTimeout(checkPhoneValidPromise, defaultTimeout);
+  }
+
   /**
    * Sign in a user, using it's credentials. Will activate side effects
    * (in this case: planting cookies)
@@ -87,13 +115,12 @@ export default function UserService(config = {}) {
    * user: the current user object (prior to login)
    * @return {*}
    */
-  function login({ username, password, user, }) {
+  function login({ username, password, user }) {
     let anonymousId;
     if (!user) {
       const factory = new UserFactory();
       anonymousId = factory.build().anonymousId;
-    }
-    else {
+    } else {
       anonymousId = user.anonymousId;
     }
     const siteConfig = createSiteConfig();
@@ -285,15 +312,13 @@ export default function UserService(config = {}) {
         const imagesArray = Object.entries(serviceData.data).map(k => k[1]);
         const promiseFromCallback = plantImagesCallback(imagesArray);
         cookiesPromises.push(promiseFromCallback);
-      }
-      else {
+      } else {
         for (const k of keys) {
           cookiesPromises.push(plantCookie(serviceData.data[k]));
         }
       }
       promise = Promise.race(cookiesPromises);
-    }
-    else {
+    } else {
       promise = Promise.reject(
         new Error(serviceData.message || 'שגיאה במערכת המנויים')
       );
@@ -307,6 +332,7 @@ export default function UserService(config = {}) {
    */
   return {
     checkEmailExists,
+    checkPhoneValid,
     login,
     logout,
     register,

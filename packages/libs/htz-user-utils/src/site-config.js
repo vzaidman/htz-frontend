@@ -1,6 +1,6 @@
 /* global window */
 import config from 'config';
-import { getSubdomain, } from './util/domain-utils';
+import { getSubdomain } from './util/domain-utils';
 
 /**
  * Returns a site configuration, which is a plain object with the following keys:
@@ -28,20 +28,24 @@ export default function createSiteConfig(hostname = window.location.hostname) {
     ? defaultHostname
     : getSubdomain(hostname);
   const ssoDomain = config.get('service.sso');
+  const newSso = config.get('service.newSso');
   configurations.set('haaretz.co.il', {
     ssoDomain,
+    newSsoDomain: newSso.HTZ_HEB,
     ssoKey: 'tmsso',
     siteId: '80',
   });
 
   configurations.set('themarker.com', {
     ssoDomain,
+    newSsoDomain: newSso.TM,
     ssoKey: 'tmsso',
     siteId: '10',
   });
 
   configurations.set('haaretz.com', {
     ssoDomain,
+    newSsoDomain: newSso.HTZ_COM,
     ssoKey: 'engsso',
     siteId: '85',
   });
