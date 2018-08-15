@@ -67,24 +67,10 @@ export default function Item({
     <FelaTheme
       render={theme => (
         <Fragment>
-          <Button
-            boxModel={{ vp: 1, hp: 2, }}
-            isFull
-            fontSize={-2}
-            variant={variant}
-            onClick={onClick}
-            href={url}
-            miscStyles={{
-              display: 'flex',
-              justifyContent: 'flex-start',
-              ...miscStyles,
-            }}
-          >
-            <span>{name}</span>
-          </Button>
           {pages && pages.length > 0 ? (
             <DropdownList
               isLast
+              mainMenuStyle={{ width: '100%', display: 'flex', }}
               render={({ renderButton, ListWrapper, isOpen, }) => {
                 const combinedItems = pages.map(item => (
                   <Item
@@ -104,55 +90,96 @@ export default function Item({
                 return (
                   <Fragment>
                     {renderButton(({ toggleState, }) => (
-                      <Button
-                        boxModel={{ vp: 1, hp: 2, }}
-                        variant={variant}
-                        isHard
-                        onClick={toggleState}
-                        aria-expanded={isOpen}
-                        aria-label={`more ${name}`}
-                        miscStyles={{
-                          position: 'static',
-                          ...(isOpen
-                            ? {
-                                backgroundColor: theme.color('secondary', '+1'),
-                              }
-                            : {}),
-                        }}
-                      >
-                        <FlippingArrow
-                          isOpen={isOpen}
-                          color={[ 'neutral', '-10', ]}
-                          size={1.5}
-                          direction={theme.direction}
-                        />
-                      </Button>
+                      <Fragment>
+                        <Button
+                          boxModel={{ vp: 1, hp: 2, }}
+                          isFull
+                          fontSize={-2}
+                          variant={variant}
+                          onClick={onClick}
+                          attrs={{
+                            onMouseOver: toggleState,
+                            onMouseOut: toggleState,
+                          }}
+                          href={url}
+                          miscStyles={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            ...miscStyles,
+                          }}
+                        >
+                          <span>{name}</span>
+                        </Button>
+                        <Button
+                          boxModel={{ vp: 1, hp: 2, }}
+                          variant={variant}
+                          isHard
+                          onClick={toggleState}
+                          aria-expanded={isOpen}
+                          aria-label={`more ${name}`}
+                          miscStyles={{
+                            position: 'static',
+                            ...(isOpen
+                              ? {
+                                  backgroundColor: theme.color(
+                                    'secondary',
+                                    '+1'
+                                  ),
+                                }
+                              : {}),
+                          }}
+                        >
+                          <FlippingArrow
+                            isOpen={isOpen}
+                            color={[ 'neutral', '-10', ]}
+                            size={1.5}
+                            direction={theme.direction}
+                          />
+                        </Button>
+
+                        {isOpen && (
+                          <ListWrapper
+                            listStyle={{
+                              ...dropdownListStyle(theme),
+                              top: '0',
+                              start: '100%',
+                              position: 'absolute',
+                            }}
+                            itemStyle={{
+                              ...dropdownItemStyle(theme),
+                              ':last-child': {
+                                borderBottomColor: theme.color('primary', '+1'),
+                                borderBottomStyle: 'solid',
+                                borderBottomWidth: '1px',
+                              },
+                            }}
+                          >
+                            {combinedItems}
+                          </ListWrapper>
+                        )}
+                      </Fragment>
                     ))}
-                    {isOpen ? (
-                      <ListWrapper
-                        listStyle={{
-                          ...dropdownListStyle(theme),
-                          top: '0',
-                          start: '100%',
-                          position: 'absolute',
-                        }}
-                        itemStyle={{
-                          ...dropdownItemStyle(theme),
-                          ':last-child': {
-                            borderBottomColor: theme.color('primary', '+1'),
-                            borderBottomStyle: 'solid',
-                            borderBottomWidth: '1px',
-                          },
-                        }}
-                      >
-                        {combinedItems}
-                      </ListWrapper>
-                    ) : null}
                   </Fragment>
                 );
               }}
             />
-          ) : null}
+          ) : (
+            <Button
+              boxModel={{ vp: 1, hp: 2, }}
+              isFull
+              fontSize={-2}
+              variant={variant}
+              onClick={onClick}
+              href={url}
+              miscStyles={{
+                display: 'flex',
+                justifyContent: 'flex-start',
+                ...miscStyles,
+              }}
+            >
+              <span>{name}</span>
+            </Button>
+          )}
         </Fragment>
       )}
     />
