@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   host: PropTypes.string.isRequired,
+  polyFillSrc: PropTypes.string.isRequired,
 };
 
 const defaultProps = {};
 
-function SEO({ host, }) {
+function SEO({ host, polyFillSrc, }) {
   const site = host === 'themarker.com' ? 'tm' : 'htz';
   return (
     <Fragment>
@@ -33,11 +34,7 @@ function SEO({ host, }) {
         href="//www.googletagservices.com/tag/js/gpt.js"
         as="script"
       />
-      <link
-        rel="preload"
-        href="https://cdn.polyfill.io/v2/polyfill.js?features=default,Object.entries,Array.prototype.entries,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.includes,Function.name,Array.prototype.@@iterator&flags=gated"
-        as="script"
-      />
+      <link rel="preload" href={polyFillSrc} as="script" />
 
       {/* <!-- FAVICONS --> */}
       <link rel="shortcut icon" href={`/static/${site}/images/favicon.ico`} />

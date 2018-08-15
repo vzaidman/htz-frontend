@@ -9,6 +9,9 @@ import { buildFontPreloadLink, } from './utils/buildFontPreloadLink';
 import { buildFontLoadingScript, } from './utils/buildFontLoadingScript';
 import { buildFontCss, } from './utils/buildFontCss';
 
+const polyFillSrc =
+  'https://cdn.polyfill.io/v2/polyfill.js?features=default,Object.entries,Array.prototype.entries,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.includes,Function.name,Array.prototype.@@iterator&flags=gated';
+
 /**
  * The returned class should be exported as the default export in the
  * `pages/_document.js` file of a Next.js app.
@@ -137,14 +140,14 @@ const createDocument = ({
             )}
             {buildFontPreloadLink(fontRules)}
             <link rel="shortcut icon" href="about:blank" />
-            <SEO host={this.props.host} />
+            <SEO host={this.props.host} polyFillSrc={polyFillSrc} />
             {this.renderStyles()}
             {this.renderData()}
             {this.renderFoftScript()}
           </Head>
           <body>
             <Main />
-            <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,Object.entries,Array.prototype.entries,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.includes,Function.name,Array.prototype.@@iterator&flags=gated" />
+            <script src={polyFillSrc} />
             <NextScript />
           </body>
         </html>
