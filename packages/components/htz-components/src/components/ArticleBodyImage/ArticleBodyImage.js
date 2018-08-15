@@ -276,7 +276,7 @@ const UnwrappedImage = ({
   >
     <ImageElement {...image} isFullScreen={isFullScreen} />
     {showCaption && !isFullScreen ? (
-      <Caption caption={title} credit={credit} />
+      <Caption caption={title} credit={credit} prefix="צילום" />
     ) : null}
   </Wrapper>
 );
