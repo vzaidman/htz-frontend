@@ -8,6 +8,6 @@ RUN rm -f /etc/localtime; ln -s /usr/share/zoneinfo/Asia/Jerusalem /etc/localtim
 RUN yarn && yarn bootstrap
 #RUN yarn test:deploy
 EXPOSE 3000
-WORKDIR /workspace/
-CMD ["yarn", "workspace", "@haaretz/haaretz.co.il", "start"]
-#CMD ["yarn", "workspace", "@haaretz/haaretz.co.il", "start:pm2"]
+WORKDIR /workspace/packages/apps/haaretz.co.il
+#CMD ["yarn", "workspace", "@haaretz/haaretz.co.il", "start"]
+CMD ["yarn", "workspace", "@haaretz/haaretz.co.il", "start:pm2"]
