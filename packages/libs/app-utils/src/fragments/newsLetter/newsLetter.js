@@ -7,5 +7,6 @@ export default gql`
     inputTemplate
     contentId
     contentName
+    renderFrequency
   }
 `;

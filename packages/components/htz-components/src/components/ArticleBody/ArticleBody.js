@@ -5,6 +5,7 @@ import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
 import ArticleImage from '../ArticleImage/ArticleImage';
 import Caption from '../Caption/Caption';
+import NoSSR from '../NoSSR/NoSSR';
 
 const propTypes = {
   /**
@@ -119,13 +120,13 @@ const buildComponent = (context, index, isLastItem) => {
       return <Component {...context} {...context.properties} />;
     case 'com.tm.newsLetterQuickRegistrationRespAuto':
       return (
-        <Component
-          key={index}
-          {...context}
-          // temp number until we get it from papi
-          renderFrequency={10}
-          miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }}
-        />
+        <NoSSR>
+          <Component
+            key={index}
+            {...context}
+            miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }}
+          />
+        </NoSSR>
       );
     default:
       return (
