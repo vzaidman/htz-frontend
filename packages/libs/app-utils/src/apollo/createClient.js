@@ -146,6 +146,7 @@ function create(initialState, req) {
       //  makes sure that if we have another outbrain element on the page it calls outbrains
       // reload function script before calling the outbrain json api
       osakaCanRender: false,
+      isOsakaDisplayed: false,
       referer: referer || null,
       loggedInOrRegistered: null,
       readingListArray: [],

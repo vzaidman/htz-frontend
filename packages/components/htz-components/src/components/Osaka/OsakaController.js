@@ -13,6 +13,10 @@ const propTypes = {
    * This is an array of clickTrackers data objects.
    */
   items: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  /**
+   * apollo client object
+   */
+  client: PropTypes.shape({ writeData: PropTypes.func, }).isRequired,
 };
 
 class OsakaWithOutbrain extends React.Component {
@@ -102,7 +106,7 @@ class OsakaWithOutbrain extends React.Component {
 // eslint-disable-next-line react/prop-types
 const OsakaWithApollo = ({ articleId, ...props }) => (
   <Query query={fromCache} variables={{ path: articleId, }}>
-    {({ loading, error, data, }) => {
+    {({ loading, error, data, client, }) => {
       if (loading) return null;
       if (error) return null;
       const {
@@ -119,7 +123,7 @@ const OsakaWithApollo = ({ articleId, ...props }) => (
       // reload function script before calling the outbrain json api
       return osakaCanRender ? (
         <OsakaWithOutbrain
-          {...{ ...props, articleSection, host, canonicalUrl, }}
+          {...{ ...props, articleSection, host, canonicalUrl, client, }}
         />
       ) : null;
     }}

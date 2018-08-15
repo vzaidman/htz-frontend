@@ -13,6 +13,10 @@ const propTypes = {
   articles: PropTypes.shape({}).isRequired,
   articleSection: PropTypes.shape({}).isRequired,
   /**
+   * apollo client object
+   */
+  client: PropTypes.shape({ writeData: PropTypes.func, }).isRequired,
+  /**
    * The scroll speed and direction (Y axis), as brought to us by: [`Scroll`](./#scroll)
    */
   velocity: PropTypes.number,
@@ -35,7 +39,14 @@ class OsakaWrapper extends React.Component {
 
   componentWillUpdate(nextProps) {
     // eslint-disable-next-line react/no-will-update-set-state
-    this.setState({ display: nextProps.velocity > 0 && nextProps.y > 0, });
+    this.setState(
+      { display: nextProps.velocity > 0 && nextProps.y > 0, },
+      () => {
+        this.props.client.writeData({
+          data: { isOsakaDisplayed: this.state.display, },
+        });
+      }
+    );
   }
 
   render() {
