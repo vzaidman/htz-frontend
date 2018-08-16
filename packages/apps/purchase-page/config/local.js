@@ -7,6 +7,8 @@ switch (connectionPreset) {
       service: {
         graphql: baseConfigOverride.service.graphql,
         image: baseConfigOverride.service.image,
+        sso: baseConfigOverride.service.sso,
+        payment: baseConfigOverride.service.payment,
       },
       remoteFQDN: baseConfigOverride.remoteFQDN,
       logLevel: baseConfigOverride.logLevel,
