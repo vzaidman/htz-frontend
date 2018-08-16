@@ -68,24 +68,10 @@ const RegistrationWrapper = ({ miscStyles, children, }) => (
 const TeaserBody = ({ children, }) => (
   <FelaComponent
     style={theme => ({
-      fontWeight: '700',
       color: theme.color('neutral', '-3'),
       marginBottom: '2rem',
       extend: [ theme.type(5), ],
     })}
-  >
-    {children}
-  </FelaComponent>
-);
-
-// eslint-disable-next-line react/prop-types
-const ButtonText = ({ children, }) => (
-  <FelaComponent
-    style={theme => ({
-      fontWeight: '700',
-      extend: [ theme.type(-1), ],
-    })}
-    render="span"
   >
     {children}
   </FelaComponent>
@@ -160,7 +146,7 @@ class MobileQuickRegistration extends Component {
                       boxModel={{ hp: 4, vp: 1, }}
                       onClick={() => this.setState({ signedUp: true, })}
                     >
-                      <ButtonText>{teaserButton}</ButtonText>
+                      {teaserButton}
                     </Button>
                   </Fragment>
                 )}
