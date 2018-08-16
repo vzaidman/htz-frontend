@@ -138,18 +138,18 @@ export default props => (
       if (loading) return null;
       if (error) return null;
       return (
-        <WrappedScroll
-          render={({ velocity, y, }) => (
-            <LayoutContainer>
+        <LayoutContainer>
+          <WrappedScroll
+            render={({ velocity, y, }) => (
               <Masthead
                 hostname={data.hostname}
                 velocity={velocity}
                 y={y}
                 {...props}
               />
-            </LayoutContainer>
-          )}
-        />
+            )}
+          />
+        </LayoutContainer>
       );
     }}
   </Query>
