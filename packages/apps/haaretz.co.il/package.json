@@ -16,7 +16,7 @@
     "gc": "htz-scripts commitizen",
     "lint": "htz-scripts lint",
     "prepare": "npm run build",
-    "start:pm2": "NODE_ENV=production pm2-runtime start htz-react-server -- htz",
+    "start:pm2": "NODE_ENV=production pm2-runtime start htz-react-server -- htz --trace",
     "start:prof": "NODE_ENV=production node --prof node_modules/.bin/htz-react-server htz",
     "start": "NODE_ENV=production htz-react-server htz",
     "styleguide": "htz-scripts styleguide",
