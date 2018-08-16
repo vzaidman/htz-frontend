@@ -13,7 +13,6 @@ export const adPriorities = {
   normal: 'normal',
   low: 'low',
 };
-// const LOW_PRIORITY_ADS_DELAY_MS = 5000;
 
 const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
   //  Part I: immidiate initialization of high priority DFP ads, like maaavaron
@@ -51,37 +50,21 @@ const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
       });
     };
 
-    // const displayLowPrioritySlots = () => {
-    //   setTimeout(() => {
-    //     q.initGoogleTag().then(() => {
-    //       DEBUG &&
-    //         logger.info(
-    //           `4. Display slots - calling for display for all ${
-    //             adPriorities.low
-    //           } priority slots`
-    //         );
-    //       q.adManager.showAllSlots(adPriorities.low);
-    //     });
-    //   }, LOW_PRIORITY_ADS_DELAY_MS);
-    // };
     switch (window.document.readyState) {
       case 'loading':
         window.document.addEventListener('DOMContentLoaded', () => {
           displayHighPrioritySlots();
           displayNormalPrioritySlots();
-          // displayLowPrioritySlots();
         });
         break;
       case 'interactive':
         displayHighPrioritySlots();
         displayNormalPrioritySlots();
-        // displayLowPrioritySlots();
         break;
       default:
         // 'complete' - no need for event listeners.
         displayHighPrioritySlots();
         displayNormalPrioritySlots();
-      // displayLowPrioritySlots();
     }
   }
   else {
