@@ -4,9 +4,9 @@
 
 **Table of Contents**
 
-* [Features](#features)
-  * [**Basic use**](#basic-use)
-  * [**DOM Element Attributes**](#dom-element-attributes)
+- [Features](#features)
+  - [**Basic use**](#basic-use)
+  - [**DOM Element Attributes**](#dom-element-attributes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -15,12 +15,12 @@ flexible and easy to use. No custom user props needed to be passed through.
 
 ### Features
 
-* Responsive
+- Responsive
 
 #### **Basic use**
 
 ```jsx
 <div dir="rtl">
-  <Footer />
+  <Footer contentId="1.23456" />
 </div>
 ```

@@ -1,68 +1,54 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import HtzLink from '../../HtzLink/HtzLink';
 import Button from '../../Button/Button'; // eslint-disable-line import/no-named-as-default
-import Section from '../../AutoLevels/Section';
 
-const MobileBodyWrapperStyle = ({ theme, }) => ({
-  ...theme.mq({ from: 's', }, { display: 'none', }),
+const mobileBodyWrapperStyle = theme => ({
   extend: [
-    {
-      ...theme.mq(
-        {
-          until: 's',
-        },
-        {
-          display: 'block',
-          textAlign: 'center',
-        }
-      ),
-    },
+    theme.mq({ from: 's', }, { display: 'none', }),
+    theme.mq(
+      {
+        until: 's',
+      },
+      {
+        display: 'block',
+        textAlign: 'center',
+      }
+    ),
   ],
 });
-const MobileBody = createComponent(MobileBodyWrapperStyle);
 
 const mobileMainListStyle = ({ theme, }) => ({
-  display: 'flex',
-  justifyContent: 'space-between',
-  flexDirection: 'row',
   marginBottom: '5rem',
   maxWidth: '42rem',
   marginInlineStart: 'auto',
   marginInlineEnd: 'auto',
-});
-const StyledMobileMainList = createComponent(mobileMainListStyle, Section);
-
-const linkBoxStyle = ({ theme, }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  height: '18rem',
-  flexWrap: 'wrap',
-  width: '100%',
-  justifyContent: 'space-between',
-  alignContent: 'space-between',
-  alignItems: 'space-around',
-});
-const StyledLinkBox = createComponent(linkBoxStyle, 'ul');
-
-const linkStyle = ({ theme, }) => ({
-  fontWeight: 'bold',
-  extend: [ theme.type(0), ],
+  columnCount: 2,
 });
 
-const StyledLink = createComponent(linkStyle, HtzLink, [ 'content', 'href', ]);
+const StyledLink = props => (
+  <FelaComponent
+    style={theme => ({
+      fontWeight: 'bold',
+      extend: [ theme.type(0), ],
+    })}
+    render={({ className, }) => <HtzLink className={className} {...props} />}
+  />
+);
 
-const liStyle = ({ theme, }) => ({
+const liStyle = {
   marginTop: '1rem',
   marginBottom: '1rem',
-});
-const StyledLi = createComponent(liStyle, 'li');
-const textStyle = ({ theme, }) => ({
+};
+
+const copyRightTextStyle = theme => ({
   marginTop: '1rem',
+  marginBottom: '4rem',
+  textAlign: 'center',
+  display: 'block',
   extend: [ theme.type(-3), ],
 });
-const StyledText = createComponent(textStyle);
 
 const propTypes = {
   theme: PropTypes.shape({
@@ -81,16 +67,23 @@ const MobileView = ({
     footerMobileListsI18n: { ButtonName, Copyright, MobileList, },
   },
 }) => (
-  <MobileBody>
-    <StyledMobileMainList>
-      <StyledLinkBox>
-        {MobileList.map(link => (
-          <StyledLi key={link.text}>
-            <StyledLink key={link.text} content={link.text} href={link.link} />
-          </StyledLi>
-        ))}
-      </StyledLinkBox>
-    </StyledMobileMainList>
+  <FelaComponent style={mobileBodyWrapperStyle}>
+    <FelaComponent
+      style={mobileMainListStyle}
+      render={({ className, }) => (
+        <ul className={className}>
+          {MobileList.map(link => (
+            <FelaComponent style={liStyle} key={link.text} render="li">
+              <StyledLink
+                key={link.text}
+                content={link.text}
+                href={link.link}
+              />
+            </FelaComponent>
+          ))}
+        </ul>
+      )}
+    />
     <Button
       variant="inverse"
       boxModel={{ hp: 5, vp: 1, }}
@@ -99,8 +92,10 @@ const MobileView = ({
     >
       {ButtonName.text}
     </Button>
-    <StyledText>{Copyright.text}</StyledText>
-  </MobileBody>
+    <FelaComponent style={copyRightTextStyle} render="span">
+      {Copyright.text}
+    </FelaComponent>
+  </FelaComponent>
 );
 
 MobileView.propTypes = propTypes;
