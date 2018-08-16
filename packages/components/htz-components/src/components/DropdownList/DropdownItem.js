@@ -1,3 +1,4 @@
+/* global window */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaTheme, } from 'react-fela';
@@ -87,9 +88,25 @@ export default function Item({
                     {...item}
                   />
                 ));
+                const list = {};
+                const eventsAttrs = (openList, closeList) => ({
+                  onMouseOver: () => {
+                    if (typeof list.closeSubList !== 'undefined') {
+                      window.clearTimeout(list.closeSubList);
+                    }
+                    list.openSubList = window.setTimeout(openList, 250);
+                  },
+                  onMouseOut: () => {
+                    if (typeof list.openSubList !== 'undefined') {
+                      window.clearTimeout(list.openSubList);
+                    }
+                    list.closeSubList = window.setTimeout(closeList, 250);
+                  },
+                });
+
                 return (
                   <Fragment>
-                    {renderButton(({ toggleState, }) => (
+                    {renderButton(({ toggleState, openList, closeList, }) => (
                       <Fragment>
                         <Button
                           boxModel={{ vp: 1, hp: 2, }}
@@ -97,10 +114,7 @@ export default function Item({
                           fontSize={-2}
                           variant={variant}
                           onClick={onClick}
-                          attrs={{
-                            onMouseOver: toggleState,
-                            onMouseOut: toggleState,
-                          }}
+                          attrs={eventsAttrs(openList, closeList, list)}
                           href={url}
                           miscStyles={{
                             display: 'flex',
@@ -139,6 +153,7 @@ export default function Item({
 
                         {isOpen && (
                           <ListWrapper
+                            attrs={eventsAttrs(openList, closeList, list)}
                             listStyle={{
                               ...dropdownListStyle(theme),
                               top: '0',

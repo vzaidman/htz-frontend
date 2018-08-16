@@ -96,6 +96,18 @@ class DropdownList extends React.Component {
     }
   };
 
+  openList = () => {
+    this.setState({
+      isOpen: true,
+    });
+  };
+
+  closeList = () => {
+    this.setState({
+      isOpen: false,
+    });
+  };
+
   toggleState = () => {
     this.setState(prevState => ({
       isOpen: !prevState.isOpen,
@@ -106,7 +118,11 @@ class DropdownList extends React.Component {
     const { render, mainMenuStyle, } = this.props;
     const { isOpen, } = this.state;
     const renderButton = buttonRenderer =>
-      buttonRenderer({ toggleState: this.toggleState, });
+      buttonRenderer({
+        toggleState: this.toggleState,
+        closeList: this.closeList,
+        openList: this.openList,
+      });
     return (
       <FelaComponent
         style={mainMenuStyle}

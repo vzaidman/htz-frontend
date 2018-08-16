@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import FocusLock from 'react-focus-lock';
 import { FelaComponent, } from 'react-fela';
 import ListItem from './ListItem';
+import { attrsPropType, } from '../../propTypes/attrsPropType';
 
 ListWrapper.propTypes = {
   /**
@@ -22,15 +23,25 @@ ListWrapper.propTypes = {
    */
   // eslint-disable-next-line react/forbid-prop-types
   itemStyle: PropTypes.object.isRequired,
+  // Underlying component props //
+  /**
+   * An object of attrbutes to set on the DOM element.
+   * Passed to the underlying react element
+   */
+  attrs: attrsPropType,
 };
 
-export default function ListWrapper({ children, listStyle, itemStyle, }) {
+ListWrapper.defaultProps = {
+  attrs: null,
+};
+
+export default function ListWrapper({ children, listStyle, itemStyle, attrs, }) {
   return (
     <FelaComponent
       rule={listStyle}
       render={({ className, }) => (
         <FocusLock>
-          <ul className={className}>
+          <ul className={className} {...attrs}>
             {children.map(child => (
               <ListItem itemStyle={itemStyle} key={child.key}>
                 {child}
