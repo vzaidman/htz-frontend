@@ -10,8 +10,8 @@ import Zen from '../Zen/Zen';
 const paragraphStyle = theme => ({
   marginBottom: '3rem',
   extend: [
-    theme.type(1, { until: 'xl', lines: 5, }),
-    theme.type(0, { from: 'xl', lines: 5, }),
+    theme.type(1, { untilBp: 'xl', lines: 5, }),
+    theme.type(0, { fromBp: 'xl', lines: 5, }),
   ],
 });
 
