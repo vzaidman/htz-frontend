@@ -77,8 +77,10 @@ function HeadlineElement({ elementObj, miscStyles, }) {
       <Caption
         caption={elementObj.caption || elementObj.title}
         credit={elementObj.credit}
+        backgroundColor={[ { until: 's', value: 'black', }, ]}
+        color={[ { until: 's', value: 'white', }, ]}
         miscStyles={{
-          marginTop: '0.5rem',
+          marginTop: [ { from: 's', value: '0.5rem', }, ],
           paddingStart: '2rem',
         }}
       />
