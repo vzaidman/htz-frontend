@@ -60,6 +60,10 @@ const SectionTitleA = ({ title, isInMargin, id, }) => (
       paddingInlineStart: `${layoutStyle.startColumnPadding}rem`,
       extend: [
         theme.mq(
+          { until: 's', },
+          { paddingInlineStart: `${layoutStyle.contPaddingS}rem`, }
+        ),
+        theme.mq(
           { from: 'xl', },
           { paddingInlineStart: `${layoutStyle.startColumnPaddingXL}rem`, }
         ),
@@ -168,7 +172,11 @@ const StandardLayoutRow = ({
             style={theme => ({
               extend: [
                 theme.mq(
-                  { until: 'l', },
+                  { until: 's', },
+                  { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }
+                ),
+                theme.mq(
+                  { from: 's', until: 'l', },
                   { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }
                 ),
                 theme.mq(

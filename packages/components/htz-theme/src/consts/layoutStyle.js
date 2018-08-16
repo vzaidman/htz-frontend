@@ -1,4 +1,5 @@
 const layoutStyle = Object.freeze({
+  contPaddingS: 3,
   startColumnWidthL: 22,
   startColumnWidthXL: 30,
   startColumnPadding: 2,

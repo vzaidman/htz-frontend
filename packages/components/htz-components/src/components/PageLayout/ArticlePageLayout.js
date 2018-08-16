@@ -61,7 +61,7 @@ const ArticlePageLayout = ({
 
   return (
     <Fragment>
-      <LayoutRow>{preHeader ? getElements(preHeader) : null}</LayoutRow>
+      {preHeader ? <LayoutRow>{getElements(preHeader)}</LayoutRow> : null}
       <LayoutRow>
         <Header content={header} articleId={articleId} />
       </LayoutRow>
@@ -105,8 +105,14 @@ const ArticlePageLayout = ({
                   seoData={seoData}
                 />
               </LayoutRow>
-              <LayoutRow>{postMain ? getElements(postMain) : null}</LayoutRow>
-              <LayoutRow>{footer ? getElements(footer) : null}</LayoutRow>
+              {postMain ? (
+                <LayoutRow
+                  miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}
+                >
+                  {getElements(postMain)}
+                </LayoutRow>
+              ) : null}
+              {footer ? <LayoutRow> {getElements(footer)} </LayoutRow> : null}
               <BIRequest
                 articleId={articleId}
                 authors={extractAuthorsFromArticle(article)}

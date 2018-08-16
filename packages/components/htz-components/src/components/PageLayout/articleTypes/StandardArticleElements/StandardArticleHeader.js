@@ -90,15 +90,22 @@ function Header({
                 {hasBreadCrumbs ? (
                   <FelaComponent
                     style={{
-                      paddingInlineStart: '2rem',
+                      paddingInlineStart: theme.layoutStyle.startColumnPadding,
                       extend: [
                         theme.mq(
+                          { until: 's', },
+                          { paddingInlineStart: theme.layoutStyle.contPaddingS, }
+                        ),
+                        theme.mq(
                           { from: 'xl', },
-                          { paddingInlineStart: '3rem', }
+                          {
+                            paddingInlineStart:
+                              theme.layoutStyle.startColumnPaddingXL,
+                          }
                         ),
                         theme.mq(
                           { until: 's', },
-                          { order: -2, marginTop: '1rem', }
+                          { order: -1, marginTop: '1rem', }
                         ),
                       ],
                     }}
@@ -115,8 +122,15 @@ function Header({
                     marginTop: '3rem',
                     paddingInlineStart: '2rem',
                     extend: [
+                      theme.mq(
+                        { until: 's', },
+                        { paddingInlineEnd: '3rem', paddingInlineStart: '3rem', }
+                      ),
+                      theme.mq(
+                        { from: 's', until: 'l', },
+                        { paddingInlineEnd: '2rem', }
+                      ),
                       theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
-                      theme.mq({ until: 'l', }, { paddingInlineEnd: '2rem', }),
                     ],
                   }}
                   render={({ className, }) => (
@@ -138,8 +152,20 @@ function Header({
                       { until: 's', value: '3rem', },
                       { from: 's', until: 'l', value: '2rem', },
                     ],
-                    marginInlineStart: '2rem',
-                    marginInlineEnd: '2rem',
+                    marginInlineStart: [
+                      {
+                        from: 's',
+                        value: theme.layoutStyle.startColumnPadding,
+                      },
+                      { until: 's', value: theme.layoutStyle.contPaddingS, },
+                    ],
+                    marginInlineEnd: [
+                      {
+                        from: 's',
+                        value: theme.layoutStyle.startColumnPadding,
+                      },
+                      { until: 's', value: theme.layoutStyle.contPaddingS, },
+                    ],
                     display: [
                       { until: 'l', value: 'block', },
                       { from: 'l', value: 'none', },
@@ -161,7 +187,7 @@ function Header({
                     elementObj={headlineElement}
                     miscStyles={{
                       marginTop: '2rem',
-                      order: [ { until: 's', value: -1, }, ],
+                      order: [ { until: 's', value: -2, }, ],
                     }}
                   />
                 ) : null}
