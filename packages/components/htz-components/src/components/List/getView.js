@@ -18,6 +18,13 @@ const views = new Map([
     },
   ],
   [
+    'Farnsworth',
+    {
+      view: () => import('./views/Farnsworth/Farnsworth.view.js'),
+      query: () => import('./views/Farnsworth/Farnsworth.query.js'),
+    },
+  ],
+  [
     'Fry',
     {
       view: () => import('./views/Fry/Fry.view.js'),

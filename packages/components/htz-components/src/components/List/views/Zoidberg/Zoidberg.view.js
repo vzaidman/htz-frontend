@@ -87,9 +87,7 @@ const Item = ({ title, image, path, }) => (
 );
 
 // eslint-disable-next-line react/prop-types
-const Zoidberg = ({ data: { loading, error, list, }, }) => {
-  if (loading) return null;
-  if (error) return null;
+const Zoidberg = ({ list, }) => {
   const { title, items, } = list;
   return (
     <FelaComponent
@@ -111,7 +109,7 @@ const Zoidberg = ({ data: { loading, error, list, }, }) => {
         {title}
       </FelaComponent>
       {items.map(item => (
-        <ListItem>
+        <ListItem key={item.contentId}>
           {item.inputTemplate ? (
             item.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper' ? (
               <ClickTrackerItem item={item} />

@@ -79,47 +79,43 @@ export const PromotedItem = ({ path, title, image, suffix, }) => (
 );
 
 // eslint-disable-next-line react/prop-types
-const Leela = ({ data, }) => {
-  if (data.loading) return null;
-  if (data.error) return null;
-  return (
+const Leela = ({ list, }) => (
+  <FelaComponent
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      maxWidth: `${300 / 7}rem`,
+    }}
+  >
     <FelaComponent
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        maxWidth: `${300 / 7}rem`,
-      }}
+      style={theme => ({
+        ...theme.type(1),
+        fontWeight: '700',
+        color: theme.color('neutral', '-2'),
+        ...borderBottom('2px', 1, 'solid', theme.color('neutral', '-2')),
+        marginBottom: '2rem',
+      })}
     >
-      <FelaComponent
-        style={theme => ({
-          ...theme.type(1),
-          fontWeight: '700',
-          color: theme.color('neutral', '-2'),
-          ...borderBottom('2px', 1, 'solid', theme.color('neutral', '-2')),
-          marginBottom: '2rem',
-        })}
-      >
-        {data.list.title}
-      </FelaComponent>
-      {data.list.items.map(item => (
-        <ListItem>
-          <ClickTracker
-            {...item}
-            render={banner => {
-              const { text, link, clicktrackerimage, } = banner;
-              return (
-                <PromotedItem
-                  title={text}
-                  image={clicktrackerimage}
-                  path={link}
-                />
-              );
-            }}
-          />
-        </ListItem>
-      ))}
+      {list.title}
     </FelaComponent>
-  );
-};
+    {list.items.map(item => (
+      <ListItem key={item.contentId}>
+        <ClickTracker
+          {...item}
+          render={banner => {
+            const { text, link, clicktrackerimage, } = banner;
+            return (
+              <PromotedItem
+                title={text}
+                image={clicktrackerimage}
+                path={link}
+              />
+            );
+          }}
+        />
+      </ListItem>
+    ))}
+  </FelaComponent>
+);
 
 export default Leela;

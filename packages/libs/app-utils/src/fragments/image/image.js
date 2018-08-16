@@ -34,6 +34,12 @@ export const imagesInTeaser = gql`
       authorImage ${imageObj}
     }
   `;
+
+export const imageInTeaser = gql`
+    fragment ImageInTeaser on TeaserInList {
+      image ${imageObj}
+    }
+  `;
 export const headlineImage = gql`
   fragment HeadlineImage on HeaderData {
     image ${imageObj}

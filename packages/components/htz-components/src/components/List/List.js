@@ -37,25 +37,35 @@ class List extends React.Component {
     const { contentId, } = this.props;
     const { selectedView, } = this.state;
     const ListComponent = selectedView
-      ? Array.isArray(selectedView) ? selectedView[0].default : selectedView
+      ? Array.isArray(selectedView)
+        ? selectedView[0].default
+        : selectedView
       : null;
     return ListComponent ? (
       selectedView[1] ? (
         <Query query={selectedView[1].default} variables={{ path: contentId, }}>
-          {({ data, loading, error, }) => {
+          {({ data: { list, }, loading, error, }) => {
             if (loading) return null;
             if (error) return null;
+            const { title, items, } = {
+              title: list.title,
+              items: list.items.filter(item =>
+                // eslint-disable-next-line no-prototype-builtins
+                item.hasOwnProperty('contentId')
+              ),
+            };
+
             return (
               <EventTracker>
                 {({ biAction, gaAction, HtzReactGA, }) => {
                   HtzReactGA.ga('ec:addImpression', {
                     id: contentId,
-                    name: data.list.title,
+                    name: title,
                     list: 'List impressions',
                   });
                   return (
                     <ListComponent
-                      data={data}
+                      list={{ title, items, }}
                       listId={contentId}
                       gaAction={gaAction}
                       biAction={biAction}

@@ -15,6 +15,7 @@ import mock from '../../../styleguide/mocks/list';
 
 const views = {
   Bender: dynamic(import('./views/Bender/Bender.view.js')),
+  Farnsworth: dynamic(import('./views/Farnsworth/Farnsworth.view.js')),
   Fry: dynamic(import('./views/Fry/Fry.view.js')),
   Leela: dynamic(import('./views/Leela/Leela.view.js')),
   Zoidberg: dynamic(import('./views/Zoidberg/Zoidberg.view.js')),
@@ -76,6 +77,7 @@ export default class List extends React.Component {
             Select a preview
           </option>
           <option value="Bender">Bender</option>
+          <option value="Farnsworth">Farnsworth</option>
           <option value="Fry">Fry</option>
           <option value="Leela">Leela</option>
           <option value="Zoidberg">Zoidberg</option>

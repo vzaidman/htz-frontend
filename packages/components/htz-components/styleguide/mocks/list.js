@@ -4,38 +4,107 @@ export default viewName => {
       return {
         items: [
           {
-            content: 'אמבדים כתבה ביקורת - הארץ',
-            thumbnail: {
-              url:
-                'https://www.reactiongifs.us/wp-content/uploads/2013/06/fry_drooling.gif',
+            title: 'אמבדים כתבה ביקורת - הארץ',
+            image: {
+              accessibility: 'putin',
+              title: 'ולדימיר פוטין',
+              aspects: {
+                full: {
+                  width: 1304,
+                  height: 900,
+                },
+              },
+              isAnimated: false,
+              imgArray: [
+                {
+                  imgName: 'image/3337826422.jpg',
+                  version: '1502966590',
+                },
+              ],
+              imageType: 'image',
+              inputTemplate: 'com.tm.Image',
+              contentId: '1.2162',
+              contentName: 'ולדימיר פוטין',
             },
-            url: 'https://www.haaretz.co.il',
+            path: 'https://www.haaretz.co.il',
             source_display_name: 'Source',
           },
           {
-            content: 'הלזניה הכי קלה בעולם',
-            thumbnail: {
-              url:
-                'https://media1.tenor.com/images/59cbdb0d0d93bf8eeaa6f1d4b7ce4952/tenor.gif',
+            title: 'הלזניה הכי קלה בעולם',
+            image: {
+              accessibility: 'putin',
+              title: 'ולדימיר פוטין',
+              aspects: {
+                full: {
+                  width: 1304,
+                  height: 900,
+                },
+              },
+              isAnimated: false,
+              imgArray: [
+                {
+                  imgName: 'image/3337826422.jpg',
+                  version: '1502966590',
+                },
+              ],
+              imageType: 'image',
+              inputTemplate: 'com.tm.Image',
+              contentId: '1.2162',
+              contentName: 'ולדימיר פוטין',
             },
-            url: 'https://www.haaretz.co.il',
+            path: 'https://www.haaretz.co.il',
             source_display_name: 'Source',
           },
           {
-            content: 'מקומות בארץ שבהם תקבלו דונם קרקע בחינם לבנות בית',
-            thumbnail: {
-              url: 'https://m.popkey.co/ad8e48/X03mg.gif',
+            title: 'מקומות בארץ שבהם תקבלו דונם קרקע בחינם לבנות בית',
+            image: {
+              accessibility: 'putin',
+              title: 'ולדימיר פוטין',
+              aspects: {
+                full: {
+                  width: 1304,
+                  height: 900,
+                },
+              },
+              isAnimated: false,
+              imgArray: [
+                {
+                  imgName: 'image/3337826422.jpg',
+                  version: '1502966590',
+                },
+              ],
+              imageType: 'image',
+              inputTemplate: 'com.tm.Image',
+              contentId: '1.2162',
+              contentName: 'ולדימיר פוטין',
             },
-            url: 'https://www.haaretz.co.il',
+            path: 'https://www.haaretz.co.il',
             source_display_name: 'Source',
           },
           {
-            content: 'שדכשדגכ',
-            thumbnail: {
-              url:
-                'http://basementrejects.com/wp-content/uploads/2014/08/futurama-season-5-12-spanish-fry-fake-nose-glasses-review-episode-guide-list.jpg',
+            title: 'שדכשדגכ',
+            image: {
+              accessibility: 'putin',
+              title: 'ולדימיר פוטין',
+              aspects: {
+                full: {
+                  width: 1304,
+                  height: 900,
+                },
+              },
+              isAnimated: false,
+              imgArray: [
+                {
+                  imgName: 'image/3337826422.jpg',
+                  version: '1502966590',
+                },
+              ],
+              imageType: 'image',
+              inputTemplate: 'com.tm.Image',
+              contentId: '1.2162',
+              contentName: 'ולדימיר פוטין',
             },
-            url: 'https://www.haaretz.co.il',
+            path: 'https://www.haaretz.co.il',
             source_display_name: 'Source',
           },
         ],

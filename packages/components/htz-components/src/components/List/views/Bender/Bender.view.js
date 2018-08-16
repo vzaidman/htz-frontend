@@ -48,7 +48,7 @@ const itemsType = PropTypes.shape({
   /**
    * Article's image to display (image object or image url).
    */
-  image: PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ]).isRequired,
+  image: PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ]),
   /**
    * Article's url.
    */
@@ -67,9 +67,8 @@ Bender.propTypes = {
   /**
    * data object from polopoly
    */
-  data: PropTypes.shape({
-    list: PropTypes.shape({ items: PropTypes.arrayOf(itemsType).isRequired, }),
-  }).isRequired,
+  list: PropTypes.shape({ items: PropTypes.arrayOf(itemsType).isRequired, })
+    .isRequired,
   /**
    * Determine if the component should be lazyloaded. Defaults to `false`.
    * If lazyloaded, indicates how many pixels before entering the screen
@@ -85,9 +84,7 @@ Bender.defaultProps = {
   lazyLoad: '1000px',
 };
 
-export default function Bender({ data, lazyLoad, gaAction, biAction, listId, }) {
-  if (data.loading) return null;
-  if (data.error) return null;
+export default function Bender({ list, lazyLoad, gaAction, biAction, listId, }) {
   const imgOptions = {
     transforms: {
       aspect: 'vertical',
@@ -96,7 +93,7 @@ export default function Bender({ data, lazyLoad, gaAction, biAction, listId, }) 
   };
 
   const BenderItem = (item, i, itemsToRender) => (
-    <GridItem width={1 / itemsToRender}>
+    <GridItem width={1 / itemsToRender} key={item.contentId}>
       <ListItem>
         <BlockLink
           href={item.path}
@@ -174,7 +171,7 @@ export default function Bender({ data, lazyLoad, gaAction, biAction, listId, }) 
     </GridItem>
   );
 
-  const { items, } = data.list;
+  const { items, } = list;
 
   const content = itemsToRender =>
     (itemsToRender
@@ -213,7 +210,11 @@ export default function Bender({ data, lazyLoad, gaAction, biAction, listId, }) 
                     {renderSixItems => {
                       const itemsToRender = renderThreeItems
                         ? 3
-                        : renderFourItems ? 4 : renderSixItems ? 6 : null;
+                        : renderFourItems
+                          ? 4
+                          : renderSixItems
+                            ? 6
+                            : null;
                       return <Grid gutter={4}>{content(itemsToRender)}</Grid>;
                     }}
                   </Media>
