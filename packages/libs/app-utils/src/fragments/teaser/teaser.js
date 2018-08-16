@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import gql from 'graphql-tag';
-import image, { imagesInTeaser, } from '../image/image';
+import image, { imageInTeaser, imagesInTeaser, } from '../image/image';
 import author from '../author/author';
 
 export const teaserForRelatedArticles = gql`
@@ -22,14 +22,14 @@ export const teaserForRelatedArticles = gql`
 
 export const teaserForLeftElement = gql`
   fragment TeaserForLeftElement on TeaserInList {
-    ...ImagesInTeaser
+    ...ImageInTeaser
     contentId
     title
     path
     titleMobile
     hash
   }
-  ${imagesInTeaser}
+  ${imageInTeaser}
 `;
 
 export const teaserForBender = gql`
@@ -65,7 +65,6 @@ export default gql`
     commentsCount
     path
     subtitleMobile
-    ...Teaser
     isPremiumContent
     lastUpdate
     subTitle
@@ -89,6 +88,7 @@ export default gql`
   }
   ${author.authorObj}
   ${author.creditObj}
+  ${imageInTeaser}
   ${imagesInTeaser}
   ${image}
 `;
