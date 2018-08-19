@@ -181,7 +181,7 @@ class CommentForm extends React.Component {
       errorNotes: {
         nameErrorNoteTxt,
         commentErrorNoteTxt,
-        commentErrorToLongNoteTxt,
+        commentErrorTooLongNoteTxt,
       },
     } = theme.commentFormI18n;
 
@@ -228,10 +228,10 @@ class CommentForm extends React.Component {
                 ) {
                   errors.push({ name: 'commentTextHtml', order: 2, });
                 }
-                if (getPrintableCharsCount(commentTextHtml) > 600) {
+                if (getPrintableCharsCount(commentTextHtml) > 1000) {
                   errors.push({
                     name: 'commentTextHtml',
-                    errorText: commentErrorToLongNoteTxt,
+                    errorText: commentErrorTooLongNoteTxt,
                     order: 2,
                   });
                 }
