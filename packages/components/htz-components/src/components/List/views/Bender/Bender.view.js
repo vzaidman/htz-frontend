@@ -195,14 +195,14 @@ export default function Bender({ list, lazyLoad, gaAction, biAction, listId, }) 
                   theme.benderStyle.mainTitle.fontSize,
                   theme.type
                 ),
-                theme.mq({ until: 'm', }, { display: 'none', }),
+                theme.mq({ until: 's', }, { display: 'none', }),
               ],
             }}
             render={({ className, }) => (
               <H className={className}>{theme.benderStyle.mainTitle.text}</H>
             )}
           />
-          <Media query={{ from: 'm', until: 'l', }}>
+          <Media query={{ from: 's', until: 'l', }}>
             {renderThreeItems => (
               <Media query={{ from: 'l', until: 'xl', }}>
                 {renderFourItems => (
