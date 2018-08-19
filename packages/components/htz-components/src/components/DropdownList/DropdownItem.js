@@ -129,6 +129,7 @@ export default function Item({
                           variant={variant}
                           isHard
                           onClick={toggleState}
+                          attrs={eventsAttrs(openList, closeList, list)}
                           aria-expanded={isOpen}
                           aria-label={`more ${name}`}
                           miscStyles={{
