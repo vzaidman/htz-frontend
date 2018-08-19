@@ -17,7 +17,10 @@ export default class ActionSave extends React.Component {
   state = { isArticleSaved: null, };
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextState.isArticleSaved !== this.state.isArticleSaved;
+    return (
+      nextState.isArticleSaved !== this.state.isArticleSaved ||
+      nextProps.buttonStyles !== this.props.buttonStyles
+    );
   }
 
   render() {
@@ -41,7 +44,10 @@ export default class ActionSave extends React.Component {
                 <Button
                   title="שמירת כתבה"
                   {...props}
-                  miscStyles={buttonStyles(isArticleSaved)}
+                  miscStyles={{
+                    ...buttonStyles.global,
+                    ...buttonStyles.func(isArticleSaved),
+                  }}
                   onClick={() => {
                     const bodyReq = {
                       articleId,

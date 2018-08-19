@@ -1,6 +1,6 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, FelaComponent, } from 'react-fela';
+import { createComponent, } from 'react-fela';
 
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
@@ -96,7 +96,6 @@ const defaultProps = {
 
 const wrapperStyle = ({ vertical, miscStyles, theme, }) => ({
   display: 'flex',
-  flexDirection: vertical ? 'column' : 'row',
   justifyContent: 'space-between',
   ...(vertical
     ? {
@@ -134,7 +133,10 @@ const ActionButtons = ({
         // Make sure to add the 'globalButtonsStyles' to that function.
         buttonStyles={
           buttonStyles && typeof buttonStyles === 'function'
-            ? buttonStyles
+            ? {
+                func: buttonStyles,
+                global: globalButtonsStyles || {},
+              }
             : {
                 ...(globalButtonsStyles || {}),
                 ...(buttonStyles || {}),
@@ -152,18 +154,9 @@ const ActionButtons = ({
   };
 
   const getBatch = (buttonsObj, end) =>
-    (buttonsObj instanceof Array ? (
-      <FelaComponent
-        style={{
-          display: 'flex',
-          flexDirection: vertical ? 'column' : 'row',
-        }}
-      >
-        {buttonsObj.map((button, index) => getButton(button, index))}
-      </FelaComponent>
-    ) : (
-      getButton(buttonsObj)
-    ));
+    (buttonsObj instanceof Array
+      ? buttonsObj.map((button, index) => getButton(button, index))
+      : getButton(buttonsObj));
 
   return (
     <ActionWrapper vertical={vertical} miscStyles={miscStyles}>

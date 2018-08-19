@@ -25,7 +25,7 @@ export default class MobileBarActionButtons extends React.Component {
     // shouldDisplay: PropTypes.bool.isRequired,
   };
 
-  state = { shareIsOpen: false, };
+  state = { shareIsOpen: false, modalOpen: false, };
 
   toggleShareState = () => {
     this.props.onClick();
@@ -124,25 +124,34 @@ export default class MobileBarActionButtons extends React.Component {
                       appendTo="modalsRoot"
                       elementToHide="pageRoot"
                       isVisible={shareIsOpen}
+                      onOpen={() => this.setState({ modalOpen: true, })}
+                      onClose={() => this.setState({ modalOpen: false, })}
                       isModal
                       closeOnOutsideClick
                       containerMiscStyles={{
-                        height: '48rem',
                         width: '100%',
                         position: 'fixed',
-                        overflowY: 'auto',
+                        overflowY: 'hidden',
                         top: 'auto',
                         bottom: '8rem',
                         left: '0',
                         right: '0',
                         outline: 'none',
-                        transform: 'none',
+                        transform: this.state.modalOpen
+                          ? 'translateY(0)'
+                          : 'translateY(100%)',
                         backgroundColor: theme.color('secondary'),
+                        transitionProperty: 'transform',
+                        ...theme.getDuration('transition', 1),
+                        ...theme.getTimingFunction('transition', 'swiftIn'),
                       }}
                       render={({ handleClose, isVisible, isModal, }) => {
                         !isVisible && shareIsOpen && this.toggleShareState();
                         return (
-                          <MobileAdditionalShare elementUrl={articleUrl} />
+                          <MobileAdditionalShare
+                            elementUrl={articleUrl}
+                            isOpen={this.state.modalOpen}
+                          />
                         );
                       }}
                     />
