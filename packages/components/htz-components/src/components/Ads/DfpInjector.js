@@ -2,6 +2,7 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
+import _ from 'lodash';
 // import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
 import DFP from '@haaretz/dfp';
@@ -14,7 +15,7 @@ export const adPriorities = {
   low: 'low',
 };
 
-const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
+const initDfpScript = (dfpConfig, DEBUG = false) => {
   //  Part I: immidiate initialization of high priority DFP ads, like maaavaron
   let q;
   if (dfpConfig) {
@@ -90,6 +91,9 @@ export const GET_AD_MANAGER = gql`
           breakpointType
         }
       }
+      lineage {
+        pathSegment
+      }
     }
   }
 `;
@@ -114,8 +118,11 @@ const propTypes = {
       enableAsyncRendering: PropTypes.bool.isRequired,
       breakpointType: PropTypes.string.isRequired,
     }).isRequired,
+    section: PropTypes.string,
+    subSection: PropTypes.string,
   }),
 };
+
 const defaultProps = {
   loading: false,
   error: false,
@@ -130,7 +137,7 @@ class DfpInjector extends Component {
       const DEBUG = window.location.search.includes('debug');
       // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({ shouldRender: true, });
-      const dfpConfig = this.props.dfpConfig;
+      const { dfpConfig, } = this.props;
       try {
         instance.dfp = initDfpScript(dfpConfig, DEBUG);
       }
@@ -165,8 +172,18 @@ function DfpInjectorWrapper(pathObject) {
       {({ loading, error, data, client, }) => {
         if (loading) return null;
         if (error) logger.error(error);
-        const { dfpConfig, } = data.page;
-        return <DfpInjector dfpConfig={dfpConfig} path={pathObject.path} />;
+        const { dfpConfig, lineage, } = data.page;
+        const [ subSection, section, ] = _(lineage)
+          .drop(1)
+          .take(2)
+          .map('pathSegment')
+          .value();
+        return (
+          <DfpInjector
+            dfpConfig={{ ...dfpConfig, section, subSection, }}
+            path={pathObject.path}
+          />
+        );
       }}
     </Query>
   );

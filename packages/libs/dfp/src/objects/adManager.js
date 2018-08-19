@@ -650,6 +650,12 @@ export default class AdManager {
       }
 
       // Context targeting
+      if (this.config.section) {
+        pubads.setTargeting('section', [ this.config.section, ]);
+      }
+      if (this.config.subSection) {
+        pubads.setTargeting('subsection', [ this.config.subSection, ]);
+      }
       if (this.config.articleId) {
         pubads.setTargeting('articleId', [ this.config.articleId, ]);
       }
