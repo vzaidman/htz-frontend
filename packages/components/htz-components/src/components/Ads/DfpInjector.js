@@ -2,11 +2,11 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
-import _ from 'lodash';
 // import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
 import DFP from '@haaretz/dfp';
 import logger from '../../componentsLogger';
+import getSectionPairFromLineage from './utils/getSectionsFromLineage';
 
 export const instance = {};
 export const adPriorities = {
@@ -173,11 +173,7 @@ function DfpInjectorWrapper(pathObject) {
         if (loading) return null;
         if (error) logger.error(error);
         const { dfpConfig, lineage, } = data.page;
-        const [ subSection, section, ] = _(lineage)
-          .drop(1)
-          .take(2)
-          .map('pathSegment')
-          .value();
+        const [ section, subSection, ] = getSectionPairFromLineage(lineage);
         return (
           <DfpInjector
             dfpConfig={{ ...dfpConfig, section, subSection, }}
