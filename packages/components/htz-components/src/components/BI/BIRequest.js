@@ -17,14 +17,12 @@ const GET_DOSTAT_DATA = gql`
     page(path: $path) @client {
       ...PageBreadcrumbs
       slots {
-        ... on StandardArticleSlots {
-          article {
-            ... on ArticleHeader {
-              data {
-                authors {
-                  ... on AuthorObject {
-                    ...AuthorId
-                  }
+        article {
+          ... on ArticleHeader {
+            data {
+              authors {
+                ... on AuthorObject {
+                  ...AuthorId
                 }
               }
             }

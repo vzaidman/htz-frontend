@@ -28,112 +28,110 @@ export default gql`
       pageType
       ...PageSeoData
       slots {
-        ... on StandardArticleSlots {
-          aside {
-            ... on ChangeableElementGroup {
-              ...ChangeableElementGroup
-            }
+        aside {
+          ... on ChangeableElementGroup {
+            ...ChangeableElementGroup
           }
-          article {
-            ... on Content {
-              inputTemplate
-              contentId
-              contentName
-              properties
+        }
+        article {
+          ... on Content {
+            inputTemplate
+            contentId
+            contentName
+            properties
+          }
+          ... on ArticleData {
+            header {
+              exclusive
+              mobileExclusive
+              mobileSubtitle
+              mobileTitle
+              modDate
+              pubDate
+              reportingFrom
+              subtitle
+              title
             }
-            ... on ArticleData {
-              header {
-                exclusive
-                mobileExclusive
-                mobileSubtitle
-                mobileTitle
-                modDate
-                pubDate
-                reportingFrom
-                subtitle
-                title
+            headlineElement: mainElement {
+              ... on Embed {
+                ...Embed
               }
-              headlineElement: mainElement {
-                ... on Embed {
-                  ...Embed
-                }
-                ... on HtmlElement {
-                  ...HtmlElement
-                }
-                ... on Image {
-                  ...Image
-                }
-                ... on ImageGallery {
-                  ...ImageGallery
-                }
-                ... on Video {
-                  ...Video
-                }
+              ... on HtmlElement {
+                ...HtmlElement
               }
-              authors {
-                ... on CreditObject {
-                  ...CreditObj
-                }
-                ... on AuthorObject {
-                  ...AuthorObj
-                }
+              ... on Image {
+                ...Image
               }
-              body {
-                ... on Content {
-                  ...Content
-                }
-                ... on DfpBanner {
-                  ...DfpBanner
-                }
-                ... on ElementGroup {
-                  ...ElementGroup
-                }
-                ... on Embed {
-                  ...Embed
-                }
-                ... on HtmlElement {
-                  ...HtmlElement
-                }
-                ... on Image {
-                  ...Image
-                }
-                ... on ImageGallery {
-                  ...ImageGallery
-                }
-                ... on Interactive {
-                  ...Interactive
-                }
-                ... on Link {
-                  ...Link
-                }
-                ... on MobileQuickRegistration {
-                  ...MobileQuickRegistration
-                }
-                ... on NewsLetter {
-                  ...NewsLetter
-                }
-                ... on Paragraph {
-                  ...Paragraph
-                }
-                ... on RelatedArticles {
-                  ...RelatedArticles
-                }
-                ... on SeriesOrBlockArticles {
-                  ...SeriesOrBlockArticles
-                }
-                ... on Quote {
-                  ...Quote
-                }
-                ... on Tags {
-                  ...Tags
-                }
-                ... on Video {
-                  ...Video
-                }
+              ... on ImageGallery {
+                ...ImageGallery
               }
-              inputTemplate
-              commentsElementId
+              ... on Video {
+                ...Video
+              }
             }
+            authors {
+              ... on CreditObject {
+                ...CreditObj
+              }
+              ... on AuthorObject {
+                ...AuthorObj
+              }
+            }
+            body {
+              ... on Content {
+                ...Content
+              }
+              ... on DfpBanner {
+                ...DfpBanner
+              }
+              ... on ElementGroup {
+                ...ElementGroup
+              }
+              ... on Embed {
+                ...Embed
+              }
+              ... on HtmlElement {
+                ...HtmlElement
+              }
+              ... on Image {
+                ...Image
+              }
+              ... on ImageGallery {
+                ...ImageGallery
+              }
+              ... on Interactive {
+                ...Interactive
+              }
+              ... on Link {
+                ...Link
+              }
+              ... on MobileQuickRegistration {
+                ...MobileQuickRegistration
+              }
+              ... on NewsLetter {
+                ...NewsLetter
+              }
+              ... on Paragraph {
+                ...Paragraph
+              }
+              ... on RelatedArticles {
+                ...RelatedArticles
+              }
+              ... on SeriesOrBlockArticles {
+                ...SeriesOrBlockArticles
+              }
+              ... on Quote {
+                ...Quote
+              }
+              ... on Tags {
+                ...Tags
+              }
+              ... on Video {
+                ...Video
+              }
+            }
+            inputTemplate
+            commentsElementId
           }
         }
       }

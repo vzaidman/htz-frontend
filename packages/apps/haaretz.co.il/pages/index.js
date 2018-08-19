@@ -34,24 +34,13 @@ const PageData = gql`
       }
       ...BreadcrumbsPage
       slots {
-        ... on HomePageSlots {
-          header
-          topwide
-          topwidesecondary
-          aside
-          main
-          bottom
-          footer
-        }
-        ... on StandardArticleSlots {
-          preHeader
-          header
-          postHeader
-          aside
-          article
-          postMain
-          footer
-        }
+        preHeader
+        header
+        postHeader
+        aside
+        article
+        postMain
+        footer
       }
       dfpConfig {
         adSlotConfig
@@ -137,7 +126,9 @@ export class HomePage extends React.Component {
             <h1>
               {data.loading
                 ? 'Loading…'
-                : data.page ? data.page.contentName : ''}
+                : data.page
+                  ? data.page.contentName
+                  : ''}
             </h1>
             {data.page ? <Breadcrumbs page={data.page} /> : null}
             {data.page.pageType === 'article' && (

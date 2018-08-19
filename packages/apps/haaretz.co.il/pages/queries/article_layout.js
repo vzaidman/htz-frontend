@@ -6,13 +6,11 @@ export default gql`
     page(path: $path) {
       ...PageBreadcrumbs
       slots {
-        ... on StandardArticleSlots {
-          preHeader
-          header
-          postHeader
-          postMain
-          footer
-        }
+        preHeader
+        header
+        postHeader
+        postMain
+        footer
       }
       dfpConfig {
         adSlotConfig

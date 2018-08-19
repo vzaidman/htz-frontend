@@ -1,19 +1,18 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
   GraphQLObjectType,
-  GraphQLUnionType,
   GraphQLNonNull,
   GraphQLString,
   GraphQLList,
   GraphQLID,
 } from 'graphql';
-
-import StandardArticleSlotsType from './standard_article_slots_type';
-import HomePageSlotsType from './home_page_slots_type';
+import GraphQLJSON from 'graphql-type-json';
 
 import TaxonomyItem from './taxonomy_item_type';
 import seoData from './seo_data_type';
 import DfpConfigType from './dfp_config_type';
+import sideBar from './sideBar_type';
+import article from './article_type';
 
 const Page = new GraphQLObjectType({
   name: 'Page',
@@ -40,11 +39,17 @@ const Page = new GraphQLObjectType({
       type: seoData,
     },
     slots: {
-      type: new GraphQLUnionType({
-        name: 'Slots',
-        types: [ StandardArticleSlotsType, HomePageSlotsType, ],
-        resolveType: value =>
-          (value.topwidesecondary ? HomePageSlotsType : StandardArticleSlotsType),
+      type: new GraphQLObjectType({
+        name: 'ArticleSlots',
+        fields: () => ({
+          preHeader: { type: new GraphQLList(GraphQLJSON), },
+          header: { type: new GraphQLList(GraphQLJSON), },
+          postHeader: { type: new GraphQLList(GraphQLJSON), },
+          aside: { type: sideBar, },
+          article: { type: article, },
+          postMain: { type: new GraphQLList(GraphQLJSON), },
+          footer: { type: new GraphQLList(GraphQLJSON), },
+        }),
       }),
     },
     dfpConfig: {
