@@ -4,10 +4,15 @@ import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import ListItem from '../../elements/ListItem';
+import BlockLink from '../../../BlockLink/BlockLink';
+import H from '../../../AutoLevels/H';
 import Image from '../../../Image/Image';
+import Section from '../../../AutoLevels/Section';
+import HtzLink from '../../../HtzLink/HtzLink';
+import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
 
 // eslint-disable-next-line react/prop-types
-const Fry = ({ list, }) => (
+const Fry = ({ list, lazyLoad, gaAction, biAction, listId, }) => (
   <FelaComponent
     style={{
       display: 'flex',
@@ -28,7 +33,7 @@ const Fry = ({ list, }) => (
             marginBottom: '2rem',
           }}
         >
-          {theme.fryListI18n.title}
+          <H>{theme.fryListI18n.title}</H>
           <FelaComponent
             style={{
               ...theme.type(-3),
@@ -83,66 +88,91 @@ const Fry = ({ list, }) => (
             <span>Recommended by</span>
           </FelaComponent>
         </FelaComponent>
-        {list.items.map(item => {
-          // eslint-disable-next-line camelcase
-          const { title, image, path, source_display_name, } = item;
-          return (
-            <ListItem key={item.contentId}>
-              <FelaComponent
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  width: `${143 / 7}rem`,
-                  marginBottom: '3rem',
-                  ':nth-of-type(odd)': {
-                    marginEnd: '2rem',
-                  },
-                }}
-                render="a"
-                href={path}
-              >
-                <FelaComponent
-                  style={{
-                    flexShrink: '0',
-                    marginBottom: '1rem',
-                  }}
-                >
-                  <Image
-                    data={image}
-                    imgOptions={{
-                      transforms: {
-                        width: '125',
-                        aspect: 'regular',
-                        quality: 'auto',
+        <Section>
+          {list.items.map((item, index) => {
+            // eslint-disable-next-line camelcase
+            const { title, image, path, source_display_name, } = item;
+            return (
+              <ListItem key={item.contentId}>
+                <BlockLink
+                  href={path}
+                  onClick={() => {
+                    biAction({
+                      actionCode: 109,
+                      additionalInfo: {
+                        ArticleId: item.contentId,
+                        ListId: listId,
+                        Platform: 'desktop',
+                        NoInList: index + 1,
+                        ViewName: 'Fry',
                       },
+                    });
+                  }}
+                  miscStyles={{
+                    display: 'inline-flex',
+                    flexDirection: 'column',
+                    width: '20rem',
+                    marginBottom: '3rem',
+                    ':nth-of-type(odd)': {
+                      marginEnd: '2rem',
+                    },
+                  }}
+                >
+                  <div>
+                    <Image
+                      data={image}
+                      imgOptions={{
+                        transforms: {
+                          width: '125',
+                          aspect: 'regular',
+                          quality: 'auto',
+                        },
+                      }}
+                      miscStyles={{
+                        marginBottom: '1rem',
+                        flexShrink: '0',
+                        flexGrow: '0',
+                      }}
+                    />
+                  </div>
+                  <AboveBlockLink>
+                    {({ className, }) => {
+                      const aboveBlockLinkClasses = className;
+                      return (
+                        <FelaComponent
+                          style={{
+                            flexGrow: '1',
+                            fontWeight: '700',
+                            extend: [ theme.type(-1), ],
+                          }}
+                          render={({ className, }) => (
+                            <H
+                              className={`${aboveBlockLinkClasses} ${className}`}
+                            >
+                              <HtzLink href={path}>{title}</HtzLink>
+                              <FelaComponent
+                                style={{
+                                  color: theme.color('tertiary'),
+                                  fontWeight: '700',
+                                  marginBottom: '1rem',
+                                  extend: [ theme.type(-2), ],
+                                }}
+                                render="p"
+                              >
+                                {/* eslint-disable-next-line camelcase */}
+                                {source_display_name}{' '}
+                              </FelaComponent>
+                            </H>
+                          )}
+                        />
+                      );
                     }}
-                    hasWrapper={false}
-                  />
-                </FelaComponent>
-                <FelaComponent
-                  style={{
-                    ...theme.type(-1),
-                    fontWeight: '700',
-                  }}
-                  render="p"
-                >
-                  {title}
-                </FelaComponent>
-                <FelaComponent
-                  style={{
-                    ...theme.type(-2),
-                    color: theme.color('tertiary'),
-                    fontWeight: '700',
-                    marginBottom: '1rem',
-                  }}
-                  render="p"
-                >
-                  {source_display_name} {/* eslint-disable-line camelcase */}
-                </FelaComponent>
-              </FelaComponent>
-            </ListItem>
-          );
-        })}
+                  </AboveBlockLink>
+                </BlockLink>
+              </ListItem>
+            );
+          })}
+        </Section>
       </div>
     )}
   />
