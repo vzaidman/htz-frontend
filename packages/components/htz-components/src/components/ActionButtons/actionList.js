@@ -101,7 +101,12 @@ export const ActionButton = ({ render, }: ActionButtonProps): Node => (
     {({ loading, error, data, }) => {
       if (loading) return null;
       if (error) console.log(error);
-      const { platform, hostname, articleId, user: { id: userId, }, } = data;
+      const {
+        platform,
+        hostname,
+        articleId,
+        user: { id: userId, },
+      } = data;
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       return (
         <EventTracker>
@@ -571,10 +576,13 @@ const Whatsapp: StatelessFunctionalComponent<WhatsappButtonProps> = ({
         title="שתפו בוואטסאפ"
         onClick={() => {
           window.open(
-            `https://web.whatsapp.com/send?text=${elementUrl}` + // eslint-disable-line prefer-template
-              encodeURIComponent(
-                '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
-              ),
+            `${
+              platform === 'mobile'
+                ? 'whatsapp://'
+                : 'https://web.whatsapp.com/'
+            }send?text=${elementUrl}${encodeURIComponent(
+              '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
+            )}`,
             'popup',
             'width=635,height=800,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
           );
