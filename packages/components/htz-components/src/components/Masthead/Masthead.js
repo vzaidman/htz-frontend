@@ -1,5 +1,4 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
@@ -13,11 +12,6 @@ import MobileNavigationWrapper from '../MobileNavigationMenu/MobileNavigationWra
 import LayoutContainer from '../PageLayout/LayoutContainer';
 import NavigationMenu from '../NavigationMenu/NavigationMenu';
 import WrappedScroll from '../Scroll/Scroll';
-
-const OptOutStrip = dynamic(import('../OptOut/OptOutStrip'), {
-  ssr: false,
-  loading: () => null,
-});
 
 const hostQuery = gql`
   query Hostname($path: String!) {
@@ -88,41 +82,38 @@ class Masthead extends React.Component {
                   />
                 </header>
               ) : (
-                <React.Fragment>
-                  <OptOutStrip />
-                  <FelaComponent
-                    style={theme => ({
-                      alignItems: 'stretch',
-                      backgroundColor: theme.color('neutral', '-10'),
-                      display: 'flex',
-                      position: 'relative',
-                      width: '100%',
-                      extend: [
-                        borderBottom(
-                          '1px',
-                          0,
-                          'solid',
-                          theme.color('mastheadBorder', 'borderColor')
-                        ),
-                      ],
-                    })}
-                    render={({ className, }) => (
-                      <header className={className}>
-                        <NavigationMenu contentId={contentId} />
-                        <MastheadSearch
-                          searchIsOpen={this.state.searchIsOpen}
-                          onClick={this.toggleSearchState}
-                        />
-                        {this.state.searchIsOpen ? null : (
-                          <MastheadLogo host={host} />
-                        )}
-                        {this.state.searchIsOpen ? null : (
-                          <MastheadUserTools y={y} />
-                        )}
-                      </header>
-                    )}
-                  />
-                </React.Fragment>
+                <FelaComponent
+                  style={theme => ({
+                    alignItems: 'stretch',
+                    backgroundColor: theme.color('neutral', '-10'),
+                    display: 'flex',
+                    position: 'relative',
+                    width: '100%',
+                    extend: [
+                      borderBottom(
+                        '1px',
+                        0,
+                        'solid',
+                        theme.color('mastheadBorder', 'borderColor')
+                      ),
+                    ],
+                  })}
+                  render={({ className, }) => (
+                    <header className={className}>
+                      <NavigationMenu contentId={contentId} />
+                      <MastheadSearch
+                        searchIsOpen={this.state.searchIsOpen}
+                        onClick={this.toggleSearchState}
+                      />
+                      {this.state.searchIsOpen ? null : (
+                        <MastheadLogo host={host} />
+                      )}
+                      {this.state.searchIsOpen ? null : (
+                        <MastheadUserTools y={y} />
+                      )}
+                    </header>
+                  )}
+                />
               );
             }}
           </Media>
