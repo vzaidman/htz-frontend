@@ -7,8 +7,8 @@ import {
 } from '@haaretz/app-utils';
 
 export default gql`
-  query ZoidbergQuery($path: String!) {
-    list(path: $path) {
+  query ZoidbergQuery($listId: String!, $history: [ID]) {
+    list(listId: $listId, history: $history) {
       title
       items {
         ... on TeaserInList {

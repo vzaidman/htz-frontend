@@ -1,4 +1,4 @@
-/* eslint-disable import/no-unresolved */
+/* global localStorage */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -20,14 +20,17 @@ const propTypes = {
 class List extends React.Component {
   state = {
     selectedView: null,
+    history: null,
   };
 
   componentDidMount() {
+    const history = JSON.parse(localStorage.getItem('readingHistory')) || [];
     const { view, } = this.props;
     getView(view)
       .then(response => {
         this.setState({
           selectedView: response,
+          history,
         });
       })
       .catch(err => console.log(err));
@@ -35,15 +38,18 @@ class List extends React.Component {
 
   render() {
     const { contentId, } = this.props;
-    const { selectedView, } = this.state;
+    const { selectedView, history, } = this.state;
     const ListComponent = selectedView
       ? Array.isArray(selectedView)
         ? selectedView[0].default
         : selectedView
       : null;
-    return ListComponent ? (
+    return ListComponent && history ? (
       selectedView[1] ? (
-        <Query query={selectedView[1].default} variables={{ path: contentId, }}>
+        <Query
+          query={selectedView[1].default}
+          variables={{ listId: contentId, history, }}
+        >
           {({ data: { list, }, loading, error, }) => {
             if (loading) return null;
             if (error) return null;

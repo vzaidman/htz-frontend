@@ -3,8 +3,8 @@ import gql from 'graphql-tag';
 import { clickTrackerBannersWrapper, } from '@haaretz/app-utils';
 
 export default gql`
-  query LeelaQuery($path: String!) {
-    list(path: $path) {
+  query LeelaQuery($listId: String!, $history: [ID]) {
+    list(listId: $listId, history: $history) {
       title
       items {
         ... on ClickTrackerBannersWrapper {

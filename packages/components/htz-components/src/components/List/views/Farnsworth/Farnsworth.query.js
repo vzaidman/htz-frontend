@@ -3,8 +3,8 @@ import gql from 'graphql-tag';
 import { teaserForLeftElement, } from '@haaretz/app-utils';
 
 export default gql`
-  query FarnsworthQuery($path: String!) {
-    list(path: $path) {
+  query FarnsworthQuery($listId: String!, $history: [ID]) {
+    list(listId: $listId, history: $history) {
       title
       items {
         ... on TeaserInList {

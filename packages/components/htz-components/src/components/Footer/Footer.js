@@ -22,8 +22,8 @@ import ChartBeat from '../Scripts/ChartBeat';
 import ChromePush from '../Scripts/ChromePush';
 
 const GET_FOOTER_ITEMS = gql`
-  query FooterQuery($path: String!) {
-    footer(path: $path) {
+  query FooterQuery($listId: String!) {
+    footer(listId: $listId) {
       headList {
         contentName
         value
@@ -139,7 +139,7 @@ class Footer extends React.Component {
               color,
             } = theme;
             return (
-              <Query query={GET_FOOTER_ITEMS} variables={{ path: contentId, }}>
+              <Query query={GET_FOOTER_ITEMS} variables={{ listId: contentId, }}>
                 {({ data, loading, error, }) => {
                   if (error) return null;
                   if (loading) return null;

@@ -45,16 +45,16 @@ const RootQuery = new GraphQLObjectType({
     },
     footer: {
       type: Footer,
-      args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
-      resolve(parentValue, { path, }, context) {
-        return context.listsLoader.load(path);
+      args: { listId: { type: new GraphQLNonNull(GraphQLString), }, },
+      resolve(parentValue, args, context) {
+        return context.listsLoader.load(args);
       },
     },
     navMenu: {
       type: NavMenu,
-      args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
-      resolve(parentValue, { path, }, context) {
-        return context.listsLoader.load(path);
+      args: { listId: { type: new GraphQLNonNull(GraphQLString), }, },
+      resolve(parentValue, args, context) {
+        return context.listsLoader.load(args);
       },
     },
     nextArticle: {
@@ -74,9 +74,12 @@ const RootQuery = new GraphQLObjectType({
     },
     list: {
       type: List,
-      args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
-      resolve(parentValue, { path, }, context) {
-        return context.listsLoader.load(path);
+      args: {
+        listId: { type: new GraphQLNonNull(GraphQLString), },
+        history: { type: new GraphQLList(GraphQLID), },
+      },
+      resolve(parentValue, args, context) {
+        return context.listsLoader.load(args);
       },
     },
     page: {
