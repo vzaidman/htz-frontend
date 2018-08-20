@@ -243,12 +243,12 @@ const styles =
  * 1. Restore the coloring undone by defining the text shadow
  */
   '::-moz-selection{' +
-  `background-color:${getColor('primary', '-3')};` + // 1
+  `background-color:${getColor('quaternary', 'base')};` + // 1
   `color:${getColor('bodyText')};` + // 1
   'text-shadow:none;' +
   '}' +
   '::selection{' +
-  `background-color:${getColor('primary', '-3')};` + // 1
+  `background-color:${getColor('quaternary', 'base')};` + // 1
   `color:${getColor('bodyText')};` + // 1
   'text-shadow:none;' +
   '}' +
