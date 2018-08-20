@@ -27,6 +27,7 @@ const submitForm = ({
             loading: false,
             email,
             userExists,
+            error: null,
           },
           updateRegisterOrLoginStage(userExists ? 'login' : 'register')
         );

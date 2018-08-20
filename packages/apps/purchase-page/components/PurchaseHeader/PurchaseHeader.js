@@ -182,6 +182,7 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
                     <IconMarkerLogo
                       size={4}
                       color="primary"
+                      attrs={{ role: 'image', 'aria-hidden': true, }}
                       miscStyles={{ marginTop: '2rem', }}
                     />
                     <AriaDescription id="theMarkerLogo">
@@ -193,6 +194,7 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
                     <IconHaaretzLogo
                       size={4}
                       color="black"
+                      attrs={{ role: 'image', 'aria-hidden': true, }}
                       miscStyles={{ marginTop: '2rem', }}
                     />
                     <AriaDescription id="haaretzLogo">הארץ</AriaDescription>

@@ -140,8 +140,9 @@ class LoginOrRegisterStage extends React.Component {
                                       cache,
                                       Router,
                                       router,
-                                      setState: newState =>
-                                        this.setState(newState),
+                                      setState: newState => {
+                                        this.setState(newState);
+                                      },
                                       registerOrLoginStage,
                                     });
                                   }}
