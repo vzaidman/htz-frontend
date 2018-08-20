@@ -22,7 +22,7 @@ export default class MobileBarActionButtons extends React.Component {
      * A callback function to hide/display the menu button and some share icons.
      */
     onClick: PropTypes.func.isRequired,
-    // shouldDisplay: PropTypes.bool.isRequired,
+    shouldMainNavBarDisplay: PropTypes.bool.isRequired,
   };
 
   state = { shareIsOpen: false, modalOpen: false, };
@@ -36,14 +36,13 @@ export default class MobileBarActionButtons extends React.Component {
 
   render() {
     const { shareIsOpen, } = this.state;
-    // const { shouldDisplay, } = this.props;
+    const { shouldMainNavBarDisplay, } = this.props;
 
     return (
       <FelaComponent
         style={{
           display: 'flex',
           justifyContent: shareIsOpen ? 'flex-end' : 'space-between',
-          // justifyContent: shareIsOpen ? 'flex-end' : 'space-around',
           flexGrow: '1',
         }}
         render={({ theme, className, }) => (
@@ -123,7 +122,7 @@ export default class MobileBarActionButtons extends React.Component {
                     <A11yDialog
                       appendTo="modalsRoot"
                       elementToHide="pageRoot"
-                      isVisible={shareIsOpen}
+                      isVisible={shareIsOpen && shouldMainNavBarDisplay}
                       onOpen={() => this.setState({ modalOpen: true, })}
                       onClose={() => this.setState({ modalOpen: false, })}
                       isModal

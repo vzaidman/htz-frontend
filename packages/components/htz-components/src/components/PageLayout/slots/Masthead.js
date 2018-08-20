@@ -50,7 +50,7 @@ const Logo = ({ host, }) => (
   />
 );
 
-function Header({ content, articleId, }) {
+function Masthead({ content, articleId, }) {
   return (
     <Fragment>
       {content
@@ -76,6 +76,6 @@ function Header({ content, articleId, }) {
   );
 }
 
-Header.propTypes = propTypes;
+Masthead.propTypes = propTypes;
 
-export default Header;
+export default Masthead;

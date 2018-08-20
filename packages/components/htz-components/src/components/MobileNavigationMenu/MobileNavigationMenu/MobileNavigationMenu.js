@@ -1,6 +1,6 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, } from 'react-fela';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 import { borderEnd, } from '@haaretz/htz-css-tools';
 import Button from '../../Button/Button';
 import Hamburger from '../../Animations/Hamburger';
@@ -100,6 +100,7 @@ class MobileNavigationMenu extends React.Component {
 
   state = {
     searchIsOpen: false,
+    modalOpen: false,
   };
 
   toggleOpen = () => {
@@ -116,86 +117,95 @@ class MobileNavigationMenu extends React.Component {
   };
 
   render() {
-    const { searchIsOpen, } = this.state;
+    const { searchIsOpen, modalOpen, } = this.state;
     const { menuSections, menuIsOpen, } = this.props;
 
     return (
-      <Fragment>
-        <FelaComponent
-          rule={menuButtonStyle}
-          menuIsOpen={menuIsOpen}
-          render={({ theme, className, }) => (
-            <button
-              className={className}
-              onClick={this.toggleOpen}
-              aria-expanded={menuIsOpen}
-            >
-              <FelaComponent
-                style={{
-                  marginStart: '2rem',
-                  marginEnd: '2rem',
-                  position: 'relative',
-                }}
-                render="span"
-              >
-                <Hamburger
-                  isOpen={menuIsOpen}
-                  color={{
-                    close: [ 'neutral', '-3', ],
-                    open: [ 'neutral', '-10', ],
-                  }}
-                  size={2.5}
-                />
-              </FelaComponent>
-              <span>{theme.mobileNavigationMenuI18n.buttonText}</span>
-            </button>
-          )}
-        />
-        <A11yDialog
-          appendTo="modalsRoot"
-          elementToHide="pageRoot"
-          isVisible={menuIsOpen}
-          isModal
-          closeOnOutsideClick
-          containerMiscStyles={{
-            width: '100%',
-            position: 'fixed',
-            maxHeight: '80vh',
-            overflowY: 'auto',
-            top: 'auto',
-            bottom: '8rem',
-            left: '0',
-            right: '0',
-            outline: 'none',
-            transform: 'none',
-          }}
-          render={({ handleClose, isVisible, isModal, }) => {
-            !isVisible && menuIsOpen && this.toggleOpen();
-            return (
-              <Fragment>
-                {searchIsOpen ? (
-                  <Button
-                    variant="neutralOpaque"
-                    onClick={this.toggleSearchState}
-                    aria-expanded={searchIsOpen}
-                    boxModel={{ hp: 0.5, vp: 0.5, }}
+      <FelaTheme
+        render={theme => (
+          <Fragment>
+            <FelaComponent
+              rule={menuButtonStyle}
+              menuIsOpen={menuIsOpen}
+              render={({ theme, className, }) => (
+                <button
+                  className={className}
+                  onClick={this.toggleOpen}
+                  aria-expanded={menuIsOpen}
+                >
+                  <FelaComponent
+                    style={{
+                      marginStart: '2rem',
+                      marginEnd: '2rem',
+                      position: 'relative',
+                    }}
+                    render="span"
                   >
-                    <IconClose size={3} />
-                  </Button>
-                ) : null}
-                <MobileMenuHeader
-                  searchIsOpen={searchIsOpen}
-                  onClick={this.toggleSearchState}
-                />
-                <MenuList
-                  menuSections={menuSections}
-                  searchIsOpen={searchIsOpen}
-                />
-              </Fragment>
-            );
-          }}
-        />
-      </Fragment>
+                    <Hamburger
+                      isOpen={menuIsOpen}
+                      color={{
+                        close: [ 'neutral', '-3', ],
+                        open: [ 'neutral', '-10', ],
+                      }}
+                      size={2.5}
+                    />
+                  </FelaComponent>
+                  <span>{theme.mobileNavigationMenuI18n.buttonText}</span>
+                </button>
+              )}
+            />
+            <A11yDialog
+              appendTo="modalsRoot"
+              elementToHide="pageRoot"
+              isVisible={menuIsOpen}
+              isModal
+              closeOnOutsideClick
+              onOpen={() => this.setState({ modalOpen: true, })}
+              onClose={() => this.setState({ modalOpen: false, })}
+              containerMiscStyles={{
+                width: '100%',
+                position: 'fixed',
+                maxHeight: '60vh',
+                overflowY: 'auto',
+                top: 'auto',
+                bottom: '8rem',
+                left: '0',
+                right: '0',
+                outline: 'none',
+                transform: modalOpen ? 'translateY(0)' : 'translateY(100%)',
+                transitionProperty: 'transform',
+                ...theme.getDuration('transition', 1),
+                ...theme.getTimingFunction('transition', 'swiftIn'),
+              }}
+              render={({ handleClose, isVisible, isModal, }) => {
+                !isVisible && menuIsOpen && this.toggleOpen();
+                return (
+                  <Fragment>
+                    {searchIsOpen ? (
+                      <Button
+                        variant="neutralOpaque"
+                        onClick={this.toggleSearchState}
+                        aria-expanded={searchIsOpen}
+                        boxModel={{ hp: 0.5, vp: 0.5, }}
+                      >
+                        <IconClose size={3} />
+                      </Button>
+                    ) : null}
+                    <MobileMenuHeader
+                      searchIsOpen={searchIsOpen}
+                      onClick={this.toggleSearchState}
+                    />
+                    <MenuList
+                      menuSections={menuSections}
+                      searchIsOpen={searchIsOpen}
+                    />
+                  </Fragment>
+                );
+              }}
+            />
+          </Fragment>
+        )}
+      />
     );
   }
 }

@@ -9,7 +9,7 @@ import { extractAuthorsFromArticle, } from '../GoogleAnalytics/helpers/extractAu
 import LayoutRow from './LayoutRow'; // eslint-disable-line import/no-named-as-default
 import LayoutContainer from './LayoutContainer'; // eslint-disable-line import/no-named-as-default
 import getComponent from '../../utils/componentFromInputTemplate';
-import Header from './slots/Header';
+import Masthead from './slots/Masthead';
 import StandardArticle from './articleTypes/StandardArticle';
 import StandardArticleQuery from './queries/standard_article';
 import UserDispenser from '../User/UserDispenser';
@@ -62,8 +62,11 @@ const ArticlePageLayout = ({
   return (
     <Fragment>
       {preHeader ? <LayoutRow>{getElements(preHeader)}</LayoutRow> : null}
-      <LayoutRow>
-        <Header content={header} articleId={articleId} />
+      {/* padding bottom is because masthead is fixed position in mobile */}
+      <LayoutRow
+        miscStyles={{ paddingBottom: [ { until: 's', value: '9rem', }, ], }}
+      >
+        <Masthead content={header} articleId={articleId} />
       </LayoutRow>
       <LayoutRow>
         {postHeader ? (

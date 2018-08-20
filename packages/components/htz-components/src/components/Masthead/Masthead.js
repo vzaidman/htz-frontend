@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, Fragment, } from 'react';
 import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
@@ -7,10 +7,9 @@ import { borderBottom, } from '@haaretz/htz-css-tools';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import MastheadSearch from './MastheadSearch/MastheadSearch';
 import MastheadUserTools from './MastheadUserTools';
-import Media from '../Media/Media';
-import MobileNavigationWrapper from '../MobileNavigationMenu/MobileNavigationWrapper';
 import LayoutContainer from '../PageLayout/LayoutContainer';
 import NavigationMenu from '../NavigationMenu/NavigationMenu';
+import MobileNavigation from '../MobileNavigationMenu/MobileNavigationMain';
 import WrappedScroll from '../Scroll/Scroll';
 
 const OptOutStrip = dynamic(import('../OptOut/OptOutStrip'), {
@@ -24,7 +23,7 @@ const hostQuery = gql`
   }
 `;
 
-class Masthead extends React.Component {
+class Masthead extends Component {
   static propTypes = {
     /**
      * Navigation Menu's content Id.
@@ -34,6 +33,8 @@ class Masthead extends React.Component {
      * A string of the host: `tm` for `themarker.com`, `htz` for `haaretz.co.il` and `hdz` for `haaretz.com`.
      */
     hostname: PropTypes.string.isRequired,
+    //  used by getDerived
+    // eslint-disable-next-line react/no-unused-prop-types
     velocity: PropTypes.number,
     y: PropTypes.number,
     Logo: PropTypes.node.isRequired,
@@ -44,7 +45,16 @@ class Masthead extends React.Component {
     y: 0,
   };
 
-  state = { searchIsOpen: false, };
+  state = { searchIsOpen: false, shouldDisplay: true, };
+
+  static getDerivedStateFromProps(props, state) {
+    const { velocity, y, } = props;
+
+    if (y < 10) return { shouldDisplay: true, };
+    if (velocity < 0) return { shouldDisplay: false, };
+    if (velocity > 0) return { shouldDisplay: true, };
+    return null;
+  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.y > 0 && this.state.searchIsOpen) {
@@ -59,61 +69,97 @@ class Masthead extends React.Component {
   };
 
   render() {
-    const { contentId, hostname, velocity, y, Logo, } = this.props;
-    const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+    const { contentId, hostname, y, Logo, } = this.props;
+    const { shouldDisplay, searchIsOpen, } = this.state;
+    const hostMatch = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+    let host;
+    switch (hostMatch) {
+      case 'haaretz.com':
+        host = 'hdc';
+        break;
+      case 'themarker.com':
+        host = 'tm';
+        break;
+      default:
+        host = 'htz';
+    }
+
     return (
-      <Media query={{ until: 's', misc: 'portrait', }}>
-        {mobilePortrait => (
-          <Media query={{ until: 'm', misc: 'landscape', }}>
-            {mobileLandscape => {
-              const isMobile = mobilePortrait || mobileLandscape;
-              return isMobile ? (
-                <header>
-                  <MobileNavigationWrapper
-                    contentId={contentId}
-                    velocity={velocity}
-                    y={y}
-                  />
-                </header>
-              ) : (
-                <React.Fragment>
-                  <OptOutStrip />
-                  <FelaComponent
-                    style={theme => ({
-                      alignItems: 'stretch',
-                      backgroundColor: theme.color('neutral', '-10'),
-                      display: 'flex',
-                      position: 'relative',
-                      width: '100%',
-                      extend: [
-                        borderBottom(
-                          '1px',
-                          0,
-                          'solid',
-                          theme.color('mastheadBorder', 'borderColor')
-                        ),
-                      ],
-                    })}
-                    render={({ className, }) => (
-                      <header className={className}>
-                        <NavigationMenu contentId={contentId} />
-                        <MastheadSearch
-                          searchIsOpen={this.state.searchIsOpen}
-                          onClick={this.toggleSearchState}
-                        />
-                        {this.state.searchIsOpen ? null : <Logo host={host} />}
-                        {this.state.searchIsOpen ? null : (
-                          <MastheadUserTools y={y} />
-                        )}
-                      </header>
-                    )}
-                  />
-                </React.Fragment>
-              );
-            }}
-          </Media>
-        )}
-      </Media>
+      <Fragment>
+        <OptOutStrip />
+        <FelaComponent
+          style={theme => {
+            const mobileStyles = {
+              position: 'fixed',
+              width: '100%',
+              start: '0',
+              // todo: top is not 0 because of OptOutStrip, when removing change to 0
+              top: y < 10 ? '6rem' : '0',
+              zIndex: theme.getZIndex('modal', 1),
+              transform: `translateY(${shouldDisplay ? '0' : '-100'}%)`,
+            };
+            return {
+              alignItems: 'stretch',
+              backgroundColor: theme.color('neutral', '-10'),
+              display: 'flex',
+              position: 'relative',
+              paddingTop: '2rem',
+              transitionProperty: 'transform',
+              extend: [
+                borderBottom(
+                  '1px',
+                  2,
+                  'solid',
+                  theme.color('mastheadBorder', 'borderColor')
+                ),
+                theme.getDelay('transition', -1),
+                theme.getDuration('transition', -1),
+                theme.getTimingFunction('transition', 'linear'),
+                theme.mq({ until: 's', }, mobileStyles),
+                theme.mq({ until: 'm', misc: 'landscape', }, mobileStyles),
+              ],
+            };
+          }}
+          render="header"
+        >
+          <NavigationMenu contentId={contentId} />
+          <MastheadSearch
+            searchIsOpen={searchIsOpen}
+            onClick={this.toggleSearchState}
+          />
+          {searchIsOpen ? null : <Logo host={host} />}
+          {searchIsOpen ? null : <MastheadUserTools y={y} />}
+        </FelaComponent>
+
+        <FelaComponent
+          style={theme => ({
+            backgroundColor: 'transparent',
+            transform: `translate(50%, ${shouldDisplay ? '0' : '100'}%)`,
+            transitionProperty: 'transform',
+            position: 'fixed',
+            start: '50%',
+            bottom: '0',
+            width: '100%',
+            zIndex: theme.getZIndex('modal', 1),
+            display: 'none',
+            extend: [
+              theme.getDelay('transition', -1),
+              theme.getDuration('transition', -1),
+              theme.getTimingFunction('transition', 'linear'),
+              theme.mq({ until: 's', }, { display: 'initial', }),
+              theme.mq(
+                { until: 'm', misc: 'landscape', },
+                { display: 'initial', }
+              ),
+            ],
+          })}
+        >
+          <MobileNavigation
+            contentId={contentId}
+            shouldDisplay={shouldDisplay}
+          />
+        </FelaComponent>
+      </Fragment>
     );
   }
 }
