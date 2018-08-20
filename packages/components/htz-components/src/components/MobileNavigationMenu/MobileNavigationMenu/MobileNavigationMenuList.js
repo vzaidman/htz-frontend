@@ -54,25 +54,26 @@ List.propTypes = {
 
 export default function List({ menuSections, searchIsOpen, }) {
   const { items, sites, promotions, } = menuSections;
-  const combinedItems =
-    items &&
-    items.map(item => <MobileMenuLink key={`item ${item.name}`} {...item} />);
+  const combinedItems = items
+    ? items.map(item => <MobileMenuLink key={`item ${item.name}`} {...item} />)
+    : [];
 
   const combinedSites = theme =>
-    sites &&
-    sites.map(site => (
-      <MobileMenuLink key={`site ${site.name}`} isSite {...site} />
-    ));
+    (sites
+      ? sites.map(site => (
+        <MobileMenuLink key={`site ${site.name}`} isSite {...site} />
+      ))
+      : []);
 
-  const combinedPromotions =
-    promotions &&
-    promotions.map(promotion => (
+  const combinedPromotions = promotions
+    ? promotions.map(promotion => (
       <MobileMenuButton
         variant="salesOpaque"
         miscStyles={{ justifyContent: 'center', }}
         {...promotion}
       />
-    ));
+    ))
+    : [];
 
   return (
     <FelaComponent

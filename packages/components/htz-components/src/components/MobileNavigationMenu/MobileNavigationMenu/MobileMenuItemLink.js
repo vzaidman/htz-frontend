@@ -49,7 +49,7 @@ export default function ItemLink({ name, url, isSub, isSite, }) {
               textDecoration: 'underline',
             }
           : {}),
-        extend: [ isSub ? theme.type(-2) : theme.type(-1), ],
+        extend: [ theme.type(-1), ],
       })}
       render={({ className, }) => (
         <HtzLink href={url} content={name} className={className} />
