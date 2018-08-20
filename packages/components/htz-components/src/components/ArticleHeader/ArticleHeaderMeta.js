@@ -96,7 +96,13 @@ class ArticleHeaderMeta extends React.Component {
       new Date(modifiedDate).toDateString() === new Date().toDateString()
         ? 'HH:mm'
         : 'HH:mm | DD.MM.YYYY';
-    return <Time time={modifiedDate} format={format} className={className} />;
+    return (
+      <Time
+        time={modifiedDate}
+        format={`עודכן ב ${format}`}
+        className={className}
+      />
+    );
   };
 
   toggleAuthorAlertsForm() {
