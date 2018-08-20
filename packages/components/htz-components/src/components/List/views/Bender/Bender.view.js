@@ -134,7 +134,9 @@ export default function Bender({ list, lazyLoad, gaAction, biAction, listId, }) 
                         ],
                       }}
                       render={({ className, }) => (
-                        <H className={className}>{item.title}</H>
+                        <H className={className}>
+                          <HtzLink href={item.path}>{item.title}</HtzLink>
+                        </H>
                       )}
                     />
                   </div>
@@ -149,15 +151,19 @@ export default function Bender({ list, lazyLoad, gaAction, biAction, listId, }) 
                     {({ className, theme, }) => (
                       <span className={className}>
                         {item.authors.map(author => {
-                          if (typeof author === 'object') {
+                          if (author.url) {
                             return (
                               <HtzLink
-                                href="https://www.haaretz.co.il"
+                                href={author.url}
                                 content={author.contentName}
                               />
                             );
                           }
-                          return <span key={author.contentName}>{author}</span>;
+                          return (
+                            <span key={author.contentName || author.name}>
+                              {author.contentName || author.name}
+                            </span>
+                          );
                         })}
                       </span>
                     )}
