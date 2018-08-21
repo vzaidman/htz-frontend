@@ -6,9 +6,13 @@
  */
 const getSectionPairFromLineage = lineage =>
   lineage
+    // 1. remove articleId
     .slice(1)
+    // 2. change order from most-specific to least-specific
     .reverse()
+    // 3. leave only section and subSection
     .slice(1, 3)
+    // 4. extract just the pathSegment
     .map(x => x.pathSegment);
 
 export default getSectionPairFromLineage;

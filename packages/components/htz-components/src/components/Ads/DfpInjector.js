@@ -15,7 +15,7 @@ export const adPriorities = {
   low: 'low',
 };
 
-const initDfpScript = (dfpConfig, DEBUG = false) => {
+const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
   //  Part I: immidiate initialization of high priority DFP ads, like maaavaron
   let q;
   if (dfpConfig) {
