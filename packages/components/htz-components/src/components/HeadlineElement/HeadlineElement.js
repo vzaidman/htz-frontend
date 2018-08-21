@@ -77,11 +77,13 @@ function HeadlineElement({ elementObj, miscStyles, }) {
       <Caption
         caption={elementObj.caption || elementObj.title}
         credit={elementObj.credit}
-        backgroundColor={[ { until: 's', value: 'black', }, ]}
+        backgroundColor={[ { until: 's', value: 'neutral', }, ]}
         color={[ { until: 's', value: 'white', }, ]}
         miscStyles={{
-          marginTop: [ { from: 's', value: '0.5rem', }, ],
+          // marginTop: [ { from: 's', value: '0.5rem', }, ],
           paddingStart: '2rem',
+          paddingTop: '0.5rem',
+          paddingBottom: '0.5rem',
         }}
       />
     </FelaComponent>
