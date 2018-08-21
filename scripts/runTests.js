@@ -35,7 +35,15 @@ Object.keys(packages).forEach(packageDir =>
 function runTestsLocally(packageDir, files) {
   const jestResult = spawn.sync(
     'cross-env',
-    [ 'yarn', 'run', 'test', '--coverage', '--findRelatedTests', '--passWithNoTests', ...files, ],
+    [
+      'yarn',
+      'run',
+      'test',
+      '--coverage',
+      '--findRelatedTests',
+      '--passWithNoTests',
+      ...files,
+    ],
     {
       cwd: packageDir,
       stdio: 'inherit',

@@ -1,5 +1,6 @@
 const spawn = require('cross-spawn');
 const globby = require('globby');
+const path = require('path');
 
 /*
  * Until the next version of Prettier is released with better ignore pattern
@@ -17,29 +18,55 @@ function getFileList() {
   );
 }
 
-// All arguments go to Prettier except for `--no-fix-lint`.
 const args = process.argv.slice(2);
-const prettierArgs = args.filter(arg => arg !== '--no-fix-lint');
-const fixLint = args.indexOf('--no-fix-lint') === -1;
-const fileList = getFileList();
+
+// All arguments go to Prettier except for `--no-fix-lint`.
+const fixLint = !args.includes('--no-fix-lint');
+const bail = !args.includes('--no-bail');
+const nonScriptArgs =
+  fixLint && bail
+    ? args
+    : args.filter(arg => ![ '--no-fix-lint', '--no-bail', ].includes(arg));
+
+const hasFileList = nonScriptArgs.includes('--files');
+const fileListStartPosition = nonScriptArgs.indexOf(
+  nonScriptArgs.indexOf('--files') + 1
+);
+const prettierArgs = hasFileList
+  ? nonScriptArgs.slice(0, fileListStartPosition - 1)
+  : nonScriptArgs;
+const fileList = hasFileList
+  ? nonScriptArgs.slice(fileListStartPosition)
+  : getFileList();
 
 const commands = [
-  [ 'node', require.resolve('./prettier'), ...prettierArgs, ...fileList, ],
+  [
+    'node',
+    require.resolve(path.join('prettier')),
+    ...prettierArgs,
+    ...fileList,
+  ],
 ];
 if (fixLint) {
-  commands.push([ 'node', require.resolve('./eslint-fix'), ...fileList, ]);
+  commands.push([
+    'node',
+    require.resolve(path.join(__dirname, 'eslint-fix')),
+    ...fileList,
+  ]);
 }
 
 commands.forEach(command => {
   const result = spawn.sync(command[0], command.slice(1), { stdio: 'inherit', });
-  if (result.error) {
-    throw result.error;
-  }
-  if (result.signal) {
-    console.error(result.signal);
-    process.exit(1);
-  }
-  if (result.status) {
-    process.exitCode = result.status;
+  if (bail) {
+    if (result.error) {
+      throw result.error;
+    }
+    if (result.signal) {
+      console.error(result.signal);
+      process.exit(1);
+    }
+    if (result.status) {
+      process.exitCode = result.status;
+    }
   }
 });
