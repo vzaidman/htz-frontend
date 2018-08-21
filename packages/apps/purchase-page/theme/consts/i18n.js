@@ -6,9 +6,9 @@ export const seo = Object.freeze({
     googleSiteVerification: 's8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY',
   }),
   'themarker.com': Object.freeze({
-    title: 'מינוי לאתר TheMarker',
+    title: 'מינוי לאתר TheMarker – מנוי לדה מרקר',
     description:
-      'רכשו מינוי לדה מרקר וקבלו את כל תכני דה מרקר במחשב ובאפליקציה, פחות פרסומות, פודקסט שבועי ועדכונים שוטפים לכל מכשיר שתרצו.',
+      'מינוי לאתר TheMarker: רכשו מנוי לדה מרקר וקבלו את כל תכני דהמרקר במחשב ובאפליקציה , פחות פרסומות, פודקסט שבועי ועדכונים שוטפים לכל מכשיר שתרצו.',
     googleSiteVerification: '-3Rs25_Tuwid8njQF72cVtAcYAxGbYhXewg5Y4ppV_4',
   }),
 });
