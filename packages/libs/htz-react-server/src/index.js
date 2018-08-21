@@ -32,6 +32,7 @@ import hdc from './routes/hdc';
 import purchase from './routes/purchase';
 
 // To satisfy Extend peer dependencies
+require('@google-cloud/trace-agent').start();
 
 const logger = createLogger({
   name: 'htz-react-server',

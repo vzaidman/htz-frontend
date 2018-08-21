@@ -48,6 +48,7 @@
     "morgan": "^1.9.0",
     "morgan-json": "^1.1.0",
     "node-fetch": "^2.1.2",
+    "@google-cloud/trace-agent": "3.1.1",
     "pm2": "^3.0.2",
     "universal-cookie": "^2.1.0"
   },

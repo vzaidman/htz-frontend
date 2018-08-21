@@ -452,6 +452,7 @@
     "write-pkg": "^3.1.0"
   },
   "dependencies": {
-    "bunyan": "^1.8.12"
+    "bunyan": "^1.8.12",
+    "npm": "^6.4.0"
   }
 }
