@@ -135,7 +135,6 @@ export default class Form extends Component {
     refFunc,
     ...rest
   }) => {
-    console.log('rest props from get input props', rest);
     const stateError = this.state.errors.find(error => {
       if (error && error.name === name) {
         return error;
