@@ -31,4 +31,5 @@ module.exports = {
   logLevel: 'error',
   assetPrefix: '',
   enableHttpLogging: false,
+  configName: 'production',
 };

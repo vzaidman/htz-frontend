@@ -31,4 +31,5 @@ module.exports = {
   logLevel: 'info',
   assetPrefix: '',
   enableHttpLogging: false,
+  configName: 'staging',
 };

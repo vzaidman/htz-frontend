@@ -1,5 +1,6 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
+import config from 'config';
 
 const propTypes = {
   host: PropTypes.string.isRequired,
@@ -10,6 +11,9 @@ const defaultProps = {};
 
 function SEO({ host, polyFillSrc, }) {
   const site = host === 'themarker.com' ? 'tm' : 'htz';
+  const isStage = config.has('configName')
+    ? config.get('configName') === 'staging'
+    : false;
   return (
     <Fragment>
       <meta charSet="utf-8" />
@@ -75,6 +79,12 @@ function SEO({ host, polyFillSrc, }) {
 
       <meta name="referrer" content="always" />
       <meta name="robots" content="noarchive" />
+      {isStage ? (
+        <meta
+          name="google-site-verification"
+          content="s8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY"
+        />
+      ) : null}
     </Fragment>
   );
 }
