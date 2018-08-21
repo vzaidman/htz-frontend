@@ -124,23 +124,15 @@ export function createLoaders(req) {
   );
   const listsLoader = new DataLoader(keys =>
     Promise.all(
-      keys.map(({ listId, history, }) => {
-        console.log(
-          'FETCH: ',
+      keys.map(({ listId, history, }) =>
+        fetch(
           `${serviceBase}/papi/cmlink${
             listId.startsWith('/') ? '' : '/'
           }${listId}?vm=whtzResponsive&exploded=true&exclude=${
             history ? history.join(',') : ''
           }`
-        );
-        return fetch(
-          `${serviceBase}/papi/cmlink${
-            listId.startsWith('/') ? '' : '/'
-          }${listId}?vm=whtzResponsive&exploded=true&exclude=${
-            history ? history.join(',') : ''
-          }`
-        ).then(response => response.json());
-      })
+        ).then(response => response.json())
+      )
     )
   );
   const payWithExistingCardLoader = new DataLoader(keys =>

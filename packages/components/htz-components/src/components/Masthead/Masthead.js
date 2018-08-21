@@ -5,7 +5,6 @@ import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
-import MastheadLogo from './MastheadLogo';
 import MastheadSearch from './MastheadSearch/MastheadSearch';
 import MastheadUserTools from './MastheadUserTools';
 import Media from '../Media/Media';
@@ -37,6 +36,7 @@ class Masthead extends React.Component {
     hostname: PropTypes.string.isRequired,
     velocity: PropTypes.number,
     y: PropTypes.number,
+    Logo: PropTypes.node.isRequired,
   };
 
   static defaultProps = {
@@ -59,20 +59,8 @@ class Masthead extends React.Component {
   };
 
   render() {
-    const { contentId, hostname, velocity, y, } = this.props;
-    const hostMatch = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-    let host;
-    switch (hostMatch) {
-      case 'haaretz.com':
-        host = 'hdc';
-        break;
-      case 'themarker.com':
-        host = 'tm';
-        break;
-      default:
-        host = 'htz';
-    }
-
+    const { contentId, hostname, velocity, y, Logo, } = this.props;
+    const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
     return (
       <Media query={{ until: 's', misc: 'portrait', }}>
         {mobilePortrait => (
@@ -113,9 +101,7 @@ class Masthead extends React.Component {
                           searchIsOpen={this.state.searchIsOpen}
                           onClick={this.toggleSearchState}
                         />
-                        {this.state.searchIsOpen ? null : (
-                          <MastheadLogo host={host} />
-                        )}
+                        {this.state.searchIsOpen ? null : <Logo host={host} />}
                         {this.state.searchIsOpen ? null : (
                           <MastheadUserTools y={y} />
                         )}

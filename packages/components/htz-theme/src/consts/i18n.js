@@ -284,12 +284,6 @@ export const serviceByMailI18n = Object.freeze({
   failureDefaultMessage: 'ההרשמה נכשלה, אנא נסה שנית מאוחר יותר.',
 });
 
-export const mastheadLogoI18n = Object.freeze({
-  hdcUrl: 'http://www.haaretz.com',
-  htzUrl: 'https://www.haaretz.co.il',
-  tmUrl: 'http://www.themarker.com',
-});
-
 export const mobileAdditionalShare = Object.freeze({
   text: 'שיתוף',
 });

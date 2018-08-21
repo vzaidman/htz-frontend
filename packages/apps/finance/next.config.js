@@ -19,6 +19,7 @@ module.exports = {
   },
   pageExtensions: [ 'jsx', 'js', ],
   webpack: (config, { dev, }) => {
+    // Make sure `resolve.alias` exists.
     config.resolve.alias = config.resolve.alias || {};
 
     config.resolve.alias.config$ = require.resolve(

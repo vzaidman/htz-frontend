@@ -8,11 +8,7 @@ import fontStacks from './consts/fontStacks';
 import footerBorderStyle from './consts/footerBorderStyle';
 import gridStyle from './consts/gridStyle';
 import inputStyle from './consts/inputStyle';
-import layoutStyle from './consts/layoutStyle';
-import { benderStyle, } from './consts/listStyle';
-import newsletterStyle from './consts/newsletterStyle';
 import selectStyle from './consts/selectStyle';
-import specialPromotionStyle from './consts/specialPromotionStyle';
 import typeConf from './consts/typeConf';
 import {
   a11yMenuI18n,
@@ -59,18 +55,14 @@ import {
   getTransitionString,
 } from './methods/animation';
 import getMqString from './methods/getMqString';
-import getZIndex from './methods/getZIndex';
 import pxToRem from './methods/pxToRem';
 import typesetter from './methods/typesetter';
 import mq from './methods/mq';
+import getZIndex from './methods/getZIndex';
 
-/**
- * Haaretz theme object
- */
-const htzTheme = Object.freeze({
+const tmTheme = Object.freeze({
   // Constants
   articleStyle,
-  benderStyle,
   bps,
   btnStyle,
   captionStyles,
@@ -80,10 +72,7 @@ const htzTheme = Object.freeze({
   fontStacks,
   footerBorderStyle,
   inputStyle,
-  layoutStyle,
-  newsletterStyle,
   selectStyle,
-  specialPromotionStyle,
   typeConf,
 
   // I18n
@@ -134,4 +123,4 @@ const htzTheme = Object.freeze({
   type: typesetter,
 });
 
-export default htzTheme;
+export default tmTheme;

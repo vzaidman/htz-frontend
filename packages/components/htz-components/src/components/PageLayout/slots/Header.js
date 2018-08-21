@@ -1,7 +1,11 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
+import { FelaComponent, } from 'react-fela';
 
 import Osaka from '../../Osaka/OsakaController';
+import HtzLink from '../../HtzLink/HtzLink';
+import IconHaaretzLogo from '../../Icon/icons/IconHaaretzLogo';
+import IconMarkerLogo from '../../Icon/icons/IconMarkerLogo';
 import getComponent from '../../../utils/componentFromInputTemplate';
 
 const propTypes = {
@@ -14,6 +18,37 @@ const propTypes = {
    */
   content: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
+// eslint-disable-next-line react/prop-types
+const Logo = ({ host, }) => (
+  <FelaComponent
+    style={theme => ({
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      extend: [
+        theme.mq(
+          { from: 's', },
+          {
+            backgroundColor: theme.color('neutral', '-10'),
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%,-50%)',
+          }
+        ),
+      ],
+    })}
+    render={({ className, }) => (
+      <HtzLink href="/" className={className}>
+        {host === 'haaretz.co.il' ? (
+          <IconHaaretzLogo size={4} />
+        ) : host === 'theMarker.com' ? (
+          <IconMarkerLogo size={4} />
+        ) : null}
+      </HtzLink>
+    )}
+  />
+);
 
 function Header({ content, articleId, }) {
   return (
@@ -28,6 +63,10 @@ function Header({ content, articleId, }) {
               <Element
                 key={element.contentId}
                 {...element}
+                {...(element.inputTemplate ===
+                'com.htz.EditableNavigationElement'
+                  ? { Logo, }
+                  : {})}
                 articleId={articleId}
               />
             );

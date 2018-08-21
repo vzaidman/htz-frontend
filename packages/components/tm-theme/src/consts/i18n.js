@@ -1,4 +1,9 @@
-const seriesArticle = Object.freeze({
+export const alertsI18n = Object.freeze({
+  mobileAlertsText: 'התראות',
+  desktopAlertsText: 'התראות במייל',
+});
+
+export const seriesArticleI18n = Object.freeze({
   loadButton: Object.freeze({
     close: 'טען את כל הכתבות בסדרה',
     open: 'סגירת הרשימה',
@@ -7,52 +12,56 @@ const seriesArticle = Object.freeze({
   titlePrefix: 'סדרת כתבות: ',
 });
 
-export default { seriesArticle, };
-
 export const zoominText = 'הגדל';
 export const zoomoutText = 'הקטן';
+
+export const textInputI18n = Object.freeze({
+  requiredLong: 'שדה חובה',
+  requiredShort: '*',
+});
 
 export const tagsElementI18n = Object.freeze({
   prefix: 'תגיות:',
 });
 
+export const breadcrumbsI18n = Object.freeze({
+  ariaLabel: 'מיקומך באתר',
+});
+export const clickTrackerI18n = Object.freeze({
+  promotedContentLabel: 'תוכן מקודם',
+});
+
 export const navigationMenuI18n = Object.freeze({
   buttonText: 'ניווט',
-  menuItems: Object.freeze({
-    sections: Object.freeze([
-      Object.freeze({
-        name: 'מהדורה מודפסת',
-        url: 'https://www.haaretz.co.il/st/inter/Global/dailyedition/today/',
-      }),
-      Object.freeze({
-        name: 'הארץ שלי',
-        url: 'https://www.haaretz.co.il/personal-area/haaretz-sheli',
-      }),
-      Object.freeze({
-        name: 'העיתון שלי',
-        url: 'https://www.haaretz.co.il/personal-area/my-account',
-      }),
-    ]),
-    promotions: Object.freeze([
-      Object.freeze({
-        name: 'רכשו מינוי',
-        url: 'https://www.haaretz.co.il/promotions-page',
-      }),
-    ]),
-    sites: Object.freeze([
-      Object.freeze({
-        name: 'haaretz.com',
-        url: 'https://www.haaretz.com',
-      }),
-      Object.freeze({
-        name: 'themarker.com',
-        url: 'https://www.themarker.com',
-      }),
-    ]),
-  }),
+});
+
+export const mobileNavigationMenuI18n = Object.freeze({
+  buttonText: 'ניווט',
+  subOpen: 'עוד',
+  subClose: 'סגור',
+});
+
+export const mobileQuickRegistrationI18n = Object.freeze({
+  signedUpText: 'תודה שנרשמת',
+});
+
+export const headerSearchI18n = Object.freeze({
+  buttonText: 'חיפוש',
+  placeHolder: 'הקלידו לחיפוש באתר',
+  queryUrl: query =>
+    `https://www.haaretz.co.il/misc/search-results?text=${query}&searchType=textSearch`,
+});
+
+export const mobileSearchI18n = Object.freeze({
+  buttonText: 'חיפוש',
+  placeHolder: 'חיפוש',
+  queryUrl: query =>
+    `https://www.haaretz.co.il/misc/search-results?text=${query}&searchType=textSearch`,
 });
 
 export const osakaI18n = Object.freeze({
+  backToHome: 'בחזרה לעמוד הבית',
+  backToSection: 'בחזרה למדור',
   nextArticle: 'לכתבה הבאה במדור',
   promotedContent: 'תוכן מקודם',
 });
@@ -63,17 +72,20 @@ export const commentI18n = Object.freeze({
     usersPick: 'בחירת הגולשים',
   }),
   buttons: Object.freeze({
-    readMoreBtnTxt: 'קרא עוד',
-    replyBtnTxt: 'הגב',
-    reportAbuseBtnTxt: 'דווח כפוגעני',
+    readMoreBtnTxt: 'קראו עוד',
+    replyBtnTxt: 'הגיבו',
+    reportAbuseBtnTxt: 'דווחו כפוגעני',
   }),
 });
 
 export const commentFormI18n = Object.freeze({
   buttons: Object.freeze({
-    sendBtnTxt: 'שלח',
-    cancelBtnTxt: 'בטל',
-    toggleUserBtnText: 'להוספת תגובה מזוהה לחץ כאן',
+    sendBtnTxt: 'שלחו',
+    cancelBtnTxt: 'בטלו',
+    toggleUserBtnText: identified =>
+      (identified
+        ? 'להוספת תגובה אנונימית לחצו כאן'
+        : 'להוספת תגובה מזוהה לחצו כאן'),
   }),
   labels: Object.freeze({
     nameLabelTxt: 'שם',
@@ -87,6 +99,7 @@ export const commentFormI18n = Object.freeze({
   errorNotes: Object.freeze({
     nameErrorNoteTxt: 'חובה להזין שם',
     commentErrorNoteTxt: 'נא להזין את תוכן התגובה',
+    commentErrorTooLongNoteTxt: 'אין להזין יותר מ-1,000 תווים בתוכן התגובה',
   }),
 });
 export const commentSentI18n = Object.freeze({
@@ -116,7 +129,7 @@ export const commentSentI18n = Object.freeze({
 });
 export const commentsSectionI18n = Object.freeze({
   buttons: Object.freeze({
-    loadAllCommentsBtnText: 'טען את כל התגובות',
+    loadMoreCommentsBtnText: 'טענו עוד תגובות',
   }),
   selectItems: Object.freeze({
     dateDescendingItemTxt: 'מהאחרונה לראשונה',
@@ -175,4 +188,113 @@ export const footerDesktopI18n = Object.freeze({
       'חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל',
     secondRow: '© כל הזכויות שמורות להוצאת עיתון הארץ בע"מ',
   }),
+});
+
+export const newsletterI18n = Object.freeze({
+  buttons: Object.freeze({
+    newsletterConfirmedButton: Object.freeze({
+      ok: 'לרשימה המלאה',
+      alreadyRegister: 'להרשמה לדיוורים נוספים',
+      failed: 'נסו שנית',
+    }),
+  }),
+  texts: Object.freeze({
+    newsletterConfirmedTitleText: Object.freeze({
+      ok: 'תודה שנרשמת',
+      alreadyRegister: 'אנחנו כבר מכירים',
+      failed: 'קרתה תקלה ברישום',
+    }),
+    newsletterConfirmedText: Object.freeze({
+      ok: 'יש לנו דיוורים נוספים שעשויים לעניין אותך',
+      alreadyRegister: 'כתובת הדוא"ל שלך כבר רשומה לדיוור זה',
+      failed: 'אנא נסו להרשם שוב במועד מאוחר יותר',
+    }),
+  }),
+});
+
+export const fryListI18n = Object.freeze({
+  title: 'מרחבי הרשת',
+});
+
+export const welcomePageI18n = Object.freeze({
+  texts: Object.freeze({
+    headerHighLighted: 'ברוכים הבאים',
+    headerNormal: 'לחוויה המשודרגת של הארץ',
+    bullets: [
+      'מהיר יותר',
+      'נוח לקריאה',
+      'מותאם יותר למובייל',
+      'פחות פרסומות',
+      'ממשק תגובות משופר',
+      'קל ומהיר יותר לשתף',
+    ],
+  }),
+  buttonText: 'לעמוד החדש',
+});
+
+export const userMenuI18n = Object.freeze({
+  buttonText: 'שלום',
+  loginUrl: 'https://www.haaretz.co.il/misc/login-page',
+  logout: 'התנתקות',
+  menuItems: Object.freeze([
+    Object.freeze({
+      name: 'הגדרות',
+      url: 'https://www.haaretz.co.il/personal-area/my-account',
+    }),
+    Object.freeze({
+      name: 'שירות למנויים',
+      url: 'https://www.haaretz.co.il/personal-area/my-account',
+    }),
+    Object.freeze({
+      name: 'ניוזלטרים',
+      url: 'https://www.haaretz.co.il/personal-area/newsletter',
+    }),
+  ]),
+  noUserData: 'התחברות',
+});
+
+export const a11yMenuI18n = Object.freeze({
+  a11yToggle: state => `${state ? 'הפסק' : 'הפעל'} מצב ניגודיות`,
+  menuItems: Object.freeze([
+    Object.freeze({
+      name: 'דווח על בעיית נגישות',
+      url: 'mailto:accessibility@haaretz.co.il',
+    }),
+  ]),
+});
+
+export const zenTextI18n = 'קריאת זן';
+
+export const readingListMenuI18n = Object.freeze({
+  url: 'https://www.haaretz.co.il/personal-area/my-account#readingList',
+});
+
+export const serviceByMailI18n = Object.freeze({
+  authorAlertServiceTitle: 'שלחו לי התראה על כל כתבה חדשה של ',
+  inpEmailLabelText: 'דוא"ל',
+  inpEmailNoteText: 'אנא הזינו כתובת אימייל',
+  btnSubmitText: 'שלחו',
+  btnCancelText: 'לא תודה',
+  btnCloseText: 'סגור',
+
+  inpEmailErrorRequired: 'יש להכניס כתובת דואר אלקטרוני',
+  inpEmailErrorInvalid: 'כתובת דואר אלקטרוני אינה תקינה',
+
+  successDefaultMessage: 'נרשמתך בהצלחה!',
+  failureDefaultMessage: 'ההרשמה נכשלה, אנא נסה שנית מאוחר יותר.',
+});
+
+export const mobileAdditionalShare = Object.freeze({
+  text: 'שיתוף',
+});
+
+export const mobileUserMenuI18n = Object.freeze({
+  noUserData: 'כניסה',
+  userLoggedIn: 'יציאה',
+  url: 'https://www.haaretz.co.il/misc/login-page',
+});
+
+export const mobileReadingList = Object.freeze({
+  url: 'https://www.haaretz.co.il/readingList',
+  buttonText: 'רשימת הקריאה',
 });

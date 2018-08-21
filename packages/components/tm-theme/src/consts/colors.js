@@ -144,6 +144,48 @@ const colors = {
     secondaryHoverBorder: 'white',
     secondaryHoverText: 'white',
 
+    // Secondary Opaque
+    secondaryOpaqueBg: [ 'secondary', 'base', ],
+    secondaryOpaqueBorder: 'transparent',
+    secondaryOpaqueText: 'white',
+    secondaryOpaqueActiveBg: [ 'secondary', '+1', ],
+    secondaryOpaqueActiveBorder: 'transparent',
+    secondaryOpaqueActiveText: 'white',
+    secondaryOpaqueFocusBg: [ 'secondary', '+1', ],
+    secondaryOpaqueFocusBorder: 'transparent',
+    secondaryOpaqueFocusText: 'rgb(255,255,254)',
+    secondaryOpaqueHoverBg: [ 'secondary', '+1', ],
+    secondaryOpaqueHoverBorder: 'transparent',
+    secondaryOpaqueHoverText: 'white',
+
+    // Inverse
+    inverseBg: 'transparent',
+    inverseBorder: 'white',
+    inverseText: 'white',
+    inverseActiveBg: 'transparent',
+    inverseActiveBorder: 'white',
+    inverseActiveText: 'white',
+    inverseFocusBg: 'rgba(255,255,255,0.1)',
+    inverseFocusBorder: 'white',
+    inverseFocusText: 'white',
+    inverseHoverBg: 'rgba(255,255,255,0.2)',
+    inverseHoverBorder: 'white',
+    inverseHoverText: 'white',
+
+    // Inverse Opaque
+    inverseOpaqueBg: 'white',
+    inverseOpaqueBorder: 'white',
+    inverseOpaqueText: [ 'primary', 'base', ],
+    inverseOpaqueActiveBg: 'white',
+    inverseOpaqueActiveBorder: 'white',
+    inverseOpaqueActiveText: [ 'primary', 'base', ],
+    inverseOpaqueFocusBg: 'rgba(255,255,255,0.9)',
+    inverseOpaqueFocusBorder: 'white',
+    inverseOpaqueFocusText: [ 'primary', 'base', ],
+    inverseOpaqueHoverBg: 'rgba(255,255,255,0.8)',
+    inverseOpaqueHoverBorder: 'white',
+    inverseOpaqueHoverText: [ 'primary', 'base', ],
+
     // Facebook
     facebookBg: 'white',
     facebookBorder: [ 'button', 'facebookText', ],
@@ -288,6 +330,10 @@ const colors = {
     secondaryRipple: [ 'secondary', 'base', ],
   },
 
+  credit: {
+    creditArticleText: [ 'primary', '+1', ],
+  },
+
   footer: {
     bg: [ 'secondary', 'base', ],
     border: 'white',
@@ -309,6 +355,21 @@ const colors = {
     subcommentBorder: [ 'primary', '-4', ],
     text: [ 'bodyText', 'base', ],
   },
+  layout: {
+    containerBg: 'white',
+    rowBg: [ 'primary', '-6', ],
+  },
+  newsletter: {
+    // Newsletter
+    highlightBg: [ 'highlight', 'base', ],
+    highlightTextTitle: [ 'neutral', 'base', ],
+    highlightText: [ 'neutral', 'base', ],
+
+    // Primary
+    primaryBg: [ 'primary', '-2', ],
+    primaryTextTitle: [ 'neutral', '-10', ],
+    primaryText: [ 'neutral', '-10', ],
+  },
   highlight: {
     base: [ 'quaternary', 'base', ],
     dimm: [ 'quaternary', '-2', ],
@@ -316,6 +377,29 @@ const colors = {
   icon: {
     base: [ 'primary', 'base', ],
     text: [ 'neutral', '-3', ],
+  },
+  a11yMenu: {
+    text: [ 'primary', 'base', ],
+    textOpenOrHover: [ 'neutral', '-10', ],
+    bgOpen: [ 'secondary', 'base', ],
+    bgHover: [ 'primary', 'base', ],
+  },
+  userMenu: {
+    bgHover: [ 'primary', 'base', ],
+    bgOpen: [ 'secondary', 'base', ],
+    iconColor: [ 'primary', 'base', ],
+    text: [ 'neutral', '-3', ],
+    textOpenOrHover: [ 'neutral', '-10', ],
+  },
+  headerSearch: {
+    text: [ 'neutral', '-3', ],
+    bgHover: [ 'primary', 'base', ],
+    bgInputOpen: [ 'primary', '-4', ],
+    textOpenOrHover: [ 'neutral', '-10', ],
+    bgOpen: [ 'secondary', 'base', ],
+  },
+  mastheadBorder: {
+    borderColor: [ 'primary', 'base', ],
   },
   // Primary
   select: {
@@ -360,6 +444,33 @@ const colors = {
     primaryHoverBorder: [ 'primary', '-4', ],
     primaryHoverText: [ 'bodyText', 'base', ],
 
+    // Primary Opaque
+    primaryOpaqueBg: 'white',
+    primaryOpaqueBgWrapper: 'transparent',
+    primaryOpaqueBorder: [ 'primary', '-4', ],
+    primaryOpaqueBorderTextLabel: [ 'primary', '-5', ],
+    primaryOpaquePlaceholder: [ 'neutral', '-4', ],
+    primaryOpaqueText: [ 'bodyText', 'base', ],
+    primaryOpaqueTextLabel: [ 'primary', '+1', ],
+    primaryOpaqueTextLabelDisabled: [ 'neutral', '-4', ],
+    primaryOpaqueTextNote: [ 'neutral', '-3', ],
+    primaryOpaqueAbbr: [ 'tertiary', 'base', ],
+
+    // Primary Opaque Focus
+    primaryOpaqueFocusBg: 'white',
+    primaryOpaqueFocusBorder: [ 'primary', 'base', ],
+
+    // Primary Opaque Error state
+    primaryOpaqueErrorBorder: [ 'tertiary', '+1', ],
+    primarOpaqueErrorText: [ 'bodyText', 'base', ],
+    primaryOpaqueErrorTextLabel: [ 'tertiary', 'base', ],
+    primaryOpaqueErrorTextNote: [ 'tertiary', 'base', ],
+
+    // Primary Opaque Hover
+    primaryOpaqueHoverBg: [ 'primary', '-5', ],
+    primaryOpaqueHoverBorder: [ 'primary', '-4', ],
+    primaryOpaqueHoverText: [ 'bodyText', 'base', ],
+
     // PrimaryInverse
     primaryInverseBg: 'white',
     primaryInverseBgWrapper: 'transparent',
@@ -386,6 +497,60 @@ const colors = {
     primaryInverseHoverBg: [ 'primary', '-5', ],
     primaryInverseHoverBorder: [ 'primary', '-4', ],
     primaryInverseHoverText: [ 'bodyText', 'base', ],
+
+    // PrimaryMediumInverse
+    primaryMediumInverseBg: 'white',
+    primaryMediumInverseBgWrapper: 'transparent',
+    primaryMediumInverseBorder: [ 'primary', '-4', ],
+    primaryMediumInverseBorderTextLabel: [ 'primary', '-5', ],
+    primaryMediumInversePlaceholder: [ 'neutral', '-4', ],
+    primaryMediumInverseText: [ 'bodyText', 'base', ],
+    primaryMediumInverseTextLabel: [ 'primary', '+1', ],
+    primaryMediumInverseTextLabelDisabled: [ 'neutral', '-4', ],
+    primaryMediumInverseTextNote: [ 'secondary', 'base', ],
+    primaryMediumInverseAbbr: [ 'primary', 'base', ],
+
+    // PrimaryMediumInverse Focus
+    primaryMediumInverseFocusBg: 'white',
+    primaryMediumInverseFocusBorder: [ 'primary', 'base', ],
+
+    // PrimaryInverse Error state
+    primaryMediumInverseErrorBorder: [ 'tertiary', '+1', ],
+    primaryMediumInverseErrorText: [ 'bodyText', 'base', ],
+    primaryMediumInverseErrorTextLabel: [ 'tertiary', 'base', ],
+    primaryMediumInverseErrorTextNote: [ 'tertiary', 'base', ],
+
+    // PrimaryInverse Hover
+    primaryMediumInverseHoverBg: [ 'primary', '-5', ],
+    primaryMediumInverseHoverBorder: [ 'primary', '-4', ],
+    primaryMediumInverseHoverText: [ 'bodyText', 'base', ],
+
+    // Search
+    searchBg: 'transparent',
+    searchBgWrapper: 'transparent',
+    searchBorder: 'transparent',
+    searchBorderTextLabel: [ 'primary', '-5', ],
+    searchPlaceholder: [ 'neutral', '-4', ],
+    searchText: [ 'bodyText', 'base', ],
+    searchTextLabel: [ 'primary', '+1', ],
+    searchTextLabelDisabled: [ 'neutral', '-4', ],
+    searchTextNote: [ 'neutral', '-3', ],
+    searchAbbr: [ 'tertiary', 'base', ],
+
+    // Search Focus
+    searchFocusBg: 'transparent',
+    searchFocusBorder: 'transparent',
+
+    // Search Error state
+    searchErrorBorder: [ 'tertiary', '+1', ],
+    searchErrorText: [ 'bodyText', 'base', ],
+    searchErrorTextLabel: [ 'tertiary', 'base', ],
+    searchErrorTextNote: [ 'tertiary', 'base', ],
+
+    // Search Hover
+    searchHoverBg: 'transparent',
+    searchHoverBorder: 'transparent',
+    searchHoverText: [ 'bodyText', 'base', ],
   },
   image: {
     bgc: [ 'neutral', '-6', ],
