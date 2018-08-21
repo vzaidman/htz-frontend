@@ -80,7 +80,6 @@ function HeadlineElement({ elementObj, miscStyles, }) {
         backgroundColor={[ { until: 's', value: 'neutral', }, ]}
         color={[ { until: 's', value: 'white', }, ]}
         miscStyles={{
-          // marginTop: [ { from: 's', value: '0.5rem', }, ],
           paddingStart: '2rem',
           paddingTop: '0.5rem',
           paddingBottom: '0.5rem',

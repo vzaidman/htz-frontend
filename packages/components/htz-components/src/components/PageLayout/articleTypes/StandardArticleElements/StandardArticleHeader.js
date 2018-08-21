@@ -105,7 +105,7 @@ function Header({
                         ),
                         theme.mq(
                           { until: 's', },
-                          { order: -1, marginTop: '1rem', }
+                          { order: -1, marginTop: '2rem', }
                         ),
                       ],
                     }}
@@ -124,7 +124,11 @@ function Header({
                     extend: [
                       theme.mq(
                         { until: 's', },
-                        { paddingInlineEnd: '3rem', paddingInlineStart: '3rem', }
+                        {
+                          paddingInlineEnd: '3rem',
+                          paddingInlineStart: '3rem',
+                          marginTop: '0',
+                        }
                       ),
                       theme.mq(
                         { from: 's', until: 'l', },
