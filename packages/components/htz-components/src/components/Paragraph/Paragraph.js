@@ -220,7 +220,6 @@ const getTag = tag => {
 export default function Paragraph({ renderFirstImpression, ...props }) {
   /* Recursive functions */
   const Content = ({ content, }) => {
-    console.log('tagname is ul from Content ?  ', content.tag);
     const attributesObject = extractAttributes(content.attributes);
     return (
       <WrapperTag
@@ -249,7 +248,6 @@ export default function Paragraph({ renderFirstImpression, ...props }) {
     );
 
   const WrapperTag = ({ tag: tagName, content: tagElements, attributes, }) => {
-    console.log('tagname is ul from Wrapper tag ?  ', tagName);
     /**
      * Check if the Tag has a class names 'bg-brand--d'.
      * If so, it means that the Tag is actually `<mark />` (That's how the FCKEditor translates it).

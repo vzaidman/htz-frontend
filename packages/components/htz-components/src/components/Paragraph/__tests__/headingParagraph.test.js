@@ -7,7 +7,7 @@ it('Render paragraph as heading correctly ', () => {
     <Paragraph
       {...{
         attributes: [],
-        tag: 'h4',
+        tag: 'h3',
         content: [
           {
             attributes: [
