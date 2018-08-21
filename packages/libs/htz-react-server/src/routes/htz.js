@@ -8,11 +8,16 @@ export default function htz(app, server, DEV) {
 
   // send robots.txt file
   const options = {
-    root: path.join(`${process.cwd()}/static`),
+    root: path.join(
+      `${process.cwd()}/static${
+        process.env.CONNECTION_PRESET === 'stage' ? '/stage' : ''
+      }`
+    ),
     headers: {
       'Content-Type': 'text/plain;charset=UTF-8',
     },
   };
+
   server.get('/robots.txt', (req, res) =>
     res.status(200).sendFile('robots.txt', options)
   );
