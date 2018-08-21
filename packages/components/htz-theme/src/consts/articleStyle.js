@@ -43,7 +43,7 @@ const paragraphStyles = Object.freeze({});
 
 const relatedArticlesLink = Object.freeze({
   ...type(-1),
-  marginBottom: [ { until: 'xl', value: '3rem', }, { from: 'xl', value: '2rem', }, ],
+  marginBottom: '2rem',
   fontWeight: '700',
   position: 'relative',
   zIndex: '1',

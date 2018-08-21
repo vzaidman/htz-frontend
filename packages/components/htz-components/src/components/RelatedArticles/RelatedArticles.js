@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, FelaComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import ArticleLink from './articleLink';
@@ -37,8 +37,10 @@ const defaultProps = {
 };
 
 const articleWrapperStyle = ({ theme, lastItem, }) => ({
-  marginInlineStart: '1em',
+  paddingInlineStart: '1em',
   position: 'relative',
+  display: 'flex',
+  alignItems: 'baseline',
   color: theme.color('primary', '+1'),
   ...(!lastItem
     ? {
@@ -51,31 +53,37 @@ const articleWrapperStyle = ({ theme, lastItem, }) => ({
     }
     : {}),
   ':before': {
-    ...theme.type(-1),
-    content: '"\\25cf"',
-    position: 'absolute',
-    start: '0',
-    top: '0',
-    transform: 'translate(150%, 20%)',
+    marginInlineStart: '-1em',
+    marginInlineEnd: '0.5em',
+    transform: 'translateY(-50%)',
+    display: 'inline-block',
+    content: '""',
+    borderRadius: '50%',
+    height: '1rem',
+    width: '1rem',
+    backgroundColor: theme.color('primary', '+1'),
   },
 });
-const ArticleWrapper = createComponent(articleWrapperStyle, 'li');
 
 const RelatedArticles = ({ articles, miscStyles, }) => (
   <FelaComponent
     style={theme => ({
       extend: [
-        ...[ parseComponentProp('marginBottom', '5rem', theme.mq), ],
-        ...[ parseComponentProp('marginTop', '5rem', theme.mq), ],
+        parseComponentProp('marginBottom', '5rem', theme.mq),
+        parseComponentProp('marginTop', '5rem', theme.mq),
       ],
     })}
     render="ul"
   >
     {articles.map((article, i) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <ArticleWrapper key={i} lastItem={i === articles.length - 1}>
+      <FelaComponent
+        rule={articleWrapperStyle}
+        key={article.contentId}
+        lastItem={i === articles.length - 1}
+        render="li"
+      >
         <ArticleLink article={article} />
-      </ArticleWrapper>
+      </FelaComponent>
     ))}
   </FelaComponent>
 );
