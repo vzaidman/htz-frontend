@@ -111,7 +111,9 @@
     },
     "apollo-client": {
       "^2.3.8": {
-        "packages/apps/*": [ "dependencies" ],
+        "packages/apps/*": [
+          "dependencies"
+        ],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
           "peerDependencies"
@@ -120,7 +122,9 @@
     },
     "apollo-cache-inmemory": {
       "^1.2.7": {
-        "packages/apps/*": [ "dependencies" ],
+        "packages/apps/*": [
+          "dependencies"
+        ],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
           "peerDependencies"
@@ -129,7 +133,9 @@
     },
     "apollo-link": {
       "^1.2.2": {
-        "packages/apps/*": [ "dependencies" ],
+        "packages/apps/*": [
+          "dependencies"
+        ],
         "packages/{components/htz-components,libs/app-utils,libs/htz-react-server}": [
           "devDependencies",
           "peerDependencies"
@@ -149,7 +155,9 @@
     },
     "apollo-link-http": {
       "^1.5.4": {
-        "packages/apps/*": [ "dependencies" ],
+        "packages/apps/*": [
+          "dependencies"
+        ],
         "packages/{components/htz-components,libs/app-utils,libs/htz-react-server}": [
           "devDependencies",
           "peerDependencies"
@@ -169,13 +177,19 @@
     },
     "babel-loader": {
       "^8.0.0-beta.4": {
-        "packages/{components/*,apps/*,libs/fela-utils}": ["devDependencies"],
-        "packages/libs/htz-react-base": ["dependencies"]
+        "packages/{components/*,apps/*,libs/fela-utils}": [
+          "devDependencies"
+        ],
+        "packages/libs/htz-react-base": [
+          "dependencies"
+        ]
       }
     },
     "babel-plugin-lodash": {
       "^3.3.4": {
-        "packages/apps/*": ["devDependencies"]
+        "packages/apps/*": [
+          "devDependencies"
+        ]
       }
     },
     "config": {
@@ -198,13 +212,19 @@
     },
     "enzyme": {
       "^3.4.1": {
-        "packages/libs/{fela-utils,htz-react-base}": [ "dependencies" ]
+        "packages/libs/{fela-utils,htz-react-base}": [
+          "dependencies"
+        ]
       }
     },
     "enzyme-to-json": {
       "^3.3.4": {
-        "packages/libs/{fela-utils,htz-react-base}": [ "dependencies" ],
-        "packages/{apps,components}/*": [ "devDependencies" ]
+        "packages/libs/{fela-utils,htz-react-base}": [
+          "dependencies"
+        ],
+        "packages/{apps,components}/*": [
+          "devDependencies"
+        ]
       }
     },
     "fela": {
@@ -220,18 +240,27 @@
     },
     "graphql": {
       "^0.13.2": {
-        "packages/apps/*": ["dependencies"],
-        "packages/libs/app-utils": ["devDependencies", "peerDependencies"]
+        "packages/apps/*": [
+          "dependencies"
+        ],
+        "packages/libs/app-utils": [
+          "devDependencies",
+          "peerDependencies"
+        ]
       }
     },
     "graphql-anywhere": {
       "^4.1.11": {
-        "packages/apps/*": ["dependencies"]
+        "packages/apps/*": [
+          "dependencies"
+        ]
       }
     },
     "graphql-tag": {
       "^2.9.2": {
-        "packages/apps/*": ["dependencies"],
+        "packages/apps/*": [
+          "dependencies"
+        ],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
           "peerDependencies"
@@ -258,12 +287,16 @@
     },
     "lodash": {
       "^4.17.10": {
-        "packages/{apps,components}/*": [ "dependencies" ]
+        "packages/{apps,components}/*": [
+          "dependencies"
+        ]
       }
     },
     "next": {
       "^6.1.1": {
-        "packages/apps/*": ["dependencies"],
+        "packages/apps/*": [
+          "dependencies"
+        ],
         "packages/{libs/htz-react-server,libs/app-utils,components/htz-components}": [
           "devDependencies",
           "peerDependencies"
@@ -301,7 +334,9 @@
     },
     "react-apollo": {
       "^2.1.11": {
-        "packages/apps/*": [ "dependencies" ],
+        "packages/apps/*": [
+          "dependencies"
+        ],
         "packages/{components/htz-components,libs/app-utils}": [
           "devDependencies",
           "peerDependencies"
@@ -314,7 +349,9 @@
           "devDependencies",
           "peerDependencies"
         ],
-        "packages/apps/*": [ "dependencies" ]
+        "packages/apps/*": [
+          "dependencies"
+        ]
       }
     },
     "react-fela": {
@@ -323,7 +360,9 @@
           "devDependencies",
           "peerDependencies"
         ],
-        "packages/apps/*": [ "dependencies" ]
+        "packages/apps/*": [
+          "dependencies"
+        ]
       }
     },
     "react-fns": {
@@ -345,12 +384,16 @@
         "[\"packages/{apps,components,libs}/*\", \"!packages/libs/htz-react-base\"]": [
           "devDependencies"
         ],
-        "packages/libs/htz-react-base": [ "dependencies" ]
+        "packages/libs/htz-react-base": [
+          "dependencies"
+        ]
       }
     },
     "universal-cookie": {
       "^2.0.8": {
-        "packages/apps/*": [ "dependencies" ]
+        "packages/apps/*": [
+          "dependencies"
+        ]
       }
     },
     "validator": {
@@ -361,7 +404,9 @@
       }
     }
   },
-  "workspaces": [ "packages/*/*" ],
+  "workspaces": [
+    "packages/*/*"
+  ],
   "config": {
     "commitizen": {
       "path": "cz-lerna-changelog"
@@ -370,32 +415,20 @@
   "lint-staged": {
     "linters": {
       "**/*.{js,jsx}": [
-        "node ./scripts/lintFiles.js",
-        "node ./scripts/runTests.js"
-      ],
-      "**/*.json": ["jsonlint-cli"],
-      "./*.md": ["yarn run docs", "git add"],
-      "docs/**/*.md": ["yarn run docs", "git add"]
-    },
-    "concurrent": false
-  },
-  "lint-staged-old": {
-    "linters": {
-      "**/*.{js,jsx}": [
-        "node packages/libs/htz-react-base/bin/htz-scripts.js lint --ignore-pattern '.jest/*' --ignore-pattern '.next/*' --ignore-pattern 'dist/*' --ignore-pattern 'docs/*' --ignore-pattern 'packages/*/*/docs/*' --ignore-pattern 'node_modules/*' --fix",
+        "node ./scripts/formatFiles.js",
         "node scripts/runTests.js",
-        "node packages/libs/htz-react-base/bin/htz-scripts.js flow focus-check",
-        "git add"
+        "node_modules/.bin/flow focus-check",
+        "node scripts/gitAddIfNoPartiallyStaged.js"
       ],
-      "./*.md": [
-        "yarn run docs",
-        "git add"
+      "**/*.json": [
+        "jsonlint-cli"
       ],
-      "docs/**/*.md": [
+      "{./,docs/**/}*.md": [
         "yarn run docs",
         "git add"
       ]
-    }
+    },
+    "concurrent": false
   },
   "devDependencies": {
     "@commitlint/cli": "^4.1.0",

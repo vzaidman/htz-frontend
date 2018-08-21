@@ -4,11 +4,19 @@
  */
 const path = require('path');
 const spawn = require('cross-spawn');
+const hasPartiallyStagedFiles = require('./hasPartiallyStagedFiles');
 
 const repoDir = process.cwd();
 
 // Extract list of stages `js` files.
-const [ , , ...filePaths ] = process.argv;
+const [ , , ...args ] = process.argv;
+
+const noBailOnError = Array.isArray(args) && args[0] === '--no-bail';
+const options = [ '--write', '--files', ];
+
+if (noBailOnError) options.unshift('--no-bail');
+
+const filePaths = noBailOnError ? args.slice(1) : args;
 
 // Sort staged `js` into packages
 const packages = filePaths.reduce((result, file) => {
@@ -37,10 +45,30 @@ Object.keys(packages).forEach(packageDir =>
 );
 
 function lintLocally(packageDir, files) {
-  const eslintResult = spawn.sync('yarn', [ 'run', 'lint', '--fix', ...files, ], {
-    cwd: packageDir,
-    stdio: 'inherit',
-  });
+  // To avoid merge conflicts on `stash pop` which partially staged files exist,
+  // don't apply prettier and only lint without automatically fixing.
+  if (hasPartiallyStagedFiles()) {
+    const eslintResult = spawn.sync('yarn', [ 'run', 'lint', ...files, ], {
+      cwd: packageDir,
+      stdio: 'inherit',
+    });
 
-  if (eslintResult.status !== 0) process.exitCode = eslintResult.status;
+    if (eslintResult.status !== 0) process.exitCode = eslintResult.status;
+  }
+
+  // Otherwise, prettify and automatically fix linting errors when possible
+  else {
+    const formatResult = spawn.sync(
+      'yarn',
+      [ 'run', 'format', ...options, ...files, ],
+      {
+        cwd: packageDir,
+        stdio: 'inherit',
+      }
+    );
+
+    if (formatResult.status !== 0 && !noBailOnError) {
+      process.exitCode = formatResult.status;
+    }
+  }
 }
