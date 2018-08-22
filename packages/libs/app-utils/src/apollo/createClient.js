@@ -13,7 +13,22 @@ import config from 'config';
 // import chalk from 'chalk';
 import gql from 'graphql-tag';
 import switchToDomain from '../utils/switchToDomain';
-import pageSchema from './pageSchema';
+import htz from './initialStates/htz';
+import purchase from './initialStates/purchase';
+import finance from './initialStates/finance';
+
+function getDefaultInitialState(app) {
+  switch (app) {
+    case 'htz':
+      return htz;
+    case 'purchase':
+      return purchase;
+    case 'finance':
+      return finance;
+    default:
+      return () => {};
+  }
+}
 
 // Basic structure for user data object (Apollo store)
 const defaultUser = {
@@ -62,7 +77,7 @@ if (!process.browser) {
   global.fetch = fetch;
 }
 
-function create(initialState, req) {
+function create(initialState, appDefaultState, req) {
   // const graphqlPort = process.env.NODE_ENV === 'production' ? '' : `:${port}`;
   const hostname =
     initialState.ROOT_QUERY !== undefined
@@ -125,31 +140,13 @@ function create(initialState, req) {
   const stateLink = withClientState({
     cache: inMemoryCache,
     defaults: {
+      ...(appDefaultState(referer) || {}),
       ariaLive: {
         assertiveMessage: '',
         politeMessage: '',
         __typename: 'AriaLive',
       },
-      canonicalUrl: '',
-      zenMode: false,
-      articleSection: {
-        name: null,
-        id: null,
-        url: null,
-        __typename: 'ArticleSection',
-      },
-      a11yToggle: false,
       hostname,
-      articleId: null,
-      commentsElementId: null,
-      startFromStage2: true,
-      //  makes sure that if we have another outbrain element on the page it calls outbrains
-      // reload function script before calling the outbrain json api
-      osakaCanRender: false,
-      isOsakaDisplayed: false,
-      referer: referer || null,
-      loggedInOrRegistered: null,
-      readingListArray: [],
       scroll: {
         velocity: null,
         x: 0,
@@ -157,20 +154,6 @@ function create(initialState, req) {
         __typename: 'Scroll',
       },
       user,
-      platform: null,
-      promotionsPageState: {
-        stage: 2,
-        subStage: 0,
-        chosenSlotIndex: 0,
-        chosenOfferIndex: null,
-        chosenProductIndex: 0,
-        paymentMethodIndex: null,
-        paymentType: null,
-        approveDebtClaim: false,
-        couponProduct: null,
-        __typename: 'PromotionsPageState',
-      },
-      pageSchema,
     },
     resolvers: {
       Mutation: {
@@ -204,7 +187,8 @@ function create(initialState, req) {
           const response = cache.readQuery({ query, });
           const currentImages = response.pageSchema.image;
           const updatedImages =
-            // Removing the first image which is kind of a placeholder, cuz stateLink doesn't have schemas.
+            // Removing the first image which is kind of a placeholder,
+            // cuz stateLink doesn't have schemas.
             currentImages.length === 1 && !currentImages[0].url
               ? [ image, ]
               : // Make sure the the image doesn't already exists.
@@ -285,15 +269,20 @@ function create(initialState, req) {
 }
 
 export default function initApollo(initialState, req) {
+  const appName = process.argv[2] || initialState.ROOT_QUERY.appName;
+  const appDefaultState = getDefaultInitialState(appName);
+
+  appDefaultState.appName = appName;
+
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (!process.browser) {
-    return create(initialState, req);
+    return create(initialState, appDefaultState, req);
   }
 
   // Reuse client on the client-side
   if (!apolloClient) {
-    apolloClient = create(initialState);
+    apolloClient = create(initialState, appDefaultState);
   }
   return apolloClient;
 }
