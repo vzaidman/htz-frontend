@@ -12,29 +12,39 @@ Object {
         <div
           className="htz-a htz-b htz-o htz-p htz-q htz-r htz-s htz-t"
         >
-          <div
-            className="htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak"
+          <svg
+            className="htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
           >
-            <img
-              className="htz-al htz-am htz-an htz-ao htz-x"
-              src="https://images.haarets.co.il/image/upload/x_0,y_170,w_360,h_360,c_crop/q_auto,h_100,w_100,g_face,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1519832762/1.6738.1536361643.png"
+             
+            <circle
+              cx={128}
+              cy={128}
+              fill="currentColor"
+              r={119.5}
             />
-          </div>
+             
+            <path
+              d="M190.2 168.7c-.6-4.7-.9-8.2-.7-10.5s.7-5.8 1.6-10.5c-6.2-4-12.2-8.3-17.8-12.6-5.6-4.4-12.5-9.3-20.6-15-.9-.6-1.8-1.9-2.6-4-.8-2-1-4-.7-5.8.6-2.8 1.9-5.1 3.7-7 1.9-1.9 3.9-2.8 6.1-2.8h30.9c-5.9-15.6-6.1-27.9-.5-36.9h-43.5c0 1.6-.2 3.4-.7 5.4s-.5 4.6-.2 7.7c0 3.1.6 6.2 1.9 9.3 1.2 3.1 1.2 7 0 11.7-1.2 3.7-2.4 6.5-3.5 8.4s-2.3 3.1-3.5 3.7c-10-7.5-21.2-15.8-33.7-25s-21.8-16.3-28-21.3H70c-.3 0-.5.2-.5.5 2.2 4.4 3.7 9.2 4.7 14.5.9 5.3 1.1 10.4.5 15.4-.6 6.5-1.2 11.1-1.9 13.8-.6 2.7-.9 6.8-.9 12.4 0 6.2.6 12.1 1.9 17.5 1.2 5.5 1.7 11.1 1.4 17.1-.6 8.7-1.6 16.4-3 23.1-1.4 6.7-2.6 11.3-3.5 13.8-.3.9-.2 1.7.5 2.3h51c-4.4-9.3-6.1-20.3-5.1-32.7H95.9c-7.2 0-11.5-3.8-12.9-11.5-1.4-7.6-1.6-14.9-.7-21.7.6-5.3 2-9.2 4.2-11.7s3.4-3.7 3.7-3.7l106.6 78.5c0-.3.2-.5.5-.5s.3-.2 0-.5c-1.6-3.4-3-7-4.2-10.8-1.4-3.6-2.3-7.2-2.9-10.6z"
+            />
+          </svg>
           <div
-            className="htz-ap"
+            className="htz-af"
           >
             <address
-              className="htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb"
+              className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar"
             >
               אורנה פילרררץ
             </address>
             <address
-              className="htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-bc htz-bb"
+              className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-as htz-ar"
             >
               שהועהם סמיט
             </address>
             <address
-              className="htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-bb"
+              className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-ar"
             >
               רק שם
             </address>
@@ -42,22 +52,22 @@ Object {
           </div>
         </div>
         <div
-          className="htz-ap"
+          className="htz-af"
         />
         
       </div>
       <div
         aria-expanded={undefined}
         aria-hidden={true}
-        className="htz-w htz-ah htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
+        className="htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz"
       >
         <div
-          className="htz-ci htz-cj htz-bo htz-bp htz-bq htz-ck htz-cl"
+          className="htz-ca htz-cb htz-bg htz-bh htz-bi htz-cc htz-cd"
           tabIndex="0"
         />
       </div>
     </div>
   </div>,
-  "styles": ".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:center}.htz-t{-webkit-box-align:center}.htz-u{height:0}.htz-v{padding-bottom:6rem}.htz-w{position:relative}.htz-x{width:100%}.htz-y{background-color:#EBEBEB}.htz-ag{border-radius:50%}.htz-ah{overflow:hidden}.htz-ak{margin-left:1rem}.htz-al{height:100%}.htz-am{left:0}.htz-an{position:absolute}.htz-ao{top:0}.htz-aq{color:#006B96}.htz-ar{font-weight:bold}.htz-ba:after{content:\\", \\"}.htz-bb{display:inline}.htz-bc:after{content:\\" ו\\"}.htz-bn{transition-property:max-height}.htz-bo{transition-duration:.3s}.htz-bp{transition-delay:.3s}.htz-bq{transition-timing-function:linear}.htz-br:before{position:absolute}.htz-bs:before{display:block}.htz-bt:before{transition-property:transform}.htz-bu:before{transition-duration:.3s}.htz-bv:before{transition-timing-function:linear}.htz-bw:before{content:\\"\\"}.htz-bx:before{height:2px}.htz-by:before{width:100%}.htz-bz:before{background-color:#289DD3}.htz-ca:before{top:0}.htz-cb:before{transform:translateX(100%)}.htz-cc:before{z-index:1}.htz-cd:before{-webkit-transition-property:transform}.htz-ce:before{-moz-transition-property:transform}.htz-cf{max-height:0.333rem}.htz-cg{-webkit-transition-property:max-height}.htz-ch{-moz-transition-property:max-height}.htz-ci{transform:translatey(-100%)}.htz-cj{transition-property:transform}.htz-ck{-webkit-transition-property:transform}.htz-cl{-moz-transition-property:transform}@media (max-width: 37.4375em){.htz-c{justify-content:space-between}.htz-d{border-top-width:1px}.htz-e{border-top-style:solid}.htz-f{border-top-color:#CCC}.htz-g{padding-top:calc(1rem - 1px)}.htz-h{border-bottom-width:1px}.htz-i{border-bottom-style:solid}.htz-j{border-bottom-color:#CCC}.htz-k{padding-bottom:calc(1rem - 1px)}.htz-l{-webkit-box-pack:justify}.htz-ai{display:inline-block}.htz-as{font-size:2rem}.htz-at{line-height:1.5em}.htz-bf{display:block}}@media (min-width: 37.5em){.htz-m{justify-content:flex-start}.htz-n{-webkit-box-pack:right}}@media (min-width: 64em){.htz-o{flex-direction:column}.htz-p{align-items:flex-start}.htz-q{-webkit-box-orient:vertical}.htz-r{-webkit-box-direction:normal}.htz-s{-webkit-box-align:right}.htz-ac{width:10rem}.htz-ae{height:10rem}.htz-af{display:block}.htz-ap{margin-top:1rem}.htz-bd{display:none}.htz-be{margin-top:0.5rem}}@media (max-width: 63.9375em){.htz-z{width:6rem}.htz-ab{height:6rem}.htz-bm{display:none}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-aj{display:none}.htz-au{font-size:2.3333333333333335rem}.htz-av{line-height:1.2857142857142858em}.htz-bg{margin-right:1rem}.htz-bh{margin-left:1rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-aw{font-size:2.6666666666666665rem}.htz-ax{line-height:1.5em}}@media (min-width: 80em){.htz-ay{font-size:2.2857142857142856rem}.htz-az{line-height:1.3125em}.htz-bi{font-size:2rem}.htz-bj{line-height:1.5em}}@media (max-width: 79.9375em){.htz-bk{font-size:2rem}.htz-bl{line-height:1.5em}}",
+  "styles": ".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:center}.htz-t{-webkit-box-align:center}.htz-u{vertical-align:-0.15em}.htz-v{color:#0B7EB5}.htz-w{fill:#FFF}.htz-ae{margin-left:1rem}.htz-ag{color:#006B96}.htz-ah{font-weight:bold}.htz-aq:after{content:\\", \\"}.htz-ar{display:inline}.htz-as:after{content:\\" ו\\"}.htz-bd{position:relative}.htz-be{overflow:hidden}.htz-bf{transition-property:max-height}.htz-bg{transition-duration:.3s}.htz-bh{transition-delay:.3s}.htz-bi{transition-timing-function:linear}.htz-bj:before{position:absolute}.htz-bk:before{display:block}.htz-bl:before{transition-property:transform}.htz-bm:before{transition-duration:.3s}.htz-bn:before{transition-timing-function:linear}.htz-bo:before{content:\\"\\"}.htz-bp:before{height:2px}.htz-bq:before{width:100%}.htz-br:before{background-color:#289DD3}.htz-bs:before{top:0}.htz-bt:before{transform:translateX(100%)}.htz-bu:before{z-index:1}.htz-bv:before{-webkit-transition-property:transform}.htz-bw:before{-moz-transition-property:transform}.htz-bx{max-height:0.333rem}.htz-by{-webkit-transition-property:max-height}.htz-bz{-moz-transition-property:max-height}.htz-ca{transform:translatey(-100%)}.htz-cb{transition-property:transform}.htz-cc{-webkit-transition-property:transform}.htz-cd{-moz-transition-property:transform}@media (max-width: 37.4375em){.htz-c{justify-content:space-between}.htz-d{border-top-width:1px}.htz-e{border-top-style:solid}.htz-f{border-top-color:#CCC}.htz-g{padding-top:calc(1rem - 1px)}.htz-h{border-bottom-width:1px}.htz-i{border-bottom-style:solid}.htz-j{border-bottom-color:#CCC}.htz-k{padding-bottom:calc(1rem - 1px)}.htz-l{-webkit-box-pack:justify}.htz-ab{display:inline-block}.htz-ai{font-size:2rem}.htz-aj{line-height:1.5em}.htz-av{display:block}}@media (min-width: 37.5em){.htz-m{justify-content:flex-start}.htz-n{-webkit-box-pack:right}}@media (min-width: 64em){.htz-o{flex-direction:column}.htz-p{align-items:flex-start}.htz-q{-webkit-box-orient:vertical}.htz-r{-webkit-box-direction:normal}.htz-s{-webkit-box-align:right}.htz-y{font-size:10rem}.htz-z{display:block}.htz-af{margin-top:1rem}.htz-at{display:none}.htz-au{margin-top:0.5rem}}@media (max-width: 63.9375em){.htz-x{font-size:6rem}.htz-bc{display:none}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-ac{display:none}.htz-ak{font-size:2.3333333333333335rem}.htz-al{line-height:1.2857142857142858em}.htz-aw{margin-right:1rem}.htz-ax{margin-left:1rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-am{font-size:2.6666666666666665rem}.htz-an{line-height:1.5em}}@media (min-width: 80em){.htz-ao{font-size:2.2857142857142856rem}.htz-ap{line-height:1.3125em}.htz-ay{font-size:2rem}.htz-az{line-height:1.5em}}@media (max-width: 79.9375em){.htz-ba{font-size:2rem}.htz-bb{line-height:1.5em}}",
 }
 `;
