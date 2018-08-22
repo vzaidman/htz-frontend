@@ -212,7 +212,7 @@ class MobileNavigationMenu extends React.Component {
 
 // eslint-disable-next-line react/prop-types
 export default ({ contentId, menuIsOpen, onClick, }) => (
-  <Query query={NavigationQuery} variables={{ path: contentId, }}>
+  <Query query={NavigationQuery} variables={{ listId: contentId, }}>
     {({ data, loading, error, }) => {
       if (error) return null;
       if (loading) return <MobileNavigationMenu />;
