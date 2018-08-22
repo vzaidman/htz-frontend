@@ -27,20 +27,24 @@ export default function createSiteConfig(hostname = window.location.hostname) {
   const domain = isIpAddress(hostname)
     ? defaultHostname
     : getSubdomain(hostname);
+  const newSsoDomain = config.get('service.newSso');
   const ssoDomain = config.get('service.sso');
   configurations.set('haaretz.co.il', {
+    newSsoDomain,
     ssoDomain,
     ssoKey: 'tmsso',
     siteId: '80',
   });
 
   configurations.set('themarker.com', {
+    newSsoDomain,
     ssoDomain,
     ssoKey: 'tmsso',
     siteId: '10',
   });
 
   configurations.set('haaretz.com', {
+    newSsoDomain,
     ssoDomain,
     ssoKey: 'engsso',
     siteId: '85',

@@ -51,22 +51,16 @@ export default function UserService(config = {}) {
    */
   function checkEmailExists(email) {
     const siteConfig = createSiteConfig();
-    const serviceUrl = `${siteConfig.ssoDomain}/sso/sso/isuser`;
-    const params = `email=${email}`;
+    const serviceUrl = `${siteConfig.newSsoDomain}/isuser?email=${email}`;
 
     const checkEmailPromise = new Promise((resolve, reject) =>
-      fetch(serviceUrl, {
-        method: 'POST',
-        body: params,
-        headers: new Headers({
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }),
-      }).then(data =>
+      fetch(serviceUrl).then(data =>
         data
           .json()
           .then(json => {
-            if (json.success === 1) return resolve(json.exists);
-            return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
+            console.log('json from exits', json);
+            return resolve(json.success);
+            // return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
           })
           .catch(err => {
             console.log('error from check email', err);
@@ -97,7 +91,7 @@ export default function UserService(config = {}) {
       anonymousId = user.anonymousId;
     }
     const siteConfig = createSiteConfig();
-    const serviceUrl = `${siteConfig.ssoDomain}/sso/sso/signIn`;
+    const serviceUrl = `${siteConfig.newSsoDomain}/loginUrlEncoded`;
     const params =
       'newsso=true' +
       '&fromlogin=true' +
@@ -105,7 +99,8 @@ export default function UserService(config = {}) {
       `&site=${siteConfig.siteId}` +
       `&userName=${username}` +
       `&anonymousId=${anonymousId}` +
-      `&password=${password}`;
+      `&password=${password}` +
+      '&termsChk=on';
 
     const loginPromise = new Promise((resolve, reject) =>
       fetch(serviceUrl, {
@@ -196,7 +191,7 @@ export default function UserService(config = {}) {
     user,
   }) {
     const siteConfig = createSiteConfig();
-    const serviceUrl = `${siteConfig.ssoDomain}/sso/user/register`;
+    const serviceUrl = `${siteConfig.newSsoDomain}/registerUrlEncoded`;
     const params =
       'newsso=true' +
       '&layer=createuser' +
@@ -208,7 +203,7 @@ export default function UserService(config = {}) {
       `&lastName=${lastName}` +
       `&mobilePrefix=${mobilePrefix}` +
       `&mobileNumber=${mobileNumber}` +
-      `&termsChk=${termsChk}` +
+      `&termsChk=${termsChk ? 'on' : 'off'}` +
       `&g-recaptcha-response=${gRecaptchaResponse}`;
 
     const registerPromise = new Promise((resolve, reject) =>
