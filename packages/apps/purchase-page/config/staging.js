@@ -6,6 +6,7 @@ module.exports = {
     base: defer(function () {
       return `http${this.useSSL ? 's' : ''}://${this.remoteFQDN}`;
     }),
+    newSso: 'https://ms-apps.haaretz.co.il/sso',
     sso: 'https://sso.haaretz.co.il',
     payment: 'https://payment.haaretz.co.il',
     image: 'https://images.haarets.co.il/image',
