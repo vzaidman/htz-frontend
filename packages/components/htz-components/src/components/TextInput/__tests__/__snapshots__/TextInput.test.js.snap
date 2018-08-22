@@ -5,7 +5,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
       onClick={[Function]}
     >
       <div
@@ -13,14 +13,14 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
       >
         <span
           className="htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-x htz-y htz-au htz-ab htz-av htz-aw htz-ax"
-          id="123456789"
+          id="0.123456789"
         />
         <div>
            
           <button
             aria-checked={false}
             arial-label="italic"
-            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-bz htz-ca htz-am htz-cb htz-cc htz-cd htz-ce htz-ac htz-cf htz-af htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz"
+            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-q htz-r htz-bx htz-n htz-o htz-by htz-bz htz-m htz-ca htz-l htz-cb htz-cc htz-am htz-cd htz-ce htz-cf htz-cg htz-ac htz-ch htz-af htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -28,10 +28,10 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
             type="button"
           >
             <span
-              className="htz-da htz-db htz-aq htz-ar htz-dc htz-dd htz-de"
+              className="htz-dc htz-dd htz-aq htz-ar htz-de htz-df htz-dg"
             >
               <svg
-                className="htz-df htz-dg htz-dh"
+                className="htz-dh htz-di htz-dj"
                 height="1em"
                 viewBox="0 0 256 256"
                 width="1em"
@@ -44,13 +44,13 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
               </svg>
             </span>
             <span
-              className="htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-g htz-dp htz-dq htz-dr htz-ds htz-dt"
+              className="htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-g htz-dr htz-ds htz-dt htz-du htz-dv"
             />
           </button>
           <button
             aria-checked={false}
             arial-label="bold"
-            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-ca htz-du htz-cb htz-cc htz-cd htz-ce htz-ac htz-cf htz-af htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz"
+            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-q htz-r htz-bx htz-n htz-o htz-by htz-bz htz-m htz-ca htz-l htz-cc htz-dw htz-cd htz-ce htz-cf htz-cg htz-ac htz-ch htz-af htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -58,10 +58,10 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
             type="button"
           >
             <span
-              className="htz-da htz-db htz-aq htz-ar htz-dc htz-dd htz-de"
+              className="htz-dc htz-dd htz-aq htz-ar htz-de htz-df htz-dg"
             >
               <svg
-                className="htz-df htz-dg htz-dh"
+                className="htz-dh htz-di htz-dj"
                 height="1em"
                 viewBox="0 0 256 256"
                 width="1em"
@@ -74,17 +74,17 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
               </svg>
             </span>
             <span
-              className="htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-g htz-dp htz-dq htz-dr htz-ds htz-dt"
+              className="htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-g htz-dr htz-ds htz-dt htz-du htz-dv"
             />
           </button>
         </div>
       </div>
       <div
-        aria-labelledby="123456789"
+        aria-labelledby="0.123456789"
         aria-multiline={true}
-        className="htz-dv htz-dw htz-dx htz-dy htz-dz htz-bd htz-g htz-a htz-ea htz-ci htz-eb"
+        className="htz-dx htz-dy htz-dz htz-ea htz-eb htz-bd htz-g htz-a htz-ec htz-ck htz-ed"
         contentEditable={true}
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
@@ -97,21 +97,21 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
       />
     </label>
     <span
-      className="htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh"
+      className="htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a contentEditable div 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start}.htz-d{flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:right}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}.htz-aj{justify-content:space-between}.htz-ak{-webkit-box-pack:justify}.htz-al{white-space:nowrap}.htz-am{margin-left:1rem}.htz-an{color:#006B96}.htz-ao{font-weight:bold}.htz-ap{transition-property:transform}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:transform}.htz-aw{-moz-transition-property:transform}.htz-ax{-webkit-box-flex:1}.htz-ay{align-items:center}.htz-az{-webkit-appearance:none}.htz-ba{-moz-appearance:none}.htz-bb{appearance:none}.htz-bc{display:none}.htz-bd{font-size:inherit}.htz-be{justify-content:center}.htz-bf{position:relative}.htz-bg{transform:scale(1)}.htz-bh{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bi{text-decoration:none}.htz-bj::moz-focus-inner{border:0}.htz-bk::moz-focus-inner{padding:0}.htz-bl:after{content:\\"\\"}.htz-bm:after{height:1px}.htz-bn:after{position:absolute}.htz-bo:after{width:100%}.htz-bp:after{bottom:0}.htz-bq:before{content:\\"\\"}.htz-br:before{height:1px}.htz-bs:before{position:absolute}.htz-bt:before{width:100%}.htz-bu:before{top:0}.htz-bv{padding-right:0rem}.htz-bw{padding-left:0rem}.htz-bx{border-radius:0}.htz-by{border-color:transparent}.htz-bz{font-style:italic}.htz-ca{height:5rem}.htz-cb{width:5rem}.htz-cc:visited{color:#2D2D2D}.htz-cd:hover{text-decoration:none}.htz-ce:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cf:hover{border-color:transparent}.htz-cg:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ch:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ci:focus{outline:none}.htz-cj:focus{text-decoration:none}.htz-ck:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cl:focus{background-color:#0B7EB5}.htz-cm:focus{border-color:transparent}.htz-cn:focus{color:#FFF}.htz-co:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cq:active{outline:none}.htz-cr:active{text-decoration:none}.htz-cs:active{transition-duration:0s}.htz-ct:active{background-color:#0B7EB5}.htz-cu:active{border-color:transparent}.htz-cv:active{color:#FFF}.htz-cw{-webkit-box-align:center}.htz-cx{-webkit-box-pack:center}.htz-cy{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cz{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-da{opacity:1}.htz-db{transition-property:opacity}.htz-dc{transition-delay:.3s}.htz-dd{-webkit-transition-property:opacity}.htz-de{-moz-transition-property:opacity}.htz-df{vertical-align:-0.15em}.htz-dg{color:inherit}.htz-dh{fill:#FFF}.htz-di{background-color:rgba(200,200,200, 0.3)}.htz-dj{height:100%}.htz-dk{right:0}.htz-dl{position:absolute}.htz-dm{top:0}.htz-dn{transform:scaleX(0)}.htz-do{transform-origin:right}.htz-dp{animation-direction:alternate}.htz-dq{animation-iteration-count:infinite}.htz-dr{animation-duration:1s}.htz-ds{animation-delay:0.75s}.htz-dt{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-du{margin-top:calc(1px - 1rem)}.htz-dv{border:none}.htz-dw{background-color:transparent}.htz-dx{overflow:auto}.htz-dy{word-wrap:break-word}.htz-dz{word-break:break-word}.htz-ea{height:6rem}.htz-eb:focus{cursor:text}.htz-ec{display:block}.htz-eh{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ed{font-size:1.8333333333333333rem}.htz-ee{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ef{font-size:1.7142857142857142rem}.htz-eg{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a contentEditable div 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start}.htz-d{flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:right}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}.htz-aj{justify-content:space-between}.htz-ak{-webkit-box-pack:justify}.htz-al{white-space:nowrap}.htz-am{margin-left:1rem}.htz-an{color:#006B96}.htz-ao{font-weight:bold}.htz-ap{transition-property:transform}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:transform}.htz-aw{-moz-transition-property:transform}.htz-ax{-webkit-box-flex:1}.htz-ay{align-items:center}.htz-az{-webkit-appearance:none}.htz-ba{-moz-appearance:none}.htz-bb{appearance:none}.htz-bc{display:none}.htz-bd{font-size:inherit}.htz-be{justify-content:center}.htz-bf{position:relative}.htz-bg{transform:scale(1)}.htz-bh{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bi{text-decoration:none}.htz-bj::moz-focus-inner{border:0}.htz-bk::moz-focus-inner{padding:0}.htz-bl:after{content:\\"\\"}.htz-bm:after{height:1px}.htz-bn:after{position:absolute}.htz-bo:after{width:100%}.htz-bp:after{bottom:0}.htz-bq:after{right:0}.htz-br:before{content:\\"\\"}.htz-bs:before{height:1px}.htz-bt:before{position:absolute}.htz-bu:before{width:100%}.htz-bv:before{right:0}.htz-bw:before{top:0}.htz-bx{padding-right:0rem}.htz-by{padding-left:0rem}.htz-bz{border-radius:0}.htz-ca{border-color:transparent}.htz-cb{font-style:italic}.htz-cc{height:5rem}.htz-cd{width:5rem}.htz-ce:visited{color:#2D2D2D}.htz-cf:hover{text-decoration:none}.htz-cg:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ch:hover{border-color:transparent}.htz-ci:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cj:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ck:focus{outline:none}.htz-cl:focus{text-decoration:none}.htz-cm:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cn:focus{background-color:#0B7EB5}.htz-co:focus{border-color:transparent}.htz-cp:focus{color:#FFF}.htz-cq:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cr:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:active{outline:none}.htz-ct:active{text-decoration:none}.htz-cu:active{transition-duration:0s}.htz-cv:active{background-color:#0B7EB5}.htz-cw:active{border-color:transparent}.htz-cx:active{color:#FFF}.htz-cy{-webkit-box-align:center}.htz-cz{-webkit-box-pack:center}.htz-da{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-db{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dc{opacity:1}.htz-dd{transition-property:opacity}.htz-de{transition-delay:.3s}.htz-df{-webkit-transition-property:opacity}.htz-dg{-moz-transition-property:opacity}.htz-dh{vertical-align:-0.15em}.htz-di{color:inherit}.htz-dj{fill:#FFF}.htz-dk{background-color:rgba(200,200,200, 0.3)}.htz-dl{height:100%}.htz-dm{right:0}.htz-dn{position:absolute}.htz-do{top:0}.htz-dp{transform:scaleX(0)}.htz-dq{transform-origin:right}.htz-dr{animation-direction:alternate}.htz-ds{animation-iteration-count:infinite}.htz-dt{animation-duration:1s}.htz-du{animation-delay:0.75s}.htz-dv{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dw{margin-top:calc(1px - 1rem)}.htz-dx{border:none}.htz-dy{background-color:transparent}.htz-dz{overflow:auto}.htz-ea{word-wrap:break-word}.htz-eb{word-break:break-word}.htz-ec{height:6rem}.htz-ed:focus{cursor:text}.htz-ee{display:block}.htz-ej{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ef{font-size:1.8333333333333333rem}.htz-eg{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-eh{font-size:1.7142857142857142rem}.htz-ei{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a contentEditable div with label 1`] = `
 <div>
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
       onClick={[Function]}
     >
       <div
@@ -119,7 +119,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
       >
         <span
           className="htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-x htz-y htz-au htz-ab htz-av htz-aw htz-ax"
-          id="123456789"
+          id="0.123456789"
         >
           label
         </span>
@@ -128,7 +128,7 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
           <button
             aria-checked={false}
             arial-label="italic"
-            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-bz htz-ca htz-am htz-cb htz-cc htz-cd htz-ce htz-ac htz-cf htz-af htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz"
+            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-q htz-r htz-bx htz-n htz-o htz-by htz-bz htz-m htz-ca htz-l htz-cb htz-cc htz-am htz-cd htz-ce htz-cf htz-cg htz-ac htz-ch htz-af htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -136,10 +136,10 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
             type="button"
           >
             <span
-              className="htz-da htz-db htz-aq htz-ar htz-dc htz-dd htz-de"
+              className="htz-dc htz-dd htz-aq htz-ar htz-de htz-df htz-dg"
             >
               <svg
-                className="htz-df htz-dg htz-dh"
+                className="htz-dh htz-di htz-dj"
                 height="1em"
                 viewBox="0 0 256 256"
                 width="1em"
@@ -152,13 +152,13 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
               </svg>
             </span>
             <span
-              className="htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-g htz-dp htz-dq htz-dr htz-ds htz-dt"
+              className="htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-g htz-dr htz-ds htz-dt htz-du htz-dv"
             />
           </button>
           <button
             aria-checked={false}
             arial-label="bold"
-            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-q htz-r htz-bv htz-n htz-o htz-bw htz-bx htz-m htz-by htz-l htz-ca htz-du htz-cb htz-cc htz-cd htz-ce htz-ac htz-cf htz-af htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz"
+            className="htz-ay htz-az htz-ba htz-bb htz-a htz-bc htz-ao htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-al htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-q htz-r htz-bx htz-n htz-o htz-by htz-bz htz-m htz-ca htz-l htz-cc htz-dw htz-cd htz-ce htz-cf htz-cg htz-ac htz-ch htz-af htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
             id={null}
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -166,10 +166,10 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
             type="button"
           >
             <span
-              className="htz-da htz-db htz-aq htz-ar htz-dc htz-dd htz-de"
+              className="htz-dc htz-dd htz-aq htz-ar htz-de htz-df htz-dg"
             >
               <svg
-                className="htz-df htz-dg htz-dh"
+                className="htz-dh htz-di htz-dj"
                 height="1em"
                 viewBox="0 0 256 256"
                 width="1em"
@@ -182,17 +182,17 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
               </svg>
             </span>
             <span
-              className="htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-g htz-dp htz-dq htz-dr htz-ds htz-dt"
+              className="htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-g htz-dr htz-ds htz-dt htz-du htz-dv"
             />
           </button>
         </div>
       </div>
       <div
-        aria-labelledby="123456789"
+        aria-labelledby="0.123456789"
         aria-multiline={true}
-        className="htz-dv htz-dw htz-dx htz-dy htz-dz htz-bd htz-g htz-a htz-ea htz-ci htz-eb"
+        className="htz-dx htz-dy htz-dz htz-ea htz-eb htz-bd htz-g htz-a htz-ec htz-ck htz-ed"
         contentEditable={true}
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
@@ -205,21 +205,21 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
       />
     </label>
     <span
-      className="htz-ec htz-ed htz-ee htz-ef htz-eg htz-eh"
+      className="htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a contentEditable div with label 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start}.htz-d{flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:right}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}.htz-aj{justify-content:space-between}.htz-ak{-webkit-box-pack:justify}.htz-al{white-space:nowrap}.htz-am{margin-left:1rem}.htz-an{color:#006B96}.htz-ao{font-weight:bold}.htz-ap{transition-property:transform}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:transform}.htz-aw{-moz-transition-property:transform}.htz-ax{-webkit-box-flex:1}.htz-ay{align-items:center}.htz-az{-webkit-appearance:none}.htz-ba{-moz-appearance:none}.htz-bb{appearance:none}.htz-bc{display:none}.htz-bd{font-size:inherit}.htz-be{justify-content:center}.htz-bf{position:relative}.htz-bg{transform:scale(1)}.htz-bh{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bi{text-decoration:none}.htz-bj::moz-focus-inner{border:0}.htz-bk::moz-focus-inner{padding:0}.htz-bl:after{content:\\"\\"}.htz-bm:after{height:1px}.htz-bn:after{position:absolute}.htz-bo:after{width:100%}.htz-bp:after{bottom:0}.htz-bq:before{content:\\"\\"}.htz-br:before{height:1px}.htz-bs:before{position:absolute}.htz-bt:before{width:100%}.htz-bu:before{top:0}.htz-bv{padding-right:0rem}.htz-bw{padding-left:0rem}.htz-bx{border-radius:0}.htz-by{border-color:transparent}.htz-bz{font-style:italic}.htz-ca{height:5rem}.htz-cb{width:5rem}.htz-cc:visited{color:#2D2D2D}.htz-cd:hover{text-decoration:none}.htz-ce:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cf:hover{border-color:transparent}.htz-cg:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ch:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ci:focus{outline:none}.htz-cj:focus{text-decoration:none}.htz-ck:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cl:focus{background-color:#0B7EB5}.htz-cm:focus{border-color:transparent}.htz-cn:focus{color:#FFF}.htz-co:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cq:active{outline:none}.htz-cr:active{text-decoration:none}.htz-cs:active{transition-duration:0s}.htz-ct:active{background-color:#0B7EB5}.htz-cu:active{border-color:transparent}.htz-cv:active{color:#FFF}.htz-cw{-webkit-box-align:center}.htz-cx{-webkit-box-pack:center}.htz-cy{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cz{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-da{opacity:1}.htz-db{transition-property:opacity}.htz-dc{transition-delay:.3s}.htz-dd{-webkit-transition-property:opacity}.htz-de{-moz-transition-property:opacity}.htz-df{vertical-align:-0.15em}.htz-dg{color:inherit}.htz-dh{fill:#FFF}.htz-di{background-color:rgba(200,200,200, 0.3)}.htz-dj{height:100%}.htz-dk{right:0}.htz-dl{position:absolute}.htz-dm{top:0}.htz-dn{transform:scaleX(0)}.htz-do{transform-origin:right}.htz-dp{animation-direction:alternate}.htz-dq{animation-iteration-count:infinite}.htz-dr{animation-duration:1s}.htz-ds{animation-delay:0.75s}.htz-dt{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-du{margin-top:calc(1px - 1rem)}.htz-dv{border:none}.htz-dw{background-color:transparent}.htz-dx{overflow:auto}.htz-dy{word-wrap:break-word}.htz-dz{word-break:break-word}.htz-ea{height:6rem}.htz-eb:focus{cursor:text}.htz-ec{display:block}.htz-eh{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ed{font-size:1.8333333333333333rem}.htz-ee{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ef{font-size:1.7142857142857142rem}.htz-eg{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a contentEditable div with label 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:flex-start}.htz-d{flex-direction:column}.htz-e{padding-right:1rem}.htz-f{padding-left:1rem}.htz-g{width:100%}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:right}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}.htz-aj{justify-content:space-between}.htz-ak{-webkit-box-pack:justify}.htz-al{white-space:nowrap}.htz-am{margin-left:1rem}.htz-an{color:#006B96}.htz-ao{font-weight:bold}.htz-ap{transition-property:transform}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{flex-grow:1}.htz-at{margin-bottom:1rem}.htz-au{border-bottom-color:transparent}.htz-av{-webkit-transition-property:transform}.htz-aw{-moz-transition-property:transform}.htz-ax{-webkit-box-flex:1}.htz-ay{align-items:center}.htz-az{-webkit-appearance:none}.htz-ba{-moz-appearance:none}.htz-bb{appearance:none}.htz-bc{display:none}.htz-bd{font-size:inherit}.htz-be{justify-content:center}.htz-bf{position:relative}.htz-bg{transform:scale(1)}.htz-bh{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bi{text-decoration:none}.htz-bj::moz-focus-inner{border:0}.htz-bk::moz-focus-inner{padding:0}.htz-bl:after{content:\\"\\"}.htz-bm:after{height:1px}.htz-bn:after{position:absolute}.htz-bo:after{width:100%}.htz-bp:after{bottom:0}.htz-bq:after{right:0}.htz-br:before{content:\\"\\"}.htz-bs:before{height:1px}.htz-bt:before{position:absolute}.htz-bu:before{width:100%}.htz-bv:before{right:0}.htz-bw:before{top:0}.htz-bx{padding-right:0rem}.htz-by{padding-left:0rem}.htz-bz{border-radius:0}.htz-ca{border-color:transparent}.htz-cb{font-style:italic}.htz-cc{height:5rem}.htz-cd{width:5rem}.htz-ce:visited{color:#2D2D2D}.htz-cf:hover{text-decoration:none}.htz-cg:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ch:hover{border-color:transparent}.htz-ci:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cj:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ck:focus{outline:none}.htz-cl:focus{text-decoration:none}.htz-cm:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cn:focus{background-color:#0B7EB5}.htz-co:focus{border-color:transparent}.htz-cp:focus{color:#FFF}.htz-cq:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cr:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:active{outline:none}.htz-ct:active{text-decoration:none}.htz-cu:active{transition-duration:0s}.htz-cv:active{background-color:#0B7EB5}.htz-cw:active{border-color:transparent}.htz-cx:active{color:#FFF}.htz-cy{-webkit-box-align:center}.htz-cz{-webkit-box-pack:center}.htz-da{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-db{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dc{opacity:1}.htz-dd{transition-property:opacity}.htz-de{transition-delay:.3s}.htz-df{-webkit-transition-property:opacity}.htz-dg{-moz-transition-property:opacity}.htz-dh{vertical-align:-0.15em}.htz-di{color:inherit}.htz-dj{fill:#FFF}.htz-dk{background-color:rgba(200,200,200, 0.3)}.htz-dl{height:100%}.htz-dm{right:0}.htz-dn{position:absolute}.htz-do{top:0}.htz-dp{transform:scaleX(0)}.htz-dq{transform-origin:right}.htz-dr{animation-direction:alternate}.htz-ds{animation-iteration-count:infinite}.htz-dt{animation-duration:1s}.htz-du{animation-delay:0.75s}.htz-dv{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dw{margin-top:calc(1px - 1rem)}.htz-dx{border:none}.htz-dy{background-color:transparent}.htz-dz{overflow:auto}.htz-ea{word-wrap:break-word}.htz-eb{word-break:break-word}.htz-ec{height:6rem}.htz-ed:focus{cursor:text}.htz-ee{display:block}.htz-ej{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ef{font-size:1.8333333333333333rem}.htz-eg{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-eh{font-size:1.7142857142857142rem}.htz-ei{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a disabled input 1`] = `
 <div>
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -231,7 +231,7 @@ exports[`<TextInput> DOM element renders correctly a disabled input 1`] = `
       <input
         className="htz-au htz-av htz-aw htz-f htz-a htz-ax htz-ay"
         disabled={true}
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -253,7 +253,7 @@ exports[`<TextInput> DOM element renders correctly a disabled input 3`] = `
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -265,7 +265,7 @@ exports[`<TextInput> DOM element renders correctly a disabled input 3`] = `
       <input
         className="htz-au htz-av htz-aw htz-f htz-a htz-ax htz-ay"
         disabled={true}
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -287,7 +287,7 @@ exports[`<TextInput> DOM element renders correctly a input with a miscStyles pro
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -298,7 +298,7 @@ exports[`<TextInput> DOM element renders correctly a input with a miscStyles pro
       </div>
       <input
         className="htz-au htz-av htz-aw htz-f htz-a htz-ax htz-ay"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -320,7 +320,7 @@ exports[`<TextInput> DOM element renders correctly a input with a onInput functi
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -331,7 +331,7 @@ exports[`<TextInput> DOM element renders correctly a input with a onInput functi
       </div>
       <input
         className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -354,7 +354,7 @@ exports[`<TextInput> DOM element renders correctly a input with a placeholder 1`
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -365,7 +365,7 @@ exports[`<TextInput> DOM element renders correctly a input with a placeholder 1`
       </div>
       <input
         className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -388,7 +388,7 @@ exports[`<TextInput> DOM element renders correctly a input with a requiredText 1
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -409,7 +409,7 @@ exports[`<TextInput> DOM element renders correctly a input with a requiredText 1
       </div>
       <input
         className="htz-av htz-aw htz-ax htz-f htz-a htz-ay htz-az"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -431,7 +431,7 @@ exports[`<TextInput> DOM element renders correctly a input with a requiredText t
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -452,7 +452,7 @@ exports[`<TextInput> DOM element renders correctly a input with a requiredText t
       </div>
       <input
         className="htz-av htz-aw htz-ax htz-f htz-a htz-ay htz-az"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -474,7 +474,7 @@ exports[`<TextInput> DOM element renders correctly a input with a value prop 1`]
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -485,7 +485,7 @@ exports[`<TextInput> DOM element renders correctly a input with a value prop 1`]
       </div>
       <input
         className="htz-av htz-aw htz-ax htz-f htz-a htz-ay htz-az"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -508,7 +508,7 @@ exports[`<TextInput> DOM element renders correctly a input with a variant prop 1
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -519,7 +519,7 @@ exports[`<TextInput> DOM element renders correctly a input with a variant prop 1
       </div>
       <input
         className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -541,7 +541,7 @@ exports[`<TextInput> DOM element renders correctly a textArea with a responsive 
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className="htz-g"
@@ -552,7 +552,7 @@ exports[`<TextInput> DOM element renders correctly a textArea with a responsive 
       </div>
       <textarea
         className="htz-ax htz-ay htz-az htz-ba htz-g htz-a htz-bb htz-bc htz-bd htz-be"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -573,7 +573,7 @@ exports[`<TextInput> DOM element renders correctly a textArea with a simple heig
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className="htz-g"
@@ -584,7 +584,7 @@ exports[`<TextInput> DOM element renders correctly a textArea with a simple heig
       </div>
       <textarea
         className="htz-ax htz-ay htz-az htz-ba htz-g htz-a htz-bb htz-bc htz-bd"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -605,7 +605,7 @@ exports[`<TextInput> DOM element renders correctly a textarea 1`] = `
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className="htz-g"
@@ -616,7 +616,7 @@ exports[`<TextInput> DOM element renders correctly a textarea 1`] = `
       </div>
       <textarea
         className="htz-ax htz-ay htz-az htz-ba htz-g htz-a htz-bb htz-bc htz-bd"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -637,7 +637,7 @@ exports[`<TextInput> DOM element renders correctly a textarea with max and min l
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className="htz-g"
@@ -648,7 +648,7 @@ exports[`<TextInput> DOM element renders correctly a textarea with max and min l
       </div>
       <textarea
         className="htz-ax htz-ay htz-az htz-ba htz-g htz-a htz-bb htz-bc htz-bd"
-        id="123456789"
+        id="0.123456789"
         maxLength={100}
         minLength={2}
         onBlur={[Function]}
@@ -671,7 +671,7 @@ exports[`<TextInput> DOM element renders correctly a type=email prop 1`] = `
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -682,7 +682,7 @@ exports[`<TextInput> DOM element renders correctly a type=email prop 1`] = `
       </div>
       <input
         className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -704,7 +704,7 @@ exports[`<TextInput> DOM element renders correctly with attrs prop 1`] = `
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -716,7 +716,7 @@ exports[`<TextInput> DOM element renders correctly with attrs prop 1`] = `
       <input
         aria-label="A input with custom attributes"
         className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -772,7 +772,7 @@ exports[`<TextInput> DOM element renders correctly with defaultValue prop 1`] = 
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -784,7 +784,7 @@ exports[`<TextInput> DOM element renders correctly with defaultValue prop 1`] = 
       <input
         className="htz-av htz-aw htz-ax htz-f htz-a htz-ay htz-az"
         defaultValue="defalut value given"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -806,7 +806,7 @@ exports[`<TextInput> DOM element renders correctly with isError and errorText pr
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -816,9 +816,9 @@ exports[`<TextInput> DOM element renders correctly with isError and errorText pr
         />
       </div>
       <input
-        aria-describedby="123456789"
+        aria-describedby="0.123456789"
         className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -827,7 +827,7 @@ exports[`<TextInput> DOM element renders correctly with isError and errorText pr
     </label>
     <span
       className="htz-ay htz-az htz-ba htz-bb htz-bc htz-ak"
-      id="123456789"
+      id="0.123456789"
     >
       אנא הזינו כתובת תקינה
     </span>
@@ -842,7 +842,7 @@ exports[`<TextInput> DOM element renders correctly with labelHidden 1`] = `
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -856,7 +856,7 @@ exports[`<TextInput> DOM element renders correctly with labelHidden 1`] = `
       <input
         aria-label="label"
         className="htz-aj htz-ak htz-al htz-f htz-a htz-am htz-an"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -878,7 +878,7 @@ exports[`<TextInput> DOM element renders correctly with minimal required props 1
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -889,7 +889,7 @@ exports[`<TextInput> DOM element renders correctly with minimal required props 1
       </div>
       <input
         className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -911,7 +911,7 @@ exports[`<TextInput> DOM element renders correctly without isError, noteText and
   <div>
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="123456789"
+      htmlFor="0.123456789"
     >
       <div
         className=""
@@ -921,9 +921,9 @@ exports[`<TextInput> DOM element renders correctly without isError, noteText and
         />
       </div>
       <input
-        aria-describedby="123456789"
+        aria-describedby="0.123456789"
         className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
-        id="123456789"
+        id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -932,7 +932,7 @@ exports[`<TextInput> DOM element renders correctly without isError, noteText and
     </label>
     <span
       className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
-      id="123456789"
+      id="0.123456789"
     >
       description note
     </span>
