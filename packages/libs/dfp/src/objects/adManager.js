@@ -629,6 +629,9 @@ export default class AdManager {
         pubads.setTargeting('stg', [ this.config.environment, ]);
       }
 
+      // App targeting
+      pubads.setTargeting('pageType', [ 'react', ]);
+
       // User targeting
       if (this.user.type) {
         pubads.setTargeting('UserType', [ this.user.type, ]);
