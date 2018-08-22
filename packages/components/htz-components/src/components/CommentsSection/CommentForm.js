@@ -95,7 +95,7 @@ const StyledSendCommentButtonsCont = createComponent(
   sendCommentButtonsContStyle
 );
 
-function getPrintableCharsCount(html) {
+function getPrintableCharsCount(html = '') {
   const regex = /(<([^>]+)>)/gi;
   return html.replace(regex, '').length;
 }

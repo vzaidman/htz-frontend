@@ -87,7 +87,7 @@ export default class Form extends Component {
   };
 
   state = {
-    values: {},
+    values: { ...this.props.initialValues, },
     errors: [],
     touched: {},
     // TODO: handle submitting state
