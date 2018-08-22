@@ -71,18 +71,7 @@ class Masthead extends Component {
   render() {
     const { contentId, hostname, y, Logo, } = this.props;
     const { shouldDisplay, searchIsOpen, } = this.state;
-    const hostMatch = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-    let host;
-    switch (hostMatch) {
-      case 'haaretz.com':
-        host = 'hdc';
-        break;
-      case 'themarker.com':
-        host = 'tm';
-        break;
-      default:
-        host = 'htz';
-    }
+    const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
 
     return (
       <Fragment>
