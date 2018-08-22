@@ -16,9 +16,9 @@ services:
 #      timeout: 5s
 #      retries: 3
     deploy:
-      replicas: 5
+      replicas: 10
       update_config:
-        parallelism: 5
+        parallelism: 10
         delay: 30s
         order: start-first
       restart_policy:
