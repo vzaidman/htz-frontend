@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
-import { borderTop, parseComponentProp, } from '@haaretz/htz-css-tools';
+import { borderTop, } from '@haaretz/htz-css-tools';
 import type { Node, } from 'react';
 
 import ActionButtons from '../../../ActionButtons/ActionButtons';
@@ -49,6 +49,8 @@ class ShareBar extends React.Component<Props, State> {
         style={(theme: Object) => ({
           marginTop: '3rem',
           overflow: 'hidden',
+          display: 'flex',
+          justifyContent: 'space-between',
           extend: [
             borderTop({
               width: '1px',
@@ -56,19 +58,15 @@ class ShareBar extends React.Component<Props, State> {
               style: 'solid',
               color: theme.color('neutral', '-5'),
             }),
-            parseComponentProp(
-              'display',
-              [ { until: 's', value: 'none', }, { from: 's', value: 'flex', }, ],
-              theme.mq
-            ),
+            theme.mq({ until: 's', }, { display: 'none', }),
           ],
         })}
         render={({ className, theme, }) => (
           <div className={className}>
             <ActionButtons
-              miscStyles={{
-                flexGrow: '1',
-              }}
+              // miscStyles={{
+              //   flexGrow: '1',
+              // }}
               elementName={title}
               elementUrl={canonicalUrl}
               buttons={[
@@ -97,68 +95,70 @@ class ShareBar extends React.Component<Props, State> {
               }}
               size={4}
             />
-            <ActionButtons
-              elementName={title}
-              elementUrl={canonicalUrl}
-              miscStyles={{
-                transform: `translateX(${
-                  isOpen ? '0' : 'calc(-50% + 3.5rem)'
-                })`,
-                transitionProperty: 'transform',
-                ...theme.getDelay('transition', -1),
-                ...theme.getDuration('transition', -1),
-                ...theme.getTimingFunction('transition', 'linear'),
-              }}
-              buttons={[
-                'comments',
-                'zen',
-                'print',
-                {
-                  name: 'save',
-                  buttonStyles: isArticleSaved => ({
-                    minWidth: '10rem',
-                    ...(isArticleSaved
-                      ? {
-                          color: theme.color('neutral', '-10'),
-                          backgroundColor: theme.color('primary'),
-                          ':hover': {
+            <FelaComponent style={{ display: 'flex', }}>
+              <ActionButtons
+                elementName={title}
+                elementUrl={canonicalUrl}
+                miscStyles={{
+                  transform: `translateX(${
+                    isOpen ? '0' : 'calc(-50% + 3.5rem)'
+                  })`,
+                  transitionProperty: 'transform',
+                  ...theme.getDelay('transition', -1),
+                  ...theme.getDuration('transition', -1),
+                  ...theme.getTimingFunction('transition', 'linear'),
+                }}
+                buttons={[
+                  'comments',
+                  'zen',
+                  'print',
+                  {
+                    name: 'save',
+                    buttonStyles: isArticleSaved => ({
+                      minWidth: '10rem',
+                      ...(isArticleSaved
+                        ? {
                             color: theme.color('neutral', '-10'),
-                            backgroundColor: theme.color('secondary'),
-                          },
-                        }
-                      : {}),
-                  }),
-                },
-              ]}
-              globalButtonsStyles={{
-                minWidth: '10rem',
-              }}
-              size={4}
-            />
-            <Button
-              onClick={this.toggleOpen}
-              onFocus={() => this.changeFocus(true)}
-              onBlur={() => this.changeFocus(false)}
-              onMouseEnter={() => this.toggleHover(true)}
-              onMouseLeave={() => this.toggleHover(false)}
-              title={!isOpen ? 'אפשרויות נוספות' : null}
-              miscStyles={{
-                paddingStart: '3rem',
-                paddingEnd: '3rem',
-              }}
-            >
-              <PlusClose
-                isOpen={isOpen}
-                size={3}
-                color={
-                  focused
-                    ? hover
-                      ? [ 'primary', ]
-                      : [ 'neutral', '-10', ]
-                    : [ 'primary', ]
-                }
+                            backgroundColor: theme.color('primary'),
+                            ':hover': {
+                              color: theme.color('neutral', '-10'),
+                              backgroundColor: theme.color('secondary'),
+                            },
+                          }
+                        : {}),
+                    }),
+                  },
+                ]}
+                globalButtonsStyles={{
+                  minWidth: '10rem',
+                }}
+                size={4}
               />
-            </Button>
+              <Button
+                onClick={this.toggleOpen}
+                onFocus={() => this.changeFocus(true)}
+                onBlur={() => this.changeFocus(false)}
+                onMouseEnter={() => this.toggleHover(true)}
+                onMouseLeave={() => this.toggleHover(false)}
+                title={!isOpen ? 'אפשרויות נוספות' : null}
+                miscStyles={{
+                  paddingStart: '3rem',
+                  paddingEnd: '3rem',
+                }}
+              >
+                <PlusClose
+                  isOpen={isOpen}
+                  size={3}
+                  color={
+                    focused
+                      ? hover
+                        ? [ 'primary', ]
+                        : [ 'neutral', '-10', ]
+                      : [ 'primary', ]
+                  }
+                />
+              </Button>
+            </FelaComponent>
           </div>
         )}
       />
