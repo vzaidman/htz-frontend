@@ -31,5 +31,4 @@ module.exports = {
   logLevel: 'error',
   assetPrefix: '',
   enableHttpLogging: false,
-  preset: 'dev2prod',
 };
