@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
 // import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
-import DFP from '@haaretz/dfp';
+import DFP, { dfpTargeting, } from '@haaretz/dfp';
 import logger from '../../componentsLogger';
+import UserDispenser from '../User/UserDispenser';
 import getSectionPairFromLineage from './utils/getSectionsFromLineage';
 
 export const instance = {};
@@ -168,20 +169,28 @@ DfpInjector.defaultProps = defaultProps;
 
 function DfpInjectorWrapper(pathObject) {
   return (
-    <Query query={GET_AD_MANAGER} variables={{ path: pathObject.path, }}>
-      {({ loading, error, data, client, }) => {
-        if (loading) return null;
-        if (error) logger.error(error);
-        const { dfpConfig, lineage, } = data.page;
-        const [ section, subSection, ] = getSectionPairFromLineage(lineage);
-        return (
-          <DfpInjector
-            dfpConfig={{ ...dfpConfig, section, subSection, }}
-            path={pathObject.path}
-          />
-        );
-      }}
-    </Query>
+    <React.Fragment>
+      <Query query={GET_AD_MANAGER} variables={{ path: pathObject.path, }}>
+        {({ loading, error, data, client, }) => {
+          if (loading) return null;
+          if (error) logger.error(error);
+          const { dfpConfig, lineage, } = data.page;
+          const [ section, subSection, ] = getSectionPairFromLineage(lineage);
+          return (
+            <DfpInjector
+              dfpConfig={{ ...dfpConfig, section, subSection, }}
+              path={pathObject.path}
+            />
+          );
+        }}
+      </Query>
+      <UserDispenser
+        render={({ user, }) => {
+          dfpTargeting.setAnonymousIdKey(user.anonymousId);
+          return null;
+        }}
+      />
+    </React.Fragment>
   );
 }
 
