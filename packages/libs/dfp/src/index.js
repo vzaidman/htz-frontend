@@ -12,3 +12,5 @@ import DFP from './dfp';
  }
  */
 export default DFP;
+
+export { default as setDfpTagsParam, } from './utils/setDfpTagsParam';

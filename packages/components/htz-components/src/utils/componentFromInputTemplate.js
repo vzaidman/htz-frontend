@@ -1,5 +1,6 @@
 /* global window */
 import React from 'react';
+import { setDfpTagsParam, } from '@haaretz/dfp';
 
 import ArticleBody from '../components/ArticleBody/ArticleBody';
 import MarkedAdSlot from '../components/Ads/MarkedAdSlot';
@@ -29,6 +30,7 @@ import SpecialPromotions from '../components/SpecialPromotions/SpecialPromotions
 import Tags from '../components/Tags/Tags';
 import Video from '../components/Video/Video';
 import logger from '../componentsLogger';
+import withDfpSideEffect from './../components/Dfp/withDfpSideEffect';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -60,7 +62,13 @@ const inputTemplateToComponent = new Map([
   [ 'relatedArticles', RelatedArticles, ],
   [ 'relatedArticleSeries', SeriesArticles, ],
   [ 'com.tm.Link', SpecialPromotions, ],
-  [ 'tagsElement', Tags, ],
+  /*
+   * This is only a temporary solution to avoid hitting preformance, and SHOULD BE AVOIDED as much as possible.
+   * This creates a coupling between different concerns: (rendring components, accessing data)
+   * but in this case as tags are deeply nested inside an array we use this to avoid searching them inside the entire page data
+   * TODO: expose just the tags in graphql, then replace this temprary solution with one that fetchs the data from graphql
+   */
+  [ 'tagsElement', withDfpSideEffect(Tags, { sideEffect: setDfpTagsParam, }), ],
 
   /* Misc components */
   [ 'com.tm.Image', Image, ],
