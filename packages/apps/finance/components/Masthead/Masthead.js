@@ -3,6 +3,19 @@ import React from 'react';
 import type { StatelessFunctionalComponent, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import { Masthead, IconMarkerLogo, HtzLink, } from '@haaretz/htz-components';
+import config from 'config';
+
+const connectionPreset: string = config.get('connectionPreset');
+const getMenuId = () => {
+  switch (connectionPreset) {
+    case 'dev':
+      return '7.7528';
+    case 'dev2prod':
+      return '7.7539983';
+    default:
+      return null;
+  }
+};
 
 const Logo: StatelessFunctionalComponent<void> = () => (
   <FelaComponent
@@ -30,4 +43,4 @@ const Logo: StatelessFunctionalComponent<void> = () => (
   />
 );
 
-export default () => <Masthead contentId="7.7528" Logo={Logo} />;
+export default () => <Masthead contentId={getMenuId()} Logo={Logo} />;
