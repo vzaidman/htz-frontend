@@ -5,7 +5,7 @@ import createClient from './createClient';
 import pagePropTypes from './pagePropTypes';
 import createLogger from '../utils/createLogger';
 
-export default App => {
+export default (App, appDefaultState) => {
   const componentName = App.displayName || App.name || 'Unknown';
   const logger = createLogger({
     name: componentName,
@@ -14,6 +14,14 @@ export default App => {
   return class WithData extends React.Component {
     static displayName = `WithData(${componentName})`;
     static propTypes = pagePropTypes;
+
+    constructor(props) {
+      super(props);
+      const { serverState, } = this.props;
+      this.apolloClient =
+        this.apolloClient ||
+        createClient(serverState.apollo.data, appDefaultState);
+    }
 
     /**
      * `getInitialProps` is a Next.js feature that can only be used on pages.
@@ -38,7 +46,11 @@ export default App => {
       // Evaluate the composed component's `getInitialProps()`.
       let initialProps = {};
 
-      const { Component, ctx: { req, }, router, } = context;
+      const {
+        Component,
+        ctx: { req, },
+        router,
+      } = context;
       if (App.getInitialProps) {
         initialProps = await App.getInitialProps(context);
       }
@@ -46,7 +58,7 @@ export default App => {
       // Run all GraphQL queries in the component tree, extract the resulting
       // data, and save it as the initial state.
 
-      const apolloClient = createClient({}, req);
+      const apolloClient = createClient({}, appDefaultState, req);
       try {
         await getDataFromTree(
           <App
@@ -82,13 +94,6 @@ export default App => {
         serverState,
         ...initialProps,
       };
-    }
-
-    constructor(props) {
-      super(props);
-      const { serverState, } = this.props;
-      this.apolloClient =
-        this.apolloClient || createClient(serverState.apollo.data);
     }
 
     render() {
