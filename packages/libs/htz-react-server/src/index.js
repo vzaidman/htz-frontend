@@ -21,6 +21,7 @@ import tm from './routes/tm';
 import hdc from './routes/hdc';
 import purchase from './routes/purchase';
 import finance from './routes/finance';
+import login from './routes/login';
 
 // To satisfy Extend peer dependencies
 
@@ -43,6 +44,7 @@ const sitesRouting = new Map([
   [ 'hdc', hdc, ],
   [ 'purchase', purchase, ],
   [ 'finance', finance, ],
+  [ 'login', login, ],
 ]);
 
 // Fail-fast in case of missing routing argument
