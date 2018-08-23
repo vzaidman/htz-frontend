@@ -27,6 +27,7 @@ import CheckBox from './components/CheckBox/CheckBox';
 import Comments from './components/CommentsSection/WrappedComments';
 import Debug from './components/Debug/Debug';
 import Embed from './components/Embed/Embed';
+import FiniteStateMachine from './components/FiniteStateMachine/FiniteStateMachine';
 import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
 import GaDimensions from './components/GoogleAnalytics/GaDimensions';
@@ -182,6 +183,7 @@ export {
   Debug,
   DeviceTypeInjector,
   Embed,
+  FiniteStateMachine,
   Footer,
   Form,
   GaDimensions,
