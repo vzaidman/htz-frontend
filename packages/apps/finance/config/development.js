@@ -31,5 +31,4 @@ module.exports = {
   logLevel: 'debug',
   assetPrefix: '',
   enableHttpLogging: false,
-  preset: 'dev',
 };
