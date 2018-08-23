@@ -1,0 +1,1 @@
+export { setTags, } from './tags';

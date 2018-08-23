@@ -1,4 +1,5 @@
 import DFP from './dfp';
+import * as dfpTargeting from './targetingParams';
 // import { version as v, } from '../package.json';
 // const v = require('../package.json').version;
 
@@ -13,4 +14,4 @@ import DFP from './dfp';
  */
 export default DFP;
 
-export { default as setDfpTagsParam, } from './utils/setDfpTagsParam';
+export { dfpTargeting, };

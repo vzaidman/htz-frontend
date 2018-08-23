@@ -1,6 +1,6 @@
 /* global window */
 import React from 'react';
-import { setDfpTagsParam, } from '@haaretz/dfp';
+import { dfpTargeting, } from '@haaretz/dfp';
 
 import ArticleBody from '../components/ArticleBody/ArticleBody';
 import MarkedAdSlot from '../components/Ads/MarkedAdSlot';
@@ -33,6 +33,8 @@ import logger from '../componentsLogger';
 import withDfpSideEffect from './../components/Dfp/withDfpSideEffect';
 
 const isProduction = process.env.NODE_ENV === 'production';
+
+const tagsFromTagElement = ({ tagsList, }) => tagsList.map(x => x.contentName);
 
 const inputTemplateToComponent = new Map([
   /* HeaderSlots components */
@@ -68,7 +70,13 @@ const inputTemplateToComponent = new Map([
    * but in this case as tags are deeply nested inside an array we use this to avoid searching them inside the entire page data
    * TODO: expose just the tags in graphql, then replace this temprary solution with one that fetchs the data from graphql
    */
-  [ 'tagsElement', withDfpSideEffect(Tags, { sideEffect: setDfpTagsParam, }), ],
+  [
+    'tagsElement',
+    withDfpSideEffect(Tags, {
+      sideEffect: tagsElement =>
+        dfpTargeting.setTags(tagsFromTagElement(tagsElement)),
+    }),
+  ],
 
   /* Misc components */
   [ 'com.tm.Image', Image, ],
