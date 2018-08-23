@@ -20,6 +20,7 @@ switch (connectionPreset) {
       useSSL: false,
       graphQLuseSSL: false,
       graphQLexposedPort: true,
+      connectionPreset,
     });
     // presetOverride = Object.assign(presetOverride, baseConfigOverride.service, {
     //   service: {
@@ -42,6 +43,7 @@ switch (connectionPreset) {
       useSSL: true,
       graphQLuseSSL: false,
       graphQLexposedPort: true,
+      connectionPreset,
     });
     break;
   }
@@ -53,19 +55,24 @@ switch (connectionPreset) {
       useSSL: true,
       graphQLuseSSL: false,
       graphQLexposedPort: true,
+      connectionPreset,
     });
     break;
   }
 
   case 'stage': {
     const baseConfigOverride = require('./staging');
-    presetOverride = Object.assign(presetOverride, baseConfigOverride, {});
+    presetOverride = Object.assign(presetOverride, baseConfigOverride, {
+      connectionPreset,
+    });
     break;
   }
 
   case 'prod': {
     const baseConfigOverride = require('./production');
-    presetOverride = Object.assign(presetOverride, baseConfigOverride, {});
+    presetOverride = Object.assign(presetOverride, baseConfigOverride, {
+      connectionPreset,
+    });
     break;
   }
 
