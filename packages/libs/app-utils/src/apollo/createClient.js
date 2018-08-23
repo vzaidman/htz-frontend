@@ -13,22 +13,6 @@ import config from 'config';
 // import chalk from 'chalk';
 import gql from 'graphql-tag';
 import switchToDomain from '../utils/switchToDomain';
-import htz from './initialStates/htz';
-import purchase from './initialStates/purchase';
-import finance from './initialStates/finance';
-
-function getDefaultInitialState(app) {
-  switch (app) {
-    case 'htz':
-      return htz;
-    case 'purchase':
-      return purchase;
-    case 'finance':
-      return finance;
-    default:
-      return () => {};
-  }
-}
 
 // Basic structure for user data object (Apollo store)
 const defaultUser = {
@@ -140,7 +124,7 @@ function create(initialState, appDefaultState, req) {
   const stateLink = withClientState({
     cache: inMemoryCache,
     defaults: {
-      ...(appDefaultState(referer) || {}),
+      ...(appDefaultState ? appDefaultState(referer) : {}),
       ariaLive: {
         assertiveMessage: '',
         politeMessage: '',
@@ -268,12 +252,7 @@ function create(initialState, appDefaultState, req) {
   });
 }
 
-export default function initApollo(initialState, req) {
-  const appName = process.argv[2] || initialState.ROOT_QUERY.appName;
-  const appDefaultState = getDefaultInitialState(appName);
-
-  appDefaultState.appName = appName;
-
+export default function initApollo(initialState, appDefaultState, req) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (!process.browser) {
