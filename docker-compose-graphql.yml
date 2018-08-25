@@ -1,0 +1,45 @@
+version: '3.4'
+services:
+  htz_react:
+    build:
+      context: .
+      args:
+        NEXT_BUILD_ID: ${version:-latest}
+    hostname: htz-front-app
+    #command: ["yarn", "workspace", "@haaretz/haaretz.co.il", "start"]
+    image: 'nexus-ng.themarker.com/htz-front-app:${version:-latest}'
+    ports:
+      - 2501:2501
+    #    healthcheck:
+    #      test: ["CMD", "curl","http://docker.haaretz.co.il:2500/1.6318504"]
+    #      interval: 10s
+    #      timeout: 5s
+    #      retries: 3
+    deploy:
+      replicas: 10
+      update_config:
+        parallelism: 10
+        delay: 30s
+        order: start-first
+      restart_policy:
+        condition: on-failure
+
+    environment:
+      - NODE_ENV=production
+      - CONNECTION_PRESET=prod
+      - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
+      # the following environment is optional
+      - PORT=2501
+      - PM2_PUBLIC_KEY=1pu5b2hg3lk4y1b
+      - PM2_SECRET_KEY=2sffny3viue6z15
+      - BIND_ADDRESS=www
+      - HOSTNAME=www
+      - GRAPHQL_USE_SSL=true
+      - GRAPHQL_EXPOSE_PORT=false
+
+    networks:
+      - prod01
+
+networks:
+  prod01:
+    external: true
