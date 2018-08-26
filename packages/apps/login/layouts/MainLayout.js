@@ -1,104 +1,40 @@
-/* eslint-disable no-unused-expressions */
+/* eslint-disable no-unused-expressions,react/no-did-mount-set-state */
 /* eslint-disable */
+
 import React, { Fragment } from 'react';
-import Head from 'next/head';
 import FiniteStateMachine from '../components/FiniteStateMachine/FiniteStateMachine';
+import Header from '../layouts/Header';
+import Footer from '../layouts/Footer';
 
-class MainLayout extends React.Component {
-  // make stateless
-  state = {
-    hasMounted: false,
-  };
-
-  componentDidMount() {
-    this.setState({ hasMounted: true });
-  }
-
-  render() {
-    console.warn('main render');
-    return !this.state.hasMounted ? null : (
-      <Fragment>
-        <FiniteStateMachine
-          initialState="initial"
-          statesGraph={{
-            initial: {
-              action1: 'state1',
-              action2: 'state2',
-            },
-            state1: {
-              actionx: 'initial',
-            },
-          }}
-          transitionFunctionsMap={
-            new Map([
-              ['initial-state1', () => '/resetPassword'],
-              ['initial-state2', () => '/inputPhoneNumber'],
-            ])
-          }
-          render={({ resolveStateAndTransition, currentState }) => {
-            const ans = resolveStateAndTransition('action1');
-            console.warn('abc', ans);
-            return (
-              <Fragment>
-                <Head>
-                  <title>Login</title>
-                </Head>
-                <div>HEADER {console.warn('how many')}</div>
-                {this.props.children(currentState)}
-                <footer>
-                  <div>FOOTER</div>
-                </footer>
-              </Fragment>
-            );
-            // return <Index resolveStateAndTransition={resolveStateAndTransition} currentState={currentState} />;
-            // console.warn('hello')
-            // children({ resolveStateAndTransition, currentState, });
-          }}
-        />
-      </Fragment>
-    );
-  }
-}
-//
-// const MainLayout = ({ children, }) => (
-//   <Fragment>
-//     <Head>
-//       <title>Login</title>
-//     </Head>
-//     <div>
-//       HEADER
-//     </div>
-//     <FiniteStateMachine
-//
-//       initialState="initial"
-//
-//       statesGraph={{
-//         initial: {
-//           action1: 'state1',
-//           action2: 'state2',
-//         },
-//         state1: {
-//           actionx: 'initial',
-//         },
-//       }}
-//
-//       transitionFunctionsMap={new Map([
-//         [ 'initial-state1', () => '/resetPassword', ],
-//         [ 'initial-state2', () => '/inputPhoneNumber', ],
-//       ])}
-//
-//       render={({ resolveStateAndTransition, currentState, }) => {
-//         const ans = resolveStateAndTransition('action1');
-//         console.warn('abc', ans);
-//         return <Index
-//         // console.warn('hello')
-//         // children({ resolveStateAndTransition, currentState, });
-//       }}
-//     />
-//     <footer>
-//       <div>FOOTER</div>
-//     </footer>
-//   </Fragment>
-// );
+const MainLayout = ({ children }) => (
+  <Fragment>
+    <FiniteStateMachine
+      initialState="initial"
+      statesGraph={{
+        initial: {
+          action1: 'otpValidation',
+          action2: 'state2',
+        },
+        otpValidation: {
+          actionx: 'initial',
+        },
+      }}
+      transitionFunctionsMap={
+        new Map([
+          ['initial-state1', () => '/resetPassword'],
+          ['initial-state2', () => '/inputPhoneNumber'],
+          ['initial-otpValidation', () => '/otpValidation'],
+        ])
+      }
+      render={({ currentState, findTransitionFunction, transition }) => (
+        <Fragment>
+          <Header />
+          {children({ currentState, findTransitionFunction, transition })}
+          <Footer />
+        </Fragment>
+      )}
+    />
+  </Fragment>
+);
 
 export default MainLayout;
