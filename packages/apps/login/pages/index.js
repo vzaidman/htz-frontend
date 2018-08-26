@@ -1,25 +1,23 @@
-/* eslint-disable */
-import React from 'react';
+import React, { Fragment, } from 'react';
+import { HtzLink, } from '@haaretz/htz-components';
 import MainLayout from '../layouts/MainLayout';
 
-//
-// class Index extends React.Component {
-// //   state = {
-// //     hasMounted: false,
-// //   };
-// // shouldComponentUpdate(){
-// //   return false
-// // }
-// //   componentDidMount() {
-// //     this.setState({ hasMounted: true, });
-// //   }
-//
-//   render() {
-//
-//     return(
-//       <div><MainLayout /></div>)
-//   }
-// }
-const Index = () => <MainLayout>{currentState => currentState()}</MainLayout>;
+const Index = () => (
+  <Fragment>
+    <MainLayout>
+      {({ currentState, findTransitionFunction, transition, }) => (
+        <Fragment>
+          some context
+          <HtzLink
+            href={`${findTransitionFunction('action1')()}`}
+            onClick={transition('action1')}
+          >
+            link to state1
+          </HtzLink>
+        </Fragment>
+      )}
+    </MainLayout>
+  </Fragment>
+);
 
 export default Index;

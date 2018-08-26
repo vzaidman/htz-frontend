@@ -1,15 +1,16 @@
 /* eslint-disable */
-import React, { Fragment } from 'react';
+
+import React from 'react';
+import { withApollo } from 'react-apollo';
 
 class FiniteStateMachine extends React.Component {
-  // initialProps = {
-  //   statesGraph: this.props.statesGraph || {},
-  //   transitionFunctionsMap: this.props.transitionFunctionsMap || new Map(),
-  // }
-
   state = {
     currentState: this.props.initialState || 'idle',
   };
+
+  shouldComponentUpdate() {
+    return false;
+  }
 
   /**
    * Returns the current inner state of the FSM
@@ -17,7 +18,7 @@ class FiniteStateMachine extends React.Component {
   currentState = () => this.state.currentState;
 
   /**
-   * (Private) This is This function uses the current inner state and the action that the user applied
+   * This is This function uses the current inner state and the action that the user applied
    * to resolve its new state
    * @param {string} action the action that the user applied
    */
@@ -26,19 +27,15 @@ class FiniteStateMachine extends React.Component {
       entry => entry[0] === this.state.currentState
     )[1][action];
 
-  shouldComponentUpdate(nextProps, nextState) {
-    // if(nextState.currentState !== this.state.currentState) return true
-    return false;
-  }
   /**
-   * (Private) This function uses the old and new states as parameters to find the transition
+   * This function uses the old and new states as parameters to find the transition
    * function between them
    * @param {string} oldState the previous state
    * @param {string} newState the resolved new state
    */
   resolveTransitionFunction = (oldState, newState) => {
-    console.log(`oldstate: ${oldState}. newstate: ${newState}`);
     const wantedTransition = `${oldState}-${newState}`;
+    console.warn(`searching for function: ${wantedTransition}`);
     for (const [
       transition,
       func,
@@ -54,7 +51,27 @@ class FiniteStateMachine extends React.Component {
     ] of this.props.transitionFunctionsMap.entries()) {
       if (looseTransitionRule === transition) return func;
     }
-    throw new Error('transition function not found');
+    throw new Error(
+      `transition function not found for state transition: ${oldState}-${newState}`
+    );
+  };
+
+  /**
+   * simulate a transition
+   * @param action
+   * @returns {*|void}
+   */
+  findTransition = action => {
+    const oldState = this.currentState();
+    const newState = this.resolveNewState(action);
+    const transitionFunction = this.resolveTransitionFunction(
+      oldState,
+      newState
+    );
+    console.warn(
+      `simulation: action: ${action}. oldState: ${oldState}. new state: ${newState}`
+    );
+    return transitionFunction;
   };
 
   /**
@@ -65,29 +82,25 @@ class FiniteStateMachine extends React.Component {
    * @param action
    * @returns {function|function}
    */
-  resolveStateAndTransition = action => {
-    console.error('action: ', action);
+  makeTransition = action => () => {
+    console.warn(`transition wanted. action: ${action}`);
     const oldState = this.currentState();
     const newState = this.resolveNewState(action);
-    const transitionFunction = this.resolveTransitionFunction(
-      oldState,
-      newState
-    );
+    console.warn(`new state: ${newState}`);
     this.setState({ currentState: newState });
-    return transitionFunction;
+    console.warn(
+      `transition: action: ${action}. oldState: ${oldState}. new state: ${newState}`
+    );
+    return newState;
   };
 
   render() {
-    const { render } = this.props;
-    return (
-      <Fragment>
-        {render({
-          resolveStateAndTransition: this.resolveStateAndTransition,
-          currentState: this.currentState,
-        })}
-      </Fragment>
-    );
+    return this.props.render({
+      currentState: this.currentState,
+      findTransitionFunction: this.findTransition,
+      transition: this.makeTransition,
+    });
   }
 }
 
-export default FiniteStateMachine;
+export default withApollo(FiniteStateMachine);
