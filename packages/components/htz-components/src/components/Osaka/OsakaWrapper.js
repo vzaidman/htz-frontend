@@ -1,4 +1,3 @@
-/* global window */
 /* global sessionStorage */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -53,7 +52,7 @@ class OsakaWrapper extends React.Component {
     if (display) {
       this.wrapperEl.style.display = 'block';
     }
-    window.setTimeout(
+    setTimeout(
       () =>
         this.setState({ display, }, () => {
           this.props.client.writeData({
