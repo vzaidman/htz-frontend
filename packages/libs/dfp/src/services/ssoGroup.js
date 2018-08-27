@@ -1,8 +1,4 @@
-/* global fetch */
-
-import { usingCache, } from '../utils/localStorageCache';
-
-const isUserLoggedIn = ssoUserId => !!ssoUserId;
+/* global fetch localStorage */
 
 const ITEM_NOT_FOUND = { reason: 'item not found', };
 
@@ -30,31 +26,33 @@ const fetchSsoGroupKey = async ssoUserId => {
 };
 
 /**
- * same as fetchSsoGroupKey, only with a transperant caching layer on top of it
+ * Generates localStorage key from user-id
+ * @param {string} ssoUserId - the sso id of the logged-in user
+ * @return {string} - generated key
  */
-const fetchSsoGroupKeyCached = usingCache(
-  fetchSsoGroupKey,
-  ssoUserId => `_ssoUser[${ssoUserId}]_`
-);
+const generateStorageKey = ssoUserId => `_ssoUser[${ssoUserId}]_`;
 
 /**
- * async function that fetches ssoGroupKey for logged-in user using localStorage as caching layer
+ * retrieves ssoGroupKey from localStorage for a given user
  * @param {string} ssoUserId - the sso id of the logged-in user
- * @return {string} - SSOGroupKey of the given user
- * or null if unable to retrieve
+ * @return {string} - ssoGroupKey of the user
+ * or null if none exists
  */
-export const getSsoGroupKey = async ssoUserId => {
-  let ssoGroupKey = null;
-  if (isUserLoggedIn(ssoUserId)) {
-    try {
-      ssoGroupKey = await fetchSsoGroupKeyCached(ssoUserId);
-    }
-    catch (err) {
-      // ITEM_NOT_FOUND is not an error, it is thrown so it won't be cached
-      if (err !== ITEM_NOT_FOUND) {
-        console.error('Error fetching SSOGroupKey.\n', err);
-      }
+export const retrieveSsoGroupKey = ssoUserId =>
+  localStorage.getItem(generateStorageKey(ssoUserId));
+
+/**
+ * fetchs ssoGroupKey from the server and stores it in localStorage
+ * @param {string} ssoUserId - the sso id of the logged-in user
+ */
+export const storeSsoGroupKey = async ssoUserId => {
+  try {
+    const ssoGroupKey = await fetchSsoGroupKey(ssoUserId);
+    localStorage.setItem(generateStorageKey(ssoUserId), ssoGroupKey);
+  }
+  catch (err) {
+    if (err !== ITEM_NOT_FOUND) {
+      console.error('Error fetching SSOGroupKey.\n', err);
     }
   }
-  return ssoGroupKey;
 };

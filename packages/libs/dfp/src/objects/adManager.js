@@ -5,7 +5,7 @@ import DfpUser from '../objects/user';
 import ConflictResolver from '../objects/conflictResolver';
 import AdSlot from '../objects/adSlot';
 import { getBreakpoint, getBreakpointName, } from '../utils/breakpoints';
-import { getSsoGroupKey, } from '../services/ssoGroup';
+import { retrieveSsoGroupKey, storeSsoGroupKey, } from '../services/ssoGroup';
 
 let breakpoints;
 let debug = null;
@@ -652,12 +652,23 @@ export default class AdManager {
       if (this.user.gender) {
         pubads.setTargeting('urgdr', [ this.user.gender, ]);
       }
-      getSsoGroupKey(this.user.sso.userId).then(ssoGroupKey => {
-        if (this.DEBUG) {
-          console.log('[dfp] setting ssoGroupKey', ssoGroupKey);
+      if (this.user.sso.userId) {
+        const ssoGroupKey = retrieveSsoGroupKey(this.user.sso.userId);
+        if (ssoGroupKey !== null) {
+          if (this.DEBUG) {
+            console.log('[dfp] setting ssoGroupKey', ssoGroupKey);
+          }
+          pubads.setTargeting(ssoGroupKey, this.user.sso.userId);
         }
-        pubads.setTargeting(ssoGroupKey, this.user.sso.userId);
-      });
+        else {
+          if (this.DEBUG) {
+            console.log(
+              '[dfp] fetching ssoGroupKey of this user for later use'
+            );
+          }
+          storeSsoGroupKey(this.user.sso.userId);
+        }
+      }
 
       // Context targeting
       if (this.config.section) {
