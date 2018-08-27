@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
 
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import ButtonFooter from '../Button/Button';
 import HtzLink from '../HtzLink/HtzLink';
 import LayoutFooterRow from '../PageLayout/LayoutRow';

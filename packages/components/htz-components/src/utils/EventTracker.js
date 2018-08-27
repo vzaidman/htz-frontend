@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { ApolloConsumer, } from 'react-apollo';
+import ApolloConsumer from '../components/ApolloBoundary/ApolloConsumer';
 // import gql from 'graphql-tag';
 import ReactGA from 'react-ga';
 import { GET_USER, } from '../components/User/UserInjector';

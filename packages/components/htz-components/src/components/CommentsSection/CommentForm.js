@@ -3,7 +3,7 @@ import { createComponent, withTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { borderBottom, } from '@haaretz/htz-css-tools';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 import CommentSent from './CommentSent';
 import Form from '../Form/Form'; // eslint-disable-line import/no-named-as-default

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import WrappedScroll from '../Scroll/Scroll';
 import getComponent from '../../utils/componentFromInputTemplate';
 

@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import config from 'config';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
-import { Mutation, } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
+import Mutation from '../ApolloBoundary/Mutation';
 import UserDispenser from '../User/UserDispenser';
 import NavigationQuery from './navigationQuery';
 import DropdownList from '../DropdownList/DropdownList';

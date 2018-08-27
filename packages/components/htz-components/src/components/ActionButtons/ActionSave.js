@@ -3,7 +3,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import querystring from 'querystring';
-import { ApolloConsumer, } from '../ApolloBoundary/ApolloBoundary';
+import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
 import IconSave from '../Icon/icons/IconSave';
 import { ActionButton, Button, } from './actionList';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import USER_INFO from './UserInfo';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import UserDispenser from '../User/UserDispenser';
 import UserSurveyInner from './UserSurveyInner';
 

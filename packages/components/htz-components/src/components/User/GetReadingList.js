@@ -2,7 +2,7 @@
 import React from 'react';
 import querystring from 'querystring';
 import gql from 'graphql-tag';
-import { ApolloConsumer, } from '../ApolloBoundary/ApolloBoundary';
+import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
 
 const GET_USER_ID = gql`
   query GetUserId {

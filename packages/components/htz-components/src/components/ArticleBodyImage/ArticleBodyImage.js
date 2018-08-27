@@ -10,7 +10,7 @@ import Image from '../Image/Image';
 import Picture from '../Image/Picture';
 import { buildUrl, } from '../../utils/buildImgURLs';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
-import { Mutation, } from '../ApolloBoundary/ApolloBoundary';
+import Mutation from '../ApolloBoundary/Mutation';
 
 const ADD_IMAGE = gql`
   mutation AddImageToSchema($image: Object!) {

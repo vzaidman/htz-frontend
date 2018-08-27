@@ -2,9 +2,9 @@ import React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { ApolloConsumer, } from 'react-apollo';
 import { borderTop, parseStyleProps, } from '@haaretz/htz-css-tools';
 
+import ApolloConsumer from '../../ApolloBoundary/ApolloConsumer';
 import LayoutContainer from '../LayoutContainer';
 import getComponent from '../../../utils/componentFromInputTemplate';
 import ArticleBody from '../../ArticleBody/ArticleBody';

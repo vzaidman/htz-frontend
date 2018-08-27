@@ -7,7 +7,7 @@ import Media from '../Media/Media';
 import Osaka from './Osaka';
 import LayoutContainer from '../PageLayout/LayoutContainer';
 import { nextArticle, } from './queries/getData';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 
 const propTypes = {
   articles: PropTypes.shape({}).isRequired,

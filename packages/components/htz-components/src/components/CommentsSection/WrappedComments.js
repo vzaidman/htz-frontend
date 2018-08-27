@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createLogger, } from '@haaretz/app-utils';
-import { Query, Mutation, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
+import Mutation from '../ApolloBoundary/Mutation';
 import CommentSection from './CommentsSection';
 import GET_ID from './queries/getId';
 import FETCH_COMMENTS from './queries/fetchComments';
