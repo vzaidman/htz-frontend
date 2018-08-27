@@ -1,9 +1,15 @@
 import React, { Fragment, } from 'react';
 import { HtzLink, } from '@haaretz/htz-components';
+// import { StyleProvider } from '@haaretz/fela-utils';
+// import htzTheme from '@haaretz/htz-theme';
+
 import MainLayout from '../layouts/MainLayout';
+// import styleRenderer from '../../haaretz.co.il/components/styleRenderer/styleRenderer';
 
 const Index = () => (
   <Fragment>
+    {/* <StyleProvider renderer={styleRenderer} theme={htzTheme}> */}
+    {/* <div> */}
     <MainLayout>
       {({ currentState, findTransitionFunction, transition, }) => (
         <Fragment>
@@ -17,6 +23,8 @@ const Index = () => (
         </Fragment>
       )}
     </MainLayout>
+    {/* </div> */}
+    {/* </StyleProvider> */}
   </Fragment>
 );
 
