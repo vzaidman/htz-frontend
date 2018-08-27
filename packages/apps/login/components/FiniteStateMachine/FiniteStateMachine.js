@@ -1,7 +1,9 @@
 /* eslint-disable */
-
 import React from 'react';
-import { withApollo } from 'react-apollo';
+// import { withApollo, } from 'react-apollo';
+// import { ApolloConsumer } from "react-apollo";
+
+// import gql from 'graphql-tag';
 
 class FiniteStateMachine extends React.Component {
   state = {
@@ -11,6 +13,11 @@ class FiniteStateMachine extends React.Component {
   shouldComponentUpdate() {
     return false;
   }
+
+  // componentDidMount() {
+  //   const client = this.props.client;
+  //   this.client.writeQuery()
+  // }
 
   /**
    * Returns the current inner state of the FSM
@@ -103,4 +110,5 @@ class FiniteStateMachine extends React.Component {
   }
 }
 
-export default withApollo(FiniteStateMachine);
+// export default withApollo(FiniteStateMachine);
+export default FiniteStateMachine;
