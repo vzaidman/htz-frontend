@@ -6,8 +6,8 @@ import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
 
 import type { StatelessFunctionalComponent, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
+import { Query, } from '@haaretz/htz-components';
 
-import { Query, } from '../../ApolloBoundary/ApolloBoundary';
 import { TdComponent, } from '../../StockTable/StockTable';
 
 type Field = {

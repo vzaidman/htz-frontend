@@ -5,11 +5,11 @@ import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
 import gql from 'graphql-tag';
 import type { ChildrenArray, Node, StatelessFunctionalComponent, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
+import { Query, } from '@haaretz/htz-components';
 
 import TabList from '../TabList/TabList';
 import Tab from '../Tab/Tab';
 import Tabs from '../Tabs/Tabs';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
 
 const TableQuery: DocumentNode = gql`
   query GraphTable($assetsId: [String], $assetId: String, $count: Int){

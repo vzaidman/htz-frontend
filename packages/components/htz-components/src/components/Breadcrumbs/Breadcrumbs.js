@@ -5,7 +5,8 @@ import gql from 'graphql-tag';
 import { breadcrumbs, } from '@haaretz/app-utils';
 
 import HtzLink from '../HtzLink/HtzLink';
-import { Query, Mutation, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
+import Mutation from '../ApolloBoundary/Mutation';
 
 const propTypes = {
   className: PropTypes.string,

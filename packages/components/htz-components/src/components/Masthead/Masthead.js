@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
 import { borderBottom, } from '@haaretz/htz-css-tools';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import MastheadSearch from './MastheadSearch/MastheadSearch';
 import MastheadUserTools from './MastheadUserTools';
 import LayoutRow from '../PageLayout/LayoutRow';

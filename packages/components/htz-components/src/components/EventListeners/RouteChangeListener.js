@@ -3,7 +3,7 @@ import React from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { UPDATE_SCROLL, } from './ScrollStoreMutator';
-import { Mutation, } from '../ApolloBoundary/ApolloBoundary';
+import Mutation from '../ApolloBoundary/Mutation';
 
 class RouteChangeListener extends React.Component {
   static propTypes = {

@@ -1,4 +1,3 @@
-/* global window */
 /* global sessionStorage */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -8,7 +7,7 @@ import Media from '../Media/Media';
 import Osaka from './Osaka';
 import LayoutContainer from '../PageLayout/LayoutContainer';
 import { nextArticle, } from './queries/getData';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import getTransitionEnd from '../../utils/getTransitionEnd';
 
 const propTypes = {
@@ -53,7 +52,7 @@ class OsakaWrapper extends React.Component {
     if (display) {
       this.wrapperEl.style.display = 'block';
     }
-    window.setTimeout(
+    setTimeout(
       () =>
         this.setState({ display, }, () => {
           this.props.client.writeData({

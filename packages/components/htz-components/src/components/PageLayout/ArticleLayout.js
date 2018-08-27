@@ -4,7 +4,7 @@ import { FelaComponent, } from 'react-fela';
 import dynamic from 'next/dynamic';
 
 import { borderBottom, } from '@haaretz/htz-css-tools';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import { extractAuthorsFromArticle, } from '../GoogleAnalytics/helpers/extractAuthorsFromArticle';
 import LayoutRow from './LayoutRow'; // eslint-disable-line import/no-named-as-default
 import LayoutContainer from './LayoutContainer'; // eslint-disable-line import/no-named-as-default

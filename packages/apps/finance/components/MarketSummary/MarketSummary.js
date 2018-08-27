@@ -7,7 +7,7 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import { H, Grid, GridItem, } from '@haaretz/htz-components';
 
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../../ApolloBoundary/Query';
 import SectionLink from '../SectionLink/SectionLink';
 
 const MarketSummaryQuery: DocumentNode = gql`

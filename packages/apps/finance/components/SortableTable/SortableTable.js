@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
 import gql from 'graphql-tag';
+import { Query, } from '@haaretz/htz-components';
 import type { StockData, } from '../StockTable/StockTable';
 import { TdComponent, } from '../StockTable/StockTable';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import SectionLink from '../SectionLink/SectionLink';
 
 const TableQuery: (Array<string>) => DocumentNode = fields => gql`

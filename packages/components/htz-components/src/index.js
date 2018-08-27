@@ -14,7 +14,9 @@ import A11yError from './components/A11yError/A11yError';
 import ActionButtons from './components/ActionButtons/ActionButtons';
 import AriaLive from './components/AriaLive/AriaLive';
 import ArticleBody from './components/ArticleBody/ArticleBody';
-import ApolloBoundary from './components/ApolloBoundary/ApolloBoundary';
+import ApolloConsumer from './components/ApolloBoundary/ApolloConsumer';
+import Mutation from './components/ApolloBoundary/Mutation';
+import Query from './components/ApolloBoundary/Query';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
 import Caption from './components/Caption/Caption';
@@ -297,5 +299,7 @@ export {
   BIRequest,
   // Event tracker
   EventTracker,
-  ApolloBoundary,
+  ApolloConsumer,
+  Mutation,
+  Query,
 };
