@@ -5,6 +5,7 @@ import DfpUser from '../objects/user';
 import ConflictResolver from '../objects/conflictResolver';
 import AdSlot from '../objects/adSlot';
 import { getBreakpoint, getBreakpointName, } from '../utils/breakpoints';
+import { getSsoGroupKey, } from '../services/ssoGroup';
 
 let breakpoints;
 let debug = null;
@@ -651,6 +652,12 @@ export default class AdManager {
       if (this.user.gender) {
         pubads.setTargeting('urgdr', [ this.user.gender, ]);
       }
+      getSsoGroupKey(this.user.sso.userId).then(ssoGroupKey => {
+        if (this.DEBUG) {
+          console.log('[dfp] setting ssoGroupKey', ssoGroupKey);
+        }
+        pubads.setTargeting(ssoGroupKey, this.user.sso.userId);
+      });
 
       // Context targeting
       if (this.config.section) {

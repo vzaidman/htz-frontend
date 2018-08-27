@@ -16,6 +16,10 @@ const productTypes = {
   htz_tm: 274,
 };
 
+function getUserSSO(cookieMap, ssoKey) {
+  return cookieMap[ssoKey];
+}
+
 function userHasProduct(userProducts, productType, trial) {
   return (
     userProducts.products.filter(
@@ -74,6 +78,7 @@ export default class DfpUser {
     this.impressionManager = new ImpressionManager(config);
     this.age = this.getUserAge(cookieMap);
     this.gender = this.getUserGender(cookieMap);
+    this.sso = getUserSSO(cookieMap, this.ssoKey);
   }
 
   getUserTypeByProduct(cookieMap, productType) {
