@@ -59,29 +59,45 @@ const Zoidberg = ({ list, lazyLoad, gaAction, biAction, listId, }) => {
       render={banner => {
         const { text, link, clicktrackerimage, } = banner;
         return (
-          <BlockLink
-            href={link}
-            onClick={() => {
-              biAction({
-                actionCode: 109,
-                additionalInfo: {
-                  ArticleId: item.contentId,
-                  ListId: listId,
-                  Platform: 'desktop',
-                  NoInList: index + 1,
-                  ViewName: 'Zoidberg',
-                },
-              });
-            }}
-          >
-            <PromotedItem
-              title={text}
-              image={clicktrackerimage}
-              path={link}
-              suffix
-              paragraphHeight={{ maxHeight: '9rem', }}
-            />
-          </BlockLink>
+          <FelaTheme
+            render={theme => (
+              <BlockLink
+                miscStyles={{
+                  alignItems: 'flex-start',
+                  display: 'flex',
+                  paddingTop: '1rem',
+                  borderBottom: [ '1px', '1', 'solid', theme.color('neutral', '-4'), ],
+                  borderEnd: [ '4px', 0, 'solid', theme.color('neutral', '-4'), ],
+                  ':last-child': {
+                    paddingBottom: '0',
+                    borderBottomWidth: '0',
+                    borderBottomStyle: 'none',
+                  },
+                }}
+                href={link}
+                onClick={() => {
+                  biAction({
+                    actionCode: 109,
+                    additionalInfo: {
+                      ArticleId: item.contentId,
+                      ListId: listId,
+                      Platform: 'desktop',
+                      NoInList: index + 1,
+                      ViewName: 'Zoidberg',
+                    },
+                  });
+                }}
+              >
+                <PromotedItem
+                  title={text}
+                  image={clicktrackerimage}
+                  path={link}
+                  suffix
+                  paragraphHeight={{ maxHeight: '9rem', }}
+                />
+              </BlockLink>
+            )}
+          />
         );
       }}
     />
