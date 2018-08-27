@@ -3,7 +3,7 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import ToggleFade from '../Transitions/ToggleFade';
 
 export const ZEN_QUERY = gql`

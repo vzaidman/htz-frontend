@@ -8,7 +8,7 @@ import IconClose from '../../Icon/icons/IconClose';
 import MenuList from './MobileNavigationMenuList';
 import MobileMenuHeader from '../MobileMenuHeader/MobileMenuHeader';
 import NavigationQuery from '../../NavigationMenu/navigationQuery';
-import { Query, } from '../../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import A11yDialog from '../../A11yDialog/A11yDialog';
 import NoSSR from '../../NoSSR/NoSSR';
 import disablePageScroll from './disablePageScroll';

@@ -2,9 +2,9 @@
 
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import { ApolloConsumer, } from 'react-apollo';
 import { FelaComponent, } from 'react-fela';
 import { borderBottom, borderTop, parseStyleProps, } from '@haaretz/htz-css-tools';
+import ApolloConsumer from '../../ApolloBoundary/ApolloConsumer';
 import IconClock from '../../../Icon/icons/IconClock';
 import IconLevels from '../../../Icon/icons/IconLevels';
 import IconPortions from '../../../Icon/icons/IconPortions';

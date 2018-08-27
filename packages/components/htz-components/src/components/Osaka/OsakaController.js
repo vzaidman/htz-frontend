@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import { appendScript, } from '../../utils/scriptTools';
 import { fromCache, } from './queries/getData';
 import WrappedScroll from '../Scroll/Scroll';

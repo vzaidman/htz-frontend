@@ -2,7 +2,7 @@ import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { breadcrumbs, } from '@haaretz/app-utils';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import { doStat, } from './statutil';
 import UserDispenser from '../User/UserDispenser';
 

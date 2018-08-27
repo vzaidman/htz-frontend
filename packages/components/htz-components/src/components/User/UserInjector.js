@@ -2,7 +2,7 @@ import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { UserFactory, } from '@haaretz/htz-user-utils';
-import { Mutation, } from '../ApolloBoundary/ApolloBoundary';
+import Mutation from '../ApolloBoundary/Mutation';
 import GetReadingList from './GetReadingList';
 
 export const UPDATE_USER = gql`

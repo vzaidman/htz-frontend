@@ -4,7 +4,7 @@ import { createComponent, FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import ArticleLink from './articleLink';
 import H from '../AutoLevels/H';
 
