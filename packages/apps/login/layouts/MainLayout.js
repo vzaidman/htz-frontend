@@ -5,6 +5,9 @@ import React, { Fragment } from 'react';
 import FiniteStateMachine from '../components/FiniteStateMachine/FiniteStateMachine';
 import Header from '../layouts/Header';
 import Footer from '../layouts/Footer';
+import styleRenderer from '../components/styleRenderer/styleRenderer';
+import { StyleProvider } from '@haaretz/fela-utils';
+import theme from '../theme';
 
 const MainLayout = ({ children }) => (
   <Fragment>
@@ -27,11 +30,13 @@ const MainLayout = ({ children }) => (
         ])
       }
       render={({ currentState, findTransitionFunction, transition }) => (
-        <Fragment>
-          <Header />
-          {children({ currentState, findTransitionFunction, transition })}
-          <Footer />
-        </Fragment>
+        <StyleProvider renderer={styleRenderer} theme={theme('htz')}>
+          <Fragment>
+            <Header />
+            {children({ currentState, findTransitionFunction, transition })}
+            <Footer />
+          </Fragment>
+        </StyleProvider>
       )}
     />
   </Fragment>
