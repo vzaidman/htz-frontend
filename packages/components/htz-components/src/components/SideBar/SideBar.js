@@ -37,6 +37,7 @@ function SideBar({ content, }) {
             zIndex: '1',
             paddingInlineStart: '4rem',
             paddingInlineEnd: '4rem',
+            paddingBottom: '4rem',
             transitionProperty: 'top',
             extend: [
               theme.getDelay('transition', -1),
