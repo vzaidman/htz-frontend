@@ -10,6 +10,26 @@ import { retrieveSsoGroupKey, storeSsoGroupKey, } from '../services/ssoGroup';
 let breakpoints;
 let debug = null;
 
+const handleSsoGroupTargeting = (pubads, ssoUserId, isDebugMode) => {
+  if (ssoUserId) {
+    const ssoGroupKey = retrieveSsoGroupKey(ssoUserId);
+    if (ssoGroupKey !== null) {
+      if (isDebugMode) {
+        console.log('[dfp] setting ssoGroupKey', ssoGroupKey);
+      }
+      pubads.setTargeting(ssoGroupKey, ssoUserId);
+    }
+    else {
+      if (isDebugMode) {
+        console.log(
+          '[dfp] fetching ssoGroupKey of this user for later use'
+        );
+      }
+      storeSsoGroupKey(ssoUserId);
+    }
+  }
+};
+
 // There are a total of 7 adTargets:
 // "all","nonPaying","anonymous","registered","paying","digitalOnly" and "digitalAndPrint"
 export const adPriorities = {
@@ -652,23 +672,7 @@ export default class AdManager {
       if (this.user.gender) {
         pubads.setTargeting('urgdr', [ this.user.gender, ]);
       }
-      if (this.user.sso.userId) {
-        const ssoGroupKey = retrieveSsoGroupKey(this.user.sso.userId);
-        if (ssoGroupKey !== null) {
-          if (this.DEBUG) {
-            console.log('[dfp] setting ssoGroupKey', ssoGroupKey);
-          }
-          pubads.setTargeting(ssoGroupKey, this.user.sso.userId);
-        }
-        else {
-          if (this.DEBUG) {
-            console.log(
-              '[dfp] fetching ssoGroupKey of this user for later use'
-            );
-          }
-          storeSsoGroupKey(this.user.sso.userId);
-        }
-      }
+      handleSsoGroupTargeting(pubads, this.user.sso.userId, this.DEBUG);
 
       // Context targeting
       if (this.config.section) {
