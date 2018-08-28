@@ -22,22 +22,23 @@ const propTypes = {
 // eslint-disable-next-line react/prop-types
 const Logo = ({ host, }) => (
   <FelaComponent
-    style={theme => ({
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      extend: [
-        theme.mq(
-          { from: 's', },
-          {
-            backgroundColor: theme.color('neutral', '-10'),
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%,-50%)',
-          }
-        ),
-      ],
-    })}
+    style={theme => {
+      const desktopStyle = {
+        backgroundColor: theme.color('neutral', '-10'),
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%,-50%)',
+      };
+      return {
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        extend: [
+          theme.mq({ from: 's', misc: 'portrait', }, desktopStyle),
+          theme.mq({ from: 'm', misc: 'landscape', }, desktopStyle),
+        ],
+      };
+    }}
     render={({ className, }) => (
       <HtzLink href="/" className={className}>
         {host === 'haaretz.co.il' ? (
@@ -63,10 +64,7 @@ function Masthead({ content, articleId, }) {
               <Element
                 key={element.contentId}
                 {...element}
-                {...(element.inputTemplate ===
-                'com.htz.EditableNavigationElement'
-                  ? { Logo, }
-                  : {})}
+                {...(element.inputTemplate === 'com.htz.EditableNavigationElement' ? { Logo, } : {})}
                 articleId={articleId}
               />
             );

@@ -86,18 +86,24 @@ class Masthead extends Component {
               top: y < 10 ? '6rem' : '0',
               zIndex: theme.getZIndex('modal', 1),
               transform: `translateY(${shouldDisplay ? '0' : '-100'}%)`,
+              paddingTop: '2rem',
+              ...borderBottom(
+                '1px',
+                2,
+                'solid',
+                theme.color('mastheadBorder', 'borderColor')
+              ),
             };
             return {
               alignItems: 'stretch',
               backgroundColor: theme.color('neutral', '-10'),
               display: 'flex',
               position: 'relative',
-              paddingTop: '2rem',
               transitionProperty: 'transform',
               extend: [
                 borderBottom(
                   '1px',
-                  2,
+                  0,
                   'solid',
                   theme.color('mastheadBorder', 'borderColor')
                 ),
@@ -112,10 +118,7 @@ class Masthead extends Component {
           render="header"
         >
           <NavigationMenu contentId={contentId} />
-          <MastheadSearch
-            searchIsOpen={searchIsOpen}
-            onClick={this.toggleSearchState}
-          />
+          <MastheadSearch searchIsOpen={searchIsOpen} onClick={this.toggleSearchState} />
           {searchIsOpen ? null : <Logo host={host} />}
           {searchIsOpen ? null : <MastheadUserTools y={y} />}
         </FelaComponent>
@@ -136,17 +139,11 @@ class Masthead extends Component {
               theme.getDuration('transition', -1),
               theme.getTimingFunction('transition', 'linear'),
               theme.mq({ until: 's', }, { display: 'initial', }),
-              theme.mq(
-                { until: 'm', misc: 'landscape', },
-                { display: 'initial', }
-              ),
+              theme.mq({ until: 'm', misc: 'landscape', }, { display: 'initial', }),
             ],
           })}
         >
-          <MobileNavigation
-            contentId={contentId}
-            shouldDisplay={shouldDisplay}
-          />
+          <MobileNavigation contentId={contentId} shouldDisplay={shouldDisplay} />
         </FelaComponent>
       </Fragment>
     );
@@ -162,12 +159,7 @@ export default props => (
         <LayoutContainer>
           <WrappedScroll
             render={({ velocity, y, }) => (
-              <Masthead
-                hostname={data.hostname}
-                velocity={velocity}
-                y={y}
-                {...props}
-              />
+              <Masthead hostname={data.hostname} velocity={velocity} y={y} {...props} />
             )}
           />
         </LayoutContainer>
