@@ -122,39 +122,32 @@ const MarkedAdSlot = ({
   wrapperMiscStyles,
   titleMiscStyles,
   variant,
-  id,
   ...adSlotProps
-}) => {
-  // TODO: remove -NA this when dfp is ready
-  if (id.includes('inread-NA')) {
-    return (
-      <React.Fragment>
-        <FelaComponent
-          {...{
-            wrapperMiscStyles,
-            variant,
-          }}
-          rule={AdSlotWrapperStyle}
-          render="div"
-        >
-          <FelaComponent
-            {...{
-              titleMiscStyles,
-              variant,
-            }}
-            title={title}
-            rule={TextStyle}
-            render={({ className, }) => (
-              <span className={className}>{title}</span>
-            )}
-          />
-          <AdSlot id={id} {...adSlotProps} />
-        </FelaComponent>
-      </React.Fragment>
-    );
-  }
-  return <AdSlot id={id} {...adSlotProps} />;
-};
+}) => (
+  <React.Fragment>
+    <FelaComponent
+      {...{
+        wrapperMiscStyles,
+        variant,
+      }}
+      rule={AdSlotWrapperStyle}
+      render="div"
+    >
+      <FelaComponent
+        {...{
+          titleMiscStyles,
+          variant,
+        }}
+        title={title}
+        rule={TextStyle}
+        render={({ className, }) => (
+          <span className={className}>{title}</span>
+        )}
+      />
+      <AdSlot {...adSlotProps} />
+    </FelaComponent>
+  </React.Fragment>
+);
 
 MarkedAdSlot.propTypes = propTypes;
 MarkedAdSlot.defaultProps = defaultProps;

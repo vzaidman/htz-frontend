@@ -3,7 +3,7 @@ import React from 'react';
 import { dfpTargeting, } from '@haaretz/dfp';
 
 import ArticleBody from '../components/ArticleBody/ArticleBody';
-import MarkedAdSlot from '../components/Ads/MarkedAdSlot';
+import GeneralAdSlot from '../components/Ads/GeneralAdSlot';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import ChangeableElementGroup from '../components/ChangeableElementGroup/ChangeableElementGroup';
 import WrappedComments from '../components/CommentsSection/WrappedComments';
@@ -31,6 +31,7 @@ import Tags from '../components/Tags/Tags';
 import Video from '../components/Video/Video';
 import logger from '../componentsLogger';
 import withDfpSideEffect from './../components/Dfp/withDfpSideEffect';
+
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -96,7 +97,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.polobase.whtzMobileSiteListsWrapper', MobileListWrapper, ],
   [ 'com.tm.element.group', ChangeableElementGroup, ],
   [ 'com.tm.ElementGroup', ElementGroup, ],
-  [ 'com.polobase.DfpBannerElement', MarkedAdSlot, ],
+  [ 'com.polobase.DfpBannerElement', GeneralAdSlot, ],
   [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapper, ],
   [ null, null, ],
 ]);
