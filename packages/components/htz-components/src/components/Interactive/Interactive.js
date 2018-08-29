@@ -24,7 +24,7 @@ function InteractiveElement(props) {
   ) : (
     <Debug>
       <p>{`${
-        this.props.inputTemplate
+        props.inputTemplate
       } is not supported interactive element`}
       </p>
     </Debug>
