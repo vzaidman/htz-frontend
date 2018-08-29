@@ -4,7 +4,7 @@ import Observer from 'react-intersection-observer';
 import debounce from 'lodash/debounce';
 import { FelaComponent, } from 'react-fela';
 import Comment from './Comment.js';
-import AdSlot from '../Ads/AdSlot';
+import GeneralAdSlot from '../Ads/GeneralAdSlot';
 
 /**
  * Defines how frequent ad insertion checkup should occur.
@@ -24,12 +24,12 @@ const wrapperStyle = theme => ({
 });
 
 const adSlot = (
-  <AdSlot id="haaretz.co.il.web.fullbanner.talkback" audianceTarget="all" />
+  <GeneralAdSlot id="haaretz.co.il.web.fullbanner.talkback" audianceTarget="all" />
 );
 
 const debounced = debounce((component, idx) => {
   if (process.env.NODE_ENV !== 'production') {
-    console.log(`next possible AdSlot view in after comment number ${idx + 1}`);
+    console.log(`next possible GeneralAdSlot view in after comment number ${idx + 1}`);
   }
   component.setState({
     adLocation: idx,

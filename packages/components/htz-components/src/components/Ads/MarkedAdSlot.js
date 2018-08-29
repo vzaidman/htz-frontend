@@ -4,7 +4,7 @@ import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, parseComponentProp, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
-import AdSlot from './AdSlot';
+import AdSlotBase from './AdSlotBase';
 
 const adSlotVariants = PropTypes.oneOf([
   'primary',
@@ -144,7 +144,7 @@ const MarkedAdSlot = ({
           <span className={className}>{title}</span>
         )}
       />
-      <AdSlot {...adSlotProps} />
+      <AdSlotBase {...adSlotProps} />
     </FelaComponent>
   </React.Fragment>
 );

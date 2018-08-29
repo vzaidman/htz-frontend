@@ -3,7 +3,6 @@ import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { instance, } from './DfpInjector';
 import Debug from '../Debug/Debug';
-import Zen from '../Zen/Zen';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -14,7 +13,7 @@ const defaultProps = {
   className: '',
 };
 
-class AdSlot extends Component {
+class AdSlotBase extends Component {
   state = {
     shouldRender: false,
     debugJsx: null,
@@ -63,27 +62,21 @@ class AdSlot extends Component {
         });
       }
       return (
-        <Zen animate>
+        <React.Fragment>
           {this.state.debugJsx}
           <div
             id={this.props.id}
             className={`js-dfp-ad ${this.props.className}`}
             data-audtarget={audianceTarget}
           />
-        </Zen>
+        </React.Fragment>
       );
     }
     return null;
   }
 }
 
-AdSlot.propTypes = propTypes;
-AdSlot.defaultProps = defaultProps;
-// const WrappedAdSlot = compose(
-//   graphql(UPDATE_USER),
-//   graphql(GET_USER, {
-//     props: ({ data, }) => data,
-//   })
-// )(AdSlot);
+AdSlotBase.propTypes = propTypes;
+AdSlotBase.defaultProps = defaultProps;
 
-export default AdSlot;
+export default AdSlotBase;

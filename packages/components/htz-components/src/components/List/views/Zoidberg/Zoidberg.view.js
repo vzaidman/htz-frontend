@@ -4,7 +4,7 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import ListItem from '../../elements/ListItem';
 
-import AdSlot from '../../../Ads/AdSlot';
+import GeneralAdSlot from '../../../Ads/GeneralAdSlot'
 import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
 import Image from '../../../Image/Image';
 import { PromotedItem, } from '../Leela/Leela.view';
@@ -195,7 +195,7 @@ const Zoidberg = ({ list, lazyLoad, gaAction, biAction, listId, }) => {
                     },
                   })}
                 >
-                  <AdSlot {...item} />
+                  <GeneralAdSlot {...item} />
                 </FelaComponent>
               ) : null
             ) : (
