@@ -13,6 +13,7 @@ import Masthead from './slots/Masthead';
 import StandardArticle from './articleTypes/StandardArticle';
 import StandardArticleQuery from './queries/standard_article';
 import UserDispenser from '../User/UserDispenser';
+import OptOutStrip from '../OptOut/OptOutStrip';
 
 const BIRequest = dynamic(import('../BI/BIRequest'), {
   ssr: false,
@@ -62,21 +63,18 @@ const ArticlePageLayout = ({
   return (
     <Fragment>
       {preHeader ? <LayoutRow>{getElements(preHeader)}</LayoutRow> : null}
-      {/* padding bottom is because masthead is fixed position in mobile */}
-      <LayoutRow
-        miscStyles={{ paddingBottom: [ { until: 's', value: '9rem', }, ], }}
-      >
-        <Masthead content={header} articleId={articleId} />
+      <LayoutRow>
+        <OptOutStrip />
       </LayoutRow>
+      {/* Layout row is inside Masthead Component because its miscStyles depend on state */}
+      <Masthead content={header} articleId={articleId} />
       <LayoutRow>
         {postHeader ? (
           <LayoutContainer>
             <FelaComponent
               style={theme => ({
                 paddingTop: '3rem',
-                extend: [
-                  borderBottom('3px', 3, 'solid', theme.color('primary', '-6')),
-                ],
+                extend: [ borderBottom('3px', 3, 'solid', theme.color('primary', '-6')), ],
               })}
             >
               {getElements(postHeader)}
@@ -109,17 +107,12 @@ const ArticlePageLayout = ({
                 />
               </LayoutRow>
               {postMain ? (
-                <LayoutRow
-                  miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}
-                >
+                <LayoutRow miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}>
                   {getElements(postMain)}
                 </LayoutRow>
               ) : null}
               {footer ? <LayoutRow> {getElements(footer)} </LayoutRow> : null}
-              <BIRequest
-                articleId={articleId}
-                authors={extractAuthorsFromArticle(article)}
-              />
+              <BIRequest articleId={articleId} authors={extractAuthorsFromArticle(article)} />
               <UserDispenser
                 render={({ user, isLoggedIn, }) => {
                   if (isLoggedIn) {
