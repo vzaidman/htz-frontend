@@ -171,7 +171,9 @@ const DesktopOffer = ({
   offerIdx,
   isLoggedIn,
   fourDigits,
-  router,
+
+
+                      ,
 }) => {
   const { pathName, asPath, } = pathGenerator(
     isLoggedIn ? 'stage4' : 'stage3',

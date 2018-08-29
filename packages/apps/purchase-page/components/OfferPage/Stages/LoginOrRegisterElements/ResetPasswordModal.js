@@ -2,6 +2,7 @@ import React, { Fragment, Component, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import {
+  ApolloConsumer,
   A11yDialog,
   Button,
   Form,

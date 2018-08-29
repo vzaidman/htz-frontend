@@ -17,7 +17,7 @@ class RouteChangeListener extends React.Component {
   }
 
   componentWillUnmount() {
-    Router.onRouteChangeStart = null;
+    Router.onRouteChangeComplete = null;
   }
 
   render() {

@@ -10,6 +10,7 @@ import {
 } from '@haaretz/htz-css-tools';
 
 import {
+  ApolloConsumer,
   Button,
   Grid,
   GridItem,
