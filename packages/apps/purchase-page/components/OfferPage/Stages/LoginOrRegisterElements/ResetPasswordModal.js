@@ -2,6 +2,7 @@ import React, { Fragment, Component, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import {
+  ApolloConsumer,
   A11yDialog,
   Button,
   Form,
@@ -10,7 +11,6 @@ import {
   H,
 } from '@haaretz/htz-components';
 import isEmail from 'validator/lib/isEmail';
-import { ApolloConsumer, } from 'react-apollo';
 import gql from 'graphql-tag';
 import CloseModalButton from '../Elements/CloseModalButton';
 

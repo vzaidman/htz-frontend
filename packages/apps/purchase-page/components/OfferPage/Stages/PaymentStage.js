@@ -3,9 +3,9 @@ import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import Router, { withRouter, } from 'next/router';
 import { FelaComponent, } from 'react-fela';
-import { ApolloConsumer, } from 'react-apollo';
 import ReactGA from 'react-ga';
 import {
+  ApolloConsumer,
   Button,
   RadioGroup,
   Form,
