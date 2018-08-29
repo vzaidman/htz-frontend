@@ -1,9 +1,8 @@
 import React from 'react';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { ApolloConsumer, } from 'react-apollo';
 import ReactGA from 'react-ga';
 import { border, } from '@haaretz/htz-css-tools';
-import { Button, EventTracker, H, } from '@haaretz/htz-components';
+import { Button, EventTracker, H, ApolloConsumer, } from '@haaretz/htz-components';
 import pathGenerator from '../utils/pathGenerator';
 
 import TermsButton from './TermsButton';
@@ -172,7 +171,9 @@ const DesktopOffer = ({
   offerIdx,
   isLoggedIn,
   fourDigits,
-  router,
+
+
+                      ,
 }) => {
   const { pathName, asPath, } = pathGenerator(
     isLoggedIn ? 'stage4' : 'stage3',

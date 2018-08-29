@@ -1,19 +1,29 @@
 import React, { Fragment, } from 'react';
-import Link from 'next/link';
+import Router from 'next/router';
+
+import { HtzLink, } from '@haaretz/htz-components';
 import MainLayout from '../layouts/MainLayout';
 
 const OtpValidation = () => (
-  <Fragment>
-    <MainLayout>
-      {({ currentState, findTransitionFunction, transition, }) => (
-        <Fragment>
-          <Link href={`${findTransitionFunction('actionx')()}`}>
-            <button onClick={transition('actionx')}>OTP validation</button>
-          </Link>
-        </Fragment>
-      )}
-    </MainLayout>
-  </Fragment>
+  <MainLayout>
+    {({ currentState, findRout, doTransition, back, }) => (
+      <Fragment>
+        otp validation <br />
+        <HtzLink
+          href={`${findRout('actionx')}`}
+          onClick={e => {
+            e.preventDefault();
+            const route = doTransition('actionx');
+            console.warn(`before push, new state is: ${currentState()}. route is: ${route}`);
+            Router.push(route);
+          }}
+        >
+          link to start
+        </HtzLink>
+
+      </Fragment>
+    )}
+  </MainLayout>
 );
 
 export default OtpValidation;

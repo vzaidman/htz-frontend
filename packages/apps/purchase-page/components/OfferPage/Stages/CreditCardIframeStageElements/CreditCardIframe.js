@@ -3,10 +3,9 @@ import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import Router from 'next/router';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 import ReactGA from 'react-ga';
-import { Button, IconHtzLoader, IconTmLoader, } from '@haaretz/htz-components';
+import { Button, IconHtzLoader, IconTmLoader, Query, } from '@haaretz/htz-components';
 
 const GET_HOST_NAME = gql`
   query {

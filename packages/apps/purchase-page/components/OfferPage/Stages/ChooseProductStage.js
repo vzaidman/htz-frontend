@@ -1,9 +1,9 @@
 import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { ApolloConsumer, } from 'react-apollo';
 import ReactGA from 'react-ga';
 import {
+  ApolloConsumer,
   Button,
   EventTracker,
   Form,

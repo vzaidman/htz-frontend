@@ -1,7 +1,6 @@
 /* global navigator */
 import React, { Fragment, } from 'react';
 import { FelaComponent, } from 'react-fela';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 import {
   AboveBlockLink,
@@ -11,6 +10,7 @@ import {
   Image,
   Newsletter,
   TextLink,
+  Query,
 } from '@haaretz/htz-components';
 import { breakUrl, } from '@haaretz/app-utils';
 

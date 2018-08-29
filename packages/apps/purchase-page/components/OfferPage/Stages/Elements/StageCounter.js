@@ -1,9 +1,8 @@
 import React, { Fragment, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
-import { H, } from '@haaretz/htz-components';
+import { H, Query, } from '@haaretz/htz-components';
 
 const GET_STARTING_STAGE = gql`
   query {
