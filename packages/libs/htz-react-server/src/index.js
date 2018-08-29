@@ -65,8 +65,9 @@ if (!(selectedRoute && sitesRouting.has(selectedRoute))) {
 }
 
 const serviceBase = config.get('service.base');
+const logLevel = config.has('logLevel') ? config.get('logLevel') : null;
 // proxy middleware options
-const options = {
+const proxyOptions = {
   target: `${serviceBase}`, // target host
   changeOrigin: true, // needed for virtual hosted sites
   ws: true, // proxy websockets
@@ -80,8 +81,12 @@ const options = {
     [`${serviceBase}:${PORT}`]: `${serviceBase}:8080`,
   },
 };
+if (logLevel === 'debug') {
+  proxyOptions.logLevel = 'debug';
+}
+console.log('proxy options:', JSON.stringify(proxyOptions));
 // create the proxy (without context)
-const tomcatProxy = proxy(options);
+const tomcatProxy = proxy(proxyOptions);
 
 // options object
 const GraphQLOptions = {
