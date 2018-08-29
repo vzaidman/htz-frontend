@@ -67,7 +67,7 @@ if (!(selectedRoute && sitesRouting.has(selectedRoute))) {
 const serviceBase = config.get('service.base');
 // proxy middleware options
 const options = {
-  target: `${serviceBase}:8080`, // target host
+  target: `${serviceBase}`, // target host
   changeOrigin: true, // needed for virtual hosted sites
   ws: true, // proxy websockets
   // pathRewrite: {
