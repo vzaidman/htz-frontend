@@ -1,6 +1,6 @@
 import React from 'react';
 import { pagePropTypes, } from '@haaretz/app-utils';
-import { Query, } from 'react-apollo';
+import { Query, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 import { FelaComponent, } from 'react-fela';
 

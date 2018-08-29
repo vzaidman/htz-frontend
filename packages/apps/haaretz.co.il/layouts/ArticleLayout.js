@@ -1,7 +1,7 @@
 /* global sessionStorage localStorage */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
+
 import { FelaComponent, } from 'react-fela';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { htzTheme, } from '@haaretz/htz-theme';
@@ -16,6 +16,7 @@ import {
   ScrollListener,
   RouteChangeListener,
   UserInjector,
+  Query,
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';

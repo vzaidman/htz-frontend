@@ -8,8 +8,8 @@ import {
   UserInjector,
   BIRequest,
   GoogleAnalytics,
+  Query,
 } from '@haaretz/htz-components';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import theme from '../theme';

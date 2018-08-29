@@ -3,9 +3,8 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
-import { IconHtzLoader, IconTmLoader, } from '@haaretz/htz-components';
+import { IconHtzLoader, IconTmLoader, Query, } from '@haaretz/htz-components';
 import Phones from '../Stages/Elements/Phones';
 
 const GET_HOST_NAME = gql`

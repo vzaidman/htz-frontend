@@ -16,9 +16,8 @@ import {
   TextInput,
   Login,
   Register,
+  ApolloConsumer,
 } from '@haaretz/htz-components';
-
-import { ApolloConsumer, } from 'react-apollo';
 
 import ResetPasswordModal from './LoginOrRegisterElements/ResetPasswordModal';
 import submitForm from './LoginOrRegisterElements/submitForm';
