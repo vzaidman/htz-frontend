@@ -4,6 +4,7 @@ import { FelaComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import ArticleLink from './articleLink';
+import EventTracker from '../../utils/EventTracker';
 
 const propTypes = {
   /**
@@ -76,15 +77,33 @@ const RelatedArticles = ({ articles, miscStyles, }) => (
     render="ul"
   >
     {articles.map((article, i) => (
-      <FelaComponent
-        rule={articleWrapperStyle}
-        key={article.contentId}
-        lastItem={i === articles.length - 1}
-        render="li"
-      >
-        <ArticleLink article={article} />
-      </FelaComponent>
-    ))}
+      <EventTracker>
+        {({ biAction, }) => (
+          <FelaComponent
+            rule={articleWrapperStyle}
+            key={article.contentId}
+            lastItem={i === articles.length - 1}
+            render={({ className, theme, }) => (
+              <li
+                className={className}
+                onClick={() => {
+                  biAction({
+                    actionCode: 109,
+                    additionalInfo: {
+                      ArticleId: article.contentId,
+                      NoInList: i + 1,
+                      ViewName: 'Related article',
+                    },
+                });
+               }}
+              >
+                <ArticleLink article={article} />
+              </li>
+        )}
+          />
+      )}
+      </EventTracker>
+  ))}
   </FelaComponent>
 );
 
