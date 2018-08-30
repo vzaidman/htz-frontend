@@ -39,6 +39,13 @@ const views = new Map([
     },
   ],
   [
+    'Nibbler',
+    {
+      view: () => import('./views/Nibbler/Nibbler.view.js'),
+      query: () => import('./views/Nibbler/Nibbler.query.js'),
+    },
+  ],
+  [
     'Zoidberg',
     {
       view: () => import('./views/Zoidberg/Zoidberg.view.js'),

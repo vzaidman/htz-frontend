@@ -18,6 +18,7 @@ const views = {
   Farnsworth: dynamic(import('./views/Farnsworth/Farnsworth.view.js')),
   Fry: dynamic(import('./views/Fry/Fry.view.js')),
   Leela: dynamic(import('./views/Leela/Leela.view.js')),
+  Nibbler: dynamic(import('./views/Nibbler/Nibbler.view.js')),
   Zoidberg: dynamic(import('./views/Zoidberg/Zoidberg.view.js')),
 };
 
@@ -80,6 +81,7 @@ export default class List extends React.Component {
           <option value="Farnsworth">Farnsworth</option>
           <option value="Fry">Fry</option>
           <option value="Leela">Leela</option>
+          <option value="Nibbler">Nibbler</option>
           <option value="Zoidberg">Zoidberg</option>
         </MenuList>
         {this.state.type ? (
