@@ -11,9 +11,7 @@ const propTypes = {
   /**
    * The elements composing the article’s body.
    */
-  body: PropTypes.arrayOf(
-    PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
-  ).isRequired,
+  body: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
 };
 
 const defaultProps = {};
@@ -82,17 +80,15 @@ const Aside = ({ children, }) => (
 );
 
 const buildComponent = (context, index, isLastItem) => {
-  const uniqueId =
-    context.elementType || context.inputTemplate || context.tag || null;
-  const Component =
-    uniqueId === 'com.tm.Image' ? ArticleImage : getComponent(uniqueId);
-
+  const uniqueId = context.elementType || context.inputTemplate || context.tag || null;
+  const Component = uniqueId === 'com.tm.Image' ? ArticleImage : getComponent(uniqueId);
+  
   switch (uniqueId) {
     case 'com.tm.Image':
-      return <Component key={index} lastItem={isLastItem} {...context} />;
+      return <Component key={context.contentId} lastItem={isLastItem} {...context} />;
     case 'embedElement':
       return (
-        <Figure key={index} lastItem={isLastItem}>
+        <Figure key={context.contentId} lastItem={isLastItem}>
           <Component {...context} />
         </Figure>
       );
@@ -100,40 +96,33 @@ const buildComponent = (context, index, isLastItem) => {
     case 'com.tm.ImageGalleryElement':
     case 'com.tm.Video': // eslint-disable-line no-case-declarations
       return (
-        <Figure key={index} lastItem={isLastItem}>
+        <Figure key={context.contentId} lastItem={isLastItem}>
           <Component {...context} />
           {context.title || context.caption || context.credit ? (
-            <Caption
-              caption={context.title || context.caption}
-              credit={context.credit}
-            />
+            <Caption caption={context.title || context.caption} credit={context.credit} />
           ) : null}
         </Figure>
       );
     case 'com.htz.MagazineArticleQuote':
       return (
-        <Aside key={index}>
+        <Aside key={context.contentId}>
           <Component {...context} />
         </Aside>
       );
     case 'com.polobase.DfpBannerElement':
-      return <Component {...context} {...context.properties} />;
+      return <Component key={context.contentId} {...context} {...context.properties} />;
     case 'com.tm.newsLetterQuickRegistrationRespAuto':
       return (
-        <NoSSR>
-          <Component
-            key={index}
-            {...context}
-            miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }}
-          />
+        <NoSSR key={context.contentId}>
+          <Component {...context} miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }} />
         </NoSSR>
       );
     default:
       return (
         <FelaTheme
+          key={context.contentId || uniqueId + index}
           render={theme => (
             <Component
-              key={index}
               {...context}
               miscStyles={
                 isLastItem
@@ -166,9 +155,7 @@ function ArticleBody({ body, }) {
         marginLeft: 'auto',
       })}
     >
-      {body.map((component, i) =>
-        buildComponent(component, i, i === body.length - 1)
-      )}
+      {body.map((component, i) => buildComponent(component, i, i === body.length - 1))}
     </FelaComponent>
   );
 }

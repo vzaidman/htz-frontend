@@ -58,7 +58,7 @@ const RegistrationWrapper = ({ miscStyles, children, }) => (
           : []),
       ],
     })}
-    // render="section"
+    render="aside"
   >
     {children}
   </FelaComponent>
