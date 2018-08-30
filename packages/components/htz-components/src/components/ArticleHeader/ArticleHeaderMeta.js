@@ -95,14 +95,24 @@ class ArticleHeaderMeta extends React.Component {
     if (!modifiedDate) {
       return null;
     }
+<<<<<<< HEAD
     const format = artifleTimeFormat(new Date(), modifiedDate);
     return <Time time={modifiedDate} format={`עודכן ב-${format}`} className={className} />;
+=======
+    const dayMiliseconds = 24 * 3600 * 1000;
+    const format =
+      new Date().getTime() - new Date(modifiedDate).getTime() < dayMiliseconds
+        ? 'HH:mm'
+        : 'HH:mm | DD.MM.YYYY';
+    return <Time time={modifiedDate} format={`עודכן ב ${format}`} className={className} />;
+>>>>>>> feat(update date): update date
   };
 
   displayDates = (publishDate, modifiedDate, className) => {
     if (new Date(publishDate).toDateString() === new Date(modifiedDate).toDateString()) {
       return (
         <Fragment>
+<<<<<<< HEAD
           <Time time={modifiedDate} format="DD.MM.YYYY" className={className} />
         </Fragment>
       );
@@ -113,6 +123,17 @@ class ArticleHeaderMeta extends React.Component {
         <Time time={publishDate} format={format} className={className} />{' '}
         {this.setModifiedDate(modifiedDate, className)}
       </div>
+=======
+          <Time time={modifiedDate} format="HH:mm | DD.MM.YYYY" className={className} />
+        </Fragment>
+      );
+    }
+    return (
+      <Fragment>
+        <Time time={publishDate} format="HH:mm | DD.MM.YYYY" className={className} />
+        {this.setModifiedDate(modifiedDate, className)}
+      </Fragment>
+>>>>>>> feat(update date): update date
     );
   };
 
