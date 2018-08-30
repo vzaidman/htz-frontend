@@ -104,7 +104,7 @@ export default function Bender({ list, lazyLoad, gaAction, biAction, listId, }) 
               additionalInfo: {
                 ArticleId: item.contentId,
                 ListId: listId,
-                Platform: 'web',
+                Platform: 'desktop',
                 NoInList: i + 1,
                 ViewName: 'Bender',
               },

@@ -17,42 +17,6 @@ import Section from '../../../AutoLevels/Section';
 // eslint-disable-next-line react/prop-types
 const Zoidberg = ({ list, lazyLoad, gaAction, biAction, listId, }) => {
   // eslint-disable-next-line react/prop-types
-  const ItemWrapper = ({ children, href, index, contentId, }) => (
-    <FelaTheme
-      render={theme => (
-        <BlockLink
-          miscStyles={{
-            alignItems: 'flex-start',
-            display: 'flex',
-            paddingTop: '1rem',
-            borderBottom: [ '1px', '1', 'solid', theme.color('neutral', '-4'), ],
-            ':last-child': {
-              paddingBottom: '0',
-              borderBottomWidth: '0',
-              borderBottomStyle: 'none',
-            },
-          }}
-          href={href}
-          onClick={() => {
-            biAction({
-              actionCode: 109,
-              additionalInfo: {
-                ArticleId: contentId,
-                ListId: listId,
-                Platform: 'desktop',
-                NoInList: index + 1,
-                ViewName: 'Zoidberg',
-              },
-            });
-          }}
-        >
-          {children}
-        </BlockLink>
-      )}
-    />
-  );
-
-  // eslint-disable-next-line react/prop-types
   const ClickTrackerItem = ({ item, index, }) => (
     <ClickTracker
       {...item}
@@ -66,7 +30,12 @@ const Zoidberg = ({ list, lazyLoad, gaAction, biAction, listId, }) => {
                   alignItems: 'flex-start',
                   display: 'flex',
                   paddingTop: '1rem',
-                  borderBottom: [ '1px', '1', 'solid', theme.color('neutral', '-4'), ],
+                  borderBottom: [
+                    '1px',
+                    '1',
+                    'solid',
+                    theme.color('neutral', '-4'),
+                  ],
                   borderEnd: [ '4px', 0, 'solid', theme.color('neutral', '-4'), ],
                   ':last-child': {
                     paddingBottom: '0',
@@ -105,47 +74,78 @@ const Zoidberg = ({ list, lazyLoad, gaAction, biAction, listId, }) => {
 
   // eslint-disable-next-line react/prop-types
   const Item = ({ title, image, path, index, contentId, }) => (
-    <ItemWrapper href={path} index={index} contentId={contentId}>
-      <Fragment>
-        <div>
-          <Image
-            data={image}
-            imgOptions={{
-              transforms: {
-                width: '125',
-                aspect: 'regular',
-                quality: 'auto',
-              },
-            }}
-            miscStyles={{
-              width: '18rem',
-              flexShrink: '0',
-              flexGrow: '0',
-            }}
-          />
-        </div>
-        <AboveBlockLink>
-          {({ className, }) => {
-            const aboveBlockLinkClasses = className;
-            return (
-              <FelaComponent
-                style={theme => ({
-                  fontWeight: '700',
-                  marginStart: '1rem',
-                  flexGrow: '1',
-                  extend: [ theme.type(-1), ],
-                })}
-                render={({ className, }) => (
-                  <H className={`${aboveBlockLinkClasses} ${className}`}>
-                    <HtzLink href={path}>{title}</HtzLink>
-                  </H>
-                )}
-              />
-            );
+    <FelaTheme
+      render={theme => (
+        <BlockLink
+          miscStyles={{
+            alignItems: 'flex-start',
+            display: 'flex',
+            paddingTop: '1rem',
+            borderBottom: [ '1px', '1', 'solid', theme.color('neutral', '-4'), ],
+            ':last-child': {
+              paddingBottom: '0',
+              borderBottomWidth: '0',
+              borderBottomStyle: 'none',
+            },
           }}
-        </AboveBlockLink>
-      </Fragment>
-    </ItemWrapper>
+          href={path}
+          onClick={() => {
+            biAction({
+              actionCode: 109,
+              additionalInfo: {
+                ArticleId: contentId,
+                ListId: listId,
+                Platform: 'desktop',
+                NoInList: index + 1,
+                ViewName: 'Zoidberg',
+              },
+            });
+          }}
+        >
+          <Section isFragment>
+            <FelaComponent
+              style={{
+                width: '18rem',
+                flexShrink: '0',
+                flexGrow: '0',
+              }}
+              render={({ className, theme, }) => (
+                <span className={className}>
+                  <Image
+                    data={image}
+                    imgOptions={{
+                      transforms: {
+                        width: '125',
+                        aspect: 'regular',
+                        quality: 'auto',
+                      },
+                    }}
+                    miscStyles={{
+                      width: '18rem',
+                      flexShrink: '0',
+                      flexGrow: '0',
+                    }}
+                  />
+                </span>
+              )}
+            />
+            <FelaComponent
+              style={theme => ({
+                fontWeight: '700',
+                marginStart: '1rem',
+                flexGrow: '1',
+                extend: [ theme.type(-1), ],
+              })}
+              render={({ className, }) => (
+                <H className={className}>
+                  <HtzLink href={path}>{title}</HtzLink>
+                </H>
+              )}
+            />
+          </Section>
+        </BlockLink>
+      )}
+    />
   );
 
   const { title, items, } = list;
@@ -187,13 +187,13 @@ const Zoidberg = ({ list, lazyLoad, gaAction, biAction, listId, }) => {
                     paddingTop: '1rem',
                     ':not(:last-child)': {
                       ...borderBottom(
-                        '1px',
-                        1,
-                        'solid',
-                        theme.color('neutral', '-4')
-                      ),
-                    },
-                  })}
+                       '1px',
+                       1,
+                       'solid',
+                       theme.color('neutral', '-4')
+                    ),
+                  },
+                })}
                 >
                   <GeneralAdSlot {...item} />
                 </FelaComponent>
