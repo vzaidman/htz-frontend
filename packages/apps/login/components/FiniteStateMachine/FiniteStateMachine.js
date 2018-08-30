@@ -36,7 +36,7 @@ class FiniteStateMachine extends React.Component {
     this.currentState = this.currentState.bind(this);
     this.findTransition = this.findTransition.bind(this);
     this.doTransition = this.doTransition.bind(this);
-    this.goBack = this.goBack.bind(this);
+    this.changeHistoryCallback = this.changeHistoryCallback.bind(this);
     this.getHistoryObject = this.getHistoryObject.bind(this);
     this.addHistory = this.addHistory.bind(this);
     this.setState = this.setState.bind(this);
@@ -50,7 +50,7 @@ class FiniteStateMachine extends React.Component {
   }
 
   componentDidMount() {
-    Router.beforePopState(this.goBack);
+    Router.beforePopState(this.changeHistoryCallback);
   }
 
   /**
@@ -67,15 +67,36 @@ class FiniteStateMachine extends React.Component {
    * @returns {object} an object which contains the 'state' and transition
    * function to that state
    */
-  goBack() {
-    console.warn('executed "go back"');
-    const stateInfo = this.removeHistory();
-    this.setState(stateInfo.pastState);
-    return stateInfo;
-  }
+  changeHistoryCallback({ url, as, options }) {
+    console.warn('executed "change history"');
+    const historyObject = this.getHistoryObject();
+    let historyPointer = Number(this.getHistoryPointer());
+    const back = historyObject[historyPointer - 1];
+    const forward = historyObject[historyPointer + 1];
+    console.warn(`back: ${JSON.stringify(back)}. forward: ${JSON.stringify(forward)}`);
+    let direction =
+      (back !== undefined && (url === back.pastTransition || as === back.pastTransition))
+      ? 'back'
+      : (forward !== undefined && (url === forward.pastTransition || as === forward.pastTransition))
+        ? 'front'
+        : null;
 
-  goForward() {
-    // TODO go forward
+    switch (direction) {
+      case 'back':
+        this.decrementHistoryPointer();
+        historyPointer--;
+        break;
+      case 'front':
+        this.incrementHistoryPointer();
+        historyPointer++;
+        break;
+      default:
+        throw new Error('could not resolve pop state direction');
+    }
+
+    const currentObject = historyObject[historyPointer];
+    this.setState(currentObject.pastState);
+    return currentObject;
   }
 
   getHistoryObject() {
@@ -86,7 +107,7 @@ class FiniteStateMachine extends React.Component {
     console.warn(`executed add history with ${pastState}, ${pastTransition}`);
     let historyObject = this.getHistoryObject();
     if (!Array.isArray(historyObject)) {
-      historyObject = [ historyObject ];
+      historyObject = [];
     }
     this.props.apolloClient.writeData({
       data: {
@@ -97,12 +118,18 @@ class FiniteStateMachine extends React.Component {
         }, ],
       }
     });
+    this.incrementHistoryPointer();
   }
 
   getHistoryPointer() {
     return this.props.apolloClient.readQuery({ query: HISTORY_POINTER }).historyPointer;
   }
 
+  /**
+   * Do not use set history pointer. it's a util method for
+   * 'increment/decrement history pointer methods'
+   * @param pointer
+   */
   setHistoryPointer(pointer) {
     console.warn(`pointer is written: ${pointer}`);
     this.props.apolloClient.writeData({
@@ -112,25 +139,36 @@ class FiniteStateMachine extends React.Component {
 
   incrementHistoryPointer() {
     let pointer = this.getHistoryPointer();
-    pointer = pointer === null ? 1 : Number(pointer) + 1;
+    pointer = pointer === null ? 0 : Number(pointer) + 1;
     this.setHistoryPointer(pointer);
   }
 
   decrementHistoryPointer() {
-    // TODO
+    let pointer = this.getHistoryPointer();
+    const pointerLocation = Number(pointer);
+    pointer = (pointer === null || pointerLocation === 0) ? 0 : pointerLocation - 1;
+    this.setHistoryPointer(pointer);
   }
 
-  removeHistory(pointer) { // TODO remove history till pointer
-    console.warn(`executed remove history`);
+  /**
+   * Remove history till the current pointer that shows the navigation location
+   * within the history object. This should happen only after a link is pressed
+   * @returns {*}
+   */
+  removeHistory() {
+    const pointerLocation = this.getHistoryPointer();
     let historyObject = this.getHistoryObject();
     if (!Array.isArray(historyObject)) {
       historyObject = [ historyObject ];
     }
-    historyObject.pop();
+
+    console.warn(`removing history till pointer location: ${pointerLocation}`);
+    if (historyObject.length - 1 === pointerLocation) return;
+    const newHistoryObject = historyObject.slice(0, Number(pointerLocation) + 1);
     this.props.apolloClient.writeData({
-      data: { stateHistory: [ ...historyObject, ], }
+      data: { stateHistory: [ ...newHistoryObject, ], }
     });
-    return historyObject[historyObject.length - 1];
+    // return newHistoryObject[historyObject.length - 1];
   }
 
   setState(newState) {
@@ -197,6 +235,7 @@ class FiniteStateMachine extends React.Component {
     const oldState = this.currentState();
     const newState = this.resolveNewState(action);
     const route = this.findTransition(action);
+    this.removeHistory();
     this.addHistory({ pastState: newState, pastTransition: route, });
     console.warn(`new state: ${newState}`);
     this.setState(newState);
