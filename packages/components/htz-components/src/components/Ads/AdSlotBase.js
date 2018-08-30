@@ -1,6 +1,7 @@
 /* global window, document, googletag */
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
+import { FelaComponent, } from 'react-fela';
 import { instance, } from './DfpInjector';
 import Debug from '../Debug/Debug';
 
@@ -8,9 +9,11 @@ const propTypes = {
   id: PropTypes.string.isRequired,
   audianceTarget: PropTypes.string.isRequired,
   className: PropTypes.string,
+  styleRule: PropTypes.func,
 };
 const defaultProps = {
   className: '',
+  styleRule: null,
 };
 
 class AdSlotBase extends Component {
@@ -64,10 +67,18 @@ class AdSlotBase extends Component {
       return (
         <React.Fragment>
           {this.state.debugJsx}
-          <div
-            id={this.props.id}
-            className={`js-dfp-ad ${this.props.className}`}
-            data-audtarget={audianceTarget}
+          <FelaComponent
+            customClass={`js-dfp-ad ${this.props.className}`}
+            rule={this.props.styleRule}
+            render={
+              ({ className, }) => (
+                <div
+                  id={this.props.id}
+                  data-audtarget={audianceTarget}
+                  className={className}
+                />
+              )
+            }
           />
         </React.Fragment>
       );
