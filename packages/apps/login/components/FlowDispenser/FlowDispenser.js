@@ -6,11 +6,5 @@ class FlowDispenser extends React.Component {
     super(props);
   }
 
-  isEmailValid() {
 
-  }
-
-  isPhoneValid() {
-
-  }
 }
