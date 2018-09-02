@@ -29,30 +29,46 @@ const finiteStateMachinePropTypes = {
   initialState: PropTypes.string.isRequired,
   initialTransition: PropTypes.string.isRequired,
   statesGraph: PropTypes.objectOf(PropTypes.object).isRequired,
-  transitionRoutMap: PropTypes.objectOf(PropTypes.any).isRequired,
+  transitionRouteMap: PropTypes.objectOf(PropTypes.any).isRequired,
   apolloClient: PropTypes.shape().isRequired,
 };
 
 class FiniteStateMachine extends React.Component {
+  static propTypes = finiteStateMachinePropTypes;
+
   constructor(props) {
     super(props);
 
     if (this.currentState() === null) {
-      this.setState(props.initialState);
+      this.writeStateToApolloStore(props.initialState);
       this.addHistory({ pastState: props.initialState, pastTransition: props.initialTransition, });
     }
   }
 
   componentDidMount = () => Router.beforePopState(this.changeHistoryCallback);
 
-  getHistoryObject = () => this.props.apolloClient
-    .readQuery({ query: HISTORY, }).stateHistory;
+  getHistoryObject = () => {
+    const historyObject = this.props.apolloClient
+      .readQuery({ query: HISTORY, }).stateHistory;
+    // TODO render from server if null or undefined
+    if (typeof historyObject === 'undefined') {
+      throw new Error('could not get history object from store. force SSR');
+    }
+    return historyObject;
+  };
 
-  getHistoryPointer = () => this.props.apolloClient
-    .readQuery({ query: HISTORY_POINTER, }).historyPointer;
+  getHistoryPointer = () => {
+    const historyPointer = this.props.apolloClient
+      .readQuery({ query: HISTORY_POINTER, }).historyPointer;
+    // TODO render from server if null or undefined
+    if (typeof historyPointer === 'undefined') {
+      throw new Error('could not get history pointer from store. force SSR');
+    }
+    return historyPointer;
+  };
 
   /**
-   * Do not use set history pointer. it's a util method for
+   * Do not use set history pointer. it's a util for
    * 'increment/decrement history pointer methods'
    * @param pointer
    */
@@ -61,13 +77,15 @@ class FiniteStateMachine extends React.Component {
     this.props.apolloClient.writeData({
       data: { historyPointer: pointer, },
     });
+    return pointer;
   };
 
-  setState = newState => {
+  writeStateToApolloStore = newState => {
     console.warn(`state to be written to apollo: ${newState}`);
     this.props.apolloClient.writeData({
       data: { currentState: newState, },
     });
+    return newState;
   };
 
   /**
@@ -83,24 +101,25 @@ class FiniteStateMachine extends React.Component {
     }
 
     console.warn(`removing history till pointer location: ${pointerLocation}`);
-    if (historyObject.length - 1 === pointerLocation) return;
-    const newHistoryObject = historyObject.slice(0, Number(pointerLocation) + 1);
+    if (historyObject.length - 1 === pointerLocation) return historyObject;
+    const newHistoryObject = historyObject.slice(0, parseInt(pointerLocation, 10) + 1);
     this.props.apolloClient.writeData({
       data: { stateHistory: [ ...newHistoryObject, ], },
     });
+    return newHistoryObject;
   };
 
   incrementHistoryPointer = () => {
     let pointer = this.getHistoryPointer();
-    pointer = pointer === null ? 0 : Number(pointer) + 1;
-    this.setHistoryPointer(pointer);
+    pointer = pointer === null ? 0 : parseInt(pointer, 10) + 1;
+    return this.setHistoryPointer(pointer);
   };
 
   decrementHistoryPointer = () => {
     let pointer = this.getHistoryPointer();
-    const pointerLocation = Number(pointer);
+    const pointerLocation = parseInt(pointer, 10);
     pointer = (pointer === null || pointerLocation === 0) ? 0 : pointerLocation - 1;
-    this.setHistoryPointer(pointer);
+    return this.setHistoryPointer(pointer);
   };
 
   addHistory = ({ pastState, pastTransition, }) => {
@@ -118,7 +137,7 @@ class FiniteStateMachine extends React.Component {
         }, ],
       },
     });
-    this.incrementHistoryPointer();
+    return this.incrementHistoryPointer();
   };
 
   /**
@@ -134,51 +153,62 @@ class FiniteStateMachine extends React.Component {
   changeHistoryCallback = ({ url, as, options, }) => {
     console.warn('executed "change history"');
     const historyObject = this.getHistoryObject();
-    let historyPointer = Number(this.getHistoryPointer());
-    const back = historyObject[historyPointer - 1];
-    const forward = historyObject[historyPointer + 1];
-    console.warn(`back: ${JSON.stringify(back)}. forward: ${JSON.stringify(forward)}`);
+    const currentHistoryPointer = parseInt(this.getHistoryPointer(), 10);
+    const backwards = historyObject[currentHistoryPointer - 1];
+    const forward = historyObject[currentHistoryPointer + 1];
+    console.warn(`back: ${JSON.stringify(backwards)}. forward: ${JSON.stringify(forward)}`);
     const direction =
-      (back !== undefined && (url === back.pastTransition || as === back.pastTransition))
-        ? 'back'
+      (backwards !== undefined && (url === backwards.pastTransition || as === backwards.pastTransition))
+        ? 'backwards'
         : (
           forward !== undefined
           && (url === forward.pastTransition || as === forward.pastTransition)
         )
-          ? 'front'
+          ? 'forward'
           : null;
 
-    switch (direction) {
-      case 'back':
-        this.decrementHistoryPointer();
-        historyPointer -= 1;
-        break;
-      case 'front':
-        this.incrementHistoryPointer();
-        historyPointer += 1;
-        break;
-      default:
-        throw new Error('could not resolve pop state direction');
+    const updatedHistoryPointer = direction === 'backwards'
+      ? this.decrementHistoryPointer()
+      : direction === 'forward'
+        ? this.incrementHistoryPointer()
+        : null;
+
+    if (updatedHistoryPointer == null) {
+      // TODO: replace this so an initial state is
+      // rendered rather than crushing the whole app
+      throw new Error('could not resolve pop state direction');
     }
 
-    const currentObject = historyObject[historyPointer];
-    this.setState(currentObject.pastState);
-    return currentObject;
+    const currentHistoryObject = historyObject[updatedHistoryPointer];
+    this.writeStateToApolloStore(currentHistoryObject.pastState);
+
+    return currentHistoryObject;
   };
 
   /**
    * Returns the current inner state of the FSM
    */
-  currentState = () => this.props.apolloClient
-    .readQuery({ query: CURRENT_STATE, }).currentState;
+  currentState = () => {
+    const currentState = this.props.apolloClient
+      .readQuery({ query: CURRENT_STATE, }).currentState;
+
+    // TODO render from server if null or undefined
+    if (typeof currentState === 'undefined') {
+      throw new Error('could not get current state from store. force SSR');
+    }
+    return currentState;
+  };
 
   /**
-   * This is This function uses the current inner state and the action that the user applied
+   *  This is This function uses the current inner state and the action that the user applied
    * to resolve its new state
    * @param {string} action the action that the user applied
+   * @param action
+   * @param state
+   * @returns {*}
    */
-  resolveNewState = action => Object.entries(this.props.statesGraph)
-    .find(entry => entry[0] === this.currentState())[1][action];
+  resolveNewState = (action, state) => Object.entries(this.props.statesGraph)
+    .find(entry => entry[0] === state)[1][action];
 
   /**
    * This function uses the old and new states as parameters to find the transition
@@ -189,13 +219,13 @@ class FiniteStateMachine extends React.Component {
   resolveRout = (oldState, newState) => {
     const wantedTransition = `${oldState}-${newState}`;
     console.warn(`searching for rout: ${wantedTransition}`);
-    for (const [ transition, rout, ] of this.props.transitionRoutMap.entries()) {
+    for (const [ transition, rout, ] of this.props.transitionRouteMap.entries()) {
       if (wantedTransition === transition) return rout;
     }
 
     // loosen the transition function search parameters to only search the new state
     const looseTransitionRule = `-${newState}`;
-    for (const [ transition, rout, ] of this.props.transitionRoutMap.entries()) {
+    for (const [ transition, rout, ] of this.props.transitionRouteMap.entries()) {
       if (looseTransitionRule === transition) return rout;
     }
     throw new Error(`transition function not found for state transition: ${oldState}-${newState}`);
@@ -209,7 +239,7 @@ class FiniteStateMachine extends React.Component {
   findTransition = action => {
     const oldState = this.currentState();
     console.warn(`inside find transition. old state: ${oldState}`);
-    const newState = this.resolveNewState(action);
+    const newState = this.resolveNewState(action, oldState);
     const route = this.resolveRout(oldState, newState);
     console.warn(`simulation: action: ${action}. oldState: ${oldState}. new state: ${newState}`);
     return route;
@@ -226,12 +256,12 @@ class FiniteStateMachine extends React.Component {
   doTransition = action => {
     console.warn(`transition wanted. action: ${action}`);
     const oldState = this.currentState();
-    const newState = this.resolveNewState(action);
+    const newState = this.resolveNewState(action, oldState);
     const route = this.findTransition(action);
     this.removeHistory();
     this.addHistory({ pastState: newState, pastTransition: route, });
     console.warn(`new state: ${newState}`);
-    this.setState(newState);
+    this.writeStateToApolloStore(newState);
     console.warn(
       `transition: action: ${action}. oldState: ${oldState}. new state: ${newState}`
     );
@@ -247,6 +277,5 @@ class FiniteStateMachine extends React.Component {
   }
 }
 
-FiniteStateMachine.propTypes = finiteStateMachinePropTypes;
 
 export default FiniteStateMachine;
