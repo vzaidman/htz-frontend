@@ -14,9 +14,7 @@ import AuthorNotificationsRegistration from '../ServiceByMailRegistration/Author
 import SlideinBox from '../Transitions/SlideinBox';
 
 const outerStyle = ({ theme, miscStyles, }) => ({
-  extend: [
-    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-  ],
+  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
 const wrapperStyle = ({ theme, miscStyles, }) => ({
   display: 'flex',
@@ -35,23 +33,18 @@ const wrapperStyle = ({ theme, miscStyles, }) => ({
       }
     ),
     theme.mq({ from: 's', }, { justifyContent: 'flex-start', }),
-    theme.mq(
-      { from: 'l', },
-      { flexDirection: 'column', alignItems: 'flex-start', }
-    ),
+    theme.mq({ from: 'l', }, { flexDirection: 'column', alignItems: 'flex-start', }),
   ],
 });
 
 // the time needs to render in different locations for mobile
 // mobileTime indicates if this is the mobile location
 const timeStyle = ({ theme, mobileTime, }) => ({
+  display: 'inline-block',
   extend: [
     theme.mq({ [mobileTime ? 'from' : 'until']: 'l', }, { display: 'none', }),
     theme.mq({ until: 's', }, { display: 'block', }),
-    theme.mq(
-      { from: 's', until: 'l', },
-      { marginInlineStart: '1rem', marginInlineEnd: '1rem', }
-    ),
+    theme.mq({ from: 's', until: 'l', }, { marginInlineStart: '1rem', marginInlineEnd: '1rem', }),
     theme.mq({ from: 'l', }, { marginTop: '0.5rem', }),
     theme.type(-2, { fromBp: 'xl', }),
     theme.type(-2, { untilBp: 'xl', }),
@@ -61,12 +54,7 @@ const timeStyle = ({ theme, mobileTime, }) => ({
 const imageAuthorsAndMobileTimeContStyle = theme => ({
   display: 'flex',
   alignItems: 'center',
-  extend: [
-    theme.mq(
-      { from: 'l', },
-      { flexDirection: 'column', alignItems: 'flex-start', }
-    ),
-  ],
+  extend: [ theme.mq({ from: 'l', }, { flexDirection: 'column', alignItems: 'flex-start', }), ],
 });
 
 const authorsAndTimeContStyle = theme => ({
@@ -77,6 +65,13 @@ const alertsAndDesktopTimeContStyle = theme => ({
   extend: [ theme.mq({ from: 'l', }, { marginTop: '1rem', }), ],
 });
 
+const shouldShowDate = ({ startTime, endTime, hours = 18, }) => {
+  const MILISECS_IN_HOUR = 3600 * 1000;
+  return new Date(startTime).getTime() - new Date(endTime).getTime() < hours * MILISECS_IN_HOUR;
+};
+
+const artifleTimeFormat = (startTime, endTime) =>
+  (shouldShowDate({ startTime, endTime, }) ? 'HH:mm' : 'DD.MM.YYYY');
 class ArticleHeaderMeta extends React.Component {
   constructor(props) {
     super(props);
@@ -92,16 +87,24 @@ class ArticleHeaderMeta extends React.Component {
     if (!modifiedDate) {
       return null;
     }
-    const format =
-      new Date(modifiedDate).toDateString() === new Date().toDateString()
-        ? 'HH:mm'
-        : 'HH:mm | DD.MM.YYYY';
+    const format = artifleTimeFormat(new Date(), modifiedDate);
+    return <Time time={modifiedDate} format={`עודכן ב-${format}`} className={className} />;
+  };
+
+  displayDates = (publishDate, modifiedDate, className) => {
+    if (new Date(publishDate).toDateString() === new Date(modifiedDate).toDateString()) {
+      return (
+        <Fragment>
+          <Time time={modifiedDate} format="DD.MM.YYYY" className={className} />
+        </Fragment>
+      );
+    }
+    const format = 'DD.MM.YYYY';
     return (
-      <Time
-        time={modifiedDate}
-        format={`עודכן ב ${format}`}
-        className={className}
-      />
+      <div>
+        <Time time={publishDate} format={format} className={className} />{' '}
+        {this.setModifiedDate(modifiedDate, className)}
+      </div>
     );
   };
 
@@ -110,20 +113,12 @@ class ArticleHeaderMeta extends React.Component {
       prevState => ({
         isShowAuthorAlertsForm: !prevState.isShowAuthorAlertsForm,
       }),
-      () =>
-        !this.state.isShowAuthorAlertsForm &&
-        this.alertsToggleBtnRef.current.focus()
+      () => !this.state.isShowAuthorAlertsForm && this.alertsToggleBtnRef.current.focus()
     );
   }
 
   render() {
-    const {
-      authors,
-      publishDate,
-      reportingFrom,
-      miscStyles,
-      modifiedDate,
-    } = this.props;
+    const { authors, publishDate, reportingFrom, miscStyles, modifiedDate, } = this.props;
     return (
       <FelaComponent rule={outerStyle} miscStyles={miscStyles}>
         <FelaComponent
@@ -136,10 +131,7 @@ class ArticleHeaderMeta extends React.Component {
                   {authors.length > 1 || !authors[0].image ? (
                     <IconAlefLogo
                       color="primary"
-                      size={[
-                        { until: 'l', value: 6, },
-                        { from: 'l', value: 10, },
-                      ]}
+                      size={[ { until: 'l', value: 6, }, { from: 'l', value: 10, }, ]}
                       miscStyles={{
                         display: [
                           { until: 's', value: 'inline-block', },
@@ -161,14 +153,8 @@ class ArticleHeaderMeta extends React.Component {
                         },
                       }}
                       miscStyles={{
-                        width: [
-                          { until: 'l', value: '6rem', },
-                          { from: 'l', value: '10rem', },
-                        ],
-                        height: [
-                          { until: 'l', value: '6rem', },
-                          { from: 'l', value: '10rem', },
-                        ],
+                        width: [ { until: 'l', value: '6rem', }, { from: 'l', value: '10rem', }, ],
+                        height: [ { until: 'l', value: '6rem', }, { from: 'l', value: '10rem', }, ],
                         paddingBottom: '6rem',
                         borderRadius: '50%',
                         overflow: 'hidden',
@@ -236,12 +222,7 @@ class ArticleHeaderMeta extends React.Component {
                       mobileTime
                       render={({ className, }) => (
                         <Fragment>
-                          <Time
-                            time={publishDate}
-                            format="HH:mm | DD.MM.YYYY"
-                            className={className}
-                          />
-                          {this.setModifiedDate(modifiedDate, className)}
+                          {this.displayDates(publishDate, modifiedDate, className)}
                         </Fragment>
                       )}
                     />
@@ -261,21 +242,12 @@ class ArticleHeaderMeta extends React.Component {
                   rule={timeStyle}
                   mobileTime={false}
                   render={({ className, }) => (
-                    <Fragment>
-                      <Time
-                        time={publishDate}
-                        format="HH:mm | DD.MM.YYYY"
-                        className={className}
-                      />
-                      {this.setModifiedDate(modifiedDate, className)}
-                    </Fragment>
+                    <Fragment>{this.displayDates(publishDate, modifiedDate, className)}</Fragment>
                   )}
                 />
               </div>
               <SlideinBox
-                show={
-                  authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm
-                }
+                show={authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm}
                 duration={2}
                 focus
                 maxHeight={100}
@@ -297,9 +269,7 @@ ArticleHeaderMeta.propTypes = {
   /**
    * An array of Article's authors
    */
-  authors: PropTypes.arrayOf(
-    PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
-  ).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
   /**
    * The publishing date of the article
    */
