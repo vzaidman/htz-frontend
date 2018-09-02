@@ -37,7 +37,7 @@ const MainLayout = ({ children }) => (
                 actionx: 'initial',
               },
             }}
-            transitionRoutMap={
+            transitionRouteMap={
               new Map([
                 ['initial-state1', '/resetPassword'],
                 ['initial-state2', '/inputPhoneNumber'],
