@@ -94,10 +94,10 @@ export default class SlideinBox extends React.Component {
                 ...theme.getDelay('transition', duration / 2),
                 ...theme.getTimingFunction('transition', 'linear'),
               })}
-              render={({ className, }) => (
+              render={({ className, }) => (                
                 <div
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-                  tabIndex="0"
+                  tabIndex={show ? '0' : '-1'}
                   className={className}
                   // eslint-disable-next-line no-return-assign
                   ref={element => (this.element = element)}

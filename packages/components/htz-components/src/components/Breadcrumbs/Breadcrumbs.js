@@ -40,9 +40,9 @@ const ColoredLink = ({ crumb, index, length, }) => (
       ...theme.type(-1),
       fontWeight: '700',
       marginInlineEnd: '1rem',
-      color: theme.color('neutral', '-4'),
+      color: theme.color('neutral', '-2'),
       ':hover': {
-        color: theme.color('neutral', '-3'),
+        color: theme.color('neutral', '-1'),
         textDecoration: 'underline',
         underlineSkip: 'ink',
       },
@@ -51,11 +51,19 @@ const ColoredLink = ({ crumb, index, length, }) => (
           { until: 's', },
           index !== length - 1 ? { display: 'none', } : {}
         ),
+        (index === 0 
+          ? {
+            '&::after': {
+              content: '" > "',
+            },
+          }
+          : {}
+        ),
         {
           ':nth-child(odd)': {
-            color: theme.color('neutral', '-2'),
+            color: theme.color('primary', 'base'),
             ':hover': {
-              color: theme.color('neutral', '-1'),
+              color: theme.color('primary', '+1'),
             },
           },
         },
@@ -102,7 +110,7 @@ class Breadcrumbs extends React.Component {
           return (
             <Fragment>
               <nav aria-label={ariaLabel} className={className}>
-                {crumbs.map((crumb, index) => {
+                {crumbs.slice(-2).map((crumb, index) => {
                   breadcrumbsSchema.itemListElement.push({
                     '@type': 'ListItem',
                     position: index + 1,

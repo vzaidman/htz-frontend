@@ -54,6 +54,7 @@ const HaaretzDocument = createDocument({
   FelaProvider: StyleProvider,
   theme: htzTheme,
   fontRules: fonts,
+  lang: 'heb',
   defaultFontStack: fontStacks.default,
   staticRules: [ cssReset, globalAds, ],
   isRtl: true,

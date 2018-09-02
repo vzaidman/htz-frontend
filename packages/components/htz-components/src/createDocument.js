@@ -140,6 +140,7 @@ const createDocument = ({
             {hasToggleableTheme ? null : (
               <link rel="manifest" href="/static/manifest/manifest.json" />
             )}
+
             {buildFontPreloadLink(fontRules)}
             <link rel="shortcut icon" href="about:blank" />
             <SEO host={this.props.host} polyFillSrc={polyFillSrc} />

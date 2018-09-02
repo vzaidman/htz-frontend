@@ -43,6 +43,7 @@ import IconPrint from '../Icon/icons/IconPrint';
 import IconTwitter from '../Icon/icons/IconTwitter';
 import IconWhatsapp from '../Icon/icons/IconWhatsapp';
 import IconZen from '../Icon/icons/IconZen';
+import AriaDescription from '../AriaDescription/AriaDescription';
 
 const GET_COMMENTS_ID: Object = gql`
   query GetCommentsId {
@@ -131,7 +132,7 @@ export const Button: StatelessFunctionalComponent<ButtonProps> = ({
   children,
   miscStyles,
   title,
-  href,
+  href,  
   ...props
 }): Node => (
   <FelaComponent
@@ -170,11 +171,12 @@ export const Button: StatelessFunctionalComponent<ButtonProps> = ({
     })}
     render={({ className, }: { className: string }) =>
       (href ? (
-        <HtzLink href={href} className={className} attrs={{ title, }} {...props}>
+        <HtzLink href={href} className={className} attrs={{ title, tabIndex: '-1', }} {...props}>
           {children}
         </HtzLink>
       ) : (
         <button className={className} title={title} {...props}>
+          <AriaDescription id={title}>{title}</AriaDescription>
           {children}
         </button>
       ))
@@ -230,6 +232,7 @@ const Comments: StatelessFunctionalComponent<CommentButtonProps> = ({
             ) : null;
           }}
         </ApolloConsumer>
+        <AriaDescription id="writeCommand">כתוב תגובה</AriaDescription>
         <IconComment size={size} miscStyles={iconStyles} />
       </Button>
     )}
@@ -425,6 +428,7 @@ const Mail: StatelessFunctionalComponent<MailButtonProps> = ({
           });
         }}
       >
+        <AriaDescription id="sendByEmail">שליחת הכתבה באימייל</AriaDescription>
         <IconMail size={size} miscStyles={iconStyles} />
       </Button>
     )}
@@ -509,7 +513,9 @@ const Print: StatelessFunctionalComponent<PrintButtonProps> = ({
       <Button
         attrs={{
           target: '_blank',
+          tabIndex: '-1',
         }}
+        tabIndex="-1"
         {...props}
         title="הדפיסו כתבה"
         miscStyles={buttonStyles}

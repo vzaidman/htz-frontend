@@ -51,13 +51,13 @@ const fonts = {
 
 const PromotionDocument = createDocument({
   styleRenderer,
+  lang: 'heb',
   FelaProvider: StyleProvider,
   theme: purchasePageTheme,
   fontRules: fonts,
   defaultFontStack: fontStacks.default,
   staticRules: cssReset,
   isRtl: true,
-  lang: 'heb',
   hasToggleableTheme: true,
 });
 export default PromotionDocument;

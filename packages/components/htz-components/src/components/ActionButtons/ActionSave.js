@@ -43,6 +43,7 @@ export default class ActionSave extends React.Component {
               return (
                 <Button
                   title="שמירת כתבה"
+                  tabIndex="-1"
                   {...props}
                   miscStyles={{
                     ...buttonStyles.global,

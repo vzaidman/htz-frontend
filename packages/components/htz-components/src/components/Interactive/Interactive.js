@@ -23,10 +23,7 @@ function InteractiveElement(props) {
     <Element {...props} />
   ) : (
     <Debug>
-      <p>{`${
-        props.inputTemplate
-      } is not supported interactive element`}
-      </p>
+      <p>{`${props.inputTemplate} is not supported interactive element`}</p>
     </Debug>
   );
 }

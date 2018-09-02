@@ -1,3 +1,4 @@
+/* global window */
 /* global sessionStorage */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -8,6 +9,7 @@ import Osaka from './Osaka';
 import LayoutContainer from '../PageLayout/LayoutContainer';
 import { nextArticle, } from './queries/getData';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import getTransitionEnd from '../../utils/getTransitionEnd';
 
 const propTypes = {
   articles: PropTypes.shape({}).isRequired,
@@ -33,20 +35,39 @@ class OsakaWrapper extends React.Component {
     display: false,
   };
 
+  componentDidMount() {
+    this.wrapperEl.addEventListener(
+      getTransitionEnd(this.wrapperEl),
+      this.removeOsaka.bind(this),
+      false
+    );
+  }
+
   shouldComponentUpdate(nextProps) {
     return (nextProps.velocity > 0 && nextProps.y > 0) !== this.state.display;
   }
 
   componentWillUpdate(nextProps) {
     // eslint-disable-next-line react/no-will-update-set-state
-    this.setState(
-      { display: nextProps.velocity > 0 && nextProps.y > 0, },
-      () => {
-        this.props.client.writeData({
-          data: { isOsakaDisplayed: this.state.display, },
-        });
-      }
+    const display = nextProps.velocity > 0 && nextProps.y > 0;
+    if (display) {
+      this.wrapperEl.style.display = 'block';
+    }
+    window.setTimeout(
+      () =>
+        this.setState({ display, }, () => {
+          this.props.client.writeData({
+            data: { isOsakaDisplayed: this.state.display, },
+          });
+        }),
+      50
     );
+  }
+
+  removeOsaka() {
+    if (!this.state.display) {
+      this.wrapperEl.style.display = 'none';
+    }
   }
 
   render() {
@@ -71,8 +92,14 @@ class OsakaWrapper extends React.Component {
                 let nextArticleText = theme.osakaI18n.backToHome;
                 return (
                   <LayoutContainer
+                    attrs={{
+                      ref: el => {
+                        this.wrapperEl = el;
+                      },
+                    }}
                     miscStyles={{
                       backgroundColor: 'transparent',
+                      display: 'none',
                       transform: `translate(50%, ${
                         shouldDisplay ? '0%' : '-105%'
                       })`,

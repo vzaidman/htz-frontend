@@ -18,9 +18,7 @@ const PLATFORM_QUERY = gql`
 `;
 
 const formStyle = ({ theme, isReplyForm, }) => ({
-  backgroundColor: isReplyForm
-    ? theme.color('bg', 'base')
-    : theme.color('white'),
+  backgroundColor: theme.color('white'),
   display: 'flex',
   flexDirection: 'column',
   extend: [
@@ -149,9 +147,7 @@ class CommentForm extends React.Component {
 
   isReplyForm = this.props.parentCommentId !== '0';
 
-  TextInputVariant = this.isReplyForm
-    ? `${this.props.theme.commentsStyle.textInputVariant}MediumInverse`
-    : this.props.theme.commentsStyle.textInputVariant;
+  TextInputVariant = this.props.theme.commentsStyle.textInputVariant;
 
   handleSubmitComment = (commentAuthor, commentTextHtml) => {
     this.props.initNewComment(
@@ -191,6 +187,7 @@ class CommentForm extends React.Component {
           (this.state.displaySentComp ? (
             <div>
               <CommentSent
+                focusEl={this.focusEl}
                 userEmail={user.email}
                 closeDisplayThankYou={() => {
                   this.setState({

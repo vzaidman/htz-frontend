@@ -140,6 +140,10 @@ export const commentsSectionI18n = Object.freeze({
   texts: Object.freeze({
     chooseSortMethodText: 'סדרו את התגובות',
   }),
+  likes: Object.freeze({
+    like: 'אהבתי',
+    dislike: 'לא אהבתי',
+  }),
 });
 
 export const footerMobileListsI18n = Object.freeze({

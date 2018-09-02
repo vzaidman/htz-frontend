@@ -257,7 +257,7 @@ export class Select extends Component {
     return (
       <FelaComponent
         style={{ position: 'relative', }}
-        render={({ className, }) => (
+        render={({ className, theme, }) => (
           <div className={className}>
             <Downshift
               selectedItem={selectedItem}
@@ -292,6 +292,7 @@ export class Select extends Component {
                   >
                     <StyledSelectedItem
                       {...getButtonProps({
+                        'aria-label': theme.selectAiraLabel.text,
                         variant,
                         isOpen,
                         noHighlitedItems: highlightedIndex === null,

@@ -46,6 +46,7 @@ export default class MobileNavigationMain extends React.Component {
                   contentId={contentId}
                   menuIsOpen={menuIsOpen && shouldDisplay}
                   onClick={this.toggleMenu}
+                  wrapperSetState={newState => this.setState(newState)}
                 />
               )}
               {menuIsOpen ? null : (

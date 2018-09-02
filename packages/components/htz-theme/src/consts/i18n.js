@@ -140,6 +140,10 @@ export const commentsSectionI18n = Object.freeze({
   texts: Object.freeze({
     chooseSortMethodText: 'סדרו את התגובות',
   }),
+  likes: Object.freeze({
+    like: 'אהבתי',
+    dislike: 'לא אהבתי',
+  }),
 });
 
 export const footerMobileListsI18n = Object.freeze({
@@ -297,4 +301,8 @@ export const mobileUserMenuI18n = Object.freeze({
 export const mobileReadingList = Object.freeze({
   url: 'https://www.haaretz.co.il/readingList',
   buttonText: 'רשימת הקריאה',
+});
+
+export const selectAiraLabel = Object.freeze({
+  text: 'פתח תפריט',
 });

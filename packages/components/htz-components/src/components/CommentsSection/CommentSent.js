@@ -7,31 +7,6 @@ import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button'; // eslint-disable-line import/no-named-as-default
 import Form from '../Form/Form'; // eslint-disable-line import/no-named-as-default
 
-const propTypes = {
-  /** Callback that gets called when the close button is clicked */
-  closeDisplayThankYou: PropTypes.func.isRequired,
-  /** When true displays ThankYou screen, when false, displays sign up to email notifications screen */
-  displayThankYou: PropTypes.bool.isRequired,
-  /**
-   * Indicates if This is a reply form (affects style)
-   */
-  isReplyForm: PropTypes.bool.isRequired,
-  /**
-   * A callback that gets the called when submitting the Form
-   * @param {Boolean} didSignUp- True if the user clicked the sign up button, false if clicked no thanks button
-   * @param {String} userEmail - The email the user entered
-   */
-  signUpNotification: PropTypes.func.isRequired,
-  /**
-   * The user email if there is a logged in user
-   */
-  userEmail: PropTypes.string,
-};
-
-const defaultProps = {
-  userEmail: null,
-};
-
 const contStyle = ({ theme, displayThankYou, isReplyForm, }) => ({
   backgroundColor: theme.color('input', 'primaryBg'),
   paddingInlineStart: '4rem',
@@ -57,157 +32,199 @@ const contStyle = ({ theme, displayThankYou, isReplyForm, }) => ({
   ],
 });
 
-function CommentSent({
-  closeDisplayThankYou,
-  displayThankYou,
-  isReplyForm,
-  signUpNotification,
-  userEmail,
-}) {
-  return (
-    <FelaComponent
-      displayThankYou={displayThankYou}
-      isReplyForm={isReplyForm}
-      rule={contStyle}
-      render={({
-        className,
-        theme,
-        theme: {
-          commentSentI18n: {
-            buttons: {
-              getNotificationsBtnTxt,
-              dontGetNotificationsBtnTxt,
-              closeBtnText,
-            },
-            labels: { emailLabelTxt, },
-            notes: { emailNoteTxt, },
-            errorNotes: { emailErrorNoteTxt, },
-            texts: {
-              commentRecievedBoldText,
-              commentRecievedText,
-              commentRecievedTextSecondRow,
-              commentRecievedBoldTextThankYouPage,
-              commentRecievedTextThankYouPage,
+class CommentSent extends React.Component {
+  static propTypes = {
+    /** Callback that gets called when the close button is clicked */
+    closeDisplayThankYou: PropTypes.func.isRequired,
+    /** When true displays ThankYou screen, when false, displays sign up to email notifications screen */
+    displayThankYou: PropTypes.bool.isRequired,
+    /**
+     * Indicates if This is a reply form (affects style)
+     */
+    isReplyForm: PropTypes.bool.isRequired,
+    /**
+     * A callback that gets the called when submitting the Form
+     * @param {Boolean} didSignUp- True if the user clicked the sign up button, false if clicked no thanks button
+     * @param {String} userEmail - The email the user entered
+     */
+    signUpNotification: PropTypes.func.isRequired,
+    /**
+     * The user email if there is a logged in user
+     */
+    userEmail: PropTypes.string,
+  };
+
+  static defaultProps = {
+    userEmail: null,
+  };
+
+  componentDidMount() {
+    // this.focusEl.focus();
+  }
+
+  render() {
+    const {
+      closeDisplayThankYou,
+      displayThankYou,
+      isReplyForm,
+      signUpNotification,
+      userEmail,
+    } = this.props;
+
+    if (this.focusEl && !this.focusElSetActive) {
+      this.focusEl.focus();
+      this.focusElSetActive = true;
+    }
+    return (
+      <FelaComponent
+        displayThankYou={displayThankYou}
+        isReplyForm={isReplyForm}
+        rule={contStyle}
+        render={({
+          className,
+          theme,
+          theme: {
+            commentSentI18n: {
+              buttons: {
+                getNotificationsBtnTxt,
+                dontGetNotificationsBtnTxt,
+                closeBtnText,
+              },
+              labels: { emailLabelTxt, },
+              notes: { emailNoteTxt, },
+              errorNotes: { emailErrorNoteTxt, },
+              texts: {
+                commentRecievedBoldText,
+                commentRecievedText,
+                commentRecievedTextSecondRow,
+                commentRecievedBoldTextThankYouPage,
+                commentRecievedTextThankYouPage,
+              },
             },
           },
-        },
-      }) => (
-        <div className={className}>
-          {displayThankYou ? (
-            <div>
-              <FelaComponent
-                style={{
-                  fontWeight: 'bold',
+        }) => (
+          <div className={className}>
+            {displayThankYou ? (
+              <div>
+                <FelaComponent
+                  style={{
+                    fontWeight: 'bold',
+                  }}
+                  render={({ className, }) => (
+                    <span
+                      className={className}
+                      ref={el => {
+                        this.focusEl = el;
+                      }}
+                    >
+                      {commentRecievedBoldTextThankYouPage}
+                    </span>
+                  )}
+                />
+                <FelaComponent
+                  style={{
+                    marginBottom: '5rem',
+                  }}
+                  render="p"
+                >
+                  {commentRecievedTextThankYouPage}
+                </FelaComponent>
+                <Button
+                  miscStyles={{
+                    backgroundColor: 'transparent',
+                    fontWeight: 'bold',
+                  }}
+                  boxModel={{ hp: 3.5, vp: 1, }}
+                  onClick={closeDisplayThankYou}
+                >
+                  {closeBtnText}
+                </Button>
+              </div>
+            ) : (
+              <Form
+                onSubmit={({ notificationEmail, }) => {
+                  signUpNotification(true, notificationEmail);
                 }}
-                render="span"
-              >
-                {commentRecievedBoldTextThankYouPage}
-              </FelaComponent>
-              <FelaComponent
-                style={{
-                  marginBottom: '5rem',
-                }}
-                render="p"
-              >
-                {commentRecievedTextThankYouPage}
-              </FelaComponent>
-              <Button
-                miscStyles={{
-                  backgroundColor: 'transparent',
-                  fontWeight: 'bold',
-                }}
-                boxModel={{ hp: 3.5, vp: 1, }}
-                onClick={closeDisplayThankYou}
-              >
-                {closeBtnText}
-              </Button>
-            </div>
-          ) : (
-            <Form
-              onSubmit={({ notificationEmail, }) => {
-                signUpNotification(true, notificationEmail);
-              }}
-              {...(userEmail
-                ? { initialValues: { notificationEmail: userEmail, }, }
-                : {})}
-              validate={({ notificationEmail = '', }) => {
-                const errors = [];
-                if (!isEmail(notificationEmail)) {
-                  errors.push({
-                    name: 'notificationEmail',
-                    order: 1,
-                  });
-                }
+                {...(userEmail
+                  ? { initialValues: { notificationEmail: userEmail, }, }
+                  : {})}
+                validate={({ notificationEmail = '', }) => {
+                  const errors = [];
+                  if (!isEmail(notificationEmail)) {
+                    errors.push({
+                      name: 'notificationEmail',
+                      order: 1,
+                    });
+                  }
 
-                return errors;
-              }}
-              render={({ getInputProps, handleSubmit, }) => (
-                <div>
-                  <p>
+                  return errors;
+                }}
+                render={({ getInputProps, handleSubmit, }) => (
+                  <div>
+                    <p>
+                      <FelaComponent
+                        style={{
+                          fontWeight: 'bold',
+                        }}
+                        render="span"
+                      >
+                        {commentRecievedBoldText}
+                      </FelaComponent>
+                      {commentRecievedText}
+                    </p>
+                    <p>{commentRecievedTextSecondRow}</p>
+                    <TextInput
+                      {...getInputProps({
+                        name: 'notificationEmail',
+                        noteText: emailNoteTxt,
+                        errorText: emailErrorNoteTxt,
+                        label: emailLabelTxt,
+                        maxLength: 200,
+                        variant: `${
+                          theme.commentsStyle.textInputVariant
+                        }Inverse`,
+                        type: 'email',
+                        miscStyles: {
+                          marginTop: '4rem',
+                        },
+                      })}
+                    />
                     <FelaComponent
                       style={{
-                        fontWeight: 'bold',
+                        marginTop: '3rem',
                       }}
-                      render="span"
                     >
-                      {commentRecievedBoldText}
+                      <Button
+                        miscStyles={{
+                          backgroundColor: 'transparent',
+                          marginInlineEnd: '2rem',
+                          fontWeight: 'bold',
+                        }}
+                        boxModel={{ hp: 5, vp: 1, }}
+                        onClick={handleSubmit}
+                      >
+                        {getNotificationsBtnTxt}
+                      </Button>
+                      <Button
+                        miscStyles={{
+                          backgroundColor: 'transparent',
+                          fontWeight: 'bold',
+                        }}
+                        boxModel={{ hp: 4, vp: 1, }}
+                        onClick={() => signUpNotification(false)}
+                      >
+                        {dontGetNotificationsBtnTxt}
+                      </Button>
                     </FelaComponent>
-                    {commentRecievedText}
-                  </p>
-                  <p>{commentRecievedTextSecondRow}</p>
-                  <TextInput
-                    {...getInputProps({
-                      name: 'notificationEmail',
-                      noteText: emailNoteTxt,
-                      errorText: emailErrorNoteTxt,
-                      label: emailLabelTxt,
-                      maxLength: 200,
-                      variant: `${theme.commentsStyle.textInputVariant}Inverse`,
-                      type: 'email',
-                      miscStyles: {
-                        marginTop: '4rem',
-                      },
-                    })}
-                  />
-                  <FelaComponent
-                    style={{
-                      marginTop: '3rem',
-                    }}
-                  >
-                    <Button
-                      miscStyles={{
-                        backgroundColor: 'transparent',
-                        marginInlineEnd: '2rem',
-                        fontWeight: 'bold',
-                      }}
-                      boxModel={{ hp: 5, vp: 1, }}
-                      onClick={handleSubmit}
-                    >
-                      {getNotificationsBtnTxt}
-                    </Button>
-                    <Button
-                      miscStyles={{
-                        backgroundColor: 'transparent',
-                        fontWeight: 'bold',
-                      }}
-                      boxModel={{ hp: 4, vp: 1, }}
-                      onClick={() => signUpNotification(false)}
-                    >
-                      {dontGetNotificationsBtnTxt}
-                    </Button>
-                  </FelaComponent>
-                </div>
-              )}
-            />
-          )}
-        </div>
-      )}
-    />
-  );
+                  </div>
+                )}
+              />
+            )}
+          </div>
+        )}
+      />
+    );
+  }
 }
-
-CommentSent.propTypes = propTypes;
-
-CommentSent.defaultProps = defaultProps;
 
 export default CommentSent;

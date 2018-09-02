@@ -106,6 +106,9 @@ export default class MobileBarActionButtons extends React.Component {
                         ...(shareIsOpen
                           ? {
                               backgroundColor: theme.color('secondary'),
+                              ':hover': {
+                                backgroundColor: theme.color('secondary'),
+                              },
                             }
                           : {}),
                       }}

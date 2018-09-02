@@ -321,6 +321,13 @@ class Comment extends React.Component {
     }
   }
 
+  componentDidUpdate = (prevProp, prevState) => {
+    if (prevState.fadeText !== this.state.fadeText && !this.state.fadeText) {
+      this.commentTextEl.tabIndex = '-1';
+      this.commentTextEl.focus();
+    }
+  }
+
   commentPlusRateDB = Object.prototype.hasOwnProperty.call(
     this.props.commentsPlusRate,
     this.props.commentId
@@ -481,7 +488,9 @@ class Comment extends React.Component {
                         type: [ { value: 0, }, ],
                       }}
                       boxModel={{ hp: 2, vp: 0.5, }}
-                      onClick={() => this.setState({ fadeText: false, })}
+                      onClick={() => {
+                        this.setState({ fadeText: false, });                        
+                      }}
                     >
                       {readMoreBtnTxt}
                     </Button>

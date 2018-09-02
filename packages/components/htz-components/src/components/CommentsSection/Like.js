@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import IconDislike from '../Icon/icons/IconDislike';
 import IconLike from '../Icon/icons/IconLike';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
+import AriaDescription from '../AriaDescription/AriaDescription';
 
 const propTypes = {
   /**
@@ -90,7 +91,7 @@ export function Like({
     <FelaComponent
       miscStyles={miscStyles}
       rule={styles}
-      render={({ className, }) => (
+      render={({ className, theme: { commentsSectionI18n, }, }) => (
         <button
           className={className}
           type="button"
@@ -98,9 +99,19 @@ export function Like({
           disabled={isDisabled}
         >
           {isDisLike ? (
-            <IconDislike size={3.5} color={computedIconColor} />
+            <Fragment>
+              <IconDislike size={3.5} color={computedIconColor} />
+              <AriaDescription id="dislike">
+                {commentsSectionI18n.likes.dislike}
+              </AriaDescription>
+            </Fragment>
           ) : (
-            <IconLike size={3.5} color={computedIconColor} />
+            <Fragment>
+              <IconLike size={3.5} color={computedIconColor} />
+              <AriaDescription id="like">
+                {commentsSectionI18n.likes.like}
+              </AriaDescription>
+            </Fragment>
           )}
 
           <FelaComponent style={counterStyle} render="span">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import HtzLink from '../../HtzLink/HtzLink';
@@ -10,6 +10,7 @@ import IconRss from '../../Icon/icons/IconRss';
 import IconMail from '../../Icon/icons/IconMail';
 import IconApple from '../../Icon/icons/IconApple';
 import IconAndroid from '../../Icon/icons/IconAndroid';
+import AriaDescription from '../../AriaDescription/AriaDescription';
 
 const IconMiscStyle = {
   marginTop: [ { until: 's', value: '1.5rem', }, ],
@@ -120,6 +121,7 @@ export default function FooterHead() {
             render={({ className, }) => (
               <div className={className}>
                 <IconHaaretzLogo size={6} miscStyles={LogoMiscStyle} />
+                <AriaDescription id="footerhaaretzLogo">הארץ</AriaDescription>
               </div>
             )}
           />
@@ -133,7 +135,12 @@ export default function FooterHead() {
                     <li className={className}>
                       <HtzLink
                         content={
-                          <IconFaceBookLogo miscStyles={IconMiscStyle} />
+                          <Fragment>
+                            <AriaDescription id="footerfacebookIcon">
+                              facebook
+                            </AriaDescription>
+                            <IconFaceBookLogo miscStyles={IconMiscStyle} />
+                          </Fragment>
                         }
                         href="https://www.facebook.com/haaretz"
                       />
@@ -145,7 +152,14 @@ export default function FooterHead() {
                   render={({ className, }) => (
                     <li className={className}>
                       <HtzLink
-                        content={<IconTwitter miscStyles={IconMiscStyle} />}
+                        content={
+                          <Fragment>
+                            <AriaDescription id="footertwitterIcon">
+                              Twitter
+                            </AriaDescription>
+                            <IconTwitter miscStyles={IconMiscStyle} />
+                          </Fragment>
+                        }
                         href="https://twitter.com/haaretz"
                       />
                     </li>
@@ -157,7 +171,14 @@ export default function FooterHead() {
                   render={({ className, }) => (
                     <li className={className}>
                       <HtzLink
-                        content={<IconAndroid />}
+                        content={
+                          <Fragment>
+                            <AriaDescription id="footerandroidIcon">
+                              Android
+                            </AriaDescription>
+                            <IconAndroid />
+                          </Fragment>
+                        }
                         href="https://play.google.com/store/apps/details?id=com.haaretz"
                       />
                     </li>
@@ -169,7 +190,14 @@ export default function FooterHead() {
                   render={({ className, }) => (
                     <li className={className}>
                       <HtzLink
-                        content={<IconApple />}
+                        content={
+                          <Fragment>
+                            <AriaDescription id="footerappleIcon">
+                              Apple
+                            </AriaDescription>
+                            <IconApple />
+                          </Fragment>
+                        }
                         href="https://itunes.apple.com/us/app/id521559643"
                       />
                     </li>
@@ -181,7 +209,12 @@ export default function FooterHead() {
                     <li className={className}>
                       <HtzLink
                         content={
-                          <IconGPlus miscStyles={IconMiscStyle} size={3} />
+                          <Fragment>
+                            <AriaDescription id="footergoogleplus">
+                              Google Plus
+                            </AriaDescription>
+                            <IconGPlus miscStyles={IconMiscStyle} size={3} />
+                          </Fragment>
                         }
                         href="https://plus.google.com/+haaretzcoil"
                       />
@@ -194,7 +227,14 @@ export default function FooterHead() {
                   render={({ className, }) => (
                     <li className={className}>
                       <HtzLink
-                        content={<IconMail />}
+                        content={
+                          <Fragment>
+                            <AriaDescription id="footermail">
+                              Email
+                            </AriaDescription>
+                            <IconMail />
+                          </Fragment>
+                        }
                         href="https://www.haaretz.co.il/misc/redemail"
                       />
                     </li>
@@ -207,7 +247,14 @@ export default function FooterHead() {
                   render={({ className, }) => (
                     <li className={className}>
                       <HtzLink
-                        content={<IconRss />}
+                        content={
+                          <Fragment>
+                            <AriaDescription id="footerrss">
+                              RSS
+                            </AriaDescription>
+                            <IconRss />
+                          </Fragment>
+                        }
                         href="https://www.haaretz.co.il/misc/rss"
                       />
                     </li>

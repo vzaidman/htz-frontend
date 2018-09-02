@@ -89,6 +89,9 @@ class MobileNavigationMenu extends React.Component {
      * A callback function to hide/display the share bar.
      */
     onClick: PropTypes.func,
+
+    wrapperSetState: PropTypes.func.isRequired,
+
     menuIsOpen: PropTypes.bool,
   };
 
@@ -118,8 +121,8 @@ class MobileNavigationMenu extends React.Component {
 
   render() {
     const { searchIsOpen, modalOpen, } = this.state;
-    const { menuSections, menuIsOpen, } = this.props;
-
+    const { menuSections, menuIsOpen, wrapperSetState, } = this.props;
+    this.menuIsOpen = menuIsOpen;
     return (
       <FelaTheme
         render={theme => (
@@ -130,7 +133,24 @@ class MobileNavigationMenu extends React.Component {
               render={({ theme, className, }) => (
                 <button
                   className={className}
-                  onClick={this.toggleOpen}
+                  onClick={e => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    this.toggleOpen();
+                    this.menuIsOpen = !this.menuIsOpen;
+                  }}
+                  onFocus={e => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    if (!this.menuIsOpen) {
+                      wrapperSetState({ menuIsOpen: true, });
+                      this.menuIsOpen = true;
+                    }
+                  }}
+                  onBlur={() => {
+                    // wrapperSetState({ menuIsOpen: false, });
+                    // this.menuIsOpen = false;
+                  }}
                   aria-expanded={menuIsOpen}
                 >
                   <FelaComponent
@@ -211,7 +231,7 @@ class MobileNavigationMenu extends React.Component {
 }
 
 // eslint-disable-next-line react/prop-types
-export default ({ contentId, menuIsOpen, onClick, }) => (
+export default ({ contentId, menuIsOpen, onClick, wrapperSetState, }) => (
   <Query query={NavigationQuery} variables={{ listId: contentId, }}>
     {({ data, loading, error, }) => {
       if (error) return null;
@@ -224,6 +244,7 @@ export default ({ contentId, menuIsOpen, onClick, }) => (
           menuSections={menu}
           onClick={onClick}
           menuIsOpen={menuIsOpen}
+          wrapperSetState={wrapperSetState}
         />
       );
     }}

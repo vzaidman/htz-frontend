@@ -47,6 +47,7 @@ import {
   zenTextI18n,
   zoominText,
   zoomoutText,
+  selectAiraLabel,
 } from './consts/i18n';
 
 // methods
@@ -119,7 +120,7 @@ const htzTheme = Object.freeze({
   zenTextI18n,
   zoominText,
   zoomoutText,
-
+  selectAiraLabel,
   // Methods
   color: getColor,
   getDelay,

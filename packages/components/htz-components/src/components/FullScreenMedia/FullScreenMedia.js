@@ -97,7 +97,7 @@ const IconUnstyled = ({ isFullScreen, ...props }) => (
       const ToggleIcon = isFullScreen ? IconClose : IconZoomIn;
       const label = isFullScreen ? theme.zoomoutText : theme.zoominText;
       return (
-        <button {...props} aria-label={label}>
+        <button {...props} aria-label={label} tabIndex='-1'>
           <ToggleIcon
             color={[ 'neutral', '-10', ]}
             size={2.5}
