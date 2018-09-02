@@ -2,8 +2,10 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, borderVertical, } from '@haaretz/htz-css-tools';
+import gql from 'graphql-tag';
 
 import { stylesPropType, } from '../../propTypes/stylesPropType';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 
 import CreditArticle from '../Credit/CreditArticle';
 import Alerts from '../Alerts/Alerts';
@@ -12,6 +14,12 @@ import IconAlefLogo from '../Icon/icons/IconAlefLogo';
 import Time from '../Time/Time';
 import AuthorNotificationsRegistration from '../ServiceByMailRegistration/AuthorNotificationsRegistration';
 import SlideinBox from '../Transitions/SlideinBox';
+
+const PLATFORM_QUERY = gql`
+  query GetPlatform {
+    platform @client
+  }
+`;
 
 const outerStyle = ({ theme, miscStyles, }) => ({
   extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
@@ -79,7 +87,7 @@ class ArticleHeaderMeta extends React.Component {
       isShowAuthorAlertsForm: false,
     };
 
-    this.toggleAuthorAlertsForm = this.toggleAuthorAlertsForm.bind(this);
+    // this.toggleAuthorAlertsForm = this.toggleAuthorAlertsForm.bind(this);
     this.alertsToggleBtnRef = React.createRef();
   }
 
@@ -108,31 +116,52 @@ class ArticleHeaderMeta extends React.Component {
     );
   };
 
-  toggleAuthorAlertsForm() {
+  toggleAuthorAlertsForm = (biAction, platform) => {
     this.setState(
       prevState => ({
         isShowAuthorAlertsForm: !prevState.isShowAuthorAlertsForm,
       }),
-      () => !this.state.isShowAuthorAlertsForm && this.alertsToggleBtnRef.current.focus()
+      () => {
+        if (!this.state.isShowAuthorAlertsForm) {
+          this.alertsToggleBtnRef.current.focus();
+        }
+        else {
+          biAction({
+            actionCode: 91,
+            additionalInfo: {
+              writer_id: this.props.authors[0].contentId,
+              platform,
+            },
+          });
+        }
+      }
     );
-  }
+  };
 
   render() {
-    const { authors, publishDate, reportingFrom, miscStyles, modifiedDate, } = this.props;
+    const { authors, biAction, publishDate, reportingFrom, miscStyles, modifiedDate, } = this.props;
     return (
       <FelaComponent rule={outerStyle} miscStyles={miscStyles}>
-        <FelaComponent
-          rule={wrapperStyle}
-          render={({ className, theme, }) => (
-            <Fragment>
-              <div className={className}>
-                <FelaComponent style={imageAuthorsAndMobileTimeContStyle}>
-                  {/*  Author image */}
-                  {authors.length > 1 || !authors[0].image ? (
-                    <IconAlefLogo
-                      color="primary"
-                      size={[ { until: 'l', value: 6, }, { from: 'l', value: 10, }, ]}
-                      miscStyles={{
+        <Query query={PLATFORM_QUERY}>
+          {({ loading, error, data, client, }) => {
+            if (loading) return null;
+            if (error) console.log(error);
+            const { platform, } = data;
+            return (
+              <FelaComponent
+                rule={wrapperStyle}
+                render={({ className, theme, }) => (
+                  <Fragment>
+                    <div className={className}>
+                      <FelaComponent style={imageAuthorsAndMobileTimeContStyle}>
+                        {/*  Author image */}
+                        {authors.length > 1 || !authors[0].image ? (
+                          <IconAlefLogo
+                            color="primary"
+                            size={[
+                        { until: 'l', value: 6, },
+                        { from: 'l', value: 10, }, ]}
+                            miscStyles={{
                         display: [
                           { until: 's', value: 'inline-block', },
                           { from: 's', until: 'l', value: 'none', },
@@ -140,7 +169,7 @@ class ArticleHeaderMeta extends React.Component {
                         ],
                         marginInlineEnd: '1rem',
                       }}
-                    />
+                          />
                   ) : (
                     <Image
                       data={authors[0].image}
@@ -153,8 +182,14 @@ class ArticleHeaderMeta extends React.Component {
                         },
                       }}
                       miscStyles={{
-                        width: [ { until: 'l', value: '6rem', }, { from: 'l', value: '10rem', }, ],
-                        height: [ { until: 'l', value: '6rem', }, { from: 'l', value: '10rem', }, ],
+                        width: [
+                          { until: 'l', value: '6rem', },
+                          { from: 'l', value: '10rem', },
+                        ],
+                        height: [
+                          { until: 'l', value: '6rem', },
+                          { from: 'l', value: '10rem', },
+                        ],
                         paddingBottom: '6rem',
                         borderRadius: '50%',
                         overflow: 'hidden',
@@ -168,98 +203,117 @@ class ArticleHeaderMeta extends React.Component {
                     />
                   )}
 
-                  {/* Author name and publish-date */}
-                  <FelaComponent style={authorsAndTimeContStyle}>
-                    {authors.map((author, idx) => (
-                      <CreditArticle
-                        key={author.contentId || author.name}
-                        contentName={author.name || author.contentName}
-                        url={author.url}
-                        miscStyles={{
-                          ':after': {
-                            content:
-                              idx === authors.length - 1
-                                ? null
-                                : authors.length > 1
-                                  ? authors.length - 2 === idx
-                                    ? '" ו"'
-                                    : '", "'
-                                  : null,
-                          },
-                          display: 'inline',
-                        }}
-                      />
-                    ))}
-                    {reportingFrom ? (
-                      <FelaComponent
-                        style={{
-                          color: theme.color('primary'),
-                          extend: [
-                            theme.type(-2, { fromBp: 'xl', }),
-                            theme.type(-1, { fromBp: 's', untilBp: 'xl', }),
-                            theme.type(-2, { untilBp: 's', }),
-                            theme.mq({ from: 'l', }, { display: 'block', }),
-                            theme.mq(
-                              {
-                                until: 'l',
-                              },
-                              {
-                                ':before': {
-                                  content: '" | "',
-                                },
+                        {/* Author name and publish-date */}
+                        <FelaComponent style={authorsAndTimeContStyle}>
+                          {authors.map((author, idx) => (
+                            <CreditArticle
+                              key={author.contentId || author.name}
+                              contentName={author.name || author.contentName}
+                              url={author.url}
+                              onClick={() =>
+                                biAction({
+                                  actionCode: 109,
+                                  additionalInfo: {
+                                    writer_id: author.contentId || author.contentName,
+                                    platform,
+                                  },
+                                })
                               }
-                            ),
-                          ],
-                        }}
-                        render="span"
-                      >
-                        {reportingFrom}
-                      </FelaComponent>
-                    ) : null}
+                              miscStyles={{
+                                ':after': {
+                                  content:
+                                    idx === authors.length - 1
+                                      ? null
+                                      : authors.length > 1
+                                        ? authors.length - 2 === idx
+                                          ? '" ו"'
+                                          : '", "'
+                                        : null,
+                                },
+                                display: 'inline',
+                              }}
+                            />
+                          ))}
+                          {reportingFrom ? (
+                            <FelaComponent
+                              style={{
+                                color: theme.color('primary'),
+                                extend: [
+                                  theme.type(-2, { fromBp: 'xl', }),
+                                  theme.type(-1, { fromBp: 's', untilBp: 'xl', }),
+                                  theme.type(-2, { untilBp: 's', }),
+                                  theme.mq({ from: 'l', }, { display: 'block', }),
+                                  theme.mq(
+                                    {
+                                      until: 'l',
+                                    },
+                                    {
+                                      ':before': {
+                                        content: '" | "',
+                                      },
+                                    }
+                                  ),
+                                ],
+                              }}
+                              render="span"
+                            >
+                              {reportingFrom}
+                            </FelaComponent>
+                          ) : null}
 
-                    <FelaComponent
-                      rule={timeStyle}
-                      mobileTime
-                      render={({ className, }) => (
-                        <Fragment>
-                          {this.displayDates(publishDate, modifiedDate, className)}
-                        </Fragment>
+                          <FelaComponent
+                            rule={timeStyle}
+                            mobileTime
+                            render={({ className, }) => (
+                              <Fragment>
+
+                                {this.displayDates(publishDate, modifiedDate, className)}
+                              </Fragment>
                       )}
-                    />
-                  </FelaComponent>
-                </FelaComponent>
-                {/* alerts and desktop time */}
-                <FelaComponent style={alertsAndDesktopTimeContStyle}>
-                  {authors.length === 1 && authors[0].hasEmailAlerts ? (
-                    <Alerts
-                      author={authors[0]}
-                      onToggle={this.toggleAuthorAlertsForm}
-                      ref={this.alertsToggleBtnRef}
-                    />
+                          />
+                        </FelaComponent>
+                      </FelaComponent>
+                      {/* alerts and desktop time */}
+                      <FelaComponent style={alertsAndDesktopTimeContStyle}>
+                        {authors.length === 1 && authors[0].hasEmailAlerts ? (
+                          <Alerts
+                            author={authors[0]}
+                            onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
+                            ref={this.alertsToggleBtnRef}
+                          />
                   ) : null}
-                </FelaComponent>
-                <FelaComponent
-                  rule={timeStyle}
-                  mobileTime={false}
-                  render={({ className, }) => (
-                    <Fragment>{this.displayDates(publishDate, modifiedDate, className)}</Fragment>
+                      </FelaComponent>
+                      <FelaComponent
+                        rule={timeStyle}
+                        mobileTime={false}
+                        render={({ className, }) => (
+                          <Fragment>
+
+                            {this.displayDates(publishDate, modifiedDate, className)}
+                          </Fragment>
                   )}
-                />
-              </div>
-              <SlideinBox
-                show={authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm}
-                duration={2}
-                focus
-                maxHeight={100}
-              >
-                <AuthorNotificationsRegistration
-                  author={authors[0]}
-                  onCancel={this.toggleAuthorAlertsForm}
-                />
-              </SlideinBox>
-            </Fragment>
+                      />
+                    </div>
+                    <SlideinBox
+                      show={
+                  authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm
+                }
+                      duration={2}
+                      focus
+                      maxHeight={100}
+                    >
+                      <AuthorNotificationsRegistration
+                        author={authors[0]}
+                        platform={platform}
+                        biAction={biAction}
+                        onCancel={() => this.toggleAuthorAlertsForm(biAction, platform)}
+                      />
+                    </SlideinBox>
+                  </Fragment>
           )}
-        />
+              />);
+          }}
+        </Query>
       </FelaComponent>
     );
   }
@@ -270,6 +324,10 @@ ArticleHeaderMeta.propTypes = {
    * An array of Article's authors
    */
   authors: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
+  /**
+   * Bi action function from standard article.
+   */
+  biAction: PropTypes.func.isRequired,
   /**
    * The publishing date of the article
    */

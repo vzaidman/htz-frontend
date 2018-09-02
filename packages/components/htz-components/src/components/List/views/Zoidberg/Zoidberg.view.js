@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React, { Fragment, } from 'react';
+import React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import ListItem from '../../elements/ListItem';
@@ -10,7 +10,6 @@ import Image from '../../../Image/Image';
 import { PromotedItem, } from '../Leela/Leela.view';
 import BlockLink from '../../../BlockLink/BlockLink';
 import H from '../../../AutoLevels/H';
-import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
 import HtzLink from '../../../HtzLink/HtzLink';
 import Section from '../../../AutoLevels/Section';
 

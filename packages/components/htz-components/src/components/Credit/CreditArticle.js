@@ -28,13 +28,13 @@ const style = ({ miscStyles, theme, }) => ({
   ],
 });
 
-export default function CreditArticle({ contentName, url, miscStyles, }) {
+export default function CreditArticle({ contentName, url, miscStyles, onClick, }) {
   return (
     <FelaComponent
       miscStyles={miscStyles}
       rule={style}
       render={({ className, }) => (
-        <Credit className={className} contentName={contentName} url={url} />
+        <Credit className={className} contentName={contentName} url={url} onClick={onClick} />
       )}
     />
   );

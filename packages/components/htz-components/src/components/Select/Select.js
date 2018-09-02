@@ -292,7 +292,7 @@ export class Select extends Component {
                   >
                     <StyledSelectedItem
                       {...getButtonProps({
-                        'aria-label': theme.selectAiraLabel.text,
+                        'aria-label': theme.selectAriaLabel.text,
                         variant,
                         isOpen,
                         noHighlitedItems: highlightedIndex === null,

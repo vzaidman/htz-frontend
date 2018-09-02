@@ -25,7 +25,16 @@ export default class AuthorNotificationsRegistration extends React.Component {
     this.setState({
       showDialog: true,
       registrationSuccess: true,
-    });
+    }, () => {
+      this.props.biAction({
+          actionCode: 93,
+          additionalInfo: {
+            writer_id: this.props.author.contentId,
+            platform: this.props.platform,
+          },
+        })
+      }
+    )
   }
 
   onRegistrationError(data) {

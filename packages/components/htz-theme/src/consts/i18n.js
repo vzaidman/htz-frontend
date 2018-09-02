@@ -303,6 +303,6 @@ export const mobileReadingList = Object.freeze({
   buttonText: 'רשימת הקריאה',
 });
 
-export const selectAiraLabel = Object.freeze({
+export const selectAriaLabel = Object.freeze({
   text: 'פתח תפריט',
 });

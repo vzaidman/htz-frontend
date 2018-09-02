@@ -29,14 +29,14 @@ const LinkStyled = createComponent(
     },
   }),
   HtzLink,
-  [ 'href', 'content', ]
+  [ 'href', 'content', 'onClick', ]
 );
 
-function Credit({ contentName, url, className, }) {
+function Credit({ contentName, url, className, onClick, }) {
   const name = contentName.trim();
   return name ? (
     <address {...(className ? { className, } : null)}>
-      {url ? <LinkStyled href={url} content={name} /> : `${name}`}
+      {url ? <LinkStyled href={url} content={name} onClick={onClick} /> : `${name}`}
     </address>
   ) : null;
 }

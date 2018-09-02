@@ -15,6 +15,8 @@ import StandardArticleHeader from './StandardArticleElements/StandardArticleHead
 import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
 import { buildUrl, } from '../../../utils/buildImgURLs';
+import EventTracker from '../../../utils/EventTracker';
+
 
 const margineliaStyle = ({
   theme,
@@ -160,12 +162,17 @@ const StandardLayoutRow = ({
             hideUnderLargeBreakPoint={!!authors}
           >
             {authors ? (
-              <ArticleHeaderMeta
-                authors={authors}
-                reportingFrom={reportingFrom}
-                publishDate={publishDate}
-                modifiedDate={modifiedDate}
-              />
+              <EventTracker>
+                {({ biAction, }) => (
+                  <ArticleHeaderMeta
+                    authors={authors}
+                    biAction={biAction}
+                    reportingFrom={reportingFrom}
+                    publishDate={publishDate}
+                    modifiedDate={modifiedDate}
+                  />
+             )}
+              </EventTracker>
             ) : null}
           </FelaComponent>
           <FelaComponent
