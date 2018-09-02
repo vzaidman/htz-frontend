@@ -49,7 +49,11 @@ const MainLayout = ({ children }) => (
               <StyleProvider renderer={styleRenderer} theme={theme(host)}>
                 <Fragment>
                   <Header />
-                  {children({ currentState, findRout, doTransition, })}
+                  {children({
+                    currentState,
+                    findRout,
+                    doTransition,
+                  })}
                   <Footer />
                 </Fragment>
               </StyleProvider>
