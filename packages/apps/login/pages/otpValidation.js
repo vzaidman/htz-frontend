@@ -6,7 +6,7 @@ import MainLayout from '../layouts/MainLayout';
 
 const OtpValidation = () => (
   <MainLayout>
-    {({ currentState, findRout, doTransition, back, }) => (
+    {({ currentState, findRout, doTransition, }) => (
       <Fragment>
         otp validation <br />
         <HtzLink
