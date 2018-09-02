@@ -37,33 +37,6 @@ class AdSlotBase extends Component {
   render() {
     if (this.state.shouldRender) {
       const { audianceTarget, } = this.props;
-      if (window.googletag && window.googletag.cmd) {
-        window.googletag.cmd.push(() => {
-          if (instance.dfp) {
-            let maxTries = 30;
-            const pollForDomElement = setInterval(() => {
-              const elem = document.getElementById(this.props.id);
-              if (elem) {
-                const adSlot = instance.dfp.adManager.adSlots.get(
-                  this.props.id
-                );
-                if (adSlot) {
-                  if (adSlot.shown) {
-                    adSlot.refresh();
-                  }
-                  else {
-                    adSlot.show();
-                  }
-                }
-              }
-              if (elem || maxTries < 0) {
-                clearInterval(pollForDomElement);
-              }
-              maxTries -= 1;
-            }, 150);
-          }
-        });
-      }
       return (
         <React.Fragment>
           {this.state.debugJsx}
