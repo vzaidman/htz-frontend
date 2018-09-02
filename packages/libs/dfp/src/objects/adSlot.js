@@ -179,13 +179,6 @@ export default class AdSlot {
             window.performance.now()
           );
         this.htmlElement.classList.remove(hiddenClass);
-        this.adManager.DEBUG &&
-          console.log(
-            'calling show for slot',
-            this.id,
-            ' called @',
-            window.performance.now()
-          );
         googletag.display(this.htmlElement); // must be a 'Div' with an id!
       });
     }
