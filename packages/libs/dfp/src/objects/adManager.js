@@ -186,7 +186,7 @@ export default class AdManager {
       const adSlot = this.adSlots.get(adSlotKey);
       const adSlotMatchPriorityFilter = adSlot.priority === priorityFilter;
       if (
-        adSlot.type !== adTypes.talkback &&
+        // adSlot.type !== adTypes.talkback &&
         adSlotMatchPriorityFilter &&
         this.shouldSendRequestToDfp(adSlot)
       ) {

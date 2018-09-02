@@ -1,40 +1,36 @@
 import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import Observer from 'react-intersection-observer';
-import debounce from 'lodash/debounce';
 import { FelaComponent, } from 'react-fela';
 import Comment from './Comment.js';
 import GeneralAdSlot from '../Ads/GeneralAdSlot';
 
 /**
- * Defines how frequent ad insertion checkup should occur.
- * High values means less ad insertions and refreshes, lower resource usage.
- * Low values means frequant ad insertions and refreshes, high resource usage.
- * @param {number} - adTimer - The minimal number of comments between each ad position
- */
-const DEBOUNCE_AD_INJECTION_TIMER = 3000;
-/**
  * Defines how far away ads can be inserted (every X comments)
  * @param {number} - adSpacing - The minimal number of comments between each ad position
  */
 const AD_SPACING = 5;
+const MAX_AD_SLOTS = 5;
 
 const wrapperStyle = theme => ({
   backgroundColor: theme.color('white'),
 });
 
-const adSlot = (
-  <GeneralAdSlot id="haaretz.co.il.web.fullbanner.talkback" audianceTarget="all" />
+const renderAdSlot = idx => (
+  <GeneralAdSlot
+    id={`haaretz.co.il.web.fullbanner.talkback.${idx}`}
+    audianceTarget="all"
+  />
 );
 
-const debounced = debounce((component, idx) => {
-  if (process.env.NODE_ENV !== 'production') {
-    console.log(`next possible GeneralAdSlot view in after comment number ${idx + 1}`);
-  }
-  component.setState({
-    adLocation: idx,
-  });
-}, DEBOUNCE_AD_INJECTION_TIMER);
+const placeAdSlot = commentIdx => {
+  const adIdx = Math.floor(commentIdx / AD_SPACING) + 1;
+  const isEnoughSpacing = (commentIdx + 1) % AD_SPACING === 0;
+  return (
+    isEnoughSpacing && adIdx <= MAX_AD_SLOTS
+      ? renderAdSlot(adIdx)
+      : null
+  );
+};
 
 class CommentList extends Component {
   static propTypes = {
@@ -102,24 +98,7 @@ class CommentList extends Component {
   };
 
   state = {
-    adLocation: -1,
   };
-
-  drawAdSlot(idx, adTimer) {
-    return (
-      <Observer
-        triggerOnce={false}
-        onChange={inView => {
-          if (inView) {
-            debounced(this, idx);
-          }
-        }}
-        render={inView =>
-          (inView && this.state.adLocation === idx ? adSlot : null)
-        }
-      />
-    );
-  }
 
   render() {
     const {
@@ -167,7 +146,11 @@ class CommentList extends Component {
                   isFirstSubComment={isSubComment && idx === 0}
                   isLastSubComment={isSubComment && idx === comments.length - 1}
                 />
-                {(idx + 1) % AD_SPACING === 0 ? this.drawAdSlot(idx) : null}
+                {
+                  isSubComment
+                    ? null
+                    : placeAdSlot(idx)
+                }
               </Fragment>
             ))}
           </div>
