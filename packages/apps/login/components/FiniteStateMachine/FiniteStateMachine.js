@@ -1,7 +1,7 @@
-/* eslint-disable */
 import React from 'react';
 import Router from 'next/router';
 import gql from 'graphql-tag';
+import PropTypes from 'prop-types';
 
 const CURRENT_STATE = gql`
   query CurrentState {
@@ -23,6 +23,15 @@ const HISTORY = gql`
     }
   }
 `;
+
+const finiteStateMachinePropTypes = {
+  render: PropTypes.func.isRequired,
+  initialState: PropTypes.string.isRequired,
+  initialTransition: PropTypes.string.isRequired,
+  statesGraph: PropTypes.objectOf(PropTypes.object).isRequired,
+  transitionRoutMap: PropTypes.objectOf(PropTypes.any).isRequired,
+  apolloClient: PropTypes.shape().isRequired,
+};
 
 class FiniteStateMachine extends React.Component {
   constructor(props) {
@@ -53,76 +62,12 @@ class FiniteStateMachine extends React.Component {
     Router.beforePopState(this.changeHistoryCallback);
   }
 
-  /**
-   * Returns the current inner state of the FSM
-   */
-  currentState() {
-    return this.props.apolloClient.readQuery({ query: CURRENT_STATE }).currentState;
-  }
-
-  /**
-   * Returns the last state and transition function.
-   * Also, removes the last state from the "stack" to simulate the back button
-   * effect.
-   * @returns {object} an object which contains the 'state' and transition
-   * function to that state
-   */
-  changeHistoryCallback({ url, as, options }) {
-    console.warn('executed "change history"');
-    const historyObject = this.getHistoryObject();
-    let historyPointer = Number(this.getHistoryPointer());
-    const back = historyObject[historyPointer - 1];
-    const forward = historyObject[historyPointer + 1];
-    console.warn(`back: ${JSON.stringify(back)}. forward: ${JSON.stringify(forward)}`);
-    let direction =
-      (back !== undefined && (url === back.pastTransition || as === back.pastTransition))
-      ? 'back'
-      : (forward !== undefined && (url === forward.pastTransition || as === forward.pastTransition))
-        ? 'front'
-        : null;
-
-    switch (direction) {
-      case 'back':
-        this.decrementHistoryPointer();
-        historyPointer--;
-        break;
-      case 'front':
-        this.incrementHistoryPointer();
-        historyPointer++;
-        break;
-      default:
-        throw new Error('could not resolve pop state direction');
-    }
-
-    const currentObject = historyObject[historyPointer];
-    this.setState(currentObject.pastState);
-    return currentObject;
-  }
-
   getHistoryObject() {
-    return this.props.apolloClient.readQuery({ query: HISTORY }).stateHistory;
-  }
-
-  addHistory({ pastState, pastTransition }) {
-    console.warn(`executed add history with ${pastState}, ${pastTransition}`);
-    let historyObject = this.getHistoryObject();
-    if (!Array.isArray(historyObject)) {
-      historyObject = [];
-    }
-    this.props.apolloClient.writeData({
-      data: {
-        stateHistory: [ ...historyObject, {
-          pastState: pastState,
-          pastTransition: pastTransition,
-          __typename: 'StateHistory',
-        }, ],
-      }
-    });
-    this.incrementHistoryPointer();
+    return this.props.apolloClient.readQuery({ query: HISTORY, }).stateHistory;
   }
 
   getHistoryPointer() {
-    return this.props.apolloClient.readQuery({ query: HISTORY_POINTER }).historyPointer;
+    return this.props.apolloClient.readQuery({ query: HISTORY_POINTER, }).historyPointer;
   }
 
   /**
@@ -133,7 +78,34 @@ class FiniteStateMachine extends React.Component {
   setHistoryPointer(pointer) {
     console.warn(`pointer is written: ${pointer}`);
     this.props.apolloClient.writeData({
-      data: { historyPointer: pointer }
+      data: { historyPointer: pointer, },
+    });
+  }
+
+  setState(newState) {
+    console.warn(`state to be written to apollo: ${newState}`);
+    this.props.apolloClient.writeData({
+      data: { currentState: newState, },
+    });
+  }
+
+  /**
+   * Remove history till the current pointer that shows the navigation location
+   * within the history object. This should happen only after a link is pressed
+   * @returns {*}
+   */
+  removeHistory() {
+    const pointerLocation = this.getHistoryPointer();
+    let historyObject = this.getHistoryObject();
+    if (!Array.isArray(historyObject)) {
+      historyObject = [ historyObject, ];
+    }
+
+    console.warn(`removing history till pointer location: ${pointerLocation}`);
+    if (historyObject.length - 1 === pointerLocation) return;
+    const newHistoryObject = historyObject.slice(0, Number(pointerLocation) + 1);
+    this.props.apolloClient.writeData({
+      data: { stateHistory: [ ...newHistoryObject, ], },
     });
   }
 
@@ -150,32 +122,74 @@ class FiniteStateMachine extends React.Component {
     this.setHistoryPointer(pointer);
   }
 
-  /**
-   * Remove history till the current pointer that shows the navigation location
-   * within the history object. This should happen only after a link is pressed
-   * @returns {*}
-   */
-  removeHistory() {
-    const pointerLocation = this.getHistoryPointer();
+  addHistory({ pastState, pastTransition, }) {
+    console.warn(`executed add history with ${pastState}, ${pastTransition}`);
     let historyObject = this.getHistoryObject();
     if (!Array.isArray(historyObject)) {
-      historyObject = [ historyObject ];
+      historyObject = [];
     }
-
-    console.warn(`removing history till pointer location: ${pointerLocation}`);
-    if (historyObject.length - 1 === pointerLocation) return;
-    const newHistoryObject = historyObject.slice(0, Number(pointerLocation) + 1);
     this.props.apolloClient.writeData({
-      data: { stateHistory: [ ...newHistoryObject, ], }
+      data: {
+        stateHistory: [ ...historyObject, {
+          pastState,
+          pastTransition,
+          __typename: 'StateHistory',
+        }, ],
+      },
     });
-    // return newHistoryObject[historyObject.length - 1];
+    this.incrementHistoryPointer();
   }
 
-  setState(newState) {
-    console.warn(`state to be written to apollo: ${newState}`);
-    this.props.apolloClient.writeData({
-      data: { currentState: newState, }
-    });
+  /**
+   * Returns the last state and transition function.
+   * Also, removes the last state from the "stack" to simulate the back button
+   * effect
+   * @param url
+   * @param as alternative (client) url
+   * @param options
+   * @returns {object} an object which contains the 'state' and transition
+   * function to that state
+   */
+  changeHistoryCallback({ url, as, options, }) {
+    console.warn('executed "change history"');
+    const historyObject = this.getHistoryObject();
+    let historyPointer = Number(this.getHistoryPointer());
+    const back = historyObject[historyPointer - 1];
+    const forward = historyObject[historyPointer + 1];
+    console.warn(`back: ${JSON.stringify(back)}. forward: ${JSON.stringify(forward)}`);
+    const direction =
+      (back !== undefined && (url === back.pastTransition || as === back.pastTransition))
+        ? 'back'
+        : (
+          forward !== undefined
+          && (url === forward.pastTransition || as === forward.pastTransition)
+        )
+          ? 'front'
+          : null;
+
+    switch (direction) {
+      case 'back':
+        this.decrementHistoryPointer();
+        historyPointer -= 1;
+        break;
+      case 'front':
+        this.incrementHistoryPointer();
+        historyPointer += 1;
+        break;
+      default:
+        throw new Error('could not resolve pop state direction');
+    }
+
+    const currentObject = historyObject[historyPointer];
+    this.setState(currentObject.pastState);
+    return currentObject;
+  }
+
+  /**
+   * Returns the current inner state of the FSM
+   */
+  currentState() {
+    return this.props.apolloClient.readQuery({ query: CURRENT_STATE, }).currentState;
   }
 
   /**
@@ -253,5 +267,7 @@ class FiniteStateMachine extends React.Component {
     });
   }
 }
+
+FiniteStateMachine.propTypes = finiteStateMachinePropTypes;
 
 export default FiniteStateMachine;
