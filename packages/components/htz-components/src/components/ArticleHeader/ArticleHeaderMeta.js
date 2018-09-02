@@ -78,7 +78,7 @@ const shouldShowDate = ({ startTime, endTime, hours = 18, }) => {
   return new Date(startTime).getTime() - new Date(endTime).getTime() < hours * MILISECS_IN_HOUR;
 };
 
-const artifleTimeFormat = (startTime, endTime) =>
+const articleTimeFormat = (startTime, endTime) =>
   (shouldShowDate({ startTime, endTime, }) ? 'HH:mm' : 'DD.MM.YYYY');
 class ArticleHeaderMeta extends React.Component {
   constructor(props) {
@@ -95,7 +95,7 @@ class ArticleHeaderMeta extends React.Component {
     if (!modifiedDate) {
       return null;
     }
-    const format = artifleTimeFormat(new Date(), modifiedDate);
+    const format = articleTimeFormat(new Date(), modifiedDate);
     return <Time time={modifiedDate} format={`עודכן ב-${format}`} className={className} />;
   };
 
