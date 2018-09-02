@@ -17,6 +17,7 @@ const polopolyPromotionsPage = config.has('polopolyPromotionsPagePath')
 export function createLoaders(req) {
   const hostname = req.hostname;
   const ssoService = config.get('service.sso');
+  const newSsoService = config.get('service.newSso');
   const serviceBase = switchToDomain(hostname, config.get('service.base'));
   const cookies = new Cookies(req.headers.cookie);
   // TODO: By default, `DataLoader` just caches the results forever,
@@ -152,6 +153,60 @@ export function createLoaders(req) {
     )
   );
 
+  const isEmailValid = new DataLoader(keys =>
+    Promise.all(
+      keys.map(email => {
+        console.log(
+          'fetch url for isEmailValid from create context: ',
+          `${newSsoService}/isUserEmailValid?${querystring.stringify(
+            email
+          )}`
+        );
+        return fetch(
+          `${newSsoService}/isUserEmailValid?${querystring.stringify(
+            email
+          )}`
+        ).then(response => response.json());
+      })
+    )
+  );
+
+  const isPhoneValid = new DataLoader(keys =>
+    Promise.all(
+      keys.map(phoneData => {
+        console.log(
+          'fetch url for isPhoneValid from create context: ',
+          `${newSsoService}/isPhoneValid?${querystring.stringify(
+            phoneData
+          )}`
+        );
+        return fetch(
+          `${newSsoService}/isPhoneValid?${querystring.stringify(
+            phoneData
+          )}`
+        ).then(response => response.json());
+      })
+    )
+  );
+
+  const isPhoneConnectedWithEmail = new DataLoader(keys =>
+    Promise.all(
+      keys.map(phoneData => {
+        console.log(
+          'fetch url for isPhoneConnectedWithEmail from create context: ',
+          `${newSsoService}/isPhoneConnectedWithEmail?${querystring.stringify(
+            phoneData
+          )}`
+        );
+        return fetch(
+          `${newSsoService}/isPhoneConnectedWithEmail?${querystring.stringify(
+            phoneData
+          )}`
+        ).then(response => response.json());
+      })
+    )
+  );
+
   const resetPasswordLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(userName =>
@@ -183,6 +238,9 @@ export function createLoaders(req) {
     couponProductLoader,
     payWithExistingCardLoader,
     resetPasswordLoader,
+    isEmailValid,
+    isPhoneValid,
+    isPhoneConnectedWithEmail,
   };
 }
 
