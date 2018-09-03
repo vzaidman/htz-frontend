@@ -173,16 +173,16 @@ export function createLoaders(req) {
 
   const isPhoneValid = new DataLoader(keys =>
     Promise.all(
-      keys.map(phoneData => {
+      keys.map(email => {
         console.log(
           'fetch url for isPhoneValid from create context: ',
           `${newSsoService}/isPhoneValid?${querystring.stringify(
-            phoneData
+            email
           )}`
         );
         return fetch(
           `${newSsoService}/isPhoneValid?${querystring.stringify(
-            phoneData
+            email
           )}`
         ).then(response => response.json());
       })
@@ -191,16 +191,16 @@ export function createLoaders(req) {
 
   const isPhoneConnectedWithEmail = new DataLoader(keys =>
     Promise.all(
-      keys.map(phoneData => {
+      keys.map(email => {
         console.log(
           'fetch url for isPhoneConnectedWithEmail from create context: ',
           `${newSsoService}/isPhoneConnectedWithEmail?${querystring.stringify(
-            phoneData
+            email
           )}`
         );
         return fetch(
           `${newSsoService}/isPhoneConnectedWithEmail?${querystring.stringify(
-            phoneData
+            email
           )}`
         ).then(response => response.json());
       })
