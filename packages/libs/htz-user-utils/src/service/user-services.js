@@ -58,7 +58,6 @@ export default function UserService(config = {}) {
         data
           .json()
           .then(json => {
-            console.log('json from exits', json);
             return resolve(json.success);
             // return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
           })
