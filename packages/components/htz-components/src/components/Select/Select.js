@@ -2,14 +2,14 @@ import React, { Component, } from 'react';
 import PropTypes, { oneOf, shape, oneOfType, } from 'prop-types';
 import Downshift from 'downshift';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { borderTop, borderBottom, } from '@haaretz/htz-css-tools';
+import { borderTop, borderBottom, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import selectStyle from './selectStyle';
 import Note from '../Note/Note';
 
-const selectVariants = oneOf([ 'primary', ]);
+const selectVariants = oneOf([ 'primary', 'graph', ]);
 
 const itemPropType = shape({
   display: PropTypes.string,
@@ -32,7 +32,7 @@ const dropDownMenuStyle = ({ theme, variant, }) => ({
   ],
 });
 
-const ItemStyle = ({ theme, variant = 'primary', isSelected, activeItem, }) => ({
+const ItemStyle = ({ theme, variant = 'primary', isSelected, activeItem, buttonMiscStyles, }) => ({
   width: '100%',
   textAlign: 'start',
   paddingInlineStart: '1rem',
@@ -62,6 +62,7 @@ const ItemStyle = ({ theme, variant = 'primary', isSelected, activeItem, }) => (
       paddingBottom: '1rem',
       paddingTop: '1rem',
     },
+    ...(buttonMiscStyles ? parseStyleProps(buttonMiscStyles, theme.mq, theme.type) : []),
   ],
 });
 
@@ -72,6 +73,7 @@ const StyledItem = createComponent(ItemStyle, 'button', props => {
     isOpen,
     isSelected,
     noHighlitedItems,
+    buttonMiscStyles,
     ...noCustomAtrrProps
   } = props;
   return Object.keys(noCustomAtrrProps);
@@ -113,7 +115,7 @@ const StyledSelectedItem = createComponent(
   StyledItem,
   props => {
     /* eslint-disable no-unused-vars */
-    const { isOpen, noHighlitedItems, variant, ...noCustomAtrrProps } = props;
+    const { isOpen, noHighlitedItems, variant, buttonMiscStyles, ...noCustomAtrrProps } = props;
     return Object.keys(noCustomAtrrProps);
   }
 );
@@ -125,6 +127,12 @@ export class Select extends Component {
      * Passed to the underlying react element
      */
     attrs: attrsPropType,
+    /**
+     * A special property holding miscellaneous CSS values that
+     * trump all default values. Processed by
+     * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+     */
+    buttonMiscStyles: stylesPropType,
     /**
      * selectedItem of a controlled `<Select />`.
      * Should never be passed manually by the consumer, but rather
@@ -202,6 +210,7 @@ export class Select extends Component {
   };
   static defaultProps = {
     attrs: null,
+    buttonMiscStyles: null,
     controlledSelectedItem: null,
     defaultSelectedItem: null,
     errorText: null,
@@ -234,6 +243,7 @@ export class Select extends Component {
   render() {
     const {
       attrs,
+      buttonMiscStyles,
       controlledSelectedItem,
       defaultSelectedItem,
       errorText,
@@ -293,6 +303,7 @@ export class Select extends Component {
                     <StyledSelectedItem
                       {...getButtonProps({
                         'aria-label': theme.selectAriaLabel.text,
+                        buttonMiscStyles,
                         variant,
                         isOpen,
                         noHighlitedItems: highlightedIndex === null,
@@ -319,6 +330,7 @@ export class Select extends Component {
                               {items.map((item, index) => (
                                 <StyledItem
                                   {...getItemProps({
+                                    buttonMiscStyles,
                                     item,
                                     key: item.key || item.value,
                                     activeItem: highlightedIndex === index,
