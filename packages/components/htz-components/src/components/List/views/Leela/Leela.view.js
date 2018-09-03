@@ -6,7 +6,6 @@ import ListItem from '../../elements/ListItem';
 
 import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
 import BlockLink from '../../../BlockLink/BlockLink';
-import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
 import Section from '../../../AutoLevels/Section';
 import H from '../../../AutoLevels/H';
 import Image from '../../../Image/Image';
@@ -14,11 +13,11 @@ import HtzLink from '../../../HtzLink/HtzLink';
 
 // eslint-disable-next-line react/prop-types
 export const PromotedItem = ({
-	path,
-	title,
-	image,
-	suffix,
-	paragraphHeight,
+  path,
+  title,
+  image,
+  suffix,
+  paragraphHeight,
 }) => (
   <FelaTheme
     render={theme => (
@@ -41,34 +40,26 @@ export const PromotedItem = ({
           />
         </div>
         <div>
-          <AboveBlockLink>
-            {({ className, }) => {
-              const aboveBlockLinkClasses = className;
-              return (
-                <FelaComponent
-                  style={{
-                    flexGrow: '1',
-                    fontWeight: '700',
-                    marginStart: '1rem',
-                    marginEnd: '1rem',
-                    marginTop: '1rem',
-                    maxHeight: '12rem',
-                    overflow: 'hidden',
-                    extend: [
-                      theme.type(-1),
-                      paragraphHeight || {},
-                    ],
-                  }}
-                  render={({ className, }) => (
-                    <H className={`${aboveBlockLinkClasses} ${className}`}>
-                      <HtzLink href={path}>{title}</HtzLink>
-                    </H>
-                  )}
-                />
-              );
-            }}
-          </AboveBlockLink>
-
+          <FelaComponent
+            style={{
+              flexGrow: '1',
+              fontWeight: '700',
+              marginStart: '1rem',
+              marginEnd: '1rem',
+              marginTop: '1rem',
+              maxHeight: '12rem',
+              overflow: 'hidden',
+              extend: [
+                theme.type(-1),
+                paragraphHeight || {},
+                ],
+              }}
+            render={({ className, }) => (
+              <H className={className}>
+                {title}
+              </H>
+            )}
+          />
           {suffix ? (
             <FelaComponent
               style={{
