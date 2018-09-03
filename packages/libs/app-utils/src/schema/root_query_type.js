@@ -204,14 +204,13 @@ const RootQuery = new GraphQLObjectType({
     isEmailValid: {
       args: { email: { type: new GraphQLNonNull(GraphQLString), }, },
       type: IsEmailValid,
-      resolve(parentValue, { email, }, context) {
-        return context.isEmailValid.load(email).then(res => res);
+      resolve(parentValue, args, context) {
+        return context.isEmailValid.load(args).then(res => res);
       },
     },
     isPhoneValid: {
       args: {
         email: { type: new GraphQLNonNull(GraphQLString), },
-        phone: { type: new GraphQLNonNull(GraphQLString), },
       },
       type: IsPhoneValid,
       resolve(parentValue, args, context) {
@@ -221,7 +220,6 @@ const RootQuery = new GraphQLObjectType({
     isPhoneConnectedWithEmail: {
       args: {
         email: { type: new GraphQLNonNull(GraphQLString), },
-        phone: { type: new GraphQLNonNull(GraphQLString), },
       },
       type: IsPhoneConnectedWithEmail,
       resolve(parentValue, args, context) {

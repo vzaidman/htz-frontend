@@ -39,7 +39,7 @@ class FiniteStateMachine extends React.Component {
   constructor(props) {
     super(props);
 
-    if (this.currentState() === null) {
+    if (this.getCurrentState() === null) {
       this.writeStateToApolloStore(props.initialState);
       this.addHistory({ pastState: props.initialState, pastTransition: props.initialTransition, });
     }
@@ -47,6 +47,27 @@ class FiniteStateMachine extends React.Component {
 
   componentDidMount = () => Router.beforePopState(this.changeHistoryCallback);
 
+  /**
+   * Returns the current inner state of the FSM
+   * @returns {string} the current state of the FSM
+   */
+  getCurrentState = () => {
+    const currentState = this.props
+      .apolloClient
+      .readQuery({ query: CURRENT_STATE, })
+      .currentState;
+
+    // TODO render from server if null or undefined
+    if (typeof currentState === 'undefined') {
+      throw new Error('could not get current state from store. force SSR');
+    }
+    return currentState;
+  };
+
+  /**
+   * Retrieves the object which represents the browser url history
+   * @returns {object}
+   */
   getHistoryObject = () => {
     const historyObject = this.props.apolloClient
       .readQuery({ query: HISTORY, }).stateHistory;
@@ -57,9 +78,16 @@ class FiniteStateMachine extends React.Component {
     return historyObject;
   };
 
+  /**
+   * Retrieves the cell number which corresponds to the current state
+   * in 'history object'
+   * @returns {string}
+   */
   getHistoryPointer = () => {
-    const historyPointer = this.props.apolloClient
-      .readQuery({ query: HISTORY_POINTER, }).historyPointer;
+    const historyPointer = this.props
+      .apolloClient
+      .readQuery({ query: HISTORY_POINTER, })
+      .historyPointer;
     // TODO render from server if null or undefined
     if (typeof historyPointer === 'undefined') {
       throw new Error('could not get history pointer from store. force SSR');
@@ -69,8 +97,9 @@ class FiniteStateMachine extends React.Component {
 
   /**
    * Do not use set history pointer. it's a util for
-   * 'increment/decrement history pointer methods'
-   * @param pointer
+   * 'increment/decrement history' pointer methods
+   * @param {number} pointer
+   * @returns {number} pointer
    */
   setHistoryPointer = pointer => {
     console.warn(`pointer is written: ${pointer}`);
@@ -78,66 +107,6 @@ class FiniteStateMachine extends React.Component {
       data: { historyPointer: pointer, },
     });
     return pointer;
-  };
-
-  writeStateToApolloStore = newState => {
-    console.warn(`state to be written to apollo: ${newState}`);
-    this.props.apolloClient.writeData({
-      data: { currentState: newState, },
-    });
-    return newState;
-  };
-
-  /**
-   * Remove history till the current pointer that shows the navigation location
-   * within the history object. This should happen only after a link is pressed
-   * @returns {*}
-   */
-  removeHistory = () => {
-    const pointerLocation = this.getHistoryPointer();
-    let historyObject = this.getHistoryObject();
-    if (!Array.isArray(historyObject)) {
-      historyObject = [ historyObject, ];
-    }
-
-    console.warn(`removing history till pointer location: ${pointerLocation}`);
-    if (historyObject.length - 1 === pointerLocation) return historyObject;
-    const newHistoryObject = historyObject.slice(0, parseInt(pointerLocation, 10) + 1);
-    this.props.apolloClient.writeData({
-      data: { stateHistory: [ ...newHistoryObject, ], },
-    });
-    return newHistoryObject;
-  };
-
-  incrementHistoryPointer = () => {
-    let pointer = this.getHistoryPointer();
-    pointer = pointer === null ? 0 : parseInt(pointer, 10) + 1;
-    return this.setHistoryPointer(pointer);
-  };
-
-  decrementHistoryPointer = () => {
-    let pointer = this.getHistoryPointer();
-    const pointerLocation = parseInt(pointer, 10);
-    pointer = (pointer === null || pointerLocation === 0) ? 0 : pointerLocation - 1;
-    return this.setHistoryPointer(pointer);
-  };
-
-  addHistory = ({ pastState, pastTransition, }) => {
-    console.warn(`executed add history with ${pastState}, ${pastTransition}`);
-    let historyObject = this.getHistoryObject();
-    if (!Array.isArray(historyObject)) {
-      historyObject = [];
-    }
-    this.props.apolloClient.writeData({
-      data: {
-        stateHistory: [ ...historyObject, {
-          pastState,
-          pastTransition,
-          __typename: 'StateHistory',
-        }, ],
-      },
-    });
-    return this.incrementHistoryPointer();
   };
 
   /**
@@ -158,7 +127,10 @@ class FiniteStateMachine extends React.Component {
     const forward = historyObject[currentHistoryPointer + 1];
     console.warn(`back: ${JSON.stringify(backwards)}. forward: ${JSON.stringify(forward)}`);
     const direction =
-      (backwards !== undefined && (url === backwards.pastTransition || as === backwards.pastTransition))
+      (
+        backwards !== undefined
+        && (url === backwards.pastTransition || as === backwards.pastTransition)
+      )
         ? 'backwards'
         : (
           forward !== undefined
@@ -186,58 +158,138 @@ class FiniteStateMachine extends React.Component {
   };
 
   /**
-   * Returns the current inner state of the FSM
+   * Increment history pointer and save It to apollo store
+   * @returns {string} the incremented pointer
    */
-  currentState = () => {
-    const currentState = this.props.apolloClient
-      .readQuery({ query: CURRENT_STATE, }).currentState;
+  incrementHistoryPointer = () => {
+    const pointer = this.getHistoryPointer();
+    const pointerNumber = parseInt(pointer, 10);
+    const updatedPointer = (pointer == null || pointerNumber === 0) ? 0 : pointerNumber + 1;
+    return (this.setHistoryPointer(updatedPointer)).toString(10);
+  };
 
-    // TODO render from server if null or undefined
-    if (typeof currentState === 'undefined') {
-      throw new Error('could not get current state from store. force SSR');
+  /**
+   * Decrement history pointer and save It to apollo store
+   * @returns {string} the incremented pointer
+   */
+  decrementHistoryPointer = () => {
+    const pointer = this.getHistoryPointer();
+    const pointerNumber = parseInt(pointer, 10);
+    const updatedPointer = (pointer == null || pointerNumber === 0) ? 0 : pointerNumber - 1;
+    return (this.setHistoryPointer(updatedPointer)).toString(10);
+  };
+
+  /**
+   * Add a history record to the history object, stored in Apollo store.
+   * The record consists of two values: state and transition to that state.
+   * This method also increments the history pointer
+   * @param pastState - the state to be added
+   * @param pastTransition - the transition to be added
+   * @returns {object} the object if the write was successfull
+   */
+  addHistory = ({ pastState, pastTransition, }) => {
+    console.warn(`executed add history with ${pastState}, ${pastTransition}`);
+    let historyObject = this.getHistoryObject();
+    if (!Array.isArray(historyObject)) {
+      historyObject = [];
     }
-    return currentState;
+    this.props.apolloClient.writeData({
+      data: {
+        stateHistory: [ ...historyObject, {
+          pastState,
+          pastTransition,
+          __typename: 'StateHistory',
+        }, ],
+      },
+    });
+    this.incrementHistoryPointer();
+    return { pastState, pastTransition, };
+  };
+
+  /**
+   * Remove history till the current pointer that shows the navigation location
+   * within the history object. This should happen only after a link is pressed
+   * @returns {object} the new history object, after removal of the last
+   * history entry
+   */
+  removeHistory = () => {
+    const pointerLocation = this.getHistoryPointer();
+    const historyObject = this.getHistoryObject();
+    const revisedHistoryObject = Array.isArray(historyObject)
+      ? historyObject
+      : [ historyObject, ];
+
+    console.warn(`removing history till pointer location: ${pointerLocation}`);
+    if (revisedHistoryObject.length - 1 === pointerLocation) return revisedHistoryObject;
+    const newHistoryObject = revisedHistoryObject.slice(0, parseInt(pointerLocation, 10) + 1);
+    this.props.apolloClient.writeData({
+      data: { stateHistory: [ ...newHistoryObject, ], },
+    });
+    return newHistoryObject;
+  };
+
+  /**
+   * Writes the given state to the apollo store
+   * @param newState - the new state to be written
+   * @returns {string}
+   */
+  writeStateToApolloStore = newState => {
+    console.warn(`state to be written to apollo: ${newState}`);
+    this.props.apolloClient.writeData({
+      data: { currentState: newState, },
+    });
+    return newState;
   };
 
   /**
    *  This is This function uses the current inner state and the action that the user applied
    * to resolve its new state
-   * @param {string} action the action that the user applied
-   * @param action
-   * @param state
-   * @returns {*}
+   * @param {string} action - the name of the action that the user performed (button click etc.)
+   * @param {string} state - the current state of the FSM
+   * @returns {string}
    */
-  resolveNewState = (action, state) => Object.entries(this.props.statesGraph)
-    .find(entry => entry[0] === state)[1][action];
+  resolveNewState = (action, state) =>
+    Object
+      .entries(this.props.statesGraph)
+      .find(entry => entry[0] === state)[1][action];
 
   /**
    * This function uses the old and new states as parameters to find the transition
    * rout between them
    * @param {string} oldState the previous state
    * @param {string} newState the resolved new state
+   * @return {string} The route corresponding to the transition between the old and new
    */
   resolveRout = (oldState, newState) => {
     const wantedTransition = `${oldState}-${newState}`;
     console.warn(`searching for rout: ${wantedTransition}`);
-    for (const [ transition, rout, ] of this.props.transitionRouteMap.entries()) {
-      if (wantedTransition === transition) return rout;
-    }
+    const strictTransitionKey = this.props
+      .transitionRouteMap
+      .keys()
+      .find(key => key === wantedTransition);
+
+    if (strictTransitionKey != null) return this.props.transitionRouteMap[strictTransitionKey];
 
     // loosen the transition function search parameters to only search the new state
     const looseTransitionRule = `-${newState}`;
-    for (const [ transition, rout, ] of this.props.transitionRouteMap.entries()) {
-      if (looseTransitionRule === transition) return rout;
-    }
+    const looseTransitionKey = this.props
+      .transitionRouteMap
+      .keys()
+      .find(key => key === looseTransitionRule);
+
+    if (looseTransitionKey != null) return this.props.transitionRouteMap[looseTransitionKey];
+
+    // TODO: Consider replacing this with force refresh
     throw new Error(`transition function not found for state transition: ${oldState}-${newState}`);
   };
 
   /**
    * find a transition route, based on an action
-   * @param action
-   * @returns {*|void}
+   * @param {string} action - the name of the action that the user performed (button click etc.)
+   * @returns {string}
    */
   findTransition = action => {
-    const oldState = this.currentState();
+    const oldState = this.getCurrentState();
     console.warn(`inside find transition. old state: ${oldState}`);
     const newState = this.resolveNewState(action, oldState);
     const route = this.resolveRout(oldState, newState);
@@ -251,11 +303,11 @@ class FiniteStateMachine extends React.Component {
    * which enables the actual transition. Also, it updates the component
    * with the new state.
    * @param action
-   * @returns {function|function}
+   * @returns {string}
    */
   doTransition = action => {
     console.warn(`transition wanted. action: ${action}`);
-    const oldState = this.currentState();
+    const oldState = this.getCurrentState();
     const newState = this.resolveNewState(action, oldState);
     const route = this.findTransition(action);
     this.removeHistory();
