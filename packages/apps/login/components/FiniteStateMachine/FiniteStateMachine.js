@@ -262,22 +262,16 @@ class FiniteStateMachine extends React.Component {
    */
   resolveRout = (oldState, newState) => {
     const wantedTransition = `${oldState}-${newState}`;
-    console.warn(`searching for rout: ${wantedTransition}`);
-    const strictTransitionKey = this.props
-      .transitionRouteMap
-      .keys()
-      .find(key => key === wantedTransition);
-
-    if (strictTransitionKey != null) return this.props.transitionRouteMap[strictTransitionKey];
+    const looseTransitionRule = `-${newState}`;
+    console.warn(`searching for rout: ${wantedTransition}.`);
+    if (this.props.transitionRouteMap.has(wantedTransition)) {
+      return this.props.transitionRouteMap.get(wantedTransition);
+    }
 
     // loosen the transition function search parameters to only search the new state
-    const looseTransitionRule = `-${newState}`;
-    const looseTransitionKey = this.props
-      .transitionRouteMap
-      .keys()
-      .find(key => key === looseTransitionRule);
-
-    if (looseTransitionKey != null) return this.props.transitionRouteMap[looseTransitionKey];
+    if (this.props.transitionRouteMap.has(looseTransitionRule)) {
+      return this.props.transitionRouteMap.get(looseTransitionRule);
+    }
 
     // TODO: Consider replacing this with force refresh
     throw new Error(`transition function not found for state transition: ${oldState}-${newState}`);
