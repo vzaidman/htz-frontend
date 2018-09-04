@@ -2,10 +2,8 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import Router from 'next/router';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
-import ReactGA from 'react-ga';
 import { Button, IconHtzLoader, IconTmLoader, } from '@haaretz/htz-components';
 
 const GET_HOST_NAME = gql`
@@ -27,13 +25,13 @@ const styles = ({ iframeHeight, loading, theme, }) => ({
 
 class CreditCardIframe extends Component {
   static propTypes = {
-    chosenPaymentArrangement: PropTypes.string.isRequired,
-    chosenProductContentName: PropTypes.string.isRequired,
     creditGuardSrc: PropTypes.string.isRequired,
-    paymentData: PropTypes.shape({}).isRequired,
+    onMessage: PropTypes.func,
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    onMessage: null,
+  };
 
   state = {
     error: false,
@@ -49,7 +47,7 @@ class CreditCardIframe extends Component {
         loading: false,
       });
     };
-    window.addEventListener('message', evt => this.handleFrameTasks(evt));
+    window.addEventListener('message', this.handleFrameTasks);
   }
 
   componentWillUnmount() {
@@ -58,12 +56,6 @@ class CreditCardIframe extends Component {
   }
 
   handleFrameTasks = evt => {
-    // console.log('got message', evt);
-    const {
-      paymentData,
-      chosenPaymentArrangement,
-      chosenProductContentName,
-    } = this.props;
     const msgData = evt.data;
     if (msgData.type === 'cgmessage') {
       switch (msgData.command) {
@@ -74,27 +66,7 @@ class CreditCardIframe extends Component {
           break;
 
         case 'thank_user':
-          console.log('got Thank you message', msgData);
-          ReactGA.ga('ec:addProduct', {
-            id: paymentData.saleCode,
-            name: `${chosenPaymentArrangement}-${chosenProductContentName}`,
-            brand: `salecode[${paymentData.saleCode}]`,
-            price: paymentData.prices[0].toString(),
-            variant: `promotionNumber-${paymentData.promotionNumber}`,
-            quantity: 1,
-          });
-          ReactGA.ga('ec:setAction', 'purchase', {
-            id: `${Math.floor(Math.random() * 1000000000000)}`, // (Required) Transaction id (string).
-            list: 'Product Stage Results',
-            revenue: paymentData.prices[0].toString(),
-            coupon: paymentData.saleCode,
-          });
-          ReactGA.ga('send', 'pageview');
-          Router.replace(
-            `/promotions-page/thankYou?msg=thank_user&product=${
-              msgData.data.pid
-            }`
-          );
+          console.log('thank user', msgData);
           break;
 
         case 'error_user':
@@ -120,29 +92,16 @@ class CreditCardIframe extends Component {
           break;
 
         case 'purchase_clicked':
-          console.log('page purchase');
-          console.log(msgData);
-          // const userdata = PromotionsUtil.getUserData();
-          // const additionalInfo = {
-          //   promotionsNumber: userdata.selectedOffer.promotionNumber,
-          //   productID: userdata.selectedOffer.productId,
-          //   saleCode: userdata.selectedOffer.saleCode,
-          // };
-          // StatUtil.doAction('37', additionalInfo);
-          // if (window.track) {
-          //   const action = `subscription${window.userSelectedMonthly ? ' monthly' : ' yearly'}`;
-          //   const label = `Subscribe button${
-          //     window.userSwitchedFromMonthlyToYearly ? ' from try yearly' : ''
-          //   }`;
-          //   window.track('Promotions - subscription', action, label);
-          // }
-          // GaTm.eventManager.fireButtonClickEvent({ event: 'promotions_offer-creditguard_payment', });
+          console.log('purchase clicked');
           break;
         default:
           console.log('default');
           break;
       }
-      // }
+    }
+
+    if (this.props.onMessage && typeof this.props.onMessage === 'function') {
+      this.props.onMessage(evt);
     }
   };
 

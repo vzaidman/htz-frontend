@@ -84,6 +84,21 @@ export default function purchase(app, server, DEV = false) {
     return res.redirect(`${appPrefix}/${friendlyRoutes[pageToRender]}${query}`);
   }
 
+
+  server.get(
+    '/payment-change',
+    (req, res) => {
+      app.render(req, res, '/payment-change/payment-change', req.query);
+    }
+  );
+
+  server.get(
+    '/payment-change/thankYou',
+    (req, res) => {
+      app.render(req, res, '/payment-change/thankYou', req.query);
+    }
+  );
+
   /* Offers stage1 */
   server.get(
     [ `${appPrefix}/${friendlyRoutes.stage1}`, `${appPrefix}/stage1`, ],

@@ -539,3 +539,8 @@ export const thankYou = Object.freeze({
     }),
   }),
 });
+
+export const changePayment = Object.freeze({
+  userInstructions: 'הזינו את פרטי כרטיס האשראי',
+  thankYou: 'עדכון פרטי כרטיס האשראי בוצע בהצלחה',
+});

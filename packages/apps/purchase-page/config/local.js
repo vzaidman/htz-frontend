@@ -13,6 +13,10 @@ switch (connectionPreset) {
       remoteFQDN: baseConfigOverride.remoteFQDN,
       logLevel: baseConfigOverride.logLevel,
       enableHttpLogging: baseConfigOverride.enableHttpLogging,
+      port: baseConfigOverride.port,
+      useSSL: baseConfigOverride.useSSL,
+      graphQLuseSSL: baseConfigOverride.graphQLuseSSL,
+      graphQLexposedPort: baseConfigOverride.graphQLexposedPort,
     });
     break;
   }

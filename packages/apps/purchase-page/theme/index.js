@@ -30,6 +30,7 @@ import {
   newsletterI18n,
   textInputI18n,
   thankYou,
+  changePayment,
 } from './consts/i18n';
 
 // methods
@@ -146,6 +147,7 @@ const purchasePageTheme = host =>
     newsletterI18n,
     textInputI18n,
     thankYou,
+    changePayment,
 
     // Methods
     color: getColor(host),
