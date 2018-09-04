@@ -140,7 +140,16 @@ const RootQuery = new GraphQLObjectType({
       args: { email: { type: new GraphQLNonNull(GraphQLString), }, },
       type: IsEmailValid,
       resolve(parentValue, args, context) {
-        return context.isEmailValid.load(args).then(res => res);
+        // TODO remove mock
+        return context.isEmailValid.load(args).then(res => {
+          if (res.status === 404) {
+            return ({
+              isEmailValid: true,
+              success: true,
+            });
+          }
+          return res;
+        });
       },
     },
     isPhoneValid: {
@@ -149,7 +158,16 @@ const RootQuery = new GraphQLObjectType({
       },
       type: IsPhoneValid,
       resolve(parentValue, args, context) {
-        return context.isPhoneValid.load(args).then(res => res);
+        // TODO remove mock
+        return context.isPhoneValid.load(args.email).then(res => {
+          if (res.status === 404) {
+            return ({
+              isPhoneValid: true,
+              success: true,
+            });
+          }
+          return res;
+        });
       },
     },
     isPhoneConnectedWithEmail: {
@@ -158,7 +176,16 @@ const RootQuery = new GraphQLObjectType({
       },
       type: IsPhoneConnectedWithEmail,
       resolve(parentValue, args, context) {
-        return context.isPhoneConnectedWithEmail.load(args).then(res => res);
+        // TODO remove mock
+        return context.isPhoneConnectedWithEmail.load(args).then(res => {
+          if (res.status === 404) {
+            return ({
+              isPhoneConnectedWithEmail: false,
+              success: true,
+            });
+          }
+          return res;
+        });
       },
     },
   }),
