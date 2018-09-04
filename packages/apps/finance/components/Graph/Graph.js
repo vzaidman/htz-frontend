@@ -107,6 +107,7 @@ const Scatter = dynamic(import('./graphs/Scatter/Scatter'), {
 
 
 const Graph: StatelessFunctionalComponent<Props> =
+// eslint-disable-next-line react/prop-types
   ({ indexId, time, type, changeStats, miscStyles, }) => {
     const GraphElement = type === 'line'
       ? Line

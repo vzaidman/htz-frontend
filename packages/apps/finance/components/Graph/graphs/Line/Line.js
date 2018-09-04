@@ -72,8 +72,7 @@ class Line extends React.Component<Props, State> {
   componentDidMount() {
     const { data, } = this.props;
     this.dataIndex = data.length - 1;
-    console.log('DATA: ',data);
-    if (data) this.renderGraph(data);
+    this.renderGraph(data);
   }
 
   shouldComponentUpdate(nextProps: Props) {
