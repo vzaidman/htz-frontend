@@ -6,7 +6,8 @@ const Header = () => (
     <Head>
       <title>Login</title>
     </Head>
-    <div>HEADER</div>
+    <div>WELCOME</div>
+    <br />
   </Fragment>
 );
 

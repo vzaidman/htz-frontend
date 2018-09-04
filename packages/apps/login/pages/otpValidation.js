@@ -2,10 +2,10 @@ import React, { Fragment, } from 'react';
 import Router from 'next/router';
 
 import { HtzLink, } from '@haaretz/htz-components';
-import MainLayout from '../layouts/MainLayout';
+import FSMLayout from '../layouts/FSMLayout';
 
 const OtpValidation = () => (
-  <MainLayout>
+  <FSMLayout>
     {({ currentState, findRout, doTransition, }) => (
       <Fragment>
         otp validation <br />
@@ -23,7 +23,7 @@ const OtpValidation = () => (
 
       </Fragment>
     )}
-  </MainLayout>
+  </FSMLayout>
 );
 
 export default OtpValidation;
