@@ -7,7 +7,7 @@ import type {
 import { FelaComponent, } from 'react-fela';
 import * as d3 from 'd3';
 
-export type Stats = Array<{ title: string, value: number | string, }>;
+import type { Stats, } from '../../../StockStats/StockStats';
 
 type Stock = [ number, number, number, string, ];
 
@@ -72,7 +72,8 @@ class Line extends React.Component<Props, State> {
   componentDidMount() {
     const { data, } = this.props;
     this.dataIndex = data.length - 1;
-    this.renderGraph(data);
+    console.log('DATA: ',data);
+    if (data) this.renderGraph(data);
   }
 
   shouldComponentUpdate(nextProps: Props) {

@@ -7,14 +7,9 @@ import type {
 import { FelaComponent, } from 'react-fela';
 import * as d3 from 'd3';
 
-export type Stats = Array<{ title: string, value: number | string, }>;
+import type { Stats, } from '../../../StockStats/StockStats';
 
-type Stock = {
-  x: number,
-  y: number,
-  name: string,
-  id: string,
-};
+type Stock = [ number, number, string, string, ];
 
 /* eslint-disable react/no-unused-prop-types */
 type Props = {
