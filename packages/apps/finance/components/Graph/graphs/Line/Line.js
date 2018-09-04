@@ -30,7 +30,7 @@ type State= {
 /* SVG frame's settings */
 const width = 574;
 const height = 308;
-const margin = { top: 44, right: 10, bottom: 20, left: 70, };
+const margin = { top: 34, right: 10, bottom: 15, left: 50, };
 
 class Line extends React.Component<Props, State> {
   static defaultProps = {
@@ -57,7 +57,7 @@ class Line extends React.Component<Props, State> {
     // TODO: do this through median difference rather than hard coded
     const yPadding = 2;
 
-    /* Combine the the start & ends points with the padding and inset them into the scales */
+    /* Combine the start & ends points with the padding and inset them into the scales */
     yScale.domain([ yMin - yPadding, yMax + yPadding, ]);
     xScale.domain(xExtent);
 
@@ -107,8 +107,8 @@ class Line extends React.Component<Props, State> {
     return data[stockIndex];
   };
 
+  yMean: number;
   dataIndex: number;
-  svgRef: ElementRef<'svg'> | null;
   graphRef: ElementRef<'g'> | null;
   xAxisRef: ElementRef<'g'> | null;
   yAxisRef: ElementRef<'g'> | null;
@@ -182,12 +182,15 @@ class Line extends React.Component<Props, State> {
       .attr('fill', theme.color('neutral', '-2'));
 
     /* Change indicator's circle's X & Y position. */
-    d3.select(this.circleRef)
-      .attr('r', 4)
+    const circle = d3.select(this.circleRef)
       .attr('fill', '#f5a623')
-      .transition(transition)
+      .attr('r', 0)
       .attr('cx', positionX)
       .attr('cy', positionY);
+
+    circle.merge(circle)
+      .transition(transition)
+      .attr('r', 4);
 
     /* Send the hovered stock and send it's data to the parent component. */
     this.updateStatsState(stock);
@@ -210,14 +213,17 @@ class Line extends React.Component<Props, State> {
     /* Set the Exit event. */
     lines.exit().remove();
 
+    /* Find and save the average height for the init Y. */
+    this.yMean = d3.mean(data, stock => stock[1]);
+
     /* Set the Enter event and the init position. */
     const enter = lines
       .enter()
       .append('line')
       .attr('x1', d => xScale(d[0]))
-      .attr('y1', d => yScale(d[1]))
       .attr('x2', (d, i) => (data[i + 1] ? xScale(data[i + 1][0]) : xScale(d[0])))
-      .attr('y2', (d, i) => (data[i + 1] ? yScale(data[i + 1][1]) : yScale(d[1])));
+      .attr('y1', yScale(this.yMean))
+      .attr('y2', yScale(this.yMean));
 
     /* Merge the Enter event with the Update event and animation. */
     enter.merge(lines)
@@ -253,7 +259,7 @@ class Line extends React.Component<Props, State> {
     /* Set the Exit event. */
     yAxisLines.exit().remove();
 
-    /* Set the Enter event and the init position. */
+    /* Set the Enter event and the init opacity. */
     const linesEnter = yAxisLines
       .attr('opacity', 0);
 
@@ -273,8 +279,6 @@ class Line extends React.Component<Props, State> {
         style={theme => ({ backgroundColor: theme.color('neutral', '-1'), })}
         render={({ className, theme, }) => (
           <svg
-            // eslint-disable-next-line no-return-assign
-            ref={svgRef => this.svgRef = svgRef}
             className={className}
             viewBox={`0 0 ${width} ${height}`}
             width="100%"
