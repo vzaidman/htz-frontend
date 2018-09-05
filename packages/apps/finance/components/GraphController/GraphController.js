@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ChildrenArray, Element, Node, StatelessFunctionalComponent, } from 'react';
 import { FelaComponent, } from 'react-fela';
-import { Select, IconBack, } from '@haaretz/htz-components';
+import { Select, } from '@haaretz/htz-components';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import Tab from '../Tab/Tab';
@@ -17,9 +17,8 @@ type ButtonProps = {
 
 type Props = {
   selectedStockId: ?string,
-  selectedStockName: ?string,
   changeTime: string => void,
-  miscStyles: ?Object,
+  miscStyles?: Object,
 }
 
 type State = {
@@ -31,6 +30,10 @@ type State = {
 };
 
 class GraphController extends React.Component<Props, State> {
+  static defaultProps = {
+    miscStyles: null,
+  };
+
   state;
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
@@ -61,7 +64,7 @@ class GraphController extends React.Component<Props, State> {
 
   render(): Node {
     const { selectedTime, } = this.state;
-    const { selectedStockId, selectedStockName, miscStyles, } = this.props;
+    const { selectedStockId, miscStyles, } = this.props;
     const Button: StatelessFunctionalComponent<ButtonProps> =
       ({ children, controls, }) => {
         const selected: boolean = selectedTime === controls;
@@ -192,23 +195,6 @@ class GraphController extends React.Component<Props, State> {
                   marginBottom: '0.5rem',
                 }}
               />
-              <FelaComponent
-                style={theme => ({
-                  ...theme.type(-2),
-                  backgroundColor: theme.color('neutral', '-5'),
-                  color: theme.color('neutral', '-1'),
-                  fontWeight: '700',
-                  paddingBottom: '1rem',
-                  paddingTop: '1rem',
-                  textAlign: 'center',
-                  ':before': {
-                    content: '"למידע נוסף על "',
-                  },
-                })}
-              >
-                {selectedStockName}
-                <IconBack size={-1} />
-              </FelaComponent>
             </TabPanel>
           </TabPanel>
         )}
