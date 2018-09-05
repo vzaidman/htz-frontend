@@ -3,12 +3,30 @@ import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { ApolloConsumer, } from 'react-apollo';
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import HeaderText from '../../../ArticleHeader/HeaderText';
 import ArticleHeaderMeta from '../../../ArticleHeader/ArticleHeaderMeta';
 import HeadlineElement from '../../../HeadlineElement/HeadlineElement';
 import Breadcrumbs from '../../../Breadcrumbs/Breadcrumbs';
 import ShareBar from './ShareBar';
+
+// eslint-disable-next-line react/prop-types
+const HeaderElementCont = ({ children, miscStyles, }) => (
+  <FelaComponent
+    style={theme => ({
+      marginRight: 'auto',
+      marginLeft: 'auto',
+      extend: [
+        theme.mq({ from: 'm', }, { maxWidth: '80%', }),
+        theme.mq({ until: 'm', }, { paddingRight: '2rem', paddingLeft: '2rem', }),
+        ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+      ],
+    })}
+  >
+    {children}
+  </FelaComponent>
+);
 
 Header.propTypes = {
   /**
@@ -86,16 +104,10 @@ function Header({
             })}
             render={({ className, theme, }) => (
               <header className={className}>
-                <FelaComponent
-                  style={{
-                    marginRight: 'auto',
-                    marginLeft: 'auto',
-                    extend: [
-                      theme.mq({ from: 's', }, { maxWidth: '80%', }),
-                    ],
-                  }}
-                >
+                <HeaderElementCont>
                   {hasBreadCrumbs ? <Breadcrumbs articleId={articleId} /> : null}
+                </HeaderElementCont>
+                <HeaderElementCont>
                   <FelaComponent
                     style={{
                       marginTop: '3rem',
@@ -112,58 +124,42 @@ function Header({
                       />
                     )}
                   />
+                </HeaderElementCont>
+                <HeaderElementCont
+                  miscStyles={{
+                    marginTop: [ { from: 's', until: 'l', value: '2rem', }, ],
+                    marginInlineStart: [ { until: 'm', value: '2rem', }, ],
+                    marginInlineEnd: [ { until: 'm', value: '2rem', }, ],
+
+                    order: [ { until: 's', value: 2, }, ],
+                  }}
+                >
                   <ArticleHeaderMeta
                     authors={authors}
                     publishDate={pubDate}
                     modifiedDate={modDate}
                     reportingFrom={reportingFrom}
                     miscStyles={{
-                      marginTop: [ { from: 's', until: 'l', value: '2rem', }, ],
-                      marginInlineStart: [ { until: 'm', value: '2rem', }, ],
-                      marginInlineEnd: [ { until: 'm', value: '2rem', }, ],
-                      justifyContent: [ { from: 's', until: 'l', value: 'center', }, ],
                       display: [ { until: 'l', value: 'flex', }, { from: 'l', value: 'none', }, ],
-                      order: [ { until: 's', value: 2, }, ],
-                      // justifyContent: 'flex-start',
+                      justifyContent: [ { from: 's', until: 'l', value: 'center', }, ],
                     }}
                   />
-                  <FelaComponent
-                    style={{
-                      marginTop: '3rem',
-                      marginRight: 'auto',
-                      marginLeft: 'auto',
-                      extend: [
-                        theme.mq(
-                          { until: 's', },
-                          {
-                            display: 'none',
-                          }
-                        ),
-                        theme.mq(
-                          { from: 's', until: 'l', },
-                          {
-                            marginRight: '3rem',
-                            marginLeft: '3rem',
-                          }
-                        ),
-                        // theme.mq(
-                        //   { from: 'm', until: 'l', },
-                        //   {
-                        //     maxWidth: '80%',
-                        //   }
-                        // ),
-                        // theme.mq({ from: 'l', }, { maxWidth: '70%', }),
-                      ],
-                    }}
-                  >
-                    <ShareBar title={title} canonicalUrl={canonicalUrl} />
-                  </FelaComponent>
-                </FelaComponent>
+                </HeaderElementCont>
+                <HeaderElementCont
+                  miscStyles={{
+                    marginTop: '3rem',
+                    marginRight: 'auto',
+                    marginLeft: 'auto',
+                    display: [ { until: 's', value: 'none', }, ],
+                  }}
+                >
+                  <ShareBar title={title} canonicalUrl={canonicalUrl} />
+                </HeaderElementCont>
                 {headlineElement ? (
                   <HeadlineElement
                     elementObj={headlineElement}
                     miscStyles={{
-                      marginTop: '2rem',
+                      marginTop: '4rem',
                       marginBottom: [ { until: 'm', value: 0, }, ],
                     }}
                   />
