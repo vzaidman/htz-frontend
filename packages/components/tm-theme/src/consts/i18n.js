@@ -302,3 +302,7 @@ export const mobileReadingList = Object.freeze({
   url: 'https://www.haaretz.co.il/readingList',
   buttonText: 'רשימת הקריאה',
 });
+
+export const selectAriaLabel = Object.freeze({
+  text: 'פתח תפריט',
+});

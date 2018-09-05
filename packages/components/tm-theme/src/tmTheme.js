@@ -43,6 +43,7 @@ import {
   zenTextI18n,
   zoominText,
   zoomoutText,
+  selectAriaLabel,
 } from './consts/i18n';
 
 // methods
@@ -108,7 +109,7 @@ const tmTheme = Object.freeze({
   zenTextI18n,
   zoominText,
   zoomoutText,
-
+  selectAriaLabel,
   // Methods
   color: getColor,
   getDelay,

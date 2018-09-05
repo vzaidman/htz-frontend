@@ -401,8 +401,8 @@ const colors = {
   mastheadBorder: {
     borderColor: [ 'primary', 'base', ],
   },
-  // Primary
   select: {
+    // Primary
     primaryBg: 'white',
     primaryBorder: [ 'primary', 'base', ],
     primaryBorderItem: [ 'neutral', '-6', ],
@@ -415,6 +415,20 @@ const colors = {
     primaryHoverBg: [ 'primary', '-6', ],
     // Primary Focus
     primaryFocusBg: [ 'primary', '-6', ],
+
+    // Graph
+    graphBg: [ 'neutral', '-4', ],
+    graphBorder: 'transparent',
+    graphBorderItem: [ 'neutral', '-6', ],
+    graphArrowColor: [ 'neutral', 'base', ],
+    graphTextColor: [ 'neutral', 'base', ],
+
+    // Primary highlighted
+    graphHighlightedBg: [ 'neutral', '-6', ],
+    // Primary hover
+    graphHoverBg: [ 'neutral', '-6', ],
+    // Primary Focus
+    graphFocusBg: [ 'neutral', '-6', ],
   },
   input: {
     // Primary
