@@ -16,7 +16,6 @@ const NonReactArticleTypes = [
   '(BLOG-)',
   '(CARD-)',
   '(CAREER-)',
-  '(RECIPE-)',
   '(LIVE-)',
   '(INTERACTIVE-)',
 ];
@@ -31,9 +30,7 @@ const nonReactSections = [
 ];
 
 const isNonReactArticleType = new RegExp(
-  `${multiSectionPrefix}${premiumPrefix}(${NonReactArticleTypes.join(
-    '|'
-  )})${articlePattern}`
+  `${multiSectionPrefix}${premiumPrefix}(${NonReactArticleTypes.join('|')})${articlePattern}`
 );
 const isReactArticleType = `${multiSectionPrefix}${premiumPrefix}${articlePattern}`;
 
@@ -48,6 +45,33 @@ export function isReactArticle(href) {
   return isReactArticleTypeRegex.test(href);
 }
 
+export function getArticlePageTypeFromUrl(url) {
+  const articleTypes = [
+    'BLOG',
+    'CARD',
+    'CAREER',
+    'INTERACTIVE',
+    'LIVE',
+    'MAGAZINE',
+    'RECIPE',
+    'REVIEW',
+  ];
+
+  // Test if the url contains one of the above article types,
+  // and return the article type string according to the
+  // `${articleType.toLowerCase()}Article` standard.
+  const articleType = articleTypes.reduce(
+    (articleTypeName, item) => (
+      articleTypeName || (url.includes(`${item}-`) ? `${item.toLowerCase()}Article` : false)
+    ),
+    false
+  );
+
+  // Return the article type based on the URL, or if none was found,
+  // fallback to `standardArticle`.
+  return articleType || 'standardArticle';
+}
+
 /**
  * This function takes an href and decides whether or not
  * the link should be handled as a Next link or a regular link
@@ -59,12 +83,7 @@ export default function isNextLink(href) {
   if (typeof href === 'string') {
     return isNextLinkSimpleString(href);
   }
-  if (
-    href &&
-    typeof href === 'object' &&
-    href.pathname &&
-    typeof href.pathname === 'string'
-  ) {
+  if (href && typeof href === 'object' && href.pathname && typeof href.pathname === 'string') {
     return isNextLinkSimpleString(href.pathname);
   }
   // `href` is of unknown form
@@ -77,18 +96,7 @@ export default function isNextLink(href) {
  * @return {boolean}
  */
 function isNextLinkSimpleString(href) {
-  const {
-    fullMatch,
-    baseUrl,
-    scheme,
-    fqdn,
-    hostname,
-    domain,
-    port,
-    path,
-    query,
-    fragment,
-  } =
+  const { fullMatch, baseUrl, scheme, fqdn, hostname, domain, port, path, query, fragment, } =
     breakUrl(href) || {};
   return (
     !isNonReactArticleType.test(path) &&
