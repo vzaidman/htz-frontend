@@ -5,7 +5,7 @@ import type { StatelessFunctionalComponent, ChildrenArray, } from 'react';
 type Props = {
   className?: string,
   render?: string,
-  children: ChildrenArray<any>,
+  children: ChildrenArray<any> | any,
   selected: boolean,
   controls: string,
   presentation: boolean,
