@@ -101,13 +101,14 @@ class ArticleHeaderMeta extends React.Component {
 
   displayDates = (publishDate, modifiedDate, className) => {
     if (new Date(publishDate).toDateString() === new Date(modifiedDate).toDateString()) {
+      const format = new Date().toDateString() === new Date(modifiedDate).toDateString() ? 'HH:mm' : 'DD.MM.YYYY';
       return (
         <Fragment>
-          <Time time={modifiedDate} format="DD.MM.YYYY" className={className} />
+          <Time time={modifiedDate} format={format} className={className} />
         </Fragment>
       );
     }
-    const format = 'DD.MM.YYYY';
+    const format = new Date().toDateString() === new Date(publishDate).toDateString() ? 'HH:mm' : 'DD.MM.YYYY';
     return (
       <div>
         <Time time={publishDate} format={format} className={className} />{' '}
