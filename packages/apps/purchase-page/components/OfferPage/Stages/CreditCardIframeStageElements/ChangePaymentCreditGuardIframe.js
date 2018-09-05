@@ -23,7 +23,7 @@ const introStyle = theme => ({
   textAlign: 'center',
   extend: [
     theme.type(0, { untilBp: 's', }),
-    theme.type(1, { untilBp: 's', }),
+    theme.type(1, { fromBp: 's', }),
   ],
 })
 
