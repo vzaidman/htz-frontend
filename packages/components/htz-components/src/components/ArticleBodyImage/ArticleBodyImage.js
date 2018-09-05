@@ -263,18 +263,19 @@ const UnwrappedImage = ({
   miscStyles,
   showCaption,
   title,
+  forceAspect,
   viewMode,
   ...image
 }) => (
   <Wrapper
-    viewMode={viewMode}
+    viewMode={forceAspect || viewMode}
     lastItem={lastItem}
     isHeadline={isHeadline}
     className={className}
     miscStyles={miscStyles}
     isFullScreen={isFullScreen}
   >
-    <ImageElement {...image} isFullScreen={isFullScreen} />
+    <ImageElement forceAspect={forceAspect} {...image} isFullScreen={isFullScreen} />
     {showCaption && !isFullScreen ? (
       <Caption caption={title} credit={credit} prefix="צילום" />
     ) : null}
