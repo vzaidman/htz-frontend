@@ -186,8 +186,10 @@ function StandardArticle({ articleId, slots, }) {
                         <ArticleLayoutRow
                           key={element.contentId}
                           {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
-                            ? // todo: theme
-                              { title: 'תגובות', id: 'commentsSection', }
+                            ? {
+                                title: theme.articleLayoutI18n.commentSectionTitle,
+                                id: 'commentsSection',
+                              }
                             : {})}
                         >
                           <Element

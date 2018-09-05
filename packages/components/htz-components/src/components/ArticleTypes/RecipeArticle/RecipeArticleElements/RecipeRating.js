@@ -28,11 +28,6 @@ const defaultProps = {
   recipeDifficultyLevel: null,
 };
 
-const levelText = {
-  easy: 'קל',
-  medium: 'בינוני',
-  hard: 'קשה',
-};
 function RecipeRating({
   miscStyles,
   totalCookTime,
@@ -40,15 +35,6 @@ function RecipeRating({
   recipeDifficultyLevel,
   reviewStars,
 }) {
-  const rows = [
-    ...(recipeDifficultyLevel
-      ? [ { icon: 'levels', highLightedText: 'דרגת קושי', text: levelText[recipeDifficultyLevel], }, ]
-      : []),
-    ...(numOfServings ? [ { icon: 'portions', highLightedText: 'מנות', text: numOfServings, }, ] : []),
-    ...(totalCookTime
-      ? [ { icon: 'clock', highLightedText: 'זמן בישול', text: totalCookTime, }, ]
-      : []),
-  ];
   return (
     <FelaComponent
       style={theme => ({
@@ -57,65 +43,96 @@ function RecipeRating({
         marginLeft: 'auto',
         extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
       })}
-    >
-      <FelaComponent
-        style={theme => ({
-          fontWeight: 'bold',
-          color: theme.color('neutral', '-2'),
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          extend: [
-            borderBottom('1px', 2, 'solid', theme.color('neutral', '-5')),
-            theme.type(-1),
-            theme.mq({ from: 'l', }, { flexDirection: 'column', alignItems: 'flex-start', }),
-          ],
-        })}
-      >
-        <div>דירוג הגולשים</div>
-        <div>
-          <Rating
-            newRating={rating => console.log(`got new rating: ${rating}`)}
-            rating={reviewStars}
-          />
-        </div>
-      </FelaComponent>
-      {rows.map(row => {
-        const icon = {
-          clock: <IconClock />,
-          portions: <IconPortions />,
-          levels: <IconLevels />,
-        };
+      render={({
+        className,
+        theme,
+        theme: {
+          recipeRatingI18n: { levelText, highlightedText, ratingTitle, },
+        },
+      }) => {
+        const rows = [
+          ...(recipeDifficultyLevel
+            ? [
+                {
+                  icon: 'levels',
+                  highLightedText: highlightedText.level,
+                  text: levelText[recipeDifficultyLevel],
+                },
+              ]
+            : []),
+          ...(numOfServings
+            ? [ { icon: 'portions', highLightedText: highlightedText.portions, text: numOfServings, }, ]
+            : []),
+          ...(totalCookTime
+            ? [ { icon: 'clock', highLightedText: highlightedText.time, text: totalCookTime, }, ]
+            : []),
+        ];
         return (
-          <FelaComponent
-            style={theme => ({
-              display: 'flex',
-              alignItems: 'center',
-              extend: [
-                theme.type(-2),
-                borderBottom('1px', 2, 'solid', theme.color('neutral', '-5')),
-                borderTop('1px', 1, 'solid', 'transparent'),
-              ],
-            })}
-          >
+          <div className={className}>
             <FelaComponent
-              style={theme => ({
-                color: theme.color('primary'),
-                marginInlineEnd: '1rem',
-                extend: [ theme.type(2), ],
-              })}
-              render="span"
+              style={{
+                fontWeight: 'bold',
+                color: theme.color('neutral', '-2'),
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                extend: [
+                  borderBottom('1px', 2, 'solid', theme.color('neutral', '-5')),
+                  theme.type(-1),
+                  theme.mq({ from: 'l', }, { flexDirection: 'column', alignItems: 'flex-start', }),
+                ],
+              }}
             >
-              {icon[row.icon]}
+              <div>{theme.recipeRatingI18n.ratingTitle}</div>
+              <div>
+                <Rating
+                  newRating={rating => console.log(`got new rating: ${rating}`)}
+                  rating={reviewStars}
+                />
+              </div>
             </FelaComponent>
-            <FelaComponent style={{ fontWeight: 'bold', marginInlineEnd: '1rem', }} render="span">
-              {row.highLightedText}:
-            </FelaComponent>
-            <span>{row.text}</span>
-          </FelaComponent>
+            {rows.map(row => {
+              const icon = {
+                clock: <IconClock />,
+                portions: <IconPortions />,
+                levels: <IconLevels />,
+              };
+              return (
+                <FelaComponent
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    extend: [
+                      theme.type(-2),
+                      borderBottom('1px', 2, 'solid', theme.color('neutral', '-5')),
+                      borderTop('1px', 1, 'solid', 'transparent'),
+                    ],
+                  }}
+                >
+                  <FelaComponent
+                    style={{
+                      color: theme.color('primary'),
+                      marginInlineEnd: '1rem',
+                      extend: [ theme.type(2), ],
+                    }}
+                    render="span"
+                  >
+                    {icon[row.icon]}
+                  </FelaComponent>
+                  <FelaComponent
+                    style={{ fontWeight: 'bold', marginInlineEnd: '1rem', }}
+                    render="span"
+                  >
+                    {row.highLightedText}:
+                  </FelaComponent>
+                  <span>{row.text}</span>
+                </FelaComponent>
+              );
+            })}
+          </div>
         );
-      })}
-    </FelaComponent>
+      }}
+    />
   );
 }
 

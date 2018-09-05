@@ -86,9 +86,6 @@ function RecipeArticle({ articleId, slots, }) {
               render={theme => (
                 <LayoutContainer
                   tagName="article"
-                  // miscStyles={{
-                  //   display: [ { from: 'l', value: 'flex', }, ],
-                  // }}
                 >
                   <Head>
                     <meta name="title" content={metaTitle} />
@@ -228,8 +225,8 @@ function RecipeArticle({ articleId, slots, }) {
                           <ArticleLayoutRow
                             key={element.contentId}
                             {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
-                              ? // todo: theme
-                                { title: 'תגובות', id: 'commentsSection', }
+                              ?
+                                { title: theme.articleLayoutI18n.commentSectionTitle, id: 'commentsSection', }
                               : {})}
                           >
                             <Element

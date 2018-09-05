@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, FelaTheme, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import Section from '../../../AutoLevels/Section';
 import H from '../../../AutoLevels/H';
@@ -17,22 +17,28 @@ const defaultProps = {};
 
 function Ingredients({ ingredientLists, }) {
   return (
-    <FelaTheme
-      render={theme => (
-        <Section>
+    <FelaComponent
+      style={theme => ({
+        marginTop: '4rem',
+        maxWidth: theme.articleStyle.body.maxWidth,
+        marginRight: 'auto',
+        marginLeft: 'auto',
+      })}
+      render={({ theme, className, }) => (
+        <Section className={className}>
           <FelaComponent
             style={{
               fontWeight: 'bold',
               color: theme.color('primary'),
-              marginBottom: '2rem',
+              marginBottom: '3rem',
               maxWidth: '41rem',
               extend: [ theme.type('2'), borderBottom('2px', 1, 'solid', theme.color('primary')), ],
             }}
-            render="h3"
-          >
-            {theme.recipeIngredientsI18n.sectionTitle}
-          </FelaComponent>
-          <div>
+            render={({ className, }) => (
+              <H className={className}>{theme.recipeIngredientsI18n.sectionTitle}</H>
+            )}
+          />
+          <Section>
             {ingredientLists.map(list => (
               <div key={list.header || list.ingredients[0]}>
                 {list.header ? (
@@ -70,7 +76,7 @@ function Ingredients({ ingredientLists, }) {
                 </ul>
               </div>
             ))}
-          </div>
+          </Section>
         </Section>
       )}
     />

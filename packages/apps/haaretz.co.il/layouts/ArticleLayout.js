@@ -34,7 +34,7 @@ const WelcomePage = dynamic(import('../components/WelcomePage/WelcomePage'), {
   ssr: false,
 });
 
-export class ArticleLayout extends React.Component {
+class ArticleLayout extends React.Component {
   static propTypes = {
     /**
      * The render function of the Layout, should return react elements,

@@ -1,4 +1,3 @@
-/* global sessionStorage localStorage */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { RecipeArticle, } from '@haaretz/htz-components';
