@@ -5,6 +5,7 @@ import {
   GraphQLString,
   GraphQLList,
   GraphQLID,
+  GraphQLFloat,
 } from 'graphql';
 import getSchema from '../getSchema';
 
@@ -16,6 +17,10 @@ import htmlElement from './html_element_type';
 import embed from './embed_type';
 import image from './image_type';
 import video from './video_type';
+
+// recipe types
+import recipeInstructions from './recipe_instructions_type';
+import recipeIngredients from './recipe_ingredients_type';
 
 const ArticleData = new GraphQLObjectType({
   name: 'ArticleData',
@@ -53,8 +58,7 @@ const ArticleData = new GraphQLObjectType({
       type: new GraphQLUnionType({
         name: 'HeadlineElement',
         types: [ embed, htmlElement, image, imageGallery, video, ],
-        resolveType: value =>
-          getSchema(value.elementType || value.inputTemplate),
+        resolveType: value => getSchema(value.elementType || value.inputTemplate),
       }),
     },
     authors: { type: new GraphQLList(author), },
@@ -63,6 +67,14 @@ const ArticleData = new GraphQLObjectType({
     contentId: { type: GraphQLID, },
     contentName: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },
+
+    reviewStars: { type: GraphQLFloat, },
+    // recipe article related
+    instructions: { type: recipeInstructions, },
+    ingredients: { type: recipeIngredients, },
+    totalCookTime: { type: GraphQLString, },
+    numOfServings: { type: GraphQLString, },
+    recipeDifficultyLevel: { type: GraphQLString, },
   }),
 });
 
