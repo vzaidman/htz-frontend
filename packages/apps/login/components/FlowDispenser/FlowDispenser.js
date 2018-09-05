@@ -1,23 +1,10 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import generalFlows from './generalFlows';
+import flows from './flows';
 
-const flowDispenserPropTypes = {
-  render: PropTypes.func.isRequired,
-  isUser: PropTypes.bool.isRequired,
-  isEmailValid: PropTypes.bool.isRequired,
-  isPhoneValid: PropTypes.bool.isRequired,
-  isPhoneConnectedWithEmail: PropTypes.bool.isRequired,
-  isPremiumUser: PropTypes.bool.isRequired,
-};
+const flowDispenserPropTypes = { render: PropTypes.func.isRequired, };
 
-const FlowDispenser = ({
-  render,
-  isUser,
-  isEmailValid,
-  isPhoneValid,
-  isPhoneConnectedWithEmail,
-  isPremiumUser,
-}) => {
+const FlowDispenser = ({ render, }) => {
   const dataToFlowMapper = new Map([
     [ '11110', 1, ], // all connected, not paying
     [ '11111', 1, ], // all connected, paying
@@ -29,19 +16,30 @@ const FlowDispenser = ({
     [ '10101', 6, ], // mail not valid, phone valid, paying.
   ]);
 
-  const generateDataString = () => [
-    isUser ? 1 : 0,
+  const generateDataString = ({
+    isUserExist,
+    isEmailValid,
+    isPhoneValid,
+    isPhoneConnectedWithEmail,
+    isPremiumUser,
+  }) => [
+    isUserExist ? 1 : 0,
     isEmailValid ? 1 : 0,
     isPhoneValid ? 1 : 0,
     isPhoneConnectedWithEmail ? 1 : 0,
     isPremiumUser ? 1 : 0,
   ].join('');
 
-  const resolveFlowNumber = () => dataToFlowMapper(generateDataString());
+  const resolveFlowNumber = data => {
+    const dataString = generateDataString(data);
+    console.log(dataString);
+    return dataToFlowMapper.get(dataString);
+  };
 
-  const getFlow = () => {
-    const flowNumber = resolveFlowNumber();
-
+  const getFlow = data => {
+    const flowNumber = resolveFlowNumber(data);
+    console.log('flow number: ' + flowNumber);
+    return { ...generalFlows, ...(flows[flowNumber]), };
   };
 
   return render({ getFlow, });
