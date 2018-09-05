@@ -10,10 +10,10 @@ const OtpValidation = () => (
       <Fragment>
         otp validation <br />
         <HtzLink
-          href={`${findRout('actionx')}`}
+          href={`${findRout('accept')}`}
           onClick={e => {
             e.preventDefault();
-            const route = doTransition('actionx');
+            const route = doTransition('accept');
             console.warn(`before push, new state is: ${currentState()}. route is: ${route}`);
             Router.push(route);
           }}
