@@ -2,11 +2,12 @@
 import React from 'react';
 import type { Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
-import { IconBack, HtzLink } from '@haaretz/htz-components';
+import { IconBack, HtzLink, } from '@haaretz/htz-components';
 
 import StockTable from '../StockTable/StockTable';
 import GraphController from '../GraphController/GraphController';
 import type { StockData, } from '../StockTable/StockTable';
+import Redirect from '../Redirect/Redirect';
 
 type Props = {};
 
@@ -73,36 +74,18 @@ class TableGraphConnector extends React.Component<Props, State> {
             selectedStockName={name}
             changeTime={this.changeTime}
           />
-          <FelaComponent
-            style={theme => ({
-              ...theme.type(-2),
-              backgroundColor: theme.color('neutral', '-5'),
-              color: theme.color('neutral', '-1'),
-              display: 'block',
-              fontWeight: '700',
-              paddingBottom: '1rem',
-              paddingTop: '1rem',
-              textAlign: 'center',
-              ':before': {
-                content: '"למידע נוסף על "',
+          <Redirect
+            href={{
+              pathname: `/${section || ''}`,
+              query: {
+                id: indexId,
               },
-            })}
-            render={({ className, }) => (
-              <HtzLink
-                href={{
-                  pathname: `/${section || ''}`,
-                  query: {
-                    id: indexId,
-                  },
-                }}
-                asPath={`/${section || ''}/${name || ''}`}
-                className={className}
-              >
-                {name}
-                <IconBack size={-1} />
-              </HtzLink>
-            )}
-          />
+            }}
+            as={`/${section || ''}/${name || ''}`}
+          >
+            <span>למידע נוסף על {name}</span>
+            <IconBack size={-1} />
+          </Redirect>
         </FelaComponent>
       </FelaComponent>
     );
