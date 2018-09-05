@@ -1,34 +1,13 @@
 import React from 'react';
 import Router from 'next/router';
-import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
-
-const CURRENT_STATE = gql`
-  query CurrentState {
-    currentState @client
-  }
-`;
-
-const HISTORY_POINTER = gql`
-  query HistoryPointer {
-    historyPointer @client
-  }
-`;
-
-const HISTORY = gql`
-  query StateHistory {
-    stateHistory @client {
-      pastState
-      pastTransition
-    }
-  }
-`;
+import { CURRENT_STATE, HISTORY_POINTER, HISTORY, } from '../../pages/queries/FiniteStateMachineQueries';
 
 const finiteStateMachinePropTypes = {
   render: PropTypes.func.isRequired,
   initialState: PropTypes.string.isRequired,
   initialTransition: PropTypes.string.isRequired,
-  statesGraph: PropTypes.objectOf(PropTypes.object).isRequired,
+  statesGraph: PropTypes.objectOf(PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ])).isRequired,
   transitionRouteMap: PropTypes.objectOf(PropTypes.any).isRequired,
   apolloClient: PropTypes.shape().isRequired,
 };
