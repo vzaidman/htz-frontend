@@ -2,6 +2,7 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { Query, } from 'react-apollo';
+import { FelaComponent, } from 'react-fela';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { htzTheme, } from '@haaretz/htz-theme';
 import { createLogger, } from '@haaretz/app-utils';
@@ -9,7 +10,6 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import {
   AriaLive,
-  ArticlePageLayout,
   DeviceTypeInjector,
   GoogleAnalytics,
   PageSchema,
@@ -34,8 +34,13 @@ const WelcomePage = dynamic(import('../components/WelcomePage/WelcomePage'), {
   ssr: false,
 });
 
-export class ArticlePage extends React.Component {
+export class ArticleLayout extends React.Component {
   static propTypes = {
+    /**
+     * The render function of the Layout, should return react elements,
+     * The render prop function is passed a Object with articleId and slots properties
+     */
+    render: PropTypes.func.isRequired,
     /**
      * An object containing route information from Next, such as the `pathname`
      * and `query` object.
@@ -55,9 +60,7 @@ export class ArticlePage extends React.Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const nextArticleId = nextProps.url.query.path.match(
-      /(?:.*-?)(1\.\d+.*)/
-    )[1];
+    const nextArticleId = nextProps.url.query.path.match(/(?:.*-?)(1\.\d+.*)/)[1];
 
     if (!prevState.articleId || prevState.articleId !== nextArticleId) {
       return { articleId: nextArticleId, };
@@ -90,10 +93,7 @@ export class ArticlePage extends React.Component {
     const history = JSON.parse(sessionStorage.getItem('readingHistory')) || [];
     if (!history.includes(articleId)) {
       history.push(articleId);
-      sessionStorage.setItem(
-        'readingHistory',
-        JSON.stringify(history, null, 2)
-      );
+      sessionStorage.setItem('readingHistory', JSON.stringify(history, null, 2));
     }
   };
 
@@ -106,7 +106,7 @@ export class ArticlePage extends React.Component {
   };
 
   render() {
-    const { url, } = this.props;
+    const { url, render, } = this.props;
     return (
       <Query query={ArticleInitQuery} variables={{ path: url.query.path, }}>
         {({ loading, error, data, client, }) => {
@@ -128,9 +128,9 @@ export class ArticlePage extends React.Component {
               },
             },
           });
-          const titleSEO = `${lineage[0].name} - ${
-            lineage[1] ? lineage[1].name : ''
-          } - ${lineage.length > 2 ? lineage[lineage.length - 1].name : ''}`;
+          const titleSEO = `${lineage[0].name} - ${lineage[1] ? lineage[1].name : ''} - ${
+            lineage.length > 2 ? lineage[lineage.length - 1].name : ''
+          }`;
           return (
             <Fragment>
               <Head>
@@ -145,10 +145,15 @@ export class ArticlePage extends React.Component {
                 <Fragment>
                   <AriaLive />
                   <DeviceTypeInjector />
-                  <ArticlePageLayout
-                    articleId={this.props.url.query.path}
-                    slots={slots}
-                  />
+                  <FelaComponent
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      minHeight: '100vh',
+                    }}
+                  >
+                    {render({ articleId: this.props.url.query.path, slots, })}
+                  </FelaComponent>
                   <WelcomePage />
                 </Fragment>
               </StyleProvider>
@@ -162,4 +167,4 @@ export class ArticlePage extends React.Component {
   }
 }
 
-export default ArticlePage;
+export default ArticleLayout;

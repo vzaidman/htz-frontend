@@ -65,6 +65,7 @@ function HeadlineElement({ elementObj, miscStyles, }) {
   return (
     <FelaComponent
       style={theme => ({
+        marginBottom: '4rem',
         extend: [
           // Trump all other styles with those defined in `miscStyles`
           ...(miscStyles
@@ -90,6 +91,7 @@ function HeadlineElement({ elementObj, miscStyles, }) {
 }
 
 HeadlineElement.propTypes = propTypes;
+
 HeadlineElement.defaultProps = defaultProps;
 
 export default HeadlineElement;

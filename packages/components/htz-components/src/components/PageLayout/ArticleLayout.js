@@ -10,8 +10,7 @@ import LayoutRow from './LayoutRow'; // eslint-disable-line import/no-named-as-d
 import LayoutContainer from './LayoutContainer'; // eslint-disable-line import/no-named-as-default
 import getComponent from '../../utils/componentFromInputTemplate';
 import Masthead from './slots/Masthead';
-import StandardArticle from './articleTypes/StandardArticle';
-import StandardArticleQuery from './queries/standard_article';
+import ArticleBIQuery from './queries/article_bi';
 import UserDispenser from '../User/UserDispenser';
 import OptOutStrip from '../OptOut/OptOutStrip';
 
@@ -40,11 +39,16 @@ const propTypes = {
    * Article's ID
    */
   articleId: PropTypes.string.isRequired,
+  /**
+   * children of ArticleLayout
+   */
+  children: PropTypes.element.isRequired,
 };
 
 const ArticlePageLayout = ({
   slots: { preHeader, header, postHeader, postMain, footer, },
   articleId,
+  children,
 }) => {
   const getElements = slot =>
     slot.map(element => {
@@ -82,13 +86,21 @@ const ArticlePageLayout = ({
           </LayoutContainer>
         ) : null}
       </LayoutRow>
-      <Query query={StandardArticleQuery} variables={{ path: articleId, }}>
+      <LayoutRow tagName="main" id="pageRoot" miscStyles={{ flexGrow: 1, }}>
+        {children}
+      </LayoutRow>
+      {postMain ? (
+        <LayoutRow miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}>
+          {getElements(postMain)}
+        </LayoutRow>
+      ) : null}
+      {footer ? <LayoutRow> {getElements(footer)} </LayoutRow> : null}
+      <Query query={ArticleBIQuery} variables={{ path: articleId, }} ssr={false}>
         {({ loading, error, data, client, }) => {
           if (loading) return null;
           if (error) return null;
           const {
-            slots: { article, aside, },
-            seoData,
+            slots: { article, },
             seoData: { canonicalUrl, },
           } = data.page;
           client.writeData({
@@ -98,20 +110,6 @@ const ArticlePageLayout = ({
           });
           return (
             <Fragment>
-              <LayoutRow tagName="main" id="pageRoot">
-                <StandardArticle
-                  articleId={articleId}
-                  article={article}
-                  aside={aside}
-                  seoData={seoData}
-                />
-              </LayoutRow>
-              {postMain ? (
-                <LayoutRow miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}>
-                  {getElements(postMain)}
-                </LayoutRow>
-              ) : null}
-              {footer ? <LayoutRow> {getElements(footer)} </LayoutRow> : null}
               <BIRequest articleId={articleId} authors={extractAuthorsFromArticle(article)} />
               <UserDispenser
                 render={({ user, isLoggedIn, }) => {

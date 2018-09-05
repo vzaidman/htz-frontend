@@ -1,8 +1,14 @@
 /* eslint-disable import/no-named-as-default, import/no-unresolved */
+
 /** *************************************** *
  *       C  O  M  P  O  N  E  N  T  S       *
  * **************************************** */
 
+// Articles
+import RecipeArticle from './components/ArticleTypes/RecipeArticle/RecipeArticle';
+import StandardArticle from './components/ArticleTypes/StandardArticle/StandardArticle';
+
+// components
 import A11yDialog from './components/A11yDialog/A11yDialog';
 import A11yError from './components/A11yError/A11yError';
 import ActionButtons from './components/ActionButtons/ActionButtons';
@@ -49,7 +55,6 @@ import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import RadioButton from './components/RadioButton/RadioButton';
 import RadioGroup from './components/RadioButton/RadioGroup';
 import RouteChangeListener from './components/EventListeners/RouteChangeListener';
-import ArticlePageLayout from './components/PageLayout/ArticlePageLayout';
 import Scroll from './components/Scroll/Scroll';
 import ScrollListener from './components/EventListeners/ScrollListener';
 import Section from './components/AutoLevels/Section';
@@ -150,6 +155,10 @@ import BIRequest from './components/BI/BIRequest';
 import EventTracker from './utils/EventTracker';
 
 export {
+  // ArticleTypes
+  StandardArticle,
+  RecipeArticle,
+  // Components
   A11yDialog,
   A11yError,
   ActionButtons,
@@ -199,7 +208,6 @@ export {
   Section,
   Select,
   SeriesArticles,
-  ArticlePageLayout,
   Tags,
   TextInput,
   TextLink,

@@ -150,7 +150,7 @@ function ArticleBody({ body, }) {
   return (
     <FelaComponent
       style={theme => ({
-        maxWidth: '90rem',
+        maxWidth: theme.articleStyle.body.maxWidth,
         marginRight: 'auto',
         marginLeft: 'auto',
       })}

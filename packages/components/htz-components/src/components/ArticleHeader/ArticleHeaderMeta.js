@@ -31,6 +31,7 @@ const wrapperStyle = ({ theme, miscStyles, }) => ({
     theme.mq(
       { until: 's', },
       {
+        flexGrow: 1,
         justifyContent: 'space-between',
         ...borderVertical({
           width: '1px',

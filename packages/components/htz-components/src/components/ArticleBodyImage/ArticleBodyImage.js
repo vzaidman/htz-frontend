@@ -138,14 +138,6 @@ const wrapperStyle = ({
   isFullScreen,
 }) => ({
   position: 'relative',
-  ...(!lastItem && !isHeadline
-    ? parseComponentProp(
-      'marginBottom',
-      theme.articleStyle.body.marginBottom,
-      theme.mq,
-      mediaQueryCallback
-    )
-    : []),
   display: 'block',
   width: '100%',
   height: '100%',
@@ -157,19 +149,29 @@ const wrapperStyle = ({
       justifyContent: 'center',
     }
     : {}),
-  ...theme.mq(
-    { from: 's', misc: 'portrait', },
-    {
-      ...(isFullScreen ? { display: 'block', } : {}),
-    }
-  ),
-  ...theme.mq(
-    { from: 'm', misc: 'landscape', },
-    {
-      ...(isFullScreen ? { display: 'block', } : {}),
-    }
-  ),
   extend: [
+    theme.mq(
+      { from: 's', misc: 'portrait', },
+      {
+        ...(isFullScreen ? { display: 'block', } : {}),
+      }
+    ),
+    theme.mq(
+      { from: 'm', misc: 'landscape', },
+      {
+        ...(isFullScreen ? { display: 'block', } : {}),
+      }
+    ),
+    ...(!lastItem && !isHeadline
+      ? [
+        parseComponentProp(
+          'marginBottom',
+          theme.articleStyle.body.marginBottom,
+          theme.mq,
+          mediaQueryCallback
+        ),
+      ]
+      : []),
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
     viewMode === 'OneThirdView' && !isFullScreen
       ? {
