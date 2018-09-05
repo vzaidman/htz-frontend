@@ -17,6 +17,7 @@ import typeConf from './consts/typeConf';
 import {
   a11yMenuI18n,
   alertsI18n,
+  articleLayoutI18n,
   breadcrumbsI18n,
   clickTrackerI18n,
   commentI18n,
@@ -40,6 +41,7 @@ import {
   readingListMenuI18n,
   recipeIngredientsI18n,
   recipeInstructionsI18n,
+  recipeRatingI18n,
   seriesArticleI18n,
   serviceByMailI18n,
   tagsElementI18n,
@@ -92,6 +94,7 @@ const htzTheme = Object.freeze({
   // I18n
   a11yMenuI18n,
   alertsI18n,
+  articleLayoutI18n,
   breadcrumbsI18n,
   clickTrackerI18n,
   commentI18n,
@@ -115,6 +118,7 @@ const htzTheme = Object.freeze({
   readingListMenuI18n,
   recipeIngredientsI18n,
   recipeInstructionsI18n,
+  recipeRatingI18n,
   seriesArticleI18n,
   serviceByMailI18n,
   tagsElementI18n,
