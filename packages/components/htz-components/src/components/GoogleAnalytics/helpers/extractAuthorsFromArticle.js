@@ -1,18 +1,9 @@
 export function extractAuthorsFromArticle(article) {
-  const ArticleAuthors = article.reduce(
-    (authors, articleItem) =>
-      // pluck the authors object
-      (articleItem.inputTemplate === 'com.htz.StandardArticle'
-        ? [
-          ...authors,
-          // extract the author names
-          ...articleItem.authors.map(
-            authorData => authorData.contentName || authorData.name
-          ),
-        ]
-        : authors),
-    []
-  );
-
-  return `${ArticleAuthors}`;
+  const authors = article.reduce((result, slot) => {
+    if (slot.authors) {
+      result.push(slot.authors.map(author => author.name || author.contentName).join());
+    }
+    return result;
+  }, []);
+  return authors.join();
 }
