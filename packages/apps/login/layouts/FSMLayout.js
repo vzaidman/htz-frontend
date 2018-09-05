@@ -9,29 +9,23 @@ import styleRenderer from '../components/styleRenderer/styleRenderer';
 import { StyleProvider } from '@haaretz/fela-utils';
 import theme from '../theme';
 import { Query, } from '@haaretz/htz-components';
-import GET_HOST from '../pages/queries/GetHost'
+import GET_FSM_DATA from '../pages/queries/GetFsmData';
 
 const FSMLayout = ({ children }) => (
   <Fragment>
-    <Query query={GET_HOST}>
+    <Query query={GET_FSM_DATA}>
       {({ loading, error, data, client, }) => {
         if (loading) return null;
         const host = data.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+        const flow = JSON.parse(data.userFlowJson);
+
         return (
           <Fragment>
             <FiniteStateMachine
               apolloClient={client}
-              initialState="otpValidation"
-              initialTransition="/otpValidation"
-              statesGraph={{
-                initial: {
-                  action1: 'otpValidation',
-                  action2: 'state2',
-                },
-                otpValidation: {
-                  actionx: 'initial',
-                },
-              }}
+              initialState={flow.initialState}
+              initialTransition={flow.initialTransition}
+              statesGraph={flow}
               transitionRouteMap={
                 new Map([
                   ['initial-state1', '/resetPassword'],
