@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import type { ChildrenArray, StatelessFunctionalComponent } from 'react';
+import type { ChildrenArray, StatelessFunctionalComponent, Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import { HtzLink, } from '@haaretz/htz-components';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
@@ -11,7 +11,7 @@ type Props = {
     query: Object,
   },
   as?: string,
-  children: ChildrenArray<any> | any,
+  children: ChildrenArray<Node> | Node,
   miscStyles? : Object,
 }
 

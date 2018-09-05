@@ -1,11 +1,11 @@
 // @flow
 import React from 'react';
-import type { StatelessFunctionalComponent, ChildrenArray, } from 'react';
+import type { StatelessFunctionalComponent, ChildrenArray, Node, } from 'react';
 
 type Props = {
   className?: string,
   render?: string,
-  children: ChildrenArray<any> | any,
+  children: ChildrenArray<Node> | Node,
   selected: boolean,
   controls: string,
   presentation: boolean,
