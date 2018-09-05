@@ -29,6 +29,7 @@ const linksBlockLink = Object.freeze({
 
 const body = Object.freeze({
   marginBottom: [ { until: 'xl', value: '4rem', }, { from: 'xl', value: '3rem', }, ],
+  maxWidth: '90rem',
   width: [
     { from: 's', until: 'l', value: '80rem', },
     { from: 'l', until: 'xl', value: '70.5rem', },

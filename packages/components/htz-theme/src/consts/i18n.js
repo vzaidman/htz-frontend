@@ -303,6 +303,13 @@ export const mobileReadingList = Object.freeze({
   buttonText: 'רשימת הקריאה',
 });
 
+
 export const selectAriaLabel = Object.freeze({
   text: 'פתח תפריט',
+});
+export const recipeInstructionsI18n = Object.freeze({
+  sectionTitle: 'הוראות הכנה',
+});
+export const recipeIngredientsI18n = Object.freeze({
+  sectionTitle: 'רכיבים',
 });
