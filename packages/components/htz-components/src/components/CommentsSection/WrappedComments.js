@@ -46,12 +46,7 @@ class CommentsWithApollo extends React.Component {
       });
   };
 
-  initNewComment = (
-    commentAuthor,
-    commentText,
-    parentCommentId,
-    submitNewComment
-  ) => {
+  initNewComment = (commentAuthor, commentText, parentCommentId, submitNewComment) => {
     const articleId = this.props.articleId;
     const commentElementId = this.props.contentId;
     submitNewComment({
@@ -135,17 +130,9 @@ class CommentsWithApollo extends React.Component {
                                 this.initVote(commentId, group, submitNewVote);
                               }}
                               reportAbuse={(commentId, captchaKey) => {
-                                this.initReportAbuse(
-                                  commentId,
-                                  captchaKey,
-                                  reportAbuse
-                                );
+                                this.initReportAbuse(commentId, captchaKey, reportAbuse);
                               }}
-                              initNewComment={(
-                                commentAuthor,
-                                commentText,
-                                parentCommentId
-                              ) => {
+                              initNewComment={(commentAuthor, commentText, parentCommentId) => {
                                 this.initNewComment(
                                   commentAuthor,
                                   commentText,
@@ -154,22 +141,17 @@ class CommentsWithApollo extends React.Component {
                                 );
                               }}
                               signUpNotification={email =>
-                                this.initSignUpNotificationEmail(
-                                  email,
-                                  submitNotificationEmail
-                                )
+                                this.initSignUpNotificationEmail(email, submitNotificationEmail)
                               }
-                              loadAllComments={() =>
-                                this.handleLoadAllComments(fetchMore)
-                              }
-                              comments={commentsElement.comments}
+                              loadAllComments={() => this.handleLoadAllComments(fetchMore)}
+                              comments={commentsElement ? commentsElement.comments : []}
                               commentsPlusRate={
-                                commentsElement.commentsPlusRate
+                                commentsElement ? commentsElement.commentsPlusRate : null
                               }
                               commentsMinusRate={
-                                commentsElement.commentsMinusRate
+                                commentsElement ? commentsElement.commentsMinusRate : null
                               }
-                              totalHits={commentsElement.totalHits}
+                              totalHits={commentsElement ? commentsElement.totalHits : 0}
                             />
                           )}
                         </Mutation>
@@ -192,10 +174,7 @@ function WrappedComments() {
       {({ data: { articleId, commentsElementId, }, }) => {
         logger.trace('article id', articleId);
         return articleId ? (
-          <CommentsWithApollo
-            articleId={articleId}
-            contentId={commentsElementId}
-          />
+          <CommentsWithApollo articleId={articleId} contentId={commentsElementId} />
         ) : null;
       }}
     </Query>
