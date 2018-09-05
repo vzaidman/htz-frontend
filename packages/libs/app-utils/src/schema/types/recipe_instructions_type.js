@@ -14,25 +14,14 @@ const Instructions = new GraphQLList(
     fields: () => ({
       contentId: { type: GraphQLString, },
       inputTemplate: { type: GraphQLString, },
-      recipeInstructions: {
-        type: new GraphQLList(
-          new GraphQLObjectType({
-            name: 'InstructionsElement',
-            fields: () => ({
-              contentId: { type: GraphQLString, },
-              inputTemplate: { type: GraphQLString, },
-              body: {
-                type: new GraphQLList(new GraphQLUnionType({
-                  name: 'InstructionsBody',
-                  types: [ content, embed, image, paragraph, ],
-                  resolveType: value =>
-                    getSchema(value.tag ? 'paragraph' : value.elementType || value.inputTemplate) ||
-                    content,
-                })),
-              },
-            }),
-          })
-        ),
+      body: {
+        type: new GraphQLList(new GraphQLUnionType({
+          name: 'InstructionsBody',
+          types: [ content, embed, image, paragraph, ],
+          resolveType: value =>
+            getSchema(value.tag ? 'paragraph' : value.elementType || value.inputTemplate) ||
+            content,
+        })),
       },
     }),
   })

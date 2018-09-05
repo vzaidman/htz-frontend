@@ -140,21 +140,18 @@ export default gql`
             }
             instructions {
               contentId
-              recipeInstructions {
-                contentId
-                body {
-                  ... on Content {
-                    ...Content
-                  }
-                  ... on Embed {
-                    ...Embed
-                  }
-                  ... on Image {
-                    ...Image
-                  }
-                  ... on Paragraph {
-                    ...Paragraph
-                  }
+              body {
+                ... on Content {
+                  ...Content
+                }
+                ... on Embed {
+                  ...Embed
+                }
+                ... on Image {
+                  ...Image
+                }
+                ... on Paragraph {
+                  ...Paragraph
                 }
               }
             }

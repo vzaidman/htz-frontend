@@ -1,6 +1,6 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, FelaTheme, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 import Section from '../../../AutoLevels/Section';
 import H from '../../../AutoLevels/H';
@@ -29,14 +29,20 @@ const defaultProps = {};
 
 function Instructions({ instructions, }) {
   return (
-    <FelaTheme
-      render={theme => (
-        <Section>
+    <FelaComponent
+      style={theme => ({
+        marginTop: '4rem',
+        maxWidth: theme.articleStyle.body.maxWidth,
+        marginRight: 'auto',
+        marginLeft: 'auto',
+      })}
+      render={({ theme, className, }) => (
+        <Section className={className}>
           <FelaComponent
             style={{
               fontWeight: 'bold',
               color: theme.color('primary'),
-              marginBottom: '2rem',
+              marginBottom: '3rem',
               maxWidth: '41rem',
               extend: [ theme.type('2'), borderBottom('2px', 1, 'solid', theme.color('primary')), ],
             }}
@@ -45,12 +51,8 @@ function Instructions({ instructions, }) {
             )}
           />
           <div>
-            {instructions.map(instructionsList => (
-              <Fragment key={instructionsList.contentId}>
-                {instructionsList.recipeInstructions.map(instructionsBody => (
-                  <ArticleBody key={instructionsBody.contentId} body={instructionsBody.body} />
-                ))}
-              </Fragment>
+            {instructions.map(instructionsBody => (
+              <ArticleBody key={instructionsBody.contentId} body={instructionsBody.body} />
             ))}
           </div>
         </Section>

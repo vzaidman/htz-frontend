@@ -9,10 +9,7 @@ import Zen from '../Zen/Zen';
 
 const paragraphStyle = theme => ({
   marginBottom: '3rem',
-  extend: [
-    theme.type(1, { untilBp: 'xl', lines: 5, }),
-    theme.type(0, { fromBp: 'xl', lines: 5, }),
-  ],
+  extend: [ theme.type(1, { untilBp: 'xl', lines: 5, }), theme.type(0, { fromBp: 'xl', lines: 5, }), ],
 });
 
 // eslint-disable-next-line react/prop-types
@@ -222,11 +219,7 @@ export default function Paragraph({ renderFirstImpression, ...props }) {
   const Content = ({ content, }) => {
     const attributesObject = extractAttributes(content.attributes);
     return (
-      <WrapperTag
-        tag={content.tag}
-        attributes={attributesObject}
-        content={content.content}
-      >
+      <WrapperTag tag={content.tag} attributes={attributesObject} content={content.content}>
         {content.content.map((tag, index) => (
           <Content
             key={index} // eslint-disable-line react/no-array-index-key
@@ -240,7 +233,9 @@ export default function Paragraph({ renderFirstImpression, ...props }) {
   const genChildren = tagElements =>
     tagElements.map(
       (tag, index) =>
-        (tag.content ? (
+        (tag.tag === 'br' ? (
+          <br />
+        ) : tag.content ? (
           <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
         ) : (
           tag.attributes[0].value
@@ -271,12 +266,9 @@ export default function Paragraph({ renderFirstImpression, ...props }) {
        */
       attributes.content = genChildren(tagElements); // eslint-disable-line no-param-reassign
     }
-
+    if (tagName === 'br') return Tag;
     return Tag ? (
-      <Tag
-        {...attributes}
-        {...(tagName === 'p' ? { renderFirstImpression, } : {})}
-      >
+      <Tag {...attributes} {...(tagName === 'p' ? { renderFirstImpression, } : {})}>
         {genChildren(tagElements)}
       </Tag>
     ) : null;
