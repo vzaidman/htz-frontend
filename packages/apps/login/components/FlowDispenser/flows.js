@@ -1,5 +1,6 @@
 export default ({
   1: {
+    flowNumber: 1,
     initialState: 'otpValidation',
     initialTransition: '/otpValidation',
     transitionRouteMap: new Map([
@@ -32,6 +33,7 @@ export default ({
     },
   },
   2: {
+    flowNumber: 2,
     initialState: 'emailPhoneInput',
     initialTransition: '/emailPhoneInput',
     emailPhoneInput: {
@@ -48,6 +50,7 @@ export default ({
     },
   },
   3: {
+    flowNumber: 3,
     initialState: 'emailValidationSent',
     initialTransition: '/emailValidationSent',
     emailValidationSent: {
@@ -59,12 +62,14 @@ export default ({
     },
   },
   4: { // TODO complete flows
-
+    flowNumber: 4,
   },
   5: {
+    flowNumber: 5,
 
   },
   6: {
+    flowNumber: 6,
 
   },
 });
