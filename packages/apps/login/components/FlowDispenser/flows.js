@@ -2,6 +2,12 @@ export default ({
   1: {
     initialState: 'otpValidation',
     initialTransition: '/otpValidation',
+    transitionRouteMap: new Map([
+      [ '-otpValidation', '/otpValidation', ],
+      [ '-otpValidation2', '/otpValidation2', ],
+      [ '-password', '/password', ],
+      [ '-phoneInput', '/phoneInput', ],
+    ]),
     otpValidation: {
       sendAgain: 'otpValidation2',
       accept: 'success',
@@ -52,7 +58,7 @@ export default ({
       getCustomerService: 'customerService',
     },
   },
-  4: {
+  4: { // TODO complete flows
 
   },
   5: {

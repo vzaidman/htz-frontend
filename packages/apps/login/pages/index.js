@@ -12,6 +12,7 @@ import theme from '../theme/index';
 import GET_HOST from './queries/GetHost';
 import INSPECT_EMAIL from './queries/InspectEmail';
 import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
+import { storeFlowToApollo, } from '../components/FlowDispenser/flowStorage';
 
 const isEmailValid = email =>
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -43,9 +44,6 @@ const mockDataFromUserInfo = client => email => Promise.resolve({
   },
 });
 
-const saveFlowToApollo = client => flow =>
-  client.writeData({ data: { userFlowJson: JSON.stringify(flow), }, });
-
 const onSubmit = (client, getFlow) => ({ email, }) => {
   // getDataFromUserInfo(client)(email)
   mockDataFromUserInfo(client)(email) // TODO remove mock
@@ -53,7 +51,7 @@ const onSubmit = (client, getFlow) => ({ email, }) => {
       console.log(`data is: ${JSON.stringify(res.user)}, email is: ${email}`);
 
       const flow = getFlow(res.user);
-      saveFlowToApollo(client)(flow);
+      storeFlowToApollo(client)(flow);
       console.log(flow.initialTransition);
       Router.push(flow.initialTransition);
     })
