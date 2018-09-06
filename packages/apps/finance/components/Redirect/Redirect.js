@@ -2,7 +2,7 @@
 import React from 'react';
 import type { ChildrenArray, StatelessFunctionalComponent, Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
-import { HtzLink, } from '@haaretz/htz-components';
+import { HtzLink, IconBack, } from '@haaretz/htz-components';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 type Props = {
@@ -44,6 +44,7 @@ const Redirect:StatelessFunctionalComponent<Props> = ({
         className={className}
       >
         {children}
+        <IconBack size={-1} />
       </HtzLink>
     )}
   />

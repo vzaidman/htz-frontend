@@ -2,7 +2,6 @@
 import React from 'react';
 import type { Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
-import { IconBack, HtzLink, } from '@haaretz/htz-components';
 
 import StockTable from '../StockTable/StockTable';
 import GraphController from '../GraphController/GraphController';
@@ -42,10 +41,11 @@ class TableGraphConnector extends React.Component<Props, State> {
     const { indexId, name, section, } = this.state || {};
     return (
       <FelaComponent
-        style={{
+        style={theme => ({
           display: 'flex',
           marginTop: '2rem',
-        }}
+          backgroundColor: theme.color('neutral', '-10'),
+        })}
       >
         <FelaComponent
           style={{
@@ -84,7 +84,6 @@ class TableGraphConnector extends React.Component<Props, State> {
             as={`/${section || ''}/${name || ''}`}
           >
             <span>למידע נוסף על {name}</span>
-            <IconBack size={-1} />
           </Redirect>
         </FelaComponent>
       </FelaComponent>
