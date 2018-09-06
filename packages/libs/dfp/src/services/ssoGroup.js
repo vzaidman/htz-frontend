@@ -1,5 +1,7 @@
 /* global fetch localStorage */
 
+// TODO: receive baseUrl from config
+const baseUrl = 'https://ms-apps.themarker.com/haaretz-dfp/api';
 
 /**
  * async functions that fetchs the matching SSO-group-key for a logged-in user
@@ -9,12 +11,12 @@
  */
 const fetchSsoGroupKey = async ssoUserId => {
   // wait for header to fetch with body stream
-  const res = await fetch(`/ssoGroupKey?value=${ssoUserId}`, {
+  const res = await fetch(`${baseUrl}/getKeyByValue?value=${ssoUserId}`, {
     cache: 'no-cache',
   });
   // wait for body to fetch (and convert to json)
-  const fullRes = await res.json();
-  const result = fullRes.result;
+  const data = await res.json();
+  const result = data.result;
   if (result === 'item not found') {
     return null;
   }
