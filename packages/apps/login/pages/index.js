@@ -12,7 +12,7 @@ import theme from '../theme/index';
 import GET_HOST from './queries/GetHost';
 import INSPECT_EMAIL from './queries/InspectEmail';
 import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
-import { storeFlowToApollo, } from '../components/FlowDispenser/flowStorage';
+import { storeFlowNumber, } from '../components/FlowDispenser/flowStorage';
 
 const isEmailValid = email =>
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -44,14 +44,14 @@ const mockDataFromUserInfo = client => email => Promise.resolve({
   },
 });
 
-const onSubmit = (client, getFlow) => ({ email, }) => {
+const onSubmit = (client, getFlowByData) => ({ email, }) => {
   // getDataFromUserInfo(client)(email)
   mockDataFromUserInfo(client)(email) // TODO remove mock
     .then(res => {
       console.log(`data is: ${JSON.stringify(res.user)}, email is: ${email}`);
 
-      const flow = getFlow(res.user);
-      storeFlowToApollo(client)(flow);
+      const flow = getFlowByData(res.user);
+      storeFlowNumber(client)(flow.flowNumber);
       console.log(flow.initialTransition);
       Router.push(flow.initialTransition);
     })
@@ -70,12 +70,12 @@ const Index = () => (
               <Fragment>
                 <Header />
                 <FlowDispenser
-                  render={({ getFlow, }) => (
+                  render={({ getFlowByData, }) => (
                     <Form
                       clearFormAfterSubmit={false}
                           // initialValues={{ email: 'insert email' }}
                       validate={validateEmailInput}
-                      onSubmit={onSubmit(client, getFlow)}
+                      onSubmit={onSubmit(client, getFlowByData)}
                       render={({ getInputProps, handleSubmit, clearForm, }) => (
                         <div dir="rtl">
                           <TextInput
