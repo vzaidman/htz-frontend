@@ -9,7 +9,8 @@ import Header from '../layouts/Header';
 import Footer from '../layouts/Footer';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import theme from '../theme';
-import { getAndParseFlowFromApollo, } from '../components/FlowDispenser/flowStorage';
+import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
+import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
 import GET_HOST from '../pages/queries/GetHost';
 
 const fsmLayoutPropTypes = { children: PropTypes.func.isRequired, };
@@ -20,29 +21,34 @@ const FSMLayout = ({ children, }) => (
       {({ loading, error, data, client, }) => {
         if (loading) return null;
         const host = data.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-        const flow = getAndParseFlowFromApollo(client);
-
+        const flowNumber = getFlowNumber(client);
         return (
           <Fragment>
-            <FiniteStateMachine
-              apolloClient={client}
-              initialState={flow.initialState}
-              initialTransition={flow.initialTransition}
-              statesGraph={flow}
-              transitionRouteMap={flow.transitionRouteMap}
-              render={({ currentState, findRout, doTransition, }) => (
-                <StyleProvider renderer={styleRenderer} theme={theme(host)}>
-                  <Fragment>
-                    <Header />
-                    {children({
-                      currentState,
-                      findRout,
-                      doTransition,
-                    })}
-                    <Footer />
-                  </Fragment>
-                </StyleProvider>
-              )}
+            <FlowDispenser render={({ getFlowByFlowNumber, }) => {
+              const flow = getFlowByFlowNumber(flowNumber);
+              return (
+                <FiniteStateMachine
+                  apolloClient={client}
+                  initialState={flow.initialState}
+                  initialTransition={flow.initialTransition}
+                  statesGraph={flow}
+                  transitionRouteMap={flow.transitionRouteMap}
+                  render={({ currentState, findRout, doTransition, }) => (
+                    <StyleProvider renderer={styleRenderer} theme={theme(host)}>
+                      <Fragment>
+                        <Header />
+                        {children({
+                          currentState,
+                          findRout,
+                          doTransition,
+                        })}
+                        <Footer />
+                      </Fragment>
+                    </StyleProvider>
+                  )}
+                />
+              );
+            }}
             />
           </Fragment>
         );
