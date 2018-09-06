@@ -130,7 +130,10 @@ export default gql`
                 ...Video
               }
             }
-            reviewStars
+            socialMetaData {
+              articleRankCounter
+              articleRankersCounter
+            }
             recipeDifficultyLevel
             numOfServings
             totalCookTime

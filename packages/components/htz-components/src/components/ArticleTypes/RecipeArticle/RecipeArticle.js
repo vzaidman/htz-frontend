@@ -22,7 +22,6 @@ import { buildUrl, } from '../../../utils/buildImgURLs';
 
 import RecipeArticleQuery from './queries/recipe_article';
 
-
 function RecipeArticle({ articleId, slots, }) {
   return (
     <ArticleLayout articleId={articleId} slots={slots}>
@@ -75,7 +74,7 @@ function RecipeArticle({ articleId, slots, }) {
             totalCookTime,
             numOfServings,
             recipeDifficultyLevel,
-            reviewStars,
+            socialMetaData: { articleRankersCounter, articleRankCounter, },
             header,
             headlineElement,
             reportingFrom,
@@ -84,9 +83,7 @@ function RecipeArticle({ articleId, slots, }) {
           return (
             <FelaTheme
               render={theme => (
-                <LayoutContainer
-                  tagName="article"
-                >
+                <LayoutContainer tagName="article">
                   <Head>
                     <meta name="title" content={metaTitle} />
                     <meta name="description" content={metaDescription} />
@@ -164,7 +161,9 @@ function RecipeArticle({ articleId, slots, }) {
                                         ) : null}
 
                                         <RecipeRating
-                                          reviewStars={reviewStars}
+                                          articleId={articleId}
+                                          articleRankersCounter={articleRankersCounter}
+                                          articleRankCounter={articleRankCounter}
                                           totalCookTime={totalCookTime}
                                           numOfServings={numOfServings}
                                           recipeDifficultyLevel={recipeDifficultyLevel}
@@ -174,7 +173,9 @@ function RecipeArticle({ articleId, slots, }) {
                                     }
                                   >
                                     <RecipeRating
-                                      reviewStars={reviewStars}
+                                      articleId={articleId}
+                                      articleRankersCounter={articleRankersCounter}
+                                      articleRankCounter={articleRankCounter}
                                       totalCookTime={totalCookTime}
                                       numOfServings={numOfServings}
                                       recipeDifficultyLevel={recipeDifficultyLevel}
@@ -225,8 +226,10 @@ function RecipeArticle({ articleId, slots, }) {
                           <ArticleLayoutRow
                             key={element.contentId}
                             {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
-                              ?
-                                { title: theme.articleLayoutI18n.commentSectionTitle, id: 'commentsSection', }
+                              ? {
+                                  title: theme.articleLayoutI18n.commentSectionTitle,
+                                  id: 'commentsSection',
+                                }
                               : {})}
                           >
                             <Element

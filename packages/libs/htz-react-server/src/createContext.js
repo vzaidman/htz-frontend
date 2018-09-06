@@ -29,18 +29,29 @@ export function createLoaders(req) {
           'articleLinkDataLoader path: ',
           `${serviceBase}/cmlink/Haaretz.Element.ArticleDataElement/${id}`
         );
-        return fetch(
-          `${serviceBase}/cmlink/Haaretz.Element.ArticleDataElement/${id}`
-        ).then(response => response.json());
+        return fetch(`${serviceBase}/cmlink/Haaretz.Element.ArticleDataElement/${id}`).then(
+          response => response.json()
+        );
       })
     )
   );
   const cmlinkLoader = new DataLoader(keys =>
     Promise.all(
       keys.map(path =>
-        fetch(`${serviceBase}/json/cmlink/${path}`).then(response =>
-          response.json()
-        )
+        fetch(`${serviceBase}/json/cmlink/${path}`).then(response => response.json())
+      )
+    )
+  );
+
+  const articleSocialMetaLoader = new DataLoader(keys =>
+    Promise.all(
+      keys.map(({ articleId, starRanking, }) =>
+        fetch(
+          `${serviceBase}/cmlink/ArticleSocialMetaData.${articleId}?rankArticle=${starRanking}`
+        ).then(response => {
+          console.log('response from article social meta loader', response.statusText);
+          return response.statusText === 'OK';
+        })
       )
     )
   );
@@ -77,24 +88,16 @@ export function createLoaders(req) {
       // 'path' means campaign path relative to polopoly root campaign page (which is '/')
       keys.map(path => {
         const [ pathWithoutQuery, queryPartFromPath, ] = path.split(/\?(.+)/);
-        const query = queryPartFromPath
-          ? querystring.parse(queryPartFromPath)
-          : {};
+        const query = queryPartFromPath ? querystring.parse(queryPartFromPath) : {};
         // eslint-disable-next-line no-param-reassign
-        path = query.offer
-          ? `${pathWithoutQuery}/${query.offer}`
-          : `${pathWithoutQuery}`; // Augment request for papi
+        path = query.offer ? `${pathWithoutQuery}/${query.offer}` : `${pathWithoutQuery}`; // Augment request for papi
         // '/promotions-page/more-ads/some-sub-promotion' -> '/more-ads/some-sub-promotion'
         const normlizedPath = `${baseUri}${
           polopolyPromotionsPage.startsWith('/') ? '' : '/'
-        }${polopolyPromotionsPage}${(path || '/').replace(
-          `${polopolyPromotionsPage}`,
-          ''
-        )}${path.includes('?') ? '&' : '?'}userId=${userId}`;
-        logger.info(
-          'GRAPHQL - fetching data from papi using endpoint: ',
-          normlizedPath
-        );
+        }${polopolyPromotionsPage}${(path || '/').replace(`${polopolyPromotionsPage}`, '')}${
+          path.includes('?') ? '&' : '?'
+        }userId=${userId}`;
+        logger.info('GRAPHQL - fetching data from papi using endpoint: ', normlizedPath);
         return fetch(normlizedPath)
           .then(response => {
             if (response.ok) {
@@ -127,9 +130,7 @@ export function createLoaders(req) {
         fetch(
           `${serviceBase}/papi/cmlink${
             listId.startsWith('/') ? '' : '/'
-          }${listId}?vm=whtzResponsive&exploded=true&exclude=${
-            history ? history.join(',') : ''
-          }`
+          }${listId}?vm=whtzResponsive&exploded=true&exclude=${history ? history.join(',') : ''}`
         ).then(response => response.json())
       )
     )
@@ -139,14 +140,10 @@ export function createLoaders(req) {
       keys.map(paymentData => {
         console.log(
           'fetch url for payWithExistingCard from create context: ',
-          `${ssoService}/sso/r/registerWebUser?${querystring.stringify(
-            paymentData
-          )}`
+          `${ssoService}/sso/r/registerWebUser?${querystring.stringify(paymentData)}`
         );
         return fetch(
-          `${ssoService}/sso/r/registerWebUser?${querystring.stringify(
-            paymentData
-          )}`
+          `${ssoService}/sso/r/registerWebUser?${querystring.stringify(paymentData)}`
         ).then(response => response.json());
       })
     )
@@ -177,6 +174,7 @@ export function createLoaders(req) {
     articleLinkDataLoader,
     pageLoader,
     nextArticleLoader,
+    articleSocialMetaLoader,
     cmlinkLoader,
     listsLoader,
     purchasePageLoader,
@@ -239,9 +237,7 @@ export function createPosters(req) {
       // Todo: Change Mador (2.285) from hardcoded to dynamic
       `${papiBaseService}/logger/p.gif?type=COMMENTS_RATINGS&a=%2F2.285%2F${
         newVote.articleId
-      }&comment=${newVote.commentId}&group=${
-        newVote.group
-      }&_=${new Date().getTime()}`,
+      }&comment=${newVote.commentId}&group=${newVote.group}&_=${new Date().getTime()}`,
       {
         method: 'get',
         credentials: 'include',
@@ -277,13 +273,9 @@ export function createPosters(req) {
 
   const newsLetterRegister = newsletterSignUp =>
     fetch(
-      `${papiBaseService}/newsLetterRegister?EMAIL_FIELD=${
-        newsletterSignUp.userEmail
-      }${
+      `${papiBaseService}/newsLetterRegister?EMAIL_FIELD=${newsletterSignUp.userEmail}${
         newsletterSignUp.checkBox ? '&ALLOW_MARKETING_MESSAGES_FIELD=true' : ''
-      }&segmentId=${
-        newsletterSignUp.segmentId
-      }&_=${new Date().getTime()}&responseType=json`,
+      }&segmentId=${newsletterSignUp.segmentId}&_=${new Date().getTime()}&responseType=json`,
       {
         method: 'get',
         credentials: 'include',

@@ -19,6 +19,7 @@ import image from './image_type';
 import video from './video_type';
 
 // recipe types
+import socialMetaData from './social_meta_data_type';
 import recipeInstructions from './recipe_instructions_type';
 import recipeIngredients from './recipe_ingredients_type';
 
@@ -70,6 +71,7 @@ const ArticleData = new GraphQLObjectType({
 
     reviewStars: { type: GraphQLFloat, },
     // recipe article related
+    socialMetaData: { type: socialMetaData, },
     instructions: { type: recipeInstructions, },
     ingredients: { type: recipeIngredients, },
     totalCookTime: { type: GraphQLString, },

@@ -36,6 +36,16 @@ const RootQuery = new GraphQLObjectType({
         return context.articleLinkDataLoader.load(id);
       },
     },
+    rankArticle: {
+      args: {
+        articleId: { type: new GraphQLNonNull(GraphQLString), },
+        starRanking: { type: new GraphQLNonNull(GraphQLInt), },
+      },
+      type: GraphQLBoolean,
+      resolve(parentValue, args, context) {
+        return context.articleSocialMetaLoader.load(args);
+      },
+    },
     commentsElement: {
       type: CommentsElement,
       args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
@@ -121,9 +131,7 @@ const RootQuery = new GraphQLObjectType({
       },
       type: GraphQLBoolean,
       resolve(parentValue, paymentData, context) {
-        return context.payWithExistingCardLoader
-          .load(paymentData)
-          .then(({ success, }) => success);
+        return context.payWithExistingCardLoader.load(paymentData).then(({ success, }) => success);
       },
     },
     resetPassword: {
