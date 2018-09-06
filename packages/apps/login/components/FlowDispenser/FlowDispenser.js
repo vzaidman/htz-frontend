@@ -36,13 +36,11 @@ const FlowDispenser = ({ render, }) => {
     return dataToFlowMapper.get(dataString);
   };
 
-  const getFlow = data => {
-    const selectedFlow = flows[resolveFlowNumber(data)];
-    console.log(`flow number: ${resolveFlowNumber(data)}`);
+  const generateFullFlow = specificFlow => {
     const generalTransitionRouteMap = generalFlows.transitionRouteMap;
-    const specificTransitionRouteMap = selectedFlow.transitionRouteMap;
-    const fullFlow = { ...generalFlows, ...selectedFlow, };
+    const specificTransitionRouteMap = specificFlow.transitionRouteMap;
     console.log(`combined map: ${JSON.stringify(Array.from(new Map([ ...generalTransitionRouteMap, ...specificTransitionRouteMap, ])))}`);
+    const fullFlow = { ...generalFlows, ...specificFlow, };
     return Object.assign(
       {},
       fullFlow,
@@ -52,7 +50,18 @@ const FlowDispenser = ({ render, }) => {
       });
   };
 
-  return render({ getFlow, });
+  const getFlowByData = data => {
+    const selectedFlow = flows[resolveFlowNumber(data)];
+    console.log(`flow number: ${resolveFlowNumber(data)}`);
+    return generateFullFlow(selectedFlow);
+  };
+
+  const getFlowByFlowNumber = flowNumber => {
+    const selectedFlow = flows[flowNumber];
+    return generateFullFlow(selectedFlow);
+  };
+
+  return render({ getFlowByData, getFlowByFlowNumber, });
 };
 
 FlowDispenser.propTypes = flowDispenserPropTypes;

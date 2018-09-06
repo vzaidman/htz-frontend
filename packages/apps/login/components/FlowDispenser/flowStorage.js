@@ -1,29 +1,11 @@
-import GET_FLOW from '../../pages/queries/UserFlow';
+import GET_FLOW_NUMBER from '../../pages/queries/UserFlowNumber';
 
-const storeFlowToApollo = apolloClient => flow => {
-  const transitionMap = flow.transitionRouteMap;
-  const stringifiedTransitionMap = JSON.stringify(Array.from(transitionMap));
-  const flowWithStringifiedTransitionMap =
-    Object.assign({}, flow, { transitionRouteMap: stringifiedTransitionMap, });
-  console.log(`stringified flow ${JSON.stringify(flowWithStringifiedTransitionMap)}`);
-  return apolloClient.writeData({ data:
-      { userFlowJson: JSON.stringify(flowWithStringifiedTransitionMap), },
-  });
+const storeFlowNumber = apolloClient => flowNumber => {
+  apolloClient.writeData({ data: { userFlowNumber: flowNumber, }, });
+  return flowNumber;
 };
 
-const getAndParseFlowFromApollo = apolloClient => {
-  const flowWithStringifiedTransitionMap = JSON.parse(
-    apolloClient.readQuery({ query: GET_FLOW, }).userFlowJson
-  );
+const getFlowNumber = apolloClient =>
+  apolloClient.readQuery({ query: GET_FLOW_NUMBER, }).userFlowNumber;
 
-  const parsedTransitionMap =
-    new Map(JSON.parse(flowWithStringifiedTransitionMap.transitionRouteMap));
-
-  return Object.assign(
-    {},
-    flowWithStringifiedTransitionMap,
-    { transitionRouteMap: parsedTransitionMap, }
-  );
-};
-
-export { storeFlowToApollo, getAndParseFlowFromApollo, };
+export { storeFlowNumber, getFlowNumber, };

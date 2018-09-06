@@ -7,7 +7,9 @@ const finiteStateMachinePropTypes = {
   render: PropTypes.func.isRequired,
   initialState: PropTypes.string.isRequired,
   initialTransition: PropTypes.string.isRequired,
-  statesGraph: PropTypes.objectOf(PropTypes.oneOfType([ PropTypes.object, PropTypes.string, ])).isRequired,
+  statesGraph: PropTypes.objectOf(
+    PropTypes.oneOfType([ PropTypes.object, PropTypes.string, PropTypes.number, ])
+  ).isRequired,
   transitionRouteMap: PropTypes.objectOf(PropTypes.any).isRequired,
   apolloClient: PropTypes.shape().isRequired,
 };

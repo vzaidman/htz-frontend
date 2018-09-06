@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  query UserFlow {
-    userFlowJson @client
+  query UserFlowNumber {
+    userFlowNumber @client
   }
 `;
