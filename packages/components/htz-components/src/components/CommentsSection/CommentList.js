@@ -2,24 +2,50 @@ import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import Comment from './Comment.js';
-import GeneralAdSlot from '../Ads/GeneralAdSlot';
+import DfpConfProvider from '../Ads/DynamicAds/DfpConfProvider';
+import DynamicAdSlot from '../Ads/DynamicAds/DynamicAdSlot';
 
 /**
  * Defines how far away ads can be inserted (every X comments)
  * @param {number} - adSpacing - The minimal number of comments between each ad position
  */
-const AD_SPACING = 5;
+const AD_SPACING = 3;
 const MAX_AD_SLOTS = 5;
 
 const wrapperStyle = theme => ({
   backgroundColor: theme.color('white'),
 });
 
+const adSlotIdFromIndex = idx => `haaretz.co.il.web.fullbanner.talkback.${idx}`;
+
+// const renderAdSlot = idx => (
+//   <AdSlot
+//     id={adSlotIdFromIndex(idx)}
+//     audianceTarget="all"
+//   />
+// );
+
 const renderAdSlot = idx => (
-  <GeneralAdSlot
-    id={`haaretz.co.il.web.fullbanner.talkback.${idx}`}
-    audianceTarget="all"
-  />
+  <DfpConfProvider>
+    {
+      data => {
+        const adSlotId = adSlotIdFromIndex(idx);
+        const slotConfig = data.dfpConfig.adSlotConfig[adSlotId];
+        console.log('[CommentList] %o dfpConfig: %o', adSlotId, slotConfig);
+        if (slotConfig) {
+          const network = data.dfpConfig.adManagerConfig.network;
+          const adUnitBase = data.dfpConfig.adManagerConfig.adUnitBase;
+          const path = ''; // TODO: figure out what supposed to be here
+          const adUnit = `${network}/${adUnitBase}/${adSlotId}/${adSlotId}_section/${path}`;
+          return (
+            <DynamicAdSlot id={adSlotId} adUnit={adUnit} sizes={slotConfig.adSizeMapping} />
+          );
+        }
+        return null;
+      }
+
+    }
+  </DfpConfProvider>
 );
 
 const placeAdSlot = commentIdx => {
@@ -151,6 +177,7 @@ class CommentList extends Component {
                     ? null
                     : placeAdSlot(idx)
                 }
+
               </Fragment>
             ))}
           </div>
