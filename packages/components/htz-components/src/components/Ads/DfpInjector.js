@@ -8,6 +8,7 @@ import DFP, { dfpTargeting, } from '@haaretz/dfp';
 import logger from '../../componentsLogger';
 import UserDispenser from '../User/UserDispenser';
 import getSectionPairFromLineage from './utils/getSectionsFromLineage';
+import { appendScript, } from '../../utils/scriptTools';
 
 export const instance = {};
 export const adPriorities = {
@@ -17,10 +18,19 @@ export const adPriorities = {
 };
 
 const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
+  window.googletag = window.googletag || {};
+  window.googletag.cmd = window.googletag.cmd || [];
+  appendScript({
+    id: 'dfp',
+    src: '//www.googletagservices.com/tag/js/gpt.js',
+    isAsync: true,
+  });
+  const googletag = window.googletag;
   //  Part I: immidiate initialization of high priority DFP ads, like maaavaron
   let q;
   if (dfpConfig) {
     q = new DFP(dfpConfig);
+    q.resumeInit();
     if (DEBUG) {
       window.q = q;
     }
@@ -28,46 +38,20 @@ const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
     // if (typeof AdBlockUtil !== 'undefined' && typeof AdBlockUtil.killadblock === 'function') {
     //   window.addEventListener('adblockDetected', AdBlockUtil.killadblock);
     // }
-    const displayHighPrioritySlots = () => {
-      q.initGoogleTag().then(() => {
+    const displaySlots = priority => {
+      googletag.cmd.push(() => {
         DEBUG &&
           logger.info(
             `4. Display slots - calling for display for all ${
-              adPriorities.high
+              priority
             } priority slots`
           );
-        q.adManager.showAllSlots(adPriorities.high);
+        q.adManager.showAllSlots(priority);
       });
     };
 
-    const displayNormalPrioritySlots = () => {
-      q.initGoogleTag().then(() => {
-        DEBUG &&
-          logger.info(
-            `4. Display slots - calling for display for all ${
-              adPriorities.normal
-            } priority slots`
-          );
-        q.adManager.showAllSlots(adPriorities.normal);
-      });
-    };
-
-    switch (window.document.readyState) {
-      case 'loading':
-        window.document.addEventListener('DOMContentLoaded', () => {
-          displayHighPrioritySlots();
-          displayNormalPrioritySlots();
-        });
-        break;
-      case 'interactive':
-        displayHighPrioritySlots();
-        displayNormalPrioritySlots();
-        break;
-      default:
-        // 'complete' - no need for event listeners.
-        displayHighPrioritySlots();
-        displayNormalPrioritySlots();
-    }
+    displaySlots(adPriorities.high);
+    displaySlots(adPriorities.normal);
   }
   else {
     throw new Error('DfpInjectorInit error: dfpConfig is not ready!');
