@@ -1,49 +1,65 @@
 // @flow
 import React from 'react';
 import type { StatelessFunctionalComponent, ChildrenArray, Node, } from 'react';
+import { FelaComponent, } from 'react-fela';
 
 type Props = {
-  className?: string,
   render?: string,
   children: ChildrenArray<Node> | Node,
-  selected: boolean,
+  isActive?: boolean,
+  index: number,
   controls: string,
   presentation: boolean,
+  rule?: Object,
+  setActiveTab?: number => void,
+  onClick?: Function,
 }
 
+/* eslint-disable react/prop-types */
 const Tab: StatelessFunctionalComponent<Props> = ({
   render,
-  className,
   children,
-  selected,
+  isActive,
+  index,
   controls,
   presentation,
+  rule,
+  setActiveTab,
+  onClick,
   ...props
 }) => {
+/* eslint-enable react/prop-types */
   const TabTag: string = render || 'button';
-  return presentation ? (
-    <li role="presentation" className={className}>
-      <TabTag
-        tabindex={selected ? '0' : '-1'}
-        role="tab"
-        aria-controls={controls}
-        aria-selected={selected}
-        {...props}
-      >
-        {children}
-      </TabTag>
-    </li>
-  ) : (
-    <TabTag
-      className={className}
-      tabindex={selected ? '0' : '-1'}
-      role="tab"
-      aria-controls={controls}
-      aria-selected={selected}
+  return (
+    <FelaComponent
+      rule={rule}
+      isActive={isActive}
       {...props}
-    >
-      {children}
-    </TabTag>
+      render={({ className, }) => (presentation ? (
+        <li role="presentation" className={className}>
+          <TabTag
+            onClick={() => { if (setActiveTab) setActiveTab(index); if (onClick) onClick(); }}
+            tabIndex={isActive ? '0' : '-1'}
+            role="tab"
+            aria-controls={controls}
+            aria-selected={isActive}
+          >
+            {children}
+          </TabTag>
+        </li>
+      ) : (
+        <TabTag
+          onClick={() => { if (setActiveTab) setActiveTab(index); if (onClick) onClick(); }}
+          className={className}
+          tabIndex={isActive ? '0' : '-1'}
+          role="tab"
+          aria-controls={controls}
+          aria-selected={isActive}
+        >
+          {children}
+        </TabTag>
+      ))}
+    />
   );
 };
 
