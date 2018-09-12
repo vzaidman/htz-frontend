@@ -1,7 +1,8 @@
 // @flow
 import React from 'react';
 import type { Node, } from 'react';
-import { FelaComponent, } from 'react-fela';
+import { FelaTheme, } from 'react-fela';
+import { Grid, GridItem, } from '@haaretz/htz-components';
 
 import StockTable from '../StockTable/StockTable';
 import GraphController from '../GraphController/GraphController';
@@ -40,53 +41,56 @@ class TableGraphConnector extends React.Component<Props, State> {
   render(): Node {
     const { indexId, name, section, } = this.state || {};
     return (
-      <FelaComponent
-        style={theme => ({
-          display: 'flex',
-          paddingTop: '2rem',
-          backgroundColor: theme.color('neutral', '-10'),
-        })}
-      >
-        <FelaComponent
-          style={{
-            direction: 'ltr',
-            flexGrow: '1',
-            marginEnd: '2rem',
-            overflowY: 'scroll',
-            position: 'relative',
-          }}
-        >
-          <StockTable
-            changeStock={this.changeStock}
+      <FelaTheme
+        render={theme => (
+          <Grid
+            gutter={2}
             miscStyles={{
-              direction: 'rtl',
-              position: 'absolute',
+              backgroundColor: theme.color('neutral', '-10'),
+              marginStart: '0rem',
+              marginEnd: '0rem',
+              paddingTop: '2rem',
             }}
-          />
-        </FelaComponent>
-        <FelaComponent
-          style={{
-            flexGrow: '1',
-          }}
-        >
-          <GraphController
-            selectedStockId={indexId}
-            selectedStockName={name}
-            changePeriod={this.changePeriod}
-          />
-          <SectionLink
-            href={{
-              pathname: `/${section || ''}`,
-              query: {
-                id: indexId,
-              },
-            }}
-            as={`/${section || ''}/${name || ''}`}
           >
-            <span>למידע נוסף על {name}</span>
-          </SectionLink>
-        </FelaComponent>
-      </FelaComponent>
+            <GridItem
+              width={1 / 3}
+              miscStyles={{
+                direction: 'ltr',
+                overflowY: 'scroll',
+                position: 'relative',
+              }}
+            >
+              <StockTable
+                changeStock={this.changeStock}
+                miscStyles={{
+                  direction: 'rtl',
+                  position: 'absolute',
+                }}
+              />
+            </GridItem>
+            <GridItem
+              width={2 / 3}
+            >
+              <GraphController
+                selectedStockId={indexId}
+                selectedStockName={name}
+                changePeriod={this.changePeriod}
+              />
+              <SectionLink
+                href={{
+                  pathname: `/${section || ''}`,
+                  query: {
+                    id: indexId,
+                  },
+                }}
+                as={`/${section || ''}/${name || ''}`}
+              >
+                <span>למידע נוסף על {name}</span>
+              </SectionLink>
+            </GridItem>
+          </Grid>
+        )}
+      />
     );
   }
 }

@@ -16,6 +16,7 @@ type TdComponentProps = {
 }
 
 export const TdComponent: StatelessFunctionalComponent<TdComponentProps> =
+// eslint-disable-next-line react/prop-types
   ({ children, miscStyles, }) => (
     <FelaComponent
       style={theme => ({
@@ -97,9 +98,8 @@ class StockTable extends React.Component<Props, State> {
     return (
       <FelaComponent
         style={(theme: Object) => ({
-          ...theme.type(-1),
+          ...theme.type(-2),
           whiteSpace: 'nowrap',
-          width: '100%',
           extend: [
             ...(miscStyles
               ? parseStyleProps(miscStyles, theme.mq, theme.type)
@@ -121,6 +121,7 @@ class StockTable extends React.Component<Props, State> {
                   paddingStart: '1rem',
                   paddingTop: '0.75rem',
                   paddingBottom: '0.75rem',
+                  paddingEnd: '2rem',
                   marginBottom: '1rem',
                   backgroundColor: theme.color('neutral', '-6'),
                 })}
@@ -138,7 +139,7 @@ class StockTable extends React.Component<Props, State> {
                 style={theme => ({
                   paddingTop: '0.75rem',
                   paddingBottom: '0.75rem',
-                  paddingEnd: '4rem',
+                  paddingEnd: '2rem',
                   marginBottom: '1rem',
                   backgroundColor: theme.color('neutral', '-6'),
                 })}
@@ -154,6 +155,7 @@ class StockTable extends React.Component<Props, State> {
             >
               <FelaComponent
                 style={theme => ({
+                  paddingEnd: '5rem',
                   paddingTop: '0.75rem',
                   paddingBottom: '0.75rem',
                   marginBottom: '1rem',
@@ -188,17 +190,18 @@ class StockTable extends React.Component<Props, State> {
                       controls={`stock-${stock.indexId}`}
                       render="tr"
                       presentation={false}
+                      // eslint-disable-next-line no-return-assign
                     >
                       <TdComponent
                         miscStyles={{
                           fontWeight: '700',
                           paddingStart: '1rem',
-                          maxWidth: '24rem',
+                          paddingEnd: '2rem',
+                          maxWidth: '17rem',
                           whiteSpace: 'nowrap',
                           overflow: 'hidden',
                           textOverflow: 'ellipsis',
                         }}
-                        render="td"
                       >
                         {stock.name}
                       </TdComponent>
@@ -209,27 +212,29 @@ class StockTable extends React.Component<Props, State> {
                           color: Number(stock.change) < 0 ? 'red' : 'green',
                           direction: 'ltr',
                           fontWeight: '700',
-                          paddingEnd: '4rem',
+                          paddingEnd: '2rem',
                           position: 'relative',
                           textAlign: 'start',
                           ':after': {
                             ...(
                               isActive ?
                                 {
-                                  borderTop: `3.25rem solid ${theme.color('neutral', '-10')}`,
-                                  borderBottom: `3.25rem solid ${theme.color('neutral', '-10')}`,
-                                  borderStart: `4rem solid ${theme.color('neutral', '-1')}`,
+                                  width: '4rem',
                                   content: '""',
+                                  backgroundImage: 'url("data:image/svg+xml; utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%205%2010%27%3E%3Cpolygon%20fill%3D%27white%27%20points%3D%270%2C0%205%2C0%2C%200%2C5%205%2C10%200%2C10%27%2F%3E%3C%2Fsvg%3E")',
                                   end: '0',
                                   position: 'absolute',
                                   top: '50%',
                                   transform: 'translateY(-50%)',
+                                  // accommodate a `display: table` bug, that caused `height: 100%`
+                                  // to leave two narrow lines at the top and bottom
+                                  ...theme.mq({ from: 'xl', }, { height: 'calc(100% + 3px)', }),
+                                  ...theme.mq({ until: 'xl', }, { height: 'calc(100% + 2px)', }),
                                 }
                                 : {}
                             ),
                           },
                         }}
-                        render="td"
                       >
                         <FelaComponent
                           style={{
