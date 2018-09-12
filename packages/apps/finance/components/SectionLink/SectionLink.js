@@ -15,7 +15,7 @@ type Props = {
   miscStyles? : Object,
 }
 
-const Redirect:StatelessFunctionalComponent<Props> = ({
+const SectionLink:StatelessFunctionalComponent<Props> = ({
   href,
   as,
   children,
@@ -50,4 +50,4 @@ const Redirect:StatelessFunctionalComponent<Props> = ({
   />
 );
 
-export default Redirect;
+export default SectionLink;

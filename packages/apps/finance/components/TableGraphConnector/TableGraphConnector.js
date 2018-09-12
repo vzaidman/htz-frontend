@@ -6,7 +6,7 @@ import { FelaComponent, } from 'react-fela';
 import StockTable from '../StockTable/StockTable';
 import GraphController from '../GraphController/GraphController';
 import type { StockData, } from '../StockTable/StockTable';
-import Redirect from '../Redirect/Redirect';
+import SectionLink from '../SectionLink/SectionLink';
 
 type Props = {};
 
@@ -43,7 +43,7 @@ class TableGraphConnector extends React.Component<Props, State> {
       <FelaComponent
         style={theme => ({
           display: 'flex',
-          marginTop: '2rem',
+          paddingTop: '2rem',
           backgroundColor: theme.color('neutral', '-10'),
         })}
       >
@@ -74,7 +74,7 @@ class TableGraphConnector extends React.Component<Props, State> {
             selectedStockName={name}
             changeTime={this.changeTime}
           />
-          <Redirect
+          <SectionLink
             href={{
               pathname: `/${section || ''}`,
               query: {
@@ -84,7 +84,7 @@ class TableGraphConnector extends React.Component<Props, State> {
             as={`/${section || ''}/${name || ''}`}
           >
             <span>למידע נוסף על {name}</span>
-          </Redirect>
+          </SectionLink>
         </FelaComponent>
       </FelaComponent>
     );

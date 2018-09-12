@@ -4,7 +4,7 @@ import type { StatelessFunctionalComponent, } from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import { H, } from '@haaretz/htz-components';
-import Redirect from '../Redirect/Redirect';
+import SectionLink from '../SectionLink/SectionLink';
 import getMarketData from '../dummyData/marketSummary';
 
 type MarketData = {
@@ -140,7 +140,7 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ marketId, miscStyle
               </Item>
             </FelaComponent>
           </FelaComponent>
-          <Redirect
+          <SectionLink
             href={{
               pathname: `/${section || ''}`,
               query: {
@@ -155,7 +155,7 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ marketId, miscStyle
             }}
           >
             <span>לבורסת {name}</span>
-          </Redirect>
+          </SectionLink>
         </FelaComponent>
       )}
     />
