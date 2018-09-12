@@ -1,10 +1,12 @@
-/* eslint-disable no-unused-expressions,react/no-did-mount-set-state */
+/* eslint-disable react/no-did-mount-set-state */
 
 import React, { Fragment, } from 'react';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import { StyleProvider, } from '@haaretz/fela-utils';
+import { FelaTheme, } from 'react-fela';
+import isEmail from 'validator/lib/isEmail';
 import Header from '../layouts/Header';
 import Footer from '../layouts/Footer';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -14,17 +16,13 @@ import INSPECT_EMAIL from './queries/InspectEmail';
 import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
 import { storeFlowNumber, } from '../components/FlowDispenser/flowStorage';
 
-const isEmailValid = email =>
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    .exec(email) !== null;
-
 const generateEmailError = message =>
   [ { name: 'email', order: 1, errorText: message, }, ];
 
 const validateEmailInput = ({ email, }) =>
   (!email
     ? generateEmailError('must provide email')
-    : !isEmailValid(email)
+    : !isEmail(email)
       ? generateEmailError('invalid email')
       : []); // email is valid
 
@@ -65,41 +63,44 @@ const Index = () => (
       { client => {
         const host = client.readQuery({ query: GET_HOST, }).hostname.match(/^(?:.*?\.)?(.*)/i)[1];
         return (
-          <Fragment>
-            <StyleProvider renderer={styleRenderer} theme={theme(host)}>
-              <Fragment>
-                <Header />
-                <FlowDispenser
-                  render={({ getFlowByData, }) => (
-                    <Form
-                      clearFormAfterSubmit={false}
-                          // initialValues={{ email: 'insert email' }}
-                      validate={validateEmailInput}
-                      onSubmit={onSubmit(client, getFlowByData)}
-                      render={({ getInputProps, handleSubmit, clearForm, }) => (
-                        <div dir="rtl">
-                          <TextInput
-                            label="אימייל"
-                            requiredText={{
-                                  long: 'אנא הזינו כתובת אימייל',
-                                  short: '*',
-                                }}
-                            {...getInputProps({
-                                  name: 'email',
-                                  label: 'אימייל',
-                                  type: 'email',
-                                })}
-                          />
-                          <Button onClick={handleSubmit}>submit</Button>
-                        </div>
-                          )}
-                    />
-                      )}
-                />
-                <Footer />
-              </Fragment>
-            </StyleProvider>
-          </Fragment>
+          <StyleProvider renderer={styleRenderer} theme={theme(host)}>
+            <FelaTheme
+              render={theme => (
+                <Fragment>
+                  <Header />
+                  <FlowDispenser
+                    render={({ getFlowByData, }) => (
+                      <Form
+                        clearFormAfterSubmit={false}
+                            // initialValues={{ email: 'insert email' }}
+                        validate={validateEmailInput}
+                        onSubmit={onSubmit(client, getFlowByData)}
+                        render={({ getInputProps, handleSubmit, clearForm, }) => (
+                          <Fragment>
+                            <TextInput
+                              type="email"
+                              label={theme.emailInputLabel}
+                              requiredText={{
+                                long: theme.emailInputRequiredLong,
+                                short: theme.emailInputRequiredShort,
+                              }}
+                              {...getInputProps({
+                                name: 'email',
+                                label: theme.emailInputLabel,
+                                type: 'email',
+                              })}
+                            />
+                            <Button onClick={handleSubmit}>submit</Button>
+                          </Fragment>
+                        )}
+                      />
+                    )}
+                  />
+                  <Footer />
+                </Fragment>
+              )}
+            />
+          </StyleProvider>
         );
       }}
     </ApolloConsumer>
