@@ -51,13 +51,13 @@ const FlowDispenser = ({ render, }) => {
   };
 
   const getFlowByData = data => {
-    const selectedFlow = flows[resolveFlowNumber(data)];
+    const selectedFlow = flows[resolveFlowNumber(data) - 1];
     console.log(`flow number: ${resolveFlowNumber(data)}`);
     return generateFullFlow(selectedFlow);
   };
 
   const getFlowByFlowNumber = flowNumber => {
-    const selectedFlow = flows[flowNumber];
+    const selectedFlow = flows[flowNumber - 1];
     return generateFullFlow(selectedFlow);
   };
 

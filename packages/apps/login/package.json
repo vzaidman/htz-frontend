@@ -48,7 +48,8 @@
     "react-apollo": "^2.1.11",
     "react-dom": "^16.4.2",
     "react-fela": "^7.2.0",
-    "universal-cookie": "^2.0.8"
+    "universal-cookie": "^2.0.8",
+    "validator": "^10.7.1"
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",

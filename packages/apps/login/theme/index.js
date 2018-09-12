@@ -1,36 +1,13 @@
 // consts
 import articleStyle from './consts/articleStyle';
-import campaignHeaderStyle from './consts/campaignHeaderStyle';
 import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
 import cssReset from './consts/cssReset';
-import newsletterStyle from './consts/newsletterStyle';
-import headerStyle from './consts/headerStyle';
-import selectStyle from './consts/selectStyle';
-import tableStyle from './consts/tableStyle';
 import inputStyle from './consts/inputStyle';
 import fontStacks from './consts/fontStacks';
 import gridStyle from './consts/gridStyle';
 import typeConf from './consts/typeConf';
-import {
-  seo,
-  header,
-  offerPage,
-  purchasePageFooter,
-  landingHeader,
-  linkToHomePage,
-  stage1,
-  stage2,
-  stage3,
-  stage4,
-  stage5,
-  debt,
-  payment,
-  creditCardIframe,
-  newsletterI18n,
-  textInputI18n,
-  thankYou,
-} from './consts/i18n';
+import { linkToHomePage, emailInputTexts, } from './consts/i18n';
 
 // methods
 import getColor from './methods/getColor';
@@ -111,41 +88,21 @@ export { cssReset, };
  *   function that returns a CSS-in-JS object of typographic styles conforming to a global predefined
  *   typographic scale and vertical rhythm
  */
-const purchasePageTheme = host =>
+const loginPageTheme = host =>
   Object.freeze({
     // Constants
     articleStyle,
-    campaignHeaderStyle,
     bps,
     btnStyle,
     direction: 'rtl',
     gridStyle,
     fontStacks,
     inputStyle,
-    newsletterStyle,
-    headerStyle,
-    selectStyle,
-    tableStyle,
     typeConf,
 
     // I18n
-    seo,
-    header,
-    landingHeader,
     linkToHomePage,
-    offerPage,
-    purchasePageFooter,
-    stage1,
-    stage2,
-    stage3,
-    stage4,
-    stage5,
-    debt,
-    payment,
-    creditCardIframe,
-    newsletterI18n,
-    textInputI18n,
-    thankYou,
+    ...emailInputTexts(host),
 
     // Methods
     color: getColor(host),
@@ -161,5 +118,6 @@ const purchasePageTheme = host =>
     type: typesetter,
   });
 
-export default purchasePageTheme;
+export default loginPageTheme;
+
 export { bps, fontStacks, getColor, getTransition, mq, pxToRem, typesetter, };
