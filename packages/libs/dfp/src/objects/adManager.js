@@ -651,7 +651,7 @@ export default class AdManager {
       }
 
       // App targeting
-      pubads.setTargeting('pageType', [ 'react', ]);
+      pubads.setTargeting('react', [ true, ]);
 
       // User targeting
       if (this.user.type) {
