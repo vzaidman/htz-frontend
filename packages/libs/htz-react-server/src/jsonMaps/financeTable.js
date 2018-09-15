@@ -1,9 +1,10 @@
+// @flow
 import string from '../generator/methods/string';
 import number from '../generator/methods/number';
 import date from '../generator/methods/date';
 import list from '../generator/methods/list';
 
-export default new Map([
+const tableMap: Object = new Map([
   [ 'name', () => string.lorem({ count: 1, type: 'word', }), ],
   [ 'id', () => string.id(), ],
   [ 'symbol', () => string.word({ upperCase: true, minLength: 4, maxLength: 8, }), ],
@@ -74,7 +75,7 @@ export default new Map([
   [ 'capitalBalanceRatio', () => number.float({}), ],
   [ 'per', () => number.float({}), ],
   [ 'yieldFactor', () => number.float({}), ],
-  [ 'daysToMaturity', () => number.int(), ],
+  [ 'daysToMaturity', () => number.int({}), ],
   [ 'classification', () => string.word({}), ],
   [ 'issueDate', () => date.timestamp({}), ],
   [ 'redemptionDate', () => date.timestamp({}), ],
@@ -90,3 +91,5 @@ export default new Map([
   [ 'redemptionRate', () => number.float({}), ],
   [ 'holdingsRatio', () => number.float({}), ],
 ]);
+
+export default tableMap;

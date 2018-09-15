@@ -1,4 +1,8 @@
-export default (map, fields = null) => {
+// @flow
+
+type GeneratorType = (Object, ?Array<string>) => Object;
+
+const generator: GeneratorType = (map, fields = null) => {
   const result = {};
   if (fields) {
     for (const field of fields) {
@@ -12,3 +16,5 @@ export default (map, fields = null) => {
   }
   return result;
 };
+
+export default generator;
