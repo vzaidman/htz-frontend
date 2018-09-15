@@ -45,6 +45,7 @@
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
     "next": "^6.1.1",
+    "randomstring": "^1.1.5",
     "rimraf": "^2.6.2"
   }
 }

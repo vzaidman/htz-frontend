@@ -10,6 +10,7 @@ import {
 } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
 import CommentsElement from './types/comments_element_type';
+import FinanceTable from './types/finance_table_type';
 import Footer from './types/footer_type';
 import NavMenu from './types/navMenu_type';
 import List from './types/list_type';
@@ -146,6 +147,13 @@ const RootQuery = new GraphQLObjectType({
       args: { path: { type: GraphQLString, }, },
       resolve(parentValue, { path, }, { dataSources, }) {
         return dataSources.PurchasePageAPI.getPage(path);
+      },
+    },
+    financeTable: {
+      args: {},
+      type: FinanceTable,
+      resolve(parentValue, args, context) {
+        return context.financeTableLoader.load(context.req.body.query).then(res => res);
       },
     },
   }),
