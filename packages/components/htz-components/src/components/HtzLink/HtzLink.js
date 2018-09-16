@@ -119,7 +119,7 @@ function HtzLink({
     );
     // Enables client-side navigation for react-articles
     const computedPathname = isReactArticle(computedHref.pathname)
-      ? getArticlePageTypeFromUrl(computedHref.pathname)
+      ? `/${getArticlePageTypeFromUrl(computedHref.pathname)}`
       : computedHref.pathname;
 
     return (

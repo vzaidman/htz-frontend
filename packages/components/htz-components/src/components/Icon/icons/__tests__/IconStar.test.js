@@ -7,7 +7,7 @@
  * *************************************************************** */
 import React from 'react';
 import felaSnapshotter from '../../../../test-helpers/felaSnapshotter';
-import IconStar from '../IconStar';
+import IconStar from '../../../IconStar/IconStar';
 
 describe('<IconStar />', () => {
   /* The error tests are left as documentation, but are commented out for the redability of the test results */

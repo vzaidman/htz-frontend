@@ -14,7 +14,7 @@ exports[`<Select> DOM element renders correctly with a Error 1`] = `
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="open menu"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -57,7 +57,7 @@ exports[`<Select> DOM element renders correctly with a Note 1`] = `
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="open menu"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -100,7 +100,7 @@ exports[`<Select> DOM element renders correctly with a controlled selected item 
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="open menu"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -137,7 +137,7 @@ exports[`<Select> DOM element renders correctly with a placholder prop 1`] = `
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="open menu"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -175,7 +175,7 @@ exports[`<Select> DOM element renders correctly with custom attrs prop 1`] = `
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="open menu"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -212,7 +212,7 @@ exports[`<Select> DOM element renders correctly with custom miscStyles 1`] = `
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="open menu"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -249,7 +249,7 @@ exports[`<Select> DOM element renders correctly with default selected item 1`] =
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="open menu"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -286,7 +286,7 @@ exports[`<Select> DOM element renders correctly with minimal required props 1`] 
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="open menu"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -323,7 +323,7 @@ exports[`<Select> DOM element renders correctly without display key in item 1`] 
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="open menu"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
