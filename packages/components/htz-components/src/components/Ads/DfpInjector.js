@@ -132,6 +132,12 @@ class DfpInjector extends Component {
     }
   }
 
+  componentWillUnmount() {
+    console.log('[dfp] clearing ad slots');
+    const clearRes = window.googletag.pubads().clear();
+    console.log('[dfp] cleared ad slots: ', clearRes);
+  }
+
   render() {
     if (this.state.shouldRender) {
       const { loading, error, } = this.props;

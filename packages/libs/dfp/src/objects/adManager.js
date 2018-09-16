@@ -101,24 +101,6 @@ export default class AdManager {
       });
       // Once DOM ready, add more adSlots.
       const onDomLoaded = () => {
-        // eslint-disable-line no-inner-declarations
-        try {
-          googletag.cmd.push(() => {
-            this.DEBUG &&
-              console.log(
-                `3. Define slots - secondary definition for ${
-                  adPriorities.high
-                } priority slots`
-              );
-            this.adSlots = this.initAdSlots(
-              config.adSlotConfig,
-              adPriorities.high
-            );
-          });
-        }
-        catch (err) {
-          console.log(err); // eslint-disable-line no-console
-        }
       };
       // Once window was loaded, add the rest of the adSlots.
       const onWindowLoaded = () => {
