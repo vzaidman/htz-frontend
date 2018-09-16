@@ -59,6 +59,7 @@
   "dependencies": {
     "@haaretz/htz-user-utils": "^0.1.0",
     "bunyan": "^1.8.12",
-    "graphql-type-json": "^0.1.4"
+    "graphql-type-json": "^0.1.4",
+    "randomstring": "^1.1.5"
   }
 }

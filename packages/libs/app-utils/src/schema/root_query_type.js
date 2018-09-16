@@ -150,10 +150,10 @@ const RootQuery = new GraphQLObjectType({
       },
     },
     financeTable: {
-      args: {},
       type: FinanceTable,
-      resolve(parentValue, args, context) {
-        return context.financeTableLoader.load(args).then(res => res);
+      args: {},
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.FinanceAPI.getTable(args);
       },
     },
   }),

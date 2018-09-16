@@ -4,6 +4,10 @@ import schema from './schema/schema';
 import breakUrl from './utils/breakUrl';
 import switchToDomain from './utils/switchToDomain';
 import createLogger from './utils/createLogger';
+import jsonGenerator from './generator/generator';
+
+// JSON Maps
+import financeTableMap from './generator/jsonMaps/financeTable';
 
 // Schema Fragments
 import articleHeader from './fragments/articleHeader/articleHeader';
@@ -42,6 +46,9 @@ export {
   withData,
   pagePropTypes,
   schema,
+  jsonGenerator,
+  // JSON Maps
+  financeTableMap,
   // Schema Fragments
   articleHeader,
   author,
