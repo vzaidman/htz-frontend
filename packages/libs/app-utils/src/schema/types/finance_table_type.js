@@ -154,11 +154,9 @@ export const financeTableFields = {
   holdingsRatio: { type: GraphQLFloat, },
 };
 
-const FinanceTableType = new GraphQLObjectType({
+export default new GraphQLObjectType({
   name: 'FinanceTable',
   fields: () => ({
     ...financeTableFields,
   }),
 });
-
-export default FinanceTableType;

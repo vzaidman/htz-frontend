@@ -153,7 +153,7 @@ const RootQuery = new GraphQLObjectType({
       args: {},
       type: FinanceTable,
       resolve(parentValue, args, context) {
-        return context.financeTableLoader.load(context.req.body.query).then(res => res);
+        return context.financeTableLoader.load(args).then(res => res);
       },
     },
   }),
