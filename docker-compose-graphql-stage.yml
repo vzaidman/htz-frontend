@@ -9,7 +9,7 @@ services:
     image: 'nexus-ng.themarker.com/htz-graphql:${version:-latest}'
     ports:
       - 3201:3201
-    command: ['yarn', 'workspace', '@haaretz/haaretz.co.il', 'start:qgl']
+    command: ['yarn', 'workspace', '@haaretz/haaretz.co.il', 'start:gql']
     environment:
       - NODE_ENV=production
       - CONNECTION_PRESET=stage
