@@ -10,7 +10,6 @@
   "scripts": {
     "build": "htz-scripts build",
     "clean": "htz-scripts clean",
-    "dev": "NODE_ENV=development htz-react-server finance | bunyan -L",
     "debug": "htz-react-server finance --inspect-brk",
     "format": "htz-scripts format",
     "gc": "htz-scripts commitizen",
@@ -18,9 +17,16 @@
     "prepare": "npm run build",
     "start:pm2": "NODE_ENV=production pm2 start htz-react-server -- finance",
     "start:prof": "NODE_ENV=production node --prof node_modules/.bin/htz-react-server finance",
-    "start": "NODE_ENV=production htz-react-server finance",
+    "styleguide": "htz-scripts styleguide",
+    "styleguide:build": "htz-scripts styleguide:build",
     "test": "htz-scripts test",
-    "update-scripts": "htz-scripts update-scripts"
+    "update-scripts": "htz-scripts update-scripts",
+    "dev": "concurrently 'cross-env NODE_ENV=development graphql-server' 'cross-env NODE_ENV=development htz-react-server finance | bunyan -L'",
+    "dev:2prod": "concurrently 'cross-env NODE_ENV=production graphql-server' 'cross-env NODE_ENV=development CONNECTION_PRESET=dev2prod htz-react-server finance | bunyan -L'",
+    "start:next": "cross-env  NODE_ENV=production htz-react-server finance",
+    "start:qgl": "cross-env  NODE_ENV=production graphql-server",
+    "start:dev2stage": "concurrently 'cross-env NODE_ENV=development graphql-server' 'cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server finance | bunyan -L'",
+    "start:dev2prod": "concurrently 'cross-env NODE_ENV=production graphql-server' 'cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server finance | bunyan -L'"
   },
   "dependencies": {
     "@haaretz/app-utils": "^0.1.0",
