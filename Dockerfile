@@ -1,4 +1,4 @@
-FROM node:10.8
+FROM nexus-ng.themarker.com/node:10.8
 ARG NEXT_BUILD_ID 
 COPY  . /workspace/
 WORKDIR /workspace/
@@ -9,5 +9,5 @@ RUN yarn && yarn bootstrap
 #RUN yarn test:deploy
 EXPOSE 3000
 WORKDIR /workspace/
-CMD ["yarn", "workspace", "@haaretz/haaretz.co.il", "start"]
+CMD ["yarn", "workspace", "@haaretz/haaretz.co.il", "start:next"]
 #CMD ["yarn", "workspace", "@haaretz/haaretz.co.il", "start:pm2"]
