@@ -16,6 +16,7 @@ services:
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
       - PORT=3201
+      - GRAPHQL_PORT=3201
       - BIND_ADDRESS=react-stage
       - HOSTNAME=react-stage
       - GRAPHQL_USE_SSL=true
