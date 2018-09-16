@@ -1,6 +1,7 @@
 /* global fetch */
 import { RESTDataSource, } from 'apollo-datasource-rest';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
+import { jsonGenerator, financeTableMap, } from '@haaretz/app-utils';
 import querystring from 'querystring';
 
 const ttl = 1000;
@@ -252,10 +253,21 @@ class PurchasePageAPI extends RESTDataSource {
   }
 }
 
+class FinanceAPI extends RESTDataSource {
+  get baseURL() {
+    return this.context.preview || this.context.serviceBase;
+  }
+
+  async getTable() {
+    return jsonGenerator(financeTableMap);
+  }
+}
+
 const dataSources = () => ({
   PageAPI: new PageAPI(),
   PapiAPI: new PapiAPI(),
   SsoAPI: new SsoAPI(),
   PurchasePageAPI: new PurchasePageAPI(),
+  FinanceAPI: new FinanceAPI(),
 });
 export default dataSources;
