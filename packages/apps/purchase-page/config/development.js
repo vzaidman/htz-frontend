@@ -15,17 +15,13 @@ module.exports = {
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
-      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
+      }://${this.appFQDN}${this.graphQLexposedPort && this.graphQLPort ? `:${this.graphQLPort}` : ''}/`;
     }),
-    polopolyImageBaseHref: defer(function () {
-      return `http${
-        this.useSSL ? 's' : ''
-      }://${this.hostname ? `${this.hostname}.` : ''}${this.domain}${this.port ? `:${this.port}` : ''}`;
-    }),
+    polopolyImageBaseHref: 'https://www.haaretz.co.il',
   },
   // Locally run app stack
   appFQDN: defer(function () {
-    return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
+    return `${this.graphQLSubDomain ? `${this.graphQLSubDomain}.` : ''}${this.domain}`;
   }),
   // Connection to remote
   remoteFQDN: defer(function () {
@@ -34,9 +30,11 @@ module.exports = {
   useSSL: false,
   graphQLuseSSL: false,
   graphQLexposedPort: true,
+  graphQLSubDomain: process.env.HOSTNAME,
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
-  port: process.env.PORT || '3000',
+  appPort: process.env.APP_PORT || '3000',
+  graphQLPort: process.env.GRAPHQL_PORT || '4000',
   // Path of promotions page in Polopoly CM
   polopolyPromotionsPagePath: 'promotions-page-react',
   logLevel: 'debug',

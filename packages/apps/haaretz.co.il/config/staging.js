@@ -13,12 +13,12 @@ module.exports = {
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
-      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
+      }://${this.appFQDN}${this.graphQLexposedPort && this.graphQLPort ? `:${this.graphQLPort}` : ''}/`;
     }),
     alerts: 'https://dev-alerts.haaretz.co.il',
   },
   appFQDN: defer(function () {
-    return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
+    return `${this.graphQLSubDomain ? `${this.graphQLSubDomain}.` : ''}${this.domain}`;
   }),
   remoteFQDN: defer(function () {
     return `pre.${this.domain}`;
@@ -26,9 +26,12 @@ module.exports = {
   useSSL: true,
   graphQLuseSSL: true,
   graphQLexposedPort: true,
+  // todo: ask tomer if we will add a staging graphql-server with different subDomain
+  graphQLSubDomain: 'graphql',
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
-  port: process.env.PORT || '3000',
+  appPort: process.env.APP_PORT || '2002',
+  graphQLPort: process.env.GRAPHQL_PORT || '4004',
   logLevel: 'info',
   assetPrefix: '',
   enableHttpLogging: false,

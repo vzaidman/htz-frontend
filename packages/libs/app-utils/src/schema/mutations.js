@@ -16,24 +16,28 @@ const mutation = new GraphQLObjectType({
     addComment: {
       type: newCommentResponseType,
       args: { newComment: { type: CommentInput, }, },
-      resolve(parentValue, { newComment, }, context) {
-        return context.cmlinkCommentPoster(newComment).then(data => data);
+      resolve(parentValue, { newComment, }, { dataSources, }) {
+        return dataSources.PapiAPI.createComment(newComment);
       },
     },
     reportAbuse: {
       type: newAbuseReportResponseType,
       args: { newAbuseReport: { type: AbuseReportVars, }, },
-      resolve(parentValue, { newAbuseReport, }, context) {
-        return context
-          .cmlinkCommentAbuseReport(newAbuseReport)
-          .then(status => ({ status, }));
+      resolve(parentValue, { newAbuseReport, }, { dataSources, }) {
+        return dataSources.PapiAPI.reportCommentAbuse(newAbuseReport).then(status => {
+          console.log('status from new comment report abuse');
+          return { status, };
+        });
       },
     },
     addVote: {
       type: newVoteResponseType,
       args: { newVote: { type: VoteVars, }, },
-      resolve(parentValue, { newVote, }, context) {
-        return context.loggerVotePoster(newVote).then(status => ({ status, }));
+      resolve(parentValue, { newVote, }, { dataSources, }) {
+        return dataSources.PapiAPI.rateComment(newVote).then(status => {
+          console.log('status from rateComment');
+          return { status, };
+        });
       },
     },
     signUpNewsletter: {
@@ -46,17 +50,18 @@ const mutation = new GraphQLObjectType({
         },
       }),
       args: { newsletterSignUp: { type: signUpNewsletterVars, }, },
-      resolve(parentValue, { newsletterSignUp, }, context) {
-        return context.newsLetterRegister(newsletterSignUp).then(json => json);
+      resolve(parentValue, { newsletterSignUp, }, { dataSources, }) {
+        return dataSources.PapiAPI.newsLetterSignUp(newsletterSignUp);
       },
     },
     signUpNotificationEmail: {
       type: newsignaUpNotificationResponseType,
       args: { newSignUp: { type: signUpNotificationVars, }, },
-      resolve(parentValue, { newSignUp, }, context) {
-        return context
-          .notificationSignUpPoster(newSignUp)
-          .then(status => ({ status, }));
+      resolve(parentValue, { newSignUp, }, { dataSources, }) {
+        return dataSources.PapiAPI.signUpCommentNotifications(newSignUp).then(status => {
+          console.log('status from signUpCommentNotifications');
+          return { status, };
+        });
       },
     },
   },

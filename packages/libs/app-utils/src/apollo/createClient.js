@@ -1,9 +1,6 @@
 import { ApolloLink, } from 'apollo-link';
 import { ApolloClient, } from 'apollo-client';
-import {
-  InMemoryCache,
-  IntrospectionFragmentMatcher,
-} from 'apollo-cache-inmemory';
+import { InMemoryCache, IntrospectionFragmentMatcher, } from 'apollo-cache-inmemory';
 import { onError, } from 'apollo-link-error';
 import { HttpLink, } from 'apollo-link-http';
 import { withClientState, } from 'apollo-link-state';
@@ -64,44 +61,40 @@ if (!process.browser) {
 function create(initialState, appDefaultState, req) {
   // const graphqlPort = process.env.NODE_ENV === 'production' ? '' : `:${port}`;
   const hostname =
-    initialState.ROOT_QUERY !== undefined
-      ? initialState.ROOT_QUERY.hostname
-      : req.hostname;
+    initialState.ROOT_QUERY !== undefined ? initialState.ROOT_QUERY.hostname : req.hostname;
   const referer =
-    initialState.ROOT_QUERY !== undefined
-      ? initialState.ROOT_QUERY.referer
-      : req.headers.referer;
+    initialState.ROOT_QUERY !== undefined ? initialState.ROOT_QUERY.referer : req.headers.referer;
   const graphqlLink = switchToDomain(hostname, config.get('service.graphql'));
+  console.log('the graphql link is: ', graphqlLink);
   const link = new HttpLink({
     uri: graphqlLink, // Server URL (must be absolute)
     credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
     headers: {
       cookie: req !== undefined ? req.header('Cookie') : undefined,
+      hostname,
+      // headers gets stringified so we make sure preview is not sent at all if not defined
+      ...(req !== undefined ? (req.query.preview ? { preview: req.query.preview, } : {}) : {}),
     },
     fetch,
     includeExtensions: true,
   });
 
-  const errorLink = onError(
-    ({ response, operation, graphQLErrors, networkError, }) => {
-      if (graphQLErrors) {
+  const errorLink = onError(({ response, operation, graphQLErrors, networkError, }) => {
+    if (graphQLErrors) {
+      console.log(`${'[GraphQL error]:'} Operation Name: ${operation.operationName}`);
+      graphQLErrors.map(({ message, locations, path, }) =>
         console.log(
-          `${'[GraphQL error]:'} Operation Name: ${operation.operationName}`
-        );
-        graphQLErrors.map(({ message, locations, path, }) =>
-          console.log(
-            `${'[GraphQL error]:'} Message: ${message}, Location: ${locations.map(
-              ({ line, column, }) => `{ line: ${line}, column: ${column} }`
-            )}, Path: ${path}`
-          )
-        );
-      }
-      if (networkError) {
-        console.log(`${'[Network error]:'} ${networkError}`);
-      }
-      if (response) response.errors = null;
+          `${'[GraphQL error]:'} Message: ${message}, Location: ${locations.map(
+            ({ line, column, }) => `{ line: ${line}, column: ${column} }`
+          )}, Path: ${path}`
+        )
+      );
     }
-  );
+    if (networkError) {
+      console.log(`${'[Network error]:'} ${networkError}`);
+    }
+    if (response) response.errors = null;
+  });
 
   const inMemoryCache = new InMemoryCache({
     fragmentMatcher: customFragmentMatcher,
@@ -176,9 +169,7 @@ function create(initialState, appDefaultState, req) {
             currentImages.length === 1 && !currentImages[0].url
               ? [ image, ]
               : // Make sure the the image doesn't already exists.
-              currentImages.find(
-                currentimage => currentimage.url === image.url
-              )
+              currentImages.find(currentimage => currentimage.url === image.url)
                 ? [ ...currentImages, ]
                 : [ ...currentImages, image, ];
           cache.writeData({

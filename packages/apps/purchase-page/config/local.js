@@ -24,7 +24,9 @@ switch (connectionPreset) {
   case 'dev2prod': {
     const baseConfigOverride = require('./production');
     presetOverride = Object.assign(presetOverride, baseConfigOverride, {
-      port: 3000,
+      appPort: presetOverride.appPort,
+      graphQLPort: baseConfigOverride.graphQLPort,
+      graphQLSubDomain: process.env.HOSTNAME,
       useSSL: true,
       graphQLuseSSL: false,
       graphQLexposedPort: true,

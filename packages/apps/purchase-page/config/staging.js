@@ -13,16 +13,12 @@ module.exports = {
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
-      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
+      }://${this.appFQDN}${this.graphQLexposedPort && this.graphQLPort ? `:${this.graphQLPort}` : ''}/`;
     }),
-    polopolyImageBaseHref: defer(function () {
-      return `http${
-        this.useSSL ? 's' : ''
-      }://${this.remoteFQDN}${this.port ? `:${this.port}` : ''}`;
-    }),
+    polopolyImageBaseHref: 'https://www.haaretz.co.il',
   },
   appFQDN: defer(function () {
-    return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
+    return `${this.graphQLSubDomain ? `${this.graphQLSubDomain}.` : ''}${this.domain}`;
   }),
   remoteFQDN: defer(function () {
     return `www.${this.domain}`;
@@ -32,7 +28,8 @@ module.exports = {
   graphQLexposedPort: false,
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
-  port: process.env.PORT || '2002',
+  appPort: process.env.APP_PORT || '2002',
+  graphQLPort: process.env.GRAPHQL_PORT || '4004',
   // Path of promotions page in Polopoly CM
   polopolyPromotionsPagePath: 'promotions-page-react',
   logLevel: 'info',

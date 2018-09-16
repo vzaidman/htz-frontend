@@ -1,0 +1,45 @@
+{
+  "name": "@haaretz/graphql-server",
+  "version": "0.1.0",
+  "description": "A server that will serve the graphql endpoint for the frontend apps",
+  "keywords": [],
+  "author": "kedarguy",
+  "license": "UNLICENSED",
+  "repository": "Haaretz/htz-frontend",
+  "main": "dist/lib/index.js",
+  "private": true,
+  "bin": "./bin/graphql-server.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node dist/lib/index.js",
+    "start": "cross-env NODE_ENV=production node dist/lib/index.js",
+    "build": "htz-scripts build:lib",
+    "clean": "htz-scripts clean",
+    "flow": "htz-scripts flow",
+    "format": "htz-scripts format",
+    "lint": "htz-scripts lint",
+    "gc": "htz-scripts commitizen",
+    "prepare": "npm run build",
+    "test": "htz-scripts test",
+    "update-scripts": "htz-scripts update-scripts"
+  },
+  "devDependencies": {
+    "@haaretz/htz-react-base": "^1.0.0",
+    "apollo-link-http": "^1.5.4",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "@haaretz/app-utils": "^0.1.0",
+    "@haaretz/htz-user-utils": "^0.1.0",
+    "apollo-datasource-rest": "^0.1.4",
+    "apollo-server": "^2.0.5",
+    "config": "^1.26.2",
+    "dataloader": "^1.3.0",
+    "graphql": "^0.13.2",
+    "isomorphic-fetch": "^2.2.1",
+    "node-fetch": "^2.1.2",
+    "universal-cookie": "^2.0.8"
+  },
+  "peerDependencies": {
+    "apollo-link-http": "^1.5.4"
+  }
+}

@@ -46,7 +46,7 @@ export default function htz(app, server, DEV) {
       req.params[0] = `/${req.params[0]}`;
     }
     const query = {
-      path: req.query.preview ? req.query.preview : req.params[0],
+      path: req.params[0],
     };
     console.log('path from htz routing ', req.path);
 

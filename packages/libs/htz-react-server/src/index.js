@@ -1,9 +1,7 @@
 import 'dotenv/config';
 import path from 'path';
 import express from 'express';
-import proxy from 'http-proxy-middleware';
-import { graphqlExpress, graphiqlExpress, } from 'apollo-server-express';
-import bodyParser from 'body-parser';
+// import proxy from 'http-proxy-middleware';
 import compression from 'compression';
 import helmet from 'helmet';
 import next from 'next';
@@ -14,18 +12,10 @@ import config from 'config';
 // adding this `fetch` global) here. That way they'll be available to any
 // modules that Next.js imports while routing and rendering pages.
 import 'isomorphic-fetch';
-import 'apollo-link';
 import morgan from 'morgan';
 import morganJson from 'morgan-json';
-import {
-  makeRemoteExecutableSchema,
-  mergeSchemas,
-  introspectSchema,
-} from 'graphql-tools';
-import fetch from 'node-fetch';
-import { schema, createLogger, } from '@haaretz/app-utils';
-import { HttpLink, } from 'apollo-link-http';
-import createContext from './createContext';
+import { createLogger, } from '@haaretz/app-utils';
+
 import htz from './routes/htz';
 import tm from './routes/tm';
 import hdc from './routes/hdc';
@@ -42,10 +32,7 @@ const enableHttpLogging = config.has('enableHttpLogging')
   : false;
 
 const DEV = process.env.NODE_ENV === 'development';
-const PORT = parseInt(
-  process.env.PORT || (config.has('port') ? config.get('port') : '3000'),
-  10
-);
+const PORT = parseInt(process.env.PORT || (config.has('appPort') ? config.get('appPort') : '3000'), 10);
 const assetPrefix = config.has('assetPrefix') ? config.get('assetPrefix') : '';
 const app = next({ dev: DEV, });
 const handler = app.getRequestHandler();
@@ -64,74 +51,31 @@ if (!(selectedRoute && sitesRouting.has(selectedRoute))) {
   process.exit(1);
 }
 
-const serviceBase = config.get('service.base');
-const logLevel = config.has('logLevel') ? config.get('logLevel') : null;
+// const serviceBase = config.get('service.base');
+// const logLevel = config.has('logLevel') ? config.get('logLevel') : null;
 // proxy middleware options
-const proxyOptions = {
-  target: `${serviceBase}`, // target host
-  changeOrigin: true, // needed for virtual hosted sites
-  ws: true, // proxy websockets
-  // pathRewrite: {
-  //   '^/api/old-path': '/api/new-path', // rewrite path
-  //   '^/api/remove/path': '/path', // remove base path
-  // },
-  router: {
-    // when request.headers.host == 'dev.localhost:3000',
-    // override target 'http://www.example.org' to 'http://localhost:8000'
-    [`${serviceBase}:${PORT}`]: `${serviceBase}:8080`,
-  },
-};
-if (logLevel === 'debug') {
-  proxyOptions.logLevel = 'debug';
-}
-console.log('proxy options:', JSON.stringify(proxyOptions));
-// create the proxy (without context)
-const tomcatProxy = proxy(proxyOptions);
-
-// options object
-const GraphQLOptions = {
-  // // a function applied to the parameters of every invocation of runQuery
-  // formatParams?: Function,
-
-  // // * - (optional) validationRules: extra validation rules applied to requests
-  // validationRules?: Array<ValidationRule>,
-
-  // // a function applied to each graphQL execution result
-  // formatResponse?: Function
-
-  // // a custom default field resolver
-  // fieldResolver?: Function
-
-  // a boolean that will print additional debug logging if execution errors occur
-  debug: DEV,
-};
+// const proxyOptions = {
+//   target: `${serviceBase}`, // target host
+//   changeOrigin: true, // needed for virtual hosted sites
+//   ws: true, // proxy websockets
+//   // pathRewrite: {
+//   //   '^/api/old-path': '/api/new-path', // rewrite path
+//   //   '^/api/remove/path': '/path', // remove base path
+//   // },
+//   router: {
+//     // when request.headers.host == 'dev.localhost:3000',
+//     // override target 'http://www.example.org' to 'http://localhost:8000'
+//     [`${serviceBase}:${PORT}`]: `${serviceBase}:8080`,
+//   },
+// };
+// if (logLevel === 'debug') {
+//   proxyOptions.logLevel = 'debug';
+// }
+// console.log('proxy options:', JSON.stringify(proxyOptions));
+// // create the proxy (without context)
+// const tomcatProxy = proxy(proxyOptions);
 
 async function run() {
-  const createRemoteSchema = async (uri, fetch) => {
-    const fetcher = new HttpLink({ uri, fetch, });
-    return makeRemoteExecutableSchema({
-      schema: await introspectSchema(fetcher),
-      link: fetcher,
-    });
-  };
-
-  let schemas;
-  try {
-    const userInfo = await createRemoteSchema(
-      'https://ms-apps.themarker.com/userInfo',
-      fetch
-    );
-    schemas = mergeSchemas({
-      schemas: [ userInfo, schema, ],
-    });
-  }
-  catch (err) {
-    console.log(`ms-apps user info error: ${err}`);
-    // Assign the papi schema to schemas without stitching,
-    // because fetching of userInfo failed
-    schemas = schema;
-  }
-  // const hostIp = config.get('hostIp');
   app
     .prepare()
     // eslint-disable-next-line consistent-return
@@ -160,18 +104,6 @@ async function run() {
       server.use(helmet({ frameguard: false, })); // Various security-minded settings.
       // cors allows querying the server from different ports and aliases.
       server.use(cors());
-      server.use(
-        '/graphql',
-        bodyParser.json(),
-        graphqlExpress(req => ({
-          schema: schemas,
-          context: createContext(req),
-          ...GraphQLOptions,
-        }))
-      );
-      if (DEV) {
-        server.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql', }));
-      }
 
       server.get([ /^((\/_next\/).*)+$/, ], (req, res) => {
         const query = {
@@ -194,7 +126,7 @@ async function run() {
       server.get('/', handler);
 
       // Fallback to tomcat via proxy
-      server.all('*', tomcatProxy);
+      // server.all('*', tomcatProxy);
       // For Zones
       logger.warn(`assetPrefix set to ${assetPrefix}`);
       app.setAssetPrefix(assetPrefix);

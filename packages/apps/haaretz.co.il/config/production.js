@@ -13,12 +13,12 @@ module.exports = {
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
-      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
+      }://${this.appFQDN}${this.graphQLexposedPort && this.graphQLPort ? `:${this.graphQLPort}` : ''}/`;
     }),
     alerts: 'https://alerts.haaretz.co.il',
   },
   appFQDN: defer(function () {
-    return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
+    return `${this.graphQLSubDomain ? `${this.graphQLSubDomain}.` : ''}${this.domain}`;
   }),
   remoteFQDN: defer(function () {
     return `www.${this.domain}`;
@@ -26,9 +26,11 @@ module.exports = {
   useSSL: true,
   graphQLuseSSL: true,
   graphQLexposedPort: false,
+  graphQLSubDomain: 'graphql',
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
-  port: process.env.PORT || '2004',
+  appPort: process.env.APP_PORT || '2004',
+  graphQLPort: process.env.GRAPHQL_PORT || '4004',
   logLevel: 'error',
   assetPrefix: '',
   enableHttpLogging: false,

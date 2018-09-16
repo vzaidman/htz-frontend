@@ -19,52 +19,47 @@ import Page from './types/page_type';
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: () => ({
-    articleLinkData: {
-      args: { id: { type: new GraphQLNonNull(GraphQLString), }, },
-      type: new GraphQLObjectType({
-        name: 'ArticleLinkData',
-        fields: () => ({
-          title: {
-            type: GraphQLString,
-          },
-          url: {
-            type: GraphQLString,
-          },
-        }),
-      }),
-      resolve(parentValue, { id, }, context) {
-        return context.articleLinkDataLoader.load(id);
-      },
-    },
+    // article queries
     rankArticle: {
       args: {
         articleId: { type: new GraphQLNonNull(GraphQLString), },
         starRanking: { type: new GraphQLNonNull(GraphQLInt), },
       },
       type: GraphQLBoolean,
-      resolve(parentValue, args, context) {
-        return context.articleSocialMetaLoader.load(args);
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.PapiAPI.rateArticle(args);
       },
     },
+
     commentsElement: {
       type: CommentsElement,
       args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
-      resolve(parentValue, { path, }, context) {
-        return context.cmlinkLoader.load(path);
+      resolve(parentValue, { path, }, { dataSources, }) {
+        return dataSources.PapiAPI.getCmLink(path);
       },
     },
     footer: {
       type: Footer,
       args: { listId: { type: new GraphQLNonNull(GraphQLString), }, },
-      resolve(parentValue, args, context) {
-        return context.listsLoader.load(args);
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.PapiAPI.getList(args);
+      },
+    },
+    list: {
+      type: List,
+      args: {
+        listId: { type: new GraphQLNonNull(GraphQLString), },
+        history: { type: new GraphQLList(GraphQLID), },
+      },
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.PapiAPI.getList(args);
       },
     },
     navMenu: {
       type: NavMenu,
       args: { listId: { type: new GraphQLNonNull(GraphQLString), }, },
-      resolve(parentValue, args, context) {
-        return context.listsLoader.load(args);
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.PapiAPI.getList(args);
       },
     },
     nextArticle: {
@@ -78,39 +73,51 @@ const RootQuery = new GraphQLObjectType({
         sectionId: { type: new GraphQLNonNull(GraphQLID), },
         readingHistory: { type: new GraphQLList(GraphQLID), },
       },
-      resolve(parentValue, args, context) {
-        return context.nextArticleLoader.load(args);
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.PapiAPI.getNextArticle(args);
       },
     },
-    list: {
-      type: List,
-      args: {
-        listId: { type: new GraphQLNonNull(GraphQLString), },
-        history: { type: new GraphQLList(GraphQLID), },
-      },
-      resolve(parentValue, args, context) {
-        return context.listsLoader.load(args);
-      },
-    },
+
     page: {
       type: Page,
       args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
-      resolve(parentValue, { path, }, context) {
-        return context.pageLoader.load(path);
+      resolve(parentValue, { path, }, { dataSources, }) {
+        return dataSources.PageAPI.getPage(path);
       },
     },
-    purchasePage: {
-      type: GraphQLJSON,
-      args: { path: { type: GraphQLString, }, },
-      resolve(parentValue, { path, }, context) {
-        return context.purchasePageLoader.load(path);
+
+    // reset password currently only used by purchase page, will be used by more apps later
+    resetPassword: {
+      args: { userName: { type: new GraphQLNonNull(GraphQLString), }, },
+      type: ResetPassword,
+      resolve(parentValue, { userName, }, { dataSources, }) {
+        return dataSources.SsoAPI.resetPassword(userName);
+      },
+    },
+
+    // Purchase page queries
+    articleLinkData: {
+      args: { id: { type: new GraphQLNonNull(GraphQLString), }, },
+      type: new GraphQLObjectType({
+        name: 'ArticleLinkData',
+        fields: () => ({
+          title: {
+            type: GraphQLString,
+          },
+          url: {
+            type: GraphQLString,
+          },
+        }),
+      }),
+      resolve(parentValue, { id, }, { dataSources, }) {
+        return dataSources.ArticleLinkDataAPI.getArticleLinkData(id);
       },
     },
     couponProduct: {
       args: { couponCode: { type: new GraphQLNonNull(GraphQLString), }, },
       type: GraphQLJSON,
-      resolve(parentValue, { couponCode, }, context) {
-        return context.couponProductLoader.load(couponCode);
+      resolve(parentValue, { couponCode, }, { dataSources, }) {
+        return dataSources.PurchasePageAPI.getCoupon(couponCode);
       },
     },
     payWithExistingCard: {
@@ -130,15 +137,15 @@ const RootQuery = new GraphQLObjectType({
         lastFourDigits: { type: new GraphQLNonNull(GraphQLString), },
       },
       type: GraphQLBoolean,
-      resolve(parentValue, paymentData, context) {
-        return context.payWithExistingCardLoader.load(paymentData).then(({ success, }) => success);
+      resolve(parentValue, paymentData, { dataSources, }) {
+        return dataSources.SsoAPI.payWithExistingCard(paymentData);
       },
     },
-    resetPassword: {
-      args: { userName: { type: new GraphQLNonNull(GraphQLString), }, },
-      type: ResetPassword,
-      resolve(parentValue, { userName, }, context) {
-        return context.resetPasswordLoader.load(userName).then(res => res);
+    purchasePage: {
+      type: GraphQLJSON,
+      args: { path: { type: GraphQLString, }, },
+      resolve(parentValue, { path, }, { dataSources, }) {
+        return dataSources.PurchasePageAPI.getPage(path);
       },
     },
   }),
