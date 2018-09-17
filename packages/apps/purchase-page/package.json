@@ -18,12 +18,12 @@
     "styleguide:build": "htz-scripts styleguide:build",
     "test": "htz-scripts test",
     "update-scripts": "htz-scripts update-scripts",
-    "dev": "concurrently 'cross-env NODE_ENV=development graphql-server' 'cross-env NODE_ENV=development htz-react-server purchase | bunyan -L'",
-    "dev:2prod": "concurrently 'cross-env NODE_ENV=production  graphql-server' 'cross-env NODE_ENV=development CONNECTION_PRESET=dev2prod htz-react-server purchase | bunyan -L'",
+    "dev": "concurrently \"cross-env NODE_ENV=development graphql-server\" \"cross-env NODE_ENV=development htz-react-server purchase | bunyan -L\"",
+    "dev:2prod": "cross-env concurrently \"cross-env NODE_ENV=production  graphql-server\" \"cross-env NODE_ENV=development CONNECTION_PRESET=dev2prod htz-react-server purchase | bunyan -L\"",
     "start:next": "cross-env  NODE_ENV=production htz-react-server purchase",
     "start:gql": "cross-env  NODE_ENV=production graphql-server",
-    "start:dev2stage": "concurrently 'cross-env NODE_ENV=development graphql-server' 'cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server purchase | bunyan -L'",
-    "start:dev2prod": "concurrently 'cross-env NODE_ENV=production graphql-server' 'cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server purchase | bunyan -L'"
+    "start:dev2stage": "cross-env concurrently \"cross-env NODE_ENV=development graphql-server\" \"cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server purchase | bunyan -L\"",
+    "start:dev2prod": "cross-env concurrently \"cross-env NODE_ENV=production graphql-server\" \"cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server purchase | bunyan -L\""
   },
   "dependencies": {
     "@haaretz/app-utils": "^0.1.0",
