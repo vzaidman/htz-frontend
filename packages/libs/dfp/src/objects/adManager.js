@@ -362,7 +362,7 @@ export default class AdManager {
     return (
       adSlot !== undefined &&
       // Has a required DOM Element
-      adSlot.htmlElement &&
+      // adSlot.htmlElement &&
       // Isn't blocked by another adSlot
       this.conflictResolver.isBlocked(adSlot.id) === false &&
       // Valid Referrer check

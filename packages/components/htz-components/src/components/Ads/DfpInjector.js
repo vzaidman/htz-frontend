@@ -51,7 +51,8 @@ const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
     };
 
     displaySlots(adPriorities.high);
-    displaySlots(adPriorities.normal);
+    console.warn('[dfp] should display normal slots');
+    // displaySlots(adPriorities.normal);
   }
   else {
     throw new Error('DfpInjectorInit error: dfpConfig is not ready!');

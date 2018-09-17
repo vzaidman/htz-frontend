@@ -45,6 +45,7 @@ export default class AdSlot {
 
     // Part IV : Runtime configuration - calculated data - only present in runtime
     this.shown = false;
+    this.isRequestSent = false;
     this.lastResolvedSize = undefined; // Initialized in 'slotRenderEnded' callback
     this.lastResolvedWithBreakpoint = undefined; // Initialized in 'slotRenderEnded' callback
     this.slot = undefined; // Holds a googletag.Slot object
@@ -165,9 +166,9 @@ export default class AdSlot {
         ? this.htmlElement.attributes['data-audtarget'].value
         : adTargets.all;
     }
-    if (!this.shown === true && this.htmlElement) {
-      this.shown = true; // Ensure show will be called once per adSlot
-      googletag.cmd.push(() => {
+    this.shown = true; // Ensure show will be called once per adSlot
+    googletag.cmd.push(() => {
+      if (this.isRequestSent === false) {
         if (this.deferredSlot || !this.slot) {
           this.slot = this.defineSlot();
         }
@@ -180,19 +181,9 @@ export default class AdSlot {
           );
         this.htmlElement.classList.remove(hiddenClass);
         googletag.display(this.htmlElement); // must be a 'Div' with an id!
-      });
-    }
-    else {
-      this.adManager.DEBUG &&
-        console.error(
-          `calling show for an ad slot that ${
-            this.shown
-              ? 'was already shown!'
-              : 'missing a required DOM element!'
-          }`,
-          this
-        );
-    }
+        this.isRequestSent = true;
+      }
+    });
   }
 
   /**

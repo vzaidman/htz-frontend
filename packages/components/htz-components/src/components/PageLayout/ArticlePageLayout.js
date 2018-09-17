@@ -14,6 +14,7 @@ import StandardArticle from './articleTypes/StandardArticle';
 import StandardArticleQuery from './queries/standard_article';
 import UserDispenser from '../User/UserDispenser';
 import OptOutStrip from '../OptOut/OptOutStrip';
+import Foo from '../Ads/Foo';
 
 const BIRequest = dynamic(import('../BI/BIRequest'), {
   ssr: false,
@@ -61,7 +62,7 @@ const ArticlePageLayout = ({
     });
 
   return (
-    <Fragment>
+    <Foo>
       {preHeader ? <LayoutRow>{getElements(preHeader)}</LayoutRow> : null}
       <LayoutRow>
         <OptOutStrip />
@@ -132,7 +133,7 @@ const ArticlePageLayout = ({
         }}
       </Query>
       <LayoutRow idName="modalsRoot" />
-    </Fragment>
+    </Foo>
   );
 };
 
