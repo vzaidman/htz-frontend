@@ -1,7 +1,12 @@
 /* global fetch */
 import { RESTDataSource, } from 'apollo-datasource-rest';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
-import { jsonGenerator, financeTableMap, } from '@haaretz/app-utils';
+import {
+  financeTableMap,
+  jsonGenerator,
+  lineGraphMap,
+  scatterGraphMap,
+} from '@haaretz/app-utils';
 import querystring from 'querystring';
 
 const ttl = 1000;
@@ -260,6 +265,14 @@ class FinanceAPI extends RESTDataSource {
 
   async getTable() {
     return jsonGenerator(financeTableMap);
+  }
+
+  async getScatterGraph() {
+    return jsonGenerator(scatterGraphMap);
+  }
+
+  async getLineGraph() {
+    return jsonGenerator(lineGraphMap);
   }
 }
 

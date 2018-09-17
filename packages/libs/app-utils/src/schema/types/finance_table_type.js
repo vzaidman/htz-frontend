@@ -24,7 +24,7 @@ const coerceDate = value => {
   return date;
 };
 
-const GraphQLTimestamp = new GraphQLScalarType({
+export const GraphQLTimestamp = new GraphQLScalarType({
   name: 'Timestamp',
   serialize: value => coerceDate(value),
   parseValue: coerceDate,
@@ -74,7 +74,7 @@ const TradingStatus = new GraphQLEnumType({
   },
 });
 
-export const financeTableFields = {
+const financeTableFields = {
   name: { type: GraphQLString, },
   id: { type: GraphQLString, },
   symbol: { type: GraphQLString, },
@@ -90,7 +90,7 @@ export const financeTableFields = {
   tradingStatus: { type: TradingStatus, },
   volume: { type: GraphQLFloat, },
   arbGap: { type: GraphQLFloat, },
-  openPositions: { type: GraphQLFloat, },
+  openPositions: { type: GraphQLInt, },
   putCallRatio: { type: GraphQLFloat, },
   avgDuration: { type: GraphQLFloat, },
   purchasePrice: { type: GraphQLFloat, },
@@ -152,6 +152,56 @@ export const financeTableFields = {
   exDate: { type: GraphQLTimestamp, },
   redemptionRate: { type: GraphQLFloat, },
   holdingsRatio: { type: GraphQLFloat, },
+  sharpIndex: { type: GraphQLFloat, }, // (0-10)
+  inflowsPercentageChange: { type: GraphQLFloat, },
+  outflowsPercentageChange: { type: GraphQLFloat, },
+  // relates to MTFs and ETFs
+  manager: { type: GraphQLString, },
+  trustee: { type: GraphQLString, },
+  exposure: { type: GraphQLString, },
+  exposureProfile: { type: GraphQLString, },
+  foundingDate: { type: GraphQLTimestamp, },
+  tradingHours: {
+    type: new GraphQLObjectType({
+      name: 'TradingHours',
+      fields: () => ({
+        start: { type: GraphQLTimestamp, },
+        end: { type: GraphQLTimestamp, },
+      }),
+    }),
+  },
+  dividendClassification: { type: GraphQLString, },
+  trusteeFee: { type: GraphQLFloat, },
+  loadChargeRate: { type: GraphQLFloat, },
+  distributionCommission: { type: GraphQLFloat, },
+  mainCurrency: { type: GraphQLString, },
+  policyChangeDate: { type: GraphQLTimestamp, },
+  primeClassification: { type: GraphQLString, },
+  mainClassification: { type: GraphQLString, },
+  secondaryClassification: { type: GraphQLString, },
+  taxClassification: { type: GraphQLString, },
+  stocksExposure: { type: GraphQLFloat, },
+  currencyExposure: { type: GraphQLFloat, },
+  currencyPeg: { type: GraphQLString, },
+  etfType: { type: GraphQLString, },
+  etfIssuer: { type: GraphQLString, },
+  conversionType: { type: GraphQLString, },
+  baseAsset: { type: GraphQLString, },
+  conversionFee: { type: GraphQLFloat, },
+  dividendPolicy: { type: GraphQLString, }, // a longer sentance
+  accumulatedDividend: { type: GraphQLFloat, },
+  accumulatedInterest: { type: GraphQLFloat, },
+  managementFeeFactor: { type: GraphQLFloat, },
+  unitsVolume: { type: GraphQLFloat, },
+  openPositionsChangeRate: { type: GraphQLFloat, },
+  contractSize: { type: GraphQLInt, },
+  expirationPrice: { type: GraphQLFloat, },
+  daysToExpiration: { type: GraphQLInt, },
+  expirationDate: { type: GraphQLTimestamp, },
+  /* options */
+  expirationBenchmarkDate: { type: GraphQLTimestamp, },
+  theoreticalValue: { type: GraphQLFloat, },
+  theoreticalValueGap: { type: GraphQLFloat, },
 };
 
 export default new GraphQLObjectType({

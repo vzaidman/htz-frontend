@@ -3,6 +3,7 @@ import string from '../methods/string';
 import number from '../methods/number';
 import date from '../methods/date';
 import list from '../methods/list';
+import object from '../methods/object';
 
 const tableMap: Object = new Map([
   [ 'name', () => string.lorem({ count: 1, type: 'word', }), ],
@@ -20,7 +21,7 @@ const tableMap: Object = new Map([
   [ 'tradingStatus', () => string.enum([ 'רציף', 'נעולה', 'סגורה', 'טרום נעילה', 'טרום פתיחה', ]), ],
   [ 'volume', () => number.float({ max: 1000000, min: 0, fixed: 2, }), ],
   [ 'arbGap', () => number.float({ max: 100, min: -100, fixed: 2, }), ],
-  [ 'openPositions', () => number.float({ max: 1000, min: 0, fixed: 2, }), ],
+  [ 'openPositions', () => number.int({ max: 1000, min: 0, fixed: 2, }), ],
   [ 'putCallRatio', () => number.float({ max: 1, min: 0, fixed: 2, }), ],
   [ 'avgDuration', () => number.float({ max: 30, min: 0, fixed: 2, }), ],
   [ 'purchasePrice', () => number.float({ max: 1000000, min: 0, fixed: 2, }), ],
@@ -90,6 +91,51 @@ const tableMap: Object = new Map([
   [ 'exDate', () => date.timestamp({}), ],
   [ 'redemptionRate', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
   [ 'holdingsRatio', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'sharpIndex', () => number.float({ max: 10, min: 0, fixed: 2, }), ],
+  [ 'inflowsPercentageChange', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'outflowsPercentageChange', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'manager', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'trustee', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'exposure', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'exposureProfile', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'foundingDate', () => date.timestamp({}), ],
+  [ 'tradingHours', () => object(
+    {
+      start: () => date.timestamp({}),
+      end: () => date.timestamp({}),
+    }
+  ), ],
+  [ 'dividendClassification', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'trusteeFee', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'loadChargeRate', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'distributionCommission', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'mainCurrency', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'policyChangeDate', () => date.timestamp({}), ],
+  [ 'primeClassification', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'mainClassification', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'secondaryClassification', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'taxClassification', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'stocksExposure', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'currencyExposure', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'currencyPeg', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'etfType', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'etfIssuer', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'conversionType', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'baseAsset', () => string.word({ capital: true, minLength: 4, maxLength: 8, }), ],
+  [ 'conversionFee', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'dividendPolicy', () => string.lorem({ count: 18, }), ], // a longer sentance
+  [ 'accumulatedDividend', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'accumulatedInterest', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'managementFeeFactor', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'unitsVolume', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'openPositionsChangeRate', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'contractSize', () => number.int({ max: 3000, }), ],
+  [ 'expirationPrice', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'daysToExpiration', () => number.int({ max: 3000, }), ],
+  [ 'expirationDate', () => date.timestamp({}), ],
+  [ 'expirationBenchmarkDate', () => date.timestamp({}), ],
+  [ 'theoreticalValue', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
+  [ 'theoreticalValueGap', () => number.float({ max: 100, min: 0, fixed: 2, }), ],
 ]);
 
 export default tableMap;

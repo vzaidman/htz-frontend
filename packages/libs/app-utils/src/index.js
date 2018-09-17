@@ -8,6 +8,8 @@ import jsonGenerator from './generator/generator';
 
 // JSON Maps
 import financeTableMap from './generator/jsonMaps/financeTable';
+import lineGraphMap from './generator/jsonMaps/lineGraph';
+import scatterGraphMap from './generator/jsonMaps/scatterGraph';
 
 // Schema Fragments
 import articleHeader from './fragments/articleHeader/articleHeader';
@@ -49,6 +51,8 @@ export {
   jsonGenerator,
   // JSON Maps
   financeTableMap,
+  lineGraphMap,
+  scatterGraphMap,
   // Schema Fragments
   articleHeader,
   author,

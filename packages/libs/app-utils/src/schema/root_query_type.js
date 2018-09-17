@@ -13,8 +13,10 @@ import CommentsElement from './types/comments_element_type';
 import FinanceTable from './types/finance_table_type';
 import Footer from './types/footer_type';
 import NavMenu from './types/navMenu_type';
+import LineGraph from './types/line_graph_type';
 import List from './types/list_type';
 import ResetPassword from './types/reset_password_type';
+import ScatterGraph from './types/scatter_graph_type';
 import Page from './types/page_type';
 
 const RootQuery = new GraphQLObjectType({
@@ -154,6 +156,22 @@ const RootQuery = new GraphQLObjectType({
       args: {},
       resolve(parentValue, args, { dataSources, }) {
         return dataSources.FinanceAPI.getTable(args);
+      },
+    },
+
+    scatterGraph: {
+      type: ScatterGraph,
+      args: {},
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.FinanceAPI.getScatterGraph(args);
+      },
+    },
+
+    lineGraph: {
+      type: LineGraph,
+      args: {},
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.FinanceAPI.getLineGraph(args);
       },
     },
   }),

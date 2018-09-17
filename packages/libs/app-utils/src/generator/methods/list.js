@@ -4,7 +4,7 @@ type ListType = (Array<Object>, number) => Array<string | number | Date>
 
 const list: ListType = (methods, count) => Array.from(Array(count), (_, i) => {
   const { method, options, } = methods[Math.floor(Math.random() * methods.length)];
-  return method(options);
+  return method(options, i);
 });
 
 export default list;

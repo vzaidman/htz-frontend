@@ -15,7 +15,7 @@ type IdType = ?number => string;
 
 type LoremType = ({
   count?: number,
-  type?: string,
+  type?: 'word' | 'paragraph',
 }) => string;
 
 type WordType = ({
