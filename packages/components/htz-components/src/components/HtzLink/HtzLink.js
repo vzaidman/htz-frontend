@@ -1,3 +1,4 @@
+/** global window */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
@@ -82,9 +83,11 @@ const LinkWrapper = React.forwardRef(
 
 // If the href is an absolute path, instead we return only the path and not the whole href.
 const ensureRelativity = hrefObj => {
-  const acceptableDomains = [ 'haaretz.co.il', 'themarker.com', ];
+  const { domain: currentDomain, } = typeof window !== 'undefined' ? breakUrl(window.location.href) : {};
+  // const acceptableDomains = [ 'haaretz.co.il', 'themarker.com', ];
   const { domain, path, } = breakUrl(hrefObj.pathname);
-  return domain && acceptableDomains.includes(domain)
+  const useClientNavigation = domain === currentDomain;
+  return useClientNavigation
     ? { ...hrefObj, pathname: path, }
     : hrefObj;
 };
