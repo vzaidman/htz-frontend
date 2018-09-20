@@ -215,14 +215,14 @@ class GraphController extends React.Component<Props, State> {
                     <StockStats
                       period={this.state.selectedPeriod}
                       graphType={this.state.selectedGraph.value}
-                      render={({ changeStats, }) => (
+                      render={({ changeStats, }) => (selectedStockId ?
                         <Graph
                           type={this.state.selectedGraph.value}
                           indexId={selectedStockId}
                           time={selectedPeriod}
                           changeStats={changeStats}
                         />
-                      )}
+                       : null)}
                       miscStyles={{
                         marginBottom: '0.5rem',
                       }}

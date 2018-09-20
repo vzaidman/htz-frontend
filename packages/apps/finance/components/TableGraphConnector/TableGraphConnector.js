@@ -22,7 +22,7 @@ class TableGraphConnector extends React.Component<Props, State> {
   shouldComponentUpdate(nextProps: Props, nextState: State) {
     return (
       !this.state || (
-        nextState.indexId !== this.state.indexId ||
+        nextState.id !== this.state.id ||
         nextState.selectedPeriod !== this.state.selectedPeriod
       )
     );
@@ -39,7 +39,7 @@ class TableGraphConnector extends React.Component<Props, State> {
   );
 
   render(): Node {
-    const { indexId, name, section, } = this.state || {};
+    const { id, name, type, } = this.state || {};
     return (
       <FelaTheme
         render={theme => (
@@ -56,7 +56,7 @@ class TableGraphConnector extends React.Component<Props, State> {
               width={1 / 3}
               miscStyles={{
                 direction: 'ltr',
-                overflowY: 'scroll',
+                overflowY: 'auto',
                 position: 'relative',
               }}
             >
@@ -72,18 +72,18 @@ class TableGraphConnector extends React.Component<Props, State> {
               width={2 / 3}
             >
               <GraphController
-                selectedStockId={indexId}
+                selectedStockId={id}
                 selectedStockName={name}
                 changePeriod={this.changePeriod}
               />
               <SectionLink
                 href={{
-                  pathname: `/${section || ''}`,
+                  pathname: `/${type || ''}`,
                   query: {
-                    id: indexId,
+                    id,
                   },
                 }}
-                as={`/${section || ''}/${name || ''}`}
+                as={`/${type || ''}/${name || ''}`}
               >
                 <span>למידע נוסף על {name}</span>
               </SectionLink>

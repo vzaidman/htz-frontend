@@ -1,13 +1,29 @@
 // @flow
 import React from 'react';
-import type { ChildrenArray, Node, StatelessFunctionalComponent, } from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
+import gql from 'graphql-tag';
+import type { ChildrenArray, Node, StatelessFunctionalComponent, } from 'react';
+import type { DocumentNode, } from 'graphql/language/ast';
 
 import TabList from '../TabList/TabList';
 import Tab from '../Tab/Tab';
-import stocksData from '../dummyData/stocksList01';
 import Tabs from '../Tabs/Tabs';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
+
+const TableQuery: DocumentNode = gql`
+  query GraphTable($assetsId: [String]){
+    financeTable(assetsId: $assetsId){
+      assets {
+        name
+        value
+        changePercentage
+        id
+        type
+      }
+    }
+  }
+`;
 
 type TdComponentProps = {
   children: ChildrenArray<Node> | Node,
@@ -36,15 +52,15 @@ export const TdComponent: StatelessFunctionalComponent<TdComponentProps> =
 
 export type StockData = {
   name: string,
-  points: string,
-  change: string,
-  indexId: string,
-  section: string,
+  value: string,
+  changePercentage: string,
+  id: string,
+  type: string,
 }
 
 type Props = {
   data: {
-    dataSource: Array<StockData>,
+    assets: Array<StockData>,
   },
   miscStyles: ?Object,
   changeStock: StockData => void,
@@ -73,7 +89,7 @@ class StockTable extends React.Component<Props, State> {
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     return !prevState ?
-      { stock: nextProps.data.dataSource[0], }
+      { stock: nextProps.data.assets[0], }
       : prevState;
   }
 
@@ -93,13 +109,14 @@ class StockTable extends React.Component<Props, State> {
   };
 
   render(): Node {
-    const { data: { dataSource: data, }, miscStyles, } = this.props;
-    const { stock: { indexId, }, } = this.state;
+    const { data: { assets: data, }, miscStyles, } = this.props;
+    const { stock: { id, }, } = this.state;
     return (
       <FelaComponent
         style={(theme: Object) => ({
           ...theme.type(-2),
           whiteSpace: 'nowrap',
+          width: '97%',
           extend: [
             ...(miscStyles
               ? parseStyleProps(miscStyles, theme.mq, theme.type)
@@ -177,17 +194,17 @@ class StockTable extends React.Component<Props, State> {
             >
               <TabList render="tbody">
                 {data.map((stock: StockData, index: number) => {
-                  const isActive: boolean = indexId === stock.indexId;
+                  const isActive: boolean = id === stock.id;
                   const isPrevious: boolean =
-                    data[index + 1] && indexId === data[index + 1].indexId;
+                    data[index + 1] && id === data[index + 1].id;
                   return (
                     <Tab
                       isPrevious={isPrevious}
                       index={index}
-                      key={stock.indexId}
+                      key={stock.id}
                       rule={tabRule}
                       onClick={() => this.changeSelectedIndexId(stock, index)}
-                      controls={`stock-${stock.indexId}`}
+                      controls={`stock-${stock.id}`}
                       render="tr"
                       presentation={false}
                       // eslint-disable-next-line no-return-assign
@@ -205,11 +222,11 @@ class StockTable extends React.Component<Props, State> {
                       >
                         {stock.name}
                       </TdComponent>
-                      <TdComponent>{stock.points}</TdComponent>
+                      <TdComponent>{stock.value}</TdComponent>
                       <TdComponent
                         isActive={isActive}
                         miscStyles={{
-                          color: Number(stock.change) < 0 ? 'red' : 'green',
+                          color: Number(stock.changePercentage) < 0 ? 'red' : 'green',
                           direction: 'ltr',
                           fontWeight: '700',
                           paddingEnd: '2rem',
@@ -239,7 +256,7 @@ class StockTable extends React.Component<Props, State> {
                         <FelaComponent
                           style={{
                             ':before': {
-                              content: Number(stock.change) > 0 ? '"+"' : '"-"',
+                              content: Number(stock.changePercentage) > 0 ? '"+"' : '"-"',
                             },
                             ':after': {
                               content: '"%"',
@@ -247,7 +264,7 @@ class StockTable extends React.Component<Props, State> {
                           }}
                           render="span"
                         >
-                          {Math.abs(Number(stock.change))}
+                          {Math.abs(Number(stock.changePercentage))}
                         </FelaComponent>
                       </TdComponent>
                     </Tab>
@@ -263,5 +280,18 @@ class StockTable extends React.Component<Props, State> {
 }
 
 export default (props: any) => (
-  <StockTable data={stocksData} {...props} />
+  <Query
+    query={TableQuery}
+    variables={{
+      assetsId: [ '2', '142', '137', '-2000', '164', '143', '167', '145', '149', ],
+    }}
+  >
+    {({ loading, error, data: { financeTable, }, }) => {
+      if (error) return null;
+      if (loading) return null;
+      return (
+        <StockTable data={financeTable} {...props} />
+      );
+    }}
+  </Query>
 );
