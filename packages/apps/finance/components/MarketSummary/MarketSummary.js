@@ -1,25 +1,43 @@
 // @flow
 import React from 'react';
+import gql from 'graphql-tag';
 import type { StatelessFunctionalComponent, } from 'react';
+import type { DocumentNode, } from 'graphql/language/ast';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
-import { H, } from '@haaretz/htz-components';
-import SectionLink from '../SectionLink/SectionLink';
-import getMarketData from '../dummyData/marketSummary';
+import { H, Grid, GridItem, } from '@haaretz/htz-components';
 
-type MarketData = {
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import SectionLink from '../SectionLink/SectionLink';
+
+const MarketSummaryQuery: DocumentNode = gql`
+  query MarketSummary($assetsId: [String]!) {
+  financeTable(assetsId: $assetsId) {
+      assets {
+        name
+        value
+        changePercentage
+        id
+        type
+      }
+    }
+  }
+`;
+
+type AssetData = {
   name: string,
-  points: string,
-  change: string,
-  indexId: string,
-  section: string,
+  value: number,
+  changePercentage: number,
+  id: string,
+  type: string,
 }
 
 type Props = {
-  marketId: string,
+  asset: AssetData,
   miscStyles? : Object,
 };
 
+// eslint-disable-next-line react/prop-types
 const Item: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, }) => (
   <FelaComponent
     style={theme => ({
@@ -70,8 +88,9 @@ const Item: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, 
 );
 
 
-const MarketSummary:StatelessFunctionalComponent<Props> = ({ marketId, miscStyles, }) => {
-  const { name, indexId, section, points, change, }: MarketData = getMarketData(marketId);
+// eslint-disable-next-line react/prop-types
+const MarketSummary:StatelessFunctionalComponent<Props> = ({ asset, miscStyles, }) => {
+  const { name, value, changePercentage, id, type, } = asset;
   return (
     <FelaTheme
       render={theme => (
@@ -115,17 +134,17 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ marketId, miscStyle
               >
                 {className => (
                   <span className={className}>
-                    {points}
+                    {value}
                   </span>
                 )}
               </Item>
               <Item
                 title="% שינוי"
                 miscStyles={{
-                  color: Number(change) < 0 ? 'red' : 'green',
+                  color: Number(changePercentage) < 0 ? 'red' : 'green',
                   direction: 'ltr',
                   ':before': {
-                    content: Number(change) > 0 ? '"+"' : Number(change) < 0 ? '"-"' : '""',
+                    content: Number(changePercentage) > 0 ? '"+"' : Number(changePercentage) < 0 ? '"-"' : '""',
                   },
                   ':after': {
                     content: '"%"',
@@ -134,7 +153,7 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ marketId, miscStyle
               >
                 {className => (
                   <span className={className}>
-                    {Math.abs(Number(change))}
+                    {Math.abs(Number(changePercentage))}
                   </span>
                 )}
               </Item>
@@ -142,12 +161,12 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ marketId, miscStyle
           </FelaComponent>
           <SectionLink
             href={{
-              pathname: `/${section || ''}`,
+              pathname: `/${type || ''}`,
               query: {
-                id: indexId,
+                id,
               },
             }}
-            as={`/${section || ''}/${name || ''}`}
+            as={`/${type || ''}/${name || ''}`}
             miscStyles={{
               backgroundColor: theme.color('neutral', '-10'),
               paddingTop: '0.5rem',
@@ -162,4 +181,30 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ marketId, miscStyle
   );
 };
 
-export default MarketSummary;
+export default (props: any) => {
+  const { miscStyles, } = props;
+  return (
+    <Query
+      query={MarketSummaryQuery}
+      variables={{
+        assetsId: [ '2', '142', '137', ],
+      }}
+    >
+      {({ loading, error, data: { financeTable: { assets, }, }, }) => {
+        if (error) return null;
+        if (loading) return null;
+        return (
+          <Grid>
+            {
+              assets.map(asset => (
+                <GridItem width={1 / 3}>
+                  <MarketSummary key={asset.id} miscStyles={miscStyles} asset={asset} />
+                </GridItem>
+              ))
+            }
+          </Grid>
+        );
+      }}
+    </Query>
+  );
+};
