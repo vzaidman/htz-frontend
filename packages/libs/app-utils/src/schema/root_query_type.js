@@ -10,13 +10,12 @@ import {
 } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
 import CommentsElement from './types/comments_element_type';
+import FinanceGraph from './types/finance_graph_type';
 import FinanceTable from './types/finance_table_type';
 import Footer from './types/footer_type';
 import NavMenu from './types/navMenu_type';
-import LineGraph from './types/line_graph_type';
 import List from './types/list_type';
 import ResetPassword from './types/reset_password_type';
-import ScatterGraph from './types/scatter_graph_type';
 import Page from './types/page_type';
 
 const RootQuery = new GraphQLObjectType({
@@ -159,19 +158,15 @@ const RootQuery = new GraphQLObjectType({
       },
     },
 
-    scatterGraph: {
-      type: ScatterGraph,
-      args: {},
-      resolve(parentValue, args, { dataSources, }) {
-        return dataSources.FinanceAPI.getScatterGraph(args);
+    financeGraph: {
+      type: FinanceGraph,
+      args: {
+        type: { type: GraphQLString, },
+        time: { type: GraphQLString, },
+        assetId: { type: GraphQLString, },
       },
-    },
-
-    lineGraph: {
-      type: LineGraph,
-      args: {},
-      resolve(parentValue, args, { dataSources, }) {
-        return dataSources.FinanceAPI.getLineGraph(args);
+      resolve(parentValue, { type, time, assetId, }, { dataSources, }) {
+        return dataSources.FinanceAPI.getGraph(type, time, assetId);
       },
     },
   }),

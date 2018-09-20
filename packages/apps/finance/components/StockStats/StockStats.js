@@ -3,9 +3,12 @@ import React, { Fragment, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import type { Node, StatelessFunctionalComponent, } from 'react';
+import type { Stock as LineStock, } from '../Graph/graphs/Line/Line';
+import type { Stock as ScatterStock, } from '../Graph/graphs/Scatter/Scatter';
 
-export type Stats = Array<{ title: string, value: number | string, }>
+type Stats = Array<{ title: string, value: string | number, }>
 
+// eslint-disable-next-line react/prop-types
 const Stat: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, }) => (
   <FelaComponent
     style={theme => ({
@@ -47,7 +50,9 @@ const Stat: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, 
 );
 
 type Props = {
-  render: ({changeStats: ({stats: Stats}) => void}) => Node,
+  graphType: 'line' | 'scatter',
+  period: 'daily' | 'weekly' | 'monthly' | 'yearly' | 'tripleYear' | 'max',
+  render: ({changeStats: (stock: LineStock | ScatterStock) => void}) => Node,
   miscStyles: ?Object,
 }
 type State = {
@@ -59,9 +64,43 @@ class StockStats extends React.Component<Props, State> {
     stats: [],
   };
 
-  changeStats: ({stats: Stats}) => void = stats => (
-    this.setState(stats)
-  );
+  getDateStat: (number, string) => { title: string, value: string, } = (date, time) => {
+    let title: string;
+    let value: string;
+    switch (time) {
+      case 'daily':
+        title = 'שעה';
+        value = new Date(date).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', });
+        break;
+      default:
+        title = 'תאריך';
+        value = new Date(date).toLocaleDateString('en-GB');
+    }
+    return { title, value, };
+  };
+
+  changeStats: Object => void = stock => {
+    const { period, graphType, } = this.props;
+    let stats: Stats;
+
+    if (graphType === 'line') {
+      const { time, value, change, }: LineStock = stock || {};
+      stats = [
+        { ...this.getDateStat(time, period), },
+        { title: 'שער', value: value || '', },
+        { title: '% שינוי', value: change || '', },
+      ];
+    }
+    else {
+      const { x, y, name, }: ScatterStock = stock || {};
+      stats = [
+        { title: 'מניה', value: name || '', },
+        { title: 'מחזור', value: x || '', },
+        { title: '% תשואה', value: y || '', },
+      ];
+    }
+    this.setState({ stats, });
+  };
 
   render() {
     const { render, miscStyles, } = this.props;

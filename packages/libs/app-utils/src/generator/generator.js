@@ -1,17 +1,22 @@
 // @flow
 
-type GeneratorType = (Object, ?Array<string>, ?number) => Object;
+type GeneratorType = ({
+  map: Object,
+  fields?: ?Array<string>,
+  index: ?number,
+  args: ?Object,
+}) => Object;
 
-const generator: GeneratorType = (map, fields = null, index = null) => {
+const generator: GeneratorType = ({ map, fields = null, index = null, args = null, }) => {
   const result = {};
   if (fields) {
     for (const field of fields) {
-      result[field] = map.get(field)(index);
+      result[field] = map.get(field)({ index, args, });
     }
   }
   else {
     for (const [ field, method, ] of map) {
-      result[field] = method(index);
+      result[field] = method({ index, args, });
     }
   }
   return result;

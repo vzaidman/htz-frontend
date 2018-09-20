@@ -7,16 +7,22 @@ import type {
 import { FelaComponent, } from 'react-fela';
 import * as d3 from 'd3';
 
-import type { Stats, } from '../../../StockStats/StockStats';
-
-type Stock = [ number, number, number, string, ];
+export type Stock = {
+  time: number,
+  value: number,
+  yieldSpread: number,
+  change: number,
+  volume: number,
+  name: string,
+  symbol: string,
+};
 
 /* eslint-disable react/no-unused-prop-types */
 type Props = {
   data: Array<Stock>,
   duration: number,
   theme: Object,
-  changeStats: ({ stats: Stats, }) => void,
+  changeStats: (stock: Stock) => void,
 };
 /* eslint-enable react/no-unused-prop-types */
 
@@ -50,8 +56,8 @@ class Line extends React.Component<Props, State> {
     const { yScale, xScale, } = prevState;
 
     /* Extract graph's start & end points from the data */
-    const xExtent = d3.extent(data, stock => stock[0]);
-    const [ yMin, yMax, ] = d3.extent(data, stock => stock[1]);
+    const xExtent = data ? d3.extent(data, stock => stock.time) : [ 0, 0, ];
+    const [ yMin, yMax, ] = data ? d3.extent(data, stock => stock.value) : [ 0, 0, ];
 
     /* Calculate x & y inner padding */
     // TODO: do this through median difference rather than hard coded
@@ -71,12 +77,14 @@ class Line extends React.Component<Props, State> {
 
   componentDidMount() {
     const { data, } = this.props;
-    this.dataIndex = data.length - 1;
-    this.renderGraph(data);
+    if (data) {
+      this.dataIndex = data.length - 1;
+      this.renderGraph(data);
+    }
   }
 
   shouldComponentUpdate(nextProps: Props) {
-    if (nextProps.data !== this.props.data) this.renderGraph(nextProps.data);
+    if (nextProps.data && nextProps.data !== this.props.data) this.renderGraph(nextProps.data);
     return false;
   }
 
@@ -94,14 +102,14 @@ class Line extends React.Component<Props, State> {
     const x: number = xScale.invert(d3.mouse(this.overlayRef)[0]);
 
     /* Get the later's index position in the data array */
-    const bisectDate: Function = d3.bisector(d => d[0]).left;
+    const bisectDate: Function = d3.bisector(d => d.time).left;
     const i: number = bisectDate(data, x, 1);
 
     /* In case the cursor is between two items, calculate which on is the closest */
     const stockIndex: number =
       !data[i - 1] ? i
         : !data[i] ? i - 1
-          : x - data[i - 1][0] > data[i][0] - x ? i : i - 1;
+          : x - data[i - 1].time > data[i].time - x ? i : i - 1;
 
     this.dataIndex = stockIndex;
     return data[stockIndex];
@@ -116,24 +124,6 @@ class Line extends React.Component<Props, State> {
   circleRef: ElementRef<'circle'> | null;
   polyRef: ElementRef<'polygon'> | null;
   overlayRef: ElementRef<'rect'> | null;
-
-  /**
-   * This function accepts Stock type array, extracts its items and sends them to the parent component.
-   * @param stock - An array of stock data to be passed t othe parent component.
-   */
-  updateStatsState: ?Stock => void = stock => {
-    const [ time, rate, change, ] = stock || [];
-    const stats: Stats = [
-      { title: 'שעה',
-        value: time ?
-          new Date(time).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', })
-          : '',
-      },
-      { title: 'שער', value: rate || '', },
-      { title: '% שינוי', value: change || '', },
-    ];
-    this.props.changeStats({ stats, });
-  };
 
   /* Create graph's axis */
   xAxis = d3.axisTop().scale(this.state.xScale).tickFormat(d3.timeFormat('%H:%M'));
@@ -154,9 +144,9 @@ class Line extends React.Component<Props, State> {
     /* If no specific stock passed to this function, go and get the one that
      the mouse is currently hover at its X axis and extract it's X & Y (Time & Rate). */
     const stock: Stock = d || this.getStockFromMouseEvent();
-    const [ time, rate, ] = stock;
+    const { time, value, } = stock;
     const positionX: number = xScale(time);
-    const positionY: number = yScale(rate);
+    const positionY: number = yScale(value);
 
     /* Take the indicator's dotted line, and change it's X position. */
     d3.select(this.lineRef)
@@ -193,7 +183,7 @@ class Line extends React.Component<Props, State> {
       .attr('r', 4);
 
     /* Send the hovered stock and send it's data to the parent component. */
-    this.updateStatsState(stock);
+    this.props.changeStats(stock);
   };
 
   /**
@@ -208,20 +198,24 @@ class Line extends React.Component<Props, State> {
     /* Set the init lines svg elements, and set the animation's key (the date). */
     const lines = d3.select(this.graphRef)
       .selectAll('line')
-      .data(data, d => d[0]);
-
-    /* Set the Exit event. */
-    lines.exit().remove();
+      .data(data, (d, i) => i);
 
     /* Find and save the average height for the init Y. */
-    this.yMean = d3.mean(data, stock => stock[1]);
+    this.yMean = d3.mean(data, stock => stock.value);
+
+    /* Set the Exit event. */
+    lines.exit()
+      .transition(transition)
+      .attr('y1', yScale(this.yMean))
+      .attr('y2', yScale(this.yMean))
+      .remove();
 
     /* Set the Enter event and the init position. */
     const enter = lines
       .enter()
       .append('line')
-      .attr('x1', d => xScale(d[0]))
-      .attr('x2', (d, i) => (data[i + 1] ? xScale(data[i + 1][0]) : xScale(d[0])))
+      .attr('x1', d => xScale(d.time))
+      .attr('x2', (d, i) => (data[i + 1] ? xScale(data[i + 1].time) : xScale(d.time)))
       .attr('y1', yScale(this.yMean))
       .attr('y2', yScale(this.yMean));
 
@@ -230,16 +224,16 @@ class Line extends React.Component<Props, State> {
       .attr('stroke', '#f5a623')
       .attr('stroke-width', 1)
       .transition(transition)
-      .attr('x1', d => xScale(d[0]))
-      .attr('y1', d => yScale(d[1]))
-      .attr('x2', (d, i) => (data[i + 1] ? xScale(data[i + 1][0]) : xScale(d[0])))
-      .attr('y2', (d, i) => (data[i + 1] ? yScale(data[i + 1][1]) : yScale(d[1])));
+      .attr('x1', d => xScale(d.time))
+      .attr('y1', d => yScale(d.value))
+      .attr('x2', (d, i) => (data[i + 1] ? xScale(data[i + 1].time) : xScale(d.time)))
+      .attr('y2', (d, i) => (data[i + 1] ? yScale(data[i + 1].value) : yScale(d.value)));
 
     /* Set a listener on the cover rectangle. */
     d3.select(this.overlayRef).on('mousemove', this.moveLine);
 
     /* Move the line indicator to it's init position. */
-    this.moveLine(data[this.dataIndex], true);
+    this.moveLine(data[this.dataIndex] || data[data.length - 1], true);
 
     /* Select the X & Y axis group reference */
     const xAxisRef = d3.select(this.xAxisRef);

@@ -7,16 +7,20 @@ import type {
 import { FelaComponent, } from 'react-fela';
 import * as d3 from 'd3';
 
-import type { Stats, } from '../../../StockStats/StockStats';
-
-type Stock = [ number, number, string, string, ];
+export type Stock = {
+  x: number,
+  y: number,
+  id: string,
+  name: string,
+  symbol: string,
+};
 
 /* eslint-disable react/no-unused-prop-types */
 type Props = {
   data: Array<Stock>,
   duration: number,
   theme: Object,
-  changeStats: ({ stats: Stats, }) => void,
+  changeStats: (stock: Stock) => void,
 };
 /* eslint-enable react/no-unused-prop-types */
 
@@ -57,12 +61,12 @@ class Scatter extends React.Component<Props, State> {
     /* Extract the Min & Max points and inset them into the scales combine with the padding */
     xScale.domain([
       0,
-      d3.max(data, d => d[0]) + xPadding,
+      data ? d3.max(data, d => d.x) + xPadding : 0,
     ]);
-    yScale.domain([
-      d3.min(data, d => d[1]) - yPadding,
-      d3.max(data, d => d[1]) + yPadding,
-    ]);
+    yScale.domain(data ? [
+      d3.min(data, d => d.y) - yPadding,
+      d3.max(data, d => d.y) + yPadding,
+    ] : [ 0, 0, ]);
 
     return {
       yScale,
@@ -74,11 +78,11 @@ class Scatter extends React.Component<Props, State> {
 
   componentDidMount() {
     const { data, } = this.props;
-    this.renderGraph(data);
+    if (data) this.renderGraph(data);
   }
 
   shouldComponentUpdate(nextProps: Props) {
-    if (nextProps.data !== this.props.data) this.renderGraph(nextProps.data);
+    if (nextProps.data && nextProps.data !== this.props.data) this.renderGraph(nextProps.data);
     return false;
   }
 
@@ -90,20 +94,6 @@ class Scatter extends React.Component<Props, State> {
   lineRef: ElementRef<'line'> | null;
   polyRef: ElementRef<'polygon'> | null;
 
-  /**
-   * This function accepts Stock type array, extracts its items and sends them to the parent component.
-   * @param stock - An array of stock data to be passed t othe parent component.
-   */
-  updateStatsState: ?Stock => void = stock => {
-    const [ x, y, name, ] = stock || [];
-    const stats: Stats = [
-      { title: 'מניה', value: name || '', },
-      { title: 'מחזור', value: x || '', },
-      { title: '% תשואה', value: y || '', },
-    ];
-    this.props.changeStats({ stats, });
-  };
-
   /* Create graph's axis */
   xAxis = d3.axisTop().scale(this.state.xScale);
   yAxis = d3.axisLeft().scale(this.state.yScale);
@@ -114,7 +104,7 @@ class Scatter extends React.Component<Props, State> {
    * @param animate - Should the indication line be animated.
    */
   moveLine: (Stock, boolean) => void = (stock, animate) => {
-    const [ x, ] = stock;
+    const { x, } = stock;
     const { xScale, theme, duration, } = this.state;
     /* Set transition. */
     const transition = d3.transition().duration(animate ? duration / 2 : null);
@@ -148,7 +138,7 @@ class Scatter extends React.Component<Props, State> {
       .attr('points', points => points.map(point => [ point.x, point.y, ].join(',')).join(' '));
 
     /* Send the hovered stock and send it's data to the parent component. */
-    this.updateStatsState(stock);
+    this.props.changeStats(stock);
   };
 
   /**
@@ -165,8 +155,8 @@ class Scatter extends React.Component<Props, State> {
     const midWidth: number = width / 2;
     this.midItem =
       data.reduce((prev, curr) => {
-        const currX: number = xScale(curr[0]);
-        const prevX: number = xScale(prev[0]);
+        const currX: number = xScale(curr.x);
+        const prevX: number = xScale(prev.x);
         return (
           Math.abs(currX - midWidth) < Math.abs(prevX - midWidth) ? curr : prev
         );
@@ -188,7 +178,7 @@ class Scatter extends React.Component<Props, State> {
       .enter()
       .append('circle')
       .attr('r', 0)
-      .attr('cx', d => xScale(d[0]))
+      .attr('cx', d => xScale(d.x))
       .attr('cy', yScale(0));
 
     /* Merge the Enter event with the Update event and animation. */
@@ -198,10 +188,10 @@ class Scatter extends React.Component<Props, State> {
         this.moveLine(d, false);
       })
       .transition(transition)
-      .attr('fill', d => (d[1] > 0 ? '#7ad166' : '#e22134'))
+      .attr('fill', d => (d.y > 0 ? '#7ad166' : '#e22134'))
       .attr('r', 5)
-      .attr('cx', d => xScale(d[0]))
-      .attr('cy', d => yScale(d[1]));
+      .attr('cx', d => xScale(d.x))
+      .attr('cy', d => yScale(d.y));
 
     /* Set the RedLine position and transition. */
     d3.select(this.zeroRef)

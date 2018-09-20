@@ -1,10 +1,10 @@
 // @flow
 
-type ListType = (Array<Object>, number) => Array<string | number | Date>
+type ListType = (Array<Object>, number, ?Object) => Array<string | number | Date>
 
-const list: ListType = (methods, count) => Array.from(Array(count), (_, i) => {
+const list: ListType = (methods, count, args) => Array.from(Array(count), (_, i) => {
   const { method, options, } = methods[Math.floor(Math.random() * methods.length)];
-  return method(options, i);
+  return method(options, i, args);
 });
 
 export default list;

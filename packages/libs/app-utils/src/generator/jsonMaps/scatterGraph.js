@@ -4,6 +4,8 @@ import number from '../methods/number';
 import list from '../methods/list';
 import object from '../methods/object';
 
+const count: number = number.int({ min: 5, max: 500, });
+
 const scatterMap: Object = new Map([
   [ 'xLabel', () => string.lorem({ count: 1, type: 'word', }), ],
   [ 'yLabel', () => string.lorem({ count: 1, type: 'word', }), ],
@@ -20,7 +22,7 @@ const scatterMap: Object = new Map([
         },
       },
     ],
-    20
+    count
   ), ],
 ]);
 

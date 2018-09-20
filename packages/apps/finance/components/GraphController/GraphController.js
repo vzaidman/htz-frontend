@@ -213,6 +213,8 @@ class GraphController extends React.Component<Props, State> {
                   </TabList>
                   <TabPanel id={`graph-${selectedPeriod}`}>
                     <StockStats
+                      period={this.state.selectedPeriod}
+                      graphType={this.state.selectedGraph.value}
                       render={({ changeStats, }) => (
                         <Graph
                           type={this.state.selectedGraph.value}

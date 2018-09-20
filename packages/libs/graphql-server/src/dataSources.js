@@ -263,16 +263,15 @@ class FinanceAPI extends RESTDataSource {
     return this.context.preview || this.context.serviceBase;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   async getTable() {
     return jsonGenerator(financeTableMap);
   }
 
-  async getScatterGraph() {
-    return jsonGenerator(scatterGraphMap);
-  }
-
-  async getLineGraph() {
-    return jsonGenerator(lineGraphMap);
+  // eslint-disable-next-line class-methods-use-this
+  async getGraph(type, time, assetId) {
+    const graphMap = type === 'line' ? lineGraphMap : scatterGraphMap;
+    return jsonGenerator({ map: graphMap, args: { time, }, });
   }
 }
 
