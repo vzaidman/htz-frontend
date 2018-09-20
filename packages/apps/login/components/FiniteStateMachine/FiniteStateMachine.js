@@ -297,7 +297,7 @@ class FiniteStateMachine extends React.Component {
 
   render() {
     return this.props.render({
-      currentState: this.currentState,
+      currentState: this.getCurrentState,
       findRout: this.findTransition,
       doTransition: this.doTransition,
     });
