@@ -12,8 +12,10 @@ components.
 - [Commands](#commands)
   - [build](#build)
   - [clean](#clean)
-  - [format](#format)
+  - [commitizen](#commitizen)
+  - [distFlowTypes](#distFlowTypes)
   - [flow](#flow)
+  - [format](#format)
   - [lint](#lint)
   - [styleguide](#styleguide)
   - [styleguide:build](#styleguidebuild)
@@ -74,16 +76,25 @@ will usually involve running Babel and/or webpack.
 
 Remove built distribution files and the Jest cache directory.
 
-### format
+### commitizen
 
-Format code in the current directory with [Prettier](https://prettier.io/).
-You should do this before opening any pull request that contains code, for
-consistency.
+Run commitizen to assist with writing standard-conferment commit messages.
+
+### distFlowTypes
+
+Copies the `src/index.js` file `index.js.flow` in the package root, so that
+Flow typings are available for package consumers.
 
 ### flow
 Run the [Flow](flow.org/) typechecker. Initializes the package to use flow if
 not already initialized. For only initializing the package without running any 
 checks, run with the `--no-run` flag
+
+### format
+
+Format code in the current directory with [Prettier](https://prettier.io/).
+You should do this before opening any pull request that contains code, for
+consistency.
 
 ### lint
 
