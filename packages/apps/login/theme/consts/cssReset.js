@@ -218,7 +218,7 @@ const styles = host => {
      * Set the color of `<mark>` elements in accordance with the brand color palette
      */
     'mark{' +
-    `background-color:${colors('highlight')};` +
+    //tmp removed due to error: `background-color:${colors('highlight')};` +
     `color:${colors('bodyText')};` +
     '}' +
     /**
