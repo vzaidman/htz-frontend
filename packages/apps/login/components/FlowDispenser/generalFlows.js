@@ -1,11 +1,11 @@
-export default ({
+export default {
   transitionRouteMap: new Map([
     [ '-password', '/password', ],
     [ '-passwordError', '/passwordError', ],
     [ '-passwordReminder', '/passwordReminder', ],
     [ '-passwordReminderSent', '/passwordReminderSent', ],
     [ '-register', '/register', ],
-    [ '-success', 'https://haaretz.co.il', ],
+    [ '-success', '/', ],
   ]),
   password: {
     forgotPassword: 'passwordReminder',
@@ -26,4 +26,4 @@ export default ({
     accept: 'success',
     withPassword: 'password',
   },
-});
+};

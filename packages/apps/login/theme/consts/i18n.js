@@ -6,9 +6,7 @@ export const linkToHomePage = Object.freeze({
 });
 
 export const emailInputTexts = host => ({
-  emailInputLabel: host === 'haaretz.com' ? 'email' : 'אימייל',
-  emailInputRequiredLong: host === 'haaretz.com'
-    ? 'required'
-    : 'שדה חובה',
+  emailInputLabel: host === 'haaretz.com' ? 'email' : 'דוא"ל',
+  emailInputRequiredLong: host === 'haaretz.com' ? 'required' : 'שדה חובה',
   emailInputRequiredShort: '*',
 });

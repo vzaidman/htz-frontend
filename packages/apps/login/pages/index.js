@@ -5,7 +5,7 @@ import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import { StyleProvider, } from '@haaretz/fela-utils';
-import { FelaTheme, } from 'react-fela';
+import { createComponent, FelaTheme, } from 'react-fela';
 import isEmail from 'validator/lib/isEmail';
 import Header from '../layouts/Header';
 import Footer from '../layouts/Footer';
@@ -15,32 +15,39 @@ import GET_HOST from './queries/GetHost';
 import INSPECT_EMAIL from './queries/InspectEmail';
 import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
 import { storeFlowNumber, } from '../components/FlowDispenser/flowStorage';
+import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
 
-const generateEmailError = message =>
-  [ { name: 'email', order: 1, errorText: message, }, ];
+// Styling Components -------
+const { PageWrapper, ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
+// --------------------------
+
+const generateEmailError = message => [ { name: 'email', order: 1, errorText: message, }, ];
 
 const validateEmailInput = ({ email, }) =>
   (!email
-    ? generateEmailError('must provide email')
+    ? generateEmailError('אנא הזינו כתובת דוא”ל')
     : !isEmail(email)
-      ? generateEmailError('invalid email')
+      ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
 const getDataFromUserInfo = client => email =>
-  client.query({
-    query: INSPECT_EMAIL,
-    variables: { email, },
-  }).then(res => res.data);
+  client
+    .query({
+      query: INSPECT_EMAIL,
+      variables: { email, },
+    })
+    .then(res => res.data);
 
-const mockDataFromUserInfo = client => email => Promise.resolve({
-  user: {
-    isUserExist: true,
-    isEmailValid: true,
-    isPhoneValid: true,
-    isPhoneConnectedWithEmail: true,
-    isUserPaying: false,
-  },
-});
+const mockDataFromUserInfo = client => email =>
+  Promise.resolve({
+    user: {
+      isUserExist: true,
+      isEmailValid: true,
+      isPhoneValid: true,
+      isPhoneConnectedWithEmail: true,
+      isUserPaying: false,
+    },
+  });
 
 const onSubmit = (client, getFlowByData) => ({ email, }) => {
   // getDataFromUserInfo(client)(email)
@@ -60,43 +67,55 @@ const onSubmit = (client, getFlowByData) => ({ email, }) => {
 const Index = () => (
   <Fragment>
     <ApolloConsumer>
-      { client => {
+      {client => {
         const host = client.readQuery({ query: GET_HOST, }).hostname.match(/^(?:.*?\.)?(.*)/i)[1];
         return (
           <StyleProvider renderer={styleRenderer} theme={theme(host)}>
             <FelaTheme
               render={theme => (
                 <Fragment>
-                  <Header />
-                  <FlowDispenser
-                    render={({ getFlowByData, }) => (
-                      <Form
-                        clearFormAfterSubmit={false}
-                            // initialValues={{ email: 'insert email' }}
-                        validate={validateEmailInput}
-                        onSubmit={onSubmit(client, getFlowByData)}
-                        render={({ getInputProps, handleSubmit, clearForm, }) => (
-                          <Fragment>
-                            <TextInput
-                              type="email"
-                              label={theme.emailInputLabel}
-                              requiredText={{
-                                long: theme.emailInputRequiredLong,
-                                short: theme.emailInputRequiredShort,
-                              }}
-                              {...getInputProps({
-                                name: 'email',
-                                label: theme.emailInputLabel,
-                                type: 'email',
-                              })}
+                  <PageWrapper>
+                    <Header />
+                    <ContentWrapper>
+                      <FlowDispenser
+                        render={({ getFlowByData, }) => (
+                          <FormWrapper>
+                            <ItemCenterer>
+                              <h5>לכניסה או הרשמה לאתר הזינו כתובת דוא”ל</h5>
+                            </ItemCenterer>
+                            <Form
+                              clearFormAfterSubmit={false}
+                              // initialValues={{ email: 'insert email' }}
+                              validate={validateEmailInput}
+                              onSubmit={onSubmit(client, getFlowByData)}
+                              render={({ getInputProps, handleSubmit, clearForm, }) => (
+                                <Fragment>
+                                  <TextInput
+                                    type="email"
+                                    label={theme.emailInputLabel}
+                                    noteText="אנא הזינו כתובת דוא”ל"
+                                    requiredText={{
+                                      long: theme.emailInputRequiredLong,
+                                      short: theme.emailInputRequiredShort,
+                                    }}
+                                    {...getInputProps({
+                                      name: 'email',
+                                      label: theme.emailInputLabel,
+                                      type: 'email',
+                                    })}
+                                  />
+                                  <ItemCenterer>
+                                    <Button onClick={handleSubmit}>המשך</Button>
+                                  </ItemCenterer>
+                                </Fragment>
+                              )}
                             />
-                            <Button onClick={handleSubmit}>submit</Button>
-                          </Fragment>
+                          </FormWrapper>
                         )}
                       />
-                    )}
-                  />
-                  <Footer />
+                    </ContentWrapper>
+                    <Footer />
+                  </PageWrapper>
                 </Fragment>
               )}
             />
