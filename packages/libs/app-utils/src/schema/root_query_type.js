@@ -154,10 +154,11 @@ const RootQuery = new GraphQLObjectType({
       type: FinanceTable,
       args: {
         assetsId: { type: new GraphQLList(GraphQLString), },
+        parentId: { type: GraphQLString, },
         count: { type: GraphQLInt, },
       },
-      resolve(parentValue, { assetsId, count, }, { dataSources, }) {
-        return dataSources.FinanceAPI.getTable(assetsId, count);
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.FinanceAPI.getTable(args);
       },
     },
 

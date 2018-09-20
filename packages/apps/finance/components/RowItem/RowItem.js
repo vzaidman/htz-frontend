@@ -10,7 +10,7 @@ type Props = {
   children: ChildrenArray<Node> | Node,
 };
 
-const Card: StatelessFunctionalComponent<Props> = ({ title, children, miscStyles, }) => (
+const RowItem: StatelessFunctionalComponent<Props> = ({ title, children, miscStyles, }) => (
   <FelaComponent
     style={theme => ({
       extend: [
@@ -36,4 +36,4 @@ const Card: StatelessFunctionalComponent<Props> = ({ title, children, miscStyles
   </FelaComponent>
 );
 
-export default Card;
+export default RowItem;

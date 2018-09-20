@@ -116,7 +116,7 @@ class StockTable extends React.Component<Props, State> {
         style={(theme: Object) => ({
           ...theme.type(-2),
           whiteSpace: 'nowrap',
-          width: '97%',
+          width: 'calc(100% - 1rem)',
           extend: [
             ...(miscStyles
               ? parseStyleProps(miscStyles, theme.mq, theme.type)
@@ -238,6 +238,7 @@ class StockTable extends React.Component<Props, State> {
                                 {
                                   width: '4rem',
                                   content: '""',
+                                  /* selected black arrow svg image */
                                   backgroundImage: 'url("data:image/svg+xml; utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%205%2010%27%3E%3Cpolygon%20fill%3D%27white%27%20points%3D%270%2C0%205%2C0%2C%200%2C5%205%2C10%200%2C10%27%2F%3E%3C%2Fsvg%3E")',
                                   end: '0',
                                   position: 'absolute',

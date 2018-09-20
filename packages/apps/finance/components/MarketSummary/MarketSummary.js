@@ -181,30 +181,27 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ asset, miscStyles, 
   );
 };
 
-export default (props: any) => {
-  const { miscStyles, } = props;
-  return (
-    <Query
-      query={MarketSummaryQuery}
-      variables={{
-        assetsId: [ '2', '142', '137', ],
-      }}
-    >
-      {({ loading, error, data: { financeTable: { assets, }, }, }) => {
-        if (error) return null;
-        if (loading) return null;
-        return (
-          <Grid>
-            {
-              assets.map(asset => (
-                <GridItem width={1 / 3}>
-                  <MarketSummary key={asset.id} miscStyles={miscStyles} asset={asset} />
-                </GridItem>
-              ))
-            }
-          </Grid>
-        );
-      }}
-    </Query>
-  );
-};
+export default (props: any) => (
+  <Query
+    query={MarketSummaryQuery}
+    variables={{
+      assetsId: [ '2', '142', '137', ],
+    }}
+  >
+    {({ loading, error, data: { financeTable: { assets, }, }, }) => {
+      if (error) return null;
+      if (loading) return null;
+      return (
+        <Grid>
+          {
+            assets.map(asset => (
+              <GridItem width={1 / 3}>
+                <MarketSummary key={asset.id} {...props} asset={asset} />
+              </GridItem>
+            ))
+          }
+        </Grid>
+      );
+    }}
+  </Query>
+);

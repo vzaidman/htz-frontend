@@ -264,10 +264,11 @@ class FinanceAPI extends RESTDataSource {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async getTable(assetsId, count) {
+  async getTable({ assetsId, parentId, count, }) {
     return jsonGenerator({
       map: financeTableMap,
       args: {
+        parentId,
         assetsId,
         count: count || assetsId.length,
       },

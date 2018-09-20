@@ -1,5 +1,5 @@
 // @flow
-import jsonGenerator from '../generator';
+import jsonGenerator from '../jsonGenerator';
 
 type ObjectType = (Object, ?number, ?Object) => Object
 

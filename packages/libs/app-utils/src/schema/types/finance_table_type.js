@@ -10,10 +10,9 @@ import {
 } from 'graphql';
 import { Kind, } from 'graphql/language/kinds';
 
-const toString = Object.prototype.toString;
 const isDate = value =>
   // eslint-disable-next-line no-restricted-globals
-  toString.call(value) === '[object Number]' && !isNaN(value.valueOf());
+  typeof (value) === 'number' && !isNaN(value.valueOf());
 
 const coerceDate = value => {
   const date = new Date(value).getTime();

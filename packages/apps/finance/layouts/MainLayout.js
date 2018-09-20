@@ -2,6 +2,7 @@
 import React, { Fragment, } from 'react';
 import type { ChildrenArray, Element, Node, } from 'react';
 import Head from 'next/head';
+import { FelaComponent, } from 'react-fela';
 // import dynamic from 'next/dynamic';
 import {
   AriaLive,
@@ -45,7 +46,13 @@ function MainLayout({ children, path, }: Props): Node {
           <AriaLive />
           <DeviceTypeInjector />
           <Masthead />
-          {children}
+          <FelaComponent
+            style={theme => ({
+              backgroundColor: theme.color('neutral', '-6'),
+            })}
+          >
+            {children}
+          </FelaComponent>
         </Fragment>
       </StyleProvider>
     </Fragment>

@@ -7,7 +7,7 @@ type GeneratorType = ({
   args: ?Object,
 }) => Object;
 
-const generator: GeneratorType = ({ map, fields = null, index = null, args = null, }) => {
+const jsonGenerator: GeneratorType = ({ map, fields = null, index = null, args = null, }) => {
   const result = {};
   if (fields) {
     for (const field of fields) {
@@ -22,4 +22,4 @@ const generator: GeneratorType = ({ map, fields = null, index = null, args = nul
   return result;
 };
 
-export default generator;
+export default jsonGenerator;

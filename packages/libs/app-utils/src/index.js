@@ -4,12 +4,12 @@ import schema from './schema/schema';
 import breakUrl from './utils/breakUrl';
 import switchToDomain from './utils/switchToDomain';
 import createLogger from './utils/createLogger';
-import jsonGenerator from './generator/generator';
+import jsonGenerator from './jsonGenerator/jsonGenerator';
 
 // JSON Maps
-import financeTableMap from './generator/jsonMaps/financeTable';
-import lineGraphMap from './generator/jsonMaps/lineGraph';
-import scatterGraphMap from './generator/jsonMaps/scatterGraph';
+import financeTableMap from './jsonGenerator/jsonMaps/financeTable';
+import lineGraphMap from './jsonGenerator/jsonMaps/lineGraph';
+import scatterGraphMap from './jsonGenerator/jsonMaps/scatterGraph';
 
 // Schema Fragments
 import articleHeader from './fragments/articleHeader/articleHeader';

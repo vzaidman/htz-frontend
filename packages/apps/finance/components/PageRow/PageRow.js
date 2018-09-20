@@ -13,6 +13,7 @@ const PageRow:StatelessFunctionalComponent<Props> = ({ children, miscStyles, }) 
   <FelaComponent
     style={theme => ({
       width: '127rem',
+      marginBottom: '4rem',
       extend: [
         ...(miscStyles
           ? parseStyleProps(miscStyles, theme.mq, theme.type)
