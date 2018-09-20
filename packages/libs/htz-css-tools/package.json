@@ -16,7 +16,8 @@
   "module": "dist/esm/index.js",
   "esnext": "dist/esnext/index.js",
   "scripts": {
-    "build": "htz-scripts build",
+    "build": "htz-scripts build && yarn run distFlowTypes",
+    "distFlowTypes": "htz-scripts distFlowTypes",
     "build:docs": "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
     "clean": "htz-scripts clean",
     "format": "htz-scripts format",

@@ -4,9 +4,9 @@ import stripUnit from './stripUnit';
 import getUnit from './getUnit';
 
 /**
-  * The properties of a css `length` broken into `unit` and `unitlessValue`
-  */
-type LengthProps = { unit: string, unitlessValue: number };
+ * The properties of a css `length` broken into `unit` and `unitlessValue`
+ */
+export type LengthProps = { unit: string, unitlessValue: number };
 
 /**
  * Get the properties of css length number-string

@@ -13,7 +13,7 @@ const CONVERTIBLE_UNITS: string[] = [
 ];
 
 /** A unit that can be converted to from `px` */
-type TargetUnit =
+export type TargetUnit =
   | 'in'
   | 'mm'
   | 'cm'

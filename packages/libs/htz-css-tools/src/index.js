@@ -1,9 +1,39 @@
+/* @flow */
 /*
  * @haaretz/htz-css-tools
  *
  * A toolbelt for writing css-in-js in Haaretz apps
  * @license MIT
  */
+
+import type { BorderStyle, BorderOptions, BorderRuleset, } from './border/types';
+import type { ColorPalette, ColorGetter, } from './color/createColorGetter';
+import type {
+  WidthBpsConfig,
+  MiscBpsConfig,
+  BpsConfig,
+  MqOptions,
+  MqFunc,
+} from './mq/createMqFunc';
+import type { RemFunctionType, } from './units/createRemFunction';
+import type {
+  TypographicStyles,
+  TypesetterOpts,
+  Typesetter,
+} from './typography/createTypesetter';
+import type { LengthProps, } from './units/getLengthProps';
+import type {
+  ComponentPropResponsiveObject,
+  ComponentPropValue,
+  ComponentPropConverterFn,
+} from './props/parseComponentProp';
+import type { StyleProp, } from './props/parseStyleProp';
+import type {
+  TypographyValueType,
+  TypographyPropResponsiveObjectType,
+  TypographyPropType,
+} from './props/parseTypographyProp';
+import type { TargetUnit, PxToUnitConverter, } from './units/pxTo';
 
 import autospace from './mixins/autospace';
 import {
@@ -53,11 +83,37 @@ export {
   getRemFromPx,
   getUnit,
   parseComponentProp,
-  // parseStyleProp,
   parseStyleProps,
   parseTypographyProp,
   pxTo,
   pxToEm,
   stripUnit,
   visuallyHidden,
+};
+
+export type {
+  BorderStyle,
+  BorderOptions,
+  BorderRuleset,
+  ColorPalette,
+  ColorGetter,
+  WidthBpsConfig,
+  MiscBpsConfig,
+  BpsConfig,
+  MqOptions,
+  MqFunc,
+  RemFunctionType,
+  TypographicStyles,
+  TypesetterOpts,
+  Typesetter,
+  LengthProps,
+  ComponentPropResponsiveObject,
+  ComponentPropValue,
+  ComponentPropConverterFn,
+  StyleProp,
+  TypographyValueType,
+  TypographyPropResponsiveObjectType,
+  TypographyPropType,
+  TargetUnit,
+  PxToUnitConverter,
 };
