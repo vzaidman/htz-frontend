@@ -85,7 +85,7 @@ class GraphController extends React.Component<Props, State> {
 
   render(): Node {
     const { selectedPeriod, selectedIndex, } = this.state;
-    const { selectedStockId, miscStyles, } = this.props;
+    const { selectedStockId, miscStyles, marketId, } = this.props;
 
     return (
       <FelaComponent

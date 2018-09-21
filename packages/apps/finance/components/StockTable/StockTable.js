@@ -12,8 +12,8 @@ import Tabs from '../Tabs/Tabs';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 
 const TableQuery: DocumentNode = gql`
-  query GraphTable($assetsId: [String]){
-    financeTable(assetsId: $assetsId){
+  query GraphTable($assetsId: [String], $marketId: String, $count: Int){
+    financeTable(assetsId: $assetsId, marketId: $marketId, count: $count){
       assets {
         name
         value
@@ -64,11 +64,13 @@ type Props = {
   },
   miscStyles: ?Object,
   changeStock: StockData => void,
+  marketId?: string | number,
 }
 
 type State = {
   stock: StockData,
   selectedIndex: number,
+  marketId?: string | number,
 };
 
 const tabRule = ({ theme, isActive, isPrevious, }) => ({
@@ -85,12 +87,23 @@ const tabRule = ({ theme, isActive, isPrevious, }) => ({
 });
 
 class StockTable extends React.Component<Props, State> {
+  static defaultProps = {
+    marketId: null,
+  };
+
   state: State;
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    return !prevState ?
-      { stock: nextProps.data.assets[0], }
-      : prevState;
+    return {
+      ...(!prevState || nextProps.marketId !== prevState.marketId ?
+        {
+          stock: nextProps.data.assets[0],
+          selectedIndex: 0,
+          marketId: nextProps.marketId,
+        }
+        : prevState
+      ),
+    };
   }
 
   componentDidMount() {
@@ -280,19 +293,27 @@ class StockTable extends React.Component<Props, State> {
   }
 }
 
-export default (props: any) => (
-  <Query
-    query={TableQuery}
-    variables={{
-      assetsId: [ '2', '142', '137', '-2000', '164', '143', '167', '145', '149', ],
-    }}
-  >
-    {({ loading, error, data: { financeTable, }, }) => {
-      if (error) return null;
-      if (loading) return null;
-      return (
-        <StockTable data={financeTable} {...props} />
-      );
-    }}
-  </Query>
-);
+export default (props: any) => {
+  const { marketId, } = props;
+  return (
+    <Query
+      query={TableQuery}
+      variables={{
+        ...(marketId !== null ? {
+          marketId: marketId.toString(),
+          count: 9,
+        } : {
+          assetsId: [ '2', '142', '137', '-2000', '164', '143', '167', '145', '149', ],
+        }),
+      }}
+    >
+      {({ loading, error, data: { financeTable, }, }) => {
+        if (error) return null;
+        if (loading) return null;
+        return (
+          <StockTable data={financeTable} {...props} />
+        );
+      }}
+    </Query>
+  );
+};

@@ -155,6 +155,7 @@ const RootQuery = new GraphQLObjectType({
       args: {
         assetsId: { type: new GraphQLList(GraphQLString), },
         parentId: { type: GraphQLString, },
+        marketId: { type: GraphQLString, },
         count: { type: GraphQLInt, },
       },
       resolve(parentValue, args, { dataSources, }) {

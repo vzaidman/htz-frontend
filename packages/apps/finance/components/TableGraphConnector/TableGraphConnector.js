@@ -9,7 +9,9 @@ import GraphController from '../GraphController/GraphController';
 import type { StockData, } from '../StockTable/StockTable';
 import SectionLink from '../SectionLink/SectionLink';
 
-type Props = {};
+type Props = {
+  marketId?: number | string | null,
+};
 
 type State = {
   ...StockData,
@@ -17,11 +19,16 @@ type State = {
 };
 
 class TableGraphConnector extends React.Component<Props, State> {
+  static defaultProps = {
+    marketId: null,
+  };
+
   state: State;
 
   shouldComponentUpdate(nextProps: Props, nextState: State) {
     return (
       !this.state || (
+        nextProps.marketId !== this.props.marketId ||
         nextState.id !== this.state.id ||
         nextState.selectedPeriod !== this.state.selectedPeriod
       )
@@ -40,6 +47,7 @@ class TableGraphConnector extends React.Component<Props, State> {
 
   render(): Node {
     const { id, name, type, } = this.state || {};
+    const { marketId, } = this.props;
     return (
       <FelaTheme
         render={theme => (
@@ -62,6 +70,7 @@ class TableGraphConnector extends React.Component<Props, State> {
             >
               <StockTable
                 changeStock={this.changeStock}
+                marketId={marketId}
                 miscStyles={{
                   direction: 'rtl',
                   position: 'absolute',
