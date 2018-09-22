@@ -9,6 +9,7 @@ import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { buildURLs, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
 import { aspectRatios, } from './Image';
+import setColor from '../../utils/setColor';
 
 const PictureWrapperStyle = ({
   sources,
@@ -39,11 +40,6 @@ const PictureWrapperStyle = ({
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
 });
-
-function setColor(prop, value, converter) {
-  const valueArray = Array.isArray(value) ? value : [ value, ];
-  return { [prop]: converter(...valueArray), };
-}
 
 function getDimensions({ data, sourceOptions: { transforms, }, }) {
   const { aspect, } = Array.isArray(transforms) ? transforms[0] : transforms;

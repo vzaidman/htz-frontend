@@ -1,4 +1,5 @@
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
+import setColor from '../../utils/setColor';
 
 const iconStyle = ({ color, fill, size, miscStyles, theme, }) => ({
   // A decent default for aligning icons away from the
@@ -29,21 +30,12 @@ const iconStyle = ({ color, fill, size, miscStyles, theme, }) => ({
   ],
 });
 
-function setColor(prop, value, getColor) {
-  const colorArgs = Array.isArray(value) ? value : [ value, ];
-  return {
-    [prop]: getColor(...colorArgs),
-  };
-}
-
 function setSize(prop, value) {
   return typeof value === 'number'
     ? { fontSize: `${value}rem`, }
     : (() => {
       throw new Error(
-        `An Icon's "size" prop may only be passed a "number", which will be set in "rem" units. you passed "${
-          value
-        }".`
+        `An Icon's "size" prop may only be passed a "number", which will be set in "rem" units. you passed "${value}".`
       );
     })();
 }

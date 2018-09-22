@@ -8,6 +8,7 @@ import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { buildURLs, buildUrl, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
 import logger from '../../componentsLogger';
+import setColor from '../../utils/setColor';
 
 const ImgWrapperStyle = ({ bgc, height, theme, width, miscStyles, }) => ({
   height: '0',
@@ -27,11 +28,6 @@ const ImgWrapperStyle = ({ bgc, height, theme, width, miscStyles, }) => ({
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
 });
-
-function setColor(prop, value, converter) {
-  const valueArray = Array.isArray(value) ? value : [ value, ];
-  return { [prop]: converter(...valueArray), };
-}
 
 const StyledImgWrapper = createComponent(ImgWrapperStyle);
 

@@ -143,6 +143,7 @@ import GeneralAdSlot from './components/Ads/GeneralAdSlot';
  * ************************************* */
 import createApp from './createApp';
 import createDocument from './createDocument';
+import setColor from './utilt/setColor';
 import { appendScript, } from './utils/scriptTools';
 import { stylesPropType, } from './propTypes/stylesPropType';
 import extractParamFromUrl from './components/BI/extractParamFromUrl';
@@ -286,6 +287,7 @@ export {
   appendScript,
   createApp,
   createDocument,
+  setColor,
   stylesPropType,
   extractParamFromUrl,
   // BI
