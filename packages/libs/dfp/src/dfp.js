@@ -46,12 +46,12 @@ export default class DFP {
       else {
         dfpThis.initStarted = true;
         // set up a place holder for the gpt code downloaded from google
-        window.googletag = window.googletag || {};
+        window.googletag = {};
 
         // this is a command queue used by GPT any methods added to it will be
         // executed when GPT code is available, if GPT is already available they
         // will be executed immediately
-        window.googletag.cmd = window.googletag.cmd || [];
+        window.googletag.cmd = [];
         // load google tag services JavaScript
         (() => {
           const tag = window.document.createElement('script');
@@ -87,10 +87,7 @@ export default class DFP {
    * @returns {boolean}
    */
   isGoogleTagReady() {
-    if (
-      this.wasInitialized === true ||
-      (window.googletag && window.googletag.apiReady)
-    ) {
+    if (this.wasInitialized === true || (window.googletag && window.googletag.apiReady)) {
       this.wasInitialized = true;
     }
     return this.wasInitialized;
@@ -109,9 +106,7 @@ export default class DFP {
           dfpThis.adManager.refreshAllSlots();
         }
         else {
-          throw new Error(
-            'initWindowResizeListener error - adManager instance is not available'
-          );
+          throw new Error('initWindowResizeListener error - adManager instance is not available');
         }
       }
     }
