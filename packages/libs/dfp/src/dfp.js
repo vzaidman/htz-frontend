@@ -8,7 +8,6 @@ let breakpoints;
 
 export default class DFP {
   constructor(config) {
-    console.log('Create DFP INSTANCE');
     this.config = Object.assign({}, globalConfig({}), config);
     breakpoints = breakpoints || this.config.breakpointsConfig.breakpoints;
     this.wasInitialized = false;
