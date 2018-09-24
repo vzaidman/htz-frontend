@@ -25,11 +25,10 @@ const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
 */
 
 type Props = {
-  path: string,
   children: ChildrenArray<Element<any>>,
 };
 
-function MainLayout({ children, path, }: Props): Node {
+function MainLayout({ children, }: Props): Node {
   return (
     <Fragment>
       <Head>
@@ -48,7 +47,7 @@ function MainLayout({ children, path, }: Props): Node {
           <Masthead />
           <FelaComponent
             style={theme => ({
-              backgroundColor: theme.color('neutral', '-6'),
+              backgroundColor: '#f3f3f3',
             })}
           >
             {children}

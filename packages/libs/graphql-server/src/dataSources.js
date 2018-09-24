@@ -6,6 +6,7 @@ import {
   jsonGenerator,
   lineGraphMap,
   scatterGraphMap,
+  stockMap,
 } from '@haaretz/app-utils';
 import querystring from 'querystring';
 
@@ -280,6 +281,11 @@ class FinanceAPI extends RESTDataSource {
   async getGraph(type, time, assetId) {
     const graphMap = type === 'line' ? lineGraphMap : scatterGraphMap;
     return jsonGenerator({ map: graphMap, args: { time, }, });
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async getStock(id) {
+    return jsonGenerator({ map: stockMap, args: { id, }, });
   }
 }
 

@@ -9,7 +9,7 @@ import type { Stock as ScatterStock, } from '../Graph/graphs/Scatter/Scatter';
 type Stats = Array<{ title: string, value: string | number, }>
 
 // eslint-disable-next-line react/prop-types
-const Stat: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, }) => (
+export const Stat: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, }) => (
   <FelaComponent
     style={theme => ({
       alignItems: 'center',

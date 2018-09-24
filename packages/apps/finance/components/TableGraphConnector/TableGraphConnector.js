@@ -15,7 +15,6 @@ type Props = {
 
 type State = {
   ...StockData,
-  selectedPeriod: string | null,
 };
 
 class TableGraphConnector extends React.Component<Props, State> {
@@ -29,20 +28,13 @@ class TableGraphConnector extends React.Component<Props, State> {
     return (
       !this.state || (
         nextProps.marketId !== this.props.marketId ||
-        nextState.id !== this.state.id ||
-        nextState.selectedPeriod !== this.state.selectedPeriod
+        nextState.id !== this.state.id
       )
     );
   }
 
   changeStock: StockData => void = stockData => (
     this.setState(stockData)
-  );
-
-  changePeriod: string => void = period => (
-    this.setState({
-      selectedPeriod: period,
-    })
   );
 
   render(): Node {
@@ -82,17 +74,15 @@ class TableGraphConnector extends React.Component<Props, State> {
             >
               <GraphController
                 selectedStockId={id}
-                selectedStockName={name}
-                changePeriod={this.changePeriod}
               />
               <SectionLink
                 href={{
-                  pathname: `/${type || ''}`,
+                  pathname: type ? `/${type}` : '/',
                   query: {
                     id,
                   },
                 }}
-                as={`/${type || ''}/${name || ''}`}
+                as={`/${type || ''}/${id || ''}`}
               >
                 <span>למידע נוסף על {name}</span>
               </SectionLink>

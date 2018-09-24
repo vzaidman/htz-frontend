@@ -10,8 +10,9 @@ import {
 } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
 import CommentsElement from './types/comments_element_type';
-import FinanceGraph from './types/finance_graph_type';
-import FinanceTable from './types/finance_table_type';
+import FinanceGraph from './types/finance/finance_graph_type';
+import FinanceTable from './types/finance/finance_table_type';
+import FinanceStock from './types/finance/finance_stock_type';
 import Footer from './types/footer_type';
 import NavMenu from './types/navMenu_type';
 import List from './types/list_type';
@@ -150,6 +151,17 @@ const RootQuery = new GraphQLObjectType({
         return dataSources.PurchasePageAPI.getPage(path);
       },
     },
+
+    stockData: {
+      type: FinanceStock,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString), },
+      },
+      resolve(parentValue, { id, }, { dataSources, }) {
+        return dataSources.FinanceAPI.getStock(id);
+      },
+    },
+
     financeTable: {
       type: FinanceTable,
       args: {

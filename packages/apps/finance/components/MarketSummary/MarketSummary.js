@@ -161,12 +161,12 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ asset, miscStyles, 
           </FelaComponent>
           <SectionLink
             href={{
-              pathname: `/${type || ''}`,
+              pathname: type ? `/${type}` : '/',
               query: {
                 id,
               },
             }}
-            as={`/${type || ''}/${name || ''}`}
+            as={`/${type || ''}/${id || ''}`}
             miscStyles={{
               backgroundColor: theme.color('neutral', '-10'),
               paddingTop: '0.5rem',

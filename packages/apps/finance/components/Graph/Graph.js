@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import gql from 'graphql-tag';
-import type { StatelessFunctionalComponent, } from 'react';
+import type { StatelessFunctionalComponent, ComponentType, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
 
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
@@ -46,24 +46,22 @@ type Props = {
   miscStyles: ?Object,
 }
 
-const Line = dynamic(import('./graphs/Line/Line'), {
-  loading: () => null,
-  ssr: false,
-});
-
-const Scatter = dynamic(import('./graphs/Scatter/Scatter'), {
-  loading: () => null,
-  ssr: false,
-});
+const graphTypes: Object = new Map([
+  [ 'line', dynamic(import('./graphs/Line/Line'), {
+    loading: () => null,
+    ssr: false,
+  }), ],
+  [ 'scatter', dynamic(import('./graphs/Scatter/Scatter'), {
+    loading: () => null,
+    ssr: false,
+  }), ],
+]);
 
 
 const Graph: StatelessFunctionalComponent<Props> =
 // eslint-disable-next-line react/prop-types
   ({ indexId, time, type, changeStats, miscStyles, }) => {
-    const GraphElement = type === 'line'
-      ? Line
-      : Scatter;
-    // const data = indexId && type && time ? getData.get(`${type}${time}${indexId}`) : {};
+    const GraphElement: ComponentType<any> = graphTypes.get(type);
     return (
       <Query
         query={GraphQuery}

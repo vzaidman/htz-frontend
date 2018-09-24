@@ -1,8 +1,9 @@
 // @flow
-import React from 'react';
+import React, { Fragment } from 'react';
 import type { ChildrenArray, StatelessFunctionalComponent, Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
-import { HtzLink, IconBack, } from '@haaretz/htz-components';
+import Link from 'next/link';
+import { IconBack, } from '@haaretz/htz-components';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 type Props = {
@@ -38,14 +39,15 @@ const SectionLink:StatelessFunctionalComponent<Props> = ({
       ],
     })}
     render={({ className, }) => (
-      <HtzLink
+      <Link
         href={href}
-        asPath={as}
-        className={className}
+        as={as}
       >
-        {children}
-        <IconBack size={-1} />
-      </HtzLink>
+        <a href={href.pathname || href} className={className}>
+          {children}
+          <IconBack size={-1} />
+        </a>
+      </Link>
     )}
   />
 );

@@ -13,7 +13,6 @@ import Tabs from '../Tabs/Tabs';
 
 type Props = {
   selectedStockId: ?string,
-  changePeriod: string => void,
   miscStyles?: Object,
 }
 
@@ -64,16 +63,6 @@ class GraphController extends React.Component<Props, State> {
         ? { value: 'line', display: 'גרף קוי', }
         : prevState.selectedGraph,
     };
-  }
-
-  componentDidMount() {
-    const { selectedPeriod, } = this.state;
-    this.props.changePeriod(selectedPeriod);
-  }
-
-  componentDidUpdate() {
-    const { selectedPeriod, } = this.state;
-    this.props.changePeriod(selectedPeriod);
   }
 
   changeSelectedTime = ({ period, index, }) => {
