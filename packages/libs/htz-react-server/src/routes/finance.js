@@ -11,17 +11,20 @@ export default function finance(app, server) {
   server.get('/robots.txt', (req, res) =>
     res.status(200).sendFile('robots.txt', options)
   );
+
   /* Home Page */
-  server.get('/', (req, res) => {
-    if (req.params[0] && !req.params[0].startsWith('/')) {
-      req.params[0] = `/${req.params[0]}`;
-    }
-    else {
-      req.params[0] = '/';
-    }
+  server.get([ '/', '/index', '/index/:id', ], (req, res) => {
     const query = {
-      path: req.params[0],
+      id: req.params.id,
     };
-    return app.render(req, res, '/', query);
+    return app.render(req, res, '/index', query);
+  });
+
+  /* stock Page */
+  server.get('/stock/:id', (req, res) => {
+    const query = {
+      id: req.params.id,
+    };
+    return app.render(req, res, '/stock', query);
   });
 }
