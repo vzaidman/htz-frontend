@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import dynamic from 'next/dynamic';
 
-import { borderBottom, } from '@haaretz/htz-css-tools';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import { extractAuthorsFromArticle, } from '../GoogleAnalytics/helpers/extractAuthorsFromArticle';
 import LayoutRow from './LayoutRow'; // eslint-disable-line import/no-named-as-default
@@ -75,14 +74,7 @@ const ArticlePageLayout = ({
       <LayoutRow>
         {postHeader ? (
           <LayoutContainer>
-            <FelaComponent
-              style={theme => ({
-                paddingTop: '3rem',
-                extend: [ borderBottom('3px', 3, 'solid', theme.color('primary', '-6')), ],
-              })}
-            >
-              {getElements(postHeader)}
-            </FelaComponent>
+            {getElements(postHeader)}
           </LayoutContainer>
         ) : null}
       </LayoutRow>

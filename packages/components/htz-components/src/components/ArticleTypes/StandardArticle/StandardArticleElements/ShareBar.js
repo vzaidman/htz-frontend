@@ -101,7 +101,7 @@ class ShareBar extends React.Component<Props, State> {
                 elementUrl={canonicalUrl}
                 miscStyles={{
                   transform: `translateX(${
-                    isOpen ? '0' : 'calc(-50% + 3.5rem)'
+                    isOpen ? '0' : 'calc(-50% + 4rem)'
                   })`,
                   transitionProperty: 'transform',
                   ...theme.getDelay('transition', -1),

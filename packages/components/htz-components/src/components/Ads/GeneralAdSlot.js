@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Zen from '../Zen/Zen';
 import AdSlotBase from './AdSlotBase';
 import MarkedAdSlot from './MarkedAdSlot';
-import Zen from '../Zen/Zen';
+import PlazmaAdSlot from './PlazmaAdSlot';
 
 const GeneralAdSlot = props => {
   const isInreadAdSlot = props.id && props.id.toLowerCase().includes('inread');
+  const isPlazmaAdSlot = props.id && props.id.toLowerCase().includes('plazma');
   return (
     <Zen animate>
       {
         isInreadAdSlot
           ? <MarkedAdSlot {...props} />
-          : <AdSlotBase {...props} />
+          : isPlazmaAdSlot
+            ? <PlazmaAdSlot {...props} />
+            : <AdSlotBase {...props} />
       }
     </Zen>
   );

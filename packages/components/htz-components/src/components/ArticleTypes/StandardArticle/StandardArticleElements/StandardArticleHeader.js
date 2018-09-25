@@ -77,7 +77,7 @@ function Header({
           <FelaComponent
             style={theme => ({
               textAlign: 'start',
-              paddingTop: '3rem',
+              overflow: 'hidden',
               extend: [
                 theme.mq(
                   { until: 'm', },
@@ -91,6 +91,7 @@ function Header({
                   <FelaComponent
                     style={{
                       paddingInlineStart: theme.layoutStyle.startColumnPadding,
+                      marginTop: '3rem',
                       extend: [
                         theme.mq(
                           { until: 's', },
@@ -190,7 +191,7 @@ function Header({
                   <HeadlineElement
                     elementObj={headlineElement}
                     miscStyles={{
-                      marginTop: '2rem',
+                      marginTop: [ { from: 's', value: '2rem', }, ],
                       order: [ { until: 's', value: -2, }, ],
                     }}
                   />
