@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { Fragment, } from 'react';
 import type {
   ElementRef,
   Node,
@@ -146,7 +146,7 @@ class Scatter extends React.Component<Props, State> {
    * @param data - An Array of stocks to be drawn.
    */
   renderGraph: Array<Stock> => void = data => {
-    const { yScale, xScale, duration, } = this.state;
+    const { yScale, xScale, duration, theme, } = this.state;
     /* Set transition. */
     const transition = d3.transition().duration(duration);
 
@@ -219,6 +219,11 @@ class Scatter extends React.Component<Props, State> {
     /* Select all vertical axis ticks. */
     const yAxisLines = yAxisRef.selectAll('.tick line');
 
+    yAxisRef.selectAll('.tick text')
+      .attr('fill', theme.color('neutral', '-3'));
+    xAxisRef.selectAll('.tick text')
+      .attr('fill', theme.color('neutral', '-3'));
+
     /* Set the Exit event. */
     yAxisLines.exit().remove();
 
@@ -249,29 +254,39 @@ class Scatter extends React.Component<Props, State> {
           >
             <g>
               <line
-                ref={zeroRef => this.zeroRef = zeroRef} // eslint-disable-line no-return-assign
+                ref={zeroRef => { this.zeroRef = zeroRef; }}
               />
             </g>
             <g
               // eslint-disable-next-line no-return-assign
-              ref={circlesRef => this.circlesRef = circlesRef}
+              ref={circlesRef => { this.circlesRef = circlesRef; }}
             />
-            <g
-              ref={xAxisRef => this.xAxisRef = xAxisRef} // eslint-disable-line no-return-assign
-              transform={`translate(0, ${margin.top})`}
-              stroke={theme.color('neutral', '-3')}
-            />
-            <g
-              ref={yAxisRef => this.yAxisRef = yAxisRef} // eslint-disable-line no-return-assign
-              transform={`translate(${margin.left}, 0)`}
-              stroke={theme.color('neutral', '-3')}
+            <FelaComponent
+              style={{
+                ...theme.type(-3),
+                fontFamily: theme.fontStacks.enhanced,
+              }}
+              render={({ className, }) => (
+                <Fragment>
+                  <g
+                    className={className}
+                    ref={xAxisRef => { this.xAxisRef = xAxisRef; }}
+                    transform={`translate(0, ${margin.top})`}
+                  />
+                  <g
+                    className={className}
+                    ref={yAxisRef => { this.yAxisRef = yAxisRef; }}
+                    transform={`translate(${margin.left}, 0)`}
+                  />
+                </Fragment>
+              )}
             />
             <g>
               <line
-                ref={lineRef => this.lineRef = lineRef} // eslint-disable-line no-return-assign
+                ref={lineRef => { this.lineRef = lineRef; }}
               />
               <polygon
-                ref={polyRef => this.polyRef = polyRef} // eslint-disable-line no-return-assign
+                ref={polyRef => { this.polyRef = polyRef; }}
               />
             </g>
           </svg>

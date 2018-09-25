@@ -143,28 +143,27 @@ class Volume extends React.Component<Props, State> {
         })}
         render={({ className, theme, }) => (
           <svg
-            // eslint-disable-next-line no-return-assign
-            ref={svgRef => this.svgRef = svgRef}
+            ref={svgRef => { this.svgRef = svgRef; }}
             viewBox={`0 0 ${width} ${height}`}
             className={className}
             width="100%"
             direction="rtl"
           >
             <g
-              // eslint-disable-next-line no-return-assign
-              ref={barsRef => this.barsRef = barsRef}
+              ref={barsRef => { this.barsRef = barsRef; }}
             />
             <FelaComponent
               rule={({ theme, }) => ({
-                ...theme.type(-1),
+                ...theme.type(-2),
                 fontWeight: '700',
+                fontFamily: theme.fontStacks.enhanced,
               })}
               render={({ className, }) => (
                 <g
                   className={className}
-                  ref={yAxisRef => this.yAxisRef = yAxisRef} // eslint-disable-line no-return-assign
+                  ref={yAxisRef => { this.yAxisRef = yAxisRef; }}
                   transform={`translate(${width}, 0)`}
-                  stroke={theme.color('neutral', '-3')}
+                  fill={theme.color('neutral', '-3')}
                 />
               )}
             />

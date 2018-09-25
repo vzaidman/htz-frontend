@@ -96,6 +96,7 @@ const TradeStats: StatelessFunctionalComponent<Props> =
           <FelaComponent
             style={(theme: Object) => ({
               ...theme.type(-2),
+              tableLayout: 'fixed',
               whiteSpace: 'nowrap',
               width: '100%',
               extend: [
@@ -106,29 +107,28 @@ const TradeStats: StatelessFunctionalComponent<Props> =
             })}
             render="table"
           >
-            <thead>
-              <tr>
-                <FelaComponent
-                  style={theme => ({
-                    color: theme.color('neutral', '-3'),
-                    marginBottom: '0.5rem',
-                    marginTop: '0.5rem',
-                  })}
-                >
-                  <FelaComponent
-                    render="span"
-                    style={{
-                      ':after': {
-                        content: '": "',
-                      },
-                    }}
-                  >
-                    שלב מסחר
-                  </FelaComponent>
-                  {tradingStatus}
-                </FelaComponent>
-              </tr>
-            </thead>
+            <FelaComponent
+              style={theme => ({
+                color: theme.color('neutral', '-3'),
+                marginBottom: '1rem',
+                marginTop: '1rem',
+                textAlign: 'start',
+              })}
+              render="caption"
+            >
+              <FelaComponent
+                render="span"
+                style={{
+                  ':after': {
+                    content: '": "',
+                  },
+                }}
+              >
+                שלב מסחר
+              </FelaComponent>
+              {tradingStatus}
+            </FelaComponent>
+
             <tbody>
               <TrComponent title="שער בסיס" value={baseValue} />
               <TrComponent title="שער פתיחה" value={openingValue} />

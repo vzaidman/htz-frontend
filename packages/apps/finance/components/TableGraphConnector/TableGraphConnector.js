@@ -10,7 +10,7 @@ import type { StockData, } from '../StockTable/StockTable';
 import SectionLink from '../SectionLink/SectionLink';
 
 type Props = {
-  marketId?: number | string | null,
+  assetId?: number | string | null,
 };
 
 type State = {
@@ -19,7 +19,7 @@ type State = {
 
 class TableGraphConnector extends React.Component<Props, State> {
   static defaultProps = {
-    marketId: null,
+    assetId: null,
   };
 
   state: State;
@@ -27,7 +27,7 @@ class TableGraphConnector extends React.Component<Props, State> {
   shouldComponentUpdate(nextProps: Props, nextState: State) {
     return (
       !this.state || (
-        nextProps.marketId !== this.props.marketId ||
+        nextProps.assetId !== this.props.assetId ||
         nextState.id !== this.state.id
       )
     );
@@ -39,7 +39,7 @@ class TableGraphConnector extends React.Component<Props, State> {
 
   render(): Node {
     const { id, name, type, } = this.state || {};
-    const { marketId, } = this.props;
+    const { assetId, } = this.props;
     return (
       <FelaTheme
         render={theme => (
@@ -62,7 +62,7 @@ class TableGraphConnector extends React.Component<Props, State> {
             >
               <StockTable
                 changeStock={this.changeStock}
-                marketId={marketId}
+                assetId={assetId}
                 miscStyles={{
                   direction: 'rtl',
                   position: 'absolute',
@@ -77,7 +77,7 @@ class TableGraphConnector extends React.Component<Props, State> {
               />
               <SectionLink
                 href={{
-                  pathname: type ? `/${type}` : '/',
+                  pathname: `/${type || ''}/${id || ''}`,
                   query: {
                     id,
                   },

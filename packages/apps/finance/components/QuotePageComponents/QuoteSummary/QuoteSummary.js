@@ -152,7 +152,7 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
               </FelaComponent>
               <span>
                 {
-                  new Date(lastTradeTime).toLocaleString('it-IT', {
+                  new Date(lastTradeTime).toLocaleString('he', {
                     day: '2-digit',
                     month: '2-digit',
                     year: 'numeric',

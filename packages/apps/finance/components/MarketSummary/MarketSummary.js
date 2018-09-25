@@ -161,7 +161,7 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ asset, miscStyles, 
           </FelaComponent>
           <SectionLink
             href={{
-              pathname: type ? `/${type}` : '/',
+              pathname: type ? `/${type}/${id}` : '/',
               query: {
                 id,
               },
