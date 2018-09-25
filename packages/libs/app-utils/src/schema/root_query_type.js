@@ -169,6 +169,8 @@ const RootQuery = new GraphQLObjectType({
         parentId: { type: GraphQLString, },
         assetId: { type: GraphQLString, },
         count: { type: GraphQLInt, },
+        sortBy: { type: GraphQLString, },
+        sortOrder: { type: GraphQLString, },
       },
       resolve(parentValue, args, { dataSources, }) {
         return dataSources.FinanceAPI.getTable(args);

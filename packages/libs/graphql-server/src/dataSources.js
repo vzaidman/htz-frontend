@@ -265,16 +265,33 @@ class FinanceAPI extends RESTDataSource {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async getTable({ assetsId, parentId, count, assetId, }) {
-    return jsonGenerator({
+  async getTable({ assetsId, parentId, count, sortBy, sortOrder, assetId, }) {
+    const json = jsonGenerator({
       map: financeTableMap,
       args: {
-        parentId,
+        assetId,
         assetsId,
         count: count || assetsId.length,
-        assetId,
+        parentId,
       },
     });
+
+    if (json && sortBy) {
+      json.assets.sort((itemA, itemB) => {
+        const valueA = typeof itemA[sortBy] === 'string' ? itemA[sortBy].toUpperCase() : itemA[sortBy]; // ignore upper and lowercase
+        const valueB = typeof itemB[sortBy] === 'string' ? itemB[sortBy].toUpperCase() : itemB[sortBy]; // ignore upper and lowercase
+        if (valueA < valueB) {
+          return sortOrder === 'ascend' ? -1 : 1;
+        }
+        if (valueA > valueB) {
+          return sortOrder === 'ascend' ? 1 : -1;
+        }
+
+        // values must be equal
+        return 0;
+      });
+    }
+    return json;
   }
 
   // eslint-disable-next-line class-methods-use-this
