@@ -65,9 +65,8 @@ module.exports = {
   components: path.join(process.cwd(), '{,src/}components/**/[A-Z]*.{js,jsx}'),
   ignore: [ ...defaultIgnore, ...additionalIgnore, ...errorsIgnore, ],
   title: 'Haaretz Components',
-  showUsage: true,
-  showCode: false,
-  highlightTheme: 'monokai',
+  usageMode: 'expand',
+  exampleMode: 'collapse',
 
   editorConfig: {
     theme: 'monokai',
