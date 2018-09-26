@@ -254,7 +254,7 @@ class SortableTable extends React.Component<Props, State> {
                           fontWeight: '700',
                           maxWidth: '17rem',
                           overflow: 'hidden',
-                          paddingStart: '1rem',
+                          paddingStart: '2rem',
                           textOverflow: 'ellipsis',
                           whiteSpace: 'nowrap',
                         }}
