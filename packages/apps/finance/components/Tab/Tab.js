@@ -1,10 +1,10 @@
 // @flow
 import React from 'react';
-import type { StatelessFunctionalComponent, ChildrenArray, Node, } from 'react';
+import type { StatelessFunctionalComponent, ChildrenArray, Node, ComponentType, } from 'react';
 import { FelaComponent, } from 'react-fela';
 
 type Props = {
-  render?: string,
+  render?: string | ComponentType<any>,
   children: ChildrenArray<Node> | Node,
   isActive?: boolean,
   index: number,
@@ -29,7 +29,7 @@ const Tab: StatelessFunctionalComponent<Props> = ({
   ...props
 }) => {
 /* eslint-enable react/prop-types */
-  const TabTag: string = render || 'button';
+  const TabTag: string | ComponentType<any> = render || 'button';
   return (
     <FelaComponent
       rule={rule}

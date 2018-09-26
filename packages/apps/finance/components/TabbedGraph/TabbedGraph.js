@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import type { Node, } from 'react';
+import type { ChildrenArray, Node, StatelessFunctionalComponent, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import { borderTop, } from '@haaretz/htz-css-tools';
 
@@ -42,6 +42,23 @@ const tabRule: Object => Object = ({ theme, isActive, }) => ({
   },
 });
 
+const TabButton: StatelessFunctionalComponent<{ children: ChildrenArray<Node> | Node, }> = ({
+  children, // eslint-disable-line react/prop-types
+  ...props
+}) => (
+  <FelaComponent
+    style={{ width: '100%', }}
+    render={({ className, }) => (
+      <button
+        className={className}
+        {...props}
+      >
+        {children}
+      </button>
+    )}
+  />
+);
+
 class TabbedGraph extends React.Component<{}, State> {
   state = {
     stocks: 'up',
@@ -76,6 +93,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 presentation
                 rule={tabRule}
                 onClick={() => this.changeSelectedTime({ stocks: 'up', index: 0, })}
+                render={TabButton}
               >
                 <span>
                       עולות
@@ -87,6 +105,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 presentation
                 rule={tabRule}
                 onClick={() => this.changeSelectedTime({ stocks: 'down', index: 1, })}
+                render={TabButton}
               >
                 <span>
                       יורדות
@@ -98,6 +117,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 presentation
                 rule={tabRule}
                 onClick={() => this.changeSelectedTime({ stocks: 'active', index: 2, })}
+                render={TabButton}
               >
                 <span>
                       פעילות
@@ -109,6 +129,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 presentation
                 rule={tabRule}
                 onClick={() => this.changeSelectedTime({ stocks: 'mostViewed', index: 3, })}
+                render={TabButton}
               >
                 <span>
                       הנצפים באתר
@@ -120,6 +141,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 presentation
                 rule={tabRule}
                 onClick={() => this.changeSelectedTime({ stocks: 'upYearly', index: 4, })}
+                render={TabButton}
               >
                 <span>
                       עולות שנתי
@@ -131,6 +153,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 presentation
                 rule={tabRule}
                 onClick={() => this.changeSelectedTime({ stocks: 'downYearly', index: 5, })}
+                render={TabButton}
               >
                 <span>
                       יורדות שנתי
@@ -138,7 +161,7 @@ class TabbedGraph extends React.Component<{}, State> {
               </Tab>
             </TabList>
             <TabPanel id={`graph-${stocks}`}>
-              <TableGraphConnector marketId={index} />
+              <TableGraphConnector assetId={index} />
             </TabPanel>
           </Tabs>
         )}
