@@ -14,6 +14,9 @@ import Tabs from '../Tabs/Tabs';
 type Props = {
   selectedStockId: ?string,
   miscStyles?: Object,
+  width?: number,
+  height?: number,
+  margin?: { top: number, right: number, bottom: number, left: number, },
 }
 
 type State = {
@@ -50,6 +53,9 @@ const tabRule: Object => Object = ({ theme, isActive, }) => ({
 class GraphController extends React.Component<Props, State> {
   static defaultProps = {
     miscStyles: null,
+    width: 574,
+    height: 308,
+    margin: { top: 34, right: 10, bottom: 15, left: 50, },
   };
 
   state;
@@ -74,7 +80,7 @@ class GraphController extends React.Component<Props, State> {
 
   render(): Node {
     const { selectedPeriod, selectedIndex, } = this.state;
-    const { selectedStockId, miscStyles, } = this.props;
+    const { selectedStockId, miscStyles, width, height, margin, } = this.props;
 
     return (
       <FelaComponent
@@ -210,6 +216,9 @@ class GraphController extends React.Component<Props, State> {
                           indexId={selectedStockId}
                           time={selectedPeriod}
                           changeStats={changeStats}
+                          width={width}
+                          height={height}
+                          margin={margin}
                         />
                        : null)}
                       miscStyles={{

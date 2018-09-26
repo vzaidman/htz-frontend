@@ -21,6 +21,9 @@ type Props = {
   duration: number,
   theme: Object,
   changeStats: (stock: Stock) => void,
+  width: number,
+  height: number,
+  margin: { top: number, right: number, bottom: number, left: number, },
 };
 /* eslint-enable react/no-unused-prop-types */
 
@@ -31,11 +34,6 @@ type State= {
   xScale: number => number,
 };
 
-/* SVG frame's settings */
-const width = 574;
-const height = 308;
-const margin = { top: 32, right: 10, bottom: 15, left: 35, };
-
 class Scatter extends React.Component<Props, State> {
   static defaultProps = {
     duration: 1000,
@@ -43,8 +41,18 @@ class Scatter extends React.Component<Props, State> {
 
   state = {
     /* Base scales for x & y axis */
-    yScale: d3.scaleLinear().range([ height - margin.bottom, margin.top, ]),
-    xScale: d3.scaleLinear().range([ margin.left, width - margin.right, ]),
+    yScale: d3.scaleLinear().range(
+      [
+        this.props.height - this.props.margin.bottom,
+        this.props.margin.top,
+      ]
+    ),
+    xScale: d3.scaleLinear().range(
+      [
+        this.props.margin.left,
+        this.props.width - this.props.margin.right,
+      ]
+    ),
     theme: {},
     duration: 1000,
   };
@@ -106,6 +114,8 @@ class Scatter extends React.Component<Props, State> {
   moveLine: (Stock, boolean) => void = (stock, animate) => {
     const { x, } = stock;
     const { xScale, theme, duration, } = this.state;
+    const { height, margin, } = this.props;
+
     /* Set transition. */
     const transition = d3.transition().duration(animate ? duration / 2 : null);
 
@@ -147,6 +157,8 @@ class Scatter extends React.Component<Props, State> {
    */
   renderGraph: Array<Stock> => void = data => {
     const { yScale, xScale, duration, theme, } = this.state;
+    const { width, margin, } = this.props;
+
     /* Set transition. */
     const transition = d3.transition().duration(duration);
 
@@ -242,6 +254,7 @@ class Scatter extends React.Component<Props, State> {
   };
 
   render(): Node {
+    const { width, height, margin, } = this.props;
     return (
       <FelaComponent
         style={theme => ({ backgroundColor: theme.color('neutral', '-1'), })}

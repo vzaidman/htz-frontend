@@ -51,7 +51,7 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
   return (
     <MainLayout>
       <LayoutContainer
-        bgc="#f3f3f3"
+        bgc="transparent"
       >
         <Query
           query={StockQuery}
@@ -102,6 +102,7 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                     <PageRow>
                       <GraphController
                         selectedStockId={id}
+                        width={900}
                       />
                     </PageRow>
                     <PageRow>

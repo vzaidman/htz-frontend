@@ -60,7 +60,7 @@ const graphTypes: Object = new Map([
 
 const Graph: StatelessFunctionalComponent<Props> =
 // eslint-disable-next-line react/prop-types
-  ({ indexId, time, type, changeStats, miscStyles, }) => {
+  ({ indexId, time, type, miscStyles, ...props }) => {
     const GraphElement: ComponentType<any> = graphTypes.get(type);
     return (
       <Query
@@ -89,7 +89,7 @@ const Graph: StatelessFunctionalComponent<Props> =
                     time={time}
                     theme={theme}
                     data={loading ? null : financeGraph.dataSource}
-                    changeStats={changeStats}
+                    {...props}
                   />
                 </FelaComponent>
               )}
