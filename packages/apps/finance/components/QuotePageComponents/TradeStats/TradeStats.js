@@ -48,7 +48,7 @@ const TrComponent: StatelessFunctionalComponent<TrComponentProps> =
       style={theme => ({
         backgroundColor: theme.color('neutral', '-10'),
         extend: [
-          borderBottom('2px', 1, 'solid', '#f3f3f3'),
+          borderBottom('2px', 1, 'solid', theme.color('neutral', '-6')),
           ...(miscStyles
             ? parseStyleProps(miscStyles, theme.mq, theme.type)
             : []),

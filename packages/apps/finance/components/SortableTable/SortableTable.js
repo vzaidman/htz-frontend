@@ -138,7 +138,7 @@ const tdHeaderStyle: Object => Object = theme => ({
   paddingTop: '0.5rem',
   paddingBottom: '0.5rem',
   textAlign: 'start',
-  backgroundColor: '#f3f3f3',
+  backgroundColor: theme.color('neutral', '-6'),
 });
 
 class SortableTable extends React.Component<Props, State> {
@@ -244,7 +244,7 @@ class SortableTable extends React.Component<Props, State> {
                       style={theme => ({
                         backgroundColor: theme.color('neutral', '-10'),
                         extend: [
-                          borderBottom('2px', 1, 'solid', '#f3f3f3'),
+                          borderBottom('2px', 1, 'solid', theme.color('neutral', '-6')),
                         ],
                       })}
                       render="tr"

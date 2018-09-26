@@ -47,7 +47,7 @@ function MainLayout({ children, }: Props): Node {
           <Masthead />
           <FelaComponent
             style={theme => ({
-              backgroundColor: '#f3f3f3',
+              backgroundColor: theme.color('neutral', '-6'),
             })}
           >
             {children}
