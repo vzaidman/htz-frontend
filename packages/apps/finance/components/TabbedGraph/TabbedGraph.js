@@ -12,42 +12,53 @@ import TableGraphConnector from '../TableGraphConnector/TableGraphConnector';
 
 type State = {
   stocks: string,
+  assetId: string,
   index: number,
 };
 
+type TabButtonProps = {
+  children: ChildrenArray<Node> | Node,
+  isActive: boolean,
+}
 
-const tabRule: Object => Object = ({ theme, isActive, }) => ({
-  ...(isActive ? {
-    ...borderTop(3, 2, 'solid', theme.color('primary')),
-    backgroundColor: theme.color('neutral', '-10'),
-    color: theme.color('primary'),
-    fontWeight: '700',
-  } : {}),
+const tabRule: Object => Object = ({ theme, }) => ({
   flexGrow: '1',
   flexBasis: '0',
-  paddingTop: '0.5rem',
-  paddingBottom: '0.5rem',
   position: 'relative',
   textAlign: 'center',
   ':not(:last-of-type)': {
     ':after': {
-      paddingInlineStart: '2rem',
-      content: isActive ? '""' : '"|"',
+      content: '""',
       position: 'absolute',
       end: '0',
+      bottom: 'calc(50% - 3px)',
+      transform: 'translateY(50%)',
+      width: '1px',
+      height: '3rem',
+      backgroundColor: theme.color('neutral', '-3'),
     },
-  },
-  ':last-of-type': {
-    paddingInlineEnd: '2rem',
   },
 });
 
-const TabButton: StatelessFunctionalComponent<{ children: ChildrenArray<Node> | Node, }> = ({
-  children, // eslint-disable-line react/prop-types
-  ...props
+const TabButton: StatelessFunctionalComponent<TabButtonProps> = ({
+  isActive, children, ...props // eslint-disable-line react/prop-types
 }) => (
   <FelaComponent
-    style={{ width: '100%', }}
+    style={theme => ({
+      ...(isActive ? {
+        backgroundColor: theme.color('neutral', '-10'),
+        color: theme.color('primary'),
+        fontWeight: '700',
+      } : {}),
+      paddingTop: '0.5rem',
+      paddingBottom: '0.5rem',
+      width: '100%',
+      ...borderTop(3, 2, 'solid', isActive ? theme.color('primary') : 'transparent'),
+      ':focus': {
+        outline: 'none',
+        backgroundColor: theme.color('neutral', '-10'),
+      },
+    })}
     render={({ className, }) => (
       <button
         className={className}
@@ -62,18 +73,21 @@ const TabButton: StatelessFunctionalComponent<{ children: ChildrenArray<Node> | 
 class TabbedGraph extends React.Component<{}, State> {
   state = {
     stocks: 'up',
+    assetId: '0',
     index: 0,
   };
 
-  changeSelectedTime: State => void = ({ stocks, index, }) => {
+
+  changeSelectedTime: State => void = ({ stocks, assetId, index, }) => {
     this.setState({
       stocks,
+      assetId,
       index,
     });
   };
 
   render(): Node {
-    const { stocks, index, } = this.state;
+    const { stocks, assetId, index, } = this.state;
     return (
       <FelaComponent
         style={theme => ({
@@ -92,7 +106,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-up"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'up', index: 0, })}
+                onClick={() => this.changeSelectedTime({ stocks: 'up', assetId: '0', index: 0, })}
                 render={TabButton}
               >
                 <span>
@@ -104,7 +118,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-down"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'down', index: 1, })}
+                onClick={() => this.changeSelectedTime({ stocks: 'down', assetId: '1', index: 1, })}
                 render={TabButton}
               >
                 <span>
@@ -116,7 +130,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-active"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'active', index: 2, })}
+                onClick={() => this.changeSelectedTime({ stocks: 'active', assetId: '2', index: 2, })}
                 render={TabButton}
               >
                 <span>
@@ -128,7 +142,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-mostViewed"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'mostViewed', index: 3, })}
+                onClick={() => this.changeSelectedTime({ stocks: 'mostViewed', assetId: '3', index: 3, })}
                 render={TabButton}
               >
                 <span>
@@ -140,7 +154,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-upYearly"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'upYearly', index: 4, })}
+                onClick={() => this.changeSelectedTime({ stocks: 'upYearly', assetId: '4', index: 4, })}
                 render={TabButton}
               >
                 <span>
@@ -152,7 +166,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-downYearly"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'downYearly', index: 5, })}
+                onClick={() => this.changeSelectedTime({ stocks: 'downYearly', assetId: '5', index: 5, })}
                 render={TabButton}
               >
                 <span>
@@ -161,7 +175,7 @@ class TabbedGraph extends React.Component<{}, State> {
               </Tab>
             </TabList>
             <TabPanel id={`graph-${stocks}`}>
-              <TableGraphConnector assetId={index} />
+              <TableGraphConnector assetId={assetId} />
             </TabPanel>
           </Tabs>
         )}
