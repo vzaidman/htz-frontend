@@ -37,6 +37,10 @@ type Props = {
   miscStyles? : Object,
 };
 
+const numToString: number => string = num => (
+  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+);
+
 // eslint-disable-next-line react/prop-types
 const Item: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, }) => (
   <FelaComponent
@@ -134,7 +138,7 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ asset, miscStyles, 
               >
                 {className => (
                   <span className={className}>
-                    {value}
+                    {numToString(value)}
                   </span>
                 )}
               </Item>
@@ -153,7 +157,7 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ asset, miscStyles, 
               >
                 {className => (
                   <span className={className}>
-                    {Math.abs(Number(changePercentage))}
+                    {numToString(Math.abs(Number(changePercentage)))}
                   </span>
                 )}
               </Item>

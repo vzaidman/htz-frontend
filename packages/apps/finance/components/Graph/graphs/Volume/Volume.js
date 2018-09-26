@@ -25,6 +25,10 @@ type State= {
   xScale: number => number,
 };
 
+const numToString: number => string = num => (
+  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+);
+
 /* SVG frame's settings */
 const width = 574;
 const height = 104;
@@ -119,7 +123,7 @@ class Volume extends React.Component<Props, State> {
       .attr('dy', '.36em')
       .attr('text-anchor', 'end')
       .attr('fill', theme.color('neutral', '-10'))
-      .text(d => d.value);
+      .text(d => numToString(d.value));
 
     /* Select the Y axis group reference */
     const yAxisRef = d3.select(this.yAxisRef);

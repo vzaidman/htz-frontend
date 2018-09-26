@@ -31,6 +31,10 @@ type TdComponentProps = {
   isActive?: boolean,
 }
 
+const numToString: number => string = num => (
+  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+);
+
 export const TdComponent: StatelessFunctionalComponent<TdComponentProps> =
 // eslint-disable-next-line react/prop-types
   ({ children, miscStyles, }) => (
@@ -52,8 +56,8 @@ export const TdComponent: StatelessFunctionalComponent<TdComponentProps> =
 
 export type StockData = {
   name: string,
-  value: string,
-  changePercentage: string,
+  value: number,
+  changePercentage: number,
   id: string,
   type: string,
 }
@@ -236,7 +240,7 @@ class StockTable extends React.Component<StockTableProps, State> {
                       >
                         {stock.name}
                       </TdComponent>
-                      <TdComponent>{stock.value}</TdComponent>
+                      <TdComponent>{numToString(stock.value)}</TdComponent>
                       <TdComponent
                         isActive={isActive}
                         miscStyles={{
@@ -279,7 +283,7 @@ class StockTable extends React.Component<StockTableProps, State> {
                           }}
                           render="span"
                         >
-                          {Math.abs(Number(stock.changePercentage))}
+                          {numToString(Math.abs(Number(stock.changePercentage)))}
                         </FelaComponent>
                       </TdComponent>
                     </Tab>

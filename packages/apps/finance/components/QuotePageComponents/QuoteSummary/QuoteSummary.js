@@ -21,6 +21,10 @@ type PaperItemProps = {
   title: string,
 };
 
+const numToString: number => string = num => (
+  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+);
+
 const PaperItem: StatelessFunctionalComponent<PaperItemProps> =
   // eslint-disable-next-line react/prop-types
   ({ title, value, }) => (
@@ -99,7 +103,7 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
                   ...theme.type(2),
                 }}
               >
-                {className => <span className={className}>{value}</span>}
+                {className => <span className={className}>{numToString(value)}</span>}
               </Stat>
               <Stat
                 title="% שינוי"
@@ -115,7 +119,7 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
                   },
                 }}
               >
-                {className => <span className={className}>{changePercentage}</span>}
+                {className => <span className={className}>{numToString(changePercentage)}</span>}
               </Stat>
               <Stat
                 title="שינוי באג'"
@@ -128,7 +132,7 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
                   },
                 }}
               >
-                {className => <span className={className}>{changeInCurr}</span>}
+                {className => <span className={className}>{numToString(changeInCurr)}</span>}
               </Stat>
             </FelaComponent>
             <FelaComponent

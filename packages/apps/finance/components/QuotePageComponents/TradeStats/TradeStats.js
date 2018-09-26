@@ -37,6 +37,10 @@ type TrComponentProps = {
   miscStyles?: Object,
 };
 
+const numToString: number => string = num => (
+  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+);
+
 const TrComponent: StatelessFunctionalComponent<TrComponentProps> =
   // eslint-disable-next-line react/prop-types
   ({ miscStyles, title, value, }) => (
@@ -68,7 +72,7 @@ const TrComponent: StatelessFunctionalComponent<TrComponentProps> =
           textAlign: 'start',
         }}
       >
-        {value}
+        {typeof value === 'number' ? numToString(value) : value}
       </TdComponent>
     </FelaComponent>
   );

@@ -8,6 +8,13 @@ import type { Stock as ScatterStock, } from '../Graph/graphs/Scatter/Scatter';
 
 type Stats = Array<{ title: string, value: string | number, }>
 
+const numToString: (number | string) => string = num => (
+  typeof num === 'number' ? (
+    num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+  )
+    : num
+);
+
 // eslint-disable-next-line react/prop-types
 export const Stat: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, }) => (
   <FelaComponent
@@ -128,10 +135,10 @@ class StockStats extends React.Component<Props, State> {
             stats && stats.length > 0 ? (
               <Fragment>
                 <Stat title={stats[0].title}>
-                  {className => <span className={className}>{stats[0].value}</span>}
+                  {className => <span className={className}>{numToString(stats[0].value)}</span>}
                 </Stat>
                 <Stat title={stats[1].title}>
-                  {className => <span className={className}>{stats[1].value}</span>}
+                  {className => <span className={className}>{numToString(stats[1].value)}</span>}
                 </Stat>
                 <Stat
                   title={stats[2].title}
@@ -147,7 +154,9 @@ class StockStats extends React.Component<Props, State> {
                   }}
                 >
                   {className => (
-                    <span className={className}>{Math.abs(Number(stats[2].value))}</span>
+                    <span className={className}>
+                      {numToString(Math.abs(Number(stats[2].value)))}
+                    </span>
                   )}
                 </Stat>
               </Fragment>
