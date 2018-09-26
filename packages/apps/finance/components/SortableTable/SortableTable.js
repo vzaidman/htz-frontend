@@ -83,7 +83,7 @@ const numToString: number => string = num => (
 const SortIcons: SortIconsProps => Node = ({ active, sortOrder, }) => (
   <FelaComponent
     style={{
-      fontSize: '1.25rem',
+      fontSize: '1.5rem',
       marginEnd: '1rem',
     }}
     render={({ theme, className, }) => {
@@ -96,9 +96,9 @@ const SortIcons: SortIconsProps => Node = ({ active, sortOrder, }) => (
           ? theme.color('neutral', '-2')
           : theme.color('neutral', '-4');
       return (
-        <svg className={className} viewBox="0 0 20 20" width="1.25em" height="1.25em">
-          <polygon fill={ascendFill} points="0,7 10,0 20,7" />
-          <polygon fill={descendFill} points="0,13 10,20 20,13" />
+        <svg className={className} viewBox="0 0 20 40" width="0.5em" height="1em">
+          <polygon fill={ascendFill} points="0,15 10,0 20,15" />
+          <polygon fill={descendFill} points="0,25 10,40 20,25" />
         </svg>
       );
     }}
@@ -135,8 +135,8 @@ const TableLink: TableLinkProps => Node = ({ content, id, type, allowTab, }) => 
 );
 
 const tdHeaderStyle: Object => Object = theme => ({
-  paddingTop: '0.75rem',
-  paddingBottom: '0.75rem',
+  paddingTop: '0.5rem',
+  paddingBottom: '0.5rem',
   textAlign: 'start',
   backgroundColor: '#f3f3f3',
 });
