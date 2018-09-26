@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import type { Node, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
+import Link from 'next/link';
 import { FelaComponent, } from 'react-fela';
-import { parseStyleProps, } from '@haaretz/htz-css-tools';
+import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
 import gql from 'graphql-tag';
 import type { StockData, } from '../StockTable/StockTable';
 import { TdComponent, } from '../StockTable/StockTable';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import SectionLink from '../SectionLink/SectionLink';
 
 const TableQuery: (Array<string>) => DocumentNode = fields => gql`
   query Table(
-    $parentId: String!,
+    $parentId: String,
+    $assetsId: [String],
     $count: Int!,
     $sortBy: String!,
     $sortOrder: String!
   ) {
     financeTable(
       parentId: $parentId,
+      assetsId: $assetsId,
       count: $count
       sortBy: $sortBy
       sortOrder: $sortOrder
@@ -24,17 +28,25 @@ const TableQuery: (Array<string>) => DocumentNode = fields => gql`
       assets {
         id
         type
-        ${fields.map(field => `${field}\n`)}
+        ${fields.map(field => `${field.name}\n`)}
       }
     }
   }
 `;
 
+type FieldType = {
+  name: string,
+  sortingOrder: 'ascend' | 'descend',
+}
+
 type Props = {
   miscStyles?: Object,
   initialSort: string,
-  fields: Array<string>,
-  parentId: number | string,
+  fields: Array<FieldType>,
+  parentId?: string,
+  assetsId?: Array<string>,
+  type: string,
+  linkText: string,
 };
 
 type State = {
@@ -47,6 +59,13 @@ type SortIconsProps = {
   direction: string,
 };
 
+type TableLinkProps = {
+  content: string,
+  id: string,
+  type: string,
+  allowTab?: boolean,
+};
+
 const headerTitles: Object = new Map([
   [ 'name', 'שם נייר', ],
   [ 'value', 'שער אחרון', ],
@@ -55,34 +74,78 @@ const headerTitles: Object = new Map([
   [ 'arbGap', '% פער', ],
 ]);
 
-const SortIcons: SortIconsProps => Node = ({ active, }) => (
+const numToString: number => string = num => (
+  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+  // num
+);
+
+// eslint-disable-next-line react/prop-types
+const SortIcons: SortIconsProps => Node = ({ active, sortOrder, }) => (
   <FelaComponent
     style={{
       fontSize: '1.25rem',
       marginEnd: '1rem',
     }}
     render={({ theme, className, }) => {
-      const fill: string = active ? theme.color('neutral', '-2') : theme.color('neutral', '-4');
+      const ascendFill: string =
+        active && sortOrder === 'ascend'
+          ? theme.color('neutral', '-2')
+          : theme.color('neutral', '-4');
+      const descendFill: string =
+        active && sortOrder === 'descend'
+          ? theme.color('neutral', '-2')
+          : theme.color('neutral', '-4');
       return (
         <svg className={className} viewBox="0 0 20 20" width="1.25em" height="1.25em">
-          <polygon fill={fill} points="0,7 10,0 20,7" />
-          <polygon fill={fill} points="0,13 10,20 20,13" />
+          <polygon fill={ascendFill} points="0,7 10,0 20,7" />
+          <polygon fill={descendFill} points="0,13 10,20 20,13" />
         </svg>
       );
     }}
   />
 );
 
+// eslint-disable-next-line react/prop-types
+const TableLink: TableLinkProps => Node = ({ content, id, type, allowTab, }) => (
+  <FelaComponent
+    style={{
+      display: 'inline-block',
+      width: '100%',
+    }}
+    render={({ className, }) => (
+      <Link
+        href={{
+          pathname: `/${type || ''}/${id || ''}`,
+          query: {
+            id,
+          },
+        }}
+        as={`/${type || ''}/${id || ''}`}
+      >
+        <a
+          {...!allowTab ? { tabIndex: -1, } : {}}
+          className={className}
+          href={`/${type || ''}/${id || ''}`}
+        >
+          {content}
+        </a>
+      </Link>
+    )}
+  />
+);
+
 const tdHeaderStyle: Object => Object = theme => ({
   paddingTop: '0.75rem',
   paddingBottom: '0.75rem',
-  marginBottom: '1rem',
-  backgroundColor: theme.color('neutral', '-6'),
+  textAlign: 'start',
+  backgroundColor: '#f3f3f3',
 });
 
 class SortableTable extends React.Component<Props, State> {
   static defaultProps = {
     miscStyles: null,
+    assetsId: null,
+    parentId: null,
   };
 
   state = {
@@ -96,26 +159,26 @@ class SortableTable extends React.Component<Props, State> {
     };
   }
 
-  reSort: string => void = field => {
-    console.log(field);
+  reSort: FieldType => void = field => {
     const { sortBy, sortOrder, } = this.state;
     this.setState({
-      sortBy: field,
+      sortBy: field.name,
       sortOrder:
-        sortBy !== field ? 'descend' :
+        sortBy !== field.name ? field.sortingOrder :
           sortOrder === 'descend' ? 'ascend' : 'descend',
     });
   };
 
   render(): Node {
-    const { miscStyles, fields, parentId, } = this.props;
+    const { miscStyles, fields, parentId, type, linkText, assetsId, } = this.props;
     const { sortBy, sortOrder, } = this.state;
     return (
       <Query
         query={TableQuery(fields)}
         variables={{
           parentId,
-          count: 5,
+          assetsId,
+          count: assetsId ? assetsId.length : 5,
           sortBy,
           sortOrder,
         }}
@@ -124,97 +187,127 @@ class SortableTable extends React.Component<Props, State> {
           if (error) return null;
           if (loading) return null;
           return (
-            <FelaComponent
-              style={(theme: Object) => ({
-                ...theme.type(-1),
-                tableLayout: 'fixed',
-                whiteSpace: 'nowrap',
-                width: '100%',
-                extend: [
-                  ...(miscStyles
-                    ? parseStyleProps(miscStyles, theme.mq, theme.type)
-                    : []),
-                ],
-              })}
-              render="table"
-            >
-              <thead>
-                <tr>
-                  {fields.map((field: string) => (
-                    <TdComponent
-                      miscStyles={{
-                      paddingTop: '0',
-                      paddingBottom: '0',
-                    }}
-                    >
-                      <button
-                        onClick={() => this.reSort(field)}
+            <Fragment>
+              <FelaComponent
+                style={(theme: Object) => ({
+                  ...theme.type(-2),
+                  tableLayout: 'fixed',
+                  whiteSpace: 'nowrap',
+                  width: '100%',
+                  extend: [
+                    ...(miscStyles
+                      ? parseStyleProps(miscStyles, theme.mq, theme.type)
+                      : []),
+                  ],
+                })}
+                render="table"
+              >
+                <thead>
+                  <tr>
+                    {fields.map((field: FieldType) => (
+                      <TdComponent
+                        miscStyles={{
+                        paddingTop: '0',
+                        paddingBottom: '0',
+                      }}
                       >
                         <FelaComponent
-                          style={theme => ({
-                          ...tdHeaderStyle(theme),
-                          paddingEnd: '2rem',
-                        })}
-                        >
-                          <SortIcons active={sortBy === field} />
-                          {headerTitles.get(field)}
-                        </FelaComponent>
-                      </button>
-                    </TdComponent>
-                  ))}
-                </tr>
-              </thead>
-              {assets.map((stock: StockData) => (
-                <FelaComponent
-                  style={theme => ({
-                  cursor: 'pointer',
-                  ':hover': {
-                    backgroundColor: theme.color('neutral', '-6'),
-                  },
-                })}
-                  render="tr"
-                >
-                  <TdComponent
-                    miscStyles={{
-                    fontWeight: '700',
-                    paddingStart: '1rem',
-                    paddingEnd: '2rem',
-                    maxWidth: '17rem',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                  }}
-                  >
-                    {stock.name}
-                  </TdComponent>
-                  <TdComponent>{stock.value || stock.symbol}</TdComponent>
-                  <TdComponent
-                    miscStyles={{
-                    color: Number(stock.changePercentage || stock.arbGap) < 0 ? 'red' : 'green',
-                    direction: 'ltr',
-                    fontWeight: '700',
-                    paddingEnd: '2rem',
-                    position: 'relative',
-                    textAlign: 'start',
-                  }}
-                  >
+                          style={{ width: '100%', }}
+                          render={({ className, }) => (
+                            <button
+                              className={className}
+                              onClick={() => this.reSort(field)}
+                            >
+                              <FelaComponent
+                                style={theme => ({
+                                  ...tdHeaderStyle(theme),
+                                  paddingEnd: '2rem',
+                                  fontWeight: sortBy === field.name ? '700' : '300',
+                                })}
+                              >
+                                <SortIcons
+                                  active={sortBy === field.name}
+                                  sortOrder={sortOrder}
+                                />
+                                {headerTitles.get(field.name)}
+                              </FelaComponent>
+                            </button>
+                          )}
+                        />
+                      </TdComponent>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {assets.map((stock: StockData) => (
                     <FelaComponent
-                      style={{
-                      ':before': {
-                        content: Number(stock.changePercentage || stock.arbGap) > 0 ? '"+"' : '"-"',
-                      },
-                      ':after': {
-                        content: '"%"',
-                      },
-                    }}
-                      render="span"
+                      style={theme => ({
+                        backgroundColor: theme.color('neutral', '-10'),
+                        extend: [
+                          borderBottom('2px', 1, 'solid', '#f3f3f3'),
+                        ],
+                      })}
+                      render="tr"
                     >
-                      {Math.abs(Number(stock.changePercentage || stock.arbGap))}
+                      <TdComponent
+                        miscStyles={{
+                          fontWeight: '700',
+                          maxWidth: '17rem',
+                          overflow: 'hidden',
+                          paddingStart: '1rem',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        <TableLink
+                          allowTab
+                          content={stock.name}
+                          id={stock.id}
+                          type={type}
+                        />
+                      </TdComponent>
+                      <TdComponent>
+                        <TableLink
+                          content={numToString(stock.value || stock.symbol)}
+                          id={stock.id}
+                          type={type}
+                        />
+                      </TdComponent>
+                      <TdComponent
+                        miscStyles={{
+                        color: Number(stock.changePercentage || stock.arbGap) < 0 ? 'red' : 'green',
+                        direction: 'ltr',
+                        fontWeight: '700',
+                        paddingEnd: '2rem',
+                        position: 'relative',
+                        textAlign: 'start',
+                      }}
+                      >
+                        <TableLink
+                          content={`
+                            ${Number(stock.changePercentage || stock.arbGap) > 0 ? '+' : '-'}
+                            ${numToString(Math.abs(Number(stock.changePercentage || stock.arbGap)))}%
+                          `}
+                          id={stock.id}
+                          type={type}
+                        />
+                      </TdComponent>
                     </FelaComponent>
-                  </TdComponent>
-                </FelaComponent>
-              ))}
-            </FelaComponent>
+                  ))}
+                </tbody>
+              </FelaComponent>
+              <SectionLink
+                href={{
+                  pathname: `/${type || ''}/${parentId || ''}`,
+                  query: {
+                    parentId,
+                  },
+                }}
+                as={`/${type || ''}/${parentId || ''}`}
+              >
+                <span>{linkText}</span>
+              </SectionLink>
+            </Fragment>
           );
         }}
       </Query>
