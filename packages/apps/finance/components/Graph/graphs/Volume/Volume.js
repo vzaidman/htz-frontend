@@ -15,6 +15,9 @@ type Props = {
   data: Array<BarData>,
   theme: Object,
   miscStyles?: Object,
+  width: number,
+  height: number,
+  margin: { top: number, right: number, bottom: number, left: number, },
 };
 /* eslint-enable react/no-unused-prop-types */
 
@@ -29,20 +32,24 @@ const numToString: number => string = num => (
   num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
 );
 
-/* SVG frame's settings */
-const width = 574;
-const height = 104;
-const margin = { top: 0, right: 161, bottom: 0, left: 0, };
-
 class Volume extends React.Component<Props, State> {
   static defaultProps = {
     miscStyles: null,
+    width: 574,
+    height: 104,
+    margin: { top: 0, right: 161, bottom: 0, left: 0, },
   };
 
   state = {
     /* Base scales for x & y axis */
-    yScale: d3.scaleBand().range([ height - margin.bottom, margin.top, ]),
-    xScale: d3.scaleLinear().range([ margin.right, width - margin.left, ]),
+    yScale: d3.scaleBand().range([
+      this.props.height - this.props.margin.bottom,
+      this.props.margin.top,
+    ]),
+    xScale: d3.scaleLinear().range([
+      this.props.margin.right,
+      this.props.width - this.props.margin.left,
+    ]),
     theme: {},
   };
 
@@ -84,18 +91,19 @@ class Volume extends React.Component<Props, State> {
    */
   renderGraph: Array<BarData> => void = data => {
     const { yScale, xScale, theme, } = this.state;
+    const { width, margin, } = this.props;
 
     /* Set the init bars svg elements, and set the animation's key (its index). */
     const bars = d3.select(this.barsRef)
-      .selectAll('rect')
+      .selectAll()
       .data(data, (d, i) => i);
 
     /* Set the Exit event. */
     bars.exit().remove();
 
-    /* Set the Enter event and the position, height and width. */
-    bars
-      .enter()
+    const barElements = bars.enter().append('g').attr('class', (d, i) => `bar${i}`);
+    /* Set the filled bar. */
+    barElements
       .append('rect')
       .attr('y', d => yScale(d.name))
       .attr('height', yScale.bandwidth())
@@ -103,8 +111,8 @@ class Volume extends React.Component<Props, State> {
       .attr('width', d => xScale(d.value) - margin.right)
       .attr('fill', theme.color('neutral', '-2'));
 
-    bars
-      .enter()
+    /* Set the background bar. */
+    barElements
       .append('rect')
       .attr('y', d => yScale(d.name))
       .attr('height', yScale.bandwidth())
@@ -112,10 +120,8 @@ class Volume extends React.Component<Props, State> {
       .attr('width', d => width - xScale(d.value))
       .attr('fill', theme.color('neutral', '-6'));
 
-    d3.select(this.barsRef)
-      .selectAll('text')
-      .data(data)
-      .enter()
+    /* Set the volume text. */
+    barElements
       .append('text')
       .attr('x', d => width - xScale(d.value))
       .attr('y', d => yScale(d.name) + (yScale.bandwidth() / 2))
@@ -124,6 +130,21 @@ class Volume extends React.Component<Props, State> {
       .attr('text-anchor', 'end')
       .attr('fill', theme.color('neutral', '-10'))
       .text(d => numToString(d.value));
+
+    /* In cae that the text is wider than the bar, change its position and color. */
+    barElements.selectAll('rect').each((group, i) => {
+      const rectElement = d3.select(`.bar${i} rect`);
+      const textElement = d3.select(`.bar${i} text`);
+      if (
+        rectElement.node().getBoundingClientRect().width <
+        textElement.node().getBoundingClientRect().width
+      ) {
+        textElement
+          .attr('dx', '-10')
+          .attr('text-anchor', 'start')
+          .attr('fill', theme.color('neutral', '-2'));
+      }
+    });
 
     /* Select the Y axis group reference */
     const yAxisRef = d3.select(this.yAxisRef);
@@ -134,7 +155,7 @@ class Volume extends React.Component<Props, State> {
   };
 
   render(): Node {
-    const { miscStyles, } = this.props;
+    const { miscStyles, height, width, } = this.props;
     return (
       <FelaComponent
         style={theme => ({
