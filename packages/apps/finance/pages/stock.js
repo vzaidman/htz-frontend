@@ -157,11 +157,29 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                               title="תשואות"
                             >
                               <YieldGraph
-                                id={{
-                                  weeklyYield,
-                                  monthlyYield,
-                                  quarterlyYield,
-                                  yearlyYield,
+                                theme={theme}
+                                data={[
+                                  {
+                                    name: 'שבוע ',
+                                    value: weeklyYield,
+                                  },
+                                  {
+                                    name: 'חודש',
+                                    value: monthlyYield,
+                                  },
+                                  {
+                                    name: 'רבעון',
+                                    value: quarterlyYield,
+                                  },
+                                  {
+                                    name: 'שנה',
+                                    value: yearlyYield,
+                                  },
+                                ]}
+                                miscStyles={{
+                                  marginBottom: '2rem',
+                                  paddingStart: '2rem',
+                                  paddingEnd: '2rem',
                                 }}
                               />
                             </RowItem>
