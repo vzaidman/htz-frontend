@@ -13,7 +13,7 @@ import RowItem from '../components/RowItem/RowItem';
 import GraphController from '../components/GraphController/GraphController';
 import { Query, } from '../components/ApolloBoundary/ApolloBoundary';
 import QuoteSummary from '../components/QuotePageComponents/QuoteSummary/QuoteSummary';
-import TradeStats from '../components/QuotePageComponents/TradeStats/TradeStats';
+import QuoteTable from '../components/QuotePageComponents/QuoteTable/QuoteTable';
 import VolumeGraph from '../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../components/Graph/graphs/Yield/Yield';
 
@@ -102,7 +102,6 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                     <PageRow>
                       <GraphController
                         selectedStockId={id}
-                        width={900}
                       />
                     </PageRow>
                     <PageRow>
@@ -119,7 +118,19 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                           <RowItem
                             title="נתוני המסחר"
                           >
-                            <TradeStats id={id} />
+                            <QuoteTable
+                              id={id}
+                              tradingStatus
+                              fixed
+                              fields={[
+                                { name: 'baseValue', display: 'שער בסיס', },
+                                { name: 'openingValue', display: 'שער פתיחה', },
+                                { name: 'value', display: 'שער אחרון', },
+                                { name: 'minValue', display: 'נמוך יומי', },
+                                { name: 'maxValue', display: 'גבוה יומי', },
+                                { name: 'arbGap', display: 'סטיית תקן', },
+                              ]}
+                            />
                           </RowItem>
                         </GridItem>
                         <GridItem
@@ -184,6 +195,47 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                               />
                             </RowItem>
                           </FelaComponent>
+                        </GridItem>
+                      </Grid>
+                    </PageRow>
+                    <PageRow>
+                      <Grid
+                        gutter={2}
+                        miscStyles={{
+                          paddingStart: '0rem',
+                          paddingEnd: '0rem',
+                        }}
+                      >
+                        <GridItem
+                          width={1 / 3}
+                        >
+                          <RowItem
+                            title="יחסים פיננסיים"
+                            miscStyles={{ marginBottom: '2rem', }}
+                          >
+                            <QuoteTable
+                              id={id}
+                              fields={[
+                                // TODO: fill in the correct fields.
+                                { name: 'baseValue', display: 'מכפיל רווח', },
+                                { name: 'openingValue', display: 'מכפיל הון', },
+                                { name: 'value', display: 'תשואה על ההון העצמי', },
+                                { name: 'minValue', display: 'מכפיל מכירות', },
+                                { name: 'maxValue', display: 'שיעור רווח נקי', },
+                                { name: 'arbGap', display: 'הון למאזן', },
+                              ]}
+                            />
+                          </RowItem>
+                        </GridItem>
+                        <GridItem
+                          width={2 / 3}
+                        >
+                          <RowItem
+                            title="בחסות בנק לאומי"
+                            miscStyles={{
+                              ...theme.type(0),
+                            }}
+                          />
                         </GridItem>
                       </Grid>
                     </PageRow>

@@ -10,24 +10,16 @@ import type { DocumentNode, } from 'graphql/language/ast';
 import { Query, } from '../../ApolloBoundary/ApolloBoundary';
 import { TdComponent, } from '../../StockTable/StockTable';
 
-const TradeStatsQuery: DocumentNode = gql`
-  query TradeStatsTable($assetsId: [String]){
-    financeTable(assetsId: $assetsId){
-      assets {
-        tradingStatus
-        baseValue
-        openingValue
-        value
-        minValue
-        maxValue
-        arbGap
-      }
-    }
-  }
-`;
+type Field = {
+  name: string,
+  display: string,
+};
 
 type Props = {
   id: string,
+  fields: Array<Field>,
+  tradingStatus?: boolean,
+  fixed?: boolean,
   miscStyles?: Object,
 };
 
@@ -37,6 +29,16 @@ type TrComponentProps = {
   miscStyles?: Object,
 };
 
+const TradeStatsQuery: (Array<Field>, boolean) => DocumentNode = (fields, tradingStatus) => gql`
+  query TradeStatsTable($assetsId: [String]){
+    financeTable(assetsId: $assetsId){
+      assets {
+        ${tradingStatus ? 'tradingStatus\n' : ''}
+        ${fields.map(field => `${field.name}\n`)}
+      }
+    }
+  }
+`;
 const numToString: number => string = num => (
   num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
 );
@@ -77,30 +79,21 @@ const TrComponent: StatelessFunctionalComponent<TrComponentProps> =
     </FelaComponent>
   );
 
-const TradeStats: StatelessFunctionalComponent<Props> =
+const QuoteTable: StatelessFunctionalComponent<Props> =
   // eslint-disable-next-line react/prop-types
-  ({ id, miscStyles, }) => (
+  ({ id, fields, tradingStatus = false, fixed = false, miscStyles, }) => (
     <Query
-      query={TradeStatsQuery}
+      query={TradeStatsQuery(fields, tradingStatus)}
       variables={{ assetsId: [ id, ], }}
     >
       {({ error, loading, data: { financeTable: { assets, }, }, }) => {
         if (error) return null;
         if (loading) return null;
-        const {
-          tradingStatus,
-          baseValue,
-          openingValue,
-          value,
-          minValue,
-          maxValue,
-          arbGap,
-        } = assets[0];
         return (
           <FelaComponent
             style={(theme: Object) => ({
               ...theme.type(-2),
-              tableLayout: 'fixed',
+              ...(fixed ? { tableLayout: 'fixed', } : {}),
               whiteSpace: 'nowrap',
               width: '100%',
               extend: [
@@ -111,39 +104,40 @@ const TradeStats: StatelessFunctionalComponent<Props> =
             })}
             render="table"
           >
-            <FelaComponent
-              style={theme => ({
-                color: theme.color('neutral', '-3'),
-                marginBottom: '1rem',
-                marginTop: '1rem',
-                textAlign: 'start',
-              })}
-              render="caption"
-            >
-              <FelaComponent
-                render="span"
-                style={{
-                  ':after': {
-                    content: '": "',
-                  },
-                }}
-              >
-                שלב מסחר
-              </FelaComponent>
-              {tradingStatus}
-            </FelaComponent>
+            {
+              tradingStatus ?
+                <FelaComponent
+                  style={theme => ({
+                    color: theme.color('neutral', '-3'),
+                    marginBottom: '1rem',
+                    marginTop: '1rem',
+                    textAlign: 'start',
+                  })}
+                  render="caption"
+                >
+                  <FelaComponent
+                    render="span"
+                    style={{
+                      ':after': {
+                        content: '": "',
+                      },
+                    }}
+                  >
+                    שלב מסחר
+                  </FelaComponent>
+                  {assets[0].tradingStatus}
+                </FelaComponent>
+                : null
+            }
 
             <tbody>
-              <TrComponent title="שער בסיס" value={baseValue} />
-              <TrComponent title="שער פתיחה" value={openingValue} />
-              <TrComponent title="שער אחרון" value={value} />
-              <TrComponent title="נמוך יומי" value={minValue} />
-              <TrComponent title="גבוה יומי" value={maxValue} />
-              <TrComponent title="סטיית תקן" value={arbGap} />
+              {fields.map(field => (
+                <TrComponent title={field.display} value={assets[0][field.name]} />
+              ))}
             </tbody>
           </FelaComponent>
         );
       }}
     </Query>
   );
-export default TradeStats;
+export default QuoteTable;
