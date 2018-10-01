@@ -1,3 +1,5 @@
+// @flow
+
 // consts
 import baseColors from './consts/baseColors';
 import bps from './consts/bps';
@@ -13,6 +15,7 @@ import pxToRem from './methods/pxToRem';
 import typesetter from './methods/typesetter';
 
 import htzTheme from './htzTheme';
+import type { CardStyle, } from './consts/cardStyle';
 
 export default htzTheme;
 export {
@@ -28,3 +31,5 @@ export {
   typesetter,
   i18n,
 };
+
+export type { CardStyle, };

@@ -3,6 +3,7 @@ import articleStyle from './consts/articleStyle';
 import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
 import captionStyles from './consts/captionStyles';
+import cardStyle from './consts/cardStyle';
 import commentsStyle from './consts/commentsStyle';
 import fontStacks from './consts/fontStacks';
 import footerBorderStyle from './consts/footerBorderStyle';
@@ -67,6 +68,7 @@ const tmTheme = Object.freeze({
   bps,
   btnStyle,
   captionStyles,
+  cardStyle,
   commentsStyle,
   direction: 'rtl',
   gridStyle,

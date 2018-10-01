@@ -3,6 +3,7 @@ import articleStyle from './consts/articleStyle';
 import campaignHeaderStyle from './consts/campaignHeaderStyle';
 import bps from './consts/bps';
 import btnStyle from './consts/btnStyle';
+import cardStyle from './consts/cardStyle';
 import cssReset from './consts/cssReset';
 import newsletterStyle from './consts/newsletterStyle';
 import headerStyle from './consts/headerStyle';
@@ -119,6 +120,7 @@ const purchasePageTheme = host =>
     campaignHeaderStyle,
     bps,
     btnStyle,
+    cardStyle,
     direction: 'rtl',
     gridStyle,
     fontStacks,

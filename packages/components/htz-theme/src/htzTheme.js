@@ -10,6 +10,7 @@ import gridStyle from './consts/gridStyle';
 import inputStyle from './consts/inputStyle';
 import layoutStyle from './consts/layoutStyle';
 import { benderStyle, } from './consts/listStyle';
+import cardStyle from './consts/cardStyle';
 import newsletterStyle from './consts/newsletterStyle';
 import selectStyle from './consts/selectStyle';
 import specialPromotionStyle from './consts/specialPromotionStyle';
@@ -86,6 +87,7 @@ const htzTheme = Object.freeze({
   footerBorderStyle,
   inputStyle,
   layoutStyle,
+  cardStyle,
   newsletterStyle,
   selectStyle,
   specialPromotionStyle,
