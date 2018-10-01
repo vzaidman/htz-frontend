@@ -28,6 +28,7 @@ import type {
   ComponentPropConverterFn,
 } from './props/parseComponentProp';
 import type { StyleProp, } from './props/parseStyleProp';
+import type { StyleProps, } from './props/parseStyleProps';
 import type {
   TypographyValueType,
   TypographyPropResponsiveObjectType,
@@ -111,6 +112,7 @@ export type {
   ComponentPropValue,
   ComponentPropConverterFn,
   StyleProp,
+  StyleProps,
   TypographyValueType,
   TypographyPropResponsiveObjectType,
   TypographyPropType,

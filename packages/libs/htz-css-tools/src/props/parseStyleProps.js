@@ -6,6 +6,8 @@ import type { MqFunc, } from '../mq/createMqFunc';
 import type { Typesetter, } from '../typography/createTypesetter';
 import type { StyleProp, } from './parseStyleProp';
 
+export type StyleProps = { [prop: string]: StyleProp };
+
 /**
  * Parse an object of miscellaneous styles into an array of CSS-in-JS
  * objects (Should always be spread inside Fela's `extend` property).
@@ -50,7 +52,7 @@ import type { StyleProp, } from './parseStyleProp';
  *
  */
 export default function parseStyleProps(
-  styleProps: { [key: string]: StyleProp },
+  styleProps: StyleProps,
   mq: MqFunc,
   typesetter: Typesetter
 ): (Object | void)[] {
