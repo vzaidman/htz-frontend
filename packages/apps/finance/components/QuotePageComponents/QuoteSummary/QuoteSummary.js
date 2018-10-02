@@ -11,8 +11,8 @@ type Props = {
   value: number,
   changePercentage: number,
   changeInCurr: number,
-  stockType: string,
-  stockNumber: number,
+  assetType: string,
+  assetNumber: number,
   lastTradeTime: number,
 };
 
@@ -67,7 +67,7 @@ const PaperItem: StatelessFunctionalComponent<PaperItemProps> =
 
 const QuoteSummary: StatelessFunctionalComponent<Props> =
   // eslint-disable-next-line react/prop-types
-  ({ value, changePercentage, changeInCurr, stockType, stockNumber, lastTradeTime, }) => (
+  ({ value, changePercentage, changeInCurr, assetType, assetNumber, lastTradeTime, }) => (
     <FelaTheme
       render={theme => (
         <Grid
@@ -177,8 +177,8 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
               ...theme.type(-2),
             }}
           >
-            <PaperItem title="סוג נייר" value={stockType} />
-            <PaperItem title="מספר נייר" value={stockNumber} />
+            <PaperItem title="סוג נייר" value={assetType} />
+            <PaperItem title="מספר נייר" value={assetNumber} />
           </GridItem>
         </Grid>
       )}

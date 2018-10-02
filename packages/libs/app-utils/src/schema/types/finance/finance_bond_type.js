@@ -10,8 +10,8 @@ import { GraphQLTimestamp, } from './finance_table_type';
 import shareHolder from './finance_share_holder_type';
 import relatedAsset from './finance_related_asset_type';
 
-const stock = new GraphQLObjectType({
-  name: 'Stock',
+const bond = new GraphQLObjectType({
+  name: 'Bond',
   fields: () => ({
     id: { type: GraphQLString, },
     name: { type: GraphQLString, },
@@ -36,4 +36,4 @@ const stock = new GraphQLObjectType({
   }),
 });
 
-export default stock;
+export default bond;

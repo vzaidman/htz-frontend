@@ -16,12 +16,12 @@ import QuoteSummary from '../components/QuotePageComponents/QuoteSummary/QuoteSu
 import QuoteTable from '../components/QuotePageComponents/QuoteTable/QuoteTable';
 import VolumeGraph from '../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../components/Graph/graphs/Yield/Yield';
-import RelatedAssets from '../components/QuotePageComponents/RelatedAssets/RelatedAssets';
 import ShareHoldersTable from '../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
+import RelatedAssets from '../components/QuotePageComponents/RelatedAssets/RelatedAssets';
 
 const StockQuery: DocumentNode = gql`
-  query StockData($id: String!){
-    stockData(id: $id){
+  query BondData($id: String!){
+    bondData(id: $id){
       name
       value
       changePercentage
@@ -58,7 +58,7 @@ type Props = {
   },
 };
 
-function stock({ url: { query: { id, }, }, }: Props): Node {
+function bond({ url: { query: { id, }, }, }: Props): Node {
   return (
     <MainLayout>
       <LayoutContainer
@@ -72,7 +72,7 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
             if (error) return null;
             if (loading) return null;
             const {
-              stockData: {
+              bondData: {
                 name,
                 value,
                 changePercentage,
@@ -102,11 +102,7 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                         }}
                       />
                     </PageRow>
-                    <PageRow
-                      miscStyles={{
-                        marginBottom: '2rem',
-                      }}
-                    >
+                    <PageRow>
                       <QuoteSummary
                         value={value}
                         changePercentage={changePercentage}
@@ -153,7 +149,7 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                                 { name: 'value', display: 'שער אחרון', },
                                 { name: 'minValue', display: 'נמוך יומי', },
                                 { name: 'maxValue', display: 'גבוה יומי', },
-                                { name: 'marketCap', display: 'שווי שוק', },
+                                { name: 'arbGap', display: 'סטיית תקן', },
                               ]}
                             />
                           </RowItem>
@@ -224,6 +220,64 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                       </Grid>
                     </PageRow>
                     <PageRow>
+                      <RowItem
+                        title="חישובי אג״ח"
+                        miscStyles={{ marginBottom: '4rem', }}
+                      >
+                        <Grid
+                          gutter={2}
+                          miscStyles={{
+                            paddingStart: '0rem',
+                            paddingEnd: '0rem',
+                          }}
+                        >
+                          <GridItem
+                            width={1 / 3}
+                          >
+                            <QuoteTable
+                              id={id}
+                              fields={[
+                                { name: 'redemptionYield', display: 'תשואה לפדיון', },
+                                { name: 'per', display: 'פארי', },
+                                { name: 'avgDuration', display: 'מח"מ', },
+                                { name: 'yieldFactor', display: 'מקדם תשואה', },
+                                { name: 'daysToMaturity', display: 'זמן סופי לפדיון', },
+                              ]}
+                            />
+                          </GridItem>
+                          <GridItem
+                            width={1 / 3}
+                          >
+                            <QuoteTable
+                              id={id}
+                              fields={[
+                                { name: 'classification', display: 'סיווג', },
+                                { name: 'issueDate', display: 'תאריך הנפקה', type: 'date', },
+                                { name: 'redemptionDate', display: 'תאריך פדיון', type: 'date', },
+                                { name: 'periodicalInterest', display: 'ריבית תקופתית', },
+                                { name: 'yearlyInterest', display: 'ריבית שנתית', },
+
+                              ]}
+                            />
+                          </GridItem>
+                          <GridItem
+                            width={1 / 3}
+                          >
+                            <QuoteTable
+                              id={id}
+                              fields={[
+                                { name: 'retailTax', display: 'מס ליחידים', },
+                                { name: 'linkageType', display: 'סוג הצמדה', },
+                                { name: 'expirationBenchmarkDate', display: 'תאריך מדד בסיס', type: 'date', },
+                                { name: 'periodicalInterestDate', display: 'תאריך ריבית תקופתית', type: 'date', },
+                                { name: 'paymentDate', display: 'תאריך תשלום', type: 'date', },
+                              ]}
+                            />
+                          </GridItem>
+                        </Grid>
+                      </RowItem>
+                    </PageRow>
+                    <PageRow>
                       <Grid
                         gutter={2}
                         miscStyles={{
@@ -245,35 +299,10 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                                 { name: 'pbRatio', display: 'מכפיל הון', },
                                 { name: 'roe', display: 'תשואה על ההון העצמי', },
                                 { name: 'psRatio', display: 'מכפיל מכירות', },
-                                { name: 'netProfitMargin', display: 'שיעור רווח נקי', },
-                                { name: 'capitalBalanceRatio', display: 'הון למאזן', },
                               ]}
                             />
                           </RowItem>
                         </GridItem>
-                        <GridItem
-                          width={2 / 3}
-                        >
-                          <RowItem
-                            title="בחסות בנק לאומי"
-                            miscStyles={{
-                              ...theme.type(0),
-                            }}
-                          />
-                        </GridItem>
-                      </Grid>
-                    </PageRow>
-                    <PageRow>
-                      <Grid
-                        gutter={2}
-                        miscStyles={{
-                          paddingStart: '0rem',
-                          paddingEnd: '0rem',
-                        }}
-                      >
-                        <GridItem
-                          width={1 / 3}
-                        />
                         <GridItem
                           width={2 / 3}
                         >
@@ -298,4 +327,4 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
   );
 }
 
-export default stock;
+export default bond;

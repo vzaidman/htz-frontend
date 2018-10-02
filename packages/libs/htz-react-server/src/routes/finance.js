@@ -27,4 +27,12 @@ export default function finance(app, server) {
     };
     return app.render(req, res, '/stock', query);
   });
+
+  /* bond Page */
+  server.get('/bond/:id', (req, res) => {
+    const query = {
+      id: req.params.id,
+    };
+    return app.render(req, res, '/bond', query);
+  });
 }

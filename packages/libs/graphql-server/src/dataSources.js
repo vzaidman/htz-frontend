@@ -7,6 +7,7 @@ import {
   lineGraphMap,
   scatterGraphMap,
   stockMap,
+  bondMap,
 } from '@haaretz/app-utils';
 import querystring from 'querystring';
 
@@ -303,6 +304,11 @@ class FinanceAPI extends RESTDataSource {
   // eslint-disable-next-line class-methods-use-this
   async getStock(id) {
     return jsonGenerator({ map: stockMap, args: { id, }, });
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async getBond(id) {
+    return jsonGenerator({ map: bondMap, args: { id, }, });
   }
 }
 

@@ -13,6 +13,7 @@ import { TdComponent, } from '../../StockTable/StockTable';
 type Field = {
   name: string,
   display: string,
+  type?: string,
 };
 
 type Props = {
@@ -26,6 +27,7 @@ type Props = {
 type TrComponentProps = {
   title: string,
   value: string | number,
+  type?: string,
   miscStyles?: Object,
 };
 
@@ -45,7 +47,7 @@ const numToString: number => string = num => (
 
 const TrComponent: StatelessFunctionalComponent<TrComponentProps> =
   // eslint-disable-next-line react/prop-types
-  ({ miscStyles, title, value, }) => (
+  ({ miscStyles, title, value, type, }) => (
     <FelaComponent
       style={theme => ({
         backgroundColor: theme.color('neutral', '-10'),
@@ -74,7 +76,17 @@ const TrComponent: StatelessFunctionalComponent<TrComponentProps> =
           textAlign: 'start',
         }}
       >
-        {typeof value === 'number' ? numToString(value) : value}
+        {
+          type && type === 'date'
+            ? new Date(value).toLocaleString('it-It', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric',
+            })
+            : typeof value === 'number'
+              ? numToString(value)
+              : value
+        }
       </TdComponent>
     </FelaComponent>
   );
@@ -132,7 +144,11 @@ const QuoteTable: StatelessFunctionalComponent<Props> =
 
             <tbody>
               {fields.map(field => (
-                <TrComponent title={field.display} value={assets[0][field.name]} />
+                <TrComponent
+                  title={field.display}
+                  value={assets[0][field.name]}
+                  type={field.type}
+                />
               ))}
             </tbody>
           </FelaComponent>

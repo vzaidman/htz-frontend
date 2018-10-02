@@ -13,6 +13,7 @@ import CommentsElement from './types/comments_element_type';
 import FinanceGraph from './types/finance/finance_graph_type';
 import FinanceTable from './types/finance/finance_table_type';
 import FinanceStock from './types/finance/finance_stock_type';
+import FinanceBond from './types/finance/finance_bond_type';
 import Footer from './types/footer_type';
 import NavMenu from './types/navMenu_type';
 import List from './types/list_type';
@@ -159,6 +160,16 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve(parentValue, { id, }, { dataSources, }) {
         return dataSources.FinanceAPI.getStock(id);
+      },
+    },
+
+    bondData: {
+      type: FinanceBond,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString), },
+      },
+      resolve(parentValue, { id, }, { dataSources, }) {
+        return dataSources.FinanceAPI.getBond(id);
       },
     },
 
