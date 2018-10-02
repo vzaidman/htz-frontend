@@ -128,7 +128,7 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                                 { name: 'value', display: 'שער אחרון', },
                                 { name: 'minValue', display: 'נמוך יומי', },
                                 { name: 'maxValue', display: 'גבוה יומי', },
-                                { name: 'arbGap', display: 'סטיית תקן', },
+                                { name: 'marketCap', display: 'שווי שוק', },
                               ]}
                             />
                           </RowItem>
@@ -216,13 +216,12 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                             <QuoteTable
                               id={id}
                               fields={[
-                                // TODO: fill in the correct fields.
-                                { name: 'baseValue', display: 'מכפיל רווח', },
-                                { name: 'openingValue', display: 'מכפיל הון', },
-                                { name: 'value', display: 'תשואה על ההון העצמי', },
-                                { name: 'minValue', display: 'מכפיל מכירות', },
-                                { name: 'maxValue', display: 'שיעור רווח נקי', },
-                                { name: 'arbGap', display: 'הון למאזן', },
+                                { name: 'peRatio', display: 'מכפיל רווח', },
+                                { name: 'pbRatio', display: 'מכפיל הון', },
+                                { name: 'roe', display: 'תשואה על ההון העצמי', },
+                                { name: 'psRatio', display: 'מכפיל מכירות', },
+                                { name: 'netProfitMargin', display: 'שיעור רווח נקי', },
+                                { name: 'capitalBalanceRatio', display: 'הון למאזן', },
                               ]}
                             />
                           </RowItem>
