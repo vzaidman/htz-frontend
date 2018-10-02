@@ -7,6 +7,13 @@ import H from '../AutoLevels/H';
 import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
 import Zen from '../Zen/Zen';
 
+const Crosshead = props => (<FelaComponent
+  style={theme => (
+    { extend: [ theme.type(2), ], }
+  )}
+  render={({ className, }) => (<H className={className} {...props} />)}
+/>);
+
 const paragraphStyle = theme => ({
   marginBottom: '3rem',
   extend: [ theme.type(1, { untilBp: 'xl', lines: 5, }), theme.type(0, { fromBp: 'xl', lines: 5, }), ],
@@ -202,7 +209,7 @@ const getTag = tag => {
     [ 'em', Em, ],
     [ 'span', 'span', ],
     [ 'stk', 'span', ],
-    [ 'h3', H, ],
+    [ 'h3', Crosshead, ],
     [ 'br', () => <br />, ],
   ]);
   return tagsMap.get(tag);
