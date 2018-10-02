@@ -16,6 +16,7 @@ import QuoteSummary from '../components/QuotePageComponents/QuoteSummary/QuoteSu
 import QuoteTable from '../components/QuotePageComponents/QuoteTable/QuoteTable';
 import VolumeGraph from '../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../components/Graph/graphs/Yield/Yield';
+import RelatedAssets from '../components/QuotePageComponents/RelatedAssets/RelatedAssets';
 import ShareHoldersTable from '../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
 
 const StockQuery: DocumentNode = gql`
@@ -28,7 +29,11 @@ const StockQuery: DocumentNode = gql`
       stockType
       stockNumber
       lastTradeTime
-      relatedStocks
+      relatedAssets {
+        type
+        name
+        id
+      }
       volume
       dailyAvgVolume
       weeklyYield
@@ -75,6 +80,7 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                 stockType,
                 stockNumber,
                 lastTradeTime,
+                relatedAssets,
                 volume,
                 dailyAvgVolume,
                 weeklyYield,
@@ -96,7 +102,11 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                         }}
                       />
                     </PageRow>
-                    <PageRow>
+                    <PageRow
+                      miscStyles={{
+                        marginBottom: '2rem',
+                      }}
+                    >
                       <QuoteSummary
                         value={value}
                         changePercentage={changePercentage}
@@ -105,6 +115,13 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                         stockNumber={stockNumber}
                         lastTradeTime={lastTradeTime}
                       />
+                    </PageRow>
+                    <PageRow
+                      miscStyles={{
+                        marginBottom: '2rem',
+                      }}
+                    >
+                      <RelatedAssets assets={relatedAssets} />
                     </PageRow>
                     <PageRow>
                       <GraphController

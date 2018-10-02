@@ -14,11 +14,15 @@ const stockObject: Object = new Map([
   [ 'stockType', () => string.enum([ 'מניה רגילה', ]), ],
   [ 'stockNumber', () => number.int({ max: 999999, min: 100000, }), ],
   [ 'lastTradeTime', () => date.timestamp({}), ],
-  [ 'relatedStocks', () => list(
+  [ 'relatedAssets', () => list(
     [
       {
-        method: string.lorem,
-        options: { count: 2, type: 'word', },
+        method: object,
+        options: {
+          type: () => string.enum([ 'index', 'bond', 'stock', 'options', 'mtf', 'etf', 'currency', ]),
+          name: () => string.lorem({ count: 1, type: 'word', }),
+          id: () => string.id(),
+        },
       },
     ],
     number.int({ max: 5, min: 1, }),

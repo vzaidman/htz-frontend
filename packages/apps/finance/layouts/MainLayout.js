@@ -44,7 +44,7 @@ function MainLayout({ children, }: Props): Node {
         <Fragment>
           <AriaLive />
           <DeviceTypeInjector />
-          {/*<Masthead />*/}
+          <Masthead />
           <FelaComponent
             style={theme => ({
               backgroundColor: theme.color('neutral', '-6'),

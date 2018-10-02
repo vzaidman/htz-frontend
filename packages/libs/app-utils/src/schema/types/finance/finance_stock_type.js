@@ -7,7 +7,7 @@ import {
   GraphQLInt,
 } from 'graphql';
 
-import { GraphQLTimestamp, } from './finance_table_type';
+import { AssetType, GraphQLTimestamp, } from './finance_table_type';
 
 const StockType = new GraphQLEnumType({
   name: 'StockType',
@@ -27,7 +27,16 @@ const stock = new GraphQLObjectType({
     stockType: { type: StockType, },
     stockNumber: { type: GraphQLInt, },
     lastTradeTime: { type: GraphQLTimestamp, },
-    relatedStocks: { type: new GraphQLList(GraphQLString), },
+    relatedAssets: { type: new GraphQLList(
+      new GraphQLObjectType({
+        name: 'RelatedAssets',
+        fields: () => ({
+          type: { type: AssetType, },
+          name: { type: GraphQLString, },
+          id: { type: GraphQLString, },
+        }),
+      })
+    ), },
     volume: { type: GraphQLFloat, },
     dailyAvgVolume: { type: GraphQLFloat, },
     dailyYield: { type: GraphQLFloat, },

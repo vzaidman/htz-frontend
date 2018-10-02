@@ -49,7 +49,7 @@ export const GraphQLTimestamp = new GraphQLScalarType({
   },
 });
 
-const AssetType = new GraphQLEnumType({
+export const AssetType = new GraphQLEnumType({
   name: 'AssetType',
   values: {
     index: { value: 'index', },
