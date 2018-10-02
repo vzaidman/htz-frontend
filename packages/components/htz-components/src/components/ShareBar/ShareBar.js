@@ -4,9 +4,9 @@ import { FelaComponent, } from 'react-fela';
 import { borderTop, } from '@haaretz/htz-css-tools';
 import type { Node, } from 'react';
 
-import ActionButtons from '../../../ActionButtons/ActionButtons';
-import PlusClose from '../../../Animations/PlusClose';
-import { Button, } from '../../../ActionButtons/actionList';
+import ActionButtons from '../ActionButtons/ActionButtons';
+import PlusClose from '../Animations/PlusClose';
+import { Button, } from '../ActionButtons/actionList';
 
 type Props = {
   title: string,

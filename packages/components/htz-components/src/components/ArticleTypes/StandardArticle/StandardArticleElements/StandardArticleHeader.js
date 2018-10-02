@@ -8,7 +8,7 @@ import HeaderText from '../../../ArticleHeader/HeaderText';
 import ArticleHeaderMeta from '../../../ArticleHeader/ArticleHeaderMeta';
 import HeadlineElement from '../../../HeadlineElement/HeadlineElement';
 import Breadcrumbs from '../../../Breadcrumbs/Breadcrumbs';
-import ShareBar from './ShareBar';
+import ShareBar from '../../../ShareBar/ShareBar';
 
 Header.propTypes = {
   /**
