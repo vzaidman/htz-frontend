@@ -16,6 +16,7 @@ import QuoteSummary from '../components/QuotePageComponents/QuoteSummary/QuoteSu
 import QuoteTable from '../components/QuotePageComponents/QuoteTable/QuoteTable';
 import VolumeGraph from '../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../components/Graph/graphs/Yield/Yield';
+import ShareHoldersTable from '../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
 
 const StockQuery: DocumentNode = gql`
   query StockData($id: String!){
@@ -34,6 +35,11 @@ const StockQuery: DocumentNode = gql`
       monthlyYield
       quarterlyYield
       yearlyYield
+      shareHolders {
+        shareHolderName
+        equityHolderPercentage
+        holdingMarketCap
+      }
     }
   }
 `;
@@ -75,6 +81,7 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                 monthlyYield,
                 quarterlyYield,
                 yearlyYield,
+                shareHolders,
               },
             } = data;
             return (
@@ -102,6 +109,7 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                     <PageRow>
                       <GraphController
                         selectedStockId={id}
+                        width={900}
                       />
                     </PageRow>
                     <PageRow>
@@ -235,6 +243,30 @@ function stock({ url: { query: { id, }, }, }: Props): Node {
                               ...theme.type(0),
                             }}
                           />
+                        </GridItem>
+                      </Grid>
+                    </PageRow>
+                    <PageRow>
+                      <Grid
+                        gutter={2}
+                        miscStyles={{
+                          paddingStart: '0rem',
+                          paddingEnd: '0rem',
+                        }}
+                      >
+                        <GridItem
+                          width={1 / 3}
+                        />
+                        <GridItem
+                          width={2 / 3}
+                        >
+                          <RowItem
+                            title="בעלי עניין קונצרני"
+                          >
+                            <ShareHoldersTable
+                              shareHolders={shareHolders}
+                            />
+                          </RowItem>
                         </GridItem>
                       </Grid>
                     </PageRow>

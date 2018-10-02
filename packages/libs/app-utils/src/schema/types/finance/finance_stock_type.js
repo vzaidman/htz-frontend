@@ -38,6 +38,16 @@ const stock = new GraphQLObjectType({
     threeYearsYield: { type: GraphQLFloat, },
     fiveYearsYield: { type: GraphQLFloat, },
     maxYield: { type: GraphQLFloat, },
+    shareHolders: { type: new GraphQLList(
+      new GraphQLObjectType({
+        name: 'ShareHolder',
+        fields: () => ({
+          shareHolderName: { type: GraphQLString, },
+          equityHolderPercentage: { type: GraphQLFloat, },
+          holdingMarketCap: { type: GraphQLFloat, },
+        }),
+      })
+    ), },
   }),
 });
 
