@@ -38,7 +38,6 @@ const StyledLink = props => (
 );
 
 const liStyle = {
-  marginTop: '1rem',
   marginBottom: '1rem',
 };
 

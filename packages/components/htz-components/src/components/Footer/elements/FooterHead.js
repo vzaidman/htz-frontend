@@ -87,7 +87,7 @@ const IconsUlStyle = ({ theme, }) => ({
     {
       display: 'block',
       textAlign: 'center',
-      marginBottom: '3rem',
+      marginBottom: '4rem',
     }
   ),
 });
