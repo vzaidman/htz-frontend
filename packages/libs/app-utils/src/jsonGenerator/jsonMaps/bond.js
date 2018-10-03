@@ -19,7 +19,7 @@ const bondObject: Object = new Map([
       {
         method: object,
         options: {
-          type: () => string.enum([ 'index', 'bond', 'stock', 'options', 'mtf', 'etf', 'currency', ]),
+          type: () => string.enum([ 'crypto', 'bonds', 'stocks', 'options', 'mtf', 'etf', 'exchange', 'indices', ]),
           name: () => string.lorem({ count: 1, type: 'word', }),
           id: () => string.id(),
         },

@@ -43,7 +43,7 @@ const SectionLink:StatelessFunctionalComponent<Props> = ({
         href={href}
         as={as}
       >
-        <a href={href.pathname || href} className={className}>
+        <a className={className}>
           {children}
           <IconBack size={-1} />
         </a>

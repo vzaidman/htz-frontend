@@ -54,14 +54,14 @@ const RelatedAssets: StatelessFunctionalComponent<Props> =
           >
             <Link
               href={{
-                pathname: `/${type}/${id}`,
+                pathname: `/quote/${type}/${id}`,
                 query: {
                   id,
                 },
               }}
               as={`/${type}/${id}`}
             >
-              <a href={`/${type}/${id}`}>
+              <a>
                 {name}
               </a>
             </Link>

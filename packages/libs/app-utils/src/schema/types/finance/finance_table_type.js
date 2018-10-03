@@ -52,13 +52,14 @@ export const GraphQLTimestamp = new GraphQLScalarType({
 export const AssetType = new GraphQLEnumType({
   name: 'AssetType',
   values: {
-    index: { value: 'index', },
-    bond: { value: 'bond', },
-    stock: { value: 'stock', },
+    bonds: { value: 'bonds', },
+    stocks: { value: 'stocks', },
+    indices: { value: 'indices', },
     options: { value: 'options', },
     mtf: { value: 'mtf', },
     etf: { value: 'etf', },
-    currency: { value: 'currency', },
+    exchange: { value: 'exchange', },
+    crypto: { value: 'crypto', },
   },
 });
 

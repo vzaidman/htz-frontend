@@ -7,17 +7,17 @@ import gql from 'graphql-tag';
 import type { Node, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
 
-import MainLayout from '../layouts/MainLayout';
-import PageRow from '../components/PageRow/PageRow';
-import RowItem from '../components/RowItem/RowItem';
-import GraphController from '../components/GraphController/GraphController';
-import { Query, } from '../components/ApolloBoundary/ApolloBoundary';
-import QuoteSummary from '../components/QuotePageComponents/QuoteSummary/QuoteSummary';
-import QuoteTable from '../components/QuotePageComponents/QuoteTable/QuoteTable';
-import VolumeGraph from '../components/Graph/graphs/Volume/Volume';
-import YieldGraph from '../components/Graph/graphs/Yield/Yield';
-import ShareHoldersTable from '../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
-import RelatedAssets from '../components/QuotePageComponents/RelatedAssets/RelatedAssets';
+import MainLayout from '../../layouts/MainLayout';
+import PageRow from '../../components/PageRow/PageRow';
+import RowItem from '../../components/RowItem/RowItem';
+import GraphController from '../../components/GraphController/GraphController';
+import { Query, } from '../../components/ApolloBoundary/ApolloBoundary';
+import QuoteSummary from '../../components/QuotePageComponents/QuoteSummary/QuoteSummary';
+import QuoteTable from '../../components/QuotePageComponents/QuoteTable/QuoteTable';
+import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';
+import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
+import ShareHoldersTable from '../../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
+import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/RelatedAssets';
 
 const StockQuery: DocumentNode = gql`
   query BondData($id: String!){
@@ -58,7 +58,7 @@ type Props = {
   },
 };
 
-function bond({ url: { query: { id, }, }, }: Props): Node {
+function bonds({ url: { query: { id, }, }, }: Props): Node {
   return (
     <MainLayout>
       <LayoutContainer
@@ -327,4 +327,4 @@ function bond({ url: { query: { id, }, }, }: Props): Node {
   );
 }
 
-export default bond;
+export default bonds;

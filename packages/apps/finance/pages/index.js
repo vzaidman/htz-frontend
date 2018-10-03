@@ -41,7 +41,7 @@ function index({ url, }: Props): Node {
                     >
                       <SortableTable
                         parentId="142"
-                        type="bond"
+                        type="bonds"
                         linkText="לבורסת תל אביב"
                         fields={[
                           { name: 'name', sortingOrder: 'ascend', },
@@ -70,7 +70,7 @@ function index({ url, }: Props): Node {
                     >
                       <SortableTable
                         parentId="136"
-                        type="bond"
+                        type="bonds"
                         linkText="לבורסת וול סטריט"
                         fields={[
                           { name: 'name', sortingOrder: 'ascend', },
@@ -87,7 +87,7 @@ function index({ url, }: Props): Node {
                     >
                       <SortableTable
                         parentId="-2000"
-                        type="stock"
+                        type="stocks"
                         linkText="לרשימה המלאה"
                         fields={[
                           { name: 'name', sortingOrder: 'ascend', },
@@ -161,7 +161,7 @@ function index({ url, }: Props): Node {
                     >
                       <SortableTable
                         parentId="35"
-                        type="fund"
+                        type="mtf"
                         linkText="לקרנות נאמנות"
                         fields={[
                           { name: 'name', sortingOrder: 'ascend', },

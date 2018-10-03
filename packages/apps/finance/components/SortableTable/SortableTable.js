@@ -115,7 +115,7 @@ const TableLink: TableLinkProps => Node = ({ content, id, type, allowTab, }) => 
     render={({ className, }) => (
       <Link
         href={{
-          pathname: `/${type || ''}/${id || ''}`,
+          pathname: `/${type || ''}`,
           query: {
             id,
           },
@@ -125,7 +125,6 @@ const TableLink: TableLinkProps => Node = ({ content, id, type, allowTab, }) => 
         <a
           {...!allowTab ? { tabIndex: -1, } : {}}
           className={className}
-          href={`/${type || ''}/${id || ''}`}
         >
           {content}
         </a>
@@ -298,7 +297,7 @@ class SortableTable extends React.Component<Props, State> {
               </FelaComponent>
               <SectionLink
                 href={{
-                  pathname: `/${type || ''}/${parentId || ''}`,
+                  pathname: `/${type || ''}`,
                   query: {
                     parentId,
                   },

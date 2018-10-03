@@ -77,7 +77,7 @@ class TableGraphConnector extends React.Component<Props, State> {
               />
               <SectionLink
                 href={{
-                  pathname: `/${type || ''}/${id || ''}`,
+                  pathname: `/quote/${type || ''}`,
                   query: {
                     id,
                   },
