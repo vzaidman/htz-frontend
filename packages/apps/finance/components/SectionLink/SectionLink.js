@@ -11,7 +11,7 @@ type Props = {
     pathname: string,
     query: Object,
   },
-  as?: string,
+  as: string,
   children: ChildrenArray<Node> | Node,
   miscStyles? : Object,
 }

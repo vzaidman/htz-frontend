@@ -15,14 +15,14 @@ export default function finance(app, server) {
   /* Home Page */
   server.get([ '/', '/index', ], (req, res) => app.render(req, res, '/index'));
 
-  /* QUOTE PAGES */
+  /* ASSET PAGES */
 
   /* Bond Quote */
   server.get('/bonds/:id', (req, res) => {
     const query = {
       id: req.params.id,
     };
-    return app.render(req, res, '/quote/bonds', query);
+    return app.render(req, res, '/asset/bonds', query);
   });
 
   /* Crypto Quote */
@@ -30,7 +30,7 @@ export default function finance(app, server) {
     const query = {
       id: req.params.id,
     };
-    return app.render(req, res, '/quote/crypto', query);
+    return app.render(req, res, '/asset/crypto', query);
   });
 
   /* Exchange Traded Funds Quote */
@@ -38,7 +38,7 @@ export default function finance(app, server) {
     const query = {
       id: req.params.id,
     };
-    return app.render(req, res, '/quote/etf', query);
+    return app.render(req, res, '/asset/etf', query);
   });
 
   /* Exchange Quote */
@@ -46,7 +46,7 @@ export default function finance(app, server) {
     const query = {
       id: req.params.id,
     };
-    return app.render(req, res, '/quote/exchange', query);
+    return app.render(req, res, '/asset/exchange', query);
   });
 
   /* Indices Quote */
@@ -54,7 +54,7 @@ export default function finance(app, server) {
     const query = {
       id: req.params.id,
     };
-    return app.render(req, res, '/quote/indices', query);
+    return app.render(req, res, '/asset/indices', query);
   });
 
   /* Mutual Funds Quote */
@@ -62,7 +62,7 @@ export default function finance(app, server) {
     const query = {
       id: req.params.id,
     };
-    return app.render(req, res, '/quote/mtf', query);
+    return app.render(req, res, '/asset/mtf', query);
   });
 
   /* Options Quote */
@@ -70,7 +70,7 @@ export default function finance(app, server) {
     const query = {
       id: req.params.id,
     };
-    return app.render(req, res, '/quote/options', query);
+    return app.render(req, res, '/asset/options', query);
   });
 
   /* Stock Quote */
@@ -78,32 +78,32 @@ export default function finance(app, server) {
     const query = {
       id: req.params.id,
     };
-    return app.render(req, res, '/quote/stocks', query);
+    return app.render(req, res, '/asset/stocks', query);
   });
 
-  /* MADOR PAGES */
+  /* SECTION PAGES */
 
   /* Bond Page */
-  server.get('/bonds', (req, res) => app.render(req, res, '/mador/bonds'));
+  server.get('/bonds', (req, res) => app.render(req, res, '/section/bonds'));
 
   /* Crypto Page */
-  server.get('/crypto', (req, res) => app.render(req, res, '/mador/crypto'));
+  server.get('/crypto', (req, res) => app.render(req, res, '/section/crypto'));
 
   /* Exchange Traded Funds Page */
-  server.get('/etf', (req, res) => app.render(req, res, '/mador/etf'));
+  server.get('/etf', (req, res) => app.render(req, res, '/section/etf'));
 
   /* Exchange Page */
-  server.get('/exchange', (req, res) => app.render(req, res, '/mador/exchange'));
+  server.get('/exchange', (req, res) => app.render(req, res, '/section/exchange'));
 
   /* Indices Page */
-  server.get('/indices', (req, res) => app.render(req, res, '/mador/indices'));
+  server.get('/indices', (req, res) => app.render(req, res, '/section/indices'));
 
   /* Mutual Funds Page */
-  server.get('/mtf', (req, res) => app.render(req, res, '/mador/mtf'));
+  server.get('/mtf', (req, res) => app.render(req, res, '/section/mtf'));
 
   /* Options Page */
-  server.get('/options', (req, res) => app.render(req, res, '/mador/options'));
+  server.get('/options', (req, res) => app.render(req, res, '/section/options'));
 
   /* Stock Page */
-  server.get('/stocks', (req, res) => app.render(req, res, '/mador/stocks'));
+  server.get('/stocks', (req, res) => app.render(req, res, '/section/stocks'));
 }
