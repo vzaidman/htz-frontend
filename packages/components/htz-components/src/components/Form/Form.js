@@ -1,5 +1,6 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 
 const callAll = (...fns) => (...args) => fns.forEach(fn => fn && fn(...args));
@@ -116,7 +117,7 @@ export default class Form extends Component {
    */
 
   componentDidUpdate = (prevProps, prevState) => {
-    if (this.props.initialValues !== prevProps.initialValues) {
+    if (!isEqual(this.props.initialValues, prevProps.initialValues)) {
       this.setState({ values: { ...this.props.initialValues, }, });
     }
   };
