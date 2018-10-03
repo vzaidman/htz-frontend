@@ -1,12 +1,7 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
-import {
-  EventTracker,
-  IconAlefLogo,
-  IconTheMarker,
-  HtzLink,
-} from '@haaretz/htz-components';
+import { EventTracker, IconAlefLogo, IconTheMarker, } from '@haaretz/htz-components';
 
 import Astronaut from '../illustrations/Astronaut/Astronaut';
 import Diver from '../illustrations/Diver/Diver';
@@ -54,33 +49,12 @@ const linkStyle = ({
   ],
 });
 
-const StyledLink = createComponent(linkStyle, HtzLink, [
-  'href',
-  'content',
-  'onClick',
-]);
-
-const homePageLinkStyle = ({ theme, }) => ({
-  fontWeight: 'bold',
-  marginTop: '1rem',
-  textAlign: 'center',
-});
-
-const StyledHomePageLink = createComponent(homePageLinkStyle, StyledLink, [
-  'href',
-  'content',
-  'onClick',
-]);
-
 const linkListStyle = ({ theme, }) => ({
   display: 'flex',
   flexDirection: 'row',
   marginTop: '3rem',
   extend: [
-    theme.mq(
-      { until: 's', },
-      { flexDirection: 'column', alignItems: 'center', marginTop: 'none', }
-    ),
+    theme.mq({ until: 's', }, { flexDirection: 'column', alignItems: 'center', marginTop: 'none', }),
   ],
 });
 
@@ -125,39 +99,50 @@ export function PurchasePageFooter({ host, hasIllustration, stage, }) {
           <div className={className}>
             <EventTracker>
               {({ biAction, gaAction, }) => (
-                <StyledHomePageLink
-                  href={href[host]}
-                  content={
-                    <Fragment>
-                      {isTheMarker ? (
-                        <IconTheMarker
-                          color="primary"
-                          fill={[ 'purchasePageFooter', 'bg', ]}
-                          size={6}
-                        />
-                      ) : (
-                        <IconAlefLogo
-                          color="white"
-                          fill={[ 'purchasePageFooter', 'bg', ]}
-                          size={6}
-                        />
-                      )}
-                      <p>{homePageLink.text}</p>
-                    </Fragment>
-                  }
-                  onClick={() => {
-                    biAction({
-                      actionCode: 42,
-                      additionalInfo: {
-                        stage,
-                      },
-                    });
-                    gaAction({
-                      category: 'promtions-footer',
-                      action: 'homepage',
-                      label: `step ${stage}`,
-                    });
+                <FelaComponent
+                  style={{
+                    paddingInlineEnd: '1rem',
+                    paddingInlineStart: '1rem',
+                    fontWeight: 'bold',
+                    marginTop: '1rem',
+                    textAlign: 'center',
                   }}
+                  render={({ className, }) => (
+                    <a
+                      className={className}
+                      href={href[host]}
+                      onClick={() => {
+                        biAction({
+                          actionCode: 42,
+                          additionalInfo: {
+                            stage,
+                          },
+                        });
+                        gaAction({
+                          category: 'promtions-footer',
+                          action: 'homepage',
+                          label: `step ${stage}`,
+                        });
+                      }}
+                    >
+                      <Fragment>
+                        {isTheMarker ? (
+                          <IconTheMarker
+                            color="primary"
+                            fill={[ 'purchasePageFooter', 'bg', ]}
+                            size={6}
+                          />
+                        ) : (
+                          <IconAlefLogo
+                            color="white"
+                            fill={[ 'purchasePageFooter', 'bg', ]}
+                            size={6}
+                          />
+                        )}
+                        <p>{homePageLink.text}</p>
+                      </Fragment>
+                    </a>
+                  )}
                 />
               )}
             </EventTracker>
@@ -167,44 +152,56 @@ export function PurchasePageFooter({ host, hasIllustration, stage, }) {
                   <EventTracker>
                     {({ biAction, gaAction, }) => (
                       <Fragment>
-                        <StyledLink
+                        <FelaComponent
+                          rule={linkStyle}
                           hide={link.text === 'שאלות ותשובות'}
                           onlyMobile
-                          onClick={() => {
-                            biAction({
-                              actionCode: link.text === 'שאלות ותשובות' ? 43 : 41,
-                              additionalInfo: {
-                                stage,
-                              },
-                            });
-                            gaAction({
-                              category: 'promtions-footer',
-                              action:
-                                link.text === 'שאלות ותשובות' ? 'faq' : 'contact',
-                              label: `step ${stage}`,
-                            });
-                          }}
-                          href={link.hrefMobile[host]}
-                          content={link.text}
+                          render={({ className, }) => (
+                            <a
+                              className={className}
+                              onClick={() => {
+                                biAction({
+                                  actionCode: link.text === 'שאלות ותשובות' ? 43 : 41,
+                                  additionalInfo: {
+                                    stage,
+                                  },
+                                });
+                                gaAction({
+                                  category: 'promtions-footer',
+                                  action: link.text === 'שאלות ותשובות' ? 'faq' : 'contact',
+                                  label: `step ${stage}`,
+                                });
+                              }}
+                              href={link.hrefMobile[host]}
+                            >
+                              {link.text}
+                            </a>
+                          )}
                         />
-                        <StyledLink
+                        <FelaComponent
+                          rule={linkStyle}
                           onlyDesktop
-                          onClick={() => {
-                            biAction({
-                              actionCode: link.text === 'שאלות ותשובות' ? 43 : 41,
-                              additionalInfo: {
-                                stage,
-                              },
-                            });
-                            gaAction({
-                              category: 'promtions-footer',
-                              action:
-                                link.text === 'שאלות ותשובות' ? 'faq' : 'contact',
-                              label: `step ${stage}`,
-                            });
-                          }}
-                          href={link.href[host]}
-                          content={link.text}
+                          render={({ className, }) => (
+                            <a
+                              className={className}
+                              onClick={() => {
+                                biAction({
+                                  actionCode: link.text === 'שאלות ותשובות' ? 43 : 41,
+                                  additionalInfo: {
+                                    stage,
+                                  },
+                                });
+                                gaAction({
+                                  category: 'promtions-footer',
+                                  action: link.text === 'שאלות ותשובות' ? 'faq' : 'contact',
+                                  label: `step ${stage}`,
+                                });
+                              }}
+                              href={link.href[host]}
+                            >
+                              {link.text}
+                            </a>
+                          )}
                         />
                       </Fragment>
                     )}

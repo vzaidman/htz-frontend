@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { ApolloConsumer, } from 'react-apollo';
 import ReactGA from 'react-ga';
-import {
-  Button,
-  EventTracker,
-  Form,
-  TextInput,
-  HtzLink,
-  TextLink,
-} from '@haaretz/htz-components';
+import { Button, EventTracker, Form, TextInput, TextLink, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 import OfferList from './ChooseProductStageElements/OfferList';
 import Modal from './ChooseProductStageElements/Modal';
@@ -119,9 +112,7 @@ class ChooseProductStage extends Component {
     this.props.products[this.state.chosenProduct].offerList.map((item, idx) =>
       ReactGA.ga('ec:addImpression', {
         id: item.paymentData.saleCode,
-        name: `${item.type}-${
-          this.props.products[this.state.chosenProduct].contentName
-        }`,
+        name: `${item.type}-${this.props.products[this.state.chosenProduct].contentName}`,
         brand: `salecode[${item.paymentData.saleCode}]`,
         position: idx + 1,
         price: item.price,
@@ -137,9 +128,7 @@ class ChooseProductStage extends Component {
       this.props.products[this.state.chosenProduct].offerList.map((item, idx) =>
         ReactGA.ga('ec:addImpression', {
           id: item.paymentData.saleCode,
-          name: `${item.type}-${
-            this.props.products[this.state.chosenProduct].contentName
-          }`,
+          name: `${item.type}-${this.props.products[this.state.chosenProduct].contentName}`,
           brand: `salecode[${item.paymentData.saleCode}]`,
           position: idx + 1,
           price: item.price,
@@ -202,8 +191,7 @@ class ChooseProductStage extends Component {
                   isVisible={this.state.modalOpen}
                   offerDisclaimer={
                     this.state.offerListChosenTermsIndex !== null
-                      ? offerList[this.state.offerListChosenTermsIndex]
-                          .disclaimer
+                      ? offerList[this.state.offerListChosenTermsIndex].disclaimer
                       : null
                   }
                 />
@@ -276,8 +264,7 @@ class ChooseProductStage extends Component {
                                   if (data.couponProduct.couponErrorMessage) {
                                     this.setState({
                                       couponLoading: false,
-                                      couponError:
-                                        data.couponProduct.couponErrorMessage,
+                                      couponError: data.couponProduct.couponErrorMessage,
                                     });
                                     gaAction({
                                       category: `promotions-step-3-${productName}`,
@@ -294,9 +281,7 @@ class ChooseProductStage extends Component {
                                       data: {
                                         promotionsPageState: {
                                           chosenProductIndex: 'couponProduct',
-                                          couponProduct: JSON.stringify(
-                                            data.couponProduct
-                                          ),
+                                          couponProduct: JSON.stringify(data.couponProduct),
                                           __typename: 'PromotionsPageState',
                                         },
                                       },
@@ -404,7 +389,7 @@ class ChooseProductStage extends Component {
                           render="p"
                         >
                           {entitlements.beforeLinkText}{' '}
-                          <HtzLink
+                          <a
                             onClick={() => {
                               gaAction({
                                 category: 'promotions-step-3',
@@ -412,18 +397,17 @@ class ChooseProductStage extends Component {
                               });
                             }}
                             href={entitlements.link}
-                            content={
-                              <FelaComponent
-                                render="span"
-                                style={{
-                                  textDecoration: 'underline',
-                                  textDecorationSkip: 'ink',
-                                }}
-                              >
-                                {entitlements.linkText}
-                              </FelaComponent>
-                            }
-                          />
+                          >
+                            <FelaComponent
+                              render="span"
+                              style={{
+                                textDecoration: 'underline',
+                                textDecorationSkip: 'ink',
+                              }}
+                            >
+                              {entitlements.linkText}
+                            </FelaComponent>
+                          </a>
                         </FelaComponent>
                         <FelaComponent
                           style={theme => ({
@@ -433,6 +417,7 @@ class ChooseProductStage extends Component {
                         >
                           <TextLink
                             href={organizationSubscription.url[host]}
+                            tagName="a"
                             onClick={() => {
                               // TODO: fix external url fetch
                               biAction({

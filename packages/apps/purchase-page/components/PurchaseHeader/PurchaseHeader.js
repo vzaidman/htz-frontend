@@ -10,7 +10,6 @@ import {
   IconHaaretzLogo,
   IconLock,
   EventTracker,
-  HtzLink,
   AriaDescription,
 } from '@haaretz/htz-components';
 
@@ -20,8 +19,7 @@ const propTypes = {
   host: PropTypes.string.isRequired,
   router: PropTypes.shape().isRequired,
   /** passing stage from client promotionsPageState to EventTrackers */
-  stage: PropTypes.PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ])
-    .isRequired,
+  stage: PropTypes.PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ]).isRequired,
 };
 
 // const defaultProps = {};
@@ -160,9 +158,7 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
                             marginInlineEnd: '1.5rem',
                           }}
                         />
-                        <FelaComponent style={backLinkTextStyle}>
-                          {backLinkText}
-                        </FelaComponent>
+                        <FelaComponent style={backLinkTextStyle}>{backLinkText}</FelaComponent>
                       </button>
                     )}
                   </EventTracker>
@@ -174,37 +170,31 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
           </FelaComponent>
 
           <FelaComponent style={logoContStyle}>
-            <HtzLink
-              href={href[host]}
-              content={
-                isTheMarker ? (
-                  <div>
-                    <IconMarkerLogo
-                      size={4}
-                      color="primary"
-                      attrs={{ role: 'image', 'aria-hidden': true, }}
-                      miscStyles={{ marginTop: '2rem', }}
-                    />
-                    <AriaDescription id="theMarkerLogo">
-                      דה מרקר
-                    </AriaDescription>
-                  </div>
-                ) : (
-                  <div>
-                    <IconHaaretzLogo
-                      size={4}
-                      color="black"
-                      attrs={{ role: 'image', 'aria-hidden': true, }}
-                      miscStyles={{ marginTop: '2rem', }}
-                    />
-                    <AriaDescription id="haaretzLogo">הארץ</AriaDescription>
-                  </div>
-                )
-              }
-            />
-            <FelaComponent style={underLogoStyle}>
-              {underLogoText[host]}
-            </FelaComponent>
+            <a href={href[host]}>
+              {isTheMarker ? (
+                <div>
+                  <IconMarkerLogo
+                    size={4}
+                    color="primary"
+                    attrs={{ role: 'image', 'aria-hidden': true, }}
+                    miscStyles={{ marginTop: '2rem', }}
+                  />
+                  <AriaDescription id="theMarkerLogo">דה מרקר</AriaDescription>
+                </div>
+              ) : (
+                <div>
+                  <IconHaaretzLogo
+                    size={4}
+                    color="black"
+                    attrs={{ role: 'image', 'aria-hidden': true, }}
+                    miscStyles={{ marginTop: '2rem', }}
+                  />
+                  <AriaDescription id="haaretzLogo">הארץ</AriaDescription>
+                </div>
+              )}
+            </a>
+
+            <FelaComponent style={underLogoStyle}>{underLogoText[host]}</FelaComponent>
           </FelaComponent>
           <FelaComponent style={trustedBadgeContStyle}>
             <FelaComponent style={trustedBadgeCircleStyle}>

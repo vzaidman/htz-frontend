@@ -4,7 +4,7 @@ import { createComponent, FelaComponent, } from 'react-fela';
 import { withRouter, } from 'next/router';
 import ReactGA from 'react-ga';
 import { parseTypographyProp, } from '@haaretz/htz-css-tools';
-import { EventTracker, HtzLink, TextLink, } from '@haaretz/htz-components';
+import { EventTracker, TextLink, } from '@haaretz/htz-components';
 import DesktopView from './ChooseSlotsStageElements/DesktopView';
 import MobileView from './ChooseSlotsStageElements/MobileView';
 import SubHeader from './ChooseSlotsStageElements/SubHeader';
@@ -71,12 +71,7 @@ const headingStyle = ({ theme, }) => ({
   paddingInlineStart: '4rem',
   paddingInlineEnd: '4rem',
   marginTop: '2rem',
-  extend: [
-    parseTypographyProp(
-      [ { until: 'l', value: 3, }, { from: 'l', value: 5, }, ],
-      theme.type
-    ),
-  ],
+  extend: [ parseTypographyProp([ { until: 'l', value: 3, }, { from: 'l', value: 5, }, ], theme.type), ],
 });
 
 const StyledHeading = createComponent(headingStyle, 'h1');
@@ -163,28 +158,8 @@ class ChooseSlotStage extends React.Component {
                         })}
                         render="p"
                       >
-                        <HtzLink
+                        <a
                           href={entitlements.link}
-                          content={
-                            <Fragment>
-                              {entitlements.beforeLinkText}{' '}
-                              <FelaComponent
-                                render="span"
-                                style={theme => ({
-                                  textDecoration: 'underline',
-                                  textDecorationSkip: 'ink',
-                                  extend: [
-                                    theme.mq(
-                                      { until: 's', },
-                                      { display: 'block', }
-                                    ),
-                                  ],
-                                })}
-                              >
-                                {entitlements.linkText}
-                              </FelaComponent>
-                            </Fragment>
-                          }
                           onClick={() => {
                             biAction({
                               actionCode: 40,
@@ -194,7 +169,21 @@ class ChooseSlotStage extends React.Component {
                               action: 'newspaper subscribers',
                             });
                           }}
-                        />
+                        >
+                          <Fragment>
+                            {entitlements.beforeLinkText}{' '}
+                            <FelaComponent
+                              render="span"
+                              style={theme => ({
+                                textDecoration: 'underline',
+                                textDecorationSkip: 'ink',
+                                extend: [ theme.mq({ until: 's', }, { display: 'block', }), ],
+                              })}
+                            >
+                              {entitlements.linkText}
+                            </FelaComponent>
+                          </Fragment>
+                        </a>
                       </FelaComponent>
                     )}
                     <FelaComponent
@@ -205,6 +194,7 @@ class ChooseSlotStage extends React.Component {
                     >
                       <TextLink
                         href={organizationSubscription.url[host]}
+                        tagName="a"
                         onClick={() => {
                           // TODO: fix external url fetch
                           biAction({

@@ -68,8 +68,7 @@ class StageThankYou extends React.Component {
           const userAgent = this.state.hasNavigator
             ? navigator.userAgent.toLowerCase().match(/(iphone)|(android)/)
             : null;
-          const device =
-            userAgent && userAgent.length > 0 ? userAgent[0] : null;
+          const device = userAgent && userAgent.length > 0 ? userAgent[0] : null;
           console.log('device: ', device);
           return (
             <FelaComponent
@@ -95,21 +94,15 @@ class StageThankYou extends React.Component {
                 return (
                   <div className={className}>
                     {referringArticleID ? (
-                      <Query
-                        query={GET_ARTICLE_DATA}
-                        variables={{ id: referringArticleID, }}
-                      >
+                      <Query query={GET_ARTICLE_DATA} variables={{ id: referringArticleID, }}>
                         {({ data, loading, error, }) => (
                           <FelaComponent style={{ marginTop: '6rem', }}>
                             {loading || error ? null : (
                               <Fragment>
-                                <FelaComponent
-                                  style={{ display: 'block', }}
-                                  render="span"
-                                >
+                                <FelaComponent style={{ display: 'block', }} render="span">
                                   {backToArticle}
                                 </FelaComponent>
-                                <TextLink href={data.articleLinkData.url}>
+                                <TextLink href={data.articleLinkData.url} tagName="a">
                                   {data.articleLinkData.title}
                                 </TextLink>
                               </Fragment>
@@ -120,6 +113,7 @@ class StageThankYou extends React.Component {
                     ) : (
                       <FelaComponent>
                         <TextLink
+                          tagName="a"
                           miscStyles={{ fontWeight: 'bold', }}
                           href={backToHomePageHref[site]}
                         >
@@ -157,9 +151,7 @@ class StageThankYou extends React.Component {
                                     'primary'
                                   )} 50%, transparent 50%)`,
                                 },
-                                extend: [
-                                  theme.mq({ from: 's', }, { display: 'none', }),
-                                ],
+                                extend: [ theme.mq({ from: 's', }, { display: 'none', }), ],
                               })}
                             >
                               <FelaComponent
@@ -169,9 +161,7 @@ class StageThankYou extends React.Component {
                                   extend: [ theme.type(1), ],
                                 })}
                               >
-                                <FelaComponent>
-                                  {downloadAppText[site]}
-                                </FelaComponent>
+                                <FelaComponent>{downloadAppText[site]}</FelaComponent>
                                 <AboveBlockLink>
                                   {({ className, }) => (
                                     <span className={className}>
@@ -189,9 +179,7 @@ class StageThankYou extends React.Component {
                                   )}
                                 </AboveBlockLink>
                               </FelaComponent>
-                              <FelaComponent
-                                style={{ zIndex: 1, alignSelf: 'flex-end', }}
-                              >
+                              <FelaComponent style={{ zIndex: 1, alignSelf: 'flex-end', }}>
                                 <Image
                                   hasWrapper={false}
                                   data={{
