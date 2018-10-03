@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import Comment from './Comment.js';
 import DfpConfProvider from '../Ads/DynamicAds/DfpConfProvider';
+import getSectionPairFromLineage from '../Ads/utils/getSectionsFromLineage.js';
 import DynamicAdSlot from '../Ads/DynamicAds/DynamicAdSlot';
 
 /**
  * Defines how far away ads can be inserted (every X comments)
  * @param {number} - adSpacing - The minimal number of comments between each ad position
  */
-const AD_SPACING = 3;
+const AD_SPACING = 5;
 const MAX_AD_SLOTS = 5;
 
 const wrapperStyle = theme => ({
@@ -35,8 +36,10 @@ const renderAdSlot = idx => (
         if (slotConfig) {
           const network = data.dfpConfig.adManagerConfig.network;
           const adUnitBase = data.dfpConfig.adManagerConfig.adUnitBase;
-          const path = ''; // TODO: figure out what supposed to be here
-          const adUnit = `${network}/${adUnitBase}/${adSlotId}/${adSlotId}_section/${path}`;
+          const sectionIndicator = `${adSlotId}_section`;
+          const [ section, subSection, ] = getSectionPairFromLineage(data.lineage)
+            .map(s => s.toLowerCase());
+          const adUnit = `${network}/${adUnitBase}/${adSlotId}/${sectionIndicator}/${sectionIndicator}.${section}/${sectionIndicator}.${section}.${subSection}`;
           return (
             <DynamicAdSlot id={adSlotId} adUnit={adUnit} sizes={slotConfig.adSizeMapping} />
           );

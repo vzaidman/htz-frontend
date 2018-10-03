@@ -64,4 +64,8 @@ const DfpConfProvider = props => (
   </NoSSR>
 );
 
+DfpConfProvider.propTypes = {
+  children: PropTypes.func.isRequired,
+};
+
 export default DfpConfProvider;
