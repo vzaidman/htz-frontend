@@ -114,7 +114,7 @@ const RootQuery = new GraphQLObjectType({
         }),
       }),
       resolve(parentValue, { id, }, { dataSources, }) {
-        return dataSources.ArticleLinkDataAPI.getArticleLinkData(id);
+        return dataSources.PurchasePageAPI.getArticleLinkData(id);
       },
     },
     couponProduct: {
