@@ -44,9 +44,8 @@ const DfpConfProvider = props => (
           if (loading || error) {
             return null;
           }
-          const path = data.articleId;
           return (
-            <Query query={getDfpConfigQuery} variables={{ path: path, }}>
+            <Query query={getDfpConfigQuery} variables={{ path: `/${data.articleId}`, }}>
               {
                 ({ data, loading, error, }) => {
                   if (error) {
