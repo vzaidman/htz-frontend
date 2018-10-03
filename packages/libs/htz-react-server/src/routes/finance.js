@@ -20,7 +20,8 @@ export default function finance(app, server) {
   /* Bond Quote */
   server.get('/bonds/:id', (req, res) => {
     const query = {
-      id: req.params.id,
+      assetId: req.params.id,
+      section: 'bonds',
     };
     return app.render(req, res, '/asset/bonds', query);
   });
@@ -28,7 +29,8 @@ export default function finance(app, server) {
   /* Crypto Quote */
   server.get('/crypto/:id', (req, res) => {
     const query = {
-      id: req.params.id,
+      assetId: req.params.id,
+      section: 'crypto',
     };
     return app.render(req, res, '/asset/crypto', query);
   });
@@ -36,7 +38,8 @@ export default function finance(app, server) {
   /* Exchange Traded Funds Quote */
   server.get('/etf/:id', (req, res) => {
     const query = {
-      id: req.params.id,
+      assetId: req.params.id,
+      section: 'etf',
     };
     return app.render(req, res, '/asset/etf', query);
   });
@@ -44,7 +47,8 @@ export default function finance(app, server) {
   /* Exchange Quote */
   server.get('/exchange/:id', (req, res) => {
     const query = {
-      id: req.params.id,
+      assetId: req.params.id,
+      section: 'exchange',
     };
     return app.render(req, res, '/asset/exchange', query);
   });
@@ -52,7 +56,8 @@ export default function finance(app, server) {
   /* Indices Quote */
   server.get('/indices/:id', (req, res) => {
     const query = {
-      id: req.params.id,
+      assetId: req.params.id,
+      section: 'indices',
     };
     return app.render(req, res, '/asset/indices', query);
   });
@@ -60,7 +65,8 @@ export default function finance(app, server) {
   /* Mutual Funds Quote */
   server.get('/mtf/:id', (req, res) => {
     const query = {
-      id: req.params.id,
+      assetId: req.params.id,
+      section: 'mtf',
     };
     return app.render(req, res, '/asset/mtf', query);
   });
@@ -68,7 +74,8 @@ export default function finance(app, server) {
   /* Options Quote */
   server.get('/options/:id', (req, res) => {
     const query = {
-      id: req.params.id,
+      assetId: req.params.id,
+      section: 'options',
     };
     return app.render(req, res, '/asset/options', query);
   });
@@ -76,7 +83,8 @@ export default function finance(app, server) {
   /* Stock Quote */
   server.get('/stocks/:id', (req, res) => {
     const query = {
-      id: req.params.id,
+      assetId: req.params.id,
+      section: 'stocks',
     };
     return app.render(req, res, '/asset/stocks', query);
   });
@@ -84,26 +92,66 @@ export default function finance(app, server) {
   /* SECTION PAGES */
 
   /* Bond Page */
-  server.get('/bonds', (req, res) => app.render(req, res, '/section/bonds'));
+  server.get('/bonds', (req, res) => {
+    const query = {
+      section: 'bonds',
+    };
+    return app.render(req, res, '/section/bonds', query);
+  });
 
   /* Crypto Page */
-  server.get('/crypto', (req, res) => app.render(req, res, '/section/crypto'));
+  server.get('/crypto', (req, res) => {
+    const query = {
+      section: 'crypto',
+    };
+    return app.render(req, res, '/section/crypto', query);
+  });
 
   /* Exchange Traded Funds Page */
-  server.get('/etf', (req, res) => app.render(req, res, '/section/etf'));
+  server.get('/etf', (req, res) => {
+    const query = {
+      section: 'etf',
+    };
+    return app.render(req, res, '/section/etf', query);
+  });
 
   /* Exchange Page */
-  server.get('/exchange', (req, res) => app.render(req, res, '/section/exchange'));
+  server.get('/exchange', (req, res) => {
+    const query = {
+      section: 'exchange',
+    };
+    return app.render(req, res, '/section/exchange', query);
+  });
 
   /* Indices Page */
-  server.get('/indices', (req, res) => app.render(req, res, '/section/indices'));
+  server.get('/indices', (req, res) => {
+    const query = {
+      section: 'indices',
+    };
+    return app.render(req, res, '/section/indices', query);
+  });
 
   /* Mutual Funds Page */
-  server.get('/mtf', (req, res) => app.render(req, res, '/section/mtf'));
+  server.get('/mtf', (req, res) => {
+    const query = {
+      section: 'mtf',
+    };
+    return app.render(req, res, '/section/mtf', query);
+  });
 
   /* Options Page */
-  server.get('/options', (req, res) => app.render(req, res, '/section/options'));
+  server.get('/options', (req, res) => {
+    const query = {
+      section: 'options',
+    };
+    return app.render(req, res, '/section/options', query);
+  });
 
   /* Stock Page */
-  server.get('/stocks', (req, res) => app.render(req, res, '/section/stocks'));
+  server.get('/stocks', (req, res) => {
+    const query = {
+      section: 'stocks',
+    };
+    return app.render(req, res, '/section/stocks', query);
+  });
 }

@@ -61,7 +61,7 @@ type SortIconsProps = {
 
 type TableLinkProps = {
   content: string,
-  id: string,
+  assetId: string,
   type: string,
   allowTab?: boolean,
 };
@@ -106,7 +106,7 @@ const SortIcons: SortIconsProps => Node = ({ active, sortOrder, }) => (
 );
 
 // eslint-disable-next-line react/prop-types
-const TableLink: TableLinkProps => Node = ({ content, id, type, allowTab, }) => (
+const TableLink: TableLinkProps => Node = ({ content, assetId, type, allowTab, }) => (
   <FelaComponent
     style={{
       display: 'inline-block',
@@ -115,12 +115,13 @@ const TableLink: TableLinkProps => Node = ({ content, id, type, allowTab, }) => 
     render={({ className, }) => (
       <Link
         href={{
-          pathname: `/${type || ''}`,
+          pathname: `/asset/${type}`,
           query: {
-            id,
+            assetId,
+            section: type,
           },
         }}
-        as={`/${type || ''}/${id || ''}`}
+        as={`/${type}/${assetId}`}
       >
         <a
           {...!allowTab ? { tabIndex: -1, } : {}}
@@ -261,14 +262,14 @@ class SortableTable extends React.Component<Props, State> {
                         <TableLink
                           allowTab
                           content={stock.name}
-                          id={stock.id}
+                          assetId={stock.id}
                           type={type}
                         />
                       </TdComponent>
                       <TdComponent>
                         <TableLink
                           content={numToString(stock.value || stock.symbol)}
-                          id={stock.id}
+                          assetId={stock.id}
                           type={type}
                         />
                       </TdComponent>
@@ -287,7 +288,7 @@ class SortableTable extends React.Component<Props, State> {
                             ${Number(stock.changePercentage || stock.arbGap) > 0 ? '+' : '-'}
                             ${numToString(Math.abs(Number(stock.changePercentage || stock.arbGap)))}%
                           `}
-                          id={stock.id}
+                          assetId={stock.id}
                           type={type}
                         />
                       </TdComponent>

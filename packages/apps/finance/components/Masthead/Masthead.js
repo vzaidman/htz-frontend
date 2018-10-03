@@ -1,9 +1,11 @@
 // @flow
 import React from 'react';
-import type { StatelessFunctionalComponent, } from 'react';
-import { FelaComponent, } from 'react-fela';
-import { Masthead, IconMarkerLogo, HtzLink, } from '@haaretz/htz-components';
+import Link from 'next/link';
 import config from 'config';
+import { FelaComponent, } from 'react-fela';
+import { Masthead, IconMarkerLogo, } from '@haaretz/htz-components';
+
+import type { StatelessFunctionalComponent, } from 'react';
 
 const connectionPreset: string = config.get('connectionPreset');
 const getMenuId = () => {
@@ -36,9 +38,16 @@ const Logo: StatelessFunctionalComponent<void> = () => (
       ],
     })}
     render={({ className, }) => (
-      <HtzLink href="/" className={className}>
-        <IconMarkerLogo size={4} />
-      </HtzLink>
+      <Link
+        href={{
+          pathname: '/index',
+        }}
+        as="/"
+      >
+        <a className={className}>
+          <IconMarkerLogo size={4} />
+        </a>
+      </Link>
     )}
   />
 );

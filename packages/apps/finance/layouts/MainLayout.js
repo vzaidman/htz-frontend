@@ -18,6 +18,7 @@ import { tmTheme, } from '@haaretz/tm-theme';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import Masthead from '../components/Masthead/Masthead';
+import NavigationBar from '../components/NavigationBar/NavigationBar';
 /*
 const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
   loading: () => null,
@@ -27,9 +28,11 @@ const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
 
 type Props = {
   children: ChildrenArray<Element<any>>,
+  section?: string,
+  assetId?: string,
 };
 
-function MainLayout({ children, }: Props): Node {
+function MainLayout({ children, section, assetId, }: Props): Node {
   return (
     <Fragment>
       <Head>
@@ -54,6 +57,7 @@ function MainLayout({ children, }: Props): Node {
             <LayoutContainer
               bgc="transparent"
             >
+              <NavigationBar section={section} assetId={assetId} />
               {children}
             </LayoutContainer>
           </FelaComponent>

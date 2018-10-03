@@ -9,12 +9,13 @@ type Props = {
   url: {
     pathname: string,
     query: {
-      id: string,
+      assetId: string,
+      section: string,
     },
   },
 };
 
-function crypto({ url: { query: { id, }, }, }: Props): Node {
+function crypto({ url: { query: { assetId, }, }, }: Props): Node {
   return (
     <MainLayout>
       <h1>Crypto Quote</h1>

@@ -167,7 +167,8 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ asset, miscStyles, 
             href={{
               pathname: type ? `/asset/${type}` : '/',
               query: {
-                id,
+                assetId: id,
+                section: type,
               },
             }}
             as={`/${type || ''}/${id || ''}`}

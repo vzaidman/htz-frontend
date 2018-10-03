@@ -9,12 +9,13 @@ type Props = {
   url: {
     pathname: string,
     query: {
-      id: string,
+      assetId: string,
+      section: string,
     },
   },
 };
 
-function indices({ url: { query: { id, }, }, }: Props): Node {
+function indices({ url: { query: { assetId, }, }, }: Props): Node {
   return (
     <MainLayout>
       <h1>Indices Quote</h1>

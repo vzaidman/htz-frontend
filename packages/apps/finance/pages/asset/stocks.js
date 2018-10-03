@@ -20,8 +20,8 @@ import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/Re
 import ShareHoldersTable from '../../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
 
 const StockQuery: DocumentNode = gql`
-  query StockData($id: String!){
-    stockData(id: $id){
+  query StockData($assetId: String!){
+    stockData(assetId: $assetId){
       name
       value
       changePercentage
@@ -53,17 +53,18 @@ type Props = {
   url: {
     pathname: string,
     query: {
-      id: string,
+      assetId: string,
+      section: string,
     },
   },
 };
 
-function stocks({ url: { query: { id, }, }, }: Props): Node {
+function stocks({ url: { query: { assetId, section, }, }, }: Props): Node {
   return (
-    <MainLayout>
+    <MainLayout section={section} assetId={assetId} >
       <Query
         query={StockQuery}
-        variables={{ id, }}
+        variables={{ assetId, }}
       >
         {({ loading, error, data, }) => {
           if (error) return null;
@@ -122,7 +123,7 @@ function stocks({ url: { query: { id, }, }, }: Props): Node {
                   </PageRow>
                   <PageRow>
                     <GraphController
-                      selectedStockId={id}
+                      selectedStockId={assetId}
                       width={900}
                     />
                   </PageRow>
@@ -141,7 +142,7 @@ function stocks({ url: { query: { id, }, }, }: Props): Node {
                           title="נתוני המסחר"
                         >
                           <QuoteTable
-                            id={id}
+                            id={assetId}
                             tradingStatus
                             fixed
                             fields={[
@@ -236,7 +237,7 @@ function stocks({ url: { query: { id, }, }, }: Props): Node {
                           miscStyles={{ marginBottom: '2rem', }}
                         >
                           <QuoteTable
-                            id={id}
+                            id={assetId}
                             fields={[
                               { name: 'peRatio', display: 'מכפיל רווח', },
                               { name: 'pbRatio', display: 'מכפיל הון', },

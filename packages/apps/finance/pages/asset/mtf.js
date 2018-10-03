@@ -9,12 +9,13 @@ type Props = {
   url: {
     pathname: string,
     query: {
-      id: string,
+      assetId: string,
+      section: string,
     },
   },
 };
 
-function mtf({ url: { query: { id, }, }, }: Props): Node {
+function mtf({ url: { query: { assetId, }, }, }: Props): Node {
   return (
     <MainLayout>
       <h1>Mutual Funds Quote</h1>

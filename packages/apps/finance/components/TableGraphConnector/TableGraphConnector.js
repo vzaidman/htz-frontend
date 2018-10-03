@@ -79,7 +79,8 @@ class TableGraphConnector extends React.Component<Props, State> {
                 href={{
                   pathname: `/asset/${type || ''}`,
                   query: {
-                    id,
+                    assetId: id,
+                    section: type,
                   },
                 }}
                 as={`/${type || ''}/${id || ''}`}

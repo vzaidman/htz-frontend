@@ -156,20 +156,20 @@ const RootQuery = new GraphQLObjectType({
     stockData: {
       type: FinanceStock,
       args: {
-        id: { type: new GraphQLNonNull(GraphQLString), },
+        assetId: { type: new GraphQLNonNull(GraphQLString), },
       },
-      resolve(parentValue, { id, }, { dataSources, }) {
-        return dataSources.FinanceAPI.getStock(id);
+      resolve(parentValue, { assetId, }, { dataSources, }) {
+        return dataSources.FinanceAPI.getStock(assetId);
       },
     },
 
     bondData: {
       type: FinanceBond,
       args: {
-        id: { type: new GraphQLNonNull(GraphQLString), },
+        assetId: { type: new GraphQLNonNull(GraphQLString), },
       },
-      resolve(parentValue, { id, }, { dataSources, }) {
-        return dataSources.FinanceAPI.getBond(id);
+      resolve(parentValue, { assetId, }, { dataSources, }) {
+        return dataSources.FinanceAPI.getBond(assetId);
       },
     },
 

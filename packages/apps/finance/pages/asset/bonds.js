@@ -20,8 +20,8 @@ import ShareHoldersTable from '../../components/QuotePageComponents/ShareHolders
 import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/RelatedAssets';
 
 const StockQuery: DocumentNode = gql`
-  query BondData($id: String!){
-    bondData(id: $id){
+  query BondData($assetId: String!){
+    bondData(assetId: $assetId){
       name
       value
       changePercentage
@@ -53,17 +53,18 @@ type Props = {
   url: {
     pathname: string,
     query: {
-      id: string,
+      assetId: string,
+      section: string,
     },
   },
 };
 
-function bonds({ url: { query: { id, }, }, }: Props): Node {
+function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
   return (
-    <MainLayout>
+    <MainLayout section={section} >
       <Query
         query={StockQuery}
-        variables={{ id, }}
+        variables={{ assetId, }}
       >
         {({ loading, error, data, }) => {
           if (error) return null;
@@ -118,7 +119,7 @@ function bonds({ url: { query: { id, }, }, }: Props): Node {
                   </PageRow>
                   <PageRow>
                     <GraphController
-                      selectedStockId={id}
+                      selectedStockId={assetId}
                       width={900}
                     />
                   </PageRow>
@@ -137,7 +138,7 @@ function bonds({ url: { query: { id, }, }, }: Props): Node {
                           title="נתוני המסחר"
                         >
                           <QuoteTable
-                            id={id}
+                            id={assetId}
                             tradingStatus
                             fixed
                             fields={[
@@ -232,7 +233,7 @@ function bonds({ url: { query: { id, }, }, }: Props): Node {
                           width={1 / 3}
                         >
                           <QuoteTable
-                            id={id}
+                            id={assetId}
                             fields={[
                               { name: 'redemptionYield', display: 'תשואה לפדיון', },
                               { name: 'per', display: 'פארי', },
@@ -246,7 +247,7 @@ function bonds({ url: { query: { id, }, }, }: Props): Node {
                           width={1 / 3}
                         >
                           <QuoteTable
-                            id={id}
+                            id={assetId}
                             fields={[
                               { name: 'classification', display: 'סיווג', },
                               { name: 'issueDate', display: 'תאריך הנפקה', type: 'date', },
@@ -261,7 +262,7 @@ function bonds({ url: { query: { id, }, }, }: Props): Node {
                           width={1 / 3}
                         >
                           <QuoteTable
-                            id={id}
+                            id={assetId}
                             fields={[
                               { name: 'retailTax', display: 'מס ליחידים', },
                               { name: 'linkageType', display: 'סוג הצמדה', },
@@ -290,7 +291,7 @@ function bonds({ url: { query: { id, }, }, }: Props): Node {
                           miscStyles={{ marginBottom: '2rem', }}
                         >
                           <QuoteTable
-                            id={id}
+                            id={assetId}
                             fields={[
                               { name: 'peRatio', display: 'מכפיל רווח', },
                               { name: 'pbRatio', display: 'מכפיל הון', },

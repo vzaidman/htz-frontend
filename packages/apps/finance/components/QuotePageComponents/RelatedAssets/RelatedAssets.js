@@ -54,9 +54,10 @@ const RelatedAssets: StatelessFunctionalComponent<Props> =
           >
             <Link
               href={{
-                pathname: `/asset/${type}/${id}`,
+                pathname: `/asset/${type}`,
                 query: {
-                  id,
+                  assetId: id,
+                  section: type,
                 },
               }}
               as={`/${type}/${id}`}

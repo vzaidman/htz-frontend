@@ -9,12 +9,13 @@ type Props = {
   url: {
     pathname: string,
     query: {
-      id: string,
+      assetId: string,
+      section: string,
     },
   },
 };
 
-function options({ url: { query: { id, }, }, }: Props): Node {
+function options({ url: { query: { assetId, }, }, }: Props): Node {
   return (
     <MainLayout>
       <h1>Options Quote</h1>
