@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import { LayoutContainer, } from '@haaretz/htz-components';
 
 import type { Node, } from 'react';
 
@@ -18,11 +17,7 @@ type Props = {
 function options({ url: { query: { id, }, }, }: Props): Node {
   return (
     <MainLayout>
-      <LayoutContainer
-        bgc="transparent"
-      >
-        <h1>Options Quote</h1>
-      </LayoutContainer>
+      <h1>Options Quote</h1>
     </MainLayout>
   );
 }

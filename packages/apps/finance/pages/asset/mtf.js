@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import { LayoutContainer, } from '@haaretz/htz-components';
 
 import type { Node, } from 'react';
 
@@ -18,11 +17,7 @@ type Props = {
 function mtf({ url: { query: { id, }, }, }: Props): Node {
   return (
     <MainLayout>
-      <LayoutContainer
-        bgc="transparent"
-      >
-        <h1>Mutual Funds Quote</h1>
-      </LayoutContainer>
+      <h1>Mutual Funds Quote</h1>
     </MainLayout>
   );
 }

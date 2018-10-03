@@ -8,6 +8,7 @@ import {
   AriaLive,
   DeviceTypeInjector,
   GoogleAnalytics,
+  LayoutContainer,
   RouteChangeListener,
   ScrollListener,
   UserInjector,
@@ -50,7 +51,11 @@ function MainLayout({ children, }: Props): Node {
               backgroundColor: theme.color('neutral', '-6'),
             })}
           >
-            {children}
+            <LayoutContainer
+              bgc="transparent"
+            >
+              {children}
+            </LayoutContainer>
           </FelaComponent>
         </Fragment>
       </StyleProvider>
