@@ -34,6 +34,7 @@ const optOutStripStyle = theme => ({
   paddingTop: '1rem',
   paddingBottom: '1rem',
   backgroundColor: theme.color('primary'),
+  ...theme.mq({ until: 'm', }, { ...theme.type(-2), }),
 });
 
 // const closeButtonStyle = {
