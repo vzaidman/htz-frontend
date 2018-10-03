@@ -2,6 +2,7 @@
   "env": {
     "development": {
       "plugins": [
+        "babel-plugin-transform-flow-strip-types",
         [
           "lodash",
           {
@@ -20,6 +21,7 @@
     },
     "production": {
       "plugins": [
+        "babel-plugin-transform-flow-strip-types",
         [
           "lodash",
           {
@@ -37,6 +39,7 @@
       "presets": ["next/babel"]
     },
     "commonjs": {
+      "plugins": [ "babel-plugin-transform-flow-strip-types" ],
       "presets": [
         [
           "@babel/preset-env",
