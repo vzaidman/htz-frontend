@@ -46,7 +46,8 @@ type Props = {
   parentId?: string,
   assetsId?: Array<string>,
   type: string,
-  linkText: string,
+  linkText: ?string,
+  addLink: ?boolean,
 };
 
 type State = {
@@ -150,12 +151,16 @@ class SortableTable extends React.Component<Props, State> {
 
   state = {
     sortBy: null,
-    sortOrder: 'descend',
+    sortOrder: null,
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     return {
       sortBy: prevState.sortBy || nextProps.initialSort,
+      sortOrder: prevState.sortOrder ||
+        nextProps.fields.find((field: FieldType) => (
+          field.name === nextProps.initialSort
+        )).sortingOrder,
     };
   }
 
@@ -170,7 +175,7 @@ class SortableTable extends React.Component<Props, State> {
   };
 
   render(): Node {
-    const { miscStyles, fields, parentId, type, linkText, assetsId, } = this.props;
+    const { miscStyles, fields, parentId, type, linkText, assetsId, addLink, } = this.props;
     const { sortBy, sortOrder, } = this.state;
     return (
       <Query
@@ -296,17 +301,21 @@ class SortableTable extends React.Component<Props, State> {
                   ))}
                 </tbody>
               </FelaComponent>
-              <SectionLink
-                href={{
-                  pathname: `/${type || ''}`,
-                  query: {
-                    parentId,
-                  },
-                }}
-                as={`/${type || ''}/${parentId || ''}`}
-              >
-                <span>{linkText}</span>
-              </SectionLink>
+              {
+                addLink ?
+                  <SectionLink
+                    href={{
+                      pathname: `/${type || ''}`,
+                      query: {
+                        parentId,
+                      },
+                    }}
+                    as={`/${type || ''}/${parentId || ''}`}
+                  >
+                    <span>{linkText || ''}</span>
+                  </SectionLink>
+                  : null
+              }
             </Fragment>
           );
         }}
