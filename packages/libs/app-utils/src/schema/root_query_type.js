@@ -182,6 +182,7 @@ const RootQuery = new GraphQLObjectType({
         count: { type: GraphQLInt, },
         sortBy: { type: GraphQLString, },
         sortOrder: { type: GraphQLString, },
+        offset: { type: GraphQLInt, },
       },
       resolve(parentValue, args, { dataSources, }) {
         return dataSources.FinanceAPI.getTable(args);

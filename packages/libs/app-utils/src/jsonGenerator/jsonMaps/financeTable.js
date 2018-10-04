@@ -146,7 +146,10 @@ const tableMap: Object = new Map([
         options: assetObject,
       },
     ],
-    args.count,
+    args.offset !== null && args.count !== args.offset
+      ? args.count
+      : number.int({ max: 50, min: 5, })
+    ,
     args,
   ), ],
 ]);

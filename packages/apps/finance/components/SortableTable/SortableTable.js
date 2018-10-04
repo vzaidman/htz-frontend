@@ -1,11 +1,15 @@
 import React, { Fragment, } from 'react';
-import type { Node, } from 'react';
-import type { DocumentNode, } from 'graphql/language/ast';
 import Link from 'next/link';
+import gql from 'graphql-tag';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
-import gql from 'graphql-tag';
+import { IconBack, } from '@haaretz/htz-components';
+
+import type { StyleProps, } from '@haaretz/htz-css-tools';
+import type { Node, } from 'react';
+import type { DocumentNode, } from 'graphql/language/ast';
 import type { StockData, } from '../StockTable/StockTable';
+
 import { TdComponent, } from '../StockTable/StockTable';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import SectionLink from '../SectionLink/SectionLink';
@@ -16,14 +20,16 @@ const TableQuery: (Array<string>) => DocumentNode = fields => gql`
     $assetsId: [String],
     $count: Int!,
     $sortBy: String!,
-    $sortOrder: String!
+    $sortOrder: String!,
+    $offset: Int!
   ) {
     financeTable(
       parentId: $parentId,
       assetsId: $assetsId,
-      count: $count
-      sortBy: $sortBy
-      sortOrder: $sortOrder
+      count: $count,
+      sortBy: $sortBy,
+      sortOrder: $sortOrder,
+      offset: $offset
     ) {
       assets {
         id
@@ -36,7 +42,10 @@ const TableQuery: (Array<string>) => DocumentNode = fields => gql`
 
 type FieldType = {
   name: string,
+  display: string,
   sortingOrder: 'ascend' | 'descend',
+  style?: Object => StyleProps,
+  content: Object => string,
 }
 
 type Props = {
@@ -49,9 +58,12 @@ type Props = {
   linkText: ?string,
   addLink: ?boolean,
   count?: number,
+  count?: number,
+  pagination: ?boolean,
 };
 
 type State = {
+  pagination: boolean,
   sortBy?: string,
   sortOrder: string,
 };
@@ -173,6 +185,7 @@ class SortableTable extends React.Component<Props, State> {
       assetsId,
       addLink,
       count,
+      pagination,
     } = this.props;
     const { sortBy, sortOrder, } = this.state;
     return (
@@ -184,9 +197,10 @@ class SortableTable extends React.Component<Props, State> {
           count: assetsId ? assetsId.length : count,
           sortBy,
           sortOrder,
+          offset: 0,
         }}
       >
-        {({ loading, error, data: { financeTable: { assets, }, }, }) => {
+        {({ loading, error, data: { financeTable: { assets, }, }, data, fetchMore, }) => {
           if (error) return null;
           if (loading) return null;
           return (
@@ -281,6 +295,64 @@ class SortableTable extends React.Component<Props, State> {
                   >
                     <span>{linkText || ''}</span>
                   </SectionLink>
+                  : null
+              }
+              {
+                pagination && assets.length <= count ?
+                  <FelaComponent
+                    style={theme => ({
+                      ...theme.type(-2),
+                      backgroundColor: theme.color('neutral', '-5'),
+                      color: theme.color('neutral', '-1'),
+                      display: 'block',
+                      fontWeight: '700',
+                      paddingBottom: '1rem',
+                      paddingTop: '1rem',
+                      textAlign: 'center',
+                      width: '100%',
+                      extend: [
+                        ...(miscStyles
+                          ? parseStyleProps(miscStyles, theme.mq, theme.type)
+                          : []),
+                      ],
+                    })}
+                    render={({ className, }) => (
+                      <button
+                        className={className}
+                        onClick={() => (
+                          fetchMore(
+                            {
+                              variables: {
+                                offset: count || assets.length,
+                              },
+                              updateQuery: (prev, { fetchMoreResult, }) => (
+                                fetchMoreResult
+                                  ? Object.assign({}, prev, {
+                                    financeTable: {
+                                      assets: [
+                                        ...prev.financeTable.assets,
+                                        ...fetchMoreResult.financeTable.assets,
+                                      ],
+                                      __typename: 'FinanceTable',
+                                    },
+                                  })
+                                  : prev
+                              ),
+                            }
+                          )
+                        )}
+                      >
+                        טען עוד
+                        <IconBack
+                          size={-1}
+                          miscStyles={{
+                            marginStart: '1rem',
+                            transform: 'rotate(270deg)',
+                          }}
+                        />
+                      </button>
+                    )}
+                  />
                   : null
               }
             </Fragment>
