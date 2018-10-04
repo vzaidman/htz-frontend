@@ -48,6 +48,7 @@ type Props = {
   type: string,
   linkText: ?string,
   addLink: ?boolean,
+  count?: number,
 };
 
 type State = {
@@ -66,19 +67,6 @@ type TableLinkProps = {
   type: string,
   allowTab?: boolean,
 };
-
-const headerTitles: Object = new Map([
-  [ 'name', 'שם נייר', ],
-  [ 'value', 'שער אחרון', ],
-  [ 'changePercentage', '% שינוי', ],
-  [ 'symbol', 'סימול בוול סטריט', ],
-  [ 'arbGap', '% פער', ],
-]);
-
-const numToString: number => string = num => (
-  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
-  // num
-);
 
 // eslint-disable-next-line react/prop-types
 const SortIcons: SortIconsProps => Node = ({ active, sortOrder, }) => (
@@ -147,6 +135,7 @@ class SortableTable extends React.Component<Props, State> {
     miscStyles: null,
     assetsId: null,
     parentId: null,
+    count: 5,
   };
 
   state = {
@@ -175,7 +164,16 @@ class SortableTable extends React.Component<Props, State> {
   };
 
   render(): Node {
-    const { miscStyles, fields, parentId, type, linkText, assetsId, addLink, } = this.props;
+    const {
+      miscStyles,
+      fields,
+      parentId,
+      type,
+      linkText,
+      assetsId,
+      addLink,
+      count,
+    } = this.props;
     const { sortBy, sortOrder, } = this.state;
     return (
       <Query
@@ -183,7 +181,7 @@ class SortableTable extends React.Component<Props, State> {
         variables={{
           parentId,
           assetsId,
-          count: assetsId ? assetsId.length : 5,
+          count: assetsId ? assetsId.length : count,
           sortBy,
           sortOrder,
         }}
@@ -234,7 +232,7 @@ class SortableTable extends React.Component<Props, State> {
                                   active={sortBy === field.name}
                                   sortOrder={sortOrder}
                                 />
-                                {headerTitles.get(field.name)}
+                                {field.display}
                               </FelaComponent>
                             </button>
                           )}
@@ -254,49 +252,18 @@ class SortableTable extends React.Component<Props, State> {
                       })}
                       render="tr"
                     >
-                      <TdComponent
-                        miscStyles={{
-                          fontWeight: '700',
-                          maxWidth: '17rem',
-                          overflow: 'hidden',
-                          paddingStart: '2rem',
-                          textOverflow: 'ellipsis',
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        <TableLink
-                          allowTab
-                          content={stock.name}
-                          assetId={stock.id}
-                          type={type}
-                        />
-                      </TdComponent>
-                      <TdComponent>
-                        <TableLink
-                          content={numToString(stock.value || stock.symbol)}
-                          assetId={stock.id}
-                          type={type}
-                        />
-                      </TdComponent>
-                      <TdComponent
-                        miscStyles={{
-                        color: Number(stock.changePercentage || stock.arbGap) < 0 ? 'red' : 'green',
-                        direction: 'ltr',
-                        fontWeight: '700',
-                        paddingEnd: '2rem',
-                        position: 'relative',
-                        textAlign: 'start',
-                      }}
-                      >
-                        <TableLink
-                          content={`
-                            ${Number(stock.changePercentage || stock.arbGap) > 0 ? '+' : '-'}
-                            ${numToString(Math.abs(Number(stock.changePercentage || stock.arbGap)))}%
-                          `}
-                          assetId={stock.id}
-                          type={type}
-                        />
-                      </TdComponent>
+                      {fields.map(field => (
+                        <TdComponent
+                          {...field.style ? { miscStyles: field.style(stock), } : {}}
+                        >
+                          <TableLink
+                            allowTab
+                            content={field.value(stock)}
+                            assetId={stock.id}
+                            type={type}
+                          />
+                        </TdComponent>
+                      ))}
                     </FelaComponent>
                   ))}
                 </tbody>

@@ -11,6 +11,10 @@ import RowItem from '../components/RowItem/RowItem';
 import SortableTable from '../components/SortableTable/SortableTable';
 import TabbedGraph from '../components/TabbedGraph/TabbedGraph';
 
+const numToString: number => string = num => (
+  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+);
+
 function index(): Node {
   return (
     <MainLayout>
@@ -36,9 +40,43 @@ function index(): Node {
                       linkText="לבורסת תל אביב"
                       addLink
                       fields={[
-                        { name: 'name', sortingOrder: 'ascend', },
-                        { name: 'value', sortingOrder: 'descend', },
-                        { name: 'changePercentage', sortingOrder: 'descend', },
+                        {
+                          name: 'name',
+                          display: 'שם נייר',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'value',
+                          display: 'שער אחרון',
+                          sortingOrder: 'descend',
+                          value: ({ value, }) => numToString(value),
+                        },
+                        {
+                          name: 'changePercentage',
+                          display: '% שינוי',
+                          sortingOrder: 'descend',
+                          style: ({ changePercentage, }) => ({
+                            color: changePercentage < 0 ? 'red' : 'green',
+                            direction: 'ltr',
+                            fontWeight: '700',
+                            paddingEnd: '2rem',
+                            position: 'relative',
+                            textAlign: 'start',
+                          }),
+                          value: ({ changePercentage, }) => `
+                            ${changePercentage > 0 ? '+' : '-'}
+                            ${numToString(Math.abs(changePercentage))}%
+                          `,
+                        },
                       ]}
                       initialSort="value"
                     />
@@ -66,9 +104,43 @@ function index(): Node {
                       linkText="לבורסת וול סטריט"
                       addLink
                       fields={[
-                        { name: 'name', sortingOrder: 'ascend', },
-                        { name: 'value', sortingOrder: 'descend', },
-                        { name: 'changePercentage', sortingOrder: 'descend', },
+                        {
+                          name: 'name',
+                          display: 'שם נייר',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'value',
+                          display: 'שער אחרון',
+                          sortingOrder: 'descend',
+                          value: ({ value, }) => numToString(value),
+                        },
+                        {
+                          name: 'changePercentage',
+                          display: '% שינוי',
+                          sortingOrder: 'descend',
+                          style: ({ changePercentage, }) => ({
+                            color: changePercentage < 0 ? 'red' : 'green',
+                            direction: 'ltr',
+                            fontWeight: '700',
+                            paddingEnd: '2rem',
+                            position: 'relative',
+                            textAlign: 'start',
+                          }),
+                          value: ({ changePercentage, }) => `
+                            ${changePercentage > 0 ? '+' : '-'}
+                            ${numToString(Math.abs(changePercentage))}%
+                          `,
+                        },
                       ]}
                       initialSort="value"
                     />
@@ -84,9 +156,43 @@ function index(): Node {
                       linkText="לרשימה המלאה"
                       addLink
                       fields={[
-                        { name: 'name', sortingOrder: 'ascend', },
-                        { name: 'symbol', sortingOrder: 'ascend', },
-                        { name: 'arbGap', sortingOrder: 'descend', },
+                        {
+                          name: 'name',
+                          display: 'שם נייר',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'symbol',
+                          display: 'סימול בוול סטריט',
+                          sortingOrder: 'ascend',
+                          value: ({ symbol, }) => symbol,
+                        },
+                        {
+                          name: 'arbGap',
+                          display: '% פער',
+                          sortingOrder: 'descend',
+                          style: ({ arbGap, }) => ({
+                            color: arbGap < 0 ? 'red' : 'green',
+                            direction: 'ltr',
+                            fontWeight: '700',
+                            paddingEnd: '2rem',
+                            position: 'relative',
+                            textAlign: 'start',
+                          }),
+                          value: ({ arbGap, }) => `
+                            ${arbGap > 0 ? '+' : '-'}
+                            ${numToString(Math.abs(arbGap))}%
+                          `,
+                        },
                       ]}
                       initialSort="arbGap"
                     />
@@ -106,9 +212,43 @@ function index(): Node {
                       linkText="למדור מטבעות דיגיטליים"
                       addLink
                       fields={[
-                        { name: 'name', sortingOrder: 'ascend', },
-                        { name: 'value', sortingOrder: 'descend', },
-                        { name: 'changePercentage', sortingOrder: 'descend', },
+                        {
+                          name: 'name',
+                          display: 'שם נייר',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'value',
+                          display: 'שער אחרון',
+                          sortingOrder: 'descend',
+                          value: ({ value, }) => numToString(value),
+                        },
+                        {
+                          name: 'changePercentage',
+                          display: '% שינוי',
+                          sortingOrder: 'descend',
+                          style: ({ changePercentage, }) => ({
+                            color: changePercentage < 0 ? 'red' : 'green',
+                            direction: 'ltr',
+                            fontWeight: '700',
+                            paddingEnd: '2rem',
+                            position: 'relative',
+                            textAlign: 'start',
+                          }),
+                          value: ({ changePercentage, }) => `
+                            ${changePercentage > 0 ? '+' : '-'}
+                            ${numToString(Math.abs(changePercentage))}%
+                          `,
+                        },
                       ]}
                       initialSort="value"
                     />
@@ -143,9 +283,43 @@ function index(): Node {
                       linkText="לתעודות סל"
                       addLink
                       fields={[
-                        { name: 'name', sortingOrder: 'ascend', },
-                        { name: 'symbol', sortingOrder: 'ascend', },
-                        { name: 'arbGap', sortingOrder: 'descend', },
+                        {
+                          name: 'name',
+                          display: 'שם נייר',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'symbol',
+                          display: 'סימול בוול סטריט',
+                          sortingOrder: 'ascend',
+                          value: ({ symbol, }) => symbol,
+                        },
+                        {
+                          name: 'arbGap',
+                          display: '% פער',
+                          sortingOrder: 'descend',
+                          style: ({ arbGap, }) => ({
+                            color: arbGap < 0 ? 'red' : 'green',
+                            direction: 'ltr',
+                            fontWeight: '700',
+                            paddingEnd: '2rem',
+                            position: 'relative',
+                            textAlign: 'start',
+                          }),
+                          value: ({ arbGap, }) => `
+                            ${arbGap > 0 ? '+' : '-'}
+                            ${numToString(Math.abs(arbGap))}%
+                          `,
+                        },
                       ]}
                       initialSort="arbGap"
                     />
@@ -161,9 +335,43 @@ function index(): Node {
                       linkText="לקרנות נאמנות"
                       addLink
                       fields={[
-                        { name: 'name', sortingOrder: 'ascend', },
-                        { name: 'value', sortingOrder: 'descend', },
-                        { name: 'changePercentage', sortingOrder: 'descend', },
+                        {
+                          name: 'name',
+                          display: 'שם נייר',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'value',
+                          display: 'שער אחרון',
+                          sortingOrder: 'descend',
+                          value: ({ value, }) => numToString(value),
+                        },
+                        {
+                          name: 'changePercentage',
+                          display: '% שינוי',
+                          sortingOrder: 'descend',
+                          style: ({ changePercentage, }) => ({
+                            color: changePercentage < 0 ? 'red' : 'green',
+                            direction: 'ltr',
+                            fontWeight: '700',
+                            paddingEnd: '2rem',
+                            position: 'relative',
+                            textAlign: 'start',
+                          }),
+                          value: ({ changePercentage, }) => `
+                            ${changePercentage > 0 ? '+' : '-'}
+                            ${numToString(Math.abs(changePercentage))}%
+                          `,
+                        },
                       ]}
                       initialSort="value"
                     />
