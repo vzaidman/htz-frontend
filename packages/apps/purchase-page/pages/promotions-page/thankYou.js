@@ -1,3 +1,4 @@
+/* global document */
 import React, { Fragment, } from 'react';
 import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
@@ -55,6 +56,14 @@ const ThankYouElement = ({ product, userMessage, }) => (
 );
 
 class StageThankYou extends React.Component {
+  componentDidMount() {
+    // remove 'HtzRusr' cookie or TmRusr
+    document.cookie =
+      'HtzRusr=; domain=.haaretz.co.il; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie =
+      'TmRusr=; domain=.themarker.com; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
+
   static getInitialProps({ url, }) {
     return { url, };
   }
