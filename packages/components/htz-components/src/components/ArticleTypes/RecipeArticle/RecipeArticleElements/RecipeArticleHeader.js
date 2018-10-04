@@ -142,6 +142,7 @@ function Header({
                     miscStyles={{
                       display: [ { until: 'l', value: 'flex', }, { from: 'l', value: 'none', }, ],
                       justifyContent: [ { from: 's', until: 'l', value: 'center', }, ],
+                      textAlign: [ { until: 's', value: 'start', }, ],
                     }}
                   />
                 </HeaderElementCont>
@@ -161,6 +162,7 @@ function Header({
                     miscStyles={{
                       marginTop: '4rem',
                       marginBottom: [ { until: 'm', value: 0, }, ],
+                      textAlign: 'start',
                     }}
                   />
                 ) : null}

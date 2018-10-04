@@ -8,7 +8,7 @@ import { borderBottom, borderTop, parseStyleProps, } from '@haaretz/htz-css-tool
 import IconClock from '../../../Icon/icons/IconClock';
 import IconLevels from '../../../Icon/icons/IconLevels';
 import IconPortions from '../../../Icon/icons/IconPortions';
-import Rating from './Rating';
+import Rating from '../../../Rating/Rating';
 import { stylesPropType, } from '../../../../propTypes/stylesPropType';
 
 import RATE_ARTICLE from '../queries/rate_article';
@@ -45,11 +45,26 @@ const checkAndWriteToLocalStorage = articleId => {
   }
   return true;
 };
+const checkUserAlreadyRated = articleId => {
+  const history = JSON.parse(localStorage.getItem('starRatingHistory')) || [];
+  return history.includes(articleId);
+};
+
+const cleanId = articleId => (articleId.startsWith('/') ? articleId.substring(1) : articleId);
 
 class RecipeRating extends Component {
   state = {
     userRating: null,
+    userAlreadyRated: false,
   };
+
+  componentDidMount() {
+    const cleanArticleId = cleanId(this.props.articleId);
+    if (checkUserAlreadyRated(cleanArticleId)) {
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({ userAlreadyRated: true, });
+    }
+  }
 
   render() {
     const {
@@ -68,7 +83,7 @@ class RecipeRating extends Component {
       ) / 2
       : Math.round((articleRankCounter / articleRankersCounter) * 2) / 2;
 
-    const cleanArticleId = articleId.startsWith('/') ? articleId.substring(1) : articleId;
+    const cleanArticleId = cleanId(articleId);
     return (
       <FelaComponent
         style={theme => ({
@@ -139,14 +154,17 @@ class RecipeRating extends Component {
                   <ApolloConsumer>
                     {client => (
                       <Rating
+                        disabled={this.state.userAlreadyRated}
                         newRating={starRanking => {
-                          const alreadyuserRating = checkAndWriteToLocalStorage(cleanArticleId);
-                          if (!alreadyuserRating) {
-                            client.query({
-                              query: RATE_ARTICLE,
-                              variables: { articleId: cleanArticleId, starRanking, },
-                            });
-                            this.setState({ userRating: starRanking, });
+                          if (!this.state.userAlreadyRated) {
+                            const userAlreadyRated = checkAndWriteToLocalStorage(cleanArticleId);
+                            if (!userAlreadyRated) {
+                              client.query({
+                                query: RATE_ARTICLE,
+                                variables: { articleId: cleanArticleId, starRanking, },
+                              });
+                              this.setState({ userRating: starRanking, userAlreadyRated: true, });
+                            }
                           }
                         }}
                         rating={reviewStars}
@@ -161,9 +179,11 @@ class RecipeRating extends Component {
                       }}
                       render="span"
                     >
-                      ({this.state.userRating
+                      (
+                      {this.state.userRating
                         ? articleRankersCounter + 1
-                        : articleRankersCounter + 0})
+                        : articleRankersCounter + 0}
+                      )
                     </FelaComponent>
                   ) : null}
                 </FelaComponent>
@@ -182,7 +202,7 @@ class RecipeRating extends Component {
                       alignItems: 'center',
                       extend: [
                         theme.type(-2),
-                        borderBottom('1px', 2, 'solid', theme.color('neutral', '-5')),
+                        borderBottom('1px', 1, 'solid', theme.color('neutral', '-5')),
                         borderTop('1px', 1, 'solid', 'transparent'),
                       ],
                     }}

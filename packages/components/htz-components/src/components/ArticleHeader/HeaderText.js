@@ -52,7 +52,8 @@ function HeaderText({ kicker, title, subtitle, className, }) {
               fontSize={[
                 { until: 'm', value: 3, },
                 { from: 'm', until: 'l', value: 4, },
-                { from: 'l', value: 5, },
+                { from: 'l', until: 'xl', value: 5, },
+                { from: 'xl', value: 6, },
               ]}
               text={kicker}
             />
