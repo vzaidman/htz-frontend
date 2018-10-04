@@ -20,6 +20,7 @@ export default class Embed extends React.Component {
     source: PropTypes.string.isRequired,
     embedType: PropTypes.string.isRequired,
     settings: PropTypes.shape({}),
+    showCaption: PropTypes.bool,
     inputTemplate: PropTypes.string.isRequired,
     caption: PropTypes.string,
     credit: PropTypes.string,
@@ -27,6 +28,7 @@ export default class Embed extends React.Component {
 
   static defaultProps = {
     settings: null,
+    showCaption: true,
     caption: null,
     credit: null,
   };
@@ -48,13 +50,13 @@ export default class Embed extends React.Component {
 
   render() {
     const EmbedType = this.state.component;
-    const { caption, credit, } = this.props;
+    const { caption, credit, showCaption, } = this.props;
     return EmbedType ? (
       <ErrorBoundary>
         <EmbedWrapper>
           <EmbedType {...this.props} />
         </EmbedWrapper>
-        {(caption || credit) && <Caption caption={caption} credit={credit} />}
+        {showCaption && (caption || credit) ? <Caption caption={caption} credit={credit} /> : null}
       </ErrorBoundary>
     ) : (
       <Debug>

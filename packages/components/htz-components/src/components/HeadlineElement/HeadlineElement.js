@@ -56,7 +56,7 @@ function HeadlineElement({ elementObj, miscStyles, }) {
       case 'com.tm.Video':
         return <Video {...elementObj} />;
       case 'embedElement':
-        return <Embed {...elementObj} />;
+        return <Embed showCaption={false} {...elementObj} />;
       default:
         return null;
     }
