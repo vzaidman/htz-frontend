@@ -126,6 +126,8 @@ class ArticleLayout extends React.Component {
                 publisher,
                 __typename: 'PageSchema',
               },
+              // place properties to reset in the client store when a new article is loaded
+              isOsakaDisplayed: false,
             },
           });
           const titleSEO = `${lineage[0].name} - ${lineage[1] ? lineage[1].name : ''} - ${
