@@ -148,7 +148,7 @@ function RecipeArticle({ articleId, slots, }) {
                                 return (
                                   <ArticleLayoutRow
                                     isArticleBody
-                                    hideMargineliaComponentUnderLBp={!!authors}
+                                    hideMargineliaComponentUnderLBp={false}
                                     margineliaComponent={
                                       <Fragment>
                                         {authors ? (
@@ -157,6 +157,9 @@ function RecipeArticle({ articleId, slots, }) {
                                             reportingFrom={reportingFrom}
                                             publishDate={header.pubDate}
                                             modifiedDate={header.modDate}
+                                            miscStyles={{
+                                              display: [ { until: 'l', value: 'none', }, ],
+                                            }}
                                           />
                                         ) : null}
 
@@ -167,25 +170,14 @@ function RecipeArticle({ articleId, slots, }) {
                                           totalCookTime={totalCookTime}
                                           numOfServings={numOfServings}
                                           recipeDifficultyLevel={recipeDifficultyLevel}
-                                          miscStyles={{ marginTop: '6rem', }}
+                                          miscStyles={{
+                                            marginTop: '6rem',
+                                            marginBottom: [ { until: 'l', value: '4rem', }, ],
+                                          }}
                                         />
                                       </Fragment>
                                     }
                                   >
-                                    <RecipeRating
-                                      articleId={articleId}
-                                      articleRankersCounter={articleRankersCounter}
-                                      articleRankCounter={articleRankCounter}
-                                      totalCookTime={totalCookTime}
-                                      numOfServings={numOfServings}
-                                      recipeDifficultyLevel={recipeDifficultyLevel}
-                                      miscStyles={{
-                                        marginTop: '6rem',
-                                        marginBottom: '4rem',
-                                        display: [ { from: 'l', value: 'none', }, ],
-                                      }}
-                                    />
-
                                     <ArticleBody body={body} />
                                     <Ingredients ingredientLists={ingredients} />
                                     <Instructions instructions={instructions} />
