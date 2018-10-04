@@ -147,7 +147,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                               { name: 'value', display: 'שער אחרון', },
                               { name: 'minValue', display: 'נמוך יומי', },
                               { name: 'maxValue', display: 'גבוה יומי', },
-                              { name: 'arbGap', display: 'סטיית תקן', },
+                              { name: 'standardDeviation', display: 'סטיית תקן', },
                             ]}
                           />
                         </RowItem>
