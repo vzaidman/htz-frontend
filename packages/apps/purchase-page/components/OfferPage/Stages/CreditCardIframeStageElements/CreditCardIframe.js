@@ -25,6 +25,7 @@ const styles = ({ iframeHeight, loading, theme, }) => ({
 
 class CreditCardIframe extends Component {
   static propTypes = {
+    biAction: PropTypes.func.isRequired,
     creditGuardSrc: PropTypes.string.isRequired,
     onMessage: PropTypes.func,
   };
@@ -92,7 +93,7 @@ class CreditCardIframe extends Component {
           break;
 
         case 'purchase_clicked':
-          console.log('purchase clicked');
+          this.props.biAction({ actionCode: 37, });
           break;
         default:
           console.log('default');
@@ -111,8 +112,7 @@ class CreditCardIframe extends Component {
       <Query query={GET_HOST_NAME}>
         {({ data: { hostname, }, }) => {
           const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-          const LoaderIcon =
-            host === 'themarker.com' ? IconTmLoader : IconHtzLoader;
+          const LoaderIcon = host === 'themarker.com' ? IconTmLoader : IconHtzLoader;
           return (
             <div>
               {this.state.loading ? (
@@ -131,14 +131,11 @@ class CreditCardIframe extends Component {
                   render={({ className, theme: { creditCardIframe, }, }) => (
                     <div>
                       <div className={className}>
-                        {this.state.errorMessage ||
-                          creditCardIframe.defaultErrorMessage}
+                        {this.state.errorMessage || creditCardIframe.defaultErrorMessage}
                       </div>
                       <Button
                         variant="primaryOpaque"
-                        onClick={() =>
-                          this.setState({ errorMessage: null, error: false, })
-                        }
+                        onClick={() => this.setState({ errorMessage: null, error: false, })}
                         miscStyles={{
                           marginTop: '6rem',
                           marginBottom: '25rem',
