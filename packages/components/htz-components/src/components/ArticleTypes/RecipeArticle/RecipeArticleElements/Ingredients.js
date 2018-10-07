@@ -39,8 +39,11 @@ function Ingredients({ ingredientLists, }) {
             )}
           />
           <Section>
-            {ingredientLists.map(list => (
-              <div key={list.header || list.ingredients[0]}>
+            {ingredientLists.map((list, idx) => (
+              <FelaComponent
+                style={{ marginTop: idx !== 0 ? '2rem' : 0, }}
+                key={list.header || list.ingredients[0]}
+              >
                 {list.header ? (
                   <FelaComponent
                     style={{
@@ -51,20 +54,29 @@ function Ingredients({ ingredientLists, }) {
                     render={({ className, }) => <H>{list.header}</H>}
                   />
                 ) : null}
-                <ul>
+                <FelaComponent style={{ paddingInlineStart: '1rem', }} render="ul">
                   {list.ingredients.map(ingredient => (
                     <FelaComponent
                       key={ingredient}
                       style={{
-                        listStyleType: 'disc',
-                        listStylePosition: 'inside',
+                        paddingInlineStart: '1em',
+                        ':before': {
+                          marginInlineStart: '-1em',
+                          marginInlineEnd: '0.5em',
+                          transform: 'translateY(-50%)',
+                          display: 'inline-block',
+                          content: '""',
+                          borderRadius: '50%',
+                          height: '1rem',
+                          width: '1rem',
+                          backgroundColor: theme.color('neutral', '-3'),
+                        },
                         extend: [ theme.type(-2), ],
                       }}
                       render="li"
                     >
                       <FelaComponent
                         style={{
-                          marginInlineStart: '-1rem',
                           extend: [ theme.type(0), ],
                         }}
                         render="span"
@@ -73,8 +85,8 @@ function Ingredients({ ingredientLists, }) {
                       </FelaComponent>
                     </FelaComponent>
                   ))}
-                </ul>
-              </div>
+                </FelaComponent>
+              </FelaComponent>
             ))}
           </Section>
         </Section>

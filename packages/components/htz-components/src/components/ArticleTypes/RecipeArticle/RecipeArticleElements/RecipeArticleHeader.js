@@ -130,7 +130,8 @@ function Header({
                     marginTop: [ { from: 's', until: 'l', value: '2rem', }, ],
                     marginInlineStart: [ { until: 'm', value: '2rem', }, ],
                     marginInlineEnd: [ { until: 'm', value: '2rem', }, ],
-
+                    paddingRight: [ { until: 'm', value: '0rem', }, ],
+                    paddingLeft: [ { until: 'm', value: '0rem', }, ],
                     order: [ { until: 's', value: 2, }, ],
                   }}
                 >
@@ -158,6 +159,9 @@ function Header({
                 </HeaderElementCont>
                 {headlineElement ? (
                   <HeadlineElement
+                    captionMiscStyles={{
+                      paddingStart: [ { until: 'l', value: '2rem', }, { from: 'l', value: 0, }, ],
+                    }}
                     elementObj={headlineElement}
                     miscStyles={{
                       marginTop: '4rem',

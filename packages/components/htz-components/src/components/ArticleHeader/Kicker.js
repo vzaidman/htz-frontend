@@ -58,6 +58,7 @@ const style = ({ isBlock, fontSize, miscStyles, theme, }) => ({
       ':after': {
         content: '"|"',
         paddingInlineStart: '1rem',
+        paddingInlineEnd: '1rem',
       },
     }
     : {}),

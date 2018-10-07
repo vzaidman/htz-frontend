@@ -12,6 +12,10 @@ import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const propTypes = {
   /**
+   * Override the caption misc styles.
+   */
+  captionMiscStyles: PropTypes.shape({}),
+  /**
    * The media object as it passed down from papi.
    */
   elementObj: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
@@ -25,6 +29,7 @@ const propTypes = {
 
 const defaultProps = {
   miscStyles: null,
+  captionMiscStyles: {},
 };
 
 /**
@@ -36,7 +41,7 @@ const defaultProps = {
  * @returns {XML}
  * @constructor
  */
-function HeadlineElement({ elementObj, miscStyles, }) {
+function HeadlineElement({ captionMiscStyles, elementObj, miscStyles, }) {
   const uniqueId = elementObj.elementType || elementObj.inputTemplate || null;
 
   const Element = () => {
@@ -84,6 +89,7 @@ function HeadlineElement({ elementObj, miscStyles, }) {
           paddingStart: '2rem',
           paddingTop: '0.5rem',
           paddingBottom: '0.5rem',
+          ...captionMiscStyles,
         }}
       />
     </FelaComponent>

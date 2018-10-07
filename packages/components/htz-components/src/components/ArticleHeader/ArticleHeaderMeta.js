@@ -53,7 +53,6 @@ const timeStyle = ({ theme, mobileTime, }) => ({
   display: 'inline-block',
   extend: [
     theme.mq({ [mobileTime ? 'from' : 'until']: 'l', }, { display: 'none', }),
-    theme.mq({ until: 's', }, { display: 'block', }),
     theme.mq({ from: 's', until: 'l', }, { marginInlineStart: '1rem', marginInlineEnd: '1rem', }),
     theme.mq({ from: 'l', }, { marginTop: '0.5rem', }),
     theme.type(-2, { fromBp: 'xl', }),
