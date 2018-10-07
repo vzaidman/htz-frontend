@@ -16,6 +16,7 @@ import INSPECT_EMAIL from './queries/InspectEmail';
 import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
 import { storeFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
+import objTransform from '../util/objectTransformationUtil';
 
 // Styling Components -------
 const { PageWrapper, ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -45,7 +46,7 @@ const mockDataFromUserInfo = client => email =>
       userStatus: {
         isEmailValidated: true,
         isMobileValidated: true,
-        isPhoneEmailConn: false,
+        isPhoneEmailConn: true,
       },
       userCrmStatus: {
         id: 654654,
@@ -54,22 +55,15 @@ const mockDataFromUserInfo = client => email =>
         isActiveEng: false,
       },
     },
-    // user: {
-    //   isUserExist: true,
-    //   isEmailValid: true,
-    //   isPhoneValid: true,
-    //   isPhoneConnectedWithEmail: true,
-    //   isUserPaying: false,
-    // },
   });
 
 const onSubmit = (client, getFlowByData) => ({ email, }) => {
   // getDataFromUserInfo(client)(email)
   mockDataFromUserInfo(client)(email) // TODO remove mock
     .then(res => {
-      console.log(`data is: ${JSON.stringify(res.user)}, email is: ${email}`);
-
-      const flow = getFlowByData(res.user);
+      const transformedObj = objTransform(res);
+      console.log(`data is: ${JSON.stringify(transformedObj.user)}, email is: ${email}`);
+      const flow = getFlowByData(transformedObj.user);
       storeFlowNumber(client)(flow.flowNumber);
       console.log(flow.initialTransition);
       Router.push(flow.initialTransition);
