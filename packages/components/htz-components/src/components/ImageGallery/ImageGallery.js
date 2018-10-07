@@ -269,6 +269,7 @@ const Gallery = ({
                       showCaption={false}
                       enableEnlarge={false}
                       miscStyles={{
+                        textAlign: 'center',
                         marginBottom: '0 !important',
                       }}
                       {...imageProps}
