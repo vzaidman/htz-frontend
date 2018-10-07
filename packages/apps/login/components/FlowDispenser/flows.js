@@ -8,7 +8,6 @@ export default (
       transitionRouteMap: new Map([
         [ '-otpValidation', '/otpValidation' ],
         [ '-otpValidation2', '/otpValidation2' ],
-        [ '-password', '/password' ],
         [ '-phoneInput', '/phoneInput' ],
       ]),
       otpValidation: {
@@ -38,6 +37,7 @@ export default (
       flowNumber: 2,
       initialState: 'emailPhoneInput',
       initialTransition: '/emailPhoneInput',
+      transitionRouteMap: new Map(),
       emailPhoneInput: {
         withPassword: 'password',
         accept: 'phoneMailSent',
@@ -55,6 +55,7 @@ export default (
       flowNumber: 3,
       initialState: 'emailValidationSent',
       initialTransition: '/emailValidationSent',
+      transitionRouteMap: new Map(),
       emailValidationSent: {
         sendAgain: 'emailValidationSent2',
         notRegistered: 'register',
@@ -63,7 +64,7 @@ export default (
         getCustomerService: 'customerService',
       },
     },
-    { // TODO complete flows
+    { // TODO: complete flows
       flowNumber: 4,
     },
     {

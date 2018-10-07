@@ -40,13 +40,27 @@ const getDataFromUserInfo = client => email =>
 
 const mockDataFromUserInfo = client => email =>
   Promise.resolve({
-    user: {
-      isUserExist: true,
-      isEmailValid: true,
-      isPhoneValid: true,
-      isPhoneConnectedWithEmail: true,
-      isUserPaying: false,
+    userByMail: {
+      ssoId: '20023790436',
+      userStatus: {
+        isEmailValidated: true,
+        isMobileValidated: true,
+        isPhoneEmailConn: false,
+      },
+      userCrmStatus: {
+        id: 654654,
+        isActiveTm: true,
+        isActiveHeb: true,
+        isActiveEng: false,
+      },
     },
+    // user: {
+    //   isUserExist: true,
+    //   isEmailValid: true,
+    //   isPhoneValid: true,
+    //   isPhoneConnectedWithEmail: true,
+    //   isUserPaying: false,
+    // },
   });
 
 const onSubmit = (client, getFlowByData) => ({ email, }) => {
