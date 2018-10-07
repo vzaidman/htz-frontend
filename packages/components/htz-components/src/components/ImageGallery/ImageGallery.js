@@ -4,7 +4,7 @@ import { createComponent, FelaComponent, } from 'react-fela';
 import { rgba, } from 'polished';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
-import ArticleImage from '../ArticleImage/ArticleImage';
+import ArticleImage from '../ArticleBodyImage/ArticleBodyImage';
 import { buildUrl, } from '../../utils/buildImgURLs';
 import Caption from '../Caption/Caption';
 import Carousel from '../Carousel/Carousel';
@@ -77,12 +77,12 @@ const captionWrapperStyle = ({
     top: '1rem',
     transform: `translateX(${position + positionChange}%)`,
     width: '100%',
-    ...(moving && {
+    ...(moving ? {
       transitionProperty: 'all',
       ...theme.getDelay('transition', 1),
       ...theme.getDuration('transition', 3),
       ...theme.getTimingFunction('transition', 'linear'),
-    }),
+    } : {}),
   };
 };
 
@@ -148,8 +148,8 @@ const itemsWrapperStyle = ({ theme, }) => ({
   flexWrap: 'nowrap',
   position: 'relative',
   extend: [
-    ...theme.mq({ from: 's', misc: 'portrait', }, { flexShrink: '1', }),
-    ...theme.mq({ from: 'm', misc: 'landscape', }, { flexShrink: '1', }),
+    theme.mq({ from: 's', misc: 'portrait', }, { flexShrink: '1', }),
+    theme.mq({ from: 'm', misc: 'landscape', }, { flexShrink: '1', }),
   ],
 });
 const ItemsWrapper = createComponent(itemsWrapperStyle);
@@ -238,6 +238,7 @@ const Gallery = ({
             const nextImage = images[nextItemIndex];
             return (
               <FullScreenMedia
+                enlargeOnClick={false}
                 itemName={image.contentName}
                 itemUrl={buildUrl(
                   image.contentId,
@@ -264,7 +265,7 @@ const Gallery = ({
                       forceAspect={
                         isFullScreen ? 'full' : forceAspect || 'regular'
                       }
-                      isFullScreen
+                      isFullScreen={isFullScreen}
                       showCaption={false}
                       enableEnlarge={false}
                       miscStyles={{
@@ -304,7 +305,7 @@ const Gallery = ({
                             start: '0',
                             transform: 'translateY(-50%)',
                             width: '100%',
-                            extend: [ isFullScreen && { display: 'none', }, ],
+                            extend: [ isFullScreen ? { display: 'none', } : {}, ],
                           }}
                         >
                           {renderButton(({ changeItem, }) => (
@@ -314,7 +315,10 @@ const Gallery = ({
                                 theme.color('quaternary'),
                                 0.8
                               )}
-                              onClick={() => changeItem('previous')}
+                              onClick={event => {
+                                event.stopPropagation();
+                                changeItem('previous');
+                              }}
                               aria-label={theme.previousText}
                             >
                               <IconBack
@@ -332,7 +336,10 @@ const Gallery = ({
                                 theme.color('quaternary'),
                                 0.8
                               )}
-                              onClick={() => changeItem('next')}
+                              onClick={event => {
+                                event.stopPropagation();
+                                changeItem('next');
+                              }}
                               aria-label={theme.nextText}
                             >
                               <IconBack size={2.5} />

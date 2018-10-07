@@ -9,6 +9,7 @@ import IconClose from '../Icon/icons/IconClose';
 import IconZoomIn from '../Icon/icons/IconZoomIn';
 
 const propTypes = {
+  enlargeOnClick: PropTypes.bool,
   captionElement: PropTypes.node,
   /**
    * The name of the shown item.
@@ -26,6 +27,7 @@ const propTypes = {
 
 const defaultProps = {
   captionElement: null,
+  enlargeOnClick: true,
 };
 
 const containerStyle = ({ isFullScreen, theme, }) => ({
@@ -96,7 +98,7 @@ const IconUnstyled = ({ isFullScreen, ...props }) => (
       const ToggleIcon = isFullScreen ? IconClose : IconZoomIn;
       const label = isFullScreen ? theme.zoomoutText : theme.zoominText;
       return (
-        <button {...props} aria-label={label} tabIndex='-1'>
+        <button {...props} aria-label={label} tabIndex="-1">
           <ToggleIcon
             color={[ 'neutral', '-10', ]}
             size={2.5}
@@ -193,7 +195,7 @@ class FullScreenMedia extends React.Component {
     });
 
   render() {
-    const { render, captionElement, itemName, itemUrl, } = this.props;
+    const { render, captionElement, itemName, itemUrl, enlargeOnClick, } = this.props;
     const { isFullScreen, } = this.state;
 
     return (
@@ -202,6 +204,7 @@ class FullScreenMedia extends React.Component {
         onClick={!isFullScreen ? this.toggleFullScreen : null}
         onMouseEnter={() => this.toggleHide(false)}
         onMouseLeave={() => this.toggleHide(true)}
+        /*{... enlargeOnClick ? { onClick: !isFullScreen ? this.toggleFullScreen : null, } : {}}*/
       >
         {!isFullScreen ? (
           <Icon isFullScreen={false} hide={this.state.hide} />

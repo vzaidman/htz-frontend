@@ -61,12 +61,12 @@ const itemsStyle = ({ theme, position, moving, }) => ({
   top: '0',
   transform: `translateX(${position}%)`,
   width: '100%',
-  ...(moving && {
+  ...(moving ? {
     transitionProperty: 'all',
     ...theme.getDelay('transition', 1),
     ...theme.getDuration('transition', 3),
     ...theme.getTimingFunction('transition', 'linear'),
-  }),
+  } : {}),
 });
 const Items = createComponent(itemsStyle);
 
@@ -194,7 +194,7 @@ class Carousel extends React.Component {
   handleGlobalKeydown = e => {
     const key = e.which || e.keyCode;
     const direction = key === 37 ? 'next' : 'previous';
-    (key === 37 || key === 39) && this.changeItem(direction);
+    if (key === 37 || key === 39) this.changeItem(direction);
   };
 
   changeItem = direction => {
@@ -208,12 +208,13 @@ class Carousel extends React.Component {
     const newDisplay = this.state.moving
       ? this.getIndex(this.state.direction)
       : null;
-    newDisplay !== null &&
+    if (newDisplay !== null) {
       this.setState({
         displayItemNum: newDisplay,
         moving: false,
         direction: null,
       });
+    }
   };
 
   render() {
@@ -238,12 +239,13 @@ class Carousel extends React.Component {
         </Items>
       );
 
-    const renderNextItems = itemsRenderer =>
-      (this.state.displayItemNum < itemsLength - 1 || loop) && (
+    const renderNextItems = itemsRenderer => (
+      (this.state.displayItemNum < itemsLength - 1 || loop) ? (
         <Items position={-100 + positionChange} moving={this.state.moving}>
           {itemsRenderer({ itemIndex: this.getIndex('next'), })}
         </Items>
-      );
+      ) : null
+    );
 
     const renderCurrentItems = (ariaText, itemsRenderer) => (
       <ApolloConsumer>

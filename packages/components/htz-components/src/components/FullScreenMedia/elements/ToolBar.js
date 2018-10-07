@@ -226,6 +226,7 @@ class ToolBar extends React.Component {
                                 color: theme.color('neutral', '-10'),
                               }}
                               miscStyles={{
+                                justifyContent: 'unset',
                                 width: '100%',
                               }}
                             />
