@@ -7,6 +7,7 @@ import Button from '../Button/Button';
 import IconAlefLogo from '../Icon/icons/IconAlefLogo';
 import Media from '../Media/Media';
 import ReadingHistoryProvider from '../ReadingHistory/ReadingHistoryProvider';
+import NoSSR from '../NoSSR/NoSSR';
 
 const propTypes = {
   /**
@@ -117,58 +118,60 @@ class MobileQuickRegistration extends Component {
     const href = `mailto:${doubleOptIn}-${mailto}?subject=${mailSubject}&body=${mailBody}`;
     const renderFrequency = 10;
     return (
-      <ReadingHistoryProvider>
-        {
-          readingHistory => {
-            const shouldRender = (readingHistory && readingHistory.length % renderFrequency !== 0);
-            console.log('[MobileQuickRegistration] readingHistory: %o render %o', readingHistory, shouldRender);
-            if (shouldRender === false) {
-              return null;
-            }
-            return (
-              <FelaTheme
-                render={theme => (
-                  <Media
-                    query={{ until: 's', }}
-                    render={() => (
-                      <RegistrationWrapper miscStyles={miscStyles}>
-                        <IconWrapper>
-                          <IconAlefLogo size={4} color="primary" />
-                        </IconWrapper>
-                        {this.state.signedUp ? (
-                          <FelaComponent
-                            style={{
-                              fontWeight: '700',
-                              color: theme.color('neutral', '-3'),
-                              marginTop: '5rem',
-                              marginBottom: '6rem',
-                              extend: [ theme.type(3), ],
-                            }}
-                          >
-                            {theme.mobileQuickRegistrationI18n.signedUpText}
-                          </FelaComponent>
-                        ) : (
-                          <Fragment>
-                            <TeaserBody>{teaserBody}</TeaserBody>
-                            <Button
-                              variant="primaryOpaque"
-                              href={href}
-                              boxModel={{ hp: 4, vp: 1, }}
-                              onClick={() => this.setState({ signedUp: true, })}
+      <NoSSR>
+        <ReadingHistoryProvider>
+          {
+            readingHistory => {
+              const shouldRender = (readingHistory && readingHistory.length % renderFrequency !== 0);
+              console.log('[MobileQuickRegistration] readingHistory: %o render %o', readingHistory, shouldRender);
+              if (shouldRender === false) {
+                return null;
+              }
+              return (
+                <FelaTheme
+                  render={theme => (
+                    <Media
+                      query={{ until: 's', }}
+                      render={() => (
+                        <RegistrationWrapper miscStyles={miscStyles}>
+                          <IconWrapper>
+                            <IconAlefLogo size={4} color="primary" />
+                          </IconWrapper>
+                          {this.state.signedUp ? (
+                            <FelaComponent
+                              style={{
+                                fontWeight: '700',
+                                color: theme.color('neutral', '-3'),
+                                marginTop: '5rem',
+                                marginBottom: '6rem',
+                                extend: [ theme.type(3), ],
+                              }}
                             >
-                              {teaserButton}
-                            </Button>
-                          </Fragment>
-                          )}
-                      </RegistrationWrapper>
-                    )}
-                  />
-                )}
-              />
-            );
+                              {theme.mobileQuickRegistrationI18n.signedUpText}
+                            </FelaComponent>
+                          ) : (
+                            <Fragment>
+                              <TeaserBody>{teaserBody}</TeaserBody>
+                              <Button
+                                variant="primaryOpaque"
+                                href={href}
+                                boxModel={{ hp: 4, vp: 1, }}
+                                onClick={() => this.setState({ signedUp: true, })}
+                              >
+                                {teaserButton}
+                              </Button>
+                            </Fragment>
+                            )}
+                        </RegistrationWrapper>
+                      )}
+                    />
+                  )}
+                />
+              );
+            }
           }
-        }
-      </ReadingHistoryProvider>
+        </ReadingHistoryProvider>
+      </NoSSR>
     );
   }
 }
