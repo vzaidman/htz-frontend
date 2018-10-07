@@ -18,6 +18,7 @@ import dataSources from './dataSources';
 
 
 const port = parseInt(process.env.GRAPHQL_PORT || (config.has('graphQLPort') ? config.get('graphQLPort') : '4000'), 10);
+const userInfoUri = config.get('service.userInfoUri');
 
 async function run() {
   const createRemoteSchema = async (uri, fetch) => {
@@ -29,7 +30,7 @@ async function run() {
   };
   let schemas;
   try {
-    const userInfo = await createRemoteSchema('https://ms-apps.themarker.com/userInfo', fetch);
+    const userInfo = await createRemoteSchema(userInfoUri, fetch);
     schemas = mergeSchemas({
       schemas: [ userInfo, schema, ],
     });
