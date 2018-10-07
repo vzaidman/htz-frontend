@@ -20,7 +20,7 @@ services:
         condition: on-failure
     environment:
       - NODE_ENV=production
-      - CONNECTION_PRESET=stage
+      - CONNECTION_PRESET=prod
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
       - PORT=2002
