@@ -12,6 +12,7 @@ import theme from '../theme';
 import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
 import GET_HOST from '../pages/queries/GetHost';
+import LoginPopup from '../components/Misc/LoginPopup';
 import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
 
 // Styling Components -------

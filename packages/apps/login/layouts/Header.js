@@ -15,7 +15,7 @@ const HeaderWrapper = createComponent(headerWrapperStyle);
 
 const titleWrapperStyle = () => ({
   margin: '10px 0',
-  fontSize: '5rem',
+  fontSize: '6rem',
   fontWeight: '300',
 });
 const TitleWrapper = createComponent(titleWrapperStyle);
