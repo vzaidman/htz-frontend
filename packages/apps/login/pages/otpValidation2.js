@@ -4,24 +4,13 @@ import Router from 'next/router';
 import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 
-// import { ApolloConsumer, } from 'react-apollo';
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
-// import { StyleProvider, } from '@haaretz/fela-utils';
-// import { createComponent, FelaTheme, } from 'react-fela';
-// import isEmail from 'validator/lib/isEmail';
-// import Header from '../layouts/Header';
-// import Footer from '../layouts/Footer';
-// import styleRenderer from '../components/styleRenderer/styleRenderer';
 import theme from '../theme/index';
-// import GET_HOST from './queries/GetHost';
-// import INSPECT_EMAIL from './queries/InspectEmail';
-// import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
-// import { storeFlowNumber, } from '../components/FlowDispenser/flowStorage';
-import BottomLinks from '../components/Misc/BottomLinks';
 import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
 } from '../components/StyleComponents/LoginStyleComponents';
+import BottomLinks from '../components/Misc/BottomLinks';
 
 // Styling Components -------
 const { PageWrapper, ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -84,8 +73,8 @@ const OtpValidation = () => (
                     <InputLinkButton>
                       <span
                         onClick={() => {
-                          const route = doTransition('sendAgain');
-                          Router.push(route);
+                          /* const route = doTransition('otpValidation2');
+                        Router.push(route); */
                         }}
                       >
                         שלח בשנית
@@ -99,19 +88,10 @@ const OtpValidation = () => (
               )}
             />
 
-            <BottomLinks spacing={2.5}>
-              <HtzLink
-                href={`${findRout('notMyPhone')}`}
-                onClick={e => {
-                  e.preventDefault();
-                  const route = doTransition('notMyPhone');
-                  Router.push(route);
-                }}
-              >
-                לא הטלפון שלך?
-              </HtzLink>
+            <BottomLinks spacing={0}>
+              <span>הקוד נשלח בשנית. לא הגיע?</span>
 
-              <br/>
+              <br />
 
               <HtzLink
                 href={`${findRout('withPassword')}`}
@@ -122,6 +102,20 @@ const OtpValidation = () => (
                 }}
               >
                 כניסה באמצעות סיסמה
+              </HtzLink>
+
+              <br />
+
+              <span>או </span>
+              <HtzLink
+                href={`${findRout('getCustomerService')}`}
+                onClick={e => {
+                  e.preventDefault();
+                  const route = doTransition('getCustomerService');
+                  Router.push(route);
+                }}
+              >
+                פניה לשירות לקוחות
               </HtzLink>
             </BottomLinks>
           </FormWrapper>

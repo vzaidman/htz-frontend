@@ -145,7 +145,7 @@ class FiniteStateMachine extends React.Component {
   incrementHistoryPointer = () => {
     const pointer = this.getHistoryPointer();
     const pointerNumber = parseInt(pointer, 10);
-    const updatedPointer = (pointer == null || pointerNumber === 0) ? 0 : pointerNumber + 1;
+    const updatedPointer = pointer == null ? 0 : pointerNumber + 1;
     return (this.setHistoryPointer(updatedPointer)).toString(10);
   };
 

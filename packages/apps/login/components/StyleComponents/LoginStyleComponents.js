@@ -18,21 +18,47 @@ const Styles = {
       flex: '1 0 auto',
     }),
 
-    formHolder: () => ({
+    formWrapper: () => ({
       width: '414px',
       maxWidth: '95%',
       margin: '0 auto',
+      '& label': {
+        height: '35px',
+        fontSize: '2rem',
+        marginTop: '2rem !important',
+      },
+      '& h5': {
+        fontSize: '2.3rem',
+      },
+
+      '@media (max-width: 768px)': {
+        '& label': {
+          fontSize: '2.7rem',
+        },
+        '& h5': {
+          width: '70%',
+          fontSize: '3rem',
+        },
+      },
     }),
 
-    bottomLinks: () => ({
-      margin: '35px 0 180px 0',
-      '> a': {
-        display: 'block',
-        margin: '20px auto',
-        fontSize: '14px',
-        color: '#0b7eb5',
+    topLinks: () => ({
+      display: 'flex',
+      margin: '-10px auto 25px auto',
+      border: 'solid 1px #0b7eb5',
+      '>span': {
+        flexGrow: '1',
         textAlign: 'center',
-        textDecoration: 'underline',
+        color: '#0b7eb5',
+        fontSize: '1.75rem',
+        fontWeight: 'bold',
+        '&.on': {
+          backgroundColor: '#0b7eb5',
+          color: '#fff',
+          '>a': {
+            cursor: 'default',
+          },
+        },
       },
     }),
 
@@ -63,6 +89,7 @@ const Styles = {
       flexShrink: '0',
       width: '100%',
       height: '315px',
+      marginTop: '55px',
       backgroundColor: '#00537a',
       color: '#ffffff',
 
@@ -81,6 +108,7 @@ const Styles = {
         float: 'left',
         marginTop: '-20px',
         cursor: 'pointer',
+        fontSize: '2rem',
       },
     }),
   },
@@ -90,8 +118,8 @@ const Styles = {
 const LoginContentStyles = {
   PageWrapper: createComponent(Styles.Content.loginPageWrapper),
   ContentWrapper: createComponent(Styles.Content.loginContentWrapper),
-  FormWrapper: createComponent(Styles.Content.formHolder),
-  BottomLinks: createComponent(Styles.Content.bottomLinks),
+  FormWrapper: createComponent(Styles.Content.formWrapper),
+  TopLinks: createComponent(Styles.Content.topLinks),
   ItemCenterer: createComponent(Styles.Content.itemCenterer),
 };
 
