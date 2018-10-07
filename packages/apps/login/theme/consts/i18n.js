@@ -10,3 +10,15 @@ export const emailInputTexts = host => ({
   emailInputRequiredLong: host === 'haaretz.com' ? 'required' : 'שדה חובה',
   emailInputRequiredShort: '*',
 });
+
+export const passwordInputTexts = host => ({
+  passwordInputLabel: host === 'haaretz.com' ? 'password' : 'סיסמה',
+  passwordInputRequiredLong: host === 'haaretz.com' ? 'required' : 'שדה חובה',
+  passwordInputRequiredShort: '*',
+});
+
+export const phoneInputTexts = host => ({
+  phoneInputLabel: host === 'haaretz.com' ? 'password' : 'מספר טלפון נייד',
+  phoneInputRequiredLong: host === 'haaretz.com' ? 'required' : 'שדה חובה',
+  phoneInputRequiredShort: '*',
+});
