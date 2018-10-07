@@ -5,6 +5,7 @@ import { rgba, } from 'polished';
 
 import ActionButtons from '../../ActionButtons/ActionButtons';
 import FlippingArrow from '../../Animations/FlippingArrow';
+import IconInfo from '../../Icon/icons/IconInfo';
 import Button from '../../Button/Button';
 import Media from '../../Media/Media';
 
@@ -37,47 +38,6 @@ const toolBarWrapper = ({ theme, isOpen, }) => {
     ],
   };
 };
-
-const captionIconDashStyle = theme => ({
-  height: '2px',
-  backgroundColor: theme.color('neutral', '-10'),
-  transition: 'all .5s',
-});
-
-const captionIconStyle = ({ theme, isOpen, }) => ({
-  ...captionIconDashStyle(theme),
-  display: 'inline-block',
-  end: '0',
-  margin: '0 auto',
-  opacity: '1',
-  transform: isOpen ? 'translateY(-1rem) rotate(90deg)' : 'translateY(-1rem)',
-  width: '3.5rem',
-  ':before': {
-    ...captionIconDashStyle(theme),
-    ...(isOpen
-      ? { transform: 'translate(1.5rem, -0.25rem) rotate(-180deg)', }
-      : {}),
-    position: 'absolute',
-    end: isOpen ? '-1' : '0',
-    top: '-1rem',
-    content: '""',
-    width: '3rem',
-  },
-  ':after': {
-    ...captionIconDashStyle(theme),
-    ...(isOpen ? { transform: 'translate(0, 0.25rem) rotate(180deg)', } : {}),
-    position: 'absolute',
-    end: isOpen ? '1' : '0',
-    top: '1rem',
-    content: '""',
-    width: '2.5rem',
-  },
-});
-
-// eslint-disable-next-line react/prop-types
-const CaptionIcon = ({ isOpen, }) => (
-  <FelaComponent isOpen={isOpen} rule={captionIconStyle} render="i" />
-);
 
 const Separator = () => (
   <FelaComponent
@@ -178,7 +138,7 @@ class ToolBar extends React.Component {
                       })
                     }
                   >
-                    <CaptionIcon isOpen={this.state.isOpen} />
+                    <IconInfo size={4} color={[ 'neutral', -10, ]} />
                   </Button>
                 </FelaComponent>
                 <Media query={{ until: 's', misc: 'portrait', }}>

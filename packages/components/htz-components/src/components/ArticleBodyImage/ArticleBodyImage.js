@@ -296,22 +296,21 @@ UnwrappedImage.defaultProps = articleImageDefaultProps;
 class ArticleBodyImage extends React.Component {
   componentDidMount() {
     const { title, addImageToSchema, } = this.props;
-    addImageToSchema({
-      variables: {
-        image: {
-          type: 'ImageObject',
-          url: this.getImageUrl(),
-          description: title,
-          name: title,
-          width: 640,
-          height: 370,
-          __typename: 'Image',
+    if (addImageToSchema) {
+      addImageToSchema({
+        variables: {
+          image: {
+            type: 'ImageObject',
+            url: this.getImageUrl(),
+            description: title,
+            name: title,
+            width: 640,
+            height: 370,
+            __typename: 'Image',
+          },
         },
-      },
-    }).then(() => {
-      console.log('ADDED TO SCHEMA');
-      return null;
-    });
+      }).then(() => null);
+    }
   }
 
   getImageUrl = () => {
@@ -369,9 +368,16 @@ ArticleBodyImage.propTypes = articleImagePropTypes;
 ArticleBodyImage.defaultProps = articleImageDefaultProps;
 
 export default props => (
-  <Mutation mutation={ADD_IMAGE}>
-    {addImageToSchema => (
-      <ArticleBodyImage {...props} addImageToSchema={addImageToSchema} />
-    )}
-  </Mutation>
+  // eslint-disable-next-line react/prop-types
+  props.ignoreSchema
+    ? (
+      <ArticleBodyImage {...props} />
+    )
+    : (
+      <Mutation mutation={ADD_IMAGE}>
+        {addImageToSchema => (
+          <ArticleBodyImage {...props} addImageToSchema={addImageToSchema} />
+        )}
+      </Mutation>
+    )
 );

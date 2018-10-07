@@ -63,9 +63,8 @@ const itemsStyle = ({ theme, position, moving, }) => ({
   width: '100%',
   ...(moving ? {
     transitionProperty: 'all',
-    ...theme.getDelay('transition', 1),
     ...theme.getDuration('transition', 3),
-    ...theme.getTimingFunction('transition', 'linear'),
+    ...theme.getTimingFunction('transition', 'swiftOut'),
   } : {}),
 });
 const Items = createComponent(itemsStyle);

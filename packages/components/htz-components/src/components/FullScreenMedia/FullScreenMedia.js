@@ -1,3 +1,4 @@
+/* global document */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
@@ -5,11 +6,10 @@ import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { rgba, } from 'polished';
 
 import ToolBar from './elements/ToolBar';
-import IconClose from '../Icon/icons/IconClose';
+import IconArrow from '../Icon/icons/IconArrow';
 import IconZoomIn from '../Icon/icons/IconZoomIn';
 
 const propTypes = {
-  enlargeOnClick: PropTypes.bool,
   captionElement: PropTypes.node,
   /**
    * The name of the shown item.
@@ -27,7 +27,6 @@ const propTypes = {
 
 const defaultProps = {
   captionElement: null,
-  enlargeOnClick: true,
 };
 
 const containerStyle = ({ isFullScreen, theme, }) => ({
@@ -95,13 +94,13 @@ const iconStyle = ({ theme, isFullScreen, hide, }) => ({
 const IconUnstyled = ({ isFullScreen, ...props }) => (
   <FelaComponent
     render={({ theme, }) => {
-      const ToggleIcon = isFullScreen ? IconClose : IconZoomIn;
+      const ToggleIcon = isFullScreen ? IconArrow : IconZoomIn;
       const label = isFullScreen ? theme.zoomoutText : theme.zoominText;
       return (
         <button {...props} aria-label={label} tabIndex="-1">
           <ToggleIcon
             color={[ 'neutral', '-10', ]}
-            size={2.5}
+            size={isFullScreen ? 3 : 2.5}
             miscStyles={{
               display: 'block',
               margin: '0 auto',
@@ -135,7 +134,7 @@ const mediaWrapperStyle = ({ isFullScreen, theme, }) =>
       ],
     }
     : {});
-const MediaWrapper = createComponent(mediaWrapperStyle);
+const MediaWrapper = createComponent(mediaWrapperStyle, 'div', [ 'onClick', ]);
 
 /**
  * This component receives a media component
@@ -166,14 +165,9 @@ class FullScreenMedia extends React.Component {
   }
 
   componentDidUpdate() {
-    /* eslint-disable no-undef */
-    if (this.state.isFullScreen) {
-      document.addEventListener('keydown', this.handleGlobalKeydown);
-    }
-    else {
-      document.removeEventListener('keydown', this.handleGlobalKeydown);
-    }
-    /* eslint-enable no-undef */
+    this.state.isFullScreen
+      ? document.addEventListener('keydown', this.handleGlobalKeydown)
+      : document.removeEventListener('keydown', this.handleGlobalKeydown);
   }
 
   handleGlobalKeydown = e => {
@@ -195,16 +189,14 @@ class FullScreenMedia extends React.Component {
     });
 
   render() {
-    const { render, captionElement, itemName, itemUrl, enlargeOnClick, } = this.props;
+    const { render, captionElement, itemName, itemUrl, } = this.props;
     const { isFullScreen, } = this.state;
 
     return (
       <FullScreenContainer
         isFullScreen={isFullScreen}
-        onClick={!isFullScreen ? this.toggleFullScreen : null}
         onMouseEnter={() => this.toggleHide(false)}
         onMouseLeave={() => this.toggleHide(true)}
-        /*{... enlargeOnClick ? { onClick: !isFullScreen ? this.toggleFullScreen : null, } : {}}*/
       >
         {!isFullScreen ? (
           <Icon isFullScreen={false} hide={this.state.hide} />
@@ -212,7 +204,8 @@ class FullScreenMedia extends React.Component {
         <div />
         <MediaWrapper
           isFullScreen={isFullScreen}
-          innerRef={mediaRef => (this.mediaRef = mediaRef)} // eslint-disable-line no-return-assign
+          innerRef={mediaRef => { this.mediaRef = mediaRef; }}
+          onClick={!isFullScreen ? this.toggleFullScreen : null}
         >
           {render({ isFullScreen, })}
         </MediaWrapper>

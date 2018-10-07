@@ -79,9 +79,8 @@ const captionWrapperStyle = ({
     width: '100%',
     ...(moving ? {
       transitionProperty: 'all',
-      ...theme.getDelay('transition', 1),
       ...theme.getDuration('transition', 3),
-      ...theme.getTimingFunction('transition', 'linear'),
+      ...theme.getTimingFunction('transition', 'swiftOut'),
     } : {}),
   };
 };
@@ -238,7 +237,6 @@ const Gallery = ({
             const nextImage = images[nextItemIndex];
             return (
               <FullScreenMedia
-                enlargeOnClick={false}
                 itemName={image.contentName}
                 itemUrl={buildUrl(
                   image.contentId,
@@ -268,6 +266,7 @@ const Gallery = ({
                       isFullScreen={isFullScreen}
                       showCaption={false}
                       enableEnlarge={false}
+                      ignoreSchema
                       miscStyles={{
                         textAlign: 'center',
                         marginBottom: '0 !important',
