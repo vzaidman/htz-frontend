@@ -8,6 +8,7 @@ module.exports = {
     }),
     newSso: 'https://ms-apps.haaretz.co.il/sso',
     sso: 'https://sso.haaretz.co.il',
+    userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo',
     image: 'https://images.haarets.co.il/image',
     userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
