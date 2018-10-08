@@ -8,8 +8,10 @@ import submitNewsletter from './mutations/submitNewsletter';
 import NewsletterWithoutApollo from './NewsletterWithoutApollo';
 import { newsletterVariantType, } from './elements/types/newsletterVariantType';
 import UserDispenser from '../User/UserDispenser';
+import ReadingHistoryProvider from '../ReadingHistory/ReadingHistoryProvider';
+import NoSSR from '../NoSSR/NoSSR';
 
-Newsletter.propTypes = {
+const propTypes = {
   /**  determine newsletter button text */
   buttonText: PropTypes.string,
   /**
@@ -47,7 +49,7 @@ Newsletter.propTypes = {
   ]),
 };
 
-Newsletter.defaultProps = {
+const defaultProps = {
   buttonText: 'להרשמה',
   headlineText: 'הירשמו עכשיו: סיכום כותרות הבוקר אצלכם במייל מדי יום',
   host: null,
@@ -58,28 +60,39 @@ Newsletter.defaultProps = {
   variant: 'highlight',
 };
 
-function Newsletter({ renderFrequency, ...props }) {
-  let history;
-  let shouldRender = true;
-  if (typeof localStorage !== 'undefined' && renderFrequency) {
-    history = JSON.parse(localStorage.getItem('readingHistory'));
-    shouldRender = history.length % renderFrequency === 0;
-  }
-  return shouldRender ? (
-    <Mutation mutation={submitNewsletter}>
-      {(signUpNewsletter, { data, loading, }) => (
-        <UserDispenser
-          render={({ user: { email, }, }) => (
-            <NewsletterWithoutApollo
-              signUpNewsletter={signUpNewsletter}
-              loading={loading}
-              userEmail={email}
-              {...props}
-            />
-          )}
-        />
-      )}
-    </Mutation>
-  ) : null;
-}
+const Newsletter = ({ renderFrequency, ...props }) => (
+  <NoSSR>
+    <ReadingHistoryProvider>
+      {
+        readingHistory => {
+          const shouldRender = (readingHistory && readingHistory.length % renderFrequency === 0);
+          console.log('[Newsletter] readingHistory: %o render %o', readingHistory, shouldRender);
+          if (shouldRender === false) {
+            return null;
+          }
+          return (
+            <Mutation mutation={submitNewsletter}>
+              {(signUpNewsletter, { data, loading, }) => (
+                <UserDispenser
+                  render={({ user: { email, }, }) => (
+                    <NewsletterWithoutApollo
+                      signUpNewsletter={signUpNewsletter}
+                      loading={loading}
+                      userEmail={email}
+                      {...props}
+                    />
+                  )}
+                />
+              )}
+            </Mutation>
+          );
+        }
+      }
+    </ReadingHistoryProvider>
+  </NoSSR>
+);
+
+Newsletter.propTypes = propTypes;
+Newsletter.defaultProps = defaultProps;
+
 export default Newsletter;
