@@ -316,6 +316,7 @@ export const recipeIngredientsI18n = Object.freeze({
   sectionTitle: 'רכיבים',
 });
 
+
 export const recipeRatingI18n = Object.freeze({
   levelText: Object.freeze({
     easy: 'קל',
@@ -328,6 +329,10 @@ export const recipeRatingI18n = Object.freeze({
     time: 'זמן בישול',
   }),
   ratingTitle: 'דירוג הגולשים',
+});
+
+export const reviewRatingI18n = Object.freeze({
+  ratingTitle: 'דירוג',
 });
 
 export const articleLayoutI18n = Object.freeze({

@@ -54,6 +54,10 @@ export default function htz(app, server, DEV) {
       console.log('found recipe, rendering recipe page');
       return app.render(req, res, '/recipeArticle', query);
     }
+    if (req.path.indexOf('REVIEW-') >= 0) {
+      console.log('found review, rendering review page');
+      return app.render(req, res, '/reviewArticle', query);
+    }
     console.log('rendering standardArticle');
     return app.render(req, res, '/standardArticle', query);
   });

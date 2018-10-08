@@ -6,6 +6,7 @@
 
 // Articles
 import RecipeArticle from './components/ArticleTypes/RecipeArticle/RecipeArticle';
+import ReviewArticle from './components/ArticleTypes/ReviewArticle/ReviewArticle';
 import StandardArticle from './components/ArticleTypes/StandardArticle/StandardArticle';
 
 // components
@@ -162,6 +163,7 @@ export {
   // ArticleTypes
   StandardArticle,
   RecipeArticle,
+  ReviewArticle,
   // Components
   A11yDialog,
   A11yError,

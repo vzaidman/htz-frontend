@@ -8,6 +8,7 @@ import {
   GraphQLFloat,
   GraphQLBoolean,
 } from 'graphql';
+import GraphQLJSON from 'graphql-type-json';
 import getSchema from '../getSchema';
 
 import author from './author_type';
@@ -79,6 +80,9 @@ const ArticleData = new GraphQLObjectType({
     totalCookTime: { type: GraphQLString, },
     numOfServings: { type: GraphQLString, },
     recipeDifficultyLevel: { type: GraphQLString, },
+    // review article related
+    reviewType: { type: GraphQLString, },
+    amenities: { type: new GraphQLList(GraphQLJSON), },
   }),
 });
 

@@ -12,7 +12,6 @@ const offersPattern =
 
 const NonReactArticleTypes = [
   '(MAGAZINE-)',
-  '(REVIEW-)',
   '(TAG-)',
   '(WRITER-)',
   '(CARD-)',
@@ -27,7 +26,7 @@ const nonReactSections = [
   '(\\/writers)',
   '(\\/misc)',
   '(\\/labels)',
-  '(\\/st)',
+  '(\\/st\\/)',
 ];
 
 const isNonReactArticleType = new RegExp(
@@ -102,6 +101,7 @@ function isNextLinkSimpleString(href, site) {
   }
   const { fullMatch, baseUrl, scheme, fqdn, hostname, domain, port, path, query, fragment, } =
     breakUrl(href) || {};
+
   return (
     !isNonReactArticleType.test(path) &&
     isReactType.test(path) &&

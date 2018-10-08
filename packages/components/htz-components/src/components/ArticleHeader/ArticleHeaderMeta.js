@@ -63,8 +63,7 @@ const timeStyle = ({ theme, mobileTime, }) => ({
       { marginInlineStart: '1rem', marginInlineEnd: '1rem', }
     ),
     theme.mq({ from: 'l', }, { marginTop: '0.5rem', }),
-    theme.type(-2, { fromBp: 'xl', }),
-    theme.type(-2, { untilBp: 'xl', }),
+    theme.type(-3),
   ],
 });
 
@@ -80,7 +79,7 @@ const imageAuthorsAndMobileTimeContStyle = theme => ({
 });
 
 const authorsAndTimeContStyle = theme => ({
-  extend: [ theme.mq({ from: 'l', }, { marginTop: '1rem', }), ],
+  extend: [ theme.mq({ from: 'l', }, { marginTop: '0.5rem', }), ],
 });
 
 const alertsAndDesktopTimeContStyle = theme => ({
