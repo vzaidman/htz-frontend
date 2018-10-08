@@ -7010,15 +7010,6 @@ fela-dom@^7.0.7, fela-dom@^7.0.9:
     fast-loops "^1.0.0"
     fela-utils "^8.0.8"
 
-fela-monolithic@^5.0.24:
-  version "5.0.24"
-  resolved "https://registry.yarnpkg.com/fela-monolithic/-/fela-monolithic-5.0.24.tgz#60254e64da42d3065b8976ba1a54bdd1ef73d57c"
-  dependencies:
-    css-in-js-utils "^2.0.0"
-    fast-loops "^1.0.0"
-    fela-utils "^8.1.0"
-    isobject "^3.0.1"
-
 fela-perf@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/fela-perf/-/fela-perf-5.0.3.tgz#8795057c99b8bd4464d86d2bf02e7f4eee4f0020"
@@ -7107,14 +7098,6 @@ fela-tools@^5.1.5, fela-tools@^5.1.7:
 fela-utils@^8.0.8:
   version "8.0.8"
   resolved "https://registry.yarnpkg.com/fela-utils/-/fela-utils-8.0.8.tgz#1ffb7b7263df619a998ad3d04beac1be19027887"
-  dependencies:
-    css-in-js-utils "^2.0.0"
-    fast-loops "^1.0.0"
-    string-hash "^1.1.3"
-
-fela-utils@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/fela-utils/-/fela-utils-8.1.0.tgz#198c283ee1dcf3ee7d5c9543aa95138f417457eb"
   dependencies:
     css-in-js-utils "^2.0.0"
     fast-loops "^1.0.0"
