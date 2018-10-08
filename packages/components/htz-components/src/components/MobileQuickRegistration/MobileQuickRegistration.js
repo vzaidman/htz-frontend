@@ -6,8 +6,8 @@ import { stylesPropType, } from '../../propTypes/stylesPropType';
 import Button from '../Button/Button';
 import IconAlefLogo from '../Icon/icons/IconAlefLogo';
 import Media from '../Media/Media';
-import ReadingHistoryProvider from '../ReadingHistory/ReadingHistoryProvider';
 import NoSSR from '../NoSSR/NoSSR';
+import ShouldRenderNewsletterProvider from '../Newsletter/ShouldRenderNewsletterProvider';
 
 const propTypes = {
   /**
@@ -116,15 +116,13 @@ class MobileQuickRegistration extends Component {
       miscStyles,
     } = this.props;
     const href = `mailto:${doubleOptIn}-${mailto}?subject=${mailSubject}&body=${mailBody}`;
-    const renderFrequency = 10;
     return (
       <NoSSR>
-        <ReadingHistoryProvider>
+        <ShouldRenderNewsletterProvider>
           {
-            readingHistory => {
-              const shouldRender = (readingHistory && readingHistory.length % renderFrequency !== 0);
-              console.log('[MobileQuickRegistration] readingHistory: %o render %o', readingHistory, shouldRender);
-              if (shouldRender === false) {
+            shouldRenderNewsletter => {
+              if (shouldRenderNewsletter) {
+                // prevents this component from being rendered when Newsletter is rendered
                 return null;
               }
               return (
@@ -170,7 +168,7 @@ class MobileQuickRegistration extends Component {
               );
             }
           }
-        </ReadingHistoryProvider>
+        </ShouldRenderNewsletterProvider>
       </NoSSR>
     );
   }

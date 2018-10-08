@@ -8,8 +8,8 @@ import submitNewsletter from './mutations/submitNewsletter';
 import NewsletterWithoutApollo from './NewsletterWithoutApollo';
 import { newsletterVariantType, } from './elements/types/newsletterVariantType';
 import UserDispenser from '../User/UserDispenser';
-import ReadingHistoryProvider from '../ReadingHistory/ReadingHistoryProvider';
 import NoSSR from '../NoSSR/NoSSR';
+import ShouldRenderNewsletterProvider from './ShouldRenderNewsletterProvider';
 
 const propTypes = {
   /**  determine newsletter button text */
@@ -62,12 +62,10 @@ const defaultProps = {
 
 const Newsletter = ({ renderFrequency, ...props }) => (
   <NoSSR>
-    <ReadingHistoryProvider>
+    <ShouldRenderNewsletterProvider>
       {
-        readingHistory => {
-          const shouldRender = (readingHistory && readingHistory.length % renderFrequency === 0);
-          console.log('[Newsletter] readingHistory: %o render %o', readingHistory, shouldRender);
-          if (shouldRender === false) {
+        shouldRenderNewsletter => {
+          if (shouldRenderNewsletter === false) {
             return null;
           }
           return (
@@ -88,7 +86,7 @@ const Newsletter = ({ renderFrequency, ...props }) => (
           );
         }
       }
-    </ReadingHistoryProvider>
+    </ShouldRenderNewsletterProvider>
   </NoSSR>
 );
 
