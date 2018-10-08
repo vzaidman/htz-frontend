@@ -9,6 +9,10 @@ import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const propTypes = {
   /**
+   * The duration of the sliding animation.
+   */
+  animationDuration: PropTypes.number,
+  /**
    * How many items should be rendered in the carousel's view.
    */
   inView: PropTypes.number,
@@ -41,6 +45,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  animationDuration: 0,
   inView: 1,
   loop: false,
   miscStyles: null,
@@ -55,7 +60,7 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
 });
 const ItemsWrapper = createComponent(wrapperStyle);
 
-const itemsStyle = ({ theme, position, moving, }) => ({
+const itemsStyle = ({ theme, position, moving, animationDuration, }) => ({
   height: '100%',
   position: 'absolute',
   top: '0',
@@ -63,7 +68,7 @@ const itemsStyle = ({ theme, position, moving, }) => ({
   width: '100%',
   ...(moving ? {
     transitionProperty: 'all',
-    ...theme.getDuration('transition', 3),
+    ...theme.getDuration('transition', animationDuration),
     ...theme.getTimingFunction('transition', 'swiftOut'),
   } : {}),
 });
@@ -218,6 +223,7 @@ class Carousel extends React.Component {
 
   render() {
     const {
+      animationDuration,
       inView, // eslint-disable-line no-unused-vars
       itemsLength,
       loop,
@@ -233,14 +239,22 @@ class Carousel extends React.Component {
 
     const renderPreviousItems = itemsRenderer =>
       (this.state.displayItemNum > 0 || loop) && (
-        <Items position={100 + positionChange} moving={this.state.moving}>
+        <Items
+          position={100 + positionChange}
+          moving={this.state.moving}
+          animationDuration={animationDuration}
+        >
           {itemsRenderer({ itemIndex: this.getIndex('prev'), })}
         </Items>
       );
 
     const renderNextItems = itemsRenderer => (
       (this.state.displayItemNum < itemsLength - 1 || loop) ? (
-        <Items position={-100 + positionChange} moving={this.state.moving}>
+        <Items
+          position={-100 + positionChange}
+          moving={this.state.moving}
+          animationDuration={animationDuration}
+        >
           {itemsRenderer({ itemIndex: this.getIndex('next'), })}
         </Items>
       ) : null
@@ -259,6 +273,7 @@ class Carousel extends React.Component {
           });
           return (
             <CurrentItems
+              animationDuration={animationDuration}
               position={positionChange}
               moving={this.state.moving}
               // eslint-disable-next-line no-return-assign

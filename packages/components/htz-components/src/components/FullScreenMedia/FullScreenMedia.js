@@ -1,7 +1,7 @@
 /* global document */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, FelaComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { rgba, } from 'polished';
 
@@ -60,11 +60,6 @@ const containerStyle = ({ isFullScreen, theme, }) => ({
     }
     : {}),
 });
-const FullScreenContainer = createComponent(containerStyle, 'figure', [
-  'onMouseEnter',
-  'onMouseLeave',
-  'onClick',
-]);
 
 const iconStyle = ({ theme, isFullScreen, hide, }) => ({
   backgroundColor: rgba(theme.color('neutral'), 0.8),
@@ -91,13 +86,16 @@ const iconStyle = ({ theme, isFullScreen, hide, }) => ({
 });
 
 // eslint-disable-next-line react/prop-types
-const IconUnstyled = ({ isFullScreen, ...props }) => (
+const Icon = ({ isFullScreen, hide, ...props }) => (
   <FelaComponent
-    render={({ theme, }) => {
+    rule={iconStyle}
+    hide={hide}
+    isFullScreen={isFullScreen}
+    render={({ theme, className, }) => {
       const ToggleIcon = isFullScreen ? IconArrow : IconZoomIn;
       const label = isFullScreen ? theme.zoomoutText : theme.zoominText;
       return (
-        <button {...props} aria-label={label} tabIndex="-1">
+        <button className={className} {...props} aria-label={label} tabIndex="-1">
           <ToggleIcon
             color={[ 'neutral', '-10', ]}
             size={isFullScreen ? 3 : 2.5}
@@ -110,10 +108,6 @@ const IconUnstyled = ({ isFullScreen, ...props }) => (
       );
     }}
   />
-);
-
-const Icon = createComponent(iconStyle, IconUnstyled, props =>
-  Object.keys(props)
 );
 
 const mediaWrapperStyle = ({ isFullScreen, theme, }) =>
@@ -134,7 +128,6 @@ const mediaWrapperStyle = ({ isFullScreen, theme, }) =>
       ],
     }
     : {});
-const MediaWrapper = createComponent(mediaWrapperStyle, 'div', [ 'onClick', ]);
 
 /**
  * This component receives a media component
@@ -193,48 +186,59 @@ class FullScreenMedia extends React.Component {
     const { isFullScreen, } = this.state;
 
     return (
-      <FullScreenContainer
+      <FelaComponent
+        rule={containerStyle}
         isFullScreen={isFullScreen}
-        onMouseEnter={() => this.toggleHide(false)}
-        onMouseLeave={() => this.toggleHide(true)}
-      >
-        {!isFullScreen ? (
-          <Icon isFullScreen={false} hide={this.state.hide} />
-        ) : null}
-        <div />
-        <MediaWrapper
-          isFullScreen={isFullScreen}
-          innerRef={mediaRef => { this.mediaRef = mediaRef; }}
-          onClick={!isFullScreen ? this.toggleFullScreen : null}
-        >
-          {render({ isFullScreen, })}
-        </MediaWrapper>
-        {isFullScreen ? (
-          <Fragment>
+        render={({ className, }) => (
+          <figure
+            className={className}
+            onMouseEnter={() => this.toggleHide(false)}
+            onMouseLeave={() => this.toggleHide(true)}
+          >
+            {!isFullScreen ? (
+              <Icon isFullScreen={false} hide={this.state.hide} />
+            ) : null}
+            <div />
             <FelaComponent
-              style={{
-                position: 'absolute',
-                top: '2rem',
-                end: '2rem',
-              }}
-            >
-              <Icon isFullScreen onClick={this.toggleFullScreen} hide={false} />
-            </FelaComponent>
-            <ToolBar
-              itemName={itemName}
-              itemUrl={itemUrl}
-              closeButton={
-                <Icon
-                  isFullScreen
-                  onClick={this.toggleFullScreen}
-                  hide={false}
-                />
-              }
-              captionElement={captionElement}
+              rule={mediaWrapperStyle}
+              isFullScreen={isFullScreen}
+              render={({ className, }) => (
+                <div
+                  ref={mediaRef => { this.mediaRef = mediaRef; }}
+                  className={className}
+                >
+                  {render({ isFullScreen, toggleFullScreen: this.toggleFullScreen, })}
+                </div>
+              )}
             />
-          </Fragment>
-        ) : null}
-      </FullScreenContainer>
+            {isFullScreen ? (
+              <Fragment>
+                <FelaComponent
+                  style={{
+                    position: 'absolute',
+                    top: '2rem',
+                    end: '2rem',
+                  }}
+                >
+                  <Icon isFullScreen onClick={this.toggleFullScreen} hide={false} />
+                </FelaComponent>
+                <ToolBar
+                  itemName={itemName}
+                  itemUrl={itemUrl}
+                  closeButton={
+                    <Icon
+                      isFullScreen
+                      onClick={this.toggleFullScreen}
+                      hide={false}
+                    />
+                  }
+                  captionElement={captionElement}
+                />
+              </Fragment>
+            ) : null}
+          </figure>
+        )}
+      />
     );
   }
 }

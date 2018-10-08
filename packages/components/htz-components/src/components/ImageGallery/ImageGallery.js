@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, FelaComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { rgba, } from 'polished';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
@@ -16,6 +16,10 @@ const propTypes = {
    * Gallery's title/name for Aria.
    */
   accessibility: PropTypes.string.isRequired,
+  /**
+   * The duration of the sliding animation.
+   */
+  animationDuration: PropTypes.number,
   /**
    * Enable the button that allows you to see the gallery in full-screen.
    */
@@ -52,6 +56,7 @@ const galleryProps = {
 };
 
 const defaultProps = {
+  animationDuration: 3,
   enableEnlarge: true,
   forceAspect: null,
   isFullScreen: false,
@@ -64,6 +69,7 @@ const captionWrapperStyle = ({
   moving,
   direction,
   isFullScreen,
+  animationDuration,
 }) => {
   const positionChange =
     direction === 'next' ? 100 : direction === 'previous' ? -100 : 0;
@@ -79,89 +85,49 @@ const captionWrapperStyle = ({
     width: '100%',
     ...(moving ? {
       transitionProperty: 'all',
-      ...theme.getDuration('transition', 3),
+      ...theme.getDuration('transition', animationDuration),
       ...theme.getTimingFunction('transition', 'swiftOut'),
     } : {}),
   };
 };
 
-const dotsWrapperStyle = ({ theme, miscStyles, }) => ({
-  alignSelf: 'center',
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  extend: [
-    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-  ],
-});
-const DotsWrapper = createComponent(dotsWrapperStyle);
-
-const dotStyle = ({ theme, active, }) => ({
-  backgroundColor: active
-    ? theme.color('quaternary')
-    : rgba(theme.color('neutral', '-6'), 0.5),
-  borderRadius: '50%',
-  display: 'inline-block',
-  height: '1.3rem',
-  marginStart: '1rem',
-  marginEnd: '1rem',
-  width: '1.3rem',
-});
-const Dot = createComponent(dotStyle, 'span');
-
-const navigationStyle = ({
-  theme,
-  color,
-  backgroundColor = 'transparent',
-}) => ({
-  backgroundColor,
-  color,
-  width: '4rem',
-  height: '9rem',
-  zIndex: '3',
-});
-const NavigationButton = createComponent(navigationStyle, 'button', [
-  'aria-label',
-  'onClick',
-]);
-
-const nextButtonStyle = () => ({
-  end: '0',
-});
-const NextButton = createComponent(nextButtonStyle, NavigationButton, [
-  'aria-label',
-  'onClick',
-]);
-
-const previousButtonStyle = () => ({
-  start: '0',
-});
-const PreviousButton = createComponent(previousButtonStyle, NavigationButton, [
-  'aria-label',
-  'onClick',
-]);
-
-const itemsWrapperStyle = ({ theme, }) => ({
-  height: '100%',
-  display: 'flex',
-  flexWrap: 'nowrap',
-  position: 'relative',
-  extend: [
-    theme.mq({ from: 's', misc: 'portrait', }, { flexShrink: '1', }),
-    theme.mq({ from: 'm', misc: 'landscape', }, { flexShrink: '1', }),
-  ],
-});
-const ItemsWrapper = createComponent(itemsWrapperStyle);
-
 // eslint-disable-next-line react/prop-types
 const DotsElement = ({ images, displayItemNum, miscStyles, }) => (
-  <DotsWrapper miscStyles={miscStyles}>
-    {images.map((img, i) => <Dot active={i === displayItemNum} />)}
-  </DotsWrapper>
+  <FelaComponent
+    style={theme => ({
+      alignSelf: 'center',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      extend: [
+        ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+      ],
+    })}
+  >
+    {images.map((img, i) => (
+      <FelaComponent
+        style={theme => ({
+          backgroundColor: i === displayItemNum
+            ? theme.color('quaternary')
+            : rgba(theme.color('neutral', '-6'), 0.5),
+          borderRadius: '50%',
+          display: 'inline-block',
+          height: '1.3rem',
+          marginStart: '1rem',
+          marginEnd: '1rem',
+          width: '1.3rem',
+        })}
+        render={({ className, }) => (
+          <span className={className} />
+        )}
+      />
+    ))}
+  </FelaComponent>
 );
 
 /* eslint-disable react/prop-types */
 const CaptionElement = ({
+  animationDuration,
   caption,
   credit,
   index,
@@ -178,6 +144,7 @@ const CaptionElement = ({
     moving={moving}
     direction={direction}
     isFullScreen={isFullScreen}
+    animationDuration={animationDuration}
     rule={captionWrapperStyle}
     render={({ className, theme, }) => (
       <div className={className}>
@@ -203,6 +170,7 @@ const CaptionElement = ({
 
 const Gallery = ({
   accessibility,
+  animationDuration,
   currentDisplaying,
   forceAspect,
   images,
@@ -213,6 +181,7 @@ const Gallery = ({
     <FelaComponent
       render={({ theme, }) => (
         <Carousel
+          animationDuration={animationDuration}
           itemsLength={images.length}
           loop
           miscStyles={{
@@ -249,6 +218,7 @@ const Gallery = ({
                 )}
                 captionElement={
                   <CaptionElement
+                    animationDuration={animationDuration}
                     caption={image.title}
                     credit={image.credit}
                     index={displayItemNum}
@@ -257,22 +227,39 @@ const Gallery = ({
                     size={-1}
                   />
                 }
-                render={({ isFullScreen, }) => {
+                render={({ isFullScreen, toggleFullScreen, }) => {
                   const Image = imageProps => (
-                    <ArticleImage
-                      forceAspect={
-                        isFullScreen ? 'full' : forceAspect || 'regular'
-                      }
-                      isFullScreen={isFullScreen}
-                      showCaption={false}
-                      enableEnlarge={false}
-                      ignoreSchema
-                      miscStyles={{
-                        textAlign: 'center',
-                        marginBottom: '0 !important',
-                      }}
-                      {...imageProps}
-                    />
+                    isFullScreen ? (
+                      <ArticleImage
+                        forceAspect="full"
+                        isFullScreen
+                        showCaption={false}
+                        enableEnlarge={false}
+                        ignoreSchema
+                        miscStyles={{
+                          textAlign: 'center',
+                          marginBottom: '0 !important',
+                        }}
+                        {...imageProps}
+                      />
+                    )
+                    : (
+// eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
+                      <div onClick={toggleFullScreen}>
+                        <ArticleImage
+                          forceAspect={forceAspect || 'regular'}
+                          isFullScreen={false}
+                          showCaption={false}
+                          enableEnlarge={false}
+                          ignoreSchema
+                          miscStyles={{
+                            textAlign: 'center',
+                            marginBottom: '0 !important',
+                          }}
+                          {...imageProps}
+                        />
+                      </div>
+                      )
                   );
                   return (
                     <FelaComponent
@@ -284,7 +271,18 @@ const Gallery = ({
                         flexDirection: 'column',
                       }}
                     >
-                      <ItemsWrapper>
+                      <FelaComponent
+                        style={{
+                          height: '100%',
+                          display: 'flex',
+                          flexWrap: 'nowrap',
+                          position: 'relative',
+                          extend: [
+                            theme.mq({ from: 's', misc: 'portrait', }, { flexShrink: '1', }),
+                            theme.mq({ from: 'm', misc: 'landscape', }, { flexShrink: '1', }),
+                          ],
+                        }}
+                      >
                         {renderPreviousItems(({ itemIndex, }) => (
                           <Image {...images[itemIndex]} />
                         ))}
@@ -309,44 +307,66 @@ const Gallery = ({
                           }}
                         >
                           {renderButton(({ changeItem, }) => (
-                            <PreviousButton
-                              color={theme.color('neutral', '-1')}
-                              backgroundColor={rgba(
-                                theme.color('quaternary'),
-                                0.8
-                              )}
-                              onClick={event => {
-                                event.stopPropagation();
-                                changeItem('previous');
+                            <FelaComponent
+                              style={{
+                                width: '4rem',
+                                height: '9rem',
+                                zIndex: '3',
+                                color: theme.color('neutral', '-1'),
+                                backgroundColor: rgba(
+                                  theme.color('quaternary'),
+                                  0.8
+                                ),
+                                start: '0',
                               }}
-                              aria-label={theme.previousText}
-                            >
-                              <IconBack
-                                size={2.5}
-                                miscStyles={{
-                                  transform: 'rotateY(180deg)',
-                                }}
-                              />
-                            </PreviousButton>
+                              render={({ className, }) => (
+                                <button
+                                  className={className}
+                                  onClick={event => {
+                                    event.stopPropagation();
+                                    changeItem('previous');
+                                  }}
+                                  aria-label={theme.previousText}
+                                >
+                                  <IconBack
+                                    size={2.5}
+                                    miscStyles={{
+                                      transform: 'rotateY(180deg)',
+                                    }}
+                                  />
+                                </button>
+                              )}
+                            />
                           ))}
                           {renderButton(({ changeItem, }) => (
-                            <NextButton
-                              color={theme.color('neutral', '-1')}
-                              backgroundColor={rgba(
-                                theme.color('quaternary'),
-                                0.8
-                              )}
-                              onClick={event => {
-                                event.stopPropagation();
-                                changeItem('next');
+                            <FelaComponent
+                              style={{
+                                width: '4rem',
+                                height: '9rem',
+                                zIndex: '3',
+                                end: '0',
+                                color: theme.color('neutral', '-1'),
+                                backgroundColor: rgba(
+                                  theme.color('quaternary'),
+                                  0.8
+                                ),
                               }}
-                              aria-label={theme.nextText}
-                            >
-                              <IconBack size={2.5} />
-                            </NextButton>
+                              render={({ className, }) => (
+                                <button
+                                  className={className}
+                                  onClick={event => {
+                                    event.stopPropagation();
+                                    changeItem('next');
+                                  }}
+                                  aria-label={theme.nextText}
+                                >
+                                  <IconBack size={2.5} />
+                                </button>
+                              )}
+                            />
                           ))}
                         </FelaComponent>
-                      </ItemsWrapper>
+                      </FelaComponent>
                       {renderIndicator(() => (
                         <FelaComponent
                           style={{
@@ -374,28 +394,52 @@ const Gallery = ({
                             (isFullScreen ? (
                               <div className={className}>
                                 {renderButton(({ changeItem, }) => (
-                                  <PreviousButton
-                                    color={theme.color('quaternary')}
-                                    onClick={() => changeItem('previous')}
-                                    aria-label={theme.previousText}
-                                  >
-                                    <IconBack
-                                      size={2.5}
-                                      miscStyles={{
-                                        transform: 'rotateY(180deg)',
-                                      }}
-                                    />
-                                  </PreviousButton>
+                                  <FelaComponent
+                                    style={{
+                                      width: '4rem',
+                                      height: '9rem',
+                                      zIndex: '3',
+                                      color: theme.color('quaternary'),
+                                      backgroundColor: 'transparent',
+                                      start: '0',
+                                    }}
+                                    render={({ className, }) => (
+                                      <button
+                                        className={className}
+                                        onClick={() => changeItem('previous')}
+                                        aria-label={theme.previousText}
+                                      >
+                                        <IconBack
+                                          size={2.5}
+                                          miscStyles={{
+                                            transform: 'rotateY(180deg)',
+                                          }}
+                                        />
+                                      </button>
+                                    )}
+                                  />
                                 ))}
                                 <DotsElement {...{ images, displayItemNum, }} />
                                 {renderButton(({ changeItem, }) => (
-                                  <NextButton
-                                    color={theme.color('quaternary')}
-                                    onClick={() => changeItem('next')}
-                                    aria-label={theme.nextText}
-                                  >
-                                    <IconBack size={2.5} />
-                                  </NextButton>
+                                  <FelaComponent
+                                    style={{
+                                      width: '4rem',
+                                      height: '9rem',
+                                      zIndex: '3',
+                                      end: '0',
+                                      color: theme.color('quaternary'),
+                                      backgroundColor: 'transparent',
+                                    }}
+                                    render={({ className, }) => (
+                                      <button
+                                        className={className}
+                                        onClick={() => changeItem('next')}
+                                        aria-label={theme.nextText}
+                                      >
+                                        <IconBack size={2.5} />
+                                      </button>
+                                    )}
+                                  />
                                 ))}
                               </div>
                             ) : (
@@ -410,6 +454,7 @@ const Gallery = ({
                                 }}
                               >
                                 <CaptionElement
+                                  animationDuration={animationDuration}
                                   caption={previousImage.title}
                                   credit={previousImage.credit}
                                   direction={direction}
@@ -420,6 +465,7 @@ const Gallery = ({
                                   size={-2}
                                 />
                                 <CaptionElement
+                                  animationDuration={animationDuration}
                                   caption={image.title}
                                   credit={image.credit}
                                   direction={direction}
@@ -430,6 +476,7 @@ const Gallery = ({
                                   size={-2}
                                 />
                                 <CaptionElement
+                                  animationDuration={animationDuration}
                                   caption={nextImage.title}
                                   credit={nextImage.credit}
                                   direction={direction}

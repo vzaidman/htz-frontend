@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
-import { createComponent, FelaComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import Caption from '../Caption/Caption';
@@ -183,7 +183,6 @@ const wrapperStyle = ({
       : {},
   ],
 });
-const Wrapper = createComponent(wrapperStyle, 'figure');
 
 const getAspect = viewMode => {
   switch (viewMode) {
@@ -265,23 +264,29 @@ const UnwrappedImage = ({
   miscStyles,
   showCaption,
   title,
+  toggleFullScreen,
   forceAspect,
   viewMode,
   ...image
 }) => (
-  <Wrapper
+  <FelaComponent
+    rule={wrapperStyle}
     viewMode={forceAspect || viewMode}
     lastItem={lastItem}
     isHeadline={isHeadline}
     className={className}
     miscStyles={miscStyles}
     isFullScreen={isFullScreen}
-  >
-    <ImageElement forceAspect={forceAspect} {...image} isFullScreen={isFullScreen} />
-    {showCaption && !isFullScreen ? (
-      <Caption caption={title} credit={credit} prefix="צילום" />
-    ) : null}
-  </Wrapper>
+    render={({ className, }) => (
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+      <figure className={className} onClick={!isFullScreen ? toggleFullScreen : null}>
+        <ImageElement forceAspect={forceAspect} {...image} isFullScreen={isFullScreen} />
+        {showCaption && !isFullScreen ? (
+          <Caption caption={title} credit={credit} prefix="צילום" />
+        ) : null}
+      </figure>
+    )}
+  />
 );
 
 UnwrappedImage.propTypes = articleImagePropTypes;
@@ -354,8 +359,12 @@ class ArticleBodyImage extends React.Component {
         itemName={contentName}
         itemUrl={this.getImageUrl()}
         captionElement={<CaptionElement />}
-        render={({ isFullScreen, }) => (
-          <UnwrappedImage {...this.props} isFullScreen={isFullScreen} />
+        render={({ isFullScreen, toggleFullScreen, }) => (
+          <UnwrappedImage
+            {...this.props}
+            isFullScreen={isFullScreen}
+            toggleFullScreen={toggleFullScreen}
+          />
         )}
       />
     ) : (
