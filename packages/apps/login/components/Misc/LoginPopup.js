@@ -1,43 +1,45 @@
 import React, { Fragment, Component, } from 'react';
-
+import { createComponent, FelaTheme, } from 'react-fela';
 
 export default class LoginPopup extends Component {
-  
   state = {
-    stage: 1,
-    maxStages,
+    pageIndex: 0,
+  };
+
+  setPageIndex() {
+    this.setState({ pageIndex: this.state.pageIndex + 1, });
   }
 
-  prevStage() {
-    this.state.stage > 1 ?
-      this.setState({ stage: this.state.stage--, }) :
-      null;
-  }
-
-  nextStage() {
-    this.state.stage < this.state.maxStages ?
-      this.setState({ stage: this.state.stage++, }) :
-      null;
-  }
-
-  renderChildren() {
-    {React.Children.map(children, (child, i) => {
-      return i === this.state.stage ? child : null;
-    })}
+  renderChild(childrenList, pageIndex) {
+    const grandChildren = childrenList;
+    return React.Children.map(grandChildren.props.children, (child, i) => {
+      if (i == pageIndex) return child;
+    });
   }
 
   render() {
+    // Styling:
+    const popupWrapperStyle = () => ({
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0,0,0,0.7)',
+      zIndex: '100',
+      color: '#fff',
+    });
+    const PopupWrapper = createComponent(popupWrapperStyle);
 
-    const { children } = this.props;
+    const children = this.props.children(this.setPageIndex.bind(this));
+    const PopMessage = () => this.renderChild(children, this.state.pageIndex);
 
-    return(
-
+    return (
       <Fragment>
-        {this.renderChildren(this.prevStage.bind(this), this.nextStage.bind(this))}
+        <PopupWrapper>
+          <PopMessage />
+        </PopupWrapper>
       </Fragment>
-
     );
-
   }
-
 }
