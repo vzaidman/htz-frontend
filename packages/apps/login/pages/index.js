@@ -88,6 +88,27 @@ const Index = () => (
                       <FlowDispenser
                         render={({ getFlowByData, }) => (
                           <FormWrapper>
+                            <LoginPopup>
+                              {(incState) => (
+                                  <div>
+                                    <div>
+                                      some text<br/>
+                                      <button onClick={incState}>click</button>
+                                    </div>
+
+                                    <div>
+                                      some text 2<br/>
+                                      <button onClick={incState}>click</button>
+                                    </div>
+
+                                    <div>
+                                      some text 3<br/>
+                                      <button>click</button>
+                                    </div>
+                                  </div>
+                                )
+                              }
+                            </LoginPopup>
                             <ItemCenterer>
                               <h5>לכניסה או הרשמה לאתר הזינו כתובת דוא”ל</h5>
                             </ItemCenterer>
