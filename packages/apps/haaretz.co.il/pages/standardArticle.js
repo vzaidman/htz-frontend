@@ -20,6 +20,8 @@ function StandardArticlePage({ url, }) {
   return (
     <ArticleLayout
       url={url}
+      // used by ArticleLayout to redirect in case the pageType is not standard article
+      isStandardArticle
       render={({ articleId, slots, }) => <StandardArticle articleId={articleId} slots={slots} />}
     />
   );

@@ -1,6 +1,7 @@
 /* global sessionStorage localStorage */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 import { Query, } from 'react-apollo';
 import { FelaComponent, } from 'react-fela';
 import { StyleProvider, } from '@haaretz/fela-utils';
@@ -37,6 +38,10 @@ const WelcomePage = dynamic(import('../components/WelcomePage/WelcomePage'), {
 class ArticleLayout extends React.Component {
   static propTypes = {
     /**
+     * is this a standard article
+     */
+    isStandardArticle: PropTypes.bool,
+    /**
      * The render function of the Layout, should return react elements,
      * The render prop function is passed a Object with articleId and slots properties
      */
@@ -53,7 +58,9 @@ class ArticleLayout extends React.Component {
     }).isRequired,
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    isStandardArticle: false,
+  };
 
   state = {
     articleId: null,
@@ -70,6 +77,7 @@ class ArticleLayout extends React.Component {
   }
 
   componentDidMount() {
+    console.log('article layout mounted')
     const articleId = this.props.url.query.path.match(/(?:.*-?)(1\.\d+.*)/)[1];
     this.writeToSession(articleId);
     this.writeToLocal(articleId);
@@ -106,16 +114,23 @@ class ArticleLayout extends React.Component {
   };
 
   render() {
-    const { url, render, } = this.props;
+    const { isStandardArticle, url, render, } = this.props;
+    console.log('url from articlelayout: ', url);
     return (
       <Query query={ArticleInitQuery} variables={{ path: url.query.path, }}>
         {({ loading, error, data, client, }) => {
           if (loading) return null;
           if (error) logger.error(error);
           const {
-            page: { slots, lineage, },
+            page: { pageType, slots, lineage, },
           } = data;
           const articleId = lineage[0].contentId;
+          console.log('pageType from articleLayout: ', pageType);
+          if (process.browser && isStandardArticle && pageType !== 'regularArticle') {
+            console.log('need to redirect, new articleId: ', articleId);
+            console.log('next router: ', Router);
+            Router.push(`/${pageType}?path=/${articleId}`, `/${articleId}`);
+          }
           this.setState({
             articleId,
           });
