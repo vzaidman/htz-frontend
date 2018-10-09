@@ -8,6 +8,7 @@ module.exports = {
     }),
     sso: 'https://devsso.haaretz.co.il',
     newSso: 'https://ms-apps.haaretz.co.il/sso-dev',
+    userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo-dev',
     image: 'https://images.haarets.co.il/image',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
     graphql: defer(function () {
@@ -29,6 +30,7 @@ module.exports = {
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
   port: process.env.PORT || '3000',
+  graphQLPort: process.env.GRAPHQL_PORT || '4000',
   logLevel: 'debug',
   assetPrefix: '',
   enableHttpLogging: false,
