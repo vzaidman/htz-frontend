@@ -15,6 +15,7 @@ const defaultConfig = {
     `${__dirname}/jestRAFPolyfill.js`,
     `${__dirname}/enzyme-setup.js`,
     `${__dirname}/fetch-mock-setup.js`,
+    `${__dirname}/console-mock-setup.js`,
     'jest-localstorage-mock',
   ],
   testEnvironment: 'jest-environment-jsdom-global',
@@ -35,6 +36,7 @@ const defaultConfig = {
     '/scripts/test.js',
     '/config/test.js',
   ],
+  setupTestFrameworkScriptFile: 'jest-mock-console/dist/setupTestFramework.js',
 };
 
 let config;

@@ -1,5 +1,5 @@
+/* global mockConsole */
 import React from 'react';
-import mockConsole from 'jest-mock-console';
 import ReadingHistoryProvider from './ReadingHistoryProvider';
 import { felaMount, } from '../../test-helpers/felaEnzymeRenderers';
 
