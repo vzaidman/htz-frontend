@@ -16,7 +16,6 @@ import 'isomorphic-fetch';
 import createContext from './createContext';
 import dataSources from './dataSources';
 
-
 const port = parseInt(process.env.GRAPHQL_PORT || (config.has('graphQLPort') ? config.get('graphQLPort') : '4000'), 10);
 const userInfoUri = config.get('service.userInfoUri');
 
