@@ -40,7 +40,7 @@ const tabRule: Object => Object = ({ theme, }) => ({
   },
 });
 
-const TabButton: StatelessFunctionalComponent<TabButtonProps> = ({
+export const TabButton: StatelessFunctionalComponent<TabButtonProps> = ({
   isActive, children, ...props // eslint-disable-line react/prop-types
 }) => (
   <FelaComponent

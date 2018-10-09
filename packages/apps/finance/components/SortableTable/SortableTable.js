@@ -17,6 +17,7 @@ import SectionLink from '../SectionLink/SectionLink';
 const TableQuery: (Array<string>) => DocumentNode = fields => gql`
   query Table(
     $parentId: String,
+    $assetSubSection: String,
     $assetsId: [String],
     $count: Int!,
     $sortBy: String!,
@@ -25,6 +26,7 @@ const TableQuery: (Array<string>) => DocumentNode = fields => gql`
   ) {
     financeTable(
       parentId: $parentId,
+      assetSubSection: $assetSubSection,
       assetsId: $assetsId,
       count: $count,
       sortBy: $sortBy,
@@ -49,12 +51,14 @@ type FieldType = {
 }
 
 type Props = {
-  miscStyles?: Object,
+  miscStyles?: StyleProps,
+  headerMiscStyles?: StyleProps,
   initialSort: string,
   fields: Array<FieldType>,
   parentId?: string,
   assetsId?: Array<string>,
   type: string,
+  assetSubSection?: string,
   linkText: ?string,
   addLink: ?boolean,
   count?: number,
@@ -135,18 +139,25 @@ const TableLink: TableLinkProps => Node = ({ content, assetId, type, allowTab, }
   />
 );
 
-const tdHeaderStyle: Object => Object = theme => ({
+const tdHeaderStyle: (Object, StyleProps) => Object = (theme, miscStyles) => ({
   paddingTop: '0.5rem',
   paddingBottom: '0.5rem',
   textAlign: 'start',
   backgroundColor: theme.color('neutral', '-6'),
+  extend: [
+    ...(miscStyles
+      ? parseStyleProps(miscStyles, theme.mq, theme.type)
+      : []),
+  ],
 });
 
 class SortableTable extends React.Component<Props, State> {
   static defaultProps = {
     miscStyles: null,
+    headerMiscStyles: null,
     assetsId: null,
     parentId: null,
+    assetSubSection: null,
     count: 5,
   };
 
@@ -178,6 +189,7 @@ class SortableTable extends React.Component<Props, State> {
   render(): Node {
     const {
       miscStyles,
+      headerMiscStyles,
       fields,
       parentId,
       type,
@@ -186,6 +198,7 @@ class SortableTable extends React.Component<Props, State> {
       addLink,
       count,
       pagination,
+      assetSubSection,
     } = this.props;
     const { sortBy, sortOrder, } = this.state;
     return (
@@ -197,6 +210,7 @@ class SortableTable extends React.Component<Props, State> {
           count: assetsId ? assetsId.length : count,
           sortBy,
           sortOrder,
+          assetSubSection,
           offset: 0,
         }}
       >
@@ -237,7 +251,7 @@ class SortableTable extends React.Component<Props, State> {
                             >
                               <FelaComponent
                                 style={theme => ({
-                                  ...tdHeaderStyle(theme),
+                                  ...tdHeaderStyle(theme, headerMiscStyles),
                                   paddingEnd: '2rem',
                                   fontWeight: sortBy === field.name ? '700' : '300',
                                 })}
@@ -268,7 +282,10 @@ class SortableTable extends React.Component<Props, State> {
                     >
                       {fields.map(field => (
                         <TdComponent
-                          {...field.style ? { miscStyles: field.style(stock), } : {}}
+                          miscStyles={{
+                            ...(field.style ? field.style(stock) : {}),
+                            paddingStart: '2rem',
+                          }}
                         >
                           <TableLink
                             allowTab
@@ -325,19 +342,36 @@ class SortableTable extends React.Component<Props, State> {
                               variables: {
                                 offset: count || assets.length,
                               },
-                              updateQuery: (prev, { fetchMoreResult, }) => (
-                                fetchMoreResult
-                                  ? Object.assign({}, prev, {
-                                    financeTable: {
-                                      assets: [
-                                        ...prev.financeTable.assets,
-                                        ...fetchMoreResult.financeTable.assets,
-                                      ],
-                                      __typename: 'FinanceTable',
-                                    },
+                              updateQuery: (prev, { fetchMoreResult, }) => {
+                                const assets = fetchMoreResult
+                                  ? [
+                                    ...prev.financeTable.assets,
+                                    ...fetchMoreResult.financeTable.assets,
+                                  ].sort((itemA, itemB) => {
+                                    const valueA = typeof itemA[sortBy] === 'string' ? itemA[sortBy].toUpperCase() : itemA[sortBy]; // ignore upper and lowercase
+                                    const valueB = typeof itemB[sortBy] === 'string' ? itemB[sortBy].toUpperCase() : itemB[sortBy]; // ignore upper and lowercase
+                                    if (valueA < valueB) {
+                                      return sortOrder === 'ascend' ? -1 : 1;
+                                    }
+                                    if (valueA > valueB) {
+                                      return sortOrder === 'ascend' ? 1 : -1;
+                                    }
+
+                                    // values must be equal
+                                    return 0;
                                   })
-                                  : prev
-                              ),
+                                  : null;
+                                return (
+                                  fetchMoreResult
+                                    ? Object.assign({}, prev, {
+                                      financeTable: {
+                                        assets,
+                                        __typename: 'FinanceTable',
+                                      },
+                                    })
+                                    : prev
+                                );
+                              },
                             }
                           )
                         )}
