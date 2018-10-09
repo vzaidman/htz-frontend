@@ -30,7 +30,7 @@ function exchange({ url: { query: { section, }, }, }: Props): Node {
         >
           <TableGraphConnector
             assetsId={[ '2', '142', '137', '-2000', '164', '143', '167', '145', '149', ]}
-            exchange
+            isExchange
           />
         </RowItem>
         {

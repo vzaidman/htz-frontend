@@ -70,7 +70,7 @@ type StockTableProps = {
   changeStock: StockData => void,
 // eslint-disable-next-line react/no-unused-prop-types
   assetId?: string | number,
-  exchange: boolean,
+  isExchange: boolean,
 }
 
 type State = {
@@ -128,7 +128,7 @@ class StockTable extends React.Component<StockTableProps, State> {
   };
 
   render(): Node {
-    const { data: { assets: data, }, miscStyles, exchange, } = this.props;
+    const { data: { assets: data, }, miscStyles, isExchange, } = this.props;
     const { stock: { id, }, } = this.state;
     return (
       <FelaComponent
@@ -162,7 +162,7 @@ class StockTable extends React.Component<StockTableProps, State> {
                   backgroundColor: theme.color('neutral', '-6'),
                 })}
               >
-                {exchange ? 'מטבע' : 'שם נייר'}
+                {isExchange ? 'מטבע' : 'שם נייר'}
               </FelaComponent>
             </TdComponent>
             <TdComponent

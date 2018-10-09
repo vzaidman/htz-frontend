@@ -11,8 +11,8 @@ import SectionLink from '../SectionLink/SectionLink';
 
 type Props = {
   assetId?: number | string | null,
-  assetsId?: ?Array<string>,
-  exchange?: boolean,
+  assetsId: ?Array<string>,
+  isExchange?: boolean,
 };
 
 type State = {
@@ -23,7 +23,7 @@ class TableGraphConnector extends React.Component<Props, State> {
   static defaultProps = {
     assetId: null,
     assetsId: null,
-    exchange: false,
+    isExchange: false,
   };
 
   state: State;
@@ -43,7 +43,7 @@ class TableGraphConnector extends React.Component<Props, State> {
 
   render(): Node {
     const { id, name, type, } = this.state || {};
-    const { assetId, assetsId, exchange, } = this.props;
+    const { assetId, assetsId, isExchange, } = this.props;
     return (
       <FelaTheme
         render={theme => (
@@ -68,7 +68,7 @@ class TableGraphConnector extends React.Component<Props, State> {
                 changeStock={this.changeStock}
                 assetId={assetId}
                 assetsId={assetsId}
-                exchange={exchange}
+                isExchange={isExchange}
                 miscStyles={{
                   direction: 'rtl',
                   position: 'absolute',
