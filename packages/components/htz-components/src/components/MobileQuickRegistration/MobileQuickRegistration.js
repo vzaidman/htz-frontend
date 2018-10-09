@@ -51,7 +51,7 @@ const RegistrationWrapper = ({ miscStyles, children, }) => (
     style={theme => ({
       position: 'relative',
       textAlign: 'center',
-      marginTop: '2rem',
+      marginTop: '4rem',
       extend: [
         borderVertical('1px', 4, 'solid', theme.color('primary')),
         ...(miscStyles
