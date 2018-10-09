@@ -25,7 +25,9 @@ function index(): Node {
               <RowItem
                 title="מבט לשווקים"
               >
-                <TableGraphConnector />
+                <TableGraphConnector
+                  assetsId={[ '2', '142', '137', '-2000', '164', '143', '167', '145', '149', ]}
+                />
               </RowItem>
             </PageRow>
             <PageRow>

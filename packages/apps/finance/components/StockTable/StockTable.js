@@ -299,7 +299,7 @@ class StockTable extends React.Component<StockTableProps, State> {
 }
 
 export default (props: any) => {
-  const { assetId, } = props;
+  const { assetId, assetsId, } = props;
   return (
     <Query
       query={TableQuery}
@@ -308,7 +308,7 @@ export default (props: any) => {
           assetId: assetId.toString(),
           count: 9,
         } : {
-          assetsId: [ '2', '142', '137', '-2000', '164', '143', '167', '145', '149', ],
+          assetsId,
         }),
       }}
     >
