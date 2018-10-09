@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment, } from 'react';
-import { FelaComponent, } from 'react-fela';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import type { Node, StatelessFunctionalComponent, } from 'react';
 import type { Stock as LineStock, } from '../Graph/graphs/Line/Line';
@@ -113,57 +113,67 @@ class StockStats extends React.Component<Props, State> {
     const { render, miscStyles, } = this.props;
     const { stats, } = this.state;
     return (
-      <Fragment>
-        {render({ changeStats: this.changeStats, })}
-        <FelaComponent
-          style={theme => ({
-            backgroundColor: theme.color('neutral', '-2'),
-            color: theme.color('neutral', '-10'),
-            display: 'flex',
-            height: '9rem',
-            paddingBottom: '1rem',
-            paddingTop: '1rem',
-            ...theme.type(-1),
-            extend: [
-              ...(miscStyles
-                ? parseStyleProps(miscStyles, theme.mq, theme.type)
-                : []),
-            ],
-          })}
-        >
-          {
-            stats && stats.length > 0 ? (
-              <Fragment>
-                <Stat title={stats[0].title}>
-                  {className => <span className={className}>{numToString(stats[0].value)}</span>}
-                </Stat>
-                <Stat title={stats[1].title}>
-                  {className => <span className={className}>{numToString(stats[1].value)}</span>}
-                </Stat>
-                <Stat
-                  title={stats[2].title}
-                  miscStyles={{
-                    color: Number(stats[2].value) < 0 ? 'red' : 'green',
-                    direction: 'ltr',
-                    ':before': {
-                      content: Number(stats[2].value) > 0 ? '"+"' : Number(stats[2].value) < 0 ? '"-"' : '""',
-                    },
-                    ':after': {
-                      content: '"%"',
-                    },
-                  }}
-                >
-                  {className => (
-                    <span className={className}>
-                      {numToString(Math.abs(Number(stats[2].value)))}
-                    </span>
-                  )}
-                </Stat>
-              </Fragment>
-            ) : null
-          }
-        </FelaComponent>
-      </Fragment>
+      <FelaTheme
+        render={theme => (
+          <Fragment>
+            {render({ changeStats: this.changeStats, })}
+            <FelaComponent
+              style={{
+                backgroundColor: theme.color('neutral', '-2'),
+                color: theme.color('neutral', '-10'),
+                display: 'flex',
+                height: '9rem',
+                paddingBottom: '1rem',
+                paddingTop: '1rem',
+                ...theme.type(-1),
+                extend: [
+                  ...(miscStyles
+                    ? parseStyleProps(miscStyles, theme.mq, theme.type)
+                    : []),
+                ],
+              }}
+            >
+              {
+                stats && stats.length > 0 ? (
+                  <Fragment>
+                    <Stat title={stats[0].title}>
+                      {className =>
+                        <span className={className}>{numToString(stats[0].value)}</span>
+                      }
+                    </Stat>
+                    <Stat title={stats[1].title}>
+                      {className =>
+                        <span className={className}>{numToString(stats[1].value)}</span>
+                      }
+                    </Stat>
+                    <Stat
+                      title={stats[2].title}
+                      miscStyles={{
+                        color: Number(stats[2].value) < 0
+                          ? theme.color('negative', '-2')
+                          : theme.color('positive', '-2'),
+                        direction: 'ltr',
+                        ':before': {
+                          content: Number(stats[2].value) > 0 ? '"+"' : Number(stats[2].value) < 0 ? '"-"' : '""',
+                        },
+                        ':after': {
+                          content: '"%"',
+                        },
+                      }}
+                    >
+                      {className => (
+                        <span className={className}>
+                          {numToString(Math.abs(Number(stats[2].value)))}
+                        </span>
+                      )}
+                    </Stat>
+                  </Fragment>
+                ) : null
+              }
+            </FelaComponent>
+          </Fragment>
+        )}
+      />
     );
   }
 }

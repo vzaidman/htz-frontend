@@ -231,7 +231,7 @@ class Line extends React.Component<Props, State> {
 
     /* Merge the Enter event with the Update event and animation. */
     enter.merge(lines)
-      .attr('stroke', '#f5a623')
+      .attr('stroke', theme.color('sales'))
       .attr('stroke-width', 1)
       .transition(transition)
       .attr('x1', d => xScale(d.time))

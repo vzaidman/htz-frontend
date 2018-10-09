@@ -193,7 +193,9 @@ class Bonds extends React.Component<{}, State> {
                                 display: '% שינוי',
                                 sortingOrder: 'descend',
                                 style: ({ changePercentage, }) => ({
-                                  color: changePercentage < 0 ? 'red' : 'green',
+                                  color: changePercentage < 0
+                                    ? theme.color('negative')
+                                    : theme.color('positive'),
                                   direction: 'ltr',
                                   fontWeight: '700',
                                   paddingEnd: '2rem',
@@ -216,7 +218,9 @@ class Bonds extends React.Component<{}, State> {
                                 display: '% תשואה לפדיון',
                                 sortingOrder: 'descend',
                                 style: ({ redemptionYield, }) => ({
-                                  color: redemptionYield < 0 ? 'red' : 'green',
+                                  color: redemptionYield < 0
+                                    ? theme.color('negative')
+                                    : theme.color('positive'),
                                   direction: 'ltr',
                                   fontWeight: '700',
                                   paddingEnd: '2rem',

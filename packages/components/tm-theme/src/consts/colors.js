@@ -608,6 +608,7 @@ const colors = {
   },
 
   negative: {
+    '-2': '#ff8585',
     '-1': [ 'tertiary', '-1', ],
     base: [ 'tertiary', 'base', ],
     '+1': [ 'tertiary', '+1', ],

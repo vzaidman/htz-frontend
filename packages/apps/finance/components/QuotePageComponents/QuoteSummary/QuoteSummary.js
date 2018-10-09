@@ -108,7 +108,9 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
               <Stat
                 title="% שינוי"
                 miscStyles={{
-                  color: Number(changePercentage) < 0 ? 'red' : 'green',
+                  color: Number(changePercentage) < 0
+                    ? theme.color('negative')
+                    : theme.color('positive'),
                   ...theme.type(2),
                   direction: 'ltr',
                   ':before': {

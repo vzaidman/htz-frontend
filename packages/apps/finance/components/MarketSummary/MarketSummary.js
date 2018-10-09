@@ -145,7 +145,9 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ asset, miscStyles, 
               <Item
                 title="% שינוי"
                 miscStyles={{
-                  color: Number(changePercentage) < 0 ? 'red' : 'green',
+                  color: Number(changePercentage) < 0
+                    ? theme.color('negative')
+                    : theme.color('positive'),
                   direction: 'ltr',
                   ':before': {
                     content: Number(changePercentage) > 0 ? '"+"' : Number(changePercentage) < 0 ? '"-"' : '""',

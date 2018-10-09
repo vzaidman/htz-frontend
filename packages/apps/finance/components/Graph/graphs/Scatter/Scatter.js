@@ -6,6 +6,7 @@ import type {
 } from 'react';
 import { FelaComponent, } from 'react-fela';
 import * as d3 from 'd3';
+import rgba from 'polished/lib/color/rgba';
 
 export type Stock = {
   x: number,
@@ -200,7 +201,10 @@ class Scatter extends React.Component<Props, State> {
         this.moveLine(d, false);
       })
       .transition(transition)
-      .attr('fill', d => (d.y > 0 ? '#7ad166' : '#e22134'))
+      .attr('fill', d => (d.y > 0
+        ? rgba(theme.color('positive', '-2'), 0.8)
+        : rgba(theme.color('negative', '-2'), 0.8)
+      ))
       .attr('r', 5)
       .attr('cx', d => xScale(d.x))
       .attr('cy', d => yScale(d.y));

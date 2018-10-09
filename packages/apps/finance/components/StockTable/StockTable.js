@@ -245,7 +245,9 @@ class StockTable extends React.Component<StockTableProps, State> {
                       <TdComponent
                         isActive={isActive}
                         miscStyles={{
-                          color: Number(stock.changePercentage) < 0 ? 'red' : 'green',
+                          color: Number(stock.changePercentage) < 0
+                            ? isActive ? theme.color('negative', '-2') : theme.color('negative')
+                            : isActive ? theme.color('positive', '-2') : theme.color('positive'),
                           direction: 'ltr',
                           fontWeight: '700',
                           paddingEnd: '2rem',

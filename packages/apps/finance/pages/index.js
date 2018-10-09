@@ -67,7 +67,9 @@ function index(): Node {
                           display: '% שינוי',
                           sortingOrder: 'descend',
                           style: ({ changePercentage, }) => ({
-                            color: changePercentage < 0 ? 'red' : 'green',
+                            color: changePercentage < 0
+                              ? theme.color('negative')
+                              : theme.color('positive'),
                             direction: 'ltr',
                             fontWeight: '700',
                             paddingEnd: '2rem',
@@ -131,7 +133,9 @@ function index(): Node {
                           display: '% שינוי',
                           sortingOrder: 'descend',
                           style: ({ changePercentage, }) => ({
-                            color: changePercentage < 0 ? 'red' : 'green',
+                            color: changePercentage < 0
+                              ? theme.color('negative')
+                              : theme.color('positive'),
                             direction: 'ltr',
                             fontWeight: '700',
                             paddingEnd: '2rem',
@@ -183,7 +187,9 @@ function index(): Node {
                           display: '% פער',
                           sortingOrder: 'descend',
                           style: ({ arbGap, }) => ({
-                            color: arbGap < 0 ? 'red' : 'green',
+                            color: arbGap < 0
+                              ? theme.color('negative')
+                              : theme.color('positive'),
                             direction: 'ltr',
                             fontWeight: '700',
                             paddingEnd: '2rem',
@@ -239,7 +245,9 @@ function index(): Node {
                           display: '% שינוי',
                           sortingOrder: 'descend',
                           style: ({ changePercentage, }) => ({
-                            color: changePercentage < 0 ? 'red' : 'green',
+                            color: changePercentage < 0
+                              ? theme.color('negative')
+                              : theme.color('positive'),
                             direction: 'ltr',
                             fontWeight: '700',
                             paddingEnd: '2rem',
@@ -310,7 +318,9 @@ function index(): Node {
                           display: '% פער',
                           sortingOrder: 'descend',
                           style: ({ arbGap, }) => ({
-                            color: arbGap < 0 ? 'red' : 'green',
+                            color: arbGap < 0
+                              ? theme.color('negative')
+                              : theme.color('positive'),
                             direction: 'ltr',
                             fontWeight: '700',
                             paddingEnd: '2rem',
@@ -362,7 +372,9 @@ function index(): Node {
                           display: '% שינוי',
                           sortingOrder: 'descend',
                           style: ({ changePercentage, }) => ({
-                            color: changePercentage < 0 ? 'red' : 'green',
+                            color: changePercentage < 0
+                              ? theme.color('negative')
+                              : theme.color('positive'),
                             direction: 'ltr',
                             fontWeight: '700',
                             paddingEnd: '2rem',
