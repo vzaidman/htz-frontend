@@ -19,10 +19,10 @@ const style = ({ theme, }) => ({
   },
 });
 
-const MarkedAdSlot = props => (
+const WebInreadAdSlot = props => (
   <FelaComponent style={{ textAlign: 'center', }} >
     <AdSlotBase styleRule={style} {...props} />
   </FelaComponent>
 );
 
-export default MarkedAdSlot;
+export default WebInreadAdSlot;

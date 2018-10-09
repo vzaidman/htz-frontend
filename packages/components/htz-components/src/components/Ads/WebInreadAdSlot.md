@@ -2,6 +2,6 @@
 
 ```jsx
 <div style={{ direction: 'rtl' }}>
-  <MarkedAdSlot title="- פרסומת -" />
+  <WebInreadAdSlot title="- פרסומת -" />
 </div>
 ```

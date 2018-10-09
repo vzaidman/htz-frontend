@@ -2,24 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Zen from '../Zen/Zen';
 import AdSlotBase from './AdSlotBase';
-import MarkedAdSlot from './MarkedAdSlot';
+import WebInreadAdSlot from './WebInreadAdSlot';
 import PlazmaAdSlot from './PlazmaAdSlot';
+import MobileInreadAdSlot from './MobileInreadAdSlot';
 
-const GeneralAdSlot = props => {
-  const isInreadAdSlot = props.id && props.id.toLowerCase().includes('inread');
-  const isPlazmaAdSlot = props.id && props.id.toLowerCase().includes('plazma');
-  return (
-    <Zen animate>
-      {
-        isInreadAdSlot
-          ? <MarkedAdSlot {...props} />
-          : isPlazmaAdSlot
-            ? <PlazmaAdSlot {...props} />
-            : <AdSlotBase {...props} />
-      }
-    </Zen>
-  );
+// maps slotId to matching component
+const mapSlotIdToComponent = slotId => {
+  const map = [
+    [ /inread/i, props => (<WebInreadAdSlot {...props} />), ],
+    [ /plazma/i, props => (<PlazmaAdSlot {...props} />), ],
+    [ /mobile_web\.box\d\.article/i, props => (<MobileInreadAdSlot {...props} />), ],
+  ];
+  const defualtComponent = props => (<AdSlotBase {...props} />);
+
+  for (const [ pattern, component, ] of map) {
+    if (pattern.test(slotId)) {
+      return component;
+    }
+  }
+  return defualtComponent;
 };
+
+const GeneralAdSlot = props => (
+  <Zen animate>
+    {
+      mapSlotIdToComponent(props.id)(props)
+    }
+  </Zen>
+);
 
 GeneralAdSlot.propTypes = {
   id: PropTypes.string.isRequired,
