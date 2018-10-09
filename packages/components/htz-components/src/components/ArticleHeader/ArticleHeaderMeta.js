@@ -71,7 +71,10 @@ const authorsAndTimeContStyle = theme => ({
 });
 
 const alertsAndDesktopTimeContStyle = theme => ({
-  extend: [ theme.mq({ from: 'l', }, { marginTop: '1rem', }), ],
+  marginStart: 'auto',
+  extend: [
+    theme.mq({ from: 'l', }, { marginTop: '1rem', }),
+  ],
 });
 
 const shouldShowDate = ({ startTime, endTime, hours = 18, }) => {

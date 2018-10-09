@@ -145,16 +145,7 @@ export default class ServiceByMailRegistration extends React.Component {
                         <FelaComponent
                           style={{
                             display: 'flex',
-                            flexDirection: 'column',
                             alignItems: 'stretch',
-                            extend: [
-                              theme.mq(
-                                { from: 's', },
-                                {
-                                  flexDirection: 'row',
-                                }
-                              ),
-                            ],
                           }}
                         >
                           <Button
@@ -177,11 +168,10 @@ export default class ServiceByMailRegistration extends React.Component {
                               onClick={() => this.props.onCancel()}
                               miscStyles={{
                                 type: [
-                                  { until: 's', value: -1, },
+                                  { until: 's', value: 0, },
                                   { from: 's', value: -2, },
                                 ],
-                                marginStart: [ { from: 's', value: '1rem', }, ],
-                                marginTop: [ { until: 's', value: '1rem', }, ],
+                                marginStart: '1rem',
                               }}
                             >
                               {theme.serviceByMailI18n.btnCancelText}
