@@ -149,7 +149,7 @@ function Header({
                 </HeaderElementCont>
                 <HeaderElementCont
                   miscStyles={{
-                    marginTop: '3rem',
+                    maxWidth: [ { from: 'm', value: '84rem', }, ],
                     marginRight: 'auto',
                     marginLeft: 'auto',
                     display: [ { until: 's', value: 'none', }, ],
@@ -164,7 +164,7 @@ function Header({
                     }}
                     elementObj={headlineElement}
                     miscStyles={{
-                      marginTop: '4rem',
+                      marginTop: '5rem',
                       marginBottom: [ { until: 'm', value: 0, }, ],
                       textAlign: 'start',
                     }}

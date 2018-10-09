@@ -61,7 +61,7 @@ class Rating extends Component {
               }}
             >
               <IconStar
-                size={[ { from: 's', value: 2.8, }, { until: 's', value: 4, }, ]}
+                size={[ { from: 'm', value: 2.5, }, { until: 'm', value: 4, }, ]}
                 rightColor={this.starColor(true, starNumber)}
                 leftColor={this.starColor(false, starNumber)}
               />

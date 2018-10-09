@@ -87,10 +87,18 @@ class RecipeRating extends Component {
     return (
       <FelaComponent
         style={theme => ({
-          maxWidth: theme.articleStyle.body.maxWidth,
-          marginRight: 'auto',
-          marginLeft: 'auto',
-          extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
+          extend: [
+            theme.mq(
+              { from: 's', },
+              {
+                maxWidth: theme.articleStyle.body.maxWidth,
+                marginRight: 'auto',
+                marginLeft: 'auto',
+              }
+            ),
+            theme.mq({ until: 's', }, { paddingRight: '2rem', paddingLeft: '2rem', }),
+            ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+          ],
         })}
         render={({
           className,
@@ -127,13 +135,12 @@ class RecipeRating extends Component {
               <FelaComponent
                 style={{
                   fontWeight: 'bold',
-                  color: theme.color('neutral', '-2'),
                   display: 'flex',
                   alignItems: 'center',
                   // justifyContent: 'space-between',
                   extend: [
                     borderBottom('1px', 2, 'solid', theme.color('neutral', '-5')),
-                    theme.type(-1),
+                    theme.type(-2),
                     theme.mq({ from: 'l', }, { flexDirection: 'column', alignItems: 'flex-start', }),
                   ],
                 }}
@@ -142,6 +149,18 @@ class RecipeRating extends Component {
                 <FelaComponent
                   style={{
                     extend: [
+                      theme.mq(
+                        { until: 'm', },
+                        {
+                          marginTop: '-1rem',
+                        }
+                      ),
+                      theme.mq(
+                        { from: 'm', until: 'l', },
+                        {
+                          marginTop: '-0.5rem',
+                        }
+                      ),
                       theme.mq(
                         { until: 'l', },
                         {

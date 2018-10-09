@@ -255,7 +255,7 @@ function RecipeArticle({ articleId, slots, }) {
                                 style={{
                                   height: '100%',
                                   left: '0',
-                                  paddingTop: '3rem',
+                                  paddingTop: '4rem',
                                   position: 'absolute',
                                   top: '0',
                                 }}

@@ -67,8 +67,8 @@ function Ingredients({ ingredientLists, }) {
                           display: 'inline-block',
                           content: '""',
                           borderRadius: '50%',
-                          height: '1rem',
-                          width: '1rem',
+                          height: '0.9rem',
+                          width: '0.9rem',
                           backgroundColor: theme.color('neutral', '-3'),
                         },
                         extend: [ theme.type(-2), ],
@@ -77,7 +77,7 @@ function Ingredients({ ingredientLists, }) {
                     >
                       <FelaComponent
                         style={{
-                          extend: [ theme.type(0), ],
+                          extend: [ theme.type(1, { untilBp: 'xl', lines: 5, }), theme.type(0, { fromBp: 'xl', lines: 5, }), ],
                         }}
                         render="span"
                       >
