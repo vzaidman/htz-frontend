@@ -89,20 +89,20 @@ const Index = () => (
                         render={({ getFlowByData, }) => (
                           <FormWrapper>
                             <LoginPopup>
-                              {(incState) => (
+                              {(nextStage) => (
                                   <div>
                                     <div>
-                                      some text<br/>
-                                      <button onClick={incState}>click</button>
+                                      Initial Stage<br/>
+                                      <button onClick={nextStage}>click</button>
                                     </div>
 
                                     <div>
-                                      some text 2<br/>
-                                      <button onClick={incState}>click</button>
+                                      Second Stage<br/>
+                                      <button onClick={nextStage}>click</button>
                                     </div>
 
                                     <div>
-                                      some text 3<br/>
+                                      Thanks!<br/>
                                       <button>click</button>
                                     </div>
                                   </div>
