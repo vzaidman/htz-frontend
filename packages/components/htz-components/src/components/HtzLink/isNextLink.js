@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* global window */
 import { breakUrl, } from '@haaretz/app-utils';
 
 const premiumPrefix = '(?:\\.premium-)?';
@@ -61,9 +62,8 @@ export function getArticlePageTypeFromUrl(url) {
   // and return the article type string according to the
   // `${articleType.toLowerCase()}Article` standard.
   const articleType = articleTypes.reduce(
-    (articleTypeName, item) => (
-      articleTypeName || (url.includes(`${item}-`) ? `${item.toLowerCase()}Article` : false)
-    ),
+    (articleTypeName, item) =>
+      articleTypeName || (url.includes(`${item}-`) ? `${item.toLowerCase()}Article` : false),
     false
   );
 
@@ -78,13 +78,13 @@ export function getArticlePageTypeFromUrl(url) {
  * @param href
  * @return {boolean}
  */
-export default function isNextLink(href) {
+export default function isNextLink(href, site) {
   // `href` is a simple string
   if (typeof href === 'string') {
-    return isNextLinkSimpleString(href);
+    return isNextLinkSimpleString(href, site);
   }
   if (href && typeof href === 'object' && href.pathname && typeof href.pathname === 'string') {
-    return isNextLinkSimpleString(href.pathname);
+    return isNextLinkSimpleString(href.pathname, site);
   }
   // `href` is of unknown form
   return false;
@@ -95,7 +95,10 @@ export default function isNextLink(href) {
  * @param {string} href the url to test
  * @return {boolean}
  */
-function isNextLinkSimpleString(href) {
+function isNextLinkSimpleString(href, site) {
+  if (!isSameDomain(href, site)) {
+    return false;
+  }
   const { fullMatch, baseUrl, scheme, fqdn, hostname, domain, port, path, query, fragment, } =
     breakUrl(href) || {};
   return (
@@ -103,4 +106,9 @@ function isNextLinkSimpleString(href) {
     isReactType.test(path) &&
     !isNonReactSectionRegex.test(path)
   );
+}
+
+function isSameDomain(href, site) {
+  const { domain, } = breakUrl(href);
+  return domain ? domain === site : true;
 }

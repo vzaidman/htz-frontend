@@ -17,8 +17,8 @@ Object {
         >
           <a
             className={null}
-            href="/hayehudim-baim-1.2670"
-            onClick={[Function]}
+            href="http://eran.themarker.com:8080/hayehudim-baim-1.2670"
+            onClick={null}
           >
             <span
               className="htz-i htz-j"

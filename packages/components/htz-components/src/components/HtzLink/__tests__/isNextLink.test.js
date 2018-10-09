@@ -4,8 +4,9 @@ const testUrls = [
   [ '/blogs/netalexander/1.6224763', true, ],
   [ 'http://guyk.haaretz.co.il/1.6224763', true, ],
   [ 'http://docker.themarker.com:2000/graphql', false, ],
-  [ 'http://docker.themarker.com:2000/news/science/.premium-1.6224758', true, ],
-  [ 'haaretz.co.il/gallery/cinema/.premium-1.6224424', true, ],
+  [ 'http://docker.haaretz.co.il:2000/news/science/.premium-1.6224758', true, ],
+  [ 'http://docker.themarker.com:2000/news/science/.premium-1.6224758', false, ],
+  [ 'haaretz.co.il/gallery/cinema/.premium-1.6224424', false, ],
   [ '/promotions-page/thankYou', true, ],
   [ { pathname: '/promotions-page/thankYou', }, true, ],
   [ undefined, false, ],
@@ -38,7 +39,8 @@ const testUrls = [
   [ '/sport/nba?123123', false, ],
   [ '/realestate/MAGAZINE-1.5958669', false, ],
   [ 'https://www.themarker.com/', false, ],
-  [ 'https://www.themarker.com/realestate/1.6193372', true, ],
+  [ 'https://www.haaretz.co.il/realestate/1.6193372', true, ],
+  [ 'https://www.themarker.com/realestate/1.6193372', false, ],
   [ 'https://www.themarker.com/personal-area/personal-page', false, ],
   [ 'https://www.themarker.com', false, ],
   [ 'https://www.themarker.com/realestate/MAGAZINE-1.5958669', false, ],
@@ -49,11 +51,16 @@ const testUrls = [
   [ 'https://www.themarker.com/realestate/BLOG-1.5958669', false, ],
   [ 'https://www.themarker.com/realestate/LIVE-1.5958669', false, ],
   [ 'https://www.themarker.com/realestate/INTERACTIVE-1.5958669', false, ],
-  [ 'https://www.themarker.com/realestate/1.6180672', true, ],
-  [ 'https://www.themarker.com/consumer/tourism/.premium-1.6204468', true, ],
-  [ 'https://www.themarker.com/technation/1.6224269', true, ],
-  [ 'https://www.themarker.com/technation/1.6224344', true, ],
-  [ 'https://www.themarker.com/consumer/tourism/1.6224976', true, ],
+  [ 'https://www.haaretz.co.il/realestate/1.6180672', true, ],
+  [ 'https://www.themarker.com/realestate/1.6180672', false, ],
+  [ 'https://www.haaretz.co.il/consumer/tourism/.premium-1.6204468', true, ],
+  [ 'https://www.themarker.com/consumer/tourism/.premium-1.6204468', false, ],
+  [ 'https://www.haaretz.co.il/technation/1.6224269', true, ],
+  [ 'https://www.themarker.com/technation/1.6224269', false, ],
+  [ 'https://www.haaretz.co.il/technation/1.6224344', true, ],
+  [ 'https://www.themarker.com/technation/1.6224344', false, ],
+  [ 'https://www.haaretz.co.il/consumer/tourism/1.6224976', true, ],
+  [ 'https://www.themarker.com/consumer/tourism/1.6224976', false, ],
   [ 'https://www.haaretz.co.il/gallery/cinema/.premium-1.6224424', true, ],
   [ 'https://www.haaretz.co.il/literature/closeoneeye/.premium-1.6212949', true, ],
   [ 'https://www.haaretz.co.il/blogs/netalexander/1.6224763', true, ],
@@ -89,7 +96,7 @@ describe('isNextLink', () => {
     testUrls.forEach(urlTest => {
       const modifiedIt = urlTest[2] === 'only' ? it.only : it;
       modifiedIt(`isNextLink ${urlTest[0]} should classify correctly`, () => {
-        expect(isNextLink(urlTest[0])).toEqual(urlTest[1]);
+        expect(isNextLink(urlTest[0], 'haaretz.co.il')).toEqual(urlTest[1]);
       });
     });
   });

@@ -78,14 +78,18 @@ describe('<MastheadUserMenu', () => {
   describe('DOM element', () => {
     it('renders correctly with no props', () => {
       const { component, styles, } = felaSnapshotter(
-        <MastheadUserMenu userName={null} />
+        <ApolloProvider client={client}>
+          <MastheadUserMenu userName={null} />
+        </ApolloProvider>
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with props', () => {
       const { component, styles, } = felaSnapshotter(
-        <MastheadUserMenu userName="[USER]" />
+        <ApolloProvider client={client}>
+          <MastheadUserMenu userName="[USER]" />
+        </ApolloProvider>
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();

@@ -54,6 +54,7 @@ const stateLink = withClientState({
     articleId: '1.2345',
     commentsElementId: '1.2345',
     platform: 'web',
+    site: 'haaretz.co.il',
     hostname: 'www.haaretz.co.il',
     readingListArray: [],
   },

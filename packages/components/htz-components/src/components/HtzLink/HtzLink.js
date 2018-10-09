@@ -2,8 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { breakUrl, } from '@haaretz/app-utils';
+import gql from 'graphql-tag';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import isNextLink, { isReactArticle, getArticlePageTypeFromUrl, } from './isNextLink';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
+
+const GET_SITE = gql`
+  query GetSite {
+    site @client
+  }
+`;
 
 const propTypes = {
   /**
@@ -20,6 +28,10 @@ const propTypes = {
    * Overrides `children` when both are defined.
    */
   content: PropTypes.oneOfType([ PropTypes.node, PropTypes.string, ]),
+  /**
+   * the domain of that is using htzlink
+   */
+  site: PropTypes.string.isRequired,
   /** Basic HTML target (destination window) */
   target: PropTypes.string,
   /** Should prefetch */
@@ -67,13 +79,7 @@ const LinkWrapper = React.forwardRef(
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     /* eslint-disable jsx-a11y/click-events-have-key-events */
     return (
-      <a
-        href={href}
-        className={className}
-        onClick={wrappedOnclick}
-        ref={ref}
-        {...attrs}
-      >
+      <a href={href} className={className} onClick={wrappedOnclick} ref={ref} {...attrs}>
         {children}
       </a>
     );
@@ -82,11 +88,8 @@ const LinkWrapper = React.forwardRef(
 
 // If the href is an absolute path, instead we return only the path and not the whole href.
 const ensureRelativity = hrefObj => {
-  const acceptableDomains = [ 'haaretz.co.il', 'themarker.com', ];
   const { domain, path, } = breakUrl(hrefObj.pathname);
-  return domain && acceptableDomains.includes(domain)
-    ? { ...hrefObj, pathname: path, }
-    : hrefObj;
+  return domain ? { ...hrefObj, pathname: path, } : hrefObj;
 };
 
 function HtzLink({
@@ -100,12 +103,13 @@ function HtzLink({
   onClick: passedOnClick,
   prefetch,
   refFunc,
+  site,
   target,
 }) {
   // eslint-disable-next-line eqeqeq
   const renderContent = content != undefined ? content : children;
   // eslint-disable-next-line eqeqeq
-  if (isNextLink(href) && !target) {
+  if (!target && isNextLink(href, site)) {
     /* eslint-disable no-unused-vars */
     let fullId;
     let premium;
@@ -114,9 +118,7 @@ function HtzLink({
     let params;
     let page;
     // TODO check this case
-    const computedHref = ensureRelativity(
-      typeof href === 'string' ? { pathname: href, } : href
-    );
+    const computedHref = ensureRelativity(typeof href === 'string' ? { pathname: href, } : href);
     // Enables client-side navigation for react-articles
     const computedPathname = isReactArticle(computedHref.pathname)
       ? `/${getArticlePageTypeFromUrl(computedHref.pathname)}`
@@ -166,4 +168,8 @@ function HtzLink({
 HtzLink.propTypes = propTypes;
 HtzLink.defaultProps = defaultProps;
 
-export default HtzLink;
+const WrappedHtzLink = props => (
+  <Query query={GET_SITE}>{({ data: { site, }, }) => <HtzLink site={site} {...props} />}</Query>
+);
+
+export default WrappedHtzLink;
