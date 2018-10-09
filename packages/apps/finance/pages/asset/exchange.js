@@ -10,15 +10,20 @@ type Props = {
     pathname: string,
     query: {
       assetId: string,
+      crypto?: boolean,
       section: string,
     },
   },
 };
 
-function exchange({ url: { query: { assetId, }, }, }: Props): Node {
+function exchange({ url: { query: { assetId, crypto, }, }, }: Props): Node {
   return (
     <MainLayout>
-      <h1>Exchange Quote</h1>
+      {
+        crypto
+        ? <h1>Crypto in Exchange Quote</h1>
+        : <h1>Exchange Quote</h1>
+      }
     </MainLayout>
   );
 }

@@ -32,7 +32,7 @@ export default function finance(app, server) {
       assetId: req.params.id,
       section: 'crypto',
     };
-    return app.render(req, res, '/asset/crypto', query);
+    return app.render(req, res, '/asset/exchange', query);
   });
 
   /* Exchange Traded Funds Quote */
@@ -104,7 +104,7 @@ export default function finance(app, server) {
     const query = {
       section: 'crypto',
     };
-    return app.render(req, res, '/section/crypto', query);
+    return app.render(req, res, '/section/exchange', query);
   });
 
   /* Exchange Traded Funds Page */

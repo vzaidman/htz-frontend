@@ -1,9 +1,5 @@
 // @flow
-import React from 'react';
-
-import type { Node, } from 'react';
-
-import MainLayout from '../../layouts/MainLayout';
+import Router from 'next/router';
 
 type Props = {
   url: {
@@ -15,12 +11,14 @@ type Props = {
   },
 };
 
-function crypto({ url: { query: { assetId, }, }, }: Props): Node {
-  return (
-    <MainLayout>
-      <h1>Crypto Quote</h1>
-    </MainLayout>
-  );
+function crypto({ url: { query: { assetId, }, }, }: Props): void {
+  Router.push({
+    pathname: '/asset/exchange',
+    query: {
+      section: 'crypto',
+      assetId,
+    },
+  }, `/crypto/${assetId}`);
 }
 
 export default crypto;

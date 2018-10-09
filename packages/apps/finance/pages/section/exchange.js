@@ -5,10 +5,24 @@ import type { Node, } from 'react';
 
 import MainLayout from '../../layouts/MainLayout';
 
-function exchange(): Node {
+type Props = {
+  url: {
+    pathname: string,
+    query: {
+      crypto?: boolean,
+      section: string,
+    },
+  },
+};
+
+function exchange({ url: { query: { crypto, }, }, }: Props): Node {
   return (
     <MainLayout>
-      <h1>Exchange Page</h1>
+      {
+        crypto
+          ? <h1>Crypto in Exchange Page</h1>
+          : <h1>Exchange Page</h1>
+      }
     </MainLayout>
   );
 }

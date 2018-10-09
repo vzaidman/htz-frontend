@@ -1,16 +1,13 @@
 // @flow
-import React from 'react';
+import Router from 'next/router';
 
-import type { Node, } from 'react';
-
-import MainLayout from '../../layouts/MainLayout';
-
-function crypto(): Node {
-  return (
-    <MainLayout>
-      <h1>Crypto Page</h1>
-    </MainLayout>
-  );
+function crypto(): void {
+  Router.push({
+    pathname: '/section/exchange',
+    query: {
+      section: 'crypto',
+    },
+  }, '/crypto');
 }
 
 export default crypto;
