@@ -12,13 +12,22 @@ import RowItem from '../../components/RowItem/RowItem';
 import TableGraphConnector from '../../components/TableGraphConnector/TableGraphConnector';
 import SortableTable from '../../components/SortableTable/SortableTable';
 
+type Props = {
+  url: {
+    pathname: string,
+    query: {
+      section: string,
+    },
+  },
+};
+
 const numToString: number => string = num => (
   num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
 );
 
-function stocks(): Node {
+function stocks({ url: { query: { section, }, }, }: Props): Node {
   return (
-    <MainLayout>
+    <MainLayout section={section}>
       <FelaTheme
         render={theme => (
           <Fragment>
@@ -29,7 +38,9 @@ function stocks(): Node {
               <RowItem
                 title="מבט לשווקים"
               >
-                <TableGraphConnector />
+                <TableGraphConnector
+                  assetsId={[ '2', '142', '137', '-2000', '164', '143', '167', '145', '149', ]}
+                />
               </RowItem>
             </PageRow>
             <PageRow>
