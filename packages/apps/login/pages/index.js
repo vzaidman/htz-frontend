@@ -88,27 +88,6 @@ const Index = () => (
                       <FlowDispenser
                         render={({ getFlowByData, }) => (
                           <FormWrapper>
-                            <LoginPopup>
-                              {(nextStage) => (
-                                  <div>
-                                    <div>
-                                      Initial Stage<br/>
-                                      <button onClick={nextStage}>click</button>
-                                    </div>
-
-                                    <div>
-                                      Second Stage<br/>
-                                      <button onClick={nextStage}>click</button>
-                                    </div>
-
-                                    <div>
-                                      Thanks!<br/>
-                                      <button>click</button>
-                                    </div>
-                                  </div>
-                                )
-                              }
-                            </LoginPopup>
                             <ItemCenterer>
                               <h5>לכניסה או הרשמה לאתר הזינו כתובת דוא”ל</h5>
                             </ItemCenterer>

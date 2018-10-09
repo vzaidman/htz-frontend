@@ -27,7 +27,11 @@ const { InputLinkButton, } = LoginMiscLayoutStyles;
 // --------------------------
 
 // Methods -------------------
-const generateEmailError = message => [ { name: 'email', order: 1, errorText: message, }, ];
+const generateError = (name, order) => message => [ { name: name, order: order, errorText: message, }, ];
+const generateEmailError = message => generateError('email', 1)(message)
+const generatePasswordError = message => generateError('password', 2)(message)
+
+const isPassword = password => password.length > 0; // TODO: write proper password validation
 
 const validateEmailInput = ({ email, }) =>
   (!email
@@ -37,15 +41,27 @@ const validateEmailInput = ({ email, }) =>
       : []); // email is valid
 
 const validatePasswordInput = ({ password, }) =>
-  (!email
-    ? generateEmailError('אנא הזינו כתובת דוא”ל')
-    : !isEmail(email)
-      ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
+  (!password
+    ? generatePasswordError('אנא הזינו סיסמה')
+    : !isPassword(password) 
+      ? generatePasswordError('אנא הזינו סיסמה תקינה')
       : []); // email is valid
 
 const onSubmit = () => {
   console.log('submit');
 };
+
+const valdiateForm = ({ email, password, }) => {
+  let errors = [];
+  if (email != null) {
+    errors = [ ...validateEmailInput({ email, }), ]
+  }
+  if (password != null) {
+    errors = [ ...errors, ...validatePasswordInput({ password, }), ]
+  }
+  console.log(errors.map(arr => JSON.stringify(arr)))
+  return errors;
+}
 
 const sendAgain = e => {
   console.log('test...');
@@ -93,7 +109,7 @@ const OtpValidation = () => (
                 <Form
                   clearFormAfterSubmit={false}
                   // initialValues={{ email: 'insert email' }}
-                  validate={validateEmailInput}
+                  validate={valdiateForm}
                   onSubmit={onSubmit}
                   render={({ getInputProps, handleSubmit, clearForm, }) => (
                     <Fragment>
@@ -116,12 +132,12 @@ const OtpValidation = () => (
 
                       <div>
                         <TextInput
-                          type="email"
-                          label={theme.emailInputLabel}
+                          type="password"
+                          label={theme.passwordInputLabel}
                           noteText="אנא הזינו סיסמה"
                           requiredText={{
-                            long: theme.emailInputRequiredLong,
-                            short: theme.emailInputRequiredShort,
+                            long: theme.passwordInputRequiredLong,
+                            short: theme.passwordInputRequiredShort,
                           }}
                           {...getInputProps({
                             name: 'password',
