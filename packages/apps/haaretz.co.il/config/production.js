@@ -11,7 +11,6 @@ module.exports = {
     userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo',
     htzFunction: 'https://ms-apps.haaretz.co.il/htz-function',
     image: 'https://images.haarets.co.il/image',
-    userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
     graphql: defer(function () {
       return `http${

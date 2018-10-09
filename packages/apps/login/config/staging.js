@@ -8,7 +8,7 @@ module.exports = {
     }),
     sso: 'https://devsso.haaretz.co.il',
     newSso: 'https://ms-apps.haaretz.co.il/sso-dev',
-    userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo-dev',
+    userInfoUri: 'https://ms-apps-dev.haaretz.co.il/userInfo',
     otp: {
       base: 'http://docker.themarker.com:8124/otp-dev',
       generate: '/generate',
@@ -20,7 +20,7 @@ module.exports = {
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
-        }://${this.appFQDN}${this.graphQLexposedPort && this.graphQLPort ? `:${this.graphQLPort}` : ''}/`;
+      }://${this.appFQDN}${this.graphQLexposedPort && this.graphQLPort ? `:${this.graphQLPort}` : ''}/`;
     }),
     alerts: 'https://dev-alerts.haaretz.co.il',
   },
@@ -39,8 +39,6 @@ module.exports = {
   logLevel: 'info',
   assetPrefix: '',
   enableHttpLogging: false,
-  graphQLuseSSL: true,
-  graphQLexposedPort: true,
   // todo: ask tomer if we will add a staging graphql-server with different subDomain
   graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'graphql-stg',
   graphQLPort: process.env.GRAPHQL_PORT || '4004',
