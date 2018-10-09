@@ -10,7 +10,7 @@
   "scripts": {
     "build": "htz-scripts build",
     "clean": "htz-scripts clean",
-    "dev": "NODE_ENV=development htz-react-server login | bunyan -L",
+    "dev": "cross-env concurrently \"cross-env NODE_ENV=development graphql-server\" \"cross-env NODE_ENV=development htz-react-server login | bunyan -L\"",
     "debug": "htz-react-server login --inspect-brk",
     "format": "htz-scripts format",
     "gc": "htz-scripts commitizen",
@@ -18,7 +18,7 @@
     "prepare": "npm run build",
     "start:pm2": "NODE_ENV=production pm2 start htz-react-server -- login",
     "start:prof": "NODE_ENV=production node --prof node_modules/.bin/htz-react-server finance",
-    "start": "NODE_ENV=production htz-react-server login",
+    "start": "cross-env concurrently \"cross-env NODE_ENV=production graphql-server\" \"cross-env NODE_ENV=production htz-react-server login | bunyan -L\"",
     "test": "htz-scripts test",
     "update-scripts": "htz-scripts update-scripts"
   },
