@@ -347,7 +347,7 @@
       }
     },
     "react-apollo": {
-      "^2.1.11": {
+      "^2.2.4": {
         "packages/apps/*": [
           "dependencies"
         ],

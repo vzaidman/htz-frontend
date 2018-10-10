@@ -2,10 +2,8 @@ import React, { Fragment, } from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { ApolloConsumer, Query, } from 'react-apollo';
-// import { ApolloConsumer, } from 'react-apollo';
-
-// import { Query, } from '../../ApolloBoundary/ApolloBoundary';
+import { ApolloConsumer, } from 'react-apollo';
+import { Query, } from '../../ApolloBoundary/ApolloBoundary';
 import LayoutContainer from '../../PageLayout/LayoutContainer';
 import WideArticleLayoutRow from '../../PageLayout/WideArticleLayoutRow';
 import ArticleLayoutRow from '../../PageLayout/ArticleLayoutRow';
@@ -26,7 +24,7 @@ import RecipeArticleQuery from './queries/recipe_article';
 function RecipeArticle({ articleId, slots, }) {
   return (
     <ArticleLayout articleId={articleId} slots={slots}>
-      <Query query={RecipeArticleQuery} variables={{ path: articleId, }}>
+      <Query query={RecipeArticleQuery} partialRefetch variables={{ path: articleId, }}>
         {({ loading, error, data, }) => {
           if (loading) return null;
           if (error) return null;

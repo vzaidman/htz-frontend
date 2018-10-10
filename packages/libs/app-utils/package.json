@@ -37,7 +37,7 @@
     "next": "^6.1.1",
     "prop-types": "^15.6.1",
     "react": "^16.4.2",
-    "react-apollo": "^2.1.11",
+    "react-apollo": "^2.2.4",
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {
@@ -54,7 +54,7 @@
     "next": "^6.1.1",
     "prop-types": "^15.6.1",
     "react": "^16.4.2",
-    "react-apollo": "^2.1.11"
+    "react-apollo": "^2.2.4"
   },
   "dependencies": {
     "@haaretz/htz-user-utils": "^0.1.0",
