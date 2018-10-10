@@ -58,8 +58,8 @@ const mockDataFromUserInfo = client => email =>
   });
 
 const onSubmit = (client, getFlowByData) => ({ email, }) => {
-  // getDataFromUserInfo(client)(email)
-  mockDataFromUserInfo(client)(email) // TODO remove mock
+  // mockDataFromUserInfo(client)(email)
+  getDataFromUserInfo(client)(email) 
     .then(res => {
       const transformedObj = objTransform(res);
       console.log(`data is: ${JSON.stringify(transformedObj.user)}, email is: ${email}`);
