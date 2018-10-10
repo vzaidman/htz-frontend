@@ -8,6 +8,7 @@
 /* globals FB */
 import React from 'react';
 import PropTypes from 'prop-types';
+import FelaComponent from 'react-fela/lib/FelaComponent';
 import { appendScript, } from '../../../utils/scriptTools';
 
 export default class Facebook extends React.Component {
@@ -80,10 +81,19 @@ export default class Facebook extends React.Component {
     const showText = this.props.settings.showText || false;
 
     return type === 'post' ? (
-      <div
-        className="fb-post"
-        data-width="auto"
-        data-href={this.props.source}
+      <FelaComponent
+        style={{
+          '& *': {
+            width: '100% !important',
+          },
+        }}
+        render={({ className, }) => (
+          <div
+            className={`fb-post ${className}`}
+            data-width="auto"
+            data-href={this.props.source}
+          />
+        )}
       />
     ) : type === 'comment' ? (
       <div

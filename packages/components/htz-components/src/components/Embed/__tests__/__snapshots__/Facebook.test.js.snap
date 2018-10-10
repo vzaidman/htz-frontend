@@ -20,12 +20,12 @@ exports[`Facebook post  1`] = `
 Object {
   "component": <div>
     <div
-      className="fb-post"
+      className="fb-post htz-a"
       data-href="https://www.facebook.com/haaretz/posts/10155626716202520"
       data-width="auto"
     />
   </div>,
-  "styles": "",
+  "styles": ".htz-a *{width:100% !important}",
 }
 `;
 
