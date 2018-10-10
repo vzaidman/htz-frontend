@@ -2,9 +2,7 @@ import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import Comment from './Comment.js';
-import DfpConfProvider from '../Ads/DynamicAds/DfpConfProvider';
-import getSectionPairFromLineage from '../Ads/utils/getSectionsFromLineage.js';
-import DynamicAdSlot from '../Ads/DynamicAds/DynamicAdSlot';
+import DynamicSlotFromDfpConfig from '../Ads/DynamicAds/DynamicSlotFromDfpConfig.js';
 
 /**
  * Defines how far away ads can be inserted (every X comments)
@@ -26,37 +24,12 @@ const adSlotIdFromIndex = idx => `haaretz.co.il.web.fullbanner.talkback.${idx}`;
 //   />
 // );
 
-const renderAdSlot = idx => (
-  <DfpConfProvider>
-    {
-      data => {
-        const adSlotId = adSlotIdFromIndex(idx);
-        const slotConfig = data.dfpConfig.adSlotConfig[adSlotId];
-        console.log('[CommentList] %o dfpConfig: %o', adSlotId, slotConfig);
-        if (slotConfig) {
-          const network = data.dfpConfig.adManagerConfig.network;
-          const adUnitBase = data.dfpConfig.adManagerConfig.adUnitBase;
-          const sectionIndicator = `${adSlotId}_section`;
-          const [ section, subSection, ] = getSectionPairFromLineage(data.lineage)
-            .map(s => s.toLowerCase());
-          const adUnit = `${network}/${adUnitBase}/${adSlotId}/${sectionIndicator}/${sectionIndicator}.${section}/${sectionIndicator}.${section}.${subSection}`;
-          return (
-            <DynamicAdSlot id={adSlotId} adUnit={adUnit} sizes={slotConfig.adSizeMapping} />
-          );
-        }
-        return null;
-      }
-
-    }
-  </DfpConfProvider>
-);
-
 const placeAdSlot = commentIdx => {
   const adIdx = Math.floor(commentIdx / AD_SPACING) + 1;
   const isEnoughSpacing = (commentIdx + 1) % AD_SPACING === 0;
   return (
     isEnoughSpacing && adIdx <= MAX_AD_SLOTS
-      ? renderAdSlot(adIdx)
+      ? <DynamicSlotFromDfpConfig adSlotId={adSlotIdFromIndex(adIdx)} />
       : null
   );
 };
