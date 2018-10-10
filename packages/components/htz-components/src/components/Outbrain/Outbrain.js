@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 import { ApolloConsumer, Query, } from '../ApolloBoundary/ApolloBoundary';
 import { appendScript, } from '../../utils/scriptTools';
 
-const GET_CANONICAL_URL = gql`
-  query GetCanonicalUrl {
-    canonicalUrl @client
+const GET_OUTBRAIN_DATA = gql`
+  query GetOutbrainData {
+    articleId @client
+    site @client
   }
 `;
 
@@ -42,11 +43,11 @@ class Outbrain extends React.Component {
 
   render() {
     return (
-      <Query query={GET_CANONICAL_URL}>
-        {({ data: { canonicalUrl, }, }) => (
+      <Query query={GET_OUTBRAIN_DATA}>
+        {({ data: { articleId, site, }, }) => (
           <div
             className="OUTBRAIN"
-            data-src={canonicalUrl}
+            data-src={`https://www.${site}/${articleId}`}
             data-widget-id="AR_14"
             data-ob-template="haaretz-heb"
           />
