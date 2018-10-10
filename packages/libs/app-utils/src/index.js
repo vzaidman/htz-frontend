@@ -10,8 +10,7 @@ import jsonGenerator from './jsonGenerator/jsonGenerator';
 import financeTableMap from './jsonGenerator/jsonMaps/financeTable';
 import lineGraphMap from './jsonGenerator/jsonMaps/lineGraph';
 import scatterGraphMap from './jsonGenerator/jsonMaps/scatterGraph';
-import stockMap from './jsonGenerator/jsonMaps/stock';
-import bondMap from './jsonGenerator/jsonMaps/bond';
+import quoteMap from './jsonGenerator/jsonMaps/quote';
 
 // Schema Fragments
 import articleHeader from './fragments/articleHeader/articleHeader';
@@ -55,8 +54,7 @@ export {
   financeTableMap,
   lineGraphMap,
   scatterGraphMap,
-  stockMap,
-  bondMap,
+  quoteMap,
   // Schema Fragments
   articleHeader,
   author,

@@ -12,8 +12,7 @@ import GraphQLJSON from 'graphql-type-json';
 import CommentsElement from './types/comments_element_type';
 import FinanceGraph from './types/finance/finance_graph_type';
 import FinanceTable from './types/finance/finance_table_type';
-import FinanceStock from './types/finance/finance_stock_type';
-import FinanceBond from './types/finance/finance_bond_type';
+import FinanceQuotePage from './types/finance/finance_quote_page_type';
 import Footer from './types/footer_type';
 import NavMenu from './types/navMenu_type';
 import List from './types/list_type';
@@ -153,23 +152,13 @@ const RootQuery = new GraphQLObjectType({
       },
     },
 
-    stockData: {
-      type: FinanceStock,
+    quotePageData: {
+      type: FinanceQuotePage,
       args: {
         assetId: { type: new GraphQLNonNull(GraphQLString), },
       },
       resolve(parentValue, { assetId, }, { dataSources, }) {
-        return dataSources.FinanceAPI.getStock(assetId);
-      },
-    },
-
-    bondData: {
-      type: FinanceBond,
-      args: {
-        assetId: { type: new GraphQLNonNull(GraphQLString), },
-      },
-      resolve(parentValue, { assetId, }, { dataSources, }) {
-        return dataSources.FinanceAPI.getBond(assetId);
+        return dataSources.FinanceAPI.getQuote(assetId);
       },
     },
 

@@ -5,7 +5,7 @@ import date from '../methods/date';
 import list from '../methods/list';
 import object from '../methods/object';
 
-const stockObject: Object = new Map([
+const quoteObject: Object = new Map([
   [ 'id', () => string.id(), ],
   [ 'name', () => string.lorem({ count: 1, type: 'word', }), ],
   [ 'value', () => number.float({ max: 10000, min: 0, fixed: 2, }), ],
@@ -52,4 +52,4 @@ const stockObject: Object = new Map([
   ), ],
 ]);
 
-export default stockObject;
+export default quoteObject;
