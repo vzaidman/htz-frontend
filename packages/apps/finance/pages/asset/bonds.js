@@ -19,7 +19,7 @@ import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
 import ShareHoldersTable from '../../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
 import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/RelatedAssets';
 
-const StockQuery: DocumentNode = gql`
+const BondQuery: DocumentNode = gql`
   query BondData($assetId: String!){
     bondData(assetId: $assetId){
       name
@@ -63,7 +63,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
   return (
     <MainLayout section={section} >
       <Query
-        query={StockQuery}
+        query={BondQuery}
         variables={{ assetId, }}
       >
         {({ loading, error, data, }) => {
