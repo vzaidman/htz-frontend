@@ -20,6 +20,7 @@ import FaceBookReTargeting from '../Scripts/FaceBookReTargeting';
 import GoogleReMarketingTag from '../Scripts/GoogleReMarketingTag';
 import ChartBeat from '../Scripts/ChartBeat';
 import ChromePush from '../Scripts/ChromePush';
+import FirstImpression from '../Scripts/FirstImpression';
 
 const GET_FOOTER_ITEMS = gql`
   query FooterQuery($listId: String!) {
@@ -64,10 +65,7 @@ const headLinkStyle = ({ theme, isLast, }) => ({
   },
 });
 
-const StyledHeadLink = createComponent(headLinkStyle, HtzLink, [
-  'content',
-  'href',
-]);
+const StyledHeadLink = createComponent(headLinkStyle, HtzLink, [ 'content', 'href', ]);
 
 const ListUlStyle = () => ({
   marginInlineEnd: '2rem',
@@ -172,16 +170,12 @@ class Footer extends React.Component {
                           <StyledHeadLinksWrapper>
                             <StyledUlLinks>
                               {footer.headList.map((item, index) => (
-                                <StyledLi
-                                  key={`${item.contentName}${item.value}`}
-                                >
+                                <StyledLi key={`${item.contentName}${item.value}`}>
                                   <StyledHeadLink
                                     key={`${item.contentName}${item.value}`}
                                     content={item.contentName}
                                     href={item.value}
-                                    isLast={
-                                      index === footer.headList.length - 1
-                                    }
+                                    isLast={index === footer.headList.length - 1}
                                   />
                                 </StyledLi>
                               ))}
@@ -195,9 +189,7 @@ class Footer extends React.Component {
                               }}
                               miscStyles={{ marginInlineStart: 'auto', }}
                             >
-                              {expanded
-                                ? ExpandedButton.close
-                                : ExpandedButton.showMore}
+                              {expanded ? ExpandedButton.close : ExpandedButton.showMore}
                             </ButtonFooter>
                           </StyledHeadLinksWrapper>
                           <div
@@ -212,12 +204,8 @@ class Footer extends React.Component {
                               showMe={expanded}
                             />
                           </div>
-                          <StyledDesktopText>
-                            {Copyright.firstRow}
-                          </StyledDesktopText>
-                          <StyledDesktopText>
-                            {Copyright.secondRow}
-                          </StyledDesktopText>
+                          <StyledDesktopText>{Copyright.firstRow}</StyledDesktopText>
+                          <StyledDesktopText>{Copyright.secondRow}</StyledDesktopText>
                         </StyledDesktopBody>
                       </LayoutFooterContainer>
                     </LayoutFooterRow>
@@ -233,6 +221,7 @@ class Footer extends React.Component {
         <GoogleReMarketingTag />
         <ChartBeat />
         <ChromePush />
+        <FirstImpression />
         <FirstImpressionPlaceHolder />
       </Fragment>
     );
