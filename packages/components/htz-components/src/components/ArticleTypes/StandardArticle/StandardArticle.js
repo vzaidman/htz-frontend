@@ -2,9 +2,10 @@ import React, { Fragment, } from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { ApolloConsumer, } from 'react-apollo';
+import { ApolloConsumer, Query, } from 'react-apollo';
+// import { ApolloConsumer, } from 'react-apollo';
+// import { Query, } from '../../ApolloBoundary/ApolloBoundary';
 
-import { Query, } from '../../ApolloBoundary/ApolloBoundary';
 import LayoutContainer from '../../PageLayout/LayoutContainer';
 import WideArticleLayoutRow from '../../PageLayout/WideArticleLayoutRow';
 import ArticleLayoutRow from '../../PageLayout/ArticleLayoutRow';
@@ -54,7 +55,9 @@ function StandardArticle({ articleId, slots, }) {
               )
             : '';
 
-          const breadCrumbs = article.find(element => element.inputTemplate === 'com.tm.PageTitle');
+          const breadCrumbs = article.find(
+            element => element.inputTemplate === 'com.tm.PageTitle'
+          );
 
           const standardArticleElement = article.find(
             element =>
@@ -62,7 +65,13 @@ function StandardArticle({ articleId, slots, }) {
               element.inputTemplate === 'com.tm.StandardArticle'
           );
 
-          const { authors, body, header, headlineElement, reportingFrom, } = standardArticleElement;
+          const {
+            authors,
+            body,
+            header,
+            headlineElement,
+            reportingFrom,
+          } = standardArticleElement;
 
           return (
             <FelaTheme
@@ -89,7 +98,12 @@ function StandardArticle({ articleId, slots, }) {
 
                   <FelaComponent
                     style={{
-                      extend: [ theme.mq({ from: 'l', }, { width: 'calc(100% - 300px - 8rem)', }), ],
+                      extend: [
+                        theme.mq(
+                          { from: 'l', },
+                          { width: 'calc(100% - 300px - 8rem)', }
+                        ),
+                      ],
                     }}
                   >
                     <StandardArticleHeader
@@ -104,14 +118,16 @@ function StandardArticle({ articleId, slots, }) {
 
                     {article.map(element => {
                       if (
-                        element.inputTemplate === 'com.htz.ArticleHeaderElement' ||
+                        element.inputTemplate ===
+                          'com.htz.ArticleHeaderElement' ||
                         element.inputTemplate === 'com.tm.PageTitle'
                       ) {
                         return null;
                       }
                       if (
                         element.inputTemplate === 'com.htz.StandardArticle' ||
-                        element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
+                        element.inputTemplate ===
+                          'com.mouse.story.MouseStandardStory' ||
                         element.inputTemplate === 'com.tm.StandardArticle'
                       ) {
                         return (
@@ -157,15 +173,21 @@ function StandardArticle({ articleId, slots, }) {
                         );
                       }
                       const Element = getComponent(element.inputTemplate);
-                      const { properties, ...elementWithoutProperties } = element;
+                      const {
+                        properties,
+                        ...elementWithoutProperties
+                      } = element;
                       if (
-                        element.inputTemplate === 'com.polobase.OutbrainElement' ||
-                        element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
+                        element.inputTemplate ===
+                          'com.polobase.OutbrainElement' ||
+                        element.inputTemplate ===
+                          'com.polobase.ClickTrackerBannersWrapper'
                       ) {
                         return (
                           <WideArticleLayoutRow
                             key={element.contentId}
-                            {...(element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
+                            {...(element.inputTemplate ===
+                            'com.polobase.ClickTrackerBannersWrapper'
                               ? {
                                   hideDivider: true,
                                   miscStyles: {
@@ -185,9 +207,11 @@ function StandardArticle({ articleId, slots, }) {
                       return (
                         <ArticleLayoutRow
                           key={element.contentId}
-                          {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
+                          {...(element.inputTemplate ===
+                          'com.tm.ArticleCommentsElement'
                             ? {
-                                title: theme.articleLayoutI18n.commentSectionTitle,
+                                title:
+                                  theme.articleLayoutI18n.commentSectionTitle,
                                 id: 'commentsSection',
                               }
                             : {})}
@@ -212,7 +236,10 @@ function StandardArticle({ articleId, slots, }) {
                       alignItems: 'flex-start',
                       extend: [
                         theme.mq({ until: 'l', }, { display: 'none', }),
-                        theme.mq({ from: 'l', }, { width: 'calc(300px + 8rem)', }),
+                        theme.mq(
+                          { from: 'l', },
+                          { width: 'calc(300px + 8rem)', }
+                        ),
                       ],
                     }}
                     render={({ className, }) => (
