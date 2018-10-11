@@ -17,6 +17,7 @@ import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
 import { storeFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
 import objTransform from '../util/objectTransformationUtil';
+import { saveUserData, } from './queryutil/userDetailsOperations';
 
 // Styling Components -------
 const { PageWrapper, ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -37,12 +38,18 @@ const getDataFromUserInfo = client => email =>
       query: INSPECT_EMAIL,
       variables: { email, },
     })
-    .then(res => res.data);
+    .then(res => {
+      const data = res.data;
+      console.log(JSON.stringify({ userData: data.userByMail }))
+      saveUserData(client)({ userData: data.userByMail })
+      return data;
+    });
 
 const mockDataFromUserInfo = client => email =>
   Promise.resolve({
     userByMail: {
       ssoId: '20023790436',
+      phoneNum: '0548888888',
       userStatus: {
         isEmailValidated: true,
         isMobileValidated: true,
