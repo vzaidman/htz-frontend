@@ -4,19 +4,28 @@ import { createComponent, } from 'react-fela';
 
 export default class LoginModal extends Component {
   state = {
+    isOpen: this.props.isOpen,
     pageIndex: -1,
     pageIndexCap: -1,
   };
 
-  static PropTypes = {
+  static propTypes = {
+    isOpen: PropTypes.bool.isRequired,
     children: PropTypes.func.isRequired,
   };
+
+  setEventListener() {
+    window.addEventListener('LoginModal', function () {
+      this.setState({ isOpen: true, });
+    });
+  }
 
   /* ------- Lifecycle Methods -------- */
   componentDidMount() {
     const grandChildrenList = this.props.children(this.setPageIndex.bind(this)).props.children;
     this.setPageIndexCap(grandChildrenList);
     this.setInitialIndex(grandChildrenList);
+    this.setEventListener();
   }
 
   /* ----- Check & Render Methods ----- */
@@ -36,9 +45,7 @@ export default class LoginModal extends Component {
   }
 
   setInitialIndex(grandChildren) {
-    return grandChildren ?
-      this.setState({ pageIndex: 0, }) :
-      null;
+    return grandChildren ? this.setState({ pageIndex: 0, }) : null;
   }
 
   renderChild(childrenList, pageIndex) {
@@ -93,7 +100,7 @@ export default class LoginModal extends Component {
     // Child to display:
     const PopMessage = () => this.renderChild(children, this.state.pageIndex);
 
-    return this.state.pageIndex > -1 ? (
+    return this.props.isOpen && this.state.pageIndex > -1 ? (
       <Fragment>
         <PopupWrapper>
           <PopupContent>
