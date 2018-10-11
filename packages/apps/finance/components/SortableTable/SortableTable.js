@@ -57,7 +57,7 @@ type Props = {
   fields: Array<FieldType>,
   parentId?: string,
   assetsId?: Array<string>,
-  type: string,
+  type?: string,
   assetSubSection?: string,
   linkText: ?string,
   addLink: ?boolean,
@@ -157,6 +157,7 @@ class SortableTable extends React.Component<Props, State> {
     headerMiscStyles: null,
     assetsId: null,
     parentId: null,
+    type: null,
     assetSubSection: null,
     count: 5,
   };
@@ -291,7 +292,7 @@ class SortableTable extends React.Component<Props, State> {
                             allowTab
                             content={field.value(stock)}
                             assetId={stock.id}
-                            type={type}
+                            type={stock.type}
                           />
                         </TdComponent>
                       ))}
@@ -300,7 +301,7 @@ class SortableTable extends React.Component<Props, State> {
                 </tbody>
               </FelaComponent>
               {
-                addLink ?
+                addLink && type ?
                   <SectionLink
                     href={{
                       pathname: `/${type || ''}`,

@@ -17,7 +17,7 @@ const quotePage = new GraphQLObjectType({
     name: { type: GraphQLString, },
     value: { type: GraphQLFloat, },
     changePercentage: { type: GraphQLFloat, },
-    changeInCurr: { type: GraphQLFloat, },
+    numeralChange: { type: GraphQLFloat, },
     assetType: { type: GraphQLString, },
     assetNumber: { type: GraphQLInt, },
     lastTradeTime: { type: GraphQLTimestamp, },

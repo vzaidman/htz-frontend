@@ -25,7 +25,7 @@ const StockQuery: DocumentNode = gql`
       name
       value
       changePercentage
-      changeInCurr
+      numeralChange
       assetType
       assetNumber
       lastTradeTime
@@ -74,7 +74,7 @@ function stocks({ url: { query: { assetId, section, }, }, }: Props): Node {
               name,
               value,
               changePercentage,
-              changeInCurr,
+              numeralChange,
               assetType,
               assetNumber,
               lastTradeTime,
@@ -106,12 +106,16 @@ function stocks({ url: { query: { assetId, section, }, }, }: Props): Node {
                     }}
                   >
                     <QuoteSummary
-                      value={value}
-                      changePercentage={changePercentage}
-                      changeInCurr={changeInCurr}
-                      assetType={assetType}
-                      assetNumber={assetNumber}
-                      lastTradeTime={lastTradeTime}
+                      valueData={[
+                        { title: 'שער', value: value.toString(), },
+                        { title: '% שינוי', value: changePercentage, },
+                        { title: 'שינוי באג׳', value: numeralChange, },
+                      ]}
+                      date={{ title: 'נכון ל:', value: lastTradeTime, }}
+                      assetInfo={[
+                        { title: 'סוג נייר:', value: assetType, },
+                        { title: 'מספר נייר:', value: assetNumber, },
+                      ]}
                     />
                   </PageRow>
                   <PageRow
@@ -149,8 +153,8 @@ function stocks({ url: { query: { assetId, section, }, }, }: Props): Node {
                               { name: 'baseValue', display: 'שער בסיס', },
                               { name: 'openingValue', display: 'שער פתיחה', },
                               { name: 'value', display: 'שער אחרון', },
-                              { name: 'minValue', display: 'נמוך יומי', },
-                              { name: 'maxValue', display: 'גבוה יומי', },
+                              { name: 'dailyHigh', display: 'נמוך יומי', },
+                              { name: 'dailyLow', display: 'גבוה יומי', },
                               { name: 'marketCap', display: 'שווי שוק', },
                             ]}
                           />

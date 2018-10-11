@@ -6,14 +6,15 @@ import type { StatelessFunctionalComponent, } from 'react';
 
 import { Stat, } from '../../StockStats/StockStats';
 
+type AssetData = {
+  title: string,
+  value: string | number,
+}
 
 type Props = {
-  value: number,
-  changePercentage: number,
-  changeInCurr: number,
-  assetType: string,
-  assetNumber: number,
-  lastTradeTime: number,
+  valueData: Array<AssetData>,
+  date: AssetData,
+  assetInfo: Array<AssetData>,
 };
 
 type PaperItemProps = {
@@ -47,9 +48,6 @@ const PaperItem: StatelessFunctionalComponent<PaperItemProps> =
         render="span"
         style={{
           marginEnd: '1rem',
-          ':after': {
-            content: '":"',
-          },
         }}
       >
         {title}
@@ -67,7 +65,7 @@ const PaperItem: StatelessFunctionalComponent<PaperItemProps> =
 
 const QuoteSummary: StatelessFunctionalComponent<Props> =
   // eslint-disable-next-line react/prop-types
-  ({ value, changePercentage, changeInCurr, assetType, assetNumber, lastTradeTime, }) => (
+  ({ valueData, date, assetInfo, }) => (
     <FelaTheme
       render={theme => (
         <Grid
@@ -96,46 +94,30 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
                 ...theme.type(-2),
               }}
             >
-              <Stat
-                title="שער"
-                miscStyles={{
-                  color: theme.color('neutral', '-1'),
-                  ...theme.type(2),
-                }}
-              >
-                {className => <span className={className}>{numToString(value)}</span>}
-              </Stat>
-              <Stat
-                title="% שינוי"
-                miscStyles={{
-                  color: Number(changePercentage) < 0
-                    ? theme.color('negative')
-                    : theme.color('positive'),
-                  ...theme.type(2),
-                  direction: 'ltr',
-                  ':before': {
-                    content: Number(changePercentage) > 0 ? '"+"' : '""',
-                  },
-                  ':after': {
-                    content: '"%"',
-                  },
-                }}
-              >
-                {className => <span className={className}>{numToString(changePercentage)}</span>}
-              </Stat>
-              <Stat
-                title="שינוי באג'"
-                miscStyles={{
-                  color: Number(changeInCurr) < 0 ? 'red' : 'green',
-                  ...theme.type(2),
-                  direction: 'ltr',
-                  ':before': {
-                    content: Number(changeInCurr) > 0 ? '"+"' : '""',
-                  },
-                }}
-              >
-                {className => <span className={className}>{numToString(changeInCurr)}</span>}
-              </Stat>
+              {
+                valueData.map(({ title, value, }: AssetData) => (
+                  <Stat
+                    title={title}
+                    miscStyles={{
+                      color: typeof value === 'number'
+                        ? Number(value) < 0
+                          ? theme.color('negative')
+                          : theme.color('positive')
+                        : theme.color('neutral', '-1'),
+                      ...theme.type(2),
+                    }}
+                  >
+                    {className => (
+                      <span className={className}>
+                        {!isNaN(value) // eslint-disable-line no-restricted-globals
+                          ? numToString(Number(value))
+                          : value
+                        }
+                      </span>
+                    )}
+                  </Stat>
+                ))
+              }
             </FelaComponent>
             <FelaComponent
               style={{
@@ -149,16 +131,13 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
                 style={{
                   fontWeight: '700',
                   marginEnd: '1rem',
-                  ':after': {
-                    content: '":"',
-                  },
                 }}
               >
-                נכון ל
+                {date.title}
               </FelaComponent>
               <span>
                 {
-                  new Date(lastTradeTime).toLocaleString('he', {
+                  new Date(date.value).toLocaleString('he', {
                     day: '2-digit',
                     month: '2-digit',
                     year: 'numeric',
@@ -179,8 +158,11 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
               ...theme.type(-2),
             }}
           >
-            <PaperItem title="סוג נייר" value={assetType} />
-            <PaperItem title="מספר נייר" value={assetNumber} />
+            {
+              assetInfo.map(({ title, value, }: AssetData) => (
+                <PaperItem title={title} value={value} />
+              ))
+            }
           </GridItem>
         </Grid>
       )}
