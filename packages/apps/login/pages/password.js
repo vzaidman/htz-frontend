@@ -68,7 +68,7 @@ const sendAgain = e => {
 };
 // --------------------------
 
-const OtpValidation = () => (
+const Password = () => (
   <FSMLayout>
     {({ currentState, findRout, doTransition, }) => (
       <FelaTheme
@@ -186,4 +186,4 @@ const OtpValidation = () => (
   </FSMLayout>
 );
 
-export default OtpValidation;
+export default Password;

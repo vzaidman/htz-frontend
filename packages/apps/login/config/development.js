@@ -14,7 +14,7 @@ module.exports = {
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
-      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
+      }://${this.appFQDN}${this.graphQLexposedPort && this.graphQLPort ? `:${this.graphQLPort}` : ''}/graphql`;
     }),
     alerts: 'https://dev-alerts.haaretz.co.il',
   },
