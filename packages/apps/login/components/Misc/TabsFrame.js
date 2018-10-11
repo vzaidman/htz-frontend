@@ -8,7 +8,7 @@ class TabsFrame extends React.Component {
   state = {
     activeTab: 0,
   };
-  
+
   /* ---------- Lifecycle Methods ---------- */
   componentDidMount() {
 
@@ -16,11 +16,11 @@ class TabsFrame extends React.Component {
 
   /* ------------ Functionality ------------ */
   changeTab(tabIndex) {
-    this.setState({ activeTab: tabIndex });
+    this.setState({ activeTab: tabIndex, });
   }
 
   /* ----------- Tabs Rendering ------------ */
-  
+
 
   /* --------------- Render ---------------- */
   render() {
@@ -28,6 +28,6 @@ class TabsFrame extends React.Component {
       <Fragment>
         <div>Tabs</div>
       </Fragment>
-    )
+    );
   }
 }
