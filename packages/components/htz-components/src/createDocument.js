@@ -142,7 +142,6 @@ const createDocument = ({
             )}
 
             {buildFontPreloadLink(fontRules)}
-            <link rel="shortcut icon" href="about:blank" />
             <SEO host={this.props.host} polyFillSrc={polyFillSrc} />
             {this.renderStyles()}
             {this.renderData()}
