@@ -1,6 +1,4 @@
 import React from 'react';
-import { ApolloProvider, } from 'react-apollo';
-import client from '../../../../styleguide/ApolloMockClient';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 import Button from '../Button'; // eslint-disable-line import/no-named-as-default
 
@@ -30,12 +28,7 @@ describe('<Button>', () => {
       'pass attributes defined in the "attrs" prop to the DOM element',
       <Button attrs={{ 'aria-hidden': true, }}>Click here</Button>
     );
-    testCase(
-      'render an "<a>" correctly',
-      <ApolloProvider client={client}>
-        <Button href="/">This is a link</Button>
-      </ApolloProvider>
-    );
+    testCase('render an "<a>" correctly', <Button href="/">This is a link</Button>);
     testCase('pass "id" to DOM element', <Button id="test">No one can take my ID</Button>);
     testCase('render "busy" buttons correctly', <Button isBusy>No one can take my ID</Button>);
     testCase(

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* global window */
+import config from 'config';
 import { breakUrl, } from '@haaretz/app-utils';
 
 const premiumPrefix = '(?:\\.premium-)?';
@@ -78,7 +79,8 @@ export function getArticlePageTypeFromUrl(url) {
  * @param href
  * @return {boolean}
  */
-export default function isNextLink(href, site) {
+export default function isNextLink(href) {
+  const site = config.get('domain');
   // `href` is a simple string
   if (typeof href === 'string') {
     return isNextLinkSimpleString(href, site);

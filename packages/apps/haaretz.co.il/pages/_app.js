@@ -17,7 +17,6 @@ const initialState = () => ({
   // reload function script before calling the outbrain json api
   isOsakaDisplayed: false,
   osakaCanRender: false,
-  site: 'haaretz.co.il',
   pageSchema,
   platform: null,
   readingListArray: [],

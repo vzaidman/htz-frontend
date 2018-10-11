@@ -1,5 +1,6 @@
 /* global OBR */
 import React from 'react';
+import config from 'config';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 import { ApolloConsumer, Query, } from '../ApolloBoundary/ApolloBoundary';
@@ -8,7 +9,6 @@ import { appendScript, } from '../../utils/scriptTools';
 const GET_OUTBRAIN_DATA = gql`
   query GetOutbrainData {
     articleId @client
-    site @client
   }
 `;
 
@@ -41,13 +41,14 @@ class Outbrain extends React.Component {
     this.props.client.writeData({ data: { osakaCanRender: false, }, });
   }
 
+  site = config.get('domain');
   render() {
     return (
       <Query query={GET_OUTBRAIN_DATA}>
-        {({ data: { articleId, site, }, }) => (
+        {({ data: { articleId, }, }) => (
           <div
             className="OUTBRAIN"
-            data-src={`https://www.${site}/${articleId}`}
+            data-src={`https://www.${this.site}/${articleId}`}
             data-widget-id="AR_14"
             data-ob-template="haaretz-heb"
           />
@@ -58,9 +59,7 @@ class Outbrain extends React.Component {
 }
 
 const OutbrainWithClient = props => (
-  <ApolloConsumer>
-    {client => <Outbrain client={client} {...props} />}
-  </ApolloConsumer>
+  <ApolloConsumer>{client => <Outbrain client={client} {...props} />}</ApolloConsumer>
 );
 
 export default OutbrainWithClient;

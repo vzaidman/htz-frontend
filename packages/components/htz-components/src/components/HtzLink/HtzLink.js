@@ -2,16 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { breakUrl, } from '@haaretz/app-utils';
-import gql from 'graphql-tag';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import isNextLink, { isReactArticle, getArticlePageTypeFromUrl, } from './isNextLink';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
-
-const GET_SITE = gql`
-  query GetSite {
-    site @client
-  }
-`;
 
 const propTypes = {
   /**
@@ -28,10 +20,7 @@ const propTypes = {
    * Overrides `children` when both are defined.
    */
   content: PropTypes.oneOfType([ PropTypes.node, PropTypes.string, ]),
-  /**
-   * the domain of that is using htzlink
-   */
-  site: PropTypes.string.isRequired,
+
   /** Basic HTML target (destination window) */
   target: PropTypes.string,
   /** Should prefetch */
@@ -103,13 +92,12 @@ function HtzLink({
   onClick: passedOnClick,
   prefetch,
   refFunc,
-  site,
   target,
 }) {
   // eslint-disable-next-line eqeqeq
   const renderContent = content != undefined ? content : children;
   // eslint-disable-next-line eqeqeq
-  if (!target && isNextLink(href, site)) {
+  if (!target && isNextLink(href)) {
     /* eslint-disable no-unused-vars */
     let fullId;
     let premium;
@@ -168,8 +156,4 @@ function HtzLink({
 HtzLink.propTypes = propTypes;
 HtzLink.defaultProps = defaultProps;
 
-const WrappedHtzLink = props => (
-  <Query query={GET_SITE}>{({ data: { site, }, }) => <HtzLink site={site} {...props} />}</Query>
-);
-
-export default WrappedHtzLink;
+export default HtzLink;
