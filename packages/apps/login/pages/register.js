@@ -17,30 +17,32 @@ import {
 
 // Styling Components -------
 const {
-  PageWrapper,
   ContentWrapper,
   FormWrapper,
-  TopLinks,
   ItemCenterer,
 } = LoginContentStyles;
 const { InputLinkButton, } = LoginMiscLayoutStyles;
 // --------------------------
 
 // Methods -------------------
-const generateEmailError = message => [ { name: 'email', order: 1, errorText: message, }, ];
+const isValidPassword = (email) => {
+
+}
+
+const generateFormError = message => [ { name: 'email', order: 1, errorText: message, }, ];
 
 const validateEmailInput = ({ email, }) =>
   (!email
-    ? generateEmailError('אנא הזינו כתובת דוא”ל')
+    ? generateFormError('אנא הזינו כתובת דוא”ל')
     : !isEmail(email)
-      ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
+      ? generateFormError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
 const validatePasswordInput = ({ password, }) =>
   (!email
-    ? generateEmailError('אנא הזינו כתובת דוא”ל')
+    ? generateFormError('אנא הזינו סיסמה')
     : !isEmail(email)
-      ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
+      ? generateFormError('אנא הזינו סיסמה תקינה')
       : []); // email is valid
 
 const onSubmit = () => {
@@ -52,7 +54,7 @@ const sendAgain = e => {
 };
 // --------------------------
 
-const OtpValidation = () => (
+const Register = () => (
   <FSMLayout>
     {({ currentState, findRout, doTransition, }) => (
       <FelaTheme
@@ -142,18 +144,6 @@ const OtpValidation = () => (
                   </HtzLink>
                 </BottomLinks>
 
-                {/* <BottomLinks>
-                  <HtzLink
-                    href={`${findRout('withSms')}`}
-                    onClick={e => {
-                      e.preventDefault();
-                      const route = doTransition('withSms');
-                      Router.push(route);
-                    }}
-                  >
-                    כניסה באמצעות SMS
-                  </HtzLink>
-                </BottomLinks> */}
               </FormWrapper>
             </ContentWrapper>
           </Fragment>
@@ -163,4 +153,4 @@ const OtpValidation = () => (
   </FSMLayout>
 );
 
-export default OtpValidation;
+export default Register;

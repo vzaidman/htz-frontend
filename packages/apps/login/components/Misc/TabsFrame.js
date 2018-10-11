@@ -6,14 +6,28 @@ import theme from '../theme/index';
 
 class TabsFrame extends React.Component {
   state = {
-    activeTab: null,
+    activeTab: 0,
   };
+  
+  /* ---------- Lifecycle Methods ---------- */
+  componentDidMount() {
 
-  changeTab(tabName) {
-    this.setState({ activeTab: tabName });
   }
 
+  /* ------------ Functionality ------------ */
+  changeTab(tabIndex) {
+    this.setState({ activeTab: tabIndex });
+  }
+
+  /* ----------- Tabs Rendering ------------ */
+  
+
+  /* --------------- Render ---------------- */
   render() {
-    
+    return (
+      <Fragment>
+        <div>Tabs</div>
+      </Fragment>
+    )
   }
 }

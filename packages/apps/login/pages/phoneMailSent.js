@@ -38,7 +38,7 @@ const sendAgain = e => {
 };
 // --------------------------
 
-const OtpValidation = () => (
+const PhoneMailSent = () => (
   <FSMLayout>
     {({ currentState, findRout, doTransition, }) => (
       <Fragment>
@@ -86,4 +86,4 @@ const OtpValidation = () => (
   </FSMLayout>
 );
 
-export default OtpValidation;
+export default PhoneMailSent;
