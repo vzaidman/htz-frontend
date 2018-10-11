@@ -21,12 +21,12 @@ import ShareHoldersTable from '../../components/QuotePageComponents/ShareHolders
 
 const OptionQuery: DocumentNode = gql`
   query OptionData($assetId: String!){
-    quotePageData(assetId: $assetId){
+    assetData(assetId: $assetId){
       name
       value
       changePercentage
       numeralChange
-      assetType
+      subType
       assetNumber
       lastTradeTime
       relatedAssets {
@@ -70,12 +70,12 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
           if (error) return null;
           if (loading) return null;
           const {
-            quotePageData: {
+            assetData: {
               name,
               value,
               changePercentage,
               numeralChange,
-              assetType,
+              subType,
               assetNumber,
               lastTradeTime,
               relatedAssets,
@@ -113,7 +113,7 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                       ]}
                       date={{ title: 'נכון ל:', value: lastTradeTime, }}
                       assetInfo={[
-                        { title: 'סוג נייר:', value: assetType, },
+                        { title: 'סוג נייר:', value: subType, },
                         { title: 'מספר נייר:', value: assetNumber, },
                       ]}
                     />

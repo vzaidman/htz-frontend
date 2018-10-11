@@ -10,6 +10,9 @@ import {
 } from 'graphql';
 import { Kind, } from 'graphql/language/kinds';
 
+import relatedAsset from './finance_related_asset_type';
+import shareHolder from './finance_share_holder_type';
+
 const isDate = value =>
   // eslint-disable-next-line no-restricted-globals
   typeof (value) === 'number' && !isNaN(value.valueOf());
@@ -74,13 +77,17 @@ const TradingStatus = new GraphQLEnumType({
   },
 });
 
-const financeAssetFields = new GraphQLObjectType({
-  name: 'TableAsset',
+const financeAsset = new GraphQLObjectType({
+  name: 'Asset',
   fields: () => ({
     name: { type: GraphQLString, },
     id: { type: GraphQLString, },
     symbol: { type: GraphQLString, },
     type: { type: AssetType, },
+    subType: { type: GraphQLString, },
+    assetNumber: { type: GraphQLInt, },
+    relatedAssets: { type: new GraphQLList(relatedAsset), },
+    shareHolders: { type: new GraphQLList(shareHolder), },
     value: { type: GraphQLFloat, },
     USDValue: { type: GraphQLFloat, },
     baseValue: { type: GraphQLFloat, },
@@ -212,9 +219,4 @@ const financeAssetFields = new GraphQLObjectType({
   }),
 });
 
-export default new GraphQLObjectType({
-  name: 'FinanceTable',
-  fields: () => ({
-    assets: { type: new GraphQLList(financeAssetFields), },
-  }),
-});
+export default financeAsset;

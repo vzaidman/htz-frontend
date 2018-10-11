@@ -14,13 +14,11 @@ import { Query, } from '../ApolloBoundary/ApolloBoundary';
 const TableQuery: DocumentNode = gql`
   query GraphTable($assetsId: [String], $assetId: String, $count: Int){
     financeTable(assetsId: $assetsId, assetId: $assetId, count: $count){
-      assets {
-        name
-        value
-        changePercentage
-        id
-        type
-      }
+      name
+      value
+      changePercentage
+      id
+      type
     }
   }
 `;
@@ -63,9 +61,7 @@ export type StockData = {
 }
 
 type StockTableProps = {
-  data: {
-    assets: Array<StockData>,
-  },
+  data: Array<StockData>,
   miscStyles: ?Object,
   changeStock: StockData => void,
 // eslint-disable-next-line react/no-unused-prop-types
@@ -103,7 +99,7 @@ class StockTable extends React.Component<StockTableProps, State> {
     return {
       ...(!prevState || nextProps.assetId !== prevState.assetId ?
         {
-          stock: nextProps.data.assets[0],
+          stock: nextProps.data[0],
           selectedIndex: 0,
           assetId: nextProps.assetId,
         }
@@ -128,7 +124,7 @@ class StockTable extends React.Component<StockTableProps, State> {
   };
 
   render(): Node {
-    const { data: { assets: data, }, miscStyles, isExchange, } = this.props;
+    const { data, miscStyles, isExchange, } = this.props;
     const { stock: { id, }, } = this.state;
     return (
       <FelaComponent

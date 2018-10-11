@@ -6,7 +6,7 @@ import {
   GraphQLInt,
 } from 'graphql';
 
-import { GraphQLTimestamp, } from './finance_table_type';
+import { GraphQLTimestamp, } from './finance_asset_type';
 import shareHolder from './finance_share_holder_type';
 import relatedAsset from './finance_related_asset_type';
 

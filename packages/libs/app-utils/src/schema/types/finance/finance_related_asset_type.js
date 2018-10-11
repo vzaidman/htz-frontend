@@ -2,7 +2,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
-import { AssetType, } from './finance_table_type';
+import { AssetType, } from './finance_asset_type';
 
 const relatedAsset = new GraphQLObjectType({
   name: 'RelatedAsset',

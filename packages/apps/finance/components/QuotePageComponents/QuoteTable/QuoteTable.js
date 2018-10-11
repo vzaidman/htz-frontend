@@ -34,10 +34,8 @@ type TrComponentProps = {
 const TradeStatsQuery: (Array<Field>, boolean) => DocumentNode = (fields, tradingStatus) => gql`
   query TradeStatsTable($assetsId: [String]){
     financeTable(assetsId: $assetsId){
-      assets {
-        ${tradingStatus ? 'tradingStatus\n' : ''}
-        ${fields.map(field => `${field.name}\n`)}
-      }
+      ${tradingStatus ? 'tradingStatus\n' : ''}
+      ${fields.map(field => `${field.name}\n`)}
     }
   }
 `;
@@ -98,7 +96,7 @@ const QuoteTable: StatelessFunctionalComponent<Props> =
       query={TradeStatsQuery(fields, tradingStatus)}
       variables={{ assetsId: [ id, ], }}
     >
-      {({ error, loading, data: { financeTable: { assets, }, }, }) => {
+      {({ error, loading, data: { financeTable: assets, }, }) => {
         if (error) return null;
         if (loading) return null;
         return (

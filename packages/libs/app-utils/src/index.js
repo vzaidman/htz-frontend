@@ -7,6 +7,7 @@ import createLogger from './utils/createLogger';
 import jsonGenerator from './jsonGenerator/jsonGenerator';
 
 // JSON Maps
+import assetMap from './jsonGenerator/jsonMaps/asset';
 import financeTableMap from './jsonGenerator/jsonMaps/financeTable';
 import lineGraphMap from './jsonGenerator/jsonMaps/lineGraph';
 import scatterGraphMap from './jsonGenerator/jsonMaps/scatterGraph';
@@ -51,6 +52,7 @@ export {
   schema,
   jsonGenerator,
   // JSON Maps
+  assetMap,
   financeTableMap,
   lineGraphMap,
   scatterGraphMap,

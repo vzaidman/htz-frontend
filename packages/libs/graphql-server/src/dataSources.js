@@ -6,7 +6,7 @@ import {
   jsonGenerator,
   lineGraphMap,
   scatterGraphMap,
-  quoteMap,
+  assetMap,
 } from '@haaretz/app-utils';
 import querystring from 'querystring';
 
@@ -292,7 +292,7 @@ class FinanceAPI extends RESTDataSource {
         return 0;
       });
     }
-    return json;
+    return json.assets;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -302,10 +302,9 @@ class FinanceAPI extends RESTDataSource {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async getQuote(id) {
-    return jsonGenerator({ map: quoteMap, args: { id, }, });
+  async getAsset(id) {
+    return jsonGenerator({ map: assetMap, args: { id, }, });
   }
-
 }
 
 const dataSources = () => ({

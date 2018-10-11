@@ -13,13 +13,11 @@ import SectionLink from '../SectionLink/SectionLink';
 const MarketSummaryQuery: DocumentNode = gql`
   query MarketSummary($assetsId: [String]!) {
   financeTable(assetsId: $assetsId) {
-      assets {
-        name
-        value
-        changePercentage
-        id
-        type
-      }
+      name
+      value
+      changePercentage
+      id
+      type
     }
   }
 `;
@@ -195,7 +193,7 @@ export default (props: any) => (
       assetsId: [ '2', '142', '137', ],
     }}
   >
-    {({ loading, error, data: { financeTable: { assets, }, }, }) => {
+    {({ loading, error, data: { financeTable: assets, }, }) => {
       if (error) return null;
       if (loading) return null;
       return (

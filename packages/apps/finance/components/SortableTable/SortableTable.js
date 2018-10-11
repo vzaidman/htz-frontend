@@ -33,11 +33,9 @@ const TableQuery: (Array<string>) => DocumentNode = fields => gql`
       sortOrder: $sortOrder,
       offset: $offset
     ) {
-      assets {
-        id
-        type
-        ${fields.map(field => `${field.name}\n`)}
-      }
+      id
+      type
+      ${fields.map(field => `${field.name}\n`)}
     }
   }
 `;
@@ -53,7 +51,7 @@ type FieldType = {
 type Props = {
   miscStyles?: StyleProps,
   headerMiscStyles?: StyleProps,
-  initialSort: string,
+  initialSort: string, // eslint-disable-line react/no-unused-prop-types
   fields: Array<FieldType>,
   parentId?: string,
   assetsId?: Array<string>,
@@ -215,7 +213,7 @@ class SortableTable extends React.Component<Props, State> {
           offset: 0,
         }}
       >
-        {({ loading, error, data: { financeTable: { assets, }, }, data, fetchMore, }) => {
+        {({ loading, error, data: { financeTable: assets, }, data, fetchMore, }) => {
           if (error) return null;
           if (loading) return null;
           return (
