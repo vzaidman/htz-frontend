@@ -34,7 +34,7 @@ const sendAgain = e => {
 };
 // --------------------------
 
-const OtpValidation = () => (
+const OtpValidation2 = () => (
   <FSMLayout>
     {({ currentState, findRout, doTransition, }) => (
       <Fragment>
@@ -125,4 +125,4 @@ const OtpValidation = () => (
   </FSMLayout>
 );
 
-export default OtpValidation;
+export default OtpValidation2;
