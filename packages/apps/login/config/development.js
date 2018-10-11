@@ -9,6 +9,11 @@ module.exports = {
     sso: 'https://devsso.haaretz.co.il',
     newSso: 'https://ms-apps.haaretz.co.il/sso-dev',
     userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo-dev',
+    otp: {
+      base: 'http://docker.themarker.com:8124/otp-dev',
+      generate: '/generate',
+      validate: '/validate',
+    },
     image: 'https://images.haarets.co.il/image',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
     graphql: defer(function () {
