@@ -66,17 +66,6 @@ export const AssetType = new GraphQLEnumType({
   },
 });
 
-const TradingStatus = new GraphQLEnumType({
-  name: 'TradingStatus',
-  values: {
-    steady: { value: 'רציף', },
-    lock: { value: 'נעולה', },
-    close: { value: 'סגורה', },
-    preLock: { value: 'טרום נעילה', },
-    preOpen: { value: 'טרום פתיחה', },
-  },
-});
-
 const financeAsset = new GraphQLObjectType({
   name: 'Asset',
   fields: () => ({
@@ -86,6 +75,7 @@ const financeAsset = new GraphQLObjectType({
     type: { type: AssetType, },
     subType: { type: GraphQLString, },
     assetNumber: { type: GraphQLInt, },
+    assetSummary: { type: GraphQLString, },
     relatedAssets: { type: new GraphQLList(relatedAsset), },
     shareHolders: { type: new GraphQLList(shareHolder), },
     value: { type: GraphQLFloat, },
@@ -101,7 +91,7 @@ const financeAsset = new GraphQLObjectType({
     lastTradeTime: { type: GraphQLTimestamp, },
     tradeTime: { type: GraphQLTimestamp, },
     assetStateDate: { type: GraphQLTimestamp, },
-    tradingStatus: { type: TradingStatus, },
+    tradingStatus: { type: GraphQLString, },
     volume: { type: GraphQLFloat, },
     arbGap: { type: GraphQLFloat, },
     openPositions: { type: GraphQLInt, },
@@ -135,6 +125,8 @@ const financeAsset = new GraphQLObjectType({
     threeYearsAvgMtfYield: { type: GraphQLFloat, },
     fiveYearsAvgMtfYield: { type: GraphQLFloat, },
     maxAvgMtfYield: { type: GraphQLFloat, },
+    bondYieldSpread: { type: GraphQLFloat, },
+    averageMtfYieldInCategory: { type: GraphQLFloat, },
     managementFee: { type: GraphQLFloat, },
     inflows: { type: GraphQLFloat, },
     outflows: { type: GraphQLFloat, },
@@ -143,6 +135,7 @@ const financeAsset = new GraphQLObjectType({
     peRatio: { type: GraphQLFloat, },
     pbRatio: { type: GraphQLFloat, },
     psRatio: { type: GraphQLFloat, },
+    historicalProfit: { type: GraphQLFloat, },
     dailyAvgVolume: { type: GraphQLFloat, },
     issuerName: { type: GraphQLString, },
     marketCap: { type: GraphQLFloat, },
