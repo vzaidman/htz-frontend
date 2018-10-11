@@ -63,11 +63,11 @@ type Props = {
   addLink: ?boolean,
   count?: number,
   count?: number,
-  pagination: ?boolean,
+  loadMore: ?boolean,
 };
 
 type State = {
-  pagination: boolean,
+  loadMore: boolean,
   sortBy?: string,
   sortOrder: string,
 };
@@ -197,7 +197,7 @@ class SortableTable extends React.Component<Props, State> {
       assetsId,
       addLink,
       count,
-      pagination,
+      loadMore,
       assetSubSection,
     } = this.props;
     const { sortBy, sortOrder, } = this.state;
@@ -315,7 +315,7 @@ class SortableTable extends React.Component<Props, State> {
                   : null
               }
               {
-                pagination && assets.length <= count ?
+                loadMore && assets.length <= count ?
                   <FelaComponent
                     style={theme => ({
                       ...theme.type(-2),

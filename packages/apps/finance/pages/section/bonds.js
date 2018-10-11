@@ -166,7 +166,7 @@ class Bonds extends React.Component<{}, State> {
                               ...borderBottom('2px', 1, 'solid', theme.color('neutral', '-6')),
                             }}
                             assetSubSection={assetSubSection}
-                            pagination
+                            loadMore
                             type="bonds"
                             fields={[
                               {

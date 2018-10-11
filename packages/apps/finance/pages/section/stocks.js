@@ -485,7 +485,7 @@ function stocks({ url: { query: { section, }, }, }: Props): Node {
                   >
                     <SortableTable
                       parentId="-2000"
-                      pagination
+                      loadMore
                       type="stocks"
                       fields={[
                         {
