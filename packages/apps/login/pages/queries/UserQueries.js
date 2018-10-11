@@ -23,6 +23,7 @@ const USER_DATA = gql`
   query getUserData {
     userData @client {
       ssoId
+      phoneNum
       userStatus {
         isEmailValidated
         isMobileValidated
@@ -38,6 +39,12 @@ const USER_DATA = gql`
   }
 `;
 
+const OTP_HASH = gql`
+  query getOtpHash {
+    otpHash @client
+  }
+`;
+
 const PHONE_NUM = gql`
   query getPhoneNum {
     userData @client {
@@ -46,4 +53,4 @@ const PHONE_NUM = gql`
   }
 `;
 
-// export { USER_DATA, PHONE_NUM, };
+export { USER_DATA, PHONE_NUM, OTP_HASH, };

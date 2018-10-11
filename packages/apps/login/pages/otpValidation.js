@@ -50,90 +50,90 @@ const sendAgain = e => {
 const OtpValidation = () => (
   <FSMLayout>
     {({ currentState, findRout, doTransition, }) => (
-        <ApolloConsumer>
-          {client => (
-            <Fragment>
-              <ContentWrapper>
-                <FormWrapper>
-                  <ItemCenterer>
-                    <h5>
-                      להתחברות הזינו את הקוד שנשלח למספר
-                      <br />
-                      <span dir="ltr">{ getUserData(client).phoneNum }</span>
-                    </h5>
-                  </ItemCenterer>
+      <ApolloConsumer>
+        {client => (
+          <Fragment>
+            <ContentWrapper>
+              <FormWrapper>
+                <ItemCenterer>
+                  <h5>
+                    להתחברות הזינו את הקוד שנשלח למספר
+                    <br />
+                    <span dir="ltr">{ getUserData(client).phoneNum }</span>
+                  </h5>
+                </ItemCenterer>
 
-                  <Form
-                    clearFormAfterSubmit={false}
-                    // initialValues={{ email: 'insert email' }}
-                    validate={validateSmsCodeInput}
-                    onSubmit={onSubmit}
-                    render={({ getInputProps, handleSubmit, clearForm, }) => (
-                      <Fragment>
-                        <div>
-                          <TextInput
-                            type="number"
-                            label={theme.emailInputLabel}
-                            noteText="אנא הזינו את הקוד שנשלח אליכם"
-                            requiredText={{
-                              long: 'אנא הזינו את הקוד שנשלח אליכם',
-                              short: '*',
+                <Form
+                  clearFormAfterSubmit={false}
+                  // initialValues={{ email: 'insert email' }}
+                  validate={validateSmsCodeInput}
+                  onSubmit={onSubmit}
+                  render={({ getInputProps, handleSubmit, clearForm, }) => (
+                    <Fragment>
+                      <div>
+                        <TextInput
+                          type="number"
+                          label={theme.emailInputLabel}
+                          noteText="אנא הזינו את הקוד שנשלח אליכם"
+                          requiredText={{
+                            long: 'אנא הזינו את הקוד שנשלח אליכם',
+                            short: '*',
+                          }}
+                          {...getInputProps({
+                            name: 'smscode',
+                            label: 'קוד אימות',
+                            type: 'text',
+                          })}
+                        />
+                        <InputLinkButton>
+                          <span
+                            onClick={() => {
+                              const route = doTransition('sendAgain');
+                              Router.push(route);
                             }}
-                            {...getInputProps({
-                              name: 'smscode',
-                              label: 'קוד אימות',
-                              type: 'text',
-                            })}
-                          />
-                          <InputLinkButton>
-                            <span
-                              onClick={() => {
-                                const route = doTransition('sendAgain');
-                                Router.push(route);
-                              }}
-                            >
-                              שלח בשנית
-                            </span>
-                          </InputLinkButton>
-                        </div>
-                        <ItemCenterer>
-                          <Button onClick={handleSubmit}>התחברות</Button>
-                        </ItemCenterer>
-                      </Fragment>
-                    )}
-                  />
+                          >
+                            שלח בשנית
+                          </span>
+                        </InputLinkButton>
+                      </div>
+                      <ItemCenterer>
+                        <Button onClick={handleSubmit}>התחברות</Button>
+                      </ItemCenterer>
+                    </Fragment>
+                  )}
+                />
 
-                  <BottomLinks spacing={2.5}>
-                    <HtzLink
-                      href={`${findRout('notMyPhone')}`}
-                      onClick={e => {
-                        e.preventDefault();
-                        const route = doTransition('notMyPhone');
-                        Router.push(route);
-                      }}
-                    >
-                      לא הטלפון שלך?
-                    </HtzLink>
+                <BottomLinks spacing={2.5}>
+                  <HtzLink
+                    href={`${findRout('notMyPhone')}`}
+                    onClick={e => {
+                      e.preventDefault();
+                      const route = doTransition('notMyPhone');
+                      Router.push(route);
+                    }}
+                  >
+                    לא הטלפון שלך?
+                  </HtzLink>
 
-                    <br/>
+                  <br/>
 
-                    <HtzLink
-                      href={`${findRout('withPassword')}`}
-                      onClick={e => {
-                        e.preventDefault();
-                        const route = doTransition('withPassword');
-                        Router.push(route);
-                      }}
-                    >
-                      כניסה באמצעות סיסמה
-                    </HtzLink>
-                  </BottomLinks>
-                </FormWrapper>
-              </ContentWrapper>
-            </Fragment>
-          )}
-        </ApolloConsumer>
+                  <HtzLink
+                    href={`${findRout('withPassword')}`}
+                    onClick={e => {
+                      e.preventDefault();
+                      const route = doTransition('withPassword');
+                      Router.push(route);
+                    }}
+                  >
+                    כניסה באמצעות סיסמה
+                  </HtzLink>
+                </BottomLinks>
+              </FormWrapper>
+            </ContentWrapper>
+          </Fragment>
         )}
+      </ApolloConsumer>
+    )}
   </FSMLayout>
 );
 

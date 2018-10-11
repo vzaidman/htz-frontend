@@ -3,6 +3,7 @@
 import React, { Fragment, } from 'react';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
+import config from 'config';
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { createComponent, FelaTheme, } from 'react-fela';
@@ -12,12 +13,11 @@ import Footer from '../layouts/Footer';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import theme from '../theme/index';
 import GET_HOST from './queries/GetHost';
-import INSPECT_EMAIL from './queries/InspectEmail';
 import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
 import { storeFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
 import objTransform from '../util/objectTransformationUtil';
-import { saveUserData, } from './queryutil/userDetailsOperations';
+import { saveUserData, getDataFromUserInfo, saveOtpHash, mockDataFromUserInfo, } from './queryutil/userDetailsOperations';
 
 // Styling Components -------
 const { PageWrapper, ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -32,49 +32,52 @@ const validateEmailInput = ({ email, }) =>
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
-const getDataFromUserInfo = client => email =>
-  client
-    .query({
-      query: INSPECT_EMAIL,
-      variables: { email, },
-    })
-    .then(res => {
-      const data = res.data;
-      console.log(JSON.stringify({ userData: data.userByMail }))
-      saveUserData(client)({ userData: data.userByMail })
-      return data;
-    });
+const saveHashIfSuccessTrue = ({ success, hash, msg, client, }) => {
+  if (success) {
+    saveOtpHash(client)({ otpHash: hash, });
+  }
+  return { success, hash, msg, };
+};
 
-const mockDataFromUserInfo = client => email =>
-  Promise.resolve({
-    userByMail: {
-      ssoId: '20023790436',
-      phoneNum: '0548888888',
-      userStatus: {
-        isEmailValidated: true,
-        isMobileValidated: true,
-        isPhoneEmailConn: true,
-      },
-      userCrmStatus: {
-        id: 654654,
-        isActiveTm: true,
-        isActiveHeb: true,
-        isActiveEng: false,
-      },
+const handleGenerateOtp = ({ phoneNum, client, }) => {
+  const baseOtpUrl = config.get('service.otp.base');
+
+  // TODO: refactor fetch into graphql query
+  return fetch(`${baseOtpUrl}${config.get('service.otp.generate')}`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-  });
+    body: JSON.stringify({ typeId: phoneNum, }),
+  })
+    .then(res => res.json(), () => Promise.resolve({ success: false, msg: 'server error', hash: '', }))
+    // .then(res => console.log(`success: ${JSON.stringify(res)}`), fail => console.log(`fail: ${JSON.stringify(fail)}`))
+    .then(({ success, hash, msg, }) => saveHashIfSuccessTrue({ success, hash, msg, client, }));
+};
+
+const handleResponseFromGraphql = ({ client, getFlowByData, email, res, }) => {
+  const dataSaved = saveUserData(client)({ userData: res.userByMail, });
+  const transformedObj = objTransform(res);
+  console.log(`data is: ${JSON.stringify(transformedObj.user)}, email is: ${email}`);
+  const flow = getFlowByData(transformedObj.user);
+  storeFlowNumber(client)(flow.flowNumber);
+  console.log(flow.initialTransition);
+  handleGenerateOtp({ client, phoneNum: dataSaved.userData.phoneNum, })
+    .then(({ success, }) => {
+      if (success) {
+        Router.push(flow.initialTransition);
+      }
+      else {
+        // TODO: show error
+      }
+    });
+};
 
 const onSubmit = (client, getFlowByData) => ({ email, }) => {
   // mockDataFromUserInfo(client)(email)
-  getDataFromUserInfo(client)(email) 
-    .then(res => {
-      const transformedObj = objTransform(res);
-      console.log(`data is: ${JSON.stringify(transformedObj.user)}, email is: ${email}`);
-      const flow = getFlowByData(transformedObj.user);
-      storeFlowNumber(client)(flow.flowNumber);
-      console.log(flow.initialTransition);
-      Router.push(flow.initialTransition);
-    })
+  getDataFromUserInfo(client)(email)
+    .then(res => handleResponseFromGraphql({ client, getFlowByData, email, res, }))
     // TODO handle error
     .catch(err => console.error(err));
 };
