@@ -21,12 +21,13 @@
     "styleguide:build": "htz-scripts styleguide:build",
     "test": "htz-scripts test",
     "update-scripts": "htz-scripts update-scripts",
-    "dev": "cross-env concurrently \"cross-env NODE_ENV=development graphql-server\" \"cross-env NODE_ENV=development htz-react-server finance | bunyan -L\"",
-    "dev:2prod": "cross-env concurrently \"cross-env NODE_ENV=production graphql-server\" \"cross-env NODE_ENV=development CONNECTION_PRESET=dev2prod htz-react-server finance | bunyan -L\"",
+    "dev": "cross-env concurrently \"cross-env NODE_ENV=development graphql-server\" \"cross-env NODE_ENV=development d3-server\" \"cross-env NODE_ENV=development htz-react-server finance | bunyan -L\"",
+    "dev:2prod": "cross-env concurrently \"cross-env NODE_ENV=production graphql-server\" \"cross-env NODE_ENV=production d3-server\" \"cross-env NODE_ENV=development CONNECTION_PRESET=dev2prod htz-react-server finance | bunyan -L\"",
     "start:next": "cross-env  NODE_ENV=production htz-react-server finance",
+    "start:d3": "cross-env  NODE_ENV=production d3-server",
     "start:gql": "cross-env  NODE_ENV=production graphql-server",
-    "start:dev2stage": "cross-env concurrently \"cross-env NODE_ENV=development graphql-server\" \"cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server finance | bunyan -L\"",
-    "start:dev2prod": "cross-env concurrently \"cross-env NODE_ENV=production graphql-server\" \"cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server finance | bunyan -L\""
+    "start:dev2stage": "cross-env concurrently \"cross-env NODE_ENV=development graphql-server\" \"cross-env NODE_ENV=development d3-server\" \"cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server finance | bunyan -L\"",
+    "start:dev2prod": "cross-env concurrently \"cross-env NODE_ENV=production graphql-server\" \"cross-env NODE_ENV=production d3-server\" \"cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server finance | bunyan -L\""
   },
   "dependencies": {
     "@haaretz/app-utils": "^0.1.0",
@@ -62,6 +63,7 @@
   },
   "devDependencies": {
     "@babel/preset-flow": "^7.0.0-rc.1",
+    "@haaretz/d3-server": "^0.1.0",
     "@haaretz/graphql-server": "^0.1.0",
     "@haaretz/htz-react-base": "^1.0.0",
     "babel-loader": "^8.0.0-beta.4",

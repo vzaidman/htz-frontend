@@ -54,9 +54,13 @@ switch (connectionPreset) {
       appPort: presetOverride.appPort,
       graphQLPort: baseConfigOverride.graphQLPort,
       graphQLSubDomain: process.env.HOSTNAME,
+      d3Port: baseConfigOverride.d3Port,
+      d3SubDomain: process.env.HOSTNAME,
       useSSL: true,
       graphQLuseSSL: false,
       graphQLexposedPort: true,
+      d3useSSL: false,
+      d3exposedPort: true,
       connectionPreset,
     });
     break;

@@ -11,6 +11,14 @@ graphQLexposedPort:
   __name: 'GRAPHQL_EXPOSE_PORT'
   __format: 'json'
 
+d3useSSL:
+  __name: 'D3_USE_SSL'
+  __format: 'json'
+
+d3exposedPort:
+  __name: 'D3_EXPOSE_PORT'
+  __format: 'json'
+
 enableHttpLogging:
   __name: 'ENABLE_HTTP_LOGGING'
   __format: 'json'

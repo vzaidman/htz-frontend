@@ -1,0 +1,33 @@
+{
+  "name": "@haaretz/d3-server",
+  "version": "0.1.0",
+  "description": "creats and returns static D3 graphs and charts",
+  "keywords": [],
+  "author": "EranM6",
+  "license": "UNLICENSED",
+  "repository": "Haaretz/htz-frontend",
+  "main": "dist/lib/index.js",
+  "private": true,
+  "bin": "./bin/d3-server.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node dist/lib/index.js",
+    "start": "cross-env NODE_ENV=production node dist/lib/index.js",
+    "build": "htz-scripts build:lib",
+    "clean": "htz-scripts clean",
+    "flow": "htz-scripts flow",
+    "format": "htz-scripts format",
+    "lint": "htz-scripts lint",
+    "gc": "htz-scripts commitizen",
+    "prepare": "npm run build",
+    "test": "htz-scripts test",
+    "update-scripts": "htz-scripts update-scripts"
+  },
+  "devDependencies": {
+    "@haaretz/htz-react-base": "^1.0.0",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "config": "^1.26.2",
+    "express": "^4.15.4"
+  }
+}

@@ -63,6 +63,7 @@
     "universal-cookie": "^2.0.8"
   },
   "devDependencies": {
+    "@haaretz/d3-server": "^0.1.0",
     "@haaretz/graphql-server": "^0.1.0",
     "@haaretz/htz-react-base": "^1.0.0",
     "babel-loader": "^8.0.0-beta.4",

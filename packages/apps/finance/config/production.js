@@ -15,6 +15,11 @@ module.exports = {
         this.graphQLuseSSL ? 's' : ''
       }://${this.appFQDN}${this.graphQLexposedPort && this.graphQLPort ? `:${this.graphQLPort}` : ''}/`;
     }),
+    d3: defer(function () {
+      return `http${
+        this.d3useSSL ? 's' : ''
+      }://${this.appFQDN}${this.d3exposedPort && this.d3Port ? `:${this.d3Port}` : ''}/`;
+    }),
     alerts: 'https://alerts.haaretz.co.il',
   },
   appFQDN: defer(function () {
@@ -27,10 +32,14 @@ module.exports = {
   graphQLuseSSL: true,
   graphQLexposedPort: false,
   graphQLSubDomain: 'graphql',
+  d3useSSL: true,
+  d3exposedPort: false,
+  d3SubDomain: 'graphql',
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
   port: process.env.PORT || '2004',
   graphQLPort: process.env.GRAPHQL_PORT || '4004',
+  d3Port: process.env.D3_PORT || '6004',
   logLevel: 'error',
   assetPrefix: '',
   enableHttpLogging: false,

@@ -70,6 +70,13 @@
         ]
       }
     },
+    "@haaretz/d3-server": {
+      "^0.1.0": {
+        "packages/apps/*": [
+          "devDependencies"
+        ]
+      }
+    },
     "@haaretz/graphql-server": {
       "^0.1.0": {
         "packages/apps/*": [
