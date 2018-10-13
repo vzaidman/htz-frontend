@@ -1,17 +1,23 @@
-import config from 'config';
 import express from 'express';
+import config from 'config';
+import bodyParser from 'body-parser';
 
-const server = express();
+import finance from './routes/finance';
+
+const app = express();
 const port = parseInt(process.env.D3_PORT || (config.has('d3Port') ? config.get('d3Port') : '6000'), 10);
 
 async function run() {
-  server.get('/', (req, res) => res.json('I\'m Alive !!'));
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: false, }));
 
-  server.listen(port, err => {
+  // routes
+  app.use('/finance', finance);
+
+  app.listen(port, err => {
     if (err) throw err;
     console.log(`🚀 D3 server is up and ready at ${config.get('hostIp')}:${port} `);
   });
-
 }
 
 try {
