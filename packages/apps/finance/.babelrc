@@ -2,6 +2,7 @@
   "env": {
     "development": {
       "plugins": [
+        "babel-plugin-transform-flow-strip-types",
         [
           "lodash",
           {
@@ -14,21 +15,13 @@
               "@haaretz/app-utils"
             ]
           }
-        ],
-        "babel-plugin-transform-flow-strip-types"
+        ]
       ],
-      "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "modules": "commonjs"
-          }
-        ],
-        "next/babel"
-      ]
+      "presets": ["next/babel"]
     },
     "production": {
       "plugins": [
+        "babel-plugin-transform-flow-strip-types",
         [
           "lodash",
           {
@@ -41,36 +34,12 @@
               "@haaretz/app-utils"
             ]
           }
-        ],
-        "babel-plugin-transform-flow-strip-types"
+        ]
       ],
-      "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "modules": "commonjs"
-          }
-        ],
-        "next/babel"
-      ]
+      "presets": ["next/babel"]
     },
     "commonjs": {
-      "plugins": [
-        [
-          "lodash",
-          {
-            "id": [
-              "lodash",
-              "@haaretz/htz-components",
-              "@haaretz/htz-theme",
-              "@haaretz/tm-theme",
-              "@haaretz/fela-utils",
-              "@haaretz/app-utils"
-            ]
-          }
-        ],
-        "babel-plugin-transform-flow-strip-types"
-      ],
+      "plugins": ["babel-plugin-transform-flow-strip-types"],
       "presets": [
         [
           "@babel/preset-env",

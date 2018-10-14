@@ -39,7 +39,7 @@
       "presets": ["next/babel"]
     },
     "commonjs": {
-      "plugins": [ "babel-plugin-transform-flow-strip-types" ],
+      "plugins": ["babel-plugin-transform-flow-strip-types"],
       "presets": [
         [
           "@babel/preset-env",
