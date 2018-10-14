@@ -8,12 +8,14 @@ export default function createContext(headers) {
     : 'promotions-page-react';
   const hostname = headers.hostname;
   const ssoService = config.get('service.sso');
+  const otpService = config.get('service.otp.base');
   const serviceBase = switchToDomain(hostname, config.get('service.base'));
   const cookies = headers ? new Cookies(headers.cookie) : null;
   const preview = headers.preview;
   return {
     headers,
     ssoService,
+    otpService,
     serviceBase,
     cookies,
     polopolyPromotionsPage,

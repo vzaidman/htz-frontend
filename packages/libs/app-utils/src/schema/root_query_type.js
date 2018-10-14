@@ -18,6 +18,7 @@ import NavMenu from './types/navMenu_type';
 import List from './types/list_type';
 import ResetPassword from './types/reset_password_type';
 import Page from './types/page_type';
+import GenerateOtp from './types/generate_otp';
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',

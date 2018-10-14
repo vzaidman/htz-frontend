@@ -9,6 +9,7 @@ import newAbuseReportResponseType from './types/new_abuse_report_response_type';
 import newVoteResponseType from './types/new_vote_response_type';
 import newsignaUpNotificationResponseType from './types/new_sign_up_notification_response_type';
 import signUpNewsletterVars from './types/sign_up_newsletter_vars';
+import GenerateOtp from './types/generate_otp';
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -62,6 +63,15 @@ const mutation = new GraphQLObjectType({
           console.log('status from signUpCommentNotifications');
           return { status, };
         });
+      },
+    },
+    generateOtp: {
+      type: GenerateOtp,
+      args: {
+        typeId: { type: GraphQLString, },
+      },
+      resolve(parentValue, { typeId, }, { dataSources, }) {
+        return dataSources.OtpAPI.generateOtp(typeId);
       },
     },
   },
