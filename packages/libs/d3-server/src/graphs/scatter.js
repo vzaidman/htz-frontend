@@ -34,7 +34,7 @@ export default (data, {
     .range([ margin.left, width - margin.right, ])
     .domain([ 0, d3.max(data, d => d.x), ]);
 
-  const svg = d3n.createSVG({
+  const svg = d3n.createSVG(null, null, {
     viewBox: `0 0 ${width} ${height}`,
     width: '100%',
   });
