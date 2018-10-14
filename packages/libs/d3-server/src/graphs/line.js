@@ -1,24 +1,13 @@
 import D3Node from 'd3-node';
-
-const d3 = require('d3');
+import * as d3 from 'd3';
+import { tmTheme as theme, } from '@haaretz/tm-theme';
 
 export default (data, {
   width = 574,
   height = 308,
   margin = { top: 34, right: 10, bottom: 15, left: 50, },
 }) => {
-  const styles = `
-    .bar rect {
-      fill: steelblue;
-    }
-    .bar text {
-      fill: #fff;
-      font: 10px sans-serif;
-    }
-  `;
-
   const options = {
-    svgStyles: styles,
     d3Module: d3,
   };
 
@@ -36,16 +25,22 @@ export default (data, {
     .domain(xExtent);
 
   const svg = d3n.createSVG(null, null, {
+    direction: 'ltr',
     viewBox: `0 0 ${width} ${height}`,
     width: '100%',
   });
+
+  svg.append('rect')
+    .attr('width', '100%')
+    .attr('height', '100%')
+    .attr('fill', theme.color('neutral', '-1'));
 
   svg.append('g')
     .selectAll('line')
     .data(data)
     .enter()
     .append('line')
-    .attr('stroke', 'green')
+    .attr('stroke', theme.color('sales'))
     .attr('stroke-width', 1)
     .attr('x1', d => xScale(d.time))
     .attr('y1', d => yScale(d.value))
@@ -57,21 +52,26 @@ export default (data, {
     .attr('transform', `translate(0, ${margin.top})`)
     .call(d3.axisTop().scale(xScale).tickFormat(d3.timeFormat('%H:%M')));
 
-  xAxisRef.selectAll('.tick line, .domain')
-    .remove();
-
-  xAxisRef.selectAll('.tick text')
-    .attr('stroke', 'red');
-
   const yAxisRef = svg.append('g')
     .attr('transform', `translate(${margin.left}, 0)`)
     .call(d3.axisLeft().scale(yScale));
 
-  yAxisRef.select('.domain')
-    .remove();
+  xAxisRef.selectAll('.tick line').remove();
+  xAxisRef.select('.domain').remove();
 
-  yAxisRef.selectAll('.tick text')
-    .attr('stroke', 'red');
+  yAxisRef.select('.domain').remove();
+
+  /* Select all vertical axis ticks. */
+  yAxisRef.selectAll('.tick line')
+    .attr('stroke', '#777')
+    .attr('stroke-width', 0.5)
+    .attr('x1', 0)
+    .attr('x2', width - margin.left)
+    .attr('opacity', 1);
+
+  svg.selectAll('text')
+    .attr('stroke', theme.color('neutral', '-3'))
+    .attr('style', `font-size: 11px; font-family: ${theme.fontStacks.default}; line-height: 18px;`);
 
   return d3n;
 };
