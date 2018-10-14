@@ -151,7 +151,12 @@ function StandardArticle({ articleId, slots, }) {
                                   }
                                 >
                                   <Fragment>
-                                    <PremiumContentMeta isPremiumContent={isPremiumContent} />
+                                    {
+                                      // render <PremiumContentMeta/> only when isPremiumContent is defined
+                                      isPremiumContent !== null
+                                        ? <PremiumContentMeta isPremiumContent={isPremiumContent} />
+                                        : null
+                                    }
                                     <ArticleBody body={body} />
                                   </Fragment>
                                 </ArticleLayoutRow>
