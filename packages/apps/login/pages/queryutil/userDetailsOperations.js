@@ -1,4 +1,5 @@
 import INSPECT_EMAIL, { USER_DATA, PHONE_NUM, OTP_HASH, } from '../queries/UserQueries';
+import { GENERATE_HASH, } from '../mutations/UserMutations';
 
 const getDataFromUserInfo = client => email =>
   client
@@ -40,6 +41,12 @@ const saveUserData = client => userDataObj => {
   return userDataObj;
 };
 
+const generateOtp = client => phoneNumObj =>
+  client.mutate({
+    variables: phoneNumObj,
+    mutation: GENERATE_HASH,
+  });
+
 const saveOtpHash = client => otpHashObj => {
   client.writeData({ data: otpHashObj, });
   return otpHashObj;
@@ -59,4 +66,5 @@ export {
   saveOtpHash,
   getDataFromUserInfo,
   mockDataFromUserInfo,
+  generateOtp,
 };

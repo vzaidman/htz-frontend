@@ -3,7 +3,6 @@
 import React, { Fragment, } from 'react';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
-import config from 'config';
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { createComponent, FelaTheme, } from 'react-fela';
@@ -17,7 +16,7 @@ import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
 import { storeFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
 import objTransform from '../util/objectTransformationUtil';
-import { saveUserData, getDataFromUserInfo, saveOtpHash, mockDataFromUserInfo, } from './queryutil/userDetailsOperations';
+import { saveUserData, getDataFromUserInfo, saveOtpHash, generateOtp, mockDataFromUserInfo, } from './queryutil/userDetailsOperations';
 
 // Styling Components -------
 const { PageWrapper, ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -39,22 +38,9 @@ const saveHashIfSuccessTrue = ({ success, hash, msg, client, }) => {
   return { success, hash, msg, };
 };
 
-const handleGenerateOtp = ({ phoneNum, client, }) => {
-  const baseOtpUrl = config.get('service.otp.base');
-
-  // TODO: refactor fetch into graphql query
-  return fetch(`${baseOtpUrl}${config.get('service.otp.generate')}`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ typeId: phoneNum, }),
-  })
-    .then(res => res.json(), () => Promise.resolve({ success: false, msg: 'server error', hash: '', }))
-    // .then(res => console.log(`success: ${JSON.stringify(res)}`), fail => console.log(`fail: ${JSON.stringify(fail)}`))
+const handleGenerateOtp = ({ phoneNum, client, }) =>
+  generateOtp(client)({ typeId: phoneNum, })
     .then(({ success, hash, msg, }) => saveHashIfSuccessTrue({ success, hash, msg, client, }));
-};
 
 const handleResponseFromGraphql = ({ client, getFlowByData, email, res, }) => {
   const dataSaved = saveUserData(client)({ userData: res.userByMail, });
