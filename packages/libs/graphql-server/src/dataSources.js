@@ -10,6 +10,7 @@ import {
   assetMap,
 } from '@haaretz/app-utils';
 import querystring from 'querystring';
+import config from 'config';
 
 const ttl = 1000;
 
@@ -350,11 +351,32 @@ class FinanceAPI extends RESTDataSource {
   }
 }
 
+class OtpAPI extends RESTDataSource {
+  get baseURL() {
+    return this.context.otpService;
+  }
+
+  async generateOtp(phoneNum) {
+    return fetch(`${this.context.otpService}${config.get('service.otp.generate')}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ typeId: phoneNum, }),
+    }).then(
+      success => success.json(),
+      () => Promise.resolve({ success: false, msg: 'server error', hash: '', })
+    );
+  }
+}
+
 const dataSources = () => ({
   PageAPI: new PageAPI(),
   PapiAPI: new PapiAPI(),
   SsoAPI: new SsoAPI(),
   PurchasePageAPI: new PurchasePageAPI(),
   FinanceAPI: new FinanceAPI(),
+  OtpAPI: new OtpAPI(),
 });
 export default dataSources;
