@@ -92,7 +92,7 @@ const Zoidberg = ({ list, lazyLoad, gaAction, biAction, listId, }) => {
             biAction({
               actionCode: 109,
               additionalInfo: {
-                ArticleId: contentId,
+                ArticleId: path.match(/(?:.*-?)(1\.\d+.*)/)[1],
                 ListId: listId,
                 Platform: 'desktop',
                 NoInList: index + 1,

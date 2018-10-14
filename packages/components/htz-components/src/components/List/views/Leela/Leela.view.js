@@ -132,7 +132,7 @@ const Leela = ({ list, lazyLoad, gaAction, biAction, listId, }) => (
                         biAction({
                           actionCode: 109,
                           additionalInfo: {
-                            ArticleId: item.contentId,
+                            ArticleId: item.path.match(/(?:.*-?)(1\.\d+.*)/)[1],
                             ListId: listId,
                             Platform: 'desktop',
                             NoInList: index + 1,
