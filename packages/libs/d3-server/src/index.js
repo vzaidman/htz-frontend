@@ -11,7 +11,7 @@ async function run() {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false, }));
 
-  // routes
+  // Routes by Apps
   app.use('/finance', finance);
 
   app.listen(port, err => {
