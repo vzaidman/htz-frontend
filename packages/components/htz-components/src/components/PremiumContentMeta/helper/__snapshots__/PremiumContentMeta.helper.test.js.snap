@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PremiumContentMetaHelper should render with isPremiumContent={false} correctly 1`] = `
+Object {
+  "component": <div>
+    <meta
+      content="false"
+      property="isPremiumContent"
+    />
+    <meta
+      content="free"
+      property="article:content_tier"
+    />
+  </div>,
+  "styles": "",
+}
+`;
+
+exports[`PremiumContentMetaHelper should render with isPremiumContent={true} correctly 1`] = `
+Object {
+  "component": <div>
+    <meta
+      content="true"
+      property="isPremiumContent"
+    />
+    <meta
+      content="locked"
+      property="article:content_tier"
+    />
+  </div>,
+  "styles": "",
+}
+`;

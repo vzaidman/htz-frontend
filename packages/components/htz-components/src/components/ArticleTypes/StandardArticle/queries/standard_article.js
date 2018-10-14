@@ -132,6 +132,7 @@ export default gql`
             }
             inputTemplate
             commentsElementId
+            isPremiumContent
           }
         }
       }

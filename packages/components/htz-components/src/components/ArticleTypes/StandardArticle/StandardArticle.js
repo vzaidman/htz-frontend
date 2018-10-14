@@ -15,6 +15,7 @@ import ArticleHeaderMeta from '../../ArticleHeader/ArticleHeaderMeta';
 import StandardArticleHeader from './StandardArticleElements/StandardArticleHeader';
 import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
+import PremiumContentMeta from '../../PremiumContentMeta/PremiumContentMeta';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 
 import StandardArticleQuery from './queries/standard_article';
@@ -62,7 +63,7 @@ function StandardArticle({ articleId, slots, }) {
               element.inputTemplate === 'com.tm.StandardArticle'
           );
 
-          const { authors, body, header, headlineElement, reportingFrom, } = standardArticleElement;
+          const { authors, body, header, headlineElement, reportingFrom, isPremiumContent, } = standardArticleElement;
 
           return (
             <FelaTheme
@@ -149,7 +150,10 @@ function StandardArticle({ articleId, slots, }) {
                                     </Fragment>
                                   }
                                 >
-                                  <ArticleBody body={body} />
+                                  <Fragment>
+                                    <PremiumContentMeta isPremiumContent={isPremiumContent} />
+                                    <ArticleBody body={body} />
+                                  </Fragment>
                                 </ArticleLayoutRow>
                               );
                             }}

@@ -6,6 +6,7 @@ import {
   GraphQLList,
   GraphQLID,
   GraphQLFloat,
+  GraphQLBoolean,
 } from 'graphql';
 import getSchema from '../getSchema';
 
@@ -68,6 +69,7 @@ const ArticleData = new GraphQLObjectType({
     contentId: { type: GraphQLID, },
     contentName: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },
+    isPremiumContent: { type: GraphQLBoolean, },
 
     reviewStars: { type: GraphQLFloat, },
     // recipe article related
