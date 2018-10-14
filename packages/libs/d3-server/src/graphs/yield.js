@@ -28,6 +28,7 @@ export default (data, {
     viewBox: `0 0 ${width} ${height}`,
     width: '100%',
     style: 'padding-left: 14px; padding-right: 14px;',
+    'font-family': 'sans-serif',
   });
 
   svg.append('rect')
