@@ -1,6 +1,7 @@
 import express from 'express';
 
 import lineGraph from '../graphs/line';
+import yieldGraph from '../graphs/yield';
 import volumeGraph from '../graphs/volume';
 import scatterGraph from '../graphs/scatter';
 import fetchData from '../utils/fetchData';
@@ -20,12 +21,12 @@ router.post([ '/line', '/scatter', ], (req, res) => {
     });
 });
 
-router.post([ '/volume', ], (req, res) => {
+router.post([ '/volume', '/yield', ], (req, res) => {
   const { data, options = {}, } = req.body || {};
   const { url, } = req;
-  const svg = url === '/volume'
-    ? volumeGraph(data, options)
-    : null;
+  const svg = url === '/yield'
+    ? yieldGraph(data, options)
+    : volumeGraph(data, options);
   res.end(svg.svgString());
 });
 
