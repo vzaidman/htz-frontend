@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
+import Observer from 'react-intersection-observer';
 import Image from '../Image/Image';
 import IconQuote from '../Icon/icons/IconQuote';
 
@@ -18,9 +19,22 @@ Quote.defaultProps = {
   imagesList: null,
 };
 
-const quoteWrapperStyle = ({ theme, }) => ({
+const animate = theme => ({
+  ...theme.getDuration('animation', 6),
+  animationName: [
+    {
+      '0%': { opacity: 0, },
+      '100%': { opacity: 1, },
+    },
+  ],
+});
+
+const quoteWrapperStyle = ({ theme, isActive, }) => ({
   color: theme.color('neutral', '-3'),
   fontWeight: '700',
+  ...theme.mq({ until: 's', }, {
+    ...(isActive ? animate(theme) : { opacity: 0, }),
+  }),
 });
 
 const QuoteWrapper = createComponent(quoteWrapperStyle, 'blockquote');
@@ -103,9 +117,8 @@ function Quote({ text, credit, imagesList, }) {
       : credit && credit.trim().length > 0
         ? 'quote'
         : 'border';
-
-  return (
-    <QuoteWrapper>
+  const renderQuote = inView => (
+    <QuoteWrapper isActive={inView} >
       {quoteType === 'image' ? (
         <Image
           imgOptions={imgOptions}
@@ -130,6 +143,17 @@ function Quote({ text, credit, imagesList, }) {
       <QuoteElement quoteType={quoteType}>{text}</QuoteElement>
       {credit ? <Cite>{credit}</Cite> : null}
     </QuoteWrapper>
+  );
+
+  return (
+    <Observer threshold={0.5} triggerOnce >
+      {
+        inView => {
+          console.log('[Quote] inView=%o', inView);
+          return renderQuote(inView);
+        }
+      }
+    </Observer>
   );
 }
 
