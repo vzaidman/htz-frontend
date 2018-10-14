@@ -1,11 +1,13 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import TextLink from '../TextLink/TextLink';
 import H from '../AutoLevels/H';
 import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
 import Zen from '../Zen/Zen';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const Crosshead = props => (<FelaComponent
   style={theme => (
@@ -14,15 +16,20 @@ const Crosshead = props => (<FelaComponent
   render={({ className, }) => (<H className={className} {...props} />)}
 />);
 
-const paragraphStyle = theme => ({
+const paragraphStyle = ({ miscStyles, theme, }) => ({
   marginBottom: '3rem',
-  extend: [ theme.type(1, { untilBp: 'xl', lines: 5, }), theme.type(0, { fromBp: 'xl', lines: 5, }), ],
+  extend: [
+    theme.type(1, { untilBp: 'xl', lines: 5, }), theme.type(0, { fromBp: 'xl', lines: 5, }),
+    // Trump all other styles with those defined in `miscStyles`
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
 });
 
 // eslint-disable-next-line react/prop-types
-const P = ({ children, renderFirstImpression, ...props }) => (
+const P = ({ children, renderFirstImpression, miscStyles, ...props }) => (
   <FelaComponent
-    style={paragraphStyle}
+    miscStyles={miscStyles}
+    rule={paragraphStyle}
     render={({ className, }) => (
       <Fragment>
         <p className={className} {...props}>
@@ -161,7 +168,7 @@ const Mark = ({ children, ...props }) => (
 
 /* Util functions */
 const extractAttributes = attrArray => {
-  const whiteList = [ 'class', 'href', 'target', 'id', 'name', ]; // List of all the acceptable attributes.
+  const whiteList = [ 'class', 'href', 'target', 'id', 'name', 'className', ]; // List of all the acceptable attributes.
   const attributes = {};
   if (attrArray && attrArray.length > 0) {
     // eslint-disable-line array-callback-return
@@ -215,71 +222,109 @@ const getTag = tag => {
   return tagsMap.get(tag);
 };
 
+const genChildren = tagElements =>
+  tagElements.map(
+    (tag, index) =>
+      (tag.tag === 'br' ? (
+        <br />
+      ) : tag.content ? (
+        <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
+      ) : (
+        tag.attributes[0].value
+      ))
+  );
+
+WrapperTag.propTypes = {
+  /** The HTML tag name */
+  // eslint-disable-next-line react/no-unused-prop-types
+  tag: PropTypes.string.isRequired,
+  /** The tag attributes (className, href, etc) */
+  // eslint-disable-next-line react/forbid-prop-types
+  attributes: PropTypes.array.isRequired, // eslint-disable-line react/no-unused-prop-types
+  /** The paragraphs content.<br/>
+   * If the value of content contains children, they must have this exact prop structure
+   * {tag, attributes, content}.
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  content: PropTypes.array.isRequired, // eslint-disable-line react/no-unused-prop-types
+  /** Should the Paragraph render a firstImpression placeholder after every p tag */
+  renderFirstImpression: PropTypes.bool,
+
+  miscStyles: stylesPropType,
+};
+
+WrapperTag.defaultProps = {
+  renderFirstImpression: false,
+  miscStyles: {},
+}
+
+function WrapperTag({ tag: tagName, content: tagElements, attributes, renderFirstImpression, miscStyles, }) {
+  /**
+   * Check if the Tag has a class names 'bg-brand--d'.
+   * If so, it means that the Tag is actually `<mark />` (That's how the FCKEditor translates it).
+   */
+  // if (attributes.hasClass && attributes.hasClass === 'bg-brand--d') {
+  //   tagName = 'mark'; // eslint-disable-line no-param-reassign
+  // }
+  // else
+  if (attributes.id) {
+    /**
+     * In case of an anchor inside the paragraph,
+     * we don't need a new component but just a `<span />` with the anchors ID.
+     */
+    tagName = 'span'; // eslint-disable-line no-param-reassign
+  }
+  const Tag = getTag(tagName);
+  if (tagName === 'a') {
+    /**
+     * In case that the paragraph tree continues inside the Link component,
+     * we send it this component (the `<Paragraph />`) recursive function as the content,
+     * so the Link component will continue the building of the paragraph.
+     */
+    attributes.content = genChildren(tagElements); // eslint-disable-line no-param-reassign
+  }
+  if (tagName === 'br') return Tag;
+  return Tag ? (
+    <Tag {...attributes} {...(tagName === 'p' ? { renderFirstImpression, miscStyles, } : {})}>
+      {genChildren(tagElements)}
+    </Tag>
+  ) : null;
+}
+
+Content.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  content: PropTypes.array.isRequired, // eslint-disable-line react/no-unused-prop-types
+};
+
+/** Inner components */
+function Content({ content, }) {
+  const { attributes, tag, renderFirstImpression, miscStyles, } = content;
+  const attributesObject = extractAttributes(attributes);
+  return (
+    <WrapperTag
+      tag={tag}
+      attributes={attributesObject}
+      content={content.content}
+      miscStyles={miscStyles}
+      renderFirstImpression={renderFirstImpression}
+    >
+      {content.content.map((tagName, index) => (
+        <Content
+          key={index} // eslint-disable-line react/no-array-index-key
+          content={tagName}
+        />
+      ))}
+    </WrapperTag>
+  );
+}
+
 /**
  * This paragraph component receives an object with it's attributes and children
  * (which comes with their own children and so on), and it builds itself recursively.
  *
  * @param {Object} props
  */
-export default function Paragraph({ renderFirstImpression, ...props }) {
-  /* Recursive functions */
-  const Content = ({ content, }) => {
-    const attributesObject = extractAttributes(content.attributes);
-    return (
-      <WrapperTag tag={content.tag} attributes={attributesObject} content={content.content}>
-        {content.content.map((tag, index) => (
-          <Content
-            key={index} // eslint-disable-line react/no-array-index-key
-            content={tag}
-          />
-        ))}
-      </WrapperTag>
-    );
-  };
-
-  const genChildren = tagElements =>
-    tagElements.map(
-      (tag, index) =>
-        (tag.tag === 'br' ? (
-          <br />
-        ) : tag.content ? (
-          <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
-        ) : (
-          tag.attributes[0].value
-        ))
-    );
-
-  const WrapperTag = ({ tag: tagName, content: tagElements, attributes, }) => {
-    /**
-     * Check if the Tag has a class names 'bg-brand--d'.
-     * If so, it means that the Tag is actually `<mark />` (That's how the FCKEditor translates it).
-     */
-    if (attributes.hasClass && attributes.hasClass === 'bg-brand--d') {
-      tagName = 'mark'; // eslint-disable-line no-param-reassign
-    }
-    else if (attributes.id) {
-      /**
-       * In case of an anchor inside the paragraph,
-       * we don't need a new component but just a `<span />` with the anchors ID.
-       */
-      tagName = 'span'; // eslint-disable-line no-param-reassign
-    }
-    const Tag = getTag(tagName);
-    if (tagName === 'a') {
-      /**
-       * In case that the paragraph tree continues inside the Link component,
-       * we send it this component (the `<Paragraph />`) recursive function as the content,
-       * so the Link component will continue the building of the paragraph.
-       */
-      attributes.content = genChildren(tagElements); // eslint-disable-line no-param-reassign
-    }
-    if (tagName === 'br') return Tag;
-    return Tag ? (
-      <Tag {...attributes} {...(tagName === 'p' ? { renderFirstImpression, } : {})}>
-        {genChildren(tagElements)}
-      </Tag>
-    ) : null;
-  };
+export default function Paragraph(props) {
   return <Content content={props} />;
 }
 

@@ -34,6 +34,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "helmet": "^3.8.1",
+    "lodash": "^4.17.10",
     "http-proxy-middleware": "^0.18.0",
     "isomorphic-fetch": "^2.2.1",
     "morgan": "^1.9.0",

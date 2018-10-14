@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StandardArticle, } from '@haaretz/htz-components';
+
 import ArticleLayout from '../layouts/ArticleLayout';
 
 const propTypes = {
@@ -20,7 +21,7 @@ function StandardArticlePage({ url, }) {
   return (
     <ArticleLayout
       url={url}
-      render={({ articleId, slots, }) => <StandardArticle articleId={articleId} slots={slots} />}
+      render={({ articleId, slots, }) => <StandardArticle articleId={articleId} slots={slots} currentType={url.type} />}
     />
   );
 }

@@ -59,10 +59,15 @@ function StandardArticle({ articleId, slots, }) {
           const standardArticleElement = article.find(
             element =>
               element.inputTemplate === 'com.htz.StandardArticle' ||
+              element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
               element.inputTemplate === 'com.tm.StandardArticle'
           );
 
-          const { authors, body, header, headlineElement, reportingFrom, } = standardArticleElement;
+          const isMouse = standardArticleElement.inputTemplate === 'com.mouse.story.MouseStandardStory';
+
+
+          const { authors, body, headlineElement, reportingFrom, pubDate, modDate, } = standardArticleElement;
+          const header = isMouse ? { pubDate, modDate, } : standardArticleElement.header;
 
           return (
             <FelaTheme
@@ -121,6 +126,7 @@ function StandardArticle({ articleId, slots, }) {
                               cache.writeData({
                                 data: {
                                   commentsElementId,
+                                  isMouseStory: isMouse,
                                   pageSchema: {
                                     type: 'NewsArticle',
                                     mainEntityOfPage: {
@@ -187,7 +193,7 @@ function StandardArticle({ articleId, slots, }) {
                           key={element.contentId}
                           {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
                             ? {
-                                title: theme.articleLayoutI18n.commentSectionTitle,
+                                title: isMouse ? '' : theme.articleLayoutI18n.commentSectionTitle,
                                 id: 'commentsSection',
                               }
                             : {})}

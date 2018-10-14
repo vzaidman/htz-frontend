@@ -333,7 +333,9 @@ class ArticleBodyImage extends React.Component {
 
   render() {
     const { enableEnlarge, contentName, title, credit, } = this.props;
-
+    if (!this.props.imgArray.length) {
+      return null;
+    }
     const CaptionElement = () => (
       <FelaComponent
         style={{

@@ -17,6 +17,7 @@ import {
   quote,
   relatedArticles,
   seoData,
+  breadcrumbs,
   seriesOrBlockArticles,
   tags,
   video,
@@ -24,9 +25,10 @@ import {
 
 export default gql`
   query StandardArticleContent($path: String!) {
-    page(path: $path) {
+    page(path: $path) {           
       pageType
       ...PageSeoData
+      ...PageBreadcrumbs
       slots {
         aside {
           ... on ChangeableElementGroup {
@@ -47,7 +49,7 @@ export default gql`
               mobileSubtitle
               mobileTitle
               modDate
-              pubDate
+              pubDate              
               reportingFrom
               subtitle
               title
@@ -154,6 +156,7 @@ export default gql`
   ${paragraph}
   ${quote}
   ${relatedArticles}
+  ${breadcrumbs}
   ${seoData}
   ${seriesOrBlockArticles}
   ${tags}
