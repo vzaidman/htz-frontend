@@ -253,7 +253,7 @@
       }
     },
     "graphql": {
-      "^0.13.2": {
+      "^14.0.2": {
         "packages/{apps/*,libs/graphql-server}": [
           "dependencies"
         ],
@@ -289,7 +289,7 @@
       }
     },
     "isomorphic-unfetch": {
-      "^2.0.0": {
+      "^2.1.1": {
         "packages/apps/*": [
           "dependencies"
         ],
@@ -307,7 +307,7 @@
       }
     },
     "next": {
-      "^6.1.1": {
+      "^7.0.2": {
         "packages/apps/*": [
           "dependencies"
         ],
@@ -472,7 +472,8 @@
     "node-dir": "^0.1.17",
     "pretty-quick": "^1.6.0",
     "rimraf": "^2.6.2",
-    "write-pkg": "^3.1.0"
+    "write-pkg": "^3.1.0",
+    "@babel/preset-flow": "^7.0.0"
   },
   "dependencies": {
     "bunyan": "^1.8.12",
