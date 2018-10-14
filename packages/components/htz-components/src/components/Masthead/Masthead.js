@@ -45,7 +45,7 @@ class Masthead extends Component {
   static getDerivedStateFromProps(props, state) {
     const { velocity, y, } = props;
 
-    if (y < 10) return { shouldDisplay: true, };
+    if (y < 200) return { shouldDisplay: true, };
     if (velocity < 0) return { shouldDisplay: false, };
     if (velocity > 0) return { shouldDisplay: true, };
     return null;
