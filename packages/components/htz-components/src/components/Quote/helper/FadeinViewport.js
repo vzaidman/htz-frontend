@@ -4,7 +4,7 @@ import FelaComponent from 'react-fela/lib/FelaComponent';
 import Observer from 'react-intersection-observer';
 
 const animate = theme => ({
-  ...theme.getDuration('animation', 6),
+  ...theme.getDuration('animation', 8),
   animationName: [
     {
       '0%': { opacity: 0, },
