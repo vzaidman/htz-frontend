@@ -49,18 +49,12 @@ const createDocument = ({
     static getInitialProps({ renderPage, req, }) {
       const host = req.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       const validatedTheme = hasToggleableTheme ? theme(host) : theme;
-      const varifiedStaticRules = hasToggleableTheme
-        ? staticRules(host)
-        : staticRules;
-      buildFontFamilyArray(fontRules).forEach(rule =>
-        styleRenderer.renderFont(...rule)
-      );
+      const varifiedStaticRules = hasToggleableTheme ? staticRules(host) : staticRules;
+      buildFontFamilyArray(fontRules).forEach(rule => styleRenderer.renderFont(...rule));
 
       if (varifiedStaticRules) {
         Array.isArray(varifiedStaticRules)
-          ? varifiedStaticRules.forEach(rule =>
-            styleRenderer.renderStatic(rule)
-          )
+          ? varifiedStaticRules.forEach(rule => styleRenderer.renderStatic(rule))
           : styleRenderer.renderStatic(varifiedStaticRules);
       }
 
@@ -88,19 +82,17 @@ const createDocument = ({
     }
 
     renderStyles() {
-      return this.props.sheetList.map(
-        ({ type, rehydration, support, media, css, }) => (
-          <style
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: css, }}
-            data-fela-rehydration={rehydration}
-            data-fela-support={support}
-            data-fela-type={type}
-            key={`${type}-${media}`}
-            media={media}
-          />
-        )
-      );
+      return this.props.sheetList.map(({ type, rehydration, support, media, css, }) => (
+        <style
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: css, }}
+          data-fela-rehydration={rehydration}
+          data-fela-support={support}
+          data-fela-type={type}
+          key={`${type}-${media}`}
+          media={media}
+        />
+      ));
     }
 
     renderData() {
@@ -132,10 +124,7 @@ const createDocument = ({
           <Head>
             <meta charSet="utf-8" />
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1, minimum-scale=1"
-            />
+            <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
             {/* dont add link to manifest on purchase-page app  */}
             {hasToggleableTheme ? null : (
               <link rel="manifest" href="/static/manifest/manifest.json" />
@@ -146,6 +135,12 @@ const createDocument = ({
             {this.renderStyles()}
             {this.renderData()}
             {this.renderFoftScript()}
+            {process.env.CONNECTION_PRESET === 'stage' ? (
+              <meta
+                name="google-site-verification"
+                content="s8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY"
+              />
+            ) : null}
           </Head>
           <body>
             <Main />

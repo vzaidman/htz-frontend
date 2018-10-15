@@ -1,2 +1,8 @@
-User-agent: * 
-Allow: /
+User-agent: *
+Disallow: /
+Allow: /1.5762889
+Allow: /1.5762767
+Allow: /1.5762485
+Allow: /1.5762713
+Allow: /1.5762307
+Allow: /1.5751791
