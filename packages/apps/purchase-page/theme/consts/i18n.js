@@ -502,6 +502,7 @@ export const thankYou = Object.freeze({
     return `תודה שרכשתם מינוי ${item}`;
   },
   backToArticle: 'חזרה לכתבה:',
+  fbBackToArticle: 'חזרה לכתבה',
   backToHomePage: 'לדף הבית',
   backToHomePageHref: Object.freeze({
     tm: 'https://www.themarker.com',

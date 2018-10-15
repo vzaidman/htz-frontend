@@ -1,5 +1,7 @@
 /* global navigator */
+/* eslint-disable camelcase */
 import React, { Fragment, } from 'react';
+import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -41,6 +43,13 @@ const contStyle = () => ({
 });
 
 class StageThankYou extends React.Component {
+  static propTypes = {
+    fbFullRedirectUri: PropTypes.string,
+  };
+
+  static defaultProps = {
+    fbFullRedirectUri: null,
+  };
   state = {
     hasNavigator: false,
   };
@@ -59,6 +68,8 @@ class StageThankYou extends React.Component {
       return regex.test(path) ? path.match(regex)[0] : null;
     };
 
+    const { fbFullRedirectUri, } = this.props;
+
     return (
       <Query query={GET_HOST_NAME}>
         {({ data: { hostname, referer, }, }) => {
@@ -69,7 +80,6 @@ class StageThankYou extends React.Component {
             ? navigator.userAgent.toLowerCase().match(/(iphone)|(android)/)
             : null;
           const device = userAgent && userAgent.length > 0 ? userAgent[0] : null;
-          console.log('device: ', device);
           return (
             <FelaComponent
               rule={contStyle}
@@ -84,6 +94,7 @@ class StageThankYou extends React.Component {
                     downloadAppButtonText,
                     downloadAppHref,
                     imgData,
+                    fbBackToArticle,
                   },
                   newsletterI18n: {
                     texts: { newsletterTitle, newsletterButton, },
@@ -93,7 +104,7 @@ class StageThankYou extends React.Component {
                 const siteImg = imgData[site];
                 return (
                   <div className={className}>
-                    {referringArticleID ? (
+                    {referringArticleID && !fbFullRedirectUri ? (
                       <Query query={GET_ARTICLE_DATA} variables={{ id: referringArticleID, }}>
                         {({ data, loading, error, }) => (
                           <FelaComponent style={{ marginTop: '6rem', }}>
@@ -102,7 +113,10 @@ class StageThankYou extends React.Component {
                                 <FelaComponent style={{ display: 'block', }} render="span">
                                   {backToArticle}
                                 </FelaComponent>
-                                <TextLink href={data.articleLinkData.url} tagName="a">
+                                <TextLink
+                                  href={data.articleLinkData.url}
+                                  tagName="a"
+                                >
                                   {data.articleLinkData.title}
                                 </TextLink>
                               </Fragment>
@@ -115,9 +129,9 @@ class StageThankYou extends React.Component {
                         <TextLink
                           tagName="a"
                           miscStyles={{ fontWeight: 'bold', }}
-                          href={backToHomePageHref[site]}
+                          href={fbFullRedirectUri || backToHomePageHref[site]}
                         >
-                          {backToHomePage}
+                          {fbFullRedirectUri ? fbBackToArticle : backToHomePage}
                         </TextLink>
                       </FelaComponent>
                     )}

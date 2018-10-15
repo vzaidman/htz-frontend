@@ -30,14 +30,15 @@ async function run() {
   let schemas;
   try {
     const userInfo = await createRemoteSchema('https://ms-apps.themarker.com/userInfo', fetch);
+    const fbInstantSubscribe = await createRemoteSchema('https://ms-apps.haaretz.co.il/ms-fb-instant/subscribe', fetch);
     schemas = mergeSchemas({
-      schemas: [ userInfo, schema, ],
+      schemas: [ userInfo, schema, fbInstantSubscribe, ],
     });
   }
   catch (err) {
-    console.log(`ms-apps user info error: ${err}`);
+    console.log(`ms-apps user info / fb instant error: ${err}`);
     // Assign the papi schema to schemas without stitching,
-    // because fetching of userInfo failed
+    // because fetching of userInfo or fb instant failed
     schemas = schema;
   }
 
