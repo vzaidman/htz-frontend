@@ -120,6 +120,27 @@ const Styles = {
       },
     }),
   },
+
+  Dialog: {
+    dialogWrapperStyle: () => ({
+      display: 'flex',
+      alignItems: 'center',
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0,0,0,0.7)',
+      zIndex: '100',
+    }),
+    dialogContentStyle: () => ({
+      width: '450px',
+      margin: '0 auto',
+      textAlign: 'center',
+      backgroundColor: '#ffffff',
+      border: 'solid 1px #acd2ed',
+    })
+  }
 };
 
 // Components ------------------------------------------
@@ -140,5 +161,10 @@ const LoginMiscLayoutStyles = {
   InputLinkButton: createComponent(Styles.MiscLayout.inputLinkButton),
 };
 
+const LoginDialog = {
+  DialogWrapper: createComponent(Styles.Dialog.dialogWrapperStyle),
+  DialogContent: createComponent(Styles.Dialog.dialogContentStyle),
+}
+
 // Export ----------------------------------------------
-export { LoginContentStyles, LoginGeneralLayoutStyles, LoginMiscLayoutStyles, };
+export { LoginContentStyles, LoginGeneralLayoutStyles, LoginMiscLayoutStyles, LoginDialog, };
