@@ -1,4 +1,4 @@
-import React, { Fragment, } from 'react';
+import React, { Fragment, Component, } from 'react';
 import Router from 'next/router';
 
 import { HtzLink, } from '@haaretz/htz-components';
@@ -13,7 +13,9 @@ import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
 } from '../components/StyleComponents/LoginStyleComponents';
+
 import TabsFrame from '../components/Misc/TabsFrame';
+import LoginModal from '../components/Misc/LoginModal';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -62,103 +64,146 @@ const sendAgain = e => {
 };
 // --------------------------
 
-const Password = () => (
-  <FSMLayout>
-    {({ currentState, findRout, doTransition, }) => (
-      <FelaTheme
-        render={theme => (
-          <Fragment>
-            <ContentWrapper>
-              <FormWrapper>
-                <ItemCenterer>
-                  <h5>שלום, כיצד תרצה/י להתחבר לחשבונך?</h5>
-                </ItemCenterer>
+class Password extends Component {
+  state = {
+    showDialog: false,
+  }
 
-                <TabsFrame activeTab={1}>
-                  <div tabName="כניסה באמצעות SMS">
-                    <Form
-                      clearFormAfterSubmit={false}
-                      // initialValues={{ email: 'insert email' }}
-                      validate={valdiateForm}
-                      onSubmit={onSubmit}
-                      render={({ getInputProps, handleSubmit, clearForm, }) => (
-                        <Fragment>
+  showDialog = () => {
+    this.setState({ showDialog: true })
+  }
+
+  hideDialog = () => {
+    this.setState({ showDialog: false })
+  }
+
+  getDialogState = () => {
+    return this.state.showDialog;
+  }
+
+  render() {
+    return(
+      <FSMLayout>
+        {({ currentState, findRout, doTransition, }) => (
+          <FelaTheme
+            render={theme => (
+              <Fragment>
+                <ContentWrapper>
+                  <FormWrapper>
+                    <ItemCenterer>
+                      <h5>שלום, כיצד תרצה/י להתחבר לחשבונך?</h5>
+                    </ItemCenterer>
+
+                    {/* ----------- Forgot Password Modal ------------ */}
+                    <LoginModal show={this.getDialogState()} handleClose={this.hideDialog}>
+                      {
+                        (nextStage, closeModal) => (
                           <div>
-                            <TextInput
-                              type="email"
-                              label={theme.emailInputLabel}
-                              noteText="אנא הזינו כתובת דוא”ל"
-                              requiredText={{
-                                long: theme.emailInputRequiredLong,
-                                short: theme.emailInputRequiredShort,
-                              }}
-                              {...getInputProps({
-                                name: 'email',
-                                label: theme.emailInputLabel,
-                                type: 'email',
-                              })}
-                            />
+                            <div>
+                              stage 1<br/>
+                              <button onClick={closeModal}>Close</button>
+                            </div>
+
+                            <div>
+                              stage 2
+                            </div>
                           </div>
-
-                          <div>
-                            <TextInput
-                              type="password"
-                              label={theme.passwordInputLabel}
-                              noteText="אנא הזינו סיסמה"
-                              requiredText={{
-                                long: theme.passwordInputRequiredLong,
-                                short: theme.passwordInputRequiredShort,
-                              }}
-                              {...getInputProps({
-                                name: 'password',
-                                label: theme.passwordInputLabel,
-                                type: 'password',
-                              })}
-                            />
-                            <InputLinkButton>
-                              <span
-                                onClick={() => {
-                                  // const route = doTransition('otpValidation2');
-                                  // Router.push(route);
-                                }}
-                              >
-                                שכחתי סיסמה
-                              </span>
-                            </InputLinkButton>
-                          </div>
-                          <ItemCenterer>
-                            <Button onClick={handleSubmit}>התחברות</Button>
-                          </ItemCenterer>
-                        </Fragment>
-                      )}
-                    />
-                  </div>
-
-                  <div tabName="כניסה באמצעות סיסמה">
-                    1טופס כניסה באמצעות טלפון
-                  </div>
-                </TabsFrame>
-
-                <BottomLinks spacing={2.5}>
-                  <span>עדיין לא רשומים? </span>
-                  <HtzLink
-                    href={`${findRout('registration')}`}
-                    onClick={e => {
-                      e.preventDefault();
-                      const route = doTransition('registration');
-                      Router.push(route);
-                    }}
-                  >
-                    הירשמו
-                  </HtzLink>
-                </BottomLinks>
-              </FormWrapper>
-            </ContentWrapper>
-          </Fragment>
+                        )
+                      }
+                    </LoginModal>
+    
+                    {/* ----------------- Tabs Frame ----------------- */}
+                    <TabsFrame activeTab={1}>
+                      {/* TAB 1 */}
+                      <div tabname="כניסה באמצעות SMS">
+                        <Form
+                          clearFormAfterSubmit={false}
+                          // initialValues={{ email: 'insert email' }}
+                          validate={valdiateForm}
+                          onSubmit={onSubmit}
+                          render={({ getInputProps, handleSubmit, clearForm, }) => (
+                            <Fragment>
+                              <div>
+                                <TextInput
+                                  type="email"
+                                  label={theme.emailInputLabel}
+                                  noteText="אנא הזינו כתובת דוא”ל"
+                                  requiredText={{
+                                    long: theme.emailInputRequiredLong,
+                                    short: theme.emailInputRequiredShort,
+                                  }}
+                                  {...getInputProps({
+                                    name: 'email',
+                                    label: theme.emailInputLabel,
+                                    type: 'email',
+                                  })}
+                                />
+                              </div>
+    
+                              <div>
+                                <TextInput
+                                  type="password"
+                                  label={theme.passwordInputLabel}
+                                  noteText="אנא הזינו סיסמה"
+                                  requiredText={{
+                                    long: theme.passwordInputRequiredLong,
+                                    short: theme.passwordInputRequiredShort,
+                                  }}
+                                  {...getInputProps({
+                                    name: 'password',
+                                    label: theme.passwordInputLabel,
+                                    type: 'password',
+                                  })}
+                                />
+                                <InputLinkButton>
+                                  <span
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      this.showDialog();
+                                      // const route = doTransition('otpValidation2');
+                                      // Router.push(route);
+                                    }}
+                                  >
+                                    שכחתי סיסמה
+                                  </span>
+                                </InputLinkButton>
+                              </div>
+                              <ItemCenterer>
+                                <Button onClick={handleSubmit}>התחברות</Button>
+                              </ItemCenterer>
+                            </Fragment>
+                          )}
+                        />
+                      </div>
+    
+                      {/* TAB 2 */}
+                      <div tabname="כניסה באמצעות סיסמה">
+                        טופס כניסה באמצעות טלפון
+                      </div>
+                    </TabsFrame>
+    
+                    <BottomLinks spacing={2.5}>
+                      <span>עדיין לא רשומים? </span>
+                      <HtzLink
+                        href={`${findRout('registration')}`}
+                        onClick={e => {
+                          e.preventDefault();
+                          const route = doTransition('registration');
+                          Router.push(route);
+                        }}
+                      >
+                        הירשמו
+                      </HtzLink>
+                    </BottomLinks>
+                  </FormWrapper>
+                </ContentWrapper>
+              </Fragment>
+            )}
+          />
         )}
-      />
-    )}
-  </FSMLayout>
-);
+      </FSMLayout>
+    );
+  }
+}
 
 export default Password;
