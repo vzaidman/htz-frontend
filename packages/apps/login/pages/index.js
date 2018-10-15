@@ -56,6 +56,7 @@ const handleResponseFromGraphql = ({ client, getFlowByData, email, res, }) => {
       }
       else {
         // TODO: show error
+        Router.push(flow.initialTransition); // <- Tmp, should be replaced with error handler
       }
     });
 };

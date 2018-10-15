@@ -52,6 +52,14 @@ const Styles = {
         color: '#0b7eb5',
         fontSize: '1.75rem',
         fontWeight: 'bold',
+        '>input': {
+          display: 'none',
+        },
+        '>label': {
+          display: 'block',
+          marginTop: '0 !important',
+          lineHeight: '37px',
+        },
         '&.on': {
           backgroundColor: '#0b7eb5',
           color: '#fff',

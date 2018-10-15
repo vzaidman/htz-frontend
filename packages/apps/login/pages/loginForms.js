@@ -27,9 +27,9 @@ const { InputLinkButton, } = LoginMiscLayoutStyles;
 // --------------------------
 
 // Methods -------------------
-const generateError = (name, order) => message => [ { name: name, order: order, errorText: message, }, ];
-const generateEmailError = message => generateError('email', 1)(message)
-const generatePasswordError = message => generateError('password', 2)(message)
+const generateError = (name, order) => message => [ { name, order, errorText: message, }, ];
+const generateEmailError = message => generateError('email', 1)(message);
+const generatePasswordError = message => generateError('password', 2)(message);
 
 const isPassword = password => password.length > 0; // TODO: write proper password validation
 
@@ -43,7 +43,7 @@ const validateEmailInput = ({ email, }) =>
 const validatePasswordInput = ({ password, }) =>
   (!password
     ? generatePasswordError('אנא הזינו סיסמה')
-    : !isPassword(password) 
+    : !isPassword(password)
       ? generatePasswordError('אנא הזינו סיסמה תקינה')
       : []); // email is valid
 
@@ -54,14 +54,14 @@ const onSubmit = () => {
 const valdiateForm = ({ email, password, }) => {
   let errors = [];
   if (email != null) {
-    errors = [ ...validateEmailInput({ email, }), ]
+    errors = [ ...validateEmailInput({ email, }), ];
   }
   if (password != null) {
-    errors = [ ...errors, ...validatePasswordInput({ password, }), ]
+    errors = [ ...errors, ...validatePasswordInput({ password, }), ];
   }
-  console.log(errors.map(arr => JSON.stringify(arr)))
+  console.log(errors.map(arr => JSON.stringify(arr)));
   return errors;
-}
+};
 
 const sendAgain = e => {
   console.log('test...');
@@ -176,7 +176,7 @@ const Password = () => (
                     הירשמו
                   </HtzLink>
                 </BottomLinks>
-                
+
               </FormWrapper>
             </ContentWrapper>
           </Fragment>

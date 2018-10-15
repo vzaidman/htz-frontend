@@ -34,7 +34,7 @@ const BottomLinks = props => {
   )
 };
 
-BottomLinks.PropTypes = {
+BottomLinks.propTypes = {
   spacing: PropTypes.number,
 }
 
