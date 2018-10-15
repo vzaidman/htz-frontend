@@ -15,7 +15,6 @@ import ArticleHeaderMeta from '../../ArticleHeader/ArticleHeaderMeta';
 import StandardArticleHeader from './StandardArticleElements/StandardArticleHeader';
 import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
-import PremiumContentMeta from '../../PremiumContentMeta/PremiumContentMeta';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 
 import StandardArticleQuery from './queries/standard_article';
@@ -63,7 +62,7 @@ function StandardArticle({ articleId, slots, }) {
               element.inputTemplate === 'com.tm.StandardArticle'
           );
 
-          const { authors, body, header, headlineElement, reportingFrom, isPremiumContent, } = standardArticleElement;
+          const { authors, body, header, headlineElement, reportingFrom, } = standardArticleElement;
 
           return (
             <FelaTheme
@@ -150,15 +149,7 @@ function StandardArticle({ articleId, slots, }) {
                                     </Fragment>
                                   }
                                 >
-                                  <Fragment>
-                                    {
-                                      // render <PremiumContentMeta/> only when isPremiumContent is defined
-                                      isPremiumContent !== null
-                                        ? <PremiumContentMeta isPremiumContent={isPremiumContent} />
-                                        : null
-                                    }
-                                    <ArticleBody body={body} />
-                                  </Fragment>
+                                  <ArticleBody body={body} />
                                 </ArticleLayoutRow>
                               );
                             }}

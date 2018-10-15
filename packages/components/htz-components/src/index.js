@@ -66,6 +66,7 @@ import Tags from './components/Tags/Tags';
 import TextInput from './components/TextInput/TextInput';
 import TextLink from './components/TextLink/TextLink';
 import Video from './components/Video/Video';
+import PremiumContentMeta from './components/PremiumContentMeta/PremiumContentMeta';
 
 // Icons
 import IconAccessibility from './components/Icon/icons/IconAccessibility';
@@ -217,6 +218,7 @@ export {
   TextInput,
   TextLink,
   Video,
+  PremiumContentMeta,
   // Icons
   IconAccessibility,
   IconAlef,

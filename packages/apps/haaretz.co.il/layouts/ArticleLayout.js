@@ -16,6 +16,7 @@ import {
   ScrollListener,
   RouteChangeListener,
   UserInjector,
+  PremiumContentMeta,
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -133,11 +134,21 @@ class ArticleLayout extends React.Component {
           const titleSEO = `${lineage[0].name} - ${lineage[1] ? lineage[1].name : ''} - ${
             lineage.length > 2 ? lineage[lineage.length - 1].name : ''
           }`;
+          const standardArticleElement = slots.article.find(({ inputTemplate, }) => inputTemplate && inputTemplate.endsWith('StandardArticle'));
+          const isPremiumContent = standardArticleElement
+            ? standardArticleElement.isPremiumContent
+            : null;
           return (
             <Fragment>
               <Head>
                 <title>{titleSEO}</title>
               </Head>
+              {
+                // render <PremiumContentMeta/> only when isPremiumContent is defined
+                isPremiumContent !== null
+                  ? <PremiumContentMeta isPremiumContent={isPremiumContent} />
+                  : null
+              }
               <ScrollListener />
               <RouteChangeListener />
               <UserInjector />

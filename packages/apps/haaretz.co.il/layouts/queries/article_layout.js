@@ -11,6 +11,12 @@ export default gql`
         postHeader
         postMain
         footer
+        article {
+          ... on ArticleData {
+            isPremiumContent
+            inputTemplate
+          }
+        }
       }
       dfpConfig {
         adSlotConfig
