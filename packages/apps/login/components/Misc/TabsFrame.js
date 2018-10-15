@@ -1,32 +1,70 @@
 import React, { Fragment, } from 'react';
-import { StyleProvider, } from '@haaretz/fela-utils';
-import { createComponent, FelaTheme, } from 'react-fela';
-import styleRenderer from '../components/styleRenderer/styleRenderer';
-import theme from '../theme/index';
+import PropTypes from 'prop-types';
+import { LoginContentStyles, } from '../StyleComponents/LoginStyleComponents';
 
-class TabsFrame extends React.Component {
+export default class TabsFrame extends React.Component {
   state = {
     activeTab: 0,
   };
 
-  /* ---------- Lifecycle Methods ---------- */
-  componentDidMount() {
+  static propTypes = {
+    activeTab: PropTypes.number,
+  };
 
-  }
+  static defaultProps = {
+    activeTab: 0,
+  };
+
+  /* ---------- Lifecycle Methods ---------- */
+  componentDidMount() {}
 
   /* ------------ Functionality ------------ */
   changeTab(tabIndex) {
-    this.setState({ activeTab: tabIndex, });
+    return () => {
+      this.setState({ activeTab: tabIndex, });
+    };
   }
 
   /* ----------- Tabs Rendering ------------ */
+  createNavigation(children) {
+    const { TopLinks, } = LoginContentStyles;
+    return (
+      <TopLinks>
+        {React.Children.map(children, (child, i) => (
+          <span className={i === this.state.activeTab ? "on" : ""} >
+            <input
+              type="radio"
+              name="tab"
+              id={`tab${i}`}
+              value={`tab${i}`}
+              onClick={this.changeTab(i)}
+            />
+            <label htmlFor={`tab${i}`}>{child.props.tabName}</label>
+          </span>
+        ))}
+      </TopLinks>
+    );
+  }
 
+  renderTab(children) {
+    return React.Children.map(children, (child, i) => {
+      if (i == this.state.activeTab) {
+        return child;
+      }
+      return null;
+    });
+  }
 
   /* --------------- Render ---------------- */
   render() {
+    const { children, } = this.props;
+    const Tab = () => this.renderTab(children);
+    const Nav = () => this.createNavigation(children);
+
     return (
       <Fragment>
-        <div>Tabs</div>
+        <Nav />
+        <Tab />
       </Fragment>
     );
   }
