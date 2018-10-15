@@ -26,26 +26,38 @@ class GoogleAnalyticsInit extends React.Component {
       this.initGA(this.props.host, this.props.userType, this.props.withEC);
       window.GA_INITIALIZED = true;
     }
-    trackPage(
-      window.location.pathname + window.location.search,
-      this.props.withPageView
-    );
+    trackPage(window.location.pathname + window.location.search, this.props.withPageView);
   }
 
   initGA = (host, userType, withEC) => {
-    const GaHost =
-      this.props.host === 'themarker.com' ? 'UA-3574867-1' : 'UA-589309-3';
+    const GaHost = this.props.host === 'themarker.com' ? 'UA-3574867-1' : 'UA-589309-3';
+
+    // todo: remove this if the autolinker works correctly in production.
+    // let clientTrackerId;
+    // ReactGA.ga(tracker => {
+    //   clientTrackerId = tracker.get('clientId');
+    //   console.log('clientId : ', clientTrackerId);
+    // });
     const visitor =
       userType === 'anonymous'
         ? 'Non-registered'
-        : userType === 'registered' ? 'Registered' : 'Paying';
+        : userType === 'registered'
+          ? 'Registered'
+          : 'Paying';
     ReactGA.initialize(GaHost, {
       gaOptions: {
         userId: visitor,
         allowLinker: true,
+        // todo: remove this if the autolinker works correctly in production.
+        // ...(clientTrackerId ? { clientId: clientTrackerId, } : null),
         cookieDomain: host,
       },
     });
+    // requiring linker ga util to track the clientId.
+    ReactGA.ga('require', 'linker');
+    // linking the _ga clientId from the cookie to the purchase page
+    ReactGA.ga('linker:autoLink', [ 'haaretz.co.il', 'themarker.com', ]);
+
     if (withEC) {
       ReactGA.ga('require', 'ec');
     }
