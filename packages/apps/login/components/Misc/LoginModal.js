@@ -1,112 +1,64 @@
 import React, { Fragment, Component, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { LoginDialog, } from '../StyleComponents/LoginStyleComponents';
 
 export default class LoginModal extends Component {
   state = {
-    isOpen: this.props.isOpen,
-    pageIndex: -1,
-    pageIndexCap: -1,
+    show: this.props.show,
+    stageIndex: 0,
+    stagesCap: 1,
   };
 
   static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    children: PropTypes.func.isRequired,
+    /**
+     * show: determines whether the popup will be randered
+     */
+    show: PropTypes.bool,
+
+    /**
+     * handleClose: a function, should set the value passed to this modal's show prop to false
+     */
+    handleClose: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    show: false,
+  }
+
+  /* ------ Methods ----- */
+  getStage = () => {
+    const allStages = React.Children.toArray(this.props.children(this.nextStage, this.hideModal).props.children);
+    return allStages[this.state.stageIndex];
   };
 
-  setEventListener() {
-    window.addEventListener('LoginModal', function () {
-      this.setState({ isOpen: true, });
-    });
+  nextStage = () => {
+    this.setState({ stageIndex: this.state.stageIndex + 1 });
+  };
+
+  getStagesCount = () => {
+    return React.Children.count(this.props.children().props.children);
   }
 
-  /* ------- Lifecycle Methods -------- */
-  componentDidMount() {
-    const grandChildrenList = this.props.children(this.setPageIndex.bind(this)).props.children;
-    this.setPageIndexCap(grandChildrenList);
-    this.setInitialIndex(grandChildrenList);
-    this.setEventListener();
+  setStageCap = () => {
+    this.setState({ stagesCap: this.getStagesCount() });
   }
 
-  /* ----- Check & Render Methods ----- */
-  setPageIndex() {
-    return this.state.pageIndex < this.state.pageIndexCap
-      ? this.setState({ pageIndex: this.state.pageIndex + 1, })
-      : null;
-  }
+  hideModal = () => {
+    this.props.handleClose();
+  };
 
-  getGrandchildrenSize(grandChildren) {
-    return React.Children.count(grandChildren);
-  }
-
-  setPageIndexCap(grandChildren) {
-    const indexCap = this.getGrandchildrenSize(grandChildren);
-    this.setState({ pageIndexCap: indexCap - 1, });
-  }
-
-  setInitialIndex(grandChildren) {
-    return grandChildren ? this.setState({ pageIndex: 0, }) : null;
-  }
-
-  renderChild(childrenList, pageIndex) {
-    const grandChildren = childrenList.props.children;
-    return this.state.pageIndexCap > -1
-      ? React.Children.map(grandChildren, (child, i) => {
-        if (i == pageIndex) return child;
-      })
-      : null;
-  }
-
-  /* ------ Functionality Methods ----- */
-  closePopup() {
-    this.setState({ pageIndex: -10, });
-    return this.state.pageIndex;
-  }
-
-  /* ---------- Misc Methods ---------- */
-  getStyles() {
-    const popupWrapperStyle = () => ({
-      display: 'flex',
-      alignItems: 'center',
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      width: '100%',
-      height: '100%',
-      backgroundColor: 'rgba(0,0,0,0.7)',
-      zIndex: '100',
-    });
-    const popupContentStyle = () => ({
-      width: '450px',
-      margin: '0 auto',
-      textAlign: 'center',
-      backgroundColor: '#ffffff',
-      border: 'solid 1px #acd2ed',
-    });
-
-    return {
-      PopupWrapper: createComponent(popupWrapperStyle),
-      PopupContent: createComponent(popupContentStyle),
-    };
-  }
-
+  /* ------- Render ----- */
   render() {
-    // Styling:
-    const { PopupWrapper, PopupContent, } = this.getStyles();
+    const { DialogWrapper, DialogContent, } = LoginDialog;
+    const Stage = () => this.getStage();
 
-    // Children:
-    const children = this.props.children(this.setPageIndex.bind(this), this.closePopup.bind(this));
-
-    // Child to display:
-    const PopMessage = () => this.renderChild(children, this.state.pageIndex);
-
-    return this.props.isOpen && this.state.pageIndex > -1 ? (
+    return this.props.show ? (
       <Fragment>
-        <PopupWrapper>
-          <PopupContent>
-            <PopMessage />
-          </PopupContent>
-        </PopupWrapper>
+        <DialogWrapper>
+          <DialogContent>
+            <Stage></Stage>
+          </DialogContent>
+        </DialogWrapper>
       </Fragment>
     ) : null;
   }
