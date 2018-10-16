@@ -9,6 +9,7 @@ module.exports = views => `
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import dynamic from 'next/dynamic';
+import Debug from '../Debug/Debug';
 
 const views = new Map([
   ${Object.keys(views)
@@ -26,7 +27,7 @@ const views = new Map([
 
 // eslint-disable-next-line react/prop-types
 const DefaultComponent = ({ view, }) => (
-  <p>{\`There is no template for \${view} yet\`}</p>
+  <Debug>{\`There is no template for \${view} yet\`}</Debug>
 );
 
 const getViews = viewType => {

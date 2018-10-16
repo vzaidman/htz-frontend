@@ -1,4 +1,5 @@
-/** ************************************************************** *
+
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the Embed's elements map, it is generated
@@ -6,6 +7,7 @@
  * *************************************************************** */
 import React from 'react';
 import dynamic from 'next/dynamic';
+import Debug from '../../Debug/Debug';
 
 const embeds = {
   'com.polobase.ApesterEmbed': () => import('../elements/Apester'),
@@ -38,7 +40,7 @@ const embeds = {
 
 // eslint-disable-next-line react/prop-types
 const DefaultComponent = ({ inputTemplate, }) => (
-  <p>{`There is no template for ${inputTemplate} yet`}</p>
+  <Debug>{`There is no template for ${inputTemplate} yet`}</Debug>
 );
 
 const getEmbed = embedType => {

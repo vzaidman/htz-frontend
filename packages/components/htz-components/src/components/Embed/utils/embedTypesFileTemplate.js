@@ -7,6 +7,7 @@ module.exports = views => `
  * *************************************************************** */
 import React from 'react';
 import dynamic from 'next/dynamic';
+import Debug from '../../Debug/Debug';
 
 const embeds = {
   ${Object.keys(views)
@@ -16,7 +17,7 @@ const embeds = {
 
 // eslint-disable-next-line react/prop-types
 const DefaultComponent = ({ inputTemplate, }) => (
-  <p>{\`There is no template for \${inputTemplate} yet\`}</p>
+  <Debug>{\`There is no template for \${inputTemplate} yet\`}</Debug>
 );
 
 const getEmbed = embedType => {
