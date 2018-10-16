@@ -27,7 +27,7 @@ module.exports = {
   graphQLuseSSL: true,
   graphQLexposedPort: true,
   // todo: ask tomer if we will add a staging graphql-server with different subDomain
-  graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'graphql-stage',
+  graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'grahpql-stg',
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
   appPort: process.env.APP_PORT || '2002',
