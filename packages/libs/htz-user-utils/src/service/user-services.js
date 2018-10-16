@@ -57,10 +57,10 @@ export default function UserService(config = {}) {
       fetch(serviceUrl).then(data =>
         data
           .json()
-          .then(json => {
-            return resolve(json.success);
+          .then(json =>
+            resolve(json.success)
             // return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
-          })
+          )
           .catch(err => {
             console.log('error from check email', err);
             return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
@@ -115,6 +115,77 @@ export default function UserService(config = {}) {
             () => {
               if (onImageLoadCallback) {
                 onImageLoadCallback();
+              }
+              resolve();
+            },
+            reason => reject(reason)
+          )
+        )
+    );
+    return withTimeout(loginPromise, defaultTimeout);
+  }
+
+  /**
+   * Sign in a user, using mobile number and OTP. Will activate side effects
+   * (in this case: planting cookies)
+   * @param {object} { mobile, otp, user, trmsChk, hash, }
+   * mobile: mobile number
+   * otp: one time password that was issued to the user
+   * trmsChk: the value of the checkbox that verifies the users agreement to
+   * promotional mail sending
+   * hash: the hash that was issued after the generation of the OTP
+   * user: the current user object (prior to login)
+   * @return {*}
+   */
+  function loginWithMobile({ mobile, otp, trmsChk, hash, user, }) {
+    let anonymousId;
+    let mobilePrefix;
+    let mobileSuffix;
+
+    if (mobile.startsWith('+')) {
+      mobilePrefix = '00';
+      mobileSuffix = mobile.substring(1);
+    }
+    else {
+      mobilePrefix = mobile.substring(0, 3);
+      mobileSuffix = mobile.substring(3);
+    }
+
+    if (!user) {
+      const factory = new UserFactory();
+      anonymousId = factory.build().anonymousId;
+    }
+    else {
+      anonymousId = user.anonymousId;
+    }
+    const siteConfig = createSiteConfig();
+    const serviceUrl = `${siteConfig.newSsoDomain}/loginWMobile`;
+    const params = {
+      mobilePrefix,
+      anonymousId,
+      otp,
+      site: siteConfig.siteId,
+      mobileNumber: mobileSuffix,
+      id: hash,
+      // termsChk: trmsChk ? 'on' : 'off',
+      termsChk: trmsChk ? 'on' : 'on',
+    };
+
+    const loginPromise = new Promise((resolve, reject) =>
+      fetch(serviceUrl, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
+      })
+        .then(parseResponse)
+        .then(loginData =>
+          handleSsoResponse(loginData).then(
+            () => {
+              if (onImageLoadCallback) {
+                onImageLoadCallback(); // TODO: add correct callback
               }
               resolve();
             },
@@ -302,6 +373,7 @@ export default function UserService(config = {}) {
   return {
     checkEmailExists,
     login,
+    loginWithMobile,
     logout,
     register,
   };

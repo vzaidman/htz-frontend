@@ -31,16 +31,13 @@ const validateEmailInput = ({ email, }) =>
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
-const saveHashIfSuccessTrue = ({ success, hash, msg, client, }) => {
-  if (success) {
-    saveOtpHash(client)({ otpHash: hash, });
-  }
-  return { success, hash, msg, };
-};
-
 const handleGenerateOtp = ({ phoneNum, client, }) =>
   generateOtp(client)({ typeId: phoneNum, })
-    .then(({ success, hash, msg, }) => saveHashIfSuccessTrue({ success, hash, msg, client, }));
+    .then(data => {
+      const json = data.data.generateOtp;
+      saveOtpHash(client)({ otpHash: json.hash, });
+      return ({ success: json.success, hash: json.hash, msg: json.msg, });
+    });
 
 const handleResponseFromGraphql = ({ client, getFlowByData, email, res, }) => {
   const dataSaved = saveUserData(client)({ userData: res.userByMail, });
