@@ -24,7 +24,6 @@ export default [
       withPassword: 'password',
       getCustomerService: 'customerService',
       notMyPhone: 'phoneInput',
-      withPassword: 'password',
     },
     phoneInput: {
       withPassword: 'password',

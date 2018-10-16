@@ -12,6 +12,7 @@ import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
 } from '../components/StyleComponents/LoginStyleComponents';
+import GET_HOST from './queries/GetHost';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -20,14 +21,19 @@ const { InputLinkButton, } = LoginMiscLayoutStyles;
 
 // Methods -------------------
 const generateSmsCodeError = message => [ { name: 'smsCode', order: 1, errorText: message, }, ];
-const isNumeric = number => Number(number) === number;
+const isNumeric = number => Number(number).toString() !== 'NaN';
 const validateSmsCodeInput = ({ smsCode, }) =>
   (!isNumeric(smsCode) || !smsCode || smsCode.length < 1
     ? generateSmsCodeError('אנא הזינו את הקוד שנשלח אליכם')
     : []);
 
-const onSubmit = ({ client, loginWithMobile, }) => ({ smsCode, termsChk, }) =>
-  loginWithMobile(getPhoneNum(client), smsCode, termsChk, getOtpHash(client));
+const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }) =>
+  loginWithMobile(getPhoneNum(client), smsCode, termsChk, getOtpHash(client))
+    .then(
+// eslint-disable-next-line no-undef
+      () => { window.location = `https://www.${host}`; },
+      reason => console.log(reason.message) // TODO: add error UI
+    );
 
 // const sendAgain = e => {
 //   console.log('test...');
@@ -38,15 +44,16 @@ const OtpValidation = () => (
   <FSMLayout>
     {({ currentState, findRout, doTransition, }) => (
       <ApolloConsumer>
-        {client => (
-          <Fragment>
+        {client => {
+          const host = client.readQuery({ query: GET_HOST, }).hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+          return (
             <ContentWrapper>
               <FormWrapper>
                 <ItemCenterer>
                   <h5>
                     להתחברות הזינו את הקוד שנשלח למספר
                     <br />
-                    <span dir="ltr">{ getUserData(client).phoneNum }</span>
+                    <span dir="ltr">{getUserData(client).phoneNum}</span>
                   </h5>
                 </ItemCenterer>
                 <Login
@@ -55,7 +62,7 @@ const OtpValidation = () => (
                       clearFormAfterSubmit={false}
                       // initialValues={{ email: 'insert email' }}
                       validate={validateSmsCodeInput}
-                      onSubmit={onSubmit({ client, loginWithMobile, })}
+                      onSubmit={onSubmit({ client, host, loginWithMobile, })}
                       render={({ getInputProps, handleSubmit, clearForm, }) => (
                         <Fragment>
                           <div>
@@ -76,7 +83,8 @@ const OtpValidation = () => (
                             <InputLinkButton>
                               <button
                                 data-role="resend"
-                                onClick={() => {
+                                onClick={evt => {
+                                  evt.preventDefault();
                                   const route = doTransition('sendAgain');
                                   Router.push(route);
                                 }}
@@ -120,8 +128,8 @@ const OtpValidation = () => (
                 </BottomLinks>
               </FormWrapper>
             </ContentWrapper>
-          </Fragment>
-        )}
+          );
+        }}
       </ApolloConsumer>
     )}
   </FSMLayout>

@@ -1,26 +1,23 @@
 import React, { Fragment, } from 'react';
 import Router from 'next/router';
 
-import { HtzLink, } from '@haaretz/htz-components';
+import { Form, TextInput, Button, HtzLink, } from '@haaretz/htz-components';
+
 import FSMLayout from '../layouts/FSMLayout';
 
-import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import theme from '../theme/index';
 import BottomLinks from '../components/Misc/BottomLinks';
-import {
-  LoginContentStyles,
-  LoginMiscLayoutStyles,
-} from '../components/StyleComponents/LoginStyleComponents';
+import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
 
 // Styling Components -------
-const { PageWrapper, ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
+const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
 // --------------------------
 
 // Methods -------------------
 const generateSmsCodeError = message => [ { name: 'smscode', order: 1, errorText: message, }, ];
 
 const isValidPhoneNumber = number => {
-  const phoneRegex = /^(\s*|[\+0-9]\d{6,})$/;
+  const phoneRegex = /^(\s*|[+0-9]\d{6,})$/;
   return phoneRegex.test(number);
 };
 const validatePhoneNumber = ({ smscode, }) =>
@@ -33,9 +30,9 @@ const onSubmit = doTransitionFunc => () => {
   Router.push(route);
 };
 
-const sendAgain = e => {
-  console.log('test...');
-};
+// const sendAgain = e => {
+//   console.log('test...');
+// };
 // --------------------------
 
 const PhoneInput = () => (

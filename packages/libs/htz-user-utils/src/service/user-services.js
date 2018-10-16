@@ -1,6 +1,7 @@
 /* global fetch Headers */
 import UserFactory from '../user-factory-cookie-based';
 import { plantCookie, } from '../util/cookie-utils';
+import { mobileNumberParser, } from '../util/general-user-data-transform';
 import createSiteConfig from '../site-config';
 
 /**
@@ -139,18 +140,7 @@ export default function UserService(config = {}) {
    */
   function loginWithMobile({ mobile, otp, trmsChk, hash, user, }) {
     let anonymousId;
-    let mobilePrefix;
-    let mobileSuffix;
-
-    if (mobile.startsWith('+')) {
-      mobilePrefix = '00';
-      mobileSuffix = mobile.substring(1);
-    }
-    else {
-      mobilePrefix = mobile.substring(0, 3);
-      mobileSuffix = mobile.substring(3);
-    }
-
+    const { prefix, suffix, } = mobileNumberParser(mobile);
     if (!user) {
       const factory = new UserFactory();
       anonymousId = factory.build().anonymousId;
@@ -161,11 +151,11 @@ export default function UserService(config = {}) {
     const siteConfig = createSiteConfig();
     const serviceUrl = `${siteConfig.newSsoDomain}/loginWMobile`;
     const params = {
-      mobilePrefix,
       anonymousId,
       otp,
       site: siteConfig.siteId,
-      mobileNumber: mobileSuffix,
+      mobilePrefix: prefix,
+      mobileNumber: suffix,
       id: hash,
       // termsChk: trmsChk ? 'on' : 'off',
       termsChk: trmsChk ? 'on' : 'on',

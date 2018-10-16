@@ -10,6 +10,7 @@ import newVoteResponseType from './types/new_vote_response_type';
 import newsignaUpNotificationResponseType from './types/new_sign_up_notification_response_type';
 import signUpNewsletterVars from './types/sign_up_newsletter_vars';
 import { GenerateOtp, } from './types/otp_operations_type';
+import OverridePhone from './types/override_phone_type';
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -69,6 +70,18 @@ const mutation = new GraphQLObjectType({
       type: GenerateOtp,
       args: {
         typeId: { type: GraphQLString, },
+      },
+      resolve(parentValue, { typeId, }, { dataSources, }) {
+        return dataSources.OtpAPI.generateOtp(typeId);
+      },
+    },
+    overridePhone: {
+      type: OverridePhone,
+      args: {
+        ssoId: { type: GraphQLString, },
+        mobilePrefix: { type: GraphQLString, },
+        mobileNumber: { type: GraphQLString, },
+        userName: { type: GraphQLString, },
       },
       resolve(parentValue, { typeId, }, { dataSources, }) {
         return dataSources.OtpAPI.generateOtp(typeId);
