@@ -15,7 +15,7 @@ import {
 } from '../components/StyleComponents/LoginStyleComponents';
 
 import TabsFrame from '../components/Misc/TabsFrame';
-import LoginModal from '../components/Misc/LoginModal';
+import LoginDialog from '../components/Misc/LoginDialog';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -95,7 +95,7 @@ class Password extends Component {
                     </ItemCenterer>
 
                     {/* ----------- Forgot Password Modal ------------ */}
-                    <LoginModal show={this.getDialogState()} handleClose={this.hideDialog}>
+                    <LoginDialog show={this.getDialogState()} handleClose={this.hideDialog}>
                       {
                         (nextStage, closeModal, CloseButton) => (
                           <div>
@@ -113,7 +113,7 @@ class Password extends Component {
                           </div>
                         )
                       }
-                    </LoginModal>
+                    </LoginDialog>
     
                     {/* ----------------- Tabs Frame ----------------- */}
                     <TabsFrame activeTab={1}>
