@@ -1,6 +1,6 @@
 /* global fetch */
 import { RESTDataSource, } from 'apollo-datasource-rest';
-import { CookieUtils, } from '@haaretz/htz-user-utils';
+import { CookieUtils, UserTransformations, } from '@haaretz/htz-user-utils';
 import {
   financeTableMap,
   financeSearchMap,
@@ -371,6 +371,31 @@ class OtpAPI extends RESTDataSource {
   }
 }
 
+class LegacySsoOperationsAPI extends RESTDataSource {
+  get baseURL() {
+    return this.context.ssoService;
+  }
+
+  async overrideMobilePhone({ mobile, ssoId, userName, }) {
+    const { prefix, suffix, } = UserTransformations.mobileNumberParser(mobile);
+    return fetch(`${this.context.ssoService}r/OverrideMobilePhone`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({
+        ssoId,
+        mobilePrefix: prefix,
+        mobileNumber: suffix,
+        username: userName,
+      }),
+    }).then(
+      success => success.json(),
+      () => Promise.resolve({ success: false, msg: 'server error', hash: '', })
+    );
+  }
+}
+
 const dataSources = () => ({
   PageAPI: new PageAPI(),
   PapiAPI: new PapiAPI(),
@@ -378,5 +403,6 @@ const dataSources = () => ({
   PurchasePageAPI: new PurchasePageAPI(),
   FinanceAPI: new FinanceAPI(),
   OtpAPI: new OtpAPI(),
+  LegacySsoOperationsAPI: new LegacySsoOperationsAPI(),
 });
 export default dataSources;
