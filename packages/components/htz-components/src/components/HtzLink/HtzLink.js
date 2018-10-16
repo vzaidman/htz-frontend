@@ -118,9 +118,9 @@ function HtzLink({
         passHref
         href={{
           pathname: computedPathname,
-          query: { path: `${computedHref.pathname}`, },
+          query: { path: `${computedHref.pathname}`, dfpdeb: 'dfpdeb', },
         }}
-        as={computedHref.pathname}
+        as={`${computedHref.pathname}?dfpdeb`}
       >
         <LinkWrapper
           attrs={attrs}
