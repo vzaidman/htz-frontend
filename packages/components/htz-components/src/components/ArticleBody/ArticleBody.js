@@ -47,7 +47,6 @@ const Aside = ({ children, }) => (
         theme.mq(
           { from: 'l', },
           {
-            width: '26rem',
             position: 'absolute',
             textAlign: 'start',
             start: theme.layoutStyle.startColumnPadding,
@@ -57,12 +56,14 @@ const Aside = ({ children, }) => (
           { from: 'l', until: 'xl', },
           {
             start: theme.layoutStyle.startColumnPadding,
+            width: '22rem',
           }
         ),
         theme.mq(
           { from: 'xl', },
           {
             start: theme.layoutStyle.startColumnPaddingXL,
+            width: '26rem',
           }
         ),
         parseComponentProp(
@@ -82,7 +83,7 @@ const Aside = ({ children, }) => (
 const buildComponent = (context, index, isLastItem) => {
   const uniqueId = context.elementType || context.inputTemplate || context.tag || null;
   const Component = uniqueId === 'com.tm.Image' ? ArticleImage : getComponent(uniqueId);
-  
+
   switch (uniqueId) {
     case 'com.tm.Image':
       return <Component key={context.contentId} lastItem={isLastItem} {...context} />;
