@@ -158,6 +158,8 @@ const financeAsset = new GraphQLObjectType({
     paymentDate: { type: GraphQLTimestamp, },
     exDate: { type: GraphQLTimestamp, },
     redemptionRate: { type: GraphQLFloat, },
+    floatRate: { type: GraphQLFloat, }, // שער רציף
+    fixedRate: { type: GraphQLFloat, }, // שער יציג
     holdingsRatio: { type: GraphQLFloat, },
     sharpIndex: { type: GraphQLFloat, }, // (0-10)
     inflowsPercentageChange: { type: GraphQLFloat, },

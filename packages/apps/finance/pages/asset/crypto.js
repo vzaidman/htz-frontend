@@ -1,24 +1,27 @@
 // @flow
+import React from 'react';
 import Router from 'next/router';
 
-type Props = {
-  url: {
-    pathname: string,
-    query: {
-      assetId: string,
-      section: string,
-    },
+type Url = {
+  pathname: string,
+  query: {
+    assetId: string,
+    section: string,
   },
 };
 
-function crypto({ url: { query: { assetId, }, }, }: Props): void {
-  Router.push({
-    pathname: '/asset/exchange',
-    query: {
-      section: 'crypto',
-      assetId,
-    },
-  }, `/crypto/${assetId}`);
+class crypto extends React.Component<{}> {
+  static async getInitialProps(url: Url) {
+    const { query: { assetId, section, }, } = url;
+    Router.push({
+      pathname: '/asset/exchange',
+      query: {
+        section,
+        assetId,
+      },
+    }, `/${section}/${assetId}`);
+    return { };
+  }
 }
 
 export default crypto;

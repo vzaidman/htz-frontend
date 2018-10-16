@@ -9,6 +9,8 @@ import { Stat, } from '../../StockStats/StockStats';
 type AssetData = {
   title: string,
   value: string | number,
+  decimal?: number,
+  percentage?: boolean,
 }
 
 type Props = {
@@ -22,8 +24,8 @@ type PaperItemProps = {
   title: string,
 };
 
-const numToString: number => string = num => (
-  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+const numToString: (number, number) => string = (num, decimal) => (
+  num.toLocaleString('he', { minimumFractionDigits: decimal, maximumFractionDigits: decimal, })
 );
 
 const PaperItem: StatelessFunctionalComponent<PaperItemProps> =
@@ -95,7 +97,7 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
               }}
             >
               {
-                valueData.map(({ title, value, }: AssetData) => (
+                valueData.map(({ title, value, decimal = 2, percentage, }: AssetData) => (
                   <Stat
                     title={title}
                     miscStyles={{
@@ -105,12 +107,20 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
                           : theme.color('positive')
                         : theme.color('neutral', '-1'),
                       ...theme.type(2),
+                      ...(percentage
+                        ? {
+                            ':before': {
+                              content: '"% "',
+                            },
+                          }
+                        : {}
+                      ),
                     }}
                   >
                     {className => (
                       <span className={className}>
                         {!isNaN(value) // eslint-disable-line no-restricted-globals
-                          ? numToString(Number(value))
+                          ? numToString(Number(value), decimal)
                           : value
                         }
                       </span>

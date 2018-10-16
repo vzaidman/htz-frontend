@@ -75,7 +75,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
               value,
               changePercentage,
               numeralChange,
-              assetType,
+              subType,
               assetNumber,
               lastTradeTime,
               relatedAssets,
@@ -109,7 +109,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                       ]}
                       date={{ title: 'נכון ל:', value: lastTradeTime, }}
                       assetInfo={[
-                        { title: 'סוג נייר:', value: assetType, },
+                        { title: 'סוג נייר:', value: subType, },
                         { title: 'מספר נייר:', value: assetNumber, },
                       ]}
                     />
