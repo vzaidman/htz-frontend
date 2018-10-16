@@ -54,7 +54,8 @@ function readFromFiles() {
             views[inputTemplate.trim()] = `${path.relative(
               utilsPath,
               elementsPath
-            )}/${fileName}`;
+            )}/${fileName}`
+              .replace('\\', '/');
           });
         }
 
