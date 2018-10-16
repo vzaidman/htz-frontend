@@ -134,12 +134,30 @@ const Styles = {
       zIndex: '100',
     }),
     dialogContentStyle: () => ({
+      position: 'relative',
       width: '450px',
+      maxWidth: '90%',
       margin: '0 auto',
       textAlign: 'center',
       backgroundColor: '#ffffff',
       border: 'solid 1px #acd2ed',
-    })
+    }),
+    closeButtonStyle: () => ({
+      position: 'absolute',
+      top: '5px',
+      left: '5px',
+      width: '14px',
+      height: '14px',
+      '> button': {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        margin: '0',
+        lineHeight: '14px',
+        left: '0',
+        top: '0',
+      },
+    }),
   }
 };
 
@@ -161,10 +179,11 @@ const LoginMiscLayoutStyles = {
   InputLinkButton: createComponent(Styles.MiscLayout.inputLinkButton),
 };
 
-const LoginDialog = {
+const LoginDialogBox = {
   DialogWrapper: createComponent(Styles.Dialog.dialogWrapperStyle),
   DialogContent: createComponent(Styles.Dialog.dialogContentStyle),
+  CloseButton: createComponent(Styles.Dialog.closeButtonStyle),
 }
 
 // Export ----------------------------------------------
-export { LoginContentStyles, LoginGeneralLayoutStyles, LoginMiscLayoutStyles, LoginDialog, };
+export { LoginContentStyles, LoginGeneralLayoutStyles, LoginMiscLayoutStyles, LoginDialogBox, };

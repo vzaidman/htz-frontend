@@ -1,8 +1,8 @@
 import React, { Fragment, Component, } from 'react';
 import PropTypes from 'prop-types';
-import { LoginDialog, } from '../StyleComponents/LoginStyleComponents';
+import { LoginDialogBox, } from '../StyleComponents/LoginStyleComponents';
 
-export default class LoginModal extends Component {
+export default class LoginDialog extends Component {
   state = {
     show: this.props.show,
     stageIndex: 0,
@@ -27,36 +27,47 @@ export default class LoginModal extends Component {
 
   /* ------ Methods ----- */
   getStage = () => {
-    const allStages = React.Children.toArray(this.props.children(this.nextStage, this.hideModal).props.children);
+    const allStages = React.Children.toArray(this.props.children(this.nextStage, this.hideModal, this.getCloseButton).props.children);
     return allStages[this.state.stageIndex];
   };
 
   nextStage = () => {
-    this.setState({ stageIndex: this.state.stageIndex + 1 });
+    this.setState({ stageIndex: this.state.stageIndex + 1, });
   };
 
-  getStagesCount = () => {
-    return React.Children.count(this.props.children().props.children);
+  resetStages = () => {
+    this.setState({ stageIndex: 0 });
   }
+
+  getStagesCount = () => React.Children.count(this.props.children().props.children)
 
   setStageCap = () => {
-    this.setState({ stagesCap: this.getStagesCount() });
-  }
+    this.setState({ stagesCap: this.getStagesCount(), });
+  };
 
   hideModal = () => {
+    this.resetStages();
     this.props.handleClose();
   };
 
+  getCloseButton = () => {
+    return (
+      <LoginDialogBox.CloseButton>
+        <button onClick={this.hideModal}>X</button>
+      </LoginDialogBox.CloseButton>
+    )
+  }
+
   /* ------- Render ----- */
   render() {
-    const { DialogWrapper, DialogContent, } = LoginDialog;
+    const { DialogWrapper, DialogContent, CloseButton } = LoginDialogBox;
     const Stage = () => this.getStage();
 
     return this.props.show ? (
       <Fragment>
         <DialogWrapper>
           <DialogContent>
-            <Stage></Stage>
+            <Stage />
           </DialogContent>
         </DialogWrapper>
       </Fragment>
