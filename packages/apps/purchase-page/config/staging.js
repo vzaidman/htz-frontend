@@ -26,7 +26,7 @@ module.exports = {
   useSSL: true,
   graphQLuseSSL: true,
   graphQLexposedPort: false,
-  graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'graphql-stage',
+  graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'grahpql-stg',
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
   appPort: process.env.APP_PORT || '2002',
