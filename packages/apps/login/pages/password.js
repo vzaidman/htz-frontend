@@ -97,15 +97,18 @@ class Password extends Component {
                     {/* ----------- Forgot Password Modal ------------ */}
                     <LoginModal show={this.getDialogState()} handleClose={this.hideDialog}>
                       {
-                        (nextStage, closeModal) => (
+                        (nextStage, closeModal, CloseButton) => (
                           <div>
                             <div>
+                              <CloseButton/>
                               stage 1<br/>
-                              <button onClick={closeModal}>Close</button>
+                              <button onClick={nextStage}>Next</button>
                             </div>
 
                             <div>
-                              stage 2
+                              <CloseButton/>
+                              stage 2<br/>
+                              <button onClick={closeModal}>Close</button>
                             </div>
                           </div>
                         )
