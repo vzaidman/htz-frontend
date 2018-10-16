@@ -10,4 +10,4 @@ const GenerateOtp = new GraphQLObjectType({
   }),
 });
 
-export default GenerateOtp;
+export { GenerateOtp, };
