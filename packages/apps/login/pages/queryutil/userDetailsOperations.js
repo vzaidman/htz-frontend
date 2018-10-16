@@ -34,7 +34,7 @@ const mockDataFromUserInfo = client => email =>
 
 const getUserData = client => client.readQuery({ query: USER_DATA, }).userData;
 const getOtpHash = client => client.readQuery({ query: OTP_HASH, }).otpHash;
-const getPhoneNum = client => client.readQuery({ query: PHONE_NUM, }).phoneNum;
+const getPhoneNum = client => client.readQuery({ query: PHONE_NUM, }).userData.phoneNum;
 
 const saveUserData = client => userDataObj => {
   client.writeData({ data: userDataObj, });
