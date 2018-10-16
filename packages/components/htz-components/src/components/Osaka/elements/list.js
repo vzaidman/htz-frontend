@@ -6,6 +6,7 @@ import { parseStyleProps, borderEnd, } from '@haaretz/htz-css-tools';
 import Article from './article';
 import { stylesPropType, } from '../../../propTypes/stylesPropType';
 import HtzLink from '../../HtzLink/HtzLink';
+import EventTracker from '../../../utils/EventTracker';
 
 const propTypes = {
   /**
@@ -85,22 +86,32 @@ function List({ articles, promoted, outbrain, miscStyles, }) {
             <FelaComponent
               style={{
                 width: `${100 / articles.length}%`,
-                ...(promoted
-                  ? borderEnd('1px', 'solid', theme.color('neutral', '-4'))
-                  : {}),
+                ...(promoted ? borderEnd('1px', 'solid', theme.color('neutral', '-4')) : {}),
               }}
               render={({ className: linkClass, }) => (
-                <HtzLink
-                  className={linkClass}
-                  href={article.url}
-                  content={<Article {...article} />}
-                />
+                <EventTracker>
+                  {({ biAction, gaAction, }) => (
+                    <HtzLink
+                      className={linkClass}
+                      onClick={() => {
+                        biAction({
+                          actionCode: 109,
+                          additionalInfo: {
+                            ArticleId: promoted ? 'promoted' : outbrain ? 'outbrain' : 'htz-label',
+                            NoInList: i + 1,
+                            ViewName: 'Osaka',
+                          },
+                        });
+                      }}
+                      href={article.url}
+                      content={<Article {...article} />}
+                    />
+                  )}
+                </EventTracker>
               )}
             />
           ))}
-          {promoted ? (
-            <Promoted>{theme.osakaI18n.promotedContent}</Promoted>
-          ) : null}
+          {promoted ? <Promoted>{theme.osakaI18n.promotedContent}</Promoted> : null}
           {outbrain ? (
             <a
               href="#"
