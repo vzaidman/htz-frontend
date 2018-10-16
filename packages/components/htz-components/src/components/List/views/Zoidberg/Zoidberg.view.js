@@ -62,6 +62,7 @@ const Zoidberg = ({ list, lazyLoad, gaAction, biAction, listId, }) => {
                   path={link}
                   suffix
                   paragraphHeight={{ maxHeight: '9rem', }}
+                  textType={-2}
                 />
               </BlockLink>
             )}
@@ -133,7 +134,7 @@ const Zoidberg = ({ list, lazyLoad, gaAction, biAction, listId, }) => {
                 fontWeight: '700',
                 marginStart: '1rem',
                 flexGrow: '1',
-                extend: [ theme.type(-1), ],
+                extend: [ theme.type(-2), ],
               })}
               render={({ className, }) => (
                 <H className={className}>

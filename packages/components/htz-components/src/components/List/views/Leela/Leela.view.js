@@ -18,6 +18,7 @@ export const PromotedItem = ({
   image,
   suffix,
   paragraphHeight,
+  textType = -1,
 }) => (
   <FelaTheme
     render={theme => (
@@ -50,7 +51,7 @@ export const PromotedItem = ({
               maxHeight: '12rem',
               overflow: 'hidden',
               extend: [
-                theme.type(-1),
+                theme.type(textType),
                 paragraphHeight || {},
                 ],
               }}
