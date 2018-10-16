@@ -11,9 +11,8 @@ import MainLayout from '../../layouts/MainLayout';
 import PageRow from '../../components/PageRow/PageRow';
 import RowItem from '../../components/RowItem/RowItem';
 import QuoteSummary from '../../components/QuotePageComponents/QuoteSummary/QuoteSummary';
-import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/RelatedAssets';
 import GraphController from '../../components/GraphController/GraphController';
-import QuoteTable from '../../components/QuotePageComponents/QuoteTable/QuoteTable';
+import QuoteInfoTable from '../../components/QuotePageComponents/QuoteInfoTable/QuoteInfoTable';
 import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
 import { Query, } from '../../components/ApolloBoundary/ApolloBoundary';
@@ -131,7 +130,7 @@ function exchange({ url: { query: { assetId, section, }, }, }: Props): Node {
                         <RowItem
                           title="נתוני המסחר"
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             tradingStatus
                             fixed
