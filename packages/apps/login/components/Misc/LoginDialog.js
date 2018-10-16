@@ -4,9 +4,8 @@ import { LoginDialogBox, } from '../StyleComponents/LoginStyleComponents';
 
 export default class LoginDialog extends Component {
   state = {
-    show: this.props.show,
-    stageIndex: 0,
-    stagesCap: 1,
+    stageIndex: 0,            //current stage (grand-child) to display
+    stagesCap: 1,             //max stages
   };
 
   static propTypes = {
@@ -26,41 +25,53 @@ export default class LoginDialog extends Component {
   }
 
   /* ------ Methods ----- */
+  /** - returns all grand children passed to the component */
+  getAllStages = () => {
+    return React.Children.toArray(this.props.children(this.nextStage, this.hideDialog, this.getCloseButton).props.children);
+  }
+
+  /** - return the grand child that should be displayd (according to state stageIndex) */
   getStage = () => {
-    const allStages = React.Children.toArray(this.props.children(this.nextStage, this.hideModal, this.getCloseButton).props.children);
+    const allStages = this.getAllStages();
     return allStages[this.state.stageIndex];
   };
 
+  /** - increase the stageIndex state in order to display the next grand child */
   nextStage = () => {
     this.setState({ stageIndex: this.state.stageIndex + 1, });
   };
 
+  /** - set the stageIndex to 0. used thwn closing the dialog */
   resetStages = () => {
     this.setState({ stageIndex: 0 });
   }
 
+  /** - returns grand children cound */
   getStagesCount = () => React.Children.count(this.props.children().props.children)
 
+  /** - set max stages */
   setStageCap = () => {
     this.setState({ stagesCap: this.getStagesCount(), });
   };
 
-  hideModal = () => {
+  /** - handles hiding the dialog */
+  hideDialog = () => {
     this.resetStages();
     this.props.handleClose();
   };
 
+  /** - create and return the close button layout */
   getCloseButton = () => {
     return (
       <LoginDialogBox.CloseButton>
-        <button onClick={this.hideModal}>X</button>
+        <button onClick={this.hideDialog}>X</button>
       </LoginDialogBox.CloseButton>
     )
   }
 
   /* ------- Render ----- */
   render() {
-    const { DialogWrapper, DialogContent, CloseButton } = LoginDialogBox;
+    const { DialogWrapper, DialogContent, CloseButton, } = LoginDialogBox;
     const Stage = () => this.getStage();
 
     return this.props.show ? (
