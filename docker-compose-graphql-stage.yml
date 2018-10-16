@@ -9,9 +9,9 @@ services:
     image: 'nexus-ng.themarker.com/htz-graphql:${version:-latest}'
     ports:
       - 3201:3201
-    command: ['yarn', 'workspace', '@haaretz/haaretz.co.il', 'start:gql']
+    command: ['yarn', 'workspace', '@haaretz/haaretz.co.il', 'start:gql2dev']
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - CONNECTION_PRESET=stage
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
@@ -22,6 +22,7 @@ services:
       - GRAPHQL_USE_SSL=true
       - GRAPHQL_EXPOSE_PORT=false
       - GRAPHQL_SUB_DOMAIN=grahpql-stg
+      - ENGINE_API_KEY=service:htz-stage:6hYWWng421ai05_ERxSikQ
 
     networks:
       - prod01

@@ -51,10 +51,6 @@ async function run() {
       const context = await createContext(req.req.headers);
       return context;
     },
-    engine: {
-      // todo: get this from env variable
-      apiKey: process.env.ENGINE_API || 'service:kedarguy-9528:9lFG5G4CUPN0jKe1OVkpqQ',
-    },
     tracing: true,
     cacheControl: true,
   });
