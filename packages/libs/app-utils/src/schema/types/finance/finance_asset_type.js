@@ -10,7 +10,6 @@ import {
 } from 'graphql';
 import { Kind, } from 'graphql/language/kinds';
 
-import relatedAsset from './finance_related_asset_type';
 import shareHolder from './finance_share_holder_type';
 
 const isDate = value =>
@@ -76,7 +75,8 @@ const financeAsset = new GraphQLObjectType({
     subType: { type: GraphQLString, },
     assetNumber: { type: GraphQLInt, },
     assetSummary: { type: GraphQLString, },
-    relatedAssets: { type: new GraphQLList(relatedAsset), },
+    assetComponents: { type: new GraphQLList(financeAsset), },
+    relatedAssets: { type: new GraphQLList(financeAsset), },
     shareHolders: { type: new GraphQLList(shareHolder), },
     value: { type: GraphQLFloat, },
     USDValue: { type: GraphQLFloat, },
@@ -170,20 +170,13 @@ const financeAsset = new GraphQLObjectType({
     exposure: { type: GraphQLString, },
     exposureProfile: { type: GraphQLString, },
     foundingDate: { type: GraphQLTimestamp, },
-    tradingHours: {
-      type: new GraphQLObjectType({
-        name: 'TradingHours',
-        fields: () => ({
-          start: { type: GraphQLTimestamp, },
-          end: { type: GraphQLTimestamp, },
-        }),
-      }),
-    },
+    tradingHours: { type: GraphQLString, },
     dividendClassification: { type: GraphQLString, },
     trusteeFee: { type: GraphQLFloat, },
     loadChargeRate: { type: GraphQLFloat, },
     distributionCommission: { type: GraphQLFloat, },
     mainCurrency: { type: GraphQLString, },
+    mtfPolicy: { type: GraphQLString, },
     policyChangeDate: { type: GraphQLTimestamp, },
     primeClassification: { type: GraphQLString, },
     mainClassification: { type: GraphQLString, },

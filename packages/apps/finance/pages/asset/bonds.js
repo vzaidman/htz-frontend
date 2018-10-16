@@ -13,7 +13,7 @@ import RowItem from '../../components/RowItem/RowItem';
 import GraphController from '../../components/GraphController/GraphController';
 import { Query, } from '../../components/ApolloBoundary/ApolloBoundary';
 import QuoteSummary from '../../components/QuotePageComponents/QuoteSummary/QuoteSummary';
-import QuoteTable from '../../components/QuotePageComponents/QuoteTable/QuoteTable';
+import QuoteInfoTable from '../../components/QuotePageComponents/QuoteInfoTable/QuoteInfoTable';
 import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
 import ShareHoldersTable from '../../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
@@ -141,7 +141,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                         <RowItem
                           title="נתוני המסחר"
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             tradingStatus
                             fixed
@@ -236,7 +236,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                         <GridItem
                           width={1 / 3}
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             fields={[
                               { name: 'redemptionYield', display: 'תשואה לפדיון', },
@@ -250,7 +250,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                         <GridItem
                           width={1 / 3}
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             fields={[
                               { name: 'classification', display: 'סיווג', },
@@ -265,7 +265,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                         <GridItem
                           width={1 / 3}
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             fields={[
                               { name: 'retailTax', display: 'מס ליחידים', },
@@ -294,7 +294,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                           title="יחסים פיננסיים"
                           miscStyles={{ marginBottom: '2rem', }}
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             fields={[
                               { name: 'peRatio', display: 'מכפיל רווח', },

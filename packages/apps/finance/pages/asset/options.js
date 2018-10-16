@@ -14,7 +14,7 @@ import RowItem from '../../components/RowItem/RowItem';
 import QuoteSummary from '../../components/QuotePageComponents/QuoteSummary/QuoteSummary';
 import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/RelatedAssets';
 import GraphController from '../../components/GraphController/GraphController';
-import QuoteTable from '../../components/QuotePageComponents/QuoteTable/QuoteTable';
+import QuoteInfoTable from '../../components/QuotePageComponents/QuoteInfoTable/QuoteInfoTable';
 import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
 import ShareHoldersTable from '../../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
@@ -145,7 +145,7 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                         <RowItem
                           title="נתוני המסחר"
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             tradingStatus
                             fixed
@@ -239,7 +239,7 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                         <GridItem
                           width={1 / 2}
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             fields={[
                               { name: 'numeralChange', display: 'שינוי בש"ח', },
@@ -256,7 +256,7 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                         <GridItem
                           width={1 / 2}
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             fields={[
                               { name: 'contractSize', display: 'גודל חוזה', },
@@ -289,7 +289,7 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                           title="יחסים פיננסיים"
                           miscStyles={{ marginBottom: '2rem', }}
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             fields={[
                               { name: 'peRatio', display: 'מכפיל רווח', },

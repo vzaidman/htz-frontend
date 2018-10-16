@@ -13,7 +13,7 @@ import RowItem from '../../components/RowItem/RowItem';
 import GraphController from '../../components/GraphController/GraphController';
 import { Query, } from '../../components/ApolloBoundary/ApolloBoundary';
 import QuoteSummary from '../../components/QuotePageComponents/QuoteSummary/QuoteSummary';
-import QuoteTable from '../../components/QuotePageComponents/QuoteTable/QuoteTable';
+import QuoteInfoTable from '../../components/QuotePageComponents/QuoteInfoTable/QuoteInfoTable';
 import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
 import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/RelatedAssets';
@@ -145,7 +145,7 @@ function stocks({ url: { query: { assetId, section, }, }, }: Props): Node {
                         <RowItem
                           title="נתוני המסחר"
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             tradingStatus
                             fixed
@@ -240,7 +240,7 @@ function stocks({ url: { query: { assetId, section, }, }, }: Props): Node {
                           title="יחסים פיננסיים"
                           miscStyles={{ marginBottom: '2rem', }}
                         >
-                          <QuoteTable
+                          <QuoteInfoTable
                             id={assetId}
                             fields={[
                               { name: 'peRatio', display: 'מכפיל רווח', },

@@ -89,7 +89,7 @@ const TrComponent: StatelessFunctionalComponent<TrComponentProps> =
     </FelaComponent>
   );
 
-const QuoteTable: StatelessFunctionalComponent<Props> =
+const QuoteInfoTable: StatelessFunctionalComponent<Props> =
   // eslint-disable-next-line react/prop-types
   ({ id, fields, tradingStatus = false, fixed = false, miscStyles, }) => (
     <Query
@@ -154,4 +154,4 @@ const QuoteTable: StatelessFunctionalComponent<Props> =
       }}
     </Query>
   );
-export default QuoteTable;
+export default QuoteInfoTable;

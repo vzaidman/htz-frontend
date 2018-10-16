@@ -112,17 +112,13 @@ export const assetObject: Object = {
   exposure: () => string.word({ capital: true, minLength: 4, maxLength: 8, }),
   exposureProfile: () => string.word({ capital: true, minLength: 4, maxLength: 8, }),
   foundingDate: () => date.timestamp({}),
-  tradingHours: () => object(
-    {
-      start: () => date.timestamp({}),
-      end: () => date.timestamp({}),
-    }
-  ),
+  tradingHours: () => string.word({ capital: true, minLength: 3, maxLength: 5, count: 4, }),
   dividendClassification: () => string.word({ capital: true, minLength: 4, maxLength: 8, }),
   trusteeFee: () => number.float({ max: 100, min: 0, fixed: 2, }),
   loadChargeRate: () => number.float({ max: 100, min: 0, fixed: 2, }),
   distributionCommission: () => number.float({ max: 100, min: 0, fixed: 2, }),
   mainCurrency: () => string.word({ capital: true, minLength: 4, maxLength: 8, }),
+  mtfPolicy: () => string.lorem({ type: 'paragraph', }),
   policyChangeDate: () => date.timestamp({}),
   primeClassification: () => string.word({ capital: true, minLength: 4, maxLength: 8, }),
   mainClassification: () => string.word({ capital: true, minLength: 4, maxLength: 8, }),
@@ -149,6 +145,21 @@ export const assetObject: Object = {
   expirationBenchmarkDate: () => date.timestamp({}),
   theoreticalValue: () => number.float({ max: 100, min: 0, fixed: 2, }),
   theoreticalValueGap: () => number.float({ max: 100, min: 0, fixed: 2, }),
+  assetComponents: () => list(
+    [
+      {
+        method: object,
+        options: {
+          name: () => string.lorem({ count: 1, type: 'word', }),
+          id: () => string.id(),
+          type: () => string.enum([ 'crypto', 'bonds', 'stocks', 'options', 'mtf', 'etf', 'exchange', 'indices', ]),
+          value: () => number.float({ max: 10000, min: 0, fixed: 2, }),
+          changePercentage: () => number.float({ max: 100, min: -100, fixed: 2, }),
+        },
+      },
+    ],
+    number.int({ max: 35, min: 5, }),
+  ),
   relatedAssets: () => list(
     [
       {

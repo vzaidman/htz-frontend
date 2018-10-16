@@ -60,7 +60,6 @@ type Props = {
   linkText: ?string,
   addLink: ?boolean,
   count?: number,
-  count?: number,
   loadMore: ?boolean,
 };
 
