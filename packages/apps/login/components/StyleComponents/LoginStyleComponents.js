@@ -3,7 +3,7 @@
 /* --------------------------------- */
 
 // Imports ---------------------------------------------
-import { createComponent, FelaTheme, } from 'react-fela';
+import { createComponent, } from 'react-fela';
 
 // Styles ----------------------------------------------
 const Styles = {
@@ -112,7 +112,7 @@ const Styles = {
       fontSize: '16px',
       color: '#0b7eb5',
 
-      '> span': {
+      '> button': {
         float: 'left',
         marginTop: '-20px',
         cursor: 'pointer',
