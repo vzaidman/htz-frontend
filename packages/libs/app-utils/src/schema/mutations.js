@@ -11,7 +11,6 @@ import newsignaUpNotificationResponseType from './types/new_sign_up_notification
 import signUpNewsletterVars from './types/sign_up_newsletter_vars';
 import { GenerateOtp, } from './types/otp_operations_type';
 import OverridePhone from './types/override_phone_type';
-import ConnectMailMobile from './types/connect_mail_mobile_type';
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
