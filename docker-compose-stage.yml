@@ -19,7 +19,7 @@ services:
       - HOSTNAME=react-stage
       - GRAPHQL_USE_SSL=true
       - GRAPHQL_EXPOSE_PORT=false
-      - GRAPHQL_SUB_DOMAIN=grahpql-stg
+      - GRAPHQL_SUB_DOMAIN=graphql-stg
 
     networks:
       - prod01
