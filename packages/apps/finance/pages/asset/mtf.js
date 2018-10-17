@@ -49,7 +49,7 @@ const MtfQuery: DocumentNode = gql`
       quarterlyYield
       yearlyYield
       policyChangeDate
-      mtfPolicy
+      mtfEtfPolicy
       shareHolders {
         shareHolderName
         equityHolderPercentage
@@ -96,7 +96,7 @@ function mtf({ url: { query: { section, assetId, }, }, }: Props): Node {
               monthlyYield,
               quarterlyYield,
               yearlyYield,
-              mtfPolicy,
+              mtfEtfPolicy,
               policyChangeDate,
               shareHolders,
             },
@@ -317,79 +317,73 @@ function mtf({ url: { query: { section, assetId, }, }, }: Props): Node {
                       </GridItem>
                     </Grid>
                   </PageRow>
-                  <PageRow
-                    miscStyles={{ position: 'relative', }}
-                  >
-                    <RowItem
-                      title="מדיניות"
-                      miscStyles={{ marginBottom: '1rem', }}
-                    >
-                      <FelaComponent
-                        render="p"
-                        style={{
-                          ...theme.type(-1),
-                          color: theme.color('neutral', '-3'),
-                          marginBottom: '1rem',
-                          marginTop: '1rem',
-                          textAlign: 'start',
-                        }}
-                      >
-                        {`תאריך שינוי מדיניות: ${
-                          new Date(policyChangeDate)
-                            .toLocaleString('it-It', {
-                              day: '2-digit',
-                              month: '2-digit',
-                              year: 'numeric',
-                            })
-                          }`}
-                      </FelaComponent>
-                      <FelaComponent
-                        render="p"
-                      >
-                        {mtfPolicy}
-                      </FelaComponent>
-                    </RowItem>
-                    <FelaComponent
-                      render="span"
-                      style={{
-                        borderRadius: '4px',
-                        position: 'absolute',
-                        top: '0',
-                        end: '0',
+                  <PageRow>
+                    <Grid
+                      gutter={2}
+                      miscStyles={{
+                        paddingStart: '0rem',
+                        paddingEnd: '0rem',
                       }}
                     >
-                      {`תאריך שינוי מדיניות: ${
-                        new Date(policyChangeDate)
-                          .toLocaleString('it-It', {
-                            day: '2-digit',
-                            month: '2-digit',
-                            year: 'numeric',
-                          })
-                      }`}
-                    </FelaComponent>
-                  </PageRow>
-                  <PageRow>
-                    <RowItem
-                      title="הרכב הקרן"
-                    >
-                      <QuoteAssetsTable
-                        assets={assetComponents}
-                        fields={[
-                          { value: 'name', display: 'שם ני"ע', miscStyles: { fontWeight: '700', }, },
-                          { value: 'value', display: 'שער אחרון', },
-                          {
-                            value: 'changePercentage',
-                            display: '% שינוי',
-                            colorizedChange: true,
-                            miscStyles: {
-                              direction: 'ltr',
-                              fontWeight: '700',
+                      <GridItem
+                        width={1 / 2}
+                      >
+                        <RowItem
+                          title="מדיניות"
+                          miscStyles={{ marginBottom: '1rem', }}
+                        >
+                          <FelaComponent
+                            render="p"
+                            style={{
+                              ...theme.type(-1),
+                              color: theme.color('neutral', '-3'),
+                              marginBottom: '1rem',
+                              marginTop: '1rem',
                               textAlign: 'start',
-                            },
-                          },
-                        ]}
-                      />
-                    </RowItem>
+                            }}
+                          >
+                            {`תאריך שינוי מדיניות: ${
+                              new Date(policyChangeDate)
+                                .toLocaleString('it-It', {
+                                  day: '2-digit',
+                                  month: '2-digit',
+                                  year: 'numeric',
+                                })
+                              }`}
+                          </FelaComponent>
+                          <FelaComponent
+                            render="p"
+                          >
+                            {mtfEtfPolicy}
+                          </FelaComponent>
+                        </RowItem>
+                      </GridItem>
+                      <GridItem
+                        width={1 / 2}
+                      >
+                        <RowItem
+                          title="הרכב הקרן"
+                        >
+                          <QuoteAssetsTable
+                            assets={assetComponents}
+                            fields={[
+                              { value: 'name', display: 'שם ני"ע', miscStyles: { fontWeight: '700', }, },
+                              { value: 'value', display: 'שער אחרון', },
+                              {
+                                value: 'changePercentage',
+                                display: '% שינוי',
+                                colorizedChange: true,
+                                miscStyles: {
+                                  direction: 'ltr',
+                                  fontWeight: '700',
+                                  textAlign: 'start',
+                                },
+                              },
+                            ]}
+                          />
+                        </RowItem>
+                      </GridItem>
+                    </Grid>
                   </PageRow>
                   <PageRow>
                     <Grid

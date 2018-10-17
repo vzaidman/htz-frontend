@@ -40,6 +40,7 @@ export const TdComponent: StatelessFunctionalComponent<TdComponentProps> =
       style={theme => ({
         paddingTop: '1.5rem',
         paddingBottom: '1.5rem',
+        verticalAlign: 'top',
         extend: [
           ...(miscStyles
             ? parseStyleProps(miscStyles, theme.mq, theme.type)
