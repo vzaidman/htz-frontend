@@ -49,7 +49,7 @@ export default class TabsFrame extends React.Component {
   renderTab(children) {
     return React.Children.map(children, (child, i) => {
       if (i == this.state.activeTab) {
-        return child;
+        return React.isValidElement(child) ? child : null;
       }
       return null;
     });

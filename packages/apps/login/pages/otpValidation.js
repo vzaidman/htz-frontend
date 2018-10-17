@@ -35,6 +35,10 @@ const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }
       reason => console.log(reason.message) // TODO: add error UI
     );
 
+const hidePhone = (phoneNumber) => {
+  return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(3 + 4);
+}
+
 // const sendAgain = e => {
 //   console.log('test...');
 // };
@@ -53,7 +57,7 @@ const OtpValidation = () => (
                   <h5>
                     להתחברות הזינו את הקוד שנשלח למספר
                     <br />
-                    <span dir="ltr">{getUserData(client).phoneNum}</span>
+                    <span dir="ltr">{ hidePhone(getUserData(client).phoneNum) }</span>
                   </h5>
                 </ItemCenterer>
                 <Login
@@ -83,8 +87,8 @@ const OtpValidation = () => (
                             <InputLinkButton>
                               <button
                                 data-role="resend"
-                                onClick={evt => {
-                                  evt.preventDefault();
+                                onClick={(e) => {
+                                  e.preventDefault();
                                   const route = doTransition('sendAgain');
                                   Router.push(route);
                                 }}

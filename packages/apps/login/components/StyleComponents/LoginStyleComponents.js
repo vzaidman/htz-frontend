@@ -44,7 +44,7 @@ const Styles = {
 
     topLinks: () => ({
       display: 'flex',
-      margin: '-10px auto 25px auto',
+      margin: '-2rem auto 4rem auto',
       border: 'solid 1px #0b7eb5',
       '>span': {
         flexGrow: '1',
@@ -117,6 +117,7 @@ const Styles = {
         marginTop: '-20px',
         cursor: 'pointer',
         fontSize: '2rem',
+        fontFamily: 'Open Sans Hebrew,"Helvetica Neue",Helvetica,Arial,sans-serif',
       },
     }),
   },
@@ -138,14 +139,15 @@ const Styles = {
       width: '450px',
       maxWidth: '90%',
       margin: '0 auto',
+      padding: '30px 15px 20px 15px',
       textAlign: 'center',
       backgroundColor: '#ffffff',
       border: 'solid 1px #acd2ed',
     }),
     closeButtonStyle: () => ({
       position: 'absolute',
-      top: '5px',
-      left: '5px',
+      top: '7px',
+      left: '7px',
       width: '14px',
       height: '14px',
       '> button': {
@@ -156,6 +158,7 @@ const Styles = {
         lineHeight: '14px',
         left: '0',
         top: '0',
+        backgroundImage: 'url(../../static/images/close.png)',
       },
     }),
   }

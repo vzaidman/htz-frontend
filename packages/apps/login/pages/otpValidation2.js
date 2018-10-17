@@ -70,16 +70,6 @@ const OtpValidation2 = () => (
                         type: 'text',
                       })}
                     />
-                    <InputLinkButton>
-                      <span
-                        onClick={() => {
-                          /* const route = doTransition('otpValidation2');
-                        Router.push(route); */
-                        }}
-                      >
-                        שלח בשנית
-                      </span>
-                    </InputLinkButton>
                   </div>
                   <ItemCenterer>
                     <Button onClick={handleSubmit}>התחברות</Button>
