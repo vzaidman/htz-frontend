@@ -2,6 +2,7 @@ import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import Comment from './Comment.js';
+import Media from '../Media/Media';
 import DynamicSlotFromDfpConfig from '../Ads/DynamicAds/DynamicSlotFromDfpConfig.js';
 
 /**
@@ -148,12 +149,10 @@ class CommentList extends Component {
                   isFirstSubComment={isSubComment && idx === 0}
                   isLastSubComment={isSubComment && idx === comments.length - 1}
                 />
-                {
-                  isSubComment
-                    ? null
-                    : placeAdSlot(idx)
-                }
-
+                <Media
+                  query={{ from: 'm', }}
+                  render={() => (isSubComment ? null : placeAdSlot(idx))}
+                />
               </Fragment>
             ))}
           </div>
