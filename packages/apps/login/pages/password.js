@@ -101,14 +101,44 @@ class Password extends Component {
                           <div>
                             <div>
                               <CloseButton/>
-                              stage 1<br/>
-                              <button onClick={nextStage}>Next</button>
+                              <h4>החלפת סיסמה</h4>
+                                <Form
+                                clearFormAfterSubmit={false}
+                                // initialValues={{ email: 'insert email' }}
+                                validate={validateEmailInput}
+                                onSubmit={onSubmit}
+                                render={({ getInputProps, handleSubmit, clearForm, }) => (
+                                  <Fragment>
+                                    <TextInput
+                                      type="email"
+                                      label={theme.emailInputLabel}
+                                      noteText="אנא הזינו כתובת דוא”ל"
+                                      requiredText={{
+                                        long: theme.emailInputRequiredLong,
+                                        short: theme.emailInputRequiredShort,
+                                      }}
+                                      {...getInputProps({
+                                        name: 'email',
+                                        label: theme.emailInputLabel,
+                                        type: 'email',
+                                      })}
+                                    />
+                                    <ItemCenterer>
+                                      <Button onClick={nextStage}>המשך</Button>
+                                    </ItemCenterer>
+                                  </Fragment>
+                                )}
+                              />
                             </div>
 
                             <div>
                               <CloseButton/>
-                              stage 2<br/>
-                              <button onClick={closeModal}>Close</button>
+                              <h4>החלפת סיסמה</h4>
+                              <br/>
+                              <h5>הוראות לאיפוס הסיסמה נשלחו לתיבת הדוא”ל שלך.</h5>
+                              <ItemCenterer>
+                                <Button onClick={closeModal}>התחברות</Button>
+                              </ItemCenterer>
                             </div>
                           </div>
                         )
@@ -119,6 +149,11 @@ class Password extends Component {
                     <TabsFrame activeTab={1}>
                       {/* TAB 1 */}
                       <div tabname="כניסה באמצעות SMS">
+                        טופס כניסה באמצעות טלפון
+                      </div>
+
+                      {/* TAB 2 */}
+                      <div tabname="כניסה באמצעות סיסמה">
                         <Form
                           clearFormAfterSubmit={false}
                           // initialValues={{ email: 'insert email' }}
@@ -159,7 +194,7 @@ class Password extends Component {
                                   })}
                                 />
                                 <InputLinkButton>
-                                  <span
+                                  <button
                                     onClick={(e) => {
                                       e.preventDefault();
                                       this.showDialog();
@@ -168,7 +203,7 @@ class Password extends Component {
                                     }}
                                   >
                                     שכחתי סיסמה
-                                  </span>
+                                  </button>
                                 </InputLinkButton>
                               </div>
                               <ItemCenterer>
@@ -177,11 +212,6 @@ class Password extends Component {
                             </Fragment>
                           )}
                         />
-                      </div>
-    
-                      {/* TAB 2 */}
-                      <div tabname="כניסה באמצעות סיסמה">
-                        טופס כניסה באמצעות טלפון
                       </div>
                     </TabsFrame>
     

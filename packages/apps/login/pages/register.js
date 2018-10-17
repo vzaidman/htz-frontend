@@ -4,11 +4,11 @@ import Router from 'next/router';
 import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 
-import { Form, TextInput, Button, } from '@haaretz/htz-components';
+import { Form, TextInput, Button, CheckBox } from '@haaretz/htz-components';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import isEmail from 'validator/lib/isEmail';
 import theme from '../theme';
-import { FelaTheme, } from 'react-fela';
+import { FelaTheme, createComponent, } from 'react-fela';
 import BottomLinks from '../components/Misc/BottomLinks';
 import {
   LoginContentStyles,
@@ -22,28 +22,99 @@ const {
   ItemCenterer,
 } = LoginContentStyles;
 const { InputLinkButton, } = LoginMiscLayoutStyles;
+
+const halfSizeStyleWrapperStyle = () => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+});
+const halfSizeStyle = () => ({
+  float: 'right',
+  width: '49%',
+});
+const termsStyle = () => ({
+  lineHeight: '17px',
+});
+const HalfSizeWrapper = createComponent(halfSizeStyleWrapperStyle);
+const HalfSize = createComponent(halfSizeStyle);
+const TermsWrapper = createComponent(termsStyle);
 // --------------------------
 
 // Methods -------------------
-const isValidPassword = (email) => {
+const generateError = (name, order) => message => [ { name, order, errorText: message, }, ];
+const generateFirstNameError = message => generateError('firstname', 1)(message);
+const generateLastNameError = message => generateError('lastname', 2)(message);
+const generateEmailError = message => generateError('email', 3)(message);
+const generatePasswordError = message => generateError('password', 4)(message);
+const generateTermsError = message => generateError('terms', 5)(message);
 
-}
+const isPassword = password => password.length > 5; // TODO: write proper password validation
+const isName = name => name.length > 1; // TODO: write proper name validation
+const isChecked = terms => !!terms;
 
-const generateFormError = message => [ { name: 'email', order: 1, errorText: message, }, ];
+const validateFirstNameInput = ({ firstname, }) =>
+  (!firstname
+    ? generateFirstNameError('אנא הזינו שם פרטי')
+    : !isName(firstname)
+      ? generateFirstNameError('אנא הזינו שם תקין')
+      : []); // name is valid
+
+const validateLastNameInput = ({ lastname, }) =>
+(!lastname
+  ? generateLastNameError('אנא הזינו שם משפחה')
+  : !isName(lastname)
+    ? generateLastNameError('אנא הזינו שם תקין')
+    : []); // name is valid
 
 const validateEmailInput = ({ email, }) =>
   (!email
-    ? generateFormError('אנא הזינו כתובת דוא”ל')
+    ? generateEmailError('אנא הזינו כתובת דוא”ל')
     : !isEmail(email)
-      ? generateFormError('אנא הזינו כתובת דוא”ל תקינה')
+      ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
 const validatePasswordInput = ({ password, }) =>
-  (!email
-    ? generateFormError('אנא הזינו סיסמה')
-    : !isEmail(email)
-      ? generateFormError('אנא הזינו סיסמה תקינה')
-      : []); // email is valid
+  (!password
+    ? generatePasswordError('אנא הזינו סיסמה')
+    : !isPassword(password)
+      ? generatePasswordError('אנא הזינו סיסמה תקינה')
+      : []); // password is valid
+
+const validateTermsInput = ( {terms} ) =>
+  (!terms
+    ? generateTermsError('יש לאשר את תנאי השימוש באתר')
+    : !isChecked(terms)
+      ? generateTermsError('יש לאשר את תנאי השימוש באתר')
+      : []); // password is valid
+
+const valdiateForm = ({ firstname, lastname, email, password, terms }) => {
+  let errors = [];
+  if (firstname != null) {
+    errors = [ ...validateFirstNameInput({ firstname, }), ];
+  }
+  if (lastname != null) {
+    errors = [ ...errors, ...validateLastNameInput({ lastname, }), ];
+  }
+  if (email != null) {
+    errors = [ ...errors, ...validateEmailInput({ email, }), ];
+  }
+  if (password != null) {
+    errors = [ ...errors, ...validatePasswordInput({ password, }), ];
+  }
+  if (!terms) {
+    console.log("terms: " + terms);
+    errors = [ ...errors, ...validateTermsInput({ terms, }), ];
+  }
+  console.log(errors.map(arr => JSON.stringify(arr)));
+  return errors;
+};
+
+const getTermsText = () => {
+  return (
+    <div>
+      אני מאשר/ת קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ-TheMarker
+    </div>
+  )
+}
 
 const onSubmit = () => {
   console.log('submit');
@@ -69,10 +140,47 @@ const Register = () => (
                 <Form
                   clearFormAfterSubmit={false}
                   // initialValues={{ email: 'insert email' }}
-                  validate={validateEmailInput}
+                  validate={valdiateForm}
                   onSubmit={onSubmit}
                   render={({ getInputProps, handleSubmit, clearForm, }) => (
                     <Fragment>
+
+                      <HalfSizeWrapper>
+                        <HalfSize>
+                          <TextInput
+                            type="text"
+                            label={theme.nameInputLabel[0]}
+                            noteText="אנא הזינו שם פרטי"
+                            requiredText={{
+                              long: theme.nameInputRequiredLong,
+                              short: theme.nameInputRequiredShort,
+                            }}
+                            {...getInputProps({
+                              name: 'firstname',
+                              label: theme.nameInputLabel[0],
+                              type: 'text',
+                            })}
+                          />
+                        </HalfSize>
+
+                        <HalfSize>
+                          <TextInput
+                            type="text"
+                            label={theme.nameInputLabel[1]}
+                            noteText="אנא הזינו שם משפחה"
+                            requiredText={{
+                              long: theme.nameInputRequiredLong,
+                              short: theme.nameInputRequiredShort,
+                            }}
+                            {...getInputProps({
+                              name: 'lastname',
+                              label: theme.nameInputLabel[1],
+                              type: 'text',
+                            })}
+                          />
+                        </HalfSize>
+                      </HalfSizeWrapper>
+                      
                       <div>
                         <TextInput
                           type="email"
@@ -112,10 +220,6 @@ const Register = () => (
                           type="email"
                           label={theme.phoneInputLabel}
                           noteText="אנא הזינו קידומת ומספר סלולרי"
-                          requiredText={{
-                            long: theme.phoneInputRequiredLong,
-                            short: theme.phoneInputRequiredShort,
-                          }}
                           {...getInputProps({
                             name: 'phone',
                             label: theme.phoneInputLabel,
@@ -123,6 +227,20 @@ const Register = () => (
                           })}
                         />
                       </div>
+
+                      <TermsWrapper>
+                        <CheckBox
+                          type="checkbox"
+                          label={"test"}
+                          noteText="יש לאשר את תנאי השימוש באתר"
+                          {...getInputProps({
+                            name: 'terms',
+                            label: getTermsText(),
+                            type: 'checkbox',
+                          })}
+                        />
+                      </TermsWrapper>
+
                       <ItemCenterer>
                         <Button onClick={handleSubmit}>הרשמה</Button>
                       </ItemCenterer>
