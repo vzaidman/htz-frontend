@@ -7,7 +7,7 @@ import inputStyle from './consts/inputStyle';
 import fontStacks from './consts/fontStacks';
 import gridStyle from './consts/gridStyle';
 import typeConf from './consts/typeConf';
-import { linkToHomePage, emailInputTexts, passwordInputTexts, phoneInputTexts, } from './consts/i18n';
+import { linkToHomePage, emailInputTexts, passwordInputTexts, phoneInputTexts, nameInputTexts, } from './consts/i18n';
 
 // methods
 import getColor from './methods/getColor';
@@ -105,6 +105,7 @@ const loginPageTheme = host =>
     ...emailInputTexts(host),
     ...passwordInputTexts(host),
     ...phoneInputTexts(host),
+    ...nameInputTexts(host),
 
     // Methods
     color: getColor(host),

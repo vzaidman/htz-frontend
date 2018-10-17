@@ -64,7 +64,7 @@ export default class LoginDialog extends Component {
   getCloseButton = () => {
     return (
       <LoginDialogBox.CloseButton>
-        <button onClick={this.hideDialog}>X</button>
+        <button onClick={this.hideDialog}></button>
       </LoginDialogBox.CloseButton>
     )
   }

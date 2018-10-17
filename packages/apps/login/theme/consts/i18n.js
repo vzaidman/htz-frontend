@@ -18,7 +18,13 @@ export const passwordInputTexts = host => ({
 });
 
 export const phoneInputTexts = host => ({
-  phoneInputLabel: host === 'haaretz.com' ? 'password' : 'מספר טלפון נייד',
+  phoneInputLabel: host === 'haaretz.com' ? 'Mobile Number' : 'מספר טלפון נייד',
   phoneInputRequiredLong: host === 'haaretz.com' ? 'required' : 'שדה חובה',
   phoneInputRequiredShort: '*',
+});
+
+export const nameInputTexts = (host) => ({
+  nameInputLabel: host === 'haaretz.com' ? ['First Name', 'Last Name'] : ['שם פרטי', 'שם משפחה'],
+  nameInputRequiredLong: host === 'haaretz.com' ? 'required' : 'שדה חובה',
+  nameInputRequiredShort: '*',
 });
