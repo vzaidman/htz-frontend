@@ -8,7 +8,7 @@ import Tab from '../Tab/Tab';
 import TabList from '../TabList/TabList';
 import TabPanel from '../TabPanel/TabPanel';
 import Graph from '../Graph/Graph';
-import StockStats from '../StockStats/StockStats';
+import StockStats from '../AssetStats/AssetStats';
 import Tabs from '../Tabs/Tabs';
 
 type Props = {

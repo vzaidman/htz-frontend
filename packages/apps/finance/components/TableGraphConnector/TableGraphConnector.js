@@ -1,12 +1,13 @@
 // @flow
 import React from 'react';
-import type { Node, } from 'react';
 import { FelaTheme, } from 'react-fela';
 import { Grid, GridItem, } from '@haaretz/htz-components';
 
-import StockTable from '../StockTable/StockTable';
+import type { Node, } from 'react';
+import type { Asset, } from '../../types/asset';
+
+import StockTable from '../AssetsTable/AssetsTable';
 import GraphController from '../GraphController/GraphController';
-import type { StockData, } from '../StockTable/StockTable';
 import SectionLink from '../SectionLink/SectionLink';
 
 type Props = {
@@ -16,7 +17,7 @@ type Props = {
 };
 
 type State = {
-  ...StockData,
+  ...Asset,
 };
 
 class TableGraphConnector extends React.Component<Props, State> {
@@ -37,7 +38,7 @@ class TableGraphConnector extends React.Component<Props, State> {
     );
   }
 
-  changeStock: StockData => void = stockData => (
+  changeAsset: Asset => void = stockData => (
     this.setState(stockData)
   );
 
@@ -65,7 +66,7 @@ class TableGraphConnector extends React.Component<Props, State> {
               }}
             >
               <StockTable
-                changeStock={this.changeStock}
+                changeAsset={this.changeAsset}
                 assetId={assetId}
                 assetsId={assetsId}
                 isExchange={isExchange}

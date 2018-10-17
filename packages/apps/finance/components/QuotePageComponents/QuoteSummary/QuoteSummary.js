@@ -4,7 +4,7 @@ import { FelaTheme, FelaComponent, } from 'react-fela';
 import { Grid, GridItem, } from '@haaretz/htz-components';
 import type { StatelessFunctionalComponent, } from 'react';
 
-import { Stat, } from '../../StockStats/StockStats';
+import { Stat, } from '../../AssetStats/AssetStats';
 
 type AssetData = {
   title: string,

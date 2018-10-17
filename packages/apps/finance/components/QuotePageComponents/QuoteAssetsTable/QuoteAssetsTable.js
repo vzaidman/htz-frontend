@@ -5,16 +5,10 @@ import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
 
 import type { StatelessFunctionalComponent, } from 'react';
 import type { StyleProps, } from '@haaretz/htz-css-tools';
+import type { Asset, } from '../../../types/asset';
 
-import { TdComponent, } from '../../StockTable/StockTable';
-
-type Asset = {
-  name: string,
-  id: string,
-  type: string,
-  value: number,
-  changePercentage: number,
-};
+import { TdComponent, } from '../../AssetsTable/AssetsTable';
+import { TableLink, } from '../../SortableTable/SortableTable';
 
 type Field = {
   display: string,
@@ -83,7 +77,7 @@ const QuoteAssetsTable: StatelessFunctionalComponent<Props> =
                 }}
                 render="tr"
               >
-                {fields.map((field: Field) => {
+                {fields.map((field: Field, index: number) => {
                   const isNumber: boolean = typeof asset[field.value] === 'number';
                   return (
                     <TdComponent
@@ -102,11 +96,16 @@ const QuoteAssetsTable: StatelessFunctionalComponent<Props> =
                         ...(field.miscStyles || {}),
                       }}
                     >
-                      {
-                        isNumber
-                          ? numToString(asset[field.value])
-                          : asset[field.value]
-                      }
+                      <TableLink
+                        allowTab={index === 0}
+                        assetId={asset.id}
+                        type={asset.type}
+                        content={
+                          isNumber
+                            ? numToString(asset[field.value])
+                            : asset[field.value]
+                        }
+                      />
                     </TdComponent>
                   );
                 })}

@@ -3,8 +3,8 @@ import React, { Fragment, } from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import type { Node, StatelessFunctionalComponent, } from 'react';
-import type { Stock as LineStock, } from '../Graph/graphs/Line/Line';
-import type { Stock as ScatterStock, } from '../Graph/graphs/Scatter/Scatter';
+import type { Asset as LineAsset, } from '../Graph/graphs/Line/Line';
+import type { Asset as ScatterAsset, } from '../Graph/graphs/Scatter/Scatter';
 
 type Stats = Array<{ title: string, value: string | number, }>
 
@@ -59,14 +59,14 @@ export const Stat: StatelessFunctionalComponent<any> = ({ children, title, miscS
 type Props = {
   graphType: 'line' | 'scatter',
   period: 'daily' | 'weekly' | 'monthly' | 'yearly' | 'tripleYear' | 'max',
-  render: ({changeStats: (stock: LineStock | ScatterStock) => void}) => Node,
+  render: ({changeStats: (stock: LineAsset | ScatterAsset) => void}) => Node,
   miscStyles: ?Object,
 }
 type State = {
   stats: Stats,
 }
 
-class StockStats extends React.Component<Props, State> {
+class AssetStats extends React.Component<Props, State> {
   state = {
     stats: [],
   };
@@ -91,7 +91,7 @@ class StockStats extends React.Component<Props, State> {
     let stats: Stats;
 
     if (graphType === 'line') {
-      const { time, value, change, }: LineStock = stock || {};
+      const { time, value, change, }: LineAsset = stock || {};
       stats = [
         { ...this.getDateStat(time, period), },
         { title: 'שער', value: value || '', },
@@ -99,7 +99,7 @@ class StockStats extends React.Component<Props, State> {
       ];
     }
     else {
-      const { x, y, name, }: ScatterStock = stock || {};
+      const { x, y, name, }: ScatterAsset = stock || {};
       stats = [
         { title: 'מניה', value: name || '', },
         { title: 'מחזור', value: x || '', },
@@ -178,4 +178,4 @@ class StockStats extends React.Component<Props, State> {
   }
 }
 
-export default StockStats;
+export default AssetStats;

@@ -3,8 +3,10 @@ import React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
 import gql from 'graphql-tag';
+
 import type { ChildrenArray, Node, StatelessFunctionalComponent, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
+import type { Asset, } from '../../types/asset';
 
 import TabList from '../TabList/TabList';
 import Tab from '../Tab/Tab';
@@ -53,25 +55,17 @@ export const TdComponent: StatelessFunctionalComponent<TdComponentProps> =
     </FelaComponent>
   );
 
-export type StockData = {
-  name: string,
-  value: number,
-  changePercentage: number,
-  id: string,
-  type: string,
-}
-
-type StockTableProps = {
-  data: Array<StockData>,
+type AssetsTableProps = {
+  data: Array<Asset>,
   miscStyles: ?Object,
-  changeStock: StockData => void,
+  changeAsset: Asset => void,
 // eslint-disable-next-line react/no-unused-prop-types
   assetId?: string | number,
   isExchange: boolean,
 }
 
 type State = {
-  stock: StockData,
+  asset: Asset,
   selectedIndex: number,
   assetId?: string | number,
 };
@@ -89,18 +83,18 @@ const tabRule = ({ theme, isActive, isPrevious, }) => ({
   }),
 });
 
-class StockTable extends React.Component<StockTableProps, State> {
+class AssetsTable extends React.Component<AssetsTableProps, State> {
   static defaultProps = {
     assetId: null,
   };
 
   state: State;
 
-  static getDerivedStateFromProps(nextProps: StockTableProps, prevState: State) {
+  static getDerivedStateFromProps(nextProps: AssetsTableProps, prevState: State) {
     return {
       ...(!prevState || nextProps.assetId !== prevState.assetId ?
         {
-          stock: nextProps.data[0],
+          asset: nextProps.data[0],
           selectedIndex: 0,
           assetId: nextProps.assetId,
         }
@@ -110,23 +104,23 @@ class StockTable extends React.Component<StockTableProps, State> {
   }
 
   componentDidMount() {
-    this.props.changeStock(this.state.stock);
+    this.props.changeAsset(this.state.asset);
   }
 
   componentDidUpdate() {
-    this.props.changeStock(this.state.stock);
+    this.props.changeAsset(this.state.asset);
   }
 
-  changeSelectedIndexId: (StockData, number) => void = (stockData, index) => {
+  changeSelectedIndexId: (Asset, number) => void = (asset, index) => {
     this.setState({
-      stock: stockData,
+      asset,
       selectedIndex: index,
     });
   };
 
   render(): Node {
     const { data, miscStyles, isExchange, } = this.props;
-    const { stock: { id, }, } = this.state;
+    const { asset: { id, }, } = this.state;
     return (
       <FelaComponent
         style={(theme: Object) => ({
@@ -209,18 +203,18 @@ class StockTable extends React.Component<StockTableProps, State> {
               activeTab={this.state.selectedIndex}
             >
               <TabList render="tbody">
-                {data.map((stock: StockData, index: number) => {
-                  const isActive: boolean = id === stock.id;
+                {data.map((asset: Asset, index: number) => {
+                  const isActive: boolean = id === asset.id;
                   const isPrevious: boolean =
                     data[index + 1] && id === data[index + 1].id;
                   return (
                     <Tab
                       isPrevious={isPrevious}
                       index={index}
-                      key={stock.id}
+                      key={asset.id}
                       rule={tabRule}
-                      onClick={() => this.changeSelectedIndexId(stock, index)}
-                      controls={`stock-${stock.id}`}
+                      onClick={() => this.changeSelectedIndexId(asset, index)}
+                      controls={`asset-${asset.id}`}
                       render="tr"
                       presentation={false}
                       // eslint-disable-next-line no-return-assign
@@ -236,13 +230,13 @@ class StockTable extends React.Component<StockTableProps, State> {
                           textOverflow: 'ellipsis',
                         }}
                       >
-                        {stock.name}
+                        {asset.name}
                       </TdComponent>
-                      <TdComponent>{numToString(stock.value)}</TdComponent>
+                      <TdComponent>{numToString(asset.value)}</TdComponent>
                       <TdComponent
                         isActive={isActive}
                         miscStyles={{
-                          color: Number(stock.changePercentage) < 0
+                          color: Number(asset.changePercentage) < 0
                             ? isActive ? theme.color('negative', '-2') : theme.color('negative')
                             : isActive ? theme.color('positive', '-2') : theme.color('positive'),
                           direction: 'ltr',
@@ -275,7 +269,7 @@ class StockTable extends React.Component<StockTableProps, State> {
                         <FelaComponent
                           style={{
                             ':before': {
-                              content: Number(stock.changePercentage) > 0 ? '"+"' : '"-"',
+                              content: Number(asset.changePercentage) > 0 ? '"+"' : '"-"',
                             },
                             ':after': {
                               content: '"%"',
@@ -283,7 +277,7 @@ class StockTable extends React.Component<StockTableProps, State> {
                           }}
                           render="span"
                         >
-                          {numToString(Math.abs(Number(stock.changePercentage)))}
+                          {numToString(Math.abs(Number(asset.changePercentage)))}
                         </FelaComponent>
                       </TdComponent>
                     </Tab>
@@ -316,7 +310,7 @@ export default (props: any) => {
         if (error) return null;
         if (loading) return null;
         return (
-          <StockTable data={financeTable} {...props} />
+          <AssetsTable data={financeTable} {...props} />
         );
       }}
     </Query>

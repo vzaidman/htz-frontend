@@ -8,9 +8,9 @@ import { IconBack, } from '@haaretz/htz-components';
 import type { StyleProps, } from '@haaretz/htz-css-tools';
 import type { Node, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
-import type { StockData, } from '../StockTable/StockTable';
+import type { Asset, } from '../../types/asset';
 
-import { TdComponent, } from '../StockTable/StockTable';
+import { TdComponent, } from '../AssetsTable/AssetsTable';
 import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import SectionLink from '../SectionLink/SectionLink';
 
@@ -45,7 +45,7 @@ type FieldType = {
   display: string,
   sortingOrder: 'ascend' | 'descend',
   style?: Object => StyleProps,
-  content: Object => string,
+  value: Object => string,
 }
 
 type Props = {
@@ -108,7 +108,7 @@ const SortIcons: SortIconsProps => Node = ({ active, sortOrder, }) => (
 );
 
 // eslint-disable-next-line react/prop-types
-const TableLink: TableLinkProps => Node = ({ content, assetId, type, allowTab, }) => (
+export const TableLink: TableLinkProps => Node = ({ content, assetId, type, allowTab, }) => (
   <FelaComponent
     style={{
       display: 'inline-block',
@@ -212,9 +212,10 @@ class SortableTable extends React.Component<Props, State> {
           offset: 0,
         }}
       >
-        {({ loading, error, data: { financeTable: assets, }, data, fetchMore, }) => {
+        {({ loading, error, data, fetchMore, }) => {
           if (error) return null;
           if (loading) return null;
+          const { financeTable: assets, }: Array<Asset> = data;
           return (
             <Fragment>
               <FelaComponent
@@ -268,7 +269,7 @@ class SortableTable extends React.Component<Props, State> {
                   </tr>
                 </thead>
                 <tbody>
-                  {assets.map((stock: StockData) => (
+                  {assets.map((asset: Asset) => (
                     <FelaComponent
                       style={theme => ({
                         backgroundColor: theme.color('neutral', '-10'),
@@ -278,18 +279,18 @@ class SortableTable extends React.Component<Props, State> {
                       })}
                       render="tr"
                     >
-                      {fields.map(field => (
+                      {fields.map((field: FieldType, index: number) => (
                         <TdComponent
                           miscStyles={{
-                            ...(field.style ? field.style(stock) : {}),
+                            ...(field.style ? field.style(asset) : {}),
                             paddingStart: '2rem',
                           }}
                         >
                           <TableLink
-                            allowTab
-                            content={field.value(stock)}
-                            assetId={stock.id}
-                            type={stock.type}
+                            allowTab={index === 0}
+                            content={field.value(asset)}
+                            assetId={asset.id}
+                            type={asset.type}
                           />
                         </TdComponent>
                       ))}

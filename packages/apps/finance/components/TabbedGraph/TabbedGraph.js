@@ -11,7 +11,7 @@ import TabPanel from '../TabPanel/TabPanel';
 import TableGraphConnector from '../TableGraphConnector/TableGraphConnector';
 
 type State = {
-  stocks: string,
+  assets: string,
   assetId: string,
   index: number,
 };
@@ -72,22 +72,22 @@ export const TabButton: StatelessFunctionalComponent<TabButtonProps> = ({
 
 class TabbedGraph extends React.Component<{}, State> {
   state = {
-    stocks: 'up',
+    assets: 'up',
     assetId: '0',
     index: 0,
   };
 
 
-  changeSelectedTime: State => void = ({ stocks, assetId, index, }) => {
+  changeSelectedTime: State => void = ({ assets, assetId, index, }) => {
     this.setState({
-      stocks,
+      assets,
       assetId,
       index,
     });
   };
 
   render(): Node {
-    const { stocks, assetId, index, } = this.state;
+    const { assets, assetId, index, } = this.state;
     return (
       <FelaComponent
         style={theme => ({
@@ -106,7 +106,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-up"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'up', assetId: '0', index: 0, })}
+                onClick={() => this.changeSelectedTime({ assets: 'up', assetId: '0', index: 0, })}
                 render={TabButton}
               >
                 <span>
@@ -118,7 +118,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-down"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'down', assetId: '1', index: 1, })}
+                onClick={() => this.changeSelectedTime({ assets: 'down', assetId: '1', index: 1, })}
                 render={TabButton}
               >
                 <span>
@@ -130,7 +130,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-active"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'active', assetId: '2', index: 2, })}
+                onClick={() => this.changeSelectedTime({ assets: 'active', assetId: '2', index: 2, })}
                 render={TabButton}
               >
                 <span>
@@ -142,7 +142,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-mostViewed"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'mostViewed', assetId: '3', index: 3, })}
+                onClick={() => this.changeSelectedTime({ assets: 'mostViewed', assetId: '3', index: 3, })}
                 render={TabButton}
               >
                 <span>
@@ -154,7 +154,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-upYearly"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'upYearly', assetId: '4', index: 4, })}
+                onClick={() => this.changeSelectedTime({ assets: 'upYearly', assetId: '4', index: 4, })}
                 render={TabButton}
               >
                 <span>
@@ -166,7 +166,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 controls="graph-downYearly"
                 presentation
                 rule={tabRule}
-                onClick={() => this.changeSelectedTime({ stocks: 'downYearly', assetId: '5', index: 5, })}
+                onClick={() => this.changeSelectedTime({ assets: 'downYearly', assetId: '5', index: 5, })}
                 render={TabButton}
               >
                 <span>
@@ -174,7 +174,7 @@ class TabbedGraph extends React.Component<{}, State> {
                 </span>
               </Tab>
             </TabList>
-            <TabPanel id={`graph-${stocks}`}>
+            <TabPanel id={`graph-${assets}`}>
               <TableGraphConnector assetId={assetId} />
             </TabPanel>
           </Tabs>

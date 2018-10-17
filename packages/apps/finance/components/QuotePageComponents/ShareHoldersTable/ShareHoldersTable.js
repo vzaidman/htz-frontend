@@ -5,7 +5,7 @@ import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
 
 import type { StatelessFunctionalComponent, } from 'react';
 
-import { TdComponent, } from '../../StockTable/StockTable';
+import { TdComponent, } from '../../AssetsTable/AssetsTable';
 
 type shareHolder = {
   shareHolderName: string,

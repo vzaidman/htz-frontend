@@ -6,9 +6,10 @@ import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
 
 import type { StatelessFunctionalComponent, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
+import type { Asset, } from '../../../types/asset';
 
 import { Query, } from '../../ApolloBoundary/ApolloBoundary';
-import { TdComponent, } from '../../StockTable/StockTable';
+import { TdComponent, } from '../../AssetsTable/AssetsTable';
 
 type Field = {
   name: string,
@@ -96,9 +97,10 @@ const QuoteInfoTable: StatelessFunctionalComponent<Props> =
       query={TradeStatsQuery(fields, tradingStatus)}
       variables={{ assetsId: [ id, ], }}
     >
-      {({ error, loading, data: { financeTable: assets, }, }) => {
+      {({ error, loading, data, }) => {
         if (error) return null;
         if (loading) return null;
+        const assets: Array<Asset> = data.financeTable;
         return (
           <FelaComponent
             style={(theme: Object) => ({

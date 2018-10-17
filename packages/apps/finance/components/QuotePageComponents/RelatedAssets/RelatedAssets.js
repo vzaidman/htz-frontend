@@ -5,12 +5,7 @@ import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import type { StatelessFunctionalComponent, } from 'react';
-
-type Asset = {
-  name: string,
-  id: string,
-  type: string,
-}
+import type { Asset, } from '../../../types/asset';
 
 type Props = {
   assets: Array<Asset>,

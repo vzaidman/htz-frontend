@@ -7,7 +7,7 @@ import type {
 import { FelaComponent, } from 'react-fela';
 import * as d3 from 'd3';
 
-export type Stock = {
+export type Asset = {
   time: number,
   value: number,
   yieldSpread: number,
@@ -19,10 +19,10 @@ export type Stock = {
 
 /* eslint-disable react/no-unused-prop-types */
 type Props = {
-  data: Array<Stock>,
+  data: Array<Asset>,
   duration: number,
   theme: Object,
-  changeStats: (stock: Stock) => void,
+  changeStats: (asset: Asset) => void,
   width: number,
   height: number,
   margin: { top: number, right: number, bottom: number, left: number, },
@@ -63,8 +63,8 @@ class Line extends React.Component<Props, State> {
     const { yScale, xScale, } = prevState;
 
     /* Extract graph's start & end points from the data */
-    const xExtent = data ? d3.extent(data, stock => stock.time) : [ 0, 0, ];
-    const [ yMin, yMax, ] = data ? d3.extent(data, stock => stock.value) : [ 0, 0, ];
+    const xExtent = data ? d3.extent(data, asset => asset.time) : [ 0, 0, ];
+    const [ yMin, yMax, ] = data ? d3.extent(data, asset => asset.value) : [ 0, 0, ];
 
     /* Calculate x & y inner padding */
     // TODO: do this through median difference rather than hard coded
@@ -101,7 +101,7 @@ class Line extends React.Component<Props, State> {
    * on the graph.
    * @returns {*}
    */
-  getStockFromMouseEvent: () => Stock = () => {
+  getAssetFromMouseEvent: () => Asset = () => {
     const { xScale, } = this.state;
     const { data, } = this.props;
 
@@ -113,13 +113,13 @@ class Line extends React.Component<Props, State> {
     const i: number = bisectDate(data, x, 1);
 
     /* In case the cursor is between two items, calculate which on is the closest */
-    const stockIndex: number =
+    const assetIndex: number =
       !data[i - 1] ? i
         : !data[i] ? i - 1
           : x - data[i - 1].time > data[i].time - x ? i : i - 1;
 
-    this.dataIndex = stockIndex;
-    return data[stockIndex];
+    this.dataIndex = assetIndex;
+    return data[assetIndex];
   };
 
   yMean: number;
@@ -138,21 +138,21 @@ class Line extends React.Component<Props, State> {
 
   /**
    * This function is in charge of giving the indication line a new X position.
-   * @param d - An array of stock data that the indication line should be pointed at. if
-   *  not supplies, the function will extract that data with `getStockFromMouseEvent`.
+   * @param d - An array of asset data that the indication line should be pointed at. if
+   *  not supplies, the function will extract that data with `getAssetFromMouseEvent`.
    * @param animate - Should the circle in the indication line be animated.
    */
-  moveLine: (?Stock, boolean) => void = (d, animate) => {
+  moveLine: (?Asset, boolean) => void = (d, animate) => {
     const { xScale, yScale, duration, theme, } = this.state;
     const { height, margin, } = this.props;
 
     /* Set transition. */
     const transition = d3.transition().duration(animate ? duration : null);
 
-    /* If no specific stock passed to this function, go and get the one that
+    /* If no specific asset passed to this function, go and get the one that
      the mouse is currently hover at its X axis and extract it's X & Y (Time & Rate). */
-    const stock: Stock = d || this.getStockFromMouseEvent();
-    const { time, value, } = stock;
+    const asset: Asset = d || this.getAssetFromMouseEvent();
+    const { time, value, } = asset;
     const positionX: number = xScale(time);
     const positionY: number = yScale(value);
 
@@ -190,15 +190,15 @@ class Line extends React.Component<Props, State> {
       .transition(transition)
       .attr('r', 4);
 
-    /* Send the hovered stock and send it's data to the parent component. */
-    this.props.changeStats(stock);
+    /* Send the hovered asset and send it's data to the parent component. */
+    this.props.changeStats(asset);
   };
 
   /**
    * This function responsible for rendering and updating the graph.
-   * @param data - An Array of stocks to be drawn.
+   * @param data - An Array of assets to be drawn.
    */
-  renderGraph: Array<Stock> => void = data => {
+  renderGraph: Array<Asset> => void = data => {
     const { yScale, xScale, duration, theme, } = this.state;
     const { width, margin, } = this.props;
 
@@ -211,7 +211,7 @@ class Line extends React.Component<Props, State> {
       .data(data, (d, i) => i);
 
     /* Find and save the average height for the init Y. */
-    this.yMean = d3.mean(data, stock => stock.value);
+    this.yMean = d3.mean(data, asset => asset.value);
 
     /* Set the Exit event. */
     lines.exit()

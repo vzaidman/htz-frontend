@@ -8,7 +8,7 @@ import { FelaComponent, } from 'react-fela';
 import * as d3 from 'd3';
 import rgba from 'polished/lib/color/rgba';
 
-export type Stock = {
+export type Asset = {
   x: number,
   y: number,
   id: string,
@@ -18,10 +18,10 @@ export type Stock = {
 
 /* eslint-disable react/no-unused-prop-types */
 type Props = {
-  data: Array<Stock>,
+  data: Array<Asset>,
   duration: number,
   theme: Object,
-  changeStats: (stock: Stock) => void,
+  changeStats: (asset: Asset) => void,
   width: number,
   height: number,
   margin: { top: number, right: number, bottom: number, left: number, },
@@ -95,7 +95,7 @@ class Scatter extends React.Component<Props, State> {
     return false;
   }
 
-  midItem: Stock;
+  midItem: Asset;
   zeroRef: ElementRef<'line'> | null;
   circlesRef: ElementRef<'g'> | null;
   xAxisRef: ElementRef<'g'> | null;
@@ -109,18 +109,18 @@ class Scatter extends React.Component<Props, State> {
 
   /**
    * This function is in charge of giving the indication line a new X position.
-   * @param stock - An array of stock data that the indication line should be pointed at.
+   * @param asset - An array of asset data that the indication line should be pointed at.
    * @param animate - Should the indication line be animated.
    */
-  moveLine: (Stock, boolean) => void = (stock, animate) => {
-    const { x, } = stock;
+  moveLine: (Asset, boolean) => void = (asset, animate) => {
+    const { x, } = asset;
     const { xScale, theme, duration, } = this.state;
     const { height, margin, } = this.props;
 
     /* Set transition. */
     const transition = d3.transition().duration(animate ? duration / 2 : null);
 
-    /* Get the X position of the received stock. */
+    /* Get the X position of the received asset. */
     const positionX: number = xScale(x);
 
     /* Take the indicator's dotted line, and change it's X position. */
@@ -148,15 +148,15 @@ class Scatter extends React.Component<Props, State> {
       .transition(transition)
       .attr('points', points => points.map(point => [ point.x, point.y, ].join(',')).join(' '));
 
-    /* Send the hovered stock and send it's data to the parent component. */
-    this.props.changeStats(stock);
+    /* Send the hovered asset and send it's data to the parent component. */
+    this.props.changeStats(asset);
   };
 
   /**
    * This function responsible for rendering and updating the graph.
-   * @param data - An Array of stocks to be drawn.
+   * @param data - An Array of assets to be drawn.
    */
-  renderGraph: Array<Stock> => void = data => {
+  renderGraph: Array<Asset> => void = data => {
     const { yScale, xScale, duration, theme, } = this.state;
     const { width, margin, } = this.props;
 
