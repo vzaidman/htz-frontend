@@ -9,7 +9,7 @@ export default function htz(app, server, DEV) {
   // send robots.txt file
   const options = {
     root: path.join(
-      `${process.cwd()}/static${process.env.CONNECTION_PRESET === 'stage' ? '/stage' : ''}`
+      `${process.cwd()}/static${process.env.CONNECTION_PRESET === 'dev' ? '/stage' : ''}`
     ),
     headers: {
       'Content-Type': 'text/plain;charset=UTF-8',

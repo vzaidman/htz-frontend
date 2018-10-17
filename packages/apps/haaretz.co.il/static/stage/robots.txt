@@ -1,5 +1,7 @@
 User-agent: *
 Disallow: /
+Allow: /$
+
 Allow: /1.5762889
 Allow: /1.5762767
 Allow: /1.5762485
