@@ -67,6 +67,9 @@ function HeadlineElement({ captionMiscStyles, elementObj, miscStyles, }) {
     }
   };
 
+  // if the Element is an image. credit prefix should set to 'צילום', issue: #1011
+  const creditPrefix = elementObj.inputTemplate === 'com.tm.Image' ? 'צילום' : null;
+
   return (
     <FelaComponent
       style={theme => ({
@@ -83,6 +86,7 @@ function HeadlineElement({ captionMiscStyles, elementObj, miscStyles, }) {
       <Caption
         caption={elementObj.caption || elementObj.title}
         credit={elementObj.credit}
+        {...(creditPrefix ? { creditprefix: creditPrefix, } : {})}
         backgroundColor={[ { until: 's', value: 'neutral', }, ]}
         color={[ { until: 's', value: 'white', }, ]}
         miscStyles={{

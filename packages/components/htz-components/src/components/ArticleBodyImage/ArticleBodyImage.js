@@ -282,7 +282,7 @@ const UnwrappedImage = ({
       <figure className={className} onClick={!isFullScreen ? toggleFullScreen : null}>
         <ImageElement forceAspect={forceAspect} {...image} isFullScreen={isFullScreen} />
         {showCaption && !isFullScreen ? (
-          <Caption caption={title} credit={credit} prefix="צילום" />
+          <Caption caption={title} credit={credit} creditprefix="צילום" />
         ) : null}
       </figure>
     )}
