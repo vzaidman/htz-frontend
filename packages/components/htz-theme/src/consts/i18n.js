@@ -31,8 +31,13 @@ export const tagsElementI18n = Object.freeze({
 export const breadcrumbsI18n = Object.freeze({
   ariaLabel: 'מיקומך באתר',
 });
+
 export const clickTrackerI18n = Object.freeze({
   promotedContentLabel: 'תוכן מקודם',
+});
+
+export const creditPrefixI18n = Object.freeze({
+  imageCreditPrefix: 'צילום',
 });
 
 export const navigationMenuI18n = Object.freeze({

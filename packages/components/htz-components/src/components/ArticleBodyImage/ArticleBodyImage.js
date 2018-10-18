@@ -277,12 +277,12 @@ const UnwrappedImage = ({
     className={className}
     miscStyles={miscStyles}
     isFullScreen={isFullScreen}
-    render={({ className, }) => (
+    render={({ className, theme: { creditPrefixI18n: { imageCreditPrefix, }, }, }) => (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events
       <figure className={className} onClick={!isFullScreen ? toggleFullScreen : null}>
         <ImageElement forceAspect={forceAspect} {...image} isFullScreen={isFullScreen} />
         {showCaption && !isFullScreen ? (
-          <Caption caption={title} credit={credit} creditprefix="צילום" />
+          <Caption caption={title} credit={credit} creditprefix={imageCreditPrefix} />
         ) : null}
       </figure>
     )}
