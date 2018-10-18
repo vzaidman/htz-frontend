@@ -73,7 +73,6 @@ function HeadlineElement({ captionMiscStyles, elementObj, miscStyles, }) {
   return (
     <FelaComponent
       style={theme => ({
-        marginBottom: '4rem',
         extend: [
           // Trump all other styles with those defined in `miscStyles`
           ...(miscStyles
