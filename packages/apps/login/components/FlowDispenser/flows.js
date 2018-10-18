@@ -13,6 +13,8 @@ export default [
       [ '-phoneMailSent2', '/phoneMailSent2' ],
       [ '-customerService', '/customerService' ],
       [ '-register', '/register' ],
+      [ '-emailValidation', '/emailValidation' ],
+      [ '-emailValidation2', '/emailValidation2' ],
     ]),
     otpValidation: {
       sendAgain: 'otpValidation2',
@@ -34,6 +36,14 @@ export default [
       withPassword: 'password',
     },
     phoneMailSent2: {
+      getCustomerService: 'customerService',
+      withPassword: 'password',
+    },
+    emailValidation: {
+      sendAgain: 'emailValidation2',
+      register: 'register',
+    },
+    emailValidation2: {
       getCustomerService: 'customerService',
       withPassword: 'password',
     },

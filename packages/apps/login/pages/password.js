@@ -149,7 +149,11 @@ class Password extends Component {
                     <TabsFrame activeTab={1}>
                       {/* TAB 1 */}
                       <div tabname="כניסה באמצעות SMS">
-                        טופס כניסה באמצעות טלפון
+                        <ItemCenterer>
+                          <span>
+                            <h5>טופס כניסה באמצעות טלפון</h5>
+                          </span>
+                        </ItemCenterer>
                       </div>
 
                       {/* TAB 2 */}
@@ -198,8 +202,6 @@ class Password extends Component {
                                     onClick={(e) => {
                                       e.preventDefault();
                                       this.showDialog();
-                                      // const route = doTransition('otpValidation2');
-                                      // Router.push(route);
                                     }}
                                   >
                                     שכחתי סיסמה
