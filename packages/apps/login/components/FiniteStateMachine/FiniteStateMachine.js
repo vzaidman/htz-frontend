@@ -272,6 +272,9 @@ class FiniteStateMachine extends React.Component {
     return route;
   };
 
+  parseRouteInfo = routeInfo =>
+    typeof routeInfo === 'object' ? { route: routeInfo.url, metadata: routeInfo.param } : { route: routeInfo, metadata: null, }
+
   /**
    * This function should be used to transition from one state to another
    * It resolves the new state and then returns the right transition function
@@ -284,7 +287,8 @@ class FiniteStateMachine extends React.Component {
     console.warn(`transition wanted. action: ${action}`);
     const oldState = this.getCurrentState();
     const newState = this.resolveNewState(action, oldState);
-    const route = this.findTransition(action);
+    const routeInfo = this.findTransition(action);
+    const { route, metadata, } = parseRouteInfo(routeInfo);
     this.removeHistory();
     this.addHistory({ pastState: newState, pastTransition: route, });
     console.warn(`new state: ${newState}`);
