@@ -1,15 +1,23 @@
 export default {
   transitionRouteMap: new Map([
-    [ '-password', '/password', ],
+    [ '-otpValidation', '/otpValidation' ],
+    [ '-loginForms', '/loginForms' ],
+    [ '-otpValidation2', '/otpValidation2' ],
+    [ '-phoneInput', '/phoneInput' ],
+    [ '-phoneMailSent', '/phoneMailSent' ],
+    [ '-phoneMailSent2', '/phoneMailSent2' ],
+    [ '-customerService', '/customerService' ],
+    [ '-register', '/register' ],
+    [ '-emailValidation', '/emailValidation' ],
+    [ '-emailValidation2', '/emailValidation2' ],
     [ '-passwordError', '/passwordError', ],
     [ '-passwordReminder', '/passwordReminder', ],
     [ '-passwordReminderSent', '/passwordReminderSent', ],
-    [ '-register', '/register', ],
     [ '-success', '/', ],
   ]),
-  password: {
-    forgotPassword: 'passwordReminder',
-    accept: 'success',
+  loginForms: {
+    withSms: 'otpValidation',
+    registration: 'register',
   },
   passwordError: {
     forgotPassword: 'passwordReminder',
@@ -20,10 +28,10 @@ export default {
     accept: 'passwordReminderSent',
   },
   passwordReminderSent: {
-    accept: 'password',
+    accept: 'loginForms',
   },
   register: {
     accept: 'success',
-    withPassword: 'password',
+    withPassword: 'loginForms',
   },
 };
