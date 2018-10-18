@@ -137,10 +137,11 @@ function Osaka({ nextArticleUrl, nextArticleText, lists, }) {
                         biAction({
                           actionCode: biActionMapper.get('next_page'),
                           additionalInfo: {
-                            name: 'NextArticleInSection',
-                            article_id: nextArticleUrl,
+                            ViewName: 'NextArticleInSection',
+                            ArticleId: nextArticleUrl.match(/(?:.*-?)(1\.\d+.*)/)[1],
                             NumberInList: 1,
-                            platform: 'web',
+                            ListId: '',
+                            platform: 'desktop',
                           },
                         });
                       }}
