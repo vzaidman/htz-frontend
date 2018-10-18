@@ -36,7 +36,7 @@ const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }
     );
 
 const hidePhone = (phoneNumber) => {
-  return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(3 + 4);
+  return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(7);
 }
 
 // const sendAgain = e => {
