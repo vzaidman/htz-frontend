@@ -96,7 +96,19 @@ function StandardArticle({ articleId, slots, }) {
 
                   <FelaComponent
                     style={{
-                      extend: [ theme.mq({ from: 'l', }, { width: 'calc(100% - 300px - 8rem)', }), ],
+                      extend: [
+                        theme.mq(
+                          { from: 'l', },
+                          { width: 'calc(100% - 300px - 8rem)', }
+                        ),
+                        theme.mq(
+                          { from: 'l', until: 'xl', },
+                          { paddingLeft: '4rem', }
+                        ),
+                        theme.mq({ from: 'xl', },
+                          { paddingLeft: '10rem', }
+                        ),
+                      ],
                     }}
                   >
                     <StandardArticleHeader
