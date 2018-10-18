@@ -73,7 +73,11 @@ function create(initialState, appDefaultState, req) {
       cookie: req !== undefined ? req.header('Cookie') : undefined,
       hostname,
       // headers gets stringified so we make sure preview is not sent at all if not defined
-      ...(req !== undefined ? (req.query.preview ? { preview: req.query.preview, } : {}) : {}),
+      ...(req !== undefined
+        ? req.query.preview
+          ? { preview: req.query.preview, previewUserId: req.query.userId, }
+          : {}
+        : {}),
     },
     fetch,
     includeExtensions: true,

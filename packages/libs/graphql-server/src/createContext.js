@@ -11,6 +11,7 @@ export default function createContext(headers) {
   const serviceBase = switchToDomain(hostname, config.get('service.base'));
   const cookies = headers ? new Cookies(headers.cookie) : null;
   const preview = headers.preview;
+  const previewUserId = headers.previewuserid;
   return {
     headers,
     ssoService,
@@ -18,5 +19,6 @@ export default function createContext(headers) {
     cookies,
     polopolyPromotionsPage,
     preview,
+    previewUserId,
   };
 }

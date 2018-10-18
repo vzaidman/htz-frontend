@@ -162,13 +162,27 @@ class PapiAPI extends RESTDataSource {
 
 class PageAPI extends RESTDataSource {
   get baseURL() {
-    return this.context.preview || this.context.serviceBase;
+    return this.context.preview ? null : this.context.serviceBase;
   }
   async getPage(path) {
-    const fetchPath = this.context.preview ? '' : `papi${path}`;
+    const fetchPath = this.context.preview || `papi${path}`;
 
-    // return this.get(fetchPath);
-    return this.get(fetchPath, {}, { cacheOptions: { ttl, }, });
+    return this.get(
+      fetchPath,
+      {},
+      {
+        cacheOptions: { ttl, },
+        ...(this.context.preview
+          ? {
+            headers: {
+              Cookie: `userId=${
+                this.context.previewUserId
+              }; path=/; domain=172.21.1.160; Expires=Tue, 19 Jan 2038 03:14:07 GMT;`,
+            },
+          }
+          : {}),
+      }
+    );
   }
 }
 
@@ -279,8 +293,10 @@ class FinanceAPI extends RESTDataSource {
 
     if (json && sortBy) {
       json.assets.sort((itemA, itemB) => {
-        const valueA = typeof itemA[sortBy] === 'string' ? itemA[sortBy].toUpperCase() : itemA[sortBy]; // ignore upper and lowercase
-        const valueB = typeof itemB[sortBy] === 'string' ? itemB[sortBy].toUpperCase() : itemB[sortBy]; // ignore upper and lowercase
+        const valueA =
+          typeof itemA[sortBy] === 'string' ? itemA[sortBy].toUpperCase() : itemA[sortBy]; // ignore upper and lowercase
+        const valueB =
+          typeof itemB[sortBy] === 'string' ? itemB[sortBy].toUpperCase() : itemB[sortBy]; // ignore upper and lowercase
         if (valueA < valueB) {
           return sortOrder === 'ascend' ? -1 : 1;
         }
