@@ -12,17 +12,23 @@ export default class TabsFrame extends React.Component {
   };
 
   static defaultProps = {
-    activeTab: 0,
+    activeTab: 1,
   };
 
   /* ---------- Lifecycle Methods ---------- */
-  componentDidMount() {}
+  componentWillMount() {
+    this.setInitTab();
+  }
 
   /* ------------ Functionality ------------ */
-  changeTab(tabIndex) {
+  changeTab(index) {
     return () => {
-      this.setState({ activeTab: tabIndex, });
+      this.setState({ activeTab: index, });
     };
+  }
+
+  setInitTab() {
+    this.setState({ activeTab: this.props.activeTab })
   }
 
   /* ----------- Tabs Rendering ------------ */
@@ -39,7 +45,7 @@ export default class TabsFrame extends React.Component {
               value={`tab${i}`}
               onClick={this.changeTab(i)}
             />
-            <label htmlFor={`tab${i}`}>{child.props.tabname}</label>
+            <label htmlFor={`tab${i}`} tabindex={i}>{child.props.tabname || `Tab ${i}`}</label>
           </span>
         ))}
       </TopLinks>

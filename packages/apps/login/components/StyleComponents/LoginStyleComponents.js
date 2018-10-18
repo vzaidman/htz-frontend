@@ -120,6 +120,16 @@ const Styles = {
         fontFamily: 'Open Sans Hebrew,"Helvetica Neue",Helvetica,Arial,sans-serif',
       },
     }),
+    textBoxStyle: () => ({
+      margin: '0 auto',
+      width: '300px',
+      maxWidth: '90%',
+      textAlign: 'center',
+      fontSize: '2rem',
+      '>h5': {
+        margin: '0 auto',
+      }
+    }),
   },
 
   Dialog: {
@@ -180,6 +190,7 @@ const LoginGeneralLayoutStyles = {
 
 const LoginMiscLayoutStyles = {
   InputLinkButton: createComponent(Styles.MiscLayout.inputLinkButton),
+  TextBox: createComponent(Styles.MiscLayout.textBoxStyle),
 };
 
 const LoginDialogBox = {
