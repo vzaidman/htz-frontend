@@ -51,7 +51,7 @@ const ColoredLink = ({ crumb, index, length, }) => (
           { until: 's', },
           index !== length - 1 ? { display: 'none', } : {}
         ),
-        (index === 0 
+        (index === 0
           ? {
             '&::after': {
               content: '" > "',
@@ -96,37 +96,37 @@ class Breadcrumbs extends React.Component {
 
   render() {
     const { className, crumbs, } = this.props;
+    const breadcrumbsSchema = {
+      '@context': 'http://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: crumbs.map((segment, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@id': segment.url,
+          name: segment.name,
+        },
+      })),
+    };
+
     return (
       <FelaTheme
         render={theme => {
           const {
             breadcrumbsI18n: { ariaLabel, },
           } = theme;
-          const breadcrumbsSchema = {
-            '@context': 'http://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [],
-          };
           return (
             <Fragment>
               <nav aria-label={ariaLabel} className={className}>
-                {crumbs.slice(-2).map((crumb, index) => {
-                  breadcrumbsSchema.itemListElement.push({
-                    '@type': 'ListItem',
-                    position: index + 1,
-                    item: {
-                      '@id': crumb.url,
-                      name: crumb.name,
-                    },
-                  });
-                  return (
+                {
+                  crumbs.map((crumb, index) => (
                     <ColoredLink
                       crumb={crumb}
                       index={index}
                       length={crumbs.length}
                     />
-                  );
-                })}
+                  ))
+                }
               </nav>
               <script
                 type="application/ld+json"
@@ -165,7 +165,7 @@ export default ({ articleId, ...props }) => (
         <Mutation mutation={UPDATE_SECTION}>
           {updateArticleSection => (
             <Breadcrumbs
-              crumbs={crumbs}
+              crumbs={crumbs.slice(-2)}
               {...props}
               updateArticleSection={updateArticleSection}
             />
