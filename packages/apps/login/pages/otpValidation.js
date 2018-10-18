@@ -39,9 +39,6 @@ const hidePhone = (phoneNumber) => {
   return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(7);
 }
 
-// const sendAgain = e => {
-//   console.log('test...');
-// };
 // --------------------------
 
 const OtpValidation = () => (

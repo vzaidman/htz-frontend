@@ -32,12 +32,16 @@ const validateEmailInput = ({ email, }) =>
       : []); // email is valid
 
 const handleGenerateOtp = ({ phoneNum, client, }) =>
-  generateOtp(client)({ typeId: phoneNum, })
-    .then(data => {
-      const json = data.data.generateOtp;
-      saveOtpHash(client)({ otpHash: json.hash, });
-      return ({ success: json.success, hash: json.hash, msg: json.msg, });
-    });
+      generateOtp(client)({ typeId: phoneNum, })
+      .then(data => {
+        const json = data.data.generateOtp;
+        saveOtpHash(client)({ otpHash: json.hash, });
+        if (json.success) {
+          Router.push(flow.initialTransition);
+        } else {
+          // TODO: show error (json.msg)
+        }
+      });
 
 const handleResponseFromGraphql = ({ client, getFlowByData, email, res, }) => {
   const dataSaved = saveUserData(client)({ userData: res.userByMail, });
@@ -46,16 +50,12 @@ const handleResponseFromGraphql = ({ client, getFlowByData, email, res, }) => {
   const flow = getFlowByData(transformedObj.user);
   storeFlowNumber(client)(flow.flowNumber);
   console.log(flow.initialTransition);
-  handleGenerateOtp({ client, phoneNum: dataSaved.userData.phoneNum, })
-    .then(({ success, }) => {
-      if (success) {
-        Router.push(flow.initialTransition);
-      }
-      else {
-        // TODO: show error
-        Router.push(flow.initialTransition); // <- Tmp, should be replaced with error handler
-      }
-    });
+  if (dataSaved.userData.isMobileValidated) {
+    handleGenerateOtp({ client, phoneNum: dataSaved.userData.phoneNum, });
+  } else {
+    Router.push(flow.initialTransition)
+  }
+    
 };
 
 const onSubmit = (client, getFlowByData) => ({ email, }) => {

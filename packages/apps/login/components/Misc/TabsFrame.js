@@ -45,7 +45,7 @@ export default class TabsFrame extends React.Component {
               value={`tab${i}`}
               onClick={this.changeTab(i)}
             />
-            <label htmlFor={`tab${i}`} tabindex={i}>{child.props.tabname || `Tab ${i}`}</label>
+            <label htmlFor={`tab${i}`} tabIndex={i}>{child.props.tabname || `Tab ${i}`}</label>
           </span>
         ))}
       </TopLinks>

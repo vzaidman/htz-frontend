@@ -4,72 +4,62 @@ export default [
     flowNumber: 1,
     initialState: 'otpValidation',
     initialTransition: '/otpValidation',
-    transitionRouteMap: new Map([
-      [ '-otpValidation', '/otpValidation' ],
-      [ '-otpValidation2', '/otpValidation2' ],
-      [ '-password', '/password' ],
-      [ '-phoneInput', '/phoneInput' ],
-      [ '-phoneMailSent', '/phoneMailSent' ],
-      [ '-phoneMailSent2', '/phoneMailSent2' ],
-      [ '-customerService', '/customerService' ],
-      [ '-register', '/register' ],
-      [ '-emailValidation', '/emailValidation' ],
-      [ '-emailValidation2', '/emailValidation2' ],
-    ]),
+    transitionRouteMap: new Map(
+      //[ '-loginForms', { url: '/loginForms', param: 0 } ],
+    ),
     otpValidation: {
       sendAgain: 'otpValidation2',
       accept: 'success',
-      withPassword: 'password',
+      withPassword: 'loginForms',
       notMyPhone: 'phoneInput',
     },
     otpValidation2: {
-      withPassword: 'password',
+      withPassword: 'loginForms',
       getCustomerService: 'customerService',
       notMyPhone: 'phoneInput',
     },
     phoneInput: {
-      withPassword: 'password',
+      withPassword: 'loginForms',
       accept: 'phoneMailSent',
     },
     phoneMailSent: {
       sendAgain: 'phoneMailSent2',
-      withPassword: 'password',
+      withPassword: 'loginForms',
     },
     phoneMailSent2: {
       getCustomerService: 'customerService',
-      withPassword: 'password',
+      withPassword: 'loginForms',
     },
     emailValidation: {
       sendAgain: 'emailValidation2',
-      register: 'register',
+      registration: 'register',
     },
     emailValidation2: {
       getCustomerService: 'customerService',
-      withPassword: 'password',
-    },
-    password: {
-      withSms: 'otpValidation',
-      registration: 'register',
+      withPassword: 'loginForms',
     },
     register: {
-      backToLogin: 'password',
+      backToLogin: 'loginForms',
     },
   },
   {
     flowNumber: 2,
-    initialState: 'emailPhoneInput',
-    initialTransition: '/emailPhoneInput',
+    initialState: 'loginForms',
+    initialTransition: '/loginForms',
+    transitionRouteMap: new Map(
+      //[ '-loginForms', { url: '/loginForms', param: 0 } ]
+    ),
     emailPhoneInput: {
-      withPassword: 'password',
+      withPassword: 'loginForms',
       accept: 'phoneMailSent',
     },
     phoneMailSent: {
-      withPassword: 'password',
+      withPassword: 'loginForms',
       sendAgain: 'phoneMailSent2',
     },
     phoneMailSent2: {
       getCustomerService: 'customerService',
-      withPassword: 'password',
+      withPassword: 'loginForms',
     },
   },
   {
