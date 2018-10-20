@@ -140,7 +140,12 @@ class DfpInjector extends Component {
       this.setState({ shouldRender: true, });
       const { dfpConfig, } = this.props;
       try {
+        if (window.tomer)
+         {
+           googletag.destroySlots();
+         }
         instance.dfp = initDfpScript(dfpConfig, DEBUG);
+        window.tomer=true;
       }
       catch (e) {
         logger.error(e);
