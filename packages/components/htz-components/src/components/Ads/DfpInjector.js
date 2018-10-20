@@ -142,6 +142,7 @@ class DfpInjector extends Component {
       try {
         if (window.tomer)
          {
+           console.log('Client Navigation BLa Bla BLa');
            googletag.destroySlots();
          }
         instance.dfp = initDfpScript(dfpConfig, DEBUG);
