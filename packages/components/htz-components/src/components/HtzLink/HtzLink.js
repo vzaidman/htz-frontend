@@ -120,7 +120,7 @@ function HtzLink({
           pathname: computedPathname,
           query: { path: `${computedHref.pathname}`, dfpdeb: 'dfpdeb', },
         }}
-        as={`${computedHref.pathname}?dfpdeb`}
+        as={`${computedHref.pathname}?dfpdeb&debugjs`}
       >
         <LinkWrapper
           attrs={attrs}
