@@ -21,4 +21,10 @@ const HISTORY = gql`
   }
 `;
 
-export { CURRENT_STATE, HISTORY_POINTER, HISTORY, };
+const STATE_METADATA = gql `
+  query MetadataState {
+    stateMetaData @client
+  }
+`;
+
+export { CURRENT_STATE, HISTORY_POINTER, HISTORY, STATE_METADATA };

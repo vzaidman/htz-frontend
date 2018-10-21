@@ -10,7 +10,7 @@
   "scripts": {
     "build": "htz-scripts build",
     "clean": "htz-scripts clean",
-    "build-all": "concurrently \"yarn workspace @haaretz/app-utils build\" \"yarn workspace @haaretz/graphql-server build\" \"yarn workspace @haaretz/htz-react-server build\" \"yarn workspace @haaretz/htz-user-utils build\" \"yarn workspace @haaretz/htz-components build\"",
+    "build-all": "concurrently \"yarn workspace @haaretz/app-utils build\" \"yarn workspace @haaretz/graphql-server build\" \"yarn workspace @haaretz/htz-react-server build\" \"yarn workspace @haaretz/htz-user-utils build\" \"yarn workspace @haaretz/htz-components build\" \"yarn workspace @haaretz/login build\"",
     "dev": "cross-env concurrently \"cross-env NODE_ENV=development graphql-server\" \"cross-env NODE_ENV=development htz-react-server login | bunyan -L\"",
     "debug": "htz-react-server login --inspect-brk",
     "format": "htz-scripts format",
