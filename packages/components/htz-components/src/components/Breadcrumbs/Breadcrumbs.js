@@ -2,7 +2,7 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
-import { breadcrumbs, } from '@haaretz/app-utils';
+import { breadcrumbs, intersperse, } from '@haaretz/app-utils';
 
 import HtzLink from '../HtzLink/HtzLink';
 import { Query, Mutation, } from '../ApolloBoundary/ApolloBoundary';
@@ -32,42 +32,26 @@ const UPDATE_SECTION = gql`
   }
 `;
 
+const commonStyle = theme => ({
+  ...theme.type(-1),
+  fontWeight: '700',
+  marginInlineEnd: '1rem',
+});
+
+const Delimiter = props => <FelaComponent style={commonStyle} render="span" {...props} >&gt;</FelaComponent>;
+
 // eslint-disable-next-line react/prop-types
-const ColoredLink = ({ crumb, index, length, }) => (
+const ColoredLink = ({ crumb, }) => (
   <FelaComponent
     key={crumb.contentId}
     style={theme => ({
-      ...theme.type(-1),
-      fontWeight: '700',
-      marginInlineEnd: '1rem',
-      color: theme.color('neutral', '-2'),
+      ...commonStyle(theme),
+      color: theme.color('primary', 'base'),
       ':hover': {
         color: theme.color('neutral', '-1'),
         textDecoration: 'underline',
         underlineSkip: 'ink',
       },
-      extend: [
-        theme.mq(
-          { until: 's', },
-          index !== length - 1 ? { display: 'none', } : {}
-        ),
-        (index === 0
-          ? {
-            '&::after': {
-              content: '" > "',
-            },
-          }
-          : {}
-        ),
-        {
-          ':nth-child(odd)': {
-            color: theme.color('primary', 'base'),
-            ':hover': {
-              color: theme.color('primary', '+1'),
-            },
-          },
-        },
-      ],
     })}
     render={({ className, }) => (
       <HtzLink className={className} content={crumb.name} href={crumb.url} />
@@ -109,6 +93,9 @@ class Breadcrumbs extends React.Component {
       })),
     };
 
+    const crumbLinks = crumbs.map(crumb => (<ColoredLink crumb={crumb} />));
+    const crumbLinksWithDelimiters = intersperse(crumbLinks, <Delimiter />);
+
     return (
       <FelaTheme
         render={theme => {
@@ -119,13 +106,28 @@ class Breadcrumbs extends React.Component {
             <Fragment>
               <nav aria-label={ariaLabel} className={className}>
                 {
-                  crumbs.map((crumb, index) => (
-                    <ColoredLink
-                      crumb={crumb}
-                      index={index}
-                      length={crumbs.length}
-                    />
-                  ))
+                  crumbLinksWithDelimiters
+                    .map((elem, index) => (
+                      <FelaComponent
+                        key={index}
+                        style={theme => ({
+                          extend: [
+                            theme.mq(
+                              { until: 's', },
+                              {
+                                // hide every item but the last
+                                '&:not(:last-child)': { display: 'none', },
+                              }
+                            ),
+                          ],
+                        })}
+                        render={({ className, }) => (
+                          <span className={className} >
+                            {elem}
+                          </span>
+                        )}
+                      />
+                    ))
                 }
               </nav>
               <script
