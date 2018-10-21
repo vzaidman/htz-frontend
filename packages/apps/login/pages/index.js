@@ -17,7 +17,7 @@ import { storeFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
 import objTransform from '../util/objectTransformationUtil';
 import { saveUserData, getDataFromUserInfo, saveOtpHash, generateOtp, mockDataFromUserInfo, } from './queryutil/userDetailsOperations';
-import { writeMetaDataToApollo } from '../pages/queryutil/flowUtil';
+import { writeMetaDataToApollo, parseRouteInfo, } from '../pages/queryutil/flowUtil';
 
 // Styling Components -------
 const { PageWrapper, ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -32,30 +32,36 @@ const validateEmailInput = ({ email, }) =>
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
-const handleGenerateOtp = ({ phoneNum, client, flow }) =>
-      generateOtp(client)({ typeId: phoneNum, })
-      .then(data => {
-        const json = data.data.generateOtp;
-        saveOtpHash(client)({ otpHash: json.hash, });
-        if (json.success) {
-          Router.push(flow.initialTransition);
-        } else {
-          // TODO: show error (json.msg)
-        }
-      });
+const handleGenerateOtp = ({ phoneNum, client, flow, route, }) =>
+  generateOtp(client)({ typeId: phoneNum, })
+    .then(data => {
+      const json = data.data.generateOtp;
+      saveOtpHash(client)({ otpHash: json.hash, });
+      if (json.success) {
+        Router.push(route);
+      }
+      else {
+        // TODO: show error (json.msg)
+      }
+    });
 
 const handleResponseFromGraphql = ({ client, getFlowByData, email, res, }) => {
   const dataSaved = saveUserData(client)({ userData: res.userByMail, });
   const transformedObj = objTransform(res);
-  console.log(`data is: ${JSON.stringify(transformedObj.user)}, email is: ${email}`);
+  console.log(`data is: ${JSON.stringify(dataSaved)}, email is: ${email}`);
   const flow = getFlowByData(transformedObj.user);
   storeFlowNumber(client)(flow.flowNumber);
-  writeMetaDataToApollo(client)
-  console.log(flow.initialTransition);
-  if (dataSaved.userData.isMobileValidated) {
-    handleGenerateOtp({ client, phoneNum: dataSaved.userData.phoneNum, flow, });
-  } else {
-    Router.push(flow.initialTransition)
+  console.log('**** initial transition', flow.initialTransition);
+  const { route, metadata, } = parseRouteInfo(flow.initialTransition);
+  writeMetaDataToApollo(client, metadata);
+  console.log('***** route', route);
+  if (dataSaved.userData.userStatus.isMobileValidated) {
+    console.log('mobile is validated!!!!');
+    handleGenerateOtp({ client, phoneNum: dataSaved.userData.phoneNum, flow, route, });
+  }
+  else {
+    console.log('mobile is not validated!!!');
+    Router.push(route);
   }
 };
 

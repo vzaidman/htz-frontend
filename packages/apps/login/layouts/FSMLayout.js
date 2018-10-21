@@ -13,6 +13,7 @@ import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
 import GET_HOST from '../pages/queries/GetHost';
 import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
+import { parseRouteInfo, } from '../pages/queryutil/flowUtil';
 
 // Styling Components -------
 const { PageWrapper, } = LoginContentStyles;
@@ -32,11 +33,12 @@ const FSMLayout = ({ children, }) => (
             <FlowDispenser
               render={({ getFlowByFlowNumber, }) => {
                 const flow = getFlowByFlowNumber(flowNumber);
+                const { route, } = parseRouteInfo(flow.initialTransition);
                 return (
                   <FiniteStateMachine
                     apolloClient={client}
                     initialState={flow.initialState}
-                    initialTransition={flow.initialTransition}
+                    initialTransition={route}
                     statesGraph={flow}
                     transitionRouteMap={flow.transitionRouteMap}
                     render={({ currentState, findRout, doTransition, }) => (

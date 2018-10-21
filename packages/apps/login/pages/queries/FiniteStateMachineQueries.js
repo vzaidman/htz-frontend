@@ -21,7 +21,7 @@ const HISTORY = gql`
   }
 `;
 
-const STATE_METADATA = gql `
+const STATE_METADATA = gql`
   query MetadataState {
     stateMetaData @client
   }

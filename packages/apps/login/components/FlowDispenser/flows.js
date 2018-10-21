@@ -4,9 +4,9 @@ export default [
     flowNumber: 1,
     initialState: 'otpValidation',
     initialTransition: '/otpValidation',
-    transitionRouteMap: new Map(
+    transitionRouteMap: new Map([
       [ '-loginForms', { url: '/loginForms', param: 0 } ],
-    ),
+    ]),
     otpValidation: {
       sendAgain: 'otpValidation2',
       accept: 'success',
@@ -45,10 +45,10 @@ export default [
   {
     flowNumber: 2,
     initialState: 'loginForms',
-    initialTransition: '/loginForms',
-    transitionRouteMap: new Map(
-      //[ '-loginForms', { url: '/loginForms', param: 0 } ]
-    ),
+    initialTransition: { url: '/loginForms', param: 0 },
+    transitionRouteMap: new Map([
+      [ '-loginForms', { url: '/loginForms', param: 0 } ]
+    ]),
     emailPhoneInput: {
       withPassword: 'loginForms',
       accept: 'phoneMailSent',
