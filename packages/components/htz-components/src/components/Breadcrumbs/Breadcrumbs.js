@@ -38,7 +38,7 @@ const commonStyle = theme => ({
   marginInlineEnd: '1rem',
 });
 
-const Delimiter = props => <FelaComponent style={commonStyle} render="span" {...props} >&gt;</FelaComponent>;
+const Delimiter = props => <FelaComponent style={commonStyle} render="span" {...props} >|</FelaComponent>;
 
 // eslint-disable-next-line react/prop-types
 const ColoredLink = ({ crumb, }) => (

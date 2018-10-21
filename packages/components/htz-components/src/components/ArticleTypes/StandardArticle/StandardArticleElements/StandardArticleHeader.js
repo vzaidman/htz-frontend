@@ -106,7 +106,7 @@ function Header({
                         ),
                         theme.mq(
                           { until: 's', },
-                          { order: -1, marginTop: '2rem', }
+                          { order: -1, marginTop: '2rem', marginBottom: '3rem', }
                         ),
                       ],
                     }}
