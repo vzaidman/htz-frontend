@@ -100,26 +100,26 @@ export default class AdManager {
         });
       });
       // Once DOM ready, add more adSlots.
-      const onDomLoaded = () => {
-        // eslint-disable-line no-inner-declarations
-        try {
-          googletag.cmd.push(() => {
-            this.DEBUG &&
-              console.log(
-                `3. Define slots - secondary definition for ${
-                  adPriorities.high
-                } priority slots`
-              );
-            this.adSlots = this.initAdSlots(
-              config.adSlotConfig,
-              adPriorities.high
-            );
-          });
-        }
-        catch (err) {
-          console.log(err); // eslint-disable-line no-console
-        }
-      };
+      // const onDomLoaded = () => {
+      //   // eslint-disable-line no-inner-declarations
+      //   try {
+      //     googletag.cmd.push(() => {
+      //       this.DEBUG &&
+      //         console.log(
+      //           `3. Define slots - secondary definition for ${
+      //             adPriorities.high
+      //           } priority slots`
+      //         );
+      //       this.adSlots = this.initAdSlots(
+      //         config.adSlotConfig,
+      //         adPriorities.high
+      //       );
+      //     });
+      //   }
+      //   catch (err) {
+      //     console.log(err); // eslint-disable-line no-console
+      //   }
+      // };
       // Once window was loaded, add the rest of the adSlots.
       const onWindowLoaded = () => {
         // eslint-disable-line no-inner-declarations
@@ -563,30 +563,30 @@ export default class AdManager {
             ' called @',
             window.performance.now()
           );
-        if (this.adSlots.has(id)) {
-          const adSlot = this.adSlots.get(id);
-          adSlot.lastResolvedSize = resolvedSize;
-          adSlot.lastResolvedWithBreakpoint = getBreakpoint(breakpoints);
-          if (isEmpty) {
-            adSlot.lastResolvedSize = ConflictResolver.EMPTY_SIZE;
-            adSlot.hide();
-            this.releaseSlotDependencies(adSlot);
-          }
-          else {
-            this.releaseSlotDependencies(adSlot, adSlot.lastResolvedSize);
-          }
-          this.user.impressionManager.registerImpression(
-            `${adSlot.id}${this.config.department}`
-          );
-          this.user.impressionManager.registerImpression(`${adSlot.id}_all`);
-          this.DEBUG && console.log('registered impression for ', adSlot.id);
-          // console.trace();
-        }
-        else {
-          this.DEBUG &&
-            console.error(`Cannot find an adSlot with id: ${id} - Ad Unit path is
-           ${event.slot.getAdUnitPath()}`);
-        }
+        // if (this.adSlots.has(id)) {
+        //   const adSlot = this.adSlots.get(id);
+        //   adSlot.lastResolvedSize = resolvedSize;
+        //   adSlot.lastResolvedWithBreakpoint = getBreakpoint(breakpoints);
+        //   if (isEmpty) {
+        //     adSlot.lastResolvedSize = ConflictResolver.EMPTY_SIZE;
+        //     adSlot.hide();
+        //     this.releaseSlotDependencies(adSlot);
+        //   }
+        //   else {
+        //     this.releaseSlotDependencies(adSlot, adSlot.lastResolvedSize);
+        //   }
+        //   this.user.impressionManager.registerImpression(
+        //     `${adSlot.id}${this.config.department}`
+        //   );
+        //   this.user.impressionManager.registerImpression(`${adSlot.id}_all`);
+        //   this.DEBUG && console.log('registered impression for ', adSlot.id);
+        //   // console.trace();
+        // }
+        // else {
+        //   this.DEBUG &&
+        //     console.error(`Cannot find an adSlot with id: ${id} - Ad Unit path is
+        //    ${event.slot.getAdUnitPath()}`);
+        // }
       });
     }
     else {
