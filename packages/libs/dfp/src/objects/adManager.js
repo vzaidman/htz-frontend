@@ -143,22 +143,22 @@ export default class AdManager {
           this.showAllDeferredSlots();
         });
       };
-      switch (document.readyState) {
-        case 'loading':
-          document.addEventListener('DOMContentLoaded', onDomLoaded);
-          window.addEventListener('load', onWindowLoaded);
-          break;
-        case 'interactive':
-          window.addEventListener('load', () => {
-            onDomLoaded();
-            onWindowLoaded();
-          });
-          break;
-        default:
-          // 'complete' - no need for event listeners.
-          onDomLoaded();
-          onWindowLoaded();
-      }
+      // switch (document.readyState) {
+      //   case 'loading':
+      //    //document.addEventListener('DOMContentLoaded', onDomLoaded);
+      //     window.addEventListener('load', onWindowLoaded);
+      //     break;
+      //   case 'interactive':
+      //     window.addEventListener('load', () => {
+      //       //onDomLoaded();
+      //       onWindowLoaded();
+      //     });
+      //     break;
+      //   default:
+      //     // 'complete' - no need for event listeners.
+      //     //onDomLoaded();
+      //     onWindowLoaded();
+      // }
     }
     catch (err) {
       console.error(err); // eslint-disable-line no-console
