@@ -143,7 +143,7 @@ class DfpInjector extends Component {
         if (window.tomer)
          {
            console.log('Client Navigation BLa Bla BLa');
-           googletag.destroySlots();
+          
          }
         instance.dfp = initDfpScript(dfpConfig, DEBUG);
         window.tomer=true;
@@ -154,6 +154,11 @@ class DfpInjector extends Component {
     }
   }
 
+  componentWillUnmount() {
+    console.log('Destroy Slots');
+    googletag.destroySlots();
+    //this.setState()
+  }
   render() {
     if (this.state.shouldRender) {
       const { loading, error, } = this.props;
