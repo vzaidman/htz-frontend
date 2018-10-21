@@ -2,7 +2,7 @@ import React, { Fragment, Component, } from 'react';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
 
-import { HtzLink, } from '@haaretz/htz-components';
+import { HtzLink, Login, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 import { getUserData, getPhoneNum, getOtpHash, } from './queryutil/userDetailsOperations';
 
@@ -19,6 +19,7 @@ import {
 import TabsFrame from '../components/Misc/TabsFrame';
 import LoginDialog from '../components/Misc/LoginDialog';
 import { getMetadataFromApollo, } from './queryutil/flowUtil';
+import GET_HOST from './queries/GetHost';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -46,8 +47,12 @@ const validatePasswordInput = ({ password, }) =>
       ? generatePasswordError('אנא הזינו סיסמה תקינה')
       : []); // email is valid
 
-const onSubmit = () => {
-  console.log('submit');
+const onSubmit = ({ login, host, }) => ({ email, password, }) => {
+  login(email, password)
+    .then(
+      () => window.location = `https://www.${host}`,
+      reason => console.log(`login failed: ${reason}`)
+    );
 };
 
 const valdiateForm = ({ email, password, }) => {
@@ -94,7 +99,8 @@ class LoginForms extends Component {
         {({ currentState, findRout, doTransition, }) => (
           <ApolloConsumer>
             {client => {
-              return(
+              const host = client.readQuery({ query: GET_HOST, }).hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+              return (
                 <FelaTheme
                   render={theme => (
                     <Fragment>
@@ -212,60 +218,64 @@ class LoginForms extends Component {
 
                             {/* TAB 2 */}
                             <div tabname="כניסה באמצעות סיסמה">
-                              <Form
-                                clearFormAfterSubmit={false}
-                                // initialValues={{ email: 'insert email' }}
-                                validate={valdiateForm}
-                                onSubmit={onSubmit}
-                                render={({ getInputProps, handleSubmit, clearForm, }) => (
-                                  <Fragment>
-                                    <div>
-                                      <TextInput
-                                        type="email"
-                                        label={theme.emailInputLabel}
-                                        noteText="אנא הזינו כתובת דוא”ל"
-                                        requiredText={{
-                                          long: theme.emailInputRequiredLong,
-                                          short: theme.emailInputRequiredShort,
-                                        }}
-                                        {...getInputProps({
-                                          name: 'email',
-                                          label: theme.emailInputLabel,
-                                          type: 'email',
-                                        })}
-                                      />
-                                    </div>
+                              <Login
+                                render={({ login, }) => (
+                                  <Form
+                                    clearFormAfterSubmit={false}
+                                    // initialValues={{ email: 'insert email' }}
+                                    validate={valdiateForm}
+                                    onSubmit={onSubmit({ login, host, })}
+                                    render={({ getInputProps, handleSubmit, clearForm, }) => (
+                                      <Fragment>
+                                        <div>
+                                          <TextInput
+                                            type="email"
+                                            label={theme.emailInputLabel}
+                                            noteText="אנא הזינו כתובת דוא”ל"
+                                            requiredText={{
+                                              long: theme.emailInputRequiredLong,
+                                              short: theme.emailInputRequiredShort,
+                                            }}
+                                            {...getInputProps({
+                                              name: 'email',
+                                              label: theme.emailInputLabel,
+                                              type: 'email',
+                                            })}
+                                          />
+                                        </div>
 
-                                    <div>
-                                      <TextInput
-                                        type="password"
-                                        label={theme.passwordInputLabel}
-                                        noteText="אנא הזינו סיסמה"
-                                        requiredText={{
-                                          long: theme.passwordInputRequiredLong,
-                                          short: theme.passwordInputRequiredShort,
-                                        }}
-                                        {...getInputProps({
-                                          name: 'password',
-                                          label: theme.passwordInputLabel,
-                                          type: 'password',
-                                        })}
-                                      />
-                                      <InputLinkButton>
-                                        <button
-                                          onClick={(e) => {
-                                            e.preventDefault();
-                                            this.showDialog();
-                                          }}
-                                        >
-                                          שכחתי סיסמה
-                                        </button>
-                                      </InputLinkButton>
-                                    </div>
-                                    <ItemCenterer>
-                                      <Button onClick={handleSubmit}>התחברות</Button>
-                                    </ItemCenterer>
-                                  </Fragment>
+                                        <div>
+                                          <TextInput
+                                            type="password"
+                                            label={theme.passwordInputLabel}
+                                            noteText="אנא הזינו סיסמה"
+                                            requiredText={{
+                                              long: theme.passwordInputRequiredLong,
+                                              short: theme.passwordInputRequiredShort,
+                                            }}
+                                            {...getInputProps({
+                                              name: 'password',
+                                              label: theme.passwordInputLabel,
+                                              type: 'password',
+                                            })}
+                                          />
+                                          <InputLinkButton>
+                                            <button
+                                              onClick={(e) => {
+                                                e.preventDefault();
+                                                this.showDialog();
+                                              }}
+                                            >
+                                              שכחתי סיסמה
+                                            </button>
+                                          </InputLinkButton>
+                                        </div>
+                                        <ItemCenterer>
+                                          <Button onClick={handleSubmit}>התחברות</Button>
+                                        </ItemCenterer>
+                                      </Fragment>
+                                    )}
+                                  />
                                 )}
                               />
                             </div>
