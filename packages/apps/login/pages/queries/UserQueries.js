@@ -11,6 +11,7 @@ export default gql`
         isPhoneEmailConn
       }
       userCrmStatus {
+        id
         isActiveTm
         isActiveHeb
         isActiveEng
