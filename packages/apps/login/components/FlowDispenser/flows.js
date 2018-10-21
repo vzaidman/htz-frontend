@@ -45,9 +45,9 @@ export default [
   {
     flowNumber: 2,
     initialState: 'loginForms',
-    initialTransition: { url: '/loginForms', param: 0 },
+    initialTransition: { url: '/loginForms', param: 1 },
     transitionRouteMap: new Map([
-      [ '-loginForms', { url: '/loginForms', param: 0 } ]
+      [ '-loginForms', { url: '/loginForms', param: 1 } ]
     ]),
     emailPhoneInput: {
       withPassword: 'loginForms',
