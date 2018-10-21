@@ -18,8 +18,7 @@ import {
 
 import TabsFrame from '../components/Misc/TabsFrame';
 import LoginDialog from '../components/Misc/LoginDialog';
-
-import STATE_METADATA from './queries/FiniteStateMachineQueries';
+import { getMetadataFromApollo, } from './queryutil/flowUtil';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -89,10 +88,6 @@ class LoginForms extends Component {
     return this.state.showDialog;
   }
 
-  getMetadata = (client) => {
-    return client.readQuery({ query: STATE_METADATA, }).stateMetaData;
-  }
-
   render() {
     return(
       <FSMLayout>
@@ -115,35 +110,35 @@ class LoginForms extends Component {
                               (nextStage, closeModal, CloseButton) => (
                                 <div>
                                   <div>
-                                    <CloseButton/>
+                                    <CloseButton />
                                     <h4>החלפת סיסמה</h4>
-                                      <Form
-                                      clearFormAfterSubmit={false}
-                                      // initialValues={{ email: 'insert email' }}
-                                      validate={validateEmailInput}
-                                      onSubmit={onSubmit}
-                                      render={({ getInputProps, handleSubmit, clearForm, }) => (
-                                        <Fragment>
-                                          <TextInput
-                                            type="email"
-                                            label={theme.emailInputLabel}
-                                            noteText="אנא הזינו כתובת דוא”ל"
-                                            requiredText={{
-                                              long: theme.emailInputRequiredLong,
-                                              short: theme.emailInputRequiredShort,
-                                            }}
-                                            {...getInputProps({
-                                              name: 'email',
-                                              label: theme.emailInputLabel,
-                                              type: 'email',
-                                            })}
-                                          />
-                                          <ItemCenterer>
-                                            <Button onClick={nextStage}>המשך</Button>
-                                          </ItemCenterer>
-                                        </Fragment>
-                                      )}
-                                    />
+                                        <Form
+                                        clearFormAfterSubmit={false}
+                                        // initialValues={{ email: 'insert email' }}
+                                        validate={validateEmailInput}
+                                        onSubmit={onSubmit}
+                                        render={({ getInputProps, handleSubmit, clearForm, }) => (
+                                          <Fragment>
+                                            <TextInput
+                                              type="email"
+                                              label={theme.emailInputLabel}
+                                              noteText="אנא הזינו כתובת דוא”ל"
+                                              requiredText={{
+                                                long: theme.emailInputRequiredLong,
+                                                short: theme.emailInputRequiredShort,
+                                              }}
+                                              {...getInputProps({
+                                                name: 'email',
+                                                label: theme.emailInputLabel,
+                                                type: 'email',
+                                              })}
+                                            />
+                                            <ItemCenterer>
+                                              <Button onClick={nextStage}>המשך</Button>
+                                            </ItemCenterer>
+                                          </Fragment>
+                                        )}
+                                      />
                                   </div>
 
                                   <div>
@@ -161,7 +156,7 @@ class LoginForms extends Component {
                           </LoginDialog>
 
                           {/* ----------------- Tabs Frame ----------------- */}
-                          <TabsFrame activeTab={this.getMetadata(client)}>
+                          <TabsFrame activeTab={parseInt(getMetadataFromApollo(client), 10)}>
                             {/* TAB 1 */}
                             <div tabname="כניסה באמצעות SMS">
                               <ItemCenterer>
