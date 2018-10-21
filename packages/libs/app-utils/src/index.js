@@ -40,6 +40,7 @@ import seoData from './fragments/seoData/seoData';
 import seriesOrBlockArticles from './fragments/seriesOrBlockArticles/seriesOrBlockArticles';
 import tag from './fragments/tag/tag';
 import tags from './fragments/tags/tags';
+import htzPageTypes from './utils/htzPageTypes';
 import teaser, {
   teaserForLeftElement,
   teaserForBender,
@@ -84,6 +85,7 @@ export {
   seriesOrBlockArticles,
   tag,
   tags,
+  htzPageTypes,
   teaser,
   teaserForBender,
   teaserForLeftElement,

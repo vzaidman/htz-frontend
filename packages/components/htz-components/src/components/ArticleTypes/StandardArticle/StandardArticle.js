@@ -3,8 +3,9 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ApolloConsumer, } from 'react-apollo';
-import { Query, } from '../../ApolloBoundary/ApolloBoundary';
+import { htzPageTypes, } from '@haaretz/app-utils';
 
+import { Query, } from '../../ApolloBoundary/ApolloBoundary';
 import LayoutContainer from '../../PageLayout/LayoutContainer';
 import WideArticleLayoutRow from '../../PageLayout/WideArticleLayoutRow';
 import ArticleLayoutRow from '../../PageLayout/ArticleLayoutRow';
@@ -14,20 +15,23 @@ import ArticleBody from '../../ArticleBody/ArticleBody';
 import ArticleHeaderMeta from '../../ArticleHeader/ArticleHeaderMeta';
 import StandardArticleHeader from './StandardArticleElements/StandardArticleHeader';
 import SideBar from '../../SideBar/SideBar';
+import BloggerInfo from '../../BloggerInfo/BloggerInfo';
+
 import Zen from '../../Zen/Zen';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 
 import StandardArticleQuery from './queries/standard_article';
 
-function StandardArticle({ articleId, slots, }) {
+function StandardArticle({ articleId, slots, currentType, }) {
   return (
     <ArticleLayout articleId={articleId} slots={slots}>
-      <Query query={StandardArticleQuery} partialRefetch variables={{ path: articleId, }}>
+      <Query query={StandardArticleQuery} variables={{ path: articleId, }} fetchPolicy="network-only">
         {({ loading, error, data, }) => {
           if (loading) return null;
           if (error) return null;
           const {
             slots: { article, aside, },
+            lineage,
             seoData: {
               metaTitle,
               metaDescription,
@@ -40,6 +44,8 @@ function StandardArticle({ articleId, slots, }) {
               obTitle,
             },
           } = data.page;
+          console.log('!!!!21313 article: ', article);
+
 
           const { contentId, imgArray, aspects, } = ogImage || {};
           const ogImageUrl = ogImage
@@ -58,13 +64,11 @@ function StandardArticle({ articleId, slots, }) {
 
           const standardArticleElement = article.find(
             element =>
-              element.inputTemplate === 'com.htz.StandardArticle' ||
-              element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
-              element.inputTemplate === 'com.tm.StandardArticle'
-          );
+            htzPageTypes.DEFAULT
+              .indexOf(element.inputTemplate) > -1
+            );
 
           const isMouse = standardArticleElement.inputTemplate === 'com.mouse.story.MouseStandardStory';
-
 
           const { authors, body, headlineElement, reportingFrom, pubDate, modDate, } = standardArticleElement;
           const header = isMouse ? { pubDate, modDate, } : standardArticleElement.header;
@@ -115,9 +119,7 @@ function StandardArticle({ articleId, slots, }) {
                         return null;
                       }
                       if (
-                        element.inputTemplate === 'com.htz.StandardArticle' ||
-                        element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
-                        element.inputTemplate === 'com.tm.StandardArticle'
+                        htzPageTypes.DEFAULT.indexOf(element.inputTemplate) > -1
                       ) {
                         return (
                           <ApolloConsumer key={element.contentId}>
@@ -138,6 +140,10 @@ function StandardArticle({ articleId, slots, }) {
                                   },
                                 },
                               });
+                              let bloggerInfo;
+                              if (authors.length) {
+                                bloggerInfo = element.inputTemplate === 'com.tm.BlogArticle' ? (<BloggerInfo author={authors[0]} blogName={lineage[1].name} />) : null;
+                              }
                               return (
                                 <ArticleLayoutRow
                                   isArticleBody
@@ -156,6 +162,7 @@ function StandardArticle({ articleId, slots, }) {
                                   }
                                 >
                                   <ArticleBody body={body} />
+                                  {bloggerInfo}
                                 </ArticleLayoutRow>
                               );
                             }}
@@ -258,6 +265,10 @@ StandardArticle.propTypes = {
   articleId: PropTypes.string.isRequired,
 
   slots: PropTypes.shape({}).isRequired,
+
+  currentType: PropTypes.shape({
+    inputTemplate: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
 };
 
 export default StandardArticle;

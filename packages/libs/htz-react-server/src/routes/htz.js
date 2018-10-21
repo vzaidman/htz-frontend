@@ -55,7 +55,6 @@ export default function htz(app, server, DEV) {
       if (req.path.indexOf(`${type}-`) >= 0) {
         const pageLink = `/${type.toLowwerCase()}Article`;
         console.log(`found ${type}, rendering ${pageLink} page`);
-        query.type = type;
         app.render(req, res, pageLink, query);
         isRoutFound = 1;
       }

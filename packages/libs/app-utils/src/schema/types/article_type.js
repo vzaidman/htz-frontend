@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { GraphQLList, GraphQLUnionType, } from 'graphql';
-import { htzPageTypes, } from '@haaretz/app-utils';
-import getInputTemplate from '../getInputTemplate';
+import { htzPageTypes, } from '../../utils/htzPageTypes';
+
 import content from './content_type';
 import articleData from './article_data_type';
 

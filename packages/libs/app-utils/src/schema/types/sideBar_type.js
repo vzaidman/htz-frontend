@@ -3,16 +3,17 @@ import { GraphQLList, GraphQLUnionType, } from 'graphql';
 
 import content from './content_type';
 import changeableElementGroup from './changeable_element_group_type';
-import getInputTemplate from '../getInputTemplate';
+import { htzPageTypes, } from '../../utils/htzPageTypes';
 
 const SideBar = new GraphQLList(
   new GraphQLUnionType({
     name: 'SideBar',
     types: [ content, changeableElementGroup, ],
-    resolveType: value =>
-      (value.inputTemplate === getInputTemplate('ChangeableElementGroup')
-        ? changeableElementGroup
-        : content),
+    resolveType: value => (Object.values(htzPageTypes)
+      .filter(v => v && v.includes(value.inputTemplate))
+      .length > 0
+      ? changeableElementGroup
+      : content),
   })
 );
 
