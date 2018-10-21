@@ -1,7 +1,7 @@
 export default {
   transitionRouteMap: new Map([
     [ '-otpValidation', '/otpValidation' ],
-    [ '-loginForms', '/loginForms' ],
+    //[ '-loginForms', '/loginForms' ],
     [ '-otpValidation2', '/otpValidation2' ],
     [ '-phoneInput', '/phoneInput' ],
     [ '-phoneMailSent', '/phoneMailSent' ],

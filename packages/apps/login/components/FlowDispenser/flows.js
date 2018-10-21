@@ -5,7 +5,7 @@ export default [
     initialState: 'otpValidation',
     initialTransition: '/otpValidation',
     transitionRouteMap: new Map(
-      //[ '-loginForms', { url: '/loginForms', param: 0 } ],
+      [ '-loginForms', { url: '/loginForms', param: 0 } ],
     ),
     otpValidation: {
       sendAgain: 'otpValidation2',
