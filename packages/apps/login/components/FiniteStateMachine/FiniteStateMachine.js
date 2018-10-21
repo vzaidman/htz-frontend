@@ -2,7 +2,7 @@ import React from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { CURRENT_STATE, HISTORY_POINTER, HISTORY, } from '../../pages/queries/FiniteStateMachineQueries';
-import { writeMetaDataToApollo } from '../../pages/queryutil/flowUtil';
+import { writeMetaDataToApollo, parseRouteInfo, } from '../../pages/queryutil/flowUtil';
 
 const finiteStateMachinePropTypes = {
   render: PropTypes.func.isRequired,
@@ -23,7 +23,8 @@ class FiniteStateMachine extends React.Component {
 
     if (this.getCurrentState() === null) {
       this.writeStateToApolloStore(props.initialState);
-      this.addHistory({ pastState: props.initialState, pastTransition: props.initialTransition, });
+      const { route, } = parseRouteInfo(props.initialTransition);
+      this.addHistory({ pastState: props.initialState, pastTransition: route, });
     }
   }
 
@@ -273,9 +274,6 @@ class FiniteStateMachine extends React.Component {
     return route;
   };
 
-  parseRouteInfo = routeInfo =>
-    (typeof routeInfo === 'object' ? { route: routeInfo.url, metadata: routeInfo.param, } : { route: routeInfo, metadata: null, })
-
   /**
    * This function should be used to transition from one state to another
    * It resolves the new state and then returns the right transition function
@@ -294,7 +292,7 @@ class FiniteStateMachine extends React.Component {
     this.addHistory({ pastState: newState, pastTransition: route, });
     console.warn(`new state: ${newState}`);
     this.writeStateToApolloStore(newState);
-    writeMetaDataToApollo(this.props.apolloClient,metadata);
+    writeMetaDataToApollo(this.props.apolloClient, metadata);
     console.warn(
       `transition: action: ${action}. oldState: ${oldState}. new state: ${newState}`
     );
