@@ -44,7 +44,7 @@ const Styles = {
 
     topLinks: () => ({
       display: 'flex',
-      margin: '-2rem auto 4rem auto',
+      margin: '0 auto 4rem auto',
       border: 'solid 1px #0b7eb5',
       '>span': {
         flexGrow: '1',
@@ -79,6 +79,10 @@ const Styles = {
         margin: '25px 0',
         textAlign: 'center',
       },
+      '> h4': {
+        textAlign: 'center',
+        fontSize: '2.3rem',
+      }
     }),
   },
 

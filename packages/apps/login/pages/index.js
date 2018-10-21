@@ -17,6 +17,7 @@ import { storeFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
 import objTransform from '../util/objectTransformationUtil';
 import { saveUserData, getDataFromUserInfo, saveOtpHash, generateOtp, mockDataFromUserInfo, } from './queryutil/userDetailsOperations';
+import { writeMetaDataToApollo } from '../pages/queryutil/flowUtil';
 
 // Styling Components -------
 const { PageWrapper, ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -31,7 +32,7 @@ const validateEmailInput = ({ email, }) =>
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
-const handleGenerateOtp = ({ phoneNum, client, }) =>
+const handleGenerateOtp = ({ phoneNum, client, flow }) =>
       generateOtp(client)({ typeId: phoneNum, })
       .then(data => {
         const json = data.data.generateOtp;
@@ -49,13 +50,13 @@ const handleResponseFromGraphql = ({ client, getFlowByData, email, res, }) => {
   console.log(`data is: ${JSON.stringify(transformedObj.user)}, email is: ${email}`);
   const flow = getFlowByData(transformedObj.user);
   storeFlowNumber(client)(flow.flowNumber);
+  writeMetaDataToApollo(client)
   console.log(flow.initialTransition);
   if (dataSaved.userData.isMobileValidated) {
-    handleGenerateOtp({ client, phoneNum: dataSaved.userData.phoneNum, });
+    handleGenerateOtp({ client, phoneNum: dataSaved.userData.phoneNum, flow, });
   } else {
     Router.push(flow.initialTransition)
   }
-    
 };
 
 const onSubmit = (client, getFlowByData) => ({ email, }) => {
