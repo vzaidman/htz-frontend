@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* global window */
 import config from 'config';
-import { breakUrl, } from '@haaretz/app-utils';
+import { breakUrl, htzPageTypes, } from '@haaretz/app-utils';
 
 const premiumPrefix = '(?:\\.premium-)?';
 const multiSectionPrefix = '(?:\\/(.+?\\/)+)?';
@@ -10,17 +10,9 @@ const homepagePattern = '(^\\/(\\?.*)?$)';
 const offersPattern =
   '(\\/promotions-page\\/(product|price|login|method|payment|thankYou|debt|stage\\d))';
 
-const NonReactArticleTypes = [
-  '(MAGAZINE-)',
-  '(REVIEW-)',
-  '(TAG-)',
-  '(WRITER-)',
-  '(BLOG-)',
-  '(CARD-)',
-  '(CAREER-)',
-  '(LIVE-)',
-  '(INTERACTIVE-)',
-];
+const NonReactArticleTypes = Object.keys(htzPageTypes).filter(type => htzPageTypes[type]).map(type => `(${type}-)`);
+
+const NonReactArticleTypes1 = Object.keys(htzPageTypes).filter(articleType => !articleType).map(articleType => `(${articleType.toUpperCase()}-)`);
 
 const nonReactSections = [
   '(\\/article-print-page)',
