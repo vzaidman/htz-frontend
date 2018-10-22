@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { breakUrl, } from '@haaretz/app-utils';
-import isNextLink, { isReactArticle, getArticlePageTypeFromUrl, } from './isNextLink';
+import isNextLink, {
+  isReactArticle,
+  getArticlePageTypeFromUrl,
+} from './isNextLink';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 
 const propTypes = {
@@ -68,7 +71,13 @@ const LinkWrapper = React.forwardRef(
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     /* eslint-disable jsx-a11y/click-events-have-key-events */
     return (
-      <a href={href} className={className} onClick={wrappedOnclick} ref={ref} {...attrs}>
+      <a
+        href={href}
+        className={className}
+        onClick={wrappedOnclick}
+        ref={ref}
+        {...attrs}
+      >
         {children}
       </a>
     );
@@ -106,7 +115,9 @@ function HtzLink({
     let params;
     let page;
     // TODO check this case
-    const computedHref = ensureRelativity(typeof href === 'string' ? { pathname: href, } : href);
+    const computedHref = ensureRelativity(
+      typeof href === 'string' ? { pathname: href, } : href
+    );
     // Enables client-side navigation for react-articles
     const computedPathname = isReactArticle(computedHref.pathname)
       ? `/${getArticlePageTypeFromUrl(computedHref.pathname)}`
@@ -118,9 +129,9 @@ function HtzLink({
         passHref
         href={{
           pathname: computedPathname,
-          query: { path: `${computedHref.pathname}`, dfpdeb: 'dfpdeb', },
+          query: { path: `${computedHref.pathname}`, },
         }}
-        as={`${computedHref.pathname}?dfpdeb&debugjs`}
+        as={`${computedHref.pathname}`}
       >
         <LinkWrapper
           attrs={attrs}
