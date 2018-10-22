@@ -45,6 +45,7 @@ import teaser, {
   teaserForBender,
 } from './fragments/teaser/teaser';
 import video from './fragments/video/video';
+import htzPageTypes from './utils/htzPageTypes';
 
 export {
   withData,
@@ -91,4 +92,5 @@ export {
   switchToDomain,
   breakUrl,
   createLogger,
+  htzPageTypes,
 };

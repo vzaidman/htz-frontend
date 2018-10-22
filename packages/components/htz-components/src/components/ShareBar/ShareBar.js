@@ -3,10 +3,18 @@ import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import { borderTop, } from '@haaretz/htz-css-tools';
 import type { Node, } from 'react';
+import gql from 'graphql-tag';
 
 import ActionButtons from '../ActionButtons/ActionButtons';
 import PlusClose from '../Animations/PlusClose';
 import { Button, } from '../ActionButtons/actionList';
+import { Query, } from '../ApolloBoundary/ApolloBoundary';
+
+const IS_MOUSE_STORY: Object = gql`
+  query isMouseStory {
+    isMouseStory @client
+  }
+`;
 
 type Props = {
   title: string,
@@ -17,6 +25,7 @@ type State = {
   isOpen: boolean,
   focused: boolean,
   hover: boolean,
+  hiddenButtonsBarWidth: number,
 };
 
 class ShareBar extends React.Component<Props, State> {
@@ -24,6 +33,7 @@ class ShareBar extends React.Component<Props, State> {
     isOpen: false,
     focused: false,
     hover: false,
+    hiddenButtonsBarWidth: -1,
   };
 
   toggleOpen: boolean => void = () =>
@@ -96,68 +106,93 @@ class ShareBar extends React.Component<Props, State> {
               size={4}
             />
             <FelaComponent style={{ display: 'flex', }}>
-              <ActionButtons
-                elementName={title}
-                elementUrl={canonicalUrl}
-                miscStyles={{
-                  transform: `translateX(${
-                    isOpen ? '0' : 'calc(-50% + 4rem)'
-                  })`,
-                  transitionProperty: 'transform',
-                  ...theme.getDelay('transition', -1),
-                  ...theme.getDuration('transition', -1),
-                  ...theme.getTimingFunction('transition', 'linear'),
-                }}
-                buttons={[
-                  'comments',
-                  'zen',
-                  'print',
-                  {
-                    name: 'save',
-                    buttonStyles: isArticleSaved => ({
-                      minWidth: '10rem',
-                      ...(isArticleSaved
-                        ? {
-                            color: theme.color('neutral', '-10'),
-                            backgroundColor: theme.color('primary'),
-                            ':hover': {
-                              color: theme.color('neutral', '-10'),
-                              backgroundColor: theme.color('secondary'),
-                            },
-                          }
-                        : {}),
-                    }),
-                  },
-                ]}
-                globalButtonsStyles={{
-                  minWidth: '10rem',
-                }}
-                size={4}
-              />
-              <Button
-                onClick={this.toggleOpen}
-                onFocus={() => this.changeFocus(true)}
-                onBlur={() => this.changeFocus(false)}
-                onMouseEnter={() => this.toggleHover(true)}
-                onMouseLeave={() => this.toggleHover(false)}
-                title={!isOpen ? 'אפשרויות נוספות' : null}
-                miscStyles={{
-                  paddingStart: '3rem',
-                  paddingEnd: '3rem',
-                }}
-              >
-                <PlusClose
-                  isOpen={isOpen}
-                  size={3}
-                  color={
-                    focused
-                      ? hover
-                        ? [ 'primary', ]
-                        : [ 'neutral', '-10', ]
-                      : [ 'primary', ]
+              <Query query={IS_MOUSE_STORY}>
+                {({ data: { isMouseStory, }, }) => {
+                  const buttons = [ 'zen', ];
+                  const hiddenButtons = [ 'print', ];
+                  if (!isMouseStory) {
+                    hiddenButtons.push('comments');
                   }
-                />
-              </Button>
+                  return (
+                    <React.Fragment>
+                      <ActionButtons
+                        elementName={title}
+                        elementUrl={canonicalUrl}
+                        buttons={[
+                          ...buttons,
+                          {
+                            name: 'save',
+                            buttonStyles: isArticleSaved => ({
+                              minWidth: '10rem',
+                              ...(isArticleSaved
+                                ? {
+                                    color: theme.color('neutral', '-10'),
+                                    backgroundColor: theme.color('primary'),
+                                    ':hover': {
+                                      color: theme.color('neutral', '-10'),
+                                      backgroundColor: theme.color('secondary'),
+                                    },
+                                  }
+                                : {}),
+                            }),
+                          },
+                        ]}
+                        globalButtonsStyles={{
+                          minWidth: '10rem',
+                        }}
+                        size={4}
+                      />
+                      <div
+                        ref={el => {
+                          if (el && this.state.hiddenButtonsBarWidth === -1) {
+                            this.setState({ hiddenButtonsBarWidth: el.offsetWidth, });
+                          }
+                        }}
+                      >
+                        <ActionButtons
+                          elementName={title}
+                          elementUrl={canonicalUrl}
+                          miscStyles={{
+                            width: this.state.hiddenButtonsBarWidth !== -1
+                              ? isOpen
+                                ? `${this.state.hiddenButtonsBarWidth}px`
+                                : '0'
+                              : 'auto',
+                            transitionProperty: 'width',
+                            ...theme.getDelay('transition', -1),
+                            ...theme.getDuration('transition', -1),
+                            ...theme.getTimingFunction('transition', 'linear'),
+                          }}
+                          buttons={[ ...hiddenButtons, ]}
+                          globalButtonsStyles={{
+                            minWidth: '10rem',
+                          }}
+                          size={4}
+                        />
+                      </div>
+
+                      <Button
+                        onClick={this.toggleOpen}
+                        onFocus={() => this.changeFocus(true)}
+                        onBlur={() => this.changeFocus(false)}
+                        onMouseEnter={() => this.toggleHover(true)}
+                        onMouseLeave={() => this.toggleHover(false)}
+                        title={!isOpen ? 'אפשרויות נוספות' : null}
+                        miscStyles={{
+                          paddingStart: '3rem',
+                          paddingEnd: '3rem',
+                        }}
+                      >
+                        <PlusClose
+                          isOpen={isOpen}
+                          size={3}
+                          color={focused ? (hover ? [ 'primary', ] : [ 'neutral', '-10', ]) : [ 'primary', ]}
+                        />
+                      </Button>
+                    </React.Fragment>
+                  );
+                }}
+              </Query>
             </FelaComponent>
           </div>
         )}
