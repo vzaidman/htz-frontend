@@ -85,9 +85,6 @@ export default class MobileMenuSection extends React.Component {
           <li>
             <FelaComponent
               style={theme => ({
-                borderBottomWidth: '2px',
-                borderBottomStyle: 'solid',
-                borderBottomColor: theme.color('primary', '+1'),
                 color: theme.color('neutral', '-10'),
                 display: 'flex',
                 justifyContent: 'flex-start',
