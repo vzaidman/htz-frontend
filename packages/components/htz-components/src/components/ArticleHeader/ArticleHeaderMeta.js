@@ -23,7 +23,9 @@ const PLATFORM_QUERY = gql`
 `;
 
 const outerStyle = ({ theme, miscStyles, }) => ({
-  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
+  extend: [
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
 });
 const wrapperStyle = ({ theme, miscStyles, }) => ({
   display: 'flex',
@@ -43,7 +45,10 @@ const wrapperStyle = ({ theme, miscStyles, }) => ({
       }
     ),
     theme.mq({ from: 's', }, { justifyContent: 'flex-start', }),
-    theme.mq({ from: 'l', }, { flexDirection: 'column', alignItems: 'flex-start', }),
+    theme.mq(
+      { from: 'l', },
+      { flexDirection: 'column', alignItems: 'flex-start', }
+    ),
   ],
 });
 
@@ -53,7 +58,10 @@ const timeStyle = ({ theme, mobileTime, }) => ({
   display: 'inline-block',
   extend: [
     theme.mq({ [mobileTime ? 'from' : 'until']: 'l', }, { display: 'none', }),
-    theme.mq({ from: 's', until: 'l', }, { marginInlineStart: '1rem', marginInlineEnd: '1rem', }),
+    theme.mq(
+      { from: 's', until: 'l', },
+      { marginInlineStart: '1rem', marginInlineEnd: '1rem', }
+    ),
     theme.mq({ from: 'l', }, { marginTop: '0.5rem', }),
     theme.type(-2, { fromBp: 'xl', }),
     theme.type(-2, { untilBp: 'xl', }),
@@ -63,7 +71,12 @@ const timeStyle = ({ theme, mobileTime, }) => ({
 const imageAuthorsAndMobileTimeContStyle = theme => ({
   display: 'flex',
   alignItems: 'center',
-  extend: [ theme.mq({ from: 'l', }, { flexDirection: 'column', alignItems: 'flex-start', }), ],
+  extend: [
+    theme.mq(
+      { from: 'l', },
+      { flexDirection: 'column', alignItems: 'flex-start', }
+    ),
+  ],
 });
 
 const authorsAndTimeContStyle = theme => ({
@@ -71,15 +84,18 @@ const authorsAndTimeContStyle = theme => ({
 });
 
 const alertsAndDesktopTimeContStyle = theme => ({
-  marginStart: 'auto',
   extend: [
+    theme.mq({ until: 'l', }, { marginStart: 'auto', }),
     theme.mq({ from: 'l', }, { marginTop: '1rem', }),
   ],
 });
 
 const shouldShowDate = ({ startTime, endTime, hours = 18, }) => {
   const MILISECS_IN_HOUR = 3600 * 1000;
-  return new Date(startTime).getTime() - new Date(endTime).getTime() < hours * MILISECS_IN_HOUR;
+  return (
+    new Date(startTime).getTime() - new Date(endTime).getTime() <
+    hours * MILISECS_IN_HOUR
+  );
 };
 
 const articleTimeFormat = (startTime, endTime) =>
@@ -101,22 +117,39 @@ class ArticleHeaderMeta extends React.Component {
       return null;
     }
     const format = articleTimeFormat(new Date(), modifiedDate);
-    return <Time time={modifiedDate} format={`עודכן ב-${format}`} className={className} />;
+    return (
+      <Time
+        time={modifiedDate}
+        format={`עודכן ב-${format}`}
+        className={className}
+      />
+    );
   };
 
   displayDates = (publishDate, modifiedDate, className) => {
-    if (new Date(publishDate).toDateString() === new Date(modifiedDate).toDateString()) {
-      const format = new Date().toDateString() === new Date(modifiedDate).toDateString() ? 'HH:mm' : 'DD.MM.YYYY';
+    if (
+      new Date(publishDate).toDateString() ===
+      new Date(modifiedDate).toDateString()
+    ) {
+      const format =
+        new Date().toDateString() === new Date(modifiedDate).toDateString()
+          ? 'HH:mm'
+          : 'DD.MM.YYYY';
       return (
         <Fragment>
           <Time time={modifiedDate} format={format} className={className} />
         </Fragment>
       );
     }
-    const format = new Date().toDateString() === new Date(publishDate).toDateString() ? 'HH:mm' : 'DD.MM.YYYY';
+    const format =
+      new Date().toDateString() === new Date(publishDate).toDateString()
+        ? 'HH:mm'
+        : 'DD.MM.YYYY';
     return (
       <FelaComponent
-        style={theme => ({ extend: [ theme.mq({ from: 's', until: 'l', }, { display: 'inline', }), ], })}
+        style={theme => ({
+          extend: [ theme.mq({ from: 's', until: 'l', }, { display: 'inline', }), ],
+        })}
       >
         <Time time={publishDate} format={format} className={className} />{' '}
         {this.setModifiedDate(modifiedDate, className)}
@@ -147,7 +180,13 @@ class ArticleHeaderMeta extends React.Component {
   };
 
   render() {
-    const { authors, publishDate, reportingFrom, miscStyles, modifiedDate, } = this.props;
+    const {
+      authors,
+      publishDate,
+      reportingFrom,
+      miscStyles,
+      modifiedDate,
+    } = this.props;
     return (
       <EventTracker>
         {({ biAction, }) => (
@@ -163,12 +202,17 @@ class ArticleHeaderMeta extends React.Component {
                     render={({ className, theme, }) => (
                       <Fragment>
                         <div className={className}>
-                          <FelaComponent style={imageAuthorsAndMobileTimeContStyle}>
+                          <FelaComponent
+                            style={imageAuthorsAndMobileTimeContStyle}
+                          >
                             {/*  Author image */}
                             {authors.length > 1 || !authors[0].image ? (
                               <IconAlefLogo
                                 color="primary"
-                                size={[ { until: 'l', value: 6, }, { from: 'l', value: 10, }, ]}
+                                size={[
+                                  { until: 'l', value: 6, },
+                                  { from: 'l', value: 10, },
+                                ]}
                                 miscStyles={{
                                   display: [
                                     { until: 's', value: 'inline-block', },
@@ -216,13 +260,17 @@ class ArticleHeaderMeta extends React.Component {
                               {authors.map((author, idx) => (
                                 <CreditArticle
                                   key={author.contentId || author.name}
-                                  contentName={author.name || author.contentName}
+                                  contentName={
+                                    author.name || author.contentName
+                                  }
                                   url={author.url}
                                   onClick={() =>
                                     biAction({
                                       actionCode: 109,
                                       additionalInfo: {
-                                        writer_id: author.contentId || author.contentName,
+                                        writer_id:
+                                          author.contentId ||
+                                          author.contentName,
                                         platform,
                                       },
                                     })
@@ -248,9 +296,15 @@ class ArticleHeaderMeta extends React.Component {
                                     color: theme.color('primary'),
                                     extend: [
                                       theme.type(-2, { fromBp: 'xl', }),
-                                      theme.type(-1, { fromBp: 's', untilBp: 'xl', }),
+                                      theme.type(-1, {
+                                        fromBp: 's',
+                                        untilBp: 'xl',
+                                      }),
                                       theme.type(-2, { untilBp: 's', }),
-                                      theme.mq({ from: 'l', }, { display: 'block', }),
+                                      theme.mq(
+                                        { from: 'l', },
+                                        { display: 'block', }
+                                      ),
                                       theme.mq(
                                         {
                                           until: 'l',
@@ -274,7 +328,11 @@ class ArticleHeaderMeta extends React.Component {
                                 mobileTime
                                 render={({ className, }) => (
                                   <Fragment>
-                                    {this.displayDates(publishDate, modifiedDate, className)}
+                                    {this.displayDates(
+                                      publishDate,
+                                      modifiedDate,
+                                      className
+                                    )}
                                   </Fragment>
                                 )}
                               />
@@ -282,10 +340,16 @@ class ArticleHeaderMeta extends React.Component {
                           </FelaComponent>
                           {/* alerts and desktop time */}
                           <FelaComponent style={alertsAndDesktopTimeContStyle}>
-                            {authors.length === 1 && authors[0].hasEmailAlerts ? (
+                            {authors.length === 1 &&
+                            authors[0].hasEmailAlerts ? (
                               <Alerts
                                 author={authors[0]}
-                                onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
+                                onToggle={() =>
+                                  this.toggleAuthorAlertsForm(
+                                    biAction,
+                                    platform
+                                  )
+                                }
                                 ref={this.alertsToggleBtnRef}
                               />
                             ) : null}
@@ -295,13 +359,20 @@ class ArticleHeaderMeta extends React.Component {
                             mobileTime={false}
                             render={({ className, }) => (
                               <Fragment>
-                                {this.displayDates(publishDate, modifiedDate, className)}
+                                {this.displayDates(
+                                  publishDate,
+                                  modifiedDate,
+                                  className
+                                )}
                               </Fragment>
                             )}
                           />
                         </div>
                         <SlideinBox
-                          show={authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm}
+                          show={
+                            authors[0].hasEmailAlerts &&
+                            this.state.isShowAuthorAlertsForm
+                          }
                           duration={2}
                           focus
                           maxHeight={100}
@@ -310,7 +381,9 @@ class ArticleHeaderMeta extends React.Component {
                             author={authors[0]}
                             platform={platform}
                             biAction={biAction}
-                            onCancel={() => this.toggleAuthorAlertsForm(biAction, platform)}
+                            onCancel={() =>
+                              this.toggleAuthorAlertsForm(biAction, platform)
+                            }
                           />
                         </SlideinBox>
                       </Fragment>
@@ -330,7 +403,9 @@ ArticleHeaderMeta.propTypes = {
   /**
    * An array of Article's authors
    */
-  authors: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
+  authors: PropTypes.arrayOf(
+    PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
+  ).isRequired,
   /**
    * The publishing date of the article
    */
