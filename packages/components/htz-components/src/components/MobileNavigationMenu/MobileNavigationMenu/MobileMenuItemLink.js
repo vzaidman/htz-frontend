@@ -12,19 +12,16 @@ ItemLink.propTypes = {
    * Item's destination.
    */
   url: PropTypes.string.isRequired,
-  /**
-   * A boolean if the item is in a sub-menu list. Generate automatically.
-   */
-  isSub: PropTypes.bool,
+  isHeader: PropTypes.bool,
   isSite: PropTypes.bool,
 };
 
 ItemLink.defaultProps = {
-  isSub: false,
+  isHeader: false,
   isSite: false,
 };
 
-export default function ItemLink({ name, url, isSub, isSite, }) {
+export default function ItemLink({ name, url, isHeader, isSite, }) {
   return (
     <FelaComponent
       style={theme => ({
@@ -34,14 +31,13 @@ export default function ItemLink({ name, url, isSub, isSite, }) {
         display: 'block',
         paddingBottom: '2rem',
         paddingTop: '2rem',
-        ...(isSub
+        ...(isHeader
           ? {
-              marginInlineStart: '5rem',
-            }
-          : {
               fontWeight: 'bold',
               paddingInlineStart: '2rem',
-            }),
+            }
+          : {}
+        ),
         ...(isSite
           ? {
               backgroundColor: theme.color('primary', '+1'),

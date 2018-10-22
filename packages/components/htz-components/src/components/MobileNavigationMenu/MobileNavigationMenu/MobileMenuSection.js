@@ -7,6 +7,9 @@ import MobileMenuLink from './MobileMenuItemLink';
 
 
 const typeSize = 0;
+const indentedStyle = {
+  marginInlineStart: '7rem',
+};
 
 export default class MobileMenuSection extends React.Component {
   static propTypes = {
@@ -67,11 +70,12 @@ export default class MobileMenuSection extends React.Component {
             (index < 2 || isOpen ? (
               <FelaComponent
                 style={theme => ({
+                  ...indentedStyle,
                   extend: [ theme.type(typeSize), ],
                 })}
                 render={({ className, }) => (
                   <li key={page.name} className={className} >
-                    <MobileMenuLink isSub {...page} />
+                    <MobileMenuLink {...page} />
                   </li>
                 )}
               />
@@ -88,13 +92,13 @@ export default class MobileMenuSection extends React.Component {
                 display: 'flex',
                 justifyContent: 'flex-start',
                 paddingBottom: '2rem',
-                paddingInlineStart: '5rem',
                 paddingTop: '2rem',
                 width: '100%',
                 extend: [ theme.type(typeSize - 1), ],
                 ':focus': {
                   outline: 'none',
                 },
+                ...indentedStyle,
               })}
               render={({ theme, className, }) => (
                 <button

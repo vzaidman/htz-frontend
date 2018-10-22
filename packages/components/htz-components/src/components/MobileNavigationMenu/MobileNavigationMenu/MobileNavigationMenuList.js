@@ -55,7 +55,7 @@ List.propTypes = {
 export default function List({ menuSections, searchIsOpen, }) {
   const { items, sites, promotions, } = menuSections;
   const combinedItems = items
-    ? items.map(item => <MobileMenuLink key={`item ${item.name}`} {...item} />)
+    ? items.map(item => <MobileMenuLink key={`item ${item.name}`} isHeader {...item} />)
     : [];
 
   const combinedSites = theme =>
