@@ -9,6 +9,14 @@ services:
     image: 'nexus-ng.themarker.com/htz-graphql:${version:-latest}'
     ports:
       - 5201:5201
+    deploy:
+            replicas: 5
+            update_config:
+              parallelism: 5
+              delay: 30s
+              order: start-first
+            restart_policy:
+              condition: on-failure
     command: ['yarn', 'workspace', '@haaretz/haaretz.co.il', 'start:gql']
     environment:
       - NODE_ENV=production
