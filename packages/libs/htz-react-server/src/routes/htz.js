@@ -1,5 +1,4 @@
-import { createLogger, htzPageTypes, } from '@haaretz/app-utils';
-
+import { createLogger, } from '@haaretz/app-utils';
 import path from 'path';
 
 export default function htz(app, server, DEV) {
@@ -50,22 +49,12 @@ export default function htz(app, server, DEV) {
       path: req.params[0],
     };
     console.log('path from htz routing ', req.path);
-    let isRoutFound = 0;
-    Object.keys(htzPageTypes).filter(type => type !== 'DEFAULT').map(type => {
-      if (req.path.indexOf(`${type}-`) >= 0) {
-        const pageLink = `/${type.toLowwerCase()}Article`;
-        console.log(`found ${type}, rendering ${pageLink} page`);
-        query.type = type;
-        app.render(req, res, pageLink, query);
-        isRoutFound = 1;
-      }
-      return type;
-    });
 
-    if (!isRoutFound) {
-      console.log('rendering standardArticle');
-      return app.render(req, res, '/standardArticle', query);
+    if (req.path.indexOf('RECIPE-') >= 0) {
+      console.log('found recipe, rendering recipe page');
+      return app.render(req, res, '/recipeArticle', query);
     }
-    return null;
+    console.log('rendering standardArticle');
+    return app.render(req, res, '/standardArticle', query);
   });
 }

@@ -5,7 +5,6 @@ import {
   GraphQLString,
   GraphQLID,
 } from 'graphql';
-import ArticleBody from './article_body_type';
 
 import ImageType from './image_type';
 
@@ -19,7 +18,6 @@ const AuthorObj = new GraphQLObjectType({
     email: { type: GraphQLString, },
     facebook: { type: GraphQLString, },
     gplus: { type: GraphQLString, },
-    biography: { type: ArticleBody, },
     hasEmailAlerts: { type: GraphQLBoolean, },
     hasPushAlerts: { type: GraphQLBoolean, },
     inputTemplate: { type: GraphQLString, },
