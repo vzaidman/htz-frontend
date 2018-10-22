@@ -32,7 +32,7 @@ export default class MobileNavigationMain extends React.Component {
       <FelaComponent
         style={theme => ({
           display: 'flex',
-          height: '8rem',
+          height: '9rem',
           backgroundColor: theme.color('neutral', '-10'),
           borderTopColor: theme.color('neutral', '-5'),
           borderTopStyle: 'solid',
