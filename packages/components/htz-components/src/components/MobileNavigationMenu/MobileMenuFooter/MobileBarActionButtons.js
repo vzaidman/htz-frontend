@@ -16,6 +16,8 @@ const actionBarData = gql`
   }
 `;
 
+const iconSize = 5;
+
 export default class MobileBarActionButtons extends React.Component {
   static propTypes = {
     /**
@@ -59,7 +61,7 @@ export default class MobileBarActionButtons extends React.Component {
                         <ActionButtons
                           elementUrl={articleUrl}
                           isFlat
-                          size={4}
+                          size={iconSize}
                           buttons={{
                             name: 'facebook',
                             iconStyles: {
@@ -70,7 +72,7 @@ export default class MobileBarActionButtons extends React.Component {
                         <ActionButtons
                           elementUrl={articleUrl}
                           isFlat
-                          size={4}
+                          size={iconSize}
                           buttons={{
                             name: 'whatsapp',
                             iconStyles: {
@@ -80,7 +82,7 @@ export default class MobileBarActionButtons extends React.Component {
                         />
                         <ActionButtons
                           isFlat
-                          size={4}
+                          size={iconSize}
                           buttons={{
                             name: 'save',
                             buttonStyles: isArticleSaved => ({
@@ -117,7 +119,7 @@ export default class MobileBarActionButtons extends React.Component {
                       }}
                     >
                       <PlusClose
-                        size={3}
+                        size={(iconSize / 2) + 1}
                         color={shareIsOpen ? 'white' : 'primary'}
                         isOpen={shareIsOpen}
                       />
