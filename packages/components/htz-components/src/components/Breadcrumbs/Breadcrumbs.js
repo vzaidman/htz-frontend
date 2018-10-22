@@ -48,7 +48,7 @@ const ColoredLink = ({ crumb, }) => (
       ...commonStyle(theme),
       color: theme.color('primary', 'base'),
       ':hover': {
-        color: theme.color('neutral', '-1'),
+        color: theme.color('primary', '+1'),
         textDecoration: 'underline',
         underlineSkip: 'ink',
       },
@@ -117,6 +117,17 @@ class Breadcrumbs extends React.Component {
                               {
                                 // hide every item but the last
                                 '&:not(:last-child)': { display: 'none', },
+                              }
+                            ),
+                            theme.mq(
+                              { from: 's', },
+                              {
+                                ':last-child > *': {
+                                  color: theme.color('neutral', '-2'),
+                                  ':hover': {
+                                    color: theme.color('neutral', '-1'),
+                                  },
+                                },
                               }
                             ),
                           ],
