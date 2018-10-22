@@ -5,6 +5,9 @@ import { FelaComponent, } from 'react-fela';
 import FlippingArrow from '../../Animations/FlippingArrow';
 import MobileMenuLink from './MobileMenuItemLink';
 
+
+const typeSize = 0;
+
 export default class MobileMenuSection extends React.Component {
   static propTypes = {
     /**
@@ -62,9 +65,16 @@ export default class MobileMenuSection extends React.Component {
         {pages.map(
           (page, index) =>
             (index < 2 || isOpen ? (
-              <li key={page.name}>
-                <MobileMenuLink isSub {...page} />
-              </li>
+              <FelaComponent
+                style={theme => ({
+                  extend: [ theme.type(typeSize), ],
+                })}
+                render={({ className, }) => (
+                  <li key={page.name} className={className} >
+                    <MobileMenuLink isSub {...page} />
+                  </li>
+                )}
+              />
             ) : null)
         )}
         {pages.length > 2 ? (
@@ -81,7 +91,7 @@ export default class MobileMenuSection extends React.Component {
                 paddingInlineStart: '5rem',
                 paddingTop: '2rem',
                 width: '100%',
-                extend: [ theme.type(-2), ],
+                extend: [ theme.type(typeSize - 1), ],
                 ':focus': {
                   outline: 'none',
                 },
