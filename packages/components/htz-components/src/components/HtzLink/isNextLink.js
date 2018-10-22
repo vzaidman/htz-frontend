@@ -10,9 +10,8 @@ const homepagePattern = '(^\\/(\\?.*)?$)';
 const offersPattern =
   '(\\/promotions-page\\/(product|price|login|method|payment|thankYou|debt|stage\\d))';
 
-const NonReactArticleTypes = Object.keys(htzPageTypes).filter(type => htzPageTypes[type]).map(type => `(${type}-)`);
 
-const NonReactArticleTypes1 = Object.keys(htzPageTypes).filter(articleType => !articleType).map(articleType => `(${articleType.toUpperCase()}-)`);
+const NonReactArticleTypes = Object.keys(htzPageTypes).filter(articleType => !htzPageTypes[articleType]).map(articleType => `(${articleType.toUpperCase()}-)`);
 
 const nonReactSections = [
   '(\\/article-print-page)',

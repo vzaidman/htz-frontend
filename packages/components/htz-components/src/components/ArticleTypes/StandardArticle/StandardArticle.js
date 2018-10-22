@@ -45,8 +45,6 @@ function StandardArticle({ articleId, slots, currentType, }) {
               obTitle,
             },
           } = data.page;
-          console.log('!!!!21313 article: ', article);
-
 
           const { contentId, imgArray, aspects, } = ogImage || {};
           const ogImageUrl = ogImage
