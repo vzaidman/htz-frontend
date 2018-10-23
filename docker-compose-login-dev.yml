@@ -1,0 +1,29 @@
+docker-compose-login-version: '3.3'
+services:
+  htz_login_react:
+    hostname: htz-login-app
+    build:
+      context: .
+      dockerfile: Dockerfile-login
+      args:
+        NEXT_BUILD_ID: ${version:-latest}
+    image: 'nexus-ng.themarker.com/htz-promotions-app:${version:-latest}'
+    ports:
+      - 2010:3000
+    environment:
+      - NODE_ENV=dev
+      - CONNECTION_PRESET=dev
+      - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
+      # the following environment is optional
+      - PORT=2004
+      - BIND_ADDRESS=login
+      - HOSTNAME=login
+      - GRAPHQL_USE_SSL=true
+      - GRAPHQL_EXPOSE_PORT=false
+
+    networks:
+      - development
+
+networks:
+  development:
+    external: true
