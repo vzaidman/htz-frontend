@@ -7,11 +7,12 @@ export default {
     [ '-phoneMailSent2', '/phoneMailSent2', ],
     [ '-customerService', '/customerService', ],
     [ '-register', '/register', ],
-    [ '-emailValidation', '/emailValidation', ],
-    [ '-emailValidation2', '/emailValidation2', ],
+    [ '-emailValidation', '/emailValidationSent', ],
+    [ '-emailValidation2', '/emailValidationSent2', ],
     [ '-passwordError', '/passwordError', ],
     [ '-passwordReminder', '/passwordReminder', ],
     [ '-passwordReminderSent', '/passwordReminderSent', ],
+    [ '-loginForms', '/loginForms', ],
     [ '-success', '/', ],
   ]),
   loginForms: {
@@ -30,7 +31,7 @@ export default {
     accept: 'loginForms',
   },
   register: {
-    accept: 'success',
-    withPassword: 'loginForms',
+    success: 'emailValidationSent',
+    backToLogin: 'loginForms',
   },
 };
