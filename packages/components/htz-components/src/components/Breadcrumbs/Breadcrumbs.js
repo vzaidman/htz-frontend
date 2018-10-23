@@ -122,7 +122,7 @@ class Breadcrumbs extends React.Component {
                             theme.mq(
                               { from: 's', },
                               {
-                                ':last-child > *': {
+                                ':nth-child(3n) > *': {
                                   color: theme.color('neutral', '-2'),
                                   ':hover': {
                                     color: theme.color('neutral', '-1'),
