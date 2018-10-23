@@ -55,7 +55,7 @@ const Styles = {
         '>input': {
           display: 'none',
         },
-        '>label': {
+        '>label, a': {
           display: 'block',
           marginTop: '0 !important',
           lineHeight: '37px',
@@ -82,7 +82,7 @@ const Styles = {
       '> h4': {
         textAlign: 'center',
         fontSize: '2.3rem',
-      }
+      },
     }),
   },
 
@@ -97,8 +97,10 @@ const Styles = {
       padding: '23px 0 0 0',
     }),
 
-    loginFooterWrapper: () => ({
-      flexShrink: '0',
+    footerWrapper: () => ({
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       width: '100%',
       height: '315px',
       marginTop: '55px',
@@ -107,6 +109,21 @@ const Styles = {
 
       '@media (max-width: 768px)': {
         height: '150px',
+      },
+    }),
+    footerContentHolder: () => ({
+      display: 'flex',
+      width: '1263px',
+      flexWrap: 'wrap',
+
+      '> div': {
+        display: 'flex',
+        alignItems: 'center',
+        width: '100%',
+        padding: '14px 0',
+        '&:first-child': {
+          borderBottom: '1px solid #fff',
+        },
       },
     }),
   },
@@ -132,7 +149,17 @@ const Styles = {
       fontSize: '2rem',
       '>h5': {
         margin: '0 auto',
-      }
+      },
+    }),
+    errorBoxStyle: () => ({
+      maxWidth: '90%',
+      marginTop: '2rem',
+      fontWeight: 'bold',
+      fontSize: '2rem',
+      color: '#a8001c',
+      '&.hidden': {
+        display: 'none',
+      },
     }),
   },
 
@@ -175,7 +202,7 @@ const Styles = {
         backgroundImage: 'url(../../static/images/close.png)',
       },
     }),
-  }
+  },
 };
 
 // Components ------------------------------------------
@@ -189,19 +216,21 @@ const LoginContentStyles = {
 
 const LoginGeneralLayoutStyles = {
   HeaderWrapper: createComponent(Styles.GeneralLayout.loginHeaderWrapper),
-  FooterWrapper: createComponent(Styles.GeneralLayout.loginFooterWrapper),
+  FooterWrapper: createComponent(Styles.GeneralLayout.footerWrapper),
+  FooterContentHolder: createComponent(Styles.GeneralLayout.footerContentHolder),
 };
 
 const LoginMiscLayoutStyles = {
   InputLinkButton: createComponent(Styles.MiscLayout.inputLinkButton),
   TextBox: createComponent(Styles.MiscLayout.textBoxStyle),
+  ErrorBox: createComponent(Styles.MiscLayout.errorBoxStyle),
 };
 
 const LoginDialogBox = {
   DialogWrapper: createComponent(Styles.Dialog.dialogWrapperStyle),
   DialogContent: createComponent(Styles.Dialog.dialogContentStyle),
   CloseButton: createComponent(Styles.Dialog.closeButtonStyle),
-}
+};
 
 // Export ----------------------------------------------
 export { LoginContentStyles, LoginGeneralLayoutStyles, LoginMiscLayoutStyles, LoginDialogBox, };
