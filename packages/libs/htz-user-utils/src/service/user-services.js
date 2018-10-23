@@ -250,6 +250,14 @@ export default function UserService(config = {}) {
     gRecaptchaResponse,
     user,
   }) {
+    let anonymousId;
+    if (!user) {
+      const factory = new UserFactory();
+      anonymousId = factory.build().anonymousId;
+    }
+    else {
+      anonymousId = user.anonymousId;
+    }
     const siteConfig = createSiteConfig();
     const serviceUrl = `${siteConfig.newSsoDomain}/registerUrlEncoded`;
     const params =
@@ -264,6 +272,7 @@ export default function UserService(config = {}) {
       `&mobilePrefix=${mobilePrefix}` +
       `&mobileNumber=${mobileNumber}` +
       `&termsChk=${termsChk ? 'on' : 'off'}` +
+      `&anonymousId=${anonymousId}` +
       `&g-recaptcha-response=${gRecaptchaResponse}`;
 
     const registerPromise = new Promise((resolve, reject) =>

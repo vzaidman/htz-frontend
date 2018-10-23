@@ -31,16 +31,13 @@ export default [
       getCustomerService: 'customerService',
       withPassword: 'loginForms',
     },
-    emailValidation: {
-      sendAgain: 'emailValidation2',
+    emailValidationSent: {
+      sendAgain: 'emailValidationSent2',
       registration: 'register',
     },
-    emailValidation2: {
+    emailValidationSent2: {
       getCustomerService: 'customerService',
       withPassword: 'loginForms',
-    },
-    register: {
-      backToLogin: 'loginForms',
     },
   },
   {
@@ -67,6 +64,11 @@ export default [
     flowNumber: 3,
     initialState: 'emailValidationSent',
     initialTransition: '/emailValidationSent',
+    transitionRouteMap: new Map([
+      [ 'otpValidation-loginForms', { url: '/loginForms', param: 1, } ],
+      [ '-emailValidationSent', '/emailValidationSent' ],
+      [ '-emailValidationSent2', '/emailValidationSent2' ],
+    ]),
     emailValidationSent: {
       sendAgain: 'emailValidationSent2',
       notRegistered: 'register',

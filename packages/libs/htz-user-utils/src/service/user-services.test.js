@@ -93,6 +93,7 @@ describe('UserFactory CookieBased Module', () => {
         mobilePrefix: '055',
         mobileNumber: '55555555',
         termsChk: true,
+        anonymousId: '65465465462136',
         gRecaptchaResponse: 'something',
         user: undefined,
       };
