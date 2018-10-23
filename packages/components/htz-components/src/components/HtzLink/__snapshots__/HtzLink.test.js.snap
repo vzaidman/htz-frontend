@@ -20,7 +20,7 @@ exports[`Link within paragraph component  1`] = `
 Object {
   "component": <div>
     <a
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
       href="http://www.iflscience.com/physics/new-type-of-bizarre-quantum-material-discovered/"
       onClick={null}
       target="_blank"
@@ -28,7 +28,7 @@ Object {
       <span>
         New Type Of 
         <strong
-          className="htz-o"
+          className="htz-p"
         >
           Bizarre Quantum Material
         </strong>
@@ -36,7 +36,7 @@ Object {
       </span>
     </a>
   </div>,
-  "styles": ".htz-a{color:#0B7EB5}.htz-b:visited{color:#0B7EB5}.htz-c:hover{color:#0B7EB5}.htz-d:hover{border-bottom-color:#0B7EB5}.htz-e:hover{border-bottom-width:1px}.htz-f:hover{border-bottom-style:solid}.htz-g:focus{color:#0B7EB5}.htz-h:focus{border-bottom-color:#0B7EB5}.htz-i:focus{border-bottom-width:1px}.htz-j:focus{border-bottom-style:solid}.htz-k:active{color:#0B7EB5}.htz-l:active{border-bottom-color:#0B7EB5}.htz-m:active{border-bottom-width:2px}.htz-n:active{border-bottom-style:solid}.htz-o{font-weight:700}",
+  "styles": ".htz-a{border-bottom-color:#0B7EB5}.htz-b{border-bottom-width:1px}.htz-c{border-bottom-style:solid}.htz-d{transition-property:all}.htz-e{transition-duration:.25s}.htz-f{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-g:visited{color:#2D2D2D}.htz-h:hover{color:#0B7EB5}.htz-i:hover{border-bottom-color:transparent}.htz-j:focus{color:#0B7EB5}.htz-k:focus{border-bottom-color:#0B7EB5}.htz-l:active{color:#0B7EB5}.htz-m:active{border-bottom-color:#0B7EB5}.htz-n{-webkit-transition-property:all}.htz-o{-moz-transition-property:all}.htz-p{font-weight:700}",
 }
 `;
 

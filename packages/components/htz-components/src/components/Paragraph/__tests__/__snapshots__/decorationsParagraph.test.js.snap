@@ -20,7 +20,7 @@ Object {
       </em>
       . כלומר, הזיכרון המושלם שקנאוסגורד מפגין מולנו כבר שלושה כרכים פגום. אבל הוא לא רק פגום, הוא הפגם עצמו. הוא היסוד לכל מה שמושחת, הוא התשוקה לשכוח. המאבק שלי, המאבק של קנאוסגורד, הוא הניסיון לנקז את הנורא מכל שהתגלה במצבור שופע בנפשו במהלך החקירה הזאת. 
       <a
-        className="htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w"
+        className="htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
         href="https://www.haaretz.co.il/literature/prose/.premium-REVIEW-1.4740317"
         onClick={null}
         target="_blank"
@@ -30,6 +30,6 @@ Object {
        כדי לא להיות היחיד שנושא בעול הזה: להיות הריאקציה למהפכת השוויון, ריאקציה שחותרת למחנה השמדה.
     </p>
   </div>,
-  "styles": ".htz-a{margin-bottom:3rem}.htz-f{text-decoration:underline}.htz-g{-webkit-text-decoration-skip:ink}.htz-h{text-decoration-skip:ink}.htz-i{font-style:italic}.htz-j{color:#0B7EB5}.htz-k:visited{color:#0B7EB5}.htz-l:hover{color:#0B7EB5}.htz-m:hover{border-bottom-color:#0B7EB5}.htz-n:hover{border-bottom-width:1px}.htz-o:hover{border-bottom-style:solid}.htz-p:focus{color:#0B7EB5}.htz-q:focus{border-bottom-color:#0B7EB5}.htz-r:focus{border-bottom-width:1px}.htz-s:focus{border-bottom-style:solid}.htz-t:active{color:#0B7EB5}.htz-u:active{border-bottom-color:#0B7EB5}.htz-v:active{border-bottom-width:2px}.htz-w:active{border-bottom-style:solid}@media (max-width: 79.9375em){.htz-b{font-size:3rem}.htz-c{line-height:5rem}}@media (min-width: 80em){.htz-d{font-size:2.5714285714285716rem}.htz-e{line-height:5rem}}",
+  "styles": ".htz-a{margin-bottom:3rem}.htz-f{text-decoration:underline}.htz-g{-webkit-text-decoration-skip:ink}.htz-h{text-decoration-skip:ink}.htz-i{font-style:italic}.htz-j{border-bottom-color:#0B7EB5}.htz-k{border-bottom-width:1px}.htz-l{border-bottom-style:solid}.htz-m{transition-property:all}.htz-n{transition-duration:.25s}.htz-o{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-p:visited{color:#2D2D2D}.htz-q:hover{color:#0B7EB5}.htz-r:hover{border-bottom-color:transparent}.htz-s:focus{color:#0B7EB5}.htz-t:focus{border-bottom-color:#0B7EB5}.htz-u:active{color:#0B7EB5}.htz-v:active{border-bottom-color:#0B7EB5}.htz-w{-webkit-transition-property:all}.htz-x{-moz-transition-property:all}@media (max-width: 79.9375em){.htz-b{font-size:3rem}.htz-c{line-height:5rem}}@media (min-width: 80em){.htz-d{font-size:2.5714285714285716rem}.htz-e{line-height:5rem}}",
 }
 `;

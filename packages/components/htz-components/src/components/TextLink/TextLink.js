@@ -9,33 +9,30 @@ const inlineLinkStyle = ({
   theme: { color, articleStyle, },
   theme,
   miscStyles,
-}) => ({
-  color: color('link', 'base'),
-  ':hover': {
+}) => {
+  const focusActiveStyles = {
     color: color('link', 'base'),
+    borderBottomColor: color('link', 'base'),
+  };
+  return {
     borderBottomColor: color('link', 'base'),
     borderBottomWidth: articleStyle.paragraphLink.borderBottomWidth,
     borderBottomStyle: articleStyle.paragraphLink.borderBottomStyle,
-  },
-  ':focus': {
-    color: color('link', 'base'),
-    borderBottomColor: color('link', 'base'),
-    borderBottomWidth: articleStyle.paragraphLink.borderBottomWidth,
-    borderBottomStyle: articleStyle.paragraphLink.borderBottomStyle,
-  },
-  ':active': {
-    color: color('link', 'base'),
-    borderBottomColor: color('link', 'base'),
-    borderBottomWidth: articleStyle.paragraphLink.borderBottomWidthActive,
-    borderBottomStyle: articleStyle.paragraphLink.borderBottomStyle,
-  },
-  ':visited': {
-    color: color('link', 'base'),
-  },
-  extend: [
-    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-  ],
-});
+    transitionProperty: 'all',
+
+    ':hover': {
+      ...focusActiveStyles,
+      borderBottomColor: 'transparent',
+    },
+    ':focus': focusActiveStyles,
+    ':active': focusActiveStyles,
+    ':visited': { color: color('bodyText', 'base'), },
+    extend: [
+      theme.getTransition(0, 'swiftOut'),
+      ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+    ],
+  };
+};
 
 TextLink.propTypes = {
   /** The HTML tag to render the `<Button />` as */

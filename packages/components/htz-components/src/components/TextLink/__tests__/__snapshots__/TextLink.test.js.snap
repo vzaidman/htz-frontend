@@ -3,19 +3,19 @@
 exports[`<TextLink> DOM element renders correctly with cusom tagName , 1`] = `
 <div>
   <button
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
   >
     I am a button
   </button>
 </div>
 `;
 
-exports[`<TextLink> DOM element renders correctly with cusom tagName , 2`] = `".htz-a{color:#0B7EB5}.htz-b:visited{color:#0B7EB5}.htz-c:hover{color:#0B7EB5}.htz-d:hover{border-bottom-color:#0B7EB5}.htz-e:hover{border-bottom-width:1px}.htz-f:hover{border-bottom-style:solid}.htz-g:focus{color:#0B7EB5}.htz-h:focus{border-bottom-color:#0B7EB5}.htz-i:focus{border-bottom-width:1px}.htz-j:focus{border-bottom-style:solid}.htz-k:active{color:#0B7EB5}.htz-l:active{border-bottom-color:#0B7EB5}.htz-m:active{border-bottom-width:2px}.htz-n:active{border-bottom-style:solid}"`;
+exports[`<TextLink> DOM element renders correctly with cusom tagName , 2`] = `".htz-a{border-bottom-color:#0B7EB5}.htz-b{border-bottom-width:1px}.htz-c{border-bottom-style:solid}.htz-d{transition-property:all}.htz-e{transition-duration:.25s}.htz-f{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-g:visited{color:#2D2D2D}.htz-h:hover{color:#0B7EB5}.htz-i:hover{border-bottom-color:transparent}.htz-j:focus{color:#0B7EB5}.htz-k:focus{border-bottom-color:#0B7EB5}.htz-l:active{color:#0B7EB5}.htz-m:active{border-bottom-color:#0B7EB5}.htz-n{-webkit-transition-property:all}.htz-o{-moz-transition-property:all}"`;
 
 exports[`<TextLink> DOM element renders correctly with minimal required props 1`] = `
 <div>
   <a
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
     href="test.com"
     onClick={null}
   >
@@ -24,12 +24,12 @@ exports[`<TextLink> DOM element renders correctly with minimal required props 1`
 </div>
 `;
 
-exports[`<TextLink> DOM element renders correctly with minimal required props 2`] = `".htz-a{color:#0B7EB5}.htz-b:visited{color:#0B7EB5}.htz-c:hover{color:#0B7EB5}.htz-d:hover{border-bottom-color:#0B7EB5}.htz-e:hover{border-bottom-width:1px}.htz-f:hover{border-bottom-style:solid}.htz-g:focus{color:#0B7EB5}.htz-h:focus{border-bottom-color:#0B7EB5}.htz-i:focus{border-bottom-width:1px}.htz-j:focus{border-bottom-style:solid}.htz-k:active{color:#0B7EB5}.htz-l:active{border-bottom-color:#0B7EB5}.htz-m:active{border-bottom-width:2px}.htz-n:active{border-bottom-style:solid}"`;
+exports[`<TextLink> DOM element renders correctly with minimal required props 2`] = `".htz-a{border-bottom-color:#0B7EB5}.htz-b{border-bottom-width:1px}.htz-c{border-bottom-style:solid}.htz-d{transition-property:all}.htz-e{transition-duration:.25s}.htz-f{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-g:visited{color:#2D2D2D}.htz-h:hover{color:#0B7EB5}.htz-i:hover{border-bottom-color:transparent}.htz-j:focus{color:#0B7EB5}.htz-k:focus{border-bottom-color:#0B7EB5}.htz-l:active{color:#0B7EB5}.htz-m:active{border-bottom-color:#0B7EB5}.htz-n{-webkit-transition-property:all}.htz-o{-moz-transition-property:all}"`;
 
 exports[`<TextLink> DOM element renders correctly with miscStyles , 1`] = `
 <div>
   <a
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p"
     href="test.com"
     onClick={null}
   >
@@ -38,4 +38,4 @@ exports[`<TextLink> DOM element renders correctly with miscStyles , 1`] = `
 </div>
 `;
 
-exports[`<TextLink> DOM element renders correctly with miscStyles , 2`] = `".htz-a{color:blue}.htz-b:visited{color:#0B7EB5}.htz-c:hover{color:#0B7EB5}.htz-d:hover{border-bottom-color:#0B7EB5}.htz-e:hover{border-bottom-width:1px}.htz-f:hover{border-bottom-style:solid}.htz-g:focus{color:#0B7EB5}.htz-h:focus{border-bottom-color:#0B7EB5}.htz-i:focus{border-bottom-width:1px}.htz-j:focus{border-bottom-style:solid}.htz-k:active{color:#0B7EB5}.htz-l:active{border-bottom-color:#0B7EB5}.htz-m:active{border-bottom-width:2px}.htz-n:active{border-bottom-style:solid}"`;
+exports[`<TextLink> DOM element renders correctly with miscStyles , 2`] = `".htz-a{border-bottom-color:#0B7EB5}.htz-b{border-bottom-width:1px}.htz-c{border-bottom-style:solid}.htz-d{transition-property:all}.htz-e{transition-duration:.25s}.htz-f{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-g{color:blue}.htz-h:visited{color:#2D2D2D}.htz-i:hover{color:#0B7EB5}.htz-j:hover{border-bottom-color:transparent}.htz-k:focus{color:#0B7EB5}.htz-l:focus{border-bottom-color:#0B7EB5}.htz-m:active{color:#0B7EB5}.htz-n:active{border-bottom-color:#0B7EB5}.htz-o{-webkit-transition-property:all}.htz-p{-moz-transition-property:all}"`;
