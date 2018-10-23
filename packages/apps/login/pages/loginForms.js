@@ -20,10 +20,11 @@ import TabsFrame from '../components/Misc/TabsFrame';
 import LoginDialog from '../components/Misc/LoginDialog';
 import { getMetadataFromApollo, } from './queryutil/flowUtil';
 import GET_HOST from './queries/GetHost';
+import { getFlowNumber } from '../components/FlowDispenser/flowStorage';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
-const { InputLinkButton, } = LoginMiscLayoutStyles;
+const { InputLinkButton, ErrorBox, } = LoginMiscLayoutStyles;
 // --------------------------
 
 // Methods -------------------
@@ -47,13 +48,22 @@ const validatePasswordInput = ({ password, }) =>
       ? generatePasswordError('אנא הזינו סיסמה תקינה')
       : []); // email is valid
 
-const onSubmit = ({ login, host, }) => ({ email, password, }) => {
+const onSubmit = ({ login, host, }, showErrorHandler, hideErrorHandler,) => ({ email, password, }) => {
+  hideErrorHandler();
   login(email, password)
     .then(
-      () => window.location = `https://www.${host}`,
-      reason => console.log(`login failed: ${reason}`)
+      () => {
+        window.location = `https://www.${host}`
+      },
+      reason => {
+        showErrorHandler("אירעה שגיאה, אנא נסה שנית");
+      }
     );
 };
+
+const isLink = (client) => {
+  return "2345".includes(getFlowNumber(client)) ? "phoneInput" : null;
+}
 
 const valdiateForm = ({ email, password, }) => {
   let errors = [];
@@ -79,6 +89,8 @@ const sendAgain = e => {
 class LoginForms extends Component {
   state = {
     showDialog: false,
+    showError: false,
+    errorMessage: "",
   }
 
   showDialog = () => {
@@ -91,6 +103,14 @@ class LoginForms extends Component {
 
   getDialogState = () => {
     return this.state.showDialog;
+  }
+
+  showError = (errorMsg) => {
+    this.setState({ showError: true, errorMessage: errorMsg, });
+  }
+
+  hideError = () => {
+    this.setState({ showError: false, errorMessage: "", });
   }
 
   render() {
@@ -162,7 +182,7 @@ class LoginForms extends Component {
                           </LoginDialog>
 
                           {/* ----------------- Tabs Frame ----------------- */}
-                          <TabsFrame activeTab={parseInt(getMetadataFromApollo(client), 10)}>
+                          <TabsFrame activeTab={parseInt(getMetadataFromApollo(client), 10)} isLink={[isLink(client)]}>
                             {/* TAB 1 */}
                             <div tabname="כניסה באמצעות SMS">
                               <ItemCenterer>
@@ -224,7 +244,7 @@ class LoginForms extends Component {
                                     clearFormAfterSubmit={false}
                                     // initialValues={{ email: 'insert email' }}
                                     validate={valdiateForm}
-                                    onSubmit={onSubmit({ login, host, })}
+                                    onSubmit={onSubmit({ login, host, }, this.showError, this.hideError,)}
                                     render={({ getInputProps, handleSubmit, clearForm, }) => (
                                       <Fragment>
                                         <div>
@@ -270,6 +290,13 @@ class LoginForms extends Component {
                                             </button>
                                           </InputLinkButton>
                                         </div>
+
+                                        <ErrorBox className={this.state.showError ? "" : "hidden"}>
+                                          <span>
+                                            {this.state.errorMessage}
+                                          </span>
+                                        </ErrorBox>
+
                                         <ItemCenterer>
                                           <Button onClick={handleSubmit}>התחברות</Button>
                                         </ItemCenterer>
