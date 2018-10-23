@@ -73,9 +73,10 @@ const Item = ({ title, image, path, listId, index, biAction, listLength, }) => (
         miscStyles={{
           ...listItemStyle,
           marginTop: index ? '1rem' : undefined,
-          ...(index > listLength
-            ? {}
-            : { borderBottom: [ '1px', '1', 'solid', theme.color('neutral', '-4'), ], }
+          ...(index < listLength - 1
+            // place separators only between items
+            ? { borderBottom: [ '1px', '1', 'solid', theme.color('neutral', '-4'), ], }
+            : {}
           ),
         }}
         href={path}
@@ -141,6 +142,9 @@ const Item = ({ title, image, path, listId, index, biAction, listLength, }) => (
 // eslint-disable-next-line react/prop-types
 const Zoidberg = ({ list, lazyLoad, biAction, listId, }) => {
   const { title, items, } = list;
+  const stdItemsLength = items.length && items.filter(item =>
+    [ 'com.polobase.ClickTrackerBannersWrapper', 'com.polobase.DfpBannerElement', ].includes(item.inputTemplate) === false
+  ).length;
   return (
     <FelaComponent
       style={{
@@ -181,7 +185,7 @@ const Zoidberg = ({ list, lazyLoad, biAction, listId, }) => {
                 />
               ) : null
             ) : (
-              <Item {...item} index={index} biAction={biAction} listId={listId} listLength={items.length}/>
+              <Item {...item} index={index} biAction={biAction} listId={listId} listLength={stdItemsLength} />
             )}
           </ListItem>
         ))}
