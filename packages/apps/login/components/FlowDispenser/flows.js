@@ -5,7 +5,8 @@ export default [
     initialState: 'otpValidation',
     initialTransition: '/otpValidation',
     transitionRouteMap: new Map([
-      [ '-loginForms', { url: '/loginForms', param: 0 } ],
+      [ '-loginForms', { url: '/loginForms', param: 0, } ],
+      [ 'otpValidation-loginForms', { url: '/loginForms', param: 1, } ],
     ]),
     otpValidation: {
       sendAgain: 'otpValidation2',
@@ -75,11 +76,25 @@ export default [
     },
   },
   {
-    // TODO complete flows
     flowNumber: 4,
+    initialState: 'register',
+    initialTransition: '/register',
+    emailValidationSent: {
+      sendAgain: 'emailValidationSent2',
+      notRegistered: 'register',
+    },
+    emailValidationSent2: {
+      getCustomerService: 'customerService',
+    },
   },
   {
+    // TODO complete flows
     flowNumber: 5,
+    initialState: 'loginForms',
+    initialTransition: { url: '/loginForms', param: 1 },
+    transitionRouteMap: new Map([
+      [ '-loginForms', { url: '/loginForms', param: 1 } ]
+    ]),
   },
   {
     flowNumber: 6,
