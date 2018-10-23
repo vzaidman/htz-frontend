@@ -84,6 +84,7 @@ export default function List({ menuSections, searchIsOpen, }) {
             style={theme => ({
               color: theme.color('neutral', '-10'),
               ...(searchIsOpen ? { visibility: 'hidden', } : {}),
+              textIndent: '2rem',
             })}
             render={({ className, }) => (
               <Fragment>

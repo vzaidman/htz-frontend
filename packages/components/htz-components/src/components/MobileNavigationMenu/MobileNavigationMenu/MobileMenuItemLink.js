@@ -34,7 +34,6 @@ export default function ItemLink({ name, url, isHeader, isSite, }) {
         ...(isHeader
           ? {
               fontWeight: 'bold',
-              paddingInlineStart: '2rem',
             }
           : {}
         ),
