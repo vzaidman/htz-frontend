@@ -1,10 +1,11 @@
-import React, { Fragment, } from 'react';
+import React, { Fragment, Component, } from 'react';
 import Router from 'next/router';
 
-import { HtzLink, } from '@haaretz/htz-components';
-import FSMLayout from '../layouts/FSMLayout';
+import { HtzLink, Register, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
 
-import { Form, TextInput, Button, CheckBox } from '@haaretz/htz-components';
+// import { mobileNumberParser, } from '@haaretz/htz-user-utils';
+
+import FSMLayout from '../layouts/FSMLayout';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import isEmail from 'validator/lib/isEmail';
 import theme from '../theme';
@@ -59,11 +60,11 @@ const validateFirstNameInput = ({ firstname, }) =>
       : []); // name is valid
 
 const validateLastNameInput = ({ lastname, }) =>
-(!lastname
-  ? generateLastNameError('אנא הזינו שם משפחה')
-  : !isName(lastname)
-    ? generateLastNameError('אנא הזינו שם תקין')
-    : []); // name is valid
+  (!lastname
+    ? generateLastNameError('אנא הזינו שם משפחה')
+    : !isName(lastname)
+      ? generateLastNameError('אנא הזינו שם תקין')
+      : []); // name is valid
 
 const validateEmailInput = ({ email, }) =>
   (!email
@@ -79,45 +80,30 @@ const validatePasswordInput = ({ password, }) =>
       ? generatePasswordError('אנא הזינו סיסמה תקינה')
       : []); // password is valid
 
-const validateTermsInput = ( {terms} ) =>
-  (!terms
-    ? generateTermsError('יש לאשר את תנאי השימוש באתר')
-    : !isChecked(terms)
-      ? generateTermsError('יש לאשר את תנאי השימוש באתר')
-      : []); // password is valid
-
-const valdiateForm = ({ firstname, lastname, email, password, terms }) => {
-  let errors = [];
-  if (firstname != null) {
-    errors = [ ...validateFirstNameInput({ firstname, }), ];
-  }
-  if (lastname != null) {
-    errors = [ ...errors, ...validateLastNameInput({ lastname, }), ];
-  }
-  if (email != null) {
-    errors = [ ...errors, ...validateEmailInput({ email, }), ];
-  }
-  if (password != null) {
-    errors = [ ...errors, ...validatePasswordInput({ password, }), ];
-  }
-  if (!terms) {
-    console.log("terms: " + terms);
-    errors = [ ...errors, ...validateTermsInput({ terms, }), ];
-  }
-  console.log(errors.map(arr => JSON.stringify(arr)));
-  return errors;
-};
-
 const getTermsText = () => {
   return (
     <div>
       אני מאשר/ת קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ-TheMarker
     </div>
-  )
-}
+  );
+};
 
-const onSubmit = () => {
-  console.log('submit');
+const onSubmit = ({ register, doTransition, }) => ({ firstname, lastname, email, password, phone, terms, }) => {
+  // const { mobilePrefix, mobileNumber, } = mobileNumberParser(phone); // TODO import function from htz-user-utils
+  const { mobilePrefix, mobileNumber, } = { mobilePrefix: '', mobileNumber: '', };
+  register(
+    email,
+    password,
+    password,
+    firstname,
+    lastname,
+    mobilePrefix,
+    mobileNumber,
+    terms
+  ).then(
+    () => Router.push(doTransition('success')),
+    reason => {} // TODO error
+  );
 };
 
 const sendAgain = e => {
@@ -125,150 +111,192 @@ const sendAgain = e => {
 };
 // --------------------------
 
-const Register = () => (
-  <FSMLayout>
-    {({ currentState, findRout, doTransition, }) => (
-      <FelaTheme
-        render={theme => (
-          <Fragment>
-            <ContentWrapper>
-              <FormWrapper>
-                <ItemCenterer>
-                  <h5>הרשמה</h5>
-                </ItemCenterer>
+class RegisterPage extends Component {
+  state = {
+    isChecked: false,
+    isFirstTime: true,
+  };
 
-                <Form
-                  clearFormAfterSubmit={false}
-                  // initialValues={{ email: 'insert email' }}
-                  validate={valdiateForm}
-                  onSubmit={onSubmit}
-                  render={({ getInputProps, handleSubmit, clearForm, }) => (
-                    <Fragment>
+  isCheckboxError = () => !(this.state.isFirstTime || this.state.isChecked);
 
-                      <HalfSizeWrapper>
-                        <HalfSize>
-                          <TextInput
-                            type="text"
-                            label={theme.nameInputLabel[0]}
-                            noteText="אנא הזינו שם פרטי"
-                            requiredText={{
-                              long: theme.nameInputRequiredLong,
-                              short: theme.nameInputRequiredShort,
-                            }}
-                            {...getInputProps({
-                              name: 'firstname',
-                              label: theme.nameInputLabel[0],
-                              type: 'text',
-                            })}
-                          />
-                        </HalfSize>
+  valdiateForm = ({ firstname, lastname, email, password, }) => {
+    let errors = [];
+    if (firstname != null) {
+      errors = [ ...validateFirstNameInput({ firstname, }), ];
+    }
+    if (lastname != null) {
+      errors = [ ...errors, ...validateLastNameInput({ lastname, }), ];
+    }
+    if (email != null) {
+      errors = [ ...errors, ...validateEmailInput({ email, }), ];
+    }
+    if (password != null) {
+      errors = [ ...errors, ...validatePasswordInput({ password, }), ];
+    }
+    if (this.isCheckboxError()) {
+      errors = [ ...errors, ...this.validateTermsInput(), ];
+    }
+    console.log(errors.map(arr => JSON.stringify(arr)));
+    return errors;
+  };
 
-                        <HalfSize>
-                          <TextInput
-                            type="text"
-                            label={theme.nameInputLabel[1]}
-                            noteText="אנא הזינו שם משפחה"
-                            requiredText={{
-                              long: theme.nameInputRequiredLong,
-                              short: theme.nameInputRequiredShort,
-                            }}
-                            {...getInputProps({
-                              name: 'lastname',
-                              label: theme.nameInputLabel[1],
-                              type: 'text',
-                            })}
-                          />
-                        </HalfSize>
-                      </HalfSizeWrapper>
-                      
-                      <div>
-                        <TextInput
-                          type="email"
-                          label={theme.emailInputLabel}
-                          noteText="אנא הזינו כתובת דוא”ל"
-                          requiredText={{
-                            long: theme.emailInputRequiredLong,
-                            short: theme.emailInputRequiredShort,
-                          }}
-                          {...getInputProps({
-                            name: 'email',
-                            label: theme.emailInputLabel,
-                            type: 'email',
-                          })}
-                        />
-                      </div>
+  validateTermsInput = () => (this.isCheckboxError()
+    ? generateTermsError('יש לאשר את תנאי השימוש באתר')
+    : []);
 
-                      <div>
-                        <TextInput
-                          type="email"
-                          label={theme.emailInputLabel}
-                          noteText="אנא הזינו סיסמה"
-                          requiredText={{
-                            long: theme.emailInputRequiredLong,
-                            short: theme.emailInputRequiredShort,
-                          }}
-                          {...getInputProps({
-                            name: 'password',
-                            label: theme.passwordInputLabel,
-                            type: 'password',
-                          })}
-                        />
-                      </div>
+  toggleChecked = () =>
+    this.setState({ isChecked: !this.state.isChecked, isFirstTime: false, });
 
-                      <div>
-                        <TextInput
-                          type="email"
-                          label={theme.phoneInputLabel}
-                          noteText="אנא הזינו קידומת ומספר סלולרי"
-                          {...getInputProps({
-                            name: 'phone',
-                            label: theme.phoneInputLabel,
-                            type: 'tel',
-                          })}
-                        />
-                      </div>
+  render() {
+    return (<FSMLayout>
+      {({ currentState, findRout, doTransition, }) => (
+        <FelaTheme
+          render={theme => (
+            <Fragment>
+              <ContentWrapper>
+                <FormWrapper>
+                  <ItemCenterer>
+                    <h5>הרשמה</h5>
+                  </ItemCenterer>
+                  <Register render={({ register, }) => (
+                    <Form
+                      clearFormAfterSubmit={false}
+                      // initialValues={{ email: 'insert email' }}
+                      validate={this.valdiateForm}
+                      onSubmit={onSubmit({ register, doTransition, })}
+                      render={({ getInputProps, handleSubmit, clearForm, }) => (
+                        <Fragment>
 
-                      <TermsWrapper>
-                        <CheckBox
-                          type="checkbox"
-                          label={"test"}
-                          noteText="יש לאשר את תנאי השימוש באתר"
-                          {...getInputProps({
-                            name: 'terms',
-                            label: getTermsText(),
-                            type: 'checkbox',
-                          })}
-                        />
-                      </TermsWrapper>
+                          <HalfSizeWrapper>
+                            <HalfSize>
+                              <TextInput
+                                type="text"
+                                label={theme.nameInputLabel[0]}
+                                noteText="אנא הזינו שם פרטי"
+                                requiredText={{
+                                  long: theme.nameInputRequiredLong,
+                                  short: theme.nameInputRequiredShort,
+                                }}
+                                {...getInputProps({
+                                  name: 'firstname',
+                                  label: theme.nameInputLabel[0],
+                                  type: 'text',
+                                })}
+                              />
+                            </HalfSize>
 
-                      <ItemCenterer>
-                        <Button onClick={handleSubmit}>הרשמה</Button>
-                      </ItemCenterer>
-                    </Fragment>
-                  )}
-                />
+                            <HalfSize>
+                              <TextInput
+                                type="text"
+                                label={theme.nameInputLabel[1]}
+                                noteText="אנא הזינו שם משפחה"
+                                requiredText={{
+                                  long: theme.nameInputRequiredLong,
+                                  short: theme.nameInputRequiredShort,
+                                }}
+                                {...getInputProps({
+                                  name: 'lastname',
+                                  label: theme.nameInputLabel[1],
+                                  type: 'text',
+                                })}
+                              />
+                            </HalfSize>
+                          </HalfSizeWrapper>
 
-                <BottomLinks spacing={2.5}>
-                  <span>כבר רשומים? </span>
-                  <HtzLink
-                    href={`${findRout('backToLogin')}`}
-                    onClick={e => {
-                      e.preventDefault();
-                      const route = doTransition('backToLogin');
-                      Router.push(route);
-                    }}
-                  >
-                    התחברו
-                  </HtzLink>
-                </BottomLinks>
+                          <div>
+                            <TextInput
+                              type="email"
+                              label={theme.emailInputLabel}
+                              noteText="אנא הזינו כתובת דוא”ל"
+                              requiredText={{
+                                long: theme.emailInputRequiredLong,
+                                short: theme.emailInputRequiredShort,
+                              }}
+                              {...getInputProps({
+                                name: 'email',
+                                label: theme.emailInputLabel,
+                                type: 'email',
+                              })}
+                            />
+                          </div>
 
-              </FormWrapper>
-            </ContentWrapper>
-          </Fragment>
-        )}
-      />
-    )}
-  </FSMLayout>
-);
+                          <div>
+                            <TextInput
+                              type="password"
+                              label={theme.emailInputLabel}
+                              noteText="אנא הזינו סיסמה"
+                              requiredText={{
+                                long: theme.emailInputRequiredLong,
+                                short: theme.emailInputRequiredShort,
+                              }}
+                              {...getInputProps({
+                                name: 'password',
+                                label: theme.passwordInputLabel,
+                                type: 'password',
+                              })}
+                            />
+                          </div>
 
-export default Register;
+                          <div>
+                            <TextInput
+                              type="tel"
+                              label={theme.phoneInputLabel}
+                              noteText="אנא הזינו קידומת ומספר סלולרי"
+                              {...getInputProps({
+                                name: 'phone',
+                                label: theme.phoneInputLabel,
+                                type: 'tel',
+                              })}
+                            />
+                          </div>
+
+                          <TermsWrapper>
+                            <CheckBox
+                              type="checkbox"
+                              label="terms"
+                              noteText="יש לאשר את תנאי השימוש באתר"
+                              errorText="יש לאשר את תנאי השימוש באתר"
+                              onClick={this.toggleChecked}
+                              checked={this.state.isChecked}
+                              isError={this.isCheckboxError}
+                              {...getInputProps({
+                                name: 'terms',
+                                label: getTermsText(),
+                                type: 'checkbox',
+                              })}
+                            />
+                          </TermsWrapper>
+
+                          <ItemCenterer>
+                            <Button onClick={handleSubmit}>הרשמה</Button>
+                          </ItemCenterer>
+                        </Fragment>
+                      )}
+                    />
+                  )}/>
+
+                  <BottomLinks spacing={2.5}>
+                    <span>כבר רשומים? </span>
+                    <HtzLink
+                      href={`${findRout('backToLogin')}`}
+                      onClick={e => {
+                        e.preventDefault();
+                        const route = doTransition('backToLogin');
+                        Router.push(route);
+                      }}
+                    >
+                      התחברו
+                    </HtzLink>
+                  </BottomLinks>
+
+                </FormWrapper>
+              </ContentWrapper>
+            </Fragment>
+          )}
+        />
+      )}
+    </FSMLayout>);
+  }
+}
+
+export default RegisterPage;

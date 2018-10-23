@@ -66,10 +66,10 @@ const PhoneMailSent = () => (
               </HtzLink>
                 <br/>
               <HtzLink
-                href={`${findRout('registration')}`}
+                href={`${findRout('notRegistered')}`}
                 onClick={e => {
                   e.preventDefault();
-                  const route = doTransition('registration');
+                  const route = doTransition('notRegistered');
                   Router.push(route);
                 }}
               >
