@@ -6,15 +6,19 @@ Object {
     <div
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"
     >
-      The Caption
       <span
-        className="htz-h htz-i htz-j"
+        className="htz-h"
+      >
+        The Caption
+      </span>
+      <span
+        className="htz-i htz-j htz-k"
       >
         me
       </span>
     </div>
   </div>,
-  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{color:#505050}.htz-h{font-weight:300}.htz-i:before{content:'קרדיט: '}.htz-j{margin-right:1rem}@media (max-width: 79.9375em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
+  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{color:#505050}.htz-h{margin-left:1rem}.htz-i{display:inline-block}.htz-j{font-weight:300}.htz-k:before{content:'קרדיט: '}@media (max-width: 79.9375em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
 }
 `;
 
@@ -24,11 +28,15 @@ Object {
     <div
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
     >
-      The Caption
+      <span
+        className="htz-i"
+      >
+        The Caption
+      </span>
       
     </div>
   </div>,
-  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}@media (max-width: 79.9375em){.htz-c{color:#0B7EB5}.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{color:#FFA6A6}.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
+  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-i{margin-left:1rem}@media (max-width: 79.9375em){.htz-c{color:#0B7EB5}.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{color:#FFA6A6}.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
 }
 `;
 
@@ -39,13 +47,16 @@ Object {
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"
     >
       <span
-        className="htz-h htz-i htz-j"
+        className="htz-h"
+      />
+      <span
+        className="htz-i htz-j htz-k"
       >
         me
       </span>
     </div>
   </div>,
-  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{color:#505050}.htz-h{font-weight:300}.htz-i:before{content:'קרדיט: '}.htz-j{margin-right:1rem}@media (max-width: 79.9375em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
+  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{color:#505050}.htz-h{margin-left:1rem}.htz-i{display:inline-block}.htz-j{font-weight:300}.htz-k:before{content:'קרדיט: '}@media (max-width: 79.9375em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
 }
 `;
 

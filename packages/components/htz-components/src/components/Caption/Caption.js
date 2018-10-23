@@ -1,21 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import {
   parseComponentProp,
   parseStyleProps,
   parseTypographyProp,
 } from '@haaretz/htz-css-tools';
+import setColor from '../../utils/setColor';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
-const setColor = (prop, value, getColor) => {
-  const colorArgs = Array.isArray(value) ? value : [ value, ];
-  return {
-    [prop]: getColor(...colorArgs),
-  };
-};
-
-const captionWrapper = ({
+const captionWrapperStyle = ({
   theme,
   backgroundColor,
   color,
@@ -64,22 +58,47 @@ const captionWrapper = ({
   };
 };
 
-const CaptionWrapper = createComponent(captionWrapper);
+const CaptionWrapper = ({
+  backgroundColor, // eslint-disable-line react/prop-types
+  color, // eslint-disable-line react/prop-types
+  typeStyles, // eslint-disable-line react/prop-types
+  miscStyles, // eslint-disable-line react/prop-types
+  children, // eslint-disable-line react/prop-types
+}) => (
+  <FelaComponent
+    backgroundColor={backgroundColor}
+    color={color}
+    typeStyles={typeStyles}
+    miscStyles={miscStyles}
+    rule={captionWrapperStyle}
+  >
+    {children}
+  </FelaComponent>
+);
 
-const credit = ({ theme, prefix, floatCredit, }) => {
+const creditRule = ({ theme, prefix, floatCredit, }) => {
   const { fontWeight, } = theme.captionStyles.creditStyles || {};
   return {
+    display: 'inline-block',
     fontWeight,
     ':before': {
       content: `'${prefix}: '`,
     },
-    extend: [
-      ...(floatCredit ? [ { float: 'inline-end', }, ] : [ { marginRight: '1rem', }, ]),
-    ],
+    extend: [ ...(floatCredit ? [ { float: 'inline-end', }, ] : []), ],
   };
 };
 
-const Credit = createComponent(credit, 'span');
+// eslint-disable-next-line react/prop-types
+const Credit = ({ prefix, floatCredit, children, }) => (
+  <FelaComponent
+    prefix={prefix}
+    floatCredit={floatCredit}
+    rule={creditRule}
+    render="span"
+  >
+    {children}
+  </FelaComponent>
+);
 
 /**
  * A Caption for Images, Embeds, Videos, etc.
@@ -91,7 +110,9 @@ const Caption = props => {
   }
   return (
     <CaptionWrapper {...props}>
-      {props.caption}
+      <FelaComponent style={{ marginEnd: '1rem', }} render="span">
+        {props.caption}
+      </FelaComponent>
       {props.credit ? (
         <Credit prefix={props.creditprefix} floatCredit={props.floatCredit}>
           {props.credit}
