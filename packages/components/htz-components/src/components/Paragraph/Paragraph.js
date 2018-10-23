@@ -7,16 +7,19 @@ import H from '../AutoLevels/H';
 import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
 import Zen from '../Zen/Zen';
 
-const Crosshead = props => (<FelaComponent
-  style={theme => (
-    { extend: [ theme.type(2), ], }
-  )}
-  render={({ className, }) => (<H className={className} {...props} />)}
-/>);
+const Crosshead = props => (
+  <FelaComponent
+    style={theme => ({ extend: [ theme.type(2), ], })}
+    render={({ className, }) => <H className={className} {...props} />}
+  />
+);
 
 const paragraphStyle = theme => ({
   marginBottom: '3rem',
-  extend: [ theme.type(1, { untilBp: 'xl', lines: 5, }), theme.type(0, { fromBp: 'xl', lines: 5, }), ],
+  extend: [
+    theme.type(1, { untilBp: 'xl', lines: 5, }),
+    theme.type(0, { fromBp: 'xl', lines: 5, }),
+  ],
 });
 
 // eslint-disable-next-line react/prop-types
@@ -149,7 +152,7 @@ const UnderLine = ({ children, ...props }) => (
 const Mark = ({ children, ...props }) => (
   <FelaComponent
     style={theme => ({
-      backgroundColor: theme.color('primary', '-3'),
+      backgroundColor: theme.color('primary', '-4'),
     })}
     render={({ className, }) => (
       <mark className={className} {...props}>
@@ -226,7 +229,11 @@ export default function Paragraph({ renderFirstImpression, ...props }) {
   const Content = ({ content, }) => {
     const attributesObject = extractAttributes(content.attributes);
     return (
-      <WrapperTag tag={content.tag} attributes={attributesObject} content={content.content}>
+      <WrapperTag
+        tag={content.tag}
+        attributes={attributesObject}
+        content={content.content}
+      >
         {content.content.map((tag, index) => (
           <Content
             key={index} // eslint-disable-line react/no-array-index-key
@@ -275,7 +282,10 @@ export default function Paragraph({ renderFirstImpression, ...props }) {
     }
     if (tagName === 'br') return Tag;
     return Tag ? (
-      <Tag {...attributes} {...(tagName === 'p' ? { renderFirstImpression, } : {})}>
+      <Tag
+        {...attributes}
+        {...(tagName === 'p' ? { renderFirstImpression, } : {})}
+      >
         {genChildren(tagElements)}
       </Tag>
     ) : null;
