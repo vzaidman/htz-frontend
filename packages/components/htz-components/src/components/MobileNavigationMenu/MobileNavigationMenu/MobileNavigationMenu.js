@@ -10,6 +10,8 @@ import MobileMenuHeader from '../MobileMenuHeader/MobileMenuHeader';
 import NavigationQuery from '../../NavigationMenu/navigationQuery';
 import { Query, } from '../../ApolloBoundary/ApolloBoundary';
 import A11yDialog from '../../A11yDialog/A11yDialog';
+import NoSSR from '../../NoSSR/NoSSR';
+import disablePageScroll from './disablePageScroll';
 
 const menuButtonStyle = ({ theme, menuIsOpen, }) => ({
   height: '100%',
@@ -241,12 +243,17 @@ export default ({ contentId, menuIsOpen, onClick, wrapperSetState, }) => (
         navMenu: { menu, },
       } = data;
       return (
-        <MobileNavigationMenu
-          menuSections={menu}
-          onClick={onClick}
-          menuIsOpen={menuIsOpen}
-          wrapperSetState={wrapperSetState}
-        />
+        <Fragment>
+          <NoSSR>
+            {disablePageScroll(menuIsOpen)}
+          </NoSSR>
+          <MobileNavigationMenu
+            menuSections={menu}
+            onClick={onClick}
+            menuIsOpen={menuIsOpen}
+            wrapperSetState={wrapperSetState}
+          />
+        </Fragment>
       );
     }}
   </Query>
