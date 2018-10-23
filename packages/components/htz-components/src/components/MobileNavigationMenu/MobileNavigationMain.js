@@ -33,7 +33,10 @@ export default class MobileNavigationMain extends React.Component {
         style={theme => ({
           display: 'flex',
           height: '9rem',
-          backgroundColor: theme.color('neutral', '-10'),
+          ...(menuIsOpen
+            ? { backgroundColor: theme.color('secondary', 'base'), }
+            : { backgroundColor: theme.color('neutral', '-10'), }
+            ),
           borderTopColor: theme.color('neutral', '-5'),
           borderTopStyle: 'solid',
           borderTopWidth: '1px',
