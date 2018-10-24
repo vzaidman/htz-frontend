@@ -21,6 +21,7 @@ import GoogleReMarketingTag from '../Scripts/GoogleReMarketingTag';
 import ChartBeat from '../Scripts/ChartBeat';
 import ChromePush from '../Scripts/ChromePush';
 import FirstImpression from '../Scripts/FirstImpression';
+import GStat from '../Scripts/GStat';
 
 const GET_FOOTER_ITEMS = gql`
   query FooterQuery($listId: String!) {
@@ -222,6 +223,7 @@ class Footer extends React.Component {
         <ChartBeat />
         <ChromePush />
         <FirstImpression />
+        <GStat />
         <FirstImpressionPlaceHolder />
       </Fragment>
     );
