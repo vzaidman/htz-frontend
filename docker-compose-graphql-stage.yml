@@ -25,8 +25,8 @@ services:
       - ENGINE_API_KEY=service:htz-stage:6hYWWng421ai05_ERxSikQ
 
     networks:
-      - dev01
+      - dev03
 
 networks:
-  dev01:
+  dev03:
     external: true
