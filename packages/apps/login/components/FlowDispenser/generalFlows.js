@@ -34,4 +34,15 @@ export default {
     success: 'emailValidationSent',
     backToLogin: 'loginForms',
   },
+  otpValidation: {
+    sendAgain: 'otpValidation2',
+    accept: 'success',
+    withPassword: 'loginForms',
+    notMyPhone: 'phoneInput',
+  },
+  otpValidation2: {
+    withPassword: 'loginForms',
+    getCustomerService: 'customerService',
+    notMyPhone: 'phoneInput',
+  },
 };
