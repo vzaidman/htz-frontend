@@ -19,14 +19,14 @@ const mockDataFromUserInfo = client => email =>
       ssoId: '20023790436',
       phoneNum: '0548888888',
       userStatus: {
-        isEmailValidated: true,
+        isEmailValidated: false,
         isMobileValidated: true,
-        isPhoneEmailConn: true,
+        isPhoneEmailConn: false,
       },
       userCrmStatus: {
         id: 654654,
         isActiveTm: true,
-        isActiveHeb: true,
+        isActiveHeb: false,
         isActiveEng: false,
       },
     },

@@ -8,17 +8,6 @@ export default [
       [ '-loginForms', { url: '/loginForms', param: 0, } ],
       [ 'otpValidation-loginForms', { url: '/loginForms', param: 1, } ],
     ]),
-    otpValidation: {
-      sendAgain: 'otpValidation2',
-      accept: 'success',
-      withPassword: 'loginForms',
-      notMyPhone: 'phoneInput',
-    },
-    otpValidation2: {
-      withPassword: 'loginForms',
-      getCustomerService: 'customerService',
-      notMyPhone: 'phoneInput',
-    },
     phoneInput: {
       withPassword: 'loginForms',
       accept: 'phoneMailSent',
@@ -81,6 +70,7 @@ export default [
     flowNumber: 4,
     initialState: 'register',
     initialTransition: '/register',
+    transitionRouteMap: new Map([]),
     emailValidationSent: {
       sendAgain: 'emailValidationSent2',
       notRegistered: 'register',
@@ -90,15 +80,17 @@ export default [
     },
   },
   {
-    // TODO complete flows
     flowNumber: 5,
     initialState: 'loginForms',
     initialTransition: { url: '/loginForms', param: 1 },
     transitionRouteMap: new Map([
-      [ '-loginForms', { url: '/loginForms', param: 1 } ]
+      [ '-loginForms', { url: '/loginForms', param: 1, } ],
     ]),
   },
   {
     flowNumber: 6,
+    initialState: 'otpValidation',
+    initialTransition: '/otpValidation',
+    transitionRouteMap: new Map([]),
   },
 ];

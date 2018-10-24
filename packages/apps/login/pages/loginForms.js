@@ -1,12 +1,13 @@
+/* global fetch, window */
 import React, { Fragment, Component, } from 'react';
+import config from 'config';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
 
-import { HtzLink, Login, } from '@haaretz/htz-components';
+import { HtzLink, Login, Form, TextInput, Button, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 import { getUserData, getPhoneNum, getOtpHash, } from './queryutil/userDetailsOperations';
 
-import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import isEmail from 'validator/lib/isEmail';
 import theme from '../theme';
 import { FelaTheme, } from 'react-fela';
@@ -20,7 +21,8 @@ import TabsFrame from '../components/Misc/TabsFrame';
 import LoginDialog from '../components/Misc/LoginDialog';
 import { getMetadataFromApollo, } from './queryutil/flowUtil';
 import GET_HOST from './queries/GetHost';
-import { getFlowNumber } from '../components/FlowDispenser/flowStorage';
+import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
+import { domainToSiteNumber, } from '../util/siteUtil';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -48,24 +50,40 @@ const validatePasswordInput = ({ password, }) =>
       ? generatePasswordError('אנא הזינו סיסמה תקינה')
       : []); // email is valid
 
-const onSubmit = ({ login, host, }, showErrorHandler, hideErrorHandler,) => ({ email, password, }) => {
-  hideErrorHandler();
-  login(email, password)
-    .then(
-      () => {
-        window.location = `https://www.${host}`
-      },
-      reason => {
-        showErrorHandler("אירעה שגיאה, אנא נסה שנית");
-      }
-    );
+const onResetPassword = ({ host, nextStage, }) => ({ email, }) => {
+  const params = `userName=${email}&newsso=true&layer=sendpassword&site=${domainToSiteNumber(host)}`;
+  fetch(`${config.get('service.sso')}/sso/r/resetPassword`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: params,
+  }).then(
+    success => success.json(),
+    () => Promise.resolve({ status: 'error', message: 'server error', })
+  ).then(json => {
+    if (json.status === 'success') { nextStage(); }
+  });
 };
 
-const isLink = (client) => {
-  return "2345".includes(getFlowNumber(client)) ? "phoneInput" : null;
-}
+const onSubmit = ({ login, host, }, showErrorHandler, hideErrorHandler) =>
+  ({ email, password, }) => {
+    hideErrorHandler();
+    login(email, password)
+      .then(
+        () => {
+          window.location = `https://www.${host}`;
+        },
+        reason => {
+          showErrorHandler(reason.message);
+        }
+      );
+  };
 
-const valdiateForm = ({ email, password, }) => {
+const isLink = client =>
+  ('2345'.includes(getFlowNumber(client).toString()) ? 'phoneInput' : null);
+
+const validateForm = ({ email, password, }) => {
   let errors = [];
   if (email != null) {
     errors = [ ...validateEmailInput({ email, }), ];
@@ -77,9 +95,8 @@ const valdiateForm = ({ email, password, }) => {
   return errors;
 };
 
-const hidePhone = (phoneNumber) => {
-  return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(7);
-}
+const hidePhone = phoneNumber =>
+  `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
 
 const sendAgain = e => {
   console.log('test...');
@@ -90,7 +107,7 @@ class LoginForms extends Component {
   state = {
     showDialog: false,
     showError: false,
-    errorMessage: "",
+    errorMessage: '',
   }
 
   showDialog = () => {
@@ -142,7 +159,7 @@ class LoginForms extends Component {
                                         clearFormAfterSubmit={false}
                                         // initialValues={{ email: 'insert email' }}
                                         validate={validateEmailInput}
-                                        onSubmit={onSubmit}
+                                        onSubmit={onResetPassword({ host, nextStage ,})}
                                         render={({ getInputProps, handleSubmit, clearForm, }) => (
                                           <Fragment>
                                             <TextInput
@@ -160,7 +177,7 @@ class LoginForms extends Component {
                                               })}
                                             />
                                             <ItemCenterer>
-                                              <Button onClick={nextStage}>המשך</Button>
+                                              <Button onClick={handleSubmit}>המשך</Button>
                                             </ItemCenterer>
                                           </Fragment>
                                         )}
@@ -196,7 +213,7 @@ class LoginForms extends Component {
                               <Form
                                 clearFormAfterSubmit={false}
                                 // initialValues={{ email: 'insert email' }}
-                                validate={valdiateForm}
+                                validate={validateForm}
                                 onSubmit={onSubmit}
                                 render={({ getInputProps, handleSubmit, clearForm, }) => (
                                   <Fragment>
@@ -243,7 +260,7 @@ class LoginForms extends Component {
                                   <Form
                                     clearFormAfterSubmit={false}
                                     // initialValues={{ email: 'insert email' }}
-                                    validate={valdiateForm}
+                                    validate={validateForm}
                                     onSubmit={onSubmit({ login, host, }, this.showError, this.hideError,)}
                                     render={({ getInputProps, handleSubmit, clearForm, }) => (
                                       <Fragment>
