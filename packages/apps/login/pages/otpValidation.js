@@ -13,10 +13,7 @@ import {
   LoginMiscLayoutStyles,
 } from '../components/StyleComponents/LoginStyleComponents';
 import GET_HOST from './queries/GetHost';
-<<<<<<< HEAD
 import OtpForm from '../components/Misc/Forms/OtpForm';
-=======
->>>>>>> feat(login): wIP add override phone and other improvements
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -34,7 +31,6 @@ const validateSmsCodeInput = ({ smsCode, }) =>
 const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }) =>
   loginWithMobile(getPhoneNum(client), smsCode, termsChk, getOtpHash(client))
     .then(
-<<<<<<< HEAD
       // eslint-disable-next-line no-undef
       () => { window.location = `https://www.${host}`; },
       reason => console.log(reason.message) // TODO: add error UI
@@ -43,12 +39,6 @@ const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }
 const hidePhone = phoneNumber => {
   return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(7);
 }
-=======
-// eslint-disable-next-line no-undef
-      () => { window.location = `https://www.${host}`; },
-      reason => console.log(reason.message) // TODO: add error UI
-    );
->>>>>>> feat(login): wIP add override phone and other improvements
 
 // --------------------------
 
@@ -65,11 +55,7 @@ const OtpValidation = () => (
                   <h5>
                     להתחברות הזינו את הקוד שנשלח למספר
                     <br />
-<<<<<<< HEAD
                     <span dir="ltr">{ hidePhone(getUserData(client).phoneNum) }</span>
-=======
-                    <span dir="ltr">{getUserData(client).phoneNum}</span>
->>>>>>> feat(login): wIP add override phone and other improvements
                   </h5>
                 </ItemCenterer>
                 <Login
@@ -99,13 +85,8 @@ const OtpValidation = () => (
                             <InputLinkButton>
                               <button
                                 data-role="resend"
-<<<<<<< HEAD
                                 onClick={(e) => {
                                   e.preventDefault();
-=======
-                                onClick={evt => {
-                                  evt.preventDefault();
->>>>>>> feat(login): wIP add override phone and other improvements
                                   const route = doTransition('sendAgain');
                                   Router.push(route);
                                 }}
