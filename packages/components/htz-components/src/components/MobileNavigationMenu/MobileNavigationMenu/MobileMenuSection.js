@@ -8,7 +8,7 @@ import MobileMenuLink from './MobileMenuItemLink';
 
 const typeSize = 0;
 const indentedStyle = {
-  textIndent: '7rem',
+  paddingInlineStart: '7rem',
 };
 
 export default class MobileMenuSection extends React.Component {
