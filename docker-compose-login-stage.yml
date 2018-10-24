@@ -15,7 +15,7 @@ services:
       - CONNECTION_PRESET=stage
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
-      - PORT=3000
+      - PORT=9005
       - BIND_ADDRESS=login-dev
       - HOSTNAME=login-dev
       - GRAPHQL_USE_SSL=true
