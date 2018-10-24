@@ -18,7 +18,8 @@
     "lint": "htz-scripts lint",
     "prepare": "npm run build",
     "start:pm2": "NODE_ENV=production pm2 start htz-react-server -- login",
-    "start:prof": "NODE_ENV=production node --prof node_modules/.bin/htz-react-server finance",
+    "start:next": "cross-env  NODE_ENV=production htz-react-server login",
+    "start:prof": "NODE_ENV=production node --prof node_modules/.bin/htz-react-server login",
     "start": "cross-env concurrently \"cross-env NODE_ENV=production graphql-server\" \"cross-env NODE_ENV=production htz-react-server login | bunyan -L\"",
     "test": "htz-scripts test",
     "update-scripts": "htz-scripts update-scripts"
