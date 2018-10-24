@@ -101,15 +101,18 @@ CaptionElement.propTypes = CaptionElementPropTypes;
 CaptionElement.defaultProps = CaptionElementDefaultProps;
 
 const ImageElementPropTypes = {
-  imageData: PropTypes.shape({}).isRequired,
+  imageData: PropTypes.shape({}),
   // hide the id image from display at restaurant review.
   imgIsHidden: PropTypes.bool,
 };
 const ImageElementDefaultProps = {
   imgIsHidden: false,
+  imageData: null,
 };
 
-const ImageElement = ({ imageData: { credit, title, ...imgData }, imgIsHidden, }) => {
+const ImageElement = ({ imageData, imgIsHidden, }) => {
+  if (!imageData) return null;
+  const { credit, title, ...imgData } = imageData;
   const imgOptions = {
     transforms: {
       width: 122,
@@ -184,14 +187,14 @@ const propTypes = {
 };
 const defaultProps = {
   reviewImgData: null,
-  reviewStars: 0,
+  reviewStars: -1,
   reviewType: null,
   miscStyles: null,
 };
 
 function ReviewAmenities({ amenitiesItems, reviewImgData, reviewStars, reviewType, miscStyles, }) {
   // some amenities passed for internal data use and not for display.
-  const displayItems = amenitiesItems.filter(value => value.display);
+  const displayItems = amenitiesItems.filter(value => value.display && value.value);
 
   // check amenities count to determine style in medium break.
   const isAmenitiesDivisibleByTwo = displayItems.length % 2 === 0;
@@ -337,32 +340,34 @@ function ReviewAmenities({ amenitiesItems, reviewImgData, reviewStars, reviewTyp
                       />
                     </GridItem>
                   ))}
-                  <GridItem
-                    tagName="li"
-                    width={[
-                      { until: 'm', value: 1 / 1, },
-                      { from: 'm', until: 'l', value: 1 / 2, },
-                      { from: 'l', value: 1 / 1, },
-                    ]}
-                  >
-                    <FelaComponent
-                      displayBorderInMBreak={false}
-                      rule={itemStyle}
-                      render={({ className, theme, }) => (
-                        <div className={className}>
-                          <FelaComponent
-                            style={{ fontWeight: 'bold', }}
-                            render={({ className, }) => (
-                              <span className={className}>
-                                {`${theme.reviewRatingI18n.ratingTitle}: `}
-                              </span>
-                            )}
-                          />
-                          <Rating rating={reviewStars} disabled />
-                        </div>
-                      )}
-                    />
-                  </GridItem>
+                  {reviewStars > -1 && typeof reviewStars === 'number' ? (
+                    <GridItem
+                      tagName="li"
+                      width={[
+                        { until: 'm', value: 1 / 1, },
+                        { from: 'm', until: 'l', value: 1 / 2, },
+                        { from: 'l', value: 1 / 1, },
+                      ]}
+                    >
+                      <FelaComponent
+                        displayBorderInMBreak={false}
+                        rule={itemStyle}
+                        render={({ className, theme, }) => (
+                          <div className={className}>
+                            <FelaComponent
+                              style={{ fontWeight: 'bold', }}
+                              render={({ className, }) => (
+                                <span className={className}>
+                                  {`${theme.reviewRatingI18n.ratingTitle}: `}
+                                </span>
+                              )}
+                            />
+                            <Rating rating={reviewStars} disabled />
+                          </div>
+                        )}
+                      />
+                    </GridItem>
+                  ) : null}
                 </Grid>
               </GridItem>
             </Grid>
