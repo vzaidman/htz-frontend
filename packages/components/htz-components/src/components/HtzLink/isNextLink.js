@@ -16,7 +16,6 @@ const NonReactArticleTypes = [
   '(CAREER-)',
   '(location-)',
   '(event-)',
-  '(LIVE-)',
   '(INTERACTIVE-)',
 ];
 

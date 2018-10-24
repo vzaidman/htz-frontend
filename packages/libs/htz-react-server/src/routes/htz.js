@@ -62,6 +62,12 @@ export default function htz(app, server, DEV) {
       console.log('found MAGAZINE, rendering MAGAZINE page');
       return app.render(req, res, '/magazineArticle', query);
     }
+
+    if (req.path.indexOf('LIVE-') >= 0) {
+      console.log('found live blog, rendering live blog page');
+      return app.render(req, res, '/liveBlogArticle', query);
+    }
+
     console.log('rendering standardArticle');
     return app.render(req, res, '/standardArticle', query);
   });
