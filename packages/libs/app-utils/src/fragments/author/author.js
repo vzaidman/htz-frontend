@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import gql from 'graphql-tag';
 import { authorImage, } from '../image/image';
+import paragraph from '../paragraph/paragraph';
 
 export default {
   authorObj: gql`
@@ -10,6 +11,11 @@ export default {
       contentName
       authorType
       email
+      biography {
+        ... on Paragraph {
+          ...Paragraph
+        }
+      }
       facebook
       gplus
       hasEmailAlerts
@@ -19,6 +25,7 @@ export default {
       url
     }
     ${authorImage}
+    ${paragraph}
   `,
   creditObj: gql`
     fragment CreditObj on CreditObject {

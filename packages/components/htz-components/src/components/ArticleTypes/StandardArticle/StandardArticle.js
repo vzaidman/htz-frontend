@@ -16,6 +16,7 @@ import StandardArticleHeader from './StandardArticleElements/StandardArticleHead
 import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
 import { buildUrl, } from '../../../utils/buildImgURLs';
+import BloggerInfo from '../../BloggerInfo/BloggerInfo';
 
 import StandardArticleQuery from './queries/standard_article';
 
@@ -28,6 +29,7 @@ function StandardArticle({ articleId, slots, }) {
           if (error) return null;
           const {
             slots: { article, aside, },
+            lineage,
             seoData: {
               metaTitle,
               metaDescription,
@@ -59,10 +61,15 @@ function StandardArticle({ articleId, slots, }) {
           const standardArticleElement = article.find(
             element =>
               element.inputTemplate === 'com.htz.StandardArticle' ||
+              element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
+              element.inputTemplate === 'com.tm.BlogArticle' ||
               element.inputTemplate === 'com.tm.StandardArticle'
           );
 
-          const { authors, body, header, headlineElement, reportingFrom, } = standardArticleElement;
+          const isMouse = standardArticleElement.inputTemplate === 'com.mouse.story.MouseStandardStory';
+
+          const { authors, body, headlineElement, reportingFrom, pubDate, modDate, } = standardArticleElement;
+          const header = isMouse ? { pubDate, modDate, } : standardArticleElement.header;
 
           return (
             <FelaTheme
@@ -112,6 +119,7 @@ function StandardArticle({ articleId, slots, }) {
                       if (
                         element.inputTemplate === 'com.htz.StandardArticle' ||
                         element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
+                        element.inputTemplate === 'com.tm.BlogArticle' ||
                         element.inputTemplate === 'com.tm.StandardArticle'
                       ) {
                         return (
@@ -121,6 +129,7 @@ function StandardArticle({ articleId, slots, }) {
                               cache.writeData({
                                 data: {
                                   commentsElementId,
+                                  isMouseStory: isMouse,
                                   pageSchema: {
                                     type: 'NewsArticle',
                                     mainEntityOfPage: {
@@ -132,6 +141,12 @@ function StandardArticle({ articleId, slots, }) {
                                   },
                                 },
                               });
+                              let bloggerInfo;
+                              if (authors.length) {
+                                const blogName = lineage[1].name;
+                                const author = authors[0];
+                                bloggerInfo = element.inputTemplate === 'com.tm.BlogArticle' ? (<BloggerInfo author={author} blogName={blogName} />) : null;
+                              }
                               return (
                                 <ArticleLayoutRow
                                   isArticleBody
@@ -150,6 +165,7 @@ function StandardArticle({ articleId, slots, }) {
                                   }
                                 >
                                   <ArticleBody body={body} />
+                                  {bloggerInfo}
                                 </ArticleLayoutRow>
                               );
                             }}

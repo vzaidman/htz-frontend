@@ -21,16 +21,15 @@ Object {
         className="htz-a htz-b htz-c htz-d htz-e"
       >
         הכל מתחיל בעצם מאיך שהגעתי לישראל מלכתחילה. את בעלי הישראלי פגשתי בצרפת כששנינו למדנו שם, וב-2012 עברתי איתו לארץ בעקבות האהבה. לחברה הגעתי דרך אחד העובדים הוותיקים בחברה שהוא חבר טוב של בעלי (בינתיים ״גנבתי״ אותו והוא חבר טוב גם שלי), והוא הכיר אותי לחברה 
-        <mark
-          className="htz-g"
+        <span
           hasClass="bg-brand--d"
         >
           לפני קצת יותר משלוש שנים.
-        </mark>
+        </span>
          אחרי שנתיים בחברה, ממש לפני שילדתי את בתי הבכורה, קודמתי לתפקיד ראש הצוות שלי. אני בתפקיד כבר שנה, ואוטוטו יוצאת לחופשת לידה כדי ללדת את בני השני. 
       </p>
     </div>
   </div>,
-  "styles": ".htz-a{margin-bottom:3rem}.htz-f{font-weight:700}.htz-g{background-color:#DAE9F2}@media (max-width: 79.9375em){.htz-b{font-size:3rem}.htz-c{line-height:5rem}}@media (min-width: 80em){.htz-d{font-size:2.5714285714285716rem}.htz-e{line-height:5rem}}",
+  "styles": ".htz-a{margin-bottom:3rem}.htz-f{font-weight:700}@media (max-width: 79.9375em){.htz-b{font-size:3rem}.htz-c{line-height:5rem}}@media (min-width: 80em){.htz-d{font-size:2.5714285714285716rem}.htz-e{line-height:5rem}}",
 }
 `;

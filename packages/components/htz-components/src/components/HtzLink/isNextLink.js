@@ -15,7 +15,6 @@ const NonReactArticleTypes = [
   '(REVIEW-)',
   '(TAG-)',
   '(WRITER-)',
-  '(BLOG-)',
   '(CARD-)',
   '(CAREER-)',
   '(LIVE-)',
