@@ -12,7 +12,7 @@ services:
       - 2034:2034
     environment:
       - NODE_ENV=production
-      - CONNECTION_PRESET=dev
+      - CONNECTION_PRESET=stage
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
       - PORT=2034
