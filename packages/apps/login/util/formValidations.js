@@ -9,35 +9,35 @@ const isPassword = password => password.length > 5; // TODO: write proper passwo
 const isName = name => name.length > 1; // TODO: write proper name validation
 const isChecked = terms => !!terms;
 
-export const validateFirstNameInput = ({ firstname, }, order) =>
+export const validateFirstNameInput = ({ firstname, order, }) =>
   (!firstname
     ? generateFirstNameError('אנא הזינו שם פרטי', order)
     : !isName(firstname)
       ? generateFirstNameError('אנא הזינו שם תקין', order)
       : []); // name is valid
 
-export const validateLastNameInput = ({ lastname, }, order) =>
+export const validateLastNameInput = ({ lastname, order, }) =>
 (!lastname
   ? generateLastNameError('אנא הזינו שם משפחה', order)
   : !isName(lastname)
     ? generateLastNameError('אנא הזינו שם תקין', order)
     : []); // name is valid
 
-export const validateEmailInput = ({ email, }, order) =>
+export const validateEmailInput = ({ email, order, }) =>
   (!email
     ? generateEmailError('אנא הזינו כתובת דוא”ל', order)
     : !isEmail(email)
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה', order)
       : []); // email is valid
 
-export const validatePasswordInput = ({ password, }, order) =>
+export const validatePasswordInput = ({ password, order, }) =>
   (!password
     ? generatePasswordError('אנא הזינו סיסמה', order)
     : !isPassword(password)
       ? generatePasswordError('אנא הזינו סיסמה תקינה', order)
       : []); // password is valid
 
-export const validateTermsInput = ({terms }, order) =>
+export const validateTermsInput = ({terms order, }) =>
   (!terms
     ? generateTermsError('יש לאשר את תנאי השימוש באתר', order)
     : !isChecked(terms)

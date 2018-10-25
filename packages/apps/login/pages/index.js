@@ -18,62 +18,11 @@ import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleCom
 import objTransform from '../util/objectTransformationUtil';
 import { saveUserData, getDataFromUserInfo, saveOtpHash, generateOtp, mockDataFromUserInfo, } from './queryutil/userDetailsOperations';
 import { writeMetaDataToApollo, parseRouteInfo, } from '../pages/queryutil/flowUtil';
+import IndexForm from '../components/Misc/Forms/IndexForm';
 
 // Styling Components -------
-const { PageWrapper, ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
+const { PageWrapper, ContentWrapper, } = LoginContentStyles;
 // --------------------------
-
-const generateEmailError = message => [ { name: 'email', order: 1, errorText: message, }, ];
-
-const validateEmailInput = ({ email, }) =>
-  (!email
-    ? generateEmailError('אנא הזינו כתובת דוא”ל')
-    : !isEmail(email)
-      ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
-      : []); // email is valid
-
-const handleGenerateOtp = ({ phoneNum, client, flow, route, }) =>
-  generateOtp(client)({ typeId: phoneNum, })
-    .then(data => {
-      const json = data.data.generateOtp;
-      saveOtpHash(client)({ otpHash: json.hash, });
-      if (json.success) {
-        Router.push(route);
-      }
-      else {
-        // TODO: show error (json.msg)
-      }
-    });
-
-const handleResponseFromGraphql = ({ client, getFlowByData, email, res, }) => {
-  const dataSaved = saveUserData(client)({ userData: res.userByMail, });
-  const transformedObj = objTransform(res);
-  console.log(`data is: ${JSON.stringify(dataSaved)}, email is: ${email}`);
-  const flow = getFlowByData(transformedObj.user);
-  storeFlowNumber(client)(flow.flowNumber);
-  console.log('**** initial transition', flow.initialTransition);
-  const { route, metadata, } = parseRouteInfo(flow.initialTransition);
-  writeMetaDataToApollo(client, metadata);
-  console.log('***** route', route);
-  if (dataSaved.userData
-      && dataSaved.userData.userStatus
-      && dataSaved.userData.userStatus.isMobileValidated) {
-    console.log('mobile is validated!!!!');
-    handleGenerateOtp({ client, phoneNum: dataSaved.userData.phoneNum, flow, route, });
-  }
-  else {
-    console.log('mobile is not validated!!!');
-    Router.push(route);
-  }
-};
-
-const onSubmit = (client, getFlowByData) => ({ email, }) => {
-  // mockDataFromUserInfo(client)(email)
-  getDataFromUserInfo(client)(email)
-    .then(res => handleResponseFromGraphql({ client, getFlowByData, email, res, }))
-    // TODO handle error
-    .catch(err => console.error(err));
-};
 
 const Index = () => (
   <Fragment>
@@ -90,38 +39,7 @@ const Index = () => (
                     <ContentWrapper>
                       <FlowDispenser
                         render={({ getFlowByData, }) => (
-                          <FormWrapper>
-                            <ItemCenterer>
-                              <h5>לכניסה או הרשמה לאתר הזינו כתובת דוא”ל</h5>
-                            </ItemCenterer>
-                            <Form
-                              clearFormAfterSubmit={false}
-                              // initialValues={{ email: 'insert email' }}
-                              validate={validateEmailInput}
-                              onSubmit={onSubmit(client, getFlowByData)}
-                              render={({ getInputProps, handleSubmit, clearForm, }) => (
-                                <Fragment>
-                                  <TextInput
-                                    type="email"
-                                    label={theme.emailInputLabel}
-                                    noteText="אנא הזינו כתובת דוא”ל"
-                                    requiredText={{
-                                      long: theme.emailInputRequiredLong,
-                                      short: theme.emailInputRequiredShort,
-                                    }}
-                                    {...getInputProps({
-                                      name: 'email',
-                                      label: theme.emailInputLabel,
-                                      type: 'email',
-                                    })}
-                                  />
-                                  <ItemCenterer>
-                                    <Button onClick={handleSubmit}>המשך</Button>
-                                  </ItemCenterer>
-                                </Fragment>
-                              )}
-                            />
-                          </FormWrapper>
+                          <IndexForm client={client} getFlowByData={getFlowByData} theme={theme} />
                         )}
                       />
                     </ContentWrapper>
