@@ -7,7 +7,7 @@ module.exports = {
       return `http${this.useSSL ? 's' : ''}://${this.remoteFQDN}`;
     }),
     sso: 'https://devsso.haaretz.co.il',
-    newSso: 'https://ms-apps.haaretz.co.il/sso',
+    newSso: 'https://ms-apps.haaretz.co.il/sso-dev',
     userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo',
     otp: {
       base: 'TODO',
