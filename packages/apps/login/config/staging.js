@@ -8,9 +8,9 @@ module.exports = {
     }),
     sso: 'https://devsso.haaretz.co.il',
     newSso: 'https://ms-apps.haaretz.co.il/sso-dev',
-    userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo',
+    userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo-dev',
     otp: {
-      base: 'TODO',
+      base: 'http://docker.themarker.com:8124/otp-dev',
       generate: '/generate',
       validate: '/validate',
     },
