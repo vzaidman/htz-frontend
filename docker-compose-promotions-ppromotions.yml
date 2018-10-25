@@ -30,8 +30,8 @@ services:
       - GRAPHQL_EXPOSE_PORT=false
 
     networks:
-      - dev01
+      - dev03
 
 networks:
-  dev01:
+  dev03:
     external: true
