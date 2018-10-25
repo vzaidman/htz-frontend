@@ -90,6 +90,7 @@ export default class MobileMenuSection extends React.Component {
                 justifyContent: 'flex-start',
                 paddingBottom: '2rem',
                 paddingTop: '2rem',
+                marginBottom: '1rem',
                 width: '100%',
                 extend: [ theme.type(typeSize - 1), ],
                 ':focus': {

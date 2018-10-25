@@ -32,7 +32,10 @@ export default function ItemLink({ name, url, isHeader, isSite, }) {
         paddingBottom: '2rem',
         paddingTop: '2rem',
         ...(isHeader
-          ? { fontWeight: 'bold', }
+          ? {
+            fontWeight: 'bold',
+            extend: [ theme.type(1), ],
+          }
           : !isSite && { textIndent: 0, }
         ),
         ...(isSite
