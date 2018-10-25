@@ -9,4 +9,4 @@ RUN yarn && yarn bootstrap
 #RUN yarn test:deploy
 EXPOSE 3000
 WORKDIR /workspace/
-CMD ["yarn", "workspace", "@haaretz/login", "start"]
+CMD ["yarn", "workspace", "@haaretz/login", "start:next"]
