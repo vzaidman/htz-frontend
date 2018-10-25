@@ -24,7 +24,7 @@ module.exports = {
     alerts: 'https://dev-alerts.haaretz.co.il',
   },
   appFQDN: defer(function () {
-    return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
+    return `${this.graphQLSubDomain ? `${this.graphQLSubDomain}.` : ''}${this.domain}`;
   }),
   remoteFQDN: defer(function () {
     return `pre.${this.domain}`;
