@@ -372,6 +372,14 @@ class OtpAPI extends RESTDataSource {
   }
 }
 
+class EmailSendingAPI extends RESTDataSource {
+  get baseURL() {
+    return this.context.functionService;
+  }
+
+  async send
+}
+
 class LegacySsoOperationsAPI extends RESTDataSource {
   get baseURL() {
     return this.context.ssoService;

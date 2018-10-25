@@ -14,6 +14,7 @@ module.exports = {
       generate: '/generate',
       validate: '/validate',
     },
+    htzFunction: 'http://docker.themarker.com:8129/htz-function',
     image: 'https://images.haarets.co.il/image',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
     graphql: defer(function () {
