@@ -13,6 +13,7 @@ import {
   LoginMiscLayoutStyles,
 } from '../components/StyleComponents/LoginStyleComponents';
 import GET_HOST from './queries/GetHost';
+import OtpForm from '../components/Misc/Forms/OtpForm';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -128,6 +129,8 @@ const OtpValidation = () => (
                   </HtzLink>
                 </BottomLinks>
               </FormWrapper>
+
+              <OtpForm dataRefs={{host, client, findRoute, doTransition}} />
             </ContentWrapper>
           );
         }}

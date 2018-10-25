@@ -45,7 +45,7 @@ const resolveFlowNumber = data => {
 const generateFullFlow = specificFlow => {
   const generalTransitionRouteMap = generalFlows.transitionRouteMap;
   const specificTransitionRouteMap = specificFlow.transitionRouteMap;
-  console.log(`combined map: ${JSON.stringify(Array.from(new Map([ ...generalTransitionRouteMap, ...specificTransitionRouteMap, ])))}`);
+  //console.log(`combined map: ${JSON.stringify(Array.from(new Map([ ...generalTransitionRouteMap, ...specificTransitionRouteMap, ])))}`);
   const fullFlow = { ...generalFlows, ...specificFlow, };
   return Object.assign(
     {},
