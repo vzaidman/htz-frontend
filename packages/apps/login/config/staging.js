@@ -38,4 +38,9 @@ module.exports = {
   logLevel: 'info',
   assetPrefix: '',
   enableHttpLogging: false,
+  graphQLuseSSL: true,
+  graphQLexposedPort: true,
+  // todo: ask tomer if we will add a staging graphql-server with different subDomain
+  graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'graphql-stg',
+  graphQLPort: process.env.GRAPHQL_PORT || '4004',
 };
