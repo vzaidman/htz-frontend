@@ -6,6 +6,7 @@
 
 // Articles
 import MagazineArticle from './components/ArticleTypes/MagazineArticle/MagazineArticle';
+import LiveBlogArticle from './components/ArticleTypes/LiveBlogArticle/LiveBlogArticle';
 import RecipeArticle from './components/ArticleTypes/RecipeArticle/RecipeArticle';
 import ReviewArticle from './components/ArticleTypes/ReviewArticle/ReviewArticle';
 import StandardArticle from './components/ArticleTypes/StandardArticle/StandardArticle';
@@ -182,6 +183,7 @@ import pixelEvent from './utils/pixelEvent';
 export {
   // ArticleTypes
   MagazineArticle,
+  LiveBlogArticle,
   RecipeArticle,
   ReviewArticle,
   StandardArticle,

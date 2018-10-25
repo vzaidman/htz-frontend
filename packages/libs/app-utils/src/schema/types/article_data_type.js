@@ -93,6 +93,26 @@ const ArticleData = new GraphQLObjectType({
     reviewType: { type: GraphQLString, },
     amenities: { type: new GraphQLList(GraphQLJSON), },
     magazineArticleViewType: { type: GraphQLString, },
+    // Live blog related
+    // liveblogItems: { type: new GraphQLList(GraphQLJSON), },
+    liveblogItems: {
+      type: new GraphQLList(
+        new GraphQLObjectType({
+          name: 'liveblogItems',
+          fields: () => ({
+            title: { type: GraphQLString, },
+            titleMobile: { type: GraphQLString, },
+            pubDate: { type: date, },
+            body: { type: articleBody, },
+            inputTemplate: { type: GraphQLString, },
+            contentId: { type: GraphQLID, },
+            contentName: { type: GraphQLString, },
+          }),
+        }),
+      ),
+    },
+    isLiveUpdate: { type: GraphQLBoolean, },
+    isDisplayBlogitemsDatetime: { type: GraphQLBoolean, },
   }),
 });
 
