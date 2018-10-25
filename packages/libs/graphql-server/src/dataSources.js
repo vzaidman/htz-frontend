@@ -377,7 +377,9 @@ class EmailSendingAPI extends RESTDataSource {
     return this.context.functionService;
   }
 
-  async send
+  async sendPhoneMailConnection() {
+
+  }
 }
 
 class LegacySsoOperationsAPI extends RESTDataSource {
