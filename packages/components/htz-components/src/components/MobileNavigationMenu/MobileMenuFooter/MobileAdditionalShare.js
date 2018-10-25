@@ -17,7 +17,7 @@ export default function MobileBarActionButtons({ elementUrl, isOpen, }) {
     transitionProperty: 'all',
     position: 'relative',
     top: isOpen ? '0' : '45rem',
-    start: isOpen ? '0' : '8rem',
+    start: isOpen ? '0' : '9rem',
   };
 
   return (

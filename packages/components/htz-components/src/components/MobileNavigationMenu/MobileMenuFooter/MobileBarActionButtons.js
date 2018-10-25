@@ -137,7 +137,7 @@ export default class MobileBarActionButtons extends React.Component {
                         position: 'fixed',
                         overflowY: 'hidden',
                         top: 'auto',
-                        bottom: '8rem',
+                        bottom: '9rem',
                         left: '0',
                         right: '0',
                         outline: 'none',

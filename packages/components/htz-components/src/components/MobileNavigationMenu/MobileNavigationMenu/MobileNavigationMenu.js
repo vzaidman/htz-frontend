@@ -30,7 +30,7 @@ const menuButtonStyle = ({ theme, menuIsOpen, }) => ({
     : {}),
   extend: [
     theme.type(-1),
-    borderEnd('1px', 'solid', theme.color('neutral', '-5')),
+    borderEnd('1px', 'solid', theme.color('secondary', '+1')),
   ],
 });
 
