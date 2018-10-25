@@ -80,6 +80,14 @@ const onSubmit = ({ login, host, }, showErrorHandler, hideErrorHandler) =>
       );
   };
 
+const onSubmitSms = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }) =>
+  loginWithMobile(getPhoneNum(client), smsCode, termsChk, getOtpHash(client))
+    .then(
+      // eslint-disable-next-line no-undef
+      () => { window.location = `https://www.${host}`; },
+      reason => console.log(reason.message) // TODO: add error UI
+    );
+
 const isLink = client =>
   ('2345'.includes(getFlowNumber(client).toString()) ? 'phoneInput' : null);
 
@@ -131,132 +139,132 @@ class LoginForms extends Component {
   }
 
   render() {
-    return(
-      <FSMLayout>
-        {({ currentState, findRout, doTransition, }) => (
-          <ApolloConsumer>
-            {client => {
-              const host = client.readQuery({ query: GET_HOST, }).hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-              return (
-                <FelaTheme
-                  render={theme => (
-                    <Fragment>
-                      <ContentWrapper>
-                        <FormWrapper>
-                          <ItemCenterer>
-                            <h5>שלום, כיצד תרצה/י להתחבר לחשבונך?</h5>
-                          </ItemCenterer>
-
-                          {/* ----------- Forgot Password Modal ------------ */}
-                          <LoginDialog show={this.getDialogState()} handleClose={this.hideDialog}>
-                            {
-                              (nextStage, closeModal, CloseButton) => (
-                                <div>
-                                  <div>
-                                    <CloseButton />
-                                    <h4>החלפת סיסמה</h4>
-                                        <Form
-                                        clearFormAfterSubmit={false}
-                                        // initialValues={{ email: 'insert email' }}
-                                        validate={validateEmailInput}
-                                        onSubmit={onResetPassword({ host, nextStage ,})}
-                                        render={({ getInputProps, handleSubmit, clearForm, }) => (
-                                          <Fragment>
-                                            <TextInput
-                                              type="email"
-                                              label={theme.emailInputLabel}
-                                              noteText="אנא הזינו כתובת דוא”ל"
-                                              requiredText={{
-                                                long: theme.emailInputRequiredLong,
-                                                short: theme.emailInputRequiredShort,
-                                              }}
-                                              {...getInputProps({
-                                                name: 'email',
-                                                label: theme.emailInputLabel,
-                                                type: 'email',
-                                              })}
-                                            />
-                                            <ItemCenterer>
-                                              <Button onClick={handleSubmit}>המשך</Button>
-                                            </ItemCenterer>
-                                          </Fragment>
-                                        )}
-                                      />
-                                  </div>
-
-                                  <div>
-                                    <CloseButton/>
-                                    <h4>החלפת סיסמה</h4>
-                                    <br/>
-                                    <h5>הוראות לאיפוס הסיסמה נשלחו לתיבת הדוא”ל שלך.</h5>
-                                    <ItemCenterer>
-                                      <Button onClick={closeModal}>התחברות</Button>
-                                    </ItemCenterer>
-                                  </div>
-                                </div>
-                              )
-                            }
-                          </LoginDialog>
-
-                          {/* ----------------- Tabs Frame ----------------- */}
-                          <TabsFrame activeTab={parseInt(getMetadataFromApollo(client), 10)} isLink={[isLink(client)]}>
-                            {/* TAB 1 */}
-                            <div tabname="כניסה באמצעות SMS">
+    return (
+      <Login
+        render={({ login, loginWithMobile, }) => (
+          <FSMLayout>
+            {({ currentState, findRout, doTransition, }) => (
+              <ApolloConsumer>
+                {client => {
+                  const host = client.readQuery({ query: GET_HOST, }).hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+                  return (
+                    <FelaTheme
+                      render={theme => (
+                        <Fragment>
+                          <ContentWrapper>
+                            <FormWrapper>
                               <ItemCenterer>
-                                  <h4 className="no-spac">
-                                    להתחברות הזינו את הקוד שנשלח למספר
-                                    <br />
-                                    <span dir="ltr">{ hidePhone(getUserData(client).phoneNum) }</span>
-                                  </h4>
+                                <h5>שלום, כיצד תרצה/י להתחבר לחשבונך?</h5>
                               </ItemCenterer>
 
-                              <Form
-                                clearFormAfterSubmit={false}
-                                // initialValues={{ email: 'insert email' }}
-                                validate={validateForm}
-                                onSubmit={onSubmit}
-                                render={({ getInputProps, handleSubmit, clearForm, }) => (
-                                  <Fragment>
+                              {/* ----------- Forgot Password Modal ------------ */}
+                              <LoginDialog show={this.getDialogState()} handleClose={this.hideDialog}>
+                                {
+                                  (nextStage, closeModal, CloseButton) => (
                                     <div>
-                                      <TextInput
-                                        type="number"
-                                        label={theme.emailInputLabel}
-                                        noteText="אנא הזינו את הקוד שנשלח אליכם"
-                                        requiredText={{
-                                          long: 'אנא הזינו את הקוד שנשלח אליכם',
-                                          short: '*',
-                                        }}
-                                        {...getInputProps({
-                                          name: 'smsCode',
-                                          label: 'קוד אימות',
-                                          type: 'text',
-                                        })}
-                                      />
-                                      <InputLinkButton>
-                                        <button
-                                          data-role="resend"
-                                          onClick={(e) => {
-                                            e.preventDefault();
-                                            const route = doTransition('sendAgain');
-                                            Router.push(route);
-                                          }}
-                                        >
-                                          שלח בשנית
-                                        </button>
-                                      </InputLinkButton>
-                                    </div>
-                                    <ItemCenterer>
-                                      <Button onClick={handleSubmit}>התחברות</Button>
-                                    </ItemCenterer>
-                                  </Fragment>
-                                )}
-                              />
-                            </div>
+                                      <div>
+                                        <CloseButton />
+                                        <h4>החלפת סיסמה</h4>
+                                            <Form
+                                            clearFormAfterSubmit={false}
+                                            // initialValues={{ email: 'insert email' }}
+                                            validate={validateEmailInput}
+                                            onSubmit={onResetPassword({ host, nextStage ,})}
+                                            render={({ getInputProps, handleSubmit, clearForm, }) => (
+                                              <Fragment>
+                                                <TextInput
+                                                  type="email"
+                                                  label={theme.emailInputLabel}
+                                                  noteText="אנא הזינו כתובת דוא”ל"
+                                                  requiredText={{
+                                                    long: theme.emailInputRequiredLong,
+                                                    short: theme.emailInputRequiredShort,
+                                                  }}
+                                                  {...getInputProps({
+                                                    name: 'email',
+                                                    label: theme.emailInputLabel,
+                                                    type: 'email',
+                                                  })}
+                                                />
+                                                <ItemCenterer>
+                                                  <Button onClick={handleSubmit}>המשך</Button>
+                                                </ItemCenterer>
+                                              </Fragment>
+                                            )}
+                                          />
+                                      </div>
 
-                            {/* TAB 2 */}
-                            <div tabname="כניסה באמצעות סיסמה">
-                              <Login
-                                render={({ login, }) => (
+                                      <div>
+                                        <CloseButton/>
+                                        <h4>החלפת סיסמה</h4>
+                                        <br/>
+                                        <h5>הוראות לאיפוס הסיסמה נשלחו לתיבת הדוא”ל שלך.</h5>
+                                        <ItemCenterer>
+                                          <Button onClick={closeModal}>התחברות</Button>
+                                        </ItemCenterer>
+                                      </div>
+                                    </div>
+                                  )
+                                }
+                              </LoginDialog>
+
+                              {/* ----------------- Tabs Frame ----------------- */}
+                              <TabsFrame activeTab={parseInt(getMetadataFromApollo(client), 10)} isLink={[isLink(client)]}>
+                                {/* TAB 1 */}
+                                <div tabname="כניסה באמצעות SMS">
+                                  <ItemCenterer>
+                                      <h4 className="no-spac">
+                                        להתחברות הזינו את הקוד שנשלח למספר
+                                        <br />
+                                        <span dir="ltr">{ hidePhone(getUserData(client).phoneNum) }</span>
+                                      </h4>
+                                  </ItemCenterer>
+
+                                  <Form
+                                    clearFormAfterSubmit={false}
+                                    // initialValues={{ email: 'insert email' }}
+                                    validate={validateForm}
+                                    onSubmit={onSubmitSms({ client, host, loginWithMobile, })}
+                                    render={({ getInputProps, handleSubmit, clearForm, }) => (
+                                      <Fragment>
+                                        <div>
+                                          <TextInput
+                                            type="number"
+                                            label={theme.emailInputLabel}
+                                            noteText="אנא הזינו את הקוד שנשלח אליכם"
+                                            requiredText={{
+                                              long: 'אנא הזינו את הקוד שנשלח אליכם',
+                                              short: '*',
+                                            }}
+                                            {...getInputProps({
+                                              name: 'smsCode',
+                                              label: 'קוד אימות',
+                                              type: 'text',
+                                            })}
+                                          />
+                                          <InputLinkButton>
+                                            <button
+                                              data-role="resend"
+                                              onClick={(e) => {
+                                                e.preventDefault();
+                                                const route = doTransition('sendAgain');
+                                                Router.push(route);
+                                              }}
+                                            >
+                                              שלח בשנית
+                                            </button>
+                                          </InputLinkButton>
+                                        </div>
+                                        <ItemCenterer>
+                                          <Button onClick={handleSubmit}>התחברות</Button>
+                                        </ItemCenterer>
+                                      </Fragment>
+                                    )}
+                                  />
+                                </div>
+
+                                {/* TAB 2 */}
+                                <div tabname="כניסה באמצעות סיסמה">
                                   <Form
                                     clearFormAfterSubmit={false}
                                     // initialValues={{ email: 'insert email' }}
@@ -320,35 +328,34 @@ class LoginForms extends Component {
                                       </Fragment>
                                     )}
                                   />
-                                )}
-                              />
-                            </div>
-                          </TabsFrame>
+                                </div>
+                              </TabsFrame>
 
-                          <BottomLinks spacing={2.5}>
-                            <span>עדיין לא רשומים? </span>
-                            <HtzLink
-                              href={`${findRout('registration')}`}
-                              onClick={e => {
-                                e.preventDefault();
-                                const route = doTransition('registration');
-                                Router.push(route);
-                              }}
-                            >
-                              הירשמו
-                            </HtzLink>
-                          </BottomLinks>
-                        </FormWrapper>
-                      </ContentWrapper>
-                    </Fragment>
-                  )}
-                />
-
-              )
-            }}
-          </ApolloConsumer>
+                              <BottomLinks spacing={2.5}>
+                                <span>עדיין לא רשומים? </span>
+                                <HtzLink
+                                  href={`${findRout('registration')}`}
+                                  onClick={e => {
+                                    e.preventDefault();
+                                    const route = doTransition('registration');
+                                    Router.push(route);
+                                  }}
+                                >
+                                  הירשמו
+                                </HtzLink>
+                              </BottomLinks>
+                            </FormWrapper>
+                          </ContentWrapper>
+                        </Fragment>
+                      )}
+                    />
+                  );
+                }}
+              </ApolloConsumer>
+            )}
+          </FSMLayout>
         )}
-      </FSMLayout>
+      />
     );
   }
 }

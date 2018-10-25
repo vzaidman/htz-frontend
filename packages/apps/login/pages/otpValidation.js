@@ -30,7 +30,7 @@ const validateSmsCodeInput = ({ smsCode, }) =>
 const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }) =>
   loginWithMobile(getPhoneNum(client), smsCode, termsChk, getOtpHash(client))
     .then(
-// eslint-disable-next-line no-undef
+      // eslint-disable-next-line no-undef
       () => { window.location = `https://www.${host}`; },
       reason => console.log(reason.message) // TODO: add error UI
     );
