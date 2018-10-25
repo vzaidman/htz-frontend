@@ -55,8 +55,8 @@ const wrapperStyle = ({ theme, miscStyles, }) => ({
 // the time needs to render in different locations for mobile
 // mobileTime indicates if this is the mobile location
 const timeStyle = ({ theme, mobileTime, }) => ({
-  display: 'inline-block',
   extend: [
+    theme.mq({ until: 's', }, { display: 'block', }),
     theme.mq({ [mobileTime ? 'from' : 'until']: 'l', }, { display: 'none', }),
     theme.mq(
       { from: 's', until: 'l', },
