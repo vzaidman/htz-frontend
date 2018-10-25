@@ -11,6 +11,7 @@ export default function createContext(headers) {
   const hostname = headers.hostname || defaultHostname; //  when using graphql playground in local env;  
   
   const ssoService = config.get('service.sso');
+  const newSsoService = config.get('service.newSso');
   const otpService = config.get('service.otp.base');
   const functionService = config.get('service.htzFunction');
   const serviceBase = switchToDomain(hostname, config.get('service.base'));
@@ -20,6 +21,7 @@ export default function createContext(headers) {
   return {
     headers,
     ssoService,
+    newSsoService,
     otpService,
     serviceBase,
     functionService,

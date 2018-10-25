@@ -372,13 +372,52 @@ class OtpAPI extends RESTDataSource {
   }
 }
 
-class EmailSendingAPI extends RESTDataSource {
+class NewSsoOperationsAPI extends RESTDataSource {
+  get baseURL() {
+    return this.context.newSsoService;
+  }
+
+  async sendPhoneMailConnection(email, confirmation) {
+    return fetch(`${this.baseURL()}/validateEmailPhoneConnect`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, confirmation, }),
+    }).then(
+      success => success.json(),
+      () => Promise.resolve({ success: false, msg: 'server error', })
+    );
+  }
+}
+
+class HtzFunctionOperationsAPI extends RESTDataSource {
   get baseURL() {
     return this.context.functionService;
   }
 
-  async sendPhoneMailConnection() {
-
+  async sendPhoneMailConnection(email, phone, userName, params) {
+    return fetch(`${this.baseURL()}/sendEmailForConfirmation`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        confirmationParams: { email, phone, },
+        confirmationType: 'PHONE_VALIDATION',
+        templateParams: {
+          userName,
+          userMobile: phone,
+          url: this.context.hostname,
+          paramsString: params,
+        },
+      }),
+    }).then(
+      success => JSON.stringify(success),
+      () => Promise.resolve({ success: false, msg: 'server error', })
+    );
   }
 }
 
@@ -389,7 +428,7 @@ class LegacySsoOperationsAPI extends RESTDataSource {
 
   async overrideMobilePhone({ mobile, ssoId, userName, }) {
     const { prefix, suffix, } = UserTransformations.mobileNumberParser(mobile);
-    return fetch(`${this.context.ssoService}r/OverrideMobilePhone`, {
+    return fetch(`${this.baseURL()}r/OverrideMobilePhone`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -415,5 +454,6 @@ const dataSources = () => ({
   FinanceAPI: new FinanceAPI(),
   OtpAPI: new OtpAPI(),
   LegacySsoOperationsAPI: new LegacySsoOperationsAPI(),
+  NewSsoOperationsAPI: new NewSsoOperationsAPI(),
 });
 export default dataSources;
