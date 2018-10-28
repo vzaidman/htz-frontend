@@ -1,9 +1,10 @@
-/* global document */
+/* global document, window */
 /* eslint-disable camelcase */
 import React, { Fragment, } from 'react';
 import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
+import ReactGA from 'react-ga';
 import { IconCheck, LayoutContainer, UserDispenser, Query, } from '@haaretz/htz-components';
 import MainLayout from '../../layouts/MainLayout';
 import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter';
@@ -82,6 +83,18 @@ class StageThankYou extends React.Component {
       'HtzRusr=; domain=.haaretz.co.il; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     document.cookie =
       'TmRusr=; domain=.themarker.com; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+    if (window && window.sessionStorage.getItem('htz-paypal')) {
+      ReactGA.ga('ec:setAction', 'purchase', {
+        id: `${Math.floor(Math.random() * 1000000000000)}`, // (Required) Transaction id (string).
+        list: 'Product Stage Results',
+        revenue: window.sessionStorage.getItem('htz-revenue'),
+        coupon: window.sessionStorage.getItem('htz-paypal'),
+      });
+      ReactGA.ga('send', 'pageview');
+      // set htz-paypal to null.
+      window.sessionStorage.setItem('htz-paypal', null);
+    }
   }
 
   static getInitialProps({ url, }) {
