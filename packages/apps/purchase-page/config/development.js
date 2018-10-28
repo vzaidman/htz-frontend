@@ -12,6 +12,7 @@ module.exports = {
     sso: 'https://devsso.haaretz.co.il',
     payment: 'https://dev-payment.haaretz.co.il',
     image: 'https://images.haarets.co.il/image',
+    userInfoUri: 'https://ms-apps-dev.haaretz.co.il/userInfo',
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
