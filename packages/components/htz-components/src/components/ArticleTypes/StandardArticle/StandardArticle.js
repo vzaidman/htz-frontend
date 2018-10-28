@@ -181,9 +181,9 @@ function StandardArticle({ articleId, slots, }) {
                         return (
                           <WideArticleLayoutRow
                             key={element.contentId}
+                            hideDivider
                             {...(element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                               ? {
-                                  hideDivider: true,
                                   miscStyles: {
                                     display: [ { until: 's', value: 'none', }, ],
                                   },
