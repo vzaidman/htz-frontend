@@ -113,6 +113,7 @@ const ActionButtons = ({
   buttons,
   elementName,
   elementUrl,
+  shouldMainNavBarDisplay,
   globalButtonsStyles,
   globalIconsStyles,
   miscStyles,
@@ -124,6 +125,7 @@ const ActionButtons = ({
     const ActionButton = getAction(name || button);
     return (
       <ActionButton
+        shouldMainNavBarDisplay={shouldMainNavBarDisplay}
         key={index}
         fontSize={-2}
         // Ben:
