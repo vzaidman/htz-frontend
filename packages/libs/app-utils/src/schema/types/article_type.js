@@ -12,7 +12,6 @@ const Article = new GraphQLList(
     resolveType: value =>
       (value.inputTemplate === getInputTemplate('HtzStandardArticle') ||
       value.inputTemplate === getInputTemplate('BlogArticle') ||
-      value.inputTemplate === getInputTemplate('MouseStoryArticle') ||
       value.inputTemplate === getInputTemplate('TmStandardArticle')
         ? articleData
         : content),
