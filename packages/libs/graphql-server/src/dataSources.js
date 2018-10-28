@@ -396,7 +396,8 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
     return this.context.functionService;
   }
 
-  async sendPhoneMailConnection(email, phone, userName, params) {
+  // TODO: https://www.apollographql.com/docs/apollo-server/features/data-sources.html
+  async sendPhoneMailConnection(email, phone, userName, paramString) {
     return fetch(`${this.baseURL()}/sendEmailForConfirmation`, {
       method: 'POST',
       headers: {
@@ -411,7 +412,7 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
           userMobile: phone,
           url: this.context.hostname,
           // eslint-disable-next-line no-undef
-          paramsString: btoa(params),
+          paramsString: btoa(paramString),
         },
       }),
     }).then(
