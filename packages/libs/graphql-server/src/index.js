@@ -31,16 +31,8 @@ async function run() {
   let userInfo;
   let fbInstantSubscribe;
   try {
-<<<<<<< HEAD
     userInfo = await createRemoteSchema(userInfoUri, fetch);
     schemas.push(userInfo);
-=======
-    const userInfo = await createRemoteSchema(userInfoUri, fetch);
-    const fbInstantSubscribe = await createRemoteSchema('https://ms-apps.haaretz.co.il/ms-fb-instant/subscribe', fetch);
-    schemas = mergeSchemas({
-      schemas: [ userInfo, schema, fbInstantSubscribe, ],
-    });
->>>>>>> feat(login): wIP dockerify
   }
   catch (err) {
     console.log(`ms-apps user info / : ${err}`);
