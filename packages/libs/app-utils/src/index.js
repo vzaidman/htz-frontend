@@ -10,6 +10,7 @@ import intersperse from './utils/intersperse';
 // JSON Maps
 import assetMap from './jsonGenerator/jsonMaps/asset';
 import financeTableMap from './jsonGenerator/jsonMaps/financeTable';
+import financeSearchMap from './jsonGenerator/jsonMaps/financeSearch';
 import lineGraphMap from './jsonGenerator/jsonMaps/lineGraph';
 import scatterGraphMap from './jsonGenerator/jsonMaps/scatterGraph';
 import quoteMap from './jsonGenerator/jsonMaps/quote';
@@ -56,6 +57,7 @@ export {
   // JSON Maps
   assetMap,
   financeTableMap,
+  financeSearchMap,
   lineGraphMap,
   scatterGraphMap,
   quoteMap,

@@ -3,6 +3,7 @@ import { RESTDataSource, } from 'apollo-datasource-rest';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
 import {
   financeTableMap,
+  financeSearchMap,
   jsonGenerator,
   lineGraphMap,
   scatterGraphMap,
@@ -320,6 +321,27 @@ class FinanceAPI extends RESTDataSource {
   // eslint-disable-next-line class-methods-use-this
   async getAsset(id) {
     return jsonGenerator({ map: assetMap, args: { id, }, });
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async getAssetsList(query, sortingOrder = null) {
+    const json = jsonGenerator({ map: financeSearchMap, args: { query, }, });
+    if (json && sortingOrder) {
+      json.assets.sort((itemA, itemB) => {
+        const valueA = itemA.type;
+        const valueB = itemB.type;
+        if (sortingOrder.indexOf(valueA) < sortingOrder.indexOf(valueB)) {
+          return -1;
+        }
+        if (sortingOrder.indexOf(valueA) > sortingOrder.indexOf(valueB)) {
+          return 1;
+        }
+
+        // values must be equal
+        return 0;
+      });
+    }
+    return json.assets;
   }
 }
 

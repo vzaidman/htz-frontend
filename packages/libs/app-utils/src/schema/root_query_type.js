@@ -161,6 +161,17 @@ const RootQuery = new GraphQLObjectType({
       },
     },
 
+    financeSearch: {
+      type: new GraphQLList(FinanceAsset),
+      args: {
+        query: { type: new GraphQLNonNull(GraphQLString), },
+        sortingOrder: { type: new GraphQLNonNull(new GraphQLList(GraphQLString)), },
+      },
+      resolve(parentValue, { query, sortingOrder, }, { dataSources, }) {
+        return dataSources.FinanceAPI.getAssetsList(query, sortingOrder);
+      },
+    },
+
     financeTable: {
       type: new GraphQLList(FinanceAsset),
       args: {
