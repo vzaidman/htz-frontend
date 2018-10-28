@@ -9,7 +9,7 @@ module.exports = {
     newSso: 'https://ms-apps.haaretz.co.il/sso',
     sso: 'https://sso.haaretz.co.il',
     image: 'https://images.haarets.co.il/image',
-    userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo-dev',
+    userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
     graphql: defer(function () {
       return `http${
@@ -19,7 +19,9 @@ module.exports = {
     alerts: 'https://alerts.haaretz.co.il',
   },
   appFQDN: defer(function () {
-    return `${this.graphQLSubDomain ? `${this.graphQLSubDomain}.` : ''}${this.domain}`;
+    return `${
+      this.graphQLSubDomain ? `${this.graphQLSubDomain}.` : ''
+    }${this.domain}`;
   }),
   remoteFQDN: defer(function () {
     return `www.${this.domain}`;
