@@ -25,17 +25,23 @@ const scatterGraph = new GraphQLObjectType({
   fields: () => ({
     x: { type: GraphQLFloat, },
     y: { type: GraphQLFloat, },
-    id: { type: GraphQLString, },
     name: { type: GraphQLString, },
     symbol: { type: GraphQLString, },
   }),
 });
 
-const financeType = new GraphQLObjectType({
+const areaGraph = new GraphQLObjectType({
+  name: 'AreaGraphData',
+  fields: () => ({
+    time: { type: GraphQLTimestamp, },
+    value: { type: GraphQLFloat, },
+    peRatio: { type: GraphQLFloat, },
+  }),
+});
+
+const financeGraph = new GraphQLObjectType({
   name: 'FinanceGraph',
   fields: () => ({
-    xLabel: { type: GraphQLString, },
-    yLabel: { type: GraphQLString, },
     startTime: { type: GraphQLTimestamp, },
     endTime: { type: GraphQLTimestamp, },
     dataSource: { type: GraphQLList(
@@ -46,11 +52,15 @@ const financeType = new GraphQLObjectType({
           scatterGraph,
         ],
         resolveType: value => (
-          value.time ? lineGraph : scatterGraph
+          value.time
+            ? value.peRatio
+              ? areaGraph
+              : lineGraph
+            : scatterGraph
         ),
       })
     ), },
   }),
 });
 
-export default financeType;
+export default financeGraph;
