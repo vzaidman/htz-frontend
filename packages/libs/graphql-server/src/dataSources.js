@@ -195,8 +195,13 @@ class SsoAPI extends RESTDataSource {
   }
 
   async payWithExistingCard(paymentData) {
-    console.log(`payWithExistingCard paymentData: ${paymentData}`);
-    return this.get(`sso/r/registerWebUser?${querystring.stringify(paymentData)}`);
+    return this.get(
+      `sso/r/registerWebUser?${querystring.stringify({
+        ...paymentData,
+        connectionType: '764',
+        failure: false,
+      })}`
+    );
   }
 
   async resetPassword(userName) {

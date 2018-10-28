@@ -134,8 +134,6 @@ const RootQuery = new GraphQLObjectType({
         sumPayment: { type: new GraphQLNonNull(GraphQLString), },
         thankYouEmailTemplate: { type: new GraphQLNonNull(GraphQLString), },
         description: { type: new GraphQLNonNull(GraphQLString), },
-        failure: { type: new GraphQLNonNull(GraphQLBoolean), },
-        connectionType: { type: new GraphQLNonNull(GraphQLInt), },
         lastFourDigits: { type: new GraphQLNonNull(GraphQLString), },
       },
       type: GraphQLBoolean,

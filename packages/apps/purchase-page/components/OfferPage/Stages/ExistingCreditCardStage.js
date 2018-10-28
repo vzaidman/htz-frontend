@@ -22,8 +22,6 @@ const PAY_WITH_EXISTING_CARD = gql`
     $sumPayment: String!
     $thankYouEmailTemplate: String!
     $description: String!
-    $failure: Boolean!
-    $connectionType: Int!
     $lastFourDigits: String!
   ) {
     payWithExistingCard(
@@ -37,8 +35,6 @@ const PAY_WITH_EXISTING_CARD = gql`
       sumPayment: $sumPayment
       thankYouEmailTemplate: $thankYouEmailTemplate
       description: $description
-      failure: $failure
-      connectionType: $connectionType
       lastFourDigits: $lastFourDigits
     )
   }
@@ -120,9 +116,6 @@ class Wrapper extends Component {
       sumPayment: paymentData.prices[0].toString(),
       thankYouEmailTemplate,
       description: paymentData.description,
-      failure: false,
-      // does not matter what we send so hardcoded
-      connectionType: '764',
       lastFourDigits: fourDigits.toString(),
     };
     return (
