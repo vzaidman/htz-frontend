@@ -36,7 +36,7 @@ const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }
       reason => console.log(reason.message) // TODO: add error UI
     );
 
-const hidePhone = (phoneNumber) => {
+const hidePhone = phoneNumber => {
   return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(7);
 }
 
@@ -130,7 +130,7 @@ const OtpValidation = () => (
                 </BottomLinks>
               </FormWrapper>
 
-              <OtpForm dataRefs={{host, client, findRoute, doTransition}} />
+              <OtpForm dataRefs={{ host, client, findRout, doTransition, }} />
             </ContentWrapper>
           );
         }}
