@@ -12,8 +12,6 @@ import signUpNewsletterVars from './types/sign_up_newsletter_vars';
 import { GenerateOtp, } from './types/otp_operations_type';
 import OverridePhone from './types/override_phone_type';
 import ConnectMailMobile from './types/connect_mail_mobile_type';
-import ConfirmationParams from './types/confirmation_params_type';
-import TemplateParams from './types/template_params_type';
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -93,15 +91,16 @@ const mutation = new GraphQLObjectType({
     sendMobileEmailConnection: {
       type: ConnectMailMobile,
       args: {
-        confirmationParams: { type: ConfirmationParams, },
-        templateParams: { type: TemplateParams, },
-        confirmationType: { type: GraphQLString, },
+        email: { type: GraphQLString, },
+        phone: { type: GraphQLString, },
+        userName: { type: GraphQLString, },
+        paramString: { type: GraphQLString, },
       },
-      resolve(parentValue, { email, phone, userName, params, }, { dataSources, }) {
+      resolve(parentValue, { email, phone, userName, paramString, }, { dataSources, }) {
         return dataSources
           .HtzFunctionOperationsAPI
           // eslint-disable-next-line no-undef
-          .sendPhoneMailConnection(email, phone, userName, params);
+          .sendPhoneMailConnection(email, phone, userName, paramString);
       },
     },
   },
