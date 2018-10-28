@@ -53,7 +53,10 @@ const handleResponseFromGraphql = ({ client, getFlowByData, email, res, showErro
 
   console.log('***** route', route);
 
-  if (dataSaved.userData.userStatus.isMobileValidated) {
+  if (dataSaved
+    && dataSaved.userData
+    && dataSaved.userData.userStatus
+    && dataSaved.userData.userStatus.isMobileValidated) {
     console.log('mobile is validated!!!!');
     handleGenerateOtp({ client, phoneNum: dataSaved.userData.phoneNum, flow, route, showError, hideError, });
   }
