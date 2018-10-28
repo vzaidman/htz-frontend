@@ -12,8 +12,8 @@ import signUpNewsletterVars from './types/sign_up_newsletter_vars';
 import { GenerateOtp, } from './types/otp_operations_type';
 import OverridePhone from './types/override_phone_type';
 import ConnectMailMobile from './types/connect_mail_mobile_type';
-import ConfirmationParams from './confirmation_params_type';
-import TemplateParams from './template_params_type';
+import ConfirmationParams from './types/confirmation_params_type';
+import TemplateParams from './types/template_params_type';
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -100,6 +100,7 @@ const mutation = new GraphQLObjectType({
       resolve(parentValue, { email, phone, userName, params, }, { dataSources, }) {
         return dataSources
           .HtzFunctionOperationsAPI
+          // eslint-disable-next-line no-undef
           .sendPhoneMailConnection(email, phone, userName, params);
       },
     },

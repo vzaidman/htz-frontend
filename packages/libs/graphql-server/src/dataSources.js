@@ -9,7 +9,6 @@ import {
   scatterGraphMap,
   assetMap,
 } from '@haaretz/app-utils';
-import { encrypt, } from '@haaretz/login/util/encryptionUtil';
 import querystring from 'querystring';
 import config from 'config';
 
@@ -412,7 +411,8 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
           userName,
           userMobile: phone,
           url: this.context.hostname,
-          paramsString: encrypt(params),
+          // eslint-disable-next-line no-undef
+          paramsString: btoa(params),
         },
       }),
     }).then(
