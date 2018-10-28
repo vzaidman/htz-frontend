@@ -37,7 +37,7 @@ export const validatePasswordInput = ({ password, order, }) =>
       ? generatePasswordError('אנא הזינו סיסמה תקינה', order)
       : []); // password is valid
 
-export const validateTermsInput = ({terms order, }) =>
+export const validateTermsInput = ({ terms, order, }) =>
   (!terms
     ? generateTermsError('יש לאשר את תנאי השימוש באתר', order)
     : !isChecked(terms)

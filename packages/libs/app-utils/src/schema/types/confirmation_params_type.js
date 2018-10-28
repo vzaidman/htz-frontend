@@ -1,12 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { GraphQLObjectType, GraphQLString, } from 'graphql';
+import { GraphQLObjectType, } from 'graphql';
 
 const ConfirmationParamsType = new GraphQLObjectType({
   name: 'ConfirmationParamsType',
-  fields: () => ({
-    email: { type: GraphQLString, },
-    phone: { type: GraphQLString, },
-  }),
+  fields: () => ({}),
 });
 
 export default ConfirmationParamsType;

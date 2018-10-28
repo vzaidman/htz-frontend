@@ -477,6 +477,7 @@
   },
   "dependencies": {
     "bunyan": "^1.8.12",
-    "cross-env": "^5.2.0"
+    "cross-env": "^5.2.0",
+    "crypto": "^1.0.1"
   }
 }

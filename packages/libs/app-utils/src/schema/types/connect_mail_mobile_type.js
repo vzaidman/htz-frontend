@@ -1,15 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { GraphQLObjectType, GraphQLString, } from 'graphql';
-import ConfirmationParams from './confirmation_params_type';
-import TemplateParams from './template_params_type';
+import { GraphQLObjectType } from 'graphql';
 
 const ConnectMailMobile = new GraphQLObjectType({
   name: 'ConnectMailMobile',
-  fields: () => ({
-    confirmationParams: { type: ConfirmationParams, },
-    confirmationType: { type: GraphQLString, },
-    templateParams: { type: TemplateParams, },
-  }),
+  fields: () => ({}),
 });
 
 export default ConnectMailMobile;
