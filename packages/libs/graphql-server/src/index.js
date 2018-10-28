@@ -28,20 +28,32 @@ async function run() {
       link: fetcher,
     });
   };
-  let schemas;
+  let schemas = [ schema, ];
+  let userInfo;
+  let fbInstantSubscribe;
   try {
-    const userInfo = await createRemoteSchema(userInfoUri, fetch);
-    const fbInstantSubscribe = await createRemoteSchema('https://ms-apps.haaretz.co.il/ms-fb-instant/subscribe', fetch);
-    schemas = mergeSchemas({
-      schemas: [ userInfo, schema, fbInstantSubscribe, ],
-    });
+    userInfo = await createRemoteSchema(userInfoUri, fetch);
+    schemas.push(userInfo);
   }
   catch (err) {
-    console.log(`ms-apps user info / fb instant error: ${err}`);
+    console.log(`ms-apps user info / : ${err}`);
     // Assign the papi schema to schemas without stitching,
-    // because fetching of userInfo or fb instant failed
-    schemas = schema;
   }
+  try {
+    fbInstantSubscribe = await createRemoteSchema(
+      'https://ms-apps.haaretz.co.il/ms-fb-instant/subscribe',
+      fetch
+    );
+    schemas.push(fbInstantSubscribe);
+  }
+  catch (err) {
+    console.log(`ms-fb-instant error  / : ${err}`);
+    // Assign the papi schema to schemas without stitching,
+  }
+
+  schemas = mergeSchemas({
+    schemas,
+  });
 
   const server = new ApolloServer({
     schema: schemas,
