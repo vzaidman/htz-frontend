@@ -51,7 +51,7 @@ export default gql`
               modDate
               pubDate              
               reportingFrom
-              subtitle
+              subtitle              
               title
             }
             headlineElement: mainElement {

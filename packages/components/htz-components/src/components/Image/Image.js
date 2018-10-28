@@ -151,6 +151,9 @@ class Image extends React.Component {
   };
 
   componentWillMount() {
+    if(this.props.data === null) {
+      return null;
+    }
     const { imgArray, } = this.props.data;
     const { transforms, } = this.props.imgOptions;
 
@@ -176,6 +179,9 @@ Please use the "<Picture />" component`
   }
 
   render() {
+    if(this.props.data === null) {
+      return null;
+    }
     const {
       attrs,
       bgcolor,

@@ -68,8 +68,8 @@ function StandardArticle({ articleId, slots, }) {
 
           const isMouse = standardArticleElement.inputTemplate === 'com.mouse.story.MouseStandardStory';
 
-          const { authors, body, headlineElement, reportingFrom, pubDate, modDate, } = standardArticleElement;
-          const header = isMouse ? { pubDate, modDate, } : standardArticleElement.header;
+          const { authors, body, headlineElement, reportingFrom, } = standardArticleElement;
+          const header = standardArticleElement.header;
 
           return (
             <FelaTheme
@@ -210,7 +210,7 @@ function StandardArticle({ articleId, slots, }) {
                           </WideArticleLayoutRow>
                         );
                       }
-                      return (
+                      return isMouse ? null : (
                         <ArticleLayoutRow
                           key={element.contentId}
                           {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'

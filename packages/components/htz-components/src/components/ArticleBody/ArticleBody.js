@@ -157,12 +157,8 @@ function ArticleBody({ body, }) {
         marginLeft: 'auto',
       })}
     >
-      {body.map((component, i) => {
-         if (i === body.length - 3) {
-            return <UserSurvey />;
-         }
-         return buildComponent(component, i, i === body.length - 1);
-        })}
+      {body.map((component, i) => buildComponent(component, i, i === body.length - 1))}
+      <UserSurvey />
     </FelaComponent>
   );
 }
