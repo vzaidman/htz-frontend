@@ -91,7 +91,7 @@ class Masthead extends Component {
                     value: `translateY(${shouldDisplay ? '0' : '-100'}%)`,
                   },
                 ],
-                zIndex: theme.getZIndex('modal', 1),
+                ...theme.mq({ until: 's', }, { zIndex: theme.getZIndex('modal', 1), }),
               }}
             >
               <LayoutContainer>
