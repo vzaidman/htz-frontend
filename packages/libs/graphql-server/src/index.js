@@ -37,7 +37,6 @@ async function run() {
   }
   catch (err) {
     console.log(`ms-apps user info / : ${err}`);
-    // Assign the papi schema to schemas without stitching,
   }
   try {
     fbInstantSubscribe = await createRemoteSchema(
@@ -48,7 +47,6 @@ async function run() {
   }
   catch (err) {
     console.log(`ms-fb-instant error  / : ${err}`);
-    // Assign the papi schema to schemas without stitching,
   }
 
   schemas = mergeSchemas({
