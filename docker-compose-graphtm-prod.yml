@@ -1,0 +1,39 @@
+version: '3.4'
+services:
+  htz_graphtm:
+    hostname: htz-graphtm
+    build:
+      context: .
+      args:
+        NEXT_BUILD_ID: ${version:-latest}
+    image: 'nexus-ng.themarker.com/htz-graphtm:${version:-latest}'
+    ports:
+      - 5505:5505
+    deploy:
+            replicas: 5
+            update_config:
+              parallelism: 5
+              delay: 30s
+              order: start-first
+            restart_policy:
+              condition: on-failure
+    command: ['yarn', 'workspace', '@haaretz/finance', 'start:d3']
+    environment:
+      - NODE_ENV=production
+      - CONNECTION_PRESET=prod
+      - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
+      # the following environment is optional
+      - PORT=3201
+      - GRAPHQL_PORT=5505
+      - BIND_ADDRESS=react-stage
+      - HOSTNAME=react-stage
+      - GRAPHQL_USE_SSL=true
+      - GRAPHQL_EXPOSE_PORT=false
+      - GRAPHQL_SUB_DOMAIN=grahptm
+
+    networks:
+      - prod01
+
+networks:
+  prod01:
+    external: true

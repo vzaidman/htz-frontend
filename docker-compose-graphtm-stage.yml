@@ -1,0 +1,32 @@
+version: '3.4'
+services:
+  htz_graphtm:
+    hostname: htz-graphtm
+    build:
+      context: .
+      args:
+        NEXT_BUILD_ID: ${version:-latest}
+    image: 'nexus-ng.themarker.com/htz-graphtm:${version:-latest}'
+    ports:
+      - 3303:3303
+    command: ['yarn', 'workspace', '@haaretz/finance', 'start:d3']
+    environment:
+      - NODE_ENV=development
+      - CONNECTION_PRESET=stage
+      - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
+      # the following environment is optional
+      - PORT=3303
+      - GRAPHQL_PORT=3303
+      - BIND_ADDRESS=react-stage
+      - HOSTNAME=react-stage
+      - GRAPHQL_USE_SSL=true
+      - GRAPHQL_EXPOSE_PORT=false
+      - GRAPHQL_SUB_DOMAIN=grahptm-stg
+      - ENGINE_API_KEY=service:htz-stage:6hYWWng421ai05_ERxSikQ
+
+    networks:
+      - dev03
+
+networks:
+  dev03:
+    external: true
