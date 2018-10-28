@@ -210,7 +210,7 @@ function StandardArticle({ articleId, slots, }) {
                           </WideArticleLayoutRow>
                         );
                       }
-                      return (
+                      return isMouse? null : (
                         <ArticleLayoutRow
                           key={element.contentId}
                           {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
