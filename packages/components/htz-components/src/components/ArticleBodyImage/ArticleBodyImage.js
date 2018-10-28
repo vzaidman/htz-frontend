@@ -173,12 +173,13 @@ const wrapperStyle = ({
       ]
       : []),
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-    viewMode === 'OneThirdView' && !isFullScreen
+    [ 'OneThirdView', 'TwoThirdView', 'VerticalView', ].includes(viewMode) && !isFullScreen
       ? {
         float: 'end',
         marginBottom: '0.75rem',
         marginStart: '1.5rem',
-        width: 'calc(100%/3)',
+        ...(viewMode !== 'VerticalView' ? { width: `calc(100% *  ${viewMode === 'OneThirdView' ? 1 : 2}/3)`, } : {}),
+        width: 'calc(100%*1/3)',
       }
       : {},
   ],
