@@ -192,6 +192,12 @@ class PaymentStage extends Component {
                 ReactGA.ga('ec:setAction', 'checkout', {
                   option: paymentType,
                 });
+
+                // Adding paypal purchase.
+                if (window && paymentType === 'PayPal') {
+                  window.sessionStorage.setItem('htz-paypal', `${paymentData.saleCode}`);
+                  window.sessionStorage.setItem('htz-revenue', `${paymentData.prices[0].toString()}`);
+                }
                 ReactGA.ga('send', 'pageview');
 
                 cache.writeData({
