@@ -1,11 +1,14 @@
 import React, { Fragment, } from 'react';
 import Router from 'next/router';
-import { Form, TextInput, Button, } from '@haaretz/htz-components';
+import { Form, TextInput, Button, Login, HtzLink, } from '@haaretz/htz-components';
 import theme from '../../../theme/index';
-import { LoginContentStyles, } from '../../StyleComponents/LoginStyleComponents';
+import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
+import { getUserData, getPhoneNum, getOtpHash, } from '../../../pages/queryutil/userDetailsOperations';
+import BottomLinks from '../../Misc/BottomLinks';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
+const { InputLinkButton, } = LoginMiscLayoutStyles;
 // ------------------------------------
 
 // Methods -------------------
@@ -19,21 +22,21 @@ const validateSmsCodeInput = ({ smsCode, }) =>
 const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }) =>
   loginWithMobile(getPhoneNum(client), smsCode, termsChk, getOtpHash(client))
     .then(
-// eslint-disable-next-line no-undef
+      // eslint-disable-next-line no-undef
       () => { window.location = `https://www.${host}`; },
       reason => console.log(reason.message) // TODO: add error UI
     );
 
-const hidePhone = (phoneNumber) => {
+const hidePhone = phoneNumber => {
   return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(7);
 }
 
 // --------------------------
 
-const OtmForm = (props) => {
+export default (props) => {
   const { host, client, findRout, doTransition, } = props.dataRefs;
 
-  return(
+  return (
     <FormWrapper>
       <ItemCenterer>
         <h5>
@@ -48,7 +51,7 @@ const OtmForm = (props) => {
             clearFormAfterSubmit={false}
             // initialValues={{ email: 'insert email' }}
             validate={validateSmsCodeInput}
-            onSubmit={submit}
+            onSubmit={onSubmit}
             render={({ getInputProps, handleSubmit, clearForm, }) => (
               <Fragment>
                 <div>
