@@ -15,6 +15,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "htz-scripts build && yarn run distFlowTypes",
+    "build:esm": "htz-scripts build:esm",
     "distFlowTypes": "htz-scripts distFlowTypes",
     "clean": "htz-scripts clean",
     "format": "htz-scripts format",

@@ -15,6 +15,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "htz-scripts build",
+    "build:esm": "htz-scripts build:esm",
     "clean": "htz-scripts clean",
     "embeds": "node scripts/update-embed-files.js",
     "format": "htz-scripts format",

@@ -18,6 +18,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "htz-scripts build && yarn run distFlowTypes",
+    "build:esm": "htz-scripts build:esm",
     "distFlowTypes": "htz-scripts distFlowTypes",
     "build:docs": "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
     "clean": "htz-scripts clean",

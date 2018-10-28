@@ -15,6 +15,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "htz-scripts build",
+    "build:esm": "htz-scripts build:esm",
     "clean": "htz-scripts clean",
     "dev": "htz-scripts test --watchAll",
     "format": "htz-scripts format",

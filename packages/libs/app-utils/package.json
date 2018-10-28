@@ -13,6 +13,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "htz-scripts build",
+    "build:esm": "htz-scripts build:esm",
     "clean": "htz-scripts clean",
     "format": "htz-scripts format",
     "gc": "htz-scripts commitizen",

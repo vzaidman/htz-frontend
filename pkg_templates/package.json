@@ -22,6 +22,9 @@
   <% } %>
   "scripts": {
     "build": "htz-scripts build",
+  <% if (pkgType !== 'apps') { %>
+    "build:esm": "htz-scripts build:esm",
+  <% } %>
     "clean": "htz-scripts clean",
     "flow": "htz-scripts flow",
     "format": "htz-scripts format",

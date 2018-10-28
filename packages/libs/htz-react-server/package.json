@@ -10,6 +10,7 @@
   "bin": "./bin/htz-react-server.js",
   "scripts": {
     "build": "htz-scripts build:lib",
+    "build:esm": "htz-scripts build:esm",
     "clean": "htz-scripts clean",
     "dev": "htz-scripts dev:watch",
     "format": "htz-scripts format",
