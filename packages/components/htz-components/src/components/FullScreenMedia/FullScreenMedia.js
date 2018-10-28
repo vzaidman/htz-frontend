@@ -190,7 +190,7 @@ class FullScreenMedia extends React.Component {
         rule={containerStyle}
         isFullScreen={isFullScreen}
         render={({ className, }) => (
-          <figure
+          <span
             className={className}
             onMouseEnter={() => this.toggleHide(false)}
             onMouseLeave={() => this.toggleHide(true)}
@@ -236,7 +236,7 @@ class FullScreenMedia extends React.Component {
                 />
               </Fragment>
             ) : null}
-          </figure>
+          </span>
         )}
       />
     );
