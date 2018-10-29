@@ -44,4 +44,5 @@ module.exports = {
   assetPrefix: '',
   enableHttpLogging: false,
   configName: 'staging',
+  msServiceDomain: 'ms-apps-dev',
 };

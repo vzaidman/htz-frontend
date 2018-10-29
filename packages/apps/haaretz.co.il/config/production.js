@@ -45,4 +45,5 @@ module.exports = {
   assetPrefix: '',
   enableHttpLogging: false,
   configName: 'production',
+  msServiceDomain: 'ms-apps',
 };
