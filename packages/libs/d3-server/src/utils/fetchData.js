@@ -4,8 +4,6 @@ const prepareBody = (type, time, assetId) => ({
   query: `
     query FinanceGraph($type: String!, $time: String!, $assetId: String!) {
       financeGraph(type: $type, time: $time, assetId: $assetId) {
-        xLabel
-        yLabel
         startTime
         endTime
         dataSource {
@@ -21,7 +19,6 @@ const prepareBody = (type, time, assetId) => ({
           ... on ScatterGraphData {
             x
             y
-            id
             name
             symbol
           }
