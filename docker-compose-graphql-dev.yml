@@ -1,0 +1,32 @@
+version: '3.4'
+services:
+  htz_graphql:
+    hostname: htz-graphql
+    build:
+      context: .
+      args:
+        NEXT_BUILD_ID: ${version:-latest}
+    image: 'nexus-ng.themarker.com/htz-graphql:${version:-latest}'
+    ports:
+    - 3205:3205
+    command: ['yarn', 'workspace', '@haaretz/haaretz.co.il', 'start:gql2dev']
+    environment:
+    - NODE_ENV=development
+    - CONNECTION_PRESET=stage
+    - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
+    # the following environment is optional
+    - PORT=3205
+    - GRAPHQL_PORT=3205
+    - BIND_ADDRESS=react-stage
+    - HOSTNAME=react-stage
+    - GRAPHQL_USE_SSL=true
+    - GRAPHQL_EXPOSE_PORT=false
+    - GRAPHQL_SUB_DOMAIN=grahpql-dev
+    - ENGINE_API_KEY=service:htz-stage:6hYWWng421ai05_ERxSikQ
+
+    networks:
+    - dev03
+
+networks:
+  dev03:
+    external: true
