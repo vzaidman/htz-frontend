@@ -8,8 +8,9 @@ module.exports = {
     }),
     newSso: 'https://ms-apps.haaretz.co.il/sso',
     sso: 'https://sso.haaretz.co.il',
-    image: 'https://images.haarets.co.il/image',
     userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo',
+    htzFunction: 'https://ms-apps.haaretz.co.il/htz-function',
+    image: 'https://images.haarets.co.il/image',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
     graphql: defer(function () {
       return `http${

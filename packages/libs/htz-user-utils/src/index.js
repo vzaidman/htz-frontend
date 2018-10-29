@@ -5,6 +5,7 @@ import { UserTypes, } from './user';
 import siteConfig from './site-config';
 import * as DomainUtils from './util/domain-utils';
 import * as CookieUtils from './util/cookie-utils';
+import * as UserTransformations from './util/general-user-data-transform';
 
 export {
   UserFactory,
@@ -14,4 +15,5 @@ export {
   siteConfig,
   DomainUtils,
   CookieUtils,
+  UserTransformations,
 };

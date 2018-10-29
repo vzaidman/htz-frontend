@@ -1,6 +1,6 @@
 /* global fetch */
 import { RESTDataSource, } from 'apollo-datasource-rest';
-import { CookieUtils, } from '@haaretz/htz-user-utils';
+import { CookieUtils, UserTransformations, } from '@haaretz/htz-user-utils';
 import {
   financeTableMap,
   financeSearchMap,
@@ -351,11 +351,111 @@ class FinanceAPI extends RESTDataSource {
   }
 }
 
+class OtpAPI extends RESTDataSource {
+  get baseURL() {
+    return this.context.otpService;
+  }
+
+  async generateOtp(phoneNum) {
+    return fetch(`${this.context.otpService}${config.get('service.otp.generate')}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ typeId: phoneNum, }),
+    }).then(
+      success => success.json(),
+      () => Promise.resolve({ success: false, msg: 'server error', hash: '', })
+    );
+  }
+}
+
+class NewSsoOperationsAPI extends RESTDataSource {
+  get baseURL() {
+    return this.context.newSsoService;
+  }
+
+  async sendPhoneMailConnection(email, confirmation) {
+    return fetch(`${this.baseURL()}/validateEmailPhoneConnect`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, confirmation, }),
+    }).then(
+      success => success.json(),
+      () => Promise.resolve({ success: false, msg: 'server error', })
+    );
+  }
+}
+
+class HtzFunctionOperationsAPI extends RESTDataSource {
+  get baseURL() {
+    return this.context.functionService;
+  }
+
+  // TODO: https://www.apollographql.com/docs/apollo-server/features/data-sources.html
+  async sendPhoneMailConnection(email, phone, userName, paramString) {
+    return fetch(`${this.baseURL()}/sendEmailForConfirmation`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        confirmationParams: { email, phone, },
+        confirmationType: 'PHONE_VALIDATION',
+        templateParams: {
+          userName,
+          userMobile: phone,
+          url: this.context.hostname,
+          // eslint-disable-next-line no-undef
+          paramsString: btoa(paramString),
+        },
+      }),
+    }).then(
+      success => JSON.stringify(success),
+      () => Promise.resolve({ success: false, msg: 'server error', })
+    );
+  }
+}
+
+class LegacySsoOperationsAPI extends RESTDataSource {
+  get baseURL() {
+    return this.context.ssoService;
+  }
+
+  async overrideMobilePhone({ mobile, ssoId, userName, }) {
+    const { prefix, suffix, } = UserTransformations.mobileNumberParser(mobile);
+    return fetch(`${this.baseURL()}r/OverrideMobilePhone`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({
+        ssoId,
+        mobilePrefix: prefix,
+        mobileNumber: suffix,
+        username: userName,
+      }),
+    }).then(
+      success => success.json(),
+      () => Promise.resolve({ success: false, msg: 'server error', hash: '', })
+    );
+  }
+}
+
 const dataSources = () => ({
   PageAPI: new PageAPI(),
   PapiAPI: new PapiAPI(),
   SsoAPI: new SsoAPI(),
   PurchasePageAPI: new PurchasePageAPI(),
   FinanceAPI: new FinanceAPI(),
+  OtpAPI: new OtpAPI(),
+  LegacySsoOperationsAPI: new LegacySsoOperationsAPI(),
+  NewSsoOperationsAPI: new NewSsoOperationsAPI(),
+  HtzFunctionOperationsAPI: new HtzFunctionOperationsAPI(),
 });
 export default dataSources;
