@@ -58,7 +58,7 @@ const containerStyle = ({ isFullScreen, theme, }) => ({
         ),
       ],
     }
-    : {}),
+    : { cursor: 'zoom-in', }),
 });
 
 const iconStyle = ({ theme, isFullScreen, hide, }) => ({
@@ -196,7 +196,7 @@ class FullScreenMedia extends React.Component {
             onMouseLeave={() => this.toggleHide(true)}
           >
             {!isFullScreen ? (
-              <Icon isFullScreen={false} hide={this.state.hide} />
+              <Icon isFullScreen={false} hide={this.state.hide} onClick={this.toggleFullScreen} />
             ) : null}
             <div />
             <FelaComponent
