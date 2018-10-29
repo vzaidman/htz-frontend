@@ -11,17 +11,17 @@ services:
       - 3303:3303
     command: ['yarn', 'workspace', '@haaretz/finance', 'start:d3']
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
       - CONNECTION_PRESET=stage
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
       - PORT=3303
-      - GRAPHQL_PORT=3303
-      - BIND_ADDRESS=react-stage
-      - HOSTNAME=react-stage
+      - BIND_ADDRESS=graphtm-stg
+      - HOSTNAME=graphtm-stg
       - GRAPHQL_USE_SSL=true
       - GRAPHQL_EXPOSE_PORT=false
-      - GRAPHQL_SUB_DOMAIN=grahptm-stg
+      - GRAPHQL_SUB_DOMAIN=grahpql-stg
+      - D3_PORT=3303
       - ENGINE_API_KEY=service:htz-stage:6hYWWng421ai05_ERxSikQ
 
     networks:

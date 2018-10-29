@@ -23,13 +23,13 @@ services:
       - CONNECTION_PRESET=prod
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
-      - PORT=3201
-      - GRAPHQL_PORT=5505
-      - BIND_ADDRESS=react-stage
-      - HOSTNAME=react-stage
+      - PORT=5505
+      - BIND_ADDRESS=graphtm
+      - HOSTNAME=graphtm
       - GRAPHQL_USE_SSL=true
       - GRAPHQL_EXPOSE_PORT=false
-      - GRAPHQL_SUB_DOMAIN=grahptm
+      - GRAPHQL_SUB_DOMAIN=grahpql
+      - D3_PORT=5505
 
     networks:
       - prod01
