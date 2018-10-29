@@ -12,7 +12,6 @@ import {
   IconPaypal,
   EventTracker,
   H,
-  ApolloConsumer,
 } from '@haaretz/htz-components';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 

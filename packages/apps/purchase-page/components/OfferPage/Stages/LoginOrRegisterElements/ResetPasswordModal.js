@@ -9,7 +9,6 @@ import {
   TextInput,
   BIAction,
   H,
-  ApolloConsumer,
 } from '@haaretz/htz-components';
 import isEmail from 'validator/lib/isEmail';
 import gql from 'graphql-tag';

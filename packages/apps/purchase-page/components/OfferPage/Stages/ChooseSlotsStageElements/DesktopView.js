@@ -16,7 +16,6 @@ import {
   GridItem,
   H,
   EventTracker,
-  ApolloConsumer,
 } from '@haaretz/htz-components';
 import PositiveCircle from './PositiveCircle';
 import Phones from '../Elements/Phones';
