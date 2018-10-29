@@ -36,7 +36,10 @@ const PAY_WITH_EXISTING_CARD = gql`
       thankYouEmailTemplate: $thankYouEmailTemplate
       description: $description
       lastFourDigits: $lastFourDigits
-    )
+    ) {
+      success
+      pId
+    }
   }
 `;
 
@@ -124,7 +127,6 @@ class Wrapper extends Component {
           const LoaderIcon = hostname.includes('themarker')
             ? IconTmLoader
             : IconHtzLoader;
-          // todo take care of errors
           if (loading || !this.state.minTimePassed) {
             return (
               <LoaderIcon
@@ -139,8 +141,8 @@ class Wrapper extends Component {
           if (error) {
             return <DisplayError />;
           }
-          // todo: get productId from pay with existing card
-          if (data.payWithExistingCard) {
+
+          if (data.payWithExistingCard.success) {
             ReactGA.ga('ec:addProduct', {
               id: paymentData.saleCode,
               name: `${chosenPaymentArrangement}-${chosenProductContentName}`,
@@ -158,7 +160,7 @@ class Wrapper extends Component {
             return (
               <Redirect
                 destination="thankYou"
-                paramString={`msg=thank_user&product=${paymentData.productID}`}
+                paramString={`msg=thank_user&product=${data.payWithExistingCard.pId}`}
                 replace
               />
             );

@@ -136,7 +136,17 @@ const RootQuery = new GraphQLObjectType({
         description: { type: new GraphQLNonNull(GraphQLString), },
         lastFourDigits: { type: new GraphQLNonNull(GraphQLString), },
       },
-      type: GraphQLBoolean,
+      type: new GraphQLObjectType({
+        name: 'PayWithExistingCardResponse',
+        fields: () => ({
+          pId: {
+            type: GraphQLString,
+          },
+          success: {
+            type: GraphQLBoolean,
+          },
+        }),
+      }),
       resolve(parentValue, paymentData, { dataSources, }) {
         return dataSources.SsoAPI.payWithExistingCard(paymentData);
       },

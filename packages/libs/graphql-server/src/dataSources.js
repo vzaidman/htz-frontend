@@ -195,13 +195,14 @@ class SsoAPI extends RESTDataSource {
   }
 
   async payWithExistingCard(paymentData) {
-    return this.get(
-      `sso/r/registerWebUser?${querystring.stringify({
-        ...paymentData,
-        connectionType: '764',
-        failure: false,
-      })}`
-    );
+    const fetchPath = `${this.baseURL}/sso/r/registerWebUser?${querystring.stringify({
+      ...paymentData,
+      connectionType: '764',
+      failure: false,
+    })}`;
+
+    console.log('fetch path from pay with existing card dataSource: ', fetchPath);
+    return fetch(fetchPath).then(response => response.json());
   }
 
   async resetPassword(userName) {
