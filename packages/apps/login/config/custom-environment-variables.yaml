@@ -1,0 +1,16 @@
+# config/custom-environment-variables.yaml
+useSSL:
+  __name: 'USE_SSL'
+  __format: 'json'
+
+graphQLuseSSL:
+  __name: 'GRAPHQL_USE_SSL'
+  __format: 'json'
+
+graphQLexposedPort:
+  __name: 'GRAPHQL_EXPOSE_PORT'
+  __format: 'json'
+
+enableHttpLogging:
+  __name: 'ENABLE_HTTP_LOGGING'
+  __format: 'json'
