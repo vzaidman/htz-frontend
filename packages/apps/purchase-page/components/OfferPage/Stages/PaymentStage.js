@@ -98,6 +98,38 @@ class PaymentStage extends Component {
     paymentHeaderElLoaded: false,
   };
 
+  componentDidMount() {
+    const {
+      creditCardsDetails,
+      displayPayPal,
+      hasDebt,
+      chosenProductContentName,
+      paymentData,
+      chosenPaymentArrangement,
+    } = this.props;
+
+    if (!creditCardsDetails && !displayPayPal) {
+      if (!hasDebt) {
+        ReactGA.event({
+          category: 'promotions-step-4',
+          action: 'credit -guard',
+          label: chosenProductContentName,
+        });
+        ReactGA.ga('ec:addProduct', {
+          id: paymentData.saleCode,
+          name: `${chosenPaymentArrangement}-${chosenProductContentName}`,
+          brand: `brand-salecode[${paymentData.saleCode}]`,
+          price: paymentData.prices[0].toString(),
+          variant: `promotionNumber-${paymentData.promotionNumber}`,
+        });
+        ReactGA.ga('ec:setAction', 'checkout', {
+          option: 'creditCard',
+        });
+        ReactGA.ga('send', 'pageview');
+      }
+    }
+  }
+
   render() {
     const {
       chosenProductContentName,
@@ -113,23 +145,6 @@ class PaymentStage extends Component {
     } = this.props;
 
     if (!creditCardsDetails && !displayPayPal) {
-      ReactGA.event({
-        category: 'promotions-step-4',
-        action: 'credit-guard',
-        label: chosenProductContentName,
-      });
-      ReactGA.ga('ec:addProduct', {
-        id: paymentData.saleCode,
-        name: `${chosenPaymentArrangement}-${chosenProductContentName}`,
-        brand: `brand-salecode[${paymentData.saleCode}]`,
-        price: paymentData.prices[0].toString(),
-        variant: `promotionNumber-${paymentData.promotionNumber}`,
-      });
-      ReactGA.ga('ec:setAction', 'checkout', {
-        option: 'creditCard',
-      });
-      ReactGA.ga('send', 'pageview');
-
       return (
         <ApolloConsumer>
           {cache => {
@@ -189,6 +204,7 @@ class PaymentStage extends Component {
                   brand: `brand-salecode[${paymentData.saleCode}]`,
                   variant: `promotionNumber-${paymentData.promotionNumber}`,
                 });
+                console.warn('i am herrrreee:: paymentStage');
                 ReactGA.ga('ec:setAction', 'checkout', {
                   option: paymentType,
                 });

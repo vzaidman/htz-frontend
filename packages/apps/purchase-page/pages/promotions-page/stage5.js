@@ -5,7 +5,6 @@ import { FelaComponent, } from 'react-fela';
 import { LayoutContainer, UserDispenser, Query, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 import config from 'config';
-import ReactGA from 'react-ga';
 
 import MainLayout from '../../layouts/MainLayout';
 import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter';
@@ -74,13 +73,13 @@ function Stage5() {
                   },
                 } = clientData;
 
-                if (window && paymentType !== 'PayPal') {
-                  window.sessionStorage.setItem('htz-paypal', null);
+                if (
+                    window && paymentType !== 'PayPal' &&
+                    (window.sessionStorage.getItem('htz-revenue') || window.sessionStorage.getItem('htz-paypal'))
+                ) {
+                  window.sessionStorage.removeItem('htz-paypal');
+                  window.sessionStorage.removeItem('htz-revenue');
                 }
-                ReactGA.ga('ec:setAction', 'checkout', {
-                  option: paymentType,
-                });
-                ReactGA.ga('send', 'pageview');
 
                 const parsedCouponProduct = JSON.parse(couponProduct);
 
