@@ -119,6 +119,66 @@ export default function UserService(config = {}) {
   }
 
   /**
+   * Sign in a user, using mobile number and OTP. Will activate side effects
+   * (in this case: planting cookies)
+   * @param {object} { mobile, otp, user, trmsChk, hash, }
+   * mobile: mobile number
+   * otp: one time password that was issued to the user
+   * trmsChk: the value of the checkbox that verifies the users agreement to
+   * promotional mail sending
+   * hash: the hash that was issued after the generation of the OTP
+   * user: the current user object (prior to login)
+   * @return {*}
+   */
+  function loginWithMobile({ mobile, otp, trmsChk, hash, user, }) {
+    let anonymousId;
+    const { prefix, suffix, } = mobileNumberParser(mobile);
+    if (!user) {
+      const factory = new UserFactory();
+      anonymousId = factory.build().anonymousId;
+    }
+    else {
+      anonymousId = user.anonymousId;
+    }
+    const siteConfig = createSiteConfig();
+    const serviceUrl = `${siteConfig.newSsoDomain}/loginWMobile`;
+    const params = {
+      anonymousId,
+      otp,
+      site: siteConfig.siteId,
+      mobilePrefix: prefix,
+      mobileNumber: suffix,
+      id: hash,
+      // termsChk: trmsChk ? 'on' : 'off',
+      termsChk: trmsChk ? 'on' : 'on',
+    };
+
+    const loginPromise = new Promise((resolve, reject) =>
+      fetch(serviceUrl, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
+      })
+        .then(parseResponse)
+        .then(loginData =>
+          handleSsoResponse(loginData).then(
+            () => {
+              if (onImageLoadCallback) {
+                onImageLoadCallback(); // TODO: add correct callback
+              }
+              resolve();
+            },
+            reason => reject(reason)
+          )
+        )
+    );
+    return withTimeout(loginPromise, defaultTimeout);
+  }
+
+  /**
    * Logout a user from it's current session
    * @param {any} user the currently logged in user
    */
@@ -180,20 +240,30 @@ export default function UserService(config = {}) {
     gRecaptchaResponse,
     user,
   }) {
+    let anonymousId;
+    if (!user) {
+      const factory = new UserFactory();
+      anonymousId = factory.build().anonymousId;
+    }
+    else {
+      anonymousId = user.anonymousId;
+    }
     const siteConfig = createSiteConfig();
     const serviceUrl = `${siteConfig.newSsoDomain}/registerUrlEncoded`;
-    const params = 'newsso=true'
-      + '&layer=createuser'
-      + `&site=${siteConfig.siteId}`
-      + `&userName=${email}`
-      + `&password=${password}`
-      + `&confirmPassword=${confirmPassword}`
-      + `&firstName=${firstName}`
-      + `&lastName=${lastName}`
-      + `&mobilePrefix=${mobilePrefix}`
-      + `&mobileNumber=${mobileNumber}`
-      + `&termsChk=${termsChk ? 'on' : 'off'}`
-      + `&g-recaptcha-response=${gRecaptchaResponse}`;
+    const params =
+      'newsso=true' +
+      '&layer=createuser' +
+      `&site=${siteConfig.siteId}` +
+      `&userName=${email}` +
+      `&password=${password}` +
+      `&confirmPassword=${confirmPassword}` +
+      `&firstName=${firstName}` +
+      `&lastName=${lastName}` +
+      `&mobilePrefix=${mobilePrefix}` +
+      `&mobileNumber=${mobileNumber}` +
+      `&termsChk=${termsChk ? 'on' : 'off'}` +
+      `&anonymousId=${anonymousId}` +
+      `&g-recaptcha-response=${gRecaptchaResponse}`;
 
     const registerPromise = new Promise((resolve, reject) => fetch(serviceUrl, {
       method: 'POST',
@@ -289,6 +359,7 @@ export default function UserService(config = {}) {
   return {
     checkEmailExists,
     login,
+    loginWithMobile,
     logout,
     register,
   };

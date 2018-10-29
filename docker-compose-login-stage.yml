@@ -1,0 +1,31 @@
+version: "3.4"
+services:
+  htz_login_react:
+    hostname: htz-login-app
+    build:
+      context: .
+      dockerfile: Dockerfile-login
+      args:
+        NEXT_BUILD_ID: ${version:-latest}
+    image: 'nexus-ng.themarker.com/htz-promotions-app:${version:-latest}'
+    ports:
+      - 9005:9005
+    environment:
+      - NODE_ENV=production
+      - CONNECTION_PRESET=stage
+      - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
+      # the following environment is optional
+      - PORT=9005
+      - BIND_ADDRESS=login-dev
+      - HOSTNAME=login-dev
+      - GRAPHQL_USE_SSL=true
+      - GRAPHQL_EXPOSE_PORT=false
+      - GRAPHQL_SUB_DOMAIN=graphql-stg
+
+
+    networks:
+      - dev03
+
+networks:
+  dev03:
+    external: true
