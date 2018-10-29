@@ -14,7 +14,7 @@ import Button from '../Button/Button';
 import UPDATE_PAGE_COUNT from './UpdatePageCount';
 import UPDATE_USER_SURVEY from './UpdateUserSurvey';
 
-import { Mutation, } from '../ApolloBoundary/ApolloBoundary';
+import Mutation from '../ApolloBoundary/Mutation';
 import H from '../AutoLevels/H';
 import Section from '../AutoLevels/Section';
 import {

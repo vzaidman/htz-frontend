@@ -7,11 +7,11 @@ import {
   IconClose,
   H,
   UserDispenser,
-  ApolloBoundary,
+  Query,
+  Mutation,
 } from '@haaretz/htz-components';
 import WelcomeCartoon from './WelcomeCartoon';
 
-const { Query, Mutation, } = ApolloBoundary;
 const WELCOME_SCREEN_VIEWED = gql`
   query welcomeScreenViewed($id: String!) {
     userInfo(id: $id) {
@@ -40,7 +40,9 @@ class WelcomePage extends Component {
                   {({ data, loading, error, refetch, }) => {
                     if (loading) return null;
                     if (error) return null;
-                    const { userInfo: { welcomeScreenViewed, }, } = data;
+                    const {
+                      userInfo: { welcomeScreenViewed, },
+                    } = data;
                     if (welcomeScreenViewed) return null;
                     return (
                       <A11yDialog

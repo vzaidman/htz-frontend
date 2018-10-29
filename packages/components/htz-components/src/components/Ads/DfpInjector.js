@@ -1,10 +1,9 @@
 /* global window */
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
-// import { graphql, } from 'react-apollo';
 import gql from 'graphql-tag';
 import DFP, { dfpTargeting, } from '@haaretz/dfp';
+import Query from '../ApolloBoundary/Query';
 import logger from '../../componentsLogger';
 import UserDispenser from '../User/UserDispenser';
 import getSectionPairFromLineage from './utils/getSectionsFromLineage';
@@ -143,7 +142,7 @@ class DfpInjector extends Component {
         if (window.tomer)
          {
            console.log('Client Navigation BLa Bla BLa');
-          
+
          }
         instance.dfp = initDfpScript(dfpConfig, DEBUG);
         window.tomer=true;

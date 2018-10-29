@@ -1,14 +1,13 @@
 // @flow
 import React, { Fragment, } from 'react';
 import gql from 'graphql-tag';
-import { Grid, GridItem, } from '@haaretz/htz-components';
+import { Grid, GridItem, Query, } from '@haaretz/htz-components';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 
 import type { Node, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
 
 import MainLayout from '../../layouts/MainLayout';
-import { Query, } from '../../components/ApolloBoundary/ApolloBoundary';
 import PageRow from '../../components/PageRow/PageRow';
 import RowItem from '../../components/RowItem/RowItem';
 import QuoteSummary from '../../components/QuotePageComponents/QuoteSummary/QuoteSummary';
@@ -20,8 +19,8 @@ import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
 import ShareHoldersTable from '../../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
 
 const OptionQuery: DocumentNode = gql`
-  query OptionData($assetId: String!){
-    assetData(assetId: $assetId){
+  query OptionData($assetId: String!) {
+    assetData(assetId: $assetId) {
       name
       value
       changePercentage
@@ -59,13 +58,14 @@ type Props = {
   },
 };
 
-function options({ url: { query: { assetId, section, }, }, }: Props): Node {
+function options({
+  url: {
+    query: { assetId, section, },
+  },
+}: Props): Node {
   return (
     <MainLayout section={section}>
-      <Query
-        query={OptionQuery}
-        variables={{ assetId, }}
-      >
+      <Query query={OptionQuery} variables={{ assetId, }}>
         {({ loading, error, data, }) => {
           if (error) return null;
           if (loading) return null;
@@ -126,10 +126,7 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                     <RelatedAssets assets={relatedAssets} />
                   </PageRow>
                   <PageRow>
-                    <GraphController
-                      selectedStockId={assetId}
-                      width={900}
-                    />
+                    <GraphController selectedStockId={assetId} width={900} />
                   </PageRow>
                   <PageRow>
                     <Grid
@@ -139,12 +136,8 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                         paddingEnd: '0rem',
                       }}
                     >
-                      <GridItem
-                        width={1 / 3}
-                      >
-                        <RowItem
-                          title="נתוני המסחר"
-                        >
+                      <GridItem width={1 / 3}>
+                        <RowItem title="נתוני המסחר">
                           <QuoteInfoTable
                             id={assetId}
                             tradingStatus
@@ -159,18 +152,14 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                           />
                         </RowItem>
                       </GridItem>
-                      <GridItem
-                        width={2 / 3}
-                      >
+                      <GridItem width={2 / 3}>
                         <FelaComponent
                           style={{
                             display: 'flow',
                             flowDirection: 'column',
                           }}
                         >
-                          <RowItem
-                            title="מחזורים"
-                          >
+                          <RowItem title="מחזורים">
                             <VolumeGraph
                               theme={theme}
                               data={[
@@ -190,9 +179,7 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                               }}
                             />
                           </RowItem>
-                          <RowItem
-                            title="תשואות"
-                          >
+                          <RowItem title="תשואות">
                             <YieldGraph
                               theme={theme}
                               data={[
@@ -236,38 +223,70 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                           paddingEnd: '0rem',
                         }}
                       >
-                        <GridItem
-                          width={1 / 2}
-                        >
+                        <GridItem width={1 / 2}>
                           <QuoteInfoTable
                             id={assetId}
                             fields={[
                               { name: 'numeralChange', display: 'שינוי בש"ח', },
-                              { name: 'changePercentage', display: 'שינוי ב-%', },
+                              {
+                                name: 'changePercentage',
+                                display: 'שינוי ב-%',
+                              },
                               { name: 'unitsVolume', display: 'מחזור ביחידות', },
                               { name: 'volume', display: 'מחזור בש"ח', },
-                              { name: 'openPositions', display: 'פוזיציות פתוחות', },
-                              { name: 'openPositionsChangeRate', display: 'שינוי בפוזיציות פתוחות', },
+                              {
+                                name: 'openPositions',
+                                display: 'פוזיציות פתוחות',
+                              },
+                              {
+                                name: 'openPositionsChangeRate',
+                                display: 'שינוי בפוזיציות פתוחות',
+                              },
                               { name: 'name', display: 'שם נכס בסיס', },
-                              { name: 'redemptionPrice', display: 'מחיר מימוש', },
+                              {
+                                name: 'redemptionPrice',
+                                display: 'מחיר מימוש',
+                              },
                             ]}
                           />
                         </GridItem>
-                        <GridItem
-                          width={1 / 2}
-                        >
+                        <GridItem width={1 / 2}>
                           <QuoteInfoTable
                             id={assetId}
                             fields={[
                               { name: 'contractSize', display: 'גודל חוזה', },
-                              { name: 'expirationDate', display: 'תאריך פקיעה', type: 'date', },
-                              { name: 'daysToExpiration', display: 'ימים לפקיעה', },
-                              { name: 'tradeTime', display: 'תאריך מסחר', type: 'date', },
-                              { name: 'lastTradeTime', display: 'תאריך מסחר אחרון', type: 'date', },
-                              { name: 'assetStateDate', display: 'תאריך שער/מדד קובע', type: 'date', },
-                              { name: 'theoreticalValue', display: 'שווי תאורטי', },
-                              { name: 'theoreticalValueGap', display: 'פער משווי תאורטי', },
-
+                              {
+                                name: 'expirationDate',
+                                display: 'תאריך פקיעה',
+                                type: 'date',
+                              },
+                              {
+                                name: 'daysToExpiration',
+                                display: 'ימים לפקיעה',
+                              },
+                              {
+                                name: 'tradeTime',
+                                display: 'תאריך מסחר',
+                                type: 'date',
+                              },
+                              {
+                                name: 'lastTradeTime',
+                                display: 'תאריך מסחר אחרון',
+                                type: 'date',
+                              },
+                              {
+                                name: 'assetStateDate',
+                                display: 'תאריך שער/מדד קובע',
+                                type: 'date',
+                              },
+                              {
+                                name: 'theoreticalValue',
+                                display: 'שווי תאורטי',
+                              },
+                              {
+                                name: 'theoreticalValueGap',
+                                display: 'פער משווי תאורטי',
+                              },
                             ]}
                           />
                         </GridItem>
@@ -282,9 +301,7 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                         paddingEnd: '0rem',
                       }}
                     >
-                      <GridItem
-                        width={1 / 3}
-                      >
+                      <GridItem width={1 / 3}>
                         <RowItem
                           title="יחסים פיננסיים"
                           miscStyles={{ marginBottom: '2rem', }}
@@ -300,15 +317,9 @@ function options({ url: { query: { assetId, section, }, }, }: Props): Node {
                           />
                         </RowItem>
                       </GridItem>
-                      <GridItem
-                        width={2 / 3}
-                      >
-                        <RowItem
-                          title="בעלי עניין קונצרני"
-                        >
-                          <ShareHoldersTable
-                            shareHolders={shareHolders}
-                          />
+                      <GridItem width={2 / 3}>
+                        <RowItem title="בעלי עניין קונצרני">
+                          <ShareHoldersTable shareHolders={shareHolders} />
                         </RowItem>
                       </GridItem>
                     </Grid>

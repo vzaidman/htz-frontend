@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment, } from 'react';
-import { Grid, GridItem, } from '@haaretz/htz-components';
+import { Grid, GridItem, Query, } from '@haaretz/htz-components';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 
@@ -15,7 +15,6 @@ import GraphController from '../../components/GraphController/GraphController';
 import QuoteInfoTable from '../../components/QuotePageComponents/QuoteInfoTable/QuoteInfoTable';
 import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
-import { Query, } from '../../components/ApolloBoundary/ApolloBoundary';
 
 const ExchangeQuery: DocumentNode = gql`
   query ExchangeData($assetId: String!){
@@ -23,7 +22,7 @@ const ExchangeQuery: DocumentNode = gql`
       name
       value
       changePercentage
-      
+
       subType
       lastTradeTime
       volume

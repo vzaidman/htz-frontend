@@ -1,7 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import Announcer from './Announcer';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 
 const propTypes = {};
 

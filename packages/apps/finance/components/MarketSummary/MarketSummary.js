@@ -5,14 +5,13 @@ import type { StatelessFunctionalComponent, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
-import { H, Grid, GridItem, } from '@haaretz/htz-components';
+import { H, Grid, GridItem, Query, } from '@haaretz/htz-components';
 
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import SectionLink from '../SectionLink/SectionLink';
 
 const MarketSummaryQuery: DocumentNode = gql`
   query MarketSummary($assetsId: [String]!) {
-  financeTable(assetsId: $assetsId) {
+    financeTable(assetsId: $assetsId) {
       name
       value
       changePercentage
@@ -28,19 +27,25 @@ type AssetData = {
   changePercentage: number,
   id: string,
   type: string,
-}
+};
 
 type Props = {
   asset: AssetData,
-  miscStyles? : Object,
+  miscStyles?: Object,
 };
 
-const numToString: number => string = num => (
-  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
-);
+const numToString: number => string = num =>
+  num.toLocaleString('he', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
 // eslint-disable-next-line react/prop-types
-const Item: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, }) => (
+const Item: StatelessFunctionalComponent<any> = ({
+  children,
+  title,
+  miscStyles,
+}) => (
   <FelaComponent
     style={theme => ({
       alignItems: 'center',
@@ -67,7 +72,7 @@ const Item: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, 
   >
     <FelaComponent
       style={theme => ({
-      fontWeight: '700',
+        fontWeight: '700',
         ...theme.type(-1),
       })}
       render="span"
@@ -89,9 +94,11 @@ const Item: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, 
   </FelaComponent>
 );
 
-
 // eslint-disable-next-line react/prop-types
-const MarketSummary:StatelessFunctionalComponent<Props> = ({ asset, miscStyles, }) => {
+const MarketSummary: StatelessFunctionalComponent<Props> = ({
+  asset,
+  miscStyles,
+}) => {
   const { name, value, changePercentage, id, type, } = asset;
   return (
     <FelaTheme
@@ -118,37 +125,33 @@ const MarketSummary:StatelessFunctionalComponent<Props> = ({ asset, miscStyles, 
                 ...theme.type(1),
                 marginBottom: '1rem',
               }}
-              render={({ className, }) => (
-                <H
-                  className={className}
-                >
-                  {name}
-                </H>
-              )}
+              render={({ className, }) => <H className={className}>{name}</H>}
             />
             <FelaComponent
               style={{
                 display: 'flex',
               }}
             >
-              <Item
-                title="שער"
-              >
+              <Item title="שער">
                 {className => (
-                  <span className={className}>
-                    {numToString(value)}
-                  </span>
+                  <span className={className}>{numToString(value)}</span>
                 )}
               </Item>
               <Item
                 title="% שינוי"
                 miscStyles={{
-                  color: Number(changePercentage) < 0
-                    ? theme.color('negative')
-                    : theme.color('positive'),
+                  color:
+                    Number(changePercentage) < 0
+                      ? theme.color('negative')
+                      : theme.color('positive'),
                   direction: 'ltr',
                   ':before': {
-                    content: Number(changePercentage) > 0 ? '"+"' : Number(changePercentage) < 0 ? '"-"' : '""',
+                    content:
+                      Number(changePercentage) > 0
+                        ? '"+"'
+                        : Number(changePercentage) < 0
+                          ? '"-"'
+                          : '""',
                   },
                   ':after': {
                     content: '"%"',
@@ -198,13 +201,11 @@ export default (props: any) => (
       if (loading) return null;
       return (
         <Grid>
-          {
-            assets.map(asset => (
-              <GridItem width={1 / 3}>
-                <MarketSummary key={asset.id} {...props} asset={asset} />
-              </GridItem>
-            ))
-          }
+          {assets.map(asset => (
+            <GridItem width={1 / 3}>
+              <MarketSummary key={asset.id} {...props} asset={asset} />
+            </GridItem>
+          ))}
         </Grid>
       );
     }}

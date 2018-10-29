@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
+import Query from '../../ApolloBoundary/ApolloConsumer';
 import gql from 'graphql-tag';
 import NoSSR from '../../NoSSR/NoSSR';
 

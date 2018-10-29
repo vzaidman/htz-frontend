@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import GoogleAnalyticsInit from './GoogleAnalyticsInit';
 
 const GET_HOST_USER = gql`
@@ -29,7 +29,12 @@ GoogleAnalytics.defaultProps = {
 function GoogleAnalytics({ withEC, withPageView, }) {
   return (
     <Query query={GET_HOST_USER}>
-      {({ data: { hostname, user: { type, }, }, }) => {
+      {({
+        data: {
+          hostname,
+          user: { type, },
+        },
+      }) => {
         const host = hostname.match(/^(?:.*?\.)?(.*)/)[1];
 
         if (!host || !type) {

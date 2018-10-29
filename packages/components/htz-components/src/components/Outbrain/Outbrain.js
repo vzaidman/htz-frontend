@@ -3,7 +3,8 @@ import React from 'react';
 import config from 'config';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
-import { ApolloConsumer, Query, } from '../ApolloBoundary/ApolloBoundary';
+import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
+import Query from '../ApolloBoundary/Query';
 import { appendScript, } from '../../utils/scriptTools';
 
 const GET_OUTBRAIN_DATA = gql`
@@ -59,7 +60,9 @@ class Outbrain extends React.Component {
 }
 
 const OutbrainWithClient = props => (
-  <ApolloConsumer>{client => <Outbrain client={client} {...props} />}</ApolloConsumer>
+  <ApolloConsumer>
+    {client => <Outbrain client={client} {...props} />}
+  </ApolloConsumer>
 );
 
 export default OutbrainWithClient;

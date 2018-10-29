@@ -3,12 +3,12 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
+import { Query, } from '@haaretz/htz-components';
 
 import type { StatelessFunctionalComponent, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
 import type { Asset, } from '../../../types/asset';
 
-import { Query, } from '../../ApolloBoundary/ApolloBoundary';
 import { TdComponent, } from '../../AssetsTable/AssetsTable';
 
 type Field = {
@@ -32,7 +32,10 @@ type TrComponentProps = {
   miscStyles?: Object,
 };
 
-const TradeStatsQuery: (Array<Field>, boolean) => DocumentNode = (fields, tradingStatus) => gql`
+const TradeStatsQuery: (Array<Field>, boolean) => DocumentNode = (
+  fields,
+  tradingStatus
+) => gql`
   query TradeStatsTable($assetsId: [String]){
     financeTable(assetsId: $assetsId){
       ${tradingStatus ? 'tradingStatus\n' : ''}
@@ -40,9 +43,11 @@ const TradeStatsQuery: (Array<Field>, boolean) => DocumentNode = (fields, tradin
     }
   }
 `;
-const numToString: number => string = num => (
-  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
-);
+const numToString: number => string = num =>
+  num.toLocaleString('he', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
 const TrComponent: StatelessFunctionalComponent<TrComponentProps> =
   // eslint-disable-next-line react/prop-types
@@ -75,17 +80,15 @@ const TrComponent: StatelessFunctionalComponent<TrComponentProps> =
           textAlign: 'start',
         }}
       >
-        {
-          type && type === 'date'
-            ? new Date(value).toLocaleString('it-It', {
+        {type && type === 'date'
+          ? new Date(value).toLocaleString('it-It', {
               day: '2-digit',
               month: '2-digit',
               year: 'numeric',
             })
-            : typeof value === 'number'
-              ? numToString(value)
-              : value
-        }
+          : typeof value === 'number'
+            ? numToString(value)
+            : value}
       </TdComponent>
     </FelaComponent>
   );
@@ -116,31 +119,29 @@ const QuoteInfoTable: StatelessFunctionalComponent<Props> =
             })}
             render="table"
           >
-            {
-              tradingStatus ?
+            {tradingStatus ? (
+              <FelaComponent
+                style={theme => ({
+                  color: theme.color('neutral', '-3'),
+                  marginBottom: '1rem',
+                  marginTop: '1rem',
+                  textAlign: 'start',
+                })}
+                render="caption"
+              >
                 <FelaComponent
-                  style={theme => ({
-                    color: theme.color('neutral', '-3'),
-                    marginBottom: '1rem',
-                    marginTop: '1rem',
-                    textAlign: 'start',
-                  })}
-                  render="caption"
+                  render="span"
+                  style={{
+                    ':after': {
+                      content: '": "',
+                    },
+                  }}
                 >
-                  <FelaComponent
-                    render="span"
-                    style={{
-                      ':after': {
-                        content: '": "',
-                      },
-                    }}
-                  >
-                    שלב מסחר
-                  </FelaComponent>
-                  {assets[0].tradingStatus}
+                  שלב מסחר
                 </FelaComponent>
-                : null
-            }
+                {assets[0].tradingStatus}
+              </FelaComponent>
+            ) : null}
 
             <tbody>
               {fields.map(field => (

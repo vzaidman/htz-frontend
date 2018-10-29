@@ -2,9 +2,8 @@
 
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Button, IconHtzLoader, IconTmLoader, } from '@haaretz/htz-components';
+import { Button, IconHtzLoader, IconTmLoader, Query, } from '@haaretz/htz-components';
 import Router from 'next/router';
 import ReactGA from 'react-ga';
 import { FelaComponent, } from 'react-fela';

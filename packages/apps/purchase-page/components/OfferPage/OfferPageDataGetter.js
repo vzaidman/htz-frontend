@@ -1,9 +1,8 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withRouter, } from 'next/router';
-import { extractParamFromUrl, } from '@haaretz/htz-components';
+import { extractParamFromUrl, Query, } from '@haaretz/htz-components';
 
 const GET_PURCHASE_PAGE_DATA = gql`
   query PageData($path: String!) {

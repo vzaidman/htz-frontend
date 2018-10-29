@@ -4,13 +4,11 @@ import React, { Fragment, } from 'react';
 import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
-import { IconCheck, LayoutContainer, UserDispenser, ApolloBoundary, } from '@haaretz/htz-components';
+import { IconCheck, LayoutContainer, UserDispenser, Query, } from '@haaretz/htz-components';
 import MainLayout from '../../layouts/MainLayout';
 import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter';
 import ThankYouStage from '../../components/OfferPage/Stages/ThankYouStage';
 import StageTransition from '../../components/OfferPage/StageTransition/StageTransition';
-
-const { Query, } = ApolloBoundary;
 
 const GET_FB_PAYLOAD = gql`
   query FB_PAYLOAD(

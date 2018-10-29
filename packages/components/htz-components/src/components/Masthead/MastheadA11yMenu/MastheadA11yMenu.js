@@ -1,7 +1,7 @@
 import React, { Fragment, } from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
-import { Query, } from '../../ApolloBoundary/ApolloBoundary';
+import Query from '../../ApolloBoundary/Query';
 import Button from '../../Button/Button';
 import DropdownList from '../../DropdownList/DropdownList';
 import IconAccessibility from '../../Icon/icons/IconAccessibility';

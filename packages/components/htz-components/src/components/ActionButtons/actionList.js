@@ -23,11 +23,9 @@ import type {
   ZenButtonProps,
 } from './types';
 
-import {
-  Query,
-  ApolloConsumer,
-  Mutation,
-} from '../ApolloBoundary/ApolloBoundary';
+import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
+import Mutation from '../ApolloBoundary/Mutation';
+import Query from '../ApolloBoundary/Query';
 import HtzLink from '../HtzLink/HtzLink';
 import EventTracker from '../../utils/EventTracker';
 import Save from './ActionSave';
@@ -132,7 +130,7 @@ export const Button: StatelessFunctionalComponent<ButtonProps> = ({
   children,
   miscStyles,
   title,
-  href,  
+  href,
   ...props
 }): Node => (
   <FelaComponent
@@ -171,7 +169,12 @@ export const Button: StatelessFunctionalComponent<ButtonProps> = ({
     })}
     render={({ className, }: { className: string }) =>
       (href ? (
-        <HtzLink href={href} className={className} attrs={{ title, tabIndex: '-1', }} {...props}>
+        <HtzLink
+          href={href}
+          className={className}
+          attrs={{ title, tabIndex: '-1', }}
+          {...props}
+        >
           {children}
         </HtzLink>
       ) : (

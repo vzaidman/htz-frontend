@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import dynamic from 'next/dynamic';
 
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import { extractAuthorsFromArticle, } from '../GoogleAnalytics/helpers/extractAuthorsFromArticle';
 import LayoutRow from './LayoutRow'; // eslint-disable-line import/no-named-as-default
 import LayoutContainer from './LayoutContainer'; // eslint-disable-line import/no-named-as-default

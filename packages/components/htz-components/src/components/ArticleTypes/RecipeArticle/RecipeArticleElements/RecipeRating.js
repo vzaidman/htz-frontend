@@ -2,7 +2,7 @@
 
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import { ApolloConsumer, } from 'react-apollo';
+import ApolloConsumer from '../../../ApolloBoundary/ApolloConsumer';
 import { FelaComponent, } from 'react-fela';
 import { borderBottom, borderTop, parseStyleProps, } from '@haaretz/htz-css-tools';
 import IconClock from '../../../Icon/icons/IconClock';

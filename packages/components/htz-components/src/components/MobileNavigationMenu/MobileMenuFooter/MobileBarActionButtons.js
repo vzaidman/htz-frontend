@@ -3,7 +3,7 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
-import { Query, } from '../../ApolloBoundary/ApolloBoundary';
+import Query from '../../ApolloBoundary/Query';
 import ActionButtons from '../../ActionButtons/ActionButtons';
 import A11yDialog from '../../A11yDialog/A11yDialog';
 import Button from '../../Button/Button';

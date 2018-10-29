@@ -6,12 +6,11 @@ import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import gql from 'graphql-tag';
 import type { StatelessFunctionalComponent, ComponentType, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
-
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import { Query, } from '@haaretz/htz-components';
 
 const GraphQuery: DocumentNode = gql`
-  query FinanceGraph($type: String!, $time: String!, $assetId: String!){
-    financeGraph (type: $type, time: $time, assetId: $assetId){
+  query FinanceGraph($type: String!, $time: String!, $assetId: String!) {
+    financeGraph(type: $type, time: $time, assetId: $assetId) {
       xLabel
       yLabel
       startTime
@@ -44,22 +43,27 @@ type Props = {
   type: string,
   changeStats: Function,
   miscStyles: ?Object,
-}
+};
 
 const graphTypes: Object = new Map([
-  [ 'line', dynamic(import('./graphs/Line/Line'), {
-    loading: () => null,
-    ssr: false,
-  }), ],
-  [ 'scatter', dynamic(import('./graphs/Scatter/Scatter'), {
-    loading: () => null,
-    ssr: false,
-  }), ],
+  [
+    'line',
+    dynamic(import('./graphs/Line/Line'), {
+      loading: () => null,
+      ssr: false,
+    }),
+  ],
+  [
+    'scatter',
+    dynamic(import('./graphs/Scatter/Scatter'), {
+      loading: () => null,
+      ssr: false,
+    }),
+  ],
 ]);
 
-
 const Graph: StatelessFunctionalComponent<Props> =
-// eslint-disable-next-line react/prop-types
+  // eslint-disable-next-line react/prop-types
   ({ indexId, time, type, miscStyles, ...props }) => {
     const GraphElement: ComponentType<any> = graphTypes.get(type);
     return (
@@ -99,6 +103,5 @@ const Graph: StatelessFunctionalComponent<Props> =
       </Query>
     );
   };
-
 
 export default Graph;

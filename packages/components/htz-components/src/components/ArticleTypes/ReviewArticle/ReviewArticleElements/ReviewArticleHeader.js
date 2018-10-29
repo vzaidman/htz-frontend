@@ -2,7 +2,7 @@
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
-import { ApolloConsumer, } from 'react-apollo';
+import ApolloConsumer from '../../../ApolloBoundary/ApolloConsumer';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import HeaderText from '../../../ArticleHeader/HeaderText';

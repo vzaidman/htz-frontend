@@ -8,7 +8,7 @@ import gql from 'graphql-tag';
 import ActionButtons from '../ActionButtons/ActionButtons';
 import PlusClose from '../Animations/PlusClose';
 import { Button, } from '../ActionButtons/actionList';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 
 const IS_MOUSE_STORY: Object = gql`
   query isMouseStory {

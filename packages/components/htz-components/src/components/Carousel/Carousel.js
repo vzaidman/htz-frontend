@@ -1,10 +1,10 @@
 /* global window, document, navigator */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { ApolloConsumer, } from 'react-apollo';
 import { createComponent, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
+import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const propTypes = {

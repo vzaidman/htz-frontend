@@ -1,7 +1,6 @@
 /* global sessionStorage localStorage */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { Query, } from 'react-apollo';
 import { FelaComponent, } from 'react-fela';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { htzTheme, } from '@haaretz/htz-theme';
@@ -17,6 +16,7 @@ import {
   RouteChangeListener,
   UserInjector,
   PremiumContentMeta,
+  Query,
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -61,7 +61,9 @@ class ArticleLayout extends React.Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const nextArticleId = nextProps.url.query.path.match(/(?:.*-?)(1\.\d+.*)/)[1];
+    const nextArticleId = nextProps.url.query.path.match(
+      /(?:.*-?)(1\.\d+.*)/
+    )[1];
 
     if (!prevState.articleId || prevState.articleId !== nextArticleId) {
       return { articleId: nextArticleId, };
@@ -94,7 +96,10 @@ class ArticleLayout extends React.Component {
     const history = JSON.parse(sessionStorage.getItem('readingHistory')) || [];
     if (!history.includes(articleId)) {
       history.push(articleId);
-      sessionStorage.setItem('readingHistory', JSON.stringify(history, null, 2));
+      sessionStorage.setItem(
+        'readingHistory',
+        JSON.stringify(history, null, 2)
+      );
     }
   };
 
@@ -131,10 +136,13 @@ class ArticleLayout extends React.Component {
               isOsakaDisplayed: false,
             },
           });
-          const titleSEO = `${lineage[0].name} - ${lineage[1] ? lineage[1].name : ''} - ${
-            lineage.length > 2 ? lineage[lineage.length - 1].name : ''
-          }`;
-          const standardArticleElement = slots.article.find(({ inputTemplate, }) => inputTemplate && inputTemplate.endsWith('StandardArticle'));
+          const titleSEO = `${lineage[0].name} - ${
+            lineage[1] ? lineage[1].name : ''
+          } - ${lineage.length > 2 ? lineage[lineage.length - 1].name : ''}`;
+          const standardArticleElement = slots.article.find(
+            ({ inputTemplate, }) =>
+              inputTemplate && inputTemplate.endsWith('StandardArticle')
+          );
           const isPremiumContent = standardArticleElement
             ? standardArticleElement.isPremiumContent
             : null;
@@ -143,12 +151,10 @@ class ArticleLayout extends React.Component {
               <Head>
                 <title>{titleSEO}</title>
               </Head>
-              {
-                // render <PremiumContentMeta/> only when isPremiumContent is defined
-                isPremiumContent !== null
-                  ? <PremiumContentMeta isPremiumContent={isPremiumContent} />
-                  : null
-              }
+              {// render <PremiumContentMeta/> only when isPremiumContent is defined
+              isPremiumContent !== null ? (
+                <PremiumContentMeta isPremiumContent={isPremiumContent} />
+              ) : null}
               <ScrollListener />
               <RouteChangeListener />
               <UserInjector />

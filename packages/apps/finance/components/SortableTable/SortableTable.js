@@ -3,7 +3,7 @@ import Link from 'next/link';
 import gql from 'graphql-tag';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
-import { IconBack, } from '@haaretz/htz-components';
+import { IconBack, Query, } from '@haaretz/htz-components';
 
 import type { StyleProps, } from '@haaretz/htz-css-tools';
 import type { Node, } from 'react';
@@ -11,7 +11,6 @@ import type { DocumentNode, } from 'graphql/language/ast';
 import type { Asset, } from '../../types/asset';
 
 import { TdComponent, } from '../AssetsTable/AssetsTable';
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
 import SectionLink from '../SectionLink/SectionLink';
 
 const TableQuery: (Array<string>) => DocumentNode = fields => gql`

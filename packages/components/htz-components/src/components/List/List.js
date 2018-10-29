@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
 import getView from './getView';
 import EventTracker from '../../utils/EventTracker';
 

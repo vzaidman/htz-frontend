@@ -2,7 +2,7 @@
 import React from 'react';
 import querystring from 'querystring';
 import gql from 'graphql-tag';
-import { ApolloConsumer, } from '../ApolloBoundary/ApolloBoundary';
+import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
 
 const GET_USER_ID = gql`
   query GetUserId {
@@ -16,7 +16,9 @@ export default function GetReadingList() {
   return (
     <ApolloConsumer>
       {cache => {
-        const { user: { id: userId, }, } = cache.readQuery({
+        const {
+          user: { id: userId, },
+        } = cache.readQuery({
           query: GET_USER_ID,
         });
         if (userId) {

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { ApolloConsumer, } from 'react-apollo';
 import ReactGA from 'react-ga';
 import {
   borderBottom,
@@ -16,6 +15,7 @@ import {
   GridItem,
   H,
   EventTracker,
+  ApolloConsumer,
 } from '@haaretz/htz-components';
 import PositiveCircle from './PositiveCircle';
 import Phones from '../Elements/Phones';

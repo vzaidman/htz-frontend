@@ -5,7 +5,8 @@ import config from 'config';
 import { FelaComponent, } from 'react-fela';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
 import gql from 'graphql-tag';
-import { Mutation, Query, } from '../ApolloBoundary/ApolloBoundary';
+import Query from '../ApolloBoundary/Query';
+import Mutation from '../ApolloBoundary/Mutation';
 import IconAlefLogoTransparent from '../Icon/icons/IconAlefLogoTransparent';
 
 import UserDispenser from '../User/UserDispenser';

@@ -2,8 +2,7 @@
 import React from 'react';
 import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
-import { LayoutContainer, UserDispenser, } from '@haaretz/htz-components';
-import { Query, } from 'react-apollo';
+import { LayoutContainer, UserDispenser, Query, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 import config from 'config';
 

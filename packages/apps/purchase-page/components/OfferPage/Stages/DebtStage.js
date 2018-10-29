@@ -2,8 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import { Button, CheckBox, Form, BIAction, } from '@haaretz/htz-components';
-import { ApolloConsumer, } from 'react-apollo';
+import {
+  Button,
+  CheckBox,
+  Form,
+  BIAction,
+  ApolloConsumer,
+} from '@haaretz/htz-components';
 import Router, { withRouter, } from 'next/router';
 import pathGenerator from './utils/pathGenerator';
 
@@ -83,7 +88,11 @@ function StageDebt({ pastDebts, router, }) {
             underAmount,
             currency,
             mistake: { text, href, content, },
-            form: { validateError, checkBox: { label, note, }, submit, },
+            form: {
+              validateError,
+              checkBox: { label, note, },
+              submit,
+            },
           },
         },
       }) => (

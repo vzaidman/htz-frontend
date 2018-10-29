@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { appendScript, } from '../../../utils/scriptTools';
-import { Query, } from '../../ApolloBoundary/ApolloBoundary';
+import Query from '../../ApolloBoundary/Query';
 
 const GET_CANONICAL = gql`
   query GetCanonicalUrl {

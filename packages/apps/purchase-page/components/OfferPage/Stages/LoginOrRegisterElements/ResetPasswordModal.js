@@ -8,9 +8,9 @@ import {
   TextInput,
   BIAction,
   H,
+  ApolloConsumer,
 } from '@haaretz/htz-components';
 import isEmail from 'validator/lib/isEmail';
-import { ApolloConsumer, } from 'react-apollo';
 import gql from 'graphql-tag';
 import CloseModalButton from '../Elements/CloseModalButton';
 

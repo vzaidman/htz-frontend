@@ -2,9 +2,8 @@ import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import ReactGA from 'react-ga';
-import { ApolloConsumer, } from 'react-apollo';
 import { borderTop, borderBottom, } from '@haaretz/htz-css-tools';
-import { Button, EventTracker, H, } from '@haaretz/htz-components';
+import { Button, EventTracker, H, ApolloConsumer, } from '@haaretz/htz-components';
 import PositiveCircle from './PositiveCircle';
 import Phones from '../Elements/Phones';
 

@@ -3,8 +3,8 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-import { ApolloConsumer, } from 'react-apollo';
-import { Query, } from '../../ApolloBoundary/ApolloBoundary';
+import Query from '../../ApolloBoundary/Query';
+import ApolloConsumer from '../../ApolloBoundary/ApolloConsumer';
 
 import LayoutContainer from '../../PageLayout/LayoutContainer';
 import WideArticleLayoutRow from '../../PageLayout/WideArticleLayoutRow';

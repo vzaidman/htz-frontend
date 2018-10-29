@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment, } from 'react';
-import { Grid, GridItem, } from '@haaretz/htz-components';
+import { Grid, GridItem, Query, } from '@haaretz/htz-components';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 
@@ -11,7 +11,6 @@ import MainLayout from '../../layouts/MainLayout';
 import PageRow from '../../components/PageRow/PageRow';
 import RowItem from '../../components/RowItem/RowItem';
 import GraphController from '../../components/GraphController/GraphController';
-import { Query, } from '../../components/ApolloBoundary/ApolloBoundary';
 import QuoteSummary from '../../components/QuotePageComponents/QuoteSummary/QuoteSummary';
 import QuoteInfoTable from '../../components/QuotePageComponents/QuoteInfoTable/QuoteInfoTable';
 import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';

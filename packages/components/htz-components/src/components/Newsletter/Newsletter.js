@@ -1,7 +1,7 @@
 /* global localStorage */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Mutation, } from '../ApolloBoundary/ApolloBoundary';
+import Mutation from '../ApolloBoundary/Mutation';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import submitNewsletter from './mutations/submitNewsletter';
@@ -63,29 +63,27 @@ const defaultProps = {
 const Newsletter = ({ renderFrequency, ...props }) => (
   <NoSSR>
     <ShouldRenderNewsletterProvider>
-      {
-        shouldRenderNewsletter => {
-          if (shouldRenderNewsletter === false) {
-            return null;
-          }
-          return (
-            <Mutation mutation={submitNewsletter}>
-              {(signUpNewsletter, { data, loading, }) => (
-                <UserDispenser
-                  render={({ user: { email, }, }) => (
-                    <NewsletterWithoutApollo
-                      signUpNewsletter={signUpNewsletter}
-                      loading={loading}
-                      userEmail={email}
-                      {...props}
-                    />
-                  )}
-                />
-              )}
-            </Mutation>
-          );
+      {shouldRenderNewsletter => {
+        if (shouldRenderNewsletter === false) {
+          return null;
         }
-      }
+        return (
+          <Mutation mutation={submitNewsletter}>
+            {(signUpNewsletter, { data, loading, }) => (
+              <UserDispenser
+                render={({ user: { email, }, }) => (
+                  <NewsletterWithoutApollo
+                    signUpNewsletter={signUpNewsletter}
+                    loading={loading}
+                    userEmail={email}
+                    {...props}
+                  />
+                )}
+              />
+            )}
+          </Mutation>
+        );
+      }}
     </ShouldRenderNewsletterProvider>
   </NoSSR>
 );

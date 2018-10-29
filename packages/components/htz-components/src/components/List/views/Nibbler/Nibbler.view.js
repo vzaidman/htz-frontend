@@ -1,9 +1,7 @@
 import React, { Fragment, } from 'react';
 
-// import { Query, } from 'react-apollo';
 import { FelaComponent, } from 'react-fela';
 import { borderTop, } from '@haaretz/htz-css-tools';
-// import TEMP_QUERY from './Nibbler.query.js';
 
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
