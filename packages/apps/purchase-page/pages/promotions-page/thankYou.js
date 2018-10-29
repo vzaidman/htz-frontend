@@ -92,8 +92,9 @@ class StageThankYou extends React.Component {
         coupon: window.sessionStorage.getItem('htz-paypal'),
       });
       ReactGA.ga('send', 'pageview');
-      // set htz-paypal to null.
-      window.sessionStorage.setItem('htz-paypal', null);
+      // set htz-paypal to null to prevent sending the same data if user reload thankYou page.
+      window.sessionStorage.removeItem('htz-paypal');
+      window.sessionStorage.removeItem('htz-revenue');
     }
   }
 
