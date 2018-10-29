@@ -43,4 +43,5 @@ module.exports = {
   assetPrefix: '',
   enableHttpLogging: false,
   subDomain: process.env.SUBDOMAIN,
+  msServiceDomain: 'ms-apps-dev',
 };
