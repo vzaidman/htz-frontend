@@ -8,6 +8,11 @@ module.exports = {
     }),
     newSso: 'https://ms-apps-dev.haaretz.co.il/sso',
     sso: 'https://devsso.haaretz.co.il',
+    otp: {
+      base: 'https://ms-apps-dev.haaretz.co.il/otp',
+      generate: '/generate',
+      validate: '/validate',
+    },
     userInfoUri: 'https://ms-apps-dev.haaretz.co.il/userInfo',
     htzFunction: 'https://ms-apps-dev.haaretz.co.il/htz-function',
     image: 'https://images.haarets.co.il/image',
