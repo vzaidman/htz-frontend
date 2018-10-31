@@ -1,4 +1,5 @@
 /* global fetch */
+import config from 'config';
 import { RESTDataSource, } from 'apollo-datasource-rest';
 import { CookieUtils, UserTransformations, } from '@haaretz/htz-user-utils';
 import {
