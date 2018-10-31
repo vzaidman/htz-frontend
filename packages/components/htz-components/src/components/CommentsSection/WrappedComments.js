@@ -51,7 +51,7 @@ class CommentsWithApollo extends React.Component {
   initNewComment = (commentAuthor, commentText, parentCommentId, submitNewComment) => {
     const articleId = this.props.articleId;
     const commentElementId = this.props.contentId;
-    const cookie = document && document.cookie;
+    const cookie = typeof document !== 'undefined' && document.cookie;
     submitNewComment({
       variables: {
         commentText,
