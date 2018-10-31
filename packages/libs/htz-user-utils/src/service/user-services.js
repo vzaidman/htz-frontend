@@ -1,5 +1,6 @@
 /* global fetch Headers */
 import UserFactory from '../user-factory-cookie-based';
+import { mobileNumberParser, } from '../util/general-user-data-transform';
 import { plantCookie, } from '../util/cookie-utils';
 import createSiteConfig from '../site-config';
 
