@@ -36,9 +36,7 @@ const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }
       reason => console.log(reason.message) // TODO: add error UI
     );
 
-const hidePhone = phoneNumber => {
-  return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(7);
-}
+const hidePhone = phoneNumber => `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
 
 // --------------------------
 
@@ -85,7 +83,7 @@ const OtpValidation = () => (
                             <InputLinkButton>
                               <button
                                 data-role="resend"
-                                onClick={(e) => {
+                                onClick={e => {
                                   e.preventDefault();
                                   const route = doTransition('sendAgain');
                                   Router.push(route);
