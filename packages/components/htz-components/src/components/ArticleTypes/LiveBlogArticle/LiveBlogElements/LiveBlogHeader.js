@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import { ApolloConsumer, } from 'react-apollo';
 
 import HeaderText from '../../../ArticleHeader/HeaderText';
-import ArticleHeaderMeta from '../../../ArticleHeader/ArticleHeaderMeta';
+// import ArticleHeaderMeta from '../../../ArticleHeader/ArticleHeaderMeta';
+import LiveBlogHeaderMeta from './LiveBlogHeaderMeta';
 import HeadlineElement from '../../../HeadlineElement/HeadlineElement';
 import Breadcrumbs from '../../../Breadcrumbs/Breadcrumbs';
 import ShareBar from '../../../ShareBar/ShareBar';
@@ -147,11 +148,11 @@ function Header({
                     />
                   )}
                 />
-                <ArticleHeaderMeta
+                <LiveBlogHeaderMeta
                   authors={authors}
                   publishDate={pubDate}
                   modifiedDate={modDate}
-                  reportingFrom={reportingFrom}
+                //   reportingFrom={reportingFrom}
                   miscStyles={{
                     marginTop: [
                       { until: 's', value: '3rem', },

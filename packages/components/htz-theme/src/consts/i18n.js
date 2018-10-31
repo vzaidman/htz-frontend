@@ -345,6 +345,10 @@ export const reviewRatingI18n = Object.freeze({
   ratingTitle: 'דירוג',
 });
 
+export const liveBlogI18n = Object.freeze({
+  LiveUpdate: 'LIVE',
+});
+
 export const articleLayoutI18n = Object.freeze({
   commentSectionTitle: 'תגובות',
 });

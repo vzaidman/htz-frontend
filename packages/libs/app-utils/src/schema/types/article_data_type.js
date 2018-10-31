@@ -102,6 +102,7 @@ const ArticleData = new GraphQLObjectType({
           fields: () => ({
             title: { type: GraphQLString, },
             titleMobile: { type: GraphQLString, },
+            keyEvent: { type: GraphQLString, },
             pubDate: { type: date, },
             body: { type: articleBody, },
             inputTemplate: { type: GraphQLString, },

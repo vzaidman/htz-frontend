@@ -11,8 +11,12 @@ import ArticleLayoutRow from '../../PageLayout/ArticleLayoutRow';
 import ArticleLayout from '../../PageLayout/ArticleLayout';
 import getComponent from '../../../utils/componentFromInputTemplate';
 import ArticleBody from '../../ArticleBody/ArticleBody';
-import ArticleHeaderMeta from '../../ArticleHeader/ArticleHeaderMeta';
-import LiveBlogHeader from './LiveBlogElements/LiveBlogHeader';
+// import ArticleHeaderMeta from '../../ArticleHeader/ArticleHeaderMeta';
+import LiveBlogHeaderMeta from './LiveBlogElements/LiveBlogHeaderMeta';
+import TimeLine from './LiveBlogElements/TimeLine';
+import StandardArticleHeader from '../StandardArticle/StandardArticleElements/StandardArticleHeader';
+
+// import LiveBlogHeader from './LiveBlogElements/LiveBlogHeader';
 import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
 import { buildUrl, } from '../../../utils/buildImgURLs';
@@ -71,6 +75,10 @@ function LiveBlog({ articleId, slots, }) {
           const { authors, body, headlineElement, reportingFrom, pubDate, modDate, liveblogItems, isLiveUpdate, isDisplayBlogitemsDatetime, } = LiveBlogElement;
           const header = isMouse ? { pubDate, modDate, } : LiveBlogElement.header;
 
+        //   let timeLineItems = [];
+          const timeLineItems = liveblogItems.filter(value => value.keyEvent);
+
+          console.warn('timeLineItems: ', timeLineItems);
           console.warn('liveblogItems: ', liveblogItems);
           console.warn('isLiveUpdate: ', isLiveUpdate);
           console.warn('isDisplayBlogitemsDatetime: ', isDisplayBlogitemsDatetime);
@@ -103,7 +111,7 @@ function LiveBlog({ articleId, slots, }) {
                       extend: [ theme.mq({ from: 'l', }, { width: 'calc(100% - 300px - 8rem)', }), ],
                     }}
                   >
-                    <LiveBlogHeader
+                    <StandardArticleHeader
                       {...header}
                       articleId={articleId}
                       authors={authors}
@@ -158,13 +166,40 @@ function LiveBlog({ articleId, slots, }) {
                                   margineliaComponent={
                                     <Fragment>
                                       {authors ? (
-                                        <ArticleHeaderMeta
+                                        <LiveBlogHeaderMeta
                                           authors={authors}
-                                          reportingFrom={reportingFrom}
+                                        //   reportingFrom={reportingFrom}
+                                          isLiveUpdate={isLiveUpdate}
+                                          isDisplayBlogitemsDatetime={isDisplayBlogitemsDatetime}
+                                          liveblogItems={liveblogItems}
                                           publishDate={header.pubDate}
                                           modifiedDate={header.modDate}
                                         />
                                       ) : null}
+
+                                      <TimeLine 
+                                        timeLineItems={timeLineItems}
+                                      />
+                                      
+                                      {/* <TimeLine
+                                          reviewImgData={itemCoverImg}
+                                          reviewType={reviewType}
+                                          amenitiesItems={amenities}
+                                          reviewStars={reviewStars}
+                                          miscStyles={{
+                                            marginBottom: [ { until: 'l', value: '5rem', }, ],
+                                            ...theme.mq(
+                                              { until: 'm', },
+                                              {
+                                                padding: '2rem',
+                                                marginInlineStart: '0rem',
+                                                marginInlineEnd: '0rem',
+                                                marginTop: '-3rem',
+                                                backgroundColor: theme.color('primary', '-5'),
+                                              }
+                                            ),
+                                          }}
+                                        /> */}
                                     </Fragment>
                                   }
                                 >

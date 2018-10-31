@@ -141,6 +141,7 @@ export default gql`
             liveblogItems {
               title
               titleMobile
+              keyEvent
               pubDate
               inputTemplate
               contentId
