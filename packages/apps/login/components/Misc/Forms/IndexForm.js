@@ -18,11 +18,11 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 const generateEmailError = message => [ { name: 'email', order: 1, errorText: message, }, ];
 
 const validateEmailInput = ({ email, }) =>
-(!email
-  ? generateEmailError('אנא הזינו כתובת דוא”ל')
-  : !isEmail(email)
-  ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
-  : []); // email is valid
+  (!email
+    ? generateEmailError('אנא הזינו כתובת דוא”ל')
+    : !isEmail(email)
+      ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
+      : []); // email is valid
 
 const handleGenerateOtp = ({ phoneNum, client, flow, route, showError, hideError, }) =>
   generateOtp(client)({ typeId: phoneNum, })
@@ -35,36 +35,44 @@ const handleGenerateOtp = ({ phoneNum, client, flow, route, showError, hideError
       else {
         showError(json.msg);
       }
-  });
+    });
 
-const handleResponseFromGraphql = ({ client, getFlowByData, email, res, showError, hideError, }) => {
-  const dataSaved = saveUserData(client)({ userData: res.userByMail, });
-  const transformedObj = objTransform(res);
+const handleResponseFromGraphql =
+  ({ client, getFlowByData, email, res, showError, hideError, }) => {
+    const dataSaved = saveUserData(client)({ userData: res.userByMail, });
+    const transformedObj = objTransform(res);
 
-  console.log(`data is: ${JSON.stringify(dataSaved)}, email is: ${email}`);
+    console.log(`data is: ${JSON.stringify(dataSaved)}, email is: ${email}`);
 
-  const flow = getFlowByData(transformedObj.user);
-  storeFlowNumber(client)(flow.flowNumber);
+    const flow = getFlowByData(transformedObj.user);
+    storeFlowNumber(client)(flow.flowNumber);
 
-  console.log('**** initial transition', flow.initialTransition);
+    console.log('**** initial transition', flow.initialTransition);
 
-  const { route, metadata, } = parseRouteInfo(flow.initialTransition);
-  writeMetaDataToApollo(client, metadata);
+    const { route, metadata, } = parseRouteInfo(flow.initialTransition);
+    writeMetaDataToApollo(client, metadata);
 
-  console.log('***** route', route);
+    console.log('***** route', route);
 
-  if (dataSaved
-    && dataSaved.userData
-    && dataSaved.userData.userStatus
-    && dataSaved.userData.userStatus.isMobileValidated) {
-    console.log('mobile is validated!!!!');
-    handleGenerateOtp({ client, phoneNum: dataSaved.userData.phoneNum, flow, route, showError, hideError, });
-  }
-  else {
-    console.log('mobile is not validated!!!');
-    Router.push(route);
-  }
-};
+    if (dataSaved
+      && dataSaved.userData
+      && dataSaved.userData.userStatus
+      && dataSaved.userData.userStatus.isMobileValidated) {
+      console.log('mobile is validated!!!!');
+      handleGenerateOtp({
+        client,
+        phoneNum: dataSaved.userData.phoneNum,
+        flow,
+        route,
+        showError,
+        hideError,
+      });
+    }
+    else {
+      console.log('mobile is not validated!!!');
+      Router.push(route);
+    }
+  };
 
 const onSubmit = (client, getFlowByData, showError, hideError) => ({ email, }) => {
   // mockDataFromUserInfo(client)(email)
