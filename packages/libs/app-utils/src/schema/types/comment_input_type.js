@@ -9,6 +9,7 @@ const CommentInput = new GraphQLInputObjectType({
     parentCommentId: { type: GraphQLString, },
     commentText: { type: GraphQLString, },
     commentAuthor: { type: GraphQLString, },
+    cookie: { type: GraphQLString, },
   }),
 });
 

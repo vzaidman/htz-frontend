@@ -72,6 +72,7 @@ class PapiAPI extends RESTDataSource {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          Cookie: newComment.cookie,
         },
       }
     );
