@@ -1,3 +1,4 @@
+/* global document */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createLogger, } from '@haaretz/app-utils';
@@ -50,6 +51,7 @@ class CommentsWithApollo extends React.Component {
   initNewComment = (commentAuthor, commentText, parentCommentId, submitNewComment) => {
     const articleId = this.props.articleId;
     const commentElementId = this.props.contentId;
+    const cookie = document && document.cookie;
     submitNewComment({
       variables: {
         commentText,
@@ -57,6 +59,7 @@ class CommentsWithApollo extends React.Component {
         articleId,
         commentElementId,
         parentCommentId,
+        cookie,
       },
     })
       .then(({ data, }) => {

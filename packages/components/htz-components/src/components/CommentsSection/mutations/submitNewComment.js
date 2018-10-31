@@ -8,6 +8,7 @@ export default gql`
     $articleId: String!
     $commentText: String!
     $commentAuthor: String!
+    $cookie: String
   ) {
     addComment(
       newComment: {
@@ -16,6 +17,7 @@ export default gql`
         articleId: $articleId
         commentAuthor: $commentAuthor
         commentText: $commentText
+        cookie: $cookie
       }
     ) {
       newCommentId
