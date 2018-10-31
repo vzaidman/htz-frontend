@@ -9,7 +9,11 @@ module.exports = {
     newSso: 'https://ms-apps-dev.haaretz.co.il/sso',
     sso: 'https://devsso.haaretz.co.il',
     otp: {
+<<<<<<< HEAD
       base: 'https://ms-apps-dev.haaretz.co.il/otp',
+=======
+      base: 'http://docker.themarker.com:8124/otp-dev',
+>>>>>>> feat(haaretz.co.il): add otp application configuration (for graphql)
       generate: '/generate',
       validate: '/validate',
     },
