@@ -10,7 +10,7 @@ module.exports = {
     newSso: 'https://ms-apps-dev.haaretz.co.il/sso',
     userInfoUri: 'https://ms-apps-dev.haaretz.co.il/userInfo',
     otp: {
-      base: 'http://docker.themarker.com:8124/otp',
+      base: 'https://ms-apps-dev.haaretz.co.il/otp',
       generate: '/generate',
       validate: '/validate',
     },
