@@ -13,6 +13,7 @@ export default {
     [ '-passwordReminder', '/passwordReminder', ],
     [ '-passwordReminderSent', '/passwordReminderSent', ],
     [ '-loginForms', '/loginForms', ],
+    [ '-emailValidationSent', '/emailValidationSent', ],
     [ '-success', '/', ],
   ]),
   loginForms: {
