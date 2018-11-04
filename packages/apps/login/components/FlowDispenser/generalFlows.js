@@ -4,6 +4,7 @@ export default {
     [ '-phoneMailSent2', '/phoneMailSent2', ],
     [ '-customerService', '/customerService', ],
     [ '-register', '/register', ],
+<<<<<<< HEAD
     [ '-emailValidationSent', '/emailValidationSent', ],
     [ '-emailValidationSent2', '/emailValidationSent2', ],
     [ '-otpValidation', '/otpValidation', ],
@@ -11,6 +12,15 @@ export default {
     [ '-loginFormsPass', { url: '/loginForms', param: 1, }, ],
     [ '-loginFormsPhone', { url: '/loginForms', param: 0, }, ],
     [ '-loginFormsOtp', { url: '/loginForms', param: 0, }, ],
+=======
+    [ '-emailValidation', '/emailValidationSent', ],
+    [ '-emailValidation2', '/emailValidationSent2', ],
+    [ '-passwordError', '/passwordError', ],
+    [ '-passwordReminder', '/passwordReminder', ],
+    [ '-passwordReminderSent', '/passwordReminderSent', ],
+    [ '-loginForms', '/loginForms', ],
+    [ '-emailValidationSent', '/emailValidationSent', ],
+>>>>>>> feat(login): change sso url to nginx dev
     [ '-success', '/', ],
   ]),
   emailValidationSent: {
