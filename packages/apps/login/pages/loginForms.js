@@ -255,6 +255,13 @@ class LoginForms extends Component {
                                             </button>
                                           </InputLinkButton>
                                         </div>
+
+                                        <ErrorBox className={this.state.showError ? "" : "hidden"}>
+                                          <span>
+                                            {this.state.errorMessage}
+                                          </span>
+                                        </ErrorBox>
+
                                         <ItemCenterer>
                                           <Button onClick={handleSubmit}>התחברות</Button>
                                         </ItemCenterer>

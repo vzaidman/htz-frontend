@@ -1,4 +1,4 @@
-import React, { Fragment, } from 'react';
+import React, { Fragment, Component } from 'react';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
 
@@ -17,7 +17,7 @@ import OtpForm from '../components/Misc/Forms/OtpForm';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
-const { InputLinkButton, } = LoginMiscLayoutStyles;
+const { InputLinkButton, ErrorBox, } = LoginMiscLayoutStyles;
 // --------------------------
 
 // Methods -------------------
@@ -28,113 +28,141 @@ const validateSmsCodeInput = ({ smsCode, }) =>
     ? generateSmsCodeError('אנא הזינו את הקוד שנשלח אליכם')
     : []);
 
-const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }) =>
+const onSubmit = ({ client, host, loginWithMobile, showError, hideError }) => ({ smsCode, termsChk, }) => {
+  hideError();
   loginWithMobile(getPhoneNum(client), smsCode, termsChk, getOtpHash(client))
     .then(
       // eslint-disable-next-line no-undef
       () => { window.location = `https://www.${host}`; },
-      reason => console.log(reason.message) // TODO: add error UI
+      reason => showError((reason.message || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."))
     );
+}
 
 const hidePhone = phoneNumber => `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
 
 // --------------------------
 
-const OtpValidation = () => (
-  <FSMLayout>
-    {({ currentState, findRout, doTransition, }) => (
-      <ApolloConsumer>
-        {client => {
-          const host = client.readQuery({ query: GET_HOST, }).hostname.match(/^(?:.*?\.)?(.*)/i)[1];
-          return (
-            <ContentWrapper>
-              <FormWrapper>
-                <ItemCenterer>
-                  <h5>
-                    להתחברות הזינו את הקוד שנשלח למספר
-                    <br />
-                    <span dir="ltr">{ hidePhone(getUserData(client).phoneNum) }</span>
-                  </h5>
-                </ItemCenterer>
-                <Login
-                  render={({ loginWithMobile, }) => (
-                    <Form
-                      clearFormAfterSubmit={false}
-                      // initialValues={{ email: 'insert email' }}
-                      validate={validateSmsCodeInput}
-                      onSubmit={onSubmit({ client, host, loginWithMobile, })}
-                      render={({ getInputProps, handleSubmit, clearForm, }) => (
-                        <Fragment>
-                          <div>
-                            <TextInput
-                              type="number"
-                              label={theme.emailInputLabel}
-                              noteText="אנא הזינו את הקוד שנשלח אליכם"
-                              requiredText={{
-                                long: 'אנא הזינו את הקוד שנשלח אליכם',
-                                short: '*',
-                              }}
-                              {...getInputProps({
-                                name: 'smsCode',
-                                label: 'קוד אימות',
-                                type: 'text',
-                              })}
-                            />
-                            <InputLinkButton>
-                              <button
-                                data-role="resend"
-                                onClick={e => {
-                                  e.preventDefault();
-                                  const route = doTransition('sendAgain');
-                                  Router.push(route);
-                                }}
-                              >
-                                שלח בשנית
-                              </button>
-                            </InputLinkButton>
-                          </div>
-                          <ItemCenterer>
-                            <Button onClick={handleSubmit}>התחברות</Button>
-                          </ItemCenterer>
-                        </Fragment>
+class OtpValidation extends Component {
+
+  state = {
+    showError: false,
+    errorMessage: '',
+  }
+
+  showError = (errorMsg) => {
+    this.setState({ showError: true, errorMessage: errorMsg, });
+  }
+
+  hideError = () => {
+    this.setState({ showError: false, errorMessage: "", });
+  }
+
+  render() {
+    return(
+      <FSMLayout>
+        {({ currentState, findRout, doTransition, }) => (
+          <ApolloConsumer>
+            {client => {
+              const host = client.readQuery({ query: GET_HOST, }).hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+              return (
+                <ContentWrapper>
+                  <FormWrapper>
+                    <ItemCenterer>
+                      <h5>
+                        להתחברות הזינו את הקוד שנשלח למספר
+                        <br />
+                        <span dir="ltr">{ hidePhone(getUserData(client).phoneNum) }</span>
+                      </h5>
+                    </ItemCenterer>
+                    <Login
+                      render={({ loginWithMobile, }) => (
+                        <Form
+                          clearFormAfterSubmit={false}
+                          // initialValues={{ email: 'insert email' }}
+                          validate={validateSmsCodeInput}
+                          onSubmit={onSubmit({ client, host, loginWithMobile, showError: this.showError, hideError: this.hideError })}
+                          render={({ getInputProps, handleSubmit, clearForm, }) => (
+                            <Fragment>
+                              <div>
+                                <TextInput
+                                  type="number"
+                                  label={theme.emailInputLabel}
+                                  noteText="אנא הזינו את הקוד שנשלח אליכם"
+                                  requiredText={{
+                                    long: 'אנא הזינו את הקוד שנשלח אליכם',
+                                    short: '*',
+                                  }}
+                                  {...getInputProps({
+                                    name: 'smsCode',
+                                    label: 'קוד אימות',
+                                    type: 'text',
+                                  })}
+                                />
+                                <InputLinkButton>
+                                  <button
+                                    data-role="resend"
+                                    onClick={e => {
+                                      e.preventDefault();
+                                      const route = doTransition('sendAgain');
+                                      Router.push(route);
+                                    }}
+                                  >
+                                    שלח בשנית
+                                  </button>
+                                </InputLinkButton>
+                              </div>
+    
+                              <ErrorBox className={this.state.showError ? "" : "hidden"}>
+                                <span>
+                                  {this.state.errorMessage}
+                                </span>
+                              </ErrorBox>
+    
+                              <ItemCenterer>
+                                <Button onClick={handleSubmit}>התחברות</Button>
+                              </ItemCenterer>
+                            </Fragment>
+                          )}
+                        />
                       )}
                     />
-                  )}
-                />
-                <BottomLinks spacing={2.5}>
-                  <HtzLink
-                    href={`${findRout('notMyPhone')}`}
-                    onClick={e => {
-                      e.preventDefault();
-                      const route = doTransition('notMyPhone');
-                      Router.push(route);
-                    }}
-                  >
-                    לא הטלפון שלך?
-                  </HtzLink>
+                    <BottomLinks spacing={2.5}>
+                      <HtzLink
+                        href={`${findRout('notMyPhone')}`}
+                        onClick={e => {
+                          e.preventDefault();
+                          const route = doTransition('notMyPhone');
+                          Router.push(route);
+                        }}
+                      >
+                        לא הטלפון שלך?
+                      </HtzLink>
+    
+                      <br />
+    
+                      <HtzLink
+                        href={`${findRout('withPassword')}`}
+                        onClick={e => {
+                          e.preventDefault();
+                          const route = doTransition('withPassword');
+                          Router.push(route);
+                        }}
+                      >
+                        כניסה באמצעות סיסמה
+                      </HtzLink>
+                    </BottomLinks>
+                  </FormWrapper>
+    
+                  {/*<OtpForm dataRefs={{ host, client, findRout, doTransition, }} />*/}
+                </ContentWrapper>
+              );
+            }}
+          </ApolloConsumer>
+        )}
+      </FSMLayout>
+    );
+  }
 
-                  <br />
-
-                  <HtzLink
-                    href={`${findRout('withPassword')}`}
-                    onClick={e => {
-                      e.preventDefault();
-                      const route = doTransition('withPassword');
-                      Router.push(route);
-                    }}
-                  >
-                    כניסה באמצעות סיסמה
-                  </HtzLink>
-                </BottomLinks>
-              </FormWrapper>
-
-              <OtpForm dataRefs={{ host, client, findRout, doTransition, }} />
-            </ContentWrapper>
-          );
-        }}
-      </ApolloConsumer>
-    )}
-  </FSMLayout>
-);
+}
 
 export default OtpValidation;
