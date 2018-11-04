@@ -26,6 +26,7 @@ const types = new Map([
   [ 'com.tm.GridElementGroup', gridElementGroup, ],
   [ 'com.tm.HtmlElement', htmlElement, ],
   [ 'com.tm.Image', image, ],
+  [ 'com.tm.BlogImage', image, ],
   [ 'com.tm.ImageGalleryElement', imageGallery, ],
   [ 'interactiveElement', interactive, ],
   [ 'com.tm.Link', link, ],

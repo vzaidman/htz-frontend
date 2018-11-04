@@ -33,7 +33,6 @@ import Video from '../components/Video/Video';
 import logger from '../componentsLogger';
 import withDfpSideEffect from './../components/Dfp/withDfpSideEffect';
 
-
 const isProduction = process.env.NODE_ENV === 'production';
 
 const tagsFromTagElement = ({ tagsList, }) => tagsList.map(x => x.contentName);
@@ -75,13 +74,13 @@ const inputTemplateToComponent = new Map([
   [
     'tagsElement',
     withDfpSideEffect(Tags, {
-      sideEffect: tagsElement =>
-        dfpTargeting.setTags(tagsFromTagElement(tagsElement)),
+      sideEffect: tagsElement => dfpTargeting.setTags(tagsFromTagElement(tagsElement)),
     }),
   ],
 
   /* Misc components */
   [ 'com.tm.Image', Image, ],
+  [ 'com.tm.BlogImage', Image, ],
   [ 'com.tm.ImageGalleryElement', ImageGallery, ],
   [ 'com.tm.Video', Video, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
@@ -118,5 +117,4 @@ const DefaultComponent = ({ inputTemplate, contentId, contentName, }) => {
   );
 };
 
-export default inputTemplate =>
-  inputTemplateToComponent.get(inputTemplate) || DefaultComponent;
+export default inputTemplate => inputTemplateToComponent.get(inputTemplate) || DefaultComponent;
