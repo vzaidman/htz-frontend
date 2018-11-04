@@ -23,6 +23,7 @@ import { buildUrl, } from '../../../utils/buildImgURLs';
 import BloggerInfo from '../../BloggerInfo/BloggerInfo';
 
 import LiveBlogQuery from './queries/live_blog_article';
+import LiveBlogContainer from './LiveBlogElements/LiveBlogContainer';
 
 function LiveBlog({ articleId, slots, }) {
   return (
@@ -75,7 +76,6 @@ function LiveBlog({ articleId, slots, }) {
           const { authors, body, headlineElement, reportingFrom, pubDate, modDate, liveblogItems, isLiveUpdate, isDisplayBlogitemsDatetime, } = LiveBlogElement;
           const header = isMouse ? { pubDate, modDate, } : LiveBlogElement.header;
 
-        //   let timeLineItems = [];
           const timeLineItems = liveblogItems.filter(value => value.keyEvent);
 
           console.warn('timeLineItems: ', timeLineItems);
@@ -177,10 +177,10 @@ function LiveBlog({ articleId, slots, }) {
                                         />
                                       ) : null}
 
-                                      <TimeLine 
+                                      <TimeLine
                                         timeLineItems={timeLineItems}
                                       />
-                                      
+
                                       {/* <TimeLine
                                           reviewImgData={itemCoverImg}
                                           reviewType={reviewType}
@@ -204,6 +204,8 @@ function LiveBlog({ articleId, slots, }) {
                                   }
                                 >
                                   <ArticleBody body={body} />
+                                  <LiveBlogContainer liveblogItems={liveblogItems} />
+
                                   {bloggerInfo}
                                 </ArticleLayoutRow>
                               );
