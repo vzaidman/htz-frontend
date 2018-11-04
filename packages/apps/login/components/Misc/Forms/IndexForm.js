@@ -24,7 +24,7 @@ const validateEmailInput = ({ email, }) =>
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
-const handleGenerateOtp = ({ phoneNum, client, flow, route, showError, hideError, }) =>
+const handleGenerateOtp = ({ phoneNum, client, flow, route, showError, }) =>
   generateOtp(client)({ typeId: phoneNum, })
     .then(data => {
       const json = data.data.generateOtp;
@@ -33,12 +33,12 @@ const handleGenerateOtp = ({ phoneNum, client, flow, route, showError, hideError
         Router.push(route);
       }
       else {
-        showError(json.msg);
+        showError((json.msg || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."));
       }
     });
 
 const handleResponseFromGraphql =
-  ({ client, getFlowByData, email, res, showError, hideError, }) => {
+  ({ client, getFlowByData, email, res, showError, }) => {
     const dataSaved = saveUserData(client)({ userData: res.userByMail, });
     const transformedObj = objTransform(res);
 
@@ -65,7 +65,6 @@ const handleResponseFromGraphql =
         flow,
         route,
         showError,
-        hideError,
       });
     }
     else {
@@ -75,9 +74,10 @@ const handleResponseFromGraphql =
   };
 
 const onSubmit = (client, getFlowByData, showError, hideError) => ({ email, }) => {
+  hideError();
   // mockDataFromUserInfo(client)(email)
   getDataFromUserInfo(client)(email)
-    .then(res => handleResponseFromGraphql({ client, getFlowByData, email, res, showError, hideError, }))
+    .then(res => handleResponseFromGraphql({ client, getFlowByData, email, res, showError, }))
     // TODO handle error
     .catch(err => console.error(err));
 };
