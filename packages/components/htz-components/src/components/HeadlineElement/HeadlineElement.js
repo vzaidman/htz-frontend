@@ -47,13 +47,9 @@ function HeadlineElement({ captionMiscStyles, elementObj, miscStyles, }) {
   const Element = () => {
     switch (uniqueId) {
       case 'com.tm.Image':
+      case 'com.tm.BlogImage':
         return (
-          <ArticleImage
-            {...elementObj}
-            showCaption={false}
-            forceAspect="headline"
-            isHeadline
-          />
+          <ArticleImage {...elementObj} showCaption={false} forceAspect="headline" isHeadline />
         );
       case 'com.tm.ImageGalleryElement':
         // return <ImageGallery {...elementObj} forceAspect="headline" />;
@@ -75,9 +71,7 @@ function HeadlineElement({ captionMiscStyles, elementObj, miscStyles, }) {
       style={theme => ({
         extend: [
           // Trump all other styles with those defined in `miscStyles`
-          ...(miscStyles
-            ? parseStyleProps(miscStyles, theme.mq, theme.type)
-            : []),
+          ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
         ],
       })}
     >
