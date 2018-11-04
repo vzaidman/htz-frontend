@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Query from '../../ApolloBoundary/ApolloConsumer';
 import gql from 'graphql-tag';
+import Query from '../../ApolloBoundary/Query';
 import NoSSR from '../../NoSSR/NoSSR';
 
 const getDfpConfigQuery = gql`
