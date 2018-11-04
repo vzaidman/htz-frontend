@@ -22,7 +22,7 @@ const {
   FormWrapper,
   ItemCenterer,
 } = LoginContentStyles;
-const { InputLinkButton, } = LoginMiscLayoutStyles;
+const { InputLinkButton, ErrorBox, } = LoginMiscLayoutStyles;
 
 const halfSizeStyleWrapperStyle = () => ({
   display: 'flex',
@@ -115,7 +115,17 @@ class RegisterPage extends Component {
   state = {
     isChecked: false,
     isFirstTime: true,
+    showError: false,
+    errorMessage: '',
   };
+
+  showError = (errorMsg) => {
+    this.setState({ showError: true, errorMessage: errorMsg, });
+  }
+
+  hideError = () => {
+    this.setState({ showError: false, errorMessage: "", });
+  }
 
   isCheckboxError = () => !(this.state.isFirstTime || this.state.isChecked);
 
@@ -266,6 +276,12 @@ class RegisterPage extends Component {
                               })}
                             />
                           </TermsWrapper>
+
+                          <ErrorBox className={this.state.showError ? "" : "hidden"}>
+                            <span>
+                              {this.state.errorMessage}
+                            </span>
+                          </ErrorBox>
 
                           <ItemCenterer>
                             <Button onClick={handleSubmit}>הרשמה</Button>
