@@ -5,7 +5,7 @@ import { parseStyleProps, borderVertical, } from '@haaretz/htz-css-tools';
 import gql from 'graphql-tag';
 
 import { stylesPropType, } from '../../../../propTypes/stylesPropType';
-import { Query, } from '../../../ApolloBoundary/ApolloBoundary';
+import Query from '../../../ApolloBoundary/Query';
 
 import CreditArticle from '../../../Credit/CreditArticle';
 // import Alerts from '../../../Alerts/Alerts';
@@ -268,7 +268,7 @@ class LiveBlogHeaderMeta extends React.Component {
                                     }}
                                     render={({ className, }) => (
                                       <span className={className}>
-                                        {theme.liveBlogI18n.LiveUpdate}
+                                        {theme.liveBlogI18n.liveUpdate}
                                       </span>
                                     )}
                                   />

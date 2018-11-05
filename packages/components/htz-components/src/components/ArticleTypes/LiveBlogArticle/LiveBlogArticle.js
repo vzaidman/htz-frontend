@@ -168,7 +168,6 @@ function LiveBlog({ articleId, slots, }) {
                                       {authors ? (
                                         <LiveBlogHeaderMeta
                                           authors={authors}
-                                        //   reportingFrom={reportingFrom}
                                           isLiveUpdate={isLiveUpdate}
                                           isDisplayBlogitemsDatetime={isDisplayBlogitemsDatetime}
                                           liveblogItems={liveblogItems}
@@ -204,8 +203,8 @@ function LiveBlog({ articleId, slots, }) {
                                   }
                                 >
                                   <ArticleBody body={body} />
-                                  <LiveBlogContainer liveblogItems={liveblogItems} />
-
+                                  <LiveBlogContainer liveblogItems={liveblogItems} canonicalUrl={canonicalUrl} />
+                                  
                                   {bloggerInfo}
                                 </ArticleLayoutRow>
                               );

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 
+import { borderStart, } from '@haaretz/htz-css-tools';
+
 // import { stylesPropType, } from '../../../../propTypes/stylesPropType';
 import Time from '../../../Time/Time';
 // import Grid from '../../../Grid/Grid';
@@ -25,22 +27,24 @@ const propTypes = {
 const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
   paddingInlineStart: '2rem',
   paddingBottom: '7rem',
-  // change this border
-  borderRight: '1px solid #bbb',
+  color: theme.color('neutral', '-2'),
   extend: [
+    borderStart({
+      width: '1px',
+      style: 'solid',
+      color: '#ccc',
+    }),
     isFirstItem
       ? {
-        color: 'red',
         ':before': {
           height: '0.5em',
           top: '0',
-          borderBottom: '1px solid #bbb',
+          borderBottom: '1px solid #ccc',
         },
       }
       : {},
     isLastItem
       ? {
-        color: 'green',
         paddingBottom: '0',
         ':before': {
           height: 'calc(100% - 0.5em)',
@@ -73,8 +77,9 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
     content: '""',
     width: '1rem',
     height: '1rem',
-    backgroundColor: theme.color('primary', '+1'),
-    border: '1px solid #bbb',
+    backgroundColor: theme.color('primary', '-6'),
+    border: '1px solid #ccc',
+    // border('1px', 1, 'solid', theme.color('primary', '-6')),
     top: '50%',
     right: '-1.5em',
     borderRadius: '50%',
