@@ -1,10 +1,7 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
-import { EventTracker, IconAlefLogo, IconTheMarker, } from '@haaretz/htz-components';
-
-import Astronaut from '../illustrations/Astronaut/Astronaut';
-import Diver from '../illustrations/Diver/Diver';
+import { EventTracker, IconAlefLogo, IconTheMarker, Astronaut, Diver, } from '@haaretz/htz-components';
 
 const propTypes = {
   /** passed as a a prop by fela's withTheme func before default export */
