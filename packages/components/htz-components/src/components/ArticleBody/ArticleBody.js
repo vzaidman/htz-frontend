@@ -212,7 +212,7 @@ const buildComponent = (context, index, isLastItem) => {
   }
 };
 
-function ArticleBody({ body, }) {
+function ArticleBody({ body, showSurvey, }) {
   return (
     <FelaComponent
       style={theme => ({
