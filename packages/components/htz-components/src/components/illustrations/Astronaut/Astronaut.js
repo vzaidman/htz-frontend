@@ -56,7 +56,13 @@ class Astronaut extends React.Component {
                 },
               }}
               render={({ className, theme, }) => (
-                <circle className={className} fill="#3FA0CB" cx="492" cy="165.9" r="2.2" />
+                <circle
+                  className={className}
+                  fill="#3FA0CB"
+                  cx="492"
+                  cy="165.9"
+                  r="2.2"
+                />
               )}
             />
             <FelaComponent
@@ -75,7 +81,13 @@ class Astronaut extends React.Component {
                 },
               }}
               render={({ className, theme, }) => (
-                <circle className={className} fill="#3FA0CB" cx="608.5" cy="277.5" r="3.5" />
+                <circle
+                  className={className}
+                  fill="#3FA0CB"
+                  cx="608.5"
+                  cy="277.5"
+                  r="3.5"
+                />
               )}
             />
             <FelaComponent
@@ -93,7 +105,13 @@ class Astronaut extends React.Component {
                 },
               }}
               render={({ className, theme, }) => (
-                <circle className={className} fill="#BED3DE" cx="176" cy="171" r="4.6" />
+                <circle
+                  className={className}
+                  fill="#BED3DE"
+                  cx="176"
+                  cy="171"
+                  r="4.6"
+                />
               )}
             />
             <FelaComponent
@@ -113,7 +131,13 @@ class Astronaut extends React.Component {
                 },
               }}
               render={({ className, theme, }) => (
-                <circle className={className} fill="#3FA0CB" cx="106" cy="183" r="2" />
+                <circle
+                  className={className}
+                  fill="#3FA0CB"
+                  cx="106"
+                  cy="183"
+                  r="2"
+                />
               )}
             />
             <FelaComponent
@@ -131,7 +155,13 @@ class Astronaut extends React.Component {
                 },
               }}
               render={({ className, theme, }) => (
-                <circle className={className} fill="#3FA0CB" cx="548.5" cy="181.5" r="1.5" />
+                <circle
+                  className={className}
+                  fill="#3FA0CB"
+                  cx="548.5"
+                  cy="181.5"
+                  r="1.5"
+                />
               )}
             />
             <g className="astronaut-stars">
@@ -166,7 +196,10 @@ class Astronaut extends React.Component {
               <rect x="518" y="163" fill="#3FA0CB" width="3" height="3" />
               <circle fill="#3FA0CB" cx="592.5" cy="376.5" r="1.5" />
               <circle fill="#3FA0CB" cx="580.5" cy="290.5" r="1.5" />
-              <path fill="#3FA0CB" d="M558 239c0 0-0.4 0-1 0s-1 0-1 0 0.4 0 1 0S558 239 558 239z" />
+              <path
+                fill="#3FA0CB"
+                d="M558 239c0 0-0.4 0-1 0s-1 0-1 0 0.4 0 1 0S558 239 558 239z"
+              />
               <circle fill="#3FA0CB" cx="224" cy="617" r="2" />
               <circle fill="#3FA0CB" cx="196" cy="608" r="2" />
               <circle fill="#3FA0CB" cx="245" cy="636" r="1" />
@@ -257,10 +290,18 @@ class Astronaut extends React.Component {
                 r="16.4"
               />
               <defs>
-                <circle id={`SVGID_12_${this.state.idSuffix}`} cx="66" cy="473" r="16.4" />
+                <circle
+                  id={`SVGID_12_${this.state.idSuffix}`}
+                  cx="66"
+                  cy="473"
+                  r="16.4"
+                />
               </defs>
               <clipPath id={`SVGID_14_${this.state.idSuffix}`}>
-                <use xlinkHref={`#SVGID_12_${this.state.idSuffix}`} overflow="visible" />
+                <use
+                  xlinkHref={`#SVGID_12_${this.state.idSuffix}`}
+                  overflow="visible"
+                />
               </clipPath>
               <path
                 clipPath={`url(#SVGID_14_${this.state.idSuffix})`}
@@ -268,10 +309,18 @@ class Astronaut extends React.Component {
                 d="M64 459.5c0 0-3.8 1-4.6 2.5s-0.8 3.1-0.2 3.8c0.6 0.8-0.8 2.9-1.5 3.1 -0.8 0.2-4.2 2.1-4.2 3.1s0.8 2.7 0.8 2.7 1.3 1.9 0.8 1.9c-0.6 0 6.5 1.7 5.2 2.9 -1.3 1.2 0.2 2.1 1.9 2.3 1.7 0.2 4 1.5 2.1 2.9 -1.9 1.3 1.3 1.7 0.4 2.1 -1 0.4 1.4 2.7 1.4 2.7s-6.8-1.3-7.8-3.1c-1-1.7-0.2-2.7-1.3-3.3s1.3-3.6 0-3.8 -6.7-1.5-6.5-2.7 -1.3-2.3-0.8-3.5c0.6-1.2-1.3-7.8 0.4-8.7 1.7-1 6.3-5.6 7.7-4.8C59 460.2 64 459.5 64 459.5z"
               />
               <defs>
-                <circle id={`SVGID_16_${this.state.idSuffix}`} cx="66" cy="473" r="16.4" />
+                <circle
+                  id={`SVGID_16_${this.state.idSuffix}`}
+                  cx="66"
+                  cy="473"
+                  r="16.4"
+                />
               </defs>
               <clipPath id={`SVGID_18_${this.state.idSuffix}`}>
-                <use xlinkHref={`#SVGID_16_${this.state.idSuffix}`} overflow="visible" />
+                <use
+                  xlinkHref={`#SVGID_16_${this.state.idSuffix}`}
+                  overflow="visible"
+                />
               </clipPath>
               <path
                 clipPath={`url(#SVGID_18_${this.state.idSuffix})`}
@@ -279,10 +328,18 @@ class Astronaut extends React.Component {
                 d="M76.8 461.2c-0.8 0-5 1.2-3.3 1.5 1.7 0.4 4.6 1 4 1.5s-0.4 1.5-2.1 1.9 -4.6-1.2-5-0.2 0.2 2.3 1 2.5 3.1 2.7 4.4 2.7 3.8 0.8 2.5 2.1c-1.3 1.3-2.9 2.7-2.3 3.3 0.6 0.6 1.3 6.1 2.5 5.8 1.2-0.4 1-1.9 1.7-2.7 0.8-0.8 1.3-0.8 2.3-1.3s1.3-2.3 1.2-3.8c-0.2-1.5 0.8-2.9 1-5s-0.2-7.5-1.5-8.8 -2.5-4-3.6-3.5C78.4 457.8 76.8 461.2 76.8 461.2z"
               />
               <defs>
-                <circle id={`SVGID_19_${this.state.idSuffix}`} cx="66" cy="473" r="16.4" />
+                <circle
+                  id={`SVGID_19_${this.state.idSuffix}`}
+                  cx="66"
+                  cy="473"
+                  r="16.4"
+                />
               </defs>
               <clipPath id={`SVGID_20_${this.state.idSuffix}`}>
-                <use xlinkHref={`#SVGID_19_${this.state.idSuffix}`} overflow="visible" />
+                <use
+                  xlinkHref={`#SVGID_19_${this.state.idSuffix}`}
+                  overflow="visible"
+                />
               </clipPath>
               <path
                 clipPath={`url(#SVGID_20_${this.state.idSuffix})`}
@@ -290,10 +347,18 @@ class Astronaut extends React.Component {
                 d="M68 459.9c0 0-1.3 1.5-0.2 1.2C69 460.6 68.6 459.9 68 459.9z"
               />
               <defs>
-                <circle id={`SVGID_21_${this.state.idSuffix}`} cx="66" cy="473" r="16.4" />
+                <circle
+                  id={`SVGID_21_${this.state.idSuffix}`}
+                  cx="66"
+                  cy="473"
+                  r="16.4"
+                />
               </defs>
               <clipPath id={`SVGID_22_${this.state.idSuffix}`}>
-                <use xlinkHref={`#SVGID_21_${this.state.idSuffix}`} overflow="visible" />
+                <use
+                  xlinkHref={`#SVGID_21_${this.state.idSuffix}`}
+                  overflow="visible"
+                />
               </clipPath>
               <path
                 clipPath={`url(#SVGID_22_${this.state.idSuffix})`}
@@ -301,10 +366,18 @@ class Astronaut extends React.Component {
                 d="M62.8 469.3c0 0-2.1 1.2-0.6 1.2C63.8 470.4 62.8 469.3 62.8 469.3z"
               />
               <defs>
-                <circle id={`SVGID_23_${this.state.idSuffix}`} cx="66" cy="473" r="16.4" />
+                <circle
+                  id={`SVGID_23_${this.state.idSuffix}`}
+                  cx="66"
+                  cy="473"
+                  r="16.4"
+                />
               </defs>
               <clipPath id={`SVGID_24_${this.state.idSuffix}`}>
-                <use xlinkHref={`#SVGID_23_${this.state.idSuffix}`} overflow="visible" />
+                <use
+                  xlinkHref={`#SVGID_23_${this.state.idSuffix}`}
+                  overflow="visible"
+                />
               </clipPath>
               <path
                 clipPath={`url(#SVGID_24_${this.state.idSuffix})`}
@@ -312,10 +385,18 @@ class Astronaut extends React.Component {
                 d="M70.9 485.6c0 0 1.3 1.3 1.3 0.4C72.2 485 71.5 485.8 70.9 485.6z"
               />
               <defs>
-                <circle id={`SVGID_25_${this.state.idSuffix}`} cx="66" cy="473" r="16.4" />
+                <circle
+                  id={`SVGID_25_${this.state.idSuffix}`}
+                  cx="66"
+                  cy="473"
+                  r="16.4"
+                />
               </defs>
               <clipPath id={`SVGID_26_${this.state.idSuffix}`}>
-                <use xlinkHref={`#SVGID_25_${this.state.idSuffix}`} overflow="visible" />
+                <use
+                  xlinkHref={`#SVGID_25_${this.state.idSuffix}`}
+                  overflow="visible"
+                />
               </clipPath>
               <path
                 clipPath={`url(#SVGID_26_${this.state.idSuffix})`}
@@ -468,10 +549,18 @@ class Astronaut extends React.Component {
                       r="23.5"
                     />
                     <defs>
-                      <circle id={`SVGID_27_${this.state.idSuffix}`} cx="83" cy="227" r="23.5" />
+                      <circle
+                        id={`SVGID_27_${this.state.idSuffix}`}
+                        cx="83"
+                        cy="227"
+                        r="23.5"
+                      />
                     </defs>
                     <clipPath id={`SVGID_28_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_27_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_27_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       clipPath={`url(#SVGID_28_${this.state.idSuffix})`}
@@ -481,7 +570,10 @@ class Astronaut extends React.Component {
                   </g>
                 )}
               />
-              <polyline fill="#2F4856" points="87.5 215.9 87.6 215.9 88.3 216.1 87.3 217 " />
+              <polyline
+                fill="#2F4856"
+                points="87.5 215.9 87.6 215.9 88.3 216.1 87.3 217 "
+              />
               <path
                 fill="#BED3DE"
                 d="M73.6 243.5c0 0-0.6 1.3 0.6 1C75.3 244.2 74.3 242.9 73.6 243.5zM88.3 208.5c0 0-1 1.3 1.3 1.3M84.5 205.4c0 0 1.4-0.4 1.3 0.6M98.1 243.2c0 0 2.2 0 0.3 1.4M67.1 216.3c0 0-0.7 1 0 0.9C67.8 217 67.7 215.7 67.1 216.3zM97 236.5c0 0-0.7 1.3 0 1C97.8 237.2 97.8 236 97 236.5zM75.7 218.6c0 0-0.6 1 0.3 0.7S76.3 218 75.7 218.6zM88.8 247.8c0 0-1.2 0.9-0.1 0.7C89.7 248.4 89.7 247.7 88.8 247.8z"
@@ -550,7 +642,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_30_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_29_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_29_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       opacity="0.6"
@@ -568,7 +663,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_32_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_31_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_31_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       opacity="0.3"
@@ -586,7 +684,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_34_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_33_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_33_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <ellipse
                       transform="matrix(0.1224 -0.9925 0.9925 0.1224 -365.2786 766.9171)"
@@ -606,7 +707,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_36_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_35_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_35_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <circle
                       opacity="0.3"
@@ -626,7 +730,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_38_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_37_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_37_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <circle
                       clipPath={`url(#SVGID_38_${this.state.idSuffix})`}
@@ -644,7 +751,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_40_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_39_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_39_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <circle
                       clipPath={`url(#SVGID_40_${this.state.idSuffix})`}
@@ -662,7 +772,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_42_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_41_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_41_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <ellipse
                       transform="matrix(0.0961 -0.9954 0.9954 0.0961 95.7616 896.9802)"
@@ -682,7 +795,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_44_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_43_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_43_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       opacity="0.3"
@@ -700,7 +816,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_46_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_45_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_45_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       opacity="0.3"
@@ -718,7 +837,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_48_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_47_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_47_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       opacity="0.6"
@@ -736,7 +858,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_50_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_49_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_49_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       opacity="0.6"
@@ -754,7 +879,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_52_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_51_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_51_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <ellipse
                       transform="matrix(0.274 -0.9617 0.9617 0.274 -38.5863 848.9059)"
@@ -854,7 +982,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_54_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_53_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_53_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       clipPath={`url(#SVGID_54_${this.state.idSuffix})`}
@@ -868,7 +999,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_56_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_55_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_55_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       opacity="0.6"
@@ -884,7 +1018,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_58_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_57_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_57_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       clipPath={`url(#SVGID_58_${this.state.idSuffix})`}
@@ -898,7 +1035,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_60_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_59_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_59_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       clipPath={`url(#SVGID_60_${this.state.idSuffix})`}
@@ -941,7 +1081,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_62_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_61_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_61_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       clipPath={`url(#SVGID_62_${this.state.idSuffix})`}
@@ -986,8 +1129,18 @@ class Astronaut extends React.Component {
                       rx="37.5"
                       ry="33.3"
                     />
-                    <path fill="none" stroke="#1D1D1B" strokeMiterlimit="10" d="M288.5 96.3" />
-                    <path fill="none" stroke="#1D1D1B" strokeMiterlimit="10" d="M243.1 88.9" />
+                    <path
+                      fill="none"
+                      stroke="#1D1D1B"
+                      strokeMiterlimit="10"
+                      d="M288.5 96.3"
+                    />
+                    <path
+                      fill="none"
+                      stroke="#1D1D1B"
+                      strokeMiterlimit="10"
+                      d="M243.1 88.9"
+                    />
                     <path
                       fill="#FDDA9E"
                       stroke="#1D1D1B"
@@ -1006,7 +1159,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_64_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_63_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_63_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <ellipse
                       transform="matrix(0.906 -0.4232 0.4232 0.906 -11.7737 151.7788)"
@@ -1027,10 +1183,30 @@ class Astronaut extends React.Component {
                       strokeMiterlimit="10"
                       d="M312 128.7c-12.3-1.6-29.8 0.7-29.8 0.7s-1.7 14.2-1.2 21 3.3 10.6 3.3 10.6c22.7 1.8 66.7 7.1 67.2-25 0.7-40-38.5-52.8-38.5-52.8"
                     />
-                    <path fill="#FFFFFF" stroke="#1D1D1B" strokeMiterlimit="10" d="M204 179.2" />
-                    <path fill="#FFFFFF" stroke="#1D1D1B" strokeMiterlimit="10" d="M253.1 209.6" />
-                    <path fill="#FFFFFF" stroke="#1D1D1B" strokeMiterlimit="10" d="M296.2 153.3" />
-                    <path fill="#FFFFFF" stroke="#1D1D1B" strokeMiterlimit="10" d="M242.3 154.2" />
+                    <path
+                      fill="#FFFFFF"
+                      stroke="#1D1D1B"
+                      strokeMiterlimit="10"
+                      d="M204 179.2"
+                    />
+                    <path
+                      fill="#FFFFFF"
+                      stroke="#1D1D1B"
+                      strokeMiterlimit="10"
+                      d="M253.1 209.6"
+                    />
+                    <path
+                      fill="#FFFFFF"
+                      stroke="#1D1D1B"
+                      strokeMiterlimit="10"
+                      d="M296.2 153.3"
+                    />
+                    <path
+                      fill="#FFFFFF"
+                      stroke="#1D1D1B"
+                      strokeMiterlimit="10"
+                      d="M242.3 154.2"
+                    />
                     <path
                       id={`SVGID_13_${this.state.idSuffix}`}
                       fill="#868686"
@@ -1043,7 +1219,10 @@ class Astronaut extends React.Component {
                       />
                     </defs>
                     <clipPath id={`SVGID_66_${this.state.idSuffix}`}>
-                      <use xlinkHref={`#SVGID_65_${this.state.idSuffix}`} overflow="visible" />
+                      <use
+                        xlinkHref={`#SVGID_65_${this.state.idSuffix}`}
+                        overflow="visible"
+                      />
                     </clipPath>
                     <path
                       clipPath={`url(#SVGID_66_${this.state.idSuffix})`}
@@ -1086,7 +1265,10 @@ class Astronaut extends React.Component {
                         />
                       </defs>
                       <clipPath id={`SVGID_68_${this.state.idSuffix}`}>
-                        <use xlinkHref={`#SVGID_67_${this.state.idSuffix}`} overflow="visible" />
+                        <use
+                          xlinkHref={`#SVGID_67_${this.state.idSuffix}`}
+                          overflow="visible"
+                        />
                       </clipPath>
                       <g clipPath={`url(#SVGID_68_${this.state.idSuffix})`}>
                         <path
@@ -1101,7 +1283,10 @@ class Astronaut extends React.Component {
                           />
                         </defs>
                         <clipPath id={`SVGID_70_${this.state.idSuffix}`}>
-                          <use xlinkHref={`#SVGID_69_${this.state.idSuffix}`} overflow="visible" />
+                          <use
+                            xlinkHref={`#SVGID_69_${this.state.idSuffix}`}
+                            overflow="visible"
+                          />
                         </clipPath>
                         <path
                           clipPath={`url(#SVGID_70_${this.state.idSuffix})`}
@@ -1119,7 +1304,10 @@ class Astronaut extends React.Component {
                           />
                         </defs>
                         <clipPath id={`SVGID_72_${this.state.idSuffix}`}>
-                          <use xlinkHref={`#SVGID_71_${this.state.idSuffix}`} overflow="visible" />
+                          <use
+                            xlinkHref={`#SVGID_71_${this.state.idSuffix}`}
+                            overflow="visible"
+                          />
                         </clipPath>
                         <path
                           opacity="0.8"
@@ -1139,7 +1327,10 @@ class Astronaut extends React.Component {
                           />
                         </defs>
                         <clipPath id={`SVGID_74_${this.state.idSuffix}`}>
-                          <use xlinkHref={`#SVGID_73_${this.state.idSuffix}`} overflow="visible" />
+                          <use
+                            xlinkHref={`#SVGID_73_${this.state.idSuffix}`}
+                            overflow="visible"
+                          />
                         </clipPath>
                         <path
                           clipPath={`url(#SVGID_74_${this.state.idSuffix})`}
@@ -1510,7 +1701,10 @@ class Astronaut extends React.Component {
                         fill="#FFF0DA"
                         d="M248.6 27.6c0 0-10.7-0.8-13.7 3.8S248.6 27.6 248.6 27.6z"
                       />
-                      <path fill="#FFF0DA" d="M283.5 23.2c0 0-9.6-8.2-29.4-6.6" />
+                      <path
+                        fill="#FFF0DA"
+                        d="M283.5 23.2c0 0-9.6-8.2-29.4-6.6"
+                      />
                       <path
                         fill="#FDDA9E"
                         stroke="#1D1D1B"

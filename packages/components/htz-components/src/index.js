@@ -17,7 +17,6 @@ import A11yDialog from './components/A11yDialog/A11yDialog';
 import A11yError from './components/A11yError/A11yError';
 import AboveBlockLink from './components/BlockLink/AboveBlockLink';
 import ActionButtons from './components/ActionButtons/ActionButtons';
-import Astronaut from './components/illustrations/Astronaut/Astronaut';
 
 import ApolloConsumer from './components/ApolloBoundary/ApolloConsumer';
 import AriaDescription from './components/AriaDescription/AriaDescription';
@@ -99,6 +98,10 @@ import TextInput from './components/TextInput/TextInput';
 import TextLink from './components/TextLink/TextLink';
 import TopNews from './components/TopNews/TopNews';
 import Video from './components/Video/Video';
+
+// Illustrations
+import Astronaut from './components/illustrations/Astronaut/Astronaut.js';
+import Diver from './components/illustrations/Diver/Diver';
 
 // Icons
 import IconAccessibility from './components/Icon/icons/IconAccessibility';
@@ -256,7 +259,6 @@ export {
   A11yError,
   AboveBlockLink,
   ActionButtons,
-  Astronaut,
   ApolloConsumer,
   AriaDescription,
   AriaLive,
@@ -336,6 +338,11 @@ export {
   TextLink,
   TopNews,
   Video,
+
+  // Illustrations
+  Astronaut,
+  Diver,
+
   // Icons
   IconAccessibility,
   IconAlef,

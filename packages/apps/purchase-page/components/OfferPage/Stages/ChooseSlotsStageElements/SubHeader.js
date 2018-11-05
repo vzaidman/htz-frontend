@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import Astronaut from '../../../illustrations/Astronaut/Astronaut';
-import Diver from '../../../illustrations/Diver/Diver';
+import { Astronaut, Diver, } from '@haaretz/htz-components';
 
 SubHeader.propTypes = {
   isTheMarker: PropTypes.bool.isRequired,
