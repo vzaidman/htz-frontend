@@ -55,6 +55,7 @@ const Page = new GraphQLObjectType({
     dfpConfig: {
       type: DfpConfigType,
     },
+    jsonld: { type: new GraphQLList(GraphQLString), },
   }),
 });
 

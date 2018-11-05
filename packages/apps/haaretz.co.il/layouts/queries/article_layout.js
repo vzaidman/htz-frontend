@@ -32,6 +32,7 @@ export default gql`
           breakpointType
         }
       }
+      jsonld
     }
   }
   ${breadcrumbs}

@@ -21,7 +21,7 @@ import {
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import ArticleInitQuery from './queries/article_layout';
-import publisher from './schema/publisher';
+// import publisher from './schema/publisher';
 
 const logger = createLogger();
 
@@ -61,9 +61,7 @@ class ArticleLayout extends React.Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const nextArticleId = nextProps.url.query.path.match(
-      /(?:.*-?)(1\.\d+.*)/
-    )[1];
+    const nextArticleId = nextProps.url.query.path.match(/(?:.*-?)(1\.\d+.*)/)[1];
 
     if (!prevState.articleId || prevState.articleId !== nextArticleId) {
       return { articleId: nextArticleId, };
@@ -96,10 +94,7 @@ class ArticleLayout extends React.Component {
     const history = JSON.parse(sessionStorage.getItem('readingHistory')) || [];
     if (!history.includes(articleId)) {
       history.push(articleId);
-      sessionStorage.setItem(
-        'readingHistory',
-        JSON.stringify(history, null, 2)
-      );
+      sessionStorage.setItem('readingHistory', JSON.stringify(history, null, 2));
     }
   };
 
@@ -119,7 +114,7 @@ class ArticleLayout extends React.Component {
           if (loading) return null;
           if (error) logger.error(error);
           const {
-            page: { slots, lineage, },
+            page: { slots, lineage, jsonld, },
           } = data;
           const articleId = lineage[0].contentId;
           this.setState({
@@ -128,20 +123,19 @@ class ArticleLayout extends React.Component {
           client.writeData({
             data: {
               articleId,
-              pageSchema: {
-                publisher,
-                __typename: 'PageSchema',
-              },
+              // pageSchema: {
+              //   publisher,
+              //   __typename: 'PageSchema',
+              // },
               // place properties to reset in the client store when a new article is loaded
               isOsakaDisplayed: false,
             },
           });
-          const titleSEO = `${lineage[0].name} - ${
-            lineage[1] ? lineage[1].name : ''
-          } - ${lineage.length > 2 ? lineage[lineage.length - 1].name : ''}`;
+          const titleSEO = `${lineage[0].name} - ${lineage[1] ? lineage[1].name : ''} - ${
+            lineage.length > 2 ? lineage[lineage.length - 1].name : ''
+          }`;
           const standardArticleElement = slots.article.find(
-            ({ inputTemplate, }) =>
-              inputTemplate && inputTemplate.endsWith('StandardArticle')
+            ({ inputTemplate, }) => inputTemplate && inputTemplate.endsWith('StandardArticle')
           );
           const isPremiumContent = standardArticleElement
             ? standardArticleElement.isPremiumContent
@@ -177,7 +171,7 @@ class ArticleLayout extends React.Component {
                 </Fragment>
               </StyleProvider>
               <div id="welcomePageModal" />
-              <PageSchema />
+              <PageSchema jsonld={jsonld} />
             </Fragment>
           );
         }}
