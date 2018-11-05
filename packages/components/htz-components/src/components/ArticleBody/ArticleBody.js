@@ -83,15 +83,13 @@ const Aside = ({ children, }) => (
 
 const buildComponent = (context, index, isLastItem) => {
   const uniqueId = context.elementType || context.inputTemplate || context.tag || null;
-  const Component =
-    [ 'com.tm.Image', 'com.tm.BlogImage', ].indexOf(uniqueId) > -1
-      ? ArticleImage
-      : getComponent(uniqueId);
 
+  if ([ 'com.tm.Image', 'com.tm.BlogImage', ].includes(uniqueId)) {
+    return <ArticleImage key={context.contentId} lastItem={isLastItem} {...context} />;
+  }
+
+  const Component = getComponent(uniqueId);
   switch (uniqueId) {
-    case 'com.tm.Image':
-    case 'com.tm.BlogImage':
-      return <Component key={context.contentId} lastItem={isLastItem} {...context} />;
     case 'embedElement':
       return (
         <Figure key={context.contentId} lastItem={isLastItem}>
