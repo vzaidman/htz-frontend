@@ -1,7 +1,6 @@
 /* eslint-disable react/no-did-mount-set-state */
 
 import React, { Fragment, } from 'react';
-import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import { StyleProvider, } from '@haaretz/fela-utils';

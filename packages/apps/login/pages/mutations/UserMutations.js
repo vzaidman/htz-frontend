@@ -11,8 +11,8 @@ const GENERATE_HASH = gql`
 `;
 
 const CONNECT_MAIL_MOBILE = gql`
-  mutation ConnectMailMobile($email: String!, $phone: String!, $userName: String!, $params: String!) {
-    sendMobileEmailConnection(email: $email, phone: $phone, userName: $userName, params: $params) {
+  mutation ConnectMailMobile($email: String!, $phone: String!, $userName: String!, $paramString: String!) {
+    sendMobileEmailConnection(email: $email, phone: $phone, userName: $userName, paramString: $paramString) {
       success
       message
     }

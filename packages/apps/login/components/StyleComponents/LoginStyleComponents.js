@@ -46,7 +46,7 @@ const Styles = {
       display: 'flex',
       margin: '0 auto 4rem auto',
       border: 'solid 1px #0b7eb5',
-      '>span': {
+      '>span, a': {
         flexGrow: '1',
         textAlign: 'center',
         color: '#0b7eb5',
