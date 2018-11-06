@@ -100,7 +100,7 @@ const mutation = new GraphQLObjectType({
         return dataSources
           .HtzFunctionOperationsAPI
           // eslint-disable-next-line no-undef
-          .sendPhoneMailConnection(email, phone, userName, paramString);
+          .sendPhoneMailConnection(email, phone, userName || email, paramString);
       },
     },
   },

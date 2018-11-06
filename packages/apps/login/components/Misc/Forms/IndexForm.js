@@ -5,7 +5,7 @@ import isEmail from 'validator/lib/isEmail';
 import Router from 'next/router';
 import objTransform from '../../../util/objectTransformationUtil';
 import { storeFlowNumber, } from '../../FlowDispenser/flowStorage';
-import { saveUserData, getDataFromUserInfo, saveOtpHash, generateOtp, mockDataFromUserInfo, } from '../../../pages/queryutil/userDetailsOperations';
+import { saveUserData, getDataFromUserInfo, saveOtpHash, generateOtp, saveUserEmail, getEmail, mockDataFromUserInfo, } from '../../../pages/queryutil/userDetailsOperations';
 import { writeMetaDataToApollo, parseRouteInfo, } from '../../../pages/queryutil/flowUtil';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 
@@ -75,6 +75,7 @@ const handleResponseFromGraphql =
 
 const onSubmit = (client, getFlowByData, showError, hideError) => ({ email, }) => {
   hideError();
+  saveUserEmail(client)(email);
   // mockDataFromUserInfo(client)(email)
   getDataFromUserInfo(client)(email)
     .then(res => handleResponseFromGraphql({ client, getFlowByData, email, res, showError, }))

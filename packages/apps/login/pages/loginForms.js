@@ -88,8 +88,7 @@ const onSubmitSms = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk
       reason => console.log(reason.message) // TODO: add error UI
     );
 
-const isLink = client =>
-  ('2345'.includes(getFlowNumber(client).toString()) ? 'phoneInput' : null);
+const isLink = client => ('2345'.includes(getFlowNumber(client).toString()) ? 'notMyPhone' : null);
 
 const validateForm = ({ email, password, }) => {
   let errors = [];
@@ -218,7 +217,12 @@ class LoginForms extends Component {
                               </LoginDialog>
 
                               {/* ----------------- Tabs Frame ----------------- */}
-                              <TabsFrame activeTab={(parseInt(getMetadataFromApollo(client), 10) || 1)} isLink={[isLink(client)]}>
+                              <TabsFrame
+                                activeTab={parseInt(getMetadataFromApollo(client), 10)}
+                                isLink={[ isLink(client), ]}
+                                findRout={findRout}
+                                doTransition={doTransition}
+                              >
                                 {/* TAB 1 */}
                                 <div tabname="כניסה באמצעות SMS">
                                   <ItemCenterer>
