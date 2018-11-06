@@ -8,10 +8,6 @@ export default [
       [ '-loginForms', { url: '/loginForms', param: 0 } ],
       [ 'otpValidation-loginForms', { url: '/loginForms', param: 1 } ],
     ]),
-    phoneInput: {
-      withPassword: 'loginForms',
-      accept: 'phoneMailSent',
-    },
     phoneMailSent: {
       sendAgain: 'phoneMailSent2',
       withPassword: 'loginForms',
@@ -31,9 +27,12 @@ export default [
   },
   {
     flowNumber: 2,
-    initialState: 'loginForms',
-    initialTransition: { url: '/loginForms', param: 1 },
-    transitionRouteMap: new Map([ [ '-loginForms', { url: '/loginForms', param: 1 } ] ]),
+    initialState: 'phoneInput',
+    initialTransition: '/phoneInput',
+    transitionRouteMap: new Map([
+      [ '-loginForms', '/loginForms', ],
+      [ 'otpValidation-loginForms', '/loginForms', ],
+    ]),
     emailPhoneInput: {
       withPassword: 'loginForms',
       accept: 'phoneMailSent',

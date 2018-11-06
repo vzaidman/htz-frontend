@@ -1,5 +1,5 @@
-import INSPECT_EMAIL, { USER_DATA, PHONE_NUM, OTP_HASH, } from '../queries/UserQueries';
-import { GENERATE_HASH, } from '../mutations/UserMutations';
+import INSPECT_EMAIL, { USER_DATA, PHONE_NUM, OTP_HASH, USER_EMAIL, } from '../queries/UserQueries';
+import { GENERATE_HASH, CONNECT_MAIL_MOBILE, } from '../mutations/UserMutations';
 
 const getDataFromUserInfo = client => email =>
   client
@@ -34,6 +34,7 @@ const mockDataFromUserInfo = client => email =>
 
 const getUserData = client => client.readQuery({ query: USER_DATA, }).userData;
 const getOtpHash = client => client.readQuery({ query: OTP_HASH, }).otpHash;
+const getEmail = client => client.readQuery({ query: USER_EMAIL, }).userEmail;
 const getPhoneNum = client => client.readQuery({ query: PHONE_NUM, }).userData.phoneNum;
 
 const saveUserData = client => userDataObj => {
@@ -47,9 +48,20 @@ const generateOtp = client => phoneNumObj =>
     mutation: GENERATE_HASH,
   });
 
+const connectMailWithPhone = client => dataObj =>
+  client.mutate({
+    variables: dataObj,
+    mutation: CONNECT_MAIL_MOBILE,
+  });
+
 const saveOtpHash = client => otpHashObj => {
   client.writeData({ data: otpHashObj, });
   return otpHashObj;
+};
+
+const saveUserEmail = client => email => {
+  client.writeData({ data: { userEmail: email, }, });
+  return email;
 };
 
 const savePhoneNum = client => phoneNumObj => {
@@ -64,7 +76,10 @@ export {
   saveUserData,
   getOtpHash,
   saveOtpHash,
+  getEmail,
+  saveUserEmail,
   getDataFromUserInfo,
   mockDataFromUserInfo,
   generateOtp,
+  connectMailWithPhone,
 };
