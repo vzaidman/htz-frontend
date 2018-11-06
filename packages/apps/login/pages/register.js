@@ -88,7 +88,8 @@ const getTermsText = () => {
   );
 };
 
-const onSubmit = ({ register, doTransition, }) => ({ firstname, lastname, email, password, phone, terms, }) => {
+const onSubmit = ({ register, doTransition, showError, hideError, }) => ({ firstname, lastname, email, password, phone, terms, }) => {
+  hideError();
   // const { mobilePrefix, mobileNumber, } = mobileNumberParser(phone); // TODO import function from htz-user-utils
   const { mobilePrefix, mobileNumber, } = { mobilePrefix: '', mobileNumber: '', };
   register(
@@ -102,7 +103,9 @@ const onSubmit = ({ register, doTransition, }) => ({ firstname, lastname, email,
     terms
   ).then(
     () => Router.push(doTransition('success')),
-    reason => {} // TODO error
+    reason => {
+      showError((reason.message || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."));
+    }
   );
 };
 
@@ -114,7 +117,7 @@ const sendAgain = e => {
 class RegisterPage extends Component {
   state = {
     isChecked: false,
-    isFirstTime: true,
+    isFirstTime: false,
     showError: false,
     errorMessage: '',
   };
@@ -129,24 +132,25 @@ class RegisterPage extends Component {
 
   isCheckboxError = () => !(this.state.isFirstTime || this.state.isChecked);
 
-  valdiateForm = ({ firstname, lastname, email, password, }) => {
+  valdiateForm = ({ firstname, lastname, email, password, terms, }) => {
+    console.log(terms);
     let errors = [];
-    if (firstname != null) {
+    if (firstname !== null) {
       errors = [ ...validateFirstNameInput({ firstname, }), ];
     }
-    if (lastname != null) {
+    if (lastname !== null) {
       errors = [ ...errors, ...validateLastNameInput({ lastname, }), ];
     }
-    if (email != null) {
+    if (email !== null) {
       errors = [ ...errors, ...validateEmailInput({ email, }), ];
     }
-    if (password != null) {
+    if (password !== null) {
       errors = [ ...errors, ...validatePasswordInput({ password, }), ];
     }
     if (this.isCheckboxError()) {
       errors = [ ...errors, ...this.validateTermsInput(), ];
     }
-    console.log(errors.map(arr => JSON.stringify(arr)));
+    //console.log(errors.map(arr => JSON.stringify(arr)));
     return errors;
   };
 
@@ -173,7 +177,7 @@ class RegisterPage extends Component {
                       clearFormAfterSubmit={false}
                       // initialValues={{ email: 'insert email' }}
                       validate={this.valdiateForm}
-                      onSubmit={onSubmit({ register, doTransition, })}
+                      onSubmit={onSubmit({ register, doTransition, showError: this.showError, hideError: this.hideError })}
                       render={({ getInputProps, handleSubmit, clearForm, }) => (
                         <Fragment>
 
@@ -268,7 +272,6 @@ class RegisterPage extends Component {
                               errorText="יש לאשר את תנאי השימוש באתר"
                               onClick={this.toggleChecked}
                               checked={this.state.isChecked}
-                              isError={this.isCheckboxError}
                               {...getInputProps({
                                 name: 'terms',
                                 label: getTermsText(),

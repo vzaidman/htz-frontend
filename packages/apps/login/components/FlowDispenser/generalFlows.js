@@ -7,8 +7,8 @@ export default {
     [ '-phoneMailSent2', '/phoneMailSent2', ],
     [ '-customerService', '/customerService', ],
     [ '-register', '/register', ],
-    [ '-emailValidation', '/emailValidationSent', ],
-    [ '-emailValidation2', '/emailValidationSent2', ],
+    [ '-emailValidationSent', '/emailValidationSent', ],
+    [ '-emailValidationSent2', '/emailValidationSent2', ],
     [ '-passwordError', '/passwordError', ],
     [ '-passwordReminder', '/passwordReminder', ],
     [ '-passwordReminderSent', '/passwordReminderSent', ],
@@ -34,6 +34,9 @@ export default {
   register: {
     success: 'emailValidationSent',
     backToLogin: 'loginForms',
+  },
+  emailValidationSent: {
+    sendAgain: 'emailValidationSent2',
   },
   otpValidation: {
     sendAgain: 'otpValidation2',

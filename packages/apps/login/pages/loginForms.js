@@ -103,8 +103,17 @@ const validateForm = ({ email, password, }) => {
   return errors;
 };
 
-const hidePhone = phoneNumber =>
-  `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
+const getUserHiddenMobile = () => {
+
+}
+
+const hiddenPhone = (client) => {
+  if(getUserData(client)) {
+    return `${phoneNumber.substring(0, 3)}****${getUserData(client).phoneNum.substring(7)}`;  
+  } else {
+    return '-';
+  }
+}
 
 const sendAgain = e => {
   console.log('test...');
@@ -216,7 +225,7 @@ class LoginForms extends Component {
                                       <h4 className="no-spac">
                                         להתחברות הזינו את הקוד שנשלח למספר
                                         <br />
-                                        <span dir="ltr">{ hidePhone(getUserData(client).phoneNum) }</span>
+                                        <span dir="ltr">{ hiddenPhone(client) }</span>
                                       </h4>
                                   </ItemCenterer>
 
