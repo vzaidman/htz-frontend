@@ -1,11 +1,8 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 import { HtzLink, } from '@haaretz/htz-components';
 import { LoginContentStyles, } from '../StyleComponents/LoginStyleComponents';
-
-const findRout = (route) => {
-  console.log(route);
-}
 
 export default class TabsFrame extends React.Component {
   state = {
@@ -16,9 +13,13 @@ export default class TabsFrame extends React.Component {
   static propTypes = {
     activeTab: PropTypes.number,
     isLink: PropTypes.array,
+    findRout: PropTypes.func,
+    doTransition: PropTypes.func,
   };
 
   static defaultProps = {
+    findRout: null,
+    doTransition: null,
     activeTab: 1,
     isLink: [],
   };
@@ -36,7 +37,7 @@ export default class TabsFrame extends React.Component {
   }
 
   setInitTab = () => {
-    this.setState({ activeTab: this.props.activeTab })
+    this.setState({ activeTab: this.props.activeTab, isLink: this.props.isLink, });
   }
 
   createNavButton = (child, index) => {
@@ -52,19 +53,18 @@ export default class TabsFrame extends React.Component {
           />
           <label htmlFor={`tab${index}`} tabIndex={index}>{child.props.tabname || `Tab ${index}`}</label>
         </span>
-      ) : 
-      (
-        <HtzLink 
-          href={`${findRout(this.state.isLink[index])}`}
+      ) :
+      (this.props.findRout && this.props.doTransition ? (
+        <HtzLink
+          href={`${this.props.findRout(this.state.isLink[index])}`}
           onClick={e => {
             e.preventDefault();
-            const route = findRout(this.state.isLink[index]);
-            //Router.push(route);
+            Router.push(this.props.doTransition(this.state.isLink[index]));
           }}
         >
           {child.props.tabname || `Tab ${index}`}
         </HtzLink>
-      );
+      ) : null);
   }
 
   navClickHandler = (index) => {

@@ -16,9 +16,14 @@ export default {
     [ '-emailValidationSent', '/emailValidationSent', ],
     [ '-success', '/', ],
   ]),
+  phoneInput: {
+    withPassword: 'loginForms',
+    accept: 'phoneMailSent',
+  },
   loginForms: {
     withSms: 'otpValidation',
     registration: 'register',
+    notMyPhone: 'phoneInput',
   },
   passwordError: {
     forgotPassword: 'passwordReminder',

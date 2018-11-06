@@ -1,5 +1,6 @@
 import React, { Fragment, } from 'react';
 import Router from 'next/router';
+import { ApolloConsumer, } from 'react-apollo';
 
 import { Form, TextInput, Button, HtzLink, } from '@haaretz/htz-components';
 
@@ -8,6 +9,8 @@ import FSMLayout from '../layouts/FSMLayout';
 import theme from '../theme/index';
 import BottomLinks from '../components/Misc/BottomLinks';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../components/StyleComponents/LoginStyleComponents';
+
+import { connectMailWithPhone, getUserData, getEmail, } from './queryutil/userDetailsOperations';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -21,12 +24,21 @@ const isValidPhoneNumber = number => {
   const phoneRegex = /^(\s*|[+0-9]\d{6,})$/;
   return phoneRegex.test(number);
 };
-const validatePhoneNumber = ({ smscode, }) =>
-  (!isValidPhoneNumber(smscode) || !smscode || smscode.length < 10
+const validatePhoneNumber = ({ phoneNumber, }) =>
+  (!isValidPhoneNumber(phoneNumber) || !phoneNumber || phoneNumber.length < 10
     ? generateSmsCodeError('אנא הזינו מספר טלפון נייד')
     : []);
 
-const onSubmit = (doTransitionFunc, showError, hideError) => () => {
+const onSubmit = ({ doTransitionFunc, client, }) => ({ phoneNumber, }) => {
+  const userData = getUserData(client);
+  const email = getEmail(client);
+  console.log(userData);
+  connectMailWithPhone(client)({
+    email,
+    userName: 'just a check', // TODO: add username in userinfo (user by mail)
+    phone: phoneNumber,
+    paramString: btoa(`email=${email}`),
+  });
   const route = doTransitionFunc('accept');
   Router.push(route);
 };
@@ -36,23 +48,9 @@ const onSubmit = (doTransitionFunc, showError, hideError) => () => {
 // };
 // --------------------------
 
-class PhoneInput extends Component {
-
-  state = {
-    showError: false,
-    errorMessage: '',
-  }
-
-  showError = (errorMsg) => {
-    this.setState({ showError: true, errorMessage: errorMsg, });
-  }
-
-  hideError = () => {
-    this.setState({ showError: false, errorMessage: "", });
-  }
-
-  render() {
-    return(
+const PhoneInput = () => (
+  <ApolloConsumer>
+    { client => (
       <FSMLayout>
         {({ currentState, findRout, doTransition, }) => (
           <Fragment>
@@ -61,12 +59,12 @@ class PhoneInput extends Component {
                 <ItemCenterer>
                   <h5>הזינו מספר טלפון נייד</h5>
                 </ItemCenterer>
-    
+
                 <Form
                   clearFormAfterSubmit={false}
                   // initialValues={{ email: 'insert email' }}
                   validate={validatePhoneNumber}
-                  onSubmit={onSubmit(doTransition, this.showError, this.hideError)}
+                  onSubmit={onSubmit({ doTransition, client, })}
                   render={({ getInputProps, handleSubmit, clearForm, }) => (
                     <Fragment>
                       <div>
@@ -79,26 +77,25 @@ class PhoneInput extends Component {
                             short: '*',
                           }}
                           {...getInputProps({
-                            name: 'smscode',
+                            name: 'phoneNumber',
                             label: 'מספר טלפון נייד',
                             type: 'text',
                           })}
                         />
                       </div>
-                      
+
                       <ErrorBox className={this.state.showError ? "" : "hidden"}>
                         <span>
                           {this.state.errorMessage}
                         </span>
                       </ErrorBox>
-                      
                       <ItemCenterer>
                         <Button onClick={handleSubmit}>המשך</Button>
                       </ItemCenterer>
                     </Fragment>
                   )}
                 />
-    
+
                 <BottomLinks spacing={2.5}>
                   <HtzLink
                     href={`${findRout('withPassword')}`}
@@ -116,9 +113,8 @@ class PhoneInput extends Component {
           </Fragment>
         )}
       </FSMLayout>
-    );
-  }
-
-}
+    )}
+  </ApolloConsumer>
+);
 
 export default PhoneInput;
