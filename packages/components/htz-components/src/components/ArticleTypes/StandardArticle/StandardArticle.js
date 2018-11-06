@@ -84,9 +84,7 @@ function StandardArticle({ articleId, slots, }) {
             pubDate,
             modDate,
           } = standardArticleElement;
-          const header = isMouse
-            ? { pubDate, modDate, }
-            : standardArticleElement.header;
+          const header = standardArticleElement.header;
 
           return (
             <FelaTheme
