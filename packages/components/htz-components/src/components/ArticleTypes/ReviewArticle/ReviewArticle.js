@@ -133,27 +133,6 @@ function ReviewArticle({ articleId, slots, }) {
                                 cache.writeData({
                                   data: {
                                     commentsElementId,
-                                    // todo: get schema from papi.
-                                    // pageSchema: {
-                                    //   type: 'Review',
-                                    //   mainEntityOfPage: {
-                                    //     id: canonicalUrl,
-                                    //     type: reviewType,
-                                    //     __typename: 'MainEntityOfPage',
-                                    //   },
-                                    // itemReviewed: {
-                                    //   type: reviewType,
-                                    //   ...reviewItemObj,
-                                    //   __typename: 'ItemReviewed',
-                                    // },
-                                    // reviewRating: {
-                                    //   type: 'Rating',
-                                    //   ratingValue: reviewStars,
-                                    //   __typename: 'ReviewRating',
-                                    // },
-                                    // url,
-                                    // __typename: 'PageSchema',
-                                    // },
                                   },
                                 });
                                 return (

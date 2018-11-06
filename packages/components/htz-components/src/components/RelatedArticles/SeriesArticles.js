@@ -217,19 +217,6 @@ export default class SeriesArticles extends React.Component {
                   : `${loadButton.close} ${this.state.remainingArticlesCount}`}
               </Button>
             ) : null}
-            <script type="application/ld+json">
-              {JSON.stringify({
-                '@context': 'http://schema.org',
-                '@type': 'ItemList',
-                itemListElement: [
-                  ...this.props.articles.map((article, i) => ({
-                    '@type': 'ListItem',
-                    position: i + 1,
-                    url: article.url,
-                  })),
-                ],
-              })}
-            </script>
           </div>
         )}
       />
