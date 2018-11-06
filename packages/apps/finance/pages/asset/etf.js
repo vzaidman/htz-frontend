@@ -20,7 +20,7 @@ import QuoteAssetsTable from '../../components/QuotePageComponents/QuoteAssetsTa
 
 const EtfQuery: DocumentNode = gql`
   query EtfData($assetId: String!){
-    assetData(assetId: $assetId){
+    asset(assetId: $assetId){
       name
       value
       changePercentage
@@ -73,7 +73,7 @@ function etf({ url: { query: { section, assetId, }, }, }: Props): Node {
           if (error) return null;
           if (loading) return null;
           const {
-            assetData: {
+            asset: {
               name,
               value,
               changePercentage,

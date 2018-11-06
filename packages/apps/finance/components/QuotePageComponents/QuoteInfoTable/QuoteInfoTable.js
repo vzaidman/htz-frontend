@@ -7,7 +7,6 @@ import { Query, } from '@haaretz/htz-components';
 
 import type { StatelessFunctionalComponent, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
-import type { Asset, } from '../../../types/asset';
 
 import { TdComponent, } from '../../AssetsTable/AssetsTable';
 
@@ -37,7 +36,7 @@ const TradeStatsQuery: (Array<Field>, boolean) => DocumentNode = (
   tradingStatus
 ) => gql`
   query TradeStatsTable($assetsId: [String]){
-    financeTable(assetsId: $assetsId){
+    assetsList(assetsId: $assetsId){
       ${tradingStatus ? 'tradingStatus\n' : ''}
       ${fields.map(field => `${field.name}\n`)}
     }
@@ -100,10 +99,9 @@ const QuoteInfoTable: StatelessFunctionalComponent<Props> =
       query={TradeStatsQuery(fields, tradingStatus)}
       variables={{ assetsId: [ id, ], }}
     >
-      {({ error, loading, data, }) => {
+      {({ error, loading, data: { assetsList: assets, }, }) => {
         if (error) return null;
         if (loading) return null;
-        const assets: Array<Asset> = data.financeTable;
         return (
           <FelaComponent
             style={(theme: Object) => ({

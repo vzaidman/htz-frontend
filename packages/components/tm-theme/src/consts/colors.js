@@ -417,9 +417,9 @@ const colors = {
     primaryFocusBg: [ 'primary', '-6', ],
 
     // Graph
-    graphBg: [ 'neutral', '-4', ],
-    graphBorder: 'transparent',
-    graphBorderItem: [ 'neutral', '-6', ],
+    graphBg: [ 'neutral', '-5', ],
+    graphBorder: [ 'neutral', '-5', ],
+    graphBorderItem: [ 'neutral', '-5', ],
     graphArrowColor: [ 'neutral', 'base', ],
     graphTextColor: [ 'neutral', 'base', ],
 

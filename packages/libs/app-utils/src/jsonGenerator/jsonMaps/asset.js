@@ -142,10 +142,18 @@ export const assetObject: Object = {
   expirationPrice: () => number.float({ max: 100, min: 0, fixed: 2, }),
   daysToExpiration: () => number.int({ max: 3000, }),
   expirationDate: () => date.timestamp({}),
-  expirationBenchmarkDate: () => date.timestamp({}),
   theoreticalValue: () => number.float({ max: 100, min: 0, fixed: 2, }),
   theoreticalValueGap: () => number.float({ max: 100, min: 0, fixed: 2, }),
   assetBaseHoldingRatio: () => number.float({ max: 100, min: 0, fixed: 2, }),
+  expirationBenchmarkDates: () => list(
+    [
+      {
+        method: string.lorem,
+        options: { count: 1, type: 'word', },
+      },
+    ],
+    number.int({ max: 7, min: 2, }),
+  ),
   indexExposure: () => list(
     [
       {

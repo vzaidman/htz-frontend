@@ -203,7 +203,7 @@ const financeAsset = new GraphQLObjectType({
     daysToExpiration: { type: GraphQLInt, },
     expirationDate: { type: GraphQLTimestamp, },
     /* options */
-    expirationBenchmarkDate: { type: GraphQLTimestamp, },
+    expirationBenchmarkDates: { type: new GraphQLList(GraphQLString), },
     theoreticalValue: { type: GraphQLFloat, },
     theoreticalValueGap: { type: GraphQLFloat, },
   }),

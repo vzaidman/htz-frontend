@@ -14,19 +14,21 @@ import { TdComponent, } from '../AssetsTable/AssetsTable';
 import SectionLink from '../SectionLink/SectionLink';
 
 const TableQuery: (Array<string>) => DocumentNode = fields => gql`
-  query Table(
+  query SortableTable(
     $parentId: String,
     $assetSubSection: String,
     $assetsId: [String],
+    $expirationBenchmarkDate: String,
     $count: Int!,
     $sortBy: String!,
     $sortOrder: String!,
     $offset: Int!
   ) {
-    financeTable(
+    assetsList(
       parentId: $parentId,
       assetSubSection: $assetSubSection,
       assetsId: $assetsId,
+      expirationBenchmarkDate: $expirationBenchmarkDate,
       count: $count,
       sortBy: $sortBy,
       sortOrder: $sortOrder,
@@ -60,12 +62,15 @@ type Props = {
   addLink: ?boolean,
   count?: number,
   loadMore: ?boolean,
+  expirationBenchmarkDate?: string,
 };
 
 type State = {
   loadMore: boolean,
   sortBy?: string,
-  sortOrder: string,
+  sortOrder?: string,
+  parentId?: string,
+  expirationBenchmarkDate?: string,
 };
 
 type SortIconsProps = {
@@ -84,6 +89,7 @@ type TableLinkProps = {
 const SortIcons: SortIconsProps => Node = ({ active, sortOrder, }) => (
   <FelaComponent
     style={{
+      transform: 'translateY(-50%)',
       fontSize: '1.5rem',
       marginEnd: '1rem',
     }}
@@ -147,6 +153,162 @@ const tdHeaderStyle: (Object, StyleProps) => Object = (theme, miscStyles) => ({
   ],
 });
 
+/* eslint-disable react/prop-types */
+const Table = ({
+  miscStyles,
+  headerMiscStyles,
+  type,
+  linkText,
+  addLink,
+  loadMore,
+  fields,
+  sortOrder,
+  assets,
+  parentId,
+  fetchData,
+  fetchAll,
+  client,
+  count,
+  sortBy,
+}) => (
+  <Fragment>
+    <FelaComponent
+      style={(theme: Object) => ({
+        ...theme.type(-2),
+        tableLayout: 'fixed',
+        whiteSpace: 'nowrap',
+        width: '100%',
+        extend: [
+          ...(miscStyles
+            ? parseStyleProps(miscStyles, theme.mq, theme.type)
+            : []),
+        ],
+      })}
+      render="table"
+    >
+      <thead>
+        <tr>
+          {fields.map((field: FieldType, index: number) => (
+            <TdComponent
+              key={`${field.name}-${index}`}
+              miscStyles={{
+                whiteSpace: 'pre-wrap',
+                verticalAlign: 'bottom',
+                paddingTop: '0',
+                paddingBottom: '0',
+              }}
+            >
+              <FelaComponent
+                style={{ width: '100%', }}
+                render={({ className, }) => (
+                  <button
+                    className={className}
+                    onClick={() => fetchData({ client, field, })}
+                  >
+                    <FelaComponent
+                      style={theme => ({
+                        ...tdHeaderStyle(theme, headerMiscStyles),
+                        display: 'flex',
+                        alignItems: 'flex-end',
+                        paddingEnd: '2rem',
+                        fontWeight: sortBy === field.name ? '700' : '300',
+                      })}
+                    >
+                      <SortIcons
+                        active={sortBy === field.name}
+                        sortOrder={sortOrder}
+                      />
+                      <span>{field.display}</span>
+                    </FelaComponent>
+                  </button>
+                )}
+              />
+            </TdComponent>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {assets.map((asset: Asset) => (
+          <FelaComponent
+            key={asset.id}
+            style={theme => ({
+              backgroundColor: theme.color('neutral', '-10'),
+              extend: [
+                borderBottom('2px', 1, 'solid', theme.color('neutral', '-6')),
+              ],
+            })}
+            render="tr"
+          >
+            {fields.map((field: FieldType, index: number) => (
+              <TdComponent
+                key={`${field.name}-${index}`}
+                miscStyles={{
+                  ...(field.style ? field.style(asset) : {}),
+                  paddingStart: '2rem',
+                }}
+              >
+                <TableLink
+                  allowTab={index === 0}
+                  content={field.value(asset)}
+                  assetId={asset.id}
+                  type={asset.type}
+                />
+              </TdComponent>
+            ))}
+          </FelaComponent>
+        ))}
+      </tbody>
+    </FelaComponent>
+    {
+      addLink && type ?
+        <SectionLink
+          href={{
+            pathname: `/${type || ''}`,
+            query: {
+              parentId,
+            },
+          }}
+          as={`/${type || ''}/${parentId || ''}`}
+        >
+          <span>{linkText || ''}</span>
+        </SectionLink>
+        : null
+    }
+    {
+      loadMore && assets.length <= count ?
+        <FelaComponent
+          style={theme => ({
+            ...theme.type(-2),
+            backgroundColor: theme.color('neutral', '-5'),
+            color: theme.color('neutral', '-1'),
+            display: 'block',
+            fontWeight: '700',
+            paddingBottom: '1rem',
+            paddingTop: '1rem',
+            textAlign: 'center',
+            width: '100%',
+          })}
+          render={({ className, }) => (
+            <button
+              className={className}
+              onClick={() => fetchAll(count || assets.length)}
+            >
+              טען עוד
+              <IconBack
+                size={-1}
+                miscStyles={{
+                  marginStart: '1rem',
+                  transform: 'rotate(270deg)',
+                }}
+              />
+            </button>
+          )}
+        />
+        : null
+    }
+  </Fragment>
+);
+
 class SortableTable extends React.Component<Props, State> {
   static defaultProps = {
     miscStyles: null,
@@ -156,11 +318,14 @@ class SortableTable extends React.Component<Props, State> {
     type: null,
     assetSubSection: null,
     count: 5,
+    expirationBenchmarkDate: null,
   };
 
   state = {
     sortBy: null,
     sortOrder: null,
+    parentId: null,
+    expirationBenchmarkDate: null,
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
@@ -170,33 +335,62 @@ class SortableTable extends React.Component<Props, State> {
         nextProps.fields.find((field: FieldType) => (
           field.name === nextProps.initialSort
         )).sortingOrder,
+      parentId: nextProps.parentId || prevState.parentId || null,
+      expirationBenchmarkDate:
+        nextProps.expirationBenchmarkDate || prevState.expirationBenchmarkDate || null,
     };
   }
 
-  reSort: FieldType => void = field => {
-    const { sortBy, sortOrder, } = this.state;
-    this.setState({
-      sortBy: field.name,
-      sortOrder:
-        sortBy !== field.name ? field.sortingOrder :
-          sortOrder === 'descend' ? 'ascend' : 'descend',
-    });
-  };
+  fetchData: ({ client: Object, field?: FieldType, props?: Props, }) => Promise<any> =
+    async ({ client, field = null, props = null, }) => {
+      const {
+        fields,
+        parentId,
+        assetsId,
+        count,
+        assetSubSection,
+        expirationBenchmarkDate,
+      } = props || this.props;
+
+      const sortBy = field ? field.name : this.state.sortBy;
+      const sortOrder = field
+        ? this.state.sortBy !== field.name
+          ? field.sortingOrder
+          : this.state.sortOrder === 'descend'
+            ? 'ascend'
+            : 'descend'
+        : this.state.sortOrder;
+
+      await client.query({
+        query: TableQuery(fields),
+        variables: {
+          parentId,
+          assetsId,
+          count: assetsId ? assetsId.length : count,
+          sortBy,
+          sortOrder,
+          assetSubSection,
+          offset: 0,
+          expirationBenchmarkDate,
+        },
+      });
+      this.setState({
+        sortBy,
+        sortOrder,
+      });
+    };
 
   render(): Node {
     const {
-      miscStyles,
-      headerMiscStyles,
       fields,
       parentId,
-      type,
-      linkText,
       assetsId,
-      addLink,
       count,
-      loadMore,
       assetSubSection,
+      expirationBenchmarkDate,
+      ...props
     } = this.props;
+
     const { sortBy, sortOrder, } = this.state;
     return (
       <Query
@@ -209,185 +403,58 @@ class SortableTable extends React.Component<Props, State> {
           sortOrder,
           assetSubSection,
           offset: 0,
+          expirationBenchmarkDate,
         }}
       >
-        {({ loading, error, data, fetchMore, }) => {
+        {({ loading, error, data, fetchMore, client, }) => {
+          const fetchAll = (offset: number) => (
+            fetchMore(
+              {
+                variables: {
+                  offset,
+                },
+                updateQuery: (prev, { fetchMoreResult, }) => {
+                  const assets = fetchMoreResult
+                    ? [
+                      ...prev.assetsList,
+                      ...fetchMoreResult.assetsList,
+                    ].sort((itemA, itemB) => {
+                      const valueA = typeof itemA[sortBy] === 'string' ? itemA[sortBy].toUpperCase() : itemA[sortBy]; // ignore upper and lowercase
+                      const valueB = typeof itemB[sortBy] === 'string' ? itemB[sortBy].toUpperCase() : itemB[sortBy]; // ignore upper and lowercase
+                      if (valueA < valueB) {
+                        return sortOrder === 'ascend' ? -1 : 1;
+                      }
+                      if (valueA > valueB) {
+                        return sortOrder === 'ascend' ? 1 : -1;
+                      }
+
+                      // values must be equal
+                      return 0;
+                    })
+                    : null;
+                  return (
+                    fetchMoreResult
+                      ? Object.assign({}, prev, {
+                        assetsList: assets,
+                      })
+                      : prev
+                  );
+                },
+              }
+            )
+          );
+
           if (error) return null;
           if (loading) return null;
-          const { financeTable: assets, }: Array<Asset> = data;
-          return (
-            <Fragment>
-              <FelaComponent
-                style={(theme: Object) => ({
-                  ...theme.type(-2),
-                  tableLayout: 'fixed',
-                  whiteSpace: 'nowrap',
-                  width: '100%',
-                  extend: [
-                    ...(miscStyles
-                      ? parseStyleProps(miscStyles, theme.mq, theme.type)
-                      : []),
-                  ],
-                })}
-                render="table"
-              >
-                <thead>
-                  <tr>
-                    {fields.map((field: FieldType) => (
-                      <TdComponent
-                        miscStyles={{
-                        paddingTop: '0',
-                        paddingBottom: '0',
-                      }}
-                      >
-                        <FelaComponent
-                          style={{ width: '100%', }}
-                          render={({ className, }) => (
-                            <button
-                              className={className}
-                              onClick={() => this.reSort(field)}
-                            >
-                              <FelaComponent
-                                style={theme => ({
-                                  ...tdHeaderStyle(theme, headerMiscStyles),
-                                  paddingEnd: '2rem',
-                                  fontWeight: sortBy === field.name ? '700' : '300',
-                                })}
-                              >
-                                <SortIcons
-                                  active={sortBy === field.name}
-                                  sortOrder={sortOrder}
-                                />
-                                {field.display}
-                              </FelaComponent>
-                            </button>
-                          )}
-                        />
-                      </TdComponent>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {assets.map((asset: Asset) => (
-                    <FelaComponent
-                      style={theme => ({
-                        backgroundColor: theme.color('neutral', '-10'),
-                        extend: [
-                          borderBottom('2px', 1, 'solid', theme.color('neutral', '-6')),
-                        ],
-                      })}
-                      render="tr"
-                    >
-                      {fields.map((field: FieldType, index: number) => (
-                        <TdComponent
-                          miscStyles={{
-                            ...(field.style ? field.style(asset) : {}),
-                            paddingStart: '2rem',
-                          }}
-                        >
-                          <TableLink
-                            allowTab={index === 0}
-                            content={field.value(asset)}
-                            assetId={asset.id}
-                            type={asset.type}
-                          />
-                        </TdComponent>
-                      ))}
-                    </FelaComponent>
-                  ))}
-                </tbody>
-              </FelaComponent>
-              {
-                addLink && type ?
-                  <SectionLink
-                    href={{
-                      pathname: `/${type || ''}`,
-                      query: {
-                        parentId,
-                      },
-                    }}
-                    as={`/${type || ''}/${parentId || ''}`}
-                  >
-                    <span>{linkText || ''}</span>
-                  </SectionLink>
-                  : null
-              }
-              {
-                loadMore && assets.length <= count ?
-                  <FelaComponent
-                    style={theme => ({
-                      ...theme.type(-2),
-                      backgroundColor: theme.color('neutral', '-5'),
-                      color: theme.color('neutral', '-1'),
-                      display: 'block',
-                      fontWeight: '700',
-                      paddingBottom: '1rem',
-                      paddingTop: '1rem',
-                      textAlign: 'center',
-                      width: '100%',
-                      extend: [
-                        ...(miscStyles
-                          ? parseStyleProps(miscStyles, theme.mq, theme.type)
-                          : []),
-                      ],
-                    })}
-                    render={({ className, }) => (
-                      <button
-                        className={className}
-                        onClick={() => (
-                          fetchMore(
-                            {
-                              variables: {
-                                offset: count || assets.length,
-                              },
-                              updateQuery: (prev, { fetchMoreResult, }) => {
-                                const assets = fetchMoreResult
-                                  ? [
-                                    ...prev.financeTable.assets,
-                                    ...fetchMoreResult.financeTable.assets,
-                                  ].sort((itemA, itemB) => {
-                                    const valueA = typeof itemA[sortBy] === 'string' ? itemA[sortBy].toUpperCase() : itemA[sortBy]; // ignore upper and lowercase
-                                    const valueB = typeof itemB[sortBy] === 'string' ? itemB[sortBy].toUpperCase() : itemB[sortBy]; // ignore upper and lowercase
-                                    if (valueA < valueB) {
-                                      return sortOrder === 'ascend' ? -1 : 1;
-                                    }
-                                    if (valueA > valueB) {
-                                      return sortOrder === 'ascend' ? 1 : -1;
-                                    }
 
-                                    // values must be equal
-                                    return 0;
-                                  })
-                                  : null;
-                                return (
-                                  fetchMoreResult
-                                    ? Object.assign({}, prev, {
-                                      financeTable: {
-                                        assets,
-                                        __typename: 'FinanceTable',
-                                      },
-                                    })
-                                    : prev
-                                );
-                              },
-                            }
-                          )
-                        )}
-                      >
-                        טען עוד
-                        <IconBack
-                          size={-1}
-                          miscStyles={{
-                            marginStart: '1rem',
-                            transform: 'rotate(270deg)',
-                          }}
-                        />
-                      </button>
-                    )}
-                  />
-                  : null
-              }
-            </Fragment>
+          const { assetsList: assets, }: Array<Asset> = data;
+          return (
+            <Table
+              assets={assets}
+              fetchData={this.fetchData}
+              {...{ sortOrder, parentId, fetchMore, fields, client, count, sortBy, fetchAll, }}
+              {...props}
+            />
           );
         }}
       </Query>

@@ -38,7 +38,7 @@ const Tab: StatelessFunctionalComponent<Props> = ({
       render={({ className, }) => (presentation ? (
         <li role="presentation" className={className}>
           <TabTag
-            isActive={isActive}
+            {...(typeof TabTag !== 'string' ? { isActive, } : {})}
             onClick={() => { if (setActiveTab) setActiveTab(index); if (onClick) onClick(); }}
             tabIndex={isActive ? '0' : '-1'}
             role="tab"
