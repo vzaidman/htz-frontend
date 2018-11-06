@@ -1,17 +1,19 @@
 // @flow
 import React from 'react';
 import gql from 'graphql-tag';
-import type { StatelessFunctionalComponent, } from 'react';
-import type { DocumentNode, } from 'graphql/language/ast';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import { H, Grid, GridItem, Query, } from '@haaretz/htz-components';
+
+import type { StatelessFunctionalComponent, } from 'react';
+import type { DocumentNode, } from 'graphql/language/ast';
+import type { Asset, } from '../../types/asset';
 
 import SectionLink from '../SectionLink/SectionLink';
 
 const MarketSummaryQuery: DocumentNode = gql`
   query MarketSummary($assetsId: [String]!) {
-    financeTable(assetsId: $assetsId) {
+    assetsList(assetsId: $assetsId) {
       name
       value
       changePercentage
@@ -196,13 +198,13 @@ export default (props: any) => (
       assetsId: [ '2', '142', '137', ],
     }}
   >
-    {({ loading, error, data: { financeTable: assets, }, }) => {
+    {({ loading, error, data: { assetsList: assets, }, }) => {
       if (error) return null;
       if (loading) return null;
       return (
         <Grid>
-          {assets.map(asset => (
-            <GridItem width={1 / 3}>
+          {assets.map((asset: Asset) => (
+            <GridItem key={asset.id} width={1 / 3}>
               <MarketSummary key={asset.id} {...props} asset={asset} />
             </GridItem>
           ))}

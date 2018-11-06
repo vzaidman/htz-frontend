@@ -12,9 +12,9 @@ const tableMap: Object = new Map([
         options: assetObject,
       },
     ],
-    args.offset !== null && args.count !== args.offset
+    args && args.count && !(args.offset && args.count !== args.offset)
       ? args.count
-      : number.int({ max: 50, min: 5, })
+      : number.int({ max: 20, min: 3, })
     ,
     args,
   ), ],

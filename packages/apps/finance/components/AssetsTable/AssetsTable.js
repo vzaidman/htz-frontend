@@ -15,7 +15,7 @@ import Tabs from '../Tabs/Tabs';
 
 const TableQuery: DocumentNode = gql`
   query GraphTable($assetsId: [String], $assetId: String, $count: Int) {
-    financeTable(assetsId: $assetsId, assetId: $assetId, count: $count) {
+    assetsList(assetsId: $assetsId, assetId: $assetId, count: $count) {
       name
       value
       changePercentage
@@ -334,10 +334,10 @@ export default (props: any) => {
             }),
       }}
     >
-      {({ loading, error, data: { financeTable, }, }) => {
+      {({ loading, error, data: { assetsList, }, }) => {
         if (error) return null;
         if (loading) return null;
-        return <AssetsTable data={financeTable} {...props} />;
+        return <AssetsTable data={assetsList} {...props} />;
       }}
     </Query>
   );

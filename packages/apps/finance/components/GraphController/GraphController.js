@@ -194,7 +194,6 @@ class GraphController extends React.Component<Props, State> {
                         attrs={{ 'aria-hidden': true, }}
                         miscStyles={{
                           flexGrow: '1',
-                          position: 'absolute',
                         }}
                         buttonMiscStyles={{
                           paddingBottom: '0.5rem',

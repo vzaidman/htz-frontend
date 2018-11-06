@@ -18,7 +18,7 @@ import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
 
 const ExchangeQuery: DocumentNode = gql`
   query ExchangeData($assetId: String!){
-    assetData(assetId: $assetId){
+    asset(assetId: $assetId){
       name
       value
       changePercentage
@@ -62,7 +62,7 @@ function exchange({ url: { query: { assetId, section, }, }, }: Props): Node {
           if (error) return null;
           if (loading) return null;
           const {
-            assetData: {
+            asset: {
               name,
               value,
               changePercentage,

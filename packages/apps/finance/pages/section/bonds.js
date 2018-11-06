@@ -17,6 +17,15 @@ import TabPanel from '../../components/TabPanel/TabPanel';
 import Tab from '../../components/Tab/Tab';
 import { TabButton, } from '../../components/TabbedGraph/TabbedGraph';
 
+type Props = {
+  url: {
+    pathname: string,
+    query: {
+      section: string,
+    },
+  },
+};
+
 type State = {
   bonds: string,
   assetSubSection: string,
@@ -46,7 +55,7 @@ const numToString: number => string = num => (
   num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
 );
 
-class Bonds extends React.Component<{}, State> {
+class Bonds extends React.Component<Props, State> {
   state = {
     bonds: 'up',
     assetSubSection: '0',
@@ -63,8 +72,9 @@ class Bonds extends React.Component<{}, State> {
 
   render(): Node {
     const { bonds, assetSubSection, index, } = this.state;
+    const { url: { query: { section, }, }, } = this.props;
     return (
-      <MainLayout>
+      <MainLayout section={section}>
         <FelaTheme
           render={theme => (
             <Fragment>

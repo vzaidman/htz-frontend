@@ -20,7 +20,7 @@ import ShareHoldersTable from '../../components/QuotePageComponents/ShareHolders
 
 const OptionQuery: DocumentNode = gql`
   query OptionData($assetId: String!) {
-    assetData(assetId: $assetId) {
+    asset(assetId: $assetId) {
       name
       value
       changePercentage
@@ -70,7 +70,7 @@ function options({
           if (error) return null;
           if (loading) return null;
           const {
-            assetData: {
+            asset: {
               name,
               value,
               changePercentage,

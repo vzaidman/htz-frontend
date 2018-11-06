@@ -159,7 +159,7 @@ const RootQuery = new GraphQLObjectType({
       },
     },
 
-    assetData: {
+    asset: {
       type: FinanceAsset,
       args: {
         assetId: { type: new GraphQLNonNull(GraphQLString), },
@@ -176,24 +176,25 @@ const RootQuery = new GraphQLObjectType({
         sortingOrder: { type: new GraphQLNonNull(new GraphQLList(GraphQLString)), },
       },
       resolve(parentValue, { query, sortingOrder, }, { dataSources, }) {
-        return dataSources.FinanceAPI.getAssetsList(query, sortingOrder);
+        return dataSources.FinanceAPI.getSearchList(query, sortingOrder);
       },
     },
 
-    financeTable: {
+    assetsList: {
       type: new GraphQLList(FinanceAsset),
       args: {
         assetsId: { type: new GraphQLList(GraphQLString), },
         parentId: { type: GraphQLString, },
         assetSubSection: { type: GraphQLString, },
         assetId: { type: GraphQLString, },
+        expirationBenchmarkDate: { type: GraphQLString, },
         count: { type: GraphQLInt, },
         sortBy: { type: GraphQLString, },
         sortOrder: { type: GraphQLString, },
         offset: { type: GraphQLInt, },
       },
       resolve(parentValue, args, { dataSources, }) {
-        return dataSources.FinanceAPI.getTable(args);
+        return dataSources.FinanceAPI.getAssetsList(args);
       },
     },
 

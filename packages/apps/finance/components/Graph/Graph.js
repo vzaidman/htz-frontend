@@ -11,8 +11,6 @@ import { Query, } from '@haaretz/htz-components';
 const GraphQuery: DocumentNode = gql`
   query FinanceGraph($type: String!, $time: String!, $assetId: String!) {
     financeGraph(type: $type, time: $time, assetId: $assetId) {
-      xLabel
-      yLabel
       startTime
       endTime
       dataSource {
@@ -28,7 +26,6 @@ const GraphQuery: DocumentNode = gql`
         ... on ScatterGraphData {
           x
           y
-          id
           name
           symbol
         }

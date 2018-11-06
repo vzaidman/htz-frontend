@@ -10,7 +10,7 @@ import { b64EncodeUnicode, b64DecodeUnicode, } from './utils/base64Handler';
 
 // JSON Maps
 import assetMap from './jsonGenerator/jsonMaps/asset';
-import financeTableMap from './jsonGenerator/jsonMaps/financeTable';
+import assetsMap from './jsonGenerator/jsonMaps/assets';
 import financeSearchMap from './jsonGenerator/jsonMaps/financeSearch';
 import lineGraphMap from './jsonGenerator/jsonMaps/lineGraph';
 import scatterGraphMap from './jsonGenerator/jsonMaps/scatterGraph';
@@ -59,7 +59,7 @@ export {
   b64DecodeUnicode,
   // JSON Maps
   assetMap,
-  financeTableMap,
+  assetsMap,
   financeSearchMap,
   lineGraphMap,
   scatterGraphMap,

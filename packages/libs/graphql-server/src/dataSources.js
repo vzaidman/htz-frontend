@@ -3,12 +3,12 @@ import config from 'config';
 import { RESTDataSource, } from 'apollo-datasource-rest';
 import { CookieUtils, UserTransformations, } from '@haaretz/htz-user-utils';
 import {
-  financeTableMap,
   financeSearchMap,
   jsonGenerator,
   lineGraphMap,
   scatterGraphMap,
   assetMap,
+  assetsMap,
 } from '@haaretz/app-utils';
 import querystring from 'querystring';
 
@@ -308,16 +308,17 @@ class FinanceAPI extends RESTDataSource {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async getTable({ assetsId, parentId, count, sortBy, sortOrder, assetId, offset, }) {
+  async getAssetsList(args) {
+    const { assetsId, parentId, count, sortBy, sortOrder, assetId, offset, } = args;
     const json = jsonGenerator({
-      map: financeTableMap,
-      args: {
+      map: assetsMap,
+      args: Object.keys(args).length ? {
         assetId,
         assetsId,
-        count: count || assetsId.length,
+        count: count || (assetsId ? assetsId.length : null),
         parentId,
         offset,
-      },
+      } : null,
     });
 
     if (json && sortBy) {
@@ -352,7 +353,7 @@ class FinanceAPI extends RESTDataSource {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async getAssetsList(query, sortingOrder = null) {
+  async getSearchList(query, sortingOrder = null) {
     const json = jsonGenerator({ map: financeSearchMap, args: { query, }, });
     if (json && sortingOrder) {
       json.assets.sort((itemA, itemB) => {

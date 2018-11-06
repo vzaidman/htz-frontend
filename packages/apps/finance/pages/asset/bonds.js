@@ -20,7 +20,7 @@ import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/Re
 
 const BondQuery: DocumentNode = gql`
   query BondData($assetId: String!){
-    assetData(assetId: $assetId){
+    asset(assetId: $assetId){
       name
       value
       changePercentage
@@ -69,7 +69,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
           if (error) return null;
           if (loading) return null;
           const {
-            assetData: {
+            asset: {
               name,
               value,
               changePercentage,

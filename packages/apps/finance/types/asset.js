@@ -137,7 +137,7 @@ export type Asset = {
   expirationPrice: number,
   daysToExpiration: number,
   expirationDate: number,
-  expirationBenchmarkDate: number,
+  expirationBenchmarkDates: Array<string>,
   theoreticalValue: number,
   theoreticalValueGap: number,
 };

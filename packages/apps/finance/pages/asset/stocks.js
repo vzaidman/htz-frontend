@@ -20,7 +20,7 @@ import ShareHoldersTable from '../../components/QuotePageComponents/ShareHolders
 
 const StockQuery: DocumentNode = gql`
   query StockData($assetId: String!){
-    assetData(assetId: $assetId){
+    asset(assetId: $assetId){
       name
       value
       changePercentage
@@ -69,7 +69,7 @@ function stocks({ url: { query: { assetId, section, }, }, }: Props): Node {
           if (error) return null;
           if (loading) return null;
           const {
-            assetData: {
+            asset: {
               name,
               value,
               changePercentage,
