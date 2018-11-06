@@ -21,7 +21,6 @@ import {
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import ArticleInitQuery from './queries/article_layout';
-// import publisher from './schema/publisher';
 
 const logger = createLogger();
 
@@ -123,10 +122,6 @@ class ArticleLayout extends React.Component {
           client.writeData({
             data: {
               articleId,
-              // pageSchema: {
-              //   publisher,
-              //   __typename: 'PageSchema',
-              // },
               // place properties to reset in the client store when a new article is loaded
               isOsakaDisplayed: false,
             },
@@ -171,7 +166,7 @@ class ArticleLayout extends React.Component {
                 </Fragment>
               </StyleProvider>
               <div id="welcomePageModal" />
-              <PageSchema jsonld={jsonld} />
+              {jsonld ? <PageSchema jsonld={jsonld} /> : null}
             </Fragment>
           );
         }}

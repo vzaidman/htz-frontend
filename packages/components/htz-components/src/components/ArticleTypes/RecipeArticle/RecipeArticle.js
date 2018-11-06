@@ -140,21 +140,10 @@ function RecipeArticle({ articleId, slots, }) {
                           return (
                             <ApolloConsumer key={element.contentId}>
                               {cache => {
-                                // todo: get page schema type to write to
-
                                 const { commentsElementId, } = element;
                                 cache.writeData({
                                   data: {
                                     commentsElementId,
-                                    // pageSchema: {
-                                    //   type: 'NewsArticle',
-                                    //   mainEntityOfPage: {
-                                    //     type: 'WebPage',
-                                    //     id: canonicalUrl,
-                                    //     __typename: 'MainEntityOfPage',
-                                    //   },
-                                    //   __typename: 'PageSchema',
-                                    // },
                                   },
                                 });
                                 return (

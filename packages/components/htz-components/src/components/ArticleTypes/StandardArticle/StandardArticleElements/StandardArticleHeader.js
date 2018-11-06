@@ -52,27 +52,6 @@ function Header({
   headlineElement,
   reportingFrom,
 }) {
-  return (
-    <ApolloConsumer>
-      {cache => {
-        cache.writeData({
-          data: {
-            pageSchema: {
-              headline: title,
-              description: subtitle,
-              datePublished: pubDate,
-              dateModified: modDate || null,
-              author: authors.map(author => ({
-                type: 'Person',
-                name: author.contentName || author.name,
-                sameAs: author.url || null,
-                __typename: 'Author',
-              })),
-              __typename: 'PageSchema',
-            },
-          },
-        });
-
         return (
           <FelaComponent
             style={theme => ({
@@ -200,9 +179,6 @@ function Header({
             )}
           />
         );
-      }}
-    </ApolloConsumer>
-  );
 }
 
 export default Header;

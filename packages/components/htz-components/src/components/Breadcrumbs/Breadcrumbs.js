@@ -39,7 +39,11 @@ const commonStyle = theme => ({
   marginInlineEnd: '1rem',
 });
 
-const Delimiter = props => <FelaComponent style={commonStyle} render="span" {...props} >|</FelaComponent>;
+const Delimiter = props => (
+  <FelaComponent style={commonStyle} render="span" {...props}>
+    |
+  </FelaComponent>
+);
 
 // eslint-disable-next-line react/prop-types
 const ColoredLink = ({ crumb, }) => (
@@ -81,20 +85,8 @@ class Breadcrumbs extends React.Component {
 
   render() {
     const { className, crumbs, } = this.props;
-    const breadcrumbsSchema = {
-      '@context': 'http://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: crumbs.map((segment, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@id': segment.url,
-          name: segment.name,
-        },
-      })),
-    };
 
-    const crumbLinks = crumbs.map(crumb => (<ColoredLink crumb={crumb} />));
+    const crumbLinks = crumbs.map(crumb => <ColoredLink crumb={crumb} />);
     const crumbLinksWithDelimiters = intersperse(crumbLinks, <Delimiter />);
 
     return (
@@ -106,48 +98,35 @@ class Breadcrumbs extends React.Component {
           return (
             <Fragment>
               <nav aria-label={ariaLabel} className={className}>
-                {
-                  crumbLinksWithDelimiters
-                    .map((elem, index) => (
-                      <FelaComponent
-                        key={index}
-                        style={theme => ({
-                          extend: [
-                            theme.mq(
-                              { until: 's', },
-                              {
-                                // hide every item but the last
-                                '&:not(:last-child)': { display: 'none', },
-                              }
-                            ),
-                            theme.mq(
-                              { from: 's', },
-                              {
-                                ':nth-child(3n) > *': {
-                                  color: theme.color('neutral', '-2'),
-                                  ':hover': {
-                                    color: theme.color('neutral', '-1'),
-                                  },
-                                },
-                              }
-                            ),
-                          ],
-                        })}
-                        render={({ className, }) => (
-                          <span className={className} >
-                            {elem}
-                          </span>
-                        )}
-                      />
-                    ))
-                }
+                {crumbLinksWithDelimiters.map((elem, index) => (
+                  <FelaComponent
+                    key={index}
+                    style={theme => ({
+                      extend: [
+                        theme.mq(
+                          { until: 's', },
+                          {
+                            // hide every item but the last
+                            '&:not(:last-child)': { display: 'none', },
+                          }
+                        ),
+                        theme.mq(
+                          { from: 's', },
+                          {
+                            ':nth-child(3n) > *': {
+                              color: theme.color('neutral', '-2'),
+                              ':hover': {
+                                color: theme.color('neutral', '-1'),
+                              },
+                            },
+                          }
+                        ),
+                      ],
+                    })}
+                    render={({ className, }) => <span className={className}>{elem}</span>}
+                  />
+                ))}
               </nav>
-              <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                  __html: JSON.stringify(breadcrumbsSchema, null, 2),
-                }}
-              />
             </Fragment>
           );
         }}
@@ -161,11 +140,7 @@ Breadcrumbs.defaultProps = defaultProps;
 
 // eslint-disable-next-line react/prop-types
 export default ({ articleId, ...props }) => (
-  <Query
-    query={GET_BREADCRUMBS}
-    variables={{ path: articleId, }}
-    errorPolicy="all"
-  >
+  <Query query={GET_BREADCRUMBS} variables={{ path: articleId, }} errorPolicy="all">
     {({ data, loading, error, }) => {
       if (loading) return null;
       if (error) return null;

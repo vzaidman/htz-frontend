@@ -3,7 +3,6 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Query from '../../ApolloBoundary/Query';
-import ApolloConsumer from '../../ApolloBoundary/ApolloConsumer';
 
 import LayoutContainer from '../../PageLayout/LayoutContainer';
 import WideArticleLayoutRow from '../../PageLayout/WideArticleLayoutRow';
@@ -149,62 +148,40 @@ function StandardArticle({ articleId, slots, }) {
                         element.inputTemplate === 'com.tm.BlogArticle' ||
                         element.inputTemplate === 'com.tm.StandardArticle'
                       ) {
-                        return (
-                          <ApolloConsumer key={element.contentId}>
-                            {cache => {
-                              const { commentsElementId, } = element;
-                              cache.writeData({
-                                data: {
-                                  commentsElementId,
-                                  isMouseStory: isMouse,
-                                  pageSchema: {
-                                    type: 'NewsArticle',
-                                    mainEntityOfPage: {
-                                      type: 'WebPage',
-                                      id: canonicalUrl,
-                                      __typename: 'MainEntityOfPage',
-                                    },
-                                    __typename: 'PageSchema',
-                                  },
-                                },
-                              });
-                              let bloggerInfo;
-                              if (authors.length) {
-                                const blogName = lineage[1].name;
-                                const author = authors[0];
-                                bloggerInfo =
-                                  element.inputTemplate ===
-                                  'com.tm.BlogArticle' ? (
-                                    <BloggerInfo
-                                      author={author}
-                                      blogName={blogName}
+                          let bloggerInfo;
+                          if (authors.length) {
+                            const blogName = lineage[1].name;
+                            const author = authors[0];
+                            bloggerInfo =
+                              element.inputTemplate ===
+                              'com.tm.BlogArticle' ? (
+                                <BloggerInfo
+                                  author={author}
+                                  blogName={blogName}
+                                />
+                              ) : null;
+                          }
+                          return (
+                            <ArticleLayoutRow
+                              isArticleBody
+                              hideMargineliaComponentUnderLBp={!!authors}
+                              margineliaComponent={
+                                <Fragment>
+                                  {authors ? (
+                                    <ArticleHeaderMeta
+                                      authors={authors}
+                                      reportingFrom={reportingFrom}
+                                      publishDate={header.pubDate}
+                                      modifiedDate={header.modDate}
                                     />
-                                  ) : null;
+                                  ) : null}
+                                </Fragment>
                               }
-                              return (
-                                <ArticleLayoutRow
-                                  isArticleBody
-                                  hideMargineliaComponentUnderLBp={!!authors}
-                                  margineliaComponent={
-                                    <Fragment>
-                                      {authors ? (
-                                        <ArticleHeaderMeta
-                                          authors={authors}
-                                          reportingFrom={reportingFrom}
-                                          publishDate={header.pubDate}
-                                          modifiedDate={header.modDate}
-                                        />
-                                      ) : null}
-                                    </Fragment>
-                                  }
-                                >
-                                  <ArticleBody body={body} />
-                                  {bloggerInfo}
-                                </ArticleLayoutRow>
-                              );
-                            }}
-                          </ApolloConsumer>
-                        );
+                            >
+                              <ArticleBody body={body} />
+                              {bloggerInfo}
+                            </ArticleLayoutRow>
+                          );
                       }
                       const Element = getComponent(element.inputTemplate);
                       const {

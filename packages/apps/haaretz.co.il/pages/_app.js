@@ -1,6 +1,5 @@
 import { createApp, } from '@haaretz/htz-components';
 import { withData, } from '@haaretz/app-utils';
-import pageSchema from '../pageSchema';
 
 const initialState = () => ({
   a11yToggle: false,
@@ -17,7 +16,6 @@ const initialState = () => ({
   // reload function script before calling the outbrain json api
   isOsakaDisplayed: false,
   osakaCanRender: false,
-  pageSchema,
   platform: null,
   readingListArray: [],
   zenMode: false,
