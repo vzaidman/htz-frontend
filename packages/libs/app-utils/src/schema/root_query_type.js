@@ -153,9 +153,9 @@ const RootQuery = new GraphQLObjectType({
     },
     purchasePage: {
       type: GraphQLJSON,
-      args: { path: { type: GraphQLString, }, },
-      resolve(parentValue, { path, }, { dataSources, }) {
-        return dataSources.PurchasePageAPI.getPage(path);
+      args: { path: { type: GraphQLString, }, userId: { type: GraphQLID, }, },
+      resolve(parentValue, { path, userId, }, { dataSources, }) {
+        return dataSources.PurchasePageAPI.getPage(path, userId);
       },
     },
 

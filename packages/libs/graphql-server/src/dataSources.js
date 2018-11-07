@@ -268,16 +268,16 @@ class PurchasePageAPI extends RESTDataSource {
     );
   }
 
-  async getPage(path) {
+  async getPage(path, userIdArg) {
     console.log('getting page from data source!!');
     const baseUri = `${this.context.serviceBase}/papi`;
     const polopolyPromotionsPage = this.context.polopolyPromotionsPage;
 
-    const userId = this.context.cookies
+    const userId = userIdArg || (this.context.cookies
       ? CookieUtils.stringToMap(this.context.cookies.get('tmsso') || '', {
         separator: /:\s?/,
       }).userId
-      : null;
+      : null);
     const [ pathWithoutQuery, queryPartFromPath, ] = path.split(/\?(.+)/);
     const query = queryPartFromPath ? querystring.parse(queryPartFromPath) : {};
     // eslint-disable-next-line no-param-reassign
