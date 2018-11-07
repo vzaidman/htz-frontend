@@ -1,7 +1,7 @@
 import React, { Component, Fragment, } from 'react';
 import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
-import { LayoutContainer, Query, } from '@haaretz/htz-components';
+import { UserDispenser, LayoutContainer, Query, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 
 import MainLayout from '../../layouts/MainLayout';
@@ -49,7 +49,7 @@ class Stage3 extends Component {
       <MainLayout>
         <OfferPageDataGetter
           render={({ data, loading, error, refetch, client, }) => {
-            if (loading) return <div> Loading stage 3...</div>;
+            if (loading) return null;
             if (error) return <div> Error at stage3.js ...</div>;
             return (
               <Query query={GET_PROMOTIONS_STATE}>
@@ -102,9 +102,18 @@ class Stage3 extends Component {
                       data: { loggedInOrRegistered: 'loggedIn', },
                     });
                     return (
-                      <LoginRedirect
-                        chosenSubscription={this.state.chosenSubscription}
-                        refetch={refetch}
+                      <UserDispenser
+                        render={({ isLoggedIn, }) => {
+                          if (!isLoggedIn) {
+                            return null;
+                          }
+                          return (
+                            <LoginRedirect
+                              chosenSubscription={this.state.chosenSubscription}
+                              pageNumber={data.purchasePage.pageNumber}
+                            />
+                    );
+                        }}
                       />
                     );
                   }

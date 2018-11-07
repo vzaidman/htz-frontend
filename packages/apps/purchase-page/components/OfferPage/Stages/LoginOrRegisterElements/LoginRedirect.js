@@ -5,59 +5,43 @@ import Redirect from '../../../Redirect/Redirect';
 
 const propTypes = {
   chosenSubscription: PropTypes.oneOf([ 'HTZ', 'TM', 'BOTH', ]),
-  refetch: PropTypes.func.isRequired,
+  pageNumber: PropTypes.number.isRequired,
 };
 
 const defaultProps = {
   chosenSubscription: null,
 };
 
-class LoginRedirect extends React.Component {
-  state = {
-    pageNumber: null,
-  };
+function LoginRedirect({ chosenSubscription, pageNumber, }) {
+  let redirect;
+  switch (pageNumber) {
+    case 2.4:
+      redirect = <Redirect destination="stage1" replace />;
+      break;
+    case 3.2:
+      redirect =
+        chosenSubscription === 'TM' || chosenSubscription === 'HTZ' || !chosenSubscription ? (
+          <Redirect destination="stage2" replace />
+        ) : (
+          <Redirect destination="stage4" replace />
+        );
+      break;
+    case 3.4:
+    case 3.6:
+      redirect = <Redirect destination="stage2" replace />;
+      break;
 
-  componentWillMount() {
-    this.props.refetch().then(({ data: { purchasePage: { pageNumber, }, }, }) => {
-      this.setState({ pageNumber, });
-    });
+    default:
+      if (pageNumber >= 7) {
+        redirect = <Redirect destination="thankYou" replace />;
+      }
+      else {
+        redirect = <Redirect destination="stage4" replace />;
+      }
+      break;
   }
 
-  render() {
-    const { chosenSubscription, } = this.props;
-    if (!this.state.pageNumber) return null;
-    let redirect;
-    switch (this.state.pageNumber) {
-      case 2.4:
-        redirect = <Redirect destination="stage1" replace />;
-        break;
-      case 3.2:
-        redirect =
-          chosenSubscription === 'TM' ||
-          chosenSubscription === 'HTZ' ||
-          !chosenSubscription ? (
-            <Redirect destination="stage2" replace />
-            ) : (
-              <Redirect destination="stage4" replace />
-            );
-        break;
-      case 3.4:
-      case 3.6:
-        redirect = <Redirect destination="stage2" replace />;
-        break;
-
-      default:
-        if (this.state.pageNumber >= 7) {
-          redirect = <Redirect destination="thankYou" replace />;
-        }
-        else {
-          redirect = <Redirect destination="stage4" replace />;
-        }
-        break;
-    }
-
-    return redirect;
-  }
+  return redirect;
 }
 
 LoginRedirect.propTypes = propTypes;
