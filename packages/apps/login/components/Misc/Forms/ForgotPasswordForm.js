@@ -1,6 +1,6 @@
 import React, { Fragment, } from 'react';
 
-const ForgotPassword = () => {
+const ForgotPasswordForm = () => {
   return (
     <Fragment>
       <div>test</div>
