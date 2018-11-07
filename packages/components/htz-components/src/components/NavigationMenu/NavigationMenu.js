@@ -1,4 +1,4 @@
-/* global document */
+/* global document, window */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import config from 'config';
@@ -13,10 +13,7 @@ import NavigationQuery from './navigationQuery';
 import DropdownList from '../DropdownList/DropdownList';
 import Hamburger from '../Animations/Hamburger';
 import Item from '../DropdownList/DropdownItem';
-import {
-  dropdownItemStyle,
-  dropdownListStyle,
-} from '../Masthead/mastheadDropdownListStyle';
+import { dropdownItemStyle, dropdownListStyle, } from '../Masthead/mastheadDropdownListStyle';
 
 // TODO: remove this when optOut item is deprecated
 const OPT_OUT = gql`
@@ -120,7 +117,17 @@ class NavigationMenu extends React.Component {
     }).isRequired,
   };
 
-  state = { isHovered: false, };
+  state = { isHovered: false, isUser: null, };
+
+  componentDidUpdate() {
+    if (window && typeof window !== 'undefined') {
+      const isUser = typeof CookieUtils.getCookie('HtzPusr') === 'string';
+      if (this.state.isUser !== isUser) {
+        /* eslint-disable react/no-did-update-set-state */
+        this.setState({ isUser, });
+      }
+    }
+  }
 
   handleMouseEnter = () => this.setState({ isHovered: true, });
   handleMouseLeave = () => this.setState({ isHovered: false, });
@@ -141,7 +148,7 @@ class NavigationMenu extends React.Component {
     return (
       <FelaTheme
         render={theme => {
-          const { isHovered, } = this.state;
+          const { isHovered, isUser, } = this.state;
           const { items, sites, promotions, } = this.props.menuSections;
 
           // TODO: remove this when optOut item is deprecated
@@ -166,8 +173,7 @@ class NavigationMenu extends React.Component {
           );
 
           const combinedItems =
-            items &&
-            items.map(item => <Item key={`item ${item.name}`} {...item} />);
+            items && items.map(item => <Item key={`item ${item.name}`} {...item} />);
 
           const combinedSites =
             sites &&
@@ -184,6 +190,7 @@ class NavigationMenu extends React.Component {
             ));
 
           const combinedPromotions =
+            !isUser &&
             promotions &&
             promotions.map(promotion => (
               <Item
@@ -198,6 +205,10 @@ class NavigationMenu extends React.Component {
           if (combinedPromotions !== undefined && combinedPromotions.length) {
             combinedPromotions.unshift(optOut);
           }
+ else {
+            combinedSites.push(optOut);
+          }
+
           const combinedMenu = [
             ...(combinedItems || []),
             ...(combinedSites || []),
@@ -236,9 +247,7 @@ class NavigationMenu extends React.Component {
                             <Hamburger
                               isOpen={isOpen}
                               color={{
-                                close: isHovered
-                                  ? [ 'neutral', '-10', ]
-                                  : [ 'neutral', '-3', ],
+                                close: isHovered ? [ 'neutral', '-10', ] : [ 'neutral', '-3', ],
                                 open: [ 'neutral', '-10', ],
                               }}
                               size={2.5}
