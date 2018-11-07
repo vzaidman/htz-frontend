@@ -188,9 +188,9 @@ const Table = ({
     >
       <thead>
         <tr>
-          {fields.map((field: FieldType, index: number) => (
+          {fields.map((field: FieldType) => (
             <TdComponent
-              key={`${field.name}-${index}`}
+              key={field.name}
               miscStyles={{
                 whiteSpace: 'pre-wrap',
                 verticalAlign: 'bottom',
@@ -241,7 +241,7 @@ const Table = ({
           >
             {fields.map((field: FieldType, index: number) => (
               <TdComponent
-                key={`${field.name}-${index}`}
+                key={`${field.name}-${asset.id}`}
                 miscStyles={{
                   ...(field.style ? field.style(asset) : {}),
                   paddingStart: '2rem',
