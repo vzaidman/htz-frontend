@@ -14,8 +14,8 @@ import Tab from '../Tab/Tab';
 import Tabs from '../Tabs/Tabs';
 
 const TableQuery: DocumentNode = gql`
-  query GraphTable($assetsId: [String], $assetId: String, $count: Int) {
-    assetsList(assetsId: $assetsId, assetId: $assetId, count: $count) {
+  query GraphTable($assetsId: [String], $assetId: String, $count: Int, $sortBy: String, $sortOrder: String) {
+    assetsList(assetsId: $assetsId, assetId: $assetId, count: $count, sortBy: $sortBy, sortOrder: $sortOrder) {
       name
       value
       changePercentage
@@ -319,7 +319,7 @@ class AssetsTable extends React.Component<AssetsTableProps, State> {
 }
 
 export default (props: any) => {
-  const { assetId, assetsId, } = props;
+  const { assetId, assetsId, sortBy, sortOrder, } = props;
   return (
     <Query
       query={TableQuery}
@@ -328,6 +328,11 @@ export default (props: any) => {
           ? {
               assetId: assetId.toString(),
               count: 9,
+              ...(sortBy ? {
+                  sortBy,
+                  sortOrder,
+                } : {}
+              ),
             }
           : {
               assetsId,

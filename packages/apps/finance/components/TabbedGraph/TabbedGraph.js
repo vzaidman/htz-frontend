@@ -10,9 +10,20 @@ import Tab from '../Tab/Tab';
 import TabPanel from '../TabPanel/TabPanel';
 import TableGraphConnector from '../TableGraphConnector/TableGraphConnector';
 
+type TabType = {
+  display: string,
+  control: string,
+  sortBy: string,
+  sortOrder: 'ascend' | 'descend',
+};
+
+type Props = {
+  assetId?: string,
+  tabs: Array<TabType>,
+};
+
 type State = {
-  assets: string,
-  assetId: string,
+  tab: TabType,
   index: number,
 };
 
@@ -70,24 +81,26 @@ export const TabButton: StatelessFunctionalComponent<TabButtonProps> = ({
   />
 );
 
-class TabbedGraph extends React.Component<{}, State> {
-  state = {
-    assets: 'up',
-    assetId: '0',
-    index: 0,
+class TabbedGraph extends React.Component<Props, State> {
+  static defaultProps = {
+    assetId: null,
   };
 
+  state = {
+    index: 0,
+    tab: this.props.tabs[0],
+  };
 
-  changeSelectedTime: State => void = ({ assets, assetId, index, }) => {
+  changeSelectedTab: State => void = ({ index, tab, }) => {
     this.setState({
-      assets,
-      assetId,
       index,
+      tab,
     });
   };
 
   render(): Node {
-    const { assets, assetId, index, } = this.state;
+    const { index, tab: { sortBy, sortOrder, control, }, } = this.state;
+    const { assetId, tabs, } = this.props;
     return (
       <FelaComponent
         style={theme => ({
@@ -101,81 +114,25 @@ class TabbedGraph extends React.Component<{}, State> {
             activeTab={index}
           >
             <TabList className={className}>
-              <Tab
-                index={0}
-                controls="graph-up"
-                presentation
-                rule={tabRule}
-                onClick={() => this.changeSelectedTime({ assets: 'up', assetId: '0', index: 0, })}
-                render={TabButton}
-              >
-                <span>
-                      עולות
-                </span>
-              </Tab>
-              <Tab
-                index={1}
-                controls="graph-down"
-                presentation
-                rule={tabRule}
-                onClick={() => this.changeSelectedTime({ assets: 'down', assetId: '1', index: 1, })}
-                render={TabButton}
-              >
-                <span>
-                      יורדות
-                </span>
-              </Tab>
-              <Tab
-                index={2}
-                controls="graph-active"
-                presentation
-                rule={tabRule}
-                onClick={() => this.changeSelectedTime({ assets: 'active', assetId: '2', index: 2, })}
-                render={TabButton}
-              >
-                <span>
-                      פעילות
-                </span>
-              </Tab>
-              <Tab
-                index={3}
-                controls="graph-mostViewed"
-                presentation
-                rule={tabRule}
-                onClick={() => this.changeSelectedTime({ assets: 'mostViewed', assetId: '3', index: 3, })}
-                render={TabButton}
-              >
-                <span>
-                      הנצפים באתר
-                </span>
-              </Tab>
-              <Tab
-                index={4}
-                controls="graph-upYearly"
-                presentation
-                rule={tabRule}
-                onClick={() => this.changeSelectedTime({ assets: 'upYearly', assetId: '4', index: 4, })}
-                render={TabButton}
-              >
-                <span>
-                      עולות שנתי
-                </span>
-              </Tab>
-              <Tab
-                index={5}
-                controls="graph-downYearly"
-                presentation
-                rule={tabRule}
-                onClick={() => this.changeSelectedTime({ assets: 'downYearly', assetId: '5', index: 5, })}
-                render={TabButton}
-              >
-                <span>
-                      יורדות שנתי
-                </span>
-              </Tab>
+              {tabs.map((tab: TabType, i: number) => (
+                <Tab
+                  key={tab.control}
+                  index={i}
+                  controls={tab.control}
+                  presentation
+                  rule={tabRule}
+                  onClick={() => this.changeSelectedTab({
+                    index: i,
+                    tab,
+                  })}
+                  render={TabButton}
+                >
+                  <span>{tab.display}</span>
+                </Tab>
+              ))}
             </TabList>
-            <TabPanel id={`graph-${assets}`}>
-              <TableGraphConnector assetId={assetId} />
+            <TabPanel id={control}>
+              <TableGraphConnector assetId={assetId} sortBy={sortBy} sortOrder={sortOrder} />
             </TabPanel>
           </Tabs>
         )}

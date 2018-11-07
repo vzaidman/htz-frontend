@@ -278,7 +278,17 @@ function index(): Node {
               <RowItem
                 title="מבט לשווקים"
               >
-                <TabbedGraph />
+                <TabbedGraph
+                  assetId="general"
+                  tabs={[
+                    { display: 'עולות', control: 'graph-up', sortBy: 'changePercentage', sortOrder: 'descend', },
+                    { display: 'יורדות', control: 'graph-down', sortBy: 'changePercentage', sortOrder: 'ascend', },
+                    { display: 'פעילות', control: 'graph-active', sortBy: 'volume', sortOrder: 'descend', },
+                    { display: 'הנצפים באתר', control: 'graph-mostViewed', sortBy: 'name', sortOrder: 'ascend', }, // TEMP
+                    { display: 'עולות שנתי', control: 'graph-upYearly', sortBy: 'yearlyYield', sortOrder: 'descend', },
+                    { display: 'יורדות שנתי', control: 'graph-downYearly', sortBy: 'yearlyYield', sortOrder: 'ascend', },
+                  ]}
+                />
               </RowItem>
             </PageRow>
             <PageRow>
