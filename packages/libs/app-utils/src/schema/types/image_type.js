@@ -1,10 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLBoolean,
-  GraphQLString,
-  GraphQLList,
-  GraphQLID,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLBoolean, GraphQLString, GraphQLList, GraphQLID, } from 'graphql';
 
 import GraphQLImageAspects from './image_aspects_type';
 
@@ -15,6 +9,7 @@ const ImageType = new GraphQLObjectType({
     accessibility: { type: GraphQLString, },
     title: { type: GraphQLString, },
     credit: { type: GraphQLString, },
+    // todo: remove aspects field when deprecated
     aspects: { type: GraphQLImageAspects, },
     isAnimated: { type: GraphQLBoolean, },
     contentId: { type: GraphQLID, },
@@ -25,6 +20,7 @@ const ImageType = new GraphQLObjectType({
           fields: () => ({
             imgName: { type: GraphQLString, },
             version: { type: GraphQLString, },
+            aspects: { type: GraphQLImageAspects, },
           }),
         })
       ),

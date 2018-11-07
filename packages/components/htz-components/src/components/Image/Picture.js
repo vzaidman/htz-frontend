@@ -11,31 +11,16 @@ import ImgSource from './elements/ImgSource';
 import { aspectRatios, } from './Image';
 import setColor from '../../utils/setColor';
 
-const PictureWrapperStyle = ({
-  sources,
-  theme,
-  defaultImg,
-  bgc,
-  miscStyles,
-}) => ({
+const PictureWrapperStyle = ({ sources, theme, defaultImg, bgc, miscStyles, }) => ({
   height: '0',
   width: '100%',
   position: 'relative',
   paddingBottom: getDimensions(defaultImg),
   extend: [
     ...sources.map(({ from, until, misc, type, ...restOfImgData }) =>
-      theme.mq(
-        { from, until, misc, type, },
-        { paddingBottom: getDimensions(restOfImgData), }
-      )
+      theme.mq({ from, until, misc, type, }, { paddingBottom: getDimensions(restOfImgData), })
     ),
-    parseComponentProp(
-      'backgroundColor',
-      bgc || [ 'image', 'bgc', ],
-      theme.mq,
-      setColor,
-      theme.color
-    ),
+    parseComponentProp('backgroundColor', bgc || [ 'image', 'bgc', ], theme.mq, setColor, theme.color),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -43,7 +28,7 @@ const PictureWrapperStyle = ({
 
 function getDimensions({ data, sourceOptions: { transforms, }, }) {
   const { aspect, } = Array.isArray(transforms) ? transforms[0] : transforms;
-  const { width, height, } = data.aspects[aspect] || aspectRatios[aspect];
+  const { width, height, } = data.imgArray[0].aspects[aspect] || aspectRatios[aspect];
   // prettier-ignore
   return `${(height / width) * 100}%`;
 }
@@ -68,8 +53,6 @@ Picture.propTypes = {
     data: PropTypes.shape({
       /** Image alt from polopoly */
       alt: PropTypes.string,
-      /** Holds the image aspects object */
-      aspects: PropTypes.object,
       /** Each image name, type and version will build a "source" tag */
       imgArray: PropTypes.arrayOf(
         PropTypes.shape({
@@ -77,6 +60,8 @@ Picture.propTypes = {
           imgName: PropTypes.string.isRequired,
           /** Image version from polopoly */
           version: PropTypes.string,
+          /** Holds the image aspects object */
+          aspects: PropTypes.object,
         })
       ),
       /** Image id from polopoly */
@@ -140,8 +125,6 @@ Picture.propTypes = {
       data: PropTypes.shape({
         /** Image alt from polopoly */
         alt: PropTypes.string,
-        /** Holds the image aspects object */
-        aspects: PropTypes.object,
         /** Each image name, type and version will build a "source" tag */
         imgArray: PropTypes.arrayOf(
           PropTypes.shape({
@@ -149,6 +132,8 @@ Picture.propTypes = {
             imgName: PropTypes.string.isRequired,
             /** Image version from polopoly */
             version: PropTypes.string,
+            /** Holds the image aspects object */
+            aspects: PropTypes.object,
           })
         ),
         /** Image id from polopoly */
@@ -185,7 +170,10 @@ function Picture(props) {
     miscStyles,
     sources,
   } = props;
-  const { data: { alt, credit, }, sourceOptions, } = defaultImg;
+  const {
+    data: { alt, credit, },
+    sourceOptions,
+  } = defaultImg;
   const [ imgSrc, imgSrcSet, ] = getImgSources(props);
   const defaultSizes = sourceOptions.sizes;
   const media = getMedia(props);
@@ -202,17 +190,13 @@ function Picture(props) {
                 tagName="source"
                 type="image/webp"
                 srcSet={getSources(props, index, true)}
-                {...(img.sourceOptions.sizes
-                  ? { sizes: img.sourceOptions.sizes, }
-                  : {})}
+                {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
               />
               <ImgSource
                 {...(media[index] ? { media: media[index], } : [])}
                 tagName="source"
                 srcSet={getSources(props, index, false)}
-                {...(img.sourceOptions.sizes
-                  ? { sizes: img.sourceOptions.sizes, }
-                  : {})}
+                {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
               />
             </Fragment>
           ) : (
@@ -223,9 +207,7 @@ function Picture(props) {
               tagName="source"
               {...(img.mimeType ? { type: img.mimeType, } : {})}
               srcSet={getSources(props, index, false)}
-              {...(img.sourceOptions.sizes
-                ? { sizes: img.sourceOptions.sizes, }
-                : {})}
+              {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
             />
           ))
       )}
@@ -288,30 +270,27 @@ export default withTheme(Picture);
 
 function getSources({ sources, }, imgPosition = 0, isAnimatedGif) {
   const { data, sourceOptions, } = sources[imgPosition];
-  const { contentId, aspects, imgArray, } = data;
+  const { contentId, imgArray, } = data;
   const imgCore = imgArray[0];
-
   const { transforms, } = sourceOptions;
   const transformsArray = Array.isArray(transforms) ? transforms : [ transforms, ];
 
   const imageNameFromData = imgCore.imgName;
   const imgVersion = imgCore.version;
-  const imgName = isAnimatedGif
-    ? `${imageNameFromData.split('.')[0]}.webp`
-    : imageNameFromData;
+  const imgName = isAnimatedGif ? `${imageNameFromData.split('.')[0]}.webp` : imageNameFromData;
 
-  const imgData = { imgName, version: imgVersion, aspects, };
+  const imgData = { imgName, version: imgVersion, aspects: imgCore.aspects, };
 
   return buildURLs(contentId, imgData, transformsArray);
 }
 
 function getImgSources({
   defaultImg: {
-    data: { aspects, contentId, imgArray, },
+    data: { contentId, imgArray, },
     sourceOptions: { transforms, },
   },
 }) {
-  const { imgName, version, } = imgArray[0];
+  const { imgName, version, aspects, } = imgArray[0];
   const transformsArray = Array.isArray(transforms) ? transforms : [ transforms, ];
 
   // const imageNameFromData = imgName.split('/')[1];
@@ -331,9 +310,7 @@ function getMedia({ sources, theme, }) {
       // eslint-disable-next-line eqeqeq
       .some(item => item != undefined);
 
-    return imgHasMedia
-      ? theme.getMqString({ from, until, misc, type, }, true)
-      : undefined;
+    return imgHasMedia ? theme.getMqString({ from, until, misc, type, }, true) : undefined;
   });
   return finalMedia;
 }
