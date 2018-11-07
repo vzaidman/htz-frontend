@@ -1,7 +1,6 @@
 /* *************************************************************** *
  * This element accepts these inputTemplates:
   [
-    com.polobase.ReutersEmbed,
     com.polobase.BloombergEmbed,
     com.polobase.CNNEmbed,
     com.polobase.GuardianEmbed,
