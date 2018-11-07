@@ -16,14 +16,6 @@ export default [
       getCustomerService: 'customerService',
       withPassword: 'loginForms',
     },
-    emailValidationSent: {
-      sendAgain: 'emailValidationSent2',
-      registration: 'register',
-    },
-    emailValidationSent2: {
-      getCustomerService: 'customerService',
-      withPassword: 'loginForms',
-    },
   },
   {
     flowNumber: 2,
@@ -51,35 +43,14 @@ export default [
     initialState: 'emailValidationSent',
     initialTransition: '/emailValidationSent',
     transitionRouteMap: new Map([
-      [ 'otpValidation-loginForms', { url: '/loginForms', param: 1 } ],
-      [ '-emailValidationSent', '/emailValidationSent' ],
-      [ '-emailValidationSent2', '/emailValidationSent2' ],
+      [ 'otpValidation-loginForms', { url: '/loginForms', param: 1, } ],
     ]),
-    emailValidationSent: {
-      sendAgain: 'emailValidationSent2',
-      notRegistered: 'register',
-    },
-    emailValidationSent2: {
-      getCustomerService: 'customerService',
-      withPassword: 'loginForms',
-    },
   },
   {
     flowNumber: 4,
     initialState: 'register',
     initialTransition: '/register',
-    transitionRouteMap: new Map([
-      [ '-emailValidationSent', '/emailValidationSent' ],
-      [ '-emailValidationSent2', '/emailValidationSent2' ],
-    ]),
-    emailValidationSent: {
-      sendAgain: 'emailValidationSent2',
-      notRegistered: 'register',
-    },
-    emailValidationSent2: {
-      getCustomerService: 'customerService',
-      withPassword: 'loginForms',
-    },
+    transitionRouteMap: new Map([]),
   },
   {
     flowNumber: 5,

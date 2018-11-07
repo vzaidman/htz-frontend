@@ -1,10 +1,9 @@
 import gql from 'graphql-tag';
-// todo: firstName
 export default gql`
   query GetEmailData($email: String!) {
     userByMail(id: $email) {
       ssoId
-      
+      firstName
       phoneNum
       userStatus {
         isEmailValidated
@@ -21,12 +20,11 @@ export default gql`
   }
 `;
 
-// todo: firstName
 const USER_DATA = gql`
   query getUserData {
     userData @client {
       ssoId
-      
+      firstName
       phoneNum
       userStatus {
         isEmailValidated

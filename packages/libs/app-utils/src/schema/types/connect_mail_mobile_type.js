@@ -4,7 +4,7 @@ import { GraphQLObjectType, GraphQLString } from 'graphql';
 const ConnectMailMobile = new GraphQLObjectType({
   name: 'ConnectMailMobile',
   fields: () => ({
-    msg: { type: GraphQLString, },
+    message: { type: GraphQLString, },
     success: { type: GraphQLString, },
   }),
 });

@@ -4,9 +4,11 @@ import Router from 'next/router';
 import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 
-import { Form, TextInput, Button, } from '@haaretz/htz-components';
+import { Form, TextInput, Button, ApolloConsumer, } from '@haaretz/htz-components';
 import theme from '../theme/index';
 import BottomLinks from '../components/Misc/BottomLinks';
+import { sendMailValidation, } from '../util/requestUtil';
+import { getEmail, } from './queryutil/userDetailsOperations';
 import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
@@ -17,71 +19,73 @@ const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
 const { TextBox, } = LoginMiscLayoutStyles;
 // --------------------------
 
-// Methods -------------------
-const generateSmsCodeError = message => [ { name: 'smscode', order: 1, errorText: message, }, ];
-
-const isValidPhoneNumber = number => {
-  const phoneRegex = /^(\s*|[\+0-9]\d{6,})$/;
-  return phoneRegex.test(number);
-};
-const validatePhoneNumber = ({ smscode, }) =>
-  (!isValidPhoneNumber(smscode) || !smscode || smscode.length < 10
-    ? generateSmsCodeError('אנא הזינו מספר טלפון נייד')
-    : []);
-
-const onSubmit = doTransitionFunction => {
-  const route = doTransitionFunction('accept');
-  Router.push(route);
-};
-
 const sendAgain = e => {
   console.log('test...');
 };
 // --------------------------
 
-const PhoneMailSent = () => (
-  <FSMLayout>
-    {({ currentState, findRout, doTransition, }) => (
-      <Fragment>
-        <ContentWrapper>
-          <FormWrapper>
-            <TextBox>
-              <h5>נשלח אלייך מייל</h5>
-              <span>
-                יש לאשר את המייל שנשלח אלייך על מנת לקרוא 6 כתבות באתר מדיי חודש
-              </span>
-            </TextBox>
+class EmailValidationSent extends React.Component {
+  state = { firstTime: true, };
 
-            <BottomLinks spacing={1}>
-              <span>לא הגיע המייל? </span>
-              <HtzLink
-                href={`${findRout('sendAgain')}`}
-                onClick={e => {
-                  e.preventDefault();
-                  const route = doTransition('sendAgain');
-                  Router.push(route);
-                }}
-              >
-                אנא נסה בשנית
-              </HtzLink>
-                <br/>
-              <HtzLink
-                href={`${findRout('notRegistered')}`}
-                onClick={e => {
-                  e.preventDefault();
-                  const route = doTransition('notRegistered');
-                  Router.push(route);
-                }}
-              >
-                או הירשם לאתר
-              </HtzLink>
-            </BottomLinks>
+  componentDidMount() {
+    this.setState({ firstTime: true, });
+  }
 
-          </FormWrapper>
-        </ContentWrapper>
-      </Fragment>
-    )}
-  </FSMLayout>
-);
+  shouldComponentUpdate() {
+    return false;
+  }
+  render() {
+    return (this.state.firstTime ? (
+      <ApolloConsumer>
+        {client => {
+          const email = getEmail(client);
+          sendMailValidation({ email, });
+          // this.setState({ firstTime: false, });
+          return (
+            <FSMLayout>
+              {({ currentState, findRout, doTransition, }) => (
+                <Fragment>
+                  <ContentWrapper>
+                    <FormWrapper>
+                      <TextBox>
+                        <h5>נשלח אלייך מייל</h5>
+                        <span>
+                      יש לאשר את המייל שנשלח אלייך על מנת לקרוא 6 כתבות באתר מדיי חודש
+                    </span>
+                      </TextBox>
+                      <BottomLinks spacing={1}>
+                        <span>לא הגיע המייל? </span>
+                        <HtzLink
+                          href={`${findRout('sendAgain')}`}
+                          onClick={e => {
+                            e.preventDefault();
+                            const route = doTransition('sendAgain');
+                            Router.push(route);
+                          }}
+                        >
+                          אנא נסה בשנית
+                        </HtzLink>
+                        <br/>
+                        <HtzLink
+                          href={`${findRout('notRegistered')}`}
+                          onClick={e => {
+                            e.preventDefault();
+                            const route = doTransition('notRegistered');
+                            Router.push(route);
+                          }}
+                        >
+                          או הירשם לאתר
+                        </HtzLink>
+                      </BottomLinks>
+                    </FormWrapper>
+                  </ContentWrapper>
+                </Fragment>
+              )}
+            </FSMLayout>
+          );
+        }}
+    </ApolloConsumer>) : null);
+  }
+}
 
-export default PhoneMailSent;
+export default EmailValidationSent;
