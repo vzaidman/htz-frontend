@@ -50,7 +50,7 @@ class OsakaWrapper extends React.Component {
   componentWillUpdate(nextProps) {
     // eslint-disable-next-line react/no-will-update-set-state
     const display = nextProps.velocity > 0 && nextProps.y > 0;
-    if (display) {
+    if (this.wrapperEl && display) {
       this.wrapperEl.style.display = 'block';
     }
     window.setTimeout(
