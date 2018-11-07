@@ -6,7 +6,7 @@ import { Grid, GridItem, } from '@haaretz/htz-components';
 import type { Node, } from 'react';
 import type { Asset, } from '../../types/asset';
 
-import StockTable from '../AssetsTable/AssetsTable';
+import AssetsTable from '../AssetsTable/AssetsTable';
 import GraphController from '../GraphController/GraphController';
 import SectionLink from '../SectionLink/SectionLink';
 
@@ -14,6 +14,8 @@ type Props = {
   assetId?: number | string | null,
   assetsId: ?Array<string>,
   isExchange?: boolean,
+  sortBy: ?string,
+  sortOrder: ?'ascend' | ?'descend',
 };
 
 type State = {
@@ -25,6 +27,8 @@ class TableGraphConnector extends React.Component<Props, State> {
     assetId: null,
     assetsId: null,
     isExchange: false,
+    sortBy: null,
+    sortOrder: null,
   };
 
   state: State;
@@ -32,7 +36,7 @@ class TableGraphConnector extends React.Component<Props, State> {
   shouldComponentUpdate(nextProps: Props, nextState: State) {
     return (
       !this.state || (
-        nextProps.assetId !== this.props.assetId ||
+        nextProps !== this.props ||
         nextState.id !== this.state.id
       )
     );
@@ -44,7 +48,7 @@ class TableGraphConnector extends React.Component<Props, State> {
 
   render(): Node {
     const { id, name, type, } = this.state || {};
-    const { assetId, assetsId, isExchange, } = this.props;
+    const { assetId, assetsId, isExchange, sortBy, sortOrder, } = this.props;
     return (
       <FelaTheme
         render={theme => (
@@ -65,8 +69,10 @@ class TableGraphConnector extends React.Component<Props, State> {
                 position: 'relative',
               }}
             >
-              <StockTable
+              <AssetsTable
                 changeAsset={this.changeAsset}
+                sortBy={sortBy}
+                sortOrder={sortOrder}
                 assetId={assetId}
                 assetsId={assetsId}
                 isExchange={isExchange}
