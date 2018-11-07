@@ -9,25 +9,22 @@ const mockData = {
     {
       imgName: 'image/922278056.jpg',
       version: '1514197183',
+      aspects: {
+        landscape: { width: '2220', height: '800', x: '10', y: '0', },
+        full: { width: '500', height: '400', x: '0', y: '0', },
+      },
     },
   ],
   credit: 'this is credit',
   alt: 'this alt from data',
   contentId: '1.4921360',
-  aspects: {
-    landscape: { width: '2220', height: '800', x: '10', y: '0', },
-    full: { width: '500', height: '400', x: '0', y: '0', },
-  },
 };
 
 describe('<Image />', () => {
   describe('DOM element', () => {
     it('Render correctly when essential props are passed ', () => {
       const { component, styles, } = felaSnapshotter(
-        <Image
-          data={mockData}
-          imgOptions={{ transforms: { width: '1045', aspect: 'full', }, }}
-        />
+        <Image data={mockData} imgOptions={{ transforms: { width: '1045', aspect: 'full', }, }} />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
@@ -63,15 +60,18 @@ describe('<Image />', () => {
           data={{
             isAnimatedGif: true,
             imgArray: [
-              { imgName: 'image/4030303706.gif', version: '1515097953', },
+              {
+                imgName: 'image/4030303706.gif',
+                version: '1515097953',
+                aspects: {
+                  landscape: { width: '394', height: '200', x: '33', y: '0', },
+                  full: { width: '400', height: '400', x: '0', y: '0', },
+                },
+              },
             ],
             credit: 'this is title/credit',
             caption: 'this caption from data',
             alt: 'this alt from data',
-            aspects: {
-              landscape: { width: '394', height: '200', x: '33', y: '0', },
-              full: { width: '400', height: '400', x: '0', y: '0', },
-            },
             contentId: '1.5599867',
           }}
           imgOptions={{
@@ -101,15 +101,18 @@ describe('<Image />', () => {
           data={{
             isAnimatedGif: true,
             imgArray: [
-              { imgName: 'image/4030303706.gif', version: '1515097953', },
+              {
+                imgName: 'image/4030303706.gif',
+                version: '1515097953',
+                aspects: {
+                  landscape: { width: '394', height: '200', x: '33', y: '0', },
+                  full: { width: '400', height: '400', x: '0', y: '0', },
+                },
+              },
             ],
             credit: 'this is title/credit',
             caption: 'this caption from data',
             alt: 'this alt from data',
-            aspects: {
-              landscape: { width: '394', height: '200', x: '33', y: '0', },
-              full: { width: '400', height: '400', x: '0', y: '0', },
-            },
             contentId: '1.5599867',
           }}
           imgOptions={{
@@ -151,10 +154,9 @@ describe('<Image />', () => {
           isPresentational
         />
       );
-      expect(
-        wrapper.find('img').find({ role: 'presentation', 'aria-hidden': true, })
-          .length
-      ).toBe(1);
+      expect(wrapper.find('img').find({ role: 'presentation', 'aria-hidden': true, }).length).toBe(
+        1
+      );
     });
 
     it.skip('Prints warning on console when both "isPresentational" and "attr" has keys of "role" or "aria-hidden" ', () => {
