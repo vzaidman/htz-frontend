@@ -29,18 +29,19 @@ const validatePhoneNumber = ({ phoneNumber, }) =>
     ? generateSmsCodeError('אנא הזינו מספר טלפון נייד')
     : []);
 
-const onSubmit = ({ doTransitionFunc, client, }) => ({ phoneNumber, }) => {
+const onSubmit = ({ doTransition, client, }) => ({ phoneNumber, }) => {
   const userData = getUserData(client);
   const email = getEmail(client);
   console.log(userData);
   connectMailWithPhone(client)({
     email,
-    userName: 'just a check', // TODO: add username in userinfo (user by mail)
+    userName: userData.firstName,
     phone: phoneNumber,
     paramString: btoa(`email=${email}`),
+  }).then(res => {
+    const route = doTransition('accept');
+    Router.push(route);
   });
-  const route = doTransitionFunc('accept');
-  Router.push(route);
 };
 
 // const sendAgain = e => {

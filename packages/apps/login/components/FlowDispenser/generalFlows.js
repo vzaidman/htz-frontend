@@ -13,7 +13,6 @@ export default {
     [ '-passwordReminder', '/passwordReminder', ],
     [ '-passwordReminderSent', '/passwordReminderSent', ],
     [ '-loginForms', '/loginForms', ],
-    [ '-emailValidationSent', '/emailValidationSent', ],
     [ '-success', '/', ],
   ]),
   phoneInput: {
@@ -53,5 +52,13 @@ export default {
     withPassword: 'loginForms',
     getCustomerService: 'customerService',
     notMyPhone: 'phoneInput',
+  },
+  emailValidationSent: {
+    sendAgain: 'emailValidationSent2',
+    notRegistered: 'register',
+  },
+  emailValidationSent2: {
+    getCustomerService: 'customerService',
+    withPassword: 'loginForms',
   },
 };
