@@ -10,6 +10,12 @@ import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter'
 import ThankYouStage from '../../components/OfferPage/Stages/ThankYouStage';
 import StageTransition from '../../components/OfferPage/StageTransition/StageTransition';
 
+const GET_HOSTNAME = gql`
+  query {
+    hostname @client
+  }
+`;
+
 const GET_FB_PAYLOAD = gql`
   query FB_PAYLOAD(
     $account_linking_token: String!
@@ -17,6 +23,7 @@ const GET_FB_PAYLOAD = gql`
     $publisher_user_id: ID
     $facebook_user_id: ID
     $subscribe_from_server: Boolean
+    $site: String!
   ) {
     fbSubscribePayload(
       account_linking_token: $account_linking_token
@@ -24,6 +31,7 @@ const GET_FB_PAYLOAD = gql`
       publisher_user_id: $publisher_user_id
       facebook_user_id: $facebook_user_id
       subscribe_from_server: $subscribe_from_server
+      site: $site
     )
   }
 `;
@@ -61,9 +69,7 @@ const ThankYouElement = ({ product, userMessage, fbFullRedirectUri, }) => (
             />
           </Fragment>
         }
-        stageElement={
-          <ThankYouStage fbFullRedirectUri={fbFullRedirectUri} />
-        }
+        stageElement={<ThankYouStage fbFullRedirectUri={fbFullRedirectUri} />}
       />
     </LayoutContainer>
   </FelaComponent>
@@ -103,48 +109,53 @@ class StageThankYou extends React.Component {
       <MainLayout isThankYou product={productId || false}>
         <UserDispenser
           render={({ user, }) => (
-            <Query
-              query={GET_FB_PAYLOAD}
-              skip={!accountLinkToken}
-              variables={{
-                account_linking_token: accountLinkToken,
-                subscription_status: 1,
-                publisher_user_id: user.id,
-                subscribe_from_server: true,
-              }}
-            >
-              {({ data, loading, error, }) => {
-                if (error) return null;
-                if (loading) return null;
-                const fbFullRedirectUri =
-                  accountLinkToken && data.fbSubscribePayload
-                    ? `${fbRedirectUri}?account_linking_token=${accountLinkToken}&subscription_payload=${
-                        data.fbSubscribePayload
-                      }`
-                    : null;
-                return productId ? (
-                  <ThankYouElement product={productId} fbFullRedirectUri={fbFullRedirectUri} />
-                ) : (
-                  <OfferPageDataGetter
-                    render={({
-                      data: {
-                        purchasePage: { userMessage, },
-                      },
-                      loading,
-                      error,
-                    }) => {
-                      if (loading) return <div> Loading...</div>;
-                      if (error) return <div> Error...</div>;
-                      return (
-                        <ThankYouElement
-                          userMessage={userMessage}
-                          fbFullRedirectUri={fbFullRedirectUri}
-                        />
-                      );
-                    }}
-                  />
-                );
-              }}
+            <Query query={GET_HOSTNAME}>
+              {({ data: { hostname, }, }) => (
+                <Query
+                  query={GET_FB_PAYLOAD}
+                  skip={!accountLinkToken}
+                  variables={{
+                    account_linking_token: accountLinkToken,
+                    subscription_status: 1,
+                    publisher_user_id: user.id,
+                    subscribe_from_server: true,
+                    site: hostname.includes('themarker') ? 'TM' : 'HTZ',
+                  }}
+                >
+                  {({ data, loading, error, }) => {
+                    if (error) return null;
+                    if (loading) return null;
+                    const fbFullRedirectUri =
+                      accountLinkToken && data.fbSubscribePayload
+                        ? `${fbRedirectUri}?account_linking_token=${accountLinkToken}&subscription_payload=${
+                            data.fbSubscribePayload
+                          }`
+                        : null;
+                    return productId ? (
+                      <ThankYouElement product={productId} fbFullRedirectUri={fbFullRedirectUri} />
+                    ) : (
+                      <OfferPageDataGetter
+                        render={({
+                          data: {
+                            purchasePage: { userMessage, },
+                          },
+                          loading,
+                          error,
+                        }) => {
+                          if (loading) return <div> Loading...</div>;
+                          if (error) return <div> Error...</div>;
+                          return (
+                            <ThankYouElement
+                              userMessage={userMessage}
+                              fbFullRedirectUri={fbFullRedirectUri}
+                            />
+                          );
+                        }}
+                      />
+                    );
+                  }}
+                </Query>
+              )}
             </Query>
           )}
         />
