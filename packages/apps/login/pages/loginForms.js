@@ -23,6 +23,7 @@ import { getMetadataFromApollo, } from './queryutil/flowUtil';
 import GET_HOST from './queries/GetHost';
 import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import { domainToSiteNumber, } from '../util/siteUtil';
+import { PhoneInputForm, } from '../components/Misc/Forms/PhoneInputForm';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -106,13 +107,15 @@ const getUserHiddenMobile = () => {
 
 }
 
-const hiddenPhone = (client) => {
-  if(getUserData(client)) {
-    return `${phoneNumber.substring(0, 3)}****${getUserData(client).phoneNum.substring(7)}`;  
-  } else {
+const hiddenPhone = client => {
+  const phoneNumber = getPhoneNum(client);
+  if (phoneNumber) {
+    return `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
+  }
+  else {
     return '-';
   }
-}
+};
 
 const sendAgain = e => {
   console.log('test...');
@@ -218,68 +221,17 @@ class LoginForms extends Component {
 
                               {/* ----------------- Tabs Frame ----------------- */}
                               <TabsFrame
-                                activeTab={parseInt(getMetadataFromApollo(client), 10)}
-                                isLink={[ isLink(client), ]}
+                                activeTab={(parseInt(getMetadataFromApollo(client), 10))}
                                 findRout={findRout}
                                 doTransition={doTransition}
                               >
                                 {/* TAB 1 */}
                                 <div tabname="כניסה באמצעות SMS">
-                                  <ItemCenterer>
-                                      <h4 className="no-spac">
-                                        להתחברות הזינו את הקוד שנשלח למספר
-                                        <br />
-                                        <span dir="ltr">{ hiddenPhone(client) }</span>
-                                      </h4>
-                                  </ItemCenterer>
-
-                                  <Form
-                                    clearFormAfterSubmit={false}
-                                    // initialValues={{ email: 'insert email' }}
-                                    validate={validateForm}
-                                    onSubmit={onSubmitSms({ client, host, loginWithMobile, })}
-                                    render={({ getInputProps, handleSubmit, clearForm, }) => (
-                                      <Fragment>
-                                        <div>
-                                          <TextInput
-                                            type="number"
-                                            label={theme.emailInputLabel}
-                                            noteText="אנא הזינו את הקוד שנשלח אליכם"
-                                            requiredText={{
-                                              long: 'אנא הזינו את הקוד שנשלח אליכם',
-                                              short: '*',
-                                            }}
-                                            {...getInputProps({
-                                              name: 'smsCode',
-                                              label: 'קוד אימות',
-                                              type: 'text',
-                                            })}
-                                          />
-                                          <InputLinkButton>
-                                            <button
-                                              data-role="resend"
-                                              onClick={(e) => {
-                                                e.preventDefault();
-                                                const route = doTransition('sendAgain');
-                                                Router.push(route);
-                                              }}
-                                            >
-                                              שלח בשנית
-                                            </button>
-                                          </InputLinkButton>
-                                        </div>
-
-                                        <ErrorBox className={this.state.showError ? "" : "hidden"}>
-                                          <span>
-                                            {this.state.errorMessage}
-                                          </span>
-                                        </ErrorBox>
-
-                                        <ItemCenterer>
-                                          <Button onClick={handleSubmit}>התחברות</Button>
-                                        </ItemCenterer>
-                                      </Fragment>
-                                    )}
+                                  <PhoneInputForm
+                                    client={client}
+                                    currentState={currentState}
+                                    doTransition={doTransition}
+                                    findRout={findRout}
                                   />
                                 </div>
 
@@ -289,7 +241,7 @@ class LoginForms extends Component {
                                     clearFormAfterSubmit={false}
                                     // initialValues={{ email: 'insert email' }}
                                     validate={validateForm}
-                                    onSubmit={onSubmit({ login, host, }, this.showError, this.hideError,)}
+                                    onSubmit={onSubmit({ login, host, }, this.showError, this.hideError, )}
                                     render={({ getInputProps, handleSubmit, clearForm, }) => (
                                       <Fragment>
                                         <div>

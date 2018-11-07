@@ -1,64 +1,33 @@
 export default {
   transitionRouteMap: new Map([
-    [ '-otpValidation', '/otpValidation', ],
-    [ '-otpValidation2', '/otpValidation2', ],
     [ '-phoneInput', '/phoneInput', ],
     [ '-phoneMailSent', '/phoneMailSent', ],
-    [ '-phoneMailSent2', '/phoneMailSent2', ],
     [ '-customerService', '/customerService', ],
     [ '-register', '/register', ],
     [ '-emailValidationSent', '/emailValidationSent', ],
-    [ '-emailValidationSent2', '/emailValidationSent2', ],
-    [ '-passwordError', '/passwordError', ],
-    [ '-passwordReminder', '/passwordReminder', ],
-    [ '-passwordReminderSent', '/passwordReminderSent', ],
-    [ '-loginForms', '/loginForms', ],
+    [ '-loginFormsPass', { url: '/loginForms', param: 0, }, ],
+    [ '-loginFormsPhone', { url: '/loginForms', param: 1, }, ],
+    [ '-loginFormsOtp', { url: '/loginForms', param: 2, }, ],
     [ '-success', '/', ],
   ]),
-  phoneInput: {
-    withPassword: 'loginForms',
-    accept: 'phoneMailSent',
-  },
-  loginForms: {
-    withSms: 'otpValidation',
-    registration: 'register',
-    notMyPhone: 'phoneInput',
-  },
-  passwordError: {
-    forgotPassword: 'passwordReminder',
+  emailValidationSent: {
+    getCustomerService: 'customerService',
+    withPassword: 'loginFormsPass',
     notRegistered: 'register',
-    accept: 'success',
-  },
-  passwordReminder: {
-    accept: 'passwordReminderSent',
   },
   passwordReminderSent: {
-    accept: 'loginForms',
+    accept: 'loginFormsPass',
   },
   register: {
     success: 'emailValidationSent',
-    backToLogin: 'loginForms',
+    backToLogin: 'loginFormsPass',
   },
-  emailValidationSent: {
-    sendAgain: 'emailValidationSent2',
+  loginFormsPhone: {
+    withPassword: 'loginFormsPass',
+    accept: 'phoneMailSent',
   },
-  otpValidation: {
-    sendAgain: 'otpValidation2',
-    accept: 'success',
-    withPassword: 'loginForms',
-    notMyPhone: 'phoneInput',
-  },
-  otpValidation2: {
-    withPassword: 'loginForms',
+  phoneMailSent: {
+    withPassword: 'loginFormsPass',
     getCustomerService: 'customerService',
-    notMyPhone: 'phoneInput',
-  },
-  emailValidationSent: {
-    sendAgain: 'emailValidationSent2',
-    notRegistered: 'register',
-  },
-  emailValidationSent2: {
-    getCustomerService: 'customerService',
-    withPassword: 'loginForms',
   },
 };
