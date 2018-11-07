@@ -13,6 +13,7 @@ const imageObj = `{
   imgArray {
     imgName
     version
+    aspects
   }
   imageType
   contentName

@@ -17,13 +17,7 @@ const ImgWrapperStyle = ({ bgc, height, theme, width, miscStyles, }) => ({
   position: 'relative',
   width: '100%',
   extend: [
-    parseComponentProp(
-      'backgroundColor',
-      bgc || [ 'image', 'bgc', ],
-      theme.mq,
-      setColor,
-      theme.color
-    ),
+    parseComponentProp('backgroundColor', bgc || [ 'image', 'bgc', ], theme.mq, setColor, theme.color),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -67,10 +61,8 @@ const imageOptionsType = PropTypes.shape({
    * the `src` attribute, and then all items will be used in
    * constructing the `srcset` attribute.
    */
-  transforms: PropTypes.oneOfType([
-    ImgTransfromOptions,
-    PropTypes.arrayOf(ImgTransfromOptions),
-  ]).isRequired,
+  transforms: PropTypes.oneOfType([ ImgTransfromOptions, PropTypes.arrayOf(ImgTransfromOptions), ])
+    .isRequired,
 });
 
 class Image extends React.Component {
@@ -90,8 +82,6 @@ class Image extends React.Component {
     data: PropTypes.shape({
       /** Image alt from polopoly */
       alt: PropTypes.string,
-      /** Holds the image aspects object */
-      aspects: PropTypes.object,
       /**
        * When the array contains multiple elements, each should be used
        * independently in creating sources for the picture element.
@@ -102,6 +92,8 @@ class Image extends React.Component {
           imgName: PropTypes.string.isRequired,
           /** Image version from polopoly */
           version: PropTypes.string,
+          /** Holds the image aspects object */
+          aspects: PropTypes.object,
         })
       ),
       /** Image id from polopoly */
@@ -151,7 +143,7 @@ class Image extends React.Component {
   };
 
   componentWillMount() {
-    if(this.props.data === null) {
+    if (this.props.data === null) {
       return null;
     }
     const { imgArray, } = this.props.data;
@@ -160,8 +152,7 @@ class Image extends React.Component {
     // Check if transforms matches image aspects pattern
     const aspectMatchResult = Array.isArray(transforms)
       ? transforms.every(
-        (element, index, arr) =>
-          (index === 0 ? true : element.aspect === arr[index - 1].aspect)
+        (element, index, arr) => (index === 0 ? true : element.aspect === arr[index - 1].aspect)
       )
       : true;
 
@@ -176,10 +167,11 @@ class Image extends React.Component {
 Please use the "<Picture />" component`
       );
     }
+    return null;
   }
 
   render() {
-    if(this.props.data === null) {
+    if (this.props.data === null) {
       return null;
     }
     const {
@@ -193,10 +185,7 @@ Please use the "<Picture />" component`
       hasWrapper,
     } = this.props;
 
-    if (
-      isPresentational &&
-      (attrs && (!!attrs.role || !!attrs['aria-hidden']))
-    ) {
+    if (isPresentational && (attrs && (!!attrs.role || !!attrs['aria-hidden']))) {
       logger.warn(
         'When "isPresentational" prop value is true, "role" and "aria-hidden" are set automatically'
       );
@@ -205,9 +194,7 @@ Please use the "<Picture />" component`
     const sources = getSources(this.props);
     const src = sources[0];
     const srcSet = sources[1];
-    const webpSources = isAnimatedGif
-      ? getSources(this.props, true)
-      : undefined;
+    const webpSources = isAnimatedGif ? getSources(this.props, true) : undefined;
 
     const Sources = isAnimatedGif ? (
       <picture>
@@ -259,12 +246,7 @@ Please use the "<Picture />" component`
 
     if (!lazyLoad) {
       return hasWrapper ? (
-        <StyledImgWrapper
-          width={width}
-          height={height}
-          bgc={bgcolor}
-          miscStyles={miscStyles}
-        >
+        <StyledImgWrapper width={width} height={height} bgc={bgcolor} miscStyles={miscStyles}>
           {Sources}
         </StyledImgWrapper>
       ) : (
@@ -273,12 +255,7 @@ Please use the "<Picture />" component`
     }
 
     return hasWrapper ? (
-      <StyledImgWrapper
-        width={width}
-        height={height}
-        bgc={bgcolor}
-        miscStyles={miscStyles}
-      >
+      <StyledImgWrapper width={width} height={height} bgc={bgcolor} miscStyles={miscStyles}>
         <Observer triggerOnce rootMargin={lazyLoad}>
           {inView => (inView ? Sources : null)}
         </Observer>
@@ -305,18 +282,15 @@ export const aspectRatios = {
   belgrade: { height: 1, width: 3.18, },
 };
 
-function getDimensions({ data: { aspects, }, imgOptions: { transforms, }, }) {
+function getDimensions({ data: { imgArray, }, imgOptions: { transforms, }, }) {
   const { aspect, } = Array.isArray(transforms) ? transforms[0] : transforms;
-  const { height, width, } = aspects[aspect] || aspectRatios[aspect];
+  const { height, width, } = imgArray[0].aspects[aspect] || aspectRatios[aspect];
 
   return { height, width, };
 }
 
 function getSources(
-  {
-    data: { aspects, contentId, imgArray, isAnimatedGif, },
-    imgOptions: { transforms, },
-  },
+  { data: { contentId, imgArray, isAnimatedGif, }, imgOptions: { transforms, }, },
   isWebP = false
 ) {
   const transformsArray = Array.isArray(transforms) ? transforms : [ transforms, ];
@@ -324,16 +298,14 @@ function getSources(
   const imageNameFromData = imgArray[0].imgName;
 
   const imgName =
-    isAnimatedGif && isWebP
-      ? `${imageNameFromData.split('.')[0]}.webp`
-      : imageNameFromData;
+    isAnimatedGif && isWebP ? `${imageNameFromData.split('.')[0]}.webp` : imageNameFromData;
 
   // Always use the first image in the imageArray
   const imgVersion = imgArray[0].version;
   const imgData = {
     imgName,
     version: imgVersion,
-    aspects,
+    aspects: imgArray[0].aspects,
   };
 
   const src = buildUrl(contentId, imgData, transformsArray[0]);
