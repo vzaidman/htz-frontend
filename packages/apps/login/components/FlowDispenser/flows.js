@@ -2,49 +2,39 @@
 export default [
   {
     flowNumber: 1,
-    initialState: 'otpValidation',
-    initialTransition: '/otpValidation',
-    transitionRouteMap: new Map([
-      [ '-loginForms', { url: '/loginForms', param: 0 } ],
-      [ 'otpValidation-loginForms', { url: '/loginForms', param: 1 } ],
-    ]),
-    phoneMailSent: {
-      sendAgain: 'phoneMailSent2',
-      withPassword: 'loginForms',
-    },
-    phoneMailSent2: {
-      getCustomerService: 'customerService',
-      withPassword: 'loginForms',
+    initialState: 'loginFormsOtp',
+    initialTransition: { url: '/loginForms', param: 2, },
+    transitionRouteMap: new Map([]),
+    loginFormsOtp: {
+      withSms: 'loginFormsOtp',
+      registration: 'register',
+      notMyPhone: 'phoneInput',
     },
   },
   {
     flowNumber: 2,
-    initialState: 'phoneInput',
-    initialTransition: '/phoneInput',
-    transitionRouteMap: new Map([
-      [ '-loginForms', '/loginForms', ],
-      [ 'otpValidation-loginForms', '/loginForms', ],
-    ]),
+    initialState: 'loginFormsPhone',
+    initialTransition: { url: '/loginForms', param: 1, },
+    transitionRouteMap: new Map([]),
     emailPhoneInput: {
-      withPassword: 'loginForms',
+      withPassword: 'loginFormsPass',
       accept: 'phoneMailSent',
     },
     phoneMailSent: {
       withPassword: 'loginForms',
-      sendAgain: 'phoneMailSent2',
-    },
-    phoneMailSent2: {
       getCustomerService: 'customerService',
-      withPassword: 'loginForms',
+    },
+    loginFormsPhone: {
+      withSms: 'loginFormsOtp',
+      registration: 'register',
+      notMyPhone: 'phoneInput',
     },
   },
   {
     flowNumber: 3,
     initialState: 'emailValidationSent',
     initialTransition: '/emailValidationSent',
-    transitionRouteMap: new Map([
-      [ 'otpValidation-loginForms', { url: '/loginForms', param: 1, } ],
-    ]),
+    transitionRouteMap: new Map([]),
   },
   {
     flowNumber: 4,
@@ -54,14 +44,17 @@ export default [
   },
   {
     flowNumber: 5,
-    initialState: 'loginForms',
-    initialTransition: { url: '/loginForms', param: 1 },
-    transitionRouteMap: new Map([ [ '-loginForms', { url: '/loginForms', param: 1 } ] ]),
+    initialState: 'loginFormsPass',
+    initialTransition: { url: '/loginFormsPass', param: 0, },
+    transitionRouteMap: new Map([]),
+    loginFormsPass: {
+      withSms: 'loginFormsPhone',
+    },
   },
   {
     flowNumber: 6,
-    initialState: 'otpValidation',
-    initialTransition: '/otpValidation',
+    initialState: 'loginFormsOtp',
+    initialTransition: { url: '/loginFormsPass', param: 0, },
     transitionRouteMap: new Map([]),
   },
 ];
