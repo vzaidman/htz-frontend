@@ -15,14 +15,20 @@ describe('<Picture />', () => {
           data: {
             isAnimatedGif: false,
             imgArray: [
-              { imgName: 'image/2092337187.jpg', version: '1516524320', },
+              {
+                imgName: 'image/2092337187.jpg',
+                version: '1516524320',
+                aspects: {
+                  full: { width: '1680', height: '1260', x: '0', y: '0', },
+                },
+              },
             ],
             credit: 'this is title/credit',
             alt: 'this alt from data',
             contentId: '1.5748461',
-            aspects: {
-              full: { width: '1680', height: '1260', x: '0', y: '0', },
-            },
+            // aspects: {
+            //   full: { width: '1680', height: '1260', x: '0', y: '0', },
+            // },
           },
         }}
         sources={[
@@ -35,14 +41,20 @@ describe('<Picture />', () => {
             data: {
               isAnimatedGif: false,
               imgArray: [
-                { imgName: 'image/2092337187.jpg', version: '1516524320', },
+                {
+                  imgName: 'image/2092337187.jpg',
+                  version: '1516524320',
+                  aspects: {
+                    full: { width: '1680', height: '1260', x: '0', y: '0', },
+                  },
+                },
               ],
               credit: 'this is title/credit',
               alt: 'this alt from data',
               contentId: '1.5748461',
-              aspects: {
-                full: { width: '1680', height: '1260', x: '0', y: '0', },
-              },
+              // aspects: {
+              //   full: { width: '1680', height: '1260', x: '0', y: '0', },
+              // },
             },
           },
           {
@@ -67,15 +79,22 @@ describe('<Picture />', () => {
             data: {
               isAnimatedGif: false,
               imgArray: [
-                { imgName: 'image/4030303706.gif', version: '1515097953', },
+                {
+                  imgName: 'image/4030303706.gif',
+                  version: '1515097953',
+                  aspects: {
+                    landscape: { width: '394', height: '200', x: '33', y: '0', },
+                    full: { width: '400', height: '400', x: '0', y: '0', },
+                  },
+                },
               ],
               credit: 'this is title/credit',
               caption: 'this caption from data',
               alt: 'this alt from data',
-              aspects: {
-                landscape: { width: '394', height: '200', x: '33', y: '0', },
-                full: { width: '400', height: '400', x: '0', y: '0', },
-              },
+              // aspects: {
+              //   landscape: { width: '394', height: '200', x: '33', y: '0', },
+              //   full: { width: '400', height: '400', x: '0', y: '0', },
+              // },
               contentId: '1.5599867',
             },
           },
@@ -107,19 +126,27 @@ describe('<Picture />', () => {
               {
                 imgName: 'image/2196292809.jpg',
                 version: '1517913716',
+                aspects: {
+                  headline: {
+                    width: '2048',
+                    height: '1192',
+                    x: '0',
+                    y: '74',
+                  },
+                },
               },
             ],
             alt: 'סיכות של קמפיים #METOO',
             credit: 'LUCY NICHOLSON/רויטרס',
             contentId: '1.5791650',
-            aspects: {
-              headline: {
-                width: '2048',
-                height: '1192',
-                x: '0',
-                y: '74',
-              },
-            },
+            // aspects: {
+            //   headline: {
+            //     width: '2048',
+            //     height: '1192',
+            //     x: '0',
+            //     y: '74',
+            //   },
+            // },
           },
         }}
         sources={[
@@ -134,19 +161,27 @@ describe('<Picture />', () => {
                 {
                   imgName: 'image/2196292809.jpg',
                   version: '1517913716',
+                  aspects: {
+                    landscape: {
+                      width: '2048',
+                      height: '883',
+                      x: '0',
+                      y: '70',
+                    },
+                  },
                 },
               ],
               alt: 'סיכות של קמפיים #METOO',
               credit: 'LUCY NICHOLSON/רויטרס',
               contentId: '1.5791650',
-              aspects: {
-                landscape: {
-                  width: '2048',
-                  height: '883',
-                  x: '0',
-                  y: '70',
-                },
-              },
+              // aspects: {
+              //   landscape: {
+              //     width: '2048',
+              //     height: '883',
+              //     x: '0',
+              //     y: '70',
+              //   },
+              // },
             },
           },
           {
@@ -168,25 +203,39 @@ describe('<Picture />', () => {
               credit: 'נתן דביר',
               title:
                 "הכומר סת' קפר־דייל ורעייתו סטפני. העולם' צריך להיות מקום מקלט אחד גדול'",
-              aspects: {
-                regular: {
-                  width: 1819,
-                  height: 1365,
-                  x: 96,
-                  y: 0,
-                },
-                headline: {
-                  width: 2033,
-                  height: 1181,
-                  x: 15,
-                  y: 77,
-                },
-              },
+              // aspects: {
+              //   regular: {
+              //     width: 1819,
+              //     height: 1365,
+              //     x: 96,
+              //     y: 0,
+              //   },
+              //   headline: {
+              //     width: 2033,
+              //     height: 1181,
+              //     x: 15,
+              //     y: 77,
+              //   },
+              // },
               isAnimated: false,
               imgArray: [
                 {
                   imgName: 'image/392731171.jpg',
                   version: '1518001678',
+                  aspects: {
+                    regular: {
+                      width: 1819,
+                      height: 1365,
+                      x: 96,
+                      y: 0,
+                    },
+                    headline: {
+                      width: 2033,
+                      height: 1181,
+                      x: 15,
+                      y: 77,
+                    },
+                  },
                 },
               ],
               imageType: 'image',
@@ -213,19 +262,27 @@ describe('<Picture />', () => {
             data: {
               alt: 'איור של נרי יושבת על שפת מזרקה ולצידה צפרדע',
               title: 'איתן אלוא',
-              aspects: {
-                landscape: {
-                  width: 1325,
-                  height: 569,
-                  x: '0',
-                  y: '90',
-                },
-              },
+              // aspects: {
+              //   landscape: {
+              //     width: 1325,
+              //     height: 569,
+              //     x: '0',
+              //     y: '90',
+              //   },
+              // },
               isAnimated: false,
               imgArray: [
                 {
                   imgName: 'image/3063850623.gif',
                   version: '1518084212',
+                  aspects: {
+                    landscape: {
+                      width: 1325,
+                      height: 569,
+                      x: '0',
+                      y: '90',
+                    },
+                  },
                 },
               ],
               imageType: 'image',
@@ -261,19 +318,27 @@ describe('<Picture />', () => {
               {
                 imgName: 'image/2196292809.jpg',
                 version: '1517913716',
+                aspects: {
+                  headline: {
+                    width: '2048',
+                    height: '1192',
+                    x: '0',
+                    y: '74',
+                  },
+                },
               },
             ],
             alt: 'סיכות של קמפיים #METOO',
             credit: 'LUCY NICHOLSON/רויטרס',
             contentId: '1.5791650',
-            aspects: {
-              headline: {
-                width: '2048',
-                height: '1192',
-                x: '0',
-                y: '74',
-              },
-            },
+            // aspects: {
+            //   headline: {
+            //     width: '2048',
+            //     height: '1192',
+            //     x: '0',
+            //     y: '74',
+            //   },
+            // },
           },
         }}
         sources={[
@@ -288,19 +353,27 @@ describe('<Picture />', () => {
                 {
                   imgName: 'image/2196292809.gif',
                   version: '1517913716',
+                  aspects: {
+                    landscape: {
+                      width: '2048',
+                      height: '883',
+                      x: '0',
+                      y: '70',
+                    },
+                  },
                 },
               ],
               alt: 'סיכות של קמפיים #METOO',
               credit: 'LUCY NICHOLSON/רויטרס',
               contentId: '1.5791650',
-              aspects: {
-                landscape: {
-                  width: '2048',
-                  height: '883',
-                  x: '0',
-                  y: '70',
-                },
-              },
+              // aspects: {
+              //   landscape: {
+              //     width: '2048',
+              //     height: '883',
+              //     x: '0',
+              //     y: '70',
+              //   },
+              // },
             },
           },
         ]}

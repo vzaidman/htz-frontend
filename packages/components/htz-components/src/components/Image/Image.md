@@ -25,19 +25,24 @@ built-in support for lazy-loading
   // hasWrapper={false}
   data={{
     isAnimatedGif: false,
-    imgArray: [{ imgName: 'image/2092337187.jpg', version: '1516524320' }],
-    credit: 'this is title/credit',
-    alt: 'this alt from data',
-    contentId: '1.5748461',
-    aspects: {
-      full: { width: '1680', height: '1260', x: '0', y: '0' },
-    },
+    imgArray: [
+      {
+        imgName: "image/2092337187.jpg",
+        version: "1516524320",
+        aspects: {
+          full: { width: "1680", height: "1260", x: "0", y: "0" }
+        }
+      }
+    ],
+    credit: "this is title/credit",
+    alt: "this alt from data",
+    contentId: "1.5748461"
   }}
   imgOptions={{
-    transforms: { width: '1200', aspect: 'square' },
+    transforms: { width: "1200", aspect: "square" }
   }}
-  bgcolor={'black'}
-  lazyLoad={'600px'}
+  bgcolor={"black"}
+  lazyLoad={"600px"}
 />
 ```
 
@@ -46,32 +51,37 @@ built-in support for lazy-loading
   <Image
     data={{
       isAnimatedGif: false,
-      imgArray: [{ imgName: 'image/922278056.jpg', version: '1514197183' }],
-      credit: 'this is title/credit',
-      caption: 'this caption from data',
-      alt: 'this alt from data',
-      aspects: {
-        landscape: { width: '2220', height: '800', x: '10', y: '0' },
-        full: { width: '500', height: '400', x: '0', y: '0' },
-      },
-      contentId: '1.4921360',
+      imgArray: [
+        {
+          imgName: "image/922278056.jpg",
+          version: "1514197183",
+          aspects: {
+            landscape: { width: "2220", height: "800", x: "10", y: "0" },
+            full: { width: "500", height: "400", x: "0", y: "0" }
+          }
+        }
+      ],
+      credit: "this is title/credit",
+      caption: "this caption from data",
+      alt: "this alt from data",
+      contentId: "1.4921360"
     }}
     imgOptions={{
-      sizes: '(min-width:1420px) 610px,(min-width:1320px) 500px, 280px',
+      sizes: "(min-width:1420px) 610px,(min-width:1320px) 500px, 280px",
       transforms: [
         {
-          width: '145',
-          height: '100',
-          aspect: 'landscape',
-          quality: 'auto:best',
+          width: "145",
+          height: "100",
+          aspect: "landscape",
+          quality: "auto:best"
         },
-        { width: '245', height: '159', aspect: 'landscape' },
-        { width: '445', aspect: 'landscape' },
-      ],
+        { width: "245", height: "159", aspect: "landscape" },
+        { width: "445", aspect: "landscape" }
+      ]
     }}
-    lazyLoad={'500px'}
+    lazyLoad={"500px"}
     isPresentational
-    bgcolor={'black'}
+    bgcolor={"black"}
   />
 </div>
 ```
@@ -81,31 +91,40 @@ built-in support for lazy-loading
   <Image
     data={{
       isAnimatedGif: true,
-      imgArray: [{ imgName: 'image/4030303706.gif', version: '1515097953' }],
-      credit: 'this is title/credit',
-      caption: 'this caption from data',
-      alt: 'this alt from data',
+      imgArray: [
+        {
+          imgName: "image/4030303706.gif",
+          version: "1515097953",
+          aspects: {
+            landscape: { width: "394", height: "200", x: "33", y: "0" },
+            full: { width: "400", height: "400", x: "0", y: "0" }
+          }
+        }
+      ],
+      credit: "this is title/credit",
+      caption: "this caption from data",
+      alt: "this alt from data",
       aspects: {
-        landscape: { width: '394', height: '200', x: '33', y: '0' },
-        full: { width: '400', height: '400', x: '0', y: '0' },
+        landscape: { width: "394", height: "200", x: "33", y: "0" },
+        full: { width: "400", height: "400", x: "0", y: "0" }
       },
-      contentId: '1.5599867',
+      contentId: "1.5599867"
     }}
     imgOptions={{
-      sizes: '(min-width:1420px) 610px,(min-width:1320px) 500px, 280px',
+      sizes: "(min-width:1420px) 610px,(min-width:1320px) 500px, 280px",
       transforms: [
         {
-          width: '145',
-          height: '100',
-          aspect: 'landscape',
-          quality: 'auto:best',
+          width: "145",
+          height: "100",
+          aspect: "landscape",
+          quality: "auto:best"
         },
-        { width: '245', height: '159', aspect: 'landscape' },
-        { width: '445', aspect: 'landscape' },
-      ],
+        { width: "245", height: "159", aspect: "landscape" },
+        { width: "445", aspect: "landscape" }
+      ]
     }}
-    lazyLoad={'900px'}
-    attr={{ 'aria-hidden': true, role: 'group' }}
+    lazyLoad={"900px"}
+    attr={{ "aria-hidden": true, role: "group" }}
   />
 </div>
 ```
@@ -115,32 +134,37 @@ built-in support for lazy-loading
   <Image
     data={{
       isAnimatedGif: false,
-      imgArray: [{ imgName: 'image/918473823.jpg', version: '1516894981' }],
-      credit: 'טראמפ ונתניהו בדאבוס, היום - צילום: CARLOS BARRIA/רויטרס',
-      alt: 'טראמפ ונתניהו בדאבוס, היום',
-      contentId: '1.5766455',
-      aspects: {
-        regular: { width: '2069', height: '1551', x: '59', y: '4' },
-        landscape: { width: '2174', height: '1263', x: '0', y: '107' },
-      },
+      imgArray: [
+        {
+          imgName: "image/918473823.jpg",
+          version: "1516894981",
+          aspects: {
+            regular: { width: "2069", height: "1551", x: "59", y: "4" },
+            landscape: { width: "2174", height: "1263", x: "0", y: "107" }
+          }
+        }
+      ],
+      credit: "טראמפ ונתניהו בדאבוס, היום - צילום: CARLOS BARRIA/רויטרס",
+      alt: "טראמפ ונתניהו בדאבוס, היום",
+      contentId: "1.5766455"
     }}
     imgOptions={{
       transforms: [
         {
-          width: '565',
-          height: '320',
-          aspect: 'landscape',
-          quality: 'auto',
+          width: "565",
+          height: "320",
+          aspect: "landscape",
+          quality: "auto"
         },
         {
-          width: '1040',
-          height: '550',
-          aspect: 'landscape',
-          quality: 'auto:best',
-        },
-      ],
+          width: "1040",
+          height: "550",
+          aspect: "landscape",
+          quality: "auto:best"
+        }
+      ]
     }}
-    lazyLoad={'900px'}
+    lazyLoad={"900px"}
   />
 </div>
 ```
