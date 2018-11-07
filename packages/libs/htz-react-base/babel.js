@@ -15,8 +15,10 @@
 
 const presets = [ '@babel/preset-react', '@babel/preset-flow', ];
 const plugins = [
-  '@babel/plugin-proposal-object-rest-spread',
+  'babel-plugin-transform-react-remove-prop-types',
   '@babel/plugin-proposal-class-properties',
+  '@babel/plugin-proposal-object-rest-spread',
+  '@babel/plugin-syntax-dynamic-import',
 ];
 
 switch (process.env.BABEL_ENV) {
@@ -52,7 +54,7 @@ switch (process.env.BABEL_ENV) {
           // browsers happen to require the same transforms.
         },
         useBuiltIns: 'entry',
-        forceAllTransforms: true,
+        forceAllTransforms: false,
         modules: false,
       },
     ]);

@@ -1,54 +1,25 @@
 {
+  "presets": ["next/babel"],
+  "plugins": [
+    "babel-plugin-transform-react-remove-prop-types",
+    "babel-plugin-transform-flow-strip-types",
+    [
+      "lodash",
+      {
+        "id": [
+          "lodash",
+          "@haaretz/htz-components",
+          "@haaretz/htz-theme",
+          "@haaretz/tm-theme",
+          "@haaretz/fela-utils",
+          "@haaretz/app-utils"
+        ]
+      }
+    ]
+  ],
   "env": {
-    "development": {
-      "plugins": [
-        "babel-plugin-transform-flow-strip-types",
-        [
-          "lodash",
-          {
-            "id": [
-              "lodash",
-              "@haaretz/htz-components",
-              "@haaretz/htz-theme",
-              "@haaretz/tm-theme",
-              "@haaretz/fela-utils",
-              "@haaretz/app-utils"
-            ]
-          }
-        ]
-      ],
-      "presets": ["next/babel"]
-    },
-    "production": {
-      "plugins": [
-        "babel-plugin-transform-flow-strip-types",
-        [
-          "lodash",
-          {
-            "id": [
-              "lodash",
-              "@haaretz/htz-components",
-              "@haaretz/htz-theme",
-              "@haaretz/tm-theme",
-              "@haaretz/fela-utils",
-              "@haaretz/app-utils"
-            ]
-          }
-        ]
-      ],
-      "presets": ["next/babel"]
-    },
-    "commonjs": {
-      "plugins": [ "babel-plugin-transform-flow-strip-types" ],
-      "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "modules": "commonjs"
-          }
-        ],
-        "next/babel"
-      ]
-    }
+    "development": {},
+    "production": {},
+    "test": {},
   }
 }
