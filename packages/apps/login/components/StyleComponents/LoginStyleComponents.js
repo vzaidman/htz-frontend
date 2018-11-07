@@ -71,6 +71,7 @@ const Styles = {
     }),
 
     itemCenterer: () => ({
+      position: 'relative',
       display: 'flex',
       justifyContent: 'center',
       flexWrap: 'nowrap',
