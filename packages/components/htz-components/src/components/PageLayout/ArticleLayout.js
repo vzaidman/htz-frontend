@@ -1,6 +1,5 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, } from 'react-fela';
 import dynamic from 'next/dynamic';
 
 import Query from '../ApolloBoundary/Query';
@@ -11,7 +10,6 @@ import getComponent from '../../utils/componentFromInputTemplate';
 import Masthead from './slots/Masthead';
 import ArticleBIQuery from './queries/article_bi';
 import UserDispenser from '../User/UserDispenser';
-import OptOutStrip from '../OptOut/OptOutStrip';
 
 const BIRequest = dynamic(import('../BI/BIRequest'), {
   ssr: false,
@@ -66,16 +64,11 @@ const ArticlePageLayout = ({
   return (
     <Fragment>
       {preHeader ? <LayoutRow>{getElements(preHeader)}</LayoutRow> : null}
-      <LayoutRow>
-        <OptOutStrip />
-      </LayoutRow>
       {/* Layout row is inside Masthead Component because its miscStyles depend on state */}
       <Masthead content={header} articleId={articleId} />
       <LayoutRow>
         {postHeader ? (
-          <LayoutContainer>
-            {getElements(postHeader)}
-          </LayoutContainer>
+          <LayoutContainer>{getElements(postHeader)}</LayoutContainer>
         ) : null}
       </LayoutRow>
       <LayoutRow tagName="main" id="pageRoot" miscStyles={{ flexGrow: 1, }}>
@@ -102,7 +95,10 @@ const ArticlePageLayout = ({
           });
           return (
             <Fragment>
-              <BIRequest articleId={articleId} authors={extractAuthorsFromArticle(article)} />
+              <BIRequest
+                articleId={articleId}
+                authors={extractAuthorsFromArticle(article)}
+              />
               <UserDispenser
                 render={({ user, isLoggedIn, }) => {
                   if (isLoggedIn) {
