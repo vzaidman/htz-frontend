@@ -3,7 +3,7 @@ import Router from 'next/router';
 
 import { HtzLink, Register, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
 
-// import { mobileNumberParser, } from '@haaretz/htz-user-utils';
+import { mobileNumberParser, } from '@haaretz/htz-user-utils';
 
 import FSMLayout from '../layouts/FSMLayout';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -11,6 +11,7 @@ import isEmail from 'validator/lib/isEmail';
 import theme from '../theme';
 import { FelaTheme, createComponent, } from 'react-fela';
 import BottomLinks from '../components/Misc/BottomLinks';
+import Preloader from '../components/Misc/Preloader';
 import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
@@ -49,21 +50,24 @@ const generatePasswordError = message => generateError('password', 4)(message);
 const generateTermsError = message => generateError('terms', 5)(message);
 
 const isPassword = password => password.length > 5; // TODO: write proper password validation
-const isName = name => name.length > 1; // TODO: write proper name validation
+const isName = name => {
+  let regex = /^[a-zA-Z ]{2,30}$/;
+  return regex.test(name);
+};
 const isChecked = terms => !!terms;
 
 const validateFirstNameInput = ({ firstname, }) =>
   (!firstname
     ? generateFirstNameError('אנא הזינו שם פרטי')
     : !isName(firstname)
-      ? generateFirstNameError('אנא הזינו שם תקין')
+      ? generateFirstNameError('יש להזין שם המורכב מ-2 אותיות לפחות וללא מספרים')
       : []); // name is valid
 
 const validateLastNameInput = ({ lastname, }) =>
   (!lastname
     ? generateLastNameError('אנא הזינו שם משפחה')
     : !isName(lastname)
-      ? generateLastNameError('אנא הזינו שם תקין')
+      ? generateLastNameError('יש להזין שם המורכב מ-2 אותיות לפחות וללא מספרים')
       : []); // name is valid
 
 const validateEmailInput = ({ email, }) =>
@@ -77,7 +81,7 @@ const validatePasswordInput = ({ password, }) =>
   (!password
     ? generatePasswordError('אנא הזינו סיסמה')
     : !isPassword(password)
-      ? generatePasswordError('אנא הזינו סיסמה תקינה')
+      ? generatePasswordError('ש להזין סיסמה בת 6 תווים ומעלה')
       : []); // password is valid
 
 const getTermsText = () => {
@@ -88,22 +92,27 @@ const getTermsText = () => {
   );
 };
 
-const onSubmit = ({ register, doTransition, showError, hideError, }) => ({ firstname, lastname, email, password, phone, terms, }) => {
+const onSubmit = ({ register, doTransition, showError, hideError, setPreloader }) => ({ firstname, lastname, email, password, phone, terms, }) => {
+  setPreloader(true);
   hideError();
-  // const { mobilePrefix, mobileNumber, } = mobileNumberParser(phone); // TODO import function from htz-user-utils
-  const { mobilePrefix, mobileNumber, } = { mobilePrefix: '', mobileNumber: '', };
+  const { mobilePrefix, mobileNumber, } = mobileNumberParser(phone); // TODO import function from htz-user-utils
+  //const { mobilePrefix, mobileNumber, } = { mobilePrefix: '', mobileNumber: '', };
   register(
-    email,
-    password,
-    password,
-    firstname,
-    lastname,
+    email.trim(),
+    password.trim(),
+    password.trim(), //for confirmation (the form has only 1 password field)
+    firstname.trim(),
+    lastname.trim(),
     mobilePrefix,
     mobileNumber,
     terms
   ).then(
-    () => Router.push(doTransition('success')),
+    () => {
+      setPreloader(false);
+      Router.push(doTransition('success'))
+    },
     reason => {
+      setPreloader(false);
       showError((reason.message || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."));
     }
   );
@@ -120,7 +129,9 @@ class RegisterPage extends Component {
     isFirstTime: false,
     showError: false,
     errorMessage: '',
+    isLoading: false,
   };
+
 
   showError = (errorMsg) => {
     this.setState({ showError: true, errorMessage: errorMsg, });
@@ -128,6 +139,10 @@ class RegisterPage extends Component {
 
   hideError = () => {
     this.setState({ showError: false, errorMessage: "", });
+  }
+  
+  setPreloader = (isLoadingStatus) => {
+    this.setState({ isLoading: !!isLoadingStatus })
   }
 
   isCheckboxError = () => !(this.state.isFirstTime || this.state.isChecked);
@@ -177,7 +192,7 @@ class RegisterPage extends Component {
                       clearFormAfterSubmit={false}
                       // initialValues={{ email: 'insert email' }}
                       validate={this.valdiateForm}
-                      onSubmit={onSubmit({ register, doTransition, showError: this.showError, hideError: this.hideError })}
+                      onSubmit={onSubmit({ register, doTransition, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader })}
                       render={({ getInputProps, handleSubmit, clearForm, }) => (
                         <Fragment>
 
@@ -222,6 +237,7 @@ class RegisterPage extends Component {
                               type="email"
                               label={theme.emailInputLabel}
                               noteText="אנא הזינו כתובת דוא”ל"
+                              maxLength={64}
                               requiredText={{
                                 long: theme.emailInputRequiredLong,
                                 short: theme.emailInputRequiredShort,
@@ -287,6 +303,7 @@ class RegisterPage extends Component {
                           </ErrorBox>
 
                           <ItemCenterer>
+                            <Preloader isLoading={this.state.isLoading} />
                             <Button onClick={handleSubmit}>הרשמה</Button>
                           </ItemCenterer>
                         </Fragment>

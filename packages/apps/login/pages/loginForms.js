@@ -218,7 +218,7 @@ class LoginForms extends Component {
                               </LoginDialog>
 
                               {/* ----------------- Tabs Frame ----------------- */}
-                              <TabsFrame activeTab={parseInt(getMetadataFromApollo(client), 10)} isLink={[isLink(client)]}>
+                              <TabsFrame activeTab={(parseInt(getMetadataFromApollo(client), 10) || 1)} isLink={[isLink(client)]}>
                                 {/* TAB 1 */}
                                 <div tabname="כניסה באמצעות SMS">
                                   <ItemCenterer>
