@@ -29,6 +29,7 @@ const embeds = {
   OmniStudio: () => import('./elements/OmniStudio.js'),
   Pinterest: () => import('./elements/Pinterest.js'),
   PlayBuzz: () => import('./elements/PlayBuzz.js'),
+  Reuters: () => import('./elements/Reuters.js'),
   SportTable: () => import('./elements/SportTable.js'),
   StandardAudio: () => import('./elements/StandardAudio.js'),
   StandardVideo: () => import('./elements/StandardVideo.js'),
@@ -243,6 +244,7 @@ export default class Embed extends React.Component {
             <option value="OmniStudio">OmniStudio</option>
             <option value="Pinterest">Pinterest</option>
             <option value="PlayBuzz">PlayBuzz</option>
+            <option value="Reuters">Reuters</option>
             <option value="SportTable">SportTable</option>
             <option value="StandardAudio">StandardAudio</option>
             <option value="StandardVideo">StandardVideo</option>
