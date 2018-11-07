@@ -29,7 +29,8 @@ const validatePhoneNumber = ({ phoneNumber, }) =>
     ? generateSmsCodeError('אנא הזינו מספר טלפון נייד')
     : []);
 
-const onSubmit = ({ doTransition, client, }) => ({ phoneNumber, }) => {
+const onSubmit = ({ doTransition, client, showError, hideError, }) => ({ phoneNumber, }) => {
+  hideError();
   const userData = getUserData(client);
   const email = getEmail(client);
   console.log(userData);
@@ -38,10 +39,13 @@ const onSubmit = ({ doTransition, client, }) => ({ phoneNumber, }) => {
     userName: userData.firstName,
     phone: phoneNumber,
     paramString: btoa(`email=${email}`),
-  }).then(res => {
-    const route = doTransition('accept');
-    Router.push(route);
-  });
+  }).then(
+    () => {
+      const route = doTransition('accept');
+      Router.push(route);
+    },
+    error => showError(error.message)
+  );
 };
 
 // const sendAgain = e => {
@@ -49,73 +53,95 @@ const onSubmit = ({ doTransition, client, }) => ({ phoneNumber, }) => {
 // };
 // --------------------------
 
-const PhoneInput = () => (
-  <ApolloConsumer>
-    { client => (
-      <FSMLayout>
-        {({ currentState, findRout, doTransition, }) => (
-          <Fragment>
-            <ContentWrapper>
-              <FormWrapper>
-                <ItemCenterer>
-                  <h5>הזינו מספר טלפון נייד</h5>
-                </ItemCenterer>
+class PhoneInput extends React.Component {
+  state = {
+    showError: false,
+    errorMessage: '',
+  };
 
-                <Form
-                  clearFormAfterSubmit={false}
-                  // initialValues={{ email: 'insert email' }}
-                  validate={validatePhoneNumber}
-                  onSubmit={onSubmit({ doTransition, client, })}
-                  render={({ getInputProps, handleSubmit, clearForm, }) => (
-                    <Fragment>
-                      <div>
-                        <TextInput
-                          type="number"
-                          label={theme.emailInputLabel}
-                          noteText="אנא הזינו מספר טלפון נייד"
-                          requiredText={{
-                            long: 'אנא הזינו מספר טלפון נייד',
-                            short: '*',
-                          }}
-                          {...getInputProps({
-                            name: 'phoneNumber',
-                            label: 'מספר טלפון נייד',
-                            type: 'text',
-                          })}
-                        />
-                      </div>
+  showError = (errorMsg) => {
+    this.setState({ showError: true, errorMessage: errorMsg, });
+  };
 
-                      <ErrorBox className={this.state.showError ? "" : "hidden"}>
+  hideError = () => {
+    this.setState({ showError: false, errorMessage: "", });
+  };
+
+  render() {
+    return (
+      <ApolloConsumer>
+        {client => (
+          <FSMLayout>
+            {({ currentState, findRout, doTransition, }) => (
+              <Fragment>
+                <ContentWrapper>
+                  <FormWrapper>
+                    <ItemCenterer>
+                      <h5>הזינו מספר טלפון נייד</h5>
+                    </ItemCenterer>
+
+                    <Form
+                      clearFormAfterSubmit={false}
+                      // initialValues={{ email: 'insert email' }}
+                      validate={validatePhoneNumber}
+                      onSubmit={onSubmit({
+                        doTransition,
+                        client,
+                        showError: this.showError,
+                        hideError: this.hideError,
+                      })}
+                      render={({ getInputProps, handleSubmit, clearForm, }) => (
+                        <Fragment>
+                          <div>
+                            <TextInput
+                              type="number"
+                              label={theme.emailInputLabel}
+                              noteText="אנא הזינו מספר טלפון נייד"
+                              requiredText={{
+                                long: 'אנא הזינו מספר טלפון נייד',
+                                short: '*',
+                              }}
+                              {...getInputProps({
+                                name: 'phoneNumber',
+                                label: 'מספר טלפון נייד',
+                                type: 'text',
+                              })}
+                            />
+                          </div>
+
+                          <ErrorBox className={this.state.showError ? "" : "hidden"}>
                         <span>
                           {this.state.errorMessage}
                         </span>
-                      </ErrorBox>
-                      <ItemCenterer>
-                        <Button onClick={handleSubmit}>המשך</Button>
-                      </ItemCenterer>
-                    </Fragment>
-                  )}
-                />
+                          </ErrorBox>
+                          <ItemCenterer>
+                            <Button onClick={handleSubmit}>המשך</Button>
+                          </ItemCenterer>
+                        </Fragment>
+                      )}
+                    />
 
-                <BottomLinks spacing={2.5}>
-                  <HtzLink
-                    href={`${findRout('withPassword')}`}
-                    onClick={e => {
-                      e.preventDefault();
-                      const route = doTransition('withPassword');
-                      Router.push(route);
-                    }}
-                  >
-                    לא כרגע. כניסה באמצעות סיסמה
-                  </HtzLink>
-                </BottomLinks>
-              </FormWrapper>
-            </ContentWrapper>
-          </Fragment>
+                    <BottomLinks spacing={2.5}>
+                      <HtzLink
+                        href={`${findRout('withPassword')}`}
+                        onClick={e => {
+                          e.preventDefault();
+                          const route = doTransition('withPassword');
+                          Router.push(route);
+                        }}
+                      >
+                        לא כרגע. כניסה באמצעות סיסמה
+                      </HtzLink>
+                    </BottomLinks>
+                  </FormWrapper>
+                </ContentWrapper>
+              </Fragment>
+            )}
+          </FSMLayout>
         )}
-      </FSMLayout>
-    )}
-  </ApolloConsumer>
-);
+      </ApolloConsumer>
+    );
+  }
+}
 
 export default PhoneInput;
