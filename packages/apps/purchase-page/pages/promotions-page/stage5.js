@@ -1,5 +1,5 @@
 /* global window */
-import React from 'react';
+import React, { Component, } from 'react';
 import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
 import { LayoutContainer, UserDispenser, Query, } from '@haaretz/htz-components';
@@ -14,6 +14,7 @@ import ExistingCreditCardStage from '../../components/OfferPage/Stages/ExistingC
 import StageTransition from '../../components/OfferPage/StageTransition/StageTransition';
 import StageCounter from '../../components/OfferPage/Stages/Elements/StageCounter';
 import StageHeader from '../../components/OfferPage/Stages/Elements/StageHeader';
+import checkSessionForPurchase from '../../utils/checkSessionForPurchase';
 
 const paymentService = config.get('service.payment');
 
@@ -32,15 +33,9 @@ const GET_PROMOTIONS_STATE = gql`
   }
 `;
 
-function buildCreditGuardSrc(
-  paymentData,
-  approveDebtClaim,
-  thankYouEmailTemplate
-) {
+function buildCreditGuardSrc(paymentData, approveDebtClaim, thankYouEmailTemplate) {
   if (!(window && window.location && window.location.hostname)) {
-    throw new Error(
-      'Tried creating a config with no window.location.hostname context!'
-    );
+    throw new Error('Tried creating a config with no window.location.hostname context!');
   }
 
   return `${paymentService}/creditGuard/CreditGuardBridgeServlet?productID=${
@@ -50,153 +45,136 @@ function buildCreditGuardSrc(
   }&cgtype=payment_heb2&approveDebtClaim=${approveDebtClaim}&thankYouEmailTemplate=${thankYouEmailTemplate}`;
 }
 
-function Stage5() {
-  return (
-    <MainLayout>
-      <OfferPageDataGetter
-        render={({ data, loading, error, refetch, client, }) => {
-          if (loading) return <div> Loading...</div>;
-          if (error) return <div> Error...</div>;
-          return (
-            <Query query={GET_PROMOTIONS_STATE}>
-              {({ data: clientData, }) => {
-                const {
-                  hostname,
-                  promotionsPageState: {
+class Stage5 extends Component {
+  componentDidMount() {
+    checkSessionForPurchase();
+  }
+  render() {
+    return (
+      <MainLayout>
+        <OfferPageDataGetter
+          render={({ data, loading, error, refetch, client, }) => {
+            if (loading) return <div> Loading...</div>;
+            if (error) return <div> Error...</div>;
+            return (
+              <Query query={GET_PROMOTIONS_STATE}>
+                {({ data: clientData, }) => {
+                  const {
+                    hostname,
+                    promotionsPageState: {
+                      approveDebtClaim,
+                      chosenOfferIndex,
+                      chosenProductIndex,
+                      chosenSlotIndex,
+                      couponProduct,
+                      paymentMethodIndex,
+                      paymentType,
+                    },
+                  } = clientData;
+
+                  if (
+                      typeof window !== 'undefined' && paymentType !== 'PayPal' &&
+                      (window.sessionStorage.getItem('htz-revenue') || window.sessionStorage.getItem('htz-paypal'))
+                  ) {
+                    window.sessionStorage.removeItem('htz-paypal');
+                    window.sessionStorage.removeItem('htz-revenue');
+                    window.sessionStorage.removeItem('htz-add-product');
+                  }
+
+                  const parsedCouponProduct = JSON.parse(couponProduct);
+
+                  // if couponProduct is chosen use the couponProduct from local state
+                  const chosenProduct =
+                    chosenProductIndex === 'couponProduct'
+                      ? parsedCouponProduct
+                      : data.purchasePage.slots[chosenSlotIndex].products[chosenProductIndex];
+                  const chosenOffer = chosenProduct.offerList[chosenOfferIndex];
+                  const chosenProductContentName = chosenProduct.contentName;
+                  const paymentData = chosenOffer.paymentData;
+
+                  const thankYouEmailTemplate = chosenProduct.thankYouEmailTemplate;
+
+                  const creditGuardSrc = buildCreditGuardSrc(
+                    paymentData,
                     approveDebtClaim,
-                    chosenOfferIndex,
-                    chosenProductIndex,
-                    chosenSlotIndex,
-                    couponProduct,
-                    paymentMethodIndex,
-                    paymentType,
-                  },
-                } = clientData;
+                    thankYouEmailTemplate
+                  );
 
-                if (
-                    window && paymentType !== 'PayPal' &&
-                    (window.sessionStorage.getItem('htz-revenue') || window.sessionStorage.getItem('htz-paypal'))
-                ) {
-                  window.sessionStorage.removeItem('htz-paypal');
-                  window.sessionStorage.removeItem('htz-revenue');
-                }
+                  const chosenSubscription =
+                    data.purchasePage.slots[chosenSlotIndex].subscriptionName;
 
-                const parsedCouponProduct = JSON.parse(couponProduct);
+                  const chosenPaymentArrangement = chosenOffer.type;
 
-                // if couponProduct is chosen use the couponProduct from local state
-                const chosenProduct =
-                  chosenProductIndex === 'couponProduct'
-                    ? parsedCouponProduct
-                    : data.purchasePage.slots[chosenSlotIndex].products[
-                        chosenProductIndex
-                      ];
-                const chosenOffer = chosenProduct.offerList[chosenOfferIndex];
-                const chosenProductContentName = chosenProduct.contentName;
-                const paymentData = chosenOffer.paymentData;
-
-                const thankYouEmailTemplate =
-                  chosenProduct.thankYouEmailTemplate;
-
-                const creditGuardSrc = buildCreditGuardSrc(
-                  paymentData,
-                  approveDebtClaim,
-                  thankYouEmailTemplate
-                );
-
-                const chosenSubscription =
-                  data.purchasePage.slots[chosenSlotIndex].subscriptionName;
-
-                const chosenPaymentArrangement = chosenOffer.type;
-
-                return (
-                  <FelaComponent
-                    style={{ textAlign: 'center', }}
-                    render={({
-                      className,
-                      theme: {
-                        stage5: { header, details, },
-                      },
-                    }) => (
-                      <div className={className}>
-                        <StageCounter stage={5} />
-                        <LayoutContainer
-                          bgc="white"
-                          miscStyles={{ paddingTop: '1.5rem', }}
-                        >
-                          <UserDispenser
-                            render={({ user, }) => (
-                              <StageTransition
-                                chosenSubscription={chosenSubscription}
-                                headerElement={
-                                  <StageHeader
-                                    headerElements={[
-                                      <FelaComponent
-                                        style={{ fontWeight: 'bold', }}
-                                      >
-                                        {header.textTopLine}
-                                      </FelaComponent>,
-                                      <span>
-                                        {header.textNewLine[paymentType]}
-                                      </span>,
-                                    ]}
-                                  />
-                                }
-                                stageElement={
-                                  paymentType === 'PayPal' ? (
-                                    <PayPalStage
-                                      creditGuardSrc={creditGuardSrc}
+                  return (
+                    <FelaComponent
+                      style={{ textAlign: 'center', }}
+                      render={({
+                        className,
+                        theme: {
+                          stage5: { header, details, },
+                        },
+                      }) => (
+                        <div className={className}>
+                          <StageCounter stage={5} />
+                          <LayoutContainer bgc="white" miscStyles={{ paddingTop: '1.5rem', }}>
+                            <UserDispenser
+                              render={({ user, }) => (
+                                <StageTransition
+                                  chosenSubscription={chosenSubscription}
+                                  headerElement={
+                                    <StageHeader
+                                      headerElements={[
+                                        <FelaComponent style={{ fontWeight: 'bold', }}>
+                                          {header.textTopLine}
+                                        </FelaComponent>,
+                                        <span>{header.textNewLine[paymentType]}</span>,
+                                      ]}
                                     />
-                                  ) : paymentType === 'existingCreditCard' ? (
-                                    <ExistingCreditCardStage
-                                      chosenPaymentArrangement={
-                                        chosenPaymentArrangement
-                                      }
-                                      chosenProductContentName={
-                                        chosenProductContentName
-                                      }
-                                      hostname={hostname}
-                                      user={user}
-                                      fourDigits={
-                                        data.purchasePage.creditCardsDetails[
-                                          paymentMethodIndex
-                                        ].fourDigits
-                                      }
-                                      paymentData={paymentData}
-                                      thankYouEmailTemplate={
-                                        thankYouEmailTemplate
-                                      }
-                                    />
-                                  ) : (
-                                    <CreditCardIframeStage
-                                      creditGuardSrc={creditGuardSrc}
-                                      chosenSubscription={chosenSubscription}
-                                      chosenPaymentArrangement={
-                                        chosenPaymentArrangement
-                                      }
-                                      chosenProductContentName={
-                                        chosenProductContentName
-                                      }
-                                      firstPaymentAmount={paymentData.prices[0]}
-                                      nextPaymentAmount={paymentData.prices[1]}
-                                      paymentData={paymentData}
-                                    />
-                                  )
-                                }
-                              />
-                            )}
-                          />
-                        </LayoutContainer>
-                      </div>
-                    )}
-                  />
-                );
-              }}
-            </Query>
-          );
-        }}
-      />
-    </MainLayout>
-  );
+                                  }
+                                  stageElement={
+                                    paymentType === 'PayPal' ? (
+                                      <PayPalStage creditGuardSrc={creditGuardSrc} />
+                                    ) : paymentType === 'existingCreditCard' ? (
+                                      <ExistingCreditCardStage
+                                        chosenPaymentArrangement={chosenPaymentArrangement}
+                                        chosenProductContentName={chosenProductContentName}
+                                        hostname={hostname}
+                                        user={user}
+                                        fourDigits={
+                                          data.purchasePage.creditCardsDetails[paymentMethodIndex]
+                                            .fourDigits
+                                        }
+                                        paymentData={paymentData}
+                                        thankYouEmailTemplate={thankYouEmailTemplate}
+                                      />
+                                    ) : (
+                                      <CreditCardIframeStage
+                                        creditGuardSrc={creditGuardSrc}
+                                        chosenSubscription={chosenSubscription}
+                                        chosenPaymentArrangement={chosenPaymentArrangement}
+                                        chosenProductContentName={chosenProductContentName}
+                                        firstPaymentAmount={paymentData.prices[0]}
+                                        nextPaymentAmount={paymentData.prices[1]}
+                                        paymentData={paymentData}
+                                      />
+                                    )
+                                  }
+                                />
+                              )}
+                            />
+                          </LayoutContainer>
+                        </div>
+                      )}
+                    />
+                  );
+                }}
+              </Query>
+            );
+          }}
+        />
+      </MainLayout>
+    );
+  }
 }
 
 Stage5.propTypes = pagePropTypes;
