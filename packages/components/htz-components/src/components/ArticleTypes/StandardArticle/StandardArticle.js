@@ -3,6 +3,7 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Query from '../../ApolloBoundary/Query';
+import ApolloConsumer from '../../ApolloBoundary/ApolloConsumer';
 
 import LayoutContainer from '../../PageLayout/LayoutContainer';
 import WideArticleLayoutRow from '../../PageLayout/WideArticleLayoutRow';
@@ -22,11 +23,7 @@ import StandardArticleQuery from './queries/standard_article';
 function StandardArticle({ articleId, slots, }) {
   return (
     <ArticleLayout articleId={articleId} slots={slots}>
-      <Query
-        query={StandardArticleQuery}
-        partialRefetch
-        variables={{ path: articleId, }}
-      >
+      <Query query={StandardArticleQuery} partialRefetch variables={{ path: articleId, }}>
         {({ loading, error, data, }) => {
           if (loading) return null;
           if (error) return null;
@@ -59,9 +56,7 @@ function StandardArticle({ articleId, slots, }) {
               )
             : '';
 
-          const breadCrumbs = article.find(
-            element => element.inputTemplate === 'com.tm.PageTitle'
-          );
+          const breadCrumbs = article.find(element => element.inputTemplate === 'com.tm.PageTitle');
 
           const standardArticleElement = article.find(
             element =>
@@ -72,16 +67,15 @@ function StandardArticle({ articleId, slots, }) {
           );
 
           const isMouse =
-            standardArticleElement.inputTemplate ===
-            'com.mouse.story.MouseStandardStory';
+            standardArticleElement.inputTemplate === 'com.mouse.story.MouseStandardStory';
 
           const {
             authors,
             body,
             headlineElement,
             reportingFrom,
-            pubDate,
-            modDate,
+            // pubDate,
+            // modDate,
           } = standardArticleElement;
           const header = standardArticleElement.header;
 
@@ -111,14 +105,8 @@ function StandardArticle({ articleId, slots, }) {
                   <FelaComponent
                     style={{
                       extend: [
-                        theme.mq(
-                          { from: 'l', },
-                          { width: 'calc(100% - 300px - 8rem)', }
-                        ),
-                        theme.mq(
-                          { from: 'l', until: 'xl', },
-                          { paddingLeft: '4rem', }
-                        ),
+                        theme.mq({ from: 'l', }, { width: 'calc(100% - 300px - 8rem)', }),
+                        theme.mq({ from: 'l', until: 'xl', }, { paddingLeft: '4rem', }),
                         theme.mq({ from: 'xl', }, { paddingEnd: '10rem', }),
                       ],
                     }}
@@ -135,71 +123,73 @@ function StandardArticle({ articleId, slots, }) {
 
                     {article.map(element => {
                       if (
-                        element.inputTemplate ===
-                          'com.htz.ArticleHeaderElement' ||
+                        element.inputTemplate === 'com.htz.ArticleHeaderElement' ||
                         element.inputTemplate === 'com.tm.PageTitle'
                       ) {
                         return null;
                       }
                       if (
                         element.inputTemplate === 'com.htz.StandardArticle' ||
-                        element.inputTemplate ===
-                          'com.mouse.story.MouseStandardStory' ||
+                        element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
                         element.inputTemplate === 'com.tm.BlogArticle' ||
                         element.inputTemplate === 'com.tm.StandardArticle'
                       ) {
-                          let bloggerInfo;
-                          if (authors.length) {
-                            const blogName = lineage[1].name;
-                            const author = authors[0];
-                            bloggerInfo =
-                              element.inputTemplate ===
-                              'com.tm.BlogArticle' ? (
-                                <BloggerInfo
-                                  author={author}
-                                  blogName={blogName}
-                                />
-                              ) : null;
-                          }
-                          return (
-                            <ArticleLayoutRow
-                              isArticleBody
-                              hideMargineliaComponentUnderLBp={!!authors}
-                              margineliaComponent={
-                                <Fragment>
-                                  {authors ? (
-                                    <ArticleHeaderMeta
-                                      authors={authors}
-                                      reportingFrom={reportingFrom}
-                                      publishDate={header.pubDate}
-                                      modifiedDate={header.modDate}
-                                    />
-                                  ) : null}
-                                </Fragment>
-                              }
-                            >
-                              <ArticleBody body={body} />
-                              {bloggerInfo}
-                            </ArticleLayoutRow>
-                          );
+                        let bloggerInfo;
+                        if (authors.length) {
+                          const blogName = lineage[1].name;
+                          const author = authors[0];
+                          bloggerInfo =
+                            element.inputTemplate === 'com.tm.BlogArticle' ? (
+                              <BloggerInfo author={author} blogName={blogName} />
+                            ) : null;
+                        }
+                        return (
+                          <ApolloConsumer key={element.contentId}>
+                            {cache => {
+                              const { commentsElementId, } = element;
+                              cache.writeData({
+                                data: {
+                                  commentsElementId,
+                                  isMouseStory: isMouse,
+                                },
+                              });
+
+                              return (
+                                <ArticleLayoutRow
+                                  isArticleBody
+                                  hideMargineliaComponentUnderLBp={!!authors}
+                                  margineliaComponent={
+                                    <Fragment>
+                                      {authors ? (
+                                        <ArticleHeaderMeta
+                                          authors={authors}
+                                          reportingFrom={reportingFrom}
+                                          publishDate={header.pubDate}
+                                          modifiedDate={header.modDate}
+                                        />
+                                      ) : null}
+                                    </Fragment>
+                                  }
+                                >
+                                  <ArticleBody body={body} />
+                                  {bloggerInfo}
+                                </ArticleLayoutRow>
+                              );
+                            }}
+                          </ApolloConsumer>
+                        );
                       }
                       const Element = getComponent(element.inputTemplate);
-                      const {
-                        properties,
-                        ...elementWithoutProperties
-                      } = element;
+                      const { properties, ...elementWithoutProperties } = element;
                       if (
-                        element.inputTemplate ===
-                          'com.polobase.OutbrainElement' ||
-                        element.inputTemplate ===
-                          'com.polobase.ClickTrackerBannersWrapper'
+                        element.inputTemplate === 'com.polobase.OutbrainElement' ||
+                        element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                       ) {
                         return (
                           <WideArticleLayoutRow
                             key={element.contentId}
                             hideDivider
-                            {...(element.inputTemplate ===
-                            'com.polobase.ClickTrackerBannersWrapper'
+                            {...(element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                               ? {
                                   miscStyles: {
                                     display: [ { until: 's', value: 'none', }, ],
@@ -218,11 +208,9 @@ function StandardArticle({ articleId, slots, }) {
                       return (
                         <ArticleLayoutRow
                           key={element.contentId}
-                          {...(element.inputTemplate ===
-                          'com.tm.ArticleCommentsElement'
+                          {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
                             ? {
-                                title:
-                                  theme.articleLayoutI18n.commentSectionTitle,
+                                title: theme.articleLayoutI18n.commentSectionTitle,
                                 id: 'commentsSection',
                               }
                             : {})}
@@ -247,10 +235,7 @@ function StandardArticle({ articleId, slots, }) {
                       alignItems: 'flex-start',
                       extend: [
                         theme.mq({ until: 'l', }, { display: 'none', }),
-                        theme.mq(
-                          { from: 'l', },
-                          { width: 'calc(300px + 8rem)', }
-                        ),
+                        theme.mq({ from: 'l', }, { width: 'calc(300px + 8rem)', }),
                       ],
                     }}
                     render={({ className, }) => (
