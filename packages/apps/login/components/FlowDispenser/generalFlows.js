@@ -1,13 +1,12 @@
 export default {
   transitionRouteMap: new Map([
-    [ '-phoneInput', '/phoneInput', ],
     [ '-phoneMailSent', '/phoneMailSent', ],
     [ '-customerService', '/customerService', ],
     [ '-register', '/register', ],
     [ '-emailValidationSent', '/emailValidationSent', ],
-    [ '-loginFormsPass', { url: '/loginForms', param: 0, }, ],
-    [ '-loginFormsPhone', { url: '/loginForms', param: 1, }, ],
-    [ '-loginFormsOtp', { url: '/loginForms', param: 2, }, ],
+    [ '-loginFormsPass', { url: '/loginForms', param: 1, }, ],
+    [ '-loginFormsPhone', { url: '/loginForms', param: 0, }, ],
+    [ '-loginFormsOtp', { url: '/loginForms', param: 0, }, ],
     [ '-success', '/', ],
   ]),
   emailValidationSent: {
@@ -22,12 +21,13 @@ export default {
     success: 'emailValidationSent',
     backToLogin: 'loginFormsPass',
   },
-  loginFormsPhone: {
-    withPassword: 'loginFormsPass',
-    accept: 'phoneMailSent',
-  },
   phoneMailSent: {
     withPassword: 'loginFormsPass',
     getCustomerService: 'customerService',
+  },
+  loginFormsPhone: {
+    withPassword: 'loginFormsPass',
+    registration: 'register',
+    accept: 'phoneMailSent',
   },
 };

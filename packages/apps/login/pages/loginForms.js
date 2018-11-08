@@ -24,6 +24,9 @@ import GET_HOST from './queries/GetHost';
 import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import { domainToSiteNumber, } from '../util/siteUtil';
 import { PhoneInputForm, } from '../components/Misc/Forms/PhoneInputForm';
+import OtpForm from '../components/Misc/Forms/OtpForm';
+import { getHost } from '../util/requestUtil';
+import { PhoneForms } from '../components/Misc/Forms/PhoneForms';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -127,14 +130,15 @@ class LoginForms extends Component {
     showDialog: false,
     showError: false,
     errorMessage: '',
-  }
+    rightForm: null,
+  };
 
   showDialog = () => {
-    this.setState({ showDialog: true })
+    this.setState({ showDialog: true, })
   }
 
   hideDialog = () => {
-    this.setState({ showDialog: false })
+    this.setState({ showDialog: false, })
   }
 
   getDialogState = () => {
@@ -157,7 +161,10 @@ class LoginForms extends Component {
             {({ currentState, findRout, doTransition, }) => (
               <ApolloConsumer>
                 {client => {
-                  const host = client.readQuery({ query: GET_HOST, }).hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+                  const host = getHost(client);
+                  const flow = getFlowNumber(client);
+                  const activeTab = '2345'.includes(flow) ? 0 : 1;
+                  console.log('flow: ', flow, 'active tab: ', activeTab);
                   return (
                     <FelaTheme
                       render={theme => (
@@ -180,7 +187,7 @@ class LoginForms extends Component {
                                             clearFormAfterSubmit={false}
                                             // initialValues={{ email: 'insert email' }}
                                             validate={validateEmailInput}
-                                            onSubmit={onResetPassword({ host, nextStage ,})}
+                                            onSubmit={onResetPassword({ host, nextStage , })}
                                             render={({ getInputProps, handleSubmit, clearForm, }) => (
                                               <Fragment>
                                                 <TextInput
@@ -221,19 +228,19 @@ class LoginForms extends Component {
 
                               {/* ----------------- Tabs Frame ----------------- */}
                               <TabsFrame
-                                activeTab={(parseInt(getMetadataFromApollo(client), 10))}
+                                activeTab={flow === 5 ? 1 : 0}
+                                formIndex={activeTab === 0 ? 0 : 1}
                                 findRout={findRout}
                                 doTransition={doTransition}
                               >
                                 {/* TAB 1 */}
-                                <div tabname="כניסה באמצעות SMS">
-                                  <PhoneInputForm
-                                    client={client}
-                                    currentState={currentState}
-                                    doTransition={doTransition}
-                                    findRout={findRout}
-                                  />
-                                </div>
+                                <PhoneForms
+                                  tabname='כניסה באמצעות SMS'
+                                  flow={flow}
+                                  doTransition={doTransition}
+                                  findRout={findRout}
+                                  client={client}
+                                />
 
                                 {/* TAB 2 */}
                                 <div tabname="כניסה באמצעות סיסמה">

@@ -268,10 +268,11 @@ class FiniteStateMachine extends React.Component {
   findTransition = action => {
     const oldState = this.getCurrentState();
     console.warn(`inside find transition. old state: ${oldState}`);
-    const newState = this.resolveNewState(action, oldState);
-    const route = this.resolveRout(oldState, newState);
-    console.warn(`simulation: action: ${action}. oldState: ${oldState}. new state: ${newState}`);
-    return route;
+    const newStateUnparsed = this.resolveNewState(action, oldState);
+    const { route, } = parseRouteInfo(newStateUnparsed);
+    const resolvedRoute = parseRouteInfo(this.resolveRout(oldState, route));
+    console.warn(`simulation: action: ${action}. oldState: ${oldState}. new state: ${resolvedRoute.route}`);
+    return resolvedRoute.route;
   };
 
   /**

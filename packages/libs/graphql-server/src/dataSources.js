@@ -398,7 +398,7 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
   }
 
   // TODO: https://www.apollographql.com/docs/apollo-server/features/data-sources.html
-  async sendPhoneMailConnection(email, phone, userName, paramString) {
+  async sendPhoneMailConnection(email, phone, userName, paramString, url) {
     return fetch(`${this.context.functionService}/sendEmailForConfirmation`, {
       method: 'POST',
       headers: {
@@ -410,10 +410,10 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
         confirmationType: 'PHONE_VALIDATION',
         templateParams: {
           userName,
+          url,
           userMobile: phone,
-          url: this.context.hostname,
           // eslint-disable-next-line no-undef
-          paramsString: Buffer.from(paramString).toString('base64'),
+          paramsString: `params=${Buffer.from(paramString).toString('base64')}`,
         },
       }),
     }).then(
@@ -428,6 +428,7 @@ class LegacySsoOperationsAPI extends RESTDataSource {
     return this.context.ssoService;
   }
 
+  // TODO: check that this function works well
   async overrideMobilePhone({ mobile, ssoId, userName, }) {
     const { prefix, suffix, } = UserTransformations.mobileNumberParser(mobile);
     return fetch(`${this.baseURL()}r/OverrideMobilePhone`, {

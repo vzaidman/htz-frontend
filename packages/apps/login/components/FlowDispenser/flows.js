@@ -3,12 +3,15 @@ export default [
   {
     flowNumber: 1,
     initialState: 'loginFormsOtp',
-    initialTransition: { url: '/loginForms', param: 2, },
+    initialTransition: { url: '/loginForms', param: 0, },
     transitionRouteMap: new Map([]),
     loginFormsOtp: {
-      withSms: 'loginFormsOtp',
       registration: 'register',
-      notMyPhone: 'phoneInput',
+      notMyPhone: 'loginFormsPhone',
+    },
+    loginFormsPass: {
+      registration: 'register',
+      withSms: 'loginFormsOtp',
     },
   },
   {
@@ -20,14 +23,9 @@ export default [
       withPassword: 'loginFormsPass',
       accept: 'phoneMailSent',
     },
-    phoneMailSent: {
-      withPassword: 'loginForms',
-      getCustomerService: 'customerService',
-    },
-    loginFormsPhone: {
-      withSms: 'loginFormsOtp',
+    loginFormsPass: {
       registration: 'register',
-      notMyPhone: 'phoneInput',
+      withSms: 'loginFormsPhone',
     },
   },
   {
@@ -35,12 +33,20 @@ export default [
     initialState: 'emailValidationSent',
     initialTransition: '/emailValidationSent',
     transitionRouteMap: new Map([]),
+    loginFormsPass: {
+      registration: 'register',
+      withSms: 'loginFormsPhone',
+    },
   },
   {
     flowNumber: 4,
     initialState: 'register',
     initialTransition: '/register',
     transitionRouteMap: new Map([]),
+    loginFormsPass: {
+      registration: 'register',
+      withSms: 'loginFormsPhone',
+    },
   },
   {
     flowNumber: 5,
@@ -48,6 +54,7 @@ export default [
     initialTransition: { url: '/loginFormsPass', param: 0, },
     transitionRouteMap: new Map([]),
     loginFormsPass: {
+      registration: 'register',
       withSms: 'loginFormsPhone',
     },
   },
@@ -56,5 +63,9 @@ export default [
     initialState: 'loginFormsOtp',
     initialTransition: { url: '/loginFormsPass', param: 0, },
     transitionRouteMap: new Map([]),
+    loginFormsPass: {
+      registration: 'register',
+      withSms: 'loginFormsOtp',
+    },
   },
 ];
