@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+
 export default gql`
   query GetEmailData($email: String!) {
     userByMail(id: $email) {
@@ -55,10 +56,16 @@ const PHONE_NUM = gql`
   }
 `;
 
+const HOSTNAME = gql`
+  query getHostname {
+    hostname @client
+  }
+`;
+
 const USER_EMAIL = gql`
   query getUserEmail {
     userEmail @client
   }
 `;
 
-export { USER_DATA, PHONE_NUM, OTP_HASH, USER_EMAIL, };
+export { USER_DATA, PHONE_NUM, OTP_HASH, USER_EMAIL, HOSTNAME, };

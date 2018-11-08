@@ -4,10 +4,9 @@ import Router from 'next/router';
 import { Form, TextInput, Button, HtzLink, } from '@haaretz/htz-components';
 
 import theme from '../../../theme';
-import BottomLinks from '../../../components/Misc/BottomLinks';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../../components/StyleComponents/LoginStyleComponents';
 
-import { connectMailWithPhone, getUserData, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
+import { connectMailWithPhone, getUserData, getEmail, getHostname, } from '../../../pages/queryutil/userDetailsOperations';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -36,6 +35,7 @@ const onSubmit = ({ doTransition, client, showError, hideError, }) => ({ phoneNu
     userName: userData.firstName,
     phone: phoneNumber,
     paramString: btoa(`email=${email}`),
+    url: getHostname(client),
   }).then(
     () => {
       const route = doTransition('accept');
@@ -113,19 +113,6 @@ class PhoneInputForm extends React.Component {
               </Fragment>
             )}
           />
-
-          <BottomLinks spacing={2.5}>
-            <HtzLink
-              href={`${findRout('withPassword')}`}
-              onClick={e => {
-                e.preventDefault();
-                const route = doTransition('withPassword');
-                Router.push(route);
-              }}
-            >
-              לא כרגע. כניסה באמצעות סיסמה
-            </HtzLink>
-          </BottomLinks>
         </FormWrapper>
       </ContentWrapper>
     );

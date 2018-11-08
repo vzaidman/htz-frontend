@@ -37,7 +37,7 @@ export default class TabsFrame extends React.Component {
   }
 
   setInitTab = () => {
-    this.setState({ activeTab: this.props.activeTab, isLink: this.props.isLink, });
+    this.setState({ activeTab: this.props.activeTab || 0, isLink: this.props.isLink, });
   }
 
   createNavButton = (child, index) => {
@@ -87,8 +87,10 @@ export default class TabsFrame extends React.Component {
 
   renderTab(children) {
     return React.Children.map(children, (child, i) => {
-      if (i == this.state.activeTab) {
-        return React.isValidElement(child) ? child : null;
+      if (i === this.state.activeTab) {
+        return React.isValidElement(child)
+          ? React.cloneElement(child, { formindex: this.props.formIndex, })
+          : null;
       }
       return null;
     });

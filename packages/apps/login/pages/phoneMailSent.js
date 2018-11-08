@@ -55,11 +55,10 @@ const PhoneMailSent = () => (
 
               <span>לשליחה חוזרת </span>
               <HtzLink
-                href={`${findRout('sendAgain')}`}
+                href="/"
                 onClick={e => {
                   e.preventDefault();
-                  const route = doTransition('sendAgain');
-                  Router.push(route);
+                  // TODO: send again
                 }}
               >
                 לחץ כאן

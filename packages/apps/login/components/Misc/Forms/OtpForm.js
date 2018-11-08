@@ -4,7 +4,7 @@ import { Form, TextInput, Button, Login, HtzLink, } from '@haaretz/htz-component
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { getUserData, getPhoneNum, getOtpHash, } from '../../../pages/queryutil/userDetailsOperations';
-import BottomLinks from '../../Misc/BottomLinks';
+import { getHost, } from '../../../util/requestUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -33,9 +33,8 @@ const hidePhone = phoneNumber => {
 
 // --------------------------
 
-export default (props) => {
-  const { host, client, findRout, doTransition, } = props.dataRefs;
-
+export default ({ client, findRout, doTransition, }) => {
+  const host = getHost(client);
   return (
     <FormWrapper>
       <ItemCenterer>
@@ -51,7 +50,7 @@ export default (props) => {
             clearFormAfterSubmit={false}
             // initialValues={{ email: 'insert email' }}
             validate={validateSmsCodeInput}
-            onSubmit={onSubmit}
+            onSubmit={onSubmit({ host, client, loginWithMobile, })}
             render={({ getInputProps, handleSubmit, clearForm, }) => (
               <Fragment>
                 <div>
@@ -90,31 +89,6 @@ export default (props) => {
           />
         )}
       />
-      <BottomLinks spacing={2.5}>
-        <HtzLink
-          href={`${findRout('notMyPhone')}`}
-          onClick={e => {
-            e.preventDefault();
-            const route = doTransition('notMyPhone');
-            Router.push(route);
-          }}
-        >
-          לא הטלפון שלך?
-        </HtzLink>
-
-        <br />
-
-        <HtzLink
-          href={`${findRout('withPassword')}`}
-          onClick={e => {
-            e.preventDefault();
-            const route = doTransition('withPassword');
-            Router.push(route);
-          }}
-        >
-          כניסה באמצעות סיסמה
-        </HtzLink>
-      </BottomLinks>
     </FormWrapper>
   );
-}
+};

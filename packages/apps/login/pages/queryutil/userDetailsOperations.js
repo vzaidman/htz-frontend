@@ -1,4 +1,4 @@
-import INSPECT_EMAIL, { USER_DATA, PHONE_NUM, OTP_HASH, USER_EMAIL, } from '../queries/UserQueries';
+import INSPECT_EMAIL, { USER_DATA, PHONE_NUM, OTP_HASH, USER_EMAIL, HOSTNAME, } from '../queries/UserQueries';
 import { GENERATE_HASH, CONNECT_MAIL_MOBILE, } from '../mutations/UserMutations';
 
 const getDataFromUserInfo = client => email =>
@@ -36,6 +36,7 @@ const getUserData = client => client.readQuery({ query: USER_DATA, }).userData;
 const getOtpHash = client => client.readQuery({ query: OTP_HASH, }).otpHash;
 const getEmail = client => client.readQuery({ query: USER_EMAIL, }).userEmail;
 const getPhoneNum = client => client.readQuery({ query: PHONE_NUM, }).userData.phoneNum;
+const getHostname = client => client.readQuery({ query: HOSTNAME, }).hostname;
 
 const saveUserData = client => userDataObj => {
   client.writeData({ data: userDataObj, });
@@ -73,6 +74,7 @@ export {
   getPhoneNum,
   savePhoneNum,
   getUserData,
+  getHostname,
   saveUserData,
   getOtpHash,
   saveOtpHash,
