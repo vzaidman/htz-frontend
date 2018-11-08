@@ -10,7 +10,7 @@ import theme from '../theme/index';
 import BottomLinks from '../components/Misc/BottomLinks';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../components/StyleComponents/LoginStyleComponents';
 
-import { connectMailWithPhone, getUserData, getEmail, } from './queryutil/userDetailsOperations';
+import { connectMailWithPhone, getUserData, getEmail, getHostname, } from './queryutil/userDetailsOperations';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -39,6 +39,7 @@ const onSubmit = ({ doTransition, client, showError, hideError, }) => ({ phoneNu
     userName: userData.firstName,
     phone: phoneNumber,
     paramString: btoa(`email=${email}`),
+    url: getHostname(client),
   }).then(
     () => {
       const route = doTransition('accept');
