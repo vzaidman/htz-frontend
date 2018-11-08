@@ -204,15 +204,22 @@ class PaymentStage extends Component {
                   brand: `brand-salecode[${paymentData.saleCode}]`,
                   variant: `promotionNumber-${paymentData.promotionNumber}`,
                 });
-                console.warn('i am herrrreee:: paymentStage');
                 ReactGA.ga('ec:setAction', 'checkout', {
                   option: paymentType,
                 });
 
                 // Adding paypal purchase.
                 if (window && paymentType === 'PayPal') {
+                  const addProductData = {
+                    id: paymentData.saleCode,
+                    name: `${chosenPaymentArrangement}-${chosenProductContentName}`,
+                    category: chosenSubscription,
+                    brand: `brand-salecode[${paymentData.saleCode}]`,
+                    variant: `promotionNumber-${paymentData.promotionNumber}`,
+                  };
                   window.sessionStorage.setItem('htz-paypal', `${paymentData.saleCode}`);
                   window.sessionStorage.setItem('htz-revenue', `${paymentData.prices[0].toString()}`);
+                  window.sessionStorage.setItem('htz-add-product', JSON.stringify(addProductData));
                 }
                 ReactGA.ga('send', 'pageview');
 
