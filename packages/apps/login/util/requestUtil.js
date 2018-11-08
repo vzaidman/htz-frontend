@@ -1,4 +1,5 @@
 import config from 'config';
+import GET_HOST from '../pages/queries/GetHost';
 
 // eslint-disable-next-line no-undef
 const sendMailValidation = ({ email, }) => fetch(`${config.get('service.sso')}/sso/r/sendEmailValidation?eid=${encodeURIComponent(email)}`)
@@ -8,4 +9,6 @@ const sendMailValidation = ({ email, }) => fetch(`${config.get('service.sso')}/s
     () => Promise.resolve({ success: false, msg: 'server error', })
   );
 
-export { sendMailValidation, };
+const getHost = client => client.readQuery({ query: GET_HOST, }).hostname.match(/^(?:.*?\.)?(.*)/i)[1];
+
+export { sendMailValidation, getHost, };

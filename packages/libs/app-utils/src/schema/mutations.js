@@ -84,8 +84,8 @@ const mutation = new GraphQLObjectType({
         mobileNumber: { type: GraphQLString, },
         userName: { type: GraphQLString, },
       },
-      resolve(parentValue, { typeId, }, { dataSources, }) {
-        return dataSources.OtpAPI.generateOtp(typeId);
+      resolve(parentValue, { typeId, ssoId, userName, mobileNumber, mobilePrefix, }, { dataSources, }) {
+        return dataSources.LegacySsoOperationsAPI.overrideMobilePhone(`${mobilePrefix}${mobileNumber}`, ssoId, userName);
       },
     },
     sendMobileEmailConnection: {
@@ -95,12 +95,13 @@ const mutation = new GraphQLObjectType({
         phone: { type: GraphQLString, },
         userName: { type: GraphQLString, },
         paramString: { type: GraphQLString, },
+        url: { type: GraphQLString, },
       },
-      resolve(parentValue, { email, phone, userName, paramString, }, { dataSources, }) {
+      resolve(parentValue, { email, phone, userName, paramString, url, }, { dataSources, }) {
         return dataSources
           .HtzFunctionOperationsAPI
           // eslint-disable-next-line no-undef
-          .sendPhoneMailConnection(email, phone, userName || email, paramString);
+          .sendPhoneMailConnection(email, phone, userName || email, paramString, url);
       },
     },
   },
