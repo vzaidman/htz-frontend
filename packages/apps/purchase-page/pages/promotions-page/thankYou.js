@@ -85,6 +85,8 @@ class StageThankYou extends React.Component {
       'TmRusr=; domain=.themarker.com; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
     if (window && window.sessionStorage.getItem('htz-paypal')) {
+      const paypalAddProduct = window.sessionStorage.getItem('htz-add-product');
+      ReactGA.ga('ec:addProduct', JSON.parse(paypalAddProduct));
       ReactGA.ga('ec:setAction', 'purchase', {
         id: `${Math.floor(Math.random() * 1000000000000)}`, // (Required) Transaction id (string).
         list: 'Product Stage Results',
@@ -95,6 +97,7 @@ class StageThankYou extends React.Component {
       // set htz-paypal to null to prevent sending the same data if user reload thankYou page.
       window.sessionStorage.removeItem('htz-paypal');
       window.sessionStorage.removeItem('htz-revenue');
+      window.sessionStorage.removeItem('htz-add-product');
     }
   }
 
