@@ -112,7 +112,7 @@ class PaymentStage extends Component {
       if (!hasDebt) {
         ReactGA.event({
           category: 'promotions-step-4',
-          action: 'credit -guard',
+          action: 'credit-guard',
           label: chosenProductContentName,
         });
         ReactGA.ga('ec:addProduct', {
