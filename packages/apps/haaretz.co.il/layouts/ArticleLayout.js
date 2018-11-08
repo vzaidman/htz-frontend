@@ -19,6 +19,7 @@ import {
   Query,
   Error,
   pixelEvent,
+  PaywallDbg,
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';

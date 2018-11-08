@@ -74,7 +74,6 @@ import Outbrain from './components/Outbrain/Outbrain';
 import PageSchema from './components/PageSchema/PageSchema';
 import Paragraph from './components/Paragraph/Paragraph';
 import Portal from './components/Portal/Portal';
-import PremiumContentMeta from './components/PremiumContentMeta/PremiumContentMeta';
 import Query from './components/ApolloBoundary/Query';
 import Quote from './components/Quote/Quote';
 import RadioButton from './components/RadioButton/RadioButton';
@@ -98,6 +97,8 @@ import TextInput from './components/TextInput/TextInput';
 import TextLink from './components/TextLink/TextLink';
 import TopNews from './components/TopNews/TopNews';
 import Video from './components/Video/Video';
+import PremiumContentMeta from './components/PremiumContentMeta/PremiumContentMeta';
+import PaywallDbg from './components/Paywall/PaywallDbg';
 
 // Illustrations
 import Astronaut from './components/illustrations/Astronaut/Astronaut.js';
@@ -336,6 +337,7 @@ export {
   TextLink,
   TopNews,
   Video,
+  PaywallDbg,
 
   // Illustrations
   Astronaut,
