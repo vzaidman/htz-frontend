@@ -23,9 +23,12 @@ export default function (
 
   const pathObj = {
     asPath: computedAsPath,
-    pathName: `/promotions-page/${nextStage}${
-      paramString && !ignoreQueryParam ? `?${paramString}` : ''
-    }`,
+    pathName: {
+      pathname: `/promotions-page/${nextStage}${
+        paramString && !ignoreQueryParam ? `?${paramString}` : ''
+      }`,
+      query: router.query,
+    },
   };
   return pathObj;
 }
