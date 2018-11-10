@@ -14,6 +14,7 @@ import assetsMap from './jsonGenerator/jsonMaps/assets';
 import financeSearchMap from './jsonGenerator/jsonMaps/financeSearch';
 import lineGraphMap from './jsonGenerator/jsonMaps/lineGraph';
 import scatterGraphMap from './jsonGenerator/jsonMaps/scatterGraph';
+import areaGraphMap from './jsonGenerator/jsonMaps/areaGraph';
 import quoteMap from './jsonGenerator/jsonMaps/quote';
 
 // Schema Fragments
@@ -63,6 +64,7 @@ export {
   financeSearchMap,
   lineGraphMap,
   scatterGraphMap,
+  areaGraphMap,
   quoteMap,
   // Schema Fragments
   articleHeader,
