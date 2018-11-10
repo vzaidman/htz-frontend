@@ -1,44 +1,40 @@
 import fetch from 'node-fetch';
 
-const prepareBody = (type, time, assetId) => ({
-  query: `
-    query FinanceGraph($type: String!, $time: String!, $assetId: String!) {
-      financeGraph(type: $type, time: $time, assetId: $assetId) {
-        startTime
-        endTime
-        dataSource {
-          ... on LineGraphData {
-            time
-            value
-            yieldSpread
-            change
-            volume
-            name
-            symbol
+const prepareBody = (type, time, assetId, fragment) => (Array.isArray(time)
+  ? ({
+    query: `query FinanceGraph($type: String!, $assetId: String!) {
+      ${time.map(timeSpan => (`
+        ${timeSpan}: financeGraph(type: $type, time: "${timeSpan}", assetId: $assetId) {
+          startTime
+          endTime
+          dataSource {
+            ${fragment}
           }
-          ... on ScatterGraphData {
-            x
-            y
-            name
-            symbol
-          }
-          ... on AreaGraphData {
-            time
-            value
-            peRatio
+        }`
+    ))}
+    }`,
+    variables: { type, assetId, },
+  })
+  : ({
+    query: `
+      query FinanceGraph($type: String!, $time: String!, $assetId: String!) {
+        financeGraph(type: $type, time: $time, assetId: $assetId) {
+          startTime
+          endTime
+          dataSource {
+            ${fragment}
           }
         }
       }
-    }
-  `,
-  variables: { type, time, assetId, },
-});
+    `,
+    variables: { type, time, assetId, },
+  }));
 
-export default ({ type, time, assetId, }) =>
+export default ({ type, time, assetId, fragment, }) =>
   new Promise((resolve, reject) =>
-    fetch('http://eran.haaretz.co.il:4004/', {
+    fetch('https://graphql.haaretz.co.il/', {
       method: 'POST',
-      body: JSON.stringify(prepareBody(type, time, assetId)),
+      body: JSON.stringify(prepareBody(type, time, assetId, fragment)),
       headers: { 'Content-Type': 'application/json', },
     })
       .then(res => res.json())
