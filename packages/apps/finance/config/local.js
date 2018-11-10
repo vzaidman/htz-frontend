@@ -53,7 +53,7 @@ switch (connectionPreset) {
     presetOverride = Object.assign(presetOverride, baseConfigOverride, {
       appPort: presetOverride.appPort,
       graphQLPort: baseConfigOverride.graphQLPort,
-      graphQLSubDomain: 'eran',
+      graphQLSubDomain: process.env.HOSTNAME,
       d3Port: baseConfigOverride.d3Port,
       d3SubDomain: process.env.HOSTNAME,
       useSSL: true,
