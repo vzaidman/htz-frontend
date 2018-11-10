@@ -50,6 +50,7 @@ const financeGraph = new GraphQLObjectType({
         types: [
           lineGraph,
           scatterGraph,
+          areaGraph,
         ],
         resolveType: value => (
           value.time

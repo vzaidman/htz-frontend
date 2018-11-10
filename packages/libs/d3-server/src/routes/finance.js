@@ -9,7 +9,7 @@ import fetchData from '../utils/fetchData';
 const router = express.Router();
 
 router.post([ '/line', '/scatter', ], (req, res) => {
-  const { assetId, time, options = {}, } = req.body || {};
+  const { assetId, time = 'daily', options = {}, } = req.body || {};
   const { url, } = req;
   const type = url.substr(1);
   fetchData({ assetId, time, type, })

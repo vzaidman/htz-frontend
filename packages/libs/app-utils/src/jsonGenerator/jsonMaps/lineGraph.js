@@ -17,9 +17,7 @@ const argsFromTime: Object = new Map([
 ]);
 
 
-const scatterMap: Object = new Map([
-  [ 'xLabel', () => string.lorem({ count: 1, type: 'word', }), ],
-  [ 'yLabel', () => string.lorem({ count: 1, type: 'word', }), ],
+const lineMap: Object = new Map([
   [ 'startTime', () => date.timestamp({}), ],
   [ 'endTime', () => date.timestamp({}), ],
   [ 'dataSource', ({ args, }) => list(
@@ -43,4 +41,4 @@ const scatterMap: Object = new Map([
   ), ],
 ]);
 
-export default scatterMap;
+export default lineMap;

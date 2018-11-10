@@ -2,6 +2,7 @@ import express from 'express';
 import config from 'config';
 import bodyParser from 'body-parser';
 
+import advisors from './routes/advisors';
 import finance from './routes/finance';
 
 const app = express();
@@ -13,6 +14,7 @@ async function run() {
 
   // Routes by Apps
   app.use('/finance', finance);
+  app.use('/advisors', advisors);
 
   app.listen(port, err => {
     if (err) throw err;

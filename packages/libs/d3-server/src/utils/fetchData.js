@@ -22,6 +22,11 @@ const prepareBody = (type, time, assetId) => ({
             name
             symbol
           }
+          ... on AreaGraphData {
+            time
+            value
+            peRatio
+          }
         }
       }
     }
@@ -29,9 +34,9 @@ const prepareBody = (type, time, assetId) => ({
   variables: { type, time, assetId, },
 });
 
-export default ({ type, time = 'daily', assetId, }) =>
+export default ({ type, time, assetId, }) =>
   new Promise((resolve, reject) =>
-    fetch('https://graphql.haaretz.co.il/', {
+    fetch('http://eran.haaretz.co.il:4004/', {
       method: 'POST',
       body: JSON.stringify(prepareBody(type, time, assetId)),
       headers: { 'Content-Type': 'application/json', },
@@ -39,4 +44,4 @@ export default ({ type, time = 'daily', assetId, }) =>
       .then(res => res.json())
       .then(json => resolve(json))
       .catch(err => reject(err))
-);
+  );
