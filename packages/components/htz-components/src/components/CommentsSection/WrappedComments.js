@@ -23,6 +23,10 @@ class CommentsWithApollo extends React.Component {
     contentId: PropTypes.string.isRequired,
     /** The article ID from polopoly */
     articleId: PropTypes.string.isRequired,
+    /** react-intersection-observer  Margin around the root.
+     * Can have values similar to the CSS margin property,
+     * e.g. "10px 20px 30px 40px" (top, right, bottom, left). */
+    rootMargin: PropTypes.string.isRequired,
   };
 
   state = {
@@ -106,9 +110,9 @@ class CommentsWithApollo extends React.Component {
   }
 
   render() {
-    const { contentId, } = this.props;
+    const { contentId, rootMargin, } = this.props;
     return (
-      <Observer triggerOnce rootMargin="2000px">
+      <Observer triggerOnce rootMargin={rootMargin}>
         {inView =>
           (inView ? (
             <Query
@@ -186,16 +190,30 @@ class CommentsWithApollo extends React.Component {
   }
 }
 
-function WrappedComments() {
+function WrappedComments({ rootMargin, }) {
   return (
     <Query query={GET_ID}>
       {({ data: { articleId, commentsElementId, }, }) => {
         logger.trace('article id', articleId);
         return articleId ? (
-          <CommentsWithApollo articleId={articleId} contentId={commentsElementId} />
+          <CommentsWithApollo
+            articleId={articleId}
+            contentId={commentsElementId}
+            rootMargin={rootMargin}
+          />
         ) : null;
       }}
     </Query>
   );
 }
+
+WrappedComments.propTypes = {
+  /** react-intersection-observer  Margin around the root.
+   * Can have values similar to the CSS margin property,
+   * e.g. "10px 20px 30px 40px" (top, right, bottom, left). */
+  rootMargin: PropTypes.string.isRequired,
+};
+WrappedComments.defaultProps = {
+  rootMargin: '2000px',
+};
 export default WrappedComments;
