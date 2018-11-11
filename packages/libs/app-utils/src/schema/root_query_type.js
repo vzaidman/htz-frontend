@@ -20,6 +20,7 @@ import ResetPassword from './types/reset_password_type';
 import Page from './types/page_type';
 import HomePage from './types/home_page_type';
 import { GenerateOtp, } from './types/otp_operations_type';
+import Paywall from './types/paywall';
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -91,6 +92,14 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve(parentValue, args, { dataSources, }) {
         return dataSources.PapiAPI.getNextArticle(args);
+      },
+    },
+
+    paywall: {
+      type: Paywall,
+      args: {},
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.PapiAPI.getPaywallData(args);
       },
     },
 

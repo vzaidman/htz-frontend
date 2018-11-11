@@ -59,6 +59,18 @@ class PapiAPI extends RESTDataSource {
     return this.get(fetchPath, {}, { cacheOptions: { ttl, }, });
   }
 
+  async getPaywallData() {
+    return {
+      slotLocation: 'bot-persist',
+      title: 'כל התכנים, בכל מכשיר, בכל זמן',
+      text: 'הארץ בדיגיטל החל מ-4.90שח בחודש הראשון',
+      confirm: {
+        text: 'לרכישה',
+        url: 'https://promotions.haaretz.co.il/promotions-page/sale-htz',
+      },
+    };
+  }
+
   // mutations
 
   async createComment(newComment) {
