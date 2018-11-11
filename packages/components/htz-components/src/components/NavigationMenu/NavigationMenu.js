@@ -1,4 +1,4 @@
-/* global document, window */
+/* global document */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import config from 'config';
@@ -115,19 +115,15 @@ class NavigationMenu extends React.Component {
        */
       promotions: PropTypes.arrayOf(PropTypes.shape(baseProp)),
     }).isRequired,
+    /* User type from User dispenser in Masthead */
+    userType: PropTypes.string,
   };
 
-  state = { isHovered: false, isUser: null, };
-
-  componentDidUpdate() {
-    if (window && typeof window !== 'undefined') {
-      const isUser = typeof CookieUtils.getCookie('HtzPusr') === 'string';
-      if (this.state.isUser !== isUser) {
-        /* eslint-disable react/no-did-update-set-state */
-        this.setState({ isUser, });
-      }
-    }
+  static defaultProps = {
+    userType: null,
   }
+
+  state = { isHovered: false, };
 
   handleMouseEnter = () => this.setState({ isHovered: true, });
   handleMouseLeave = () => this.setState({ isHovered: false, });
@@ -148,7 +144,7 @@ class NavigationMenu extends React.Component {
     return (
       <FelaTheme
         render={theme => {
-          const { isHovered, isUser, } = this.state;
+          const { isHovered, } = this.state;
           const { items, sites, promotions, } = this.props.menuSections;
 
           // TODO: remove this when optOut item is deprecated
@@ -190,7 +186,7 @@ class NavigationMenu extends React.Component {
             ));
 
           const combinedPromotions =
-            !isUser &&
+            !(this.props.userType === 'paying') &&
             promotions &&
             promotions.map(promotion => (
               <Item
@@ -281,15 +277,15 @@ class NavigationMenu extends React.Component {
 }
 
 // eslint-disable-next-line react/prop-types
-export default ({ contentId, }) => (
+export default ({ contentId, userType, }) => (
   <Query query={NavigationQuery} variables={{ listId: contentId, }}>
     {({ data, loading, error, }) => {
       if (error) return null;
-      if (loading) return <NavigationMenu menuSections={{}} />;
+      if (loading) return <NavigationMenu menuSections={{}}/>;
       const {
         navMenu: { menu, },
       } = data;
-      return <NavigationMenu menuSections={menu} />;
+      return <NavigationMenu menuSections={menu} userType={userType}/>;
     }}
   </Query>
 );

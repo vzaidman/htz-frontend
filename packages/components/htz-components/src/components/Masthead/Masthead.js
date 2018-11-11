@@ -11,6 +11,7 @@ import LayoutContainer from '../PageLayout/LayoutContainer';
 import NavigationMenu from '../NavigationMenu/NavigationMenu';
 import MobileNavigation from '../MobileNavigationMenu/MobileNavigationMain';
 import WrappedScroll from '../Scroll/Scroll';
+import UserDispenser from '../User/UserDispenser';
 
 const hostQuery = gql`
   query Hostname($path: String!) {
@@ -78,10 +79,7 @@ class Masthead extends Component {
                 ...theme.getDelay('transition', -1),
                 ...theme.getDuration('transition', -1),
                 ...theme.getTimingFunction('transition', 'linear'),
-                top: [
-                  { until: 's', value: 0, },
-                  { until: 'm', misc: 'landscape', value: 0, },
-                ],
+                top: [ { until: 's', value: 0, }, { until: 'm', misc: 'landscape', value: 0, }, ],
                 position: [
                   { until: 's', value: 'sticky', },
                   { until: 'm', misc: 'landscape', value: 'sticky', },
@@ -97,10 +95,7 @@ class Masthead extends Component {
                     value: `translateY(${shouldDisplay ? '0' : '-100'}%)`,
                   },
                 ],
-                ...theme.mq(
-                  { until: 's', },
-                  { zIndex: theme.getZIndex('modal', 1), }
-                ),
+                ...theme.mq({ until: 's', }, { zIndex: theme.getZIndex('modal', 1), }),
               }}
             >
               <LayoutContainer>
@@ -128,20 +123,16 @@ class Masthead extends Component {
                           theme.color('mastheadBorder', 'borderColor')
                         ),
                         theme.mq({ until: 's', }, mobileStyles),
-                        theme.mq(
-                          { until: 'm', misc: 'landscape', },
-                          mobileStyles
-                        ),
+                        theme.mq({ until: 'm', misc: 'landscape', }, mobileStyles),
                       ],
                     };
                   }}
                   render="header"
                 >
-                  <NavigationMenu contentId={contentId} />
-                  <MastheadSearch
-                    searchIsOpen={searchIsOpen}
-                    onClick={this.toggleSearchState}
+                  <UserDispenser
+                    render={({ user, }) => <NavigationMenu contentId={contentId} userType={user.type} />}
                   />
+                  <MastheadSearch searchIsOpen={searchIsOpen} onClick={this.toggleSearchState} />
                   {searchIsOpen ? null : <Logo host={host} />}
                   {searchIsOpen ? null : <MastheadUserTools y={y} />}
                 </FelaComponent>
@@ -163,17 +154,11 @@ class Masthead extends Component {
                   theme.getDuration('transition', -1),
                   theme.getTimingFunction('transition', 'linear'),
                   theme.mq({ until: 's', }, { display: 'initial', }),
-                  theme.mq(
-                    { until: 'm', misc: 'landscape', },
-                    { display: 'initial', }
-                  ),
+                  theme.mq({ until: 'm', misc: 'landscape', }, { display: 'initial', }),
                 ],
               }}
             >
-              <MobileNavigation
-                contentId={contentId}
-                shouldDisplay={shouldDisplay}
-              />
+              <MobileNavigation contentId={contentId} shouldDisplay={shouldDisplay} />
             </FelaComponent>
           </Fragment>
         )}
@@ -190,12 +175,7 @@ export default props => (
       return (
         <WrappedScroll
           render={({ velocity, y, }) => (
-            <Masthead
-              hostname={data.hostname}
-              velocity={velocity}
-              y={y}
-              {...props}
-            />
+            <Masthead hostname={data.hostname} velocity={velocity} y={y} {...props} />
           )}
         />
       );
