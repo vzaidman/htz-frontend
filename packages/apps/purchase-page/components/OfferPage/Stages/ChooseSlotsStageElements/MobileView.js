@@ -9,6 +9,7 @@ import Phones from '../Elements/Phones';
 
 const propTypes = {
   continueToNextStage: PropTypes.func.isRequired,
+  host: PropTypes.oneOf([ 'HTZ', 'TM', ]).isRequired,
   tableData: PropTypes.arrayOf(
     PropTypes.shape({
       subscriptionName: PropTypes.string.isRequired,
@@ -23,10 +24,16 @@ const propTypes = {
     tfoot: PropTypes.string.isRequired,
   }).isRequired,
   pathName: PropTypes.string.isRequired,
+  /** facebook instant articles parameters to pass to login page on mobile view */
+  accountLinkToken: PropTypes.string,
+  /** facebook instant articles parameters to pass to login page on mobile view */
+  fbRedirectUri: PropTypes.string,
 };
 
 const defaultProps = {
   sale: null,
+  fbRedirectUri: null,
+  accountLinkToken: null,
 };
 
 const contStyle = theme => ({
@@ -135,11 +142,14 @@ class MobileView extends Component {
   };
   render() {
     const {
+      host,
       tableData,
       sale,
       staticTableData,
       pathName,
       continueToNextStage,
+      fbRedirectUri,
+      accountLinkToken,
     } = this.props;
 
     return (
@@ -147,8 +157,44 @@ class MobileView extends Component {
         {cache => (
           <FelaComponent
             style={contStyle}
-            render={({ className, theme, }) => (
+            render={({
+              className,
+              theme,
+              theme: {
+                stage1: {
+                  buttons: { loginRedirect, },
+                },
+              },
+            }) => (
               <div className={className}>
+                {accountLinkToken && fbRedirectUri ? (
+                  <FelaComponent
+                    style={{
+                      marginTop: '2rem',
+                      fontWeight: '700',
+                      color: theme.color('offerPage', 'buttonText'),
+                      extend: [ theme.type(-1), ],
+                    }}
+                    render="p"
+                  >
+                    <a
+                      href={`${loginRedirect.url[host]}?account_linking_token=${accountLinkToken}&redirect_uri=${fbRedirectUri}`}
+                    >
+                      <Fragment>
+                        {loginRedirect.beforeLinkText}{' '}
+                        <FelaComponent
+                          render="span"
+                          style={theme => ({
+                            textDecoration: 'underline',
+                            textDecorationSkip: 'ink',
+                          })}
+                        >
+                          {loginRedirect.linkText}
+                        </FelaComponent>
+                      </Fragment>
+                    </a>
+                  </FelaComponent>
+                ) : null}
                 {tableData.map((item, idx) => (
                   <Fragment key={tableData[idx].subscriptionName}>
                     <EventTracker>
@@ -199,10 +245,7 @@ class MobileView extends Component {
                           <StyledItemMainCont>
                             <StyledItemStartCont>
                               <StyledItemHeading>
-                                {
-                                  staticTableData.thead[item.subscriptionName]
-                                    .heading
-                                }
+                                {staticTableData.thead[item.subscriptionName].heading}
                               </StyledItemHeading>
                               <StyledItemPricingMonthly>
                                 {item.pricingHead}
@@ -227,10 +270,7 @@ class MobileView extends Component {
                                   });
                                 }}
                               >
-                                {
-                                  staticTableData.thead[item.subscriptionName]
-                                    .btnText
-                                }
+                                {staticTableData.thead[item.subscriptionName].btnText}
                               </Button>
                             </StyledItemStartCont>
                             <StyledItemEndCont>
@@ -249,8 +289,7 @@ class MobileView extends Component {
                                     tableData[idx].subscriptionName
                                   }HTZExpendedArea`,
                                   'aria-expanded':
-                                    this.state.menuOpen ===
-                                    tableData[idx].subscriptionName,
+                                    this.state.menuOpen === tableData[idx].subscriptionName,
                                 }}
                                 onClick={evt => {
                                   evt.stopPropagation();
@@ -265,10 +304,7 @@ class MobileView extends Component {
                                       '1px',
                                       0.25,
                                       'solid',
-                                      theme.color(
-                                        'offerPage',
-                                        'borderHighlighted'
-                                      )
+                                      theme.color('offerPage', 'borderHighlighted')
                                     ),
                                   }}
                                   render={({ className, }) => (
@@ -286,23 +322,18 @@ class MobileView extends Component {
                                 row =>
                                   row[item.subscriptionName] && (
                                     <StyledTableItem key={Math.random()}>
-                                      <div>{row.description}</div>{' '}
-                                      <PositiveCircle />
+                                      <div>{row.description}</div> <PositiveCircle />
                                     </StyledTableItem>
                                   )
                               )}
                               {item.pricingYearly && (
                                 <StyledTableItem>
-                                  <div>
-                                    {staticTableData.tbody.pricingYearlyText}
-                                  </div>
+                                  <div>{staticTableData.tbody.pricingYearlyText}</div>
                                   <FelaComponent style={{ textAlign: 'end', }}>
                                     {item.pricingYearly.map((row, jdx) => (
                                       <FelaComponent
                                         style={{
-                                          ...(jdx === 0
-                                            ? { fontWeight: 'bold', }
-                                            : {}),
+                                          ...(jdx === 0 ? { fontWeight: 'bold', } : {}),
                                         }}
                                       >
                                         {row}
@@ -313,9 +344,7 @@ class MobileView extends Component {
                               )}
                               {item.pricingMonthly && (
                                 <StyledTableItem>
-                                  <div>
-                                    {staticTableData.tbody.pricingMonthlyText}
-                                  </div>
+                                  <div>{staticTableData.tbody.pricingMonthlyText}</div>
                                   <FelaComponent style={{ textAlign: 'end', }}>
                                     {item.pricingMonthly.map(row => (
                                       <div>{row}</div>
@@ -323,9 +352,7 @@ class MobileView extends Component {
                                   </FelaComponent>
                                 </StyledTableItem>
                               )}
-                              <StyledTableFooter>
-                                {staticTableData.tfoot}
-                              </StyledTableFooter>
+                              <StyledTableFooter>{staticTableData.tfoot}</StyledTableFooter>
                             </div>
                           ) : null}
                         </StyledItemCont>
