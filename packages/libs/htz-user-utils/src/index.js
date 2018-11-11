@@ -1,6 +1,7 @@
 import UserFactory from './user-factory-cookie-based';
 import UserService from './service/user-services';
 import AbuseService from './service/abuse-service';
+import {mobileNumberParser,} from './util/general-user-data-transform';
 import { UserTypes, } from './user';
 import siteConfig from './site-config';
 import * as DomainUtils from './util/domain-utils';
@@ -16,4 +17,5 @@ export {
   DomainUtils,
   CookieUtils,
   UserTransformations,
+  mobileNumberParser,
 };
