@@ -4,6 +4,7 @@ export default {
     [ '-customerService', '/customerService', ],
     [ '-register', '/register', ],
     [ '-emailValidationSent', '/emailValidationSent', ],
+    [ '-emailValidationSent2', '/emailValidationSent2', ],
     [ '-loginFormsPass', { url: '/loginForms', param: 1, }, ],
     [ '-loginFormsPhone', { url: '/loginForms', param: 0, }, ],
     [ '-loginFormsOtp', { url: '/loginForms', param: 0, }, ],
@@ -13,6 +14,11 @@ export default {
     getCustomerService: 'customerService',
     withPassword: 'loginFormsPass',
     notRegistered: 'register',
+    sendAgain: 'emailValidationSent2',
+  },
+  emailValidationSent2: {
+    getCustomerService: 'customerService',
+    withPassword: 'loginFormsPass',
   },
   passwordReminderSent: {
     accept: 'loginFormsPass',
