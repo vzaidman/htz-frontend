@@ -26,11 +26,17 @@ const propTypes = {
   userMessage: PropTypes.arrayOf(PropTypes.string),
   /** passed by next withRouter */
   router: PropTypes.shape().isRequired,
+  /** facebook instant articles parameters to pass to login page on mobile view */
+  accountLinkToken: PropTypes.string,
+  /** facebook instant articles parameters to pass to login page on mobile view */
+  fbRedirectUri: PropTypes.string,
 };
 
 const defaultProps = {
   userMessage: null,
   sale: null,
+  fbRedirectUri: null,
+  accountLinkToken: null,
 };
 
 const contStyle = theme => ({
@@ -90,7 +96,7 @@ class ChooseSlotStage extends React.Component {
     ReactGA.ga('send', 'pageview');
   }
   render() {
-    const { host, tableData, sale, subStage, userMessage, router, } = this.props;
+    const { host, tableData, sale, subStage, userMessage, router, accountLinkToken, fbRedirectUri, } = this.props;
 
     const { pathName, asPath, } = pathGenerator('stage2', router);
 
@@ -145,6 +151,9 @@ class ChooseSlotStage extends React.Component {
                 staticTableData={stage1}
                 continueToNextStage={continueToNextStage}
                 pathName={pathName}
+                fbRedirectUri={fbRedirectUri}
+                accountLinkToken={accountLinkToken}
+                host={host}
               />
               <EventTracker>
                 {({ biAction, gaAction, }) => (

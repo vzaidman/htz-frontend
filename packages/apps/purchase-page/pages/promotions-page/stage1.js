@@ -39,6 +39,21 @@ class Stage1 extends React.Component {
   }
 
   render() {
+    let fbRedirectUri = null;
+    let accountLinkToken = null;
+
+    if (this.props.url.query) {
+      const {
+        url: {
+          // eslint-disable-next-line
+          query: { redirect_uri, account_linking_token, },
+        },
+      } = this.props;
+      // eslint-disable-next-line
+      fbRedirectUri = redirect_uri;
+      // eslint-disable-next-line
+      accountLinkToken = account_linking_token;
+    }
     return (
       <MainLayout footerHasIllustration={false} displayBackButton={false}>
         <FelaComponent style={{ position: 'relative', }}>
@@ -73,6 +88,9 @@ class Stage1 extends React.Component {
                         subStage={subStage}
                         sale={sale}
                         userMessage={data.purchasePage.userMessage}
+                        fbRedirectUri={fbRedirectUri}
+                        accountLinkToken={accountLinkToken}
+
                       />
                     );
                   }}

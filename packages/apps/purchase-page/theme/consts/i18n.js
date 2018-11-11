@@ -92,6 +92,14 @@ export const stage1 = Object.freeze({
       linkText: 'בדקו אם אתם זכאים להנחה',
       link: 'https://www.haaretz.co.il/misc/entitlement',
     }),
+    loginRedirect: Object.freeze({
+      beforeLinkText: 'כבר מנויים?',
+      linkText: 'התחברו',
+      url: Object.freeze({
+        HTZ: 'https://www.haaretz.co.il/misc/login-page',
+        TM: 'https://www.themarker.com/misc/login-page',
+      }),
+    }),
   }),
   headerText: 'בחרו את החבילה המשתלמת לכם',
   mobileExpandBtn: 'מה בחבילה?',
