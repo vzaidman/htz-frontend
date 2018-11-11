@@ -1,3 +1,4 @@
+/* global sessionStorage */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
@@ -81,6 +82,7 @@ function CreditCardIframeStage({
                         coupon: paymentData.saleCode,
                       });
                       HtzReactGA.ga('send', 'pageview');
+                      sessionStorage.setItem('userProduct', msgData.data.pid);
                       Router.replace(
                         `/promotions-page/thankYou?msg=thank_user&product=${msgData.data.pid}`
                       );

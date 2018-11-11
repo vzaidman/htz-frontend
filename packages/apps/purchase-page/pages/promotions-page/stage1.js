@@ -8,6 +8,7 @@ import MainLayout from '../../layouts/MainLayout';
 import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter';
 import ChooseSlotStage from '../../components/OfferPage/Stages/ChooseSlotStage';
 import Redirect from '../../components/Redirect/Redirect';
+import checkSessionForPurchase from '../../utils/checkSessionForPurchase';
 
 const GET_PROMOTIONS_STATE = gql`
   query {
@@ -30,6 +31,9 @@ const getChooseSlotsData = slots =>
 class Stage1 extends React.Component {
   static propTypes = pagePropTypes;
 
+  componentDidMount() {
+    checkSessionForPurchase();
+  }
   static getInitialProps({ url, }) {
     return { url, };
   }
