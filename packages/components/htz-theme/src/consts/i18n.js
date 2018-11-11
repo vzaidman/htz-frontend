@@ -65,7 +65,7 @@ export const mobileSearchI18n = Object.freeze({
   buttonText: 'חיפוש',
   placeHolder: 'חיפוש',
   queryUrl: query =>
-    `https://www.haaretz.co.il/misc/search-results?text=${query}&searchType=textSearch`,
+    `https://www.haaretz.co.il/misc/mobile-search-results?text=${query}&searchType=textSearch`,
 });
 
 export const osakaI18n = Object.freeze({
