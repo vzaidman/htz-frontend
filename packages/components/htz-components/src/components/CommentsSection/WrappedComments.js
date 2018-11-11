@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createLogger, } from '@haaretz/app-utils';
+import Observer from 'react-intersection-observer';
 import Query from '../ApolloBoundary/Query';
 import Mutation from '../ApolloBoundary/Mutation';
 import CommentSection from './CommentsSection';
@@ -107,67 +108,80 @@ class CommentsWithApollo extends React.Component {
   render() {
     const { contentId, } = this.props;
     return (
-      <Query
-        query={FETCH_COMMENTS}
-        variables={{ path: `${contentId}?composite=true&limited=true`, }}
-      >
-        {({ data, loading, error, fetchMore, }) => {
-          if (loading) {
-            return null;
-          }
-          if (error) {
-            logger.log(error);
-            return null;
-          }
-          const { commentsElement, } = data;
-          return (
-            <Mutation mutation={REPORT_ABUSE}>
-              {reportAbuse => (
-                <Mutation mutation={SUBMIT_NOTIFICATION_EMAIL}>
-                  {submitNotificationEmail => (
-                    <Mutation mutation={SUBMIT_NEW_VOTE}>
-                      {submitNewVote => (
-                        <Mutation mutation={SUBMIT_NEW_COMMENT}>
-                          {submitNewComment => (
-                            <CommentSection
-                              initVote={(commentId, group) => {
-                                this.initVote(commentId, group, submitNewVote);
-                              }}
-                              reportAbuse={(commentId, captchaKey) => {
-                                this.initReportAbuse(commentId, captchaKey, reportAbuse);
-                              }}
-                              initNewComment={(commentAuthor, commentText, parentCommentId) => {
-                                this.initNewComment(
-                                  commentAuthor,
-                                  commentText,
-                                  parentCommentId,
-                                  submitNewComment
-                                );
-                              }}
-                              signUpNotification={email =>
-                                this.initSignUpNotificationEmail(email, submitNotificationEmail)
-                              }
-                              loadAllComments={() => this.handleLoadAllComments(fetchMore)}
-                              comments={commentsElement ? commentsElement.comments : []}
-                              commentsPlusRate={
-                                commentsElement ? commentsElement.commentsPlusRate : null
-                              }
-                              commentsMinusRate={
-                                commentsElement ? commentsElement.commentsMinusRate : null
-                              }
-                              totalHits={commentsElement ? commentsElement.totalHits : 0}
-                            />
-                          )}
-                        </Mutation>
-                      )}
-                    </Mutation>
-                  )}
-                </Mutation>
-              )}
-            </Mutation>
-          );
-        }}
-      </Query>
+      <Observer triggerOnce rootMargin="2000px">
+        {inView =>
+          (inView ? (
+            <Query
+              query={FETCH_COMMENTS}
+              variables={{ path: `${contentId}?composite=true&limited=true`, }}
+            >
+              {({ data, loading, error, fetchMore, }) => {
+                if (loading) {
+                  return null;
+                }
+                if (error) {
+                  logger.log(error);
+                  return null;
+                }
+                const { commentsElement, } = data;
+                return (
+                  <Mutation mutation={REPORT_ABUSE}>
+                    {reportAbuse => (
+                      <Mutation mutation={SUBMIT_NOTIFICATION_EMAIL}>
+                        {submitNotificationEmail => (
+                          <Mutation mutation={SUBMIT_NEW_VOTE}>
+                            {submitNewVote => (
+                              <Mutation mutation={SUBMIT_NEW_COMMENT}>
+                                {submitNewComment => (
+                                  <CommentSection
+                                    initVote={(commentId, group) => {
+                                      this.initVote(commentId, group, submitNewVote);
+                                    }}
+                                    reportAbuse={(commentId, captchaKey) => {
+                                      this.initReportAbuse(commentId, captchaKey, reportAbuse);
+                                    }}
+                                    initNewComment={(
+                                      commentAuthor,
+                                      commentText,
+                                      parentCommentId
+                                    ) => {
+                                      this.initNewComment(
+                                        commentAuthor,
+                                        commentText,
+                                        parentCommentId,
+                                        submitNewComment
+                                      );
+                                    }}
+                                    signUpNotification={email =>
+                                      this.initSignUpNotificationEmail(
+                                        email,
+                                        submitNotificationEmail
+                                      )
+                                    }
+                                    loadAllComments={() => this.handleLoadAllComments(fetchMore)}
+                                    comments={commentsElement ? commentsElement.comments : []}
+                                    commentsPlusRate={
+                                      commentsElement ? commentsElement.commentsPlusRate : null
+                                    }
+                                    commentsMinusRate={
+                                      commentsElement ? commentsElement.commentsMinusRate : null
+                                    }
+                                    totalHits={commentsElement ? commentsElement.totalHits : 0}
+                                  />
+                                )}
+                              </Mutation>
+                            )}
+                          </Mutation>
+                        )}
+                      </Mutation>
+                    )}
+                  </Mutation>
+                );
+              }}
+            </Query>
+          ) : null)
+        }
+      </Observer>
     );
   }
 }
