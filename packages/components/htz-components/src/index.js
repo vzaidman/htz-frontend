@@ -98,7 +98,9 @@ import TextLink from './components/TextLink/TextLink';
 import TopNews from './components/TopNews/TopNews';
 import Video from './components/Video/Video';
 import PremiumContentMeta from './components/PremiumContentMeta/PremiumContentMeta';
-import PaywallDbg from './components/Paywall/PaywallDbg';
+import PaywallDbgController from './components/Paywall/PaywallDbgController';
+import PaywallDbgProvider from './components/Paywall/PaywallDbgProvider';
+import PaywallBottomRuler from './components/Paywall/PaywallBottomRuler/PaywallBottomRuler';
 
 // Illustrations
 import Astronaut from './components/illustrations/Astronaut/Astronaut.js';
@@ -337,7 +339,9 @@ export {
   TextLink,
   TopNews,
   Video,
-  PaywallDbg,
+  PaywallDbgController,
+  PaywallDbgProvider,
+  PaywallBottomRuler,
 
   // Illustrations
   Astronaut,
