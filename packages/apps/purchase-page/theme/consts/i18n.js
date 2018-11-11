@@ -96,8 +96,8 @@ export const stage1 = Object.freeze({
       beforeLinkText: 'כבר מנויים?',
       linkText: 'התחברו',
       url: Object.freeze({
-        HTZ: 'https://www.haaretz.co.il/misc/login-page',
-        TM: 'https://www.themarker.com/misc/login-page',
+        HTZ: 'https://www.haaretz.co.il/mobile/login',
+        TM: 'https://www.themarker.com/mobile/login',
       }),
     }),
   }),
