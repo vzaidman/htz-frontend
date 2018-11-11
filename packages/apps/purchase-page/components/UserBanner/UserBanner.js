@@ -1,3 +1,4 @@
+/* global sessionStorage */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { UserDispenser, Logout, } from '@haaretz/htz-components';
@@ -65,6 +66,8 @@ function UserBanner({ router, ignoreQueryParam, }) {
                                 type="button"
                                 onClick={() =>
                                   logout().then(() => {
+                                    console.log('clearing SessionStorage from user banner logout');
+                                    sessionStorage.clear();
                                     const { pathName, asPath, } = pathGenerator(
                                       'stage1',
                                       router,

@@ -10,6 +10,7 @@ import PaymentStage from '../../components/OfferPage/Stages/PaymentStage';
 import StageTransition from '../../components/OfferPage/StageTransition/StageTransition';
 import StageCounter from '../../components/OfferPage/Stages/Elements/StageCounter';
 import StageHeader from '../../components/OfferPage/Stages/Elements/StageHeader';
+import checkSessionForPurchase from '../../utils/checkSessionForPurchase';
 
 const GET_PROMOTIONS_STATE = gql`
   query {
@@ -25,6 +26,9 @@ const GET_PROMOTIONS_STATE = gql`
 `;
 
 class Stage4 extends Component {
+  componentDidMount() {
+    checkSessionForPurchase();
+  }
   static getInitialProps({ url, }) {
     return { url, };
   }
@@ -35,7 +39,7 @@ class Stage4 extends Component {
       const {
         url: {
           // eslint-disable-next-line
-          query: { redirect_uri, account_linking_token, },
+          query: { redirect_uri, account_linking_token },
         },
       } = this.props;
       // eslint-disable-next-line

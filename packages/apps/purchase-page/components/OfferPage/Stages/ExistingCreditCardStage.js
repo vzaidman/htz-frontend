@@ -1,4 +1,4 @@
-/* global window */
+/* global window sessionStorage */
 
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
@@ -156,6 +156,7 @@ class Wrapper extends Component {
               revenue: paymentData.prices[0].toString(),
               coupon: paymentData.saleCode,
             });
+            sessionStorage.setItem('userProduct', data.payWithExistingCard.pId);
             return (
               <Redirect
                 destination="thankYou"

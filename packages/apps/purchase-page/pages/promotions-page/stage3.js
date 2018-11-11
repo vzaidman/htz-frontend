@@ -11,6 +11,7 @@ import StageTransition from '../../components/OfferPage/StageTransition/StageTra
 import StageCounter from '../../components/OfferPage/Stages/Elements/StageCounter';
 import StageHeader from '../../components/OfferPage/Stages/Elements/StageHeader';
 import LoginRedirect from '../../components/OfferPage/Stages/LoginOrRegisterElements/LoginRedirect';
+import checkSessionForPurchase from '../../utils/checkSessionForPurchase';
 
 const GET_PROMOTIONS_STATE = gql`
   query {
@@ -31,6 +32,10 @@ class Stage3 extends Component {
     refetch: false,
     chosenSubscription: null,
   };
+
+  componentDidMount() {
+    checkSessionForPurchase();
+  }
 
   updateRegisterOrLoginStage = registerOrLoginStage => {
     this.setState({
