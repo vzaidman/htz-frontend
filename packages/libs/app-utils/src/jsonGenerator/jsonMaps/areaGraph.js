@@ -8,7 +8,7 @@ const now: number = new Date().getTime();
 
 const argsFromTime: Object = new Map([
   [ 'year', { count: 12, step: 2592000000, }, ],
-  [ 'fiveYears', { count: 60, step: 2592000000, }, ],
+  [ 'fiveYears', { count: 10, step: 2592000000 * 6, }, ],
   [ 'tenYears', { count: 10, step: 31536000000, }, ],
   [ 'fifteenYears', { count: 15, step: 31536000000, }, ],
   [ 'twentyYears', { count: 20, step: 31536000000, }, ],
