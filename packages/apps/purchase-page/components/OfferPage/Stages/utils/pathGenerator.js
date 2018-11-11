@@ -4,16 +4,12 @@ export default function (
   nextStage,
   router,
   paramString = null,
-  ignoreQueryParam = false
+  ignoreQueryParam = false,
+  query = {}
 ) {
   const [ pathWithoutQuery, queryPartFromPath, ] = router.asPath.split(/\?(.+)/);
-  const cleanPathWithoutQuery = pathWithoutQuery.substr(
-    0,
-    pathWithoutQuery.lastIndexOf('/')
-  );
-  const computedAsPath = `${cleanPathWithoutQuery}/${
-    friendlyRoutes[nextStage]
-  }${
+  const cleanPathWithoutQuery = pathWithoutQuery.substr(0, pathWithoutQuery.lastIndexOf('/'));
+  const computedAsPath = `${cleanPathWithoutQuery}/${friendlyRoutes[nextStage]}${
     queryPartFromPath && !ignoreQueryParam
       ? `?${queryPartFromPath}${paramString ? `&${paramString}` : ''}`
       : paramString
@@ -27,7 +23,7 @@ export default function (
       pathname: `/promotions-page/${nextStage}${
         paramString && !ignoreQueryParam ? `?${paramString}` : ''
       }`,
-      query: router.query,
+      query: { ...router.query, ...query, },
     },
   };
   return pathObj;

@@ -7,6 +7,7 @@ import { EventTracker, } from '@haaretz/htz-components';
 import CreditCardIframe from './CreditCardIframeStageElements/CreditCardIframe';
 import SecurePaymentLine from './Elements/SecurePaymentLine';
 import PaymentSummary from './StagePaymentElements/PaymentSummary';
+import pathGenerator from './utils/pathGenerator';
 
 const propTypes = {
   chosenSubscription: PropTypes.string.isRequired,
@@ -65,6 +66,12 @@ function CreditCardIframeStage({
               onMessage={evt => {
                 const msgData = evt.data;
                 if (msgData.type === 'cgmessage') {
+                  const { pathName, asPath, } = pathGenerator(
+                    'thankYou',
+                    Router,
+                    `msg=thank_user&product=${msgData.data.pid}`,
+                    { msg: 'thank_user', product: msgData.data.pid, }
+                  );
                   switch (msgData.command) {
                     case 'thank_user':
                       HtzReactGA.ga('ec:addProduct', {
@@ -83,9 +90,8 @@ function CreditCardIframeStage({
                       });
                       HtzReactGA.ga('send', 'pageview');
                       sessionStorage.setItem('userProduct', msgData.data.pid);
-                      Router.replace(
-                        `/promotions-page/thankYou?msg=thank_user&product=${msgData.data.pid}`
-                      );
+
+                      Router.replace(pathName, asPath);
                       break;
 
                     case 'purchase_clicked':
