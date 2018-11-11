@@ -95,8 +95,7 @@ const getTermsText = () => {
 const onSubmit = ({ register, doTransition, showError, hideError, setPreloader }) => ({ firstname, lastname, email, password, phone, terms, }) => {
   setPreloader(true);
   hideError();
-  const { mobilePrefix, mobileNumber, } = mobileNumberParser(phone); // TODO import function from htz-user-utils
-  //const { mobilePrefix, mobileNumber, } = { mobilePrefix: '', mobileNumber: '', };
+  const { mobilePrefix, mobileNumber, } = phone ? mobileNumberParser(phone) : { mobilePrefix: '', mobileNumber: '', };
   register(
     email.trim(),
     password.trim(),
