@@ -1,7 +1,8 @@
 import D3Node, { d3, } from 'd3-node';
 import { tmTheme as theme, } from '@haaretz/tm-theme';
+import { rgba, } from 'polished';
 
-export default (data, {
+export default (data, timeSpan, {
   width = 680,
   height = 630,
   margin = { top: 0, right: 40, bottom: 40, left: 60, },
@@ -9,6 +10,14 @@ export default (data, {
   const options = {
     d3Module: d3,
   };
+
+  const xAxisTickFormats = new Map([
+    [ 'year', [ '%b', d3.timeMonth.every, 2, ], ],
+    [ 'fiveYears', [ '%Y', d3.timeYear.every, 1, ], ],
+    [ 'tenYears', [ '%Y', d3.timeYear.every, 2, ], ],
+    [ 'fifteenYears', [ '%Y', d3.timeYear.every, 3, ], ],
+    [ 'twentyYears', [ '%Y', d3.timeYear.every, 4, ], ],
+  ]);
 
   const d3n = new D3Node(options);
 
@@ -34,17 +43,19 @@ export default (data, {
     width: '100%',
   });
 
+  const [ timeFormat, timeFunction, every, ] = xAxisTickFormats.get(timeSpan);
+
   const xAxis = svg.append('g')
     .attr('transform', `translate(0, ${height - margin.bottom})`)
     .call(
       d3.axisBottom(xScale)
-        .tickFormat(d3.timeFormat('%Y'))
-        .ticks(d3.timeYear.every(2))
+        .tickFormat(d3.timeFormat(timeFormat))
+        .ticks(timeFunction(every))
     );
 
   const xTicks = [];
 
-  xAxis.selectAll('.tick').each(function (tick) {
+  xAxis.selectAll('.tick').each(function () {
     xTicks.push(getTranslation(d3.select(this).attr('transform')));
   });
 
@@ -63,16 +74,16 @@ export default (data, {
     )
     .attr('height', height - margin.bottom)
     .attr('fill', (d, i) => (i % 2 > 0
-      ? 'white'
-      : 'rgba(178,178,178, 0.05)')
-    );
+      ? theme.color('neutral', '-10')
+      : rgba(theme.color('neutral', '-4'), 0.05)
+    ));
 
   bg.append('line')
     .attr('x1', d => d)
     .attr('x2', d => d)
     .attr('y1', 0)
     .attr('y2', height - margin.bottom)
-    .attr('stroke', (d, i) => (i > 0 ? 'rgba(178,178,178, 0.15)' : 'none'));
+    .attr('stroke', (d, i) => (i > 0 ? rgba(theme.color('neutral', '-4'), 0.15) : 'none'));
 
   const valueArea = d3.area()
     .x(d => xScale(d.time))
@@ -95,26 +106,28 @@ export default (data, {
   svg.append('path')
     .data([ data, ])
     .attr('d', valueArea)
-    .attr('fill', '#fce1ce')
-    .attr('opacity', 0.6);
+    .attr('fill', '#F2680A')
+    .attr('opacity', 0.2);
 
   svg.append('path')
     .attr('d', valueLine(data))
-    .attr('stroke', '#fce1ce')
+    .attr('stroke', '#F2680A')
     .attr('stroke-width', 3)
-    .attr('fill', 'none');
-
-  svg.append('path')
-    .attr('d', peRatioLine(data))
-    .attr('stroke', '#d5d6e9')
-    .attr('stroke-width', 3)
-    .attr('fill', 'none');
+    .attr('fill', 'none')
+    .attr('opacity', 0.4);
 
   svg.append('path')
     .data([ data, ])
     .attr('d', peRatioArea)
-    .attr('fill', '#d5d6e9')
-    .attr('opacity', 0.6);
+    .attr('fill', '#2E3191')
+    .attr('opacity', 0.2);
+
+  svg.append('path')
+    .attr('d', peRatioLine(data))
+    .attr('stroke', '#2E3191')
+    .attr('stroke-width', 3)
+    .attr('fill', 'none')
+    .attr('opacity', 0.5);
 
   const y1Axis = svg.append('g')
     .attr('transform', `translate(${margin.left}, 0)`)

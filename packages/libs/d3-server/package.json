@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
+    "babel-plugin-dynamic-import-node": "^2.2.0",
     "rimraf": "^2.6.2"
   },
   "dependencies": {
