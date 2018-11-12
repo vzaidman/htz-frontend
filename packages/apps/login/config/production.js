@@ -15,6 +15,7 @@ module.exports = {
       validate: '/validate',
     },
     image: 'https://images.haarets.co.il/image',
+    ds: 'https://ms-apps.haaretz.co.il/ds',
     htzFunction: 'http://docker.themarker.com:8129/htz-function',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
     graphql: defer(function () {
