@@ -2,7 +2,7 @@
 
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaComponent, } from 'react-fela';
 import {
   border,
   borderBottom,
@@ -42,7 +42,7 @@ const labelStyle = ({
   paddingInlineEnd: `${boxModel && boxModel.hp ? boxModel.hp : 1}rem`,
   width: '100%',
   ...(!isTextArea && !isContentEditable
-    ? { position: 'relative', marginTop: '1rem', }
+    ? { position: 'relative', }
     : {}),
   extend: [
     theme.type(theme.inputStyle.typeScale),
@@ -406,6 +406,11 @@ class TextInput extends Component {
      * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
      */
     miscStyles: stylesPropType,
+    /** style for the wrapper of the textInput */
+    wrapperStyle: PropTypes.oneOf([
+      PropTypes.func,
+      PropTypes.object,
+    ]),
   };
   static defaultProps = {
     attrs: null,
@@ -425,6 +430,7 @@ class TextInput extends Component {
     maxLength: null,
     minLength: null,
     miscStyles: null,
+    wrapperStyle: {},
     noteId: null,
     noteText: null,
     onBlur: null,
@@ -534,6 +540,7 @@ class TextInput extends Component {
       maxLength,
       minLength,
       miscStyles,
+      wrapperStyle,
       onBlur,
       onChange,
       onContentEditableChange,
@@ -553,7 +560,9 @@ class TextInput extends Component {
       (this.state.isFocused || !this.state.isInputEmpty);
 
     return (
-      <div>
+      <FelaComponent
+        style={wrapperStyle}
+      >
         <StyledLabel
           htmlFor={this.state.inputId}
           variant={variant}
@@ -711,7 +720,7 @@ class TextInput extends Component {
           noteId={this.state.noteId}
           variant={variant}
         />
-      </div>
+      </FelaComponent>
     );
   }
 }
