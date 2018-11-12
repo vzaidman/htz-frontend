@@ -8,7 +8,7 @@
   "license": "UNLICENSED",
   "main": "server.js",
   "scripts": {
-    "build": "htz-scripts build",
+    "build": "yarn clean && htz-scripts build",
     "clean": "htz-scripts clean",
     "debug": "htz-react-server htz --inspect",
     "format": "htz-scripts format",
