@@ -35,7 +35,7 @@ export default function MobileUserButton({ isLoggedIn, }) {
                   fontSize={-1}
                   {...(isLoggedIn
                     ? { onClick: () => logout(), }
-                    : { href: { url, }, })}
+                    : { href: url, })}
                 >
                   <IconAvatar size={3} miscStyles={{ marginLeft: '1rem', }} />
                   <span>{isLoggedIn ? userLoggedIn : noUserData}</span>
