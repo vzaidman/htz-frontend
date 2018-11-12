@@ -166,7 +166,7 @@ export const footerMobileListsI18n = Object.freeze({
     }),
     Object.freeze({
       text: 'צרו קשר',
-      link: 'https://www.haaretz.co.il/misc/contact-us',
+      link: 'https://www.haaretz.co.il/mobile/contact-us',
     }),
     Object.freeze({
       text: 'פרסמו באתר',
@@ -302,7 +302,7 @@ export const mobileUserMenuI18n = Object.freeze({
 });
 
 export const mobileReadingList = Object.freeze({
-  url: 'https://www.haaretz.co.il/readingList',
+  url: 'https://www.haaretz.co.il/reading-list',
   buttonText: 'רשימת הקריאה',
 });
 
