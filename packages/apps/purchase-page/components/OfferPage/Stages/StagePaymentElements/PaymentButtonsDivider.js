@@ -36,7 +36,7 @@ const secureLineStyle = theme => ({
 const iconContainerStyle = theme => ({
   transform: 'translateY(-75%)',
   display: 'inline-block',
-  color: theme.color('neutral', '-3'),
+  color: theme.color('neutral', '-2'),
   backgroundColor: 'white',
   paddingInlineEnd: '1rem',
   paddingInlineStart: '1rem',
