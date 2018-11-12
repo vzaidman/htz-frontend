@@ -3,9 +3,7 @@ import { CookieUtils, AbuseService, } from '@haaretz/htz-user-utils';
 import querystring from 'querystring';
 import withTimeout from './withTimeout';
 import extractParameter from './extractParamFromUrl';
-
-const isProduction = process.env.NODE_ENV === 'production';
-let dsUrl;
+import config from 'config';
 
 /**
  * This function is responsible for sending an action code with data
@@ -20,9 +18,9 @@ let dsUrl;
  * or rejected if a timeout (default: 5000ms) has been reached
  */
 export function doStatAction(action, user) {
-  dsUrl = `https://ms-apps.haaretz.co.il/${
-    isProduction ? 'ds' : 'ds-dev'
-  }/action`;
+  const dsActionService = `${config.get('service.ds')}/action`;
+
+
 
   const { additionalInfo, } = action;
   const serializedAdditionalInfo = JSON.stringify(
@@ -42,7 +40,7 @@ export function doStatAction(action, user) {
   };
 
   return withTimeout(
-    window.fetch(`${dsUrl}`, {
+    window.fetch(`${dsActionService}`, {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*',
@@ -81,9 +79,7 @@ export function doStat(user, lineage = [], writerId = null) {
     secondarySection = secondarySectionLineage.pathSegment || null;
   }
 
-  dsUrl = `https://ms-apps.haaretz.co.il/${
-    isProduction ? 'ds' : 'ds-dev'
-  }/request`;
+  const dsRequestService = `${config.get('service.ds')}/request`;
 
   const href = window.location.href;
   const statData = {
@@ -118,7 +114,7 @@ export function doStat(user, lineage = [], writerId = null) {
   };
 
   return withTimeout(
-    window.fetch(`${dsUrl}`, {
+    window.fetch(`${dsRequestService}`, {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*',
