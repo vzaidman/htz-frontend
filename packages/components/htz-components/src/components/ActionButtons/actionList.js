@@ -126,6 +126,22 @@ export const ActionButton = ({ render, }: ActionButtonProps): Node => (
   </Query>
 );
 
+const nonMobileStyles = theme => ({
+  ':visited': { color: theme.color('button', 'primaryText'), },
+  ':hover': {
+    backgroundColor: theme.color('button', 'primaryHoverBg'),
+    color: theme.color('button', 'primaryHoverText'),
+  },
+  ':active': {
+    backgroundColor: theme.color('button', 'primaryActiveBg'),
+    color: theme.color('button', 'primaryActiveText'),
+  },
+  ':focus': {
+    backgroundColor: theme.color('button', 'primaryFocusBg'),
+    color: theme.color('button', 'primaryFocusText'),
+  },
+});
+
 export const Button: StatelessFunctionalComponent<ButtonProps> = ({
   children,
   miscStyles,
@@ -148,20 +164,9 @@ export const Button: StatelessFunctionalComponent<ButtonProps> = ({
       paddingEnd: '2rem',
       position: 'relative',
       textAlign: 'center',
-      ':visited': { color: theme.color('button', 'primaryText'), },
-      ':hover': {
-        backgroundColor: theme.color('button', 'primaryHoverBg'),
-        color: theme.color('button', 'primaryHoverText'),
-      },
-      ':active': {
-        backgroundColor: theme.color('button', 'primaryActiveBg'),
-        color: theme.color('button', 'primaryActiveText'),
-      },
-      ':focus': {
-        backgroundColor: theme.color('button', 'primaryFocusBg'),
-        color: theme.color('button', 'primaryFocusText'),
-      },
       extend: [
+        theme.mq({ from: 's', misc: 'portrait', }, nonMobileStyles(theme)),
+        theme.mq({ from: 'm', misc: 'landscape', }, nonMobileStyles(theme)),
         ...(miscStyles
           ? parseStyleProps(miscStyles, theme.mq, theme.type)
           : []),
