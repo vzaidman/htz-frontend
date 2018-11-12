@@ -14,6 +14,7 @@ import A11yDialog from './components/A11yDialog/A11yDialog';
 import A11yError from './components/A11yError/A11yError';
 import ActionButtons from './components/ActionButtons/ActionButtons';
 import AriaLive from './components/AriaLive/AriaLive';
+import AriaDescription from './components/AriaDescription/AriaDescription';
 import ArticleBody from './components/ArticleBody/ArticleBody';
 import Query from './components/ApolloBoundary/Query';
 import Mutation from './components/ApolloBoundary/Mutation';
@@ -179,6 +180,7 @@ export {
   A11yError,
   ActionButtons,
   AriaLive,
+  AriaDescription,
   ArticleBody,
   Button,
   ButtonGroup,
