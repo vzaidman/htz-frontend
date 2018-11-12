@@ -1,24 +1,35 @@
-import React, { Component, } from 'react';
+import React from 'react';
+import gql from 'graphql-tag';
+import { ApolloConsumer } from 'react-apollo';
+import Query from '../ApolloBoundary/Query';
 
-global.instance = [];
-
-class Store extends Component {
-  set(k, v) {
-    if (!global.instance[k]) global.instance[k] = {};
-    global.instance[k].v = v;
-    if (global.instance[k].comp) {
-      global.instance[k].comp.map(v => v.forceUpdate());
-    }
-    return global.instance[k].v;
-  }
-
-  get(k) {
-    if (!global.instance[k].comp) {
-      global.instance[k].comp = [];
-    }
-    global.instance[k].comp.push(this);
-    return global.instance[k].v;
-  }
+function SetStore({ data }) {
+  return (
+    <ApolloConsumer>
+      {client => {
+        client.writeData({ data });
+        return null;
+      }}
+    </ApolloConsumer>
+  );
 }
 
-export default Store;
+function GetStore({ storeKey, children }) {
+  const GET_KEY = gql`
+    query getKey {
+      ${storeKey} @client
+    }
+  `;
+
+  return (
+    <Query query={GET_KEY}>
+      {({ data, error, loading }) => {
+        return children(data[storeKey]);
+      }}
+    </Query>
+  );
+}
+
+export { SetStore, GetStore };
+
+export default GetStore;
