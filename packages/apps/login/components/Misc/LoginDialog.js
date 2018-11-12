@@ -4,8 +4,8 @@ import { LoginDialogBox, } from '../StyleComponents/LoginStyleComponents';
 
 export default class LoginDialog extends Component {
   state = {
-    stageIndex: 0,            //current stage (grand-child) to display
-    stagesCap: 1,             //max stages
+    stageIndex: 0, // current stage (grand-child) to display
+    stagesCap: 1, // max stages
   };
 
   static propTypes = {
@@ -18,17 +18,17 @@ export default class LoginDialog extends Component {
      * handleClose: a function, should set the value passed to this modal's show prop to false
      */
     handleClose: PropTypes.func.isRequired,
-  }
+  };
 
   static defaultProps = {
     show: false,
-  }
+  };
 
   /* ------ Methods ----- */
   /** - returns all grand children passed to the component */
   getAllStages = () => {
     return React.Children.toArray(this.props.children(this.nextStage, this.hideDialog, this.getCloseButton).props.children);
-  }
+  };
 
   /** - return the grand child that should be displayd (according to state stageIndex) */
   getStage = () => {
@@ -43,11 +43,11 @@ export default class LoginDialog extends Component {
 
   /** - set the stageIndex to 0. used thwn closing the dialog */
   resetStages = () => {
-    this.setState({ stageIndex: 0 });
-  }
+    this.setState({ stageIndex: 0, });
+  };
 
   /** - returns grand children cound */
-  getStagesCount = () => React.Children.count(this.props.children().props.children)
+  getStagesCount = () => React.Children.count(this.props.children().props.children);
 
   /** - set max stages */
   setStageCap = () => {
@@ -61,13 +61,11 @@ export default class LoginDialog extends Component {
   };
 
   /** - create and return the close button layout */
-  getCloseButton = () => {
-    return (
-      <LoginDialogBox.CloseButton>
-        <button onClick={this.hideDialog}></button>
-      </LoginDialogBox.CloseButton>
-    )
-  }
+  getCloseButton = () => (
+    <LoginDialogBox.CloseButton>
+      <button onClick={this.hideDialog} />
+    </LoginDialogBox.CloseButton>
+  );
 
   /* ------- Render ----- */
   render() {

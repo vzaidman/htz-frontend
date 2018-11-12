@@ -7,6 +7,7 @@ import objTransform from '../../../util/objectTransformationUtil';
 import { storeFlowNumber, } from '../../FlowDispenser/flowStorage';
 import { saveUserData, getDataFromUserInfo, saveOtpHash, generateOtp, saveUserEmail, getEmail, mockDataFromUserInfo, } from '../../../pages/queryutil/userDetailsOperations';
 import { writeMetaDataToApollo, parseRouteInfo, } from '../../../pages/queryutil/flowUtil';
+import Preloader from '../../Misc/Preloader';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 
 // Styling Components -----------------
@@ -24,7 +25,7 @@ const validateEmailInput = ({ email, }) =>
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
-const handleGenerateOtp = ({ phoneNum, client, flow, route, showError, }) =>
+const handleGenerateOtp = ({ phoneNum, client, flow, route, showError, setPreloader, }) =>
   generateOtp(client)({ typeId: phoneNum, })
     .then(data => {
       const json = data.data.generateOtp;
@@ -33,12 +34,13 @@ const handleGenerateOtp = ({ phoneNum, client, flow, route, showError, }) =>
         Router.push(route);
       }
       else {
+        setPreloader(false);
         showError((json.msg || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."));
       }
     });
 
 const handleResponseFromGraphql =
-  ({ client, getFlowByData, email, res, showError, }) => {
+  ({ client, getFlowByData, email, res, showError, setPreloader, }) => {
     const dataSaved = saveUserData(client)({ userData: res.userByMail, });
     const transformedObj = objTransform(res);
 
@@ -65,6 +67,7 @@ const handleResponseFromGraphql =
         flow,
         route,
         showError,
+        setPreloader,
       });
     }
     else {
@@ -73,14 +76,21 @@ const handleResponseFromGraphql =
     }
   };
 
-const onSubmit = (client, getFlowByData, showError, hideError) => ({ email, }) => {
+const onSubmit = (client, getFlowByData, showError, hideError, setPreloader) => ({ email, }) => {
   hideError();
+  setPreloader(true);
   saveUserEmail(client)(email);
   // mockDataFromUserInfo(client)(email)
   getDataFromUserInfo(client)(email)
-    .then(res => handleResponseFromGraphql({ client, getFlowByData, email, res, showError, }))
+    .then(res => {
+      handleResponseFromGraphql({ client, getFlowByData, email, res, showError, setPreloader, });
+    })
     // TODO handle error
-    .catch(err => console.error(err));
+    .catch(err => {
+      setPreloader(false);
+      showError((err || 'אירעה שגיאה. אנא נסה שנית במועד מאוחר יותר'));
+      console.error(err);
+    });
 };
 // ------------------------------------
 
@@ -89,6 +99,7 @@ class IndexForm extends Component {
   state = {
     showError: false,
     errorMessage: '',
+    isLoading: false,
   }
 
   /* :::::::::::::::::::::::::::::::::::: { PROPS :::::::::::::::::::::::::::::::::::: */
@@ -106,6 +117,10 @@ class IndexForm extends Component {
   /* :::::::::::::::::::::::::::::::::::: PROPS } :::::::::::::::::::::::::::::::::::: */
 
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
+  componentDidMount() {
+    this.autoSubmit(this.props);
+  }
+
   showError = (errorMsg) => {
     this.setState({ showError: true, errorMessage: errorMsg, });
   }
@@ -113,11 +128,22 @@ class IndexForm extends Component {
   hideError = () => {
     this.setState({ showError: false, errorMessage: "", });
   }
+
+  setPreloader = (isLoadingStatus) => {
+    this.setState({ isLoading: !!isLoadingStatus, });
+  }
+
+  /**
+   * the autoSubmit method runs when the user returns to the login page from a confirmation email
+   */
+  autoSubmit = ({ client, getFlowByData, }) => {
+    const autoSubmit = onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader);
+  }
   /* ::::::::::::::::::::::::::::::::::: METHODS } ::::::::::::::::::::::::::::::::::: */
 
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { client, getFlowByData, theme } = this.props;
+    const { client, getFlowByData, theme, } = this.props;
     return (
       <FormWrapper>
         <ItemCenterer>
@@ -127,7 +153,7 @@ class IndexForm extends Component {
           clearFormAfterSubmit={false}
           // initialValues={{ email: 'insert email' }}
           validate={validateEmailInput}
-          onSubmit={onSubmit(client, getFlowByData, this.showError, this.hideError)}
+          onSubmit={onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader)}
           render={({ getInputProps, handleSubmit, clearForm, }) => (
             <Fragment>
               <TextInput
@@ -152,6 +178,7 @@ class IndexForm extends Component {
               </ErrorBox>
 
               <ItemCenterer>
+                <Preloader isLoading={this.state.isLoading} />
                 <Button onClick={handleSubmit}>המשך</Button>
               </ItemCenterer>
             </Fragment>
