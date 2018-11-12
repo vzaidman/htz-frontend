@@ -3,7 +3,7 @@ import Router from 'next/router';
 
 import { HtzLink, Register, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
 
-//import { mobileNumberParser, } from '@haaretz/htz-user-utils';
+// import { mobileNumberParser, } from '@haaretz/htz-user-utils';
 
 import FSMLayout from '../layouts/FSMLayout';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -52,7 +52,7 @@ const generateTermsError = message => generateError('terms', 5)(message);
 
 const isPassword = password => password.length > 5; // TODO: write proper password validation
 const isName = name => {
-  let regex = /^[a-zA-Z\u0590-\u05FF\'\- ]{2,30}$/;
+  const regex = /^[a-zA-Z\u0590-\u05FF\'\- ]{2,30}$/;
   return regex.test(name.trim());
 };
 
@@ -60,7 +60,7 @@ const isMobile = phone => {
   phone = phone.replace(/\s/g, '');
   const phoneRegex = /^(\s*|[+0-9]\d{6,})$/;
   return phoneRegex.test(phone);
-}
+};
 
 const isChecked = terms => !!terms;
 
@@ -84,7 +84,7 @@ const validateEmailInput = ({ email, }) =>
     : !isEmail(email)
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
-  
+
 const validateMobileInput = ({ phone, }) =>
   (!phone
     ? generateMobileError('אנא הזינו מספר טלפון נייד')
@@ -99,13 +99,11 @@ const validatePasswordInput = ({ password, }) =>
       ? generatePasswordError('ש להזין סיסמה בת 6 תווים ומעלה')
       : []); // password is valid
 
-const getTermsText = () => {
-  return (
-    <div>
+const getTermsText = () => (
+  <div>
       אני מאשר/ת קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ-TheMarker
-    </div>
-  );
-};
+  </div>
+);
 
 const mobileNumberParser = mobileNum => {
   let mobilePrefix;
@@ -119,17 +117,17 @@ const mobileNumberParser = mobileNum => {
     mobilePrefix = mobileNum.substring(0, 3);
     mobileSuffix = mobileNum.substring(3);
   }
-  return { mobilePrefix: mobilePrefix, mobileSuffix: mobileSuffix, };
+  return { mobilePrefix, mobileSuffix, };
 };
 
-const onSubmit = ({ register, doTransition, showError, hideError, setPreloader }) => ({ firstname, lastname, email, password, phone, terms, }) => {
+const onSubmit = ({ register, doTransition, showError, hideError, setPreloader, }) => ({ firstname, lastname, email, password, phone, terms, }) => {
   setPreloader(true);
   hideError();
   const { mobilePrefix, mobileSuffix, } = phone ? mobileNumberParser(phone) : { mobilePrefix: '', mobileSuffix: '', };
   register(
     email.trim(),
     password.trim(),
-    password.trim(), //for confirmation (the form has only 1 password field)
+    password.trim(), // for confirmation (the form has only 1 password field)
     firstname.trim(),
     lastname.trim(),
     mobilePrefix,
@@ -138,11 +136,11 @@ const onSubmit = ({ register, doTransition, showError, hideError, setPreloader }
   ).then(
     () => {
       setPreloader(false);
-      Router.push(doTransition('success'))
+      Router.push(doTransition('success'));
     },
     reason => {
       setPreloader(false);
-      showError((reason.message || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."));
+      showError((reason.message || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
     }
   );
 };
@@ -162,16 +160,16 @@ class RegisterPage extends Component {
   };
 
 
-  showError = (errorMsg) => {
+  showError = errorMsg => {
     this.setState({ showError: true, errorMessage: errorMsg, });
   }
 
   hideError = () => {
-    this.setState({ showError: false, errorMessage: "", });
+    this.setState({ showError: false, errorMessage: '', });
   }
-  
-  setPreloader = (isLoadingStatus) => {
-    this.setState({ isLoading: !!isLoadingStatus })
+
+  setPreloader = isLoadingStatus => {
+    this.setState({ isLoading: !!isLoadingStatus, });
   }
 
   isCheckboxError = () => !(this.state.isFirstTime || this.state.isChecked);
@@ -191,13 +189,13 @@ class RegisterPage extends Component {
     if (password !== null) {
       errors = [ ...errors, ...validatePasswordInput({ password, }), ];
     }
-    if(phone !== null && phone && phone.length > 0) {
+    if (phone !== null && phone && phone.length > 0) {
       errors = [ ...errors, ...validateMobileInput({ phone, }), ];
     }
     if (this.isCheckboxError()) {
       errors = [ ...errors, ...this.validateTermsInput(), ];
     }
-    //console.log(errors.map(arr => JSON.stringify(arr)));
+    // console.log(errors.map(arr => JSON.stringify(arr)));
     return errors;
   };
 
@@ -224,7 +222,7 @@ class RegisterPage extends Component {
                       clearFormAfterSubmit={false}
                       // initialValues={{ email: 'insert email' }}
                       validate={this.valdiateForm}
-                      onSubmit={onSubmit({ register, doTransition, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader })}
+                      onSubmit={onSubmit({ register, doTransition, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, })}
                       render={({ getInputProps, handleSubmit, clearForm, }) => (
                         <Fragment>
 
@@ -328,7 +326,7 @@ class RegisterPage extends Component {
                             />
                           </TermsWrapper>
 
-                          <ErrorBox className={this.state.showError ? "" : "hidden"}>
+                          <ErrorBox className={this.state.showError ? '' : 'hidden'}>
                             <span>
                               {this.state.errorMessage}
                             </span>
@@ -341,7 +339,8 @@ class RegisterPage extends Component {
                         </Fragment>
                       )}
                     />
-                  )}/>
+                  )}
+                  />
 
                   <BottomLinks spacing={2.5}>
                     <span>כבר רשומים? </span>
