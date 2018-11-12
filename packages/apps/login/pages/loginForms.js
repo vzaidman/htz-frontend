@@ -16,6 +16,7 @@ import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
 } from '../components/StyleComponents/LoginStyleComponents';
+import Preloader from '../components/Misc/Preloader';
 
 import TabsFrame from '../components/Misc/TabsFrame';
 import LoginDialog from '../components/Misc/LoginDialog';
@@ -27,6 +28,7 @@ import { PhoneInputForm, } from '../components/Misc/Forms/PhoneInputForm';
 import OtpForm from '../components/Misc/Forms/OtpForm';
 import { getHost } from '../util/requestUtil';
 import { PhoneForms } from '../components/Misc/Forms/PhoneForms';
+import ResetPasswordForm from '../components/Misc/Forms/ResetPasswordForm';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -70,8 +72,9 @@ const onResetPassword = ({ host, nextStage, }) => ({ email, }) => {
   });
 };
 
-const onSubmit = ({ login, host, }, showErrorHandler, hideErrorHandler) =>
+const onSubmit = ({ login, host, }, showErrorHandler, hideErrorHandler, setPreloader) =>
   ({ email, password, }) => {
+    setPreloader(true);
     hideErrorHandler();
     login(email, password)
       .then(
@@ -79,6 +82,7 @@ const onSubmit = ({ login, host, }, showErrorHandler, hideErrorHandler) =>
           window.location = `https://www.${host}`;
         },
         reason => {
+          setPreloader(false);
           showErrorHandler(reason.message);
         }
       );
@@ -131,6 +135,7 @@ class LoginForms extends Component {
     showError: false,
     errorMessage: '',
     rightForm: null,
+    isLoading: false,
   };
 
   showDialog = () => {
@@ -139,6 +144,10 @@ class LoginForms extends Component {
 
   hideDialog = () => {
     this.setState({ showDialog: false, })
+  }
+
+  setPreloader = (isLoadingStatus) => {
+    this.setState({ isLoading: !!isLoadingStatus, });
   }
 
   getDialogState = () => {
@@ -248,7 +257,7 @@ class LoginForms extends Component {
                                     clearFormAfterSubmit={false}
                                     // initialValues={{ email: 'insert email' }}
                                     validate={validateForm}
-                                    onSubmit={onSubmit({ login, host, }, this.showError, this.hideError, )}
+                                    onSubmit={onSubmit({ login, host, }, this.showError, this.hideError, this.setPreloader )}
                                     render={({ getInputProps, handleSubmit, clearForm, }) => (
                                       <Fragment>
                                         <div>
@@ -302,6 +311,7 @@ class LoginForms extends Component {
                                         </ErrorBox>
 
                                         <ItemCenterer>
+                                          <Preloader isLoading={this.state.isLoading} />
                                           <Button onClick={handleSubmit}>התחברות</Button>
                                         </ItemCenterer>
                                       </Fragment>
