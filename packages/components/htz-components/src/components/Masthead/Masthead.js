@@ -75,11 +75,10 @@ class Masthead extends Component {
           <Fragment>
             <LayoutRow
               miscStyles={{
-                transitionProperty: 'transform',
-                ...theme.getDelay('transition', -1),
-                ...theme.getDuration('transition', -1),
-                ...theme.getTimingFunction('transition', 'linear'),
-                top: [ { until: 's', value: 0, }, { until: 'm', misc: 'landscape', value: 0, }, ],
+                top: [
+                  { until: 's', value: 0, },
+                  { until: 'm', misc: 'landscape', value: 0, },
+                ],
                 position: [
                   { until: 's', value: 'sticky', },
                   { until: 'm', misc: 'landscape', value: 'sticky', },
@@ -142,7 +141,6 @@ class Masthead extends Component {
               style={{
                 backgroundColor: 'transparent',
                 transform: `translate(50%, ${shouldDisplay ? '0' : '110'}%)`,
-                transitionProperty: 'transform',
                 position: 'fixed',
                 start: '50%',
                 bottom: '0',
@@ -150,9 +148,6 @@ class Masthead extends Component {
                 zIndex: theme.getZIndex('modal', 1),
                 display: 'none',
                 extend: [
-                  theme.getDelay('transition', -1),
-                  theme.getDuration('transition', -1),
-                  theme.getTimingFunction('transition', 'linear'),
                   theme.mq({ until: 's', }, { display: 'initial', }),
                   theme.mq({ until: 'm', misc: 'landscape', }, { display: 'initial', }),
                 ],
