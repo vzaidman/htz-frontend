@@ -141,6 +141,16 @@ const createDocument = ({
                 content="s8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY"
               />
             ) : null}
+
+            <style
+              dangerouslySetInnerHTML={{
+                __html: `
+                :-moz-focusring {
+                  outline: 2px dotted #0B7EB5;
+                }
+                `,
+              }}
+            />
           </Head>
           <body>
             <Main />
