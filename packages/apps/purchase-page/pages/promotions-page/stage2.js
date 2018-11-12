@@ -133,6 +133,7 @@ class Stage2 extends Component {
                                   stageElement={
                                     <ChooseProductStage
                                       host={hostname.includes('themarker') ? 'TM' : 'HTZ'}
+                                      chosenSubscription={chosenSlot.subscriptionName}
                                       chosenProductIndex={chosenProductIndex}
                                       couponExist={chosenSlot.couponExist}
                                       couponProduct={couponProduct}

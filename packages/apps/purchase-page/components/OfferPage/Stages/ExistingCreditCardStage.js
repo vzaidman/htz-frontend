@@ -1,4 +1,4 @@
-/* global window sessionStorage */
+/* global window sessionStorage fbq */
 
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
@@ -77,6 +77,7 @@ function DisplayError() {
 
 class Wrapper extends Component {
   static propTypes = {
+    chosenSubscription: PropTypes.string.isRequired,
     chosenPaymentArrangement: PropTypes.string.isRequired,
     chosenProductContentName: PropTypes.string.isRequired,
     hostname: PropTypes.string.isRequired,
@@ -99,6 +100,7 @@ class Wrapper extends Component {
   }
   render() {
     const {
+      chosenSubscription,
       chosenPaymentArrangement,
       chosenProductContentName,
       hostname,
@@ -142,6 +144,18 @@ class Wrapper extends Component {
           }
 
           if (data.payWithExistingCard.success) {
+            if (fbq) {
+              fbq('track', `Purchase_${chosenSubscription}`);
+              fbq('track', 'Subscribe', {
+                value: paymentData.prices[0].toString(),
+                currency: 'ILS',
+                subscription_id: `${Math.floor(Math.random() * 1000000000000)}`,
+                offer_id: paymentData.saleCode,
+              });
+            }
+else {
+              console.warn('tried to fire a facebook pixel event but fbq is not defined');
+            }
             ReactGA.ga('ec:addProduct', {
               id: paymentData.saleCode,
               name: `${chosenPaymentArrangement}-${chosenProductContentName}`,

@@ -7,6 +7,7 @@ import Offer from './Offer';
 
 const propTypes = {
   cancelButtonText: PropTypes.string.isRequired,
+  chosenSubscription: PropTypes.string.isRequired,
   contentName: PropTypes.string.isRequired,
   fourDigits: PropTypes.string,
   offerList: PropTypes.arrayOf(
@@ -45,6 +46,7 @@ const contStyle = theme => ({
 });
 
 function OfferList({
+  chosenSubscription,
   offerList,
   cancelButtonText,
   termsButtonText,
@@ -73,6 +75,7 @@ function OfferList({
                   offerIdx={idx}
                   router={router}
                   contentName={contentName}
+                  chosenSubscription={chosenSubscription}
                 />
               ))
             }

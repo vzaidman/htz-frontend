@@ -4,12 +4,7 @@ import { StyleProvider, } from '@haaretz/fela-utils';
 import { createComponent, FelaComponent, } from 'react-fela';
 import Head from 'next/head';
 // import { UserInjector, appendScript, } from '@haaretz/htz-components';
-import {
-  UserInjector,
-  BIRequest,
-  GoogleAnalytics,
-  Query,
-} from '@haaretz/htz-components';
+import { UserInjector, BIRequest, GoogleAnalytics, Query, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 
 import theme from '../theme';
@@ -18,6 +13,7 @@ import PurchaseHeader from '../components/PurchaseHeader/PurchaseHeader';
 import PurchasePageFooter from '../components/PurchasePageFooter/PurchasePageFooter'; // eslint-disable-line import/no-named-as-default
 import UserBanner from '../components/UserBanner/UserBanner';
 import Scripts from '../components/Scripts/Scripts';
+import InitPixel from '../components/Scripts/InitPixel';
 
 const GET_HOST_NAME = gql`
   query {
@@ -101,6 +97,7 @@ function MainLayout({
         const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
         return (
           <Fragment>
+            <InitPixel pixelId={host === 'themarker.com' ? '288453064669123' : '1465233127023021'} />
             <GoogleAnalytics withEC />
             <UserInjector />
             <StyleProvider renderer={styleRenderer} theme={theme(host)}>
@@ -116,10 +113,7 @@ function MainLayout({
                     <Head>
                       <title>{title}</title>
                       <meta name="description" content={description} />
-                      <meta
-                        name="google-site-verification"
-                        content={googleSiteVerification}
-                      />
+                      <meta name="google-site-verification" content={googleSiteVerification} />
                     </Head>
                     <div id="pageRoot">
                       <StyledWrapper>
@@ -147,7 +141,7 @@ function MainLayout({
               />
             </StyleProvider>
             <BIRequest />
-            <Scripts thankYou={isThankYou} userPaid={userPaid} />
+            <Scripts />
           </Fragment>
         );
       }}

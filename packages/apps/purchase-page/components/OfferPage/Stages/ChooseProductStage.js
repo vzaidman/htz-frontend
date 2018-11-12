@@ -69,6 +69,7 @@ const couponButtonsMiscStyles = {
 class ChooseProductStage extends Component {
   static propTypes = {
     chosenProductIndex: PropTypes.number.isRequired,
+    chosenSubscription: PropTypes.string.isRequired,
     couponExist: PropTypes.bool,
     /** JSON of a couponProduct, needs to be parsed */
     couponProduct: PropTypes.string,
@@ -159,6 +160,7 @@ class ChooseProductStage extends Component {
   render() {
     const {
       chosenProductIndex,
+      chosenSubscription,
       couponExist,
       couponProduct,
       host,
@@ -208,6 +210,7 @@ class ChooseProductStage extends Component {
                 />
                 <UserMessage userMessage={userMessage} />
                 <OfferList
+                  chosenSubscription={chosenSubscription}
                   contentName={contentName}
                   cancelButtonText={cancelButtonText}
                   fourDigits={fourDigits}

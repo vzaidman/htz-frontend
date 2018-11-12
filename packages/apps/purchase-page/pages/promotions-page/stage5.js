@@ -73,8 +73,10 @@ class Stage5 extends Component {
                   } = clientData;
 
                   if (
-                      typeof window !== 'undefined' && paymentType !== 'PayPal' &&
-                      (window.sessionStorage.getItem('htz-revenue') || window.sessionStorage.getItem('htz-paypal'))
+                    typeof window !== 'undefined' &&
+                    paymentType !== 'PayPal' &&
+                    (window.sessionStorage.getItem('htz-revenue') ||
+                      window.sessionStorage.getItem('htz-paypal'))
                   ) {
                     window.sessionStorage.removeItem('htz-paypal');
                     window.sessionStorage.removeItem('htz-revenue');
@@ -136,6 +138,7 @@ class Stage5 extends Component {
                                       <PayPalStage creditGuardSrc={creditGuardSrc} />
                                     ) : paymentType === 'existingCreditCard' ? (
                                       <ExistingCreditCardStage
+                                        chosenSubscription={chosenSubscription}
                                         chosenPaymentArrangement={chosenPaymentArrangement}
                                         chosenProductContentName={chosenProductContentName}
                                         hostname={hostname}
