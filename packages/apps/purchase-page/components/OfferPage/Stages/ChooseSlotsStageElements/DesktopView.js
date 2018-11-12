@@ -15,6 +15,7 @@ import {
   GridItem,
   H,
   EventTracker,
+  AriaDescription,
   ApolloConsumer,
 } from '@haaretz/htz-components';
 import PositiveCircle from './PositiveCircle';
@@ -52,7 +53,7 @@ const tableStyle = ({ theme, }) => ({
   extend: [ theme.mq({ until: 'l', }, { display: 'none', }), ],
 });
 
-const StyledTable = createComponent(tableStyle, 'table');
+const StyledTable = createComponent(tableStyle, 'div');
 
 const theadStyle = () => ({
   display: 'table',
@@ -61,20 +62,20 @@ const theadStyle = () => ({
   top: 0,
 });
 
-const StyledThead = createComponent(theadStyle, 'thead');
+const StyledThead = createComponent(theadStyle, 'div');
 
 const tFootStyle = () => ({
   display: 'table',
   width: '100%',
 });
 
-const StyledTFoot = createComponent(tFootStyle, 'tfoot');
+const StyledTFoot = createComponent(tFootStyle, 'div');
 
 const tBodyStyle = () => ({
   display: 'table',
   width: '100%',
 });
-const StyledTBody = createComponent(tBodyStyle, 'tbody');
+const StyledTBody = createComponent(tBodyStyle, 'div');
 
 const thInnerContStyle = ({
   hasBorderTop = false,
@@ -314,13 +315,13 @@ function DesktopView({
           <StyledTable>
             <StyledThead>
               <Grid
-                tagName="tr"
+                tagName="div"
                 gutter={0}
                 align="center"
                 vAlign="bottom"
                 miscStyles={{ backgroundColor: 'transparent', }}
               >
-                <GridItem width={1 / 4} tagName="th">
+                <GridItem width={1 / 4} tagName="div">
                   <StyledThInnerCont />
                 </GridItem>
                 {tHeadData.map((item, idx) => (
@@ -331,9 +332,8 @@ function DesktopView({
                         ? `${item.subscriptionName}TableHead`
                         : null
                     }
-                    tagName="th"
-                    key={item.heading}
-                  >
+                    tagName="div"
+                    key={item.heading}>
                     <EventTracker>
                       {({ biAction, gaAction, }) => (
                         <StyledThInnerCont
@@ -418,7 +418,7 @@ function DesktopView({
             <StyledTBody>
               {tBodyData.map((row, rowNum) => (
                 <Grid
-                  tagName="tr"
+                  tagName="div"
                   gutter={0}
                   align="center"
                   vAlign="stretch"
@@ -427,7 +427,7 @@ function DesktopView({
                   {row.map((cellData, idx) => (
                     <GridItem
                       width={1 / 4}
-                      tagName="td"
+                      tagName="div"
                       id={idx === 0 ? `itemDescription${rowNum}` : null}
                       attrs={{
                         headers:
@@ -466,11 +466,17 @@ function DesktopView({
                             </FelaComponent>
                           ))
                         ) : cellData ? (
-                          <PositiveCircle
-                            header={`${
-                              tHeadData[idx - 1].subscriptionName
-                            }TableHead `}
-                          />
+                          <React.Fragment>
+                            <AriaDescription>
+                              {tHeadData[idx - 1].heading}
+                            </AriaDescription>
+                            <AriaDescription>{row[0]}</AriaDescription>
+                            <PositiveCircle
+                              header={`${
+                                tHeadData[idx - 1].subscriptionName
+                              }TableHead `}
+                            />
+                          </React.Fragment>
                         ) : (
                           ''
                         )}
@@ -481,12 +487,12 @@ function DesktopView({
               ))}
             </StyledTBody>
             <StyledTFoot>
-              <Grid tagName="tr" gutter={0} align="center" vAlign="top">
-                <GridItem width={1 / 4} tagName="td">
+              <Grid tagName="div" gutter={0} align="center" vAlign="top">
+                <GridItem width={1 / 4} tagName="div">
                   <StyledTdFootInnerCont />
                 </GridItem>
                 {tHeadData.map((item, idx) => (
-                  <GridItem width={1 / 4} tagName="td" key={Math.random()}>
+                  <GridItem width={1 / 4} tagName="div" key={Math.random()}>
                     <StyledTdFootInnerCont
                       hasBorderBottom
                       hasBorderStart
