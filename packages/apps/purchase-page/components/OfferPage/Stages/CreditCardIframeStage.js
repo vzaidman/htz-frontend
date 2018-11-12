@@ -1,4 +1,4 @@
-/* global sessionStorage */
+/* global sessionStorage fbq */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
@@ -68,6 +68,18 @@ function CreditCardIframeStage({
                 if (msgData.type === 'cgmessage') {
                   switch (msgData.command) {
                     case 'thank_user': {
+                      if (fbq) {
+                        fbq('track', `Purchase_${chosenSubscription}`);
+                        fbq('track', 'Subscribe', {
+                          value: paymentData.prices[0].toString(),
+                          currency: 'ILS',
+                          subscription_id: `${Math.floor(Math.random() * 1000000000000)}`,
+                          offer_id: paymentData.saleCode,
+                        });
+                      }
+ else {
+                        console.warn('tried to fire a facebook pixel event but fbq is not defined');
+                      }
                       HtzReactGA.ga('ec:addProduct', {
                         id: paymentData.saleCode,
                         name: `${chosenPaymentArrangement}-${chosenProductContentName}`,

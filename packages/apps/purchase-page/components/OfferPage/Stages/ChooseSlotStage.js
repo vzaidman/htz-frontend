@@ -1,3 +1,4 @@
+/* global fbq */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
@@ -96,11 +97,26 @@ class ChooseSlotStage extends React.Component {
     ReactGA.ga('send', 'pageview');
   }
   render() {
-    const { host, tableData, sale, subStage, userMessage, router, accountLinkToken, fbRedirectUri, } = this.props;
+    const {
+      host,
+      tableData,
+      sale,
+      subStage,
+      userMessage,
+      router,
+      accountLinkToken,
+      fbRedirectUri,
+    } = this.props;
 
     const { pathName, asPath, } = pathGenerator('stage2', router);
 
     const continueToNextStage = ({ cache, idx, routerPush = false, }) => {
+      if (fbq) {
+        fbq('track', `AddtoCart_${tableData[idx].subscriptionName}`);
+      }
+      else {
+        console.warn('tried to fire a facebook pixel event but fbq is not defined');
+      }
       cache.writeData({
         data: {
           promotionsPageState: {

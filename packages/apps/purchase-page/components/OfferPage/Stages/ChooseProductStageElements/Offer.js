@@ -1,3 +1,4 @@
+/* global fbq */
 import React from 'react';
 import { createComponent, FelaComponent, } from 'react-fela';
 import ReactGA from 'react-ga';
@@ -164,6 +165,7 @@ const StyledBannerInnerCont = createComponent(bannerInnerContStyle);
 /* eslint-disable react/prop-types */
 const DesktopOffer = ({
   cancelButtonText,
+  chosenSubscription,
   contentName,
   offer,
   openModal,
@@ -179,6 +181,12 @@ const DesktopOffer = ({
   );
 
   const continueToNextStage = ({ cache, idx, routerPush = false, }) => {
+    if (fbq) {
+      fbq('track', `AddtoCart_${chosenSubscription}`);
+    }
+    else {
+      console.warn('tried to fire a facebook pixel event but fbq is not defined');
+    }
     cache.writeData({
       data: {
         promotionsPageState: {
