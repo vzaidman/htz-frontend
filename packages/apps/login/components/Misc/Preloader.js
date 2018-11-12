@@ -1,5 +1,6 @@
 import React from 'react';
 import { FelaTheme, createComponent, } from 'react-fela';
+import { IconHtzLoader, } from '@haaretz/htz-components';
 
 const wrapperStyle = () => ({
   display: 'flex',
@@ -16,12 +17,10 @@ const wrapperStyle = () => ({
 
 const Wrapper = createComponent(wrapperStyle);
 
-const Preloader = (props) => {
-  return props.isLoading ? (
-    <Wrapper>
-      
-    </Wrapper>
-  ) : null;
-}
+const Preloader = props => (props.isLoading ? (
+  <Wrapper>
+    <IconHtzLoader />
+  </Wrapper>
+) : null);
 
 export default Preloader;
