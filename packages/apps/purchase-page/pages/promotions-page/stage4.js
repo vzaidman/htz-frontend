@@ -43,7 +43,7 @@ class Stage4 extends Component {
         },
       } = this.props;
       // eslint-disable-next-line
-      isFbInstant = !(account_linking_token && redirect_uri);
+      isFbInstant = !!(account_linking_token && redirect_uri);
     }
     return (
       <MainLayout>
