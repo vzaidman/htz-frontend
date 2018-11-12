@@ -1,5 +1,6 @@
 import { createApp, } from '@haaretz/htz-components';
 import { withData, } from '@haaretz/app-utils';
+import InitPixel from '../components/Scripts/InitPixel';
 
 const initialState = referer => ({
   loggedInOrRegistered: null,
@@ -19,4 +20,4 @@ const initialState = referer => ({
   startFromStage2: true,
 });
 
-export default withData(createApp(), initialState);
+export default withData(createApp(InitPixel), initialState);

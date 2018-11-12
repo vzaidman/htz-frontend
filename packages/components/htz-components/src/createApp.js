@@ -3,7 +3,7 @@ import React from 'react';
 import { ApolloProvider, } from 'react-apollo';
 import { LevelProvider, } from './components/AutoLevels/LevelContext';
 
-const createApp = () =>
+const createApp = AdditionalComponent =>
   class NextApp extends App {
     render() {
       const { Component, initialProps, apolloClient, router, } = this.props;
@@ -12,6 +12,7 @@ const createApp = () =>
           <ApolloProvider client={apolloClient}>
             <LevelProvider value={1}>
               <Component {...initialProps} url={router} />
+              <AdditionalComponent />
             </LevelProvider>
           </ApolloProvider>
         </Container>

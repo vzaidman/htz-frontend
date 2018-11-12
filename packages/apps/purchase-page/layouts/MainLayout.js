@@ -13,7 +13,7 @@ import PurchaseHeader from '../components/PurchaseHeader/PurchaseHeader';
 import PurchasePageFooter from '../components/PurchasePageFooter/PurchasePageFooter'; // eslint-disable-line import/no-named-as-default
 import UserBanner from '../components/UserBanner/UserBanner';
 import Scripts from '../components/Scripts/Scripts';
-import InitPixel from '../components/Scripts/InitPixel';
+
 
 const GET_HOST_NAME = gql`
   query {
@@ -97,7 +97,6 @@ function MainLayout({
         const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
         return (
           <Fragment>
-            <InitPixel pixelId={host === 'themarker.com' ? '288453064669123' : '1465233127023021'} />
             <GoogleAnalytics withEC />
             <UserInjector />
             <StyleProvider renderer={styleRenderer} theme={theme(host)}>
