@@ -29,13 +29,21 @@ ListWrapper.propTypes = {
    * Passed to the underlying react element
    */
   attrs: attrsPropType,
+  closeList: PropTypes.func,
 };
 
 ListWrapper.defaultProps = {
   attrs: null,
+  closeList: () => {},
 };
 
-export default function ListWrapper({ children, listStyle, itemStyle, attrs, }) {
+export default function ListWrapper({
+  children,
+  listStyle,
+  itemStyle,
+  attrs,
+  closeList,
+}) {
   return (
     <FelaComponent
       rule={listStyle}
@@ -43,7 +51,14 @@ export default function ListWrapper({ children, listStyle, itemStyle, attrs, }) 
         <FocusLock>
           <ul className={className} {...attrs}>
             {children.map(child => (
-              <ListItem itemStyle={itemStyle} key={child.key}>
+              <ListItem
+                itemStyle={itemStyle}
+                key={child.key}
+                onBlur={e => {
+                  if (child === children.slice(-1)[0]) {
+                    closeList();
+                  }
+                }}>
                 {child}
               </ListItem>
             ))}

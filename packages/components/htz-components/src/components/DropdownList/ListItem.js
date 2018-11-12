@@ -13,13 +13,22 @@ ListItem.propTypes = {
    */
   // eslint-disable-next-line react/forbid-prop-types
   itemStyle: PropTypes.object.isRequired,
+  onBlur: PropTypes.func,
 };
 
-export default function ListItem({ children, itemStyle, }) {
+ListItem.defaultProps = {
+  onBlur: () => {},
+};
+
+export default function ListItem({ children, itemStyle, onBlur }) {
   return (
     <FelaComponent
       style={itemStyle}
-      render={({ className, }) => <li className={className}>{children}</li>}
+      render={({ className }) => (
+        <li className={className} onBlur={onBlur}>
+          {children}
+        </li>
+      )}
     />
   );
 }

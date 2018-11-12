@@ -131,9 +131,13 @@ class DropdownList extends React.Component {
             className={className}
             ref={wrapper => {
               this.wrapper = wrapper;
-            }}
-          >
-            {render({ renderButton, ListWrapper, isOpen, })}
+            }}>
+            {render({
+              renderButton,
+              ListWrapper,
+              isOpen,
+              closeList: this.closeList,
+            })}
           </div>
         )}
       />

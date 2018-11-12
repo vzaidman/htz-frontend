@@ -88,8 +88,8 @@ const MastheadA11yMenu = () => (
 
       return (
         <DropdownList
-          mainMenuStyle={{ position: 'relative', }}
-          render={({ renderButton, ListWrapper, isOpen, }) => (
+          mainMenuStyle={{ position: 'relative' }}
+          render={({ renderButton, ListWrapper, isOpen, closeList }) => (
             <Fragment>
               {renderButton(({ toggleState, }) => (
                 <FelaComponent
@@ -112,7 +112,7 @@ const MastheadA11yMenu = () => (
                     <ListWrapper
                       listStyle={{ ...dropdownListStyle(theme), end: '0', }}
                       itemStyle={dropdownItemStyle(theme)}
-                    >
+                      closeList={closeList}>
                       {combinedItems}
                     </ListWrapper>
                   )}
