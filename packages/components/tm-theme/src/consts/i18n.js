@@ -295,7 +295,7 @@ export const mobileAdditionalShare = Object.freeze({
 export const mobileUserMenuI18n = Object.freeze({
   noUserData: 'כניסה',
   userLoggedIn: 'יציאה',
-  url: 'https://www.haaretz.co.il/misc/login-page',
+  url: 'https://www.haaretz.co.il/mobile/login',
 });
 
 export const mobileReadingList = Object.freeze({
