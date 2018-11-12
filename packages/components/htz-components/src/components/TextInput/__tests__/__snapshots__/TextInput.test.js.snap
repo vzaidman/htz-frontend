@@ -2,7 +2,9 @@
 
 exports[`<TextInput> DOM element renders correctly a contentEditable div 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
       htmlFor="0.123456789"
@@ -108,7 +110,9 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div 2`] = `
 
 exports[`<TextInput> DOM element renders correctly a contentEditable div with label 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
       htmlFor="0.123456789"
@@ -216,108 +220,9 @@ exports[`<TextInput> DOM element renders correctly a contentEditable div with la
 
 exports[`<TextInput> DOM element renders correctly a disabled input 1`] = `
 <div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="0.123456789"
-    >
-      <div
-        className=""
-      >
-        <span
-          className="htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-d htz-e htz-ap htz-aq htz-ar htz-as htz-at"
-        />
-      </div>
-      <input
-        className="htz-au htz-av htz-aw htz-f htz-a htz-ax htz-ay"
-        disabled={true}
-        id="0.123456789"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="text"
-      />
-    </label>
-    <span
-      className="htz-az htz-ba htz-bb htz-bc htz-bd htz-be"
-      id={null}
-    />
-  </div>
-</div>
-`;
-
-exports[`<TextInput> DOM element renders correctly a disabled input 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah:hover{cursor:not-allowed}.htz-ai{-webkit-box-align:center}.htz-aj{white-space:nowrap}.htz-ak{margin-left:1rem}.htz-al{color:#B4B4B4}.htz-am{font-weight:bold}.htz-an{transition-property:transform}.htz-ao{bottom:0.7rem}.htz-ap{margin-right:-1rem}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{-webkit-transition-property:transform}.htz-at{-moz-transition-property:transform}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}.htz-be{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
-
-exports[`<TextInput> DOM element renders correctly a disabled input 3`] = `
-<div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="0.123456789"
-    >
-      <div
-        className=""
-      >
-        <span
-          className="htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-d htz-e htz-ap htz-aq htz-ar htz-as htz-at"
-        />
-      </div>
-      <input
-        className="htz-au htz-av htz-aw htz-f htz-a htz-ax htz-ay"
-        disabled={true}
-        id="0.123456789"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="text"
-      />
-    </label>
-    <span
-      className="htz-az htz-ba htz-bb htz-bc htz-bd htz-be"
-      id={null}
-    />
-  </div>
-</div>
-`;
-
-exports[`<TextInput> DOM element renders correctly a disabled input 4`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah:hover{cursor:not-allowed}.htz-ai{-webkit-box-align:center}.htz-aj{white-space:nowrap}.htz-ak{margin-left:1rem}.htz-al{color:#B4B4B4}.htz-am{font-weight:bold}.htz-an{transition-property:transform}.htz-ao{bottom:0.7rem}.htz-ap{margin-right:-1rem}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{-webkit-transition-property:transform}.htz-at{-moz-transition-property:transform}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}.htz-be{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
-
-exports[`<TextInput> DOM element renders correctly a input with a miscStyles prop 1`] = `
-<div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
-      htmlFor="0.123456789"
-    >
-      <div
-        className=""
-      >
-        <span
-          className="htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-d htz-e htz-ap htz-aq htz-ar htz-as htz-at"
-        />
-      </div>
-      <input
-        className="htz-au htz-av htz-aw htz-f htz-a htz-ax htz-ay"
-        id="0.123456789"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="text"
-      />
-    </label>
-    <span
-      className="htz-az htz-ba htz-bb htz-bc htz-bd htz-be"
-      id={null}
-    />
-  </div>
-</div>
-`;
-
-exports[`<TextInput> DOM element renders correctly a input with a miscStyles prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae{padding:5.32rem}.htz-af:hover{background-color:#E6EDF0}.htz-ag:hover{border-color:#DAE9F2}.htz-ah:hover{color:#2D2D2D}.htz-ai{-webkit-box-align:center}.htz-aj{white-space:nowrap}.htz-ak{margin-left:1rem}.htz-al{color:#006B96}.htz-am{font-weight:bold}.htz-an{transition-property:transform}.htz-ao{bottom:0.7rem}.htz-ap{margin-right:-1rem}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{-webkit-transition-property:transform}.htz-at{-moz-transition-property:transform}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}.htz-be{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
-
-exports[`<TextInput> DOM element renders correctly a input with a onInput function 1`] = `
-<div>
-  <div>
+  <div
+    className=""
+  >
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
       htmlFor="0.123456789"
@@ -331,6 +236,113 @@ exports[`<TextInput> DOM element renders correctly a input with a onInput functi
       </div>
       <input
         className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
+        disabled={true}
+        id="0.123456789"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </label>
+    <span
+      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      id={null}
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextInput> DOM element renders correctly a disabled input 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag:hover{cursor:not-allowed}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#B4B4B4}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+
+exports[`<TextInput> DOM element renders correctly a disabled input 3`] = `
+<div>
+  <div
+    className=""
+  >
+    <label
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+      htmlFor="0.123456789"
+    >
+      <div
+        className=""
+      >
+        <span
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
+        />
+      </div>
+      <input
+        className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
+        disabled={true}
+        id="0.123456789"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </label>
+    <span
+      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      id={null}
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextInput> DOM element renders correctly a disabled input 4`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag:hover{cursor:not-allowed}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#B4B4B4}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+
+exports[`<TextInput> DOM element renders correctly a input with a miscStyles prop 1`] = `
+<div>
+  <div
+    className=""
+  >
+    <label
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+      htmlFor="0.123456789"
+    >
+      <div
+        className=""
+      >
+        <span
+          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
+        />
+      </div>
+      <input
+        className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
+        id="0.123456789"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </label>
+    <span
+      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      id={null}
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextInput> DOM element renders correctly a input with a miscStyles prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac{padding:5.32rem}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+
+exports[`<TextInput> DOM element renders correctly a input with a onInput function 1`] = `
+<div>
+  <div
+    className=""
+  >
+    <label
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
+      htmlFor="0.123456789"
+    >
+      <div
+        className=""
+      >
+        <span
+          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
+        />
+      </div>
+      <input
+        className="htz-as htz-at htz-au htz-f htz-a htz-av htz-aw"
         id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -340,31 +352,33 @@ exports[`<TextInput> DOM element renders correctly a input with a onInput functi
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a input with a onInput function 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a input with a onInput function 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a input with a placeholder 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
       htmlFor="0.123456789"
     >
       <div
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
-        className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-f htz-a htz-av htz-aw"
         id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -374,104 +388,20 @@ exports[`<TextInput> DOM element renders correctly a input with a placeholder 1`
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a input with a placeholder 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a input with a placeholder 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a input with a requiredText 1`] = `
 <div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="0.123456789"
-    >
-      <div
-        className=""
-      >
-        <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
-        >
-          <abbr
-            className="htz-at htz-au"
-            title="im required"
-          >
-             
-            <sup>
-              *
-            </sup>
-          </abbr>
-        </span>
-      </div>
-      <input
-        className="htz-av htz-aw htz-ax htz-f htz-a htz-ay htz-az"
-        id="0.123456789"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="text"
-      />
-    </label>
-    <span
-      className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
-      id={null}
-    />
-  </div>
-</div>
-`;
-
-exports[`<TextInput> DOM element renders correctly a input with a requiredText 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at[title]{text-decoration:none}.htz-au{color:green}.htz-av{border:none}.htz-aw{background-color:transparent}.htz-ax{font-size:inherit}.htz-ay:focus{outline:none}.htz-az:focus{cursor:text}.htz-ba{display:block}.htz-bf{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-bb{font-size:1.8333333333333333rem}.htz-bc{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bd{font-size:1.7142857142857142rem}.htz-be{line-height:1.75em}}"`;
-
-exports[`<TextInput> DOM element renders correctly a input with a requiredText that is rendered as sup 1`] = `
-<div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="0.123456789"
-    >
-      <div
-        className=""
-      >
-        <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
-        >
-          <abbr
-            className="htz-at htz-au"
-            title="im required"
-          >
-             
-            <sup>
-              *
-            </sup>
-          </abbr>
-        </span>
-      </div>
-      <input
-        className="htz-av htz-aw htz-ax htz-f htz-a htz-ay htz-az"
-        id="0.123456789"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="text"
-      />
-    </label>
-    <span
-      className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
-      id={null}
-    />
-  </div>
-</div>
-`;
-
-exports[`<TextInput> DOM element renders correctly a input with a requiredText that is rendered as sup 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at[title]{text-decoration:none}.htz-au{color:green}.htz-av{border:none}.htz-aw{background-color:transparent}.htz-ax{font-size:inherit}.htz-ay:focus{outline:none}.htz-az:focus{cursor:text}.htz-ba{display:block}.htz-bf{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-bb{font-size:1.8333333333333333rem}.htz-bc{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bd{font-size:1.7142857142857142rem}.htz-be{line-height:1.75em}}"`;
-
-exports[`<TextInput> DOM element renders correctly a input with a value prop 1`] = `
-<div>
-  <div>
+  <div
+    className=""
+  >
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
       htmlFor="0.123456789"
@@ -480,11 +410,101 @@ exports[`<TextInput> DOM element renders correctly a input with a value prop 1`]
         className=""
       >
         <span
-          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-n htz-ap htz-aq htz-ar htz-as htz-at htz-au"
+          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
+        >
+          <abbr
+            className="htz-as htz-at"
+            title="im required"
+          >
+             
+            <sup>
+              *
+            </sup>
+          </abbr>
+        </span>
+      </div>
+      <input
+        className="htz-au htz-av htz-aw htz-f htz-a htz-ax htz-ay"
+        id="0.123456789"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </label>
+    <span
+      className="htz-az htz-ba htz-bb htz-bc htz-bd htz-be"
+      id={null}
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextInput> DOM element renders correctly a input with a requiredText 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as[title]{text-decoration:none}.htz-at{color:green}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}.htz-be{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
+
+exports[`<TextInput> DOM element renders correctly a input with a requiredText that is rendered as sup 1`] = `
+<div>
+  <div
+    className=""
+  >
+    <label
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
+      htmlFor="0.123456789"
+    >
+      <div
+        className=""
+      >
+        <span
+          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
+        >
+          <abbr
+            className="htz-as htz-at"
+            title="im required"
+          >
+             
+            <sup>
+              *
+            </sup>
+          </abbr>
+        </span>
+      </div>
+      <input
+        className="htz-au htz-av htz-aw htz-f htz-a htz-ax htz-ay"
+        id="0.123456789"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </label>
+    <span
+      className="htz-az htz-ba htz-bb htz-bc htz-bd htz-be"
+      id={null}
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextInput> DOM element renders correctly a input with a requiredText that is rendered as sup 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as[title]{text-decoration:none}.htz-at{color:green}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}.htz-be{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
+
+exports[`<TextInput> DOM element renders correctly a input with a value prop 1`] = `
+<div>
+  <div
+    className=""
+  >
+    <label
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af"
+      htmlFor="0.123456789"
+    >
+      <div
+        className=""
+      >
+        <span
+          className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-d htz-e htz-am htz-an htz-m htz-ao htz-ap htz-aq htz-ar htz-as htz-at"
         />
       </div>
       <input
-        className="htz-av htz-aw htz-ax htz-f htz-a htz-ay htz-az"
+        className="htz-au htz-av htz-aw htz-f htz-a htz-ax htz-ay"
         id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -494,31 +514,33 @@ exports[`<TextInput> DOM element renders correctly a input with a value prop 1`]
       />
     </label>
     <span
-      className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+      className="htz-az htz-ba htz-bb htz-bc htz-bd htz-be"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a input with a value prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{position:absolute}.htz-ap{transform:translateY(-3.3rem) scale(.8)}.htz-aq{padding-top:0.5rem}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-transition-property:transform}.htz-au{-moz-transition-property:transform}.htz-av{border:none}.htz-aw{background-color:transparent}.htz-ax{font-size:inherit}.htz-ay:focus{outline:none}.htz-az:focus{cursor:text}.htz-ba{display:block}.htz-bf{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-bb{font-size:1.8333333333333333rem}.htz-bc{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bd{font-size:1.7142857142857142rem}.htz-be{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a input with a value prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{border-color:#DAE9F2}.htz-ae:hover{color:#2D2D2D}.htz-af{-webkit-box-align:center}.htz-ag{white-space:nowrap}.htz-ah{margin-left:1rem}.htz-ai{color:#006B96}.htz-aj{font-weight:bold}.htz-ak{transition-property:transform}.htz-al{bottom:0.7rem}.htz-am{margin-right:-1rem}.htz-an{position:absolute}.htz-ao{transform:translateY(-3.3rem) scale(.8)}.htz-ap{padding-top:0.5rem}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{-webkit-transition-property:transform}.htz-at{-moz-transition-property:transform}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}.htz-be{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a input with a variant prop 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
       htmlFor="0.123456789"
     >
       <div
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
-        className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-f htz-a htz-av htz-aw"
         id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -527,18 +549,20 @@ exports[`<TextInput> DOM element renders correctly a input with a variant prop 1
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly a input with a variant prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#FFF}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#FFF}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly a input with a variant prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#FFF}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#FFF}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly a textArea with a responsive height prop 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
       htmlFor="0.123456789"
@@ -570,7 +594,9 @@ exports[`<TextInput> DOM element renders correctly a textArea with a responsive 
 
 exports[`<TextInput> DOM element renders correctly a textArea with a simple height prop 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
       htmlFor="0.123456789"
@@ -602,7 +628,9 @@ exports[`<TextInput> DOM element renders correctly a textArea with a simple heig
 
 exports[`<TextInput> DOM element renders correctly a textarea 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
       htmlFor="0.123456789"
@@ -634,7 +662,9 @@ exports[`<TextInput> DOM element renders correctly a textarea 2`] = `".htz-a{cur
 
 exports[`<TextInput> DOM element renders correctly a textarea with max and min length 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
       htmlFor="0.123456789"
@@ -668,108 +698,9 @@ exports[`<TextInput> DOM element renders correctly a textarea with max and min l
 
 exports[`<TextInput> DOM element renders correctly a type=email prop 1`] = `
 <div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="0.123456789"
-    >
-      <div
-        className=""
-      >
-        <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
-        />
-      </div>
-      <input
-        className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
-        id="0.123456789"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="email"
-      />
-    </label>
-    <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
-      id={null}
-    />
-  </div>
-</div>
-`;
-
-exports[`<TextInput> DOM element renders correctly a type=email prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
-
-exports[`<TextInput> DOM element renders correctly with attrs prop 1`] = `
-<div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="0.123456789"
-    >
-      <div
-        className=""
-      >
-        <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
-        />
-      </div>
-      <input
-        aria-label="A input with custom attributes"
-        className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
-        id="0.123456789"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="text"
-      />
-    </label>
-    <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
-      id={null}
-    />
-  </div>
-</div>
-`;
-
-exports[`<TextInput> DOM element renders correctly with attrs prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
-
-exports[`<TextInput> DOM element renders correctly with custom inputId, labelId and noteId 1`] = `
-<div>
-  <div>
-    <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
-      htmlFor="customInputId"
-    >
-      <div
-        className=""
-      >
-        <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
-        />
-      </div>
-      <input
-        aria-describedby="customNoteId"
-        className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
-        id="customInputId"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="text"
-      />
-    </label>
-    <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
-      id="customNoteId"
-    />
-  </div>
-</div>
-`;
-
-exports[`<TextInput> DOM element renders correctly with custom inputId, labelId and noteId 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
-
-exports[`<TextInput> DOM element renders correctly with defaultValue prop 1`] = `
-<div>
-  <div>
+  <div
+    className=""
+  >
     <label
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
       htmlFor="0.123456789"
@@ -778,11 +709,118 @@ exports[`<TextInput> DOM element renders correctly with defaultValue prop 1`] = 
         className=""
       >
         <span
-          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-n htz-ap htz-aq htz-ar htz-as htz-at htz-au"
+          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
-        className="htz-av htz-aw htz-ax htz-f htz-a htz-ay htz-az"
+        className="htz-as htz-at htz-au htz-f htz-a htz-av htz-aw"
+        id="0.123456789"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="email"
+      />
+    </label>
+    <span
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
+      id={null}
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextInput> DOM element renders correctly a type=email prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
+
+exports[`<TextInput> DOM element renders correctly with attrs prop 1`] = `
+<div>
+  <div
+    className=""
+  >
+    <label
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
+      htmlFor="0.123456789"
+    >
+      <div
+        className=""
+      >
+        <span
+          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
+        />
+      </div>
+      <input
+        aria-label="A input with custom attributes"
+        className="htz-as htz-at htz-au htz-f htz-a htz-av htz-aw"
+        id="0.123456789"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </label>
+    <span
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
+      id={null}
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextInput> DOM element renders correctly with attrs prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
+
+exports[`<TextInput> DOM element renders correctly with custom inputId, labelId and noteId 1`] = `
+<div>
+  <div
+    className=""
+  >
+    <label
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
+      htmlFor="customInputId"
+    >
+      <div
+        className=""
+      >
+        <span
+          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
+        />
+      </div>
+      <input
+        aria-describedby="customNoteId"
+        className="htz-as htz-at htz-au htz-f htz-a htz-av htz-aw"
+        id="customInputId"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </label>
+    <span
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
+      id="customNoteId"
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextInput> DOM element renders correctly with custom inputId, labelId and noteId 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
+
+exports[`<TextInput> DOM element renders correctly with defaultValue prop 1`] = `
+<div>
+  <div
+    className=""
+  >
+    <label
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af"
+      htmlFor="0.123456789"
+    >
+      <div
+        className=""
+      >
+        <span
+          className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-d htz-e htz-am htz-an htz-m htz-ao htz-ap htz-aq htz-ar htz-as htz-at"
+        />
+      </div>
+      <input
+        className="htz-au htz-av htz-aw htz-f htz-a htz-ax htz-ay"
         defaultValue="defalut value given"
         id="0.123456789"
         onBlur={[Function]}
@@ -792,32 +830,34 @@ exports[`<TextInput> DOM element renders correctly with defaultValue prop 1`] = 
       />
     </label>
     <span
-      className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+      className="htz-az htz-ba htz-bb htz-bc htz-bd htz-be"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly with defaultValue prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{position:absolute}.htz-ap{transform:translateY(-3.3rem) scale(.8)}.htz-aq{padding-top:0.5rem}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-transition-property:transform}.htz-au{-moz-transition-property:transform}.htz-av{border:none}.htz-aw{background-color:transparent}.htz-ax{font-size:inherit}.htz-ay:focus{outline:none}.htz-az:focus{cursor:text}.htz-ba{display:block}.htz-bf{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-bb{font-size:1.8333333333333333rem}.htz-bc{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bd{font-size:1.7142857142857142rem}.htz-be{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly with defaultValue prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{border-color:#DAE9F2}.htz-ae:hover{color:#2D2D2D}.htz-af{-webkit-box-align:center}.htz-ag{white-space:nowrap}.htz-ah{margin-left:1rem}.htz-ai{color:#006B96}.htz-aj{font-weight:bold}.htz-ak{transition-property:transform}.htz-al{bottom:0.7rem}.htz-am{margin-right:-1rem}.htz-an{position:absolute}.htz-ao{transform:translateY(-3.3rem) scale(.8)}.htz-ap{padding-top:0.5rem}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{-webkit-transition-property:transform}.htz-at{-moz-transition-property:transform}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}.htz-be{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly with isError and errorText prop 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
       htmlFor="0.123456789"
     >
       <div
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
         aria-describedby="0.123456789"
-        className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-f htz-a htz-av htz-aw"
         id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -826,7 +866,7 @@ exports[`<TextInput> DOM element renders correctly with isError and errorText pr
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-ak"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-aj"
       id="0.123456789"
     >
       אנא הזינו כתובת תקינה
@@ -835,27 +875,29 @@ exports[`<TextInput> DOM element renders correctly with isError and errorText pr
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly with isError and errorText prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#A8001C}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly with isError and errorText prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#A8001C}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly with labelHidden 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
       htmlFor="0.123456789"
     >
       <div
         className=""
       >
         <span
-          className="htz-ai"
+          className="htz-ah"
         >
           label
         </span>
       </div>
       <input
         aria-label="label"
-        className="htz-aj htz-ak htz-al htz-f htz-a htz-am htz-an"
+        className="htz-ai htz-aj htz-ak htz-f htz-a htz-al htz-am"
         id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -864,31 +906,33 @@ exports[`<TextInput> DOM element renders correctly with labelHidden 1`] = `
       />
     </label>
     <span
-      className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at"
+      className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly with labelHidden 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{display:none}.htz-aj{border:none}.htz-ak{background-color:transparent}.htz-al{font-size:inherit}.htz-am:focus{outline:none}.htz-an:focus{cursor:text}.htz-ao{display:block}.htz-at{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-ap{font-size:1.8333333333333333rem}.htz-aq{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-ar{font-size:1.7142857142857142rem}.htz-as{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly with labelHidden 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{display:none}.htz-ai{border:none}.htz-aj{background-color:transparent}.htz-ak{font-size:inherit}.htz-al:focus{outline:none}.htz-am:focus{cursor:text}.htz-an{display:block}.htz-as{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ao{font-size:1.8333333333333333rem}.htz-ap{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-aq{font-size:1.7142857142857142rem}.htz-ar{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly with minimal required props 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
       htmlFor="0.123456789"
     >
       <div
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
-        className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-f htz-a htz-av htz-aw"
         id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -897,32 +941,34 @@ exports[`<TextInput> DOM element renders correctly with minimal required props 1
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id={null}
     />
   </div>
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly with minimal required props 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly with minimal required props 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;
 
 exports[`<TextInput> DOM element renders correctly without isError, noteText and errorText prop 1`] = `
 <div>
-  <div>
+  <div
+    className=""
+  >
     <label
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
       htmlFor="0.123456789"
     >
       <div
         className=""
       >
         <span
-          className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
+          className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
         />
       </div>
       <input
         aria-describedby="0.123456789"
-        className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
+        className="htz-as htz-at htz-au htz-f htz-a htz-av htz-aw"
         id="0.123456789"
         onBlur={[Function]}
         onChange={[Function]}
@@ -931,7 +977,7 @@ exports[`<TextInput> DOM element renders correctly without isError, noteText and
       />
     </label>
     <span
-      className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
       id="0.123456789"
     >
       description note
@@ -940,4 +986,4 @@ exports[`<TextInput> DOM element renders correctly without isError, noteText and
 </div>
 `;
 
-exports[`<TextInput> DOM element renders correctly without isError, noteText and errorText prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+exports[`<TextInput> DOM element renders correctly without isError, noteText and errorText prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;

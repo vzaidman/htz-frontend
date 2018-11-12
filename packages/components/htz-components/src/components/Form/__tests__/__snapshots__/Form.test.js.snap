@@ -6,22 +6,24 @@ exports[`<Form> DOM element renders correctly with initialValues prop 1`] = `
     onKeyDown={[Function]}
   >
     <div>
-      <div>
+      <div
+        className=""
+      >
         <label
-          className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
+          className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af"
           htmlFor="0.123456789"
         >
           <div
             className=""
           >
             <span
-              className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-n htz-ap htz-aq htz-ar htz-as htz-at htz-au"
+              className="htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-d htz-e htz-am htz-an htz-m htz-ao htz-ap htz-aq htz-ar htz-as htz-at"
             >
               email
             </span>
           </div>
           <input
-            className="htz-av htz-aw htz-ax htz-f htz-a htz-ay htz-az"
+            className="htz-au htz-av htz-aw htz-f htz-a htz-ax htz-ay"
             id="0.123456789"
             onBlur={[Function]}
             onChange={[Function]}
@@ -31,7 +33,7 @@ exports[`<Form> DOM element renders correctly with initialValues prop 1`] = `
           />
         </label>
         <span
-          className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+          className="htz-az htz-ba htz-bb htz-bc htz-bd htz-be"
           id={null}
         />
       </div>
@@ -60,7 +62,7 @@ exports[`<Form> DOM element renders correctly with initialValues prop 1`] = `
 </div>
 `;
 
-exports[`<Form> DOM element renders correctly with initialValues prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{position:absolute}.htz-ap{transform:translateY(-3.3rem) scale(.8)}.htz-aq{padding-top:0.5rem}.htz-ar{transition-duration:0.16666666666666666s}.htz-as{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-at{-webkit-transition-property:transform}.htz-au{-moz-transition-property:transform}.htz-av{border:none}.htz-aw{background-color:transparent}.htz-ax{font-size:inherit}.htz-ay:focus{outline:none}.htz-az:focus{cursor:text}.htz-ba{display:block}.htz-bf{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-bb{font-size:1.8333333333333333rem}.htz-bc{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bd{font-size:1.7142857142857142rem}.htz-be{line-height:1.75em}}"`;
+exports[`<Form> DOM element renders correctly with initialValues prop 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{border-color:#DAE9F2}.htz-ae:hover{color:#2D2D2D}.htz-af{-webkit-box-align:center}.htz-ag{white-space:nowrap}.htz-ah{margin-left:1rem}.htz-ai{color:#006B96}.htz-aj{font-weight:bold}.htz-ak{transition-property:transform}.htz-al{bottom:0.7rem}.htz-am{margin-right:-1rem}.htz-an{position:absolute}.htz-ao{transform:translateY(-3.3rem) scale(.8)}.htz-ap{padding-top:0.5rem}.htz-aq{transition-duration:0.16666666666666666s}.htz-ar{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-as{-webkit-transition-property:transform}.htz-at{-moz-transition-property:transform}.htz-au{border:none}.htz-av{background-color:transparent}.htz-aw{font-size:inherit}.htz-ax:focus{outline:none}.htz-ay:focus{cursor:text}.htz-az{display:block}.htz-be{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ba{font-size:1.8333333333333333rem}.htz-bb{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-bc{font-size:1.7142857142857142rem}.htz-bd{line-height:1.75em}}"`;
 
 exports[`<Form> DOM element renders correctly with minimal required props 1`] = `
 <div>
@@ -68,22 +70,24 @@ exports[`<Form> DOM element renders correctly with minimal required props 1`] = 
     onKeyDown={[Function]}
   >
     <div>
-      <div>
+      <div
+        className=""
+      >
         <label
-          className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+          className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
           htmlFor="0.123456789"
         >
           <div
             className=""
           >
             <span
-              className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-d htz-e htz-ao htz-ap htz-aq htz-ar htz-as"
+              className="htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-d htz-e htz-an htz-ao htz-ap htz-aq htz-ar"
             >
               email
             </span>
           </div>
           <input
-            className="htz-at htz-au htz-av htz-f htz-a htz-aw htz-ax"
+            className="htz-as htz-at htz-au htz-f htz-a htz-av htz-aw"
             id="0.123456789"
             onBlur={[Function]}
             onChange={[Function]}
@@ -93,7 +97,7 @@ exports[`<Form> DOM element renders correctly with minimal required props 1`] = 
           />
         </label>
         <span
-          className="htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+          className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
           id={null}
         />
       </div>
@@ -122,4 +126,4 @@ exports[`<Form> DOM element renders correctly with minimal required props 1`] = 
 </div>
 `;
 
-exports[`<Form> DOM element renders correctly with minimal required props 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-h{margin-top:1rem}.htz-m{color:#2D2D2D}.htz-n{background-color:#EBF2F5}.htz-o{border-left-width:1px}.htz-p{border-left-style:solid}.htz-q{border-left-color:#DAE9F2}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#DAE9F2}.htz-u{border-top-width:1px}.htz-v{border-top-style:solid}.htz-w{border-top-color:#DAE9F2}.htz-x{padding-top:calc(1rem - 1px)}.htz-y{border-bottom-width:1px}.htz-z{border-bottom-style:solid}.htz-ab{border-bottom-color:#DAE9F2}.htz-ac{padding-bottom:calc(1rem - 1px)}.htz-ae:hover{background-color:#E6EDF0}.htz-af:hover{border-color:#DAE9F2}.htz-ag:hover{color:#2D2D2D}.htz-ah{-webkit-box-align:center}.htz-ai{white-space:nowrap}.htz-aj{margin-left:1rem}.htz-ak{color:#006B96}.htz-al{font-weight:bold}.htz-am{transition-property:transform}.htz-an{bottom:0.7rem}.htz-ao{margin-right:-1rem}.htz-ap{transition-duration:0.16666666666666666s}.htz-aq{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ar{-webkit-transition-property:transform}.htz-as{-moz-transition-property:transform}.htz-at{border:none}.htz-au{background-color:transparent}.htz-av{font-size:inherit}.htz-aw:focus{outline:none}.htz-ax:focus{cursor:text}.htz-ay{display:block}.htz-bd{color:#787878}@media (max-width: 79.9375em){.htz-i{font-size:2.6666666666666665rem}.htz-j{line-height:1.5em}.htz-az{font-size:1.8333333333333333rem}.htz-ba{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-k{font-size:2.5714285714285716rem}.htz-l{line-height:1.5555555555555556em}.htz-bb{font-size:1.7142857142857142rem}.htz-bc{line-height:1.75em}}"`;
+exports[`<Form> DOM element renders correctly with minimal required props 2`] = `".htz-a{cursor:pointer}.htz-b{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-c{align-items:center}.htz-d{padding-right:1rem}.htz-e{padding-left:1rem}.htz-f{width:100%}.htz-g{position:relative}.htz-l{color:#2D2D2D}.htz-m{background-color:#EBF2F5}.htz-n{border-left-width:1px}.htz-o{border-left-style:solid}.htz-p{border-left-color:#DAE9F2}.htz-q{border-right-width:1px}.htz-r{border-right-style:solid}.htz-s{border-right-color:#DAE9F2}.htz-t{border-top-width:1px}.htz-u{border-top-style:solid}.htz-v{border-top-color:#DAE9F2}.htz-w{padding-top:calc(1rem - 1px)}.htz-x{border-bottom-width:1px}.htz-y{border-bottom-style:solid}.htz-z{border-bottom-color:#DAE9F2}.htz-ab{padding-bottom:calc(1rem - 1px)}.htz-ac:hover{background-color:#E6EDF0}.htz-ae:hover{border-color:#DAE9F2}.htz-af:hover{color:#2D2D2D}.htz-ag{-webkit-box-align:center}.htz-ah{white-space:nowrap}.htz-ai{margin-left:1rem}.htz-aj{color:#006B96}.htz-ak{font-weight:bold}.htz-al{transition-property:transform}.htz-am{bottom:0.7rem}.htz-an{margin-right:-1rem}.htz-ao{transition-duration:0.16666666666666666s}.htz-ap{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-aq{-webkit-transition-property:transform}.htz-ar{-moz-transition-property:transform}.htz-as{border:none}.htz-at{background-color:transparent}.htz-au{font-size:inherit}.htz-av:focus{outline:none}.htz-aw:focus{cursor:text}.htz-ax{display:block}.htz-bc{color:#787878}@media (max-width: 79.9375em){.htz-h{font-size:2.6666666666666665rem}.htz-i{line-height:1.5em}.htz-ay{font-size:1.8333333333333333rem}.htz-az{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-j{font-size:2.5714285714285716rem}.htz-k{line-height:1.5555555555555556em}.htz-ba{font-size:1.7142857142857142rem}.htz-bb{line-height:1.75em}}"`;

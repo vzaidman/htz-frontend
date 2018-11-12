@@ -1,6 +1,7 @@
 /* global document */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 import { FelaComponent, } from 'react-fela';
 import { borderEnd, } from '@haaretz/htz-css-tools';
 import IconSearch from '../../Icon/icons/IconSearch';
@@ -20,15 +21,20 @@ class HeaderSearch extends React.Component {
   };
 
   state = {
-    query: null,
+    query: '',
   };
 
   focusOnInput = inputRef => inputRef && inputRef.focus();
 
-  recordQuery = e =>
+  recordQuery = event =>
     this.setState({
-      query: e.target.value,
+      query: event.target.value,
     });
+
+  submitHandler = (event, searchUrl) => {
+    event.preventDefault();
+    Router.push(searchUrl || '#');
+  }
 
   render() {
     const { onClick, searchIsOpen, } = this.props;
@@ -81,72 +87,66 @@ class HeaderSearch extends React.Component {
             </Button>
             {searchIsOpen ? (
               <FelaComponent
-                style={{ display: 'flex', }}
+                style={{
+                  animationName: {
+                    '0%': { transform: 'translateX(100%)', },
+                    '100%': { transform: 'translateX(0)', },
+                  },
+                  animationFillMode: 'forwards',
+                  backgroundColor: color('headerSearch', 'bgInputOpen'),
+                  display: 'flex',
+                  flexGrow: '1',
+                  ...getDuration('animation', 2),
+                  ...getTimingFunction('animation', 'swiftOut'),
+                  position: 'relative',
+                  transform: 'translateX(-100%)',
+                }}
                 render={({ className, }) => (
-                  <FelaComponent
-                    style={{
-                      animationName: {
-                        '0%': { transform: 'translateX(100%)', },
-                        '100%': { transform: 'translateX(0)', },
-                      },
-                      animationFillMode: 'forwards',
-                      backgroundColor: color('headerSearch', 'bgInputOpen'),
-                      display: 'flex',
-                      flexGrow: '1',
-                      ...getDuration('animation', 2),
-                      ...getTimingFunction('animation', 'swiftOut'),
-                      position: 'relative',
-                      transform: 'translateX(-100%)',
-                    }}
-                    render={({ className, }) => (
-                      <div className={className}>
-                        <FelaComponent style={{ flexGrow: 1, }}>
-                          <TextInput
-                            label={buttonText}
-                            labelHidden
-                            placeholder={placeHolder}
-                            type="search"
-                            refFunc={this.focusOnInput}
-                            onChange={this.recordQuery}
-                            onBlur={this.changeState}
-                            boxModel={{ vp: 1, }}
-                            variant="search"
-                            miscStyles={{
-                              // backgroundColor: 'transparent',
-                              height: '100%',
-                              paddingInlineEnd: '6rem',
-                            }}
-                          />
-                        </FelaComponent>
-                        <FelaComponent
-                          style={{
-                            alignItems: 'center',
-                            display: 'flex',
-                            flexGrow: '0',
-                            height: '100%',
-                            insetInlineEnd: '0',
-                            paddingLeft: '1rem',
-                            paddingRight: '1rem',
-                            position: 'absolute',
-                            top: '0',
-                          }}
-                          render={({ className, }) => (
-                            <Button
-                              variant="primaryOpaque"
-                              boxModel={{ hp: 2, vp: 2, }}
-                              href={queryUrl(this.state.query) || '#'}
-                              refFunc={linkRef => {
-                                this.linkRef = linkRef;
-                              }}
-                              className={className}
-                            >
-                              <IconSearch size={3} />
-                            </Button>
-                          )}
-                        />
-                      </div>
-                    )}
-                  />
+                  <form
+                    className={className}
+                    onSubmit={event => this.submitHandler(event, queryUrl(this.state.query))}
+                  >
+                    <TextInput
+                      label={buttonText}
+                      labelHidden
+                      placeholder={placeHolder}
+                      type="search"
+                      refFunc={this.focusOnInput}
+                      onChange={this.recordQuery}
+                      boxModel={{ vp: 1, }}
+                      variant="search"
+                      miscStyles={{
+                        height: '100%',
+                        paddingInlineEnd: '6rem',
+                      }}
+                      wrapperStyle={{
+                        flexGrow: 1,
+                      }}
+                    />
+                    <FelaComponent
+                      style={{
+                        alignItems: 'center',
+                        display: 'flex',
+                        flexGrow: '0',
+                        height: '100%',
+                        insetInlineEnd: '0',
+                        paddingLeft: '1rem',
+                        paddingRight: '1rem',
+                        position: 'absolute',
+                        top: '0',
+                      }}
+                      render={({ className, }) => (
+                        <Button
+                          isSubmit
+                          variant="primaryOpaque"
+                          boxModel={{ hp: 2, vp: 2, }}
+                          className={className}
+                        >
+                          <IconSearch size={3} />
+                        </Button>
+                      )}
+                    />
+                  </form>
                 )}
               />
             ) : null}
