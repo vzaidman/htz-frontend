@@ -66,14 +66,8 @@ function CreditCardIframeStage({
               onMessage={evt => {
                 const msgData = evt.data;
                 if (msgData.type === 'cgmessage') {
-                  const { pathName, asPath, } = pathGenerator(
-                    'thankYou',
-                    Router,
-                    `msg=thank_user&product=${msgData.data.pid}`,
-                    { msg: 'thank_user', product: msgData.data.pid, }
-                  );
                   switch (msgData.command) {
-                    case 'thank_user':
+                    case 'thank_user': {
                       HtzReactGA.ga('ec:addProduct', {
                         id: paymentData.saleCode,
                         name: `${chosenPaymentArrangement}-${chosenProductContentName}`,
@@ -90,9 +84,16 @@ function CreditCardIframeStage({
                       });
                       HtzReactGA.ga('send', 'pageview');
                       sessionStorage.setItem('userProduct', msgData.data.pid);
+                      const { pathName, asPath, } = pathGenerator(
+                        'thankYou',
+                        Router,
+                        `msg=thank_user&product=${msgData.data.pid}`,
+                        { msg: 'thank_user', product: msgData.data.pid, }
+                      );
 
                       Router.replace(pathName, asPath);
                       break;
+                    }
 
                     case 'purchase_clicked':
                       // const userdata = PromotionsUtil.getUserData();
