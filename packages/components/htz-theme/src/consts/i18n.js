@@ -307,7 +307,7 @@ export const mobileReadingList = Object.freeze({
 });
 
 export const selectAriaLabel = Object.freeze({
-  text: 'פתח תפריט',
+  text: 'סדרו את התגובות לכתבה על פי סדר הופעתם',
 });
 export const recipeInstructionsI18n = Object.freeze({
   sectionTitle: 'הוראות הכנה',
