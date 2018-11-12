@@ -24,7 +24,7 @@ import Caption from './components/Caption/Caption';
 import Carousel from './components/Carousel/Carousel';
 import ChangeableElementGroup from './components/ChangeableElementGroup/ChangeableElementGroup';
 import CheckBox from './components/CheckBox/CheckBox';
-import Comments from './components/CommentsSection/WrappedComments';
+import Comments from './components/CommentsSection/CommentsInViewWrapper';
 import Debug from './components/Debug/Debug';
 import Embed from './components/Embed/Embed';
 import Footer from './components/Footer/Footer';
