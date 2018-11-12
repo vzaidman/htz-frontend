@@ -6,7 +6,7 @@ import ArticleBody from '../components/ArticleBody/ArticleBody';
 import GeneralAdSlot from '../components/Ads/GeneralAdSlot';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import ChangeableElementGroup from '../components/ChangeableElementGroup/ChangeableElementGroup';
-import WrappedComments from '../components/CommentsSection/WrappedComments';
+import WrappedComments from '../components/CommentsSection/CommentsInViewWrapper';
 import ClickTrackerWrapper from '../components/ClickTracker/ClickTrackerWrapper';
 import Debug from '../components/Debug/Debug';
 import ElementGroup from '../components/ElementGroup/ElementGroup';
