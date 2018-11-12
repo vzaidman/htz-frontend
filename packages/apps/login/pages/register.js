@@ -3,7 +3,7 @@ import Router from 'next/router';
 
 import { HtzLink, Register, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
 
-import { mobileNumberParser, } from '@haaretz/htz-user-utils';
+//import { mobileNumberParser, } from '@haaretz/htz-user-utils';
 
 import FSMLayout from '../layouts/FSMLayout';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -47,13 +47,21 @@ const generateFirstNameError = message => generateError('firstname', 1)(message)
 const generateLastNameError = message => generateError('lastname', 2)(message);
 const generateEmailError = message => generateError('email', 3)(message);
 const generatePasswordError = message => generateError('password', 4)(message);
+const generateMobileError = message => generateError('phone', 4)(message);
 const generateTermsError = message => generateError('terms', 5)(message);
 
 const isPassword = password => password.length > 5; // TODO: write proper password validation
 const isName = name => {
-  let regex = /^[a-zA-Z ]{2,30}$/;
-  return regex.test(name);
+  let regex = /^[a-zA-Z\u0590-\u05FF\'\- ]{2,30}$/;
+  return regex.test(name.trim());
 };
+
+const isMobile = phone => {
+  phone = phone.replace(/\s/g, '');
+  const phoneRegex = /^(\s*|[+0-9]\d{6,})$/;
+  return phoneRegex.test(phone);
+}
+
 const isChecked = terms => !!terms;
 
 const validateFirstNameInput = ({ firstname, }) =>
@@ -76,6 +84,13 @@ const validateEmailInput = ({ email, }) =>
     : !isEmail(email)
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
+  
+const validateMobileInput = ({ phone, }) =>
+  (!phone
+    ? generateMobileError('אנא הזינו מספר טלפון נייד')
+    : !isMobile(phone)
+      ? generateMobileError('אנא הזינו מספר טלפון נייד תקין')
+      : []); // mobile is valid
 
 const validatePasswordInput = ({ password, }) =>
   (!password
@@ -92,10 +107,25 @@ const getTermsText = () => {
   );
 };
 
+const mobileNumberParser = mobileNum => {
+  let mobilePrefix;
+  let mobileSuffix;
+
+  if (mobileNum.startsWith('+')) {
+    mobilePrefix = '00';
+    mobileSuffix = mobileNum.substring(1);
+  }
+  else {
+    mobilePrefix = mobileNum.substring(0, 3);
+    mobileSuffix = mobileNum.substring(3);
+  }
+  return { mobilePrefix: mobilePrefix, mobileSuffix: mobileSuffix, };
+};
+
 const onSubmit = ({ register, doTransition, showError, hideError, setPreloader }) => ({ firstname, lastname, email, password, phone, terms, }) => {
   setPreloader(true);
   hideError();
-  const { mobilePrefix, mobileNumber, } = phone ? mobileNumberParser(phone) : { mobilePrefix: '', mobileNumber: '', };
+  const { mobilePrefix, mobileSuffix, } = phone ? mobileNumberParser(phone) : { mobilePrefix: '', mobileSuffix: '', };
   register(
     email.trim(),
     password.trim(),
@@ -103,7 +133,7 @@ const onSubmit = ({ register, doTransition, showError, hideError, setPreloader }
     firstname.trim(),
     lastname.trim(),
     mobilePrefix,
-    mobileNumber,
+    mobileSuffix,
     terms
   ).then(
     () => {
@@ -146,7 +176,7 @@ class RegisterPage extends Component {
 
   isCheckboxError = () => !(this.state.isFirstTime || this.state.isChecked);
 
-  valdiateForm = ({ firstname, lastname, email, password, terms, }) => {
+  valdiateForm = ({ firstname, lastname, email, password, phone, terms, }) => {
     console.log(terms);
     let errors = [];
     if (firstname !== null) {
@@ -160,6 +190,9 @@ class RegisterPage extends Component {
     }
     if (password !== null) {
       errors = [ ...errors, ...validatePasswordInput({ password, }), ];
+    }
+    if(phone !== null && phone && phone.length > 0) {
+      errors = [ ...errors, ...validateMobileInput({ phone, }), ];
     }
     if (this.isCheckboxError()) {
       errors = [ ...errors, ...this.validateTermsInput(), ];
