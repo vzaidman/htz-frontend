@@ -21,7 +21,7 @@ const htz = Object.freeze({
       text: 'white',
     },
     stagesCounter: {
-      step: [ 'primary', 'base', ],
+      step: [ 'primary', '+2', ],
     },
     userBanner: {
       bg: [ 'primary', 'base', ],
@@ -86,7 +86,7 @@ const tm = Object.freeze({
       text: 'white',
     },
     stagesCounter: {
-      step: [ 'secondary', 'base', ],
+      step: [ 'secondary', '+2', ],
     },
     userBanner: {
       bg: [ 'neutral', '-2', ],
@@ -505,7 +505,7 @@ const colors = host => {
       border: [ 'neutral', '-4', ],
       // todo: get color for under logo themarker
       underLogoText:
-        host === 'themarker.com' ? [ 'neutral', '-3', ] : [ 'secondary', 'base', ],
+        host === 'themarker.com' ? [ 'neutral', '-1', ] : [ 'secondary', 'base', ],
     },
     image: {
       bgc: [ 'neutral', '-6', ],
