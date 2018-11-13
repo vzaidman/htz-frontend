@@ -54,6 +54,7 @@ List.propTypes = {
 
 export default function List({ menuSections, searchIsOpen, }) {
   const { items, sites, promotions, } = menuSections;
+
   const combinedItems = items
     ? items.map(item => <MobileMenuLink key={`item ${item.name}`} isHeader {...item} />)
     : [];
@@ -92,10 +93,7 @@ export default function List({ menuSections, searchIsOpen, }) {
                   <li key={item.key} className={className}>
                     {item}
                     {item.props.pages ? (
-                      <MobileMenuSection
-                        pages={item.props.pages}
-                        sectionName={item.props.name}
-                      />
+                      null
                     ) : null}
                   </li>
                 ))}

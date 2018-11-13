@@ -8,11 +8,12 @@ import ActionButtons from '../../ActionButtons/ActionButtons';
 import A11yDialog from '../../A11yDialog/A11yDialog';
 import Button from '../../Button/Button';
 import MobileAdditionalShare from './MobileAdditionalShare';
-import PlusClose from '../../Animations/PlusClose';
+import { Mail, } from '../../ActionButtons/actionList';
 
 const actionBarData = gql`
-  query GetActionBarData {
-    canonicalUrl @client
+  query GetActionBarData {    
+    canonicalUrl @client    
+    title @client
   }
 `;
 
@@ -53,6 +54,7 @@ export default class MobileBarActionButtons extends React.Component {
               {({ loading, error, data, }) => {
                 if (loading) return null;
                 if (error) console.log(error);
+                console.log(data);
                 const { canonicalUrl: articleUrl, } = data;
                 return (
                   <Fragment>
@@ -95,35 +97,21 @@ export default class MobileBarActionButtons extends React.Component {
                             }),
                           }}
                         />
+
+                        <ActionButtons
+                          isFlat
+                          elementUrl={articleUrl}
+                          size={iconSize}
+                          elementName={data.title}
+                          buttons={{
+                            name: 'mail',
+                            iconStyles: {
+                              color: theme.color('primary'),
+                            },
+                          }}
+                        />
                       </Fragment>
                     )}
-                    <Button
-                      isFlat
-                      miscStyles={{
-                        paddingRight: '4rem',
-                        paddingLeft: '4rem',
-                        ':focus': {
-                          backgroundColor: theme.color('secondary'),
-                        },
-                        ...(shareIsOpen
-                          ? {
-                              backgroundColor: theme.color('secondary'),
-                              ':hover': {
-                                backgroundColor: theme.color('secondary'),
-                              },
-                            }
-                          : {}),
-                      }}
-                      onClick={() => {
-                        this.toggleShareState();
-                      }}
-                    >
-                      <PlusClose
-                        size={(iconSize / 2) + 1}
-                        color={shareIsOpen ? 'white' : 'primary'}
-                        isOpen={shareIsOpen}
-                      />
-                    </Button>
                     <A11yDialog
                       appendTo="modalsRoot"
                       elementToHide="pageRoot"
