@@ -5,40 +5,37 @@ import PropTypes from 'prop-types';
 import Query from '../ApolloBoundary/Query';
 import getView from './getView';
 import EventTracker from '../../utils/EventTracker';
-
-const propTypes = {
-  /**
-   * List's contentId.
-   */
-  contentId: PropTypes.string.isRequired,
-  /**
-   * List's view name.
-   */
-  view: PropTypes.string.isRequired,
-};
+import ReadingHistoryProvider from '../ReadingHistory/ReadingHistoryProvider';
+import NoSSR from '../NoSSR/NoSSR';
 
 class List extends React.Component {
+  static propTypes = {
+    ...ListWithReadingHistory.propTypes,
+    history: PropTypes.arrayOf(PropTypes.string),
+  }
+
+  static defaultProps = {
+    history: [],
+  }
+
   state = {
     selectedView: null,
-    history: null,
   };
 
   componentDidMount() {
-    const history = JSON.parse(localStorage.getItem('readingHistory')) || [];
     const { view, } = this.props;
     getView(view)
       .then(response => {
         this.setState({
           selectedView: response,
-          history,
         });
       })
       .catch(err => console.log(err));
   }
 
   render() {
-    const { contentId, } = this.props;
-    const { selectedView, history, } = this.state;
+    const { contentId, history, } = this.props;
+    const { selectedView, } = this.state;
     const ListComponent = selectedView
       ? Array.isArray(selectedView)
         ? selectedView[0].default
@@ -89,6 +86,28 @@ class List extends React.Component {
   }
 }
 
-List.propTypes = propTypes;
 
-export default List;
+const ListWithReadingHistory = props => (
+  <NoSSR>
+    <ReadingHistoryProvider>
+      {
+        readingHistory => (
+          <List history={readingHistory} {...props} />
+        )
+      }
+    </ReadingHistoryProvider>
+  </NoSSR>
+);
+
+ListWithReadingHistory.propTypes = {
+  /**
+   * List's contentId.
+   */
+  contentId: PropTypes.string.isRequired,
+  /**
+   * List's view name.
+   */
+  view: PropTypes.string.isRequired,
+};
+
+export default ListWithReadingHistory;
