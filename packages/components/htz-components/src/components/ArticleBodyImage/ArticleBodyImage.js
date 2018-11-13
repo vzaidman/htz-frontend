@@ -120,7 +120,7 @@ const imagePropTypes = {
    */
   viewMode: PropTypes.string,
 
-  /*Image description*/
+  /* Image description */
 
   accessibility: PropTypes.string,
 };
@@ -129,7 +129,7 @@ const imageDefaultProps = {
   isFullScreen: false,
   viewMode: 'FullColumnWithVerticalImage',
   forceAspect: null,
-  accessibility:null,
+  accessibility: null,
 };
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
@@ -225,7 +225,7 @@ const ImageElement = props => {
     <Image
       hasWrapper={!isFullScreen}
       data={props}
-      attrs={{alt:props.accessibility}}
+      attrs={{ alt: props.accessibility, }}
       imgOptions={imgOptions}
       bgcolor={isFullScreen ? 'neutral' : ''}
     />
