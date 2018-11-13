@@ -26,6 +26,7 @@ class List extends React.Component {
     const { view, } = this.props;
     getView(view)
       .then(response => {
+        const history = JSON.parse(localStorage.getItem('readingHistory')) || [];
         this.setState({
           selectedView: response,
         });
