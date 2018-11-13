@@ -16,6 +16,8 @@ import ActionButtons from './components/ActionButtons/ActionButtons';
 import AriaLive from './components/AriaLive/AriaLive';
 import AriaDescription from './components/AriaDescription/AriaDescription';
 import ArticleBody from './components/ArticleBody/ArticleBody';
+import AboveBlockLink from './components/BlockLink/AboveBlockLink';
+import BlockLink from './components/BlockLink/BlockLink';
 import Query from './components/ApolloBoundary/Query';
 import Mutation from './components/ApolloBoundary/Mutation';
 import ApolloConsumer from './components/ApolloBoundary/ApolloConsumer';
@@ -184,6 +186,8 @@ export {
   ArticleBody,
   Button,
   ButtonGroup,
+  AboveBlockLink,
+  BlockLink,
   Caption,
   Carousel,
   ChangeableElementGroup,
