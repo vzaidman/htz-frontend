@@ -36,11 +36,13 @@ class OsakaWrapper extends React.Component {
   };
 
   componentDidMount() {
-    this.wrapperEl.addEventListener(
-      getTransitionEnd(this.wrapperEl),
-      this.removeOsaka.bind(this),
-      false
-    );
+    if(this.wrapperEl) {
+      this.wrapperEl.addEventListener(
+        getTransitionEnd(this.wrapperEl),
+        this.removeOsaka.bind(this),
+        false
+      );
+    }
   }
 
   shouldComponentUpdate(nextProps) {

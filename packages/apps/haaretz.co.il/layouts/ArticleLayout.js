@@ -122,16 +122,17 @@ class ArticleLayout extends React.Component {
           this.setState({
             articleId,
           });
+          const titleSEO = `${lineage[0].name} - ${lineage[1] ? lineage[1].name : ''} - ${
+            lineage.length > 2 ? lineage[lineage.length - 1].name : ''
+          }`;
           client.writeData({
             data: {
               articleId,
+              title: titleSEO,
               // place properties to reset in the client store when a new article is loaded
               isOsakaDisplayed: false,
             },
           });
-          const titleSEO = `${lineage[0].name} - ${lineage[1] ? lineage[1].name : ''} - ${
-            lineage.length > 2 ? lineage[lineage.length - 1].name : ''
-          }`;
           const standardArticleElement = slots.article.find(
             ({ inputTemplate, }) => inputTemplate && inputTemplate.endsWith('StandardArticle')
           );
