@@ -176,7 +176,7 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
                   <IconMarkerLogo
                     size={4}
                     color="primary"
-                    attrs={{ role: 'image', 'aria-hidden': true, }}
+                    attrs={{ role: 'img', 'aria-hidden': true, }}
                     miscStyles={{ marginTop: '2rem', }}
                   />
                   <AriaDescription id="theMarkerLogo">דה מרקר</AriaDescription>
