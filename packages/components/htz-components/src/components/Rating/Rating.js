@@ -2,6 +2,7 @@ import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import IconStar from '../IconStar/IconStar';
+import AriaDescription from '../AriaDescription/AriaDescription';
 
 class Rating extends Component {
   static propTypes = {
@@ -65,6 +66,11 @@ class Rating extends Component {
                 rightColor={this.starColor(true, starNumber)}
                 leftColor={this.starColor(false, starNumber)}
               />
+              <AriaDescription id={`star${starNumber}`}>
+                לחץ כדי לדרג ב
+                {starNumber}
+                כוכבים
+              </AriaDescription>
             </button>
           )}
         />
