@@ -12,6 +12,7 @@ import signUpNewsletterVars from './types/sign_up_newsletter_vars';
 import { GenerateOtp, } from './types/otp_operations_type';
 import OverridePhone from './types/override_phone_type';
 import ConnectMailMobile from './types/connect_mail_mobile_type';
+import ValidateMailMobile from './types/validate_mail_mobile_type';
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -102,6 +103,18 @@ const mutation = new GraphQLObjectType({
           .HtzFunctionOperationsAPI
           // eslint-disable-next-line no-undef
           .sendPhoneMailConnection(email, phone, userName || email, paramString, url);
+      },
+    },
+    validateMobileEmailConnection: {
+      type: ValidateMailMobile,
+      args: {
+        email: { type: GraphQLString, },
+        confirmation: { type: GraphQLString, },
+      },
+      resolve(parentValue, { email, confirmation, }, { dataSources, }) {
+        return dataSources
+          .NewSsoOperationsAPI
+            .validateEmailPhoneConnect(email, confirmation);
       },
     },
   },

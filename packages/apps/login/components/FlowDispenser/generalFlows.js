@@ -5,6 +5,7 @@ export default {
     [ '-register', '/register', ],
     [ '-emailValidationSent', '/emailValidationSent', ],
     [ '-emailValidationSent2', '/emailValidationSent2', ],
+    [ '-otpValidation', '/otpValidation', ],
     [ '-loginFormsPass', { url: '/loginForms', param: 1, }, ],
     [ '-loginFormsPhone', { url: '/loginForms', param: 0, }, ],
     [ '-loginFormsOtp', { url: '/loginForms', param: 0, }, ],
@@ -15,6 +16,7 @@ export default {
     withPassword: 'loginFormsPass',
     notRegistered: 'register',
     sendAgain: 'emailValidationSent2',
+    notMyPhone: 'loginFormsPhone',
   },
   emailValidationSent2: {
     getCustomerService: 'customerService',

@@ -385,7 +385,7 @@ class NewSsoOperationsAPI extends RESTDataSource {
     return this.context.newSsoService;
   }
 
-  async sendPhoneMailConnection(email, confirmation) {
+  async validateEmailPhoneConnect(email, confirmation) {
     return fetch(`${this.baseURL()}/validateEmailPhoneConnect`, {
       method: 'POST',
       headers: {

@@ -34,7 +34,7 @@ const onSubmit = ({ doTransition, client, showError, hideError, }) => ({ phoneNu
     email,
     userName: userData.firstName,
     phone: phoneNumber,
-    paramString: btoa(`email=${email}`),
+    paramString: btoa(`email=${email}&phone=${phoneNumber}`),
     url: getHostname(client),
   }).then(
     () => {

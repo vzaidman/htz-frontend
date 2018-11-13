@@ -9,6 +9,7 @@ import { saveUserData, getDataFromUserInfo, saveOtpHash, generateOtp, saveUserEm
 import { writeMetaDataToApollo, parseRouteInfo, } from '../../../pages/queryutil/flowUtil';
 import Preloader from '../../Misc/Preloader';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
+import { validateMailWithPhone, } from '../../../pages/queryutil/userDetailsOperations';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -16,6 +17,36 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 // ------------------------------------
 
 // Methods ----------------------------
+const b64DecodeUnicode = (str) => {
+  return str ? decodeURIComponent(atob(str).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join('')) : null;
+}
+
+const getUrlParams = () => {
+  const pageUrl = new URL(window.location.href);
+  const paramsData = getParamsData(pageUrl.searchParams.get('params'));
+  return {
+    confirmation: pageUrl.searchParams.get('confirmation'),
+    ...getParamsData(pageUrl.searchParams.get('params')),
+  }
+}
+
+const getParamsData = (params) => {
+  if(params) {
+    const decodedParams = atob(b64DecodeUnicode(params)).split('&');
+    return {
+      email: decodedParams[0].split('=')[1],
+      phone: decodedParams[1].split('=')[1],
+    }
+  } else {
+    return {
+      email: '',
+      phone: '',
+    }
+  }
+}
+
 const generateEmailError = message => [ { name: 'email', order: 1, errorText: message, }, ];
 
 const validateEmailInput = ({ email, }) =>
@@ -25,13 +56,31 @@ const validateEmailInput = ({ email, }) =>
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
-const handleGenerateOtp = ({ phoneNum, client, flow, route, showError, setPreloader, }) =>
+const vlidateEmailPhoneConnection = (client, email, autoRoute, confirmation) => {
+  validateMailWithPhone(client)({ email, confirmation, })
+    .then(
+      () => {
+        console.log("------ success vlidateEmailPhoneConnection");
+        return Router.push(autoRoute);
+      },
+      (error) => {
+        //showError(error.message)
+      }
+    );
+}
+
+const handleGenerateOtp = ({ phoneNum, email, client, flow, route, showError, setPreloader, autoRoute, confirmation, }) =>
   generateOtp(client)({ typeId: phoneNum, })
     .then(data => {
       const json = data.data.generateOtp;
       saveOtpHash(client)({ otpHash: json.hash, });
       if (json.success) {
-        Router.push(route);
+        if(confirmation) {
+          saveUserData(client)({ userData: { phoneNum, }, });
+          vlidateEmailPhoneConnection(client, email, autoRoute, confirmation)
+        } else {
+          Router.push(route);
+        }
       }
       else {
         setPreloader(false);
@@ -40,7 +89,7 @@ const handleGenerateOtp = ({ phoneNum, client, flow, route, showError, setPreloa
     });
 
 const handleResponseFromGraphql =
-  ({ client, getFlowByData, email, res, showError, setPreloader, }) => {
+  ({ client, getFlowByData, email, phone, res, showError, setPreloader, autoRoute, confirmation, }) => {
     const dataSaved = saveUserData(client)({ userData: res.userByMail, });
     const transformedObj = objTransform(res);
 
@@ -56,18 +105,23 @@ const handleResponseFromGraphql =
 
     console.log('***** route', route);
 
-    if (dataSaved
+    
+
+    if ((dataSaved
       && dataSaved.userData
       && dataSaved.userData.userStatus
-      && dataSaved.userData.userStatus.isMobileValidated) {
-      console.log('mobile is validated!!!!');
+      && dataSaved.userData.userStatus.isMobileValidated) || confirmation) {
+      console.log('mobile is validated / in confirmation phase');
       handleGenerateOtp({
         client,
-        phoneNum: dataSaved.userData.phoneNum,
+        email,
+        phoneNum: dataSaved.userData.phoneNum || phone,
         flow,
         route,
         showError,
         setPreloader,
+        autoRoute,
+        confirmation,
       });
     }
     else {
@@ -76,14 +130,14 @@ const handleResponseFromGraphql =
     }
   };
 
-const onSubmit = (client, getFlowByData, showError, hideError, setPreloader) => ({ email, }) => {
+const onSubmit = (client, getFlowByData, showError, hideError, setPreloader, autoRoute, confirmation) => ({ email, phone, }) => {
   hideError();
   setPreloader(true);
   saveUserEmail(client)(email);
   // mockDataFromUserInfo(client)(email)
   getDataFromUserInfo(client)(email)
     .then(res => {
-      handleResponseFromGraphql({ client, getFlowByData, email, res, showError, setPreloader, });
+      handleResponseFromGraphql({ client, getFlowByData, email, phone, res, showError, setPreloader, autoRoute, confirmation });
     })
     // TODO handle error
     .catch(err => {
@@ -137,7 +191,11 @@ class IndexForm extends Component {
    * the autoSubmit method runs when the user returns to the login page from a confirmation email
    */
   autoSubmit = ({ client, getFlowByData, }) => {
-    const autoSubmit = onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader);
+    const { confirmation, email, phone, } = getUrlParams();
+    if(confirmation) {
+      const autoSubmitFunction = onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader, '/otpValidation', confirmation);
+      autoSubmitFunction({ email, phone, });
+    }
   }
   /* ::::::::::::::::::::::::::::::::::: METHODS } ::::::::::::::::::::::::::::::::::: */
 
