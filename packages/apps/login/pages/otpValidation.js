@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
-
+import { getEmail, getPhoneEmailConfirmation, } from './queryutil/userDetailsOperations';
 import { Form, TextInput, Button, Login, HtzLink, } from '@haaretz/htz-components';
 
 import FSMLayout from '../layouts/FSMLayout';
@@ -14,6 +14,7 @@ import {
 } from '../components/StyleComponents/LoginStyleComponents';
 import GET_HOST from './queries/GetHost';
 import OtpForm from '../components/Misc/Forms/OtpForm';
+import { validateMailWithPhone, } from './queryutil/userDetailsOperations';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -39,6 +40,20 @@ const onSubmit = ({ client, host, loginWithMobile, showError, hideError }) => ({
 }
 
 const hidePhone = phoneNumber => `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
+
+/*const vlidateEmailPhoneConnection = (client) => {
+  const email = getEmail(client);
+  const confirmation = getPhoneEmailConfirmation(client);
+  validateMailWithPhone(client)({ email, confirmation, })
+    .then(
+      () => {
+        console.log("------ success vlidateEmailPhoneConnection");
+      },
+      (error) => {
+        showError(error.message)
+      }
+    );
+}*/
 
 // --------------------------
 
@@ -71,7 +86,7 @@ class OtpValidation extends Component {
                       <h5>
                         להתחברות הזינו את הקוד שנשלח למספר
                         <br />
-                        <span dir="ltr">{ hidePhone(getUserData(client).phoneNum) }</span>
+                        <span dir="ltr">{ /*hidePhone(getUserData(client).phoneNum)*/ }</span>
                       </h5>
                     </ItemCenterer>
                     <Login
