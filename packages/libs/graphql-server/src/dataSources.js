@@ -13,7 +13,8 @@ import {
 } from '@haaretz/app-utils';
 import querystring from 'querystring';
 
-const ttl = 1000;
+// assuming ttl is in seconds, todo: confirm this
+const ttl = 180;
 
 // Article data sources
 class PapiAPI extends RESTDataSource {
@@ -274,11 +275,13 @@ class PurchasePageAPI extends RESTDataSource {
     const baseUri = `${this.context.serviceBase}/papi`;
     const polopolyPromotionsPage = this.context.polopolyPromotionsPage;
 
-    const userId = userIdArg || (this.context.cookies
-      ? CookieUtils.stringToMap(this.context.cookies.get('tmsso') || '', {
-        separator: /:\s?/,
-      }).userId
-      : null);
+    const userId =
+      userIdArg ||
+      (this.context.cookies
+        ? CookieUtils.stringToMap(this.context.cookies.get('tmsso') || '', {
+          separator: /:\s?/,
+        }).userId
+        : null);
     const [ pathWithoutQuery, queryPartFromPath, ] = path.split(/\?(.+)/);
     const query = queryPartFromPath ? querystring.parse(queryPartFromPath) : {};
     // eslint-disable-next-line no-param-reassign
@@ -313,13 +316,15 @@ class FinanceAPI extends RESTDataSource {
     const { assetsId, parentId, count, sortBy, sortOrder, assetId, offset, } = args;
     const json = jsonGenerator({
       map: assetsMap,
-      args: Object.keys(args).length ? {
-        assetId,
-        assetsId,
-        count: count || (assetsId ? assetsId.length : null),
-        parentId,
-        offset,
-      } : null,
+      args: Object.keys(args).length
+        ? {
+          assetId,
+          assetsId,
+          count: count || (assetsId ? assetsId.length : null),
+          parentId,
+          offset,
+        }
+        : null,
     });
 
     if (json && sortBy) {
@@ -345,11 +350,7 @@ class FinanceAPI extends RESTDataSource {
   // eslint-disable-next-line class-methods-use-this
   async getGraph(type, time, assetId) {
     const graphMap =
-      type === 'line'
-        ? lineGraphMap
-        : type === 'scatter'
-          ? scatterGraphMap
-          : areaGraphMap;
+      type === 'line' ? lineGraphMap : type === 'scatter' ? scatterGraphMap : areaGraphMap;
     return jsonGenerator({ map: graphMap, args: { time, }, });
   }
 
