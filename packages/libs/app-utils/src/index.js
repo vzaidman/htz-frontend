@@ -6,6 +6,7 @@ import switchToDomain from './utils/switchToDomain';
 import createLogger from './utils/createLogger';
 import jsonGenerator from './jsonGenerator/jsonGenerator';
 import intersperse from './utils/intersperse';
+import { b64EncodeUnicode, b64DecodeUnicode, } from './utils/base64Handler';
 
 // JSON Maps
 import assetMap from './jsonGenerator/jsonMaps/asset';
@@ -54,6 +55,8 @@ export {
   schema,
   jsonGenerator,
   intersperse,
+  b64EncodeUnicode,
+  b64DecodeUnicode,
   // JSON Maps
   assetMap,
   financeTableMap,

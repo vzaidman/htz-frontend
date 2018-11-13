@@ -68,4 +68,10 @@ const USER_EMAIL = gql`
   }
 `;
 
-export { USER_DATA, PHONE_NUM, OTP_HASH, USER_EMAIL, HOSTNAME, };
+const PHONE_EMAIL_CONFIRMATION = gql`
+  query getUserEmail {
+    phoneEmailConfirmation @client
+  }
+`;
+
+export { USER_DATA, PHONE_NUM, OTP_HASH, USER_EMAIL, HOSTNAME, PHONE_EMAIL_CONFIRMATION, };
