@@ -6,9 +6,7 @@ import gql from 'graphql-tag';
 import Query from '../../ApolloBoundary/Query';
 import ActionButtons from '../../ActionButtons/ActionButtons';
 import A11yDialog from '../../A11yDialog/A11yDialog';
-import Button from '../../Button/Button';
 import MobileAdditionalShare from './MobileAdditionalShare';
-import { Mail, } from '../../ActionButtons/actionList';
 
 const actionBarData = gql`
   query GetActionBarData {    

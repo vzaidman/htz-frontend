@@ -177,7 +177,7 @@ export const Button: StatelessFunctionalComponent<ButtonProps> = ({
         <HtzLink
           href={href}
           className={className}
-          attrs={{ title, tabIndex: '-1', }}
+          attrs={{ title, }}
           {...props}
         >
           {children}
