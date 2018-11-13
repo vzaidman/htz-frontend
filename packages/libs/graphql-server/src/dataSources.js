@@ -12,8 +12,8 @@ import {
 } from '@haaretz/app-utils';
 import querystring from 'querystring';
 
-// assuming ttl is in seconds, todo: confirm this
-const ttl = 180;
+// ttl is in seconds
+const ttl = 60;
 
 // Article data sources
 class PapiAPI extends RESTDataSource {
