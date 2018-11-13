@@ -10,6 +10,7 @@ import IconLevels from '../../../Icon/icons/IconLevels';
 import IconPortions from '../../../Icon/icons/IconPortions';
 import Rating from '../../../Rating/Rating';
 import { stylesPropType, } from '../../../../propTypes/stylesPropType';
+import H from '../../../AutoLevels/H';
 
 import RATE_ARTICLE from '../queries/rate_article';
 
@@ -145,7 +146,7 @@ class RecipeRating extends Component {
                   ],
                 }}
               >
-                <div>{theme.recipeRatingI18n.ratingTitle}</div>
+                <H>{theme.recipeRatingI18n.ratingTitle}</H>
                 <FelaComponent
                   style={{
                     extend: [
