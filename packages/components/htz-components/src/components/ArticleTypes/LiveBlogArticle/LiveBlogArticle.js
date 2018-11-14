@@ -15,7 +15,7 @@ import ArticleBody from '../../ArticleBody/ArticleBody';
 import LiveBlogHeaderMeta from './LiveBlogElements/LiveBlogHeaderMeta';
 import TimeLine from './LiveBlogElements/TimeLine';
 import StandardArticleHeader from '../StandardArticle/StandardArticleElements/StandardArticleHeader';
-
+import Media from '../../Media/Media';
 // import LiveBlogHeader from './LiveBlogElements/LiveBlogHeader';
 import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
@@ -24,6 +24,7 @@ import BloggerInfo from '../../BloggerInfo/BloggerInfo';
 
 import LiveBlogQuery from './queries/live_blog_article';
 import LiveBlogContainer from './LiveBlogElements/LiveBlogContainer';
+// import LiveBlogMobileContainer from './LiveBlogElements/LiveBlogMobileContainer';
 
 function LiveBlog({ articleId, slots, }) {
   return (
@@ -203,8 +204,14 @@ function LiveBlog({ articleId, slots, }) {
                                   }
                                 >
                                   <ArticleBody body={body} />
-                                  <LiveBlogContainer liveblogItems={liveblogItems} canonicalUrl={canonicalUrl} />
-                                  
+                                  <LiveBlogContainer
+                                    liveblogItems={liveblogItems}
+                                    canonicalUrl={canonicalUrl}
+                                    timeLineItems={timeLineItems}
+                                    showTimeLineText
+                                    miscStyles={{ backgroundColor: theme.color('neutral', '-6'), }}
+                                  />
+
                                   {bloggerInfo}
                                 </ArticleLayoutRow>
                               );
