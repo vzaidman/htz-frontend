@@ -39,7 +39,6 @@ function runTestsLocally(packageDir, files) {
       'yarn',
       'run',
       'test',
-      '--coverage',
       '--findRelatedTests',
       '--passWithNoTests',
       ...files,
