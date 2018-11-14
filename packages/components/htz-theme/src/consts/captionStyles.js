@@ -1,7 +1,7 @@
 import fontStacks from './fontStacks';
 
 const captionStyles = Object.freeze({
-  fontFamily: fontStacks.alt,
+  fontFamily: fontStacks.default,
   fontWeight: '700',
   captionColor: [ 'neutral', '-2', ],
   backgroundColor: [ 'neutral', '-10', ],
