@@ -72,13 +72,9 @@ function ReviewArticle({ articleId, slots, }) {
             reportingFrom,
             reviewType,
             reviewStars,
+            headlineElement,
+            bookCover,
           } = reviewArticleElement;
-
-          const headlineElement = reviewArticleElement.body[0];
-
-          const itemCoverImg = body.filter(item => item.inputTemplate === 'com.tm.Image')[1];
-
-          const updatedBody = body.filter(item => item.inputTemplate !== 'com.tm.Image');
 
           return (
             <FelaTheme
@@ -153,7 +149,7 @@ function ReviewArticle({ articleId, slots, }) {
                                           />
                                         ) : null}
                                         <ReviewAmenities
-                                          reviewImgData={itemCoverImg}
+                                          reviewImgData={bookCover}
                                           reviewType={reviewType}
                                           amenitiesItems={amenities}
                                           reviewStars={reviewStars}
@@ -174,7 +170,7 @@ function ReviewArticle({ articleId, slots, }) {
                                       </Fragment>
                                     }
                                   >
-                                    <ArticleBody body={updatedBody} />
+                                    <ArticleBody body={body} />
                                   </ArticleLayoutRow>
                                 );
                               }}
@@ -190,6 +186,7 @@ function ReviewArticle({ articleId, slots, }) {
                           return (
                             <WideArticleLayoutRow
                               key={element.contentId}
+                              hideDivider
                               {...(element.inputTemplate ===
                               'com.polobase.ClickTrackerBannersWrapper'
                                 ? {
