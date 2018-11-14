@@ -79,7 +79,7 @@ const CaptionWrapper = ({
 const creditRule = ({ theme, prefix, floatCredit, }) => {
   const { fontWeight, } = theme.captionStyles.creditStyles || {};
   return {
-    display: 'inline-block',
+    display: 'inline',
     fontWeight,
     ':before': {
       content: `'${prefix}: '`,
