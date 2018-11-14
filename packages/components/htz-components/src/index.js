@@ -38,6 +38,7 @@ import HeadlineElement from './components/HeadlineElement/HeadlineElement';
 import HtmlElement from './components/Interactive/components/HtmlElement';
 import Image from './components/Image/Image';
 import ImageGallery from './components/ImageGallery/ImageGallery';
+import InitPixel from './components/Scripts/InitPixel';
 import Interactive from './components/Interactive/Interactive';
 import DeviceTypeInjector from './components/DeviceTypeInjector/DeviceTypeInjector';
 import LayoutContainer from './components/PageLayout/LayoutContainer';
@@ -160,6 +161,7 @@ import BIRequest from './components/BI/BIRequest';
 
 // Event tracker
 import EventTracker from './utils/EventTracker';
+import pixelEvent from './utils/pixelEvent';
 
 export {
   // ArticleTypes
@@ -193,6 +195,7 @@ export {
   HtmlElement,
   Image,
   ImageGallery,
+  InitPixel,
   Interactive,
   LayoutContainer,
   LayoutRow,
@@ -305,6 +308,7 @@ export {
   BIRequest,
   // Event tracker
   EventTracker,
+  pixelEvent,
   Query,
   Mutation,
   ApolloConsumer,
