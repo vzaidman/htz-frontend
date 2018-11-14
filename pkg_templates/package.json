@@ -39,6 +39,10 @@
     "update-scripts": "htz-scripts update-scripts"
   },
   "peerDependencies": {},
-  "dependencies": {},
+  "dependencies": {
+    <% if (pkgType !== 'apps') { %>
+    "source-map-loader": "^0.2.4",
+    <% } %>
+  },
   "devDependencies": {}
 }
