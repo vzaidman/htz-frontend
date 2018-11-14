@@ -5,31 +5,6 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
   <div
     className="FI_PH"
   />
-  <noscript>
-    <img
-      height="1"
-      src="https://www.facebook.com/tr?id=801998859871552&ev=PageView&noscript=1"
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      width="1"
-    />
-  </noscript>
-  <noscript>
-    <img
-      alt=""
-      height="1"
-      src="https://www.facebook.com/tr?id=1465233127023021&ev=PixelInitialized"
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      width="1"
-    />
-  </noscript>
   <div
     className="FI_PH"
   />
@@ -43,31 +18,6 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
   <div
     className="FI_PH"
   />
-  <noscript>
-    <img
-      height="1"
-      src="https://www.facebook.com/tr?id=801998859871552&ev=PageView&noscript=1"
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      width="1"
-    />
-  </noscript>
-  <noscript>
-    <img
-      alt=""
-      height="1"
-      src="https://www.facebook.com/tr?id=1465233127023021&ev=PixelInitialized"
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      width="1"
-    />
-  </noscript>
   <div
     className="FI_PH"
   />
