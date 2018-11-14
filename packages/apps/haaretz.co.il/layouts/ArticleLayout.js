@@ -17,6 +17,7 @@ import {
   UserInjector,
   PremiumContentMeta,
   Query,
+  pixelEvent,
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -71,6 +72,7 @@ class ArticleLayout extends React.Component {
 
   componentDidMount() {
     const articleId = this.props.url.query.path.match(/(?:.*-?)(1\.\d+.*)/)[1];
+    pixelEvent('track', 'ViewContent', { article_id: articleId, });
     this.writeToSession(articleId);
     this.writeToLocal(articleId);
 
@@ -85,6 +87,7 @@ class ArticleLayout extends React.Component {
   }
 
   componentDidUpdate() {
+    pixelEvent('track', 'ViewContent', { article_id: this.state.articleId, });
     this.writeToSession(this.state.articleId);
     this.writeToLocal(this.state.articleId);
   }

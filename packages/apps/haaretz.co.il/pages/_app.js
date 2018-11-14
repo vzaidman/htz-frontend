@@ -1,4 +1,4 @@
-import { createApp, } from '@haaretz/htz-components';
+import { createApp, InitPixel, } from '@haaretz/htz-components';
 import { withData, } from '@haaretz/app-utils';
 
 const initialState = () => ({
@@ -21,4 +21,4 @@ const initialState = () => ({
   zenMode: false,
 });
 
-export default withData(createApp(), initialState);
+export default withData(createApp(InitPixel), initialState);
