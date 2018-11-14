@@ -2,7 +2,7 @@
 import React, { Component, } from 'react';
 import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
-import { LayoutContainer, UserDispenser, Query, } from '@haaretz/htz-components';
+import { LayoutContainer, UserDispenser, Query, pixelEvent, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 import config from 'config';
 
@@ -47,6 +47,7 @@ function buildCreditGuardSrc(paymentData, approveDebtClaim, thankYouEmailTemplat
 
 class Stage5 extends Component {
   componentDidMount() {
+    pixelEvent('track', 'PageView');
     checkSessionForPurchase();
   }
   render() {

@@ -1,9 +1,8 @@
-/* global fbq */
 import React from 'react';
 import { createComponent, FelaComponent, } from 'react-fela';
 import ReactGA from 'react-ga';
 import { border, } from '@haaretz/htz-css-tools';
-import { Button, EventTracker, H, ApolloConsumer, } from '@haaretz/htz-components';
+import { Button, EventTracker, H, ApolloConsumer, pixelEvent, } from '@haaretz/htz-components';
 import pathGenerator from '../utils/pathGenerator';
 
 import TermsButton from './TermsButton';
@@ -175,18 +174,10 @@ const DesktopOffer = ({
   fourDigits,
   router,
 }) => {
-  const { pathName, asPath, } = pathGenerator(
-    isLoggedIn ? 'stage4' : 'stage3',
-    router
-  );
+  const { pathName, asPath, } = pathGenerator(isLoggedIn ? 'stage4' : 'stage3', router);
 
   const continueToNextStage = ({ cache, idx, routerPush = false, }) => {
-    if (fbq) {
-      fbq('track', `AddtoCart_${chosenSubscription}`);
-    }
-    else {
-      console.warn('tried to fire a facebook pixel event but fbq is not defined');
-    }
+    pixelEvent('track', `AddtoCart_${chosenSubscription}`);
     cache.writeData({
       data: {
         promotionsPageState: {
@@ -220,24 +211,18 @@ const DesktopOffer = ({
                   },
                 });
                 gaAction({
-                  category: `promotions-step-3-${
-                    gaMapper.productId[offer.paymentData.productID]
-                  }`,
+                  category: `promotions-step-3-${gaMapper.productId[offer.paymentData.productID]}`,
                   action: `${gaMapper.productId[offer.paymentData.productID]}
                   -salecode[${offer.paymentData.saleCode}]
                   `,
-                  label: `${offer.type}-${
-                    gaMapper.productId[offer.paymentData.productID]
-                  }`,
+                  label: `${offer.type}-${gaMapper.productId[offer.paymentData.productID]}`,
                 });
                 ReactGA.ga('ec:addProduct', {
                   id: offer.paymentData.saleCode,
                   name: `${offer.type}-${contentName}`,
                   brand: `salecode[${offer.paymentData.saleCode}]`,
                   price: offer.price,
-                  variant: `promotionNumber-${
-                    offer.paymentData.promotionNumber
-                  }`,
+                  variant: `promotionNumber-${offer.paymentData.promotionNumber}`,
                 });
                 ReactGA.ga('ec:setAction', 'click', {
                   list: 'Product Stage Results',
@@ -258,9 +243,7 @@ const DesktopOffer = ({
                   name: `${offer.type}-${contentName}`,
                   brand: `salecode[${offer.paymentData.saleCode}]`,
                   price: offer.price,
-                  variant: `promotionNumber-${
-                    offer.paymentData.promotionNumber
-                  }`,
+                  variant: `promotionNumber-${offer.paymentData.promotionNumber}`,
                 });
                 ReactGA.ga('ec:setAction', 'add', {
                   list: 'Product Stage Results',
@@ -278,9 +261,7 @@ const DesktopOffer = ({
             >
               {offer.isRecommended && offer.bannerText ? (
                 <StyledBanner>
-                  <StyledBannerInnerCont>
-                    {offer.bannerText}
-                  </StyledBannerInnerCont>
+                  <StyledBannerInnerCont>{offer.bannerText}</StyledBannerInnerCont>
                 </StyledBanner>
               ) : null}
               <FelaComponent
@@ -291,22 +272,19 @@ const DesktopOffer = ({
                 <StyledOfferTitle isRecommended={offer.isRecommended}>
                   {offer.title}
                 </StyledOfferTitle>
-                <StyledPrice isRecommended={offer.isRecommended}>
-                  {offer.price}
-                </StyledPrice>
+                <StyledPrice isRecommended={offer.isRecommended}>{offer.price}</StyledPrice>
                 {(offer.text || offer.originalPrice) &&
-                  [
-                    offer.originalPrice,
-                    ...(offer.text ? [ offer.text, ] : []),
-                  ].map((text, textIndex) => (
-                    <StyledOfferText
-                      key={Math.random()}
-                      isRecommended={offer.isRecommended}
-                      isFirst={textIndex === 0}
-                    >
-                      {text}
-                    </StyledOfferText>
-                  ))}
+                  [ offer.originalPrice, ...(offer.text ? [ offer.text, ] : []), ].map(
+                    (text, textIndex) => (
+                      <StyledOfferText
+                        key={Math.random()}
+                        isRecommended={offer.isRecommended}
+                        isFirst={textIndex === 0}
+                      >
+                        {text}
+                      </StyledOfferText>
+                    )
+                  )}
                 <TermsButton
                   displayOnMobile
                   isRecommended={offer.isRecommended}
@@ -332,10 +310,7 @@ const DesktopOffer = ({
                   variant="salesOpaque"
                   boxModel={{ hp: 3, vp: 1, }}
                   miscStyles={{
-                    marginTop: [
-                      { until: 's', value: '1rem', },
-                      { from: 's', value: '3rem', },
-                    ],
+                    marginTop: [ { until: 's', value: '1rem', }, { from: 's', value: '3rem', }, ],
                     type: [ { until: 's', value: -1, }, ],
                   }}
                   onClick={evt => {

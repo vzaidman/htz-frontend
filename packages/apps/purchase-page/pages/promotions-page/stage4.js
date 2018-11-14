@@ -1,7 +1,7 @@
 import React, { Fragment, Component, } from 'react';
 import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
-import { LayoutContainer, Query, } from '@haaretz/htz-components';
+import { LayoutContainer, Query, pixelEvent, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 
 import MainLayout from '../../layouts/MainLayout';
@@ -27,6 +27,7 @@ const GET_PROMOTIONS_STATE = gql`
 
 class Stage4 extends Component {
   componentDidMount() {
+    pixelEvent('track', 'PageView');
     checkSessionForPurchase();
   }
   static getInitialProps({ url, }) {

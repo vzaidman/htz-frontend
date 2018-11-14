@@ -1,6 +1,6 @@
 import React from 'react';
 import { pagePropTypes, } from '@haaretz/app-utils';
-import { Query, } from '@haaretz/htz-components';
+import { Query, pixelEvent, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 import { FelaComponent, } from 'react-fela';
 
@@ -32,6 +32,7 @@ class Stage1 extends React.Component {
   static propTypes = pagePropTypes;
 
   componentDidMount() {
+    pixelEvent('track', 'PageView');
     checkSessionForPurchase();
   }
   static getInitialProps({ url, }) {
@@ -46,7 +47,7 @@ class Stage1 extends React.Component {
       const {
         url: {
           // eslint-disable-next-line
-          query: { redirect_uri, account_linking_token, },
+          query: { redirect_uri, account_linking_token },
         },
       } = this.props;
       // eslint-disable-next-line
@@ -90,7 +91,6 @@ class Stage1 extends React.Component {
                         userMessage={data.purchasePage.userMessage}
                         fbRedirectUri={fbRedirectUri}
                         accountLinkToken={accountLinkToken}
-
                       />
                     );
                   }}

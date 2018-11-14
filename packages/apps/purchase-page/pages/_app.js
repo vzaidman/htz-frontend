@@ -1,6 +1,5 @@
-import { createApp, } from '@haaretz/htz-components';
+import { createApp, InitPixel, } from '@haaretz/htz-components';
 import { withData, } from '@haaretz/app-utils';
-import InitPixel from '../components/Scripts/InitPixel';
 
 const initialState = referer => ({
   loggedInOrRegistered: null,

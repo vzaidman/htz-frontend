@@ -1,5 +1,5 @@
-/* global fbq */
 import pathGenerator from '../utils/pathGenerator';
+import { pixelEvent, } from '@haaretz/htz-components';
 
 const submitForm = ({
   gaAction,
@@ -57,12 +57,9 @@ const submitForm = ({
     });
     login(email, password)
       .then(() => {
-        if (fbq) {
-          fbq('trackCustom', 'LogIntoAccount', { subscription_id: `${Math.floor(Math.random() * 1000000000000)}`, });
-        }
-        else {
-          console.warn('tried to fire a facebook pixel event but fbq is not defined');
-        }
+        pixelEvent('trackCustom', 'LogIntoAccount', {
+          subscription_id: `${Math.floor(Math.random() * 1000000000000)}`,
+        });
         updateRefetchState(true);
         gaAction({
           category: 'promotions-step-4-registration',
@@ -94,12 +91,9 @@ const submitForm = ({
             loggedInOrRegistered: 'registered',
           },
         });
-        if (fbq) {
-          fbq('trackCustom', 'RegisterNewAccount', { subscription_id: `${Math.floor(Math.random() * 1000000000000)}`, });
-        }
-        else {
-          console.warn('tried to fire a facebook pixel event but fbq is not defined');
-        }
+        pixelEvent('trackCustom', 'RegisterNewAccount', {
+          subscription_id: `${Math.floor(Math.random() * 1000000000000)}`,
+        });
         gaAction({
           category: 'promotions-step-4-registration',
           action: 'password-continue',

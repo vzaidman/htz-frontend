@@ -1,11 +1,10 @@
-/* global fbq */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { createComponent, FelaComponent, } from 'react-fela';
 import { withRouter, } from 'next/router';
 import ReactGA from 'react-ga';
 import { parseTypographyProp, } from '@haaretz/htz-css-tools';
-import { EventTracker, TextLink, } from '@haaretz/htz-components';
+import { EventTracker, TextLink, pixelEvent, } from '@haaretz/htz-components';
 import DesktopView from './ChooseSlotsStageElements/DesktopView';
 import MobileView from './ChooseSlotsStageElements/MobileView';
 import SubHeader from './ChooseSlotsStageElements/SubHeader';
@@ -111,12 +110,7 @@ class ChooseSlotStage extends React.Component {
     const { pathName, asPath, } = pathGenerator('stage2', router);
 
     const continueToNextStage = ({ cache, idx, routerPush = false, }) => {
-      if (fbq) {
-        fbq('track', `AddtoCart_${tableData[idx].subscriptionName}`);
-      }
-      else {
-        console.warn('tried to fire a facebook pixel event but fbq is not defined');
-      }
+      pixelEvent('track', `AddtoCart_${tableData[idx].subscriptionName}`);
       cache.writeData({
         data: {
           promotionsPageState: {
