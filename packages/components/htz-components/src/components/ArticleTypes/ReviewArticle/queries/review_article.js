@@ -69,6 +69,9 @@ export default gql`
                 ...Video
               }
             }
+            bookCover {
+              ...Image
+            }
             authors {
               ... on CreditObject {
                 ...CreditObj
@@ -133,39 +136,6 @@ export default gql`
             reviewType
             amenities
             reviewStars
-            # isbnNumber
-            # author
-            # publisher
-            # pagesCount
-            # price
-            # socialMetaData {
-            #   articleRankCounter
-            #   articleRankersCounter
-            # }
-            # recipeDifficultyLevel
-            # numOfServings
-            # totalCookTime
-            # ingredients {
-            #   header
-            #   ingredients
-            # }
-            # instructions {
-            #   contentId
-            #   body {
-            #     ... on Content {
-            #       ...Content
-            #     }
-            #     ... on Embed {
-            #       ...Embed
-            #     }
-            #     ... on Image {
-            #       ...Image
-            #     }
-            #     ... on Paragraph {
-            #       ...Paragraph
-            #     }
-            #   }
-            # }
             inputTemplate
             commentsElementId
           }

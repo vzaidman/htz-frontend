@@ -64,6 +64,7 @@ const ArticleData = new GraphQLObjectType({
         resolveType: value => getSchema(value.elementType || value.inputTemplate),
       }),
     },
+    bookCover: { type: image, },
     authors: { type: new GraphQLList(author), },
     body: { type: articleBody, },
     commentsElementId: { type: GraphQLID, },
