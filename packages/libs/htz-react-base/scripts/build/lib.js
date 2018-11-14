@@ -9,7 +9,7 @@ checkDir('dist').then(hasDist => {
     fs.mkdirSync('dist');
   }
   if (process.argv.length < 3) {
-    process.argv.push('src', '--out-dir', 'dist/lib');
+    process.argv.push('src', '--source-maps', '--out-dir', 'dist/lib');
   }
   require('@babel/cli/bin/babel');
 });

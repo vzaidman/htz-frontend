@@ -1,5 +1,5 @@
 module.exports = {
-  presets: [ '@haaretz/htz-react-base/babel.js', 'next/babel', ],
+  presets: [ '@haaretz/htz-react-base/babel.js', ],
   ignore:
     process.env.NODE_ENV === 'test'
       ? []

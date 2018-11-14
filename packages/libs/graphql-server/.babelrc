@@ -4,11 +4,5 @@
     "commonjs": {
       "ignore": ["**/*{.,-}{spec,test}.{js,jsx}", "**/{__tests__,__mocks__,__snapshots__}"]
     },
-    "esnext": {
-      "ignore": ["**/*{.,-}{spec,test}.{js,jsx}", "**/{__tests__,__mocks__,__snapshots__}"]
-    },
-    "esm": {
-      "ignore": ["**/*{.,-}{spec,test}.{js,jsx}", "**/{__tests__,__mocks__,__snapshots__}"]
-    }
   }
 }

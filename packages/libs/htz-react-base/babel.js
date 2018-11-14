@@ -15,7 +15,7 @@
 
 const presets = [ '@babel/preset-react', '@babel/preset-flow', ];
 const plugins = [
-  'babel-plugin-transform-react-remove-prop-types',
+  // 'babel-plugin-transform-react-remove-prop-types',
   '@babel/plugin-proposal-class-properties',
   '@babel/plugin-proposal-object-rest-spread',
   '@babel/plugin-syntax-dynamic-import',
@@ -34,6 +34,7 @@ switch (process.env.BABEL_ENV) {
         },
       },
     ]);
+    plugins.push('@babel/plugin-transform-runtime');
     break;
   // The `esm` environment is used to generate `/dist/esm` and will be used
   // by bundlers like webpack 2+ with no extra configuration necessary.
@@ -56,6 +57,12 @@ switch (process.env.BABEL_ENV) {
         useBuiltIns: 'entry',
         forceAllTransforms: false,
         modules: false,
+      },
+    ]);
+    plugins.push([
+      '@babel/plugin-transform-runtime',
+      {
+        useESModules: true,
       },
     ]);
     break;
