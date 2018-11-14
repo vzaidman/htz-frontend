@@ -81,17 +81,13 @@ const creditRule = ({ theme, prefix, floatCredit, }) => {
   return {
     display: 'inline',
     fontWeight,
-    ':before': {
-      content: `'${prefix}: '`,
-    },
     extend: [ ...(floatCredit ? [ { float: 'inline-end', }, ] : []), ],
   };
 };
 
 // eslint-disable-next-line react/prop-types
-const Credit = ({ prefix, floatCredit, children, }) => (
+const Credit = ({ floatCredit, children, }) => (
   <FelaComponent
-    prefix={prefix}
     floatCredit={floatCredit}
     rule={creditRule}
     render="span"
@@ -114,8 +110,8 @@ const Caption = props => {
         {props.caption}
       </FelaComponent>
       {props.credit ? (
-        <Credit prefix={props.creditprefix} floatCredit={props.floatCredit}>
-          {props.credit}
+        <Credit floatCredit={props.floatCredit}>
+          {props.creditprefix}: {props.credit}
         </Credit>
       ) : (
         ''
