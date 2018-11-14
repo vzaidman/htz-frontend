@@ -120,11 +120,12 @@ class OtpValidation2 extends Component {
                       <br />
         
                       <HtzLink
-                        href={`${findRout('withPassword')}`}
+                        href="/"
+                        //href={`${findRout('withPassword')}`}
                         onClick={e => {
                           e.preventDefault();
-                          const route = doTransition('withPassword');
-                          Router.push(route);
+                          /*const route = doTransition('withPassword');
+                          Router.push(route);*/
                         }}
                       >
                         כניסה באמצעות סיסמה
@@ -134,11 +135,12 @@ class OtpValidation2 extends Component {
         
                       <span>או </span>
                       <HtzLink
-                        href={`${findRout('getCustomerService')}`}
+                        href="/"
+                        //href={`${findRout('getCustomerService')}`}
                         onClick={e => {
                           e.preventDefault();
-                          const route = doTransition('getCustomerService');
-                          Router.push(route);
+                          /*const route = doTransition('getCustomerService');
+                          Router.push(route);*/
                         }}
                       >
                         פניה לשירות לקוחות
