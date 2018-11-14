@@ -69,14 +69,14 @@ const vlidateEmailPhoneConnection = (client, email, autoRoute, confirmation) => 
     );
 }
 
-const handleGenerateOtp = ({ phoneNum, email, client, flow, route, showError, setPreloader, autoRoute, confirmation, }) =>
+const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showError, setPreloader, autoRoute, confirmation, }) =>
   generateOtp(client)({ typeId: phoneNum, })
     .then(data => {
       const json = data.data.generateOtp;
       saveOtpHash(client)({ otpHash: json.hash, });
       if (json.success) {
         if(confirmation) {
-          saveUserData(client)({ userData: { phoneNum, }, });
+          saveUserData(client)({ userData: { phoneNum, ssoId, __typename: "SsoUser", }, });
           vlidateEmailPhoneConnection(client, email, autoRoute, confirmation)
         } else {
           Router.push(route);
@@ -116,6 +116,7 @@ const handleResponseFromGraphql =
         client,
         email,
         phoneNum: dataSaved.userData.phoneNum || phone,
+        ssoId: res.userByMail.ssoId,
         flow,
         route,
         showError,

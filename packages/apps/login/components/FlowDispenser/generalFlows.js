@@ -37,5 +37,6 @@ export default {
     withPassword: 'loginFormsPass',
     registration: 'register',
     accept: 'phoneMailSent',
+    notMyPhone: 'loginFormsPhone',
   },
 };
