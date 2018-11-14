@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { Form, TextInput, Button, Login, HtzLink, } from '@haaretz/htz-components';
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
-import { getUserData, getPhoneNum, getOtpHash, } from '../../../pages/queryutil/userDetailsOperations';
+import { getUserData, getPhoneNum, getOtpHash, generateOtp, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 
 // Styling Components -----------------
@@ -27,6 +27,20 @@ const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }
       reason => console.log(reason.message) // TODO: add error UI
     );
 
+const handleGenerateOtp = (client, doTransition) => {
+  generateOtp(client)({ typeId: getUserData(client).phoneNum, })
+    .then(
+      () => {
+        console.log("SmS Sent again");
+        const route = doTransition('sendAgain');
+        Router.push(route);
+      },
+      (error) => {
+        console.log("Error sending SmS again");
+      }
+    );
+}
+    
 const hidePhone = phoneNumber => {
   return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(7);
 }
@@ -73,8 +87,7 @@ export default ({ client, findRout, doTransition, }) => {
                       data-role="resend"
                       onClick={(e) => {
                         e.preventDefault();
-                        const route = doTransition('sendAgain');
-                        Router.push(route);
+                        handleGenerateOtp(client, doTransition);
                       }}
                     >
                       שלח בשנית
