@@ -1,9 +1,8 @@
-/* global window sessionStorage fbq */
-
+/* global window sessionStorage */
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
-import { Button, IconHtzLoader, IconTmLoader, Query, } from '@haaretz/htz-components';
+import { Button, IconHtzLoader, IconTmLoader, Query, pixelEvent, } from '@haaretz/htz-components';
 import Router from 'next/router';
 import ReactGA from 'react-ga';
 import { FelaComponent, } from 'react-fela';
@@ -125,9 +124,7 @@ class Wrapper extends Component {
     return (
       <Query query={PAY_WITH_EXISTING_CARD} variables={queryVars}>
         {({ data, loading, error, }) => {
-          const LoaderIcon = hostname.includes('themarker')
-            ? IconTmLoader
-            : IconHtzLoader;
+          const LoaderIcon = hostname.includes('themarker') ? IconTmLoader : IconHtzLoader;
           if (loading || !this.state.minTimePassed) {
             return (
               <LoaderIcon
@@ -144,18 +141,13 @@ class Wrapper extends Component {
           }
 
           if (data.payWithExistingCard.success) {
-            if (fbq) {
-              fbq('track', `Purchase_${chosenSubscription}`);
-              fbq('track', 'Subscribe', {
-                value: paymentData.prices[0].toString(),
-                currency: 'ILS',
-                subscription_id: `${Math.floor(Math.random() * 1000000000000)}`,
-                offer_id: paymentData.saleCode,
-              });
-            }
-else {
-              console.warn('tried to fire a facebook pixel event but fbq is not defined');
-            }
+            pixelEvent('track', `Purchase_${chosenSubscription}`);
+            pixelEvent('track', 'Subscribe', {
+              value: paymentData.prices[0].toString(),
+              currency: 'ILS',
+              subscription_id: `${Math.floor(Math.random() * 1000000000000)}`,
+              offer_id: paymentData.saleCode,
+            });
             ReactGA.ga('ec:addProduct', {
               id: paymentData.saleCode,
               name: `${chosenPaymentArrangement}-${chosenProductContentName}`,

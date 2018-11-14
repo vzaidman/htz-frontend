@@ -1,9 +1,8 @@
-/* global sessionStorage fbq */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { FelaComponent, } from 'react-fela';
-import { EventTracker, } from '@haaretz/htz-components';
+import { EventTracker, pixelEvent, } from '@haaretz/htz-components';
 import CreditCardIframe from './CreditCardIframeStageElements/CreditCardIframe';
 import SecurePaymentLine from './Elements/SecurePaymentLine';
 import PaymentSummary from './StagePaymentElements/PaymentSummary';
@@ -68,18 +67,14 @@ function CreditCardIframeStage({
                 if (msgData.type === 'cgmessage') {
                   switch (msgData.command) {
                     case 'thank_user': {
-                      if (fbq) {
-                        fbq('track', `Purchase_${chosenSubscription}`);
-                        fbq('track', 'Subscribe', {
-                          value: paymentData.prices[0].toString(),
-                          currency: 'ILS',
-                          subscription_id: `${Math.floor(Math.random() * 1000000000000)}`,
-                          offer_id: paymentData.saleCode,
-                        });
-                      }
- else {
-                        console.warn('tried to fire a facebook pixel event but fbq is not defined');
-                      }
+                      pixelEvent('track', `Purchase_${chosenSubscription}`);
+                      pixelEvent('track', 'Subscribe', {
+                        value: paymentData.prices[0].toString(),
+                        currency: 'ILS',
+                        subscription_id: `${Math.floor(Math.random() * 1000000000000)}`,
+                        offer_id: paymentData.saleCode,
+                      });
+
                       HtzReactGA.ga('ec:addProduct', {
                         id: paymentData.saleCode,
                         name: `${chosenPaymentArrangement}-${chosenProductContentName}`,

@@ -1,7 +1,7 @@
 import React, { Component, Fragment, } from 'react';
 import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
-import { UserDispenser, LayoutContainer, Query, } from '@haaretz/htz-components';
+import { UserDispenser, LayoutContainer, Query, pixelEvent, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 
 import MainLayout from '../../layouts/MainLayout';
@@ -34,6 +34,7 @@ class Stage3 extends Component {
   };
 
   componentDidMount() {
+    pixelEvent('track', 'PageView');
     checkSessionForPurchase();
   }
 

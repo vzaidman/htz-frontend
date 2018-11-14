@@ -5,7 +5,7 @@ import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 import ReactGA from 'react-ga';
-import { IconCheck, LayoutContainer, UserDispenser, Query, } from '@haaretz/htz-components';
+import { IconCheck, LayoutContainer, UserDispenser, Query, pixelEvent, } from '@haaretz/htz-components';
 import MainLayout from '../../layouts/MainLayout';
 import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter';
 import ThankYouStage from '../../components/OfferPage/Stages/ThankYouStage';
@@ -78,6 +78,7 @@ const ThankYouElement = ({ product, userMessage, fbFullRedirectUri, }) => (
 
 class StageThankYou extends React.Component {
   componentDidMount() {
+    pixelEvent('track', 'PageView');
     // remove 'HtzRusr' cookie or TmRusr
     document.cookie =
       'HtzRusr=; domain=.haaretz.co.il; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
