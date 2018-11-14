@@ -65,7 +65,7 @@ const itemStyle = ({ theme, displayBorderInMBreak, itemBorderTop, }) => ({
         }),
       }
     ),
-    theme.type(-2),
+    theme.type(-1),
   ],
 });
 
