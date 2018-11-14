@@ -46,7 +46,7 @@ class ResetPasswordForm extends Component {
               clearFormAfterSubmit={false}
               // initialValues={{ email: 'insert email' }}
               validate={validateEmailInput}
-              onSubmit={onResetPassword({ host, nextStage , })}
+              onSubmit={onResetPassword({ host, nextStage, setPreloader: this.setPreloader })}
               render={({ getInputProps, handleSubmit, clearForm, }) => (
                 <Fragment>
                   <TextInput
@@ -64,6 +64,7 @@ class ResetPasswordForm extends Component {
                     })}
                   />
                   <ItemCenterer>
+                    <Preloader isLoading={this.state.isLoading} />
                     <Button onClick={handleSubmit}>המשך</Button>
                   </ItemCenterer>
                 </Fragment>
