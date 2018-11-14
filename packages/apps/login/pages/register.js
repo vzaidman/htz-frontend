@@ -1,5 +1,6 @@
 import React, { Fragment, Component, } from 'react';
 import Router from 'next/router';
+import { ApolloConsumer, } from 'react-apollo';
 
 import { HtzLink, Register, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
 
@@ -8,6 +9,7 @@ import { HtzLink, Register, Form, TextInput, Button, CheckBox, } from '@haaretz/
 import FSMLayout from '../layouts/FSMLayout';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import isEmail from 'validator/lib/isEmail';
+import { getEmail, } from './queryutil/userDetailsOperations';
 import theme from '../theme';
 import { FelaTheme, createComponent, } from 'react-fela';
 import BottomLinks from '../components/Misc/BottomLinks';
@@ -135,7 +137,6 @@ const onSubmit = ({ register, doTransition, showError, hideError, setPreloader, 
     terms
   ).then(
     () => {
-      setPreloader(false);
       Router.push(doTransition('success'));
     },
     reason => {
@@ -207,162 +208,171 @@ class RegisterPage extends Component {
     this.setState({ isChecked: !this.state.isChecked, isFirstTime: false, });
 
   render() {
-    return (<FSMLayout>
-      {({ currentState, findRout, doTransition, }) => (
-        <FelaTheme
-          render={theme => (
-            <Fragment>
-              <ContentWrapper>
-                <FormWrapper>
-                  <ItemCenterer>
-                    <h5>הרשמה</h5>
-                  </ItemCenterer>
-                  <Register render={({ register, }) => (
-                    <Form
-                      clearFormAfterSubmit={false}
-                      // initialValues={{ email: 'insert email' }}
-                      validate={this.valdiateForm}
-                      onSubmit={onSubmit({ register, doTransition, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, })}
-                      render={({ getInputProps, handleSubmit, clearForm, }) => (
-                        <Fragment>
-
-                          <HalfSizeWrapper>
-                            <HalfSize>
-                              <TextInput
-                                type="text"
-                                label={theme.nameInputLabel[0]}
-                                noteText="אנא הזינו שם פרטי"
-                                requiredText={{
-                                  long: theme.nameInputRequiredLong,
-                                  short: theme.nameInputRequiredShort,
-                                }}
-                                {...getInputProps({
-                                  name: 'firstname',
-                                  label: theme.nameInputLabel[0],
-                                  type: 'text',
-                                })}
-                              />
-                            </HalfSize>
-
-                            <HalfSize>
-                              <TextInput
-                                type="text"
-                                label={theme.nameInputLabel[1]}
-                                noteText="אנא הזינו שם משפחה"
-                                requiredText={{
-                                  long: theme.nameInputRequiredLong,
-                                  short: theme.nameInputRequiredShort,
-                                }}
-                                {...getInputProps({
-                                  name: 'lastname',
-                                  label: theme.nameInputLabel[1],
-                                  type: 'text',
-                                })}
-                              />
-                            </HalfSize>
-                          </HalfSizeWrapper>
-
-                          <div>
-                            <TextInput
-                              type="email"
-                              label={theme.emailInputLabel}
-                              noteText="אנא הזינו כתובת דוא”ל"
-                              maxLength={64}
-                              requiredText={{
-                                long: theme.emailInputRequiredLong,
-                                short: theme.emailInputRequiredShort,
-                              }}
-                              {...getInputProps({
-                                name: 'email',
-                                label: theme.emailInputLabel,
-                                type: 'email',
-                              })}
-                            />
-                          </div>
-
-                          <div>
-                            <TextInput
-                              type="password"
-                              label={theme.emailInputLabel}
-                              noteText="אנא הזינו סיסמה"
-                              requiredText={{
-                                long: theme.emailInputRequiredLong,
-                                short: theme.emailInputRequiredShort,
-                              }}
-                              {...getInputProps({
-                                name: 'password',
-                                label: theme.passwordInputLabel,
-                                type: 'password',
-                              })}
-                            />
-                          </div>
-
-                          <div>
-                            <TextInput
-                              type="tel"
-                              label={theme.phoneInputLabel}
-                              noteText="אנא הזינו קידומת ומספר סלולרי"
-                              {...getInputProps({
-                                name: 'phone',
-                                label: theme.phoneInputLabel,
-                                type: 'tel',
-                              })}
-                            />
-                          </div>
-
-                          <TermsWrapper>
-                            <CheckBox
-                              type="checkbox"
-                              label="terms"
-                              noteText="יש לאשר את תנאי השימוש באתר"
-                              errorText="יש לאשר את תנאי השימוש באתר"
-                              onClick={this.toggleChecked}
-                              checked={this.state.isChecked}
-                              {...getInputProps({
-                                name: 'terms',
-                                label: getTermsText(),
-                                type: 'checkbox',
-                              })}
-                            />
-                          </TermsWrapper>
-
-                          <ErrorBox className={this.state.showError ? '' : 'hidden'}>
-                            <span>
-                              {this.state.errorMessage}
-                            </span>
-                          </ErrorBox>
-
+    return (
+      <ApolloConsumer>
+        {client => {
+          return (
+            <FSMLayout>
+              {({ currentState, findRout, doTransition, }) => (
+                <FelaTheme
+                  render={theme => (
+                    <Fragment>
+                      <ContentWrapper>
+                        <FormWrapper>
                           <ItemCenterer>
-                            <Preloader isLoading={this.state.isLoading} />
-                            <Button onClick={handleSubmit}>הרשמה</Button>
+                            <h5>הרשמה</h5>
                           </ItemCenterer>
-                        </Fragment>
-                      )}
-                    />
+                          <Register render={({ register, }) => (
+                            <Form
+                              clearFormAfterSubmit={false}
+                              // initialValues={{ email: 'insert email' }}
+                              validate={this.valdiateForm}
+                              initialValues={ {email: getEmail(client)} }
+                              onSubmit={onSubmit({ register, doTransition, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, })}
+                              render={({ getInputProps, handleSubmit, clearForm, }) => (
+                                <Fragment>
+
+                                  <HalfSizeWrapper>
+                                    <HalfSize>
+                                      <TextInput
+                                        type="text"
+                                        label={theme.nameInputLabel[0]}
+                                        noteText="אנא הזינו שם פרטי"
+                                        requiredText={{
+                                          long: theme.nameInputRequiredLong,
+                                          short: theme.nameInputRequiredShort,
+                                        }}
+                                        {...getInputProps({
+                                          name: 'firstname',
+                                          label: theme.nameInputLabel[0],
+                                          type: 'text',
+                                        })}
+                                      />
+                                    </HalfSize>
+
+                                    <HalfSize>
+                                      <TextInput
+                                        type="text"
+                                        label={theme.nameInputLabel[1]}
+                                        noteText="אנא הזינו שם משפחה"
+                                        requiredText={{
+                                          long: theme.nameInputRequiredLong,
+                                          short: theme.nameInputRequiredShort,
+                                        }}
+                                        {...getInputProps({
+                                          name: 'lastname',
+                                          label: theme.nameInputLabel[1],
+                                          type: 'text',
+                                        })}
+                                      />
+                                    </HalfSize>
+                                  </HalfSizeWrapper>
+
+                                  <div>
+                                    <TextInput
+                                      type="email"
+                                      noteText="אנא הזינו כתובת דוא”ל"
+                                      maxLength={64}
+                                      value={getEmail(client)}
+                                      requiredText={{
+                                        long: theme.emailInputRequiredLong,
+                                        short: theme.emailInputRequiredShort,
+                                      }}
+                                      {...getInputProps({
+                                        name: 'email',
+                                        label: theme.emailInputLabel,
+                                        type: 'email',
+                                      })}
+                                    />
+                                  </div>
+
+                                  <div>
+                                    <TextInput
+                                      type="password"
+                                      label={theme.emailInputLabel}
+                                      noteText="אנא הזינו סיסמה"
+                                      requiredText={{
+                                        long: theme.emailInputRequiredLong,
+                                        short: theme.emailInputRequiredShort,
+                                      }}
+                                      {...getInputProps({
+                                        name: 'password',
+                                        label: theme.passwordInputLabel,
+                                        type: 'password',
+                                      })}
+                                    />
+                                  </div>
+
+                                  <div>
+                                    <TextInput
+                                      type="tel"
+                                      label={theme.phoneInputLabel}
+                                      noteText="אנא הזינו קידומת ומספר סלולרי"
+                                      {...getInputProps({
+                                        name: 'phone',
+                                        label: theme.phoneInputLabel,
+                                        type: 'tel',
+                                      })}
+                                    />
+                                  </div>
+
+                                  <TermsWrapper>
+                                    <CheckBox
+                                      type="checkbox"
+                                      label="terms"
+                                      noteText="יש לאשר את תנאי השימוש באתר"
+                                      errorText="יש לאשר את תנאי השימוש באתר"
+                                      onClick={this.toggleChecked}
+                                      checked={this.state.isChecked}
+                                      {...getInputProps({
+                                        name: 'terms',
+                                        label: getTermsText(),
+                                        type: 'checkbox',
+                                      })}
+                                    />
+                                  </TermsWrapper>
+
+                                  <ErrorBox className={this.state.showError ? '' : 'hidden'}>
+                                    <span>
+                                      {this.state.errorMessage}
+                                    </span>
+                                  </ErrorBox>
+
+                                  <ItemCenterer>
+                                    <Preloader isLoading={this.state.isLoading} />
+                                    <Button onClick={handleSubmit}>הרשמה</Button>
+                                  </ItemCenterer>
+                                </Fragment>
+                              )}
+                            />
+                          )}
+                          />
+
+                          <BottomLinks spacing={2.5}>
+                            <span>כבר רשומים? </span>
+                            <HtzLink
+                              href={`${findRout('backToLogin')}`}
+                              onClick={e => {
+                                e.preventDefault();
+                                const route = doTransition('backToLogin');
+                                Router.push(route);
+                              }}
+                            >
+                              התחברו
+                            </HtzLink>
+                          </BottomLinks>
+
+                        </FormWrapper>
+                      </ContentWrapper>
+                    </Fragment>
                   )}
-                  />
-
-                  <BottomLinks spacing={2.5}>
-                    <span>כבר רשומים? </span>
-                    <HtzLink
-                      href={`${findRout('backToLogin')}`}
-                      onClick={e => {
-                        e.preventDefault();
-                        const route = doTransition('backToLogin');
-                        Router.push(route);
-                      }}
-                    >
-                      התחברו
-                    </HtzLink>
-                  </BottomLinks>
-
-                </FormWrapper>
-              </ContentWrapper>
-            </Fragment>
-          )}
-        />
-      )}
-    </FSMLayout>);
+                />
+              )}
+            </FSMLayout>
+          )
+        }}
+      </ApolloConsumer>
+    );
   }
 }
 

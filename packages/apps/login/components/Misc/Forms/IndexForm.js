@@ -96,7 +96,12 @@ const handleResponseFromGraphql =
     console.log(`data is: ${JSON.stringify(dataSaved)}, email is: ${email}`);
 
     const flow = getFlowByData(transformedObj.user);
+    if(confirmation) {
+      flow.flowNumber = 1;
+      flow.initialState = "loginFormsOtp";
+    }
     storeFlowNumber(client)(flow.flowNumber);
+
 
     console.log('**** initial transition', flow.initialTransition);
 
@@ -194,7 +199,7 @@ class IndexForm extends Component {
   autoSubmit = ({ client, getFlowByData, }) => {
     const { confirmation, email, phone, } = getUrlParams();
     if(confirmation) {
-      const autoSubmitFunction = onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader, '/otpValidation', confirmation);
+      const autoSubmitFunction = onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader, '/loginForms', confirmation);
       autoSubmitFunction({ email, phone, });
     }
   }

@@ -5,7 +5,7 @@ import { getEmail, getPhoneEmailConfirmation, } from './queryutil/userDetailsOpe
 import { Form, TextInput, Button, Login, HtzLink, } from '@haaretz/htz-components';
 
 import FSMLayout from '../layouts/FSMLayout';
-import { getUserData, getPhoneNum, getOtpHash, } from './queryutil/userDetailsOperations';
+import { getUserData, getPhoneNum, getOtpHash, generateOtp, } from './queryutil/userDetailsOperations';
 import theme from '../theme/index';
 import BottomLinks from '../components/Misc/BottomLinks';
 import {
@@ -36,6 +36,20 @@ const onSubmit = ({ client, host, loginWithMobile, showError, hideError }) => ({
       // eslint-disable-next-line no-undef
       () => { window.location = `https://www.${host}`; },
       reason => showError((reason.message || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."))
+    );
+}
+
+const handleGenerateOtp = (client, doTransition) => {
+  generateOtp(client)({ typeId: getUserData(client).phoneNum, })
+    .then(
+      () => {
+        console.log("SmS Sent again");
+        const route = doTransition('sendAgain');
+        Router.push(route);
+      },
+      (error) => {
+        console.log("Error sending SmS again");
+      }
     );
 }
 
@@ -72,7 +86,7 @@ class OtpValidation extends Component {
                       <h5>
                         להתחברות הזינו את הקוד שנשלח למספר
                         <br />
-                        <span dir="ltr">{ /*hidePhone(getUserData(client).phoneNum)*/ }</span>
+                        <span dir="ltr">{ hidePhone(getUserData(client).phoneNum) }</span>
                       </h5>
                     </ItemCenterer>
                     <Login
@@ -102,10 +116,10 @@ class OtpValidation extends Component {
                                 <InputLinkButton>
                                   <button
                                     data-role="resend"
+                                    href={`${findRout('sendAgain')}`}
                                     onClick={e => {
                                       e.preventDefault();
-                                      const route = doTransition('sendAgain');
-                                      Router.push(route);
+                                      handleGenerateOtp(client, doTransition);
                                     }}
                                   >
                                     שלח בשנית
