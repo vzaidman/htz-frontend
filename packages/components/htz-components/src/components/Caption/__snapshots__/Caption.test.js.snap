@@ -12,13 +12,15 @@ Object {
         The Caption
       </span>
       <span
-        className="htz-i htz-j htz-k"
+        className="htz-i htz-j"
       >
+        קרדיט
+        : 
         me
       </span>
     </div>
   </div>,
-  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{color:#505050}.htz-h{margin-left:1rem}.htz-i{display:inline}.htz-j{font-weight:300}.htz-k:before{content:'קרדיט: '}@media (max-width: 79.9375em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
+  "styles": ".htz-a{font-family:\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{color:#505050}.htz-h{margin-left:1rem}.htz-i{display:inline}.htz-j{font-weight:300}@media (max-width: 79.9375em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
 }
 `;
 
@@ -36,7 +38,7 @@ Object {
       
     </div>
   </div>,
-  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-i{margin-left:1rem}@media (max-width: 79.9375em){.htz-c{color:#0B7EB5}.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{color:#FFA6A6}.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
+  "styles": ".htz-a{font-family:\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-i{margin-left:1rem}@media (max-width: 79.9375em){.htz-c{color:#0B7EB5}.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{color:#FFA6A6}.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
 }
 `;
 
@@ -50,13 +52,15 @@ Object {
         className="htz-h"
       />
       <span
-        className="htz-i htz-j htz-k"
+        className="htz-i htz-j"
       >
+        קרדיט
+        : 
         me
       </span>
     </div>
   </div>,
-  "styles": ".htz-a{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{color:#505050}.htz-h{margin-left:1rem}.htz-i{display:inline}.htz-j{font-weight:300}.htz-k:before{content:'קרדיט: '}@media (max-width: 79.9375em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
+  "styles": ".htz-a{font-family:\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-b{font-weight:700}.htz-c{color:#505050}.htz-h{margin-left:1rem}.htz-i{display:inline}.htz-j{font-weight:300}@media (max-width: 79.9375em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
 }
 `;
 
