@@ -41,20 +41,6 @@ const onSubmit = ({ client, host, loginWithMobile, showError, hideError }) => ({
 
 const hidePhone = phoneNumber => `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
 
-/*const vlidateEmailPhoneConnection = (client) => {
-  const email = getEmail(client);
-  const confirmation = getPhoneEmailConfirmation(client);
-  validateMailWithPhone(client)({ email, confirmation, })
-    .then(
-      () => {
-        console.log("------ success vlidateEmailPhoneConnection");
-      },
-      (error) => {
-        showError(error.message)
-      }
-    );
-}*/
-
 // --------------------------
 
 class OtpValidation extends Component {
