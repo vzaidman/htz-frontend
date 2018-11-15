@@ -209,6 +209,8 @@ function LiveBlog({ articleId, slots, }) {
                                     canonicalUrl={canonicalUrl}
                                     timeLineItems={timeLineItems}
                                     showTimeLineText
+                                    bps={theme.bps}
+                                    typeConf={theme.typeConf}
                                     miscStyles={{ backgroundColor: theme.color('neutral', '-6'), }}
                                   />
 
@@ -228,6 +230,7 @@ function LiveBlog({ articleId, slots, }) {
                         return (
                           <WideArticleLayoutRow
                             key={element.contentId}
+                            hideDivider
                             {...(element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                               ? {
                                   hideDivider: true,
