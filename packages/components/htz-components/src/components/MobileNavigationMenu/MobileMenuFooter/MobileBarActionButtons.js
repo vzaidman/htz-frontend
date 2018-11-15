@@ -54,7 +54,6 @@ export default class MobileBarActionButtons extends React.Component {
               {({ loading, error, data, }) => {
                 if (loading) return null;
                 if (error) console.log(error);
-                console.log(data);
                 const { canonicalUrl: articleUrl, } = data;
                 return (
                   <Fragment>
