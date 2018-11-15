@@ -1,5 +1,6 @@
+
 /* global window */
-/** ************************************************************** *
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
@@ -75,7 +76,9 @@ describe('<IconInfo />', () => {
     testCase("set icon's size", <IconInfo size={6} />);
     testCase(
       "set icon's size responsively",
-      <IconInfo size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]} />
+      <IconInfo
+        size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]}
+      />
     );
     testCase(
       'set misc styles on an icon',

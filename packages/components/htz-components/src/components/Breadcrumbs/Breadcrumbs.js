@@ -8,6 +8,12 @@ import HtzLink from '../HtzLink/HtzLink';
 import Query from '../ApolloBoundary/Query';
 import Mutation from '../ApolloBoundary/Mutation';
 
+import IconRamatGan from '../Icon/icons/IconRamatGan';
+import IconBeerSheva from '../Icon/icons/IconBeerSheva';
+import IconJerusalem from '../Icon/icons/IconJerusalem';
+import IconPetachTikva from '../Icon/icons/IconPetachTikva';
+import IconGaniYoshua from '../Icon/icons/IconGaniYoshua';
+
 const propTypes = {
   className: PropTypes.string,
   updateArticleSection: PropTypes.func.isRequired,
@@ -39,6 +45,23 @@ const commonStyle = theme => ({
   marginInlineEnd: '1rem',
 });
 
+const CityIcon = ({ icon, ...props }) => {
+  switch (icon) {
+    case 'IconRamatGan':
+      return <IconRamatGan {...props} />;
+    case 'IconBeerSheva':
+      return <IconBeerSheva {...props} />;
+
+    case 'IconJerusalem':
+      return <IconJerusalem {...props} />;
+    case 'IconPetachTikva':
+      return <IconPetachTikva {...props} />;
+    case 'IconGaniYoshua':
+      return <IconGaniYoshua {...props} />;
+    default:
+      return <IconGaniYoshua {...props} />;
+  }
+};
 const Delimiter = props => (
   <FelaComponent style={commonStyle} render="span" {...props}>
     |
@@ -83,11 +106,36 @@ class Breadcrumbs extends React.Component {
     });
   }
 
-  render() {
-    const { className, crumbs, } = this.props;
+  addMousePostFix = crumbs => {
+    const newItems = [ ...crumbs, ];
+    const pop = { ...newItems.pop(), };
+    pop.name += '(הארץ Labels)';
+    newItems.push(pop);
+    return newItems;
+  };
 
+  render() {
+    const { className, } = this.props;
+    let { crumbs, } = this.props;
+    const labelsSectionsIndex = {
+      2.16463: 'IconRamatGan',
+      2.16464: 'IconBeerSheva',
+      2.16455: 'IconJerusalem',
+      2.16457: 'IconPetachTikva',
+      2.16465: 'IconGaniYoshua',
+    };
+    const labelsSections = Object.keys(labelsSectionsIndex);
+    const lastCrumb = crumbs.slice(-1)[0];
+    const isLastOfLabelSection = labelsSections.includes(lastCrumb.contentId);
+    crumbs = isLastOfLabelSection ? this.addMousePostFix(crumbs) : crumbs;
     const crumbLinks = crumbs.map(crumb => <ColoredLink crumb={crumb} />);
     const crumbLinksWithDelimiters = intersperse(crumbLinks, <Delimiter />);
+
+    const cityIconWrapper = isLastOfLabelSection ? (
+      <FelaComponent style={{ float: 'left', }} render="span">
+        <CityIcon icon={labelsSectionsIndex[lastCrumb.contentId]} height="4.5rem" />
+      </FelaComponent>
+    ) : null;
 
     return (
       <FelaTheme
@@ -99,6 +147,7 @@ class Breadcrumbs extends React.Component {
             <Fragment>
               <nav aria-label={ariaLabel} className={className}>
                 {crumbLinksWithDelimiters.map((elem, index) => (
+                  /* eslint-disable react/no-array-index-key */
                   <FelaComponent
                     key={index}
                     style={theme => ({
@@ -126,6 +175,7 @@ class Breadcrumbs extends React.Component {
                     render={({ className, }) => <span className={className}>{elem}</span>}
                   />
                 ))}
+                {cityIconWrapper}
               </nav>
             </Fragment>
           );

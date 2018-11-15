@@ -11,56 +11,61 @@ import { createComponent, } from 'react-fela';
 import IconAccessibility from './icons/IconAccessibility';
 import IconAlefLogoTransparent from './icons/IconAlefLogoTransparent';
 import IconAlefLogo from './icons/IconAlefLogo';
-import IconAlef from './icons/IconAlef';
-import IconAlert from './icons/IconAlert';
-import IconAndroid from './icons/IconAndroid';
 import IconApple from './icons/IconApple';
+import IconAndroid from './icons/IconAndroid';
 import IconArrow from './icons/IconArrow';
-import IconAvatar from './icons/IconAvatar';
 import IconBack from './icons/IconBack';
 import IconBold from './icons/IconBold';
+import IconBeerSheva from './icons/IconBeerSheva';
 import IconBundle from './icons/IconBundle';
 import IconCamera from './icons/IconCamera';
-import IconClose from './icons/IconClose';
 import IconCheck from './icons/IconCheck';
+import IconAlert from './icons/IconAlert';
+import IconClose from './icons/IconClose';
+import IconAvatar from './icons/IconAvatar';
+import IconClock from './icons/IconClock';
 import IconComment from './icons/IconComment';
 import IconCredit from './icons/IconCredit';
 import IconDislike from './icons/IconDislike';
-import IconDrive from './icons/IconDrive';
 import IconFacebookLogo from './icons/IconFacebookLogo';
+import IconDrive from './icons/IconDrive';
+import IconGaniYoshua from './icons/IconGaniYoshua';
 import IconGPlus from './icons/IconGPlus';
-import IconFacebook from './icons/IconFacebook';
+import IconItalic from './icons/IconItalic';
 import IconHaaretzLogo from './icons/IconHaaretzLogo';
 import IconInfo from './icons/IconInfo';
-import IconItalic from './icons/IconItalic';
-import IconLock from './icons/IconLock';
+import IconJerusalem from './icons/IconJerusalem';
+import IconLevels from './icons/IconLevels';
 import IconLike from './icons/IconLike';
+import IconLock from './icons/IconLock';
 import IconMailAlert from './icons/IconMailAlert';
+import IconFacebook from './icons/IconFacebook';
+import IconAlef from './icons/IconAlef';
 import IconMail from './icons/IconMail';
-import IconMarkerLogoTransparent from './icons/IconMarkerLogoTransparent';
-import IconMarkerLogo from './icons/IconMarkerLogo';
 import IconMenu from './icons/IconMenu';
 import IconMessenger from './icons/IconMessenger';
+import IconMarkerLogoTransparent from './icons/IconMarkerLogoTransparent';
 import IconPdf from './icons/IconPdf';
-import IconPlus from './icons/IconPlus';
+import IconPortions from './icons/IconPortions';
+import IconPetachTikva from './icons/IconPetachTikva';
 import IconPrint from './icons/IconPrint';
+import IconPlus from './icons/IconPlus';
 import IconQuote from './icons/IconQuote';
 import IconReading from './icons/IconReading';
 import IconReply from './icons/IconReply';
+import IconRamatGan from './icons/IconRamatGan';
 import IconRss from './icons/IconRss';
 import IconSave from './icons/IconSave';
-import IconSettings from './icons/IconSettings';
 import IconSearch from './icons/IconSearch';
 import IconTablet from './icons/IconTablet';
 import IconTheMarker from './icons/IconTheMarker';
-import IconTwitter from './icons/IconTwitter';
+import IconSettings from './icons/IconSettings';
 import IconWhatsapp from './icons/IconWhatsapp';
-import IconZen from './icons/IconZen';
 import IconZoomIn from './icons/IconZoomIn';
+import IconZen from './icons/IconZen';
+import IconTwitter from './icons/IconTwitter';
 import IconZoomOut from './icons/IconZoomOut';
-import IconClock from './icons/IconClock';
-import IconLevels from './icons/IconLevels';
-import IconPortions from './icons/IconPortions';
+import IconMarkerLogo from './icons/IconMarkerLogo';
 
 
 const gutterWidth = '1rem';
@@ -141,56 +146,61 @@ export default class Icons extends React.Component {
           <Cell name="IconAccessibility">{<IconAccessibility size={this.state.size} />}</Cell>
           <Cell name="IconAlefLogoTransparent">{<IconAlefLogoTransparent size={this.state.size} />}</Cell>
           <Cell name="IconAlefLogo">{<IconAlefLogo size={this.state.size} />}</Cell>
-          <Cell name="IconAlef">{<IconAlef size={this.state.size} />}</Cell>
-          <Cell name="IconAlert">{<IconAlert size={this.state.size} />}</Cell>
-          <Cell name="IconAndroid">{<IconAndroid size={this.state.size} />}</Cell>
           <Cell name="IconApple">{<IconApple size={this.state.size} />}</Cell>
+          <Cell name="IconAndroid">{<IconAndroid size={this.state.size} />}</Cell>
           <Cell name="IconArrow">{<IconArrow size={this.state.size} />}</Cell>
-          <Cell name="IconAvatar">{<IconAvatar size={this.state.size} />}</Cell>
           <Cell name="IconBack">{<IconBack size={this.state.size} />}</Cell>
           <Cell name="IconBold">{<IconBold size={this.state.size} />}</Cell>
+          <Cell name="IconBeerSheva">{<IconBeerSheva size={this.state.size} />}</Cell>
           <Cell name="IconBundle">{<IconBundle size={this.state.size} />}</Cell>
           <Cell name="IconCamera">{<IconCamera size={this.state.size} />}</Cell>
-          <Cell name="IconClose">{<IconClose size={this.state.size} />}</Cell>
           <Cell name="IconCheck">{<IconCheck size={this.state.size} />}</Cell>
+          <Cell name="IconAlert">{<IconAlert size={this.state.size} />}</Cell>
+          <Cell name="IconClose">{<IconClose size={this.state.size} />}</Cell>
+          <Cell name="IconAvatar">{<IconAvatar size={this.state.size} />}</Cell>
+          <Cell name="IconClock">{<IconClock size={this.state.size} />}</Cell>
           <Cell name="IconComment">{<IconComment size={this.state.size} />}</Cell>
           <Cell name="IconCredit">{<IconCredit size={this.state.size} />}</Cell>
           <Cell name="IconDislike">{<IconDislike size={this.state.size} />}</Cell>
-          <Cell name="IconDrive">{<IconDrive size={this.state.size} />}</Cell>
           <Cell name="IconFacebookLogo">{<IconFacebookLogo size={this.state.size} />}</Cell>
+          <Cell name="IconDrive">{<IconDrive size={this.state.size} />}</Cell>
+          <Cell name="IconGaniYoshua">{<IconGaniYoshua size={this.state.size} />}</Cell>
           <Cell name="IconGPlus">{<IconGPlus size={this.state.size} />}</Cell>
-          <Cell name="IconFacebook">{<IconFacebook size={this.state.size} />}</Cell>
+          <Cell name="IconItalic">{<IconItalic size={this.state.size} />}</Cell>
           <Cell name="IconHaaretzLogo">{<IconHaaretzLogo size={this.state.size} />}</Cell>
           <Cell name="IconInfo">{<IconInfo size={this.state.size} />}</Cell>
-          <Cell name="IconItalic">{<IconItalic size={this.state.size} />}</Cell>
-          <Cell name="IconLock">{<IconLock size={this.state.size} />}</Cell>
+          <Cell name="IconJerusalem">{<IconJerusalem size={this.state.size} />}</Cell>
+          <Cell name="IconLevels">{<IconLevels size={this.state.size} />}</Cell>
           <Cell name="IconLike">{<IconLike size={this.state.size} />}</Cell>
+          <Cell name="IconLock">{<IconLock size={this.state.size} />}</Cell>
           <Cell name="IconMailAlert">{<IconMailAlert size={this.state.size} />}</Cell>
+          <Cell name="IconFacebook">{<IconFacebook size={this.state.size} />}</Cell>
+          <Cell name="IconAlef">{<IconAlef size={this.state.size} />}</Cell>
           <Cell name="IconMail">{<IconMail size={this.state.size} />}</Cell>
-          <Cell name="IconMarkerLogoTransparent">{<IconMarkerLogoTransparent size={this.state.size} />}</Cell>
-          <Cell name="IconMarkerLogo">{<IconMarkerLogo size={this.state.size} />}</Cell>
           <Cell name="IconMenu">{<IconMenu size={this.state.size} />}</Cell>
           <Cell name="IconMessenger">{<IconMessenger size={this.state.size} />}</Cell>
+          <Cell name="IconMarkerLogoTransparent">{<IconMarkerLogoTransparent size={this.state.size} />}</Cell>
           <Cell name="IconPdf">{<IconPdf size={this.state.size} />}</Cell>
-          <Cell name="IconPlus">{<IconPlus size={this.state.size} />}</Cell>
+          <Cell name="IconPortions">{<IconPortions size={this.state.size} />}</Cell>
+          <Cell name="IconPetachTikva">{<IconPetachTikva size={this.state.size} />}</Cell>
           <Cell name="IconPrint">{<IconPrint size={this.state.size} />}</Cell>
+          <Cell name="IconPlus">{<IconPlus size={this.state.size} />}</Cell>
           <Cell name="IconQuote">{<IconQuote size={this.state.size} />}</Cell>
           <Cell name="IconReading">{<IconReading size={this.state.size} />}</Cell>
           <Cell name="IconReply">{<IconReply size={this.state.size} />}</Cell>
+          <Cell name="IconRamatGan">{<IconRamatGan size={this.state.size} />}</Cell>
           <Cell name="IconRss">{<IconRss size={this.state.size} />}</Cell>
           <Cell name="IconSave">{<IconSave size={this.state.size} />}</Cell>
-          <Cell name="IconSettings">{<IconSettings size={this.state.size} />}</Cell>
           <Cell name="IconSearch">{<IconSearch size={this.state.size} />}</Cell>
           <Cell name="IconTablet">{<IconTablet size={this.state.size} />}</Cell>
           <Cell name="IconTheMarker">{<IconTheMarker size={this.state.size} />}</Cell>
-          <Cell name="IconTwitter">{<IconTwitter size={this.state.size} />}</Cell>
+          <Cell name="IconSettings">{<IconSettings size={this.state.size} />}</Cell>
           <Cell name="IconWhatsapp">{<IconWhatsapp size={this.state.size} />}</Cell>
-          <Cell name="IconZen">{<IconZen size={this.state.size} />}</Cell>
           <Cell name="IconZoomIn">{<IconZoomIn size={this.state.size} />}</Cell>
+          <Cell name="IconZen">{<IconZen size={this.state.size} />}</Cell>
+          <Cell name="IconTwitter">{<IconTwitter size={this.state.size} />}</Cell>
           <Cell name="IconZoomOut">{<IconZoomOut size={this.state.size} />}</Cell>
-          <Cell name="IconClock">{<IconClock size={this.state.size} />}</Cell>
-          <Cell name="IconLevels">{<IconLevels size={this.state.size} />}</Cell>
-          <Cell name="IconPortions">{<IconPortions size={this.state.size} />}</Cell>
+          <Cell name="IconMarkerLogo">{<IconMarkerLogo size={this.state.size} />}</Cell>
         </Wrapper>
       </div>
     );

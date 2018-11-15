@@ -1,4 +1,4 @@
-/** ************************************************************** *
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change this Icon component , it is generated
@@ -18,20 +18,7 @@ const IconPlus = ({ size, fill, color, attrs, miscStyles, ...props }) => (
     miscStyles={miscStyles}
     rule={iconStyle}
     render={({ className, }) => (
-      <svg
-        width="1em"
-        height="1em"
-        viewBox="0 0 256 256"
-        className={className}
-        {...props}
-        {...attrs}
-      >
-        {' '}
-        <path
-          fill="currentColor"
-          d="M228 141h-87v87h-23v-87H28v-24h89V28h24v89h87v24z"
-        />
-      </svg>
+      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M228 141h-87v87h-23v-87H28v-24h89V28h24v89h87v24z" /></svg>
     )}
   />
 );
