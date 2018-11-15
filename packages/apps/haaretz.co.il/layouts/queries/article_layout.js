@@ -4,6 +4,7 @@ import { breadcrumbs, } from '@haaretz/app-utils';
 export default gql`
   query PageLayout($path: String!) {
     page(path: $path) {
+      pageType
       ...PageBreadcrumbs
       slots {
         preHeader
