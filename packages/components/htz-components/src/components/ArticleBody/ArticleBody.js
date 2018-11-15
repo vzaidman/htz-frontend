@@ -160,7 +160,6 @@ function ArticleBody({ body, }) {
       })}
     >
       {body.map((component, i) => buildComponent(component, i, i === body.length - 1))}
-      <UserSurvey />
     </FelaComponent>
   );
 }
