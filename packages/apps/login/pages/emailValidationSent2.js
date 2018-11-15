@@ -5,9 +5,11 @@ import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 
 import { createComponent, } from 'react-fela';
-import { Form, TextInput, Button, } from '@haaretz/htz-components';
+import { Form, TextInput, Button, ApolloConsumer, } from '@haaretz/htz-components';
 import theme from '../theme/index';
 import BottomLinks from '../components/Misc/BottomLinks';
+import { sendMailValidation, } from '../util/requestUtil';
+import { getEmail, } from './queryutil/userDetailsOperations';
 import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
@@ -45,48 +47,59 @@ const sendAgain = e => {
 // --------------------------
 
 const PhoneMailSent = () => (
-  <FSMLayout>
-    {({ currentState, findRout, doTransition, }) => (
-      <Fragment>
-        <ContentWrapper>
-          <FormWrapper>
-            <TextBox>
-              <GreenText>
-                <h5>נשלח אלייך מייל בשנית</h5>
-              </GreenText>
-            </TextBox>
+  <ApolloConsumer>
+    {client => {
+        const email = getEmail(client);
+        sendMailValidation({ email, });
+        return(
+          <FSMLayout>
+            {({ currentState, findRout, doTransition, }) => (
+              <Fragment>
+                <ContentWrapper>
+                  <FormWrapper>
+                    <TextBox>
+                      <GreenText>
+                        <h5>נשלח אלייך מייל בשנית</h5>
+                      </GreenText>
+                    </TextBox>
+        
+                    <BottomLinks spacing={2}>
+                      <span>לא הגיע? </span>
+                      <br/>
+                      <HtzLink
+                        href={`${findRout('getCustomerService')}`}
+                        onClick={e => {
+                          e.preventDefault();
+                          const route = doTransition('getCustomerService');
+                          Router.push(route);
+                        }}
+                      >
+                        פניה לשירות לקוחות
+                      </HtzLink>
+                        <br/>
+                      <HtzLink
+                        href={`${findRout('withPassword')}`}
+                        onClick={e => {
+                          e.preventDefault();
+                          const route = doTransition('withPassword');
+                          Router.push(route);
+                        }}
+                      >
+                        כניסה באמצעות סיסמה 
+                      </HtzLink>
+                    </BottomLinks>
+        
+                  </FormWrapper>
+                </ContentWrapper>
+              </Fragment>
+            )}
+          </FSMLayout>
+        );
+      }
+    }
+  </ApolloConsumer>
 
-            <BottomLinks spacing={2}>
-              <span>לא הגיע? </span>
-              <br/>
-              <HtzLink
-                href={`${findRout('getCustomerService')}`}
-                onClick={e => {
-                  e.preventDefault();
-                  const route = doTransition('getCustomerService');
-                  Router.push(route);
-                }}
-              >
-                פניה לשירות לקוחות
-              </HtzLink>
-                <br/>
-              <HtzLink
-                href={`${findRout('withPassword')}`}
-                onClick={e => {
-                  e.preventDefault();
-                  const route = doTransition('withPassword');
-                  Router.push(route);
-                }}
-              >
-                כניסה באמצעות סיסמה 
-              </HtzLink>
-            </BottomLinks>
-
-          </FormWrapper>
-        </ContentWrapper>
-      </Fragment>
-    )}
-  </FSMLayout>
+  
 );
 
 export default PhoneMailSent;
