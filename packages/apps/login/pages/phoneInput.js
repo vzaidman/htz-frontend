@@ -20,12 +20,14 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 // Methods -------------------
 const generateSmsCodeError = message => [ { name: 'smscode', order: 1, errorText: message, }, ];
 
-const isValidPhoneNumber = number => {
-  const phoneRegex = /^(\s*|[+0-9]\d{6,})$/;
-  return phoneRegex.test(number);
+const isMobile = phone => {
+  phone = phone.replace(/[\s\-]/g, '');
+  const phoneRegex = /(^05\d{8}$)|(^\+\d{8,13}$)/;
+  return phoneRegex.test(phone);
 };
+
 const validatePhoneNumber = ({ phoneNumber, }) =>
-  (!isValidPhoneNumber(phoneNumber) || !phoneNumber || phoneNumber.length < 10
+  (!isMobile(phoneNumber) || !phoneNumber || phoneNumber.length < 10
     ? generateSmsCodeError('אנא הזינו מספר טלפון נייד')
     : []);
 
