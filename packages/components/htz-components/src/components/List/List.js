@@ -8,6 +8,31 @@ import EventTracker from '../../utils/EventTracker';
 import ReadingHistoryProvider from '../ReadingHistory/ReadingHistoryProvider';
 import NoSSR from '../NoSSR/NoSSR';
 
+
+const ListWithReadingHistory = props => (
+  <NoSSR>
+    <ReadingHistoryProvider>
+      {
+        readingHistory => (
+          <List history={readingHistory} {...props} />
+        )
+      }
+    </ReadingHistoryProvider>
+  </NoSSR>
+);
+
+ListWithReadingHistory.propTypes = {
+  /**
+   * List's contentId.
+   */
+  contentId: PropTypes.string.isRequired,
+  /**
+   * List's view name.
+   */
+  view: PropTypes.string.isRequired,
+};
+
+
 class List extends React.Component {
   static propTypes = {
     ...ListWithReadingHistory.propTypes,
@@ -26,7 +51,6 @@ class List extends React.Component {
     const { view, } = this.props;
     getView(view)
       .then(response => {
-        const history = JSON.parse(localStorage.getItem('readingHistory')) || [];
         this.setState({
           selectedView: response,
         });
@@ -86,29 +110,5 @@ class List extends React.Component {
     ) : null;
   }
 }
-
-
-const ListWithReadingHistory = props => (
-  <NoSSR>
-    <ReadingHistoryProvider>
-      {
-        readingHistory => (
-          <List history={readingHistory} {...props} />
-        )
-      }
-    </ReadingHistoryProvider>
-  </NoSSR>
-);
-
-ListWithReadingHistory.propTypes = {
-  /**
-   * List's contentId.
-   */
-  contentId: PropTypes.string.isRequired,
-  /**
-   * List's view name.
-   */
-  view: PropTypes.string.isRequired,
-};
 
 export default ListWithReadingHistory;
