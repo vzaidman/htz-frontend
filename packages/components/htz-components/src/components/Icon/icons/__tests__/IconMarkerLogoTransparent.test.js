@@ -1,5 +1,6 @@
+
 /* global window */
-/** ************************************************************** *
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
@@ -39,18 +40,12 @@ describe('<IconMarkerLogoTransparent />', () => {
   //   });
   // });
   describe('DOM element', () => {
-    testCase(
-      'render correctly when no props are passed',
-      <IconMarkerLogoTransparent />
-    );
+    testCase('render correctly when no props are passed', <IconMarkerLogoTransparent />);
     testCase(
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconMarkerLogoTransparent attrs={{ 'aria-hidden': true, }} />
     );
-    testCase(
-      'add "id" attribute to DOM element',
-      <IconMarkerLogoTransparent id="hasId" />
-    );
+    testCase('add "id" attribute to DOM element', <IconMarkerLogoTransparent id="hasId" />);
     testCase(
       'add "onClick" attribute to DOM element',
       <IconMarkerLogoTransparent id={e => console.log('a')} />
@@ -58,10 +53,7 @@ describe('<IconMarkerLogoTransparent />', () => {
   });
 
   describe('styles', () => {
-    testCase(
-      "set icon's color",
-      <IconMarkerLogoTransparent color={[ 'primary', 'base', ]} />
-    );
+    testCase("set icon's color", <IconMarkerLogoTransparent color={[ 'primary', 'base', ]} />);
     testCase(
       "set icon's color responsively",
       <IconMarkerLogoTransparent
@@ -71,10 +63,7 @@ describe('<IconMarkerLogoTransparent />', () => {
         ]}
       />
     );
-    testCase(
-      "set icon's fill",
-      <IconMarkerLogoTransparent fill={[ 'primary', 'base', ]} />
-    );
+    testCase("set icon's fill", <IconMarkerLogoTransparent fill={[ 'primary', 'base', ]} />);
     testCase(
       "set icon's fill responsively",
       <IconMarkerLogoTransparent

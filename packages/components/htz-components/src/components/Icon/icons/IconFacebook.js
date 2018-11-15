@@ -1,4 +1,4 @@
-/** ************************************************************** *
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change this Icon component , it is generated
@@ -18,20 +18,7 @@ const IconFacebook = ({ size, fill, color, attrs, miscStyles, ...props }) => (
     miscStyles={miscStyles}
     rule={iconStyle}
     render={({ className, }) => (
-      <svg
-        width="1em"
-        height="1em"
-        viewBox="0 0 256 256"
-        className={className}
-        {...props}
-        {...attrs}
-      >
-        {' '}
-        <path
-          fill="currentColor"
-          d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
-        />
-      </svg>
+      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z" /></svg>
     )}
   />
 );

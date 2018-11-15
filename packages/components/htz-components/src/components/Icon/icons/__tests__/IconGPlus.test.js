@@ -1,3 +1,11 @@
+
+/* global window */
+/* *************************************************************** *
+ * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
+ *
+ * If you want to change the styleguide example, it is generated
+ * from the `embedsFileTemplate.js` file is this directory.
+ * *************************************************************** */
 import React from 'react';
 import felaSnapshotter from '../../../../test-helpers/felaSnapshotter';
 import IconGPlus from '../IconGPlus';
@@ -6,28 +14,28 @@ describe('<IconGPlus />', () => {
   /* The error tests are left as documentation, but are commented out for the redability of the test results */
   // describe('Errors', () => {
   //   it('throw an error when the value passed to the "size" prop isn't a number', () => {
-  //     expect(() => felaSnapshotter(<IconCamera size="2rem" />)).toThrow(
+  //     expect(() => felaSnapshotter(<IconGPlus size="2rem" />)).toThrow(
   //       /^An Icon's "size" prop may only be passed a "number"/
   //     );
   //   });
   //   it('throw an error when the value passed to the "color" prop isn't a named color (string)', () => {
-  //     expect(() => felaSnapshotter(<IconCamera color="red" />)).toThrow(
+  //     expect(() => felaSnapshotter(<IconGPlus color="red" />)).toThrow(
   //       /is not a named-color/
   //     );
   //   });
   //   it('throw an error when the value passed to the "color" prop isn't a named color (array of strings)', () => {
   //     expect(() =>
-  //       felaSnapshotter(<IconCamera color={[ 'primary', 'nope', ]} />)
+  //       felaSnapshotter(<IconGPlus color={[ 'primary', 'nope', ]} />)
   //     ).toThrow(/is not a named-color/);
   //   });
   //   it('throw an error when the value passed to the "fill" prop isn't a named color (string)', () => {
-  //     expect(() => felaSnapshotter(<IconCamera fill="red" />)).toThrow(
+  //     expect(() => felaSnapshotter(<IconGPlus fill="red" />)).toThrow(
   //       /is not a named-color/
   //     );
   //   });
   //   it('throw an error when the value passed to the "fill" prop isn't a named color (array of strings)', () => {
   //     expect(() =>
-  //       felaSnapshotter(<IconCamera fill={[ 'primary', 'nope', ]} />)
+  //       felaSnapshotter(<IconGPlus fill={[ 'primary', 'nope', ]} />)
   //     ).toThrow(/is not a named-color/);
   //   });
   // });
@@ -68,7 +76,9 @@ describe('<IconGPlus />', () => {
     testCase("set icon's size", <IconGPlus size={6} />);
     testCase(
       "set icon's size responsively",
-      <IconGPlus size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]} />
+      <IconGPlus
+        size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]}
+      />
     );
     testCase(
       'set misc styles on an icon',

@@ -130,6 +130,12 @@ import IconWhatsapp from './components/Icon/icons/IconWhatsapp';
 import IconZen from './components/Icon/icons/IconZen';
 import IconZoomIn from './components/Icon/icons/IconZoomIn';
 import IconZoomOut from './components/Icon/icons/IconZoomOut';
+import IconRamatGan from './components/Icon/icons/IconRamatGan';
+import IconPetachTikva from './components/Icon/icons/IconPetachTikva';
+import IconJerusalem from './components/Icon/icons/IconJerusalem';
+import IconGaniYoshua from './components/Icon/icons/IconGaniYoshua';
+import IconBeerSheva from './components/Icon/icons/IconBeerSheva';
+
 
 // User
 import CheckEmailExists from './components/User/CheckEmailExists';
@@ -284,6 +290,11 @@ export {
   IconZen,
   IconZoomIn,
   IconZoomOut,
+  IconBeerSheva,
+  IconGaniYoshua,
+  IconJerusalem,
+  IconPetachTikva,
+  IconRamatGan,
   // User
   CheckEmailExists,
   Login,

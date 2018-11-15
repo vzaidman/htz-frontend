@@ -23,7 +23,7 @@ import StandardArticleQuery from './queries/standard_article';
 function StandardArticle({ articleId, slots, }) {
   return (
     <ArticleLayout articleId={articleId} slots={slots}>
-      <Query query={StandardArticleQuery} partialRefetch variables={{ path: articleId, }}>
+      <Query query={StandardArticleQuery} partialRefetch variables={{ path: articleId, }} >
         {({ loading, error, data, }) => {
           if (loading) return null;
           if (error) return null;
@@ -57,7 +57,6 @@ function StandardArticle({ articleId, slots, }) {
             : '';
 
           const breadCrumbs = article.find(element => element.inputTemplate === 'com.tm.PageTitle');
-
           const standardArticleElement = article.find(
             element =>
               element.inputTemplate === 'com.htz.StandardArticle' ||
@@ -144,6 +143,28 @@ function StandardArticle({ articleId, slots, }) {
                               <BloggerInfo author={author} blogName={blogName} />
                             ) : null;
                         }
+
+                        const labelsSections = [ '2.16463', '2.16464', '2.16455', '2.16457', '2.16465'];
+                        let mouseDisclaimer = null;
+
+                        if(labelsSections.includes(lineage[1].contentId)) {
+                          const disclaimerStyle = theme => ({
+                            marginBottom: '3rem',
+                            marginTop: '3rem',
+                            extend: [
+                              theme.type(-2, { untilBp: 'xl', lines: 3, }), theme.type(-2, { fromBp: 'xl', lines: 3, }),
+                            ],
+                          })
+
+                          mouseDisclaimer = (
+                            <FelaComponent style={disclaimerStyle}>
+                              *
+                              התוכן נכתב על ידי מחלקת שיתופי הפעולה של הארץ/עכבר העיר, עבור עיריית
+                               {' '+lineage[1].name}
+                            </FelaComponent>
+                          );
+                        }
+
                         return (
                           <ApolloConsumer key={element.contentId}>
                             {cache => {
@@ -173,6 +194,7 @@ function StandardArticle({ articleId, slots, }) {
                                   }
                                 >
                                   <ArticleBody body={body} />
+                                  {mouseDisclaimer}
                                   {bloggerInfo}
                                 </ArticleLayoutRow>
                               );

@@ -1,5 +1,6 @@
+
 /* global window */
-/** ************************************************************** *
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
@@ -39,18 +40,12 @@ describe('<IconAccessibility />', () => {
   //   });
   // });
   describe('DOM element', () => {
-    testCase(
-      'render correctly when no props are passed',
-      <IconAccessibility />
-    );
+    testCase('render correctly when no props are passed', <IconAccessibility />);
     testCase(
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconAccessibility attrs={{ 'aria-hidden': true, }} />
     );
-    testCase(
-      'add "id" attribute to DOM element',
-      <IconAccessibility id="hasId" />
-    );
+    testCase('add "id" attribute to DOM element', <IconAccessibility id="hasId" />);
     testCase(
       'add "onClick" attribute to DOM element',
       <IconAccessibility id={e => console.log('a')} />
@@ -58,10 +53,7 @@ describe('<IconAccessibility />', () => {
   });
 
   describe('styles', () => {
-    testCase(
-      "set icon's color",
-      <IconAccessibility color={[ 'primary', 'base', ]} />
-    );
+    testCase("set icon's color", <IconAccessibility color={[ 'primary', 'base', ]} />);
     testCase(
       "set icon's color responsively",
       <IconAccessibility
@@ -71,10 +63,7 @@ describe('<IconAccessibility />', () => {
         ]}
       />
     );
-    testCase(
-      "set icon's fill",
-      <IconAccessibility fill={[ 'primary', 'base', ]} />
-    );
+    testCase("set icon's fill", <IconAccessibility fill={[ 'primary', 'base', ]} />);
     testCase(
       "set icon's fill responsively",
       <IconAccessibility

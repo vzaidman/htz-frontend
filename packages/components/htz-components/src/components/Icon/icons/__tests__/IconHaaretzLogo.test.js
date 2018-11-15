@@ -1,5 +1,6 @@
+
 /* global window */
-/** ************************************************************** *
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
@@ -44,10 +45,7 @@ describe('<IconHaaretzLogo />', () => {
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconHaaretzLogo attrs={{ 'aria-hidden': true, }} />
     );
-    testCase(
-      'add "id" attribute to DOM element',
-      <IconHaaretzLogo id="hasId" />
-    );
+    testCase('add "id" attribute to DOM element', <IconHaaretzLogo id="hasId" />);
     testCase(
       'add "onClick" attribute to DOM element',
       <IconHaaretzLogo id={e => console.log('a')} />
@@ -55,10 +53,7 @@ describe('<IconHaaretzLogo />', () => {
   });
 
   describe('styles', () => {
-    testCase(
-      "set icon's color",
-      <IconHaaretzLogo color={[ 'primary', 'base', ]} />
-    );
+    testCase("set icon's color", <IconHaaretzLogo color={[ 'primary', 'base', ]} />);
     testCase(
       "set icon's color responsively",
       <IconHaaretzLogo

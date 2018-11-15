@@ -1,5 +1,6 @@
+
 /* global window */
-/** ************************************************************** *
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
@@ -39,18 +40,12 @@ describe('<IconAlefLogoTransparent />', () => {
   //   });
   // });
   describe('DOM element', () => {
-    testCase(
-      'render correctly when no props are passed',
-      <IconAlefLogoTransparent />
-    );
+    testCase('render correctly when no props are passed', <IconAlefLogoTransparent />);
     testCase(
       'pass attributes defined in the "attrs" prop to the DOM element',
       <IconAlefLogoTransparent attrs={{ 'aria-hidden': true, }} />
     );
-    testCase(
-      'add "id" attribute to DOM element',
-      <IconAlefLogoTransparent id="hasId" />
-    );
+    testCase('add "id" attribute to DOM element', <IconAlefLogoTransparent id="hasId" />);
     testCase(
       'add "onClick" attribute to DOM element',
       <IconAlefLogoTransparent id={e => console.log('a')} />
@@ -58,10 +53,7 @@ describe('<IconAlefLogoTransparent />', () => {
   });
 
   describe('styles', () => {
-    testCase(
-      "set icon's color",
-      <IconAlefLogoTransparent color={[ 'primary', 'base', ]} />
-    );
+    testCase("set icon's color", <IconAlefLogoTransparent color={[ 'primary', 'base', ]} />);
     testCase(
       "set icon's color responsively",
       <IconAlefLogoTransparent
@@ -71,10 +63,7 @@ describe('<IconAlefLogoTransparent />', () => {
         ]}
       />
     );
-    testCase(
-      "set icon's fill",
-      <IconAlefLogoTransparent fill={[ 'primary', 'base', ]} />
-    );
+    testCase("set icon's fill", <IconAlefLogoTransparent fill={[ 'primary', 'base', ]} />);
     testCase(
       "set icon's fill responsively",
       <IconAlefLogoTransparent
