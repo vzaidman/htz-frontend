@@ -18,12 +18,12 @@ class Login extends React.Component {
   };
 
   getLoginWithMobileFunction = (user, plantImages, handleImgOnload) =>
-    function loginWithMobile(mobile, otp, trmsChk, hash) {
+    function loginWithMobile(mobile, email, otp, trmsChk, hash) {
       const userService = new UserService({
         plantImagesCallback: plantImages,
         onImageLoadCallback: handleImgOnload,
       });
-      return userService.loginWithMobile({ mobile, otp, trmsChk, hash, user, });
+      return userService.loginWithMobile({ mobile, email, otp, trmsChk, hash, user, });
     };
 
   render() {
