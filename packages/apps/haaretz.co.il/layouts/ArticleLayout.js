@@ -116,7 +116,7 @@ class ArticleLayout extends React.Component {
           if (loading) return null;
           if (error) logger.error(error);
           const {
-            page: { slots, lineage, jsonld, },
+            page: { pageType, slots, lineage, jsonld, },
           } = data;
           const articleId = lineage[0].contentId;
           this.setState({
@@ -164,7 +164,7 @@ class ArticleLayout extends React.Component {
                       minHeight: '100vh',
                     }}
                   >
-                    {render({ articleId: this.props.url.query.path, slots, })}
+                    {render({ articleId: this.props.url.query.path, slots, pageType, })}
                   </FelaComponent>
                   <WelcomePage />
                 </Fragment>
