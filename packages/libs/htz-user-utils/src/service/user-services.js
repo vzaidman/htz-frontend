@@ -131,7 +131,7 @@ export default function UserService(config = {}) {
    * user: the current user object (prior to login)
    * @return {*}
    */
-  function loginWithMobile({ mobile, otp, trmsChk, hash, user, }) {
+  function loginWithMobile({ mobile, email, otp, trmsChk, hash, user, }) {
     let anonymousId;
     const { prefix, suffix, } = mobileNumberParser(mobile);
     if (!user) {
@@ -149,6 +149,7 @@ export default function UserService(config = {}) {
       site: siteConfig.siteId,
       mobilePrefix: prefix,
       mobileNumber: suffix,
+      email,
       id: hash,
       // termsChk: trmsChk ? 'on' : 'off',
       termsChk: trmsChk ? 'on' : 'on',
