@@ -25,7 +25,6 @@ const b64DecodeUnicode = (str) => {
 
 const getUrlParams = () => {
   const pageUrl = new URL(window.location.href);
-  const paramsData = getParamsData(pageUrl.searchParams.get('params'));
   return {
     confirmation: pageUrl.searchParams.get('confirmation'),
     ...getParamsData(pageUrl.searchParams.get('params')),

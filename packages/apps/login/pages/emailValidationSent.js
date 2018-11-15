@@ -35,11 +35,11 @@ class EmailValidationSent extends React.Component {
     return false;
   }
   render() {
-    return (this.state.firstTime ? (
+    return this.state.firstTime ? (
       <ApolloConsumer>
         {client => {
           const email = getEmail(client);
-          sendMailValidation({ email, });
+          // sendMailValidation({ email, });
           // this.setState({ firstTime: false, });
           return (
             <FSMLayout>
@@ -50,8 +50,8 @@ class EmailValidationSent extends React.Component {
                       <TextBox>
                         <h5>נשלח אלייך מייל</h5>
                         <span>
-                      יש לאשר את המייל שנשלח אלייך על מנת לקרוא 6 כתבות באתר מדיי חודש
-                    </span>
+                          יש לאשר את המייל שנשלח אלייך על מנת לקרוא 6 כתבות באתר מדיי חודש
+                        </span>
                       </TextBox>
                       <BottomLinks spacing={1}>
                         <span>לא הגיע המייל? </span>
@@ -65,7 +65,7 @@ class EmailValidationSent extends React.Component {
                         >
                           אנא נסה בשנית
                         </HtzLink>
-                        <br/>
+                        <br />
                         <HtzLink
                           href={`${findRout('notRegistered')}`}
                           onClick={e => {
@@ -84,7 +84,8 @@ class EmailValidationSent extends React.Component {
             </FSMLayout>
           );
         }}
-    </ApolloConsumer>) : null);
+      </ApolloConsumer>
+    ) : null;
   }
 }
 
