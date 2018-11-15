@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { Form, TextInput, Button, Login, HtzLink, } from '@haaretz/htz-components';
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
-import { getUserData, getPhoneNum, getOtpHash, generateOtp, } from '../../../pages/queryutil/userDetailsOperations';
+import { getUserData, getPhoneNum, getOtpHash, generateOtp, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 
 // Styling Components -----------------
@@ -20,7 +20,7 @@ const validateSmsCodeInput = ({ smsCode, }) =>
     : []);
 
 const onSubmit = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk, }) =>
-  loginWithMobile(getPhoneNum(client), smsCode, termsChk, getOtpHash(client))
+  loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, getOtpHash(client))
     .then(
       // eslint-disable-next-line no-undef
       () => { window.location = `https://www.${host}`; },
