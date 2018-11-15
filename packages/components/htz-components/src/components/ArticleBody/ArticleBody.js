@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaTheme, FelaComponent, } from 'react-fela';
-import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
-import { stylesPropType, } from '../../propTypes/stylesPropType';
+import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import getComponent from '../../utils/componentFromInputTemplate';
 import ArticleImage from '../ArticleBodyImage/ArticleBodyImage';
 import Caption from '../Caption/Caption';
