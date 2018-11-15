@@ -25,7 +25,7 @@ const {
   FormWrapper,
   ItemCenterer,
 } = LoginContentStyles;
-const { InputLinkButton, ErrorBox, } = LoginMiscLayoutStyles;
+const { ErrorBox, } = LoginMiscLayoutStyles;
 
 const halfSizeStyleWrapperStyle = () => ({
   display: 'flex',
@@ -37,6 +37,12 @@ const halfSizeStyle = () => ({
 });
 const termsStyle = () => ({
   lineHeight: '17px',
+  '& a': {
+    color: '#0895c3 !important',
+    '&:hover': {
+      textDecoration: 'underline',
+    }
+  }
 });
 const HalfSizeWrapper = createComponent(halfSizeStyleWrapperStyle);
 const HalfSize = createComponent(halfSizeStyle);
@@ -59,8 +65,8 @@ const isName = name => {
 };
 
 const isMobile = phone => {
-  phone = phone.replace(/\s/g, '');
-  const phoneRegex = /^(\s*|[+0-9]\d{6,})$/;
+  phone = phone.replace(/[\s\-]/g, '');
+  const phoneRegex = /(^05\d{8}$)|(^\+\d{8,13}$)/;
   return phoneRegex.test(phone);
 };
 
@@ -103,7 +109,7 @@ const validatePasswordInput = ({ password, }) =>
 
 const getTermsText = () => (
   <div>
-      אני מאשר/ת קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ-TheMarker
+      אני מאשר/ת את <HtzLink href="https://www.haaretz.co.il/misc/terms-of-use">תנאי השימוש</HtzLink> באתר הארץ, וכן קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ-TheMarker
   </div>
 );
 
