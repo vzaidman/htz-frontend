@@ -66,5 +66,71 @@ router.post([ '/volume', '/yield', ], (req, res) => {
   res.end(svg.svgString());
 });
 
+router.post([ '/assetGraphs', ], (req, res) => {
+  const { assetId, options = {}, } = req.body || {};
+  const time = [ 'daily', 'weekly', 'monthly', 'yearly', 'tripleYear', 'max', ];
+  getGraphs('line')
+    .then(response =>
+      fetchData({ time, assetId, fragment: response[1].default, })
+        .then(({
+          data: {
+            daily,
+            weekly,
+            monthly,
+            yearly,
+            tripleYear,
+            max,
+            volume: volumeValues,
+            yield: yieldValues,
+          },
+        }) => {
+          const lineGraph = response[0].default;
+          const yieldData = [
+            {
+              name: 'שבוע',
+              value: yieldValues.weeklyYield,
+            },
+            {
+              name: 'חודש',
+              value: yieldValues.monthlyYield,
+            },
+            {
+              name: 'רבעון',
+              value: yieldValues.quarterlyYield,
+            },
+            {
+              name: 'שנה',
+              value: yieldValues.yearlyYield,
+            },
+          ];
+          const volumeData = [
+            {
+              name: 'מחזור (א׳ שח)',
+              value: volumeValues.volume,
+            },
+            {
+              name: 'מחזור יומי ממוצע (שנה)',
+              value: volumeValues.dailyAvgVolume,
+            },
+          ];
+          const results = {
+            line: {
+              daily: lineGraph(daily.dataSource, options).svgString(),
+              weekly: lineGraph(weekly.dataSource, options).svgString(),
+              monthly: lineGraph(monthly.dataSource, options).svgString(),
+              yearly: lineGraph(yearly.dataSource, options).svgString(),
+              tripleYear: lineGraph(tripleYear.dataSource, options).svgString(),
+              max: lineGraph(max.dataSource, options).svgString(),
+            },
+            yield: yieldGraph(yieldData, options).svgString(),
+            volume: volumeGraph(volumeData, options).svgString(),
+          };
+          res.end(JSON.stringify(results));
+        })
+        .catch(err => console.log(err))
+    )
+    .catch(err => console.log(err));
+});
+
 export default router;
 
