@@ -25,8 +25,8 @@ exports[`BlockLink Component should render element with block link and above blo
       <a
         aria-hidden={true}
         className="htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
-        href="https://www.haaretz.co.il/news/world/europe/.premium-1.5940125"
-        onClick={null}
+        href="/news/world/europe/.premium-1.5940125"
+        onClick={[Function]}
         tabIndex="-1"
       />
     </article>

@@ -33,7 +33,7 @@ Object {
           <a
             className={null}
             href="/food/dairy-1.2429"
-            onClick={null}
+            onClick={[Function]}
           >
             <span
               className="htz-i htz-j"
@@ -48,7 +48,7 @@ Object {
           <a
             className={null}
             href="/news/terror-1.2603"
-            onClick={null}
+            onClick={[Function]}
           >
             <span
               className="htz-i htz-j"
