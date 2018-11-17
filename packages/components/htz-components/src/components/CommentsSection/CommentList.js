@@ -1,9 +1,9 @@
-import React, { Component, Fragment, } from 'react';
-import PropTypes from 'prop-types';
-import { FelaComponent, } from 'react-fela';
-import Comment from './Comment.js';
-import Media from '../Media/Media';
-import DynamicSlotFromDfpConfig from '../Ads/DynamicAds/DynamicSlotFromDfpConfig.js';
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+import { FelaComponent } from "react-fela";
+import Comment from "./Comment.js";
+import Media from "../Media/Media";
+//import DynamicSlotFromDfpConfig from '../Ads/DynamicAds/DynamicSlotFromDfpConfig.js';
 
 /**
  * Defines how far away ads can be inserted (every X comments)
@@ -13,7 +13,7 @@ const AD_SPACING = 5;
 const MAX_AD_SLOTS = 5;
 
 const wrapperStyle = theme => ({
-  backgroundColor: theme.color('white'),
+  backgroundColor: theme.color("white")
 });
 
 const adSlotIdFromIndex = idx => `haaretz.co.il.web.fullbanner.talkback.${idx}`;
@@ -28,11 +28,7 @@ const adSlotIdFromIndex = idx => `haaretz.co.il.web.fullbanner.talkback.${idx}`;
 const placeAdSlot = commentIdx => {
   const adIdx = Math.floor(commentIdx / AD_SPACING) + 1;
   const isEnoughSpacing = (commentIdx + 1) % AD_SPACING === 0;
-  return (
-    isEnoughSpacing && adIdx <= MAX_AD_SLOTS
-      ? <DynamicSlotFromDfpConfig adSlotId={adSlotIdFromIndex(adIdx)} />
-      : null
-  );
+  return null;
 };
 
 class CommentList extends Component {
@@ -47,7 +43,7 @@ class CommentList extends Component {
      * The corresponding value is the rate of Plus votes the comment has.
      */
     commentsMinusRate: PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.number
     }),
     /**
      * An Object holding the Minus Rates of all the comments in the `CommentsElement`.
@@ -55,7 +51,7 @@ class CommentList extends Component {
      * The corresponding value is the total number of Minus votes the comment has.
      */
     commentsPlusRate: PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.number
     }),
     /**
      * A callback passed on to the reply `<CommentForm />`
@@ -87,7 +83,7 @@ class CommentList extends Component {
      * A callback that gets the called when submitting the sign up to notification form in `<CommentSent />`
      * @param {String} - notificationEmail - The email the user entered
      */
-    signUpNotification: PropTypes.func,
+    signUpNotification: PropTypes.func
   };
   static defaultProps = {
     comments: [],
@@ -97,11 +93,10 @@ class CommentList extends Component {
     openParentReplyForm: undefined,
     parentAuthor: null,
     initNewComment: undefined,
-    signUpNotification: undefined,
+    signUpNotification: undefined
   };
 
-  state = {
-  };
+  state = {};
 
   render() {
     const {
@@ -114,13 +109,13 @@ class CommentList extends Component {
       initNewComment,
       signUpNotification,
       openParentReplyForm,
-      isSubComment,
+      isSubComment
     } = this.props;
 
     return (
       <FelaComponent
         style={wrapperStyle}
-        render={({ className, theme: { bps, typeConf, }, }) => (
+        render={({ className, theme: { bps, typeConf } }) => (
           <div className={className}>
             {comments.map((comment, idx) => (
               <Fragment key={comment.commentId}>
@@ -134,7 +129,7 @@ class CommentList extends Component {
                   commentText={comment.commentText}
                   parentAuthor={parentAuthor}
                   publishingDateForDisplay={comment.publishingDateForDisplay}
-                  commentNumber={comment.number || ''}
+                  commentNumber={comment.number || ""}
                   subComments={comment.subComments}
                   isEditorPick={comment.isEditorPick}
                   // need to pass these down in case subComments have plus or minus rates
@@ -150,8 +145,8 @@ class CommentList extends Component {
                   isLastSubComment={isSubComment && idx === comments.length - 1}
                 />
                 <Media
-                  query={{ from: 'm', }}
-                  render={() => (isSubComment ? null : placeAdSlot(idx))}
+                  query={{ from: "m" }}
+                  render={() => (isSubComment ? null : null)}
                 />
               </Fragment>
             ))}
