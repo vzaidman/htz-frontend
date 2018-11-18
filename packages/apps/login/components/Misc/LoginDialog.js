@@ -25,10 +25,15 @@ export default class LoginDialog extends Component {
   };
 
   /* ------ Methods ----- */
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+
   /** - returns all grand children passed to the component */
-  getAllStages = () => {
-    return React.Children.toArray(this.props.children(this.nextStage, this.hideDialog, this.getCloseButton).props.children);
-  };
+  getAllStages = () =>
+    React.Children.toArray(
+      this.props.children(this.nextStage, this.hideDialog, this.getCloseButton).props.children
+    );
 
   /** - return the grand child that should be displayd (according to state stageIndex) */
   getStage = () => {
@@ -60,6 +65,15 @@ export default class LoginDialog extends Component {
     this.props.handleClose();
   };
 
+  /** - handle keyboard interaction */
+  handleKeyPress = event => {
+    if (this.props.show) {
+      if (event.key == 'Escape') {
+        return this.hideDialog();
+      }
+    }
+  };
+
   /** - create and return the close button layout */
   getCloseButton = () => (
     <LoginDialogBox.CloseButton>
@@ -74,7 +88,7 @@ export default class LoginDialog extends Component {
 
     return this.props.show ? (
       <Fragment>
-        <DialogWrapper>
+        <DialogWrapper onKeyPress={this.handleKeyPress}>
           <DialogContent>
             <Stage />
           </DialogContent>

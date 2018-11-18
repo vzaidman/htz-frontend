@@ -5,9 +5,10 @@ import { ApolloConsumer, } from 'react-apollo';
 import { Form, TextInput, Button, Login, HtzLink, } from '@haaretz/htz-components';
 
 import FSMLayout from '../layouts/FSMLayout';
-import { getUserData, getPhoneNum, getOtpHash, } from './queryutil/userDetailsOperations';
+import { getUserData, getPhoneNum, getOtpHash, getEmail, } from './queryutil/userDetailsOperations';
 import theme from '../theme/index';
 import BottomLinks from '../components/Misc/BottomLinks';
+import Preloader from '../components/Misc/Preloader';
 import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
@@ -28,13 +29,17 @@ const validateSmsCodeInput = ({ smsCode, }) =>
     ? generateSmsCodeError('אנא הזינו את הקוד שנשלח אליכם')
     : []);
 
-const onSubmit = ({ client, host, loginWithMobile, showError, hideError }) => ({ smsCode, termsChk, }) => {
+const onSubmit = ({ client, host, loginWithMobile, showError, hideError, setPreloader, }) => ({ smsCode, termsChk, }) => {
+  setPreloader(true);
   hideError();
-  loginWithMobile(getPhoneNum(client), smsCode, termsChk, getOtpHash(client))
+  loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, getOtpHash(client))
     .then(
       // eslint-disable-next-line no-undef
       () => { window.location = `https://www.${host}`; },
-      reason => showError((reason.message || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."))
+      reason => {
+        setPreloader(false);
+        showError((reason.message || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."))
+      }
     );
 }
 
@@ -47,6 +52,7 @@ class OtpValidation2 extends Component {
   state = {
     showError: false,
     errorMessage: '',
+    isLoading: false,
   }
 
   showError = (errorMsg) => {
@@ -55,6 +61,10 @@ class OtpValidation2 extends Component {
 
   hideError = () => {
     this.setState({ showError: false, errorMessage: "", });
+  }
+
+  setPreloader = (isLoadingStatus) => {
+    this.setState({ isLoading: !!isLoadingStatus, });
   }
 
   render() {
@@ -80,7 +90,7 @@ class OtpValidation2 extends Component {
                           clearFormAfterSubmit={false}
                           // initialValues={{ email: 'insert email' }}
                           validate={validateSmsCodeInput}
-                          onSubmit={onSubmit({ client, host, loginWithMobile, showError: this.showError, hideError: this.hideError })}
+                          onSubmit={onSubmit({ client, host, loginWithMobile, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader })}
                           render={({ getInputProps, handleSubmit, clearForm, }) => (
                             <Fragment>
                               <div>
@@ -107,6 +117,7 @@ class OtpValidation2 extends Component {
                               </ErrorBox>
     
                               <ItemCenterer>
+                                <Preloader isLoading={this.state.isLoading} />
                                 <Button onClick={handleSubmit}>התחברות</Button>
                               </ItemCenterer>
                             </Fragment>
@@ -135,13 +146,7 @@ class OtpValidation2 extends Component {
         
                       <span>או </span>
                       <HtzLink
-                        href="/"
-                        //href={`${findRout('getCustomerService')}`}
-                        onClick={e => {
-                          e.preventDefault();
-                          /*const route = doTransition('getCustomerService');
-                          Router.push(route);*/
-                        }}
+                        href="https://www.haaretz.co.il/misc/contact-us"
                       >
                         פניה לשירות לקוחות
                       </HtzLink>

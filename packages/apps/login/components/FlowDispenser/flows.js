@@ -52,7 +52,7 @@ export default [
   {
     flowNumber: 5,
     initialState: 'loginFormsPass',
-    initialTransition: { url: '/loginFormsPass', param: 0 },
+    initialTransition: { url: '/loginForms', param: 0 },
     transitionRouteMap: new Map([]),
     loginFormsPass: {
       registration: 'register',
@@ -62,7 +62,7 @@ export default [
   {
     flowNumber: 6,
     initialState: 'loginFormsOtp',
-    initialTransition: { url: '/loginFormsPass', param: 0 },
+    initialTransition: { url: '/loginForms', param: 0 },
     transitionRouteMap: new Map([]),
     loginFormsPass: {
       registration: 'register',
