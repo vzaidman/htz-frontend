@@ -1,3 +1,1 @@
-import mockConsole from 'jest-mock-console';
-
-global.mockConsole = mockConsole;
+global.mockConsole = require('jest-mock-console').default;
