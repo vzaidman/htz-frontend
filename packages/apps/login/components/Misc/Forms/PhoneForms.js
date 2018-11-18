@@ -10,19 +10,18 @@ class PhoneForms extends React.Component {
     formIndex: this.props.formindex,
   };
 
-  getForm = () => (this.state.formIndex === 0
-    ? <PhoneInputForm {...this.props} />
-    : <OtpForm {...this.props} />);
+  getForm = () =>
+    (this.state.formIndex === 0 ? <PhoneInputForm {...this.props} /> : <OtpForm {...this.props} />);
 
-  getLinks = ({ findRout, doTransition, }) => (this.state.formIndex === 0 ?
-    (null) : (
+  getLinks = ({ findRout, doTransition, }) =>
+    (this.state.formIndex === 0 ? null : (
       <BottomLinks spacing={2.5}>
         <HtzLink
           href="/"
           onClick={e => {
             e.preventDefault();
-            doTransition('notMyPhone');
-            this.changeFormType(1);
+            //doTransition('notMyPhone');
+            this.changeFormType(0);
           }}
         >
           לא הטלפון שלך?
@@ -41,7 +40,8 @@ class PhoneForms extends React.Component {
       <Fragment>
         <Form />
         <Links />
-      </Fragment>);
+      </Fragment>
+    );
   }
 }
 
