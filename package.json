@@ -28,8 +28,6 @@
     "test": "lerna exec --no-bail -- yarn run test",
     "test:deploy": "lerna exec -- yarn run test --forceExit",
     "update": "yarn install && lerna run --no-bail --stream prepare",
-    "htz:watch": "yarn workspace @haaretz/haaretz.co.il watch",
-    "h1": "yarn workspace @haaretz/haaretz.co.il dev",
     "update-packages-scripts": "lerna exec --no-bail --loglevel verbose --ignore @haaretz/htz-react-base -- yarn run update-scripts"
   },
   "repository": {
@@ -455,7 +453,7 @@
   },
   "devDependencies": {
     "@babel/preset-flow": "^7.0.0",
-    "@commitlint/cli": "^5.1.0",
+    "@commitlint/cli": "^4.1.0",
     "@haaretz/commitlint-config": "^1.1.0",
     "chalk": "^2.1.0",
     "cross-spawn": "^5.1.0",

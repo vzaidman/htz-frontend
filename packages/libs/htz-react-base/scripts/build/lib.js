@@ -8,19 +8,14 @@ checkDir('dist').then(hasDist => {
   if (!hasDist) {
     fs.mkdirSync('dist');
   }
-  if (process.argv.includes('watch')) {
-    process.argv = [
-      process.argv[0],
-      process.argv[1],
-      '--watch',
-      'src',
-      '--source-maps',
-      '--out-dir',
-      'dist/lib',
-    ];
-  }
-  else if (process.argv.length < 3) {
+  const watchIndex = process.argv.indexOf('watch');
+  process.argv.splice(watchIndex, 1);
+  if (process.argv.length < 3) {
     process.argv.push('src', '--source-maps', '--out-dir', 'dist/lib');
   }
+  if (watchIndex > -1) {
+    process.argv.push('--watch');
+  }
+
   require('@babel/cli/bin/babel');
 });
