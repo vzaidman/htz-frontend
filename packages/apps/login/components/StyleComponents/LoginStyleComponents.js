@@ -55,7 +55,12 @@ const Styles = {
         '>input': {
           display: 'none',
         },
-        '>label, a': {
+        '>label': {
+          display: 'block',
+          marginTop: '0 !important',
+          lineHeight: '37px',
+        },
+        '>a': {
           display: 'block',
           marginTop: '0 !important',
           lineHeight: '37px',

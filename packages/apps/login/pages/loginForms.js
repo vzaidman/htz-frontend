@@ -56,7 +56,7 @@ const validatePasswordInput = ({ password, }) =>
       ? generatePasswordError('אנא הזינו סיסמה תקינה')
       : []); // email is valid
 
-const onResetPassword = ({ host, nextStage, }) => ({ email, }) => {
+const onResetPassword = ({ host, nextStage, showError, hideError, setPreloader, }) => ({ email, }) => {
   const params = `userName=${email}&newsso=true&layer=sendpassword&site=${domainToSiteNumber(host)}`;
   fetch(`${config.get('service.sso')}/sso/r/resetPassword`, {
     method: 'POST',
@@ -68,7 +68,11 @@ const onResetPassword = ({ host, nextStage, }) => ({ email, }) => {
     success => success.json(),
     () => Promise.resolve({ status: 'error', message: 'server error', })
   ).then(json => {
-    if (json.status === 'success') { nextStage(); }
+    if (json.status === 'success') {
+      nextStage();
+    } else {
+      //showError(json.message);
+    }
   });
 };
 
@@ -189,6 +193,21 @@ class LoginForms extends Component {
                                 {
                                   (nextStage, closeModal, CloseButton) => (
                                     <div>
+                                      <ResetPasswordForm nextStage={nextStage} closeModal={closeModal} CloseButton={CloseButton} host={host} theme={theme} validateEmailInput={validateEmailInput} />
+                                      
+                                      <div>
+                                        <CloseButton />
+                                        <h4>החלפת סיסמה</h4>
+                                        <br />
+                                        <h5>הוראות לאיפוס הסיסמה נשלחו לתיבת הדוא”ל שלך.</h5>
+                                        <ItemCenterer>
+                                          <Preloader isLoading={this.state.isLoading} />
+                                          <Button onClick={closeModal}>התחברות</Button>
+                                        </ItemCenterer>
+                                      </div>
+                                    </div>
+                                    
+                                    /*<div>
                                       <div>
                                         <CloseButton />
                                         <h4>החלפת סיסמה</h4>
@@ -196,7 +215,7 @@ class LoginForms extends Component {
                                             clearFormAfterSubmit={false}
                                             // initialValues={{ email: 'insert email' }}
                                             validate={validateEmailInput}
-                                            onSubmit={onResetPassword({ host, nextStage , })}
+                                            onSubmit={onResetPassword({ host, nextStage, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader,  })}
                                             render={({ getInputProps, handleSubmit, clearForm, }) => (
                                               <Fragment>
                                                 <TextInput
@@ -230,14 +249,14 @@ class LoginForms extends Component {
                                           <Button onClick={closeModal}>התחברות</Button>
                                         </ItemCenterer>
                                       </div>
-                                    </div>
+                                    </div>*/
                                   )
                                 }
                               </LoginDialog>
 
                               {/* ----------------- Tabs Frame ----------------- */}
                               <TabsFrame
-                                activeTab={flow === 5 ? 1 : 0}
+                                activeTab={(flow === 5 || flow === 4) ? 1 : 0}
                                 formIndex={activeTab === 0 ? 0 : 1}
                                 findRout={findRout}
                                 doTransition={doTransition}
