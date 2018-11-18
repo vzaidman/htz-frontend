@@ -9,23 +9,38 @@ const router = express.Router();
 router.post([ '/area', ], (req, res) => {
   const {
     assetId,
-    time = [ 'year', 'fiveYears', 'tenYears', 'fifteenYears', 'twentyYears', ],
     options = {},
+    peRatioData = null,
   } = req.body || {};
-  fetchData({ assetId, time, type: 'area', fragment: areaFragment, })
+  fetchData({ assetId, type: 'area', fragment: areaFragment(!peRatioData), })
     .then(({ data, }) => {
-      if (Array.isArray(time)) {
-        const result = {};
-        time.map(timeSpan => {
-          result[timeSpan] = areaGraph(data[timeSpan].dataSource, timeSpan, options).svgString();
-        });
-        res.end(JSON.stringify(result));
-      }
-      else {
-        const { financeGraph: { dataSource, }, } = data;
-        const svg = areaGraph(dataSource, time, options);
-        res.end(svg.svgString());
-      }
+      const { financeGraph: { dataSource, }, } = data;
+      peRatioData && dataSource.forEach((entry, index) => {
+        entry.peRatio = peRatioData[index].peRatio;
+      });
+      const result = {
+        year: {
+          display: 'שנה',
+          graph: areaGraph(dataSource.slice(0, 12), 'year', options).svgString(),
+        },
+        fiveYears: {
+          display: '5 שנים',
+          graph: areaGraph(dataSource.slice(0, 60), 'fiveYears', options).svgString(),
+        },
+        tenYears: {
+          display: '10 שנים',
+          graph: areaGraph(dataSource.slice(0, 120), 'tenYears', options).svgString(),
+        },
+        fifteenYears: {
+          display: '15 שנים',
+          graph: areaGraph(dataSource.slice(0, 180), 'fifteenYears', options).svgString(),
+        },
+        twentyYears: {
+          display: '20 שנים',
+          graph: areaGraph(dataSource.slice(0, 240), 'twentyYears', options).svgString(),
+        },
+      };
+      res.end(JSON.stringify(result));
     })
     .catch(err => console.log(err));
 });

@@ -71,6 +71,7 @@ export type Asset = {
   peRatio: number,
   pbRatio: number,
   psRatio: number,
+  historicalPeRatio: number,
   historicalProfit: number,
   dailyAvgVolume: number,
   issuerName: string,
