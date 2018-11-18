@@ -20,7 +20,7 @@ import BloggerInfo from '../../BloggerInfo/BloggerInfo';
 
 import StandardArticleQuery from './queries/standard_article';
 
-function StandardArticle({ articleId, slots, }) {
+function StandardArticle({ articleId, slots, aaa,}) {
   return (
     <ArticleLayout articleId={articleId} slots={slots}>
       <Query query={StandardArticleQuery} partialRefetch variables={{ path: articleId, }} >
@@ -144,23 +144,23 @@ function StandardArticle({ articleId, slots, }) {
                             ) : null;
                         }
 
-                        const labelsSections = [ '2.16463', '2.16464', '2.16455', '2.16457', '2.16465'];
+                        const labelsSections = [ '2.16463', '2.16464', '2.16455', '2.16457', '2.16465', ];
                         let mouseDisclaimer = null;
 
-                        if(labelsSections.includes(lineage[1].contentId)) {
+                        if (labelsSections.includes(lineage[1].contentId)) {
                           const disclaimerStyle = theme => ({
                             marginBottom: '3rem',
                             marginTop: '3rem',
                             extend: [
                               theme.type(-2, { untilBp: 'xl', lines: 3, }), theme.type(-2, { fromBp: 'xl', lines: 3, }),
                             ],
-                          })
+                          });
 
                           mouseDisclaimer = (
                             <FelaComponent style={disclaimerStyle}>
                               *
                               התוכן נכתב על ידי מחלקת שיתופי הפעולה של הארץ/עכבר העיר, עבור עיריית
-                               {' '+lineage[1].name}
+                              {` ${lineage[1].name}`}
                             </FelaComponent>
                           );
                         }
@@ -193,7 +193,7 @@ function StandardArticle({ articleId, slots, }) {
                                     </Fragment>
                                   }
                                 >
-                                  <ArticleBody body={body} />
+                                  <ArticleBody body={body} />                                  
                                   {mouseDisclaimer}
                                   {bloggerInfo}
                                 </ArticleLayoutRow>

@@ -9,7 +9,7 @@ exports[`<IconFacebook /> DOM element add "id" attribute to DOM element 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"
@@ -29,7 +29,7 @@ exports[`<IconFacebook /> DOM element add "onClick" attribute to DOM element 1`]
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"
@@ -49,7 +49,7 @@ exports[`<IconFacebook /> DOM element pass attributes defined in the "attrs" pro
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"
@@ -68,7 +68,7 @@ exports[`<IconFacebook /> DOM element render correctly when no props are passed 
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"
@@ -87,7 +87,7 @@ exports[`<IconFacebook /> styles responsively set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"
@@ -106,7 +106,7 @@ exports[`<IconFacebook /> styles set icon's color 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"
@@ -125,7 +125,7 @@ exports[`<IconFacebook /> styles set icon's color responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"
@@ -144,7 +144,7 @@ exports[`<IconFacebook /> styles set icon's fill 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"
@@ -163,7 +163,7 @@ exports[`<IconFacebook /> styles set icon's fill responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"
@@ -182,7 +182,7 @@ exports[`<IconFacebook /> styles set icon's size 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"
@@ -201,7 +201,7 @@ exports[`<IconFacebook /> styles set icon's size responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"
@@ -220,7 +220,7 @@ exports[`<IconFacebook /> styles set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
       fill="currentColor"

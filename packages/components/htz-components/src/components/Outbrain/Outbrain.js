@@ -47,23 +47,23 @@ class Outbrain extends React.Component {
   render() {
     return (
       <Query query={GET_OUTBRAIN_DATA}>
-        {({ data: { articleId, isMouseStory}, }) => isMouseStory ? null : (
-          <div
-            className="OUTBRAIN"
-            data-src={`https://www.${this.site}/${articleId}`}
-            data-widget-id="AR_14"
-            data-ob-template="haaretz-heb"
-          />
-        )}
+        {({ data: { articleId, isMouseStory, }, }) =>
+          (isMouseStory ? null : (
+            <div
+              className="OUTBRAIN"
+              data-src={`https://www.${this.site}/${articleId}`}
+              data-widget-id="AR_14"
+              data-ob-template="haaretz-heb"
+            />
+          ))
+        }
       </Query>
     );
   }
 }
 
 const OutbrainWithClient = props => (
-  <ApolloConsumer>
-    {client => <Outbrain client={client} {...props} />}
-  </ApolloConsumer>
+  <ApolloConsumer>{client => <Outbrain client={client} {...props} />}</ApolloConsumer>
 );
 
 export default OutbrainWithClient;
