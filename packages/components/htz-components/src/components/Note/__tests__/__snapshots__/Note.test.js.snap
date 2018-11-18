@@ -24,4 +24,4 @@ exports[`<Note> DOM element renders correctly with minimal required props 1`] = 
 </div>
 `;
 
-exports[`<Note> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:block}.htz-f{color:#787878}@media (max-width: 79.9375em){.htz-b{font-size:1.8333333333333333rem}.htz-c{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-d{font-size:1.7142857142857142rem}.htz-e{line-height:1.75em}}"`;
+exports[`<Note> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:block}.htz-f{color:#2D2D2D}@media (max-width: 79.9375em){.htz-b{font-size:1.8333333333333333rem}.htz-c{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-d{font-size:1.7142857142857142rem}.htz-e{line-height:1.75em}}"`;

@@ -9,7 +9,7 @@ exports[`<IconMarkerLogoTransparent /> DOM element add "id" attribute to DOM ele
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"
@@ -29,7 +29,7 @@ exports[`<IconMarkerLogoTransparent /> DOM element add "onClick" attribute to DO
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"
@@ -49,7 +49,7 @@ exports[`<IconMarkerLogoTransparent /> DOM element pass attributes defined in th
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"
@@ -68,7 +68,7 @@ exports[`<IconMarkerLogoTransparent /> DOM element render correctly when no prop
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"
@@ -87,7 +87,7 @@ exports[`<IconMarkerLogoTransparent /> styles responsively set misc styles on an
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"
@@ -106,7 +106,7 @@ exports[`<IconMarkerLogoTransparent /> styles set icon's color 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"
@@ -125,7 +125,7 @@ exports[`<IconMarkerLogoTransparent /> styles set icon's color responsively 1`] 
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"
@@ -144,7 +144,7 @@ exports[`<IconMarkerLogoTransparent /> styles set icon's fill 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"
@@ -163,7 +163,7 @@ exports[`<IconMarkerLogoTransparent /> styles set icon's fill responsively 1`] =
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"
@@ -182,7 +182,7 @@ exports[`<IconMarkerLogoTransparent /> styles set icon's size 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"
@@ -201,7 +201,7 @@ exports[`<IconMarkerLogoTransparent /> styles set icon's size responsively 1`] =
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"
@@ -220,7 +220,7 @@ exports[`<IconMarkerLogoTransparent /> styles set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M128 8a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm63 173h-29v-77l-20 77h-28l-19-77v77H66V75h48l14 60 14-60h49v106z"
       fill="currentColor"

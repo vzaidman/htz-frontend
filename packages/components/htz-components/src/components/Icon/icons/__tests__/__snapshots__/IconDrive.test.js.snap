@@ -9,17 +9,17 @@ exports[`<IconDrive /> DOM element add "id" attribute to DOM element 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
@@ -39,17 +39,17 @@ exports[`<IconDrive /> DOM element add "onClick" attribute to DOM element 1`] = 
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
@@ -69,17 +69,17 @@ exports[`<IconDrive /> DOM element pass attributes defined in the "attrs" prop t
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
@@ -98,17 +98,17 @@ exports[`<IconDrive /> DOM element render correctly when no props are passed 1`]
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
@@ -127,17 +127,17 @@ exports[`<IconDrive /> styles responsively set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
@@ -156,17 +156,17 @@ exports[`<IconDrive /> styles set icon's color 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
@@ -185,17 +185,17 @@ exports[`<IconDrive /> styles set icon's color responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
@@ -214,17 +214,17 @@ exports[`<IconDrive /> styles set icon's fill 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
@@ -243,17 +243,17 @@ exports[`<IconDrive /> styles set icon's fill responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
@@ -272,17 +272,17 @@ exports[`<IconDrive /> styles set icon's size 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
@@ -301,17 +301,17 @@ exports[`<IconDrive /> styles set icon's size responsively 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
@@ -330,17 +330,17 @@ exports[`<IconDrive /> styles set misc styles on an icon 1`] = `
     viewBox="0 0 256 256"
     width="1em"
   >
-     
+      
     <path
       d="M96 37h70.7l68.1 115h-70.7L96 37z"
       fill="#ffd04b"
     />
-     
+      
     <path
       d="M64.7 220h134.6l36-60H99.9l-35.2 60z"
       fill="#4688f4"
     />
-     
+      
     <path
       d="M20.7 156.6l35.9 58.9L124 101.1 89 42.2 20.7 156.6z"
       fill="#1fa463"
