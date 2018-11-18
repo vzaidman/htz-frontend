@@ -25,7 +25,6 @@ export default (data, timeSpan, {
 
   const xExtent = d3.extent(data, stock => stock.time);
   const y1Extent = d3.extent(data, stock => stock.value);
-  const y2Extent = d3.extent(data, stock => stock.peRatio);
 
   const xScale = d3.scaleTime()
     .range([ margin.left, width - margin.right, ])
@@ -35,12 +34,13 @@ export default (data, timeSpan, {
     .domain([ y1Extent[0] - 30, y1Extent[1] + 10, ]);
   const y2Scale = d3.scaleLinear()
     .range([ height - margin.bottom, margin.top, ])
-    .domain([ 0, y2Extent[1] + 10, ]);
+    .domain([ 0, 100, ]);
 
   const svg = d3n.createSVG(null, null, {
     direction: 'ltr',
     viewBox: `0 0 ${width} ${height}`,
     width: '100%',
+    style: 'overflow: visible;',
   });
 
   const [ timeFormat, timeFunction, every, ] = xAxisTickFormats.get(timeSpan);

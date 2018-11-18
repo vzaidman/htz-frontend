@@ -78,6 +78,7 @@ export const assetObject: Object = {
   peRatio: () => number.float({ max: 100, min: 0, fixed: 2, }),
   pbRatio: () => number.float({ max: 100, min: 0, fixed: 2, }),
   psRatio: () => number.float({ max: 100, min: 0, fixed: 2, }),
+  historicalPeRatio: () => number.float({ max: 100, min: 0, fixed: 2, }),
   historicalProfit: () => number.float({ max: 1000000, min: 0, fixed: 2, }),
   dailyAvgVolume: () => number.float({ max: 1000000, min: 0, fixed: 2, }),
   issuerName: () => string.word({}),

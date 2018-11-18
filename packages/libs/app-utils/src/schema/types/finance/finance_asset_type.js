@@ -135,6 +135,7 @@ const financeAsset = new GraphQLObjectType({
     peRatio: { type: GraphQLFloat, },
     pbRatio: { type: GraphQLFloat, },
     psRatio: { type: GraphQLFloat, },
+    historicalPeRatio: { type: GraphQLFloat, },
     historicalProfit: { type: GraphQLFloat, },
     dailyAvgVolume: { type: GraphQLFloat, },
     issuerName: { type: GraphQLString, },
