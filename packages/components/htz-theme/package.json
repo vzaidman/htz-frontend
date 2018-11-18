@@ -16,6 +16,7 @@
   "scripts": {
     "build": "htz-scripts build && yarn run distFlowTypes",
     "build:esm": "htz-scripts build:esm",
+    "watch": "htz-scripts build:lib watch",
     "distFlowTypes": "htz-scripts distFlowTypes",
     "clean": "htz-scripts clean",
     "format": "htz-scripts format",

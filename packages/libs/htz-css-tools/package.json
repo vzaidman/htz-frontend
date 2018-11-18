@@ -19,6 +19,7 @@
   "scripts": {
     "build": "htz-scripts build && yarn run distFlowTypes",
     "build:esm": "htz-scripts build:esm",
+    "watch": "htz-scripts build:lib watch",
     "distFlowTypes": "htz-scripts distFlowTypes",
     "build:docs": "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
     "clean": "htz-scripts clean",
