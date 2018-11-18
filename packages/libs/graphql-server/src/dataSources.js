@@ -14,7 +14,7 @@ import {
 import querystring from 'querystring';
 
 // ttl is in seconds
-const ttl = 60;
+const ttl = 1;
 
 // Article data sources
 class PapiAPI extends RESTDataSource {
