@@ -201,7 +201,7 @@ class NavigationMenu extends React.Component {
           if (combinedPromotions !== undefined && combinedPromotions.length) {
             combinedPromotions.unshift(optOut);
           }
- else {
+ else if (combinedSites !== undefined && combinedSites.length && optOut) {
             combinedSites.push(optOut);
           }
 
@@ -281,11 +281,11 @@ export default ({ contentId, userType, }) => (
   <Query query={NavigationQuery} variables={{ listId: contentId, }}>
     {({ data, loading, error, }) => {
       if (error) return null;
-      if (loading) return <NavigationMenu menuSections={{}}/>;
+      if (loading) return <NavigationMenu menuSections={{}} />;
       const {
         navMenu: { menu, },
       } = data;
-      return <NavigationMenu menuSections={menu} userType={userType}/>;
+      return <NavigationMenu menuSections={menu} userType={userType} />;
     }}
   </Query>
 );
