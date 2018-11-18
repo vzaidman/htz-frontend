@@ -309,7 +309,7 @@ class RegisterPage extends Component {
                                     />
                                   </div>
 
-                                  <div>
+                                  {/*<div>
                                     <TextInput
                                       type="tel"
                                       label={theme.phoneInputLabel}
@@ -320,7 +320,7 @@ class RegisterPage extends Component {
                                         type: 'tel',
                                       })}
                                     />
-                                  </div>
+                                  </div>*/}
 
                                   <TermsWrapper>
                                     <CheckBox
