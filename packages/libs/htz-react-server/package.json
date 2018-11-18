@@ -11,6 +11,7 @@
   "scripts": {
     "build": "htz-scripts build:lib",
     "build:esm": "htz-scripts build:esm",
+    "watch": "htz-scripts build:lib watch",
     "clean": "htz-scripts clean",
     "dev": "htz-scripts dev:watch",
     "format": "htz-scripts format",

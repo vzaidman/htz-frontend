@@ -28,6 +28,8 @@
     "test": "lerna exec --no-bail -- yarn run test",
     "test:deploy": "lerna exec -- yarn run test --forceExit",
     "update": "yarn install && lerna run --no-bail --stream prepare",
+    "htz:watch": "yarn workspace @haaretz/haaretz.co.il watch",
+    "h1": "yarn workspace @haaretz/haaretz.co.il dev",
     "update-packages-scripts": "lerna exec --no-bail --loglevel verbose --ignore @haaretz/htz-react-base -- yarn run update-scripts"
   },
   "repository": {
@@ -452,7 +454,8 @@
     "concurrent": false
   },
   "devDependencies": {
-    "@commitlint/cli": "^4.1.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@commitlint/cli": "^5.1.0",
     "@haaretz/commitlint-config": "^1.1.0",
     "chalk": "^2.1.0",
     "cross-spawn": "^5.1.0",
@@ -470,10 +473,10 @@
     "lint-staged": "^7.2.0",
     "lodash.template": "^4.4.0",
     "node-dir": "^0.1.17",
+    "nodemon": "^1.18.6",
     "pretty-quick": "^1.6.0",
     "rimraf": "^2.6.2",
-    "write-pkg": "^3.1.0",
-    "@babel/preset-flow": "^7.0.0"
+    "write-pkg": "^3.1.0"
   },
   "dependencies": {
     "bunyan": "^1.8.12",

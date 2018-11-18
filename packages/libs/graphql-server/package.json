@@ -13,6 +13,7 @@
     "dev": "cross-env NODE_ENV=development node dist/lib/index.js",
     "start": "cross-env NODE_ENV=production node dist/lib/index.js",
     "build": "htz-scripts build:lib",
+    "watch": "htz-scripts build:lib watch",
     "clean": "htz-scripts clean",
     "flow": "htz-scripts flow",
     "format": "htz-scripts format",
