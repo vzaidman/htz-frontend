@@ -434,6 +434,7 @@ module.exports = {
       allowedHosts: [ '.haaretz.co.il', '.haaretz.com', '.themarker.com', ],
     },
     resolve: {
+      extensions: [ '.webpack.js', '.web.js', '.mjs', '.js', '.json', ],
       alias: {
         config$: require.resolve('./webpack/configShim'),
         // These shims are needed for bunyan (logging)
@@ -452,8 +453,14 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             babelrc: false,
-            presets: require('./babel')().presets,
+            presets: [ ...require('./babel')().presets, 'next/babel', ],
+            plugins: require('./babel')().plugins,
           },
+        },
+        {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: 'javascript/auto',
         },
       ],
     },
