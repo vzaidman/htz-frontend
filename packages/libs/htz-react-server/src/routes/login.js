@@ -24,4 +24,8 @@ export default function finance(app, server) {
     };
     return app.render(req, res, '/', query);
   });
+  /* Redirect to index */
+  server.get('*', (req, res) => {
+    return app.render(req, res, '/');
+  });
 }
