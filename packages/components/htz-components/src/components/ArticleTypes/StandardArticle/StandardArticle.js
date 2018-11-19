@@ -78,6 +78,7 @@ function StandardArticle({ articleId, slots, }) {
             // modDate,
           } = standardArticleElement;
           const header = standardArticleElement.header;
+          const dontDisplayComments = authors.filter(author => author.contentId === '1.758').length;
 
           return (
             <FelaTheme
@@ -205,7 +206,7 @@ function StandardArticle({ articleId, slots, }) {
                           </WideArticleLayoutRow>
                         );
                       }
-                      return (
+                      return dontDisplayComments ? null : (
                         <ArticleLayoutRow
                           key={element.contentId}
                           {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
