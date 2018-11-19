@@ -33,7 +33,7 @@ const styles =
    * 2. Set the default color to that of body text elmenets.
    * 3. Add the default cursor in all browsers.
    * 4. Ensure the page fills at least the full height of the viewport.
-   * 5. Set the default font stack, so that it is inherited.
+   * 5. Set the base font stack, so that it can be enhanced performantly with FOFT.
    * 6. Prevent the page from exhibiting horizontal scroll-bars when an included
    *    element exceeds the screen width.
    * 7. Prevent font size adjustments after orientation changes in IE and iOS.
@@ -42,7 +42,7 @@ const styles =
   'box-sizing:border-box;' + // 1
   `color:${getColor('bodyText')};` + // 2
   'cursor:default;' + // 3
-  `font-family:${fontStacks.default};` + // 4
+  `font-family:${fontStacks.base};` + // 5
   'min-height:100%;' + // 5
   'overflow-x:hidden;' + // 6
   '-ms-text-size-adjust:100%;' + // 7
@@ -337,7 +337,7 @@ const styles =
   'color:inherit;' +
   'font-size:inherit;' +
   'line-height:inherit;' +
-  `font-family:${fontStacks.default};` +
+  'font-family:inherit;' +
   '}' +
   /**
    * Show the overflow in IE and Edge
