@@ -36,6 +36,7 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
   width: '100%',
   extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
+
 const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
   paddingInlineStart: '2rem',
   paddingBottom: '7rem',
@@ -81,10 +82,10 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
 
     theme.mq(
       { from: 's', until: 'l', },
-      { 
-        display: 'flex', 
+      {
+        display: 'flex',
         alignItems: 'baseline',
-        paddingBottom: '3rem', 
+        paddingBottom: '3rem',
         color: theme.color('primary', '-1'),
       }
     ),
@@ -109,7 +110,7 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
     transform: 'translate(-50%, -50%)',
   },
   extend: [
-    theme.mq({from: 's', until: 'l', }, { marginInlineEnd: '2rem', }),
+    theme.mq({ from: 's', until: 'l', }, { marginInlineEnd: '2rem', }),
     isFirstItem || isLastItem
       ? {
         position: 'relative',
@@ -121,6 +122,8 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
   ],
 });
 function TimeLine({ timeLineItems, miscStyles, showTimeLineText, }) {
+  // console.warn('timeLineItems', timeLineItems)
+  // console.warn('typeof timeLineItems', typeof timeLineItems)
   return (
     <React.Fragment>
       <FelaComponent
@@ -130,7 +133,7 @@ function TimeLine({ timeLineItems, miscStyles, showTimeLineText, }) {
           <div className={className}>
             {/* <FelaComponent
               style={theme => ({
-                ...(showTimeLineText ? { display: 'flex', } : { display: 'none', }), 
+                ...(showTimeLineText ? { display: 'flex', } : { display: 'none', }),
                 color: theme.color('tertiary'),
                 fontWeight: 'bold',
                 ...theme.type(1),
@@ -141,16 +144,16 @@ function TimeLine({ timeLineItems, miscStyles, showTimeLineText, }) {
                 </div>
               )}
             /> */}
-            <FelaComponent 
-             style={theme => ({ 
-              // padding: '2rem',
-              paddingBlockEnd: '5rem',
-              paddingBlockStart: '5rem',
-              marginTop: '2rem',
-              paddingInlineStart: '2rem',
-              paddingInlineEnd: '2rem',
-              // backgroundColor: theme.color('primary', '-5'),
-              ...theme.mq({ from: 'l', }, { marginTop: '15rem', padding: '2rem', }),
+            <FelaComponent
+              style={theme => ({
+                // padding: '2rem',
+                paddingBlockEnd: '5rem',
+                paddingBlockStart: '5rem',
+                marginTop: '2rem',
+                paddingInlineStart: '2rem',
+                paddingInlineEnd: '2rem',
+                // backgroundColor: theme.color('primary', '-5'),
+                ...theme.mq({ from: 'l', }, { marginTop: '15rem', padding: '2rem', }),
               })}
               render={({ className, }) => (
                 <ul className={className}>
@@ -173,10 +176,15 @@ function TimeLine({ timeLineItems, miscStyles, showTimeLineText, }) {
                           />
                           <FelaComponent
                             style={theme => ({
-                              ...theme.mq({ from: 's', until: 'm', }, { display: 'inline', marginInlineStart: '3rem', })
+                              ...theme.mq(
+                                { from: 's', until: 'm', },
+                                { display: 'inline', marginInlineStart: '3rem', }
+                              ),
                             })}
-                            render={({ className, })=> (
-                              <a className={className} href={`#${item.contentId}`}>{item.keyEvent}</a>
+                            render={({ className, }) => (
+                              <a className={className} href={`#${item.contentId}`}>
+                                {item.keyEvent}
+                              </a>
                             )}
                           />
                         </li>

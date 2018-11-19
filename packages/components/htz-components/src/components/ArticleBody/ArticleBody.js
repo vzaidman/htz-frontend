@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaTheme, FelaComponent, } from 'react-fela';
-import { parseComponentProp, } from '@haaretz/htz-css-tools';
+import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 import getComponent from '../../utils/componentFromInputTemplate';
 import ArticleImage from '../ArticleBodyImage/ArticleBodyImage';
 import Caption from '../Caption/Caption';
@@ -12,9 +13,17 @@ const propTypes = {
    * The elements composing the article’s body.
    */
   body: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trumps all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  miscStyles: stylesPropType,
 };
 
-const defaultProps = {};
+const defaultProps = {
+  miscStyles: null,
+};
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
@@ -212,14 +221,18 @@ const buildComponent = (context, index, isLastItem) => {
   }
 };
 
-function ArticleBody({ body, showSurvey, }) {
+const wrapperStyle = ({ miscStyles, theme, }) => ({
+  maxWidth: theme.articleStyle.body.maxWidth,
+  marginRight: 'auto',
+  marginLeft: 'auto',
+  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
+});
+
+function ArticleBody({ body, showSurvey, miscStyles, }) {
   return (
     <FelaComponent
-      style={theme => ({
-        maxWidth: theme.articleStyle.body.maxWidth,
-        marginRight: 'auto',
-        marginLeft: 'auto',
-      })}
+      miscStyles={miscStyles}
+      rule={wrapperStyle}
     >
       {body.map((component, i) => buildComponent(component, i, i === body.length - 1))}
     </FelaComponent>

@@ -1,5 +1,5 @@
 /* global fetch, Headers */
-import React from 'react';
+import React, { Fragment, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { ApolloConsumer, } from 'react-apollo';
@@ -79,6 +79,7 @@ function Header({
             style={theme => ({
               textAlign: 'start',
               overflow: 'hidden',
+              backgroundColor: 'white',
               extend: [
                 theme.mq(
                   { until: 'm', },
@@ -189,13 +190,31 @@ function Header({
                   <ShareBar title={title} canonicalUrl={canonicalUrl} />
                 </FelaComponent>
                 {headlineElement ? (
-                  <HeadlineElement
-                    elementObj={headlineElement}
-                    miscStyles={{
-                      marginTop: [ { from: 's', value: '2rem', }, ],
-                      order: [ { until: 's', value: -2, }, ],
-                    }}
-                  />
+                  <Fragment>
+                    <FelaComponent
+                      style={theme => (
+                        {
+                          ...theme.mq({ from: 'l', }, { display: 'none', }),
+                          width: '100%',
+                          height: '6rem',
+                          backgroundColor: theme.color('tertiary'),
+                        }
+                      )}
+                      render={({ className, }) => (
+                        <div className={className}>
+                          Live
+                        </div>
+                      )}
+                    />
+                    <HeadlineElement
+                      elementObj={headlineElement}
+                      miscStyles={{
+                        backgroundColor: [ { from: 'l', value: theme.color('primary', '-6'), }, ],
+                        marginTop: [ { from: 's', value: '2rem', }, ],
+                        order: [ { until: 's', value: -2, }, ],
+                      }}
+                    />
+                  </Fragment>
                 ) : null}
               </header>
             )}

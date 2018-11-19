@@ -1,9 +1,10 @@
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
-import SectionTitleA from '../SectionTitleA/SectionTitleA';
-import Section from '../AutoLevels/Section';
-
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
+import SectionTitleA from '../../../SectionTitleA/SectionTitleA';
+import Section from '../../../AutoLevels/Section';
+import { stylesPropType, } from '../../../../propTypes/stylesPropType';
 
 const margineliaStyle = ({ theme, theme: { layoutStyle, }, hideUnderLargeBreakPoint, }) => ({
   extend: [
@@ -31,20 +32,27 @@ const margineliaStyle = ({ theme, theme: { layoutStyle, }, hideUnderLargeBreakPo
   ],
 });
 
-const ArticleLayoutRow = ({
+const wrapperStyle = ({ miscStyles, theme, }) => ({
+    // marginTop: '3rem',
+    ...theme.mq({ from: 'l', }, { marginTop: '4rem', }),
+    extend: [
+        ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+    ],
+  });
+
+const LiveBlogLayoutRow = ({
   children,
   id,
   isArticleBody,
   title,
   margineliaComponent,
   hideMargineliaComponentUnderLBp,
+  isCommentsSection,
+  miscStyles,
 }) => (
   <FelaComponent
-    style={theme => ({
-      marginTop: '3rem',
-      // backgroundColor: 'white',
-      extend: [ theme.mq({ from: 'xl', }, { marginTop: '4rem', }), ],
-    })}
+    miscStyles={miscStyles}
+    rule={wrapperStyle}
     render={({ className, }) => (
       <Section className={className}>
         {title ? (
@@ -71,12 +79,19 @@ const ArticleLayoutRow = ({
 
           <FelaComponent
             style={theme => ({
-              extend: [
-                theme.mq({ until: 's', }, { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }),
-                theme.mq(
-                  { from: 's', until: 'l', },
-                  { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }
+                ...(isCommentsSection ? {
+                    ...theme.mq({ until: 's', }, { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }),
+                    ...theme.mq(
+                        { from: 's', until: 'l', },
+                        { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }),
+                    } : {}
                 ),
+              extend: [
+                // theme.mq({ until: 's', }, { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }),
+                // theme.mq(
+                //   { from: 's', until: 'l', },
+                //   { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }
+                // ),
                 theme.mq({ from: 'l', }, { paddingInlineStart: '5rem', paddingInlineEnd: '5rem', }),
               ],
             })}
@@ -89,22 +104,31 @@ const ArticleLayoutRow = ({
   />
 );
 
-ArticleLayoutRow.propTypes = {
+LiveBlogLayoutRow.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element),
   id: PropTypes.string,
   isArticleBody: PropTypes.bool,
+  isCommentsSection: PropTypes.bool,
   title: PropTypes.string,
   margineliaComponent: PropTypes.arrayOf(PropTypes.element),
   hideMargineliaComponentUnderLBp: PropTypes.bool,
+    /**
+   * A special property holding miscellaneous CSS values that
+   * trumps all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  miscStyles: stylesPropType,
 };
 
-ArticleLayoutRow.defaultProps = {
+LiveBlogLayoutRow.defaultProps = {
   children: null,
   id: null,
   isArticleBody: false,
+  isCommentsSection: false,
   title: null,
   margineliaComponent: null,
   hideMargineliaComponentUnderLBp: true,
+  miscStyles: null,
 };
 
-export default ArticleLayoutRow;
+export default LiveBlogLayoutRow;

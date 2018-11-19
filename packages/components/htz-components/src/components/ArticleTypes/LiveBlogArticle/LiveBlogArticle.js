@@ -12,17 +12,17 @@ import ArticleLayout from '../../PageLayout/ArticleLayout';
 import getComponent from '../../../utils/componentFromInputTemplate';
 import ArticleBody from '../../ArticleBody/ArticleBody';
 // import ArticleHeaderMeta from '../../ArticleHeader/ArticleHeaderMeta';
-import LiveBlogHeaderMeta from './LiveBlogElements/LiveBlogHeaderMeta';
 import TimeLine from './LiveBlogElements/TimeLine';
-import StandardArticleHeader from '../StandardArticle/StandardArticleElements/StandardArticleHeader';
-import Media from '../../Media/Media';
-// import LiveBlogHeader from './LiveBlogElements/LiveBlogHeader';
+// import StandardArticleHeader from '../StandardArticle/StandardArticleElements/StandardArticleHeader';
+import LiveBlogHeader from './LiveBlogElements/LiveBlogHeader';
 import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 import BloggerInfo from '../../BloggerInfo/BloggerInfo';
 
 import LiveBlogQuery from './queries/live_blog_article';
+import LiveBlogHeaderMeta from './LiveBlogElements/LiveBlogHeaderMeta';
+import LiveBlogLayoutRow from './LiveBlogElements/LiveBlogLayoutRow';
 import LiveBlogContainer from './LiveBlogElements/LiveBlogContainer';
 // import LiveBlogMobileContainer from './LiveBlogElements/LiveBlogMobileContainer';
 
@@ -74,13 +74,16 @@ function LiveBlog({ articleId, slots, }) {
 
           const isMouse = LiveBlogElement.inputTemplate === 'com.mouse.story.MouseStandardStory';
 
-          const { authors, body, headlineElement, reportingFrom, pubDate, modDate, liveblogItems, isLiveUpdate, isDisplayBlogitemsDatetime, } = LiveBlogElement;
+          const { authors, body, headlineElement, reportingFrom, pubDate, modDate, liveblogItems, keyEvents, isLiveUpdate, isDisplayBlogitemsDatetime, } = LiveBlogElement;
           const header = isMouse ? { pubDate, modDate, } : LiveBlogElement.header;
 
           const timeLineItems = liveblogItems.filter(value => value.keyEvent);
+          // const timeLineItems = liveblogItems.filter(value => value.keyEvent);
 
           console.warn('timeLineItems: ', timeLineItems);
-          console.warn('liveblogItems: ', liveblogItems);
+          // console.warn('liveblogItems: ', liveblogItems);
+          // console.warn('keyEvents: ', JSON.stringify(keyEvents));
+          // keyEvents.map(val => console.warn('get me that shit:'))
           console.warn('isLiveUpdate: ', isLiveUpdate);
           console.warn('isDisplayBlogitemsDatetime: ', isDisplayBlogitemsDatetime);
 
@@ -89,6 +92,7 @@ function LiveBlog({ articleId, slots, }) {
               render={theme => (
                 <LayoutContainer
                   tagName="article"
+                  bgc={theme.color('primary', '-6')}
                   miscStyles={{
                     display: [ { from: 'l', value: 'flex', }, ],
                   }}
@@ -112,7 +116,7 @@ function LiveBlog({ articleId, slots, }) {
                       extend: [ theme.mq({ from: 'l', }, { width: 'calc(100% - 300px - 8rem)', }), ],
                     }}
                   >
-                    <StandardArticleHeader
+                    <LiveBlogHeader
                       {...header}
                       articleId={articleId}
                       authors={authors}
@@ -161,7 +165,7 @@ function LiveBlog({ articleId, slots, }) {
                                 bloggerInfo = element.inputTemplate === 'com.tm.BlogArticle' ? (<BloggerInfo author={author} blogName={blogName} />) : null;
                               }
                               return (
-                                <ArticleLayoutRow
+                                <LiveBlogLayoutRow
                                   isArticleBody
                                   hideMargineliaComponentUnderLBp={!!authors}
                                   margineliaComponent={
@@ -203,7 +207,19 @@ function LiveBlog({ articleId, slots, }) {
                                     </Fragment>
                                   }
                                 >
-                                  <ArticleBody body={body} />
+                                  <ArticleBody
+                                    body={body}
+                                    miscStyles={{
+                                     paddingBlockEnd: '3rem',
+                                     ...theme.mq({ until: 'l', }, {
+                                        backgroundColor: 'white',
+                                        paddingInlineStart: '3rem',
+                                        paddingInlineEnd: '3rem',
+                                        paddingBlockStart: '3rem',
+                                        maxWidth: '100%',
+                                      }),
+                                    }}
+                                  />
                                   <LiveBlogContainer
                                     liveblogItems={liveblogItems}
                                     canonicalUrl={canonicalUrl}
@@ -211,11 +227,11 @@ function LiveBlog({ articleId, slots, }) {
                                     showTimeLineText
                                     bps={theme.bps}
                                     typeConf={theme.typeConf}
-                                    miscStyles={{ backgroundColor: theme.color('neutral', '-6'), }}
+                                    // miscStyles={{ backgroundColor: theme.color('primary', '-6'), }}
                                   />
 
                                   {bloggerInfo}
-                                </ArticleLayoutRow>
+                                </LiveBlogLayoutRow>
                               );
                             }}
                           </ApolloConsumer>
@@ -249,7 +265,7 @@ function LiveBlog({ articleId, slots, }) {
                         );
                       }
                       return (
-                        <ArticleLayoutRow
+                        <LiveBlogLayoutRow
                           key={element.contentId}
                           {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
                             ? {
@@ -257,13 +273,15 @@ function LiveBlog({ articleId, slots, }) {
                                 id: 'commentsSection',
                               }
                             : {})}
+                          isCommentsSection
+                          miscStyles={{ backgroundColor: 'white', marginTop: '4rem', }}
                         >
                           <Element
                             articleId={articleId}
                             {...elementWithoutProperties}
                             {...properties}
                           />
-                        </ArticleLayoutRow>
+                        </LiveBlogLayoutRow>
                       );
                     })}
                   </FelaComponent>
@@ -278,7 +296,7 @@ function LiveBlog({ articleId, slots, }) {
                       alignItems: 'flex-start',
                       extend: [
                         theme.mq({ until: 'l', }, { display: 'none', }),
-                        theme.mq({ from: 'l', }, { width: 'calc(300px + 8rem)', }),
+                        theme.mq({ from: 'l', }, { width: 'calc(300px + 8rem)', backgroundColor: theme.color('primary', '-6'), }),
                       ],
                     }}
                     render={({ className, }) => (

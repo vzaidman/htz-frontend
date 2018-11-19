@@ -109,8 +109,11 @@ const ArticleData = new GraphQLObjectType({
             contentId: { type: GraphQLID, },
             contentName: { type: GraphQLString, },
           }),
-        }),
+        })
       ),
+    },
+    keyEvents: {
+      type: new GraphQLList(new GraphQLList(GraphQLJSON)),
     },
     isLiveUpdate: { type: GraphQLBoolean, },
     isDisplayBlogitemsDatetime: { type: GraphQLBoolean, },

@@ -138,6 +138,7 @@ export default gql`
             # Live blog related
             isLiveUpdate
             isDisplayBlogitemsDatetime
+            keyEvents
             liveblogItems {
               title
               titleMobile
