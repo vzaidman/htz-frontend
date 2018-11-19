@@ -6,7 +6,7 @@ import { ApolloConsumer, } from 'react-apollo';
 
 import { HtzLink, Login, Form, TextInput, Button, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
-import { getUserData, getPhoneNum, getOtpHash, } from './queryutil/userDetailsOperations';
+import { getEmail, getPhoneNum, getOtpHash, } from './queryutil/userDetailsOperations';
 
 import isEmail from 'validator/lib/isEmail';
 import theme from '../theme';
@@ -243,8 +243,9 @@ class LoginForms extends Component {
                                         <div>
                                           <TextInput
                                             type="email"
-                                            label={theme.emailInputLabel}
+                                            value="test"
                                             noteText="אנא הזינו כתובת דוא”ל"
+                                            maxLength={64}
                                             requiredText={{
                                               long: theme.emailInputRequiredLong,
                                               short: theme.emailInputRequiredShort,
@@ -261,6 +262,7 @@ class LoginForms extends Component {
                                           <TextInput
                                             type="password"
                                             label={theme.passwordInputLabel}
+                                            value="test"
                                             noteText="אנא הזינו סיסמה"
                                             requiredText={{
                                               long: theme.passwordInputRequiredLong,
