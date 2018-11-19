@@ -14,6 +14,8 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 const onResetPassword = ({ host, nextStage, showError, hideError, setPreloader, }) => ({
   email,
 }) => {
+  setPreloader(true);
+  hideError();
   const params = `userName=${email}&newsso=true&layer=sendpassword&site=${domainToSiteNumber(
     host
   )}`;
@@ -29,10 +31,12 @@ const onResetPassword = ({ host, nextStage, showError, hideError, setPreloader, 
       () => Promise.resolve({ status: 'error', message: 'server error', })
     )
     .then(json => {
+      setPreloader(false);
       if (json.status === 'success') {
         nextStage();
       }
       else {
+        hideError();
         showError(json.message);
       }
     });

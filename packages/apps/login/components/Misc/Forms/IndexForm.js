@@ -144,11 +144,9 @@ const onSubmit = (client, getFlowByData, showError, hideError, setPreloader, aut
     .then(res => {
       handleResponseFromGraphql({ client, getFlowByData, email, phone, res, showError, setPreloader, autoRoute, confirmation });
     })
-    // TODO handle error
     .catch(err => {
       setPreloader(false);
-      showError((err || 'אירעה שגיאה. אנא נסה שנית במועד מאוחר יותר'));
-      console.error(err);
+      showError('אירעה שגיאה. אנא נסה שנית במועד מאוחר יותר');
     });
 };
 // ------------------------------------
