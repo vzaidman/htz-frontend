@@ -2,9 +2,9 @@ import camelCase from 'lodash/camelCase';
 
 export function buildFontLoadingScript(fonts) {
   const fontFamilies = Object.keys(fonts);
-
   return `(function loadFonts() {
     if (typeof window === 'undefined') {
+      console.log('[FontLoadingScript] 1');
       return undefined;
     }
     ${fontFamilies
@@ -12,10 +12,13 @@ export function buildFontLoadingScript(fonts) {
       const keyName = `fontLoaded${camelCase(fontFamily)}`;
       const font = fonts[fontFamily];
 
-      let string = `if (localStorage && localStorage.${keyName}) {
+      let string = `if (localStorage && localStorage.fontLoaded${keyName}) {
+        console.log('[FontLoadingScript] 2');
         document.documentElement.className += ' fontsLoaded${i + 1}';
       }
-      else if ('fonts' in document) {`;
+      else if ('fonts' in document) {
+        console.log('[FontLoadingScript] 3');
+        `;
       if (fonts[fontFamily].subset) {
         string += `document.fonts.load('1em ${fontFamily}Subset')
           .then(function() {
@@ -40,6 +43,7 @@ export function buildFontLoadingScript(fonts) {
     })
     .join(' ')}
     else if (localStorage) {
+      console.log('[FontLoadingScript] 4');
     // use fallback
     var ref = document.getElementsByTagName( 'script' )[ 0 ];
     var script = document.createElement( 'script' );
@@ -74,7 +78,7 @@ function loadPromiseAddClassAndLocalStorageHandler(
   })} ])
     .then(function() {
       document.documentElement.className += ' fontsLoaded${i + 1}';
-      if (localStorage) { localStorage.${keyName} = true; }
+      if (localStorage) { localStorage.fontLoaded${keyName} = true; }
     });`;
 }
 
