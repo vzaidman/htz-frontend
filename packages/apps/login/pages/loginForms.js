@@ -29,6 +29,7 @@ import OtpForm from '../components/Misc/Forms/OtpForm';
 import { getHost } from '../util/requestUtil';
 import { PhoneForms } from '../components/Misc/Forms/PhoneForms';
 import ResetPasswordForm from '../components/Misc/Forms/ResetPasswordForm';
+import { isName, isMobile, isPassword, } from '../components/Misc/Forms/fieldsValidators';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -39,8 +40,6 @@ const { InputLinkButton, ErrorBox, } = LoginMiscLayoutStyles;
 const generateError = (name, order) => message => [ { name, order, errorText: message, }, ];
 const generateEmailError = message => generateError('email', 1)(message);
 const generatePasswordError = message => generateError('password', 2)(message);
-
-const isPassword = password => password.length > 0; // TODO: write proper password validation
 
 const validateEmailInput = ({ email, }) =>
   (!email
