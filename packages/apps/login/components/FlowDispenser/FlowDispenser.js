@@ -7,6 +7,8 @@ const flowDispenserPropTypes = { render: PropTypes.func.isRequired, };
 // TODO: assign all options to correct flow
 export const dataToFlowMapper = new Map([
   [ '11110', 1, ], // all connected, not paying
+  [ '11100', 1, ], // phone and mail are valid but not connected, not paying
+  [ '11101', 1, ], // phone and mail are valid but not connected, paying
   [ '11111', 1, ], // all connected, paying
   [ '11000', 2, ], // mail valid, phone not valid, not paying.
   [ '11001', 2, ], // mail valid, phone not valid, paying.

@@ -193,8 +193,14 @@ class LoginForms extends Component {
                                 {
                                   (nextStage, closeModal, CloseButton) => (
                                     <div>
-                                      <ResetPasswordForm nextStage={nextStage} closeModal={closeModal} CloseButton={CloseButton} host={host} theme={theme} validateEmailInput={validateEmailInput} />
-                                      
+                                      <ResetPasswordForm
+                                        nextStage={nextStage}
+                                        closeModal={closeModal}
+                                        CloseButton={CloseButton}
+                                        host={host}
+                                        theme={theme}
+                                        validateEmailInput={validateEmailInput}
+                                      />
                                       <div>
                                         <CloseButton />
                                         <h4>החלפת סיסמה</h4>
@@ -206,50 +212,6 @@ class LoginForms extends Component {
                                         </ItemCenterer>
                                       </div>
                                     </div>
-                                    
-                                    /*<div>
-                                      <div>
-                                        <CloseButton />
-                                        <h4>החלפת סיסמה</h4>
-                                            <Form
-                                            clearFormAfterSubmit={false}
-                                            // initialValues={{ email: 'insert email' }}
-                                            validate={validateEmailInput}
-                                            onSubmit={onResetPassword({ host, nextStage, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader,  })}
-                                            render={({ getInputProps, handleSubmit, clearForm, }) => (
-                                              <Fragment>
-                                                <TextInput
-                                                  type="email"
-                                                  label={theme.emailInputLabel}
-                                                  noteText="אנא הזינו כתובת דוא”ל"
-                                                  requiredText={{
-                                                    long: theme.emailInputRequiredLong,
-                                                    short: theme.emailInputRequiredShort,
-                                                  }}
-                                                  {...getInputProps({
-                                                    name: 'email',
-                                                    label: theme.emailInputLabel,
-                                                    type: 'email',
-                                                  })}
-                                                />
-                                                <ItemCenterer>
-                                                  <Button onClick={handleSubmit}>המשך</Button>
-                                                </ItemCenterer>
-                                              </Fragment>
-                                            )}
-                                          />
-                                      </div>
-
-                                      <div>
-                                        <CloseButton/>
-                                        <h4>החלפת סיסמה</h4>
-                                        <br/>
-                                        <h5>הוראות לאיפוס הסיסמה נשלחו לתיבת הדוא”ל שלך.</h5>
-                                        <ItemCenterer>
-                                          <Button onClick={closeModal}>התחברות</Button>
-                                        </ItemCenterer>
-                                      </div>
-                                    </div>*/
                                   )
                                 }
                               </LoginDialog>
@@ -322,6 +284,8 @@ class LoginForms extends Component {
                                             </button>
                                           </InputLinkButton>
                                         </div>
+
+                                        {/* TODO: Add Checkbox */}
 
                                         <ErrorBox className={this.state.showError ? "" : "hidden"}>
                                           <span>
