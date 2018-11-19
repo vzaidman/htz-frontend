@@ -18,7 +18,7 @@ const prepareBody = (type, time, assetId, fragment) => (type
     })
     : ({
       query: `
-        query FinanceGraph($type: String!, $time: String!, $assetId: String!) {
+        query FinanceGraph($type: String!, $time: String, $assetId: String!) {
           financeGraph(type: $type, time: $time, assetId: $assetId) {
             startTime
             endTime
@@ -74,5 +74,7 @@ export default ({ type = null, time = null, assetId, fragment, }) => (type
     })
       .then(res => res.json())
       .then(json => resolve(json))
-      .catch(err => reject(err))
-  ));
+      .catch(err => reject(err)),
+  )
+);
+
