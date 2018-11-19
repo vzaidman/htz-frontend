@@ -109,7 +109,7 @@ const validatePasswordInput = ({ password, }) =>
 
 const getTermsText = () => (
   <div>
-      אני מאשר/ת את <HtzLink href="https://www.haaretz.co.il/misc/terms-of-use">תנאי השימוש</HtzLink> באתר הארץ, וכן קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ-TheMarker
+      אני מאשר/ת את <HtzLink target="_blank" href="https://www.haaretz.co.il/misc/terms-of-use">תנאי השימוש</HtzLink> באתר הארץ, וכן קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ-TheMarker
   </div>
 );
 

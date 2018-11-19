@@ -119,7 +119,7 @@ const handleResponseFromGraphql =
       handleGenerateOtp({
         client,
         email,
-        phoneNum: dataSaved.userData.phoneNum || phone,
+        phoneNum: phone || dataSaved.userData.phoneNum,
         ssoId: res.userByMail.ssoId,
         flow,
         route,
