@@ -9,7 +9,7 @@ checkDir('dist').then(hasDist => {
     fs.mkdirSync('dist');
   }
   const watchIndex = process.argv.indexOf('watch');
-  process.argv.splice(watchIndex, 1);
+  if (watchIndex !== -1) process.argv.splice(watchIndex, 1);
   if (process.argv.length < 3) {
     process.argv.push('src', '--source-maps', '--out-dir', 'dist/lib');
   }
