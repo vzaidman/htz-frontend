@@ -16,8 +16,8 @@ const isMobile = (phone, regex = Regex.mobile) => {
 };
 
 const isPassword = (password, regex) => {
-  password = password.replace(/\s/g, '');
-  regex ? regex.test(password) : password.length > 5;
+  password = password.trim();
+  return regex ? regex.test(password) : password.length > 5;
 };
 
 /* ------------------------ Export ------------------------ */

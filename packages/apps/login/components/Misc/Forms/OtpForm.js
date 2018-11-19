@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { Form, TextInput, Button, Login, HtzLink, } from '@haaretz/htz-components';
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
-import { getUserData, getPhoneNum, getOtpHash, generateOtp, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
+import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 import Preloader from '../../Misc/Preloader';
 
@@ -29,23 +29,28 @@ const onSubmit = ({ client, host, loginWithMobile, showError, hideError, setPrel
       // eslint-disable-next-line no-undef
       () => { window.location = `https://www.${host}`; },
       reason => {
-        showError(reason.message);
+        setPreloader(false);
+        showError((reason.message || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."))
       }
     );
 }
 
 const handleGenerateOtp = (client, doTransition) => {
   generateOtp(client)({ typeId: getUserData(client).phoneNum, })
-    .then(
-      () => {
+    .then(data => {
+      const json = data.data.generateOtp;
+      saveOtpHash(client)({ otpHash: json.hash, });
+
+      if (json.success) {
         console.log("SmS Sent again");
         const route = doTransition('sendAgain');
         Router.push(route);
-      },
-      (error) => {
-        console.log("Error sending SmS again");
       }
-    );
+      else {
+        setPreloader(false);
+        showError((json.msg || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."));
+      }
+    });
 }
     
 const hidePhone = phoneNumber => {

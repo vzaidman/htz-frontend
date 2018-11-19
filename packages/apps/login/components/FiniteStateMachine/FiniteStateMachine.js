@@ -31,6 +31,15 @@ class FiniteStateMachine extends React.Component {
   componentDidMount = () => Router.beforePopState(this.changeHistoryCallback);
 
   /**
+   * Reloads the page when a routing error occurs
+   * Server is configured to return to the index in this case.
+   */
+  refreshOnError = () => {
+    console.warn("refreshing the page - returning to the index page");
+    window.location.reload();
+  }
+
+  /**
    * Returns the current inner state of the FSM
    * @returns {string} the current state of the FSM
    */
@@ -43,6 +52,7 @@ class FiniteStateMachine extends React.Component {
     // TODO render from server if null or undefined
     if (typeof currentState === 'undefined') {
       throw new Error('could not get current state from store. force SSR');
+      this.refreshOnError();
     }
     return currentState;
   };
@@ -57,6 +67,7 @@ class FiniteStateMachine extends React.Component {
     // TODO render from server if null or undefined
     if (typeof historyObject === 'undefined') {
       throw new Error('could not get history object from store. force SSR');
+      this.refreshOnError();
     }
     return historyObject;
   };
@@ -74,6 +85,7 @@ class FiniteStateMachine extends React.Component {
     // TODO render from server if null or undefined
     if (typeof historyPointer === 'undefined') {
       throw new Error('could not get history pointer from store. force SSR');
+      this.refreshOnError();
     }
     return historyPointer;
   };
