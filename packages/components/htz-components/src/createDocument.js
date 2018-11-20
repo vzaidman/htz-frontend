@@ -6,8 +6,15 @@ import serialize from 'serialize-javascript';
 import SEO from './components/SEO/SEO';
 import { buildFontFamilyArray, } from './utils/buildFontFamilyArray';
 import { buildFontPreloadLink, } from './utils/buildFontPreloadLink';
-import { buildFontLoadingScript, } from './utils/buildFontLoadingScript';
 import { buildFontCss, } from './utils/buildFontCss';
+import fontsLoaderScript from './utils/fontLoadingScript';
+
+
+const toFontList = fontMap =>
+  Object.entries(fontMap).map(([ key, value, ]) => ({
+    ...value,
+    name: key,
+  }));
 
 const polyFillSrc =
   'https://cdn.polyfill.io/v2/polyfill.js?features=default,Object.entries,Array.prototype.entries,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.includes,Function.name,Array.prototype.@@iterator&flags=gated';
@@ -50,7 +57,12 @@ const createDocument = ({
       const host = req.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       const validatedTheme = hasToggleableTheme ? theme(host) : theme;
       const varifiedStaticRules = hasToggleableTheme ? staticRules(host) : staticRules;
-      buildFontFamilyArray(fontRules).forEach(rule => styleRenderer.renderFont(...rule));
+      const fontsArray = buildFontFamilyArray(fontRules);
+      console.log('[fonts] fontsArray:', JSON.stringify(fontsArray));
+      fontsArray.forEach(rule => {
+        console.log('[fonts] font:', JSON.stringify(rule));
+        styleRenderer.renderFont(...rule);
+      });
 
       if (varifiedStaticRules) {
         Array.isArray(varifiedStaticRules)
@@ -107,12 +119,13 @@ const createDocument = ({
     }
 
     // eslint-disable-next-line class-methods-use-this
-    renderFoftScript() {
+    renderFoftScript = () => {
+      const fontList = toFontList(fontRules);
       return (
         <script
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: buildFontLoadingScript(fontRules),
+            __html: `(${fontsLoaderScript.toString()})(${JSON.stringify(fontList)})`,
           }}
         />
       );
