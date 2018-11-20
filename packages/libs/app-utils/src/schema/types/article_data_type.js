@@ -44,16 +44,24 @@ const ArticleData = new GraphQLObjectType({
         }),
       }),
       resolve: parentValue => {
+        const isMouse =
+          parentValue.inputTemplate === 'com.mouse.story.MouseStandardStory' &&
+          parentValue.body[0].inputTemplate === 'com.tm.Image';
+        if (isMouse) {
+          parentValue.mainElement = parentValue.body.splice(0, 1)[0];
+        }
+
         const {
           authors,
-          body,
           commentsElementId,
           contentId,
+          body,
+          mainElement,
           contentName,
           inputTemplate,
-          mainElement,
           ...header
         } = parentValue;
+
         return header;
       },
     },
