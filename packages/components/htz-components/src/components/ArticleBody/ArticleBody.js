@@ -6,7 +6,6 @@ import getComponent from '../../utils/componentFromInputTemplate';
 import ArticleImage from '../ArticleBodyImage/ArticleBodyImage';
 import Caption from '../Caption/Caption';
 import NoSSR from '../NoSSR/NoSSR';
-import UserSurvey from '../UserSurvey/UserSurvey';
 
 const propTypes = {
   /**
