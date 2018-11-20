@@ -7,6 +7,7 @@ import Section from '../../../AutoLevels/Section';
 import { stylesPropType, } from '../../../../propTypes/stylesPropType';
 
 const margineliaStyle = ({ theme, theme: { layoutStyle, }, hideUnderLargeBreakPoint, }) => ({
+  height: '100%',
   extend: [
     ...(hideUnderLargeBreakPoint ? [ theme.mq({ until: 'l', }, { display: 'none', }), ] : []),
     theme.mq(
@@ -33,12 +34,10 @@ const margineliaStyle = ({ theme, theme: { layoutStyle, }, hideUnderLargeBreakPo
 });
 
 const wrapperStyle = ({ miscStyles, theme, }) => ({
-    // marginTop: '3rem',
-    ...theme.mq({ from: 'l', }, { marginTop: '4rem', }),
-    extend: [
-        ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-    ],
-  });
+  // marginTop: '3rem',
+  ...theme.mq({ from: 'l', }, { marginTop: '4rem', }),
+  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
+});
 
 const LiveBlogLayoutRow = ({
   children,
@@ -79,13 +78,18 @@ const LiveBlogLayoutRow = ({
 
           <FelaComponent
             style={theme => ({
-                ...(isCommentsSection ? {
-                    ...theme.mq({ until: 's', }, { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }),
+              ...(isCommentsSection
+                ? {
                     ...theme.mq(
-                        { from: 's', until: 'l', },
-                        { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }),
-                    } : {}
-                ),
+                      { until: 's', },
+                      { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }
+                    ),
+                    ...theme.mq(
+                      { from: 's', until: 'l', },
+                      { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }
+                    ),
+                  }
+                : {}),
               extend: [
                 // theme.mq({ until: 's', }, { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }),
                 // theme.mq(
@@ -112,7 +116,7 @@ LiveBlogLayoutRow.propTypes = {
   title: PropTypes.string,
   margineliaComponent: PropTypes.arrayOf(PropTypes.element),
   hideMargineliaComponentUnderLBp: PropTypes.bool,
-    /**
+  /**
    * A special property holding miscellaneous CSS values that
    * trumps all default values. Processed by
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)

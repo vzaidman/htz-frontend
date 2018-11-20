@@ -111,11 +111,11 @@ class LiveBlogContainer extends React.Component {
   static propTypes = {
     liveblogItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     canonicalUrl: PropTypes.string.isRequired,
-    timeLineItems: PropTypes.arrayOf(
+    keyEvents: PropTypes.arrayOf(
       PropTypes.shape({
         keyEvent: PropTypes.string,
         pubDate: PropTypes.instanceOf(Date).isRequired,
-        contentId: PropTypes.string,
+        cardId: PropTypes.string,
       })
     ),
     showTimeLineText: PropTypes.bool,
@@ -128,7 +128,7 @@ class LiveBlogContainer extends React.Component {
   };
   static defaultProps = {
     showTimeLineText: false,
-    timeLineItems: null,
+    keyEvents: null,
     miscStyles: null,
   };
 
@@ -145,7 +145,7 @@ class LiveBlogContainer extends React.Component {
 
   render() {
     const { items, } = this.state;
-    const { canonicalUrl, timeLineItems, showTimeLineText, miscStyles, bps, typeConf, } = this.props;
+    const { canonicalUrl, keyEvents, showTimeLineText, miscStyles, bps, typeConf, } = this.props;
     console.warn('items: ', typeof items, items);
     return (
       <Fragment>
@@ -157,7 +157,7 @@ class LiveBlogContainer extends React.Component {
             <div className={className}>
               <TimeLine
                 showTimeLineText={showTimeLineText}
-                timeLineItems={timeLineItems}
+                keyEvents={keyEvents}
                 miscStyles={{
                   ...theme.mq({ from: 'l', }, { display: 'none', }),
                   ...theme.mq(
@@ -240,7 +240,7 @@ class LiveBlogContainer extends React.Component {
                             label={theme.liveBlogI18n.firstToLastLabel}
                             value="ascending"
                             onChange={evt => this.setState({ value: evt.target.value, })}
-                            checked={this.state.value === 'ascending '}
+                            checked={this.state.value === 'ascending'}
                             miscStyles={{ ...theme.type(-1), }}
                           />
                         </div>

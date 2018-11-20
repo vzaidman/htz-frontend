@@ -100,6 +100,7 @@ const ArticleData = new GraphQLObjectType({
         new GraphQLObjectType({
           name: 'liveblogItems',
           fields: () => ({
+            cardId: { type: GraphQLString, },
             title: { type: GraphQLString, },
             titleMobile: { type: GraphQLString, },
             keyEvent: { type: GraphQLString, },
@@ -113,7 +114,16 @@ const ArticleData = new GraphQLObjectType({
       ),
     },
     keyEvents: {
-      type: new GraphQLList(new GraphQLList(GraphQLJSON)),
+      type: new GraphQLList(
+        new GraphQLObjectType({
+          name: 'keyEvents',
+          fields: () => ({
+            cardId: { type: GraphQLString, },
+            keyEvent: { type: GraphQLString, },
+            pubDate: { type: date, },
+          }),
+        })
+      ),
     },
     isLiveUpdate: { type: GraphQLBoolean, },
     isDisplayBlogitemsDatetime: { type: GraphQLBoolean, },

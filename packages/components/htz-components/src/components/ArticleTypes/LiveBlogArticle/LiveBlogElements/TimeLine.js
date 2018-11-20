@@ -10,7 +10,7 @@ import Time from '../../../Time/Time';
 // import GridItem from '../../../Grid/GridItem';
 
 const propTypes = {
-  timeLineItems: PropTypes.arrayOf(
+  keyEvents: PropTypes.arrayOf(
     PropTypes.shape({
       keyEvent: PropTypes.string,
       pubDate: PropTypes.instanceOf(Date).isRequired,
@@ -40,7 +40,7 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
 const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
   paddingInlineStart: '2rem',
   paddingBottom: '7rem',
-  color: theme.color('neutral', '-2'),
+  color: theme.color('primary', '+1'),
   extend: [
     borderStart({
       width: '1px',
@@ -86,7 +86,7 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
         display: 'flex',
         alignItems: 'baseline',
         paddingBottom: '3rem',
-        color: theme.color('primary', '-1'),
+        // color: theme.color('primary', '+1'),
       }
     ),
     // theme.mq({until: 'm'}, theme.type(0)),
@@ -121,9 +121,10 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
       : {},
   ],
 });
-function TimeLine({ timeLineItems, miscStyles, showTimeLineText, }) {
-  // console.warn('timeLineItems', timeLineItems)
-  // console.warn('typeof timeLineItems', typeof timeLineItems)
+function TimeLine({ keyEvents, miscStyles, showTimeLineText, }) {
+  console.warn('keyEvents', keyEvents);
+  console.warn('typeof keyEvents', typeof keyEvents);
+  if (!keyEvents) return <></>;
   return (
     <React.Fragment>
       <FelaComponent
@@ -157,16 +158,16 @@ function TimeLine({ timeLineItems, miscStyles, showTimeLineText, }) {
               })}
               render={({ className, }) => (
                 <ul className={className}>
-                  {timeLineItems.map((item, i) => (
+                  {keyEvents.map((item, i) => (
                     <FelaComponent
                       isFirstItem={i === 0}
-                      isLastItem={i === timeLineItems.length - 1}
+                      isLastItem={i === keyEvents.length - 1}
                       rule={itemStyle}
                       render={({ className, }) => (
                         <li className={className}>
                           <FelaComponent
                             isFirstItem={i === 0}
-                            isLastItem={i === timeLineItems.length - 1}
+                            isLastItem={i === keyEvents.length - 1}
                             rule={TimeHeadlineStyle}
                             render={({ className, }) => (
                               <h2 className={className}>
@@ -182,7 +183,7 @@ function TimeLine({ timeLineItems, miscStyles, showTimeLineText, }) {
                               ),
                             })}
                             render={({ className, }) => (
-                              <a className={className} href={`#${item.contentId}`}>
+                              <a className={className} href={`#${item.cardId}`}>
                                 {item.keyEvent}
                               </a>
                             )}

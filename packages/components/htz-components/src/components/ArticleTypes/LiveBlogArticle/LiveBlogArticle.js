@@ -7,7 +7,7 @@ import Query from '../../ApolloBoundary/Query';
 
 import LayoutContainer from '../../PageLayout/LayoutContainer';
 import WideArticleLayoutRow from '../../PageLayout/WideArticleLayoutRow';
-import ArticleLayoutRow from '../../PageLayout/ArticleLayoutRow';
+// import ArticleLayoutRow from '../../PageLayout/ArticleLayoutRow';
 import ArticleLayout from '../../PageLayout/ArticleLayout';
 import getComponent from '../../../utils/componentFromInputTemplate';
 import ArticleBody from '../../ArticleBody/ArticleBody';
@@ -180,11 +180,14 @@ function LiveBlog({ articleId, slots, }) {
                                           modifiedDate={header.modDate}
                                         />
                                       ) : null}
-
                                       <TimeLine
-                                        timeLineItems={timeLineItems}
+                                        keyEvents={keyEvents}
+                                        miscStyles={{
+                                          position: 'sticky',
+                                          top: '7rem',
+                                          paddingBottom: '20rem',
+                                        }}
                                       />
-
                                       {/* <TimeLine
                                           reviewImgData={itemCoverImg}
                                           reviewType={reviewType}
@@ -211,19 +214,24 @@ function LiveBlog({ articleId, slots, }) {
                                     body={body}
                                     miscStyles={{
                                      paddingBlockEnd: '3rem',
-                                     ...theme.mq({ until: 'l', }, {
-                                        backgroundColor: 'white',
-                                        paddingInlineStart: '3rem',
-                                        paddingInlineEnd: '3rem',
-                                        paddingBlockStart: '3rem',
-                                        maxWidth: '100%',
-                                      }),
+                                     paddingInlineStart: '3rem',
+                                     paddingInlineEnd: '3rem',
+                                     paddingBlockStart: '3rem',
+                                     backgroundColor: 'white',
+                                     maxWidth: '100%',
+                                    //  backgroundColor: 'white',
+                                    //  ...theme.mq({ from: 'm', }, { backgroudColor: 'white',  }),
+                                    //  ...theme.mq({ until: 'l', }, {
+                                        // paddingInlineStart: '3rem',
+                                        // paddingInlineEnd: '3rem',
+                                        // paddingBlockStart: '3rem',
+                                      // }),
                                     }}
                                   />
                                   <LiveBlogContainer
                                     liveblogItems={liveblogItems}
                                     canonicalUrl={canonicalUrl}
-                                    timeLineItems={timeLineItems}
+                                    keyEvents={keyEvents}
                                     showTimeLineText
                                     bps={theme.bps}
                                     typeConf={theme.typeConf}

@@ -137,14 +137,14 @@ function Header({
                         { from: 's', until: 'l', },
                         { paddingInlineEnd: '2rem', }
                       ),
-                      theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
+                      theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', paddingInlineEnd: '5rem', }),
                     ],
                   }}
                   render={({ className, }) => (
                     <HeaderText
                       className={className}
                       kicker={exclusive}
-                      subtitle={subtitle}
+                      // subtitle={subtitle}
                       title={title}
                     />
                   )}
@@ -191,7 +191,7 @@ function Header({
                 </FelaComponent>
                 {headlineElement ? (
                   <Fragment>
-                    <FelaComponent
+                    {/* <FelaComponent
                       style={theme => (
                         {
                           ...theme.mq({ from: 'l', }, { display: 'none', }),
@@ -205,7 +205,7 @@ function Header({
                           Live
                         </div>
                       )}
-                    />
+                    /> */}
                     <HeadlineElement
                       elementObj={headlineElement}
                       miscStyles={{

@@ -66,7 +66,7 @@ const Fade = ({ children, }) => (
 
 class LiveBlogItem extends React.Component {
   static propTypes = {
-    liveblogItems: PropTypes(PropTypes.shape({})).isRequired,
+    // liveblogItems: PropTypes(PropTypes.shape({})).isRequired,
     // miscStyles: stylesPropType,
   };
   static defaultProps = {
@@ -109,17 +109,25 @@ class LiveBlogItem extends React.Component {
               {items.map((item, i) => ( */}
         <Grid
           tagName="article"
-          attrs={{ itemid: `${canonicalUrl}#${item.contentId}`, }}
-          id={item.contentId}
+          attrs={{ itemid: `${canonicalUrl}#${item.cardId}`, }}
+          id={item.cardId}
           miscStyles={{
             marginBottom: '2rem',
             marginTop: '2rem',
             backgroundColor: 'white',
             marginInlineEnd: 'auto',
             marginInlineStart: 'auto',
-            border: [ '1px', 0, 'solid', theme.color('neutral', '-4'), ],
+            // ':after': {
+            //   height: '0rem',
+            //   position: 'absolute',
+            //   width: '100%',
+            //   bottom: '0',
+            //   right: '0',
+            //   content: '""',
+            // },
+            border: [ '0px', 0, 'solid', theme.color('neutral', '-4'), ],
             // ...(this.state.fadeText ? { overflow: 'hidden', height: '60rem', backgroundImage: 'linear-gradient(0deg,#fff,#fff 30%,hsla(0,0%,100%,.8) 70%,hsla(0,0%,100%,0))'} : {}),
-            ...theme.mq({ until: 'm', }, { paddingInlineEnd: '2rem', paddingInlineStart: '2rem', }, ),
+            ...theme.mq({ until: 'm', }, { paddingInlineEnd: '2rem', paddingInlineStart: '2rem', },),
           }}
         >
           {/* Time and share bar */}
@@ -214,13 +222,13 @@ class LiveBlogItem extends React.Component {
             }}
             attrs={{ ref: mainContainerEl => (this.mainContainerEl = mainContainerEl), }}
           >
-            <a href={`#${item.contentId}`}>
+            <a href={`#${item.cardId}`}>
               <h1>{item.title}</h1>
             </a>
-            
-            <ArticleBody body={item.body} showSurvey={false} />
-            {this.state.fadeText ? ( <Fade /> ) : null}
-         </GridItem>
+
+            <ArticleBody body={item.body} />
+            {this.state.fadeText ? (<Fade />) : null}
+          </GridItem>
 
           {/* Mobile Action Buttons */}
           <FelaComponent
