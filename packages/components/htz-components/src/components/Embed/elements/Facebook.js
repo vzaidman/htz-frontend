@@ -77,8 +77,7 @@ export default class Facebook extends React.Component {
   };
 
   render() {
-    const type = this.props.embedType;
-    const showText = this.props.settings.showText || false;
+    const { embedType: type, settings: { showText, width, height, }, } = this.props;
 
     return type === 'post' ? (
       <FelaComponent
@@ -102,14 +101,34 @@ export default class Facebook extends React.Component {
         data-href={this.props.source}
       />
     ) : (
-      <div
-        className="fb-video"
-        data-width="auto"
-        data-href={this.props.source}
-        data-allowfullscreen="true"
-        data-autoplay="false"
-        data-show-text={showText}
-      />
+      <FelaComponent
+        style={{
+          paddingBottom: `${(height * 100) / width}%`,
+          display: 'block',
+          height: '0',
+          position: 'relative',
+        }}
+      >
+        <FelaComponent
+          style={{
+            height: '100%',
+            left: '0',
+            top: '0',
+            position: 'absolute',
+            width: '100%',
+          }}
+          render={({ className, }) => (
+            <div
+              className={`fb-video ${className}`}
+              data-width="auto"
+              data-href={this.props.source}
+              data-allowfullscreen="true"
+              data-autoplay="false"
+              data-show-text={showText}
+            />
+          )}
+        />
+      </FelaComponent>
     );
   }
 }
