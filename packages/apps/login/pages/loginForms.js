@@ -4,7 +4,7 @@ import config from 'config';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
 
-import { HtzLink, Login, Form, TextInput, Button, } from '@haaretz/htz-components';
+import { HtzLink, Login, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 import { getEmail, getPhoneNum, getOtpHash, } from './queryutil/userDetailsOperations';
 
@@ -28,12 +28,13 @@ import { PhoneInputForm, } from '../components/Misc/Forms/PhoneInputForm';
 import OtpForm from '../components/Misc/Forms/OtpForm';
 import { getHost } from '../util/requestUtil';
 import { PhoneForms } from '../components/Misc/Forms/PhoneForms';
+import PasswordForm from '../components/Misc/Forms/PasswordForm';
 import ResetPasswordForm from '../components/Misc/Forms/ResetPasswordForm';
 import { isName, isMobile, isPassword, } from '../components/Misc/Forms/fieldsValidators';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
-const { InputLinkButton, ErrorBox, } = LoginMiscLayoutStyles;
+const { InputLinkButton, ErrorBox, TermsWrapper, } = LoginMiscLayoutStyles;
 // --------------------------
 
 // Methods -------------------
@@ -54,6 +55,11 @@ const validatePasswordInput = ({ password, }) =>
     : !isPassword(password)
       ? generatePasswordError('אנא הזינו סיסמה תקינה')
       : []); // email is valid
+
+const validateTermsInput = ({ terms, }) => {
+  //console.log("terms are |||||||||||||||||||||||||||||||| " + terms);
+  return [];
+}
 
 const onResetPassword = ({ host, nextStage, showError, hideError, setPreloader, }) => ({ email, }) => {
   const params = `userName=${email}&newsso=true&layer=sendpassword&site=${domainToSiteNumber(host)}`;
@@ -99,9 +105,7 @@ const onSubmitSms = ({ client, host, loginWithMobile, }) => ({ smsCode, termsChk
       reason => console.log(reason.message) // TODO: add error UI
     );
 
-const isLink = client => ('2345'.includes(getFlowNumber(client).toString()) ? 'notMyPhone' : null);
-
-const validateForm = ({ email, password, }) => {
+const validateForm = ({ email, password, terms, }) => {
   let errors = [];
   if (email != null) {
     errors = [ ...validateEmailInput({ email, }), ];
@@ -109,27 +113,20 @@ const validateForm = ({ email, password, }) => {
   if (password != null) {
     errors = [ ...errors, ...validatePasswordInput({ password, }), ];
   }
+  if (terms != null) {
+    errors = [ ...errors, ...validateTermsInput({ terms, }), ];
+  }
   console.log(errors.map(arr => JSON.stringify(arr)));
   return errors;
 };
 
-const getUserHiddenMobile = () => {
+const getTermsText = () => (
+  <div>
+      אני מאשר/ת קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ-TheMarker
+  </div>
+);
 
-}
 
-const hiddenPhone = client => {
-  const phoneNumber = getPhoneNum(client);
-  if (phoneNumber) {
-    return `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
-  }
-  else {
-    return '-';
-  }
-};
-
-const sendAgain = e => {
-  console.log('test...');
-};
 // --------------------------
 
 class LoginForms extends Component {
@@ -199,6 +196,7 @@ class LoginForms extends Component {
                                         host={host}
                                         theme={theme}
                                         validateEmailInput={validateEmailInput}
+                                        client={client}
                                       />
                                       <div>
                                         <CloseButton />
@@ -232,10 +230,17 @@ class LoginForms extends Component {
                                 />
 
                                 {/* TAB 2 */}
+                                {/*<PasswordForm
+                                  tabname='כניסה באמצעות SMS'
+                                  login={login}
+                                  theme={theme}
+                                  client={client}
+                                  showDialog={this.showDialog}
+                                />*/}
                                 <div tabname="כניסה באמצעות סיסמה">
                                   <Form
                                     clearFormAfterSubmit={false}
-                                    // initialValues={{ email: 'insert email' }}
+                                    initialValues={ {email: getEmail(client)} }
                                     validate={validateForm}
                                     onSubmit={onSubmit({ login, host, }, this.showError, this.hideError, this.setPreloader )}
                                     render={({ getInputProps, handleSubmit, clearForm, }) => (
@@ -243,7 +248,6 @@ class LoginForms extends Component {
                                         <div>
                                           <TextInput
                                             type="email"
-                                            value="test"
                                             noteText="אנא הזינו כתובת דוא”ל"
                                             maxLength={64}
                                             requiredText={{
@@ -286,16 +290,30 @@ class LoginForms extends Component {
                                           </InputLinkButton>
                                         </div>
 
-                                        {/* TODO: Add Checkbox */}
+                                        <TermsWrapper>
+                                          <div className="testtest">
+                                          <CheckBox
+                                            type="checkbox"
+                                            label="terms"
+                                            noteText="יש לאשר את תנאי השימוש באתר"
+                                            errorText="יש לאשר את תנאי השימוש באתר"
+                                            {...getInputProps({
+                                              name: 'terms',
+                                              label: getTermsText(),
+                                              type: 'checkbox',
+                                            })}
+                                          />
+                                          </div>
+                                        </TermsWrapper>
 
-                                        <ErrorBox className={this.state.showError ? "" : "hidden"}>
+                                        {/*<ErrorBox className={this.state.showError ? "" : "hidden"}>
                                           <span>
                                             {this.state.errorMessage}
                                           </span>
-                                        </ErrorBox>
+                                        </ErrorBox>*/}
 
                                         <ItemCenterer>
-                                          <Preloader isLoading={this.state.isLoading} />
+                                          {/*<Preloader isLoading={this.state.isLoading} />*/}
                                           <Button onClick={handleSubmit}>התחברות</Button>
                                         </ItemCenterer>
                                       </Fragment>

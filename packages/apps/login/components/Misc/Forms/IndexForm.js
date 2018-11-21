@@ -39,10 +39,7 @@ const getParamsData = (params) => {
       phone: decodedParams[1].split('=')[1],
     }
   } else {
-    return {
-      email: '',
-      phone: '',
-    }
+    return { email: '', phone: '', }
   }
 }
 
@@ -59,13 +56,20 @@ const vlidateEmailPhoneConnection = (client, email, autoRoute, confirmation) => 
   validateMailWithPhone(client)({ email, confirmation, })
     .then(
       () => {
-        console.log("------ success vlidateEmailPhoneConnection");
         return Router.push(autoRoute);
       },
       (error) => {
-        //showError(error.message)
+        showError(error.message)
       }
     );
+}
+
+const hasValidatedPhone = (dataSaved) => {
+  return dataSaved
+        && dataSaved.userData
+        && dataSaved.userData.userStatus
+        && dataSaved.userData.userStatus.phoneNum
+        && dataSaved.userData.userStatus.isMobileValidated;
 }
 
 const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showError, setPreloader, autoRoute, confirmation, }) =>
@@ -101,7 +105,6 @@ const handleResponseFromGraphql =
     }
     storeFlowNumber(client)(flow.flowNumber);
 
-
     console.log('**** initial transition', flow.initialTransition);
 
     const { route, metadata, } = parseRouteInfo(flow.initialTransition);
@@ -109,12 +112,7 @@ const handleResponseFromGraphql =
 
     console.log('***** route', route);
 
-    
-
-    if ((dataSaved
-      && dataSaved.userData
-      && dataSaved.userData.userStatus
-      && dataSaved.userData.userStatus.isMobileValidated) || confirmation) {
+    if (hasValidatedPhone(dataSaved) || confirmation) {
       console.log('mobile is validated / in confirmation phase');
       handleGenerateOtp({
         client,

@@ -6,7 +6,7 @@ import { Form, TextInput, Button, HtzLink, } from '@haaretz/htz-components';
 import theme from '../../../theme';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../../components/StyleComponents/LoginStyleComponents';
 
-import { connectMailWithPhone, getUserData, getEmail, getHostname, } from '../../../pages/queryutil/userDetailsOperations';
+import { connectMailWithPhone, getUserData, getEmail, getHostname, saveUserData, } from '../../../pages/queryutil/userDetailsOperations';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -38,6 +38,7 @@ const onSubmit = ({ doTransition, client, showError, hideError, }) => ({ phoneNu
     url: getHostname(client),
   }).then(
     () => {
+      saveUserData(client)({ userData: { phoneNum: phoneNumber, __typename: "SsoUser", }, });
       const route = doTransition('accept');
       Router.push(route);
     },

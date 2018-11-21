@@ -4,8 +4,6 @@ import { ApolloConsumer, } from 'react-apollo';
 
 import { HtzLink, Register, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
 
-// import { mobileNumberParser, } from '@haaretz/htz-user-utils';
-
 import FSMLayout from '../layouts/FSMLayout';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import isEmail from 'validator/lib/isEmail';
@@ -25,7 +23,7 @@ const {
   FormWrapper,
   ItemCenterer,
 } = LoginContentStyles;
-const { ErrorBox, } = LoginMiscLayoutStyles;
+const { ErrorBox, TermsWrapper, } = LoginMiscLayoutStyles;
 
 const halfSizeStyleWrapperStyle = () => ({
   display: 'flex',
@@ -42,11 +40,13 @@ const termsStyle = () => ({
     '&:hover': {
       textDecoration: 'underline',
     }
+  },
+  '& div': {
+    fontSize: '2.3rem',
   }
 });
 const HalfSizeWrapper = createComponent(halfSizeStyleWrapperStyle);
 const HalfSize = createComponent(halfSizeStyle);
-const TermsWrapper = createComponent(termsStyle);
 // --------------------------
 
 // Methods -------------------
