@@ -15,14 +15,11 @@ const PlayBuzzWrapper = ({ children, }) => (
   <FelaComponent
     style={{
       width: '100%',
-      overflow: 'auto',
-      maxHeight: '100rem',
       position: 'relative',
       margin: '0 auto',
     }}
-  >
-    {children}
-  </FelaComponent>
+    render={({ className, }) => <div className={className}>{children}</div>}
+  />
 );
 
 export default class PlayBuzz extends React.Component {
@@ -66,12 +63,19 @@ export default class PlayBuzz extends React.Component {
     onLoadCallback: null,
   };
 
+  state = {
+    isLoaded: false,
+  };
+
   componentDidMount() {
     appendScript({
       src: '//embed.playbuzz.com/sdk.js',
       id: 'playbuzz-js',
       isAsync: true,
-      onLoadFunction: this.props.onLoadCallback,
+      onLoadFunction: () => {
+        if (this.props.onLoadCallback) this.props.onLoadCallback();
+        this.setState({ isLoaded: true, });
+      },
       updateFunction: this.props.onLoadCallback,
     });
   }
@@ -94,7 +98,7 @@ export default class PlayBuzz extends React.Component {
       ) || '';
 
     return (
-      <PlayBuzzWrapper>
+      <PlayBuzzWrapper isloaded={this.state.isLoaded}>
         <div
           className="playbuzz pb_feed"
           data-id={dataId}
