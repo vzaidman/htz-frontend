@@ -45,7 +45,7 @@ export default class TabsFrame extends React.Component {
       (
         <span className={index === this.state.activeTab ? "on" : ""} >
           <input
-            type="checkbox"
+            type="radio"
             name="tab"
             id={`tab${index}`}
             value={`tab${index}`}

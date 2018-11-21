@@ -5,6 +5,15 @@
 // Imports ---------------------------------------------
 import { createComponent, } from 'react-fela';
 
+// Functions -------------------------------------------
+const getColors = (host) => {
+  return {
+    main: host == 'haaretz.co.il' ? "#0b7eb5" : "",
+    secondry: host == 'haaretz.co.il' ? "#006B96" : "",
+    links: host == 'haaretz.co.il' ? "#0895c3" : "",
+  }
+}
+
 // Styles ----------------------------------------------
 const Styles = {
   Content: {
@@ -42,14 +51,14 @@ const Styles = {
       },
     }),
 
-    topLinks: () => ({
+    topLinks: ({main,}) => () => ({
       display: 'flex',
       margin: '0 auto 4rem auto',
-      border: 'solid 1px #0b7eb5',
+      border: `solid 1px ${main}`,
       '>span': {
         flexGrow: '1',
         textAlign: 'center',
-        color: '#0b7eb5',
+        color: main,
         fontSize: '1.75rem',
         fontWeight: 'bold',
         '>input': {
@@ -135,7 +144,7 @@ const Styles = {
   },
 
   MiscLayout: {
-    inputLinkButton: () => ({
+    inputLinkButton: ({main,}) => () => ({
       fontSize: '16px',
       color: '#0b7eb5',
 
@@ -167,10 +176,10 @@ const Styles = {
         display: 'none',
       },
     }),
-    termsStyle: () => ({
+    termsStyle: ({links,}) => () => ({
       lineHeight: '17px',
       '& a': {
-        color: '#0895c3 !important',
+        color: `${links} !important`,
         '&:hover': {
           textDecoration: 'underline',
         },
@@ -224,32 +233,44 @@ const Styles = {
 };
 
 // Components ------------------------------------------
-const LoginContentStyles = {
-  PageWrapper: createComponent(Styles.Content.loginPageWrapper),
-  ContentWrapper: createComponent(Styles.Content.loginContentWrapper),
-  FormWrapper: createComponent(Styles.Content.formWrapper),
-  TopLinks: createComponent(Styles.Content.topLinks),
-  ItemCenterer: createComponent(Styles.Content.itemCenterer),
+const LoginContentStyles = (host) => {
+  const colors = getColors(host);
+  return {
+    PageWrapper: createComponent(Styles.Content.loginPageWrapper),
+    ContentWrapper: createComponent(Styles.Content.loginContentWrapper),
+    FormWrapper: createComponent(Styles.Content.formWrapper),
+    TopLinks: createComponent(Styles.Content.topLinks(colors)),
+    ItemCenterer: createComponent(Styles.Content.itemCenterer),
+  }
 };
 
-const LoginGeneralLayoutStyles = {
-  HeaderWrapper: createComponent(Styles.GeneralLayout.loginHeaderWrapper),
-  FooterWrapper: createComponent(Styles.GeneralLayout.footerWrapper),
-  FooterContentHolder: createComponent(Styles.GeneralLayout.footerContentHolder),
+const LoginGeneralLayoutStyles = (host) => {
+  const colors = getColors(host);
+  return {
+    HeaderWrapper: createComponent(Styles.GeneralLayout.loginHeaderWrapper),
+    FooterWrapper: createComponent(Styles.GeneralLayout.footerWrapper),
+    FooterContentHolder: createComponent(Styles.GeneralLayout.footerContentHolder),
+  }
 };
 
-const LoginMiscLayoutStyles = {
-  InputLinkButton: createComponent(Styles.MiscLayout.inputLinkButton),
-  TextBox: createComponent(Styles.MiscLayout.textBoxStyle),
-  ErrorBox: createComponent(Styles.MiscLayout.errorBoxStyle),
-  TermsWrapper: createComponent(Styles.MiscLayout.termsStyle),
+const LoginMiscLayoutStyles = (host) => {
+  const colors = getColors(host);
+  return {
+    InputLinkButton: createComponent(Styles.MiscLayout.inputLinkButton),
+    TextBox: createComponent(Styles.MiscLayout.textBoxStyle),
+    ErrorBox: createComponent(Styles.MiscLayout.errorBoxStyle),
+    TermsWrapper: createComponent(Styles.MiscLayout.termsStyle(colors)),
+  }
 };
 
-const LoginDialogBox = {
-  DialogWrapper: createComponent(Styles.Dialog.dialogWrapperStyle),
-  DialogContent: createComponent(Styles.Dialog.dialogContentStyle),
-  //DialogContentCreator: (bgColor) => createComponent(Styles.Dialog.dialogContentStyle(bgColor)),
-  CloseButton: createComponent(Styles.Dialog.closeButtonStyle),
+const LoginDialogBox = (host) => {
+  const colors = getColors(host);
+  return {
+    DialogWrapper: createComponent(Styles.Dialog.dialogWrapperStyle),
+    DialogContent: createComponent(Styles.Dialog.dialogContentStyle),
+    //DialogContentCreator: (bgColor) => createComponent(Styles.Dialog.dialogContentStyle(bgColor)),
+    CloseButton: createComponent(Styles.Dialog.closeButtonStyle),
+  }
 };
 
 // Export ----------------------------------------------

@@ -22,8 +22,7 @@ class ImageCookies extends React.Component {
     if (this.props.images.length > 0) {
       const domain = DomainUtils.getSubdomain();
       return (
-        <FelaComponent style={{ position: 'absolute', }}>
-          {this.props.images.map((imageUrl, i) => {
+          this.props.images.map((imageUrl, i) => {
             const src = `${imageUrl}&_ts=${Date.now()}`;
             const key = `login-cookie-${i}`;
             return (
@@ -49,8 +48,7 @@ class ImageCookies extends React.Component {
                 alt=""
               />
             );
-          })}
-        </FelaComponent>
+          })
       );
     }
     return null;
