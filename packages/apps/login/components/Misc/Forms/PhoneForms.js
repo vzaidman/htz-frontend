@@ -4,10 +4,11 @@ import BottomLinks from '../../../components/Misc/BottomLinks';
 import { PhoneInputForm, } from './PhoneInputForm';
 import OtpForm from './OtpForm';
 import { getFlowNumber, } from '../../FlowDispenser/flowStorage';
-import { LoginContentStyles, } from '../../StyleComponents/LoginStyleComponents';
+import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 
 // Styling Components -----------------
 const { ItemCenterer, } = LoginContentStyles;
+const { TextBox, } = LoginMiscLayoutStyles;
 // ------------------------------------
 
 const shouldShowForm = (userFlow) => {
@@ -25,7 +26,11 @@ class PhoneForms extends React.Component {
       (
         <div>
           <ItemCenterer>
-            בשביל להשתמש בשירות כניסה באמצעות SMS, יש לאמת כתובת דוא"ל ומספר סלולרי
+            <TextBox>
+              <h5>
+              בשביל להשתמש בשירות כניסה באמצעות SMS, יש לאמת כתובת דוא"ל ומספר סלולרי
+              </h5>
+            </TextBox>
           </ItemCenterer>
         </div>
       );

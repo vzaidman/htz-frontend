@@ -1,6 +1,7 @@
 export default {
   transitionRouteMap: new Map([
     [ '-phoneMailSent', '/phoneMailSent', ],
+    [ '-phoneMailSent2', '/phoneMailSent2', ],
     [ '-customerService', '/customerService', ],
     [ '-register', '/register', ],
     [ '-emailValidationSent', '/emailValidationSent', ],
@@ -31,8 +32,12 @@ export default {
     backToLogin: 'loginFormsPass',
   },
   phoneMailSent: {
+    sentAgain: 'phoneMailSent2',
     withPassword: 'loginFormsPass',
     getCustomerService: 'customerService',
+  },
+  phoneMailSent2: {
+    withPassword: 'loginFormsPass',
   },
   loginFormsPhone: {
     withPassword: 'loginFormsPass',

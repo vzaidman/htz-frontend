@@ -4,6 +4,7 @@ import { domainToSiteNumber, } from '../../../util/siteUtil';
 
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import Preloader from '../Preloader';
+import { getEmail, } from '../../../pages/queryutil/userDetailsOperations';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 
 // Styling Components -------
@@ -71,7 +72,7 @@ class ResetPasswordForm extends Component {
 
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { nextStage, closeModal, CloseButton, host, theme, validateEmailInput, } = this.props;
+    const { nextStage, closeModal, CloseButton, host, theme, validateEmailInput, client } = this.props;
 
     return (
       <Fragment>
@@ -80,7 +81,7 @@ class ResetPasswordForm extends Component {
           <h4>החלפת סיסמה</h4>
           <Form
             clearFormAfterSubmit={false}
-            // initialValues={{ email: 'insert email' }}
+            initialValues={ {email: getEmail(client)} }
             validate={validateEmailInput}
             onSubmit={onResetPassword({
               host,
