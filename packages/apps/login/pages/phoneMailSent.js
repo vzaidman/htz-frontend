@@ -1,8 +1,10 @@
 import React, { Fragment, } from 'react';
 import Router from 'next/router';
+import { ApolloConsumer, } from 'react-apollo';
 
 import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
+import { connectMailWithPhone, getUserData, getEmail, getHostname, getPhoneNum, } from './queryutil/userDetailsOperations';
 
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import theme from '../theme/index';
@@ -33,54 +35,75 @@ const onSubmit = doTransitionFunction => {
   Router.push(route);
 };
 
-const sendAgain = e => {
-  console.log('test...');
+const sendAgain = (client, doTransition) => {
+  const userData = getUserData(client);
+  const email = getEmail(client);
+  const phoneNumber = getPhoneNum(client);
+  connectMailWithPhone(client)({
+    email,
+    userName: userData.firstName,
+    phone: phoneNumber,
+    paramString: btoa(`email=${email}&phone=${phoneNumber}`),
+    url: getHostname(client),
+  }).then(
+    () => {
+      const route = doTransition('sentAgain');
+      Router.push(route);
+    },
+    error => console.log(error.message) //TODO error ui
+  );
 };
 // --------------------------
 
 const PhoneMailSent = () => (
   <FSMLayout>
     {({ currentState, findRout, doTransition, }) => (
-      <Fragment>
-        <ContentWrapper>
-          <FormWrapper>
-            <ItemCenterer>
-              <h5>נשלח אלייך מייל על מנת לאשר את המספר הטלפון שלך</h5>
-            </ItemCenterer>
+      <ApolloConsumer>
+        {client => {
+          return (
+            <Fragment>
+              <ContentWrapper>
+                <FormWrapper>
+                  <ItemCenterer>
+                    <h5>נשלח אלייך מייל על מנת לאשר את המספר הטלפון שלך</h5>
+                  </ItemCenterer>
 
-            <BottomLinks spacing={0}>
-              <span>לא הגיע?</span>
+                  <BottomLinks spacing={0}>
+                    <span>לא הגיע?</span>
 
-              <br/>
+                    <br/>
 
-              <span>לשליחה חוזרת </span>
-              <HtzLink
-                href="/"
-                onClick={e => {
-                  e.preventDefault();
-                  // TODO: send again
-                }}
-              >
-                לחץ כאן
-              </HtzLink>
+                    <span>לשליחה חוזרת </span>
+                    <HtzLink
+                      href="/"
+                      onClick={e => {
+                        e.preventDefault();
+                        sendAgain(client, doTransition);
+                      }}
+                    >
+                      לחץ כאן
+                    </HtzLink>
 
-              <br/><br/>
+                    <br/><br/>
 
-              <HtzLink
-                href={`${findRout('withPassword')}`}
-                onClick={e => {
-                  e.preventDefault();
-                  const route = doTransition('withPassword');
-                  Router.push(route);
-                }}
-              >
-                לא כרגע. כניסה באמצעות סיסמה
-              </HtzLink>
+                    <HtzLink
+                      href={`${findRout('withPassword')}`}
+                      onClick={e => {
+                        e.preventDefault();
+                        const route = doTransition('withPassword');
+                        Router.push(route);
+                      }}
+                    >
+                      לא כרגע. כניסה באמצעות סיסמה
+                    </HtzLink>
 
-            </BottomLinks>
-          </FormWrapper>
-        </ContentWrapper>
-      </Fragment>
+                  </BottomLinks>
+                </FormWrapper>
+              </ContentWrapper>
+            </Fragment>
+          )
+        }}
+      </ApolloConsumer>
     )}
   </FSMLayout>
 );
