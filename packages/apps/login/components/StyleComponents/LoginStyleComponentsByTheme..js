@@ -8,9 +8,9 @@ import { createComponent, } from 'react-fela';
 // Functions -------------------------------------------
 const getColors = (host) => {
   return {
-    main: host == 'haaretz.co.il' ? "#0b7eb5" : "",
-    secondry: host == 'haaretz.co.il' ? "#006B96" : "",
-    links: host == 'haaretz.co.il' ? "#0895c3" : "",
+    main: host == 'themarker.com' ? "#00c800" : "#0b7eb5",
+    secondry: host == 'themarker.com' ? "#00c800" : "#006B96",
+    links: host == 'themarker.com' ? "#00c800" : "#0895c3",
   }
 }
 

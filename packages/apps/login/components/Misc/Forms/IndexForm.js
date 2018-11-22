@@ -68,8 +68,8 @@ const hasValidatedPhone = (dataSaved) => {
   return dataSaved
         && dataSaved.userData
         && dataSaved.userData.userStatus
-        && dataSaved.userData.userStatus.phoneNum
-        && dataSaved.userData.userStatus.isMobileValidated;
+        && dataSaved.userData.userStatus.isMobileValidated
+        && dataSaved.userData.phoneNum;
 }
 
 const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showError, setPreloader, autoRoute, confirmation, }) =>
