@@ -16,7 +16,10 @@ const PlayBuzzWrapper = ({ children, }) => (
     style={{
       width: '100%',
       position: 'relative',
-      margin: '0 auto',
+      marginTop: '0',
+      marginBottom: '0',
+      marginLeft: 'auto',
+      marginRight: 'auto',
     }}
     render={({ className, }) => <div className={className}>{children}</div>}
   />

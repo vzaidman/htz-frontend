@@ -4,7 +4,7 @@ exports[`PlayBuzz  1`] = `
 Object {
   "component": <div>
     <div
-      className="htz-a htz-b htz-c"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f"
     >
       <div
         className="playbuzz pb_feed"
@@ -16,6 +16,6 @@ Object {
       />
     </div>
   </div>,
-  "styles": ".htz-a{width:100%}.htz-b{position:relative}.htz-c{margin:0 auto}",
+  "styles": ".htz-a{width:100%}.htz-b{position:relative}.htz-c{margin-top:0}.htz-d{margin-bottom:0}.htz-e{margin-left:auto}.htz-f{margin-right:auto}",
 }
 `;
