@@ -7,6 +7,7 @@ import theme from '../../../theme';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../../components/StyleComponents/LoginStyleComponents';
 
 import { connectMailWithPhone, getUserData, getEmail, getHostname, saveUserData, } from '../../../pages/queryutil/userDetailsOperations';
+import { isName, isMobile, isPassword, } from './fieldsValidators';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
