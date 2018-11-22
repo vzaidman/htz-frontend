@@ -121,7 +121,7 @@ class NavigationMenu extends React.Component {
 
   static defaultProps = {
     userType: null,
-  }
+  };
 
   state = { isHovered: false, };
 
@@ -138,6 +138,10 @@ class NavigationMenu extends React.Component {
         document.location.reload();
       })
       .catch(err => console.warn('err mutation:', err));
+  };
+
+  componentDidUpdate = (prevProp, prevState) => {
+    this.changeHovered = (prevState.isHovered !== this.state.isHovered);
   };
 
   render() {
@@ -214,45 +218,53 @@ class NavigationMenu extends React.Component {
           return (
             <DropdownList
               mainMenuStyle={{ position: 'relative', }}
-              render={({ renderButton, ListWrapper, isOpen, }) => (
+              onClose={() => this.hamburgerEl.focus()}
+              render={({ renderButton, ListWrapper, isOpen, focusButton, }) => (
                 <Fragment>
                   {renderButton(({ toggleState, }) => (
                     <FelaComponent
                       rule={menuButtonStyle}
                       isOpen={isOpen}
                       isHovered={isHovered}
-                      render={({ className, }) => (
-                        <button
-                          className={className}
-                          onClick={toggleState}
-                          aria-expanded={isOpen}
-                          onMouseEnter={this.handleMouseEnter}
-                          onMouseLeave={this.handleMouseLeave}
-                          onFocus={this.handleMouseEnter}
-                          onBlur={this.handleMouseLeave}
-                          type="button"
-                        >
-                          <FelaComponent
-                            style={{
-                              marginStart: '2rem',
-                              marginEnd: '2rem',
-                              position: 'relative',
+                      render={({ className, }) => {                       
+                        return (
+                          <button
+                            className={className}
+                            onClick={toggleState}
+                            aria-expanded={isOpen}
+                            ref={el => {
+                              if (!this.hamburgerEl) {
+                                this.hamburgerEl = el;
+                              }
                             }}
-                            render="span"
+                            onMouseEnter={this.handleMouseEnter}
+                            onMouseLeave={this.handleMouseLeave}
+                            onFocus={this.handleMouseEnter}
+                            onBlur={this.handleMouseLeave}
+                            type="button"
                           >
-                            <Hamburger
-                              isOpen={isOpen}
-                              color={{
-                                close: isHovered ? [ 'neutral', '-10', ] : [ 'neutral', '-3', ],
-                                open: [ 'neutral', '-10', ],
+                            <FelaComponent
+                              style={{
+                                marginStart: '2rem',
+                                marginEnd: '2rem',
+                                position: 'relative',
                               }}
-                              size={2.5}
-                              isTransition
-                            />
-                          </FelaComponent>
-                          <span>{theme.navigationMenuI18n.buttonText}</span>
-                        </button>
-                      )}
+                              render="span"
+                            >
+                              <Hamburger
+                                isOpen={isOpen}
+                                color={{
+                                  close: isHovered ? [ 'neutral', '-10', ] : [ 'neutral', '-3', ],
+                                  open: [ 'neutral', '-10', ],
+                                }}
+                                size={2.5}
+                                isTransition
+                              />
+                            </FelaComponent>
+                            <span>{theme.navigationMenuI18n.buttonText}</span>
+                          </button>
+                        );
+                      }}
                     />
                   ))}
                   {isOpen ? (
@@ -281,11 +293,11 @@ export default ({ contentId, userType, }) => (
   <Query query={NavigationQuery} variables={{ listId: contentId, }}>
     {({ data, loading, error, }) => {
       if (error) return null;
-      if (loading) return <NavigationMenu menuSections={{}}/>;
+      if (loading) return <NavigationMenu menuSections={{}} />;
       const {
         navMenu: { menu, },
       } = data;
-      return <NavigationMenu menuSections={menu} userType={userType}/>;
+      return <NavigationMenu menuSections={menu} userType={userType} />;
     }}
   </Query>
 );

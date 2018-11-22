@@ -327,13 +327,9 @@ function DesktopView({
                 {tHeadData.map((item, idx) => (
                   <GridItem
                     width={1 / 4}
-                    id={
-                      item.subscriptionName
-                        ? `${item.subscriptionName}TableHead`
-                        : null
-                    }
                     tagName="div"
-                    key={item.heading}>
+                    key={item.heading}
+                  >
                     <EventTracker>
                       {({ biAction, gaAction, }) => (
                         <StyledThInnerCont
@@ -428,15 +424,6 @@ function DesktopView({
                     <GridItem
                       width={1 / 4}
                       tagName="div"
-                      id={idx === 0 ? `itemDescription${rowNum}` : null}
-                      attrs={{
-                        headers:
-                          idx > 0
-                            ? `${
-                                tHeadData[idx - 1].subscriptionName
-                              }TableHead itemDescription${rowNum}`
-                            : null,
-                      }}
                       key={Math.random()}
                     >
                       <StyledTdInnerCont
@@ -467,18 +454,17 @@ function DesktopView({
                           ))
                         ) : cellData ? (
                           <React.Fragment>
-                            <AriaDescription>
+                            <AriaDescription id={`Description${idx + rowNum}`} >
+                              כלול ב-
                               {tHeadData[idx - 1].heading}
                             </AriaDescription>
-                            <AriaDescription>{row[0]}</AriaDescription>
-                            <PositiveCircle
-                              header={`${
-                                tHeadData[idx - 1].subscriptionName
-                              }TableHead `}
-                            />
+                            <PositiveCircle />
                           </React.Fragment>
                         ) : (
-                          ''
+                          <AriaDescription id={`Description${idx + rowNum}`} >
+                              לא כלול ב
+                            {tHeadData[idx - 1].heading}
+                          </AriaDescription>
                         )}
                       </StyledTdInnerCont>
                     </GridItem>

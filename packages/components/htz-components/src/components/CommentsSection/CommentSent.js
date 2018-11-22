@@ -85,11 +85,7 @@ class CommentSent extends React.Component {
           theme,
           theme: {
             commentSentI18n: {
-              buttons: {
-                getNotificationsBtnTxt,
-                dontGetNotificationsBtnTxt,
-                closeBtnText,
-              },
+              buttons: { getNotificationsBtnTxt, dontGetNotificationsBtnTxt, closeBtnText, },
               labels: { emailLabelTxt, },
               notes: { emailNoteTxt, },
               errorNotes: { emailErrorNoteTxt, },
@@ -145,9 +141,7 @@ class CommentSent extends React.Component {
                 onSubmit={({ notificationEmail, }) => {
                   signUpNotification(true, notificationEmail);
                 }}
-                {...(userEmail
-                  ? { initialValues: { notificationEmail: userEmail, }, }
-                  : {})}
+                {...(userEmail ? { initialValues: { notificationEmail: userEmail, }, } : {})}
                 validate={({ notificationEmail = '', }) => {
                   const errors = [];
                   if (!isEmail(notificationEmail)) {
@@ -180,9 +174,7 @@ class CommentSent extends React.Component {
                         errorText: emailErrorNoteTxt,
                         label: emailLabelTxt,
                         maxLength: 200,
-                        variant: `${
-                          theme.commentsStyle.textInputVariant
-                        }Inverse`,
+                        variant: `${theme.commentsStyle.textInputVariant}Opaque`,
                         type: 'email',
                         miscStyles: {
                           marginTop: '4rem',

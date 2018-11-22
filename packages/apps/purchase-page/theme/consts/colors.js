@@ -21,7 +21,7 @@ const htz = Object.freeze({
       text: 'white',
     },
     stagesCounter: {
-      step: [ 'primary', '+2', ],
+      step: [ 'primary', '+1', ],
     },
     userBanner: {
       bg: [ 'primary', 'base', ],
