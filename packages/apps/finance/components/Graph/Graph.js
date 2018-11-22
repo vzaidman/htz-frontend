@@ -35,11 +35,12 @@ const GraphQuery: DocumentNode = gql`
 `;
 
 type Props = {
-  indexId: number | string,
-  time: string,
+  indexId?: number | string,
+  time?: string,
   type: string,
   changeStats: Function,
-  miscStyles: ?Object,
+  miscStyles?: Object,
+  data: Object,
 };
 
 const graphTypes: Object = new Map([
@@ -61,8 +62,35 @@ const graphTypes: Object = new Map([
 
 const Graph: StatelessFunctionalComponent<Props> =
   // eslint-disable-next-line react/prop-types
-  ({ indexId, time, type, miscStyles, ...props }) => {
+  ({ indexId, time, type, miscStyles, data, ...props }) => {
     const GraphElement: ComponentType<any> = graphTypes.get(type);
+    return (
+      <FelaTheme
+        render={theme => (
+          <FelaComponent
+            style={{
+              extend: [
+                ...(miscStyles
+                  ? parseStyleProps(miscStyles, theme.mq, theme.type)
+                  : []),
+              ],
+            }}
+          >
+            <GraphElement
+              time={time}
+              theme={theme}
+              data={data || null}
+              {...props}
+            />
+          </FelaComponent>
+        )}
+      />
+    );
+  };
+
+export default (props: any) => {
+  if (!props.data) {
+    const { indexId, type, time, } = props;
     return (
       <Query
         query={GraphQuery}
@@ -72,33 +100,14 @@ const Graph: StatelessFunctionalComponent<Props> =
           time,
         }}
       >
-        {({ loading, error, data: { financeGraph, }, }) => {
+        {({ loading, error, data, }) => {
           if (error) return null;
           return (
-            <FelaTheme
-              render={theme => (
-                <FelaComponent
-                  style={{
-                    extend: [
-                      ...(miscStyles
-                        ? parseStyleProps(miscStyles, theme.mq, theme.type)
-                        : []),
-                    ],
-                  }}
-                >
-                  <GraphElement
-                    time={time}
-                    theme={theme}
-                    data={loading ? null : financeGraph.dataSource}
-                    {...props}
-                  />
-                </FelaComponent>
-              )}
-            />
+            <Graph {...props} data={!loading ? data.financeGraph.dataSource : null} />
           );
         }}
       </Query>
     );
-  };
-
-export default Graph;
+  }
+  return <Graph {...props} data={props.data} />;
+};

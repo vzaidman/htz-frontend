@@ -32,7 +32,7 @@ type TabButtonProps = {
   isActive: boolean,
 }
 
-const tabRule: Object => Object = ({ theme, }) => ({
+export const tabRule: Object => Object = ({ theme, }) => ({
   flexGrow: '1',
   flexBasis: '0',
   position: 'relative',
