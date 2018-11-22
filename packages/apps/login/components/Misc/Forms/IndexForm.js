@@ -10,6 +10,7 @@ import { writeMetaDataToApollo, parseRouteInfo, } from '../../../pages/queryutil
 import Preloader from '../../Misc/Preloader';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { validateMailWithPhone, } from '../../../pages/queryutil/userDetailsOperations';
+import { sendMailValidation, } from '../../../util/requestUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -128,8 +129,18 @@ const handleResponseFromGraphql =
       });
     }
     else {
-      console.log('mobile is not validated!!!');
-      Router.push(route);
+      if(!dataSaved.userData.userStatus.isEmailValidated) {
+        sendMailValidation({ email, }).then(
+          () => {
+            Router.push(route);
+          },
+          (error) => {
+            showError((error.message || "אירעה שגיאה"));
+          }
+        );
+      } else {
+        Router.push(route);
+      }
     }
   };
 
