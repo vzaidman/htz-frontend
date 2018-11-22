@@ -12,7 +12,7 @@ const { TextBox, } = LoginMiscLayoutStyles;
 // ------------------------------------
 
 const shouldShowForm = (userFlow) => {
-  return '12'.includes(userFlow);
+  return '1256'.includes(userFlow);
 }
 
 class PhoneForms extends React.Component {
