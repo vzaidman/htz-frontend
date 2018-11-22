@@ -6,7 +6,7 @@ import { Button, IconHtzLoader, IconTmLoader, Query, pixelEvent, } from '@haaret
 import Router from 'next/router';
 import ReactGA from 'react-ga';
 import { FelaComponent, } from 'react-fela';
-import Redirect from '../../Redirect/Redirect';
+import pathGenerator from './utils/pathGenerator';
 
 const PAY_WITH_EXISTING_CARD = gql`
   query payWithExistingCard(
@@ -163,13 +163,16 @@ class Wrapper extends Component {
               coupon: paymentData.saleCode,
             });
             sessionStorage.setItem('userProduct', data.payWithExistingCard.pId);
-            return (
-              <Redirect
-                destination="thankYou"
-                paramString={`msg=thank_user&product=${data.payWithExistingCard.pId}`}
-                replace
-              />
+            const { pathName, asPath, } = pathGenerator(
+              'thankYou',
+              Router,
+              `msg=thank_user&product=${data.payWithExistingCard.pId}`,
+              false,
+              { msg: 'thank_user', product: data.payWithExistingCard.pId, }
             );
+
+            Router.replace(pathName, asPath);
+            return null;
           }
           return <DisplayError />;
         }}
