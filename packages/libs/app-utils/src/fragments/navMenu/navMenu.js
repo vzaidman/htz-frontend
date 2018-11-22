@@ -17,6 +17,8 @@ export default gql`
         pages {
           name
           url
+          contentId
+          isCommercial
         }
       }
     }

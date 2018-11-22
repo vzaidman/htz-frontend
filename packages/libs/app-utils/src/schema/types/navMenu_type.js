@@ -1,16 +1,13 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLList,
-  GraphQLID,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLList, GraphQLID, } from 'graphql';
 
 const BaseItem = new GraphQLObjectType({
   name: 'BaseItem',
   fields: () => ({
     name: { type: GraphQLString, },
     url: { type: GraphQLString, },
+    contentId: { type: GraphQLString, },
+    isCommercial: { type: GraphQLBoolean, },
     pages: { type: GraphQLList(BaseItem), },
   }),
 });
@@ -30,6 +27,7 @@ const NavMenu = new GraphQLObjectType({
       }),
     },
     inputTemplate: { type: GraphQLString, },
+    isCommercial: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
     contentName: { type: GraphQLString, },
   }),
