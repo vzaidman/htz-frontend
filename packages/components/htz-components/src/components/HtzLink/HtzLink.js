@@ -90,79 +90,88 @@ const defaultProps = {
 //   return domain ? { ...hrefObj, pathname: path, } : hrefObj;
 // };
 
-function HtzLink({
-  attrs,
-  children,
-  className,
-  content,
-  focus,
-  href,
-  asPath,
-  onClick: passedOnClick,
-  prefetch,
-  refFunc,
-  target,
-}) {
-  // eslint-disable-next-line eqeqeq
-  const renderContent = content != undefined ? content : children;
-  // eslint-disable-next-line eqeqeq
-  // if (!target && isNextLink(href)) {
-  //   /* eslint-disable no-unused-vars */
-  //   let fullId;
-  //   let premium;
-  //   let prefix;
-  //   let articleId;
-  //   let params;
-  //   let page;
-  //   // TODO check this case
-  //   const computedHref = ensureRelativity(
-  //     typeof href === 'string' ? { pathname: href, } : href
-  //   );
-  //   // Enables client-side navigation for react-articles
-  //   const computedPathname = isReactArticle(computedHref.pathname)
-  //     ? `/${getArticlePageTypeFromUrl(computedHref.pathname)}`
-  //     : computedHref.pathname;
+const HtzLink = React.forwardRef(
+  (
+    {
+      attrs,
+      children,
+      className,
+      content,
+      focus,
+      href,
+      asPath,
+      onClick: passedOnClick,
+      prefetch,
+      refFunc,
+      target,
+    },
+    ref
+  ) => {
+    // eslint-disable-next-line eqeqeq
+    const renderContent = content != undefined ? content : children;
+    // eslint-disable-next-line eqeqeq
+    // if (!target && isNextLink(href)) {
+    //   /* eslint-disable no-unused-vars */
+    //   let fullId;
+    //   let premium;
+    //   let prefix;
+    //   let articleId;
+    //   let params;
+    //   let page;
+    //   // TODO check this case
+    //   const computedHref = ensureRelativity(
+    //     typeof href === 'string' ? { pathname: href, } : href
+    //   );
+    //   // Enables client-side navigation for react-articles
+    //   const computedPathname = isReactArticle(computedHref.pathname)
+    //     ? `/${getArticlePageTypeFromUrl(computedHref.pathname)}`
+    //     : computedHref.pathname;
 
-  //   return (
-  //     <Link
-  //       prefetch={prefetch}
-  //       passHref
-  //       href={{
-  //         pathname: computedPathname,
-  //         query: { path: `${computedHref.pathname}`, },
-  //       }}
-  //       as={`${computedHref.pathname}`}
-  //     >
-  //       <LinkWrapper
-  //         attrs={attrs}
-  //         className={className}
-  //         ref={linkRef => {
-  //           focus && linkRef && linkRef.focus();
-  //           refFunc && refFunc(linkRef);
-  //         }}
-  //         passedOnClick={passedOnClick}
-  //       >
-  //         {renderContent}
-  //       </LinkWrapper>
-  //     </Link>
-  //   );
-  // }
-  return (
-    <a
-      {...attrs}
-      href={href}
-      {...(target ? { target, } : {})}
-      className={className}
-      ref={linkRef => {
-        focus && linkRef && linkRef.focus();
-        refFunc && refFunc(linkRef);
-      }}
-      onClick={passedOnClick}
-    >
-      {renderContent}
-    </a>
-  );
-}
+    //   return (
+    //     <Link
+    //       prefetch={prefetch}
+    //       passHref
+    //       href={{
+    //         pathname: computedPathname,
+    //         query: { path: `${computedHref.pathname}`, },
+    //       }}
+    //       as={`${computedHref.pathname}`}
+    //     >
+    //       <LinkWrapper
+    //         attrs={attrs}
+    //         className={className}
+    //         ref={linkRef => {
+    //           focus && linkRef && linkRef.focus();
+    //           refFunc && refFunc(linkRef);
+    //         }}
+    //         passedOnClick={passedOnClick}
+    //       >
+    //         {renderContent}
+    //       </LinkWrapper>
+    //     </Link>
+    //   );
+    // }
+    return (
+      <a
+        {...attrs}
+        href={href}
+        {...(target ? { target, } : {})}
+        className={className}
+        ref={
+          refFunc
+            ? linkRef => {
+                focus && linkRef && linkRef.focus();
+                refFunc && refFunc(linkRef);
+              }
+            : ref
+        }
+        onClick={passedOnClick}
+      >
+        {renderContent}
+      </a>
+    );
+  }
+);
 
 HtzLink.propTypes = propTypes;
 HtzLink.defaultProps = defaultProps;

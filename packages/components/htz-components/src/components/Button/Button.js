@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { createComponent, } from 'react-fela';
 import { FelaComponent, } from 'react-fela';
 import {
   borderBottom,
@@ -9,7 +8,8 @@ import {
   parseStyleProps,
   parseTypographyProp,
 } from '@haaretz/htz-css-tools';
-import HtzLink from '../HtzLink/HtzLink';
+
+import ButtonCore from './ButtonCore';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { buttonBoxModelType, } from './buttonBoxModelType';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
@@ -190,7 +190,7 @@ Button.defaultProps = {
   isReset: false,
   onClick: null,
   prefetch: false,
-  tagName: 'button',
+  tagName: null,
   boxModel: null,
   fontSize: null,
   isColumn: null,
@@ -515,50 +515,6 @@ function radiusRules(value, isColumn, groupPlacement, isHard, isRound) {
 // ////////////////////////////////////////////////////////////////// //
 //                             COMPONENTS                             //
 // ////////////////////////////////////////////////////////////////// //
-/* eslint-disable react/prop-types */
-const ButtonWrapper = ({
-  attrs,
-  children,
-  className,
-  href,
-  asPath,
-  id,
-  isBusy,
-  isDisabled,
-  isReset,
-  isSubmit,
-  onClick,
-  prefetch,
-  WrapperElement,
-}) =>
-  (href ? (
-    <HtzLink
-      href={href}
-      asPath={asPath}
-      prefetch={prefetch}
-      className={className}
-      onClick={onClick}
-      attrs={{
-        id,
-        ...(isDisabled || isBusy ? { disabled: true, tabIndex: '-1', } : {}),
-        ...attrs,
-      }}
-    >
-      <React.Fragment>{children}</React.Fragment>
-    </HtzLink>
-  ) : (
-    <WrapperElement
-      id={id || null}
-      className={className}
-      {...attrs}
-      {...(isDisabled || isBusy ? { disabled: true, tabIndex: '-1', } : {})}
-      {...(onClick ? { onClick, } : {})}
-      type={isSubmit ? 'submit' : isReset ? 'reset' : 'button'}
-    >
-      {children}
-    </WrapperElement>
-  ));
-/* eslint-enable react/prop-types */
 
 /* A generic, stylable button component */
 export default function Button({
@@ -584,8 +540,6 @@ export default function Button({
   miscStyles,
   variant,
 }) {
-  const WrapperElement = tagName;
-
   return (
     <FelaComponent
       {...{
@@ -603,7 +557,7 @@ export default function Button({
       }}
       rule={buttonStyles}
       render={({ className, theme, }) => (
-        <ButtonWrapper
+        <ButtonCore
           {...{
             attrs,
             className,
@@ -616,7 +570,7 @@ export default function Button({
             isSubmit,
             onClick,
             prefetch,
-            WrapperElement,
+            tagName,
           }}
         >
           <React.Fragment>
@@ -625,7 +579,7 @@ export default function Button({
             </FelaComponent>
             <FelaComponent isBusy={isBusy} rule={progressRule} render="span" />
           </React.Fragment>
-        </ButtonWrapper>
+        </ButtonCore>
       )}
     />
   );
