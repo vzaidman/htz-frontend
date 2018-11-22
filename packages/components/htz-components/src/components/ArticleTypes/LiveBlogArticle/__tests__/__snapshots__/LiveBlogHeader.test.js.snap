@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LiveBlogHeader component renders LiveBlogHeader correctly 1`] = `
+Object {
+  "component": <div>
+    <header
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"
+    >
+      <div
+        className="htz-i htz-h htz-n htz-j htz-o htz-p htz-m htz-q"
+      >
+        <h1
+          className="htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z"
+        >
+          משחק המונופול שיפתור את הבעיות הרגולטוריות של ישראל
+        </h1>
+      </div>
+      <div
+        className="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj"
+      >
+        <div
+          className="htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+        >
+          <div
+            className="htz-ak htz-al htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+          >
+            <div
+              className="htz-bg"
+            >
+              <address
+                className="htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-r"
+              >
+                <a
+                  className="htz-br htz-bs htz-bt"
+                  href="/misc/writers/WRITER-1.681402"
+                  onClick={[Function]}
+                >
+                  יניב קובוביץ
+                </a>
+              </address>
+              <div
+                className="htz-cb"
+              >
+                <time
+                  className="htz-bu htz-aj htz-bg htz-bv htz-bw htz-bx htz-by htz-bz htz-ca"
+                  dateTime="2018-07-20T17:42:00+03:00"
+                >
+                  20.07.2018
+                </time>
+                 
+                <time
+                  className="htz-bu htz-aj htz-bg htz-bv htz-bw htz-bx htz-by htz-bz htz-ca"
+                  dateTime="2018-07-25T16:18:00+03:00"
+                >
+                  עודכן ב-25.07.2018
+                </time>
+              </div>
+            </div>
+          </div>
+          <div
+            className="htz-cb"
+          >
+            <time
+              className="htz-bu htz-cc htz-bv htz-bw htz-bg htz-bx htz-by htz-bz htz-ca"
+              dateTime="2018-07-20T17:42:00+03:00"
+            >
+              20.07.2018
+            </time>
+             
+            <time
+              className="htz-bu htz-cc htz-bv htz-bw htz-bg htz-bx htz-by htz-bz htz-ca"
+              dateTime="2018-07-25T16:18:00+03:00"
+            >
+              עודכן ב-25.07.2018
+            </time>
+          </div>
+        </div>
+      </div>
+      <div
+        className="htz-h htz-m"
+      >
+        <ShareBar
+          canonicalUrl="http://pre.haaretz.co.il/news/politics/LIVE-1.6293368"
+          title="משחק המונופול שיפתור את הבעיות הרגולטוריות של ישראל"
+        />
+      </div>
+      <span
+        className="htz-cd htz-ce htz-cf htz-cg htz-al htz-ch htz-aj htz-ci htz-bf"
+      >
+        <span
+          className="htz-cj htz-ck htz-bi htz-cl htz-cm htz-cn htz-co"
+        >
+          LIVE
+        </span>
+        <span
+          className="htz-cp htz-cq htz-cr htz-c htz-cs"
+        />
+      </span>
+      <HeadlineElement
+        elementObj={
+          Object {
+            "__typename": "Image",
+            "accessibility": "תקיפת צה\\"ל ברצועת עזה, הערב",
+            "aspects": Object {
+              "full": Object {
+                "height": 1467,
+                "width": 2200,
+              },
+              "headline": Object {
+                "height": 1281,
+                "width": 2200,
+                "x": 0,
+                "y": 0,
+              },
+              "regular": Object {
+                "height": 1467,
+                "width": 1954,
+                "x": 115,
+                "y": 0,
+              },
+              "square": Object {
+                "height": 1467,
+                "width": 1467,
+                "x": 416,
+                "y": 0,
+              },
+            },
+            "contentId": "1.6293423",
+            "contentName": "תקיפת צה\\"ל ברצועת עזה, הערב",
+            "credit": "AFP",
+            "imageType": "image",
+            "imgArray": Array [
+              Object {
+                "__typename": "Img",
+                "aspects": Object {
+                  "full": Object {
+                    "height": 1467,
+                    "width": 2200,
+                  },
+                  "headline": Object {
+                    "height": 1281,
+                    "width": 2200,
+                    "x": 0,
+                    "y": 0,
+                  },
+                  "regular": Object {
+                    "height": 1467,
+                    "width": 1954,
+                    "x": 115,
+                    "y": 0,
+                  },
+                  "square": Object {
+                    "height": 1467,
+                    "width": 1467,
+                    "x": 416,
+                    "y": 0,
+                  },
+                },
+                "imgName": "image/526384803.jpg",
+                "version": "1532110863",
+              },
+            ],
+            "inputTemplate": "com.tm.Image",
+            "isAnimated": null,
+            "title": "תקיפת צה\\"ל ברצועת עזה, הערב",
+            "viewMode": "FullColumnWithVerticalImage",
+          }
+        }
+        miscStyles={
+          Object {
+            "backgroundColor": Array [
+              Object {
+                "from": "l",
+                "value": "#EBF2F5",
+              },
+            ],
+            "marginTop": Array [
+              Object {
+                "from": "l",
+                "value": "2rem",
+              },
+            ],
+            "order": Array [
+              Object {
+                "until": "s",
+                "value": -2,
+              },
+            ],
+          }
+        }
+      />
+    </header>
+  </div>,
+  "styles": ".htz-a{text-align:right}.htz-b{overflow:hidden}.htz-c{background-color:white}.htz-h{padding-right:2rem}.htz-i{margin-top:3rem}.htz-r{display:inline}.htz-ak{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-al{align-items:center}.htz-bf{-webkit-box-align:center}.htz-bh{color:#006B96}.htz-bi{font-weight:bold}.htz-br{color:currentcolor}.htz-bs:hover{text-decoration:underline}.htz-bt:focus{text-decoration:underline}.htz-bu{display:inline-block}.htz-cd{height:5rem}.htz-ce{width:100%}.htz-cf{margin-top:1rem}.htz-cg{background-color:#A8001C}.htz-cj{color:white}.htz-ck{padding-right:1rem}.htz-cp{height:1rem}.htz-cq{width:1rem}.htz-cr{border-radius:50%}.htz-cs{margin:1rem}@media (max-width: 47.9375em){.htz-d{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-e{flex-direction:column}.htz-f{-webkit-box-orient:vertical}.htz-g{-webkit-box-direction:normal}.htz-s{font-size:4rem}.htz-t{line-height:1.25em}}@media (max-width: 37.4375em){.htz-j{padding-right:3rem}.htz-k{order:-1}.htz-l{margin-top:2rem}.htz-n{padding-left:3rem}.htz-o{margin-top:0}.htz-ab{margin-top:3rem}.htz-ac{margin-right:3rem}.htz-ae{margin-left:3rem}.htz-am{flex-grow:1}.htz-an{justify-content:space-between}.htz-ao{border-top-width:1px}.htz-ap{border-top-style:solid}.htz-aq{border-top-color:#CCC}.htz-ar{padding-top:calc(1rem - 1px)}.htz-as{border-bottom-width:1px}.htz-at{border-bottom-style:solid}.htz-au{border-bottom-color:#CCC}.htz-av{padding-bottom:calc(1rem - 1px)}.htz-aw{-webkit-box-flex:1}.htz-ax{-webkit-box-pack:justify}.htz-bj{font-size:2rem}.htz-bk{line-height:1.5em}}@media (min-width: 80em){.htz-m{padding-right:3rem}.htz-q{padding-left:5rem}.htz-y{font-size:5.857142857142857rem}.htz-z{line-height:1.1951219512195121em}.htz-bp{font-size:2.2857142857142856rem}.htz-bq{line-height:1.3125em}.htz-bz{font-size:1.7142857142857142rem}.htz-ca{line-height:1.75em}.htz-cn{font-size:2rem}.htz-co{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-p{padding-left:2rem}.htz-af{margin-top:2rem}.htz-bl{font-size:2.3333333333333335rem}.htz-bm{line-height:1.2857142857142858em}.htz-bv{margin-right:1rem}.htz-bw{margin-left:1rem}.htz-cb{display:inline}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-u{font-size:4.666666666666667rem}.htz-v{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-w{font-size:5.333333333333333rem}.htz-x{line-height:1.125em}.htz-bn{font-size:2.6666666666666665rem}.htz-bo{line-height:1.5em}}@media (min-width: 37.5em){.htz-ag{margin-right:2rem}.htz-ah{margin-left:2rem}.htz-ay{justify-content:flex-start}.htz-az{-webkit-box-pack:right}}@media (max-width: 63.9375em){.htz-ai{display:block}.htz-cc{display:none}.htz-ci{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}}@media (min-width: 64em){.htz-aj{display:none}.htz-ba{flex-direction:column}.htz-bb{align-items:flex-start}.htz-bc{-webkit-box-orient:vertical}.htz-bd{-webkit-box-direction:normal}.htz-be{-webkit-box-align:right}.htz-bg{margin-top:0.5rem}}@media (max-width: 79.9375em){.htz-bx{font-size:1.8333333333333333rem}.htz-by{line-height:1.6363636363636365em}.htz-cl{font-size:2rem}.htz-cm{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-ch{order:-3}}",
+}
+`;

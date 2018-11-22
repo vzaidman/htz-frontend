@@ -1,0 +1,3441 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LiveBLogContainer component renders liveBLogContainer correctly 1`] = `
+Object {
+  "component": <div>
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e"
+    >
+      <div
+        className="htz-a htz-b htz-f htz-g htz-h"
+      >
+        <ul
+          className="htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
+        >
+          <li
+            className="htz-l htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+          >
+            <h2
+              className="htz-ag htz-y htz-ap htz-ab htz-aq htz-u htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+            >
+              <time
+                className={null}
+                dateTime="2018-07-21T10:18:00+03:00"
+              >
+                10:18
+              </time>
+            </h2>
+            <a
+              className="htz-ay htz-az"
+              href="#707650185"
+            >
+               תקף עמדת חמאס בצפון רצועת עזה
+            </a>
+          </li>
+          <li
+            className="htz-l htz-ba htz-q htz-r htz-s htz-t htz-u htz-bb htz-bc htz-bd htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+          >
+            <h2
+              className="htz-ag htz-y htz-ap htz-ab htz-aq htz-u htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+            >
+              <time
+                className={null}
+                dateTime="2018-07-21T09:04:00+03:00"
+              >
+                09:04
+              </time>
+            </h2>
+            <a
+              className="htz-ay htz-az"
+              href="#707650136"
+            >
+              אחרי הודעת חמאס הלילה על הפסקת אש,  הודיע על חזרה לשגרה בעוטף עזה 
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="htz-be htz-a htz-bf htz-bg htz-bh htz-bi htz-ah htz-bj htz-bk htz-bl htz-c htz-d htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz"
+      >
+        <div
+          className="htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg"
+        >
+          עדכונים
+        </div>
+        <div
+          className="htz-ch htz-ci htz-cj htz-ck"
+        >
+          <label
+            className="htz-ch htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr"
+            htmlFor="0.123456789"
+          >
+            <input
+              checked={true}
+              id="0.123456789"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              type="radio"
+              value="descending"
+            />
+            <div
+              className="htz-ag htz-cs htz-ct htz-cu htz-cv htz-cw htz-ch htz-cj htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-ck htz-dd htz-de htz-df"
+            >
+              <div
+                className="htz-dg htz-dh htz-di htz-dj htz-dk htz-cw htz-dl htz-a htz-dm"
+              />
+              <div
+                className="htz-dg htz-dk htz-dn htz-do htz-dp htz-cw htz-dl htz-dq htz-cz htz-da htz-db htz-dr htz-ds htz-dt htz-de htz-df"
+              />
+            </div>
+            <div
+              className="htz-du"
+            >
+              מהאחרון לראשון
+            </div>
+          </label>
+          <label
+            className="htz-ch htz-cl htz-cn htz-co htz-cp htz-cq htz-cr"
+            htmlFor="0.123456789"
+          >
+            <input
+              checked={false}
+              id="0.123456789"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              type="radio"
+              value="ascending"
+            />
+            <div
+              className="htz-ag htz-cs htz-ct htz-cu htz-cv htz-cw htz-ch htz-cj htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-ck htz-dd htz-de htz-df"
+            >
+              <div
+                className="htz-dg htz-dh htz-di htz-dj htz-dk htz-cw htz-dl htz-a htz-dm"
+              />
+              <div
+                className="htz-dg htz-dk htz-dn htz-do htz-dp htz-cw htz-dl htz-dm htz-cz htz-da htz-db htz-dr htz-ds htz-dt htz-de htz-df"
+              />
+            </div>
+            <div
+              className="htz-du"
+            >
+              מהראשון לאחרון
+            </div>
+          </label>
+        </div>
+      </div>
+      <div
+        className="htz-a htz-b htz-c htz-d htz-e"
+      >
+        <LiveBlogItem
+          bps={
+            Object {
+              "misc": Object {
+                "hidpi": "(min-resolution: 1.5dppx)",
+                "landscape": "(orientation: landscape)",
+                "portrait": "(orientation: portrait)",
+              },
+              "widths": Object {
+                "l": 1024,
+                "m": 768,
+                "s": 600,
+                "xl": 1280,
+              },
+            }
+          }
+          canonicalUrl="https://www.haaretz.co.il/news/politics/LIVE-1.6293368"
+          item={
+            Object {
+              "body": Array [
+                Object {
+                  "__typename": "Paragraph",
+                  "attributes": null,
+                  "content": Array [
+                    Object {
+                      "attributes": Array [
+                        Object {
+                          "key": "text",
+                          "value": "אחרי הודעת חמאס הלילה על הפסקת אש ובתום הערכת מצב בפיקוד הדרום, בצה\\"ל הודיעו הבוקר (שבת) על חזרה לשגרה ביישובי עוטף עזה. ",
+                        },
+                      ],
+                      "tag": "#text",
+                    },
+                  ],
+                  "tag": "p",
+                },
+              ],
+              "cardId": "707650136",
+              "contentId": "7.7650136",
+              "contentName": "testing item 1",
+              "inputTemplate": "com.polobase.LiveBlogItem",
+              "keyEvent": null,
+              "pubDate": "2018-07-21T06:04:54.310Z",
+              "title": "אחרי הודעת חמאס הלילה על הפסקת אש, צה",
+              "titleMobile": "אחרי הודעת חמאס הלילה על הפסקת אש, צה",
+            }
+          }
+          theme={
+            Object {
+              "ModifiedDateText": undefined,
+              "a11yMenuI18n": Object {
+                "a11yToggle": [Function],
+                "menuItems": Array [
+                  Object {
+                    "name": "דווח על בעיית נגישות",
+                    "url": "mailto:accessibility@haaretz.co.il",
+                  },
+                ],
+              },
+              "alertsI18n": Object {
+                "desktopAlertsText": "התראות במייל",
+                "mobileAlertsText": "התראות",
+              },
+              "articleLayoutI18n": Object {
+                "commentSectionTitle": "תגובות",
+              },
+              "articleStyle": Object {
+                "article": Object {
+                  "marginEnd": Array [
+                    Object {
+                      "until": "l",
+                      "value": "0",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "57rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "51rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "l",
+                      "value": "0",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "27rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "30rem",
+                    },
+                  ],
+                },
+                "body": Object {
+                  "margin": Array [
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": "auto",
+                    },
+                  ],
+                  "marginBottom": Array [
+                    Object {
+                      "until": "xl",
+                      "value": "4rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "3rem",
+                    },
+                  ],
+                  "marginEnd": Array [
+                    Object {
+                      "until": "s",
+                      "value": "2rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "s",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "value": "4rem",
+                    },
+                  ],
+                  "maxWidth": "90rem",
+                  "width": Array [
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": "80rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "70.5rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "80rem",
+                    },
+                  ],
+                },
+                "currentArticleInSeries": Object {
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundColor": "#FFF17A",
+                  "fontWeight": "700",
+                },
+                "header": Object {
+                  "bylineFontSize": Array [
+                    Object {
+                      "until": "s",
+                      "value": -2,
+                    },
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": -1,
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": 0,
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": -1,
+                    },
+                  ],
+                  "marginEnd": Array [
+                    Object {
+                      "until": "m",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "m",
+                      "until": "l",
+                      "value": "2rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "l",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "value": "4rem",
+                    },
+                  ],
+                },
+                "linksBlockLink": Object {
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                  "borderBottomWidthActive": "2px",
+                  "fontWeight": "700",
+                },
+                "paragraphLink": Object {
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                  "borderBottomWidthActive": "2px",
+                },
+                "paragraphStyles": Object {},
+                "relatedArticlesLink": Object {
+                  ":focus": Object {
+                    "background": "none",
+                    "backgroundColor": "#FFE70C",
+                  },
+                  ":hover": Object {
+                    "backgroundPosition": "0 100%",
+                    "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                  },
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundImage": "linear-gradient(to bottom, rgba(255,255,255,0) 36%, #FFF17A, #FFF17A 50%, #FFF17A )",
+                  "backgroundPosition": "0 0",
+                  "backgroundSize": "100% 200%",
+                  "color": "#006B96",
+                  "fontWeight": "700",
+                  "marginBottom": "2rem",
+                  "position": "relative",
+                  "transitionDuration": "0.16666666666666666s",
+                  "transitionProperty": "background-position",
+                  "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                  "zIndex": "1",
+                },
+              },
+              "benderStyle": Object {
+                "image": Object {
+                  "aspect": "vertical",
+                  "quality": "auto",
+                  "width": "400",
+                },
+                "mainTitle": Object {
+                  "fontSize": Array [
+                    Object {
+                      "until": "m",
+                      "value": 1,
+                    },
+                    Object {
+                      "from": "m",
+                      "value": 2,
+                    },
+                  ],
+                  "text": "כתבות שאולי פספסתם",
+                },
+                "title": Object {
+                  "fontSize": Array [
+                    Object {
+                      "until": "m",
+                      "value": -2,
+                    },
+                    Object {
+                      "from": "m",
+                      "until": "l",
+                      "value": -1,
+                    },
+                    Object {
+                      "from": "l",
+                      "value": 0,
+                    },
+                  ],
+                },
+              },
+              "bps": Object {
+                "misc": Object {
+                  "hidpi": "(min-resolution: 1.5dppx)",
+                  "landscape": "(orientation: landscape)",
+                  "portrait": "(orientation: portrait)",
+                },
+                "widths": Object {
+                  "l": 1024,
+                  "m": 768,
+                  "s": 600,
+                  "xl": 1280,
+                },
+              },
+              "breadcrumbsI18n": Object {
+                "ariaLabel": "מיקומך באתר",
+              },
+              "btnStyle": Object {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderEndStyle": "solid",
+                "borderEndWidth": 1,
+                "borderStartStyle": "solid",
+                "borderStartWidth": 1,
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "boxModel": Object {
+                  "hp": 4,
+                  "vp": 1,
+                },
+                "fontWeight": "bold",
+                "radius": 0,
+              },
+              "captionStyles": Object {
+                "backgroundColor": Array [
+                  "neutral",
+                  "-10",
+                ],
+                "captionColor": Array [
+                  "neutral",
+                  "-2",
+                ],
+                "captionTypeSettings": -2,
+                "creditStyles": Object {
+                  "fontWeight": "300",
+                },
+                "fontFamily": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "fontWeight": "700",
+              },
+              "cardStyle": Object {
+                "cardBackgroundColor": "white",
+                "cardBoxShadow": undefined,
+                "cardContentPadding": 2,
+                "cardContentSeperatorColor": Array [
+                  "neutral",
+                  "-6",
+                ],
+                "cardContentSeperatorStyle": "solid",
+                "cardContentSeperatorWidth": 1,
+                "cardElevatedBoxShadow": "0px 1px 3px 0px rgba(0, 0, 0, 0.2),0px 1px 1px 0px rgba(0, 0, 0, 0.14),0px 2px 1px -1px rgba(0, 0, 0, 0.12)",
+              },
+              "clickTrackerI18n": Object {
+                "promotedContentLabel": "תוכן מקודם",
+              },
+              "color": [Function],
+              "commentFormI18n": Object {
+                "buttons": Object {
+                  "cancelBtnTxt": "בטלו",
+                  "sendBtnTxt": "שלחו",
+                  "toggleUserBtnText": [Function],
+                },
+                "errorNotes": Object {
+                  "commentErrorNoteTxt": "נא להזין את תוכן התגובה",
+                  "commentErrorTooLongNoteTxt": "אין להזין יותר מ-1,000 תווים בתוכן התגובה",
+                  "nameErrorNoteTxt": "חובה להזין שם",
+                },
+                "labels": Object {
+                  "commentLabelTxt": "תגובה",
+                  "nameLabelTxt": "שם",
+                },
+                "notes": Object {
+                  "commentNoteTxt": "בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ",
+                  "nameNoteTxt": "הזינו שם שיוצג כמחבר התגובה",
+                },
+              },
+              "commentI18n": Object {
+                "buttons": Object {
+                  "readMoreBtnTxt": "קראו עוד",
+                  "replyBtnTxt": "הגיבו",
+                  "reportAbuseBtnTxt": "דווחו כפוגעני",
+                },
+                "tags": Object {
+                  "editorsPick": "בחירת העורכים",
+                  "usersPick": "בחירת הגולשים",
+                },
+              },
+              "commentSentI18n": Object {
+                "buttons": Object {
+                  "closeBtnText": "סגור",
+                  "dontGetNotificationsBtnTxt": "לא תודה",
+                  "getNotificationsBtnTxt": "עדכנו אותי",
+                },
+                "errorNotes": Object {
+                  "emailErrorNoteTxt": "נא להזין כתובת דוא\\"ל תקינה",
+                },
+                "labels": Object {
+                  "emailLabelTxt": "דוא\\"ל",
+                },
+                "notes": Object {
+                  "emailNoteTxt": "הזינו כתובת דוא\\"ל לקבלת התראות",
+                },
+                "texts": Object {
+                  "commentRecievedBoldText": "תגובתך נקלטה בהצלחה, ",
+                  "commentRecievedBoldTextThankYouPage": "תודה!",
+                  "commentRecievedText": "ותפורסם על פי מדיניות המערכת.",
+                  "commentRecievedTextSecondRow": "באפשרותך לקבל התראה בדוא\\"ל כאשר תגובתך תאושר ותפורסם",
+                  "commentRecievedTextThankYouPage": "תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת",
+                },
+              },
+              "commentsSectionI18n": Object {
+                "buttons": Object {
+                  "loadMoreCommentsBtnText": "טענו עוד תגובות",
+                },
+                "likes": Object {
+                  "dislike": "לא אהבתי",
+                  "like": "אהבתי",
+                },
+                "selectItems": Object {
+                  "commentRatingItemTxt": "הצג לפי דירוג",
+                  "dateAscendingItemTxt": "מהראשונה לאחרונה",
+                  "dateDescendingItemTxt": "מהאחרונה לראשונה",
+                  "editorsPickItemTxt": "בחירת העורכים",
+                },
+                "texts": Object {
+                  "chooseSortMethodText": "סדרו את התגובות",
+                },
+              },
+              "commentsStyle": Object {
+                "textInputVariant": "primary",
+              },
+              "creditPrefixI18n": Object {
+                "imageCreditPrefix": "צילום",
+              },
+              "direction": "rtl",
+              "fontStacks": Object {
+                "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+              },
+              "footerBorderStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "footerMobileBorderStyle": Object {
+                  "borderStyle": "solid",
+                  "borderWidth": "1px",
+                  "lines": 2,
+                },
+                "lines": 2,
+              },
+              "footerDesktopI18n": Object {
+                "Copyright": Object {
+                  "firstRow": "חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל",
+                  "secondRow": "© כל הזכויות שמורות להוצאת עיתון הארץ בע\\"מ",
+                },
+                "ExpandedButton": Object {
+                  "close": "סגור",
+                  "showMore": "הצג עוד",
+                },
+              },
+              "footerMobileListsI18n": Object {
+                "ButtonName": Object {
+                  "text": "להורדת האפליקציה",
+                },
+                "Copyright": Object {
+                  "text": "© כל הזכויות שמורות",
+                },
+                "MobileList": Array [
+                  Object {
+                    "link": "https://www.haaretz.co.il/promotions-page",
+                    "text": "רכשו מנוי",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/blogs",
+                    "text": "בלוגים",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/misc/terms-of-use",
+                    "text": "תנאי שימוש",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/mobile/contact-us",
+                    "text": "צרו קשר",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html",
+                    "text": "פרסמו באתר",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/personal-area/my-account",
+                    "text": "שירות למנויים",
+                  },
+                ],
+              },
+              "fryListI18n": Object {
+                "title": "מרחבי הרשת",
+              },
+              "galleryI18n": Object {
+                "captionPrefix": [Function],
+              },
+              "getDelay": [Function],
+              "getDuration": [Function],
+              "getMqString": [Function],
+              "getTimingFunction": [Function],
+              "getTransition": [Function],
+              "getTransitionString": [Function],
+              "getZIndex": [Function],
+              "gridStyle": Object {
+                "gutterWidth": 4,
+                "ruleColor": Array [
+                  "neutral",
+                  "-5",
+                ],
+                "ruleWidth": 1,
+              },
+              "headerSearchI18n": Object {
+                "buttonText": "חיפוש",
+                "placeHolder": "הקלידו לחיפוש באתר",
+                "queryUrl": [Function],
+              },
+              "inputStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "fontWeightLabel": "bold",
+                "height": 6,
+                "lines": 1,
+                "radius": 0,
+                "typeScale": 0,
+              },
+              "layoutStyle": Object {
+                "contPaddingS": 3,
+                "startColumnPadding": 2,
+                "startColumnPaddingXL": 3,
+                "startColumnWidthL": 22,
+                "startColumnWidthXL": 30,
+              },
+              "liveBlogI18n": Object {
+                "firstToLastLabel": "מהראשון לאחרון",
+                "lastToFirstLabel": "מהאחרון לראשון",
+                "liveUpdate": "LIVE",
+                "updatesTitle": "עדכונים",
+              },
+              "mobileAdditionalShare": Object {
+                "text": "שיתוף",
+              },
+              "mobileNavigationMenuI18n": Object {
+                "buttonText": "ניווט",
+                "subClose": "סגור",
+                "subOpen": "עוד",
+              },
+              "mobileQuickRegistrationI18n": Object {
+                "signedUpText": "תודה שנרשמת",
+              },
+              "mobileReadingList": Object {
+                "buttonText": "רשימת הקריאה",
+                "url": "https://www.haaretz.co.il/reading-list",
+              },
+              "mobileSearchI18n": Object {
+                "buttonText": "חיפוש",
+                "placeHolder": "חיפוש",
+                "queryUrl": [Function],
+              },
+              "mobileUserMenuI18n": Object {
+                "noUserData": "כניסה",
+                "url": "https://www.haaretz.co.il/mobile/login",
+                "userLoggedIn": "יציאה",
+              },
+              "mq": [Function],
+              "navigationMenuI18n": Object {
+                "buttonText": "ניווט",
+              },
+              "newsletterI18n": Object {
+                "buttons": Object {
+                  "newsletterConfirmedButton": Object {
+                    "alreadyRegister": "להרשמה לדיוורים נוספים",
+                    "failed": "נסו שנית",
+                    "ok": "לרשימה המלאה",
+                  },
+                },
+                "texts": Object {
+                  "newsletterConfirmedText": Object {
+                    "alreadyRegister": "כתובת הדוא\\"ל שלך כבר רשומה לדיוור זה",
+                    "failed": "אנא נסו להרשם שוב במועד מאוחר יותר",
+                    "ok": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
+                  },
+                  "newsletterConfirmedTitleText": Object {
+                    "alreadyRegister": "אנחנו כבר מכירים",
+                    "failed": "קרתה תקלה ברישום",
+                    "ok": "תודה שנרשמת",
+                  },
+                },
+              },
+              "newsletterStyle": Object {
+                "highlight": Object {
+                  "buttonVariant": "neutral",
+                  "inputVariant": "primaryMediumInverse",
+                },
+                "primary": Object {
+                  "buttonVariant": "primary",
+                  "inputVariant": "primaryInverse",
+                },
+              },
+              "osakaI18n": Object {
+                "backToHome": "בחזרה לעמוד הבית",
+                "backToSection": "בחזרה למדור",
+                "nextArticle": "לכתבה הבאה במדור",
+                "promotedContent": "תוכן מקודם",
+              },
+              "pxToRem": [Function],
+              "readingListMenuI18n": Object {
+                "url": "https://www.haaretz.co.il/personal-area/my-account#readingList",
+              },
+              "recipeIngredientsI18n": Object {
+                "sectionTitle": "רכיבים",
+              },
+              "recipeInstructionsI18n": Object {
+                "sectionTitle": "הוראות הכנה",
+              },
+              "recipeRatingI18n": Object {
+                "highlightedText": Object {
+                  "level": "דרגת קושי",
+                  "portions": "מנות",
+                  "time": "זמן בישול",
+                },
+                "levelText": Object {
+                  "easy": "קל",
+                  "hard": "קשה",
+                  "medium": "בינוני",
+                },
+                "ratingTitle": "דירוג הגולשים",
+              },
+              "reviewRatingI18n": Object {
+                "ratingTitle": "דירוג",
+              },
+              "selectAriaLabel": Object {
+                "text": "פתח תפריט",
+              },
+              "selectStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "lines": 1e-18,
+              },
+              "seriesArticleI18n": Object {
+                "loadButton": Object {
+                  "ariaText": [Function],
+                  "close": "טען את כל הכתבות בסדרה",
+                  "open": "סגירת הרשימה",
+                },
+                "titlePrefix": "סדרת כתבות: ",
+              },
+              "serviceByMailI18n": Object {
+                "authorAlertServiceTitle": "שלחו לי התראה על כל כתבה חדשה של ",
+                "btnCancelText": "לא תודה",
+                "btnCloseText": "סגור",
+                "btnSubmitText": "שלחו",
+                "failureDefaultMessage": "ההרשמה נכשלה, אנא נסה שנית מאוחר יותר.",
+                "inpEmailErrorInvalid": "כתובת דואר אלקטרוני אינה תקינה",
+                "inpEmailErrorRequired": "יש להכניס כתובת דואר אלקטרוני",
+                "inpEmailLabelText": "דוא\\"ל",
+                "inpEmailNoteText": "אנא הזינו כתובת אימייל",
+                "successDefaultMessage": "נרשמתך בהצלחה!",
+              },
+              "specialPromotionStyle": Object {
+                "primary": Object {
+                  "button": "neutralOpaque",
+                  "icon": "quaternary",
+                },
+                "primaryInverse": Object {
+                  "button": "secondary",
+                  "icon": Array [
+                    "tertiary",
+                    "-4",
+                  ],
+                },
+              },
+              "tagsElementI18n": Object {
+                "prefix": "תגיות:",
+              },
+              "textInputI18n": Object {
+                "requiredLong": "שדה חובה",
+                "requiredShort": "*",
+              },
+              "type": [Function],
+              "typeConf": Object {
+                "default": Object {
+                  "base": 16,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 6,
+                  "steps": 5,
+                },
+                "xl": Object {
+                  "base": 18,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 7,
+                  "steps": 5,
+                },
+              },
+              "userMenuI18n": Object {
+                "buttonText": "שלום",
+                "loginUrl": "https://www.haaretz.co.il/misc/login-page",
+                "logout": "התנתקות",
+                "menuItems": Array [
+                  Object {
+                    "name": "הגדרות",
+                    "url": "https://www.haaretz.co.il/personal-area/my-account",
+                  },
+                  Object {
+                    "name": "שירות למנויים",
+                    "url": "https://www.haaretz.co.il/personal-area/my-account",
+                  },
+                  Object {
+                    "name": "ניוזלטרים",
+                    "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                  },
+                ],
+                "noUserData": "התחברות",
+              },
+              "welcomePageI18n": Object {
+                "buttonText": "לעמוד החדש",
+                "texts": Object {
+                  "bullets": Array [
+                    "מהיר יותר",
+                    "נוח לקריאה",
+                    "מותאם יותר למובייל",
+                    "פחות פרסומות",
+                    "ממשק תגובות משופר",
+                    "קל ומהיר יותר לשתף",
+                  ],
+                  "headerHighLighted": "ברוכים הבאים",
+                  "headerNormal": "לחוויה המשודרגת של הארץ",
+                },
+              },
+              "zenTextI18n": "קריאת זן",
+              "zoominText": "הגדל",
+              "zoomoutText": "הקטן",
+            }
+          }
+          typeConf={
+            Object {
+              "default": Object {
+                "base": 16,
+                "minPadding": 2,
+                "ratio": 2,
+                "rhythmUnit": 6,
+                "steps": 5,
+              },
+              "xl": Object {
+                "base": 18,
+                "minPadding": 2,
+                "ratio": 2,
+                "rhythmUnit": 7,
+                "steps": 5,
+              },
+            }
+          }
+        />
+        <LiveBlogItem
+          bps={
+            Object {
+              "misc": Object {
+                "hidpi": "(min-resolution: 1.5dppx)",
+                "landscape": "(orientation: landscape)",
+                "portrait": "(orientation: portrait)",
+              },
+              "widths": Object {
+                "l": 1024,
+                "m": 768,
+                "s": 600,
+                "xl": 1280,
+              },
+            }
+          }
+          canonicalUrl="https://www.haaretz.co.il/news/politics/LIVE-1.6293368"
+          item={
+            Object {
+              "body": Array [
+                Object {
+                  "__typename": "Image",
+                  "accessibility": "שיגור הרקטה מרצועת עזה, הערב",
+                  "aspects": Object {
+                    "full": Object {
+                      "height": 1468,
+                      "width": 2200,
+                    },
+                    "headline": Object {
+                      "height": 1278,
+                      "width": 2200,
+                      "x": 0,
+                      "y": 123,
+                    },
+                    "regular": Object {
+                      "height": 1468,
+                      "width": 1958,
+                      "x": 0,
+                      "y": 0,
+                    },
+                    "square": Object {
+                      "height": 1456,
+                      "width": 1457,
+                      "x": 0,
+                      "y": 0,
+                    },
+                  },
+                  "contentId": "1.6293400",
+                  "contentName": "שיגור הרקטה מרצועת עזה, הערב",
+                  "credit": null,
+                  "imageType": "image",
+                  "imgArray": Array [
+                    Object {
+                      "__typename": "Img",
+                      "aspects": Object {
+                        "full": Object {
+                          "height": 1468,
+                          "width": 2200,
+                        },
+                        "headline": Object {
+                          "height": 1278,
+                          "width": 2200,
+                          "x": 0,
+                          "y": 123,
+                        },
+                        "regular": Object {
+                          "height": 1468,
+                          "width": 1958,
+                          "x": 0,
+                          "y": 0,
+                        },
+                        "square": Object {
+                          "height": 1456,
+                          "width": 1457,
+                          "x": 0,
+                          "y": 0,
+                        },
+                      },
+                      "imgName": "image/94640035.jpg",
+                      "version": "1532108693",
+                    },
+                  ],
+                  "inputTemplate": "com.tm.Image",
+                  "isAnimated": null,
+                  "title": "שיגור הרקטה מרצועת עזה, הערב",
+                  "viewMode": "regularModeBigImage",
+                },
+                Object {
+                  "__typename": "Paragraph",
+                  "attributes": null,
+                  "content": Array [
+                    Object {
+                      "attributes": Array [
+                        Object {
+                          "key": "text",
+                          "value": "אזעקה הופעלה לפני זמן קצר במועצה האזורית שער הנגב בעקבות שיגור רקטה לשטח ישראל. הרקטה נפלה דרומית ליישוב נחל עוז. לא היו נפגעים או נזק.",
+                        },
+                      ],
+                      "tag": "#text",
+                    },
+                  ],
+                  "tag": "p",
+                },
+              ],
+              "cardId": "707652236",
+              "contentId": "7.7450136",
+              "contentName": "testing item 2",
+              "inputTemplate": "com.polobase.LiveBlogItem",
+              "keyEvent": null,
+              "pubDate": "2018-07-21T06:04:54.310Z",
+              "title": "אחרי הודעת חמאס הלילה על הפסקת אש, צה",
+              "titleMobile": "אחרי הודעת חמאס הלילה על הפסקת אש, צה",
+            }
+          }
+          theme={
+            Object {
+              "ModifiedDateText": undefined,
+              "a11yMenuI18n": Object {
+                "a11yToggle": [Function],
+                "menuItems": Array [
+                  Object {
+                    "name": "דווח על בעיית נגישות",
+                    "url": "mailto:accessibility@haaretz.co.il",
+                  },
+                ],
+              },
+              "alertsI18n": Object {
+                "desktopAlertsText": "התראות במייל",
+                "mobileAlertsText": "התראות",
+              },
+              "articleLayoutI18n": Object {
+                "commentSectionTitle": "תגובות",
+              },
+              "articleStyle": Object {
+                "article": Object {
+                  "marginEnd": Array [
+                    Object {
+                      "until": "l",
+                      "value": "0",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "57rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "51rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "l",
+                      "value": "0",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "27rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "30rem",
+                    },
+                  ],
+                },
+                "body": Object {
+                  "margin": Array [
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": "auto",
+                    },
+                  ],
+                  "marginBottom": Array [
+                    Object {
+                      "until": "xl",
+                      "value": "4rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "3rem",
+                    },
+                  ],
+                  "marginEnd": Array [
+                    Object {
+                      "until": "s",
+                      "value": "2rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "s",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "value": "4rem",
+                    },
+                  ],
+                  "maxWidth": "90rem",
+                  "width": Array [
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": "80rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "70.5rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "80rem",
+                    },
+                  ],
+                },
+                "currentArticleInSeries": Object {
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundColor": "#FFF17A",
+                  "fontWeight": "700",
+                },
+                "header": Object {
+                  "bylineFontSize": Array [
+                    Object {
+                      "until": "s",
+                      "value": -2,
+                    },
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": -1,
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": 0,
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": -1,
+                    },
+                  ],
+                  "marginEnd": Array [
+                    Object {
+                      "until": "m",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "m",
+                      "until": "l",
+                      "value": "2rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "l",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "value": "4rem",
+                    },
+                  ],
+                },
+                "linksBlockLink": Object {
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                  "borderBottomWidthActive": "2px",
+                  "fontWeight": "700",
+                },
+                "paragraphLink": Object {
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                  "borderBottomWidthActive": "2px",
+                },
+                "paragraphStyles": Object {},
+                "relatedArticlesLink": Object {
+                  ":focus": Object {
+                    "background": "none",
+                    "backgroundColor": "#FFE70C",
+                  },
+                  ":hover": Object {
+                    "backgroundPosition": "0 100%",
+                    "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                  },
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundImage": "linear-gradient(to bottom, rgba(255,255,255,0) 36%, #FFF17A, #FFF17A 50%, #FFF17A )",
+                  "backgroundPosition": "0 0",
+                  "backgroundSize": "100% 200%",
+                  "color": "#006B96",
+                  "fontWeight": "700",
+                  "marginBottom": "2rem",
+                  "position": "relative",
+                  "transitionDuration": "0.16666666666666666s",
+                  "transitionProperty": "background-position",
+                  "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                  "zIndex": "1",
+                },
+              },
+              "benderStyle": Object {
+                "image": Object {
+                  "aspect": "vertical",
+                  "quality": "auto",
+                  "width": "400",
+                },
+                "mainTitle": Object {
+                  "fontSize": Array [
+                    Object {
+                      "until": "m",
+                      "value": 1,
+                    },
+                    Object {
+                      "from": "m",
+                      "value": 2,
+                    },
+                  ],
+                  "text": "כתבות שאולי פספסתם",
+                },
+                "title": Object {
+                  "fontSize": Array [
+                    Object {
+                      "until": "m",
+                      "value": -2,
+                    },
+                    Object {
+                      "from": "m",
+                      "until": "l",
+                      "value": -1,
+                    },
+                    Object {
+                      "from": "l",
+                      "value": 0,
+                    },
+                  ],
+                },
+              },
+              "bps": Object {
+                "misc": Object {
+                  "hidpi": "(min-resolution: 1.5dppx)",
+                  "landscape": "(orientation: landscape)",
+                  "portrait": "(orientation: portrait)",
+                },
+                "widths": Object {
+                  "l": 1024,
+                  "m": 768,
+                  "s": 600,
+                  "xl": 1280,
+                },
+              },
+              "breadcrumbsI18n": Object {
+                "ariaLabel": "מיקומך באתר",
+              },
+              "btnStyle": Object {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderEndStyle": "solid",
+                "borderEndWidth": 1,
+                "borderStartStyle": "solid",
+                "borderStartWidth": 1,
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "boxModel": Object {
+                  "hp": 4,
+                  "vp": 1,
+                },
+                "fontWeight": "bold",
+                "radius": 0,
+              },
+              "captionStyles": Object {
+                "backgroundColor": Array [
+                  "neutral",
+                  "-10",
+                ],
+                "captionColor": Array [
+                  "neutral",
+                  "-2",
+                ],
+                "captionTypeSettings": -2,
+                "creditStyles": Object {
+                  "fontWeight": "300",
+                },
+                "fontFamily": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "fontWeight": "700",
+              },
+              "cardStyle": Object {
+                "cardBackgroundColor": "white",
+                "cardBoxShadow": undefined,
+                "cardContentPadding": 2,
+                "cardContentSeperatorColor": Array [
+                  "neutral",
+                  "-6",
+                ],
+                "cardContentSeperatorStyle": "solid",
+                "cardContentSeperatorWidth": 1,
+                "cardElevatedBoxShadow": "0px 1px 3px 0px rgba(0, 0, 0, 0.2),0px 1px 1px 0px rgba(0, 0, 0, 0.14),0px 2px 1px -1px rgba(0, 0, 0, 0.12)",
+              },
+              "clickTrackerI18n": Object {
+                "promotedContentLabel": "תוכן מקודם",
+              },
+              "color": [Function],
+              "commentFormI18n": Object {
+                "buttons": Object {
+                  "cancelBtnTxt": "בטלו",
+                  "sendBtnTxt": "שלחו",
+                  "toggleUserBtnText": [Function],
+                },
+                "errorNotes": Object {
+                  "commentErrorNoteTxt": "נא להזין את תוכן התגובה",
+                  "commentErrorTooLongNoteTxt": "אין להזין יותר מ-1,000 תווים בתוכן התגובה",
+                  "nameErrorNoteTxt": "חובה להזין שם",
+                },
+                "labels": Object {
+                  "commentLabelTxt": "תגובה",
+                  "nameLabelTxt": "שם",
+                },
+                "notes": Object {
+                  "commentNoteTxt": "בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ",
+                  "nameNoteTxt": "הזינו שם שיוצג כמחבר התגובה",
+                },
+              },
+              "commentI18n": Object {
+                "buttons": Object {
+                  "readMoreBtnTxt": "קראו עוד",
+                  "replyBtnTxt": "הגיבו",
+                  "reportAbuseBtnTxt": "דווחו כפוגעני",
+                },
+                "tags": Object {
+                  "editorsPick": "בחירת העורכים",
+                  "usersPick": "בחירת הגולשים",
+                },
+              },
+              "commentSentI18n": Object {
+                "buttons": Object {
+                  "closeBtnText": "סגור",
+                  "dontGetNotificationsBtnTxt": "לא תודה",
+                  "getNotificationsBtnTxt": "עדכנו אותי",
+                },
+                "errorNotes": Object {
+                  "emailErrorNoteTxt": "נא להזין כתובת דוא\\"ל תקינה",
+                },
+                "labels": Object {
+                  "emailLabelTxt": "דוא\\"ל",
+                },
+                "notes": Object {
+                  "emailNoteTxt": "הזינו כתובת דוא\\"ל לקבלת התראות",
+                },
+                "texts": Object {
+                  "commentRecievedBoldText": "תגובתך נקלטה בהצלחה, ",
+                  "commentRecievedBoldTextThankYouPage": "תודה!",
+                  "commentRecievedText": "ותפורסם על פי מדיניות המערכת.",
+                  "commentRecievedTextSecondRow": "באפשרותך לקבל התראה בדוא\\"ל כאשר תגובתך תאושר ותפורסם",
+                  "commentRecievedTextThankYouPage": "תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת",
+                },
+              },
+              "commentsSectionI18n": Object {
+                "buttons": Object {
+                  "loadMoreCommentsBtnText": "טענו עוד תגובות",
+                },
+                "likes": Object {
+                  "dislike": "לא אהבתי",
+                  "like": "אהבתי",
+                },
+                "selectItems": Object {
+                  "commentRatingItemTxt": "הצג לפי דירוג",
+                  "dateAscendingItemTxt": "מהראשונה לאחרונה",
+                  "dateDescendingItemTxt": "מהאחרונה לראשונה",
+                  "editorsPickItemTxt": "בחירת העורכים",
+                },
+                "texts": Object {
+                  "chooseSortMethodText": "סדרו את התגובות",
+                },
+              },
+              "commentsStyle": Object {
+                "textInputVariant": "primary",
+              },
+              "creditPrefixI18n": Object {
+                "imageCreditPrefix": "צילום",
+              },
+              "direction": "rtl",
+              "fontStacks": Object {
+                "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+              },
+              "footerBorderStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "footerMobileBorderStyle": Object {
+                  "borderStyle": "solid",
+                  "borderWidth": "1px",
+                  "lines": 2,
+                },
+                "lines": 2,
+              },
+              "footerDesktopI18n": Object {
+                "Copyright": Object {
+                  "firstRow": "חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל",
+                  "secondRow": "© כל הזכויות שמורות להוצאת עיתון הארץ בע\\"מ",
+                },
+                "ExpandedButton": Object {
+                  "close": "סגור",
+                  "showMore": "הצג עוד",
+                },
+              },
+              "footerMobileListsI18n": Object {
+                "ButtonName": Object {
+                  "text": "להורדת האפליקציה",
+                },
+                "Copyright": Object {
+                  "text": "© כל הזכויות שמורות",
+                },
+                "MobileList": Array [
+                  Object {
+                    "link": "https://www.haaretz.co.il/promotions-page",
+                    "text": "רכשו מנוי",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/blogs",
+                    "text": "בלוגים",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/misc/terms-of-use",
+                    "text": "תנאי שימוש",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/mobile/contact-us",
+                    "text": "צרו קשר",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html",
+                    "text": "פרסמו באתר",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/personal-area/my-account",
+                    "text": "שירות למנויים",
+                  },
+                ],
+              },
+              "fryListI18n": Object {
+                "title": "מרחבי הרשת",
+              },
+              "galleryI18n": Object {
+                "captionPrefix": [Function],
+              },
+              "getDelay": [Function],
+              "getDuration": [Function],
+              "getMqString": [Function],
+              "getTimingFunction": [Function],
+              "getTransition": [Function],
+              "getTransitionString": [Function],
+              "getZIndex": [Function],
+              "gridStyle": Object {
+                "gutterWidth": 4,
+                "ruleColor": Array [
+                  "neutral",
+                  "-5",
+                ],
+                "ruleWidth": 1,
+              },
+              "headerSearchI18n": Object {
+                "buttonText": "חיפוש",
+                "placeHolder": "הקלידו לחיפוש באתר",
+                "queryUrl": [Function],
+              },
+              "inputStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "fontWeightLabel": "bold",
+                "height": 6,
+                "lines": 1,
+                "radius": 0,
+                "typeScale": 0,
+              },
+              "layoutStyle": Object {
+                "contPaddingS": 3,
+                "startColumnPadding": 2,
+                "startColumnPaddingXL": 3,
+                "startColumnWidthL": 22,
+                "startColumnWidthXL": 30,
+              },
+              "liveBlogI18n": Object {
+                "firstToLastLabel": "מהראשון לאחרון",
+                "lastToFirstLabel": "מהאחרון לראשון",
+                "liveUpdate": "LIVE",
+                "updatesTitle": "עדכונים",
+              },
+              "mobileAdditionalShare": Object {
+                "text": "שיתוף",
+              },
+              "mobileNavigationMenuI18n": Object {
+                "buttonText": "ניווט",
+                "subClose": "סגור",
+                "subOpen": "עוד",
+              },
+              "mobileQuickRegistrationI18n": Object {
+                "signedUpText": "תודה שנרשמת",
+              },
+              "mobileReadingList": Object {
+                "buttonText": "רשימת הקריאה",
+                "url": "https://www.haaretz.co.il/reading-list",
+              },
+              "mobileSearchI18n": Object {
+                "buttonText": "חיפוש",
+                "placeHolder": "חיפוש",
+                "queryUrl": [Function],
+              },
+              "mobileUserMenuI18n": Object {
+                "noUserData": "כניסה",
+                "url": "https://www.haaretz.co.il/mobile/login",
+                "userLoggedIn": "יציאה",
+              },
+              "mq": [Function],
+              "navigationMenuI18n": Object {
+                "buttonText": "ניווט",
+              },
+              "newsletterI18n": Object {
+                "buttons": Object {
+                  "newsletterConfirmedButton": Object {
+                    "alreadyRegister": "להרשמה לדיוורים נוספים",
+                    "failed": "נסו שנית",
+                    "ok": "לרשימה המלאה",
+                  },
+                },
+                "texts": Object {
+                  "newsletterConfirmedText": Object {
+                    "alreadyRegister": "כתובת הדוא\\"ל שלך כבר רשומה לדיוור זה",
+                    "failed": "אנא נסו להרשם שוב במועד מאוחר יותר",
+                    "ok": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
+                  },
+                  "newsletterConfirmedTitleText": Object {
+                    "alreadyRegister": "אנחנו כבר מכירים",
+                    "failed": "קרתה תקלה ברישום",
+                    "ok": "תודה שנרשמת",
+                  },
+                },
+              },
+              "newsletterStyle": Object {
+                "highlight": Object {
+                  "buttonVariant": "neutral",
+                  "inputVariant": "primaryMediumInverse",
+                },
+                "primary": Object {
+                  "buttonVariant": "primary",
+                  "inputVariant": "primaryInverse",
+                },
+              },
+              "osakaI18n": Object {
+                "backToHome": "בחזרה לעמוד הבית",
+                "backToSection": "בחזרה למדור",
+                "nextArticle": "לכתבה הבאה במדור",
+                "promotedContent": "תוכן מקודם",
+              },
+              "pxToRem": [Function],
+              "readingListMenuI18n": Object {
+                "url": "https://www.haaretz.co.il/personal-area/my-account#readingList",
+              },
+              "recipeIngredientsI18n": Object {
+                "sectionTitle": "רכיבים",
+              },
+              "recipeInstructionsI18n": Object {
+                "sectionTitle": "הוראות הכנה",
+              },
+              "recipeRatingI18n": Object {
+                "highlightedText": Object {
+                  "level": "דרגת קושי",
+                  "portions": "מנות",
+                  "time": "זמן בישול",
+                },
+                "levelText": Object {
+                  "easy": "קל",
+                  "hard": "קשה",
+                  "medium": "בינוני",
+                },
+                "ratingTitle": "דירוג הגולשים",
+              },
+              "reviewRatingI18n": Object {
+                "ratingTitle": "דירוג",
+              },
+              "selectAriaLabel": Object {
+                "text": "פתח תפריט",
+              },
+              "selectStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "lines": 1e-18,
+              },
+              "seriesArticleI18n": Object {
+                "loadButton": Object {
+                  "ariaText": [Function],
+                  "close": "טען את כל הכתבות בסדרה",
+                  "open": "סגירת הרשימה",
+                },
+                "titlePrefix": "סדרת כתבות: ",
+              },
+              "serviceByMailI18n": Object {
+                "authorAlertServiceTitle": "שלחו לי התראה על כל כתבה חדשה של ",
+                "btnCancelText": "לא תודה",
+                "btnCloseText": "סגור",
+                "btnSubmitText": "שלחו",
+                "failureDefaultMessage": "ההרשמה נכשלה, אנא נסה שנית מאוחר יותר.",
+                "inpEmailErrorInvalid": "כתובת דואר אלקטרוני אינה תקינה",
+                "inpEmailErrorRequired": "יש להכניס כתובת דואר אלקטרוני",
+                "inpEmailLabelText": "דוא\\"ל",
+                "inpEmailNoteText": "אנא הזינו כתובת אימייל",
+                "successDefaultMessage": "נרשמתך בהצלחה!",
+              },
+              "specialPromotionStyle": Object {
+                "primary": Object {
+                  "button": "neutralOpaque",
+                  "icon": "quaternary",
+                },
+                "primaryInverse": Object {
+                  "button": "secondary",
+                  "icon": Array [
+                    "tertiary",
+                    "-4",
+                  ],
+                },
+              },
+              "tagsElementI18n": Object {
+                "prefix": "תגיות:",
+              },
+              "textInputI18n": Object {
+                "requiredLong": "שדה חובה",
+                "requiredShort": "*",
+              },
+              "type": [Function],
+              "typeConf": Object {
+                "default": Object {
+                  "base": 16,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 6,
+                  "steps": 5,
+                },
+                "xl": Object {
+                  "base": 18,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 7,
+                  "steps": 5,
+                },
+              },
+              "userMenuI18n": Object {
+                "buttonText": "שלום",
+                "loginUrl": "https://www.haaretz.co.il/misc/login-page",
+                "logout": "התנתקות",
+                "menuItems": Array [
+                  Object {
+                    "name": "הגדרות",
+                    "url": "https://www.haaretz.co.il/personal-area/my-account",
+                  },
+                  Object {
+                    "name": "שירות למנויים",
+                    "url": "https://www.haaretz.co.il/personal-area/my-account",
+                  },
+                  Object {
+                    "name": "ניוזלטרים",
+                    "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                  },
+                ],
+                "noUserData": "התחברות",
+              },
+              "welcomePageI18n": Object {
+                "buttonText": "לעמוד החדש",
+                "texts": Object {
+                  "bullets": Array [
+                    "מהיר יותר",
+                    "נוח לקריאה",
+                    "מותאם יותר למובייל",
+                    "פחות פרסומות",
+                    "ממשק תגובות משופר",
+                    "קל ומהיר יותר לשתף",
+                  ],
+                  "headerHighLighted": "ברוכים הבאים",
+                  "headerNormal": "לחוויה המשודרגת של הארץ",
+                },
+              },
+              "zenTextI18n": "קריאת זן",
+              "zoominText": "הגדל",
+              "zoomoutText": "הקטן",
+            }
+          }
+          typeConf={
+            Object {
+              "default": Object {
+                "base": 16,
+                "minPadding": 2,
+                "ratio": 2,
+                "rhythmUnit": 6,
+                "steps": 5,
+              },
+              "xl": Object {
+                "base": 18,
+                "minPadding": 2,
+                "ratio": 2,
+                "rhythmUnit": 7,
+                "steps": 5,
+              },
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>,
+  "styles": ".htz-a{display:block}.htz-b{width:100%}.htz-i{padding-block-end:5rem}.htz-j{padding-block-start:5rem}.htz-k{margin-top:2rem}.htz-l{padding-right:2rem}.htz-m{padding-left:2rem}.htz-p{padding-bottom:7rem}.htz-q{color:#006B96}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#ccc}.htz-u:before{background-color:#EBF2F5}.htz-v:before{height:0.5em}.htz-w:before{top:0}.htz-x:before{border-bottom:1px solid #ccc}.htz-y:before{position:absolute}.htz-z:before{content:\\"\\"}.htz-ab:before{width:1rem}.htz-ac:before{right:-0.6em}.htz-af:before{transform:translate(-50%,0)}.htz-ag{position:relative}.htz-ap:before{content:}.htz-aq:before{height:1rem}.htz-ar:before{border:1px solid #ccc}.htz-as:before{top:50%}.htz-at:before{right:-1.6em}.htz-au:before{border-radius:50%}.htz-av:before{transform:translate(-50%, -50%)}.htz-ba{padding-bottom:0}.htz-bb:before{height:calc(100% - 0.5em)}.htz-bc:before{top:0.5em}.htz-bd:before{border-top:1px solid #bbb}.htz-be{background-color:white}.htz-bf{padding-bottom:4rem}.htz-bg{padding-top:4rem}.htz-ca{color:#A8001C}.htz-cb{font-weight:bold}.htz-ch{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ci{paddin-top:1rem}.htz-cj{justify-content:center}.htz-ck{-webkit-box-pack:center}.htz-cl{align-items:baseline}.htz-cm{margin-left:5rem}.htz-cr{-webkit-box-align:baseline}.htz-cs{top:0.15em}.htz-ct{height:1em}.htz-cu{width:1em}.htz-cv{flex-shrink:0}.htz-cw{border-radius:50%}.htz-cx{align-items:center}.htz-cy{background-color:#FFF}.htz-cz{transition-property:all}.htz-da{border-width:1px}.htz-db{border-style:solid}.htz-dc{border-color:#0B7EB5}.htz-dd{-webkit-box-align:center}.htz-de{-webkit-transition-property:all}.htz-df{-moz-transition-property:all}.htz-dg{position:absolute}.htz-dh{height:8rem}.htz-di{width:8rem}.htz-dj{left:50%}.htz-dk{top:50%}.htz-dl{background-color:#0B7EB5}.htz-dm{opacity:0}.htz-dn{transform:translateY(-50%)}.htz-do{height:80%}.htz-dp{width:80%}.htz-dq{opacity:1}.htz-dr{border-color:white}.htz-ds{transition-duration:.3s}.htz-dt{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-du{margin-right:0.3em}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-c{padding-right:4rem}.htz-d{padding-left:4rem}.htz-e{padding-bottom:4rem}.htz-g{margin-right:6rem}.htz-h{padding-top:3rem}.htz-ah{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ai{align-items:baseline}.htz-aj{padding-bottom:3rem}.htz-ak{-webkit-box-align:baseline}.htz-ax{margin-left:2rem}.htz-bj{justify-content:space-between}.htz-bk{margin-right:4rem}.htz-bl{margin-left:4rem}.htz-bm{align-items:center}.htz-bn{-webkit-box-pack:justify}.htz-bo{-webkit-box-align:center}}@media (min-width: 64em){.htz-f{display:none}.htz-n{margin-top:15rem}.htz-o{padding:2rem}.htz-bp{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-bq{justify-content:space-between}.htz-br{padding-right:4rem}.htz-bs{padding-left:4rem}.htz-bt{align-items:center}.htz-bu{border-top-width:13px}.htz-bv{border-top-style:solid}.htz-bw{border-top-color:#EBF2F5}.htz-bx{padding-top:calc(6rem - 13px)}.htz-by{-webkit-box-pack:justify}.htz-bz{-webkit-box-align:center}}@media (max-width: 37.4375em){.htz-ae:before{right:-0.4em}.htz-aw:before{right:-1.2em}.htz-bh{padding-right:2rem}.htz-bi{padding-left:2rem}.htz-cc{margin-bottom:3rem}}@media (min-width: 48em) and (max-width: 79.9375em){.htz-al{font-size:2rem}.htz-am{line-height:1.5em}}@media (min-width: 48em) and (min-width: 80em){.htz-an{font-size:2rem}.htz-ao{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-ay{display:inline}.htz-az{margin-right:3rem}}@media (max-width: 79.9375em){.htz-cd{font-size:4rem}.htz-ce{line-height:1.25em}.htz-cn{font-size:2.3333333333333335rem}.htz-co{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cf{font-size:3.857142857142857rem}.htz-cg{line-height:1.2962962962962963em}.htz-cp{font-size:2.2857142857142856rem}.htz-cq{line-height:1.3125em}}",
+}
+`;
+
+exports[`LiveBLogContainer component renders liveBLogContainer correctly with Timeline Text 1`] = `
+Object {
+  "component": <div>
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e"
+    >
+      <div
+        className="htz-a htz-b htz-f htz-g htz-h"
+      >
+        <ul
+          className="htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
+        >
+          <li
+            className="htz-l htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+          >
+            <h2
+              className="htz-ag htz-y htz-ap htz-ab htz-aq htz-u htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+            >
+              <time
+                className={null}
+                dateTime="2018-07-21T10:18:00+03:00"
+              >
+                10:18
+              </time>
+            </h2>
+            <a
+              className="htz-ay htz-az"
+              href="#707650185"
+            >
+               תקף עמדת חמאס בצפון רצועת עזה
+            </a>
+          </li>
+          <li
+            className="htz-l htz-ba htz-q htz-r htz-s htz-t htz-u htz-bb htz-bc htz-bd htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao"
+          >
+            <h2
+              className="htz-ag htz-y htz-ap htz-ab htz-aq htz-u htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+            >
+              <time
+                className={null}
+                dateTime="2018-07-21T09:04:00+03:00"
+              >
+                09:04
+              </time>
+            </h2>
+            <a
+              className="htz-ay htz-az"
+              href="#707650136"
+            >
+              אחרי הודעת חמאס הלילה על הפסקת אש,  הודיע על חזרה לשגרה בעוטף עזה 
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="htz-be htz-a htz-bf htz-bg htz-bh htz-bi htz-ah htz-bj htz-bk htz-bl htz-c htz-d htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz"
+      >
+        <div
+          className="htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg"
+        >
+          עדכונים
+        </div>
+        <div
+          className="htz-ch htz-ci htz-cj htz-ck"
+        >
+          <label
+            className="htz-ch htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr"
+            htmlFor="0.123456789"
+          >
+            <input
+              checked={true}
+              id="0.123456789"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              type="radio"
+              value="descending"
+            />
+            <div
+              className="htz-ag htz-cs htz-ct htz-cu htz-cv htz-cw htz-ch htz-cj htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-ck htz-dd htz-de htz-df"
+            >
+              <div
+                className="htz-dg htz-dh htz-di htz-dj htz-dk htz-cw htz-dl htz-a htz-dm"
+              />
+              <div
+                className="htz-dg htz-dk htz-dn htz-do htz-dp htz-cw htz-dl htz-dq htz-cz htz-da htz-db htz-dr htz-ds htz-dt htz-de htz-df"
+              />
+            </div>
+            <div
+              className="htz-du"
+            >
+              מהאחרון לראשון
+            </div>
+          </label>
+          <label
+            className="htz-ch htz-cl htz-cn htz-co htz-cp htz-cq htz-cr"
+            htmlFor="0.123456789"
+          >
+            <input
+              checked={false}
+              id="0.123456789"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              type="radio"
+              value="ascending"
+            />
+            <div
+              className="htz-ag htz-cs htz-ct htz-cu htz-cv htz-cw htz-ch htz-cj htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-ck htz-dd htz-de htz-df"
+            >
+              <div
+                className="htz-dg htz-dh htz-di htz-dj htz-dk htz-cw htz-dl htz-a htz-dm"
+              />
+              <div
+                className="htz-dg htz-dk htz-dn htz-do htz-dp htz-cw htz-dl htz-dm htz-cz htz-da htz-db htz-dr htz-ds htz-dt htz-de htz-df"
+              />
+            </div>
+            <div
+              className="htz-du"
+            >
+              מהראשון לאחרון
+            </div>
+          </label>
+        </div>
+      </div>
+      <div
+        className="htz-a htz-b htz-c htz-d htz-e"
+      >
+        <LiveBlogItem
+          bps={
+            Object {
+              "misc": Object {
+                "hidpi": "(min-resolution: 1.5dppx)",
+                "landscape": "(orientation: landscape)",
+                "portrait": "(orientation: portrait)",
+              },
+              "widths": Object {
+                "l": 1024,
+                "m": 768,
+                "s": 600,
+                "xl": 1280,
+              },
+            }
+          }
+          canonicalUrl="https://www.haaretz.co.il/news/politics/LIVE-1.6293368"
+          item={
+            Object {
+              "body": Array [
+                Object {
+                  "__typename": "Paragraph",
+                  "attributes": null,
+                  "content": Array [
+                    Object {
+                      "attributes": Array [
+                        Object {
+                          "key": "text",
+                          "value": "אחרי הודעת חמאס הלילה על הפסקת אש ובתום הערכת מצב בפיקוד הדרום, בצה\\"ל הודיעו הבוקר (שבת) על חזרה לשגרה ביישובי עוטף עזה. ",
+                        },
+                      ],
+                      "tag": "#text",
+                    },
+                  ],
+                  "tag": "p",
+                },
+              ],
+              "cardId": "707650136",
+              "contentId": "7.7650136",
+              "contentName": "testing item 1",
+              "inputTemplate": "com.polobase.LiveBlogItem",
+              "keyEvent": null,
+              "pubDate": "2018-07-21T06:04:54.310Z",
+              "title": "אחרי הודעת חמאס הלילה על הפסקת אש, צה",
+              "titleMobile": "אחרי הודעת חמאס הלילה על הפסקת אש, צה",
+            }
+          }
+          theme={
+            Object {
+              "ModifiedDateText": undefined,
+              "a11yMenuI18n": Object {
+                "a11yToggle": [Function],
+                "menuItems": Array [
+                  Object {
+                    "name": "דווח על בעיית נגישות",
+                    "url": "mailto:accessibility@haaretz.co.il",
+                  },
+                ],
+              },
+              "alertsI18n": Object {
+                "desktopAlertsText": "התראות במייל",
+                "mobileAlertsText": "התראות",
+              },
+              "articleLayoutI18n": Object {
+                "commentSectionTitle": "תגובות",
+              },
+              "articleStyle": Object {
+                "article": Object {
+                  "marginEnd": Array [
+                    Object {
+                      "until": "l",
+                      "value": "0",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "57rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "51rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "l",
+                      "value": "0",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "27rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "30rem",
+                    },
+                  ],
+                },
+                "body": Object {
+                  "margin": Array [
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": "auto",
+                    },
+                  ],
+                  "marginBottom": Array [
+                    Object {
+                      "until": "xl",
+                      "value": "4rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "3rem",
+                    },
+                  ],
+                  "marginEnd": Array [
+                    Object {
+                      "until": "s",
+                      "value": "2rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "s",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "value": "4rem",
+                    },
+                  ],
+                  "maxWidth": "90rem",
+                  "width": Array [
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": "80rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "70.5rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "80rem",
+                    },
+                  ],
+                },
+                "currentArticleInSeries": Object {
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundColor": "#FFF17A",
+                  "fontWeight": "700",
+                },
+                "header": Object {
+                  "bylineFontSize": Array [
+                    Object {
+                      "until": "s",
+                      "value": -2,
+                    },
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": -1,
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": 0,
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": -1,
+                    },
+                  ],
+                  "marginEnd": Array [
+                    Object {
+                      "until": "m",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "m",
+                      "until": "l",
+                      "value": "2rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "l",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "value": "4rem",
+                    },
+                  ],
+                },
+                "linksBlockLink": Object {
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                  "borderBottomWidthActive": "2px",
+                  "fontWeight": "700",
+                },
+                "paragraphLink": Object {
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                  "borderBottomWidthActive": "2px",
+                },
+                "paragraphStyles": Object {},
+                "relatedArticlesLink": Object {
+                  ":focus": Object {
+                    "background": "none",
+                    "backgroundColor": "#FFE70C",
+                  },
+                  ":hover": Object {
+                    "backgroundPosition": "0 100%",
+                    "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                  },
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundImage": "linear-gradient(to bottom, rgba(255,255,255,0) 36%, #FFF17A, #FFF17A 50%, #FFF17A )",
+                  "backgroundPosition": "0 0",
+                  "backgroundSize": "100% 200%",
+                  "color": "#006B96",
+                  "fontWeight": "700",
+                  "marginBottom": "2rem",
+                  "position": "relative",
+                  "transitionDuration": "0.16666666666666666s",
+                  "transitionProperty": "background-position",
+                  "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                  "zIndex": "1",
+                },
+              },
+              "benderStyle": Object {
+                "image": Object {
+                  "aspect": "vertical",
+                  "quality": "auto",
+                  "width": "400",
+                },
+                "mainTitle": Object {
+                  "fontSize": Array [
+                    Object {
+                      "until": "m",
+                      "value": 1,
+                    },
+                    Object {
+                      "from": "m",
+                      "value": 2,
+                    },
+                  ],
+                  "text": "כתבות שאולי פספסתם",
+                },
+                "title": Object {
+                  "fontSize": Array [
+                    Object {
+                      "until": "m",
+                      "value": -2,
+                    },
+                    Object {
+                      "from": "m",
+                      "until": "l",
+                      "value": -1,
+                    },
+                    Object {
+                      "from": "l",
+                      "value": 0,
+                    },
+                  ],
+                },
+              },
+              "bps": Object {
+                "misc": Object {
+                  "hidpi": "(min-resolution: 1.5dppx)",
+                  "landscape": "(orientation: landscape)",
+                  "portrait": "(orientation: portrait)",
+                },
+                "widths": Object {
+                  "l": 1024,
+                  "m": 768,
+                  "s": 600,
+                  "xl": 1280,
+                },
+              },
+              "breadcrumbsI18n": Object {
+                "ariaLabel": "מיקומך באתר",
+              },
+              "btnStyle": Object {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderEndStyle": "solid",
+                "borderEndWidth": 1,
+                "borderStartStyle": "solid",
+                "borderStartWidth": 1,
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "boxModel": Object {
+                  "hp": 4,
+                  "vp": 1,
+                },
+                "fontWeight": "bold",
+                "radius": 0,
+              },
+              "captionStyles": Object {
+                "backgroundColor": Array [
+                  "neutral",
+                  "-10",
+                ],
+                "captionColor": Array [
+                  "neutral",
+                  "-2",
+                ],
+                "captionTypeSettings": -2,
+                "creditStyles": Object {
+                  "fontWeight": "300",
+                },
+                "fontFamily": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "fontWeight": "700",
+              },
+              "cardStyle": Object {
+                "cardBackgroundColor": "white",
+                "cardBoxShadow": undefined,
+                "cardContentPadding": 2,
+                "cardContentSeperatorColor": Array [
+                  "neutral",
+                  "-6",
+                ],
+                "cardContentSeperatorStyle": "solid",
+                "cardContentSeperatorWidth": 1,
+                "cardElevatedBoxShadow": "0px 1px 3px 0px rgba(0, 0, 0, 0.2),0px 1px 1px 0px rgba(0, 0, 0, 0.14),0px 2px 1px -1px rgba(0, 0, 0, 0.12)",
+              },
+              "clickTrackerI18n": Object {
+                "promotedContentLabel": "תוכן מקודם",
+              },
+              "color": [Function],
+              "commentFormI18n": Object {
+                "buttons": Object {
+                  "cancelBtnTxt": "בטלו",
+                  "sendBtnTxt": "שלחו",
+                  "toggleUserBtnText": [Function],
+                },
+                "errorNotes": Object {
+                  "commentErrorNoteTxt": "נא להזין את תוכן התגובה",
+                  "commentErrorTooLongNoteTxt": "אין להזין יותר מ-1,000 תווים בתוכן התגובה",
+                  "nameErrorNoteTxt": "חובה להזין שם",
+                },
+                "labels": Object {
+                  "commentLabelTxt": "תגובה",
+                  "nameLabelTxt": "שם",
+                },
+                "notes": Object {
+                  "commentNoteTxt": "בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ",
+                  "nameNoteTxt": "הזינו שם שיוצג כמחבר התגובה",
+                },
+              },
+              "commentI18n": Object {
+                "buttons": Object {
+                  "readMoreBtnTxt": "קראו עוד",
+                  "replyBtnTxt": "הגיבו",
+                  "reportAbuseBtnTxt": "דווחו כפוגעני",
+                },
+                "tags": Object {
+                  "editorsPick": "בחירת העורכים",
+                  "usersPick": "בחירת הגולשים",
+                },
+              },
+              "commentSentI18n": Object {
+                "buttons": Object {
+                  "closeBtnText": "סגור",
+                  "dontGetNotificationsBtnTxt": "לא תודה",
+                  "getNotificationsBtnTxt": "עדכנו אותי",
+                },
+                "errorNotes": Object {
+                  "emailErrorNoteTxt": "נא להזין כתובת דוא\\"ל תקינה",
+                },
+                "labels": Object {
+                  "emailLabelTxt": "דוא\\"ל",
+                },
+                "notes": Object {
+                  "emailNoteTxt": "הזינו כתובת דוא\\"ל לקבלת התראות",
+                },
+                "texts": Object {
+                  "commentRecievedBoldText": "תגובתך נקלטה בהצלחה, ",
+                  "commentRecievedBoldTextThankYouPage": "תודה!",
+                  "commentRecievedText": "ותפורסם על פי מדיניות המערכת.",
+                  "commentRecievedTextSecondRow": "באפשרותך לקבל התראה בדוא\\"ל כאשר תגובתך תאושר ותפורסם",
+                  "commentRecievedTextThankYouPage": "תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת",
+                },
+              },
+              "commentsSectionI18n": Object {
+                "buttons": Object {
+                  "loadMoreCommentsBtnText": "טענו עוד תגובות",
+                },
+                "likes": Object {
+                  "dislike": "לא אהבתי",
+                  "like": "אהבתי",
+                },
+                "selectItems": Object {
+                  "commentRatingItemTxt": "הצג לפי דירוג",
+                  "dateAscendingItemTxt": "מהראשונה לאחרונה",
+                  "dateDescendingItemTxt": "מהאחרונה לראשונה",
+                  "editorsPickItemTxt": "בחירת העורכים",
+                },
+                "texts": Object {
+                  "chooseSortMethodText": "סדרו את התגובות",
+                },
+              },
+              "commentsStyle": Object {
+                "textInputVariant": "primary",
+              },
+              "creditPrefixI18n": Object {
+                "imageCreditPrefix": "צילום",
+              },
+              "direction": "rtl",
+              "fontStacks": Object {
+                "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+              },
+              "footerBorderStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "footerMobileBorderStyle": Object {
+                  "borderStyle": "solid",
+                  "borderWidth": "1px",
+                  "lines": 2,
+                },
+                "lines": 2,
+              },
+              "footerDesktopI18n": Object {
+                "Copyright": Object {
+                  "firstRow": "חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל",
+                  "secondRow": "© כל הזכויות שמורות להוצאת עיתון הארץ בע\\"מ",
+                },
+                "ExpandedButton": Object {
+                  "close": "סגור",
+                  "showMore": "הצג עוד",
+                },
+              },
+              "footerMobileListsI18n": Object {
+                "ButtonName": Object {
+                  "text": "להורדת האפליקציה",
+                },
+                "Copyright": Object {
+                  "text": "© כל הזכויות שמורות",
+                },
+                "MobileList": Array [
+                  Object {
+                    "link": "https://www.haaretz.co.il/promotions-page",
+                    "text": "רכשו מנוי",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/blogs",
+                    "text": "בלוגים",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/misc/terms-of-use",
+                    "text": "תנאי שימוש",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/mobile/contact-us",
+                    "text": "צרו קשר",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html",
+                    "text": "פרסמו באתר",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/personal-area/my-account",
+                    "text": "שירות למנויים",
+                  },
+                ],
+              },
+              "fryListI18n": Object {
+                "title": "מרחבי הרשת",
+              },
+              "galleryI18n": Object {
+                "captionPrefix": [Function],
+              },
+              "getDelay": [Function],
+              "getDuration": [Function],
+              "getMqString": [Function],
+              "getTimingFunction": [Function],
+              "getTransition": [Function],
+              "getTransitionString": [Function],
+              "getZIndex": [Function],
+              "gridStyle": Object {
+                "gutterWidth": 4,
+                "ruleColor": Array [
+                  "neutral",
+                  "-5",
+                ],
+                "ruleWidth": 1,
+              },
+              "headerSearchI18n": Object {
+                "buttonText": "חיפוש",
+                "placeHolder": "הקלידו לחיפוש באתר",
+                "queryUrl": [Function],
+              },
+              "inputStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "fontWeightLabel": "bold",
+                "height": 6,
+                "lines": 1,
+                "radius": 0,
+                "typeScale": 0,
+              },
+              "layoutStyle": Object {
+                "contPaddingS": 3,
+                "startColumnPadding": 2,
+                "startColumnPaddingXL": 3,
+                "startColumnWidthL": 22,
+                "startColumnWidthXL": 30,
+              },
+              "liveBlogI18n": Object {
+                "firstToLastLabel": "מהראשון לאחרון",
+                "lastToFirstLabel": "מהאחרון לראשון",
+                "liveUpdate": "LIVE",
+                "updatesTitle": "עדכונים",
+              },
+              "mobileAdditionalShare": Object {
+                "text": "שיתוף",
+              },
+              "mobileNavigationMenuI18n": Object {
+                "buttonText": "ניווט",
+                "subClose": "סגור",
+                "subOpen": "עוד",
+              },
+              "mobileQuickRegistrationI18n": Object {
+                "signedUpText": "תודה שנרשמת",
+              },
+              "mobileReadingList": Object {
+                "buttonText": "רשימת הקריאה",
+                "url": "https://www.haaretz.co.il/reading-list",
+              },
+              "mobileSearchI18n": Object {
+                "buttonText": "חיפוש",
+                "placeHolder": "חיפוש",
+                "queryUrl": [Function],
+              },
+              "mobileUserMenuI18n": Object {
+                "noUserData": "כניסה",
+                "url": "https://www.haaretz.co.il/mobile/login",
+                "userLoggedIn": "יציאה",
+              },
+              "mq": [Function],
+              "navigationMenuI18n": Object {
+                "buttonText": "ניווט",
+              },
+              "newsletterI18n": Object {
+                "buttons": Object {
+                  "newsletterConfirmedButton": Object {
+                    "alreadyRegister": "להרשמה לדיוורים נוספים",
+                    "failed": "נסו שנית",
+                    "ok": "לרשימה המלאה",
+                  },
+                },
+                "texts": Object {
+                  "newsletterConfirmedText": Object {
+                    "alreadyRegister": "כתובת הדוא\\"ל שלך כבר רשומה לדיוור זה",
+                    "failed": "אנא נסו להרשם שוב במועד מאוחר יותר",
+                    "ok": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
+                  },
+                  "newsletterConfirmedTitleText": Object {
+                    "alreadyRegister": "אנחנו כבר מכירים",
+                    "failed": "קרתה תקלה ברישום",
+                    "ok": "תודה שנרשמת",
+                  },
+                },
+              },
+              "newsletterStyle": Object {
+                "highlight": Object {
+                  "buttonVariant": "neutral",
+                  "inputVariant": "primaryMediumInverse",
+                },
+                "primary": Object {
+                  "buttonVariant": "primary",
+                  "inputVariant": "primaryInverse",
+                },
+              },
+              "osakaI18n": Object {
+                "backToHome": "בחזרה לעמוד הבית",
+                "backToSection": "בחזרה למדור",
+                "nextArticle": "לכתבה הבאה במדור",
+                "promotedContent": "תוכן מקודם",
+              },
+              "pxToRem": [Function],
+              "readingListMenuI18n": Object {
+                "url": "https://www.haaretz.co.il/personal-area/my-account#readingList",
+              },
+              "recipeIngredientsI18n": Object {
+                "sectionTitle": "רכיבים",
+              },
+              "recipeInstructionsI18n": Object {
+                "sectionTitle": "הוראות הכנה",
+              },
+              "recipeRatingI18n": Object {
+                "highlightedText": Object {
+                  "level": "דרגת קושי",
+                  "portions": "מנות",
+                  "time": "זמן בישול",
+                },
+                "levelText": Object {
+                  "easy": "קל",
+                  "hard": "קשה",
+                  "medium": "בינוני",
+                },
+                "ratingTitle": "דירוג הגולשים",
+              },
+              "reviewRatingI18n": Object {
+                "ratingTitle": "דירוג",
+              },
+              "selectAriaLabel": Object {
+                "text": "פתח תפריט",
+              },
+              "selectStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "lines": 1e-18,
+              },
+              "seriesArticleI18n": Object {
+                "loadButton": Object {
+                  "ariaText": [Function],
+                  "close": "טען את כל הכתבות בסדרה",
+                  "open": "סגירת הרשימה",
+                },
+                "titlePrefix": "סדרת כתבות: ",
+              },
+              "serviceByMailI18n": Object {
+                "authorAlertServiceTitle": "שלחו לי התראה על כל כתבה חדשה של ",
+                "btnCancelText": "לא תודה",
+                "btnCloseText": "סגור",
+                "btnSubmitText": "שלחו",
+                "failureDefaultMessage": "ההרשמה נכשלה, אנא נסה שנית מאוחר יותר.",
+                "inpEmailErrorInvalid": "כתובת דואר אלקטרוני אינה תקינה",
+                "inpEmailErrorRequired": "יש להכניס כתובת דואר אלקטרוני",
+                "inpEmailLabelText": "דוא\\"ל",
+                "inpEmailNoteText": "אנא הזינו כתובת אימייל",
+                "successDefaultMessage": "נרשמתך בהצלחה!",
+              },
+              "specialPromotionStyle": Object {
+                "primary": Object {
+                  "button": "neutralOpaque",
+                  "icon": "quaternary",
+                },
+                "primaryInverse": Object {
+                  "button": "secondary",
+                  "icon": Array [
+                    "tertiary",
+                    "-4",
+                  ],
+                },
+              },
+              "tagsElementI18n": Object {
+                "prefix": "תגיות:",
+              },
+              "textInputI18n": Object {
+                "requiredLong": "שדה חובה",
+                "requiredShort": "*",
+              },
+              "type": [Function],
+              "typeConf": Object {
+                "default": Object {
+                  "base": 16,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 6,
+                  "steps": 5,
+                },
+                "xl": Object {
+                  "base": 18,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 7,
+                  "steps": 5,
+                },
+              },
+              "userMenuI18n": Object {
+                "buttonText": "שלום",
+                "loginUrl": "https://www.haaretz.co.il/misc/login-page",
+                "logout": "התנתקות",
+                "menuItems": Array [
+                  Object {
+                    "name": "הגדרות",
+                    "url": "https://www.haaretz.co.il/personal-area/my-account",
+                  },
+                  Object {
+                    "name": "שירות למנויים",
+                    "url": "https://www.haaretz.co.il/personal-area/my-account",
+                  },
+                  Object {
+                    "name": "ניוזלטרים",
+                    "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                  },
+                ],
+                "noUserData": "התחברות",
+              },
+              "welcomePageI18n": Object {
+                "buttonText": "לעמוד החדש",
+                "texts": Object {
+                  "bullets": Array [
+                    "מהיר יותר",
+                    "נוח לקריאה",
+                    "מותאם יותר למובייל",
+                    "פחות פרסומות",
+                    "ממשק תגובות משופר",
+                    "קל ומהיר יותר לשתף",
+                  ],
+                  "headerHighLighted": "ברוכים הבאים",
+                  "headerNormal": "לחוויה המשודרגת של הארץ",
+                },
+              },
+              "zenTextI18n": "קריאת זן",
+              "zoominText": "הגדל",
+              "zoomoutText": "הקטן",
+            }
+          }
+          typeConf={
+            Object {
+              "default": Object {
+                "base": 16,
+                "minPadding": 2,
+                "ratio": 2,
+                "rhythmUnit": 6,
+                "steps": 5,
+              },
+              "xl": Object {
+                "base": 18,
+                "minPadding": 2,
+                "ratio": 2,
+                "rhythmUnit": 7,
+                "steps": 5,
+              },
+            }
+          }
+        />
+        <LiveBlogItem
+          bps={
+            Object {
+              "misc": Object {
+                "hidpi": "(min-resolution: 1.5dppx)",
+                "landscape": "(orientation: landscape)",
+                "portrait": "(orientation: portrait)",
+              },
+              "widths": Object {
+                "l": 1024,
+                "m": 768,
+                "s": 600,
+                "xl": 1280,
+              },
+            }
+          }
+          canonicalUrl="https://www.haaretz.co.il/news/politics/LIVE-1.6293368"
+          item={
+            Object {
+              "body": Array [
+                Object {
+                  "__typename": "Image",
+                  "accessibility": "שיגור הרקטה מרצועת עזה, הערב",
+                  "aspects": Object {
+                    "full": Object {
+                      "height": 1468,
+                      "width": 2200,
+                    },
+                    "headline": Object {
+                      "height": 1278,
+                      "width": 2200,
+                      "x": 0,
+                      "y": 123,
+                    },
+                    "regular": Object {
+                      "height": 1468,
+                      "width": 1958,
+                      "x": 0,
+                      "y": 0,
+                    },
+                    "square": Object {
+                      "height": 1456,
+                      "width": 1457,
+                      "x": 0,
+                      "y": 0,
+                    },
+                  },
+                  "contentId": "1.6293400",
+                  "contentName": "שיגור הרקטה מרצועת עזה, הערב",
+                  "credit": null,
+                  "imageType": "image",
+                  "imgArray": Array [
+                    Object {
+                      "__typename": "Img",
+                      "aspects": Object {
+                        "full": Object {
+                          "height": 1468,
+                          "width": 2200,
+                        },
+                        "headline": Object {
+                          "height": 1278,
+                          "width": 2200,
+                          "x": 0,
+                          "y": 123,
+                        },
+                        "regular": Object {
+                          "height": 1468,
+                          "width": 1958,
+                          "x": 0,
+                          "y": 0,
+                        },
+                        "square": Object {
+                          "height": 1456,
+                          "width": 1457,
+                          "x": 0,
+                          "y": 0,
+                        },
+                      },
+                      "imgName": "image/94640035.jpg",
+                      "version": "1532108693",
+                    },
+                  ],
+                  "inputTemplate": "com.tm.Image",
+                  "isAnimated": null,
+                  "title": "שיגור הרקטה מרצועת עזה, הערב",
+                  "viewMode": "regularModeBigImage",
+                },
+                Object {
+                  "__typename": "Paragraph",
+                  "attributes": null,
+                  "content": Array [
+                    Object {
+                      "attributes": Array [
+                        Object {
+                          "key": "text",
+                          "value": "אזעקה הופעלה לפני זמן קצר במועצה האזורית שער הנגב בעקבות שיגור רקטה לשטח ישראל. הרקטה נפלה דרומית ליישוב נחל עוז. לא היו נפגעים או נזק.",
+                        },
+                      ],
+                      "tag": "#text",
+                    },
+                  ],
+                  "tag": "p",
+                },
+              ],
+              "cardId": "707652236",
+              "contentId": "7.7450136",
+              "contentName": "testing item 2",
+              "inputTemplate": "com.polobase.LiveBlogItem",
+              "keyEvent": null,
+              "pubDate": "2018-07-21T06:04:54.310Z",
+              "title": "אחרי הודעת חמאס הלילה על הפסקת אש, צה",
+              "titleMobile": "אחרי הודעת חמאס הלילה על הפסקת אש, צה",
+            }
+          }
+          theme={
+            Object {
+              "ModifiedDateText": undefined,
+              "a11yMenuI18n": Object {
+                "a11yToggle": [Function],
+                "menuItems": Array [
+                  Object {
+                    "name": "דווח על בעיית נגישות",
+                    "url": "mailto:accessibility@haaretz.co.il",
+                  },
+                ],
+              },
+              "alertsI18n": Object {
+                "desktopAlertsText": "התראות במייל",
+                "mobileAlertsText": "התראות",
+              },
+              "articleLayoutI18n": Object {
+                "commentSectionTitle": "תגובות",
+              },
+              "articleStyle": Object {
+                "article": Object {
+                  "marginEnd": Array [
+                    Object {
+                      "until": "l",
+                      "value": "0",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "57rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "51rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "l",
+                      "value": "0",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "27rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "30rem",
+                    },
+                  ],
+                },
+                "body": Object {
+                  "margin": Array [
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": "auto",
+                    },
+                  ],
+                  "marginBottom": Array [
+                    Object {
+                      "until": "xl",
+                      "value": "4rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "3rem",
+                    },
+                  ],
+                  "marginEnd": Array [
+                    Object {
+                      "until": "s",
+                      "value": "2rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "s",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "value": "4rem",
+                    },
+                  ],
+                  "maxWidth": "90rem",
+                  "width": Array [
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": "80rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": "70.5rem",
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": "80rem",
+                    },
+                  ],
+                },
+                "currentArticleInSeries": Object {
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundColor": "#FFF17A",
+                  "fontWeight": "700",
+                },
+                "header": Object {
+                  "bylineFontSize": Array [
+                    Object {
+                      "until": "s",
+                      "value": -2,
+                    },
+                    Object {
+                      "from": "s",
+                      "until": "l",
+                      "value": -1,
+                    },
+                    Object {
+                      "from": "l",
+                      "until": "xl",
+                      "value": 0,
+                    },
+                    Object {
+                      "from": "xl",
+                      "value": -1,
+                    },
+                  ],
+                  "marginEnd": Array [
+                    Object {
+                      "until": "m",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "m",
+                      "until": "l",
+                      "value": "2rem",
+                    },
+                  ],
+                  "marginStart": Array [
+                    Object {
+                      "until": "l",
+                      "value": "2rem",
+                    },
+                    Object {
+                      "from": "l",
+                      "value": "4rem",
+                    },
+                  ],
+                },
+                "linksBlockLink": Object {
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                  "borderBottomWidthActive": "2px",
+                  "fontWeight": "700",
+                },
+                "paragraphLink": Object {
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "1px",
+                  "borderBottomWidthActive": "2px",
+                },
+                "paragraphStyles": Object {},
+                "relatedArticlesLink": Object {
+                  ":focus": Object {
+                    "background": "none",
+                    "backgroundColor": "#FFE70C",
+                  },
+                  ":hover": Object {
+                    "backgroundPosition": "0 100%",
+                    "transitionTimingFunction": "cubic-bezier(.55, 0, .1, 1)",
+                  },
+                  "@media (max-width: 79.9375em)": Object {
+                    "fontSize": "2.3333333333333335rem",
+                    "lineHeight": "1.2857142857142858em",
+                  },
+                  "@media (min-width: 80em)": Object {
+                    "fontSize": "2.2857142857142856rem",
+                    "lineHeight": "1.3125em",
+                  },
+                  "backgroundImage": "linear-gradient(to bottom, rgba(255,255,255,0) 36%, #FFF17A, #FFF17A 50%, #FFF17A )",
+                  "backgroundPosition": "0 0",
+                  "backgroundSize": "100% 200%",
+                  "color": "#006B96",
+                  "fontWeight": "700",
+                  "marginBottom": "2rem",
+                  "position": "relative",
+                  "transitionDuration": "0.16666666666666666s",
+                  "transitionProperty": "background-position",
+                  "transitionTimingFunction": "cubic-bezier(0, 0, .2, 0)",
+                  "zIndex": "1",
+                },
+              },
+              "benderStyle": Object {
+                "image": Object {
+                  "aspect": "vertical",
+                  "quality": "auto",
+                  "width": "400",
+                },
+                "mainTitle": Object {
+                  "fontSize": Array [
+                    Object {
+                      "until": "m",
+                      "value": 1,
+                    },
+                    Object {
+                      "from": "m",
+                      "value": 2,
+                    },
+                  ],
+                  "text": "כתבות שאולי פספסתם",
+                },
+                "title": Object {
+                  "fontSize": Array [
+                    Object {
+                      "until": "m",
+                      "value": -2,
+                    },
+                    Object {
+                      "from": "m",
+                      "until": "l",
+                      "value": -1,
+                    },
+                    Object {
+                      "from": "l",
+                      "value": 0,
+                    },
+                  ],
+                },
+              },
+              "bps": Object {
+                "misc": Object {
+                  "hidpi": "(min-resolution: 1.5dppx)",
+                  "landscape": "(orientation: landscape)",
+                  "portrait": "(orientation: portrait)",
+                },
+                "widths": Object {
+                  "l": 1024,
+                  "m": 768,
+                  "s": 600,
+                  "xl": 1280,
+                },
+              },
+              "breadcrumbsI18n": Object {
+                "ariaLabel": "מיקומך באתר",
+              },
+              "btnStyle": Object {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderEndStyle": "solid",
+                "borderEndWidth": 1,
+                "borderStartStyle": "solid",
+                "borderStartWidth": 1,
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "boxModel": Object {
+                  "hp": 4,
+                  "vp": 1,
+                },
+                "fontWeight": "bold",
+                "radius": 0,
+              },
+              "captionStyles": Object {
+                "backgroundColor": Array [
+                  "neutral",
+                  "-10",
+                ],
+                "captionColor": Array [
+                  "neutral",
+                  "-2",
+                ],
+                "captionTypeSettings": -2,
+                "creditStyles": Object {
+                  "fontWeight": "300",
+                },
+                "fontFamily": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "fontWeight": "700",
+              },
+              "cardStyle": Object {
+                "cardBackgroundColor": "white",
+                "cardBoxShadow": undefined,
+                "cardContentPadding": 2,
+                "cardContentSeperatorColor": Array [
+                  "neutral",
+                  "-6",
+                ],
+                "cardContentSeperatorStyle": "solid",
+                "cardContentSeperatorWidth": 1,
+                "cardElevatedBoxShadow": "0px 1px 3px 0px rgba(0, 0, 0, 0.2),0px 1px 1px 0px rgba(0, 0, 0, 0.14),0px 2px 1px -1px rgba(0, 0, 0, 0.12)",
+              },
+              "clickTrackerI18n": Object {
+                "promotedContentLabel": "תוכן מקודם",
+              },
+              "color": [Function],
+              "commentFormI18n": Object {
+                "buttons": Object {
+                  "cancelBtnTxt": "בטלו",
+                  "sendBtnTxt": "שלחו",
+                  "toggleUserBtnText": [Function],
+                },
+                "errorNotes": Object {
+                  "commentErrorNoteTxt": "נא להזין את תוכן התגובה",
+                  "commentErrorTooLongNoteTxt": "אין להזין יותר מ-1,000 תווים בתוכן התגובה",
+                  "nameErrorNoteTxt": "חובה להזין שם",
+                },
+                "labels": Object {
+                  "commentLabelTxt": "תגובה",
+                  "nameLabelTxt": "שם",
+                },
+                "notes": Object {
+                  "commentNoteTxt": "בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ",
+                  "nameNoteTxt": "הזינו שם שיוצג כמחבר התגובה",
+                },
+              },
+              "commentI18n": Object {
+                "buttons": Object {
+                  "readMoreBtnTxt": "קראו עוד",
+                  "replyBtnTxt": "הגיבו",
+                  "reportAbuseBtnTxt": "דווחו כפוגעני",
+                },
+                "tags": Object {
+                  "editorsPick": "בחירת העורכים",
+                  "usersPick": "בחירת הגולשים",
+                },
+              },
+              "commentSentI18n": Object {
+                "buttons": Object {
+                  "closeBtnText": "סגור",
+                  "dontGetNotificationsBtnTxt": "לא תודה",
+                  "getNotificationsBtnTxt": "עדכנו אותי",
+                },
+                "errorNotes": Object {
+                  "emailErrorNoteTxt": "נא להזין כתובת דוא\\"ל תקינה",
+                },
+                "labels": Object {
+                  "emailLabelTxt": "דוא\\"ל",
+                },
+                "notes": Object {
+                  "emailNoteTxt": "הזינו כתובת דוא\\"ל לקבלת התראות",
+                },
+                "texts": Object {
+                  "commentRecievedBoldText": "תגובתך נקלטה בהצלחה, ",
+                  "commentRecievedBoldTextThankYouPage": "תודה!",
+                  "commentRecievedText": "ותפורסם על פי מדיניות המערכת.",
+                  "commentRecievedTextSecondRow": "באפשרותך לקבל התראה בדוא\\"ל כאשר תגובתך תאושר ותפורסם",
+                  "commentRecievedTextThankYouPage": "תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת",
+                },
+              },
+              "commentsSectionI18n": Object {
+                "buttons": Object {
+                  "loadMoreCommentsBtnText": "טענו עוד תגובות",
+                },
+                "likes": Object {
+                  "dislike": "לא אהבתי",
+                  "like": "אהבתי",
+                },
+                "selectItems": Object {
+                  "commentRatingItemTxt": "הצג לפי דירוג",
+                  "dateAscendingItemTxt": "מהראשונה לאחרונה",
+                  "dateDescendingItemTxt": "מהאחרונה לראשונה",
+                  "editorsPickItemTxt": "בחירת העורכים",
+                },
+                "texts": Object {
+                  "chooseSortMethodText": "סדרו את התגובות",
+                },
+              },
+              "commentsStyle": Object {
+                "textInputVariant": "primary",
+              },
+              "creditPrefixI18n": Object {
+                "imageCreditPrefix": "צילום",
+              },
+              "direction": "rtl",
+              "fontStacks": Object {
+                "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+              },
+              "footerBorderStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "footerMobileBorderStyle": Object {
+                  "borderStyle": "solid",
+                  "borderWidth": "1px",
+                  "lines": 2,
+                },
+                "lines": 2,
+              },
+              "footerDesktopI18n": Object {
+                "Copyright": Object {
+                  "firstRow": "חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל",
+                  "secondRow": "© כל הזכויות שמורות להוצאת עיתון הארץ בע\\"מ",
+                },
+                "ExpandedButton": Object {
+                  "close": "סגור",
+                  "showMore": "הצג עוד",
+                },
+              },
+              "footerMobileListsI18n": Object {
+                "ButtonName": Object {
+                  "text": "להורדת האפליקציה",
+                },
+                "Copyright": Object {
+                  "text": "© כל הזכויות שמורות",
+                },
+                "MobileList": Array [
+                  Object {
+                    "link": "https://www.haaretz.co.il/promotions-page",
+                    "text": "רכשו מנוי",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/blogs",
+                    "text": "בלוגים",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/misc/terms-of-use",
+                    "text": "תנאי שימוש",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/mobile/contact-us",
+                    "text": "צרו קשר",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html",
+                    "text": "פרסמו באתר",
+                  },
+                  Object {
+                    "link": "https://www.haaretz.co.il/personal-area/my-account",
+                    "text": "שירות למנויים",
+                  },
+                ],
+              },
+              "fryListI18n": Object {
+                "title": "מרחבי הרשת",
+              },
+              "galleryI18n": Object {
+                "captionPrefix": [Function],
+              },
+              "getDelay": [Function],
+              "getDuration": [Function],
+              "getMqString": [Function],
+              "getTimingFunction": [Function],
+              "getTransition": [Function],
+              "getTransitionString": [Function],
+              "getZIndex": [Function],
+              "gridStyle": Object {
+                "gutterWidth": 4,
+                "ruleColor": Array [
+                  "neutral",
+                  "-5",
+                ],
+                "ruleWidth": 1,
+              },
+              "headerSearchI18n": Object {
+                "buttonText": "חיפוש",
+                "placeHolder": "הקלידו לחיפוש באתר",
+                "queryUrl": [Function],
+              },
+              "inputStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "fontWeightLabel": "bold",
+                "height": 6,
+                "lines": 1,
+                "radius": 0,
+                "typeScale": 0,
+              },
+              "layoutStyle": Object {
+                "contPaddingS": 3,
+                "startColumnPadding": 2,
+                "startColumnPaddingXL": 3,
+                "startColumnWidthL": 22,
+                "startColumnWidthXL": 30,
+              },
+              "liveBlogI18n": Object {
+                "firstToLastLabel": "מהראשון לאחרון",
+                "lastToFirstLabel": "מהאחרון לראשון",
+                "liveUpdate": "LIVE",
+                "updatesTitle": "עדכונים",
+              },
+              "mobileAdditionalShare": Object {
+                "text": "שיתוף",
+              },
+              "mobileNavigationMenuI18n": Object {
+                "buttonText": "ניווט",
+                "subClose": "סגור",
+                "subOpen": "עוד",
+              },
+              "mobileQuickRegistrationI18n": Object {
+                "signedUpText": "תודה שנרשמת",
+              },
+              "mobileReadingList": Object {
+                "buttonText": "רשימת הקריאה",
+                "url": "https://www.haaretz.co.il/reading-list",
+              },
+              "mobileSearchI18n": Object {
+                "buttonText": "חיפוש",
+                "placeHolder": "חיפוש",
+                "queryUrl": [Function],
+              },
+              "mobileUserMenuI18n": Object {
+                "noUserData": "כניסה",
+                "url": "https://www.haaretz.co.il/mobile/login",
+                "userLoggedIn": "יציאה",
+              },
+              "mq": [Function],
+              "navigationMenuI18n": Object {
+                "buttonText": "ניווט",
+              },
+              "newsletterI18n": Object {
+                "buttons": Object {
+                  "newsletterConfirmedButton": Object {
+                    "alreadyRegister": "להרשמה לדיוורים נוספים",
+                    "failed": "נסו שנית",
+                    "ok": "לרשימה המלאה",
+                  },
+                },
+                "texts": Object {
+                  "newsletterConfirmedText": Object {
+                    "alreadyRegister": "כתובת הדוא\\"ל שלך כבר רשומה לדיוור זה",
+                    "failed": "אנא נסו להרשם שוב במועד מאוחר יותר",
+                    "ok": "יש לנו דיוורים נוספים שעשויים לעניין אותך",
+                  },
+                  "newsletterConfirmedTitleText": Object {
+                    "alreadyRegister": "אנחנו כבר מכירים",
+                    "failed": "קרתה תקלה ברישום",
+                    "ok": "תודה שנרשמת",
+                  },
+                },
+              },
+              "newsletterStyle": Object {
+                "highlight": Object {
+                  "buttonVariant": "neutral",
+                  "inputVariant": "primaryMediumInverse",
+                },
+                "primary": Object {
+                  "buttonVariant": "primary",
+                  "inputVariant": "primaryInverse",
+                },
+              },
+              "osakaI18n": Object {
+                "backToHome": "בחזרה לעמוד הבית",
+                "backToSection": "בחזרה למדור",
+                "nextArticle": "לכתבה הבאה במדור",
+                "promotedContent": "תוכן מקודם",
+              },
+              "pxToRem": [Function],
+              "readingListMenuI18n": Object {
+                "url": "https://www.haaretz.co.il/personal-area/my-account#readingList",
+              },
+              "recipeIngredientsI18n": Object {
+                "sectionTitle": "רכיבים",
+              },
+              "recipeInstructionsI18n": Object {
+                "sectionTitle": "הוראות הכנה",
+              },
+              "recipeRatingI18n": Object {
+                "highlightedText": Object {
+                  "level": "דרגת קושי",
+                  "portions": "מנות",
+                  "time": "זמן בישול",
+                },
+                "levelText": Object {
+                  "easy": "קל",
+                  "hard": "קשה",
+                  "medium": "בינוני",
+                },
+                "ratingTitle": "דירוג הגולשים",
+              },
+              "reviewRatingI18n": Object {
+                "ratingTitle": "דירוג",
+              },
+              "selectAriaLabel": Object {
+                "text": "פתח תפריט",
+              },
+              "selectStyle": Object {
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "lines": 1e-18,
+              },
+              "seriesArticleI18n": Object {
+                "loadButton": Object {
+                  "ariaText": [Function],
+                  "close": "טען את כל הכתבות בסדרה",
+                  "open": "סגירת הרשימה",
+                },
+                "titlePrefix": "סדרת כתבות: ",
+              },
+              "serviceByMailI18n": Object {
+                "authorAlertServiceTitle": "שלחו לי התראה על כל כתבה חדשה של ",
+                "btnCancelText": "לא תודה",
+                "btnCloseText": "סגור",
+                "btnSubmitText": "שלחו",
+                "failureDefaultMessage": "ההרשמה נכשלה, אנא נסה שנית מאוחר יותר.",
+                "inpEmailErrorInvalid": "כתובת דואר אלקטרוני אינה תקינה",
+                "inpEmailErrorRequired": "יש להכניס כתובת דואר אלקטרוני",
+                "inpEmailLabelText": "דוא\\"ל",
+                "inpEmailNoteText": "אנא הזינו כתובת אימייל",
+                "successDefaultMessage": "נרשמתך בהצלחה!",
+              },
+              "specialPromotionStyle": Object {
+                "primary": Object {
+                  "button": "neutralOpaque",
+                  "icon": "quaternary",
+                },
+                "primaryInverse": Object {
+                  "button": "secondary",
+                  "icon": Array [
+                    "tertiary",
+                    "-4",
+                  ],
+                },
+              },
+              "tagsElementI18n": Object {
+                "prefix": "תגיות:",
+              },
+              "textInputI18n": Object {
+                "requiredLong": "שדה חובה",
+                "requiredShort": "*",
+              },
+              "type": [Function],
+              "typeConf": Object {
+                "default": Object {
+                  "base": 16,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 6,
+                  "steps": 5,
+                },
+                "xl": Object {
+                  "base": 18,
+                  "minPadding": 2,
+                  "ratio": 2,
+                  "rhythmUnit": 7,
+                  "steps": 5,
+                },
+              },
+              "userMenuI18n": Object {
+                "buttonText": "שלום",
+                "loginUrl": "https://www.haaretz.co.il/misc/login-page",
+                "logout": "התנתקות",
+                "menuItems": Array [
+                  Object {
+                    "name": "הגדרות",
+                    "url": "https://www.haaretz.co.il/personal-area/my-account",
+                  },
+                  Object {
+                    "name": "שירות למנויים",
+                    "url": "https://www.haaretz.co.il/personal-area/my-account",
+                  },
+                  Object {
+                    "name": "ניוזלטרים",
+                    "url": "https://www.haaretz.co.il/personal-area/newsletter",
+                  },
+                ],
+                "noUserData": "התחברות",
+              },
+              "welcomePageI18n": Object {
+                "buttonText": "לעמוד החדש",
+                "texts": Object {
+                  "bullets": Array [
+                    "מהיר יותר",
+                    "נוח לקריאה",
+                    "מותאם יותר למובייל",
+                    "פחות פרסומות",
+                    "ממשק תגובות משופר",
+                    "קל ומהיר יותר לשתף",
+                  ],
+                  "headerHighLighted": "ברוכים הבאים",
+                  "headerNormal": "לחוויה המשודרגת של הארץ",
+                },
+              },
+              "zenTextI18n": "קריאת זן",
+              "zoominText": "הגדל",
+              "zoomoutText": "הקטן",
+            }
+          }
+          typeConf={
+            Object {
+              "default": Object {
+                "base": 16,
+                "minPadding": 2,
+                "ratio": 2,
+                "rhythmUnit": 6,
+                "steps": 5,
+              },
+              "xl": Object {
+                "base": 18,
+                "minPadding": 2,
+                "ratio": 2,
+                "rhythmUnit": 7,
+                "steps": 5,
+              },
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>,
+  "styles": ".htz-a{display:block}.htz-b{width:100%}.htz-i{padding-block-end:5rem}.htz-j{padding-block-start:5rem}.htz-k{margin-top:2rem}.htz-l{padding-right:2rem}.htz-m{padding-left:2rem}.htz-p{padding-bottom:7rem}.htz-q{color:#006B96}.htz-r{border-right-width:1px}.htz-s{border-right-style:solid}.htz-t{border-right-color:#ccc}.htz-u:before{background-color:#EBF2F5}.htz-v:before{height:0.5em}.htz-w:before{top:0}.htz-x:before{border-bottom:1px solid #ccc}.htz-y:before{position:absolute}.htz-z:before{content:\\"\\"}.htz-ab:before{width:1rem}.htz-ac:before{right:-0.6em}.htz-af:before{transform:translate(-50%,0)}.htz-ag{position:relative}.htz-ap:before{content:}.htz-aq:before{height:1rem}.htz-ar:before{border:1px solid #ccc}.htz-as:before{top:50%}.htz-at:before{right:-1.6em}.htz-au:before{border-radius:50%}.htz-av:before{transform:translate(-50%, -50%)}.htz-ba{padding-bottom:0}.htz-bb:before{height:calc(100% - 0.5em)}.htz-bc:before{top:0.5em}.htz-bd:before{border-top:1px solid #bbb}.htz-be{background-color:white}.htz-bf{padding-bottom:4rem}.htz-bg{padding-top:4rem}.htz-ca{color:#A8001C}.htz-cb{font-weight:bold}.htz-ch{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ci{paddin-top:1rem}.htz-cj{justify-content:center}.htz-ck{-webkit-box-pack:center}.htz-cl{align-items:baseline}.htz-cm{margin-left:5rem}.htz-cr{-webkit-box-align:baseline}.htz-cs{top:0.15em}.htz-ct{height:1em}.htz-cu{width:1em}.htz-cv{flex-shrink:0}.htz-cw{border-radius:50%}.htz-cx{align-items:center}.htz-cy{background-color:#FFF}.htz-cz{transition-property:all}.htz-da{border-width:1px}.htz-db{border-style:solid}.htz-dc{border-color:#0B7EB5}.htz-dd{-webkit-box-align:center}.htz-de{-webkit-transition-property:all}.htz-df{-moz-transition-property:all}.htz-dg{position:absolute}.htz-dh{height:8rem}.htz-di{width:8rem}.htz-dj{left:50%}.htz-dk{top:50%}.htz-dl{background-color:#0B7EB5}.htz-dm{opacity:0}.htz-dn{transform:translateY(-50%)}.htz-do{height:80%}.htz-dp{width:80%}.htz-dq{opacity:1}.htz-dr{border-color:white}.htz-ds{transition-duration:.3s}.htz-dt{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-du{margin-right:0.3em}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-c{padding-right:4rem}.htz-d{padding-left:4rem}.htz-e{padding-bottom:4rem}.htz-g{margin-right:6rem}.htz-h{padding-top:3rem}.htz-ah{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ai{align-items:baseline}.htz-aj{padding-bottom:3rem}.htz-ak{-webkit-box-align:baseline}.htz-ax{margin-left:2rem}.htz-bj{justify-content:space-between}.htz-bk{margin-right:4rem}.htz-bl{margin-left:4rem}.htz-bm{align-items:center}.htz-bn{-webkit-box-pack:justify}.htz-bo{-webkit-box-align:center}}@media (min-width: 64em){.htz-f{display:none}.htz-n{margin-top:15rem}.htz-o{padding:2rem}.htz-bp{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-bq{justify-content:space-between}.htz-br{padding-right:4rem}.htz-bs{padding-left:4rem}.htz-bt{align-items:center}.htz-bu{border-top-width:13px}.htz-bv{border-top-style:solid}.htz-bw{border-top-color:#EBF2F5}.htz-bx{padding-top:calc(6rem - 13px)}.htz-by{-webkit-box-pack:justify}.htz-bz{-webkit-box-align:center}}@media (max-width: 37.4375em){.htz-ae:before{right:-0.4em}.htz-aw:before{right:-1.2em}.htz-bh{padding-right:2rem}.htz-bi{padding-left:2rem}.htz-cc{margin-bottom:3rem}}@media (min-width: 48em) and (max-width: 79.9375em){.htz-al{font-size:2rem}.htz-am{line-height:1.5em}}@media (min-width: 48em) and (min-width: 80em){.htz-an{font-size:2rem}.htz-ao{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-ay{display:inline}.htz-az{margin-right:3rem}}@media (max-width: 79.9375em){.htz-cd{font-size:4rem}.htz-ce{line-height:1.25em}.htz-cn{font-size:2.3333333333333335rem}.htz-co{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cf{font-size:3.857142857142857rem}.htz-cg{line-height:1.2962962962962963em}.htz-cp{font-size:2.2857142857142856rem}.htz-cq{line-height:1.3125em}}",
+}
+`;

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimeLine component renders TimeLine correctly 1`] = `
+Object {
+  "component": <div>
+    <div
+      className="htz-a htz-b"
+    >
+      <ul
+        className="htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
+      >
+        <li
+          className="htz-f htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
+        >
+          <h2
+            className="htz-y htz-s htz-aj htz-u htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar"
+          >
+            <time
+              className={null}
+              dateTime="2018-07-21T10:18:00+03:00"
+            >
+              10:18
+            </time>
+          </h2>
+          <a
+            className="htz-as htz-at"
+            href="#707650185"
+          >
+             תקף עמדת חמאס בצפון רצועת עזה
+          </a>
+        </li>
+        <li
+          className="htz-f htz-au htz-k htz-l htz-m htz-n htz-o htz-av htz-aw htz-ax htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
+        >
+          <h2
+            className="htz-y htz-s htz-aj htz-u htz-ak htz-o htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar"
+          >
+            <time
+              className={null}
+              dateTime="2018-07-21T09:04:00+03:00"
+            >
+              09:04
+            </time>
+          </h2>
+          <a
+            className="htz-as htz-at"
+            href="#707650136"
+          >
+            אחרי הודעת חמאס הלילה על הפסקת אש,  הודיע על חזרה לשגרה בעוטף עזה 
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>,
+  "styles": ".htz-a{display:block}.htz-b{width:100%}.htz-c{padding-block-end:5rem}.htz-d{padding-block-start:5rem}.htz-e{margin-top:2rem}.htz-f{padding-right:2rem}.htz-g{padding-left:2rem}.htz-j{padding-bottom:7rem}.htz-k{color:#006B96}.htz-l{border-right-width:1px}.htz-m{border-right-style:solid}.htz-n{border-right-color:#ccc}.htz-o:before{background-color:#EBF2F5}.htz-p:before{height:0.5em}.htz-q:before{top:0}.htz-r:before{border-bottom:1px solid #ccc}.htz-s:before{position:absolute}.htz-t:before{content:\\"\\"}.htz-u:before{width:1rem}.htz-v:before{right:-0.6em}.htz-x:before{transform:translate(-50%,0)}.htz-y{position:relative}.htz-aj:before{content:}.htz-ak:before{height:1rem}.htz-al:before{border:1px solid #ccc}.htz-am:before{top:50%}.htz-an:before{right:-1.6em}.htz-ao:before{border-radius:50%}.htz-ap:before{transform:translate(-50%, -50%)}.htz-au{padding-bottom:0}.htz-av:before{height:calc(100% - 0.5em)}.htz-aw:before{top:0.5em}.htz-ax:before{border-top:1px solid #bbb}@media (min-width: 64em){.htz-h{margin-top:15rem}.htz-i{padding:2rem}}@media (max-width: 37.4375em){.htz-w:before{right:-0.4em}.htz-aq:before{right:-1.2em}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-z{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ab{align-items:baseline}.htz-ac{padding-bottom:3rem}.htz-ae{-webkit-box-align:baseline}.htz-ar{margin-left:2rem}}@media (min-width: 48em) and (max-width: 79.9375em){.htz-af{font-size:2rem}.htz-ag{line-height:1.5em}}@media (min-width: 48em) and (min-width: 80em){.htz-ah{font-size:2rem}.htz-ai{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-as{display:inline}.htz-at{margin-right:3rem}}",
+}
+`;
