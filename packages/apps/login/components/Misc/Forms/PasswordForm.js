@@ -41,12 +41,10 @@ const validatePasswordInput = ({ password, }) =>
       ? generatePasswordError('אנא הזינו סיסמה תקינה')
       : []); // email is valid
 
-const onSubmit = ({ login, host, }, showErrorHandler, hideErrorHandler, setPreloader) =>
+const onSubmit = ({ login, host, showError, hideError, setPreloader, }) =>
   ({ email, password, }) => {
-    console.log("////////////////////////////submit///////////////////////////////////////");
     setPreloader(true);
-    hideErrorHandler();
-    console.log("///////////////////////////submit b//////////////////////////////////////");
+    hideError();
     login(email, password)
       .then(
         () => {
@@ -54,7 +52,7 @@ const onSubmit = ({ login, host, }, showErrorHandler, hideErrorHandler, setPrelo
         },
         reason => {
           setPreloader(false);
-          showErrorHandler(reason.message);
+          showError(reason.message);
         }
       );
   };
@@ -87,6 +85,10 @@ class PasswordForm extends Component {
   /* :::::::::::::::::::::::::::::::::::: PROPS } :::::::::::::::::::::::::::::::::::: */
 
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
+  shouldComponentUpdate(nextProps, nextState){
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   showError = (errorMsg) => {
     this.setState({ showError: true, errorMessage: errorMsg, });
   }
@@ -130,6 +132,7 @@ class PasswordForm extends Component {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
     const { client, login, theme, showDialog, } = this.props;
     const host = getHost(client);
+    console.log("mounter...................******************/////////////////...............................");
 
     return (
       <FormWrapper>
@@ -137,7 +140,7 @@ class PasswordForm extends Component {
           clearFormAfterSubmit={false}
           initialValues={ {email: getEmail(client)} }
           validate={this.validateForm}
-          onSubmit={onSubmit({ login, host, }, this.showError, this.hideError, this.setPreloader )}
+          onSubmit={onSubmit({ login, host, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, })}
           render={({ getInputProps, handleSubmit, clearForm, }) => (
             <Fragment>
               <div>
