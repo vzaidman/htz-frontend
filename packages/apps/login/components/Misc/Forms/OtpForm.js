@@ -155,6 +155,7 @@ class OtpForm extends Component {
                   </ErrorBox>
                   
                   <ItemCenterer>
+                    <Preloader isLoading={this.state.isLoading} />
                     <Button onClick={handleSubmit}>התחברות</Button>
                   </ItemCenterer>
                 </Fragment>

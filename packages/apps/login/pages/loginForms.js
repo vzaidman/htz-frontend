@@ -306,14 +306,14 @@ class LoginForms extends Component {
                                           </div>
                                         </TermsWrapper>
 
-                                        {/*<ErrorBox className={this.state.showError ? "" : "hidden"}>
+                                        <ErrorBox className={this.state.showError ? "" : "hidden"}>
                                           <span>
                                             {this.state.errorMessage}
                                           </span>
-                                        </ErrorBox>*/}
+                                        </ErrorBox>
 
                                         <ItemCenterer>
-                                          {/*<Preloader isLoading={this.state.isLoading} />*/}
+                                          <Preloader isLoading={this.state.isLoading} />
                                           <Button onClick={handleSubmit}>התחברות</Button>
                                         </ItemCenterer>
                                       </Fragment>
