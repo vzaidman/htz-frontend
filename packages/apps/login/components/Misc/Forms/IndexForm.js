@@ -73,6 +73,13 @@ const hasValidatedPhone = (dataSaved) => {
         && dataSaved.userData.phoneNum;
 }
 
+const hasValidatedEmail = (dataSaved) => {
+  return dataSaved
+        && dataSaved.userData
+        && dataSaved.userData.userStatus
+        && dataSaved.userData.userStatus.isEmailValidated;
+}
+
 const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showError, setPreloader, autoRoute, confirmation, }) =>
   generateOtp(client)({ typeId: phoneNum, })
     .then(data => {
@@ -129,7 +136,7 @@ const handleResponseFromGraphql =
       });
     }
     else {
-      if(!dataSaved.userData.userStatus.isEmailValidated) {
+      if(!hasValidatedEmail(dataSaved)) {
         sendMailValidation({ email, }).then(
           () => {
             Router.push(route);
