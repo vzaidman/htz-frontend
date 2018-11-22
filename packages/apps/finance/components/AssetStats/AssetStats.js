@@ -57,8 +57,8 @@ export const Stat: StatelessFunctionalComponent<any> = ({ children, title, miscS
 );
 
 type Props = {
-  graphType: 'line' | 'scatter',
-  period: 'daily' | 'weekly' | 'monthly' | 'yearly' | 'tripleYear' | 'max',
+  graphType: 'line' | 'scatter' | 'hotMoney',
+  period: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'yearly' | 'tripleYear' | 'max',
   render: ({changeStats: (stock: LineAsset | ScatterAsset) => void}) => Node,
   miscStyles: ?Object,
 }
@@ -67,6 +67,10 @@ type State = {
 }
 
 class AssetStats extends React.Component<Props, State> {
+  static defaultProps = {
+    miscStyles: null,
+  };
+
   state = {
     stats: [],
   };
@@ -98,12 +102,19 @@ class AssetStats extends React.Component<Props, State> {
         { title: '% שינוי', value: change || '', },
       ];
     }
-    else {
+    else if (graphType === 'scatter') {
       const { x, y, name, }: ScatterAsset = stock || {};
       stats = [
         { title: 'מניה', value: name || '', },
         { title: 'מחזור', value: x || '', },
         { title: '% תשואה', value: y || '', },
+      ];
+    }
+    else if (graphType === 'hotMoney') {
+      const { time, value, }: LineAsset = stock || {};
+      stats = [
+        { ...this.getDateStat(time, period), },
+        { title: 'שער', value: value || '', },
       ];
     }
     this.setState({ stats, });
@@ -136,37 +147,37 @@ class AssetStats extends React.Component<Props, State> {
               {
                 stats && stats.length > 0 ? (
                   <Fragment>
-                    <Stat title={stats[0].title}>
-                      {className =>
-                        <span className={className}>{numToString(stats[0].value)}</span>
-                      }
-                    </Stat>
-                    <Stat title={stats[1].title}>
-                      {className =>
-                        <span className={className}>{numToString(stats[1].value)}</span>
-                      }
-                    </Stat>
-                    <Stat
-                      title={stats[2].title}
-                      miscStyles={{
-                        color: Number(stats[2].value) < 0
-                          ? theme.color('negative', '-2')
-                          : theme.color('positive', '-2'),
-                        direction: 'ltr',
-                        ':before': {
-                          content: Number(stats[2].value) > 0 ? '"+"' : Number(stats[2].value) < 0 ? '"-"' : '""',
-                        },
-                        ':after': {
-                          content: '"%"',
-                        },
-                      }}
-                    >
-                      {className => (
-                        <span className={className}>
-                          {numToString(Math.abs(Number(stats[2].value)))}
-                        </span>
-                      )}
-                    </Stat>
+                    {
+                      stats.map((stat, index) => (
+                        <Stat
+                          title={stat.title}
+                          miscStyles={index === (stats.length - 1)
+                            ? {
+                              color: Number(stat.value) < 0
+                                ? theme.color('negative', '-2')
+                                : theme.color('positive', '-2'),
+                              direction: 'ltr',
+                              ':before': {
+                                content: Number(stat.value) > 0 ? '"+"' : Number(stat.value) < 0 ? '"-"' : '""',
+                              },
+                              ':after': {
+                                content: '"%"',
+                              },
+                            }
+                            : {}
+                          }
+                        >
+                          {className => (
+                            <span className={className}>
+                              {index === (stats.length - 1)
+                                ? numToString(Math.abs(Number(stat.value)))
+                                : stat.value
+                              }
+                            </span>
+                          )}
+                        </Stat>
+                      ))
+                    }
                   </Fragment>
                 ) : null
               }

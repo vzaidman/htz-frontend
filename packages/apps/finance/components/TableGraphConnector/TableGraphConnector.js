@@ -76,6 +76,43 @@ class TableGraphConnector extends React.Component<Props, State> {
                 assetId={assetId}
                 assetsId={assetsId}
                 isExchange={isExchange}
+                headers={[
+                  {
+                    display: 'שם אפיק',
+                    value: 'name',
+                    style: {
+                      paddingStart: '1rem',
+                      paddingTop: '0.75rem',
+                      paddingBottom: '0.75rem',
+                      paddingEnd: '2rem',
+                      marginBottom: '1rem',
+                      backgroundColor: theme.color('neutral', '-6'),
+                    },
+                  },
+                  {
+                    display: 'שער אחרון',
+                    value: 'value',
+                    style: {
+                      paddingEnd: '5rem',
+                      paddingTop: '0.75rem',
+                      paddingBottom: '0.75rem',
+                      marginBottom: '1rem',
+                      backgroundColor: theme.color('neutral', '-6'),
+                    },
+                  },
+                  {
+                    display: '% שינוי',
+                    percentage: true,
+                    value: 'changePercentage',
+                    style: {
+                      paddingEnd: '5rem',
+                      paddingTop: '0.75rem',
+                      paddingBottom: '0.75rem',
+                      marginBottom: '1rem',
+                      backgroundColor: theme.color('neutral', '-6'),
+                    },
+                  },
+                ]}
                 miscStyles={{
                   direction: 'rtl',
                   position: 'absolute',

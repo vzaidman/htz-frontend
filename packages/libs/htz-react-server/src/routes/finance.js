@@ -123,6 +123,14 @@ export default function finance(app, server) {
     return app.render(req, res, '/section/exchange', query);
   });
 
+  /* HotMoney Page */
+  server.get('/hotMoney', (req, res) => {
+    const query = {
+      section: 'hotMoney',
+    };
+    return app.render(req, res, '/section/money', query);
+  });
+
   /* Indices Page */
   server.get('/indices', (req, res) => {
     const query = {

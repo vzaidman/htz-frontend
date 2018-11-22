@@ -22,6 +22,7 @@ type Props = {
   data: Array<Asset>,
   duration: number,
   theme: Object,
+  time: string,
   changeStats: (asset: Asset) => void,
   width: number,
   height: number,
@@ -35,6 +36,16 @@ type State= {
   yScale: number => number,
   xScale: number => number,
 };
+
+const xAxisTickFormats: Object = new Map([
+  [ 'daily', [ '%H:%M', d3.timeHour.every, 1, ], ],
+  [ 'weekly', [ '%A', d3.timeDay.every, 1, ], ],
+  [ 'monthly', [ '%d/%m', d3.timeDay.every, 2, ], ],
+  [ 'quarterly', [ '%B', d3.timeMonth.every, 1, ], ],
+  [ 'yearly', [ '%B', d3.timeMonth.every, 2, ], ],
+  [ 'tripleYear', [ '%b %y', d3.timeMonth.every, 3, ], ],
+  [ 'max', [ '%Y', d3.timeYear.every, 1, ], ],
+]);
 
 class Line extends React.Component<Props, State> {
   static defaultProps = {
@@ -133,8 +144,8 @@ class Line extends React.Component<Props, State> {
   overlayRef: ElementRef<'rect'> | null;
 
   /* Create graph's axis */
-  xAxis = d3.axisTop().scale(this.state.xScale).tickFormat(d3.timeFormat('%H:%M'));
-  yAxis = d3.axisLeft().scale(this.state.yScale);
+  xAxis = d3.axisTop(this.state.xScale);
+  yAxis = d3.axisLeft(this.state.yScale);
 
   /**
    * This function is in charge of giving the indication line a new X position.
@@ -200,7 +211,7 @@ class Line extends React.Component<Props, State> {
    */
   renderGraph: Array<Asset> => void = data => {
     const { yScale, xScale, duration, theme, } = this.state;
-    const { width, margin, } = this.props;
+    const { width, margin, time, } = this.props;
 
     /* Set transition. */
     const transition = d3.transition().duration(duration);
@@ -249,8 +260,14 @@ class Line extends React.Component<Props, State> {
     const xAxisRef = d3.select(this.xAxisRef);
     const yAxisRef = d3.select(this.yAxisRef);
 
+    const [ timeFormat, timeFunction, every, ] = xAxisTickFormats.get(time);
+
     /* Remove the default horizontal axis and its ticks. */
-    xAxisRef.call(this.xAxis)
+    xAxisRef.call(
+      this.xAxis
+        .tickFormat(d3.timeFormat(timeFormat))
+        .ticks(timeFunction(every))
+    )
       .selectAll('.tick line, .domain').remove();
 
     /* Remove the default vertical axis. */
