@@ -5,7 +5,10 @@ import { FelaTheme, } from 'react-fela';
 import Button from '../Button/Button';
 import FlippingArrow from '../Animations/FlippingArrow';
 import DropdownList from './DropdownList';
-import { dropdownItemStyle, dropdownListStyle, } from '../Masthead/mastheadDropdownListStyle';
+import {
+  dropdownItemStyle,
+  dropdownListStyle,
+} from '../Masthead/mastheadDropdownListStyle';
 
 Item.propTypes = {
   /**
@@ -53,13 +56,14 @@ Item.defaultProps = {
   miscStyles: {},
 };
 
-export default function Item({ name, url, pages, variant, miscStyles, onClick, }) {
-  const isArialItem = name =>
-    name &&
-    [
-      'תרבות יהודית-ישראלית מקורית, בחסות בית אבי חי',
-      'מסע מסביב לגלובוס: זירת הטיולים של פגסוס',
-    ].includes(name.trim());
+export default function Item({
+  name,
+  url,
+  pages,
+  variant,
+  miscStyles,
+  onClick,
+}) {
   return (
     <FelaTheme
       render={theme => (
@@ -80,12 +84,6 @@ export default function Item({ name, url, pages, variant, miscStyles, onClick, }
                       ':focus': {
                         backgroundColor: theme.color('secondary', '+2'),
                       },
-                      ...(isArialItem(item.name)
-                        ? {
-                            fontFamily: 'arial',
-                            fontSize: '2.2rem !important',
-                          }
-                        : {}),
                     }}
                     {...item}
                   />
@@ -138,7 +136,10 @@ export default function Item({ name, url, pages, variant, miscStyles, onClick, }
                             position: 'static',
                             ...(isOpen
                               ? {
-                                  backgroundColor: theme.color('secondary', '+1'),
+                                  backgroundColor: theme.color(
+                                    'secondary',
+                                    '+1'
+                                  ),
                                 }
                               : {}),
                           }}
