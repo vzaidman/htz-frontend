@@ -113,10 +113,7 @@ class StageThankYou extends React.Component {
                                 <FelaComponent style={{ display: 'block', }} render="span">
                                   {backToArticle}
                                 </FelaComponent>
-                                <TextLink
-                                  href={data.articleLinkData.url}
-                                  tagName="a"
-                                >
+                                <TextLink href={data.articleLinkData.url} tagName="a">
                                   {data.articleLinkData.title}
                                 </TextLink>
                               </Fragment>
@@ -202,19 +199,19 @@ class StageThankYou extends React.Component {
                                       {
                                         imgName: siteImg.imgName,
                                         version: siteImg.version,
+                                        aspects: {
+                                          full: {
+                                            width: '220',
+                                            height: '300',
+                                            x: '0',
+                                            y: '0',
+                                          },
+                                        },
                                       },
                                     ],
                                     credit: siteImg.credit,
                                     alt: siteImg.alt,
                                     contentId: siteImg.contentId,
-                                    aspects: {
-                                      full: {
-                                        width: '220',
-                                        height: '300',
-                                        x: '0',
-                                        y: '0',
-                                      },
-                                    },
                                   }}
                                   imgOptions={{
                                     transforms: {

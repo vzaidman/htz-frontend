@@ -1,3 +1,4 @@
+/* global sessionStorage */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
@@ -95,6 +96,7 @@ function CreditCardIframeStage({
                         'thankYou',
                         Router,
                         `msg=thank_user&product=${msgData.data.pid}`,
+                        false,
                         { msg: 'thank_user', product: msgData.data.pid, }
                       );
 
