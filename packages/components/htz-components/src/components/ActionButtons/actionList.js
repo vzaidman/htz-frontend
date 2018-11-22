@@ -132,10 +132,10 @@ const nonMobileStyles = theme => ({
     backgroundColor: theme.color('button', 'primaryHoverBg'),
     color: theme.color('button', 'primaryHoverText'),
   },
-  ':active': {
-    backgroundColor: theme.color('button', 'primaryActiveBg'),
-    color: theme.color('button', 'primaryActiveText'),
-  },
+  // ':active': {
+  //   backgroundColor: theme.color('button', 'primaryActiveBg'),
+  //   color: theme.color('button', 'primaryActiveText'),
+  // },
   ':focus': {
     backgroundColor: theme.color('button', 'primaryFocusBg'),
     color: theme.color('button', 'primaryFocusText'),

@@ -17,6 +17,11 @@ class HeaderSearch extends React.Component {
      * A callback to toggle searchbar state on `NavigationHeader` component.
      */
     onClick: PropTypes.func.isRequired,
+    setSearchState: PropTypes.func,
+  };
+
+  static defaultProps = {
+    setSearchState: () => {},
   };
 
   state = {
@@ -24,10 +29,12 @@ class HeaderSearch extends React.Component {
     isHovered: false,
   };
 
-  componentDidUpdate() {
-    this.props.searchIsOpen
-      ? document.addEventListener('keydown', this.handleGlobalKeydown)
-      : document.removeEventListener('keydown', this.handleGlobalKeydown);
+  componentDidUpdate(prevState, prevProps) {
+    if (this.props.searchIsOpen !== prevProps.searchIsOpen) {
+      this.props.searchIsOpen
+        ? document.addEventListener('keydown', this.handleGlobalKeydown)
+        : document.removeEventListener('keydown', this.handleGlobalKeydown);
+    }
   }
 
   focusOnInput = inputRef => inputRef && inputRef.focus();
@@ -37,10 +44,11 @@ class HeaderSearch extends React.Component {
   handleGlobalKeydown = e => {
     const key = e.which || e.keyCode;
     if (key === 27) {
-      this.props.onClick();
+      this.props.setSearchState(false);
+      this.searchButton.focus();
     }
     else if (key === 13) {
-      this.linkRef.click();
+      this.props.setSearchState(true);
     }
   };
 
@@ -110,6 +118,9 @@ class HeaderSearch extends React.Component {
                 <button
                   className={className}
                   onClick={onClick}
+                  ref={el => {
+                    this.searchButton = el;
+                  }}
                   aria-expanded={searchIsOpen}
                   onMouseEnter={this.handleMouseEnter}
                   onMouseLeave={this.handleMouseLeave}
@@ -125,9 +136,7 @@ class HeaderSearch extends React.Component {
                         size={3}
                         miscStyles={{
                           marginEnd: '1rem',
-                          ...(isHovered
-                            ? {}
-                            : { color: color('headerSearch', 'bgHover'), }),
+                          ...(isHovered ? {} : { color: color('headerSearch', 'bgHover'), }),
                           extend: [ getTransition(1, 'swiftOut'), ],
                         }}
                       />

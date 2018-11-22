@@ -20,19 +20,19 @@ ListItem.defaultProps = {
   onBlur: () => {},
 };
 
-export default function ListItem({ children, itemStyle, onBlur }) {
+export default function ListItem({ children, itemStyle, onBlur, }) {
   return (
     <FelaComponent
       style={itemStyle}
-      render={({ className }) => (
-        <li className={className}
-            onKeyDown={ e => {
-              console.log(e)
-              if(e.key === 'Tab' && !e.shiftKey) {
-                onBlur();
-              }
-        }
-        }>
+      render={({ className, }) => (
+        <li
+          className={className}
+          onKeyDown={e => {
+            if (e.key === 'Tab' && !e.shiftKey) {
+              onBlur();
+            }
+          }}
+        >
           {children}
         </li>
       )}

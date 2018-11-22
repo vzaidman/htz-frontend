@@ -75,10 +75,7 @@ class Masthead extends Component {
           <Fragment>
             <LayoutRow
               miscStyles={{
-                top: [
-                  { until: 's', value: 0, },
-                  { until: 'm', misc: 'landscape', value: 0, },
-                ],
+                top: [ { until: 's', value: 0, }, { until: 'm', misc: 'landscape', value: 0, }, ],
                 position: [
                   { until: 's', value: 'sticky', },
                   { until: 'm', misc: 'landscape', value: 'sticky', },
@@ -129,9 +126,15 @@ class Masthead extends Component {
                   render="header"
                 >
                   <UserDispenser
-                    render={({ user, }) => <NavigationMenu contentId={contentId} userType={user.type} />}
+                    render={({ user, }) => (
+                      <NavigationMenu contentId={contentId} userType={user.type} />
+                    )}
                   />
-                  <MastheadSearch searchIsOpen={searchIsOpen} onClick={this.toggleSearchState} />
+                  <MastheadSearch
+                    searchIsOpen={searchIsOpen}
+                    setSearchState={searchIsOpen => this.setState({ searchIsOpen, })}
+                    onClick={this.toggleSearchState}
+                  />
                   {searchIsOpen ? null : <Logo host={host} />}
                   {searchIsOpen ? null : <MastheadUserTools y={y} />}
                 </FelaComponent>

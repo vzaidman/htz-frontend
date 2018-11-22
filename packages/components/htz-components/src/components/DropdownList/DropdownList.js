@@ -30,24 +30,26 @@ ThemedDropdownList.propTypes = {
    * `itemStyle` a style object to be used by the <li>,
    * If none is sent there will be no style.
    */
+  onClose: PropTypes.func,
 };
 
 ThemedDropdownList.defaultProps = {
   mainMenuStyle: { position: 'static', },
   isLast: false,
+  onClose: () => {},
 };
 
 // This isn't a publically consumable component. prop-types
 // are assigned to the wrapping component.
 /* eslint-disable react/prop-types */
 class DropdownList extends React.Component {
-  state = { isOpen: false, };
+  state = { isOpen: false, focusButton: false, };
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.y === 0 || (nextProps.y > 0 && this.state.isOpen);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (this.state.isOpen) {
       document.addEventListener('click', this.handleOutsideClick);
       document.addEventListener('keydown', this.handleEscape);
@@ -57,6 +59,9 @@ class DropdownList extends React.Component {
       document.removeEventListener('click', this.handleOutsideClick);
       document.removeEventListener('keydown', this.handleEscape);
       document.removeEventListener('keydown', this.handleArrowKey);
+      if (prevState.isOpen !== this.state.isOpen) {
+        this.props.onClose();
+      }
     }
 
     if (prevProps.y > 0 && this.state.isOpen) {
@@ -89,8 +94,7 @@ class DropdownList extends React.Component {
     if (
       this.state.isOpen &&
       this.props.isLast &&
-      ((direction === 'rtl' && key === 39) ||
-        (direction === 'ltr' && key === 37))
+      ((direction === 'rtl' && key === 39) || (direction === 'ltr' && key === 37))
     ) {
       this.toggleState();
     }
@@ -131,7 +135,8 @@ class DropdownList extends React.Component {
             className={className}
             ref={wrapper => {
               this.wrapper = wrapper;
-            }}>
+            }}
+          >
             {render({
               renderButton,
               ListWrapper,
@@ -151,9 +156,7 @@ function ThemedDropdownList(props) {
     <WrappedScroll
       render={({ y, }) => (
         <FelaTheme
-          render={({ direction, }) => (
-            <DropdownList direction={direction} y={y} {...props} />
-          )}
+          render={({ direction, }) => <DropdownList direction={direction} y={y} {...props} />}
         />
       )}
     />

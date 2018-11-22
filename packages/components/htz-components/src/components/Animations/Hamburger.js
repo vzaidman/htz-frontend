@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 
-const colorShape = PropTypes.oneOfType([
-  PropTypes.string,
-  PropTypes.arrayOf(PropTypes.string),
-]);
+const colorShape = PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string), ]);
 
 const colorPropObj = PropTypes.oneOfType([
   colorShape,
@@ -65,15 +62,7 @@ const setColor = (prop, value, getColor) => {
   };
 };
 
-const hamburgerDashStyle = (
-  theme,
-  isOpen,
-  color,
-  size,
-  thickness,
-  isTransition,
-  main = false
-) => ({
+const hamburgerDashStyle = (theme, isOpen, color, size, thickness, isTransition, main = false) => ({
   height: `${thickness}px`,
   width: `${size}rem`,
   position: 'absolute',
@@ -104,24 +93,9 @@ const hamburgerDashStyle = (
   ],
 });
 
-const hamburgerStyle = ({
-  theme,
-  isOpen,
-  color,
-  size,
-  thickness,
-  isTransition,
-}) => ({
+const hamburgerStyle = ({ theme, isOpen, color, size, thickness, isTransition, }) => ({
   ...(isOpen ? { background: 'none', } : {}),
-  ...hamburgerDashStyle(
-    theme,
-    isOpen,
-    color,
-    size,
-    thickness,
-    isTransition,
-    true
-  ),
+  ...hamburgerDashStyle(theme, isOpen, color, size, thickness, isTransition, true),
   display: 'inline-block',
   left: '50%',
   margin: '0 auto',
@@ -130,9 +104,7 @@ const hamburgerStyle = ({
   opacity: '1',
   ':before': {
     ...hamburgerDashStyle(theme, isOpen, color, size, thickness, isTransition),
-    ...(isOpen
-      ? { transform: `translateY(${size / 3.33}rem) rotate(45deg)`, }
-      : {}),
+    ...(isOpen ? { transform: `translateY(${size / 3.33}rem) rotate(45deg)`, } : {}),
     left: '0',
     top: `-${size / 3.33}rem`,
     content: '""',

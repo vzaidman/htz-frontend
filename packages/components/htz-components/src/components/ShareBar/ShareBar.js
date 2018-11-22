@@ -100,9 +100,6 @@ class ShareBar extends React.Component<Props, State> {
                 },
                 'mail',
               ]}
-              globalButtonsStyles={{
-                minWidth: '10rem',
-              }}
               size={4}
             />
             <FelaComponent style={{ display: 'flex', }}>
@@ -123,7 +120,6 @@ class ShareBar extends React.Component<Props, State> {
                           {
                             name: 'save',
                             buttonStyles: isArticleSaved => ({
-                              minWidth: '10rem',
                               ...(isArticleSaved
                                 ? {
                                     color: theme.color('neutral', '-10'),
@@ -137,39 +133,48 @@ class ShareBar extends React.Component<Props, State> {
                             }),
                           },
                         ]}
-                        globalButtonsStyles={{
-                          minWidth: '10rem',
-                        }}
                         size={4}
                       />
-                      <div
-                        ref={el => {
-                          if (el && this.state.hiddenButtonsBarWidth === -1) {
-                            this.setState({ hiddenButtonsBarWidth: el.offsetWidth, });
-                          }
+                      <FelaComponent
+                        style={{
+                          ...(this.state.hiddenButtonsBarWidth === -1
+                            ? {
+                                position: 'absolute',
+                                right: '100%',
+                              }
+                            : {}),
                         }}
-                      >
-                        <ActionButtons
-                          elementName={title}
-                          elementUrl={canonicalUrl}
-                          miscStyles={{
-                            width: this.state.hiddenButtonsBarWidth !== -1
-                              ? isOpen
-                                ? `${this.state.hiddenButtonsBarWidth}px`
-                                : '0'
-                              : 'auto',
-                            transitionProperty: 'width',
-                            ...theme.getDelay('transition', -1),
-                            ...theme.getDuration('transition', -1),
-                            ...theme.getTimingFunction('transition', 'linear'),
-                          }}
-                          buttons={[ ...hiddenButtons, ]}
-                          globalButtonsStyles={{
-                            minWidth: '10rem',
-                          }}
-                          size={4}
-                        />
-                      </div>
+                        render={({ className, }) => (
+                          <div
+                            className={className}
+                            ref={el => {
+                              if (el && this.state.hiddenButtonsBarWidth === -1) {
+                                this.setState({ hiddenButtonsBarWidth: el.offsetWidth, });
+                              }
+                            }}
+                          >
+                            <ActionButtons
+                              elementName={title}
+                              elementUrl={canonicalUrl}
+                              miscStyles={{
+                                width:
+                                  this.state.hiddenButtonsBarWidth !== -1
+                                    ? isOpen
+                                      ? `${this.state.hiddenButtonsBarWidth}px`
+                                      : '0'
+                                    : 'auto',
+                                transitionProperty: 'width',
+                                ...theme.getDelay('transition', -1),
+                                ...theme.getDuration('transition', -1),
+                                ...theme.getTimingFunction('transition', 'linear'),
+                                overflow: 'hidden',
+                              }}
+                              buttons={[ ...hiddenButtons, ]}
+                              size={4}
+                            />
+                          </div>
+                        )}
+                      />
 
                       <Button
                         onClick={this.toggleOpen}
@@ -186,7 +191,7 @@ class ShareBar extends React.Component<Props, State> {
                         <PlusClose
                           isOpen={isOpen}
                           size={3}
-                          color={focused ? (hover ? [ 'primary', ] : [ 'neutral', '-10', ]) : [ 'primary', ]}
+                          color={focused ? (hover ? 'white' : [ 'neutral', '-10', ]) : [ 'primary', ]}
                         />
                       </Button>
                     </React.Fragment>
