@@ -3,6 +3,7 @@ import express from 'express';
 import yieldGraph from '../graphs/yield';
 import volumeGraph from '../graphs/volume';
 import fetchData from '../utils/fetchData';
+import fetchFeed from '../utils/fetchFeed';
 
 const getGraphs = graphType => {
   const graphs = new Map([
@@ -64,6 +65,25 @@ router.post([ '/volume', '/yield', ], (req, res) => {
     ? yieldGraph(data, options)
     : volumeGraph(data, options);
   res.end(svg.svgString());
+});
+
+router.post([ '/hotMoney', ], (req, res) => {
+  const { assetId, part, options = {}, } = req.body || {};
+  fetchFeed({ assetId, part, })
+    .then(({ monthly, quarterly, yearly, }) => {
+      getGraphs('line')
+        .then(response => {
+          const lineGraph = response[0].default;
+          const results = {
+            monthly: lineGraph(monthly, options).svgString(),
+            quarterly: lineGraph(quarterly, options).svgString(),
+            yearly: lineGraph(yearly, options).svgString(),
+          };
+          res.end(JSON.stringify(results));
+        })
+        .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
 });
 
 router.post([ '/assetGraphs', ], (req, res) => {
