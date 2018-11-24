@@ -31,6 +31,7 @@
   "dependencies": {
     "@haaretz/htz-theme": "^0.1.0",
     "@haaretz/tm-theme": "^0.1.0",
+    "async": "^2.6.0",
     "body-parser": "^1.18.3",
     "config": "^1.26.2",
     "d3": "^5.6.0",
