@@ -211,6 +211,21 @@ export const assetObject: Object = {
     ],
     number.int({ max: 8, min: 3, }),
   ),
+  eventsPrediction: () => list(
+    [
+      {
+        method: object,
+        options: {
+          paymentDate: () => date.timestamp({}),
+          exDate: () => date.timestamp({}),
+          redemptionRate: () => number.float({ max: 100, min: 0, fixed: 2, }),
+          retailTax: () => number.float({ max: 30, min: 0, fixed: 2, }),
+          periodicalInterest: () => number.float({ max: 100, min: 0, fixed: 2, }),
+        },
+      },
+    ],
+    number.int({ max: 8, min: 3, }),
+  ),
 };
 
 const assetMap: Object = new Map(Object.entries(assetObject));

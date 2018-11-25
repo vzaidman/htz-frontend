@@ -39,8 +39,9 @@ const StaticTable: StatelessFunctionalComponent<Props> =
     >
       <thead>
         <tr>
-          {columns.map(({ title, }: Column) => (
+          {columns.map(({ title, name, }: Column) => (
             <TdComponent
+              key={name}
               miscStyles={{
                 paddingTop: '1rem',
                 paddingBottom: '1rem',
@@ -55,6 +56,7 @@ const StaticTable: StatelessFunctionalComponent<Props> =
       <tbody>
         {data.map(asset => (
           <FelaComponent
+            key={new Date().getTime()}
             style={theme => ({
               backgroundColor: theme.color('neutral', '-10'),
               extend: [
@@ -68,6 +70,7 @@ const StaticTable: StatelessFunctionalComponent<Props> =
           >
             {columns.map(({ name, styles, render, }: Column) => (
               <TdComponent
+                key={`${name}-${new Date().getTime()}`}
                 miscStyles={styles}
               >
                 {render(asset[name])}

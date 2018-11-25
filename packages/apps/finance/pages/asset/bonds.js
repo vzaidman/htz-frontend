@@ -17,6 +17,7 @@ import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
 import ShareHolders from '../../components/QuotePageComponents/ShareHolders/ShareHolders';
 import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/RelatedAssets';
+import StaticTable from '../../components/StaticTable/StaticTable';
 
 const BondQuery: DocumentNode = gql`
   query BondData($assetId: String!){
@@ -44,6 +45,13 @@ const BondQuery: DocumentNode = gql`
         equityHolderPercentage
         holdingMarketCap
       }
+      eventsPrediction {
+        paymentDate
+        exDate
+        periodicalInterest
+        retailTax
+        redemptionRate
+      }
     }
   }
 `;
@@ -57,6 +65,10 @@ type Props = {
     },
   },
 };
+
+const numToString: number => string = num => (
+  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+);
 
 function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
   return (
@@ -85,6 +97,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
               quarterlyYield,
               yearlyYield,
               shareHolders,
+              eventsPrediction,
             },
           } = data;
           return (
@@ -291,15 +304,60 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                       >
                         <RowItem
                           title="תחזית אירועים"
-                          miscStyles={{ marginBottom: '2rem', }}
                         >
-                          <QuoteInfoTable
-                            id={assetId}
-                            fields={[
-                              { name: 'peRatio', display: 'מכפיל רווח', },
-                              { name: 'pbRatio', display: 'מכפיל הון', },
-                              { name: 'roe', display: 'תשואה על ההון העצמי', },
-                              { name: 'psRatio', display: 'מכפיל מכירות', },
+                          <StaticTable
+                            data={eventsPrediction}
+                            columns={[
+                              {
+                                name: 'exDate',
+                                title: 'תאריך אקס',
+                                styles: {
+                                  paddingStart: '2rem',
+                                  fontWeight: '700',
+                                  width: '50%',
+                                },
+                                render: value =>
+                                  new Date(value).toLocaleString('it-It', {
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric',
+                                  }),
+                              },
+                              {
+                                name: 'paymentDate',
+                                title: 'תאריך תשלום',
+                                styles: {
+                                  paddingStart: '2rem',
+                                  direction: 'ltr',
+                                  textAlign: 'start',
+                                },
+                                render: value =>
+                                  new Date(value).toLocaleString('it-It', {
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric',
+                                  }),
+                              },
+                              {
+                                name: 'periodicalInterest',
+                                title: 'ריבית תקופתית',
+                                styles: {
+                                  paddingStart: '2rem',
+                                  direction: 'ltr',
+                                  textAlign: 'start',
+                                },
+                                render: value => value,
+                              },
+                              {
+                                name: 'redemptionRate',
+                                title: '% פדיון',
+                                styles: {
+                                  paddingStart: '2rem',
+                                  direction: 'ltr',
+                                  textAlign: 'start',
+                                },
+                                render: value => `${numToString(value)}%`,
+                              },
                             ]}
                           />
                         </RowItem>
