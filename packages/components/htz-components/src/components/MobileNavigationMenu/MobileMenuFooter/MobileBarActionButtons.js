@@ -9,8 +9,8 @@ import A11yDialog from '../../A11yDialog/A11yDialog';
 import MobileAdditionalShare from './MobileAdditionalShare';
 
 const actionBarData = gql`
-  query GetActionBarData {    
-    canonicalUrl @client    
+  query GetActionBarData {
+    canonicalUrl @client
     title @client
   }
 `;
@@ -78,6 +78,7 @@ export default class MobileBarActionButtons extends React.Component {
                               color: theme.color('whatsapp'),
                             },
                           }}
+                          shouldMainNavBarDisplay={shouldMainNavBarDisplay}
                         />
                         <ActionButtons
                           isFlat
@@ -126,9 +127,7 @@ export default class MobileBarActionButtons extends React.Component {
                         left: '0',
                         right: '0',
                         outline: 'none',
-                        transform: this.state.modalOpen
-                          ? 'translateY(0)'
-                          : 'translateY(100%)',
+                        transform: this.state.modalOpen ? 'translateY(0)' : 'translateY(100%)',
                         backgroundColor: theme.color('secondary'),
                         transitionProperty: 'transform',
                         ...theme.getDuration('transition', 1),

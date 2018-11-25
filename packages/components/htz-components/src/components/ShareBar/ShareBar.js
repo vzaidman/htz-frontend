@@ -157,8 +157,8 @@ class ShareBar extends React.Component<Props, State> {
                                 width:
                                   this.state.hiddenButtonsBarWidth !== -1
                                     ? isOpen
-                                      ? `${this.state.hiddenButtonsBarWidth}px`
-                                      : '0'
+                                    ? `${this.state.hiddenButtonsBarWidth}px`
+                                    : '0'
                                     : 'auto',
                                 transitionProperty: 'width',
                                 ...theme.getDelay('transition', -1),

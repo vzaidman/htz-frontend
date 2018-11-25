@@ -7,32 +7,9 @@ import IconClose from '../Icon/icons/IconClose';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 
-const tooltip = ({ theme, tooltipPosition, arrowStyle, hide, offsetX, tooltipMiscStyles, openSide, }) => ({
-  ...tooltipPosition,
-  position: 'absolute',
-  zIndex: '1',
-  display: hide ? 'none' : 'inline-block',
-  backgroundColor: theme.color('primary', 'base'),
-  color: '#FFF',
-  paddingTop: '1rem',
-  paddingBottom: '1rem',
-  paddingLeft: openSide === 'RIGHT' ? '3rem' : '8rem',
-  paddingRight: openSide === 'RIGHT' ? '8rem' : '3rem',
-  ':after': {
-    content: "''",
-    borderStyle: 'solid',
-    position: 'absolute',
-    ...arrowStyle,
-  },
-  extend: [
-    theme.type(-1),
-    ...tooltipMiscStyles(theme),
-  ],
-});
-
 const close = (theme, side) => ({
   height: '100%',
-  width: '35px',
+  width: '5.8rem',
   position: 'absolute',
   left: side === 'RIGHT' ? 'auto' : '0',
   right: side === 'RIGHT' ? '0' : 'auto',
@@ -49,27 +26,30 @@ const closeInner = {
 
 class Tooltip extends Component {
   static propTypes = {
-    /* The text of the tooltip */
+    /** The text of the tooltip */
     text: PropTypes.string.isRequired,
-    /* The local storage paramter */
+    /** The local storage parameter */
     storageParam: PropTypes.string,
-    /* Amount of time to show the tooltip after closing */
+    /** Amount of times to show the tooltip after closing */
     closingCount: PropTypes.number,
-    /** horizentol openning side (auto | T | B) */
+    /** horizentol openning side (auto | TOP | BOTTOM | LEFT | RIGHT) */
     openSide: PropTypes.string,
     /** change X offset */
     offsetX: PropTypes.number,
     /** change Y offset */
     offsetY: PropTypes.number,
-    /* adding style to the wrapper of the source element */
+    /** adding style to the wrapper of the source element */
     miscStyles: stylesPropType,
-    /* display status of the tooltip */
+    /** display status of the tooltip */
     hide: PropTypes.bool,
+    /** Style the tooltip box */
     tooltipMiscStyles: PropTypes.func,
-    /* the children node */
+    /** the children node */
     children: PropTypes.node.isRequired,
+    /** Determine whethe the tooltip will open automatically or on mouse over\out */
+    openOnMouseOver: PropTypes.bool,
     attrs: attrsPropType,
-  }
+  };
 
   static defaultProps = {
     openSide: 'auto',
@@ -77,15 +57,14 @@ class Tooltip extends Component {
     miscStyles: null,
     hide: false,
     storageParam: null,
-    tooltipMiscStyles: () => ([ {}, ]),
+    tooltipMiscStyles: () => [ {}, ],
     offsetX: 0,
-    offsetY: 5,
+    offsetY: 1,
     attrs: {},
-  }
+    openOnMouseOver: false,
+  };
 
   state = {
-    arrowStyle: {},
-    tooltipPosition: {},
     hide: true,
   };
 
@@ -93,15 +72,20 @@ class Tooltip extends Component {
     if (parseInt(window.localStorage.getItem(this.storageParam), 10) > this.props.closingCount) {
       return;
     }
+
     const el = this.targetElement.firstChild;
+    if (this.props.openOnMouseOver) {
+      el.addEventListener('mouseover', () => this.showTooltip());
+      el.addEventListener('mouseout', () => this.hideTooltip());
+    }
     let openSide;
     if (this.props.openSide === 'auto') {
-      openSide = el.offsetTop > document.body.scrollHeight / 2 ? 'TOP' : 'BOTTOM';
+      openSide = el.offsetTop > document.body.scrollHeight / 2 ? 'BOTTOM' : 'TOP';
     }
     else {
       openSide = this.props.openSide;
     }
-    let left = `calc(50% + ${this.props.offsetX}px)`;
+    let left = `calc(50% + ${this.props.offsetX}rem)`;
 
     let bottom;
     let top;
@@ -109,7 +93,7 @@ class Tooltip extends Component {
     const delta = this.props.offsetY;
     switch (openSide) {
       case 'TOP':
-        bottom = `calc(100% + ${delta}px)`;
+        bottom = `calc(100% + ${delta}rem)`;
         top = 'auto';
         this.tooltipPosition = { bottom, top, left, transform: 'translateX(-50%)', };
         this.arrowStyle = {
@@ -117,29 +101,29 @@ class Tooltip extends Component {
           borderColor: `${this.theme.color('primary', 'base')} transparent transparent transparent`,
           transform: 'translateX(-50%)',
           top: '100%',
-          left: `calc(50% - ${this.props.offsetX}px)`,
+          left: `calc(50% - ${this.props.offsetX}rem)`,
         };
         break;
       case 'BOTTOM':
         bottom = 'auto';
-        top = `calc(100% + ${delta}px)`;
+        top = `calc(100% + ${delta}rem)`;
         this.tooltipPosition = { bottom, top, left, transform: 'translateX(-50%)', };
         this.arrowStyle = {
           borderWidth: '0px 7px 7px 7px',
           borderColor: `transparent transparent ${this.theme.color('primary', 'base')} transparent`,
           transform: 'translateX(-50%)',
           bottom: '100%',
-          left: `calc(50% - ${this.props.offsetX}px)`,
+          left: `calc(50% - ${this.props.offsetX}rem)`,
         };
         break;
       case 'LEFT':
         bottom = 'auto';
         top = '50%';
         left = 'auto';
-        right = `calc(100% + ${this.props.offsetX}px)`;
+        right = `calc(100% + ${this.props.offsetX}rem)`;
         this.tooltipPosition = { bottom, top, left, right, transform: 'translateY(-50%)', };
         this.arrowStyle = {
-          top: `calc(50% - ${this.props.offsetY}px)`,
+          top: `calc(50% - ${this.props.offsetY}rem)`,
           borderWidth: '7px 0px 7px 7px',
           borderColor: `transparent transparent transparent ${this.theme.color('primary', 'base')}`,
           transform: 'translateY(-50%)',
@@ -148,12 +132,12 @@ class Tooltip extends Component {
         break;
       case 'RIGHT':
         bottom = 'auto';
-        top = `calc(50% + ${this.props.offsetY}px)`;
-        left = `calc(100% + ${this.props.offsetX}px)`;
+        top = `calc(50% + ${this.props.offsetY}rem)`;
+        left = `calc(100% + ${this.props.offsetX}rem)`;
         right = 'auto';
         this.tooltipPosition = { bottom, top, left, right, transform: 'translateY(-50%)', };
         this.arrowStyle = {
-          top: `calc(50% - ${this.props.offsetY}px)`,
+          top: `calc(50% - ${this.props.offsetY}rem)`,
           borderWidth: '7px 7px 7px 0px',
           borderColor: `transparent ${this.theme.color('primary', 'base')} transparent transparent`,
           transform: 'translateY(-50%)',
@@ -164,61 +148,128 @@ class Tooltip extends Component {
       default:
         break;
     }
-    this.setState({ hide: false, });
-  }
-
+    if (!this.props.openOnMouseOver) {
+      this.setState({ hide: false, });
+    }
+  };
 
   onClose = () => {
     this.setState({ hide: true, });
     const oldCount = parseInt(window.localStorage.getItem(this.storageParam), 10);
     const updateCount = oldCount && !Number.isNaN(oldCount) ? oldCount + 1 : 1;
     window.localStorage.setItem(this.storageParam, updateCount);
-  }
+  };
 
-  b64EncodeUnicode = str => (
-    window.btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
-      (match, p1) => String.fromCharCode(`0x${p1}`)))
-  );
+  tooltip = ({
+    theme,
+    tooltipPosition,
+    arrowStyle,
+    hide,
+    offsetX,
+    tooltipMiscStyles,
+    openSide,
+  }) => ({
+    ...tooltipPosition,
+    position: 'absolute',
+    zIndex: '1',
+    display: hide ? 'none' : 'inline-block',
+    backgroundColor: theme.color('primary', 'base'),
+    color: '#FFF',
+    minWidth: '25rem',
+    paddingTop: '1rem',
+    paddingBottom: '1rem',
+    ...this.calcPadding(openSide),
+    textAlign: 'center',
+    ':after': {
+      content: "''",
+      borderStyle: 'solid',
+      position: 'absolute',
+      ...arrowStyle,
+    },
+    extend: [ theme.type(-1), ...tooltipMiscStyles(theme), ],
+  });
 
+  b64EncodeUnicode = str =>
+    window.btoa(
+      encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) =>
+        String.fromCharCode(`0x${p1}`)
+      )
+    );
+
+  showTooltip = () => {
+    this.setState({ hide: false, });
+  };
+
+  hideTooltip = () => {
+    this.setState({ hide: true, });
+  };
+
+  calcPadding = openSide => {
+    const closeButtonSide = this.props.openOnMouseOver ? '3rem' : '8rem';
+    return {
+      paddingLeft: openSide === 'RIGHT' ? '3rem' : closeButtonSide,
+      paddingRight: openSide === 'RIGHT' ? closeButtonSide : '3rem',
+    };
+  };
   render() {
-    const id = `aria${parseInt(Math.random() * 10000000, 10)}`;
-    const { text, children, offsetX, attrs, miscStyles, tooltipMiscStyles, openSide, } = this.props;
-    this.storageParam =  this.props.storageParam ? this.props.storageParam: this.b64EncodeUnicode(text);
-    let wrapperStyle;
-    if (miscStyles) {
-      wrapperStyle = miscStyles;
+    if (!this.id) {
+      this.id = `aria${parseInt(Math.random() * 10000000, 10)}`;
     }
+    const { text, children, offsetX, attrs, miscStyles, tooltipMiscStyles, openSide, } = this.props;
+    this.storageParam = this.props.storageParam
+      ? this.props.storageParam
+      : this.b64EncodeUnicode(text);
 
     return (
-      <FelaComponent render="span" style={theme => ({ position: 'relative', ...wrapperStyle, })}>
-        <span aria-describedby={id} ref={el => { this.targetElement = el; }} {...attrs}>
+      <FelaComponent
+        render="span"
+        style={theme => ({ position: 'relative', ...miscStyles(theme), })}
+      >
+        <span
+          aria-describedby={this.id}
+          ref={el => {
+            this.targetElement = el;
+          }}
+          {...attrs}
+        >
           {children}
         </span>
         <FelaComponent
-          style={
-            theme => {
-                this.theme = theme; // make the theme available trou out the class
-                const isDimentionsAvailable = this.tooltipPosition !== undefined;
-                const hide = !isDimentionsAvailable || this.state.hide || this.props.hide;
-                return tooltip({ theme, tooltipPosition: this.tooltipPosition, arrowStyle: this.arrowStyle, hide, offsetX, tooltipMiscStyles, openSide, });
-              }
-            }
+          style={theme => {
+            this.theme = theme; // make the theme available trou out the class
+            const isDimentionsAvailable = this.tooltipPosition !== undefined;
+            const hide = !isDimentionsAvailable || this.state.hide || this.props.hide;
+            return this.tooltip({
+              theme,
+              tooltipPosition: this.tooltipPosition,
+              arrowStyle: this.arrowStyle,
+              hide,
+              offsetX,
+              tooltipMiscStyles,
+              openSide,
+            });
+          }}
           render={({ className, }) => (
-            <div className={className} ref={el => { this.tooltipElement = el; }}>
-              <FelaComponent
-                style={theme => close(theme, this.props.openSide)}
-                render={({ className, }) => (
-                  <button className={className} onClick={() => this.onClose()}>
-                    <IconClose size={2} miscStyles={closeInner} />
-                  </button>
-                )}
-              />
+            <div
+              className={className}
+              ref={el => {
+                this.tooltipElement = el;
+              }}
+            >
+              {this.props.openOnMouseOver ? null : (
+                <FelaComponent
+                  style={theme => close(theme, this.props.openSide)}
+                  render={({ className, }) => (
+                    <button className={className} onClick={() => this.onClose()}>
+                      <IconClose size={2} miscStyles={closeInner} />
+                    </button>
+                  )}
+                />
+              )}
 
-              <span id={id}>
-                {text}
-              </span>
+              <span id={this.id}>{text}</span>
             </div>
-        )}
+          )}
         />
       </FelaComponent>
     );

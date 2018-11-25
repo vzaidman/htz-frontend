@@ -42,14 +42,8 @@ const propTypes = {
     buttonPropType,
     PropTypes.arrayOf(buttonPropType),
     PropTypes.shape({
-      start: PropTypes.oneOfType([
-        buttonPropType,
-        PropTypes.arrayOf(buttonPropType),
-      ]),
-      end: PropTypes.oneOfType([
-        buttonPropType,
-        PropTypes.arrayOf(buttonPropType),
-      ]),
+      start: PropTypes.oneOfType([ buttonPropType, PropTypes.arrayOf(buttonPropType), ]),
+      end: PropTypes.oneOfType([ buttonPropType, PropTypes.arrayOf(buttonPropType), ]),
     }),
   ]).isRequired,
   /**
@@ -82,6 +76,7 @@ const propTypes = {
    * Should the icon's bar be vertical or horizontal (default).
    */
   vertical: PropTypes.bool,
+  shouldMainNavBarDisplay: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -92,6 +87,7 @@ const defaultProps = {
   miscStyles: null,
   vertical: false,
   size: 2,
+  shouldMainNavBarDisplay: true,
 };
 
 const wrapperStyle = ({ vertical, miscStyles, theme, }) => ({
@@ -103,9 +99,7 @@ const wrapperStyle = ({ vertical, miscStyles, theme, }) => ({
       height: '100%',
     }
     : {}),
-  extend: [
-    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-  ],
+  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
 const ActionWrapper = createComponent(wrapperStyle);
 
