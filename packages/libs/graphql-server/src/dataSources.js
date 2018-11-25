@@ -168,6 +168,16 @@ class PageAPI extends RESTDataSource {
   get baseURL() {
     return this.context.preview ? null : this.context.serviceBase;
   }
+  willSendRequest(request) {
+    if (this.context.preview) {
+      request.headers.append(
+        'cookie',
+        `userId=${this.context.previewUserId}; polopoly.contentIdsInEdit=${
+          this.context.previewContentId
+        };`
+      );
+    }
+  }
   async getPage(path) {
     const fetchPath = this.context.preview || `papi${path}`;
 
@@ -176,15 +186,6 @@ class PageAPI extends RESTDataSource {
       {},
       {
         cacheOptions: { ttl, },
-        ...(this.context.preview
-          ? {
-            headers: {
-              Cookie: `userId=${
-                this.context.previewUserId
-              }; path=/; domain=172.21.1.160; Expires=Tue, 19 Jan 2038 03:14:07 GMT;`,
-            },
-          }
-          : {}),
       }
     );
   }

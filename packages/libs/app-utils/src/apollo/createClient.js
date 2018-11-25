@@ -75,7 +75,11 @@ function create(initialState, appDefaultState, req) {
       // headers gets stringified so we make sure preview is not sent at all if not defined
       ...(req !== undefined
         ? req.query.preview
-          ? { preview: req.query.preview, previewUserId: req.query.userId, }
+          ? {
+            preview: req.query.preview,
+            previewUserId: req.query.userId,
+            previewContentId: req.query.contentId,
+          }
           : {}
         : {}),
     },
