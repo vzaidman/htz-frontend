@@ -2,7 +2,7 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { HtzLink, } from '@haaretz/htz-components';
-import { LoginContentStyles, } from '../StyleComponents/LoginStyleComponents';
+import { LoginContentStylesThemed, } from '../StyleComponents/LoginStyleComponentsByTheme';
 
 export default class TabsFrame extends React.Component {
   state = {
@@ -15,6 +15,7 @@ export default class TabsFrame extends React.Component {
     isLink: PropTypes.array,
     findRout: PropTypes.func,
     doTransition: PropTypes.func,
+    host: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -22,6 +23,7 @@ export default class TabsFrame extends React.Component {
     doTransition: null,
     activeTab: 1,
     isLink: [],
+    host: "haaretz.co.il",
   };
 
   /* ---------- Lifecycle Methods ---------- */
@@ -43,15 +45,18 @@ export default class TabsFrame extends React.Component {
   createNavButton = (child, index) => {
     return !this.state.isLink[index] ?
       (
-        <span className={index === this.state.activeTab ? "on" : ""} >
-          <input
-            type="radio"
-            name="tab"
-            id={`tab${index}`}
-            value={`tab${index}`}
-            onClick={this.changeTab(index)}
-          />
-          <label htmlFor={`tab${index}`} tabIndex={index}>{child.props.tabname || `Tab ${index}`}</label>
+        <span className={index === this.state.activeTab ? "on" : ""} tabIndex="-1" >
+          <label htmlFor={`tab${index}`} tabIndex="-1">
+            {child.props.tabname || `Tab ${index}`}
+            <input
+              type="radio"
+              name="tab"
+              id={`tab${index}`}
+              value={`tab${index}`}
+              onClick={this.changeTab(index)}
+              tabIndex={index === this.state.activeTab ? -1 : 1}
+            />
+          </label>
         </span>
       ) :
       (this.props.findRout && this.props.doTransition ? (
@@ -75,7 +80,7 @@ export default class TabsFrame extends React.Component {
 
   /* ----------- Tabs Rendering ------------ */
   createNavigation(children) {
-    const { TopLinks, } = LoginContentStyles;
+    const { TopLinks, } = LoginContentStylesThemed(this.props.host);
     return (
       <TopLinks>
         {React.Children.map(children, (child, i) => (
