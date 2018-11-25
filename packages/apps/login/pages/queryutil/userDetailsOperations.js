@@ -1,4 +1,5 @@
 import INSPECT_EMAIL, {
+  USER,
   USER_DATA,
   PHONE_NUM,
   OTP_HASH,
@@ -39,6 +40,7 @@ const mockDataFromUserInfo = client => email =>
     },
   });
 
+const getUser = client => client.readQuery({ query: USER, }).user;
 const getUserData = client => client.readQuery({ query: USER_DATA, }).userData;
 const getOtpHash = client => client.readQuery({ query: OTP_HASH, }).otpHash;
 const getEmail = client => client.readQuery({ query: USER_EMAIL, }).userEmail;
@@ -88,6 +90,7 @@ const savePhoneNum = client => phoneNumObj => {
 export {
   getPhoneNum,
   savePhoneNum,
+  getUser,
   getUserData,
   getHostname,
   saveUserData,
