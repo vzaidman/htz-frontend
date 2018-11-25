@@ -40,6 +40,7 @@ import IconTwitter from '../Icon/icons/IconTwitter';
 import IconWhatsapp from '../Icon/icons/IconWhatsapp';
 import IconZen from '../Icon/icons/IconZen';
 import AriaDescription from '../AriaDescription/AriaDescription';
+import Tooltip from '../Tooltip/Tooltip';
 
 import ClickArea from '../ClickArea/ClickArea';
 
@@ -541,36 +542,58 @@ const Whatsapp: StatelessFunctionalComponent<WhatsappButtonProps> = ({
   size,
   iconStyles,
   elementUrl,
+  shouldMainNavBarDisplay,
   ...props
 }): Node => (
   <ActionButton
     render={({ platform, biAction, biActionMapper, }) => (
-      <Button
-        {...props}
-        miscStyles={buttonStyles}
-        title="שתפו בוואטסאפ"
-        onClick={() => {
-          window.open(
-            `${
-              platform === 'mobile' ? 'whatsapp://' : 'https://web.whatsapp.com/'
-            }send?text=${elementUrl}${encodeURIComponent(
-              '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
-            )}`,
-            'popup',
-            'width=635,height=800,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
-          );
-
-          biAction({
-            actionCode: biActionMapper.get('whatsApp_share'),
-            additionalInfo: {
-              platform,
-            },
-          });
-          return false;
-        }}
+      <Tooltip
+        text="שתפו וחבריכם יקראו את הכתבה ללא תשלום"
+        storageParam="tooltipCount"
+        tooltipMiscStyles={theme => (
+          [
+            theme.mq({ until: 's', }, { minWidth: '33rem', }),
+            theme.mq({ from: 's', }, { whiteSpace: 'nowrap', }),
+          ]
+        )}
+        miscStyles={theme => ({
+          extend: [
+            theme.mq({ until: 'm', }, { paddingTop: '1rem', }),
+          ],
+        })}
+        openSide="TOP"
+        offsetX={-8}
+        hide={shouldMainNavBarDisplay === false}
       >
-        <IconWhatsapp size={size} miscStyles={iconStyles} />
-      </Button>
+        <Button
+          {...props}
+          miscStyles={buttonStyles}
+          title="שתפו בוואטסאפ"
+          onClick={() => {
+            window.open(
+              `${
+                platform === 'mobile'
+                  ? 'whatsapp://'
+                  : 'https://web.whatsapp.com/'
+              }send?text=${elementUrl}${encodeURIComponent(
+                '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
+              )}`,
+              'popup',
+              'width=635,height=800,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
+            );
+
+            biAction({
+              actionCode: biActionMapper.get('whatsApp_share'),
+              additionalInfo: {
+                platform,
+              },
+            });
+            return false;
+          }}
+        >
+          <IconWhatsapp size={size} miscStyles={iconStyles} />
+        </Button>
+      </Tooltip>
     )}
   />
 );
