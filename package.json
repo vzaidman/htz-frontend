@@ -225,7 +225,7 @@
       }
     },
     "enzyme": {
-      "^3.4.1": {
+      "^3.7.0": {
         "packages/libs/{fela-utils,htz-react-base}": [
           "dependencies"
         ]
