@@ -4,6 +4,7 @@ import Router from 'next/router';
 import { Form, TextInput, Button, Login, HtzLink, CheckBox, } from '@haaretz/htz-components';
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
+import { LoginMiscLayoutStylesThemed, } from '../../StyleComponents/LoginStyleComponentsByTheme';
 import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 import Preloader from '../../Misc/Preloader';
@@ -12,7 +13,7 @@ import { isName, isMobile, isPassword, } from './fieldsValidators';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
-const { InputLinkButton, ErrorBox, TermsWrapper, } = LoginMiscLayoutStyles;
+const { ErrorBox, } = LoginMiscLayoutStyles;
 // ------------------------------------
 
 // Methods -------------------
@@ -85,10 +86,6 @@ class PasswordForm extends Component {
   /* :::::::::::::::::::::::::::::::::::: PROPS } :::::::::::::::::::::::::::::::::::: */
 
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
-  shouldComponentUpdate(nextProps, nextState){
-    return shallowCompare(this, nextProps, nextState);
-  }
-
   showError = (errorMsg) => {
     this.setState({ showError: true, errorMessage: errorMsg, });
   }
@@ -132,7 +129,7 @@ class PasswordForm extends Component {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
     const { client, login, theme, showDialog, } = this.props;
     const host = getHost(client);
-    console.log("mounter...................******************/////////////////...............................");
+    const { InputLinkButton, TermsWrapper, } = LoginMiscLayoutStylesThemed(host);
 
     return (
       <FormWrapper>
