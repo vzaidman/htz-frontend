@@ -14,6 +14,13 @@ export type Asset = {
     equityHolderPercentage: number,
     holdingMarketCap: number,
   }>,
+  eventsPrediction: Array<{
+    paymentDate: number,
+    exDate: number,
+    redemptionRate: number,
+    retailTax: number,
+    periodicalInterest: number,
+  }>,
   value: number,
   USDValue: number,
   baseValue: number,

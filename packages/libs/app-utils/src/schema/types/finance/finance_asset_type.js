@@ -11,6 +11,7 @@ import {
 import { Kind, } from 'graphql/language/kinds';
 
 import shareHolder from './finance_share_holder_type';
+import eventPrediction from './finance_event_prediction_type';
 
 const isDate = value =>
   // eslint-disable-next-line no-restricted-globals
@@ -78,6 +79,7 @@ const financeAsset = new GraphQLObjectType({
     assetComponents: { type: new GraphQLList(financeAsset), },
     relatedAssets: { type: new GraphQLList(financeAsset), },
     shareHolders: { type: new GraphQLList(shareHolder), },
+    eventsPrediction: { type: new GraphQLList(eventPrediction), },
     value: { type: GraphQLFloat, },
     USDValue: { type: GraphQLFloat, },
     baseValue: { type: GraphQLFloat, },
@@ -161,7 +163,6 @@ const financeAsset = new GraphQLObjectType({
     redemptionRate: { type: GraphQLFloat, },
     floatRate: { type: GraphQLFloat, }, // שער רציף
     fixedRate: { type: GraphQLFloat, }, // שער יציג
-    holdingsRatio: { type: GraphQLFloat, },
     sharpIndex: { type: GraphQLFloat, }, // (0-10)
     inflowsPercentageChange: { type: GraphQLFloat, },
     outflowsPercentageChange: { type: GraphQLFloat, },
