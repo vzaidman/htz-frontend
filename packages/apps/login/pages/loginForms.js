@@ -6,7 +6,7 @@ import { ApolloConsumer, } from 'react-apollo';
 
 import { HtzLink, Login, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
-import { getEmail, getPhoneNum, getOtpHash, } from './queryutil/userDetailsOperations';
+import { getUser, getEmail, getPhoneNum, getOtpHash, } from './queryutil/userDetailsOperations';
 
 import isEmail from 'validator/lib/isEmail';
 import theme from '../theme';
@@ -173,6 +173,7 @@ class LoginForms extends Component {
                   const host = getHost(client);
                   const flow = getFlowNumber(client);
                   const activeTab = '2345'.includes(flow) ? 0 : 1;
+                  const user = getUser(client);
                   console.log('flow: ', flow, 'active tab: ', activeTab);
                   return (
                     <FelaTheme
@@ -228,6 +229,7 @@ class LoginForms extends Component {
                                   doTransition={doTransition}
                                   findRout={findRout}
                                   client={client}
+                                  user={user}
                                 />
 
                                 {/* TAB 2 */}
@@ -237,6 +239,7 @@ class LoginForms extends Component {
                                   theme={theme}
                                   client={client}
                                   showDialog={this.showDialog}
+                                  user={user}
                                 />
                               </TabsFrame>
 

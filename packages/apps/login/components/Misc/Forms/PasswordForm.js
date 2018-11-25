@@ -9,6 +9,7 @@ import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmai
 import { getHost, } from '../../../util/requestUtil';
 import Preloader from '../../Misc/Preloader';
 import isEmail from 'validator/lib/isEmail';
+import { loginWithFacebook, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { isName, isMobile, isPassword, } from './fieldsValidators';
 
 // Styling Components -----------------
@@ -42,14 +43,21 @@ const validatePasswordInput = ({ password, }) =>
       ? generatePasswordError('אנא הזינו סיסמה תקינה')
       : []); // email is valid
 
-const onSubmit = ({ login, host, showError, hideError, setPreloader, }) =>
+const getFacebookLogin = (user) => {
+  const facebookParams = getFacebookParams(user.type, user.id);
+  return facebookParams ?
+    loginWithFacebook(facebookParams) :
+    false;
+}
+
+const onSubmit = ({ login, host, user, showError, hideError, setPreloader, }) =>
   ({ email, password, }) => {
     setPreloader(true);
     hideError();
     login(email, password)
       .then(
         () => {
-          window.location = `https://www.${host}`;
+          window.location = getFacebookLogin(user) || `https://www.${host}`;
         },
         reason => {
           setPreloader(false);
@@ -127,17 +135,16 @@ class PasswordForm extends Component {
   
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { client, login, theme, showDialog, } = this.props;
+    const { client, login, theme, showDialog, user, } = this.props;
     const host = getHost(client);
     const { InputLinkButton, TermsWrapper, } = LoginMiscLayoutStylesThemed(host);
-
     return (
       <FormWrapper>
         <Form
           clearFormAfterSubmit={false}
           initialValues={ {email: getEmail(client)} }
           validate={this.validateForm}
-          onSubmit={onSubmit({ login, host, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, })}
+          onSubmit={onSubmit({ login, host, user, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, })}
           render={({ getInputProps, handleSubmit, clearForm, }) => (
             <Fragment>
               <div>
