@@ -21,6 +21,15 @@ export default gql`
   }
 `;
 
+const USER = gql`
+  query getUser {
+    user @client {
+      id
+      type
+    }
+  }
+`;
+
 const USER_DATA = gql`
   query getUserData {
     userData @client {
@@ -74,4 +83,4 @@ const PHONE_EMAIL_CONFIRMATION = gql`
   }
 `;
 
-export { USER_DATA, PHONE_NUM, OTP_HASH, USER_EMAIL, HOSTNAME, PHONE_EMAIL_CONFIRMATION, };
+export { USER, USER_DATA, PHONE_NUM, OTP_HASH, USER_EMAIL, HOSTNAME, PHONE_EMAIL_CONFIRMATION, };
