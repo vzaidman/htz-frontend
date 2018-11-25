@@ -1,6 +1,8 @@
 // @flow
+/* global fetch */
 import React, { Fragment, } from 'react';
 import { FelaTheme, } from 'react-fela';
+import { borderBottom, } from '@haaretz/htz-css-tools';
 
 import type { Node, } from 'react';
 
@@ -8,6 +10,17 @@ import MainLayout from '../../layouts/MainLayout';
 import PageRow from '../../components/PageRow/PageRow';
 import RowItem from '../../components/RowItem/RowItem';
 import FeedTabbedGraph from '../../components/FeedTabbedGraph/FeedTabbedGraph';
+import TabbedTable from '../../components/TabbedTable/TabbedTable';
+import StaticSortableTable from '../../components/StaticSortableTable/StaticSortableTable';
+import FetchData from '../../components/FetchData/FetchData';
+
+export type Asset = {
+  name: string,
+  change: string,
+  id: string,
+};
+
+export type Assets = Array<Asset>;
 
 type Props = {
   url: {
@@ -17,6 +30,10 @@ type Props = {
     },
   },
 };
+
+const numToString: number => string = num => (
+  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+);
 
 function money({ url: { query: { section, }, }, }: Props): Node {
   return (
@@ -31,6 +48,7 @@ function money({ url: { query: { section, }, }, }: Props): Node {
                 <FeedTabbedGraph
                   part={1}
                   side={1}
+                  defaultTab={2}
                   tabs={[
                     { display: 'גיוסים חודשי', control: 'monthly-rec', period: 2, },
                     { display: 'גיוסים רבעוני', control: 'quarterly-rec', period: 7, },
@@ -69,6 +87,7 @@ function money({ url: { query: { section, }, }, }: Props): Node {
               <FeedTabbedGraph
                 part={1}
                 side={2}
+                defaultTab={2}
                 tabs={[
                   { display: 'פדיונות חודשי', control: 'monthly-div', period: 2, },
                   { display: 'פדיונות רבעוני', control: 'quarterly-div', period: 7, },
@@ -109,6 +128,7 @@ function money({ url: { query: { section, }, }, }: Props): Node {
                 <FeedTabbedGraph
                   part={2}
                   side={1}
+                  defaultTab={2}
                   tabs={[
                     { display: 'גיוסים חודשי', control: 'monthly-rec', period: 2, },
                     { display: 'גיוסים רבעוני', control: 'quarterly-rec', period: 7, },
@@ -146,6 +166,7 @@ function money({ url: { query: { section, }, }, }: Props): Node {
               <FeedTabbedGraph
                 part={2}
                 side={2}
+                defaultTab={2}
                 tabs={[
                   { display: 'פדיונות חודשי', control: 'monthly-div', period: 2, },
                   { display: 'פדיונות רבעוני', control: 'quarterly-div', period: 7, },
@@ -177,6 +198,113 @@ function money({ url: { query: { section, }, }, }: Props): Node {
                   },
                 ]}
               />
+            </PageRow>
+            <PageRow>
+              <RowItem
+                title="ביצועי קרנות הנאמנות מול המדדים"
+              >
+                <TabbedTable
+                  defaultTab={2}
+                  presentation
+                  tabs={[
+                    { control: 'month', tabData: 2, display: 'חודשי', },
+                    { control: 'quarter', tabData: 7, display: 'רבעוני', },
+                    { control: 'year', tabData: 3, display: 'שנתי', },
+                  ]}
+                  panel={({ selectedTab, }) => (
+                    <FetchData
+                      url={`https://cors-escape.herokuapp.com/http://apifinance.themarker.com/TheMarkerApi/HotMoneyBottom?part=1&period=${selectedTab}`}
+                      method="GET"
+                      render={(data: any) => (
+                        <StaticSortableTable
+                          headerMiscStyles={{
+                            backgroundColor: theme.color('neutral', '-10'),
+                            paddingTop: '1rem',
+                            paddingBottom: '1rem',
+                            ...borderBottom('2px', 1, 'solid', theme.color('neutral', '-6')),
+                          }}
+                          initialSort="indexYield"
+                          data={
+                            data.table.dataSource.map((asset: {
+                              name: string,
+                              indexYield: string,
+                              mtfBeat: string,
+                              mtfYield: string,
+                              id: string,
+                            }) => ({
+                              name: asset[0],
+                              indexYield: asset[1],
+                              mtfBeat: asset[2],
+                              mtfYield: asset[3],
+                              id: asset[4],
+                            }))
+                          }
+                          fields={[
+                            {
+                              name: 'name',
+                              display: 'מדד',
+                              sortingOrder: 'ascend',
+                              style: () => ({
+                                fontWeight: '700',
+                                maxWidth: '17rem',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                              }),
+                              value: ({ name, }) => name,
+                            },
+                            {
+                              name: 'indexYield',
+                              display: '% תשואות המדד',
+                              sortingOrder: 'descend',
+                              style: ({ indexYield, }) => ({
+                                color: indexYield < 0
+                                  ? theme.color('negative')
+                                  : theme.color('positive'),
+                                direction: 'ltr',
+                                fontWeight: '700',
+                                paddingEnd: '2rem',
+                                position: 'relative',
+                                textAlign: 'start',
+                              }),
+                              value: ({ indexYield, }) => `
+                                    ${indexYield > 0 ? '+' : '-'}
+                                    ${numToString(Math.abs(indexYield))}%
+                                  `,
+                            },
+                            {
+                              name: 'mtfBeat',
+                              display: 'קרנות שהיכו',
+                              sortingOrder: 'descend',
+                              value: ({ mtfBeat, }) => mtfBeat,
+                            },
+                            {
+                              name: 'mtfYield',
+                              display: '% תשואה הקרנות',
+                              sortingOrder: 'descend',
+                              style: ({ mtfYield, }) => ({
+                                color: mtfYield < 0
+                                  ? theme.color('negative')
+                                  : theme.color('positive'),
+                                direction: 'ltr',
+                                fontWeight: '700',
+                                paddingEnd: '2rem',
+                                position: 'relative',
+                                textAlign: 'start',
+                              }),
+                              value: ({ mtfYield, }) => `
+                                    ${mtfYield > 0 ? '+' : '-'}
+                                    ${numToString(Math.abs(mtfYield))}%
+                                  `,
+                            },
+                          ]}
+                        />
+                      )}
+                    />
+
+                  )}
+                />
+              </RowItem>
             </PageRow>
           </Fragment>
         )}

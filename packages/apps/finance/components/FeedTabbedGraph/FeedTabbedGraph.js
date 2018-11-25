@@ -28,6 +28,7 @@ type Assets = Array<Asset>;
 type Props = {
   part: number,
   side: number,
+  defaultTab: number,
   tabs: Array<TabType>,
   headers: Array<{
     display: string,
@@ -44,11 +45,18 @@ type State = {
 };
 
 class FeedTabbedGraph extends React.Component<Props, State> {
-  state = {
-    index: 0,
-    tab: this.props.tabs[0],
-    assets: [],
+  static defaultProps = {
+    defaultTab: 0,
   };
+
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    const { defaultTab, tabs, } = nextProps;
+    return !prevState ? {
+      tab: tabs[defaultTab],
+      assets: [],
+      index: defaultTab,
+    } : {};
+  }
 
   componentDidMount() {
     const { period, } = this.props.tabs[0];

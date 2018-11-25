@@ -121,7 +121,7 @@ class HotMoneyGraph extends React.Component<Props, State> {
                     time={time}
                     changeStats={changeStats}
                     width={574}
-                    height={308}
+                    height={250}
                     margin={{ top: 34, right: 10, bottom: 15, left: 50, }}
                   />
                 : null

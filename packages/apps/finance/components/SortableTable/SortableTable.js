@@ -86,7 +86,7 @@ type TableLinkProps = {
 };
 
 // eslint-disable-next-line react/prop-types
-const SortIcons: SortIconsProps => Node = ({ active, sortOrder, }) => (
+export const SortIcons: SortIconsProps => Node = ({ active, sortOrder, }) => (
   <FelaComponent
     style={{
       transform: 'translateY(-50%)',
