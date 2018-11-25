@@ -16,7 +16,7 @@ import QuoteInfoTable from '../../components/QuotePageComponents/QuoteInfoTable/
 import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
 import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/RelatedAssets';
-import ShareHoldersTable from '../../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
+import ShareHolders from '../../components/QuotePageComponents/ShareHolders/ShareHolders';
 
 const StockQuery: DocumentNode = gql`
   query StockData($assetId: String!){
@@ -281,9 +281,7 @@ function stocks({ url: { query: { assetId, section, }, }, }: Props): Node {
                         <RowItem
                           title="בעלי עניין קונצרני"
                         >
-                          <ShareHoldersTable
-                            shareHolders={shareHolders}
-                          />
+                          <ShareHolders data={shareHolders} />
                         </RowItem>
                       </GridItem>
                     </Grid>
