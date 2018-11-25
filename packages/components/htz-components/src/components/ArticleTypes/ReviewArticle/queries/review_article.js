@@ -133,6 +133,10 @@ export default gql`
                 ...Video
               }
             }
+            tags {
+              url
+              contentName
+            }
             reviewType
             amenities
             reviewStars

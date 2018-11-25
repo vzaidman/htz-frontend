@@ -12,6 +12,7 @@ import getComponent from '../../../utils/componentFromInputTemplate';
 import ArticleBody from '../../ArticleBody/ArticleBody';
 import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
+import Tags from '../../Tags/Tags';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 import BloggerInfo from '../../BloggerInfo/BloggerInfo';
 import LiveBlogQuery from './queries/live_blog_article';
@@ -70,13 +71,14 @@ function LiveBlog({ articleId, slots, }) {
 
           const isMouse = LiveBlogElement.inputTemplate === 'com.mouse.story.MouseStandardStory';
 
-          const { authors, body, headlineElement, reportingFrom, pubDate, modDate, liveblogItems, keyEvents, isLiveUpdate, isDisplayBlogitemsDatetime, } = LiveBlogElement;
+          const { authors, body, headlineElement, reportingFrom, pubDate, modDate, liveblogItems, keyEvents, isLiveUpdate, isDisplayBlogitemsDatetime, tags, } = LiveBlogElement;
           const header = isMouse ? { pubDate, modDate, } : LiveBlogElement.header;
 
           const timeLineItems = liveblogItems.filter(value => value.keyEvent);
           // const timeLineItems = liveblogItems.filter(value => value.keyEvent);
 
           console.warn('timeLineItems: ', timeLineItems);
+          console.warn('tags: ', tags);
           console.warn('liveblogItems: ', liveblogItems);
           // console.warn('keyEvents: ', JSON.stringify(keyEvents));
           // keyEvents.map(val => console.warn('get me that shit:'))
@@ -192,6 +194,7 @@ function LiveBlog({ articleId, slots, }) {
                                 >
                                   <ArticleBody
                                     body={body}
+                                    // tagsList={tags}
                                     miscStyles={{
                                      paddingBlockEnd: '3rem',
                                      paddingInlineStart: '3rem',
@@ -217,7 +220,19 @@ function LiveBlog({ articleId, slots, }) {
                                     typeConf={theme.typeConf}
                                     // miscStyles={{ backgroundColor: theme.color('primary', '-6'), }}
                                   />
-
+                                  <Tags
+                                    tagsList={tags}
+                                    miscStyles={{
+                                      ...theme.mq(
+                                        { until: 'l', },
+                                        {
+                                          marginInlineStart: '1rem',
+                                          marginInlineEnd: '1rem',
+                                          paddingTop: '2rem',
+                                          paddingBottom: '2rem',
+                                        }),
+                                    }}
+                                  />
                                   {bloggerInfo}
                                 </LiveBlogLayoutRow>
                               );

@@ -130,6 +130,10 @@ export default gql`
                 ...Video
               }
             }
+            tags {
+              url
+              contentName
+            }
             socialMetaData {
               articleRankCounter
               articleRankersCounter

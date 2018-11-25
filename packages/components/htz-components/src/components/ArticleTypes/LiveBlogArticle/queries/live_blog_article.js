@@ -132,6 +132,10 @@ export default gql`
                 ...Video
               }
             }
+            tags {
+              url
+              contentName
+            }
             inputTemplate
             commentsElementId
 

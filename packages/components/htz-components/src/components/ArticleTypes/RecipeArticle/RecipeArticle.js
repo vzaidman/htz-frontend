@@ -67,6 +67,7 @@ function RecipeArticle({ articleId, slots, }) {
           const {
             authors,
             body,
+            tags,
             instructions,
             ingredients,
             totalCookTime,
@@ -169,8 +170,10 @@ function RecipeArticle({ articleId, slots, }) {
                                       </Fragment>
 )}
                                   >
-                                    <ArticleBody body={body} />
-                                    <Ingredients ingredientLists={ingredients} />
+                                    <ArticleBody body={body} tagsList={tags} />
+                                    <Ingredients
+                                      ingredientLists={ingredients}
+                                    />
                                     <Instructions instructions={instructions} />
                                   </ArticleLayoutRow>
                                 );

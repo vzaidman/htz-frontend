@@ -72,6 +72,17 @@ const ArticleData = new GraphQLObjectType({
         resolveType: value => getSchema(value.elementType || value.inputTemplate),
       }),
     },
+    tags: { type: new GraphQLList(
+      new GraphQLObjectType({
+        name: 'TagsElement',
+        fields: () => ({
+          url: { type: GraphQLString, },
+          inputTemplate: { type: GraphQLString, },
+          contentName: { type: GraphQLString, },
+          contentId: { type: GraphQLString, },
+        }),
+      }),
+    ), },
     bookCover: { type: image, },
     authors: { type: new GraphQLList(author), },
     body: { type: articleBody, },

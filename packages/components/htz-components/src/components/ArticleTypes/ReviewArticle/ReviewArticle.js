@@ -68,6 +68,7 @@ function ReviewArticle({ articleId, slots, }) {
             authors,
             body,
             header,
+            tags,
             reportingFrom,
             reviewType,
             reviewStars,
@@ -169,7 +170,7 @@ function ReviewArticle({ articleId, slots, }) {
                                       </Fragment>
 )}
                                   >
-                                    <ArticleBody body={body} />
+                                    <ArticleBody body={body} tagsList={tags} />
                                   </ArticleLayoutRow>
                                 );
                               }}
