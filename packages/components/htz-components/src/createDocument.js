@@ -4,17 +4,8 @@ import { renderToSheetList, } from 'fela-dom';
 import config from 'config';
 import serialize from 'serialize-javascript';
 import SEO from './components/SEO/SEO';
-import { buildFontFamilyArray, } from './utils/buildFontFamilyArray';
-import { buildFontPreloadLink, } from './utils/buildFontPreloadLink';
-import { buildFontCss, } from './utils/buildFontCss';
-import fontsLoaderScript from './utils/fontLoadingScript';
+import criticalFontLoader from './utils/criticalFontLoader';
 
-
-const toFontList = fontMap =>
-  Object.entries(fontMap).map(([ key, value, ]) => ({
-    ...value,
-    name: key,
-  }));
 
 const polyFillSrc =
   'https://cdn.polyfill.io/v2/polyfill.js?features=default,Object.entries,Array.prototype.entries,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.includes,Function.name,Array.prototype.@@iterator&flags=gated';
@@ -32,8 +23,6 @@ const polyFillSrc =
  *   The Fela style provider used in the app
  * @param {object} options.theme
  *   The Fela theme used in the app
- * @param {Array} options.fontRules
- *   An array of argument arrays for Fela's `renderFont`
  * @param {object} options.appData
  *   An application data object, defaults to just having
  *   a `config` field with data from the `config` module.
@@ -44,34 +33,23 @@ const createDocument = ({
   styleRenderer,
   FelaProvider,
   theme,
-  fontRules,
-  defaultFontStack = 'sans-serif',
   staticRules = '',
   appData = { config, },
   isRtl,
   lang,
   hasToggleableTheme = false,
+  fontStacks,
 }) =>
   class HaaretzDocument extends Document {
     static getInitialProps({ renderPage, req, }) {
       const host = req.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       const validatedTheme = hasToggleableTheme ? theme(host) : theme;
       const varifiedStaticRules = hasToggleableTheme ? staticRules(host) : staticRules;
-      const fontsArray = buildFontFamilyArray(fontRules);
-      console.log('[fonts] fontsArray:', JSON.stringify(fontsArray));
-      fontsArray.forEach(rule => {
-        console.log('[fonts] font:', JSON.stringify(rule));
-        styleRenderer.renderFont(...rule);
-      });
 
       if (varifiedStaticRules) {
         Array.isArray(varifiedStaticRules)
           ? varifiedStaticRules.forEach(rule => styleRenderer.renderStatic(rule))
           : styleRenderer.renderStatic(varifiedStaticRules);
-      }
-
-      if (fontRules) {
-        styleRenderer.renderStatic(buildFontCss(fontRules, defaultFontStack));
       }
 
       const page = renderPage(App => props => (
@@ -83,6 +61,8 @@ const createDocument = ({
       const sheetList = renderToSheetList(styleRenderer);
       styleRenderer.clear();
 
+      const criticalFontElements = criticalFontLoader(fontStacks.criticalFont, fontStacks.base);
+
       return {
         ...page,
         sheetList,
@@ -90,6 +70,7 @@ const createDocument = ({
         isRtl,
         lang,
         host,
+        criticalFontElements,
       };
     }
 
@@ -118,20 +99,8 @@ const createDocument = ({
       );
     }
 
-    // eslint-disable-next-line class-methods-use-this
-    renderFoftScript = () => {
-      const fontList = toFontList(fontRules);
-      return (
-        <script
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: `(${fontsLoaderScript.toString()})(${JSON.stringify(fontList)})`,
-          }}
-        />
-      );
-    }
-
     render() {
+      const criticalFont = this.props.criticalFontElements;
       return (
         <html lang={this.props.lang} dir={this.props.isRtl ? 'rtl' : 'ltr'}>
           <Head>
@@ -143,11 +112,12 @@ const createDocument = ({
               <link rel="manifest" href="/static/manifest/manifest.json" />
             )}
 
-            {buildFontPreloadLink(fontRules)}
+            {criticalFont.preload}
             <SEO host={this.props.host} polyFillSrc={polyFillSrc} />
+            {criticalFont.style}
+            {criticalFont.script}
             {this.renderStyles()}
             {this.renderData()}
-            {this.renderFoftScript()}
             {process.env.CONNECTION_PRESET === 'stage' ? (
               <meta
                 name="google-site-verification"

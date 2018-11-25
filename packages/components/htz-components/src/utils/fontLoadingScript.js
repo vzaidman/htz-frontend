@@ -71,6 +71,7 @@ function fontsLoaderScript(fontRules) {
       console.warn('[fontsLoaderScript] fontRules should be an array');
       return undefined;
     }
+    
     fontRules.forEach(function processFont(font, idx) {
       const key = `fontLoaded-${font.name.replace(/\s+/, '-')}`; // replace whitespaces with '-'
       if (isCached(key)) {
