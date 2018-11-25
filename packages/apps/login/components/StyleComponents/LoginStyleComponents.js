@@ -42,39 +42,6 @@ const Styles = {
       },
     }),
 
-    topLinks: () => ({
-      display: 'flex',
-      margin: '0 auto 4rem auto',
-      border: 'solid 1px #0b7eb5',
-      '>span': {
-        flexGrow: '1',
-        textAlign: 'center',
-        color: '#0b7eb5',
-        fontSize: '1.75rem',
-        fontWeight: 'bold',
-        '>input': {
-          display: 'none',
-        },
-        '>label': {
-          display: 'block',
-          marginTop: '0 !important',
-          lineHeight: '37px',
-        },
-        '>a': {
-          display: 'block',
-          marginTop: '0 !important',
-          lineHeight: '37px',
-        },
-        '&.on': {
-          backgroundColor: '#0b7eb5',
-          color: '#fff',
-          '>a': {
-            cursor: 'default',
-          },
-        },
-      },
-    }),
-
     itemCenterer: () => ({
       position: 'relative',
       display: 'flex',
@@ -228,7 +195,6 @@ const LoginContentStyles = {
   PageWrapper: createComponent(Styles.Content.loginPageWrapper),
   ContentWrapper: createComponent(Styles.Content.loginContentWrapper),
   FormWrapper: createComponent(Styles.Content.formWrapper),
-  TopLinks: createComponent(Styles.Content.topLinks),
   ItemCenterer: createComponent(Styles.Content.itemCenterer),
 };
 
@@ -248,7 +214,6 @@ const LoginMiscLayoutStyles = {
 const LoginDialogBox = {
   DialogWrapper: createComponent(Styles.Dialog.dialogWrapperStyle),
   DialogContent: createComponent(Styles.Dialog.dialogContentStyle),
-  //DialogContentCreator: (bgColor) => createComponent(Styles.Dialog.dialogContentStyle(bgColor)),
   CloseButton: createComponent(Styles.Dialog.closeButtonStyle),
 };
 
