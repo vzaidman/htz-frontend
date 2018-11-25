@@ -35,6 +35,7 @@ type GraphData = Array<{
 
 type State = {
   ...Asset,
+  period: number,
   graphData: GraphData,
 };
 
@@ -44,8 +45,8 @@ class HotMoneyGraph extends React.Component<Props, State> {
   shouldComponentUpdate(nextProps: Props, nextState: State) {
     return (
       !this.state || (
-        nextProps !== this.props ||
-        nextState.id !== this.state.id
+        nextProps.period !== this.props.period ||
+        nextState.period !== this.state.period
       )
     );
   }
@@ -65,6 +66,7 @@ class HotMoneyGraph extends React.Component<Props, State> {
           }));
         this.setState({
           ...stockData,
+          period,
           graphData,
         });
       })
