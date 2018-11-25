@@ -13,11 +13,16 @@ const propTypes = {
   keyEvents: PropTypes.arrayOf(
     PropTypes.shape({
       keyEvent: PropTypes.string,
-      pubDate: PropTypes.instanceOf(Date).isRequired,
-      contentId: PropTypes.string,
+      // pubDate: PropTypes.instanceOf(Date).isRequired,
+      pubDate: PropTypes.oneOfType([
+        // PropTypes.string,
+        PropTypes.number,
+        PropTypes.instanceOf(Date),
+      ]),
+      cardId: PropTypes.string,
     })
   ).isRequired,
-  showTimeLineText: PropTypes.bool,
+  // showTimeLineText: PropTypes.bool,
   /**
    * A special property holding miscellaneous CSS values that
    * trumps all default values. Processed by
@@ -27,7 +32,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  showTimeLineText: false,
+  // showTimeLineText: false,
   miscStyles: null,
 };
 
@@ -41,6 +46,7 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
   paddingInlineStart: '2rem',
   paddingBottom: '7rem',
   color: theme.color('primary', '+1'),
+  // backgroundColor: theme.color('primary', '-6'),
   extend: [
     borderStart({
       width: '1px',
@@ -50,6 +56,7 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
     isFirstItem
       ? {
         ':before': {
+          backgroundColor: theme.color('primary', '-6'),
           height: '0.5em',
           top: '0',
           borderBottom: '1px solid #ccc',
@@ -60,6 +67,7 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
       ? {
         paddingBottom: '0',
         ':before': {
+          backgroundColor: theme.color('primary', '-6'),
           height: 'calc(100% - 0.5em)',
           top: '0.5em',
           borderTop: '1px solid #bbb',
@@ -70,11 +78,13 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
       ? {
         position: 'relative',
         ':before': {
-          backgroundColor: '#fff',
+          // backgroundColor: theme.color('primary', '-6'),
           position: 'absolute',
           content: '""',
           width: '1rem',
-          right: '-0.5em',
+          right: '-0.6em',
+          ...theme.mq({ until: 's', }, { right: '-0.4em', }),
+          // ...theme.mq({ from: 's', }, { ':before': { right: '-0.6em', }, }),
           transform: 'translate(-50%,0)',
         },
       }
@@ -102,14 +112,16 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
     width: '1rem',
     height: '1rem',
     backgroundColor: theme.color('primary', '-6'),
+    // backgroundColor:'tranparent',
     border: '1px solid #ccc',
     // border('1px', 1, 'solid', theme.color('primary', '-6')),
     top: '50%',
-    right: '-1.5em',
+    right: '-1.6em',
     borderRadius: '50%',
     transform: 'translate(-50%, -50%)',
   },
   extend: [
+    theme.mq({ until: 's', }, { ':before': { right: '-1.2em', }, }),
     theme.mq({ from: 's', until: 'l', }, { marginInlineEnd: '2rem', }),
     isFirstItem || isLastItem
       ? {
@@ -121,9 +133,7 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
       : {},
   ],
 });
-function TimeLine({ keyEvents, miscStyles, showTimeLineText, }) {
-  console.warn('keyEvents', keyEvents);
-  console.warn('typeof keyEvents', typeof keyEvents);
+function TimeLine({ keyEvents, miscStyles, }) {
   if (!keyEvents) return <></>;
   return (
     <React.Fragment>
@@ -164,7 +174,7 @@ function TimeLine({ keyEvents, miscStyles, showTimeLineText, }) {
                       isLastItem={i === keyEvents.length - 1}
                       rule={itemStyle}
                       render={({ className, }) => (
-                        <li className={className}>
+                        <li key={`cardId-${item.cardId}`} className={className}>
                           <FelaComponent
                             isFirstItem={i === 0}
                             isLastItem={i === keyEvents.length - 1}

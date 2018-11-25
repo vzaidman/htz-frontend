@@ -35,6 +35,7 @@ import ArticleBody from '../../../ArticleBody/ArticleBody';
 //     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
 //   ],
 // });
+// eslint-disable-next-line react/prop-types
 const Fade = ({ children, }) => (
   <FelaComponent
     style={theme => ({
@@ -44,7 +45,8 @@ const Fade = ({ children, }) => (
       width: '100%',
       bottom: '8rem',
       margin: 'auto',
-      backgroundImage: 'linear-gradient(0deg,#fff,#fff 30%,hsla(0,0%,100%,.8) 70%,hsla(0,0%,100%,0))',
+      backgroundImage:
+        'linear-gradient(0deg,#fff,#fff 30%,hsla(0,0%,100%,.8) 70%,hsla(0,0%,100%,0))',
       // backgroundImage: `linear-gradient(transparent, ${theme.color(
       //   'comments',
       //   isHighlighted ? 'highlightedCommentBg' : 'bg'
@@ -62,7 +64,6 @@ const Fade = ({ children, }) => (
     {children}
   </FelaComponent>
 );
-
 
 class LiveBlogItem extends React.Component {
   static propTypes = {
@@ -127,7 +128,7 @@ class LiveBlogItem extends React.Component {
             // },
             border: [ '0px', 0, 'solid', theme.color('neutral', '-4'), ],
             // ...(this.state.fadeText ? { overflow: 'hidden', height: '60rem', backgroundImage: 'linear-gradient(0deg,#fff,#fff 30%,hsla(0,0%,100%,.8) 70%,hsla(0,0%,100%,0))'} : {}),
-            ...theme.mq({ until: 'm', }, { paddingInlineEnd: '2rem', paddingInlineStart: '2rem', },),
+            ...theme.mq({ until: 'm', }, { paddingInlineEnd: '2rem', paddingInlineStart: '2rem', }),
           }}
         >
           {/* Time and share bar */}
@@ -160,7 +161,7 @@ class LiveBlogItem extends React.Component {
             />
             <FelaComponent
               style={theme => ({
-                ...theme.type(-3),
+                ...theme.type(-2.5),
                 ...theme.mq({ until: 's', }, { marginInlineEnd: '1rem', ...theme.type(-2), }),
               })}
               render={({ className, }) => (
@@ -170,6 +171,25 @@ class LiveBlogItem extends React.Component {
               )}
             />
             <ActionButtons
+              elementName={item.title}
+              elementUrl={canonicalUrl}
+              buttons={[ 'facebooklogo', 'whatsapp', 'mail', ]}
+              size={3}
+              isFlat
+              vertical
+              globalButtonsStyles={{
+                paddingInlineEnd: '1rem',
+                paddingInlineStart: '1rem',
+              }}
+              miscStyles={{
+                justifyContent: 'flex-start',
+                alignItems: 'flex-start',
+                marginTop: '5rem',
+                marginBottom: '3rem',
+                ...theme.mq({ until: 's', }, { display: 'none', }),
+              }}
+            />
+            {/* <ActionButtons
               miscStyles={{
                 justifyContent: 'flex-start',
                 alignItems: 'flex-start',
@@ -199,7 +219,7 @@ class LiveBlogItem extends React.Component {
                 },
               ]}
               vertical
-            />
+            /> */}
           </GridItem>
           <GridItem
             // width={3 / 4}
@@ -209,25 +229,30 @@ class LiveBlogItem extends React.Component {
               paddingTop: '3rem',
               paddingBottom: '4rem',
               paddingInlineEnd: '3rem',
-              ...(this.state.fadeText ? {
-                overflow: 'hidden',
-                maxHeight: '65rem',
-              } : {}),
+              ...(this.state.fadeText
+                ? {
+                    overflow: 'hidden',
+                    maxHeight: '65rem',
+                  }
+                : {}),
               // margin: '0',
               // wordBreak: 'break-word',
               maxWidth: '70rem',
               // width: '100%',
-              ...theme.mq({ until: 's', }, { width: '100%', paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }),
+              ...theme.mq(
+                { until: 's', },
+                { width: '100%', paddingInlineStart: '2rem', paddingInlineEnd: '2rem', paddingTop: '1rem', }
+              ),
               ...theme.mq({ from: 'l', until: 'xl', }, { maxWidth: '64rem', }),
             }}
             attrs={{ ref: mainContainerEl => (this.mainContainerEl = mainContainerEl), }}
           >
             <a href={`#${item.cardId}`}>
-              <h1>{item.title}</h1>
+              <h1 style={{ fontSize: '3rem', }}>{item.title}</h1>
             </a>
 
             <ArticleBody body={item.body} />
-            {this.state.fadeText ? (<Fade />) : null}
+            {this.state.fadeText ? <Fade /> : null}
           </GridItem>
 
           {/* Mobile Action Buttons */}
@@ -237,7 +262,6 @@ class LiveBlogItem extends React.Component {
               ...theme.mq(
                 { until: 's', },
                 {
-
                   width: '100%',
                   display: 'flex',
                   justifyContent: 'space-between',
@@ -249,6 +273,22 @@ class LiveBlogItem extends React.Component {
             render={({ className, }) => (
               <span className={className}>
                 <ActionButtons
+                  elementName={item.title}
+                  elementUrl={canonicalUrl}
+                  buttons={[ 'facebooklogo', 'whatsapp', 'mail', ]}
+                  size={3}
+                  isFlat
+                  // vertical
+                  globalButtonsStyles={{
+                    // paddingInlineEnd: '1rem',
+                    // paddingInlineStart: '1rem',
+                    // paddingBottom: '1.5rem',
+                  }}
+                  miscStyles={{
+                    paddingBottom: '1.5rem',
+                  }}
+                />
+                {/* <ActionButtons
                   miscStyles={{
                     paddingBottom: '1.5rem',
                   }}
@@ -274,9 +314,14 @@ class LiveBlogItem extends React.Component {
                       },
                     },
                   ]}
-                />
+                /> */}
                 {this.state.fadeText ? (
-                  <Button variant="primary" miscStyles={{ marginBottom: '1rem', }} isFlat onClick={() => this.setState({ fadeText: false, })}>
+                  <Button
+                    variant="primary"
+                    miscStyles={{ marginBottom: '1rem', }}
+                    isFlat
+                    onClick={() => this.setState({ fadeText: false, })}
+                  >
                     {/* todo: get this from htz-theme */}
                     להרחבה
                   </Button>

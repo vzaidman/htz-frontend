@@ -7,24 +7,20 @@ import Query from '../../ApolloBoundary/Query';
 
 import LayoutContainer from '../../PageLayout/LayoutContainer';
 import WideArticleLayoutRow from '../../PageLayout/WideArticleLayoutRow';
-// import ArticleLayoutRow from '../../PageLayout/ArticleLayoutRow';
 import ArticleLayout from '../../PageLayout/ArticleLayout';
 import getComponent from '../../../utils/componentFromInputTemplate';
 import ArticleBody from '../../ArticleBody/ArticleBody';
-// import ArticleHeaderMeta from '../../ArticleHeader/ArticleHeaderMeta';
-import TimeLine from './LiveBlogElements/TimeLine';
-// import StandardArticleHeader from '../StandardArticle/StandardArticleElements/StandardArticleHeader';
-import LiveBlogHeader from './LiveBlogElements/LiveBlogHeader';
 import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 import BloggerInfo from '../../BloggerInfo/BloggerInfo';
-
 import LiveBlogQuery from './queries/live_blog_article';
-import LiveBlogHeaderMeta from './LiveBlogElements/LiveBlogHeaderMeta';
+
 import LiveBlogLayoutRow from './LiveBlogElements/LiveBlogLayoutRow';
+import LiveBlogHeader from './LiveBlogElements/LiveBlogHeader';
+import LiveBlogHeaderMeta from './LiveBlogElements/LiveBlogHeaderMeta';
+import TimeLine from './LiveBlogElements/TimeLine';
 import LiveBlogContainer from './LiveBlogElements/LiveBlogContainer';
-// import LiveBlogMobileContainer from './LiveBlogElements/LiveBlogMobileContainer';
 
 function LiveBlog({ articleId, slots, }) {
   return (
@@ -81,7 +77,7 @@ function LiveBlog({ articleId, slots, }) {
           // const timeLineItems = liveblogItems.filter(value => value.keyEvent);
 
           console.warn('timeLineItems: ', timeLineItems);
-          // console.warn('liveblogItems: ', liveblogItems);
+          console.warn('liveblogItems: ', liveblogItems);
           // console.warn('keyEvents: ', JSON.stringify(keyEvents));
           // keyEvents.map(val => console.warn('get me that shit:'))
           console.warn('isLiveUpdate: ', isLiveUpdate);
@@ -124,6 +120,8 @@ function LiveBlog({ articleId, slots, }) {
                       hasBreadCrumbs={!!breadCrumbs}
                       headlineElement={headlineElement}
                       reportingFrom={reportingFrom}
+                      // todo: change to isLiveUpdate={isLiveUpdate} to set value dynamically
+                      isLiveUpdate
                     />
 
                     {article.map(element => {
@@ -173,7 +171,7 @@ function LiveBlog({ articleId, slots, }) {
                                       {authors ? (
                                         <LiveBlogHeaderMeta
                                           authors={authors}
-                                          isLiveUpdate={isLiveUpdate}
+                                          isLiveUpdate
                                           isDisplayBlogitemsDatetime={isDisplayBlogitemsDatetime}
                                           liveblogItems={liveblogItems}
                                           publishDate={header.pubDate}
@@ -184,29 +182,11 @@ function LiveBlog({ articleId, slots, }) {
                                         keyEvents={keyEvents}
                                         miscStyles={{
                                           position: 'sticky',
-                                          top: '7rem',
-                                          paddingBottom: '20rem',
+                                          top: '2rem',
+                                          transform: 'translateY(14rem)',
+                                          paddingBottom: '12rem',
                                         }}
                                       />
-                                      {/* <TimeLine
-                                          reviewImgData={itemCoverImg}
-                                          reviewType={reviewType}
-                                          amenitiesItems={amenities}
-                                          reviewStars={reviewStars}
-                                          miscStyles={{
-                                            marginBottom: [ { until: 'l', value: '5rem', }, ],
-                                            ...theme.mq(
-                                              { until: 'm', },
-                                              {
-                                                padding: '2rem',
-                                                marginInlineStart: '0rem',
-                                                marginInlineEnd: '0rem',
-                                                marginTop: '-3rem',
-                                                backgroundColor: theme.color('primary', '-5'),
-                                              }
-                                            ),
-                                          }}
-                                        /> */}
                                     </Fragment>
                                   }
                                 >
@@ -256,13 +236,14 @@ function LiveBlog({ articleId, slots, }) {
                             key={element.contentId}
                             hideDivider
                             {...(element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
-                              ? {
-                                  hideDivider: true,
-                                  miscStyles: {
-                                    display: [ { until: 's', value: 'none', }, ],
-                                  },
-                                }
-                              : {})}
+                            ? {
+                              hideDivider: true,
+                              miscStyles: {
+                                display: [ { until: 's', value: 'none', }, ],
+                              },
+                            }
+                            : {})}
+                            // miscStyles={{ backgroundColor: 'white', }}
                           >
                             <Element
                               articleId={articleId}

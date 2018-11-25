@@ -7,13 +7,13 @@ import Section from '../../../AutoLevels/Section';
 import { stylesPropType, } from '../../../../propTypes/stylesPropType';
 
 const margineliaStyle = ({ theme, theme: { layoutStyle, }, hideUnderLargeBreakPoint, }) => ({
-  height: '100%',
   extend: [
     ...(hideUnderLargeBreakPoint ? [ theme.mq({ until: 'l', }, { display: 'none', }), ] : []),
     theme.mq(
       { from: 'l', },
       {
         position: 'absolute',
+        height: '100%',
       }
     ),
     theme.mq(

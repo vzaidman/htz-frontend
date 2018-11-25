@@ -3,7 +3,6 @@ import React, { Fragment, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { ApolloConsumer, } from 'react-apollo';
-
 import HeaderText from '../../../ArticleHeader/HeaderText';
 // import ArticleHeaderMeta from '../../../ArticleHeader/ArticleHeaderMeta';
 import LiveBlogHeaderMeta from './LiveBlogHeaderMeta';
@@ -15,9 +14,7 @@ Header.propTypes = {
   /**
    * An array of Article's authors.
    */
-  authors: PropTypes.arrayOf(
-    PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
-  ).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
   articleId: PropTypes.string.isRequired,
   canonicalUrl: PropTypes.string.isRequired,
   hasBreadCrumbs: PropTypes.bool.isRequired,
@@ -33,11 +30,13 @@ Header.propTypes = {
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   headlineElement: PropTypes.shape({}).isRequired,
-  reportingFrom: PropTypes.string.isRequired,
+  // reportingFrom: PropTypes.string.isRequired,
+  isLiveUpdate: PropTypes.bool,
 };
 
 Header.defaultProps = {
   modDate: null,
+  isLiveUpdate: false,
 };
 
 function Header({
@@ -51,7 +50,8 @@ function Header({
   subtitle,
   title,
   headlineElement,
-  reportingFrom,
+  // reportingFrom,
+  isLiveUpdate,
 }) {
   return (
     <ApolloConsumer>
@@ -80,12 +80,7 @@ function Header({
               textAlign: 'start',
               overflow: 'hidden',
               backgroundColor: 'white',
-              extend: [
-                theme.mq(
-                  { until: 'm', },
-                  { display: 'flex', flexDirection: 'column', }
-                ),
-              ],
+              extend: [ theme.mq({ until: 'm', }, { display: 'flex', flexDirection: 'column', }), ],
             })}
             render={({ className, theme, }) => (
               <header className={className}>
@@ -102,21 +97,14 @@ function Header({
                         theme.mq(
                           { from: 'xl', },
                           {
-                            paddingInlineStart:
-                              theme.layoutStyle.startColumnPaddingXL,
+                            paddingInlineStart: theme.layoutStyle.startColumnPaddingXL,
                           }
                         ),
-                        theme.mq(
-                          { until: 's', },
-                          { order: -1, marginTop: '2rem', }
-                        ),
+                        theme.mq({ until: 's', }, { order: -1, marginTop: '2rem', }),
                       ],
                     }}
                     render={({ className, }) => (
-                      <Breadcrumbs
-                        articleId={articleId}
-                        className={className}
-                      />
+                      <Breadcrumbs articleId={articleId} className={className} />
                     )}
                   />
                 ) : null}
@@ -133,11 +121,11 @@ function Header({
                           marginTop: '0',
                         }
                       ),
+                      theme.mq({ from: 's', until: 'l', }, { paddingInlineEnd: '2rem', }),
                       theme.mq(
-                        { from: 's', until: 'l', },
-                        { paddingInlineEnd: '2rem', }
+                        { from: 'xl', },
+                        { paddingInlineStart: '3rem', paddingInlineEnd: '5rem', }
                       ),
-                      theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', paddingInlineEnd: '5rem', }),
                     ],
                   }}
                   render={({ className, }) => (
@@ -153,7 +141,7 @@ function Header({
                   authors={authors}
                   publishDate={pubDate}
                   modifiedDate={modDate}
-                //   reportingFrom={reportingFrom}
+                  //   reportingFrom={reportingFrom}
                   miscStyles={{
                     marginTop: [
                       { until: 's', value: '3rem', },
@@ -173,44 +161,68 @@ function Header({
                       },
                       { until: 's', value: theme.layoutStyle.contPaddingS, },
                     ],
-                    display: [
-                      { until: 'l', value: 'block', },
-                      { from: 'l', value: 'none', },
-                    ],
+                    display: [ { until: 'l', value: 'block', }, { from: 'l', value: 'none', }, ],
                   }}
                 />
                 <FelaComponent
                   style={{
                     paddingInlineStart: '2rem',
-                    extend: [
-                      theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
-                    ],
+                    extend: [ theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }), ],
                   }}
                 >
                   <ShareBar title={title} canonicalUrl={canonicalUrl} />
                 </FelaComponent>
                 {headlineElement ? (
                   <Fragment>
-                    {/* <FelaComponent
-                      style={theme => (
-                        {
-                          ...theme.mq({ from: 'l', }, { display: 'none', }),
+                    {/* Live update banner in M/S breaks */}
+                    {isLiveUpdate ? (
+                      <FelaComponent
+                        style={{
+                          // order: '-3',
+                          height: '5rem',
                           width: '100%',
-                          height: '6rem',
+                          // marginTop: '1rem',
                           backgroundColor: theme.color('tertiary'),
-                        }
-                      )}
-                      render={({ className, }) => (
-                        <div className={className}>
-                          Live
-                        </div>
-                      )}
-                    /> */}
+                          alignItems: 'center',
+                          extend: [
+                            theme.mq({ until: 's', }, { order: '-3', }), // add borderBottom(tertiary)
+                            theme.mq({ until: 'l', }, { display: 'flex', }),
+                            theme.mq({ from: 'l', }, { display: 'none', }),
+                          ],
+                        }}
+                        render={({ className, theme, }) => (
+                          <span className={className}>
+                            <FelaComponent
+                              style={theme => ({
+                                // ...theme.mq({ from: 'l', }, { display: 'none', }),
+                                color: 'white',
+                                paddingInlineStart: '1rem',
+                                fontWeight: 'bold',
+                                extend: [ theme.type(-2), ],
+                              })}
+                              render={({ className, }) => (
+                                <span className={className}>{theme.liveBlogI18n.liveUpdate}</span>
+                              )}
+                            />
+                            <FelaComponent
+                              style={{
+                                height: '1rem',
+                                width: '1rem',
+                                borderRadius: '50%',
+                                backgroundColor: 'white',
+                                margin: '1rem',
+                              }}
+                              render={({ className, }) => <span className={className} />}
+                            />
+                          </span>
+                        )}
+                      />
+                    ) : null}
                     <HeadlineElement
                       elementObj={headlineElement}
                       miscStyles={{
                         backgroundColor: [ { from: 'l', value: theme.color('primary', '-6'), }, ],
-                        marginTop: [ { from: 's', value: '2rem', }, ],
+                        marginTop: [ { from: 'l', value: '2rem', }, ],
                         order: [ { until: 's', value: -2, }, ],
                       }}
                     />

@@ -2,18 +2,14 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 
-import { border, borderTop, borderBottom, parseStyleProps, getRemFromPx, } from '@haaretz/htz-css-tools';
+import { borderTop, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../../../propTypes/stylesPropType';
-// import Time from '../../../Time/Time';
-// import ActionButtons from '../../../ActionButtons/ActionButtons';
+
+// eslint-disable-next-line import/no-named-as-default
 import RadioButton from '../../../RadioButton/RadioButton';
-// import Button from '../../../Button/Button';
-// import Grid from '../../../Grid/Grid';
-// import GridItem from '../../../Grid/GridItem';
 
 import TimeLine from './TimeLine';
 import LiveBlogItem from './LiveBlogItem';
-// import ArticleBody from '../../../ArticleBody/ArticleBody';
 
 
 const wrapperStyle = ({ miscStyles, theme, }) => ({
@@ -49,64 +45,6 @@ const itemWrapperStyle = ({ theme, }) => ({
   ],
 });
 
-// eslint-disable-next-line react/prop-types
-// const Fade = ({ isHighlighted, children, }) => (
-//   <FelaComponent
-//     style={theme => ({
-//       display: 'block',
-//       height: 0,
-//       ':after': {
-//         display: 'block',
-//         content: '""',
-//         width: '100%',
-//         height: '14rem',
-//         position: 'relative',
-//         top: '-14rem',
-//         background: `linear-gradient(transparent, ${theme.color(
-//           'comments',
-//           isHighlighted ? 'highlightedCommentBg' : 'bg'
-//         )})`,
-//       },
-//     })}
-//     render="span"
-//   >
-//     {children}
-//   </FelaComponent>
-// );
-
-// const itemContainerStyle = ({ theme, }) => ({
-//   //   width: '100%',
-//   // extend: [
-//   //   border('2px', 1, 'solid', 'gray'),
-//   // ],
-// });
-
-// function SortUpdates({ value, changeState, }) {
-//   return (
-//     <Fragment>
-//         <FelaComponent
-//             style={ theme => ({ backgroundColor:  theme.color('primary', '-6'), width: '100%', display: 'flex', justifyContent: 'space-between', })}
-//             render={({ className, theme, }) => (
-//               <div className={className}>
-//                 <FelaComponent
-//                   style={{}}
-//                   render={({ className, })=> (
-//                     <span>{theme.liveBlogI18n.updatesTitle}</span>
-//                   )}
-//                 />
-//                 <FelaComponent
-//                   style={{ display: 'flex', }}
-//                   render={({ className, })=> (
-
-//                   )}
-//                 />
-//               <div>
-//             )}
-//         />
-//     </Fragment>
-//   );
-// }
-
 class LiveBlogContainer extends React.Component {
   static propTypes = {
     liveblogItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -114,7 +52,12 @@ class LiveBlogContainer extends React.Component {
     keyEvents: PropTypes.arrayOf(
       PropTypes.shape({
         keyEvent: PropTypes.string,
-        pubDate: PropTypes.instanceOf(Date).isRequired,
+        pubDate: PropTypes.oneOfType([
+          // PropTypes.string,
+          PropTypes.number,
+          PropTypes.instanceOf(Date),
+        ]),
+        // pubDate: PropTypes.instanceOf(Date).isRequired,
         cardId: PropTypes.string,
       })
     ),
@@ -192,12 +135,12 @@ class LiveBlogContainer extends React.Component {
                       paddingInlineStart: '4rem',
                       paddingInlineEnd: '4rem',
                       alignItems: 'center',
-                      ...borderTop({
-                        width: '13px',
-                        lines: 6,
-                        style: 'solid',
-                        color: theme.color('neutral', '-6'),
-                      }),
+                      // ...borderTop({
+                      //   width: '13px',
+                      //   lines: 6,
+                      //   style: 'solid',
+                      //   color: theme.color('primary', '-6'),
+                      // }),
                     }
                   ),
                   ...theme.mq(
