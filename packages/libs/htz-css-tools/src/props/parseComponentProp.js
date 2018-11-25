@@ -11,22 +11,24 @@ import type { MqFunc, } from '../mq/createMqFunc';
  * @prop {string} [type] - A media type
  * @prop {boolean | string | number | (string | number)[]} value - The value(s) to assign to the prop
  */
-export type ComponentPropResponsiveObject = {
+export type ComponentPropResponsiveObject<T> = {
   from?: string,
   until?: string,
   misc?: string,
   type?: string,
-  value: boolean | string | number | (string | number)[],
+  value: T
 };
 
 /**
  * The shape of a `componentProp`'s `value`
  */
-export type ComponentPropValue =
-  | boolean
-  | string
-  | number
-  | (string | number | ComponentPropResponsiveObject)[];
+export type ComponentPropValue<
+  T:
+    | boolean
+    | string
+    | number
+    | (string | number | ComponentPropResponsiveObject<*>)[]
+> = T;
 
 /**
  * A callback that converts values from the prop into a CSS-in-JS object
@@ -39,7 +41,7 @@ export type ComponentPropValue =
  */
 export type ComponentPropConverterFn = (
   prop: string,
-  value: boolean | string | number | (string | number)[],
+  value: any,
   ...args?: any
 ) => Object;
 
@@ -109,9 +111,9 @@ export type ComponentPropConverterFn = (
  *  // adiditional args will be passed to the converter function //
  * );
  */
-export default function parseComponentProp(
+export default function parseComponentProp<Values: ComponentPropValue<*>>(
   prop: string,
-  values: ComponentPropValue,
+  values: Values,
   mq: MqFunc,
   converter?: ComponentPropConverterFn,
   ...converterArgs: any

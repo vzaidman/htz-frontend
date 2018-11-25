@@ -1,8 +1,13 @@
 module.exports = {
   /* Extend airbnb's style-guide enforcement */
-  extends: 'airbnb',
-  plugins: [ 'jsdoc', ],
+  extends: [ 'airbnb', 'plugin:flowtype/recommended', ],
+  plugins: [ 'jsdoc', 'flowtype', ],
   parser: 'babel-eslint',
+  settings: {
+    flowType: {
+      onlyFilesWithFlowAnnotation: true,
+    },
+  },
 
   rules: {
     'linebreak-style': 0,
@@ -123,6 +128,13 @@ module.exports = {
 
     /* eslint/jsx-11y related rules */
     'jsx-a11y/anchor-is-valid': 0,
+
+    // Flow-type rules
+    'flowtype/space-after-type-colon': [
+      'error',
+      'always',
+      { allowLineBreak: true, },
+    ],
   },
 
   overrides: [
