@@ -1,3 +1,4 @@
+// @flow
 import type {
   ComponentPropResponsiveObject,
   StyleProps,
@@ -8,19 +9,15 @@ import setColor from '../../utils/setColor';
 export type cardStyleOptions = {
   /** A Fela theme object */
   theme: Object,
-  backgroundColor:
-    | ?string
+  backgroundColor: | ?string
     | [string]
     | [string, string]
-    | {
-        ...ComponentPropResponsiveObject,
-        value: string | [string] | [string, string],
-      }[],
+    | ComponentPropResponsiveObject<string | [string] | [string, string]>[],
   isElevated: ?true,
-  miscStyles: ?StyleProps,
+  miscStyles: ?StyleProps
 };
 
-export default function cardStyle({
+export default function cardStyleRule({
   theme,
   backgroundColor,
   isElevated,
