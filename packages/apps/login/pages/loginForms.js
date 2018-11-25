@@ -219,6 +219,7 @@ class LoginForms extends Component {
                                 formIndex={activeTab === 0 ? 0 : 1}
                                 findRout={findRout}
                                 doTransition={doTransition}
+                                host={host}
                               >
                                 {/* TAB 1 */}
                                 <PhoneForms
@@ -230,96 +231,13 @@ class LoginForms extends Component {
                                 />
 
                                 {/* TAB 2 */}
-                                {/*<PasswordForm
-                                  tabname='כניסה באמצעות SMS'
+                                <PasswordForm
+                                  tabname='כניסה באמצעות סיסמה'
                                   login={login}
                                   theme={theme}
                                   client={client}
                                   showDialog={this.showDialog}
-                                />*/}
-                                <div tabname="כניסה באמצעות סיסמה">
-                                  <Form
-                                    clearFormAfterSubmit={false}
-                                    initialValues={ {email: getEmail(client)} }
-                                    validate={validateForm}
-                                    onSubmit={onSubmit({ login, host, }, this.showError, this.hideError, this.setPreloader )}
-                                    render={({ getInputProps, handleSubmit, clearForm, }) => (
-                                      <Fragment>
-                                        <div>
-                                          <TextInput
-                                            type="email"
-                                            noteText="אנא הזינו כתובת דוא”ל"
-                                            maxLength={64}
-                                            requiredText={{
-                                              long: theme.emailInputRequiredLong,
-                                              short: theme.emailInputRequiredShort,
-                                            }}
-                                            {...getInputProps({
-                                              name: 'email',
-                                              label: theme.emailInputLabel,
-                                              type: 'email',
-                                            })}
-                                          />
-                                        </div>
-
-                                        <div>
-                                          <TextInput
-                                            type="password"
-                                            label={theme.passwordInputLabel}
-                                            value="test"
-                                            noteText="אנא הזינו סיסמה"
-                                            requiredText={{
-                                              long: theme.passwordInputRequiredLong,
-                                              short: theme.passwordInputRequiredShort,
-                                            }}
-                                            {...getInputProps({
-                                              name: 'password',
-                                              label: theme.passwordInputLabel,
-                                              type: 'password',
-                                            })}
-                                          />
-                                          <InputLinkButton>
-                                            <button
-                                              onClick={(e) => {
-                                                e.preventDefault();
-                                                this.showDialog();
-                                              }}
-                                            >
-                                              שכחתי סיסמה
-                                            </button>
-                                          </InputLinkButton>
-                                        </div>
-
-                                        <TermsWrapper>
-                                          <div className="testtest">
-                                          <CheckBox
-                                            type="checkbox"
-                                            label="terms"
-                                            noteText="יש לאשר את תנאי השימוש באתר"
-                                            errorText="יש לאשר את תנאי השימוש באתר"
-                                            {...getInputProps({
-                                              name: 'terms',
-                                              label: getTermsText(),
-                                              type: 'checkbox',
-                                            })}
-                                          />
-                                          </div>
-                                        </TermsWrapper>
-
-                                        <ErrorBox className={this.state.showError ? "" : "hidden"}>
-                                          <span>
-                                            {this.state.errorMessage}
-                                          </span>
-                                        </ErrorBox>
-
-                                        <ItemCenterer>
-                                          <Preloader isLoading={this.state.isLoading} />
-                                          <Button onClick={handleSubmit}>התחברות</Button>
-                                        </ItemCenterer>
-                                      </Fragment>
-                                    )}
-                                  />
-                                </div>
+                                />
                               </TabsFrame>
 
                               <BottomLinks spacing={2.5}>
