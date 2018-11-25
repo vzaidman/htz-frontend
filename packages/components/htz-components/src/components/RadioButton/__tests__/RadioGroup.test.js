@@ -7,7 +7,7 @@ Math.random = jest.fn(() => 123456789);
 
 describe('<RadioGroup>', () => {
   describe('DOM element', () => {
-    it('renders correctly with minimal required props', () => {
+    it.skip('renders correctly with minimal required props', () => {
       const { component, styles, } = felaSnapshotter(
         <RadioGroup
           name="testName"
@@ -20,7 +20,7 @@ describe('<RadioGroup>', () => {
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
-    it('renders correctly with custom attr prop', () => {
+    it.skip('renders correctly with custom attr prop', () => {
       const { component, styles, } = felaSnapshotter(
         <RadioGroup
           attrs={{ testAttr: 'test', }}
@@ -34,7 +34,7 @@ describe('<RadioGroup>', () => {
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
-    it('renders correctly with defaultValue prop', () => {
+    it.skip('renders correctly with defaultValue prop', () => {
       const { component, styles, } = felaSnapshotter(
         <RadioGroup
           defaultValue="2"
@@ -48,7 +48,7 @@ describe('<RadioGroup>', () => {
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
-    it('renders correctly with a Note', () => {
+    it.skip('renders correctly with a Note', () => {
       const { component, styles, } = felaSnapshotter(
         <RadioGroup
           name="testName"
@@ -63,7 +63,7 @@ describe('<RadioGroup>', () => {
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
-    it('renders correctly with a Error Note', () => {
+    it.skip('renders correctly with a Error Note', () => {
       const { component, styles, } = felaSnapshotter(
         <RadioGroup
           isError
@@ -79,7 +79,7 @@ describe('<RadioGroup>', () => {
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
-    it('renders correctly with a custom NoteId', () => {
+    it.skip('renders correctly with a custom NoteId', () => {
       const { component, styles, } = felaSnapshotter(
         <RadioGroup
           isError
@@ -97,7 +97,7 @@ describe('<RadioGroup>', () => {
       expect(styles).toMatchSnapshot();
     });
 
-    it('renders correctly with a value prop', () => {
+    it.skip('renders correctly with a value prop', () => {
       const { component, styles, } = felaSnapshotter(
         <RadioGroup
           value="2"

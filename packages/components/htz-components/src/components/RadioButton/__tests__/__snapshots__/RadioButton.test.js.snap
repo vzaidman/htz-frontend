@@ -1,41 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RadioButton> DOM element renders correctly with a checked and onChange func passed 1`] = `
-<div>
-  <label
-    className="htz-a htz-b htz-c"
-    htmlFor="123456789"
-  >
-    <input
-      checked={true}
-      id="123456789"
-      onBlur={[Function]}
-      onChange={[MockFunction]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      type="radio"
-    />
-    <div
-      className="htz-d htz-e htz-f htz-g htz-h htz-i htz-a htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
-    >
-      <div
-        className="htz-u htz-v htz-w htz-x htz-y htz-i htz-z htz-ab htz-ac"
-      />
-      <div
-        className="htz-u htz-y htz-ae htz-af htz-ag htz-i htz-z htz-ah htz-m htz-n htz-o htz-ai htz-aj htz-ak htz-s htz-t"
-      />
-    </div>
-    <div
-      className="htz-al"
-    >
-      labelRed
-    </div>
-  </label>
-</div>
-`;
-
-exports[`<RadioButton> DOM element renders correctly with a checked and onChange func passed 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{-webkit-box-align:baseline}.htz-d{position:relative}.htz-e{top:0.15em}.htz-f{height:1em}.htz-g{width:1em}.htz-h{flex-shrink:0}.htz-i{border-radius:50%}.htz-j{justify-content:center}.htz-k{align-items:center}.htz-l{background-color:#FFF}.htz-m{transition-property:all}.htz-n{border-width:1px}.htz-o{border-style:solid}.htz-p{border-color:#0B7EB5}.htz-q{-webkit-box-pack:center}.htz-r{-webkit-box-align:center}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{background-color:#0B7EB5}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{transform:translateY(-50%)}.htz-af{height:80%}.htz-ag{width:80%}.htz-ah{opacity:1}.htz-ai{border-color:white}.htz-aj{transition-duration:.3s}.htz-ak{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-al{margin-right:0.3em}"`;
-
 exports[`<RadioButton> DOM element renders correctly with a value prop 1`] = `
 <div>
   <label
@@ -197,14 +161,14 @@ exports[`<RadioButton> DOM element renders correctly with minimal required props
       className="htz-d htz-e htz-f htz-g htz-h htz-i htz-a htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t"
     >
       <div
-        className="htz-u htz-v htz-w htz-x htz-y htz-i htz-z htz-ab htz-ac"
+        className="htz-u htz-v htz-w htz-x htz-y htz-i htz-z htz-ab htz-ac htz-ae htz-af htz-ag"
       />
       <div
-        className="htz-u htz-y htz-ae htz-af htz-ag htz-i htz-z htz-ac htz-m htz-n htz-o htz-ah htz-ai htz-aj htz-s htz-t"
+        className="htz-u htz-y htz-ah htz-ai htz-aj htz-i htz-af htz-ab htz-m htz-n htz-o htz-ak htz-al htz-am htz-s htz-t"
       />
     </div>
     <div
-      className="htz-ak"
+      className="htz-an"
     >
       label
     </div>
@@ -212,7 +176,7 @@ exports[`<RadioButton> DOM element renders correctly with minimal required props
 </div>
 `;
 
-exports[`<RadioButton> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{-webkit-box-align:baseline}.htz-d{position:relative}.htz-e{top:0.15em}.htz-f{height:1em}.htz-g{width:1em}.htz-h{flex-shrink:0}.htz-i{border-radius:50%}.htz-j{justify-content:center}.htz-k{align-items:center}.htz-l{background-color:#FFF}.htz-m{transition-property:all}.htz-n{border-width:1px}.htz-o{border-style:solid}.htz-p{border-color:#0B7EB5}.htz-q{-webkit-box-pack:center}.htz-r{-webkit-box-align:center}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:8rem}.htz-w{width:8rem}.htz-x{left:50%}.htz-y{top:50%}.htz-z{background-color:#0B7EB5}.htz-ab{display:block}.htz-ac{opacity:0}.htz-ae{transform:translateY(-50%)}.htz-af{height:80%}.htz-ag{width:80%}.htz-ah{border-color:white}.htz-ai{transition-duration:.3s}.htz-aj{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ak{margin-right:0.3em}"`;
+exports[`<RadioButton> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{align-items:baseline}.htz-c{-webkit-box-align:baseline}.htz-d{position:relative}.htz-e{top:0.15em}.htz-f{height:1em}.htz-g{width:1em}.htz-h{flex-shrink:0}.htz-i{border-radius:50%}.htz-j{justify-content:center}.htz-k{align-items:center}.htz-l{background-color:#FFF}.htz-m{transition-property:all}.htz-n{border-width:1px}.htz-o{border-style:solid}.htz-p{border-color:#0B7EB5}.htz-q{-webkit-box-pack:center}.htz-r{-webkit-box-align:center}.htz-s{-webkit-transition-property:all}.htz-t{-moz-transition-property:all}.htz-u{position:absolute}.htz-v{height:3.5em}.htz-w{width:3.5em}.htz-x{left:50%}.htz-y{top:50%}.htz-z{display:block}.htz-ab{opacity:0}.htz-ac{pointer-events:none}.htz-ae{animation-direction:alternate}.htz-af{background-color:#0B7EB5}.htz-ag{animation-duration:0.5s}.htz-ah{transform:translateY(-50%)}.htz-ai{height:80%}.htz-aj{width:80%}.htz-ak{border-color:white}.htz-al{transition-duration:.3s}.htz-am{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-an{margin-right:0.3em}"`;
 
 exports[`<RadioButton> DOM element renders correctly with miscStyles prop 1`] = `
 <div>
