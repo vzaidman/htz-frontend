@@ -31,17 +31,13 @@ const formContStyle = theme => ({
   marginInlineStart: 'auto',
   marginInlineEnd: 'auto',
   textAlign: 'inline-start',
-  extend: [
-    theme.mq(
-      { until: 's', },
-      { paddingInlineStart: '4rem', paddingInlineEnd: '4rem', }
-    ),
-  ],
+  extend: [ theme.mq({ until: 's', }, { paddingInlineStart: '4rem', paddingInlineEnd: '4rem', }), ],
 });
 
-const changeEmailContStyle = {
+const formHeaderStyle = {
   display: 'flex',
   justifyContent: 'space-between',
+  marginBottom: '3rem',
 };
 
 const textInputStyle = {
@@ -123,9 +119,11 @@ class LoginOrRegisterStage extends React.Component {
                                 <Form
                                   // dont clear the form if there is no email saved in state
                                   clearFormAfterSubmit={false}
-                                  {...email && {
-                                    initialValues: { email, },
-                                  }}
+                                  {...(email
+                                    ? {
+                                        initialValues: { email, },
+                                      }
+                                    : {})}
                                   onSubmit={fields => {
                                     console.log('submitting');
                                     submitForm({
@@ -143,6 +141,7 @@ class LoginOrRegisterStage extends React.Component {
                                         this.setState(newState);
                                       },
                                       registerOrLoginStage,
+                                      openResetPasswordModal: this.openModal,
                                     });
                                   }}
                                   validate={fields =>
@@ -156,27 +155,23 @@ class LoginOrRegisterStage extends React.Component {
                                   }
                                   render={({ getInputProps, handleSubmit, }) => (
                                     <FelaComponent style={formContStyle}>
-                                      {/* render form header only when user is registering and nothing is loading */}
-                                      {registerOrLoginStage === 'register' && (
-                                        <FelaComponent
-                                          style={changeEmailContStyle}
-                                        >
+                                      {/* render form header only when user is registering or loging in and nothing is loading */}
+                                      {registerOrLoginStage === 'register' ||
+                                      registerOrLoginStage === 'login' ? (
+                                        <FelaComponent style={formHeaderStyle}>
                                           <FelaComponent
                                             style={theme => ({
                                               extend: [ theme.type(2), ],
                                             })}
                                             render={({ className, }) => (
                                               <H className={className}>
-                                                {form.registerHeader.header}
+                                                {form.registerHeader.header[registerOrLoginStage]}
                                               </H>
                                             )}
                                           />
                                           <FelaComponent
                                             style={theme => ({
-                                              color: theme.color(
-                                                'loginOrRegister',
-                                                'inFormText'
-                                              ),
+                                              color: theme.color('loginOrRegister', 'inFormText'),
                                               extend: [ theme.type(-1), ],
                                             })}
                                             render={({ className, }) => (
@@ -186,30 +181,39 @@ class LoginOrRegisterStage extends React.Component {
                                                 ref={node => {
                                                   this.signUpButton = node;
                                                 }}
-                                                onClick={() => {
-                                                  this.setState({
-                                                    email: null,
-                                                  });
-                                                  updateRegisterOrLoginStage(
-                                                    'checkEmail'
-                                                  );
-                                                }}
+                                                onClick={
+                                                  registerOrLoginStage === 'register'
+                                                    ? () => {
+                                                        this.setState({
+                                                          email: null,
+                                                        });
+                                                        updateRegisterOrLoginStage('checkEmail');
+                                                      }
+                                                    : evt => {
+                                                        this.openModal(evt);
+                                                      }
+                                                }
                                               >
-                                                {form.registerHeader.buttonText}{' '}
+                                                {
+                                                  form.registerHeader.buttonText[
+                                                    registerOrLoginStage
+                                                  ]
+                                                }{' '}
                                                 <FelaComponent
                                                   style={{ fontWeight: 'bold', }}
                                                   render="span"
                                                 >
                                                   {
-                                                    form.registerHeader
-                                                      .buttonTextBold
+                                                    form.registerHeader.buttonTextBold[
+                                                      registerOrLoginStage
+                                                    ]
                                                   }
                                                 </FelaComponent>
                                               </button>
                                             )}
                                           />
                                         </FelaComponent>
-                                      )}
+                                      ) : null}
 
                                       <TextInput
                                         {...getInputProps({
@@ -229,8 +233,7 @@ class LoginOrRegisterStage extends React.Component {
                                       />
                                       <Fragment>
                                         {/* render password input when registering or logging in */}
-                                        {registerOrLoginStage !==
-                                          'checkEmail' && (
+                                        {registerOrLoginStage !== 'checkEmail' ? (
                                           <Fragment>
                                             <TextInput
                                               {...getInputProps({
@@ -247,8 +250,7 @@ class LoginOrRegisterStage extends React.Component {
                                                       ? 'noteTextLogin'
                                                       : 'noteTextRegister'
                                                   ],
-                                                  form.password
-                                                    .forgotPasswordText,
+                                                  form.password.forgotPasswordText,
                                                   this.openModal,
                                                   this.state.userExists,
                                                   el => {
@@ -259,13 +261,10 @@ class LoginOrRegisterStage extends React.Component {
                                               miscStyles={textInputStyle}
                                             />
                                             {/* render first and last name inputs if the user does not exist */}
-                                            {registerOrLoginStage ===
-                                              'register' && (
+                                            {registerOrLoginStage === 'register' ? (
                                               <Grid gutter={2}>
                                                 <GridItem
-                                                  width={[
-                                                    { until: 'm', value: 1, },
-                                                  ]}
+                                                  width={[ { until: 'm', value: 1, }, ]}
                                                   miscStyles={{
                                                     maxWidth: [
                                                       {
@@ -279,19 +278,15 @@ class LoginOrRegisterStage extends React.Component {
                                                     {...getInputProps({
                                                       variant: 'primary',
                                                       name: 'firstName',
-                                                      label:
-                                                        form.firstName.label,
-                                                      noteText:
-                                                        form.firstName.noteText,
+                                                      label: form.firstName.label,
+                                                      noteText: form.firstName.noteText,
                                                       maxLength: 40,
                                                       miscStyles: textInputStyle,
                                                     })}
                                                   />
                                                 </GridItem>
                                                 <GridItem
-                                                  width={[
-                                                    { until: 'm', value: 1, },
-                                                  ]}
+                                                  width={[ { until: 'm', value: 1, }, ]}
                                                   miscStyles={{
                                                     maxWidth: [
                                                       {
@@ -305,22 +300,17 @@ class LoginOrRegisterStage extends React.Component {
                                                     {...getInputProps({
                                                       variant: 'primary',
                                                       name: 'lastName',
-                                                      label:
-                                                        form.lastName.label,
-                                                      noteText:
-                                                        form.lastName.noteText,
+                                                      label: form.lastName.label,
+                                                      noteText: form.lastName.noteText,
                                                       maxLength: 40,
                                                       miscStyles: textInputStyle,
                                                     })}
                                                   />
                                                 </GridItem>
                                               </Grid>
-                                            )}
+                                            ) : null}
                                             <FelaComponent
-                                              render={({
-                                                className,
-                                                theme,
-                                              }) => (
+                                              render={({ className, theme, }) => (
                                                 <CheckBox
                                                   {...getInputProps({
                                                     name: 'terms',
@@ -330,19 +320,14 @@ class LoginOrRegisterStage extends React.Component {
                                                     variant: 'primary',
                                                     label: (
                                                       <Fragment>
-                                                        {this.state
-                                                          .userExists ? (
-                                                            <Fragment>
-                                                              {
-                                                              form.terms
-                                                                .loginText
-                                                            }
-                                                            </Fragment>
+                                                        {this.state.userExists ? (
+                                                          <Fragment>
+                                                            {form.terms.loginText}
+                                                          </Fragment>
                                                         ) : (
                                                           <Fragment>
                                                             {
-                                                              form.terms
-                                                                .register
+                                                              form.terms.register
                                                                 .labelBeforeTermsButton
                                                             }{' '}
                                                             <FelaComponent
@@ -358,27 +343,17 @@ class LoginOrRegisterStage extends React.Component {
                                                                   ),
                                                                 },
                                                               })}
-                                                              render={({
-                                                                className,
-                                                              }) => (
+                                                              render={({ className, }) => (
                                                                 <a
-                                                                  className={
-                                                                    className
-                                                                  }
+                                                                  className={className}
                                                                   href={
-                                                                    form.terms
-                                                                      .register
-                                                                      .href[
-                                                                      site
-                                                                    ]
+                                                                    form.terms.register.href[site]
                                                                   }
                                                                   target="_blank"
                                                                   rel="noopener noreferrer"
                                                                 >
                                                                   {
-                                                                    form.terms
-                                                                      .register
-                                                                      .labelTerms[
+                                                                    form.terms.register.labelTerms[
                                                                       site
                                                                     ]
                                                                   }
@@ -386,16 +361,14 @@ class LoginOrRegisterStage extends React.Component {
                                                               )}
                                                             />
                                                             {
-                                                              form.terms
-                                                                .register
+                                                              form.terms.register
                                                                 .labelAfterTermsButton
                                                             }
                                                           </Fragment>
                                                         )}
                                                       </Fragment>
                                                     ),
-                                                    noteText:
-                                                      form.terms.noteText[site],
+                                                    noteText: form.terms.noteText[site],
                                                     formElementType: 'checkBox',
                                                     miscStyles: {
                                                       marginTop: '3rem',
@@ -405,7 +378,7 @@ class LoginOrRegisterStage extends React.Component {
                                               )}
                                             />
                                           </Fragment>
-                                        )}
+                                        ) : null}
                                         <A11yError
                                           errorText={this.state.error || ''}
                                           miscStyles={{
@@ -415,18 +388,18 @@ class LoginOrRegisterStage extends React.Component {
                                         />
                                         <Button
                                           variant="primaryOpaque"
-                                          {...this.state.loading && {
-                                            isBusy: true,
-                                          }}
+                                          {...(this.state.loading
+                                            ? {
+                                                isBusy: true,
+                                              }
+                                            : {})}
                                           onClick={evt => {
                                             handleSubmit(evt);
                                             biAction({
                                               actionCode:
-                                                registerOrLoginStage ===
-                                                'checkEmail'
+                                                registerOrLoginStage === 'checkEmail'
                                                   ? 107
-                                                  : registerOrLoginStage ===
-                                                    'login'
+                                                  : registerOrLoginStage === 'login'
                                                     ? 30
                                                     : 27,
                                               additionalInfo: {

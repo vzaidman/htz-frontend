@@ -1,5 +1,7 @@
-import pathGenerator from '../utils/pathGenerator';
+import React from 'react';
 import { pixelEvent, } from '@haaretz/htz-components';
+import { FelaComponent, } from 'react-fela';
+import pathGenerator from '../utils/pathGenerator';
 
 const submitForm = ({
   gaAction,
@@ -18,6 +20,7 @@ const submitForm = ({
   router,
   setState,
   registerOrLoginStage,
+  openResetPasswordModal,
 }) => {
   if (registerOrLoginStage === 'checkEmail') {
     setState({ loading: true, email, });
@@ -68,8 +71,28 @@ const submitForm = ({
         });
       })
       .catch(error => {
+        let displayError = error.message || 'שגיאה במערכת ההתחברות, אנא נסו שוב';
+        if (displayError === 'הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת') {
+          displayError = (
+            <FelaComponent style={{ fontWeight: 'normal', }} render="span">
+              הסיסמא שהזנתם שגויה, נסו שנית או -{' '}
+              <FelaComponent
+                style={{ fontWeight: 700, }}
+                render={({ className, }) => (
+                  <button
+                    className={className}
+                    type="button"
+                    onClick={evt => openResetPasswordModal(evt)}
+                  >
+                    החליפו סיסמא
+                  </button>
+                )}
+              />
+            </FelaComponent>
+          );
+        }
         setState({
-          error: error.message || 'שגיאה במערכת ההתחברות, אנא נסו שוב',
+          error: displayError,
           loading: false,
         });
         gaAction({

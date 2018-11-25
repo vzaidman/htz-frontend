@@ -257,7 +257,7 @@ export const stage3 = Object.freeze({
     // registerBoldFirstLine: 'ברוכים הבאים!',
     dynamicTextNewLineLoginStage: Object.freeze({
       checkEmail: [ 'כעת הזינו אימייל, שישמש לכניסה לאתר', ],
-      login: [ 'כעת הזינו את הסיסמה שלכם לאתר', ],
+      login: [ 'כעת הזינו את הסיסמא איתה נרשמתם בעבר לאתר', ],
       register: [ 'כעת השלימו את ההרשמה לאתר', ],
     }),
   }),
@@ -269,9 +269,9 @@ export const stage3 = Object.freeze({
   currencySymbol: '₪',
   form: Object.freeze({
     registerHeader: Object.freeze({
-      header: 'הרשמה',
-      buttonText: 'כבר רשומים?',
-      buttonTextBold: 'החליפו כתובת דוא"ל',
+      header: Object.freeze({ register: 'הרשמה', login: 'התחברות', }),
+      buttonText: Object.freeze({ register: 'כבר רשומים?', login: 'לא זוכרים את הסיסמא?', }),
+      buttonTextBold: Object.freeze({ register: 'החליפו כתובת דוא"ל', login: 'החליפו סיסמא', }),
     }),
     email: Object.freeze({
       errorText: 'נא למלא כתובת דוא"ל',
@@ -318,8 +318,7 @@ export const stage3 = Object.freeze({
         labelAfterTermsButton:
           ', וכן קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ - TheMarker',
       }),
-      loginText:
-        'אני מאשר/ת קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ - TheMarker',
+      loginText: 'אני מאשר/ת קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ - TheMarker',
     }),
     continueButton: Object.freeze({
       text: 'המשך',
@@ -428,8 +427,7 @@ export const stage5 = Object.freeze({
   currencySymbol: '₪',
   existingCreditCard: Object.freeze({
     buttonText: 'נסו שוב',
-    errorText:
-      'לא הצלחנו לקבל תשובה מהשרת. אנא נסו שוב. אם התקלה חוזרת, בחרו באמצעי תשלום אחר.',
+    errorText: 'לא הצלחנו לקבל תשובה מהשרת. אנא נסו שוב. אם התקלה חוזרת, בחרו באמצעי תשלום אחר.',
   }),
 });
 
@@ -475,9 +473,7 @@ export const newsletterI18n = Object.freeze({
   }),
   texts: Object.freeze({
     newsletterTitle: site =>
-      `קבלו את ${
-        site === 'tm' ? 'TheMarker' : 'הארץ'
-      } בכל בוקר לתיבת האימייל שלכם`,
+      `קבלו את ${site === 'tm' ? 'TheMarker' : 'הארץ'} בכל בוקר לתיבת האימייל שלכם`,
     newsletterButton: 'הרשמה בקליק',
     newsletterConfirmedTitleText: Object.freeze({
       ok: 'תודה שנרשמת',
