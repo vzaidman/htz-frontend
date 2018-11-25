@@ -15,7 +15,7 @@ import QuoteSummary from '../../components/QuotePageComponents/QuoteSummary/Quot
 import QuoteInfoTable from '../../components/QuotePageComponents/QuoteInfoTable/QuoteInfoTable';
 import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
-import ShareHoldersTable from '../../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
+import ShareHolders from '../../components/QuotePageComponents/ShareHolders/ShareHolders';
 import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/RelatedAssets';
 
 const BondQuery: DocumentNode = gql`
@@ -269,7 +269,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                             fields={[
                               { name: 'retailTax', display: 'מס ליחידים', },
                               { name: 'linkageType', display: 'סוג הצמדה', },
-                              { name: 'expirationBenchmarkDate', display: 'תאריך מדד בסיס', type: 'date', },
+                              { name: 'expirationBenchmarkDates', display: 'תאריך מדד בסיס', type: 'date', },
                               { name: 'periodicalInterestDate', display: 'תאריך ריבית תקופתית', type: 'date', },
                               { name: 'paymentDate', display: 'תאריך תשלום', type: 'date', },
                             ]}
@@ -277,6 +277,37 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                         </GridItem>
                       </Grid>
                     </RowItem>
+                  </PageRow>
+                  <PageRow>
+                    <Grid
+                      gutter={2}
+                      miscStyles={{
+                        paddingStart: '0rem',
+                        paddingEnd: '0rem',
+                      }}
+                    >
+                      <GridItem
+                        width={2 / 3}
+                      >
+                        <RowItem
+                          title="תחזית אירועים"
+                          miscStyles={{ marginBottom: '2rem', }}
+                        >
+                          <QuoteInfoTable
+                            id={assetId}
+                            fields={[
+                              { name: 'peRatio', display: 'מכפיל רווח', },
+                              { name: 'pbRatio', display: 'מכפיל הון', },
+                              { name: 'roe', display: 'תשואה על ההון העצמי', },
+                              { name: 'psRatio', display: 'מכפיל מכירות', },
+                            ]}
+                          />
+                        </RowItem>
+                      </GridItem>
+                      <GridItem
+                        width={1 / 3}
+                      />
+                    </Grid>
                   </PageRow>
                   <PageRow>
                     <Grid
@@ -310,9 +341,7 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                         <RowItem
                           title="בעלי עניין קונצרני"
                         >
-                          <ShareHoldersTable
-                            shareHolders={shareHolders}
-                          />
+                          <ShareHolders data={shareHolders} />
                         </RowItem>
                       </GridItem>
                     </Grid>

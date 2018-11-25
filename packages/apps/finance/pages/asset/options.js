@@ -16,7 +16,7 @@ import GraphController from '../../components/GraphController/GraphController';
 import QuoteInfoTable from '../../components/QuotePageComponents/QuoteInfoTable/QuoteInfoTable';
 import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
-import ShareHoldersTable from '../../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
+import ShareHolders from '../../components/QuotePageComponents/ShareHolders/ShareHolders';
 
 const OptionQuery: DocumentNode = gql`
   query OptionData($assetId: String!) {
@@ -319,7 +319,7 @@ function options({
                       </GridItem>
                       <GridItem width={2 / 3}>
                         <RowItem title="בעלי עניין קונצרני">
-                          <ShareHoldersTable shareHolders={shareHolders} />
+                          <ShareHolders data={shareHolders} />
                         </RowItem>
                       </GridItem>
                     </Grid>

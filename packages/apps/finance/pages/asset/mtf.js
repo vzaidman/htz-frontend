@@ -16,7 +16,7 @@ import QuoteInfoTable from '../../components/QuotePageComponents/QuoteInfoTable/
 import VolumeGraph from '../../components/Graph/graphs/Volume/Volume';
 import YieldGraph from '../../components/Graph/graphs/Yield/Yield';
 import RelatedAssets from '../../components/QuotePageComponents/RelatedAssets/RelatedAssets';
-import ShareHoldersTable from '../../components/QuotePageComponents/ShareHoldersTable/ShareHoldersTable';
+import ShareHolders from '../../components/QuotePageComponents/ShareHolders/ShareHolders';
 import QuoteAssetsTable from '../../components/QuotePageComponents/QuoteAssetsTable/QuoteAssetsTable';
 
 const MtfQuery: DocumentNode = gql`
@@ -416,9 +416,7 @@ function mtf({ url: { query: { section, assetId, }, }, }: Props): Node {
                         <RowItem
                           title="בעלי עניין קונצרני"
                         >
-                          <ShareHoldersTable
-                            shareHolders={shareHolders}
-                          />
+                          <ShareHolders data={shareHolders} />
                         </RowItem>
                       </GridItem>
                     </Grid>
