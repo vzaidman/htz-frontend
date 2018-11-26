@@ -11,8 +11,8 @@ services:
     - 3209:3209
     command: ['yarn', 'workspace', '@haaretz/haaretz.co.il', 'start:gql']
     environment:
-    - NODE_ENV=development
-    - CONNECTION_PRESET=stage
+    - NODE_ENV=production
+    - CONNECTION_PRESET=prod
     - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
     # the following environment is optional
     - PORT=3209
