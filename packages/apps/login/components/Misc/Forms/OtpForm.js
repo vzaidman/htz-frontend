@@ -7,6 +7,7 @@ import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponent
 import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 import Preloader from '../../Misc/Preloader';
+import { loginWithFacebook, getFacebookParams, } from '../../../util/facebookLoginUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -21,13 +22,20 @@ const validateSmsCodeInput = ({ smsCode, }) =>
     ? generateSmsCodeError('אנא הזינו את הקוד שנשלח אליכם')
     : []);
 
-const onSubmit = ({ client, host, loginWithMobile, showError, hideError, setPreloader, }) => ({ smsCode, termsChk, }) => {
+const getFacebookLogin = (user) => {
+  const facebookParams = getFacebookParams(user.type, user.id);
+  return facebookParams ?
+    loginWithFacebook(facebookParams) :
+    false;
+}
+
+const onSubmit = ({ client, host, user, loginWithMobile, showError, hideError, setPreloader, }) => ({ smsCode, termsChk, }) => {
   setPreloader(true);
   hideError();
   loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, getOtpHash(client))
     .then(
       // eslint-disable-next-line no-undef
-      () => { window.location = `https://www.${host}`; },
+      () => { window.location = getFacebookLogin(user) || `https://www.${host}`; },
       reason => {
         setPreloader(false);
         showError((reason.message || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."))
@@ -99,7 +107,7 @@ class OtpForm extends Component {
   
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { client, findRout, doTransition, } = this.props;
+    const { client, findRout, doTransition, user, } = this.props;
     const host = getHost(client);
 
     return (
@@ -117,7 +125,7 @@ class OtpForm extends Component {
               clearFormAfterSubmit={false}
               // initialValues={{ email: 'insert email' }}
               validate={validateSmsCodeInput}
-              onSubmit={onSubmit({ host, client, loginWithMobile, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, })}
+              onSubmit={onSubmit({ host, client, user, loginWithMobile, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, })}
               render={({ getInputProps, handleSubmit, clearForm, }) => (
                 <Fragment>
                   <div>
