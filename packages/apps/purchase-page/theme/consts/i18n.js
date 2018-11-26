@@ -257,7 +257,7 @@ export const stage3 = Object.freeze({
     // registerBoldFirstLine: 'ברוכים הבאים!',
     dynamicTextNewLineLoginStage: Object.freeze({
       checkEmail: [ 'כעת הזינו אימייל, שישמש לכניסה לאתר', ],
-      login: [ 'כעת הזינו את הסיסמא איתה נרשמתם בעבר לאתר', ],
+      login: [ 'כעת הזינו את הסיסמה שאיתה נרשמתם בעבר לאתר', ],
       register: [ 'כעת השלימו את ההרשמה לאתר', ],
     }),
   }),
@@ -270,8 +270,8 @@ export const stage3 = Object.freeze({
   form: Object.freeze({
     registerHeader: Object.freeze({
       header: Object.freeze({ register: 'הרשמה', login: 'התחברות', }),
-      buttonText: Object.freeze({ register: 'כבר רשומים?', login: 'לא זוכרים את הסיסמא?', }),
-      buttonTextBold: Object.freeze({ register: 'החליפו כתובת דוא"ל', login: 'החליפו סיסמא', }),
+      buttonText: Object.freeze({ register: 'כבר רשומים?', login: 'לא זוכרים את הסיסמה?', }),
+      buttonTextBold: Object.freeze({ register: 'החליפו כתובת דוא"ל', login: 'החליפו סיסמה', }),
     }),
     email: Object.freeze({
       errorText: 'נא למלא כתובת דוא"ל',
@@ -292,9 +292,9 @@ export const stage3 = Object.freeze({
       label: 'שם משפחה',
     }),
     password: Object.freeze({
-      errorTextNoPassword: 'נא למלא סיסמה',
+      errorTextNoPassword: 'נא למלא את הסיסמה שאיתה נרשמתם בעבר לאתר',
       errorTextUnderFiveChars: 'יש להזין סיסמה בת 6 תווים ומעלה',
-      noteTextLogin: 'נא למלא סיסמה',
+      noteTextLogin: 'נא למלא את הסיסמה שאיתה נרשמתם בעבר לאתר',
       noteTextRegister: 'נא לבחור סיסמה',
       label: 'סיסמה',
       forgotPasswordText: 'שכחתי סיסמה',
