@@ -15,6 +15,9 @@ const windowError = () => {
   console.warn("could not redirect to facebook login - window is undefined");
 }
 
+/**
+ * builds and returns the full url for facebook login
+ */
 const buildRedirectUrl = ({params,}) => {
   return `${FACEBOOK_LOGIN_PATH}?account_linking_token=${token}&subscription_status=${subscription}&publisher_user_id=${userid}&redirect_uri=${redirect}`;
 }
@@ -26,9 +29,10 @@ const buildRedirectUrl = ({params,}) => {
  * returns the facebook's login url for redirection (when reaching login via instant article)
  */
 const loginWithFacebook = (params) => {
-  if (params.token && params.subscription && params.userid && params.redirect) {
+  if (params && (params.token && params.subscription && params.userid && params.redirect)) {
     return buildRedirectUrl(params);
   } else {
+    console.warn("could not redirect to facebook login - missing params");
     return false;
   }
 }
