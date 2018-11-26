@@ -41,6 +41,6 @@ module.exports = {
   assetPrefix: '',
   enableHttpLogging: false,
   // todo: ask tomer if we will add a staging graphql-server with different subDomain
-  graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'graphql-dev',
+  graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'graphql-prod',
   graphQLPort: process.env.GRAPHQL_PORT || '4004',
 };
