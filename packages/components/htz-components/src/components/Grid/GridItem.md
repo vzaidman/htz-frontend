@@ -1,15 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
-
-- [**Basic Usage**](#basic-usage)
-- [**Offset**](#offset)
-- [**Rule**](#rule)
-- [**DOM Element Attributes**](#dom-element-attributes)
-- [**Custom Tag**](#custom-tag)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 `<GridItem />`s may only be placed as the direct descendants of a grid container.
 
 Each `<GridItem>` has padding the length of half a single gutter at its left and 
@@ -218,6 +206,48 @@ const fpo = {
 </Grid>
 ```
 
+#### Stretching Content to Fill Heigh
+
+The `strethContent` prop forces the `<GridItem>` to stretch its content to fill
+its own height, which in the default case, where the `<Grid>`'s `vAlign` prop is
+unset (hence implicitly set to `stretch`), would mean the height of the tallest
+`<GridItem>` in the same line of the `<Grid>`.
+
+```jsx
+const TextPlaceholder = ({ width, height = '6rem', marginBottom='2rem', }) => (
+  <div style={{ width, height, backgroundColor: '#ddd', marginBottom, }} />
+);
+
+<div style={{ padding: '4rem', backgroundColor: '#eee', }}>
+  <p style={{ marginBottom: '2rem', marginTop: '-2rem', }}>The content is stretched to the height of the Image: </p>
+  <Card fillHeight>
+    <Grid gutter={0}>
+      <GridItem width={1/3} stretchContent>
+        <img style={{maxWidth: '100%'}} src="https://source.unsplash.com/ZiJ9QGRCVEg/600x400" />
+      </GridItem>
+      <GridItem stretchContent>
+        <CardContent padding={4}>
+          <TextPlaceholder width="80%" />
+          <TextPlaceholder width="60%" marginBottom="4rem" />
+          <TextPlaceholder width="85%" height="3rem" />
+          <TextPlaceholder width="65%" height="3rem" />
+        </CardContent>
+        <CardFooter
+          padding={[ 2, 4, ]}
+          tagName="footer"
+          seperator
+        >
+          <TextPlaceholder width="45%" height="3rem" marginBottom="0" />
+        </CardFooter>
+      </GridItem>
+    </Grid>
+  </Card>
+</div>
+```
+
+
+See <code>[width](#responsiveWidth)</code> for a live example of using 
+responsive values.
 
 
 #### **DOM Element Attributes**

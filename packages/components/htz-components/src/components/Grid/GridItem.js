@@ -54,7 +54,7 @@ GridItem.propTypes = {
     ),
   ]),
   /**
-   * The color and width (in pixels) of a vertical devider rule placed at the end of
+   * The color and width (in pixels) of a vertical divider rule placed at the end of
    * the `<GridItem />`'s gutter.
    * Can be set responsively.
    */
@@ -80,6 +80,22 @@ GridItem.propTypes = {
             ]).isRequired,
           }),
         ]).isRequired,
+      })
+    ),
+  ]),
+  /**
+   * Determines if elements inside the `<GridItem />`
+   * are stretched to fill the height of the tallest
+   * `<GridItem />` in the same line of the `<Grid />`
+   *
+   * Can be set responsively.
+   */
+  stretchContent: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        ...responsivePropBaseType,
+        value: PropTypes.bool.isRequired,
       })
     ),
   ]),
@@ -120,6 +136,7 @@ GridItem.defaultProps = {
   gutter: null,
   offset: null,
   rule: null,
+  stretchContent: false,
   tagName: 'div',
   width: null,
   miscStyles: null,
@@ -132,6 +149,7 @@ const gridItemStyles = ({
   gutter,
   offset,
   rule,
+  stretchContent,
   width,
   miscStyles,
   theme,
@@ -147,6 +165,16 @@ const gridItemStyles = ({
   paddingRight: `${gutter / 2}rem`,
 
   extend: [
+    ...(stretchContent
+      ? [
+        parseComponentProp(
+          'stretchContent',
+          stretchContent,
+          theme.mq,
+          contentStretcher
+        ),
+      ]
+      : []),
     // Offset an item from the previous item (or the begining of the grid)
     ...(offset
       ? [ parseComponentProp('offset', offset, theme.mq, setOffset), ]
@@ -165,6 +193,15 @@ const gridItemStyles = ({
 // ///////////////// //
 //  Styling Helpers  //
 // ///////////////// //
+function contentStretcher(prop, stretchContent) {
+  return stretchContent
+    ? {
+      display: 'flex',
+      flexDirection: 'column',
+    }
+    : {};
+}
+
 function setOffset(prop, offset) {
   const offsetInPercent = `${offset * 100}%`;
   return {
@@ -222,6 +259,7 @@ export default function GridItem({
   id,
   offset,
   rule,
+  stretchContent,
   tagName,
   width,
   attrs,
@@ -233,6 +271,7 @@ export default function GridItem({
         gutter,
         offset,
         rule,
+        stretchContent,
         width,
         miscStyles,
       }}

@@ -9,11 +9,13 @@ import setColor from '../../utils/setColor';
 export type cardStyleOptions = {
   /** A Fela theme object */
   theme: Object,
-  backgroundColor: | ?string
+  backgroundColor:
+    | ?string
     | [string]
     | [string, string]
     | ComponentPropResponsiveObject<string | [string] | [string, string]>[],
   isElevated: ?true,
+  fillHeight: ?boolean | ComponentPropResponsiveObject<boolean>[],
   miscStyles: ?StyleProps
 };
 
@@ -21,6 +23,7 @@ export default function cardStyleRule({
   theme,
   backgroundColor,
   isElevated,
+  fillHeight,
   miscStyles,
 }: cardStyleOptions): Object {
   const { cardStyle, } = theme;
@@ -45,8 +48,23 @@ export default function cardStyleRule({
         setColor,
         theme.color
       ),
+      // fill height of parent
+      ...[
+        fillHeight
+          ? parseComponentProp(
+            'fillHeight',
+            fillHeight,
+            theme.mq,
+            setFillHeight
+          )
+          : {},
+      ],
       // Trump all other styles with those defined in `miscStyles`
       ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
     ],
   };
+}
+
+function setFillHeight(prop: string, shouldFillHeight: boolean): Object {
+  return shouldFillHeight ? { height: '100%', } : {};
 }

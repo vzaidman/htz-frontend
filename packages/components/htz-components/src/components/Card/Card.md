@@ -196,6 +196,103 @@ prop
 </div>
 ```
 
+### Filling Container Height
+
+In lists, it is often desirable to have cards fill their parent's height, so they
+are in line with other elements in a grid, which can be done by setting the 
+`fillHeight` prop to `true`.
+
+```jsx
+const TextPlaceholder = ({ width, height = '6rem', marginBottom='2rem', }) => 
+  (<div style={{ width, height, backgroundColor: '#ddd', marginBottom, }} />);
+
+<div style={{ padding: '2rem', backgroundColor: '#eee', }}>
+  <Grid>
+    <GridItem width={1/3}>
+      <Card fillHeight>
+        <CardContent padding={4}>
+          <TextPlaceholder width="80%" />
+          <TextPlaceholder width="90%" />
+          <TextPlaceholder width="60%" marginBottom="4rem" />
+          <TextPlaceholder width="90%" height="3rem" />
+          <TextPlaceholder width="95%" height="3rem" />
+          <TextPlaceholder width="85%" height="3rem" />
+          <TextPlaceholder width="65%" height="3rem" />
+        </CardContent>
+        <CardFooter
+          padding={[ 2, 4, ]}
+          tagName="footer"
+          seperator
+        >
+          <TextPlaceholder width="45%" height="3rem" marginBottom="0" />
+        </CardFooter>
+      </Card>
+    </GridItem>
+
+    <GridItem width={1/3}>
+      <Card fillHeight>
+        <CardContent padding={4}>
+          <TextPlaceholder width="80%" />
+          <TextPlaceholder width="60%" marginBottom="4rem" />
+          <TextPlaceholder width="90%" height="3rem" />
+          <TextPlaceholder width="65%" height="3rem" />
+        </CardContent>
+        <CardFooter
+          padding={[ 2, 4, ]}
+          tagName="footer"
+          seperator
+        >
+          <TextPlaceholder width="45%" height="3rem" marginBottom="0" />
+        </CardFooter>
+      </Card>
+    </GridItem>
+
+    <GridItem width={1/3}>
+      <Card fillHeight>
+        <CardContent padding={4}>
+          <TextPlaceholder width="80%" />
+          <TextPlaceholder width="90%" />
+          <TextPlaceholder width="70%" />
+          <TextPlaceholder width="60%" marginBottom="4rem" />
+          <TextPlaceholder width="90%" height="3rem" />
+          <TextPlaceholder width="95%" height="3rem" />
+          <TextPlaceholder width="95%" height="3rem" />
+          <TextPlaceholder width="85%" height="3rem" />
+          <TextPlaceholder width="65%" height="3rem" />
+        </CardContent>
+        <CardFooter
+          padding={[ 2, 4, ]}
+          tagName="footer"
+          seperator
+        >
+          <TextPlaceholder width="45%" height="3rem" marginBottom="0" />
+        </CardFooter>
+      </Card>
+    </GridItem>
+  </Grid>
+</div>
+```
+
+The `fillHeight` prop can be be set to different values for different breakpoints
+by providing an array of objects representing media queries, in the following 
+structure:
+
+```ts static
+{
+  from?: string,
+  until?: string,
+  misc?: string,
+  value: boolean // as mentioned above,
+}
+```
+
+``` jsx static
+<Card fillHeight={[
+    { until: 'xl', value: true },
+    { from: 'xl', value: false },
+  ]}
+/>
+```
 
 ### **Custom Styling**
 
