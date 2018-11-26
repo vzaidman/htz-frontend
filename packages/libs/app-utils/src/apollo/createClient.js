@@ -142,9 +142,30 @@ function create(initialState, appDefaultState, req) {
         __typename: 'Scroll',
       },
       user,
+      // ids of representedContent already rendered by a list on the page
+      listDuplicationIds: [],
     },
     resolvers: {
       Mutation: {
+        updateListDuplication: (_, variables, { cache, }) => {
+          const query = gql`
+            query {
+              listDuplicationIds @client
+            }
+          `;
+          const response = cache.readQuery({ query, });
+          const ids = [ ...response.listDuplicationIds, ];
+          variables.ids.forEach(id => {
+            // check if item already exists in list and if not push it in
+            if (ids.indexOf(id) === -1) ids.push(id);
+          });
+          const data = {
+            listDuplicationIds: ids,
+          };
+          cache.writeData({ data, });
+          // resolver needs to return something / null https://github.com/apollographql/apollo-link-state/issues/160
+          return { ids, };
+        },
         toggleZen: (_, variables, { cache, }) => {
           const query = gql`
             query {
