@@ -22,6 +22,10 @@ const PLATFORM_QUERY = gql`
   }
 `;
 
+// //////////////////////////////////////////////////////////////////////
+//                               Styles                                //
+// //////////////////////////////////////////////////////////////////////
+
 const outerStyle = ({ theme, miscStyles, }) => ({
   extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
@@ -69,12 +73,9 @@ const authorsAndTimeContStyle = theme => ({
   extend: [ theme.mq({ from: 'l', }, { marginTop: '0.5rem', }), ],
 });
 
-// const alertsAndDesktopTimeContStyle = theme => ({
-//   extend: [
-//     theme.mq({ until: 'l', }, { marginStart: 'auto', }),
-//     theme.mq({ from: 'l', }, { marginTop: '1rem', }),
-//   ],
-// });
+// //////////////////////////////////////////////////////////////////////
+//                         Time/Date funciton                          //
+// //////////////////////////////////////////////////////////////////////
 
 const shouldShowDate = ({ startTime, endTime, hours = 18, }) => {
   const MILISECS_IN_HOUR = 3600 * 1000;
@@ -84,7 +85,41 @@ const shouldShowDate = ({ startTime, endTime, hours = 18, }) => {
 const articleTimeFormat = (startTime, endTime) =>
   (shouldShowDate({ startTime, endTime, }) ? 'HH:mm' : 'DD.MM.YYYY');
 
+// //////////////////////////////////////////////////////////////////////
+//                           Main component                            //
+// //////////////////////////////////////////////////////////////////////
+
 class LiveBlogHeaderMeta extends React.Component {
+  static propTypes = {
+    /**
+     * An array of Article's authors
+     */
+    authors: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ]))
+      .isRequired,
+    /**
+     * The publishing date of the article
+     */
+    publishDate: PropTypes.instanceOf(Date).isRequired,
+    /**
+     * The modified date of the article
+     */
+    modifiedDate: PropTypes.instanceOf(Date),
+
+    isLiveUpdate: PropTypes.bool,
+    /**
+     * A special property holding miscellaneous CSS values that
+     * trump all default values. Processed by
+     * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+     */
+    miscStyles: stylesPropType,
+  };
+
+  static defaultProps = {
+    isLiveUpdate: false,
+    modifiedDate: null,
+    miscStyles: null,
+  };
+
   setModifiedDate = (modifiedDate, className) => {
     if (!modifiedDate) {
       return null;
@@ -92,16 +127,6 @@ class LiveBlogHeaderMeta extends React.Component {
     const format = articleTimeFormat(new Date(), modifiedDate);
     return <Time time={modifiedDate} format={`עודכן ב-${format}`} className={className} />;
   };
-
-  // constructor(props) {
-  //   super(props);
-  //   // this.state = {
-  //   //   isShowAuthorAlertsForm: false,
-  //   // };
-
-  //   // this.toggleAuthorAlertsForm = this.toggleAuthorAlertsForm.bind(this);
-  //   this.alertsToggleBtnRef = React.createRef();
-  // }
 
   displayDates = (publishDate, modifiedDate, className) => {
     if (new Date(publishDate).toDateString() === new Date(modifiedDate).toDateString()) {
@@ -129,32 +154,8 @@ class LiveBlogHeaderMeta extends React.Component {
     );
   };
 
-  // toggleAuthorAlertsForm = (biAction, platform) => {
-  //   this.setState(
-  //     prevState => ({
-  //       isShowAuthorAlertsForm: !prevState.isShowAuthorAlertsForm,
-  //     }),
-  //     () => {
-  //       if (!this.state.isShowAuthorAlertsForm) {
-  //         this.alertsToggleBtnRef.current.focus();
-  //       }
-  //       else {
-  //         biAction({
-  //           actionCode: 91,
-  //           additionalInfo: {
-  //             writer_id: this.props.authors[0].contentId,
-  //             platform,
-  //           },
-  //         });
-  //       }
-  //     }
-  //   );
-  // };
-
   render() {
     const { authors, publishDate, miscStyles, modifiedDate, isLiveUpdate, } = this.props;
-    console.warn('isLiveUpdate :' ,isLiveUpdate)
-    // reportingFrom
     return (
       <EventTracker>
         {({ biAction, }) => (
@@ -204,37 +205,6 @@ class LiveBlogHeaderMeta extends React.Component {
                                   }}
                                 />
                               ))}
-
-                              {/* {reportingFrom ? (
-                                <FelaComponent
-                                  style={{
-                                    color: theme.color('primary'),
-                                    extend: [
-                                      theme.type(-2, { fromBp: 'xl', }),
-                                      theme.type(-1, {
-                                        fromBp: 's',
-                                        untilBp: 'xl',
-                                      }),
-                                      theme.type(-2, { untilBp: 's', }),
-                                      theme.mq({ from: 'l', }, { display: 'block', }),
-                                      theme.mq(
-                                        {
-                                          until: 'l',
-                                        },
-                                        {
-                                          ':before': {
-                                            content: '" | "',
-                                          },
-                                        }
-                                      ),
-                                    ],
-                                  }}
-                                  render="span"
-                                >
-                                  {reportingFrom}
-                                </FelaComponent>
-                              ) : null} */}
-
                               <FelaComponent
                                 rule={timeStyle}
                                 mobileTime
@@ -256,15 +226,13 @@ class LiveBlogHeaderMeta extends React.Component {
                                 ],
                               }}
                               render={({ className, theme, }) => (
-                                <span className={className} >
+                                <span className={className}>
                                   <FelaComponent
                                     style={{
                                       color: theme.color('tertiary'),
                                       margin: 'auto',
                                       fontWeight: 'bold',
-                                      extend: [
-                                        theme.type(-2),
-                                      ],
+                                      extend: [ theme.type(-2), ],
                                     }}
                                     render={({ className, }) => (
                                       <span className={className}>
@@ -274,28 +242,19 @@ class LiveBlogHeaderMeta extends React.Component {
                                   />
                                   <FelaComponent
                                     style={{
-                                      height: '2rem',
-                                      width: '2rem',
+                                      height: '1.5rem',
+                                      width: '1.5rem',
                                       borderRadius: '50%',
                                       backgroundColor: theme.color('tertiary'),
-                                      margin: '1rem',
+                                      marginInlineStart: '1rem',
+                                      marginTop: '0.5rem',
                                     }}
-                                    render={({ className, }) => (<span className={className} />)}
+                                    render={({ className, }) => <span className={className} />}
                                   />
                                 </span>
                               )}
                             />
                           ) : null}
-                          {/* alerts and desktop time */}
-                          {/* <FelaComponent style={alertsAndDesktopTimeContStyle}>
-                            {authors.length === 1 && authors[0].hasEmailAlerts ? (
-                              <Alerts
-                                author={authors[0]}
-                                onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
-                                ref={this.alertsToggleBtnRef}
-                              />
-                            ) : null}
-                          </FelaComponent> */}
                           <FelaComponent
                             rule={timeStyle}
                             mobileTime={false}
@@ -306,21 +265,6 @@ class LiveBlogHeaderMeta extends React.Component {
                             )}
                           />
                         </div>
-
-                        {/*
-                        <SlideinBox
-                          show={authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm}
-                          duration={2}
-                          focus
-                          maxHeight={100}
-                        >
-                          <AuthorNotificationsRegistration
-                            author={authors[0]}
-                            platform={platform}
-                            biAction={biAction}
-                            onCancel={() => this.toggleAuthorAlertsForm(biAction, platform)}
-                          />
-                        </SlideinBox> */}
                       </Fragment>
                     )}
                   />
@@ -333,37 +277,5 @@ class LiveBlogHeaderMeta extends React.Component {
     );
   }
 }
-
-LiveBlogHeaderMeta.propTypes = {
-  /**
-   * An array of Article's authors
-   */
-  authors: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
-  /**
-   * The publishing date of the article
-   */
-  publishDate: PropTypes.instanceOf(Date).isRequired,
-  /**
-   * The modified date of the article
-   */
-  modifiedDate: PropTypes.instanceOf(Date),
-
-  isLiveUpdate: PropTypes.bool,
-
-  // reportingFrom: PropTypes.string,
-  /**
-   * A special property holding miscellaneous CSS values that
-   * trump all default values. Processed by
-   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
-   */
-  miscStyles: stylesPropType,
-};
-
-LiveBlogHeaderMeta.defaultProps = {
-  // reportingFrom: null,
-  isLiveUpdate: false,
-  modifiedDate: null,
-  miscStyles: null,
-};
 
 export default LiveBlogHeaderMeta;

@@ -30,7 +30,6 @@ Header.propTypes = {
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   headlineElement: PropTypes.shape({}).isRequired,
-  // reportingFrom: PropTypes.string.isRequired,
   isLiveUpdate: PropTypes.bool,
 };
 
@@ -100,7 +99,7 @@ function Header({
                             paddingInlineStart: theme.layoutStyle.startColumnPaddingXL,
                           }
                         ),
-                        theme.mq({ until: 's', }, { order: -1, marginTop: '2rem', }),
+                        theme.mq({ until: 's', }, { order: -1, marginTop: '2rem', marginBottom: '3rem', }),
                       ],
                     }}
                     render={({ className, }) => (
@@ -181,7 +180,6 @@ function Header({
                           // order: '-3',
                           height: '5rem',
                           width: '100%',
-                          // marginTop: '1rem',
                           backgroundColor: theme.color('tertiary'),
                           alignItems: 'center',
                           extend: [
@@ -197,6 +195,7 @@ function Header({
                                 // ...theme.mq({ from: 'l', }, { display: 'none', }),
                                 color: 'white',
                                 paddingInlineStart: '1rem',
+                                paddingTop: '0.3rem',
                                 fontWeight: 'bold',
                                 extend: [ theme.type(-2), ],
                               })}

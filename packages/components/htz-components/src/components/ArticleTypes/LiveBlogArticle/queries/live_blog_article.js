@@ -151,7 +151,6 @@ export default gql`
               cardId
               title
               titleMobile
-              keyEvent
               pubDate
               inputTemplate
               contentId

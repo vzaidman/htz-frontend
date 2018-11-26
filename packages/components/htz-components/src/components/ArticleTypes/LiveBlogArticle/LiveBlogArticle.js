@@ -74,16 +74,16 @@ function LiveBlog({ articleId, slots, }) {
           const { authors, body, headlineElement, reportingFrom, pubDate, modDate, liveblogItems, keyEvents, isLiveUpdate, isDisplayBlogitemsDatetime, tags, } = LiveBlogElement;
           const header = isMouse ? { pubDate, modDate, } : LiveBlogElement.header;
 
-          const timeLineItems = liveblogItems.filter(value => value.keyEvent);
+          // const timeLineItems = liveblogItems.filter(value => value.keyEvent);
           // const timeLineItems = liveblogItems.filter(value => value.keyEvent);
 
-          console.warn('timeLineItems: ', timeLineItems);
-          console.warn('tags: ', tags);
-          console.warn('liveblogItems: ', liveblogItems);
+          // console.warn('timeLineItems: ', timeLineItems);
+          // console.warn('tags: ', tags);
+          // console.warn('liveblogItems: ', liveblogItems);
           // console.warn('keyEvents: ', JSON.stringify(keyEvents));
           // keyEvents.map(val => console.warn('get me that shit:'))
           console.warn('isLiveUpdate: ', isLiveUpdate);
-          console.warn('isDisplayBlogitemsDatetime: ', isDisplayBlogitemsDatetime);
+          // console.warn('isDisplayBlogitemsDatetime: ', isDisplayBlogitemsDatetime);
 
           return (
             <FelaTheme
@@ -186,7 +186,7 @@ function LiveBlog({ articleId, slots, }) {
                                           position: 'sticky',
                                           top: '2rem',
                                           transform: 'translateY(14rem)',
-                                          paddingBottom: '12rem',
+                                          paddingBottom: '18rem',
                                         }}
                                       />
                                     </Fragment>
@@ -254,6 +254,7 @@ function LiveBlog({ articleId, slots, }) {
                             ? {
                               hideDivider: true,
                               miscStyles: {
+                                backgroundColor: theme.color('primary', '-6'),
                                 display: [ { until: 's', value: 'none', }, ],
                               },
                             }

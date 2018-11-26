@@ -84,6 +84,7 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
           width: '1rem',
           right: '-0.6em',
           ...theme.mq({ until: 's', }, { right: '-0.4em', }),
+          ...theme.mq({ from: 's', until: 'l', }, { right: '-0.4em', }),
           // ...theme.mq({ from: 's', }, { ':before': { right: '-0.6em', }, }),
           transform: 'translate(-50%,0)',
         },
@@ -100,6 +101,7 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
       }
     ),
     // theme.mq({until: 'm'}, theme.type(0)),
+    theme.mq({ from: 's', until: 'l', }, theme.type(-1)),
     theme.mq({ from: 'm', }, theme.type(-2)),
   ],
 });
@@ -122,7 +124,7 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
   },
   extend: [
     theme.mq({ until: 's', }, { ':before': { right: '-1.2em', }, }),
-    theme.mq({ from: 's', until: 'l', }, { marginInlineEnd: '2rem', }),
+    theme.mq({ from: 's', until: 'l', }, { marginInlineEnd: '2rem', ':before': { right: '-1.3em', }, }),
     isFirstItem || isLastItem
       ? {
         position: 'relative',
@@ -160,7 +162,7 @@ function TimeLine({ keyEvents, miscStyles, }) {
                 // padding: '2rem',
                 paddingBlockEnd: '5rem',
                 paddingBlockStart: '5rem',
-                marginTop: '2rem',
+                // marginTop: '2rem',
                 paddingInlineStart: '2rem',
                 paddingInlineEnd: '2rem',
                 // backgroundColor: theme.color('primary', '-5'),

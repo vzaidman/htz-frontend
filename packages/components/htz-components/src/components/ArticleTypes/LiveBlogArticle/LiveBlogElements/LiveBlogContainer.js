@@ -7,15 +7,16 @@ import { stylesPropType, } from '../../../../propTypes/stylesPropType';
 
 // eslint-disable-next-line import/no-named-as-default
 import RadioButton from '../../../RadioButton/RadioButton';
-
 import TimeLine from './TimeLine';
 import LiveBlogItem from './LiveBlogItem';
 
+// //////////////////////////////////////////////////////////////////////
+//                        Items container Style                        //
+// //////////////////////////////////////////////////////////////////////
 
 const wrapperStyle = ({ miscStyles, theme, }) => ({
   display: 'block',
   width: '100%',
-
   extend: [
     theme.mq(
       { from: 's', until: 'l', },
@@ -45,22 +46,76 @@ const itemWrapperStyle = ({ theme, }) => ({
   ],
 });
 
+const updatesStyle = ({ theme, timeLine, }) => ({
+  backgroundColor: 'white',
+  display: 'block',
+  paddingBottom: '4rem',
+  paddingTop: '4rem',
+  ...theme.mq({ until: 's', }, { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }),
+  ...theme.mq(
+    { from: 's', until: 'l', },
+    {
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginInlineStart: '4rem',
+      marginInlineEnd: '4rem',
+      paddingInlineStart: '4rem',
+      paddingInlineEnd: '4rem',
+      alignItems: 'center',
+      ...(!timeLine && { marginTop: '3rem', }),
+    }
+  ),
+  ...theme.mq(
+    { from: 'l', },
+    {
+      display: 'flex',
+      justifyContent: 'space-between',
+      paddingInlineStart: '4rem',
+      paddingInlineEnd: '4rem',
+      alignItems: 'center',
+      ...borderTop({
+        width: '13px',
+        lines: 6,
+        style: 'solid',
+        color: theme.color('primary', '-6'),
+      }),
+    }
+  ),
+});
+
+// //////////////////////////////////////////////////////////////////////
+//                            Main Component                           //
+// //////////////////////////////////////////////////////////////////////
+
 class LiveBlogContainer extends React.Component {
   static propTypes = {
-    liveblogItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
+    liveblogItems: PropTypes.arrayOf(
+      PropTypes.shape({
+        cardId: PropTypes.string,
+        title: PropTypes.string,
+        titleMobile: PropTypes.string,
+        contentName: PropTypes.string,
+        contentId: PropTypes.string,
+        inputTemplate: PropTypes.string,
+        pubDate: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ]),
+      })
+    ).isRequired,
     canonicalUrl: PropTypes.string.isRequired,
     keyEvents: PropTypes.arrayOf(
       PropTypes.shape({
         keyEvent: PropTypes.string,
-        pubDate: PropTypes.oneOfType([
-          // PropTypes.string,
-          PropTypes.number,
-          PropTypes.instanceOf(Date),
-        ]),
-        // pubDate: PropTypes.instanceOf(Date).isRequired,
+        pubDate: PropTypes.oneOfType([ PropTypes.number, PropTypes.instanceOf(Date), ]),
         cardId: PropTypes.string,
       })
     ),
+    /** the bps object from the theme */
+    bps: PropTypes.shape({ widths: PropTypes.object, }).isRequired,
+    /** the typeConf object from the theme */
+    typeConf: PropTypes.shape({
+      default: PropTypes.object,
+      xl: PropTypes.object,
+    }).isRequired,
     showTimeLineText: PropTypes.bool,
     /**
      * A special property holding miscellaneous CSS values that
@@ -89,7 +144,6 @@ class LiveBlogContainer extends React.Component {
   render() {
     const { items, } = this.state;
     const { canonicalUrl, keyEvents, showTimeLineText, miscStyles, bps, typeConf, } = this.props;
-    console.warn('items: ', typeof items, items);
     return (
       <Fragment>
         {/* Wrapper */}
@@ -98,63 +152,26 @@ class LiveBlogContainer extends React.Component {
           miscStyles={miscStyles}
           render={({ className, theme, }) => (
             <div className={className}>
-              <TimeLine
-                showTimeLineText={showTimeLineText}
-                keyEvents={keyEvents}
-                miscStyles={{
-                  ...theme.mq({ from: 'l', }, { display: 'none', }),
-                  ...theme.mq(
-                    { from: 's', until: 'l', },
-                    {
-                      marginInlineStart: '6rem',
-                      paddingTop: '3rem',
-                    }
-                  ),
-                }}
-              />
+              {keyEvents && keyEvents.length ? (
+                <TimeLine
+                  showTimeLineText={showTimeLineText}
+                  keyEvents={keyEvents}
+                  miscStyles={{
+                    ...theme.mq({ from: 'l', }, { display: 'none', }),
+                    ...theme.mq(
+                      { from: 's', until: 'l', },
+                      {
+                        marginInlineStart: '6rem',
+                        paddingTop: '3rem',
+                      }
+                    ),
+                  }}
+                />
+              ) : null}
               {/* UpdateComponent */}
               <FelaComponent
-                style={theme => ({
-                  // backgroundColor: theme.color('primary', '-6'),
-                  backgroundColor: 'white',
-                  // width: '100%',
-                  display: 'block',
-                  paddingBottom: '4rem',
-                  paddingTop: '4rem',
-                  ...theme.mq(
-                    { until: 's', },
-                    { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }
-                  ),
-                  ...theme.mq(
-                    { from: 's', until: 'l', },
-                    {
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      marginInlineStart: '4rem',
-                      marginInlineEnd: '4rem',
-                      paddingInlineStart: '4rem',
-                      paddingInlineEnd: '4rem',
-                      alignItems: 'center',
-                      // ...borderTop({
-                      //   width: '13px',
-                      //   lines: 6,
-                      //   style: 'solid',
-                      //   color: theme.color('primary', '-6'),
-                      // }),
-                    }
-                  ),
-                  ...theme.mq(
-                    { from: 'l', },
-                    {
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      paddingInlineStart: '4rem',
-                      paddingInlineEnd: '4rem',
-                      alignItems: 'center',
-                      ...borderTop({ width: '13px', lines: 6, style: 'solid', color: theme.color('primary', '-6'), }),
-                    }
-                  ),
-                })}
+                timeLine={keyEvents && keyEvents.length}
+                rule={updatesStyle}
                 render={({ className, theme, }) => (
                   <div className={className}>
                     <FelaComponent
@@ -169,7 +186,11 @@ class LiveBlogContainer extends React.Component {
                       )}
                     />
                     <FelaComponent
-                      style={{ display: 'flex', paddinTop: '1rem', justifyContent: 'center', }}
+                      style={{
+                        display: 'flex',
+                        paddinTop: '1rem',
+                        ...theme.mq({ until: 'm', }, { justifyContent: 'flex-start', }),
+                      }}
                       render={({ className, }) => (
                         <div className={className}>
                           <RadioButton
@@ -177,7 +198,7 @@ class LiveBlogContainer extends React.Component {
                             value="descending"
                             onChange={evt => this.setState({ value: evt.target.value, })}
                             checked={this.state.value === 'descending'}
-                            miscStyles={{ marginInlineEnd: '5rem', ...theme.type(-1), }}
+                            miscStyles={{ marginInlineEnd: '3rem', ...theme.type(-1), }}
                           />
                           <RadioButton
                             label={theme.liveBlogI18n.firstToLastLabel}
@@ -193,13 +214,19 @@ class LiveBlogContainer extends React.Component {
                 )}
               />
               {/* UpdateComponent End */}
-
+              {/* Live blog item */}
               <FelaComponent
                 rule={itemWrapperStyle}
                 render={({ className, theme, }) => (
-                  <div className={className} >
+                  <div className={className}>
                     {items.map((item, i) => (
-                      <LiveBlogItem item={item} theme={theme} bps={bps} typeConf={typeConf} canonicalUrl={canonicalUrl} />
+                      <LiveBlogItem
+                        item={item}
+                        theme={theme}
+                        bps={bps}
+                        typeConf={typeConf}
+                        canonicalUrl={canonicalUrl}
+                      />
                     ))}
                   </div>
                 )}
