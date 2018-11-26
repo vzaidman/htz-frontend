@@ -61,7 +61,7 @@ class LoginOrRegisterStage extends React.Component {
     loading: false,
     email: null,
     userExists: true,
-    signUpButtonLoaded: false,
+    passwordLoaded: false,
     resetPasswordModalOpen: false,
   };
 
@@ -71,9 +71,9 @@ class LoginOrRegisterStage extends React.Component {
 
   render() {
     // focus the password input when it first loads, form focus will override if there is an error in the form
-    if (this.signUpButton && !this.state.signUpButtonLoaded) {
-      this.signUpButton.focus();
-      this.setState({ signUpButtonLoaded: true, });
+    if (this.passwordInputEl && !this.state.passwordLoaded) {
+      this.passwordInputEl.focus();
+      this.setState({ passwordLoaded: true, });
     }
     const {
       router,
@@ -108,7 +108,9 @@ class LoginOrRegisterStage extends React.Component {
                           email={email}
                           closeModal={() => {
                             this.setState({ resetPasswordModalOpen: false, });
-                            this.resetPasswordButtonEl.focus();
+                            if (this.resetPasswordButtonEl) {
+                              this.resetPasswordButtonEl.focus();
+                            }
                           }}
                           isVisible={this.state.resetPasswordModalOpen}
                         />
