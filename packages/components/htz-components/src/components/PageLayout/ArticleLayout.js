@@ -1,6 +1,7 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
+import Observer from 'react-intersection-observer';
 
 import Query from '../ApolloBoundary/Query';
 import { extractAuthorsFromArticle, } from '../GoogleAnalytics/helpers/extractAuthorsFromArticle';
@@ -97,7 +98,9 @@ const ArticlePageLayout = ({
       </LayoutRow>
       {postMain ? (
         <LayoutRow bgc={rowBgc} miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}>
-          {getElements(postMain)}
+          <Observer triggerOnce rootMargin="2000px">
+            {inView => (inView ? <Fragment>{getElements(postMain)}</Fragment> : null)}
+          </Observer>
         </LayoutRow>
       ) : null}
       {footer ? <LayoutRow bgc={rowBgc}>{getElements(footer)}</LayoutRow> : null}

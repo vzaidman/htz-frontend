@@ -47,5 +47,6 @@ export type PropTypes = {
 
 export type StateTypes = {
   elementIndex: ?number,
+  maxIndex: number,
   someoneIsAnimating: boolean,
 };

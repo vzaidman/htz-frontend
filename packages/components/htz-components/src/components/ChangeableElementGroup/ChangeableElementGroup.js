@@ -14,6 +14,7 @@ class ChangeableElementGroup extends React.Component<PropTypes, StateTypes> {
   state = {
     someoneIsAnimating: false,
     elementIndex: null,
+    maxIndex: 0,
   };
 
   static getDerivedStateFromProps(nextProps: PropTypes, prevState: StateTypes) {
@@ -39,8 +40,10 @@ class ChangeableElementGroup extends React.Component<PropTypes, StateTypes> {
     return elementIndex !== prevState.elementIndex
       ? {
         elementIndex,
+        // update the maxIndex if the new element index if it is larger then the current maxIndex
+        ...(elementIndex && elementIndex > prevState.maxIndex ? { maxIndex: elementIndex, } : {}),
       }
-      : prevState;
+      : null;
   }
 
   shouldComponentUpdate(nextProps: PropTypes, nextState: StateTypes) {
@@ -53,7 +56,7 @@ class ChangeableElementGroup extends React.Component<PropTypes, StateTypes> {
 
   render(): Node {
     const { contentLists, } = this.props;
-    const { elementIndex, someoneIsAnimating, } = this.state;
+    const { elementIndex, someoneIsAnimating, maxIndex, } = this.state;
 
     return (
       <Fragment>
@@ -63,6 +66,15 @@ class ChangeableElementGroup extends React.Component<PropTypes, StateTypes> {
             element.inputTemplate
           );
           const show: boolean = elementIndex === index;
+
+          // delayRender will cause list components to render once,
+          // only when scrolling to the element above them for the first time.
+          // This is needed so the listDuplication prevention will work.
+          // The reason it is just for lists is because the dfp wont work if its not loaded at once.
+          // We should remove this once we fix the client side dfp problems,
+          // and rewrite the List component in a way that might allow a better solution.
+          const delayRender : boolean =
+            element.inputTemplate === 'com.tm.element.List' && maxIndex < index - 1;
           return (
             <FelaComponent
               key={element.contentId}
@@ -84,11 +96,12 @@ class ChangeableElementGroup extends React.Component<PropTypes, StateTypes> {
                   return (
                     <FelaComponent
                       style={{
-                        display:
-                          !show && !someoneIsAnimating ? 'none' : 'block',
+                        display: !show && !someoneIsAnimating ? 'none' : 'block',
                       }}
                     >
-                      <Element {...elementWithoutProperties} {...properties} />
+                      {delayRender ? null : (
+                        <Element {...elementWithoutProperties} {...properties} />
+                      )}
                     </FelaComponent>
                   );
                 }}
