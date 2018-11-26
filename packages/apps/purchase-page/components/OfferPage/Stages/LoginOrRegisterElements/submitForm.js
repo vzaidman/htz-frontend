@@ -77,7 +77,7 @@ const submitForm = ({
             <FelaComponent style={{ fontWeight: 'normal', }} render="span">
               הסיסמה שהזנתם שגויה, נסו שנית או -{' '}
               <FelaComponent
-                style={{ fontWeight: 700, }}
+                style={{ fontWeight: 700, textDecoration: 'underline', }}
                 render={({ className, }) => (
                   <button
                     className={className}

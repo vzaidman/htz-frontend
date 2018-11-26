@@ -202,7 +202,10 @@ class LoginOrRegisterStage extends React.Component {
                                                   ]
                                                 }{' '}
                                                 <FelaComponent
-                                                  style={{ fontWeight: 'bold', }}
+                                                  style={{
+                                                    fontWeight: 'bold',
+                                                    textDecoration: 'underline',
+                                                  }}
                                                   render="span"
                                                 >
                                                   {
