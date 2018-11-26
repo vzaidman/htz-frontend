@@ -25,7 +25,6 @@ type State = {
   isOpen: boolean,
   focused: boolean,
   hover: boolean,
-  hiddenButtonsBarWidth: number,
 };
 
 class ShareBar extends React.Component<Props, State> {
@@ -33,29 +32,41 @@ class ShareBar extends React.Component<Props, State> {
     isOpen: false,
     focused: false,
     hover: false,
-    hiddenButtonsBarWidth: -1,
   };
 
-  toggleOpen: boolean => void = () => this.setState((prevState: State) => ({
-    isOpen: !prevState.isOpen,
-  }));
+  hiddenButtonsBarWidth: number = 0;
+  hiddenButtonsBarEl: HTMLDivElement | null = null;
 
-  changeFocus: boolean => void = (focused: boolean) => this.setState({
-    focused,
-  });
+  toggleOpen: boolean => void = () =>
+    this.setState((prevState: State) => ({
+      isOpen: !prevState.isOpen,
+    }));
 
-  toggleHover: boolean => void = (hover: boolean) => this.setState({
-    hover,
-  });
+  changeFocus: boolean => void = (focused: boolean) =>
+    this.setState({
+      focused,
+    });
+
+  toggleHover: boolean => void = (hover: boolean) =>
+    this.setState({
+      hover,
+    });
 
   render(): Node {
     const { title, canonicalUrl, } = this.props;
     const { isOpen, focused, hover, } = this.state;
+    if (!this.hiddenButtonsBarWidth && this.hiddenButtonsBarEl) {
+      setImmediate(() => {
+        this.hiddenButtonsBarWidth = this.hiddenButtonsBarEl
+          ? this.hiddenButtonsBarEl.offsetWidth
+          : 0;
+      });
+    }
     return (
       <FelaComponent
         style={(theme: Object) => ({
           marginTop: '3rem',
-          overflow: 'hidden',
+
           display: 'flex',
           justifyContent: 'space-between',
           extend: [
@@ -134,7 +145,7 @@ class ShareBar extends React.Component<Props, State> {
                       />
                       <FelaComponent
                         style={{
-                          ...(this.state.hiddenButtonsBarWidth === -1
+                          ...(!this.hiddenButtonsBarWidth
                             ? {
                               position: 'absolute',
                               right: '100%',
@@ -145,21 +156,18 @@ class ShareBar extends React.Component<Props, State> {
                           <div
                             className={className}
                             ref={el => {
-                              if (el && this.state.hiddenButtonsBarWidth === -1) {
-                                this.setState({ hiddenButtonsBarWidth: el.offsetWidth, });
-                              }
+                              this.hiddenButtonsBarEl = el;
                             }}
                           >
                             <ActionButtons
                               elementName={title}
                               elementUrl={canonicalUrl}
                               miscStyles={{
-                                width:
-                                  this.state.hiddenButtonsBarWidth !== -1
-                                    ? isOpen
-                                      ? `${this.state.hiddenButtonsBarWidth}px`
-                                      : '0'
-                                    : 'auto',
+                                width: this.hiddenButtonsBarWidth
+                                  ? isOpen
+                                    ? `${this.hiddenButtonsBarWidth}px`
+                                    : '0'
+                                  : 'auto',
                                 transitionProperty: 'width',
                                 ...theme.getDelay('transition', -1),
                                 ...theme.getDuration('transition', -1),
