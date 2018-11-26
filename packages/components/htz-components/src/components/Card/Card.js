@@ -43,6 +43,8 @@ export type CardProps = {
    * indicates if the card is elevated.
    */
   isElevated: boolean,
+  // stretch a `<Card />` to fill the height of its container
+  fillHeight: boolean | ComponentPropResponsiveObject<boolean>[],
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
@@ -62,6 +64,7 @@ Card.defaultProps = {
   children: null,
   backgroundColor: null,
   isElevated: null,
+  fillHeight: false,
   miscStyles: null,
   tagName: 'div',
   /* eslint-enable react/default-props-match-prop-types */
@@ -71,6 +74,7 @@ export default function Card({
   attrs,
   backgroundColor,
   isElevated,
+  fillHeight,
   miscStyles,
   children,
   tagName,
@@ -78,7 +82,7 @@ export default function Card({
   const Component = tagName;
   return (
     <FelaComponent
-      {...{ backgroundColor, isElevated, miscStyles, }}
+      {...{ backgroundColor, isElevated, fillHeight, miscStyles, }}
       rule={cardStyle}
       render={({ className, }) => (
         <Component className={className} {...attrs}>
