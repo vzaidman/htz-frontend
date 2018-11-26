@@ -20,7 +20,7 @@ services:
       - HOSTNAME=login
       - GRAPHQL_USE_SSL=true
       - GRAPHQL_EXPOSE_PORT=false
-      - GRAPHQL_SUB_DOMAIN=graphql-dev
+      - GRAPHQL_SUB_DOMAIN=graphql-pprod
 
     networks:
       - prod01
