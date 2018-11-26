@@ -24,6 +24,7 @@ export const teaserForLeftElement = gql`
   fragment TeaserForLeftElement on TeaserInList {
     ...ImageInTeaser
     contentId
+    representedContent
     title
     path
     titleMobile
@@ -36,6 +37,7 @@ export const teaserForBender = gql`
   fragment TeaserForBender on TeaserInList {
     ...ImagesInTeaser
     contentId
+    representedContent
     title
     path
     titleMobile
@@ -68,6 +70,7 @@ export default gql`
     isPremiumContent
     lastUpdate
     subTitle
+    representedContent
     mediaFlags {
       video
       html_embed
