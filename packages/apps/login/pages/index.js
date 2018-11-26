@@ -2,7 +2,7 @@
 
 import React, { Fragment, } from 'react';
 import { ApolloConsumer, } from 'react-apollo';
-import { Form, TextInput, Button, } from '@haaretz/htz-components';
+import { EventTracker, } from '@haaretz/htz-components';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { createComponent, FelaTheme, } from 'react-fela';
 import isEmail from 'validator/lib/isEmail';
@@ -33,17 +33,21 @@ const Index = () => (
             <FelaTheme
               render={theme => (
                 <Fragment>
-                  <PageWrapper>
-                    <Header />
-                    <ContentWrapper>
-                      <FlowDispenser
-                        render={({ getFlowByData, }) => (
-                          <IndexForm client={client} getFlowByData={getFlowByData} theme={theme} />
-                        )}
-                      />
-                    </ContentWrapper>
-                    <Footer />
-                  </PageWrapper>
+                    <EventTracker>
+                      {({ biAction, gaAction, gaMapper, }) => (
+                        <PageWrapper>
+                          <Header />
+                          <ContentWrapper>
+                            <FlowDispenser
+                              render={({ getFlowByData, }) => (
+                                <IndexForm client={client} getFlowByData={getFlowByData} theme={theme} biAction={biAction} gaAction={gaAction} />
+                              )}
+                            />
+                          </ContentWrapper>
+                          <Footer />
+                        </PageWrapper>
+                      )}
+                    </EventTracker>
                 </Fragment>
               )}
             />
