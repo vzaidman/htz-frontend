@@ -42,8 +42,8 @@ const styles =
   'box-sizing:border-box;' + // 1
   `color:${getColor('bodyText')};` + // 2
   'cursor:default;' + // 3
-  `font-family:${fontStacks.default};` + // 4
-  'min-height:100%;' + // 5
+  'min-height:100%;' + // 4
+  `font-family:${fontStacks.base};` + // 5
   'overflow-x:hidden;' + // 6
   '-ms-text-size-adjust:100%;' + // 7
   '-webkit-text-size-adjust:100%;' + // 7
@@ -328,7 +328,7 @@ const styles =
   'color:inherit;' +
   'font-size:inherit;' +
   'line-height:inherit;' +
-  `font-family:${fontStacks.default};` +
+  'font-family:inherit;' +
   '}' +
   /**
    * Show the overflow in IE and Edge
