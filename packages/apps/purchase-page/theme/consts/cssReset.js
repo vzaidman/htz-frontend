@@ -44,7 +44,7 @@ const styles = host => {
     'box-sizing:border-box;' + // 1
     `color:${colors('bodyText')};` + // 2
     'cursor:default;' + // 3
-    `font-family:${fontStacks.default};` + // 4
+    `font-family:${fontStacks.base};` + // 4
     'min-height:100%;' + // 5
     'overflow-x:hidden;' + // 6
     '-ms-text-size-adjust:100%;' + // 7
@@ -330,7 +330,7 @@ const styles = host => {
     'color:inherit;' +
     'font-size:inherit;' +
     'line-height:inherit;' +
-    `font-family:${fontStacks.default};` +
+    'font-family:inherit;' +
     '}' +
     /**
      * Show the overflow in IE and Edge
