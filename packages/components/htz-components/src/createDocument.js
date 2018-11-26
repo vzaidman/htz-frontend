@@ -61,6 +61,7 @@ const createDocument = ({
       const sheetList = renderToSheetList(styleRenderer);
       styleRenderer.clear();
 
+      // console.log('[cretaeDocument] fontStacks: ', JSON.stringify(fontStacks));
       const criticalFontElements = criticalFontLoader(fontStacks.criticalFont, fontStacks.base);
 
       return {
