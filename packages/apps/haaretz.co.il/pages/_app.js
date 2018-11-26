@@ -12,6 +12,7 @@ const initialState = () => ({
   },
   canonicalUrl: '',
   commentsElementId: null,
+  isMouseStory: false,
   //  makes sure that if we have another outbrain element on the page it calls outbrains
   // reload function script before calling the outbrain json api
   isOsakaDisplayed: false,
