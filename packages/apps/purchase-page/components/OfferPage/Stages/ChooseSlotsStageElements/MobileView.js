@@ -170,10 +170,11 @@ class MobileView extends Component {
                 {accountLinkToken && fbRedirectUri ? (
                   <FelaComponent
                     style={{
-                      marginTop: '2rem',
+                      marginTop: '3rem',
+                      marginBottom: '3rem',
                       fontWeight: '700',
                       color: theme.color('offerPage', 'buttonText'),
-                      extend: [ theme.type(-1), ],
+                      extend: [ theme.type(2), ],
                     }}
                     render="p"
                   >
