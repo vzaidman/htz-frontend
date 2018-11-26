@@ -15,7 +15,7 @@ services:
       - CONNECTION_PRESET=prod
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
-      - PORT=3000
+      - PORT=9004
       - BIND_ADDRESS=login
       - HOSTNAME=login
       - GRAPHQL_USE_SSL=true
