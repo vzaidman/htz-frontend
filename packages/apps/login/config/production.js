@@ -10,35 +10,37 @@ module.exports = {
     newSso: 'https://ms-apps.haaretz.co.il/sso',
     userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo',
     otp: {
-      base: 'TODO',
+      base: 'https://ms-apps.haaretz.co.il/otp',
       generate: '/generate',
       validate: '/validate',
     },
+    htzFunction: 'https://ms-apps.haaretz.co.il/htz-function',
     image: 'https://images.haarets.co.il/image',
     ds: 'https://ms-apps.haaretz.co.il/ds',
-    htzFunction: 'http://docker.themarker.com:8129/htz-function',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
-      }://${this.appFQDN}${this.graphQLexposedPort && this.port ? `:${this.port}` : ''}/graphql`;
+      }://${this.appFQDN}${this.graphQLexposedPort && this.graphQLPort ? `:${this.graphQLPort}` : ''}/`;
     }),
     alerts: 'https://alerts.haaretz.co.il',
   },
   appFQDN: defer(function () {
-    return `${this.hostname ? `${this.hostname}.` : ''}${this.domain}`;
+    return `${this.graphQLSubDomain ? `${this.graphQLSubDomain}.` : ''}${this.domain}`;
   }),
   remoteFQDN: defer(function () {
     return `www.${this.domain}`;
   }),
   useSSL: true,
   graphQLuseSSL: true,
-  graphQLexposedPort: false,
+  graphQLexposedPort: true,
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
-  port: process.env.PORT || '2004',
-  graphQLPort: process.env.GRAPHQL_PORT || '4004',
-  logLevel: 'error',
+  port: process.env.PORT || '3000',
+  logLevel: 'info',
   assetPrefix: '',
   enableHttpLogging: false,
+  // todo: ask tomer if we will add a staging graphql-server with different subDomain
+  graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'graphql-dev',
+  graphQLPort: process.env.GRAPHQL_PORT || '4004',
 };
