@@ -44,7 +44,7 @@ function fontLoaderScript(params) {
   }
 
   try {
-    console.log('[fontsLoaderScript] data is: %o', params);
+    // console.log('[fontsLoaderScript] data is: %o', params);
     if (typeof window === 'undefined') {
       return;
     }
