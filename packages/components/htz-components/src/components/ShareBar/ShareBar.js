@@ -130,13 +130,13 @@ class ShareBar extends React.Component<Props, State> {
                             buttonStyles: isArticleSaved => ({
                               ...(isArticleSaved
                                 ? {
-                                  color: theme.color('neutral', '-10'),
-                                  backgroundColor: theme.color('primary'),
-                                  ':hover': {
                                     color: theme.color('neutral', '-10'),
-                                    backgroundColor: theme.color('secondary'),
-                                  },
-                                }
+                                    backgroundColor: theme.color('primary'),
+                                    ':hover': {
+                                      color: theme.color('neutral', '-10'),
+                                      backgroundColor: theme.color('secondary'),
+                                    },
+                                  }
                                 : {}),
                             }),
                           },
@@ -147,9 +147,9 @@ class ShareBar extends React.Component<Props, State> {
                         style={{
                           ...(!this.hiddenButtonsBarWidth
                             ? {
-                              position: 'absolute',
-                              right: '100%',
-                            }
+                                position: 'absolute',
+                                right: '100%',
+                              }
                             : {}),
                         }}
                         render={({ className, }) => (
@@ -196,7 +196,7 @@ class ShareBar extends React.Component<Props, State> {
                         <PlusClose
                           isOpen={isOpen}
                           size={3}
-                          color={focused ? (hover ? 'white' : [ 'neutral', '-10', ]) : [ 'primary', ]}
+                          color={hover ? 'white' : [ 'neutral', '-3', ]}
                         />
                       </Button>
                     </React.Fragment>

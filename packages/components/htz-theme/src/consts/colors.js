@@ -37,7 +37,7 @@ const colors = {
     primaryFocusBg: [ 'primary', 'base', ],
     primaryFocusBorder: [ 'button', 'primaryFocusBg', ],
     primaryFocusText: 'white',
-    primaryHoverBg: [ 'primary', '-6', ],
+    primaryHoverBg: [ 'primary', '-3', ],
     primaryHoverBorder: [ 'button', 'primaryHoverText', ],
     primaryHoverText: [ 'primary', '+1', ],
 
@@ -320,6 +320,18 @@ const colors = {
     salesOpaqueHoverBg: [ 'sales', '+2', ],
     salesOpaqueHoverBorder: 'transparent',
     salesOpaqueHoverText: [ 'button', 'salesOpaqueText', ],
+
+    sharebarText: [ 'neutral', '-3', ],
+    sharebarBg: 'white',
+    sharebarActiveBg: [ 'neutral', '-3', ],
+    sharebarActiveBorder: 'transparent',
+    sharebarActiveText: 'white',
+    sharebarFocusBg: [ 'neutral', '-1', ],
+    sharebarFocusBorder: 'transparent',
+    sharebarFocusText: [ 'button', 'salesOpaqueText', ],
+    sharebarHoverBg: [ 'neutral', '-3', ],
+    sharebarHoverBorder: 'transparent',
+    sharebarHoverText: 'white',
   },
   checkBox: {
     // Primary

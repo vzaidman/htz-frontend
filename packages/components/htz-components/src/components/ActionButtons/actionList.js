@@ -67,6 +67,7 @@ const GET_PAGE_DATA: Object = gql`
   query GetPageData {
     platform @client
     hostname @client
+    zenMode @client
     articleId @client
     user @client {
       id
@@ -103,21 +104,24 @@ export const ActionButton = ({ render, }: ActionButtonProps): Node => (
       const {
         platform,
         hostname,
+        zenMode,
         articleId,
         user: { id: userId, },
       } = data;
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       return (
         <EventTracker>
-          {({ biAction, biActionMapper, }) => render({
-            platform,
-            biAction,
-            biActionMapper,
-            host,
-            hostname,
-            articleId,
-            userId,
-          })
+          {({ biAction, biActionMapper, }) =>
+            render({
+              platform,
+              biAction,
+              biActionMapper,
+              host,
+              hostname,
+              articleId,
+              userId,
+              zenMode,
+            })
           }
         </EventTracker>
       );
@@ -126,15 +130,17 @@ export const ActionButton = ({ render, }: ActionButtonProps): Node => (
 );
 
 const nonMobileStyles = theme => ({
-  ':visited': { color: theme.color('button', 'primaryText'), },
   ':hover': {
-    backgroundColor: theme.color('button', 'primaryHoverBg'),
-    color: theme.color('button', 'primaryHoverText'),
+    backgroundColor: theme.color('button', 'sharebarHoverBg'),
+    color: theme.color('button', 'sharebarHoverText'),
+  }
+});
+
+export const iconActiveStyle = (theme:Object) => ({
+  ':hover': {
+    backgroundColor: theme.color('button', 'primaryFocusBg'),
+    color: theme.color('button', 'primaryFocusText'),
   },
-  // ':active': {
-  //   backgroundColor: theme.color('button', 'primaryActiveBg'),
-  //   color: theme.color('button', 'primaryActiveText'),
-  // },
   ':focus': {
     backgroundColor: theme.color('button', 'primaryFocusBg'),
     color: theme.color('button', 'primaryFocusText'),
@@ -147,48 +153,56 @@ export const Button: StatelessFunctionalComponent<ButtonProps> = ({
   title,
   href,
   ...props
-}): Node => (
-  <FelaComponent
-    style={(theme: Object) => ({
-      ...theme.type(-2),
-      alignItems: 'center',
-      display: 'flex',
-      backgroundColor: theme.color('button', 'primaryBg'),
-      color: theme.color('button', 'primaryText'),
-      fontWeight: '700',
-      justifyContent: 'center',
-      paddingTop: '1rem',
-      paddingStart: '2rem',
-      paddingBottom: '1rem',
-      paddingEnd: '2rem',
-      position: 'relative',
-      textAlign: 'center',
-      extend: [
-        theme.mq({ from: 's', misc: 'portrait', }, nonMobileStyles(theme)),
-        theme.mq({ from: 'm', misc: 'landscape', }, nonMobileStyles(theme)),
-        ...(miscStyles
-          ? parseStyleProps(miscStyles, theme.mq, theme.type)
-          : []),
-      ],
-    })}
-    render={({ className, }: { className: string, }) => (href ? (
-      <HtzLink
-        href={href}
-        className={className}
-        attrs={{ title, }}
-        {...props}
-      >
-        {children}
-      </HtzLink>
-    ) : (
-      <button type="button" className={className} title={title} {...props}>
-        <AriaDescription id={title}>{title}</AriaDescription>
-        {children}
-      </button>
-    ))
-    }
-  />
-);
+}): Node => {
+  return (
+    <FelaComponent
+      style={(theme: Object) => {
+        const styles = typeof miscStyles === 'function' ? miscStyles(theme) : miscStyles;
+        return ({
+          ...theme.type(-2),
+          alignItems: 'center',
+          display: 'flex',
+          backgroundColor: theme.color('button', 'primaryBg'),
+          color: theme.color('button', 'sharebarText'),
+          fontWeight: '700',
+          justifyContent: 'center',
+          marginStart: '0.3rem',
+          paddingTop: '1rem',
+          paddingStart: '2rem',
+          paddingBottom: '1rem',
+          paddingEnd: '2rem',
+          position: 'relative',
+          textAlign: 'center',
+          extend: [
+            theme.mq({ from: 's', misc: 'portrait', }, nonMobileStyles(theme)),
+            theme.mq({ from: 'm', misc: 'landscape', }, nonMobileStyles(theme)),
+            ...(styles
+              ? parseStyleProps(styles, theme.mq, theme.type)
+              : []),
+          ],
+        })
+      }
+      }
+      render={({ className, }: { className: string }) =>
+        (href ? (
+          <HtzLink
+            href={href}
+            className={className}
+            attrs={{ title, }}
+            {...props}
+          >
+            {children}
+          </HtzLink>
+        ) : (
+          <button className={className} title={title} {...props}>
+            <AriaDescription id={title}>{title}</AriaDescription>
+            {children}
+          </button>
+        ))
+      }
+    />
+  );
+}
 
 const Comments: StatelessFunctionalComponent<CommentButtonProps> = ({
   buttonStyles,
@@ -624,10 +638,15 @@ const Zen: StatelessFunctionalComponent<ZenButtonProps> = ({
   <Mutation mutation={TOGGLE_ZEN}>
     {toggleZen => (
       <ActionButton
-        render={({ platform, biAction, biActionMapper, }) => (
+        render={({ platform, biAction, biActionMapper, zenMode, }) => (
           <Button
             {...props}
-            miscStyles={buttonStyles}
+            miscStyles={ theme => !zenMode ? ({}) : ({
+              backgroundColor: theme.color('button', 'primaryFocusBg'),
+              color: theme.color('button', 'primaryFocusText'),
+              ...theme.mq({ from: 's', misc: 'portrait', }, iconActiveStyle(theme)),
+              ...theme.mq({ from: 'm', misc: 'landscape', }, iconActiveStyle(theme)),
+            })}
             onClick={() => {
               toggleZen();
               biAction({

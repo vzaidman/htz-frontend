@@ -18,6 +18,7 @@ type ActionButtonRenderObject = {
   host: string,
   hostname: string,
   articleId: string,
+  zenMode: boolean,
   userId: string,
 };
 
