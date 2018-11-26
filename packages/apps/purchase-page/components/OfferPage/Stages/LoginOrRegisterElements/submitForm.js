@@ -75,7 +75,7 @@ const submitForm = ({
         if (displayError === 'הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת') {
           displayError = (
             <FelaComponent style={{ fontWeight: 'normal', }} render="span">
-              הסיסמא שהזנתם שגויה, נסו שנית או -{' '}
+              הסיסמה שהזנתם שגויה, נסו שנית או -{' '}
               <FelaComponent
                 style={{ fontWeight: 700, }}
                 render={({ className, }) => (
@@ -84,7 +84,7 @@ const submitForm = ({
                     type="button"
                     onClick={evt => openResetPasswordModal(evt)}
                   >
-                    החליפו סיסמא
+                    החליפו סיסמה
                   </button>
                 )}
               />
