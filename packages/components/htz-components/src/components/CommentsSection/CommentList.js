@@ -25,12 +25,25 @@ const adSlotIdFromIndex = idx => `haaretz.co.il.web.fullbanner.talkback.${idx}`;
 //   />
 // );
 
+const commentsVerticalMargin = '4rem';
+
+const CommentAdSlot = ({ adSlotId, }) => (
+  <FelaComponent
+    style={{
+      marginTop: commentsVerticalMargin,
+      marginBottom: commentsVerticalMargin,
+    }}
+  >
+    <DynamicSlotFromDfpConfig adSlotId={adSlotId} />
+  </FelaComponent>
+);
+
 const placeAdSlot = commentIdx => {
   const adIdx = Math.floor(commentIdx / AD_SPACING) + 1;
   const isEnoughSpacing = (commentIdx + 1) % AD_SPACING === 0;
   return (
     isEnoughSpacing && adIdx <= MAX_AD_SLOTS
-      ? <DynamicSlotFromDfpConfig adSlotId={adSlotIdFromIndex(adIdx)} />
+      ? <CommentAdSlot adSlotId={adSlotIdFromIndex(adIdx)} />
       : null
   );
 };

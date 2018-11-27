@@ -47,7 +47,7 @@ const commentWrapperStyle = {
   justifyContent: 'flex-end',
   paddingInlineStart: '1rem',
   paddingInlineEnd: '1rem',
-  paddingTop: '2rem',
+  marginTop: '2rem',
 };
 
 const commentNumberContainerStyle = ({ theme, isSubComment, }) => ({
@@ -489,7 +489,7 @@ class Comment extends React.Component {
                       }}
                       boxModel={{ hp: 2, vp: 0.5, }}
                       onClick={() => {
-                        this.setState({ fadeText: false, });                        
+                        this.setState({ fadeText: false, });
                       }}
                     >
                       {readMoreBtnTxt}
