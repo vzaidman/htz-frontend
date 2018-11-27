@@ -16,6 +16,7 @@ export const dataToFlowMapper = new Map([
   [ '00000', 4, ], // user doesn't exist
   [ '10001', 5, ], // mail not valid, phone not valid, paying.
   [ '10101', 6, ], // mail not valid, phone valid, paying.
+  [ '10111', 6, ], // mail not valid, phone valid, paying (phone and mail connected).
 ]);
 
 const boolToNum = bool => Number(bool);
