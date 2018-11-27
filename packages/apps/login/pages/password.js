@@ -58,10 +58,6 @@ const valdiateForm = ({ email, password, }) => {
   console.log(errors.map(arr => JSON.stringify(arr)));
   return errors;
 };
-
-const sendAgain = e => {
-  console.log('test...');
-};
 // --------------------------
 
 class Password extends Component {

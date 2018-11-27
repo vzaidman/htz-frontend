@@ -50,10 +50,6 @@ const onSubmit = ({ doTransition, client, showError, hideError, }) => ({ phoneNu
     error => showError(error.message)
   );
 };
-
-// const sendAgain = e => {
-//   console.log('test...');
-// };
 // --------------------------
 
 class PhoneInput extends React.Component {

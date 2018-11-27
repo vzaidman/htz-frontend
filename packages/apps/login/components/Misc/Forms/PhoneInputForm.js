@@ -4,6 +4,7 @@ import Router from 'next/router';
 import { Form, TextInput, Button, HtzLink, } from '@haaretz/htz-components';
 
 import theme from '../../../theme';
+import Preloader from '../../Misc/Preloader';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../../components/StyleComponents/LoginStyleComponents';
 
 import { connectMailWithPhone, getUserData, getEmail, getHostname, saveUserData, } from '../../../pages/queryutil/userDetailsOperations';
@@ -22,34 +23,43 @@ const isValidPhoneNumber = number => {
   return phoneRegex.test(number);
 };
 const validatePhoneNumber = ({ phoneNumber, }) =>
-  (!isValidPhoneNumber(phoneNumber) || !phoneNumber || phoneNumber.length < 10
+  (!isMobile(phoneNumber) || !phoneNumber || phoneNumber.length < 10
     ? generateSmsCodeError('אנא הזינו מספר טלפון נייד')
     : []);
 
-const onSubmit = ({ doTransition, client, showError, hideError, }) => ({ phoneNumber, }) => {
+const getEmailUrl = (hostname) => {
+  return (hostname.includes("login-dev.") || hostname.includes("login.")) ?
+    `https://${hostname}` : `http://${hostname}:3000`;
+}
+
+const cleanPhoneNumber = (phoneNumber) => {
+  return phoneNumber.replace(/[\s\-]/g, '');
+}
+
+const onSubmit = ({ doTransition, client, showError, hideError, setPreloader, }) => ({ phoneNumber, }) => {
+  setPreloader(true);
   hideError();
   const userData = getUserData(client);
   const email = getEmail(client);
-  console.log(userData);
+  phoneNumber = cleanPhoneNumber(phoneNumber);
   connectMailWithPhone(client)({
     email,
     userName: userData.firstName,
     phone: phoneNumber,
     paramString: btoa(`email=${email}&phone=${phoneNumber}`),
-    url: getHostname(client),
+    url: getEmailUrl(getHostname(client)),
   }).then(
     () => {
       saveUserData(client)({ userData: { phoneNum: phoneNumber, __typename: "SsoUser", }, });
       const route = doTransition('accept');
       Router.push(route);
     },
-    error => showError(error.message)
+    error => {
+      setPreloader(false);
+      showError(error.message)
+    }
   );
 };
-
-// const sendAgain = e => {
-//   console.log('test...');
-// };
 
 class PhoneInputForm extends React.Component {
   state = {
@@ -84,12 +94,13 @@ class PhoneInputForm extends React.Component {
               client,
               showError: this.showError,
               hideError: this.hideError,
+              setPreloader: this.setPreloader,
             })}
             render={({ getInputProps, handleSubmit, clearForm, }) => (
               <Fragment>
                 <div>
                   <TextInput
-                    type="number"
+                    type="tel"
                     label={theme.emailInputLabel}
                     noteText="אנא הזינו מספר טלפון נייד"
                     requiredText={{
@@ -109,7 +120,9 @@ class PhoneInputForm extends React.Component {
                     {this.state.errorMessage}
                   </span>
                 </ErrorBox>
+
                 <ItemCenterer>
+                  <Preloader isLoading={this.state.isLoading} />
                   <Button onClick={handleSubmit}>המשך</Button>
                 </ItemCenterer>
               </Fragment>

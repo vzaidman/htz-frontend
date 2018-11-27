@@ -32,6 +32,7 @@ const Styles = {
       },
 
       '@media (max-width: 768px)': {
+        maxWidth: '85%',
         '& label': {
           fontSize: '2.7rem',
         },
@@ -81,7 +82,7 @@ const Styles = {
       color: '#ffffff',
 
       '@media (max-width: 768px)': {
-        height: '150px',
+        display: "none",
       },
     }),
     footerContentHolder: () => ({

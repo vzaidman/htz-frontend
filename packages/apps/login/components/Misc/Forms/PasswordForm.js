@@ -9,7 +9,7 @@ import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmai
 import { getHost, } from '../../../util/requestUtil';
 import Preloader from '../../Misc/Preloader';
 import isEmail from 'validator/lib/isEmail';
-import { loginWithFacebook, getFacebookParams, } from '../../../util/facebookLoginUtil';
+import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { isName, isMobile, isPassword, } from './fieldsValidators';
 
 // Styling Components -----------------
@@ -44,9 +44,9 @@ const validatePasswordInput = ({ password, }) =>
       : []); // email is valid
 
 const getFacebookLogin = (user) => {
-  const facebookParams = getFacebookParams(user.type, user.id);
+  const facebookParams = getFacebookParams(user);
   return facebookParams ?
-    loginWithFacebook(facebookParams) :
+    getFacebookLoginUrl(facebookParams) :
     false;
 }
 
