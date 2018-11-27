@@ -150,6 +150,7 @@ class AssetStats extends React.Component<Props, State> {
                     {
                       stats.map((stat, index) => (
                         <Stat
+                          key={stat.title}
                           title={stat.title}
                           miscStyles={index === (stats.length - 1)
                             ? {

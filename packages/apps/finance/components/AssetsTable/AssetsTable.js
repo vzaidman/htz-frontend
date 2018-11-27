@@ -165,6 +165,7 @@ class AssetsTable extends React.Component<AssetsTableProps, State> {
           <tr>
             {headers.map((header: Header) => (
               <TdComponent
+                key={header.value}
                 miscStyles={{
                   paddingTop: '0',
                   paddingBottom: '0',
@@ -203,6 +204,7 @@ class AssetsTable extends React.Component<AssetsTableProps, State> {
                         const isLast: boolean = i === (headers.length - 1);
                         return (
                           <TdComponent
+                            key={`${header.value}-${asset.id}`}
                             isActive={isActive}
                             miscStyles={
                               !i
