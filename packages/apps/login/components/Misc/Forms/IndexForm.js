@@ -22,8 +22,21 @@ const b64DecodeUnicode = str => (str
   ? decodeURIComponent(atob(str).split('').map(c => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''))
   : null);
 
-const getParamsData = params => {
-  if (params) {
+
+const getUrlParams = () => {
+  const pageUrl = new URL(window.location.href);
+  return {
+    confirmation: pageUrl.searchParams.get('confirmation'),
+    ...getParamsData(pageUrl.searchParams.get('params')),
+    facebook: {
+      token: pageUrl.searchParams.get('account_linking_token'),
+      redirect: pageUrl.searchParams.get('redirect_uri'),
+    }
+  }
+}
+
+const getParamsData = (params) => {
+  if(params) {
     const decodedParams = atob(b64DecodeUnicode(params)).split('&');
     return {
       email: decodedParams[0].split('=')[1],
@@ -97,7 +110,7 @@ const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showEr
     });
 
 const handleResponseFromGraphql =
-  ({ client, getFlowByData, email, phone, res, showError, setPreloader, eventsTrackers, autoRoute, confirmation, }) => {
+  ({ client, getFlowByData, email, phone, res, showError, setPreloader, eventsTrackers, autoRoute, confirmation, facebook, }) => {
     const dataSaved = saveUserData(client)({ userData: res.userByMail, });
     const transformedObj = objTransform(res);
     const flow = getFlowByData(transformedObj.user);
@@ -223,11 +236,16 @@ class IndexForm extends Component {
    * the autoSubmit method runs when the user returns to the login page from a confirmation email
    */
   autoSubmit = ({ client, getFlowByData, }) => {
-    const { confirmation, email, phone, } = getUrlParams();
-    const eventsTrackers = { gaAction: this.props.gaAction, biAction: this.props.biAction, };
-    if (confirmation) {
+    const { confirmation, email, phone, facebook, } = getUrlParams();
+    const eventsTrackers = { gaAction: this.props.gaAction, biAction: this.props.biAction };
+    if(confirmation) {
       const autoSubmitFunction = onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader, eventsTrackers, '/loginForms', confirmation);
       autoSubmitFunction({ email, phone, });
+    }
+    if(facebook && facebook.token && facebook.redirect) {
+      saveUserData(client)({ user: { facebook, __typename: "User", }, });
+    } else {
+      saveUserData(client)({ user: { facebook: "", __typename: "User", }, });
     }
   }
   /* ::::::::::::::::::::::::::::::::::: METHODS } ::::::::::::::::::::::::::::::::::: */

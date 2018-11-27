@@ -5,8 +5,7 @@ import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 
 import { createComponent, } from 'react-fela';
-import { Form, TextInput, Button, ApolloConsumer, } from '@haaretz/htz-components';
-import theme from '../theme/index';
+import { ApolloConsumer, } from '@haaretz/htz-components';
 import BottomLinks from '../components/Misc/BottomLinks';
 import { sendMailValidation, } from '../util/requestUtil';
 import { getEmail, } from './queryutil/userDetailsOperations';
@@ -81,7 +80,7 @@ class EmailValidationSent2 extends React.Component {
                         <BottomLinks spacing={2}>
                           <span>לא הגיע? </span>
                           <br/>
-                          <HtzLink href="https://www.haaretz.co.il/misc/contact-us">
+                          <HtzLink href="https://www.haaretz.co.il/misc/contact-us" target="_blank">
                             פניה לשירות לקוחות
                           </HtzLink>
                             <br/>

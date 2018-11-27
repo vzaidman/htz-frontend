@@ -7,7 +7,7 @@ import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponent
 import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 import Preloader from '../../Misc/Preloader';
-import { loginWithFacebook, getFacebookParams, } from '../../../util/facebookLoginUtil';
+import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -23,9 +23,9 @@ const validateSmsCodeInput = ({ smsCode, }) =>
     : []);
 
 const getFacebookLogin = (user) => {
-  const facebookParams = getFacebookParams(user.type, user.id);
+  const facebookParams = getFacebookParams(user);
   return facebookParams ?
-    loginWithFacebook(facebookParams) :
+    getFacebookLoginUrl(facebookParams) :
     false;
 }
 
