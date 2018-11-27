@@ -247,7 +247,7 @@ function LiveBlog({ articleId, slots, }) {
                                       ),
                                     }}
                                   />
-                                  <NoSSR key={newsletterProps.contentId}>
+                                  <NoSSR key={element.contentId}>
                                     <Newsletter
                                       {...newsletterProps}
                                       miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }}

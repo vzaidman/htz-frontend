@@ -32,6 +32,7 @@ export type ButtonProps = {
   href?: string | null,
   title?: ?string,
   props?: Object,
+  tabIndex?: number | string,
   onClick?: any => any,
 };
 

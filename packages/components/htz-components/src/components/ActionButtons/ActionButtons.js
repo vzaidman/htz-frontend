@@ -110,6 +110,7 @@ const ActionButtons = ({
   globalButtonsStyles,
   globalIconsStyles,
   miscStyles,
+  tabIndex,
   size,
   vertical,
   ...props
@@ -121,6 +122,7 @@ const ActionButtons = ({
       <ActionButton
         key={index}
         fontSize={-2}
+        tabIndex={tabIndex}
         // Ben:
         // The 'save action button' style should sent by parent component,
         // but the state if the article is saved or not is from the 'actionList',

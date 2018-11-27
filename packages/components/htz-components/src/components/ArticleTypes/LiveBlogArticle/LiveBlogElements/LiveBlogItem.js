@@ -184,7 +184,8 @@ class LiveBlogItem extends React.Component {
                 <ActionButtons
                   elementName={item.title}
                   elementUrl={`${canonicalUrl}#${item.cardId}`}
-                  buttons={[ 'facebookLogo', 'whatsapp', 'mail', ]}
+                  tabIndex={0}
+                  buttons={[ 'facebook', 'whatsapp', 'mail', ]}
                   size={[ { until: 'l', value: 4, }, { from: 'm', value: 3, }, ]}
                   isFlat
                   vertical
@@ -200,41 +201,8 @@ class LiveBlogItem extends React.Component {
                     ...theme.mq({ until: 's', }, { display: 'none', }),
                   }}
                 />
-                {/* <ActionButtons
-              miscStyles={{
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                marginTop: '5rem',
-                ...theme.mq({ until: 's', }, { display: 'none', }),
-              }}
-              size={3}
-              buttons={[
-                {
-                  name: 'facebookLogo',
-                  buttonText: 78,
-                  iconStyles: {
-                    color: theme.color('primary'),
-                  },
-                },
-                {
-                  name: 'whatsapp',
-                  iconStyles: {
-                    color: theme.color('primary'),
-                  },
-                },
-                {
-                  name: 'mail',
-                  iconStyles: {
-                    color: theme.color('primary'),
-                  },
-                },
-              ]}
-              vertical
-            /> */}
               </GridItem>
               <GridItem
-                // width={3 / 4}
-                // fade={this.state.fadeText}
                 width={[ { until: 's', value: 1 / 1, }, { from: 's', value: 4 / 5, }, ]}
                 miscStyles={{
                   paddingTop: '3rem',
@@ -246,10 +214,7 @@ class LiveBlogItem extends React.Component {
                         maxHeight: '65rem',
                       }
                     : {}),
-                  // margin: '0',
-                  // wordBreak: 'break-word',
                   maxWidth: '70rem',
-                  // width: '100%',
                   ...theme.mq(
                     { until: 's', },
                     {
@@ -292,45 +257,13 @@ class LiveBlogItem extends React.Component {
                     <ActionButtons
                       elementName={item.title}
                       elementUrl={`${canonicalUrl}#${item.cardId}`}
-                      buttons={[ 'facebooklogo', 'whatsapp', 'mail', ]}
+                      buttons={[ 'facebook', 'whatsapp', 'mail', ]}
                       size={3.5}
                       isFlat
-                      // globalButtonsStyles={{
-                      // paddingInlineEnd: '1rem',
-                      // paddingInlineStart: '1rem',
-                      // paddingBottom: '1.5rem',
-                      // }}
                       miscStyles={{
                         paddingBottom: '1.5rem',
                       }}
                     />
-                    {/* <ActionButtons
-                  miscStyles={{
-                    paddingBottom: '1.5rem',
-                  }}
-                  size={3}
-                  buttons={[
-                    {
-                      name: 'facebookLogo',
-                      buttonText: 78,
-                      iconStyles: {
-                        color: theme.color('primary'),
-                      },
-                    },
-                    {
-                      name: 'whatsapp',
-                      iconStyles: {
-                        color: theme.color('primary'),
-                      },
-                    },
-                    {
-                      name: 'mail',
-                      iconStyles: {
-                        color: theme.color('primary'),
-                      },
-                    },
-                  ]}
-                /> */}
                     {this.state.fadeText ? (
                       <Button
                         variant="primary"

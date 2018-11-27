@@ -138,6 +138,7 @@ export const ActionButton = ({ render, }: ActionButtonProps): Node => (
 export const Button: StatelessFunctionalComponent<ButtonProps> = ({
   children,
   miscStyles,
+  tabIndex,
   title,
   href,
   ...props
@@ -160,6 +161,7 @@ export const Button: StatelessFunctionalComponent<ButtonProps> = ({
         }}
         attrs={{
           title,
+          tabIndex: tabIndex !== undefined ? tabIndex : '-1',
           ...props,
         }}
       >
