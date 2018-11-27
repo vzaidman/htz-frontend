@@ -7,7 +7,7 @@ import INSPECT_EMAIL, {
   HOSTNAME,
   PHONE_EMAIL_CONFIRMATION,
 } from '../queries/UserQueries';
-import { GENERATE_HASH, CONNECT_MAIL_MOBILE, VALIDATE_MAIL_TO_MOBILE } from '../mutations/UserMutations';
+import { GENERATE_HASH, CONNECT_MAIL_MOBILE, VALIDATE_MAIL_TO_MOBILE, } from '../mutations/UserMutations';
 
 const getDataFromUserInfo = client => email =>
   client
@@ -15,11 +15,7 @@ const getDataFromUserInfo = client => email =>
       query: INSPECT_EMAIL,
       variables: { email, },
     })
-    .then(res => {
-      const data = res.data;
-      console.log(JSON.stringify({ userData: data.userByMail, }));
-      return data;
-    });
+    .then(res => res.data);
 
 const mockDataFromUserInfo = client => email =>
   Promise.resolve({
