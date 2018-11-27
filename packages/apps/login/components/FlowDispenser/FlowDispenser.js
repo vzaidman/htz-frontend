@@ -41,14 +41,12 @@ const generateDataString = characteristics => characteristics
 const resolveFlowNumber = data => {
   const characteristicsArray = argsObjToArr(data);
   const dataString = generateDataString(characteristicsArray);
-  console.log(dataString);
   return dataToFlowMapper.get(dataString);
 };
 
 const generateFullFlow = specificFlow => {
   const generalTransitionRouteMap = generalFlows.transitionRouteMap;
   const specificTransitionRouteMap = specificFlow.transitionRouteMap;
-  //console.log(`combined map: ${JSON.stringify(Array.from(new Map([ ...generalTransitionRouteMap, ...specificTransitionRouteMap, ])))}`);
   const fullFlow = { ...generalFlows, ...specificFlow, };
   return Object.assign(
     {},
@@ -61,7 +59,6 @@ const generateFullFlow = specificFlow => {
 
 export const getFlowByData = data => {
   const selectedFlow = flows[resolveFlowNumber(data) - 1];
-  console.log(`flow number: ${resolveFlowNumber(data)}`);
   return generateFullFlow(selectedFlow);
 };
 
