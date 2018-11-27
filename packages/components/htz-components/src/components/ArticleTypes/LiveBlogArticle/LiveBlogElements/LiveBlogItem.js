@@ -184,7 +184,7 @@ class LiveBlogItem extends React.Component {
                 <ActionButtons
                   elementName={item.title}
                   elementUrl={`${canonicalUrl}#${item.cardId}`}
-                  buttons={[ 'facebooklogo', 'whatsapp', 'mail', ]}
+                  buttons={[ 'facebookLogo', 'whatsapp', 'mail', ]}
                   size={[ { until: 'l', value: 4, }, { from: 'm', value: 3, }, ]}
                   isFlat
                   vertical

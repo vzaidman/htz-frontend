@@ -34,7 +34,7 @@ const margineliaStyle = ({ theme, theme: { layoutStyle, }, hideUnderLargeBreakPo
 });
 
 const wrapperStyle = ({ miscStyles, theme, }) => ({
-  // marginTop: '3rem',
+  // backgroundColor: 'white',
   ...theme.mq({ from: 'l', }, { marginTop: '4rem', }),
   extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
@@ -52,7 +52,7 @@ const LiveBlogLayoutRow = ({
   <FelaComponent
     miscStyles={miscStyles}
     rule={wrapperStyle}
-    render={({ className, }) => (
+    render={({ className, theme, }) => (
       <Section className={className}>
         {title ? (
           <SectionTitleA isInMargin={!!(id === 'commentsSection')} title={title} id={id || null} />
@@ -60,6 +60,7 @@ const LiveBlogLayoutRow = ({
         <FelaComponent
           style={({ layoutStyle, mq, }) => ({
             position: 'relative',
+            ...(!title ? { backgroundColor: theme.color('primary', '-6'), } : {}),
             extend: [
               mq(
                 { from: 'l', until: 'xl', },
@@ -91,11 +92,6 @@ const LiveBlogLayoutRow = ({
                   }
                 : {}),
               extend: [
-                // theme.mq({ until: 's', }, { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }),
-                // theme.mq(
-                //   { from: 's', until: 'l', },
-                //   { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }
-                // ),
                 theme.mq({ from: 'l', }, { paddingInlineStart: '5rem', paddingInlineEnd: '5rem', }),
               ],
             })}

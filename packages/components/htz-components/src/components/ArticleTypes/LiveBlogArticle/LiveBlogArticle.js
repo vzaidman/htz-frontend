@@ -10,6 +10,8 @@ import WideArticleLayoutRow from '../../PageLayout/WideArticleLayoutRow';
 import ArticleLayout from '../../PageLayout/ArticleLayout';
 import getComponent from '../../../utils/componentFromInputTemplate';
 import ArticleBody from '../../ArticleBody/ArticleBody';
+import Newsletter from '../../Newsletter/Newsletter';
+import NoSSR from '../../NoSSR/NoSSR';
 import SideBar from '../../SideBar/SideBar';
 import Zen from '../../Zen/Zen';
 import Tags from '../../Tags/Tags';
@@ -71,10 +73,25 @@ function LiveBlog({ articleId, slots, }) {
 
           const isMouse = LiveBlogElement.inputTemplate === 'com.mouse.story.MouseStandardStory';
 
-          const { authors, body, headlineElement, reportingFrom, pubDate, modDate, liveblogItems, keyEvents, isLiveUpdate, isDisplayBlogitemsDatetime, tags, } = LiveBlogElement;
+          const {
+            authors,
+            body,
+            headlineElement,
+            reportingFrom,
+            pubDate,
+            modDate,
+            liveblogItems,
+            keyEvents,
+            isLiveUpdate,
+            isDisplayBlogitemsDatetime,
+            tags,
+          } = LiveBlogElement;
           const header = isMouse ? { pubDate, modDate, } : LiveBlogElement.header;
+          // inputTemplate: "com.tm.newsLetterQuickRegistrationRespAuto"
 
-          // const timeLineItems = liveblogItems.filter(value => value.keyEvent);
+          const newsletterProps = body.filter(
+            value => value.inputTemplate === 'com.tm.newsLetterQuickRegistrationRespAuto'
+          )[0];
           // const timeLineItems = liveblogItems.filter(value => value.keyEvent);
 
           // console.warn('timeLineItems: ', timeLineItems);
@@ -82,7 +99,7 @@ function LiveBlog({ articleId, slots, }) {
           // console.warn('liveblogItems: ', liveblogItems);
           // console.warn('keyEvents: ', JSON.stringify(keyEvents));
           // keyEvents.map(val => console.warn('get me that shit:'))
-          console.warn('isLiveUpdate: ', isLiveUpdate);
+          // console.warn('isLiveUpdate: ', isLiveUpdate);
           // console.warn('isDisplayBlogitemsDatetime: ', isDisplayBlogitemsDatetime);
 
           return (
@@ -162,7 +179,10 @@ function LiveBlog({ articleId, slots, }) {
                               if (authors.length) {
                                 const blogName = lineage[1].name;
                                 const author = authors[0];
-                                bloggerInfo = element.inputTemplate === 'com.tm.BlogArticle' ? (<BloggerInfo author={author} blogName={blogName} />) : null;
+                                bloggerInfo =
+                                  element.inputTemplate === 'com.tm.BlogArticle' ? (
+                                    <BloggerInfo author={author} blogName={blogName} />
+                                  ) : null;
                               }
                               return (
                                 <LiveBlogLayoutRow
@@ -194,21 +214,14 @@ function LiveBlog({ articleId, slots, }) {
                                 >
                                   <ArticleBody
                                     body={body}
-                                    // tagsList={tags}
+                                    showNewsletter={false}
                                     miscStyles={{
-                                     paddingBlockEnd: '3rem',
-                                     paddingInlineStart: '3rem',
-                                     paddingInlineEnd: '3rem',
-                                     paddingBlockStart: '3rem',
-                                     backgroundColor: 'white',
-                                     maxWidth: '100%',
-                                    //  backgroundColor: 'white',
-                                    //  ...theme.mq({ from: 'm', }, { backgroudColor: 'white',  }),
-                                    //  ...theme.mq({ until: 'l', }, {
-                                        // paddingInlineStart: '3rem',
-                                        // paddingInlineEnd: '3rem',
-                                        // paddingBlockStart: '3rem',
-                                      // }),
+                                      paddingBlockEnd: '3rem',
+                                      paddingInlineStart: '3rem',
+                                      paddingInlineEnd: '3rem',
+                                      paddingBlockStart: '3rem',
+                                      backgroundColor: 'white',
+                                      maxWidth: '100%',
                                     }}
                                   />
                                   <LiveBlogContainer
@@ -230,9 +243,16 @@ function LiveBlog({ articleId, slots, }) {
                                           marginInlineEnd: '1rem',
                                           paddingTop: '2rem',
                                           paddingBottom: '2rem',
-                                        }),
+                                        }
+                                      ),
                                     }}
                                   />
+                                  <NoSSR key={newsletterProps.contentId}>
+                                    <Newsletter
+                                      {...newsletterProps}
+                                      miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }}
+                                    />
+                                  </NoSSR>
                                   {bloggerInfo}
                                 </LiveBlogLayoutRow>
                               );
@@ -251,15 +271,14 @@ function LiveBlog({ articleId, slots, }) {
                             key={element.contentId}
                             hideDivider
                             {...(element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
-                            ? {
-                              hideDivider: true,
-                              miscStyles: {
-                                backgroundColor: theme.color('primary', '-6'),
-                                display: [ { until: 's', value: 'none', }, ],
-                              },
-                            }
-                            : {})}
-                            // miscStyles={{ backgroundColor: 'white', }}
+                              ? {
+                                  hideDivider: true,
+                                  miscStyles: {
+                                    backgroundColor: theme.color('primary', '-6'),
+                                    display: [ { until: 's', value: 'none', }, ],
+                                  },
+                                }
+                              : {})}
                           >
                             <Element
                               articleId={articleId}
@@ -301,7 +320,13 @@ function LiveBlog({ articleId, slots, }) {
                       alignItems: 'flex-start',
                       extend: [
                         theme.mq({ until: 'l', }, { display: 'none', }),
-                        theme.mq({ from: 'l', }, { width: 'calc(300px + 8rem)', backgroundColor: theme.color('primary', '-6'), }),
+                        theme.mq(
+                          { from: 'l', },
+                          {
+                            width: 'calc(300px + 8rem)',
+                            backgroundColor: theme.color('primary', '-6'),
+                          }
+                        ),
                       ],
                     }}
                     render={({ className, }) => (

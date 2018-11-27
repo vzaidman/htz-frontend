@@ -1,17 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaTheme, FelaComponent, } from 'react-fela';
-import { parseComponentProp, } from '@haaretz/htz-css-tools';
+import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
+import { attrsPropType, } from '../../propTypes/attrsPropType';
 import getComponent from '../../utils/componentFromInputTemplate';
 import ArticleImage from '../ArticleBodyImage/ArticleBodyImage';
+import Tags from '../Tags/Tags';
 import Caption from '../Caption/Caption';
 import NoSSR from '../NoSSR/NoSSR';
 
 const propTypes = {
   /**
+   * An object of attributes to set on the DOM element.
+   */
+  attrs: attrsPropType,
+  /**
    * The elements composing the article’s body.
    */
   body: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
+  /**
+   * Display newsletter in article body.
+   */
+  showNewsletter: PropTypes.bool,
+  /**
+   * An optional tags.
+   */
+  tagsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      /**
+       * Tag's url.
+       */
+      url: PropTypes.string.isRequired,
+      /**
+       * Tag's name to be displayed.
+       */
+      contentName: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   /**
    * A special property holding miscellaneous CSS values that
    * trumps all default values. Processed by
@@ -21,6 +47,9 @@ const propTypes = {
 };
 
 const defaultProps = {
+  attrs: null,
+  tagsList: null,
+  showNewsletter: true,
   miscStyles: null,
 };
 
@@ -88,7 +117,9 @@ const Aside = ({ children, }) => (
 );
 
 const buildImgOptions = (aspect, isFullScreen) => ({
-  sizes: isFullScreen ? '100vw' : '(min-width:1280px) 627px,(min-width:1024px) 460px,(min-width:600px) 540px, calc(100vw - 6rem)',
+  sizes: isFullScreen
+    ? '100vw'
+    : '(min-width:1280px) 627px,(min-width:1024px) 460px,(min-width:600px) 540px, calc(100vw - 6rem)',
   transforms: [
     {
       width: '1920',
@@ -133,9 +164,8 @@ const buildImgOptions = (aspect, isFullScreen) => ({
   ],
 });
 
-const buildComponent = (context, index, isLastItem) => {
+const buildComponent = (context, index, isLastItem, showNewsletter) => {
   const uniqueId = context.elementType || context.inputTemplate || context.tag || null;
-
   if ([ 'com.tm.Image', 'com.tm.BlogImage', ].includes(uniqueId)) {
     return (
       <ArticleImage
@@ -186,11 +216,14 @@ const buildComponent = (context, index, isLastItem) => {
     case 'com.polobase.DfpBannerElement':
       return <Component key={context.contentId} {...context} {...context.properties} />;
     case 'com.tm.newsLetterQuickRegistrationRespAuto':
-      return (
-        <NoSSR key={context.contentId}>
-          <Component {...context} miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }} />
-        </NoSSR>
-      );
+      if (showNewsletter) {
+        return (
+          <NoSSR key={context.contentId}>
+            <Component {...context} miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }} />
+          </NoSSR>
+        );
+      }
+      break;
     default:
       return (
         <FelaTheme
@@ -219,7 +252,6 @@ const buildComponent = (context, index, isLastItem) => {
       );
   }
 };
-
 const wrapperStyle = ({ miscStyles, theme, }) => ({
   maxWidth: theme.articleStyle.body.maxWidth,
   marginRight: 'auto',
@@ -227,13 +259,12 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
   extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
 
-function ArticleBody({ body, showSurvey, miscStyles, }) {
+function ArticleBody({ body, miscStyles, tagsList, showNewsletter, }) {
   return (
-    <FelaComponent
-      miscStyles={miscStyles}
-      rule={wrapperStyle}
-    >
-      {body.map((component, i) => buildComponent(component, i, i === body.length - 1))}
+    <FelaComponent miscStyles={miscStyles} rule={wrapperStyle}>
+      {body.map((component, i) => buildComponent(component, i, i === body.length - 1, showNewsletter)
+      )}
+      {tagsList && tagsList.length ? <Tags tagsList={tagsList} /> : null}
     </FelaComponent>
   );
 }
