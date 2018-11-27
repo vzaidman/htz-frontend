@@ -32,10 +32,6 @@ const onSubmit = doTransitionFunction => {
   const route = doTransitionFunction('accept');
   Router.push(route);
 };
-
-const sendAgain = e => {
-  console.log('test...');
-};
 // --------------------------
 
 const PhoneMailSent2 = () => (
@@ -50,19 +46,12 @@ const PhoneMailSent2 = () => (
 
             <BottomLinks spacing={0}>
               <span>לא הגיע?</span>
-
               <br />
-
-              <span>לשליחה חוזרת </span>
               <HtzLink
-                href={`${findRout('withPassword')}`}
-                onClick={e => {
-                  e.preventDefault();
-                  const route = doTransition('withPassword');
-                  Router.push(route);
-                }}
+                href="https://www.haaretz.co.il/misc/contact-us"
+                target="_blank"
               >
-                לחץ כאן
+                פניה לשירות לקוחות
               </HtzLink>
 
               <br />
@@ -76,7 +65,7 @@ const PhoneMailSent2 = () => (
                   Router.push(route);
                 }}
               >
-                לא כרגע. כניסה באמצעות סיסמה
+                כניסה באמצעות סיסמה
               </HtzLink>
             </BottomLinks>
           </FormWrapper>

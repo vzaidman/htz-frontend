@@ -1,4 +1,4 @@
-import React, { Fragment, } from 'react';
+import React, { Fragment, Component, } from 'react';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
 
@@ -9,6 +9,7 @@ import { connectMailWithPhone, getUserData, getEmail, getHostname, getPhoneNum, 
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import theme from '../theme/index';
 import BottomLinks from '../components/Misc/BottomLinks';
+import Preloader from '../components/Misc/Preloader';
 import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
@@ -55,57 +56,74 @@ const sendAgain = (client, doTransition) => {
 };
 // --------------------------
 
-const PhoneMailSent = () => (
-  <FSMLayout>
-    {({ currentState, findRout, doTransition, }) => (
-      <ApolloConsumer>
-        {client => {
-          return (
-            <Fragment>
-              <ContentWrapper>
-                <FormWrapper>
-                  <ItemCenterer>
-                    <h5>נשלח אלייך מייל על מנת לאשר את המספר הטלפון שלך</h5>
-                  </ItemCenterer>
+class PhoneMailSent extends Component {
 
-                  <BottomLinks spacing={0}>
-                    <span>לא הגיע?</span>
+  state = {
+    isLoading: false,
+  }
 
-                    <br/>
+  setPreloader = (isLoadingStatus) => {
+    this.setState({ isLoading: !!isLoadingStatus, });
+  }
 
-                    <span>לשליחה חוזרת </span>
-                    <HtzLink
-                      href="/"
-                      onClick={e => {
-                        e.preventDefault();
-                        sendAgain(client, doTransition);
-                      }}
-                    >
-                      לחץ כאן
-                    </HtzLink>
+  render() {
+    return(
+      <FSMLayout>
+        {({ currentState, findRout, doTransition, }) => (
+          <ApolloConsumer>
+            {client => {
+              return (
+                <Fragment>
+                  <ContentWrapper>
+                    <FormWrapper>
+                      <ItemCenterer>
+                        <h5>נשלח אלייך מייל על מנת לאשר את המספר הטלפון שלך</h5>
+                      </ItemCenterer>
 
-                    <br/><br/>
+                      <ItemCenterer>
+                        <Preloader isLoading={this.state.isLoading} />
+                      </ItemCenterer>
 
-                    <HtzLink
-                      href={`${findRout('withPassword')}`}
-                      onClick={e => {
-                        e.preventDefault();
-                        const route = doTransition('withPassword');
-                        Router.push(route);
-                      }}
-                    >
-                      לא כרגע. כניסה באמצעות סיסמה
-                    </HtzLink>
+                      <BottomLinks spacing={0}>
+                        <span>לא הגיע?</span>
 
-                  </BottomLinks>
-                </FormWrapper>
-              </ContentWrapper>
-            </Fragment>
-          )
-        }}
-      </ApolloConsumer>
-    )}
-  </FSMLayout>
-);
+                        <br/>
+
+                        <span>לשליחה חוזרת </span>
+                        <HtzLink
+                          href="/"
+                          onClick={e => {
+                            e.preventDefault();
+                            this.setPreloader(true);
+                            sendAgain(client, doTransition);
+                          }}
+                        >
+                          לחץ כאן
+                        </HtzLink>
+
+                        <br/><br/>
+
+                        <HtzLink
+                          href={`${findRout('withPassword')}`}
+                          onClick={e => {
+                            e.preventDefault();
+                            const route = doTransition('withPassword');
+                            Router.push(route);
+                          }}
+                        >
+                          לא כרגע. כניסה באמצעות סיסמה
+                        </HtzLink>
+                      </BottomLinks>
+                    </FormWrapper>
+                  </ContentWrapper>
+                </Fragment>
+              )
+            }}
+          </ApolloConsumer>
+        )}
+      </FSMLayout>
+    );
+  }
+};
 
 export default PhoneMailSent;
