@@ -1,3 +1,4 @@
+// @flow
 import React, { Fragment, } from 'react';
 import Link from 'next/link';
 import gql from 'graphql-tag';
@@ -13,7 +14,50 @@ import type { Asset, } from '../../types/asset';
 import { TdComponent, } from '../AssetsTable/AssetsTable';
 import SectionLink from '../SectionLink/SectionLink';
 
-const TableQuery: (Array<string>) => DocumentNode = fields => gql`
+type FieldType = {
+  name: string,
+  display: string,
+  sortingOrder: 'ascend' | 'descend',
+  style?: (any => StyleProps) | null,
+  value: Object => string,
+}
+
+type Props = {
+  miscStyles: ?StyleProps,
+  headerMiscStyles: ?StyleProps,
+  initialSort: string, // eslint-disable-line react/no-unused-prop-types
+  fields: Array<FieldType>,
+  parentId: ?string,
+  assetsId: ?Array<string>,
+  type: ?string,
+  assetSubSection: ?string,
+  linkText: ?string,
+  addLink: ?boolean,
+  count: ?number,
+  loadMore: ?boolean,
+  expirationBenchmarkDate: ?string,
+};
+
+type State = {
+  sortBy: ?string,
+  sortOrder: 'ascend' | 'descend',
+  parentId: ?string,
+  expirationBenchmarkDate: ?string,
+};
+
+type SortIconsProps = {
+  active: boolean,
+  sortOrder: 'ascend' | 'descend',
+};
+
+type TableLinkProps = {
+  content: string,
+  assetId: string,
+  type: string,
+  allowTab: ?boolean,
+};
+
+const TableQuery: Array<FieldType> => DocumentNode = fields => gql`
   query SortableTable(
     $parentId: String,
     $assetSubSection: String,
@@ -36,54 +80,10 @@ const TableQuery: (Array<string>) => DocumentNode = fields => gql`
     ) {
       id
       type
-      ${fields.map(field => `${field.name}\n`)}
+      ${fields.map(field => field.name).join('\n')}
     }
   }
 `;
-
-type FieldType = {
-  name: string,
-  display: string,
-  sortingOrder: 'ascend' | 'descend',
-  style?: Object => StyleProps,
-  value: Object => string,
-}
-
-type Props = {
-  miscStyles?: StyleProps,
-  headerMiscStyles?: StyleProps,
-  initialSort: string, // eslint-disable-line react/no-unused-prop-types
-  fields: Array<FieldType>,
-  parentId?: string,
-  assetsId?: Array<string>,
-  type?: string,
-  assetSubSection?: string,
-  linkText: ?string,
-  addLink: ?boolean,
-  count?: number,
-  loadMore: ?boolean,
-  expirationBenchmarkDate?: string,
-};
-
-type State = {
-  loadMore: boolean,
-  sortBy?: string,
-  sortOrder?: string,
-  parentId?: string,
-  expirationBenchmarkDate?: string,
-};
-
-type SortIconsProps = {
-  active: boolean,
-  direction: string,
-};
-
-type TableLinkProps = {
-  content: string,
-  assetId: string,
-  type: string,
-  allowTab?: boolean,
-};
 
 // eslint-disable-next-line react/prop-types
 export const SortIcons: SortIconsProps => Node = ({ active, sortOrder, }) => (
@@ -141,7 +141,7 @@ export const TableLink: TableLinkProps => Node = ({ content, assetId, type, allo
   />
 );
 
-const tdHeaderStyle: (Object, StyleProps) => Object = (theme, miscStyles) => ({
+const tdHeaderStyle: (Object, ?StyleProps) => Object = (theme, miscStyles) => ({
   paddingTop: '0.5rem',
   paddingBottom: '0.5rem',
   textAlign: 'start',
@@ -319,22 +319,28 @@ class SortableTable extends React.Component<Props, State> {
     assetSubSection: null,
     count: 5,
     expirationBenchmarkDate: null,
+    linkText: null,
+    addLink: null,
+    loadMore: null,
   };
 
   state = {
     sortBy: null,
-    sortOrder: null,
+    sortOrder: 'descend',
     parentId: null,
     expirationBenchmarkDate: null,
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    const getSortOrder: () => ('ascend' | 'descend') = () => {
+      const selectedField: ?FieldType = nextProps.fields.find((field: FieldType) => (
+        field.name === nextProps.initialSort
+      ));
+      return selectedField ? selectedField.sortingOrder : prevState.sortOrder;
+    };
     return {
       sortBy: prevState.sortBy || nextProps.initialSort,
-      sortOrder: prevState.sortOrder ||
-        nextProps.fields.find((field: FieldType) => (
-          field.name === nextProps.initialSort
-        )).sortingOrder,
+      sortOrder: prevState.sortOrder || getSortOrder(),
       parentId: nextProps.parentId || prevState.parentId || null,
       expirationBenchmarkDate:
         nextProps.expirationBenchmarkDate || prevState.expirationBenchmarkDate || null,
@@ -447,7 +453,7 @@ class SortableTable extends React.Component<Props, State> {
           if (error) return null;
           if (loading) return null;
 
-          const { assetsList: assets, }: Array<Asset> = data;
+          const { assetsList: assets, } = data;
           return (
             <Table
               assets={assets}
