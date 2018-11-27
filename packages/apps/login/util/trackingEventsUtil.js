@@ -8,7 +8,7 @@ const actions = [
   "Scenario 3 - Mail exists but not vaild + No Vaild Phone",
   "Scenario 4 - No mail + No Phone",
   "Scenario 5 - No valid mail + No valid Phone (P)",
-  "Action: Scenario 6 - No valid mail + valid Phone (P)",
+  "Scenario 6 - No valid mail + valid Phone (P)",
 ];
 
 /**
@@ -35,12 +35,28 @@ const events = {
   getCustomerService:     ["Customer Service", 122], //TODO: check action name
 }
 
-const getGaObject = (page, flowNumber, label) => {
-  return {
+/**
+ * Returns the required object for gaAction
+ */
+const getGaObject = ({page, flowNumber, label}) => {
+  return (page && flowNumber && label) ? {
     category: page,
     action: actions[flowNumber],
     label: events[label][0],
+  } : null;
+}
+
+/**
+ * Returns a function that handles sending gaAction & biAction
+ */
+const sendTrackingEvents = (eventTrackers, dataObj) => () => {
+  const gaObject = getGaObject(dataObj);
+  if(eventTrackers && eventTrackers.gaAction && eventTrackers.biAction && gaObject) {
+    eventTrackers.gaAction(gaObject);
+    eventTrackers.biAction({ actionCode: events[dataObj.label][1], });
+  } else {
+    console.log("Could not send event");
   }
 }
 
-export { actions, events, getGaObject, };
+export { sendTrackingEvents, };

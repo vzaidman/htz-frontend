@@ -11,7 +11,7 @@ import Preloader from '../../Misc/Preloader';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { validateMailWithPhone, } from '../../../pages/queryutil/userDetailsOperations';
 import { sendMailValidation, } from '../../../util/requestUtil';
-import { getGaObject, } from '../../../util/analyticsDictionary';
+import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -54,11 +54,11 @@ const validateEmailInput = ({ email, }) =>
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
-const vlidateEmailPhoneConnection = (client, email, autoRoute, confirmation, gaAction) => {
+const vlidateEmailPhoneConnection = (client, email, autoRoute, confirmation, eventsHandler) => {
   validateMailWithPhone(client)({ email, confirmation, })
     .then(
       () => {
-        gaAction(getGaObject("Main Login", flow.flowNumber, "proceedEmail"));
+        eventsHandler();
         return Router.push(autoRoute);
       },
       (error) => {
@@ -82,7 +82,7 @@ const hasValidatedEmail = (dataSaved) => {
         && dataSaved.userData.userStatus.isEmailValidated;
 }
 
-const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showError, setPreloader, autoRoute, confirmation, gaAction, }) =>
+const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showError, setPreloader, autoRoute, confirmation, eventsHandler, }) =>
   generateOtp(client)({ typeId: phoneNum, })
     .then(data => {
       const json = data.data.generateOtp;
@@ -90,9 +90,9 @@ const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showEr
       if (json.success) {
         if(confirmation) {
           saveUserData(client)({ userData: { phoneNum, ssoId, __typename: "SsoUser", }, });
-          vlidateEmailPhoneConnection(client, email, autoRoute, confirmation, gaAction)
+          vlidateEmailPhoneConnection(client, email, autoRoute, confirmation, eventsHandler)
         } else {
-          gaAction(getGaObject("Main Login", flow.flowNumber, "proceedEmail"));
+          eventsHandler();
           Router.push(route);
         }
       }
@@ -103,7 +103,7 @@ const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showEr
     });
 
 const handleResponseFromGraphql =
-  ({ client, getFlowByData, email, phone, res, showError, setPreloader, gaAction, autoRoute, confirmation, }) => {
+  ({ client, getFlowByData, email, phone, res, showError, setPreloader, eventsTrackers, autoRoute, confirmation, }) => {
     const dataSaved = saveUserData(client)({ userData: res.userByMail, });
     const transformedObj = objTransform(res);
 
@@ -115,6 +115,7 @@ const handleResponseFromGraphql =
       flow.initialState = "loginFormsOtp";
     }
     storeFlowNumber(client)(flow.flowNumber);
+    const eventsHandler = sendTrackingEvents(eventsTrackers ,{ page: "Main Login", flowNumber: flow.flowNumber, label: "proceedEmail", });
 
     console.log('**** initial transition', flow.initialTransition);
 
@@ -136,14 +137,14 @@ const handleResponseFromGraphql =
         setPreloader,
         autoRoute,
         confirmation,
-        gaAction,
+        eventsHandler,
       });
     }
     else {
       if(!hasValidatedEmail(dataSaved)) {
         sendMailValidation({ email, }).then(
           () => {
-            gaAction(getGaObject("Main Login", flow.flowNumber, "proceedEmail"));
+            eventsHandler();
             Router.push(route);
           },
           (error) => {
@@ -151,20 +152,20 @@ const handleResponseFromGraphql =
           }
         );
       } else {
-        gaAction(getGaObject("Main Login", flow.flowNumber, "proceedEmail"));
+        eventsHandler();
         Router.push(route);
       }
     }
   };
 
-const onSubmit = (client, getFlowByData, showError, hideError, setPreloader, gaAction, autoRoute, confirmation) => ({ email, phone, }) => {
+const onSubmit = (client, getFlowByData, showError, hideError, setPreloader, eventsTrackers, autoRoute, confirmation) => ({ email, phone, }) => {
   hideError();
   setPreloader(true);
   saveUserEmail(client)(email);
   // mockDataFromUserInfo(client)(email)
   getDataFromUserInfo(client)(email)
     .then(res => {
-      handleResponseFromGraphql({ client, getFlowByData, email, phone, res, showError, setPreloader, gaAction, autoRoute, confirmation });
+      handleResponseFromGraphql({ client, getFlowByData, email, phone, res, showError, setPreloader, eventsTrackers, autoRoute, confirmation });
     })
     .catch(err => {
       setPreloader(false);
@@ -186,12 +187,16 @@ class IndexForm extends Component {
     client: PropTypes.object.isRequired,
     getFlowByData: PropTypes.func.isRequired,
     theme: PropTypes.object.isRequired,
+    gaAction: PropTypes.func,
+    biAction: PropTypes.func,
   };
 
   static defaultProps = {
     client: null,
     getFlowByData: null,
     theme: null,
+    gaAction: null,
+    biAction: null,
   };
   /* :::::::::::::::::::::::::::::::::::: PROPS } :::::::::::::::::::::::::::::::::::: */
 
@@ -217,9 +222,9 @@ class IndexForm extends Component {
    */
   autoSubmit = ({ client, getFlowByData, }) => {
     const { confirmation, email, phone, } = getUrlParams();
-    const { gaAction } = this.props;
+    const eventsTrackers = { gaAction: this.props.gaAction, biAction: this.props.biAction };
     if(confirmation) {
-      const autoSubmitFunction = onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader, gaAction, '/loginForms', confirmation);
+      const autoSubmitFunction = onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader, eventsTrackers, '/loginForms', confirmation);
       autoSubmitFunction({ email, phone, });
     }
   }
@@ -227,7 +232,8 @@ class IndexForm extends Component {
 
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { client, getFlowByData, theme, gaAction, } = this.props;
+    const { client, getFlowByData, theme, gaAction, biAction, } = this.props;
+    const eventsTrackers = { gaAction: gaAction, biAction: biAction };
     return (
       <FormWrapper>
         <ItemCenterer>
@@ -236,7 +242,7 @@ class IndexForm extends Component {
         <Form
           clearFormAfterSubmit={false}
           validate={validateEmailInput}
-          onSubmit={onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader, gaAction)}
+          onSubmit={onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader, eventsTrackers)}
           render={({ getInputProps, handleSubmit, clearForm, }) => (
             <Fragment>
               <TextInput
