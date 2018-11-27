@@ -4,11 +4,9 @@ import Router from 'next/router';
 import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 
-import { Form, TextInput, Button, ApolloConsumer, } from '@haaretz/htz-components';
-import theme from '../theme/index';
+import { ApolloConsumer, } from '@haaretz/htz-components';
 import BottomLinks from '../components/Misc/BottomLinks';
-import { sendMailValidation, } from '../util/requestUtil';
-import { getEmail, } from './queryutil/userDetailsOperations';
+import Preloader from '../components/Misc/Preloader';
 import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
@@ -19,13 +17,11 @@ const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
 const { TextBox, } = LoginMiscLayoutStyles;
 // --------------------------
 
-const sendAgain = e => {
-  console.log('test...');
-};
-// --------------------------
-
 class EmailValidationSent extends React.Component {
-  state = { firstTime: true, };
+  state = {
+    firstTime: true,
+    isLoading: false,
+  };
 
   componentDidMount() {
     this.setState({ firstTime: true, });
@@ -34,13 +30,15 @@ class EmailValidationSent extends React.Component {
   shouldComponentUpdate() {
     return false;
   }
+
+  setPreloader = (isLoadingStatus) => {
+    this.setState({ isLoading: !!isLoadingStatus, });
+  }
+
   render() {
     return this.state.firstTime ? (
       <ApolloConsumer>
         {client => {
-          const email = getEmail(client);
-          // sendMailValidation({ email, });
-          // this.setState({ firstTime: false, });
           return (
             <FSMLayout>
               {({ currentState, findRout, doTransition, }) => (
@@ -53,12 +51,19 @@ class EmailValidationSent extends React.Component {
                           יש לאשר את המייל שנשלח אלייך על מנת לקרוא 6 כתבות באתר מדיי חודש
                         </span>
                       </TextBox>
+
+                      <br/>
+                      <ItemCenterer>
+                        <Preloader isLoading={this.state.isLoading} />
+                      </ItemCenterer>
+
                       <BottomLinks spacing={1}>
                         <span>לא הגיע המייל? </span>
                         <HtzLink
                           href={`${findRout('sendAgain')}`}
                           onClick={e => {
                             e.preventDefault();
+                            this.setPreloader(true);
                             const route = doTransition('sendAgain');
                             Router.push(route);
                           }}
