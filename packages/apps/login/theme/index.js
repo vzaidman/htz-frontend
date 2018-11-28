@@ -7,8 +7,8 @@ import inputStyle from './consts/inputStyle';
 import fontStacks from './consts/fontStacks';
 import gridStyle from './consts/gridStyle';
 import typeConf from './consts/typeConf';
-import { linkToHomePage, emailInputTexts, passwordInputTexts, phoneInputTexts, nameInputTexts, } from './consts/i18n';
-
+import { linkToHomePage, emailInputTexts, passwordInputTexts, phoneInputTexts, nameInputTexts, footerDesktopI18n, footerMobileListsI18n, } from './consts/i18n';
+import footerBorderStyle from './consts/footerBorderStyle';
 // methods
 import getColor from './methods/getColor';
 import {
@@ -99,8 +99,12 @@ const loginPageTheme = host =>
     fontStacks,
     inputStyle,
     typeConf,
+    
+    footerBorderStyle,
 
     // I18n
+    footerMobileListsI18n,
+    footerDesktopI18n,
     linkToHomePage,
     ...emailInputTexts(host),
     ...passwordInputTexts(host),
