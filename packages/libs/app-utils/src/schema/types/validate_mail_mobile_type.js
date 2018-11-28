@@ -1,12 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { GraphQLObjectType, GraphQLString, } from 'graphql';
 
-const ValidateMailMobile = new GraphQLObjectType({
-  name: 'ValidateMailMobile',
+const ValidateConfirmation = new GraphQLObjectType({
+  name: 'ValidateConfirmation',
   fields: () => ({
     message: { type: GraphQLString, },
     success: { type: GraphQLString, },
   }),
 });
 
-export default ValidateMailMobile;
+export default ValidateConfirmation;

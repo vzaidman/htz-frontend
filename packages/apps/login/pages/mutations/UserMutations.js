@@ -32,7 +32,7 @@ const CONNECT_MAIL_MOBILE = gql`
 `;
 
 const VALIDATE_MAIL_TO_MOBILE = gql`
-  mutation ValidateMailMobile($email: String!, $confirmation: String!) {
+  mutation ValidateMailMobileConfirmation($email: String!, $confirmation: String!) {
     validateMobileEmailConnection(email: $email, confirmation: $confirmation) {
       success
       message
@@ -40,4 +40,13 @@ const VALIDATE_MAIL_TO_MOBILE = gql`
   }
 `;
 
-export { GENERATE_HASH, CONNECT_MAIL_MOBILE, VALIDATE_MAIL_TO_MOBILE, };
+const VALIDATE_MAIL = gql`
+  mutation ValidateEmailConfirmation($email: String!, $confirmation: String!) {
+    validateEmail(email: $email, confirmation: $confirmation) {
+      success
+      message
+    }
+  }
+`;
+
+export { GENERATE_HASH, CONNECT_MAIL_MOBILE, VALIDATE_MAIL_TO_MOBILE, VALIDATE_MAIL, };

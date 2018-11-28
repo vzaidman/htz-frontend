@@ -201,6 +201,26 @@ class SsoAPI extends RESTDataSource {
     return this.context.ssoService;
   }
 
+  // TODO: check that this function works well
+  async overrideMobilePhone({ mobile, ssoId, userName, }) {
+    const { prefix, suffix, } = UserTransformations.mobileNumberParser(mobile);
+    return fetch(`${this.baseURL()}r/OverrideMobilePhone`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({
+        ssoId,
+        mobilePrefix: prefix,
+        mobileNumber: suffix,
+        username: userName,
+      }),
+    }).then(
+      success => success.json(),
+      () => Promise.resolve({ success: false, msg: 'server error', hash: '', })
+    );
+  }
+
   async payWithExistingCard(paymentData) {
     const fetchPath = `${this.baseURL}/sso/r/registerWebUser?${querystring.stringify({
       ...paymentData,
@@ -398,6 +418,20 @@ class NewSsoOperationsAPI extends RESTDataSource {
       () => Promise.resolve({ success: false, msg: 'server error', })
     );
   }
+
+  async validateEmail(email, confirmation) {
+    return fetch(`${this.baseURL()}/validateEmail`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, confirmation, }),
+    }).then(
+      success => success.json(),
+      () => Promise.resolve({ success: false, msg: 'server error', })
+    );
+  }
 }
 
 class HtzFunctionOperationsAPI extends RESTDataSource {
@@ -431,32 +465,6 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
   }
 }
 
-class LegacySsoOperationsAPI extends RESTDataSource {
-  get baseURL() {
-    return this.context.ssoService;
-  }
-
-  // TODO: check that this function works well
-  async overrideMobilePhone({ mobile, ssoId, userName, }) {
-    const { prefix, suffix, } = UserTransformations.mobileNumberParser(mobile);
-    return fetch(`${this.baseURL()}r/OverrideMobilePhone`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify({
-        ssoId,
-        mobilePrefix: prefix,
-        mobileNumber: suffix,
-        username: userName,
-      }),
-    }).then(
-      success => success.json(),
-      () => Promise.resolve({ success: false, msg: 'server error', hash: '', })
-    );
-  }
-}
-
 const dataSources = () => ({
   PageAPI: new PageAPI(),
   PapiAPI: new PapiAPI(),
@@ -464,7 +472,6 @@ const dataSources = () => ({
   PurchasePageAPI: new PurchasePageAPI(),
   FinanceAPI: new FinanceAPI(),
   OtpAPI: new OtpAPI(),
-  LegacySsoOperationsAPI: new LegacySsoOperationsAPI(),
   NewSsoOperationsAPI: new NewSsoOperationsAPI(),
   HtzFunctionOperationsAPI: new HtzFunctionOperationsAPI(),
 });
