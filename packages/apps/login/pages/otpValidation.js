@@ -1,11 +1,10 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, Component, } from 'react';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
-import { getEmail, getPhoneEmailConfirmation, } from './queryutil/userDetailsOperations';
 import { Form, TextInput, Button, Login, HtzLink, } from '@haaretz/htz-components';
 
 import FSMLayout from '../layouts/FSMLayout';
-import { getUserData, getPhoneNum, getOtpHash, generateOtp, } from './queryutil/userDetailsOperations';
+import { getUserData, getPhoneNum, getOtpHash, generateOtp, getEmail, } from './queryutil/userDetailsOperations';
 import theme from '../theme/index';
 import BottomLinks from '../components/Misc/BottomLinks';
 import {
@@ -13,8 +12,6 @@ import {
   LoginMiscLayoutStyles,
 } from '../components/StyleComponents/LoginStyleComponents';
 import GET_HOST from './queries/GetHost';
-import OtpForm from '../components/Misc/Forms/OtpForm';
-import { validateMailWithPhone, } from './queryutil/userDetailsOperations';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -29,29 +26,34 @@ const validateSmsCodeInput = ({ smsCode, }) =>
     ? generateSmsCodeError('אנא הזינו את הקוד שנשלח אליכם')
     : []);
 
-const onSubmit = ({ client, host, loginWithMobile, showError, hideError }) => ({ smsCode, termsChk, }) => {
+const onSubmit = ({
+  client,
+  host,
+  loginWithMobile,
+  showError,
+  hideError,
+}) => ({ smsCode, termsChk, }) => {
   hideError();
-  loginWithMobile(getPhoneNum(client), smsCode, termsChk, getOtpHash(client))
+  loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, getOtpHash(client))
     .then(
       // eslint-disable-next-line no-undef
       () => { window.location = `https://www.${host}`; },
-      reason => showError((reason.message || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."))
+      reason => showError((reason.message || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'))
     );
-}
+};
 
 const handleGenerateOtp = (client, doTransition) => {
   generateOtp(client)({ typeId: getUserData(client).phoneNum, })
     .then(
       () => {
-        console.log("SmS Sent again");
         const route = doTransition('sendAgain');
         Router.push(route);
       },
-      (error) => {
-        console.log("Error sending SmS again");
+      error => {
+        console.log('Error sending SmS again');
       }
     );
-}
+};
 
 const hidePhone = phoneNumber => `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
 
@@ -62,18 +64,18 @@ class OtpValidation extends Component {
   state = {
     showError: false,
     errorMessage: '',
-  }
+  };
 
   showError = (errorMsg) => {
     this.setState({ showError: true, errorMessage: errorMsg, });
-  }
+  };
 
   hideError = () => {
-    this.setState({ showError: false, errorMessage: "", });
-  }
+    this.setState({ showError: false, errorMessage: '', });
+  };
 
   render() {
-    return(
+    return (
       <FSMLayout>
         {({ currentState, findRout, doTransition, }) => (
           <ApolloConsumer>
@@ -95,7 +97,13 @@ class OtpValidation extends Component {
                           clearFormAfterSubmit={false}
                           // initialValues={{ email: 'insert email' }}
                           validate={validateSmsCodeInput}
-                          onSubmit={onSubmit({ client, host, loginWithMobile, showError: this.showError, hideError: this.hideError })}
+                          onSubmit={onSubmit({
+                            client,
+                            host,
+                            loginWithMobile,
+                            showError: this.showError,
+                            hideError: this.hideError,
+                          })}
                           render={({ getInputProps, handleSubmit, clearForm, }) => (
                             <Fragment>
                               <div>
@@ -126,13 +134,11 @@ class OtpValidation extends Component {
                                   </button>
                                 </InputLinkButton>
                               </div>
-    
-                              <ErrorBox className={this.state.showError ? "" : "hidden"}>
+                              <ErrorBox className={this.state.showError ? '' : 'hidden'}>
                                 <span>
                                   {this.state.errorMessage}
                                 </span>
                               </ErrorBox>
-    
                               <ItemCenterer>
                                 <Button onClick={handleSubmit}>התחברות</Button>
                               </ItemCenterer>
@@ -152,9 +158,7 @@ class OtpValidation extends Component {
                       >
                         לא הטלפון שלך?
                       </HtzLink>
-    
                       <br />
-    
                       <HtzLink
                         href={`${findRout('withPassword')}`}
                         onClick={e => {
@@ -167,8 +171,6 @@ class OtpValidation extends Component {
                       </HtzLink>
                     </BottomLinks>
                   </FormWrapper>
-    
-                  {/*<OtpForm dataRefs={{ host, client, findRout, doTransition, }} />*/}
                 </ContentWrapper>
               );
             }}
@@ -177,7 +179,6 @@ class OtpValidation extends Component {
       </FSMLayout>
     );
   }
-
 }
 
 export default OtpValidation;
