@@ -9,7 +9,6 @@ export default function createContext(headers) {
   const isDev = process.env.NODE_ENV === 'development';
   const defaultHostname = isDev ? 'local.haaretz.co.il' : headers.hostname;
   const hostname = headers.hostname || defaultHostname; //  when using graphql playground in local env;
-
   const ssoService = config.get('service.sso');
   const newSsoService = config.get('service.newSso');
   const otpService = config.get('service.otp.base');
@@ -23,7 +22,6 @@ export default function createContext(headers) {
     ssoService,
     newSsoService,
     otpService,
-    serviceBase,
     functionService,
     serviceBase,
     cookies,
