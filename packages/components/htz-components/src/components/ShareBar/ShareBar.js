@@ -55,7 +55,6 @@ class ShareBar extends React.Component<Props, State> {
       <FelaComponent
         style={(theme: Object) => ({
           marginTop: '3rem',
-          overflow: 'hidden',
           display: 'flex',
           justifyContent: 'space-between',
           extend: [
@@ -119,13 +118,13 @@ class ShareBar extends React.Component<Props, State> {
                             buttonStyles: isArticleSaved => ({
                               ...(isArticleSaved
                                 ? {
-                                  color: theme.color('neutral', '-10'),
-                                  backgroundColor: theme.color('primary'),
-                                  ':hover': {
                                     color: theme.color('neutral', '-10'),
-                                    backgroundColor: theme.color('secondary'),
-                                  },
-                                }
+                                    backgroundColor: theme.color('primary'),
+                                    ':hover': {
+                                      color: theme.color('neutral', '-10'),
+                                      backgroundColor: theme.color('secondary'),
+                                    },
+                                  }
                                 : {}),
                             }),
                           },
@@ -136,9 +135,9 @@ class ShareBar extends React.Component<Props, State> {
                         style={{
                           ...(this.state.hiddenButtonsBarWidth === -1
                             ? {
-                              position: 'absolute',
-                              right: '100%',
-                            }
+                                position: 'absolute',
+                                right: '100%',
+                              }
                             : {}),
                         }}
                         render={({ className, }) => (
@@ -157,8 +156,8 @@ class ShareBar extends React.Component<Props, State> {
                                 width:
                                   this.state.hiddenButtonsBarWidth !== -1
                                     ? isOpen
-                                    ? `${this.state.hiddenButtonsBarWidth}px`
-                                    : '0'
+                                      ? `${this.state.hiddenButtonsBarWidth}px`
+                                      : '0'
                                     : 'auto',
                                 transitionProperty: 'width',
                                 ...theme.getDelay('transition', -1),

@@ -3,7 +3,7 @@
 /* global window, fetch, Headers  */
 import React from 'react';
 import type { StatelessFunctionalComponent, Node, } from 'react';
-import { FelaComponent, } from 'react-fela';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import type {
@@ -43,6 +43,7 @@ import IconWhatsapp from '../Icon/icons/IconWhatsapp';
 import IconZen from '../Icon/icons/IconZen';
 import AriaDescription from '../AriaDescription/AriaDescription';
 import Tooltip from '../Tooltip/Tooltip';
+
 
 const GET_COMMENTS_ID: Object = gql`
   query GetCommentsId {
@@ -583,53 +584,56 @@ const Whatsapp: StatelessFunctionalComponent<WhatsappButtonProps> = ({
 }): Node => (
   <ActionButton
     render={({ platform, biAction, biActionMapper, }) => (
-      <Tooltip
-        text="שתפו וחבריכם יקראו את הכתבה ללא תשלום"
-        storageParam="tooltipCount"
-        tooltipMiscStyles={theme => (
-          [
-            theme.mq({ until: 's', }, { minWidth: '33rem', }),
-            theme.mq({ from: 's', }, { whiteSpace: 'nowrap', }),
-          ]
-        )}
-        miscStyles={theme => ({
-          extend: [
-            theme.mq({ until: 'm', }, { paddingTop: '1rem', }),
-          ],
-        })}
-        openSide="TOP"
-        offsetX={-8}
-        hide={shouldMainNavBarDisplay === false}
-      >
-        <Button
-          {...props}
-          miscStyles={buttonStyles}
-          title="שתפו בוואטסאפ"
-          onClick={() => {
-            window.open(
-              `${
-                platform === 'mobile'
-                  ? 'whatsapp://'
-                  : 'https://web.whatsapp.com/'
-              }send?text=${elementUrl}${encodeURIComponent(
-                '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
-              )}`,
-              'popup',
-              'width=635,height=800,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
-            );
-
-            biAction({
-              actionCode: biActionMapper.get('whatsApp_share'),
-              additionalInfo: {
-                platform,
-              },
-            });
-            return false;
-          }}
+      <FelaTheme render={theme => (
+        <Tooltip
+          text={theme.shareBar.whatsappTooltip}
+          storageParam="tooltipCount"
+          tooltipMiscStyles={theme => (
+            [
+              theme.mq({ until: 's', }, { minWidth: '33rem', }),
+              theme.mq({ from: 's', }, { whiteSpace: 'nowrap', }),
+            ]
+          )}
+          miscStyles={theme => ({
+            extend: [
+              theme.mq({ until: 'm', }, { paddingTop: '1rem', }),
+            ],
+          })}
+          openSide="top"
+          offsetX={-8}
+          hide={shouldMainNavBarDisplay === false}
         >
-          <IconWhatsapp size={size} miscStyles={iconStyles} />
-        </Button>
-      </Tooltip>
+          <Button
+            {...props}
+            miscStyles={buttonStyles}
+            title="שתפו בוואטסאפ"
+            onClick={() => {
+              window.open(
+                `${
+                  platform === 'mobile'
+                    ? 'whatsapp://'
+                    : 'https://web.whatsapp.com/'
+                }send?text=${elementUrl}${encodeURIComponent(
+                  '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
+                )}`,
+                'popup',
+                'width=635,height=800,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
+              );
+
+              biAction({
+                actionCode: biActionMapper.get('whatsApp_share'),
+                additionalInfo: {
+                  platform,
+                },
+              });
+              return false;
+            }}
+          >
+            <IconWhatsapp size={size} miscStyles={iconStyles} />
+          </Button>
+        </Tooltip>
+      )} />
+      
     )}
   />
 );
