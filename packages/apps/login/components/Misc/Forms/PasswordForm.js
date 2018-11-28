@@ -5,7 +5,7 @@ import { Form, TextInput, Button, Login, HtzLink, CheckBox, } from '@haaretz/htz
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { LoginMiscLayoutStylesThemed, } from '../../StyleComponents/LoginStyleComponentsByTheme';
-import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
+import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, getUser, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 import Preloader from '../../Misc/Preloader';
 import isEmail from 'validator/lib/isEmail';
