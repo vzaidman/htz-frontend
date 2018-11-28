@@ -36,7 +36,7 @@ const mockDataFromUserInfo = client => email =>
     },
   });
 
-const getUser = client => client.readQuery({ query: USER, }).user;
+const getUser = client => client.readQuery({ query: USER, }).userData;
 const getUserData = client => client.readQuery({ query: USER_DATA, }).userData;
 const getOtpHash = client => client.readQuery({ query: OTP_HASH, }).otpHash;
 const getEmail = client => client.readQuery({ query: USER_EMAIL, }).userEmail;

@@ -6,19 +6,20 @@
 
 const FACEBOOK_LOGIN_PATH =
   'https://ms-apps.haaretz.co.il/ms-fb-instant/subscribe/facebook-redirect';
-const PARAM_TOKEN = 'account_linking_token';
-const PARAM_REDIRECT = 'redirect_uri';
 
 /** Misc ----------------------------------------------- */
 
-const windowError = () => {
-  console.warn('could not redirect to facebook login - window is undefined');
+const getUserType = userCrmStatus => {
+  if (userCrmStatus != null) {
+    return userCrmStatus.isActiveTm || userCrmStatus.isActiveHeb ? 'paying' : 'registered';
+  }
+  return 'anonymous';
 };
 
 /**
  * builds and returns the full url for facebook login
  */
-const buildRedirectUrl = ({ params, }) =>
+const buildRedirectUrl = ({ token, subscription, userid, redirect, }) =>
   `${FACEBOOK_LOGIN_PATH}?account_linking_token=${token}&subscription_status=${subscription}&publisher_user_id=${userid}&redirect_uri=${redirect}`;
 
 /** Exported ------------------------------------------- */
@@ -42,8 +43,8 @@ const getFacebookParams = user => {
     return {
       token: user.facebook.token,
       redirect: user.facebook.redirect,
-      subscription: user.type,
-      userid: user.id,
+      subscription: getUserType(user.userCrmStatus),
+      userid: user.ssoId,
     };
   }
   console.warn('could not login with facebook - missing user');
