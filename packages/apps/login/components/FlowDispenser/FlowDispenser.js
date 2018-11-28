@@ -13,6 +13,8 @@ export const dataToFlowMapper = new Map([
   [ '11000', 2, ], // mail valid, phone not valid, not paying.
   [ '11001', 2, ], // mail valid, phone not valid, paying.
   [ '10000', 3, ], // mail not valid, phone not valid, not paying.
+  [ '10110', 3, ], // mail not valid, phone not valid, not paying.
+  [ '10100', 3, ], // mail not valid, phone not valid, not paying.
   [ '00000', 4, ], // user doesn't exist
   [ '10001', 5, ], // mail not valid, phone not valid, paying.
   [ '10101', 6, ], // mail not valid, phone valid, paying.

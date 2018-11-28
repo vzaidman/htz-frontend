@@ -31,6 +31,7 @@ const getUrlParams = () => {
     facebook: {
       token: pageUrl.searchParams.get('account_linking_token'),
       redirect: pageUrl.searchParams.get('redirect_uri'),
+      __typename: "facebookLogin",
     }
   }
 }
@@ -43,7 +44,6 @@ const getParamsData = (params) => {
       phone: decodedParams[1].split('=')[1],
     };
   }
-
   return { email: '', phone: '', };
 };
 
@@ -69,6 +69,10 @@ const vlidateEmailPhoneConnection = (client, email, autoRoute, confirmation, eve
     );
 };
 
+const getUserData = (dataSaved = "") => {
+  return dataSaved.userData;
+}
+
 const hasValidatedPhone = dataSaved => dataSaved
         && dataSaved.userData
         && dataSaved.userData.userStatus
@@ -79,6 +83,31 @@ const hasValidatedEmail = dataSaved => dataSaved
         && dataSaved.userData
         && dataSaved.userData.userStatus
         && dataSaved.userData.userStatus.isEmailValidated;
+
+const hasCrmStatus = (dataSaved) => {
+  return dataSaved && dataSaved.userData && dataSaved.userData.userCrmStatus ?
+    dataSaved.userData.userCrmStatus : false;
+}
+
+const hasActiveSub = (dataSaved) => {
+  const crmStatus = hasCrmStatus(dataSaved);
+  return crmStatus && 
+        (crmStatus.isActiveTm || crmStatus.isActiveHeb);
+}
+
+const isEmailValidationRequired = (dataSaved) => {
+  return (!hasActiveSub(dataSaved) && !hasValidatedEmail(dataSaved));
+}
+
+const setFacebookParamsOnApollo = (client) => {
+  const { facebook, } = getUrlParams();
+  if(facebook && facebook.token && facebook.redirect) {
+    saveUserData(client)({ userData: { facebook, __typename: "SsoUser", }, });
+  } else {
+    const facebookEmpty = { token: null, redirect: null, __typename: "facebookLogin", };
+    saveUserData(client)({ userData: { facebook: facebookEmpty, __typename: "SsoUser", }, });
+  }
+}
 
 const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showError, setPreloader, autoRoute, confirmation, eventsHandler, }) =>
   generateOtp(client)({ typeId: phoneNum, })
@@ -104,6 +133,7 @@ const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showEr
 const handleResponseFromGraphql =
   ({ client, getFlowByData, email, phone, res, showError, setPreloader, eventsTrackers, autoRoute, confirmation, facebook, }) => {
     const dataSaved = saveUserData(client)({ userData: res.userByMail, });
+    const userData = getUserData(dataSaved);
     const transformedObj = objTransform(res);
     const flow = getFlowByData(transformedObj.user);
     if (confirmation) {
@@ -114,7 +144,10 @@ const handleResponseFromGraphql =
     const eventsHandler = sendTrackingEvents(eventsTrackers, { page: 'Main Login', flowNumber: flow.flowNumber, label: 'proceedEmail', });
     const { route, metadata, } = parseRouteInfo(flow.initialTransition);
     writeMetaDataToApollo(client, metadata);
-    if (hasValidatedPhone(dataSaved) || confirmation) {
+
+    setFacebookParamsOnApollo(client);
+
+    if (!isEmailValidationRequired(dataSaved) && (hasValidatedPhone(dataSaved) || confirmation)) {
       handleGenerateOtp({
         client,
         email,
@@ -235,9 +268,10 @@ class IndexForm extends Component {
       autoSubmitFunction({ email, phone, });
     }
     if(facebook && facebook.token && facebook.redirect) {
-      saveUserData(client)({ user: { facebook, __typename: "User", }, });
+      saveUserData(client)({ userData: { facebook, __typename: "SsoUser", }, });
     } else {
-      saveUserData(client)({ user: { facebook: "", __typename: "User", }, });
+      const facebookEmpty = { token: null, redirect: null, __typename: "facebookLogin", };
+      saveUserData(client)({ userData: { facebook: facebookEmpty, __typename: "SsoUser", }, });
     }
   }
   /* ::::::::::::::::::::::::::::::::::: METHODS } ::::::::::::::::::::::::::::::::::: */

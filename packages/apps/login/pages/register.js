@@ -7,7 +7,7 @@ import { HtzLink, Register, Form, TextInput, Button, CheckBox, } from '@haaretz/
 import FSMLayout from '../layouts/FSMLayout';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import isEmail from 'validator/lib/isEmail';
-import { getEmail, } from './queryutil/userDetailsOperations';
+import { getEmail, getUserData, } from './queryutil/userDetailsOperations';
 import theme from '../theme';
 import { FelaTheme, createComponent, } from 'react-fela';
 import BottomLinks from '../components/Misc/BottomLinks';
@@ -16,6 +16,7 @@ import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
 } from '../components/StyleComponents/LoginStyleComponents';
+import { getFacebookLoginUrl, getFacebookParams, } from '../util/facebookLoginUtil';
 
 // Styling Components -------
 const {
@@ -128,7 +129,14 @@ const mobileNumberParser = mobileNum => {
   return { mobilePrefix, mobileSuffix, };
 };
 
-const onSubmit = ({ register, doTransition, showError, hideError, setPreloader, }) => ({ firstname, lastname, email, password, phone, terms, }) => {
+const getFacebookLogin = (user) => {
+  const facebookParams = getFacebookParams(user);
+  return facebookParams ?
+    getFacebookLoginUrl(facebookParams) :
+    false;
+}
+
+const onSubmit = ({ register, doTransition, user, showError, hideError, setPreloader, }) => ({ firstname, lastname, email, password, phone, terms, }) => {
   setPreloader(true);
   hideError();
   const { mobilePrefix, mobileSuffix, } = phone ? mobileNumberParser(phone) : { mobilePrefix: '', mobileSuffix: '', };
@@ -144,6 +152,12 @@ const onSubmit = ({ register, doTransition, showError, hideError, setPreloader, 
   ).then(
     () => {
       Router.push(doTransition('success'));
+      /*const facebookLoginUrl = getFacebookLogin(user);
+      if(facebookLoginUrl) {
+        window.location = getFacebookLogin(user);
+      } else {
+        Router.push(doTransition('success'));
+      }*/
     },
     reason => {
       setPreloader(false);
