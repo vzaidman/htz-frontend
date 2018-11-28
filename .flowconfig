@@ -2,7 +2,7 @@
 .*/pkg_templates/.*
 .*/node_modules/.*/test/.*
 .*/node_modules/.*/__tests__/.*
-./**/node_modules/
+.*/node_modules/graphql/jsutils/keyValMap.js.flow
 <PROJECT_ROOT>/.history
 <PROJECT_ROOT>/**/.history
 
