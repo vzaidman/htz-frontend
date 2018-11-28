@@ -61,7 +61,17 @@ function options({ url: { query: { section, }, }, }: Props): Node {
                           parentId={assetId}
                           expirationBenchmarkDate={expirationDate}
                           loadMore
-                          type="bonds"
+                          type="options"
+                          fragment="
+                              name
+                              value
+                              changePercentage
+                              volume
+                              openPositions
+                              openPositionsChangeRate
+                              assetNumber
+                              putCallRatio
+                             "
                           fields={[
                             {
                               name: 'name',

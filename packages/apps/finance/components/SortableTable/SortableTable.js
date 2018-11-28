@@ -27,15 +27,17 @@ type Props = {
   headerMiscStyles: ?StyleProps,
   initialSort: string, // eslint-disable-line react/no-unused-prop-types
   fields: Array<FieldType>,
+  fragment: string,
   parentId: ?string,
   assetsId: ?Array<string>,
   type: ?string,
   assetSubSection: ?string,
   linkText: ?string,
   addLink: ?boolean,
-  count: ?number,
+  count: number,
   loadMore: ?boolean,
   expirationBenchmarkDate: ?string,
+  extractData: ?(any => Array<Asset>),
 };
 
 type State = {
@@ -57,7 +59,7 @@ type TableLinkProps = {
   allowTab: ?boolean,
 };
 
-const TableQuery: Array<FieldType> => DocumentNode = fields => gql`
+const TableQuery: string => DocumentNode = fragment => gql`
   query SortableTable(
     $parentId: String,
     $assetSubSection: String,
@@ -80,7 +82,7 @@ const TableQuery: Array<FieldType> => DocumentNode = fields => gql`
     ) {
       id
       type
-      ${fields.map(field => field.name).join('\n')}
+      ${fragment}
     }
   }
 `;
@@ -275,7 +277,7 @@ const Table = ({
         : null
     }
     {
-      loadMore && assets.length <= count ?
+      loadMore && (assets.length <= count) ?
         <FelaComponent
           style={theme => ({
             ...theme.type(-2),
@@ -322,6 +324,7 @@ class SortableTable extends React.Component<Props, State> {
     linkText: null,
     addLink: null,
     loadMore: null,
+    extractData: null,
   };
 
   state = {
@@ -350,12 +353,12 @@ class SortableTable extends React.Component<Props, State> {
   fetchData: ({ client: Object, field?: FieldType, props?: Props, }) => Promise<any> =
     async ({ client, field = null, props = null, }) => {
       const {
-        fields,
         parentId,
         assetsId,
         count,
         assetSubSection,
         expirationBenchmarkDate,
+        fragment,
       } = props || this.props;
 
       const sortBy = field ? field.name : this.state.sortBy;
@@ -368,7 +371,7 @@ class SortableTable extends React.Component<Props, State> {
         : this.state.sortOrder;
 
       await client.query({
-        query: TableQuery(fields),
+        query: TableQuery(fragment),
         variables: {
           parentId,
           assetsId,
@@ -394,13 +397,15 @@ class SortableTable extends React.Component<Props, State> {
       count,
       assetSubSection,
       expirationBenchmarkDate,
+      fragment,
+      extractData,
       ...props
     } = this.props;
 
     const { sortBy, sortOrder, } = this.state;
     return (
       <Query
-        query={TableQuery(fields)}
+        query={TableQuery(fragment)}
         variables={{
           parentId,
           assetsId,
@@ -453,7 +458,7 @@ class SortableTable extends React.Component<Props, State> {
           if (error) return null;
           if (loading) return null;
 
-          const { assetsList: assets, } = data;
+          const assets: Array<Asset> = extractData ? extractData(data) : data.assetsList;
           return (
             <Table
               assets={assets}

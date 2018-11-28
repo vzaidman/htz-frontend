@@ -16,6 +16,7 @@ import TabList from '../../components/TabList/TabList';
 import TabPanel from '../../components/TabPanel/TabPanel';
 import Tab from '../../components/Tab/Tab';
 import { TabButton, } from '../../components/TabbedGraph/TabbedGraph';
+import gql from 'graphql-tag';
 
 type Props = {
   url: {
@@ -178,6 +179,14 @@ class Bonds extends React.Component<Props, State> {
                             assetSubSection={assetSubSection}
                             loadMore
                             type="bonds"
+                            fragment="
+                              name
+                              value
+                              changePercentage
+                              volume
+                              redemptionYield
+                              avgDuration
+                             "
                             fields={[
                               {
                                 name: 'name',
