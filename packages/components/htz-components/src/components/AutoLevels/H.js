@@ -11,16 +11,21 @@ H.propTypes = {
    * e.g the calculated level is 10, the heading level will be 6.
    */
   offSet: PropTypes.number,
+  /** Forces the generated element to be an H1 */
+  isH1: PropTypes.bool,
 };
 
 H.defaultProps = {
   offSet: 0,
+  isH1: false,
 };
-function H({ offSet, ...props }) {
+function H({ offSet, isH1, ...props }) {
   return (
     <LevelConsumer>
       {level => {
-        const hLevel = Math.max(Math.min(Math.round(level + offSet), 6), 2);
+        const hLevel = isH1
+          ? 1
+          : Math.max(Math.min(Math.round(level + offSet), 6), 2);
         const Heading = `h${hLevel}`;
         return <Heading {...props} />;
       }}
