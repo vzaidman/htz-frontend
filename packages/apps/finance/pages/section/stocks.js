@@ -52,6 +52,11 @@ function stocks({ url: { query: { section, }, }, }: Props): Node {
                     <SortableTable
                       parentId="142"
                       type="stocks"
+                      fragment="
+                        name
+                        value
+                        changePercentage
+                      "
                       fields={[
                         {
                           name: 'name',
@@ -105,6 +110,11 @@ function stocks({ url: { query: { section, }, }, }: Props): Node {
                     <SortableTable
                       parentId="136"
                       type="stocks"
+                      fragment="
+                        name
+                        value
+                        changePercentage
+                      "
                       fields={[
                         {
                           name: 'name',
@@ -162,6 +172,11 @@ function stocks({ url: { query: { section, }, }, }: Props): Node {
                     <SortableTable
                       parentId="142"
                       type="stocks"
+                      fragment="
+                        name
+                        value
+                        changePercentage
+                      "
                       fields={[
                         {
                           name: 'name',
@@ -215,6 +230,11 @@ function stocks({ url: { query: { section, }, }, }: Props): Node {
                     <SortableTable
                       parentId="136"
                       type="stocks"
+                      fragment="
+                        name
+                        value
+                        changePercentage
+                      "
                       fields={[
                         {
                           name: 'name',
@@ -272,6 +292,11 @@ function stocks({ url: { query: { section, }, }, }: Props): Node {
                     <SortableTable
                       parentId="142"
                       type="stocks"
+                      fragment="
+                        name
+                        value
+                        volume
+                      "
                       fields={[
                         {
                           name: 'name',
@@ -322,6 +347,11 @@ function stocks({ url: { query: { section, }, }, }: Props): Node {
                     <SortableTable
                       parentId="136"
                       type="stocks"
+                      fragment="
+                        name
+                        value
+                        volume
+                      "
                       fields={[
                         {
                           name: 'name',
@@ -376,6 +406,11 @@ function stocks({ url: { query: { section, }, }, }: Props): Node {
                     <SortableTable
                       parentId="142"
                       type="stocks"
+                      fragment="
+                        name
+                        value
+                        changePercentage
+                      "
                       fields={[
                         {
                           name: 'name',
@@ -429,6 +464,11 @@ function stocks({ url: { query: { section, }, }, }: Props): Node {
                     <SortableTable
                       parentId="136"
                       type="stocks"
+                      fragment="
+                        name
+                        value
+                        changePercentage
+                      "
                       fields={[
                         {
                           name: 'name',
@@ -487,6 +527,13 @@ function stocks({ url: { query: { section, }, }, }: Props): Node {
                       parentId="-2000"
                       loadMore
                       type="stocks"
+                      fragment="
+                        name
+                        value
+                        symbol
+                        USDValue
+                        arbGap
+                      "
                       fields={[
                         {
                           name: 'name',

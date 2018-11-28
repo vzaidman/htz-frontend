@@ -39,6 +39,11 @@ function index(): Node {
                     <SortableTable
                       parentId="142"
                       type="bonds"
+                      fragment="
+                        name
+                        value
+                        changePercentage
+                      "
                       linkText="לבורסת תל אביב"
                       addLink
                       fields={[
@@ -105,6 +110,11 @@ function index(): Node {
                     <SortableTable
                       parentId="136"
                       type="bonds"
+                      fragment="
+                        name
+                        value
+                        changePercentage
+                      "
                       linkText="לבורסת וול סטריט"
                       addLink
                       fields={[
@@ -159,6 +169,11 @@ function index(): Node {
                     <SortableTable
                       parentId="-2000"
                       type="stocks"
+                      fragment="
+                        name
+                        symbol
+                        arbGap
+                      "
                       linkText="לרשימה המלאה"
                       addLink
                       fields={[
@@ -217,6 +232,11 @@ function index(): Node {
                     <SortableTable
                       assetsId={[ '0', '1', '2', '3', '4', ]}
                       type="currency"
+                      fragment="
+                        name
+                        value
+                        changePercentage
+                      "
                       linkText="למדור מטבעות דיגיטליים"
                       addLink
                       fields={[
@@ -300,6 +320,11 @@ function index(): Node {
                     <SortableTable
                       parentId="2"
                       type="etf"
+                      fragment="
+                        name
+                        symbol
+                        arbGap
+                      "
                       linkText="לתעודות סל"
                       addLink
                       fields={[
@@ -354,6 +379,11 @@ function index(): Node {
                     <SortableTable
                       parentId="35"
                       type="mtf"
+                      fragment="
+                        name
+                        value
+                        changePercentage
+                      "
                       linkText="לקרנות נאמנות"
                       addLink
                       fields={[
