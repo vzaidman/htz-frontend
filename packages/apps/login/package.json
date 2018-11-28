@@ -36,6 +36,7 @@
     "@haaretz/htz-css-tools": "^1.0.1",
     "@haaretz/htz-react-server": "^0.0.0",
     "@haaretz/htz-user-utils": "0.1.0",
+    "@haaretz/htz-theme": "^0.1.0",
     "apollo-cache-inmemory": "^1.2.7",
     "apollo-client": "^2.3.8",
     "apollo-link": "^1.2.2",
