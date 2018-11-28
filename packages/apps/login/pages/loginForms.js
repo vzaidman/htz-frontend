@@ -40,6 +40,13 @@ const validateEmailInput = ({ email, }) =>
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
+const getUserFromApollo = (client) => {
+  try {
+    return getUser(client);
+  } catch(e) {
+    return false;
+  }
+}
 
 // --------------------------
 
@@ -87,7 +94,7 @@ class LoginForms extends Component {
                   const host = getHost(client);
                   const flow = getFlowNumber(client);
                   const activeTab = '2345'.includes(flow) ? 0 : 1;
-                  const user = getUser(client);
+                  const user = getUserFromApollo(client);
                   console.log('flow: ', flow, 'active tab: ', activeTab);
                   return (
                     <FelaTheme
