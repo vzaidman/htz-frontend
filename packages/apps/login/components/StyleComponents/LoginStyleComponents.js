@@ -23,7 +23,6 @@ const Styles = {
       maxWidth: '95%',
       margin: '0 auto',
       '& label': {
-        height: '35px',
         fontSize: '2rem',
         marginTop: '2rem !important',
       },

@@ -12,6 +12,7 @@ const htz = Object.freeze({
     },
     footer: {
       bg: ['primary', '+1'],
+      border: 'white',
       text: 'white',
     },
   },
@@ -93,6 +94,21 @@ const colors = host => {
 
       ...(host === 'themarker.com' ? tm.variants.button.primary : {}),
 
+      
+    // Inverse
+    inverseBg: 'transparent',
+    inverseBorder: 'white',
+    inverseText: 'white',
+    inverseActiveBg: 'transparent',
+    inverseActiveBorder: 'white',
+    inverseActiveText: 'white',
+    inverseFocusBg: 'rgba(255,255,255,0.1)',
+    inverseFocusBorder: 'white',
+    inverseFocusText: 'white',
+    inverseHoverBg: 'rgba(255,255,255,0.2)',
+    inverseHoverBorder: 'white',
+    inverseHoverText: 'white',
+    
       // // Primary Opaque
       // primaryOpaqueBg: ['primary', 'base'],
       // primaryOpaqueBorder: 'transparent',

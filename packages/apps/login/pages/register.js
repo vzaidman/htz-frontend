@@ -29,10 +29,18 @@ const { ErrorBox, TermsWrapper, } = LoginMiscLayoutStyles;
 const halfSizeStyleWrapperStyle = () => ({
   display: 'flex',
   justifyContent: 'space-between',
+  '@media (max-width: 768px)': {
+    display: 'block',
+    justifyContent: 'none',
+    overflow: 'hidden',
+  }
 });
 const halfSizeStyle = () => ({
   float: 'right',
   width: '49%',
+  '@media (max-width: 768px)': {
+    width: '100%',
+  }
 });
 const termsStyle = () => ({
   lineHeight: '17px',
@@ -44,7 +52,7 @@ const termsStyle = () => ({
   },
   '& div': {
     fontSize: '2.3rem',
-  }
+  },
 });
 const HalfSizeWrapper = createComponent(halfSizeStyleWrapperStyle);
 const HalfSize = createComponent(halfSizeStyle);
