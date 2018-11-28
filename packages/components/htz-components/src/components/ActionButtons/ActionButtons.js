@@ -118,6 +118,7 @@ const ActionButtons = ({
   miscStyles,
   size,
   vertical,
+  ...props
 }) => {
   const getButton = (button, index) => {
     const { buttonStyles, iconStyles, name, } = button;
@@ -149,6 +150,7 @@ const ActionButtons = ({
         }}
         elementName={elementName}
         elementUrl={elementUrl}
+        {...props}
       />
     );
   };

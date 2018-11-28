@@ -3,9 +3,8 @@
 /* global window, fetch, Headers  */
 import React from 'react';
 import type { StatelessFunctionalComponent, Node, } from 'react';
-import { FelaComponent, } from 'react-fela';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
-import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import type {
   ActionButtonProps,
   ButtonProps,
@@ -26,7 +25,6 @@ import type {
 import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
 import Mutation from '../ApolloBoundary/Mutation';
 import Query from '../ApolloBoundary/Query';
-import HtzLink from '../HtzLink/HtzLink';
 import EventTracker from '../../utils/EventTracker';
 import Save from './ActionSave';
 
@@ -42,6 +40,8 @@ import IconTwitter from '../Icon/icons/IconTwitter';
 import IconWhatsapp from '../Icon/icons/IconWhatsapp';
 import IconZen from '../Icon/icons/IconZen';
 import AriaDescription from '../AriaDescription/AriaDescription';
+
+import ClickArea from '../ClickArea/ClickArea';
 
 const GET_COMMENTS_ID: Object = gql`
   query GetCommentsId {
@@ -111,17 +111,16 @@ export const ActionButton = ({ render, }: ActionButtonProps): Node => (
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       return (
         <EventTracker>
-          {({ biAction, biActionMapper, }) =>
-            render({
-              platform,
-              biAction,
-              biActionMapper,
-              host,
-              hostname,
-              articleId,
-              userId,
-              zenMode,
-            })
+          {({ biAction, biActionMapper, }) => render({
+            platform,
+            biAction,
+            biActionMapper,
+            host,
+            hostname,
+            articleId,
+            userId,
+            zenMode,
+          })
           }
         </EventTracker>
       );
@@ -129,80 +128,40 @@ export const ActionButton = ({ render, }: ActionButtonProps): Node => (
   </Query>
 );
 
-const nonMobileStyles = theme => ({
-  ':hover': {
-    backgroundColor: theme.color('button', 'sharebarHoverBg'),
-    color: theme.color('button', 'sharebarHoverText'),
-  }
-});
-
-export const iconActiveStyle = (theme:Object) => ({
-  ':hover': {
-    backgroundColor: theme.color('button', 'primaryFocusBg'),
-    color: theme.color('button', 'primaryFocusText'),
-  },
-  ':focus': {
-    backgroundColor: theme.color('button', 'primaryFocusBg'),
-    color: theme.color('button', 'primaryFocusText'),
-  },
-});
-
 export const Button: StatelessFunctionalComponent<ButtonProps> = ({
   children,
   miscStyles,
   title,
   href,
   ...props
-}): Node => {
-  return (
-    <FelaComponent
-      style={(theme: Object) => {
-        const styles = typeof miscStyles === 'function' ? miscStyles(theme) : miscStyles;
-        return ({
-          ...theme.type(-2),
-          alignItems: 'center',
-          display: 'flex',
-          backgroundColor: theme.color('button', 'primaryBg'),
-          color: theme.color('button', 'sharebarText'),
+}): Node => (
+  <FelaTheme
+    render={(theme: Object) => (
+      <ClickArea
+        size={4}
+        href={href}
+        miscStyles={{
           fontWeight: '700',
-          justifyContent: 'center',
-          marginStart: '0.3rem',
-          paddingTop: '1rem',
-          paddingStart: '2rem',
-          paddingBottom: '1rem',
-          paddingEnd: '2rem',
-          position: 'relative',
-          textAlign: 'center',
-          extend: [
-            theme.mq({ from: 's', misc: 'portrait', }, nonMobileStyles(theme)),
-            theme.mq({ from: 'm', misc: 'landscape', }, nonMobileStyles(theme)),
-            ...(styles
-              ? parseStyleProps(styles, theme.mq, theme.type)
-              : []),
-          ],
-        })
-      }
-      }
-      render={({ className, }: { className: string }) =>
-        (href ? (
-          <HtzLink
-            href={href}
-            className={className}
-            attrs={{ title, }}
-            {...props}
-          >
-            {children}
-          </HtzLink>
-        ) : (
-          <button className={className} title={title} {...props}>
-            <AriaDescription id={title}>{title}</AriaDescription>
-            {children}
-          </button>
-        ))
-      }
-    />
-  );
-}
+          paddingInlineStart: '1rem',
+          paddingInlineEnd: '1rem',
+          type: -2,
+          color: theme.color('primary'),
+          ':hover': {
+            color: theme.color('secondary'),
+          },
+          ...miscStyles,
+        }}
+        attrs={{
+          title,
+          ...props,
+        }}
+      >
+        <AriaDescription id={title}>{title}</AriaDescription>
+        {children}
+      </ClickArea>
+    )}
+  />
+);
 
 const Comments: StatelessFunctionalComponent<CommentButtonProps> = ({
   buttonStyles,
@@ -232,19 +191,19 @@ const Comments: StatelessFunctionalComponent<CommentButtonProps> = ({
               query: GET_COMMENTS_ID,
             });
             return commentsElementId ? (
-              <Query
-                query={GET_COMMENTS_COUNT}
-                variables={{ path: commentsElementId, }}
-              >
+              <Query query={GET_COMMENTS_COUNT} variables={{ path: commentsElementId, }}>
                 {({ loading, error, data, }) => {
                   if (loading) return null;
                   if (error) return null;
-                  const totalHits: number = Number(
-                    data.commentsElement.totalHits
-                  );
-                  return totalHits && totalHits > 0 ? (
+                  const commentsNumber: number = Number(data.commentsElement.totalHits);
+                  cache.writeData({
+                    data: {
+                      isCommentsNumberLoaded: true,
+                    },
+                  });
+                  return commentsNumber && commentsNumber > 0 ? (
                     <FelaComponent style={{ marginEnd: '1rem', }} render="span">
-                      {totalHits}
+                      {commentsNumber}
                     </FelaComponent>
                   ) : null;
                 }}
@@ -303,19 +262,13 @@ const Facebook: StatelessFunctionalComponent<FacebookButtonProps> = ({
 
 const FacebookRound = (props: Object) => <Facebook {...props} round />;
 
-class FacebookLogo extends React.Component<
-  FacebookLogoProps,
-  FacebookLogoState
-> {
+class FacebookLogo extends React.Component<FacebookLogoProps, FacebookLogoState> {
   state = {
     host: null,
     facebookCount: 0,
   };
 
-  componentDidUpdate(
-    prevProps: FacebookLogoProps,
-    prevState: FacebookLogoState
-  ) {
+  componentDidUpdate(prevProps: FacebookLogoProps, prevState: FacebookLogoState) {
     const eligibleForFacebookFetch: boolean = prevState.host !== this.state.host;
     if (eligibleForFacebookFetch) {
       this.getFacebookCount(this.state.host);
@@ -323,10 +276,9 @@ class FacebookLogo extends React.Component<
   }
 
   getFacebookCount = (host: ?string) => {
+    const { elementUrl, } = this.props;
     const accessToken: string = fbAcceessTokens.get(host);
-    const url: string = `https://graph.facebook.com/?fields=share&access_token=${accessToken}&id=${
-      this.props.elementUrl
-    }&format=json`;
+    const url: string = `https://graph.facebook.com/?fields=share&access_token=${accessToken}&id=${elementUrl}&format=json`;
 
     return fetch(url, {
       method: 'get',
@@ -497,9 +449,7 @@ const Messenger: StatelessFunctionalComponent<MessengerButtonProps> = ({
         {...props}
         miscStyles={buttonStyles}
         title="שתפו כתבה במסנג'ר"
-        href={`fb-messenger://share/?link=${elementUrl}&app_id=${fbAppIds.get(
-          host
-        )}`}
+        href={`fb-messenger://share/?link=${elementUrl}&app_id=${fbAppIds.get(host)}`}
         onClick={() => {
           biAction({
             actionCode: '',
@@ -602,9 +552,7 @@ const Whatsapp: StatelessFunctionalComponent<WhatsappButtonProps> = ({
         onClick={() => {
           window.open(
             `${
-              platform === 'mobile'
-                ? 'whatsapp://'
-                : 'https://web.whatsapp.com/'
+              platform === 'mobile' ? 'whatsapp://' : 'https://web.whatsapp.com/'
             }send?text=${elementUrl}${encodeURIComponent(
               '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
             )}`,
@@ -637,36 +585,44 @@ const Zen: StatelessFunctionalComponent<ZenButtonProps> = ({
 }): Node => (
   <Mutation mutation={TOGGLE_ZEN}>
     {toggleZen => (
-      <ActionButton
-        render={({ platform, biAction, biActionMapper, zenMode, }) => (
-          <Button
-            {...props}
-            miscStyles={ theme => !zenMode ? ({}) : ({
-              backgroundColor: theme.color('button', 'primaryFocusBg'),
-              color: theme.color('button', 'primaryFocusText'),
-              ...theme.mq({ from: 's', misc: 'portrait', }, iconActiveStyle(theme)),
-              ...theme.mq({ from: 'm', misc: 'landscape', }, iconActiveStyle(theme)),
-            })}
-            onClick={() => {
-              toggleZen();
-              biAction({
-                actionCode: biActionMapper.get('zen_mode'),
-                additionalInfo: {
-                  platform,
-                  ...(buttonText ? { NumOfTalkbacks: buttonText, } : {}),
-                },
-              });
-              return false;
-            }}
-          >
-            <FelaComponent
-              style={{ marginEnd: '1rem', }}
-              render={({ className, theme: { zenTextI18n, }, }) => (
-                <span className={className}>{zenTextI18n}</span>
-              )}
-            />
-            <IconZen size={size} miscStyles={iconStyles} />
-          </Button>
+      <FelaTheme
+        render={theme => (
+          <ActionButton
+            render={({ platform, biAction, biActionMapper, zenMode, }) => (
+              <Button
+                {...props}
+                miscStyles={
+                  !zenMode
+                    ? {}
+                    : {
+                      color: theme.color('secondary'),
+                    }
+                }
+                onClick={() => {
+                  toggleZen();
+                  biAction({
+                    actionCode: biActionMapper.get('zen_mode'),
+                    additionalInfo: {
+                      platform,
+                      ...(buttonText ? { NumOfTalkbacks: buttonText, } : {}),
+                    },
+                  });
+                  return false;
+                }}
+              >
+                <FelaComponent
+                  style={{
+                    marginEnd: '1rem',
+                    color: theme.color('neutral', '-3'),
+                  }}
+                  render={({ className, theme: { zenTextI18n, }, }) => (
+                    <span className={className}>{zenTextI18n}</span>
+                  )}
+                />
+                <IconZen size={size} miscStyles={iconStyles} />
+              </Button>
+            )}
+          />
         )}
       />
     )}

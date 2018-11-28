@@ -5,14 +5,20 @@ import gql from 'graphql-tag';
 import querystring from 'querystring';
 import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
 import IconReading from '../Icon/icons/IconReading';
-import Media from '../Media/Media';
-import { ActionButton, Button, iconActiveStyle, } from './actionList';
+import { ActionButton, Button, } from './actionList';
+import FelaComponent from 'react-fela/lib/FelaComponent';
 
 const GET_READING_LIST = gql`
   query GetReadingList {
     readingListArray @client
   }
 `;
+
+const saveLabel = theme => ({
+  color: theme.color('neutral', '-3'),
+  display: 'none',
+  extend: [ theme.mq({ from: 'm', }, { display: 'inline', }), ],
+});
 
 export default class ActionSave extends React.Component {
   state = { isArticleSaved: null, };
@@ -46,42 +52,45 @@ export default class ActionSave extends React.Component {
                   title="שמירת כתבה"
                   tabIndex="-1"
                   {...props}
-                  miscStyles={theme => ({
+                  miscStyles={{
                     ...(!this.state.isArticleSaved
                       ? {}
                       : {
-                          backgroundColor: theme.color('button', 'primaryFocusBg'),
-                          color: theme.color('button', 'primaryFocusText'),
-                          ...theme.mq({ from: 's', misc: 'portrait', }, iconActiveStyle(theme)),
-                          ...theme.mq({ from: 'm', misc: 'landscape', }, iconActiveStyle(theme)),
+                          color: theme.color('secondary'),
                         }),
                     ...buttonStyles.global,
                     ...buttonStyles.func(isArticleSaved),
-                  })}
+                  }}
                   onClick={() => {
                     const bodyReq = {
                       articleId,
                       userId,
                       operation: isArticleSaved ? 'subtract' : 'add',
-                      readingListId: 'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
+                      readingListId:
+                        'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
                       update: true,
                       pq: 'reading_pq',
                     };
-                    fetch('https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager', {
-                      method: 'POST',
-                      cache: 'no-cache',
-                      credentials: 'include',
-                      headers: {
-                        // 'Content-Type': 'application/json; charset=utf-8',
-                        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-                      },
-                      body: querystring.stringify(bodyReq),
-                    })
+                    fetch(
+                      'https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager',
+                      {
+                        method: 'POST',
+                        cache: 'no-cache',
+                        credentials: 'include',
+                        headers: {
+                          // 'Content-Type': 'application/json; charset=utf-8',
+                          'Content-Type':
+                            'application/x-www-form-urlencoded; charset=utf-8',
+                        },
+                        body: querystring.stringify(bodyReq),
+                      }
+                    )
                       .then(response => response.json())
                       .then(response => {
                         cache.writeData({
                           data: {
-                            readingListArray: response.readinglist.articlesIdsListStr,
+                            readingListArray:
+                              response.readinglist.articlesIdsListStr,
                           },
                         });
 
@@ -91,11 +100,9 @@ export default class ActionSave extends React.Component {
                       });
                   }}
                 >
-                  <Media query={{ from: 'l', }}>
-                    {matches =>
-                      (matches ? <span>{this.state.isArticleSaved ? 'הסר' : 'שמור'}</span> : '')
-                    }
-                  </Media>
+                  <FelaComponent style={saveLabel} render="span">
+                    {this.state.isArticleSaved ? 'הסר' : 'שמור'}
+                  </FelaComponent>
                   <IconReading size={size} miscStyles={iconStyles} />
                 </Button>
               );

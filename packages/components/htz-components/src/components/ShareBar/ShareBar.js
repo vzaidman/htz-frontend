@@ -12,7 +12,8 @@ import Query from '../ApolloBoundary/Query';
 
 const IS_MOUSE_STORY: Object = gql`
   query isMouseStory {
-    isMouseStory @client
+    isMouseStory @client    
+    isCommentsNumberLoaded @client
   }
 `;
 
@@ -23,50 +24,31 @@ type Props = {
 
 type State = {
   isOpen: boolean,
-  focused: boolean,
-  hover: boolean,
 };
 
 class ShareBar extends React.Component<Props, State> {
   state = {
     isOpen: false,
-    focused: false,
-    hover: false,
   };
 
-  hiddenButtonsBarWidth: number = 0;
-  hiddenButtonsBarEl: HTMLDivElement | null = null;
+  barWidth: number = 0;
 
-  toggleOpen: boolean => void = () =>
+  barEl: HTMLDivElement | null = null;
+
+  toggleOpen: boolean => void = () => {
     this.setState((prevState: State) => ({
       isOpen: !prevState.isOpen,
     }));
-
-  changeFocus: boolean => void = (focused: boolean) =>
-    this.setState({
-      focused,
-    });
-
-  toggleHover: boolean => void = (hover: boolean) =>
-    this.setState({
-      hover,
-    });
+  };
 
   render(): Node {
     const { title, canonicalUrl, } = this.props;
-    const { isOpen, focused, hover, } = this.state;
-    if (!this.hiddenButtonsBarWidth && this.hiddenButtonsBarEl) {
-      setImmediate(() => {
-        this.hiddenButtonsBarWidth = this.hiddenButtonsBarEl
-          ? this.hiddenButtonsBarEl.offsetWidth
-          : 0;
-      });
-    }
+    const { isOpen, } = this.state;
+
     return (
       <FelaComponent
         style={(theme: Object) => ({
           marginTop: '3rem',
-
           display: 'flex',
           justifyContent: 'space-between',
           extend: [
@@ -82,9 +64,6 @@ class ShareBar extends React.Component<Props, State> {
         render={({ className, theme, }) => (
           <div className={className}>
             <ActionButtons
-              // miscStyles={{
-              //   flexGrow: '1',
-              // }}
               elementName={title}
               elementUrl={canonicalUrl}
               buttons={[
@@ -112,12 +91,24 @@ class ShareBar extends React.Component<Props, State> {
             />
             <FelaComponent style={{ display: 'flex', }}>
               <Query query={IS_MOUSE_STORY}>
-                {({ data: { isMouseStory, }, }) => {
+                {({ data: { isMouseStory, isCommentsNumberLoaded, }, }) => {
                   const buttons = [ 'zen', ];
                   const hiddenButtons = [ 'print', ];
                   if (!isMouseStory) {
                     hiddenButtons.push('comments');
+                    if (isCommentsNumberLoaded && !this.barWidth && this.barEl) {
+                      this.barWidth = this.barEl.offsetWidth;
+                    }
                   }
+                  else if (!this.barWidth) {
+                    setTimeout(() => {
+                      if (this.barEl) {
+                        this.barWidth = this.barEl.offsetWidth;
+                        this.forceUpdate();
+                      }
+                    });
+                  }
+
                   return (
                     <React.Fragment>
                       <ActionButtons
@@ -130,13 +121,13 @@ class ShareBar extends React.Component<Props, State> {
                             buttonStyles: isArticleSaved => ({
                               ...(isArticleSaved
                                 ? {
+                                  color: theme.color('neutral', '-10'),
+                                  backgroundColor: theme.color('primary'),
+                                  ':hover': {
                                     color: theme.color('neutral', '-10'),
-                                    backgroundColor: theme.color('primary'),
-                                    ':hover': {
-                                      color: theme.color('neutral', '-10'),
-                                      backgroundColor: theme.color('secondary'),
-                                    },
-                                  }
+                                    backgroundColor: theme.color('secondary'),
+                                  },
+                                }
                                 : {}),
                             }),
                           },
@@ -145,27 +136,27 @@ class ShareBar extends React.Component<Props, State> {
                       />
                       <FelaComponent
                         style={{
-                          ...(!this.hiddenButtonsBarWidth
+                          ...(!this.barWidth
                             ? {
-                                position: 'absolute',
-                                right: '100%',
-                              }
+                              position: 'absolute',
+                              right: '100%',
+                            }
                             : {}),
                         }}
                         render={({ className, }) => (
                           <div
                             className={className}
                             ref={el => {
-                              this.hiddenButtonsBarEl = el;
+                              if (!this.barEl) this.barEl = el;
                             }}
                           >
                             <ActionButtons
                               elementName={title}
                               elementUrl={canonicalUrl}
                               miscStyles={{
-                                width: this.hiddenButtonsBarWidth
+                                width: this.barWidth
                                   ? isOpen
-                                    ? `${this.hiddenButtonsBarWidth}px`
+                                    ? `${this.barWidth}px`
                                     : '0'
                                   : 'auto',
                                 transitionProperty: 'width',
@@ -183,21 +174,13 @@ class ShareBar extends React.Component<Props, State> {
 
                       <Button
                         onClick={this.toggleOpen}
-                        onFocus={() => this.changeFocus(true)}
-                        onBlur={() => this.changeFocus(false)}
-                        onMouseEnter={() => this.toggleHover(true)}
-                        onMouseLeave={() => this.toggleHover(false)}
                         title={!isOpen ? 'אפשרויות נוספות' : null}
                         miscStyles={{
-                          paddingStart: '3rem',
-                          paddingEnd: '3rem',
+                          color: theme.color('primary'),
+                          minWidth: '5rem',
                         }}
                       >
-                        <PlusClose
-                          isOpen={isOpen}
-                          size={3}
-                          color={hover ? 'white' : [ 'neutral', '-3', ]}
-                        />
+                        <PlusClose isOpen={isOpen} size={3} color="primary" />
                       </Button>
                     </React.Fragment>
                   );

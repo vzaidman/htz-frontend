@@ -4,6 +4,7 @@ import { withData, } from '@haaretz/app-utils';
 const initialState = () => ({
   a11yToggle: false,
   articleId: null,
+  isCommentsNumberLoaded: false,
   articleSection: {
     name: null,
     id: null,
