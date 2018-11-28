@@ -52,6 +52,7 @@ const QuoteAssetsTable: StatelessFunctionalComponent<Props> =
             <tr>
               {fields.map((field: Field) => (
                 <TdComponent
+                  key={field.value}
                   miscStyles={{
                     paddingTop: '1rem',
                     paddingBottom: '1rem',
@@ -66,6 +67,7 @@ const QuoteAssetsTable: StatelessFunctionalComponent<Props> =
           <tbody>
             {assets.map((asset: Asset) => (
               <FelaComponent
+                key={asset.id}
                 style={{
                   backgroundColor: theme.color('neutral', '-10'),
                   extend: [
@@ -81,6 +83,7 @@ const QuoteAssetsTable: StatelessFunctionalComponent<Props> =
                   const isNumber: boolean = typeof asset[field.value] === 'number';
                   return (
                     <TdComponent
+                      key={`${field.value}-${asset.id}`}
                       miscStyles={{
                         paddingStart: '2rem',
                         direction: 'ltr',

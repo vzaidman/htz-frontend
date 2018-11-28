@@ -99,6 +99,7 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
               {
                 valueData.map(({ title, value, decimal = 2, percentage, }: AssetData) => (
                   <Stat
+                    key={title}
                     title={title}
                     miscStyles={{
                       color: typeof value === 'number'
@@ -170,7 +171,11 @@ const QuoteSummary: StatelessFunctionalComponent<Props> =
           >
             {
               assetInfo.map(({ title, value, }: AssetData) => (
-                <PaperItem title={title} value={value} />
+                <PaperItem
+                  key={title}
+                  title={title}
+                  value={value}
+                />
               ))
             }
           </GridItem>

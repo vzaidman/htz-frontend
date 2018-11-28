@@ -32,8 +32,8 @@ const MtfQuery: DocumentNode = gql`
         name
         id
         type
-        value
-        changePercentage
+        mtfHoldingRatio
+        numeralValue
       }
       lastTradeTime
       relatedAssets {
@@ -239,82 +239,64 @@ function mtf({ url: { query: { section, assetId, }, }, }: Props): Node {
                     </Grid>
                   </PageRow>
                   <PageRow>
-                    <Grid
-                      gutter={2}
-                      miscStyles={{
-                        paddingStart: '0rem',
-                        paddingEnd: '0rem',
-                      }}
+
+                    <RowItem
+                      title="מידע כללי"
+                      miscStyles={{ marginBottom: '2rem', }}
                     >
-                      <GridItem
-                        width={2 / 3}
+                      <Grid
+                        gutter={2}
+                        miscStyles={{
+                          paddingStart: '0rem',
+                          paddingEnd: '0rem',
+                        }}
                       >
-                        <RowItem
-                          title="מידע כללי"
-                          miscStyles={{ marginBottom: '2rem', }}
-                        >
-                          <Grid
-                            gutter={2}
-                            miscStyles={{
-                              paddingStart: '0rem',
-                              paddingEnd: '0rem',
-                            }}
-                          >
-                            <GridItem
-                              width={1 / 2}
-                            >
-                              <QuoteInfoTable
-                                id={assetId}
-                                fields={[
-                                  { name: 'manager', display: 'מנהל הקרן', },
-                                  { name: 'trustee', display: 'נאמן הקרן', },
-                                  { name: 'exposure', display: 'חשיפות הקרן', },
-                                  { name: 'exposureProfile', display: 'פרופיל חשיפה', },
-                                  { name: 'foundingDate', display: 'תאריך הקמה', type: 'date', },
-                                  { name: 'tradingHours', display: 'שעות מסחר', },
-                                ]}
-                              />
-                            </GridItem>
-                            <GridItem
-                              width={1 / 2}
-                            >
-                              <QuoteInfoTable
-                                id={assetId}
-                                fields={[
-                                  { name: 'dividendClassification', display: 'סיווג דיבידנד', },
-                                  { name: 'managementFee', display: 'דמי ניהול', },
-                                  { name: 'trusteeFee', display: 'דמי נאמנות', },
-                                  { name: 'loadChargeRate', display: 'שיעורי הוספה', },
-                                  { name: 'distributionCommission', display: 'עמלת הפצה', },
-                                  { name: 'mainCurrency', display: 'מטבע עיקרי', },
-                                ]}
-                              />
-                            </GridItem>
-                          </Grid>
-                        </RowItem>
-                      </GridItem>
-                      <GridItem
-                        width={1 / 3}
-                      >
-                        <RowItem
-                          title="סיווגים"
-                          miscStyles={{ marginBottom: '2rem', }}
+                        <GridItem
+                          width={1 / 3}
                         >
                           <QuoteInfoTable
                             id={assetId}
-                            fixed
                             fields={[
-                              { name: 'primeClassification', display: 'סיווג על', },
-                              { name: 'mainClassification', display: 'סיווג ראשי', },
-                              { name: 'secondaryClassification', display: 'סיווג משני', },
-                              { name: 'taxClassification', display: 'סיווג מס', },
-                              { name: 'stocksExposure', display: 'חשיפה למניות', },
-                              { name: 'currencyExposure', display: 'חשיפה למט"ח', },
+                              { name: 'manager', display: 'מנהל הקרן', },
+                              { name: 'trustee', display: 'נאמן הקרן', },
+                              { name: 'exposureProfile', display: 'פרופיל חשיפה', },
+                              { name: 'foundingDate', display: 'תאריך הקמה', type: 'date', },
+                              { name: 'tradingHours', display: 'שעות מסחר', },
+                              { name: 'dividendClassification', display: 'סיווג דיבידנד', },
                             ]}
                           />
-                        </RowItem>
-                      </GridItem>
-                    </Grid>
+                        </GridItem>
+                        <GridItem
+                          width={1 / 3}
+                        >
+                          <QuoteInfoTable
+                            id={assetId}
+                            fields={[
+                              { name: 'mtfLinkForeignExchange', display: 'צמוד מט״ח', },
+                              { name: 'mtfLinkIndex', display: 'צמוד מדד', },
+                              { name: 'mtfLinkShekel', display: 'צמוד שקל', },
+                              { name: 'mtfLinkOptions', display: 'אופציות', },
+                              { name: 'mtfLinkStocks', display: 'מניות', },
+                              { name: 'mtfLinkFunds', display: 'קרנות', },
+                            ]}
+                          />
+                        </GridItem>
+                        <GridItem
+                          width={1 / 3}
+                        >
+                          <QuoteInfoTable
+                            id={assetId}
+                            fields={[
+                              { name: 'managementFee', display: 'דמי ניהול', },
+                              { name: 'trusteeFee', display: 'דמי נאמנות', },
+                              { name: 'loadChargeRate', display: 'שיעורי הוספה', },
+                              { name: 'distributionCommission', display: 'עמלת הפצה', },
+                              { name: 'mainCurrency', display: 'מטבע עיקרי', },
+                            ]}
+                          />
+                        </GridItem>
+                      </Grid>
+                    </RowItem>
                   </PageRow>
                   <PageRow>
                     <Grid
@@ -325,7 +307,7 @@ function mtf({ url: { query: { section, assetId, }, }, }: Props): Node {
                       }}
                     >
                       <GridItem
-                        width={1 / 2}
+                        width={1 / 3}
                       >
                         <RowItem
                           title="מדיניות"
@@ -351,6 +333,9 @@ function mtf({ url: { query: { section, assetId, }, }, }: Props): Node {
                               }`}
                           </FelaComponent>
                           <FelaComponent
+                            style={{
+                              ...theme.type(-1)
+                            }}
                             render="p"
                           >
                             {mtfEtfPolicy}
@@ -358,40 +343,26 @@ function mtf({ url: { query: { section, assetId, }, }, }: Props): Node {
                         </RowItem>
                       </GridItem>
                       <GridItem
-                        width={1 / 2}
+                        width={1 / 3}
                       >
                         <RowItem
-                          title="הרכב הקרן"
+                          title="סיווגים"
+                          miscStyles={{ marginBottom: '2rem', }}
                         >
-                          <QuoteAssetsTable
-                            assets={assetComponents}
+                          <QuoteInfoTable
+                            id={assetId}
+                            fixed
                             fields={[
-                              { value: 'name', display: 'שם ני"ע', miscStyles: { fontWeight: '700', }, },
-                              { value: 'value', display: 'שער אחרון', },
-                              {
-                                value: 'changePercentage',
-                                display: '% שינוי',
-                                colorizedChange: true,
-                                miscStyles: {
-                                  direction: 'ltr',
-                                  fontWeight: '700',
-                                  textAlign: 'start',
-                                },
-                              },
+                              { name: 'primeClassification', display: 'סיווג על', },
+                              { name: 'mainClassification', display: 'סיווג ראשי', },
+                              { name: 'secondaryClassification', display: 'סיווג משני', },
+                              { name: 'taxClassification', display: 'סיווג מס', },
+                              { name: 'stocksExposure', display: 'חשיפה למניות', },
+                              { name: 'currencyExposure', display: 'חשיפה למט"ח', },
                             ]}
                           />
                         </RowItem>
                       </GridItem>
-                    </Grid>
-                  </PageRow>
-                  <PageRow>
-                    <Grid
-                      gutter={2}
-                      miscStyles={{
-                        paddingStart: '0rem',
-                        paddingEnd: '0rem',
-                      }}
-                    >
                       <GridItem
                         width={1 / 3}
                       >
@@ -410,8 +381,34 @@ function mtf({ url: { query: { section, assetId, }, }, }: Props): Node {
                           />
                         </RowItem>
                       </GridItem>
+                    </Grid>
+                  </PageRow>
+                  <PageRow>
+                    <Grid
+                      gutter={2}
+                      miscStyles={{
+                        paddingStart: '0rem',
+                        paddingEnd: '0rem',
+                      }}
+                    >
                       <GridItem
-                        width={2 / 3}
+                        width={1 / 2}
+                      >
+                        <RowItem
+                          title="הרכב הקרן"
+                        >
+                          <QuoteAssetsTable
+                            assets={assetComponents}
+                            fields={[
+                              { value: 'name', display: 'שם נייר', miscStyles: { fontWeight: '700', }, },
+                              { value: 'mtfHoldingRatio', display: '% מהקרן', },
+                              { value: 'numeralValue', display: 'שווי בא׳ ש״ח', },
+                            ]}
+                          />
+                        </RowItem>
+                      </GridItem>
+                      <GridItem
+                        width={1 / 2}
                       >
                         <RowItem
                           title="בעלי עניין קונצרני"
