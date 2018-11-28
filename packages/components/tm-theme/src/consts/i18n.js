@@ -289,6 +289,10 @@ export const mobileAdditionalShare = Object.freeze({
   text: 'שיתוף',
 });
 
+export const shareBar = Object.freeze({
+  whatsappTooltip: 'שתפו וחבריכם יקראו את הכתבה ללא תשלום',
+});
+
 export const mobileUserMenuI18n = Object.freeze({
   noUserData: 'כניסה',
   userLoggedIn: 'יציאה',

@@ -128,13 +128,13 @@ class ShareBar extends React.Component<Props, State> {
                             buttonStyles: isArticleSaved => ({
                               ...(isArticleSaved
                                 ? {
-                                  color: theme.color('neutral', '-10'),
-                                  backgroundColor: theme.color('primary'),
-                                  ':hover': {
                                     color: theme.color('neutral', '-10'),
-                                    backgroundColor: theme.color('secondary'),
-                                  },
-                                }
+                                    backgroundColor: theme.color('primary'),
+                                    ':hover': {
+                                      color: theme.color('neutral', '-10'),
+                                      backgroundColor: theme.color('secondary'),
+                                    },
+                                  }
                                 : {}),
                             }),
                           },
@@ -145,9 +145,9 @@ class ShareBar extends React.Component<Props, State> {
                         style={{
                           ...(!this.barWidth
                             ? {
-                              position: 'absolute',
-                              right: '100%',
-                            }
+                                position: 'absolute',
+                                right: '100%',
+                              }
                             : {}),
                         }}
                         render={({ className, }) => (

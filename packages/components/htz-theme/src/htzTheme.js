@@ -30,6 +30,7 @@ import {
   footerMobileListsI18n,
   fryListI18n,
   galleryI18n,
+  shareBar,
   headerSearchI18n,
   mobileAdditionalShare,
   mobileNavigationMenuI18n,
@@ -144,6 +145,7 @@ const htzTheme = Object.freeze({
   getZIndex,
   mq,
   pxToRem,
+  shareBar,
   type: typesetter,
 });
 
