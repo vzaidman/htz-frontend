@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { Fragment, } from 'react';
 import gql from 'graphql-tag';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
@@ -7,12 +7,15 @@ import { Query, } from '@haaretz/htz-components';
 
 import type { StatelessFunctionalComponent, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
+import type { Asset, } from '../../../types/asset';
 
 import { TdComponent, } from '../../AssetsTable/AssetsTable';
+import type { FacebookButtonProps, } from '../../../../../components/htz-components/src/components/ActionButtons/types';
 
 type Field = {
   name: string,
-  display: string,
+  display?: string,
+  fields?: Array<Field>,
   type?: string,
 };
 
@@ -31,6 +34,33 @@ type TrComponentProps = {
   miscStyles?: Object,
 };
 
+const getFields: Array<Field> => string = fields => (
+  fields.map(({ name, display, type, fields, }: Field) => (
+    fields ? `${name}\n { ${getFields(fields)} }` : `${name}\n`
+  )).join('\n')
+);
+
+const DisplayBody: StatelessFunctionalComponent<{ fields: Array<Field>, assets: Array<Asset>, }> = ({ fields, assets, }) => (
+  <Fragment>
+    {fields.map(({ display, name, type, fields, }: Field) => (fields
+      ? (
+        <DisplayBody
+          fields={fields}
+          assets={assets[0][name]}
+        />
+      )
+      : (
+        <TrComponent
+          key={name}
+          title={display || ''}
+          value={assets[0][name]}
+          type={type}
+        />
+      )
+    ))}
+  </Fragment>
+);
+
 const TradeStatsQuery: (Array<Field>, boolean) => DocumentNode = (
   fields,
   tradingStatus
@@ -38,7 +68,7 @@ const TradeStatsQuery: (Array<Field>, boolean) => DocumentNode = (
   query TradeStatsTable($assetsId: [String]){
     assetsList(assetsId: $assetsId){
       ${tradingStatus ? 'tradingStatus\n' : ''}
-      ${fields.map(field => `${field.name}\n`)}
+      ${getFields(fields)}
     }
   }
 `;
@@ -99,9 +129,10 @@ const QuoteInfoTable: StatelessFunctionalComponent<Props> =
       query={TradeStatsQuery(fields, tradingStatus)}
       variables={{ assetsId: [ id, ], }}
     >
-      {({ error, loading, data: { assetsList: assets, }, }) => {
+      {({ error, loading, data: { assetsList, }, }) => {
         if (error) return null;
         if (loading) return null;
+        const assets: Array<Asset> = assetsList;
         return (
           <FelaComponent
             style={(theme: Object) => ({
@@ -140,15 +171,11 @@ const QuoteInfoTable: StatelessFunctionalComponent<Props> =
                 {assets[0].tradingStatus}
               </FelaComponent>
             ) : null}
-
             <tbody>
-              {fields.map(field => (
-                <TrComponent
-                  title={field.display}
-                  value={assets[0][field.name]}
-                  type={field.type}
-                />
-              ))}
+              <DisplayBody
+                fields={fields}
+                assets={assets}
+              />
             </tbody>
           </FelaComponent>
         );
