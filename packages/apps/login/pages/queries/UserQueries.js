@@ -23,9 +23,13 @@ export default gql`
 
 const USER = gql`
   query getUser {
-    user @client {
-      id
-      type
+    userData @client {
+      ssoId
+      userCrmStatus
+      facebook {
+        token
+        redirect
+      }
     }
   }
 `;
