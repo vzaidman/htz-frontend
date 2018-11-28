@@ -318,6 +318,8 @@ export default function UserService(config = {}) {
 
           const status = tokens[0];
           let data = null;
+          const redirect = tokens[3] ? /redirect:(\/misc\/abuse-login-page):(.*):(.*)/.exec(tokens[3]) : null;
+          const redirectInfo = redirect ? { url: `https://www.haaretz.co.il${redirect[1]}`, email: redirect[2], sso: redirect[3], } : null;
           if (status === 'success') {
             data = JSON.parse(tokens[1]);
           }
@@ -326,6 +328,7 @@ export default function UserService(config = {}) {
             status,
             data,
             message,
+            redirectInfo,
           });
         })
     );
@@ -357,6 +360,10 @@ export default function UserService(config = {}) {
         }
       }
       promise = Promise.race(cookiesPromises);
+    }
+    else if (serviceData.redirectInfo) {
+      // eslint-disable-next-line no-undef
+      window.location = `${serviceData.redirectInfo.url}?loginData=${btoa(JSON.stringify(serviceData.redirectInfo))}`;
     }
     else {
       promise = Promise.reject(

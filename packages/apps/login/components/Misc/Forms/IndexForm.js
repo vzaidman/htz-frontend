@@ -47,14 +47,6 @@ const getParamsData = (params) => {
   return { email: '', phone: '', };
 };
 
-const getUrlParams = () => {
-  const pageUrl = new URL(window.location.href);
-  return {
-    confirmation: pageUrl.searchParams.get('confirmation'),
-    ...getParamsData(pageUrl.searchParams.get('params')),
-  };
-};
-
 const generateEmailError = message => [ { name: 'email', order: 1, errorText: message, }, ];
 
 const validateEmailInput = ({ email, }) =>
