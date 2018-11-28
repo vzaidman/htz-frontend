@@ -5,7 +5,7 @@ import { parseStyleProps, parseTypographyProp, } from '@haaretz/htz-css-tools';
 import { responsivePropBaseType, } from '../../propTypes/responsivePropBaseType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
-const kickerPropTypes = {
+Kicker.propTypes = {
   /**
    * Sets heading element to be _block_ or _inline_.(default is inline)
    */
@@ -26,24 +26,35 @@ const kickerPropTypes = {
         value: PropTypes.number,
       })
     ),
-  ]).isRequired,
+  ]),
+  /**
+   * string to use as divider
+   */
+  divider: PropTypes.string,
   /**
    * Text of kicker
    */
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
+  children: PropTypes.node,
   /**
    * A special property holding miscellaneous CSS values that
    * trumps all default values. Processed by
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: stylesPropType,
+  tagName: PropTypes.string,
 };
-const kickerDefaultProps = {
+Kicker.defaultProps = {
+  text: null,
+  fontSize: null,
   isBlock: false,
   miscStyles: null,
+  tagName: 'span',
+  divider: '|',
+  children: null,
 };
 
-const style = ({ isBlock, fontSize, miscStyles, theme, }) => ({
+const style = ({ isBlock, fontSize, divider, miscStyles, theme, }) => ({
   display: isBlock ? 'block' : 'inline',
   backgroundColor: theme.color(
     'articleHeader',
@@ -56,32 +67,37 @@ const style = ({ isBlock, fontSize, miscStyles, theme, }) => ({
   ...(!isBlock
     ? {
       ':after': {
-        content: '"|"',
+        content: `"${divider}"`,
         paddingInlineStart: '1rem',
         paddingInlineEnd: '1rem',
       },
     }
     : {}),
   extend: [
-    parseTypographyProp(fontSize, theme.type),
+    ...[ fontSize ? parseTypographyProp(fontSize, theme.type) : {}, ],
     ...(miscStyles ? parseStyleProps(miscStyles) : []),
   ],
 });
 
-function Kicker({ isBlock, fontSize, text, miscStyles, }) {
+export default function Kicker({
+  isBlock,
+  fontSize,
+  text,
+  divider,
+  miscStyles,
+  tagName,
+  children,
+}) {
   return (
     <FelaComponent
       rule={style}
       isBlock={isBlock}
       fontSize={fontSize}
+      divider={divider}
       miscStyles={miscStyles}
-      render="span"
+      render={tagName}
     >
-      {text}
+      {text || children}
     </FelaComponent>
   );
 }
-
-Kicker.propTypes = kickerPropTypes;
-Kicker.defaultProps = kickerDefaultProps;
-export default Kicker;
