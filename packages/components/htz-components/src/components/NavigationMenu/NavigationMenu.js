@@ -1,26 +1,13 @@
 /* global document */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import config from 'config';
 import { FelaComponent, FelaTheme, } from 'react-fela';
-import { CookieUtils, } from '@haaretz/htz-user-utils';
-import gql from 'graphql-tag';
-
-import Mutation from '../ApolloBoundary/Mutation';
 import Query from '../ApolloBoundary/Query';
-import UserDispenser from '../User/UserDispenser';
 import NavigationQuery from './navigationQuery';
 import DropdownList from '../DropdownList/DropdownList';
 import Hamburger from '../Animations/Hamburger';
 import Item from '../DropdownList/DropdownItem';
 import { dropdownItemStyle, dropdownListStyle, } from '../Masthead/mastheadDropdownListStyle';
-
-// TODO: remove this when optOut item is deprecated
-const OPT_OUT = gql`
-  mutation SetReactHtzArticleOptIn($id: String!, $value: Boolean!) {
-    setReactHtzArticleOptOut(id: $id, value: $value)
-  }
-`;
 
 const menuButtonStyle = ({ theme, isOpen, isHovered, }) => ({
   border: 'none',
@@ -128,18 +115,6 @@ class NavigationMenu extends React.Component {
   handleMouseEnter = () => this.setState({ isHovered: true, });
   handleMouseLeave = () => this.setState({ isHovered: false, });
 
-  optOut = (id, optOutMutation) => {
-    const domain = config.has('domain') && config.get('domain');
-    // CookieUtils.deleteCookie('react');
-    CookieUtils.modifyCookie('react', false, '/', `.${domain}`);
-    // mutation function MongoDB
-    optOutMutation({ variables: { id, value: true, }, })
-      .then(success => {
-        document.location.reload();
-      })
-      .catch(err => console.warn('err mutation:', err));
-  };
-
   componentDidUpdate = (prevProp, prevState) => {
     this.changeHovered = (prevState.isHovered !== this.state.isHovered);
   };
@@ -150,27 +125,6 @@ class NavigationMenu extends React.Component {
         render={theme => {
           const { isHovered, } = this.state;
           const { items, sites, promotions, } = this.props.menuSections;
-
-          // TODO: remove this when optOut item is deprecated
-          const optOut = (
-            <UserDispenser
-              render={({ user, isLoggedIn, }) =>
-                (!isLoggedIn || typeof user.id !== 'string' ? null : (
-                  <Mutation mutation={OPT_OUT}>
-                    {(optOutMutation, { data, }) => (
-                      <Item
-                        key="item HardCoded חזרה לכתבה רגילה"
-                        name="חזרה לכתבה רגילה"
-                        onClick={() => this.optOut(user.id, optOutMutation)}
-                        variant="negativeOpaque"
-                        miscStyles={{ justifyContent: 'center', }}
-                      />
-                    )}
-                  </Mutation>
-                ))
-              }
-            />
-          );
 
           const combinedItems =
             items && items.map(item => <Item key={`item ${item.name}`} {...item} />);
@@ -201,14 +155,6 @@ class NavigationMenu extends React.Component {
               />
             ));
 
-          // TODO: remove this when optOut item is deprecated
-          if (combinedPromotions !== undefined && combinedPromotions.length) {
-            combinedPromotions.unshift(optOut);
-          }
- else {
-            combinedSites.push(optOut);
-          }
-
           const combinedMenu = [
             ...(combinedItems || []),
             ...(combinedSites || []),
@@ -226,45 +172,43 @@ class NavigationMenu extends React.Component {
                       rule={menuButtonStyle}
                       isOpen={isOpen}
                       isHovered={isHovered}
-                      render={({ className, }) => {                       
-                        return (
-                          <button
-                            className={className}
-                            onClick={toggleState}
-                            aria-expanded={isOpen}
-                            ref={el => {
+                      render={({ className, }) => (
+                        <button
+                          className={className}
+                          onClick={toggleState}
+                          aria-expanded={isOpen}
+                          ref={el => {
                               if (!this.hamburgerEl) {
                                 this.hamburgerEl = el;
                               }
                             }}
-                            onMouseEnter={this.handleMouseEnter}
-                            onMouseLeave={this.handleMouseLeave}
-                            onFocus={this.handleMouseEnter}
-                            onBlur={this.handleMouseLeave}
-                            type="button"
-                          >
-                            <FelaComponent
-                              style={{
+                          onMouseEnter={this.handleMouseEnter}
+                          onMouseLeave={this.handleMouseLeave}
+                          onFocus={this.handleMouseEnter}
+                          onBlur={this.handleMouseLeave}
+                          type="button"
+                        >
+                          <FelaComponent
+                            style={{
                                 marginStart: '2rem',
                                 marginEnd: '2rem',
                                 position: 'relative',
                               }}
-                              render="span"
-                            >
-                              <Hamburger
-                                isOpen={isOpen}
-                                color={{
+                            render="span"
+                          >
+                            <Hamburger
+                              isOpen={isOpen}
+                              color={{
                                   close: isHovered ? [ 'neutral', '-10', ] : [ 'neutral', '-3', ],
                                   open: [ 'neutral', '-10', ],
                                 }}
-                                size={2.5}
-                                isTransition
-                              />
-                            </FelaComponent>
-                            <span>{theme.navigationMenuI18n.buttonText}</span>
-                          </button>
-                        );
-                      }}
+                              size={2.5}
+                              isTransition
+                            />
+                          </FelaComponent>
+                          <span>{theme.navigationMenuI18n.buttonText}</span>
+                        </button>
+                        )}
                     />
                   ))}
                   {isOpen ? (
