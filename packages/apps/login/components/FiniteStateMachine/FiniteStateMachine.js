@@ -82,7 +82,6 @@ class FiniteStateMachine extends React.Component {
    * @returns {number} pointer
    */
   setHistoryPointer = pointer => {
-    console.warn(`pointer is written: ${pointer}`);
     this.props.apolloClient.writeData({
       data: { historyPointer: pointer, },
     });
@@ -106,12 +105,10 @@ class FiniteStateMachine extends React.Component {
    * function to that state
    */
   changeHistoryCallback = ({ url, as, options, }) => {
-    console.warn('executed "change history"');
     const historyObject = this.getHistoryObject();
     const currentHistoryPointer = parseInt(this.getHistoryPointer(), 10);
     const backwards = historyObject[currentHistoryPointer - 1];
     const forward = historyObject[currentHistoryPointer + 1];
-    console.warn(`back: ${JSON.stringify(backwards)}. forward: ${JSON.stringify(forward)}`);
     const direction =
       (
         backwards !== undefined
@@ -172,7 +169,6 @@ class FiniteStateMachine extends React.Component {
    * @returns {object} the object if the write was successfull
    */
   addHistory = ({ pastState, pastTransition, }) => {
-    console.warn(`executed add history with ${pastState}, ${pastTransition}`);
     let historyObject = this.getHistoryObject();
     if (!Array.isArray(historyObject)) {
       historyObject = [];
@@ -203,7 +199,6 @@ class FiniteStateMachine extends React.Component {
       ? historyObject
       : [ historyObject, ];
 
-    console.warn(`removing history till pointer location: ${pointerLocation}`);
     if (revisedHistoryObject.length - 1 === pointerLocation) return revisedHistoryObject;
     const newHistoryObject = revisedHistoryObject.slice(0, parseInt(pointerLocation, 10) + 1);
     this.props.apolloClient.writeData({
@@ -218,7 +213,6 @@ class FiniteStateMachine extends React.Component {
    * @returns {string}
    */
   writeStateToApolloStore = newState => {
-    console.warn(`state to be written to apollo: ${newState}`);
     this.props.apolloClient.writeData({
       data: { currentState: newState, },
     });
@@ -247,7 +241,6 @@ class FiniteStateMachine extends React.Component {
   resolveRout = (oldState, newState) => {
     const wantedTransition = `${oldState}-${newState}`;
     const looseTransitionRule = `-${newState}`;
-    console.warn(`searching for rout: ${wantedTransition}.`);
     if (this.props.transitionRouteMap.has(wantedTransition)) {
       return this.props.transitionRouteMap.get(wantedTransition);
     }
@@ -267,11 +260,9 @@ class FiniteStateMachine extends React.Component {
    */
   findTransition = action => {
     const oldState = this.getCurrentState();
-    console.warn(`inside find transition. old state: ${oldState}`);
     const newStateUnparsed = this.resolveNewState(action, oldState);
     const { route, } = parseRouteInfo(newStateUnparsed);
     const resolvedRoute = parseRouteInfo(this.resolveRout(oldState, route));
-    console.warn(`simulation: action: ${action}. oldState: ${oldState}. new state: ${resolvedRoute.route}`);
     return resolvedRoute.route;
   };
 
@@ -284,19 +275,14 @@ class FiniteStateMachine extends React.Component {
    * @returns {string}
    */
   doTransition = action => {
-    console.warn(`transition wanted. action: ${action}`);
     const oldState = this.getCurrentState();
     const newState = this.resolveNewState(action, oldState);
     const routeInfo = this.findTransition(action);
     const { route, metadata, } = parseRouteInfo(routeInfo);
     this.removeHistory();
     this.addHistory({ pastState: newState, pastTransition: route, });
-    console.warn(`new state: ${newState}`);
     this.writeStateToApolloStore(newState);
     writeMetaDataToApollo(this.props.apolloClient, metadata);
-    console.warn(
-      `transition: action: ${action}. oldState: ${oldState}. new state: ${newState}`
-    );
     return route;
   };
 
