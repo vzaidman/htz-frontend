@@ -1,7 +1,7 @@
 import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
-import { Form, TextInput, Button, Login, HtzLink, } from '@haaretz/htz-components';
+import { Form, TextInput, Button, Login, } from '@haaretz/htz-components';
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
@@ -22,12 +22,12 @@ const validateSmsCodeInput = ({ smsCode, }) =>
     ? generateSmsCodeError('אנא הזינו את הקוד שנשלח אליכם')
     : []);
 
-const getFacebookLogin = (user) => {
+const getFacebookLogin = user => {
   const facebookParams = getFacebookParams(user);
   return facebookParams ?
     getFacebookLoginUrl(facebookParams) :
     false;
-}
+};
 
 const onSubmit = ({ client, host, user, loginWithMobile, showError, hideError, setPreloader, }) => ({ smsCode, termsChk, }) => {
   setPreloader(true);
@@ -38,10 +38,10 @@ const onSubmit = ({ client, host, user, loginWithMobile, showError, hideError, s
       () => { window.location = getFacebookLogin(user) || `https://www.${host}`; },
       reason => {
         setPreloader(false);
-        showError((reason.message || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."))
+        showError((reason.message || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
       }
     );
-}
+};
 
 const handleGenerateOtp = (client, doTransition) => {
   generateOtp(client)({ typeId: getUserData(client).phoneNum, })
