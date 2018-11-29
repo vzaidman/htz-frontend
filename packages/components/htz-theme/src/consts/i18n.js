@@ -350,6 +350,8 @@ export const liveBlogI18n = Object.freeze({
   updatesTitle: 'עדכונים',
   firstToLastLabel: 'מהראשון לאחרון',
   lastToFirstLabel: 'מהאחרון לראשון',
+  expand: 'להרחבה',
+  close: 'סגור',
 });
 
 export const articleLayoutI18n = Object.freeze({

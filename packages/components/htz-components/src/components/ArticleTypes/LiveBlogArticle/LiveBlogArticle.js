@@ -87,20 +87,9 @@ function LiveBlog({ articleId, slots, }) {
             tags,
           } = LiveBlogElement;
           const header = isMouse ? { pubDate, modDate, } : LiveBlogElement.header;
-          // inputTemplate: "com.tm.newsLetterQuickRegistrationRespAuto"
-
           const newsletterProps = body.filter(
             value => value.inputTemplate === 'com.tm.newsLetterQuickRegistrationRespAuto'
-          )[0];
-          // const timeLineItems = liveblogItems.filter(value => value.keyEvent);
-
-          // console.warn('timeLineItems: ', timeLineItems);
-          // console.warn('tags: ', tags);
-          // console.warn('liveblogItems: ', liveblogItems);
-          // console.warn('keyEvents: ', JSON.stringify(keyEvents));
-          // keyEvents.map(val => console.warn('get me that shit:'))
-          // console.warn('isLiveUpdate: ', isLiveUpdate);
-          // console.warn('isDisplayBlogitemsDatetime: ', isDisplayBlogitemsDatetime);
+          );
 
           return (
             <FelaTheme
@@ -139,8 +128,7 @@ function LiveBlog({ articleId, slots, }) {
                       hasBreadCrumbs={!!breadCrumbs}
                       headlineElement={headlineElement}
                       reportingFrom={reportingFrom}
-                      // todo: change to isLiveUpdate={isLiveUpdate} to set value dynamically
-                      isLiveUpdate
+                      isLiveUpdate={isLiveUpdate}
                     />
 
                     {article.map(element => {
@@ -193,7 +181,7 @@ function LiveBlog({ articleId, slots, }) {
                                       {authors ? (
                                         <LiveBlogHeaderMeta
                                           authors={authors}
-                                          isLiveUpdate
+                                          isLiveUpdate={isLiveUpdate}
                                           isDisplayBlogitemsDatetime={isDisplayBlogitemsDatetime}
                                           liveblogItems={liveblogItems}
                                           publishDate={header.pubDate}
@@ -206,7 +194,7 @@ function LiveBlog({ articleId, slots, }) {
                                           position: 'sticky',
                                           top: '2rem',
                                           transform: 'translateY(14rem)',
-                                          paddingBottom: '18rem',
+                                          paddingBottom: newsletterProps.length > 0 ? '36rem' : '15rem',
                                         }}
                                       />
                                     </Fragment>
@@ -216,7 +204,7 @@ function LiveBlog({ articleId, slots, }) {
                                     body={body}
                                     showNewsletter={false}
                                     miscStyles={{
-                                      paddingBlockEnd: '3rem',
+                                      paddingBlockEnd: '1rem',
                                       paddingInlineStart: '3rem',
                                       paddingInlineEnd: '3rem',
                                       paddingBlockStart: '3rem',
@@ -231,28 +219,48 @@ function LiveBlog({ articleId, slots, }) {
                                     showTimeLineText
                                     bps={theme.bps}
                                     typeConf={theme.typeConf}
-                                    // miscStyles={{ backgroundColor: theme.color('primary', '-6'), }}
                                   />
                                   <Tags
                                     tagsList={tags}
                                     miscStyles={{
                                       ...theme.mq(
-                                        { until: 'l', },
+                                        { until: 's', },
                                         {
-                                          marginInlineStart: '1rem',
+                                          marginInlineStart: '2rem',
                                           marginInlineEnd: '1rem',
-                                          paddingTop: '2rem',
+                                          paddingTop: '3rem',
                                           paddingBottom: '2rem',
+                                        }
+                                      ),
+                                      ...theme.mq(
+                                        { from: 's', until: 'l', },
+                                        {
+                                          marginInlineStart: '8.5rem',
+                                          paddingBottom: '3rem',
                                         }
                                       ),
                                     }}
                                   />
-                                  <NoSSR key={element.contentId}>
-                                    <Newsletter
-                                      {...newsletterProps}
-                                      miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }}
-                                    />
-                                  </NoSSR>
+                                  {newsletterProps.length > 0 ? (
+                                    <NoSSR key={element.contentId}>
+                                      <Newsletter
+                                        {...newsletterProps[0]}
+                                        contentId="LiveBlog"
+                                        miscStyles={{
+                                          marginTop: '4rem',
+                                          marginBottom: '4rem',
+                                          ...theme.mq(
+                                            { from: 's', until: 'l', },
+                                            {
+                                              width: '65%',
+                                              marginInlineEnd: 'auto',
+                                              marginInlineStart: 'auto',
+                                            }
+                                          ),
+                                        }}
+                                      />
+                                    </NoSSR>
+                                  ) : null}
                                   {bloggerInfo}
                                 </LiveBlogLayoutRow>
                               );

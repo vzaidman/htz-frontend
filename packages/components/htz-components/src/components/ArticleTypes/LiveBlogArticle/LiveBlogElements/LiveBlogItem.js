@@ -3,38 +3,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 
-import {
-  border,
-  borderTop,
-  borderBottom,
-  parseStyleProps,
-  getRemFromPx,
-} from '@haaretz/htz-css-tools';
+import { borderTop, getRemFromPx, } from '@haaretz/htz-css-tools';
+import Section from '../../../AutoLevels/Section';
+import H from '../../../AutoLevels/H';
 import ActionButtons from '../../../ActionButtons/ActionButtons';
-// import RadioButton from '../../../RadioButton/RadioButton';
 import Button from '../../../Button/Button';
 import Time from '../../../Time/Time';
-// import Button from '../../../Button/Button';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import ArticleBody from '../../../ArticleBody/ArticleBody';
 
-// const wrapperStyle = ({ miscStyles, theme, }) => ({
-//   display: 'block',
-//   width: '100%',
-
-//   extend: [
-//     theme.mq(
-//       { from: 's', until: 'l', },
-//       {
-//         paddingInlineStart: '4rem',
-//         paddingInlineEnd: '4rem',
-//         paddingBottom: '4rem',
-//       }
-//     ),
-//     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-//   ],
-// });
 // eslint-disable-next-line react/prop-types
 const Fade = ({ children, }) => (
   <FelaComponent
@@ -47,17 +25,6 @@ const Fade = ({ children, }) => (
       margin: 'auto',
       backgroundImage:
         'linear-gradient(0deg,#fff,#fff 0%,hsla(0,0%,100%,.8) 25%,hsla(0,0%,100%,0))',
-      // backgroundImage: `linear-gradient(transparent, ${theme.color(
-      //   'comments',
-      //   isHighlighted ? 'highlightedCommentBg' : 'bg'
-      // )})`,
-      // ':after': {
-      //   display: 'block',
-      //   content: '""',
-      //   height: '14rem',
-      //   position: 'relative',
-      //   top: '-14rem',
-      // },
     })}
     render="span"
   >
@@ -74,6 +41,10 @@ class LiveBlogItem extends React.Component {
       contentName: PropTypes.string,
       contentId: PropTypes.string,
       inputTemplate: PropTypes.string,
+      /**
+       * The elements composing the article’s body.
+       */
+      body: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
       pubDate: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ]),
     }).isRequired,
     canonicalUrl: PropTypes.string.isRequired,
@@ -84,11 +55,11 @@ class LiveBlogItem extends React.Component {
       default: PropTypes.object,
       xl: PropTypes.object,
     }).isRequired,
-    // miscStyles: stylesPropType,
   };
 
   state = {
-    fadeText: false,
+    fadeText: -1,
+    itemExpanded: false,
   };
 
   componentDidMount() {
@@ -97,189 +68,202 @@ class LiveBlogItem extends React.Component {
       if (intViewportWidth < this.props.bps.widths.s) {
         const height = this.mainContainerEl.clientHeight;
         const remHeight = getRemFromPx(this.props.bps, this.props.typeConf, height);
-        if (remHeight > 60) {
+        if (remHeight > 60 || this.isEmbedInclude) {
           // eslint-disable-next-line react/no-did-mount-set-state
           this.setState({ fadeText: true, });
+        }
+        else {
+          // eslint-disable-next-line react/no-did-mount-set-state
+          this.setState({ fadeText: false, });
         }
       }
     }
   }
 
   render() {
+    // Check when item includes embed element.
+    if (this.isEmbedInclude === undefined) {
+      this.isEmbedInclude = this.props.item.body.filter(v => v.elementType === 'embedElement').length > 0;
+    }
     const { canonicalUrl, item, } = this.props;
     return (
       <React.Fragment>
-        {/* <FelaComponent
-          rule={wrapperStyle}
-          render={({ className, theme, }) => (
-            <div className={className}>
-              {items.map((item, i) => ( */}
         <FelaTheme
           render={theme => (
-            <Grid
-              tagName="article"
-              attrs={{ itemid: `${canonicalUrl}#${item.cardId}`, }}
-              id={item.cardId}
-              miscStyles={{
-                marginBottom: '2rem',
-                marginTop: '2rem',
-                backgroundColor: 'white',
-                marginInlineEnd: 'auto',
-                marginInlineStart: 'auto',
-                // ':after': {
-                //   height: '0rem',
-                //   position: 'absolute',
-                //   width: '100%',
-                //   bottom: '0',
-                //   right: '0',
-                //   content: '""',
-                // },
-                border: [ '0px', 0, 'solid', theme.color('neutral', '-4'), ],
-                // ...(this.state.fadeText ? { overflow: 'hidden', height: '60rem', backgroundImage: 'linear-gradient(0deg,#fff,#fff 30%,hsla(0,0%,100%,.8) 70%,hsla(0,0%,100%,0))'} : {}),
-                // ...theme.mq(
-                //   { until: 'm', },
-                //   { paddingInlineEnd: '2rem', paddingInlineStart: '2rem', }
-                // ),
-              }}
-            >
-              {/* Time and share bar */}
-              <GridItem
-                width={[ { until: 's', value: 1 / 1, }, { from: 's', value: 1 / 5, }, ]}
+            <Section>
+              <Grid
+                tagName="article"
+                attrs={{ itemid: `${canonicalUrl}#${item.cardId}`, }}
+                id={item.cardId}
                 miscStyles={{
-                  paddingTop: '3rem',
-                  ...theme.mq({ until: 's', }, { display: 'inline-flex', alignItems: 'baseline', }),
+                  marginBottom: '2rem',
+                  marginTop: '2rem',
+                  backgroundColor: 'white',
+                  marginInlineEnd: 'auto',
+                  marginInlineStart: 'auto',
+                  border: [ '0px', 0, 'solid', theme.color('neutral', '-4'), ],
                 }}
               >
-                <FelaComponent
-                  style={theme => ({
-                    // ...theme.type(0),
-                    fontWeight: 'bold',
+                {/* Time and share bar */}
+                <GridItem
+                  width={[ { until: 's', value: 1 / 1, }, { from: 's', value: 1 / 5, }, ]}
+                  miscStyles={{
+                    paddingTop: '3rem',
+                    ...theme.mq({ until: 's', }, { display: 'inline-flex', alignItems: 'baseline', }),
+                  }}
+                >
+                  <FelaComponent
+                    style={theme => ({
+                      ...theme.type(1),
+                      fontWeight: 'bold',
+                      ...theme.mq(
+                        { until: 's', },
+                        {
+                          marginInlineEnd: '1rem',
+                          color: theme.color('tertiary'),
+                          ...theme.type(-1),
+                        }
+                      ),
+                    })}
+                    render={({ className, }) => (
+                      <div className={className}>
+                        <Time time={item.pubDate} format="HH:mm" />
+                      </div>
+                    )}
+                  />
+                  <FelaComponent
+                    style={theme => ({
+                      ...theme.type(-2),
+                      ...theme.mq({ until: 's', }, { marginInlineEnd: '1rem', ...theme.type(-1), }),
+                    })}
+                    render={({ className, }) => (
+                      <div className={className}>
+                        <Time time={item.pubDate} format="DD.MM.YYYY" />
+                      </div>
+                    )}
+                  />
+                  {/* M/L/XL Action Buttons */}
+                  <ActionButtons
+                    elementName={item.title}
+                    elementUrl={`${canonicalUrl}#${item.cardId}`}
+                    tabIndex={0}
+                    buttons={[ 'facebook', 'whatsapp', 'mail', ]}
+                    size={[ { until: 'l', value: 4, }, { from: 'l', value: 3, }, ]}
+                    isFlat
+                    vertical
+                    globalButtonsStyles={{
+                      paddingInlineEnd: '1rem',
+                      paddingInlineStart: '1rem',
+                    }}
+                    miscStyles={{
+                      justifyContent: 'flex-start',
+                      alignItems: 'flex-start',
+                      marginTop: '5rem',
+                      marginBottom: '4rem',
+                      ...theme.mq({ until: 's', }, { display: 'none', }),
+                    }}
+                  />
+                </GridItem>
+                {/* Item title and Body */}
+                <GridItem
+                  width={[ { until: 's', value: 1 / 1, }, { from: 's', value: 4 / 5, }, ]}
+                  miscStyles={{
+                    paddingTop: '3rem',
+                    paddingInlineEnd: '3rem',
+                    paddingBottom: '1rem',
+                    maxWidth: '70rem',
                     ...theme.mq(
                       { until: 's', },
                       {
-                        marginInlineEnd: '1rem',
-                        color: theme.color('tertiary'),
-                        ...theme.type(-1),
+                      height: !this.isEmbedInclude || this.state.itemExpanded ? 'auto' : '65rem',
+                      ...(this.state.fadeText || this.state.fadeText === -1
+                       ? {
+                            overflow: 'hidden',
+                            maxHeight: '65rem',
+                          }
+                          : {}),
+                        width: '100%',
+                        paddingInlineStart: '2rem',
+                        paddingInlineEnd: '2rem',
+                        paddingTop: '1rem',
                       }
                     ),
-                    // paddingTop: '3rem',
-                  })}
-                  render={({ className, }) => (
-                    <div className={className}>
-                      <Time time={item.pubDate} format="HH:mm" />
-                    </div>
-                  )}
-                />
+                    ...theme.mq({ from: 'l', until: 'xl', }, { maxWidth: '64rem', }),
+                  }}
+                  // eslint-disable-next-line no-return-assign
+                  attrs={{ ref: mainContainerEl => (this.mainContainerEl = mainContainerEl), }}
+                >
+                  <a href={`#${item.cardId}`}>
+                    <H style={{ fontSize: '3rem', marginBottom: '2rem', }}>{item.title}</H>
+                  </a>
+
+                  <ArticleBody body={item.body} />
+                  {this.state.fadeText === true ? <Fade /> : null}
+                </GridItem>
+
+                {/* Mobile Action Buttons */}
                 <FelaComponent
                   style={theme => ({
-                    ...theme.type(-2.5),
-                    ...theme.mq({ until: 's', }, { marginInlineEnd: '1rem', ...theme.type(-1), }),
+                    ...theme.mq({ from: 's', }, { display: 'none', }),
+                    ...theme.mq(
+                      { until: 's', },
+                      {
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        marginTop: 'auto',
+                        marginBottom: 'auto',
+                        marginInlineStart: '2rem',
+                        marginInlineEnd: '2rem',
+                        ...borderTop('2px', 1, 'solid', theme.color('neutral', '-6')),
+                      }
+                    ),
                   })}
                   render={({ className, }) => (
-                    <div className={className}>
-                      <Time time={item.pubDate} format="DD.MM.YYYY" />
-                    </div>
+                    <span className={className}>
+                      <ActionButtons
+                        elementName={item.title}
+                        elementUrl={`${canonicalUrl}#${item.cardId}`}
+                        tabIndex={0}
+                        buttons={[ 'facebook', 'whatsapp', 'mail', ]}
+                        size={3.5}
+                        isFlat
+                        miscStyles={{
+                          marginInlineStart: '-2rem',
+                          paddingBottom: '1.5rem',
+                        }}
+                      />
+                      {this.state.fadeText !== true && !this.state.itemExpanded ? null : !this.state
+                        .itemExpanded ? (
+                          <Button
+                            variant="inverseOpaque"
+                            miscStyles={{
+                            marginBottom: '1rem',
+                            ':focus': {
+                              color: theme.color('neutral', '-2'),
+                            },
+                          }}
+                            boxModel={{ hp: 2, vp: 1, }}
+                            onClick={() => this.setState({ fadeText: false, itemExpanded: true, })}
+                          >
+                            {theme.liveBlogI18n.expand}
+                          </Button>
+                      ) : (
+                        <Button
+                          variant="inverseOpaque"
+                          miscStyles={{ marginBottom: '1rem', }}
+                          boxModel={{ hp: 2, vp: 1, }}
+                          onClick={() => this.setState({ fadeText: true, itemExpanded: false, })}
+                        >
+                          {theme.liveBlogI18n.close}
+                        </Button>
+                      )}
+                    </span>
                   )}
                 />
-                <ActionButtons
-                  elementName={item.title}
-                  elementUrl={`${canonicalUrl}#${item.cardId}`}
-                  tabIndex={0}
-                  buttons={[ 'facebook', 'whatsapp', 'mail', ]}
-                  size={[ { until: 'l', value: 4, }, { from: 'm', value: 3, }, ]}
-                  isFlat
-                  vertical
-                  globalButtonsStyles={{
-                    paddingInlineEnd: '1rem',
-                    paddingInlineStart: '1rem',
-                  }}
-                  miscStyles={{
-                    justifyContent: 'flex-start',
-                    alignItems: 'flex-start',
-                    marginTop: '5rem',
-                    marginBottom: '3rem',
-                    ...theme.mq({ until: 's', }, { display: 'none', }),
-                  }}
-                />
-              </GridItem>
-              <GridItem
-                width={[ { until: 's', value: 1 / 1, }, { from: 's', value: 4 / 5, }, ]}
-                miscStyles={{
-                  paddingTop: '3rem',
-                  paddingInlineEnd: '3rem',
-                  paddingBottom: '1rem',
-                  ...(this.state.fadeText
-                    ? {
-                        overflow: 'hidden',
-                        maxHeight: '65rem',
-                      }
-                    : {}),
-                  maxWidth: '70rem',
-                  ...theme.mq(
-                    { until: 's', },
-                    {
-                      width: '100%',
-                      paddingInlineStart: '2rem',
-                      paddingInlineEnd: '2rem',
-                      paddingTop: '1rem',
-                    }
-                  ),
-                  ...theme.mq({ from: 'l', until: 'xl', }, { maxWidth: '64rem', }),
-                }}
-                // eslint-disable-next-line no-return-assign
-                attrs={{ ref: mainContainerEl => (this.mainContainerEl = mainContainerEl), }}
-              >
-                <a href={`#${item.cardId}`}>
-                  <h1 style={{ fontSize: '3rem', marginBottom: '2rem', }}>{item.title}</h1>
-                </a>
-
-                <ArticleBody body={item.body} />
-                {this.state.fadeText ? <Fade /> : null}
-              </GridItem>
-
-              {/* Mobile Action Buttons */}
-              <FelaComponent
-                style={theme => ({
-                  ...theme.mq({ from: 's', }, { display: 'none', }),
-                  ...theme.mq(
-                    { until: 's', },
-                    {
-                      width: '100%',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      margin: 'auto',
-                      ...borderTop('2px', 1, 'solid', theme.color('neutral', '-6')),
-                    }
-                  ),
-                })}
-                render={({ className, }) => (
-                  <span className={className}>
-                    <ActionButtons
-                      elementName={item.title}
-                      elementUrl={`${canonicalUrl}#${item.cardId}`}
-                      buttons={[ 'facebook', 'whatsapp', 'mail', ]}
-                      size={3.5}
-                      isFlat
-                      miscStyles={{
-                        paddingBottom: '1.5rem',
-                      }}
-                    />
-                    {this.state.fadeText ? (
-                      <Button
-                        variant="primary"
-                        miscStyles={{ marginBottom: '1rem', }}
-                        isFlat
-                        onClick={() => this.setState({ fadeText: false, })}
-                      >
-                        {/* todo: get this from htz-theme */}
-                        להרחבה
-                      </Button>
-                    ) : null}
-                  </span>
-                )}
-              />
-              {/* Mobile action buttons end */}
-            </Grid>
+                {/* Mobile action buttons end */}
+              </Grid>
+            </Section>
           )}
         />
       </React.Fragment>

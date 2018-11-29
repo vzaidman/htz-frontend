@@ -34,7 +34,6 @@ const margineliaStyle = ({ theme, theme: { layoutStyle, }, hideUnderLargeBreakPo
 });
 
 const wrapperStyle = ({ miscStyles, theme, }) => ({
-  // backgroundColor: 'white',
   ...theme.mq({ from: 'l', }, { marginTop: '4rem', }),
   extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
@@ -92,7 +91,7 @@ const LiveBlogLayoutRow = ({
                   }
                 : {}),
               extend: [
-                theme.mq({ from: 'l', }, { paddingInlineStart: '5rem', paddingInlineEnd: '5rem', }),
+                theme.mq({ from: 'l', }, { marginInlineStart: '8rem', }),
               ],
             })}
           >

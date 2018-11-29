@@ -23,7 +23,6 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
       {
         paddingInlineStart: '4rem',
         paddingInlineEnd: '4rem',
-        paddingBottom: '4rem',
       }
     ),
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
@@ -51,7 +50,7 @@ const updatesStyle = ({ theme, timeLine, }) => ({
   display: 'block',
   paddingBottom: '4rem',
   paddingTop: '4rem',
-  ...theme.mq({ until: 's', }, { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }),
+  ...theme.mq({ until: 's', }, { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', ...(!timeLine && { marginTop: '2rem', }), }),
   ...theme.mq(
     { from: 's', until: 'l', },
     {

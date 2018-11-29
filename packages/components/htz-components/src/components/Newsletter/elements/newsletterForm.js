@@ -59,6 +59,7 @@ const RowStyle = ({ theme, }) => ({
 
 const InputWrapperStyle = {
   width: '100%',
+  marginTop: '1rem',
 };
 
 const ButtonStyle = {

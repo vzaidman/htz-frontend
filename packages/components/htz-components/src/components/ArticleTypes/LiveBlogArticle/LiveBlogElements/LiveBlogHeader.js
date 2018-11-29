@@ -4,7 +4,6 @@ import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { ApolloConsumer, } from 'react-apollo';
 import HeaderText from '../../../ArticleHeader/HeaderText';
-// import ArticleHeaderMeta from '../../../ArticleHeader/ArticleHeaderMeta';
 import LiveBlogHeaderMeta from './LiveBlogHeaderMeta';
 import HeadlineElement from '../../../HeadlineElement/HeadlineElement';
 import Breadcrumbs from '../../../Breadcrumbs/Breadcrumbs';
@@ -131,7 +130,6 @@ function Header({
                     <HeaderText
                       className={className}
                       kicker={exclusive}
-                      // subtitle={subtitle}
                       title={title}
                     />
                   )}
@@ -140,7 +138,6 @@ function Header({
                   authors={authors}
                   publishDate={pubDate}
                   modifiedDate={modDate}
-                  //   reportingFrom={reportingFrom}
                   miscStyles={{
                     marginTop: [
                       { until: 's', value: '3rem', },
@@ -177,7 +174,6 @@ function Header({
                     {isLiveUpdate ? (
                       <FelaComponent
                         style={{
-                          // order: '-3',
                           height: '5rem',
                           width: '100%',
                           backgroundColor: theme.color('tertiary'),
@@ -192,7 +188,6 @@ function Header({
                           <span className={className}>
                             <FelaComponent
                               style={theme => ({
-                                // ...theme.mq({ from: 'l', }, { display: 'none', }),
                                 color: 'white',
                                 paddingInlineStart: '1rem',
                                 paddingTop: '0.3rem',

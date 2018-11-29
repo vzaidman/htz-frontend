@@ -6,23 +6,15 @@ import { borderStart, parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import { stylesPropType, } from '../../../../propTypes/stylesPropType';
 import Time from '../../../Time/Time';
-// import Grid from '../../../Grid/Grid';
-// import GridItem from '../../../Grid/GridItem';
 
 const propTypes = {
   keyEvents: PropTypes.arrayOf(
     PropTypes.shape({
       keyEvent: PropTypes.string,
-      // pubDate: PropTypes.instanceOf(Date).isRequired,
-      pubDate: PropTypes.oneOfType([
-        // PropTypes.string,
-        PropTypes.number,
-        PropTypes.instanceOf(Date),
-      ]),
+      pubDate: PropTypes.number,
       cardId: PropTypes.string,
     })
   ).isRequired,
-  // showTimeLineText: PropTypes.bool,
   /**
    * A special property holding miscellaneous CSS values that
    * trumps all default values. Processed by
@@ -32,9 +24,13 @@ const propTypes = {
 };
 
 const defaultProps = {
-  // showTimeLineText: false,
   miscStyles: null,
 };
+
+
+// //////////////////////////////////////////////////////////////////////
+//                           Timeline Style                            //
+// //////////////////////////////////////////////////////////////////////
 
 const wrapperStyle = ({ miscStyles, theme, }) => ({
   display: 'block',
@@ -46,7 +42,6 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
   paddingInlineStart: '2rem',
   paddingBottom: '7rem',
   color: theme.color('primary', '+1'),
-  // backgroundColor: theme.color('primary', '-6'),
   extend: [
     borderStart({
       width: '1px',
@@ -78,31 +73,26 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
       ? {
         position: 'relative',
         ':before': {
-          // backgroundColor: theme.color('primary', '-6'),
           position: 'absolute',
           content: '""',
           width: '1rem',
           right: '-0.6em',
           ...theme.mq({ until: 's', }, { right: '-0.4em', }),
           ...theme.mq({ from: 's', until: 'l', }, { right: '-0.4em', }),
-          // ...theme.mq({ from: 's', }, { ':before': { right: '-0.6em', }, }),
           transform: 'translate(-50%,0)',
         },
       }
       : {},
-
     theme.mq(
       { from: 's', until: 'l', },
       {
         display: 'flex',
         alignItems: 'baseline',
         paddingBottom: '3rem',
-        // color: theme.color('primary', '+1'),
+        ...theme.type(-1),
       }
     ),
-    // theme.mq({until: 'm'}, theme.type(0)),
-    theme.mq({ from: 's', until: 'l', }, theme.type(-1)),
-    theme.mq({ from: 'm', }, theme.type(-2)),
+    theme.mq({ from: 'l', }, theme.type(-2)),
   ],
 });
 
@@ -114,9 +104,7 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
     width: '1rem',
     height: '1rem',
     backgroundColor: theme.color('primary', '-6'),
-    // backgroundColor:'tranparent',
     border: '1px solid #ccc',
-    // border('1px', 1, 'solid', theme.color('primary', '-6')),
     top: '50%',
     right: '-1.6em',
     borderRadius: '50%',
@@ -135,6 +123,11 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
       : {},
   ],
 });
+
+// //////////////////////////////////////////////////////////////////////
+//                            Main Component                           //
+// //////////////////////////////////////////////////////////////////////
+
 function TimeLine({ keyEvents, miscStyles, }) {
   if (!keyEvents) return <></>;
   return (
@@ -144,29 +137,13 @@ function TimeLine({ keyEvents, miscStyles, }) {
         miscStyles={miscStyles}
         render={({ className, theme, }) => (
           <div className={className}>
-            {/* <FelaComponent
-              style={theme => ({
-                ...(showTimeLineText ? { display: 'flex', } : { display: 'none', }),
-                color: theme.color('tertiary'),
-                fontWeight: 'bold',
-                ...theme.type(1),
-              })}
-              render={({ className, }) => (
-                <div className={className}>
-                  {theme.liveBlogI18n.timeLineText}
-                </div>
-              )}
-            /> */}
             <FelaComponent
               style={theme => ({
-                // padding: '2rem',
                 paddingBlockEnd: '5rem',
                 paddingBlockStart: '5rem',
-                // marginTop: '2rem',
                 paddingInlineStart: '2rem',
                 paddingInlineEnd: '2rem',
-                // backgroundColor: theme.color('primary', '-5'),
-                ...theme.mq({ from: 'l', }, { marginTop: '15rem', padding: '2rem', }),
+                ...theme.mq({ from: 'l', }, { marginTop: '15rem', paddingInlineEnd: '0rem', }),
               })}
               render={({ className, }) => (
                 <ul className={className}>
