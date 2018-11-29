@@ -329,7 +329,6 @@ class IndexForm extends Component {
           render={({ getInputProps, handleSubmit, clearForm, }) => (
             <Fragment>
               <TextInput
-                wrapperStyle={{}}
                 type="email"
                 label={theme.emailInputLabel}
                 noteText="אנא הזינו כתובת דוא”ל"
