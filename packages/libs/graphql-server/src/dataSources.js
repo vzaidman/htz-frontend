@@ -59,9 +59,10 @@ class PapiAPI extends RESTDataSource {
     return this.get(fetchPath, {}, { cacheOptions: { ttl, }, });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   async getPaywallData() {
     return {
-      slotLocation: 'bot-persist',
+      slotLocation: 'top',
       title: 'כל התכנים, בכל מכשיר, בכל זמן',
       text: 'הארץ בדיגיטל החל מ-4.90שח בחודש הראשון',
       confirm: {
