@@ -5,12 +5,21 @@ import isEmail from 'validator/lib/isEmail';
 import Router from 'next/router';
 import objTransform from '../../../util/objectTransformationUtil';
 import { storeFlowNumber, } from '../../FlowDispenser/flowStorage';
-import { saveUserData, getDataFromUserInfo, saveOtpHash, generateOtp, saveUserEmail, validateMailWithPhone, } from '../../../pages/queryutil/userDetailsOperations';
+import {
+  saveUserData,
+  getDataFromUserInfo,
+  saveOtpHash,
+  generateOtp,
+  saveUserEmail,
+  validateMailWithPhone,
+  validateMailConfirmation,
+  sendMailConfirmation,
+} from '../../../pages/queryutil/userDetailsOperations';
 import { writeMetaDataToApollo, parseRouteInfo, } from '../../../pages/queryutil/flowUtil';
 import Preloader from '../../Misc/Preloader';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
-import { sendMailValidation, } from '../../../util/requestUtil';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
+import { getHost, } from '../../../util/requestUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -27,6 +36,7 @@ const getUrlParams = () => {
   const pageUrl = new URL(window.location.href);
   return {
     confirmation: pageUrl.searchParams.get('confirmation'),
+    type: pageUrl.searchParams.get('type'),
     ...getParamsData(pageUrl.searchParams.get('params')),
     facebook: {
       token: pageUrl.searchParams.get('account_linking_token'),
@@ -56,22 +66,7 @@ const validateEmailInput = ({ email, }) =>
       ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
       : []); // email is valid
 
-const vlidateEmailPhoneConnection = (client, email, autoRoute, confirmation, eventsHandler) => {
-  validateMailWithPhone(client)({ email, confirmation, })
-    .then(
-      () => {
-        eventsHandler();
-        return Router.push(autoRoute);
-      },
-      error => {
-        showError(error.message);
-      }
-    );
-};
-
-const getUserData = (dataSaved = "") => {
-  return dataSaved.userData;
-}
+const getUserData = (dataSaved = '') => dataSaved.userData;
 
 const hasValidatedPhone = dataSaved => dataSaved
         && dataSaved.userData
@@ -87,42 +82,49 @@ const hasValidatedEmail = dataSaved => dataSaved
 const hasCrmStatus = (dataSaved) => {
   return dataSaved && dataSaved.userData && dataSaved.userData.userCrmStatus ?
     dataSaved.userData.userCrmStatus : false;
-}
+};
 
 const hasActiveSub = (dataSaved) => {
   const crmStatus = hasCrmStatus(dataSaved);
-  return crmStatus && 
+  return crmStatus &&
         (crmStatus.isActiveTm || crmStatus.isActiveHeb);
-}
+};
 
 const isEmailValidationRequired = (dataSaved) => {
   return (!hasActiveSub(dataSaved) && !hasValidatedEmail(dataSaved));
-}
+};
 
-const setFacebookParamsOnApollo = (client) => {
+const setFacebookParamsOnApollo = client => {
   const { facebook, } = getUrlParams();
-  if(facebook && facebook.token && facebook.redirect) {
-    saveUserData(client)({ userData: { facebook, __typename: "SsoUser", }, });
-  } else {
-    const facebookEmpty = { token: null, redirect: null, __typename: "facebookLogin", };
-    saveUserData(client)({ userData: { facebook: facebookEmpty, __typename: "SsoUser", }, });
+  if (facebook && facebook.token && facebook.redirect) {
+    saveUserData(client)({ userData: { facebook, __typename: 'SsoUser', }, });
   }
-}
+  else {
+    const facebookEmpty = { token: null, redirect: null, __typename: 'facebookLogin', };
+    saveUserData(client)({ userData: { facebook: facebookEmpty, __typename: 'SsoUser', }, });
+  }
+};
 
-const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showError, setPreloader, autoRoute, confirmation, eventsHandler, }) =>
+const handleGenerateOtp = ({
+  phoneNum,
+  email,
+  ssoId,
+  client,
+  flow,
+  route,
+  showError,
+  setPreloader,
+  confirmation,
+  eventsHandler,
+}) =>
   generateOtp(client)({ typeId: phoneNum, })
     .then(data => {
       const json = data.data.generateOtp;
       saveOtpHash(client)({ otpHash: json.hash, });
       if (json.success) {
-        if (confirmation) {
-          saveUserData(client)({ userData: { phoneNum, ssoId, __typename: 'SsoUser', }, });
-          vlidateEmailPhoneConnection(client, email, autoRoute, confirmation, eventsHandler);
-        }
-        else {
-          eventsHandler();
-          Router.push(route);
-        }
+        saveUserData(client)({ userData: { phoneNum, ssoId, __typename: 'SsoUser', }, });
+        eventsHandler();
+        Router.push(route);
       }
       else {
         setPreloader(false);
@@ -130,40 +132,60 @@ const handleGenerateOtp = ({ phoneNum, email, ssoId, client, flow, route, showEr
       }
     });
 
-const handleResponseFromGraphql =
-  ({ client, getFlowByData, email, phone, res, showError, setPreloader, eventsTrackers, autoRoute, confirmation, facebook, }) => {
-    const dataSaved = saveUserData(client)({ userData: res.userByMail, });
-    const userData = getUserData(dataSaved);
-    const transformedObj = objTransform(res);
-    const flow = getFlowByData(transformedObj.user);
-    if (confirmation) {
-      flow.flowNumber = 1;
-      flow.initialState = 'loginFormsOtp';
-    }
-    storeFlowNumber(client)(flow.flowNumber);
-    const eventsHandler = sendTrackingEvents(eventsTrackers, { page: 'Main Login', flowNumber: flow.flowNumber, label: 'proceedEmail', });
-    const { route, metadata, } = parseRouteInfo(flow.initialTransition);
-    writeMetaDataToApollo(client, metadata);
+const handleResponseFromGraphql = ({
+  client,
+  getFlowByData,
+  email,
+  phone,
+  res,
+  showError,
+  setPreloader,
+  eventsTrackers,
+  confirmation,
+  facebook,
+}) => {
+  const dataSaved = saveUserData(client)({ userData: res.userByMail, });
+  const userData = getUserData(dataSaved);
+  const transformedObj = objTransform(res);
+  const flow = getFlowByData(transformedObj.user);
+  if (confirmation) {
+    flow.flowNumber = 1;
+    flow.initialState = 'loginFormsOtp';
+  }
+  storeFlowNumber(client)(flow.flowNumber);
+  const eventsHandler = sendTrackingEvents(eventsTrackers, { page: 'Main Login', flowNumber: flow.flowNumber, label: 'proceedEmail', });
+  const { route, metadata, } = parseRouteInfo(flow.initialTransition);
+  writeMetaDataToApollo(client, metadata);
 
-    setFacebookParamsOnApollo(client);
+  setFacebookParamsOnApollo(client);
 
-    if (!isEmailValidationRequired(dataSaved) && (hasValidatedPhone(dataSaved) || confirmation)) {
-      handleGenerateOtp({
-        client,
-        email,
-        phoneNum: phone || dataSaved.userData.phoneNum,
-        ssoId: res.userByMail.ssoId,
-        flow,
-        route,
-        showError,
-        setPreloader,
-        autoRoute,
-        confirmation,
-        eventsHandler,
-      });
-    }
-    else if (!hasValidatedEmail(dataSaved)) {
-      sendMailValidation({ email, }).then(
+  if (!isEmailValidationRequired(dataSaved) && (hasValidatedPhone(dataSaved) || confirmation)) {
+    handleGenerateOtp({
+      client,
+      email,
+      phoneNum: phone ||
+        (dataSaved && dataSaved.userData
+          ? dataSaved.userData.phoneNum
+          : null),
+      ssoId: (res && res.userByMail ? res.userByMail.ssoId : null),
+      flow,
+      route,
+      showError,
+      setPreloader,
+      confirmation,
+      eventsHandler,
+    });
+  }
+  else if (dataSaved && dataSaved.userData && !hasValidatedEmail(dataSaved)) {
+    // eslint-disable-next-line no-undef
+    const prefix = /(http.?\/\/\D*).(haaretz.co.il|themarker.com|haaretz.com).*/.exec(window.location.origin)[1];
+    sendMailConfirmation(client)({
+      email,
+      url: `${prefix}.${getHost(client)}`,
+      paramString: `email=${email}`,
+      userName: userData.firstName || email,
+    })
+      .then(
         () => {
           eventsHandler();
           Router.push(route);
@@ -172,12 +194,12 @@ const handleResponseFromGraphql =
           showError((error.message || 'אירעה שגיאה'));
         }
       );
-    }
-    else {
-      eventsHandler();
-      Router.push(route);
-    }
-  };
+  }
+  else {
+    eventsHandler();
+    Router.push(route);
+  }
+};
 
 const onSubmit = (
   client,
@@ -186,8 +208,7 @@ const onSubmit = (
   hideError,
   setPreloader,
   eventsTrackers,
-  autoRoute,
-  confirmation
+  confirmation,
 ) => ({ email, phone, }) => {
   hideError();
   setPreloader(true);
@@ -204,7 +225,6 @@ const onSubmit = (
         showError,
         setPreloader,
         eventsTrackers,
-        autoRoute,
         confirmation,
       });
     })
@@ -261,19 +281,43 @@ class IndexForm extends Component {
    * the autoSubmit method runs when the user returns to the login page from a confirmation email
    */
   autoSubmit = ({ client, getFlowByData, }) => {
-    const { confirmation, email, phone, facebook, } = getUrlParams();
-    const eventsTrackers = { gaAction: this.props.gaAction, biAction: this.props.biAction };
-    if(confirmation) {
-      const autoSubmitFunction = onSubmit(client, getFlowByData, this.showError, this.hideError, this.setPreloader, eventsTrackers, '/loginForms', confirmation);
-      autoSubmitFunction({ email, phone, });
+    const { confirmation, email, phone, facebook, type, } = getUrlParams();
+    const eventsTrackers = { gaAction: this.props.gaAction, biAction: this.props.biAction, };
+    if (confirmation && type === 'phoneEmailConnect') {
+      validateMailWithPhone(client)({ email, confirmation, })
+        .then(
+          () => onSubmit(
+            client,
+            getFlowByData,
+            this.showError,
+            this.hideError,
+            this.setPreloader,
+            eventsTrackers)({ email, phone, }),
+          fail => this.showError(fail.message)
+        );
     }
-    if(facebook && facebook.token && facebook.redirect) {
-      saveUserData(client)({ userData: { facebook, __typename: "SsoUser", }, });
-    } else {
-      const facebookEmpty = { token: null, redirect: null, __typename: "facebookLogin", };
-      saveUserData(client)({ userData: { facebook: facebookEmpty, __typename: "SsoUser", }, });
+    else if (confirmation && type === 'mailValidation') {
+      validateMailConfirmation(client)({ email, confirmation, })
+        .then(
+          () => onSubmit(
+            client,
+            getFlowByData,
+            this.showError,
+            this.hideError,
+            this.setPreloader,
+            eventsTrackers
+          ),
+          fail => this.showError(fail.message)
+        );
     }
-  }
+    if (facebook && facebook.token && facebook.redirect) {
+      saveUserData(client)({ userData: { facebook, __typename: 'SsoUser', }, });
+    }
+    else {
+      const facebookEmpty = { token: null, redirect: null, __typename: 'facebookLogin', };
+      saveUserData(client)({ userData: { facebook: facebookEmpty, __typename: 'SsoUser', }, });
+    }
+  };
   /* ::::::::::::::::::::::::::::::::::: METHODS } ::::::::::::::::::::::::::::::::::: */
 
   render() {

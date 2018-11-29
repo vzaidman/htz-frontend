@@ -13,6 +13,7 @@ import { GenerateOtp, } from './types/otp_operations_type';
 import OverridePhone from './types/override_phone_type';
 import ConnectMailMobile from './types/connect_mail_mobile_type';
 import ValidateConfirmation from './types/validate_mail_mobile_type';
+import SimpleResponse from './types/simple_response_type';
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -115,6 +116,21 @@ const mutation = new GraphQLObjectType({
         return dataSources
           .NewSsoOperationsAPI
           .validateEmailPhoneConnect(email, confirmation);
+      },
+    },
+    sendEmailConfirmation: {
+      type: SimpleResponse,
+      args: {
+        email: { type: GraphQLString, },
+        userName: { type: GraphQLString, },
+        paramString: { type: GraphQLString, },
+        url: { type: GraphQLString, },
+      },
+      resolve(parentValue, { email, userName, paramString, url, }, { dataSources, }) {
+        return dataSources
+          .HtzFunctionOperationsAPI
+          // eslint-disable-next-line no-undef
+          .sendEmailConfirmation(email, paramString, url);
       },
     },
     validateEmail: {
