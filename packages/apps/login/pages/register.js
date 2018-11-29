@@ -51,7 +51,10 @@ const termsStyle = () => ({
     }
   },
   '& div': {
-    fontSize: '2.3rem',
+    fontSize: '1.8rem',
+    '@media (max-width: 768px)': {
+      fontSize: '2.3rem',
+    }
   },
 });
 const HalfSizeWrapper = createComponent(halfSizeStyleWrapperStyle);

@@ -19,9 +19,12 @@ const Styles = {
     }),
 
     formWrapper: () => ({
-      width: '414px',
+      width: '500px',
       maxWidth: '95%',
       margin: '0 auto',
+      '&>form>div': {
+        paddingBottom: '1rem',
+      },
       '& label': {
         fontSize: '2rem',
         marginTop: '2rem !important',
@@ -48,8 +51,12 @@ const Styles = {
       justifyContent: 'center',
       flexWrap: 'nowrap',
       clear: 'both',
-      '> h5, button': {
+      '> button': {
         margin: '25px 0',
+        textAlign: 'center',
+      },
+      '> h5': {
+        margin: '20px 0',
         textAlign: 'center',
       },
       '> h4': {
@@ -66,7 +73,7 @@ const Styles = {
       justifyContent: 'space-around',
       width: '1263px',
       maxWidth: '100%',
-      margin: '0 auto 49px auto',
+      margin: '0 auto 17px auto',
       padding: '23px 0 0 0',
     }),
 
@@ -81,7 +88,7 @@ const Styles = {
       color: '#ffffff',
 
       '@media (max-width: 768px)': {
-        display: "none",
+        display: 'none',
       },
     }),
     footerContentHolder: () => ({
@@ -115,11 +122,12 @@ const Styles = {
       },
     }),
     textBoxStyle: () => ({
-      margin: '0 auto',
+      margin: '20px auto 0 auto',
       width: '300px',
       maxWidth: '90%',
       textAlign: 'center',
-      fontSize: '2rem',
+      fontSize: '2.3rem',
+      lineHeight: '3.5rem',
       '>h5': {
         margin: '0 auto',
       },
@@ -143,7 +151,17 @@ const Styles = {
         },
       },
       '& div': {
-        fontSize: '2.3rem',
+        fontSize: '1.8rem',
+        '@media (max-width: 768px)': {
+          fontSize: '2.2rem',
+        },
+      },
+    }),
+    mobileFooterSpacerStyle: () => ({
+      display: 'none',
+      '@media (max-width: 768px)': {
+        display: 'block',
+        height: '35rem',
       },
     }),
   },
@@ -167,7 +185,7 @@ const Styles = {
       margin: '0 auto',
       padding: '30px 15px 20px 15px',
       textAlign: 'center',
-      backgroundColor: "#ffffff",
+      backgroundColor: '#ffffff',
       border: 'solid 1px #acd2ed',
     }),
     closeButtonStyle: () => ({
@@ -209,6 +227,7 @@ const LoginMiscLayoutStyles = {
   TextBox: createComponent(Styles.MiscLayout.textBoxStyle),
   ErrorBox: createComponent(Styles.MiscLayout.errorBoxStyle),
   TermsWrapper: createComponent(Styles.MiscLayout.termsStyle),
+  MobileFooterSpacer: createComponent(Styles.MiscLayout.mobileFooterSpacerStyle),
 };
 
 const LoginDialogBox = {
