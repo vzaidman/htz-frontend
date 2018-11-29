@@ -11,11 +11,12 @@ import styleRenderer from '../components/styleRenderer/styleRenderer';
 import theme from '../theme/index';
 import GET_HOST from './queries/GetHost';
 import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
-import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
+import { LoginContentStyles, LoginMiscLayoutStyles, } from '../components/StyleComponents/LoginStyleComponents';
 import IndexForm from '../components/Misc/Forms/IndexForm';
 
 // Styling Components -------
 const { PageWrapper, ContentWrapper, } = LoginContentStyles;
+const { MobileFooterSpacer, } = LoginMiscLayoutStyles;
 // --------------------------
 
 const Index = () => (
@@ -39,6 +40,7 @@ const Index = () => (
                               )}
                             />
                           </ContentWrapper>
+                          <MobileFooterSpacer />
                           <Footer contentId="7.1283189" />
                         </PageWrapper>
                       )}

@@ -63,8 +63,8 @@ class EmailValidationSent2 extends React.Component {
     return(
       <ApolloConsumer>
         {client => {
-            const email = getEmail(client);
-            this.sendEmail(email);
+            //const email = getEmail(client);
+            //this.sendEmail(email);
             return(
               <FSMLayout>
                 {({ currentState, findRout, doTransition, }) => (

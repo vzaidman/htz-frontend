@@ -6,27 +6,29 @@
 import { createComponent, } from 'react-fela';
 
 // Functions -------------------------------------------
-const getColors = (host) => {
-  return {
-    main: host == 'themarker.com' ? "#00c800" : "#0b7eb5",
-    secondry: host == 'themarker.com' ? "#00c800" : "#006B96",
-    light: host == 'themarker.com' ? "#00c800" : "#acd2ed",
-    links: host == 'themarker.com' ? "#00c800" : "#0895c3",
-  }
-}
+const getColors = host => ({
+  main: host == 'themarker.com' ? '#008838' : '#0b7eb5',
+  secondry: host == 'themarker.com' ? '#00c800' : '#006B96',
+  light: host == 'themarker.com' ? '#00c800' : '#acd2ed',
+  links: host == 'themarker.com' ? '#00c800' : '#0895c3',
+});
 
 // Styles ----------------------------------------------
 const Styles = {
   Content: {
-    topLinks: ({main,}) => () => ({
+    topLinks: ({ main, }) => () => ({
       display: 'flex',
-      margin: '0 auto 4rem auto',
+      width: '95%',
+      margin: '0 auto 5rem auto',
       border: `solid 1px ${main}`,
+      '@media (max-width: 768px)': {
+        width: '85%',
+        marginBottom: '5.5rem',
+      },
       '>span': {
         flexGrow: '1',
         textAlign: 'center',
         color: main,
-        fontSize: '1.75rem',
         fontWeight: 'bold',
         '>input': {
           display: 'none',
@@ -34,12 +36,17 @@ const Styles = {
         '>label': {
           display: 'block',
           marginTop: '0 !important',
-          lineHeight: '37px',
+          lineHeight: '4.5rem',
+          fontSize: '1.75rem',
+          '@media (max-width: 768px)': {
+            fontSize: '2rem',
+            lineHeight: '5.5rem',
+          },
         },
         '>a': {
           display: 'block',
           marginTop: '0 !important',
-          lineHeight: '37px',
+          lineHeight: '1.75rem',
         },
         '&.on': {
           backgroundColor: main,
@@ -53,7 +60,7 @@ const Styles = {
   },
 
   MiscLayout: {
-    inputLinkButton: ({links,}) => () => ({
+    inputLinkButton: ({ links, }) => () => ({
       fontSize: '16px',
       color: links,
 
@@ -65,7 +72,7 @@ const Styles = {
         fontFamily: 'Open Sans Hebrew,"Helvetica Neue",Helvetica,Arial,sans-serif',
       },
     }),
-    termsStyle: ({links,}) => () => ({
+    termsStyle: ({ links, }) => () => ({
       lineHeight: '17px',
       '& a': {
         color: `${links} !important`,
@@ -74,13 +81,16 @@ const Styles = {
         },
       },
       '& div': {
-        fontSize: '2.3rem',
+        fontSize: '1.8rem',
+        '@media (max-width: 768px)': {
+          fontSize: '2.2rem',
+        },
       },
     }),
   },
 
   Dialog: {
-    dialogWrapperStyle: ({light,}) => () => ({
+    dialogWrapperStyle: ({ light, }) => () => ({
       display: 'flex',
       alignItems: 'center',
       position: 'fixed',
@@ -98,7 +108,7 @@ const Styles = {
       margin: '0 auto',
       padding: '30px 15px 20px 15px',
       textAlign: 'center',
-      backgroundColor: "#ffffff",
+      backgroundColor: '#ffffff',
       border: `solid 1px ${light}`,
     }),
     closeButtonStyle: () => ({
@@ -122,28 +132,28 @@ const Styles = {
 };
 
 // Components ------------------------------------------
-const LoginContentStylesThemed = (host) => {
+const LoginContentStylesThemed = host => {
   const colors = getColors(host);
   return {
     TopLinks: createComponent(Styles.Content.topLinks(colors)),
-  }
+  };
 };
 
-const LoginMiscLayoutStylesThemed = (host) => {
+const LoginMiscLayoutStylesThemed = host => {
   const colors = getColors(host);
   return {
     InputLinkButton: createComponent(Styles.MiscLayout.inputLinkButton(colors)),
     TermsWrapper: createComponent(Styles.MiscLayout.termsStyle(colors)),
-  }
+  };
 };
 
-const LoginDialogBoxThemed = (host) => {
+const LoginDialogBoxThemed = host => {
   const colors = getColors(host);
   return {
     DialogWrapper: createComponent(Styles.Dialog.dialogWrapperStyle),
     DialogContent: createComponent(Styles.Dialog.dialogContentStyle),
     CloseButton: createComponent(Styles.Dialog.closeButtonStyle),
-  }
+  };
 };
 
 // Export ----------------------------------------------
