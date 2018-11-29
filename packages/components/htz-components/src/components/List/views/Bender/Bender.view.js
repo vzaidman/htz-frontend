@@ -177,7 +177,7 @@ export default function Bender({ list, lazyLoad, gaAction, biAction, listId, }) 
     </GridItem>
   );
 
-  const { items, } = list;
+  const { items, title, } = list;
 
   const content = itemsToRender => (itemsToRender
     ? items
@@ -204,7 +204,7 @@ export default function Bender({ list, lazyLoad, gaAction, biAction, listId, }) 
               ],
             }}
             render={({ className, }) => (
-              <H className={className}>{theme.benderStyle.mainTitle.text}</H>
+              <H className={className}>{title || theme.benderStyle.mainTitle.text}</H>
             )}
           />
           <Media query={{ from: 's', until: 'l', }}>
