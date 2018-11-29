@@ -2,33 +2,33 @@ import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import Astronaut from '../../illustrations/Astronaut/Astronaut';
 
-const PaywallTopAstronaut = ({ shift, }) => (
+const outerStyle = theme => ({ mq, shift, size, }) => theme.mq(mq, {
+  top: `${shift.top}`,
+  height: `calc(100% - ${shift.top})`,
+  marginLeft: `-${shift.right}`,
+  fontSize: size, // astronaut size
+});
+
+const innerStyle = theme => ({ mq, shift, }) => theme.mq(mq, {
+  right: `-${shift.right}`,
+});
+
+const PaywallTopAstronaut = ({ style, }) => (
   <FelaComponent
     style={theme => ({
         position: 'relative',
-        ...theme.mq({ from: 'm', }, {
-          overflow: 'hidden',
-          top: `${shift.top}`,
-          height: `calc(100% - ${shift.top})`,
-          marginLeft: `-${shift.right}`,
-        }),
+        overflow: 'hidden',
+        flexShrink: 0, // prevent flex container from changing width
+        extend: style.map(outerStyle(theme)),
     })}
   >
     <FelaComponent
       style={theme => ({
           position: 'relative',
-          ...theme.mq({ from: 'm', }, {
-            right: `-${shift.right}`,
-          }),
+          extend: style.map(innerStyle(theme)),
       })}
     >
-      <Astronaut
-        size={[
-          { until: 's', value: 20, },
-          { from: 's', until: 'l', value: 35, },
-          { from: 'l', value: 50, },
-        ]}
-      />
+      <Astronaut />
     </FelaComponent>
   </FelaComponent>
 );

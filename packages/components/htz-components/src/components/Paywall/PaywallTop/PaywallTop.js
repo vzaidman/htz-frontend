@@ -9,14 +9,31 @@ import PaywallTopAstronaut from './PaywallTopAstronaut';
 
 const PaywallTop = ({ title, text, confirm, }) => (
   <PaywallTopContainer>
-    <PaywallTopAstronaut shift={{ right: '10rem', top: '-3rem', }} />
+    <PaywallTopAstronaut
+      style={[
+        {
+          mq: { until: 's', },
+          size: '22rem',
+          shift: { right: '10rem', top: '1rem', },
+        },
+        {
+          mq: { from: 's', },
+          size: '53rem',
+          shift: { right: '12rem', top: '-3rem', },
+        },
+      ]}
+    />
     <FelaComponent
-      style={{
+      style={theme => ({
         display: 'flex',
         alignItems: 'center',
         color: '#00537a',
         padding: '2rem',
-      }}
+        extend: [
+          theme.mq({ until: 's', }, { marginRight: '-1rem', }),
+          theme.mq({ from: 's', }, { marginRight: '-3rem', }),
+        ],
+      })}
       render={
         ({ className, }) => (
           <div className={className} >
