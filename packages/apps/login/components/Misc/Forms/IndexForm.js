@@ -28,11 +28,23 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 
 // Methods ----------------------------
 const b64DecodeUnicode = str => (str
+  // eslint-disable-next-line no-undef
   ? decodeURIComponent(atob(str).split('').map(c => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''))
   : null);
 
+const getParamsData = params => { // TODO add fields to retreive from params
+  if (params) {
+    const decodedParams = JSON.parse(b64DecodeUnicode(params));
+    return {
+      email: decodedParams.email,
+      phone: decodedParams.phone,
+    };
+  }
+  return { email: '', phone: '', };
+};
 
 const getUrlParams = () => {
+  // eslint-disable-next-line no-undef
   const pageUrl = new URL(window.location.href);
   return {
     confirmation: pageUrl.searchParams.get('confirmation'),
@@ -41,20 +53,9 @@ const getUrlParams = () => {
     facebook: {
       token: pageUrl.searchParams.get('account_linking_token'),
       redirect: pageUrl.searchParams.get('redirect_uri'),
-      __typename: "facebookLogin",
-    }
-  }
-}
-
-const getParamsData = (params) => {
-  if(params) {
-    const decodedParams = atob(b64DecodeUnicode(params)).split('&');
-    return {
-      email: decodedParams[0].split('=')[1],
-      phone: decodedParams[1].split('=')[1],
-    };
-  }
-  return { email: '', phone: '', };
+      __typename: 'facebookLogin',
+    },
+  };
 };
 
 const generateEmailError = message => [ { name: 'email', order: 1, errorText: message, }, ];
@@ -79,20 +80,20 @@ const hasValidatedEmail = dataSaved => dataSaved
         && dataSaved.userData.userStatus
         && dataSaved.userData.userStatus.isEmailValidated;
 
-const hasCrmStatus = (dataSaved) => {
-  return dataSaved && dataSaved.userData && dataSaved.userData.userCrmStatus ?
-    dataSaved.userData.userCrmStatus : false;
-};
+const hasCrmStatus = dataSaved => (dataSaved
+  && dataSaved.userData
+  && dataSaved.userData.userCrmStatus
+  ? dataSaved.userData.userCrmStatus
+  : false);
 
-const hasActiveSub = (dataSaved) => {
+const hasActiveSub = dataSaved => {
   const crmStatus = hasCrmStatus(dataSaved);
   return crmStatus &&
         (crmStatus.isActiveTm || crmStatus.isActiveHeb);
 };
 
-const isEmailValidationRequired = (dataSaved) => {
-  return (!hasActiveSub(dataSaved) && !hasValidatedEmail(dataSaved));
-};
+const isEmailValidationRequired = (dataSaved) =>
+  !hasActiveSub(dataSaved) && !hasValidatedEmail(dataSaved);
 
 const setFacebookParamsOnApollo = client => {
   const { facebook, } = getUrlParams();
@@ -182,7 +183,7 @@ const handleResponseFromGraphql = ({
     sendMailConfirmation(client)({
       email,
       url: `${prefix}.${getHost(client)}`,
-      paramString: `email=${email}`,
+      paramString: JSON.stringify({ email, }),
       userName: userData.firstName || email,
     })
       .then(
