@@ -7,7 +7,13 @@ import INSPECT_EMAIL, {
   HOSTNAME,
   PHONE_EMAIL_CONFIRMATION,
 } from '../queries/UserQueries';
-import { GENERATE_HASH, CONNECT_MAIL_MOBILE, VALIDATE_MAIL_TO_MOBILE, } from '../mutations/UserMutations';
+import {
+  GENERATE_HASH,
+  CONNECT_MAIL_MOBILE,
+  VALIDATE_MAIL_TO_MOBILE,
+  SEND_MAIL_CONFIRMATION_REQUEST,
+  CONFIRM_MAIL,
+} from '../mutations/UserMutations';
 
 const getDataFromUserInfo = client => email =>
   client
@@ -68,6 +74,18 @@ const validateMailWithPhone = client => dataObj =>
     mutation: VALIDATE_MAIL_TO_MOBILE,
   });
 
+const sendMailConfirmation = client => dataObj =>
+  client.mutate({
+    variables: dataObj,
+    mutation: SEND_MAIL_CONFIRMATION_REQUEST,
+  });
+
+const validateMailConfirmation = client => dataObj =>
+  client.mutate({
+    variables: dataObj,
+    mutation: CONFIRM_MAIL,
+  });
+
 const saveOtpHash = client => otpHashObj => {
   client.writeData({ data: otpHashObj, });
   return otpHashObj;
@@ -100,4 +118,6 @@ export {
   generateOtp,
   connectMailWithPhone,
   validateMailWithPhone,
+  sendMailConfirmation,
+  validateMailConfirmation,
 };
