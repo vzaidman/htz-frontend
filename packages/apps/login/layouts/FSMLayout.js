@@ -3,20 +3,24 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { StyleProvider, } from '@haaretz/fela-utils';
-import { Query, } from '@haaretz/htz-components';
+import { Query, Footer, } from '@haaretz/htz-components';
 import FiniteStateMachine from '../components/FiniteStateMachine/FiniteStateMachine';
 import Header from '../layouts/Header';
-import Footer from '../layouts/Footer';
+// import Footer from '../layouts/Footer';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import theme from '../theme';
 import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import FlowDispenser from '../components/FlowDispenser/FlowDispenser';
 import GET_HOST from '../pages/queries/GetHost';
-import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
+import {
+  LoginContentStyles,
+  LoginMiscLayoutStyles,
+} from '../components/StyleComponents/LoginStyleComponents';
 import { parseRouteInfo, } from '../pages/queryutil/flowUtil';
 
 // Styling Components -------
 const { PageWrapper, } = LoginContentStyles;
+const { MobileFooterSpacer, } = LoginMiscLayoutStyles;
 // --------------------------
 
 const fsmLayoutPropTypes = { children: PropTypes.func.isRequired, };
@@ -51,7 +55,7 @@ const FSMLayout = ({ children, }) => (
                               findRout,
                               doTransition,
                             })}
-                            <Footer />
+                            <Footer contentId="7.1283189" />
                           </PageWrapper>
                         </Fragment>
                       </StyleProvider>

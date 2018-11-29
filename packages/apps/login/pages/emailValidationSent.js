@@ -5,6 +5,8 @@ import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 
 import { ApolloConsumer, } from '@haaretz/htz-components';
+import { sendMailValidation, } from '../util/requestUtil';
+import { getEmail, } from './queryutil/userDetailsOperations';
 import BottomLinks from '../components/Misc/BottomLinks';
 import Preloader from '../components/Misc/Preloader';
 import {
@@ -14,13 +16,30 @@ import {
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
-const { TextBox, } = LoginMiscLayoutStyles;
+const { TextBox, ErrorBox, } = LoginMiscLayoutStyles;
 // --------------------------
+
+const sendEmailAgain = (client, route, showError, hideError, setPreloader) => {
+  setPreloader(true);
+  hideError();
+  const email = getEmail(client);
+  sendMailValidation({ email, }).then(
+    () => {
+      Router.push(route);
+    },
+    error => {
+      setPreloader(false);
+      showError((error.message || 'אירעה שגיאה'));
+    }
+  );
+}
 
 class EmailValidationSent extends React.Component {
   state = {
     firstTime: true,
     isLoading: false,
+    showError: false,
+    errorMessage: '',
   };
 
   componentDidMount() {
@@ -30,6 +49,14 @@ class EmailValidationSent extends React.Component {
   shouldComponentUpdate() {
     return false;
   }
+
+  hideError = () => {
+    this.setState({ showError: false, errorMessage: '', });
+  };
+
+  showError = errorMsg => {
+    this.setState({ showError: true, errorMessage: errorMsg, });
+  };
 
   setPreloader = (isLoadingStatus) => {
     this.setState({ isLoading: !!isLoadingStatus, });
@@ -57,15 +84,19 @@ class EmailValidationSent extends React.Component {
                         <Preloader isLoading={this.state.isLoading} />
                       </ItemCenterer>
 
+                      <ErrorBox className={this.state.showError ? '' : 'hidden'}>
+                        <span>
+                          {this.state.errorMessage}
+                        </span>
+                      </ErrorBox>
+
                       <BottomLinks spacing={1}>
                         <span>לא הגיע המייל? </span>
                         <HtzLink
                           href={`${findRout('sendAgain')}`}
                           onClick={e => {
                             e.preventDefault();
-                            this.setPreloader(true);
-                            const route = doTransition('sendAgain');
-                            Router.push(route);
+                            sendEmailAgain(client, doTransition('sendAgain'), this.showError, this.hideError, this.setPreloader);
                           }}
                         >
                           אנא נסה בשנית
