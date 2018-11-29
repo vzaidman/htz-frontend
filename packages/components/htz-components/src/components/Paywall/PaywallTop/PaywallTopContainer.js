@@ -6,7 +6,7 @@ const PaywallTopContainer = ({ children, }) => (
   <FelaComponent
     style={{
       backgroundImage: 'linear-gradient(97deg, #fde9a5, #fff4e9)',
-      width: '893px',
+      width: '100%',
       height: '133px',
       display: 'flex',
     }}
