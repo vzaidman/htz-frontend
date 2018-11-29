@@ -101,6 +101,7 @@ import PremiumContentMeta from './components/PremiumContentMeta/PremiumContentMe
 import PaywallDbgController from './components/Paywall/PaywallDbgController';
 import PaywallDbgProvider from './components/Paywall/PaywallDbgProvider';
 import PaywallBottomRuler from './components/Paywall/PaywallBottomRuler/PaywallBottomRuler';
+import PaywallTop from './components/Paywall/PaywallTop/PaywallTop';
 
 // Illustrations
 import Astronaut from './components/illustrations/Astronaut/Astronaut.js';
@@ -344,6 +345,7 @@ export {
   PaywallDbgController,
   PaywallDbgProvider,
   PaywallBottomRuler,
+  PaywallTop,
 
   // Illustrations
   Astronaut,
