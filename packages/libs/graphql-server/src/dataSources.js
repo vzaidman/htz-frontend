@@ -455,7 +455,29 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
           url,
           userMobile: phone,
           // eslint-disable-next-line no-undef
-          paramsString: `params=${Buffer.from(paramString).toString('base64')}`,
+          paramsString: `${Buffer.from(paramString).toString('base64')}&type=phoneEmailConnect`,
+        },
+      }),
+    }).then(
+      success => success.json(),
+      () => Promise.resolve({ success: false, message: 'server error', })
+    );
+  }
+
+  async sendEmailConfirmation(email, paramString, url) {
+    return fetch(`${this.context.functionService}/sendEmailForConfirmation`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        confirmationParams: { email, },
+        confirmationType: 'MAIL_VALIDATION',
+        templateParams: {
+          url,
+          // eslint-disable-next-line no-undef
+          paramsString: `${Buffer.from(paramString).toString('base64')}&type=mailValidation`,
         },
       }),
     }).then(

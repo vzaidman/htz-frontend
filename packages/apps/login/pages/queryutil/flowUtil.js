@@ -7,7 +7,6 @@ import { STATE_METADATA, } from '../queries/FiniteStateMachineQueries';
  * @returns {string}
  */
 const writeMetaDataToApollo = (apolloClient, metadata) => {
-  console.warn(`metadata to be written to apollo: ${metadata}`);
   apolloClient.writeData({
     data: { stateMetaData: metadata !== null ? metadata.toString() : null, },
   });
