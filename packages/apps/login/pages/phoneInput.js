@@ -40,7 +40,7 @@ const onSubmit = ({ doTransition, client, showError, hideError, }) => ({ phoneNu
     email,
     userName: userData.firstName,
     phone: phoneNumber,
-    paramString: btoa(`email=${email}/phone=${phoneNumber}`),
+    paramString: JSON.stringify({ email, phone: phoneNumber, }),
     url: getHostname(client),
   }).then(
     () => {

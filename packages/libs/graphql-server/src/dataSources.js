@@ -398,7 +398,7 @@ class NewSsoOperationsAPI extends RESTDataSource {
   }
 
   async validateEmailPhoneConnect(email, confirmation) {
-    return fetch(`${this.baseURL()}/validateEmailPhoneConnect`, {
+    return fetch(`${this.context.newSsoService}/validateEmailPhoneConnect`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -412,7 +412,7 @@ class NewSsoOperationsAPI extends RESTDataSource {
   }
 
   async validateEmail(email, confirmation) {
-    return fetch(`${this.baseURL()}/validateEmail`, {
+    return fetch(`${this.context.newSsoService}/validateEmail`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -469,7 +469,7 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
         templateParams: {
           url,
           // eslint-disable-next-line no-undef
-          paramsString: `${Buffer.from(paramString).toString('base64')}&type=mailValidation`,
+          paramsString: `params=${Buffer.from(paramString).toString('base64')}&type=mailValidation`,
         },
       }),
     }).then(
