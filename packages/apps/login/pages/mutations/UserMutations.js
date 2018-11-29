@@ -43,13 +43,11 @@ const VALIDATE_MAIL_TO_MOBILE = gql`
 const SEND_MAIL_CONFIRMATION_REQUEST = gql`
   mutation sendEmailConfirmation(
     $email: String!
-    $userName: String!
     $paramString: String!
     $url: String!
   ) {
     sendEmailConfirmation(
       email: $email
-      userName: $userName
       paramString: $paramString
       url: $url
     ) {

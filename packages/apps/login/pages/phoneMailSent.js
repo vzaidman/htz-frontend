@@ -44,7 +44,7 @@ const sendAgain = (client, doTransition) => {
     email,
     userName: userData.firstName,
     phone: phoneNumber,
-    paramString: btoa(`email=${email}&phone=${phoneNumber}`),
+    paramString: JSON.stringify({ email, phone: phoneNumber, }),
     url: getHostname(client),
   }).then(
     () => {

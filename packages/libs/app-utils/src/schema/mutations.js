@@ -122,11 +122,10 @@ const mutation = new GraphQLObjectType({
       type: SimpleResponse,
       args: {
         email: { type: GraphQLString, },
-        userName: { type: GraphQLString, },
         paramString: { type: GraphQLString, },
         url: { type: GraphQLString, },
       },
-      resolve(parentValue, { email, userName, paramString, url, }, { dataSources, }) {
+      resolve(parentValue, { email, paramString, url, }, { dataSources, }) {
         return dataSources
           .HtzFunctionOperationsAPI
           // eslint-disable-next-line no-undef
